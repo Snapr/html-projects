@@ -1,0 +1,90 @@
+<!DOCTYPE html> 
+<html> 
+    <head> 
+        <title>TripMapper</title> 
+        <meta name="viewport" content="width=device-width, initial-scale=1"> 
+        <link rel="stylesheet" href="app/libs/jquery.mobile-1.0rc2/jquery.mobile-1.0rc2.css" type="text/css" charset="utf-8">
+    </head> 
+<body> 
+    <div id="menu" data-title="Welcome" data-role="page">
+        <div data-role="header">
+            <h1>TripMapper</h1>
+        </div><!-- /header -->
+
+        <div data-role="content">
+            <a href="#" data-role="button" data-theme="c">Snap Photo</a>
+            <a href="#" data-role="button" data-theme="b">Dashboard</a>
+            <a href="#popular" data-role="button" data-theme="e" data-transition="pop">Popular</a>
+            <a href="#" data-role="button" data-theme="c">My Snaps</a>
+            <a href="#" data-role="button" data-theme="c">Maps</a>
+            <a href="#" data-role="button" data-transition="pop">Cities</a>
+        </div><!-- /content -->
+
+    </div><!-- /page -->
+
+    <div id="popular" data-title="Popular" data-role="page">
+        <div data-role="header">
+            <h1>Popular</h1>
+        </div>
+        <div data-role="content">
+            <fieldset data-role="controlgroup" data-type="horizontal">
+                <input type="radio" name="radio-view" value="today" id="popular-time-today">
+                <label for="popular-time-today">Today</label>
+                <input type="radio" name="radio-view" value="week" id="popular-time-week">
+                <label for="popular-time-week">Week</label>
+                <input type="radio" name="radio-view" value="all" id="popular-time-all">
+                <label for="popular-time-all">All</label>
+            </fieldset>
+
+            <ul>
+            </ul>
+        </div>
+<script id="popular-thumb-template" type="text/template">
+<% _.each( results, function( item, i ){ %>
+<li>
+<img src="https://s3.amazonaws.com/media-server<%= item.get('server_id') %>.snapr.us/thm2/<%= item.get('secret') %>/<%= item.get('id') %>.jpg" alt="<%= item.get('description') %>" class="thumb-image" />
+<h3><%= item.get('description') %></h3>
+<p><%= item.get('username') %></p>
+</li>
+<% }); %>
+</script>
+    </div>
+
+<script src="app/libs/json2.js" type="text/javascript" charset="utf-8"></script> <!-- just in case the browser sucks at JSON -->
+
+<script src="app/libs/jquery-1.6.4.min.js" type="text/javascript" charset="utf-8"></script>
+
+<script type="text/javascript" charset="utf-8">
+    // disable jquery-mobile's hash nav so we can replace it with backbone.js
+    $(document).bind("mobileinit", function(){
+        $.mobile.ajaxEnabled = false;
+        $.mobile.pushStateEnabled = false;
+        $.mobile.hashListeningEnabled = false;
+        $.mobile.defaultPageTransition = 'none';
+        // console.warn('mobileinit',$.mobile);
+    });
+</script>
+<script src="app/libs/jquery.mobile-1.0rc2/jquery.mobile-1.0rc2.js" type="text/javascript" charset="utf-8"></script>
+
+<script src="app/libs/underscore.js" type="text/javascript" charset="utf-8"></script> <!-- required by backbone -->
+<script src="app/libs/backbone.js" type="text/javascript" charset="utf-8"></script> <!-- handles routing, models and sync -->
+
+<!-- <script src="js/libs/jqmrouter.js" type="text/javascript" charset="utf-8"></script> -->
+<script type="text/javascript" charset="utf-8">
+    tripmapper = {};
+    tripmapper.models = {};
+    tripmapper.views = {};
+</script>
+
+<script src="app/views/popular.js" type="text/javascript" charset="utf-8"></script>
+<script src="app/views/thumbs_list.js" type="text/javascript" charset="utf-8"></script>
+
+<script src="app/models/photo.js" type="text/javascript" charset="utf-8"></script>
+<script src="app/models/photo_collection.js" type="text/javascript" charset="utf-8"></script>
+<script src="app/models/thumb.js" type="text/javascript" charset="utf-8"></script>
+<script src="app/models/thumb_collection.js" type="text/javascript" charset="utf-8"></script>
+
+<script src="app/tripmapper.js" type="text/javascript" charset="utf-8"></script>
+
+</body>
+</html>
