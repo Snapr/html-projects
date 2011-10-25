@@ -23,7 +23,7 @@ tripmapper.views.popular = Backbone.View.extend({
                     collection:_this.photo_collection,
                     el:$('#popular ul').eq(0)
                 });
-                popular_list.render();
+                popular_list.render($.mobile.hidePageLoadingMsg);
             },
             error:function(){
                 console.warn('error');
