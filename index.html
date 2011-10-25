@@ -22,24 +22,26 @@
 
     </div><!-- /page -->
 
-    <div id="popular" data-title="Popular" data-role="page">
+    <div id="popular" data-title="Popular" data-add-back-btn="true" data-role="page">
         <div data-role="header">
             <h1>Popular</h1>
         </div>
         <div data-role="content">
-            <fieldset data-role="controlgroup" data-type="horizontal">
-                <input type="radio" name="radio-view" value="today" id="popular-time-today">
+            <fieldset data-role="controlgroup" data-type="horizontal" id="popular-timeframe">
+                <input type="radio" name="options-popular-timeframe" value="time-today" id="popular-time-today">
                 <label for="popular-time-today">Today</label>
-                <input type="radio" name="radio-view" value="week" id="popular-time-week">
+                <input type="radio" name="options-popular-timeframe" value="time-week" id="popular-time-week">
                 <label for="popular-time-week">Week</label>
-                <input type="radio" name="radio-view" value="all" id="popular-time-all">
+                <input type="radio" name="options-popular-timeframe" value="time-all" id="popular-time-all" checked="true">
                 <label for="popular-time-all">All</label>
             </fieldset>
 
             <ul>
             </ul>
         </div>
-<script id="popular-thumb-template" type="text/template">
+    </div><!-- /page -->
+
+<script id="thumb-template" type="text/template">
 <% _.each( results, function( item, i ){ %>
 <li>
 <img src="https://s3.amazonaws.com/media-server<%= item.get('server_id') %>.snapr.us/thm2/<%= item.get('secret') %>/<%= item.get('id') %>.jpg" alt="<%= item.get('description') %>" class="thumb-image" />
@@ -48,7 +50,6 @@
 </li>
 <% }); %>
 </script>
-    </div>
 
 <script src="app/libs/json2.js" type="text/javascript" charset="utf-8"></script> <!-- just in case the browser sucks at JSON -->
 

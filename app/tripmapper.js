@@ -16,7 +16,7 @@ Backbone.sync = function(method, model, options) {
         'delete': 'POST',
         'read'  : 'GET'
     }
-    console.warn('sync',model,model.data)
+    // console.warn('sync',model,model.data)
     
     $.ajax({
         url: getUrl(model) + '?' + $.param(model.data),
@@ -32,6 +32,18 @@ Backbone.sync = function(method, model, options) {
     });
 };
 
+Number.prototype.zeroFill = function( width ){
+    width -= this.toString().length;
+    if ( width > 0 )
+    {
+        return new Array( width + (/\./.test( this ) ? 2 : 1) ).join( '0' ) + this;
+    }
+    return this.toString();
+}
+function date_to_snapr_format(d){
+    return d.getFullYear()+'-'+(d.getMonth()+1).zeroFill(2)+'-'+d.getDate().zeroFill(2)+' 00:00:00'
+}
+
 // defined in index.html
 // tripmapper = {};
 // tripmapper.models = {};
@@ -39,51 +51,29 @@ Backbone.sync = function(method, model, options) {
 
 tripmapper.routers = Backbone.Router.extend({
     routes:{
+        "feed/:query":"feed",
         "user/:query":"user",
         "popular":"popular",
-        "popular/:time":"popular",
+        "popular/:query":"popular",
         "*path":"home"
+    },
+    feed: function(query){
+        console.warn('go to feed', query);
+    },
+    user: function(query){
+        console.warn('go to user '+ query);
+    },
+    popular: function(query){
+        console.warn('go to popular');
+        var popular_view = new tripmapper.views.popular;
+        popular_view.update_list();
     },
     home: function(){
         console.warn('go home');
         if($.mobile.activePage && $.mobile.activePage.find("#menu").length < 1){
             $.mobile.changePage("#menu");
         }
-    },
-    user: function(query){
-        console.warn('go to user '+ query);
-    },
-    popular: function(time){
-        console.warn('go to popular');
-        // p is the collection which will contain the photos
-        p = new tripmapper.models.photo_collection();
-        p.url = "https://sna.pr/api/search/";
-        p.data = {
-            sort:"favorite_count",
-            n:20
-        }
-        if(time){
-            p.data.min_date = time;
-            $.mobile.loadingMessage = "Loading popular photos from " + time;
-            $.mobile.showPageLoadingMsg();
-        }else{
-            $.mobile.loadingMessage = "Loading popular photos";
-            $.mobile.showPageLoadingMsg();
-        }
-        p.fetch({
-            success:function(){
-                console.warn('success',p);
-                var popular_list = new tripmapper.views.thumbs_list({
-                    collection:p,
-                    el:$('#popular ul').eq(0)
-                });
-                popular_list.render();
-            },
-            error:function(){
-                console.warn('error');
-                $.mobile.hidePageLoadingMsg();
-            }
-        })
+        window.location.hash = "";
     }
     
 });
