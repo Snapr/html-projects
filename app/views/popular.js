@@ -4,8 +4,9 @@ tripmapper.views.popular = Backbone.View.extend({
         "change #popular-timeframe":"update_list"
     },
     initialize: function(){
+        $.mobile.changePage($("#popular"),{changeHash:false});
         this.photo_collection = new tripmapper.models.photo_collection();
-        this.photo_collection.url = "https://sna.pr/api/search/";
+        this.photo_collection.url = tripmapper.api_base + "/search/";
         this.photo_collection.data = {
             sort:"favorite_count",
             n:20
@@ -19,7 +20,7 @@ tripmapper.views.popular = Backbone.View.extend({
         console.log('popular',time);
         var options = {
             success:function(){
-                var popular_list = new tripmapper.views.thumbs_list({
+                var popular_list = new tripmapper.views.thumbs_li({
                     collection:_this.photo_collection,
                     el:$('#popular ul').eq(0)
                 });
