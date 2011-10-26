@@ -40,13 +40,35 @@
             </ul>
         </div>
     </div><!-- /page -->
+    <div id="feed" data-add-back-btn="true" data-role="page">
+        <div data-role="header">
+            <h1>Feed</h1>
+        </div>
+        <div data-role="conent">
+            <ul>
+            </ul>
+        </div>
+    </div>
 
-<script id="thumb-template" type="text/template">
+<script id="thumb-li-template" type="text/template">
 <% _.each( results, function( item, i ){ %>
 <li>
+<a data-ajax="false" href="#feed/?photo_id=<%= item.get('id') %>&username=<%= item.get('username').toLowerCase() %>">
 <img src="https://s3.amazonaws.com/media-server<%= item.get('server_id') %>.snapr.us/thm2/<%= item.get('secret') %>/<%= item.get('id') %>.jpg" alt="<%= item.get('description') %>" class="thumb-image" />
 <h3><%= item.get('description') %></h3>
 <p><%= item.get('username') %></p>
+</a>
+</li>
+<% }); %>
+</script>
+<script id="feed-li-template" type="text/template">
+<% _.each( results, function( item, i ){ %>
+<li>
+<div>
+<img src="https://s3.amazonaws.com/media-server<%= item.get('server_id') %>.snapr.us/thm2/<%= item.get('secret') %>/<%= item.get('id') %>.jpg" alt="<%= item.get('description') %>" class="thumb-image" />
+<h3><%= item.get('description') %></h3>
+<p><%= item.get('username') %></p>
+</div>
 </li>
 <% }); %>
 </script>
@@ -78,7 +100,9 @@
 </script>
 
 <script src="app/views/popular.js" type="text/javascript" charset="utf-8"></script>
-<script src="app/views/thumbs_list.js" type="text/javascript" charset="utf-8"></script>
+<script src="app/views/thumbs_li.js" type="text/javascript" charset="utf-8"></script>
+<script src="app/views/feed.js" type="text/javascript" charset="utf-8"></script>
+<script src="app/views/feed_li.js" type="text/javascript" charset="utf-8"></script>
 
 <script src="app/models/photo.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/models/photo_collection.js" type="text/javascript" charset="utf-8"></script>
