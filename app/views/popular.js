@@ -36,7 +36,7 @@ tripmapper.views.popular = Backbone.View.extend({
         switch(time){
             case 'time-today':
                 var today = new Date();
-                _this.photo_collection.data.min_date = date_to_snapr_format(today);
+                _this.photo_collection.data.min_date = tripmapper.utils.date_to_snapr_format(today);
                 _this.photo_collection.fetch(options);
                 break;
             case 'time-week':
