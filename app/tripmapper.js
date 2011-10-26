@@ -40,25 +40,43 @@ Number.prototype.zeroFill = function( width ){
     }
     return this.toString();
 }
-function date_to_snapr_format(d){
-    return d.getFullYear()+'-'+(d.getMonth()+1).zeroFill(2)+'-'+d.getDate().zeroFill(2)+' 00:00:00'
-}
 
 // defined in index.html
 // tripmapper = {};
 // tripmapper.models = {};
 // tripmapper.routers = {};
 
+tripmapper.api_base = "https://sna.pr/api";
+
+tripmapper.utils = {};
+tripmapper.utils.date_to_snapr_format = function(d){
+    return d.getFullYear()+'-'+(d.getMonth()+1).zeroFill(2)+'-'+d.getDate().zeroFill(2)+' 00:00:00'
+}
+tripmapper.utils.get_query_params = function(query){
+    var params = {};
+    _.each(query.split('&'),function(part){
+        var kv = part.split('=');
+        params[kv[0]] = unescape(kv[1]);
+    })
+    return params;
+}
+
+
+
 tripmapper.routers = Backbone.Router.extend({
     routes:{
-        "feed/:query":"feed",
+        "feed":"feed",
+        "feed/?:query":"feed",
         "user/:query":"user",
         "popular":"popular",
-        "popular/:query":"popular",
         "*path":"home"
     },
     feed: function(query){
-        console.warn('go to feed', query);
+        if(query){
+            console.warn('go to feed', query);
+        }
+        var feed_view = new tripmapper.views.feed(query);
+        feed_view.populate_feed();
     },
     user: function(query){
         console.warn('go to user '+ query);
