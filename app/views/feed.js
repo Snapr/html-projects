@@ -7,6 +7,7 @@ tripmapper.views.feed = Backbone.View.extend({
         this.photo_collection.url = tripmapper.api_base + "/search/";
         this.photo_collection.data = tripmapper.utils.get_query_params(query);
         this.photo_collection.data.n = 10;
+        this.populate_feed();
     },
     populate_feed: function(){
         var _this = this;
@@ -17,14 +18,20 @@ tripmapper.views.feed = Backbone.View.extend({
                     el:$('#feed ul').eq(0)
                 });
                 feed_list.render($.mobile.hidePageLoadingMsg);
+                // store the query against the feed element
+                _this.el.data('query',_this.photo_collection.data);
             },
             error:function(){
                 console.warn('error');
                 $.mobile.hidePageLoadingMsg();
             }
         }
-        $.mobile.loadingMessage = "Loading";
-        $.mobile.showPageLoadingMsg();
-        _this.photo_collection.fetch(options);
+        // only populate feed if the query has changed or is new
+        if(!_.isEqual(_this.el.data('query'), _this.photo_collection.data) ){
+            _this.el.find('ul').empty();
+            $.mobile.loadingMessage = "Loading";
+            $.mobile.showPageLoadingMsg();
+            _this.photo_collection.fetch(options);
+        }
     }
 })

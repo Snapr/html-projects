@@ -76,7 +76,6 @@ tripmapper.routers = Backbone.Router.extend({
             console.warn('go to feed', query);
         }
         var feed_view = new tripmapper.views.feed(query);
-        feed_view.populate_feed();
     },
     user: function(query){
         console.warn('go to user '+ query);
@@ -84,7 +83,6 @@ tripmapper.routers = Backbone.Router.extend({
     popular: function(query){
         console.warn('go to popular');
         var popular_view = new tripmapper.views.popular;
-        popular_view.update_list();
     },
     home: function(){
         console.warn('go home');
