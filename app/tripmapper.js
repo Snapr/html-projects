@@ -77,6 +77,7 @@ tripmapper.utils.get_query_params = function(query){
 tripmapper.routers = Backbone.Router.extend({
     routes:{
         "login":"login",
+        "logout":"logout",
         "feed":"feed",
         "feed/?:query":"feed",
         "user/:query":"user",
@@ -98,6 +99,7 @@ tripmapper.routers = Backbone.Router.extend({
     },
     home: function(){
         console.warn('go home');
+        var home_view = new tripmapper.views.home;
         if($.mobile.activePage && $.mobile.activePage.find("#menu").length < 1){
             $.mobile.changePage("#menu");
         }
@@ -106,8 +108,11 @@ tripmapper.routers = Backbone.Router.extend({
     login: function(){
         console.warn('go to login')
         var login_view = new tripmapper.views.login;
+    },
+    logout: function(){
+        tripmapper.auth = new tripmapper.models.auth;
+        window.location.hash = "";
     }
-    
 });
 
 Route = new tripmapper.routers;
