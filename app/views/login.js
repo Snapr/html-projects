@@ -4,16 +4,16 @@ tripmapper.views.login = Backbone.View.extend({
         "submit #login-dialog":"get_auth_token"
     },
     initialize: function(){
-        console.warn('init login')
+        // console.warn('init login')
         $.mobile.changePage($("#login"),{changeHash:false,transition:"slidedown"});
-        if(!tripmapper.auth || !tripmapper.auth.get("access_token")){
-            console.warn('no access_token')
+        if(!tripmapper.auth){
+            // console.warn('no auth')
             tripmapper.auth = new tripmapper.models.auth;
             tripmapper.auth.url = tripmapper.access_token_url;
         }
     },
     get_auth_token: function(){
-        console.warn('get_auth_token')
+        // console.warn('get_auth_token')
         var username = $("#login-dialog-username").val();
         var password = $("#login-dialog-password").val();
         if(tripmapper.auth){
@@ -25,13 +25,12 @@ tripmapper.views.login = Backbone.View.extend({
                     'password': password,
                     '_method':'POST'
             }
-            tripmapper.auth.bind('change:username',function(){
-                console.warn('reset username');
-            });
-            tripmapper.auth.bind('change:access_token',function(){
-                console.warn('reset access_token');
-            });
-
+            // tripmapper.auth.bind('change:username',function(){
+            //     console.warn('reset username');
+            // });
+            // tripmapper.auth.bind('change:access_token',function(){
+            //     console.warn('reset access_token');
+            // });
             var options = {
                 success: function(response){
                     if(tripmapper.auth.get("access_token")){
@@ -40,10 +39,12 @@ tripmapper.views.login = Backbone.View.extend({
                         $("#login-dialog-username").val('');
                         $("#login-dialog-password").val('');
                         tripmapper.auth.set({username:username});
-                        
+                        $.mobile.changePage("#",{changeHash:false,transition:"slidedown",reverse:true});
+                        Route.navigate('',true);
                     }else{
                         console.warn('response',response);
                         delete tripmapper.auth.data;
+                        alert(response.get("error_description") || "Sorry, we had trouble logging in. Please try again.");
                     }
                 },
                 error: function(error){
