@@ -19,7 +19,7 @@ tripmapper.views.feed = Backbone.View.extend({
                 });
                 feed_list.render($.mobile.hidePageLoadingMsg);
                 // store the query against the feed element
-                _this.el.data('query',_this.photo_collection.data);
+                _this.el.data('query',{data:_this.photo_collection.data,auth:tripmapper.auth});
             },
             error:function(){
                 console.warn('error');
@@ -27,7 +27,7 @@ tripmapper.views.feed = Backbone.View.extend({
             }
         }
         // only populate feed if the query has changed or is new
-        if(!_.isEqual(_this.el.data('query'), _this.photo_collection.data) ){
+        if(!_.isEqual(_this.el.data('query'), {data:_this.photo_collection.data,auth:tripmapper.auth}) ){
             _this.el.find('ul').empty();
             $.mobile.loadingMessage = "Loading";
             $.mobile.showPageLoadingMsg();

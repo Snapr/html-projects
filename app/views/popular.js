@@ -46,7 +46,7 @@ tripmapper.views.popular = Backbone.View.extend({
                     $.mobile.hidePageLoadingMsg();
                     // store the last query
                     console.warn('store the last query');
-                    $('#popular ul').eq(0).data('query',time);
+                    $('#popular ul').eq(0).data('query',{time:time,auth:tripmapper.auth});
                 });
             },
             error:function(){
@@ -56,7 +56,7 @@ tripmapper.views.popular = Backbone.View.extend({
         }
 
         // only update list if the query has changed or is new
-        if(!_.isEqual($('#popular ul').eq(0).data('query'), time) ){
+        if(!_.isEqual($('#popular ul').eq(0).data('query'), {time:time,auth:tripmapper.auth}) ){
             console.warn('loading');
             $.mobile.loadingMessage = "Loading popular photos";
             $.mobile.showPageLoadingMsg();
