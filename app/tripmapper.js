@@ -18,6 +18,10 @@ Backbone.sync = function(method, model, options) {
     }
     // console.warn('sync',model,model.data)
     
+    if(tripmapper.auth && tripmapper.auth.get('access_token')){
+        model.data.access_token = tripmapper.auth.get('access_token');
+    }
+    
     $.ajax({
         url: getUrl(model) + '?' + $.param(model.data),
         type: method_map[method]||'GET',
@@ -46,7 +50,14 @@ Number.prototype.zeroFill = function( width ){
 // tripmapper.models = {};
 // tripmapper.routers = {};
 
-tripmapper.api_base = "https://sna.pr/api";
+// copied from snapr app - need to change
+tripmapper.client_id = 'dbfedc9ed64f45644cbb13bcc3b422bb';
+tripmapper.client_secret = 'e89d8304723d7d8be19ebb6ab8ca0364';
+tripmapper.auth = undefined;
+
+tripmapper.base_url = "https://sna.pr";
+tripmapper.api_base = tripmapper.base_url + "/api";
+tripmapper.access_token_url = tripmapper.base_url + "/ext/oauth/access_token/";
 
 tripmapper.utils = {};
 tripmapper.utils.date_to_snapr_format = function(d){
@@ -65,6 +76,7 @@ tripmapper.utils.get_query_params = function(query){
 
 tripmapper.routers = Backbone.Router.extend({
     routes:{
+        "login":"login",
         "feed":"feed",
         "feed/?:query":"feed",
         "user/:query":"user",
@@ -90,6 +102,10 @@ tripmapper.routers = Backbone.Router.extend({
             $.mobile.changePage("#menu");
         }
         window.location.hash = "";
+    },
+    login: function(){
+        console.warn('go to login')
+        var login_view = new tripmapper.views.login;
     }
     
 });
