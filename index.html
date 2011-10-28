@@ -65,7 +65,7 @@
 <% _.each( results, function( item, i ){ %>
 <li>
 <div>
-<img src="https://s3.amazonaws.com/media-server<%= item.get('server_id') %>.snapr.us/thm2/<%= item.get('secret') %>/<%= item.get('id') %>.jpg" alt="<%= item.get('description') %>" class="thumb-image" />
+<img style="width:100%;" src="https://s3.amazonaws.com/media-server<%= item.get('server_id') %>.snapr.us/lrg/<%= item.get('secret') %>/<%= item.get('id') %>.jpg" alt="<%= item.get('description') %>" class="thumb-image" />
 <h3><%= item.get('description') %></h3>
 <p><%= item.get('username') %></p>
 </div>
