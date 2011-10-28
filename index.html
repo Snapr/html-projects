@@ -9,6 +9,9 @@
     <div id="menu" data-title="Welcome" data-role="page">
         <div data-role="header">
             <h1>TripMapper</h1>
+            <a href="#login" 
+            data-ajax="false"
+            class="ui-btn-right">Log In</a>
         </div><!-- /header -->
 
         <div data-role="content">
@@ -49,6 +52,20 @@
             </ul>
         </div>
     </div>
+    <div id="login" data-add-back-btn="true" data-role="dialog">
+        <div data-role="header">
+            <h1>Log in</h1>
+        </div>
+        <div data-role="content">
+            <form action="javascript: void(0);" accept-charset="utf-8" id="login-dialog">
+                <fieldset>
+                    <label for="username">Username</label><input type="text" name="username" placeholder="  " id="login-dialog-username">
+                    <label for="password">Password</label><input type="password" name="password" placeholder="  " id="login-dialog-password">
+                    <input type="submit" name="login" value="Log In">
+                </fieldset>
+            </form>
+        </div>
+    </div>
 
 <script id="thumb-li-template" type="text/template">
 <% _.each( results, function( item, i ){ %>
@@ -61,6 +78,7 @@
 </li>
 <% }); %>
 </script>
+
 <script id="feed-li-template" type="text/template">
 <% _.each( results, function( item, i ){ %>
 <li>
@@ -108,11 +126,13 @@
     tripmapper.views = {};
 </script>
 
+<script src="app/views/login.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/popular.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/thumbs_li.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/feed.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/feed_li.js" type="text/javascript" charset="utf-8"></script>
 
+<script src="app/models/auth.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/models/photo.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/models/photo_collection.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/models/thumb.js" type="text/javascript" charset="utf-8"></script>
