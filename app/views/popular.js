@@ -6,7 +6,7 @@ tripmapper.views.popular = Backbone.View.extend({
     initialize: function(){
         console.warn('init pop')
         $.mobile.changePage($("#popular"),{changeHash:false});
-        this.photo_collection = new tripmapper.models.photo_collection();
+        this.photo_collection = new tripmapper.models.photo_collection;
         this.photo_collection.url = tripmapper.api_base + "/search/";
         this.photo_collection.data = {
             sort:"favorite_count",
