@@ -88,6 +88,8 @@ tripmapper.routers = Backbone.Router.extend({
         "feed":"feed",
         "feed/?:query":"feed",
         "user/:query":"user",
+        "map":"map",
+        "map/?:query":"map",
         "popular":"popular",
         "*path":"home"
     },
@@ -119,6 +121,10 @@ tripmapper.routers = Backbone.Router.extend({
     logout: function(){
         tripmapper.auth = new tripmapper.models.auth;
         window.location.hash = "";
+    },
+    map: function(query){
+        console.warn("mapp");
+        var map = new tripmapper.views.map(query);
     }
 });
 
