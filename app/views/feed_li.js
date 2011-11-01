@@ -5,7 +5,7 @@ tripmapper.views.feed_li = Backbone.View.extend({
     render: function(callback){
         var el = this.el.empty();
         var compiled_template = _.template( $("#feed-li-template").html() );
-        el.html( compiled_template( { results: this.collection.models } ) ).listview().listview("refresh");
+        el.html( compiled_template( { results: this.collection.models } ) ).trigger("create").listview().listview("refresh");
         if(callback){
             callback();
         }
