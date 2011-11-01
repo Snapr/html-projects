@@ -1,17 +1,29 @@
 tripmapper.views.home = Backbone.View.extend({
     el:$('#menu'),
     initialize:function(){
-        if(!tripmapper.auth || !tripmapper.auth.get("access_token")){
-            console.warn('no access_token')
-            tripmapper.auth = new tripmapper.models.auth;
-            tripmapper.auth.url = tripmapper.access_token_url;
-        }
         var login_logout = new tripmapper.views.login_logout({model: tripmapper.auth});
         login_logout.render();
-        tripmapper.auth.bind("change",function(){
+        var _this = this;
+        tripmapper.auth.bind("change:username",function(){
             login_logout.model = tripmapper.auth;
             login_logout.render();
+            _this.render();
         });
+        if($.mobile.activePage && $.mobile.activePage.find("#menu").length < 1){
+            console.warn('changing page');
+            $.mobile.changePage("#menu");
+        }
+        window.location.hash = "";
+        this.render();
+    },
+    render:function(){
+        if(tripmapper.auth.get("access_token")){
+            this.el.find('a.my-snaps .ui-btn-text').text('My Snaps');
+            this.el.find('a.my-snaps').attr('href',"#feed/?username="+tripmapper.auth.get("username").toLowerCase());
+        }else{
+            this.el.find('a.my-snaps .ui-btn-text').text('Latest Photos');
+            this.el.find('a.my-snaps').attr('href',"#feed");
+        }
     }
 });
 

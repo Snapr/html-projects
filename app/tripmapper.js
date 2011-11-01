@@ -53,11 +53,16 @@ Number.prototype.zeroFill = function( width ){
 // copied from snapr app - need to change
 tripmapper.client_id = 'dbfedc9ed64f45644cbb13bcc3b422bb';
 tripmapper.client_secret = 'e89d8304723d7d8be19ebb6ab8ca0364';
-tripmapper.auth = undefined;
+// tripmapper.auth = undefined;
 
 tripmapper.base_url = "https://sna.pr";
 tripmapper.api_base = tripmapper.base_url + "/api";
 tripmapper.access_token_url = tripmapper.base_url + "/ext/oauth/access_token/";
+
+if(!tripmapper.auth){
+    tripmapper.auth = new tripmapper.models.auth;
+    tripmapper.auth.url = tripmapper.access_token_url;
+}
 
 tripmapper.utils = {};
 tripmapper.utils.date_to_snapr_format = function(d){
@@ -65,10 +70,12 @@ tripmapper.utils.date_to_snapr_format = function(d){
 }
 tripmapper.utils.get_query_params = function(query){
     var params = {};
-    _.each(query.split('&'),function(part){
-        var kv = part.split('=');
-        params[kv[0]] = unescape(kv[1]);
-    })
+    if(query && query.indexOf('=') > -1){
+        _.each(query.split('&'),function(part){
+            var kv = part.split('=');
+            params[kv[0]] = unescape(kv[1]);
+        });
+    }
     return params;
 }
 
