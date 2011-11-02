@@ -128,6 +128,8 @@ tripmapper.routers = Backbone.Router.extend({
     }
 });
 
-Route = new tripmapper.routers;
-
-Backbone.history.start();
+$(function(){
+    // initialise router and start backbone
+    Route = new tripmapper.routers;
+    Backbone.history.start();
+}())
