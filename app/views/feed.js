@@ -2,6 +2,17 @@ tripmapper.views.feed = Backbone.View.extend({
     el:$("#feed"),
     initialize: function(query){
         console.warn('initialize feed view')
+        _this = this;
+        _this.el
+            .live('pagehide', function(e){
+                var photoSwipeInstance = Code.PhotoSwipe.getInstance(_this.el.attr('id'));
+
+                if (typeof photoSwipeInstance != "undefined" && photoSwipeInstance != null) {
+                    Code.PhotoSwipe.detatch(photoSwipeInstance);
+                }
+                return true; 
+            });
+        
         $.mobile.changePage($("#feed"),{changeHash:false,transition:"slide"});
         this.photo_collection = new tripmapper.models.photo_collection();
         this.photo_collection.url = tripmapper.api_base + "/search/";
@@ -17,7 +28,10 @@ tripmapper.views.feed = Backbone.View.extend({
                     collection:_this.photo_collection,
                     el:$('#feed ul').eq(0)
                 });
-                feed_list.render($.mobile.hidePageLoadingMsg);
+                feed_list.render(function(){
+                    var photoSwipeInstance = $("ul.gallery a.gallery_link", _this.el).photoSwipe({},  _this.el.attr('id'));
+                    $.mobile.hidePageLoadingMsg();
+                });
                 // store the query against the feed element
                 _this.el.data('query',{data:_this.photo_collection.data,auth:tripmapper.auth});
             },
