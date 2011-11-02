@@ -91,6 +91,7 @@ tripmapper.routers = Backbone.Router.extend({
         "map":"map",
         "map/?:query":"map",
         "popular":"popular",
+        "&ui-state=dialog":"dialog",
         "*path":"home"
     },
     feed: function(query){
@@ -102,17 +103,13 @@ tripmapper.routers = Backbone.Router.extend({
     user: function(query){
         console.warn('go to user '+ query);
     },
-    popular: function(query){
+    popular: function(){
         console.warn('go to popular');
         var popular_view = new tripmapper.views.popular;
     },
     home: function(){
         console.warn('go home');
         var home_view = new tripmapper.views.home;
-        if($.mobile.activePage && $.mobile.activePage.find("#menu").length < 1){
-            $.mobile.changePage("#menu");
-        }
-        window.location.hash = "";
     },
     login: function(){
         console.warn('go to login')
@@ -125,6 +122,9 @@ tripmapper.routers = Backbone.Router.extend({
     map: function(query){
         console.warn("mapp");
         var map = new tripmapper.views.map(query);
+    },
+    dialog: function(){
+        console.warn("dialog showing - do nothing");
     }
 });
 
