@@ -1,0 +1,13 @@
+#popular .ui-content{
+    padding: 3px;
+}
+#popular #popular-timeframe{
+    padding-left: 12px;
+}
+ul.popular-list {
+    padding:0;
+}
+ul.popular-list li {
+    list-style:none;
+    display:inline-block;
+}
