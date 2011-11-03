@@ -91,7 +91,6 @@ tripmapper.routers = Backbone.Router.extend({
         "map":"map",
         "map/?:query":"map",
         "popular":"popular",
-        "&ui-state=dialog":"dialog",
         "*path":"home"
     },
     feed: function(query){
@@ -122,9 +121,6 @@ tripmapper.routers = Backbone.Router.extend({
     map: function(query){
         console.warn("mapp");
         var map = new tripmapper.views.map(query);
-    },
-    dialog: function(){
-        console.warn("dialog showing - do nothing");
     }
 });
 
