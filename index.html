@@ -60,9 +60,9 @@
             <ul class="gallery">
             </ul>
         </div>
-        <div data-role="footer">
+        <!-- <div data-role="footer"> -->
             <button class="more ui-btn-right">More</button>
-        </div>
+        <!-- </div> -->
     </div><!-- /page -->
     <div id="login" data-add-back-btn="true" data-role="dialog">
         <div data-role="header">
@@ -73,9 +73,24 @@
                 <fieldset>
                     <label for="username">Username</label><input type="text" name="username" placeholder="  " autocapitalize="off" id="login-dialog-username">
                     <label for="password">Password</label><input type="password" name="password" placeholder="  " id="login-dialog-password">
-                    <input type="submit" name="login" value="Log In">
+                    <input type="submit" name="login" data-theme="b" value="Log In">
                 </fieldset>
             </form>
+            
+            
+            <!-- <p>Log in with:</p>
+            <div data-role="navbar">
+                <ul>
+                    <li><a href="#" data-role="button" data-theme="c">Twitter</a></li>
+                    <li><a href="#" data-role="button" data-theme="c">Facebook</a></li>
+                </ul>
+            </div> -->
+            
+            
+            <ul data-role="listview" data-theme="c" data-inset="true">
+                <li><a href="#">Join Snapr</a></li>
+                <li><a href="#">Forgot your username or password?</a></li>
+            </ul>
         </div>
     </div><!-- /page -->
     <div id="map" data-role="page">
@@ -93,7 +108,7 @@
 <script id="thumb-li-template" type="text/template">
 <% _.each( results, function( item, i ){ %>
 <li>
-<a data-ajax="false" href="#feed/?photo_id=<%= item.get('id') %>&username=<%= item.get('username').toLowerCase() %>">
+<a data-ajax="false" href="#feed/?photo_id=<%= item.get('id') %>&username=<%= item.get('username') %>">
 <img src="https://s3.amazonaws.com/media-server<%= item.get('server_id') %>.snapr.us/thm2/<%= item.get('secret') %>/<%= item.get('id') %>.jpg" alt="<%= item.get('description') %>" class="thumb-image" />
 <h3><%= item.get('description') %></h3>
 <p><%= item.get('username') %></p>
@@ -107,9 +122,9 @@
 <li>
 <div>
 
-<a data-ajax="false" data-transition="slide" href="#feed/?username=<%= item.get('username').toLowerCase() %>"><img src="http://sna.pr/avatars/<%= item.get('username').toLowerCase() %>/" alt="<%= item.get('username') %>" /></a>
+<a data-ajax="false" data-transition="slide" href="#feed/?username=<%= item.get('username') %>"><img src="http://sna.pr/avatars/<%= item.get('username') %>/" alt="<%= item.get('username') %>" /></a>
 <div>
-    <h3><a data-ajax="false" data-transition="slide" href="#feed/?username=<%= item.get('username').toLowerCase() %>"><%= item.get('username') %></a></h3>
+    <h3><a data-ajax="false" data-transition="slide" href="#feed/?username=<%= item.get('username') %>"><%= item.get('username') %></a></h3>
     <p><%= item.get('location').location %> <%= item.get('date') %></p>
 </div>
 
