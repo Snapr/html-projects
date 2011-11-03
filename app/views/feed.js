@@ -4,7 +4,33 @@ tripmapper.views.feed = Backbone.View.extend({
         "click button.more":"more"
     },
     initialize: function(query){
-        console.warn('initialize feed view')
+        console.warn('initialize feed view',query);
+        var query_data = tripmapper.utils.get_query_params(query);
+        
+        this.el.find('h1').text("Feed");
+        
+        if (query_data.username) {
+            this.el.find('h1').text(query_data.username);
+        }
+        if (query_data.keywords) {
+            this.el.find('h1').text("Search for: " + query_data.keywords);
+        }
+        if (query_data.area) {
+            this.el.find('h1').text("Location Feed");
+        }
+        if (query_data.spot) {
+            this.el.find('h1').text("Venue Feed");
+        }
+        if(query_data.favorited_by){
+            this.el.find('h1').text("Favorites");
+        }
+        if(query_data.group == 'following'){
+            this.el.find('h1').text("Feed");
+        }
+        if(_.isEqual(query_data, {})){
+            this.el.find('h1').text("Latest Photos");
+        }
+        
         _this = this;
         _this.el
             .live('pagehide', function(e){
@@ -19,7 +45,7 @@ tripmapper.views.feed = Backbone.View.extend({
         $.mobile.changePage($("#feed"),{changeHash:false,transition:"slide"});
         this.photo_collection = new tripmapper.models.photo_collection();
         this.photo_collection.url = tripmapper.api_base + "/search/";
-        this.photo_collection.data = tripmapper.utils.get_query_params(query);
+        this.photo_collection.data = query_data;
         this.photo_collection.data.n = 10;
         this.populate_feed();
     },
