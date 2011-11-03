@@ -42,6 +42,8 @@ tripmapper.views.feed = Backbone.View.extend({
                 return true; 
             });
         
+        _this.el.find('ul').empty();
+        
         $.mobile.changePage($("#feed"),{changeHash:false,transition:"slide"});
         this.photo_collection = new tripmapper.models.photo_collection();
         this.photo_collection.url = tripmapper.api_base + "/search/";
