@@ -29,7 +29,8 @@ tripmapper.views.feed = Backbone.View.extend({
                     el:$('#feed ul').eq(0)
                 });
                 feed_list.render(function(){
-                    var photoSwipeInstance = $("ul.gallery a.gallery_link", _this.el).photoSwipe({},  _this.el.attr('id'));
+                    // make sure we set the param backButtonHideEnabled:false to prevent photoswipe from changing the hash
+                    var photoSwipeInstance = $("ul.gallery a.gallery_link", _this.el).photoSwipe({backButtonHideEnabled:false},  _this.el.attr('id'));
                     $.mobile.hidePageLoadingMsg();
                 });
                 // store the query against the feed element
