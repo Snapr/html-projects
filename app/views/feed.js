@@ -55,10 +55,11 @@ tripmapper.views.feed = Backbone.View.extend({
         var _this = this;
         var options = {
             success:function(){
-                var feed_list = new tripmapper.views.feed_li({
-                    collection:_this.photo_collection,
-                    el:$('#feed ul').eq(0)
+                var feed_list = new tripmapper.views.feed_list({
+                    collection:_this.photo_collection
                 });
+                console.warn('feed_list',feed_list);
+                // feed_list.render();
                 feed_list.render(function(){
                     // detach the previous photoswipe instance if it exists
                     var photoSwipeInstance = Code.PhotoSwipe.getInstance(_this.el.attr('id'));
