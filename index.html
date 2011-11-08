@@ -111,16 +111,13 @@
 <li>
 <a data-ajax="false" href="#feed/?photo_id=<%= item.get('id') %>&username=<%= item.get('username') %>">
 <img src="https://s3.amazonaws.com/media-server<%= item.get('server_id') %>.snapr.us/thm/<%= item.get('secret') %>/<%= item.get('id') %>.jpg" alt="<%= item.get('description') %>" class="thumb-image" />
-<!--<h3><%= item.get('description') %></h3>
-<p><%= item.get('username') %></p>-->
 </a>
 </li>
 <% }); %>
 </script>
 
 <script id="feed-li-template" type="text/template">
-<% _.each( results, function( item, i ){ %>
-<li>
+<li class="feed-li">
 <div>
 
 <a data-ajax="false" data-transition="slide" href="#feed/?username=<%= item.get('username') %>"><img src="http://sna.pr/avatars/<%= item.get('username') %>/" alt="<%= item.get('username') %>" /></a>
@@ -131,19 +128,33 @@
 
 <a href="https://s3.amazonaws.com/media-server<%= item.get('server_id') %>.snapr.us/lrg/<%= item.get('secret') %>/<%= item.get('id') %>.jpg" rel="external" class="gallery_link"><img style="width:100%;" src="https://s3.amazonaws.com/media-server<%= item.get('server_id') %>.snapr.us/lrg/<%= item.get('secret') %>/<%= item.get('id') %>.jpg" alt="<%= item.get('description') %>" class="thumb-image" /></a>
 <h3><%= item.get('description') %></h3>
+<div data-role="button" data-icon="star" data-inline="true" data-iconpos="notext" <% if(item.get('favorite')){ %> data-theme="e" <% }%>></div>
 <% if (parseInt(item.get('comments')) + parseInt(item.get('favorite_count')) > 0){ %>
-<div data-role="collapsible" data-collapsed="true">
+<div data-role="collapsible" data-collapsed="true" class="reactions-button">
     <h3><%= item.get('comments') %> comments and <%= item.get('favorite_count') %> favorites</h3>
-    <ul>
+    <ul data-inset="true">
     </ul>
 </div>
 <%}%>
-<div class="ui-grid-a">
-    <div class="ui-block-a"><div data-role="button">Like</div></div>
-    <div class="ui-block-b"><div data-role="button">Comment</div></div>
+<div data-role="collapsible" data-collapsed="true">
+    <h4>Comment</h4>
+    <div>
+        <form accept-charset="utf-8">
+            <textarea name="comment-<%= item.get('id') %>" placeholder="Comment" />
+            <input type="submit" value="Submit" />
+        </form>
+    </div>
 </div>
+
 </li>
-<% }); %>
+</script>
+
+<script id="reaction-li-template" type="text/template">
+<% if(reaction.get('type') == 'comment'){ %>
+    <li><a data-ajax="false" href="#feed/?username=<%= reaction.get('username') %>"><img class="ui-li-icon" src="http://sna.pr/avatars/<%= reaction.get('username') %>" width="16px" height="16px" /><%= reaction.get('username') %>: <%= reaction.get('comment') %></a></li>
+<% }else{ %>
+    <li><a data-ajax="false" href="#feed/?username=<%= reaction.get('username') %>"><img class="ui-li-icon" src="http://sna.pr/avatars/<%= reaction.get('username') %>" width="16px" height="16px" /><%= reaction.get('username') %> likes this.</a></li>
+<% } %>
 </script>
 
 <script src="app/libs/json2.js" type="text/javascript" charset="utf-8"></script> <!-- just in case the browser sucks at JSON -->
@@ -184,6 +195,9 @@
     tripmapper = {};
     tripmapper.models = {};
     tripmapper.views = {};
+    tripmapper.base_url = "https://sna.pr";
+    tripmapper.api_base = tripmapper.base_url + "/api";
+    tripmapper.access_token_url = tripmapper.base_url + "/ext/oauth/access_token/";
 </script>
 
 <script src="app/views/home.js" type="text/javascript" charset="utf-8"></script>
@@ -192,7 +206,9 @@
 <script src="app/views/popular.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/thumbs_li.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/feed.js" type="text/javascript" charset="utf-8"></script>
+<script src="app/views/feed_list.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/feed_li.js" type="text/javascript" charset="utf-8"></script>
+<script src="app/views/reactions.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/map.js" type="text/javascript" charset="utf-8"></script>
 
 <script src="app/models/auth.js" type="text/javascript" charset="utf-8"></script>
@@ -201,7 +217,8 @@
 <script src="app/models/photo_collection.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/models/thumb.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/models/thumb_collection.js" type="text/javascript" charset="utf-8"></script>
-
+<script src="app/models/reaction_collection.js" type="text/javascript" charset="utf-8"></script>
+<script src="app/models/reaction.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/tripmapper.js" type="text/javascript" charset="utf-8"></script>
 
 </body>

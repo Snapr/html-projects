@@ -49,15 +49,15 @@ Number.prototype.zeroFill = function( width ){
 // tripmapper = {};
 // tripmapper.models = {};
 // tripmapper.routers = {};
+// tripmapper.base_url = "https://sna.pr";
+// tripmapper.api_base = tripmapper.base_url + "/api";
+// tripmapper.access_token_url = tripmapper.base_url + "/ext/oauth/access_token/";
+
 
 // copied from snapr app - need to change
 tripmapper.client_id = 'dbfedc9ed64f45644cbb13bcc3b422bb';
 tripmapper.client_secret = 'e89d8304723d7d8be19ebb6ab8ca0364';
 // tripmapper.auth = undefined;
-
-tripmapper.base_url = "https://sna.pr";
-tripmapper.api_base = tripmapper.base_url + "/api";
-tripmapper.access_token_url = tripmapper.base_url + "/ext/oauth/access_token/";
 
 if(!tripmapper.auth){
     tripmapper.auth = new tripmapper.models.auth;
