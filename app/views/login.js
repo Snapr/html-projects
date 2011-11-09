@@ -39,8 +39,11 @@ tripmapper.views.login = Backbone.View.extend({
                         $("#login-dialog-username").val('');
                         $("#login-dialog-password").val('');
                         tripmapper.auth.set({username:username});
-                        $.mobile.changePage("#",{changeHash:false,transition:"slidedown",reverse:true});
-                        Route.navigate('',true);
+                        if(window.location.hash == "#login"){
+                            window.history.back();
+                        }else{
+                            Route.navigate(window.location.hash,true);
+                        }
                     }else{
                         console.warn('response',response);
                         delete tripmapper.auth.data;
