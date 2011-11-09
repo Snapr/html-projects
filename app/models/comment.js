@@ -15,7 +15,5 @@ tripmapper.models.comment = Backbone.Model.extend({
         }else{
             return this.urlRoot;
         }
-
-    },
-
+    }
 });
