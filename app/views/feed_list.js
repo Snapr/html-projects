@@ -7,7 +7,8 @@ tripmapper.views.feed_list = Backbone.View.extend({
         var el = this.el.empty();
         _.each(this.collection.models,function(item){
             var li = new tripmapper.views.feed_li({model:item});
-            li.model.bind('change:comments',function(){li.update_counts()});
+            li.model.bind('change:comments',function(){li.update_counts();});
+            li.model.bind('change:favorite',function(){li.update_fav();li.update_counts();})
             el.append(li.render().el);
         });
         // create jquery mobile markup, set to listview and refresh
