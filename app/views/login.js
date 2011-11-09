@@ -58,55 +58,5 @@ tripmapper.views.login = Backbone.View.extend({
         }else{
             console.warn('no auth')
         }
-        
-        
-        function login(username, password, callback){
-
-            $('#snapr-loginform').addClass('loading');
-            $.ajax({
-                url: access_token_url,
-                type: 'POST',
-                dataType: 'jsonp',
-                data:{
-                        'grant_type':'password',
-                        'client_id':client_id,
-                        'client_secret':client_secret,
-                        'username': username,
-                        'password': password
-                }
-            }).done(function(response){
-                $('#snapr-loginform').removeClass('loading');
-                if(response.error){
-                    if(response.error_description == "The provided access grant is invalid. (username and password invalid)."){
-                        notification("Sorry, we don't recognise your username and password");  
-                    }else{
-                        notification(response.error_description);
-                    }
-
-                }else{
-                    snapr_user = username;
-                    access_token = response.access_token;
-                    $body.addClass('loggedin');
-                    update_mysnaps_link();
-                    store_user_credentials();
-
-                    // send data to iphone app
-                    if(appmode){
-                        pass_data('snapr://login?snapr_user='+username+'&access_token='+access_token);
-                    }
-                    if($.isFunction(callback)){
-                        callback();
-                    }else{
-                        close_overlay();
-                        //refresh()
-                        update_menu_activity_message();
-                        window.location.hash = add_extra_params(window.location.hash);
-                    }
-                }
-            });
-        }
-        
-        
-        
     }
 });
