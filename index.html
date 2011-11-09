@@ -128,7 +128,7 @@
 
 <a href="https://s3.amazonaws.com/media-server<%= item.get('server_id') %>.snapr.us/lrg/<%= item.get('secret') %>/<%= item.get('id') %>.jpg" rel="external" class="gallery_link"><img style="width:100%;" src="https://s3.amazonaws.com/media-server<%= item.get('server_id') %>.snapr.us/lrg/<%= item.get('secret') %>/<%= item.get('id') %>.jpg" alt="<%= item.get('description') %>" class="thumb-image" /></a>
 <h3><%= item.get('description') %></h3>
-<div data-role="button" data-icon="star" data-inline="true" data-iconpos="notext" class="like-button" <% if(item.get('favorite')){ %> data-theme="e" <% }%>></div>
+<div data-role="button" data-icon="star" data-inline="true" data-iconpos="notext" class="favorite-button" <% if(item.get('favorite')){ %> data-theme="e" <% }%>></div>
 <% if (parseInt(item.get('comments')) + parseInt(item.get('favorite_count')) > 0){ %>
 <div data-role="collapsible" data-collapsed="true" class="reactions-button">
     <h3><%= item.get('comments') %> comments and <%= item.get('favorite_count') %> favorites</h3>
@@ -222,6 +222,7 @@
 <script src="app/models/photo.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/models/photo_collection.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/models/comment.js" type="text/javascript" charset="utf-8"></script>
+<script src="app/models/favorite.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/models/thumb.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/models/thumb_collection.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/models/reaction_collection.js" type="text/javascript" charset="utf-8"></script>
