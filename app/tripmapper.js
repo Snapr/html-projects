@@ -21,6 +21,8 @@ Backbone.sync = function(method, model, options) {
     }
     
     if(tripmapper.auth && tripmapper.auth.get('access_token')){
+        // if there is no .data attribute on the model set it from the model's id
+        model.data = model.data || {id:model.get('id')};
         model.data.access_token = tripmapper.auth.get('access_token');
     }
     
@@ -85,6 +87,19 @@ tripmapper.utils.get_query_params = function(query){
     }
     return params;
 }
+tripmapper.utils.require_login = function(funct){
+    return function(e){
+        if(!tripmapper.auth.get('access_token')){
+            if(e){
+                e.preventDefault();
+            }
+            Route.navigate('#login',true)
+        }else{
+            $.proxy(funct, this)(e);
+        }
+    };
+}
+
 
 tripmapper.routers = Backbone.Router.extend({
     routes:{
