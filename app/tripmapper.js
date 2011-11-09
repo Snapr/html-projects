@@ -1,34 +1,41 @@
 // Backbone.emulateHTTP = true;
 // Overriding sync to make this a jsonp app
 Backbone.sync = function(method, model, options) {
-    // console.warn('Backbone.sync override',method, model, options.success, options.error);
+
     // Helper function to get a URL from a Model or Collection as a property
     // or as a function.
-    var getUrl = function(object) {
-      if (!(object && object.url)) return null;
-      return _.isFunction(object.url) ? object.url() : object.url;
+
+    // sends the method as a parameter so that different methods can have
+    // different urls.
+    var getUrl = function(object,method) {
+        if (!(object && object.url)) return null;
+        return _.isFunction(object.url) ? object.url(method) : object.url;
     };
     
-    // map RESTful methods to our API    
+    // map RESTful methods to our API
     var method_map = {
         'create': 'POST',
         'update': 'POST',
         'delete': 'POST',
         'read'  : 'GET'
     }
-    // console.warn('sync',model,model.data)
     
     if(tripmapper.auth && tripmapper.auth.get('access_token')){
         model.data.access_token = tripmapper.auth.get('access_token');
     }
     
+    // our hack to get jsonp to emulate http methods by appending them to the querystring
+    if(method_map[method] !='GET'){
+        meth = '&_method=' + method_map[method]
+    }else{
+        meth = '';
+    }
+    
     $.ajax({
-        url: getUrl(model) + '?' + $.param(model.data),
-        type: method_map[method]||'GET',
-        // jsonp is read-only
-        //contentType: 'application/json',
+        url: getUrl(model,method) + '?' + $.param(model.data) + meth,
+        type:'GET',
+        // data is sent in the url only
         data: null,
-        // nothing to send
         dataType: 'jsonp',
         processData: false,
         success: options.success,
@@ -78,8 +85,6 @@ tripmapper.utils.get_query_params = function(query){
     }
     return params;
 }
-
-
 
 tripmapper.routers = Backbone.Router.extend({
     routes:{
