@@ -99,6 +99,14 @@ tripmapper.utils.require_login = function(funct){
         }
     };
 }
+tripmapper.utils.get_photo_height = function(orig_width, orig_height, element){
+    console.warn('get height', orig_width, orig_height, element, $(element).eq(0).innerWidth())
+    var aspect = orig_width/orig_height,
+        // this depends on the padding - bit of a hack
+        width = $(element).eq(0).innerWidth() - 45;
+    return width/aspect;
+};
+
 
 
 tripmapper.routers = Backbone.Router.extend({
