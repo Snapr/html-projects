@@ -95,7 +95,11 @@ tripmapper.views.feed_li = Backbone.View.extend({
         // change the button text for the reactions button
         this.el.find('.reactions-button h3 .ui-btn-text').text(this.model.get('comments') + ' comments and ' +  this.model.get('favorite_count') + ' favorites');
         // show the button if it was previously hidden and create the jquery mobile markup
-        this.el.find('.reactions-button').show().trigger('create');
+        if(parseInt(this.model.get('comments')) + parseInt(this.model.get('favorite_count')) > 0){
+            this.el.find('.reactions-button').show().trigger('create');
+        }else{
+            this.el.find('.reactions-button').hide();
+        }
     },
     comment: function(){
         var comment = this.el.find('.comment-form textarea').val();
