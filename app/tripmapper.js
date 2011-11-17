@@ -113,6 +113,7 @@ tripmapper.routers = Backbone.Router.extend({
     routes:{
         "login":"login",
         "logout":"logout",
+        "join":"join_snapr",
         "feed":"feed",
         "feed/?:query":"feed",
         "user/:query":"user",
@@ -145,6 +146,9 @@ tripmapper.routers = Backbone.Router.extend({
     logout: function(){
         tripmapper.auth = new tripmapper.models.auth;
         window.location.hash = "";
+    },
+    join_snapr: function(){
+        var join_snapr = new tripmapper.views.join_snapr;
     },
     map: function(query){
         console.warn("mapp");

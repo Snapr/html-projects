@@ -12,24 +12,48 @@
     <div id="menu" data-title="Welcome" data-role="page">
         <div data-role="header">
             <h1>TripMapper</h1>
-            <a href="#login" 
-            data-ajax="false"
-            class="ui-btn-right login-logout">Log In</a>
         </div><!-- /header -->
 
         <div data-role="content">
-            <div data-role="navbar">
-                <ul>
-                    <li><a href="#" data-role="button" data-theme="c">Snap Photo</a></li>
-                    <li><a href="#" data-role="button" data-theme="b">Dashboard</a></li>
-                </ul>
+            <div class="ui-grid-a">
+                <div class="ui-block-a">
+                    <a href="#" data-corners="false" data-shadow="false" data-role="button" data-theme="c">Snap Photo</a>
+                </div>
+                <div class="ui-block-b">
+                    <a href="#" data-corners="false" data-shadow="false" data-role="button" data-theme="b">Dashboard</a>
+                </div>
             </div>
-            <div data-role="navbar">
-                <ul>
-                    <li><a href="#popular" data-theme="e" data-ajax="false">Popular</a></li>
-                    <li><a href="#" data-role="button" data-theme="c" class="my-snaps" data-ajax="false">Latest Photos</a></li>
-                    <li><a href="#map" data-role="button" data-theme="c" data-ajax="false">Map</a></li>
-                </ul>
+
+            <div class="ui-grid-a">
+                <div class="ui-block-a">
+                    <a href="#popular" data-corners="false" data-shadow="false" data-role="button" data-theme="e" data-ajax="false">Popular</a>
+                </div>
+                <div class="ui-block-b">
+                    <a href="#" data-corners="false" data-shadow="false" data-role="button" data-theme="c" class="my-snaps" data-ajax="false">Latest</a>
+                </div>
+            </div>
+
+            <div class="ui-grid-a">
+                <div class="ui-block-a">
+                    <a href="#map" data-corners="false" data-shadow="false" data-role="button" data-theme="c" data-ajax="false">Map</a>
+                </div>
+                <div class="ui-block-b">
+                    <a href="#" data-corners="false" data-shadow="false" data-role="button" data-theme="c" data-ajax="false">Cities</a>
+                </div>
+            </div>
+
+            <div class="ui-grid-a">
+                <div class="ui-block-a">
+                    <a href="#login" 
+                    data-ajax="false" data-corners="false" data-shadow="false" data-role="button"
+                    class="login-logout">Log In</a>
+                </div>
+                <div class="ui-block-b">
+                    <a href="#join" 
+                    data-ajax="false" data-corners="false" data-shadow="false" data-role="button"
+                    class="join-account">Join</a>
+                </div>
+
             </div>
         </div><!-- /content -->
 
@@ -90,9 +114,36 @@
             
             
             <ul data-role="listview" data-theme="c" data-inset="true">
-                <li><a href="#">Join Snapr</a></li>
-                <li><a href="#">Forgot your username or password?</a></li>
+                <li><a href="#join" data-ajax="false">Join Snapr</a></li>
+                <!-- <li><a href="#">Forgot your username or password?</a></li> -->
             </ul>
+        </div>
+    </div><!-- /page -->
+    <div id="join-snapr" data-add-back-btn="true" data-role="dialog">
+        <div data-role="header">
+            <h1>Join Snapr</h1>
+        </div>
+        <div data-role="content">
+            <form action="javascript: void(0);" accept-charset="utf-8" id="join-dialog">
+                <fieldset data-role="controlgroup">
+                    <label for="username">Username</label><input type="text" name="username" placeholder="  " autocapitalize="off" id="join-dialog-username">
+                    <label for="password">Password</label><input type="password" name="password" placeholder="  " id="join-dialog-password">
+                    <label for="email">Email</label><input type="email" name="email" placeholder="  " id="join-dialog-email">
+                    <!-- <label for="tos">I have read and agreed to the <a href="http://sna.pr/terms/" target="_blank" >Snapr Terms of Use</a></label><input type="checkbox" name="tos" placeholder="  " id="join-dialog-tos"> -->
+                </fieldset>
+                <fieldset data-role="controlgroup">
+                    <legend>I have read and agreed to the <a href="http://sna.pr/terms/" target="_blank" >Snapr Terms of Use</a></legend>
+                    <input type="checkbox" name="checkbox-1" id="checkbox-1" class="custom" />
+                    <label for="checkbox-1">I agree</label>
+                </fieldset>
+                <input disabled="true" type="submit" name="login" data-theme="b" value="Join">
+            </form>
+
+            <!-- <div data-role="fieldcontain"> -->
+            <!-- </div> -->
+        </div>
+        <div data-role="footer">
+            
         </div>
     </div><!-- /page -->
     <div id="map" data-role="page">
@@ -217,6 +268,8 @@
 <script src="app/views/feed_li.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/reactions.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/map.js" type="text/javascript" charset="utf-8"></script>
+<script src="app/views/join_snapr.js" type="text/javascript" charset="utf-8"></script>
+
 
 <script src="app/models/auth.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/models/user.js" type="text/javascript" charset="utf-8"></script>
