@@ -144,7 +144,12 @@ tripmapper.routers = Backbone.Router.extend({
         var login_view = new tripmapper.views.login;
     },
     logout: function(){
-        tripmapper.auth = new tripmapper.models.auth;
+        if(tripmapper.auth){
+           tripmapper.auth.unset('username');
+           tripmapper.auth.unset('access_token');
+        }else{
+            tripmapper.auth = new tripmapper.models.auth;
+        }
         window.location.hash = "";
     },
     join_snapr: function(){
