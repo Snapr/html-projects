@@ -14,7 +14,6 @@ tripmapper.views.login = Backbone.View.extend({
 
         var options = {
             success: function(response){
-                tripmapper.auth.save_locally();
                 $("#login-dialog-username").val('');
                 $("#login-dialog-password").val('');
                 if(window.location.hash == "#login"){

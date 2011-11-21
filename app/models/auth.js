@@ -17,6 +17,7 @@ tripmapper.models.auth = Backbone.Model.extend({
                 console.warn('response',response,_this)
                 if(_this.get("access_token")){
                     _this.set({username:username});
+                    _this.save_locally();
                     delete _this.data;
                     if(typeof options.success == 'function'){
                         console.warn('success == function');
