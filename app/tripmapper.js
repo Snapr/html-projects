@@ -66,12 +66,19 @@ Number.prototype.zeroFill = function( width ){
 // copied from snapr app - need to change
 tripmapper.client_id = 'dbfedc9ed64f45644cbb13bcc3b422bb';
 tripmapper.client_secret = 'e89d8304723d7d8be19ebb6ab8ca0364';
-// tripmapper.auth = undefined;
 
-if(!tripmapper.auth){
-    tripmapper.auth = new tripmapper.models.auth;
-    tripmapper.auth.url = tripmapper.access_token_url;
-}
+// store some info about the browser
+tripmapper.info = {}
+tripmapper.info.supports_local_storage = (function() {
+  try {
+    return 'localStorage' in window && window['localStorage'] !== null;
+  } catch (e) {
+    return false;
+  }
+})();
+
+tripmapper.auth = new tripmapper.models.auth;
+tripmapper.auth.get_locally();
 
 tripmapper.utils = {};
 tripmapper.utils.date_to_snapr_format = function(d){
@@ -145,8 +152,7 @@ tripmapper.routers = Backbone.Router.extend({
     },
     logout: function(){
         if(tripmapper.auth){
-           tripmapper.auth.unset('username');
-           tripmapper.auth.unset('access_token');
+           tripmapper.auth.logout();
         }else{
             tripmapper.auth = new tripmapper.models.auth;
         }

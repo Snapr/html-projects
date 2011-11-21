@@ -33,10 +33,33 @@ tripmapper.models.auth = Backbone.Model.extend({
             error: function(){
                 if(typeof options.error == 'function'){
                     console.warn('error == function');
-                    options.error();
+                    options.error(_this.get('error_description'));
                 }
             }
         }
         this.fetch(opt);
+    },
+    get_locally: function(){
+        if (tripmapper.info.supports_local_storage) {
+            var snapr_user = localStorage.getItem('snapr_user');
+            var access_token = localStorage.getItem('access_token');
+        } else {
+            var snapr_user = $.cookie('snapr_user');
+            var access_token = $.cookie('access_token');
+        }
+        if(snapr_user && access_token){
+            this.set({access_token:access_token,username:snapr_user});
+        }
+    },
+    logout:function(){
+        this.unset('username');
+        this.unset('access_token');
+        if (tripmapper.info.supports_local_storage) {
+            var snapr_user = localStorage.removeItem('snapr_user');
+            var access_token = localStorage.removeItem('access_token');
+        } else {
+            $.cookie('snapr_user', null);
+            $.cookie('access_token', null);
+        }
     }
 });
