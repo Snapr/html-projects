@@ -1,37 +1,39 @@
 tripmapper.views.home = Backbone.View.extend({
     initialize:function(){
-        if($.mobile.activePage && $.mobile.activePage.find("#menu").length < 1){
+        if($.mobile.activePage && $.mobile.activePage.find("#home").length < 1){
             console.warn('changing page');
-            $.mobile.changePage("#menu");
+            $.mobile.changePage("#home");
         }
-        this.el = $('#menu');
+        this.el = $('#home');
         window.location.hash = "";
         var _this = this;
-        tripmapper.auth.bind("change:username",function(){
-            console.warn('change:username')
+        tripmapper.auth.bind("set:username",function(){
+            console.warn('set:username')
             _this.render();
         });
+        tripmapper.auth.bind("unset:username",function(){
+            console.warn('unset:username')
+            _this.render();
+        });
+
         tripmapper.auth.change();
+        _this.render();
     },
+    template: _.template( $('#home-template').html() ),
     render:function(){
-        // this is kinda messy. need to move it to a template
-        if(tripmapper.auth.get("username")){
-            this.el.find('a.my-snaps .ui-btn-text').text('My Snaps');
-            this.el.find('a.my-snaps').attr('href',"#feed/?username="+tripmapper.auth.get("username").toLowerCase());
-            this.el.find('a.login-logout .ui-btn-text').text('Log Out');
-            this.el.find('a.login-logout').attr('href',"#logout");
-
-            this.el.find('a.join-account .ui-btn-text').text('My Account');
-            this.el.find('a.join-account').attr('href',"#account");
-
+        console.warn('render home')
+        if(tripmapper.auth && tripmapper.auth.attributes.username){
+            var logged_in = true,
+            username = tripmapper.auth.attributes.username;
+            
         }else{
-            this.el.find('a.my-snaps .ui-btn-text').text('Latest Photos');
-            this.el.find('a.my-snaps').attr('href',"#feed");
-            this.el.find('a.login-logout .ui-btn-text').text('Log In')
-            this.el.find('a.login-logout').attr('href',"#login");
-
-            this.el.find('a.join-account .ui-btn-text').text('Join')
-            this.el.find('a.join-account').attr('href',"#join");
+            var logged_in = false,
+            username = null;
         }
+        this.el.find('[data-role="content"]')
+            .replaceWith(
+            $(this.template({logged_in:logged_in,username:username}))
+            );
+        this.el.trigger('create');
     }
 });

@@ -9,52 +9,12 @@
         <link rel="stylesheet" href="css/tripmapper.css" type="text/css" charset="utf-8">
     </head> 
 <body> 
-    <div id="menu" data-title="Welcome" data-role="page">
+    <div id="home" data-title="Welcome" data-role="page">
         <div data-role="header">
             <h1>TripMapper</h1>
         </div><!-- /header -->
 
         <div data-role="content">
-            <div class="ui-grid-a">
-                <div class="ui-block-a">
-                    <a href="#" data-corners="false" data-shadow="false" data-role="button" data-theme="c">Snap Photo</a>
-                </div>
-                <div class="ui-block-b">
-                    <a href="#" data-corners="false" data-shadow="false" data-role="button" data-theme="b">Dashboard</a>
-                </div>
-            </div>
-
-            <div class="ui-grid-a">
-                <div class="ui-block-a">
-                    <a href="#popular" data-corners="false" data-shadow="false" data-role="button" data-theme="e" data-ajax="false">Popular</a>
-                </div>
-                <div class="ui-block-b">
-                    <a href="#" data-corners="false" data-shadow="false" data-role="button" data-theme="c" class="my-snaps" data-ajax="false">Latest</a>
-                </div>
-            </div>
-
-            <div class="ui-grid-a">
-                <div class="ui-block-a">
-                    <a href="#map" data-corners="false" data-shadow="false" data-role="button" data-theme="c" data-ajax="false">Map</a>
-                </div>
-                <div class="ui-block-b">
-                    <a href="#" data-corners="false" data-shadow="false" data-role="button" data-theme="c" data-ajax="false">Cities</a>
-                </div>
-            </div>
-
-            <div class="ui-grid-a">
-                <div class="ui-block-a">
-                    <a href="#login" 
-                    data-ajax="false" data-corners="false" data-shadow="false" data-role="button"
-                    class="login-logout">Log In</a>
-                </div>
-                <div class="ui-block-b">
-                    <a href="#join" 
-                    data-ajax="false" data-corners="false" data-shadow="false" data-role="button"
-                    class="join-account">Join</a>
-                </div>
-
-            </div>
         </div><!-- /content -->
 
     </div><!-- /page -->
@@ -156,6 +116,67 @@
             
         </div>
     </div><!-- /page -->
+
+<script id="home-template" type="text/template">
+    <div data-role="content">
+        <div class="ui-grid-a">
+            <div class="ui-block-a">
+                <a href="#" data-corners="false" data-shadow="false" data-role="button" data-theme="c">Snap Photo</a>
+            </div>
+            <div class="ui-block-b">
+                <a href="#" data-corners="false" data-shadow="false" data-role="button" data-theme="b">Dashboard</a>
+            </div>
+        </div>
+
+        <div class="ui-grid-a">
+            <div class="ui-block-a">
+                <a href="#popular" data-corners="false" data-shadow="false" data-role="button" data-theme="e" data-ajax="false">Popular</a>
+            </div>
+            <div class="ui-block-b">
+            <% if(logged_in) { %>
+                <a href="#feed/?username=<%=username%>" data-corners="false" data-shadow="false" data-role="button" data-theme="c" class="my-snaps" data-ajax="false">My Snaps</a>
+            <% }else{ %>
+                <a href="#" data-corners="false" data-shadow="false" data-role="button" data-theme="c" class="my-snaps" data-ajax="false">Latest</a>
+            <% } %>
+            </div>
+        </div>
+
+        <div class="ui-grid-a">
+            <div class="ui-block-a">
+                <a href="#map" data-corners="false" data-shadow="false" data-role="button" data-theme="c" data-ajax="false">Map</a>
+            </div>
+            <div class="ui-block-b">
+                <a href="#" data-corners="false" data-shadow="false" data-role="button" data-theme="c" data-ajax="false">Cities</a>
+            </div>
+        </div>
+
+        <div class="ui-grid-a">
+            <div class="ui-block-a">
+            <% if(logged_in) { %>
+                <a href="#logout" 
+                data-ajax="false" data-corners="false" data-shadow="false" 
+                data-role="button">Log Out</a>
+            <% }else{ %>
+                <a href="#login" 
+                data-ajax="false" data-corners="false" data-shadow="false" 
+                data-role="button">Log In</a>
+            <% } %>
+            </div>
+            <div class="ui-block-b">
+            <% if(logged_in) { %>
+                <a href="#my-account" 
+                data-ajax="false" data-corners="false" data-shadow="false" 
+                data-role="button">My Account</a>
+            <% }else{ %>
+                <a href="#join" 
+                data-ajax="false" data-corners="false" data-shadow="false" 
+                data-role="button">Join</a>
+            <% } %>
+            </div>
+        </div>
+    </div><!-- /content -->
+</script>
+
 
 <script id="thumb-li-template" type="text/template">
 <% _.each( results, function( item, i ){ %>
