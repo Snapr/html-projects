@@ -23,10 +23,20 @@ tripmapper.models.user_settings = Backbone.Model.extend({
             return {};
         }
     },
-    setup_linked_services: function(){
+    linked_services_setup: function(){
         var linked_services = this.get('linked_services');
+        var ls = [];
         _.each(linked_services,function(service,key){
+            // create a new linked_service model for each linked service
             var linked = new tripmapper.models.linked_service(service);
-        })
+            // set the provider so we know which url to hit if we want to make changes
+            linked.provider = key;
+            // remove the 'lined_services' data added above as we no longer need it
+            delete linked.data;
+            ls.push(linked);
+        });
+        // remove the linked_services object and replace it with our new models
+        this.unset('linked_services');
+        this.set({linked_services:ls});
     }
 });
