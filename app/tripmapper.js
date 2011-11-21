@@ -121,6 +121,7 @@ tripmapper.routers = Backbone.Router.extend({
         "login":"login",
         "logout":"logout",
         "join":"join_snapr",
+        "my-account":"my_account",
         "feed":"feed",
         "feed/?:query":"feed",
         "user/:query":"user",
@@ -160,6 +161,9 @@ tripmapper.routers = Backbone.Router.extend({
     },
     join_snapr: function(){
         var join_snapr = new tripmapper.views.join_snapr;
+    },
+    my_account: function(){
+        var my_account = new tripmapper.views.my_account;
     },
     map: function(query){
         console.warn("mapp");

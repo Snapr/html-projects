@@ -18,7 +18,16 @@
         </div><!-- /content -->
 
     </div><!-- /page -->
-
+    <div id="my-account" data-title="My Account" data-add-back-btn="true" data-role="page">
+        <div data-role="header">
+            <h1>My Account</h1>
+        </div>
+        <div data-role="content">
+        </div>
+        <div data-role="footer">
+            Footer
+        </div>
+    </div>
     <div id="popular" data-title="Popular" data-add-back-btn="true" data-role="page">
         <div data-role="header">
             <h1>Popular</h1>
@@ -177,6 +186,9 @@
     </div><!-- /content -->
 </script>
 
+<script id="my-account-template" type="text/template">
+    
+</script>
 
 <script id="thumb-li-template" type="text/template">
 <% _.each( results, function( item, i ){ %>
@@ -282,6 +294,7 @@
 
 <script src="app/views/home.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/login.js" type="text/javascript" charset="utf-8"></script>
+<script src="app/views/my_account.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/popular.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/thumbs_li.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/feed.js" type="text/javascript" charset="utf-8"></script>
