@@ -43,13 +43,8 @@ tripmapper.views.join_snapr = Backbone.View.extend({
         }
         // these options will be triggered on join
         var join_options = {
-            success:function(s){
-                if(s.get('success')){
-                    tripmapper.auth.get_token(new_user.data.username,new_user.data.password,login_options);
-                }else{
-                    alert(s.get('error').message);
-                    console.warn(s.get('error').message);
-                }
+            success:function(){
+                tripmapper.auth.get_token(new_user.data.username,new_user.data.password,login_options);
             },
             error:function(e){
                 console.warn('error',e);
