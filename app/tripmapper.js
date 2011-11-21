@@ -33,8 +33,10 @@ Backbone.sync = function(method, model, options) {
         meth = '';
     }
     
+    var url = getUrl(model,method);
+    
     $.ajax({
-        url: getUrl(model,method) + '?' + $.param(model.data) + meth,
+        url: url + '?' + $.param(model.data) + meth,
         type:'GET',
         // data is sent in the url only
         data: null,
