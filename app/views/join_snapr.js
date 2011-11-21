@@ -1,12 +1,20 @@
 tripmapper.views.join_snapr = Backbone.View.extend({
     el:$('#join-snapr'),
     events:{
+        "change #snapr-tos":"toggle_tos",
         "submit #join-dialog":"join"
     },
     initialize:function(){
         $.mobile.changePage($("#join-snapr"),{changeHash:false});
     },
     render:function(){
+    },
+    toggle_tos:function(e){
+        if(e.target.checked){
+            this.el.find('input[type="submit"]').button('enable');
+        }else{
+            this.el.find('input[type="submit"]').button('disable');
+        }
     },
     join:function(){
         var new_user = new tripmapper.models.user;
