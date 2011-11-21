@@ -17,7 +17,7 @@ tripmapper.views.join_snapr = Backbone.View.extend({
         }
     },
     join:function(){
-        var new_user = new tripmapper.models.user;
+        var new_user = new tripmapper.models.user_settings;
         new_user.data = {
            username: this.el.find("#join-dialog-username").val(),
            password: this.el.find("#join-dialog-password").val(),
