@@ -51,6 +51,18 @@ tripmapper.models.auth = Backbone.Model.extend({
             this.set({access_token:access_token,username:snapr_user});
         }
     },
+    save_locally:function(){
+        var snapr_user = this.get('username');
+        var access_token = this.get('access_token');
+        
+        if (tripmapper.info.supports_local_storage) {
+            localStorage.setItem('snapr_user', snapr_user);
+            localStorage.setItem('access_token', access_token);
+        } else {
+            $.cookie('snapr_user', snapr_user);
+            $.cookie('access_token', access_token);
+        }
+    },
     logout:function(){
         this.unset('username');
         this.unset('access_token');
