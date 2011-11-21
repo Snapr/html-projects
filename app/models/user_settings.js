@@ -16,8 +16,11 @@ tripmapper.models.user_settings = Backbone.Model.extend({
         }
     },
     parse:function(d,xhr){
-        if(d.response){
+        if(d.success && d.response){
             return d.response;
+        }else if(d.success){
+            // for new signups just return an empty object
+            return {};
         }
     },
     setup_linked_services: function(){
