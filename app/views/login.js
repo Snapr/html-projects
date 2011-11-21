@@ -6,10 +6,6 @@ tripmapper.views.login = Backbone.View.extend({
     initialize: function(){
         // console.warn('init login')
         $.mobile.changePage($("#login"),{changeHash:false,transition:"slidedown"});
-        if(!tripmapper.auth){
-            // console.warn('no auth')
-            tripmapper.auth = new tripmapper.models.auth;
-        }
     },
     log_in: function(){
         // console.warn('get_auth_token')
@@ -18,6 +14,7 @@ tripmapper.views.login = Backbone.View.extend({
 
         var options = {
             success: function(response){
+                tripmapper.auth.save_locally();
                 $("#login-dialog-username").val('');
                 $("#login-dialog-password").val('');
                 if(window.location.hash == "#login"){
