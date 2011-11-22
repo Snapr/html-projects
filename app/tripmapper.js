@@ -92,7 +92,11 @@ tripmapper.utils.get_query_params = function(query){
     if(query && query.indexOf('=') > -1){
         _.each(query.split('&'),function(part){
             var kv = part.split('=');
-            params[kv[0]] = unescape(kv[1]);
+            if(kv[0] == 'zoom'){
+                params[kv[0]] = parseInt(unescape(kv[1]));
+            }else{
+                params[kv[0]] = unescape(kv[1]);
+            }
         });
     }
     return params;
