@@ -21,8 +21,9 @@ Backbone.sync = function(method, model, options) {
     }
     
     if(tripmapper.auth && tripmapper.auth.get('access_token')){
-        // if there is no .data attribute on the model set it from the model's id
-        model.data = model.data || {id:model.get('id')};
+        // if there is no .data attribute on the model set it from the model's id 
+        // or just pass an empty object
+        model.data = model.data || model.get('id') && {id:model.get('id')} || {};
         model.data.access_token = tripmapper.auth.get('access_token');
     }
     
