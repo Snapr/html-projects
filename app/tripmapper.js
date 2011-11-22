@@ -182,4 +182,5 @@ $(function(){
     // initialise router and start backbone
     Route = new tripmapper.routers;
     Backbone.history.start();
-}())
+    $(document).trigger('tripmapperinit');
+});

@@ -372,23 +372,32 @@
 <script src="app/libs/jq.cookie.js" type="text/javascript" charset="utf-8"></script>
 
 <script type="text/javascript" charset="utf-8">
-    // disable jquery-mobile's hash nav so we can replace it with backbone.js
-    $(document).bind("mobileinit", function(){
-        $.mobile.ajaxEnabled = false;
-        $.mobile.pushStateEnabled = false;
-        $.mobile.hashListeningEnabled = false;
-        $.mobile.defaultPageTransition = 'none';
+tripmapper = {};
+tripmapper.redirect = '';
+tripmapper.models = {};
+tripmapper.views = {};
+tripmapper.base_url = "http://dev.sna.pr";
+tripmapper.api_base = tripmapper.base_url + "/api";
+tripmapper.access_token_url = tripmapper.base_url + "/ext/oauth/access_token/";
 
-        // hack to handle cases where we're going directly to a hash
-        // we go to the home screen and re-trigger the navigate event
-        var redirect = window.location.hash.replace('#','')
-        if(redirect.length){
-            window.location.hash = '';
-            setTimeout(function(){
-                Route.navigate(redirect, true);
-            },50)
+// disable jquery-mobile's hash nav so we can replace it with backbone.js
+$(document).bind("mobileinit", function(){
+    $.mobile.ajaxEnabled = false;
+    $.mobile.pushStateEnabled = false;
+    $.mobile.hashListeningEnabled = false;
+    $.mobile.defaultPageTransition = 'none';
+
+    // hack to handle cases where we're going directly to a hash
+    // we go to the home screen and re-trigger the navigate event
+    tripmapper.redirect = window.location.hash.replace('#','')
+    $(document).bind('tripmapperinit',function(){
+        if(tripmapper.redirect.length){
+            console.warn('redirect to',tripmapper.redirect)
+            Route.navigate(tripmapper.redirect, true);
         }
     });
+
+});
 </script>
 <script src="app/libs/jquery.mobile-1.0/jquery.mobile-1.0.js" type="text/javascript" charset="utf-8"></script>
 
@@ -401,14 +410,6 @@
 <!-- <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script> --> <!-- google maps -->
 
 <!-- <script src="js/libs/jqmrouter.js" type="text/javascript" charset="utf-8"></script> -->
-<script type="text/javascript" charset="utf-8">
-    tripmapper = {};
-    tripmapper.models = {};
-    tripmapper.views = {};
-    tripmapper.base_url = "http://dev.sna.pr";
-    tripmapper.api_base = tripmapper.base_url + "/api";
-    tripmapper.access_token_url = tripmapper.base_url + "/ext/oauth/access_token/";
-</script>
 
 <script src="app/views/home.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/login.js" type="text/javascript" charset="utf-8"></script>
