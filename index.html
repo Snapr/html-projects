@@ -187,7 +187,125 @@
 </script>
 
 <script id="my-account-template" type="text/template">
-    
+<h2>Linked Services</h2>
+<div class="linked-services">
+</div>
+<h2>Add Services</h2>
+<div class="add-services">
+</div>
+</script>
+
+<script id="add-linked-service-template" type="text/template">
+<% switch(provider) { case 'twitter': %>
+<div data-role="collapsible" data-collapsed="true" class="reactions-button">
+    <h3>Link Twitter</h3>
+    <fieldset data-role="controlgroup">
+    </fieldset>
+    <button data-inline="true" data-theme="b">Link</button>
+</div>
+<% break; case 'foursquare': %>
+<div data-role="collapsible" data-collapsed="true" class="reactions-button">
+    <h3>Link Foursquare</h3>
+    <fieldset data-role="controlgroup">
+    </fieldset>
+    <button data-inline="true" data-theme="b">Link</button>
+</div>
+<% break; case 'tumblr': %>
+<div data-role="collapsible" data-collapsed="true" class="reactions-button">
+    <h3>Link Tumblr</h3>
+    <fieldset data-role="controlgroup">
+    </fieldset>
+    <button data-inline="true" data-theme="b">Link</button>
+</div>
+<% break; case 'facebook': %>
+<div data-role="collapsible" data-collapsed="true" class="reactions-button">
+    <h3>Link Facebook</h3>
+    <fieldset data-role="controlgroup">
+    </fieldset>
+    <button data-inline="true" data-theme="b">Link</button>
+</div>
+<% break; } %>
+</script>
+
+<script id="linked-service-template" type="text/template">
+<% switch(service.provider) { case 'twitter': %>
+<div data-role="collapsible" data-collapsed="true" class="reactions-button">
+    <h3>Twitter - <%= service.get('username') %></h3>
+    <fieldset data-role="controlgroup">
+        
+        <button>Import Profile</button>
+        
+        <input type="checkbox" name="twitter-link" id="twitter-link" class="custom" 
+        <% if(service.get('show_username')){%> checked="true" <%}%> />
+        <label for="twitter-link">Link to my profile from Snapr</label>
+        
+        <input type="checkbox" name="twitter-tweet" id="twitter-tweet" class="custom"
+        <% if(service.get('allow_tweet')){%> checked="true" <%}%> />
+        <label for="twitter-tweet">Allow tweets from Snapr</label>
+        
+    </fieldset>
+    <button data-inline="true">Unlink</button><button data-inline="true" data-theme="b">Save</button>
+</div>
+<% break; case 'foursquare': %>
+<div data-role="collapsible" data-collapsed="true" class="reactions-button">
+    <h3>Foursquare - <%= service.get('username') %></h3>
+    <fieldset data-role="controlgroup">
+
+        <input type="checkbox" name="foursquare-link" id="foursquare-link" class="custom" 
+        <% if(service.get('show_username')){%> checked="true" <%}%> />
+        <label for="foursquare-link">Display my foursquare username</label>
+
+        <input type="checkbox" name="foursquare-checkin" id="foursquare-checkin" class="custom" 
+        <% if(service.get('allow_checkin')){%> checked="true" <%}%> />
+        <label for="foursquare-checkin">Allow checkins from Snapr</label>
+
+    </fieldset>
+    <button data-inline="true">Unlink</button><button data-inline="true" data-theme="b">Save</button>
+</div>
+<% break; case 'tumblr': %>
+<div data-role="collapsible" data-collapsed="true" class="reactions-button">
+    <h3>Tumblr - <%= service.get('username') %></h3>
+    <fieldset data-role="controlgroup">
+
+        <input type="checkbox" name="tumblr-link" id="tumblr-link" class="custom" 
+        <% if(service.get('show_name')){%> checked="true" <%}%> />
+        <label for="tumblr-link">Display my Tumblr username</label>
+
+        <input type="checkbox" name="tumblr-post" id="tumblr-post" class="custom" 
+        <% if(service.get('allow_post')){%> checked="true" <%}%> />
+        <label for="tumblr-post">Allow posts from Snapr</label>
+
+    </fieldset>
+    <button data-inline="true">Unlink</button><button data-inline="true" data-theme="b">Save</button>
+</div>
+<% break; case 'facebook': %>
+<div data-role="collapsible" data-collapsed="true" class="reactions-button">
+    <h3>Facebook - <%= service.get('username') %></h3>
+    <fieldset data-role="controlgroup">
+
+        <input type="checkbox" name="facebook-link" id="facebook-link" class="custom" 
+        <% if(service.get('show_profile_link')){%> checked="true" <%}%> />
+        <label for="facebook-link">Link to my profile from Snapr</label>
+        
+        <input type="checkbox" name="facebook-newsfeed" id="facebook-newsfeed" class="custom"
+        <% if(service.get('allow_newsfeed_posts')){%> checked="true" <%}%> />
+        <label for="facebook-newsfeed">Allow newsfeed posts from Snapr</label>
+
+        <input type="checkbox" name="facebook-gallery" id="facebook-gallery" class="custom"
+        <% if(service.get('allow_gallery_posts')){%> checked="true" <%}%> />
+        <label for="facebook-gallery">Allow newsfeed posts from Snapr</label>
+
+    </fieldset>
+    <fieldset data-role="controlgroup">
+
+        <label for="facebook-gallery-name">Gallery Name</label>
+        <input type="text" name="facebook-gallery-name" id="facebook-gallery-name" class="custom"
+        value="<%= service.get('gallery_name') %>" />
+
+    </fieldset>
+    <button data-inline="true">Unlink</button><button data-inline="true" data-theme="b">Save</button>
+</div>
+<% break; } %>
 </script>
 
 <script id="thumb-li-template" type="text/template">
@@ -295,6 +413,7 @@
 <script src="app/views/home.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/login.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/my_account.js" type="text/javascript" charset="utf-8"></script>
+<script src="app/views/linked_service.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/popular.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/thumbs_li.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/feed.js" type="text/javascript" charset="utf-8"></script>
