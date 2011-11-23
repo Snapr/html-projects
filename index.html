@@ -114,15 +114,21 @@
             
         </div>
     </div><!-- /page -->
-    <div id="map" data-role="page">
+    <div id="map" data-add-back-btn="true" data-role="page">
         <div data-role="header">
             <h1>Map</h1>
+            <div class="ui-btn-right">
+                <select id="map-filter">
+                    <option value="just-one">Just One</option>
+                    <option value="just-me">Just Me</option>
+                    <option value="following">Following</option>
+                    <option value="all">All</option>
+                </select>
+            </div>
         </div>
-        <div data-role="content">
-            MMMMap
-        </div>
-        <div data-role="footer">
-            
+        <div id="map-layer">
+            <div data-role="content" id="google-map">
+            </div>
         </div>
     </div><!-- /page -->
 
@@ -329,8 +335,13 @@
 </div>
 
 <a href="https://s3.amazonaws.com/media-server<%= item.get('server_id') %>.snapr.us/lrg/<%= item.get('secret') %>/<%= item.get('id') %>.jpg" rel="external" class="gallery_link"><img style="width:100%;height:<%= tripmapper.utils.get_photo_height(item.get('width'), item.get('height'), '#feed .ui-content') %>px;" src="https://s3.amazonaws.com/media-server<%= item.get('server_id') %>.snapr.us/lrg/<%= item.get('secret') %>/<%= item.get('id') %>.jpg" alt="<%= item.get('description') %>" class="thumb-image" /></a>
+
 <h3><%= item.get('description') %></h3>
+
 <div data-role="button" data-icon="star" data-inline="true" data-iconpos="notext" class="favorite-button" <% if(item.get('favorite')){ %> data-theme="e" <% }%>></div>
+
+<div data-role="button" data-inline="true" class="goto-map">View on map.</div>
+
 <% if (parseInt(item.get('comments')) + parseInt(item.get('favorite_count')) > 0){ %>
 <div data-role="collapsible" data-collapsed="true" class="reactions-button">
     <h3><%= item.get('comments') %> comments and <%= item.get('favorite_count') %> favorites</h3>
@@ -363,6 +374,32 @@
 <% }else{ %>
     <li><a data-ajax="false" href="#feed/?username=<%= reaction.get('username') %>"><img class="ui-li-icon" src="http://sna.pr/avatars/<%= reaction.get('username') %>" width="16px" height="16px" /><h5><%= reaction.get('username') %> likes this.</h5></a></li>
 <% } %>
+</script>
+
+<script id="thumb-template" type="text/template">
+<div class="snaprmappoint">
+    <div class="snaprmapthumb">
+        <span class="snaprthumbbg"></span>
+        <span class="snaprmappin"></span>
+        <a data-ajax="false" href="#feed/?photo_id=<%= photo.id %>" class="clickable"><img src="https://s3.amazonaws.com/media-server<%= photo.server_id %>.snapr.us/thm/<%= photo.secret %>/<%= photo.id %>.jpg" alt="<%= photo.description %>" class="snaprmapthumbimage"></a>
+    </div>
+</div>
+</script>
+
+<script id="flag-template" type="text/template">
+    <div class="snaprmappoint" style="display: block; position: absolute; top: 156px; left: 80px; z-index: 100;">
+        <div class="snaprmapflag">
+            <span class="icon map-flag-icon"></span>
+            <span class="flag-detail inactive">
+                <a href="" class="flag-link">
+                    <span class="icon spot-icon"></span>
+                    <span class="description-text">Foo</span>
+                </a>
+                <span class="base-arrow">
+                </span>
+            </span>
+        </div>
+    </div>
 </script>
 
 <script src="app/libs/json2.js" type="text/javascript" charset="utf-8"></script> <!-- just in case the browser sucks at JSON -->
@@ -407,7 +444,7 @@ $(document).bind("mobileinit", function(){
 <script src="app/libs/underscore.js" type="text/javascript" charset="utf-8"></script> <!-- required by backbone -->
 <script src="app/libs/backbone.js" type="text/javascript" charset="utf-8"></script> <!-- handles routing, models and sync -->
 
-<!-- <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script> --> <!-- google maps -->
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script> <!-- google maps -->
 
 <!-- <script src="js/libs/jqmrouter.js" type="text/javascript" charset="utf-8"></script> -->
 
