@@ -2,10 +2,15 @@ tripmapper.views.feed_li = Backbone.View.extend({
     events: {
         "expand .reactions-button":"load_reactions",
         "click .favorite-button":"favorite",
+        "click .goto-map":"goto_map",
         "submit .comment-form":"comment"
     },
     initialize: function(){
-        // console.warn('initialize feed_li',this.model)
+        this.map_url = 
+            'map/?zoom=' + tripmapper.constants.default_zoom + 
+            '&lat=' + this.model.get('location').latitude + 
+            '&lng=' + this.model.get('location').longitude + 
+            '&photo_id=' + this.model.get('id');
     },
     template: _.template( $("#feed-li-template").html() ),
     load_reactions: function(reload){
@@ -38,6 +43,9 @@ tripmapper.views.feed_li = Backbone.View.extend({
             this.load_reactions(true);
         }
 
+    },
+    goto_map: function(){
+        Route.navigate(this.map_url, true);
     },
     favorite: function(){
         var _this = this;
