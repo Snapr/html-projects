@@ -70,6 +70,10 @@ Number.prototype.zeroFill = function( width ){
 tripmapper.client_id = 'dbfedc9ed64f45644cbb13bcc3b422bb';
 tripmapper.client_secret = 'e89d8304723d7d8be19ebb6ab8ca0364';
 
+tripmapper.constants = {}
+tripmapper.constants.default_zoom = 15;
+
+
 // store some info about the browser
 tripmapper.info = {}
 tripmapper.info.supports_local_storage = (function() {
