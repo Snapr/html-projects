@@ -3,6 +3,8 @@
 Backbone.sync = function( method, model, options )
 {
 
+    console.warn( "sync", method, model, options )
+
     // Helper function to get a URL from a Model or Collection as a property
     // or as a function.
 
@@ -26,7 +28,7 @@ Backbone.sync = function( method, model, options )
     {
         // if there is no .data attribute on the model set it from the model's id 
         // or just pass an empty object
-        model.data = model.data || model.get('id') && {id:model.get('id')} || {};
+        model.data = model.data || model.get('id') && {id:model.get('id')} || model.attributes || {};
         model.data.access_token = tripmapper.auth.get('access_token');
     }
     
