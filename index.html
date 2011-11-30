@@ -236,8 +236,8 @@
 </script>
 
 <script id="linked-service-template" type="text/template">
-<% switch(service.provider) { case 'twitter': %>
 <div data-role="collapsible" data-collapsed="true">
+<% switch(service.provider) { case 'twitter': %>
     <h3>Twitter - <%= service.get('username') %></h3>
     <fieldset data-role="controlgroup">
         
@@ -252,10 +252,7 @@
         <label for="twitter-tweet">Allow tweets from Snapr</label>
         
     </fieldset>
-    <button data-inline="true" class="unlink">Unlink</button><button data-inline="true" data-theme="b" class="save">Save</button>
-</div>
 <% break; case 'foursquare': %>
-<div data-role="collapsible" data-collapsed="true">
     <h3>Foursquare - <%= service.get('username') %></h3>
     <fieldset data-role="controlgroup">
 
@@ -268,10 +265,7 @@
         <label for="foursquare-checkin">Allow checkins from Snapr</label>
 
     </fieldset>
-    <button data-inline="true">Unlink</button><button data-inline="true" data-theme="b">Save</button>
-</div>
 <% break; case 'tumblr': %>
-<div data-role="collapsible" data-collapsed="true">
     <h3>Tumblr - <%= service.get('username') %></h3>
     <fieldset data-role="controlgroup">
 
@@ -284,10 +278,7 @@
         <label for="tumblr-post">Allow posts from Snapr</label>
 
     </fieldset>
-    <button data-inline="true">Unlink</button><button data-inline="true" data-theme="b">Save</button>
-</div>
 <% break; case 'facebook': %>
-<div data-role="collapsible" data-collapsed="true">
     <h3>Facebook - <%= service.get('username') %></h3>
     <fieldset data-role="controlgroup">
 
@@ -311,9 +302,10 @@
         value="<%= service.get('gallery_name') %>" />
 
     </fieldset>
-    <button data-inline="true">Unlink</button><button data-inline="true" data-theme="b">Save</button>
-</div>
 <% break; } %>
+    <button data-inline="true" class="unlink">Unlink</button><button data-inline="true" data-theme="b" class="save">Save</button>
+</div>
+
 </script>
 
 <script id="thumb-li-template" type="text/template">
