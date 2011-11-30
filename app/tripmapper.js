@@ -145,9 +145,10 @@ tripmapper.utils.require_login = function( funct )
 }
 tripmapper.utils.get_photo_height = function( orig_width, orig_height, element )
 {
-    var aspect = orig_width/orig_height,
     // this depends on the padding - bit of a hack
-    var width = $(element).eq(0).innerWidth() - 45;
+    var aspect = orig_width/orig_height,
+        width = $(element).eq(0).innerWidth() - 45;
+
     return width/aspect;
 };
 
