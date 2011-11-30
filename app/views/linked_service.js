@@ -17,7 +17,14 @@ tripmapper.views.linked_service = Backbone.View.extend({
         
         "click .twitter-import-profile": "twitter_import_profile",
         "change #twitter-link": "twitter_link",
-        "change #twitter-tweet": "twitter_tweet"
+        "change #twitter-tweet": "twitter_tweet",
+        
+        "change #foursquare-link": "foursquare_link",
+        "change #foursquare-checkin": "foursquare_checkin",
+        
+        "change #facebook-link": "facebook_link",
+        "change #facebook-newsfeed": "facebook_newsfeed",
+        "change #facebook-gallery": "facebook_gallery"
     },
 
     render: function()
@@ -57,6 +64,13 @@ tripmapper.views.linked_service = Backbone.View.extend({
             {
                 alert( "Sorry, we had trouble saving your settings." )
             }
+        }
+        
+        if(this.model.provider == 'facebook')
+        {
+            this.model.set({
+                gallery_name: $(this.el).find("#facebook-gallery-name").val()
+            })
         }
         
         this.model.save( {}, options );
@@ -101,5 +115,48 @@ tripmapper.views.linked_service = Backbone.View.extend({
         this.model.set({
             allow_tweets: checked
         });
+    },
+    
+    foursquare_link: function()
+    {
+        var checked = $(this.el).find("#foursquare-link").is(':checked');
+        this.model.set({
+            show_username: checked
+        });
+    },
+    
+    foursquare_checkin: function()
+    {
+        var checked = $(this.el).find('#foursquare-checkin').is(':checked');
+        this.model.set({
+            allow_checkin: checked
+        });
+    },
+    
+    facebook_link: function()
+    {
+        var checked = $(this.el).find('#facebook-link').is(':checked');
+        this.model.set({
+            show_profile_link: checked
+        });
+    },
+    
+    facebook_newsfeed: function()
+    {
+        var checked = $(this.el).find('#facebook-newsfeed').is(':checked');
+        this.model.set({
+            allow_newsfeed_posts: checked
+        });
+    },
+    
+    facebook_gallery: function()
+    {
+        var checked = $(this.el).find('#facebook-gallery').is(':checked');
+        this.model.set({
+            allow_gallery_posts: checked
+        });
     }
+    
+
+
 });
