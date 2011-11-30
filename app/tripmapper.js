@@ -136,7 +136,7 @@ tripmapper.routers = Backbone.Router.extend({
         "join":"join_snapr",
         "my-account":"my_account",
         "feed":"feed",
-        "feed/?:query":"feed",
+        "feed/?:query_string":"feed",
         "user/:query":"user",
         "map":"map",
         "map/?:query_string":"map",
@@ -144,12 +144,10 @@ tripmapper.routers = Backbone.Router.extend({
         "*path":"home"
     },
 
-    feed: function(query)
+    feed: function( query_string )
     {
-        if(query){
-            console.warn('go to feed', query);
-        }
-        var feed_view = new tripmapper.views.feed(query);
+        var query = tripmapper.utils.get_query_params( query_string );
+        var feed_view = new tripmapper.views.feed( {query: query} );
     },
 
     user: function(query)
