@@ -1,13 +1,15 @@
 // Backbone.emulateHTTP = true;
 // Overriding sync to make this a jsonp app
-Backbone.sync = function(method, model, options) {
+Backbone.sync = function( method, model, options )
+{
 
     // Helper function to get a URL from a Model or Collection as a property
     // or as a function.
 
     // sends the method as a parameter so that different methods can have
     // different urls.
-    var getUrl = function(object,method) {
+    var getUrl = function( object, method )
+    {
         if (!(object && object.url)) return null;
         return _.isFunction(object.url) ? object.url(method) : object.url;
     };
@@ -20,7 +22,8 @@ Backbone.sync = function(method, model, options) {
         'read'  : 'GET'
     }
     
-    if(tripmapper.auth && tripmapper.auth.get('access_token')){
+    if (tripmapper.auth && tripmapper.auth.get('access_token'))
+    {
         // if there is no .data attribute on the model set it from the model's id 
         // or just pass an empty object
         model.data = model.data || model.get('id') && {id:model.get('id')} || {};
@@ -28,10 +31,13 @@ Backbone.sync = function(method, model, options) {
     }
     
     // our hack to get jsonp to emulate http methods by appending them to the querystring
-    if(method_map[method] !='GET'){
-        meth = '&_method=' + method_map[method]
-    }else{
-        meth = '';
+    if (method_map[method] !='GET')
+    {
+        var meth = '&_method=' + method_map[method]
+    }
+    else
+    {
+        var meth = '';
     }
     
     var url = getUrl(model,method);
@@ -48,7 +54,8 @@ Backbone.sync = function(method, model, options) {
     });
 };
 
-Number.prototype.zeroFill = function( width ){
+Number.prototype.zeroFill = function( width )
+{
     width -= this.toString().length;
     if ( width > 0 )
     {
@@ -76,7 +83,7 @@ tripmapper.constants.default_zoom = 15;
 
 // store some info about the browser
 tripmapper.info = {}
-tripmapper.info.supports_local_storage = (function() {
+tripmapper.info.supports_local_storage = (function(){
   try {
     return 'localStorage' in window && window['localStorage'] !== null;
   } catch (e) {
@@ -84,64 +91,79 @@ tripmapper.info.supports_local_storage = (function() {
   }
 })();
 
-tripmapper.auth = new tripmapper.models.auth;
+tripmapper.auth = new tripmapper.models.auth();
 tripmapper.auth.get_locally();
 
 tripmapper.utils = {};
-tripmapper.utils.date_to_snapr_format = function(d){
-    return d.getFullYear()+'-'+(d.getMonth()+1).zeroFill(2)+'-'+d.getDate().zeroFill(2)+' 00:00:00'
+tripmapper.utils.date_to_snapr_format = function(d)
+{
+    return d.getFullYear()+'-'+(d.getMonth()+1).zeroFill(2)+'-'+d.getDate().zeroFill(2)+' 00:00:00';
 }
-tripmapper.utils.get_query_params = function(query){
+tripmapper.utils.get_query_params = function(query)
+{
     var params = {};
-    if(query && query.indexOf('=') > -1){
-        _.each(query.split('&'),function(part){
+    if (query && query.indexOf('=') > -1)
+    {
+        _.each( query.split('&'), function(part)
+        {
             var kv = part.split('=');
-            if(kv[0] == 'zoom'){
-                params[kv[0]] = parseInt(unescape(kv[1]));
-            }else{
-                params[kv[0]] = unescape(kv[1]);
+            if(kv[0] == 'zoom')
+            {
+                params[kv[0]] = parseInt( unescape(kv[1]) );
+            }
+            else
+            {
+                params[kv[0]] = unescape( kv[1] );
             }
         });
     }
+    
     return params;
 }
-tripmapper.utils.notification = function(title, text, callback){
+tripmapper.utils.notification = function( title, text, callback )
+{
     // todo - for now we just use an alert
     alert(title + ' ' + text);
 }
-tripmapper.utils.require_login = function(funct){
-    return function(e){
-        if(!tripmapper.auth.get('access_token')){
-            if(e){
+tripmapper.utils.require_login = function( funct )
+{
+    return function( e )
+    {
+        if (!tripmapper.auth.get('access_token'))
+        {
+            if (e)
+            {
                 e.preventDefault();
             }
-            Route.navigate('#login',true)
-        }else{
+            Route.navigate( '#login', true );
+        }
+        else
+        {
             $.proxy(funct, this)(e);
         }
     };
 }
-tripmapper.utils.get_photo_height = function(orig_width, orig_height, element){
-    console.warn('get height', orig_width, orig_height, element, $(element).eq(0).innerWidth())
+tripmapper.utils.get_photo_height = function( orig_width, orig_height, element )
+{
     var aspect = orig_width/orig_height,
-        // this depends on the padding - bit of a hack
-        width = $(element).eq(0).innerWidth() - 45;
+    // this depends on the padding - bit of a hack
+    var width = $(element).eq(0).innerWidth() - 45;
     return width/aspect;
 };
 
 tripmapper.routers = Backbone.Router.extend({
-    routes:{
-        "login":"login",
-        "logout":"logout",
-        "join":"join_snapr",
-        "my-account":"my_account",
-        "feed":"feed",
-        "feed/?:query_string":"feed",
-        "user/:query":"user",
-        "map":"map",
-        "map/?:query_string":"map",
-        "popular":"popular",
-        "*path":"home"
+    routes: {
+        "login": "login",
+        "logout": "logout",
+        "join": "join_snapr",
+        "my-account": "my_account",
+        "feed": "feed",
+        "feed/?:query_string": "feed",
+        "user/:query": "user",
+        "map": "map",
+        "map/?:query_string": "map",
+        "popular": "popular",
+        "*path": "home"
     },
 
     feed: function( query_string )
