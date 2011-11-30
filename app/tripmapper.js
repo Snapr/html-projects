@@ -105,6 +105,10 @@ tripmapper.utils.get_query_params = function(query){
     }
     return params;
 }
+tripmapper.utils.notification = function(title, text, callback){
+    // todo - for now we just use an alert
+    alert(title + ' ' + text);
+}
 tripmapper.utils.require_login = function(funct){
     return function(e){
         if(!tripmapper.auth.get('access_token')){
@@ -125,8 +129,6 @@ tripmapper.utils.get_photo_height = function(orig_width, orig_height, element){
     return width/aspect;
 };
 
-
-
 tripmapper.routers = Backbone.Router.extend({
     routes:{
         "login":"login",
@@ -137,53 +139,76 @@ tripmapper.routers = Backbone.Router.extend({
         "feed/?:query":"feed",
         "user/:query":"user",
         "map":"map",
-        "map/?:query":"map",
+        "map/?:query_string":"map",
         "popular":"popular",
         "*path":"home"
     },
-    feed: function(query){
+
+    feed: function(query)
+    {
         if(query){
             console.warn('go to feed', query);
         }
         var feed_view = new tripmapper.views.feed(query);
     },
-    user: function(query){
+
+    user: function(query)
+    {
         console.warn('go to user '+ query);
     },
-    popular: function(){
+
+    popular: function()
+    {
         console.warn('go to popular');
         var popular_view = new tripmapper.views.popular;
     },
-    home: function(){
+    
+    home: function()
+    {
         console.warn('go home');
         var home_view = new tripmapper.views.home;
     },
-    login: function(){
+    
+    login: function()
+    {
         console.warn('go to login')
         var login_view = new tripmapper.views.login;
     },
-    logout: function(){
-        if(tripmapper.auth){
+    
+    logout: function()
+    {
+        if (tripmapper.auth)
+        {
            tripmapper.auth.logout();
-        }else{
+        }
+        else
+        {
             tripmapper.auth = new tripmapper.models.auth;
         }
         window.location.hash = "";
     },
-    join_snapr: function(){
+    
+    join_snapr: function()
+    {
         var join_snapr = new tripmapper.views.join_snapr;
     },
-    my_account: function(){
+    
+    my_account: function()
+    {
         var my_account = new tripmapper.views.my_account;
     },
-    map: function(query){
-        console.warn("mapp");
-        var map = new tripmapper.views.map(query);
+    
+    map: function( query_string )
+    {
+        var query = tripmapper.utils.get_query_params( query_string );
+        var map_view = new tripmapper.views.map( {query: query} );
     }
 });
 
-$(function(){
-    tripmapper.SnapOverlay = function(type, data, map, extra_class){
+$(function()
+{
+    tripmapper.SnapOverlay = function(type, data, map, extra_class)
+    {
         // image as JS object in format the snapr api returns
         this.type_ = type;
         this.data_ = data;
@@ -201,7 +226,8 @@ $(function(){
     }
 
     tripmapper.SnapOverlay.prototype = new google.maps.OverlayView();
-    tripmapper.SnapOverlay.prototype.onAdd = function() {
+    tripmapper.SnapOverlay.prototype.onAdd = function()
+    {
         // Note: an overlay's receipt of onAdd() indicates that
         // the map's panes are now available for attaching
         // the overlay to the map via the DOM.
@@ -209,10 +235,10 @@ $(function(){
         var data_id = this.data_.id;
 
         if (this.type_ == 'photo') {
-            var div = $(_this.thumb_template({photo:this.data_}));
+            var div = $(this.map.snapr.thumb_template({photo:this.data_}));
             div.show();
         } else {  //spot
-            var div = $(_this.spot_template({spot:this.data_}));
+            var div = $(this.map.snapr.spot_template({spot:this.data_}));
             div.show();
         }
 
@@ -224,8 +250,8 @@ $(function(){
         var panes = this.getPanes();
         $(panes.floatPane).append(this.div_);
     }
-
-    tripmapper.SnapOverlay.prototype.draw = function() {
+    tripmapper.SnapOverlay.prototype.draw = function()
+    {
         var overlayProjection = this.getProjection();
         var position = new google.maps.LatLng( this.data_.location.latitude, this.data_.location.longitude );
         var px = overlayProjection.fromLatLngToDivPixel( position );
@@ -235,38 +261,48 @@ $(function(){
             .css('left', px.x + 'px')
             .css('top', px.y + 'px');
     }
-
-    tripmapper.SnapOverlay.prototype.onRemove = function() {
-        this.div_.parentNode.removeChild(this.div_);
+    tripmapper.SnapOverlay.prototype.onRemove = function()
+    {
+        $(this.div_).remove();
         this.div_ = null;
     }
-    tripmapper.SnapOverlay.prototype.hide = function() {
-        if (this.div_) {
+    tripmapper.SnapOverlay.prototype.hide = function()
+    {
+        if (this.div_)
+        {
           this.div_.style.visibility = "hidden";
         }
     }
-
-    tripmapper.SnapOverlay.prototype.show = function() {
-        if (this.div_) {
+    tripmapper.SnapOverlay.prototype.show = function()
+    {
+        if (this.div_)
+        {
           this.div_.style.visibility = "visible";
         }
     }
-
-    tripmapper.SnapOverlay.prototype.toggle = function() {
-        if (this.div_) {
-          if (this.div_.style.visibility == "hidden") {
+    tripmapper.SnapOverlay.prototype.toggle = function()
+    {
+        if (this.div_)
+        {
+          if (this.div_.style.visibility == "hidden")
+          {
             this.show();
-          } else {
+          }
+          else
+          {
             this.hide();
           }
         }
     }
-
-    tripmapper.SnapOverlay.prototype.toggleDOM = function() {
-        if (this.getMap()) {
-          this.setMap(null);
-        } else {
-          this.setMap(this.map_);
+    tripmapper.SnapOverlay.prototype.toggleDOM = function()
+    {
+        if (this.getMap())
+        {
+          this.setMap( null );
+        }
+        else
+        {
+          this.setMap( this.map_ );
         }
     }
 
