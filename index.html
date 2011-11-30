@@ -2,7 +2,8 @@
 <html> 
     <head> 
         <title>TripMapper</title> 
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1"> 
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1">
+        <meta name="apple-mobile-web-app-capable" content="yes">
         <link rel="stylesheet" href="app/libs/jquery.mobile-1.0/jquery.mobile-1.0.css" type="text/css" charset="utf-8">
         <!-- <link rel="stylesheet" href="app/libs/jquery.mobile-1.0/jquery.mobile.structure-1.0.css" type="text/css" charset="utf-8"> -->
         <link rel="stylesheet" href="css/photoswipe.css" type="text/css" charset="utf-8">
@@ -10,7 +11,7 @@
     </head> 
 <body> 
     <div id="home" data-title="Welcome" data-role="page">
-        <div data-role="header">
+        <div data-role="header" data-position="fixed">
             <h1>TripMapper</h1>
         </div><!-- /header -->
 
@@ -19,13 +20,10 @@
 
     </div><!-- /page -->
     <div id="my-account" data-title="My Account" data-add-back-btn="true" data-role="page">
-        <div data-role="header">
+        <div data-role="header" data-position="fixed">
             <h1>My Account</h1>
         </div>
         <div data-role="content">
-        </div>
-        <div data-role="footer">
-            Footer
         </div>
     </div>
     <div id="popular" data-title="Popular" data-add-back-btn="true" data-role="page">
@@ -47,7 +45,7 @@
         </div>
     </div><!-- /page -->
     <div id="feed" data-add-back-btn="true" data-role="page">
-        <div data-role="header">
+        <div data-role="header" data-position="fixed">
             <h1>Feed</h1>
             <a href="#/" data-ajax="false" class="ui-btn-right">Menu</a>
         </div>
@@ -115,8 +113,16 @@
         </div>
     </div><!-- /page -->
     <div id="map" data-add-back-btn="true" data-role="page">
-        <div data-role="header">
+        <div data-role="header" data-position="fixed">
             <h1>Map</h1>
+            <a href="#/" data-ajax="false" class="ui-btn-right">Menu</a>
+        </div>
+        <div id="map-layer">
+            <div data-role="content" id="google-map">
+            </div>
+        </div>
+        <div data-role="footer" data-position="fixed">
+
             <div class="ui-btn-right">
                 <select id="map-filter">
                     <option value="just-one">Just One</option>
@@ -124,10 +130,6 @@
                     <option value="following">Following</option>
                     <option value="all">All</option>
                 </select>
-            </div>
-        </div>
-        <div id="map-layer">
-            <div data-role="content" id="google-map">
             </div>
         </div>
     </div><!-- /page -->
@@ -423,6 +425,11 @@ $(document).bind("mobileinit", function(){
     $.mobile.pushStateEnabled = false;
     $.mobile.hashListeningEnabled = false;
     $.mobile.defaultPageTransition = 'none';
+
+    $.mobile.fixedToolbars.setTouchToggleEnabled(false);
+
+    // true fixed positioned headers still seem buggy so is disabled
+    // $.mobile.touchOverflowEnabled = true;
 
     // hack to handle cases where we're going directly to a hash
     // we go to the home screen and re-trigger the navigate event
