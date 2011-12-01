@@ -1,38 +1,53 @@
 tripmapper.views.home = Backbone.View.extend({
-    initialize:function(){
-        if($.mobile.activePage && $.mobile.activePage.find("#home").length < 1){
-            console.warn('changing page');
-            $.mobile.changePage("#home");
+
+    initialize: function()
+    {
+        if ($.mobile.activePage && $.mobile.activePage.find("#home").length < 1)
+        {
+            console.warn( 'changing page' );
+            $.mobile.changePage( "#home" );
         }
         window.location.hash = "";
-        var _this = this;
-        tripmapper.auth.bind("set:username",function(){
-            console.warn('set:username')
-            _this.render();
+        var home_view = this;
+        tripmapper.auth.bind( "set:username", function()
+        {
+            console.warn( 'set:username' )
+            home_view.render();
         });
-        tripmapper.auth.bind("unset:username",function(){
-            console.warn('unset:username')
-            _this.render();
+        tripmapper.auth.bind( "unset:username" , function()
+        {
+            console.warn( 'unset:username' )
+            home_view.render();
         });
 
         tripmapper.auth.change();
-        _this.render();
+        this.render();
     },
+
     template: _.template( $('#home-template').html() ),
-    render:function(){
-        console.warn('render home')
-        if(tripmapper.auth && tripmapper.auth.attributes.username){
+
+    render: function()
+    {
+        console.warn( 'render home' )
+        if (tripmapper.auth && tripmapper.auth.attributes.username)
+        {
             var logged_in = true,
             username = tripmapper.auth.attributes.username;
             
-        }else{
+        }
+        else
+        {
             var logged_in = false,
             username = null;
         }
-        this.el.find('[data-role="content"]')
+        this.el.find( '[data-role="content"]' )
             .replaceWith(
-            $(this.template({logged_in:logged_in,username:username}))
-            );
-        this.el.trigger('create');
+                $(this.template( {
+                    logged_in: logged_in,
+                    username:username
+                })));
+        this.el.trigger( "create" );
+        
+        return this;
     }
 });
