@@ -72,6 +72,49 @@ tripmapper.views.my_account = Backbone.View.extend({
         return this;
     },
 
+    events: {
+        "click .my-account-avatar label": "set_avatar",
+        "click .my-account-set-up-gravatar": "set_up_gravatar"
+    },
+    
+    set_avatar: function(e)
+    {
+        var input_target = $('#' + e.currentTarget.htmlFor);
+
+        var avatar_type = input_target.val();
+        
+        var user_setting = new tripmapper.models.user_settings();
+        
+        // user_setting.id = false;
+        // user_setting.data = this.user_settings.data || {};
+        // user_setting.data.avatar_type = avatar_type;
+        
+        var container = input_target.closest( ".my-account-avatar" );
+        container.find( "input[type='radio']" ).attr( "checked", false );
+        input_target.attr( "checked", true );
+        container.find( "input[type='radio']" ).checkboxradio( "refresh" );
+        
+        // var options = {
+        //     success: function()
+        //     {
+        //         console.warn( "set avatar success" );
+        //     },
+        //     error: function()
+        //     {
+        //         console.warn( "set avatar error" );
+        //     }
+        // }
+        // 
+        // user_setting.save( {}, options );
+        
+        console.warn( "set_avatar", avatar_type );
+    },
+    
+    set_up_gravatar: function()
+    {
+        window.open( "http://en.gravatar.com/" );
+    }
+
 });
 
 
