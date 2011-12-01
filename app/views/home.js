@@ -4,7 +4,6 @@ tripmapper.views.home = Backbone.View.extend({
             console.warn('changing page');
             $.mobile.changePage("#home");
         }
-        this.el = $('#home');
         window.location.hash = "";
         var _this = this;
         tripmapper.auth.bind("set:username",function(){

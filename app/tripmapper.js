@@ -189,7 +189,9 @@ tripmapper.routers = Backbone.Router.extend({
     home: function()
     {
         console.warn('go home');
-        var home_view = new tripmapper.views.home;
+        var home_view = new tripmapper.views.home({
+            el: $('#home')
+        });
     },
     
     login: function()
