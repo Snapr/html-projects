@@ -195,44 +195,153 @@
 </script>
 
 <script id="my-account-template" type="text/template">
+<h2>My Account</h2>
+
+<div data-role="collapsible" data-collapsed="true">
+    <h3>Account Name & Email</h3>
+    <fieldset data-role="controlgroup">
+        <label for="my-account-name">Your Name</label>
+        <input type="text" name="my-account-name" id="my-account-name" class="custom"
+        value="<%= settings.profile.name %>" />
+    </fieldset>
+    <fieldset data-role="controlgroup">
+        <label for="my-account-email">Email</label>
+        <input type="text" name="my-account-email" id="my-account-email" class="custom"
+        value="<%= settings.email %>" />
+    </fieldset>
+    <button data-theme="b" class="save">Save</button>
+</div>
+
+<div data-role="collapsible" data-collapsed="true">
+    <h3>Password</h3>
+    <fieldset data-role="controlgroup">
+        <label for="my-account-password">New Password</label>
+        <input type="password" name="my-account-password" id="my-account-password" class="custom"
+        value="" />
+    </fieldset>
+    <fieldset data-role="controlgroup">
+        <label for="my-account-password-verify">Verify</label>
+        <input type="password" name="my-account-password-verify" id=" my-account-password-verify" class="custom"
+        value="" />
+    </fieldset>
+    <button data-theme="b" class="save">Save</button>
+</div>
+
+<div data-role="collapsible" data-collapsed="true">
+    <h3>Notifications</h3>
+    <legend>Email me when:</legend>
+    <fieldset data-role="controlgroup">
+        <input type="checkbox" name="my-account-notify-follow" id="my-account-notify-follow" class="custom" 
+        <% if (settings.profile.notify_when_added_to_group){%> checked="true" <%}%> />
+        <label for="my-account-notify-follow">Someone follows me</label>
+
+        <input type="checkbox" name="my-account-notify-favorite" id="my-account-notify-favorite" class="custom" 
+        <% if (settings.profile.notify_when_image_favorited){%> checked="true" <%}%> />
+        <label for="my-account-notify-favorite">Someone favorites one of my images</label>
+
+        <input type="checkbox" name="my-account-notify-comment" id="my-account-notify-comment" class="custom" 
+        <% if (settings.profile.notify_when_comment_added){%> checked="true" <%}%> />
+        <label for="my-account-notify-comment">Someone comments on one of my images</label>
+
+        <input type="checkbox" name="my-account-notify-comment-after" id="my-account-notify-comment-after" class="custom" 
+        <% if (settings.profile.notify_after_comment){%> checked="true" <%}%> />
+        <label for="my-account-notify-comment-after">Someone comments on an image I&apos;ve commented on</label>
+
+        <input type="checkbox" name="my-account-notify-moderation" id="my-account-notify-moderation" class="custom" 
+        <% if (settings.profile.notify_when_image_moderated){%> checked="true" <%}%> />
+        <label for="my-account-notify-moderation">One of my images has been moderated</label>
+
+        <input type="checkbox" name="my-account-notify-snapr" id="my-account-notify-snapr" class="custom" 
+        <% if (settings.profile.subscribe_to_email_newsletter){%> checked="true" <%}%> />
+        <label for="my-account-notify-snapr">Snapr has exciting news</label>
+    </fieldset>
+    
+    <button data-theme="b" class="save">Save</button>
+    
+</div>
+
+<div data-role="collapsible" data-collapsed="true">
+    <h3>Profile</h3>
+    
+    <fieldset data-role="controlgroup">
+        <legend>Avatar</legend>
+
+        <input type="radio" name="my-account-avatar-twitter" id="my-account-avatar-twitter" value="twitter"
+        <% if (settings.profile.avatar_type == 'twitter'){ %> checked="true" <% } %> />
+        <label for="my-account-avatar-twitter">Twitter</label>
+
+        <input type="radio" name="my-account-avatar-facebook" id="my-account-avatar-facebook" value="facebook"
+        <% if (settings.profile.avatar_type == 'facebook'){ %> checked="true" <% } %> />
+        <label for="my-account-avatar-facebook">Facebook</label>
+
+        <input type="radio" name="my-account-avatar-gravatar" id="my-account-avatar-gravatar" value="gravatar"
+        <% if (settings.profile.avatar_type == 'gravatar'){ %> checked="true" <% } %> />
+        <label for="my-account-avatar-gravatar">Gravatar</label>
+        
+        <button>Set up Gravatar</button>
+
+    </fieldset>
+
+    <fieldset data-role="controlgroup">
+        <label for="my-account-profile-name">Your Name</label>
+        <input type="text" name="my-account-profile-name" id="my-account-profile-name" class="custom"
+        value="<%= settings.profile.name %>" />
+    </fieldset>
+
+    <fieldset data-role="controlgroup">
+        <label for="my-account-location">Location</label>
+        <input type="text" name="my-account-location" id="my-account-location" class="custom"
+        value="<%= settings.profile.location %>" />
+    </fieldset>
+
+    <fieldset data-role="controlgroup">
+        <label for="my-account-website">Website</label>
+        <input type="text" name="my-account-website" id="my-account-website" class="custom"
+        value="<%= settings.profile.website %>" />
+    </fieldset>
+
+    <fieldset data-role="controlgroup">
+        <label for="my-account-bio">Bio</label>
+        <input type="text" name="my-account-bio" id="my-account-bio" class="custom"
+        value="<%= settings.profile.bio %>" />
+    </fieldset>
+
+    <button data-theme="b" class="save">Save</button>
+</div>
+
 <h2>Linked Services</h2>
 <div class="linked-services">
 </div>
+
 <h2>Add Services</h2>
 <div class="add-services">
 </div>
 </script>
 
 <script id="add-linked-service-template" type="text/template">
+<div data-role="collapsible" data-collapsed="true">
 <% switch(provider) { case 'twitter': %>
-<div data-role="collapsible" data-collapsed="true" class="reactions-button">
     <h3>Link Twitter</h3>
     <fieldset data-role="controlgroup">
     </fieldset>
     <button data-inline="true" data-theme="b">Link</button>
-</div>
 <% break; case 'foursquare': %>
-<div data-role="collapsible" data-collapsed="true" class="reactions-button">
     <h3>Link Foursquare</h3>
     <fieldset data-role="controlgroup">
     </fieldset>
     <button data-inline="true" data-theme="b">Link</button>
-</div>
 <% break; case 'tumblr': %>
-<div data-role="collapsible" data-collapsed="true" class="reactions-button">
     <h3>Link Tumblr</h3>
     <fieldset data-role="controlgroup">
     </fieldset>
     <button data-inline="true" data-theme="b">Link</button>
-</div>
 <% break; case 'facebook': %>
-<div data-role="collapsible" data-collapsed="true" class="reactions-button">
     <h3>Link Facebook</h3>
     <fieldset data-role="controlgroup">
     </fieldset>
     <button data-inline="true" data-theme="b">Link</button>
-</div>
 <% break; } %>
+</div>
 </script>
 
 <script id="linked-service-template" type="text/template">

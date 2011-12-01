@@ -1,17 +1,18 @@
 tripmapper.views.my_account = Backbone.View.extend({
 
+    
+
     initialize:function()
     {
         $.mobile.changePage( $("#my-account"), {changeHash: false} );
-        this.el = $("#my-account");
         this.user_settings = new tripmapper.models.user_settings();
         var my_account_view = this;
         var options = {
             success: function()
             {
                 my_account_view.user_settings.linked_services_setup();
-                console.warn( 'success', my_account_view.user_settings );
-                console.warn( 'linked_services', my_account_view.user_settings.get('linked_services') );
+                // console.warn( 'success', my_account_view.user_settings );
+                // console.warn( 'linked_services', my_account_view.user_settings.get('linked_services') );
                 my_account_view.render();
             },
             error: function()
@@ -26,9 +27,14 @@ tripmapper.views.my_account = Backbone.View.extend({
     
     render: function()
     {
-        console.warn( 'render my-account', this.el.find('[data-role="content"]') );
+        // console.warn( 'render my-account', this.el.find('[data-role="content"]') );
         var account_content = this.el.find('[data-role="content"]');
-        account_content.empty().append( this.template({}) );
+        account_content
+            .empty()
+            .append( this.template({
+                settings: this.user_settings.get('settings')
+            }) )
+            .trigger('create');
 
         // set all linked services to false, we will check them off below
         
@@ -61,6 +67,17 @@ tripmapper.views.my_account = Backbone.View.extend({
             }
         });
         
+        
+        
         return this;
-    }
+    },
+
 });
+
+
+// notifyWhenImageModerated: $('#ntmoderation',form).is(':checked'),
+// notifyWhenCommentAdded: $('#ntcomment',form).is(':checked'),
+// notifyAfterComment: $('#ntafter_comment',form).is(':checked'),
+// notifyWhenImageFavorited: $('#ntfav',form).is(':checked'),
+// notifyWhenAddedToGroup: $('#ntfollow',form).is(':checked'),
+// subscribeToEmailNewsletter: $('#ntnewsupdates',form).is(':checked')

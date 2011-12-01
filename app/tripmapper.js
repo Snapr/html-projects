@@ -218,7 +218,9 @@ tripmapper.routers = Backbone.Router.extend({
     
     my_account: function()
     {
-        var my_account = new tripmapper.views.my_account;
+        var my_account = new tripmapper.views.my_account({
+            el: $("#my-account")
+        });
     },
     
     map: function( query_string )
