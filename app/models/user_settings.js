@@ -1,39 +1,54 @@
 tripmapper.models.user_settings = Backbone.Model.extend({
+
     urlRoot: tripmapper.api_base + '/user/',
-    url: function(method){
-        if(method){
-            switch(method){
+
+    url: function( method )
+    {
+        if (method)
+        {
+            switch (method)
+            {
                 case 'create':
                     return this.urlRoot + 'signup/';
                 case 'update':
                     return this.urlRoot + 'settings/';
                 default:
-                    this.data = _.extend(this.data || {}, {linked_services:true});
+                    this.data = _.extend( this.data || {}, {linked_services: true } );
                     return this.urlRoot + 'settings/';
             }
-        }else{
+        }
+        else
+        {
             return this.urlRoot;
         }
     },
-    parse:function(d,xhr){
-        if(d.success && d.response){
+
+    parse: function( d,xhr )
+    {
+        if (d.success && d.response)
+        {
             return d.response;
-        }else if(d.success){
+        }
+        else if (d.success)
+        {
             // for new signups just return an empty object
             return {};
         }
     },
-    linked_services_setup: function(){
+
+    linked_services_setup: function()
+    {
         var linked_services = this.get('linked_services');
         var ls = [];
-        _.each(linked_services,function(service,key){
+        _.each( linked_services, function( service, key )
+        {
             // create a new linked_service model for each linked service
-            var linked = new tripmapper.models.linked_service(service);
+            var linked = new tripmapper.models.linked_service( service );
             // set the provider so we know which url to hit if we want to make changes
             linked.provider = key;
             // remove the 'lined_services' data added above as we no longer need it
             delete linked.data;
-            ls.push(linked);
+            ls.push( linked );
         });
         // remove the linked_services object and replace it with our new models
         this.unset('linked_services');
