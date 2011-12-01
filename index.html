@@ -263,7 +263,7 @@
 <div data-role="collapsible" data-collapsed="true">
     <h3>Profile</h3>
     
-    <fieldset data-role="controlgroup">
+    <fieldset data-role="controlgroup" class="my-account-avatar">
         <legend>Avatar</legend>
 
         <input type="radio" name="my-account-avatar-twitter" id="my-account-avatar-twitter" value="twitter"
@@ -278,7 +278,7 @@
         <% if (settings.profile.avatar_type == 'gravatar'){ %> checked="true" <% } %> />
         <label for="my-account-avatar-gravatar">Gravatar</label>
         
-        <button>Set up Gravatar</button>
+        <button class="my-account-set-up-gravatar">Set up Gravatar</button>
 
     </fieldset>
 
