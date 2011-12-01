@@ -23,7 +23,7 @@ tripmapper.models.user_settings = Backbone.Model.extend({
         }
     },
 
-    parse: function( d,xhr )
+    parse: function( d, xhr )
     {
         if (d.success && d.response)
         {
