@@ -24,7 +24,11 @@ tripmapper.views.linked_service = Backbone.View.extend({
         
         "change #facebook-link": "facebook_link",
         "change #facebook-newsfeed": "facebook_newsfeed",
-        "change #facebook-gallery": "facebook_gallery"
+        "change #facebook-gallery": "facebook_gallery",
+        
+        "change #tumblr-link": "tumblr_link",
+        "change #tumblr-post": "tumblr_post"
+        
     },
 
     render: function()
@@ -46,7 +50,20 @@ tripmapper.views.linked_service = Backbone.View.extend({
     
     unlink_service: function()
     {
-        console.warn( "unlink", this );
+        var options = {
+            success: function()
+            {
+                console.warn('unlink success');
+            },
+            error: function()
+            {
+                console.warn('unlink error');
+            }
+        }
+
+        // set the id to a non-null value so that backbone doesn't think it is new and abort
+        this.model.id = false;
+        this.model.destroy( options );
     },
     
     save_changes: function()
@@ -71,6 +88,12 @@ tripmapper.views.linked_service = Backbone.View.extend({
             this.model.set({
                 gallery_name: $(this.el).find("#facebook-gallery-name").val()
             })
+        }
+        
+        if(this.model.provider == 'tumblr')
+        {
+            this.model.unset('show_username');
+            this.model.unset('allow_post');
         }
         
         this.model.save( {}, options );
@@ -103,57 +126,64 @@ tripmapper.views.linked_service = Backbone.View.extend({
     
     twitter_link: function()
     {
-        var checked = $(this.el).find("#twitter-link").is(':checked');
         this.model.set({
-            show_name: checked
+            show_name: $(this.el).find("#twitter-link").is(':checked')
         });
     },
     
     twitter_tweet: function()
     {
-        var checked = $(this.el).find('#twitter-tweet').is(':checked');
         this.model.set({
-            allow_tweets: checked
+            allow_tweets: $(this.el).find('#twitter-tweet').is(':checked')
         });
     },
     
     foursquare_link: function()
     {
-        var checked = $(this.el).find("#foursquare-link").is(':checked');
         this.model.set({
-            show_username: checked
+            show_username: $(this.el).find("#foursquare-link").is(':checked')
         });
     },
     
     foursquare_checkin: function()
     {
-        var checked = $(this.el).find('#foursquare-checkin').is(':checked');
         this.model.set({
-            allow_checkin: checked
+            allow_checkin: $(this.el).find('#foursquare-checkin').is(':checked')
         });
     },
     
     facebook_link: function()
     {
-        var checked = $(this.el).find('#facebook-link').is(':checked');
         this.model.set({
-            show_profile_link: checked
+            show_profile_link: $(this.el).find('#facebook-link').is(':checked')
         });
     },
     
     facebook_newsfeed: function()
     {
-        var checked = $(this.el).find('#facebook-newsfeed').is(':checked');
         this.model.set({
-            allow_newsfeed_posts: checked
+            allow_newsfeed_posts: $(this.el).find('#facebook-newsfeed').is(':checked')
         });
     },
     
     facebook_gallery: function()
     {
-        var checked = $(this.el).find('#facebook-gallery').is(':checked');
         this.model.set({
-            allow_gallery_posts: checked
+            allow_gallery_posts: $(this.el).find('#facebook-gallery').is(':checked')
+        });
+    },
+    
+    tumblr_link: function()
+    {
+        this.model.set({
+            show_name: $(this.el).find('#tumblr-link').is(':checked')
+        });
+    },
+    
+    tumblr_post: function()
+    {
+        this.model.set({
+            allow_posts: $(this.el).find('#tumblr-post').is(':checked')
         });
     }
     
