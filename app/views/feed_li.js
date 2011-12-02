@@ -5,14 +5,14 @@ tripmapper.views.feed_li = Backbone.View.extend({
         "click .goto-map":"goto_map",
         "submit .comment-form":"comment"
     },
-    initialize: function(){
+    initialize: function(init_options){
+        this.template = init_options.template
         this.map_url = 
             'map/?zoom=' + tripmapper.constants.default_zoom + 
             '&lat=' + this.model.get('location').latitude + 
             '&lng=' + this.model.get('location').longitude + 
             '&photo_id=' + this.model.get('id');
     },
-    template: _.template( $("#feed-li-template").html() ),
     load_reactions: function(reload){
         if(!this.reactions || reload){
             // console.warn('load_reactions',this,this.model.id);

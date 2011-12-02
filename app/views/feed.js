@@ -1,9 +1,9 @@
 tripmapper.views.feed = Backbone.View.extend({
 
-    el: $("#feed"),
-
     events: {
-        "click button.more":"more"
+        "click button.more": "more",
+        "click .list-view": "list_view",
+        "click .grid-view": "grid_view"
     },
 
     initialize: function( init_options )
@@ -42,12 +42,13 @@ tripmapper.views.feed = Backbone.View.extend({
             this.el.find('h1').text("Latest Photos");
         }
         
+        
         var feed_view = this;
         
         this.el
             .live('pagehide', function(e)
             {
-                var photoSwipeInstance = Code.PhotoSwipe.getInstance( feed_view.el.attr('id') );
+                var photoSwipeInstance = Code.PhotoSwipe.getInstance( 'feed' );
 
                 if (typeof photoSwipeInstance != "undefined" && photoSwipeInstance != null)
                 {
@@ -56,7 +57,7 @@ tripmapper.views.feed = Backbone.View.extend({
                 return true; 
             });
         
-        this.el.find('ul').empty();
+        this.el.find('ul.gallery').empty();
         
         $.mobile.changePage( $("#feed"), {
             changeHash: false,
@@ -70,31 +71,37 @@ tripmapper.views.feed = Backbone.View.extend({
         this.populate_feed();
     },
     
+    photoswipe_init: function()
+    {
+        // detach the previous photoswipe instance if it exists
+        var photoSwipeInstance = Code.PhotoSwipe.getInstance( 'feed' );
+
+        if (typeof photoSwipeInstance != "undefined" && photoSwipeInstance != null)
+        {
+            Code.PhotoSwipe.detatch(photoSwipeInstance);
+        }
+        // make sure we set the param backButtonHideEnabled:false to prevent photoswipe from changing the hash
+        var photoSwipeInstance = $( "ul.gallery a.gallery_link", this.el )
+            .photoSwipe( {
+                backButtonHideEnabled: false
+            }, 'feed' );
+
+        $.mobile.hidePageLoadingMsg();
+    },
+    
     populate_feed: function( additional_data )
     {
         var feed_view = this;
         var options = {
             success: function()
             {
-                var feed_list = new tripmapper.views.feed_list({
+                feed_view.feed_list = new tripmapper.views.feed_list({
+                    el: feed_view.el.find('ul.gallery').eq(0),
                     collection: feed_view.photo_collection
                 });
 
-                feed_list.render(function()
-                {
-                    // detach the previous photoswipe instance if it exists
-                    var photoSwipeInstance = Code.PhotoSwipe.getInstance( feed_view.el.attr('id') );
-
-                    if (typeof photoSwipeInstance != "undefined" && photoSwipeInstance != null)
-                    {
-                        Code.PhotoSwipe.detatch(photoSwipeInstance);
-                    }
-                    // make sure we set the param backButtonHideEnabled:false to prevent photoswipe from changing the hash
-                    var photoSwipeInstance = $("ul.gallery a.gallery_link", feed_view.el).photoSwipe({backButtonHideEnabled:false},  feed_view.el.attr('id'));
-                    $.mobile.hidePageLoadingMsg();
-                });
-                // store the query against the feed element
-                feed_view.el.data('query',{data:feed_view.photo_collection.data,auth:tripmapper.auth});
+                feed_view.feed_list.render( feed_view.photoswipe_init );
+                $.mobile.hidePageLoadingMsg();
             },
             error:function()
             {
@@ -118,5 +125,19 @@ tripmapper.views.feed = Backbone.View.extend({
     {
         this.populate_feed({max_date:this.photo_collection.last().get('date')})
         // console.warn('more',{max_date:this.photo_collection.last().get('date')});
+    },
+    
+    list_view: function()
+    {
+        console.warn( "list_view" );
+        this.feed_list.view_style = 'list';
+        this.feed_list.render( this.photoswipe_init );
+    },
+    
+    grid_view: function()
+    {
+        console.warn( "grid_view" );
+        this.feed_list.view_style = 'grid';
+        this.feed_list.render( this.photoswipe_init );
     }
 })

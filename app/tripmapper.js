@@ -172,7 +172,10 @@ tripmapper.routers = Backbone.Router.extend({
     feed: function( query_string )
     {
         var query = tripmapper.utils.get_query_params( query_string );
-        var feed_view = new tripmapper.views.feed( {query: query} );
+        var feed_view = new tripmapper.views.feed({
+            query: query,
+            el: $("#feed")
+        });
     },
 
     user: function(query)

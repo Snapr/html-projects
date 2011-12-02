@@ -4,10 +4,10 @@
 #popular #popular-timeframe{
     padding-left: 12px;
 }
-ul.popular-list {
+ul.grid-list {
     padding:0;
 }
-ul.popular-list li {
+ul.grid-list li {
     list-style:none;
     display:inline-block;
 }
