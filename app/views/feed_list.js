@@ -7,7 +7,9 @@ tripmapper.views.feed_list = Backbone.View.extend({
             grid: _.template( $("#feed-li-grid-template").html() ),
         }
 
-        this.view_style = init_options.view_style || 'list';
+        this.list_style = init_options.list_style || 'list';
+
+        console.warn( "feed list list_style", init_options, init_options.list_style, this.list_style );
     
     },
 
@@ -23,7 +25,7 @@ tripmapper.views.feed_list = Backbone.View.extend({
         {
             var li = new tripmapper.views.feed_li({
                 model: item,
-                template: feed_list.li_templates[feed_list.view_style]
+                template: feed_list.li_templates[feed_list.list_style]
             });
             li.model.bind( 'change:comments', function()
             {
@@ -40,7 +42,7 @@ tripmapper.views.feed_list = Backbone.View.extend({
         
         feed_list.el.trigger("create");
         
-        if (feed_list.view_style == 'list')
+        if (feed_list.list_style == 'list')
         {
             feed_list.el
                 .removeClass('grid-list')

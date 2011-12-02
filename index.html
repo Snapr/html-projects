@@ -49,7 +49,7 @@
             <!-- back button goes here -->
             
             <fieldset data-role="controlgroup" data-type="horizontal" class="ui-title feed-view-toggle">
-                <input type="radio" name="feed-view-list" id="feed-view-list" value="list" checked="true">
+                <input type="radio" name="feed-view-list" id="feed-view-list" value="list">
                 <label for="feed-view-list">List</label>
                 <input type="radio" name="feed-view-grid" id="feed-view-grid" value="grid">
                 <label for="feed-view-grid">Grid</label>
@@ -159,7 +159,7 @@
             </div>
             <div class="ui-block-b">
             <% if(logged_in) { %>
-                <a href="#feed/?username=<%=username%>" data-corners="false" data-shadow="false" data-role="button" data-theme="c" class="my-snaps" data-ajax="false">My Snaps</a>
+                <a href="#feed/?username=<%=username%>&list_style=grid" data-corners="false" data-shadow="false" data-role="button" data-theme="c" class="my-snaps" data-ajax="false">My Snaps</a>
             <% }else{ %>
                 <a href="#" data-corners="false" data-shadow="false" data-role="button" data-theme="c" class="my-snaps" data-ajax="false">Latest</a>
             <% } %>

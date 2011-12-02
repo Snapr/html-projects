@@ -9,61 +9,43 @@ tripmapper.views.feed = Backbone.View.extend({
     {
         // console.warn( 'initialize feed view', init_options.query );
         var query_data = init_options.query;
+
+        var list_style = query_data.list_style || 'list';
+
+        var toggle_container = this.el.find( ".feed-view-toggle" );
+        toggle_container.find( "input[type='radio']" ).attr( "checked", false );
         
-        this.el.find('h1').text("Feed");
-        
-        if (query_data.username)
+        if (list_style == 'grid')
         {
-            this.el.find('h1').text(query_data.username);
+            toggle_container.find("#feed-view-grid").attr( "checked", true );
         }
-        if (query_data.keywords)
+        else
         {
-            this.el.find('h1').text("Search for: " + query_data.keywords);
+            toggle_container.find("#feed-view-list").attr( "checked", true );
         }
-        if (query_data.area)
-        {
-            this.el.find('h1').text("Location Feed");
-        }
-        if (query_data.spot)
-        {
-            this.el.find('h1').text("Venue Feed");
-        }
-        if(query_data.favorited_by)
-        {
-            this.el.find('h1').text("Favorites");
-        }
-        if(query_data.group == 'following')
-        {
-            this.el.find('h1').text("Feed");
-        }
-        if(_.isEqual(query_data, {}))
-        {
-            this.el.find('h1').text("Latest Photos");
-        }
-        
+
         var feed_view = this;
+
+        // feed_view.el.find('ul.gallery').empty();
         
-        this.el
-            .live('pagehide', function(e)
+        this.el.live( 'pageshow', function()
+        {
+            toggle_container.find( "input[type='radio']" ).checkboxradio( "refresh" );
+
+        });
+
+        this.el.live('pagehide', function( e )
+        {
+            var photoSwipeInstance = Code.PhotoSwipe.getInstance( 'feed' );
+
+            if (typeof photoSwipeInstance != "undefined" && photoSwipeInstance != null)
             {
-                var photoSwipeInstance = Code.PhotoSwipe.getInstance( 'feed' );
+                Code.PhotoSwipe.detatch(photoSwipeInstance);
+            }
+            
+            return true; 
+        });
 
-                if (typeof photoSwipeInstance != "undefined" && photoSwipeInstance != null)
-                {
-                    Code.PhotoSwipe.detatch(photoSwipeInstance);
-                }
-                return true; 
-            });
-        
-        // this.el.find('ul.gallery').empty();
-
-        this.photo_collection = new tripmapper.models.photo_collection();
-        this.photo_collection.url = tripmapper.api_base + "/search/";
-        this.photo_collection.data = query_data;
-        this.photo_collection.data.n = 10;
-        this.populate_feed();
-
-        
         // if we are coming from the map view do a flip, otherwise do a slide transition
         if ($.mobile.activePage.attr('id') == 'map' )
         {
@@ -76,9 +58,14 @@ tripmapper.views.feed = Backbone.View.extend({
         
         $.mobile.changePage( $("#feed"), {
             changeHash: false,
-            transition: transition,
-            role: 'page'
+            transition: transition
         });
+        
+        this.photo_collection = new tripmapper.models.photo_collection();
+        this.photo_collection.url = tripmapper.api_base + "/search/";
+        this.photo_collection.data = query_data;
+        this.photo_collection.data.n = 10;
+        this.populate_feed();
         
     },
     
@@ -109,7 +96,9 @@ tripmapper.views.feed = Backbone.View.extend({
     {
 
         
-        var list_style = this.el.find(".feed-view-navbar .ui-btn-active").is(".grid-view") && 'grid' || 'list';
+        var list_style = this.el.find("#feed-view-grid").is(":checked") && 'grid' || 'list';
+        
+        console.warn('populate feed list style', list_style);
         
         if (this.feed_list)
         {
@@ -163,14 +152,14 @@ tripmapper.views.feed = Backbone.View.extend({
     {
 
         var input_target = $('#' + e.currentTarget.htmlFor);
-        var view_style = input_target.val();
+        var list_style = input_target.val();
         
         var container = input_target.closest( ".feed-view-toggle" );
         container.find( "input[type='radio']" ).attr( "checked", false );
         input_target.attr( "checked", true );
         container.find( "input[type='radio']" ).checkboxradio( "refresh" );
         
-        this.feed_list.view_style = view_style;
+        this.feed_list.list_style = list_style;
         this.feed_list.render( this.photoswipe_init );
 
     }
