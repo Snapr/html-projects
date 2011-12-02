@@ -95,7 +95,7 @@ tripmapper.views.feed = Backbone.View.extend({
         var options = {
             success: function()
             {
-                feed_view.feed_list = new tripmapper.views.feed_list({
+                feed_view.feed_list = feed_view.feed_list || new tripmapper.views.feed_list({
                     el: feed_view.el.find('ul.gallery').eq(0),
                     collection: feed_view.photo_collection
                 });
@@ -109,6 +109,7 @@ tripmapper.views.feed = Backbone.View.extend({
                 $.mobile.hidePageLoadingMsg();
             }
         }
+        
         if (additional_data)
         {
             options.add = true;
@@ -123,7 +124,9 @@ tripmapper.views.feed = Backbone.View.extend({
     
     more: function()
     {
-        this.populate_feed({max_date:this.photo_collection.last().get('date')})
+        this.populate_feed({
+            max_date: this.photo_collection.last().get('date')
+        });
         // console.warn('more',{max_date:this.photo_collection.last().get('date')});
     },
     
