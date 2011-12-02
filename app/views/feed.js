@@ -2,8 +2,7 @@ tripmapper.views.feed = Backbone.View.extend({
 
     events: {
         "click button.more": "more",
-        "click .list-view": "list_view",
-        "click .grid-view": "grid_view"
+        "click .feed-view-toggle label": "feed_view_toggle"
     },
 
     initialize: function( init_options )
@@ -42,7 +41,6 @@ tripmapper.views.feed = Backbone.View.extend({
             this.el.find('h1').text("Latest Photos");
         }
         
-        
         var feed_view = this;
         
         this.el
@@ -57,18 +55,31 @@ tripmapper.views.feed = Backbone.View.extend({
                 return true; 
             });
         
-        this.el.find('ul.gallery').empty();
-        
-        $.mobile.changePage( $("#feed"), {
-            changeHash: false,
-            transition: "slide"
-        });
-        
+        // this.el.find('ul.gallery').empty();
+
         this.photo_collection = new tripmapper.models.photo_collection();
         this.photo_collection.url = tripmapper.api_base + "/search/";
         this.photo_collection.data = query_data;
         this.photo_collection.data.n = 10;
         this.populate_feed();
+
+        
+        // if we are coming from the map view do a flip, otherwise do a slide transition
+        if ($.mobile.activePage.attr('id') == 'map' )
+        {
+            var transition = "flip";
+        }
+        else
+        {
+            var transition = "slide";
+        }
+        
+        $.mobile.changePage( $("#feed"), {
+            changeHash: false,
+            transition: transition,
+            role: 'page'
+        });
+        
     },
     
     photoswipe_init: function()
@@ -96,14 +107,27 @@ tripmapper.views.feed = Backbone.View.extend({
     
     populate_feed: function( additional_data )
     {
+
+        
+        var list_style = this.el.find(".feed-view-navbar .ui-btn-active").is(".grid-view") && 'grid' || 'list';
+        
+        if (this.feed_list)
+        {
+            this.feed_list.list_style = list_style;
+        }
+
         var feed_view = this;
         var options = {
             success: function()
             {
-                feed_view.feed_list = feed_view.feed_list || new tripmapper.views.feed_list({
-                    el: feed_view.el.find('ul.gallery').eq(0),
-                    collection: feed_view.photo_collection
-                });
+                if (!feed_view.feed_list)
+                {
+                    feed_view.feed_list = new tripmapper.views.feed_list({
+                        el: feed_view.el.find('ul.gallery').eq(0),
+                        collection: feed_view.photo_collection,
+                        list_style: list_style
+                    });
+                }
 
                 feed_view.feed_list.render( feed_view.photoswipe_init );
                 $.mobile.hidePageLoadingMsg();
@@ -135,17 +159,20 @@ tripmapper.views.feed = Backbone.View.extend({
         // console.warn('more',{max_date:this.photo_collection.last().get('date')});
     },
     
-    list_view: function()
+    feed_view_toggle: function(e)
     {
-        console.warn( "list_view" );
-        this.feed_list.view_style = 'list';
+
+        var input_target = $('#' + e.currentTarget.htmlFor);
+        var view_style = input_target.val();
+        
+        var container = input_target.closest( ".feed-view-toggle" );
+        container.find( "input[type='radio']" ).attr( "checked", false );
+        input_target.attr( "checked", true );
+        container.find( "input[type='radio']" ).checkboxradio( "refresh" );
+        
+        this.feed_list.view_style = view_style;
         this.feed_list.render( this.photoswipe_init );
-    },
-    
-    grid_view: function()
-    {
-        console.warn( "grid_view" );
-        this.feed_list.view_style = 'grid';
-        this.feed_list.render( this.photoswipe_init );
+
     }
+
 })

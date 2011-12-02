@@ -1,15 +1,14 @@
 tripmapper.views.feed_list = Backbone.View.extend({
 
-    initialize: function()
+    initialize: function( init_options )
     {
         this.li_templates = {
             list: _.template( $("#feed-li-list-template").html() ),
             grid: _.template( $("#feed-li-grid-template").html() ),
         }
 
-        this.view_style = 'list';
-
-        this.render();
+        this.view_style = init_options.view_style || 'list';
+    
     },
 
     render: function( callback )

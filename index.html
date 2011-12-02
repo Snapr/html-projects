@@ -46,22 +46,24 @@
     </div><!-- /page -->
     <div id="feed" data-add-back-btn="true" data-role="page">
         <div data-role="header" data-position="fixed">
-            <h1>Feed</h1>
+            <!-- back button goes here -->
+            
+            <fieldset data-role="controlgroup" data-type="horizontal" class="ui-title feed-view-toggle">
+                <input type="radio" name="feed-view-list" id="feed-view-list" value="list" checked="true">
+                <label for="feed-view-list">List</label>
+                <input type="radio" name="feed-view-grid" id="feed-view-grid" value="grid">
+                <label for="feed-view-grid">Grid</label>
+            </fieldset>
+
             <a href="#/" data-ajax="false" class="ui-btn-right">Menu</a>
-            <div data-role="navbar">
-                <ul>
-                    <li><a class="ui-btn-active list-view">List</a></li>
-                    <li><a class="grid-view">Grid</a></li>
-                </ul>
-            </div>
+
         </div>
         <div data-role="content">
             <ul class="gallery">
             </ul>
         </div>
-        <!-- <div data-role="footer"> -->
-            <button class="more ui-btn-right">More</button>
-        <!-- </div> -->
+
+        <button class="more ui-btn-right">More</button>
     </div><!-- /page -->
     <div id="login" data-add-back-btn="true" data-role="dialog">
         <div data-role="header">
