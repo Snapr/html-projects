@@ -80,11 +80,16 @@ tripmapper.views.feed = Backbone.View.extend({
         {
             Code.PhotoSwipe.detatch(photoSwipeInstance);
         }
-        // make sure we set the param backButtonHideEnabled:false to prevent photoswipe from changing the hash
-        var photoSwipeInstance = $( "ul.gallery a.gallery_link", this.el )
-            .photoSwipe( {
-                backButtonHideEnabled: false
-            }, 'feed' );
+
+        if ($( "ul.gallery a.gallery_link", this.el ).length)
+        {
+            // make sure we set the param backButtonHideEnabled:false to prevent photoswipe from changing the hash
+            var photoSwipeInstance = $( "ul.gallery a.gallery_link", this.el )
+                .photoSwipe( {
+                    backButtonHideEnabled: false
+                }, 'feed' );
+        }
+        
 
         $.mobile.hidePageLoadingMsg();
     },
