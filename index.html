@@ -160,7 +160,7 @@
             <% if(logged_in) { %>
                 <a href="#feed/?username=<%=username%>&list_style=grid" data-corners="false" data-shadow="false" data-role="button" data-theme="c" class="my-snaps" data-ajax="false">My Snaps</a>
             <% }else{ %>
-                <a href="#" data-corners="false" data-shadow="false" data-role="button" data-theme="c" class="my-snaps" data-ajax="false">Latest</a>
+                <a href="#feed" data-corners="false" data-shadow="false" data-role="button" data-theme="c" class="my-snaps" data-ajax="false">Latest</a>
             <% } %>
             </div>
         </div>
@@ -451,6 +451,9 @@
 
 <div data-role="button" data-inline="true" class="goto-map">View on map.</div>
 
+<% if (item.get('location').spot_id){%>
+<div data-role="button" data-inline="true" class="goto-spot">@ <%= item.get('location').foursquare_venue_name %></div>
+<%}%>
 <% if (parseInt(item.get('comments')) + parseInt(item.get('favorite_count')) > 0){ %>
 <div data-role="collapsible" data-collapsed="true" class="reactions-button">
     <h3><%= item.get('comments') %> comments and <%= item.get('favorite_count') %> favorites</h3>

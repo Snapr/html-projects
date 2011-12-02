@@ -4,6 +4,7 @@ tripmapper.views.feed_li = Backbone.View.extend({
         "expand .reactions-button": "load_reactions",
         "click .favorite-button": "favorite",
         "click .goto-map": "goto_map",
+        "click .goto-spot": "goto_spot",
         "submit .comment-form": "comment"
     },
 
@@ -15,6 +16,8 @@ tripmapper.views.feed_li = Backbone.View.extend({
             '&lat=' + this.model.get('location').latitude + 
             '&lng=' + this.model.get('location').longitude + 
             '&photo_id=' + this.model.get('id');
+        this.spot_url = 
+            'feed/?spot=' + this.model.get('location').spot_id;
     },
 
     load_reactions: function( reload )
@@ -66,6 +69,12 @@ tripmapper.views.feed_li = Backbone.View.extend({
     {
         Route.navigate( this.map_url, true );
     },
+
+    goto_spot: function()
+    {
+        Route.navigate( this.spot_url, true );
+    },
+
 
     favorite: function()
     {
