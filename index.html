@@ -29,17 +29,16 @@
     <div id="popular" data-title="Popular" data-add-back-btn="true" data-role="page">
         <div data-role="header">
             <h1>Popular</h1>
+
+            <div data-role="navbar">
+                <ul id="popular-timeframe">
+                    <li><a id="popular-time-today">Today</a></li>
+                    <li><a id="popular-time-week">Week</a></li>
+                    <li><a id="popular-time-all" class="ui-btn-active">All</a></li>
+                </ul>
+            </div>
         </div>
         <div data-role="content">
-            <fieldset data-role="controlgroup" data-type="horizontal" id="popular-timeframe">
-                <input type="radio" name="options-popular-timeframe" value="time-today" id="popular-time-today">
-                <label for="popular-time-today">Today</label>
-                <input type="radio" name="options-popular-timeframe" value="time-week" id="popular-time-week">
-                <label for="popular-time-week">Week</label>
-                <input type="radio" name="options-popular-timeframe" value="time-all" id="popular-time-all" checked="true">
-                <label for="popular-time-all">All</label>
-            </fieldset>
-
             <ul class="grid-list">
             </ul>
         </div>
