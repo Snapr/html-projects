@@ -2,7 +2,7 @@ tripmapper.views.feed = Backbone.View.extend({
 
     events: {
         "click button.more": "more",
-        "click .feed-view-toggle label": "feed_view_toggle"
+        "change .feed-view-toggle": "feed_view_toggle"
     },
 
     initialize: function( init_options )
@@ -23,6 +23,17 @@ tripmapper.views.feed = Backbone.View.extend({
         {
             toggle_container.find("#feed-view-list").attr( "checked", true );
         }
+
+        if (query_data.username)
+        {
+            this.header_template = _.template( $("#feed-header-template").html() );
+            this.el.find(".feed-header").empty().append( this.header_template( {username: query_data.username} ) );
+        }
+        else
+        {
+            this.el.find(".feed-header").empty();
+        }
+
 
         var feed_view = this;
 
@@ -150,8 +161,7 @@ tripmapper.views.feed = Backbone.View.extend({
     
     feed_view_toggle: function(e)
     {
-
-        var input_target = $('#' + e.currentTarget.htmlFor);
+        var input_target = $('#' + e.target.id);
         var list_style = input_target.val();
         
         var container = input_target.closest( ".feed-view-toggle" );
@@ -161,7 +171,6 @@ tripmapper.views.feed = Backbone.View.extend({
         
         this.feed_list.list_style = list_style;
         this.feed_list.render( this.photoswipe_init );
-
     }
 
 })
