@@ -1,11 +1,18 @@
 tripmapper.models.linked_service = Backbone.Model.extend({
-    initialize: function(){
+
+    initialize: function()
+    {
         this.data = {linked_services: true}
     },
+    
     urlRoot: tripmapper.api_base + '/linked_services/',
-    url: function(method){
-        if(method){
-            switch(method){
+    
+    url: function( method )
+    {
+        if (method)
+        {
+            switch (method)
+            {
                 case 'create':
                     return this.urlRoot + this.provider + '/';
                 case 'update':
@@ -15,14 +22,21 @@ tripmapper.models.linked_service = Backbone.Model.extend({
                 default:
                     return tripmapper.api_base + '/user/settings/';
             }
-        }else{
+        }
+        else
+        {
             return this.urlRoot;
         }
     },
-    parse: function(d,xhr){
-        if(d.response && d.response.linked_services[this.provider]){
+    
+    parse: function( d, xhr )
+    {
+        if (d.response && d.response.linked_services[this.provider])
+        {
             return d.response.linked_services[this.provider];
-        }else{
+        }
+        else
+        {
             return {}
         }
     }

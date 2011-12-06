@@ -137,7 +137,7 @@ tripmapper.utils.require_login = function( funct )
             {
                 e.preventDefault();
             }
-            Route.navigate( '#login', true );
+            Route.navigate( '#/login', true );
         }
         else
         {
@@ -156,17 +156,17 @@ tripmapper.utils.get_photo_height = function( orig_width, orig_height, element )
 
 tripmapper.routers = Backbone.Router.extend({
     routes: {
-        "login": "login",
-        "logout": "logout",
-        "join": "join_snapr",
-        "search": "search",
-        "my-account": "my_account",
-        "feed": "feed",
-        "feed/?:query_string": "feed",
-        "user/:query": "user",
-        "map": "map",
-        "map/?:query_string": "map",
-        "popular": "popular",
+        "/login": "login",
+        "/logout": "logout",
+        "/join": "join_snapr",
+        "/search": "search",
+        "/my-account": "my_account",
+        "/feed": "feed",
+        "/feed/?:query_string": "feed",
+        "/user/:query": "user",
+        "/map": "map",
+        "/map/?:query_string": "map",
+        "/popular": "popular",
         "*path": "home"
     },
 

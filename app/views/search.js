@@ -45,15 +45,15 @@ tripmapper.views.search = Backbone.View.extend({
 
         switch(type){
             case 'location':
-                Route.navigate( "map/?location=" + keywords, true );
+                alert( "Coming soon" );
+                // Route.navigate( "/map/?location=" + keywords, true );
                 break;
             case 'tag':
-                alert( "Coming soon" );
-                // Route.navigate( "feed/?keywords=" + keywords, true );
+                Route.navigate( "/feed/?keywords=" + keywords, true );
                 break;
             case 'user':
                 alert( "Coming soon" );
-                // Route.navigate( "people/?username=" + keywords, true );
+                // Route.navigate( "/people/?username=" + keywords, true );
                 break;
         }
         
