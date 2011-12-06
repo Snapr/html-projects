@@ -3,7 +3,8 @@ tripmapper.views.map = Backbone.View.extend({
     el: $("#map"),
 
     events: {
-        "change #map-filter":"update_filter"
+        "change #map-filter": "update_filter",
+        "click #map-disambituation-cancel": "hide_dis"
     },
 
     initialize: function( init_options )
@@ -40,11 +41,24 @@ tripmapper.views.map = Backbone.View.extend({
             transition: 'flip'
         } );
 
-        this.create_map();
+        this.geocoder = new google.maps.Geocoder();
+
+
+        if (this.map)
+        {
+            console.warn( "map already" );
+            this.search_location( this.query.location );
+        }
+        else
+        {
+            console.warn( "create map" );
+            this.create_map( this.query.location );
+        }
+
         // this.render();
     },
     
-    create_map: function()
+    create_map: function( location )
     {
         this.map = new google.maps.Map(
             document.getElementById("google-map"),
@@ -76,6 +90,11 @@ tripmapper.views.map = Backbone.View.extend({
             // console.warn( 'idle get thumbs', query );
             map_view.get_thumbs( query );
         });
+        
+        if (location)
+        {
+            this.search_location( location );
+        }
 
     },
     
@@ -131,34 +150,91 @@ tripmapper.views.map = Backbone.View.extend({
         });
     },
     
+    hide_dis: function()
+    {
+        this.el.find("#map-disambiguation").hide();
+    },
+    
+    show_dis: function()
+    {
+        this.el.find("#map-disambiguation").show();
+    },
+    
+    search_location: function( search_query )
+    {
+
+        var map_view = this;
+        this.geocoder.geocode({"address": search_query}, function( results, status )
+        {
+            if (status == google.maps.GeocoderStatus.OK)
+            {
+                //if there is more than one result, show list
+                if (results.length > 1)
+                {
+                    var li_template = _.template( $("#map-disambiguation-li-template").html() );
+                    var dis_list = $("#map-disambiguation-list").empty();
+                    _.each( results, function( result )
+                    {
+                        var li = new tripmapper.views.map_disambiguation_li({
+                            result: result,
+                            template: li_template,
+                            map: map_view.map,
+                            parent_view: map_view
+                        });
+
+                        dis_list.append( li.render().el );
+                    });
+                    
+                    map_view.show_dis();
+                    dis_list.listview().listview("refresh");
+                }
+                else
+                {
+                    map_view.hide_dis();
+                    map_view.map.fitBounds(results[0].geometry.bounds);
+                }
+            }
+            else
+            {
+                var again = confirm( "Sorry, your search returned no results. Would you like to search again?");
+
+                if (again)
+                {
+                    Route.navigate( "/search", true);
+                }
+            }
+        });
+    },
+    
     update_filter: function()
     {
         var filter = $('#map-filter').val();
-        switch (filter){
+        switch (filter)
+        {
             case 'all':
                 var query = {
-                    n:10
+                    n: 10
                 };
                 break;
             case 'following':
                 var query = {
-                    group:'following',
-                    n:10
+                    group: 'following',
+                    n: 10
                 };
                 break;
             case 'just-me':
                 var query = {
-                    username:'.',
-                    n:10
+                    username: '.',
+                    n: 10
                 };
                 break;
             case 'just-one':
                 var query = {
-                    n:1
+                    n: 1
                 };
                 break;
         }
-        this.get_thumbs(query);
-        console.warn('filter',filter);
+        
+        this.get_thumbs( query );
     }
 })

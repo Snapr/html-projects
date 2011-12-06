@@ -148,7 +148,15 @@
             <a href="#/" data-ajax="false" class="ui-btn-right">Menu</a>
         </div>
         <div id="map-layer">
-            <div data-role="content" id="google-map">
+            <div id="google-map">
+            </div>
+            <div id="map-disambiguation" data-role="content" data-theme="a" style="
+            position: absolute;
+            display: none;">
+                <h4>Did you mean&hellip;</h4>
+                <ul data-role="listview" id="map-disambiguation-list">
+                </ul>
+                <button id="map-disambituation-cancel">Cancel</button>
             </div>
         </div>
         <div data-role="footer" data-position="fixed">
@@ -550,6 +558,10 @@
     </div>
 </script>
 
+<script id="map-disambiguation-li-template" type="text/template">
+<a data-ajax="false" class="map-link"><%= location.formatted_address %></a>
+</script>
+
 <script src="app/libs/json2.js" type="text/javascript" charset="utf-8"></script> <!-- just in case the browser sucks at JSON -->
 
 <script src="app/libs/jquery-1.6.4.min.js" type="text/javascript" charset="utf-8"></script>
@@ -613,6 +625,7 @@ $(document).bind("mobileinit", function(){
 <script src="app/views/feed_li.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/reactions.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/map.js" type="text/javascript" charset="utf-8"></script>
+<script src="app/views/map_disambiguation_li.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/join_snapr.js" type="text/javascript" charset="utf-8"></script>
 
 
