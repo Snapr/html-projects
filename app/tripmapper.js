@@ -159,6 +159,7 @@ tripmapper.routers = Backbone.Router.extend({
         "login": "login",
         "logout": "logout",
         "join": "join_snapr",
+        "search": "search",
         "my-account": "my_account",
         "feed": "feed",
         "feed/?:query_string": "feed",
@@ -232,6 +233,11 @@ tripmapper.routers = Backbone.Router.extend({
     {
         var query = tripmapper.utils.get_query_params( query_string );
         var map_view = new tripmapper.views.map( {query: query} );
+    },
+    
+    search: function()
+    {
+        var search = new tripmapper.views.search();
     }
 });
 
