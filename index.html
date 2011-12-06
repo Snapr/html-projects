@@ -10,16 +10,19 @@
         <link rel="stylesheet" href="css/tripmapper.css" type="text/css" charset="utf-8">
     </head> 
 <body> 
+
     <div id="home" data-title="Welcome" data-role="page">
         <div data-role="header" data-position="fixed">
             <h1>TripMapper</h1>
-            <a href="#/search" data-ajax="false" class="ui-btn-right">Search</a>
+            <a href="#/search" data-ajax="false" data-icon="search" data-iconpos="notext" class="ui-btn-right"></a>
         </div><!-- /header -->
 
         <div data-role="content">
         </div><!-- /content -->
 
     </div><!-- /page -->
+
+
     <div id="my-account" data-title="My Account" data-add-back-btn="true" data-role="page">
         <div data-role="header" data-position="fixed">
             <h1>My Account</h1>
@@ -27,9 +30,16 @@
         <div data-role="content">
         </div>
     </div>
+
+
     <div id="popular" data-title="Popular" data-add-back-btn="true" data-role="page">
         <div data-role="header">
             <h1>Popular</h1>
+
+            <div class="right-header-buttons">
+                <a href="#/search" data-ajax="false" data-role="button" data-icon="search" data-iconpos="notext"></a>
+                <a href="#/" data-ajax="false" data-role="button" data-icon="home" data-iconpos="notext"></a>
+            </div>
 
             <div data-role="navbar">
                 <ul id="popular-timeframe">
@@ -44,9 +54,12 @@
             </ul>
         </div>
     </div><!-- /page -->
-    <div id="feed" data-add-back-btn="true" data-role="page">
+
+
+    <div id="feed" data-role="page">
         <div data-role="header" data-position="fixed">
-            <!-- back button goes here -->
+
+            <a data-rel="back" data-icon="arrow-l">Back</a>
             
             <fieldset data-role="controlgroup" data-type="horizontal" class="ui-title feed-view-toggle">
                 <input type="radio" name="feed-view-list" id="feed-view-list" value="list">
@@ -55,8 +68,12 @@
                 <label for="feed-view-grid">Grid</label>
             </fieldset>
 
-            <a href="#/" data-ajax="false" class="ui-btn-right">Menu</a>
-
+            <div class="right-header-buttons">
+                <a href="#/search" data-ajax="false" data-role="button" data-icon="search" data-iconpos="notext"></a>
+                <a href="#/" data-ajax="false" data-role="button" data-icon="home" data-iconpos="notext"></a>
+            </div>
+            <div class="feed-header">
+            </div>
         </div>
         <div data-role="content">
             <ul class="gallery">
@@ -64,7 +81,10 @@
         </div>
 
         <button class="more ui-btn-right">More</button>
+
     </div><!-- /page -->
+
+
     <div id="login" data-add-back-btn="true" data-role="dialog">
         <div data-role="header">
             <h1>Log in</h1>
@@ -77,8 +97,7 @@
                     <input type="submit" name="login" data-theme="b" value="Log In">
                 </fieldset>
             </form>
-            
-            
+
             <!-- <p>Log in with:</p>
             <div data-role="navbar">
                 <ul>
@@ -87,13 +106,15 @@
                 </ul>
             </div> -->
             
-            
             <ul data-role="listview" data-theme="c" data-inset="true">
                 <li><a href="#/join" data-ajax="false">Join Snapr</a></li>
                 <!-- <li><a href="#">Forgot your username or password?</a></li> -->
             </ul>
         </div>
     </div><!-- /page -->
+
+
+
     <div id="join-snapr" data-add-back-btn="true" data-role="dialog">
         <div data-role="header">
             <h1>Join Snapr</h1>
@@ -121,6 +142,7 @@
         </div>
     </div><!-- /page -->
 
+
     <div id="search" data-add-back-btn="true" data-role="dialog">
         <div data-role="header">
             <h1>Search</h1>
@@ -145,7 +167,12 @@
     <div id="map" data-add-back-btn="true" data-role="page">
         <div data-role="header" data-position="fixed">
             <h1>Map</h1>
-            <a href="#/" data-ajax="false" class="ui-btn-right">Menu</a>
+
+            <div class="right-header-buttons">
+                <a href="#/search" data-ajax="false" data-role="button" data-icon="search" data-iconpos="notext"></a>
+                <a href="#/" data-ajax="false" data-role="button" data-icon="home" data-iconpos="notext"></a>
+            </div>
+
         </div>
         <div id="map-layer">
             <div id="google-map">

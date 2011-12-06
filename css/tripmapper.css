@@ -12,6 +12,12 @@ ul.grid-list li {
     display:inline-block;
 }
 
+.right-header-buttons {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}
+
 /*
  * SNAPR MAP DISPLAY
  * 
