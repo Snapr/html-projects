@@ -3,6 +3,7 @@ tripmapper.views.search = Backbone.View.extend({
     el: $('#search'),
 
     events: {
+        "change #search-keywords": "update_placeholder",
         "change #search-type": "update_placeholder",
         "submit #search-form": "search"
     },
