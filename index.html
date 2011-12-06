@@ -493,7 +493,13 @@
 
 <script id="feed-header-template" type="text/template">
 <div class="ui-body ui-body-e">
-    <h4><%= username %></h4>
+<% if (query_data.keywords){ %>
+    <p>Search for <span class="search-term"><%= query_data.keywords %></span></p>
+<%}else if (query_data.username){ %>
+    <p><%= query_data.username %></p>
+<%}else if (query_data.spot){%>
+    <p>Spot ID <%= query_data.spot %></p>
+<%}%>
 </div>
 </script>
 
@@ -648,6 +654,7 @@ $(document).bind("mobileinit", function(){
 <script src="app/views/popular.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/thumbs_li.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/feed.js" type="text/javascript" charset="utf-8"></script>
+<script src="app/views/feed_header.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/feed_list.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/feed_li.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/reactions.js" type="text/javascript" charset="utf-8"></script>

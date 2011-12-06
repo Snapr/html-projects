@@ -24,16 +24,11 @@ tripmapper.views.feed = Backbone.View.extend({
             toggle_container.find("#feed-view-list").attr( "checked", true );
         }
 
-        if (query_data.username)
-        {
-            this.header_template = _.template( $("#feed-header-template").html() );
-            this.el.find(".feed-header").empty().append( this.header_template( {username: query_data.username} ) );
-        }
-        else
-        {
-            this.el.find(".feed-header").empty();
-        }
-
+        
+        this.feed_header = new tripmapper.views.feed_header({
+            query_data: query_data,
+            el: this.el.find(".feed-header").empty()
+        });
 
         var feed_view = this;
 

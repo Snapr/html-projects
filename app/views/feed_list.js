@@ -9,7 +9,7 @@ tripmapper.views.feed_list = Backbone.View.extend({
 
         this.list_style = init_options.list_style || 'list';
 
-        console.warn( "feed list list_style", init_options, init_options.list_style, this.list_style );
+        // console.warn( "feed list list_style", init_options, init_options.list_style, this.list_style );
     
     },
 
@@ -17,7 +17,7 @@ tripmapper.views.feed_list = Backbone.View.extend({
     {
         var feed_list = this;
         
-        console.warn( "render", feed_list );
+        // console.warn( "render", feed_list );
         
         feed_list.el.empty();
         
