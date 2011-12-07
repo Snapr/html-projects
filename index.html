@@ -114,6 +114,15 @@
     </div><!-- /page -->
 
 
+    <div id="user-profile" data-add-back-btn="true" data-role="dialog">
+        <div data-role="header">
+            <h1>User Profile</h1>
+        </div>
+        <div data-role="content">
+            <p>user info</p>
+        </div>
+    </div>
+
 
     <div id="join-snapr" data-add-back-btn="true" data-role="dialog">
         <div data-role="header">
@@ -409,86 +418,85 @@
 </script>
 
 <script id="linked-service-template" type="text/template">
-<div data-role="collapsible" data-collapsed="true">
-<% switch(service.provider) { case 'twitter': %>
-    <h3>Twitter - <%= service.get('username') %></h3>
-    <fieldset data-role="controlgroup">
+    <div data-role="collapsible" data-collapsed="true">
+    <% switch(service.provider) { case 'twitter': %>
+        <h3>Twitter - <%= service.get('username') %></h3>
+        <fieldset data-role="controlgroup">
         
-        <button class="twitter-import-profile">Import Profile</button>
+            <button class="twitter-import-profile">Import Profile</button>
         
-        <input type="checkbox" name="twitter-link" id="twitter-link" class="custom" 
-        <% if(service.get('show_username')){%> checked="true" <%}%> />
-        <label for="twitter-link">Link to my profile from Snapr</label>
+            <input type="checkbox" name="twitter-link" id="twitter-link" class="custom" 
+            <% if(service.get('show_username')){%> checked="true" <%}%> />
+            <label for="twitter-link">Link to my profile from Snapr</label>
         
-        <input type="checkbox" name="twitter-tweet" id="twitter-tweet" class="custom"
-        <% if(service.get('allow_tweet')){%> checked="true" <%}%> />
-        <label for="twitter-tweet">Allow tweets from Snapr</label>
+            <input type="checkbox" name="twitter-tweet" id="twitter-tweet" class="custom"
+            <% if(service.get('allow_tweet')){%> checked="true" <%}%> />
+            <label for="twitter-tweet">Allow tweets from Snapr</label>
         
-    </fieldset>
-<% break; case 'foursquare': %>
-    <h3>Foursquare - <%= service.get('username') %></h3>
-    <fieldset data-role="controlgroup">
+        </fieldset>
+    <% break; case 'foursquare': %>
+        <h3>Foursquare - <%= service.get('username') %></h3>
+        <fieldset data-role="controlgroup">
 
-        <input type="checkbox" name="foursquare-link" id="foursquare-link" class="custom" 
-        <% if(service.get('show_username')){%> checked="true" <%}%> />
-        <label for="foursquare-link">Display my foursquare username</label>
+            <input type="checkbox" name="foursquare-link" id="foursquare-link" class="custom" 
+            <% if(service.get('show_username')){%> checked="true" <%}%> />
+            <label for="foursquare-link">Display my foursquare username</label>
 
-        <input type="checkbox" name="foursquare-checkin" id="foursquare-checkin" class="custom" 
-        <% if(service.get('allow_checkin')){%> checked="true" <%}%> />
-        <label for="foursquare-checkin">Allow checkins from Snapr</label>
+            <input type="checkbox" name="foursquare-checkin" id="foursquare-checkin" class="custom" 
+            <% if(service.get('allow_checkin')){%> checked="true" <%}%> />
+            <label for="foursquare-checkin">Allow checkins from Snapr</label>
 
-    </fieldset>
-<% break; case 'tumblr': %>
-    <h3>Tumblr - <%= service.get('username') %></h3>
-    <fieldset data-role="controlgroup">
+        </fieldset>
+    <% break; case 'tumblr': %>
+        <h3>Tumblr - <%= service.get('username') %></h3>
+        <fieldset data-role="controlgroup">
 
-        <input type="checkbox" name="tumblr-link" id="tumblr-link" class="custom" 
-        <% if(service.get('show_username')){%> checked="true" <%}%> />
-        <label for="tumblr-link">Display my Tumblr username</label>
+            <input type="checkbox" name="tumblr-link" id="tumblr-link" class="custom" 
+            <% if(service.get('show_username')){%> checked="true" <%}%> />
+            <label for="tumblr-link">Display my Tumblr username</label>
 
-        <input type="checkbox" name="tumblr-post" id="tumblr-post" class="custom" 
-        <% if(service.get('allow_post')){%> checked="true" <%}%> />
-        <label for="tumblr-post">Allow posts from Snapr</label>
+            <input type="checkbox" name="tumblr-post" id="tumblr-post" class="custom" 
+            <% if(service.get('allow_post')){%> checked="true" <%}%> />
+            <label for="tumblr-post">Allow posts from Snapr</label>
 
-    </fieldset>
-<% break; case 'facebook': %>
-    <h3>Facebook - <%= service.get('username') %></h3>
-    <fieldset data-role="controlgroup">
+        </fieldset>
+    <% break; case 'facebook': %>
+        <h3>Facebook - <%= service.get('username') %></h3>
+        <fieldset data-role="controlgroup">
 
-        <input type="checkbox" name="facebook-link" id="facebook-link" class="custom" 
-        <% if(service.get('show_profile_link')){%> checked="true" <%}%> />
-        <label for="facebook-link">Link to my profile from Snapr</label>
+            <input type="checkbox" name="facebook-link" id="facebook-link" class="custom" 
+            <% if(service.get('show_profile_link')){%> checked="true" <%}%> />
+            <label for="facebook-link">Link to my profile from Snapr</label>
         
-        <input type="checkbox" name="facebook-newsfeed" id="facebook-newsfeed" class="custom"
-        <% if(service.get('allow_newsfeed_posts')){%> checked="true" <%}%> />
-        <label for="facebook-newsfeed">Allow newsfeed posts from Snapr</label>
+            <input type="checkbox" name="facebook-newsfeed" id="facebook-newsfeed" class="custom"
+            <% if(service.get('allow_newsfeed_posts')){%> checked="true" <%}%> />
+            <label for="facebook-newsfeed">Allow newsfeed posts from Snapr</label>
 
-        <input type="checkbox" name="facebook-gallery" id="facebook-gallery" class="custom"
-        <% if(service.get('allow_gallery_posts')){%> checked="true" <%}%> />
-        <label for="facebook-gallery">Allow newsfeed posts from Snapr</label>
+            <input type="checkbox" name="facebook-gallery" id="facebook-gallery" class="custom"
+            <% if(service.get('allow_gallery_posts')){%> checked="true" <%}%> />
+            <label for="facebook-gallery">Allow newsfeed posts from Snapr</label>
 
-    </fieldset>
-    <fieldset data-role="controlgroup">
+        </fieldset>
+        <fieldset data-role="controlgroup">
 
-        <label for="facebook-gallery-name">Gallery Name</label>
-        <input type="text" name="facebook-gallery-name" id="facebook-gallery-name" class="custom"
-        value="<%= service.get('gallery_name') %>" />
+            <label for="facebook-gallery-name">Gallery Name</label>
+            <input type="text" name="facebook-gallery-name" id="facebook-gallery-name" class="custom"
+            value="<%= service.get('gallery_name') %>" />
 
-    </fieldset>
-<% break; } %>
-    <button data-inline="true" class="unlink">Unlink</button><button data-inline="true" data-theme="b" class="save">Save</button>
-</div>
-
+        </fieldset>
+    <% break; } %>
+        <button data-inline="true" class="unlink">Unlink</button><button data-inline="true" data-theme="b" class="save">Save</button>
+    </div>
 </script>
 
 <script id="thumb-li-template" type="text/template">
-<% _.each( results, function( item, i ){ %>
-<li>
-<a data-ajax="false" href="#/feed/?photo_id=<%= item.get('id') %>&username=<%= item.get('username') %>">
-<img height="75px" width="75px" src="https://s3.amazonaws.com/media-server<%= item.get('server_id') %>.snapr.us/thm/<%= item.get('secret') %>/<%= item.get('id') %>.jpg" alt="<%= item.get('description') %>" class="thumb-image" />
-</a>
-</li>
-<% }); %>
+    <% _.each( results, function( item, i ){ %>
+    <li>
+    <a data-ajax="false" href="#/feed/?photo_id=<%= item.get('id') %>&username=<%= item.get('username') %>">
+    <img height="75px" width="75px" src="https://s3.amazonaws.com/media-server<%= item.get('server_id') %>.snapr.us/thm/<%= item.get('secret') %>/<%= item.get('id') %>.jpg" alt="<%= item.get('description') %>" class="thumb-image" />
+    </a>
+    </li>
+    <% }); %>
 </script>
 
 <script id="feed-header-template" type="text/template">
@@ -506,7 +514,7 @@
 <script id="user-header-template" type="text/template">
 <div class="ui-body ui-body-e ui-grid-b">
     <div class="ui-block-a">
-        <img height="128px" width="128px" src="http://sna.pr/avatars/<%= user.username %>?size=large" alt="<%= user.username %> avatar" />
+        <a href="#/user/?username=<%= user.username %>" data-ajax="false"><img height="128px" width="128px" src="http://sna.pr/avatars/<%= user.username %>?size=large" alt="<%= user.username %> avatar" /></a>
     </div>
     <div>
         <span><%= user.username %></span>
@@ -676,6 +684,7 @@ $(document).bind("mobileinit", function(){
 <script src="app/views/login.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/search.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/my_account.js" type="text/javascript" charset="utf-8"></script>
+<script src="app/views/user_profile.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/linked_service.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/popular.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/thumbs_li.js" type="text/javascript" charset="utf-8"></script>

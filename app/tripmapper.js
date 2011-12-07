@@ -163,7 +163,7 @@ tripmapper.routers = Backbone.Router.extend({
         "/my-account": "my_account",
         "/feed": "feed",
         "/feed/?:query_string": "feed",
-        "/user/:query": "user",
+        "/user/?:query": "user_profile",
         "/map": "map",
         "/map/?:query_string": "map",
         "/popular": "popular",
@@ -177,11 +177,6 @@ tripmapper.routers = Backbone.Router.extend({
             query: query,
             el: $("#feed")
         });
-    },
-
-    user: function(query)
-    {
-        console.warn('go to user '+ query);
     },
 
     popular: function()
@@ -238,6 +233,15 @@ tripmapper.routers = Backbone.Router.extend({
     search: function()
     {
         var search = new tripmapper.views.search();
+    },
+    
+    user_profile: function( query_string )
+    {
+        var query = tripmapper.utils.get_query_params( query_string );
+        var user_profile = new tripmapper.views.user_profile({
+            query: query,
+            el: $("#user-profile")
+        });
     }
 });
 
