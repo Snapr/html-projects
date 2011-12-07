@@ -503,6 +503,32 @@
 </div>
 </script>
 
+<script id="user-header-template" type="text/template">
+<div class="ui-body ui-body-e ui-grid-b">
+    <div class="ui-block-a">
+        <img height="128px" width="128px" src="http://sna.pr/avatars/<%= user.username %>?size=large" alt="<%= user.username %> avatar" />
+    </div>
+    <div>
+        <span><%= user.username %></span>
+        <% if (user.username == auth_username){%>
+            <button disabled="true" data-icon="tick" data-iconpos="right">That&apos;s Me</button>
+        <%}else{%>
+            <% if (user.relationship.you_follow) {%>
+            <button data-icon="minus" data-iconpos="right" class="unfollow">Unfollow</button>
+            <%}else{%>
+            <button data-icon="plus" data-iconpos="right" class="follow">Follow</button>
+            <%}%>
+        <%}%>
+            <div class="ui-grid-b">
+                <div class="ui-block-a"><span><%= user.photo_count %></span><br /><span>Photos</span></div>
+                <div class="ui-block-b"><span><%= user.followers %></span><br /><span>Followers</span></div>
+                <div class="ui-block-c"><span><%= user.following %></span><br /><span>Following</span></div>
+            </div>
+        </div>
+    
+    </div>
+</script>
+
 <script id="feed-li-list-template" type="text/template">
 <li class="feed-li">
 <div>
@@ -655,6 +681,7 @@ $(document).bind("mobileinit", function(){
 <script src="app/views/thumbs_li.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/feed.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/feed_header.js" type="text/javascript" charset="utf-8"></script>
+<script src="app/views/user_header.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/feed_list.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/feed_li.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/reactions.js" type="text/javascript" charset="utf-8"></script>
