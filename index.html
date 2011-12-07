@@ -511,7 +511,7 @@
     <div>
         <span><%= user.username %></span>
         <% if (user.username == auth_username){%>
-            <button disabled="true" data-icon="tick" data-iconpos="right">That&apos;s Me</button>
+            <button disabled="true" data-icon="check" data-iconpos="right">That&apos;s Me</button>
         <%}else{%>
             <% if (user.relationship.you_follow) {%>
             <button data-icon="minus" data-iconpos="right" class="unfollow">Unfollow</button>
