@@ -37,13 +37,11 @@ tripmapper.views.user_header = Backbone.View.extend({
     follow: function()
     {
         this.model.follow();
-        // alert( "follow " + this.model.get('user').username );
     },
     
     unfollow: function()
     {
         this.model.unfollow();
-        // alert( "unfollow " + this.model.get('user').username );
     }
     
 });

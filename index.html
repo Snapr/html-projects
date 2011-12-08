@@ -124,6 +124,21 @@
     </div>
 
 
+    <div id="people" data-add-back-btn="true" data-role="page">
+        <div data-role="header">
+            <h1>People</h1>
+        </div>
+        <div data-role="content">
+            <ul class="people-list">
+                <li><a>dpwolf</a></li>
+                <li><a>rowan</a></li>
+                <li><a>someone</a></li>
+            </ul>
+        </div>
+        
+        
+    </div>
+
     <div id="join-snapr" data-add-back-btn="true" data-role="dialog">
         <div data-role="header">
             <h1>Join Snapr</h1>
@@ -417,6 +432,24 @@
 </div>
 </script>
 
+<script id="people-li-template" type="text/template">
+    <a data-ajax="false" href="#/feed/?username=<%= user.get('username') %>">
+        <img src="http://sna.pr/avatars/<%= user.get('username') %>" alt="<%= user.get('username') %>" />
+        <h3><%= user.get('username') %></h3>
+        <p><%= user.get('photo_count') %> photos, <%= user.get('followers') %> followers</p>
+    </a>
+    <% if (user.get('username') == auth_username){%>
+        <a disabled="true" data-icon="check" data-iconpos="right"></a>
+    <%}else{%>
+        <% if (user.get('relationship').you_follow) {%>
+        <a data-icon="minus" data-iconpos="right" class="unfollow"></a>
+        <%}else{%>
+        <a data-icon="plus" data-iconpos="right" class="follow"></a>
+        <%}%>
+    <%}%>
+</script>
+
+
 <script id="linked-service-template" type="text/template">
     <div data-role="collapsible" data-collapsed="true">
     <% switch(service.provider) { case 'twitter': %>
@@ -685,6 +718,8 @@ $(document).bind("mobileinit", function(){
 <script src="app/views/search.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/my_account.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/user_profile.js" type="text/javascript" charset="utf-8"></script>
+<script src="app/views/people.js" type="text/javascript" charset="utf-8"></script>
+<script src="app/views/people_li.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/linked_service.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/popular.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/thumbs_li.js" type="text/javascript" charset="utf-8"></script>
@@ -701,6 +736,7 @@ $(document).bind("mobileinit", function(){
 
 <script src="app/models/auth.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/models/user.js" type="text/javascript" charset="utf-8"></script>
+<script src="app/models/user_collection.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/models/user_settings.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/models/linked_service.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/models/photo.js" type="text/javascript" charset="utf-8"></script>
