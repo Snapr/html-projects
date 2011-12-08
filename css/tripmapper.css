@@ -22,6 +22,30 @@ ul.grid-list li {
     padding-top: 30px;
 }
 
+.thumb-image {
+    height: 100px;
+    width: 100px;
+}
+
+.feed-content.grid {
+    padding: 0;
+}
+.feed-content.grid ul {
+    -webkit-padding-start: 0;
+}
+
+.feed-content.grid .ui-listview {
+    margin: 0;
+}
+
+.feed-content.grid ul{
+    padding-left: 5px;
+}
+
+.feed-content.grid ul li{
+    padding-right: 4px;
+}
+
 /*
  * SNAPR MAP DISPLAY
  * 

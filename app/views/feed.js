@@ -17,10 +17,12 @@ tripmapper.views.feed = Backbone.View.extend({
         
         if (list_style == 'grid')
         {
+            this.el.find(".feed-content").addClass("grid");
             toggle_container.find("#feed-view-grid").attr( "checked", true );
         }
         else
         {
+            this.el.find(".feed-content").removeClass("grid");
             toggle_container.find("#feed-view-list").attr( "checked", true );
         }
 
@@ -39,7 +41,6 @@ tripmapper.views.feed = Backbone.View.extend({
                 el: this.el.find(".feed-header").empty()
             });
         }
-        
 
         var feed_view = this;
 
@@ -174,6 +175,15 @@ tripmapper.views.feed = Backbone.View.extend({
         container.find( "input[type='radio']" ).attr( "checked", false );
         input_target.attr( "checked", true );
         container.find( "input[type='radio']" ).checkboxradio( "refresh" );
+        
+        if (list_style == "list")
+        {
+            this.el.find(".feed-content").removeClass("grid").trigger("refresh");
+        }
+        else
+        {
+            this.el.find(".feed-content").addClass("grid").trigger("refresh");
+        }
         
         this.feed_list.list_style = list_style;
         this.feed_list.render( this.photoswipe_init );
