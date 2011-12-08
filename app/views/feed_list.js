@@ -46,6 +46,7 @@ tripmapper.views.feed_list = Backbone.View.extend({
         {
             feed_list.el
                 .removeClass('grid-list')
+                .addClass('ui-listview')
                 .listview()
                 .listview("refresh");
         }
