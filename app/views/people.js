@@ -9,11 +9,11 @@ tripmapper.views.people = Backbone.View.extend({
         
         var people_view = this;
         
-        this.collection.bind( "all", function()
+        this.collection.bind( "reset", function()
         {
             people_view.render();
         });
-        
+
         // if we are coming from the map view do a flip, otherwise do a slide transition
         if ($.mobile.activePage.attr('id') == 'map' )
         {

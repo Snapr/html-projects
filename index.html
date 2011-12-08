@@ -130,9 +130,6 @@
         </div>
         <div data-role="content">
             <ul class="people-list">
-                <li><a>dpwolf</a></li>
-                <li><a>rowan</a></li>
-                <li><a>someone</a></li>
             </ul>
         </div>
         
@@ -436,7 +433,7 @@
     <a data-ajax="false" href="#/feed/?username=<%= user.get('username') %>">
         <img src="http://sna.pr/avatars/<%= user.get('username') %>" alt="<%= user.get('username') %>" />
         <h3><%= user.get('username') %></h3>
-        <p><%= user.get('photo_count') %> photos, <%= user.get('followers') %> followers</p>
+        <p><span class="photo-count"><%= user.get('photo_count') %></span> photos, <span class="followers"><%= user.get('followers') %></span> followers</p>
     </a>
     <% if (user.get('username') == auth_username){%>
         <a disabled="true" data-icon="check" data-iconpos="right"></a>
@@ -547,14 +544,14 @@
 <script id="user-header-template" type="text/template">
 <div class="ui-body ui-body-e ui-grid-b">
     <div class="ui-block-a">
-        <a href="#/user/?username=<%= user.username %>" data-ajax="false"><img height="128px" width="128px" src="http://sna.pr/avatars/<%= user.username %>?size=large" alt="<%= user.username %> avatar" /></a>
+        <a href="#/user/profile/?username=<%= user.get('username') %>" data-ajax="false"><img height="128px" width="128px" src="http://sna.pr/avatars/<%= user.get('username') %>?size=large" alt="<%= user.get('username') %> avatar" /></a>
     </div>
     <div>
         <span><%= user.username %></span>
-        <% if (user.username == auth_username){%>
+        <% if (user.get('username') == auth_username){%>
             <button disabled="true" data-icon="check" data-iconpos="right">That&apos;s Me</button>
         <%}else{%>
-            <% if (user.relationship.you_follow) {%>
+            <% if (user.get('relationship').you_follow) {%>
             <button data-icon="minus" data-iconpos="right" class="unfollow">Unfollow</button>
             <%}else{%>
             <button data-icon="plus" data-iconpos="right" class="follow">Follow</button>
@@ -563,11 +560,11 @@
             <div class="ui-grid-b">
                 <div class="ui-block-a"><span><%= user.photo_count %></span><br /><span>Photos</span></div>
                 <div class="ui-block-b">
-                    <a href="#/user/followers/?username=<%= user.username %>" data-ajax="false"><span><%= user.followers %></span>
+                    <a href="#/user/followers/?username=<%= user.get('username') %>" data-ajax="false"><span><%= user.get('followers') %></span>
                     <br /><span>Followers</span></a>
                     </div>
                 <div class="ui-block-c">
-                    <a href="#/user/following/?username=<%= user.username %>" data-ajax="false"><span><%= user.following %></span>
+                    <a href="#/user/following/?username=<%= user.get('username') %>" data-ajax="false"><span><%= user.get('following') %></span>
                     <br /><span>Following</span></a></div>
             </div>
         </div>

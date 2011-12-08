@@ -27,14 +27,14 @@ tripmapper.views.feed = Backbone.View.extend({
 
         if (query_data.username)
         {
-            this.feed_header = new tripmapper.views.user_header({
+            var feed_header = new tripmapper.views.user_header({
                 username: query_data.username,
                 el: this.el.find(".feed-header").empty()
             });
         }
         else
         {
-            this.feed_header = new tripmapper.views.feed_header({
+            var feed_header = new tripmapper.views.feed_header({
                 query_data: query_data,
                 el: this.el.find(".feed-header").empty()
             });
@@ -43,7 +43,7 @@ tripmapper.views.feed = Backbone.View.extend({
 
         var feed_view = this;
 
-        // feed_view.el.find('ul.gallery').empty();
+        feed_view.el.find('ul.gallery').empty();
         
         this.el.live( 'pageshow', function()
         {

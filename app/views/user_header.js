@@ -22,7 +22,7 @@ tripmapper.views.user_header = Backbone.View.extend({
     render: function()
     {
         this.el.empty().append( this.template({
-            user: this.model.get('user'),
+            user: this.model,
             auth_username: tripmapper.auth.get('username')
         }) ).trigger("create");
         

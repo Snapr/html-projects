@@ -18,7 +18,7 @@ tripmapper.models.user = Backbone.Model.extend({
     {
         if (d.response && d.response.user)
         {
-            return d.response;
+            return d.response.user;
         }else{
             return {};
         }
