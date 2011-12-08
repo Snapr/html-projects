@@ -32,25 +32,29 @@ tripmapper.views.people = Backbone.View.extend({
         switch (this.options.follow){
             case "following":
                 this.el.find("h1").text("Following");
+                this.el.find("#people-search").val('').attr("placeholder", "Search users " + this.options.query.username + " is following…" );
                 this.collection.get_following( this.options.query.username );
                 break;
             case "followers":
                 this.el.find("h1").text("Followers");
+                this.el.find("#people-search").val('').attr("placeholder", "Search " + this.options.query.username + "'s followers…" );
                 this.collection.get_followers( this.options.query.username );
                 break;
             default:
                 this.el.find("h1").text("Search");
+                this.el.find("#people-search").val(this.options.query.username).attr("placeholder", "Search users…" );
                 this.collection.user_search( this.options.query.username )
                 break;
         }
         
     },
     
+    events: {
+        "keyup input": "search"
+    },
+    
     render: function()
     {
-        console.warn( "render", this.collection.models );
-
-        c = this.collection;
         var people_list = this.el.find("ul.people-list").empty();
         
         var people_li_template = _.template( $("#people-li-template").html() );
@@ -67,6 +71,27 @@ tripmapper.views.people = Backbone.View.extend({
         });
         
         people_list.listview().listview("refresh");
+    },
+    
+    search: function(e)
+    {
+
+        
+        if (keywords.length > 1)
+        {
+            switch (this.options.follow){
+                case "following":
+                    // need new api
+                    break;
+                case "followers":
+                    // need new api
+                    break;
+                default:
+                    console.warn( "keypress", e, keywords )
+                    // this.collection.user_search( keywords )
+                    break;
+            }
+        }
     }
     
 });
