@@ -575,48 +575,56 @@
 
 <script id="feed-li-list-template" type="text/template">
 <li class="feed-li">
-<div>
-
-<a data-ajax="false" data-transition="slide" href="#/feed/?username=<%= item.get('username') %>"><img src="http://sna.pr/avatars/<%= item.get('username') %>/" alt="<%= item.get('username') %>" /></a>
-<div>
-    <h3><a data-ajax="false" data-transition="slide" href="#/feed/?username=<%= item.get('username') %>"><%= item.get('username') %></a></h3>
-    <p><%= item.get('location').location %> <%= item.get('date') %></p>
-</div>
-
-<a href="https://s3.amazonaws.com/media-server<%= item.get('server_id') %>.snapr.us/lrg/<%= item.get('secret') %>/<%= item.get('id') %>.jpg" rel="external" class="gallery_link"><img style="width:100%;height:<%= tripmapper.utils.get_photo_height(item.get('width'), item.get('height'), '#feed .ui-content') %>px;" src="https://s3.amazonaws.com/media-server<%= item.get('server_id') %>.snapr.us/lrg/<%= item.get('secret') %>/<%= item.get('id') %>.jpg" alt="<%= item.get('description') %>" class="thumb-image" /></a>
-
-<h3><%= item.get('description') %></h3>
-
-<div data-role="button" data-icon="star" data-inline="true" data-iconpos="notext" class="favorite-button" <% if(item.get('favorite')){ %> data-theme="e" <% }%>></div>
-
-<div data-role="button" data-inline="true" class="goto-map">View on map.</div>
-
-<% if (item.get('location').spot_id){%>
-<div data-role="button" data-inline="true" class="goto-spot">@ <%= item.get('location').foursquare_venue_name %></div>
-<%}%>
-<% if (parseInt(item.get('comments')) + parseInt(item.get('favorite_count')) > 0){ %>
-<div data-role="collapsible" data-collapsed="true" class="reactions-button">
-    <h3><%= item.get('comments') %> comments and <%= item.get('favorite_count') %> favorites</h3>
-    <ul data-inset="true">
-    </ul>
-</div>
-<%}else{%>
-<div data-role="collapsible" data-collapsed="true" class="reactions-button" style="display:none;">
-    <h3><%= item.get('comments') %> comments and <%= item.get('favorite_count') %> favorites</h3>
-    <ul data-inset="true">
-    </ul>
-</div>
-<%}%>
-<div data-role="collapsible" data-collapsed="true" class="comment-area">
-    <h4>Comment</h4>
     <div>
-        <form action="javascript:void(0);" class="comment-form" accept-charset="utf-8">
-            <textarea name="comment-<%= item.get('id') %>" placeholder="Comment" />
-            <input type="submit" value="Submit" />
-        </form>
-    </div>
-</div>
+        <div class="ui-grid-e">
+            <div class="ui-block-a">
+                <a data-ajax="false" data-transition="slide" href="#/feed/?username=<%= item.get('username') %>"><img src="http://sna.pr/avatars/<%= item.get('username') %>/" alt="<%= item.get('username') %>" /></a>
+            </div>
+            <div>
+                <h3><a data-ajax="false" data-transition="slide" href="#/feed/?username=<%= item.get('username') %>"><%= item.get('username') %></a></h3>
+                <a class="goto-map"><%= item.get('location').location %> <%= item.get('date') %></a>
+            </div>
+        </div>
 
+        <a href="https://s3.amazonaws.com/media-server<%= item.get('server_id') %>.snapr.us/lrg/<%= item.get('secret') %>/<%= item.get('id') %>.jpg" rel="external" class="gallery_link"><img style="width:100%;height:<%= tripmapper.utils.get_photo_height(item.get('width'), item.get('height'), '#feed .ui-content') %>px;" src="https://s3.amazonaws.com/media-server<%= item.get('server_id') %>.snapr.us/lrg/<%= item.get('secret') %>/<%= item.get('id') %>.jpg" alt="<%= item.get('description') %>" class="thumb-image" /></a>
+
+        <div><%= item.get('description') %></div>
+
+        <div data-role="controlgroup" data-type="horizontal">
+
+            <div data-role="button" data-icon="star" data-inline="true" data-iconpos="notext" class="favorite-button" <% if(item.get('favorite')){ %> data-theme="e" <% }%>></div>
+
+        </div>
+
+        <% if (item.get('location').spot_id){%>
+        <div data-role="button" data-inline="true" class="goto-spot">
+            @ <%= item.get('location').foursquare_venue_name %>
+        </div>
+        <%}%>
+        <% if (parseInt(item.get('comments')) + parseInt(item.get('favorite_count')) > 0){ %>
+        <div data-role="collapsible" data-collapsed="true" class="reactions-button">
+            <h3><%= item.get('comments') %> comments and <%= item.get('favorite_count') %> favorites</h3>
+            <ul data-inset="true">
+            </ul>
+        </div>
+        <%}else{%>
+        <div data-role="collapsible" data-collapsed="true" class="reactions-button" style="display:none;">
+            <h3><%= item.get('comments') %> comments and <%= item.get('favorite_count') %> favorites</h3>
+            <ul data-inset="true">
+            </ul>
+        </div>
+        <%}%>
+        <div data-role="collapsible" data-collapsed="true" class="comment-area">
+            <h4>Comment</h4>
+            <div>
+                <form action="javascript:void(0);" class="comment-form" accept-charset="utf-8">
+                    <textarea name="comment-<%= item.get('id') %>" placeholder="Comment" />
+                    <input type="submit" value="Submit" />
+                </form>
+            </div>
+        </div>
+
+    </div>
 </li>
 </script>
 
