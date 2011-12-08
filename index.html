@@ -562,8 +562,13 @@
         <%}%>
             <div class="ui-grid-b">
                 <div class="ui-block-a"><span><%= user.photo_count %></span><br /><span>Photos</span></div>
-                <div class="ui-block-b"><span><%= user.followers %></span><br /><span>Followers</span></div>
-                <div class="ui-block-c"><span><%= user.following %></span><br /><span>Following</span></div>
+                <div class="ui-block-b">
+                    <a href="#/user/followers/?username=<%= user.username %>" data-ajax="false"><span><%= user.followers %></span>
+                    <br /><span>Followers</span></a>
+                    </div>
+                <div class="ui-block-c">
+                    <a href="#/user/following/?username=<%= user.username %>" data-ajax="false"><span><%= user.following %></span>
+                    <br /><span>Following</span></a></div>
             </div>
         </div>
     
