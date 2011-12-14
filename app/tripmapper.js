@@ -93,6 +93,13 @@ tripmapper.info.supports_local_storage = (function(){
   }
 })();
 
+tripmapper.info.appmode = (window.location.protocol == 'file:');
+tripmapper.info.upload_count = 0;
+tripmapper.info.upload_mode = "On";
+tripmapper.info.upload_paused = false;
+tripmapper.info.geolocation_enabled = true;
+tripmapper.info.current_view = null;
+
 tripmapper.auth = new tripmapper.models.auth();
 tripmapper.auth.get_locally();
 
@@ -175,7 +182,7 @@ tripmapper.routers = Backbone.Router.extend({
     feed: function( query_string )
     {
         var query = tripmapper.utils.get_query_params( query_string );
-        var feed_view = new tripmapper.views.feed({
+        tripmapper.info.current_view = new tripmapper.views.feed({
             query: query,
             el: $("#feed")
         });
@@ -184,13 +191,13 @@ tripmapper.routers = Backbone.Router.extend({
     popular: function()
     {
         console.warn('go to popular');
-        var popular_view = new tripmapper.views.popular;
+        tripmapper.info.current_view = new tripmapper.views.popular();
     },
     
     home: function()
     {
         console.warn('go home');
-        var home_view = new tripmapper.views.home({
+        tripmapper.info.current_view = new tripmapper.views.home({
             el: $('#home')
         });
     },
@@ -198,7 +205,7 @@ tripmapper.routers = Backbone.Router.extend({
     login: function()
     {
         console.warn('go to login')
-        var login_view = new tripmapper.views.login;
+        tripmapper.info.current_view = new tripmapper.views.login();
     },
     
     logout: function()
@@ -216,12 +223,12 @@ tripmapper.routers = Backbone.Router.extend({
     
     join_snapr: function()
     {
-        var join_snapr = new tripmapper.views.join_snapr;
+        tripmapper.info.current_view = new tripmapper.views.join_snapr();
     },
     
     my_account: function()
     {
-        var my_account = new tripmapper.views.my_account({
+        tripmapper.info.current_view = new tripmapper.views.my_account({
             el: $("#my-account")
         });
     },
@@ -229,18 +236,18 @@ tripmapper.routers = Backbone.Router.extend({
     map: function( query_string )
     {
         var query = tripmapper.utils.get_query_params( query_string );
-        var map_view = new tripmapper.views.map( {query: query} );
+        tripmapper.info.current_view = new tripmapper.views.map( {query: query} );
     },
     
     search: function()
     {
-        var search = new tripmapper.views.search();
+        tripmapper.info.current_view = new tripmapper.views.search();
     },
     
     user_profile: function( query_string )
     {
         var query = tripmapper.utils.get_query_params( query_string );
-        var user_profile = new tripmapper.views.user_profile({
+        tripmapper.info.current_view = new tripmapper.views.user_profile({
             query: query,
             el: $("#user-profile")
         });
@@ -249,7 +256,7 @@ tripmapper.routers = Backbone.Router.extend({
     user_search: function( query_string )
     {
         var query = tripmapper.utils.get_query_params( query_string );
-        var people = new tripmapper.views.people({
+        tripmapper.info.current_view = new tripmapper.views.people({
             query: query,
             el: $("#people")
         });
@@ -258,13 +265,71 @@ tripmapper.routers = Backbone.Router.extend({
     people: function( follow, query_string )
     {
         var query = tripmapper.utils.get_query_params( query_string );
-        var people = new tripmapper.views.people({
+        tripmapper.info.current_view = new tripmapper.views.people({
             query: query,
             follow: follow,
             el: $("#people")
         });
     }
 });
+
+// upload/appmode functions
+
+function pass_data( url )
+{
+    window.location = url;
+}
+
+function upload_progress(data, datatype)
+{
+    // data may be passed as an object or a string as specified via the data_type param 
+    // defualts to JSON object, if 'json_string' it will be a text string that needs to be parsed..    
+    // dont foget to convert it before you do anything with it..
+    if (datatype == 'json_text')
+    {
+        data = JSON.parse( data );
+    }
+    
+    if (data.uploads.length)
+    {
+        if (typeof tripmapper.info.current_view.upload_progress == "function")
+        {
+            tripmapper.info.current_view.upload_progress( data )
+        }
+    }
+    else
+    {
+        if (tripmapper.info.appmode)
+        {
+            pass_data( "snapr://upload_progress?send=false" );
+        }
+    }
+}
+
+function upload_count( count )
+{
+    tripmapper.info.upload_count = count;
+}
+
+function upload_completed( queue_id, snapr_id )
+{
+    if (typeof tripmapper.info.current_view.upload_completed == "function")
+    {
+        tripmapper.info.current_view.upload_completed( queue_id, snapr_id );
+    }
+}
+
+function upload_cancelled( id )
+{
+    if (typeof tripmapper.info.current_view.upload_cancelled == "function")
+    {
+        tripmapper.info.current_view.upload_cancelled( id );
+    }
+}
+
+
+
+// end upload/appmode functions
 
 $(function()
 {
