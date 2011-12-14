@@ -187,6 +187,27 @@ tripmapper.views.feed = Backbone.View.extend({
         
         this.feed_list.list_style = list_style;
         this.feed_list.render( this.photoswipe_init );
+    },
+    
+    upload_progress: function( upload_data )
+    {
+        var feed_view = this;
+
+        feed_view.el.find(".feed-upload-list").empty()
+        
+        var upload_li_template = _.template( $("#upload-progress-li-template").html() );
+        
+        _.each( upload_data.uploads, function( upload )
+        {
+            var li = new tripmapper.views.upload_progress_li({
+                template: upload_li_template,
+                upload: upload
+            });
+            feed_view.el.find(".feed-upload-list").append( li.render().el );
+        })
+        
+        feed_view.el.find(".feed-upload-list").listview().listview("refresh");
+        
     }
 
 })
