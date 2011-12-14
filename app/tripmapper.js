@@ -81,7 +81,7 @@ tripmapper.client_secret = 'e89d8304723d7d8be19ebb6ab8ca0364';
 
 tripmapper.constants = {}
 tripmapper.constants.default_zoom = 15;
-
+tripmapper.constants.feed_count = 12;
 
 // store some info about the browser
 tripmapper.info = {}

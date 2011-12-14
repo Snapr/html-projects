@@ -41,9 +41,12 @@ tripmapper.views.feed = Backbone.View.extend({
                 el: this.el.find(".feed-header").empty()
             });
         }
+        
+        this.pending_uploads = {};
 
         var feed_view = this;
 
+        feed_view.el.find(".feed-upload-list").empty();
         feed_view.el.find('ul.gallery').empty();
         
         this.el.live( 'pageshow', function()
@@ -82,7 +85,7 @@ tripmapper.views.feed = Backbone.View.extend({
         this.photo_collection = new tripmapper.models.photo_collection();
         this.photo_collection.url = tripmapper.api_base + "/search/";
         this.photo_collection.data = query_data;
-        this.photo_collection.data.n = 10;
+        this.photo_collection.data.n = tripmapper.constants.feed_count;
         this.populate_feed();
         
     },
@@ -112,7 +115,6 @@ tripmapper.views.feed = Backbone.View.extend({
     
     populate_feed: function( additional_data )
     {
-
         
         var list_style = this.el.find("#feed-view-grid").is(":checked") && 'grid' || 'list';
         
@@ -193,21 +195,37 @@ tripmapper.views.feed = Backbone.View.extend({
     {
         var feed_view = this;
 
-        feed_view.el.find(".feed-upload-list").empty()
+        feed_view.el.find(".feed-upload-list").empty();
         
         var upload_li_template = _.template( $("#upload-progress-li-template").html() );
         
-        _.each( upload_data.uploads, function( upload )
+        _.each( upload_data.uploads, function( photo )
         {
-            var li = new tripmapper.views.upload_progress_li({
+            feed_view.pending_uploads[photo.id] = new tripmapper.views.upload_progress_li({
                 template: upload_li_template,
-                upload: upload
+                photo: photo
             });
-            feed_view.el.find(".feed-upload-list").append( li.render().el );
+            feed_view.el.find(".feed-upload-list").append( feed_view.pending_uploads[photo.id].render().el );
         })
         
         feed_view.el.find(".feed-upload-list").listview().listview("refresh");
         
+    },
+    
+    upload_completed: function( queue_id, snapr_id )
+    {
+        // if we are on a feed for the current snapr user
+        if (this.options.query.username == tripmapper.auth.get("username")
+            && !this.options.query.photo_id)
+        {
+            // remove the date restriction if it is present
+            if (this.photo_collection.data.max_date)
+            {
+                delete this.photo_collection.data.max_date;
+            }            
+            // refresh the feed content
+            this.populate_feed();
+        }
     }
 
 })
