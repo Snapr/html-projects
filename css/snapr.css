@@ -73,10 +73,15 @@ ul.grid-list li {
 #google-map {
     position:absolute;
     overflow: auto;
-    top: 0;
-    bottom: 0;
+    top: 41px;
+    bottom: 29px;
     left: 0;
     right: 0;
+}
+
+#map .ui-footer {
+    position: absolute;
+    bottom: 0;
 }
 
 /* map thumbs */
