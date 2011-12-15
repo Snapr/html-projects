@@ -1,4 +1,4 @@
-tripmapper.views.feed = Backbone.View.extend({
+snapr.views.feed = Backbone.View.extend({
 
     events: {
         "click button.more": "more",
@@ -29,14 +29,14 @@ tripmapper.views.feed = Backbone.View.extend({
 
         if (query_data.username)
         {
-            var feed_header = new tripmapper.views.user_header({
+            var feed_header = new snapr.views.user_header({
                 username: query_data.username,
                 el: this.el.find(".feed-header").empty()
             });
         }
         else
         {
-            var feed_header = new tripmapper.views.feed_header({
+            var feed_header = new snapr.views.feed_header({
                 query_data: query_data,
                 el: this.el.find(".feed-header").empty()
             });
@@ -55,6 +55,8 @@ tripmapper.views.feed = Backbone.View.extend({
 
         });
 
+        var $el = $(this.el);
+
         this.el.live('pagehide', function( e )
         {
             var photoSwipeInstance = Code.PhotoSwipe.getInstance( 'feed' );
@@ -63,6 +65,8 @@ tripmapper.views.feed = Backbone.View.extend({
             {
                 Code.PhotoSwipe.detatch(photoSwipeInstance);
             }
+            
+            $el.undelegate();
             
             return true; 
         });
@@ -82,12 +86,99 @@ tripmapper.views.feed = Backbone.View.extend({
             transition: transition
         });
         
-        this.photo_collection = new tripmapper.models.photo_collection();
-        this.photo_collection.url = tripmapper.api_base + "/search/";
+        this.photo_collection = new snapr.models.photo_collection();
+        this.photo_collection.url = snapr.api_base + "/search/";
         this.photo_collection.data = query_data;
-        this.photo_collection.data.n = tripmapper.constants.feed_count;
+        this.photo_collection.data.n = snapr.constants.feed_count;
         this.populate_feed();
         
+        
+        // testing upload stuff
+        
+        
+        // var test_data = {
+        //      "uploads": [
+        //          {
+        //              "id": 5345233,
+        //              "thumbnail": "./gfx/demo-test.jpg",
+        //              "upload_status": "active", //"waiting|active|canceled|hold",
+        //              "percent_complete": 50,
+        //              "status": 'public', //"public|private|queued",
+        //              "description": "Here's a cool photo of stuff!",
+        //              "location": {
+        //                  "latitude": 51.553978,
+        //                  "location": "New York",
+        //                  "longitude": -0.076529
+        //              },
+        //              "date": "2011-04-12 20:50:10 +0100",
+        //              "shared": {
+        //                  "tweeted": true,
+        //                  "facebook_newsfeed": true,
+        //                  "foursquare_checkin": true,
+        //                  "tumblr": true,
+        //                  "venue_id": 123,
+        //                  "venue_name": "some bar",
+        //                  "venue_source": "Foursquare"
+        //              }
+        //          },
+        //          {
+        //              "id": 5345234,
+        //              "thumbnail": "./gfx/demo-vert.jpg",
+        //              "upload_status": "waiting", //"waiting|active|canceled|hold",
+        //              "percent_complete": 0,
+        //              "status": 'private', //"public|private|queued",
+        //              "description": "test2",
+        //              "location": {
+        //                  "latitude": 51.553978,
+        //                  "location": "New York",
+        //                  "longitude": -0.076529
+        //              },
+        //              "date": "2011-04-12 20:50:10 +0100",
+        //              "shared": {
+        //                  "tweeted": true,
+        //                  "facebook_newsfeed": true,
+        //                  "foursquare_checkin": true,
+        //                  "tumblr": true,
+        //                  "venue_id": 123,
+        //                  "venue_name": "some bar",
+        //                  "venue_source": "Foursquare"
+        //              }
+        //          }
+        //      ]
+        //  };
+        // 
+        //  setTimeout(function() {
+        //         console.warn("testing 1", test_data);
+        //         test_data.uploads[0].percent_complete = 99;
+        //         upload_progress(test_data);
+        //      }, 3000);
+        // 
+        //      setTimeout(function() {
+        //         console.warn("testing 2", test_data);
+        //         test_data.uploads[0].percent_complete = 100;
+        //         upload_progress(test_data);
+        //      }, 6000);
+        // 
+        //      setTimeout(function() {
+        //         console.warn("testing 3", test_data);
+        //         test_data.uploads.shift();
+        //         test_data.uploads[0].percent_complete = 50;
+        //         upload_progress(test_data);
+        //      }, 9000);
+        // 
+        //      setTimeout(function() {
+        //         console.warn("testing 4", test_data);
+        //             test_data.uploads[0].percent_complete = 100;
+        //             upload_progress(test_data);
+        //          }, 12000);
+        // 
+        //      setTimeout(function() {
+        //         console.warn("testing 5", test_data);
+        //             test_data.uploads.shift();
+        //             upload_progress(test_data);
+        //          }, 14000);
+
+        // end testing
     },
     
     photoswipe_init: function()
@@ -129,14 +220,14 @@ tripmapper.views.feed = Backbone.View.extend({
         var options = {
             success: function()
             {
-                if (!feed_view.feed_list)
-                {
-                    feed_view.feed_list = new tripmapper.views.feed_list({
+                // if (!feed_view.feed_list)
+                // {
+                    feed_view.feed_list = new snapr.views.feed_list({
                         el: feed_view.el.find('ul.gallery').eq(0),
                         collection: feed_view.photo_collection,
                         list_style: list_style
                     });
-                }
+                // }
 
                 feed_view.feed_list.render( feed_view.photoswipe_init );
                 $.mobile.hidePageLoadingMsg();
@@ -201,7 +292,7 @@ tripmapper.views.feed = Backbone.View.extend({
         
         _.each( upload_data.uploads, function( photo )
         {
-            feed_view.pending_uploads[photo.id] = new tripmapper.views.upload_progress_li({
+            feed_view.pending_uploads[photo.id] = new snapr.views.upload_progress_li({
                 template: upload_li_template,
                 photo: photo
             });
@@ -215,7 +306,7 @@ tripmapper.views.feed = Backbone.View.extend({
     upload_completed: function( queue_id, snapr_id )
     {
         // if we are on a feed for the current snapr user
-        if (this.options.query.username == tripmapper.auth.get("username")
+        if (this.options.query.username == snapr.auth.get("username")
             && !this.options.query.photo_id)
         {
             // remove the date restriction if it is present

@@ -1,5 +1,5 @@
-tripmapper.models.photo_collection = Backbone.Collection.extend({
-    model:tripmapper.models.photo,
+snapr.models.photo_collection = Backbone.Collection.extend({
+    model:snapr.models.photo,
     parse: function(d,xhr){
         if(d.response && d.response.photos){
             return d.response.photos;

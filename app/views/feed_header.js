@@ -1,4 +1,4 @@
-tripmapper.views.feed_header = Backbone.View.extend({
+snapr.views.feed_header = Backbone.View.extend({
     
     initialize: function()
     {

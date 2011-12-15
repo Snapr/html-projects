@@ -1,11 +1,11 @@
-tripmapper.views.people = Backbone.View.extend({
+snapr.views.people = Backbone.View.extend({
     
     initialize: function()
     {
         
         this.el.find("ul.people-list").empty();
         
-        this.collection = new tripmapper.models.user_collection();
+        this.collection = new snapr.models.user_collection();
         
         var people_view = this;
         
@@ -61,7 +61,7 @@ tripmapper.views.people = Backbone.View.extend({
         
         _.each( this.collection.models, function( model )
         {
-            var people_li = new tripmapper.views.people_li({
+            var people_li = new snapr.views.people_li({
                 template: people_li_template,
                 model: model
             });

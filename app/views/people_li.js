@@ -1,4 +1,4 @@
-tripmapper.views.people_li = Backbone.View.extend({
+snapr.views.people_li = Backbone.View.extend({
 
     initialize: function()
     {
@@ -21,7 +21,7 @@ tripmapper.views.people_li = Backbone.View.extend({
             .empty()
             .append( this.template({
                 user: this.model,
-                auth_username: tripmapper.auth.get('username')
+                auth_username: snapr.auth.get('username')
             }) )
 
         return this;

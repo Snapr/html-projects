@@ -1,8 +1,8 @@
-tripmapper.models.user_collection = Backbone.Collection.extend({
+snapr.models.user_collection = Backbone.Collection.extend({
 
-    model:tripmapper.models.user,
+    model:snapr.models.user,
 
-    urlRoot: tripmapper.api_base + '/user/',
+    urlRoot: snapr.api_base + '/user/',
 
     url: function( method )
     {

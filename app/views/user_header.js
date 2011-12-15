@@ -1,9 +1,9 @@
-tripmapper.views.user_header = Backbone.View.extend({
+snapr.views.user_header = Backbone.View.extend({
     
     initialize: function()
     {
         this.template = _.template( $("#user-header-template").html() );
-        this.model = new tripmapper.models.user( {username: this.options.username} );
+        this.model = new snapr.models.user( {username: this.options.username} );
         var user_header = this;
         
         this.model.bind( "change", function()
@@ -23,7 +23,7 @@ tripmapper.views.user_header = Backbone.View.extend({
     {
         this.el.empty().append( this.template({
             user: this.model,
-            auth_username: tripmapper.auth.get('username')
+            auth_username: snapr.auth.get('username')
         }) ).trigger("create");
         
         return this;

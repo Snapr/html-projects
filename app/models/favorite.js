@@ -1,5 +1,5 @@
-tripmapper.models.favorite = Backbone.Model.extend({
-    urlRoot: tripmapper.api_base + '/favorite/',
+snapr.models.favorite = Backbone.Model.extend({
+    urlRoot: snapr.api_base + '/favorite/',
     url: function(method){
         if(method){
             switch(method){

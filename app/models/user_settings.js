@@ -1,6 +1,6 @@
-tripmapper.models.user_settings = Backbone.Model.extend({
+snapr.models.user_settings = Backbone.Model.extend({
 
-    urlRoot: tripmapper.api_base + '/user/',
+    urlRoot: snapr.api_base + '/user/',
 
     url: function( method )
     {
@@ -43,7 +43,7 @@ tripmapper.models.user_settings = Backbone.Model.extend({
         _.each( linked_services, function( service, key )
         {
             // create a new linked_service model for each linked service
-            var linked = new tripmapper.models.linked_service( service );
+            var linked = new snapr.models.linked_service( service );
             // set the provider so we know which url to hit if we want to make changes
             linked.provider = key;
             // remove the 'lined_services' data added above as we no longer need it

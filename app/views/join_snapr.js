@@ -1,4 +1,4 @@
-tripmapper.views.join_snapr = Backbone.View.extend({
+snapr.views.join_snapr = Backbone.View.extend({
     el:$('#join-snapr'),
     events:{
         "change #snapr-tos":"toggle_tos",
@@ -17,12 +17,12 @@ tripmapper.views.join_snapr = Backbone.View.extend({
         }
     },
     join:function(){
-        var new_user = new tripmapper.models.user_settings;
+        var new_user = new snapr.models.user_settings;
         new_user.data = {
            username: this.el.find("#join-dialog-username").val(),
            password: this.el.find("#join-dialog-password").val(),
            email: this.el.find("#join-dialog-email").val(),
-           client_id: tripmapper.client_id
+           client_id: snapr.client_id
         }
         
         _this = this;
@@ -44,7 +44,7 @@ tripmapper.views.join_snapr = Backbone.View.extend({
         // these options will be triggered on join
         var join_options = {
             success:function(){
-                tripmapper.auth.get_token(new_user.data.username,new_user.data.password,login_options);
+                snapr.auth.get_token(new_user.data.username,new_user.data.password,login_options);
             },
             error:function(e){
                 console.warn('error',e);

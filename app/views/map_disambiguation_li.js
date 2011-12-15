@@ -1,4 +1,4 @@
-tripmapper.views.map_disambiguation_li = Backbone.View.extend({
+snapr.views.map_disambiguation_li = Backbone.View.extend({
     
     tagName: "li",
     

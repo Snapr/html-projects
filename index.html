@@ -1,19 +1,19 @@
 <!DOCTYPE html> 
 <html> 
     <head> 
-        <title>TripMapper</title> 
+        <title>snapr</title> 
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1">
         <meta name="apple-mobile-web-app-capable" content="yes">
         <link rel="stylesheet" href="app/libs/jquery.mobile-1.0/jquery.mobile-1.0.css" type="text/css" charset="utf-8">
         <!-- <link rel="stylesheet" href="app/libs/jquery.mobile-1.0/jquery.mobile.structure-1.0.css" type="text/css" charset="utf-8"> -->
         <link rel="stylesheet" href="css/photoswipe.css" type="text/css" charset="utf-8">
-        <link rel="stylesheet" href="css/tripmapper.css" type="text/css" charset="utf-8">
+        <link rel="stylesheet" href="css/snapr.css" type="text/css" charset="utf-8">
     </head> 
 <body> 
 
     <div id="home" data-title="Welcome" data-role="page">
         <div data-role="header">
-            <h1>TripMapper</h1>
+            <h1>snapr</h1>
             <a href="#/search" data-ajax="false" data-icon="search" data-iconpos="notext" class="ui-btn-right"></a>
         </div><!-- /header -->
 
@@ -589,7 +589,7 @@
             </div>
         </div>
 
-        <a href="https://s3.amazonaws.com/media-server<%= item.get('server_id') %>.snapr.us/lrg/<%= item.get('secret') %>/<%= item.get('id') %>.jpg" rel="external" class="gallery_link"><img style="width:100%;height:<%= tripmapper.utils.get_photo_height(item.get('width'), item.get('height'), '#feed .ui-content') %>px;" src="https://s3.amazonaws.com/media-server<%= item.get('server_id') %>.snapr.us/lrg/<%= item.get('secret') %>/<%= item.get('id') %>.jpg" alt="<%= item.get('description') %>" class="thumb-image" /></a>
+        <a href="https://s3.amazonaws.com/media-server<%= item.get('server_id') %>.snapr.us/lrg/<%= item.get('secret') %>/<%= item.get('id') %>.jpg" rel="external" class="gallery_link"><img style="width:100%;height:<%= snapr.utils.get_photo_height(item.get('width'), item.get('height'), '#feed .ui-content') %>px;" src="https://s3.amazonaws.com/media-server<%= item.get('server_id') %>.snapr.us/lrg/<%= item.get('secret') %>/<%= item.get('id') %>.jpg" alt="<%= item.get('description') %>" class="thumb-image" /></a>
 
         <div><%= item.get('description') %></div>
 
@@ -642,7 +642,7 @@
 <script id="upload-progress-li-template" type="text/template">
     <a>
         <img class="ui-li-icon" height="16" width="16" src="<%= thumbnail %>" />
-        <div class="progress-bar">
+        <div class="progress-bar <%= upload_status %>">
             <div class="bar-bg bar">
             </div>
             <div class="bar-prog bar" style="width:<%= percent_complete %>%">
@@ -702,13 +702,13 @@
 <script src="app/libs/jq.cookie.js" type="text/javascript" charset="utf-8"></script>
 
 <script type="text/javascript" charset="utf-8">
-tripmapper = {};
-tripmapper.redirect = '';
-tripmapper.models = {};
-tripmapper.views = {};
-tripmapper.base_url = "http://dev.sna.pr";
-tripmapper.api_base = tripmapper.base_url + "/api";
-tripmapper.access_token_url = tripmapper.base_url + "/ext/oauth/access_token/";
+snapr = {};
+snapr.redirect = '';
+snapr.models = {};
+snapr.views = {};
+snapr.base_url = "http://dev.sna.pr";
+snapr.api_base = snapr.base_url + "/api";
+snapr.access_token_url = snapr.base_url + "/ext/oauth/access_token/";
 
 // disable jquery-mobile's hash nav so we can replace it with backbone.js
 $(document).bind("mobileinit", function(){
@@ -724,11 +724,11 @@ $(document).bind("mobileinit", function(){
 
     // hack to handle cases where we're going directly to a hash
     // we go to the home screen and re-trigger the navigate event
-    tripmapper.redirect = window.location.hash.replace('#','')
-    $(document).bind('tripmapperinit',function(){
-        if(tripmapper.redirect.length){
-            console.warn('redirect to',tripmapper.redirect)
-            Route.navigate(tripmapper.redirect, true);
+    snapr.redirect = window.location.hash.replace('#','')
+    $(document).bind('snaprinit',function(){
+        if(snapr.redirect.length){
+            console.warn('redirect to',snapr.redirect)
+            Route.navigate(snapr.redirect, true);
         }
     });
 
@@ -781,7 +781,7 @@ $(document).bind("mobileinit", function(){
 <script src="app/models/thumb_collection.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/models/reaction_collection.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/models/reaction.js" type="text/javascript" charset="utf-8"></script>
-<script src="app/tripmapper.js" type="text/javascript" charset="utf-8"></script>
+<script src="app/snapr.js" type="text/javascript" charset="utf-8"></script>
 
 </body>
 </html>

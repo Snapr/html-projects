@@ -1,4 +1,4 @@
-tripmapper.views.linked_service = Backbone.View.extend({
+snapr.views.linked_service = Backbone.View.extend({
 
     tagName: 'div',
     

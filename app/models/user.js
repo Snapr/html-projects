@@ -1,4 +1,4 @@
-tripmapper.models.user = Backbone.Model.extend({
+snapr.models.user = Backbone.Model.extend({
 
     initialize: function( init_options )
     {
@@ -7,7 +7,7 @@ tripmapper.models.user = Backbone.Model.extend({
         }
     },
 
-    urlRoot: tripmapper.api_base + '/user/',
+    urlRoot: snapr.api_base + '/user/',
 
     url: function( method )
     {

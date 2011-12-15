@@ -1,4 +1,4 @@
-tripmapper.views.upload_progress_li = Backbone.View.extend({
+snapr.views.upload_progress_li = Backbone.View.extend({
     
     tagName: "li",
     
@@ -17,6 +17,7 @@ tripmapper.views.upload_progress_li = Backbone.View.extend({
 
         $(this.el).append( 
             this.template({
+                upload_status: this.photo.upload_status,
                 thumbnail: this.photo.thumbnail,
                 percent_complete: this.photo.percent_complete
             })

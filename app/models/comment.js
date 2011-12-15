@@ -1,5 +1,5 @@
-tripmapper.models.comment = Backbone.Model.extend({
-    urlRoot: tripmapper.api_base + '/comment/',
+snapr.models.comment = Backbone.Model.extend({
+    urlRoot: snapr.api_base + '/comment/',
     url: function(method){
         if(method){
             switch(method){

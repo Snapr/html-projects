@@ -1,5 +1,5 @@
-tripmapper.models.photo = Backbone.Model.extend({
-    urlRoot: tripmapper.api_base + '/photo/',
+snapr.models.photo = Backbone.Model.extend({
+    urlRoot: snapr.api_base + '/photo/',
     url: function(method){
         return this.urlRoot;
     },

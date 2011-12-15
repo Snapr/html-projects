@@ -1,4 +1,4 @@
-tripmapper.views.map = Backbone.View.extend({
+snapr.views.map = Backbone.View.extend({
 
     el: $("#map"),
 
@@ -29,7 +29,7 @@ tripmapper.views.map = Backbone.View.extend({
         );
         
         this.map_settings = {
-            zoom: this.query.zoom||tripmapper.constants.default_zoom,
+            zoom: this.query.zoom||snapr.constants.default_zoom,
             center: center,
             streetViewControl: false,
             mapTypeControl: false,
@@ -126,7 +126,7 @@ tripmapper.views.map = Backbone.View.extend({
     
     get_thumbs: function( query )
     {
-        this.thumb_collection = new tripmapper.models.thumb_collection;
+        this.thumb_collection = new snapr.models.thumb_collection;
         this.thumb_collection.data = query || this.query;
         this.thumb_collection.data.area = this.map.getBounds().toUrlValue(4);
         // if(!query){
@@ -140,7 +140,7 @@ tripmapper.views.map = Backbone.View.extend({
                 
                 _.each( map_view.thumb_collection.models , function(thumb, i)
                 {
-                    map_view.map_thumbs[i] = new tripmapper.SnapOverlay('photo', thumb.attributes, map_view.map, false);
+                    map_view.map_thumbs[i] = new snapr.SnapOverlay('photo', thumb.attributes, map_view.map, false);
                 });
             },
             error:function(e)
@@ -175,7 +175,7 @@ tripmapper.views.map = Backbone.View.extend({
                     var dis_list = $("#map-disambiguation-list").empty();
                     _.each( results, function( result )
                     {
-                        var li = new tripmapper.views.map_disambiguation_li({
+                        var li = new snapr.views.map_disambiguation_li({
                             result: result,
                             template: li_template,
                             map: map_view.map,

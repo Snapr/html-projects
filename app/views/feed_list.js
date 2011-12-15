@@ -1,4 +1,4 @@
-tripmapper.views.feed_list = Backbone.View.extend({
+snapr.views.feed_list = Backbone.View.extend({
 
     initialize: function( init_options )
     {
@@ -23,7 +23,7 @@ tripmapper.views.feed_list = Backbone.View.extend({
         
         _.each( this.collection.models, function( item )
         {
-            var li = new tripmapper.views.feed_li({
+            var li = new snapr.views.feed_li({
                 model: item,
                 template: feed_list.li_templates[feed_list.list_style]
             });

@@ -1,3 +1,3 @@
-tripmapper.models.reaction = Backbone.Model.extend({
+snapr.models.reaction = Backbone.Model.extend({
     
 });

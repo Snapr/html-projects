@@ -1,4 +1,4 @@
-tripmapper.views.login = Backbone.View.extend({
+snapr.views.login = Backbone.View.extend({
 
     el: $('#login'),
 
@@ -40,6 +40,6 @@ tripmapper.views.login = Backbone.View.extend({
                 alert( error || "Sorry, we had trouble logging in. Please try again." );
             }
         }
-        tripmapper.auth.get_token( username, password, options );
+        snapr.auth.get_token( username, password, options );
     }
 });

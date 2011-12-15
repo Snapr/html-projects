@@ -1,6 +1,6 @@
-tripmapper.models.thumb_collection = Backbone.Collection.extend({
-    model:tripmapper.models.thumb,
-    urlRoot: tripmapper.api_base + '/thumbs/',
+snapr.models.thumb_collection = Backbone.Collection.extend({
+    model:snapr.models.thumb,
+    urlRoot: snapr.api_base + '/thumbs/',
     url: function(method){
         return this.urlRoot;
     },

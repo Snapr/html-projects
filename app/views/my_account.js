@@ -1,11 +1,11 @@
-tripmapper.views.my_account = Backbone.View.extend({
+snapr.views.my_account = Backbone.View.extend({
 
     
 
     initialize:function()
     {
         $.mobile.changePage( $("#my-account"), {changeHash: false} );
-        this.user_settings = new tripmapper.models.user_settings();
+        this.user_settings = new snapr.models.user_settings();
         var my_account_view = this;
         var options = {
             success: function()
@@ -47,7 +47,7 @@ tripmapper.views.my_account = Backbone.View.extend({
 
         _.each( this.user_settings.get('linked_services'), function( service, index )
         {
-            var v = new tripmapper.views.linked_service();
+            var v = new snapr.views.linked_service();
             v.model = service;
             
             // keep track of linked services
@@ -61,7 +61,7 @@ tripmapper.views.my_account = Backbone.View.extend({
         {
             if (val == false)
             {
-                var v = new tripmapper.views.linked_service();
+                var v = new snapr.views.linked_service();
                 v.provider = provider;
                 account_content.find('.add-services').append( v.render().el ).trigger('create');
             }
@@ -84,7 +84,7 @@ tripmapper.views.my_account = Backbone.View.extend({
 
         var avatar_type = input_target.val();
         
-        var user_setting = new tripmapper.models.user_settings();
+        var user_setting = new snapr.models.user_settings();
         
         var container = input_target.closest( ".my-account-avatar" );
         container.find( "input[type='radio']" ).attr( "checked", false );

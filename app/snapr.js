@@ -24,12 +24,12 @@ Backbone.sync = function( method, model, options )
         'read'  : 'GET'
     }
     
-    if (tripmapper.auth && tripmapper.auth.get('access_token'))
+    if (snapr.auth && snapr.auth.get('access_token'))
     {
         // if there is no .data attribute on the model set it from the model's id 
         // or just pass an empty object
         model.data = model.data || model.get('id') && {id:model.get('id')} || model.attributes || {};
-        model.data.access_token = tripmapper.auth.get('access_token');
+        model.data.access_token = snapr.auth.get('access_token');
     }
     
     // our hack to get jsonp to emulate http methods by appending them to the querystring
@@ -67,25 +67,25 @@ Number.prototype.zeroFill = function( width )
 }
 
 // defined in index.html
-// tripmapper = {};
-// tripmapper.models = {};
-// tripmapper.routers = {};
-// tripmapper.base_url = "https://sna.pr";
-// tripmapper.api_base = tripmapper.base_url + "/api";
-// tripmapper.access_token_url = tripmapper.base_url + "/ext/oauth/access_token/";
+// snapr = {};
+// snapr.models = {};
+// snapr.routers = {};
+// snapr.base_url = "https://sna.pr";
+// snapr.api_base = snapr.base_url + "/api";
+// snapr.access_token_url = snapr.base_url + "/ext/oauth/access_token/";
 
 
 // copied from snapr app - need to change
-tripmapper.client_id = 'dbfedc9ed64f45644cbb13bcc3b422bb';
-tripmapper.client_secret = 'e89d8304723d7d8be19ebb6ab8ca0364';
+snapr.client_id = 'dbfedc9ed64f45644cbb13bcc3b422bb';
+snapr.client_secret = 'e89d8304723d7d8be19ebb6ab8ca0364';
 
-tripmapper.constants = {}
-tripmapper.constants.default_zoom = 15;
-tripmapper.constants.feed_count = 12;
+snapr.constants = {}
+snapr.constants.default_zoom = 15;
+snapr.constants.feed_count = 12;
 
 // store some info about the browser
-tripmapper.info = {}
-tripmapper.info.supports_local_storage = (function(){
+snapr.info = {}
+snapr.info.supports_local_storage = (function(){
   try {
     return 'localStorage' in window && window['localStorage'] !== null;
   } catch (e) {
@@ -93,22 +93,22 @@ tripmapper.info.supports_local_storage = (function(){
   }
 })();
 
-tripmapper.info.appmode = (window.location.protocol == 'file:');
-tripmapper.info.upload_count = 0;
-tripmapper.info.upload_mode = "On";
-tripmapper.info.upload_paused = false;
-tripmapper.info.geolocation_enabled = true;
-tripmapper.info.current_view = null;
+snapr.info.appmode = (window.location.protocol == 'file:');
+snapr.info.upload_count = 0;
+snapr.info.upload_mode = "On";
+snapr.info.upload_paused = false;
+snapr.info.geolocation_enabled = true;
+snapr.info.current_view = null;
 
-tripmapper.auth = new tripmapper.models.auth();
-tripmapper.auth.get_locally();
+snapr.auth = new snapr.models.auth();
+snapr.auth.get_locally();
 
-tripmapper.utils = {};
-tripmapper.utils.date_to_snapr_format = function(d)
+snapr.utils = {};
+snapr.utils.date_to_snapr_format = function(d)
 {
     return d.getFullYear()+'-'+(d.getMonth()+1).zeroFill(2)+'-'+d.getDate().zeroFill(2)+' 00:00:00';
 }
-tripmapper.utils.get_query_params = function(query)
+snapr.utils.get_query_params = function(query)
 {
     var params = {};
     if (query && query.indexOf('=') > -1)
@@ -116,29 +116,49 @@ tripmapper.utils.get_query_params = function(query)
         _.each( query.split('&'), function(part)
         {
             var kv = part.split('=');
-            if(kv[0] == 'zoom')
+            switch (kv[0])
             {
-                params[kv[0]] = parseInt( unescape(kv[1]) );
-            }
-            else
-            {
-                params[kv[0]] = unescape( kv[1] );
+                case "zoom":
+                    params[kv[0]] = parseInt( unescape(kv[1]) );
+                    break;
+                default:
+                    if (_.indexOf( ["access_token", "snapr_user"] , kv[0]) > -1)
+                    {
+                        var obj = {}
+                        obj[kv[0]] = unescape( kv[1] );
+                        snapr.auth.set(obj);
+                    }
+                    else if (_.indexOf( [
+                        "snapr_user_public_group", 
+                        "snapr_user_public_group_name", 
+                        "appmode", 
+                        "new_user", 
+                        "demo_mode"
+                        ], kv[0] ) > -1)
+                    {
+                        snapr.info[ kv[0] ] = unescape( kv[1] );
+                    }
+                    else
+                    {
+                        params[ unescape( kv[0] ) ] = unescape( kv[1] );
+                    }
+                    break;
             }
         });
     }
     
     return params;
 }
-tripmapper.utils.notification = function( title, text, callback )
+snapr.utils.notification = function( title, text, callback )
 {
     // todo - for now we just use an alert
     alert(title + ' ' + text);
 }
-tripmapper.utils.require_login = function( funct )
+snapr.utils.require_login = function( funct )
 {
     return function( e )
     {
-        if (!tripmapper.auth.get('access_token'))
+        if (!snapr.auth.get('access_token'))
         {
             if (e)
             {
@@ -152,7 +172,7 @@ tripmapper.utils.require_login = function( funct )
         }
     };
 }
-tripmapper.utils.get_photo_height = function( orig_width, orig_height, element )
+snapr.utils.get_photo_height = function( orig_width, orig_height, element )
 {
     // this depends on the padding - bit of a hack
     var aspect = orig_width/orig_height,
@@ -161,7 +181,7 @@ tripmapper.utils.get_photo_height = function( orig_width, orig_height, element )
     return width/aspect;
 };
 
-tripmapper.routers = Backbone.Router.extend({
+snapr.routers = Backbone.Router.extend({
     routes: {
         "/login": "login",
         "/logout": "logout",
@@ -181,8 +201,8 @@ tripmapper.routers = Backbone.Router.extend({
 
     feed: function( query_string )
     {
-        var query = tripmapper.utils.get_query_params( query_string );
-        tripmapper.info.current_view = new tripmapper.views.feed({
+        var query = snapr.utils.get_query_params( query_string );
+        snapr.info.current_view = new snapr.views.feed({
             query: query,
             el: $("#feed")
         });
@@ -191,13 +211,13 @@ tripmapper.routers = Backbone.Router.extend({
     popular: function()
     {
         console.warn('go to popular');
-        tripmapper.info.current_view = new tripmapper.views.popular();
+        snapr.info.current_view = new snapr.views.popular();
     },
     
     home: function()
     {
         console.warn('go home');
-        tripmapper.info.current_view = new tripmapper.views.home({
+        snapr.info.current_view = new snapr.views.home({
             el: $('#home')
         });
     },
@@ -205,49 +225,49 @@ tripmapper.routers = Backbone.Router.extend({
     login: function()
     {
         console.warn('go to login')
-        tripmapper.info.current_view = new tripmapper.views.login();
+        snapr.info.current_view = new snapr.views.login();
     },
     
     logout: function()
     {
-        if (tripmapper.auth)
+        if (snapr.auth)
         {
-           tripmapper.auth.logout();
+           snapr.auth.logout();
         }
         else
         {
-            tripmapper.auth = new tripmapper.models.auth;
+            snapr.auth = new snapr.models.auth;
         }
         window.location.hash = "";
     },
     
     join_snapr: function()
     {
-        tripmapper.info.current_view = new tripmapper.views.join_snapr();
+        snapr.info.current_view = new snapr.views.join_snapr();
     },
     
     my_account: function()
     {
-        tripmapper.info.current_view = new tripmapper.views.my_account({
+        snapr.info.current_view = new snapr.views.my_account({
             el: $("#my-account")
         });
     },
     
     map: function( query_string )
     {
-        var query = tripmapper.utils.get_query_params( query_string );
-        tripmapper.info.current_view = new tripmapper.views.map( {query: query} );
+        var query = snapr.utils.get_query_params( query_string );
+        snapr.info.current_view = new snapr.views.map( {query: query} );
     },
     
     search: function()
     {
-        tripmapper.info.current_view = new tripmapper.views.search();
+        snapr.info.current_view = new snapr.views.search();
     },
     
     user_profile: function( query_string )
     {
-        var query = tripmapper.utils.get_query_params( query_string );
-        tripmapper.info.current_view = new tripmapper.views.user_profile({
+        var query = snapr.utils.get_query_params( query_string );
+        snapr.info.current_view = new snapr.views.user_profile({
             query: query,
             el: $("#user-profile")
         });
@@ -255,8 +275,8 @@ tripmapper.routers = Backbone.Router.extend({
     
     user_search: function( query_string )
     {
-        var query = tripmapper.utils.get_query_params( query_string );
-        tripmapper.info.current_view = new tripmapper.views.people({
+        var query = snapr.utils.get_query_params( query_string );
+        snapr.info.current_view = new snapr.views.people({
             query: query,
             el: $("#people")
         });
@@ -264,8 +284,8 @@ tripmapper.routers = Backbone.Router.extend({
     
     people: function( follow, query_string )
     {
-        var query = tripmapper.utils.get_query_params( query_string );
-        tripmapper.info.current_view = new tripmapper.views.people({
+        var query = snapr.utils.get_query_params( query_string );
+        snapr.info.current_view = new snapr.views.people({
             query: query,
             follow: follow,
             el: $("#people")
@@ -292,14 +312,14 @@ function upload_progress(data, datatype)
     
     if (data.uploads.length)
     {
-        if (typeof tripmapper.info.current_view.upload_progress == "function")
+        if (typeof snapr.info.current_view.upload_progress == "function")
         {
-            tripmapper.info.current_view.upload_progress( data )
+            snapr.info.current_view.upload_progress( data )
         }
     }
     else
     {
-        if (tripmapper.info.appmode)
+        if (snapr.info.appmode)
         {
             pass_data( "snapr://upload_progress?send=false" );
         }
@@ -308,32 +328,47 @@ function upload_progress(data, datatype)
 
 function upload_count( count )
 {
-    tripmapper.info.upload_count = count;
+    snapr.info.upload_count = count;
+    
+    if (typeof snapr.info.current_view.upload_count == "function")
+    {
+        snapr.info.current_view.upload_count( count );
+    }
 }
 
 function upload_completed( queue_id, snapr_id )
 {
-    if (typeof tripmapper.info.current_view.upload_completed == "function")
+    if (typeof snapr.info.current_view.upload_completed == "function")
     {
-        tripmapper.info.current_view.upload_completed( queue_id, snapr_id );
+        snapr.info.current_view.upload_completed( queue_id, snapr_id );
     }
 }
 
 function upload_cancelled( id )
 {
-    if (typeof tripmapper.info.current_view.upload_cancelled == "function")
+    if (typeof snapr.info.current_view.upload_cancelled == "function")
     {
-        tripmapper.info.current_view.upload_cancelled( id );
+        snapr.info.current_view.upload_cancelled( id );
     }
 }
 
+function queue_settings( upload_mode, paused )
+{
+    snapr.info.upload_mode = upload_mode;
+    snapr.info.paused  = paused;
+
+    if (typeof snapr.info.current_view.queue_settings == "function")
+    {
+        snapr.info.current_view.queue_settings( upload_mode, paused );
+    }
+}
 
 
 // end upload/appmode functions
 
 $(function()
 {
-    tripmapper.SnapOverlay = function(type, data, map, extra_class)
+    snapr.SnapOverlay = function(type, data, map, extra_class)
     {
         // image as JS object in format the snapr api returns
         this.type_ = type;
@@ -351,8 +386,8 @@ $(function()
         this.setMap(map);
     }
 
-    tripmapper.SnapOverlay.prototype = new google.maps.OverlayView();
-    tripmapper.SnapOverlay.prototype.onAdd = function()
+    snapr.SnapOverlay.prototype = new google.maps.OverlayView();
+    snapr.SnapOverlay.prototype.onAdd = function()
     {
         // Note: an overlay's receipt of onAdd() indicates that
         // the map's panes are now available for attaching
@@ -376,7 +411,7 @@ $(function()
         var panes = this.getPanes();
         $(panes.floatPane).append(this.div_);
     }
-    tripmapper.SnapOverlay.prototype.draw = function()
+    snapr.SnapOverlay.prototype.draw = function()
     {
         var overlayProjection = this.getProjection();
         var position = new google.maps.LatLng( this.data_.location.latitude, this.data_.location.longitude );
@@ -387,26 +422,26 @@ $(function()
             .css('left', px.x + 'px')
             .css('top', px.y + 'px');
     }
-    tripmapper.SnapOverlay.prototype.onRemove = function()
+    snapr.SnapOverlay.prototype.onRemove = function()
     {
         $(this.div_).remove();
         this.div_ = null;
     }
-    tripmapper.SnapOverlay.prototype.hide = function()
+    snapr.SnapOverlay.prototype.hide = function()
     {
         if (this.div_)
         {
           this.div_.style.visibility = "hidden";
         }
     }
-    tripmapper.SnapOverlay.prototype.show = function()
+    snapr.SnapOverlay.prototype.show = function()
     {
         if (this.div_)
         {
           this.div_.style.visibility = "visible";
         }
     }
-    tripmapper.SnapOverlay.prototype.toggle = function()
+    snapr.SnapOverlay.prototype.toggle = function()
     {
         if (this.div_)
         {
@@ -420,7 +455,7 @@ $(function()
           }
         }
     }
-    tripmapper.SnapOverlay.prototype.toggleDOM = function()
+    snapr.SnapOverlay.prototype.toggleDOM = function()
     {
         if (this.getMap())
         {
@@ -433,7 +468,7 @@ $(function()
     }
 
     // initialise router and start backbone
-    Route = new tripmapper.routers;
+    Route = new snapr.routers;
     Backbone.history.start();
-    $(document).trigger('tripmapperinit');
+    $(document).trigger('snaprinit');
 });

@@ -1,4 +1,4 @@
-tripmapper.views.thumbs_li = Backbone.View.extend({
+snapr.views.thumbs_li = Backbone.View.extend({
     initialize: function(){
         console.log('initialise thumbs_li view');
     },

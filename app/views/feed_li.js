@@ -1,4 +1,4 @@
-tripmapper.views.feed_li = Backbone.View.extend({
+snapr.views.feed_li = Backbone.View.extend({
 
     events: {
         "expand .reactions-button": "load_reactions",
@@ -12,7 +12,7 @@ tripmapper.views.feed_li = Backbone.View.extend({
     {
         this.template = init_options.template
         this.map_url = 
-            '/map/?zoom=' + tripmapper.constants.default_zoom + 
+            '/map/?zoom=' + snapr.constants.default_zoom + 
             '&lat=' + this.model.get('location').latitude + 
             '&lng=' + this.model.get('location').longitude + 
             '&photo_id=' + this.model.get('id');
@@ -24,7 +24,7 @@ tripmapper.views.feed_li = Backbone.View.extend({
     {
         if (!this.reactions || reload)
         {
-            this.reactions = new tripmapper.views.reactions({
+            this.reactions = new snapr.views.reactions({
                 id:this.model.id,
                 el:this.el.find('ul')
             });
@@ -82,9 +82,9 @@ tripmapper.views.feed_li = Backbone.View.extend({
         var is_fav = this.model.get('favorite');
         var fav_count = parseInt( this.model.get('favorite_count') );
 
-        tripmapper.utils.require_login( function()
+        snapr.utils.require_login( function()
         {
-            var fav = new tripmapper.models.favorite({
+            var fav = new snapr.models.favorite({
                 id: feed_li.model.get('id')
             });
         
@@ -163,7 +163,7 @@ tripmapper.views.feed_li = Backbone.View.extend({
     {
         var comment = this.el.find('.comment-form textarea').val();
         var id = this.model.get('id');
-        var c = new tripmapper.models.comment();
+        var c = new snapr.models.comment();
         c.data = {
             id: id,
             comment: comment
@@ -213,7 +213,7 @@ tripmapper.views.feed_li = Backbone.View.extend({
             }
         }
 
-        tripmapper.utils.require_login( function()
+        snapr.utils.require_login( function()
         {
             // the empty object in this save call is important, 
             // without it, the options object will not be used

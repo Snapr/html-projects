@@ -1,7 +1,7 @@
-tripmapper.views.reactions = Backbone.View.extend({
+snapr.views.reactions = Backbone.View.extend({
     initialize: function(){
         // console.warn('initialize reactions',this);
-        this.reaction_collection = new tripmapper.models.reaction_collection;
+        this.reaction_collection = new snapr.models.reaction_collection;
         this.reaction_collection.data = {photo_id:this.id}
         _this = this;
         this.reaction_collection.fetch({success:function(){_this.render()}})

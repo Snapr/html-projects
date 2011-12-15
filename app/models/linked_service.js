@@ -1,11 +1,11 @@
-tripmapper.models.linked_service = Backbone.Model.extend({
+snapr.models.linked_service = Backbone.Model.extend({
 
     initialize: function()
     {
         this.data = {linked_services: true}
     },
     
-    urlRoot: tripmapper.api_base + '/linked_services/',
+    urlRoot: snapr.api_base + '/linked_services/',
     
     url: function( method )
     {
@@ -20,7 +20,7 @@ tripmapper.models.linked_service = Backbone.Model.extend({
                 case 'delete':
                     return this.urlRoot + this.provider + '/delete/';
                 default:
-                    return tripmapper.api_base + '/user/settings/';
+                    return snapr.api_base + '/user/settings/';
             }
         }
         else

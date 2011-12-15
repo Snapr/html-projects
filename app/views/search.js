@@ -1,4 +1,4 @@
-tripmapper.views.search = Backbone.View.extend({
+snapr.views.search = Backbone.View.extend({
 
     el: $('#search'),
 

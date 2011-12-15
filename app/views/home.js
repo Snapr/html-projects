@@ -1,4 +1,4 @@
-tripmapper.views.home = Backbone.View.extend({
+snapr.views.home = Backbone.View.extend({
 
     initialize: function()
     {
@@ -9,18 +9,18 @@ tripmapper.views.home = Backbone.View.extend({
         }
         window.location.hash = "";
         var home_view = this;
-        tripmapper.auth.bind( "set:username", function()
+        snapr.auth.bind( "set:username", function()
         {
             console.warn( 'set:username' )
             home_view.render();
         });
-        tripmapper.auth.bind( "unset:username" , function()
+        snapr.auth.bind( "unset:username" , function()
         {
             console.warn( 'unset:username' )
             home_view.render();
         });
 
-        tripmapper.auth.change();
+        snapr.auth.change();
         this.render();
     },
 
@@ -29,10 +29,10 @@ tripmapper.views.home = Backbone.View.extend({
     render: function()
     {
         console.warn( 'render home' )
-        if (tripmapper.auth && tripmapper.auth.attributes.username)
+        if (snapr.auth && snapr.auth.attributes.username)
         {
             var logged_in = true,
-            username = tripmapper.auth.attributes.username;
+            username = snapr.auth.attributes.username;
             
         }
         else

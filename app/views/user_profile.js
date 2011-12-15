@@ -1,4 +1,4 @@
-tripmapper.views.user_profile = Backbone.View.extend({
+snapr.views.user_profile = Backbone.View.extend({
     
     initialize: function()
     {
@@ -6,7 +6,7 @@ tripmapper.views.user_profile = Backbone.View.extend({
         this.el.find("h1").text('Username');
         this.el.find("[data-role='content']").empty();
         
-        this.model = new tripmapper.models.user( {username: this.options.query.username} );
+        this.model = new snapr.models.user( {username: this.options.query.username} );
         
         var user_profile = this;
         

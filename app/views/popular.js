@@ -1,4 +1,4 @@
-tripmapper.views.popular = Backbone.View.extend({
+snapr.views.popular = Backbone.View.extend({
 
     el: $('#popular'),
 
@@ -13,8 +13,8 @@ tripmapper.views.popular = Backbone.View.extend({
         $.mobile.changePage( $("#popular"), {
             changeHash: false
         });
-        this.photo_collection = new tripmapper.models.photo_collection();
-        this.photo_collection.url = tripmapper.api_base + "/search/";
+        this.photo_collection = new snapr.models.photo_collection();
+        this.photo_collection.url = snapr.api_base + "/search/";
         this.photo_collection.data = {
             sort:"favorite_count",
             n:20
@@ -31,12 +31,12 @@ tripmapper.views.popular = Backbone.View.extend({
         switch (time){
             case 'time-today':
                 var today = new Date();
-                popuar_view.photo_collection.data.min_date = tripmapper.utils.date_to_snapr_format( today );
+                popuar_view.photo_collection.data.min_date = snapr.utils.date_to_snapr_format( today );
                 break;
             case 'time-week':
                 var day = new Date();
                 day.setMilliseconds( day.getMilliseconds() - (7*24*60*60*1000) );
-                popuar_view.photo_collection.data.min_date = tripmapper.utils.date_to_snapr_format( day );
+                popuar_view.photo_collection.data.min_date = snapr.utils.date_to_snapr_format( day );
                 break;
             case 'time-all':
                 if(popuar_view.photo_collection.data.min_date){
@@ -48,7 +48,7 @@ tripmapper.views.popular = Backbone.View.extend({
             success: function()
             {
                 console.warn('success');
-                popular_list = new tripmapper.views.thumbs_li({
+                popular_list = new snapr.views.thumbs_li({
                     collection: popuar_view.photo_collection,
                     el: $('#popular ul.grid-list').eq(0)
                 });
@@ -59,7 +59,7 @@ tripmapper.views.popular = Backbone.View.extend({
                     console.warn('store the last query');
                     $('#popular ul.grid-list').eq(0).data('query', {
                         time: time,
-                        auth: tripmapper.auth
+                        auth: snapr.auth
                     });
                 });
             },
@@ -71,7 +71,7 @@ tripmapper.views.popular = Backbone.View.extend({
         }
         
         // only update list if the query has changed or is new
-        if (!_.isEqual( $('#popular ul.grid-list').eq(0).data('query'), {time: time, auth: tripmapper.auth} ))
+        if (!_.isEqual( $('#popular ul.grid-list').eq(0).data('query'), {time: time, auth: snapr.auth} ))
         {
             console.warn('loading');
             $.mobile.loadingMessage = "Loading popular photos";
