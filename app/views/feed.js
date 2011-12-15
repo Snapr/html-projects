@@ -55,8 +55,6 @@ snapr.views.feed = Backbone.View.extend({
 
         });
 
-        var $el = $(this.el);
-
         this.el.live('pagehide', function( e )
         {
             var photoSwipeInstance = Code.PhotoSwipe.getInstance( 'feed' );
@@ -66,7 +64,7 @@ snapr.views.feed = Backbone.View.extend({
                 Code.PhotoSwipe.detatch(photoSwipeInstance);
             }
             
-            $el.undelegate();
+            $(e.target).undelegate();
             
             return true; 
         });
