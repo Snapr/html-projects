@@ -2,6 +2,12 @@ snapr.views.people = Backbone.View.extend({
     
     initialize: function()
     {
+        this.el.live('pagehide', function( e )
+        {
+            $(e.target).undelegate();
+            
+            return true;
+        });
         
         this.el.find("ul.people-list").empty();
         
@@ -76,6 +82,7 @@ snapr.views.people = Backbone.View.extend({
     search: function(e)
     {
 
+        var keywords = $(e.target).val();
         
         if (keywords.length > 1)
         {

@@ -10,6 +10,13 @@ snapr.views.popular = Backbone.View.extend({
     {
         console.warn('init pop');
 
+        this.el.live('pagehide', function( e )
+        {
+            $(e.target).undelegate();
+            
+            return true;
+        });
+
         $.mobile.changePage( $("#popular"), {
             changeHash: false
         });

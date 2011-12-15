@@ -8,7 +8,14 @@ snapr.views.login = Backbone.View.extend({
 
     initialize: function()
     {
-        // console.warn('init login')
+
+        this.el.live('pagehide', function( e )
+        {
+            $(e.target).undelegate();
+            
+            return true;
+        });
+
         $.mobile.changePage( $("#login"), {
             changeHash: false,
             transition: "slidedown"

@@ -1,9 +1,14 @@
 snapr.views.my_account = Backbone.View.extend({
 
-    
-
     initialize:function()
     {
+        this.el.live('pagehide', function( e )
+        {
+            $(e.target).undelegate();
+            
+            return true;
+        });
+
         $.mobile.changePage( $("#my-account"), {changeHash: false} );
         this.user_settings = new snapr.models.user_settings();
         var my_account_view = this;
@@ -11,13 +16,11 @@ snapr.views.my_account = Backbone.View.extend({
             success: function()
             {
                 my_account_view.user_settings.linked_services_setup();
-                // console.warn( 'success', my_account_view.user_settings );
-                // console.warn( 'linked_services', my_account_view.user_settings.get('linked_services') );
                 my_account_view.render();
             },
             error: function()
             {
-                console.warn('error',my_account_view);
+                console.warn( 'error' , my_account_view );
             }
         }
         this.user_settings.fetch( options );
@@ -27,7 +30,6 @@ snapr.views.my_account = Backbone.View.extend({
     
     render: function()
     {
-        // console.warn( 'render my-account', this.el.find('[data-role="content"]') );
         var account_content = this.el.find('[data-role="content"]');
         account_content
             .empty()
@@ -66,8 +68,6 @@ snapr.views.my_account = Backbone.View.extend({
                 account_content.find('.add-services').append( v.render().el ).trigger('create');
             }
         });
-        
-        
         
         return this;
     },

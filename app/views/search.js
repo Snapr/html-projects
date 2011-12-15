@@ -10,6 +10,13 @@ snapr.views.search = Backbone.View.extend({
 
     initialize: function()
     {
+        this.el.live('pagehide', function( e )
+        {
+            $(e.target).undelegate();
+            
+            return true;
+        });
+
         $.mobile.changePage($("#search"), {
             changeHash: false,
             transition: "slidedown"

@@ -2,7 +2,13 @@ snapr.views.user_profile = Backbone.View.extend({
     
     initialize: function()
     {
-        // this.template = _.template( $("#user-header-template").html );
+        this.el.live('pagehide', function( e )
+        {
+            $(e.target).undelegate();
+            
+            return true;
+        });
+
         this.el.find("h1").text('Username');
         this.el.find("[data-role='content']").empty();
         

@@ -9,6 +9,12 @@ snapr.views.map = Backbone.View.extend({
 
     initialize: function( init_options )
     {
+        this.el.live('pagehide', function( e )
+        {
+            $(e.target).undelegate();
+            
+            return true;
+        });
         
         this.thumb_template = _.template( $('#thumb-template').html() );
 
