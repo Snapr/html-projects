@@ -90,6 +90,7 @@ snapr.views.feed = Backbone.View.extend({
         this.photo_collection.url = snapr.api_base + "/search/";
         this.photo_collection.data = query_data;
         this.photo_collection.data.n = snapr.constants.feed_count;
+        this.photo_collection.data.list_style && delete this.photo_collection.data.list_style;
         this.populate_feed();
         
         
@@ -253,10 +254,13 @@ snapr.views.feed = Backbone.View.extend({
     
     more: function()
     {
-        this.populate_feed({
-            max_date: this.photo_collection.last().get('date')
-        });
-        // console.warn('more',{max_date:this.photo_collection.last().get('date')});
+        var data = this.photo_collection.data;
+        
+        data.photo_id && delete data.photo_id;
+        data.max_date = this.photo_collection.last().get('date');
+
+        this.populate_feed( data );
+        // console.warn( 'more', this.photo_collection.data );
     },
     
     feed_view_toggle: function(e)
