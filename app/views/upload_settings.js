@@ -43,10 +43,12 @@ snapr.views.upload_settings = Backbone.View.extend({
         if (upload_mode == "upload-mode-on")
         {
             $(this.el).find( "#upload-mode-on" ).attr("checked", true);
+            pass_data( "snapr://upload?setting=On" );
         }
         else
         {
             $(this.el).find( "#upload-mode-wifi" ).attr("checked", true);
+            pass_data( "snapr://upload?setting=Wi-Fi Only" );
         }
 
         $(this.el).find( "input[type='radio']" ).checkboxradio().checkboxradio("refresh")
