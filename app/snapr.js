@@ -190,6 +190,7 @@ snapr.routers = Backbone.Router.extend({
         "/join?:query_string": "join_snapr",
         "/upload": "upload",
         "/upload?:query_string": "upload",
+        "/photo-edit/?:query_string": "photo_edit",
         "/search": "search",
         "/search?:query_string": "search",
         "/my-account": "my_account",
@@ -266,6 +267,16 @@ snapr.routers = Backbone.Router.extend({
             el: $("#upload")
         });
     },
+
+    photo_edit: function( query_string )
+    {
+        var query = snapr.utils.get_query_params( query_string );
+        snapr.info.current_view = new snapr.views.photo_edit({
+            el: $("#photo-edit"),
+            query: query
+        });
+    },
+
     
     my_account: function( query_string )
     {

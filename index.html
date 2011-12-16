@@ -156,6 +156,58 @@
     </div>
 
 
+    <div id="photo-edit" data-role="page">
+        <div data-role="header">
+            <h1>Share</h1>
+            <div class="right-header-buttons">
+                <a href="#/" data-ajax="false" data-role="button" data-icon="delete" data-iconpos="notext"></a>
+            </div>
+            
+        </div>
+        <div data-role="content">
+            
+            <textarea name="description" id="description" placeholder="Add text&hellip;"></textarea>
+            
+            <div data-role="fieldcontain">
+                <select name="slider" id="privacy-switch" data-role="slider">
+                    <option value="private">Private</option>
+                    <option value="public" selected="true">Public</option>
+                </select>
+            </div>
+
+            <div data-role="controlgroup" data-type="horizontal" class="sharing-settings">
+                <legend>Share to:</legend>
+
+                <input type="checkbox" name="twitter-sharing"  id="twitter-sharing" />
+                <label for="twitter-sharing">Twitter</label>
+
+                <input type="checkbox" name="facebook-sharing" id="facebook-sharing" />
+                <label for="facebook-sharing">Facebook</label>
+
+                <input type="checkbox" name="tumblr-sharing" id="tumblr-sharing" />
+                <label for="tumblr-sharing">Tumblr</label>
+
+                <input type="checkbox" name="foursquare-sharing" id="foursquare-sharing" />
+                <label for="foursquare-sharing">Foursquare</label>
+            </div>
+
+            <div data-role="fieldcontain">
+                <select name="foursquare-location" id="foursquare-location">
+                   <option value="1">Place 1</option>
+                   <option value="2">Place 2</option>
+                   <option value="3">Place 3</option>
+                   <option value="4">Place 4</option>
+                </select>
+            </div>
+
+            <div data-role="fieldcontain">
+                <a data-role="button" data-inline="true" data-icon="gear">Edit</a>
+                <a data-role="button" data-inline="true" data-theme="e">Share</a>
+            </div>
+        </div>
+        
+    </div>
+
     <div id="people" data-add-back-btn="true" data-role="page">
         <div data-role="header">
             <h1>People</h1>
@@ -790,6 +842,7 @@ $(document).bind("mobileinit", function(){
 <script src="app/views/search.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/my_account.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/upload.js" type="text/javascript" charset="utf-8"></script>
+<script src="app/views/photo_edit.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/upload_settings.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/user_profile.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/people.js" type="text/javascript" charset="utf-8"></script>
