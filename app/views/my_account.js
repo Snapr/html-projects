@@ -30,7 +30,13 @@ snapr.views.my_account = Backbone.View.extend({
     
     render: function()
     {
-        var account_content = this.el.find('[data-role="content"]');
+        if (snapr.info.appmode)
+        {
+            this.upload_settings = new snapr.views.upload_settings();
+            $(this.el).find("[data-role='content']").prepend( this.upload_settings.render().el );
+        }
+
+        var account_content = this.el.find('.account-content');
         account_content
             .empty()
             .append( this.template({

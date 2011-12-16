@@ -28,6 +28,8 @@
             <h1>My Account</h1>
         </div>
         <div data-role="content">
+            <div class="account-content">
+            </div>
         </div>
     </div>
 
@@ -407,6 +409,16 @@
 </div>
 </script>
 
+<script id="upload-mode-template" type="text/template">
+<fieldset data-role="controlgroup" data-type="horizontal" class="upload-mode-toggle">
+    <input type="radio" id="upload-mode-on" value="on">
+    <label for="upload-mode-on">On</label>
+    <input type="radio" id="upload-mode-wifi" value="wifi">
+    <label for="upload-mode-wifi">Wifi</label>
+</fieldset>
+<button class="upload-pause" data-inline="true" data-icon="minus" data-iconpos="left">Pause Upload Queue</button>
+</script>
+
 <script id="add-linked-service-template" type="text/template">
 <div data-role="collapsible" data-collapsed="true">
 <% switch(provider) { case 'twitter': %>
@@ -750,6 +762,7 @@ $(document).bind("mobileinit", function(){
 <script src="app/views/login.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/search.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/my_account.js" type="text/javascript" charset="utf-8"></script>
+<script src="app/views/upload_settings.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/user_profile.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/people.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/people_li.js" type="text/javascript" charset="utf-8"></script>
