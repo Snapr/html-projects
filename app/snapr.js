@@ -188,6 +188,8 @@ snapr.routers = Backbone.Router.extend({
         "/logout": "logout",
         "/join": "join_snapr",
         "/join?:query_string": "join_snapr",
+        "/upload": "upload",
+        "/upload?:query_string": "upload",
         "/search": "search",
         "/search?:query_string": "search",
         "/my-account": "my_account",
@@ -252,7 +254,17 @@ snapr.routers = Backbone.Router.extend({
     join_snapr: function( query_string )
     {
         snapr.utils.get_query_params( query_string );
-        snapr.info.current_view = new snapr.views.join_snapr();
+        snapr.info.current_view = new snapr.views.join_snapr({
+            el: $("upload")
+        });
+    },
+    
+    upload: function( query_string )
+    {
+        snapr.utils.get_query_params( query_string );
+        snapr.info.current_view = new snapr.views.upload({
+            el: $("#upload")
+        });
     },
     
     my_account: function( query_string )

@@ -129,6 +129,33 @@
     </div>
 
 
+    <div id="upload" data-role="page">
+        <div data-role="header">
+            <h1>Upload</h1>
+            <div class="right-header-buttons">
+                <a href="#/search" data-ajax="false" data-role="button" data-icon="search" data-iconpos="notext"></a>
+                <a href="#/" data-ajax="false" data-role="button" data-icon="home" data-iconpos="notext"></a>
+            </div>
+        </div>
+        <div data-role="content">
+            <div data-role="fieldcontain">
+                <form id="upload-form" action="javascript:void(0);" method="POST" enctype="multipart/form-data">
+                    <input type="hidden" name="redirect_uri" id="redirect_uri"/>
+                    <input type="hidden" name="device-time" id="device-time"/>
+                    <input type="hidden" name="-set-later-" id="_access_token"/>
+                    <input type="hidden" name="privacy" id="privacy" value="queued"/>
+                    
+                    <label for="username">Select a photo to upload:</label>
+                    <input type="file" name="photo" id="upload-file" />
+                    
+                    <input disabled="true" type="submit" value="Upload Snap" id="upload-submit" />
+                </form>
+            </div>
+            
+        </div>
+    </div>
+
+
     <div id="people" data-add-back-btn="true" data-role="page">
         <div data-role="header">
             <h1>People</h1>
@@ -718,7 +745,7 @@ snapr = {};
 snapr.redirect = '';
 snapr.models = {};
 snapr.views = {};
-snapr.base_url = "http://dev.sna.pr";
+snapr.base_url = "https://sna.pr";
 snapr.api_base = snapr.base_url + "/api";
 snapr.access_token_url = snapr.base_url + "/ext/oauth/access_token/";
 
@@ -762,6 +789,7 @@ $(document).bind("mobileinit", function(){
 <script src="app/views/login.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/search.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/my_account.js" type="text/javascript" charset="utf-8"></script>
+<script src="app/views/upload.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/upload_settings.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/user_profile.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/people.js" type="text/javascript" charset="utf-8"></script>
