@@ -32,6 +32,10 @@ snapr.views.my_account = Backbone.View.extend({
     {
         if (snapr.info.appmode)
         {
+            if (this.upload_settings)
+            {
+                $(this.upload_settings.el).remove();
+            }
             this.upload_settings = new snapr.views.upload_settings();
             $(this.el).find("[data-role='content']").prepend( this.upload_settings.render().el );
         }
@@ -120,7 +124,13 @@ snapr.views.my_account = Backbone.View.extend({
     save_settings: function()
     {
         console.warn( "save settings" );
+    },
+    
+    queue_settings: function( upload_mode, paused )
+    {
+        this.render();
     }
+
 
 });
 
