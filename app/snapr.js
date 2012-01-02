@@ -199,7 +199,7 @@ snapr.routers = Backbone.Router.extend({
         "/search": "search",
         "/search?:query_string": "search",
         "/my-account": "my_account",
-        "/my-account?:query_string": "my_account",
+        "/my-account/?:query_string": "my_account",
         "/feed": "feed",
         "/feed?:query_string": "feed",
         "/feed/?:query_string": "feed",
