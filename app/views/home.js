@@ -51,7 +51,8 @@ snapr.views.home = Backbone.View.extend({
             .replaceWith(
                 $(this.template( {
                     logged_in: logged_in,
-                    username:username
+                    username: username,
+                    appmode: snapr.info.appmode
                 })));
         this.el.trigger( "create" );
         

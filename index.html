@@ -310,7 +310,11 @@
     <div data-role="content">
         <div class="ui-grid-a">
             <div class="ui-block-a">
-                <a href="#/upload" data-corners="false" data-shadow="false" data-role="button" data-theme="c" data-ajax="false">Snap Photo</a>
+                <% if (appmode){ %>
+                    <a href="#" data-corners="false" data-shadow="false" data-role="button" data-theme="c" data-ajax="false">Snap Photo</a>
+                <% }else{ %>
+                    <a href="#/upload" data-corners="false" data-shadow="false" data-role="button" data-theme="c" data-ajax="false">Upload Photo</a>
+                <% } %>
             </div>
             <div class="ui-block-b">
                 <a href="#" data-corners="false" data-shadow="false" data-role="button" data-theme="b">Dashboard</a>
@@ -798,7 +802,7 @@ snapr = {};
 snapr.redirect = '';
 snapr.models = {};
 snapr.views = {};
-snapr.base_url = "https://sna.pr";
+snapr.base_url = "http://dev.sna.pr";
 snapr.api_base = snapr.base_url + "/api";
 snapr.access_token_url = snapr.base_url + "/ext/oauth/access_token/";
 
