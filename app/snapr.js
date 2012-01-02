@@ -79,9 +79,14 @@ Number.prototype.zeroFill = function( width )
 snapr.client_id = 'dbfedc9ed64f45644cbb13bcc3b422bb';
 snapr.client_secret = 'e89d8304723d7d8be19ebb6ab8ca0364';
 
-snapr.constants = {}
+snapr.constants = {};
 snapr.constants.default_zoom = 15;
 snapr.constants.feed_count = 12;
+
+snapr.constants.share_redirect = false;
+// set to hash url to redirect after successful upload/share eg:
+// snapr.constants.upload_redirect = "#/landing-page";
+// if false, redirects to user feed
 
 // store some info about the browser
 snapr.info = {}

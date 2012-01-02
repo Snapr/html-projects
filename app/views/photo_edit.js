@@ -74,6 +74,8 @@ snapr.views.photo_edit = Backbone.View.extend({
                 //     "facebook_shared":0
                 // }
                 
+            var redirect_url = snapr.constants.share_redirect || "#/feed/?photo_id=" + this.model.get("id") + "&username=" + snapr.auth.get("username");
+                
             this.model.save({
                 description: this.el.find("#description").val(),
                 status: this.el.find('#privacy-switch').val(),
@@ -85,7 +87,7 @@ snapr.views.photo_edit = Backbone.View.extend({
             },{
                 success: function()
                 {
-                    console.warn( "save/share success" );
+                    Route.navigate( redirect_url, true );
                 },
                 error: function()
                 {
