@@ -75,7 +75,7 @@ snapr.models.auth = Backbone.Model.extend({
 
     save_locally: function()
     {
-        var snapr_user = this.get("username");
+        var snapr_user = this.get("snapr_user");
         var access_token = this.get("access_token");
         
         if (snapr.info.supports_local_storage)
