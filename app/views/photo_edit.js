@@ -1,6 +1,6 @@
 snapr.views.photo_edit = Backbone.View.extend({
 
-    initialize: function( init_options )
+    initialize: function()
     {
         this.el.live( "pagehide", function( e )
         {
@@ -13,13 +13,16 @@ snapr.views.photo_edit = Backbone.View.extend({
         // but for now we'll start from blank each time
         this.photo_edit_settings = {};
         
-        if (init_options.query.photo_path)
+        if (this.options.query.photo_path)
         {
-            this.get_photo_from_path( init_options.query.photo_path );
+            this.get_photo_from_path( this.options.query.photo_path );
         }
-        else
+        else if(this.options.query.photo_id)
         {
-            this.get_photo_from_server( init_options.query.photo );
+            this.get_photo_from_server( this.options.query.photo_id );
+        }
+        else{
+            console.warn( "error, no path or photo_id" );
         }
         
         $.mobile.changePage( $("#photo-edit"), {changeHash: false} );
@@ -43,7 +46,7 @@ snapr.views.photo_edit = Backbone.View.extend({
                 var photo_url = "http://media-server2.snapr.us/lrg/" 
                     + photo_edit.model.get("secret") + "/" 
                     + photo_edit.model.get("id") + ".jpg";
-                photo_edit.el.find("[data-role='content']").prepend( $("<img src='" + photo_url + "' />") );
+                photo_edit.el.find(".edit-image").html( $("<img src='" + photo_url + "' />") );
 
                 photo_edit.el.find("#description").val( photo_edit.model.get("description") );
 
@@ -57,6 +60,13 @@ snapr.views.photo_edit = Backbone.View.extend({
     
     get_photo_from_path: function( path )
     {
+        this.model = new snapr.models.photo({
+            photo_path: path
+        });
+        
+        // temporary hack to display image
+        photo_edit.el.find(".edit-image").html( $("<img src='" + path + "' />") );
+        
         console.warn( "get_photo_from_path", path );
     },
     
@@ -64,17 +74,8 @@ snapr.views.photo_edit = Backbone.View.extend({
     {
         if (this.model)
         {
-            
-                // shared: {
-                //     "tumblr": false,
-                //     "foursquare_checkin": false,
-                //     "facebook_album": false,
-                //     "facebook_newsfeed": false,
-                //     "tweeted":false,
-                //     "facebook_shared":0
-                // }
-                
-            var redirect_url = snapr.constants.share_redirect || "#/feed/?photo_id=" + this.model.get("id") + "&username=" + snapr.auth.get("username");
+            var redirect_url = snapr.constants.share_redirect || 
+                "#/feed/?photo_id=" + this.model.get("id") + "&username=" + this.model.get("username");
                 
             this.model.save({
                 description: this.el.find("#description").val(),

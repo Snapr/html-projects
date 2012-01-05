@@ -22,7 +22,7 @@ snapr.models.auth = Backbone.Model.extend({
                 if (auth.get("access_token"))
                 {
                     auth.set({
-                        username: username
+                        snapr_user: username
                     });
                     auth.save_locally();
                     delete auth.data;
@@ -68,7 +68,7 @@ snapr.models.auth = Backbone.Model.extend({
         {
             this.set({
                 access_token: access_token,
-                username: snapr_user
+                snapr_user: snapr_user
             });
         }
     },
@@ -97,7 +97,7 @@ snapr.models.auth = Backbone.Model.extend({
 
     logout: function()
     {
-        this.unset("username");
+        this.unset("snapr_user");
         this.unset("access_token");
         if (snapr.info.supports_local_storage)
         {

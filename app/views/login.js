@@ -33,7 +33,7 @@ snapr.views.login = Backbone.View.extend({
             {
                 $("#login-dialog-username").val('');
                 $("#login-dialog-password").val('');
-                if (window.location.hash == "#/login")
+                if (window.location.hash.indexOf("#/login/") > -1 )
                 {
                     window.history.back();
                 }
