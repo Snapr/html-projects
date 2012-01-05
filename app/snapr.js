@@ -188,30 +188,32 @@ snapr.utils.get_photo_height = function( orig_width, orig_height, element )
 
 snapr.routers = Backbone.Router.extend({
     routes: {
-        "/login": "login",
-        "/login?:query_string": "login",
-        "/logout": "logout",
-        "/join": "join_snapr",
-        "/join?:query_string": "join_snapr",
-        "/upload": "upload",
-        "/upload?:query_string": "upload",
+        "/login/": "login",
+        "/login/?:query_string": "login",
+        "/logout/": "logout",
+        "/join/": "join_snapr",
+        "/join/?:query_string": "join_snapr",
+        "/upload/": "upload",
+        "/upload/?:query_string": "upload",
         "/photo-edit/?:query_string": "photo_edit",
-        "/search": "search",
-        "/search?:query_string": "search",
-        "/my-account": "my_account",
+        "/search/": "search",
+        "/search/?:query_string": "search",
+        "/my-account/": "my_account",
         "/my-account/?:query_string": "my_account",
-        "/feed": "feed",
-        "/feed?:query_string": "feed",
         "/feed/?:query_string": "feed",
         "/user/profile/?:query": "user_profile",
         "/user/search/?:query": "user_search",
         "/user/:follow/?:query": "people",
-        "/map": "map",
-        "/map?:query_string": "map",
+        "/upload/": "upload",
+        "/upload/?:query_string": "upload",
+        "/photo-edit/?:query_string": "photo_edit",
+        "/map/": "map",
         "/map/?:query_string": "map",
-        "/popular": "popular",
-        "/popular?:query_string": "popular",
+        "/popular/": "popular",
+        "/popular/?:query_string": "popular",
+        "/": "home",
         "?:query_string": "home",
+        "/?:query_string": "home",
         "*path": "home"
     },
 
@@ -226,12 +228,14 @@ snapr.routers = Backbone.Router.extend({
 
     popular: function( query_string )
     {
+        console.warn('go to popular');
         snapr.utils.get_query_params( query_string );
         snapr.info.current_view = new snapr.views.popular();
     },
     
     home: function( query_string )
     {
+        console.warn('go home');
         snapr.utils.get_query_params( query_string );
         snapr.info.current_view = new snapr.views.home({
             el: $('#home')
@@ -240,12 +244,14 @@ snapr.routers = Backbone.Router.extend({
     
     login: function( query_string )
     {
+        console.warn('go to login');
         snapr.utils.get_query_params( query_string );
         snapr.info.current_view = new snapr.views.login();
     },
     
-    logout: function()
+    logout: function( query_string )
     {
+        snapr.utils.get_query_params( query_string );
         if (snapr.auth)
         {
            snapr.auth.logout();

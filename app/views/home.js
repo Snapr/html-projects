@@ -14,7 +14,7 @@ snapr.views.home = Backbone.View.extend({
             console.warn( 'changing page' );
             $.mobile.changePage( "#home" );
         }
-        window.location.hash = "";
+        // window.location.hash = "";
         var home_view = this;
         snapr.auth.bind( "set:username", function()
         {

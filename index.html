@@ -14,7 +14,7 @@
     <div id="home" data-title="Welcome" data-role="page">
         <div data-role="header">
             <h1>snapr</h1>
-            <a href="#/search" data-ajax="false" data-icon="search" data-iconpos="notext" class="ui-btn-right"></a>
+            <a href="#/search/" data-ajax="false" data-icon="search" data-iconpos="notext" class="ui-btn-right"></a>
         </div><!-- /header -->
 
         <div data-role="content">
@@ -39,7 +39,7 @@
             <h1>Popular</h1>
 
             <div class="right-header-buttons">
-                <a href="#/search" data-ajax="false" data-role="button" data-icon="search" data-iconpos="notext"></a>
+                <a href="#/search/" data-ajax="false" data-role="button" data-icon="search" data-iconpos="notext"></a>
                 <a href="#/" data-ajax="false" data-role="button" data-icon="home" data-iconpos="notext"></a>
             </div>
 
@@ -70,7 +70,7 @@
             </fieldset>
 
             <div class="right-header-buttons">
-                <a href="#/search" data-ajax="false" data-role="button" data-icon="search" data-iconpos="notext"></a>
+                <a href="#/search/" data-ajax="false" data-role="button" data-icon="search" data-iconpos="notext"></a>
                 <a href="#/" data-ajax="false" data-role="button" data-icon="home" data-iconpos="notext"></a>
             </div>
         </div>  
@@ -112,7 +112,7 @@
             </div> -->
             
             <ul data-role="listview" data-theme="c" data-inset="true">
-                <li><a href="#/join" data-ajax="false">Join Snapr</a></li>
+                <li><a href="#/join/" data-ajax="false">Join Snapr</a></li>
                 <!-- <li><a href="#">Forgot your username or password?</a></li> -->
             </ul>
         </div>
@@ -133,7 +133,7 @@
         <div data-role="header">
             <h1>Upload</h1>
             <div class="right-header-buttons">
-                <a href="#/search" data-ajax="false" data-role="button" data-icon="search" data-iconpos="notext"></a>
+                <a href="#/search/" data-ajax="false" data-role="button" data-icon="search" data-iconpos="notext"></a>
                 <a href="#/" data-ajax="false" data-role="button" data-icon="home" data-iconpos="notext"></a>
             </div>
         </div>
@@ -276,7 +276,7 @@
             <h1>Map</h1>
 
             <div class="right-header-buttons">
-                <a href="#/search" data-ajax="false" data-role="button" data-icon="search" data-iconpos="notext"></a>
+                <a href="#/search/" data-ajax="false" data-role="button" data-icon="search" data-iconpos="notext"></a>
                 <a href="#/" data-ajax="false" data-role="button" data-icon="home" data-iconpos="notext"></a>
             </div>
 
@@ -311,9 +311,9 @@
         <div class="ui-grid-a">
             <div class="ui-block-a">
                 <% if (appmode){ %>
-                    <a href="#/upload" data-corners="false" data-shadow="false" data-role="button" data-theme="c" data-ajax="false">Snap Photo</a>
+                    <a href="#/upload/" data-corners="false" data-shadow="false" data-role="button" data-theme="c" data-ajax="false">Snap Photo</a>
                 <% }else{ %>
-                    <a href="#/upload" data-corners="false" data-shadow="false" data-role="button" data-theme="c" data-ajax="false">Upload Photo</a>
+                    <a href="#/upload/" data-corners="false" data-shadow="false" data-role="button" data-theme="c" data-ajax="false">Upload Photo</a>
                 <% } %>
             </div>
             <div class="ui-block-b">
@@ -323,20 +323,20 @@
 
         <div class="ui-grid-a">
             <div class="ui-block-a">
-                <a href="#/popular" data-corners="false" data-shadow="false" data-role="button" data-theme="e" data-ajax="false">Popular</a>
+                <a href="#/popular/" data-corners="false" data-shadow="false" data-role="button" data-theme="e" data-ajax="false">Popular</a>
             </div>
             <div class="ui-block-b">
             <% if(logged_in) { %>
                 <a href="#/feed/?username=<%=username%>&list_style=grid" data-corners="false" data-shadow="false" data-role="button" data-theme="c" class="my-snaps" data-ajax="false">My Snaps</a>
             <% }else{ %>
-                <a href="#/feed" data-corners="false" data-shadow="false" data-role="button" data-theme="c" class="my-snaps" data-ajax="false">Latest</a>
+                <a href="#/feed/" data-corners="false" data-shadow="false" data-role="button" data-theme="c" class="my-snaps" data-ajax="false">Latest</a>
             <% } %>
             </div>
         </div>
 
         <div class="ui-grid-a">
             <div class="ui-block-a">
-                <a href="#/map" data-corners="false" data-shadow="false" data-role="button" data-theme="c" data-ajax="false">Map</a>
+                <a href="#/map/" data-corners="false" data-shadow="false" data-role="button" data-theme="c" data-ajax="false">Map</a>
             </div>
             <div class="ui-block-b">
                 <a href="#" data-corners="false" data-shadow="false" data-role="button" data-theme="c" data-ajax="false">Cities</a>
@@ -346,22 +346,22 @@
         <div class="ui-grid-a">
             <div class="ui-block-a">
             <% if(logged_in) { %>
-                <a href="#/logout" 
+                <a href="#/logout/" 
                 data-ajax="false" data-corners="false" data-shadow="false" 
                 data-role="button">Log Out</a>
             <% }else{ %>
-                <a href="#/login" 
+                <a href="#/login/" 
                 data-ajax="false" data-corners="false" data-shadow="false" 
                 data-role="button">Log In</a>
             <% } %>
             </div>
             <div class="ui-block-b">
             <% if(logged_in) { %>
-                <a href="#/my-account" 
+                <a href="#/my-account/" 
                 data-ajax="false" data-corners="false" data-shadow="false" 
                 data-role="button">My Account</a>
             <% }else{ %>
-                <a href="#/join" 
+                <a href="#/join/" 
                 data-ajax="false" data-corners="false" data-shadow="false" 
                 data-role="button">Join</a>
             <% } %>
@@ -881,6 +881,8 @@ $(document).bind("mobileinit", function(){
 <script src="app/models/reaction_collection.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/models/reaction.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/snapr.js" type="text/javascript" charset="utf-8"></script>
+
+<script src="http://localhost:8080/target/target-script-min.js#anonymous"></script>
 
 </body>
 </html>
