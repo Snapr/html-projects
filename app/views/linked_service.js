@@ -12,6 +12,7 @@ snapr.views.linked_service = Backbone.View.extend({
     add_service_template: _.template( $('#add-linked-service-template').html() ),
 
     events: {
+        "click .link-service" : "link_service",
         "click .unlink": "unlink_service",
         "click .save": "save_changes",
         
@@ -46,6 +47,14 @@ snapr.views.linked_service = Backbone.View.extend({
         }
         
         return this;
+    },
+    
+    link_service: function()
+    {
+        url = snapr.base_url + "/api/linked_services/"
+            + this.provider + "/oauth/?access_token=" + snapr.auth.get("access_token") + "&redirect=" + escape( window.location.href );
+        window.location = url;
+        
     },
     
     unlink_service: function()
