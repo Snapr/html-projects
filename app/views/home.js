@@ -36,22 +36,22 @@ snapr.views.home = Backbone.View.extend({
     render: function()
     {
         console.warn( 'render home' )
-        if (snapr.auth && snapr.auth.attributes.username)
+        if (snapr.auth && snapr.auth.attributes.snapr_user)
         {
-            var logged_in = true,
-            username = snapr.auth.attributes.username;
+            var logged_in = true;
+            var snapr_user = snapr.auth.attributes.snapr_user;
             
         }
         else
         {
-            var logged_in = false,
-            username = null;
+            var logged_in = false;
+            var snapr_user = null;
         }
         this.el.find( '[data-role="content"]' )
             .replaceWith(
                 $(this.template( {
                     logged_in: logged_in,
-                    username: username,
+                    username: snapr_user,
                     appmode: snapr.info.appmode
                 })));
         this.el.trigger( "create" );
