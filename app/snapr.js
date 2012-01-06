@@ -66,6 +66,18 @@ Number.prototype.zeroFill = function( width )
     return this.toString();
 }
 
+Array.prototype.human_list =  function(){
+    if(this.length==1){return this[0];}
+    copy = this.slice(0);
+    text = copy.pop();
+    text = copy.pop() +' and '+ text;
+    while(copy.length){
+       text = copy.pop() +', '+ text; 
+    }
+    return text
+};
+
+
 // defined in index.html
 // snapr = {};
 // snapr.models = {};
@@ -98,7 +110,6 @@ snapr.info.supports_local_storage = (function(){
   }
 })();
 
-snapr.info.appmode = (window.location.protocol == 'file:');
 snapr.info.upload_count = 0;
 snapr.info.upload_mode = "On";
 snapr.info.upload_paused = false;
@@ -112,6 +123,28 @@ snapr.utils = {};
 snapr.utils.date_to_snapr_format = function(d)
 {
     return d.getFullYear()+'-'+(d.getMonth()+1).zeroFill(2)+'-'+d.getDate().zeroFill(2)+' 00:00:00';
+}
+snapr.utils.save_local_param = function( key, value )
+{
+    if (snapr.info.supports_local_storage)
+    {
+        localStorage.setItem( key, value);
+    }
+    else
+    {
+        $.cookie( key, value);
+    }
+}
+snapr.utils.get_local_param = function( key )
+{
+    if (snapr.info.supports_local_storage)
+    {
+        return localStorage.getItem( key );
+    }
+    else
+    {
+        return $.cookie( key );
+    }
 }
 snapr.utils.get_query_params = function(query)
 {
@@ -141,7 +174,7 @@ snapr.utils.get_query_params = function(query)
                         "demo_mode"
                         ], kv[0] ) > -1)
                     {
-                        snapr.info[ kv[0] ] = unescape( kv[1] );
+                        snapr.utils.save_local_param( kv[0], kv[1] );
                     }
                     else
                     {
@@ -200,6 +233,7 @@ snapr.routers = Backbone.Router.extend({
         "/search/?:query_string": "search",
         "/my-account/": "my_account",
         "/my-account/?:query_string": "my_account",
+        "/linked-services/?:query_string": "linked_services",
         "/feed/?:query_string": "feed",
         "/user/profile/?:query": "user_profile",
         "/user/search/?:query": "user_search",
@@ -297,6 +331,15 @@ snapr.routers = Backbone.Router.extend({
         });
     },
     
+    linked_services: function( query_string )
+    {
+        var query = snapr.utils.get_query_params( query_string );
+        snapr.info.current_view = new snapr.views.linked_services({
+            el: $("#linked-services"),
+            query: query
+        });
+    },
+    
     map: function( query_string )
     {
         var query = snapr.utils.get_query_params( query_string );
@@ -364,7 +407,7 @@ function upload_progress(data, datatype)
     }
     else
     {
-        if (snapr.info.appmode)
+        if (snapr.utils.get_local_param("appmode"))
         {
             pass_data( "snapr://upload_progress?send=false" );
         }

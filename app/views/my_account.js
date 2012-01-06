@@ -30,7 +30,7 @@ snapr.views.my_account = Backbone.View.extend({
     
     render: function()
     {
-        if (snapr.info.appmode)
+        if (snapr.utils.get_local_param("appmode"))
         {
             if (this.upload_settings)
             {

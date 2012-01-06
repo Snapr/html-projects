@@ -33,6 +33,23 @@
         </div>
     </div>
 
+    <div id="linked-services" data-title="Linked Services" data-add-back-btn="true" data-role="dialog">
+        <div data-role="header">
+            <h1>Linked Services</h1>
+        </div>
+        <div data-role="content">
+            <div class="services-content">
+                <h2 class="tolink-message"></h2>
+                <h4>Services to Link</h4>
+                <div class="add-services">
+                </div>
+                <h4>Linked Services</h4>
+                <div class="linked-services">
+                </div>
+            </div>
+        </div>
+    </div>
+
 
     <div id="popular" data-title="Popular" data-add-back-btn="true" data-role="page">
         <div data-role="header">
@@ -189,7 +206,7 @@
                 <input type="checkbox" name="tumblr-sharing" id="tumblr-sharing" />
                 <label for="tumblr-sharing">Tumblr</label>
 
-                <input type="checkbox" name="foursquare-sharing" id="foursquare-sharing" />
+                <input type="checkbox" name="foursquare-sharing" id="foursquare-sharing" disabled="true" />
                 <label for="foursquare-sharing">Foursquare</label>
             </div>
 
@@ -856,6 +873,7 @@ $(document).bind("mobileinit", function(){
 <script src="app/views/people.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/people_li.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/linked_service.js" type="text/javascript" charset="utf-8"></script>
+<script src="app/views/linked_services.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/popular.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/thumbs_li.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/feed.js" type="text/javascript" charset="utf-8"></script>

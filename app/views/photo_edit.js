@@ -17,9 +17,9 @@ snapr.views.photo_edit = Backbone.View.extend({
         {
             this.get_photo_from_path( this.options.query.photo_path );
         }
-        else if(this.options.query.photo_id)
+        else if(this.options.query.photo_id || this.options.query.photo)
         {
-            this.get_photo_from_server( this.options.query.photo_id );
+            this.get_photo_from_server( this.options.query.photo_id || this.options.query.photo );
         }
         else{
             console.warn( "error, no path or photo_id" );

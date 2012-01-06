@@ -52,7 +52,7 @@ snapr.views.home = Backbone.View.extend({
                 $(this.template( {
                     logged_in: logged_in,
                     username: snapr_user,
-                    appmode: snapr.info.appmode
+                    appmode: snapr.utils.get_local_param("appmode")
                 })));
         this.el.trigger( "create" );
         
