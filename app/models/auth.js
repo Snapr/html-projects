@@ -80,12 +80,12 @@ snapr.models.auth = Backbone.Model.extend({
         
         if (snapr.utils.get_local_param("appmode"))
         {
-            alert( "appmode: " + snapr.utils.get_local_param("appmode") )
+            // alert( "appmode: " + snapr.utils.get_local_param("appmode") )
             pass_data( "snapr://login?snapr_user=" + encodeURI(snapr_user) + "&access_token=" + encodeURI(access_token) );
         }
         else
         {
-            alert( "appmode: " + snapr.utils.get_local_param("appmode") )
+            // alert( "appmode: " + snapr.utils.get_local_param("appmode") )
             if (snapr.info.supports_local_storage)
             {
                 localStorage.setItem("snapr_user", snapr_user);

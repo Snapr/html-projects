@@ -53,11 +53,11 @@ snapr.views.feed = Backbone.View.extend({
         // this.el.find(".feed-upload-list").empty();
         this.el.find('ul.gallery').empty();
 
-        this.el.live( 'pageshow', function()
-        {
-            toggle_container.find( "input[type='radio']" ).checkboxradio( "refresh" );
-        
-        });
+        // this.el.live( 'pageshow', function()
+        // {
+        //     toggle_container.find( "input[type='radio']" ).checkboxradio( "refresh" );
+        // 
+        // });
 
         // photoSwipe gallery view setup (disabled)
 
