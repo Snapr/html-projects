@@ -81,6 +81,12 @@ snapr.views.uploading = Backbone.View.extend({
                 test_data.uploads[0].percent_complete = 100;
                 upload_progress(test_data);
              }, 12000);
+
+             setTimeout(function() {
+                console.warn("testing 5");
+                upload_completed( 5345233, "CAT");
+             }, 14000);
+
         
              // setTimeout(function() {
              //    console.warn("testing 3", test_data);
