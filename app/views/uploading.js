@@ -104,9 +104,38 @@ snapr.views.uploading = Backbone.View.extend({
         // end testing
     },
     
+    events: {
+        "click .cancel-uploads": "cancel_uploads"
+    },
+    
+    cancel_uploads: function()
+    {
+        _.each( this.pending_uploads, function( photo, id )
+        {
+            snapr.utils.approve({
+                "title": "Cancel this upload?",
+                "yes_callback": function(){
+                    if (snapr.utils.get_local_param("appmode")){
+                        window.location = "snapr://upload?cancel=" + id;
+                    }
+                }
+            });
+            
+        }, this );
+    },
+    
     upload_progress: function( upload_data )
     {
         $(this.el).find(".upload-progress-container").empty();
+        
+        if (upload_data.uploads.length == 0)
+        {
+            $(this.el).find(".cancel-uploads").hide();
+        }
+        else
+        {
+            $(this.el).find(".cancel-uploads").show();
+        }
         
         var upload_li_template = _.template( $("#upload-progress-heart-template").html() );
         
