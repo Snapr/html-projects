@@ -157,15 +157,7 @@
             <h1>Uploading</h1>
         </div>
         <div data-role="content">
-            <div class="ui-grid-a">
-                <div class="ui-block-a upload-image">
-                    <!-- contents replaced with image from path -->
-                    <img src="http://placehold.it/200x200" alt="thumbnail" />
-                </div>
-                <div class="ui-block-b upload-progress-container">
-                    <!-- contents replaced with upload-progress-template -->
-                    <img src="http://placehold.it/100x100" alt="heart" /><span>69%</span>
-                </div>
+            <div class="ui-grid-a upload-progress-container">
             </div>
             <div>
                 <h2>About Girl of the Month</h2>
@@ -640,6 +632,28 @@
     <a href="https://s3.amazonaws.com/media-server<%= item.get('server_id') %>.snapr.us/lrg/<%= item.get('secret') %>/<%= item.get('id') %>.jpg" rel="external" class="gallery_link"><img src="https://s3.amazonaws.com/media-server<%= item.get('server_id') %>.snapr.us/thm2/<%= item.get('secret') %>/<%= item.get('id') %>.jpg" alt="<%= item.get('description') %>" class="thumb-image" /></a>
 </li>
 </script>
+
+<script id="upload-progress-heart-template" type="text/template">
+    <div class="ui-block-a upload-image">
+        <div class="image-crop"><img class="ui-li-icon" src="<%= thumbnail %>" /></div>
+    </div>
+    <div class="ui-block-b upload-progress-container">
+        <div class="heart-progress-bar <%= upload_status %>">
+            <div class="heart-bg heart">
+            </div>
+            <div class="heart-prog heart" style="height:<%= percent_complete %>%">
+            </div>
+        </div>
+        <span><%= percent_complete %>%</span>
+    </div>
+
+<% if (percent_complete == 100){ %>
+    <a data-icon="forward" data-theme="d" class="processing"></a>
+<% }else{ %>
+    <a data-icon="delete" data-theme="d" class="cancel"></a>
+<% } %>
+</script>
+
 
 <script id="upload-progress-li-template" type="text/template">
     <a>

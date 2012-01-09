@@ -1,6 +1,6 @@
 snapr.views.upload_progress_li = Backbone.View.extend({
     
-    tagName: "li",
+    tagName: "div",
     
     initialize: function()
     {
