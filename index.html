@@ -632,8 +632,8 @@
         <!-- gallery version below -->
         <!-- <a href="https://s3.amazonaws.com/media-server<%= item.get('server_id') %>.snapr.us/lrg/<%= item.get('secret') %>/<%= item.get('id') %>.jpg" rel="external" class="gallery_link"><img style="width:100%;height:<%= snapr.utils.get_photo_height(item.get('width'), item.get('height'), '#feed .ui-content') %>px;" src="https://s3.amazonaws.com/media-server<%= item.get('server_id') %>.snapr.us/lrg/<%= item.get('secret') %>/<%= item.get('id') %>.jpg" alt="<%= item.get('description') %>" class="thumb-image" /></a> -->
 
-        <div><a data-ajax="false" data-transition="slide" href="#/feed/?username=<%= item.get('username') %>"><%= item.get('username') %></a>
-        </div>
+        <div><%= item.get('username') %></div>
+        <div><%= item.get('description') %></div>
     </div>
 </li>
 </script>
