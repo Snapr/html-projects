@@ -157,6 +157,8 @@ snapr.views.uploading = Backbone.View.extend({
     
     upload_completed: function( queue_id, snapr_id )
     {
+        delete this.pending_uploads[queue_id];
+        
         var $content = $(this.el).find('[data-role="content"]');
         var upload_heart_template = _.template( $("#upload-progress-heart-complete-template").html() );
         
