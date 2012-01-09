@@ -118,6 +118,9 @@ snapr.views.uploading = Backbone.View.extend({
                     if (snapr.utils.get_local_param("appmode")){
                         window.location = "snapr://upload?cancel=" + id;
                     }
+                    else{
+                        Route.navigate( "#/upload/", true );
+                    }
                 }
             });
             
@@ -126,7 +129,7 @@ snapr.views.uploading = Backbone.View.extend({
     
     upload_progress: function( upload_data )
     {
-        $(this.el).find(".upload-progress-container").empty();
+        var $content = $(this.el).find('[data-role="content"]').empty();
         
         if (upload_data.uploads.length == 0)
         {
@@ -137,15 +140,15 @@ snapr.views.uploading = Backbone.View.extend({
             $(this.el).find(".cancel-uploads").show();
         }
         
-        var upload_li_template = _.template( $("#upload-progress-heart-template").html() );
+        var upload_heart_template = _.template( $("#upload-progress-heart-template").html() );
         
         _.each( upload_data.uploads, function( photo )
         {
             this.pending_uploads[photo.id] = new snapr.views.upload_progress_li({
-                template: upload_li_template,
+                template: upload_heart_template,
                 photo: photo
             });
-            $(this.el).find(".upload-progress-container").append( this.pending_uploads[photo.id].render().el );
+            $content.append( this.pending_uploads[photo.id].render().el );
         }, this );
         
         // $(this.el).find(".upload-progress-container").listview().listview("refresh");
@@ -154,18 +157,16 @@ snapr.views.uploading = Backbone.View.extend({
     
     upload_completed: function( queue_id, snapr_id )
     {
-        // if we are on a feed for the current snapr user
-        if (this.options.query.username == snapr.auth.get("snapr_user")
-            && !this.options.query.photo_id)
+        var $content = $(this.el).find('[data-role="content"]');
+        var upload_heart_template = _.template( $("#upload-progress-heart-complete-template").html() );
+        
+        this.model = new snapr.models.photo({id: snapr_id});
+        var model = this.model;
+        this.model.bind("change", function()
         {
-            // remove the date restriction if it is present
-            if (this.photo_collection.data.max_date)
-            {
-                delete this.photo_collection.data.max_date;
-            }            
-            // refresh the feed content
-            // this.populate_feed();
-            alert( "done! " + queue_id + " " + snapr_id );
-        }
+            console.warn('model',this.model);
+            $content.html(upload_heart_template({item: model})).trigger("create");
+        });
+        this.model.fetch();
     }
 });

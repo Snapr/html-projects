@@ -157,13 +157,6 @@
             <h1>Uploading</h1>
         </div>
         <div data-role="content">
-            <div class="ui-grid-a upload-progress-container">
-            </div>
-            <div>
-                <h2>About Girl of the Month</h2>
-                <p>Each month we pick our favorite shot from one lucky girl to be Pink Nation Girl of the Month.</p>
-                <p>Text about prizes etc.</p>
-            </div>
         </div>
     </div>
 
@@ -634,17 +627,55 @@
 </script>
 
 <script id="upload-progress-heart-template" type="text/template">
+    <div class="ui-grid-a upload-progress-container">
+        <div class="ui-block-a upload-image">
+            <div class="image-crop"><img src="<%= thumbnail %>" /></div>
+        </div>
+        <div class="ui-block-b upload-progress-container">
+            <div class="heart-progress-bar <%= upload_status %>">
+                <div class="heart-bg heart">
+                </div>
+                <div class="heart-prog heart" style="height:<%= percent_complete %>%">
+                </div>
+            </div>
+            <span><%= percent_complete %>%</span>
+        </div>
+    </div>
+    <div class="message-cont">
+        <h2>About Girl of the Month</h2>
+        <p>Each month we pick our favorite shot from one lucky girl to be Pink Nation Girl of the Month.</p>
+        <p>Text about prizes etc.</p>
+    </div>
+
+<% if (percent_complete == 100){ %>
+    <a data-icon="forward" data-theme="d" class="processing"></a>
+<% }else{ %>
+    <a data-icon="delete" data-theme="d" class="cancel"></a>
+<% } %>
+</script>
+
+<script id="upload-progress-heart-complete-template" type="text/template">
+    <div class="ui-grid-a upload-progress-container">
+        <div class="ui-block-a upload-image">
+            <div class="image-crop"><img src="https://s3.amazonaws.com/media-server<%= item.get('server_id') %>.snapr.us/thm2/<%= item.get('secret') %>/<%= item.get('id') %>.jpg" alt="<%= item.get('description') %>" /></div>
+        </div>
+        <div class="ui-block-b">
+            <h3>Thanks!</h3>
+        </div>
+    </div>
+    <div class="message-cont">
+        <a data-ajax="false" href="#/upload/" data-role="button" data-inline="true">Take Another</a>
+        <a data-ajax="false" href="#/" data-role="button" data-inline="true" data-theme="b">Done</a>
+    </div>
+    
+</script>
+
+<script id="upload-complete-template" type="text/template">
     <div class="ui-block-a upload-image">
         <div class="image-crop"><img class="ui-li-icon" src="<%= thumbnail %>" /></div>
     </div>
-    <div class="ui-block-b upload-progress-container">
-        <div class="heart-progress-bar <%= upload_status %>">
-            <div class="heart-bg heart">
-            </div>
-            <div class="heart-prog heart" style="height:<%= percent_complete %>%">
-            </div>
-        </div>
-        <span><%= percent_complete %>%</span>
+    <div class="ui-block-b">
+        <h2>Thanks!</h2>
     </div>
 
 <% if (percent_complete == 100){ %>
