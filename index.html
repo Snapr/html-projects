@@ -145,6 +145,29 @@
         </div>
     </div>
 
+    <div id="uploading" data-role="page">
+        <div data-role="header">
+            <a class="cancel-upload" data-ajax="false" data-role="button">Cancel</a>
+            <h1>Uploading</h1>
+        </div>
+        <div data-role="content">
+            <div class="ui-grid-a">
+                <div class="ui-block-a upload-image">
+                    <!-- contents replaced with image from path -->
+                    <img src="http://placehold.it/200x200" alt="thumbnail" />
+                </div>
+                <div class="ui-block-b upload-progress-container">
+                    <!-- contents replaced with upload-progress-template -->
+                    <img src="http://placehold.it/100x100" alt="heart" /><span>69%</span>
+                </div>
+            </div>
+            <div>
+                <h2>About Girl of the Month</h2>
+                <p>Each month we pick our favorite shot from one lucky girl to be Pink Nation Girl of the Month.</p>
+                <p>Text about prizes etc.</p>
+            </div>
+        </div>
+    </div>
 
     <div id="photo-edit" data-role="page">
         <div data-role="header">
@@ -733,6 +756,7 @@ $(document).bind("mobileinit", function(){
 <script src="app/views/search.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/my_account.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/upload.js" type="text/javascript" charset="utf-8"></script>
+<script src="app/views/uploading.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/photo_edit.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/upload_settings.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/user_profile.js" type="text/javascript" charset="utf-8"></script>

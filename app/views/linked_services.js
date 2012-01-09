@@ -48,10 +48,10 @@ snapr.views.linked_services = Backbone.View.extend({
         this.show_tolink_message();
 
         var linked_services_list = {
-            foursquare:false,
+            // foursquare:false,
             facebook:false,
             tumblr:false,
-            twitter:false
+            // twitter:false
         }
         
         $(this.el).find('.linked-services').empty();

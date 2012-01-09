@@ -292,6 +292,8 @@ snapr.routers = Backbone.Router.extend({
         "/join/?:query_string": "join_snapr",
         "/upload/": "upload",
         "/upload/?:query_string": "upload",
+        "/uploading/": "uploading",
+        "/uploading/?:query_string": "uploading",
         "/photo-edit/?:query_string": "photo_edit",
         "/search/": "search",
         "/search/?:query_string": "search",
@@ -374,6 +376,15 @@ snapr.routers = Backbone.Router.extend({
         snapr.utils.get_query_params( query_string );
         snapr.info.current_view = new snapr.views.upload({
             el: $("#upload")
+        });
+    },
+
+    uploading: function( query_string )
+    {
+        var query = snapr.utils.get_query_params( query_string );
+        snapr.info.current_view = new snapr.views.uploading({
+            el: $("#uploading"),
+            query: query
         });
     },
 
