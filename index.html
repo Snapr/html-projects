@@ -11,17 +11,10 @@
     </head> 
 <body> 
 
-    <div id="home" data-title="Welcome" data-role="page">
-        <div data-role="header">
-            <h1>snapr</h1>
-            <a href="#/search/" data-ajax="false" data-icon="search" data-iconpos="notext" class="ui-btn-right"></a>
-        </div><!-- /header -->
-
+    <div id="home" data-title="PINK Nation" data-role="page">
         <div data-role="content">
         </div><!-- /content -->
-
     </div><!-- /page -->
-
 
     <div id="my-account" data-title="My Account" data-add-back-btn="true" data-role="page">
         <div data-role="header">
@@ -75,35 +68,15 @@
     </div><!-- /page -->
 
 
-    <div id="feed" data-role="page">
+    <div id="feed" data-role="page" data-add-back-btn="true">
         <div data-role="header">
-            <a data-rel="back" data-icon="arrow-l">Back</a>
-            
-            <fieldset data-role="controlgroup" data-type="horizontal" class="ui-title feed-view-toggle">
-                <input type="radio" name="feed-view-list" id="feed-view-list" value="list">
-                <label for="feed-view-list">List</label>
-                <input type="radio" name="feed-view-grid" id="feed-view-grid" value="grid">
-                <label for="feed-view-grid">Grid</label>
-            </fieldset>
-
-            <div class="right-header-buttons">
-                <a href="#/search/" data-ajax="false" data-role="button" data-icon="search" data-iconpos="notext"></a>
-                <a href="#/" data-ajax="false" data-role="button" data-icon="home" data-iconpos="notext"></a>
-            </div>
-        </div>  
+            <h1>Featured Girls</h1>
+        </div>
         <div class="feed-content" data-role="content">
-            <div class="feed-upload-progress">
-                <ul class="feed-upload-list" data-role="listview">
-                </ul>
-            </div>
-            <div class="feed-header">
-            </div>
             <ul class="gallery">
             </ul>
         </div>
-
         <button class="more ui-btn-right">More</button>
-
     </div><!-- /page -->
 
 
@@ -175,57 +148,45 @@
 
     <div id="photo-edit" data-role="page">
         <div data-role="header">
+            <a href="#/" data-ajax="false" data-role="button">Cancel</a>
             <h1>Share</h1>
-            <div class="right-header-buttons">
-                <a href="#/" data-ajax="false" data-role="button" data-icon="delete" data-iconpos="notext"></a>
-            </div>
-            
         </div>
         <div data-role="content">
-            <div class="edit-image">
+            <div class="ui-grid-a">
+                <div class="edit-image ui-block-a"></div>
+                <div class="ui-block-b">
+                    <textarea name="description" id="description" placeholder="Add a message&hellip;"></textarea>
+                </div>
             </div>
-            
-            <textarea name="description" id="description" placeholder="Add text&hellip;"></textarea>
-            
             <div data-role="fieldcontain">
-                <select name="slider" id="privacy-switch" data-role="slider">
-                    <option value="private">Private</option>
-                    <option value="public" selected="true">Public</option>
-                </select>
+                <input type="checkbox" name="enter-girl-of-month" id="enter-girl-of-month" />
+                <label for="enter-girl-of-month" class="ui-bar-e">Submit my photo to PINK Nation and enter Girl of The Month</label>
             </div>
-
+            
             <div data-role="controlgroup" data-type="horizontal" class="sharing-settings">
                 <legend>Share to:</legend>
 
-                <input type="checkbox" name="twitter-sharing"  id="twitter-sharing" />
-                <label for="twitter-sharing">Twitter</label>
+                <div data-role="fieldcontain">
+                    <label for="facebook-sharing">Facebook</label>
+                    <select name="slider" id="facebook-sharing" data-role="slider">
+                        <option value="off">Off</option>
+                        <option value="on" selected="true">On</option>
+                    </select>
+                </div>
 
-                <input type="checkbox" name="facebook-sharing" id="facebook-sharing" />
-                <label for="facebook-sharing">Facebook</label>
+                <div data-role="fieldcontain">
+                    <label for="tumblr-sharing">Tumblr</label>
+                    <select name="slider" id="tumblr-sharing" data-role="slider">
+                        <option value="off">Off</option>
+                        <option value="on" selected="true">On</option>
+                    </select>
+                </div>
 
-                <input type="checkbox" name="tumblr-sharing" id="tumblr-sharing" />
-                <label for="tumblr-sharing">Tumblr</label>
-
-                <input type="checkbox" name="foursquare-sharing" id="foursquare-sharing" disabled="true" />
-                <label for="foursquare-sharing">Foursquare</label>
             </div>
 
-            <div data-role="fieldcontain">
-                <select name="foursquare-location" id="foursquare-location">
-                   <option value="1">Place 1</option>
-                   <option value="2">Place 2</option>
-                   <option value="3">Place 3</option>
-                   <option value="4">Place 4</option>
-                </select>
+            <div data-role="fieldcontain" class="ui-grid-b">
+                <a data-role="button" data-inline="true" data-theme="e" class="share ui-block-c">Share</a>
             </div>
-
-            <div data-role="fieldcontain">
-                <a data-role="button" data-inline="true" data-icon="gear" class="edit">Edit</a>
-                <a data-role="button" data-inline="true" data-theme="e" class="share">Share</a>
-            </div>
-        </div>
-        <div data-role="footer">
-            <a data-role="button">Show Photo</a>
         </div>
     </div>
 
@@ -328,65 +289,13 @@
 
 <script id="home-template" type="text/template">
     <div data-role="content">
-        <div class="ui-grid-a">
-            <div class="ui-block-a">
-                <% if (appmode){ %>
-                    <a href="#/upload/" data-corners="false" data-shadow="false" data-role="button" data-theme="c" data-ajax="false">Snap Photo</a>
-                <% }else{ %>
-                    <a href="#/upload/" data-corners="false" data-shadow="false" data-role="button" data-theme="c" data-ajax="false">Upload Photo</a>
-                <% } %>
-            </div>
-            <div class="ui-block-b">
-                <a href="#" data-corners="false" data-shadow="false" data-role="button" data-theme="b">Dashboard</a>
-            </div>
-        </div>
-
-        <div class="ui-grid-a">
-            <div class="ui-block-a">
-                <a href="#/popular/" data-corners="false" data-shadow="false" data-role="button" data-theme="e" data-ajax="false">Popular</a>
-            </div>
-            <div class="ui-block-b">
-            <% if(logged_in) { %>
-                <a href="#/feed/?username=<%=username%>&list_style=grid" data-corners="false" data-shadow="false" data-role="button" data-theme="c" class="my-snaps" data-ajax="false">My Snaps</a>
-            <% }else{ %>
-                <a href="#/feed/" data-corners="false" data-shadow="false" data-role="button" data-theme="c" class="my-snaps" data-ajax="false">Latest</a>
-            <% } %>
-            </div>
-        </div>
-
-        <div class="ui-grid-a">
-            <div class="ui-block-a">
-                <a href="#/map/" data-corners="false" data-shadow="false" data-role="button" data-theme="c" data-ajax="false">Map</a>
-            </div>
-            <div class="ui-block-b">
-                <a href="#/photo-edit/?photo_id=Z4O" data-corners="false" data-shadow="false" data-role="button" data-theme="c" data-ajax="false">Cities</a>
-            </div>
-        </div>
-
-        <div class="ui-grid-a">
-            <div class="ui-block-a">
-            <% if(logged_in) { %>
-                <a href="#/logout/" 
-                data-ajax="false" data-corners="false" data-shadow="false" 
-                data-role="button">Log Out</a>
-            <% }else{ %>
-                <a href="#/login/" 
-                data-ajax="false" data-corners="false" data-shadow="false" 
-                data-role="button">Log In</a>
-            <% } %>
-            </div>
-            <div class="ui-block-b">
-            <% if(logged_in) { %>
-                <a href="#/my-account/" 
-                data-ajax="false" data-corners="false" data-shadow="false" 
-                data-role="button">My Account</a>
-            <% }else{ %>
-                <a href="#/join/" 
-                data-ajax="false" data-corners="false" data-shadow="false" 
-                data-role="button">Join</a>
-            <% } %>
-            </div>
-        </div>
+        <ul data-role="listview">
+            <li><a data-ajax="false" href="#/feed/?appgroup=pink-nation"><img src="http://placehold.it/200x200" alt="thumbnail">Featured Girls</a></li>
+            <li><a data-ajax="false" href="#/photo-edit/?photo_id=CAT"><img src="http://placehold.it/200x150" alt="camera icon">Take a photo</a></li>
+            <li><a data-ajax="false" href="#/upload-roll/"><img src="http://placehold.it/100x100" alt="camera roll icon">Use and existing photo</a></li>
+            <li><a data-ajax="false" href="#/hearts/"><img src="http://placehold.it/150x150" alt="camera roll icon">Pink Hearts</a></li>
+            
+        </ul>
     </div><!-- /content -->
 </script>
 
@@ -695,54 +604,10 @@
 <script id="feed-li-list-template" type="text/template">
 <li class="feed-li">
     <div>
-        <div class="ui-grid-e">
-            <div class="ui-block-a">
-                <a data-ajax="false" data-transition="slide" href="#/feed/?username=<%= item.get('username') %>"><img src="http://sna.pr/avatars/<%= item.get('username') %>/" alt="<%= item.get('username') %>" /></a>
-            </div>
-            <div>
-                <h3><a data-ajax="false" data-transition="slide" href="#/feed/?username=<%= item.get('username') %>"><%= item.get('username') %></a></h3>
-                <a class="goto-map"><%= item.get('location').location %> <%= item.get('date') %></a>
-            </div>
-        </div>
-
         <a href="https://s3.amazonaws.com/media-server<%= item.get('server_id') %>.snapr.us/lrg/<%= item.get('secret') %>/<%= item.get('id') %>.jpg" rel="external" class="gallery_link"><img style="width:100%;height:<%= snapr.utils.get_photo_height(item.get('width'), item.get('height'), '#feed .ui-content') %>px;" src="https://s3.amazonaws.com/media-server<%= item.get('server_id') %>.snapr.us/lrg/<%= item.get('secret') %>/<%= item.get('id') %>.jpg" alt="<%= item.get('description') %>" class="thumb-image" /></a>
 
-        <div><%= item.get('description') %></div>
-
-        <div data-role="controlgroup" data-type="horizontal">
-
-            <div data-role="button" data-icon="star" data-inline="true" data-iconpos="notext" class="favorite-button" <% if(item.get('favorite')){ %> data-theme="e" <% }%>></div>
-
+        <div><a data-ajax="false" data-transition="slide" href="#/feed/?username=<%= item.get('username') %>"><%= item.get('username') %></a>
         </div>
-
-        <% if (item.get('location').spot_id){%>
-        <div data-role="button" data-inline="true" class="goto-spot">
-            @ <%= item.get('location').foursquare_venue_name %>
-        </div>
-        <%}%>
-        <% if (parseInt(item.get('comments')) + parseInt(item.get('favorite_count')) > 0){ %>
-        <div data-role="collapsible" data-collapsed="true" class="reactions-button">
-            <h3><%= item.get('comments') %> comments and <%= item.get('favorite_count') %> favorites</h3>
-            <ul data-inset="true">
-            </ul>
-        </div>
-        <%}else{%>
-        <div data-role="collapsible" data-collapsed="true" class="reactions-button" style="display:none;">
-            <h3><%= item.get('comments') %> comments and <%= item.get('favorite_count') %> favorites</h3>
-            <ul data-inset="true">
-            </ul>
-        </div>
-        <%}%>
-        <div data-role="collapsible" data-collapsed="true" class="comment-area">
-            <h4>Comment</h4>
-            <div>
-                <form action="javascript:void(0);" class="comment-form" accept-charset="utf-8">
-                    <textarea name="comment-<%= item.get('id') %>" placeholder="Comment" />
-                    <input type="submit" value="Submit" />
-                </form>
-            </div>
-        </div>
-
     </div>
 </li>
 </script>
@@ -752,8 +617,6 @@
     <a href="https://s3.amazonaws.com/media-server<%= item.get('server_id') %>.snapr.us/lrg/<%= item.get('secret') %>/<%= item.get('id') %>.jpg" rel="external" class="gallery_link"><img src="https://s3.amazonaws.com/media-server<%= item.get('server_id') %>.snapr.us/thm2/<%= item.get('secret') %>/<%= item.get('id') %>.jpg" alt="<%= item.get('description') %>" class="thumb-image" /></a>
 </li>
 </script>
-
-<!-- https://s3.amazonaws.com/media-server2.snapr.us/thm/f06bfa40d66e45ef8c63f9fecd613fbb/YZJ.jpg -->
 
 <script id="upload-progress-li-template" type="text/template">
     <a>

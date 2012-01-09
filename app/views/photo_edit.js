@@ -43,7 +43,7 @@ snapr.views.photo_edit = Backbone.View.extend({
                 console.warn( "photo fetch success" );
                 
                 // temporary hack to display image
-                var photo_url = "http://media-server2.snapr.us/lrg/" 
+                var photo_url = "http://media-server2.snapr.us/sml/" 
                     + photo_edit.model.get("secret") + "/" 
                     + photo_edit.model.get("id") + ".jpg";
                 photo_edit.el.find(".edit-image").html( $("<img src='" + photo_url + "' />") );
@@ -65,7 +65,7 @@ snapr.views.photo_edit = Backbone.View.extend({
         });
         
         // temporary hack to display image
-        photo_edit.el.find(".edit-image").html( $("<img src='" + path + "' />") );
+        this.el.find(".edit-image").html( $("<img src='" + path + "' />") );
         
         console.warn( "get_photo_from_path", path );
     },
@@ -79,12 +79,10 @@ snapr.views.photo_edit = Backbone.View.extend({
                 
             this.model.save({
                 description: this.el.find("#description").val(),
-                status: this.el.find('#privacy-switch').val(),
-                tweet: $('#twitter-sharing').attr('checked'),
-                facebook_feed: $('#facebook-sharing').attr('checked'),
-                tumblr: $('#tumblr-sharing').attr('checked'),
-                foursquare_checkin: $('#foursquare-sharing').attr('checked'),
-                
+                group: ( $('#enter-girl-of-month').attr('checked') && "pink-nation-featured" ) || false,
+                // status: this.el.find('#privacy-switch').val(),
+                facebook_feed: ( $('#facebook-sharing').val() == "on" ),
+                tumblr: ( $('#tumblr-sharing').val() == "on" ),
             },{
                 success: function()
                 {

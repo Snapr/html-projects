@@ -87,9 +87,9 @@ Array.prototype.human_list =  function(){
 // snapr.access_token_url = snapr.base_url + "/ext/oauth/access_token/";
 
 
-// copied from snapr app - need to change
-snapr.client_id = 'dbfedc9ed64f45644cbb13bcc3b422bb';
-snapr.client_secret = 'e89d8304723d7d8be19ebb6ab8ca0364';
+// PINK Nation Details:
+snapr.client_id = '48611a3a325dc884c9d1722002be43ff';
+snapr.client_secret = 'a5b072ed71e89a4f0982944a4dd82d94';
 
 snapr.constants = {};
 snapr.constants.default_zoom = 15;
