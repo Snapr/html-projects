@@ -29,7 +29,8 @@ ul.grid-list li {
 
 .feed-content {
     padding: 0;
-    padding-top: 15px;
+/*    padding-top: 15px;*/
+    overflow: hidden;
 }
 
 .feed-content.grid{

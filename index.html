@@ -290,10 +290,10 @@
 <script id="home-template" type="text/template">
     <div data-role="content">
         <ul data-role="listview">
-            <li><a data-ajax="false" href="#/feed/?appgroup=pink-nation"><img src="http://placehold.it/200x200" alt="thumbnail">Featured Girls</a></li>
-            <li><a data-ajax="false" href="#/photo-edit/?photo_id=CAT"><img src="http://placehold.it/200x150" alt="camera icon">Take a photo</a></li>
-            <li><a data-ajax="false" href="#/upload-roll/"><img src="http://placehold.it/100x100" alt="camera roll icon">Use and existing photo</a></li>
-            <li><a data-ajax="false" href="#/hearts/"><img src="http://placehold.it/150x150" alt="camera roll icon">Pink Hearts</a></li>
+            <li class="home-featured"><a data-ajax="false" href="#/feed/?appgroup=pink-nation"><img src="http://placehold.it/200x200" alt="thumbnail">Featured Girls</a></li>
+            <li class="home-photo"><a data-ajax="false" href="#/photo-edit/?photo_id=CAT"><img src="http://placehold.it/200x150" alt="camera icon">Take a photo</a></li>
+            <li class="home-roll"><a data-ajax="false" href="#/upload-roll/"><img src="http://placehold.it/100x100" alt="camera roll icon">Use an existing photo</a></li>
+            <li class="home-pink-hearts"><a transition="slide" href="http://pink.victoriassecret.com/m/pink_hearts/"><img src="http://placehold.it/150x150" alt="camera roll icon">Pink Hearts</a></li>
             
         </ul>
     </div><!-- /content -->
@@ -604,7 +604,10 @@
 <script id="feed-li-list-template" type="text/template">
 <li class="feed-li">
     <div>
-        <a href="https://s3.amazonaws.com/media-server<%= item.get('server_id') %>.snapr.us/lrg/<%= item.get('secret') %>/<%= item.get('id') %>.jpg" rel="external" class="gallery_link"><img style="width:100%;height:<%= snapr.utils.get_photo_height(item.get('width'), item.get('height'), '#feed .ui-content') %>px;" src="https://s3.amazonaws.com/media-server<%= item.get('server_id') %>.snapr.us/lrg/<%= item.get('secret') %>/<%= item.get('id') %>.jpg" alt="<%= item.get('description') %>" class="thumb-image" /></a>
+        <img style="width:100%;height:<%= snapr.utils.get_photo_height(item.get('width'), item.get('height'), '#feed .ui-content') %>px;" src="https://s3.amazonaws.com/media-server<%= item.get('server_id') %>.snapr.us/lrg/<%= item.get('secret') %>/<%= item.get('id') %>.jpg" alt="<%= item.get('description') %>" class="thumb-image" />
+    
+        <!-- gallery version below -->
+        <!-- <a href="https://s3.amazonaws.com/media-server<%= item.get('server_id') %>.snapr.us/lrg/<%= item.get('secret') %>/<%= item.get('id') %>.jpg" rel="external" class="gallery_link"><img style="width:100%;height:<%= snapr.utils.get_photo_height(item.get('width'), item.get('height'), '#feed .ui-content') %>px;" src="https://s3.amazonaws.com/media-server<%= item.get('server_id') %>.snapr.us/lrg/<%= item.get('secret') %>/<%= item.get('id') %>.jpg" alt="<%= item.get('description') %>" class="thumb-image" /></a> -->
 
         <div><a data-ajax="false" data-transition="slide" href="#/feed/?username=<%= item.get('username') %>"><%= item.get('username') %></a>
         </div>
