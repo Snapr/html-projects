@@ -308,7 +308,7 @@ snapr.views.feed = Backbone.View.extend({
     upload_completed: function( queue_id, snapr_id )
     {
         // if we are on a feed for the current snapr user
-        if (this.options.query.username == snapr.auth.get("username")
+        if (this.options.query.username == snapr.auth.get("snapr_user")
             && !this.options.query.photo_id)
         {
             // remove the date restriction if it is present

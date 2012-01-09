@@ -187,11 +187,75 @@ snapr.utils.get_query_params = function(query)
     
     return params;
 }
-snapr.utils.notification = function( title, text, callback )
-{
-    // todo - for now we just use an alert
-    alert(title + ' ' + text);
+// alert/confirm replacements
+snapr.utils.notification = function( title, text, callback ){
+    var context = this;
+    if (snapr.utils.get_local_param( "appmode" ) == "iphone")
+    {
+        var par = {
+            "title": title,
+            "otherButton1": "OK",
+            "alertID": 0
+        }
+        if (text)
+        {
+            par.message = text;
+        }
+        window.location.href = "snapr://alert?" + $.param( par );
+    }
+    else
+    {
+        if (text)
+        {
+            title = title + ' ' + text;
+        }
+        alert( title );
+        if (_.isFunction( callback ))
+        {
+            $.proxy( callback, context )();
+        }
+    }
 }
+
+snapr.utils.approve = function( options ){
+    var context = this;
+    options = _.extend({
+        'title': 'Are you sure?',
+        'yes': 'Yes',
+        'no': 'Cancel',
+        'yes_callback': $.noop,
+        'no_callback': $.noop
+    }, options);
+
+    if (snapr.utils.get_local_param( "appmode" ) == 'iphone'){
+        var actionID = snapr.utils.tapped_action.add(options.yes_callback, options.no_callback);
+        window.location.href = 'snapr://action?'+$.param({
+            'title': options.title,
+            'destructiveButton': options.yes,
+            'cancelButton': options.no,
+            'actionID': actionID
+        });
+    }else{
+        if(confirm(options.title)){
+            $.proxy(options.yes_callback, context)();
+        }else{
+            $.proxy(options.no_callback, context)();
+        }
+    }
+}
+// what the app calls after an approve
+snapr.utils.tapped_action = function( alertID, buttonIndex ){
+    this.alerts[alertID][buttonIndex]();
+    delete this.alerts[alertID];
+}
+snapr.utils.tapped_action.alerts = {};
+snapr.utils.tapped_action.counter = 1;
+snapr.utils.tapped_action.add = function( yes, no ){
+    var id = this.counter++;
+    this.alerts[id] = {'-1': yes, '0': no};
+    return id;
+}
+
 snapr.utils.require_login = function( funct )
 {
     return function( e )
