@@ -127,27 +127,17 @@ snapr.views.feed = Backbone.View.extend({
     populate_feed: function( additional_data )
     {
         
-        var list_style = this.el.find("#feed-view-grid").is(":checked") && 'grid' || 'list';
+        var list_style = 'list';
         
-        console.warn('populate feed list style', list_style);
-        
-        if (this.feed_list)
-        {
-            this.feed_list.list_style = list_style;
-        }
-
         var feed_view = this;
         var options = {
             success: function()
             {
-                // if (!feed_view.feed_list)
-                // {
-                    feed_view.feed_list = new snapr.views.feed_list({
-                        el: feed_view.el.find('ul.gallery').eq(0),
-                        collection: feed_view.photo_collection,
-                        list_style: list_style
-                    });
-                // }
+                feed_view.feed_list = new snapr.views.feed_list({
+                    el: feed_view.el.find('ul.gallery').eq(0),
+                    collection: feed_view.photo_collection,
+                    list_style: list_style
+                });
 
                 feed_view.feed_list.render( feed_view.photoswipe_init );
                 $.mobile.hidePageLoadingMsg();

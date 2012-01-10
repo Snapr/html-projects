@@ -3,8 +3,7 @@ snapr.views.feed_list = Backbone.View.extend({
     initialize: function( init_options )
     {
         this.li_templates = {
-            list: _.template( $("#feed-li-list-template").html() ),
-            grid: _.template( $("#feed-li-grid-template").html() ),
+            list: _.template( $("#feed-li-list-template").html() )
         }
 
         this.list_style = init_options.list_style || 'list';
@@ -42,20 +41,11 @@ snapr.views.feed_list = Backbone.View.extend({
         
         feed_list.el.trigger("create");
         
-        if (feed_list.list_style == 'list')
-        {
-            feed_list.el
-                .removeClass('grid-list')
-                .addClass('ui-listview')
-                .listview()
-                .listview("refresh");
-        }
-        else
-        {
-            feed_list.el
-                .addClass('grid-list')
-                .removeClass('ui-listview')
-        }
+        feed_list.el
+            .removeClass('grid-list')
+            .addClass('ui-listview')
+            .listview()
+            .listview("refresh");
 
         if(callback && typeof callback == 'function'){
             callback();

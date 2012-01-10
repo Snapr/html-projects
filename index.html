@@ -25,15 +25,6 @@
         </div><!-- /content -->
     </div><!-- /page -->
 
-    <div id="my-account" data-title="My Account" data-add-back-btn="true" data-role="page">
-        <div data-role="header">
-            <h1>My Account</h1>
-        </div>
-        <div data-role="content">
-            <div class="account-content">
-            </div>
-        </div>
-    </div>
 
     <div id="linked-services" data-title="Linked Services" data-add-back-btn="true" data-role="dialog">
         <div data-role="header">
@@ -51,30 +42,6 @@
             </div>
         </div>
     </div>
-
-
-    <div id="popular" data-title="Popular" data-add-back-btn="true" data-role="page">
-        <div data-role="header">
-            <h1>Popular</h1>
-
-            <div class="right-header-buttons">
-                <a href="#/search/" data-ajax="false" data-role="button" data-icon="search" data-iconpos="notext"></a>
-                <a href="#/" data-ajax="false" data-role="button" data-icon="home" data-iconpos="notext"></a>
-            </div>
-
-            <div data-role="navbar">
-                <ul id="popular-timeframe">
-                    <li><a id="popular-time-today">Today</a></li>
-                    <li><a id="popular-time-week">Week</a></li>
-                    <li><a id="popular-time-all" class="ui-btn-active">All</a></li>
-                </ul>
-            </div>
-        </div>
-        <div data-role="content">
-            <ul class="grid-list">
-            </ul>
-        </div>
-    </div><!-- /page -->
 
 
     <div id="feed" data-role="page" data-add-back-btn="true">
@@ -118,21 +85,10 @@
     </div><!-- /page -->
 
 
-    <div id="user-profile" data-add-back-btn="true" data-role="dialog">
-        <div data-role="header">
-            <h1>User Profile</h1>
-        </div>
-        <div data-role="content">
-            <p>user info</p>
-        </div>
-    </div>
-
-
     <div id="upload" data-role="page">
         <div data-role="header">
             <h1>Upload</h1>
             <div class="right-header-buttons">
-                <a href="#/search/" data-ajax="false" data-role="button" data-icon="search" data-iconpos="notext"></a>
                 <a href="#/" data-ajax="false" data-role="button" data-icon="home" data-iconpos="notext"></a>
             </div>
         </div>
@@ -206,106 +162,6 @@
             </div>
         </div>
     </div>
-
-    <div id="people" data-add-back-btn="true" data-role="page">
-        <div data-role="header">
-            <h1>People</h1>
-        </div>
-        <div data-role="content">
-            <input type="search" id="people-search" value="" placeholder="Search&hellip;" />
-            <ul class="people-list" >
-            </ul>
-        </div>
-        
-        
-    </div>
-
-    <div id="join-snapr" data-add-back-btn="true" data-role="dialog">
-        <div data-role="header">
-            <h1>Join Snapr</h1>
-        </div>
-        <div data-role="content">
-            <form action="javascript: void(0);" accept-charset="utf-8" id="join-dialog">
-                <fieldset data-role="controlgroup">
-                    <label for="username">Username</label><input type="text" name="username" placeholder="  " autocapitalize="off" id="join-dialog-username">
-                    <label for="password">Password</label><input type="password" name="password" placeholder="  " id="join-dialog-password">
-                    <label for="email">Email</label><input type="email" name="email" placeholder="  " id="join-dialog-email">
-                </fieldset>
-                <fieldset data-role="controlgroup">
-                    <legend>I have read and agreed to the <a href="http://sna.pr/terms/" target="_blank" >Snapr Terms of Use</a></legend>
-                    <input type="checkbox" name="checkbox-1" id="snapr-tos" class="custom" />
-                    <label for="snapr-tos">I agree</label>
-                </fieldset>
-                <input type="submit" name="login" data-theme="b" value="Join" disabled="true">
-            </form>
-
-            <!-- <div data-role="fieldcontain"> -->
-            <!-- </div> -->
-        </div>
-        <div data-role="footer">
-            
-        </div>
-    </div><!-- /page -->
-
-
-    <div id="search" data-add-back-btn="true" data-role="dialog">
-        <div data-role="header">
-            <h1>Search</h1>
-        </div>
-        <div data-role="content">
-            <form action="javascript: void(0);" accept-charset="utf-8" id="search-form">
-                <fieldset>
-                    <input type="text" placeholder="Place Name&hellip;" autocapitalize="off" id="search-keywords">
-                    <select id="search-type">
-                        <option value="location">Search Locations</option>
-                        <option value="tag">Search Tags</option>
-                        <option value="user">Search Users</option>
-                    </select>
-                    <input type="submit" data-theme="b" value="Search">
-                </fieldset>
-            </form>
-            
-        </div>
-    </div><!-- /page -->
-
-
-    <div id="map" data-add-back-btn="true" data-role="page">
-        <div data-role="header">
-            <h1>Map</h1>
-
-            <div class="right-header-buttons">
-                <a href="#/search/" data-ajax="false" data-role="button" data-icon="search" data-iconpos="notext"></a>
-                <a href="#/" data-ajax="false" data-role="button" data-icon="home" data-iconpos="notext"></a>
-            </div>
-
-        </div>
-        <div id="map-layer" data-role="content">
-            <div id="google-map">
-            </div>
-            <div id="map-disambiguation" data-role="content" data-theme="a" style="
-            position: absolute;
-            display: none;">
-                <h4>Did you mean&hellip;</h4>
-                <ul data-role="listview" id="map-disambiguation-list">
-                </ul>
-                <button id="map-disambituation-cancel">Cancel</button>
-            </div>
-        </div>
-        <div data-role="footer">
-
-            <div class="ui-btn-right">
-                <select id="map-filter">
-                    <option value="just-one">Just One</option>
-                    <option value="just-me">Just Me</option>
-                    <option value="following">Following</option>
-                    <option value="all">All</option>
-                </select>
-            </div>
-        </div>
-    </div><!-- /page -->
-
-<!-- <script id="home-template" type="text/template">
-</script> -->
 
 <script id="my-account-template" type="text/template">
 <h2>My Account</h2>
@@ -466,24 +322,6 @@
 </div>
 </script>
 
-<script id="people-li-template" type="text/template">
-    <a data-ajax="false" href="#/feed/?username=<%= user.get('username') %>">
-        <img src="http://sna.pr/avatars/<%= user.get('username') %>" alt="<%= user.get('username') %>" />
-        <h3><%= user.get('username') %></h3>
-        <p><span class="photo-count"><%= user.get('photo_count') %></span> photos, <span class="followers"><%= user.get('followers') %></span> followers</p>
-    </a>
-    <% if (user.get('username') == auth_username){%>
-        <a disabled="true" data-icon="check" data-iconpos="right"></a>
-    <%}else{%>
-        <% if (user.get('relationship').you_follow) {%>
-        <a data-icon="minus" data-iconpos="right" class="unfollow"></a>
-        <%}else{%>
-        <a data-icon="plus" data-iconpos="right" class="follow"></a>
-        <%}%>
-    <%}%>
-</script>
-
-
 <script id="linked-service-template" type="text/template">
     <div data-role="collapsible" data-collapsed="true">
     <% switch(service.provider) { case 'twitter': %>
@@ -556,59 +394,6 @@
     </div>
 </script>
 
-<script id="thumb-li-template" type="text/template">
-    <% _.each( results, function( item, i ){ %>
-    <li>
-    <a data-ajax="false" href="#/feed/?photo_id=<%= item.get('id') %>&username=<%= item.get('username') %>">
-    <img height="100px" width="100px" src="https://s3.amazonaws.com/media-server<%= item.get('server_id') %>.snapr.us/thm2/<%= item.get('secret') %>/<%= item.get('id') %>.jpg" alt="<%= item.get('description') %>" class="thumb-image" />
-    </a>
-    </li>
-    <% }); %>
-</script>
-
-<script id="feed-header-template" type="text/template">
-<div class="ui-body ui-body-e">
-<% if (query_data.keywords){ %>
-    <p>Search for <span class="search-term"><%= query_data.keywords %></span></p>
-<%}else if (query_data.username){ %>
-    <p><%= query_data.username %></p>
-<%}else if (query_data.spot){%>
-    <p>Spot ID <%= query_data.spot %></p>
-<%}%>
-</div>
-</script>
-
-<script id="user-header-template" type="text/template">
-<div class="ui-body ui-body-e ui-grid-b">
-    <div class="ui-block-a">
-        <a href="#/user/profile/?username=<%= user.get('username') %>" data-ajax="false"><img height="100px" width="100px" src="http://sna.pr/avatars/<%= user.get('username') %>?size=large" alt="<%= user.get('username') %> avatar" /></a>
-    </div>
-    <div>
-        <span><%= user.username %></span>
-        <% if (user.get('username') == auth_username){%>
-            <button data-inline="true" disabled="true" data-icon="check" data-iconpos="right">That&apos;s Me</button>
-        <%}else{%>
-            <% if (user.get('relationship').you_follow) {%>
-            <button data-inline="true" data-icon="minus" data-iconpos="right" class="unfollow">Unfollow</button>
-            <%}else{%>
-            <button data-inline="true" data-icon="plus" data-iconpos="right" class="follow">Follow</button>
-            <%}%>
-        <%}%>
-            <div class="ui-grid-b">
-                <div class="ui-block-a"><span><%= user.photo_count %></span><br /><span>Photos</span></div>
-                <div class="ui-block-b">
-                    <a href="#/user/followers/?username=<%= user.get('username') %>" data-ajax="false"><span><%= user.get('followers') %></span>
-                    <br /><span>Followers</span></a>
-                    </div>
-                <div class="ui-block-c">
-                    <a href="#/user/following/?username=<%= user.get('username') %>" data-ajax="false"><span><%= user.get('following') %></span>
-                    <br /><span>Following</span></a></div>
-            </div>
-        </div>
-    
-    </div>
-</script>
-
 <script id="feed-li-list-template" type="text/template">
 <li class="feed-li">
     <div>
@@ -623,38 +408,14 @@
 </li>
 </script>
 
-<script id="feed-li-grid-template" type="text/template">
-<li class="feed-li-grid">
-    <a href="https://s3.amazonaws.com/media-server<%= item.get('server_id') %>.snapr.us/lrg/<%= item.get('secret') %>/<%= item.get('id') %>.jpg" rel="external" class="gallery_link"><img src="https://s3.amazonaws.com/media-server<%= item.get('server_id') %>.snapr.us/thm2/<%= item.get('secret') %>/<%= item.get('id') %>.jpg" alt="<%= item.get('description') %>" class="thumb-image" /></a>
-</li>
-</script>
-
-<script id="upload-progress-heart-template" type="text/template">
-    <div class="ui-grid-a upload-progress-container">
-        <div class="ui-block-a upload-image">
-            <div class="image-crop"><img src="<%= thumbnail %>" /></div>
-        </div>
-        <div class="ui-block-b upload-progress-container">
-            <div class="heart-progress-bar <%= upload_status %>">
-                <div class="heart-bg heart">
-                </div>
-                <div class="heart-prog heart" style="height:<%= percent_complete %>%">
-                </div>
-            </div>
-            <span><%= percent_complete %>%</span>
-        </div>
-    </div>
-    <div class="message-cont">
-        <h2>About Girl of the Month</h2>
-        <p>Each month we pick our favorite shot from one lucky girl to be Pink Nation Girl of the Month.</p>
-        <p>Text about prizes etc.</p>
-    </div>
-
-<% if (percent_complete == 100){ %>
-    <a data-icon="forward" data-theme="d" class="processing"></a>
-<% }else{ %>
-    <a data-icon="delete" data-theme="d" class="cancel"></a>
-<% } %>
+<script id="thumb-li-template" type="text/template">
+    <% _.each( results, function( item, i ){ %>
+    <li>
+    <a data-ajax="false" href="#/feed/?photo_id=<%= item.get('id') %>&username=<%= item.get('username') %>">
+    <img height="100px" width="100px" src="https://s3.amazonaws.com/media-server<%= item.get('server_id') %>.snapr.us/thm2/<%= item.get('secret') %>/<%= item.get('id') %>.jpg" alt="<%= item.get('description') %>" class="thumb-image" />
+    </a>
+    </li>
+    <% }); %>
 </script>
 
 <script id="upload-progress-heart-complete-template" type="text/template">
@@ -686,63 +447,6 @@
 <% }else{ %>
     <a data-icon="delete" data-theme="d" class="cancel"></a>
 <% } %>
-</script>
-
-
-<script id="upload-progress-li-template" type="text/template">
-    <a>
-        <img class="ui-li-icon" height="16" width="16" src="<%= thumbnail %>" />
-        <div class="progress-bar <%= upload_status %>">
-            <div class="bar-bg bar">
-            </div>
-            <div class="bar-prog bar" style="width:<%= percent_complete %>%">
-            </div>
-        </div>
-    </a>
-<% if (percent_complete == 100){ %>
-    <a data-icon="forward" data-theme="d" class="processing"></a>
-<% }else{ %>
-    <a data-icon="delete" data-theme="d" class="cancel"></a>
-<% } %>
-</script>
-
-
-<script id="reaction-li-template" type="text/template">
-<% if(reaction.get('type') == 'comment'){ %>
-    <li><a data-ajax="false" href="#/feed/?username=<%= reaction.get('username') %>"><img class="ui-li-icon" src="http://sna.pr/avatars/<%= reaction.get('username') %>" width="16px" height="16px" /><h5><%= reaction.get('username') %>:</h5><p><%= reaction.get('comment') %></p></a></li>
-<% }else{ %>
-    <li><a data-ajax="false" href="#/feed/?username=<%= reaction.get('username') %>"><img class="ui-li-icon" src="http://sna.pr/avatars/<%= reaction.get('username') %>" width="16px" height="16px" /><h5><%= reaction.get('username') %> likes this.</h5></a></li>
-<% } %>
-</script>
-
-<script id="thumb-template" type="text/template">
-<div class="snaprmappoint">
-    <div class="snaprmapthumb">
-        <span class="snaprthumbbg"></span>
-        <span class="snaprmappin"></span>
-        <a data-ajax="false" href="#/feed/?photo_id=<%= photo.id %>" class="clickable"><img src="https://s3.amazonaws.com/media-server<%= photo.server_id %>.snapr.us/thm/<%= photo.secret %>/<%= photo.id %>.jpg" alt="<%= photo.description %>" class="snaprmapthumbimage"></a>
-    </div>
-</div>
-</script>
-
-<script id="flag-template" type="text/template">
-    <div class="snaprmappoint" style="display: block; position: absolute; top: 156px; left: 80px; z-index: 100;">
-        <div class="snaprmapflag">
-            <span class="icon map-flag-icon"></span>
-            <span class="flag-detail inactive">
-                <a href="" class="flag-link">
-                    <span class="icon spot-icon"></span>
-                    <span class="description-text">Foo</span>
-                </a>
-                <span class="base-arrow">
-                </span>
-            </span>
-        </div>
-    </div>
-</script>
-
-<script id="map-disambiguation-li-template" type="text/template">
-<a data-ajax="false" class="map-link"><%= location.formatted_address %></a>
 </script>
 
 <script src="app/libs/json2.js" type="text/javascript" charset="utf-8"></script> <!-- just in case the browser sucks at JSON -->
@@ -793,34 +497,19 @@ $(document).bind("mobileinit", function(){
 <script src="app/libs/underscore.js" type="text/javascript" charset="utf-8"></script> <!-- required by backbone -->
 <script src="app/libs/backbone.js" type="text/javascript" charset="utf-8"></script> <!-- handles routing, models and sync -->
 
-<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script> <!-- google maps -->
-
-<!-- <script src="js/libs/jqmrouter.js" type="text/javascript" charset="utf-8"></script> -->
-
 <script src="app/views/home.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/login.js" type="text/javascript" charset="utf-8"></script>
-<script src="app/views/search.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/my_account.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/upload.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/uploading.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/photo_edit.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/upload_settings.js" type="text/javascript" charset="utf-8"></script>
-<script src="app/views/user_profile.js" type="text/javascript" charset="utf-8"></script>
-<script src="app/views/people.js" type="text/javascript" charset="utf-8"></script>
-<script src="app/views/people_li.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/linked_service.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/linked_services.js" type="text/javascript" charset="utf-8"></script>
-<script src="app/views/popular.js" type="text/javascript" charset="utf-8"></script>
-<script src="app/views/thumbs_li.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/feed.js" type="text/javascript" charset="utf-8"></script>
-<script src="app/views/feed_header.js" type="text/javascript" charset="utf-8"></script>
-<script src="app/views/user_header.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/upload_progress_li.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/feed_list.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/feed_li.js" type="text/javascript" charset="utf-8"></script>
-<script src="app/views/reactions.js" type="text/javascript" charset="utf-8"></script>
-<script src="app/views/map.js" type="text/javascript" charset="utf-8"></script>
-<script src="app/views/map_disambiguation_li.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/join_snapr.js" type="text/javascript" charset="utf-8"></script>
 
 

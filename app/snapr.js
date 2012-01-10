@@ -295,22 +295,13 @@ snapr.routers = Backbone.Router.extend({
         "/uploading/": "uploading",
         "/uploading/?:query_string": "uploading",
         "/photo-edit/?:query_string": "photo_edit",
-        "/search/": "search",
-        "/search/?:query_string": "search",
         "/my-account/": "my_account",
         "/my-account/?:query_string": "my_account",
         "/linked-services/?:query_string": "linked_services",
         "/feed/?:query_string": "feed",
-        "/user/profile/?:query": "user_profile",
-        "/user/search/?:query": "user_search",
-        "/user/:follow/?:query": "people",
         "/upload/": "upload",
         "/upload/?:query_string": "upload",
         "/photo-edit/?:query_string": "photo_edit",
-        "/map/": "map",
-        "/map/?:query_string": "map",
-        "/popular/": "popular",
-        "/popular/?:query_string": "popular",
         "/": "home",
         "?:query_string": "home",
         "/?:query_string": "home",
@@ -326,13 +317,6 @@ snapr.routers = Backbone.Router.extend({
         });
     },
 
-    popular: function( query_string )
-    {
-        console.warn('go to popular');
-        snapr.utils.get_query_params( query_string );
-        snapr.info.current_view = new snapr.views.popular();
-    },
-    
     home: function( query_string )
     {
         console.warn('go home');
@@ -413,46 +397,6 @@ snapr.routers = Backbone.Router.extend({
             el: $("#linked-services"),
             query: query
         });
-    },
-    
-    map: function( query_string )
-    {
-        var query = snapr.utils.get_query_params( query_string );
-        snapr.info.current_view = new snapr.views.map( {query: query} );
-    },
-    
-    search: function( query_string )
-    {
-        snapr.utils.get_query_params( query_string );
-        snapr.info.current_view = new snapr.views.search();
-    },
-    
-    user_profile: function( query_string )
-    {
-        var query = snapr.utils.get_query_params( query_string );
-        snapr.info.current_view = new snapr.views.user_profile({
-            query: query,
-            el: $("#user-profile")
-        });
-    },
-    
-    user_search: function( query_string )
-    {
-        var query = snapr.utils.get_query_params( query_string );
-        snapr.info.current_view = new snapr.views.people({
-            query: query,
-            el: $("#people")
-        });
-    },
-    
-    people: function( follow, query_string )
-    {
-        var query = snapr.utils.get_query_params( query_string );
-        snapr.info.current_view = new snapr.views.people({
-            query: query,
-            follow: follow,
-            el: $("#people")
-        });
     }
 });
 
@@ -531,105 +475,6 @@ function queue_settings( upload_mode, paused )
 
 $(function()
 {
-    snapr.SnapOverlay = function(type, data, map, extra_class)
-    {
-        // image as JS object in format the snapr api returns
-        this.type_ = type;
-        this.data_ = data;
-        this.map_ = map;
-        this.extra_class_ = extra_class;
-
-        // We define a property to hold the image's
-        // div. We'll actually create this div
-        // upon receipt of the add() method so we'll
-        // leave it null for now.
-        this.div_ = null;
-
-        // Explicitly call setMap() on this overlay
-        this.setMap(map);
-    }
-
-    snapr.SnapOverlay.prototype = new google.maps.OverlayView();
-    snapr.SnapOverlay.prototype.onAdd = function()
-    {
-        // Note: an overlay's receipt of onAdd() indicates that
-        // the map's panes are now available for attaching
-        // the overlay to the map via the DOM.
-
-        var data_id = this.data_.id;
-
-        if (this.type_ == 'photo') {
-            var div = $(this.map.snapr.thumb_template({photo:this.data_}));
-            div.show();
-        } else {  //spot
-            var div = $(this.map.snapr.spot_template({spot:this.data_}));
-            div.show();
-        }
-
-        // Set the overlay's div_ property to this DIV
-        this.div_ = div;
-
-        // We add an overlay to a map via one of the map's panes.
-        // We'll add this overlay to the overlayImage pane.
-        var panes = this.getPanes();
-        $(panes.floatPane).append(this.div_);
-    }
-    snapr.SnapOverlay.prototype.draw = function()
-    {
-        var overlayProjection = this.getProjection();
-        var position = new google.maps.LatLng( this.data_.location.latitude, this.data_.location.longitude );
-        var px = overlayProjection.fromLatLngToDivPixel( position );
-
-        this.div_ = this.div_
-            .css('position', 'absolute')
-            .css('left', px.x + 'px')
-            .css('top', px.y + 'px');
-    }
-    snapr.SnapOverlay.prototype.onRemove = function()
-    {
-        $(this.div_).remove();
-        this.div_ = null;
-    }
-    snapr.SnapOverlay.prototype.hide = function()
-    {
-        if (this.div_)
-        {
-          this.div_.style.visibility = "hidden";
-        }
-    }
-    snapr.SnapOverlay.prototype.show = function()
-    {
-        if (this.div_)
-        {
-          this.div_.style.visibility = "visible";
-        }
-    }
-    snapr.SnapOverlay.prototype.toggle = function()
-    {
-        if (this.div_)
-        {
-          if (this.div_.style.visibility == "hidden")
-          {
-            this.show();
-          }
-          else
-          {
-            this.hide();
-          }
-        }
-    }
-    snapr.SnapOverlay.prototype.toggleDOM = function()
-    {
-        if (this.getMap())
-        {
-          this.setMap( null );
-        }
-        else
-        {
-          this.setMap( this.map_ );
-        }
-    }
-
     // initialise router and start backbone
     Route = new snapr.routers;
     Backbone.history.start();
