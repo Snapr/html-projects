@@ -19,7 +19,7 @@
             <ul data-role="listview">
                 <li class="home-featured"><a data-ajax="false" href="#/feed/?appgroup=pink-nation"><img src="http://placehold.it/200x200" alt="thumbnail">Featured Girls</a></li>
                 <li class="home-photo"><a data-ajax="false" href="#/upload/"><img src="http://placehold.it/200x150" alt="camera icon">Take a photo</a></li>
-                <li class="home-roll"><a data-ajax="false" href="#/photo-edit/?photo_id=CAT"><img src="http://placehold.it/100x100" alt="camera roll icon">Use an existing photo</a></li>
+                <li class="home-roll"><a data-ajax="false" href="#/photo-edit/?photo_id=15C0"><img src="http://placehold.it/100x100" alt="camera roll icon">Use an existing photo</a></li>
                 <li class="home-pink-hearts"><a transition="slide" href="http://pink.victoriassecret.com/m/pink_hearts/"><img src="http://placehold.it/150x150" alt="camera roll icon">Pink Hearts</a></li>
             </ul>
         </div><!-- /content -->
@@ -416,6 +416,28 @@
     </a>
     </li>
     <% }); %>
+</script>
+
+<script id="upload-progress-heart-template" type="text/template">
+    <div class="ui-grid-a upload-progress-container">
+        <div class="ui-block-a upload-image">
+            <div class="image-crop"><img src="<%= thumbnail %>" /></div>
+        </div>
+        <div class="ui-block-b upload-progress-container">
+            <div class="heart-progress-bar <%= upload_status %>">
+                <div class="heart-bg heart">
+                </div>
+                <div class="heart-prog heart" style="height:<%= percent_complete %>%">
+                </div>
+            </div>
+            <span><%= percent_complete %>%</span>
+        </div>
+    </div>
+    <div class="message-cont">
+        <h2>About Girl of the Month</h2>
+        <p>Each month we pick our favorite shot from one lucky girl to be Pink Nation Girl of the Month.</p>
+        <p>Text about prizes etc.</p>
+    </div>
 </script>
 
 <script id="upload-progress-heart-complete-template" type="text/template">

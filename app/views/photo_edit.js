@@ -75,7 +75,7 @@ snapr.views.photo_edit = Backbone.View.extend({
         if (this.model)
         {
             var redirect_url = snapr.constants.share_redirect || 
-                "#/feed/?photo_id=" + this.model.get("id") + "&username=" + snapr.auth.get("snapr_user");
+                "#/uploading/?photo_id=" + this.model.get("id");
                 
             this.model.save({
                 description: this.el.find("#description").val(),

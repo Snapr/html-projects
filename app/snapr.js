@@ -97,7 +97,7 @@ snapr.constants.feed_count = 12;
 
 snapr.constants.share_redirect = false;
 // set to hash url to redirect after successful upload/share eg:
-// snapr.constants.upload_redirect = "#/landing-page";
+// snapr.constants.upload_redirect = "#/uploading/";
 // if false, redirects to user feed
 
 // store some info about the browser
