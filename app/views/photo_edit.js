@@ -9,6 +9,8 @@ snapr.views.photo_edit = Backbone.View.extend({
             return true;
         });
         
+        this.template = _.template( $("#photo-edit-template").html() );
+        this.img_template = _.template( $("#photo-edit-image-template").html() );
         // this will eventually be stored/retrieved from localstorage 
         // but for now we'll start from blank each time
         this.photo_edit_settings = {};
@@ -24,31 +26,40 @@ snapr.views.photo_edit = Backbone.View.extend({
         else{
             console.warn( "error, no path or photo_id" );
         }
-        
         $.mobile.changePage( $("#photo-edit"), {changeHash: false} );
+        this.render();
     },
     
     events: {
-        "click .share": "share"
+        "change select": "toggle_sharing",
+        "submit form": "share",
+        "click .skip": "skip_to_love_it"
+    },
+    
+    render: function()
+    {
+        $(this.el).find("[data-role='content']").html( this.template() ).trigger("create");
+        
+        return this;
     },
     
     get_photo_from_server: function( id )
     {
         console.warn( "get_photo_from_server", id );
         var photo_edit = this;
-        this.model = new snapr.models.photo({id:id});
+        this.model = new snapr.models.photo({id: id});
         this.model.fetch({
             success: function()
             {
                 console.warn( "photo fetch success" );
                 
                 // temporary hack to display image
-                var photo_url = "http://media-server2.snapr.us/sml/" 
+                var img_url = "http://media-server2.snapr.us/sml/" 
                     + photo_edit.model.get("secret") + "/" 
                     + photo_edit.model.get("id") + ".jpg";
-                photo_edit.el.find(".edit-image").html( $("<img src='" + photo_url + "' />") );
 
-                photo_edit.el.find("#description").val( photo_edit.model.get("description") );
+                $(photo_edit.el).find(".edit-image").html( photo_edit.img_template({img_url: img_url}) );
+                $(photo_edit.el).find("#description").val( photo_edit.model.get("description") );
 
             },
             error: function()
@@ -65,9 +76,28 @@ snapr.views.photo_edit = Backbone.View.extend({
         });
         
         // temporary hack to display image
-        this.el.find(".edit-image").html( $("<img src='" + path + "' />") );
+        $(this.el).find(".edit-image").html( this.img_template({img_url: img_url}) );
         
         console.warn( "get_photo_from_path", path );
+    },
+    
+    toggle_sharing: function( e )
+    {
+        if (e.target.value == "on")
+        {
+            $(this.el).find("input[type='submit']").button("enable");
+            $(this.el).find(".share-message").hide();
+            $(this.el).find("textarea").show();
+        }
+        else
+        {
+            if ($("select option[value='on']:selected").length == 0)
+            {
+                $(this.el).find("input[type='submit']").button("disable");
+                $(this.el).find(".share-message").show();
+                $(this.el).find("textarea").hide();
+            }
+        }
     },
     
     share: function()
@@ -75,14 +105,15 @@ snapr.views.photo_edit = Backbone.View.extend({
         if (this.model)
         {
             var redirect_url = snapr.constants.share_redirect || 
-                "#/uploading/?photo_id=" + this.model.get("id");
+                // "#/uploading/?photo_id=" + this.model.get("id");
+                "#/love-it/?shared=true&photo_id=" + this.model.get("id");
                 
             this.model.save({
                 description: this.el.find("#description").val(),
-                group: ( $('#enter-girl-of-month').attr('checked') && "pink-nation-featured" ) || false,
+                group: ( $("#enter-girl-of-month").val() == "on" ) || false,
                 // status: this.el.find('#privacy-switch').val(),
-                facebook_feed: ( $('#facebook-sharing').val() == "on" ),
-                tumblr: ( $('#tumblr-sharing').val() == "on" ),
+                facebook_feed: ( $("#facebook-sharing").val() == "on" ),
+                tumblr: ( $("#tumblr-sharing").val() == "on" ),
             },{
                 success: function()
                 {
@@ -98,6 +129,12 @@ snapr.views.photo_edit = Backbone.View.extend({
         {
             console.warn( "no model for photo-edit" );
         }
+    },
+    
+    skip_to_love_it: function()
+    {
+        var photo_path = this.model.get("photo_path");   
+        Route.navigate("#/love-it/?photo_path=" + photo_path, true);
     }
     
 
