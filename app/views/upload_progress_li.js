@@ -18,7 +18,7 @@ snapr.views.upload_progress_li = Backbone.View.extend({
         $(this.el).html( 
             this.template({
                 upload_status: this.photo.upload_status,
-                thumbnail: this.photo.thumbnail,
+                img_url: this.photo.thumbnail,
                 percent_complete: this.photo.percent_complete
             })
         );

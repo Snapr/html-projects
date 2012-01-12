@@ -1,8 +1,19 @@
 snapr.views.uploading = Backbone.View.extend({
     initialize: function()
     {
+        this.el.live( "pagehide", function( e )
+        {
+            $(e.target).undelegate();
+            
+            return true;
+        });
+
+        $(this.el).find('[data-role="content"]').empty();
+        
         $.mobile.changePage( $("#uploading"), {changeHash: false} );
         
+        this.template = _.template( $("#uploading-template").html() );
+                
         this.pending_uploads = {};
         
         if (this.options.query.photo_id)
@@ -16,7 +27,7 @@ snapr.views.uploading = Backbone.View.extend({
                  "uploads": [
                      {
                          "id": 5345233,
-                         "thumbnail": "https://s3.amazonaws.com/media-server2.snapr.us/sml/b156433cc48a2ad43a9417b1ec8ee806/CAT.jpg",
+                         "thumbnail": "http://media-server2.snapr.us/sml/dev/b1329ff1029c2a686ad78b94a66eea76/Z4K.jpg",
                          "upload_status": "active", //"waiting|active|canceled|hold",
                          "percent_complete": 50,
                          "status": 'public', //"public|private|queued",
@@ -89,7 +100,7 @@ snapr.views.uploading = Backbone.View.extend({
              
                  setTimeout(function() {
                     console.warn("testing 5");
-                    upload_completed( 5345233, "CAT");
+                    upload_completed( 5345233, "Z4K");
                  }, 14000);
 
 
@@ -114,9 +125,8 @@ snapr.views.uploading = Backbone.View.extend({
 
             // end testing
         }
-
     },
-    
+
     events: {
         "click .cancel-uploads": "cancel_uploads"
     },
@@ -153,7 +163,7 @@ snapr.views.uploading = Backbone.View.extend({
             $(this.el).find(".cancel-uploads").show();
         }
         
-        var upload_heart_template = _.template( $("#upload-progress-heart-template").html() );
+        var upload_heart_template = _.template( $("#uploading-template").html() );
         
         _.each( upload_data.uploads, function( photo )
         {
@@ -172,16 +182,6 @@ snapr.views.uploading = Backbone.View.extend({
     {
         this.pending_uploads[queue_id] && delete this.pending_uploads[queue_id];
         
-        var $content = $(this.el).find('[data-role="content"]');
-        var upload_heart_template = _.template( $("#upload-progress-heart-complete-template").html() );
-        
-        this.model = new snapr.models.photo({id: snapr_id});
-        var model = this.model;
-        this.model.bind("change", function()
-        {
-            console.warn('model',this.model);
-            $content.html(upload_heart_template({item: model})).trigger("create");
-        });
-        this.model.fetch();
+        Route.navigate( "#/love-it/?shared=true&photo_id=" + snapr_id, true );
     }
 });

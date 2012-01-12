@@ -10,7 +10,7 @@ snapr.views.photo_edit = Backbone.View.extend({
         });
         
         this.template = _.template( $("#photo-edit-template").html() );
-        
+        this.img_template = _.template( $("#photo-edit-image-template").html() );
         // this will eventually be stored/retrieved from localstorage 
         // but for now we'll start from blank each time
         this.photo_edit_settings = {};
@@ -47,19 +47,19 @@ snapr.views.photo_edit = Backbone.View.extend({
     {
         console.warn( "get_photo_from_server", id );
         var photo_edit = this;
-        this.model = new snapr.models.photo({id:id});
+        this.model = new snapr.models.photo({id: id});
         this.model.fetch({
             success: function()
             {
                 console.warn( "photo fetch success" );
                 
                 // temporary hack to display image
-                var photo_url = "http://media-server2.snapr.us/sml/" 
+                var img_url = "http://media-server2.snapr.us/sml/" 
                     + photo_edit.model.get("secret") + "/" 
                     + photo_edit.model.get("id") + ".jpg";
-                photo_edit.el.find(".edit-image").html( $("<img src='" + photo_url + "' />") );
 
-                photo_edit.el.find("#description").val( photo_edit.model.get("description") );
+                $(photo_edit.el).find(".edit-image").html( photo_edit.img_template({img_url: img_url}) );
+                $(photo_edit.el).find("#description").val( photo_edit.model.get("description") );
 
             },
             error: function()
@@ -76,7 +76,7 @@ snapr.views.photo_edit = Backbone.View.extend({
         });
         
         // temporary hack to display image
-        this.el.find(".edit-image").html( $("<img src='" + path + "' />") );
+        $(this.el).find(".edit-image").html( this.img_template({img_url: img_url}) );
         
         console.warn( "get_photo_from_path", path );
     },

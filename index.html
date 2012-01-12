@@ -14,6 +14,7 @@
     </head> 
 <body> 
 
+    <!-- main menu / home page -->
     <div id="home" data-title="PINK Nation" data-role="page">
         <div data-role="content">
             <ul data-role="listview">
@@ -25,7 +26,10 @@
         </div><!-- /content -->
     </div><!-- /page -->
 
+    <!-- no templates for #home -->
 
+
+    <!-- list currently linked services and add new ones -->
     <div id="linked-services" data-title="Linked Services" data-add-back-btn="true" data-role="dialog">
         <div data-role="header">
             <h1>Linked Services</h1>
@@ -43,7 +47,108 @@
         </div>
     </div>
 
+    <!-- template for linking a service in #linked-services -->
+    <script id="add-linked-service-template" type="text/template">
+    <div data-role="collapsible" data-collapsed="true">
+    <% switch(provider) { case 'twitter': %>
+        <h3>Link Twitter</h3>
+        <fieldset data-role="controlgroup">
+        </fieldset>
+        <button data-inline="true" data-theme="b" class="link-service">Link</button>
+    <% break; case 'foursquare': %>
+        <h3>Link Foursquare</h3>
+        <fieldset data-role="controlgroup">
+        </fieldset>
+        <button data-inline="true" data-theme="b" class="link-service">Link</button>
+    <% break; case 'tumblr': %>
+        <h3>Link Tumblr</h3>
+        <fieldset data-role="controlgroup">
+        </fieldset>
+        <button data-inline="true" data-theme="b" class="link-service">Link</button>
+    <% break; case 'facebook': %>
+        <h3>Link Facebook</h3>
+        <fieldset data-role="controlgroup">
+        </fieldset>
+        <button data-inline="true" data-theme="b" class="link-service">Link</button>
+    <% break; } %>
+    </div>
+    </script>
 
+    <!-- template for showing a linked service in #linked-services -->
+    <script id="linked-service-template" type="text/template">
+        <div data-role="collapsible" data-collapsed="true">
+        <% switch(service.provider) { case 'twitter': %>
+            <h3>Twitter - <%= service.get('username') %></h3>
+            <fieldset data-role="controlgroup">
+
+                <button class="twitter-import-profile">Import Profile</button>
+
+                <input type="checkbox" name="twitter-link" id="twitter-link" class="custom" 
+                <% if(service.get('show_username')){%> checked="true" <%}%> />
+                <label for="twitter-link">Link to my profile from Snapr</label>
+
+                <input type="checkbox" name="twitter-tweet" id="twitter-tweet" class="custom"
+                <% if(service.get('allow_tweet')){%> checked="true" <%}%> />
+                <label for="twitter-tweet">Allow tweets from Snapr</label>
+
+            </fieldset>
+        <% break; case 'foursquare': %>
+            <h3>Foursquare - <%= service.get('username') %></h3>
+            <fieldset data-role="controlgroup">
+
+                <input type="checkbox" name="foursquare-link" id="foursquare-link" class="custom" 
+                <% if(service.get('show_username')){%> checked="true" <%}%> />
+                <label for="foursquare-link">Display my foursquare username</label>
+
+                <input type="checkbox" name="foursquare-checkin" id="foursquare-checkin" class="custom" 
+                <% if(service.get('allow_checkin')){%> checked="true" <%}%> />
+                <label for="foursquare-checkin">Allow checkins from Snapr</label>
+
+            </fieldset>
+        <% break; case 'tumblr': %>
+            <h3>Tumblr - <%= service.get('username') %></h3>
+            <fieldset data-role="controlgroup">
+
+                <input type="checkbox" name="tumblr-link" id="tumblr-link" class="custom" 
+                <% if(service.get('show_username')){%> checked="true" <%}%> />
+                <label for="tumblr-link">Display my Tumblr username</label>
+
+                <input type="checkbox" name="tumblr-post" id="tumblr-post" class="custom" 
+                <% if(service.get('allow_post')){%> checked="true" <%}%> />
+                <label for="tumblr-post">Allow posts from Snapr</label>
+
+            </fieldset>
+        <% break; case 'facebook': %>
+            <h3>Facebook - <%= service.get('username') %></h3>
+            <fieldset data-role="controlgroup">
+
+                <input type="checkbox" name="facebook-link" id="facebook-link" class="custom" 
+                <% if(service.get('show_profile_link')){%> checked="true" <%}%> />
+                <label for="facebook-link">Link to my profile from Snapr</label>
+
+                <input type="checkbox" name="facebook-newsfeed" id="facebook-newsfeed" class="custom"
+                <% if(service.get('allow_newsfeed_posts')){%> checked="true" <%}%> />
+                <label for="facebook-newsfeed">Allow newsfeed posts from Snapr</label>
+
+                <input type="checkbox" name="facebook-gallery" id="facebook-gallery" class="custom"
+                <% if(service.get('allow_gallery_posts')){%> checked="true" <%}%> />
+                <label for="facebook-gallery">Allow newsfeed posts from Snapr</label>
+
+            </fieldset>
+            <fieldset data-role="controlgroup">
+
+                <label for="facebook-gallery-name">Gallery Name</label>
+                <input type="text" name="facebook-gallery-name" id="facebook-gallery-name" class="custom"
+                value="<%= service.get('gallery_name') %>" />
+
+            </fieldset>
+        <% break; } %>
+            <button data-inline="true" class="unlink">Unlink</button><button data-inline="true" data-theme="b" class="save">Save</button>
+        </div>
+    </script>
+
+
+    <!-- show images in a feed view -->
     <div id="feed" data-role="page" data-add-back-btn="true">
         <div data-role="header">
             <h1>Featured Girls</h1>
@@ -55,7 +160,23 @@
         <button class="more ui-btn-right">More</button>
     </div><!-- /page -->
 
+    <!-- template for list items within #feed -->
+    <script id="feed-li-list-template" type="text/template">
+    <li class="feed-li">
+        <div>
+            <img style="width:100%;height:<%= snapr.utils.get_photo_height(item.get('width'), item.get('height'), '#feed .ui-content') %>px;" src="https://s3.amazonaws.com/media-server<%= item.get('server_id') %>.snapr.us/lrg/<%= item.get('secret') %>/<%= item.get('id') %>.jpg" alt="<%= item.get('description') %>" class="thumb-image" />
 
+            <!-- gallery version below -->
+            <!-- <a href="https://s3.amazonaws.com/media-server<%= item.get('server_id') %>.snapr.us/lrg/<%= item.get('secret') %>/<%= item.get('id') %>.jpg" rel="external" class="gallery_link"><img style="width:100%;height:<%= snapr.utils.get_photo_height(item.get('width'), item.get('height'), '#feed .ui-content') %>px;" src="https://s3.amazonaws.com/media-server<%= item.get('server_id') %>.snapr.us/lrg/<%= item.get('secret') %>/<%= item.get('id') %>.jpg" alt="<%= item.get('description') %>" class="thumb-image" /></a> -->
+
+            <div><%= item.get('username') %></div>
+            <div><%= item.get('description') %></div>
+        </div>
+    </li>
+    </script>
+
+
+    <!-- log in as a snapr user (for testing - go to #/login/) -->
     <div id="login" data-add-back-btn="true" data-role="dialog">
         <div data-role="header">
             <h1>Log in</h1>
@@ -84,7 +205,10 @@
         </div>
     </div><!-- /page -->
 
+    <!-- no templates for #login -->
 
+
+    <!-- upload form for web-based uploading/testing (go to #/upload/) -->
     <div id="upload" data-role="page">
         <div data-role="header">
             <h1>Upload</h1>
@@ -106,10 +230,13 @@
                     <input disabled="true" type="submit" value="Upload Snap" id="upload-submit" />
                 </form>
             </div>
-            
         </div>
     </div>
 
+    <!-- no templates for #upload -->
+
+
+    <!-- upload progress view (layout should match the #photo-edit view exactly) -->
     <div id="uploading" data-role="page">
         <div data-role="header">
             <a class="cancel-uploads" data-ajax="false" data-role="button">Cancel</a>
@@ -119,6 +246,30 @@
         </div>
     </div>
 
+    <!-- template for #uploading content attached to upload progress li view -->
+    <script id="uploading-template" type="text/template">
+        <div class="ui-grid-a upload-progress-container">
+            <div class="ui-block-a upload-image">
+                <div class="edit-image">
+                    <img src="<%= img_url %>" />
+                </div>
+            </div>
+            <div class="ui-block-b upload-progress-container">
+            <h1>Looking good!</h1>
+            <div class="progress-bar <%= upload_status %>">
+                <div class="bar-bg bar">
+                </div>
+                <div class="bar-prog bar" style="width:<%= percent_complete %>%">
+                </div>
+            </div>
+            <span><%= percent_complete %>%</span>
+            
+            </div>
+        </div>
+    </script>
+
+
+    <!-- sharing setup / caption view -->
     <div id="photo-edit" data-role="page">
         <div data-role="header">
             <a href="#/" data-ajax="false" data-role="button">Cancel</a>
@@ -128,6 +279,7 @@
         </div>
     </div>
     
+    <!-- template for #photo-edit -->
     <script id="photo-edit-template" type="text/template">
         <form action="javascript: void(0);">
             <div class="ui-grid-a">
@@ -188,11 +340,19 @@
         <a class="skip">Skip this step &raquo;</a>
     </script>
 
+    <!-- template for .edit-image inside #photo-edit -->
+    <script id="photo-edit-image-template" type="text/template">
+        <img src="<%= img_url %>" />
+    </script>
+
+
+    <!-- landing page for successful image share/save -->
     <div id="love-it" data-role="page">
         <div data-role="content">
         </div>
     </div>
 
+    <!-- template for #love-it -->
     <script id="love-it-template" type="text/template">
         <img src="<%= img_url %>" alt="thumbnail">
         <h1>Love it!</h1>
@@ -206,313 +366,8 @@
         <a data-ajax="false" href="#/" data-role="button">Pics home</a>
     </script>
 
-<script id="my-account-template" type="text/template">
-<h2>My Account</h2>
 
-<div data-role="collapsible" data-collapsed="true">
-    <h3>Account Name & Email</h3>
-    <fieldset data-role="controlgroup">
-        <label for="my-account-name">Your Name</label>
-        <input type="text" name="my-account-name" id="my-account-name" class="custom"
-        value="<%= settings.profile.name %>" />
-    </fieldset>
-    <fieldset data-role="controlgroup">
-        <label for="my-account-email">Email</label>
-        <input type="text" name="my-account-email" id="my-account-email" class="custom"
-        value="<%= settings.email %>" />
-    </fieldset>
-    <button data-theme="b" class="save">Save</button>
-</div>
-
-<div data-role="collapsible" data-collapsed="true">
-    <h3>Password</h3>
-    <fieldset data-role="controlgroup">
-        <label for="my-account-password">New Password</label>
-        <input type="password" name="my-account-password" id="my-account-password" class="custom"
-        value="" />
-    </fieldset>
-    <fieldset data-role="controlgroup">
-        <label for="my-account-password-verify">Verify</label>
-        <input type="password" name="my-account-password-verify" id=" my-account-password-verify" class="custom"
-        value="" />
-    </fieldset>
-    <button data-theme="b" class="save">Save</button>
-</div>
-
-<div data-role="collapsible" data-collapsed="true">
-    <h3>Notifications</h3>
-    <legend>Email me when:</legend>
-    <fieldset data-role="controlgroup">
-        <input type="checkbox" name="my-account-notify-follow" id="my-account-notify-follow" class="custom" 
-        <% if (settings.profile.notify_when_added_to_group){%> checked="true" <%}%> />
-        <label for="my-account-notify-follow">Someone follows me</label>
-
-        <input type="checkbox" name="my-account-notify-favorite" id="my-account-notify-favorite" class="custom" 
-        <% if (settings.profile.notify_when_image_favorited){%> checked="true" <%}%> />
-        <label for="my-account-notify-favorite">Someone favorites one of my images</label>
-
-        <input type="checkbox" name="my-account-notify-comment" id="my-account-notify-comment" class="custom" 
-        <% if (settings.profile.notify_when_comment_added){%> checked="true" <%}%> />
-        <label for="my-account-notify-comment">Someone comments on one of my images</label>
-
-        <input type="checkbox" name="my-account-notify-comment-after" id="my-account-notify-comment-after" class="custom" 
-        <% if (settings.profile.notify_after_comment){%> checked="true" <%}%> />
-        <label for="my-account-notify-comment-after">Someone comments on an image I&apos;ve commented on</label>
-
-        <input type="checkbox" name="my-account-notify-moderation" id="my-account-notify-moderation" class="custom" 
-        <% if (settings.profile.notify_when_image_moderated){%> checked="true" <%}%> />
-        <label for="my-account-notify-moderation">One of my images has been moderated</label>
-
-        <input type="checkbox" name="my-account-notify-snapr" id="my-account-notify-snapr" class="custom" 
-        <% if (settings.profile.subscribe_to_email_newsletter){%> checked="true" <%}%> />
-        <label for="my-account-notify-snapr">Snapr has exciting news</label>
-    </fieldset>
-    
-    <button data-theme="b" class="save">Save</button>
-    
-</div>
-
-<div data-role="collapsible" data-collapsed="true">
-    <h3>Profile</h3>
-    
-    <fieldset data-role="controlgroup" class="my-account-avatar">
-        <legend>Avatar</legend>
-
-        <input type="radio" name="my-account-avatar-twitter" id="my-account-avatar-twitter" value="twitter"
-        <% if (settings.profile.avatar_type == 'twitter'){ %> checked="true" <% } %> />
-        <label for="my-account-avatar-twitter">Twitter</label>
-
-        <input type="radio" name="my-account-avatar-facebook" id="my-account-avatar-facebook" value="facebook"
-        <% if (settings.profile.avatar_type == 'facebook'){ %> checked="true" <% } %> />
-        <label for="my-account-avatar-facebook">Facebook</label>
-
-        <input type="radio" name="my-account-avatar-gravatar" id="my-account-avatar-gravatar" value="gravatar"
-        <% if (settings.profile.avatar_type == 'gravatar'){ %> checked="true" <% } %> />
-        <label for="my-account-avatar-gravatar">Gravatar</label>
-        
-        <button class="my-account-set-up-gravatar">Set up Gravatar</button>
-
-    </fieldset>
-
-    <fieldset data-role="controlgroup">
-        <label for="my-account-profile-name">Your Name</label>
-        <input type="text" name="my-account-profile-name" id="my-account-profile-name" class="custom"
-        value="<%= settings.profile.name %>" />
-    </fieldset>
-
-    <fieldset data-role="controlgroup">
-        <label for="my-account-location">Location</label>
-        <input type="text" name="my-account-location" id="my-account-location" class="custom"
-        value="<%= settings.profile.location %>" />
-    </fieldset>
-
-    <fieldset data-role="controlgroup">
-        <label for="my-account-website">Website</label>
-        <input type="text" name="my-account-website" id="my-account-website" class="custom"
-        value="<%= settings.profile.website %>" />
-    </fieldset>
-
-    <fieldset data-role="controlgroup">
-        <label for="my-account-bio">Bio</label>
-        <textarea name="my-account-bio" id="my-account-bio" class="custom"><%= settings.profile.bio %></textarea>
-    </fieldset>
-
-    <button data-theme="b" class="my-account-save">Save</button>
-</div>
-
-<h2>Linked Services</h2>
-<div class="linked-services">
-</div>
-
-<h2>Add Services</h2>
-<div class="add-services">
-</div>
-</script>
-
-<script id="upload-mode-template" type="text/template">
-<fieldset data-role="controlgroup" data-type="horizontal" class="upload-mode-toggle">
-    <input type="radio" id="upload-mode-on" value="on">
-    <label for="upload-mode-on">On</label>
-    <input type="radio" id="upload-mode-wifi" value="wifi">
-    <label for="upload-mode-wifi">Wifi</label>
-</fieldset>
-<button class="upload-pause" data-inline="true" data-icon="minus" data-iconpos="left">Pause Upload Queue</button>
-</script>
-
-<script id="add-linked-service-template" type="text/template">
-<div data-role="collapsible" data-collapsed="true">
-<% switch(provider) { case 'twitter': %>
-    <h3>Link Twitter</h3>
-    <fieldset data-role="controlgroup">
-    </fieldset>
-    <button data-inline="true" data-theme="b" class="link-service">Link</button>
-<% break; case 'foursquare': %>
-    <h3>Link Foursquare</h3>
-    <fieldset data-role="controlgroup">
-    </fieldset>
-    <button data-inline="true" data-theme="b" class="link-service">Link</button>
-<% break; case 'tumblr': %>
-    <h3>Link Tumblr</h3>
-    <fieldset data-role="controlgroup">
-    </fieldset>
-    <button data-inline="true" data-theme="b" class="link-service">Link</button>
-<% break; case 'facebook': %>
-    <h3>Link Facebook</h3>
-    <fieldset data-role="controlgroup">
-    </fieldset>
-    <button data-inline="true" data-theme="b" class="link-service">Link</button>
-<% break; } %>
-</div>
-</script>
-
-<script id="linked-service-template" type="text/template">
-    <div data-role="collapsible" data-collapsed="true">
-    <% switch(service.provider) { case 'twitter': %>
-        <h3>Twitter - <%= service.get('username') %></h3>
-        <fieldset data-role="controlgroup">
-        
-            <button class="twitter-import-profile">Import Profile</button>
-        
-            <input type="checkbox" name="twitter-link" id="twitter-link" class="custom" 
-            <% if(service.get('show_username')){%> checked="true" <%}%> />
-            <label for="twitter-link">Link to my profile from Snapr</label>
-        
-            <input type="checkbox" name="twitter-tweet" id="twitter-tweet" class="custom"
-            <% if(service.get('allow_tweet')){%> checked="true" <%}%> />
-            <label for="twitter-tweet">Allow tweets from Snapr</label>
-        
-        </fieldset>
-    <% break; case 'foursquare': %>
-        <h3>Foursquare - <%= service.get('username') %></h3>
-        <fieldset data-role="controlgroup">
-
-            <input type="checkbox" name="foursquare-link" id="foursquare-link" class="custom" 
-            <% if(service.get('show_username')){%> checked="true" <%}%> />
-            <label for="foursquare-link">Display my foursquare username</label>
-
-            <input type="checkbox" name="foursquare-checkin" id="foursquare-checkin" class="custom" 
-            <% if(service.get('allow_checkin')){%> checked="true" <%}%> />
-            <label for="foursquare-checkin">Allow checkins from Snapr</label>
-
-        </fieldset>
-    <% break; case 'tumblr': %>
-        <h3>Tumblr - <%= service.get('username') %></h3>
-        <fieldset data-role="controlgroup">
-
-            <input type="checkbox" name="tumblr-link" id="tumblr-link" class="custom" 
-            <% if(service.get('show_username')){%> checked="true" <%}%> />
-            <label for="tumblr-link">Display my Tumblr username</label>
-
-            <input type="checkbox" name="tumblr-post" id="tumblr-post" class="custom" 
-            <% if(service.get('allow_post')){%> checked="true" <%}%> />
-            <label for="tumblr-post">Allow posts from Snapr</label>
-
-        </fieldset>
-    <% break; case 'facebook': %>
-        <h3>Facebook - <%= service.get('username') %></h3>
-        <fieldset data-role="controlgroup">
-
-            <input type="checkbox" name="facebook-link" id="facebook-link" class="custom" 
-            <% if(service.get('show_profile_link')){%> checked="true" <%}%> />
-            <label for="facebook-link">Link to my profile from Snapr</label>
-        
-            <input type="checkbox" name="facebook-newsfeed" id="facebook-newsfeed" class="custom"
-            <% if(service.get('allow_newsfeed_posts')){%> checked="true" <%}%> />
-            <label for="facebook-newsfeed">Allow newsfeed posts from Snapr</label>
-
-            <input type="checkbox" name="facebook-gallery" id="facebook-gallery" class="custom"
-            <% if(service.get('allow_gallery_posts')){%> checked="true" <%}%> />
-            <label for="facebook-gallery">Allow newsfeed posts from Snapr</label>
-
-        </fieldset>
-        <fieldset data-role="controlgroup">
-
-            <label for="facebook-gallery-name">Gallery Name</label>
-            <input type="text" name="facebook-gallery-name" id="facebook-gallery-name" class="custom"
-            value="<%= service.get('gallery_name') %>" />
-
-        </fieldset>
-    <% break; } %>
-        <button data-inline="true" class="unlink">Unlink</button><button data-inline="true" data-theme="b" class="save">Save</button>
-    </div>
-</script>
-
-<script id="feed-li-list-template" type="text/template">
-<li class="feed-li">
-    <div>
-        <img style="width:100%;height:<%= snapr.utils.get_photo_height(item.get('width'), item.get('height'), '#feed .ui-content') %>px;" src="https://s3.amazonaws.com/media-server<%= item.get('server_id') %>.snapr.us/lrg/<%= item.get('secret') %>/<%= item.get('id') %>.jpg" alt="<%= item.get('description') %>" class="thumb-image" />
-    
-        <!-- gallery version below -->
-        <!-- <a href="https://s3.amazonaws.com/media-server<%= item.get('server_id') %>.snapr.us/lrg/<%= item.get('secret') %>/<%= item.get('id') %>.jpg" rel="external" class="gallery_link"><img style="width:100%;height:<%= snapr.utils.get_photo_height(item.get('width'), item.get('height'), '#feed .ui-content') %>px;" src="https://s3.amazonaws.com/media-server<%= item.get('server_id') %>.snapr.us/lrg/<%= item.get('secret') %>/<%= item.get('id') %>.jpg" alt="<%= item.get('description') %>" class="thumb-image" /></a> -->
-
-        <div><%= item.get('username') %></div>
-        <div><%= item.get('description') %></div>
-    </div>
-</li>
-</script>
-
-<script id="thumb-li-template" type="text/template">
-    <% _.each( results, function( item, i ){ %>
-    <li>
-    <a data-ajax="false" href="#/feed/?photo_id=<%= item.get('id') %>&username=<%= item.get('username') %>">
-    <img height="100px" width="100px" src="https://s3.amazonaws.com/media-server<%= item.get('server_id') %>.snapr.us/thm2/<%= item.get('secret') %>/<%= item.get('id') %>.jpg" alt="<%= item.get('description') %>" class="thumb-image" />
-    </a>
-    </li>
-    <% }); %>
-</script>
-
-<script id="upload-progress-heart-template" type="text/template">
-    <div class="ui-grid-a upload-progress-container">
-        <div class="ui-block-a upload-image">
-            <div class="image-crop"><img src="<%= thumbnail %>" /></div>
-        </div>
-        <div class="ui-block-b upload-progress-container">
-            <div class="heart-progress-bar <%= upload_status %>">
-                <div class="heart-bg heart">
-                </div>
-                <div class="heart-prog heart" style="height:<%= percent_complete %>%">
-                </div>
-            </div>
-            <span><%= percent_complete %>%</span>
-        </div>
-    </div>
-    <div class="message-cont">
-        <h2>About Girl of the Month</h2>
-        <p>Each month we pick our favorite shot from one lucky girl to be Pink Nation Girl of the Month.</p>
-        <p>Text about prizes etc.</p>
-    </div>
-</script>
-
-<script id="upload-progress-heart-complete-template" type="text/template">
-    <div class="ui-grid-a upload-progress-container">
-        <div class="ui-block-a upload-image">
-            <div class="image-crop"><img src="https://s3.amazonaws.com/media-server<%= item.get('server_id') %>.snapr.us/thm2/<%= item.get('secret') %>/<%= item.get('id') %>.jpg" alt="<%= item.get('description') %>" /></div>
-        </div>
-        <div class="ui-block-b">
-            <h3>Thanks!</h3>
-        </div>
-    </div>
-    <div class="message-cont">
-        <a data-ajax="false" href="#/upload/" data-role="button" data-inline="true">Take Another</a>
-        <a data-ajax="false" href="#/" data-role="button" data-inline="true" data-theme="b">Done</a>
-    </div>
-    
-</script>
-
-<script id="upload-complete-template" type="text/template">
-    <div class="ui-block-a upload-image">
-        <div class="image-crop"><img class="ui-li-icon" src="<%= thumbnail %>" /></div>
-    </div>
-    <div class="ui-block-b">
-        <h2>Thanks!</h2>
-    </div>
-
-<% if (percent_complete == 100){ %>
-    <a data-icon="forward" data-theme="d" class="processing"></a>
-<% }else{ %>
-    <a data-icon="delete" data-theme="d" class="cancel"></a>
-<% } %>
-</script>
+<!-- end page content and templates -->
 
 <script src="app/libs/json2.js" type="text/javascript" charset="utf-8"></script> <!-- just in case the browser sucks at JSON -->
 
@@ -562,9 +417,9 @@ $(document).bind("mobileinit", function(){
 <script src="app/libs/underscore.js" type="text/javascript" charset="utf-8"></script> <!-- required by backbone -->
 <script src="app/libs/backbone.js" type="text/javascript" charset="utf-8"></script> <!-- handles routing, models and sync -->
 
+<!-- backbone views -->
 <script src="app/views/home.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/login.js" type="text/javascript" charset="utf-8"></script>
-<script src="app/views/my_account.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/upload.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/uploading.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/photo_edit.js" type="text/javascript" charset="utf-8"></script>
@@ -576,9 +431,8 @@ $(document).bind("mobileinit", function(){
 <script src="app/views/upload_progress_li.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/feed_list.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/feed_li.js" type="text/javascript" charset="utf-8"></script>
-<script src="app/views/join_snapr.js" type="text/javascript" charset="utf-8"></script>
 
-
+<!-- backbone models -->
 <script src="app/models/auth.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/models/user.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/models/user_collection.js" type="text/javascript" charset="utf-8"></script>
@@ -594,6 +448,7 @@ $(document).bind("mobileinit", function(){
 <script src="app/models/reaction.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/snapr.js" type="text/javascript" charset="utf-8"></script>
 
+<!-- weinre script for remote debugging -->
 <script src="http://localhost:8080/target/target-script-min.js#anonymous"></script>
 
 </body>
