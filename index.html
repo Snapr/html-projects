@@ -19,7 +19,7 @@
             <ul data-role="listview">
                 <li class="home-featured"><a data-ajax="false" href="#/feed/?appgroup=pink-nation"><img src="http://placehold.it/200x200" alt="thumbnail">Featured Girls</a></li>
                 <li class="home-photo"><a data-ajax="false" href="#/upload/"><img src="http://placehold.it/200x150" alt="camera icon">Take a photo</a></li>
-                <li class="home-roll"><a data-ajax="false" href="#/photo-edit/?photo_id=15C0"><img src="http://placehold.it/100x100" alt="camera roll icon">Use an existing photo</a></li>
+                <li class="home-roll"><a data-ajax="false" href="#/photo-edit/?photo_id=Z4K"><img src="http://placehold.it/100x100" alt="camera roll icon">Use an existing photo</a></li>
                 <li class="home-pink-hearts"><a transition="slide" href="http://pink.victoriassecret.com/m/pink_hearts/"><img src="http://placehold.it/150x150" alt="camera roll icon">Pink Hearts</a></li>
             </ul>
         </div><!-- /content -->
@@ -125,43 +125,86 @@
             <h1>Share</h1>
         </div>
         <div data-role="content">
+        </div>
+    </div>
+    
+    <script id="photo-edit-template" type="text/template">
+        <form action="javascript: void(0);">
             <div class="ui-grid-a">
                 <div class="edit-image ui-block-a"></div>
                 <div class="ui-block-b">
-                    <textarea name="description" id="description" placeholder="Add a message&hellip;"></textarea>
+                    <p class="share-message">Some pictures are too good to keep to yourself! Share this with Pink Nation for a chance to have it featured in our app.</p>
+                    <textarea name="description" id="description" placeholder="Caption this!" style="display:none;"></textarea>
                 </div>
             </div>
-            <div data-role="fieldcontain">
-                <input type="checkbox" name="enter-girl-of-month" id="enter-girl-of-month" />
-                <label for="enter-girl-of-month" class="ui-bar-e">Submit my photo to PINK Nation and enter Girl of The Month</label>
-            </div>
-            
             <div data-role="controlgroup" data-type="horizontal" class="sharing-settings">
-                <legend>Share to:</legend>
-
-                <div data-role="fieldcontain">
-                    <label for="facebook-sharing">Facebook</label>
-                    <select name="slider" id="facebook-sharing" data-role="slider">
-                        <option value="off">Off</option>
-                        <option value="on" selected="true">On</option>
-                    </select>
-                </div>
-
-                <div data-role="fieldcontain">
-                    <label for="tumblr-sharing">Tumblr</label>
-                    <select name="slider" id="tumblr-sharing" data-role="slider">
-                        <option value="off">Off</option>
-                        <option value="on" selected="true">On</option>
-                    </select>
-                </div>
-
+                <ul data-role="listview" data-inset="true" data-theme="c">
+                    <li data-role="fieldcontain">
+                        <div class="ui-grid-a">
+                            <div class="ui-block-a">
+                                <label for="facebook-sharing">Facebook</label>
+                            </div>
+                            <div class="ui-block-b">
+                                <select name="facebook-sharing" id="facebook-sharing" data-role="slider">
+                                    <option value="off"  selected="true">Off</option>
+                                    <option value="on">On</option>
+                                </select>
+                            </div>
+                        </div>
+                    </li>
+                    <li data-role="fieldcontain">
+                        <div class="ui-grid-a">
+                            <div class="ui-block-a">
+                                <label for="tumblr-sharing">Tumblr</label>
+                            </div>
+                            <div class="ui-block-b">
+                                <select name="tumblr-sharing" id="tumblr-sharing" data-role="slider">
+                                    <option value="off" selected="true">Off</option>
+                                    <option value="on">On</option>
+                                </select>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+                <ul data-role="listview" data-inset="true" data-theme="c">
+                    <li data-role="fieldcontain">
+                        <div class="ui-grid-a">
+                            <div class="ui-block-a">
+                                <label for="enter-girl-of-month">Send to PINK Nation</label>
+                            </div>
+                            <div class="ui-block-b">
+                                <select name="enter-girl-of-month" id="enter-girl-of-month" data-role="slider">
+                                    <option value="off"  selected="true">Off</option>
+                                    <option value="on">On</option>
+                                </select>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
             </div>
 
-            <div data-role="fieldcontain" class="ui-grid-b">
-                <a data-role="button" data-inline="true" data-theme="e" class="share ui-block-c">Share</a>
-            </div>
+            <input type="submit" data-role="button" data-theme="e" class="share" disabled="true" value="Share" />
+        </form>
+        <a class="skip">Skip this step &raquo;</a>
+    </script>
+
+    <div id="love-it" data-role="page">
+        <div data-role="content">
         </div>
     </div>
+
+    <script id="love-it-template" type="text/template">
+        <img src="<%= img_url %>" alt="thumbnail">
+        <h1>Love it!</h1>
+        <% if (shared){ %>
+        <p>Your pic has been shared and saved to your phone&rsquo;s library</p>
+        <% }else{ %>
+            <p>Your pic has been saved to your phone&rsquo;s library</p>
+        <% } %>
+        <a data-ajax="false" href="#/upload/" data-role="button">Take another photo</a>
+        <a data-ajax="false" href="#/upload-roll/" data-role="button">Choose and existing pic</a>
+        <a data-ajax="false" href="#/" data-role="button">Pics home</a>
+    </script>
 
 <script id="my-account-template" type="text/template">
 <h2>My Account</h2>
@@ -525,6 +568,7 @@ $(document).bind("mobileinit", function(){
 <script src="app/views/upload.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/uploading.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/photo_edit.js" type="text/javascript" charset="utf-8"></script>
+<script src="app/views/love_it.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/upload_settings.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/linked_service.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/linked_services.js" type="text/javascript" charset="utf-8"></script>
