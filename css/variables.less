@@ -21,6 +21,8 @@
 @global-font-family: Helvetica, Arial, sans-serif;
 @global-special-font:'CreteRoundRegular', Helvetica, Arial, sans-serif;
 @global-special-font-size: 20px;
+@global-base-font-size: 12px;
+
 @global-active-border: #155678;
 @global-active-background-color: #4596ce;
 @global-active-color: #fff;
@@ -30,14 +32,14 @@
 @global-active-shadow-color: #145072;
 @global-active-background-start: #85bae4;
 @global-active-background-end: #5393c5;
-@global-radii-blocks: 1em;
+@global-radii-blocks: 6px;
 @global-icon-color: #666;
 @global-icon-disc: rgba(0,0,0,.4);
 @global-icon-set: url(images/icons-18-white.png);
 @global-icon-radius: 9px;
-@global-radii-buttons: 1em;
-@global-box-shadow-size: 4px;
-@global-box-shadow-color: rgba(0,0,0,.75);
+@global-radii-buttons: 6px;
+@global-box-shadow-size: 1px;
+@global-box-shadow-color: rgba(0,0,0,.2);
 
 @global-body-padding: 20px;
 
@@ -84,12 +86,11 @@
 
 
 
-@c-bup-border: #ccc;
-@c-bup-border-top: rgba(255,255,255,0.3);
+@c-bup-border: rgba(255,255,255,0.3);
+@c-bup-border-top: @c-bup-border;
 @c-bup-border-bottom: rgba(0,0,0,0.07);
 @c-bup-background-color: transparent;
-@c-bup-color: #444;//TODO conflict
-@c-bup-color: #2F3E46;
+@c-bup-color: #000;
 @c-bup-shadow-x: 0;
 @c-bup-shadow-y: 1px;
 @c-bup-shadow-radius: 1px;
@@ -97,10 +98,9 @@
 @c-bup-background-start: transparent;
 @c-bup-background-end: @c-bup-background-color;
 
-@c-bhover-border: #bbbbbb;
+@c-bhover-border: @c-bup-border;
 @c-bhover-background-color: rgba(255,255,255,0.1);
-@c-bhover-color: #101010;//TODO conflict
-@c-bhover-color: #2F3E46;
+@c-bhover-color: #000;
 @c-bhover-shadow-x: 0;
 @c-bhover-shadow-y: 1px;
 @c-bhover-shadow-radius: 1px;
@@ -108,10 +108,9 @@
 @c-bhover-background-start: transparent;
 @c-bhover-background-end: @c-bhover-background-color;
 
-@c-bdown-border: #808080;
+@c-bdown-border: @c-bup-border;
 @c-bdown-background-color: rgba(255,255,255,0.1);
-@c-bdown-color: #111;//TODO conflict
-@c-bdown-color: #2F3E46;
+@c-bdown-color: #000;
 @c-bdown-shadow-x: 0;
 @c-bdown-shadow-y: 1px;
 @c-bdown-shadow-radius: 1px;
@@ -127,14 +126,14 @@
 * A
 */
 @a-bar-border: #2A2A2A;
-@a-bar-background-color: #111;
+@a-bar-background-color: transparent;
 @a-bar-color: #fff;
 @a-bar-shadow-x: 0;
 @a-bar-shadow-y: -1px;
 @a-bar-shadow-radius: 1px;
 @a-bar-shadow-color: #000;
-@a-bar-background-start: #3c3c3c;
-@a-bar-background-end: #111;
+@a-bar-background-start: rgba(60,60,60,.8);
+@a-bar-background-end: rgba(17,17,17,.8);
 @a-bar-link-color: #7cc4e7;
 @a-bar-link-hover: #2489CE;
 @a-bar-link-active: @a-bar-link-hover;

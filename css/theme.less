@@ -136,13 +136,13 @@ body {
 }
 
 .ui-btn-up-c {
-	border-top: 1px solid @c-bup-border-top;
-	border-bottom: 1px solid @c-bup-border-bottom;
+	border: 1px solid @c-bup-border;
 	background: @c-bup-background-color;
 	font-weight: bold;
 	color: @c-bup-color;
 	text-shadow: @c-bup-shadow-x @c-bup-shadow-y @c-bup-shadow-radius @c-bup-shadow-color;
 	font-family: @global-font-family;
+	font-size: @global-base-font-size;
 	text-decoration: none;
 
 	.linear-gradient(@c-bup-background-start, @c-bup-background-end);
@@ -255,7 +255,7 @@ body {
 }
 
 .ui-bar-a {
-	border: 1px solid @a-bar-border;
+	border-bottom: 1px solid @a-bar-border;
 	background: @a-bar-background-color;
 	color: @a-bar-color;
 	font-weight: bold;
@@ -1169,6 +1169,13 @@ a.ui-link-inherit {
     }
 }
 
+.load-more{
+    text-align: center;
+    
+    .ui-btn{
+        display: inline-block;
+    }
+}
 
 
 
