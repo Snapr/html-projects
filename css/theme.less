@@ -335,7 +335,8 @@
 }
 
 .ui-btn-up-c {
-	border: 1px solid @c-bup-border;
+	border-top: 1px solid @c-bup-border-top;
+	border-top: 1px solid @c-bup-border-bottom;
 	background: @c-bup-background-color;
 	font-weight: bold;
 	color: @c-bup-color;
@@ -358,9 +359,6 @@
 	text-shadow: @c-bhover-shadow-x @c-bhover-shadow-y @c-bhover-shadow-radius @c-bhover-shadow-color;
 	font-family: @global-font-family;
 	text-decoration: none;
-
-	.linear-gradient(@c-bhover-background-start, @c-bhover-background-end);
-
 	a.ui-link-inherit {
 		color: @c-bhover-color;
 	}
@@ -375,11 +373,27 @@
 	font-family: @global-font-family;
 	text-decoration: none;
 
-	.linear-gradient(@c-bdown-background-start, @c-bdown-background-end);
-
 	a.ui-link-inherit {
 		color: @c-bdown-color;
 	}
+}
+	
+.ui-btn-up-c.ui-li {
+    border: none;
+	border-top: 1px solid @c-bup-border-top;
+	border-top: 1px solid @c-bup-border-bottom;
+}
+
+.ui-btn-hover-c.ui-li {
+	border: none;
+	border-top: 1px solid @c-bup-border-top;
+	border-top: 1px solid @c-bup-border-bottom;
+}
+
+.ui-btn-down-c.ui-li {
+	border: none;
+	border-top: 1px solid @c-bup-border-top;
+	border-top: 1px solid @c-bup-border-bottom;
 }
 
 
@@ -1010,3 +1024,67 @@ a.ui-link-inherit {
 .ui-mobile-nosupport-boxshadow .ui-focus {
 	outline-width: 2px;
 }
+
+
+
+/* PINK Custom styles
+-----------------------------------------------------------------------------------------------------------*/
+
+.acessibility-text{
+    text-indent: -999px;
+    overflow: hidden;
+}
+
+.PINK-title{
+    background-image: url('../gfx/PINK-menu-text.png');
+    overflow: hidden;
+    height: 138px;
+    background-position: center 0px;
+    background-repeat: no-repeat;
+    margin: -15px -15px 15px -15px;
+}
+
+
+.PINK-menu-list{
+    
+    .ui-btn-inner a.ui-link-inherit{
+        padding-left: 81px;
+    }
+    .ui-icon-arrow-r{
+        display: none;
+    }
+    
+    .PINK-menu-icon{
+        background-image: url('../gfx/PINK-btn-icons.png');
+        width: 81px;
+        height: 42px;
+        max-width: none;
+        max-height: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        
+    }
+    .home-photo .PINK-menu-icon{ background-position: 0 0;}
+    .home-roll .PINK-menu-icon{ background-position: 0 -42px;}
+    .home-featured .PINK-menu-icon{ background-position: 0 -84px;} 
+    
+    .PINK-hearts-menu-btn{
+        background-image: url('../gfx/PINK-menu-text.png');
+        overflow: hidden;
+        height: 138px;
+        background-position: center -138px;
+        background-repeat: no-repeat;
+    }  
+    .home-pink-hearts{
+        .ui-icon-arrow-r{
+                 display: block;
+        }
+    }
+}
+
+
+
+
+
+

@@ -17,12 +17,13 @@
     <!-- main menu / home page -->
     <div id="home" data-title="PINK Nation" data-role="page">
         <div data-role="content">
-            <h1>PINK Your Pics</h1>
-            <ul data-role="listview">
-                <li class="home-photo"><a data-ajax="false" href="#/upload/"><img src="http://placehold.it/200x150" alt="camera icon">Take a photo</a></li>
-                <li class="home-roll"><a data-ajax="false" href="#/photo-edit/?photo_id=Z4K"><img src="http://placehold.it/100x100" alt="camera roll icon">Choose an existing image</a></li>
-                <li class="home-featured"><a data-ajax="false" href="#/feed/?appgroup=pink-nation"><img src="http://placehold.it/200x200" alt="thumbnail">See featured pics</a></li>
-                <li class="home-pink-hearts"><a transition="slide" href="http://pink.victoriassecret.com/m/pink_hearts/"><img src="http://placehold.it/150x150" alt="camera roll icon"><h2>Pink Hearts</h2> Explore images that inspire us</a></li>
+            <h1 class="PINK-title acessibility-text">PINK Your Pics</h1>
+            <ul data-role="listview" class="PINK-menu-list">
+            
+                <li class="home-photo"><a data-ajax="false" href="#/upload/"><span class="PINK-menu-icon icon ui-li-icon"></span>Take a photo</a></li>
+                <li class="home-roll"><a data-ajax="false" href="#/photo-edit/?photo_id=Z4K"><span class="PINK-menu-icon icon ui-li-icon"></span>Choose an existing image</a></li>
+                <li class="home-featured"><a data-ajax="false" href="#/feed/?appgroup=pink-nation"><span class="PINK-menu-icon icon ui-li-icon"></span>See featured pics</a></li>
+                <li class="home-pink-hearts"><a transition="slide" href="http://pink.victoriassecret.com/m/pink_hearts/" class="acessibility-text PINK-hearts-menu-btn">Pink Hearts - Explore images that inspire us</a></li>
             </ul>
         </div><!-- /content -->
     </div><!-- /page -->
