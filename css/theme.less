@@ -4,15 +4,216 @@
 * Dual licensed under the MIT (MIT-LICENSE.txt) and GPL (GPL-LICENSE.txt) licenses.
 */
 
-
 /*
 * Ported to lesscss.org by Alexander Prinzhorn
 */
 @import "variables.less";
 @import "mixins.less";
 
+/* PINK Body */
+
+body {
+    -webkit-box-shadow: inset 0 16px 52px rgba(255,51,151,0.3);
+	-moz-box-shadow: inset 0 16px 52px rgba(255,51,151,0.3);
+	box-shadow: inset 0 16px 52px rgba(255,51,151,0.3);
+	text-shadow: @c-body-shadow-x @c-body-shadow-y @c-body-shadow-radius @c-body-shadow-color;
+	background: @body-background-color @body-background-image;
+}
+
+.image-caption{
+    font-family: @global-special-font;
+    font-size: @global-special-font-size;
+}
+
+.user-details{
+   color: #666;
+   font-size: 12px;
+   font-weight: normal;
+}
 
 /* Swatches */
+
+/* C   == PINK Page body..
+-----------------------------------------------------------------------------------------------------------*/
+
+.ui-body-c {
+	color: @c-body-color;
+
+	text-shadow: @c-body-shadow-x @c-body-shadow-y @c-body-shadow-radius @c-body-shadow-color;
+	font-family: @global-font-family;
+
+
+	input, select, textarea, button {
+		font-family: @global-font-family;
+	}
+
+	.ui-link-inherit {
+		color: @c-body-color;
+	}
+
+	.ui-link {
+		color: @c-body-link-color;
+		font-weight: bold;
+
+		&:hover {
+			color: @c-body-link-hover;
+		}
+
+		&:active {
+			color: @c-body-link-active;
+		}
+
+		&:visited {
+			color: @c-body-link-visited;
+		}
+	}
+	
+
+    .ui-li-static{
+        padding: @c-body-padding;
+        	border-top: 1px solid @c-bup-border-top;
+        	border-bottom: 1px solid @c-bup-border-bottom;
+    }
+
+
+    .image-frame{
+        padding-bottom: 4px;
+        background-image: url('../gfx/PINK-image-shadow.png');
+        background-position: center bottom;
+        background-repeat: no-repeat;
+        background-size: 100%;
+        -webkit-box-shadow: -0px -2px 6px rgba(0, 0, 0, 0.1);
+        -moz-box-shadow: -0px -2px 6px rgba(0, 0, 0, 0.1);
+        box-shadow: -0px -2px 6px rgba(0, 0, 0, 0.1);
+        
+        margin-bottom: 7px;
+    }
+    .main-image{
+        -webkit-box-shadow: -0px -0px 5px rgba(0, 0, 0, 0.3);
+        -moz-box-shadow: -0px -0px 5px rgba(0, 0, 0, 0.3);
+        box-shadow: -0px -0px 5px rgba(0, 0, 0, 0.3);
+        background-color: rgba(255,255,255, .1);
+    }
+
+
+	
+}
+
+.ui-bar-c {
+	border: 1px solid @c-bar-border;
+	background: @c-bar-background-color;
+	color: @c-bar-color;
+	font-weight: bold;
+	text-shadow: @c-bar-shadow-x @c-bar-shadow-y @c-bar-shadow-radius @c-bar-shadow-color;
+	font-family: @global-font-family;
+
+	.linear-gradient(@c-bar-background-start, @c-bar-background-end);
+
+	.ui-link-inherit {
+		color: @c-bar-color;
+	}
+
+	.ui-link {
+		color: @c-bar-link-color;
+		font-weight: bold;
+
+		&:hover {
+			color: @c-bar-link-hover;
+		}
+
+		&:active {
+			color: @c-bar-link-active;
+		}
+
+		&:visited {
+			color: @c-bar-link-visited;
+		}
+	}
+
+	input, select, textarea, button {
+		font-family: @global-font-family;
+	}
+}
+
+.ui-btn-up-c {
+	border-top: 1px solid @c-bup-border-top;
+	border-bottom: 1px solid @c-bup-border-bottom;
+	background: @c-bup-background-color;
+	font-weight: bold;
+	color: @c-bup-color;
+	text-shadow: @c-bup-shadow-x @c-bup-shadow-y @c-bup-shadow-radius @c-bup-shadow-color;
+	font-family: @global-font-family;
+	text-decoration: none;
+
+	.linear-gradient(@c-bup-background-start, @c-bup-background-end);
+
+	a.ui-link-inherit {
+		color: @c-bup-color;
+	}
+}
+
+.ui-btn-hover-c {
+	border: 1px solid @c-bhover-border;
+	background: @c-bhover-background-color;
+	font-weight: bold;
+	color: @c-bhover-color;
+	text-shadow: @c-bhover-shadow-x @c-bhover-shadow-y @c-bhover-shadow-radius @c-bhover-shadow-color;
+	font-family: @global-font-family;
+	text-decoration: none;
+	a.ui-link-inherit {
+		color: @c-bhover-color;
+	}
+}
+
+.ui-btn-down-c {
+	border: 1px solid @c-bdown-border;
+	background: @c-bdown-background-color;
+	font-weight: bold;
+	color: @c-bdown-color;
+	text-shadow: @c-bdown-shadow-x @c-bdown-shadow-y @c-bdown-shadow-radius @c-bdown-shadow-color;
+	font-family: @global-font-family;
+	text-decoration: none;
+
+	a.ui-link-inherit {
+		color: @c-bdown-color;
+	}
+}
+
+.ui-btn-active-c {
+	border: 1px solid @c-bdown-border;
+	background: @c-bdown-background-color;
+	font-weight: bold;
+	color: @c-bdown-color;
+	text-shadow: @c-bdown-shadow-x @c-bdown-shadow-y @c-bdown-shadow-radius @c-bdown-shadow-color;
+	font-family: @global-font-family;
+	text-decoration: none;
+
+	a.ui-link-inherit {
+		color: @c-bdown-color;
+	}
+}
+	
+.ui-btn-up-c.ui-li{
+    border: none;
+	border-top: 1px solid @c-bup-border-top;
+	border-bottom: 1px solid @c-bup-border-bottom;
+}
+
+.ui-btn-hover-c.ui-li {
+	border: none;
+	border-top: 1px solid @c-bup-border-top;
+	border-bottom: 1px solid @c-bup-border-bottom;
+}
+
+.ui-btn-down-c.ui-li {
+	border: none;
+	border-top: 1px solid @c-bup-border-top;
+	border-bottom: 1px solid @c-bup-border-bottom;
+}
+
+
+
+
 
 /* A
 -----------------------------------------------------------------------------------------------------------*/
@@ -260,145 +461,6 @@
 }
 
 
-/* C   == PINK Page body..
------------------------------------------------------------------------------------------------------------*/
-
-.ui-body-c {
-	border: 1px solid @c-body-border;
-	color: @c-body-color;
-	-webkit-box-shadow: inset 0 16px 52px rgba(255,51,151,0.3);
-	-moz-box-shadow: inset 0 16px 52px rgba(255,51,151,0.3);
-	box-shadow: inset 0 16px 52px rgba(255,51,151,0.3);
-    
-	
-	text-shadow: @c-body-shadow-x @c-body-shadow-y @c-body-shadow-radius @c-body-shadow-color;
-	background: @c-body-background-color @c-body-background;
-	font-family: @global-font-family;
-
-
-	input, select, textarea, button {
-		font-family: @global-font-family;
-	}
-
-	.ui-link-inherit {
-		color: @c-body-color;
-	}
-
-	.ui-link {
-		color: @c-body-link-color;
-		font-weight: bold;
-
-		&:hover {
-			color: @c-body-link-hover;
-		}
-
-		&:active {
-			color: @c-body-link-active;
-		}
-
-		&:visited {
-			color: @c-body-link-visited;
-		}
-	}
-}
-
-.ui-bar-c {
-	border: 1px solid @c-bar-border;
-	background: @c-bar-background-color;
-	color: @c-bar-color;
-	font-weight: bold;
-	text-shadow: @c-bar-shadow-x @c-bar-shadow-y @c-bar-shadow-radius @c-bar-shadow-color;
-	font-family: @global-font-family;
-
-	.linear-gradient(@c-bar-background-start, @c-bar-background-end);
-
-	.ui-link-inherit {
-		color: @c-bar-color;
-	}
-
-	.ui-link {
-		color: @c-bar-link-color;
-		font-weight: bold;
-
-		&:hover {
-			color: @c-bar-link-hover;
-		}
-
-		&:active {
-			color: @c-bar-link-active;
-		}
-
-		&:visited {
-			color: @c-bar-link-visited;
-		}
-	}
-
-	input, select, textarea, button {
-		font-family: @global-font-family;
-	}
-}
-
-.ui-btn-up-c {
-	border-top: 1px solid @c-bup-border-top;
-	border-top: 1px solid @c-bup-border-bottom;
-	background: @c-bup-background-color;
-	font-weight: bold;
-	color: @c-bup-color;
-	text-shadow: @c-bup-shadow-x @c-bup-shadow-y @c-bup-shadow-radius @c-bup-shadow-color;
-	font-family: @global-font-family;
-	text-decoration: none;
-
-	.linear-gradient(@c-bup-background-start, @c-bup-background-end);
-
-	a.ui-link-inherit {
-		color: @c-bup-color;
-	}
-}
-
-.ui-btn-hover-c {
-	border: 1px solid @c-bhover-border;
-	background: @c-bhover-background-color;
-	font-weight: bold;
-	color: @c-bhover-color;
-	text-shadow: @c-bhover-shadow-x @c-bhover-shadow-y @c-bhover-shadow-radius @c-bhover-shadow-color;
-	font-family: @global-font-family;
-	text-decoration: none;
-	a.ui-link-inherit {
-		color: @c-bhover-color;
-	}
-}
-
-.ui-btn-down-c {
-	border: 1px solid @c-bdown-border;
-	background: @c-bdown-background-color;
-	font-weight: bold;
-	color: @c-bdown-color;
-	text-shadow: @c-bdown-shadow-x @c-bdown-shadow-y @c-bdown-shadow-radius @c-bdown-shadow-color;
-	font-family: @global-font-family;
-	text-decoration: none;
-
-	a.ui-link-inherit {
-		color: @c-bdown-color;
-	}
-}
-	
-.ui-btn-up-c.ui-li {
-    border: none;
-	border-top: 1px solid @c-bup-border-top;
-	border-top: 1px solid @c-bup-border-bottom;
-}
-
-.ui-btn-hover-c.ui-li {
-	border: none;
-	border-top: 1px solid @c-bup-border-top;
-	border-top: 1px solid @c-bup-border-bottom;
-}
-
-.ui-btn-down-c.ui-li {
-	border: none;
-	border-top: 1px solid @c-bup-border-top;
-	border-top: 1px solid @c-bup-border-bottom;
-}
 
 
 /* D
@@ -1054,6 +1116,9 @@ a.ui-link-inherit {
 
 
 .PINK-menu-list{
+    .ui-btn-inner {
+        border-top: none;
+    }
     
     .ui-btn-inner a.ui-link-inherit{
         padding-left: 81px;
@@ -1103,6 +1168,7 @@ a.ui-link-inherit {
         }
     }
 }
+
 
 
 

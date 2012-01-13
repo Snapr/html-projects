@@ -1,7 +1,26 @@
 /*
+* Special Fonts
+*/
+
+@font-face {
+    font-family: 'CreteRoundRegular';
+    src: url('../fonts/CreteRound-Regular-webfont.eot');
+    src: url('../fonts/CreteRound-Regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/CreteRound-Regular-webfont.woff') format('woff'),
+         url('../fonts/CreteRound-Regular-webfont.ttf') format('truetype'),
+         url('../fonts/CreteRound-Regular-webfont.svg#CreteRoundRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+
+/*
 * Global
 */
 @global-font-family: Helvetica, Arial, sans-serif;
+@global-special-font:'CreteRoundRegular', Helvetica, Arial, sans-serif;
+@global-special-font-size: 20px;
 @global-active-border: #155678;
 @global-active-background-color: #4596ce;
 @global-active-color: #fff;
@@ -19,6 +38,89 @@
 @global-radii-buttons: 1em;
 @global-box-shadow-size: 4px;
 @global-box-shadow-color: rgba(0,0,0,.75);
+
+@global-body-padding: 20px;
+
+@global-salmon-pink: #fab3af;
+@global-hot-pink: rgb(255,51,151) ;
+@global-pink-blush: rgba(255,51,151,0.3);
+@body-background-image: url('../gfx/PINK-noise.gif');
+@body-background-color: @global-salmon-pink;
+
+
+
+/*
+* C
+*/
+@c-bar-border: #B3B3B3;
+@c-bar-background-color: #e9eaeb;
+@c-bar-color: #3E3E3E;
+@c-bar-shadow-x: 0;
+@c-bar-shadow-y: 1px;
+@c-bar-shadow-radius: 1px;
+@c-bar-shadow-color: #fff;
+@c-bar-background-start: #f0f0f0;
+@c-bar-background-end: @c-bar-background-color;
+@c-bar-link-color: #7cc4e7;
+@c-bar-link-hover: #2489CE;
+@c-bar-link-active: @c-bar-link-hover;
+@c-bar-link-visited: @c-bar-link-hover;
+
+@c-body-border: none;
+@c-body-color: #000;
+@c-body-shadow-x: 0;
+@c-body-shadow-y: 1px;
+@c-body-shadow-radius: 0;
+@c-body-shadow-color: rgba(255, 255, 255, .4);
+@c-body-background: url('../gfx/PINK-noise.gif');
+@c-body-background-color: transparent;
+@c-body-background-start: transparent;
+@c-body-background-end: transparent;
+@c-body-link-color: #000;
+@c-body-link-hover: @c-body-link-color;
+@c-body-link-active: @c-body-link-color;
+@c-body-link-visited: @c-body-link-color;
+@c-body-padding: @global-body-padding;
+
+
+
+@c-bup-border: #ccc;
+@c-bup-border-top: rgba(255,255,255,0.3);
+@c-bup-border-bottom: rgba(0,0,0,0.07);
+@c-bup-background-color: transparent;
+@c-bup-color: #444;//TODO conflict
+@c-bup-color: #2F3E46;
+@c-bup-shadow-x: 0;
+@c-bup-shadow-y: 1px;
+@c-bup-shadow-radius: 1px;
+@c-bup-shadow-color: #f6f6f6;
+@c-bup-background-start: transparent;
+@c-bup-background-end: @c-bup-background-color;
+
+@c-bhover-border: #bbbbbb;
+@c-bhover-background-color: rgba(255,255,255,0.1);
+@c-bhover-color: #101010;//TODO conflict
+@c-bhover-color: #2F3E46;
+@c-bhover-shadow-x: 0;
+@c-bhover-shadow-y: 1px;
+@c-bhover-shadow-radius: 1px;
+@c-bhover-shadow-color: #fff;
+@c-bhover-background-start: transparent;
+@c-bhover-background-end: @c-bhover-background-color;
+
+@c-bdown-border: #808080;
+@c-bdown-background-color: rgba(255,255,255,0.1);
+@c-bdown-color: #111;//TODO conflict
+@c-bdown-color: #2F3E46;
+@c-bdown-shadow-x: 0;
+@c-bdown-shadow-y: 1px;
+@c-bdown-shadow-radius: 1px;
+@c-bdown-shadow-color: #fff;
+@c-bdown-background-start: #eee;
+@c-bdown-background-end: @c-bdown-background-color;
+
+
+
 
 
 /*
@@ -143,74 +245,6 @@
 @b-bdown-shadow-color: #225377;
 @b-bdown-background-start: #396b9e;
 @b-bdown-background-end: @b-bdown-background-color;
-
-
-/*
-* C
-*/
-@c-bar-border: #B3B3B3;
-@c-bar-background-color: #e9eaeb;
-@c-bar-color: #3E3E3E;
-@c-bar-shadow-x: 0;
-@c-bar-shadow-y: 1px;
-@c-bar-shadow-radius: 1px;
-@c-bar-shadow-color: #fff;
-@c-bar-background-start: #f0f0f0;
-@c-bar-background-end: @c-bar-background-color;
-@c-bar-link-color: #7cc4e7;
-@c-bar-link-hover: #2489CE;
-@c-bar-link-active: @c-bar-link-hover;
-@c-bar-link-visited: @c-bar-link-hover;
-
-@c-body-border: #B3B3B3;
-@c-body-color: #000;
-@c-body-shadow-x: 0;
-@c-body-shadow-y: 1px;
-@c-body-shadow-radius: 0;
-@c-body-shadow-color: #fff;
-@c-body-background: url('../gfx/PINK-noise.gif');
-@c-body-background-color: #fab3af;
-@c-body-background-start: transparent;
-@c-body-background-end: transparent;
-@c-body-link-color: #000;
-@c-body-link-hover: @c-body-link-color;
-@c-body-link-active: @c-body-link-color;
-@c-body-link-visited: @c-body-link-color;
-
-@c-bup-border: #ccc;
-@c-bup-border-top: rgba(255,255,255,0.3);
-@c-bup-border-bottom: rgba(0,0,0,0.07);
-@c-bup-background-color: transparent;
-@c-bup-color: #444;//TODO conflict
-@c-bup-color: #2F3E46;
-@c-bup-shadow-x: 0;
-@c-bup-shadow-y: 1px;
-@c-bup-shadow-radius: 1px;
-@c-bup-shadow-color: #f6f6f6;
-@c-bup-background-start: transparent;
-@c-bup-background-end: @c-bup-background-color;
-
-@c-bhover-border: #bbbbbb;
-@c-bhover-background-color: rgba(255,255,255,0.1);
-@c-bhover-color: #101010;//TODO conflict
-@c-bhover-color: #2F3E46;
-@c-bhover-shadow-x: 0;
-@c-bhover-shadow-y: 1px;
-@c-bhover-shadow-radius: 1px;
-@c-bhover-shadow-color: #fff;
-@c-bhover-background-start: transparent;
-@c-bhover-background-end: @c-bhover-background-color;
-
-@c-bdown-border: #808080;
-@c-bdown-background-color: rgba(255,255,255,0.1);
-@c-bdown-color: #111;//TODO conflict
-@c-bdown-color: #2F3E46;
-@c-bdown-shadow-x: 0;
-@c-bdown-shadow-y: 1px;
-@c-bdown-shadow-radius: 1px;
-@c-bdown-shadow-color: #fff;
-@c-bdown-background-start: #eee;
-@c-bdown-background-end: @c-bdown-background-color;
 
 
 /*

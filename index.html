@@ -166,13 +166,15 @@
     <script id="feed-li-list-template" type="text/template">
     <li class="feed-li">
         <div>
-            <img style="width:100%;height:<%= snapr.utils.get_photo_height(item.get('width'), item.get('height'), '#feed .ui-content') %>px;" src="https://s3.amazonaws.com/media-server<%= item.get('server_id') %>.snapr.us/lrg/<%= item.get('secret') %>/<%= item.get('id') %>.jpg" alt="<%= item.get('description') %>" class="thumb-image" />
+            <div class="image-frame">
+            <img style="width:100%;height:<%= snapr.utils.get_photo_height(item.get('width'), item.get('height'), '#feed .ui-content') %>px;" src="https://s3.amazonaws.com/media-server<%= item.get('server_id') %>.snapr.us/lrg/<%= item.get('secret') %>/<%= item.get('id') %>.jpg" alt="<%= item.get('description') %>" class="main-image" />
+            </div>
 
             <!-- gallery version below -->
             <!-- <a href="https://s3.amazonaws.com/media-server<%= item.get('server_id') %>.snapr.us/lrg/<%= item.get('secret') %>/<%= item.get('id') %>.jpg" rel="external" class="gallery_link"><img style="width:100%;height:<%= snapr.utils.get_photo_height(item.get('width'), item.get('height'), '#feed .ui-content') %>px;" src="https://s3.amazonaws.com/media-server<%= item.get('server_id') %>.snapr.us/lrg/<%= item.get('secret') %>/<%= item.get('id') %>.jpg" alt="<%= item.get('description') %>" class="thumb-image" /></a> -->
 
-            <div><%= item.get('username') %></div>
-            <div><%= item.get('description') %></div>
+            <div class="image-caption"><%= item.get('description') %></div>
+            <div class="user-details">By <%= item.get('username') %>, City</div>
         </div>
     </li>
     </script>
