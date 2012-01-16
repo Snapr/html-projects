@@ -90,7 +90,7 @@ Array.prototype.human_list =  function(){
 // PINK Nation Details:
 snapr.client_id = "48611a3a325dc884c9d1722002be43ff";
 snapr.client_secret = "a5b072ed71e89a4f0982944a4dd82d94";
-snapr.app_group = "pink-nation";
+// snapr.app_group = "pink-nation";
 snapr.public_groups = "pink-nation-featured";
 
 snapr.constants = {};
