@@ -254,13 +254,13 @@
 
     <!-- template for #uploading content attached to upload progress li view -->
     <script id="uploading-template" type="text/template">
-        <div class="ui-grid-a upload-progress-container">
-            <div class="ui-block-a upload-image">
-                <div class="edit-image">
+        <div class="upload-progress-container">
+            <div class="PINK-upload-image upload-image">
+                <div class="edit-image PINK-upload-image-thumb">
                     <img src="<%= img_url %>" />
                 </div>
             </div>
-            <div class="ui-block-b upload-progress-container">
+            <div class="upload-progress-container PINK-upload-image-info">
             <h1>Looking good!</h1>
             <div class="progress-bar <%= upload_status %>">
                 <div class="bar-bg bar">
@@ -288,9 +288,9 @@
     <!-- template for #photo-edit -->
     <script id="photo-edit-template" type="text/template">
         <form action="javascript: void(0);">
-            <div class="ui-grid-a">
-                <div class="edit-image ui-block-a"></div>
-                <div class="ui-block-b">
+            <div class="PINK-upload-image">
+                <div class="edit-image PINK-upload-image-thumb"></div>
+                <div class="PINK-upload-image-info PINK-small-text">
                     <p class="share-message">Some pictures are too good to keep to yourself! Share this with Pink Nation for a chance to have it featured in our app.</p>
                     <textarea name="description" id="description" placeholder="Caption this!" style="display:none;"></textarea>
                 </div>
@@ -298,45 +298,39 @@
             <div data-role="controlgroup" data-type="horizontal" class="sharing-settings">
                 <ul data-role="listview" data-inset="true" data-theme="c">
                     <li data-role="fieldcontain">
-                        <div class="ui-grid-a">
-                            <div class="ui-block-a">
-                                <label for="facebook-sharing">Facebook</label>
-                            </div>
-                            <div class="ui-block-b">
+                      
+                            <label for="facebook-sharing">Facebook</label>
+                           
+                            <div class="PINK-switch">
                                 <select name="facebook-sharing" id="facebook-sharing" data-role="slider">
                                     <option value="off"  selected="true">Off</option>
                                     <option value="on">On</option>
                                 </select>
                             </div>
-                        </div>
+                      
                     </li>
                     <li data-role="fieldcontain">
-                        <div class="ui-grid-a">
-                            <div class="ui-block-a">
-                                <label for="tumblr-sharing">Tumblr</label>
-                            </div>
-                            <div class="ui-block-b">
+                            <label for="tumblr-sharing">Tumblr</label>
+                     
+                            <div class="PINK-switch">
                                 <select name="tumblr-sharing" id="tumblr-sharing" data-role="slider">
                                     <option value="off" selected="true">Off</option>
                                     <option value="on">On</option>
                                 </select>
                             </div>
-                        </div>
                     </li>
                 </ul>
                 <ul data-role="listview" data-inset="true" data-theme="c">
                     <li data-role="fieldcontain">
-                        <div class="ui-grid-a">
-                            <div class="ui-block-a">
-                                <label for="enter-girl-of-month">Send to PINK Nation</label>
-                            </div>
-                            <div class="ui-block-b">
+                     
+                            <label for="enter-girl-of-month">Send to PINK Nation</label>
+                           
+                            <div class="ui-block-b PINK-switch">
                                 <select name="enter-girl-of-month" id="enter-girl-of-month" data-role="slider">
                                     <option value="off"  selected="true">Off</option>
                                     <option value="on">On</option>
                                 </select>
                             </div>
-                        </div>
                     </li>
                 </ul>
             </div>
