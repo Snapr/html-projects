@@ -12,45 +12,8 @@ snapr.views.feed = Backbone.View.extend({
 
         var list_style = query_data.list_style || 'list';
 
-        // toggle between grid and list views (disabled)
-
-        // var toggle_container = this.el.find( ".feed-view-toggle" );
-        // toggle_container.find( "input[type='radio']" ).attr( "checked", false );
-        // 
-        // if (list_style == 'grid')
-        // {
-        //     this.el.find(".feed-content").addClass("grid");
-        //     toggle_container.find("#feed-view-grid").attr( "checked", true );
-        // }
-        // else
-        // {
-        //     this.el.find(".feed-content").removeClass("grid");
-        //     toggle_container.find("#feed-view-list").attr( "checked", true );
-        // }
-        // 
-
-        // feed headers (disabled)
-        
-        // if (query_data.username)
-        // {
-        //     var feed_header = new snapr.views.user_header({
-        //         username: query_data.username,
-        //         el: this.el.find(".feed-header").empty()
-        //     });
-        // }
-        // else
-        // {
-        //     var feed_header = new snapr.views.feed_header({
-        //         query_data: query_data,
-        //         el: this.el.find(".feed-header").empty()
-        //     });
-        // }
-        
-        // this.pending_uploads = {};
-
         var feed_view = this;
 
-        // this.el.find(".feed-upload-list").empty();
         this.el.find('ul.gallery').empty();
 
         // this.el.live( 'pageshow', function()
@@ -91,12 +54,25 @@ snapr.views.feed = Backbone.View.extend({
             transition: transition
         });
         
-        this.photo_collection = new snapr.models.photo_collection();
-        this.photo_collection.url = snapr.api_base + "/search/";
-        this.photo_collection.data = query_data;
-        this.photo_collection.data.n = snapr.constants.feed_count;
-        this.photo_collection.data.list_style && delete this.photo_collection.data.list_style;
-        this.populate_feed();
+        if (query_data.pink_hearts)
+        {
+            this.pink = true;
+            this.photo_collection = new snapr.models.pink_photo_collection();
+            this.photo_collection.url = "http://pink.victoriassecret.com/services/hearts/image_json.jsp";
+            this.photo_collection.data = {most_recent: true};
+            this.photo_collection.data.page_number = 1
+            this.populate_feed();
+        }
+        else
+        {
+            this.pink = false;
+            this.photo_collection = new snapr.models.photo_collection();
+            this.photo_collection.url = snapr.api_base + "/search/";
+            this.photo_collection.data = query_data;
+            this.photo_collection.data.n = snapr.constants.feed_count;
+            this.photo_collection.data.list_style && delete this.photo_collection.data.list_style;
+            this.populate_feed();
+        }
         
     },
     
@@ -127,7 +103,7 @@ snapr.views.feed = Backbone.View.extend({
     populate_feed: function( additional_data )
     {
         
-        var list_style = 'list';
+        var list_style = this.pink ? "pink": "list";
         
         var feed_view = this;
         var options = {
@@ -158,15 +134,27 @@ snapr.views.feed = Backbone.View.extend({
         $.mobile.loadingMessage = "Loading";
         $.mobile.showPageLoadingMsg();
         
+        if (this.pink)
+        {
+            options.dataType = "json";
+        }
         this.photo_collection.fetch( options );
+
     },
     
     more: function()
     {
         var data = this.photo_collection.data;
         
-        data.photo_id && delete data.photo_id;
-        data.max_date = this.photo_collection.last().get('date');
+        if (this.pink)
+        {
+            this.photo_collection.data.page_number++;
+        }
+        else
+        {
+            data.photo_id && delete data.photo_id;
+            data.max_date = this.photo_collection.last().get('date');
+        }
 
         this.populate_feed( data );
         // console.warn( 'more', this.photo_collection.data );

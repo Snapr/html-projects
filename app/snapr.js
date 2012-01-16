@@ -3,7 +3,7 @@
 Backbone.sync = function( method, model, options )
 {
 
-    // console.warn( "sync", method, model, options )
+    console.warn( "sync", method, model, options )
 
     // Helper function to get a URL from a Model or Collection as a property
     // or as a function.
@@ -49,7 +49,7 @@ Backbone.sync = function( method, model, options )
         type:'GET',
         // data is sent in the url only
         data: null,
-        dataType: 'jsonp',
+        dataType: options.dataType || 'jsonp',
         processData: false,
         success: options.success,
         error: options.error

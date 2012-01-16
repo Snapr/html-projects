@@ -23,7 +23,7 @@
                 <li class="home-photo"><a data-ajax="false" href="#/upload/"><span class="PINK-menu-icon icon ui-li-icon"></span>Take a photo</a></li>
                 <li class="home-roll"><a data-ajax="false" href="#/photo-edit/?photo_id=Z4K"><span class="PINK-menu-icon icon ui-li-icon"></span>Choose an existing image</a></li>
                 <li class="home-featured"><a data-ajax="false" href="#/feed/?appgroup=pink-nation"><span class="PINK-menu-icon icon ui-li-icon"></span>See featured pics</a></li>
-                <li class="home-pink-hearts"><a transition="slide" href="http://pink.victoriassecret.com/m/pink_hearts/" class="acessibility-text PINK-hearts-menu-btn">Pink Hearts - Explore images that inspire us</a></li>
+                <li class="home-pink-hearts"><a data-ajax="false" href="#/feed/?pink_hearts=true" class="acessibility-text PINK-hearts-menu-btn">Pink Hearts - Explore images that inspire us</a></li>
             </ul>
         </div><!-- /content -->
     </div><!-- /page -->
@@ -177,6 +177,18 @@
 
             <div class="image-caption"><%= item.get('description') %></div>
             <div class="user-details">By <%= item.get('username') %>, City</div>
+        </div>
+    </li>
+    </script>
+
+    <script id="feed-li-list-pink-template" type="text/template">
+    <li class="feed-li">
+        <div>
+            <div class="image-frame">
+            <img style="width:100%;height:<%= snapr.utils.get_photo_height(item.get('width'), item.get('height'), '#feed .ui-content') %>px;" src="http://pink.victoriassecret.com/<%= item.get('mobileFilePath') %>" alt="<%= item.get('description') %>" class="main-image" />
+            </div>
+
+            <div class="image-caption"><%= item.get('description') %></div>
         </div>
     </li>
     </script>
@@ -444,6 +456,8 @@ $(document).bind("mobileinit", function(){
 <script src="app/models/linked_service.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/models/photo.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/models/photo_collection.js" type="text/javascript" charset="utf-8"></script>
+<script src="app/models/pink_photo.js" type="text/javascript" charset="utf-8"></script>
+<script src="app/models/pink_photo_collection.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/models/comment.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/models/favorite.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/models/thumb.js" type="text/javascript" charset="utf-8"></script>
