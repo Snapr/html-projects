@@ -14,7 +14,7 @@ snapr.views.feed = Backbone.View.extend({
 
         var feed_view = this;
 
-        this.el.find('ul.gallery').empty();
+        this.el.find("ul.gallery").empty();
 
         // this.el.live( 'pageshow', function()
         // {
@@ -80,6 +80,7 @@ snapr.views.feed = Backbone.View.extend({
             transition: transition
         });
         
+        this.el.find(".load-more").hide();
     },
     
     // photoswipe_init: function()
@@ -120,13 +121,16 @@ snapr.views.feed = Backbone.View.extend({
                     collection: feed_view.photo_collection,
                     list_style: list_style
                 });
-
                 feed_view.feed_list.render( feed_view.photoswipe_init );
+                
+                $(feed_view.el).find(".more").button("enable");
+                $(feed_view.el).find(".load-more").show();
                 $.mobile.hidePageLoadingMsg();
             },
             error:function()
             {
                 console.warn('error');
+                $(feed_view.el).find(".load-more").hide();
                 $.mobile.hidePageLoadingMsg();
             }
         }
@@ -150,6 +154,8 @@ snapr.views.feed = Backbone.View.extend({
     
     more: function()
     {
+        $(this.el).find(".more").button("disable");
+
         var data = this.photo_collection.data;
         
         if (this.pink)
