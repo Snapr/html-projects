@@ -3,7 +3,8 @@ snapr.views.feed_list = Backbone.View.extend({
     initialize: function( init_options )
     {
         this.li_templates = {
-            list: _.template( $("#feed-li-list-template").html() )
+            list: _.template( $("#feed-li-list-template").html() ),
+            pink: _.template( $("#feed-li-list-pink-template").html() )
         }
 
         this.list_style = init_options.list_style || 'list';

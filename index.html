@@ -181,6 +181,18 @@
     </li>
     </script>
 
+    <script id="feed-li-list-pink-template" type="text/template">
+    <li class="feed-li">
+        <div>
+            <div class="image-frame">
+            <img style="width:100%;height:<%= snapr.utils.get_photo_height(item.get('width'), item.get('height'), '#feed .ui-content') %>px;" src="http://pink.victoriassecret.com/<%= item.get('mobileFilePath') %>" alt="<%= item.get('description') %>" class="main-image" />
+            </div>
+
+            <div class="image-caption"><%= item.get('description') %></div>
+        </div>
+    </li>
+    </script>
+
 
     <!-- log in as a snapr user (for testing - go to #/login/) -->
     <div id="login" data-add-back-btn="true" data-role="dialog">
@@ -440,6 +452,8 @@ $(document).bind("mobileinit", function(){
 <script src="app/models/linked_service.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/models/photo.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/models/photo_collection.js" type="text/javascript" charset="utf-8"></script>
+<script src="app/models/pink_photo.js" type="text/javascript" charset="utf-8"></script>
+<script src="app/models/pink_photo_collection.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/models/comment.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/models/favorite.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/models/thumb.js" type="text/javascript" charset="utf-8"></script>
