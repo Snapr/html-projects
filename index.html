@@ -366,13 +366,17 @@
 
     <!-- template for #love-it -->
     <script id="love-it-template" type="text/template">
-        <img src="<%= img_url %>" alt="thumbnail">
-        <h1>Love it!</h1>
-        <% if (shared){ %>
-        <p>Your pic has been shared and saved to your phone&rsquo;s library</p>
-        <% }else{ %>
-            <p>Your pic has been saved to your phone&rsquo;s library</p>
-        <% } %>
+        <div class="PINK-love-it">
+            <div class="image-frame">
+            <img src="<%= img_url %>" alt="thumbnail" class="main-image">
+            </div>
+            <h1>Love it!</h1>
+            <% if (shared){ %>
+            <p>Your pic has been shared and saved<br/> to your phone&rsquo;s library</p>
+            <% }else{ %>
+                <p>Your pic has been saved to your<br/> phone&rsquo;s library</p>
+            <% } %>
+        </div>
         <a data-ajax="false" href="#/upload/" data-role="button">Take another photo</a>
         <a data-ajax="false" href="#/upload-roll/" data-role="button">Choose and existing pic</a>
         <a data-ajax="false" href="#/" data-role="button">Pics home</a>

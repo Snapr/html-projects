@@ -20,17 +20,24 @@ body {
 	background: @body-background-color @body-background-image;
 }
 
+.ui-content{
+    padding: @global-body-padding;
+}
+
+h1,
 .image-caption{
     font-family: @global-special-font;
     font-size: @global-special-font-size;
 }
 
+p,
 .user-details,
 .PINK-small-text{
    color: #666;
    font-size: @global-base-font-size;
    font-weight: normal;
 }
+
 
 /* Swatches */
 
@@ -94,6 +101,8 @@ body {
         -moz-box-shadow: -0px -0px 5px rgba(0, 0, 0, 0.3);
         box-shadow: -0px -0px 5px rgba(0, 0, 0, 0.3);
         background-color: rgba(255,255,255, .1);
+        width: 100%;
+        display: block;
     }
 
 
@@ -1113,11 +1122,24 @@ a.ui-link-inherit {
     height: 138px;
     background-position: center 0px;
     background-repeat: no-repeat;
-    margin: -15px -15px 15px -15px;
+    margin: -@global-body-padding -@global-body-padding @global-body-padding -@global-body-padding;
     -moz-box-shadow: inset 0px -2px 8px rgba(0, 0, 0, 0.05);
     -webkit-box-shadow: inset 0px -2px 8px rgba(0, 0, 0, 0.05);
     box-shadow: inset 0px -2px 8px rgba(0, 0, 0, 0.05);
 
+}
+
+.ui-content .ui-listview{
+    margin: -@global-body-padding;
+}
+
+.ui-content .ui-listview-inset {
+    margin: 1em 0;
+}
+
+.ui-btn{
+    margin-left: 0;
+    margin-right: 0;
 }
 
 
@@ -1194,6 +1216,9 @@ a.ui-link-inherit {
         position: absolute;
         left: 0;
         top: 0;
+        img{
+            width: 100%;
+        }
     }
     .PINK-upload-image-info{
         margin-left: 95px;
@@ -1216,10 +1241,12 @@ a.ui-link-inherit {
     
 }
 
-.ui-listview-inset .ui-li{
+.ui-listview-inset{
     background-color: @global-element-bgcolor;
     label.ui-slider{
         font-weight: bold;
+        margin: 0;
+        line-height: 24px;
     }
     
 }
@@ -1278,6 +1305,26 @@ a.ui-link-inherit {
 }
 
 
+.PINK-txt-btn{
+    overflow: hidden;
+    text-indent: -999px;
+    background-image: url('../gfx/PINK-btns-text.png');
+   background-repeat: no-repeat;
+   background-position: center 0;
+   min-height: 44px;
+}
+
+.skip{
+   font-size: @global-base-font-size;
+   text-align: right;
+   display: block;
+   margin-top: 20px;
+}
+
+.PINK-love-it{
+    text-align: center;
+    margin-top: -100px;
+}
 
 
 
