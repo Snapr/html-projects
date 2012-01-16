@@ -110,7 +110,7 @@ snapr.views.photo_edit = Backbone.View.extend({
                 
             this.model.save({
                 description: this.el.find("#description").val(),
-                group: ( $("#enter-girl-of-month").val() == "on" ) || false,
+                public_groups: ( $("#enter-girl-of-month").val() == "on" ) && snapr.public_groups || false,
                 // status: this.el.find('#privacy-switch').val(),
                 facebook_feed: ( $("#facebook-sharing").val() == "on" ),
                 tumblr: ( $("#tumblr-sharing").val() == "on" ),
