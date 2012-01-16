@@ -304,6 +304,8 @@ snapr.routers = Backbone.Router.extend({
         "/linked-services/?:query_string": "linked_services",
         "/feed/": "feed",
         "/feed/?:query_string": "feed",
+        "/pink-hearts/": "pink_hearts",
+        "/pink-hearts/?:query_string": "pink_hearts",
         "/upload/": "upload",
         "/upload/?:query_string": "upload",
         "/photo-edit/?:query_string": "photo_edit",
@@ -320,6 +322,14 @@ snapr.routers = Backbone.Router.extend({
         snapr.info.current_view = new snapr.views.feed({
             query: query,
             el: $("#feed")
+        });
+    },
+
+    pink_hearts: function( query_string )
+    {
+        snapr.utils.get_query_params( query_string );
+        snapr.info.current_view = new snapr.views.pink_hearts({
+            el: $("#pink-hearts")
         });
     },
 

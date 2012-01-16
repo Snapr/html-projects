@@ -23,7 +23,7 @@
                 <li class="home-photo"><a data-ajax="false" href="#/upload/"><span class="PINK-menu-icon icon ui-li-icon"></span>Take a photo</a></li>
                 <li class="home-roll"><a data-ajax="false" href="#/upload-existing/"><span class="PINK-menu-icon icon ui-li-icon"></span>Choose an existing image</a></li>
                 <li class="home-featured"><a data-ajax="false" href="#/feed/"><span class="PINK-menu-icon icon ui-li-icon"></span>See featured pics</a></li>
-                <li class="home-pink-hearts"><a data-ajax="false" href="#/feed/?pink_hearts=true" class="acessibility-text PINK-hearts-menu-btn">Pink Hearts - Explore images that inspire us</a></li>
+                <li class="home-pink-hearts"><a data-ajax="false" href="#/pink-hearts/" class="acessibility-text PINK-hearts-menu-btn">Pink Hearts - Explore images that inspire us</a></li>
             </ul>
         </div><!-- /content -->
     </div><!-- /page -->
@@ -208,6 +208,17 @@
         </div>
     </li>
     </script>
+
+
+    <!-- pink-hearts iframe -->
+    <div id="pink-hearts" data-role="page" data-add-back-btn="true">
+        <div data-role="header">
+            <h1>Pink Hearts</h1>
+        </div>
+        <div class="iframe-content">
+            
+        </div>
+    </div><!-- /page -->
 
 
     <!-- log in as a snapr user (for testing - go to #/login/) -->
@@ -460,6 +471,7 @@ $(document).bind("mobileinit", function(){
 <script src="app/views/linked_service.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/linked_services.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/feed.js" type="text/javascript" charset="utf-8"></script>
+<script src="app/views/pink_hearts.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/upload_progress_li.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/feed_list.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/feed_li.js" type="text/javascript" charset="utf-8"></script>
