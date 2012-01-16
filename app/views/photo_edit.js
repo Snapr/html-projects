@@ -133,8 +133,16 @@ snapr.views.photo_edit = Backbone.View.extend({
     
     skip_to_love_it: function()
     {
-        var photo_path = this.model.get("photo_path");   
-        Route.navigate("#/love-it/?photo_path=" + photo_path, true);
+        if (this.model.has("photo_path"))
+        {
+            var query_string = "#/love-it/?photo_path=" + this.model.get("photo_path");
+        }
+        else
+        {
+            var query_string = "#/love-it/?photo_id=" + this.model.get("id")
+        }
+        
+        Route.navigate( query_string, true );
     }
     
 
