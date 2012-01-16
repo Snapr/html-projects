@@ -40,12 +40,26 @@ snapr.views.love_it = Backbone.View.extend({
             var img_url = "http://media-server2.snapr.us/lrg/" 
                 + this.model.get("secret") + "/" 
                 + this.model.get("id") + ".jpg";
+            $(this.el).find("[data-role='content']")
+                .html( this.template({
+                    shared: this.shared, 
+                    img_url: img_url,
+                    height: this.model.get("height")
+                }) )
+                .trigger("create");
         }
         else
         {
             var img_url = this.photo_path;
+            $(this.el).find("[data-role='content']")
+                .html( this.template({
+                    shared: this.shared, 
+                    img_url: img_url,
+                    height: "auto"
+                }) )
+                .trigger("create");
+            
         }
-        $(this.el).find("[data-role='content']").html( this.template({shared: this.shared, img_url: img_url }) ).trigger("create");
         
         return this;
     }
