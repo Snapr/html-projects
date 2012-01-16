@@ -54,7 +54,7 @@ snapr.views.feed = Backbone.View.extend({
             transition: transition
         });
         
-        if (query_data.pink_nation)
+        if (query_data.pink_hearts)
         {
             this.pink = true;
             this.photo_collection = new snapr.models.pink_photo_collection();
