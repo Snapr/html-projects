@@ -24,7 +24,7 @@ body {
     padding: @global-body-padding;
 }
 
-h1,
+h2,
 .image-caption{
     font-family: @global-special-font;
     font-size: @global-special-font-size;
@@ -85,7 +85,7 @@ p,
 
 
     .image-frame{
-        padding-bottom: 4px;
+        padding-bottom:7px;
         background-image: url('../gfx/PINK-image-shadow.png');
         background-position: center bottom;
         background-repeat: no-repeat;
@@ -145,6 +145,7 @@ p,
 	}
 }
 
+.ui-btn-up,
 .ui-btn-up-c {
 	border: 1px solid @c-bup-border;
 	background: @c-bup-background-color;
@@ -161,9 +162,11 @@ p,
 	}
 }
 
+.ui-btn-hover,
 .ui-btn-hover-c {
 	border: 1px solid @c-bhover-border;
 	background: @c-bhover-background-color;
+	.linear-gradient(@c-bhover-background-color, @c-bhover-background-color);
 	font-weight: bold;
 	color: @c-bhover-color;
 	text-shadow: @c-bhover-shadow-x @c-bhover-shadow-y @c-bhover-shadow-radius @c-bhover-shadow-color;
@@ -174,23 +177,14 @@ p,
 	}
 }
 
-.ui-btn-down-c {
-	border: 1px solid @c-bdown-border;
-	background: @c-bdown-background-color;
-	font-weight: bold;
-	color: @c-bdown-color;
-	text-shadow: @c-bdown-shadow-x @c-bdown-shadow-y @c-bdown-shadow-radius @c-bdown-shadow-color;
-	font-family: @global-font-family;
-	text-decoration: none;
-
-	a.ui-link-inherit {
-		color: @c-bdown-color;
-	}
-}
-
+.ui-btn-down,
+.ui-btn-active,
+.ui-btn-down-c,
 .ui-btn-active-c {
 	border: 1px solid @c-bdown-border;
 	background: @c-bdown-background-color;
+	.linear-gradient(@c-bdown-background-color, @c-bdown-background-color);
+	
 	font-weight: bold;
 	color: @c-bdown-color;
 	text-shadow: @c-bdown-shadow-x @c-bdown-shadow-y @c-bdown-shadow-radius @c-bdown-shadow-color;
@@ -201,24 +195,21 @@ p,
 		color: @c-bdown-color;
 	}
 }
-	
-.ui-btn-up-c.ui-li{
+
+.ui-btn-up.ui-li,
+.ui-btn-hover.ui-li,
+.ui-btn-down.ui-li,
+.ui-btn-active.ui-li,
+.ui-btn-up-c.ui-li,
+.ui-btn-hover-c.ui-li,
+.ui-btn-down-c.ui-li,
+.ui-btn-active-c.ui-li 
+{
     border: none;
 	border-top: 1px solid @c-bup-border-top;
 	border-bottom: 1px solid @c-bup-border-bottom;
 }
 
-.ui-btn-hover-c.ui-li {
-	border: none;
-	border-top: 1px solid @c-bup-border-top;
-	border-bottom: 1px solid @c-bup-border-bottom;
-}
-
-.ui-btn-down-c.ui-li {
-	border: none;
-	border-top: 1px solid @c-bup-border-top;
-	border-bottom: 1px solid @c-bup-border-bottom;
-}
 
 
 
@@ -1305,13 +1296,16 @@ a.ui-link-inherit {
 }
 
 
-.PINK-txt-btn{
-    overflow: hidden;
-    text-indent: -999px;
-    background-image: url('../gfx/PINK-btns-text.png');
-   background-repeat: no-repeat;
-   background-position: center 0;
-   min-height: 44px;
+.PINK-text-btn{
+   font-family: @global-button-font;
+   -webkit-font-smoothing: antialiased;
+   font-size: 24px;
+   text-shadow: none;
+   font-weight: normal;
+   .ui-btn-inner{
+        padding-top: 2px;
+        padding-bottom: 2px;
+   }
 }
 
 .skip{
