@@ -3,7 +3,7 @@
 Backbone.sync = function( method, model, options )
 {
 
-    console.warn( "sync", method, model, options )
+    // console.warn( "sync", method, model, options )
 
     // Helper function to get a URL from a Model or Collection as a property
     // or as a function.
@@ -294,6 +294,8 @@ snapr.routers = Backbone.Router.extend({
         "/join/?:query_string": "join_snapr",
         "/upload/": "upload",
         "/upload/?:query_string": "upload",
+        "/upload-existing/": "upload",
+        "/upload-existing/?:query_string": "upload",
         "/uploading/": "uploading",
         "/uploading/?:query_string": "uploading",
         "/photo-edit/?:query_string": "photo_edit",
