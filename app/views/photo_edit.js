@@ -76,7 +76,7 @@ snapr.views.photo_edit = Backbone.View.extend({
         });
         
         // temporary hack to display image
-        $(this.el).find(".edit-image").html( this.img_template({img_url: img_url}) );
+        $(this.el).find(".edit-image").html( this.img_template({img_url: path}) );
         
         console.warn( "get_photo_from_path", path );
     },
