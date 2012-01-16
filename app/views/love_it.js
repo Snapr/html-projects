@@ -37,7 +37,7 @@ snapr.views.love_it = Backbone.View.extend({
     {
         if (this.model)
         {
-            var img_url = "http://media-server2.snapr.us/sml/" 
+            var img_url = "http://media-server2.snapr.us/lrg/" 
                 + this.model.get("secret") + "/" 
                 + this.model.get("id") + ".jpg";
         }
