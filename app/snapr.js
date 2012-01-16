@@ -88,8 +88,9 @@ Array.prototype.human_list =  function(){
 
 
 // PINK Nation Details:
-snapr.client_id = '48611a3a325dc884c9d1722002be43ff';
-snapr.client_secret = 'a5b072ed71e89a4f0982944a4dd82d94';
+snapr.client_id = "48611a3a325dc884c9d1722002be43ff";
+snapr.client_secret = "a5b072ed71e89a4f0982944a4dd82d94";
+// snapr.app_group = "pink-nation";
 
 snapr.constants = {};
 snapr.constants.default_zoom = 15;
@@ -298,6 +299,7 @@ snapr.routers = Backbone.Router.extend({
         "/my-account/": "my_account",
         "/my-account/?:query_string": "my_account",
         "/linked-services/?:query_string": "linked_services",
+        "/feed/": "feed",
         "/feed/?:query_string": "feed",
         "/upload/": "upload",
         "/upload/?:query_string": "upload",

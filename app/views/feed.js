@@ -46,16 +46,11 @@ snapr.views.feed = Backbone.View.extend({
         // }
         // else
         // {
-            var transition = "slide";
         // }
-        
-        $.mobile.changePage( $("#feed"), {
-            changeHash: false,
-            transition: transition
-        });
         
         if (query_data.pink_hearts)
         {
+            $(this.el).find("h1").text("Pink Hearts");
             this.pink = true;
             this.photo_collection = new snapr.models.pink_photo_collection();
             this.photo_collection.url = "http://pink.victoriassecret.com/services/hearts/image_json.jsp";
@@ -65,14 +60,25 @@ snapr.views.feed = Backbone.View.extend({
         }
         else
         {
+            $(this.el).find("h1").text("Featured Girls");
             this.pink = false;
             this.photo_collection = new snapr.models.photo_collection();
             this.photo_collection.url = snapr.api_base + "/search/";
             this.photo_collection.data = query_data;
             this.photo_collection.data.n = snapr.constants.feed_count;
+            if (snapr.app_group)
+            {
+                this.photo_collection.data.app_group = snapr.app_group;
+            }
             this.photo_collection.data.list_style && delete this.photo_collection.data.list_style;
             this.populate_feed();
         }
+        
+        var transition = "slide";
+        $.mobile.changePage( $("#feed"), {
+            changeHash: false,
+            transition: transition
+        });
         
     },
     
@@ -153,7 +159,16 @@ snapr.views.feed = Backbone.View.extend({
         else
         {
             data.photo_id && delete data.photo_id;
-            data.max_date = this.photo_collection.last().get('date');
+            
+            if (this.photo_collection.last())
+            {
+                data.max_date = this.photo_collection.last().get('date');
+            }
+            else
+            {
+                // no photos in collection
+                return false;
+            }
         }
 
         this.populate_feed( data );

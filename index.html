@@ -22,7 +22,7 @@
             
                 <li class="home-photo"><a data-ajax="false" href="#/upload/"><span class="PINK-menu-icon icon ui-li-icon"></span>Take a photo</a></li>
                 <li class="home-roll"><a data-ajax="false" href="#/photo-edit/?photo_id=Z4K"><span class="PINK-menu-icon icon ui-li-icon"></span>Choose an existing image</a></li>
-                <li class="home-featured"><a data-ajax="false" href="#/feed/?appgroup=pink-nation"><span class="PINK-menu-icon icon ui-li-icon"></span>See featured pics</a></li>
+                <li class="home-featured"><a data-ajax="false" href="#/feed/"><span class="PINK-menu-icon icon ui-li-icon"></span>See featured pics</a></li>
                 <li class="home-pink-hearts"><a data-ajax="false" href="#/feed/?pink_hearts=true" class="acessibility-text PINK-hearts-menu-btn">Pink Hearts - Explore images that inspire us</a></li>
             </ul>
         </div><!-- /content -->
@@ -153,9 +153,25 @@
     <!-- show images in a feed view -->
     <div id="feed" data-role="page" data-add-back-btn="true">
         <div data-role="header">
-            <h1>Featured Girls</h1>
+            <h1></h1>
         </div>
         <div class="feed-content" data-role="content">
+            <!-- <ul>
+                <li class="pink-header">
+                    <form action="javascript:void(0);">
+                        <select name="pink-select" id="pink-select">
+                            <option value="cell">All</option>
+                            <option value="love">Love</option>
+                            <option value="fashion_show">Fashion</option>
+                            <option value="travel">Travel</option>
+                            <option value="puppies">Puppies</option>
+                            <option value="models">Models</option>
+                            <option value="bling">Bling</option>
+                            <option value="pink">PINK</option>
+                        </select>
+                    </form>
+                </li>
+            </ul> -->
             <ul class="gallery">
             </ul>
         </div>
@@ -241,7 +257,7 @@
                     <input type="hidden" name="device-time" id="device-time"/>
                     <input type="hidden" name="-set-later-" id="_access_token"/>
                     <input type="hidden" name="privacy" id="privacy" value="queued"/>
-                    
+                    <input type="hidden" name="public_groups" id="public_groups" value="pink-nation-featured"/>
                     <label for="username">Select a photo to upload:</label>
                     <input type="file" name="photo" id="upload-file" />
                     
