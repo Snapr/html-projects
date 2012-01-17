@@ -312,6 +312,7 @@ snapr.routers = Backbone.Router.extend({
         "/photo-edit/?:query_string": "photo_edit",
         "/my-account/": "my_account",
         "/my-account/?:query_string": "my_account",
+        "/linked-services/": "linked_services",
         "/linked-services/?:query_string": "linked_services",
         "/feed/": "feed",
         "/feed/?:query_string": "feed",
