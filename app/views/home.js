@@ -17,8 +17,8 @@ snapr.views.home = Backbone.View.extend({
     },
     
     events: {
-        "click .camera": "camera",
-        "click .camera-roll": "camera_roll"
+        "click .x-launch-camera": "camera",
+        "click .x-launch-photo-library": "camera_roll"
     },
     
     camera: function()
@@ -39,7 +39,7 @@ snapr.views.home = Backbone.View.extend({
         console.warn("camera-roll");
         if (snapr.utils.get_local_param("appmode"))
         {
-            pass_data("snapr://camera-roll");
+            pass_data("snapr://photo-library");
         }
         else
         {
