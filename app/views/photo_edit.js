@@ -2,6 +2,7 @@ snapr.views.photo_edit = Backbone.View.extend({
 
     initialize: function()
     {
+        pe = this;
         this.el.live( "pagehide", function( e )
         {
             $(e.target).undelegate();
@@ -117,7 +118,8 @@ snapr.views.photo_edit = Backbone.View.extend({
     
     share: function()
     {
-        if (this.model)
+        // if there is an id set the picture has already been uploaded
+        if (this.model && this.model.has("id"))
         {
             var redirect_url = this.redirct_url || snapr.constants.share_redirect || 
                 // "#/uploading/?photo_id=" + this.model.get("id");
@@ -142,7 +144,17 @@ snapr.views.photo_edit = Backbone.View.extend({
         }
         else
         {
-            console.warn( "no model for photo-edit" );
+            if (snapr.utils.get_local_param("appmode"))
+            {
+                var params = {};
+                _.each( $(this.el).find("form").serializeArray(), function( o ){
+                    params[o.name] = o.value;
+                });
+                _.extend(params, this.query);
+                _.extend(params, snapr.auth.attributes);
+
+                pass_data("snapr://upload?" + $.param(params) );
+            }
         }
     },
     
