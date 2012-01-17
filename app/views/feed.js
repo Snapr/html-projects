@@ -19,7 +19,7 @@ snapr.views.feed = Backbone.View.extend({
         // this.el.live( 'pageshow', function()
         // {
         //     toggle_container.find( "input[type='radio']" ).checkboxradio( "refresh" );
-        // 
+        //
         // });
 
         // photoSwipe gallery view setup (disabled)
@@ -27,15 +27,15 @@ snapr.views.feed = Backbone.View.extend({
         // this.el.live('pagehide', function( e )
         // {
         //     var photoSwipeInstance = Code.PhotoSwipe.getInstance( 'feed' );
-        // 
+        //
         //     if (typeof photoSwipeInstance != "undefined" && photoSwipeInstance != null)
         //     {
         //         Code.PhotoSwipe.detatch(photoSwipeInstance);
         //     }
-        //     
+        //
         //     $(e.target).undelegate();
-        //     
-        //     return true; 
+        //
+        //     return true;
         // });
 
         // if we are coming from the map view do a flip, otherwise do a slide transition (disabled)
@@ -47,7 +47,7 @@ snapr.views.feed = Backbone.View.extend({
         // else
         // {
         // }
-        
+
         if (query_data.pink_hearts)
         {
             $(this.el).find("h1").text("Pink Hearts");
@@ -55,7 +55,7 @@ snapr.views.feed = Backbone.View.extend({
             this.photo_collection = new snapr.models.pink_photo_collection();
             this.photo_collection.url = "http://pink.victoriassecret.com/services/hearts/image_json.jsp";
             this.photo_collection.data = {most_recent: true};
-            this.photo_collection.data.page_number = 1
+            this.photo_collection.data.page_number = 1;
             this.populate_feed();
         }
         else
@@ -66,33 +66,31 @@ snapr.views.feed = Backbone.View.extend({
             this.photo_collection.url = snapr.api_base + "/search/";
             this.photo_collection.data = query_data;
             this.photo_collection.data.n = snapr.constants.feed_count;
-            if (snapr.app_group)
-            {
-                this.photo_collection.data.app_group = snapr.app_group;
-            }
+            this.photo_collection.data.app_group = 'pink-nation-featured';
+            this.photo_collection.data.rating = 2;
             this.photo_collection.data.list_style && delete this.photo_collection.data.list_style;
             this.populate_feed();
         }
-        
+
         var transition = "slide";
         $.mobile.changePage( $("#feed"), {
             changeHash: false,
             transition: transition
         });
-        
+
         this.el.find(".load-more").hide();
     },
-    
+
     // photoswipe_init: function()
     // {
     //     // detach the previous photoswipe instance if it exists
     //     var photoSwipeInstance = Code.PhotoSwipe.getInstance( 'feed' );
-    // 
+    //
     //     if (typeof photoSwipeInstance != "undefined" && photoSwipeInstance != null)
     //     {
     //         Code.PhotoSwipe.detatch(photoSwipeInstance);
     //     }
-    // 
+    //
     //     if ($( "ul.gallery a.gallery_link", this.el ).length)
     //     {
     //         // make sure we set the param backButtonHideEnabled:false to prevent photoswipe from changing the hash
@@ -101,17 +99,17 @@ snapr.views.feed = Backbone.View.extend({
     //                 backButtonHideEnabled: false
     //             }, 'feed' );
     //     }
-    //     
-    // 
+    //
+    //
     //     $.mobile.hidePageLoadingMsg();
     // },
-    // 
+    //
 
     populate_feed: function( additional_data )
     {
-        
+
         var list_style = this.pink ? "pink": "list";
-        
+
         var feed_view = this;
         var options = {
             success: function()
@@ -122,7 +120,7 @@ snapr.views.feed = Backbone.View.extend({
                     list_style: list_style
                 });
                 feed_view.feed_list.render( feed_view.photoswipe_init );
-                
+
                 $(feed_view.el).find(".more").button("enable");
                 $(feed_view.el).find(".load-more").show();
                 $.mobile.hidePageLoadingMsg();
@@ -134,7 +132,7 @@ snapr.views.feed = Backbone.View.extend({
                 $.mobile.hidePageLoadingMsg();
             }
         }
-        
+
         if (additional_data)
         {
             options.add = true;
@@ -143,7 +141,7 @@ snapr.views.feed = Backbone.View.extend({
 
         $.mobile.loadingMessage = "Loading";
         $.mobile.showPageLoadingMsg();
-        
+
         if (this.pink)
         {
             options.dataType = "json";
@@ -151,13 +149,13 @@ snapr.views.feed = Backbone.View.extend({
         this.photo_collection.fetch( options );
 
     },
-    
+
     more: function()
     {
         $(this.el).find(".more").button("disable");
 
         var data = this.photo_collection.data;
-        
+
         if (this.pink)
         {
             this.photo_collection.data.page_number++;
@@ -165,7 +163,7 @@ snapr.views.feed = Backbone.View.extend({
         else
         {
             data.photo_id && delete data.photo_id;
-            
+
             if (this.photo_collection.last())
             {
                 data.max_date = this.photo_collection.last().get('date');
@@ -180,17 +178,17 @@ snapr.views.feed = Backbone.View.extend({
         this.populate_feed( data );
         // console.warn( 'more', this.photo_collection.data );
     },
-    
+
     // feed_view_toggle: function(e)
     // {
     //     var input_target = $('#' + e.target.id);
     //     var list_style = input_target.val();
-    //     
+    //
     //     var container = input_target.closest( ".feed-view-toggle" );
     //     container.find( "input[type='radio']" ).attr( "checked", false );
     //     input_target.attr( "checked", true );
     //     container.find( "input[type='radio']" ).checkboxradio( "refresh" );
-    //     
+    //
     //     if (list_style == "list")
     //     {
     //         this.el.find(".feed-content").removeClass("grid").trigger("refresh");
@@ -199,19 +197,19 @@ snapr.views.feed = Backbone.View.extend({
     //     {
     //         this.el.find(".feed-content").addClass("grid").trigger("refresh");
     //     }
-    //     
+    //
     //     this.feed_list.list_style = list_style;
     //     this.feed_list.render( this.photoswipe_init );
     // },
-    
+
     // upload_progress: function( upload_data )
     // {
     //     var feed_view = this;
-    // 
+    //
     //     feed_view.el.find(".feed-upload-list").empty();
-    //     
+    //
     //     var upload_li_template = _.template( $("#upload-progress-li-template").html() );
-    //     
+    //
     //     _.each( upload_data.uploads, function( photo )
     //     {
     //         feed_view.pending_uploads[photo.id] = new snapr.views.upload_progress_li({
@@ -220,11 +218,11 @@ snapr.views.feed = Backbone.View.extend({
     //         });
     //         feed_view.el.find(".feed-upload-list").append( feed_view.pending_uploads[photo.id].render().el );
     //     })
-    //     
+    //
     //     feed_view.el.find(".feed-upload-list").listview().listview("refresh");
-    //     
+    //
     // },
-    
+
     // upload_completed: function( queue_id, snapr_id )
     // {
     //     // if we are on a feed for the current snapr user
@@ -235,7 +233,7 @@ snapr.views.feed = Backbone.View.extend({
     //         if (this.photo_collection.data.max_date)
     //         {
     //             delete this.photo_collection.data.max_date;
-    //         }            
+    //         }
     //         // refresh the feed content
     //         this.populate_feed();
     //     }
