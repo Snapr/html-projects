@@ -153,7 +153,7 @@ snapr.views.photo_edit = Backbone.View.extend({
                 _.extend(params, this.query);
                 _.extend(params, snapr.auth.attributes);
 
-                pass_data("snapr://upload?" + $.param(params) );
+                pass_data("snapr://upload?" + $.param(params).replace(/\+/g, '%20') );
             }
         }
     },
