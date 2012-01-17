@@ -2,7 +2,6 @@ snapr.views.photo_edit = Backbone.View.extend({
 
     initialize: function()
     {
-        pe = this;
         this.el.live( "pagehide", function( e )
         {
             $(e.target).undelegate();
