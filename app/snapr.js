@@ -148,6 +148,17 @@ snapr.utils.get_local_param = function( key )
         return $.cookie( key );
     }
 }
+snapr.utils.delete_local_param = function( key )
+{
+    if (snapr.info.supports_local_storage)
+    {
+        localStorage.removeItem( key );
+    }
+    else
+    {
+        $.cookie( key, null );
+    }
+}
 snapr.utils.get_query_params = function(query)
 {
     var params = {};
