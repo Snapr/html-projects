@@ -131,9 +131,40 @@ snapr.views.photo_edit = Backbone.View.extend({
                 facebook_feed: ( $("#facebook-sharing").val() == "on" ),
                 tumblr: ( $("#tumblr-sharing").val() == "on" ),
             },{
-                success: function()
+                success: function( model, xhr )
                 {
-                    Route.navigate( redirect_url, true );
+                    // console.warn( model, xhr );
+                    
+                    var sharing_errors = [];
+                    if (model.get("facebook_feed"))
+                    {
+                        if (xhr.response && 
+                            xhr.response.facebook && 
+                            xhr.response.facebook.error && 
+                            xhr.response.facebook.error.code == 28 )
+                        {
+                            sharing_errors.push("facebook");
+                        }
+                    }
+                    if (model.get("tumblr"))
+                    {
+                        if (xhr.response && 
+                            xhr.response.tumblr && 
+                            xhr.response.tumblr.error && 
+                            xhr.response.tumblr.error.code == 30 )
+                        {
+                            sharing_errors.push("tumblr");
+                        }
+                    }
+                    if (sharing_errors.length)
+                    {
+                        var url = "#/linked-services/?to_link=" + sharing_errors.join(",") + "&photo_id=" + model.id;
+                        Route.navigate( url, true );
+                    }
+                    else
+                    {
+                        Route.navigate( redirect_url, true );
+                    }
                 },
                 error: function()
                 {
