@@ -15,13 +15,19 @@ snapr.views.photo_edit = Backbone.View.extend({
         // but for now we'll start from blank each time
         this.photo_edit_settings = {};
         
-        if (this.options.query.photo_path)
+        this.query = this.options.query;
+        
+        if (this.query.redirect_url)
         {
-            this.get_photo_from_path( this.options.query.photo_path );
+            this.redirect_url = this.query.redirect_url;
         }
-        else if(this.options.query.photo_id || this.options.query.photo)
+        if (this.query.photo_path)
         {
-            this.get_photo_from_server( this.options.query.photo_id || this.options.query.photo );
+            this.get_photo_from_path( this.query.photo_path );
+        }
+        else if(this.query.photo_id || this.query.photo)
+        {
+            this.get_photo_from_server( this.query.photo_id || this.query.photo );
         }
         else{
             console.warn( "error, no path or photo_id" );
@@ -75,6 +81,15 @@ snapr.views.photo_edit = Backbone.View.extend({
             photo_path: path
         });
         
+        if (this.query.latitude)
+        {
+            this.model.set({latitude: this.query.latitude});
+        }
+        if (this.query.longitude)
+        {
+            this.model.set({longitude: this.query.longitude});
+        }
+        
         // temporary hack to display image
         $(this.el).find(".edit-image").html( this.img_template({img_url: path}) );
         
@@ -104,7 +119,7 @@ snapr.views.photo_edit = Backbone.View.extend({
     {
         if (this.model)
         {
-            var redirect_url = snapr.constants.share_redirect || 
+            var redirect_url = this.redirct_url || snapr.constants.share_redirect || 
                 // "#/uploading/?photo_id=" + this.model.get("id");
                 "#/love-it/?shared=true&photo_id=" + this.model.get("id");
                 
