@@ -116,8 +116,8 @@ snapr.views.photo_edit = Backbone.View.extend({
     {
         var pink_nation_sharing = ( $("#enter-girl-of-month").val() == "on" );
         
-        // if there is an id set the picture has already been uploaded
-        if (this.model && this.model.has("id"))
+        // if there is a secret set the picture has already been uploaded
+        if (this.model && this.model.has("secret"))
         {
             var redirect_url = this.redirct_url || snapr.constants.share_redirect || 
                 // "#/uploading/?photo_id=" + this.model.get("id");
@@ -213,6 +213,7 @@ snapr.views.photo_edit = Backbone.View.extend({
                 }
 
                 pass_data("snapr://upload?" + $.param(params).replace(/\+/g, '%20') );
+                Route.navigate( '#/uploading/', true );
             }
         }
     },
