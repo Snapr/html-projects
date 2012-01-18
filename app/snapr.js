@@ -32,6 +32,11 @@ Backbone.sync = function( method, model, options )
         model.data.access_token = snapr.auth.get('access_token');
     }
     
+    if (snapr.app_group)
+    {
+        _.extend( model.data, {app_group: snapr.app_group});
+    }
+    
     // our hack to get jsonp to emulate http methods by appending them to the querystring
     if (method_map[method] !='GET')
     {
