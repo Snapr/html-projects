@@ -176,7 +176,7 @@
             </ul>
         </div>
         <div class="load-more">
-            <button class="more ui-btn-right">More</button>
+            <button class="more ui-btn-right" data-theme="b">More</button>
         </div>
     </div><!-- /page -->
 
@@ -373,8 +373,10 @@
                     </li>
                 </ul>
             </div>
-
-            <input type="submit" data-role="button" data-theme="e" class="share" disabled="true" value="Share" />
+            
+            <span class="PINK-text-btn">
+                <input type="submit" data-role="button" data-theme="e" class="share" disabled="true" value="Share" />
+            </span>
         </form>
         <a class="skip">Skip this step &raquo;</a>
     </script>
@@ -404,9 +406,11 @@
                 <p>Your pic has been saved to your<br/> phone&rsquo;s library</p>
             <% } %>
         </div>
-        <a data-ajax="false" href="#/upload/" data-role="button" class="PINK-text-btn">Take another photo</a>
-        <a data-ajax="false" href="#/upload-roll/" data-role="button" class="PINK-text-btn">Choose an existing pic</a>
-        <a data-ajax="false" href="#/" data-role="button" class="PINK-text-btn">Pics home</a>
+      
+            <a data-ajax="false" data-theme="b" href="#/upload/" data-role="button" class="PINK-text-btn">Take another photo</a>
+            <a data-ajax="false" data-theme="b" href="#/upload-roll/" data-role="button" class="PINK-text-btn">Choose an existing pic</a>
+            <a data-ajax="false" data-theme="b" href="#/" data-role="button" class="PINK-text-btn">Pics home</a>
+     
     </script>
 
 
