@@ -117,23 +117,46 @@ snapr.views.photo_edit = Backbone.View.extend({
     
     share: function()
     {
+        var pink_nation_sharing = ( $("#enter-girl-of-month").val() == "on" );
+        
         // if there is an id set the picture has already been uploaded
         if (this.model && this.model.has("id"))
         {
             var redirect_url = this.redirct_url || snapr.constants.share_redirect || 
                 // "#/uploading/?photo_id=" + this.model.get("id");
                 "#/love-it/?shared=true&photo_id=" + this.model.get("id");
-                
+
             this.model.save({
                 description: this.el.find("#description").val(),
-                public_group: ( $("#enter-girl-of-month").val() == "on" ) && snapr.public_group || false,
-                // status: this.el.find('#privacy-switch').val(),
+                // public_group: ( $("#enter-girl-of-month").val() == "on" ) && snapr.public_group || false,
+                status: "public",
                 facebook_feed: ( $("#facebook-sharing").val() == "on" ),
                 tumblr: ( $("#tumblr-sharing").val() == "on" ),
             },{
                 success: function( model, xhr )
                 {
                     // console.warn( model, xhr );
+                    if (pink_nation_sharing && !snapr.utils.get_local_param("appmode"))
+                    {
+                        $.ajax({
+                            url: snapr.api_base + "/public_groups/pool/add/",
+                            dataType: "jsonp",
+                            data: {
+                                photo_id: model.id,
+                                group_slug: snapr.public_group,
+                                app_group: snapr.app_group,
+                                access_token: snapr.auth.get("access_token"),
+                                _method: "POST"
+                            },
+                            success: function(response)
+                            {
+                                if (response.error)
+                                {
+                                    alert( response.error.message );
+                                }
+                            }
+                        });
+                    }
                     
                     var sharing_errors = [];
                     if (model.get("facebook_feed"))
@@ -182,6 +205,15 @@ snapr.views.photo_edit = Backbone.View.extend({
                 });
                 _.extend(params, this.query);
                 _.extend(params, snapr.auth.attributes);
+
+                if (pink_nation_sharing)
+                {
+                    _.extend(params, {
+                        photo_id: model.id,
+                        public_group: snapr.public_group,
+                        app_group: snapr.app_group
+                    });
+                }
 
                 pass_data("snapr://upload?" + $.param(params).replace(/\+/g, '%20') );
             }
