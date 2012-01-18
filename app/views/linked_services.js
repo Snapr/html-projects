@@ -59,8 +59,7 @@ snapr.views.linked_services = Backbone.View.extend({
                 
         _.each( this.user_settings.get('linked_services'), function( service, index )
         {
-            var v = new snapr.views.linked_service();
-            v.model = service;
+            var v = new snapr.views.linked_service({model: service});
             
             // keep track of linked services
             linked_services_list[service.provider] = true;
