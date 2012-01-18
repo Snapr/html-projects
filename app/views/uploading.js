@@ -74,34 +74,34 @@ snapr.views.uploading = Backbone.View.extend({
                  ]
              };
 
-             setTimeout(function() {
-                    console.warn("testing 1", test_data);
-                    test_data.uploads[0].percent_complete = 40;
-                    upload_progress(test_data);
-                 }, 3000);
-                     
-                 setTimeout(function() {
-                    console.warn("testing 2", test_data);
-                    test_data.uploads[0].percent_complete = 60;
-                    upload_progress(test_data);
-                 }, 6000);
-             
-                 setTimeout(function() {
-                    console.warn("testing 3", test_data);
-                    test_data.uploads[0].percent_complete = 80;
-                    upload_progress(test_data);
-                 }, 9000);
-             
-                 setTimeout(function() {
-                    console.warn("testing 4", test_data);
-                    test_data.uploads[0].percent_complete = 100;
-                    upload_progress(test_data);
-                 }, 12000);
-             
-                 setTimeout(function() {
-                    console.warn("testing 5");
-                    upload_completed( 5345233, "Z4K");
-                 }, 14000);
+             // setTimeout(function() {
+             //        console.warn("testing 1", test_data);
+             //        test_data.uploads[0].percent_complete = 40;
+             //        upload_progress(test_data);
+             //     }, 3000);
+             //         
+             //     setTimeout(function() {
+             //        console.warn("testing 2", test_data);
+             //        test_data.uploads[0].percent_complete = 60;
+             //        upload_progress(test_data);
+             //     }, 6000);
+             // 
+             //     setTimeout(function() {
+             //        console.warn("testing 3", test_data);
+             //        test_data.uploads[0].percent_complete = 80;
+             //        upload_progress(test_data);
+             //     }, 9000);
+             // 
+             //     setTimeout(function() {
+             //        console.warn("testing 4", test_data);
+             //        test_data.uploads[0].percent_complete = 100;
+             //        upload_progress(test_data);
+             //     }, 12000);
+             // 
+             //     setTimeout(function() {
+             //        console.warn("testing 5");
+             //        upload_completed( 5345233, "Z4K");
+             //     }, 14000);
 
 
                  // setTimeout(function() {
