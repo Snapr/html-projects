@@ -90,8 +90,9 @@ Array.prototype.human_list =  function(){
 // PINK Nation Details:
 snapr.client_id = "48611a3a325dc884c9d1722002be43ff";
 snapr.client_secret = "a5b072ed71e89a4f0982944a4dd82d94";
+
 snapr.app_group = "pink-nation";
-snapr.public_groups = "pink-nation-featured";
+snapr.public_group = "pink-nation-featured";
 
 snapr.constants = {};
 snapr.constants.default_zoom = 15;
@@ -312,6 +313,7 @@ snapr.routers = Backbone.Router.extend({
         "/photo-edit/?:query_string": "photo_edit",
         "/my-account/": "my_account",
         "/my-account/?:query_string": "my_account",
+        "/linked-services/": "linked_services",
         "/linked-services/?:query_string": "linked_services",
         "/feed/": "feed",
         "/feed/?:query_string": "feed",
@@ -505,6 +507,32 @@ function queue_settings( upload_mode, paused )
     }
 }
 
+$(".x-launch-camera").live( "click", function()
+{
+    // console.warn("camera");
+    if (snapr.utils.get_local_param("appmode"))
+    {
+        pass_data("snapr://camera");
+    }
+    else
+    {
+        Route.navigate( '#/upload/', true );
+    }
+});
+
+$(".x-launch-photo-library").live( "click", function()
+{
+    // console.warn("camera-roll");
+    if (snapr.utils.get_local_param("appmode"))
+    {
+        pass_data("snapr://photo-library");
+    }
+    else
+    {
+        Route.navigate( '#/upload/', true );
+    }
+
+});
 
 // end upload/appmode functions
 

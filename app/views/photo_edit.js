@@ -2,7 +2,6 @@ snapr.views.photo_edit = Backbone.View.extend({
 
     initialize: function()
     {
-        pe = this;
         this.el.live( "pagehide", function( e )
         {
             $(e.target).undelegate();
@@ -127,14 +126,45 @@ snapr.views.photo_edit = Backbone.View.extend({
                 
             this.model.save({
                 description: this.el.find("#description").val(),
-                public_groups: ( $("#enter-girl-of-month").val() == "on" ) && snapr.public_groups || false,
+                public_group: ( $("#enter-girl-of-month").val() == "on" ) && snapr.public_group || false,
                 // status: this.el.find('#privacy-switch').val(),
                 facebook_feed: ( $("#facebook-sharing").val() == "on" ),
                 tumblr: ( $("#tumblr-sharing").val() == "on" ),
             },{
-                success: function()
+                success: function( model, xhr )
                 {
-                    Route.navigate( redirect_url, true );
+                    // console.warn( model, xhr );
+                    
+                    var sharing_errors = [];
+                    if (model.get("facebook_feed"))
+                    {
+                        if (xhr.response && 
+                            xhr.response.facebook && 
+                            xhr.response.facebook.error && 
+                            xhr.response.facebook.error.code == 28 )
+                        {
+                            sharing_errors.push("facebook");
+                        }
+                    }
+                    if (model.get("tumblr"))
+                    {
+                        if (xhr.response && 
+                            xhr.response.tumblr && 
+                            xhr.response.tumblr.error && 
+                            xhr.response.tumblr.error.code == 30 )
+                        {
+                            sharing_errors.push("tumblr");
+                        }
+                    }
+                    if (sharing_errors.length)
+                    {
+                        var url = "#/linked-services/?to_link=" + sharing_errors.join(",") + "&photo_id=" + model.id;
+                        Route.navigate( url, true );
+                    }
+                    else
+                    {
+                        Route.navigate( redirect_url, true );
+                    }
                 },
                 error: function()
                 {
