@@ -142,7 +142,7 @@ snapr.views.photo_edit = Backbone.View.extend({
                             url: snapr.api_base + "/public_groups/pool/add/",
                             dataType: "jsonp",
                             data: {
-                                photo_id: model.id,
+                                photo_id: model.get("id"),
                                 group_slug: snapr.public_group,
                                 app_group: snapr.app_group,
                                 access_token: snapr.auth.get("access_token"),
@@ -181,7 +181,7 @@ snapr.views.photo_edit = Backbone.View.extend({
                     }
                     if (sharing_errors.length)
                     {
-                        var url = "#/linked-services/?to_link=" + sharing_errors.join(",") + "&photo_id=" + model.id;
+                        var url = "#/linked-services/?to_link=" + sharing_errors.join(",") + "&photo_id=" + model.get("id");
                         Route.navigate( url, true );
                     }
                     else
@@ -209,7 +209,7 @@ snapr.views.photo_edit = Backbone.View.extend({
                 if (pink_nation_sharing)
                 {
                     _.extend(params, {
-                        photo_id: model.id,
+                        photo_id: model.get("id"),
                         public_group: snapr.public_group,
                         app_group: snapr.app_group
                     });
