@@ -279,13 +279,13 @@ snapr.utils.require_login = function( funct )
 {
     return function( e )
     {
-        if (!snapr.auth.get('access_token'))
+        if (!snapr.auth.has('access_token'))
         {
             if (e)
             {
                 e.preventDefault();
             }
-            Route.navigate( '#/login', true );
+            Route.navigate( '#/login/?message=Sorry, you need to log in first.', true );
         }
         else
         {
@@ -358,8 +358,11 @@ snapr.routers = Backbone.Router.extend({
     login: function( query_string )
     {
         console.warn('go to login');
-        snapr.utils.get_query_params( query_string );
-        snapr.info.current_view = new snapr.views.login();
+        var query = snapr.utils.get_query_params( query_string );
+        snapr.info.current_view = new snapr.views.login({
+            el: $('#login'),
+            query: query
+        });
     },
     
     logout: function( query_string )

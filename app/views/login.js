@@ -1,7 +1,5 @@
 snapr.views.login = Backbone.View.extend({
 
-    el: $('#login'),
-
     events: {
         "submit #login-dialog":"log_in"
     },
@@ -15,7 +13,22 @@ snapr.views.login = Backbone.View.extend({
             
             return true;
         });
+        
+        if (this.options.query)
+        {
+            this.message = this.options.query.message;
+        }
 
+        
+        if (this.message)
+        {
+            $(this.el).find(".login-message").text(this.message);
+        }
+        else
+        {
+            $(this.el).find(".login-message").text("");
+        }
+        
         $.mobile.changePage( $("#login"), {
             changeHash: false,
             transition: "slidedown"
