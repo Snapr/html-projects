@@ -51,11 +51,12 @@ snapr.views.love_it = Backbone.View.extend({
         else
         {
             var img_url = this.photo_path;
+            var height = $(this.el).find("[data-role='content']").innerWidth() + "px";
             $(this.el).find("[data-role='content']")
                 .html( this.template({
                     shared: this.shared, 
                     img_url: img_url,
-                    height: "auto"
+                    height: height
                 }) )
                 .trigger("create");
             
