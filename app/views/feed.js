@@ -66,8 +66,9 @@ snapr.views.feed = Backbone.View.extend({
             this.photo_collection.url = snapr.api_base + "/search/";
             this.photo_collection.data = query_data;
             this.photo_collection.data.n = snapr.constants.feed_count;
-            this.photo_collection.data.app_group = 'pink-nation-featured';
-            this.photo_collection.data.rating = 2;
+            // this.photo_collection.data.app_group = 'pink-nation-featured';
+            this.photo_collection.data.app_group = 'pink-nation';
+            // this.photo_collection.data.rating = 2;
             this.photo_collection.data.list_style && delete this.photo_collection.data.list_style;
             this.populate_feed();
         }
