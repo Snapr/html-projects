@@ -507,6 +507,32 @@ function queue_settings( upload_mode, paused )
     }
 }
 
+$(".x-launch-camera").live( "click", function()
+{
+    // console.warn("camera");
+    if (snapr.utils.get_local_param("appmode"))
+    {
+        pass_data("snapr://camera");
+    }
+    else
+    {
+        Route.navigate( '#/upload/', true );
+    }
+});
+
+$(".x-launch-photo-library").live( "click", function()
+{
+    // console.warn("camera-roll");
+    if (snapr.utils.get_local_param("appmode"))
+    {
+        pass_data("snapr://photo-library");
+    }
+    else
+    {
+        Route.navigate( '#/upload/', true );
+    }
+
+});
 
 // end upload/appmode functions
 
