@@ -21,6 +21,8 @@ snapr.views.photo_edit = Backbone.View.extend({
         {
             this.redirect_url = this.query.redirect_url;
         }
+        $.mobile.changePage( $("#photo-edit"), {changeHash: false} );
+        this.render();
         if (this.query.photo_path)
         {
             this.get_photo_from_path( this.query.photo_path );
@@ -32,8 +34,6 @@ snapr.views.photo_edit = Backbone.View.extend({
         else{
             console.warn( "error, no path or photo_id" );
         }
-        $.mobile.changePage( $("#photo-edit"), {changeHash: false} );
-        this.render();
     },
     
     events: {
@@ -90,10 +90,7 @@ snapr.views.photo_edit = Backbone.View.extend({
             this.model.set({longitude: this.query.longitude});
         }
         
-        // temporary hack to display image
         $(this.el).find(".edit-image").html( this.img_template({img_url: path}) );
-        
-        console.warn( "get_photo_from_path", path );
     },
     
     toggle_sharing: function( e )
