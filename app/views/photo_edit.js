@@ -46,6 +46,21 @@ snapr.views.photo_edit = Backbone.View.extend({
     {
         $(this.el).find("[data-role='content']").html( this.template() ).trigger("create");
         
+        if (snapr.utils.get_local_param( "facebook-sharing" ) == "on")
+        {
+            $(this.el).find("#facebook-sharing").val("on").slider("refresh").trigger("change");
+        }
+
+        if (snapr.utils.get_local_param( "tumblr-sharing" ) == "on")
+        {
+            $(this.el).find("#tumblr-sharing").val("on").slider("refresh").trigger("change");
+        }
+
+        if (snapr.utils.get_local_param( "enter-girl-of-month" ) == "on")
+        {
+            $(this.el).find("#enter-girl-of-month").val("on").slider("refresh").trigger("change");
+        }
+        
         return this;
     },
     
@@ -100,9 +115,11 @@ snapr.views.photo_edit = Backbone.View.extend({
             $(this.el).find("input[type='submit']").button("enable");
             $(this.el).find(".share-message").hide();
             $(this.el).find("textarea").show();
+            snapr.utils.save_local_param( e.target.id, "on" );
         }
         else
         {
+            snapr.utils.save_local_param( e.target.id, "off" );
             if ($("select option[value='on']:selected").length == 0)
             {
                 $(this.el).find("input[type='submit']").button("disable");
