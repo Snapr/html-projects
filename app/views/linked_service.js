@@ -16,6 +16,8 @@ snapr.views.linked_service = Backbone.View.extend({
         "click .unlink": "unlink_service",
         "click .save": "save_changes",
         
+        "submit .tumblr-form": "link_service",
+        
         "click .twitter-import-profile": "twitter_import_profile",
         "change #twitter-link": "twitter_link",
         "change #twitter-tweet": "twitter_tweet",

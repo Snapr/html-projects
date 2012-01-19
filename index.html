@@ -64,9 +64,13 @@
         <button data-inline="true" data-theme="b" class="link-service">Link</button>
     <% break; case 'tumblr': %>
         <h3>Link Tumblr</h3>
-        <fieldset data-role="controlgroup">
-        </fieldset>
-        <button data-inline="true" data-theme="b" class="link-service">Link</button>
+        <form class="tumblr-form" action="javascript:void(0)">
+            <fieldset data-role="controlgroup">
+                <label>Email:<input type="text" id="tumblr-email" /></label>
+                <label>Password:<input type="password" id="tumblr-password" /></label>
+            </fieldset>
+            <input type=submit data-inline="true" data-theme="b" class="link-service" value="Link" />
+        </form>
     <% break; case 'facebook': %>
         <h3>Link Facebook</h3>
         <fieldset data-role="controlgroup">
