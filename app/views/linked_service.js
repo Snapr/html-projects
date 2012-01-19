@@ -51,9 +51,40 @@ snapr.views.linked_service = Backbone.View.extend({
     
     link_service: function()
     {
-        url = snapr.base_url + "/api/linked_services/"
-            + this.provider + "/oauth/?access_token=" + snapr.auth.get("access_token") + "&redirect=" + escape( window.location.href );
-        window.location = url;
+        if (this.provider == "tumblr")
+        {
+            $.ajax({
+                url: snapr.api_base + '/linked_services/tumblr/',
+                type: 'POST',
+                dataType: 'jsonp',
+                data:{
+                    username: $('#tumblr-email').val(),
+                    password: $('#tumblr-password').val(),
+                    access_token: snapr.auth.get("access_token"),
+                    _method: "POST"
+                },
+                success: function( data )
+                {
+                    if( data.success )
+                    {
+                        snapr.info.current_view.initialize();
+                    }else{
+                        alert( data.error.message );
+                    }
+                },
+                error: function( data )
+                {
+                    console.warn('ajax error!');
+                },
+            });
+            
+        }
+        else
+        {
+            url = snapr.api_base + "/linked_services/"
+                + this.provider + "/oauth/?access_token=" + snapr.auth.get("access_token") + "&redirect=" + escape( window.location.href );
+            window.location = url;
+        }
         
     },
     
@@ -62,11 +93,12 @@ snapr.views.linked_service = Backbone.View.extend({
         var options = {
             success: function()
             {
+                snapr.info.current_view.initialize();
                 console.warn('unlink success');
             },
             error: function()
             {
-                console.warn('unlink error');
+                alert('Sorry, we had trouble unlinking your account');
             }
         }
 
