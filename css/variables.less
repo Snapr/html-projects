@@ -1,34 +1,4 @@
 /*
-* Special Fonts
-*/
-
-
-@font-face {
-    font-family: 'GlyphaMedium';
-    src: url('../fonts/glyph-webfont.eot');
-    src: url('../fonts/glyph-webfont.eot?#iefix') format('embedded-opentype'),
-         url('../fonts/glyph-webfont.woff') format('woff'),
-         url('../fonts/glyph-webfont.ttf') format('truetype'),
-         url('../fonts/glyph-webfont.svg#GlyphaMedium') format('svg');
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'AcademySansSerifMedium';
-    src: url('../fonts/acadesanser-webfont.eot');
-    src: url('../fonts/acadesanser-webfont.eot?#iefix') format('embedded-opentype'),
-         url('../fonts/acadesanser-webfont.woff') format('woff'),
-         url('../fonts/acadesanser-webfont.ttf') format('truetype'),
-         url('../fonts/acadesanser-webfont.svg#AcademySansSerifMedium') format('svg');
-    font-weight: normal;
-    font-style: normal;
-
-}
-
-
-
-/*
 * Global
 */
 @global-font-family: Helvetica, Arial, sans-serif;
@@ -39,14 +9,14 @@
 @global-base-font-size: 13px;
 
 @global-active-border: #155678;
-@global-active-background-color: #4596ce;
+@global-active-background-color: rgba(255,255,255,.2);
 @global-active-color: #fff;
 @global-active-shadow-x: 0;
 @global-active-shadow-y: -1px;
 @global-active-shadow-radius: 1px;
 @global-active-shadow-color: #145072;
-@global-active-background-start: #85bae4;
-@global-active-background-end: #5393c5;
+@global-active-background-start: rgba(255,255,255,.2);
+@global-active-background-end: rgba(255,255,255,.2);
 @global-radii-blocks: 6px;
 @global-icon-color: #666;
 @global-icon-disc: rgba(0,0,0,.4);
@@ -168,6 +138,9 @@
 @a-body-link-active: @a-body-link-color;
 @a-body-link-visited: @a-body-link-color;
 
+@a-btn-height: 30px;
+@a-btn-bg-image: 30px;
+
 @a-bup-border: #222;
 @a-bup-background-color: #333;
 @a-bup-color: #fff;
@@ -175,8 +148,12 @@
 @a-bup-shadow-y: -1px;
 @a-bup-shadow-radius: 1px;
 @a-bup-shadow-color: #000;
-@a-bup-background-start: #555;
-@a-bup-background-end: @a-bup-background-color;
+@a-bup-background-start: rgba(0,0,0,0);
+@a-bup-background-start-mid: rgba(0,0,0,0);
+@a-bup-background-end-mid: rgba(255,255,255,0.1) ;
+@a-bup-background-end: rgba(255,255,255,0.3);
+
+
 
 @a-bhover-border: #000;
 @a-bhover-background-color: #444;
@@ -185,8 +162,10 @@
 @a-bhover-shadow-y: -1px;
 @a-bhover-shadow-radius: 1px;
 @a-bhover-shadow-color: #000;
-@a-bhover-background-start: #666;
-@a-bhover-background-end: @a-bhover-background-color;
+@a-bhover-background-start: @a-bup-background-start;
+@a-bhover-background-start-mid: @a-bup-background-start-mid;
+@a-bhover-background-end-mid:@a-bup-background-end-mid;
+@a-bhover-background-end: @a-bup-background-end;
 
 @a-bdown-border: #000;
 @a-bdown-background-color: #3d3d3d;
@@ -195,8 +174,10 @@
 @a-bdown-shadow-y: -1px;
 @a-bdown-shadow-radius: 1px;
 @a-bdown-shadow-color: #000;
-@a-bdown-background-start: #333;
-@a-bdown-background-end: #5a5a5a;
+@a-bdown-background-start: @a-bup-background-start;
+@a-bdown-background-start-mid: @a-bup-background-start-mid;
+@a-bdown-background-end-mid:@a-bup-background-end-mid;
+@a-bdown-background-end: @a-bup-background-end;
 
 
 /*

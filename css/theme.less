@@ -1,4 +1,33 @@
 /*
+* Special Fonts
+*/
+
+
+@font-face {
+    font-family: 'GlyphaMedium';
+    src: url('../fonts/glyph-webfont.eot');
+    src: url('../fonts/glyph-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/glyph-webfont.woff') format('woff'),
+         url('../fonts/glyph-webfont.ttf') format('truetype'),
+         url('../fonts/glyph-webfont.svg#GlyphaMedium') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'AcademySansSerifMedium';
+    src: url('../fonts/acadesanser-webfont.eot');
+    src: url('../fonts/acadesanser-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/acadesanser-webfont.woff') format('woff'),
+         url('../fonts/acadesanser-webfont.ttf') format('truetype'),
+         url('../fonts/acadesanser-webfont.svg#AcademySansSerifMedium') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+/*
 * jQuery Mobile Framework
 * Copyright (c) jQuery Project
 * Dual licensed under the MIT (MIT-LICENSE.txt) and GPL (GPL-LICENSE.txt) licenses.
@@ -309,21 +338,24 @@ a{
 	}
 }
 
-.ui-btn-up-a {
+.ui-btn-up-a,
+.ui-btn-up-a[data-rel="back"]::before {
 	border: 1px solid @a-bup-border;
 	background: @a-bup-background-color;
 	font-weight: bold;
 	color: @a-bup-color;
 	text-shadow: @a-bup-shadow-x @a-bup-shadow-y @a-bup-shadow-radius @a-bup-shadow-color;
 
-	.linear-gradient(@a-bup-background-start, @a-bup-background-end);
+    .linear-gradient(@a-bup-background-start, @a-bup-background-end);
+
 
 	a.ui-link-inherit {
 		color: @a-bup-color;
 	}
 }
 
-.ui-btn-hover-a {
+.ui-btn-hover-a,
+.ui-btn-hover-a[data-rel="back"]::before {
 	border: 1px solid @a-bhover-border;
 	background: @a-bhover-background-color;
 	font-weight: bold;
@@ -332,14 +364,15 @@ a{
 	font-family: @global-font-family;
 	text-decoration: none;
 
-	.linear-gradient(@a-bhover-background-start, @a-bhover-background-end);
+    .linear-gradient(@a-bhover-background-start, @a-bhover-background-end);
 
 	a.ui-link-inherit {
 		color: @a-bhover-color;
 	}
 }
 
-.ui-btn-down-a {
+.ui-btn-down-a,
+.ui-btn-down-a[data-rel="back"]::before {
 	border: 1px solid @a-bdown-border;
 	background: @a-bdown-background-color;
 	font-weight: bold;
@@ -355,34 +388,46 @@ a{
 	}
 }
 
+
+
+
+
 .ui-bar-a{
-    a[data-rel="back"]{
-        display: block;
-        position: absolute;
-        z-index: 0;
+    .ui-btn-up-a,
+    .ui-btn-hover-a,
+    .ui-btn-down-a,
+    .ui-btn-active-a,
+    .ui-btn-up-a[data-rel="back"]::before,
+    .ui-btn-hover-a[data-rel="back"]::before,
+    .ui-btn-down-a[data-rel="back"]::before,
+    .ui-btn-active-a[data-rel="back"]::before{
+        .shiny-gradient (@a-bup-background-start, @a-bup-background-start-mid, @a-bup-background-end-mid, @a-bup-background-end); 
+
+        -webkit-box-shadow: 0 -1px 1px rgba(0,0,0,0.2)inset, 0 1px 2px rgba(0,0,0,0.8)inset;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.4);
         height: 30px;
-        width: auto;
-        padding: 0 10px 0 6px;
         background-repeat: repeat-x;
         -webkit-background-size: 30px;
         background-position: 0;
-        background-image: -webkit-linear-gradient( bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 50%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0.3) 100% );
+        .ui-btn-inner{
+                border: none;
+                padding-left: 0;
+                padding-right: 0;
+        }
+        
+    }
+
+    a[data-rel="back"]{
+        display: block;
         -webkit-border-radius: 5px;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.4);
-        -webkit-box-shadow: 0 -1px 1px rgba(0,0,0,0.2)inset, 0 1px 2px rgba(0,0,0,0.8)inset;
-    
-     
-       .ui-btn-inner{
-            border: none;
-            padding-left: 0;
-            padding-right: 0;
-       }
-        
-        
+        position: absolute;
+        z-index: 0;
+        width: auto;
+        padding: 0 10px 0 6px;
+               
         .ui-icon{
             display: none;
         }
-        
     }
     
     a[data-rel="back"]::before {
@@ -393,10 +438,8 @@ a{
         height: 24px;
         width: 24px;
         z-index: 1;
-        background-repeat: repeat-x;
         -webkit-background-size: 20px 20px;
         background-position: -1px -0.5px;
-        background-image: -webkit-gradient(linear, left bottom, right top, from(rgba(0,0,0,0)), color-stop(0.5, rgba(0,0,0,0)), color-stop(0.5, rgba(255,255,255,0.1)), to(rgba(255,255,255,0.3)));
         -webkit-transform: rotate(-45deg) skew(-10deg, -10deg);
         -webkit-border-top-right-radius: 10px;
         -webkit-border-top-left-radius: 0px;
@@ -409,7 +452,6 @@ a{
         border-top-left-radius: 0px;
         border-bottom-right-radius: 0px;
         border-bottom-left-radius: 10px;
-        background-color: #333;
     }
     
 }
@@ -828,22 +870,6 @@ a.ui-link-inherit {
 /* Active class used as the "on" state across all themes
 -----------------------------------------------------------------------------------------------------------*/
 
-.ui-btn-active {
-	border: 1px solid @global-active-border;
-	background: @global-active-background-color;
-	font-weight: bold;
-	color: @global-active-color;
-	cursor: pointer;
-	text-shadow: @global-active-shadow-x @global-active-shadow-y @global-active-shadow-radius @global-active-shadow-color;
-	text-decoration: none;
-	font-family: @global-font-family;
-
-	.linear-gradient(@global-active-background-start, @global-active-background-end);
-
-	a.ui-link-inherit {
-		color: @global-active-color;
-	}
-}
 
 /* button inner top highlight
 -----------------------------------------------------------------------------------------------------------*/
@@ -945,9 +971,7 @@ a.ui-link-inherit {
 /* HD/"retina" sprite
 -----------------------------------------------------------------------------------------------------------*/
 
-@media only screen and (-webkit-min-device-pixel-ratio: 1.5),
-       only screen and (min--moz-device-pixel-ratio: 1.5),
-       only screen and (min-resolution: 240dpi) {
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5){
 
 	.ui-icon-plus, .ui-icon-minus, .ui-icon-delete, .ui-icon-arrow-r,
 	.ui-icon-arrow-l, .ui-icon-arrow-u, .ui-icon-arrow-d, .ui-icon-check,
