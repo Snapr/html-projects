@@ -116,8 +116,8 @@ snapr.views.photo_edit = Backbone.View.extend({
     {
         var pink_nation_sharing = ( $("#enter-girl-of-month").val() == "on" );
         
-        // if there is an id set the picture has already been uploaded
-        if (this.model && this.model.has("id"))
+        // if there is a secret set the picture has already been uploaded
+        if (this.model && this.model.has("secret"))
         {
             var redirect_url = this.redirct_url || snapr.constants.share_redirect || 
                 // "#/uploading/?photo_id=" + this.model.get("id");
@@ -206,12 +206,10 @@ snapr.views.photo_edit = Backbone.View.extend({
                 if (pink_nation_sharing)
                 {
                     _.extend(params, {
-                        photo_id: model.get("id"),
                         public_group: snapr.public_group,
                         app_group: snapr.app_group
                     });
                 }
-
                 pass_data("snapr://upload?" + $.param(params).replace(/\+/g, '%20') );
             }
         }
@@ -229,7 +227,18 @@ snapr.views.photo_edit = Backbone.View.extend({
         }
         
         Route.navigate( query_string, true );
-    }
+    },
     
+    upload_progress: function( upload_data )
+    {
+        Route.navigate( '#/uploading/', true );
+    },
+    
+    upload_completed: function( queue_id, snapr_id )
+    {
+        this.pending_uploads[queue_id] && delete this.pending_uploads[queue_id];
+        
+        Route.navigate( "#/love-it/?shared=true&photo_id=" + snapr_id, true );
+    }
 
 });
