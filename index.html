@@ -10,7 +10,7 @@
         <script src="app/libs/less.js" type="text/javascript" charset="utf-8"></script>
         
         <link rel="stylesheet" href="css/photoswipe.css" type="text/css" charset="utf-8">
-        <link rel="stylesheet" href="css/snapr.css" type="text/css" charset="utf-8">
+        <!-- <link rel="stylesheet" href="css/snapr.css" type="text/css" charset="utf-8"> -->
     </head> 
 <body> 
 
@@ -288,29 +288,34 @@
             <h1>Uploading</h1>
         </div>
         <div data-role="content">
+            
         </div>
+       
+       
+        </div>
+        
     </div>
 
     <!-- template for #uploading content attached to upload progress li view -->
     <script id="uploading-template" type="text/template">
-        <div class="upload-progress-container">
-            <div class="PINK-upload-image upload-image">
-                <div class="edit-image PINK-upload-image-thumb">
-                    <img src="<%= img_url %>" />
-                </div>
-            </div>
-            <div class="upload-progress-container PINK-upload-image-info">
-            <h1>Looking good!</h1>
-            <div class="progress-bar <%= upload_status %>">
-                <div class="bar-bg bar">
-                </div>
-                <div class="bar-prog bar" style="width:<%= percent_complete %>%">
-                </div>
-            </div>
-            <span><%= percent_complete %>%</span>
-            
-            </div>
-        </div>
+       <div class="upload-progress-container">
+           <div class="PINK-upload-image upload-image">
+               <div class="edit-image PINK-upload-image-thumb">
+                   <img src="<%= img_url %>" />
+               </div>
+               
+               <div class="upload-progress-container PINK-upload-image-info">
+               <h2>Looking good!</h2>
+               <div class="progress-bar <%= upload_status %>">
+                   <div class="bar-bg bar">
+                   </div>
+                   <div class="bar-prog bar" style="width:<%= percent_complete %>%">
+                   </div>
+                   <p class="progress-count"><%= percent_complete %>%</p>
+                   
+               </div>
+           </div>
+          </div>
     </script>
 
 
