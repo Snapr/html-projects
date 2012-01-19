@@ -9,6 +9,9 @@ snapr.views.love_it = Backbone.View.extend({
             return true;
         });
 
+        // clear previous content
+        $(this.el).find("[data-role='content']").empty();
+
         $.mobile.changePage( $("#love-it"), {changeHash: false} );
 
         this.template = _.template( $("#love-it-template").html() );
@@ -44,7 +47,7 @@ snapr.views.love_it = Backbone.View.extend({
                 .html( this.template({
                     shared: this.shared, 
                     img_url: img_url,
-                    height: this.model.get("height")
+                    height: (this.model.get("height")/this.model.get("width")*$(this.el).find("[data-role='content']").innerWidth()) + "px"
                 }) )
                 .trigger("create");
         }
