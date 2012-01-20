@@ -22,8 +22,6 @@
         <div data-role="header" class="PINK-native-title">
          <span class="PINK-header-logo"></span>  
             <h1></h1>
-          
-        	
         </div>
         <div data-role="content">
             <h1 class="PINK-title acessibility-text">PINK Your Pics</h1>
@@ -278,7 +276,7 @@
             <a href="#/" data-ajax="false" data-role="button" data-icon="home" data-iconpos="notext"></a>
             
         </div>
-        <div data-role="content">
+        <div data-role="content" data-theme="c">
             <div data-role="fieldcontain">
                 <form id="upload-form" action="javascript:void(0);" method="POST" enctype="multipart/form-data">
                     <input type="hidden" name="redirect_uri" id="redirect_uri"/>
@@ -289,7 +287,12 @@
                     <label for="username">Select a photo to upload:</label>
                     <input type="file" name="photo" id="upload-file" />
                     
-                    <input disabled="true" type="submit" value="Upload Snap" id="upload-submit" />
+                    <span class="PINK-text-btn">
+                    <input disabled="true" type="submit" value="Upload Snap" id="upload-submit" data-theme="e" />
+                    </span>
+                    
+                 
+                    
                 </form>
             </div>
         </div>
