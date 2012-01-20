@@ -16,6 +16,15 @@
 	background-image:		 linear-gradient( bottom, @start 0%, @start-mid 50%, @end-mid 50%, @end 100% );
 }
 
+.shiny-gradient-45 (@start, @start-mid, @end-mid, @end) {
+	background-image: -webkit-gradient(linear,left bottom, right top, color-stop(0, @start),color-stop(0.5, @start-mid), color-stop(0.5, @end-mid),color-stop(1, @end)); /* Saf4+, Chrome */	
+	background-image: -webkit-linear-gradient( left bottom, @start 0%, @start-mid 50%, @end-mid 50%, @end 100% ); /* Chrome 10+, Saf5.1+ */
+	background-image:	-moz-linear-gradient( left bottom, @start 0%, @start-mid 50%, @end-mid 50%, @end 100% ); /* FF3.6 */
+	background-image:	 -ms-linear-gradient( left bottom, @start 0%, @start-mid 50%, @end-mid 50%, @end 100% ); /* IE10 */
+	background-image:	  -o-linear-gradient( left bottom, @start 0%, @start-mid 50%, @end-mid 50%, @end 100% ); /* Opera 11.10+ */
+	background-image:		 linear-gradient( left bottom, @start 0%, @start-mid 50%, @end-mid 50%, @end 100% );
+}
+
 .corner-tl (@radius: @global-radii-blocks) {
 	-moz-border-radius-topleft: @radius;
 	-webkit-border-top-left-radius: @radius;

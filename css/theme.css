@@ -457,11 +457,41 @@ a {
 .ui-bar-a .ui-btn-up-a,
 .ui-bar-a .ui-btn-hover-a,
 .ui-bar-a .ui-btn-down-a,
+.ui-bar-a .ui-btn-active-a {
+  height: 30px;
+  border-bottom: 1.5px solid rgba(255, 255, 255, 0.4);
+}
+.ui-bar-a .ui-btn-up-a .ui-btn-inner,
+.ui-bar-a .ui-btn-hover-a .ui-btn-inner,
+.ui-bar-a .ui-btn-down-a .ui-btn-inner,
+.ui-bar-a .ui-btn-active-a .ui-btn-inner {
+  border: none;
+  padding-left: 0;
+  padding-right: 0;
+}
+.ui-bar-a .ui-btn-up-a,
+.ui-bar-a .ui-btn-hover-a,
+.ui-bar-a .ui-btn-down-a,
 .ui-bar-a .ui-btn-active-a,
 .ui-bar-a .ui-btn-up-a[data-rel="back"]::before,
 .ui-bar-a .ui-btn-hover-a[data-rel="back"]::before,
 .ui-bar-a .ui-btn-down-a[data-rel="back"]::before,
 .ui-bar-a .ui-btn-active-a[data-rel="back"]::before {
+  -webkit-box-shadow: 0 -1px 1px rgba(0, 0, 0, 0.2) inset, 0 1px 2px rgba(0, 0, 0, 0.8) inset;
+  background-repeat: repeat-x;
+  background-position: 0;
+}
+.ui-bar-a .ui-btn-up-a.ui-shadow,
+.ui-bar-a .ui-btn-hover-a.ui-shadow,
+.ui-bar-a .ui-btn-down-a.ui-shadow,
+.ui-bar-a .ui-btn-active-a.ui-shadow,
+.ui-bar-a .ui-btn-up-a[data-rel="back"]::before.ui-shadow,
+.ui-bar-a .ui-btn-hover-a[data-rel="back"]::before.ui-shadow,
+.ui-bar-a .ui-btn-down-a[data-rel="back"]::before.ui-shadow,
+.ui-bar-a .ui-btn-active-a[data-rel="back"]::before.ui-shadow {
+  -webkit-box-shadow: 0 -1px 1px rgba(0, 0, 0, 0.2) inset, 0 1px 2px rgba(0, 0, 0, 0.8) inset;
+}
+.ui-bar-a a[data-rel="back"] {
   background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, rgba(0, 0, 0, 0)), color-stop(0.5, rgba(0, 0, 0, 0)), color-stop(0.5, rgba(255, 255, 255, 0.1)), color-stop(1, rgba(255, 255, 255, 0.3)));
   /* Saf4+, Chrome */
   background-image: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 50%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.3) 100%);
@@ -477,46 +507,47 @@ a {
   /* Opera 11.10+ */
 
   background-image: linear-gradient(bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 50%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.3) 100%);
-  -webkit-box-shadow: 0 -1px 1px rgba(0, 0, 0, 0.2) inset, 0 1px 2px rgba(0, 0, 0, 0.8) inset;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
-  height: 30px;
-  background-repeat: repeat-x;
-  -webkit-background-size: 30px;
-  background-position: 0;
-}
-.ui-bar-a .ui-btn-up-a .ui-btn-inner,
-.ui-bar-a .ui-btn-hover-a .ui-btn-inner,
-.ui-bar-a .ui-btn-down-a .ui-btn-inner,
-.ui-bar-a .ui-btn-active-a .ui-btn-inner,
-.ui-bar-a .ui-btn-up-a[data-rel="back"]::before .ui-btn-inner,
-.ui-bar-a .ui-btn-hover-a[data-rel="back"]::before .ui-btn-inner,
-.ui-bar-a .ui-btn-down-a[data-rel="back"]::before .ui-btn-inner,
-.ui-bar-a .ui-btn-active-a[data-rel="back"]::before .ui-btn-inner {
-  border: none;
-  padding-left: 0;
-  padding-right: 0;
-}
-.ui-bar-a a[data-rel="back"] {
   display: block;
   -webkit-border-radius: 5px;
   position: absolute;
   z-index: 0;
   width: auto;
   padding: 0 10px 0 6px;
+  -webkit-background-size: 30px;
+  height: 30px;
 }
 .ui-bar-a a[data-rel="back"] .ui-icon {
   display: none;
+}
+.ui-bar-a a[data-rel="back"] .ui-btn-inner {
+  padding-left: 0;
+  padding-right: 0;
 }
 .ui-bar-a a[data-rel="back"]::before {
   position: absolute;
   content: ' ';
   left: -8px;
   top: 3.5px;
-  height: 24px;
-  width: 24px;
+  height: 22px;
+  width: 22px;
   z-index: 1;
-  -webkit-background-size: 20px 20px;
+  -webkit-background-size: 22px 22px;
   background-position: -1px -0.5px;
+  background-image: -webkit-gradient(linear, left bottom, right top, color-stop(0, rgba(0, 0, 0, 0)), color-stop(0.5, rgba(0, 0, 0, 0)), color-stop(0.5, rgba(255, 255, 255, 0.1)), color-stop(1, rgba(255, 255, 255, 0.3)));
+  /* Saf4+, Chrome */
+  background-image: -webkit-linear-gradient(left bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 50%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.3) 100%);
+  /* Chrome 10+, Saf5.1+ */
+
+  background-image: -moz-linear-gradient(left bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 50%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.3) 100%);
+  /* FF3.6 */
+
+  background-image: -ms-linear-gradient(left bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 50%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.3) 100%);
+  /* IE10 */
+
+  background-image: -o-linear-gradient(left bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 50%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.3) 100%);
+  /* Opera 11.10+ */
+
+  background-image: linear-gradient(left bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 50%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.3) 100%);
   -webkit-transform: rotate(-45deg) skew(-10deg, -10deg);
   -webkit-border-top-right-radius: 10px;
   -webkit-border-top-left-radius: 0px;

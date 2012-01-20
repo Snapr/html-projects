@@ -396,38 +396,50 @@ a{
     .ui-btn-up-a,
     .ui-btn-hover-a,
     .ui-btn-down-a,
+    .ui-btn-active-a{
+         height:30px;
+         border-bottom: 1.5px solid rgba(255, 255, 255, 0.4);
+         .ui-btn-inner{
+            border: none;
+            padding-left: 0;
+            padding-right: 0;
+         }
+    }
+
+    .ui-btn-up-a,
+    .ui-btn-hover-a,
+    .ui-btn-down-a,
     .ui-btn-active-a,
     .ui-btn-up-a[data-rel="back"]::before,
     .ui-btn-hover-a[data-rel="back"]::before,
     .ui-btn-down-a[data-rel="back"]::before,
     .ui-btn-active-a[data-rel="back"]::before{
-        .shiny-gradient (@a-bup-background-start, @a-bup-background-start-mid, @a-bup-background-end-mid, @a-bup-background-end); 
-
         -webkit-box-shadow: 0 -1px 1px rgba(0,0,0,0.2)inset, 0 1px 2px rgba(0,0,0,0.8)inset;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.4);
-        height: 30px;
+        &.ui-shadow{
+            -webkit-box-shadow: 0 -1px 1px rgba(0,0,0,0.2)inset, 0 1px 2px rgba(0,0,0,0.8)inset;
+            }
         background-repeat: repeat-x;
-        -webkit-background-size: 30px;
-        background-position: 0;
-        .ui-btn-inner{
-                border: none;
-                padding-left: 0;
-                padding-right: 0;
-        }
-        
+      
+        background-position: 0; 
     }
 
     a[data-rel="back"]{
+        .shiny-gradient (@a-bup-background-start, @a-bup-background-start-mid, @a-bup-background-end-mid, @a-bup-background-end); 
         display: block;
         -webkit-border-radius: 5px;
         position: absolute;
         z-index: 0;
         width: auto;
         padding: 0 10px 0 6px;
-               
+          -webkit-background-size: 30px;
+         height: 30px;   
         .ui-icon{
             display: none;
         }
+         .ui-btn-inner{
+            padding-left: 0;
+            padding-right: 0;
+         }
     }
     
     a[data-rel="back"]::before {
@@ -435,11 +447,12 @@ a{
         content: ' ';
         left: -8px;
         top: 3.5px;
-        height: 24px;
-        width: 24px;
+        height: 22px;
+        width: 22px;
         z-index: 1;
-        -webkit-background-size: 20px 20px;
+        -webkit-background-size: 22px 22px;
         background-position: -1px -0.5px;
+        .shiny-gradient-45 (@a-bup-background-start, @a-bup-background-start-mid, @a-bup-background-end-mid, @a-bup-background-end);
         -webkit-transform: rotate(-45deg) skew(-10deg, -10deg);
         -webkit-border-top-right-radius: 10px;
         -webkit-border-top-left-radius: 0px;
