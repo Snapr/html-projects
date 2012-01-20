@@ -36,6 +36,14 @@
 /*
 * Ported to lesscss.org by Alexander Prinzhorn
 */
+
+/*
+* CSS only back buttons based on work by Gregor Adams - http://dream-world.us/2011/11/30/the-best-pure-css3-ios-style-arrow-back-button/
+*/
+
+
+
+
 @import "variables.less";
 @import "mixins.less";
 
@@ -65,7 +73,7 @@ body {
 }
 
 .ui-header .ui-btn-inner, .ui-footer .ui-btn-inner, .ui-bar .ui-btn-inner {
-    padding: 7px 8px 8px;
+    padding: 7px 10px 8px;
 }
 
 h2,
@@ -399,11 +407,15 @@ a{
     .ui-btn-active-a{
          height:30px;
          border-bottom: 1.5px solid rgba(255, 255, 255, 0.4);
+         .shiny-gradient (@a-bup-background-start, @a-bup-background-start-mid, @a-bup-background-end-mid, @a-bup-background-end);
          .ui-btn-inner{
             border: none;
-            padding-left: 0;
-            padding-right: 0;
+
          }
+    }
+    
+    .ui-btn-icon-notext .ui-btn-inner {
+        padding: 7px 5px 2px 3px;
     }
 
     .ui-btn-up-a,
@@ -424,7 +436,7 @@ a{
     }
 
     a[data-rel="back"]{
-        .shiny-gradient (@a-bup-background-start, @a-bup-background-start-mid, @a-bup-background-end-mid, @a-bup-background-end); 
+         
         display: block;
         -webkit-border-radius: 5px;
         position: absolute;
