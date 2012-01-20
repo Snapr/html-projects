@@ -331,27 +331,26 @@ a {
 }
 .ui-bar-a {
   border-bottom: 1px solid #2a2a2a;
-  background: transparent;
+  background: rgba(0, 0, 0, 0.85);
   color: #ffffff;
   font-weight: bold;
   text-shadow: 0 -1px 1px #000000;
   font-family: Helvetica, Arial, sans-serif;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(60, 60, 60, 0.8)), to(rgba(17, 17, 17, 0.8)));
+  background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, rgba(0, 0, 0, 0)), color-stop(0.5, rgba(0, 0, 0, 0)), color-stop(0.5, rgba(255, 255, 255, 0.1)), color-stop(1, rgba(255, 255, 255, 0.2)));
   /* Saf4+, Chrome */
-
-  background-image: -webkit-linear-gradient(top, rgba(60, 60, 60, 0.8), rgba(17, 17, 17, 0.8));
+  background-image: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 50%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.2) 100%);
   /* Chrome 10+, Saf5.1+ */
 
-  background-image: -moz-linear-gradient(top, rgba(60, 60, 60, 0.8), rgba(17, 17, 17, 0.8));
+  background-image: -moz-linear-gradient(bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 50%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.2) 100%);
   /* FF3.6 */
 
-  background-image: -ms-linear-gradient(top, rgba(60, 60, 60, 0.8), rgba(17, 17, 17, 0.8));
+  background-image: -ms-linear-gradient(bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 50%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.2) 100%);
   /* IE10 */
 
-  background-image: -o-linear-gradient(top, rgba(60, 60, 60, 0.8), rgba(17, 17, 17, 0.8));
+  background-image: -o-linear-gradient(bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 50%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.2) 100%);
   /* Opera 11.10+ */
 
-  background-image: linear-gradient(top, rgba(60, 60, 60, 0.8), rgba(17, 17, 17, 0.8));
+  background-image: linear-gradient(bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 50%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.2) 100%);
 }
 .ui-bar-a input,
 .ui-bar-a select,
@@ -377,82 +376,82 @@ a {
 }
 .ui-btn-up-a, .ui-btn-up-a[data-rel="back"]::before {
   border: 1px solid #222222;
-  background: #333333;
+  background: #000000;
   font-weight: bold;
   color: #ffffff;
   text-shadow: 0 -1px 1px #000000;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0)), to(rgba(255, 255, 255, 0.3)));
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0)), to(rgba(255, 255, 255, 0.2)));
   /* Saf4+, Chrome */
 
-  background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0), rgba(255, 255, 255, 0.3));
+  background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0), rgba(255, 255, 255, 0.2));
   /* Chrome 10+, Saf5.1+ */
 
-  background-image: -moz-linear-gradient(top, rgba(0, 0, 0, 0), rgba(255, 255, 255, 0.3));
+  background-image: -moz-linear-gradient(top, rgba(0, 0, 0, 0), rgba(255, 255, 255, 0.2));
   /* FF3.6 */
 
-  background-image: -ms-linear-gradient(top, rgba(0, 0, 0, 0), rgba(255, 255, 255, 0.3));
+  background-image: -ms-linear-gradient(top, rgba(0, 0, 0, 0), rgba(255, 255, 255, 0.2));
   /* IE10 */
 
-  background-image: -o-linear-gradient(top, rgba(0, 0, 0, 0), rgba(255, 255, 255, 0.3));
+  background-image: -o-linear-gradient(top, rgba(0, 0, 0, 0), rgba(255, 255, 255, 0.2));
   /* Opera 11.10+ */
 
-  background-image: linear-gradient(top, rgba(0, 0, 0, 0), rgba(255, 255, 255, 0.3));
+  background-image: linear-gradient(top, rgba(0, 0, 0, 0), rgba(255, 255, 255, 0.2));
 }
 .ui-btn-up-a a.ui-link-inherit, .ui-btn-up-a[data-rel="back"]::before a.ui-link-inherit {
   color: #ffffff;
 }
 .ui-btn-hover-a, .ui-btn-hover-a[data-rel="back"]::before {
   border: 1px solid #000000;
-  background: #444444;
+  background: #1b1b1b;
   font-weight: bold;
   color: #ffffff;
   text-shadow: 0 -1px 1px #000000;
   font-family: Helvetica, Arial, sans-serif;
   text-decoration: none;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0)), to(rgba(255, 255, 255, 0.3)));
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0)), to(rgba(255, 255, 255, 0.2)));
   /* Saf4+, Chrome */
 
-  background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0), rgba(255, 255, 255, 0.3));
+  background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0), rgba(255, 255, 255, 0.2));
   /* Chrome 10+, Saf5.1+ */
 
-  background-image: -moz-linear-gradient(top, rgba(0, 0, 0, 0), rgba(255, 255, 255, 0.3));
+  background-image: -moz-linear-gradient(top, rgba(0, 0, 0, 0), rgba(255, 255, 255, 0.2));
   /* FF3.6 */
 
-  background-image: -ms-linear-gradient(top, rgba(0, 0, 0, 0), rgba(255, 255, 255, 0.3));
+  background-image: -ms-linear-gradient(top, rgba(0, 0, 0, 0), rgba(255, 255, 255, 0.2));
   /* IE10 */
 
-  background-image: -o-linear-gradient(top, rgba(0, 0, 0, 0), rgba(255, 255, 255, 0.3));
+  background-image: -o-linear-gradient(top, rgba(0, 0, 0, 0), rgba(255, 255, 255, 0.2));
   /* Opera 11.10+ */
 
-  background-image: linear-gradient(top, rgba(0, 0, 0, 0), rgba(255, 255, 255, 0.3));
+  background-image: linear-gradient(top, rgba(0, 0, 0, 0), rgba(255, 255, 255, 0.2));
 }
 .ui-btn-hover-a a.ui-link-inherit, .ui-btn-hover-a[data-rel="back"]::before a.ui-link-inherit {
   color: #ffffff;
 }
 .ui-btn-down-a, .ui-btn-down-a[data-rel="back"]::before {
   border: 1px solid #000000;
-  background: #3d3d3d;
+  background: #1b1b1b;
   font-weight: bold;
   color: #ffffff;
   text-shadow: 0 -1px 1px #000000;
   font-family: Helvetica, Arial, sans-serif;
   text-decoration: none;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0)), to(rgba(255, 255, 255, 0.3)));
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0)), to(rgba(255, 255, 255, 0.2)));
   /* Saf4+, Chrome */
 
-  background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0), rgba(255, 255, 255, 0.3));
+  background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0), rgba(255, 255, 255, 0.2));
   /* Chrome 10+, Saf5.1+ */
 
-  background-image: -moz-linear-gradient(top, rgba(0, 0, 0, 0), rgba(255, 255, 255, 0.3));
+  background-image: -moz-linear-gradient(top, rgba(0, 0, 0, 0), rgba(255, 255, 255, 0.2));
   /* FF3.6 */
 
-  background-image: -ms-linear-gradient(top, rgba(0, 0, 0, 0), rgba(255, 255, 255, 0.3));
+  background-image: -ms-linear-gradient(top, rgba(0, 0, 0, 0), rgba(255, 255, 255, 0.2));
   /* IE10 */
 
-  background-image: -o-linear-gradient(top, rgba(0, 0, 0, 0), rgba(255, 255, 255, 0.3));
+  background-image: -o-linear-gradient(top, rgba(0, 0, 0, 0), rgba(255, 255, 255, 0.2));
   /* Opera 11.10+ */
 
-  background-image: linear-gradient(top, rgba(0, 0, 0, 0), rgba(255, 255, 255, 0.3));
+  background-image: linear-gradient(top, rgba(0, 0, 0, 0), rgba(255, 255, 255, 0.2));
 }
 .ui-btn-down-a a.ui-link-inherit, .ui-btn-down-a[data-rel="back"]::before a.ui-link-inherit {
   color: #ffffff;
@@ -463,21 +462,21 @@ a {
 .ui-bar-a .ui-btn-active-a {
   height: 30px;
   border-bottom: 1.5px solid rgba(255, 255, 255, 0.4);
-  background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, rgba(0, 0, 0, 0)), color-stop(0.5, rgba(0, 0, 0, 0)), color-stop(0.5, rgba(255, 255, 255, 0.1)), color-stop(1, rgba(255, 255, 255, 0.3)));
+  background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, rgba(0, 0, 0, 0)), color-stop(0.5, rgba(0, 0, 0, 0)), color-stop(0.5, rgba(255, 255, 255, 0.1)), color-stop(1, rgba(255, 255, 255, 0.2)));
   /* Saf4+, Chrome */
-  background-image: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 50%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.3) 100%);
+  background-image: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 50%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.2) 100%);
   /* Chrome 10+, Saf5.1+ */
 
-  background-image: -moz-linear-gradient(bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 50%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.3) 100%);
+  background-image: -moz-linear-gradient(bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 50%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.2) 100%);
   /* FF3.6 */
 
-  background-image: -ms-linear-gradient(bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 50%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.3) 100%);
+  background-image: -ms-linear-gradient(bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 50%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.2) 100%);
   /* IE10 */
 
-  background-image: -o-linear-gradient(bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 50%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.3) 100%);
+  background-image: -o-linear-gradient(bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 50%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.2) 100%);
   /* Opera 11.10+ */
 
-  background-image: linear-gradient(bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 50%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.3) 100%);
+  background-image: linear-gradient(bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 50%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.2) 100%);
 }
 .ui-bar-a .ui-btn-up-a .ui-btn-inner,
 .ui-bar-a .ui-btn-hover-a .ui-btn-inner,
@@ -537,21 +536,21 @@ a {
   z-index: 1;
   -webkit-background-size: 22px 22px;
   background-position: -1px -0.5px;
-  background-image: -webkit-gradient(linear, left bottom, right top, color-stop(0, rgba(0, 0, 0, 0)), color-stop(0.5, rgba(0, 0, 0, 0)), color-stop(0.5, rgba(255, 255, 255, 0.1)), color-stop(1, rgba(255, 255, 255, 0.3)));
+  background-image: -webkit-gradient(linear, left bottom, right top, color-stop(0, rgba(0, 0, 0, 0)), color-stop(0.5, rgba(0, 0, 0, 0)), color-stop(0.5, rgba(255, 255, 255, 0.1)), color-stop(1, rgba(255, 255, 255, 0.2)));
   /* Saf4+, Chrome */
-  background-image: -webkit-linear-gradient(left bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 50%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.3) 100%);
+  background-image: -webkit-linear-gradient(left bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 50%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.2) 100%);
   /* Chrome 10+, Saf5.1+ */
 
-  background-image: -moz-linear-gradient(left bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 50%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.3) 100%);
+  background-image: -moz-linear-gradient(left bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 50%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.2) 100%);
   /* FF3.6 */
 
-  background-image: -ms-linear-gradient(left bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 50%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.3) 100%);
+  background-image: -ms-linear-gradient(left bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 50%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.2) 100%);
   /* IE10 */
 
-  background-image: -o-linear-gradient(left bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 50%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.3) 100%);
+  background-image: -o-linear-gradient(left bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 50%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.2) 100%);
   /* Opera 11.10+ */
 
-  background-image: linear-gradient(left bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 50%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.3) 100%);
+  background-image: linear-gradient(left bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 50%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.2) 100%);
   -webkit-transform: rotate(-45deg) skew(-10deg, -10deg);
   -webkit-border-top-right-radius: 10px;
   -webkit-border-top-left-radius: 0px;
