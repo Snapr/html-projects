@@ -227,7 +227,7 @@ snapr.views.photo_edit = Backbone.View.extend({
                         app_group: snapr.app_group
                     });
                 }
-                pass_data("snapr://upload?" + $.param(params).replace(/\+/g, '%20') );
+                pass_data("snapr://upload?" + $.param(params) );
             }
         }
     },

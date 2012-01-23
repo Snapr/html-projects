@@ -220,7 +220,7 @@ snapr.utils.notification = function( title, text, callback ){
         {
             par.message = text;
         }
-        window.location.href = "snapr://alert?" + $.param( par );
+        pass_data( "snapr://alert?" + $.param( par ) );
     }
     else
     {
@@ -248,12 +248,12 @@ snapr.utils.approve = function( options ){
 
     if (snapr.utils.get_local_param( "appmode" ) == 'iphone'){
         var actionID = snapr.utils.tapped_action.add(options.yes_callback, options.no_callback);
-        window.location.href = 'snapr://action?'+$.param({
+        pass_data('snapr://action?'+$.param({
             'title': options.title,
             'destructiveButton': options.yes,
             'cancelButton': options.no,
             'actionID': actionID
-        });
+        }) );
     }else{
         if(confirm(options.title)){
             $.proxy(options.yes_callback, context)();
@@ -444,7 +444,7 @@ snapr.routers = Backbone.Router.extend({
 
 function pass_data( url )
 {
-    window.location = url;
+    window.location = url.replace(/\+/g, '%20');
 }
 
 function upload_progress(data, datatype)
