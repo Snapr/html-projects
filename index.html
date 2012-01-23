@@ -4,16 +4,99 @@
         <title>PINK</title> 
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1">
         <meta name="apple-mobile-web-app-capable" content="yes">
-        <!-- <link rel="stylesheet" href="app/libs/jquery.mobile-1.0/jquery.mobile-1.0.css" type="text/css" charset="utf-8"> -->
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        
+        
+        <script src="app/libs/json2.js" type="text/javascript" charset="utf-8"></script> <!-- just in case the browser sucks at JSON -->
+
+        <script src="app/libs/jquery-1.7.1.js" type="text/javascript" charset="utf-8"></script>
+        <script src="app/libs/jquery.validate.js" type="text/javascript" charset="utf-8"></script>
+        <script src="app/libs/jq.cookie.js" type="text/javascript" charset="utf-8"></script>
+
+        <script type="text/javascript" charset="utf-8">
+        snapr = {};
+        snapr.redirect = '';
+        snapr.models = {};
+        snapr.views = {};
+        snapr.base_url = "http://dev.sna.pr";
+        snapr.api_base = snapr.base_url + "/api";
+        snapr.access_token_url = snapr.base_url + "/ext/oauth/access_token/";
+
+        // disable jquery-mobile's hash nav so we can replace it with backbone.js
+        $(document).bind("mobileinit", function(){
+            $.mobile.ajaxEnabled = false;
+            $.mobile.pushStateEnabled = false;
+            $.mobile.hashListeningEnabled = false;
+            $.mobile.defaultPageTransition = 'none';
+
+            $.mobile.fixedToolbars.setTouchToggleEnabled(false);
+
+            // true fixed positioned headers still seem buggy so is disabled
+            // $.mobile.touchOverflowEnabled = true;
+
+            // hack to handle cases where we're going directly to a hash
+            // we go to the home screen and re-trigger the navigate event
+            snapr.redirect = window.location.hash.replace('#','')
+            $(document).bind('snaprinit',function(){
+                if(snapr.redirect.length){
+                    console.warn('redirect to',snapr.redirect)
+                    Route.navigate(snapr.redirect, true);
+                }
+            });
+
+        });
+        </script>
+
+        <script src="app/libs/jquery.mobile-1.0/jquery.mobile-1.0.js" type="text/javascript" charset="utf-8"></script>
+
+        <script src="app/libs/klass.min.js" type="text/javascript" charset="utf-8"></script> <!-- used by photoswipe -->
+        <script src="app/libs/code.photoswipe.jquery-3.0.0.js" type="text/javascript" charset="utf-8"></script> <!-- photoswipe -->
+
+        <script src="app/libs/underscore.js" type="text/javascript" charset="utf-8"></script> <!-- required by backbone -->
+        <script src="app/libs/backbone.js" type="text/javascript" charset="utf-8"></script> <!-- handles routing, models and sync -->
+
+        <!-- backbone views -->
+        <script src="app/views/home.js" type="text/javascript" charset="utf-8"></script>
+        <script src="app/views/login.js" type="text/javascript" charset="utf-8"></script>
+        <script src="app/views/upload.js" type="text/javascript" charset="utf-8"></script>
+        <script src="app/views/uploading.js" type="text/javascript" charset="utf-8"></script>
+        <script src="app/views/photo_edit.js" type="text/javascript" charset="utf-8"></script>
+        <script src="app/views/love_it.js" type="text/javascript" charset="utf-8"></script>
+        <script src="app/views/upload_settings.js" type="text/javascript" charset="utf-8"></script>
+        <script src="app/views/linked_service.js" type="text/javascript" charset="utf-8"></script>
+        <script src="app/views/linked_services.js" type="text/javascript" charset="utf-8"></script>
+        <script src="app/views/feed.js" type="text/javascript" charset="utf-8"></script>
+        <script src="app/views/pink_hearts.js" type="text/javascript" charset="utf-8"></script>
+        <script src="app/views/upload_progress_li.js" type="text/javascript" charset="utf-8"></script>
+        <script src="app/views/feed_list.js" type="text/javascript" charset="utf-8"></script>
+        <script src="app/views/feed_li.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- backbone models -->
+        <script src="app/models/auth.js" type="text/javascript" charset="utf-8"></script>
+        <script src="app/models/user.js" type="text/javascript" charset="utf-8"></script>
+        <script src="app/models/user_collection.js" type="text/javascript" charset="utf-8"></script>
+        <script src="app/models/user_settings.js" type="text/javascript" charset="utf-8"></script>
+        <script src="app/models/linked_service.js" type="text/javascript" charset="utf-8"></script>
+        <script src="app/models/photo.js" type="text/javascript" charset="utf-8"></script>
+        <script src="app/models/photo_collection.js" type="text/javascript" charset="utf-8"></script>
+        <script src="app/models/pink_photo.js" type="text/javascript" charset="utf-8"></script>
+        <script src="app/models/pink_photo_collection.js" type="text/javascript" charset="utf-8"></script>
+        <script src="app/models/comment.js" type="text/javascript" charset="utf-8"></script>
+        <script src="app/models/favorite.js" type="text/javascript" charset="utf-8"></script>
+        <script src="app/models/thumb.js" type="text/javascript" charset="utf-8"></script>
+        <script src="app/models/thumb_collection.js" type="text/javascript" charset="utf-8"></script>
+        <script src="app/models/reaction_collection.js" type="text/javascript" charset="utf-8"></script>
+        <script src="app/models/reaction.js" type="text/javascript" charset="utf-8"></script>
+        <script src="app/snapr.js" type="text/javascript" charset="utf-8"></script>
+        
+        
         <link rel="stylesheet" href="app/libs/jquery.mobile-1.0/jquery.mobile.structure-1.0.css" type="text/css" charset="utf-8">
         <!-- <link href="css/theme.less" rel="stylesheet/less" type="text/css">
-                <script src="app/libs/less.js" type="text/javascript" charset="utf-8"></script> -->
-        <link href="css/theme.less" rel="stylesheet/less" type="text/css">
+        <script src="app/libs/less.js" type="text/javascript" charset="utf-8"></script> -->
         <link rel="stylesheet" href="css/theme.css" type="text/css" charset="utf-8">
         
         
-        <link rel="stylesheet" href="css/photoswipe.css" type="text/css" charset="utf-8">
-        <!-- <link rel="stylesheet" href="css/snapr.css" type="text/css" charset="utf-8"> -->
+        <!-- <link rel="stylesheet" href="css/photoswipe.css" type="text/css" charset="utf-8"> -->
     </head> 
 <body> 
 
@@ -244,7 +327,7 @@
             <div class="login-message"></div>
             <form action="javascript: void(0);" accept-charset="utf-8" id="login-dialog">
                 <fieldset>
-                    <label for="username">Username</label><input type="text" name="username" placeholder="  " autocapitalize="off" id="login-dialog-username">
+                    <label for="username">Username</label><input type="text" name="username" placeholder="  " autocapitalize="off" autocorrect="off" id="login-dialog-username">
                     <label for="password">Password</label><input type="password" name="password" placeholder="  " id="login-dialog-password">
                     <input type="submit" name="login" data-theme="b" value="Log In">
                 </fieldset>
@@ -441,87 +524,6 @@
 
 <!-- end page content and templates -->
 
-<script src="app/libs/json2.js" type="text/javascript" charset="utf-8"></script> <!-- just in case the browser sucks at JSON -->
-
-<script src="app/libs/jquery-1.7.1.js" type="text/javascript" charset="utf-8"></script>
-<script src="app/libs/jquery.validate.js" type="text/javascript" charset="utf-8"></script>
-<script src="app/libs/jq.cookie.js" type="text/javascript" charset="utf-8"></script>
-
-<script type="text/javascript" charset="utf-8">
-snapr = {};
-snapr.redirect = '';
-snapr.models = {};
-snapr.views = {};
-snapr.base_url = "http://dev.sna.pr";
-snapr.api_base = snapr.base_url + "/api";
-snapr.access_token_url = snapr.base_url + "/ext/oauth/access_token/";
-
-// disable jquery-mobile's hash nav so we can replace it with backbone.js
-$(document).bind("mobileinit", function(){
-    $.mobile.ajaxEnabled = false;
-    $.mobile.pushStateEnabled = false;
-    $.mobile.hashListeningEnabled = false;
-    $.mobile.defaultPageTransition = 'none';
-
-    $.mobile.fixedToolbars.setTouchToggleEnabled(false);
-
-    // true fixed positioned headers still seem buggy so is disabled
-    // $.mobile.touchOverflowEnabled = true;
-
-    // hack to handle cases where we're going directly to a hash
-    // we go to the home screen and re-trigger the navigate event
-    snapr.redirect = window.location.hash.replace('#','')
-    $(document).bind('snaprinit',function(){
-        if(snapr.redirect.length){
-            console.warn('redirect to',snapr.redirect)
-            Route.navigate(snapr.redirect, true);
-        }
-    });
-
-});
-</script>
-
-<script src="app/libs/jquery.mobile-1.0/jquery.mobile-1.0.js" type="text/javascript" charset="utf-8"></script>
-
-<script src="app/libs/klass.min.js" type="text/javascript" charset="utf-8"></script> <!-- used by photoswipe -->
-<script src="app/libs/code.photoswipe.jquery-3.0.0.js" type="text/javascript" charset="utf-8"></script> <!-- photoswipe -->
-
-<script src="app/libs/underscore.js" type="text/javascript" charset="utf-8"></script> <!-- required by backbone -->
-<script src="app/libs/backbone.js" type="text/javascript" charset="utf-8"></script> <!-- handles routing, models and sync -->
-
-<!-- backbone views -->
-<script src="app/views/home.js" type="text/javascript" charset="utf-8"></script>
-<script src="app/views/login.js" type="text/javascript" charset="utf-8"></script>
-<script src="app/views/upload.js" type="text/javascript" charset="utf-8"></script>
-<script src="app/views/uploading.js" type="text/javascript" charset="utf-8"></script>
-<script src="app/views/photo_edit.js" type="text/javascript" charset="utf-8"></script>
-<script src="app/views/love_it.js" type="text/javascript" charset="utf-8"></script>
-<script src="app/views/upload_settings.js" type="text/javascript" charset="utf-8"></script>
-<script src="app/views/linked_service.js" type="text/javascript" charset="utf-8"></script>
-<script src="app/views/linked_services.js" type="text/javascript" charset="utf-8"></script>
-<script src="app/views/feed.js" type="text/javascript" charset="utf-8"></script>
-<script src="app/views/pink_hearts.js" type="text/javascript" charset="utf-8"></script>
-<script src="app/views/upload_progress_li.js" type="text/javascript" charset="utf-8"></script>
-<script src="app/views/feed_list.js" type="text/javascript" charset="utf-8"></script>
-<script src="app/views/feed_li.js" type="text/javascript" charset="utf-8"></script>
-
-<!-- backbone models -->
-<script src="app/models/auth.js" type="text/javascript" charset="utf-8"></script>
-<script src="app/models/user.js" type="text/javascript" charset="utf-8"></script>
-<script src="app/models/user_collection.js" type="text/javascript" charset="utf-8"></script>
-<script src="app/models/user_settings.js" type="text/javascript" charset="utf-8"></script>
-<script src="app/models/linked_service.js" type="text/javascript" charset="utf-8"></script>
-<script src="app/models/photo.js" type="text/javascript" charset="utf-8"></script>
-<script src="app/models/photo_collection.js" type="text/javascript" charset="utf-8"></script>
-<script src="app/models/pink_photo.js" type="text/javascript" charset="utf-8"></script>
-<script src="app/models/pink_photo_collection.js" type="text/javascript" charset="utf-8"></script>
-<script src="app/models/comment.js" type="text/javascript" charset="utf-8"></script>
-<script src="app/models/favorite.js" type="text/javascript" charset="utf-8"></script>
-<script src="app/models/thumb.js" type="text/javascript" charset="utf-8"></script>
-<script src="app/models/thumb_collection.js" type="text/javascript" charset="utf-8"></script>
-<script src="app/models/reaction_collection.js" type="text/javascript" charset="utf-8"></script>
-<script src="app/models/reaction.js" type="text/javascript" charset="utf-8"></script>
-<script src="app/snapr.js" type="text/javascript" charset="utf-8"></script>
 
 <!-- weinre script for remote debugging -->
 <!-- <script src="http://localhost:8080/target/target-script-min.js#anonymous"></script> -->
