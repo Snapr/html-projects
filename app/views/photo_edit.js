@@ -44,22 +44,11 @@ snapr.views.photo_edit = Backbone.View.extend({
     
     render: function()
     {
-        $(this.el).find("[data-role='content']").html( this.template() ).trigger("create");
-        
-        if (snapr.utils.get_local_param( "facebook-sharing" ) == "on")
-        {
-            $(this.el).find("#facebook-sharing").val("on").slider("refresh").trigger("change");
-        }
-
-        if (snapr.utils.get_local_param( "tumblr-sharing" ) == "on")
-        {
-            $(this.el).find("#tumblr-sharing").val("on").slider("refresh").trigger("change");
-        }
-
-        if (snapr.utils.get_local_param( "enter-girl-of-month" ) == "on")
-        {
-            $(this.el).find("#enter-girl-of-month").val("on").slider("refresh").trigger("change");
-        }
+        $(this.el).find("[data-role='content']").html( this.template({
+            facebook_sharing: (snapr.utils.get_local_param( "facebook-sharing" ) == "on"),
+            tumblr_sharing: (snapr.utils.get_local_param( "tumblr-sharing" ) == "on"),
+            enter_girl_of_month: (snapr.utils.get_local_param( "enter-girl-of-month" ) == "on")
+        }) ).trigger("create");
         
         return this;
     },
