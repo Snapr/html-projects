@@ -1543,7 +1543,7 @@ a.ui-link-inherit {
   margin: -20px;
 }
 .ui-content .ui-listview-inset {
-  margin: 1em 0;
+  margin: 14px 0;
 }
 .ui-btn {
   margin-left: 0;
@@ -1707,8 +1707,7 @@ a.ui-link-inherit {
   font-weight: normal;
 }
 .PINK-text-btn .ui-btn-inner {
-  padding-top: 3px;
-  padding-bottom: 3px;
+  padding: 3px;
 }
 .skip {
   font-size: 13px;
@@ -1718,11 +1717,11 @@ a.ui-link-inherit {
 }
 .PINK-love-it {
   text-align: center;
-  margin-top: -160px;
+  margin-top: -180px;
   margin-bottom: 15px;
 }
 .PINK-love-it h2, .PINK-love-it p {
-  margin: 5px 0;
+  margin: 2px 0;
 }
 /* upload progress */
 .progress-bar {
