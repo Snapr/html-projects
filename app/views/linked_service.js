@@ -2,14 +2,15 @@ snapr.views.linked_service = Backbone.View.extend({
 
     tagName: 'div',
     
-    // initialize: function()
-    // {
-    //     console.warn( "initialize linked_service", this );
-    // },
+    initialize: function()
+    {
+        // console.warn( "initialize linked_service", this );
+        
+        this.linked_service_template = _.template( $('#linked-service-template').html() );
 
-    linked_service_template: _.template( $('#linked-service-template').html() ),
-
-    add_service_template: _.template( $('#add-linked-service-template').html() ),
+        this.add_service_template = _.template( $('#add-linked-service-template').html() );
+        
+    },
 
     events: {
         "click .link-service" : "link_service",
