@@ -143,7 +143,7 @@ snapr.views.uploading = Backbone.View.extend({
                 "yes_callback": function(){
                     if (snapr.utils.get_local_param("appmode"))
                     {
-                        window.location = "snapr://upload?cancel=" + this.current_upload.id;
+                        pass_data("snapr://upload?cancel=" + this.current_upload.id);
                         Route.navigate( "#/photo-edit/?photo_path=" + this.current_upload.thumbnail, true );
                     }
                     else
