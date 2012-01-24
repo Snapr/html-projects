@@ -14,6 +14,7 @@ snapr.views.uploading = Backbone.View.extend({
         
         this.template = _.template( $("#uploading-template").html() );
                 
+        this.current_upload = null;
         this.pending_uploads = {};
         
         if (this.options.query.photo_id)
@@ -128,26 +129,35 @@ snapr.views.uploading = Backbone.View.extend({
     },
 
     events: {
-        "click .cancel-uploads": "cancel_uploads"
+        "click .cancel-upload": "cancel_upload"
     },
     
-    cancel_uploads: function()
+    cancel_upload: function()
     {
-        _.each( this.pending_uploads, function( photo, id )
+        if (this.current_upload)
         {
             snapr.utils.approve({
                 "title": "Cancel this upload?",
                 "yes_callback": function(){
-                    if (snapr.utils.get_local_param("appmode")){
-                        window.location = "snapr://upload?cancel=" + id;
+                    if (snapr.utils.get_local_param("appmode"))
+                    {
+                        window.location = "snapr://upload?cancel=" + this.current_upload.id;
+                        Route.navigate( "#/photo-edit/?photo_path=" + this.current_upload.thumbnail, true );
                     }
-                    else{
+                    else
+                    {
                         Route.navigate( "#/upload/", true );
                     }
                 }
             });
             
-        }, this );
+        }
+        else
+        {
+            console.warn("current_upload not set when trying to cancel upload");
+            Route.navigate( "#/", true );
+        }
+
     },
     
     upload_progress: function( upload_data )
@@ -165,16 +175,21 @@ snapr.views.uploading = Backbone.View.extend({
         
         var upload_heart_template = _.template( $("#uploading-template").html() );
         
-        _.each( upload_data.uploads, function( photo )
+        _.each( upload_data.uploads, function( photo, index )
         {
-            this.pending_uploads[photo.id] = new snapr.views.upload_progress_li({
-                template: upload_heart_template,
-                photo: photo
-            });
-            $content.append( this.pending_uploads[photo.id].render().el );
+            if (photo.upload_status == "active")
+            {
+                this.pending_uploads[photo.id] = new snapr.views.upload_progress_li({
+                    template: upload_heart_template,
+                    photo: photo
+                });
+                
+                this.current_upload = photo;
+                
+                $content.append( this.pending_uploads[photo.id].render().el );
+            }
+
         }, this );
-        
-        // $(this.el).find(".upload-progress-container").listview().listview("refresh");
         
     },
     
