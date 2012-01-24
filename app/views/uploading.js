@@ -1,6 +1,8 @@
 snapr.views.uploading = Backbone.View.extend({
     initialize: function()
     {
+        _.bindAll( this );
+
         this.el.live( "pagehide", function( e )
         {
             $(e.target).undelegate();
@@ -163,21 +165,12 @@ snapr.views.uploading = Backbone.View.extend({
     upload_progress: function( upload_data )
     {
         var $content = $(this.el).find('[data-role="content"]').empty();
-        
-        if (upload_data.uploads.length == 0)
-        {
-            $(this.el).find(".cancel-uploads").hide();
-        }
-        else
-        {
-            $(this.el).find(".cancel-uploads").show();
-        }
-        
         var upload_heart_template = _.template( $("#uploading-template").html() );
         
         _.each( upload_data.uploads, function( photo, index )
         {
-            if (photo.upload_status == "active")
+            // console.warn("photo: ", photo, " index: ", index)
+            if ((photo.upload_status.toLowerCase() == "active") && (!this.current_upload || this.current_upload.id == photo.id))
             {
                 this.pending_uploads[photo.id] = new snapr.views.upload_progress_li({
                     template: upload_heart_template,

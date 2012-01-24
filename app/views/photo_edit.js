@@ -227,6 +227,8 @@ snapr.views.photo_edit = Backbone.View.extend({
                         app_group: snapr.app_group
                     });
                 }
+                // temporary
+                Route.navigate("#/uploading/", true );
                 pass_data("snapr://upload?" + $.param(params) );
             }
         }
@@ -253,8 +255,6 @@ snapr.views.photo_edit = Backbone.View.extend({
     
     upload_completed: function( queue_id, snapr_id )
     {
-        this.pending_uploads[queue_id] && delete this.pending_uploads[queue_id];
-        
         Route.navigate( "#/love-it/?shared=true&photo_id=" + snapr_id, true );
     }
 

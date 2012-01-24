@@ -30,6 +30,14 @@ snapr.views.home = Backbone.View.extend({
                 
         return this;
     },
+    
+    upload_count: function( count )
+    {
+        if (count)
+        {
+            Route.navigate( '#/uploading/', true );
+        }
+    },
 
     upload_progress: function( upload_data )
     {
@@ -38,8 +46,6 @@ snapr.views.home = Backbone.View.extend({
     
     upload_completed: function( queue_id, snapr_id )
     {
-        this.pending_uploads[queue_id] && delete this.pending_uploads[queue_id];
-        
         Route.navigate( "#/love-it/?shared=true&photo_id=" + snapr_id, true );
     }
     
