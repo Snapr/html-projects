@@ -142,6 +142,11 @@ snapr.utils.save_local_param = function( key, value )
     {
         $.cookie( key, value);
     }
+    
+    if (key == "appmode")
+    {
+        $("body").addClass("appmode").addClass("appmode-" + value);
+    }
 }
 snapr.utils.get_local_param = function( key )
 {
@@ -544,5 +549,9 @@ $(function()
     // initialise router and start backbone
     Route = new snapr.routers;
     Backbone.history.start();
+    if (snapr.utils.get_local_param( "appmode" ))
+    {
+        $("body").addClass("appmode").addClass("appmode-" + snapr.utils.get_local_param( "appmode" ));
+    }
     $(document).trigger('snaprinit');
 });
