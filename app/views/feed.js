@@ -50,7 +50,7 @@ snapr.views.feed = Backbone.View.extend({
 
         if (query_data.pink_hearts)
         {
-            $(this.el).find("h1").text("Pink Hearts");
+            // $(this.el).find("h1").text("Pink Hearts");
             this.pink = true;
             this.photo_collection = new snapr.models.pink_photo_collection();
             this.photo_collection.url = "http://pink.victoriassecret.com/services/hearts/image_json.jsp";
@@ -60,7 +60,7 @@ snapr.views.feed = Backbone.View.extend({
         }
         else
         {
-            $(this.el).find("h1").text("Featured Girls");
+            // $(this.el).find("h1").text("Featured Pics");
             this.pink = false;
             this.photo_collection = new snapr.models.photo_collection();
             this.photo_collection.url = snapr.api_base + "/search/";
