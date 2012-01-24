@@ -61,11 +61,13 @@ html {
 */
 /* PINK Body */
 body {
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4);
+  background: #fab3af url('../gfx/PINK-noise.gif');
+}
+.ui-page {
   -webkit-box-shadow: inset 0 16px 52px rgba(255, 51, 151, 0.3);
   -moz-box-shadow: inset 0 16px 52px rgba(255, 51, 151, 0.3);
   box-shadow: inset 0 16px 52px rgba(255, 51, 151, 0.3);
-  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4);
-  background: #fab3af url('../gfx/PINK-noise.gif');
 }
 .ui-content {
   padding: 20px;
@@ -76,7 +78,7 @@ body {
   margin: 11px 90px 12px;
 }
 .ui-header .ui-btn-left {
-  left: 14px;
+  left: 6px;
   top: 6px;
 }
 .ui-header .ui-btn-inner, .ui-footer .ui-btn-inner, .ui-bar .ui-btn-inner {
@@ -93,6 +95,12 @@ p, .user-details, .PINK-small-text {
 }
 a {
   text-decoration: none;
+}
+.pop-white {
+  -moz-box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.2) !important;
+  -webkit-box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.2) !important;
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.2) !important;
+  background-color: #fff;
 }
 /* Swatches */
 /* C   == PINK Page body..
@@ -525,6 +533,7 @@ a {
   display: block;
   -webkit-border-radius: 5px;
   position: absolute;
+  left: 14px;
   z-index: 0;
   width: auto;
   padding: 0 10px 0 6px;
@@ -1536,7 +1545,7 @@ a.ui-link-inherit {
   margin: -20px;
 }
 .ui-content .ui-listview-inset {
-  margin: 1em 0;
+  margin: 14px 0;
 }
 .ui-btn {
   margin-left: 0;
@@ -1559,6 +1568,8 @@ a.ui-link-inherit {
   padding-left: 81px;
   color: white;
   text-shadow: none;
+  padding-top: 8px;
+  padding-bottom: 8px;
 }
 .PINK-menu-list .ui-icon-arrow-r {
   display: none;
@@ -1574,13 +1585,13 @@ a.ui-link-inherit {
   left: 0;
 }
 .PINK-menu-list .home-photo .PINK-menu-icon {
-  background-position: 0 0;
+  background-position: 0 -4px;
 }
 .PINK-menu-list .home-roll .PINK-menu-icon {
-  background-position: 0 -42px;
+  background-position: 0 -46px;
 }
 .PINK-menu-list .home-featured .PINK-menu-icon {
-  background-position: 0 -84px;
+  background-position: 0 -88px;
 }
 .PINK-menu-list .PINK-hearts-menu-btn {
   background-image: url('../gfx/PINK-menu-text.png');
@@ -1662,6 +1673,7 @@ a.ui-link-inherit {
 }
 .PINK-switch .ui-slider-label.ui-btn-active {
   color: white;
+  text-shadow: rgba(0, 0, 0, 0.5) 0px -1px 1px;
 }
 .PINK-switch .ui-slider-labelbg-b {
   background: white;
@@ -1697,22 +1709,21 @@ a.ui-link-inherit {
   font-weight: normal;
 }
 .PINK-text-btn .ui-btn-inner {
-  padding-top: 3px;
-  padding-bottom: 3px;
+  padding: 3px;
 }
 .skip {
   font-size: 13px;
   text-align: right;
   display: block;
-  margin-top: 20px;
+  margin-top: 12px;
 }
 .PINK-love-it {
   text-align: center;
-  margin-top: -160px;
+  margin-top: -180px;
   margin-bottom: 15px;
 }
 .PINK-love-it h2, .PINK-love-it p {
-  margin: 5px 0;
+  margin: 2px 0;
 }
 /* upload progress */
 .progress-bar {
