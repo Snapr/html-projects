@@ -25,7 +25,7 @@ snapr.views.photo_edit = Backbone.View.extend({
         this.render();
         if (this.query.photo_path)
         {
-            this.get_photo_from_path( this.query.photo_path );
+            this.get_photo_from_path( this.query.photo_path + "?ts=" + new Date().getTime() );
         }
         else if(this.query.photo_id || this.query.photo)
         {
