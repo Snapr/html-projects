@@ -109,17 +109,22 @@
         <div data-role="content">
             <h1 class="PINK-title acessibility-text">PINK Your Pics</h1>
             <ul data-role="listview" class="PINK-menu-list">
-            
-                <li class="home-photo"><a class="x-launch-camera"><span class="PINK-menu-icon icon ui-li-icon"></span>Take a photo</a></li>
-                <li class="home-roll"><a class="x-launch-photo-library"><span class="PINK-menu-icon icon ui-li-icon"></span>Choose an existing image</a></li>
-                <li class="home-featured"><a data-ajax="false" href="#/feed/"><span class="PINK-menu-icon icon ui-li-icon"></span>See featured pics</a></li>
-                <li class="home-pink-hearts"><a data-ajax="false" href="#/pink-hearts/" class="acessibility-text PINK-hearts-menu-btn">Pink Hearts - Explore images that inspire us</a></li>
             </ul>
         </div><!-- /content -->
     </div><!-- /page -->
 
     <!-- no templates for #home -->
-
+    <script id="home-template" type="text/template">
+    <% if (logged_in) {%>
+        <li class="home-photo"><a class="x-launch-camera"><span class="PINK-menu-icon icon ui-li-icon"></span>Take a photo</a></li>
+        <li class="home-roll"><a class="x-launch-photo-library"><span class="PINK-menu-icon icon ui-li-icon"></span>Choose an existing image</a></li>
+    <%}else{%>
+        <li><a data-ajax="false" href="#/login/"><span class="PINK-menu-icon icon ui-li-icon"></span>Log In</a></li>
+        <li><a data-ajax="false" href="#/join/"><span class="PINK-menu-icon icon ui-li-icon"></span>Join</a></li>
+    <%}%>
+        <li class="home-featured"><a data-ajax="false" href="#/feed/"><span class="PINK-menu-icon icon ui-li-icon"></span>See featured pics</a></li>
+        <li class="home-pink-hearts"><a data-ajax="false" href="#/pink-hearts/" class="acessibility-text PINK-hearts-menu-btn">Pink Hearts - Explore images that inspire us</a></li>
+    </script>
 
     <!-- list currently linked services and add new ones -->
     <div id="linked-services" data-title="Linked Services" data-add-back-btn="true" data-role="dialog">

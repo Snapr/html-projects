@@ -2,6 +2,9 @@ snapr.views.home = Backbone.View.extend({
 
     initialize: function()
     {
+        _.bindAll( this );
+        this.template = _.template( $("#home-template").html() );
+
         this.el.live('pagehide', function( e )
         {
             $(e.target).undelegate();
@@ -9,11 +12,23 @@ snapr.views.home = Backbone.View.extend({
             return true;
         });
 
+        snapr.auth.bind("change", this.render);
+
         if ($.mobile.activePage && $.mobile.activePage.find("#home").length < 1)
         {
             console.warn( 'changing page' );
             $.mobile.changePage( "#home" );
+            this.render();
         }
+    },
+
+    render: function()
+    {
+        $(this.el).find("[data-role='content'] ul")
+            .html( this.template( {logged_in: snapr.auth.has("access_token")} ))
+            .listview().listview("refresh");
+                
+        return this;
     },
 
     upload_progress: function( upload_data )
