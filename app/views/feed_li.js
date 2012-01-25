@@ -39,15 +39,15 @@ snapr.views.feed_li = Backbone.View.extend({
     {
         var location = this.model.get("location") && this.model.get("location").location;
         
-        if (location.length)
+        if (location)
         {
             if (location.split(",").length > 1)
             {
-                var city = location[location.length - 2];
+                var city = location.split(",")[location.split(",").length - 2];
             }
             else
             {
-                var city = location[0];
+                var city = location.split(",")[0];
             }
         }
         else
