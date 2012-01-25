@@ -190,9 +190,11 @@ snapr.views.uploading = Backbone.View.extend({
     
     upload_completed: function( queue_id, snapr_id )
     {
+        var photo_path = this.current_upload.thumbnail;
+        
         this.pending_uploads[queue_id] && delete this.pending_uploads[queue_id];
         
-        Route.navigate( "#/love-it/?shared=true&photo_id=" + snapr_id, true );
+        Route.navigate( "#/love-it/?shared=true&photo_path=" + photo_path, true );
     },
     
     upload_cancelled: function( queue_id )
