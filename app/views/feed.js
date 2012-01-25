@@ -114,6 +114,7 @@ snapr.views.feed = Backbone.View.extend({
         var list_style = this.pink ? "pink": "list";
 
         var feed_view = this;
+        var scrollY = window.scrollY;
         var options = {
             success: function()
             {
@@ -123,16 +124,17 @@ snapr.views.feed = Backbone.View.extend({
                     list_style: list_style
                 });
                 feed_view.feed_list.render( feed_view.photoswipe_init );
+                window.scrollTo(0,scrollY);
 
                 $(feed_view.el).find(".more").button("enable");
                 $(feed_view.el).find(".load-more").show();
-                $.mobile.hidePageLoadingMsg();
+                spinner_stop();
             },
             error:function()
             {
                 console.warn('error');
                 $(feed_view.el).find(".load-more").hide();
-                $.mobile.hidePageLoadingMsg();
+                spinner_stop();
             }
         }
 
@@ -147,8 +149,7 @@ snapr.views.feed = Backbone.View.extend({
             this.photo_collection.data = $.extend(this.photo_collection.data, additional_data);
         }
 
-        $.mobile.loadingMessage = "Loading";
-        $.mobile.showPageLoadingMsg();
+        spinner_start();
 
         if (this.pink)
         {
