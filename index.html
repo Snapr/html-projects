@@ -6,6 +6,44 @@
         <meta name="apple-mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-status-bar-style" content="black">
         
+        <style type="text/css" media="screen">
+            .n-centered-loader{
+                text-indent: -999px;
+                display:none;
+                position:fixed;  /* when this was set to static, spin.js wasn't working in android */
+                top:50%;
+                left:50%;
+                height:80px;
+                width:80px;
+                margin-left: -40px;
+                margin-top: -40px;
+                background-color: rgba(0,0,0,.6);
+                background-repeat: no-repeat;
+                background-position: center;
+                -webkit-border-radius: 8px;
+                -moz-border-radius: 8px;
+                border-radius: 8px;
+                z-index: 20;
+            }
+
+            .n-centered-loader.main{
+                z-index: 100;
+            }
+
+            .n-centered-loader .spinner{
+                width: 56px;
+                height: 56px;
+                display: block;
+                margin: 11px;
+                position: absolute;
+            }
+            
+            .n-loading .n-centered-loader{
+               display:block;
+            }
+            
+            
+        </style>
         
         <script src="app/libs/json2.js" type="text/javascript" charset="utf-8"></script> <!-- just in case the browser sucks at JSON -->
 
@@ -93,7 +131,7 @@
         <link rel="stylesheet" href="css/theme.css" type="text/css" charset="utf-8">
 
     </head> 
-<body> 
+<body class="n-loading"> 
 
     <!-- main menu / home page -->
     <div id="home" data-title="PINK Nation" data-role="page">
@@ -395,7 +433,12 @@
                    </div>
                    <div class="bar-prog bar" style="width:<%= percent_complete %>%">
                    </div>
+                   <% if(percent_complete < 100){%>
                    <p class="progress-count"><%= percent_complete %>%</p>
+                   <%}else{%>
+                   <p class="progress-count">Finishing</p>
+                   <%}%>
+                   
                    
                </div>
            </div>
@@ -527,6 +570,8 @@
      
     </script>
 
+<!-- spinner -->
+<div class="n-centered-loader main"><span class="spinner"></span></div>
 
 <!-- end page content and templates -->
 
