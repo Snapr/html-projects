@@ -252,7 +252,7 @@ snapr.utils.approve = function( options ){
     }, options);
 
     if (snapr.utils.get_local_param( "appmode" ) == 'iphone'){
-        var actionID = snapr.utils.tapped_action.add(options.yes_callback, options.no_callback);
+        var actionID = tapped_action.add(options.yes_callback, options.no_callback);
         pass_data('snapr://action?'+$.param({
             'title': options.title,
             'destructiveButton': options.yes,
@@ -268,15 +268,15 @@ snapr.utils.approve = function( options ){
     }
 }
 // what the app calls after an approve
-snapr.utils.tapped_action = function( alertID, buttonIndex ){
-    this.alerts[alertID][buttonIndex]();
-    delete this.alerts[alertID];
+function tapped_action( alertID, buttonIndex ){
+    tapped_action.alerts[alertID][buttonIndex]();
+    delete tapped_action.alerts[alertID];
 }
-snapr.utils.tapped_action.alerts = {};
-snapr.utils.tapped_action.counter = 1;
-snapr.utils.tapped_action.add = function( yes, no ){
-    var id = this.counter++;
-    this.alerts[id] = {'-1': yes, '0': no};
+tapped_action.alerts = {};
+tapped_action.counter = 1;
+tapped_action.add = function( yes, no ){
+    var id = tapped_action.counter++;
+    tapped_action.alerts[id] = {'-1': yes, '0': no};
     return id;
 }
 
@@ -306,6 +306,23 @@ snapr.utils.get_photo_height = function( orig_width, orig_height, element )
 
     return width/aspect;
 };
+
+$.fn.spin = function(opts) {
+  this.each(function() {
+    var $this = $(this),
+        spinner = $this.data('spinner');
+
+    if (spinner) spinner.stop();
+    if (opts !== false) {
+      opts = $.extend({color: $this.css('color')}, opts);
+      spinner = new Spinner(opts).spin(this);
+      $this.data('spinner', spinner);
+    }
+  });
+  return this;
+};
+
+
 
 snapr.routers = Backbone.Router.extend({
     routes: {

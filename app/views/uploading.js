@@ -136,15 +136,17 @@ snapr.views.uploading = Backbone.View.extend({
     
     cancel_upload: function()
     {
-        if (this.current_upload)
+        if (this.current_upload && this.current_upload.id)
         {
+            var current_upload = this.current_upload;
+            var appmode = snapr.utils.get_local_param("appmode");
+            
             snapr.utils.approve({
                 "title": "Cancel this upload?",
                 "yes_callback": function(){
-                    if (snapr.utils.get_local_param("appmode"))
+                    if (appmode)
                     {
-                        pass_data("snapr://upload?cancel=" + this.current_upload.id);
-                        Route.navigate( "#/photo-edit/?photo_path=" + this.current_upload.thumbnail, true );
+                        pass_data("snapr://upload?cancel=" + current_upload.id);
                     }
                     else
                     {
@@ -191,5 +193,11 @@ snapr.views.uploading = Backbone.View.extend({
         this.pending_uploads[queue_id] && delete this.pending_uploads[queue_id];
         
         Route.navigate( "#/love-it/?shared=true&photo_id=" + snapr_id, true );
+    },
+    
+    upload_cancelled: function( queue_id )
+    {
+        
+        Route.navigate( "#/", true );
     }
 });

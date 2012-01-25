@@ -7,6 +7,7 @@ snapr.views.feed = Backbone.View.extend({
 
     initialize: function()
     {
+        _.bindAll( this );
 
         var query_data = this.options.query;
 
@@ -63,12 +64,13 @@ snapr.views.feed = Backbone.View.extend({
             // $(this.el).find("h1").text("Featured Pics");
             this.pink = false;
             this.photo_collection = new snapr.models.photo_collection();
+            this.photo_collection.additional_data = false;
             this.photo_collection.url = snapr.api_base + "/search/";
             this.photo_collection.data = query_data;
-            this.photo_collection.data.n = snapr.constants.feed_count;
+            this.photo_collection.data.n = 1;
             // this.photo_collection.data.app_group = 'pink-nation-featured';
             this.photo_collection.data.app_group = 'pink-nation';
-            // this.photo_collection.data.rating = 2;
+            this.photo_collection.data.rating = 2;
             this.photo_collection.data.list_style && delete this.photo_collection.data.list_style;
             this.populate_feed();
         }
@@ -137,6 +139,11 @@ snapr.views.feed = Backbone.View.extend({
         if (additional_data)
         {
             options.add = true;
+            
+            this.photo_collection.additional_data = true;
+            this.photo_collection.data.app_group = "pink-nation-featured";
+            this.photo_collection.data.rating = 4;
+            this.photo_collection.data.n = 10;
             this.photo_collection.data = $.extend(this.photo_collection.data, additional_data);
         }
 
@@ -167,7 +174,10 @@ snapr.views.feed = Backbone.View.extend({
 
             if (this.photo_collection.last())
             {
-                data.max_date = this.photo_collection.last().get('date');
+                if (this.photo_collection.additional_data)
+                {
+                    data.max_date = this.photo_collection.last().get('date');
+                }
             }
             else
             {

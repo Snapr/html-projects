@@ -275,7 +275,7 @@
             <!-- <a href="https://s3.amazonaws.com/media-server<%= item.get('server_id') %>.snapr.us/lrg/<%= item.get('secret') %>/<%= item.get('id') %>.jpg" rel="external" class="gallery_link"><img style="width:100%;height:<%= snapr.utils.get_photo_height(item.get('width'), item.get('height'), '#feed .ui-content') %>px;" src="https://s3.amazonaws.com/media-server<%= item.get('server_id') %>.snapr.us/lrg/<%= item.get('secret') %>/<%= item.get('id') %>.jpg" alt="<%= item.get('description') %>" class="thumb-image" /></a> -->
 
             <div class="image-caption"><%= item.get('description') %></div>
-            <div class="user-details">By <%= item.get('username') || item.get('snapr_username') %><% if (item.get("location").location){%>, <%= item.get("location").location.split(",")[0] || item.get("location").location %><% } %></div>
+            <div class="user-details">By <%= item.get('username') || item.get('snapr_username') %><% if (city){%>, <%= city %><% } %></div>
         </div>
     </li>
     </script>
