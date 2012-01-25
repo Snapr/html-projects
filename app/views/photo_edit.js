@@ -99,21 +99,26 @@ snapr.views.photo_edit = Backbone.View.extend({
     
     toggle_sharing: function( e )
     {
+        var $el = $(this.el);
         if (e.target.value == "on")
         {
-            $(this.el).find("input[type='submit']").button("enable");
-            $(this.el).find(".share-message").hide();
-            $(this.el).find("textarea").show();
             snapr.utils.save_local_param( e.target.id, "on" );
+            setTimeout(function(){
+                $el.find("input[type='submit']").button("enable");
+                $el.find(".share-message").hide();
+                $el.find("textarea").show();
+            }, 150);
         }
         else
         {
             snapr.utils.save_local_param( e.target.id, "off" );
             if ($("select option[value='on']:selected").length == 0)
             {
-                $(this.el).find("input[type='submit']").button("disable");
-                $(this.el).find(".share-message").show();
-                $(this.el).find("textarea").hide();
+                setTimeout(function(){
+                    $el.find("input[type='submit']").button("disable");
+                    $el.find(".share-message").show();
+                    $el.find("textarea").hide();
+                }, 150);
             }
         }
     },
