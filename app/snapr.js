@@ -462,6 +462,14 @@ snapr.routers = Backbone.Router.extend({
     }
 });
 
+function spinner_start(){
+    $('body').addClass('n-loading');
+}
+function spinner_stop(){
+    $('body').removeClass('n-loading');
+}
+
+
 // upload/appmode functions
 
 function pass_data( url )
@@ -570,5 +578,15 @@ $(function()
     {
         $("body").addClass("appmode").addClass("appmode-" + snapr.utils.get_local_param( "appmode" ));
     }
+    $('.n-centered-loader .spinner').spin({
+        lines:10,
+        length:5,
+        width:5,
+        radius:10,
+        trail:50,
+        speed:1.0,
+        color:'#efefee'
+    });
+    spinner_stop();
     $(document).trigger('snaprinit');
 });
