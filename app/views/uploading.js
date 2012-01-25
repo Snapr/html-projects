@@ -166,7 +166,7 @@ snapr.views.uploading = Backbone.View.extend({
     
     upload_progress: function( upload_data )
     {
-        var $content = $(this.el).find('[data-role="content"]').empty();
+        var $content = $(this.el).find('[data-role="content"]');
         var upload_heart_template = _.template( $("#uploading-template").html() );
         
         _.each( upload_data.uploads, function( photo, index )
@@ -174,14 +174,20 @@ snapr.views.uploading = Backbone.View.extend({
             // console.warn("photo: ", photo, " index: ", index)
             if ((photo.upload_status.toLowerCase() == "active") && (!this.current_upload || this.current_upload.id == photo.id))
             {
-                this.pending_uploads[photo.id] = new snapr.views.upload_progress_li({
-                    template: upload_heart_template,
-                    photo: photo
-                });
-                
+                if (!this.pending_uploads[photo.id])
+                {
+                    this.pending_uploads[photo.id] = new snapr.views.upload_progress_li({
+                        template: upload_heart_template,
+                        photo: photo
+                    });
+                    $content.html( this.pending_uploads[photo.id].render().el );
+                }
+                else
+                {
+                    this.pending_uploads[photo.id].photo = photo;
+                    this.pending_uploads[photo.id].render();
+                }
                 this.current_upload = photo;
-                
-                $content.append( this.pending_uploads[photo.id].render().el );
             }
 
         }, this );
