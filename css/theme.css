@@ -1764,6 +1764,10 @@ a.ui-link-inherit {
   margin-left: 10px;
   padding-left: 10px;
 }
+.progress-bar .progress-count.finishing {
+  top: 4px;
+  right: -55px;
+}
 /*####################################################################################################################################
 
   high res GFX
