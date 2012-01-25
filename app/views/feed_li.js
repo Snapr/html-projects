@@ -37,8 +37,27 @@ snapr.views.feed_li = Backbone.View.extend({
 
     render: function()
     {
+        var location = this.model.get("location") && this.model.get("location").location;
+        
+        if (location.length)
+        {
+            if (location.split(",").length > 1)
+            {
+                var city = location[location.length - 2];
+            }
+            else
+            {
+                var city = location[0];
+            }
+        }
+        else
+        {
+            var city = ""
+        }
+
         this.el = $(this.template( {
-            item: this.model
+            item: this.model,
+            city: city
         } ));
         this.el.find('.reactions-button ul:visible').trigger('create').listview();
         // delegateEvents makes the event bindings in this view work 
