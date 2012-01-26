@@ -307,6 +307,17 @@ snapr.utils.get_photo_height = function( orig_width, orig_height, element )
     return width/aspect;
 };
 
+var opts = {
+  lines: 12, // The number of lines to draw
+  length: 7, // The length of each line
+  width: 4, // The line thickness
+  radius: 10, // The radius of the inner circle
+  speed: 1, // Rounds per second
+  trail: 60, // Afterglow percentage
+  shadow: false // Whether to render a shadow
+};
+
+
 $.fn.spin = function(opts) {
   this.each(function() {
     var $this = $(this),
@@ -314,7 +325,7 @@ $.fn.spin = function(opts) {
 
     if (spinner) spinner.stop();
     if (opts !== false) {
-      opts = $.extend({color: $this.css('color')}, opts);
+      opts = $.extend({color: $this.css('color'), width: 4, length: 7}, opts);
       spinner = new Spinner(opts).spin(this);
       $this.data('spinner', spinner);
     }
@@ -579,12 +590,13 @@ $(function()
         $("body").addClass("appmode").addClass("appmode-" + snapr.utils.get_local_param( "appmode" ));
     }
     $('.n-centered-loader .spinner').spin({
-        lines:10,
-        length:5,
-        width:5,
-        radius:10,
-        trail:50,
-        speed:1.0,
+        lines: 12, 
+        length: 7, 
+        width: 4,
+        radius: 10, 
+        color: '#000', 
+        speed: 1, 
+        trail: 60, 
         color:'#efefee'
     });
     spinner_stop();

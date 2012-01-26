@@ -96,6 +96,36 @@ p, .user-details, .PINK-small-text {
 a {
   text-decoration: none;
 }
+.n-centered-loader {
+  text-indent: -999px;
+  display: none;
+  position: fixed;
+  /* when this was set to static, spin.js wasn't working in android */
+
+  top: 50%;
+  left: 50%;
+  height: 0px;
+  width: 0px;
+  padding: 80px;
+  margin-left: -80px;
+  margin-top: -80px;
+  background-color: rgba(0, 0, 0, 0.6);
+  background-repeat: no-repeat;
+  background-position: center;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  border-radius: 8px;
+  z-index: 100;
+}
+.n-centered-loader .spinner {
+  width: 0px;
+  height: 0px;
+  display: block;
+  position: absolute;
+}
+.n-loading .n-centered-loader {
+  display: block;
+}
 .pop-white {
   -moz-box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.2) !important;
   -webkit-box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.2) !important;
