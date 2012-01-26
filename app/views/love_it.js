@@ -21,7 +21,7 @@ snapr.views.love_it = Backbone.View.extend({
 
         if (this.options.query.photo_path)
         {
-            this.photo_path = this.options.query.photo_path;
+            this.photo_path = this.options.query.photo_path + "?ts=" + new Date().getTime();
             this.render();
         }
         else if (this.options.query.photo_id || this.options.query.photo)
@@ -53,7 +53,7 @@ snapr.views.love_it = Backbone.View.extend({
         }
         else
         {
-            var img_url = this.photo_path  + "?ts=" + new Date().getTime();
+            var img_url = this.photo_path;
             var height = $(this.el).find("[data-role='content']").innerWidth() + "px";
             $(this.el).find("[data-role='content']")
                 .html( this.template({
