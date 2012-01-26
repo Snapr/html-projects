@@ -7,40 +7,7 @@
         <meta name="apple-mobile-web-app-status-bar-style" content="black">
         
         <style type="text/css" media="screen">
-            .n-centered-loader{
-                text-indent: -999px;
-                display:none;
-                position:fixed;  /* when this was set to static, spin.js wasn't working in android */
-                top:50%;
-                left:50%;
-                height:80px;
-                width:80px;
-                margin-left: -40px;
-                margin-top: -40px;
-                background-color: rgba(0,0,0,.6);
-                background-repeat: no-repeat;
-                background-position: center;
-                -webkit-border-radius: 8px;
-                -moz-border-radius: 8px;
-                border-radius: 8px;
-                z-index: 20;
-            }
-
-            .n-centered-loader.main{
-                z-index: 100;
-            }
-
-            .n-centered-loader .spinner{
-                width: 56px;
-                height: 56px;
-                display: block;
-                margin: 11px;
-                position: absolute;
-            }
             
-            .n-loading .n-centered-loader{
-               display:block;
-            }
             
             
         </style>
@@ -308,7 +275,7 @@
             <!-- <a href="https://s3.amazonaws.com/media-server<%= item.get('server_id') %>.snapr.us/lrg/<%= item.get('secret') %>/<%= item.get('id') %>.jpg" rel="external" class="gallery_link"><img style="width:100%;height:<%= snapr.utils.get_photo_height(item.get('width'), item.get('height'), '#feed .ui-content') %>px;" src="https://s3.amazonaws.com/media-server<%= item.get('server_id') %>.snapr.us/lrg/<%= item.get('secret') %>/<%= item.get('id') %>.jpg" alt="<%= item.get('description') %>" class="thumb-image" /></a> -->
 
             <div class="image-caption"><%= item.get('description') %></div>
-            <div class="user-details">By <%= item.get('username') || item.get('snapr_username') %><% if (city){%>, <%= city %><% } %></div>
+            <div class="user-details">By <%= item.get('display_username') %><% if (city){%>, <%= city %><% } %></div>
         </div>
     </li>
     </script>
@@ -327,7 +294,7 @@
 
 
     <!-- pink-hearts iframe -->
-    <div id="pink-hearts" data-role="page" data-add-back-btn="true">
+    <div id="pink-hearts" data-role="page" data-theme="d" data-add-back-btn="true">
         <div data-role="header">
             <h1>Pink Hearts</h1>
         </div>
