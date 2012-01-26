@@ -815,24 +815,24 @@ a {
   border: 1px solid #cccccc;
   color: #333333;
   text-shadow: 0 1px 0 #ffffff;
-  background: #ffffff;
+  background: #f4f4f4;
   font-family: Helvetica, Arial, sans-serif;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#ffffff));
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#f4f4f4), to(#f4f4f4));
   /* Saf4+, Chrome */
 
-  background-image: -webkit-linear-gradient(top, #ffffff, #ffffff);
+  background-image: -webkit-linear-gradient(top, #f4f4f4, #f4f4f4);
   /* Chrome 10+, Saf5.1+ */
 
-  background-image: -moz-linear-gradient(top, #ffffff, #ffffff);
+  background-image: -moz-linear-gradient(top, #f4f4f4, #f4f4f4);
   /* FF3.6 */
 
-  background-image: -ms-linear-gradient(top, #ffffff, #ffffff);
+  background-image: -ms-linear-gradient(top, #f4f4f4, #f4f4f4);
   /* IE10 */
 
-  background-image: -o-linear-gradient(top, #ffffff, #ffffff);
+  background-image: -o-linear-gradient(top, #f4f4f4, #f4f4f4);
   /* Opera 11.10+ */
 
-  background-image: linear-gradient(top, #ffffff, #ffffff);
+  background-image: linear-gradient(top, #f4f4f4, #f4f4f4);
 }
 .ui-body-d input,
 .ui-body-d select,
@@ -1647,6 +1647,7 @@ a.ui-link-inherit {
 }
 .load-more {
   text-align: center;
+  margin-bottom: 44px;
 }
 .load-more .ui-btn {
   display: inline-block;
