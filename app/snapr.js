@@ -368,6 +368,7 @@ snapr.routers = Backbone.Router.extend({
 
     feed: function( query_string )
     {
+        topbar(false);
         var query = snapr.utils.get_query_params( query_string );
         snapr.info.current_view = new snapr.views.feed({
             query: query,
@@ -377,6 +378,7 @@ snapr.routers = Backbone.Router.extend({
 
     pink_hearts: function( query_string )
     {
+        topbar(false);
         snapr.utils.get_query_params( query_string );
         snapr.info.current_view = new snapr.views.pink_hearts({
             el: $("#pink-hearts")
@@ -386,6 +388,7 @@ snapr.routers = Backbone.Router.extend({
     home: function( query_string )
     {
         console.warn('go home');
+        topbar(true);
         snapr.utils.get_query_params( query_string );
         snapr.info.current_view = new snapr.views.home({
             el: $('#home')
@@ -395,6 +398,7 @@ snapr.routers = Backbone.Router.extend({
     login: function( query_string )
     {
         console.warn('go to login');
+        topbar(false);
         var query = snapr.utils.get_query_params( query_string );
         snapr.info.current_view = new snapr.views.login({
             el: $('#login'),
@@ -404,6 +408,7 @@ snapr.routers = Backbone.Router.extend({
     
     logout: function( query_string )
     {
+        topbar(false);
         snapr.utils.get_query_params( query_string );
         if (snapr.auth)
         {
@@ -418,6 +423,7 @@ snapr.routers = Backbone.Router.extend({
     
     join_snapr: function( query_string )
     {
+        topbar(false);
         snapr.utils.get_query_params( query_string );
         snapr.info.current_view = new snapr.views.join_snapr({
             el: $("upload")
@@ -426,6 +432,7 @@ snapr.routers = Backbone.Router.extend({
     
     upload: function( query_string )
     {
+        topbar(false);
         snapr.utils.get_query_params( query_string );
         snapr.info.current_view = new snapr.views.upload({
             el: $("#upload")
@@ -434,6 +441,7 @@ snapr.routers = Backbone.Router.extend({
 
     uploading: function( query_string )
     {
+        topbar(false);
         var query = snapr.utils.get_query_params( query_string );
         snapr.info.current_view = new snapr.views.uploading({
             el: $("#uploading"),
@@ -443,6 +451,7 @@ snapr.routers = Backbone.Router.extend({
 
     photo_edit: function( query_string )
     {
+        topbar(false);
         var query = snapr.utils.get_query_params( query_string );
         snapr.info.current_view = new snapr.views.photo_edit({
             el: $("#photo-edit"),
@@ -452,6 +461,7 @@ snapr.routers = Backbone.Router.extend({
 
     love_it: function( query_string )
     {
+        topbar(false);
         var query = snapr.utils.get_query_params( query_string );
         snapr.info.current_view = new snapr.views.love_it({
             el: $("#love-it"),
@@ -461,6 +471,7 @@ snapr.routers = Backbone.Router.extend({
     
     my_account: function( query_string )
     {
+        topbar(false);
         snapr.utils.get_query_params( query_string );
         snapr.info.current_view = new snapr.views.my_account({
             el: $("#my-account")
@@ -469,6 +480,7 @@ snapr.routers = Backbone.Router.extend({
     
     linked_services: function( query_string )
     {
+        topbar(false);
         var query = snapr.utils.get_query_params( query_string );
         snapr.info.current_view = new snapr.views.linked_services({
             el: $("#linked-services"),
@@ -488,6 +500,7 @@ snapr.routers = Backbone.Router.extend({
     
     limbo: function( query_string )
     {
+        topbar(false);
         snapr.utils.get_query_params( query_string );
         snapr.info.current_view = new snapr.views.limbo({
             el: $("#limbo")
@@ -509,6 +522,14 @@ function spinner_stop(){
 function pass_data( url )
 {
     window.location = url.replace(/\+/g, '%20');
+}
+
+function topbar(show)
+{
+    if (snapr.utils.get_local_param("appmode"))
+    {
+        // pass_data("snaprkit-parent://topbar/?show=" + show ? "true": "false" );
+    }
 }
 
 function upload_progress(data, datatype)
