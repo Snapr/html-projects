@@ -143,6 +143,7 @@ a {
   background-position: center bottom;
   background-repeat: no-repeat;
   background-size: 100%;
+  width: 100%;
   margin-bottom: 7px;
 }
 .ui-body-c .main-image {
@@ -1722,7 +1723,8 @@ a.ui-link-inherit {
 }
 .PINK-love-it {
   text-align: center;
-  margin-top: -160px;
+  /*    margin-top: -160px;*/
+
   margin-bottom: 15px;
 }
 .PINK-love-it h2, .PINK-love-it p {
