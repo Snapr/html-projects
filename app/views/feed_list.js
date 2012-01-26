@@ -1,14 +1,21 @@
 snapr.views.feed_list = Backbone.View.extend({
 
-    initialize: function( init_options )
+    tagName: "ul",
+    
+    className: "gallery",
+
+    initialize: function()
     {
+        _.bindAll( this );
+        
         this.li_templates = {
             list: _.template( $("#feed-li-list-template").html() ),
             pink: _.template( $("#feed-li-list-pink-template").html() )
         }
 
-        this.list_style = init_options.list_style || 'list';
+        this.list_style = this.options.list_style || 'list';
 
+        this.list_content = [];
         // console.warn( "feed list list_style", init_options, init_options.list_style, this.list_style );
     
     },
@@ -19,7 +26,6 @@ snapr.views.feed_list = Backbone.View.extend({
         
         // console.warn( "render", feed_list );
         
-        feed_list.el.empty();
         
         _.each( this.collection.models, function( item )
         {
@@ -27,26 +33,32 @@ snapr.views.feed_list = Backbone.View.extend({
                 model: item,
                 template: feed_list.li_templates[feed_list.list_style]
             });
-            li.model.bind( 'change:comments', function()
-            {
-                li.update_counts();
-            });
-            li.model.bind( 'change:favorite', function()
-            {
-                li.update_fav();
-                li.update_counts();
-            });
-            feed_list.el.append( li.render().el );
-        });
+            // li.model.bind( 'change:comments', function()
+            // {
+            //     li.update_counts();
+            // });
+            // li.model.bind( 'change:favorite', function()
+            // {
+            //     li.update_fav();
+            //     li.update_counts();
+            // });
+            $(this.el).append( li.render().el );
+        }, this);
+        
+        $imgs = $(this.el).find("img");
+        $imgs.load(function(){
+            $imgs.css("height","auto");
+        })
+        
+        
         // create jquery mobile markup, set to listview and refresh
         
-        feed_list.el.trigger("create");
+        $(this.el)
+            .trigger("create");
         
-        feed_list.el
+        $(this.el)
             .removeClass('grid-list')
-            .addClass('ui-listview')
-            .listview()
-            .listview("refresh");
+            .addClass('ui-listview');
 
         if(callback && typeof callback == 'function'){
             callback();

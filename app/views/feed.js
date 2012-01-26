@@ -1,10 +1,5 @@
 snapr.views.feed = Backbone.View.extend({
 
-    events: {
-        "click button.more": "more",
-        // "change .feed-view-toggle": "feed_view_toggle"
-    },
-
     initialize: function()
     {
         _.bindAll( this );
@@ -15,7 +10,7 @@ snapr.views.feed = Backbone.View.extend({
 
         var feed_view = this;
 
-        this.el.find("ul.gallery").empty();
+        $(this.el).find("[data-role='content']").empty();
 
         // this.el.live( 'pageshow', function()
         // {
@@ -84,6 +79,12 @@ snapr.views.feed = Backbone.View.extend({
         this.el.find(".load-more").hide();
     },
 
+    events: {
+        "click button.more": "more",
+        // "change .feed-view-toggle": "feed_view_toggle"
+    },
+
+
     // photoswipe_init: function()
     // {
     //     // detach the previous photoswipe instance if it exists
@@ -119,15 +120,14 @@ snapr.views.feed = Backbone.View.extend({
             success: function()
             {
                 feed_view.feed_list = new snapr.views.feed_list({
-                    el: feed_view.el.find('ul.gallery').eq(0),
                     collection: feed_view.photo_collection,
                     list_style: list_style
                 });
-                feed_view.feed_list.render( feed_view.photoswipe_init );
-                window.scrollTo(0,scrollY);
-
+                $(feed_view.el).find("[data-role='content']").html( feed_view.feed_list.render().el );
+                $(feed_view.el).find(".gallery").listview().listview("refresh")
                 $(feed_view.el).find(".more").button("enable");
                 $(feed_view.el).find(".load-more").show();
+                window.scrollTo(0,scrollY);
                 spinner_stop();
             },
             error:function()

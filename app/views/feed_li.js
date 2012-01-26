@@ -1,5 +1,9 @@
 snapr.views.feed_li = Backbone.View.extend({
 
+    tagName: "li",
+    
+    className: "feed-li",
+
     events: {
         "expand .reactions-button": "load_reactions",
         "click .favorite-button": "favorite",
@@ -8,9 +12,9 @@ snapr.views.feed_li = Backbone.View.extend({
         "submit .comment-form": "comment"
     },
 
-    initialize: function( init_options )
+    initialize: function()
     {
-        this.template = init_options.template
+        this.template = this.options.template
         // this.map_url = 
         //     '/map/?zoom=' + snapr.constants.default_zoom + 
         //     '&lat=' + this.model.get('location').latitude + 
@@ -55,11 +59,12 @@ snapr.views.feed_li = Backbone.View.extend({
             var city = ""
         }
 
-        this.el = $(this.template( {
+        $(this.el).html(this.template( {
             item: this.model,
             city: city
         } ));
-        this.el.find('.reactions-button ul:visible').trigger('create').listview();
+        
+        $(this.el).trigger('create');
         // delegateEvents makes the event bindings in this view work 
         // even though it is a subview of feed_list (very important)
         this.delegateEvents();

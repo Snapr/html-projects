@@ -265,7 +265,6 @@
 
     <!-- template for list items within #feed -->
     <script id="feed-li-list-template" type="text/template">
-    <li class="feed-li">
         <div>
             <div class="image-frame">
             <img style="width:100%;height:<%= snapr.utils.get_photo_height(item.get('width'), item.get('height'), '#feed .ui-content') %>px;" src="https://s3.amazonaws.com/media-server<%= item.get('server_id') %>.snapr.us/lrg/<%= item.get('secret') %>/<%= item.get('id') %>.jpg" alt="<%= item.get('description') %>" class="main-image" />
@@ -277,11 +276,9 @@
             <div class="image-caption"><%= item.get('description') %></div>
             <div class="user-details">By <%= item.get('display_username') %><% if (city){%>, <%= city %><% } %></div>
         </div>
-    </li>
     </script>
 
     <script id="feed-li-list-pink-template" type="text/template">
-    <li class="feed-li">
         <div>
             <div class="image-frame">
             <img style="width:100%;height:<%= snapr.utils.get_photo_height(item.get('width'), item.get('height'), '#feed .ui-content') %>px;" src="http://pink.victoriassecret.com/<%= item.get('mobileFilePath') %>" alt="<%= item.get('description') %>" class="main-image" />
@@ -289,7 +286,6 @@
 
             <div class="image-caption"><%= item.get('description') %></div>
         </div>
-    </li>
     </script>
 
 
