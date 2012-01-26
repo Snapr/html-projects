@@ -69,7 +69,7 @@ snapr.views.feed = Backbone.View.extend({
             this.photo_collection.data = query_data;
             this.photo_collection.data.n = 1;
             // this.photo_collection.data.app_group = 'pink-nation-featured';
-            this.photo_collection.data.app_group = 'pink-nation';
+            this.photo_collection.data.app_group = 'pink-nation-featured';
             this.photo_collection.data.rating = 2;
             this.photo_collection.data.list_style && delete this.photo_collection.data.list_style;
             this.populate_feed();
@@ -144,7 +144,7 @@ snapr.views.feed = Backbone.View.extend({
             
             this.photo_collection.additional_data = true;
             this.photo_collection.data.app_group = "pink-nation-featured";
-            this.photo_collection.data.rating = 4;
+            this.photo_collection.data.rating = 3;
             this.photo_collection.data.n = 10;
             this.photo_collection.data = $.extend(this.photo_collection.data, additional_data);
         }
