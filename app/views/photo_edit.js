@@ -167,6 +167,7 @@ snapr.views.photo_edit = Backbone.View.extend({
                     }
                     
                     var sharing_errors = [];
+                    var sharing_successes = [];
                     if (model.get("facebook_feed"))
                     {
                         if (xhr.response && 
@@ -175,6 +176,10 @@ snapr.views.photo_edit = Backbone.View.extend({
                             xhr.response.facebook.error.code == 28 )
                         {
                             sharing_errors.push("facebook");
+                        }
+                        else
+                        {
+                            sharing_successes.push("facebook");
                         }
                     }
                     if (model.get("tumblr"))
@@ -186,10 +191,15 @@ snapr.views.photo_edit = Backbone.View.extend({
                         {
                             sharing_errors.push("tumblr");
                         }
+                        else
+                        {
+                            sharing_successes.push("tumblr");
+                        }
+                        
                     }
                     if (sharing_errors.length)
                     {
-                        var url = "#/linked-services/?to_link=" + sharing_errors.join(",") + "&photo_id=" + model.get("id");
+                        var url = "#/connect/?to_link=" + sharing_errors.join(",") + "&shared=" + sharing_successes.join(",") + "&photo_id=" + model.get("id");
                         Route.navigate( url, true );
                     }
                     else

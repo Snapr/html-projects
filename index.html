@@ -69,6 +69,8 @@
         <script src="app/views/upload_settings.js" type="text/javascript" charset="utf-8"></script>
         <script src="app/views/linked_service.js" type="text/javascript" charset="utf-8"></script>
         <script src="app/views/linked_services.js" type="text/javascript" charset="utf-8"></script>
+        <script src="app/views/connect.js" type="text/javascript" charset="utf-8"></script>
+        <script src="app/views/connect_li.js" type="text/javascript" charset="utf-8"></script>
         <script src="app/views/feed.js" type="text/javascript" charset="utf-8"></script>
         <script src="app/views/pink_hearts.js" type="text/javascript" charset="utf-8"></script>
         <script src="app/views/upload_progress_li.js" type="text/javascript" charset="utf-8"></script>
@@ -249,6 +251,42 @@
         </div>
     </script>
 
+
+    <div id="connect" data-role="page">
+        <div data-role="header">
+            <h1>Sharing</h1>
+        </div>
+        <div data-role="content">
+            <h2>Please link up for sharing:</h2>
+            <ul data-role="listview" data-inset="true" data-theme="c">
+            </ul>
+        </div>
+    </div>
+
+    <!-- template for connecting services -->
+    <!-- vars provider, status -->
+    <!-- wrapped in = <li data-role="fieldcontain"> -->
+    <script id="connect-li-template" type="text/template">
+    <legend class="provider"><%= provider %></legend>
+    <% switch(provider){ case 'tumblr': %>
+    <% if(status == "unlinked"){%>
+        <form class="tumblr-login" action="javascript:void(0);">
+            <label>Email:<input id="connect-tumblr-email" type="text"></label>
+            <label>Password:<input id="connect-tumblr-password" type="password"></label>
+        </form>
+    <%}%>
+    <% break; default: %>
+    <%}%>
+    <div class="PINK-right-button">
+    <% switch(status) { case 'ready': %>
+        <button data-inline="true" data-theme="b" class="connected">Connected</button>
+    <% break; case 'shared': %>
+        <button data-inline="true" data-theme="b" class="shared">Shared</button>
+    <% break; default:%>
+        <button data-inline="true" data-theme="b" class="connect">Connect</button>
+    <% }%>
+    </div>
+    </script>
 
     <!-- show images in a feed view -->
     <div id="feed" data-role="page" data-add-back-btn="true">
