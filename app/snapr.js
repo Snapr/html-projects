@@ -352,6 +352,8 @@ snapr.routers = Backbone.Router.extend({
         "/my-account/?*query_string": "my_account",
         "/linked-services/": "linked_services",
         "/linked-services/?*query_string": "linked_services",
+        "/limbo/": "limbo",
+        "/limbo/?*": "limbo",
         "/feed/": "feed",
         "/feed/?*query_string": "feed",
         "/pink-hearts/": "pink_hearts",
@@ -470,7 +472,15 @@ snapr.routers = Backbone.Router.extend({
             el: $("#linked-services"),
             query: query
         });
+    
+    limbo: function( query_string )
+    {
+        snapr.utils.get_query_params( query_string );
+        snapr.info.current_view = new snapr.views.limbo({
+            el: $("#limbo")
+        })
     }
+    
 });
 
 function spinner_start(){
