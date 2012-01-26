@@ -27,7 +27,12 @@ snapr.views.home = Backbone.View.extend({
         $(this.el).find("[data-role='content'] ul")
             .html( this.template( {logged_in: snapr.auth.has("access_token")} ))
             .listview().listview("refresh");
-                
+        $pinkHearts = $(this.el).find(".home-pink-hearts");
+        
+        setTimeout(function(){
+            $pinkHearts.css("height", window.innerHeight - $pinkHearts.position().top - 2 + "px");
+        }, 50);
+
         return this;
     },
     
