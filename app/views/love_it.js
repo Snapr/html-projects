@@ -65,6 +65,14 @@ snapr.views.love_it = Backbone.View.extend({
             
         }
         
+        $(this.el).find("img").load(function()
+        {
+            setTimeout(function(){
+                window.scrollTo(0,window.innerHeight);
+            },100);
+        });
+
+        
         return this;
     }
     
