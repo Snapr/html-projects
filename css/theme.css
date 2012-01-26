@@ -1695,6 +1695,12 @@ a.ui-link-inherit {
   margin: 0;
   line-height: 24px;
 }
+.PINK-right-button {
+  width: 100px;
+  position: absolute;
+  right: 6px;
+  top: 1px;
+}
 .PINK-switch {
   width: 100px;
   position: absolute;
