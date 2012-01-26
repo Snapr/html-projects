@@ -9,6 +9,7 @@ snapr.views.connect_li = Backbone.View.extend({
         this.provider = this.options.provider || null;
         this.status = this.options.status || null;
         this.photo_id = this.options.photo_id || null;
+        this.parent_view = this.options.parent_view || null;
 
         if (this.photo_id && this.status == "ready")
         {
@@ -55,6 +56,7 @@ snapr.views.connect_li = Backbone.View.extend({
                     {
                         connect_li.status = "ready";
                         connect_li.render();
+                        connect_li.parent_view.to_link = _.without(connect_li.parent_view.to_link, connect_li.provider);
                         connect_li.share();
                         
                     }else{
@@ -86,13 +88,16 @@ snapr.views.connect_li = Backbone.View.extend({
         var options = {
             success: function( model, xhr )
             {
-                console.warn("share success", model, xhr);
+                // console.warn("share success", model, xhr);
                 connect_li.status = "shared";
                 connect_li.render();
-                setTimeout(function()
+                if (connect_li.parent_view.to_link.length == 0)
                 {
-                    Route.navigate("#/love-it/?shared=true&photo_id=" + model.get("id"), true);
-                }, 600);
+                    setTimeout(function()
+                    {
+                        Route.navigate("#/love-it/?shared=true&photo_id=" + model.get("id"), true);
+                    }, 600);
+                }
             },
             error: function( error )
             {

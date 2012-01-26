@@ -22,9 +22,11 @@ snapr.views.connect = Backbone.View.extend({
         {
             _.each(this.to_link, function(service)
             {
-                // is the service provider mentioned in the return url
+                // is the service provider mentioned in the return url?
                 if (this.options.query.url.indexOf(service) > -1)
                 {
+                    this.to_link = _.without(this.to_link, service);
+                    
                     this.to_share.push( service );
                 }
             }, this);
@@ -68,7 +70,8 @@ snapr.views.connect = Backbone.View.extend({
                 var li = new snapr.views.connect_li({
                     provider: service,
                     status: "ready",
-                    photo_id: this.photo_id
+                    photo_id: this.photo_id,
+                    parent_view: this
                 });
                 $(this.el).find("ul").append( li.render().el );
             }
@@ -78,7 +81,8 @@ snapr.views.connect = Backbone.View.extend({
                 var li = new snapr.views.connect_li({
                     provider: service,
                     status: "unlinked",
-                    photo_id: this.photo_id
+                    photo_id: this.photo_id,
+                    parent_view: this
                 });
                 $(this.el).find("ul").append( li.render().el );
             }
@@ -88,7 +92,8 @@ snapr.views.connect = Backbone.View.extend({
                 var li = new snapr.views.connect_li({
                     provider: service,
                     status: "shared",
-                    photo_id: this.photo_id
+                    photo_id: this.photo_id,
+                    parent_view: this
                 });
                 $(this.el).find("ul").append( li.render().el );
             }
