@@ -53,7 +53,7 @@ snapr.views.love_it = Backbone.View.extend({
         }
         else
         {
-            var img_url = this.photo_path;
+            var img_url = this.photo_path  + "?ts=" + new Date().getTime();
             var height = $(this.el).find("[data-role='content']").innerWidth() + "px";
             $(this.el).find("[data-role='content']")
                 .html( this.template({
