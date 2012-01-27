@@ -47,7 +47,7 @@ snapr.views.love_it = Backbone.View.extend({
                 .html( this.template({
                     shared: this.shared, 
                     img_url: img_url,
-                    height: (this.model.get("height")/this.model.get("width")*$(this.el).find("[data-role='content']").innerWidth()) + "px"
+                    height: snapr.utils.get_photo_height(this.model.get('width'), this.model.get('height'), '#love-it .ui-content') + "px"
                 }) )
                 .trigger("create");
         }
@@ -71,6 +71,11 @@ snapr.views.love_it = Backbone.View.extend({
                 window.scrollTo(0,window.innerHeight);
             },100);
         });
+
+        $imgs = $(this.el).find("img");
+        $imgs.load(function(){
+            $imgs.css("height","auto");
+        })
 
         
         return this;
