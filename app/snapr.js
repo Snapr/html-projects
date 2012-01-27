@@ -32,7 +32,7 @@ Backbone.sync = function( method, model, options )
         model.data.access_token = snapr.auth.get('access_token');
     }
     
-    if (snapr.app_group)
+    if (snapr.app_group && !model.data.app_group)
     {
         _.extend( model.data, {app_group: snapr.app_group});
     }
@@ -601,6 +601,7 @@ $(".x-launch-camera").live( "click", function()
     if (snapr.utils.get_local_param("appmode"))
     {
         pass_data("snapr://camera");
+        Route.navigate( '#/limbo/', true );
     }
     else
     {
@@ -614,6 +615,7 @@ $(".x-launch-photo-library").live( "click", function()
     if (snapr.utils.get_local_param("appmode"))
     {
         pass_data("snapr://photo-library");
+        Route.navigate( '#/limbo/', true );
     }
     else
     {
