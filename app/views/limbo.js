@@ -18,5 +18,14 @@ snapr.views.limbo = Backbone.View.extend({
         {
             spinner_start();
         },100);
+    },
+    
+    events: {
+        "click": "home"
+    },
+    
+    home: function()
+    {
+        Route.navigate( "#/", true );
     }
 });
