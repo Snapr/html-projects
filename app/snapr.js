@@ -601,7 +601,10 @@ $(".x-launch-camera").live( "click", function()
     if (snapr.utils.get_local_param("appmode"))
     {
         pass_data("snapr://camera");
-        Route.navigate( '#/limbo/', true );
+        setTimeout(function()
+        {
+            Route.navigate( '#/limbo/', true );            
+        }, 300);
     }
     else
     {
@@ -615,7 +618,11 @@ $(".x-launch-photo-library").live( "click", function()
     if (snapr.utils.get_local_param("appmode"))
     {
         pass_data("snapr://photo-library");
-        Route.navigate( '#/limbo/', true );
+        setTimeout(function()
+        {
+            Route.navigate( '#/limbo/', true );            
+        }, 300);
+
     }
     else
     {
