@@ -1,13 +1,18 @@
 /*
+* SNAPR EASY THEME DEFINIIONS
+*   -All the main UI colors fonts and styling defined in one place
+*   -Start here when customizing the look of your App
+*   -Changes here flow through JQuery Mobile theme swatches
+*/
+/*
 * UI GLOBALS
-* The definitive UI aspects that will be used in all theme swatches.
-* Changes here will flow through the full design.
 */
 /* Global BG Colors for Items*/
 /* mess with this yellow at your peril */
 /* Pingy yellow header bars and buttons *//* All colors have a darker tint for when they appear as gradients *//* An orange colour to complement the yellow *//* The Light grey companion to Yellow btns / headers *//* Dark buttons in headers / palettes *//* In this case a calming blue *//* In this case a calming blue *//* Red. argh it burns *//* Global BG Colors for Pages*/
 /* make a mixin for retina gfx! */
 /* Global Border Colors */
+/* Global Shadow Colors */
 /* Global Text Colors */
 /* Global Fonts*/
 /* In the case of Snapr we just have one special font *//* Global Rounded Corners */
@@ -20,20 +25,37 @@
 /* Global layout sizes */
 /* Global item sizes */
 /*
-* Global
+* jQuery Mobile Theme Swatches
+*   -Based on Less Css jQuery Mobile Framework by Prinzhorn
+*   -Only customize these values after setting your globals above
+*   -Customization of theme swatches may not be necc
 */
 /*
-* C
+* Global - stuffs from prinzhorn
 */
 /*
-* A
+* A 
+* The Dark (Black as Night) swatch, used for screens with black BGs
+- note that Snapr has weird title bar designs. They are transparent and show through to a dark BG on body..
 */
+/* revisit as back button height.. */
+/* revisit this - dark button with inner shadow */
 /*
 * B
+* The Dark (Textured Grey) swatch, used for title bars, dark btns on palletes
+- note that Snapr has non standard title bar styles. They are transparent and show through to a dark BG on body..
+*/
+/* Cant be bothered defining hover states for edge case devices.. same as down for now */
+/*
+* C
+* - Standard light BG swatch, has subtle gray bg texture, used mainly for light colored dialog style views
 */
 /*
 * D
+* the full white BG swatch used for feed views etc
+* have sneakily included the orange buttons in this guy
 */
 /*
 * E
+* - highlight swatch - all about mad yellow shiz..
 */

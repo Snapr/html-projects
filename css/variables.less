@@ -1,7 +1,12 @@
 /*
+* SNAPR EASY THEME DEFINIIONS
+*   -All the main UI colors fonts and styling defined in one place
+*   -Start here when customizing the look of your App
+*   -Changes here flow through JQuery Mobile theme swatches
+*/
+
+/*
 * UI GLOBALS
-* The definitive UI aspects that will be used in all theme swatches.
-* Changes here will flow through the full design.
 */
 
 /* Global BG Colors for Items*/
@@ -33,7 +38,7 @@
 /* Global BG Colors for Pages*/
 
 @color-bg-light: #fff;
-@color-bg-dark-tint: rgba(0,0,0,.8);
+@color-bg-light-tint: rgba(0,0,0,.8);
 @gfx-bg-light-texture: url('../gfx/bg-texture-light.gif');
 
 @color-bg-dark: #000;
@@ -46,9 +51,21 @@
 @border-medium-on-light: #e4e4e4;
 @border-dark-on-light: #cccccc;
 
-@border-light-on-dark: rgba(255,255,255,.1);
-@border-medium-on-dark: rgba(255,255,255,.4);
+@border-light-on-dark: rgba(255,255,255,.4);
+@border-medium-on-dark: rgba(255,255,255,.1);
 @border-dark-on-dark: #000;
+
+/* Global Shadow Colors */
+
+@color-shadow-light-on-light: #fff;
+@color-shadow-medium-on-light: rgba(255,255,255,.5);
+@color-shadow-dark-on-light: #333333;
+
+@color-shadow-light-on-dark: rgba(0,0,0,0);
+@color-shadow-medium-on-dark: rgba(0,0,0,.5);
+@color-shadow-dark-on-dark: #000;
+
+@color-shadow-none: rgba(0,0,0,0);
 
 /* Global Text Colors */
 
@@ -103,31 +120,21 @@
 @size-topbar-btn-height: 44px;
 
 
-
-
-
-
+/*
+* jQuery Mobile Theme Swatches
+*   -Based on Less Css jQuery Mobile Framework by Prinzhorn
+*   -Only customize these values after setting your globals above
+*   -Customization of theme swatches may not be necc
+*/
 
 
 /*
-* Global
+* Global - stuffs from prinzhorn
 */
-@global-font-family: Helvetica, Arial, sans-serif;
-@global-special-font:'GlyphaMedium', Helvetica, Arial, sans-serif;
-@global-button-font:'AcademySansSerifMedium', Helvetica, Arial, sans-serif;
 
-@global-special-font-size: 20px;
-@global-base-font-size: 13px;
 
-@global-active-border: #155678;
-@global-active-background-color: rgba(255,255,255,.2);
-@global-active-color: #fff;
-@global-active-shadow-x: 0;
-@global-active-shadow-y: -1px;
-@global-active-shadow-radius: 1px;
-@global-active-shadow-color: #145072;
-@global-active-background-start: rgba(255,255,255,.2);
-@global-active-background-end: rgba(255,255,255,.2);
+@global-active-background-color: transparent;
+
 @global-radii-blocks: 6px;
 @global-icon-color: #666;
 @global-icon-disc: rgba(0,0,0,.4);
@@ -137,121 +144,48 @@
 @global-box-shadow-size: 1px;
 @global-box-shadow-color: rgba(0,0,0,.2);
 
-@global-body-padding: 20px;
-
-@global-salmon-pink: #fab3af;
-@global-hot-pink: rgb(255,51,151) ;
-@global-pink-blush: rgba(255,51,151,0.3);
-@body-background-image: url('../gfx/PINK-noise.gif');
-@body-background-color: @global-salmon-pink;
-@global-element-bgcolor: white;
-
-
-/*
-* C
-*/
-@c-bar-border: #B3B3B3;
-@c-bar-background-color: #e9eaeb;
-@c-bar-color: #3E3E3E;
-@c-bar-shadow-x: 0;
-@c-bar-shadow-y: 1px;
-@c-bar-shadow-radius: 1px;
-@c-bar-shadow-color: #fff;
-@c-bar-background-start: #f0f0f0;
-@c-bar-background-end: @c-bar-background-color;
-@c-bar-link-color: #7cc4e7;
-@c-bar-link-hover: #2489CE;
-@c-bar-link-active: @c-bar-link-hover;
-@c-bar-link-visited: @c-bar-link-hover;
-
-@c-body-border: none;
-@c-body-color: #000;
-@c-body-shadow-x: 0;
-@c-body-shadow-y: 1px;
-@c-body-shadow-radius: 0;
-@c-body-shadow-color: rgba(255, 255, 255, .4);
-@c-body-background: url('../gfx/PINK-noise.gif');
-@c-body-background-color: transparent;
-@c-body-background-start: transparent;
-@c-body-background-end: transparent;
-@c-body-link-color: #000;
-@c-body-link-hover: @c-body-link-color;
-@c-body-link-active: @c-body-link-color;
-@c-body-link-visited: @c-body-link-color;
-@c-body-padding: @global-body-padding;
-
-
-
-@c-bup-border: rgba(255,255,255,0.3);
-@c-bup-border-top: @c-bup-border;
-@c-bup-border-bottom: rgba(0,0,0,0.07);
-@c-bup-background-color: transparent;
-@c-bup-color: #000;
-@c-bup-shadow-x: 0;
-@c-bup-shadow-y: 1px;
-@c-bup-shadow-radius: 1px;
-@c-bup-shadow-color: #f6f6f6;
-@c-bup-background-start: transparent;
-@c-bup-background-end: @c-bup-background-color;
-
-@c-bhover-border: @c-bup-border;
-@c-bhover-background-color: rgba(255,255,255,0.1);
-@c-bhover-color: #000;
-@c-bhover-shadow-x: 0;
-@c-bhover-shadow-y: 1px;
-@c-bhover-shadow-radius: 1px;
-@c-bhover-shadow-color: #fff;
-@c-bhover-background-start: transparent;
-@c-bhover-background-end: @c-bhover-background-color;
-
-@c-bdown-border: @c-bup-border;
-@c-bdown-background-color: rgba(255,255,255,0.1);
-@c-bdown-color: #000;
-@c-bdown-shadow-x: 0;
-@c-bdown-shadow-y: 1px;
-@c-bdown-shadow-radius: 1px;
-@c-bdown-shadow-color: #fff;
-@c-bdown-background-start: #eee;
-@c-bdown-background-end: @c-bdown-background-color;
-
-
 
 
 
 /*
-* A
+* A 
+* The Dark (Black as Night) swatch, used for screens with black BGs
+- note that Snapr has weird title bar designs. They are transparent and show through to a dark BG on body..
 */
-@a-bar-border: #2A2A2A;
-@a-bar-background-color: rgba(0,0,0,.85);
-@a-bar-color: #fff;
+@a-bar-border: none;
+@a-bar-background-color: transparent;
+@a-bar-color: @color-txt-medium-on-dark;
 @a-bar-shadow-x: 0;
 @a-bar-shadow-y: -1px;
 @a-bar-shadow-radius: 1px;
-@a-bar-shadow-color: #000;
-@a-bar-background-start: rgba(60,60,60,.8);
-@a-bar-background-end: rgba(17,17,17,.8);
-@a-bar-link-color: #7cc4e7;
-@a-bar-link-hover: #2489CE;
+@a-bar-shadow-color: @color-shadow-dark-on-dark;
+@a-bar-background-start: @a-bar-background-color;
+@a-bar-background-end: @a-bar-background-color;
+@a-bar-link-color: @color-txt-medium-on-dark;
+@a-bar-link-hover: @color-txt-dark-on-dark;
 @a-bar-link-active: @a-bar-link-hover;
-@a-bar-link-visited: @a-bar-link-hover;
+@a-bar-link-visited: @a-bar-link-color;
 
-@a-body-border: #2A2A2A;
-@a-body-background-color: #222;
-@a-body-color: #fff;
+@a-body-border: none;
+@a-body-background-color: @color-bg-dark;
+@a-body-color: @color-txt-medium-on-dark;
 @a-body-shadow-x: 0;
 @a-body-shadow-y: 1px;
 @a-body-shadow-radius: 0;
-@a-body-shadow-color: #000;
-@a-body-background-start: #666;
-@a-body-background-end: #222;
-@a-body-link-color: #2489CE;
-@a-body-link-hover: @a-body-link-color;
-@a-body-link-active: @a-body-link-color;
+@a-body-shadow-color: @color-shadow-dark-on-dark;
+@a-body-background-start: transparent;
+@a-body-background-end: transparent;
+@a-body-link-color: @color-txt-light-on-dark;
+@a-body-link-hover: @color-txt-medium-on-dark;
+@a-body-link-active: @color-txt-medium-on-dark;
 @a-body-link-visited: @a-body-link-color;
 
+/* revisit as back button height.. */
 @a-btn-height: 30px;
 @a-btn-bg-image: 30px;
 
+
+/* revisit this - dark button with inner shadow */
 @a-bup-border: #222;
 @a-bup-background-color: #000;
 @a-bup-color: #fff;
@@ -263,8 +197,6 @@
 @a-bup-background-start-mid: rgba(0,0,0,0);
 @a-bup-background-end-mid: rgba(255,255,255,0.1) ;
 @a-bup-background-end: rgba(255,255,255,0.2);
-
-
 
 @a-bhover-border: #000;
 @a-bhover-background-color: #1b1b1b;
@@ -293,10 +225,10 @@
 
 /*
 * B
+* The Dark (Textured Grey) swatch, used for title bars, dark btns on palletes
+- note that Snapr has non standard title bar styles. They are transparent and show through to a dark BG on body..
 */
 @b-bar-border: none;
-@b-bar-border-top: #808080;
-@b-bar-border-bottom: #000;
 @b-bar-background-color: #000000;
 @b-bar-color: #fff;
 @b-bar-shadow-x: 0;
@@ -305,163 +237,243 @@
 @b-bar-shadow-color: #254f7a;
 @b-bar-background-start: #292929;
 @b-bar-background-end: @b-bar-background-color;
-@b-bar-link-color: #ddf0f8;
-@b-bar-link-hover: @b-bar-link-color;
-@b-bar-link-active: @b-bar-link-color;
+@b-bar-link-color: @color-txt-medium-on-dark;
+@b-bar-link-hover: @color-txt-dark-on-dark;
+@b-bar-link-active: @b-bar-link-hover;
 @b-bar-link-visited: @b-bar-link-color;
 
-@b-body-border: #C6C6C6;
-@b-body-background-color: #ccc;
-@b-body-color: #333;
+@b-body-border: none;
+@b-body-border-top: @border-light-on-dark;
+@b-body-border-bottom: @border-dark-on-dark;
+@b-body-background-color: @color-bg-dark;
+@b-body-color: @color-txt-medium-on-dark;
 @b-body-shadow-x: 0;
 @b-body-shadow-y: 1px;
 @b-body-shadow-radius: 0;
-@b-body-shadow-color: #fff;
-@b-body-background-start: #e6e6e6;
-@b-body-background-end: #ccc;
-@b-body-link-color: #2489CE;
-@b-body-link-hover: @b-body-link-color;
-@b-body-link-active: @b-body-link-color;
+@b-body-shadow-color: @color-shadow-dark-on-dark;
+@b-body-background-image: @gfx-bg-dark-texture;
+@b-body-background-start: transparent;
+@b-body-background-end: transparent;
+@b-body-link-color: @color-txt-medium-on-dark;
+@b-body-link-hover: @color-shadow-medium-on-dark;
+@b-body-link-active: @b-body-link-hover;
 @b-body-link-visited: @b-body-link-color;
 
-@b-bup-border: rgba(51,51,51, 0.1);
-@b-bup-background-color: rgba(255,255,255, 0.25);
-@b-bup-color: #000;
+@b-bup-border: @border-dark-on-dark;
+@b-bup-background-color: @color-bg-neutral-dark;
+@b-bup-color: @color-txt-medium-on-dark;
 @b-bup-shadow-x: 0;
 @b-bup-shadow-y: -1px;
 @b-bup-shadow-radius: 1px;
-@b-bup-shadow-color: rgba(255,255,255,.5);
-@b-bup-ui-shadow-color: rgba(255,255,255,.3);
-@b-bup-background-start: transparent;
-@b-bup-background-end: transparent;
-
-@b-bhover-border: @b-bup-border;
-@b-bhover-background-color: rgba(255,255,255, 0.25);
-@b-bhover-color: @b-bup-color;
-@b-bhover-shadow-x: 0;
-@b-bhover-shadow-y: -1px;
-@b-bhover-shadow-radius: 1px;
-@b-bhover-shadow-color: @b-bup-shadow-color;
-@b-bhover-ui-shadow-color: @b-bup-ui-shadow-color;
-@b-bhover-background-start: @b-bup-background-start;
-@b-bhover-background-end: @b-bup-background-end;
+@b-bup-shadow-color: @color-shadow-medium-on-dark;
+@b-bup-ui-shadow-color: @color-shadow-none;
+@b-bup-background-start: @color-bg-neutral-dark;
+@b-bup-background-end: @color-bg-neutral-dark-tint;
 
 @b-bdown-border: @b-bup-border;
-@b-bdown-background-color: rgba(255,255,255, 0.1);
+@b-bdown-background-color: @b-bup-background-color;
 @b-bdown-color: @b-bup-color;
 @b-bdown-shadow-x: 0;
 @b-bdown-shadow-y: -1px;
 @b-bdown-shadow-radius: 1px;
 @b-bdown-shadow-color: @b-bup-ui-shadow-color;
-@b-bhover-ui-shadow-color: @b-bup-ui-shadow-color;
-@b-bdown-background-start: rgba(255,255,255, 0.1);
-@b-bdown-background-end: rgba(255,255,255, 0.3);
+@b-bdown-ui-shadow-color: @b-bup-ui-shadow-color;
+@b-bdown-background-start: @color-bg-neutral-dark-tint;
+@b-bdown-background-end: @color-bg-neutral-dark;
+
+/* Cant be bothered defining hover states for edge case devices.. same as down for now */
+@b-bhover-border: @b-bdown-border;
+@b-bhover-background-color: @b-bdown-background-color;
+@b-bhover-color: @b-bdown-color;
+@b-bhover-shadow-x: @b-bdown-color;
+@b-bhover-shadow-y: @b-bdown-shadow-y;
+@b-bhover-shadow-radius: @b-bdown-shadow-radius;
+@b-bhover-shadow-color: @b-bdown-shadow-color;
+@b-bhover-ui-shadow-color: @b-bdown-ui-shadow-color;
+@b-bhover-background-start: @b-bdown-background-start;
+@b-bhover-background-end: @b-bdown-background-end;
+
+
+
+
+/*
+* C
+* - Standard light BG swatch, has subtle gray bg texture, used mainly for light colored dialog style views
+*/
+@c-bar-border: none;
+@c-bar-background-color: transparent;
+@c-bar-color: @color-txt-dark-on-dark;
+@c-bar-shadow-x: 0;
+@c-bar-shadow-y: 1px;
+@c-bar-shadow-radius: 1px;
+@c-bar-shadow-color: @color-shadow-light-on-light;
+@c-bar-background-start: transparent;
+@c-bar-background-end: transparent;
+@c-bar-link-color: @color-txt-dark-on-dark;
+@c-bar-link-hover: @color-txt-medium-on-light;
+@c-bar-link-active: @c-bar-link-hover;
+@c-bar-link-visited: @c-bar-link-hover;
+
+@c-body-border: none;
+@c-body-color: @color-txt-medium-on-light;
+@c-body-shadow-x: 0;
+@c-body-shadow-y: 1px;
+@c-body-shadow-radius: 0;
+@c-body-shadow-color: @color-shadow-light-on-light;
+@c-body-background: @gfx-bg-light-texture;
+@c-body-background-color: @color-bg-light;
+@c-body-background-start: transparent;
+@c-body-background-end: transparent;
+@c-body-link-color: @color-txt-dark-on-light;
+@c-body-link-hover: @c-body-link-color;
+@c-body-link-active: @color-shadow-medium-on-light;
+@c-body-link-visited: @color-shadow-medium-on-light;
+@c-body-padding: @padding-page-inset;
+
+@c-li-border-top: @border-light-on-light;
+@c-li-border-bottom: @border-dark-on-light;
+@c-li-background-color: transparent;
+
+@c-bup-border: @border-medium-on-light;
+@c-bup-background-color: @color-bg-neutral-light-tint;
+@c-bup-color: @color-txt-dark-on-light;
+@c-bup-shadow-x: 0;
+@c-bup-shadow-y: 1px;
+@c-bup-shadow-radius: 1px;
+@c-bup-shadow-color: @color-shadow-medium-on-light;
+@c-bup-background-start: @color-bg-neutral-light;
+@c-bup-background-end: @color-bg-neutral-light-tint;
+
+@c-bdown-border: @c-bup-border;
+@c-bdown-background-color: @c-bup-background-color;
+@c-bdown-color: @c-bup-color;
+@c-bdown-shadow-x: 0;
+@c-bdown-shadow-y: 1px;
+@c-bdown-shadow-radius: 1px;
+@c-bdown-shadow-color: @c-bup-shadow-color;
+@c-bdown-background-start: @color-bg-neutral-light-tint;
+@c-bdown-background-end: @color-bg-neutral-light;
+
+@c-bhover-border: @c-bup-border;
+@c-bhover-background-color: @c-bup-background-color;
+@c-bhover-color: @c-bup-color;
+@c-bhover-shadow-x: 0;
+@c-bhover-shadow-y: 1px;
+@c-bhover-shadow-radius: 1px;
+@c-bhover-shadow-color: @c-bup-shadow-color;
+@c-bhover-background-start: @c-bdown-background-start;
+@c-bhover-background-end: @c-bdown-background-end;
+
 
 
 /*
 * D
+* the full white BG swatch used for feed views etc
+* have sneakily included the orange buttons in this guy
 */
 @d-bar-border: transparent;
 @d-bar-background-color: transparent;
-@d-bar-color: #333;
+@d-bar-color: @border-dark-on-light;
 @d-bar-shadow-x: 0;
 @d-bar-shadow-y: 1px;
 @d-bar-shadow-radius: 0;
-@d-bar-shadow-color: #eee;
+@d-bar-shadow-color: @color-shadow-light-on-light;
 @d-bar-background-start: transparent;
 @d-bar-background-end: @d-bar-background-color;
-@d-bar-link-color: #2489CE;
+@d-bar-link-color: @color-txt-dark-on-light;
 @d-bar-link-hover: @d-bar-link-color;
 @d-bar-link-active: @d-bar-link-color;
 @d-bar-link-visited: @d-bar-link-color;
 
-@d-body-border: #ccc;
-@d-body-color: #333;
+@d-body-border: none;
+@d-body-color: @color-txt-medium-on-light;
 @d-body-shadow-x: 0;
 @d-body-shadow-y: 1px;
 @d-body-shadow-radius: 0;
-@d-body-shadow-color: #fff;
-@d-body-background-color: #F4F4F4;
-@d-body-background-end: @d-body-background-color;
-@d-body-background-start: @d-body-background-color;
-@d-body-link-color: #2489CE;
+@d-body-shadow-color: none;
+@d-body-background-color: @color-bg-neutral-light;
+@d-body-background-end: transparent;
+@d-body-background-start: transparent;
+@d-body-link-color: @color-txt-dark-on-light;
 @d-body-link-hover: @d-body-link-color;
 @d-body-link-active: @d-body-link-color;
 @d-body-link-visited: @d-body-link-color;
 
-@d-bup-border: #ccc;
-@d-bup-background-color: #fff;
-@d-bup-color: #444;//TODO conflict
-@d-bup-color: #333;
+@d-bup-border: none;
+@d-bup-background-color: @color-bg-highlight-secondary-tint;
+@d-bup-color: @color-txt-dark-on-light;
 @d-bup-shadow-x: 0;
 @d-bup-shadow-y: 1px;
 @d-bup-shadow-radius: 1px;
-@d-bup-shadow-color: #fff;
-@d-bup-background-end: @d-bup-background-color;
-@d-bup-background-start: @d-bup-background-color;
+@d-bup-shadow-color: @color-shadow-light-on-light;
+@d-bup-background-start: @color-bg-highlight-secondary;
+@d-bup-background-end: @color-bg-highlight-secondary-tint;
 
-@d-bhover-border: #aaa;
-@d-bhover-background-color: #eee;
-@d-bhover-color: #222;
-@d-bhover-shadow-x: 0;
-@d-bhover-shadow-y: 1px;
-@d-bhover-shadow-radius: 1px;
-@d-bhover-shadow-color: #fff;
-@d-bhover-background-start: #fdfdfd;
-@d-bhover-background-end: @d-bhover-background-color;
-
-@d-bdown-border: #aaa;
-@d-bdown-background-color: #fff;
-@d-bdown-color: #111;
+@d-bdown-border: @d-bup-border;
+@d-bdown-background-color: @d-bup-background-color;
+@d-bdown-color: @d-bup-color;
 @d-bdown-shadow-x: 0;
 @d-bdown-shadow-y: 1px;
 @d-bdown-shadow-radius: 1px;
-@d-bdown-shadow-color: #fff;
-@d-bdown-background-start: #eee;
-@d-bdown-background-end: @d-bdown-background-color;
+@d-bdown-shadow-color: @d-bup-shadow-color;
+@d-bdown-background-start: @color-bg-highlight-secondary-tint;
+@d-bdown-background-end: @color-bg-highlight-secondary;
+
+
+@d-bhover-border: @d-bdown-border;
+@d-bhover-background-color: @d-bdown-background-color;
+@d-bhover-color: @d-bdown-color;
+@d-bhover-shadow-x: @d-bdown-shadow-x;
+@d-bhover-shadow-y: 1px;
+@d-bhover-shadow-radius: 1px;
+@d-bhover-shadow-color: @d-bdown-shadow-color;
+@d-bhover-background-start: @d-bdown-background-start;
+@d-bhover-background-end: @d-bdown-background-end;
+
 
 
 /*
 * E
+* - highlight swatch - all about mad yellow shiz..
 */
-@e-bar-border: #F7C942;
-@e-bar-background-color: #fadb4e;
-@e-bar-color: #333;
+@e-bar-border: none;
+@e-bar-background-color: @color-bg-highlight-main-tint;
+@e-bar-color: @color-txt-dark-on-light;
 @e-bar-shadow-x: 0;
 @e-bar-shadow-y: 1px;
 @e-bar-shadow-radius: 0;
-@e-bar-shadow-color: #fff;
-@e-bar-background-start: #fceda7;
-@e-bar-background-end: @e-bar-background-color;
-@e-bar-link-color: #2489CE;
+@e-bar-shadow-color: @color-shadow-light-on-light;
+@e-bar-background-start: @color-bg-highlight-main;
+@e-bar-background-end: @color-bg-highlight-main-tint;
+@e-bar-link-color: @color-txt-dark-on-dark;
 @e-bar-link-hover: @e-bar-link-color;
 @e-bar-link-active: @e-bar-link-color;
 @e-bar-link-visited: @e-bar-link-color;
 
-@e-body-border: #F7C942;
-@e-body-color: #333;
+@e-body-border: none;
+@e-body-color: @color-txt-dark-on-dark;
 @e-body-shadow-x: 0;
 @e-body-shadow-y: 1px;
 @e-body-shadow-radius: 0;
-@e-body-shadow-color: #fff;
-@e-body-background-color: #faeb9e;
-@e-body-background-start: #fff;
-@e-body-background-end: @e-body-background-color;
-@e-body-link-color: #2489CE;
+@e-body-shadow-color: @color-shadow-light-on-light;
+@e-body-background-color: @color-bg-highlight-main;
+@e-body-background-start: transparent;
+@e-body-background-end: transparent;
+@e-body-link-color: @color-txt-dark-on-dark;
 @e-body-link-hover: @e-body-link-color;
 @e-body-link-active: @e-body-link-color;
 @e-body-link-visited: @e-body-link-color;
 
-@e-bup-border: #000;
-@e-bup-background-color: #000;
-@e-bup-color: #FFF;
+@e-bup-border: none;
+@e-bup-background-color: @color-bg-highlight-main-tint;
+@e-bup-color: @color-txt-dark-on-light;
 @e-bup-shadow-x: 0;
 @e-bup-shadow-y: 1px;
 @e-bup-shadow-radius: 0;
-@e-bup-shadow-color: #000;
-@e-bup-ui-shadow-color: @b-bup-ui-shadow-color;
-@e-bup-background-start: @e-bup-background-color;
-@e-bup-background-end: @e-bup-background-color;
+@e-bup-shadow-color: @color-shadow-light-on-light;
+@e-bup-ui-shadow-color: @color-shadow-medium-on-light;
+@e-bup-background-start: @color-bg-highlight-main;
+@e-bup-background-end: @color-bg-highlight-main-tint;
 
 @e-bhover-border: @e-bup-border;
 @e-bhover-background-color: @e-bup-background-color;
@@ -469,10 +481,10 @@
 @e-bhover-shadow-x: 0;
 @e-bhover-shadow-y: 1px;
 @e-bhover-shadow-radius: 1px;
-@e-bhover-shadow-color: #fff;
+@e-bhover-shadow-color: @e-bup-shadow-color;
 @e-bhover-ui-shadow-color: @b-bup-ui-shadow-color;
-@e-bhover-background-start: @e-bhover-background-color;
-@e-bhover-background-end: #333;
+@e-bhover-background-start: @color-bg-highlight-main-tint;
+@e-bhover-background-end: @color-bg-highlight-main;
 
 @e-bdown-border: @e-bup-border;
 @e-bdown-background-color: @e-bup-background-color;
@@ -480,7 +492,7 @@
 @e-bdown-shadow-x: 0;
 @e-bdown-shadow-y: 1px;
 @e-bdown-shadow-radius: 1px;
-@e-bdown-shadow-color: #ffffff;
+@e-bdown-shadow-color: @e-bup-shadow-color;
 @e-bdown-ui-shadow-color: @b-bup-ui-shadow-color;
-@e-bdown-background-start: @e-bhover-background-color;
-@e-bdown-background-end: @e-bhover-background-end;
+@e-bdown-background-start: @color-bg-highlight-main-tint;
+@e-bdown-background-end: @color-bg-highlight-main;

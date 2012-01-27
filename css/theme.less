@@ -2,30 +2,17 @@
 * Special Fonts
 */
 
-
 @font-face {
-    font-family: 'GlyphaMedium';
-    src: url('../fonts/glyph-webfont.eot');
-    src: url('../fonts/glyph-webfont.eot?#iefix') format('embedded-opentype'),
-         url('../fonts/glyph-webfont.woff') format('woff'),
-         url('../fonts/glyph-webfont.ttf') format('truetype'),
-         url('../fonts/glyph-webfont.svg#GlyphaMedium') format('svg');
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'AcademySansSerifMedium';
-    src: url('../fonts/acadesanser-webfont.eot');
-    src: url('../fonts/acadesanser-webfont.eot?#iefix') format('embedded-opentype'),
-         url('../fonts/acadesanser-webfont.woff') format('woff'),
-         url('../fonts/acadesanser-webfont.ttf') format('truetype'),
-         url('../fonts/acadesanser-webfont.svg#AcademySansSerifMedium') format('svg');
+    font-family: 'MuseoSansRounded700';
+    src: url('../fonts/museosansrounded-700-webfont.eot');
+    src: url('../fonts/museosansrounded-700-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/museosansrounded-700-webfont.woff') format('woff'),
+         url('../fonts/museosansrounded-700-webfont.ttf') format('truetype'),
+         url('../fonts/museosansrounded-700-webfont.svg#MuseoSansRounded700') format('svg');
     font-weight: normal;
     font-style: normal;
 
 }
-
 
 /*
 * Browser 
@@ -64,56 +51,13 @@ html {
 */
 
 
-
-
 @import "variables.less";
 @import "mixins.less";
 
 /* PINK Body */
 
 body {
-   
-	text-shadow: @c-body-shadow-x @c-body-shadow-y @c-body-shadow-radius @c-body-shadow-color;
-	background: @body-background-color @body-background-image;
-}
-
-.ui-page{
-    -webkit-box-shadow: inset 0 16px 52px rgba(255,51,151,0.3);
-   	-moz-box-shadow: inset 0 16px 52px rgba(255,51,151,0.3);
-   	box-shadow: inset 0 16px 52px rgba(255,51,151,0.3);
-}
-
-.ui-content{
-    padding: @global-body-padding;
-}
-
-.ui-header .ui-title, .ui-footer .ui-title {
-    min-height: 20px;
-    font-size: 18px;
-    margin: 11px 90px 12px;
-}
-
-.ui-header .ui-btn-left {
-    left: 6px;
-    top: 6px;
-}
-
-.ui-header .ui-btn-inner, .ui-footer .ui-btn-inner, .ui-bar .ui-btn-inner {
-    padding: 7px 10px 8px;
-}
-
-h2,
-.image-caption{
-    font-family: @global-special-font;
-    font-size: @global-special-font-size;
-}
-
-p,
-.user-details,
-.PINK-small-text{
-   color: #666;
-   font-size: @global-base-font-size;
-   font-weight: normal;
+   	background: black;
 }
 
 a{
@@ -152,181 +96,8 @@ a{
 }
 
 
-.pop-white{
-    -moz-box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.2)!important;
-    -webkit-box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.2)!important;
-    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.2)!important;
-    background-color: #fff;
-}
-
 
 /* Swatches */
-
-/* C   == PINK Page body..
------------------------------------------------------------------------------------------------------------*/
-
-.ui-body-c {
-	color: @c-body-color;
-
-	text-shadow: @c-body-shadow-x @c-body-shadow-y @c-body-shadow-radius @c-body-shadow-color;
-	font-family: @global-font-family;
-
-
-	input, select, textarea, button {
-		font-family: @global-font-family;
-	}
-
-	.ui-link-inherit {
-		color: @c-body-color;
-	}
-
-	.ui-link {
-		color: @c-body-link-color;
-		font-weight: bold;
-
-		&:hover {
-			color: @c-body-link-hover;
-		}
-
-		&:active {
-			color: @c-body-link-active;
-		}
-
-		&:visited {
-			color: @c-body-link-visited;
-		}
-	}
-	
-
-    .ui-li-static{
-        padding: 10px;
-        	border-top: 1px solid @c-bup-border-top;
-        	border-bottom: 1px solid @c-bup-border-bottom;
-    }
-
-
-    .image-frame{
-        padding-bottom:6px;
-        background-image: url('../gfx/PINK-image-shadow.png');
-        background-position: center bottom;
-        background-repeat: no-repeat;
-        background-size: 100%;
-        width: 100%;
-        margin-bottom: 7px;
-    }
-    .main-image{
-        -webkit-box-shadow: -0px -0px 5px rgba(0, 0, 0, 0.3);
-        -moz-box-shadow: -0px -0px 5px rgba(0, 0, 0, 0.3);
-        box-shadow: -0px -0px 5px rgba(0, 0, 0, 0.3);
-        background-color: rgba(255,255,255, .1);
-        width: 100%;
-        display: block;
-    }
-
-
-	
-}
-
-.ui-bar-c {
-	border: 1px solid @c-bar-border;
-	background: @c-bar-background-color;
-	color: @c-bar-color;
-	font-weight: bold;
-	text-shadow: @c-bar-shadow-x @c-bar-shadow-y @c-bar-shadow-radius @c-bar-shadow-color;
-	font-family: @global-font-family;
-
-	.linear-gradient(@c-bar-background-start, @c-bar-background-end);
-
-	.ui-link-inherit {
-		color: @c-bar-color;
-	}
-
-	.ui-link {
-		color: @c-bar-link-color;
-		font-weight: bold;
-
-		&:hover {
-			color: @c-bar-link-hover;
-		}
-
-		&:active {
-			color: @c-bar-link-active;
-		}
-
-		&:visited {
-			color: @c-bar-link-visited;
-		}
-	}
-
-	input, select, textarea, button {
-		font-family: @global-font-family;
-	}
-}
-
-.ui-btn-up,
-.ui-btn-up-c {
-	border: 1px solid @c-bup-border;
-	background: @c-bup-background-color;
-	font-weight: bold;
-	color: @c-bup-color;
-	text-shadow: @c-bup-shadow-x @c-bup-shadow-y @c-bup-shadow-radius @c-bup-shadow-color;
-	font-family: @global-font-family;
-	text-decoration: none;
-
-	.linear-gradient(@c-bup-background-start, @c-bup-background-end);
-
-	a.ui-link-inherit {
-		color: @c-bup-color;
-	}
-}
-
-.ui-btn-hover,
-.ui-btn-hover-c {
-	border: 1px solid @c-bhover-border;
-	background: @c-bhover-background-color;
-	.linear-gradient(@c-bhover-background-color, @c-bhover-background-color);
-	font-weight: bold;
-	color: @c-bhover-color;
-	text-shadow: @c-bhover-shadow-x @c-bhover-shadow-y @c-bhover-shadow-radius @c-bhover-shadow-color;
-	font-family: @global-font-family;
-	text-decoration: none;
-	a.ui-link-inherit {
-		color: @c-bhover-color;
-	}
-}
-
-.ui-btn-down,
-.ui-btn-active,
-.ui-btn-down-c,
-.ui-btn-active-c {
-	border: 1px solid @c-bdown-border;
-	background: @c-bdown-background-color;
-	.linear-gradient(@c-bdown-background-color, @c-bdown-background-color);
-	
-	font-weight: bold;
-	color: @c-bdown-color;
-	text-shadow: @c-bdown-shadow-x @c-bdown-shadow-y @c-bdown-shadow-radius @c-bdown-shadow-color;
-	font-family: @global-font-family;
-	text-decoration: none;
-
-	a.ui-link-inherit {
-		color: @c-bdown-color;
-	}
-}
-
-.ui-btn-up.ui-li,
-.ui-btn-hover.ui-li,
-.ui-btn-down.ui-li,
-.ui-btn-active.ui-li,
-.ui-btn-up-c.ui-li,
-.ui-btn-hover-c.ui-li,
-.ui-btn-down-c.ui-li,
-.ui-btn-active-c.ui-li 
-{
-    border: none;
-	border-top: 1px solid @c-bup-border-top;
-	border-bottom: 1px solid @c-bup-border-bottom;
-}
 
 
 
@@ -342,12 +113,12 @@ a{
 	color: @a-body-color;
 	text-shadow: @a-body-shadow-x @a-body-shadow-y @a-body-shadow-radius @a-body-shadow-color;
 	font-weight: normal;
-	font-family: @global-font-family;
+	font-family: @txt-font-base;
 
 	.linear-gradient(@a-body-background-start, @a-body-background-end);
 
 	input, select, textarea, button {
-		font-family: @global-font-family;
+		font-family: @txt-font-base;
 	}
 
 	.ui-link-inherit {
@@ -378,13 +149,13 @@ a{
 	color: @a-bar-color;
 	font-weight: bold;
 	text-shadow: @a-bar-shadow-x @a-bar-shadow-y @a-bar-shadow-radius @a-bar-shadow-color;
-	font-family: @global-font-family;
+	font-family: @txt-font-base;
 
 	.shiny-gradient (@a-bup-background-start, @a-bup-background-start-mid, @a-bup-background-end-mid, @a-bup-background-end);
     
 
 	input, select, textarea, button {
-		font-family: @global-font-family;
+		font-family: @txt-font-base;
 	}
 
 	.ui-link-inherit {
@@ -432,7 +203,7 @@ a{
 	font-weight: bold;
 	color: @a-bhover-color;
 	text-shadow: @a-bhover-shadow-x @a-bhover-shadow-y @a-bhover-shadow-radius @a-bhover-shadow-color;
-	font-family: @global-font-family;
+	font-family: @txt-font-base;
 	text-decoration: none;
 
     .linear-gradient(@a-bhover-background-start, @a-bhover-background-end);
@@ -449,7 +220,7 @@ a{
 	font-weight: bold;
 	color: @a-bdown-color;
 	text-shadow: @a-bdown-shadow-x @a-bdown-shadow-y @a-bdown-shadow-radius @a-bdown-shadow-color;
-	font-family: @global-font-family;
+	font-family: @txt-font-base;
 	text-decoration: none;
 
 	.linear-gradient(@a-bdown-background-start, @a-bdown-background-end);
@@ -555,12 +326,12 @@ a{
 	color: @b-body-color;
 	text-shadow: @b-body-shadow-x @b-body-shadow-y @b-body-shadow-radius @b-body-shadow-color;
 	font-weight: normal;
-	font-family: @global-font-family;
+	font-family: @txt-font-base;
 
 	.linear-gradient(@b-body-background-start, @b-body-background-end);
 
 	input, select, textarea, button {
-		font-family: @global-font-family;
+		font-family: @txt-font-base;
 	}
 
 	.ui-link-inherit {
@@ -586,18 +357,17 @@ a{
 }
 
 .ui-bar-b {
-	border: none;
-	border-bottom: 1px solid @b-bar-border-bottom;
+	border: @b-bar-border;
 	background: @b-bar-background-color;
 	color: @b-bar-color;
 	font-weight: bold;
 	text-shadow: @b-bar-shadow-x @b-bar-shadow-y @b-bar-shadow-radius @b-bar-shadow-color;
-	font-family: @global-font-family;
+	font-family: @txt-font-base;
 
 	.linear-gradient(@b-bar-background-start, @b-bar-background-end);
 
 	input, select, textarea, button {
-		font-family: @global-font-family;
+		font-family: @txt-font-base;
 	}
 
 	.ui-link-inherit {
@@ -628,7 +398,7 @@ a{
 	font-weight: bold;
 	color: @b-bup-color;
 	text-shadow: @b-bup-shadow-x @b-bup-shadow-y @b-bup-shadow-radius @b-bup-shadow-color;
-	font-family: @global-font-family;
+	font-family: @txt-font-base;
 	text-decoration: none;
 
 	.linear-gradient(@b-bup-background-start, @b-bup-background-end);
@@ -649,7 +419,7 @@ a{
 	font-weight: bold;
 	color: @b-bhover-color;
 	text-shadow: @b-bhover-shadow-x @b-bhover-shadow-y @b-bhover-shadow-radius @b-bhover-shadow-color;
-	font-family: @global-font-family;
+	font-family: @txt-font-base;
 	text-decoration: none;
 
 	.linear-gradient(@b-bhover-background-start, @b-bhover-background-end);
@@ -670,7 +440,7 @@ a{
 	font-weight: bold;
 	color: @b-bdown-color;
 	text-shadow: @b-bdown-shadow-x @b-bdown-shadow-y @b-bdown-shadow-radius @b-bdown-shadow-color;
-	font-family: @global-font-family;
+	font-family: @txt-font-base;
 	text-decoration: none;
 
 	.linear-gradient(@b-bdown-background-start, @b-bdown-background-end);
@@ -686,6 +456,173 @@ a{
 }
 
 
+/* C   ==  Page body..
+-----------------------------------------------------------------------------------------------------------*/
+
+.ui-body-c {
+	color: @c-body-color;
+
+	text-shadow: @c-body-shadow-x @c-body-shadow-y @c-body-shadow-radius @c-body-shadow-color;
+	font-family: @txt-font-base;
+
+
+	input, select, textarea, button {
+		font-family: @txt-font-base;
+	}
+
+	.ui-link-inherit {
+		color: @c-body-color;
+	}
+
+	.ui-link {
+		color: @c-body-link-color;
+		font-weight: bold;
+
+		&:hover {
+			color: @c-body-link-hover;
+		}
+
+		&:active {
+			color: @c-body-link-active;
+		}
+
+		&:visited {
+			color: @c-body-link-visited;
+		}
+	}
+	
+
+    .ui-li-static{
+        padding: 10px;
+        	border-top: 1px solid @c-li-border-top;
+        	border-bottom: 1px solid @c-li-border-bottom;
+    }
+
+
+    .image-frame{
+        padding-bottom:6px;
+        background-image: url('../gfx/PINK-image-shadow.png');
+        background-position: center bottom;
+        background-repeat: no-repeat;
+        background-size: 100%;
+        width: 100%;
+        margin-bottom: 7px;
+    }
+    .main-image{
+        -webkit-box-shadow: -0px -0px 5px rgba(0, 0, 0, 0.3);
+        -moz-box-shadow: -0px -0px 5px rgba(0, 0, 0, 0.3);
+        box-shadow: -0px -0px 5px rgba(0, 0, 0, 0.3);
+        background-color: rgba(255,255,255, .1);
+        width: 100%;
+        display: block;
+    }
+
+
+	
+}
+
+.ui-bar-c {
+	border: 1px solid @c-bar-border;
+	background: @c-bar-background-color;
+	color: @c-bar-color;
+	font-weight: bold;
+	text-shadow: @c-bar-shadow-x @c-bar-shadow-y @c-bar-shadow-radius @c-bar-shadow-color;
+	font-family: @txt-font-base;
+
+	.linear-gradient(@c-bar-background-start, @c-bar-background-end);
+
+	.ui-link-inherit {
+		color: @c-bar-color;
+	}
+
+	.ui-link {
+		color: @c-bar-link-color;
+		font-weight: bold;
+
+		&:hover {
+			color: @c-bar-link-hover;
+		}
+
+		&:active {
+			color: @c-bar-link-active;
+		}
+
+		&:visited {
+			color: @c-bar-link-visited;
+		}
+	}
+
+	input, select, textarea, button {
+		font-family: @txt-font-base;
+	}
+}
+
+.ui-btn-up,
+.ui-btn-up-c {
+	border: 1px solid @c-bup-border;
+	background: @c-bup-background-color;
+	font-weight: bold;
+	color: @c-bup-color;
+	text-shadow: @c-bup-shadow-x @c-bup-shadow-y @c-bup-shadow-radius @c-bup-shadow-color;
+	font-family: @txt-font-base;
+	text-decoration: none;
+
+	.linear-gradient(@c-bup-background-start, @c-bup-background-end);
+
+	a.ui-link-inherit {
+		color: @c-bup-color;
+	}
+}
+
+.ui-btn-hover,
+.ui-btn-hover-c {
+	border: 1px solid @c-bhover-border;
+	background: @c-bhover-background-color;
+	.linear-gradient(@c-bhover-background-color, @c-bhover-background-color);
+	font-weight: bold;
+	color: @c-bhover-color;
+	text-shadow: @c-bhover-shadow-x @c-bhover-shadow-y @c-bhover-shadow-radius @c-bhover-shadow-color;
+	font-family: @txt-font-base;
+	text-decoration: none;
+	a.ui-link-inherit {
+		color: @c-bhover-color;
+	}
+}
+
+.ui-btn-down,
+.ui-btn-active,
+.ui-btn-down-c,
+.ui-btn-active-c {
+	border: 1px solid @c-bdown-border;
+	background: @c-bdown-background-color;
+	.linear-gradient(@c-bdown-background-color, @c-bdown-background-color);
+	
+	font-weight: bold;
+	color: @c-bdown-color;
+	text-shadow: @c-bdown-shadow-x @c-bdown-shadow-y @c-bdown-shadow-radius @c-bdown-shadow-color;
+	font-family: @txt-font-base;
+	text-decoration: none;
+
+	a.ui-link-inherit {
+		color: @c-bdown-color;
+	}
+}
+
+.ui-btn-up.ui-li,
+.ui-btn-hover.ui-li,
+.ui-btn-down.ui-li,
+.ui-btn-active.ui-li,
+.ui-btn-up-c.ui-li,
+.ui-btn-hover-c.ui-li,
+.ui-btn-down-c.ui-li,
+.ui-btn-active-c.ui-li 
+{
+    border: none;
+	border-top: 1px solid @c-li-border-top;
+	border-bottom: 1px solid @c-li-border-bottom;
+}
+
+
 
 
 /* D
@@ -696,12 +633,12 @@ a{
 	color: @d-body-color;
 	text-shadow: @d-body-shadow-x @d-body-shadow-y @d-body-shadow-radius @d-body-shadow-color;
 	background: @d-body-background-color;
-	font-family: @global-font-family;
+	font-family: @txt-font-base;
 
 	.linear-gradient(@d-body-background-start, @d-body-background-end);
 
 	input, select, textarea, button {
-		font-family: @global-font-family;
+		font-family: @txt-font-base;
 	}
 
 	.ui-link-inherit {
@@ -734,12 +671,12 @@ a{
 	background: @d-bar-background-color;
 	color: @d-bar-color;
 	text-shadow: @d-bar-shadow-x @d-bar-shadow-y @d-bar-shadow-radius @d-bar-shadow-color;
-	font-family: @global-font-family;
+	font-family: @txt-font-base;
 
 	.linear-gradient(@d-bar-background-start, @d-bar-background-end);
 
 	input, select, textarea, button {
-		font-family: @global-font-family;
+		font-family: @txt-font-base;
 	}
 
 	.ui-link-inherit {
@@ -770,7 +707,7 @@ a{
 	font-weight: bold;
 	color: @d-bup-color;
 	text-shadow: @d-bup-shadow-x @d-bup-shadow-y @d-bup-shadow-radius @d-bup-shadow-color;
-	font-family: @global-font-family;
+	font-family: @txt-font-base;
 	text-decoration: none;
 
 	.linear-gradient(@d-bup-background-start, @d-bup-background-end);
@@ -788,7 +725,7 @@ a{
 	color: @d-bhover-color;
 	cursor: pointer;
 	text-shadow: @d-bhover-shadow-x @d-bhover-shadow-y @d-bhover-shadow-radius @d-bhover-shadow-color;
-	font-family: @global-font-family;
+	font-family: @txt-font-base;
 	text-decoration: none;
 
 	.linear-gradient(@d-bhover-background-start, @d-bhover-background-end);
@@ -804,7 +741,7 @@ a{
 	font-weight: bold;
 	color: @d-bdown-color;
 	text-shadow: @d-bdown-shadow-x @d-bdown-shadow-y @d-bdown-shadow-radius @d-bdown-shadow-color;
-	font-family: @global-font-family;
+	font-family: @txt-font-base;
 	text-decoration: none;
 
 	.linear-gradient(@d-bdown-background-start, @d-bdown-background-end);
@@ -823,12 +760,12 @@ a{
 	color: @e-body-color;
 	text-shadow: @e-body-shadow-x @e-body-shadow-y @e-body-shadow-radius @e-body-shadow-color;
 	background: @e-body-background-color;
-	font-family: @global-font-family;
+	font-family: @txt-font-base;
 
 	.linear-gradient(@e-body-background-start, @e-body-background-end);
 
 	input, select, textarea, button {
-		font-family: @global-font-family;
+		font-family: @txt-font-base;
 	}
 
 	.ui-link-inherit {
@@ -858,12 +795,12 @@ a{
 	background: @e-bar-background-color;
 	color: @e-bar-color;
 	text-shadow: @e-bar-shadow-x @e-bar-shadow-y @e-bar-shadow-radius @e-bar-shadow-color;
-	font-family: @global-font-family;
+	font-family: @txt-font-base;
 
 	.linear-gradient(@e-bar-background-start, @e-bar-background-end);
 
 	input, select, textarea, button {
-		font-family: @global-font-family;
+		font-family: @txt-font-base;
 	}
 
 	.ui-link-inherit {
@@ -896,7 +833,7 @@ a{
 	font-weight: bold;
 	color: @e-bup-color;
 	text-shadow: @e-bup-shadow-x @e-bup-shadow-y @e-bup-shadow-radius @e-bup-shadow-color;
-	font-family: @global-font-family;
+	font-family: @txt-font-base;
 	text-decoration: none;
 
 	.linear-gradient(@e-bup-background-start, @e-bup-background-end);
@@ -912,7 +849,7 @@ a{
 	font-weight: bold;
 	color: @e-bhover-color;
 	text-shadow: @e-bhover-shadow-x @e-bhover-shadow-y @e-bhover-shadow-radius @e-bhover-shadow-color;
-	font-family: @global-font-family;
+	font-family: @txt-font-base;
 	text-decoration: none;
 
 	.linear-gradient(@e-bhover-background-start, @e-bhover-background-end);
@@ -928,7 +865,7 @@ a{
 	font-weight: bold;
 	color: @e-bdown-color;
 	text-shadow: @e-bdown-shadow-x @e-bdown-shadow-y @e-bdown-shadow-radius @e-bdown-shadow-color;
-	font-family: @global-font-family;
+	font-family: @txt-font-base;
 	text-decoration: none;
 
 	.linear-gradient(@e-bdown-background-start, @e-bdown-background-end);
@@ -1316,181 +1253,18 @@ a.ui-link-inherit {
 
 
 
-/* PINK Custom styles
+/* SOME Custom styles
 -----------------------------------------------------------------------------------------------------------*/
 
-.gallery{
-    .ui-li-static{
-        padding: 20px;
-    }
-}
 
 .acessibility-text{
     text-indent: -999px;
     overflow: hidden;
 }
 
-.PINK-title{
-    background-image: url('../gfx/PINK-menu-text.png');
-    overflow: hidden;
-    height: 138px;
-    background-position: center 0px;
-    background-repeat: no-repeat;
-    margin: -@global-body-padding -@global-body-padding @global-body-padding -@global-body-padding;
-    -moz-box-shadow: inset 0px -2px 8px rgba(0, 0, 0, 0.05);
-    -webkit-box-shadow: inset 0px -2px 8px rgba(0, 0, 0, 0.05);
-    box-shadow: inset 0px -2px 8px rgba(0, 0, 0, 0.05);
-
-}
-
-.ui-content .ui-listview{
-    margin: -@global-body-padding;
-}
-
-.ui-content .ui-listview-inset {
-    margin: 14px 0;
-}
-
-.ui-btn{
-    margin-left: 0;
-    margin-right: 0;
-}
-
-.PINK-native-title{
-    .PINK-header-logo{
-        background-image: url('../gfx/PINK-menu-text.png');
-        background-position: bottom left;
-        background-repeat: no-repeat;
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 180px;
-        height:44px;
-    }
-    
-}
 
 
-.PINK-menu-list{
-    .ui-btn-inner {
-        border-top: none;
-    }
-    
-    .ui-btn-inner a.ui-link-inherit{
-        padding-left: 81px;
-        color: white;
-        text-shadow: none;
-        padding-top: 11px;
-        padding-bottom: 11px;
-    }
-    .ui-icon-arrow-r{
-        display: none;
-    }
-    
-    .PINK-menu-icon{
-        background-image: url('../gfx/PINK-btn-icons.png');
-        width: 81px;
-        height: 42px;
-        max-width: none;
-        max-height: none;
-        position: absolute;
-        top: 0;
-        left: 0;
-        
-    }
-    .home-photo .PINK-menu-icon{ background-position: 0 -1px;}
-    .home-roll .PINK-menu-icon{ background-position: 0 -43px;}
-    .home-featured .PINK-menu-icon{ background-position: 0 -87px;} 
-    
-    .PINK-hearts-menu-btn{
-        background-image: url('../gfx/PINK-menu-text.png');
-        overflow: hidden;
-        height: 119px;
-        background-position: center -140px;
-        background-repeat: no-repeat;
-        padding: 0!important;
-        
-    }  
-    .home-pink-hearts{
-        background-color: rgba(255,255,255,0.3);
-        -webkit-box-shadow: -0px -2px 6px rgba(0, 0, 0, 0.1);
-        -moz-box-shadow: -0px -2px 6px rgba(0, 0, 0, 0.1);
-        box-shadow: -0px -2px 6px rgba(0, 0, 0, 0.1);
-    
-        .ui-icon-arrow-r{
-            display: block;
-            background-color: transparent;
-            box-shadow: none;
-            background-image: url('../gfx/PINK-arrow-right.png');
-            background-position: center;
-        }
-    }
-}
-
-.load-more{
-    text-align: center;
-    margin-bottom: 44px;
-    .ui-btn{
-        display: inline-block;
-        font-size: @global-base-font-size!important;
-    }
-}
-
-
-.PINK-upload-image{
-    position: relative;
-    .PINK-upload-image-thumb{
-        width: 80px;
-        height: 80px;
-        background-color: @global-element-bgcolor;
-        position: absolute;
-        left: 0;
-        top: 0;
-        img{
-            width: 100%;
-        }
-    }
-    .PINK-upload-image-info{
-        margin-left: 95px;
-        min-height: 80px;
-        .share-message{
-              margin-top: 0;
-          }
-         textarea{
-            resize: none;
-            border: none;
-            outline: none;
-            box-sizing: border-box;
-            width: 100%;
-            min-height: 80px;
-            font-size: @global-base-font-size;
-         }
-          
-    }
-  
-    
-}
-
-.ui-listview-inset{
-    background-color: @global-element-bgcolor;
-    label.ui-slider{
-        font-weight: bold;
-        margin: 0;
-        line-height: 24px;
-    }
-    
-}
-
-
-.PINK-right-button{
-    width: 100px;
-    position: absolute;
-    right: 6px;
-    top: 1px;
-}
-
-
-.PINK-switch{
+.iOS-style-switch{
     width: 100px;
     position: absolute;
     right: 6px;
@@ -1543,57 +1317,18 @@ a.ui-link-inherit {
 }
 
 
-.PINK-text-btn{
-    .ui-btn-text{
-        font-family: @global-button-font;
-        -webkit-font-smoothing: antialiased;
-        font-size: 24px;
-        text-shadow: none;
-        font-weight: normal;
-    }
-   
-   .ui-btn-inner{
-        padding: 3px;
-   }
-}
-
-.skip{
-   font-size: @global-base-font-size;
-   text-align: right;
-   display: block;
-   margin-top: 12px;
-   height: 32px;
-   vertical-align: middle;
-   line-height: 32px;
-}
-
-.PINK-love-it{
-    text-align: center;
-/*    margin-top: -160px;*/
-    margin-bottom: 15px;
-    h2,
-    p{
-        margin: 2px 0;
-    }
-}
-
-
 
 /* upload progress */
 .progress-bar{
     margin-right: 50px;
     position: relative;
-    top: 2px;
-    
+    top: 2px;   
     .bar{
         height: 10px;
         -moz-border-radius: 4px;
         -webkit-border-radius: 4px;
-        border-radius: 4px;
-        
-       
+        border-radius: 4px; 
     }
-    
      .bar-prog{
             position: absolute;
             top: 0;
@@ -1646,11 +1381,7 @@ a.ui-link-inherit {
 
 /* Android HDPI - Pixel ratio of 1.5. Background-size is 1/1.5 = 66.67% (of a 150px image) */
 @media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5) {
-    .ui-body-c .image-frame{ background-image: url('../gfx/hdpi/PINK-image-shadow.png'); background-size: 280px 6px;}
-    .PINK-title, .PINK-menu-list .PINK-hearts-menu-btn, .PINK-native-title .PINK-header-logo{ background-image: url('../gfx/hdpi/PINK-menu-text.png'); background-size: 320px 301px;}
-    .PINK-menu-list .PINK-menu-icon{background-image: url('../gfx/hdpi/PINK-btn-icons.png'); background-size: 162px 126px;}
-    .PINK-menu-list .home-pink-hearts .ui-icon-arrow-r { background-image: url('../gfx/hdpi/PINK-arrow-right.png'); background-size: 20px 20px;}
-    body {background-image: url('../gfx/hdpi/PINK-noise.gif'); background-size: 80px 80px;}
+   
 
 }
 
@@ -1658,11 +1389,7 @@ a.ui-link-inherit {
 /* High Resolution (iPhone 4) */
 
 @media only screen and (-webkit-min-device-pixel-ratio: 2) {
-    .ui-body-c .image-frame{ background-image: url('../gfx/retina/PINK-image-shadow.png'); background-size: 280px 6px;}
-    .PINK-title, .PINK-menu-list .PINK-hearts-menu-btn, .PINK-native-title .PINK-header-logo{ background-image: url('../gfx/retina/PINK-menu-text.png'); background-size: 320px 301px;}
-    .PINK-menu-list .PINK-menu-icon{background-image: url('../gfx/retina/PINK-btn-icons.png'); background-size: 162px 126px;}
-    .PINK-menu-list .home-pink-hearts .ui-icon-arrow-r { background-image: url('../gfx/retina/PINK-arrow-right.png'); background-size: 20px 20px;}
-    body {background-image: url('../gfx/retina/PINK-noise.gif'); background-size: 80px 80px;}
+   
 }
 
 
