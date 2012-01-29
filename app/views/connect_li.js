@@ -72,8 +72,16 @@ snapr.views.connect_li = Backbone.View.extend({
         }
         else
         {
-            url = snapr.api_base + "/linked_services/"
-                + this.provider + "/oauth/?access_token=" + snapr.auth.get("access_token") + "&redirect=" + escape( window.location.href );
+            if (snapr.utils.get_local_param( "appmode" ))
+            {
+                var url = snapr.api_base + "/linked_services/"
+                    + this.provider + "/oauth/?access_token=" + snapr.auth.get("access_token") + "&redirect=snapr://redirect?url=" + escape( window.location.href );
+            }
+            else
+            {
+                var url = snapr.api_base + "/linked_services/"
+                    + this.provider + "/oauth/?access_token=" + snapr.auth.get("access_token") + "&redirect=" + escape( window.location.href );
+            }
             window.location = url;
         }
         
