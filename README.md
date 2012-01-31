@@ -9,14 +9,14 @@ Featuring:
 * Backbone.js structure, routing and events
 
 
-Routing
--------
+Hash-URL Routing
+----------------
 
 [Backbone.js](http://documentcloud.github.com/backbone/) is used to manage the #hash navigation system for the app.
 
 The routes are defined in the main `app/snapr.js` file as below.
 
-Imagine an app which had just three views, `"popular"`, `"feed"`, and `home` which would be loaded with the url hashes `#/popular/`, `#/feed/`, and `*anything-else`.
+Imagine an app which had just three views, `popular`, `feed`, and `home`. These views could be loaded with the url hashes `#/popular/`, `#/feed/`, and `#/` or `*anything-else` (we'd use *anything-else as a catch-all).
 
 The router for this app would look like so:
 
@@ -115,7 +115,7 @@ In our combination of the two libraries we follow a common pattern for adding ne
 
     *   If the page only displays static content you don't need to define a new `render` function, however in this example we would like to use the template defined above to render different content depending on whether a `username` parameter is passed in to the view.
 
-    *   In this case we need to add to the initialize function to tell it which template markup to use, and to get the `username` if it is passed via the initialization options (see 5 below):
+    *   In this case we need to add to the initialize function to tell it which template markup to use, and to get the `username` if it is passed via the initialization options (see 5. below):
 
             hs.views.profile = Backbone.View.extend({
                 initialize: function()
@@ -156,6 +156,21 @@ In our combination of the two libraries we follow a common pattern for adding ne
 
 4.  As described above, each page view has a hash url route (or routes) defined and an associated route function. This tells the app to load a particular page in response to a url hash.
 
-    *   So if we wanting to show our new `profile` view when the user goes to `index.html#/profile/` or `index.html#/?username=rowan` we would add extra lines to `routes:` with:
-        `"/profile/": profile` and `"/profile/?query_string": profile`
-    *   We would then define the `profile` function.
+    *   So if we wanting to show our new `profile` view when the user goes to `index.html#/profile/` or `index.html#/?username=rowan` we would add the following extra lines to `routes:`:
+
+            "/profile/": "profile",
+            "/profile/?query_string": "profile"
+
+    *   Now that we've directed the routes to the the `profile` function we need to create it.
+
+5.  The `profile` function handles the instantiation of the `hs.view.profile` view, set the div with id `profile` as the view's element and passes in any parameters from the url like so:
+
+        profile: function( query_string )
+        {
+            // load profile view
+            var query = snapr.utils.get_query_params( query_string );
+            snapr.info.current_view = new snapr.views.profile({
+                query: query,
+                el: $("#profile")
+            });
+        }
