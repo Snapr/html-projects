@@ -234,6 +234,14 @@ snapr.views.photo_edit = Backbone.View.extend({
 
                 });
                 _.extend(params, this.query);
+
+                var photo = this.query && this.query.photo_path || null;
+                if (photo)
+                {
+                    delete params.photo_path;
+                    params["photo"] = photo;
+                }
+
                 _.extend(params, snapr.auth.attributes);
 
                 if (pink_nation_sharing)
