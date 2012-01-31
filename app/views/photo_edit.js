@@ -227,6 +227,7 @@ snapr.views.photo_edit = Backbone.View.extend({
                 if (pink_nation_sharing)
                 {
                     _.extend(params, {
+                        status: "public",
                         public_group: snapr.public_group,
                         app_group: snapr.app_group
                     });
