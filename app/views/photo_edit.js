@@ -219,7 +219,19 @@ snapr.views.photo_edit = Backbone.View.extend({
             {
                 var params = {};
                 _.each( $(this.el).find("form").serializeArray(), function( o ){
-                    params[o.name] = o.value;
+                    if (["tumblr", "facebook_feed"].indexOf( o.name ) > -1)
+                    {
+                        params[o.name] = (o.value == "on");
+                    }
+                    else if (o.name == "enter-girl-of-month")
+                    {
+                        // do nothing
+                    }
+                    else
+                    {
+                        params[o.name] = o.value;
+                    }
+
                 });
                 _.extend(params, this.query);
                 _.extend(params, snapr.auth.attributes);
