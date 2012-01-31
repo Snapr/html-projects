@@ -20,36 +20,36 @@ Imagine an app which had just three views, `"popular"`, `"feed"`, and `home` whi
 
 The router for this app would look like so:
 
-`snapr.routers = Backbone.Router.extend({
-    routes: {
-        "/feed/": "feed",
-        "/feed/?*query_string": "feed",
-        "/popular/": "popular",
-        "/feed/?*query_string": "popular",
-        "/": "home",
-        "/?*query_string": "home",
-        "*path": "home"
-    },
-    feed: function( query_string )
-    {
-        // function which loads view
-        var query = snapr.utils.get_query_params( query_string );
-        snapr.info.current_view = new snapr.views.feed({
-            query: query,
-            el: $("#feed")
-        });
-    },
-    popular: function( query_string )
-    {
-        // function which loads view
-        // ...
-    },
-    home: function( query_string)
-    {
-        // function which loads view
-        // ...
-    }
-});`
+    snapr.routers = Backbone.Router.extend({
+        routes: {
+            "/feed/": "feed",
+            "/feed/?*query_string": "feed",
+            "/popular/": "popular",
+            "/feed/?*query_string": "popular",
+            "/": "home",
+            "/?*query_string": "home",
+            "*path": "home"
+        },
+        feed: function( query_string )
+        {
+            // function which loads view
+            var query = snapr.utils.get_query_params( query_string );
+            snapr.info.current_view = new snapr.views.feed({
+                query: query,
+                el: $("#feed")
+            });
+        },
+        popular: function( query_string )
+        {
+            // function which loads view
+            // ...
+        },
+        home: function( query_string)
+        {
+            // function which loads view
+            // ...
+        }
+    });
 
 You will see above that in the `routes:` section we have actually defined two routes for each of the views.
 
@@ -76,32 +76,86 @@ In our combination of the two libraries we follow a common pattern for adding ne
 
 1. Each page has a single HTML element defined in `index.html` with a unique id and a `data-role` attribute set to either `"page"` or `"dialog"` Eg:
 
-    *   `<div id="profile" data-role="page">
-            <div data-role="header">
-                <h1>Profile</h1>
+           <div id="profile" data-role="page">
+                <div data-role="header">
+                    <h1>Profile</h1>
+                </div>
+                <div data-role="content">
+                    <p>Page content goes here...</p>
+                </div>
             </div>
-            <div data-role="content">
-                <p>Page content goes here...</p>
-            </div>
-        </div>`
+
     *   See the [jQuery page anatomy documentation](http://jquerymobile.com/demos/1.0.1/docs/pages/page-anatomy.html) for more info on the markup used.
 
-2.  The page content may be included in the HTML above for static content, or generated dynamically via a template. We use the lightweight  [Underscore templating](http://documentcloud.github.com/underscore/#template) system which is included in Backbone to render dynamic content. These templates are included in `index.html` as script tags with unique ids and `type` set to `"text/template"`. Eg:
+2.  The page content may be included in the HTML above for static content, or generated dynamically via a template. We use the lightweight  [Underscore templating](http://documentcloud.github.com/underscore/#template) system which is included in Backbone to render dynamic content. These templates are included in `index.html` as script tags with unique ids and `type` set to `"text/template"`. Underscore templates allow you to use standard JavaScript markup wrapped in `<% %>` symbols and let you print variables as string literals with `<%= variable_name %>` Eg:
 
-    *   `<script id="profile-template" type="text/template">
-            <% if (username) {%>
-                <h1>Hello <%= username %>!</h1>
-            <%}else{%>
-                <h1>Hello stranger!</h1>
-            <%}%>
-        </script>`
-    *   Underscore templates allow you to use standard JavaScript markup wrapped in `<% %>` symbols and let you print variables as string literals with `<%= variable_name %>`.
+            <script id="profile-template" type="text/template">
+                <% if (username) {%>
+                    <h1>Hello <%= username %>!</h1>
+                <%}else{%>
+                    <h1>Hello stranger!</h1>
+                <%}%>
+            </script>
+
+3.  To manage the showing/hiding and dynamic generation of page content, each page view has a [Backbone view](http://documentcloud.github.com/backbone/#View) defined, which lives in `app/views/` and must be referenced in `index.html`. These view files can be customised and extended to do all sorts of things, but they all share a number of common basic functions. You can read more about how they work in the [Backbone documentation](http://documentcloud.github.com/backbone/#View).
+
+    *   In the Snapr app, we define an `initialize` function which (among other things) tells jQuery Mobile to show the HTML div we added above (`id="profile"`) with an optional transition. It is important to set `changeHash` to `false` since we are using Backbone's hash navigation and not jQuery Mobile's.
+
+            hs.views.profile = Backbone.View.extend({
+                initialize: function()
+                {
+                    $.mobile.changePage( $("#profile"), {
+                        changeHash: false,
+                        transition: "slide"
+                    });
+                    //...
+                },
+                // ...
+            });
+
+    *   If the page only displays static content you don't need to define a new `render` function, however in this example we would like to use the template defined above to render different content depending on whether a `username` parameter is passed in to the view.
+
+    *   In this case we need to add to the initialize function to tell it which template markup to use, and to get the `username` if it is passed via the initialization options (see 5 below):
+
+            hs.views.profile = Backbone.View.extend({
+                initialize: function()
+                {
+                    $.mobile.changePage( $("#profile"), {
+                        changeHash: false,
+                        transition: "slide"
+                    });
+                    this.template = _.template( $("#profile-template").html() );
+                    this.username = this.options.query && this.options.query.username || false;
+                },
+            });
+
+    *   Now that the view has the information needed to render the content, we can add the `render` function to add the dynamic content to the page. The `render` function takes the `this.username` variable and passes it to the template, replacing the current page content (`data-role='content'`) with the template function's output. By calling `this.render()` in the `initialization` function we will render the new page content straight away in this example. Often rendering triggered by a "bound" network event or user interaction.
+
+            hs.views.profile = Backbone.View.extend({
+                initialize: function()
+                {
+                    $.mobile.changePage( $("#profile"), {
+                        changeHash: false,
+                        transition: "slide"
+                    });
+                    this.template = _.template( $("#profile-template").html() );
+                    this.username = this.options.query && this.options.query.username || false;
+                    this.render();
+                },
+                render: function()
+                {
+                    $(this.el).find("[data-role='content']").html( this.template({
+                        username: this.username
+                    }));
+                    return this;
+                }
+            });
+
+    *   The `render` function should always return `this`, so we can chain it together with other functions later.
 
 
-3.  To manage the showing/hiding and dynamic generation of page content, each page view has a [Backbone view](http://documentcloud.github.com/backbone/#View) defined, which lives in `app/views/`. These view files can be customised and extended to do all sorts of things, but they all share a number of common basic funcions.
+4.  As described above, each page view has a hash url route (or routes) defined and an associated route function. This tells the app to load a particular page in response to a url hash.
 
-4.  As described above, each page view has a route (or routes) defined and an associated route function.
-
-    *   So if we were wanting to add a `profile` view we would add extra lines to `routes:` with:
+    *   So if we wanting to show our new `profile` view when the user goes to `index.html#/profile/` or `index.html#/?username=rowan` we would add extra lines to `routes:` with:
         `"/profile/": profile` and `"/profile/?query_string": profile`
     *   We would then define the `profile` function.
