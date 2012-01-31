@@ -6,19 +6,20 @@ snapr.views.uploading = Backbone.View.extend({
         this.el.live( "pagehide", function( e )
         {
             $(e.target).undelegate();
-            
+
             return true;
         });
 
         $(this.el).find('[data-role="content"]').empty();
-        
+
         $.mobile.changePage( $("#uploading"), {changeHash: false} );
-        
+
         this.template = _.template( $("#uploading-template").html() );
-                
+
         this.current_upload = null;
+        this.current_upload_path = null;
         this.pending_uploads = {};
-        
+
         if (this.options.query.photo_id)
         {
             this.upload_completed( 0, this.options.query.photo_id);
@@ -82,25 +83,25 @@ snapr.views.uploading = Backbone.View.extend({
              //        test_data.uploads[0].percent_complete = 40;
              //        upload_progress(test_data);
              //     }, 3000);
-             //         
+             //
              //     setTimeout(function() {
              //        console.warn("testing 2", test_data);
              //        test_data.uploads[0].percent_complete = 60;
              //        upload_progress(test_data);
              //     }, 6000);
-             // 
+             //
              //     setTimeout(function() {
              //        console.warn("testing 3", test_data);
              //        test_data.uploads[0].percent_complete = 80;
              //        upload_progress(test_data);
              //     }, 9000);
-             // 
+             //
              //     setTimeout(function() {
              //        console.warn("testing 4", test_data);
              //        test_data.uploads[0].percent_complete = 100;
              //        upload_progress(test_data);
              //     }, 12000);
-             // 
+             //
              //     setTimeout(function() {
              //        console.warn("testing 5");
              //        upload_completed( 5345233, "Z4K");
@@ -113,13 +114,13 @@ snapr.views.uploading = Backbone.View.extend({
                  //    test_data.uploads[0].percent_complete = 50;
                  //    upload_progress(test_data);
                  // }, 9000);
-                 //         
+                 //
                  // setTimeout(function() {
                  //    console.warn("testing 4", test_data);
                  //        test_data.uploads[0].percent_complete = 100;
                  //        upload_progress(test_data);
                  //     }, 12000);
-                 //         
+                 //
                  // setTimeout(function() {
                  //    console.warn("testing 5", test_data);
                  //        test_data.uploads.shift();
@@ -133,14 +134,14 @@ snapr.views.uploading = Backbone.View.extend({
     events: {
         "click .cancel-upload": "cancel_upload"
     },
-    
+
     cancel_upload: function()
     {
         if (this.current_upload && this.current_upload.id)
         {
             var current_upload = this.current_upload;
             var appmode = snapr.utils.get_local_param("appmode");
-            
+
             snapr.utils.approve({
                 "title": "Cancel this upload?",
                 "yes_callback": function(){
@@ -154,7 +155,7 @@ snapr.views.uploading = Backbone.View.extend({
                     }
                 }
             });
-            
+
         }
         else
         {
@@ -163,12 +164,12 @@ snapr.views.uploading = Backbone.View.extend({
         }
 
     },
-    
+
     upload_progress: function( upload_data )
     {
         var $content = $(this.el).find('[data-role="content"]');
         var upload_heart_template = _.template( $("#uploading-template").html() );
-        
+
         _.each( upload_data.uploads, function( photo, index )
         {
             // console.warn("photo: ", photo, " index: ", index)
@@ -188,24 +189,25 @@ snapr.views.uploading = Backbone.View.extend({
                     this.pending_uploads[photo.id].render();
                 }
                 this.current_upload = photo;
+                this.current_upload_path = photo.thumbnail;
             }
 
         }, this );
-        
+
     },
-    
+
     upload_completed: function( queue_id, snapr_id )
     {
-        var photo_path = this.current_upload.thumbnail;
-        
+        var photo_path = this.current_upload_path;
+
         this.pending_uploads[queue_id] && delete this.pending_uploads[queue_id];
-        
+
         Route.navigate( "#/love-it/?shared=true&photo_path=" + photo_path, true );
     },
-    
+
     upload_cancelled: function( queue_id )
     {
-        
+
         Route.navigate( "#/", true );
     }
 });
