@@ -305,7 +305,7 @@
     <script id="feed-li-list-template" type="text/template">
         <div>
             <div class="image-frame">
-            <img style="width:100%;height:<%= snapr.utils.get_photo_height(item.get('width'), item.get('height'), '#feed .ui-content') %>px;" src="https://s3.amazonaws.com/media-server<%= item.get('server_id') %>.snapr.us/lrg/<%= item.get('secret') %>/<%= item.get('id') %>.jpg" alt="<%= item.get('description') %>" class="main-image" />
+            <img style="width:100%;height:<%= height %>px;" src="https://s3.amazonaws.com/media-server<%= item.get('server_id') %>.snapr.us/lrg/<%= item.get('secret') %>/<%= item.get('id') %>.jpg" alt="<%= item.get('description') %>" class="main-image" />
             </div>
 
             <!-- gallery version below -->

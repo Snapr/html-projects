@@ -46,11 +46,15 @@ snapr.views.feed_list = Backbone.View.extend({
         }, this);
         
         $imgs = $(this.el).find("img");
-        $imgs.load(function(){
-            $imgs.css("height","auto");
-        })
-        
-        
+
+        _.each($imgs, function(img)
+        {
+            $(img).load(function(){
+                $(img).css("height","auto");
+            });
+        });
+
+
         // create jquery mobile markup, set to listview and refresh
         
         $(this.el)

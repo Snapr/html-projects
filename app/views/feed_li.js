@@ -61,6 +61,7 @@ snapr.views.feed_li = Backbone.View.extend({
 
         $(this.el).html(this.template( {
             item: this.model,
+            height: snapr.utils.get_photo_height(this.model.get('width'), this.model.get('height'), '#feed .ui-content'),
             city: city
         } ));
         

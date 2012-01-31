@@ -302,7 +302,7 @@ snapr.utils.get_photo_height = function( orig_width, orig_height, element )
 {
     // this depends on the padding - bit of a hack
     var aspect = orig_width/orig_height,
-        width = $(element).eq(0).innerWidth() - 45;
+        width = $(element).eq(0).innerWidth() - 40;
 
     return width/aspect;
 };
