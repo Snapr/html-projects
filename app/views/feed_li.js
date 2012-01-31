@@ -1,7 +1,7 @@
 snapr.views.feed_li = Backbone.View.extend({
 
     tagName: "li",
-    
+
     className: "feed-li",
 
     events: {
@@ -30,7 +30,7 @@ snapr.views.feed_li = Backbone.View.extend({
         {
             this.reactions = new snapr.views.reactions({
                 id:this.model.id,
-                el:this.el.find('ul')
+                el:$(this.el).find('ul')
             });
         }
         else
@@ -42,7 +42,7 @@ snapr.views.feed_li = Backbone.View.extend({
     render: function()
     {
         var location = this.model.get("location") && this.model.get("location").location;
-        
+
         if (location)
         {
             if (location.split(",").length > 1)
@@ -63,9 +63,9 @@ snapr.views.feed_li = Backbone.View.extend({
             item: this.model,
             city: city
         } ));
-        
+
         $(this.el).trigger('create');
-        // delegateEvents makes the event bindings in this view work 
+        // delegateEvents makes the event bindings in this view work
         // even though it is a subview of feed_list (very important)
         this.delegateEvents();
 
@@ -76,11 +76,11 @@ snapr.views.feed_li = Backbone.View.extend({
     {
         if (this.model.get('favorite'))
         {
-            this.el.find('.favorite-button').addClass('ui-btn-up-e').removeClass('ui-btn-up-c');
+            $(this.el).find('.favorite-button').addClass('ui-btn-up-e').removeClass('ui-btn-up-c');
         }
         else
         {
-            this.el.find('.favorite-button').addClass('ui-btn-up-c').removeClass('ui-btn-up-e');
+            $(this.el).find('.favorite-button').addClass('ui-btn-up-c').removeClass('ui-btn-up-e');
         }
         // if we have already loaded reactions, re-load them
         if (this.reactions)
@@ -111,7 +111,7 @@ snapr.views.feed_li = Backbone.View.extend({
             var fav = new snapr.models.favorite({
                 id: feed_li.model.get('id')
             });
-        
+
             if (is_fav)
             {
                 // already saved as a fav so we will remove it
@@ -167,25 +167,25 @@ snapr.views.feed_li = Backbone.View.extend({
     update_counts: function()
     {
         // change the button text for the reactions button
-        this.el.find('.reactions-button h3 .ui-btn-text')
-            .text( this.model.get('comments') + 
-                ' comments and ' +  
-                this.model.get('favorite_count') + 
+        $(this.el).find('.reactions-button h3 .ui-btn-text')
+            .text( this.model.get('comments') +
+                ' comments and ' +
+                this.model.get('favorite_count') +
                 ' favorites' );
         // show the button if it was previously hidden and create the jquery mobile markup
         if (parseInt( this.model.get('comments') ) + parseInt( this.model.get('favorite_count') ) > 0)
         {
-            this.el.find('.reactions-button').show().trigger('create');
+            $(this.el).find('.reactions-button').show().trigger('create');
         }
         else
         {
-            this.el.find('.reactions-button').hide();
+            $(this.el).find('.reactions-button').hide();
         }
     },
 
     comment: function()
     {
-        var comment = this.el.find('.comment-form textarea').val();
+        var comment = $(this.el).find('.comment-form textarea').val();
         var id = this.model.get('id');
         var c = new snapr.models.comment();
         c.data = {
@@ -194,7 +194,7 @@ snapr.views.feed_li = Backbone.View.extend({
         }
         // make a copies of 'this' and the .comment-area to pass to functions in the options object
         var feed_li = this;
-        var comment_area = this.el.find('.comment-area').eq(0);
+        var comment_area = $(this.el).find('.comment-area').eq(0);
 
         var options = {
             success: function( s )
@@ -210,7 +210,7 @@ snapr.views.feed_li = Backbone.View.extend({
                     {
                         comment_area.find('.comment-form textarea').val('');
                         comment_area.trigger('collapse');
-                        feed_li.el.find('.reactions-button').trigger('expand');
+                        $(feed_li.el).find('.reactions-button').trigger('expand');
                     }
                     else
                     {
@@ -239,7 +239,7 @@ snapr.views.feed_li = Backbone.View.extend({
 
         snapr.utils.require_login( function()
         {
-            // the empty object in this save call is important, 
+            // the empty object in this save call is important,
             // without it, the options object will not be used
             c.save( {}, options );
         } )();
