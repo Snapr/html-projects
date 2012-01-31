@@ -8,7 +8,7 @@ snapr.views.home = Backbone.View.extend({
         this.el.live('pagehide', function( e )
         {
             $(e.target).undelegate();
-            
+
             return true;
         });
 
@@ -24,18 +24,17 @@ snapr.views.home = Backbone.View.extend({
 
     render: function()
     {
-        $(this.el).find("[data-role='content'] ul")
-            .html( this.template( {logged_in: snapr.auth.has("access_token")} ))
-            .listview().listview("refresh");
-        $pinkHearts = $(this.el).find(".home-pink-hearts");
-        
-        setTimeout(function(){
-            $pinkHearts.css("height", window.innerHeight - $pinkHearts.position().top - 2 + "px");
-        }, 50);
+        $(this.el)
+            .find("[data-role='content']")
+            .html( this.template( {
+                logged_in: snapr.auth.has("access_token"),
+                username: snapr.auth.get("snapr_user")
+            } ))
+            .trigger("create");
 
         return this;
     },
-    
+
     upload_count: function( count )
     {
         if (count)
@@ -48,11 +47,11 @@ snapr.views.home = Backbone.View.extend({
     {
         Route.navigate( '#/uploading/', true );
     },
-    
+
     upload_completed: function( queue_id, snapr_id )
     {
         Route.navigate( "#/love-it/?shared=true&photo_id=" + snapr_id, true );
     }
-    
+
 
 });

@@ -15,7 +15,7 @@ Backbone.sync = function( method, model, options )
         if (!(object && object.url)) return null;
         return _.isFunction(object.url) ? object.url(method) : object.url;
     };
-    
+
     // map RESTful methods to our API
     var method_map = {
         'create': 'POST',
@@ -23,20 +23,20 @@ Backbone.sync = function( method, model, options )
         'delete': 'POST',
         'read'  : 'GET'
     }
-    
+
     if (snapr.auth && snapr.auth.get('access_token'))
     {
-        // if there is no .data attribute on the model set it from the model's id 
+        // if there is no .data attribute on the model set it from the model's id
         // or just pass an empty object
         model.data = model.data && _.extend( model.data, model.attributes) || model.attributes || model.get('id') && {id:model.get('id')} || {};
         model.data.access_token = snapr.auth.get('access_token');
     }
-    
+
     if (snapr.app_group)
     {
         _.extend( model.data, {app_group: snapr.app_group});
     }
-    
+
     // our hack to get jsonp to emulate http methods by appending them to the querystring
     if (method_map[method] !='GET')
     {
@@ -46,9 +46,9 @@ Backbone.sync = function( method, model, options )
     {
         var meth = '';
     }
-    
+
     var url = getUrl(model,method);
-    
+
     $.ajax({
         url: url + '?' + $.param(model.data || {}) + meth,
         type:'GET',
@@ -77,7 +77,7 @@ Array.prototype.human_list =  function(){
     text = copy.pop();
     text = copy.pop() +' and '+ text;
     while(copy.length){
-       text = copy.pop() +', '+ text; 
+       text = copy.pop() +', '+ text;
     }
     return text
 };
@@ -96,8 +96,8 @@ Array.prototype.human_list =  function(){
 snapr.client_id = "48611a3a325dc884c9d1722002be43ff";
 snapr.client_secret = "a5b072ed71e89a4f0982944a4dd82d94";
 
-snapr.app_group = "pink-nation";
-snapr.public_group = "pink-nation-featured";
+// snapr.app_group = "pink-nation";
+// snapr.public_group = "pink-nation-featured";
 
 snapr.constants = {};
 snapr.constants.default_zoom = 15;
@@ -142,7 +142,7 @@ snapr.utils.save_local_param = function( key, value )
     {
         $.cookie( key, value);
     }
-    
+
     if (key == "appmode")
     {
         $("body").addClass("appmode").addClass("appmode-" + value);
@@ -191,10 +191,10 @@ snapr.utils.get_query_params = function(query)
                         snapr.auth.set(obj);
                     }
                     else if (_.indexOf( [
-                        "snapr_user_public_group", 
-                        "snapr_user_public_group_name", 
-                        "appmode", 
-                        "new_user", 
+                        "snapr_user_public_group",
+                        "snapr_user_public_group_name",
+                        "appmode",
+                        "new_user",
                         "demo_mode"
                         ], kv[0] ) > -1)
                     {
@@ -208,7 +208,7 @@ snapr.utils.get_query_params = function(query)
             }
         });
     }
-    
+
     return params;
 }
 // alert/confirm replacements
@@ -360,6 +360,15 @@ snapr.routers = Backbone.Router.extend({
         "/feed/?*query_string": "feed",
         "/pink-hearts/": "pink_hearts",
         "/pink-hearts/?*query_string": "pink_hearts",
+        "/map/": "map",
+        "/map/?*query_string": "map",
+        "/popular/": "popular",
+        "/popular/?*query_string": "popular",
+        "/search/": "search",
+        "/search/?*query_string": "search",
+        "/user/profile/?*query_string": "user_profile",
+        "/user/search/?*query_string": "user_search",
+        "/user/:follow/?*query_string": "people",
         "/": "home",
         "?*query_string": "home",
         "/?*query_string": "home",
@@ -368,7 +377,6 @@ snapr.routers = Backbone.Router.extend({
 
     feed: function( query_string )
     {
-        topbar(false);
         var query = snapr.utils.get_query_params( query_string );
         snapr.info.current_view = new snapr.views.feed({
             query: query,
@@ -378,7 +386,6 @@ snapr.routers = Backbone.Router.extend({
 
     pink_hearts: function( query_string )
     {
-        topbar(false);
         snapr.utils.get_query_params( query_string );
         snapr.info.current_view = new snapr.views.pink_hearts({
             el: $("#pink-hearts")
@@ -387,28 +394,23 @@ snapr.routers = Backbone.Router.extend({
 
     home: function( query_string )
     {
-        console.warn('go home');
-        topbar(true);
         snapr.utils.get_query_params( query_string );
         snapr.info.current_view = new snapr.views.home({
             el: $('#home')
         });
     },
-    
+
     login: function( query_string )
     {
-        console.warn('go to login');
-        topbar(false);
         var query = snapr.utils.get_query_params( query_string );
         snapr.info.current_view = new snapr.views.login({
             el: $('#login'),
             query: query
         });
     },
-    
+
     logout: function( query_string )
     {
-        topbar(false);
         snapr.utils.get_query_params( query_string );
         if (snapr.auth)
         {
@@ -420,19 +422,17 @@ snapr.routers = Backbone.Router.extend({
         }
         window.location.hash = "";
     },
-    
+
     join_snapr: function( query_string )
     {
-        topbar(false);
         snapr.utils.get_query_params( query_string );
         snapr.info.current_view = new snapr.views.join_snapr({
             el: $("upload")
         });
     },
-    
+
     upload: function( query_string )
     {
-        topbar(false);
         snapr.utils.get_query_params( query_string );
         snapr.info.current_view = new snapr.views.upload({
             el: $("#upload")
@@ -441,7 +441,6 @@ snapr.routers = Backbone.Router.extend({
 
     uploading: function( query_string )
     {
-        topbar(false);
         var query = snapr.utils.get_query_params( query_string );
         snapr.info.current_view = new snapr.views.uploading({
             el: $("#uploading"),
@@ -451,7 +450,6 @@ snapr.routers = Backbone.Router.extend({
 
     photo_edit: function( query_string )
     {
-        topbar(false);
         var query = snapr.utils.get_query_params( query_string );
         snapr.info.current_view = new snapr.views.photo_edit({
             el: $("#photo-edit"),
@@ -461,52 +459,94 @@ snapr.routers = Backbone.Router.extend({
 
     love_it: function( query_string )
     {
-        topbar(false);
         var query = snapr.utils.get_query_params( query_string );
         snapr.info.current_view = new snapr.views.love_it({
             el: $("#love-it"),
             query: query
         });
     },
-    
+
     my_account: function( query_string )
     {
-        topbar(false);
         snapr.utils.get_query_params( query_string );
         snapr.info.current_view = new snapr.views.my_account({
             el: $("#my-account")
         });
     },
-    
+
     linked_services: function( query_string )
     {
-        topbar(false);
         var query = snapr.utils.get_query_params( query_string );
         snapr.info.current_view = new snapr.views.linked_services({
             el: $("#linked-services"),
             query: query
         });
     },
-    
+
     connect: function( query_string )
     {
-        topbar(false);
         var query = snapr.utils.get_query_params( query_string );
         snapr.info.current_view = new snapr.views.connect({
             el: $("#connect"),
             query: query
         })
     },
-    
+
     limbo: function( query_string )
     {
-        topbar(false);
         snapr.utils.get_query_params( query_string );
         snapr.info.current_view = new snapr.views.limbo({
             el: $("#limbo")
         })
+    },
+
+    map: function( query_string )
+    {
+        var query = snapr.utils.get_query_params( query_string );
+        snapr.info.current_view = new snapr.views.map( {query: query} );
+    },
+
+    popular: function( query_string )
+    {
+        snapr.utils.get_query_params( query_string );
+        snapr.info.current_view = new snapr.views.popular();
+    },
+
+    search: function( query_string )
+    {
+        snapr.utils.get_query_params( query_string );
+        snapr.info.current_view = new snapr.views.search();
+    },
+
+    user_profile: function( query_string )
+    {
+        var query = snapr.utils.get_query_params( query_string );
+        snapr.info.current_view = new snapr.views.user_profile({
+            query: query,
+            el: $("#user-profile")
+        });
+    },
+
+    user_search: function( query_string )
+    {
+        var query = snapr.utils.get_query_params( query_string );
+        snapr.info.current_view = new snapr.views.people({
+            query: query,
+            el: $("#people")
+        });
+    },
+
+    people: function( follow, query_string )
+    {
+        var query = snapr.utils.get_query_params( query_string );
+        snapr.info.current_view = new snapr.views.people({
+            query: query,
+            follow: follow,
+            el: $("#people")
+        });
     }
-    
+
+
 });
 
 function spinner_start(){
@@ -534,14 +574,14 @@ function topbar(show)
 
 function upload_progress(data, datatype)
 {
-    // data may be passed as an object or a string as specified via the data_type param 
-    // defualts to JSON object, if 'json_string' it will be a text string that needs to be parsed..    
+    // data may be passed as an object or a string as specified via the data_type param
+    // defualts to JSON object, if 'json_string' it will be a text string that needs to be parsed..
     // dont foget to convert it before you do anything with it..
     if (datatype == 'json_text')
     {
         data = JSON.parse( data );
     }
-    
+
     if (data.uploads.length)
     {
         if (typeof snapr.info.current_view.upload_progress == "function")
@@ -561,7 +601,7 @@ function upload_progress(data, datatype)
 function upload_count( count )
 {
     snapr.info.upload_count = count;
-    
+
     if (typeof snapr.info.current_view.upload_count == "function")
     {
         snapr.info.current_view.upload_count( count );
@@ -626,6 +666,105 @@ $(".x-launch-photo-library").live( "click", function()
 
 $(function()
 {
+    snapr.SnapOverlay = function(type, data, map, extra_class)
+    {
+        // image as JS object in format the snapr api returns
+        this.type_ = type;
+        this.data_ = data;
+        this.map_ = map;
+        this.extra_class_ = extra_class;
+
+        // We define a property to hold the image's
+        // div. We'll actually create this div
+        // upon receipt of the add() method so we'll
+        // leave it null for now.
+        this.div_ = null;
+
+        // Explicitly call setMap() on this overlay
+        this.setMap(map);
+    }
+
+    snapr.SnapOverlay.prototype = new google.maps.OverlayView();
+    snapr.SnapOverlay.prototype.onAdd = function()
+    {
+        // Note: an overlay's receipt of onAdd() indicates that
+        // the map's panes are now available for attaching
+        // the overlay to the map via the DOM.
+
+        var data_id = this.data_.id;
+
+        if (this.type_ == 'photo') {
+            var div = $(this.map.snapr.thumb_template({photo:this.data_}));
+            div.show();
+        } else {  //spot
+            var div = $(this.map.snapr.spot_template({spot:this.data_}));
+            div.show();
+        }
+
+        // Set the overlay's div_ property to this DIV
+        this.div_ = div;
+
+        // We add an overlay to a map via one of the map's panes.
+        // We'll add this overlay to the overlayImage pane.
+        var panes = this.getPanes();
+        $(panes.floatPane).append(this.div_);
+    }
+    snapr.SnapOverlay.prototype.draw = function()
+    {
+        var overlayProjection = this.getProjection();
+        var position = new google.maps.LatLng( this.data_.location.latitude, this.data_.location.longitude );
+        var px = overlayProjection.fromLatLngToDivPixel( position );
+
+        this.div_ = this.div_
+            .css('position', 'absolute')
+            .css('left', px.x + 'px')
+            .css('top', px.y + 'px');
+    }
+    snapr.SnapOverlay.prototype.onRemove = function()
+    {
+        $(this.div_).remove();
+        this.div_ = null;
+    }
+    snapr.SnapOverlay.prototype.hide = function()
+    {
+        if (this.div_)
+        {
+          this.div_.style.visibility = "hidden";
+        }
+    }
+    snapr.SnapOverlay.prototype.show = function()
+    {
+        if (this.div_)
+        {
+          this.div_.style.visibility = "visible";
+        }
+    }
+    snapr.SnapOverlay.prototype.toggle = function()
+    {
+        if (this.div_)
+        {
+          if (this.div_.style.visibility == "hidden")
+          {
+            this.show();
+          }
+          else
+          {
+            this.hide();
+          }
+        }
+    }
+    snapr.SnapOverlay.prototype.toggleDOM = function()
+    {
+        if (this.getMap())
+        {
+          this.setMap( null );
+        }
+        else
+        {
+          this.setMap( this.map_ );
+        }
+    }
+
     // initialise router and start backbone
     Route = new snapr.routers;
     Backbone.history.start();
@@ -634,13 +773,13 @@ $(function()
         $("body").addClass("appmode").addClass("appmode-" + snapr.utils.get_local_param( "appmode" ));
     }
     $('.n-centered-loader .spinner').spin({
-        lines: 12, 
-        length: 7, 
+        lines: 12,
+        length: 7,
         width: 4,
-        radius: 10, 
-        color: '#000', 
-        speed: 1, 
-        trail: 60, 
+        radius: 10,
+        color: '#000',
+        speed: 1,
+        trail: 60,
         color:'#efefee'
     });
     spinner_stop();

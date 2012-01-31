@@ -15,13 +15,13 @@ snapr.views.feed_li = Backbone.View.extend({
     initialize: function()
     {
         this.template = this.options.template
-        // this.map_url = 
-        //     '/map/?zoom=' + snapr.constants.default_zoom + 
-        //     '&lat=' + this.model.get('location').latitude + 
-        //     '&lng=' + this.model.get('location').longitude + 
-        //     '&photo_id=' + this.model.get('id');
-        // this.spot_url = 
-        //     '/feed/?spot=' + this.model.get('location').spot_id;
+        this.map_url =
+            '/map/?zoom=' + snapr.constants.default_zoom +
+            '&lat=' + this.model.get('location').latitude +
+            '&lng=' + this.model.get('location').longitude +
+            '&photo_id=' + this.model.get('id');
+        this.spot_url =
+            '/feed/?spot=' + this.model.get('location').spot_id;
     },
 
     load_reactions: function( reload )
