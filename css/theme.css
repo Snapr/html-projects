@@ -180,10 +180,10 @@ body {
   background-position: 0 -1040px;
 }
 .menu-main .ui-grid-a .ui-icon-main-menu-feed {
-  background-position: 0 -1080px;
+  background-position: 0 -1120px;
 }
 .menu-main .ui-grid-a .ui-icon-main-menu-dash {
-  background-position: 0 -1120px;
+  background-position: 0 -1200px;
 }
 .menu-main .ui-grid-a .ui-btn {
   margin: 0;
@@ -195,7 +195,11 @@ body {
   background-color: rgba(128, 128, 128, 0.1);
 }
 .menu-main .ui-grid-a .ui-btn .ui-btn-inner {
-  padding-top: 88px;
+  padding-top: 116px;
+  padding-bottom: 26px;
+}
+.menu-main .ui-grid-a .ui-btn .ui-icon {
+  top: 29px;
 }
 .menu-main .ui-grid-a .ui-btn-active-c {
   background-color: #ffff00;
@@ -245,7 +249,8 @@ body {
   background-color: rgba(255, 255, 255, 0.8);
 }
 .menu-main .ui-grid-b .ui-btn .ui-btn-inner {
-  padding-top: 80px;
+  padding-top: 78px;
+  padding-bottom: 12px;
 }
 .menu-main .ui-grid-b .ui-btn-hover-c, .menu-main .ui-grid-b .ui-btn-active-c {
   background-color: #ffff00;
@@ -369,4 +374,22 @@ body {
   margin: 0;
   border: none;
   border-top: solid 1px #ffffff;
+}
+.ui-bar-e .ui-btn-inner {
+  padding: 8px 25px;
+}
+/* Android HDPI - Pixel ratio of 1.5. Background-size is 1/1.5 = 66.67% (of a 150px image) */
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5) {
+  
+}
+/* High Resolution (iPhone 4) */
+@media only screen and (-webkit-min-device-pixel-ratio: 2) {
+  .main-logo {
+    background-image: url('../gfx/retina/main-logo.png');
+    background-size: 160px 44px;
+  }
+  .menu-main .ui-icon {
+    background-image: url('../gfx/retina/main-menu-icons.png');
+    background-size: 80px 1280px;
+  }
 }
