@@ -69,7 +69,7 @@
         
         <!-- <link href="css/theme.less" rel="stylesheet/less" type="text/css">
         <script src="app/libs/less.js" type="text/javascript" charset="utf-8"></script> -->
-        <!-- <link rel="stylesheet" href="css/theme.css" type="text/css" charset="utf-8"> -->
+        <link rel="stylesheet" href="css/theme.css" type="text/css" charset="utf-8">
 
     </head>
 <body class="n-loading">
@@ -465,8 +465,8 @@
     </script>
 
     <!-- view popular snaps -->
-    <div id="popular" data-title="Popular" data-add-back-btn="true" data-role="page">
-        <div data-role="header" data-theme="d">
+    <div id="popular" data-title="Popular" data-add-back-btn="true" data-role="page" data-theme="d">
+        <div data-role="header" data-theme="b">
             <h1>Popular</h1>
 
             <div class="ui-btn-right">
@@ -491,7 +491,7 @@
 
     <script id="thumb-li-template" type="text/template">
         <% _.each( results, function( item, i ){ %>
-        <a data-ajax="false" href="#/feed/?photo_id=<%= item.get('id') %>&username=<%= item.get('username') %>">
+        <a class="image-link" data-ajax="false" href="#/feed/?photo_id=<%= item.get('id') %>&username=<%= item.get('username') %>">
         <img src="https://s3.amazonaws.com/media-server<%= item.get('server_id') %>.snapr.us/thm2/<%= item.get('secret') %>/<%= item.get('id') %>.jpg" alt="<%= item.get('description') %>" class="thumb-image thumb-med" />
         </a>
         <% }); %>

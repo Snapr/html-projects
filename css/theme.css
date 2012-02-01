@@ -77,6 +77,13 @@ a {
   text-decoration: none;
 }
 /*
+* JQuery Mob - Custom 
+*   Some basics
+*/
+.ui-content {
+  padding: 8px;
+}
+/*
 * Headers - Custom 
 *   Header bars in the snapr project are all transparent.. BG comes from layer below
 */
@@ -85,6 +92,7 @@ a {
   border: none;
   color: #999999;
   text-shadow: #000000 0px -1px 1px;
+  min-height: 46px;
 }
 .ui-header .ui-title {
   font-family: 'MuseoSansRounded700', Helvetica, Arial, sans-serif;
@@ -99,6 +107,36 @@ a {
   -moz-border-radius-bottomright: 8px;
   -webkit-border-bottom-right-radius: 8px;
   border-bottom-right-radius: 8px;
+}
+/*
+* Image Views - Custom 
+*/
+.thumbs-grid {
+  margin: 0 -8px;
+  padding: 4px 0 0 4px;
+}
+.thumbs-grid .image-link {
+  display: block;
+  float: left;
+  padding: 0;
+  margin: 0;
+}
+.thumbs-grid .thumb-image {
+  padding: 0;
+  margin: 0;
+  display: block;
+  background-color: #d7d7d5;
+}
+.thumbs-grid.thumbs-grid-med .image-link {
+  margin: 0 4px 4px 0;
+}
+.thumbs-grid.thumbs-grid-med .thumb-image {
+  width: 101px;
+  height: 101px;
+  padding: 0;
+  margin: 0;
+  display: block;
+  background-color: #d7d7d5;
 }
 /*
 * Main Menu - Custom 

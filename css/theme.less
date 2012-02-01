@@ -64,6 +64,15 @@ a{
 }
 
 /*
+* JQuery Mob - Custom 
+*   Some basics
+*/
+
+.ui-content{
+    padding: @padding-page-inset;
+}
+
+/*
 * Headers - Custom 
 *   Header bars in the snapr project are all transparent.. BG comes from layer below
 */
@@ -73,6 +82,7 @@ a{
     border: none;
     color: @color-txt-medium-on-dark;
     text-shadow: @color-shadow-dark-on-dark 0px -1px 1px;
+    min-height: @size-topbar-height;
     
     .ui-title{
         font-family: @txt-font-special;
@@ -88,6 +98,41 @@ a{
     .corner-bl(@corner-page-element-rounded);
     .corner-br(@corner-page-element-rounded);
     
+}
+
+/*
+* Image Views - Custom 
+*/
+
+.thumbs-grid{
+    margin: 0 -@padding-page-inset; 
+    padding: @padding-image-grid 0 0 @padding-image-grid; 
+    
+    .image-link{
+        display: block;
+        float: left;
+        padding: 0;
+        margin: 0;
+    }
+    .thumb-image{
+        padding: 0;
+        margin: 0;
+        display: block;
+        background-color: @color-bg-neutral-light-tint;
+    }
+    &.thumbs-grid-med{
+        .image-link{
+               margin: 0 @padding-image-grid @padding-image-grid 0;
+         }
+        .thumb-image{
+            width: @size-img-thumb;
+            height: @size-img-thumb;
+            padding: 0;
+            margin: 0;
+            display: block;
+            background-color: @color-bg-neutral-light-tint;
+        }
+    }
 }
 
 
