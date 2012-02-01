@@ -33,29 +33,3 @@
 /*
 * Global - stuffs from prinzhorn
 */
-/*
-* A 
-* The Dark (Black as Night) swatch, used for screens with black BGs
-- note that Snapr has weird title bar designs. They are transparent and show through to a dark BG on body..
-*/
-/* revisit as back button height.. */
-/* revisit this - dark button with inner shadow */
-/*
-* B
-* The Dark (Textured Grey) swatch, used for title bars, dark btns on palletes
-- note that Snapr has non standard title bar styles. They are transparent and show through to a dark BG on body..
-*/
-/* Cant be bothered defining hover states for edge case devices.. same as down for now */
-/*
-* C
-* - Standard light BG swatch, has subtle gray bg texture, used mainly for light colored dialog style views
-*/
-/*
-* D
-* the full white BG swatch used for feed views etc
-* have sneakily included the orange buttons in this guy
-*/
-/*
-* E
-* - highlight swatch - all about mad yellow shiz..
-*/

@@ -69,23 +69,170 @@ html {
 /*
 * Global - stuffs from prinzhorn
 */
+body {
+  font-size: 15px;
+}
+/*
+* Main Menu - Custom 
+*/
+.menu-main {
+  padding: 0;
+  text-transform: lowercase;
+  /* Larger 2 column Btns */
+
+  /* Smaller 3 column Btns */
+
+  /* Hover and Active For Buttons */
+
+}
+.menu-main .ui-icon {
+  background: transparent;
+  background-image: url('../gfx/main-menu-icons.png');
+  width: 80px;
+  height: 80px;
+  margin-left: -40px;
+}
+.menu-main .ui-icon-main-menu-feed {
+  background-position: 0 0px;
+}
+.menu-main .ui-icon-main-menu-map {
+  background-position: 0 -80px;
+}
+.menu-main .ui-icon-main-menu-camera {
+  background-position: 0 -160px;
+}
+.menu-main .ui-icon-main-menu-popular {
+  background-position: 0 -240px;
+}
+.menu-main .ui-icon-main-menu-dashboard {
+  background-position: 0 -320px;
+}
+.menu-main .ui-icon-main-menu-queue {
+  background-position: 0 -400px;
+}
+.menu-main .ui-icon-main-menu-my-account {
+  background-position: 0 -480px;
+}
+.menu-main .ui-icon-main-menu-activity {
+  background-position: 0 -560px;
+}
+.menu-main .ui-icon-main-menu-log-in {
+  background-position: 0 -640px;
+}
+.menu-main .ui-icon-main-menu-camera-lib {
+  background-position: 0 -720px;
+}
+.menu-main .ui-icon-main-menu-cities {
+  background-position: 0 -800px;
+}
+.menu-main .ui-icon-main-menu-info {
+  background-position: 0 -880px;
+}
+.menu-main .ui-icon-main-menu-login {
+  background-position: 0 -960px;
+}
+.menu-main .ui-grid-a {
+  /* Shadow under top button block */
+
+  -webkit-box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 3px;
+  -mox-box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 3px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 3px;
+  position: relative;
+  z-index: 5;
+  /* Darker sprite versions */
+
+  /* tricky Border in between btns */
+
+}
+.menu-main .ui-grid-a .ui-icon-main-menu-camera {
+  background-position: 0 -1040px;
+}
+.menu-main .ui-grid-a .ui-icon-main-menu-feed {
+  background-position: 0 -1080px;
+}
+.menu-main .ui-grid-a .ui-icon-main-menu-dash {
+  background-position: 0 -1120px;
+}
+.menu-main .ui-grid-a .ui-btn {
+  margin: 0;
+  border: 0;
+  font-family: 'MuseoSansRounded700', Helvetica, Arial, sans-serif;
+  font-weight: normal;
+  background: transparent;
+  background-color: #f2f2f2;
+  background-color: rgba(128, 128, 128, 0.1);
+}
+.menu-main .ui-grid-a .ui-btn .ui-btn-inner {
+  padding-top: 88px;
+}
+.menu-main .ui-grid-a .ui-btn-hover-c, .menu-main .ui-grid-a .ui-btn-active-c {
+  background-color: #ffff00;
+}
+.menu-main .ui-grid-a .ui-block-a {
+  border-right: solid 1px #ffffff;
+  margin-right: -1px;
+}
+.menu-main .ui-grid-a .ui-block-b {
+  border-left: solid 1px #e4e4e4;
+  margin-left: -1px;
+}
+.menu-main .ui-grid-b {
+  position: relative;
+  z-index: 2;
+  /* tricky Border in between btns */
+
+}
+.menu-main .ui-grid-b .ui-btn {
+  margin: 0;
+  border: 0;
+  font-size: 12px;
+  background: transparent;
+  background-color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(128, 128, 128, 0.1);
+}
+.menu-main .ui-grid-b .ui-btn .ui-btn-inner {
+  padding-top: 80px;
+}
+.menu-main .ui-grid-b .ui-btn-hover-c, .menu-main .ui-grid-b .ui-btn-active-c {
+  background-color: #ffff00;
+}
+.menu-main .ui-grid-b .ui-block-a {
+  border-right: solid 1px #ffffff;
+  margin-right: -1px;
+}
+.menu-main .ui-grid-b .ui-block-b {
+  border-left: solid 1px #e4e4e4;
+  margin-left: -1px;
+  border-right: solid 1px #ffffff;
+  margin-right: -1px;
+}
+.menu-main .ui-grid-b .ui-block-c {
+  border-left: solid 1px #e4e4e4;
+  margin-left: -1px;
+}
+.menu-main .ui-grid-b .ui-block-a, .menu-main .ui-grid-b .ui-block-b, .menu-main .ui-grid-b .ui-block-c {
+  border-top: solid 1px #ffffff;
+  border-bottom: solid 1px #e4e4e4;
+}
+.ui-bar-e {
+  margin: 0;
+}
 /*
 * A 
 * The Dark (Black as Night) swatch, used for screens with black BGs
-- note that Snapr has weird title bar designs. They are transparent and show through to a dark BG on body..
 */
-/* revisit as back button height.. */
-/* revisit this - dark button with inner shadow */
 /*
 * B
 * The Dark (Textured Grey) swatch, used for title bars, dark btns on palletes
-- note that Snapr has non standard title bar styles. They are transparent and show through to a dark BG on body..
 */
-/* Cant be bothered defining hover states for edge case devices.. same as down for now */
 /*
 * C
 * - Standard light BG swatch, has subtle gray bg texture, used mainly for light colored dialog style views
 */
+.ui-body-c {
+  background-color: #ffffff;
+  background-image: url('../gfx/bg-texture-light.gif');
+}
 /*
 * D
 * the full white BG swatch used for feed views etc
@@ -95,4 +242,3 @@ html {
 * E
 * - highlight swatch - all about mad yellow shiz..
 */
-/* PINK Body */
