@@ -71,18 +71,50 @@ html {
 */
 body {
   font-size: 15px;
+  background-color: #000000;
+}
+/*
+* Headers - Custom 
+*   Header bars in the snapr project are all transparent.. BG comes from layer below
+*/
+.ui-header {
+  background: none;
+  border: none;
+  color: #999999;
+  text-shadow: #000000 0px -1px 1px;
+}
+.ui-header .ui-title {
+  font-family: 'MuseoSansRounded700', Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  font-weight: normal;
+  text-transform: lowercase;
+}
+.bar-arrow-center-top {
+  -moz-border-radius-bottomleft: 8px;
+  -webkit-border-bottom-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+  -moz-border-radius-bottomright: 8px;
+  -webkit-border-bottom-right-radius: 8px;
+  border-bottom-right-radius: 8px;
 }
 /*
 * Main Menu - Custom 
 */
+.main-logo {
+  background-image: url('../gfx/main-logo.png');
+  background-repeat: no-repeat;
+  width: 160px;
+  height: 44px;
+  text-indent: -999px;
+  padding: 0;
+  margin: 0px 2px 2px!important;
+}
 .menu-main {
   padding: 0;
   text-transform: lowercase;
   /* Larger 2 column Btns */
 
   /* Smaller 3 column Btns */
-
-  /* Hover and Active For Buttons */
 
 }
 .menu-main .ui-icon {
@@ -165,16 +197,39 @@ body {
 .menu-main .ui-grid-a .ui-btn .ui-btn-inner {
   padding-top: 88px;
 }
-.menu-main .ui-grid-a .ui-btn-hover-c, .menu-main .ui-grid-a .ui-btn-active-c {
+.menu-main .ui-grid-a .ui-btn-active-c {
   background-color: #ffff00;
 }
 .menu-main .ui-grid-a .ui-block-a {
   border-right: solid 1px #ffffff;
   margin-right: -1px;
 }
+.menu-main .ui-grid-a .ui-block-a .ui-btn {
+  -moz-border-radius-topleft: 8px;
+  -webkit-border-top-left-radius: 8px;
+  border-top-left-radius: 8px;
+}
+.menu-main .ui-grid-a .ui-block-a .ui-btn .ui-btn-inner {
+  -moz-border-radius-topleft: 8px;
+  -webkit-border-top-left-radius: 8px;
+  border-top-left-radius: 8px;
+}
 .menu-main .ui-grid-a .ui-block-b {
+  -moz-border-radius-topright: 8px;
+  -webkit-border-top-right-radius: 8px;
+  border-top-right-radius: 8px;
   border-left: solid 1px #e4e4e4;
   margin-left: -1px;
+}
+.menu-main .ui-grid-a .ui-block-b .ui-btn {
+  -moz-border-radius-topright: 8px;
+  -webkit-border-top-right-radius: 8px;
+  border-top-right-radius: 8px;
+}
+.menu-main .ui-grid-a .ui-block-b .ui-btn .ui-btn-inner {
+  -moz-border-radius-topright: 8px;
+  -webkit-border-top-right-radius: 8px;
+  border-top-right-radius: 8px;
 }
 .menu-main .ui-grid-b {
   position: relative;
@@ -188,7 +243,6 @@ body {
   font-size: 12px;
   background: transparent;
   background-color: rgba(255, 255, 255, 0.8);
-  background-color: rgba(128, 128, 128, 0.1);
 }
 .menu-main .ui-grid-b .ui-btn .ui-btn-inner {
   padding-top: 80px;
@@ -214,9 +268,6 @@ body {
   border-top: solid 1px #ffffff;
   border-bottom: solid 1px #e4e4e4;
 }
-.ui-bar-e {
-  margin: 0;
-}
 /*
 * A 
 * The Dark (Black as Night) swatch, used for screens with black BGs
@@ -230,15 +281,92 @@ body {
 * - Standard light BG swatch, has subtle gray bg texture, used mainly for light colored dialog style views
 */
 .ui-body-c {
+  background: none;
+}
+.ui-body-c div[data-role="content"] {
   background-color: #ffffff;
   background-image: url('../gfx/bg-texture-light.gif');
+  border-radius: 8px;
 }
 /*
 * D
 * the full white BG swatch used for feed views etc
 * have sneakily included the orange buttons in this guy
 */
+.ui-body-d[data-role="page"] {
+  background: #000000;
+  background-image: url('../gfx/bg-texture-dark.gif');
+  border-radius: 8px;
+  border-top: solid 1px rgba(255, 255, 255, 0.4);
+}
+.ui-body-d {
+  background: none;
+}
+.ui-body-d div[data-role="content"] {
+  background-color: #ffffff;
+  background-image: url('../gfx/bg-texture-light.gif');
+  border-radius: 8px;
+}
 /*
 * E
 * - highlight swatch - all about mad yellow shiz..
 */
+.ui-btn-up-e, .ui-btn-hover-e {
+  border: none;
+  background: #ffff00;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#ffff00), to(#ffe400));
+  /* Saf4+, Chrome */
+
+  background-image: -webkit-linear-gradient(top, #ffff00, #ffe400);
+  /* Chrome 10+, Saf5.1+ */
+
+  background-image: -moz-linear-gradient(top, #ffff00, #ffe400);
+  /* FF3.6 */
+
+  background-image: -ms-linear-gradient(top, #ffff00, #ffe400);
+  /* IE10 */
+
+  background-image: -o-linear-gradient(top, #ffff00, #ffe400);
+  /* Opera 11.10+ */
+
+  background-image: linear-gradient(top, #ffff00, #ffe400);
+  color: #333333;
+  font-family: 'MuseoSansRounded700', Helvetica, Arial, sans-serif;
+  font-weight: normal;
+  text-decoration: none;
+}
+.ui-btn-up-e a.ui-link-inherit, .ui-btn-hover-e a.ui-link-inherit {
+  color: #333333;
+}
+.ui-btn-down-e {
+  border: none;
+  background: #ffff00;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#ffff00), to(#ffe400));
+  /* Saf4+, Chrome */
+
+  background-image: -webkit-linear-gradient(top, #ffff00, #ffe400);
+  /* Chrome 10+, Saf5.1+ */
+
+  background-image: -moz-linear-gradient(top, #ffff00, #ffe400);
+  /* FF3.6 */
+
+  background-image: -ms-linear-gradient(top, #ffff00, #ffe400);
+  /* IE10 */
+
+  background-image: -o-linear-gradient(top, #ffff00, #ffe400);
+  /* Opera 11.10+ */
+
+  background-image: linear-gradient(top, #ffff00, #ffe400);
+  color: #333333;
+  font-family: 'MuseoSansRounded700', Helvetica, Arial, sans-serif;
+  font-weight: normal;
+  text-decoration: none;
+}
+.ui-btn-down-e a.ui-link-inherit {
+  color: #333333;
+}
+.ui-bar-e {
+  margin: 0;
+  border: none;
+  border-top: solid 1px #ffffff;
+}

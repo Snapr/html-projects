@@ -56,13 +56,54 @@ html {
 
 body {
    	font-size: @txt-size-base;
+   	background-color: @color-bg-dark;
 }
+
+
+
+/*
+* Headers - Custom 
+*   Header bars in the snapr project are all transparent.. BG comes from layer below
+*/
+
+.ui-header{
+    background: none;
+    border: none;
+    color: @color-txt-medium-on-dark;
+    text-shadow: @color-shadow-dark-on-dark 0px -1px 1px;
+    
+    .ui-title{
+        font-family: @txt-font-special;
+        font-size: @txt-size-page-heading;
+        font-weight: normal;
+        text-transform: lowercase;
+    }
+    
+    
+}
+
+.bar-arrow-center-top{
+    .corner-bl(@corner-page-element-rounded);
+    .corner-br(@corner-page-element-rounded);
+    
+}
+
 
 
 
 /*
 * Main Menu - Custom 
 */
+
+.main-logo{
+    background-image: url('../gfx/main-logo.png');
+    background-repeat: no-repeat;
+    width:160px;
+    height:44px;
+    text-indent:-999px;
+    padding: 0;
+    margin: 0px 2px 2px!important;
+}
 
 .menu-main{
     padding: 0;
@@ -119,7 +160,7 @@ body {
             }
         }
         
-        .ui-btn-hover-c,
+
         .ui-btn-active-c{
                background-color: @color-bg-highlight-main;
         }
@@ -128,10 +169,25 @@ body {
         .ui-block-a{
             border-right: @border-light-on-light;
             margin-right: -1px;
+            .ui-btn{
+                .corner-tl(@corner-page-element-rounded);
+                .ui-btn-inner{
+                    .corner-tl(@corner-page-element-rounded);
+                }
+                
+            }
         }
         .ui-block-b{
+            .corner-tr(@corner-page-element-rounded);
             border-left: @border-medium-on-light;
             margin-left: -1px;
+            .ui-btn{
+                .corner-tr(@corner-page-element-rounded);
+                .ui-btn-inner{
+                    .corner-tr(@corner-page-element-rounded);
+                }
+                
+            }
         }
         
     }
@@ -146,7 +202,6 @@ body {
             font-size: @txt-size-small;
             background: transparent;
             background-color:@color-bg-light-tint;
-            background-color: rgba(128,128,128, .1);
             .ui-btn-inner{
                 padding-top: 80px;
             }
@@ -180,16 +235,11 @@ body {
     
     }
     
-    /* Hover and Active For Buttons */
-   
     
     
 }
 
-.ui-bar-e{
-    margin: 0;
 
-}
 
 
 /*
@@ -204,7 +254,9 @@ body {
 * The Dark (Textured Grey) swatch, used for title bars, dark btns on palletes
 */
 
+.ui-bar-b{
 
+}
 
 
 
@@ -214,8 +266,14 @@ body {
 */
 
 .ui-body-c {
-    background-color: @color-bg-light;
-    background-image: @gfx-bg-light-texture;
+    background: none;
+    
+    div[data-role="content"]{
+        background-color: @color-bg-light;
+        background-image: @gfx-bg-light-texture;
+        border-radius: @corner-page-element-rounded;
+    }
+    
 }
 
 
@@ -225,13 +283,65 @@ body {
 * have sneakily included the orange buttons in this guy
 */
 
+.ui-body-d[data-role="page"]{
+    background: @color-bg-dark;
+    background-image: @gfx-bg-dark-texture;
+    border-radius: @corner-page-element-rounded;
+    border-top: @border-light-on-dark;
+}
 
+.ui-body-d {
+    background: none;
+    
+    div[data-role="content"]{
+        background-color: @color-bg-light;
+        background-image: @gfx-bg-light-texture;
+        border-radius: @corner-page-element-rounded;
+    }
+    
+}
 
 
 /*
 * E
 * - highlight swatch - all about mad yellow shiz..
 */
+
+.ui-btn-up-e,
+.ui-btn-hover-e {
+	border: none;
+	background: @color-bg-highlight-main;
+    .linear-gradient(@color-bg-highlight-main, @color-bg-highlight-main-tint);
+	color: @color-txt-dark-on-light;
+	font-family: @txt-font-special;
+	font-weight: normal;
+	text-decoration: none;
+	a.ui-link-inherit {
+		color: @color-txt-dark-on-light;
+	}
+}
+
+.ui-btn-down-e {
+	border: none;
+	background: @color-bg-highlight-main;
+    .linear-gradient(@color-bg-highlight-main, @color-bg-highlight-main-tint);
+	color: @color-txt-dark-on-light;
+	font-family: @txt-font-special;
+	font-weight: normal;
+	text-decoration: none;
+	a.ui-link-inherit {
+		color: @color-txt-dark-on-light;
+	}
+}
+
+.ui-bar-e{
+    margin: 0;
+    border:none;
+    border-top: @border-light-on-light;
+    .ui-btn-inner{
+
+    }
+}
 
 
 

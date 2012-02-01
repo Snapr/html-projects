@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>SNAPR</title>
+        <title>Snapr</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1">
         <meta name="apple-mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -75,12 +75,12 @@
 <body class="n-loading">
 
     <!-- main menu / home page -->
-    <div id="home" data-title="Snapr" data-role="page">
+    <div id="home" data-title="Snapr" data-role="page" data-theme="d">
         <div data-role="header" data-theme="b">
             <a href="#/search/" data-ajax="false" data-role="button" data-icon="search" data-iconpos="notext" class="ui-btn-right"></a>
-            <h1>Snapr</h1>
+            <h1 class="main-logo">Snapr</h1>
         </div>
-        <div data-role="content" class="menu-main">
+        <div data-role="content" class="menu-main" data-theme="c">
         </div><!-- /content -->
     </div><!-- /page -->
 
@@ -161,11 +161,11 @@
             <% if(logged_in) { %>
                 <a href="#/logout/"
                 data-ajax="false" data-corners="false" data-shadow="false"
-                data-role="button" class="ui-bar-e">Log Out</a>
+                data-role="button" class="ui-bar-e bar-arrow-center-top">Log Out</a>
             <% }else{ %>
                 <a href="#/join/"
                 data-ajax="false" data-corners="false" data-shadow="false"
-                data-role="button" class="ui-bar-e">Join</a>
+                data-role="button" class="ui-bar-e bar-arrow-center-top">Join</a>
             <% } %>
            
                
