@@ -106,16 +106,13 @@
             <!-- secondary buttons -->
             <div class="ui-grid-b">
                 <!-- Image Library Button -->
+                <div class="ui-block-a">
                 <% if (logged_in) {%>
-                    <div class="ui-block-a">
                         <a class="x-launch-photo-library" data-role="button" data-iconpos="top" data-icon="main-menu-camera-lib" data-corners="false" data-shadow="false">Camera Roll</a>
-                    </div>
                  <%}else{%>    
-                     <div class="ui-block-a">
-                        <!-- This should link to an app about page -->
-                        <a data-role="button" data-role="button" data-iconpos="top" data-icon="main-menu-camera-lib" data-corners="false" data-shadow="false">Upload</a>
-                     </div>
+                      <a href="#/login/" data-ajax="false" data-corners="false" data-shadow="false" data-role="button" data-iconpos="top" data-icon="main-menu-login">Log In</a>
                 <%}%>
+                </div>
                 
                 <!-- My Snaps / Latest Feed Btn -->
                 <div class="ui-block-b">
@@ -139,12 +136,12 @@
                     <a href="#/map/" data-corners="false" data-shadow="false" data-role="button" data-theme="c" data-ajax="false" data-iconpos="top" data-icon="main-menu-map">Map</a>
                 </div>
                 
-                <!-- Login / My Account Btn -->
+                <!-- Join / My Account Btn -->
                 <div class="ui-block-b">
                     <% if(logged_in) { %>
                         <a href="#/my-account/" data-ajax="false" data-corners="false" data-shadow="false" data-role="button" data-iconpos="top" data-icon="main-menu-my-account">My Account</a>
                     <% }else{ %>
-                        <a href="#/login/" data-ajax="false" data-corners="false" data-shadow="false" data-role="button" data-iconpos="top" data-icon="main-menu-login">Log In</a>
+                        <a href="#/join/" data-ajax="false" data-corners="false" data-shadow="false" data-role="button" data-iconpos="top" data-icon="main-menu-join">Join Snapr</a>
                     <% } %>
                 </div>
                 
@@ -165,7 +162,7 @@
             <% }else{ %>
                 <a href="#/join/"
                 data-ajax="false" data-corners="false" data-shadow="false"
-                data-role="button" class="ui-bar-e bar-arrow-center-top">Join</a>
+                data-role="button" class="ui-bar-e bar-arrow-center-top">More about Snapr</a>
             <% } %>
            
                

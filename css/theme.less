@@ -115,6 +115,7 @@ body {
         width: 80px;
         height: 80px;
         margin-left: -40px;
+        .box-shadow(none)
     }
 
     .ui-icon-main-menu-feed{background-position: 0 -0px;}
@@ -125,7 +126,7 @@ body {
     .ui-icon-main-menu-queue{background-position: 0 -400px;}
     .ui-icon-main-menu-my-account{background-position: 0 -480px;}
     .ui-icon-main-menu-activity{background-position: 0 -560px;}
-    .ui-icon-main-menu-log-in{background-position: 0 -640px;}
+    .ui-icon-main-menu-join{background-position: 0 -640px;}
     .ui-icon-main-menu-camera-lib{background-position: 0 -720px;}
     .ui-icon-main-menu-cities{background-position: 0 -800px;}
     .ui-icon-main-menu-info{background-position: 0 -880px;}
@@ -134,9 +135,9 @@ body {
     /* Larger 2 column Btns */
     .ui-grid-a{
         /* Shadow under top button block */
-        -webkit-box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 3px;
-        -mox-box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 3px;
-        box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 3px;
+        -webkit-box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 2px;
+        -mox-box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 2px;
+        box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 2px;
         
         position: relative;
         z-index: 5;
@@ -152,6 +153,7 @@ body {
            
             font-family: @txt-font-special ;
             font-weight: normal;
+            color: @color-txt-medium-on-light;
             background: transparent;
             background-color: #f2f2f2;
             background-color: rgba(128,128,128, .1);
@@ -164,9 +166,10 @@ body {
             }
         }
         
-
+        .ui-btn-hover-c,
         .ui-btn-active-c{
                background-color: @color-bg-highlight-main;
+               color: @color-txt-medium-on-light;
         }
     
         /* tricky Border in between btns */
@@ -205,36 +208,33 @@ body {
             border: 0;
             font-size: @txt-size-small;
             background: transparent;
+            color: @color-txt-medium-on-light;
             background-color:@color-bg-light-tint;
             .ui-btn-inner{
-                padding-top: 78px;
-                padding-bottom: 12px;
+                
+                padding: 78px 10px 13px 10px;
             }
         }
         .ui-btn-hover-c,
         .ui-btn-active-c{
            background-color: @color-bg-highlight-main;
+           color: @color-txt-medium-on-light;
        }
        
        /* tricky Border in between btns */
        .ui-block-a{
-           border-right: @border-light-on-light;
-           margin-right: -1px;
+           margin-left: -1px;
        }
        .ui-block-b{
            border-left: @border-medium-on-light;
-           margin-left: -1px;
-           border-right: @border-light-on-light;
-           margin-right: -1px;
+           border-right: @border-medium-on-light;
        }
        .ui-block-c{
-            border-left: @border-medium-on-light;
-            margin-left: -1px;
+            margin-right: -1px;
         }
         .ui-block-a,
         .ui-block-b,
         .ui-block-c{
-            border-top: @border-light-on-light;
             border-bottom: @border-medium-on-light;
         }
     
