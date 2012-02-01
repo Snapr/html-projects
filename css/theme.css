@@ -109,6 +109,49 @@ a {
   border-bottom-right-radius: 8px;
 }
 /*
+* UI Components - Custom Stylz 
+*/
+.ui-navbar {
+  margin: -8px -8px 0 -8px;
+  border: none;
+  border-top: solid 1px #ffffff;
+  -moz-border-radius-topleft: 8px;
+  -webkit-border-top-left-radius: 8px;
+  border-top-left-radius: 8px;
+  -moz-border-radius-topright: 8px;
+  -webkit-border-top-right-radius: 8px;
+  border-top-right-radius: 8px;
+  /* Rounding for 3 column bars */
+
+}
+.ui-navbar .ui-btn {
+  font-family: Helvetica, Arial, sans-serif;
+}
+.ui-navbar .ui-btn-active {
+  font-family: 'MuseoSansRounded700', Helvetica, Arial, sans-serif;
+  font-size: 16px;
+}
+.ui-navbar .ui-btn-active .ui-btn-text {
+  position: relative;
+  top: -4px;
+  text-shadow: #ffffff 0px 1px 0px;
+}
+.ui-navbar .ui-btn-inner {
+  border-top: none;
+  padding-top: 16px!important;
+  padding-bottom: 14px!important;
+}
+.ui-navbar .ui-grid-b .ui-block-a .ui-btn {
+  -moz-border-radius-topleft: 8px;
+  -webkit-border-top-left-radius: 8px;
+  border-top-left-radius: 8px;
+}
+.ui-navbar .ui-grid-b .ui-block-c .ui-btn {
+  -moz-border-radius-topright: 8px;
+  -webkit-border-top-right-radius: 8px;
+  border-top-right-radius: 8px;
+}
+/*
 * Image Views - Custom 
 */
 .thumbs-grid {
@@ -358,6 +401,25 @@ a {
 * E
 * - highlight swatch - all about mad yellow shiz..
 */
+.ui-body-e.ui-navbar {
+  background: #ffff00;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#ffff00), to(#ffe400));
+  /* Saf4+, Chrome */
+
+  background-image: -webkit-linear-gradient(top, #ffff00, #ffe400);
+  /* Chrome 10+, Saf5.1+ */
+
+  background-image: -moz-linear-gradient(top, #ffff00, #ffe400);
+  /* FF3.6 */
+
+  background-image: -ms-linear-gradient(top, #ffff00, #ffe400);
+  /* IE10 */
+
+  background-image: -o-linear-gradient(top, #ffff00, #ffe400);
+  /* Opera 11.10+ */
+
+  background-image: linear-gradient(top, #ffff00, #ffe400);
+}
 .ui-btn-up-e, .ui-btn-hover-e {
   border: none;
   background: #ffff00;

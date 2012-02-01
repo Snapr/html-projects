@@ -101,6 +101,53 @@ a{
 }
 
 /*
+* UI Components - Custom Stylz 
+*/
+
+.ui-navbar{
+    margin: -@padding-page-inset -@padding-page-inset 0 -@padding-page-inset;
+    border: none;
+    border-top: @border-light-on-light;
+    .corner-top (@corner-page-element-rounded);
+    
+    .ui-btn{
+        font-family: @txt-font-base;
+       
+    }
+    .ui-btn-active{
+        font-family: @txt-font-special;
+        font-size: @txt-size-username; 
+        .ui-btn-text{
+            position: relative;
+            top: -4px;
+            text-shadow: @color-shadow-light-on-light 0px 1px 0px;
+        }
+    }
+    
+    .ui-btn-inner{
+           border-top: none;
+           padding-top: 16px!important;
+           padding-bottom: 14px!important;
+     }
+
+    /* Rounding for 3 column bars */
+    .ui-grid-b{
+        .ui-block-a{
+            .ui-btn{
+                .corner-tl (@corner-page-element-rounded)
+            
+            }
+        }
+        .ui-block-c{
+            .ui-btn{
+            .corner-tr (@corner-page-element-rounded);
+            }
+        }
+    }
+    
+}
+
+/*
 * Image Views - Custom 
 */
 
@@ -123,7 +170,7 @@ a{
     &.thumbs-grid-med{
         .image-link{
                margin: 0 @padding-image-grid @padding-image-grid 0;
-         }
+           }
         .thumb-image{
             width: @size-img-thumb;
             height: @size-img-thumb;
@@ -358,6 +405,13 @@ a{
 * E
 * - highlight swatch - all about mad yellow shiz..
 */
+
+.ui-body-e{
+    &.ui-navbar{
+        background: @color-bg-highlight-main;
+        .linear-gradient(@color-bg-highlight-main, @color-bg-highlight-main-tint);
+    }
+}
 
 .ui-btn-up-e,
 .ui-btn-hover-e {
