@@ -57,14 +57,14 @@ snapr.views.popular = Backbone.View.extend({
                 console.warn('success');
                 popular_list = new snapr.views.thumbs_li({
                     collection: popuar_view.photo_collection,
-                    el: $('#popular ul.grid-list').eq(0)
+                    el: $('#popular-thumbs').eq(0)
                 });
                 popular_list.render( function()
                 {
                     $.mobile.hidePageLoadingMsg();
                     // store the last query
                     console.warn('store the last query');
-                    $('#popular ul.grid-list').eq(0).data('query', {
+                    $('#popular-thumbs').eq(0).data('query', {
                         time: time,
                         auth: snapr.auth
                     });
@@ -78,7 +78,7 @@ snapr.views.popular = Backbone.View.extend({
         }
         
         // only update list if the query has changed or is new
-        if (!_.isEqual( $('#popular ul.grid-list').eq(0).data('query'), {time: time, auth: snapr.auth} ))
+        if (!_.isEqual( $('#popular-thumbs').eq(0).data('query'), {time: time, auth: snapr.auth} ))
         {
             console.warn('loading');
             $.mobile.loadingMessage = "Loading popular photos";

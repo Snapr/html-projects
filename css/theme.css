@@ -73,6 +73,9 @@ body {
   font-size: 15px;
   background-color: #000000;
 }
+a {
+  text-decoration: none;
+}
 /*
 * Headers - Custom 
 *   Header bars in the snapr project are all transparent.. BG comes from layer below
@@ -387,7 +390,7 @@ body {
 @media only screen and (-webkit-min-device-pixel-ratio: 2) {
   .main-logo {
     background-image: url('../gfx/retina/main-logo.png');
-    background-size: 160px 44px;
+    background-size: 160px 42px;
   }
   .menu-main .ui-icon {
     background-image: url('../gfx/retina/main-menu-icons.png');

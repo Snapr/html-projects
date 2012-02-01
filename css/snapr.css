@@ -4,13 +4,7 @@
 #popular #popular-timeframe{
     padding-left: 12px;
 }
-ul.grid-list {
-    padding:0;
-}
-ul.grid-list li {
-    list-style:none;
-    display:inline-block;
-}
+
 
 .right-header-buttons {
     position: absolute;
