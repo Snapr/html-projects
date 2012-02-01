@@ -80,15 +80,13 @@
             <a href="#/search/" data-ajax="false" data-role="button" data-icon="search" data-iconpos="notext" class="ui-btn-right"></a>
             <h1>Snapr</h1>
         </div>
-        <div data-role="content">
+        <div data-role="content" class="menu-main">
         </div><!-- /content -->
     </div><!-- /page -->
 
     <script id="home-template" type="text/template">
-        <div data-role="content">
-            <div class="menu-main">
             <!-- top row btns -->
-            <div class="ui-grid-a menu-hero-row">
+            <div class="ui-grid-a">
                <!-- Camera Button -->
                <div class="ui-block-a">
                 <% if (logged_in) {%>
@@ -101,12 +99,12 @@
                 
                  <!-- Dashboard Button -->
                 <div class="ui-block-b">
-                     <a class="x-launch-camera btn-camera" data-role="button" data-iconpos="top" data-icon="main-menu-dash" data-corners="false" data-shadow="false">Dashboard</a>
+                     <a data-role="button" data-iconpos="top" data-icon="main-menu-dash" data-corners="false" data-shadow="false">Dashboard</a>
                 </div>
             </div>
 
             <!-- secondary buttons -->
-            <div class="ui-grid-b menu-row">
+            <div class="ui-grid-b">
                 <!-- Image Library Button -->
                 <% if (logged_in) {%>
                     <div class="ui-block-a">
@@ -130,7 +128,7 @@
                 
                 <!-- Popular btn -->
                 <div class="ui-block-c">
-                    <a href="#/popular/" data-role="button" data-iconpos="top" data-icon="main-menu-dash" data-corners="false" data-shadow="false" data-iconpos="top" data-icon="main-menu-popular">Popular</a>
+                    <a href="#/popular/" data-role="button" data-corners="false" data-shadow="false" data-iconpos="top" data-icon="main-menu-popular" data-ajax="false">Popular</a>
                 </div>
                 
             </div>
@@ -163,16 +161,15 @@
             <% if(logged_in) { %>
                 <a href="#/logout/"
                 data-ajax="false" data-corners="false" data-shadow="false"
-                data-role="button">Log Out</a>
+                data-role="button" class="ui-bar-e">Log Out</a>
             <% }else{ %>
                 <a href="#/join/"
                 data-ajax="false" data-corners="false" data-shadow="false"
-                data-role="button">Join</a>
+                data-role="button" class="ui-bar-e">Join</a>
             <% } %>
-              
+           
                
-            </div>
-        </div><!-- /content -->
+          
     </script>
 
     <!-- manage my account settings -->
