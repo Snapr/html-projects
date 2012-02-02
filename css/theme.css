@@ -154,26 +154,17 @@ a {
 /*
 * Image Views - Custom 
 */
-.thumbs-grid {
+.thumbs-grid-med {
   margin: 0 -8px;
   padding: 4px 0 0 4px;
 }
-.thumbs-grid .image-link {
+.thumbs-grid-med .image-link {
   display: block;
   float: left;
   padding: 0;
-  margin: 0;
-}
-.thumbs-grid .thumb-image {
-  padding: 0;
-  margin: 0;
-  display: block;
-  background-color: #d7d7d5;
-}
-.thumbs-grid.thumbs-grid-med .image-link {
   margin: 0 4px 4px 0;
 }
-.thumbs-grid.thumbs-grid-med .thumb-image {
+.thumbs-grid-med .thumb-image {
   width: 101px;
   height: 101px;
   padding: 0;

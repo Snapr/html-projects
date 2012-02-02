@@ -69,7 +69,7 @@
         
         <!-- <link href="css/theme.less" rel="stylesheet/less" type="text/css">
         <script src="app/libs/less.js" type="text/javascript" charset="utf-8"></script> -->
-        <link rel="stylesheet" href="css/theme.css" type="text/css" charset="utf-8">
+        <!-- <link rel="stylesheet" href="css/theme.css" type="text/css" charset="utf-8"> -->
 
     </head>
 <body class="n-loading">
@@ -511,18 +511,24 @@
     </div> -->
     <!-- /page -->
 
-    <div id="feed" data-role="page">
-        <div data-role="header">
+    <div id="feed" data-role="page" data-theme="d">
+        <div data-role="header" data-theme="b">
             <a data-rel="back" data-icon="arrow-l">Back</a>
-
-            <fieldset data-role="controlgroup" data-type="horizontal" class="ui-title feed-view-toggle">
-                <input type="radio" name="feed-view-list" id="feed-view-list" value="list">
-                <label for="feed-view-list">List</label>
-                <input type="radio" name="feed-view-grid" id="feed-view-grid" value="grid">
-                <label for="feed-view-grid">Grid</label>
-            </fieldset>
-
-            <div class="right-header-buttons">
+            
+            <div class="ui-grid-b">
+                <div class="ui-block-a">
+                </div>
+                <div class="ui-block-b">
+                    <fieldset data-role="controlgroup" data-type="horizontal" class="feed-view-toggle">
+                        <input type="radio" name="feed-view-list" id="feed-view-list" value="list">
+                        <label for="feed-view-list">List</label>
+                        <input type="radio" name="feed-view-grid" id="feed-view-grid" value="grid">
+                        <label for="feed-view-grid">Grid</label>
+                    </fieldset>
+                </div>
+            </div>
+            
+            <div class="ui-btn-right">
                 <a href="#/search/" data-ajax="false" data-role="button" data-icon="search" data-iconpos="notext"></a>
                 <a href="#/" data-ajax="false" data-role="button" data-icon="home" data-iconpos="notext"></a>
             </div>
@@ -534,27 +540,25 @@
             </div>
             <div class="feed-header">
             </div>
-            <ul class="gallery">
-            </ul>
+            <div id="feed-images" class="gallery">
+                
+            </div>
         </div>
 
         <button class="more ui-btn-right">More</button>
 
     </div><!-- /page -->
 
-
-    <!-- template for list items within #feed -->
+    <!-- MAIN IMAGE ITEMS -->
     <script id="feed-li-list-template" type="text/template">
-    <li class="feed-li">
-        <div>
-            <div class="ui-grid-e">
-                <div class="ui-block-a">
-                    <a data-ajax="false" data-transition="slide" href="#/feed/?username=<%= item.get('username') %>"><img src="http://sna.pr/avatars/<%= item.get('username') %>/" alt="<%= item.get('username') %>" /></a>
-                </div>
-                <div>
-                    <h3><a data-ajax="false" data-transition="slide" href="#/feed/?username=<%= item.get('username') %>"><%= item.get('username') %></a></h3>
-                    <a class="goto-map"><%= item.get('location').location %> <%= item.get('date') %></a>
-                </div>
+    
+        <div class="image-item-block">
+            <div class="image-item-topbar">
+                    <a data-ajax="false" data-transition="slide" href="#/feed/?username=<%= item.get('username') %>"><img src="http://sna.pr/avatars/<%= item.get('username') %>/" alt="<%= item.get('username') %>" class="user-icon-small" /></a>
+                
+                <a data-ajax="false" data-transition="slide" href="#/feed/?username=<%= item.get('username') %>"><%= item.get('username') %></a>
+                <a class="goto-map"><%= item.get('location').location %> <%= item.get('date') %></a>
+                
             </div>
 
             <a href="https://s3.amazonaws.com/media-server<%= item.get('server_id') %>.snapr.us/lrg/<%= item.get('secret') %>/<%= item.get('id') %>.jpg" rel="external" class="gallery_link"><img style="width:100%;height:<%= snapr.utils.get_photo_height(item.get('width'), item.get('height'), '#feed .ui-content') %>px;" src="https://s3.amazonaws.com/media-server<%= item.get('server_id') %>.snapr.us/lrg/<%= item.get('secret') %>/<%= item.get('id') %>.jpg" alt="<%= item.get('description') %>" class="thumb-image" /></a>
@@ -596,15 +600,16 @@
             </div>
 
         </div>
-    </li>
+   
     </script>
 
+    <!-- THUMB IMAGE -->
     <script id="feed-li-grid-template" type="text/template">
-    <li class="feed-li-grid">
-        <a href="https://s3.amazonaws.com/media-server<%= item.get('server_id') %>.snapr.us/lrg/<%= item.get('secret') %>/<%= item.get('id') %>.jpg" rel="external" class="gallery_link"><img src="https://s3.amazonaws.com/media-server<%= item.get('server_id') %>.snapr.us/thm2/<%= item.get('secret') %>/<%= item.get('id') %>.jpg" alt="<%= item.get('description') %>" class="thumb-image" /></a>
-    </li>
+    <a href="https://s3.amazonaws.com/media-server<%= item.get('server_id') %>.snapr.us/lrg/<%= item.get('secret') %>/<%= item.get('id') %>.jpg" rel="external" class="gallery_link image-link"><img src="https://s3.amazonaws.com/media-server<%= item.get('server_id') %>.snapr.us/thm2/<%= item.get('secret') %>/<%= item.get('id') %>.jpg" alt="<%= item.get('description') %>" class="thumb-image thumb-med" /></a>
+ 
     </script>
 
+    <!-- FROM PINK !!! redundant ???-->
     <script id="feed-li-list-pink-template" type="text/template">
         <div>
             <div class="image-frame">
@@ -624,6 +629,7 @@
     <% } %>
     </script>
 
+    <!-- FEED TITLE BAR -->
     <script id="feed-header-template" type="text/template">
     <div class="ui-body ui-body-e">
     <% if (query_data.keywords){ %>
@@ -636,6 +642,7 @@
     </div>
     </script>
 
+    <!-- USER HEADER -->
     <script id="user-header-template" type="text/template">
     <div class="ui-body ui-body-e ui-grid-b">
         <div class="ui-block-a">
@@ -668,8 +675,7 @@
     </script>
 
     <script id="feed-li-list-template" type="text/template">
-    <li class="feed-li">
-        <div>
+        <div class="image-item-block">
             <div class="ui-grid-e">
                 <div class="ui-block-a">
                     <a data-ajax="false" data-transition="slide" href="#/feed/?username=<%= item.get('username') %>"><img src="http://sna.pr/avatars/<%= item.get('username') %>/" alt="<%= item.get('username') %>" /></a>
@@ -719,13 +725,10 @@
             </div>
 
         </div>
-    </li>
     </script>
 
     <script id="feed-li-grid-template" type="text/template">
-    <li class="feed-li-grid">
-        <a href="https://s3.amazonaws.com/media-server<%= item.get('server_id') %>.snapr.us/lrg/<%= item.get('secret') %>/<%= item.get('id') %>.jpg" rel="external" class="gallery_link"><img src="https://s3.amazonaws.com/media-server<%= item.get('server_id') %>.snapr.us/thm2/<%= item.get('secret') %>/<%= item.get('id') %>.jpg" alt="<%= item.get('description') %>" class="thumb-image" /></a>
-    </li>
+        <a href="https://s3.amazonaws.com/media-server<%= item.get('server_id') %>.snapr.us/lrg/<%= item.get('secret') %>/<%= item.get('id') %>.jpg" rel="external" class="gallery_link image-link image-list-item"><img src="https://s3.amazonaws.com/media-server<%= item.get('server_id') %>.snapr.us/thm2/<%= item.get('secret') %>/<%= item.get('id') %>.jpg" alt="<%= item.get('description') %>" class="thumb-image thumb-med" /></a>
     </script>
 
     <!-- https://s3.amazonaws.com/media-server2.snapr.us/thm/f06bfa40d66e45ef8c63f9fecd613fbb/YZJ.jpg -->

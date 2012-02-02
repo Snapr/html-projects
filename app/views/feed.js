@@ -47,7 +47,7 @@ snapr.views.feed = Backbone.View.extend({
         var feed_view = this;
 
         feed_view.el.find(".feed-upload-list").empty();
-        feed_view.el.find('ul.gallery').empty();
+        feed_view.el.find('#feed-images').empty();
 
         this.el.live( 'pageshow', function()
         {
@@ -103,10 +103,10 @@ snapr.views.feed = Backbone.View.extend({
             Code.PhotoSwipe.detatch(photoSwipeInstance);
         }
 
-        if ($( "ul.gallery a.gallery_link", this.el ).length)
+        if ($( "#feed-images a.gallery_link", this.el ).length)
         {
             // make sure we set the param backButtonHideEnabled:false to prevent photoswipe from changing the hash
-            var photoSwipeInstance = $( "ul.gallery a.gallery_link", this.el )
+            var photoSwipeInstance = $( "#feed-images a.gallery_link", this.el )
                 .photoSwipe( {
                     backButtonHideEnabled: false
                 }, 'feed' );
@@ -135,7 +135,7 @@ snapr.views.feed = Backbone.View.extend({
                 // if (!feed_view.feed_list)
                 // {
                     feed_view.feed_list = new snapr.views.feed_list({
-                        el: feed_view.el.find('ul.gallery').eq(0),
+                        el: feed_view.el.find('#feed-images').eq(0),
                         collection: feed_view.photo_collection,
                         list_style: list_style
                     });
@@ -247,7 +247,7 @@ snapr.views.feed = Backbone.View.extend({
 //
 //         var feed_view = this;
 //
-//         feed_view.el.find('ul.gallery').empty();
+//         feed_view.el.find('#feed-images').empty();
 //
 //
 //         var toggle_container = this.el.find( ".feed-view-toggle" );
@@ -318,10 +318,10 @@ snapr.views.feed = Backbone.View.extend({
 //             Code.PhotoSwipe.detatch(photoSwipeInstance);
 //         }
 //
-//         if ($( "ul.gallery a.gallery_link", this.el ).length)
+//         if ($( "#feed-images a.gallery_link", this.el ).length)
 //         {
 //             // make sure we set the param backButtonHideEnabled:false to prevent photoswipe from changing the hash
-//             var photoSwipeInstance = $( "ul.gallery a.gallery_link", this.el )
+//             var photoSwipeInstance = $( "#feed-images a.gallery_link", this.el )
 //                 .photoSwipe( {
 //                     backButtonHideEnabled: false
 //                 }, 'feed' );

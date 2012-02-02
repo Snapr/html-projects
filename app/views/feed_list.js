@@ -58,8 +58,7 @@ snapr.views.feed_list = Backbone.View.extend({
             .trigger("create");
 
         $(this.el)
-            .removeClass('grid-list')
-            .addClass('ui-listview');
+            .removeClass('thumbs-grid-med')
 
         if(callback && typeof callback == 'function'){
             callback();

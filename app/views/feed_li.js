@@ -1,6 +1,6 @@
 snapr.views.feed_li = Backbone.View.extend({
 
-    tagName: "li",
+    tagName: "span",
 
     className: "feed-li",
 

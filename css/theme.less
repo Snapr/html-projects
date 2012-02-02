@@ -151,7 +151,7 @@ a{
 * Image Views - Custom 
 */
 
-.thumbs-grid{
+.thumbs-grid-med{
     margin: 0 -@padding-page-inset; 
     padding: @padding-image-grid 0 0 @padding-image-grid; 
     
@@ -159,26 +159,15 @@ a{
         display: block;
         float: left;
         padding: 0;
-        margin: 0;
+        margin: 0 @padding-image-grid @padding-image-grid 0;
     }
     .thumb-image{
+        width: @size-img-thumb;
+        height: @size-img-thumb;
         padding: 0;
         margin: 0;
         display: block;
         background-color: @color-bg-neutral-light-tint;
-    }
-    &.thumbs-grid-med{
-        .image-link{
-               margin: 0 @padding-image-grid @padding-image-grid 0;
-           }
-        .thumb-image{
-            width: @size-img-thumb;
-            height: @size-img-thumb;
-            padding: 0;
-            margin: 0;
-            display: block;
-            background-color: @color-bg-neutral-light-tint;
-        }
     }
 }
 
