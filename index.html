@@ -74,7 +74,7 @@
     </head>
 <body class="n-loading">
 
-    <!-- main menu / home page -->
+    <!-- @menu HOME PAGE-->
     <div id="home" data-title="Snapr" data-role="page" data-theme="d">
         <div data-role="header" data-theme="b">
             <a href="#/search/" data-ajax="false" data-role="button" data-icon="search" data-iconpos="notext" class="ui-btn-right"></a>
@@ -464,7 +464,7 @@
     </div>
     </script>
 
-    <!-- view popular snaps -->
+    <!-- @popular PAGE -->
     <div id="popular" data-title="Popular" data-add-back-btn="true" data-role="page" data-theme="d">
         <div data-role="header" data-theme="b">
             <h1>Popular</h1>
@@ -538,7 +538,7 @@
                 <ul class="feed-upload-list" data-role="listview">
                 </ul>
             </div>
-            <div class="feed-header">
+            <div class="feed-header ui-bar-e">
             </div>
             <div id="feed-images" class="gallery">
                 
@@ -554,16 +554,34 @@
     
         <div class="image-item-block">
             <div class="image-item-topbar">
-                    <a data-ajax="false" data-transition="slide" href="#/feed/?username=<%= item.get('username') %>"><img src="http://sna.pr/avatars/<%= item.get('username') %>/" alt="<%= item.get('username') %>" class="user-icon-small" /></a>
+                <a data-ajax="false" data-transition="slide" href="#/feed/?username=<%= item.get('username') %>"><img src="http://sna.pr/avatars/<%= item.get('username') %>/" alt="<%= item.get('username') %>" class="user-icon-small" /></a>
+                <a class="username" data-ajax="false" data-transition="slide" href="#/feed/?username=<%= item.get('username') %>"><%= item.get('username')  %></a>
                 
-                <a data-ajax="false" data-transition="slide" href="#/feed/?username=<%= item.get('username') %>"><%= item.get('username') %></a>
+                <!-- Show Time only if no location -->
+                <% if(item.get('location').location){ %> 
+                <span class="image-time-and-location">
                 <a class="goto-map"><%= item.get('location').location %> <%= item.get('date') %></a>
-                
+                </span>
+                <%}else{%>
+                <span class="image-time">
+                <%= item.get('date') %>
+                </span>
+                <% }%>
             </div>
 
-            <a href="https://s3.amazonaws.com/media-server<%= item.get('server_id') %>.snapr.us/lrg/<%= item.get('secret') %>/<%= item.get('id') %>.jpg" rel="external" class="gallery_link"><img style="width:100%;height:<%= snapr.utils.get_photo_height(item.get('width'), item.get('height'), '#feed .ui-content') %>px;" src="https://s3.amazonaws.com/media-server<%= item.get('server_id') %>.snapr.us/lrg/<%= item.get('secret') %>/<%= item.get('id') %>.jpg" alt="<%= item.get('description') %>" class="thumb-image" /></a>
+            <a href="https://s3.amazonaws.com/media-server<%= item.get('server_id') %>.snapr.us/lrg/<%= item.get('secret') %>/<%= item.get('id') %>.jpg" rel="external" class="gallery_link">
+                <img style="width:100%;height:<%= snapr.utils.get_photo_height(item.get('width'), item.get('height'), '#feed .ui-content') %>px;" src="https://s3.amazonaws.com/media-server<%= item.get('server_id') %>.snapr.us/lrg/<%= item.get('secret') %>/<%= item.get('id') %>.jpg" alt="<%= item.get('description') %>" class="main-image" />
+            </a>
 
-            <div><%= item.get('description') %></div>
+            <div class="image-description">
+                <%= item.get('description') %>
+                
+                <% if (item.get('location').spot_id){%>
+                <a class="goto-spot">
+                    @ <%= item.get('location').foursquare_venue_name %>
+                </a>
+                <%}%>
+            </div>
 
             <div data-role="controlgroup" data-type="horizontal">
 
@@ -571,11 +589,7 @@
 
             </div>
 
-            <% if (item.get('location').spot_id){%>
-            <div data-role="button" data-inline="true" class="goto-spot">
-                @ <%= item.get('location').foursquare_venue_name %>
-            </div>
-            <%}%>
+            
             <% if (parseInt(item.get('comments')) + parseInt(item.get('favorite_count')) > 0){ %>
             <div data-role="collapsible" data-collapsed="true" class="reactions-button">
                 <h3><%= item.get('comments') %> comments and <%= item.get('favorite_count') %> favorites</h3>
@@ -631,49 +645,69 @@
 
     <!-- FEED TITLE BAR -->
     <script id="feed-header-template" type="text/template">
-    <div class="ui-body ui-body-e">
+    <h4>
     <% if (query_data.keywords){ %>
-        <p>Search for <span class="search-term"><%= query_data.keywords %></span></p>
+        Search for <em class="search-term"><%= query_data.keywords %></em>
     <%}else if (query_data.username){ %>
-        <p><%= query_data.username %></p>
+        Snaps by <em><%= query_data.username %></em>
     <%}else if (query_data.spot){%>
-        <p>Spot ID <%= query_data.spot %></p>
+        @ <em><%= query_data.spot %></em>
     <%}%>
-    </div>
+    </h4>
     </script>
 
     <!-- USER HEADER -->
     <script id="user-header-template" type="text/template">
-    <div class="ui-body ui-body-e ui-grid-b">
-        <div class="ui-block-a">
-            <a href="#/user/profile/?username=<%= user.get('username') %>" data-ajax="false"><img height="100px" width="100px" src="http://sna.pr/avatars/<%= user.get('username') %>?size=large" alt="<%= user.get('username') %> avatar" /></a>
-        </div>
-        <div>
-            <span><%= user.username %></span>
+    <div class="ui-body-c feed-user-header">
+        <div class="ui-bar-e feed-follow-bar">
+            <span class="username"><%= user.get('username') %></span>
             <% if (user.get('username') == auth_username){%>
-                <button data-inline="true" disabled="true" data-icon="check" data-iconpos="right">That&apos;s Me</button>
+                <button data-inline="true" disabled="true" data-icon="check" data-iconpos="right" data-corners="false" data-shadow="false" class="ui-btn-right">That&apos;s Me</button>
             <%}else{%>
                 <% if (user.get('relationship').you_follow) {%>
-                <button data-inline="true" data-icon="minus" data-iconpos="right" class="unfollow">Unfollow</button>
+                <button data-inline="true" data-icon="minus" data-iconpos="right" data-corners="false" data-shadow="false" class="unfollow ui-btn-right">Unfollow</button>
                 <%}else{%>
-                <button data-inline="true" data-icon="plus" data-iconpos="right" class="follow">Follow</button>
+                <button data-inline="true" data-icon="plus" data-iconpos="right" data-corners="false" data-shadow="false" class="follow ui-btn-right">Follow</button>
                 <%}%>
             <%}%>
-                <div class="ui-grid-b">
-                    <div class="ui-block-a"><span><%= user.photo_count %></span><br /><span>Photos</span></div>
-                    <div class="ui-block-b">
-                        <a href="#/user/followers/?username=<%= user.get('username') %>" data-ajax="false"><span><%= user.get('followers') %></span>
-                        <br /><span>Followers</span></a>
-                        </div>
-                    <div class="ui-block-c">
-                        <a href="#/user/following/?username=<%= user.get('username') %>" data-ajax="false"><span><%= user.get('following') %></span>
-                        <br /><span>Following</span></a></div>
+            
+        </div>
+  
+            
+        <div class="big-icon-margin-left">  
+            <div class="user-icon-big">
+                <a href="#/user/profile/?username=<%= user.get('username') %>" data-ajax="false">
+                    <img height="100px" width="100px" src="http://sna.pr/avatars/<%= user.get('username') %>?size=large" alt="<%= user.get('username') %> avatar" />
+                </a>
+            </div>
+         
+            <div class="ui-grid-b">
+                <div class="ui-block-a">
+                    <a data-ajax="false" data-transition="slide" href="#/feed/?username=<%= user.get('username') %>">
+                        <span class="big-number"><%= user.get('photo_count') %></span><br />
+                        <span>Photos</span>
+                    </a>
+                </div>
+                <div class="ui-block-b">
+                    <a href="#/user/followers/?username=<%= user.get('username') %>" data-ajax="false">
+                        <span class="big-number"><%= user.get('followers') %></span><br />
+                        <span>Followers</span>
+                    </a>
+                </div>
+                <div class="ui-block-c">
+                    <a href="#/user/following/?username=<%= user.get('username') %>" data-ajax="false">
+                        <span class="big-number"><%= user.get('following') %></span><br />
+                        <span>Following</span>
+                    </a>
                 </div>
             </div>
-
+            
         </div>
+    </div>
+           
     </script>
 
+    <!-- Main Image Item -->
     <script id="feed-li-list-template" type="text/template">
         <div class="image-item-block">
             <div class="ui-grid-e">
