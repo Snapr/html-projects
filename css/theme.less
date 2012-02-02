@@ -72,6 +72,50 @@ a{
     padding: @padding-page-inset;
 }
 
+/* corner rounding classes
+-----------------------------------------------------------------------------------------------------------*/
+
+.ui-corner-tl {
+	.corner-tl();
+}
+
+.ui-corner-tr {
+	.corner-tr();
+}
+
+.ui-corner-bl {
+	.corner-bl();
+}
+
+.ui-corner-br {
+	.corner-br();
+}
+
+.ui-corner-top {
+	.corner-top();
+}
+
+.ui-corner-bottom {
+	.corner-bottom();
+}
+
+.ui-corner-right {
+	.corner-right();
+}
+
+.ui-corner-left {
+	.corner-left();
+}
+
+.ui-corner-all,
+.ui-btn-corner-all {
+	.corner-all();
+}
+
+.ui-corner-none {
+	.corner-none();
+}
+
 /*
 * Headers - Custom 
 *   Header bars in the snapr project are all transparent.. BG comes from layer below
@@ -82,7 +126,29 @@ a{
     border: none;
     color: @color-txt-medium-on-dark;
     text-shadow: @color-shadow-dark-on-dark 0px -1px 1px;
-    min-height: @size-topbar-height;
+    height: @size-topbar-height;
+    overflow: hidden;
+    
+    .ui-btn{
+        font-size:@txt-size-small;
+    }
+    
+    .ui-btn-left{
+        position: absolute;
+        left: 6px;
+        top: 6px;
+    }
+    
+    .ui-btn-right {
+        position: absolute;
+        right: 6px;
+        top: 6px;
+    }
+    
+    .ui-btn-inner{
+        padding-top: 9px;
+        padding-bottom: 7px;
+    }
     
     .ui-title{
         font-family: @txt-font-special;
@@ -91,18 +157,59 @@ a{
         text-transform: lowercase;
     }
     
+    .ui-controlgroup{
+        display: inline-block;
+        margin: 6px 0 0 -40px;
+        left: 50%;
+        position: absolute;
+        
+         -moz-box-shadow: 0 1px 0 @color-shadow-light-on-dark;
+         -webkit-box-shadow: 0 1px 0 @color-shadow-light-on-dark;
+         box-shadow: 0 1px 0 @color-shadow-light-on-dark;
+        
+        .ui-checkbox label,
+        .ui-radio label{
+            font-size: @txt-size-small;
+        }
+        
+    }
+    
     
 }
 
-.bar-arrow-center-top{
-    .corner-bl(@corner-page-element-rounded);
-    .corner-br(@corner-page-element-rounded);
-    
-}
+
+
 
 /*
 * UI Components - Custom Stylz 
 */
+
+/* Title Bars that pop up all over the place */
+
+.ui-bar{
+    border:none;
+    border-top: @border-light-on-light;
+    margin: 0 -@padding-page-inset;
+
+    .ui-btn-inner,
+    h4{
+        padding: 8px 25px;
+        font-style: @txt-font-base;
+        font-weight: normal;
+    }
+    
+    &.top-no-arrow{
+        .corner-top (@corner-page-element-rounded); 
+    }
+    &.top-left-arrow{
+        .corner-top (@corner-page-element-rounded); 
+    }
+    &.bottom-centered-arrow{
+        .corner-bottom (@corner-page-element-rounded); 
+    }
+}
+
+
 
 .ui-navbar{
     margin: -@padding-page-inset -@padding-page-inset 0 -@padding-page-inset;
@@ -146,6 +253,7 @@ a{
     }
     
 }
+
 
 /*
 * Image Views - Custom 
@@ -323,6 +431,12 @@ a{
     
     }
     
+    .ui-bar{
+        margin-left: 0;
+        margin-right: 0;
+        
+    }
+    
     
     
 }
@@ -344,6 +458,31 @@ a{
 
 .ui-bar-b{
 
+}
+
+.ui-btn-up-b {
+	border: @border-dark-on-dark;
+	background: @color-bg-neutral-dark;
+	font-weight: bold;
+	color: @color-txt-medium-on-dark;
+	text-shadow: @color-shadow-medium-on-dark 0px 1px 1px;
+	font-size: @txt-size-small;
+	text-decoration: none;
+    
+	.linear-gradient(@color-bg-neutral-dark, @color-bg-neutral-dark-tint);
+    
+    .ui-btn-inner{
+        border:none;
+    }
+
+	a.ui-link-inherit {
+		color: @color-txt-medium-on-dark;
+	}
+	&.ui-shadow{
+	   -moz-box-shadow: 0 1px 0 @color-shadow-light-on-dark;
+       -webkit-box-shadow: 0 1px 0 @color-shadow-light-on-dark;
+       box-shadow: 0 1px 0 @color-shadow-light-on-dark;
+	}
 }
 
 
@@ -429,14 +568,11 @@ a{
 	}
 }
 
-.ui-bar-e{
-    margin: 0;
-    border:none;
-    border-top: @border-light-on-light;
-    .ui-btn-inner{
-        padding: 8px 25px;
-    }
+.ui-bar-e{   
+    background: @color-bg-highlight-main;
+    .linear-gradient(@color-bg-highlight-main, @color-bg-highlight-main-tint);
 }
+
 
 
 

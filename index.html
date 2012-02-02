@@ -69,7 +69,7 @@
         
         <!-- <link href="css/theme.less" rel="stylesheet/less" type="text/css">
         <script src="app/libs/less.js" type="text/javascript" charset="utf-8"></script> -->
-        <!-- <link rel="stylesheet" href="css/theme.css" type="text/css" charset="utf-8"> -->
+        <link rel="stylesheet" href="css/theme.css" type="text/css" charset="utf-8">
 
     </head>
 <body class="n-loading">
@@ -158,18 +158,18 @@
             <% if(logged_in) { %>
                 <a href="#/logout/"
                 data-ajax="false" data-corners="false" data-shadow="false"
-                data-role="button" class="ui-bar-e bar-arrow-center-top">Log Out</a>
+                data-role="button" class="ui-bar ui-bar-e bottom-centered-arrow">Log Out</a>
             <% }else{ %>
                 <a href="#/join/"
                 data-ajax="false" data-corners="false" data-shadow="false"
-                data-role="button" class="ui-bar-e bar-arrow-center-top">More about Snapr</a>
+                data-role="button" class="ui-bar ui-bar-e bottom-centered-arrow">More about Snapr</a>
             <% } %>
            
                
           
     </script>
 
-    <!-- manage my account settings -->
+    <!-- @myaccount PAGE -->
     <div id="my-account" data-title="My Account" data-add-back-btn="true" data-role="page">
         <div data-role="header">
             <h1>My Account</h1>
@@ -180,7 +180,7 @@
         </div>
     </div>
 
-    <!-- template for my-account -->
+    <!--  template for my-account -->
     <script id="my-account-template" type="text/template">
     <h2>My Account</h2>
 
@@ -511,6 +511,8 @@
     </div> -->
     <!-- /page -->
 
+
+    <!-- @feed PAGE the main image display view -->
     <div id="feed" data-role="page" data-theme="d">
         <div data-role="header" data-theme="b">
             <a data-rel="back" data-icon="arrow-l">Back</a>
@@ -520,10 +522,10 @@
                 </div>
                 <div class="ui-block-b">
                     <fieldset data-role="controlgroup" data-type="horizontal" class="feed-view-toggle">
-                        <input type="radio" name="feed-view-list" id="feed-view-list" value="list">
-                        <label for="feed-view-list">List</label>
+                        <input type="radio" name="feed-view-list" id="feed-view-list" value="list" >
+                        <label for="feed-view-list"><span class="ui-icon ui-icon-list-view"></span>List</label>
                         <input type="radio" name="feed-view-grid" id="feed-view-grid" value="grid">
-                        <label for="feed-view-grid">Grid</label>
+                        <label for="feed-view-grid"><span class="ui-icon ui-icon-grid-view"></span>Grid</label>
                     </fieldset>
                 </div>
             </div>
@@ -533,12 +535,13 @@
                 <a href="#/" data-ajax="false" data-role="button" data-icon="home" data-iconpos="notext"></a>
             </div>
         </div>
-        <div class="feed-content" data-role="content">
+        
+        <div class="feed-content" data-role="content" data-theme="d">
             <div class="feed-upload-progress">
                 <ul class="feed-upload-list" data-role="listview">
                 </ul>
             </div>
-            <div class="feed-header ui-bar-e">
+            <div class="feed-header ui-bar-e ui-bar top-no-arrow">
             </div>
             <div id="feed-images" class="gallery">
                 

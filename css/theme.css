@@ -83,6 +83,70 @@ a {
 .ui-content {
   padding: 8px;
 }
+/* corner rounding classes
+-----------------------------------------------------------------------------------------------------------*/
+.ui-corner-tl {
+  -moz-border-radius-topleft: 6px;
+  -webkit-border-top-left-radius: 6px;
+  border-top-left-radius: 6px;
+}
+.ui-corner-tr {
+  -moz-border-radius-topright: 6px;
+  -webkit-border-top-right-radius: 6px;
+  border-top-right-radius: 6px;
+}
+.ui-corner-bl {
+  -moz-border-radius-bottomleft: 6px;
+  -webkit-border-bottom-left-radius: 6px;
+  border-bottom-left-radius: 6px;
+}
+.ui-corner-br {
+  -moz-border-radius-bottomright: 6px;
+  -webkit-border-bottom-right-radius: 6px;
+  border-bottom-right-radius: 6px;
+}
+.ui-corner-top {
+  -moz-border-radius-topleft: 6px;
+  -webkit-border-top-left-radius: 6px;
+  border-top-left-radius: 6px;
+  -moz-border-radius-topright: 6px;
+  -webkit-border-top-right-radius: 6px;
+  border-top-right-radius: 6px;
+}
+.ui-corner-bottom {
+  -moz-border-radius-bottomleft: 6px;
+  -webkit-border-bottom-left-radius: 6px;
+  border-bottom-left-radius: 6px;
+  -moz-border-radius-bottomright: 6px;
+  -webkit-border-bottom-right-radius: 6px;
+  border-bottom-right-radius: 6px;
+}
+.ui-corner-right {
+  -moz-border-radius-topright: 6px;
+  -webkit-border-top-right-radius: 6px;
+  border-top-right-radius: 6px;
+  -moz-border-radius-bottomright: 6px;
+  -webkit-border-bottom-right-radius: 6px;
+  border-bottom-right-radius: 6px;
+}
+.ui-corner-left {
+  -moz-border-radius-topleft: 6px;
+  -webkit-border-top-left-radius: 6px;
+  border-top-left-radius: 6px;
+  -moz-border-radius-bottomleft: 6px;
+  -webkit-border-bottom-left-radius: 6px;
+  border-bottom-left-radius: 6px;
+}
+.ui-corner-all, .ui-btn-corner-all {
+  -moz-border-radius: 6px;
+  -webkit-border-radius: 6px;
+  border-radius: 6px;
+}
+.ui-corner-none {
+  -moz-border-radius: 0;
+  -webkit-border-radius: 0;
+  border-radius: 0;
+}
 /*
 * Headers - Custom 
 *   Header bars in the snapr project are all transparent.. BG comes from layer below
@@ -92,7 +156,25 @@ a {
   border: none;
   color: #999999;
   text-shadow: #000000 0px -1px 1px;
-  min-height: 46px;
+  height: 46px;
+  overflow: hidden;
+}
+.ui-header .ui-btn {
+  font-size: 12px;
+}
+.ui-header .ui-btn-left {
+  position: absolute;
+  left: 6px;
+  top: 6px;
+}
+.ui-header .ui-btn-right {
+  position: absolute;
+  right: 6px;
+  top: 6px;
+}
+.ui-header .ui-btn-inner {
+  padding-top: 9px;
+  padding-bottom: 7px;
 }
 .ui-header .ui-title {
   font-family: 'MuseoSansRounded700', Helvetica, Arial, sans-serif;
@@ -100,7 +182,49 @@ a {
   font-weight: normal;
   text-transform: lowercase;
 }
-.bar-arrow-center-top {
+.ui-header .ui-controlgroup {
+  display: inline-block;
+  margin: 6px 0 0 -40px;
+  left: 50%;
+  position: absolute;
+  -moz-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2);
+  -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+.ui-header .ui-controlgroup .ui-checkbox label, .ui-header .ui-controlgroup .ui-radio label {
+  font-size: 12px;
+}
+/*
+* UI Components - Custom Stylz 
+*/
+/* Title Bars that pop up all over the place */
+.ui-bar {
+  border: none;
+  border-top: solid 1px #ffffff;
+  margin: 0 -8px;
+}
+.ui-bar .ui-btn-inner, .ui-bar h4 {
+  padding: 8px 25px;
+  font-style: Helvetica, Arial, sans-serif;
+  font-weight: normal;
+}
+.ui-bar.top-no-arrow {
+  -moz-border-radius-topleft: 8px;
+  -webkit-border-top-left-radius: 8px;
+  border-top-left-radius: 8px;
+  -moz-border-radius-topright: 8px;
+  -webkit-border-top-right-radius: 8px;
+  border-top-right-radius: 8px;
+}
+.ui-bar.top-left-arrow {
+  -moz-border-radius-topleft: 8px;
+  -webkit-border-top-left-radius: 8px;
+  border-top-left-radius: 8px;
+  -moz-border-radius-topright: 8px;
+  -webkit-border-top-right-radius: 8px;
+  border-top-right-radius: 8px;
+}
+.ui-bar.bottom-centered-arrow {
   -moz-border-radius-bottomleft: 8px;
   -webkit-border-bottom-left-radius: 8px;
   border-bottom-left-radius: 8px;
@@ -108,9 +232,6 @@ a {
   -webkit-border-bottom-right-radius: 8px;
   border-bottom-right-radius: 8px;
 }
-/*
-* UI Components - Custom Stylz 
-*/
 .ui-navbar {
   margin: -8px -8px 0 -8px;
   border: none;
@@ -349,6 +470,10 @@ a {
 .menu-main .ui-grid-b .ui-block-a, .menu-main .ui-grid-b .ui-block-b, .menu-main .ui-grid-b .ui-block-c {
   border-bottom: solid 1px #e4e4e4;
 }
+.menu-main .ui-bar {
+  margin-left: 0;
+  margin-right: 0;
+}
 /*
 * A 
 * The Dark (Black as Night) swatch, used for screens with black BGs
@@ -357,6 +482,42 @@ a {
 * B
 * The Dark (Textured Grey) swatch, used for title bars, dark btns on palletes
 */
+.ui-btn-up-b {
+  border: solid 1px #000000;
+  background: #434748;
+  font-weight: bold;
+  color: #999999;
+  text-shadow: rgba(0, 0, 0, 0.5) 0px 1px 1px;
+  font-size: 12px;
+  text-decoration: none;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#434748), to(#26282a));
+  /* Saf4+, Chrome */
+
+  background-image: -webkit-linear-gradient(top, #434748, #26282a);
+  /* Chrome 10+, Saf5.1+ */
+
+  background-image: -moz-linear-gradient(top, #434748, #26282a);
+  /* FF3.6 */
+
+  background-image: -ms-linear-gradient(top, #434748, #26282a);
+  /* IE10 */
+
+  background-image: -o-linear-gradient(top, #434748, #26282a);
+  /* Opera 11.10+ */
+
+  background-image: linear-gradient(top, #434748, #26282a);
+}
+.ui-btn-up-b .ui-btn-inner {
+  border: none;
+}
+.ui-btn-up-b a.ui-link-inherit {
+  color: #999999;
+}
+.ui-btn-up-b.ui-shadow {
+  -moz-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2);
+  -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2);
+}
 /*
 * C
 * - Standard light BG swatch, has subtle gray bg texture, used mainly for light colored dialog style views
@@ -466,12 +627,23 @@ a {
   color: #333333;
 }
 .ui-bar-e {
-  margin: 0;
-  border: none;
-  border-top: solid 1px #ffffff;
-}
-.ui-bar-e .ui-btn-inner {
-  padding: 8px 25px;
+  background: #ffff00;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#ffff00), to(#ffe400));
+  /* Saf4+, Chrome */
+
+  background-image: -webkit-linear-gradient(top, #ffff00, #ffe400);
+  /* Chrome 10+, Saf5.1+ */
+
+  background-image: -moz-linear-gradient(top, #ffff00, #ffe400);
+  /* FF3.6 */
+
+  background-image: -ms-linear-gradient(top, #ffff00, #ffe400);
+  /* IE10 */
+
+  background-image: -o-linear-gradient(top, #ffff00, #ffe400);
+  /* Opera 11.10+ */
+
+  background-image: linear-gradient(top, #ffff00, #ffe400);
 }
 /* Android HDPI - Pixel ratio of 1.5. Background-size is 1/1.5 = 66.67% (of a 150px image) */
 @media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5) {
