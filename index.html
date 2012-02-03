@@ -671,8 +671,8 @@
             <span class="ui-bar-inner">
             <span class="username"><%= user.get('username') %></span>
                <div class=" ui-btn-right">
-                <% if (logged_in) {%>
-                         <button data-inline="true" data-icon="plus" data-iconpos="right" data-corners="false" data-shadow="false" class="follow">Follow</button>
+                <% if (!logged_in) {%>
+                    <button data-inline="true" data-icon="plus" data-iconpos="right" data-corners="false" data-shadow="false" class="follow">Follow</button>
                 <%}else{%>
                     <% if (user.get('username') == auth_username){%>
                         <button data-inline="true" disabled="true" data-icon="check" data-iconpos="right" data-corners="false" data-shadow="false" class="thats-me">That&apos;s Me</button>
