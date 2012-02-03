@@ -686,31 +686,31 @@
                 <%}%>
                 </div>
             </div>
-        </div>
+        
   
         <div class="user-info-block">  
-            <div class="user-icon-big">
-                <a href="#/user/profile/?username=<%= user.get('username') %>" data-ajax="false">
-                    <img class="user-icon-big" src="http://sna.pr/avatars/<%= user.get('username') %>?size=large" alt="<%= user.get('username') %> avatar" />
+            <div class="user-icon-left">
+                <a class="user-profile-icon" href="#/user/profile/?username=<%= user.get('username') %>" data-ajax="false">
+                    <div class="user-icon-big" style="background-image: url('http://sna.pr/avatars/<%= user.get('username') %>?size=large')"></div>
                 </a>
             </div>
          
-            <div class="ui-grid-b">
+            <div class="ui-grid-b user-stats">
                 <div class="ui-block-a">
                     <a data-ajax="false" data-transition="slide" href="#/feed/?username=<%= user.get('username') %>">
-                        <span class="big-number"><%= user.get('photo_count') %></span><br />
+                        <span class="big-number"><%= user.get('photo_count') %></span>
                         <span>Photos</span>
                     </a>
                 </div>
                 <div class="ui-block-b">
                     <a href="#/user/followers/?username=<%= user.get('username') %>" data-ajax="false">
-                        <span class="big-number"><%= user.get('followers') %></span><br />
+                        <span class="big-number"><%= user.get('followers') %></span>
                         <span>Followers</span>
                     </a>
                 </div>
                 <div class="ui-block-c">
                     <a href="#/user/following/?username=<%= user.get('username') %>" data-ajax="false">
-                        <span class="big-number"><%= user.get('following') %></span><br />
+                        <span class="big-number"><%= user.get('following') %></span>
                         <span>Following</span>
                     </a>
                 </div>

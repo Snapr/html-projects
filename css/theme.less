@@ -265,6 +265,12 @@ a{
         
     }
     
+    .ui-btn-right{
+        position: absolute;
+        right: 4px;
+        top: 6px;
+    }
+    
     &.top-no-arrow{
         .corner-top (@corner-page-element-rounded); 
     }
@@ -519,12 +525,75 @@ a{
 }
 
 .feed-user-header{
+    position: relative;
+    background-color: @color-bg-neutral-light-tint;
+    background-image: @gfx-bg-light-texture;
+    height: 100px;
+    overflow: hidden;
+    margin-left: -@padding-page-inset;
+    margin-right: -@padding-page-inset;
+    .corner-top (@corner-page-element-rounded);
+    .box-shadow(inset 5px 0 20px rgba(0, 0, 0, 0.2));
+    
     .ui-bar{
+        margin-left: 0;
+        margin-right: 0;
         padding-left: @size-large-avatar + @padding-page-inset;
     }
     .user-info-block{
-        margin-left: @size-large-avatar + @padding-page-inset;
+        margin-left: @size-large-avatar;  
     }
+    .user-icon-left{
+        position:absolute;
+        top: 0;
+        left: 0;
+        
+        width: @size-large-avatar;
+        height: @size-large-avatar;
+        .user-profile-icon,
+        .user-icon-big{
+            .corner-tl (@corner-page-element-rounded);
+            overflow:hidden;
+        }
+        
+    }
+    
+    .user-stats{
+         text-align: center;
+         color: @color-txt-medium-on-light ;
+         text-transform: lowercase;
+         font-size: @txt-size-small;
+
+         .ui-link{
+            display: block;
+            min-height: 64px;
+         }
+         
+        .big-number{
+            display: block;
+            font-size: @txt-size-big-number;
+            font-family: @txt-font-special;
+            padding: 10px 0 0 0;
+           
+
+        }
+    }
+    
+    .ui-grid-b{
+        .ui-block-a{
+                margin-left: -1px;
+        }
+        .ui-block-b{
+            border-left: @border-medium-on-light;
+            border-right: @border-medium-on-light;
+        }
+        .ui-block-c{
+             margin-right: -1px;
+        }
+    }
+    
+    
+    
     
 }
 
@@ -603,11 +672,17 @@ a{
 
 .ui-body-d {
     background: none;
+    color: @color-txt-medium-on-light;
     
     div[data-role="content"]{
         background-color: @color-bg-light;
         background-image: none;
         border-radius: @corner-page-element-rounded;
+    }
+    
+    .ui-link {
+        color: @color-txt-dark-on-light;
+        font-weight: normal;
     }
     
 }

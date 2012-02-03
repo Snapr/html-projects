@@ -278,6 +278,11 @@ a {
   font-style: normal;
   font-family: 'MuseoSansRounded700', Helvetica, Arial, sans-serif;
 }
+.ui-bar .ui-btn-right {
+  position: absolute;
+  right: 4px;
+  top: 6px;
+}
 .ui-bar.top-no-arrow {
   -moz-border-radius-topleft: 8px;
   -webkit-border-top-left-radius: 8px;
@@ -552,11 +557,70 @@ a {
   /* I do not know why it wants this margin.. but it does */
 
 }
+.feed-user-header {
+  position: relative;
+  background-color: #d7d7d5;
+  background-image: url('../gfx/bg-texture-light.gif');
+  height: 100px;
+  overflow: hidden;
+  margin-left: -8px;
+  margin-right: -8px;
+  -moz-border-radius-topleft: 8px;
+  -webkit-border-top-left-radius: 8px;
+  border-top-left-radius: 8px;
+  -moz-border-radius-topright: 8px;
+  -webkit-border-top-right-radius: 8px;
+  border-top-right-radius: 8px;
+  -moz-box-shadow: inset 5px 0 20px rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: inset 5px 0 20px rgba(0, 0, 0, 0.2);
+  box-shadow: inset 5px 0 20px rgba(0, 0, 0, 0.2);
+}
 .feed-user-header .ui-bar {
+  margin-left: 0;
+  margin-right: 0;
   padding-left: 108px;
 }
 .feed-user-header .user-info-block {
-  margin-left: 108px;
+  margin-left: 100px;
+}
+.feed-user-header .user-icon-left {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100px;
+  height: 100px;
+}
+.feed-user-header .user-icon-left .user-profile-icon, .feed-user-header .user-icon-left .user-icon-big {
+  -moz-border-radius-topleft: 8px;
+  -webkit-border-top-left-radius: 8px;
+  border-top-left-radius: 8px;
+  overflow: hidden;
+}
+.feed-user-header .user-stats {
+  text-align: center;
+  color: #666666;
+  text-transform: lowercase;
+  font-size: 12px;
+}
+.feed-user-header .user-stats .ui-link {
+  display: block;
+  min-height: 64px;
+}
+.feed-user-header .user-stats .big-number {
+  display: block;
+  font-size: 24px;
+  font-family: 'MuseoSansRounded700', Helvetica, Arial, sans-serif;
+  padding: 10px 0 0 0;
+}
+.feed-user-header .ui-grid-b .ui-block-a {
+  margin-left: -1px;
+}
+.feed-user-header .ui-grid-b .ui-block-b {
+  border-left: solid 1px #e4e4e4;
+  border-right: solid 1px #e4e4e4;
+}
+.feed-user-header .ui-grid-b .ui-block-c {
+  margin-right: -1px;
 }
 /*
 * A 
@@ -627,11 +691,16 @@ a {
 }
 .ui-body-d {
   background: none;
+  color: #666666;
 }
 .ui-body-d div[data-role="content"] {
   background-color: #ffffff;
   background-image: none;
   border-radius: 8px;
+}
+.ui-body-d .ui-link {
+  color: #333333;
+  font-weight: normal;
 }
 /*
 * E
