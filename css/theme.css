@@ -76,6 +76,18 @@ body {
 a {
   text-decoration: none;
 }
+.username {
+  font-family: 'MuseoSansRounded700', Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  color: #333333;
+}
+.user-icon-small {
+  width: 34px;
+  height: 34px;
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+}
 .user-icon-big {
   width: 100px;
   height: 100px;
@@ -556,6 +568,7 @@ a {
   margin-top: 8px;
   /* I do not know why it wants this margin.. but it does */
 
+  margin-bottom: 8px;
 }
 .feed-user-header {
   position: relative;
@@ -621,6 +634,26 @@ a {
 }
 .feed-user-header .ui-grid-b .ui-block-c {
   margin-right: -1px;
+}
+.image-item-block .image-item-topbar {
+  height: 34px;
+  margin-bottom: 8px;
+  vertical-align: middle;
+  font-size: 12px;
+  color: #999999;
+  line-height: 34px;
+}
+.image-item-block .image-item-topbar .user-icon-link {
+  vertical-align: middle;
+  height: 34px;
+  display: inline-block;
+  width: 34px;
+}
+.image-item-block .image-item-topbar .ui-link, .image-item-block .image-item-topbar span {
+  height: 34px;
+  line-height: 34px;
+  vertical-align: middle;
+  display: inline-block;
 }
 /*
 * A 
@@ -698,7 +731,7 @@ a {
   background-image: none;
   border-radius: 8px;
 }
-.ui-body-d .ui-link {
+.ui-body-d .ui-link, .ui-body-d .ui-link:visited {
   color: #333333;
   font-weight: normal;
 }
