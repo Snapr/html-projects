@@ -231,6 +231,19 @@ a {
   font-size: 12px;
 }
 /*
+* Dialogs - Stripping a lot of the jMob stuff
+*/
+.ui-dialog .ui-content, .ui-dialog .ui-header {
+  margin: 0;
+  padding: 8px;
+  width: auto;
+}
+.ui-overlay-shadow {
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+/*
 * UI Components - Custom Stylz 
 */
 /* Title Bars that pop up all over the place */
