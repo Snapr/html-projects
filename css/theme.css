@@ -158,6 +158,14 @@ a {
   text-shadow: #000000 0px -1px 1px;
   height: 46px;
   overflow: hidden;
+  /* The main Icon Only Buttons */
+
+}
+.ui-header .ui-title {
+  font-family: 'MuseoSansRounded700', Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  font-weight: normal;
+  text-transform: lowercase;
 }
 .ui-header .ui-btn {
   font-size: 12px;
@@ -176,11 +184,34 @@ a {
   padding-top: 9px;
   padding-bottom: 7px;
 }
-.ui-header .ui-title {
-  font-family: 'MuseoSansRounded700', Helvetica, Arial, sans-serif;
-  font-size: 16px;
-  font-weight: normal;
-  text-transform: lowercase;
+.ui-header .ui-btn-icon-notext {
+  border: none;
+  background: none;
+  width: 40px;
+  height: 40px;
+  top: -6px;
+}
+.ui-header .ui-btn-icon-notext .ui-btn-inner {
+  padding: 0;
+}
+.ui-header .ui-btn-icon-notext.ui-shadow {
+  box-shadow: none;
+}
+.ui-header .ui-btn-icon-notext .ui-icon {
+  width: 40px;
+  height: 40px;
+  background: none;
+  background-image: url('../gfx/bar-icons.png');
+  background-position: 0 0;
+}
+.ui-header .ui-btn-icon-notext .ui-icon.ui-icon-shadow {
+  box-shadow: none;
+}
+.ui-header .ui-btn-icon-notext .ui-icon-search {
+  background-position: 0 0;
+}
+.ui-header .ui-btn-icon-notext .ui-icon-home {
+  background-position: 0 -40px;
 }
 .ui-header .ui-controlgroup {
   display: inline-block;

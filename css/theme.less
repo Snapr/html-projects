@@ -129,6 +129,13 @@ a{
     height: @size-topbar-height;
     overflow: hidden;
     
+    .ui-title{
+        font-family: @txt-font-special;
+        font-size: @txt-size-page-heading;
+        font-weight: normal;
+        text-transform: lowercase;
+    }
+    
     .ui-btn{
         font-size:@txt-size-small;
     }
@@ -150,12 +157,34 @@ a{
         padding-bottom: 7px;
     }
     
-    .ui-title{
-        font-family: @txt-font-special;
-        font-size: @txt-size-page-heading;
-        font-weight: normal;
-        text-transform: lowercase;
+    
+    /* The main Icon Only Buttons */
+    .ui-btn-icon-notext{
+        border: none;
+        background: none;
+        width: 40px;
+        height: 40px;
+        top: -6px;
+        .ui-btn-inner {
+        padding: 0;
+        }
+        &.ui-shadow{
+            box-shadow: none;
+        }
+        .ui-icon{
+            width: 40px;
+            height: 40px;
+            background: none;
+            background-image: url('../gfx/bar-icons.png');
+            background-position: 0 0;
+            &.ui-icon-shadow{
+                box-shadow: none;
+            }
+        }
+        .ui-icon-search{ background-position: 0 0;}
+        .ui-icon-home{ background-position: 0 -40px;}
     }
+    
     
     .ui-controlgroup{
         display: inline-block;
