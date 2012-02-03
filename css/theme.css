@@ -76,6 +76,10 @@ body {
 a {
   text-decoration: none;
 }
+.user-icon-big {
+  width: 100px;
+  height: 100px;
+}
 /*
 * JQuery Mob - Custom 
 *   Some basics
@@ -183,13 +187,14 @@ a {
 .ui-header .ui-btn-inner {
   padding-top: 9px;
   padding-bottom: 7px;
+  border: none;
 }
 .ui-header .ui-btn-icon-notext {
   border: none;
   background: none;
   width: 40px;
   height: 40px;
-  top: -6px;
+  top: -4px;
 }
 .ui-header .ui-btn-icon-notext .ui-btn-inner {
   padding: 0;
@@ -233,11 +238,32 @@ a {
   border: none;
   border-top: solid 1px #ffffff;
   margin: 0 -8px;
+  padding: 8px 8px;
 }
-.ui-bar .ui-btn-inner, .ui-bar h4 {
-  padding: 8px 25px;
-  font-style: Helvetica, Arial, sans-serif;
+.ui-bar .ui-btn-inner, .ui-bar h4, .ui-bar .ui-bar-inner {
+  font-size: 15px;
   font-weight: normal;
+  font-family: Helvetica, Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  text-transform: lowercase;
+}
+.ui-bar .ui-btn-inner em,
+.ui-bar h4 em,
+.ui-bar .ui-bar-inner em,
+.ui-bar .ui-btn-inner .ui-btn,
+.ui-bar h4 .ui-btn,
+.ui-bar .ui-bar-inner .ui-btn,
+.ui-bar .ui-btn-inner .ui-btn-hidden,
+.ui-bar h4 .ui-btn-hidden,
+.ui-bar .ui-bar-inner .ui-btn-hidden,
+.ui-bar .ui-btn-inner .username,
+.ui-bar h4 .username,
+.ui-bar .ui-bar-inner .username {
+  text-transform: none;
+  font-size: 16px;
+  font-style: normal;
+  font-family: 'MuseoSansRounded700', Helvetica, Arial, sans-serif;
 }
 .ui-bar.top-no-arrow {
   -moz-border-radius-topleft: 8px;
@@ -506,6 +532,20 @@ a {
   margin-right: 0;
 }
 /*
+* Feed - Custom 
+*/
+.feed-header {
+  margin-top: 8px;
+  /* I do not know why it wants this margin.. but it does */
+
+}
+.feed-user-header .ui-bar {
+  padding-left: 108px;
+}
+.feed-user-header .user-info-block {
+  margin-left: 108px;
+}
+/*
 * A 
 * The Dark (Black as Night) swatch, used for screens with black BGs
 */
@@ -557,7 +597,7 @@ a {
   background: none;
 }
 .ui-body-c div[data-role="content"] {
-  background-color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.8);
   background-image: url('../gfx/bg-texture-light.gif');
   border-radius: 8px;
 }
@@ -577,7 +617,7 @@ a {
 }
 .ui-body-d div[data-role="content"] {
   background-color: #ffffff;
-  background-image: url('../gfx/bg-texture-light.gif');
+  background-image: none;
   border-radius: 8px;
 }
 /*

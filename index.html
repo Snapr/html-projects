@@ -518,7 +518,6 @@
     <div id="feed" data-role="page" data-theme="d">
         <div data-role="header" data-theme="b">
             <a data-rel="back" data-icon="arrow-l">Back</a>
-            
             <div class="ui-grid-b">
                 <div class="ui-block-a">
                 </div>
@@ -543,8 +542,9 @@
                 <ul class="feed-upload-list" data-role="listview">
                 </ul>
             </div>
-            <div class="feed-header ui-bar-e ui-bar top-no-arrow">
+            <div class="feed-header">
             </div>
+           
             <div id="feed-images" class="gallery">
                 
             </div>
@@ -650,39 +650,48 @@
 
     <!-- FEED TITLE BAR -->
     <script id="feed-header-template" type="text/template">
-    <h4>
-    <% if (query_data.keywords){ %>
-        Search for <em class="search-term"><%= query_data.keywords %></em>
-    <%}else if (query_data.username){ %>
-        Snaps by <em><%= query_data.username %></em>
-    <%}else if (query_data.spot){%>
-        @ <em><%= query_data.spot %></em>
-    <%}%>
-    </h4>
+    <div class="ui-bar-e ui-bar top-no-arrow">
+        <h4>
+        <% if (query_data.keywords){ %>
+            Search for <em class="search-term"><%= query_data.keywords %></em>
+        <%}else if (query_data.username){ %>
+            Snaps by <em><%= query_data.username %></em>
+        <%}else if (query_data.spot){%>
+            @ <em><%= query_data.spot %></em>
+        <%}%>
+        </h4>
+    </div>
+    
     </script>
 
     <!-- USER HEADER -->
     <script id="user-header-template" type="text/template">
-    <div class="ui-body-c feed-user-header">
-        <div class="ui-bar-e feed-follow-bar">
+    <div class="feed-user-header">
+        <div class="ui-bar-e feed-follow-bar ui-bar top-no-arrow">
+            <span class="ui-bar-inner">
             <span class="username"><%= user.get('username') %></span>
-            <% if (user.get('username') == auth_username){%>
-                <button data-inline="true" disabled="true" data-icon="check" data-iconpos="right" data-corners="false" data-shadow="false" class="ui-btn-right">That&apos;s Me</button>
-            <%}else{%>
-                <% if (user.get('relationship').you_follow) {%>
-                <button data-inline="true" data-icon="minus" data-iconpos="right" data-corners="false" data-shadow="false" class="unfollow ui-btn-right">Unfollow</button>
+               <div class=" ui-btn-right">
+                <% if (logged_in) {%>
+                         <button data-inline="true" data-icon="plus" data-iconpos="right" data-corners="false" data-shadow="false" class="follow">Follow</button>
                 <%}else{%>
-                <button data-inline="true" data-icon="plus" data-iconpos="right" data-corners="false" data-shadow="false" class="follow ui-btn-right">Follow</button>
+                    <% if (user.get('username') == auth_username){%>
+                        <button data-inline="true" disabled="true" data-icon="check" data-iconpos="right" data-corners="false" data-shadow="false" class="thats-me">That&apos;s Me</button>
+                    <%}else{%>
+                        <% if (user.get('relationship').you_follow) {%>
+                        <button data-inline="true" data-icon="minus" data-iconpos="right" data-corners="false" data-shadow="false" class="unfollow">Unfollow</button>
+                        <%}else{%>
+                        <button data-inline="true" data-icon="plus" data-iconpos="right" data-corners="false" data-shadow="false" class="follow">Follow</button>
+                        <%}%>
+                    <%}%>
                 <%}%>
-            <%}%>
-            
+                </div>
+            </div>
         </div>
   
-            
-        <div class="big-icon-margin-left">  
+        <div class="user-info-block">  
             <div class="user-icon-big">
                 <a href="#/user/profile/?username=<%= user.get('username') %>" data-ajax="false">
-                    <img height="100px" width="100px" src="http://sna.pr/avatars/<%= user.get('username') %>?size=large" alt="<%= user.get('username') %> avatar" />
+                    <img class="user-icon-big" src="http://sna.pr/avatars/<%= user.get('username') %>?size=large" alt="<%= user.get('username') %> avatar" />
                 </a>
             </div>
          

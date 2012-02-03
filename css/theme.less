@@ -63,6 +63,11 @@ a{
     text-decoration: none;
 }
 
+.user-icon-big{
+    width: @size-large-avatar;
+    height: @size-large-avatar;
+}
+
 /*
 * JQuery Mob - Custom 
 *   Some basics
@@ -155,6 +160,7 @@ a{
     .ui-btn-inner{
         padding-top: 9px;
         padding-bottom: 7px;
+        border: none;
     }
     
     
@@ -164,7 +170,7 @@ a{
         background: none;
         width: 40px;
         height: 40px;
-        top: -6px;
+        top: -4px;
         .ui-btn-inner {
         padding: 0;
         }
@@ -219,12 +225,28 @@ a{
     border:none;
     border-top: @border-light-on-light;
     margin: 0 -@padding-page-inset;
+    padding: 8px @padding-page-inset;    
 
     .ui-btn-inner,
-    h4{
-        padding: 8px 25px;
-        font-style: @txt-font-base;
+    h4,
+    .ui-bar-inner{
+        font-size: @txt-size-base;
         font-weight: normal;
+        font-family: @txt-font-base;
+        margin: 0;
+        padding: 0;
+        text-transform: lowercase;
+        
+        em,
+        .ui-btn,
+        .ui-btn-hidden,
+        .username{
+            text-transform: none;
+            font-size: @txt-size-bar-heading;
+            font-style: normal;
+            font-family: @txt-font-special;
+        }
+        
     }
     
     &.top-no-arrow{
@@ -472,6 +494,23 @@ a{
 
 
 
+/*
+* Feed - Custom 
+*/
+
+.feed-header{
+    margin-top: 8px; /* I do not know why it wants this margin.. but it does */
+}
+
+.feed-user-header{
+    .ui-bar{
+        padding-left: @size-large-avatar + @padding-page-inset;
+    }
+    .user-info-block{
+        margin-left: @size-large-avatar + @padding-page-inset;
+    }
+    
+}
 
 /*
 * A 
@@ -525,7 +564,7 @@ a{
     background: none;
     
     div[data-role="content"]{
-        background-color: @color-bg-light;
+        background-color: @color-bg-light-tint;
         background-image: @gfx-bg-light-texture;
         border-radius: @corner-page-element-rounded;
     }
@@ -551,7 +590,7 @@ a{
     
     div[data-role="content"]{
         background-color: @color-bg-light;
-        background-image: @gfx-bg-light-texture;
+        background-image: none;
         border-radius: @corner-page-element-rounded;
     }
     
