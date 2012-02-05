@@ -345,7 +345,8 @@ a{
 * Image Views - Custom 
 */
 
-.thumbs-grid-med{
+.thumbs-grid-med,
+.grid #feed-images{
     margin: 0 -@padding-page-inset; 
     padding: @padding-image-grid 0 0 @padding-image-grid; 
     
@@ -569,8 +570,26 @@ a{
             .corner-tl (@corner-page-element-rounded);
             overflow:hidden;
         }
+        .user-icon-big{
+            background-color: @color-bg-neutral-light-tint;
+            
+        }
+         .icon-overlay-info{
+           background-image: url('../gfx/shiny-avatar-info.png'); 
+           width: @size-large-avatar;
+           height: @size-large-avatar;
+           display: block; 
+           .corner-tl (@corner-page-element-rounded);
+           overflow:hidden;
+           position: absolute;
+           top: 0;
+           left: 0;  
+        }
+       
         
     }
+    
+    
     .user-stats{
          text-align: center;
          color: @color-txt-medium-on-light ;
@@ -711,6 +730,8 @@ a{
         background-color: @color-bg-light;
         background-image: none;
         border-radius: @corner-page-element-rounded;
+        /*min-height: 480px - @size-topbar-height - @padding-page-inset - @padding-page-inset;*/
+        min-height: 409px;
     }
     
     .ui-link,
