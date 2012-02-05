@@ -362,17 +362,17 @@ a {
 /*
 * Image Views - Custom 
 */
-.thumbs-grid-med {
+.thumbs-grid-med, .grid #feed-images {
   margin: 0 -8px;
   padding: 4px 0 0 4px;
 }
-.thumbs-grid-med .image-link {
+.thumbs-grid-med .image-link, .grid #feed-images .image-link {
   display: block;
   float: left;
   padding: 0;
   margin: 0 4px 4px 0;
 }
-.thumbs-grid-med .thumb-image {
+.thumbs-grid-med .thumb-image, .grid #feed-images .thumb-image {
   width: 101px;
   height: 101px;
   padding: 0;
@@ -535,7 +535,7 @@ a {
   font-size: 12px;
   background: transparent;
   color: #666666;
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: #f7f7f7;
 }
 .menu-main .ui-grid-b .ui-btn .ui-btn-inner {
   padding: 78px 10px 13px 10px;
@@ -608,6 +608,22 @@ a {
   -webkit-border-top-left-radius: 8px;
   border-top-left-radius: 8px;
   overflow: hidden;
+}
+.feed-user-header .user-icon-left .user-icon-big {
+  background-color: #d7d7d5;
+}
+.feed-user-header .user-icon-left .icon-overlay-info {
+  background-image: url('../gfx/shiny-avatar-info.png');
+  width: 100px;
+  height: 100px;
+  display: block;
+  -moz-border-radius-topleft: 8px;
+  -webkit-border-top-left-radius: 8px;
+  border-top-left-radius: 8px;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 .feed-user-header .user-stats {
   text-align: center;
@@ -707,7 +723,7 @@ a {
   background: none;
 }
 .ui-body-c div[data-role="content"] {
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: #f7f7f7;
   background-image: url('../gfx/bg-texture-light.gif');
   border-radius: 8px;
 }
@@ -730,6 +746,9 @@ a {
   background-color: #ffffff;
   background-image: none;
   border-radius: 8px;
+  /*min-height: 480px - @size-topbar-height - @padding-page-inset - @padding-page-inset;*/
+
+  min-height: 409px;
 }
 .ui-body-d .ui-link, .ui-body-d .ui-link:visited {
   color: #333333;
