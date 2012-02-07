@@ -33,7 +33,9 @@ html {
     -webkit-user-select: text;
 }
 
-
+textarea{
+    resize:none;
+}
 
 /*
 * jQuery Mobile Framework
@@ -648,7 +650,11 @@ a{
     }
     
     .image-actions{
-        .ui-btn{
+        .ui-btn,
+        .ui-btn-hover-d,
+        .ui-btn-down-d,
+        .ui-btn-active-d,{
+            background: none;
             border: none;
             font-size: @txt-size-small;
             font-family: @txt-font-base;
@@ -674,6 +680,18 @@ a{
         .ui-icon-action-heart{background-position: 0 0}
         .ui-icon-action-comment{background-position: 0 -40px}
         
+        .selected,
+        .ui-btn-hover-d,
+        .ui-btn-down-d,
+        .ui-btn-active-d{
+            .ui-icon-action-heart{background-position: -40px 0}
+            .ui-icon-action-comment{background-position: -40px -40px}
+        }
+        
+    }
+    
+    .comment-area{
+        display: none;
     }
 
 }

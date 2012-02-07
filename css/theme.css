@@ -23,6 +23,9 @@ html {
 .image-caption, user-details {
   -webkit-user-select: text;
 }
+textarea {
+  resize: none;
+}
 /*
 * jQuery Mobile Framework
 * Copyright (c) jQuery Project
@@ -671,7 +674,11 @@ a {
   vertical-align: middle;
   display: inline-block;
 }
-.image-item-block .image-actions .ui-btn {
+.image-item-block .image-actions .ui-btn,
+.image-item-block .image-actions .ui-btn-hover-d,
+.image-item-block .image-actions .ui-btn-down-d,
+.image-item-block .image-actions .ui-btn-active-d {
+  background: none;
   border: none;
   font-size: 12px;
   font-family: Helvetica, Arial, sans-serif;
@@ -699,6 +706,21 @@ a {
 }
 .image-item-block .image-actions .ui-icon-action-comment {
   background-position: 0 -40px;
+}
+.image-item-block .image-actions .selected .ui-icon-action-heart,
+.image-item-block .image-actions .ui-btn-hover-d .ui-icon-action-heart,
+.image-item-block .image-actions .ui-btn-down-d .ui-icon-action-heart,
+.image-item-block .image-actions .ui-btn-active-d .ui-icon-action-heart {
+  background-position: -40px 0;
+}
+.image-item-block .image-actions .selected .ui-icon-action-comment,
+.image-item-block .image-actions .ui-btn-hover-d .ui-icon-action-comment,
+.image-item-block .image-actions .ui-btn-down-d .ui-icon-action-comment,
+.image-item-block .image-actions .ui-btn-active-d .ui-icon-action-comment {
+  background-position: -40px -40px;
+}
+.image-item-block .comment-area {
+  display: none;
 }
 /*
 * A 

@@ -7,6 +7,7 @@ snapr.views.feed_li = Backbone.View.extend({
     events: {
         "expand .reactions-button": "load_reactions",
         "click .favorite-button": "favorite",
+        "click .comment-button": "toggle_comment_form",
         "click .goto-map": "goto_map",
         "click .goto-spot": "goto_spot",
         "submit .comment-form": "comment"
@@ -76,17 +77,24 @@ snapr.views.feed_li = Backbone.View.extend({
     {
         if (this.model.get('favorite'))
         {
-            $(this.el).find('.favorite-button').addClass('ui-btn-up-e').removeClass('ui-btn-up-c');
+            $(this.el).find('.favorite-button').addClass('selected');
         }
         else
         {
-            $(this.el).find('.favorite-button').addClass('ui-btn-up-c').removeClass('ui-btn-up-e');
+            $(this.el).find('.favorite-button').removeClass('selected');
         }
         // if we have already loaded reactions, re-load them
         if (this.reactions)
         {
             this.load_reactions( true );
         }
+    },
+    
+    toggle_comment_form: function()
+    {
+        $(this.el).find('.comment-button').toggleClass('selected');
+        $(this.el).find('.comment-area').toggle();
+       
     },
 
     goto_map: function()
