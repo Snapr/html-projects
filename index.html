@@ -598,23 +598,20 @@
 
                 <div data-role="button" data-icon="action-heart" data-inline="true" data-iconpos="left" class="favorite-button <% if(item.get('favorite')){ %> selected <% }%>" > <% if (parseInt(item.get('favorite_count')) > 0){ %> &times; <%= item.get('favorite_count')%><%}%></div>
                 
-                <div data-role="button" data-icon="action-comment" data-inline="true" data-iconpos="left" class="comment-button <% if(item.get('favorite')){ %> selected <% }%>" > &times; 3</div>
+                <div data-role="button" data-icon="action-comment" data-inline="true" data-iconpos="left" class="comment-button" > &times; 3</div>
+                
+                <div data-role="button" data-icon="action-comment" data-inline="true" data-iconpos="left" class="comment-button" > <% if (parseInt(item.get('comments')) > 0){ %> &times; <%= item.get('comments')%><%}%></div>
 
             </div>
 
             
             <% if (parseInt(item.get('comments')) + parseInt(item.get('favorite_count')) > 0){ %>
-            <div data-role="collapsible" data-collapsed="true" class="reactions-button">
-                <h3><%= item.get('comments') %> comments and <%= item.get('favorite_count') %> favorites</h3>
+            <div data-role="collapsible" data-collapsed="true" data-inset="true" class="reactions-button">
+                <h3>Show All</h3>
                 <ul data-inset="true">
                 </ul>
             </div>
-            <%}else{%>
-            <div data-role="collapsible" data-collapsed="true" class="reactions-button" style="display:none;">
-                <h3><%= item.get('comments') %> comments and <%= item.get('favorite_count') %> favorites</h3>
-                <ul data-inset="true">
-                </ul>
-            </div>
+            
             <%}%>
             <div data-role="collapsible" data-collapsed="true" class="comment-area">
                 <h4>Comment</h4>
