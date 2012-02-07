@@ -103,7 +103,7 @@ snapr.views.feed_li = Backbone.View.extend({
        $(this.el).find('.reactions-button').toggleClass('selected');
        $(this.el).find('.reactions-list').toggle();
        
-       if (this.reactions)
+       if (!this.reactions)
        {
            this.load_reactions( false );
        }
