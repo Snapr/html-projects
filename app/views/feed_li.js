@@ -30,7 +30,7 @@ snapr.views.feed_li = Backbone.View.extend({
         {
             this.reactions = new snapr.views.reactions({
                 id:this.model.id,
-                el:$(this.el).find('ul')
+                el:$(this.el).find('.reactions-list')
             });
         }
         else

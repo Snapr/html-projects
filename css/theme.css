@@ -671,6 +671,35 @@ a {
   vertical-align: middle;
   display: inline-block;
 }
+.image-item-block .image-actions .ui-btn {
+  border: none;
+  font-size: 12px;
+  font-family: Helvetica, Arial, sans-serif;
+  color: #666666;
+}
+.image-item-block .image-actions .ui-btn-inner {
+  padding: 0 10px 0 30px;
+}
+.image-item-block .image-actions .ui-icon {
+  background: none;
+  width: 40px;
+  height: 40px;
+  margin-top: -20px;
+  margin-left: -10px;
+  background-image: url('../gfx/action-buttons-main.png');
+  -moz-border-radius: 0;
+  -webkit-border-radius: 0;
+  border-radius: 0;
+}
+.image-item-block .image-actions .ui-btn-text {
+  line-height: 40px;
+}
+.image-item-block .image-actions .ui-icon-action-heart {
+  background-position: 0 0;
+}
+.image-item-block .image-actions .ui-icon-action-comment {
+  background-position: 0 -40px;
+}
 /*
 * A 
 * The Dark (Black as Night) swatch, used for screens with black BGs

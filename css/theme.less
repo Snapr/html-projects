@@ -646,6 +646,35 @@ a{
         }
         
     }
+    
+    .image-actions{
+        .ui-btn{
+            border: none;
+            font-size: @txt-size-small;
+            font-family: @txt-font-base;
+            color: @color-txt-medium-on-light;
+        }
+        .ui-btn-inner{
+            padding: 0 10px 0 30px;
+        }
+        .ui-icon{
+            background: none;
+            width: 40px;
+            height: 40px;
+            margin-top: -20px;
+            margin-left: -10px;
+            background-image: url('../gfx/action-buttons-main.png');
+            .corner-all(0);
+        }
+        
+        .ui-btn-text{
+            line-height: 40px;
+        }
+        
+        .ui-icon-action-heart{background-position: 0 0}
+        .ui-icon-action-comment{background-position: 0 -40px}
+        
+    }
 
 }
 
