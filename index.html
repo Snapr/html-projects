@@ -548,9 +548,13 @@
             <div id="feed-images" class="gallery">
                 
             </div>
+            
+            <div class="feed-footer inline-footer">
+             <button class="more ui-btn-right">More</button>
+            </div>
         </div>
 
-        <button class="more ui-btn-right">More</button>
+       
 
     </div><!-- /page -->
 
@@ -590,9 +594,11 @@
                 <%}%>
             </div>
 
-            <div data-role="controlgroup" data-type="horizontal">
+            <div data-role="controlgroup" data-type="horizontal" class="image-actions">
 
-                <div data-role="button" data-icon="star" data-inline="true" data-iconpos="notext" class="favorite-button" <% if(item.get('favorite')){ %> data-theme="e" <% }%>></div>
+                <div data-role="button" data-icon="action-heart" data-inline="true" data-iconpos="left" class="favorite-button <% if(item.get('favorite')){ %> selected <% }%>" > <% if (parseInt(item.get('favorite_count')) > 0){ %> &times; <%= item.get('favorite_count')%><%}%></div>
+                
+                <div data-role="button" data-icon="action-comment" data-inline="true" data-iconpos="left" class="comment-button <% if(item.get('favorite')){ %> selected <% }%>" > &times; 3</div>
 
             </div>
 
