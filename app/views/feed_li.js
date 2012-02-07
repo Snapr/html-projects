@@ -5,7 +5,8 @@ snapr.views.feed_li = Backbone.View.extend({
     className: "feed-li",
 
     events: {
-        "expand .reactions-button": "load_reactions",
+        //"click .reactions-button": "load_reactions",
+        "click .reactions-button": "toggle_reactions",
         "click .favorite-button": "favorite",
         "click .comment-button": "toggle_comment_form",
         "click .goto-map": "goto_map",
@@ -95,6 +96,18 @@ snapr.views.feed_li = Backbone.View.extend({
         $(this.el).find('.comment-button').toggleClass('selected');
         $(this.el).find('.comment-area').toggle();
        
+    },
+    
+    toggle_reactions: function()
+    {
+       $(this.el).find('.reactions-button').toggleClass('selected');
+       $(this.el).find('.reactions-list').toggle();
+       
+       if (this.reactions)
+       {
+           this.load_reactions( false );
+       }
+
     },
 
     goto_map: function()

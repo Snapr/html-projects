@@ -649,7 +649,14 @@ a{
         
     }
     
+    .image-item-base{
+        position: relative;
+    }
+    
     .image-actions{
+        margin-top: 8px;
+        margin-bottom: 8px;
+    
         .ui-btn,
         .ui-btn-hover-d,
         .ui-btn-down-d,
@@ -688,6 +695,42 @@ a{
             .ui-icon-action-comment{background-position: -40px -40px}
         }
         
+        /* reactions btn off to the right */
+        .reactions-button{
+           position: absolute;
+           right: 0;
+           top: 0;
+           .ui-btn-inner{
+                padding: 0 36px 0 10px;
+           }
+            .ui-icon{ 
+                background-position: 0 -160px;
+            }
+            &.ui-btn-down-d,
+            &.ui-btn-hover-d,
+            &.ui-btn-active-d{ 
+                .ui-icon{
+                background-position: -40px -160px;
+                }
+            }
+            &.selected{ 
+            .ui-icon{ 
+                background-position: 0 -200px;
+            }
+            &.ui-btn-down-d,
+            &.ui-btn-hover-d,
+            &.ui-btn-active-d{
+                    .ui-icon{
+                    background-position: -40px -200px;
+                    }
+                }
+            }
+        }
+        
+    }
+    
+    .reactions-list{
+        display: none;
     }
     
     .comment-area{

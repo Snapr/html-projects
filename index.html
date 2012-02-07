@@ -593,38 +593,38 @@
                 </a>
                 <%}%>
             </div>
-
-            <div data-role="controlgroup" data-type="horizontal" class="image-actions">
-
-                <div data-role="button" data-icon="action-heart" data-inline="true" data-iconpos="left" class="favorite-button <% if(item.get('favorite')){ %> selected <% }%>" ><% if (parseInt(item.get('favorite_count')) > 0){ %>&times; <%= item.get('favorite_count')%><%}%></div>
-                
-                
-                
-                <div data-role="button" data-icon="action-comment" data-inline="true" data-iconpos="left" class="comment-button" ><% if (parseInt(item.get('comments')) > 0){ %>&times; <%= item.get('comments')%><%}%></div>
-
-            </div>
-
             
-            <% if (parseInt(item.get('comments')) + parseInt(item.get('favorite_count')) > 0){ %>
-            <div data-role="collapsible" data-collapsed="true" data-inset="true" class="reactions-button">
-                <h3>Show All</h3>
+            <div class="image-item-base">
+                <div data-role="controlgroup" data-type="horizontal" class="image-actions">
+
+                    <div data-role="button" data-icon="action-heart" data-inline="true" data-iconpos="left" class="favorite-button <% if(item.get('favorite')){ %> selected <% }%>" ><% if (parseInt(item.get('favorite_count')) > 0){ %>&times; <%= item.get('favorite_count')%><%}%></div>
+            
+            
+            
+                    <div data-role="button" data-icon="action-comment" data-inline="true" data-iconpos="left" class="comment-button" ><% if (parseInt(item.get('comments')) > 0){ %>&times; <%= item.get('comments')%><%}%></div>
+                    
+                     <% if (parseInt(item.get('comments')) + parseInt(item.get('favorite_count')) > 0){ %>
+                    <div data-role="button" data-icon="action-show-all" data-inline="true" data-iconpos="right" class="reactions-button" >Show All</div>
+                    <%}%>
+                </div>
+   
+              
                 <ul data-inset="true" class="reactions-list">
+                    Reactions..
                 </ul>
-            </div>
-            
-            <%}%>
-            
-            <div class="comment-area">
-                <div>
-                    <form action="javascript:void(0);" class="comment-form" accept-charset="utf-8">
-                        <textarea name="comment-<%= item.get('id') %>" placeholder="Comment" />
-                        <div class="ui-grid-b">
-                            <div class="ui-block-a"></div>
-                            <div class="ui-block-b"></div>
-                            <div class="ui-block-c"><input data-theme="e" type="submit" value="Send" /></div>
-                        
-                        </div>
-                    </form>
+        
+                <div class="comment-area">
+                    <div>
+                        <form action="javascript:void(0);" class="comment-form" accept-charset="utf-8">
+                            <textarea name="comment-<%= item.get('id') %>" placeholder="Comment" />
+                            <div class="ui-grid-b">
+                                <div class="ui-block-a"></div>
+                                <div class="ui-block-b"></div>
+                                <div class="ui-block-c"><input data-theme="e" type="submit" value="Send" /></div>
+                    
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
 
