@@ -173,13 +173,27 @@ snapr.views.feed_li = Backbone.View.extend({
     },
 
     update_counts: function()
-    {
-        // change the button text for the reactions button
-        $(this.el).find('.reactions-button h3 .ui-btn-text')
-            .text( this.model.get('comments') +
-                ' comments and ' +
-                this.model.get('favorite_count') +
-                ' favorites' );
+    {    
+        // change the button text for the favorite button
+        if (parseInt( this.model.get('favorite_count') ) > 0)
+        {
+        $(this.el).find('.favorite-button .ui-btn-text')
+            .text(' × ' + this.model.get('favorite_count')); 
+        }
+        else{
+            $(this.el).find('.favorite-button .ui-btn-text').text(' '); 
+        }  
+        
+         // change the button text for the comment button
+        if (parseInt( this.model.get('comments') ) > 0)
+        {
+        $(this.el).find('.comment-button .ui-btn-text')
+            .text(' × ' + this.model.get('comments')); 
+        }
+        else{
+            $(this.el).find('.comment-button .ui-btn-text').text(' '); 
+        }     
+                
         // show the button if it was previously hidden and create the jquery mobile markup
         if (parseInt( this.model.get('comments') ) + parseInt( this.model.get('favorite_count') ) > 0)
         {

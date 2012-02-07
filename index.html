@@ -596,11 +596,11 @@
 
             <div data-role="controlgroup" data-type="horizontal" class="image-actions">
 
-                <div data-role="button" data-icon="action-heart" data-inline="true" data-iconpos="left" class="favorite-button <% if(item.get('favorite')){ %> selected <% }%>" >&nbsp;<% if (parseInt(item.get('favorite_count')) > 0){ %> &times; <%= item.get('favorite_count')%><%}%></div>
+                <div data-role="button" data-icon="action-heart" data-inline="true" data-iconpos="left" class="favorite-button <% if(item.get('favorite')){ %> selected <% }%>" ><% if (parseInt(item.get('favorite_count')) > 0){ %>&times; <%= item.get('favorite_count')%><%}%></div>
                 
                 
                 
-                <div data-role="button" data-icon="action-comment" data-inline="true" data-iconpos="left" class="comment-button" >&nbsp;<% if (parseInt(item.get('comments')) > 0){ %> &times; <%= item.get('comments')%><%}%></div>
+                <div data-role="button" data-icon="action-comment" data-inline="true" data-iconpos="left" class="comment-button" ><% if (parseInt(item.get('comments')) > 0){ %>&times; <%= item.get('comments')%><%}%></div>
 
             </div>
 
