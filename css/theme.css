@@ -801,6 +801,11 @@ a {
 * C
 * - Standard light BG swatch, has subtle gray bg texture, used mainly for light colored dialog style views
 */
+.ui-dialog.ui-overlay-c {
+  background: none;
+  background-color: #f7f7f7;
+  background-image: url('../gfx/bg-texture-light.gif');
+}
 .ui-body-c {
   background: none;
 }
