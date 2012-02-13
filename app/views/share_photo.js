@@ -1,4 +1,4 @@
-snapr.views.photo_edit = Backbone.View.extend({
+snapr.views.share_photo = Backbone.View.extend({
 
     initialize: function()
     {
@@ -9,11 +9,11 @@ snapr.views.photo_edit = Backbone.View.extend({
             return true;
         });
         
-        this.template = _.template( $("#photo-edit-template").html() );
-        this.img_template = _.template( $("#photo-edit-image-template").html() );
+        this.template = _.template( $("#share-photo-template").html() );
+        this.img_template = _.template( $("#share-photo-image-template").html() );
         // this will eventually be stored/retrieved from localstorage 
         // but for now we'll start from blank each time
-        this.photo_edit_settings = {};
+        this.share_photo_settings = {};
         
         this.query = this.options.query;
         
@@ -21,7 +21,7 @@ snapr.views.photo_edit = Backbone.View.extend({
         {
             this.redirect_url = this.query.redirect_url;
         }
-        $.mobile.changePage( $("#photo-edit"), {changeHash: false} );
+        $.mobile.changePage( $("#share-photo"), {changeHash: false} );
         this.render();
         if (this.query.photo_path)
         {
@@ -56,7 +56,7 @@ snapr.views.photo_edit = Backbone.View.extend({
     get_photo_from_server: function( id )
     {
         console.warn( "get_photo_from_server", id );
-        var photo_edit = this;
+        var share_photo = this;
         this.model = new snapr.models.photo({id: id});
         this.model.fetch({
             success: function()
@@ -65,11 +65,11 @@ snapr.views.photo_edit = Backbone.View.extend({
                 
                 // temporary hack to display image
                 var img_url = "http://media-server2.snapr.us/sml/" 
-                    + photo_edit.model.get("secret") + "/" 
-                    + photo_edit.model.get("id") + ".jpg";
+                    + share_photo.model.get("secret") + "/" 
+                    + share_photo.model.get("id") + ".jpg";
 
-                $(photo_edit.el).find(".edit-image").html( photo_edit.img_template({img_url: img_url}) );
-                $(photo_edit.el).find("#description").val( photo_edit.model.get("description") );
+                $(share_photo.el).find(".edit-image").html( share_photo.img_template({img_url: img_url}) );
+                $(share_photo.el).find("#description").val( share_photo.model.get("description") );
 
             },
             error: function()

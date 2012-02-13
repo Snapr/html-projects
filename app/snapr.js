@@ -322,7 +322,7 @@ snapr.routers = Backbone.Router.extend({
         "/upload/?*query_string": "upload",
         "/uploading/": "uploading",
         "/uploading/?*query_string": "uploading",
-        "/photo-edit/?*query_string": "photo_edit",
+        "/share-photo/?*query_string": "share_photo",
         "/love-it/?*query_string": "love_it",
         "/my-account/": "my_account",
         "/my-account/?*query_string": "my_account",
@@ -414,11 +414,11 @@ snapr.routers = Backbone.Router.extend({
         });
     },
 
-    photo_edit: function( query_string )
+    share_photo: function( query_string )
     {
         var query = snapr.utils.get_query_params( query_string );
-        snapr.info.current_view = new snapr.views.photo_edit({
-            el: $("#photo-edit"),
+        snapr.info.current_view = new snapr.views.share_photo({
+            el: $("#share-photo"),
             query: query
         });
     },

@@ -162,7 +162,7 @@
                 
                 <!-- cities btn -->
                 <div class="ui-block-c">
-                    <a href="#/photo-edit/?photo_id=Z4O" data-corners="false" data-shadow="false" data-role="button" data-theme="c" data-ajax="false" data-iconpos="top" data-icon="main-menu-cities">Cities</a>
+                    <a href="#/share-photo/?photo_id=Z4O" data-corners="false" data-shadow="false" data-role="button" data-theme="c" data-ajax="false" data-iconpos="top" data-icon="main-menu-cities">Cities</a>
                 </div>
             </div>
 
@@ -1027,7 +1027,7 @@
     <!-- no templates for #upload -->
 
 
-    <!-- upload progress view (layout should match the #photo-edit view exactly) -->
+    <!-- @upload upload progress view (layout should match the #share-photo view exactly) -->
     <div id="uploading" data-role="page">
         <div data-role="header">
             <a class="cancel-upload" data-ajax="false" data-role="button">Cancel</a>
@@ -1070,8 +1070,8 @@
     </script>
 
 
-    <!-- sharing setup / caption view -->
-    <div id="photo-edit" data-role="page">
+    <!-- @share sharing setup / caption view -->
+    <div id="share-photo" data-role="page">
         <div data-role="header">
             <a href="#/" data-ajax="false" data-role="button">Cancel</a>
             <h1>Share It</h1>
@@ -1080,8 +1080,8 @@
         </div>
     </div>
 
-    <!-- template for #photo-edit -->
-    <script id="photo-edit-template" type="text/template">
+    <!-- template for #share-photo -->
+    <script id="share-photo-template" type="text/template">
         <form action="javascript: void(0);">
             <div class="PINK-upload-image">
                 <div class="edit-image PINK-upload-image-thumb pop-white"></div>
@@ -1162,8 +1162,8 @@
         <a class="skip">Skip this step &raquo;</a>
     </script>
 
-    <!-- template for .edit-image inside #photo-edit -->
-    <script id="photo-edit-image-template" type="text/template">
+    <!-- template for .edit-image inside #share-photo -->
+    <script id="share-photo-image-template" type="text/template">
         <img src="<%= img_url %>" />
     </script>
 
@@ -1231,7 +1231,7 @@
 <script src="app/views/limbo.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/upload.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/uploading.js" type="text/javascript" charset="utf-8"></script>
-<script src="app/views/photo_edit.js" type="text/javascript" charset="utf-8"></script>
+<script src="app/views/share_photo.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/love_it.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/upload_settings.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/linked_service.js" type="text/javascript" charset="utf-8"></script>
