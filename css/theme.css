@@ -100,6 +100,9 @@ a {
   width: 100px;
   height: 100px;
 }
+.set-full-height {
+  min-height: 400px;
+}
 /*
 * JQuery Mob - Custom 
 *   Some basics
@@ -107,8 +110,22 @@ a {
 .ui-content {
   padding: 8px;
 }
+.ui-btn {
+  margin: 8px 0;
+}
 .ui-br {
   border-bottom: none;
+}
+.ui-field-contain {
+  padding: 0 0 8px 0;
+}
+input.ui-input-text, textarea.ui-input-text {
+  background-color: #ffffff;
+  color: #666666;
+  font-size: 15px;
+  padding: 8px;
+  width: 100%;
+  box-sizing: border-box;
 }
 /* corner rounding classes
 -----------------------------------------------------------------------------------------------------------*/
@@ -774,6 +791,28 @@ a {
 }
 .image-item-block .comment-area {
   display: none;
+}
+.share-photo .upload-image-layer {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  z-index: 5;
+  margin: 46px -8px -8px -8px;
+}
+.share-photo .image-placeholder img {
+  width: 100%;
+}
+.share-photo .upload-settings-layer {
+  background-color: rgba(0, 0, 0, 0.6);
+  position: absolute;
+  width: 100%;
+  top: 0;
+  margin: 46px -8px -8px -8px;
+  padding-top: 12px;
+  z-index: 10;
+}
+.share-photo .upload-settings-layer .upload-settings {
+  padding: 8px;
 }
 /*
 * A 

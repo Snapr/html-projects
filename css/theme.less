@@ -84,6 +84,10 @@ a{
     height: @size-large-avatar;
 }
 
+.set-full-height{
+    min-height: 400px;
+}
+
 /*
 * JQuery Mob - Custom 
 *   Some basics
@@ -93,9 +97,29 @@ a{
     padding: @padding-page-inset;
 }
 
+.ui-btn {
+    margin: @padding-page-inset 0;
+}
+
 .ui-br {
     border-bottom: none
 }
+
+.ui-field-contain{
+    padding: 0 0 @padding-page-inset 0;
+}
+
+input.ui-input-text, 
+textarea.ui-input-text {
+    background-color: @color-bg-neutral-light;
+    color: @color-txt-medium-on-light;
+    font-size: @txt-size-base;
+    padding: @padding-element-inset;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+
 
 /* corner rounding classes
 -----------------------------------------------------------------------------------------------------------*/
@@ -765,6 +789,40 @@ a{
     .comment-area{
         display: none;
     }
+
+}
+
+
+.share-photo{
+    
+    .upload-image-layer{
+        position: absolute;
+        width: 100%;
+        top: 0;
+        z-index: 5;
+        margin: @size-topbar-height -@padding-page-inset -@padding-page-inset -@padding-page-inset;
+    }
+    
+    .image-placeholder{
+        img{
+            width: 100%;
+        }
+    }
+
+    .upload-settings-layer{
+        background-color: rgba(0, 0, 0, .6);
+        position: absolute;
+        width: 100%;
+        top: 0;
+        margin: @size-topbar-height -@padding-page-inset -@padding-page-inset -@padding-page-inset;
+        padding-top: 12px;
+        z-index: 10;
+        .upload-settings{
+            padding: @padding-page-inset;
+        }
+    }
+    
+  
 
 }
 

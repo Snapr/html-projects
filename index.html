@@ -162,7 +162,7 @@
                 
                 <!-- cities btn -->
                 <div class="ui-block-c">
-                    <a href="#/share-photo/?photo_id=Z4O" data-corners="false" data-shadow="false" data-role="button" data-theme="c" data-ajax="false" data-iconpos="top" data-icon="main-menu-cities">Cities</a>
+                    <a href="#/share-photo/?photo=ZJE" data-corners="false" data-shadow="false" data-role="button" data-theme="c" data-ajax="false" data-iconpos="top" data-icon="main-menu-cities">Cities</a>
                 </div>
             </div>
 
@@ -971,9 +971,17 @@
             <div class="login-message"></div>
             <form action="javascript: void(0);" accept-charset="utf-8" id="login-dialog">
                 <fieldset>
-                    <label for="username">Username</label><input type="text" name="username" placeholder="  " autocapitalize="off" autocorrect="off" id="login-dialog-username">
-                    <label for="password">Password</label><input type="password" name="password" placeholder="  " id="login-dialog-password">
+                    <div data-role="fieldcontain" class="ui-hide-label">
+                        <label for="username">Username</label>
+                        <input type="text" name="username"  placeholder="  " autocapitalize="off" autocorrect="off" id="login-dialog-username">
+                    </div>
+                    <div data-role="fieldcontain" class="ui-hide-label">
+                    
+                        <label for="password">Password</label><input type="password" name="password" placeholder="  " id="login-dialog-password">
+                    </div>
+                    
                     <input type="submit" name="login" data-theme="e" value="Log In">
+                    
                 </fieldset>
             </form>
 
@@ -1046,7 +1054,7 @@
     <script id="uploading-template" type="text/template">
        <div class="upload-progress-container">
            <div class="PINK-upload-image upload-image">
-               <div class="edit-image PINK-upload-image-thumb">
+               <div class="image-placeholder PINK-upload-image-thumb">
                    <img src="<%= img_url %>" />
                </div>
 
@@ -1070,99 +1078,89 @@
     </script>
 
 
-    <!-- @share sharing setup / caption view -->
-    <div id="share-photo" data-role="page">
+    <!-- @share-photo sharing setup / caption view -->
+    <div id="share-photo" class="share-photo" data-role="page" data-theme="a">
         <div data-role="header">
-            <a href="#/" data-ajax="false" data-role="button">Cancel</a>
-            <h1>Share It</h1>
+            <a href="#/" data-ajax="false" data-role="button" data-icon="delete" data-iconpos="notext"></a>
+            <h1>Share</h1>
         </div>
-        <div data-role="content">
+        <div data-role="content" data-theme="a">
         </div>
     </div>
 
     <!-- template for #share-photo -->
     <script id="share-photo-template" type="text/template">
         <form action="javascript: void(0);">
-            <div class="PINK-upload-image">
-                <div class="edit-image PINK-upload-image-thumb pop-white"></div>
-                <div class="PINK-upload-image-info PINK-small-text">
-                    <%if ((enter_girl_of_month || tumblr_sharing || facebook_sharing)){%>
-                        <p class="share-message"  style="display:none;">Some pictures are too good to keep to yourself! Share this with Pink Nation for a chance to have it featured in our app.</p>
-                        <textarea name="description" id="description" placeholder="Caption this!" class="pop-white"></textarea>
-                    <%}else{%>
-                        <p class="share-message">Some pictures are too good to keep to yourself! Share this with Pink Nation for a chance to have it featured in our app.</p>
-                        <textarea name="description" id="description" placeholder="Caption this!" style="display:none;" class="pop-white"></textarea>
-                    <%}%>
+            <div class="upload-image-layer set-full-height">
 
+                <div class="image-placeholder"></div>
+               
+            </div>
+            
+            <div class="upload-settings-layer">
+                <div class="upload-settings">
+                    <textarea name="description" id="description" placeholder="Add text..." data-theme="d"></textarea>
+        
+                    <fieldset data-role="controlgroup" data-type="horizontal" class="upload-image-privacy">
+                         <legend>Privacy:</legend>
+                         <input type="radio" name="status" id="status-public" value="public" checked="checked" />                        
+                         <label for="status-public">Public<span class="ui-icon"></span></label>
+
+                        <input type="radio" name="status" id="status-private" value="private"  />
+                        <label for="status-private">Private<span class="ui-icon"></span></label>
+                    
+                    </fieldset>
+        
+                    <fieldset data-role="controlgroup" data-type="horizontal" class="upload-image-sharing">
+                        <legend>Share to:</legend>
+                        
+                        <input type="checkbox" name="tweet" id="twitter-sharing" <%if (facebook_sharing){%>checked="true"<%}%> />
+                        <label for="twitter-sharing"><span class="ui-icon"></span>Twitter</label>
+                        
+                        <input type="checkbox" name="facebook_gallery" id="facebook-sharing" <%if (facebook_sharing){%>checked="true"<%}%>/>
+                        <label for="facebook-sharing"><span class="ui-icon"></span>Facebook</label>
+                        
+                        <input type="checkbox" name="tumblr" id="tumblr-sharing"<%if (tumblr_sharing){%>checked="true"<%}%> />
+                        <label for="tumblr-sharing"><span class="ui-icon"></span>Tumblr</label>
+                        
+                        <input type="checkbox" name="foursquare_checkin" id="foursquare-sharing" <%if (facebook_sharing){%>checked="true"<%}%> />
+                        <label for="foursquare-sharing"><span class="ui-icon"></span>Foursquare</label>
+                        
+                    </fieldset>
+                    
+                    <hr />
+                    
+                    <fieldset class="upload-image-location">
+                        <span class="image-location">
+                            <input type="checkbox" name="share-location" id="share-location" checked="true"/>
+                            <label for="share-location">Location Description Text</label>
+                        </span>
+                        
+                        <a data-role="button" id="foursquare_venue" data-icon="venue">
+                            Foursquare Venue
+                        </a>
+                        
+                    </fieldset>
+                    
+                    <div class="ui-grid-b">
+                        <div class="ui-block-a">
+                        </div>
+                   
+                        <div class="ui-block-b">
+                        </div>
+                        
+                        <div class="ui-block-c">
+                        <input type="submit" data-role="button" data-theme="e" class="share" value="Share"/>
+                        </div>
+                    </div>
+                </form>
+        
                 </div>
             </div>
-            <div data-role="controlgroup" data-type="horizontal" class="sharing-settings">
-                <ul data-role="listview" data-inset="true" data-theme="c">
-                    <li data-role="fieldcontain">
-
-                            <label for="facebook-sharing">Facebook</label>
-
-                            <div class="PINK-switch">
-                                <select name="facebook_feed" id="facebook-sharing" data-role="slider">
-                                    <%if (facebook_sharing){%>
-                                        <option value="off">Off</option>
-                                        <option value="on"  selected="true">On</option>
-                                    <%}else{%>
-                                        <option value="off"  selected="true">Off</option>
-                                        <option value="on">On</option>
-                                    <%}%>
-                                </select>
-                            </div>
-
-                    </li>
-                    <li data-role="fieldcontain">
-                            <label for="tumblr-sharing">Tumblr</label>
-
-                            <div class="PINK-switch">
-                                <select name="tumblr" id="tumblr-sharing" data-role="slider">
-                                    <%if (tumblr_sharing){%>
-                                        <option value="off">Off</option>
-                                        <option value="on"  selected="true">On</option>
-                                    <%}else{%>
-                                        <option value="off"  selected="true">Off</option>
-                                        <option value="on">On</option>
-                                    <%}%>
-                                </select>
-                            </div>
-                    </li>
-                </ul>
-                <ul data-role="listview" data-inset="true" data-theme="c">
-                    <li data-role="fieldcontain">
-
-                            <label for="enter-girl-of-month">Send to PINK Nation</label>
-
-                            <div class="ui-block-b PINK-switch">
-                                <select name="enter-girl-of-month" id="enter-girl-of-month" data-role="slider">
-                                    <%if (enter_girl_of_month){%>
-                                        <option value="off">Off</option>
-                                        <option value="on"  selected="true">On</option>
-                                    <%}else{%>
-                                        <option value="off"  selected="true">Off</option>
-                                        <option value="on">On</option>
-                                    <%}%>
-                                </select>
-                            </div>
-                    </li>
-                </ul>
-            </div>
-
-            <span class="PINK-text-btn">
-                <input type="submit" data-role="button" data-theme="e" class="share" value="Share"
-                <%if (!(enter_girl_of_month || tumblr_sharing || facebook_sharing)){%>
-                    disabled="true"
-                <%}%>
-                />
-            </span>
-        </form>
-        <a class="skip">Skip this step &raquo;</a>
+            
     </script>
 
-    <!-- template for .edit-image inside #share-photo -->
+    <!-- template for .image-placeholder inside #share-photo -->
     <script id="share-photo-image-template" type="text/template">
         <img src="<%= img_url %>" />
     </script>

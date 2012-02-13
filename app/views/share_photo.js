@@ -68,7 +68,7 @@ snapr.views.share_photo = Backbone.View.extend({
                     + share_photo.model.get("secret") + "/" 
                     + share_photo.model.get("id") + ".jpg";
 
-                $(share_photo.el).find(".edit-image").html( share_photo.img_template({img_url: img_url}) );
+                $(share_photo.el).find(".image-placeholder").html( share_photo.img_template({img_url: img_url}) );
                 $(share_photo.el).find("#description").val( share_photo.model.get("description") );
 
             },
@@ -94,7 +94,7 @@ snapr.views.share_photo = Backbone.View.extend({
             this.model.set({longitude: this.query.longitude});
         }
         
-        $(this.el).find(".edit-image").html( this.img_template({img_url: path}) );
+        $(this.el).find(".image-placeholder").html( this.img_template({img_url: path}) );
     },
     
     toggle_sharing: function( e )
@@ -138,7 +138,7 @@ snapr.views.share_photo = Backbone.View.extend({
                 description: this.el.find("#description").val(),
                 // public_group: ( $("#enter-girl-of-month").val() == "on" ) && snapr.public_group || false,
                 status: "public",
-                facebook_feed: ( $("#facebook-sharing").val() == "on" ),
+                facebook_gallery: ( $("#facebook-sharing").val() == "on" ),
                 tumblr: ( $("#tumblr-sharing").val() == "on" ),
             },{
                 success: function( model, xhr )
@@ -168,7 +168,7 @@ snapr.views.share_photo = Backbone.View.extend({
                     
                     var sharing_errors = [];
                     var sharing_successes = [];
-                    if (model.get("facebook_feed"))
+                    if (model.get("facebook_gallery"))
                     {
                         if (xhr.response && 
                             xhr.response.facebook && 
@@ -219,7 +219,7 @@ snapr.views.share_photo = Backbone.View.extend({
             {
                 var params = {};
                 _.each( $(this.el).find("form").serializeArray(), function( o ){
-                    if (["tumblr", "facebook_feed"].indexOf( o.name ) > -1)
+                    if (["tumblr", "facebook_gallery"].indexOf( o.name ) > -1)
                     {
                         params[o.name] = (o.value == "on");
                     }

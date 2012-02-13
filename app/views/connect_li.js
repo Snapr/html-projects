@@ -109,7 +109,7 @@ snapr.views.connect_li = Backbone.View.extend({
         {
             case "facebook":
                 this.model.save({
-                    facebook_feed: true
+                    facebook_gallery: true
                 }, options);
                 break;
             case "tumblr":
