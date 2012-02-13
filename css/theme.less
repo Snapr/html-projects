@@ -154,6 +154,9 @@ a{
         font-size: @txt-size-page-heading;
         font-weight: normal;
         text-transform: lowercase;
+        line-height: @size-topbar-height;
+        vertical-align: middle;
+        margin: 0;
     }
     
     .ui-btn{
@@ -202,10 +205,18 @@ a{
                 box-shadow: none;
             }
         }
-        .ui-icon-search{ background-position: 0 0;}
+        .ui-icon-search{background-position: 0 0;}
         .ui-icon-home{ background-position: 0 -40px;}
     }
     
+    /* Shuffle the close button to the right */
+    .ui-btn[data-icon="delete"]{
+        right: 6px;
+        top: 6px;
+        left: auto;
+    }
+    
+     
     
     .ui-controlgroup{
         display: inline-block;
@@ -232,10 +243,15 @@ a{
 */
 
 
-.ui-dialog .ui-content,
-.ui-dialog .ui-header{
+.ui-dialog .ui-content{
     margin: 0;
     padding: @padding-page-inset;
+    width: auto;
+}
+
+.ui-dialog .ui-header{
+    margin: 0;
+    padding:0;
     width: auto;
 }
 
@@ -751,7 +767,16 @@ a{
 */
 
 .ui-bar-b{
-
+    
+    .ui-btn-up-b{
+           .ui-icon-search{background-position: @b-offset-x @gfx-main-icon-sprite-search-icon-y;}
+           .ui-icon-home{ background-position: @b-offset-x @gfx-main-icon-sprite-home-icon-y;}
+       }
+  
+    .ui-btn-hover-b{
+        .ui-icon-search{background-position: @b-offset-x-hover @gfx-main-icon-sprite-search-icon-y;}
+        .ui-icon-home{ background-position: @b-offset-x-hover @gfx-main-icon-sprite-home-icon-y;}
+    }
 }
 
 .ui-btn-up-b {
@@ -786,6 +811,25 @@ a{
 * - Standard light BG swatch, has subtle gray bg texture, used mainly for light colored dialog style views
 */
 
+
+
+
+.ui-bar-c{
+    
+    .ui-btn-up-c{
+           .ui-icon-search{background-position: @c-offset-x @gfx-main-icon-sprite-search-icon-y;}
+           .ui-icon-home{ background-position: @c-offset-x @gfx-main-icon-sprite-home-icon-y;}
+           .ui-icon-delete{ background-position: @c-offset-x @gfx-main-icon-sprite-close-icon-y;}
+       }
+  
+    .ui-btn-hover-c{
+        .ui-icon-search{background-position: @c-offset-x-hover @gfx-main-icon-sprite-search-icon-y;}
+        .ui-icon-home{ background-position: @c-offset-x-hover @gfx-main-icon-sprite-home-icon-y;}
+        .ui-icon-delete{ background-position: @c-offset-x-hover @gfx-main-icon-sprite-close-icon-y;}
+        
+    }
+}
+
 .ui-dialog.ui-overlay-c{
        background: none;
        background-color: @color-bg-light-tint;
@@ -800,8 +844,15 @@ a{
         background-image: @gfx-bg-light-texture;
         border-radius: @corner-page-element-rounded;
     }
+    
+    .ui-header{
+        color: @color-txt-medium-on-light;
+        text-shadow: @color-shadow-light-on-light 0px 1px 1px;
+    }
+    
    
 }
+
 
 
 /*
