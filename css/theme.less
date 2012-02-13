@@ -22,6 +22,7 @@ html {
     -webkit-text-size-adjust: none;
     -webkit-tap-highlight-color: rgba(0,0,0,0);
     -webkit-touch-callout: none;
+    -webkit-font-smoothing: antialiased;
 }
 
 
@@ -90,6 +91,10 @@ a{
 
 .ui-content{
     padding: @padding-page-inset;
+}
+
+.ui-br {
+    border-bottom: none
 }
 
 /* corner rounding classes
@@ -195,25 +200,34 @@ a{
         &.ui-shadow{
             box-shadow: none;
         }
-        .ui-icon{
-            width: 40px;
-            height: 40px;
-            background: none;
-            background-image: url('../gfx/bar-icons.png');
-            background-position: 0 0;
-            &.ui-icon-shadow{
-                box-shadow: none;
-            }
-        }
-        .ui-icon-search{background-position: 0 0;}
-        .ui-icon-home{ background-position: 0 -40px;}
+       
     }
+    
+    .ui-icon{
+        width: 40px;
+        height: 40px;
+        background: none;
+        background-image: url('../gfx/bar-icons.png');
+        background-position: 0 0;
+        &.ui-icon-shadow{
+            box-shadow: none;
+        }
+    }
+    
     
     /* Shuffle the close button to the right */
     .ui-btn[data-icon="delete"]{
         right: 6px;
         top: 6px;
         left: auto;
+    }
+    
+    /* Some fiddly stuff for back btns */
+    .ui-btn[data-rel="back"]{
+        
+        .ui-icon{
+            display: none;
+        }
     }
     
      
@@ -759,6 +773,37 @@ a{
 * The Dark (Black as Night) swatch, used for screens with black BGs
 */
 
+/* Set bgs */
+.ui-body-a,
+.ui-dialog.ui-overlay-a{
+       background: none;
+       background-color: @color-bg-dark;
+}
+
+/* Main Styles */
+.ui-body-a {
+    color: @color-txt-light-on-dark;
+    text-shadow: none;
+    
+    .ui-header{
+        color: @color-txt-light-on-dark;
+        text-shadow: none;
+    }
+   
+}
+
+/* Button Styles */
+.ui-btn-up-a{
+       .ui-icon-search{background-position: @a-offset-x @gfx-main-icon-sprite-search-icon-y;}
+       .ui-icon-home{ background-position: @a-offset-x @gfx-main-icon-sprite-home-icon-y;}
+       .ui-icon-delete{ background-position: @a-offset-x @gfx-main-icon-sprite-close-icon-y;}
+}
+
+.ui-btn-hover-a{
+    .ui-icon-search{background-position: @a-offset-x-hover @gfx-main-icon-sprite-search-icon-y;}
+    .ui-icon-home{ background-position: @a-offset-x-hover @gfx-main-icon-sprite-home-icon-y;}
+    .ui-icon-delete{ background-position: @a-offset-x-hover @gfx-main-icon-sprite-close-icon-y;}
+}
 
 
 /*
@@ -768,15 +813,7 @@ a{
 
 .ui-bar-b{
     
-    .ui-btn-up-b{
-           .ui-icon-search{background-position: @b-offset-x @gfx-main-icon-sprite-search-icon-y;}
-           .ui-icon-home{ background-position: @b-offset-x @gfx-main-icon-sprite-home-icon-y;}
-       }
-  
-    .ui-btn-hover-b{
-        .ui-icon-search{background-position: @b-offset-x-hover @gfx-main-icon-sprite-search-icon-y;}
-        .ui-icon-home{ background-position: @b-offset-x-hover @gfx-main-icon-sprite-home-icon-y;}
-    }
+    
 }
 
 .ui-btn-up-b {
@@ -804,6 +841,15 @@ a{
 	}
 }
 
+.ui-btn-up-b{
+       .ui-icon-search{background-position: @b-offset-x @gfx-main-icon-sprite-search-icon-y;}
+       .ui-icon-home{ background-position: @b-offset-x @gfx-main-icon-sprite-home-icon-y;}
+   }
+
+.ui-btn-hover-b{
+    .ui-icon-search{background-position: @b-offset-x-hover @gfx-main-icon-sprite-search-icon-y;}
+    .ui-icon-home{ background-position: @b-offset-x-hover @gfx-main-icon-sprite-home-icon-y;}
+}
 
 
 /*
@@ -812,30 +858,14 @@ a{
 */
 
 
-
-
-.ui-bar-c{
-    
-    .ui-btn-up-c{
-           .ui-icon-search{background-position: @c-offset-x @gfx-main-icon-sprite-search-icon-y;}
-           .ui-icon-home{ background-position: @c-offset-x @gfx-main-icon-sprite-home-icon-y;}
-           .ui-icon-delete{ background-position: @c-offset-x @gfx-main-icon-sprite-close-icon-y;}
-       }
-  
-    .ui-btn-hover-c{
-        .ui-icon-search{background-position: @c-offset-x-hover @gfx-main-icon-sprite-search-icon-y;}
-        .ui-icon-home{ background-position: @c-offset-x-hover @gfx-main-icon-sprite-home-icon-y;}
-        .ui-icon-delete{ background-position: @c-offset-x-hover @gfx-main-icon-sprite-close-icon-y;}
-        
-    }
-}
-
+/* Set bg for dialog */
 .ui-dialog.ui-overlay-c{
        background: none;
        background-color: @color-bg-light-tint;
        background-image: @gfx-bg-light-texture;
 }
 
+/* Main Styles */
 .ui-body-c {
     background: none;
     
@@ -849,8 +879,20 @@ a{
         color: @color-txt-medium-on-light;
         text-shadow: @color-shadow-light-on-light 0px 1px 1px;
     }
-    
    
+}
+
+/* Button Styles */
+.ui-btn-up-c{
+       .ui-icon-search{background-position: @c-offset-x @gfx-main-icon-sprite-search-icon-y;}
+       .ui-icon-home{ background-position: @c-offset-x @gfx-main-icon-sprite-home-icon-y;}
+       .ui-icon-delete{ background-position: @c-offset-x @gfx-main-icon-sprite-close-icon-y;}
+}
+
+.ui-btn-hover-c{
+    .ui-icon-search{background-position: @c-offset-x-hover @gfx-main-icon-sprite-search-icon-y;}
+    .ui-icon-home{ background-position: @c-offset-x-hover @gfx-main-icon-sprite-home-icon-y;}
+    .ui-icon-delete{ background-position: @c-offset-x-hover @gfx-main-icon-sprite-close-icon-y;}
 }
 
 
