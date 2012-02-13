@@ -83,30 +83,6 @@ Array.prototype.human_list =  function(){
 };
 
 
-// defined in index.html
-// snapr = {};
-// snapr.models = {};
-// snapr.routers = {};
-// snapr.base_url = "https://sna.pr";
-// snapr.api_base = snapr.base_url + "/api";
-// snapr.access_token_url = snapr.base_url + "/ext/oauth/access_token/";
-
-
-// PINK Nation Details:
-snapr.client_id = "48611a3a325dc884c9d1722002be43ff";
-snapr.client_secret = "a5b072ed71e89a4f0982944a4dd82d94";
-
-// snapr.app_group = "pink-nation";
-// snapr.public_group = "pink-nation-featured";
-
-snapr.constants = {};
-snapr.constants.default_zoom = 15;
-snapr.constants.feed_count = 12;
-
-snapr.constants.share_redirect = false;
-// set to hash url to redirect after successful upload/share eg:
-// snapr.constants.upload_redirect = "#/uploading/";
-// if false, redirects to user feed
 
 // store some info about the browser
 snapr.info = {}

@@ -6,14 +6,7 @@
         <meta name="apple-mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-status-bar-style" content="black">
 
-        <style type="text/css" media="screen">
-
-
-
-        </style>
-
         <script src="app/libs/json2.js" type="text/javascript" charset="utf-8"></script> <!-- just in case the browser sucks at JSON -->
-
         <script src="app/libs/jquery-1.7.1.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="app/libs/jq.cookie.js" type="text/javascript" charset="utf-8"></script>
 
@@ -25,6 +18,24 @@
         snapr.base_url = "http://dev.sna.pr";
         snapr.api_base = snapr.base_url + "/api";
         snapr.access_token_url = snapr.base_url + "/ext/oauth/access_token/";
+        
+        //Add the Client and Secret for your app here
+        snapr.client_id = "client";
+        snapr.client_secret = "secret";
+
+        // App Group Here
+        // snapr.app_group = "pink-nation";
+        // snapr.public_group = "pink-nation-featured";
+
+        //Some other app settings
+        snapr.constants = {};
+        snapr.constants.default_zoom = 15;
+        snapr.constants.feed_count = 12;
+        
+        snapr.constants.share_redirect = false;
+        // set to hash url to redirect after successful upload/share eg:
+        // snapr.constants.upload_redirect = "#/uploading/";
+        // if false, redirects to user feed
 
         // disable jquery-mobile's hash nav so we can replace it with backbone.js
         $(document).bind("mobileinit", function(){
