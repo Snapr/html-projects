@@ -893,18 +893,15 @@ fieldset.ui-controlgroup{
     .upload-image-privacy{
         position: relative;
         margin-top: @padding-page-inset;
-        
         .ui-controlgroup-label {
             display: none;
         }
-        
         .ui-controlgroup-controls{
             position: absolute;
             right: 0;
             top: 0;
             width: auto;
         }
-        
         .ui-btn{
             background: none;
             box-shadow: none;
@@ -916,7 +913,6 @@ fieldset.ui-controlgroup{
         .ui-btn-inner{
             padding: 0;
         }
-        
         .ui-icon{
             width: @gfx-action-icon-sprite-grid;
             height: @gfx-action-icon-sprite-grid;
@@ -927,19 +923,15 @@ fieldset.ui-controlgroup{
             right: 0;
             background-color: transparent;
         }
-        
         .ui-btn-text{
             height: 32px;
             padding-right: 32px;
             overflow: hidden;
             display: block;
-            
         }
-        
         input{
             visibility: hidden;
         }
-        
         label[for="status-public"]{
                .ui-icon{background-position: @as-offset-x @gfx-action-icon-sprite-tick-y;}
                &.ui-btn-active{.ui-icon{background-position: @as-offset-x-hover @gfx-action-icon-sprite-tick-y;}
@@ -950,21 +942,16 @@ fieldset.ui-controlgroup{
                &.ui-btn-active{.ui-icon{background-position: @as-offset-x-hover @gfx-action-icon-sprite-close-y;}
                }
            }
-           
     }
     
     
     .upload-image-sharing{
-        
         .ui-checkbox{
             margin-right: @padding-element-inset;
         }
-        
         .ui-btn{
             .corner-all(@corner-general-rounded);
-            
         }
-        
         .ui-icon{
             width: @gfx-large-sharing-icon-sprite-grid;
             height: @gfx-large-sharing-icon-sprite-grid;
@@ -981,32 +968,40 @@ fieldset.ui-controlgroup{
         .ui-btn-inner{
             padding: 0;
         }
-        
+
         label[for="twitter-sharing"]{
-               .ui-icon{background-position: @ls-offset-x @gfx-large-sharing-icon-sprite-twitter-y;}
-               &.ui-checkbox-on{.ui-icon{background-position: @ls-offset-x-hover @gfx-large-sharing-icon-sprite-twitter-y;}
-               }
-           } 
-           label[for="facebook-sharing"]{
-               .ui-icon{background-position: @ls-offset-x @gfx-large-sharing-icon-sprite-facebook-y;}
-               &.ui-checkbox-on{.ui-icon{background-position: @ls-offset-x-hover @gfx-large-sharing-icon-sprite-facebook-y;}
-               }
+           .ui-icon{background-position: @ls-offset-x @gfx-large-sharing-icon-sprite-twitter-y;}
+           &.ui-checkbox-on{
+                background-color: @color-bg-twitter-main;
+                .box-shadow(inset 0 3px 20px @color-bg-twitter-main-tint);
+                .ui-icon{background-position: @ls-offset-x-hover @gfx-large-sharing-icon-sprite-twitter-y;}
            }
-           label[for="tumblr-sharing"]{
-               .ui-icon{background-position: @ls-offset-x @gfx-large-sharing-icon-sprite-tumblr-y;}
-               &.ui-checkbox-on{.ui-icon{background-position: @ls-offset-x-hover @gfx-large-sharing-icon-sprite-tumblr-y;}
-               }
+        } 
+        label[for="facebook-sharing"]{
+           .ui-icon{background-position: @ls-offset-x @gfx-large-sharing-icon-sprite-facebook-y;}
+           &.ui-checkbox-on{
+                background-color: @color-bg-facebook-main;
+                .box-shadow(inset 0 3px 20px @color-bg-facebook-main-tint);
+                .ui-icon{background-position: @ls-offset-x-hover @gfx-large-sharing-icon-sprite-facebook-y;}
            }
-           label[for="foursquare-sharing"]{
-               .ui-icon{background-position: @ls-offset-x @gfx-large-sharing-icon-sprite-foursquare-y;}
-               &.ui-checkbox-on{.ui-icon{background-position: @ls-offset-x-hover @gfx-large-sharing-icon-sprite-foursquare-y;}
-               }
+       }
+       label[for="tumblr-sharing"]{
+           .ui-icon{background-position: @ls-offset-x @gfx-large-sharing-icon-sprite-tumblr-y;}
+           &.ui-checkbox-on{
+                background-color: @color-bg-tumblr-main;
+                .box-shadow(inset 0 3px 20px @color-bg-tumblr-main-tint);
+                .ui-icon{background-position: @ls-offset-x-hover @gfx-large-sharing-icon-sprite-tumblr-y;}
            }
-       
-       
-        
+       }
+       label[for="foursquare-sharing"]{
+           .ui-icon{background-position: @ls-offset-x @gfx-large-sharing-icon-sprite-foursquare-y;}
+           &.ui-checkbox-on{
+                background-color: @color-bg-foursquare-main;
+                .box-shadow(inset 0 3px 20px @color-bg-foursquare-main-tint);
+                .ui-icon{background-position: @ls-offset-x-hover @gfx-large-sharing-icon-sprite-foursquare-y;}
+           }
+       }
     }
-    
     .upload-image-location{
         .ui-btn {
             margin: @padding-page-inset 0;
@@ -1020,47 +1015,86 @@ fieldset.ui-controlgroup{
                 width: @gfx-action-icon-sprite-grid;
                 height: @gfx-action-icon-sprite-grid;
                 background-image: url('../gfx/action-buttons-main.png');
-              
             }
-            
+            &.ui-checkbox-on {
+                .ui-icon-checkbox-on{background-position: @as-offset-x-hover @gfx-action-icon-sprite-tick-y;}
+               &.ui-btn-active{.ui-icon-checkbox-on{background-position: @as-offset-x-hover @gfx-action-icon-sprite-tick-y;}
+               .ui-icon-location{background-position: @as-offset-x @gfx-action-icon-sprite-location-y;}           
+                }
+                .ui-icon-location{background-position: @as-offset-x @gfx-action-icon-sprite-location-y;}
+                
+            }
+            &.ui-checkbox-off{
+                .ui-btn-text{
+                    opacity: .2;
+                }
+                .ui-icon-checkbox-off{background-position: @as-offset-x-hover @gfx-action-icon-sprite-close-y;}
+               &.ui-btn-active{
+                .ui-icon-checkbox-off{background-position: @as-offset-x-hover @gfx-action-icon-sprite-close-y;}
+                .ui-icon-location{background-position: @as-offset-x @gfx-action-icon-sprite-location-y;}
+               }
+               .ui-icon-location{background-position: @as-offset-x @gfx-action-icon-sprite-location-y;}
+            }
+              
             .ui-icon-arrow-right{background-position: @as-offset-x @gfx-action-icon-sprite-arrow-right-y;}
-            
             .ui-icon-location{background-position: @as-offset-x @gfx-action-icon-sprite-location-y;}
             .ui-icon-venue{background-position: @as-offset-x @gfx-action-icon-sprite-venue-y;}
 
-
-             
-             &.ui-btn-hover{
-             .ui-icon-location{background-position: @as-offset-x-hover @gfx-action-icon-sprite-location-y;}
+             &.ui-btn-hover-a,
+             &.ui-btn-down-a,
+             &.ui-btn-active-a{
+                .ui-icon-location{background-position: @as-offset-x-hover @gfx-action-icon-sprite-location-y;}
+                .ui-icon-venue{background-position: @as-offset-x-hover @gfx-action-icon-sprite-venue-y;}
              }
-              
-            
+                        
             .ui-icon-checkbox-on,
             .ui-icon-checkbox-off,
             .ui-icon-arrow-right{
                 right:0;
                 left: auto;
             }
-            
             .ui-btn-inner{
                 padding-top: 0;
                 padding-bottom: 0;
                  text-align: left;
                 .ui-btn-text{
-                   
                     line-height: @gfx-action-icon-sprite-grid;
                     .ui-icon{
                         position: absolute;
                         left: -36px;
-                        top: -10px;
+                        top: -11px;
                     }
                 }
             }
             
+        }        
+    }
+    .image-controls{
+        margin-top: 40px;
+        .ui-btn{
+            font-family: @txt-font-special;
+            font-size: @txt-size-btn-large;
+            font-weight: normal;
+            text-transform: lowercase;
+            text-align: right;
+            background: none!important;
+            border: none!important;
+        
         }
+        .ui-btn-inner{
+            padding-right: 22px;
+        }
+        .ui-icon{
+            top: 0;
+            margin-top: 0;
+            right: 0;
+            width: @gfx-action-icon-sprite-grid;
+            height: @gfx-action-icon-sprite-grid;
+            background-image: url('../gfx/action-buttons-main.png');
+        }
+        .ui-icon-toggle{background-position: @as-offset-x @gfx-action-icon-sprite-toggle-y;}
         
     }
-    
   
 
 }
@@ -1114,30 +1148,41 @@ fieldset.ui-controlgroup{
 	a.ui-link-inherit {
 		color: @color-txt-light-on-dark;
 	}
-	
-	
-	&.ui-corner-left{
-	    .corner-left (@corner-fully-rounded);
-	}
-	
-	&.ui-corner-right{
-	    .corner-right (@corner-fully-rounded);
-	}
-	
-	&.ui-btn-corner-all{
-	    .corner-all (@corner-fully-rounded);
-	}
+	&.ui-corner-left{.corner-left (@corner-fully-rounded);}
+	&.ui-corner-right{.corner-right (@corner-fully-rounded);}
+	&.ui-btn-corner-all{.corner-all (@corner-fully-rounded);}
 }
 
-.ui-btn-up-b{
-       .ui-icon-search{background-position: @b-offset-x @gfx-main-icon-sprite-search-icon-y;}
-       .ui-icon-home{ background-position: @b-offset-x @gfx-main-icon-sprite-home-icon-y;}
-   }
+.ui-btn-hover-a,
+.ui-btn-down-a,
+.ui-btn-active-a   {
+	border: none;
+	border-bottom: @border-medium-on-dark;
+	background: none;
+	background-color: @color-bg-neutral-dark;
+	font-weight: normal;
+	color: @color-bg-light;
+	text-shadow: @color-shadow-dark-on-dark 0px 1px 1px;
+	font-size: @txt-size-btn-large;
+	text-decoration: none;
+    
+    .box-shadow(inset 0 3px 20px @color-shadow-dark-on-dark);
+    &.ui-shadow{
+	   .box-shadow(inset 0 3px 20px @color-shadow-dark-on-dark);
+	}
+    
+    .ui-btn-inner{
+        border:none;
+    }
 
-.ui-btn-hover-b{
-    .ui-icon-search{background-position: @b-offset-x-hover @gfx-main-icon-sprite-search-icon-y;}
-    .ui-icon-home{ background-position: @b-offset-x-hover @gfx-main-icon-sprite-home-icon-y;}
+	a.ui-link-inherit {
+		color: @color-txt-light-on-dark;
+	}
+	&.ui-corner-left{.corner-left (@corner-fully-rounded);}
+	&.ui-corner-right{.corner-right (@corner-fully-rounded);}
+	&.ui-btn-corner-all{.corner-all (@corner-fully-rounded);}
 }
+
 
 
 
