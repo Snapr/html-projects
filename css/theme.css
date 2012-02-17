@@ -68,6 +68,12 @@ textarea {
 /* Main Icon Sprite */
 /* Vertical Layout of Icons */
 /* Horizontal offsets for theme swatches / hover states */
+/* Main Action Icon Sprite */
+/* Vertical Layout of Icons */
+/* Horizontal offsets for theme swatches / hover states */
+/* Large Sharing Icon Sprite */
+/* Vertical Layout of Icons */
+/* Horizontal offsets for theme swatches / hover states */
 /*
 * jQuery Mobile Theme Swatches
 *   -Based on Less Css jQuery Mobile Framework by Prinzhorn
@@ -84,10 +90,30 @@ body {
 a {
   text-decoration: none;
 }
+hr {
+  display: block;
+  position: relative;
+  padding: 0;
+  width: 100%;
+  height: 0;
+  clear: both;
+  border: none;
+  border-bottom: solid 1px rgba(255, 255, 255, 0.4);
+  border-top: solid 1px #000000;
+  font-size: 1px;
+  line-height: 0;
+  overflow: visible;
+  background-color: transparent;
+  color: rgba(255, 255, 255, 0.5);
+}
 .username {
   font-family: 'MuseoSansRounded700', Helvetica, Arial, sans-serif;
   font-size: 16px;
   color: #333333;
+}
+.ui-controlgroup-label {
+  font-family: 'MuseoSansRounded700', Helvetica, Arial, sans-serif;
+  text-transform: lowercase;
 }
 .user-icon-small {
   width: 34px;
@@ -110,9 +136,6 @@ a {
 .ui-content {
   padding: 8px;
 }
-.ui-btn {
-  margin: 8px 0;
-}
 .ui-br {
   border-bottom: none;
 }
@@ -125,7 +148,23 @@ input.ui-input-text, textarea.ui-input-text {
   font-size: 15px;
   padding: 8px;
   width: 100%;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
   box-sizing: border-box;
+}
+.ui-controlgroup, fieldset.ui-controlgroup {
+  margin: 0 0 8px 0;
+}
+.ui-icon, .ui-checkbox-on .ui-icon, .ui-radio-on .ui-icon {
+  background-color: transparent;
+}
+.ui-icon-shadow {
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+.ui-checkbox .ui-btn-icon-left .ui-btn-inner, .ui-radio .ui-btn-icon-left .ui-btn-inner {
+  padding-left: 36px;
 }
 /* corner rounding classes
 -----------------------------------------------------------------------------------------------------------*/
@@ -792,6 +831,26 @@ input.ui-input-text, textarea.ui-input-text {
 .image-item-block .comment-area {
   display: none;
 }
+.ui-checkbox .ui-icon {
+  width: 40px;
+  height: 40px;
+  background-image: url('../gfx/action-buttons-main.png');
+}
+.ui-checkbox .ui-checkbox-on .ui-icon {
+  background-position: 0px -280px;
+}
+.ui-checkbox .ui-checkbox-on.ui-btn-active .ui-icon {
+  background-position: -40px -280px;
+}
+.ui-checkbox .ui-checkbox-off .ui-icon {
+  background-position: 0px -240px;
+}
+.ui-checkbox .ui-checkbox-off.ui-btn-active .ui-icon {
+  background-position: -40px -240px;
+}
+.share-photo #description {
+  height: 92px;
+}
 .share-photo .upload-image-layer {
   position: absolute;
   width: 100%;
@@ -813,6 +872,153 @@ input.ui-input-text, textarea.ui-input-text {
 }
 .share-photo .upload-settings-layer .upload-settings {
   padding: 8px;
+  margin: 8px;
+}
+.share-photo .upload-image-privacy {
+  position: relative;
+  margin-top: 8px;
+}
+.share-photo .upload-image-privacy .ui-controlgroup-label {
+  display: none;
+}
+.share-photo .upload-image-privacy .ui-controlgroup-controls {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: auto;
+}
+.share-photo .upload-image-privacy .ui-btn {
+  background: none;
+  box-shadow: none;
+  border: none;
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight: normal;
+  text-transform: lowercase;
+}
+.share-photo .upload-image-privacy .ui-btn-inner {
+  padding: 0;
+}
+.share-photo .upload-image-privacy .ui-icon {
+  width: 40px;
+  height: 40px;
+  background-image: url('../gfx/action-buttons-main.png');
+  display: block;
+  position: absolute;
+  top: -12px;
+  right: 0;
+  background-color: transparent;
+}
+.share-photo .upload-image-privacy .ui-btn-text {
+  height: 32px;
+  padding-right: 32px;
+  overflow: hidden;
+  display: block;
+}
+.share-photo .upload-image-privacy input {
+  visibility: hidden;
+}
+.share-photo .upload-image-privacy label[for="status-public"] .ui-icon {
+  background-position: 0px -280px;
+}
+.share-photo .upload-image-privacy label[for="status-public"].ui-btn-active .ui-icon {
+  background-position: -40px -280px;
+}
+.share-photo .upload-image-privacy label[for="status-private"] .ui-icon {
+  background-position: 0px -240px;
+}
+.share-photo .upload-image-privacy label[for="status-private"].ui-btn-active .ui-icon {
+  background-position: -40px -240px;
+}
+.share-photo .upload-image-sharing .ui-checkbox {
+  margin-right: 8px;
+}
+.share-photo .upload-image-sharing .ui-btn {
+  -moz-border-radius: 6px;
+  -webkit-border-radius: 6px;
+  border-radius: 6px;
+}
+.share-photo .upload-image-sharing .ui-icon {
+  width: 42px;
+  height: 42px;
+  background-image: url('../gfx/share-icons-large.png');
+  display: block;
+}
+.share-photo .upload-image-sharing .ui-btn-text {
+  text-indent: -999px;
+  display: block;
+  height: 42px;
+  width: 42px;
+  overflow: hidden;
+}
+.share-photo .upload-image-sharing .ui-btn-inner {
+  padding: 0;
+}
+.share-photo .upload-image-sharing label[for="twitter-sharing"] .ui-icon {
+  background-position: 0px 0px;
+}
+.share-photo .upload-image-sharing label[for="twitter-sharing"].ui-checkbox-on .ui-icon {
+  background-position: -42px 0px;
+}
+.share-photo .upload-image-sharing label[for="facebook-sharing"] .ui-icon {
+  background-position: 0px -42px;
+}
+.share-photo .upload-image-sharing label[for="facebook-sharing"].ui-checkbox-on .ui-icon {
+  background-position: -42px -42px;
+}
+.share-photo .upload-image-sharing label[for="tumblr-sharing"] .ui-icon {
+  background-position: 0px -84px;
+}
+.share-photo .upload-image-sharing label[for="tumblr-sharing"].ui-checkbox-on .ui-icon {
+  background-position: -42px -84px;
+}
+.share-photo .upload-image-sharing label[for="foursquare-sharing"] .ui-icon {
+  background-position: 0px -126px;
+}
+.share-photo .upload-image-sharing label[for="foursquare-sharing"].ui-checkbox-on .ui-icon {
+  background-position: -42px -126px;
+}
+.share-photo .upload-image-location .ui-btn {
+  margin: 8px 0;
+  font-family: 'MuseoSansRounded700', Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  font-weight: normal;
+}
+.share-photo .upload-image-location .ui-btn .ui-icon {
+  top: 0;
+  margin-top: 0;
+  left: 0;
+  width: 40px;
+  height: 40px;
+  background-image: url('../gfx/action-buttons-main.png');
+}
+.share-photo .upload-image-location .ui-btn .ui-icon-arrow-right {
+  background-position: 0px -320px;
+}
+.share-photo .upload-image-location .ui-btn .ui-icon-location {
+  background-position: 0px -400px;
+}
+.share-photo .upload-image-location .ui-btn .ui-icon-venue {
+  background-position: 0px -360px;
+}
+.share-photo .upload-image-location .ui-btn.ui-btn-hover .ui-icon-location {
+  background-position: -40px -400px;
+}
+.share-photo .upload-image-location .ui-btn .ui-icon-checkbox-on, .share-photo .upload-image-location .ui-btn .ui-icon-checkbox-off, .share-photo .upload-image-location .ui-btn .ui-icon-arrow-right {
+  right: 0;
+  left: auto;
+}
+.share-photo .upload-image-location .ui-btn .ui-btn-inner {
+  padding-top: 0;
+  padding-bottom: 0;
+  text-align: left;
+}
+.share-photo .upload-image-location .ui-btn .ui-btn-inner .ui-btn-text {
+  line-height: 40px;
+}
+.share-photo .upload-image-location .ui-btn .ui-btn-inner .ui-btn-text .ui-icon {
+  position: absolute;
+  left: -36px;
+  top: -10px;
 }
 /*
 * A 
@@ -833,6 +1039,64 @@ input.ui-input-text, textarea.ui-input-text {
   text-shadow: none;
 }
 /* Button Styles */
+.ui-btn-up-a {
+  border: none;
+  border-bottom: solid 1px rgba(255, 255, 255, 0.4);
+  background: none;
+  background-color: #26282a;
+  font-weight: normal;
+  color: #cccccc;
+  text-shadow: #000000 0px 1px 1px;
+  font-size: 16px;
+  text-decoration: none;
+  -moz-box-shadow: inset 0 3px 20px #000000;
+  -webkit-box-shadow: inset 0 3px 20px #000000;
+  box-shadow: inset 0 3px 20px #000000;
+}
+.ui-btn-up-a.ui-shadow {
+  -moz-box-shadow: inset 0 3px 20px #000000;
+  -webkit-box-shadow: inset 0 3px 20px #000000;
+  box-shadow: inset 0 3px 20px #000000;
+}
+.ui-btn-up-a .ui-btn-inner {
+  border: none;
+}
+.ui-btn-up-a a.ui-link-inherit {
+  color: #cccccc;
+}
+.ui-btn-up-a.ui-corner-left {
+  -moz-border-radius-topleft: 20px;
+  -webkit-border-top-left-radius: 20px;
+  border-top-left-radius: 20px;
+  -moz-border-radius-bottomleft: 20px;
+  -webkit-border-bottom-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+}
+.ui-btn-up-a.ui-corner-right {
+  -moz-border-radius-topright: 20px;
+  -webkit-border-top-right-radius: 20px;
+  border-top-right-radius: 20px;
+  -moz-border-radius-bottomright: 20px;
+  -webkit-border-bottom-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+.ui-btn-up-a.ui-btn-corner-all {
+  -moz-border-radius: 20px;
+  -webkit-border-radius: 20px;
+  border-radius: 20px;
+}
+.ui-btn-up-b .ui-icon-search {
+  background-position: -80px 0px;
+}
+.ui-btn-up-b .ui-icon-home {
+  background-position: -80px -40px;
+}
+.ui-btn-hover-b .ui-icon-search {
+  background-position: -120px 0px;
+}
+.ui-btn-hover-b .ui-icon-home {
+  background-position: -120px -40px;
+}
 .ui-btn-up-a .ui-icon-search {
   background-position: 0px 0px;
 }
