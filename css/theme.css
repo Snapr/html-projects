@@ -1101,6 +1101,12 @@ input.ui-input-text, textarea.ui-input-text {
 .share-photo .image-controls .ui-icon-toggle {
   background-position: 0px -160px;
 }
+/* @myaccount custom stylz */
+.account-content {
+  margin-top: -16px;
+  /* Haxy.. need to come up with broader fix for top padding.. */
+
+}
 /*
 * A 
 * The Dark (Black as Night) swatch, used for screens with black BGs
