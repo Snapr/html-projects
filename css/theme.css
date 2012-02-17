@@ -65,7 +65,10 @@ textarea {
 /* Global layout sizes */
 /* Global item sizes */
 /* Global Icon Sprites */
-/* Main Icon Sprite */
+/* Top Bar Icon Sprite */
+/* Vertical Layout of Icons */
+/* Horizontal offsets for theme swatches / hover states */
+/* Action Icon Sprite */
 /* Vertical Layout of Icons */
 /* Horizontal offsets for theme swatches / hover states */
 /* Main Action Icon Sprite */
@@ -109,7 +112,11 @@ hr {
 .username {
   font-family: 'MuseoSansRounded700', Helvetica, Arial, sans-serif;
   font-size: 16px;
+  font-weight: normal;
   color: #333333;
+}
+.small-text {
+  font-size: 12px;
 }
 .ui-controlgroup-label, .ui-select .ui-btn {
   font-family: 'MuseoSansRounded700', Helvetica, Arial, sans-serif;
@@ -137,6 +144,12 @@ hr {
 .ui-content {
   padding: 8px;
 }
+.ui-content .ui-listview {
+  margin: -8px;
+}
+.ui-content .ui-listview-inset {
+  margin: 8px 0;
+}
 .ui-br {
   border-bottom: none;
 }
@@ -159,10 +172,36 @@ input.ui-input-text, textarea.ui-input-text {
 .ui-icon, .ui-checkbox-on .ui-icon, .ui-radio-on .ui-icon {
   background-color: transparent;
 }
+.ui-btn-icon-notext {
+  border: none;
+  background: none;
+  width: 40px;
+  height: 40px;
+  top: -4px;
+}
+.ui-btn-icon-notext .ui-btn-inner {
+  padding: 0;
+}
+.ui-btn-icon-notext.ui-shadow {
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
 .ui-icon-shadow {
   -moz-box-shadow: none;
   -webkit-box-shadow: none;
   box-shadow: none;
+}
+.ui-icon-plus, .ui-icon-minus {
+  width: 40px;
+  height: 40px;
+  background-image: url('../gfx/action-icons.png');
+}
+.ui-icon-plus {
+  background-position: 0 0px;
+}
+.ui-icon-minus {
+  background-position: 0 -40px;
 }
 .ui-checkbox .ui-btn-icon-left .ui-btn-inner, .ui-radio .ui-btn-icon-left .ui-btn-inner {
   padding-left: 36px;
@@ -643,12 +682,9 @@ input.ui-input-text, textarea.ui-input-text {
   margin-right: 0;
 }
 /*
-* Feed - Custom 
+* @feed PAGE
 */
 .feed-header {
-  margin-top: 8px;
-  /* I do not know why it wants this margin.. but it does */
-
   margin-bottom: 8px;
 }
 .feed-user-header {
@@ -780,7 +816,7 @@ input.ui-input-text, textarea.ui-input-text {
   height: 40px;
   margin-top: -20px;
   margin-left: -10px;
-  background-image: url('../gfx/action-buttons-main.png');
+  background-image: url('../gfx/action-icons-custom.png');
   -moz-border-radius: 0;
   -webkit-border-radius: 0;
   border-radius: 0;
@@ -835,7 +871,7 @@ input.ui-input-text, textarea.ui-input-text {
 .ui-checkbox .ui-icon {
   width: 40px;
   height: 40px;
-  background-image: url('../gfx/action-buttons-main.png');
+  background-image: url('../gfx/action-icons-custom.png');
 }
 .ui-checkbox .ui-checkbox-on .ui-icon {
   background-position: 0px -280px;
@@ -902,7 +938,7 @@ input.ui-input-text, textarea.ui-input-text {
 .share-photo .upload-image-privacy .ui-icon {
   width: 40px;
   height: 40px;
-  background-image: url('../gfx/action-buttons-main.png');
+  background-image: url('../gfx/action-icons-custom.png');
   display: block;
   position: absolute;
   top: -12px;
@@ -1014,7 +1050,7 @@ input.ui-input-text, textarea.ui-input-text {
   left: 0;
   width: 40px;
   height: 40px;
-  background-image: url('../gfx/action-buttons-main.png');
+  background-image: url('../gfx/action-icons-custom.png');
 }
 .share-photo .upload-image-location .ui-btn.ui-checkbox-on .ui-icon-checkbox-on {
   background-position: -40px -280px;
@@ -1096,10 +1132,52 @@ input.ui-input-text, textarea.ui-input-text {
   right: 0;
   width: 40px;
   height: 40px;
-  background-image: url('../gfx/action-buttons-main.png');
+  background-image: url('../gfx/action-icons-custom.png');
 }
 .share-photo .image-controls .ui-icon-toggle {
   background-position: 0px -160px;
+}
+/*
+* @people PAGE 
+*/
+/* Strip bare the normal lists style */
+.people-list .ui-btn {
+  background: none;
+}
+.people-list .ui-li-icon {
+  left: 0;
+  top: 8px;
+}
+.people-list .ui-link-inherit {
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+.people-list .ui-li-heading {
+  margin: 0 0 8px 0;
+}
+.people-list .ui-li-desc {
+  margin: -8px 0 0 0;
+}
+.people-list .ui-li, .people-list .ui-li-link-alt {
+  border-right: none;
+  border-left: none;
+}
+.people-list .ui-shadow, .people-list.ui-shadow {
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+.people-list .ui-corner-all,
+.people-list .ui-btn-corner-all,
+.people-list.ui-corner-all,
+.people-list.ui-btn-corner-all,
+.people-list .ui-corner-top,
+.people-list .ui-btn-corner-top,
+.people-list.ui-corner-top,
+.people-list.ui-btn-corner-top {
+  -moz-border-radius: 0px;
+  -webkit-border-radius: 0px;
+  border-radius: 0px;
 }
 /* @myaccount custom stylz */
 .account-content {
@@ -1260,13 +1338,13 @@ input.ui-input-text, textarea.ui-input-text {
   background-position: 0px -80px;
 }
 .ui-btn-hover-a .ui-icon-search {
-  background-position: -40px 0px;
+  background-position: -120px 0px;
 }
 .ui-btn-hover-a .ui-icon-home {
-  background-position: -40px -40px;
+  background-position: -120px -40px;
 }
 .ui-btn-hover-a .ui-icon-delete {
-  background-position: -40px -80px;
+  background-position: -120px -80px;
 }
 /*
 * B
@@ -1309,10 +1387,10 @@ input.ui-input-text, textarea.ui-input-text {
   box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2);
 }
 .ui-btn-up-b .ui-icon-search {
-  background-position: -80px 0px;
+  background-position: 0px 0px;
 }
 .ui-btn-up-b .ui-icon-home {
-  background-position: -80px -40px;
+  background-position: 0px -40px;
 }
 .ui-btn-hover-b .ui-icon-search {
   background-position: -120px 0px;
@@ -1325,15 +1403,12 @@ input.ui-input-text, textarea.ui-input-text {
 * - Standard light BG swatch, has subtle gray bg texture, used mainly for light colored dialog style views
 */
 /* Set bg for dialog */
-.ui-dialog.ui-overlay-c {
+.ui-dialog.ui-overlay-c, .ui-body-c {
   background: none;
   background-color: #f7f7f7;
   background-image: url('../gfx/bg-texture-light.gif');
 }
 /* Main Styles */
-.ui-body-c {
-  background: none;
-}
 .ui-body-c div[data-role="content"] {
   background-color: #f7f7f7;
   background-image: url('../gfx/bg-texture-light.gif');
@@ -1345,22 +1420,22 @@ input.ui-input-text, textarea.ui-input-text {
 }
 /* Button Styles */
 .ui-btn-up-c .ui-icon-search {
-  background-position: -160px 0px;
+  background-position: -40px 0px;
 }
 .ui-btn-up-c .ui-icon-home {
-  background-position: -160px -40px;
+  background-position: -40px -40px;
 }
 .ui-btn-up-c .ui-icon-delete {
-  background-position: -160px -80px;
+  background-position: -40px -80px;
 }
 .ui-btn-hover-c .ui-icon-search {
-  background-position: -200px 0px;
+  background-position: -120px 0px;
 }
 .ui-btn-hover-c .ui-icon-home {
-  background-position: -200px -40px;
+  background-position: -120px -40px;
 }
 .ui-btn-hover-c .ui-icon-delete {
-  background-position: -200px -80px;
+  background-position: -120px -80px;
 }
 /*
 * D

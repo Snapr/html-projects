@@ -87,7 +87,12 @@ hr{
 .username{
     font-family: @txt-font-special;
     font-size: @txt-size-username;
+    font-weight: normal;
     color: @color-txt-dark-on-light;
+}
+
+.small-text{
+    font-size: @txt-size-small;
 }
 
 .ui-controlgroup-label,
@@ -119,6 +124,15 @@ hr{
 
 .ui-content{
     padding: @padding-page-inset;
+}
+
+.ui-content .ui-listview{
+    margin: -@padding-page-inset;
+}
+
+.ui-content .ui-listview-inset{
+    margin: @padding-page-inset 0;
+    
 }
 
 
@@ -153,9 +167,34 @@ fieldset.ui-controlgroup{
     background-color: transparent;
 }
 
+.ui-btn-icon-notext{
+       border: none;
+       background: none;
+       width: 40px;
+       height: 40px;
+       top: -4px;
+       .ui-btn-inner {
+       padding: 0;
+       }
+       &.ui-shadow{
+            .box-shadow(none);
+       }
+      
+   }
+
 .ui-icon-shadow{
         .box-shadow(none);
 }
+
+.ui-icon-plus,
+.ui-icon-minus{
+    width: @gfx-action-icon-sprite-grid;
+    height: @gfx-action-icon-sprite-grid;
+    background-image: url('../gfx/action-icons.png')
+}
+
+.ui-icon-plus{ background-position: 0 @gfx-action-icon-sprite-plus-y;}
+.ui-icon-minus{ background-position: 0 @gfx-action-icon-sprite-minus-y;}
 
 
 .ui-checkbox .ui-btn-icon-left .ui-btn-inner, 
@@ -622,19 +661,15 @@ fieldset.ui-controlgroup{
         margin-right: 0;
         
     }
-    
-    
-    
 }
 
 
 
 /*
-* Feed - Custom 
+* @feed PAGE
 */
 
 .feed-header{
-    margin-top: @padding-page-inset; /* I do not know why it wants this margin.. but it does */
     margin-bottom: @padding-page-inset;
 }
 
@@ -773,7 +808,7 @@ fieldset.ui-controlgroup{
             height: 40px;
             margin-top: -20px;
             margin-left: -10px;
-            background-image: url('../gfx/action-buttons-main.png');
+            background-image: url('../gfx/action-icons-custom.png');
             .corner-all(0);
         }
         
@@ -840,7 +875,7 @@ fieldset.ui-controlgroup{
     .ui-icon{
         width: @gfx-action-icon-sprite-grid;
         height: @gfx-action-icon-sprite-grid;
-        background-image: url('../gfx/action-buttons-main.png');
+        background-image: url('../gfx/action-icons-custom.png');
     }
     
     
@@ -918,7 +953,7 @@ fieldset.ui-controlgroup{
         .ui-icon{
             width: @gfx-action-icon-sprite-grid;
             height: @gfx-action-icon-sprite-grid;
-            background-image: url('../gfx/action-buttons-main.png');
+            background-image: url('../gfx/action-icons-custom.png');
             display: block;
             position: absolute;
             top: -12px;
@@ -1016,7 +1051,7 @@ fieldset.ui-controlgroup{
                 left: 0;
                 width: @gfx-action-icon-sprite-grid;
                 height: @gfx-action-icon-sprite-grid;
-                background-image: url('../gfx/action-buttons-main.png');
+                background-image: url('../gfx/action-icons-custom.png');
             }
             &.ui-checkbox-on {
                 .ui-icon-checkbox-on{background-position: @as-offset-x-hover @gfx-action-icon-sprite-tick-y;}
@@ -1092,7 +1127,7 @@ fieldset.ui-controlgroup{
             right: 0;
             width: @gfx-action-icon-sprite-grid;
             height: @gfx-action-icon-sprite-grid;
-            background-image: url('../gfx/action-buttons-main.png');
+            background-image: url('../gfx/action-icons-custom.png');
         }
         .ui-icon-toggle{background-position: @as-offset-x @gfx-action-icon-sprite-toggle-y;}
         
@@ -1100,6 +1135,58 @@ fieldset.ui-controlgroup{
   
 
 }
+
+/*
+* @people PAGE 
+*/
+
+/* Strip bare the normal lists style */
+.people-list{
+    
+    .ui-btn{
+        background: none;
+    }
+    
+    .ui-li-icon{
+        left: 0;
+        top: @padding-element-inset;
+    }
+    
+    .ui-link-inherit{
+        padding-top: 8px;
+        padding-bottom: 8px;
+    }
+    
+    .ui-li-heading{
+        margin: 0 0 @padding-element-inset 0;
+    }
+    .ui-li-desc{
+        margin: -8px 0 0 0;
+    }
+    
+    .ui-li,
+    .ui-li-link-alt{
+        border-right: none;
+        border-left: none;
+    }
+
+    .ui-shadow, 
+    &.ui-shadow {
+        .box-shadow(none);
+    }
+    .ui-corner-all, 
+    .ui-btn-corner-all,
+    &.ui-corner-all, 
+    &.ui-btn-corner-all,
+    .ui-corner-top, 
+    .ui-btn-corner-top,
+    &.ui-corner-top, 
+    &.ui-btn-corner-top{
+        .corner-all(@corner-not-rounded);
+    }
+
+}
+
 
 /* @myaccount custom stylz */
 .account-content{
@@ -1288,7 +1375,8 @@ fieldset.ui-controlgroup{
 
 
 /* Set bg for dialog */
-.ui-dialog.ui-overlay-c{
+.ui-dialog.ui-overlay-c,
+.ui-body-c {
        background: none;
        background-color: @color-bg-light-tint;
        background-image: @gfx-bg-light-texture;
@@ -1296,7 +1384,7 @@ fieldset.ui-controlgroup{
 
 /* Main Styles */
 .ui-body-c {
-    background: none;
+   
     
     div[data-role="content"]{
         background-color: @color-bg-light-tint;
