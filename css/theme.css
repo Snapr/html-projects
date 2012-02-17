@@ -111,9 +111,10 @@ hr {
   font-size: 16px;
   color: #333333;
 }
-.ui-controlgroup-label {
+.ui-controlgroup-label, .ui-select .ui-btn {
   font-family: 'MuseoSansRounded700', Helvetica, Arial, sans-serif;
   text-transform: lowercase;
+  text-align: left;
 }
 .user-icon-small {
   width: 34px;
@@ -1120,10 +1121,9 @@ input.ui-input-text, textarea.ui-input-text {
 }
 /* Button Styles */
 .ui-btn-up-a {
-  border: none;
-  border-bottom: solid 1px rgba(255, 255, 255, 0.4);
+  border: solid 1px rgba(255, 255, 255, 0.1);
   background: none;
-  background-color: #26282a;
+  background-color: #000000;
   font-weight: normal;
   color: #cccccc;
   text-shadow: #000000 0px 1px 1px;
@@ -1166,10 +1166,9 @@ input.ui-input-text, textarea.ui-input-text {
   border-radius: 20px;
 }
 .ui-btn-hover-a, .ui-btn-down-a, .ui-btn-active-a {
-  border: none;
-  border-bottom: solid 1px rgba(255, 255, 255, 0.1);
+  border: solid 1px rgba(255, 255, 255, 0.4);
   background: none;
-  background-color: #434748;
+  background-color: #000000;
   font-weight: normal;
   color: #ffffff;
   text-shadow: #000000 0px 1px 1px;
@@ -1210,6 +1209,40 @@ input.ui-input-text, textarea.ui-input-text {
   -moz-border-radius: 20px;
   -webkit-border-radius: 20px;
   border-radius: 20px;
+}
+/* Tweak to A theme buttons for transparent BGs */
+.trans-bg .ui-btn-up-a {
+  border: none;
+  border-bottom: solid 1px rgba(255, 255, 255, 0.4);
+  background-color: #26282a;
+  -moz-box-shadow: inset 0 3px 20px #000000;
+  -webkit-box-shadow: inset 0 3px 20px #000000;
+  box-shadow: inset 0 3px 20px #000000;
+}
+.trans-bg .ui-btn-up-a.ui-shadow {
+  -moz-box-shadow: inset 0 3px 20px #000000;
+  -webkit-box-shadow: inset 0 3px 20px #000000;
+  box-shadow: inset 0 3px 20px #000000;
+}
+.trans-bg .ui-btn-up-a .ui-btn-inner {
+  border: none;
+}
+.trans-bg .ui-btn-hover-a, .trans-bg .ui-btn-down-a, .trans-bg .ui-btn-active-a {
+  border: none;
+  border-bottom: solid 1px rgba(255, 255, 255, 0.1);
+  background: none;
+  background-color: #434748;
+  -moz-box-shadow: inset 0 3px 20px #000000;
+  -webkit-box-shadow: inset 0 3px 20px #000000;
+  box-shadow: inset 0 3px 20px #000000;
+}
+.trans-bg .ui-btn-hover-a.ui-shadow, .trans-bg .ui-btn-down-a.ui-shadow, .trans-bg .ui-btn-active-a.ui-shadow {
+  -moz-box-shadow: inset 0 3px 20px #000000;
+  -webkit-box-shadow: inset 0 3px 20px #000000;
+  box-shadow: inset 0 3px 20px #000000;
+}
+.trans-bg .ui-btn-hover-a .ui-btn-inner, .trans-bg .ui-btn-down-a .ui-btn-inner, .trans-bg .ui-btn-active-a .ui-btn-inner {
+  border: none;
 }
 .ui-btn-up-a .ui-icon-search {
   background-position: 0px 0px;

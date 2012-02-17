@@ -90,9 +90,11 @@ hr{
     color: @color-txt-dark-on-light;
 }
 
-.ui-controlgroup-label{
+.ui-controlgroup-label,
+.ui-select .ui-btn{
     font-family: @txt-font-special;
     text-transform: lowercase;
+    text-align: left;
 }
 
 .user-icon-small{
@@ -1126,10 +1128,9 @@ fieldset.ui-controlgroup{
 /* Button Styles */
 
 .ui-btn-up-a {
-	border: none;
-	border-bottom: @border-light-on-dark;
+	border: @border-medium-on-dark;
 	background: none;
-	background-color: @color-bg-neutral-dark-tint;
+	background-color: @color-bg-dark;
 	font-weight: normal;
 	color: @color-txt-light-on-dark;
 	text-shadow: @color-shadow-dark-on-dark 0px 1px 1px;
@@ -1155,11 +1156,10 @@ fieldset.ui-controlgroup{
 
 .ui-btn-hover-a,
 .ui-btn-down-a,
-.ui-btn-active-a   {
-	border: none;
-	border-bottom: @border-medium-on-dark;
+.ui-btn-active-a {
+	border: @border-light-on-dark;
 	background: none;
-	background-color: @color-bg-neutral-dark;
+	background-color: @color-bg-dark;
 	font-weight: normal;
 	color: @color-bg-light;
 	text-shadow: @color-shadow-dark-on-dark 0px 1px 1px;
@@ -1183,7 +1183,37 @@ fieldset.ui-controlgroup{
 	&.ui-btn-corner-all{.corner-all (@corner-fully-rounded);}
 }
 
+/* Tweak to A theme buttons for transparent BGs */
+.trans-bg{
+    .ui-btn-up-a {
+    	border: none;
+    	border-bottom: @border-light-on-dark;
+    	background-color: @color-bg-neutral-dark-tint;
+        .box-shadow(inset 0 3px 20px @color-shadow-dark-on-dark);
+        &.ui-shadow{
+    	   .box-shadow(inset 0 3px 20px @color-shadow-dark-on-dark);
+    	}
+    	.ui-btn-inner{
+            border:none;
+        }
+    }
 
+    .ui-btn-hover-a,
+    .ui-btn-down-a,
+    .ui-btn-active-a   {
+    	border: none;
+    	border-bottom: @border-medium-on-dark;
+    	background: none;
+    	background-color: @color-bg-neutral-dark;
+        .box-shadow(inset 0 3px 20px @color-shadow-dark-on-dark);
+        &.ui-shadow{
+    	   .box-shadow(inset 0 3px 20px @color-shadow-dark-on-dark);
+    	}
+        .ui-btn-inner{
+            border:none;
+        }
+    }
+}
 
 
 .ui-btn-up-a{

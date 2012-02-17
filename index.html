@@ -9,7 +9,9 @@
         <script src="app/libs/json2.js" type="text/javascript" charset="utf-8"></script> <!-- just in case the browser sucks at JSON -->
         <script src="app/libs/jquery-1.7.1.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="app/libs/jq.cookie.js" type="text/javascript" charset="utf-8"></script>
-
+        
+        
+       
         <script type="text/javascript" charset="utf-8">
         snapr = {};
         snapr.redirect = '';
@@ -319,7 +321,7 @@
     </div>
     </script>
 
-    <!-- list currently linked services and add new ones -->
+    <!-- @linked @service PAGE list currently linked services and add new ones -->
     <div id="linked-services" data-title="Linked Services" data-add-back-btn="true" data-role="dialog">
         <div data-role="header">
             <h1>Linked Services</h1>
@@ -337,7 +339,7 @@
         </div>
     </div>
 
-    <!-- template for linking a service in #linked-services -->
+    <!-- @link @service ITEMfor linking a service in #linked-services -->
     <script id="add-linked-service-template" type="text/template">
     <div data-role="collapsible" data-collapsed="true">
     <% switch(provider) { case 'twitter': %>
@@ -368,7 +370,7 @@
     </div>
     </script>
 
-    <!-- template for showing a linked service in #linked-services -->
+    <!-- @linked @service ITEM for showing a linked service in #linked-services -->
     <script id="linked-service-template" type="text/template">
         <div data-role="collapsible" data-collapsed="true">
         <% switch(service.provider) { case 'twitter': %>
@@ -441,7 +443,7 @@
         </div>
     </script>
 
-
+    <!-- @connect -->
     <div id="connect" data-role="page">
         <div data-role="header">
             <h1>Sharing</h1>
@@ -504,6 +506,7 @@
         </div>
     </div><!-- /page -->
 
+    <!-- @thumb @image ITEM -->
     <script id="thumb-li-template" type="text/template">
         <% _.each( results, function( item, i ){ %>
         <a class="image-link" data-ajax="false" href="#/feed/?photo_id=<%= item.get('id') %>&username=<%= item.get('username') %>">
@@ -571,7 +574,7 @@
 
     </div><!-- /page -->
 
-    <!-- MAIN IMAGE ITEMS correct one -->
+    <!-- @feed @image ITEM correct one -->
     <script id="feed-li-list-template" type="text/template">
     
         <div class="image-item-block">
@@ -826,7 +829,7 @@
     </script>
 
 
-
+    <!-- @profile DIALOG-->
     <div id="user-profile" data-add-back-btn="true" data-role="dialog">
         <div data-role="header">
             <h1>User Profile</h1>
@@ -836,6 +839,7 @@
         </div>
     </div>
 
+    <!-- @people PAGE-->
     <div id="people" data-add-back-btn="true" data-role="page">
         <div data-role="header">
             <h1>People</h1>
@@ -847,6 +851,7 @@
         </div>
     </div>
 
+    <!-- @join snapr DIALOG-->
     <div id="join-snapr" data-add-back-btn="true" data-role="dialog">
         <div data-role="header">
             <h1>Join Snapr</h1>
@@ -874,12 +879,12 @@
         </div>
     </div><!-- /page -->
 
-
-    <div id="search" data-add-back-btn="true" data-role="dialog">
+    <!-- @search DIALOG-->
+    <div id="search" data-add-back-btn="true" data-role="dialog" data-theme="a">
         <div data-role="header">
             <h1>Search</h1>
         </div>
-        <div data-role="content">
+        <div data-role="content" data-theme="a">
             <form action="javascript: void(0);" accept-charset="utf-8" id="search-form">
                 <fieldset>
                     <input type="text" placeholder="Place Name&hellip;" autocapitalize="off" id="search-keywords">
@@ -888,13 +893,14 @@
                         <option value="tag">Search Tags</option>
                         <option value="user">Search Users</option>
                     </select>
-                    <input type="submit" data-theme="b" value="Search">
+                    <input type="submit" data-theme="e" value="Search">
                 </fieldset>
             </form>
 
         </div>
     </div><!-- /page -->
 
+    <!-- @map PAGE-->
     <div id="map" data-add-back-btn="true" data-role="page">
         <div data-role="header">
             <h1>Map</h1>
@@ -1097,7 +1103,7 @@
                
             </div>
             
-            <div class="upload-settings-layer">
+            <div class="upload-settings-layer trans-bg">
                 <div class="upload-settings">
                     <textarea name="description" id="description" placeholder="Add text..." data-theme="d"></textarea>
         
