@@ -1338,13 +1338,13 @@ input.ui-input-text, textarea.ui-input-text {
   background-position: 0px -80px;
 }
 .ui-btn-hover-a .ui-icon-search {
-  background-position: -120px 0px;
+  background-position: -40px 0px;
 }
 .ui-btn-hover-a .ui-icon-home {
-  background-position: -120px -40px;
+  background-position: -40px -40px;
 }
 .ui-btn-hover-a .ui-icon-delete {
-  background-position: -120px -80px;
+  background-position: -40px -80px;
 }
 /*
 * B
@@ -1387,10 +1387,10 @@ input.ui-input-text, textarea.ui-input-text {
   box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2);
 }
 .ui-btn-up-b .ui-icon-search {
-  background-position: 0px 0px;
+  background-position: -80px 0px;
 }
 .ui-btn-up-b .ui-icon-home {
-  background-position: 0px -40px;
+  background-position: -80px -40px;
 }
 .ui-btn-hover-b .ui-icon-search {
   background-position: -120px 0px;
@@ -1420,22 +1420,22 @@ input.ui-input-text, textarea.ui-input-text {
 }
 /* Button Styles */
 .ui-btn-up-c .ui-icon-search {
-  background-position: -40px 0px;
+  background-position: -160px 0px;
 }
 .ui-btn-up-c .ui-icon-home {
-  background-position: -40px -40px;
+  background-position: -160px -40px;
 }
 .ui-btn-up-c .ui-icon-delete {
-  background-position: -40px -80px;
+  background-position: -160px -80px;
 }
 .ui-btn-hover-c .ui-icon-search {
-  background-position: -120px 0px;
+  background-position: -200px 0px;
 }
 .ui-btn-hover-c .ui-icon-home {
-  background-position: -120px -40px;
+  background-position: -200px -40px;
 }
 .ui-btn-hover-c .ui-icon-delete {
-  background-position: -120px -80px;
+  background-position: -200px -80px;
 }
 /*
 * D
