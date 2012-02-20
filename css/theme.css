@@ -904,6 +904,15 @@ input.ui-input-text, textarea.ui-input-text {
 .image-item-block .reactions-list {
   display: none;
 }
+.image-item-block .reactions-list .ui-btn.ui-li {
+  border: none;
+}
+.image-item-block .reactions-list .ui-btn.ui-li .ui-link-inherit {
+  padding: 0 0 8px 0;
+}
+.image-item-block .reactions-list .ui-btn.ui-li .ui-icon-arrow-r {
+  display: none;
+}
 .image-item-block .comment-area {
   display: none;
 }

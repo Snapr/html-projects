@@ -653,8 +653,8 @@
                 </div>
    
               
-                <ul data-inset="true" class="reactions-list">
-                    Reactions..
+                <ul data-inset="true" class="reactions-list simple-list">
+                    Loading..
                 </ul>
         
                 <div class="comment-area">
@@ -682,7 +682,7 @@
  
     </script>
 
-    <!-- FROM PINK !!! redundant ???-->
+    <!-- FROM PINK !!! redundant ???
     <script id="feed-li-list-pink-template" type="text/template">
         <div>
             <div class="image-frame">
@@ -691,14 +691,14 @@
 
             <div class="image-caption"><%= item.get('description') %></div>
         </div>
-    </script>
+    </script>-->
 
 
     <script id="reaction-li-template" type="text/template">
     <% if(reaction.get('type') == 'comment'){ %>
-        <li><a data-ajax="false" href="#/feed/?username=<%= reaction.get('username') %>"><img class="ui-li-icon" src="http://sna.pr/avatars/<%= reaction.get('username') %>" width="16px" height="16px" /><h5><%= reaction.get('username') %>:</h5><p><%= reaction.get('comment') %></p></a></li>
+        <li><a data-ajax="false" href="#/feed/?username=<%= reaction.get('username') %>"><span class="username"><%= reaction.get('username') %>:</span> <%= reaction.get('comment') %></a></li>
     <% }else{ %>
-        <li><a data-ajax="false" href="#/feed/?username=<%= reaction.get('username') %>"><img class="ui-li-icon" src="http://sna.pr/avatars/<%= reaction.get('username') %>" width="16px" height="16px" /><h5><%= reaction.get('username') %> likes this.</h5></a></li>
+        <li><a data-ajax="false" href="#/feed/?username=<%= reaction.get('username') %>"><span class="username"><%= reaction.get('username') %></span> likes this.</a></li>
     <% } %>
     </script>
 
