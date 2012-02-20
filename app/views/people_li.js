@@ -37,12 +37,12 @@ snapr.views.people_li = Backbone.View.extend({
         if (following)
         {
             follow_button
-                .attr("data-icon", "minus")
+                .attr("data-icon", "check")
                 .removeClass("follow")
                 .addClass("unfollow")
                 .find("span.ui-icon")
                     .removeClass("ui-icon-plus")
-                    .addClass("ui-icon-minus")
+                    .addClass("ui-icon-check")
         }
         else
         {
@@ -51,7 +51,7 @@ snapr.views.people_li = Backbone.View.extend({
                 .removeClass("unfollow")
                 .addClass("follow")
                 .find("span.ui-icon")
-                    .removeClass("ui-icon-minus")
+                    .removeClass("ui-icon-check")
                     .addClass("ui-icon-plus")
         }
         

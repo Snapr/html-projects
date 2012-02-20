@@ -64,19 +64,6 @@ textarea {
 /* things where you really are serious about them not being rounded despite jQuery mobs thoughts otherwise*/
 /* Global layout sizes */
 /* Global item sizes */
-/* Global Icon Sprites */
-/* Top Bar Icon Sprite */
-/* Vertical Layout of Icons */
-/* Horizontal offsets for theme swatches / hover states */
-/* Action Icon Sprite */
-/* Vertical Layout of Icons */
-/* Horizontal offsets for theme swatches / hover states */
-/* Main Action Icon Sprite */
-/* Vertical Layout of Icons */
-/* Horizontal offsets for theme swatches / hover states */
-/* Large Sharing Icon Sprite */
-/* Vertical Layout of Icons */
-/* Horizontal offsets for theme swatches / hover states */
 /*
 * jQuery Mobile Theme Swatches
 *   -Based on Less Css jQuery Mobile Framework by Prinzhorn
@@ -86,6 +73,23 @@ textarea {
 /*
 * Global - stuffs from prinzhorn
 */
+/* Global Icon Sprites Layouts */
+/* 
+* Top Bar Icon Sprite - '../gfx/bar-icons.png'
+*/
+/* Vertical Layout of Icons */
+/* Horizontal offsets for theme swatches / hover states */
+/*
+* General JQuery Mob Icons '../gfx/general-jquerymob-icons'
+*/
+/* Horizontal Layout of Icons (this one matches the default jQuery mobile horizontal sprite) */
+/* Horizontal offsets for theme swatches / hover states */
+/* Custom Action Icon Sprite */
+/* Vertical Layout of Icons */
+/* Horizontal offsets for theme swatches / hover states */
+/* Large Sharing Icon Sprite */
+/* Vertical Layout of Icons */
+/* Horizontal offsets for theme swatches / hover states */
 body {
   font-size: 15px;
   background-color: #000000;
@@ -153,6 +157,14 @@ hr {
 .ui-br {
   border-bottom: none;
 }
+.ui-input-search {
+  padding-left: 20px;
+}
+.ui-input-search.ui-btn-corner-all {
+  -moz-border-radius: 20px;
+  -webkit-border-radius: 20px;
+  border-radius: 20px;
+}
 .ui-field-contain {
   padding: 0 0 8px 0;
 }
@@ -174,7 +186,7 @@ input.ui-input-text, textarea.ui-input-text {
 .ui-radio-on .ui-icon,
 .ui-icon-searchfield::after {
   background-color: transparent;
-  background-image: url('../gfx/icons-36-snapr.png');
+  background-image: url('../gfx/general-jquerymob-icons.png');
 }
 .ui-loader {
   margin-left: -40px;
@@ -1149,40 +1161,69 @@ input.ui-input-text, textarea.ui-input-text {
 * @people PAGE 
 */
 /* Strip bare the normal lists style */
-.people-list .ui-btn {
+.simple-list .ui-btn {
   background: none;
+  border: none;
 }
-.people-list .ui-li-icon {
+.simple-list .ui-btn.ui-li {
+  border-top: solid 1px #e4e4e4;
+}
+.simple-list .ui-li-icon {
   left: 0;
   top: 8px;
 }
-.people-list .ui-link-inherit {
+.simple-list .ui-link-inherit {
   padding-top: 8px;
   padding-bottom: 8px;
 }
-.people-list .ui-li-heading {
+.simple-list .ui-li-heading {
   margin: 0 0 8px 0;
 }
-.people-list .ui-li-desc {
+.simple-list .ui-li-desc {
   margin: -8px 0 0 0;
+  color: #999999;
 }
-.people-list .ui-li, .people-list .ui-li-link-alt {
+.simple-list .ui-li, .simple-list .ui-li-link-alt {
   border-right: none;
   border-left: none;
 }
-.people-list .ui-shadow, .people-list.ui-shadow {
+.simple-list .ui-li-link-alt {
+  width: 44px;
+}
+.simple-list .ui-li-link-alt .ui-btn {
+  border: none;
+  width: 44px;
+  height: 44px;
+  top: 4px;
+  right: 0;
+  margin-top: 0;
+}
+.simple-list .ui-li-link-alt .ui-btn .ui-icon {
+  height: 32px;
+  width: 32px;
+  margin-top: 0;
+  top: 4px;
+  right: 8px;
+}
+.simple-list .ui-li-link-alt .ui-btn .ui-icon-check {
+  background-position: -252px -108px;
+}
+.simple-list .ui-li-link-alt .ui-btn .ui-icon-plus {
+  background-position: 0px 0px;
+}
+.simple-list .ui-shadow, .simple-list.ui-shadow {
   -moz-box-shadow: none;
   -webkit-box-shadow: none;
   box-shadow: none;
 }
-.people-list .ui-corner-all,
-.people-list .ui-btn-corner-all,
-.people-list.ui-corner-all,
-.people-list.ui-btn-corner-all,
-.people-list .ui-corner-top,
-.people-list .ui-btn-corner-top,
-.people-list.ui-corner-top,
-.people-list.ui-btn-corner-top {
+.simple-list .ui-corner-all,
+.simple-list .ui-btn-corner-all,
+.simple-list.ui-corner-all,
+.simple-list.ui-btn-corner-all,
+.simple-list .ui-corner-top,
+.simple-list .ui-btn-corner-top,
+.simple-list.ui-corner-top,
+.simple-list.ui-btn-corner-top {
   -moz-border-radius: 0px;
   -webkit-border-radius: 0px;
   border-radius: 0px;
@@ -1415,11 +1456,13 @@ input.ui-input-text, textarea.ui-input-text {
   background: none;
   background-color: #f7f7f7;
   background-image: url('../gfx/bg-texture-light.gif');
+  border: solid 1px #e4e4e4;
 }
 /* Main Styles */
 .ui-body-c div[data-role="content"] {
   background-color: #f7f7f7;
   background-image: url('../gfx/bg-texture-light.gif');
+  border: none;
   border-radius: 8px;
 }
 .ui-body-c .ui-header {

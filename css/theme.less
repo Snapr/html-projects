@@ -54,6 +54,7 @@ textarea{
 
 
 @import "variables.less";
+@import "sprites.less";
 @import "mixins.less";
 
 
@@ -140,6 +141,13 @@ hr{
     border-bottom: none
 }
 
+.ui-input-search{
+    padding-left: 20px;
+    &.ui-btn-corner-all{
+        .corner-all(@corner-fully-rounded);
+    }
+}
+
 .ui-field-contain{
     padding: 0 0 @padding-page-inset 0;
 }
@@ -166,7 +174,7 @@ fieldset.ui-controlgroup{
 .ui-radio-on .ui-icon,
 .ui-icon-searchfield::after{
     background-color: transparent;
-    background-image: url('../gfx/icons-36-snapr.png');
+    background-image: url('../gfx/general-jquerymob-icons.png');
 }
 
 .ui-loader{
@@ -1155,10 +1163,15 @@ fieldset.ui-controlgroup{
 */
 
 /* Strip bare the normal lists style */
-.people-list{
+.simple-list{
     
     .ui-btn{
         background: none;
+        border: none;
+        &.ui-li{
+            border-top: @border-medium-on-light;
+
+        }
     }
     
     .ui-li-icon{
@@ -1176,6 +1189,7 @@ fieldset.ui-controlgroup{
     }
     .ui-li-desc{
         margin: -8px 0 0 0;
+        color: @color-txt-light-on-light;
     }
     
     .ui-li,
@@ -1183,7 +1197,34 @@ fieldset.ui-controlgroup{
         border-right: none;
         border-left: none;
     }
-
+    
+    .ui-li-link-alt{
+        width: 44px;
+        .ui-btn {
+            border: none;
+            width: 44px;
+            height: 44px;
+            top: 4px;
+            right: 0;
+            margin-top: 0;
+            .ui-icon{
+                height: 32px;
+                width: 32px;
+                margin-top: 0;
+                top: 4px;
+                right: 8px;
+            }
+            
+            .ui-icon-check{
+                background-position: @gfx-general-icon-sprite-check-x @g-yellow-offset-y;
+            }
+            .ui-icon-plus{
+                background-position: @gfx-general-icon-sprite-plus-x @g-light-offset-y;
+            }
+            
+        }
+    } 
+        
     .ui-shadow, 
     &.ui-shadow {
         .box-shadow(none);
@@ -1394,23 +1435,21 @@ fieldset.ui-controlgroup{
        background: none;
        background-color: @color-bg-light-tint;
        background-image: @gfx-bg-light-texture;
+       border: @border-medium-on-light;
 }
 
 /* Main Styles */
-.ui-body-c {
-   
-    
+.ui-body-c {   
     div[data-role="content"]{
         background-color: @color-bg-light-tint;
         background-image: @gfx-bg-light-texture;
+        border: none;
         border-radius: @corner-page-element-rounded;
     }
-    
     .ui-header{
         color: @color-txt-medium-on-light;
         text-shadow: @color-shadow-light-on-light 0px 1px 1px;
     }
-   
 }
 
 /* Button Styles */
