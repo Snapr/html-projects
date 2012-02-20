@@ -25,6 +25,8 @@ html {
     -webkit-font-smoothing: antialiased;
 }
 
+input[type="search"]::-webkit-search-cancel-button {-webkit-appearance: none;}
+
 
 .main-image{
     -webkit-touch-callout: default;
@@ -146,6 +148,18 @@ hr{
     &.ui-btn-corner-all{
         .corner-all(@corner-fully-rounded);
     }
+    &.ui-icon-searchfield::after{
+        margin-top: -18px;
+    }
+    
+    .ui-input-clear {
+        position: absolute;
+        right: -15px;
+        margin-top: -18px;
+        .ui-icon-delete{
+            background-position: @gfx-general-icon-sprite-delete-x @g-light-offset-y;
+        }
+    }
 }
 
 .ui-field-contain{
@@ -175,6 +189,8 @@ fieldset.ui-controlgroup{
 .ui-icon-searchfield::after{
     background-color: transparent;
     background-image: url('../gfx/general-jquerymob-icons.png');
+    width: @gfx-general-icon-sprite-grid;
+    height: @gfx-general-icon-sprite-grid;
 }
 
 .ui-loader{
@@ -1452,18 +1468,21 @@ fieldset.ui-controlgroup{
     }
 }
 
-/* Button Styles */
-.ui-btn-up-c{
-       .ui-icon-search{background-position: @c-offset-x @gfx-main-icon-sprite-search-icon-y;}
-       .ui-icon-home{ background-position: @c-offset-x @gfx-main-icon-sprite-home-icon-y;}
-       .ui-icon-delete{ background-position: @c-offset-x @gfx-main-icon-sprite-close-icon-y;}
+/* Button Styles for header */
+.ui-header{
+    .ui-btn-up-c{
+           .ui-icon-search{background-position: @c-offset-x @gfx-main-icon-sprite-search-icon-y;}
+           .ui-icon-home{ background-position: @c-offset-x @gfx-main-icon-sprite-home-icon-y;}
+           .ui-icon-delete{ background-position: @c-offset-x @gfx-main-icon-sprite-close-icon-y;}
+    }
+
+    .ui-btn-hover-c{
+        .ui-icon-search{background-position: @c-offset-x-hover @gfx-main-icon-sprite-search-icon-y;}
+        .ui-icon-home{ background-position: @c-offset-x-hover @gfx-main-icon-sprite-home-icon-y;}
+        .ui-icon-delete{ background-position: @c-offset-x-hover @gfx-main-icon-sprite-close-icon-y;}
+    }
 }
 
-.ui-btn-hover-c{
-    .ui-icon-search{background-position: @c-offset-x-hover @gfx-main-icon-sprite-search-icon-y;}
-    .ui-icon-home{ background-position: @c-offset-x-hover @gfx-main-icon-sprite-home-icon-y;}
-    .ui-icon-delete{ background-position: @c-offset-x-hover @gfx-main-icon-sprite-close-icon-y;}
-}
 
 
 

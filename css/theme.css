@@ -18,6 +18,9 @@ html {
   -webkit-touch-callout: none;
   -webkit-font-smoothing: antialiased;
 }
+input[type="search"]::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+}
 .main-image {
   -webkit-touch-callout: default;
 }
@@ -165,6 +168,17 @@ hr {
   -webkit-border-radius: 20px;
   border-radius: 20px;
 }
+.ui-input-search.ui-icon-searchfield::after {
+  margin-top: -18px;
+}
+.ui-input-search .ui-input-clear {
+  position: absolute;
+  right: -15px;
+  margin-top: -18px;
+}
+.ui-input-search .ui-input-clear .ui-icon-delete {
+  background-position: -72px 0px;
+}
 .ui-field-contain {
   padding: 0 0 8px 0;
 }
@@ -187,6 +201,8 @@ input.ui-input-text, textarea.ui-input-text {
 .ui-icon-searchfield::after {
   background-color: transparent;
   background-image: url('../gfx/general-jquerymob-icons.png');
+  width: 36px;
+  height: 36px;
 }
 .ui-loader {
   margin-left: -40px;
@@ -1469,23 +1485,23 @@ input.ui-input-text, textarea.ui-input-text {
   color: #666666;
   text-shadow: #ffffff 0px 1px 1px;
 }
-/* Button Styles */
-.ui-btn-up-c .ui-icon-search {
+/* Button Styles for header */
+.ui-header .ui-btn-up-c .ui-icon-search {
   background-position: -160px 0px;
 }
-.ui-btn-up-c .ui-icon-home {
+.ui-header .ui-btn-up-c .ui-icon-home {
   background-position: -160px -40px;
 }
-.ui-btn-up-c .ui-icon-delete {
+.ui-header .ui-btn-up-c .ui-icon-delete {
   background-position: -160px -80px;
 }
-.ui-btn-hover-c .ui-icon-search {
+.ui-header .ui-btn-hover-c .ui-icon-search {
   background-position: -200px 0px;
 }
-.ui-btn-hover-c .ui-icon-home {
+.ui-header .ui-btn-hover-c .ui-icon-home {
   background-position: -200px -40px;
 }
-.ui-btn-hover-c .ui-icon-delete {
+.ui-header .ui-btn-hover-c .ui-icon-delete {
   background-position: -200px -80px;
 }
 /*
