@@ -169,8 +169,27 @@ input.ui-input-text, textarea.ui-input-text {
 .ui-controlgroup, fieldset.ui-controlgroup {
   margin: 0 0 8px 0;
 }
-.ui-icon, .ui-checkbox-on .ui-icon, .ui-radio-on .ui-icon {
+.ui-icon,
+.ui-checkbox-on .ui-icon,
+.ui-radio-on .ui-icon,
+.ui-icon-searchfield::after {
   background-color: transparent;
+  background-image: url('../gfx/icons-36-snapr.png');
+}
+.ui-loader {
+  margin-left: -40px;
+  margin-top: -40px;
+  padding: 16px;
+  width: 64px;
+}
+.ui-loader .ui-icon-loading {
+  background-image: url(../gfx/spinner.png);
+  width: 56px;
+  height: 56px;
+  background-size: 56px 56px;
+}
+.ui-loader h1 {
+  display: none;
 }
 .ui-btn-icon-notext {
   border: none;
@@ -191,17 +210,6 @@ input.ui-input-text, textarea.ui-input-text {
   -moz-box-shadow: none;
   -webkit-box-shadow: none;
   box-shadow: none;
-}
-.ui-icon-plus, .ui-icon-minus {
-  width: 40px;
-  height: 40px;
-  background-image: url('../gfx/action-icons.png');
-}
-.ui-icon-plus {
-  background-position: 0 0px;
-}
-.ui-icon-minus {
-  background-position: 0 -40px;
 }
 .ui-checkbox .ui-btn-icon-left .ui-btn-inner, .ui-radio .ui-btn-icon-left .ui-btn-inner {
   padding-left: 36px;

@@ -163,9 +163,32 @@ fieldset.ui-controlgroup{
 
 .ui-icon,
 .ui-checkbox-on .ui-icon, 
-.ui-radio-on .ui-icon {
+.ui-radio-on .ui-icon,
+.ui-icon-searchfield::after{
     background-color: transparent;
+    background-image: url('../gfx/icons-36-snapr.png');
 }
+
+.ui-loader{
+    margin-left: -40px;
+    margin-top: -40px;
+    padding: 16px;
+    width: 64px;
+
+
+    .ui-icon-loading {
+        background-image: url(../gfx/spinner.png);
+        width: 56px;
+        height: 56px;
+        background-size: 56px 56px;
+    }
+    
+    h1{
+        display: none;
+    }
+}
+
+
 
 .ui-btn-icon-notext{
        border: none;
@@ -186,15 +209,6 @@ fieldset.ui-controlgroup{
         .box-shadow(none);
 }
 
-.ui-icon-plus,
-.ui-icon-minus{
-    width: @gfx-action-icon-sprite-grid;
-    height: @gfx-action-icon-sprite-grid;
-    background-image: url('../gfx/action-icons.png')
-}
-
-.ui-icon-plus{ background-position: 0 @gfx-action-icon-sprite-plus-y;}
-.ui-icon-minus{ background-position: 0 @gfx-action-icon-sprite-minus-y;}
 
 
 .ui-checkbox .ui-btn-icon-left .ui-btn-inner, 
