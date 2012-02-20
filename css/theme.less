@@ -189,8 +189,13 @@ fieldset.ui-controlgroup{
 .ui-icon-searchfield::after{
     background-color: transparent;
     background-image: url('../gfx/general-jquerymob-icons.png');
-    width: @gfx-general-icon-sprite-grid;
+    width: @gfx-general-icon-sprite-grid / 2;
     height: @gfx-general-icon-sprite-grid;
+}
+
+.ui-btn-icon-left .ui-icon, 
+.ui-btn-icon-right .ui-icon {
+    margin-top: -@gfx-general-icon-sprite-grid / 2;
 }
 
 .ui-loader{

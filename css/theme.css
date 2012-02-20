@@ -201,8 +201,11 @@ input.ui-input-text, textarea.ui-input-text {
 .ui-icon-searchfield::after {
   background-color: transparent;
   background-image: url('../gfx/general-jquerymob-icons.png');
-  width: 36px;
+  width: 18px;
   height: 36px;
+}
+.ui-btn-icon-left .ui-icon, .ui-btn-icon-right .ui-icon {
+  margin-top: -18px;
 }
 .ui-loader {
   margin-left: -40px;
