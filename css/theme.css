@@ -93,6 +93,10 @@ textarea {
 /* Large Sharing Icon Sprite */
 /* Vertical Layout of Icons */
 /* Horizontal offsets for theme swatches / hover states */
+/*
+* Extra Icons '../gfx/extra-icons.png'
+*/
+/* Vertical Layout of Icons */
 body {
   font-size: 15px;
   background-color: #000000;
@@ -143,6 +147,9 @@ hr {
 }
 .set-full-height {
   min-height: 400px;
+}
+.ui-icon.extra-icons {
+  background-image: url('../gfx/extra-icons.png');
 }
 /*
 * JQuery Mob - Custom 
@@ -827,6 +834,26 @@ input.ui-input-text, textarea.ui-input-text {
   vertical-align: middle;
   display: inline-block;
 }
+.image-item-block .image-item-topbar .image-time .ui-icon-clock {
+  background-position: -9px -192px;
+  width: 14px;
+}
+.image-item-block .image-item-topbar .image-time-and-location .ui-icon-venue {
+  background-position: -10px -224px;
+  width: 10px;
+}
+.image-item-block .image-description {
+  margin-top: 8px;
+  margin-bottom: -8px;
+}
+.image-item-block .image-description .ui-icon-quote {
+  display: inline-block;
+  height: 15px;
+  background-position: -6px -168px;
+}
+.image-item-block .image-description .goto-spot {
+  color: #999999;
+}
 .image-item-block .image-item-base {
   position: relative;
 }
@@ -915,6 +942,9 @@ input.ui-input-text, textarea.ui-input-text {
 }
 .image-item-block .comment-area {
   display: none;
+}
+.image-item-block .comment-area .photo-comment {
+  min-height: 75px;
 }
 .ui-checkbox .ui-icon {
   width: 40px;

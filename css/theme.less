@@ -120,6 +120,10 @@ hr{
     min-height: 400px;
 }
 
+.ui-icon.extra-icons{
+    background-image: url('../gfx/extra-icons.png');
+}
+
 /*
 * JQuery Mob - Custom 
 *   Some basics
@@ -822,6 +826,34 @@ fieldset.ui-controlgroup{
             
         }
         
+        .image-time{
+            .ui-icon-clock{
+                background-position: -9px -192px;
+                width: 14px;
+            }
+        }
+        .image-time-and-location{
+            .ui-icon-venue{
+                background-position: -10px -224px;
+                width: 10px;
+            }
+        }
+        
+    }
+    
+    .image-description{
+        margin-top: @padding-page-inset;
+        margin-bottom: -@padding-page-inset;
+        
+        .ui-icon-quote{
+            display: inline-block;
+            height: @txt-size-base;
+            background-position: -6px -168px;
+        }
+    
+        .goto-spot{
+            color: @color-txt-light-on-light;
+        }
     }
     
     .image-item-base{
@@ -920,6 +952,9 @@ fieldset.ui-controlgroup{
     
     .comment-area{
         display: none;
+        .photo-comment{
+            min-height: 75px;
+        }
     }
 
 }

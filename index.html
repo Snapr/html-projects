@@ -615,11 +615,14 @@
                 <!-- Show Time only if no location -->
                 <% if(item.get('location').location){ %> 
                 <span class="image-time-and-location">
-                <a class="goto-map"><%= item.get('location').location %> <%= item.get('date') %></a>
+                <a class="goto-map">
+                    <span class="ui-icon extra-icons ui-icon-venue"></span>
+                    <%= item.get('location').location %> <%= item.get('date') %></a>
                 </span>
                 <%}else{%>
                 <span class="image-time">
-                <%= item.get('date') %>
+                    <span class="ui-icon extra-icons ui-icon-clock"></span>
+                    <%= item.get('date') %>
                 </span>
                 <% }%>
             </div>
@@ -629,6 +632,12 @@
             </a>
 
             <div class="image-description">
+            
+                <% if (item.get('description')){%>
+                    <span class="ui-icon extra-icons ui-icon-quote"></span>
+                <%}%>
+                
+            
                 <%= item.get('description') %>
                 
                 <% if (item.get('location').spot_id){%>
@@ -660,11 +669,11 @@
                 <div class="comment-area">
                     <div>
                         <form action="javascript:void(0);" class="comment-form" accept-charset="utf-8">
-                            <textarea name="comment-<%= item.get('id') %>" placeholder="Comment" />
+                            <textarea name="comment-<%= item.get('id') %>" placeholder=" " class="photo-comment" />
                             <div class="ui-grid-b">
                                 <div class="ui-block-a"></div>
                                 <div class="ui-block-b"></div>
-                                <div class="ui-block-c"><input data-theme="e" type="submit" value="Send" /></div>
+                                <div class="ui-block-c"><input data-theme="e" type="submit" value="Comment" /></div>
                     
                             </div>
                         </form>
@@ -776,7 +785,7 @@
            
     </script>
 
-    <!-- Main Image Item NOT correct...-->
+    <!-- Main Image Item NOT correct...
     <script id="feed-li-list-template" type="text/template">
         <div class="image-item-block">
             <div class="image-item-top">
@@ -786,7 +795,7 @@
                 <a class="username" data-ajax="false" data-transition="slide" href="#/feed/?username=<%= item.get('username') %>"><%= item.get('username') %></a>
                 
                 <% if item.get('location').location {%>
-                <a class="goto-map image-time-and-location"><%= item.get('date') %>. <%= item.get('location').location %> </a>
+                <a class="goto-map image-time-and-location"><span class="ui-icon extra-icons ui-icon-clock"></span><%= item.get('date') %>. <%= item.get('location').location %> </a>
                 <%}else{%>
                     <a class="goto-map image-time"><%= item.get('date') %></a>
                 <%}%>
@@ -824,14 +833,14 @@
                 <h4>Comment</h4>
                 <div>
                     <form action="javascript:void(0);" class="comment-form" accept-charset="utf-8">
-                        <textarea name="comment-<%= item.get('id') %>" placeholder="Comment" />
+                        <textarea name="comment-<%= item.get('id') %>" placeholder="What do you think?" />
                         <input type="submit" value="Submit" />
                     </form>
                 </div>
             </div>
 
         </div>
-    </script>
+    </script>-->
 
     <script id="feed-li-grid-template" type="text/template">
         <a href="https://s3.amazonaws.com/media-server<%= item.get('server_id') %>.snapr.us/lrg/<%= item.get('secret') %>/<%= item.get('id') %>.jpg" rel="external" class="gallery_link image-link image-list-item"><img src="https://s3.amazonaws.com/media-server<%= item.get('server_id') %>.snapr.us/thm2/<%= item.get('secret') %>/<%= item.get('id') %>.jpg" alt="<%= item.get('description') %>" class="thumb-image thumb-med" /></a>
