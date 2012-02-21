@@ -1495,7 +1495,131 @@ input.ui-input-text, textarea.ui-input-text {
 }
 .ui-btn-up-b.ui-btn-active {
   background: none;
-  background-color: black;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#000000), to(#26282a));
+  /* Saf4+, Chrome */
+
+  background-image: -webkit-linear-gradient(top, #000000, #26282a);
+  /* Chrome 10+, Saf5.1+ */
+
+  background-image: -moz-linear-gradient(top, #000000, #26282a);
+  /* FF3.6 */
+
+  background-image: -ms-linear-gradient(top, #000000, #26282a);
+  /* IE10 */
+
+  background-image: -o-linear-gradient(top, #000000, #26282a);
+  /* Opera 11.10+ */
+
+  background-image: linear-gradient(top, #000000, #26282a);
+}
+.ui-btn-hover-b, .ui-btn-active-b {
+  border: solid 1px #000000;
+  background: #434748;
+  font-weight: bold;
+  color: #999999;
+  text-shadow: rgba(0, 0, 0, 0.5) 0px 1px 1px;
+  font-size: 12px;
+  text-decoration: none;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#4a4f50), to(#2d3032));
+  /* Saf4+, Chrome */
+
+  background-image: -webkit-linear-gradient(top, #4a4f50, #2d3032);
+  /* Chrome 10+, Saf5.1+ */
+
+  background-image: -moz-linear-gradient(top, #4a4f50, #2d3032);
+  /* FF3.6 */
+
+  background-image: -ms-linear-gradient(top, #4a4f50, #2d3032);
+  /* IE10 */
+
+  background-image: -o-linear-gradient(top, #4a4f50, #2d3032);
+  /* Opera 11.10+ */
+
+  background-image: linear-gradient(top, #4a4f50, #2d3032);
+}
+.ui-btn-hover-b .ui-btn-inner, .ui-btn-active-b .ui-btn-inner {
+  border: none;
+}
+.ui-btn-hover-b a.ui-link-inherit, .ui-btn-active-b a.ui-link-inherit {
+  color: #999999;
+}
+.ui-btn-hover-b.ui-shadow, .ui-btn-active-b.ui-shadow {
+  -moz-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2);
+  -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+.ui-btn-hover-b.ui-btn-active, .ui-btn-active-b.ui-btn-active {
+  background: none;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#000000), to(#26282a));
+  /* Saf4+, Chrome */
+
+  background-image: -webkit-linear-gradient(top, #000000, #26282a);
+  /* Chrome 10+, Saf5.1+ */
+
+  background-image: -moz-linear-gradient(top, #000000, #26282a);
+  /* FF3.6 */
+
+  background-image: -ms-linear-gradient(top, #000000, #26282a);
+  /* IE10 */
+
+  background-image: -o-linear-gradient(top, #000000, #26282a);
+  /* Opera 11.10+ */
+
+  background-image: linear-gradient(top, #000000, #26282a);
+}
+.ui-btn-down-b {
+  border: solid 1px #000000;
+  background: #434748;
+  font-weight: bold;
+  color: #666666;
+  text-shadow: rgba(0, 0, 0, 0.5) 0px 1px 1px;
+  font-size: 12px;
+  text-decoration: none;
+  background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, #26282a), color-stop(0.7, #26282a), color-stop(1, #1a1b1d));
+  /* Saf4+, Chrome */
+  background-image: -webkit-linear-gradient(bottom, #26282a 0%, #26282a 70%, #1a1b1d 100%);
+  /* Chrome 10+, Saf5.1+ */
+
+  background-image: -moz-linear-gradient(bottom, #26282a 0%, #26282a 70%, #1a1b1d 100%);
+  /* FF3.6 */
+
+  background-image: -ms-linear-gradient(bottom, #26282a 0%, #26282a 70%, #1a1b1d 100%);
+  /* IE10 */
+
+  background-image: -o-linear-gradient(bottom, #26282a 0%, #26282a 70%, #1a1b1d 100%);
+  /* Opera 11.10+ */
+
+  background-image: linear-gradient(bottom, #26282a 0%, #26282a 70%, #1a1b1d 100%);
+}
+.ui-btn-down-b .ui-btn-inner {
+  border: none;
+}
+.ui-btn-down-b a.ui-link-inherit {
+  color: #999999;
+}
+.ui-btn-down-b.ui-shadow {
+  -moz-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2);
+  -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+.ui-btn-down-b.ui-btn-active {
+  background: none;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#000000), to(#26282a));
+  /* Saf4+, Chrome */
+
+  background-image: -webkit-linear-gradient(top, #000000, #26282a);
+  /* Chrome 10+, Saf5.1+ */
+
+  background-image: -moz-linear-gradient(top, #000000, #26282a);
+  /* FF3.6 */
+
+  background-image: -ms-linear-gradient(top, #000000, #26282a);
+  /* IE10 */
+
+  background-image: -o-linear-gradient(top, #000000, #26282a);
+  /* Opera 11.10+ */
+
+  background-image: linear-gradient(top, #000000, #26282a);
 }
 .ui-btn-up-b .ui-icon-search {
   background-position: -80px 0px;
