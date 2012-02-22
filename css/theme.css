@@ -151,6 +151,15 @@ hr {
 .ui-icon.extra-icons {
   background-image: url('../gfx/extra-icons.png');
 }
+.inline-footer {
+  margin: 8px -8px -8px -8px;
+  -moz-border-radius-bottomleft: 8px;
+  -webkit-border-bottom-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+  -moz-border-radius-bottomright: 8px;
+  -webkit-border-bottom-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
 /*
 * JQuery Mob - Custom 
 *   Some basics
