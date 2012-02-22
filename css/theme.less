@@ -116,6 +116,11 @@ hr{
     height: @size-large-avatar;
 }
 
+.thumb-med{
+    width: @size-img-thumb;
+    height: @size-img-thumb;
+}
+
 .set-full-height{
     min-height: 400px;
 }
@@ -128,6 +133,34 @@ hr{
     margin: @padding-page-inset -@padding-page-inset -@padding-page-inset -@padding-page-inset;
     .corner-bottom(@corner-page-element-rounded);
 }
+
+/* progress bars */
+.progress-bar{
+    width: 100%;
+    position: relative;
+    top: 2px;
+
+    .bar{
+        height: 16px;
+        .corner-all(4px);
+       
+    }
+    .bar-prog{
+        position: absolute;
+        top: 0;
+        left: 0;
+        .linear-gradient(@color-bg-highlight-main, @color-bg-highlight-main-tint);
+    }
+    .bar-bg{
+        background-color: #C5C4C4;
+        -moz-box-shadow: inset 0 0 9px 2px #AFAEAE;
+        -webkit-box-shadow: inset 0 0 9px 2px #AFAEAE;
+        box-shadow: inset 0 0 9px 2px #AFAEAE;
+    } 
+}
+
+
+
 
 /*
 * JQuery Mob - Custom 
@@ -410,6 +443,20 @@ fieldset.ui-controlgroup{
     
     
 }
+
+/* Style for inset header as seen on user feed and upload pages */
+.page-inset-header{
+    margin-left: -@padding-page-inset;
+    margin-right: -@padding-page-inset;
+    margin-top:  -@padding-page-inset;
+    position: relative;
+    background-color: @color-bg-neutral-light-tint;
+    background-image: @gfx-bg-light-texture;
+    .corner-top (@corner-page-element-rounded);
+    .box-shadow(inset 5px 0 20px rgba(0, 0, 0, 0.2));
+}
+
+
 
 /*
 * Dialogs - Stripping a lot of the jMob stuff
@@ -758,17 +805,11 @@ fieldset.ui-controlgroup{
     }
 }
 
+
+
 .feed-user-header{
-    position: relative;
-    background-color: @color-bg-neutral-light-tint;
-    background-image: @gfx-bg-light-texture;
     height: 100px;
     overflow: hidden;
-    margin-left: -@padding-page-inset;
-    margin-right: -@padding-page-inset;
-    .corner-top (@corner-page-element-rounded);
-    .box-shadow(inset 5px 0 20px rgba(0, 0, 0, 0.2));
-    
     .ui-bar{
         margin-left: 0;
         margin-right: 0;
@@ -1017,7 +1058,10 @@ fieldset.ui-controlgroup{
     }
     
 }
-    
+ 
+/*
+* @share - PAGE 
+*/   
 
 .share-photo{
     
@@ -1261,8 +1305,45 @@ fieldset.ui-controlgroup{
         .ui-icon-toggle{background-position: @as-offset-x @gfx-action-icon-sprite-toggle-y;}
         
     }
-  
+}
 
+/*
+* @uploading - PAGE 
+*/   
+
+.upload-progress-header{
+    padding: @padding-page-inset;
+   
+    
+    .upload-image-thumb-gall{
+        position: absolute;
+        left:@padding-page-inset;
+        top: @padding-page-inset;
+    }
+    
+    .upload-info-block{
+        margin-left: @size-img-thumb + @padding-page-inset;
+        p{
+               margin-top: 0;
+               margin-bottom: @padding-page-inset;
+         }
+        .upload-image-venue{
+           a{
+               color: @color-txt-medium-on-light;
+           } 
+        }
+        
+        .upload-shared-to{
+            li{
+                list-style: none;
+                display: inline-block;
+                width: 20px;
+                height: 20px;
+            }
+        }
+        
+    }
+    
 }
 
 /*

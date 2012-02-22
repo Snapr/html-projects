@@ -600,7 +600,7 @@
 
        <!-- @feed @userheader ITEM block at top of user feed  -->
        <script id="user-header-template" type="text/template">
-       <div class="feed-user-header">
+       <div class="feed-user-header page-inset-header">
            <div class="ui-bar-e feed-follow-bar ui-bar top-no-arrow">
                <span class="ui-bar-inner">
                <span class="username"><%= user.get('username') %></span>
@@ -738,7 +738,7 @@
 
     <!-- @feed @thumb ITEM - clicks to gallery view -->
     <script id="feed-li-grid-template" type="text/template">
-    <a href="https://s3.amazonaws.com/media-server<%= item.get('server_id') %>.snapr.us/lrg/<%= item.get('secret') %>/<%= item.get('id') %>.jpg" rel="external" class="gallery_link image-link"><img src="https://s3.amazonaws.com/media-server<%= item.get('server_id') %>.snapr.us/thm2/<%= item.get('secret') %>/<%= item.get('id') %>.jpg" alt="<%= item.get('description') %>" class="thumb-image thumb-med" /><!-- ONE --></a>
+    <a href="https://s3.amazonaws.com/media-server<%= item.get('server_id') %>.snapr.us/lrg/<%= item.get('secret') %>/<%= item.get('id') %>.jpg" rel="external" class="gallery_link image-link"><img src="https://s3.amazonaws.com/media-server<%= item.get('server_id') %>.snapr.us/thm2/<%= item.get('secret') %>/<%= item.get('id') %>.jpg" alt="<%= item.get('description') %>" class="thumb-image thumb-med" /></a>
     </script>
 
     <!-- @feed @reactions ITEM - display for comments / favs -->
@@ -999,12 +999,48 @@
 
 
     <!-- @uploading PAGE - upload progress view  -->
-    <div id="uploading" data-role="page">
-        <div data-role="header">
+    <div id="uploading" data-role="page" data-theme="d">
+        <div data-role="header" data-theme="b">
             <a class="cancel-upload" data-ajax="false" data-role="button">Cancel</a>
             <h1>Uploading</h1>
         </div>
-        <div data-role="content">
+        <div data-role="content" data-theme="d">
+            
+            <div class="upload-progress-header page-inset-header">
+                <div class="upload-info-block">
+                    <a class="upload-image-thumb-gall gallery_link image-link">
+                       <img src="http://media-server2.snapr.us/thm2/dev/8ef6a001298fe190ccba5bf483f9c3a6/ZK2.jpg" class="thumb-image thumb-med"> 
+                    </a>
+                    
+                    <div class="upload-info">
+                        <p class="upload-image-tag"><span class="ui-icon extra-icons ui-icon-quote"></span>Caption</p>
+                        <p class="upload-image-venue"><a>@ Venue name</a></p>
+                       
+                        <div class="progress-bar active">
+                           <div class="bar-bg bar">
+                           </div>
+                           <div class="bar-prog bar" style="width:30%">
+                           </div>
+                           <p class="progress-count">30%</p>
+                        </div>
+                        
+                        <ul class="upload-shared-to">
+                            <li>
+                                <div class="twitter-sharing sharing-icon-small">
+                                </div>
+                            </li>
+                            <li>
+                                <div class="facebook-sharing sharing-icon-small">
+                                </div>
+                            </li>
+                            
+                        </ul>
+                        
+                    </div>
+                    
+                </div>
+                
+            </div>
 
         </div>
 

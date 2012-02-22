@@ -145,6 +145,10 @@ hr {
   width: 100px;
   height: 100px;
 }
+.thumb-med {
+  width: 101px;
+  height: 101px;
+}
 .set-full-height {
   min-height: 400px;
 }
@@ -159,6 +163,45 @@ hr {
   -moz-border-radius-bottomright: 8px;
   -webkit-border-bottom-right-radius: 8px;
   border-bottom-right-radius: 8px;
+}
+/* progress bars */
+.progress-bar {
+  width: 100%;
+  position: relative;
+  top: 2px;
+}
+.progress-bar .bar {
+  height: 16px;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+}
+.progress-bar .bar-prog {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#ffff00), to(#ffe400));
+  /* Saf4+, Chrome */
+
+  background-image: -webkit-linear-gradient(top, #ffff00, #ffe400);
+  /* Chrome 10+, Saf5.1+ */
+
+  background-image: -moz-linear-gradient(top, #ffff00, #ffe400);
+  /* FF3.6 */
+
+  background-image: -ms-linear-gradient(top, #ffff00, #ffe400);
+  /* IE10 */
+
+  background-image: -o-linear-gradient(top, #ffff00, #ffe400);
+  /* Opera 11.10+ */
+
+  background-image: linear-gradient(top, #ffff00, #ffe400);
+}
+.progress-bar .bar-bg {
+  background-color: #C5C4C4;
+  -moz-box-shadow: inset 0 0 9px 2px #AFAEAE;
+  -webkit-box-shadow: inset 0 0 9px 2px #AFAEAE;
+  box-shadow: inset 0 0 9px 2px #AFAEAE;
 }
 /*
 * JQuery Mob - Custom 
@@ -412,6 +455,24 @@ input.ui-input-text, textarea.ui-input-text {
 }
 .ui-header .ui-controlgroup .ui-checkbox label, .ui-header .ui-controlgroup .ui-radio label {
   font-size: 12px;
+}
+/* Style for inset header as seen on user feed and upload pages */
+.page-inset-header {
+  margin-left: -8px;
+  margin-right: -8px;
+  margin-top: -8px;
+  position: relative;
+  background-color: #d7d7d5;
+  background-image: url('../gfx/bg-texture-light.gif');
+  -moz-border-radius-topleft: 8px;
+  -webkit-border-top-left-radius: 8px;
+  border-top-left-radius: 8px;
+  -moz-border-radius-topright: 8px;
+  -webkit-border-top-right-radius: 8px;
+  border-top-right-radius: 8px;
+  -moz-box-shadow: inset 5px 0 20px rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: inset 5px 0 20px rgba(0, 0, 0, 0.2);
+  box-shadow: inset 5px 0 20px rgba(0, 0, 0, 0.2);
 }
 /*
 * Dialogs - Stripping a lot of the jMob stuff
@@ -772,22 +833,8 @@ input.ui-input-text, textarea.ui-input-text {
   background-position: -2px -406px;
 }
 .feed-user-header {
-  position: relative;
-  background-color: #d7d7d5;
-  background-image: url('../gfx/bg-texture-light.gif');
   height: 100px;
   overflow: hidden;
-  margin-left: -8px;
-  margin-right: -8px;
-  -moz-border-radius-topleft: 8px;
-  -webkit-border-top-left-radius: 8px;
-  border-top-left-radius: 8px;
-  -moz-border-radius-topright: 8px;
-  -webkit-border-top-right-radius: 8px;
-  border-top-right-radius: 8px;
-  -moz-box-shadow: inset 5px 0 20px rgba(0, 0, 0, 0.2);
-  -webkit-box-shadow: inset 5px 0 20px rgba(0, 0, 0, 0.2);
-  box-shadow: inset 5px 0 20px rgba(0, 0, 0, 0.2);
 }
 .feed-user-header .ui-bar {
   margin-left: 0;
@@ -1001,7 +1048,9 @@ input.ui-input-text, textarea.ui-input-text {
 .ui-checkbox .ui-checkbox-off.ui-btn-active .ui-icon {
   background-position: -40px -240px;
 }
-.share-photo #description {
+/*
+* @share - PAGE 
+*/.share-photo #description {
   height: 92px;
 }
 .share-photo .upload-image-layer {
@@ -1257,6 +1306,32 @@ input.ui-input-text, textarea.ui-input-text {
 }
 .share-photo .image-controls .ui-icon-toggle {
   background-position: 0px -160px;
+}
+/*
+* @uploading - PAGE 
+*/.upload-progress-header {
+  padding: 8px;
+}
+.upload-progress-header .upload-image-thumb-gall {
+  position: absolute;
+  left: 8px;
+  top: 8px;
+}
+.upload-progress-header .upload-info-block {
+  margin-left: 109px;
+}
+.upload-progress-header .upload-info-block p {
+  margin-top: 0;
+  margin-bottom: 8px;
+}
+.upload-progress-header .upload-info-block .upload-image-venue a {
+  color: #666666;
+}
+.upload-progress-header .upload-info-block .upload-shared-to li {
+  list-style: none;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
 }
 /*
 * @people PAGE 

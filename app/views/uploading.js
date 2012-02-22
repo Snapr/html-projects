@@ -10,7 +10,7 @@ snapr.views.uploading = Backbone.View.extend({
             return true;
         });
 
-        $(this.el).find('[data-role="content"]').empty();
+        //$(this.el).find('[data-role="content"]').empty();
         
         $.mobile.changePage( $("#uploading"), {changeHash: false} );
         
