@@ -445,7 +445,8 @@ fieldset.ui-controlgroup{
     border:none;
     border-top: @border-light-on-light;
     margin: 0 -@padding-page-inset;
-    padding: 8px @padding-page-inset;    
+    padding: 8px @padding-page-inset; 
+    min-height: 19px;   
 
     .ui-btn-inner,
     h4,
@@ -468,11 +469,16 @@ fieldset.ui-controlgroup{
         }
         
     }
+    .ui-btn{
+        background: none;
+        line-height: 32px;
+    }
+    
     
     .ui-btn-right{
         position: absolute;
         right: 4px;
-        top: 6px;
+        top: 0px;
     }
     
     &.top-no-arrow{
@@ -1523,7 +1529,7 @@ fieldset.ui-controlgroup{
 	border: @border-dark-on-dark;
 	background: @color-bg-neutral-dark;
 	font-weight: bold;
-	color: @color-txt-medium-on-dark;
+	color: lighten(@color-txt-medium-on-dark, 3%);
 	text-shadow: @color-shadow-medium-on-dark 0px 1px 1px;
 	font-size: @txt-size-small;
 	text-decoration: none;

@@ -440,6 +440,7 @@ input.ui-input-text, textarea.ui-input-text {
   border-top: solid 1px #ffffff;
   margin: 0 -8px;
   padding: 8px 8px;
+  min-height: 19px;
 }
 .ui-bar .ui-btn-inner, .ui-bar h4, .ui-bar .ui-bar-inner {
   font-size: 15px;
@@ -466,10 +467,14 @@ input.ui-input-text, textarea.ui-input-text {
   font-style: normal;
   font-family: 'MuseoSansRounded700', Helvetica, Arial, sans-serif;
 }
+.ui-bar .ui-btn {
+  background: none;
+  line-height: 32px;
+}
 .ui-bar .ui-btn-right {
   position: absolute;
   right: 4px;
-  top: 6px;
+  top: 0px;
 }
 .ui-bar.top-no-arrow {
   -moz-border-radius-topleft: 8px;
@@ -1552,7 +1557,7 @@ input.ui-input-text, textarea.ui-input-text {
   border: solid 1px #000000;
   background: #434748;
   font-weight: bold;
-  color: #999999;
+  color: #a1a1a1;
   text-shadow: rgba(0, 0, 0, 0.5) 0px 1px 1px;
   font-size: 12px;
   text-decoration: none;
