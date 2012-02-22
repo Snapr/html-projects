@@ -7,13 +7,13 @@
 	background-image:		 linear-gradient(top, @start, @end);
 }
 
-.pressed-gradient (@color) {
+.pressed-gradient (@color, @darken) {
 	background-image: -webkit-gradient(linear,left bottom,left top, color-stop(0, @color), color-stop(0.7, @color),color-stop(1, darken(@color, 5%))); /* Saf4+, Chrome */	
-	background-image: -webkit-linear-gradient(bottom, @color 0%, @color 70%, darken(@color, 5%) 100%); /* Chrome 10+, Saf5.1+ */
-	background-image:	-moz-linear-gradient(bottom, @color 0%, @color 70%, darken(@color, 5%) 100%); /* FF3.6 */
-	background-image:	 -ms-linear-gradient(bottom, @color 0%, @color 70%, darken(@color, 5%) 100%); /* IE10 */
-	background-image:	  -o-linear-gradient(bottom, @color 0%, @color 70%, darken(@color, 5%) 100%); /* Opera 11.10+ */
-	background-image:		 linear-gradient(bottom, @color 0%, @color 70%, darken(@color, 5%) 100%);
+	background-image: -webkit-linear-gradient(bottom, @color 0%, @color 70%, darken(@color, @darken) 100%); /* Chrome 10+, Saf5.1+ */
+	background-image:	-moz-linear-gradient(bottom, @color 0%, @color 70%, darken(@color, @darken) 100%); /* FF3.6 */
+	background-image:	 -ms-linear-gradient(bottom, @color 0%, @color 70%, darken(@color, @darken) 100%); /* IE10 */
+	background-image:	  -o-linear-gradient(bottom, @color 0%, @color 70%, darken(@color, @darken) 100%); /* Opera 11.10+ */
+	background-image:		 linear-gradient(bottom, @color 0%, @color 70%, darken(@color, @darken) 100%);
 	
 }
 

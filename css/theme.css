@@ -55,7 +55,7 @@ textarea {
 /* Pingy yellow header bars and buttons *//* All colors have a darker tint for when they appear as gradients *//* An orange colour to complement the yellow *//* The Light grey companion to Yellow btns / headers *//* Dark buttons in headers / palettes *//* In this case a calming blue *//* In this case a calming blue *//* Red. argh it burns *//* For Twitter Buttons and Bgs *//* For Facebook Buttons and Bgs *//* For Tumblr Buttons and Bgs *//* For Fsq Buttons and Bgs *//* Global BG Colors for Pages*/
 /* make a mixin for retina gfx! */
 /* Global Border Colors */
-/* Global Shadow Colors */
+/* Global Text Shadow Colors */
 /* Global Text Colors */
 /* Global Fonts*/
 /* In the case of Snapr we just have one special font *//* Global Rounded Corners */
@@ -1239,6 +1239,11 @@ input.ui-input-text, textarea.ui-input-text {
   background: none!important;
   border: none!important;
 }
+.share-photo .image-controls .ui-btn.ui-shadow {
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
 .share-photo .image-controls .ui-btn-inner {
   padding-right: 22px;
 }
@@ -1820,7 +1825,7 @@ input.ui-input-text, textarea.ui-input-text {
 
   background-image: linear-gradient(top, #ffff00, #ffe400);
 }
-.ui-btn-up-e, .ui-btn-hover-e {
+.ui-btn-up-e {
   border: none;
   background: #ffff00;
   background-image: -webkit-gradient(linear, left top, left bottom, from(#ffff00), to(#ffe400));
@@ -1844,28 +1849,54 @@ input.ui-input-text, textarea.ui-input-text {
   font-weight: normal;
   text-decoration: none;
 }
-.ui-btn-up-e a.ui-link-inherit, .ui-btn-hover-e a.ui-link-inherit {
+.ui-btn-up-e a.ui-link-inherit {
+  color: #333333;
+}
+.ui-btn-hover-e {
+  border: none;
+  background: #ffff33;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#ffff33), to(#ffe933));
+  /* Saf4+, Chrome */
+
+  background-image: -webkit-linear-gradient(top, #ffff33, #ffe933);
+  /* Chrome 10+, Saf5.1+ */
+
+  background-image: -moz-linear-gradient(top, #ffff33, #ffe933);
+  /* FF3.6 */
+
+  background-image: -ms-linear-gradient(top, #ffff33, #ffe933);
+  /* IE10 */
+
+  background-image: -o-linear-gradient(top, #ffff33, #ffe933);
+  /* Opera 11.10+ */
+
+  background-image: linear-gradient(top, #ffff33, #ffe933);
+  color: #333333;
+  font-family: 'MuseoSansRounded700', Helvetica, Arial, sans-serif;
+  font-weight: normal;
+  text-decoration: none;
+}
+.ui-btn-hover-e a.ui-link-inherit {
   color: #333333;
 }
 .ui-btn-down-e {
   border: none;
   background: #ffff00;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#ffff00), to(#ffe400));
+  background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, #ffff00), color-stop(0.7, #ffff00), color-stop(1, #e5e600));
   /* Saf4+, Chrome */
-
-  background-image: -webkit-linear-gradient(top, #ffff00, #ffe400);
+  background-image: -webkit-linear-gradient(bottom, #ffff00 0%, #ffff00 70%, #f0f000 100%);
   /* Chrome 10+, Saf5.1+ */
 
-  background-image: -moz-linear-gradient(top, #ffff00, #ffe400);
+  background-image: -moz-linear-gradient(bottom, #ffff00 0%, #ffff00 70%, #f0f000 100%);
   /* FF3.6 */
 
-  background-image: -ms-linear-gradient(top, #ffff00, #ffe400);
+  background-image: -ms-linear-gradient(bottom, #ffff00 0%, #ffff00 70%, #f0f000 100%);
   /* IE10 */
 
-  background-image: -o-linear-gradient(top, #ffff00, #ffe400);
+  background-image: -o-linear-gradient(bottom, #ffff00 0%, #ffff00 70%, #f0f000 100%);
   /* Opera 11.10+ */
 
-  background-image: linear-gradient(top, #ffff00, #ffe400);
+  background-image: linear-gradient(bottom, #ffff00 0%, #ffff00 70%, #f0f000 100%);
   color: #333333;
   font-family: 'MuseoSansRounded700', Helvetica, Arial, sans-serif;
   font-weight: normal;
@@ -1873,6 +1904,11 @@ input.ui-input-text, textarea.ui-input-text {
 }
 .ui-btn-down-e a.ui-link-inherit {
   color: #333333;
+}
+.ui-btn-down-e.ui-shadow {
+  -moz-box-shadow: 0 1px 4px rgba(51, 51, 51, 0.3);
+  -webkit-box-shadow: 0 1px 4px rgba(51, 51, 51, 0.3);
+  box-shadow: 0 1px 4px rgba(51, 51, 51, 0.3);
 }
 .ui-bar-e {
   background: #ffff00;

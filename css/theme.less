@@ -1242,6 +1242,9 @@ fieldset.ui-controlgroup{
             text-align: right;
             background: none!important;
             border: none!important;
+            &.ui-shadow{
+                .box-shadow(none);
+            }
         
         }
         .ui-btn-inner{
@@ -1565,7 +1568,7 @@ fieldset.ui-controlgroup{
 	font-size: @txt-size-small;
 	text-decoration: none;
     
-    .pressed-gradient(@color-bg-neutral-dark-tint);
+    .pressed-gradient(@color-bg-neutral-dark-tint, 5%);
     
     .ui-btn-inner{
         border:none;
@@ -1738,8 +1741,7 @@ fieldset.ui-controlgroup{
     }
 }
 
-.ui-btn-up-e,
-.ui-btn-hover-e {
+.ui-btn-up-e {
 	border: none;
 	background: @color-bg-highlight-main;
     .linear-gradient(@color-bg-highlight-main, @color-bg-highlight-main-tint);
@@ -1752,10 +1754,10 @@ fieldset.ui-controlgroup{
 	}
 }
 
-.ui-btn-down-e {
+.ui-btn-hover-e {
 	border: none;
-	background: @color-bg-highlight-main;
-    .linear-gradient(@color-bg-highlight-main, @color-bg-highlight-main-tint);
+	background: lighten(@color-bg-highlight-main, 10% );
+    .linear-gradient(lighten(@color-bg-highlight-main, 10%), lighten(@color-bg-highlight-main-tint, 10%));
 	color: @color-txt-dark-on-light;
 	font-family: @txt-font-special;
 	font-weight: normal;
@@ -1763,6 +1765,23 @@ fieldset.ui-controlgroup{
 	a.ui-link-inherit {
 		color: @color-txt-dark-on-light;
 	}
+}
+
+
+.ui-btn-down-e {
+	border: none;
+	background: @color-bg-highlight-main;
+    .pressed-gradient(@color-bg-highlight-main, 3%);
+	color: @color-txt-dark-on-light;
+	font-family: @txt-font-special;
+	font-weight: normal;
+	text-decoration: none;
+	a.ui-link-inherit {
+		color: @color-txt-dark-on-light;
+	}
+	&.ui-shadow {
+        .box-shadow(0 1px 4px lighten(@color-shadow-btn-on-light, 20%));
+    }
 }
 
 .ui-bar-e{   
