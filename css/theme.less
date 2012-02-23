@@ -1436,7 +1436,7 @@ fieldset.ui-controlgroup{
     padding: @padding-page-inset;
     height: 108px;
     overflow:hidden;
-    .box-shadow(inset 5px -16px 26px rgba(0, 0, 0, 0.2));
+    .box-shadow(inset 5px -14px 20px rgba(0, 0, 0, 0.2));
    
     .upload-image-thumb-gall{
         position: absolute;
@@ -1917,6 +1917,48 @@ fieldset.ui-controlgroup{
     }
 }
 
+/* Grey Btns */
+.ui-btn-up-c {
+	border: none;
+	background: @color-bg-neutral-light;
+    .linear-gradient(@color-bg-neutral-light, @color-bg-neutral-light-tint);
+	color: @color-txt-dark-on-light;
+	font-family: @txt-font-special;
+	font-weight: normal;
+	text-decoration: none;
+	a.ui-link-inherit {
+		color: @color-txt-dark-on-light;
+	}
+}
+
+.ui-btn-hover-c {
+	border: none;
+	background: lighten(@color-bg-neutral-light, 10% );
+    .linear-gradient(lighten(@color-bg-neutral-light, 10%), lighten(@color-bg-neutral-light-tint, 10%));
+	color: @color-txt-dark-on-light;
+	font-family: @txt-font-special;
+	font-weight: normal;
+	text-decoration: none;
+	a.ui-link-inherit {
+		color: @color-txt-dark-on-light;
+	}
+}
+
+.ui-btn-down-c {
+	border: none;
+	background: @color-bg-neutral-light;
+    .pressed-gradient(@color-bg-neutral-light, 3%);
+	color: @color-txt-dark-on-light;
+	font-family: @txt-font-special;
+	font-weight: normal;
+	text-decoration: none;
+	a.ui-link-inherit {
+		color: @color-txt-dark-on-light;
+	}
+	&.ui-shadow {
+        .box-shadow(0 1px 4px lighten(@color-shadow-btn-on-light, 20%));
+    }
+}
 
 
 
@@ -1991,7 +2033,6 @@ fieldset.ui-controlgroup{
 		color: @color-txt-dark-on-light;
 	}
 }
-
 
 .ui-btn-down-e {
 	border: none;
