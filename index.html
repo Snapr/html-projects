@@ -1001,8 +1001,18 @@
     <!-- @uploading PAGE - upload progress view  -->
     <div id="uploading" data-role="page" data-theme="d">
         <div data-role="header" data-theme="b">
-            <a class="cancel-upload" data-ajax="false" data-role="button">Cancel</a>
-            <h1>Uploading</h1>
+             <div class="ui-btn-left">
+                    <a class="x-launch-camera" data-ajax="false" data-role="button" data-icon="camera" data-iconpos="notext"></a>
+                    
+                </div>
+
+            <h1>Upload</h1>
+            
+            <div class="ui-btn-right">
+                <a href="#/search/" data-ajax="false" data-role="button" data-icon="search" data-iconpos="notext"></a>
+                <a href="#/" data-ajax="false" data-role="button" data-icon="home" data-iconpos="notext"></a>
+            </div>
+            
         </div>
         <div data-role="content" data-theme="d">
             
@@ -1017,20 +1027,24 @@
                         <p class="upload-image-venue"><a>@ Venue name</a></p>
                        
                         <div class="progress-bar active">
-                           <div class="bar-bg bar">
+                            <div class="bar-wrapper">
+                               <div class="bar-bg bar">
+                               </div>
+                               <div class="bar-prog bar" style="width:30%">
+                               </div>
                            </div>
-                           <div class="bar-prog bar" style="width:30%">
-                           </div>
-                           <p class="progress-count">30%</p>
+                           <a class="bar-action" data-role="button" data-icon="delete" data-iconpos="notext">Cancel</a>
                         </div>
                         
                         <ul class="upload-shared-to">
                             <li>
                                 <div class="twitter-sharing sharing-icon-small">
+                                    <span class="ui-icon"></span>
                                 </div>
                             </li>
                             <li>
                                 <div class="facebook-sharing sharing-icon-small">
+                                    <span class="ui-icon"></span>
                                 </div>
                             </li>
                             

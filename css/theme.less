@@ -136,27 +136,45 @@ hr{
 
 /* progress bars */
 .progress-bar{
-    width: 100%;
     position: relative;
     top: 2px;
+    margin: 8px 0;
+    padding: 8px 28px 8px 8px;
+    background-color: lighten(@color-bg-neutral-light-tint, 10%);
+    border-radius: 13px;
 
-    .bar{
-        height: 16px;
-        .corner-all(4px);
-       
+    .bar-wrapper{
+        position: relative;
+        .bar{
+               height: 8px;
+               .corner-all(4px);
+           }
+           .bar-prog{
+               position: absolute;
+               top: 0;
+               left: 0;
+               .linear-gradient(@color-bg-highlight-main, @color-bg-highlight-main-tint);
+           }
+           .bar-bg{
+               background-color: #C5C4C4;
+               -moz-box-shadow: inset 0 0 9px 2px #AFAEAE;
+               -webkit-box-shadow: inset 0 0 9px 2px #AFAEAE;
+               box-shadow: inset 0 0 9px 2px #AFAEAE;
+           }
     }
-    .bar-prog{
+   
+    .bar-action{
         position: absolute;
-        top: 0;
-        left: 0;
-        .linear-gradient(@color-bg-highlight-main, @color-bg-highlight-main-tint);
+        right: -8px;
+        top: -8px;
+        margin: 0;
+        width: 40px;
+        height: 40px;
+        .ui-icon-delete{
+            width: 32px;
+            background-position: -63px 1px;
+        }
     }
-    .bar-bg{
-        background-color: #C5C4C4;
-        -moz-box-shadow: inset 0 0 9px 2px #AFAEAE;
-        -webkit-box-shadow: inset 0 0 9px 2px #AFAEAE;
-        box-shadow: inset 0 0 9px 2px #AFAEAE;
-    } 
 }
 
 
@@ -584,6 +602,42 @@ fieldset.ui-controlgroup{
     
 }
 
+/* Small Colored Icons For Third Party Services */
+.sharing-icon-small{
+    background-color: lighten(@color-bg-neutral-light-tint, 10%);
+    .corner-all(@corner-general-less-rounded);
+    width: 22px;
+    height: 22px;
+    .ui-icon{
+        background-image: url('../gfx/share-icons-small.png');
+        width: @gfx-small-sharing-icon-sprite-grid;
+        height: @gfx-small-sharing-icon-sprite-grid;
+        position: relative;
+        display: block;
+        top: 1px;
+        left: 1px;
+    }
+    &.twitter-sharing{
+       .ui-icon{background-position: @ss-offset-x @gfx-small-sharing-icon-sprite-twitter-y;}
+       background-color: @color-bg-twitter-main;
+        .box-shadow(inset 0 3px 20px @color-bg-twitter-main-tint);
+    } 
+    &.facebook-sharing{
+       .ui-icon{background-position: @ss-offset-x @gfx-small-sharing-icon-sprite-facebook-y;}
+       background-color: @color-bg-facebook-main;
+       .box-shadow(inset 0 3px 20px @color-bg-facebook-main-tint);
+   }
+   &.tumblr-sharing{
+       .ui-icon{background-position: @ss-offset-x @gfx-small-sharing-icon-sprite-tumblr-y;}
+       background-color: @color-bg-tumblr-main;
+       .box-shadow(inset 0 3px 20px @color-bg-tumblr-main-tint);
+   }
+   &.foursquare-sharing{
+       .ui-icon{background-position: @ss-offset-x @gfx-small-sharing-icon-sprite-foursquare-y;}
+        background-color: @color-bg-foursquare-main;
+        .box-shadow(inset 0 3px 20px @color-bg-foursquare-main-tint);
+   }
+}
 
 /*
 * Image Views - Custom 
@@ -1314,7 +1368,6 @@ fieldset.ui-controlgroup{
 .upload-progress-header{
     padding: @padding-page-inset;
    
-    
     .upload-image-thumb-gall{
         position: absolute;
         left:@padding-page-inset;
@@ -1324,21 +1377,35 @@ fieldset.ui-controlgroup{
     .upload-info-block{
         margin-left: @size-img-thumb + @padding-page-inset;
         p{
-               margin-top: 0;
-               margin-bottom: @padding-page-inset;
+            margin-top: 0;
+           margin-bottom: 2px;
+           text-overflow: ellipsis;
+           white-space: nowrap;
+           overflow: hidden;
          }
+         
+         .ui-icon-quote{
+             display: inline-block;
+             height: @txt-size-base;
+             background-position: -6px -168px;
+             width: 20px;
+         }
+         
         .upload-image-venue{
            a{
-               color: @color-txt-medium-on-light;
+               color: @color-txt-light-on-light;
            } 
         }
         
         .upload-shared-to{
+            margin:@padding-element-inset 0 0 0 ;
+            padding: 0;
             li{
                 list-style: none;
                 display: inline-block;
                 width: 20px;
                 height: 20px;
+                margin-right: 2px;
             }
         }
         
@@ -1721,11 +1788,17 @@ fieldset.ui-controlgroup{
 .ui-btn-up-b{
        .ui-icon-search{background-position: @b-offset-x @gfx-main-icon-sprite-search-icon-y;}
        .ui-icon-home{ background-position: @b-offset-x @gfx-main-icon-sprite-home-icon-y;}
+
+       .ui-icon-camera{ background-position: @b-offset-x @gfx-main-icon-sprite-camera-icon-y;}
+       
    }
 
 .ui-btn-hover-b{
     .ui-icon-search{background-position: @b-offset-x-hover @gfx-main-icon-sprite-search-icon-y;}
     .ui-icon-home{ background-position: @b-offset-x-hover @gfx-main-icon-sprite-home-icon-y;}
+
+    .ui-icon-camera{ background-position: @b-offset-x-hover @gfx-main-icon-sprite-camera-icon-y;}
+    
 }
 
 
