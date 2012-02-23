@@ -234,7 +234,8 @@ hr {
 }
 .image-streams .image-stream {
   list-style: none;
-  padding: none;
+  padding: 0;
+  margin-bottom: 8px;
 }
 /*
 * JQuery Mob - Custom 
@@ -793,6 +794,9 @@ input.ui-input-text, textarea.ui-input-text {
   margin: 0;
   display: block;
   background-color: #d7d7d5;
+}
+.n-horizontal-scroll {
+  white-space: nowrap;
 }
 /*
 * Main Menu - Custom 

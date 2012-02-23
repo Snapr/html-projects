@@ -181,11 +181,12 @@ hr{
     list-style: none;
     padding: 0;
     margin: 0;
-    margin-bottom: 8px;
-    margin-top: -8px;
+    margin-bottom: @padding-page-inset;
+    margin-top: -@padding-page-inset;
     .image-stream{
         list-style: none;
-        padding: none;
+        padding: 0;
+        margin-bottom: @padding-page-inset ;
     }
    
     
@@ -727,7 +728,9 @@ fieldset.ui-controlgroup{
     }
 }
 
-
+.n-horizontal-scroll{
+    white-space: nowrap;
+}
 
 
 /*
