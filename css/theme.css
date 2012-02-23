@@ -225,6 +225,17 @@ hr {
   width: 32px;
   background-position: -63px 1px;
 }
+.image-streams {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  margin-bottom: 8px;
+  margin-top: -8px;
+}
+.image-streams .image-stream {
+  list-style: none;
+  padding: none;
+}
 /*
 * JQuery Mob - Custom 
 *   Some basics
@@ -554,6 +565,9 @@ input.ui-input-text, textarea.ui-input-text {
   background: none;
   line-height: 32px;
 }
+.ui-bar .ui-btn-text {
+  display: block;
+}
 .ui-bar .ui-btn-right {
   position: absolute;
   right: 4px;
@@ -566,6 +580,12 @@ input.ui-input-text, textarea.ui-input-text {
   -moz-border-radius-topright: 8px;
   -webkit-border-top-right-radius: 8px;
   border-top-right-radius: 8px;
+  -moz-border-radius-bottomleft: 0px;
+  -webkit-border-bottom-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+  -moz-border-radius-bottomright: 0px;
+  -webkit-border-bottom-right-radius: 0px;
+  border-bottom-right-radius: 0px;
 }
 .ui-bar.top-left-arrow {
   -moz-border-radius-topleft: 8px;
@@ -574,6 +594,35 @@ input.ui-input-text, textarea.ui-input-text {
   -moz-border-radius-topright: 8px;
   -webkit-border-top-right-radius: 8px;
   border-top-right-radius: 8px;
+  -moz-border-radius-bottomleft: 0px;
+  -webkit-border-bottom-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+  -moz-border-radius-bottomright: 0px;
+  -webkit-border-bottom-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+  text-align: left;
+}
+.ui-bar.top-left-arrow .ui-icon {
+  right: -2px;
+}
+.ui-bar.top-left-arrow .ui-btn-text {
+  padding-left: 20px;
+}
+.ui-bar.top-left-arrow .extra-icons {
+  right: auto;
+  left: -8px;
+  top: -7px;
+  margin: 0;
+  height: 32px;
+  width: 32px;
+}
+.ui-bar.top-left-arrow .image-time {
+  position: relative;
+  padding-left: 20px;
+  color: #666666;
+}
+.ui-bar.top-left-arrow .image-time .ui-icon-clock {
+  top: -9px;
 }
 .ui-bar.bottom-centered-arrow {
   -moz-border-radius-bottomleft: 8px;
@@ -582,6 +631,54 @@ input.ui-input-text, textarea.ui-input-text {
   -moz-border-radius-bottomright: 8px;
   -webkit-border-bottom-right-radius: 8px;
   border-bottom-right-radius: 8px;
+}
+.arrow-right {
+  position: absolute!important;
+  right: 0!important;
+  left: auto!important;
+}
+.extra-icons {
+  height: 32px;
+  width: 32px;
+}
+.extra-icons .ui-icon-heart, .extra-icons.ui-icon-heart {
+  background-position: 0 0px;
+}
+.extra-icons .ui-icon-venue, .extra-icons.ui-icon-venue {
+  background-position: 0 -32px;
+}
+.extra-icons .ui-icon-clock, .extra-icons.ui-icon-clock {
+  background-position: 0 -64px;
+}
+.extra-icons .ui-icon-search, .extra-icons.ui-icon-search {
+  background-position: 0 -96px;
+}
+.extra-icons .ui-icon-activity, .extra-icons.ui-icon-activity {
+  background-position: 0 -128px;
+}
+.extra-icons .ui-icon-location, .extra-icons.ui-icon-location {
+  background-position: 0 -160px;
+}
+.extra-icons .ui-icon-quote, .extra-icons.ui-icon-quote {
+  background-position: 0 -192px;
+}
+.extra-icons .ui-icon-clocksmall, .extra-icons.ui-icon-clocksmall {
+  background-position: 0 -224px;
+}
+.extra-icons .ui-icon-venuesmall, .extra-icons.ui-icon-venuesmall {
+  background-position: 0 -256px;
+}
+.extra-icons .ui-icon-feed, .extra-icons.ui-icon-feed {
+  background-position: 0 -288px;
+}
+.extra-icons .ui-icon-favs, .extra-icons.ui-icon-favs {
+  background-position: 0 -320px;
+}
+.extra-icons .ui-icon-link, .extra-icons.ui-icon-link {
+  background-position: 0 -352px;
+}
+.extra-icons .ui-icon-clock, .extra-icons.ui-icon-clock {
+  background-position: 0 -384px;
 }
 .ui-navbar {
   margin: -8px -8px 0 -8px;
@@ -1010,7 +1107,7 @@ input.ui-input-text, textarea.ui-input-text {
 .image-item-block .image-description .ui-icon-quote {
   display: inline-block;
   height: 15px;
-  background-position: -6px -168px;
+  background-position: -6px -200px;
 }
 .image-item-block .image-description .goto-spot {
   color: #999999;
@@ -1387,6 +1484,11 @@ input.ui-input-text, textarea.ui-input-text {
 * @uploading - PAGE 
 */.upload-progress-header {
   padding: 8px;
+  height: 108px;
+  overflow: hidden;
+  -moz-box-shadow: inset 5px -16px 26px rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: inset 5px -16px 26px rgba(0, 0, 0, 0.2);
+  box-shadow: inset 5px -16px 26px rgba(0, 0, 0, 0.2);
 }
 .upload-progress-header .upload-image-thumb-gall {
   position: absolute;
@@ -1406,7 +1508,7 @@ input.ui-input-text, textarea.ui-input-text {
 .upload-progress-header .upload-info-block .ui-icon-quote {
   display: inline-block;
   height: 15px;
-  background-position: -6px -168px;
+  background-position: -6px -200px;
   width: 20px;
 }
 .upload-progress-header .upload-info-block .upload-image-venue a {

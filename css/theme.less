@@ -177,7 +177,19 @@ hr{
     }
 }
 
-
+.image-streams{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    margin-bottom: 8px;
+    margin-top: -8px;
+    .image-stream{
+        list-style: none;
+        padding: none;
+    }
+   
+    
+}
 
 
 /*
@@ -538,7 +550,9 @@ fieldset.ui-controlgroup{
         background: none;
         line-height: 32px;
     }
-    
+    .ui-btn-text{
+        display: block;
+    }
     
     .ui-btn-right{
         position: absolute;
@@ -547,17 +561,67 @@ fieldset.ui-controlgroup{
     }
     
     &.top-no-arrow{
-        .corner-top (@corner-page-element-rounded); 
+        .corner-top (@corner-page-element-rounded);
+        .corner-bottom (@corner-not-rounded); 
     }
     &.top-left-arrow{
         .corner-top (@corner-page-element-rounded); 
+        .corner-bottom (@corner-not-rounded);
+        text-align: left;
+        .ui-icon {
+            right: -2px;
+        }
+        .ui-btn-text{
+            padding-left: 20px;
+        }
+        .extra-icons{
+            right: auto;
+            left: -8px;
+            top: -7px;
+            margin: 0;
+            height: @gfx-extra-icon-sprite-grid;
+            width: @gfx-extra-icon-sprite-grid;
+        }
+        
+        .image-time{
+            position: relative;
+            padding-left: 20px;
+            color: @color-txt-medium-on-light;
+            .ui-icon-clock{
+                top: -9px;
+            }
+        }
     }
     &.bottom-centered-arrow{
         .corner-bottom (@corner-page-element-rounded); 
     }
 }
 
+.arrow-right{
+    position: absolute!important;
+    right: 0!important;
+    left: auto!important;
+}
 
+.extra-icons{
+    height: @gfx-extra-icon-sprite-grid;
+    width: @gfx-extra-icon-sprite-grid;
+
+    .ui-icon-heart,&.ui-icon-heart{background-position: @ei-offset-x @gfx-extra-icon-sprite-heart-y;}
+    .ui-icon-venue,&.ui-icon-venue{background-position: @ei-offset-x @gfx-extra-icon-sprite-venue-y;}
+    .ui-icon-clock,&.ui-icon-clock{background-position: @ei-offset-x @gfx-extra-icon-sprite-person-y;}
+    .ui-icon-search,&.ui-icon-search{background-position: @ei-offset-x @gfx-extra-icon-sprite-search-y;}
+    .ui-icon-activity,&.ui-icon-activity{background-position: @ei-offset-x @gfx-extra-icon-sprite-activity-y;}
+    .ui-icon-location,&.ui-icon-location{background-position: @ei-offset-x @gfx-extra-icon-sprite-location-y;}
+    .ui-icon-quote,&.ui-icon-quote{background-position: @ei-offset-x @gfx-extra-icon-sprite-quote-y;}
+    .ui-icon-clocksmall,&.ui-icon-clocksmall{background-position: @ei-offset-x @gfx-extra-icon-sprite-clocksmall-y;}
+    .ui-icon-venuesmall,&.ui-icon-venuesmall{background-position: @ei-offset-x @gfx-extra-icon-sprite-venuesmall-y;}
+    .ui-icon-feed,&.ui-icon-feed{background-position: @ei-offset-x @gfx-extra-icon-sprite-feed-y;}
+    .ui-icon-favs,&.ui-icon-favs{background-position: @ei-offset-x @gfx-extra-icon-sprite-favs-y;}
+    .ui-icon-link,&.ui-icon-link{background-position: @ei-offset-x @gfx-extra-icon-sprite-link-y;}
+    .ui-icon-clock, &.ui-icon-clock{background-position: @ei-offset-x @gfx-extra-icon-sprite-clock-y;}
+    
+}
 
 .ui-navbar{
     margin: -@padding-page-inset -@padding-page-inset 0 -@padding-page-inset;
@@ -981,7 +1045,7 @@ fieldset.ui-controlgroup{
         .ui-icon-quote{
             display: inline-block;
             height: @txt-size-base;
-            background-position: -6px -168px;
+            background-position: -6px @gfx-extra-icon-sprite-quote-y - 8;
         }
     
         .goto-spot{
@@ -1367,6 +1431,9 @@ fieldset.ui-controlgroup{
 
 .upload-progress-header{
     padding: @padding-page-inset;
+    height: 108px;
+    overflow:hidden;
+    .box-shadow(inset 5px -16px 26px rgba(0, 0, 0, 0.2));
    
     .upload-image-thumb-gall{
         position: absolute;
@@ -1387,7 +1454,8 @@ fieldset.ui-controlgroup{
          .ui-icon-quote{
              display: inline-block;
              height: @txt-size-base;
-             background-position: -6px -168px;
+             background-position: -6px @gfx-extra-icon-sprite-quote-y - 8;
+             
              width: 20px;
          }
          
