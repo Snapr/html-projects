@@ -1083,6 +1083,9 @@ input.ui-input-text, textarea.ui-input-text {
   font-size: 12px;
   color: #999999;
   line-height: 34px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .image-item-block .image-item-topbar .user-icon-link {
   vertical-align: middle;
@@ -1096,12 +1099,18 @@ input.ui-input-text, textarea.ui-input-text {
   vertical-align: middle;
   display: inline-block;
 }
+.image-item-block .image-item-topbar .image-time {
+  color: #999999;
+}
 .image-item-block .image-item-topbar .image-time .ui-icon-clock {
-  background-position: -9px -192px;
+  background-position: -9px -224px;
   width: 14px;
 }
+.image-item-block .image-item-topbar .image-time-and-location {
+  color: #999999;
+}
 .image-item-block .image-item-topbar .image-time-and-location .ui-icon-venue {
-  background-position: -10px -224px;
+  background-position: -10px -256px;
   width: 10px;
 }
 .image-item-block .image-description {
@@ -1112,6 +1121,7 @@ input.ui-input-text, textarea.ui-input-text {
   display: inline-block;
   height: 15px;
   background-position: -6px -200px;
+  width: 16px;
 }
 .image-item-block .image-description .goto-spot {
   color: #999999;
@@ -1606,6 +1616,58 @@ input.ui-input-text, textarea.ui-input-text {
   /* Haxy.. need to come up with broader fix for top padding.. */
 
 }
+/*
+* @map - PAGE 
+*/
+#map-layer #google-map {
+  margin: -3px;
+}
+.photo-map {
+  /* map thumbs */
+
+}
+.photo-map .snaprmappoint {
+  width: 1px;
+  height: 1px;
+  overflow: visible;
+  position: absolute;
+}
+.photo-map .snaprmapthumb {
+  position: absolute;
+  bottom: -3px;
+  left: -38px;
+  width: 78px;
+  height: 120px;
+  z-index: 100;
+}
+.photo-map .snaprmapthumb .snaprmapthumbimage {
+  position: absolute;
+  top: 8px;
+  left: 9px;
+  width: 60px;
+  height: 60px;
+}
+.photo-map .snaprmapthumb .snaprmappin {
+  position: absolute;
+  top: 83px;
+  left: 32px;
+  background-image: url('../gfx/map-pin.png');
+  width: 28px;
+  height: 35px;
+  display: block;
+}
+.photo-map .snaprmapthumb .snaprthumbbg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-image: url('../gfx/map-thumb-bg.png');
+  width: 78px;
+  height: 88px;
+  display: block;
+}
+/*******************************************************************
+* @theme - SWATCHES 
+*******************************************************************/
 /*
 * A 
 * The Dark (Black as Night) swatch, used for screens with black BGs

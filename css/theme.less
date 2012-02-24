@@ -1010,6 +1010,9 @@ fieldset.ui-controlgroup{
         font-size: @txt-size-small;
         color: @color-txt-light-on-light;
         line-height:  @size-small-avatar;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
             
         .user-icon-link{
             vertical-align: middle;
@@ -1027,14 +1030,16 @@ fieldset.ui-controlgroup{
         }
         
         .image-time{
+            color: @color-txt-light-on-light;
             .ui-icon-clock{
-                background-position: -9px -192px;
+                background-position: @ei-offset-x - 9px @gfx-extra-icon-sprite-clocksmall-y;
                 width: 14px;
             }
         }
         .image-time-and-location{
+            color: @color-txt-light-on-light;
             .ui-icon-venue{
-                background-position: -10px -224px;
+                background-position: @ei-offset-x - 10px @gfx-extra-icon-sprite-venuesmall-y;
                 width: 10px;
             }
         }
@@ -1049,6 +1054,7 @@ fieldset.ui-controlgroup{
             display: inline-block;
             height: @txt-size-base;
             background-position: -6px @gfx-extra-icon-sprite-quote-y - 8;
+            width: 16px;
         }
     
         .goto-spot{
@@ -1574,6 +1580,69 @@ fieldset.ui-controlgroup{
     margin-top: -16px; /* Haxy.. need to come up with broader fix for top padding.. */
 }
 
+
+/*
+* @map - PAGE 
+*/
+
+#map-layer{
+    #google-map{
+        margin: -3px; 
+    }
+}
+
+.photo-map{
+    /* map thumbs */
+    .snaprmappoint {
+        width: 1px;
+        height: 1px;
+        overflow: visible;
+        position:absolute;
+    }
+    .snaprmapthumb {
+        position: absolute;
+        bottom: -3px;
+        left: -38px;
+        width: 78px;
+        height: 120px;
+        z-index: 100;
+        .snaprmapthumbimage {
+            position: absolute;
+            top: 8px;
+            left: 9px;
+            width: 60px;
+            height: 60px;
+        }
+        .snaprmappin {
+            position: absolute;
+            top:83px;
+            left: 32px;
+            background-image: url('../gfx/map-pin.png');
+            width:28px;
+            height: 35px;
+            display: block;
+        }
+        .snaprthumbbg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-image: url('../gfx/map-thumb-bg.png');
+            width:78px;
+            height: 88px;
+            display: block;
+        }
+    }
+
+
+    
+    
+}
+
+
+
+/*******************************************************************
+* @theme - SWATCHES 
+*******************************************************************/
 
 /*
 * A 
