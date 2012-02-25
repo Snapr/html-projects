@@ -31,6 +31,7 @@ snapr.views.feed = Backbone.View.extend({
         {
             var feed_header = new snapr.views.user_header({
                 username: query_data.username,
+                model: new snapr.models.user( {username: query_data.username} ),
                 el: this.el.find(".feed-header").empty()
             });
         }
