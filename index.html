@@ -670,7 +670,7 @@
                 <span class="image-time-and-location">
                 <a class="goto-map">
                     <span class="ui-icon extra-icons ui-icon-venue"></span>
-                    <%= item.get('location').location %> <%= snapr.utils.short_timestamp(item.get('date'), true ) %></a>
+                    <%= snapr.utils.short_timestamp(item.get('date'), true ) %>, <%= snapr.utils.short_location(item.get('location').location) %> </a>
                 </span>
                 <%}else{%>
                 <span class="image-time">

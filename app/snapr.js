@@ -173,6 +173,18 @@ snapr.utils.short_timestamp = function(time, relative)
     return full_date+', '+date.getFullYear()
 }
 
+snapr.utils.short_location = function(txt)
+{
+    txt_array = txt.split(', ');
+     new_txt_array = [];
+     new_txt_array.push(txt_array[0]);
+     if(txt_array.length > 1){
+         if(txt_array[0].length + txt_array[1].length < 24){
+             new_txt_array.push(txt_array[1]);
+         }
+     }
+     return new_txt_array.join(', '); 
+}
 
 snapr.utils.save_local_param = function( key, value )
 {
