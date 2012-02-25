@@ -809,8 +809,8 @@
        </script>
 
     <!-- @join snapr DIALOG-->
-    <div id="join-snapr" data-add-back-btn="true" data-role="dialog">
-        <div data-role="header">
+    <div id="join-snapr" data-add-back-btn="true" data-role="dialog" data-overlay-theme="c" data-theme="c">
+        <div data-role="header" data-theme="c">
             <h1>Join Snapr</h1>
         </div>
         <div data-role="content">
@@ -820,20 +820,19 @@
                     <label for="password">Password</label><input type="password" name="password" placeholder="  " id="join-dialog-password">
                     <label for="email">Email</label><input type="email" name="email" placeholder="  " id="join-dialog-email">
                 </fieldset>
-                <fieldset data-role="controlgroup">
-                    <legend>I have read and agreed to the <a href="http://sna.pr/terms/" target="_blank" >Snapr Terms of Use</a></legend>
-                    <input type="checkbox" name="checkbox-1" id="snapr-tos" class="custom" />
-                    <label for="snapr-tos">I agree</label>
-                </fieldset>
-                <input type="submit" name="login" data-theme="b" value="Join" disabled="true">
+                
+                    
+                <label for="snapr-tos" data-role="none">I agree to the <a href="http://sna.pr/terms/" target="_blank" >Terms of Use</a></label>
+                <input type="checkbox" data-role="none" name="checkbox-1" id="snapr-tos"  />
+                    
+            
+                <input type="submit" name="login" data-theme="e" value="Join">
             </form>
 
             <!-- <div data-role="fieldcontain"> -->
             <!-- </div> -->
         </div>
-        <div data-role="footer">
-
-        </div>
+       
     </div><!-- /page -->
 
     <!-- @search DIALOG-->
@@ -1273,6 +1272,7 @@
 <!-- backbone views -->
 <script src="app/views/home.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/login.js" type="text/javascript" charset="utf-8"></script>
+<script src="app/views/join_snapr.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/limbo.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/upload.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/uploading.js" type="text/javascript" charset="utf-8"></script>
