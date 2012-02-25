@@ -9,8 +9,8 @@ snapr.views.user_profile = Backbone.View.extend({
             return true;
         });
 
-        //this.el.find("h1").text('Username');
-        //this.el.find("[data-role='content']").empty();
+        this.el.find("h1").text('Username');
+        this.el.find("[data-role='content']").empty();
         
         this.model = new snapr.models.user( {username: this.options.query.username} );
         
@@ -42,8 +42,8 @@ snapr.views.user_profile = Backbone.View.extend({
     render: function()
     {
         console.warn('render', this)
-        //this.el.find("h1").text(this.model.get("user").username);
-        //this.el.find("[data-role='content']").append(this.model.get("details").profile.bio);
+        this.el.find("h1").text(this.model.get("user").username);
+        this.el.find("[data-role='content']").append(this.model.get("details").profile.bio);
     }
     
 });
