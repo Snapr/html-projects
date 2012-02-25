@@ -124,6 +124,23 @@ hr {
   background-color: transparent;
   color: rgba(255, 255, 255, 0.5);
 }
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+ul,
+li,
+hr {
+  font-weight: normal;
+  margin: 0;
+  margin-bottom: 8px;
+}
+ul, ul li {
+  list-style: none;
+  padding: 0;
+}
 .username {
   font-family: 'MuseoSansRounded700', Helvetica, Arial, sans-serif;
   font-size: 16px;
@@ -156,7 +173,7 @@ hr {
 .set-full-height {
   min-height: 400px;
 }
-.ui-icon.extra-icons {
+.ui-icon.extra-icons, .extra-icons .ui-icon {
   background-image: url('../gfx/extra-icons.png');
 }
 .inline-footer {
@@ -287,6 +304,10 @@ input.ui-input-text, textarea.ui-input-text {
 }
 .ui-controlgroup, fieldset.ui-controlgroup {
   margin: 0 0 8px 0;
+}
+.ui-btn {
+  margin: 0;
+  margin-bottom: 8px;
 }
 .ui-icon,
 .ui-checkbox-on .ui-icon,
@@ -638,10 +659,6 @@ input.ui-input-text, textarea.ui-input-text {
   right: 0!important;
   left: auto!important;
 }
-.extra-icons {
-  height: 32px;
-  width: 32px;
-}
 .extra-icons .ui-icon-heart, .extra-icons.ui-icon-heart {
   background-position: 0 0px;
 }
@@ -729,6 +746,7 @@ input.ui-input-text, textarea.ui-input-text {
   border-radius: 4px;
   width: 22px;
   height: 22px;
+  display: inline-block;
 }
 .sharing-icon-small .ui-icon {
   background-image: url('../gfx/share-icons-small.png');
@@ -1009,35 +1027,26 @@ input.ui-input-text, textarea.ui-input-text {
 .feed-view-toggle .ui-btn-text .ui-icon-grid-view {
   background-position: -2px -406px;
 }
-.feed-user-header {
-  height: 100px;
-  overflow: hidden;
+.user-info-block {
+  padding-left: 100px;
 }
-.feed-user-header .ui-bar {
-  margin-left: 0;
-  margin-right: 0;
-  padding-left: 108px;
-}
-.feed-user-header .user-info-block {
-  margin-left: 100px;
-}
-.feed-user-header .user-icon-left {
+.user-info-block .user-icon-left {
   position: absolute;
   top: 0;
   left: 0;
   width: 100px;
   height: 100px;
 }
-.feed-user-header .user-icon-left .user-profile-icon, .feed-user-header .user-icon-left .user-icon-big {
+.user-info-block .user-icon-left .user-profile-icon, .user-info-block .user-icon-left .user-icon-big {
   -moz-border-radius-topleft: 8px;
   -webkit-border-top-left-radius: 8px;
   border-top-left-radius: 8px;
   overflow: hidden;
 }
-.feed-user-header .user-icon-left .user-icon-big {
+.user-info-block .user-icon-left .user-icon-big {
   background-color: #d7d7d5;
 }
-.feed-user-header .user-icon-left .icon-overlay-info {
+.user-info-block .user-icon-left .icon-overlay-info {
   background-image: url('../gfx/shiny-avatar-info.png');
   width: 100px;
   height: 100px;
@@ -1049,6 +1058,15 @@ input.ui-input-text, textarea.ui-input-text {
   position: absolute;
   top: 0;
   left: 0;
+}
+.feed-user-header {
+  height: 100px;
+  overflow: hidden;
+}
+.feed-user-header .ui-bar {
+  margin-left: 0;
+  margin-right: 0;
+  padding-left: 108px;
 }
 .feed-user-header .user-stats {
   text-align: center;
@@ -1493,6 +1511,51 @@ input.ui-input-text, textarea.ui-input-text {
 }
 .share-photo .image-controls .ui-icon-toggle {
   background-position: 0px -160px;
+}
+/*
+* @profile - DIALOG 
+*/
+.user-profile .user-info-block {
+  padding-left: 108px;
+  position: relative;
+}
+.user-profile .real-name {
+  line-height: 16px;
+}
+.user-profile .real-name .facebook-sharing {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+.user-profile .user-linked-services li {
+  margin-bottom: 2px;
+}
+.user-profile .user-linked-services li a {
+  display: block;
+  min-height: 24px;
+}
+.user-profile .user-linked-services li a .sharing-icon-small {
+  vertical-align: middle;
+  margin-right: 4px;
+}
+.user-profile .user-hometown {
+  font-style: italic;
+}
+.user-profile .user-buttons .ui-btn {
+  display: inline-block;
+  margin-right: 8px;
+  -moz-border-radius: 20px;
+  -webkit-border-radius: 20px;
+  border-radius: 20px;
+}
+.user-profile .user-buttons .ui-btn-icon-left .ui-btn-inner {
+  padding-left: 36px;
+  padding-right: 18px;
+}
+.user-profile .user-buttons .ui-btn-icon-left .ui-icon {
+  width: 32px;
+  left: 4px;
+  top: 20px;
 }
 /*
 * @uploading - PAGE 
@@ -2085,6 +2148,10 @@ input.ui-input-text, textarea.ui-input-text {
   border: solid 1px #e4e4e4;
 }
 /* Main Styles */
+.ui-body-c {
+  /* Grey Btns in body are slightly different */
+
+}
 .ui-body-c div[data-role="content"] {
   background-color: #f7f7f7;
   background-image: url('../gfx/bg-texture-light.gif');
@@ -2094,6 +2161,40 @@ input.ui-input-text, textarea.ui-input-text {
 .ui-body-c .ui-header {
   color: #666666;
   text-shadow: #ffffff 0px 1px 1px;
+}
+.ui-body-c .ui-body-c .ui-link {
+  color: #333333;
+  font-weight: normal;
+}
+.ui-body-c hr {
+  display: block;
+  position: relative;
+  padding: 0;
+  width: 100%;
+  height: 0;
+  clear: both;
+  border: none;
+  border-bottom: solid 1px #ffffff;
+  border-top: solid 1px #e4e4e4;
+  font-size: 1px;
+  line-height: 0;
+  overflow: visible;
+  background-color: transparent;
+  color: rgba(255, 255, 255, 0.5);
+}
+.ui-body-c .ui-content .ui-btn-up-c,
+.ui-body-c .ui-content .ui-btn-hover-c,
+.ui-body-c .ui-content .ui-btn-down-c,
+.ui-body-c .ui-content .ui-btn-active-c {
+  border: solid 1px #cccccc;
+}
+.ui-body-c .ui-content .ui-btn-up-c.ui-shadow,
+.ui-body-c .ui-content .ui-btn-hover-c.ui-shadow,
+.ui-body-c .ui-content .ui-btn-down-c.ui-shadow,
+.ui-body-c .ui-content .ui-btn-active-c.ui-shadow {
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
 }
 /* Button Styles for header */
 .ui-header .ui-btn-up-c .ui-icon-search {

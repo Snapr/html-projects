@@ -86,6 +86,19 @@ hr{
     color: @color-shadow-medium-on-light;
 }
 
+h1,h2,h3,h4,h5, 
+p,ul,li,hr{
+    font-weight: normal;
+    margin: 0;
+    margin-bottom: @padding-page-inset;
+}
+
+ul,
+ul li{
+    list-style: none;
+    padding: 0;
+}
+
 
 .username{
     font-family: @txt-font-special;
@@ -125,7 +138,8 @@ hr{
     min-height: 400px;
 }
 
-.ui-icon.extra-icons{
+.ui-icon.extra-icons,
+.extra-icons .ui-icon{
     background-image: url('../gfx/extra-icons.png');
 }
 
@@ -254,6 +268,11 @@ textarea.ui-input-text {
 .ui-controlgroup, 
 fieldset.ui-controlgroup{
     margin: 0 0 @padding-page-inset 0;
+}
+
+.ui-btn{
+    margin: 0;
+    margin-bottom: @padding-element-inset;
 }
 
 .ui-icon,
@@ -605,9 +624,6 @@ fieldset.ui-controlgroup{
 }
 
 .extra-icons{
-    height: @gfx-extra-icon-sprite-grid;
-    width: @gfx-extra-icon-sprite-grid;
-
     .ui-icon-heart,&.ui-icon-heart{background-position: @ei-offset-x @gfx-extra-icon-sprite-heart-y;}
     .ui-icon-venue,&.ui-icon-venue{background-position: @ei-offset-x @gfx-extra-icon-sprite-venue-y;}
     .ui-icon-clock,&.ui-icon-clock{background-position: @ei-offset-x @gfx-extra-icon-sprite-person-y;}
@@ -673,6 +689,8 @@ fieldset.ui-controlgroup{
     .corner-all(@corner-general-less-rounded);
     width: 22px;
     height: 22px;
+    display: inline-block;
+    
     .ui-icon{
         background-image: url('../gfx/share-icons-small.png');
         width: @gfx-small-sharing-icon-sprite-grid;
@@ -927,23 +945,13 @@ fieldset.ui-controlgroup{
 }
 
 
-
-.feed-user-header{
-    height: 100px;
-    overflow: hidden;
-    .ui-bar{
-        margin-left: 0;
-        margin-right: 0;
-        padding-left: @size-large-avatar + @padding-page-inset;
-    }
-    .user-info-block{
-        margin-left: @size-large-avatar;  
-    }
+.user-info-block{
+    padding-left: @size-large-avatar; 
+    
     .user-icon-left{
         position:absolute;
         top: 0;
         left: 0;
-        
         width: @size-large-avatar;
         height: @size-large-avatar;
         .user-profile-icon,
@@ -953,7 +961,6 @@ fieldset.ui-controlgroup{
         }
         .user-icon-big{
             background-color: @color-bg-neutral-light-tint;
-            
         }
          .icon-overlay-info{
            background-image: url('../gfx/shiny-avatar-info.png'); 
@@ -966,9 +973,20 @@ fieldset.ui-controlgroup{
            top: 0;
            left: 0;  
         }
-       
-        
+    } 
+}
+
+
+
+.feed-user-header{
+    height: 100px;
+    overflow: hidden;
+    .ui-bar{
+        margin-left: 0;
+        margin-right: 0;
+        padding-left: @size-large-avatar + @padding-page-inset;
     }
+    
     
     
     .user-stats{
@@ -1431,6 +1449,70 @@ fieldset.ui-controlgroup{
         }
         .ui-icon-toggle{background-position: @as-offset-x @gfx-action-icon-sprite-toggle-y;}
         
+    }
+}
+
+/*
+* @profile - DIALOG 
+*/
+
+.user-profile{
+    .user-info-block{
+        padding-left: @size-large-avatar + @padding-element-inset;
+        position: relative;
+
+    }
+    
+    .real-name{
+        line-height: @txt-size-username;
+        
+        .facebook-sharing{
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+    }
+   
+    .user-linked-services{
+        li {
+            margin-bottom: 2px;
+            a{
+                display: block;
+                min-height: 24px;
+                .sharing-icon-small{
+                    vertical-align: middle;
+                    margin-right: 4px;
+                }
+                .ui-icon{
+                
+                }
+            }
+        }
+    }
+    
+    .user-hometown{
+        font-style: italic;
+    }
+    .user-buttons{
+        .ui-btn{
+            display: inline-block;
+            margin-right: @padding-element-inset;
+            .corner-all(@corner-fully-rounded);
+            
+        }
+        .ui-btn-icon-left {
+             .ui-btn-inner {
+                padding-left: 36px;
+                padding-right: 18px;
+            }
+            .ui-icon{
+                width: 32px;
+                left: 4px;
+                top: 20px;
+                
+            }
+        }
+           
     }
 }
 
@@ -1964,11 +2046,51 @@ fieldset.ui-controlgroup{
         background-image: @gfx-bg-light-texture;
         border: none;
         border-radius: @corner-page-element-rounded;
+        
+       
+        
     }
     .ui-header{
         color: @color-txt-medium-on-light;
         text-shadow: @color-shadow-light-on-light 0px 1px 1px;
     }
+    
+    .ui-body-c .ui-link {
+        color: @color-txt-dark-on-light;
+        font-weight: normal;
+    }
+    
+    hr{
+        display: block;
+        position: relative;
+        padding: 0;
+        width: 100%;
+        height: 0;
+        clear: both;
+        border: none;
+        border-bottom: @border-light-on-light;
+        border-top: @border-medium-on-light;
+        font-size: 1px;
+        line-height: 0;
+        overflow: visible;
+        background-color: transparent;
+        color: @color-shadow-medium-on-light;
+    }
+    
+     /* Grey Btns in body are slightly different */
+      .ui-content{
+          .ui-btn-up-c,
+          .ui-btn-hover-c,
+          .ui-btn-down-c,
+          .ui-btn-active-c   {
+                 border: @border-dark-on-light;
+                 &.ui-shadow{
+                 .box-shadow(none);
+                 }
+           }
+      }
+        
+    
 }
 
 /* Button Styles for header */
