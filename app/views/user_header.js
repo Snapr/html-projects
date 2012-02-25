@@ -22,8 +22,8 @@ snapr.views.user_header = Backbone.View.extend({
     {
         this.el.empty().append( this.template({
             user: this.model,
-            auth_username: snapr.auth.get('username'),
-            logged_in: snapr.auth.has("access_token"),
+            auth_username: snapr.auth.get( "snapr_user" ),
+            logged_in: snapr.auth.has( "access_token" ),
         }) ).trigger("create");
 
         return this;
