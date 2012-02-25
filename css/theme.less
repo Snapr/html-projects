@@ -109,6 +109,7 @@ ul li{
 
 .small-text{
     font-size: @txt-size-small;
+    font-family: @txt-font-base;
 }
 
 .ui-controlgroup-label,
@@ -146,6 +147,7 @@ ul li{
 .inline-footer{
     margin: @padding-page-inset -@padding-page-inset -@padding-page-inset -@padding-page-inset;
     .corner-bottom(@corner-page-element-rounded);
+    
 }
 
 /* progress bars */
@@ -243,6 +245,8 @@ ul li{
         position: absolute;
         right: -15px;
         margin-top: -18px;
+        background: none;
+        border: none!important;
         .ui-icon-delete{
             background-position: @gfx-general-icon-sprite-delete-x @g-light-offset-y;
         }
@@ -268,6 +272,10 @@ textarea.ui-input-text {
 .ui-controlgroup, 
 fieldset.ui-controlgroup{
     margin: 0 0 @padding-page-inset 0;
+}
+
+.ui-link{
+    
 }
 
 .ui-btn{
@@ -645,27 +653,32 @@ fieldset.ui-controlgroup{
     border: none;
     border-top: @border-light-on-light;
     .corner-top (@corner-page-element-rounded);
-    
     .ui-btn{
         font-family: @txt-font-base;
-       
+         .ui-btn-text{
+             text-transform: lowercase;
+             line-height: @txt-size-username;
+             font-size: @txt-size-base;
+             
+        }   
     }
     .ui-btn-active{
-        font-family: @txt-font-special;
-        font-size: @txt-size-username; 
+        
         .ui-btn-text{
             position: relative;
             top: -4px;
             text-shadow: @color-shadow-light-on-light 0px 1px 0px;
+            font-family: @txt-font-special;
+             font-size: @txt-size-username;
         }
     }
-    
     .ui-btn-inner{
            border-top: none;
            padding-top: 16px!important;
-           padding-bottom: 14px!important;
+           padding-bottom: 11px!important;
+           height: 20px;
+           line-height: 20px
      }
-
     /* Rounding for 3 column bars */
     .ui-grid-b{
         .ui-block-a{
@@ -1183,6 +1196,15 @@ fieldset.ui-controlgroup{
 
 }
 
+.feed-footer{
+    .ui-btn{
+        .corner-top(0);
+        .corner-bottom(@corner-page-element-rounded);
+        margin-bottom: 0;
+        border: none;
+    }
+}
+
 .ui-checkbox{
     .ui-icon{
         width: @gfx-action-icon-sprite-grid;
@@ -1581,9 +1603,10 @@ fieldset.ui-controlgroup{
     
     .ui-btn{
         background: none;
-        border: none;
+        border: none!important;
         &.ui-li{
-            border-top: @border-medium-on-light;
+            border-top: @border-medium-on-light!important;
+            margin-bottom: 0;
 
         }
     }
@@ -1608,8 +1631,8 @@ fieldset.ui-controlgroup{
     
     .ui-li,
     .ui-li-link-alt{
-        border-right: none;
-        border-left: none;
+        border-right: none!important;
+        border-left: none!important;
     }
     
     .ui-li-link-alt{
@@ -2179,7 +2202,9 @@ fieldset.ui-controlgroup{
     }
     
     .ui-link,
-    .ui-link:visited {
+    .ui-link:visited,
+    .ui-link:hover,
+    .ui-link:active {
         color: @color-txt-dark-on-light;
         font-weight: normal;
     }
@@ -2196,6 +2221,9 @@ fieldset.ui-controlgroup{
     &.ui-navbar{
         background: @color-bg-highlight-main;
         .linear-gradient(@color-bg-highlight-main, @color-bg-highlight-main-tint);
+        .ui-btn{
+            background: none!important;
+        }
     }
 }
 
