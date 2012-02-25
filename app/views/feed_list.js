@@ -34,23 +34,8 @@ snapr.views.feed_list = Backbone.View.extend({
                 model: item,
                 template: feed_list.li_templates[feed_list.list_style]
             });
-            li.model.bind( 'change:comments', function()
-            {
-                li.update_counts();
-            });
-            li.model.bind( 'change:favorite', function()
-            {
-                li.update_fav();
-                li.update_counts();
-            });
             $(this.el).append( li.render().el );
         }, this);
-
-        $imgs = $(this.el).find("img");
-        $imgs.load(function(){
-            $imgs.css("height","auto");
-        })
-
 
         // create jquery mobile markup, set to listview and refresh
 
