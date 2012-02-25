@@ -71,6 +71,21 @@ Number.prototype.zeroFill = function( width )
     return this.toString();
 }
 
+Number.prototype.ordinal = function(){
+    if( this!=11 && this!=12 && this!=13 ){
+    that = String(this)
+    switch( that.substr(that.length-1) ){
+        case '1':
+            return that+'st';
+        case '2':
+            return that+'nd';
+        case '3':
+            return that+'rd';
+    }
+    }
+    return this+'th';
+};
+
 Array.prototype.human_list =  function(){
     if(this.length==1){return this[0];}
     copy = this.slice(0);
@@ -108,6 +123,57 @@ snapr.utils.date_to_snapr_format = function(d)
 {
     return d.getFullYear()+'-'+(d.getMonth()+1).zeroFill(2)+'-'+d.getDate().zeroFill(2)+' 00:00:00';
 }
+
+snapr.utils.short_timestamp = function(time, relative)
+{
+    time = (time || "").replace(/-/g,"/").replace(/ \//g," -").replace(/[TZ]/g," ");
+    //add 0000 to set to utc for relative times
+    if(relative !== false && time.split(' ').length <3){
+        time = time + ' -0000';
+    }
+    var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],
+    date = new Date(time),now = new Date(),
+    diff = ((now.getTime() - date.getTime()) / 1000),
+    day_diff = Math.floor(diff / 86400);
+    date = new Date(time.replace(/ [\+-]\d{4}$/,'')); //strip TZ
+    if(date.getHours() <= 12){
+        var hours = date.getHours(),
+        ap = 'AM'
+    }else{
+        var hours = date.getHours() -12,
+        ap = 'PM'
+    }
+    if(relative !== false){
+        if ( isNaN(day_diff) || day_diff < 0 )//|| day_diff >= 31 )
+            return;
+        if (day_diff == 0){
+            return(
+                diff < 60 && 'just now' ||
+                diff < 3600 && Math.floor( diff / 60 ) + "min" ||
+                diff < 86400 && Math.floor( diff / 3600 ) + "h ago"
+            );
+        }
+        if (day_diff == 1){
+            return 'Yesterday';
+        }
+        if (day_diff < 7){
+            return day_diff + 'd ago';
+        }
+        if(date.getYear() == now.getYear()){
+            return (date.getDate()).ordinal() + ' ' + months[date.getMonth()];
+        }else{
+            var yr = String(date.getFullYear());
+            yr = yr.substring(yr.length - 2,yr.length);
+            return (date.getDate()).ordinal() + ' ' + months[date.getMonth()] + ' \'' + yr;
+        }
+    }
+    var full_date = hours+' '+ap+', '+months[date.getMonth()]+' '+date.getDate();
+    if (date.getFullYear() == new Date().getFullYear())
+        return full_date
+    return full_date+', '+date.getFullYear()
+}
+
+
 snapr.utils.save_local_param = function( key, value )
 {
     if (snapr.info.supports_local_storage)
