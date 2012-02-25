@@ -4,9 +4,9 @@ snapr.models.linked_service = Backbone.Model.extend({
     {
         this.data = {linked_services: true}
     },
-    
+
     urlRoot: snapr.api_base + '/linked_services/',
-    
+
     url: function( method )
     {
         if (method)
@@ -28,7 +28,7 @@ snapr.models.linked_service = Backbone.Model.extend({
             return this.urlRoot;
         }
     },
-    
+
     parse: function( d, xhr )
     {
         if (d.response && d.response.linked_services[this.provider])

@@ -9,7 +9,7 @@
         <script src="app/libs/json2.js" type="text/javascript" charset="utf-8"></script> <!-- just in case the browser sucks at JSON -->
         <script src="app/libs/jquery-1.7.1.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="app/libs/jq.cookie.js" type="text/javascript" charset="utf-8"></script>
-       
+
         <script type="text/javascript" charset="utf-8">
         snapr = {};
         snapr.redirect = '';
@@ -18,7 +18,7 @@
         snapr.base_url = "http://dev.sna.pr";
         snapr.api_base = snapr.base_url + "/api";
         snapr.access_token_url = snapr.base_url + "/ext/oauth/access_token/";
-        
+
         //Add the Client and Secret for your app here
         snapr.client_id = "client";
         snapr.client_secret = "secret";
@@ -31,7 +31,7 @@
         snapr.constants = {};
         snapr.constants.default_zoom = 15;
         snapr.constants.feed_count = 12;
-        
+
         snapr.constants.share_redirect = false;
         // set to hash url to redirect after successful upload/share eg:
         snapr.constants.upload_redirect = "#/uploading/";
@@ -74,11 +74,11 @@
         <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script> <!-- google maps -->
 
         <link rel="stylesheet" href="app/libs/jquery.mobile-1.0/jquery.mobile.structure-1.0.min.css" type="text/css" charset="utf-8">
-        
+
         <link rel="stylesheet" href="app/libs/jquery.mobile-1.0/jquery.mobile-1.0.min.css" type="text/css" charset="utf-8">
-        
+
         <link rel="stylesheet" href="app/libs/photoswipe/photoswipe.css" type="text/css" charset="utf-8">
-        
+
         <!-- <link href="css/theme.less" rel="stylesheet/less" type="text/css">
         <script src="app/libs/less.js" type="text/javascript" charset="utf-8"></script> -->
         <link rel="stylesheet" href="css/theme.css" type="text/css" charset="utf-8">
@@ -110,7 +110,7 @@
                     <a data-role="button" data-iconpos="top" data-icon="main-menu-camera" data-corners="false" data-shadow="false">Share</a>
                 <%}%>
                 </div>
-                
+
                  <!-- Dashboard Button -->
                 <div class="ui-block-b">
                      <a href="#/dash/" data-role="button" data-iconpos="top" data-icon="main-menu-dash" data-corners="false" data-shadow="false" data-ajax="false">Dashboard</a>
@@ -123,25 +123,25 @@
                 <div class="ui-block-a">
                 <% if (logged_in) {%>
                         <a class="x-launch-photo-library" data-role="button" data-iconpos="top" data-icon="main-menu-camera-lib" data-corners="false" data-shadow="false">Camera Roll</a>
-                 <%}else{%>    
+                 <%}else{%>
                       <a href="#/login/" data-ajax="false" data-corners="false" data-shadow="false" data-role="button" data-iconpos="top" data-icon="main-menu-login">Log In</a>
                 <%}%>
                 </div>
-                
+
                 <!-- My Snaps / Latest Feed Btn -->
                 <div class="ui-block-b">
                 <% if (logged_in) {%>
                         <a href="#/feed/?username=<%=username%>&list_style=grid" data-corners="false" data-shadow="false" data-role="button" data-theme="c" class="my-snaps" data-ajax="false" data-iconpos="top" data-icon="main-menu-feed">My Snaps</a>
-                 <%}else{%>    
+                 <%}else{%>
                         <a href="#/feed/" data-corners="false" data-shadow="false" data-role="button" data-theme="c" class="my-snaps" data-ajax="false" data-iconpos="top" data-icon="main-menu-feed">Latest</a>
                 <%}%>
                 </div>
-                
+
                 <!-- Popular btn -->
                 <div class="ui-block-c">
                     <a href="#/popular/" data-role="button" data-corners="false" data-shadow="false" data-iconpos="top" data-icon="main-menu-popular" data-ajax="false">Popular</a>
                 </div>
-                
+
             </div>
 
             <div class="ui-grid-b">
@@ -149,7 +149,7 @@
                 <div class="ui-block-a">
                     <a href="#/map/" data-corners="false" data-shadow="false" data-role="button" data-theme="c" data-ajax="false" data-iconpos="top" data-icon="main-menu-map">Map</a>
                 </div>
-                
+
                 <!-- Join / My Account Btn -->
                 <div class="ui-block-b">
                     <% if(logged_in) { %>
@@ -158,17 +158,17 @@
                         <a href="#/join/" data-ajax="false" data-corners="false" data-shadow="false" data-role="button" data-iconpos="top" data-icon="main-menu-join">Join Snapr</a>
                     <% } %>
                 </div>
-                
+
                 <!-- cities btn -->
                 <div class="ui-block-c">
                     <a href="#/share-photo/?photo=ZJE" data-corners="false" data-shadow="false" data-role="button" data-theme="c" data-ajax="false" data-iconpos="top" data-icon="main-menu-cities">Cities</a>
                 </div>
             </div>
 
-            
-            
+
+
             <!-- Temp Menu Footer -->
-           
+
             <% if(logged_in) { %>
                 <a href="#/logout/"
                 data-ajax="false" data-corners="false" data-shadow="false"
@@ -178,9 +178,9 @@
                 data-ajax="false" data-corners="false" data-shadow="false"
                 data-role="button" class="ui-bar ui-bar-e bottom-centered-arrow">More about Snapr</a>
             <% } %>
-           
-               
-          
+
+
+
     </script>
 
     <!-- @myaccount PAGE -->
@@ -196,14 +196,14 @@
 
     <!--  template for my-account -->
     <script id="my-account-template" type="text/template">
- 
-    
+
+
     <div data-role="collapsible" data-collapsed="false" data-theme="e">
         <h3>Settings</h3>
         <p>
-        
+
             <div data-role="collapsible-set" data-theme="d" data-content-theme="d">
-                
+
                 <div data-role="collapsible" data-collapsed="true">
                     <h3>Account Name & Email</h3>
                     <fieldset data-role="controlgroup">
@@ -233,7 +233,7 @@
                     </fieldset>
                     <button data-theme="b" class="save">Save</button>
                 </div>
-                
+
                 <div data-role="collapsible" data-collapsed="true">
                     <h3>Notifications</h3>
                     <legend>Email me when:</legend>
@@ -313,20 +313,20 @@
                     </fieldset>
 
                     <button data-theme="b" class="my-account-save">Save</button>
-                </div> 
-    
+                </div>
+
             </div><!-- End of Nested Collapsible Set -->
 
          </p><!-- Close Content for Master Collapsible Sett -->
     </div><!-- Close Master Collapsible Set -->
-    
-    
-    
+
+
+
     <div data-role="collapsible" data-collapsed="false" data-theme="e">
          <h3>Linked Services</h3>
          <p >
          <div class="linked-services" data-role="collapsible-set" data-theme="c" data-content-theme="d">
-         
+
 
          </div>
          </p><!-- Close Content for Master Collapsible Sett -->
@@ -336,7 +336,7 @@
          <h3>Add Services</h3>
          <p>
          <div class="add-services" data-role="collapsible-set" data-theme="c" data-content-theme="d">
-         
+
 
          </div>
          </p><!-- Close Content for Master Collapsible Sett -->
@@ -396,7 +396,7 @@
 
     <!-- @linked @service ITEM for showing a linked service in #linked-services -->
     <script id="linked-service-template" type="text/template">
-    
+
         <div data-role="collapsible" data-collapsed="true">
         <% switch(service.provider) { case 'twitter': %>
             <h3>Twitter - <%= service.get('username') %></h3>
@@ -515,7 +515,7 @@
                 <a href="#/search/" data-ajax="false" data-role="button" data-icon="search" data-iconpos="notext"></a>
                 <a href="#/" data-ajax="false" data-role="button" data-icon="home" data-iconpos="notext"></a>
             </div>
-           
+
         </div>
         <div data-role="content" data-theme="d">
              <div data-role="navbar" data-theme="e" class="ui-body-e">
@@ -525,7 +525,7 @@
                         <li><a id="popular-time-all" class="ui-btn-active">All</a></li>
                     </ul>
                 </div>
-            
+
             <div id="popular-thumbs" class="thumbs-grid thumbs-grid-med">
             </div>
         </div>
@@ -556,13 +556,13 @@
                     </fieldset>
                 </div>
             </div>
-            
+
             <div class="ui-btn-right">
                 <a href="#/search/" data-ajax="false" data-role="button" data-icon="search" data-iconpos="notext"></a>
                 <a href="#/" data-ajax="false" data-role="button" data-icon="home" data-iconpos="notext"></a>
             </div>
         </div>
-        
+
         <div class="feed-content" data-role="content" data-theme="d">
             <div class="feed-upload-progress">
                 <ul class="feed-upload-list" data-role="listview">
@@ -570,11 +570,11 @@
             </div>
             <div class="feed-header">
             </div>
-           
+
             <div id="feed-images" class="gallery">
-                
+
             </div>
-            
+
             <div class="feed-footer inline-footer ui-body-c">
              <button class="more ui-btn-right">Load More</button>
             </div>
@@ -621,7 +621,7 @@
                    </div>
                </div>
 
-           <div class="user-info-block">  
+           <div class="user-info-block">
                <div class="user-icon-left">
                    <a class="user-profile-icon" href="#/user/profile/?username=<%= user.get('username') %>" data-ajax="false">
                        <div class="user-icon-big" style="background-image: url('http://sna.pr/avatars/<%= user.get('username') %>?size=large'); background-size: 100% 100%"></div>
@@ -657,16 +657,16 @@
 
     <!-- @feed @image ITEM correct one -->
     <script id="feed-li-list-template" type="text/template">
-    
+
         <div class="image-item-block">
             <div class="image-item-topbar">
                 <a class="user-icon-link" data-ajax="false" data-transition="slide" href="#/feed/?username=<%= item.get('username') %>">
                     <div class="user-icon-small" style="background-image: url('http://sna.pr/avatars/<%= item.get('username') %>/'); background-size: 100% 100%"></div>
                 </a>
                 <a class="username" data-ajax="false" data-transition="slide" href="#/feed/?username=<%= item.get('username') %>"><%= item.get('username') %></a>
-                
+
                 <!-- Show Time only if no location -->
-                <% if(item.get('location').location){ %> 
+                <% if(item.get('location').location){ %>
                 <span class="image-time-and-location">
                 <a class="goto-map">
                     <span class="ui-icon extra-icons ui-icon-venue"></span>
@@ -685,38 +685,38 @@
             </a>
 
             <div class="image-description">
-            
+
                 <% if (item.get('description')){%>
                     <span class="ui-icon extra-icons ui-icon-quote"></span>
-                <%}%>            
+                <%}%>
                 <%= item.get('description') %>
-                
+
                 <% if (item.get('location').spot_id){%>
                 <a class="goto-spot">
                     @ <%= item.get('location').foursquare_venue_name %>
                 </a>
                 <%}%>
             </div>
-            
+
             <div class="image-item-base">
                 <div data-role="controlgroup" data-type="horizontal" class="image-actions">
 
                     <div data-role="button" data-icon="action-heart" data-inline="true" data-iconpos="left" class="favorite-button <% if(item.get('favorite')){ %> selected <% }%>" ><% if (parseInt(item.get('favorite_count')) > 0){ %>&times; <%= item.get('favorite_count')%><%}%></div>
-            
-            
-            
+
+
+
                     <div data-role="button" data-icon="action-comment" data-inline="true" data-iconpos="left" class="comment-button" ><% if (parseInt(item.get('comments')) > 0){ %>&times; <%= item.get('comments')%><%}%></div>
-                    
+
                      <% if (parseInt(item.get('comments')) + parseInt(item.get('favorite_count')) > 0){ %>
                     <div data-role="button" data-icon="action-show-all" data-inline="true" data-iconpos="right" class="reactions-button" >Show All</div>
                     <%}%>
                 </div>
-   
-              
+
+
                 <ul data-inset="true" class="reactions-list simple-list">
                     Loading..
                 </ul>
-        
+
                 <div class="comment-area">
                     <div>
                         <form action="javascript:void(0);" class="comment-form" accept-charset="utf-8">
@@ -725,7 +725,7 @@
                                 <div class="ui-block-a"></div>
                                 <div class="ui-block-b"></div>
                                 <div class="ui-block-c"><input data-theme="e" type="submit" value="Comment" /></div>
-                    
+
                             </div>
                         </form>
                     </div>
@@ -733,7 +733,7 @@
             </div>
 
         </div>
-   
+
     </script>
 
     <!-- @feed @thumb ITEM - clicks to gallery view -->
@@ -774,13 +774,13 @@
             <h1>Profile</h1>
         </div>
         <div data-role="content" class="user-profile">
-            
+
             <!-- inset block of content w/ icon -->
-            <div class="user-info-block">  
+            <div class="user-info-block">
                 <div class="user-icon-left">
                     <a class="user-profile-icon" href="" data-ajax="false">
                         <div class="user-icon-big" style="background-image: url('http://sna.pr/avatars/rowan?size=large'); background-size: 100% 100%"></div>
-                        
+
                     </a>
                 </div>
 
@@ -804,11 +804,11 @@
                                 <span class="foursquare-sharing sharing-icon-small"><span class="ui-icon"></span></span>Rowan W.
                                 </a>
                             </li>
-                            
+
                     </ul>
                     <hr>
                     <p class="user-bio">
-                    Supoosedly a flim maker. Founder of Snapr. 
+                    Supoosedly a flim maker. Founder of Snapr.
                     </p>
                     <p class="user-hometown">
                     Brooklyn NY
@@ -817,7 +817,7 @@
                         <a><span class="ui-icon ui-icon-link extra-icons"></span>sna.pr/rowan</a>
                     </p>
                 </div>
-                
+
             </div>
             <hr>
             <!-- base btns -->
@@ -826,7 +826,7 @@
                 <a data-role="button" data-icon="favs" class="extra-icons">1234 Favourites</a>
             </div>
             <hr>
-            
+
         </div>
     </div>
 
@@ -842,7 +842,7 @@
 
            </div>
            <div data-role="content" data-theme="d">
-                
+
 
            </div>
        </div><!-- /page -->
@@ -859,7 +859,7 @@
             </ul>
         </div>
     </div>
-    
+
     <!-- @person ITEM-->
     <script id="people-li-template" type="text/template">
            <a data-ajax="false" href="#/feed/?username=<%= user.get('username') %>">
@@ -890,19 +890,19 @@
                     <label for="password">Password</label><input type="password" name="password" placeholder="  " id="join-dialog-password">
                     <label for="email">Email</label><input type="email" name="email" placeholder="  " id="join-dialog-email">
                 </fieldset>
-                
-                    
+
+
                 <label for="snapr-tos" data-role="none">I agree to the <a href="http://sna.pr/terms/" target="_blank" >Terms of Use</a></label>
                 <input type="checkbox" data-role="none" name="checkbox-1" id="snapr-tos"  />
-                    
-            
+
+
                 <input type="submit" name="login" data-theme="e" value="Join">
             </form>
 
             <!-- <div data-role="fieldcontain"> -->
             <!-- </div> -->
         </div>
-       
+
     </div><!-- /page -->
 
     <!-- @search DIALOG-->
@@ -1008,12 +1008,12 @@
                         <input type="text" name="username"  placeholder="  " autocapitalize="off" autocorrect="off" id="login-dialog-username">
                     </div>
                     <div data-role="fieldcontain" class="ui-hide-label">
-                    
+
                         <label for="password">Password</label><input type="password" name="password" placeholder="  " id="login-dialog-password">
                     </div>
-                    
+
                     <input type="submit" name="login" data-theme="e" value="Log In">
-                    
+
                 </fieldset>
             </form>
 
@@ -1055,7 +1055,7 @@
                     <input type="file" name="photo" id="upload-file" />
                    </p>
                     <input disabled="true" type="submit" value="Upload Snap" id="upload-submit" data-theme="e" />
-                  
+
 
 
 
@@ -1072,29 +1072,29 @@
         <div data-role="header" data-theme="b">
              <div class="ui-btn-left">
                     <a class="x-launch-camera" data-ajax="false" data-role="button" data-icon="camera" data-iconpos="notext"></a>
-                    
+
                 </div>
 
             <h1>Upload</h1>
-            
+
             <div class="ui-btn-right">
                 <a href="#/search/" data-ajax="false" data-role="button" data-icon="search" data-iconpos="notext"></a>
                 <a href="#/" data-ajax="false" data-role="button" data-icon="home" data-iconpos="notext"></a>
             </div>
-            
+
         </div>
         <div data-role="content" data-theme="d">
-            
+
             <div class="upload-progress-header page-inset-header">
                 <div class="upload-info-block">
                     <a class="upload-image-thumb-gall gallery_link image-link">
-                       <img src="http://media-server2.snapr.us/thm2/dev/8ef6a001298fe190ccba5bf483f9c3a6/ZK2.jpg" class="thumb-image thumb-med"> 
+                       <img src="http://media-server2.snapr.us/thm2/dev/8ef6a001298fe190ccba5bf483f9c3a6/ZK2.jpg" class="thumb-image thumb-med">
                     </a>
-                    
+
                     <div class="upload-info">
                         <p class="upload-image-tag"><span class="ui-icon extra-icons ui-icon-quote"></span>Caption</p>
                         <p class="upload-image-venue"><a>@ Venue name</a></p>
-                       
+
                         <div class="progress-bar active">
                             <div class="bar-wrapper">
                                <div class="bar-bg bar">
@@ -1104,7 +1104,7 @@
                            </div>
                            <a class="bar-action" data-role="button" data-icon="delete" data-iconpos="notext">Cancel</a>
                         </div>
-                        
+
                         <ul class="upload-shared-to">
                             <li>
                                 <div class="twitter-sharing sharing-icon-small">
@@ -1121,8 +1121,8 @@
                 </div>
 
             </div>
-            
-            
+
+
             <ul class="image-streams">
                 <li class="image-stream" id="upload-popular-nearby">
                    <a class="ui-bar top-left-arrow" data-role="button" data-iconpos="right" data-icon="arrow-r" data-theme="c">
@@ -1154,9 +1154,9 @@
                             <img src="https://s3.amazonaws.com/media-server2.snapr.us/thm2/09cd5f890a55389104f9576f7dd0fd2a/S8Q.jpg" alt="Girl mo." class="thumb-image thumb-med">
                             </a>
 
-                        </div>                    
+                        </div>
                 </li>
-                
+
                  <li class="image-stream" id="upload-latest-nearby">
                        <a class="ui-bar top-left-arrow" data-role="button" data-iconpos="right" data-icon="arrow-r" data-theme="c">
                            <span class="ui-icon ui-icon-activity extra-icons"></span>
@@ -1187,9 +1187,9 @@
                                 <img src="https://s3.amazonaws.com/media-server2.snapr.us/thm2/09cd5f890a55389104f9576f7dd0fd2a/S8Q.jpg" alt="Girl mo." class="thumb-image thumb-med">
                                 </a>
 
-                            </div>                    
+                            </div>
                     </li>
-                
+
             </ul>
 
         </div>
@@ -1243,75 +1243,75 @@
             <div class="upload-image-layer set-full-height">
 
                 <div class="image-placeholder"></div>
-               
+
             </div>
-            
+
             <div class="upload-settings-layer trans-bg">
                 <div class="upload-settings">
                     <textarea name="description" id="description" placeholder="Add text..." data-theme="d"></textarea>
-        
+
                     <fieldset data-role="controlgroup" data-type="horizontal" class="upload-image-privacy">
                          <legend>Privacy:</legend>
-                         <input type="radio" name="status" id="status-public" value="public" checked="checked" />                        
+                         <input type="radio" name="status" id="status-public" value="public" checked="checked" />
                          <label for="status-public">Public<span class="ui-icon"></span></label>
 
                         <input type="radio" name="status" id="status-private" value="private"  />
                         <label for="status-private">Private<span class="ui-icon"></span></label>
-                    
+
                     </fieldset>
-        
+
                     <fieldset data-role="controlgroup" data-type="horizontal" class="upload-image-sharing">
                         <legend>Share to:</legend>
-                        
+
                         <input type="checkbox" name="tweet" id="twitter-sharing" <%if (facebook_sharing){%>checked="true"<%}%> />
                         <label for="twitter-sharing"><span class="ui-icon"></span>Twitter</label>
-                        
+
                         <input type="checkbox" name="facebook_gallery" id="facebook-sharing" <%if (facebook_sharing){%>checked="true"<%}%>/>
                         <label for="facebook-sharing"><span class="ui-icon"></span>Facebook</label>
-                        
+
                         <input type="checkbox" name="tumblr" id="tumblr-sharing"<%if (tumblr_sharing){%>checked="true"<%}%> />
                         <label for="tumblr-sharing"><span class="ui-icon"></span>Tumblr</label>
-                        
+
                         <input type="checkbox" name="foursquare_checkin" id="foursquare-sharing" <%if (facebook_sharing){%>checked="true"<%}%> />
                         <label for="foursquare-sharing"><span class="ui-icon"></span>Foursquare</label>
-                        
+
                     </fieldset>
-                    
+
                     <hr />
-                    
+
                     <fieldset class="upload-image-location">
                         <span class="image-location">
                             <input type="checkbox" name="share-location" id="share-location" checked="true"/>
                             <label for="share-location"><span class="ui-icon ui-icon-location"></span>Location Description Text</label>
                         </span>
-                        
+
                         <a data-role="button" id="foursquare_venue" data-icon="arrow-right">
                             <span class="ui-icon ui-icon-venue"></span>Foursquare Venue
                         </a>
                     </fieldset>
-                    
+
                     <div class="ui-grid-b">
                         <div class="ui-block-a">
                         </div>
-                   
+
                         <div class="ui-block-b">
                         </div>
-                        
+
                         <div class="ui-block-c">
                         <input type="submit" data-role="button" data-theme="e" class="share" value="Share"/>
                         </div>
                     </div>
                 </form>
-                
+
                 <div class="image-controls">
                  <a data-role="button" id="show_photo" data-icon="toggle" data-iconpos="right" >
                         Show Photo
                     </a>
                 </div>
-        
+
                 </div>
             </div>
-            
+
     </script>
 
     <!-- template for .image-placeholder inside #share-photo -->
@@ -1380,8 +1380,6 @@
 <script src="app/models/linked_service.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/models/photo.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/models/photo_collection.js" type="text/javascript" charset="utf-8"></script>
-<script src="app/models/pink_photo.js" type="text/javascript" charset="utf-8"></script>
-<script src="app/models/pink_photo_collection.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/models/comment.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/models/favorite.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/models/thumb.js" type="text/javascript" charset="utf-8"></script>

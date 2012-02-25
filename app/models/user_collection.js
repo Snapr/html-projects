@@ -28,19 +28,19 @@ snapr.models.user_collection = Backbone.Collection.extend({
             return [];
         }
     },
-    
+
     get_following: function( username )
     {
         var url_function = this.url;
 
         this.url = this.urlRoot + "following/";
-        
+
         this.data = {
             username: username
         }
-        
+
         var user_collection = this;
-        
+
         this.fetch({
             success: function()
             {
@@ -53,19 +53,19 @@ snapr.models.user_collection = Backbone.Collection.extend({
             }
         })
     },
-    
+
     get_followers: function( username )
     {
         var url_function = this.url;
 
         this.url = this.urlRoot + "followers/";
-        
+
         this.data = {
             username: username
         }
-        
+
         var user_collection = this;
-        
+
         this.fetch({
             success: function()
             {
@@ -78,19 +78,19 @@ snapr.models.user_collection = Backbone.Collection.extend({
             }
         })
     },
-    
+
     user_search: function( username )
     {
         var url_function = this.url;
 
         this.url = this.urlRoot + "search/";
-        
+
         this.data = {
             username: username
         }
-        
+
         var user_collection = this;
-        
+
         this.fetch({
             success: function()
             {

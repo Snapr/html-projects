@@ -54,6 +54,8 @@ snapr.models.user_settings = Backbone.Model.extend({
         });
         // remove the linked_services object and replace it with our new models
         this.unset('linked_services');
-        this.set({linked_services:ls});
+        this.set({
+            linked_services: ls
+        });
     }
 });

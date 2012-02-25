@@ -13,7 +13,7 @@ Backbone.sync = function( method, model, options )
     var getUrl = function( object, method )
     {
         if (!(object && object.url)) return null;
-        return _.isFunction(object.url) ? object.url(method) : object.url;
+        return _.isFunction( object.url ) ? object.url( method ) : object.url;
     };
 
     // map RESTful methods to our API
@@ -24,16 +24,16 @@ Backbone.sync = function( method, model, options )
         'read'  : 'GET'
     }
 
-    if (snapr.auth && snapr.auth.has('access_token'))
+    if (snapr.auth && snapr.auth.has( "access_token" ))
     {
         // if there is no .data attribute on the model set it from the model's id
         // or just pass an empty object
         if (!model.data)
         {
-            model.data = model.attributes || model.has('id') && {id: model.get('id')} || {};
+            model.data = model.attributes || model.has( "id" ) && {id: model.get( "id" )} || {};
         }
 
-        model.data.access_token = snapr.auth.get('access_token');
+        model.data.access_token = snapr.auth.get( "access_token" );
     }
 
     if (snapr.app_group)
@@ -51,11 +51,11 @@ Backbone.sync = function( method, model, options )
         var meth = '';
     }
 
-    var url = getUrl(model,method);
+    var url = getUrl( model, method );
 
     $.ajax({
-        url: url + '?' + $.param(model.data || {}) + meth,
-        type:'GET',
+        url: url + '?' + $.param( model.data || {} ) + meth,
+        type: 'GET',
         // data is sent in the url only
         data: null,
         dataType: options.dataType || 'jsonp',
@@ -101,8 +101,6 @@ Array.prototype.human_list =  function(){
     return text
 };
 
-
-
 // store some info about the browser
 snapr.info = {}
 snapr.info.supports_local_storage = (function(){
@@ -123,16 +121,16 @@ snapr.auth = new snapr.models.auth();
 snapr.auth.get_locally();
 
 snapr.utils = {};
-snapr.utils.date_to_snapr_format = function(d)
+snapr.utils.date_to_snapr_format = function( d )
 {
     return d.getFullYear()+'-'+(d.getMonth()+1).zeroFill(2)+'-'+d.getDate().zeroFill(2)+' 00:00:00';
 }
 
-snapr.utils.short_timestamp = function(time, relative)
+snapr.utils.short_timestamp = function( time, relative )
 {
     time = (time || "").replace(/-/g,"/").replace(/ \//g," -").replace(/[TZ]/g," ");
     //add 0000 to set to utc for relative times
-    if(relative !== false && time.split(' ').length <3){
+    if (relative !== false && time.split(' ').length <3){
         time = time + ' -0000';
     }
     var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],
@@ -140,14 +138,16 @@ snapr.utils.short_timestamp = function(time, relative)
     diff = ((now.getTime() - date.getTime()) / 1000),
     day_diff = Math.floor(diff / 86400);
     date = new Date(time.replace(/ [\+-]\d{4}$/,'')); //strip TZ
-    if(date.getHours() <= 12){
+    if (date.getHours() <= 12){
         var hours = date.getHours(),
         ap = 'AM'
-    }else{
+    }
+    else
+    {
         var hours = date.getHours() -12,
         ap = 'PM'
     }
-    if(relative !== false){
+    if (relative !== false){
         if ( isNaN(day_diff) || day_diff < 0 )//|| day_diff >= 31 )
             return;
         if (day_diff == 0){
@@ -163,10 +163,12 @@ snapr.utils.short_timestamp = function(time, relative)
         if (day_diff < 7){
             return day_diff + 'd ago';
         }
-        if(date.getYear() == now.getYear()){
+        if (date.getYear() == now.getYear()){
             return (date.getDate()).ordinal() + ' ' + months[date.getMonth()];
-        }else{
-            var yr = String(date.getFullYear());
+        }
+        else
+        {
+            var yr = String( date.getFullYear() );
             yr = yr.substring(yr.length - 2,yr.length);
             return (date.getDate()).ordinal() + ' ' + months[date.getMonth()] + ' \'' + yr;
         }
@@ -180,30 +182,30 @@ snapr.utils.short_timestamp = function(time, relative)
 snapr.utils.short_location = function(txt)
 {
     txt_array = txt.split(', ');
-     new_txt_array = [];
-     new_txt_array.push(txt_array[0]);
-     if(txt_array.length > 1){
-         if(txt_array[0].length + txt_array[1].length < 24){
-             new_txt_array.push(txt_array[1]);
-         }
-     }
-     return new_txt_array.join(', '); 
+    new_txt_array = [];
+    new_txt_array.push(txt_array[0]);
+    if (txt_array.length > 1){
+        if (txt_array[0].length + txt_array[1].length < 24){
+            new_txt_array.push(txt_array[1]);
+        }
+    }
+    return new_txt_array.join( ", " );
 }
 
 snapr.utils.save_local_param = function( key, value )
 {
     if (snapr.info.supports_local_storage)
     {
-        localStorage.setItem( key, value);
+        localStorage.setItem( key, value );
     }
     else
     {
-        $.cookie( key, value);
+        $.cookie( key, value );
     }
 
     if (key == "appmode")
     {
-        $("body").addClass("appmode").addClass("appmode-" + value);
+        $("body").addClass( "appmode" ).addClass( "appmode-" + value );
     }
 }
 snapr.utils.get_local_param = function( key )
@@ -228,12 +230,12 @@ snapr.utils.delete_local_param = function( key )
         $.cookie( key, null );
     }
 }
-snapr.utils.get_query_params = function(query)
+snapr.utils.get_query_params = function( query )
 {
     var params = {};
     if (query && query.indexOf('=') > -1)
     {
-        _.each( query.split('&'), function(part)
+        _.each( query.split('&'), function( part )
         {
             var kv = part.split('=');
             switch (kv[0])
@@ -302,26 +304,28 @@ snapr.utils.notification = function( title, text, callback ){
 snapr.utils.approve = function( options ){
     var context = this;
     options = _.extend({
-        'title': 'Are you sure?',
-        'yes': 'Yes',
-        'no': 'Cancel',
-        'yes_callback': $.noop,
-        'no_callback': $.noop
+        title: "Are you sure?",
+        yes: "Yes",
+        no: "Cancel",
+        yes_callback: $.noop,
+        no_callback: $.noop
     }, options);
 
-    if (snapr.utils.get_local_param( "appmode" ) == 'iphone'){
+    if (snapr.utils.get_local_param( "appmode" ) == "iphone"){
         var actionID = tapped_action.add(options.yes_callback, options.no_callback);
-        pass_data('snapr://action?'+$.param({
-            'title': options.title,
-            'destructiveButton': options.yes,
-            'cancelButton': options.no,
-            'actionID': actionID
+        pass_data("snapr://action?" + $.param({
+            title: options.title,
+            destructiveButton: options.yes,
+            cancelButton: options.no,
+            actionID: actionID
         }) );
     }else{
-        if(confirm(options.title)){
-            $.proxy(options.yes_callback, context)();
-        }else{
-            $.proxy(options.no_callback, context)();
+        if (confirm( options.title )){
+            $.proxy( options.yes_callback, context )();
+        }
+        else
+        {
+            $.proxy( options.no_callback, context )();
         }
     }
 }
@@ -342,7 +346,7 @@ snapr.utils.require_login = function( funct )
 {
     return function( e )
     {
-        if (!snapr.auth.has('access_token'))
+        if (!snapr.auth.has( "access_token" ))
         {
             if (e)
             {
@@ -352,7 +356,7 @@ snapr.utils.require_login = function( funct )
         }
         else
         {
-            $.proxy(funct, this)(e);
+            $.proxy( funct, this )(e);
         }
     };
 }
@@ -365,7 +369,7 @@ snapr.utils.get_photo_height = function( orig_width, orig_height, element )
     return width/aspect;
 };
 
-var opts = {
+var spin_opts = {
   lines: 12, // The number of lines to draw
   length: 7, // The length of each line
   width: 4, // The line thickness
@@ -376,19 +380,23 @@ var opts = {
 };
 
 
-$.fn.spin = function(opts) {
-  this.each(function() {
-    var $this = $(this),
-        spinner = $this.data('spinner');
+$.fn.spin = function( spin_opts ) {
+    this.each( function(){
+        var $this = $(this),
+        spinner = $this.data( "spinner" );
 
-    if (spinner) spinner.stop();
-    if (opts !== false) {
-      opts = $.extend({color: $this.css('color'), width: 4, length: 7}, opts);
-      spinner = new Spinner(opts).spin(this);
-      $this.data('spinner', spinner);
-    }
-  });
-  return this;
+        if (spinner) spinner.stop();
+        if (spin_opts !== false) {
+            spin_opts = $.extend({
+                color: $this.css( "color" ),
+                width: 4,
+                length: 7
+            }, spin_opts);
+            spinner = new Spinner( spin_opts ).spin( this );
+            $this.data( "spinner", spinner );
+        }
+    });
+    return this;
 };
 
 
@@ -561,7 +569,7 @@ snapr.routers = Backbone.Router.extend({
         snapr.utils.get_query_params( query_string );
         snapr.info.current_view = new snapr.views.popular();
     },
-    
+
     dash: function( query_string )
        {
            snapr.utils.get_query_params( query_string );
