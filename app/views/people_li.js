@@ -21,7 +21,7 @@ snapr.views.people_li = Backbone.View.extend({
             .empty()
             .append( this.template({
                 user: this.model,
-                auth_username: snapr.auth.get('username')
+                auth_username: snapr.auth.get( "snapr_user" )
             }) )
 
         return this;
