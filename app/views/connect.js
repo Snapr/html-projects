@@ -9,7 +9,7 @@ snapr.views.connect = Backbone.View.extend({
 
             return true;
         });
-        
+
         $.mobile.changePage( $("#connect"), {
             changeHash: false
         });
@@ -26,20 +26,20 @@ snapr.views.connect = Backbone.View.extend({
                 if (this.options.query.url.indexOf(service) > -1)
                 {
                     this.to_link = _.without(this.to_link, service);
-                    
+
                     this.to_share.push( service );
                 }
             }, this);
         }
-        
+
         this.services = [
             "facebook",
             "tumblr"
         ];
-        
+
         this.render();
         // this.user_settings = new snapr.models.user_settings();
-        // 
+        //
         // var connect_view = this;
         // var options = {
         //     success: function()
@@ -52,14 +52,14 @@ snapr.views.connect = Backbone.View.extend({
         //         console.warn( 'error');
         //     }
         // }
-        // 
+        //
         // this.user_settings.fetch(options);
     },
-    
+
     render: function()
     {
         $(this.el).find("ul").empty();
-        
+
         _.each(this.services, function( service )
         {
             if (_.indexOf( this.to_share, service ) > -1)
@@ -98,13 +98,13 @@ snapr.views.connect = Backbone.View.extend({
                 $(this.el).find("ul").append( li.render().el );
             }
 
-            
+
         }, this);
-        
+
         $(this.el).find("ul").trigger('create').listview().listview("refresh");
         console.warn( "render connect", this );
         // $(this.el).trigger("refresh");
-        
+
         return this;
     }
 

@@ -13,11 +13,15 @@ snapr.views.dash = Backbone.View.extend({
         this.el.live('pagehide', function( e )
         {
             $(e.target).undelegate();
-            
+
             return true;
+        });
+
+        $.mobile.changePage( $("#dashboard"), {
+            changeHash: false
         });
 
     },
 
-   
+
 })

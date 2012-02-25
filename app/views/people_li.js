@@ -10,7 +10,7 @@ snapr.views.people_li = Backbone.View.extend({
         {
             people_li.refresh();
         });
-        
+
     },
 
     tagName: 'li',
@@ -21,12 +21,12 @@ snapr.views.people_li = Backbone.View.extend({
             .empty()
             .append( this.template({
                 user: this.model,
-                auth_username: snapr.auth.get('username')
+                auth_username: snapr.auth.get( "snapr_user" )
             }) )
 
         return this;
     },
-    
+
     refresh: function()
     {
         // unfortunately jquery mobile doesn't like refreshing inividual listview items
@@ -54,21 +54,21 @@ snapr.views.people_li = Backbone.View.extend({
                     .removeClass("ui-icon-check")
                     .addClass("ui-icon-plus")
         }
-        
+
         $(this.el).find(".followers").text( this.model.get("followers") );
         $(this.el).find(".photo-count").text( this.model.get("photo_count") );
     },
-    
+
     events: {
         "click .follow": "follow",
         "click .unfollow": "unfollow"
     },
-    
+
     follow: function()
     {
         this.model.follow();
     },
-    
+
     unfollow: function()
     {
         this.model.unfollow();
