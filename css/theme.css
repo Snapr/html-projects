@@ -482,6 +482,8 @@ input.ui-input-text, textarea.ui-input-text {
   padding: 0;
 }
 .ui-header .ui-btn-icon-notext.ui-shadow {
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
   box-shadow: none;
 }
 .ui-header .ui-icon {
