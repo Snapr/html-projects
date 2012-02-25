@@ -300,6 +300,10 @@ fieldset.ui-controlgroup{
     margin-top: -@gfx-general-icon-sprite-grid / 2;
 }
 
+.ui-disabled {
+    opacity: .9;
+}
+
 .ui-loader{
     margin-left: -40px;
     margin-top: -40px;
@@ -1071,6 +1075,10 @@ fieldset.ui-controlgroup{
         }
         .image-time-and-location{
             color: @color-txt-light-on-light;
+            .ui-link{
+                color: @color-txt-light-on-light;
+                
+            }
             .ui-icon-venue{
                 background-position: @ei-offset-x - 10px @gfx-extra-icon-sprite-venuesmall-y;
                 width: 10px;
@@ -1178,7 +1186,7 @@ fieldset.ui-controlgroup{
     .reactions-list{
         display: none;
         .ui-btn.ui-li{
-            border: none;
+            border: none!important;
              .ui-link-inherit{
                     padding: 0 0 @padding-element-inset 0;
                 }
@@ -2062,6 +2070,7 @@ fieldset.ui-controlgroup{
        background-color: @color-bg-light-tint;
        background-image: @gfx-bg-light-texture;
        border: @border-medium-on-light;
+       text-shadow: 0 1px 1px @color-shadow-light-on-light;
 }
 
 /* Main Styles */
@@ -2114,6 +2123,12 @@ fieldset.ui-controlgroup{
                  }
            }
       }
+      
+      .ui-btn{
+          text-shadow: 0 1px 1px @color-shadow-medium-on-light;
+      }
+      
+      
         
     
 }
