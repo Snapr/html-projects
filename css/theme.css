@@ -149,6 +149,7 @@ ul, ul li {
 }
 .small-text {
   font-size: 12px;
+  font-family: Helvetica, Arial, sans-serif;
 }
 .ui-controlgroup-label, .ui-select .ui-btn {
   font-family: 'MuseoSansRounded700', Helvetica, Arial, sans-serif;
@@ -285,6 +286,8 @@ ul, ul li {
   position: absolute;
   right: -15px;
   margin-top: -18px;
+  background: none;
+  border: none!important;
 }
 .ui-input-search .ui-input-clear .ui-icon-delete {
   background-position: -72px 0px;
@@ -714,19 +717,24 @@ input.ui-input-text, textarea.ui-input-text {
 .ui-navbar .ui-btn {
   font-family: Helvetica, Arial, sans-serif;
 }
-.ui-navbar .ui-btn-active {
-  font-family: 'MuseoSansRounded700', Helvetica, Arial, sans-serif;
-  font-size: 16px;
+.ui-navbar .ui-btn .ui-btn-text {
+  text-transform: lowercase;
+  line-height: 16px;
+  font-size: 15px;
 }
 .ui-navbar .ui-btn-active .ui-btn-text {
   position: relative;
   top: -4px;
   text-shadow: #ffffff 0px 1px 0px;
+  font-family: 'MuseoSansRounded700', Helvetica, Arial, sans-serif;
+  font-size: 16px;
 }
 .ui-navbar .ui-btn-inner {
   border-top: none;
   padding-top: 16px!important;
-  padding-bottom: 14px!important;
+  padding-bottom: 11px!important;
+  height: 20px;
+  line-height: 20px;
 }
 .ui-navbar .ui-grid-b .ui-block-a .ui-btn {
   -moz-border-radius-topleft: 8px;
@@ -1236,6 +1244,22 @@ input.ui-input-text, textarea.ui-input-text {
 .image-item-block .comment-area .photo-comment {
   min-height: 75px;
 }
+.feed-footer .ui-btn {
+  -moz-border-radius-topleft: 0;
+  -webkit-border-top-left-radius: 0;
+  border-top-left-radius: 0;
+  -moz-border-radius-topright: 0;
+  -webkit-border-top-right-radius: 0;
+  border-top-right-radius: 0;
+  -moz-border-radius-bottomleft: 8px;
+  -webkit-border-bottom-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+  -moz-border-radius-bottomright: 8px;
+  -webkit-border-bottom-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+  margin-bottom: 0;
+  border: none;
+}
 .ui-checkbox .ui-icon {
   width: 40px;
   height: 40px;
@@ -1608,10 +1632,11 @@ input.ui-input-text, textarea.ui-input-text {
 /* Strip bare the normal lists style */
 .simple-list .ui-btn {
   background: none;
-  border: none;
+  border: none!important;
 }
 .simple-list .ui-btn.ui-li {
-  border-top: solid 1px #e4e4e4;
+  border-top: solid 1px #e4e4e4 !important;
+  margin-bottom: 0;
 }
 .simple-list .ui-li-icon {
   left: 0;
@@ -1629,8 +1654,8 @@ input.ui-input-text, textarea.ui-input-text {
   color: #999999;
 }
 .simple-list .ui-li, .simple-list .ui-li-link-alt {
-  border-right: none;
-  border-left: none;
+  border-right: none!important;
+  border-left: none!important;
 }
 .simple-list .ui-li-link-alt {
   width: 44px;
@@ -2324,7 +2349,10 @@ input.ui-input-text, textarea.ui-input-text {
 
   min-height: 409px;
 }
-.ui-body-d .ui-link, .ui-body-d .ui-link:visited {
+.ui-body-d .ui-link,
+.ui-body-d .ui-link:visited,
+.ui-body-d .ui-link:hover,
+.ui-body-d .ui-link:active {
   color: #333333;
   font-weight: normal;
 }
@@ -2350,6 +2378,9 @@ input.ui-input-text, textarea.ui-input-text {
   /* Opera 11.10+ */
 
   background-image: linear-gradient(top, #ffff00, #ffe400);
+}
+.ui-body-e.ui-navbar .ui-btn {
+  background: none!important;
 }
 .ui-btn-up-e {
   border: none;

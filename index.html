@@ -113,7 +113,7 @@
                 
                  <!-- Dashboard Button -->
                 <div class="ui-block-b">
-                     <a data-role="button" data-iconpos="top" data-icon="main-menu-dash" data-corners="false" data-shadow="false">Dashboard</a>
+                     <a href="#/dash/" data-role="button" data-iconpos="top" data-icon="main-menu-dash" data-corners="false" data-shadow="false" data-ajax="false">Dashboard</a>
                 </div>
             </div>
 
@@ -576,7 +576,7 @@
             </div>
             
             <div class="feed-footer inline-footer ui-body-c">
-             <button class="more ui-btn-right">More</button>
+             <button class="more ui-btn-right">Load More</button>
             </div>
         </div>
 
@@ -829,6 +829,24 @@
             
         </div>
     </div>
+
+    <!-- @dashboard PAGE -->
+       <div id="dashboard" data-title="Dash" data-add-back-btn="true" data-role="page" data-theme="d">
+           <div data-role="header" data-theme="b">
+               <h1>Dash</h1>
+
+               <div class="ui-btn-right">
+                   <a href="#/search/" data-ajax="false" data-role="button" data-icon="search" data-iconpos="notext"></a>
+                   <a href="#/" data-ajax="false" data-role="button" data-icon="home" data-iconpos="notext"></a>
+               </div>
+
+           </div>
+           <div data-role="content" data-theme="d">
+                
+
+           </div>
+       </div><!-- /page -->
+
 
     <!-- @people PAGE-->
     <div id="people" data-add-back-btn="true" data-role="dialog" data-overlay-theme="c" data-theme="c">
@@ -1336,6 +1354,7 @@
 <script src="app/views/connect.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/connect_li.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/feed.js" type="text/javascript" charset="utf-8"></script>
+<script src="app/views/dash.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/upload_progress_li.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/feed_list.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/feed_li.js" type="text/javascript" charset="utf-8"></script>

@@ -416,6 +416,8 @@ snapr.routers = Backbone.Router.extend({
         "/limbo/?*": "limbo",
         "/feed/": "feed",
         "/feed/?*query_string": "feed",
+        "/dash/": "dash",
+        "/dash/?*query_string": "dash",
         "/map/": "map",
         "/map/?*query_string": "map",
         "/popular/": "popular",
@@ -559,6 +561,12 @@ snapr.routers = Backbone.Router.extend({
         snapr.utils.get_query_params( query_string );
         snapr.info.current_view = new snapr.views.popular();
     },
+    
+    dash: function( query_string )
+       {
+           snapr.utils.get_query_params( query_string );
+           snapr.info.current_view = new snapr.views.dash();
+       },
 
     search: function( query_string )
     {
