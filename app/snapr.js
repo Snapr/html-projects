@@ -403,6 +403,8 @@ $.fn.spin = function( spin_opts ) {
 
 snapr.routers = Backbone.Router.extend({
     routes: {
+        "/about/": "about",
+        "/about/?*query_string": "about",
         "/login/": "login",
         "/login/?*query_string": "login",
         "/logout/": "logout",
@@ -515,11 +517,11 @@ snapr.routers = Backbone.Router.extend({
         });
     },
 
-    love_it: function( query_string )
+    about: function( query_string )
     {
         var query = snapr.utils.get_query_params( query_string );
-        snapr.info.current_view = new snapr.views.love_it({
-            el: $("#love-it"),
+        snapr.info.current_view = new snapr.views.about({
+            el: $("#about"),
             query: query
         });
     },
