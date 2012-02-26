@@ -601,7 +601,9 @@ fieldset.ui-controlgroup{
     border-top: @border-light-on-light;
     margin: 0 -@padding-page-inset;
     padding: 8px @padding-page-inset; 
-    min-height: 19px;   
+    min-height: 19px; 
+    z-index: 10;
+    position: relative;  
 
     .ui-btn-inner,
     h4,
@@ -1790,6 +1792,43 @@ fieldset.ui-controlgroup{
    
 }
 
+/* @activity custom stylz */
+.activity-streams{
+    margin-top: -@padding-page-inset;
+  
+    .ui-bar.top-left-arrow .ui-btn-text{
+        padding-left: @padding-page-inset;
+    }
+    
+    .activity-image-item{
+        position: relative;
+        margin-top: -@padding-page-inset;
+        min-height: @size-img-thumb;
+        padding-left: @size-img-thumb;
+        .image-link{
+            position: absolute;
+            left: -@padding-image-grid-inset;
+            top: @padding-image-grid-inset;
+        }
+     
+        
+        .simple-list .username,
+        .ui-li-desc {
+            display: inline-block;
+            margin-bottom: 0;
+        }
+        .image-comment{
+            white-space: normal;
+            font-weight: normal;
+            font-size: @txt-size-base;
+            line-height: @txt-size-base;
+            color: @color-txt-medium-on-light;
+            
+        }
+        
+    }
+}
+
 
 /*
 * @map - PAGE 
@@ -2339,6 +2378,23 @@ fieldset.ui-controlgroup{
         color: @color-txt-dark-on-light;
         font-weight: normal;
     }
+    
+    hr{
+           display: block;
+           position: relative;
+           padding: 0;
+           width: 100%;
+           height: 0;
+           clear: both;
+           border: none;
+           border-bottom: @border-light-on-light;
+           border-top: @border-medium-on-light;
+           font-size: 1px;
+           line-height: 0;
+           overflow: visible;
+           background-color: transparent;
+           color: @color-shadow-medium-on-light;
+       }
     
 }
 

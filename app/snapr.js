@@ -428,6 +428,8 @@ snapr.routers = Backbone.Router.extend({
         "/feed/?*query_string": "feed",
         "/dash/": "dash",
         "/dash/?*query_string": "dash",
+        "/activity/": "activity",
+        "/activity/?*query_string": "activity",
         "/map/": "map",
         "/map/?*query_string": "map",
         "/popular/": "popular",
@@ -525,6 +527,15 @@ snapr.routers = Backbone.Router.extend({
             query: query
         });
     },
+    
+    activity: function( query_string )
+      {
+          var query = snapr.utils.get_query_params( query_string );
+          snapr.info.current_view = new snapr.views.activity({
+              el: $("#activity"),
+              query: query
+          });
+      },
 
     my_account: function( query_string )
     {
