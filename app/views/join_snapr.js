@@ -1,7 +1,5 @@
 snapr.views.join_snapr = Backbone.View.extend({
 
-    el: $('#join-snapr'),
-
     events: {
         "submit #join-dialog": "join"
     },

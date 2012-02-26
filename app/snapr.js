@@ -485,7 +485,7 @@ snapr.routers = Backbone.Router.extend({
     {
         snapr.utils.get_query_params( query_string );
         snapr.info.current_view = new snapr.views.join_snapr({
-            el: $("upload")
+            el: $("join-snapr")
         });
     },
 

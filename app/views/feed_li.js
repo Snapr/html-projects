@@ -24,6 +24,9 @@ snapr.views.feed_li = Backbone.View.extend({
             '&photo_id=' + this.model.get('id');
         this.spot_url =
             '/feed/?spot=' + this.model.get('location').spot_id;
+
+        // update the display when we fav/unfav or comment
+        this.model.bind( "set", this.render );
     },
 
     load_reactions: function( reload )
@@ -66,6 +69,11 @@ snapr.views.feed_li = Backbone.View.extend({
             city: city
         } ));
 
+        $img = $(this.el).find("img");
+        $img.load(function(){
+            $img.css("height","auto");
+        });
+
         $(this.el).trigger('create');
         // delegateEvents makes the event bindings in this view work
         // even though it is a subview of feed_list (very important)
@@ -74,40 +82,41 @@ snapr.views.feed_li = Backbone.View.extend({
         return this;
     },
 
-    update_fav: function()
-    {
-        if (this.model.get('favorite'))
-        {
-            $(this.el).find('.favorite-button').addClass('selected');
-        }
-        else
-        {
-            $(this.el).find('.favorite-button').removeClass('selected');
-        }
-        // if we have already loaded reactions, re-load them
-        if (this.reactions)
-        {
-            this.load_reactions( true );
-        }
-    },
-    
     toggle_comment_form: function()
     {
         $(this.el).find('.comment-button').toggleClass('selected');
         $(this.el).find('.comment-area').toggle();
-       
     },
-    
+
+    show_comment_form: function()
+    {
+        $(this.el).find('.comment-button').addClass('selected');
+        $(this.el).find('.comment-area').show();
+    },
+
+    hide_comment_form: function()
+    {
+        $(this.el).find('.comment-button').removeClass('selected');
+        $(this.el).find('.comment-area').hide();
+    },
+
     toggle_reactions: function()
     {
-       $(this.el).find('.reactions-button').toggleClass('selected');
-       $(this.el).find('.reactions-list').toggle();
-       
-       if (!this.reactions)
-       {
-           this.load_reactions( false );
-       }
+        if ($(this.el).find('.reactions-list:visible').length)
+        {
+            this.hide_comment_form();
+        }
+        else
+        {
+            this.show_comment_form();
+        }
+        $(this.el).find('.reactions-button').toggleClass('selected');
+        $(this.el).find('.reactions-list').toggle();
 
+        if (!this.reactions)
+        {
+            this.load_reactions( false );
+        }
     },
 
     goto_map: function()
@@ -137,7 +146,7 @@ snapr.views.feed_li = Backbone.View.extend({
             {
                 // already saved as a fav so we will remove it
                 var options = {
-                    success: function(s)
+                    success: function( s )
                     {
                         // success is not passed through so we check for error
                         if (!s.get('error'))
@@ -146,8 +155,7 @@ snapr.views.feed_li = Backbone.View.extend({
                                 favorite: false,
                                 favorite_count: fav_count - 1
                             });
-                            feed_li.update_fav();
-                            feed_li.update_counts();
+                            feed_li.render();
                         }
                     },
                     error: function(e)
@@ -163,17 +171,14 @@ snapr.views.feed_li = Backbone.View.extend({
                 var options = {
                     success: function(s)
                     {
-                        console.warn('notfav success')
                         if (s.get('success'))
                         {
                             feed_li.model.set({
                                 favorite: true,
                                 favorite_count: fav_count + 1
                             });
-                            feed_li.update_fav();
-                            feed_li.update_counts();
+                            feed_li.render();
                         }
-                        console.warn('fav success',s);
                     },
                     error: function(e)
                     {
@@ -183,39 +188,6 @@ snapr.views.feed_li = Backbone.View.extend({
                 fav.save( {}, options );
             }
         })();
-    },
-
-    update_counts: function()
-    {    
-        // change the button text for the favorite button
-        if (parseInt( this.model.get('favorite_count') ) > 0)
-        {
-        $(this.el).find('.favorite-button .ui-btn-text')
-            .text(' × ' + this.model.get('favorite_count')); 
-        }
-        else{
-            $(this.el).find('.favorite-button .ui-btn-text').text(' '); 
-        }  
-        
-         // change the button text for the comment button
-        if (parseInt( this.model.get('comments') ) > 0)
-        {
-        $(this.el).find('.comment-button .ui-btn-text')
-            .text(' × ' + this.model.get('comments')); 
-        }
-        else{
-            $(this.el).find('.comment-button .ui-btn-text').text(' '); 
-        }     
-                
-        // show the button if it was previously hidden and create the jquery mobile markup
-        if (parseInt( this.model.get('comments') ) + parseInt( this.model.get('favorite_count') ) > 0)
-        {
-            $(this.el).find('.reactions-button').show().trigger('create');
-        }
-        else
-        {
-            $(this.el).find('.reactions-button').hide();
-        }
     },
 
     comment: function()
