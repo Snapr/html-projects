@@ -1121,6 +1121,7 @@ input.ui-input-text, textarea.ui-input-text {
   position: absolute;
   top: 0;
   left: 0;
+  border-top: solid rgba(255, 255, 255, 0.5) 1px;
 }
 .feed-user-header {
   height: 100px;
@@ -1130,6 +1131,7 @@ input.ui-input-text, textarea.ui-input-text {
   margin-left: 0;
   margin-right: 0;
   padding-left: 108px;
+  z-index: 0;
 }
 .feed-user-header .user-stats {
   text-align: center;
