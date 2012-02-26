@@ -187,6 +187,11 @@
     <div id="my-account" data-title="My Account" data-add-back-btn="true" data-role="page" data-theme="d">
         <div data-role="header" data-theme="b">
             <h1>My Account</h1>
+            
+            <div class="ui-btn-right">
+                <a href="#/search/" data-ajax="false" data-role="button" data-icon="search" data-iconpos="notext"></a>
+                <a href="#/" data-ajax="false" data-role="button" data-icon="home" data-iconpos="notext"></a>
+            </div>
         </div>
         <div data-role="content" data-theme="c">
             <div class="account-content">
@@ -196,7 +201,17 @@
 
     <!--  template for my-account -->
     <script id="my-account-template" type="text/template">
-
+    
+    <div class="myaccount-header page-inset-header ui-body-c">
+        <div class="ui-content">
+         <a class="username" href="" data-ajax="false">
+                <div class="user-icon-small" style="background-image: url('http://sna.pr/avatars/rowan?size=large'); background-size: 100% 100%"></div>
+                rowan
+            </a>
+                <a href="#/logout/" class="logout-button" data-ajax="false" data-role="button" data-icon="delete" data-iconpos="right">Logout</a>
+        </div>
+            
+    </div>
 
     <div data-role="collapsible" data-collapsed="false" data-theme="e">
         <h3>Settings</h3>

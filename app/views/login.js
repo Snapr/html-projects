@@ -22,11 +22,11 @@ snapr.views.login = Backbone.View.extend({
         
         if (this.message)
         {
-            $(this.el).find(".login-message").text(this.message);
+            $(this.el).find(".login-message").show().text(this.message);
         }
         else
         {
-            $(this.el).find(".login-message").text("");
+            $(this.el).find(".login-message").hide().text("");
         }
         
         $.mobile.changePage( $("#login"), {

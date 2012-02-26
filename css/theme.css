@@ -1771,10 +1771,24 @@ input.ui-input-text, textarea.ui-input-text {
   border-radius: 0px;
 }
 /* @myaccount custom stylz */
-.account-content {
-  margin-top: -16px;
-  /* Haxy.. need to come up with broader fix for top padding.. */
-
+.account-content .myaccount-header .ui-btn, .account-content .myaccount-header .user-icon-small {
+  display: inline-block;
+  vertical-align: middle;
+  display: inline-block;
+}
+.account-content .myaccount-header .logout-button {
+  position: absolute;
+  right: 4px;
+  top: 4px;
+  -moz-border-radius: 20px;
+  -webkit-border-radius: 20px;
+  border-radius: 20px;
+}
+.account-content .myaccount-header .logout-button .ui-btn-inner {
+  padding-left: 20px;
+}
+.account-content .myaccount-header .logout-button .ui-icon-delete {
+  background-position: -72px -36px;
 }
 /*
 * @map - PAGE 

@@ -1767,7 +1767,27 @@ fieldset.ui-controlgroup{
 
 /* @myaccount custom stylz */
 .account-content{
-    margin-top: -16px; /* Haxy.. need to come up with broader fix for top padding.. */
+    .myaccount-header{
+        .ui-btn,
+       .user-icon-small{ 
+           display: inline-block;
+           vertical-align: middle;
+           display: inline-block;
+       }
+       .logout-button{
+           position: absolute;
+           right: 4px;
+           top: 4px;
+           .corner-all(@corner-fully-rounded);
+           .ui-btn-inner{
+               padding-left: 20px;
+           }
+           .ui-icon-delete{
+               background-position: @gfx-general-icon-sprite-delete-x @g-med-offset-y;
+           }
+       }
+    }
+   
 }
 
 
