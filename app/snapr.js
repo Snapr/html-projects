@@ -422,6 +422,8 @@ snapr.routers = Backbone.Router.extend({
         "/linked-services/?*query_string": "linked_services",
         "/connect/": "connect",
         "/connect/?*query_string": "connect",
+        "/cities/": "cities",
+        "/cities/?*query_string": "cities",
         "/limbo/": "limbo",
         "/limbo/?*": "limbo",
         "/feed/": "feed",
@@ -536,6 +538,15 @@ snapr.routers = Backbone.Router.extend({
               query: query
           });
       },
+
+    cities: function( query_string )
+       {
+           var query = snapr.utils.get_query_params( query_string );
+           snapr.info.current_view = new snapr.views.cities({
+               el: $("#cities"),
+               query: query
+           });
+    },
 
     my_account: function( query_string )
     {

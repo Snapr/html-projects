@@ -641,6 +641,7 @@ fieldset.ui-controlgroup{
     }
     
     &.top-no-arrow{
+        text-align: left;
         .corner-top (@corner-page-element-rounded);
         .corner-bottom (@corner-not-rounded); 
     }
@@ -697,6 +698,7 @@ fieldset.ui-controlgroup{
     .ui-icon-favs,&.ui-icon-favs{background-position: @ei-offset-x @gfx-extra-icon-sprite-favs-y;}
     .ui-icon-link,&.ui-icon-link{background-position: @ei-offset-x @gfx-extra-icon-sprite-link-y;}
     .ui-icon-clock, &.ui-icon-clock{background-position: @ei-offset-x @gfx-extra-icon-sprite-clock-y;}
+    .ui-icon-redheart, &.ui-icon-redheart{background-position: @ei-offset-x @gfx-extra-icon-sprite-redheart-y;}
     
 }
 
@@ -1907,6 +1909,17 @@ fieldset.ui-controlgroup{
        background-color: @color-bg-dark;
 }
 
+.ui-body-d{
+    .ui-body-a[data-role="content"]{
+           background: none;
+           background-color: @color-bg-dark;
+           border-radius: @corner-page-element-rounded;
+           /*min-height: 480px - @size-topbar-height - @padding-page-inset - @padding-page-inset;*/
+           min-height: 409px;
+       } 
+}
+
+
 /* Main Styles */
 .ui-body-a {
     color: @color-txt-light-on-dark;
@@ -2186,7 +2199,25 @@ fieldset.ui-controlgroup{
     }
 }
 
-
+.ui-bar-b{
+    
+    em{
+        color: white;
+    }
+    .ui-btn-text{
+        .image-tag{
+            color: @color-txt-light-on-dark;
+        }
+        .small-text{
+            color: @color-txt-medium-on-dark;
+        } 
+    }
+    
+    .ui-icon-arrow-r{background-position: @gfx-general-icon-sprite-arrow-r-x @g-med-offset-y;}
+    &.ui-btn{
+        border: none;
+    }
+}
 
 .ui-btn-up-b{
        .ui-icon-search{background-position: @b-offset-x @gfx-main-icon-sprite-search-icon-y;}

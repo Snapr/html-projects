@@ -648,6 +648,7 @@ input.ui-input-text, textarea.ui-input-text {
   top: 0px;
 }
 .ui-bar.top-no-arrow {
+  text-align: left;
   -moz-border-radius-topleft: 8px;
   -webkit-border-top-left-radius: 8px;
   border-top-left-radius: 8px;
@@ -749,6 +750,9 @@ input.ui-input-text, textarea.ui-input-text {
 }
 .extra-icons .ui-icon-clock, .extra-icons.ui-icon-clock {
   background-position: 0 -384px;
+}
+.extra-icons .ui-icon-redheart, .extra-icons.ui-icon-redheart {
+  background-position: 0 -416px;
 }
 .ui-navbar {
   margin: -8px -8px 0 -8px;
@@ -1884,6 +1888,14 @@ input.ui-input-text, textarea.ui-input-text {
   background: none;
   background-color: #000000;
 }
+.ui-body-d .ui-body-a[data-role="content"] {
+  background: none;
+  background-color: #000000;
+  border-radius: 8px;
+  /*min-height: 480px - @size-topbar-height - @padding-page-inset - @padding-page-inset;*/
+
+  min-height: 409px;
+}
 /* Main Styles */
 .ui-body-a {
   color: #cccccc;
@@ -2285,6 +2297,21 @@ input.ui-input-text, textarea.ui-input-text {
   border-top-left-radius: 0px;
   border-bottom-right-radius: 0px;
   border-bottom-left-radius: 10px;
+}
+.ui-bar-b em {
+  color: white;
+}
+.ui-bar-b .ui-btn-text .image-tag {
+  color: #cccccc;
+}
+.ui-bar-b .ui-btn-text .small-text {
+  color: #999999;
+}
+.ui-bar-b .ui-icon-arrow-r {
+  background-position: -108px -36px;
+}
+.ui-bar-b.ui-btn {
+  border: none;
 }
 .ui-btn-up-b .ui-icon-search {
   background-position: -80px 0px;
