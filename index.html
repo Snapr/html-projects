@@ -836,15 +836,110 @@
                <h1>Dash</h1>
 
                <div class="ui-btn-right">
-                   <a href="#/search/" data-ajax="false" data-role="button" data-icon="search" data-iconpos="notext"></a>
+                   <a class="x-edit-dash" data-ajax="false" data-role="button" data-icon="settings" data-iconpos="notext"></a>
                    <a href="#/" data-ajax="false" data-role="button" data-icon="home" data-iconpos="notext"></a>
                </div>
 
            </div>
            <div data-role="content" data-theme="d">
+               <ul class="image-streams">
+                   <li class="image-stream" id="upload-popular-nearby">
+                      <a class="ui-bar top-left-arrow" data-role="button" data-iconpos="right" data-icon="arrow-r" data-theme="e">
+                          <span class="ui-icon ui-icon-venue extra-icons"></span>
+                          <em>nearby</em>
+                          <span class="image-tag">Image description</span>
+                          <span class="image-time small-text">
+                              <span class="ui-icon ui-icon-clock extra-icons"></span>2 days ago
+                           </span>
+                       </a>
+                       <div id="upload-popular-nearby-images" class="thumbs-grid thumbs-grid-med n-horizontal-scroll">
+                               <a class="image-link" data-ajax="false" href="#/feed/?photo_id=LF8&amp;username=spencer">
+                               <img src="https://s3.amazonaws.com/media-server2.snapr.us/thm2/465e0fb9af869bc4fe562223ec1dd9df/LF8.jpg" alt="Fun in Tokyo, come here!!" class="thumb-image thumb-med">
+                               </a>
 
+                               <a class="image-link" data-ajax="false" href="#/feed/?photo_id=M8D&amp;username=edwardtalbot">
+                               <img src="https://s3.amazonaws.com/media-server2.snapr.us/thm2/a9e5d62b71e1cf3f7c65a97c37a01b77/M8D.jpg" alt="The latest Japanese drink, Bencum" class="thumb-image thumb-med">
+                               </a>
 
+                               <a class="image-link" data-ajax="false" href="#/feed/?photo_id=RYS&amp;username=candyellow">
+                               <img src="https://s3.amazonaws.com/media-server2.snapr.us/thm2/688fc29424259cb7ec7a72ca5771f4f3/RYS.jpg" alt="Ooooh view" class="thumb-image thumb-med">
+                               </a>
+
+                               <a class="image-link" data-ajax="false" href="#/feed/?photo_id=P8S&amp;username=yellow">
+                               <img src="https://s3.amazonaws.com/media-server2.snapr.us/thm2/9e7fff696513668fc31333e1c671c56c/P8S.jpg" alt="Kristians flying karate style " class="thumb-image thumb-med">
+                               </a>
+
+                               <a class="image-link" data-ajax="false" href="#/feed/?photo_id=S8Q&amp;username=candyellow">
+                               <img src="https://s3.amazonaws.com/media-server2.snapr.us/thm2/09cd5f890a55389104f9576f7dd0fd2a/S8Q.jpg" alt="Girl mo." class="thumb-image thumb-med">
+                               </a>
+
+                           </div>
+                   </li>
+
+                    <li class="image-stream" id="upload-latest-nearby">
+                          <a class="ui-bar top-left-arrow" data-role="button" data-iconpos="right" data-icon="arrow-r" data-theme="e">
+                              <span class="ui-icon ui-icon-person extra-icons"></span>
+                              <em>feed</em>
+                              <span class="image-tag">Blah blah</span>
+                              <span class="image-time small-text">
+                                  <span class="ui-icon ui-icon-clock extra-icons"></span>2 mins ago
+                               </span>
+                           </a>
+                           <div id="upload-latest-nearby-images" class="thumbs-grid thumbs-grid-med n-horizontal-scroll">
+                                   <a class="image-link" data-ajax="false" href="#/feed/?photo_id=LF8&amp;username=spencer">
+                                   <img src="https://s3.amazonaws.com/media-server2.snapr.us/thm2/465e0fb9af869bc4fe562223ec1dd9df/LF8.jpg" alt="Fun in Tokyo, come here!!" class="thumb-image thumb-med">
+                                   </a>
+
+                                   <a class="image-link" data-ajax="false" href="#/feed/?photo_id=M8D&amp;username=edwardtalbot">
+                                   <img src="https://s3.amazonaws.com/media-server2.snapr.us/thm2/a9e5d62b71e1cf3f7c65a97c37a01b77/M8D.jpg" alt="The latest Japanese drink, Bencum" class="thumb-image thumb-med">
+                                   </a>
+
+                                   <a class="image-link" data-ajax="false" href="#/feed/?photo_id=RYS&amp;username=candyellow">
+                                   <img src="https://s3.amazonaws.com/media-server2.snapr.us/thm2/688fc29424259cb7ec7a72ca5771f4f3/RYS.jpg" alt="Ooooh view" class="thumb-image thumb-med">
+                                   </a>
+
+                                   <a class="image-link" data-ajax="false" href="#/feed/?photo_id=P8S&amp;username=yellow">
+                                   <img src="https://s3.amazonaws.com/media-server2.snapr.us/thm2/9e7fff696513668fc31333e1c671c56c/P8S.jpg" alt="Kristians flying karate style " class="thumb-image thumb-med">
+                                   </a>
+
+                                   <a class="image-link" data-ajax="false" href="#/feed/?photo_id=S8Q&amp;username=candyellow">
+                                   <img src="https://s3.amazonaws.com/media-server2.snapr.us/thm2/09cd5f890a55389104f9576f7dd0fd2a/S8Q.jpg" alt="Girl mo." class="thumb-image thumb-med">
+                                   </a>
+
+                               </div>
+                       </li>
+
+               </ul>
+               
+               <div class="helper-content dash-welcome ui-content-inset">
+                   <a class="ui-bar top-no-arrow" data-role="button"  data-theme="c">
+                       <em>Welcome</em>
+                    </a>
+                   <div class="ui-body-c ui-body">
+                       <div class="ui-icon helper-icons ui-icon-dash">
+                        </div>
+                        <p class="icon-left">
+                           Add your favorite people, or a search for something you want to keep track of.
+                        </p>   
+                           
+                    </div>
+                   
+                </div>
+               
+               <div class="dash-footer inline-footer ui-body-c ">
+                   <div class="ui-content ui-grid-a">
+                       <div class="ui-block-a">
+                           <a class="more ui-btn-right" data-role="button" data-iconpos="top" data-icon="person">Add a Person</a>
+                       </div>
+                       <div class="ui-block-b">
+                           <a class="more ui-btn-right" data-role="button" data-iconpos="top" data-icon="search">Add a Search</a>
+                       </div>
+                   </div>
+               </div>
+               
            </div>
+           
+           
        </div><!-- /page -->
 
 

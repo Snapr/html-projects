@@ -146,9 +146,46 @@ ul li{
     background-image: url('../gfx/extra-icons.png');
 }
 
+.ui-icon.helper-icons,
+.helper-icons .ui-icon{
+    background-image: url('../gfx/helper-icons.png');
+    width: @gfx-helper-icon-sprite-grid;
+    height: @gfx-helper-icon-sprite-grid;
+}
+
+.helper-content{
+    .ui-body{
+        position: relative;
+        min-height: @gfx-helper-icon-sprite-grid;
+    }
+    .icon-left{
+        padding: @padding-page-inset @padding-page-inset @padding-page-inset * 2 @gfx-helper-icon-sprite-grid + @padding-page-inset;
+
+    }
+    .helper-icons{
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: block;
+    }
+}
+
 .inline-footer{
     margin: @padding-page-inset -@padding-page-inset -@padding-page-inset -@padding-page-inset;
     .corner-bottom(@corner-page-element-rounded);
+    
+    .ui-grid-a{
+        .ui-block-a{
+            .ui-btn{
+                margin-right: @padding-element-inset / 2;
+            }
+        }
+        .ui-block-b{
+            .ui-btn{
+                margin-left: @padding-element-inset / 2;
+            }
+        }
+    }
     
 }
 
@@ -640,7 +677,7 @@ fieldset.ui-controlgroup{
 .extra-icons{
     .ui-icon-heart,&.ui-icon-heart{background-position: @ei-offset-x @gfx-extra-icon-sprite-heart-y;}
     .ui-icon-venue,&.ui-icon-venue{background-position: @ei-offset-x @gfx-extra-icon-sprite-venue-y;}
-    .ui-icon-clock,&.ui-icon-clock{background-position: @ei-offset-x @gfx-extra-icon-sprite-person-y;}
+    .ui-icon-person,&.ui-icon-person{background-position: @ei-offset-x @gfx-extra-icon-sprite-person-y;}
     .ui-icon-search,&.ui-icon-search{background-position: @ei-offset-x @gfx-extra-icon-sprite-search-y;}
     .ui-icon-activity,&.ui-icon-activity{background-position: @ei-offset-x @gfx-extra-icon-sprite-activity-y;}
     .ui-icon-location,&.ui-icon-location{background-position: @ei-offset-x @gfx-extra-icon-sprite-location-y;}
@@ -698,6 +735,14 @@ fieldset.ui-controlgroup{
             .corner-tr (@corner-page-element-rounded);
             }
         }
+    }
+    
+}
+
+.ui-content-inset{
+    .ui-bar{
+        margin-left: 0px;
+        margin-right: 0px;
     }
     
 }
@@ -1234,6 +1279,27 @@ fieldset.ui-controlgroup{
            }
     }
     
+}
+
+/*
+* @dashboard - PAGE 
+*/
+
+.dash-footer{
+    .ui-icon{
+        background-image: url('../gfx/dash-icons.png');
+        width: 64px;
+        height: 32px;
+        top: 0;
+        margin-left: -32px;
+        &.ui-icon-person{
+            background-position: @di-offset-x @gfx-dash-icon-sprite-person-y;
+        }
+        &.ui-icon-search{
+            background-position: @di-offset-x @gfx-dash-icon-sprite-search-y;
+            
+        }
+    }
 }
  
 /*
@@ -1878,12 +1944,23 @@ fieldset.ui-controlgroup{
        .ui-icon-search{background-position: @a-offset-x @gfx-main-icon-sprite-search-icon-y;}
        .ui-icon-home{ background-position: @a-offset-x @gfx-main-icon-sprite-home-icon-y;}
        .ui-icon-delete{ background-position: @a-offset-x @gfx-main-icon-sprite-close-icon-y;}
+       .ui-icon-settings{ background-position: @a-offset-x @gfx-main-icon-sprite-settings-icon-y;}
+       .ui-icon-location{ background-position: @a-offset-x @gfx-main-icon-sprite-location-icon-y;}
+       .ui-icon-camroll{ background-position: @a-offset-x @gfx-main-icon-sprite-camroll-icon-y;}
+       .ui-icon-camera{ background-position: @a-offset-x @gfx-main-icon-sprite-camera-icon-y;}
+       
 }
 
 .ui-btn-hover-a{
     .ui-icon-search{background-position: @a-offset-x-hover @gfx-main-icon-sprite-search-icon-y;}
     .ui-icon-home{ background-position: @a-offset-x-hover @gfx-main-icon-sprite-home-icon-y;}
     .ui-icon-delete{ background-position: @a-offset-x-hover @gfx-main-icon-sprite-close-icon-y;}
+    .ui-icon-settings{ background-position: @a-offset-x-hover @gfx-main-icon-sprite-settings-icon-y;}
+    .ui-icon-location{ background-position: @a-offset-x-hover @gfx-main-icon-sprite-location-icon-y;}
+    .ui-icon-camroll{ background-position: @a-offset-x-hover @gfx-main-icon-sprite-camroll-icon-y;}
+    .ui-icon-camera{ background-position: @a-offset-x-hover @gfx-main-icon-sprite-camera-icon-y;}
+    
+    
 }
 
 
@@ -2040,19 +2117,27 @@ fieldset.ui-controlgroup{
 }
 
 
+
 .ui-btn-up-b{
        .ui-icon-search{background-position: @b-offset-x @gfx-main-icon-sprite-search-icon-y;}
        .ui-icon-home{ background-position: @b-offset-x @gfx-main-icon-sprite-home-icon-y;}
-
+       .ui-icon-delete{ background-position: @b-offset-x @gfx-main-icon-sprite-close-icon-y;}
+       .ui-icon-settings{ background-position: @b-offset-x @gfx-main-icon-sprite-settings-icon-y;}
+       .ui-icon-location{ background-position: @b-offset-x @gfx-main-icon-sprite-location-icon-y;}
+       .ui-icon-camroll{ background-position: @b-offset-x @gfx-main-icon-sprite-camroll-icon-y;}
        .ui-icon-camera{ background-position: @b-offset-x @gfx-main-icon-sprite-camera-icon-y;}
        
-   }
+}
 
 .ui-btn-hover-b{
     .ui-icon-search{background-position: @b-offset-x-hover @gfx-main-icon-sprite-search-icon-y;}
     .ui-icon-home{ background-position: @b-offset-x-hover @gfx-main-icon-sprite-home-icon-y;}
-
+    .ui-icon-delete{ background-position: @b-offset-x-hover @gfx-main-icon-sprite-close-icon-y;}
+    .ui-icon-settings{ background-position: @b-offset-x-hover @gfx-main-icon-sprite-settings-icon-y;}
+    .ui-icon-location{ background-position: @b-offset-x-hover @gfx-main-icon-sprite-location-icon-y;}
+    .ui-icon-camroll{ background-position: @b-offset-x-hover @gfx-main-icon-sprite-camroll-icon-y;}
     .ui-icon-camera{ background-position: @b-offset-x-hover @gfx-main-icon-sprite-camera-icon-y;}
+    
     
 }
 

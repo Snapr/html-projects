@@ -101,6 +101,14 @@ textarea {
 * Extra Icons '../gfx/extra-icons.png'
 */
 /* Vertical Layout of Icons */
+/*
+* Helper Icons '../gfx/helper-icons.png'
+*/
+/* Vertical Layout of Icons */
+/*
+* Dash Icons '../gfx/dash-icons.png'
+*/
+/* Vertical Layout of Icons */
 body {
   font-size: 15px;
   background-color: #000000;
@@ -177,6 +185,24 @@ ul, ul li {
 .ui-icon.extra-icons, .extra-icons .ui-icon {
   background-image: url('../gfx/extra-icons.png');
 }
+.ui-icon.helper-icons, .helper-icons .ui-icon {
+  background-image: url('../gfx/helper-icons.png');
+  width: 96px;
+  height: 96px;
+}
+.helper-content .ui-body {
+  position: relative;
+  min-height: 96px;
+}
+.helper-content .icon-left {
+  padding: 8px 8px 16px 104px;
+}
+.helper-content .helper-icons {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+}
 .inline-footer {
   margin: 8px -8px -8px -8px;
   -moz-border-radius-bottomleft: 8px;
@@ -185,6 +211,12 @@ ul, ul li {
   -moz-border-radius-bottomright: 8px;
   -webkit-border-bottom-right-radius: 8px;
   border-bottom-right-radius: 8px;
+}
+.inline-footer .ui-grid-a .ui-block-a .ui-btn {
+  margin-right: 4px;
+}
+.inline-footer .ui-grid-a .ui-block-b .ui-btn {
+  margin-left: 4px;
 }
 /* progress bars */
 .progress-bar {
@@ -673,7 +705,7 @@ input.ui-input-text, textarea.ui-input-text {
 .extra-icons .ui-icon-venue, .extra-icons.ui-icon-venue {
   background-position: 0 -32px;
 }
-.extra-icons .ui-icon-clock, .extra-icons.ui-icon-clock {
+.extra-icons .ui-icon-person, .extra-icons.ui-icon-person {
   background-position: 0 -64px;
 }
 .extra-icons .ui-icon-search, .extra-icons.ui-icon-search {
@@ -750,6 +782,10 @@ input.ui-input-text, textarea.ui-input-text {
   -moz-border-radius-topright: 8px;
   -webkit-border-top-right-radius: 8px;
   border-top-right-radius: 8px;
+}
+.ui-content-inset .ui-bar {
+  margin-left: 0px;
+  margin-right: 0px;
 }
 /* Small Colored Icons For Third Party Services */
 .sharing-icon-small {
@@ -1284,6 +1320,22 @@ input.ui-input-text, textarea.ui-input-text {
 }
 .ui-checkbox .ui-checkbox-off.ui-btn-active .ui-icon {
   background-position: -40px -240px;
+}
+/*
+* @dashboard - PAGE 
+*/
+.dash-footer .ui-icon {
+  background-image: url('../gfx/dash-icons.png');
+  width: 64px;
+  height: 32px;
+  top: 0;
+  margin-left: -32px;
+}
+.dash-footer .ui-icon.ui-icon-person {
+  background-position: 0 0px;
+}
+.dash-footer .ui-icon.ui-icon-search {
+  background-position: 0 -32px;
 }
 /*
 * @share - PAGE 
@@ -1916,6 +1968,18 @@ input.ui-input-text, textarea.ui-input-text {
 .ui-btn-up-a .ui-icon-delete {
   background-position: 0px -80px;
 }
+.ui-btn-up-a .ui-icon-settings {
+  background-position: 0px -120px;
+}
+.ui-btn-up-a .ui-icon-location {
+  background-position: 0px -160px;
+}
+.ui-btn-up-a .ui-icon-camroll {
+  background-position: 0px -200px;
+}
+.ui-btn-up-a .ui-icon-camera {
+  background-position: 0px -240px;
+}
 .ui-btn-hover-a .ui-icon-search {
   background-position: -40px 0px;
 }
@@ -1924,6 +1988,18 @@ input.ui-input-text, textarea.ui-input-text {
 }
 .ui-btn-hover-a .ui-icon-delete {
   background-position: -40px -80px;
+}
+.ui-btn-hover-a .ui-icon-settings {
+  background-position: -40px -120px;
+}
+.ui-btn-hover-a .ui-icon-location {
+  background-position: -40px -160px;
+}
+.ui-btn-hover-a .ui-icon-camroll {
+  background-position: -40px -200px;
+}
+.ui-btn-hover-a .ui-icon-camera {
+  background-position: -40px -240px;
 }
 /*
 * B
@@ -2157,6 +2233,18 @@ input.ui-input-text, textarea.ui-input-text {
 .ui-btn-up-b .ui-icon-home {
   background-position: -80px -40px;
 }
+.ui-btn-up-b .ui-icon-delete {
+  background-position: -80px -80px;
+}
+.ui-btn-up-b .ui-icon-settings {
+  background-position: -80px -120px;
+}
+.ui-btn-up-b .ui-icon-location {
+  background-position: -80px -160px;
+}
+.ui-btn-up-b .ui-icon-camroll {
+  background-position: -80px -200px;
+}
 .ui-btn-up-b .ui-icon-camera {
   background-position: -80px -240px;
 }
@@ -2165,6 +2253,18 @@ input.ui-input-text, textarea.ui-input-text {
 }
 .ui-btn-hover-b .ui-icon-home {
   background-position: -120px -40px;
+}
+.ui-btn-hover-b .ui-icon-delete {
+  background-position: -120px -80px;
+}
+.ui-btn-hover-b .ui-icon-settings {
+  background-position: -120px -120px;
+}
+.ui-btn-hover-b .ui-icon-location {
+  background-position: -120px -160px;
+}
+.ui-btn-hover-b .ui-icon-camroll {
+  background-position: -120px -200px;
 }
 .ui-btn-hover-b .ui-icon-camera {
   background-position: -120px -240px;
