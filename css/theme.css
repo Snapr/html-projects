@@ -140,7 +140,9 @@ h5,
 p,
 ul,
 li,
-hr {
+hr,
+textarea,
+input {
   font-weight: normal;
   margin: 0;
   margin-bottom: 8px;
@@ -217,6 +219,14 @@ ul, ul li {
 }
 .inline-footer .ui-grid-a .ui-block-b .ui-btn {
   margin-left: 4px;
+}
+.warning-message {
+  padding: 8px;
+  background-color: #ffff00;
+  -moz-border-radius: 6px;
+  -webkit-border-radius: 6px;
+  border-radius: 6px;
+  border-bottom: solid 1px rgba(255, 255, 255, 0.4);
 }
 /* progress bars */
 .progress-bar {

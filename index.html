@@ -980,10 +980,10 @@
         </div>
         <div data-role="content">
             <form action="javascript: void(0);" accept-charset="utf-8" id="join-dialog">
-                <fieldset data-role="controlgroup">
-                    <label for="username">Username</label><input type="text" name="username" placeholder="  " autocapitalize="off" id="join-dialog-username">
-                    <label for="password">Password</label><input type="password" name="password" placeholder="  " id="join-dialog-password">
-                    <label for="email">Email</label><input type="email" name="email" placeholder="  " id="join-dialog-email">
+                <fieldset data-role="controlgroup" class="ui-hide-label">
+                    <label for="username">Username</label><input type="text" name="username" placeholder="Username..." autocapitalize="off" id="join-dialog-username">
+                    <label for="password">Password</label><input type="password" name="password" placeholder="Password..." id="join-dialog-password">
+                    <label for="email">Email</label><input type="email" name="email" placeholder="Email Address..." id="join-dialog-email">
                 </fieldset>
 
 
@@ -1095,16 +1095,16 @@
             <h1>Log in</h1>
         </div>
         <div data-role="content">
-            <div class="login-message"></div>
+            <p class="login-message warning-message"></p>
             <form action="javascript: void(0);" accept-charset="utf-8" id="login-dialog">
                 <fieldset>
                     <div data-role="fieldcontain" class="ui-hide-label">
                         <label for="username">Username</label>
-                        <input type="text" name="username"  placeholder="  " autocapitalize="off" autocorrect="off" id="login-dialog-username">
+                        <input type="text" name="username"  placeholder="Username..." autocapitalize="off" autocorrect="off" id="login-dialog-username">
                     </div>
                     <div data-role="fieldcontain" class="ui-hide-label">
 
-                        <label for="password">Password</label><input type="password" name="password" placeholder="  " id="login-dialog-password">
+                        <label for="password">Password</label><input type="password" name="password" placeholder="Password..." id="login-dialog-password">
                     </div>
 
                     <input type="submit" name="login" data-theme="e" value="Log In">

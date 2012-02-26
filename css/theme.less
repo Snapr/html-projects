@@ -89,7 +89,7 @@ hr{
 }
 
 h1,h2,h3,h4,h5, 
-p,ul,li,hr{
+p,ul,li,hr,textarea,input{
     font-weight: normal;
     margin: 0;
     margin-bottom: @padding-page-inset;
@@ -187,6 +187,13 @@ ul li{
         }
     }
     
+}
+
+.warning-message{
+    padding: @padding-page-inset;
+    background-color: @color-bg-highlight-main;
+    .corner-all(@corner-general-rounded);
+    border-bottom: @border-light-on-dark;
 }
 
 /* progress bars */
