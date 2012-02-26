@@ -86,18 +86,37 @@ snapr.views.feed_li = Backbone.View.extend({
     {
         $(this.el).find('.comment-button').toggleClass('selected');
         $(this.el).find('.comment-area').toggle();
+    },
 
+    show_comment_form: function()
+    {
+        $(this.el).find('.comment-button').addClass('selected');
+        $(this.el).find('.comment-area').show();
+    },
+
+    hide_comment_form: function()
+    {
+        $(this.el).find('.comment-button').removeClass('selected');
+        $(this.el).find('.comment-area').hide();
     },
 
     toggle_reactions: function()
     {
-       $(this.el).find('.reactions-button').toggleClass('selected');
-       $(this.el).find('.reactions-list').toggle();
+        if ($(this.el).find('.reactions-list:visible').length)
+        {
+            this.hide_comment_form();
+        }
+        else
+        {
+            this.show_comment_form();
+        }
+        $(this.el).find('.reactions-button').toggleClass('selected');
+        $(this.el).find('.reactions-list').toggle();
 
-       if (!this.reactions)
-       {
-           this.load_reactions( false );
-       }
+        if (!this.reactions)
+        {
+            this.load_reactions( false );
+        }
     },
 
     goto_map: function()
