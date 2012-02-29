@@ -117,6 +117,7 @@ textarea {
 */
 /* Vertical Layout of Icons */
 /* Horizontal offsets for theme swatches / hover states */
+/* keep the corners 45 degrees otherwise they look crap */
 body {
   font-size: 15px;
   background-color: #000000;
@@ -617,6 +618,7 @@ input.ui-input-text, textarea.ui-input-text {
   min-height: 19px;
   z-index: 10;
   position: relative;
+  overflow: visible;
 }
 .ui-bar .ui-btn-inner, .ui-bar h4, .ui-bar .ui-bar-inner {
   font-size: 15px;
@@ -707,13 +709,46 @@ input.ui-input-text, textarea.ui-input-text {
 .ui-bar.top-left-arrow .image-time .ui-icon-clock {
   top: -9px;
 }
+.ui-bar.top-left-arrow::after {
+  width: 0;
+  height: 0;
+  display: inline-block;
+  content: "&darr;";
+  text-indent: -99999px;
+  vertical-align: top;
+  margin-top: 0;
+  margin-left: -14px;
+  border-left: 14px solid transparent;
+  border-right: 14px solid transparent;
+  border-top: 14px solid #ffe400;
+  position: absolute;
+  bottom: -11px;
+  left: 36px;
+}
 .ui-bar.bottom-centered-arrow {
+  overflow: visible;
   -moz-border-radius-bottomleft: 8px;
   -webkit-border-bottom-left-radius: 8px;
   border-bottom-left-radius: 8px;
   -moz-border-radius-bottomright: 8px;
   -webkit-border-bottom-right-radius: 8px;
   border-bottom-right-radius: 8px;
+}
+.ui-bar.bottom-centered-arrow::after {
+  width: 0;
+  height: 0;
+  display: inline-block;
+  content: "&uarr;";
+  text-indent: -99999px;
+  vertical-align: top;
+  margin-top: 0;
+  margin-left: -14px;
+  border-left: 14px solid transparent;
+  border-right: 14px solid transparent;
+  border-bottom: 14px solid #ffff00;
+  position: absolute;
+  top: -11px;
+  left: 50%;
 }
 .arrow-right {
   position: absolute!important;
@@ -1138,6 +1173,22 @@ input.ui-input-text, textarea.ui-input-text {
 .feed-user-header {
   height: 100px;
   overflow: hidden;
+}
+.feed-user-header::after {
+  width: 0;
+  height: 0;
+  display: inline-block;
+  content: "&uarr;";
+  text-indent: -99999px;
+  vertical-align: top;
+  margin-top: 0;
+  margin-left: -14px;
+  border-left: 14px solid transparent;
+  border-right: 14px solid transparent;
+  border-bottom: 14px solid #ffffff;
+  position: absolute;
+  top: 89px;
+  left: 50px;
 }
 .feed-user-header .ui-bar {
   margin-left: 0;
@@ -2139,6 +2190,38 @@ input.ui-input-text, textarea.ui-input-text {
 
   background-image: linear-gradient(top, #000000, #26282a);
 }
+.ui-btn-up-b.top-left-arrow::after, .ui-btn-up-b[data-rel="back"]::before.top-left-arrow::after {
+  width: 0;
+  height: 0;
+  display: inline-block;
+  content: "&darr;";
+  text-indent: -99999px;
+  vertical-align: top;
+  margin-top: 0;
+  margin-left: -14px;
+  border-left: 14px solid transparent;
+  border-right: 14px solid transparent;
+  border-top: 14px solid #26282a;
+  position: absolute;
+  bottom: -11px;
+  left: 36px;
+}
+.ui-btn-up-b.bottom-centered-arrow::after, .ui-btn-up-b[data-rel="back"]::before.bottom-centered-arrow::after {
+  width: 0;
+  height: 0;
+  display: inline-block;
+  content: "&uarr;";
+  text-indent: -99999px;
+  vertical-align: top;
+  margin-top: 0;
+  margin-left: -14px;
+  border-left: 14px solid transparent;
+  border-right: 14px solid transparent;
+  border-bottom: 14px solid #434748;
+  position: absolute;
+  top: -11px;
+  left: 50%;
+}
 .ui-btn-hover-b,
 .ui-btn-active-b,
 .ui-btn-hover-b[data-rel="back"]::before,
@@ -2209,6 +2292,44 @@ input.ui-input-text, textarea.ui-input-text {
 
   background-image: linear-gradient(top, #000000, #26282a);
 }
+.ui-btn-hover-b.top-left-arrow::after,
+.ui-btn-active-b.top-left-arrow::after,
+.ui-btn-hover-b[data-rel="back"]::before.top-left-arrow::after,
+.ui-btn-active-b[data-rel="back"]::before.top-left-arrow::after {
+  width: 0;
+  height: 0;
+  display: inline-block;
+  content: "&darr;";
+  text-indent: -99999px;
+  vertical-align: top;
+  margin-top: 0;
+  margin-left: -14px;
+  border-left: 14px solid transparent;
+  border-right: 14px solid transparent;
+  border-top: 14px solid #2d3032;
+  position: absolute;
+  bottom: -11px;
+  left: 36px;
+}
+.ui-btn-hover-b.bottom-centered-arrow::after,
+.ui-btn-active-b.bottom-centered-arrow::after,
+.ui-btn-hover-b[data-rel="back"]::before.bottom-centered-arrow::after,
+.ui-btn-active-b[data-rel="back"]::before.bottom-centered-arrow::after {
+  width: 0;
+  height: 0;
+  display: inline-block;
+  content: "&uarr;";
+  text-indent: -99999px;
+  vertical-align: top;
+  margin-top: 0;
+  margin-left: -14px;
+  border-left: 14px solid transparent;
+  border-right: 14px solid transparent;
+  border-bottom: 14px solid #4a4f50;
+  position: absolute;
+  top: -11px;
+  left: 50%;
+}
 .ui-btn-down-b, .ui-btn-down-b[data-rel="back"]::before {
   border: solid 1px #000000;
   background: #434748;
@@ -2262,6 +2383,38 @@ input.ui-input-text, textarea.ui-input-text {
   /* Opera 11.10+ */
 
   background-image: linear-gradient(top, #000000, #26282a);
+}
+.ui-btn-down-b.top-left-arrow::after, .ui-btn-down-b[data-rel="back"]::before.top-left-arrow::after {
+  width: 0;
+  height: 0;
+  display: inline-block;
+  content: "&darr;";
+  text-indent: -99999px;
+  vertical-align: top;
+  margin-top: 0;
+  margin-left: -14px;
+  border-left: 14px solid transparent;
+  border-right: 14px solid transparent;
+  border-top: 14px solid #26282a;
+  position: absolute;
+  bottom: -11px;
+  left: 36px;
+}
+.ui-btn-down-b.bottom-centered-arrow::after, .ui-btn-down-b[data-rel="back"]::before.bottom-centered-arrow::after {
+  width: 0;
+  height: 0;
+  display: inline-block;
+  content: "&uarr;";
+  text-indent: -99999px;
+  vertical-align: top;
+  margin-top: 0;
+  margin-left: -14px;
+  border-left: 14px solid transparent;
+  border-right: 14px solid transparent;
+  border-bottom: 14px solid #26282a;
+  position: absolute;
+  top: -11px;
+  left: 50%;
 }
 /* Tricky CSS iOS style Arrow back buttons - fiddle at your own peril*/
 /*
@@ -2474,6 +2627,38 @@ input.ui-input-text, textarea.ui-input-text {
 .ui-btn-up-c a.ui-link-inherit {
   color: #333333;
 }
+.ui-btn-up-c.top-left-arrow::after {
+  width: 0;
+  height: 0;
+  display: inline-block;
+  content: "&darr;";
+  text-indent: -99999px;
+  vertical-align: top;
+  margin-top: 0;
+  margin-left: -14px;
+  border-left: 14px solid transparent;
+  border-right: 14px solid transparent;
+  border-top: 14px solid #d7d7d5;
+  position: absolute;
+  bottom: -11px;
+  left: 36px;
+}
+.ui-btn-up-c.bottom-centered-arrow::after {
+  width: 0;
+  height: 0;
+  display: inline-block;
+  content: "&uarr;";
+  text-indent: -99999px;
+  vertical-align: top;
+  margin-top: 0;
+  margin-left: -14px;
+  border-left: 14px solid transparent;
+  border-right: 14px solid transparent;
+  border-bottom: 14px solid #d7d7d5;
+  position: absolute;
+  top: -11px;
+  left: 50%;
+}
 .ui-btn-hover-c {
   border: none;
   background: #ffffff;
@@ -2500,6 +2685,38 @@ input.ui-input-text, textarea.ui-input-text {
 }
 .ui-btn-hover-c a.ui-link-inherit {
   color: #333333;
+}
+.ui-btn-hover-c.top-left-arrow::after {
+  width: 0;
+  height: 0;
+  display: inline-block;
+  content: "&darr;";
+  text-indent: -99999px;
+  vertical-align: top;
+  margin-top: 0;
+  margin-left: -14px;
+  border-left: 14px solid transparent;
+  border-right: 14px solid transparent;
+  border-top: 14px solid #f0f0ef;
+  position: absolute;
+  bottom: -11px;
+  left: 36px;
+}
+.ui-btn-hover-c.bottom-centered-arrow::after {
+  width: 0;
+  height: 0;
+  display: inline-block;
+  content: "&uarr;";
+  text-indent: -99999px;
+  vertical-align: top;
+  margin-top: 0;
+  margin-left: -14px;
+  border-left: 14px solid transparent;
+  border-right: 14px solid transparent;
+  border-bottom: 14px solid #f0f0ef;
+  position: absolute;
+  top: -11px;
+  left: 50%;
 }
 .ui-btn-down-c {
   border: none;
@@ -2531,6 +2748,38 @@ input.ui-input-text, textarea.ui-input-text {
   -moz-box-shadow: 0 1px 4px rgba(51, 51, 51, 0.3);
   -webkit-box-shadow: 0 1px 4px rgba(51, 51, 51, 0.3);
   box-shadow: 0 1px 4px rgba(51, 51, 51, 0.3);
+}
+.ui-btn-down-c.top-left-arrow::after {
+  width: 0;
+  height: 0;
+  display: inline-block;
+  content: "&darr;";
+  text-indent: -99999px;
+  vertical-align: top;
+  margin-top: 0;
+  margin-left: -14px;
+  border-left: 14px solid transparent;
+  border-right: 14px solid transparent;
+  border-top: 14px solid #ffffff;
+  position: absolute;
+  bottom: -11px;
+  left: 36px;
+}
+.ui-btn-down-c.bottom-centered-arrow::after {
+  width: 0;
+  height: 0;
+  display: inline-block;
+  content: "&uarr;";
+  text-indent: -99999px;
+  vertical-align: top;
+  margin-top: 0;
+  margin-left: -14px;
+  border-left: 14px solid transparent;
+  border-right: 14px solid transparent;
+  border-bottom: 14px solid #ffffff;
+  position: absolute;
+  top: -11px;
+  left: 50%;
 }
 /*
 * D
@@ -2631,6 +2880,38 @@ input.ui-input-text, textarea.ui-input-text {
 .ui-btn-up-e a.ui-link-inherit {
   color: #333333;
 }
+.ui-btn-up-e.top-left-arrow::after {
+  width: 0;
+  height: 0;
+  display: inline-block;
+  content: "&darr;";
+  text-indent: -99999px;
+  vertical-align: top;
+  margin-top: 0;
+  margin-left: -14px;
+  border-left: 14px solid transparent;
+  border-right: 14px solid transparent;
+  border-top: 14px solid #ffe400;
+  position: absolute;
+  bottom: -11px;
+  left: 36px;
+}
+.ui-btn-up-e.bottom-centered-arrow::after {
+  width: 0;
+  height: 0;
+  display: inline-block;
+  content: "&uarr;";
+  text-indent: -99999px;
+  vertical-align: top;
+  margin-top: 0;
+  margin-left: -14px;
+  border-left: 14px solid transparent;
+  border-right: 14px solid transparent;
+  border-bottom: 14px solid #ffff00;
+  position: absolute;
+  top: -11px;
+  left: 50%;
+}
 .ui-btn-hover-e {
   border: none;
   background: #ffff33;
@@ -2657,6 +2938,38 @@ input.ui-input-text, textarea.ui-input-text {
 }
 .ui-btn-hover-e a.ui-link-inherit {
   color: #333333;
+}
+.ui-btn-hover-e.top-left-arrow::after {
+  width: 0;
+  height: 0;
+  display: inline-block;
+  content: "&darr;";
+  text-indent: -99999px;
+  vertical-align: top;
+  margin-top: 0;
+  margin-left: -14px;
+  border-left: 14px solid transparent;
+  border-right: 14px solid transparent;
+  border-top: 14px solid #ffe933;
+  position: absolute;
+  bottom: -11px;
+  left: 36px;
+}
+.ui-btn-hover-e.bottom-centered-arrow::after {
+  width: 0;
+  height: 0;
+  display: inline-block;
+  content: "&uarr;";
+  text-indent: -99999px;
+  vertical-align: top;
+  margin-top: 0;
+  margin-left: -14px;
+  border-left: 14px solid transparent;
+  border-right: 14px solid transparent;
+  border-bottom: 14px solid #ffe933;
+  position: absolute;
+  top: -11px;
+  left: 50%;
 }
 .ui-btn-down-e {
   border: none;
@@ -2688,6 +3001,38 @@ input.ui-input-text, textarea.ui-input-text {
   -moz-box-shadow: 0 1px 4px rgba(51, 51, 51, 0.3);
   -webkit-box-shadow: 0 1px 4px rgba(51, 51, 51, 0.3);
   box-shadow: 0 1px 4px rgba(51, 51, 51, 0.3);
+}
+.ui-btn-down-e.top-left-arrow::after {
+  width: 0;
+  height: 0;
+  display: inline-block;
+  content: "&darr;";
+  text-indent: -99999px;
+  vertical-align: top;
+  margin-top: 0;
+  margin-left: -14px;
+  border-left: 14px solid transparent;
+  border-right: 14px solid transparent;
+  border-top: 14px solid #ffff00;
+  position: absolute;
+  bottom: -11px;
+  left: 36px;
+}
+.ui-btn-down-e.bottom-centered-arrow::after {
+  width: 0;
+  height: 0;
+  display: inline-block;
+  content: "&uarr;";
+  text-indent: -99999px;
+  vertical-align: top;
+  margin-top: 0;
+  margin-left: -14px;
+  border-left: 14px solid transparent;
+  border-right: 14px solid transparent;
+  border-bottom: 14px solid #ffff00;
+  position: absolute;
+  top: -11px;
+  left: 50%;
 }
 .ui-bar-e {
   background: #ffff00;

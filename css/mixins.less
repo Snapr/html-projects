@@ -125,3 +125,38 @@
 	-webkit-box-shadow: @arguments;
 	box-shadow: @arguments;
 }
+
+/* keep the corners 45 degrees otherwise they look crap */
+.arrow-up(@height, @color, @x-pos, @y-shift){
+    width: 0;
+    height: 0;
+    display: inline-block;
+    content: "&uarr;";
+    text-indent: -99999px;
+    vertical-align: top;
+    margin-top: 0;
+    margin-left: -@height;
+    border-left: @height solid transparent;
+    border-right: @height solid transparent;
+    border-bottom: @height solid @color;
+    position: absolute;
+    top: -@height + @y-shift;
+    left: @x-pos;
+}
+
+.arrow-down(@height, @color, @x-pos, @y-shift){
+    width: 0;
+    height: 0;
+    display: inline-block;
+    content: "&darr;";
+    text-indent: -99999px;
+    vertical-align: top;
+    margin-top: 0;
+    margin-left: -@height;
+    border-left: @height solid transparent;
+    border-right: @height solid transparent;
+    border-top: @height solid @color;
+    position: absolute;
+    bottom: -@height + @y-shift;
+    left: @x-pos;
+}
