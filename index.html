@@ -698,7 +698,8 @@
             
             
             <% if(item.get('external_video')){ %>
-            <video class="main-image x-feed-image external-vid" data-vid-width="<%= item.get('external_video').width %>" data-vid-duration="<%= item.get('external_video').duration %>" data-vid-height="<%= item.get('external_video').height %>" poster="https://s3.amazonaws.com/media-server<%= item.get('server_id') %>.snapr.us/lrg/<%= item.get('secret') %>/<%= item.get('id') %>.jpg" style="height:<%= snapr.utils.get_photo_height(item.get('width'), item.get('height'), '#feed-images') %>px;" preload="none" controls="true" >
+            <video class="main-image x-feed-image external-vid" data-vid-width="<%= item.get('external_video').width %>" data-vid-duration="<%= item.get('external_video').duration %>" data-vid-height="<%= item.get('external_video').height %>" poster="https://s3.amazonaws.com/media-server<%= item.get('server_id') %>.snapr.us/lrg/<%= item.get('secret') %>/<%= item.get('id') %>.jpg" style="height:<%= snapr.utils.get_photo_height(item.get('width'), item.get('height'), '#feed-images') %>px;" preload="none" controls="true" onclick="if(this.paused){this.play();}else{this.pause();}">
+            
                 <source src="<%= item.get('external_video').source %>" />
             </video>
             <%}else{%>
