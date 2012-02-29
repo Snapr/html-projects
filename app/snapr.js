@@ -362,10 +362,11 @@ snapr.utils.require_login = function( funct )
 }
 snapr.utils.get_photo_height = function( orig_width, orig_height, element )
 {
-    // this depends on the padding - bit of a hack
+    
     var aspect = orig_width/orig_height,
-        width = $(element).eq(0).innerWidth() - 45;
+        width = $(element).eq(0).width();
 
+        console.warn("orig_width: "+ orig_width + "orig_height: "+ orig_height + "width: "+ width);
     return width/aspect;
 };
 
