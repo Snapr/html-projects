@@ -21,7 +21,9 @@ snapr.views.people_li = Backbone.View.extend({
             .empty()
             .append( this.template({
                 user: this.model,
-                auth_username: snapr.auth.get( "snapr_user" )
+                auth_username: snapr.auth.get( "snapr_user" ),
+                logged_in: snapr.auth.has( "access_token" ),
+                
             }) )
 
         return this;
@@ -66,12 +68,16 @@ snapr.views.people_li = Backbone.View.extend({
 
     follow: function()
     {
-        this.model.follow();
+        snapr.utils.require_login( function(){
+            this.model.follow();
+        })();
     },
 
     unfollow: function()
     {
-        this.model.unfollow();
+        snapr.utils.require_login( function(){
+            this.model.unfollow();
+        })();
     }
 
 });

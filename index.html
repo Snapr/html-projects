@@ -1138,7 +1138,9 @@
             <h1>People</h1>
         </div>
         <div data-role="content" data-theme="c">
-            <input type="search" id="people-search" value="" placeholder="Search&hellip;" />
+            <div class="search-header">
+                <input type="search" id="people-search" value="" placeholder="Search&hellip;" />
+            </div>
             <ul class="people-list simple-list" data-role="listview" data-inset="true" >
             </ul>
         </div>
@@ -1151,13 +1153,17 @@
                <h3 class="username"><%= user.get('username') %></h3>
                <p class="small-text"><span class="photo-count"><%= user.get('photo_count') %></span> photos, <span class="followers"><%= user.get('followers') %></span> followers</p>
            </a>
-           <% if (user.get('username') == auth_username){%>
-               <a disabled="true" data-icon="check" data-iconpos="right"></a>
+           <% if (!logged_in) {%>
+                    <a data-icon="plus" data-iconpos="right" class="follow"></a>
            <%}else{%>
-               <% if (user.get('relationship').you_follow) {%>
-               <a data-icon="check" data-iconpos="right" class="unfollow"></a>
+               <% if (user.get('username') == auth_username){%>
+                   <a disabled="true" data-icon="check" data-iconpos="right"></a>
                <%}else{%>
-               <a data-icon="plus" data-iconpos="right" class="follow"></a>
+                   <% if (user.get('relationship').you_follow) {%>
+                   <a data-icon="check" data-iconpos="right" class="unfollow"></a>
+                   <%}else{%>
+                   <a data-icon="plus" data-iconpos="right" class="follow"></a>
+                   <%}%>
                <%}%>
            <%}%>
        </script>
