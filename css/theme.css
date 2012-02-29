@@ -825,6 +825,22 @@ input.ui-input-text, textarea.ui-input-text {
   font-family: 'MuseoSansRounded700', Helvetica, Arial, sans-serif;
   font-size: 16px;
 }
+.ui-navbar .ui-btn-active::after {
+  width: 0;
+  height: 0;
+  display: inline-block;
+  content: "&uarr;";
+  text-indent: -99999px;
+  vertical-align: top;
+  margin-top: 0;
+  margin-left: -14px;
+  border-left: 14px solid transparent;
+  border-right: 14px solid transparent;
+  border-bottom: 14px solid #ffffff;
+  position: absolute;
+  top: 37px;
+  left: 50%;
+}
 .ui-navbar .ui-btn-inner {
   border-top: none;
   padding-top: 16px!important;
