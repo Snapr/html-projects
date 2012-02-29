@@ -817,6 +817,7 @@ fieldset.ui-controlgroup{
 .grid #feed-images{
     margin: 0 -@padding-page-inset; 
     padding: @padding-image-grid-inset 0 0 @padding-image-grid-inset; 
+  
     
     .image-link{
         display: inline-block;
@@ -1001,9 +1002,16 @@ fieldset.ui-controlgroup{
 /*
 * @feed PAGE
 */
+#feed-images{
+    min-height: 280px;
+}
 
 .feed-header{
     margin-bottom: @padding-page-inset;
+}
+
+.load-more{
+    display: none;
 }
 
 .feed-view-toggle{

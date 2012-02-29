@@ -133,15 +133,15 @@ snapr.views.feed = Backbone.View.extend({
         var options = {
             success: function()
             {
-                // if (!feed_view.feed_list)
-                // {
-                    feed_view.feed_list = new snapr.views.feed_list({
-                        el: feed_view.el.find('#feed-images').eq(0),
-                        collection: feed_view.photo_collection,
-                        list_style: list_style
-                    });
-                // }
-
+               
+                feed_view.feed_list = new snapr.views.feed_list({
+                    el: feed_view.el.find('#feed-images').eq(0),
+                    collection: feed_view.photo_collection,
+                    list_style: list_style
+                });
+               
+               $(feed_view.el).find(".load-more").show();
+               
                 feed_view.feed_list.render( feed_view.photoswipe_init );
                 $.mobile.hidePageLoadingMsg();
             },

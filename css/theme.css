@@ -1126,8 +1126,14 @@ input.ui-input-text, textarea.ui-input-text {
 /*
 * @feed PAGE
 */
+#feed-images {
+  min-height: 280px;
+}
 .feed-header {
   margin-bottom: 8px;
+}
+.load-more {
+  display: none;
 }
 .feed-view-toggle .ui-btn-inner {
   padding: 0;
