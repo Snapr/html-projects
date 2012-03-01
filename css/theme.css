@@ -520,6 +520,12 @@ input.ui-input-text, textarea.ui-input-text {
   right: 6px;
   top: 6px;
 }
+.ui-header .ui-btn-center .ui-btn {
+  position: absolute;
+  left: 50%;
+  margin-top: 7px;
+  margin-left: -50px;
+}
 .ui-header .ui-btn-inner {
   padding-top: 9px;
   padding-bottom: 7px;
@@ -796,6 +802,15 @@ input.ui-input-text, textarea.ui-input-text {
 }
 .extra-icons .ui-icon-redheart, .extra-icons.ui-icon-redheart {
   background-position: 0 -416px;
+}
+.extra-icons .ui-icon-map-time, .extra-icons.ui-icon-map-time {
+  background-position: 0 -448px;
+}
+.extra-icons .ui-icon-person-a, .extra-icons.ui-icon-person-a {
+  background-position: 0 -480px;
+}
+.extra-icons .ui-icon-search-a, .extra-icons.ui-icon-search-a {
+  background-position: 0 -512px;
 }
 .ui-navbar {
   margin: -8px -8px 0 -8px;
@@ -1865,6 +1880,12 @@ input.ui-input-text, textarea.ui-input-text {
   -webkit-border-radius: 0px;
   border-radius: 0px;
 }
+.search-header {
+  overflow: visible;
+}
+.search-header input {
+  overflow: visible;
+}
 /* @myaccount custom stylz */
 .account-content .myaccount-header .ui-btn, .account-content .myaccount-header .user-icon-small {
   display: inline-block;
@@ -1921,6 +1942,7 @@ input.ui-input-text, textarea.ui-input-text {
   margin: -3px;
 }
 .photo-map {
+  position: relative;
   /* map thumbs */
 
 }
@@ -1962,6 +1984,64 @@ input.ui-input-text, textarea.ui-input-text {
   width: 78px;
   height: 88px;
   display: block;
+}
+.photo-map .inline-footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  margin: 0 -8px;
+  -moz-border-radius-bottomleft: 8px;
+  -webkit-border-bottom-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+  -moz-border-radius-bottomright: 8px;
+  -webkit-border-bottom-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+.photo-map .inline-footer.ui-body-a {
+  border: none;
+  background: rgba(0, 0, 0, 0.8);
+  background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, rgba(0, 0, 0, 0)), color-stop(0.5, rgba(0, 0, 0, 0)), color-stop(0.5, rgba(255, 255, 255, 0.1)), color-stop(1, rgba(255, 255, 255, 0.2)));
+  /* Saf4+, Chrome */
+  background-image: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 50%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.2) 100%);
+  /* Chrome 10+, Saf5.1+ */
+
+  background-image: -moz-linear-gradient(bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 50%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.2) 100%);
+  /* FF3.6 */
+
+  background-image: -ms-linear-gradient(bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 50%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.2) 100%);
+  /* IE10 */
+
+  background-image: -o-linear-gradient(bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 50%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.2) 100%);
+  /* Opera 11.10+ */
+
+  background-image: linear-gradient(bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 50%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.2) 100%);
+}
+.photo-map .inline-footer .ui-select, .photo-map .inline-footer .ui-input-text {
+  display: block;
+  vertical-align: middle;
+}
+.photo-map .inline-footer .ui-select .ui-btn-inner, .photo-map .inline-footer .ui-input-text .ui-btn-inner {
+  font-size: 14px;
+  padding: 8px 26px;
+}
+.photo-map .inline-footer .map-time {
+  position: absolute;
+  left: 8px;
+  top: 6px;
+}
+.photo-map .inline-footer .map-time .map-time-btn {
+  background: none;
+  box-shadow: none;
+  border: none;
+  top: 0;
+}
+.photo-map .inline-footer .map-time .map-time-btn .ui-icon {
+  width: 32px;
+  height: 32px;
+}
+.photo-map .inline-footer .map-filters {
+  margin: 6px;
+  margin-left: 48px;
 }
 /*******************************************************************
 * @theme - SWATCHES 

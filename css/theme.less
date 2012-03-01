@@ -480,6 +480,16 @@ fieldset.ui-controlgroup{
         top: 6px;
     }
     
+    .ui-btn-center{
+        .ui-btn{
+            position: absolute;
+            left: 50%;
+            margin-top: 7px;
+            margin-left: -50px;
+        }
+       
+    }
+    
     .ui-btn-inner{
         padding-top: 9px;
         padding-bottom: 7px;
@@ -708,6 +718,9 @@ fieldset.ui-controlgroup{
     .ui-icon-link,&.ui-icon-link{background-position: @ei-offset-x @gfx-extra-icon-sprite-link-y;}
     .ui-icon-clock, &.ui-icon-clock{background-position: @ei-offset-x @gfx-extra-icon-sprite-clock-y;}
     .ui-icon-redheart, &.ui-icon-redheart{background-position: @ei-offset-x @gfx-extra-icon-sprite-redheart-y;}
+    .ui-icon-map-time, &.ui-icon-map-time{background-position: @ei-offset-x @gfx-extra-icon-sprite-map-time-y;}
+    .ui-icon-person-a, &.ui-icon-person-a{background-position: @ei-offset-x @gfx-extra-icon-sprite-person-a-y;}
+    .ui-icon-search-a, &.ui-icon-search-a{background-position: @ei-offset-x @gfx-extra-icon-sprite-search-a-y;}
     
 }
 
@@ -1886,6 +1899,7 @@ fieldset.ui-controlgroup{
 }
 
 .photo-map{
+    position:relative;
     /* map thumbs */
     .snaprmappoint {
         width: 1px;
@@ -1927,7 +1941,53 @@ fieldset.ui-controlgroup{
         }
     }
 
-
+    .inline-footer{
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        margin: 0 -8px;
+        .corner-bottom(8px);
+        
+        &.ui-body-a{
+            border: none;
+            background: rgba(0, 0, 0, .8);
+            .shiny-gradient (rgba(0,0,0,0), rgba(0,0,0,0), rgba(255,255,255,0.1), rgba(255,255,255,0.2));
+        	
+        }
+        
+      
+        .ui-select,
+        .ui-input-text{
+            display: block;
+            vertical-align: middle;
+            
+            .ui-btn-inner{
+                font-size: 14px;
+                padding: 8px 26px;
+            }
+            
+        }
+        .map-time{
+            position: absolute;
+            left: 8px;
+            top: 6px;
+            .map-time-btn{
+                background: none;
+                box-shadow: none;
+                border: none;
+                top: 0;
+                .ui-icon{
+                    width: 32px;
+                    height: 32px;
+                }
+            }
+        }
+        
+        .map-filters{
+            margin: 6px;
+            margin-left: 48px;
+        }
+    }
     
     
 }

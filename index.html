@@ -1229,13 +1229,19 @@
     </div><!-- /page -->
 
     <!-- @map PAGE-->
-    <div id="map" data-add-back-btn="true" data-role="page" data-theme="d">
+    <div id="map" data-role="page" data-add-back-btn="true" data-theme="d">
         <div data-role="header" data-theme="b">
-            <h1>Map</h1>
+            
+           <div class="ui-btn-center">
+               <a href="#/feed/" data-ajax="false" data-role="button" style="margin-left: -48px;">Show as Feed</a>
+            </div>
+           
+           
 
-            <div class="right-header-buttons">
+            <div class="ui-btn-right">
                 <a href="#/search/" data-ajax="false" data-role="button" data-icon="search" data-iconpos="notext"></a>
-                <a href="#/" data-ajax="false" data-role="button" data-icon="home" data-iconpos="notext"></a>
+                <a data-ajax="false" data-role="button" data-icon="location" data-iconpos="notext"></a>
+                
             </div>
 
         </div>
@@ -1250,18 +1256,34 @@
                 </ul>
                 <button id="map-disambituation-cancel">Cancel</button>
             </div>
-        </div>
-        <div data-role="footer">
-
-            <div class="ui-btn-right">
-                <select id="map-filter">
-                    <option value="just-one">Just One</option>
-                    <option value="just-me">Just Me</option>
-                    <option value="following">Following</option>
-                    <option value="all">All</option>
-                </select>
+            
+            <div class="inline-footer ui-body-a trans-bg extra-icons">
+               <div class="map-time">
+                   <a class="map-time-btn" data-role="button" data-icon="map-time" data-iconpos="notext">
+                </a>
+                </div>
+                <div class="map-filters">
+                    <div class="ui-grid-a">
+                        <div class="ui-block-a">
+                            <select id="map-filter">
+                                <option value="just-one">Just One</option>
+                                <option value="just-me">Just Me</option>
+                                <option value="following">Following</option>
+                                <option value="all">All</option>
+                            </select>
+                        </div>
+                        <div class="ui-block-b">
+                            <input type="search" id="map-keyword" name="map-keyword"  placeholder="#keywords" class="" />
+                        </div>
+                
+                </input>
+                    </div>
+                </div>
+                
             </div>
+            
         </div>
+        
     </div><!-- /page -->
 
     <!-- @map @thumb ITEM -->
