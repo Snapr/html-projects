@@ -1,3 +1,8 @@
+
+snapr.base_url= "http://dev.sna.pr";
+snapr.client_id= "client";
+snapr.client_secret= "secret";
+
 snapr.settings = {
   'dev': {
     'base_url': "http://dev.sna.pr",
