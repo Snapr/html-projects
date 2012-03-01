@@ -28,7 +28,7 @@ snapr.models.user = Backbone.Model.extend({
     {
         var url_function = this.url;
 
-        this.url = this.urlRoot + "follow/";
+        this.url = snapr.api_base + "/user/follow/";
 
         var model = this;
 
@@ -52,7 +52,7 @@ snapr.models.user = Backbone.Model.extend({
     {
         var url_function = this.url;
 
-        this.url = this.urlRoot + "unfollow/";
+        this.url = snapr.api_base + "/user/unfollow/";
 
         var model = this;
 
