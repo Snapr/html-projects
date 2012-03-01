@@ -11,7 +11,7 @@ snapr.models.user = Backbone.Model.extend({
 
     url: function( method )
     {
-        return tsnapr.api_base + '/user/details/';
+        return snapr.api_base + '/user/details/';
     },
 
     parse: function( d, xhr )
