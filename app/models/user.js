@@ -7,13 +7,13 @@ snapr.models.user = Backbone.Model.extend({
         }
     },
 
-    urlRoot: snapr.api_base + '/user/',
+    //urlRoot: snapr.api_base + '/user/',
 
     url: function( method )
     {
-        return this.urlRoot + 'details/';
+        return tsnapr.api_base + '/user/details/';
     },
-    
+
     parse: function( d, xhr )
     {
         if (d.response && d.response.user)
@@ -23,7 +23,7 @@ snapr.models.user = Backbone.Model.extend({
             return {};
         }
     },
-    
+
     follow: function()
     {
         var url_function = this.url;
@@ -31,7 +31,7 @@ snapr.models.user = Backbone.Model.extend({
         this.url = this.urlRoot + "follow/";
 
         var model = this;
-        
+
         this.save({},{
             success: function()
             {
@@ -45,9 +45,9 @@ snapr.models.user = Backbone.Model.extend({
                 console.warn( "follow error", e );
             }
         })
-        
+
     },
-    
+
     unfollow: function()
     {
         var url_function = this.url;
@@ -55,7 +55,7 @@ snapr.models.user = Backbone.Model.extend({
         this.url = this.urlRoot + "unfollow/";
 
         var model = this;
-        
+
         this.save({},{
             success: function(s)
             {
@@ -69,8 +69,8 @@ snapr.models.user = Backbone.Model.extend({
                 console.warn( "unfollow error", e );
             }
         })
-        
+
     }
-    
+
 
 });

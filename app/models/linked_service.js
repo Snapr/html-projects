@@ -5,7 +5,7 @@ snapr.models.linked_service = Backbone.Model.extend({
         this.data = {linked_services: true}
     },
 
-    urlRoot: snapr.api_base + '/linked_services/',
+    //urlRoot: snapr.api_base + '/linked_services/',
 
     url: function( method )
     {
@@ -14,18 +14,18 @@ snapr.models.linked_service = Backbone.Model.extend({
             switch (method)
             {
                 case 'create':
-                    return this.urlRoot + this.provider + '/';
+                    return snapr.api_base + '/linked_services/' + this.provider + '/';
                 case 'update':
-                    return this.urlRoot + this.provider + '/';
+                    return snapr.api_base + '/linked_services/' + this.provider + '/';
                 case 'delete':
-                    return this.urlRoot + this.provider + '/delete/';
+                    return snapr.api_base + '/linked_services/' + this.provider + '/delete/';
                 default:
                     return snapr.api_base + '/user/settings/';
             }
         }
         else
         {
-            return this.urlRoot;
+            return snapr.api_base + '/linked_services/';
         }
     },
 

@@ -6,7 +6,7 @@ snapr.models.user_collection = Backbone.Collection.extend({
 
     url: function( method )
     {
-        return this.urlRoot;
+        return snapr.api_base + '/user/';
     },
 
     parse: function( d, xhr )
@@ -58,7 +58,7 @@ snapr.models.user_collection = Backbone.Collection.extend({
     {
         var url_function = this.url;
 
-        this.url = this.urlRoot + "followers/";
+        this.url = snapr.api_base + '/user/followers/';
 
         this.data = {
             username: username
@@ -83,7 +83,7 @@ snapr.models.user_collection = Backbone.Collection.extend({
     {
         var url_function = this.url;
 
-        this.url = this.urlRoot + "search/";
+        this.url = snapr.api_base + '/user/search/';
 
         this.data = {
             username: username

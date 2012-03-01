@@ -1,7 +1,7 @@
 snapr.models.photo = Backbone.Model.extend({
-    urlRoot: snapr.api_base + '/photo/',
+    //urlRoot: snapr.api_base + '/photo/',
     url: function( method ){
-        return this.urlRoot;
+        return snapr.api_base + '/photo/';
     },
     parse: function( d, xhr ){
         if(d.response && d.response.photos){
