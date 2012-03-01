@@ -778,61 +778,63 @@
             <h1>Profile</h1>
         </div>
         <div data-role="content" class="user-profile">
-
-            <!-- inset block of content w/ icon -->
-            <div class="user-info-block">
-                <div class="user-icon-left">
-                    <a class="user-profile-icon" href="" data-ajax="false">
-                        <div class="user-icon-big" style="background-image: url('http://sna.pr/avatars/rowan?size=large'); background-size: 100% 100%"></div>
-
-                    </a>
-                </div>
-
-                <div class="user-stats">
-                    <h1 class="real-name"><a class="username">Rowan Wernham</a><span class="facebook-sharing sharing-icon-small"><span class="ui-icon"></span></span>
-                    </h1>
-                    <hr>
-                     <ul class="user-linked-services">
-                        <li>
-                            <a>
-                            <span class="twitter-sharing sharing-icon-small"><span class="ui-icon"></span></span>@rowanwernham
-                            </a>
-                        </li>
-                        <li>
-                            <a>
-                            <span class="tumblr-sharing sharing-icon-small"><span class="ui-icon"></span></span>snaprtest
-                            </a>
-                        </li>
-                         <li>
-                            <a>
-                                <span class="foursquare-sharing sharing-icon-small"><span class="ui-icon"></span></span>Rowan W.
-                                </a>
-                            </li>
-
-                    </ul>
-                    <hr>
-                    <p class="user-bio">
-                    Supoosedly a flim maker. Founder of Snapr.
-                    </p>
-                    <p class="user-hometown">
-                    Brooklyn NY
-                    </p>
-                    <p class="user-website">
-                        <a><span class="ui-icon ui-icon-link extra-icons"></span>sna.pr/rowan</a>
-                    </p>
-                </div>
-
-            </div>
-            <hr>
-            <!-- base btns -->
-            <div class="user-buttons">
-                <a data-role="button" data-icon="feed" class="extra-icons">1234 Snaps</a>
-                <a data-role="button" data-icon="favs" class="extra-icons">1234 Favourites</a>
-            </div>
-            <hr>
-
         </div>
     </div>
+
+    <script id="user-profile-template" type="text/template">
+    <!-- inset block of content w/ icon -->
+    <div class="user-info-block">
+        <div class="user-icon-left">
+            <a class="user-profile-icon" href="" data-ajax="false">
+                <div class="user-icon-big" style="background-image: url('http://sna.pr/avatars/<%= user.get( "username" ) %>?size=large'); background-size: 100% 100%"></div>
+
+            </a>
+        </div>
+
+        <div class="user-stats">
+            <h1 class="real-name"><a class="username"><%= user.get( "username" ) %></a><span class="facebook-sharing sharing-icon-small"><span class="ui-icon"></span></span>
+            </h1>
+            <hr>
+             <ul class="user-linked-services">
+                <li>
+                    <a>
+                    <span class="twitter-sharing sharing-icon-small"><span class="ui-icon"></span></span>@rowanwernham
+                    </a>
+                </li>
+                <li>
+                    <a>
+                    <span class="tumblr-sharing sharing-icon-small"><span class="ui-icon"></span></span>snaprtest
+                    </a>
+                </li>
+                 <li>
+                    <a>
+                        <span class="foursquare-sharing sharing-icon-small"><span class="ui-icon"></span></span>Rowan W.
+                        </a>
+                    </li>
+
+            </ul>
+            <hr>
+            <p class="user-bio">
+            Supoosedly a flim maker. Founder of Snapr.
+            </p>
+            <p class="user-hometown">
+            Brooklyn NY
+            </p>
+            <p class="user-website">
+                <a><span class="ui-icon ui-icon-link extra-icons"></span>sna.pr/rowan</a>
+            </p>
+        </div>
+
+    </div>
+    <hr>
+    <!-- base btns -->
+    <div class="user-buttons">
+        <a data-role="button" data-icon="feed" class="extra-icons">1234 Snaps</a>
+        <a data-role="button" data-icon="favs" class="extra-icons">1234 Favourites</a>
+    </div>
+    <hr>
+
+    </script>
 
     <!-- @dashboard PAGE -->
        <div id="dashboard" data-title="Dash" data-add-back-btn="true" data-role="page" data-theme="d">
