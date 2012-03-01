@@ -5,6 +5,7 @@ snapr.views.user_profile = Backbone.View.extend({
         this.el.live('pagehide', function( e )
         {
             $(e.target).undelegate();
+            $(e.target).find( ".user-profile" ).empty();
 
             return true;
         });
