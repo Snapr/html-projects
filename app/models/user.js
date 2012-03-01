@@ -18,6 +18,10 @@ snapr.models.user = Backbone.Model.extend({
     {
         if (d.response && d.response.user)
         {
+            if (d.response.details)
+            {
+                d.response.user.details = d.response.details;
+            }
             return d.response.user;
         }else{
             return {};
