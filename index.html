@@ -588,6 +588,9 @@
            <%}else if (query_data.spot){%>
                @ <em><%= query_data.spot %></em>
            <%}%>
+           
+           
+           
            </h4>
        </div>
        </script>
@@ -895,7 +898,7 @@
 
            </div>
            <div data-role="content" data-theme="d">
-               <ul class="image-streams">
+               <ul class="image-streams edit">
                    <li class="image-stream" id="upload-popular-nearby">
                       <a class="ui-bar top-left-arrow" data-role="button" data-iconpos="right" data-icon="arrow-r" data-theme="e">
                           <span class="ui-icon ui-icon-venue extra-icons"></span>
@@ -958,7 +961,11 @@
                                    <a class="image-link" data-ajax="false" href="#/feed/?photo_id=S8Q&amp;username=candyellow">
                                    <img src="https://s3.amazonaws.com/media-server2.snapr.us/thm2/09cd5f890a55389104f9576f7dd0fd2a/S8Q.jpg" alt="Girl mo." class="thumb-image thumb-med">
                                    </a>
-
+                                   
+                                   
+                               </div>
+                               <div class="edit-overlay trans-bg">
+                                      <a class="remove-stream" data-role="button" data-icon="delete" data-iconpos="right" data-theme="c">Remove</a>
                                </div>
                        </li>
 
