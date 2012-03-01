@@ -421,6 +421,9 @@ snapr.routers = Backbone.Router.extend({
         "/user/profile/?*query_string": "user_profile",
         "/user/search/?*query_string": "user_search",
         "/user/:follow/?*query_string": "people",
+        "/venue/search/?*query_string": "venues",
+
+
         "/": "home",
         "?*query_string": "home",
         "/?*query_string": "home",
@@ -612,8 +615,18 @@ snapr.routers = Backbone.Router.extend({
                follow: follow,
                el: $("#people")
            });
+       },
+
+       venues: function( query_string )
+       {
+           var query = snapr.utils.get_query_params( query_string );
+           snapr.info.current_view = new snapr.views.venues({
+               query: query,
+               el: $("#venues")
+           });
        }
-    
+
+
 
 });
 
@@ -816,16 +829,16 @@ $(function () {
           this.setMap( this.map_ );
         }
     }
-    
-    
+
+
     // initialise router and start backbone
     Route = new snapr.routers;
     Backbone.history.start();
     if(snapr.utils.get_local_param("appmode")) {
         $("body").addClass("appmode").addClass("appmode-" + snapr.utils.get_local_param("appmode"));
     }
-   
-    
+
+
     $(document).trigger('snaprinit');
 
     function preventScroll(e) {
