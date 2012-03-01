@@ -1,3 +1,34 @@
+snapr.settings = {
+  'dev': {
+    'base_url': "http://dev.sna.pr",
+    'client_id': "client",
+    'client_secret': "secret"
+  },
+  'local': {
+    'base_url': "http://localhost:8001",
+    'client_id': "client",
+    'client_secret': "secret"
+  },
+  'default': {
+    'base_url': "http://dev.sna.pr",
+    'client_id': "client",
+    'client_secret': "secret"
+  }
+};
+
+// App Group Here
+// snapr.app_group = "pink-nation";
+// snapr.public_group = "pink-nation-featured";
+
+//Some other app settings
+snapr.constants = {};
+snapr.constants.default_zoom = 15;
+snapr.constants.feed_count = 12;
+
+snapr.constants.share_redirect = false;
+// set to hash url to redirect after successful upload/share eg:
+snapr.constants.upload_redirect = "#/uploading/";
+// if false, redirects to user feed
 // Backbone.emulateHTTP = true;
 // Overriding sync to make this a jsonp app
 Backbone.sync = function( method, model, options )
@@ -255,7 +286,8 @@ snapr.utils.get_query_params = function( query )
                         "snapr_user_public_group_name",
                         "appmode",
                         "new_user",
-                        "demo_mode"
+                        "demo_mode",
+                        "environment"
                         ], kv[0] ) > -1)
                     {
                         snapr.utils.save_local_param( kv[0], kv[1] );
@@ -268,7 +300,18 @@ snapr.utils.get_query_params = function( query )
             }
         });
     }
-
+    env = snapr.utils.get_local_param('environment');
+    console.log('env', env);
+    if (_.has(snapr.settings, env)) {
+    var settings = snapr.settings[env];
+    } else {
+    var settings = snapr.settings['default'];
+    }
+    _.each(settings, function (value, key) {
+    snapr[key] = value;
+    });
+    snapr.api_base = snapr.base_url + "/api";
+    snapr.access_token_url = snapr.base_url + "/ext/oauth/access_token/";
     return params;
 }
 // alert/confirm replacements
@@ -362,7 +405,7 @@ snapr.utils.require_login = function( funct )
 }
 snapr.utils.get_photo_height = function( orig_width, orig_height, element )
 {
-    
+
     var aspect = orig_width/orig_height,
         width = $(element).eq(0).width();
 
@@ -530,7 +573,7 @@ snapr.routers = Backbone.Router.extend({
             query: query
         });
     },
-    
+
     activity: function( query_string )
       {
           var query = snapr.utils.get_query_params( query_string );

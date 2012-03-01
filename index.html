@@ -15,27 +15,6 @@
         snapr.redirect = '';
         snapr.models = {};
         snapr.views = {};
-        snapr.base_url = "http://dev.sna.pr";
-        snapr.api_base = snapr.base_url + "/api";
-        snapr.access_token_url = snapr.base_url + "/ext/oauth/access_token/";
-
-        //Add the Client and Secret for your app here
-        snapr.client_id = "client";
-        snapr.client_secret = "secret";
-
-        // App Group Here
-        // snapr.app_group = "pink-nation";
-        // snapr.public_group = "pink-nation-featured";
-
-        //Some other app settings
-        snapr.constants = {};
-        snapr.constants.default_zoom = 15;
-        snapr.constants.feed_count = 12;
-
-        snapr.constants.share_redirect = false;
-        // set to hash url to redirect after successful upload/share eg:
-        snapr.constants.upload_redirect = "#/uploading/";
-        // if false, redirects to user feed
 
         // disable jquery-mobile's hash nav so we can replace it with backbone.js
         $(document).bind("mobileinit", function(){
@@ -187,7 +166,7 @@
     <div id="my-account" data-title="My Account" data-add-back-btn="true" data-role="page" data-theme="d">
         <div data-role="header" data-theme="b">
             <h1>My Account</h1>
-            
+
             <div class="ui-btn-right">
                 <a href="#/search/" data-ajax="false" data-role="button" data-icon="search" data-iconpos="notext"></a>
                 <a href="#/" data-ajax="false" data-role="button" data-icon="home" data-iconpos="notext"></a>
@@ -201,7 +180,7 @@
 
     <!--  template for my-account -->
     <script id="my-account-template" type="text/template">
-    
+
     <div class="myaccount-header page-inset-header ui-body-c">
         <div class="ui-content">
          <a class="username" href="" data-ajax="false">
@@ -210,7 +189,7 @@
             </a>
                 <a href="#/logout/" class="logout-button" data-ajax="false" data-role="button" data-icon="delete" data-iconpos="right">Logout</a>
         </div>
-            
+
     </div>
 
     <div data-role="collapsible" data-collapsed="false" data-theme="e">
@@ -694,12 +673,12 @@
                 </span>
                 <% }%>
             </div>
-    
-            
-            
+
+
+
             <% if(item.get('external_video')){ %>
             <video class="main-image x-feed-image external-vid" data-vid-width="<%= item.get('external_video').width %>" data-vid-duration="<%= item.get('external_video').duration %>" data-vid-height="<%= item.get('external_video').height %>" poster="https://s3.amazonaws.com/media-server<%= item.get('server_id') %>.snapr.us/lrg/<%= item.get('secret') %>/<%= item.get('id') %>.jpg" style="height:<%= snapr.utils.get_photo_height(item.get('width'), item.get('height'), '#feed-images') %>px;" preload="none" controls="true" onclick="if(this.paused){this.play();}else{this.pause();}">
-            
+
                 <source src="<%= item.get('external_video').source %>" />
             </video>
             <%}else{%>
@@ -707,7 +686,7 @@
                 <img style="height:<%= snapr.utils.get_photo_height(item.get('width'), item.get('height'), '#feed-images') %>px;" src="https://s3.amazonaws.com/media-server<%= item.get('server_id') %>.snapr.us/lrg/<%= item.get('secret') %>/<%= item.get('id') %>.jpg" alt="<%= item.get('description') %>" class="main-image" />
             </a>
             <% }%>
-            
+
 
             <div class="image-description">
 
@@ -935,7 +914,7 @@
                        </li>
 
                </ul>
-               
+
                <div class="helper-content dash-welcome ui-content-inset">
                    <a class="ui-bar top-no-arrow" data-role="button"  data-theme="c">
                        <em>Welcome</em>
@@ -945,12 +924,12 @@
                         </div>
                         <p class="icon-left">
                            Add your favorite people, or a search for something you want to keep track of.
-                        </p>   
-                           
+                        </p>
+
                     </div>
-                   
+
                 </div>
-               
+
                <div class="dash-footer inline-footer ui-body-c ">
                    <div class="ui-content ui-grid-a">
                        <div class="ui-block-a">
@@ -961,10 +940,10 @@
                        </div>
                    </div>
                </div>
-               
+
            </div>
-           
-           
+
+
        </div><!-- /page -->
 
 
@@ -985,41 +964,41 @@
                             <a class="ui-bar top-left-arrow" data-role="button" data-theme="e">
                                 <em>today</em>
                                 <span class="small-text">6 likes, 22 comments</span>
-                               
+
                              </a>
                              <div class="activity-image-item">
                                      <a class="image-link" data-ajax="false" href="#/feed/?photo_id=LF8&amp;username=spencer">
                                      <img src="https://s3.amazonaws.com/media-server2.snapr.us/thm2/465e0fb9af869bc4fe562223ec1dd9df/LF8.jpg" alt="Fun in Tokyo, come here!!" class="thumb-image thumb-med">
                                      </a>
-                                     
+
                                       <ul class="comments-list simple-list" data-role="listview" data-inset="true" data-icon="false" >
                                           <li data-icon="false">
                                               <a data-ajax="false" href="#/feed/?username=rowan">
                                                      <img src="http://sna.pr/avatars/rowan" alt="rowan" class="user-icon-small ui-li-icon"/>
                                                      <h3 class="username">rowan</h3><span class="image-comment">: Cool, i made a comment.. a longer comment</span>
                                                      <p class="small-text">2 hr ago</p>
-                                                 </a>    
+                                                 </a>
                                         </li>
-                                         
+
                                          <li data-icon="false">
                                                <a data-ajax="false" href="#/feed/?username=rowan">
                                                       <img src="http://sna.pr/avatars/rowan" alt="rowan" class="user-icon-small ui-li-icon"/>
                                                       <h3 class="username">rowan</h3><span class="image-comment">: Cool, i made a comment..</span>
                                                       <p class="small-text">2 hr ago</p>
-                                                  </a>    
-                                         </li> 
-                                         
+                                                  </a>
+                                         </li>
+
                                          <li data-icon="false">
                                                 <a data-ajax="false" href="#/feed/?username=rowan">
                                                        <img src="http://sna.pr/avatars/rowan" alt="rowan" class="user-icon-small ui-li-icon"/>
                                                        <h3 class="username">rowan</h3><span class="image-comment"></span>
                                                        <p class="small-text">2 hr ago</p>
-                                                   </a>    
+                                                   </a>
                                           </li>
-                                          
-                                          
+
+
                                       </ul>
-                                      
+
                                       <hr>
                                       <div class="image-likes">
                                           <div class="icons-list">
@@ -1029,11 +1008,11 @@
                                           <p>
                                               <a class="username">rowan</a>, <a class="username">tim</a>, &amp; <a class="username">sarah</a> like this.
                                             </p>
-                                          
-                                          
+
+
                                       </div>
-                                      
-                                    
+
+
 
                             </div><!-- end image item -->
                             <hr>
@@ -1231,17 +1210,17 @@
     <!-- @map PAGE-->
     <div id="map" data-role="page" data-add-back-btn="true" data-theme="d">
         <div data-role="header" data-theme="b">
-            
+
            <div class="ui-btn-center">
                <a href="#/feed/" data-ajax="false" data-role="button" style="margin-left: -48px;">Show as Feed</a>
             </div>
-           
-           
+
+
 
             <div class="ui-btn-right">
                 <a href="#/search/" data-ajax="false" data-role="button" data-icon="search" data-iconpos="notext"></a>
                 <a data-ajax="false" data-role="button" data-icon="location" data-iconpos="notext"></a>
-                
+
             </div>
 
         </div>
@@ -1256,7 +1235,7 @@
                 </ul>
                 <button id="map-disambituation-cancel">Cancel</button>
             </div>
-            
+
             <div class="inline-footer ui-body-a trans-bg extra-icons">
                <div class="map-time">
                    <a class="map-time-btn" data-role="button" data-icon="map-time" data-iconpos="notext">
@@ -1275,15 +1254,15 @@
                         <div class="ui-block-b">
                             <input type="search" id="map-keyword" name="map-keyword"  placeholder="#keywords" class="" />
                         </div>
-                
+
                 </input>
                     </div>
                 </div>
-                
+
             </div>
-            
+
         </div>
-        
+
     </div><!-- /page -->
 
     <!-- @map @thumb ITEM -->
