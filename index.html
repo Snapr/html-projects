@@ -807,11 +807,11 @@
             <%}%>
             </h1>
             <hr>
-             
+
              <!-- if any services linked show em -->
              <% if (user.get("details").linked_services.twitter_username || user.get("details").linked_services.tumblr_username || user.get("details").linked_services.foursquare_username){%>
              <ul class="user-linked-services">
-                
+
                 <!-- Twitter -->
                 <% if (user.get("details").linked_services.twitter_username) {%>
                 <li>
@@ -820,7 +820,7 @@
                     </a>
                 </li>
                 <%}%>
-                
+
                 <!-- Tumblr -->
                 <% if (user.get("details").linked_services.tumblr_username) {%>
                 <li>
@@ -841,7 +841,7 @@
             </ul>
             <hr>
             <%}%>
-            
+
              <% if (user.get("details").profile.bio){%>
             <p class="user-bio">
             <%= user.get("details").profile.bio %>
@@ -1188,6 +1188,30 @@
            <%}%>
        </script>
 
+
+       <!-- @venues PAGE-->
+       <div id="venues" data-add-back-btn="true" data-role="dialog" data-overlay-theme="c" data-theme="c">
+           <div data-role="header" data-theme="c">
+               <h1>Venues</h1>
+           </div>
+           <div data-role="content" data-theme="c">
+               <div class="search-header">
+                   <input type="search" id="venue-search" value="" placeholder="Search&hellip;" />
+               </div>
+               <ul class="venue-list simple-list" data-role="listview" data-inset="true" >
+               </ul>
+           </div>
+       </div>
+
+       <!-- @venue ITEM-->
+       <script id="venue-li-template" type="text/template">
+              <a data-ajax="false">
+                  <img src="http://placehold.it/60x60" alt="" class="user-icon-small ui-li-icon"/>
+                  <h3 class="username"><%= venue.get('name') %></h3>
+              </a>
+              <a data-icon="plus" data-iconpos="right" class="follow"></a>
+          </script>
+
     <!-- @join snapr DIALOG-->
     <div id="join-snapr" data-add-back-btn="true" data-role="dialog" data-overlay-theme="c" data-theme="c">
         <div data-role="header" data-theme="c">
@@ -1291,14 +1315,14 @@
                                 <option value="following">Following</option>
                                 <option value="all">All</option>
                             </select>
-                            
+
                             <span class="ui-icon ui-icon-person-a"></span>
-                            
+
                         </div>
                         <div class="ui-block-b">
                             <input type="search" id="map-keyword" name="map-keyword"  placeholder="#keywords" class="" />
                             <span class="ui-icon ui-icon-search-a"></span>
-                            
+
                         </div>
 
                 </input>
@@ -1713,6 +1737,8 @@
 <script src="app/views/my_account.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/people.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/people_li.js" type="text/javascript" charset="utf-8"></script>
+<script src="app/views/venues.js" type="text/javascript" charset="utf-8"></script>
+<script src="app/views/venue_li.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/search.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/thumbs_li.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/popular.js" type="text/javascript" charset="utf-8"></script>
@@ -1733,6 +1759,8 @@
 <script src="app/models/linked_service.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/models/photo.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/models/photo_collection.js" type="text/javascript" charset="utf-8"></script>
+<script src="app/models/foursquare_venue.js" type="text/javascript" charset="utf-8"></script>
+<script src="app/models/foursquare_venue_collection.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/models/comment.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/models/favorite.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/models/thumb.js" type="text/javascript" charset="utf-8"></script>
