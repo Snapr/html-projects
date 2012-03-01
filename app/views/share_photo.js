@@ -40,8 +40,7 @@ snapr.views.share_photo = Backbone.View.extend({
 
     events: {
         "change .upload-image-sharing input": "toggle_sharing",
-        "submit form": "share",
-        "click .skip": "skip_to_love_it"
+        "submit form": "share"
     },
 
     render: function()
@@ -128,7 +127,7 @@ snapr.views.share_photo = Backbone.View.extend({
                 description: this.el.find("#description").val(),
                 // public_group: ( $("#enter-girl-of-month").val() == "on" ) && snapr.public_group || false,
                 status: "public",
-                facebook_gallery: ( $("#facebook-sharing").attr("checked") == "checked" ),
+                faceboook_album: ( $("#facebook-sharing").attr("checked") == "checked" ),
                 tumblr: ( $("#tumblr-sharing").attr("checked") == "checked" ),
                 foursquare_checkin: ( $("#foursquare-sharing").attr("checked") == "checked" ),
                 tweet: ( $("#twitter-sharing").attr("checked") == "checked" )
@@ -248,20 +247,6 @@ snapr.views.share_photo = Backbone.View.extend({
                 pass_data("snapr://upload?" + $.param(params) );
             }
         }
-    },
-
-    skip_to_love_it: function()
-    {
-        if (this.model.has("photo_path"))
-        {
-            var query_string = "#/love-it/?photo_path=" + this.model.get("photo_path");
-        }
-        else
-        {
-            var query_string = "#/love-it/?photo_id=" + this.model.get("id")
-        }
-
-        Route.navigate( query_string, true );
     },
 
     upload_progress: function( upload_data )

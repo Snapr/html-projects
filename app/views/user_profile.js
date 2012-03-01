@@ -2,6 +2,8 @@ snapr.views.user_profile = Backbone.View.extend({
 
     initialize: function()
     {
+        _.bindAll( this );
+
         this.el.live('pagehide', function( e )
         {
             $(e.target).undelegate();
@@ -15,12 +17,7 @@ snapr.views.user_profile = Backbone.View.extend({
 
         this.template = _.template( $("#user-profile-template").html() );
 
-        var user_profile = this;
-
-        this.model.bind( "change", function()
-        {
-            user_profile.render();
-        });
+        this.model.bind( "change", this.render );
 
         // if we are coming from the map view do a flip, otherwise do a slide transition
         if ($.mobile.activePage.attr('id') == 'map' )
@@ -46,6 +43,7 @@ snapr.views.user_profile = Backbone.View.extend({
         this.el.find( ".user-profile" ).html( this.template({
             user: this.model
         }) );
+        this.el.trigger( "create" );
 
         //this.el.find("h1").text(this.model.get("user").username);
         //this.el.find("[data-role='content']").append(this.model.get("details").profile.bio);
