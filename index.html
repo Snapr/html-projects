@@ -792,6 +792,7 @@
         </div>
 
         <div class="user-stats">
+
             <h1 class="real-name">
             <% if (user.get("details").linked_services.facebook_mobile_url) {%>
                 <a class="username" href="<%= user.get("details").linked_services.facebook_mobile_url %>">
@@ -842,20 +843,27 @@
             <hr>
             <%}%>
             
-             <% if (user.get("details").profile.bio){%>
-            <p class="user-bio">
-            <%= user.get("details").profile.bio %>
-            </p>
-            <%}%>
-            <% if (user.get("details").profile.location){%>
-            <p class="user-hometown">
-            <%= user.get("details").profile.location %>
-            </p>
-            <%}%>
-            <% if (user.get("details").profile.website){%>
-            <p class="user-website">
-                <a href="<%= user.get("details").profile.website %>"><span class="ui-icon ui-icon-link extra-icons"></span><%= user.get("details").profile.website %></a>
-            </p>
+            <% if (user.get("details").profile.bio || user.get("details").profile.location || user.get("details").profile.website){%>
+            
+                <% if (user.get("details").profile.bio){%>
+                <p class="user-bio">
+                <%= user.get("details").profile.bio %>
+                </p>
+                <%}%>
+                <% if (user.get("details").profile.location){%>
+                <p class="user-hometown">
+                <%= user.get("details").profile.location %>
+                </p>
+                <%}%>
+                <% if (user.get("details").profile.website){%>
+                <p class="user-website">
+                    <a href="<%= user.get("details").profile.website %>"><span class="ui-icon ui-icon-link extra-icons"></span><%= user.get("details").profile.website %></a>
+                </p>
+                <%}%>
+            <%}else{%>
+                <p class="no-profile">
+                    <i><%= user.get( "username" ) %> has not added a profile yet</i>
+                </p>
             <%}%>
         </div>
 

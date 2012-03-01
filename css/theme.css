@@ -1763,6 +1763,15 @@ input.ui-input-text, textarea.ui-input-text {
   padding-left: 108px;
   position: relative;
 }
+.user-profile .user-info-block .user-icon-left .user-icon-big {
+  background-color: #ffffff;
+  -moz-border-radius: 8px;
+  -webkit-border-radius: 8px;
+  border-radius: 8px;
+}
+.user-profile .user-stats {
+  min-height: 100px;
+}
 .user-profile .real-name {
   line-height: 16px;
 }
