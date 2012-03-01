@@ -240,16 +240,46 @@ ul li{
 }
 
 .image-streams{
+    
     list-style: none;
     padding: 0;
     margin: 0;
     margin-bottom: @padding-page-inset;
     margin-top: -@padding-page-inset;
     .image-stream{
+        position: relative;
         list-style: none;
         padding: 0;
         margin-bottom: @padding-page-inset ;
+        .edit-overlay{
+            display: none;
+            position: absolute;
+            top: 40px;
+            width: 109%;
+            background-color: rgba(255, 255, 255, .8);
+            min-height: 100px;
+            margin-left: -8px;
+            margin-right: -8px;
+            display: block;
+            right: 0;
+            .remove-stream{
+                display: inline-block;
+                position: absolute;
+                right: 8px;
+                top: 50%;
+                margin-top: -18px;
+            }
+         }
     }
+    
+    &.edit{
+       .image-stream{
+            .edit-overlay{
+                   display: block;
+            }
+        } 
+    }
+   
    
     
 }
@@ -694,6 +724,22 @@ fieldset.ui-controlgroup{
     }
     &.bottom-centered-arrow::after{
            .arrow-up(@arrow-size, yellow, 50%, @arrow-y-shift);                     
+    }
+    
+    &.small-top-left-arrow{
+        position: absolute;
+        top: -31px;
+        white-space: nowrap;
+        font-size: @txt-size-small;
+        color: black;
+        padding: 6px;
+        line-height: @txt-size-small;
+        min-height: @txt-size-small;
+        .corner-top(@corner-general-rounded); 
+        
+    }
+    &.small-top-left-arrow::after{
+        .arrow-down(6px, @color-bg-highlight-main-tint, 24px, 0);                     
     }
 }
 
@@ -1625,6 +1671,15 @@ fieldset.ui-controlgroup{
 
     }
     
+    .user-info-block .user-icon-left .user-icon-big{
+        background-color: @color-bg-neutral-light;
+        .corner-all(@corner-page-element-rounded);
+    }
+    
+    .user-stats{
+        min-height: @size-large-avatar;
+    }
+    
     .real-name{
         line-height: @txt-size-username;
         
@@ -2092,6 +2147,16 @@ fieldset.ui-controlgroup{
 }
 
 /* Button Styles */
+
+.ui-btn-active{
+    border: none;
+    background: transparent;
+    font-weight: normal;
+    color: white;
+    cursor: pointer;
+    text-shadow: 0 -1px 1px @color-shadow-light-on-dark;
+    
+}
 
 .ui-btn-up-a {
 	border: @border-medium-on-dark;
@@ -2583,6 +2648,49 @@ fieldset.ui-controlgroup{
 
 
 
+/* Tweak to C theme buttons for transparent BGs */
+.trans-bg{
+    .ui-btn-up-c {
+    	border: none;
+    	border-bottom: @border-light-on-light;
+    	background: none;
+    	background-color: @color-bg-neutral-light;
+        
+        .box-shadow(inset 0 1px 4px @color-shadow-medium-on-light);
+        &.ui-shadow{
+    	   .box-shadow(inset 0 1px 4px @color-shadow-medium-on-light);
+    	}
+    	.ui-btn-inner{
+            border:none;
+        }
+        .corner-all(@corner-fully-rounded);
+        
+        .ui-icon-delete{background-position: @gfx-general-icon-sprite-delete-x @g-highlight-offset-y;}
+        
+    }
+
+    .ui-btn-hover-c,
+    .ui-btn-down-c,
+    .ui-btn-active-c {
+    	border: none;
+    	border-bottom: @border-light-on-light;
+    	background: none;
+    	background-color: darken(@color-bg-neutral-light, 5%);
+        
+        .box-shadow(inset 0 1px 4px @color-shadow-medium-on-light);
+        &.ui-shadow{
+    	   .box-shadow(inset 0 1px 4px @color-shadow-medium-on-light);
+    	}
+    	.ui-btn-inner{
+            border:none;
+        }
+        .corner-all(@corner-fully-rounded);
+        
+        
+    }
+}
+
+
 /*
 * D
 * the full white BG swatch used for feed views etc
@@ -2728,6 +2836,7 @@ fieldset.ui-controlgroup{
    
     
 }
+
 
 
 

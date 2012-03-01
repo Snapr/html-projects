@@ -588,6 +588,9 @@
            <%}else if (query_data.spot){%>
                @ <em><%= query_data.spot %></em>
            <%}%>
+
+
+
            </h4>
        </div>
        </script>
@@ -792,6 +795,7 @@
         </div>
 
         <div class="user-stats">
+
             <h1 class="real-name">
             <% if (user.get("details").linked_services.facebook_mobile_url) {%>
                 <a class="username" href="<%= user.get("details").linked_services.facebook_mobile_url %>">
@@ -842,20 +846,28 @@
             <hr>
             <%}%>
 
-             <% if (user.get("details").profile.bio){%>
-            <p class="user-bio">
-            <%= user.get("details").profile.bio %>
-            </p>
-            <%}%>
-            <% if (user.get("details").profile.location){%>
-            <p class="user-hometown">
-            <%= user.get("details").profile.location %>
-            </p>
-            <%}%>
-            <% if (user.get("details").profile.website){%>
-            <p class="user-website">
-                <a href="<%= user.get("details").profile.website %>"><span class="ui-icon ui-icon-link extra-icons"></span><%= user.get("details").profile.website %></a>
-            </p>
+            <% if (user.get("details").profile.bio || user.get("details").profile.location || user.get("details").profile.website){%>
+
+                <% if (user.get("details").profile.bio){%>
+                <p class="user-bio">
+                <%= user.get("details").profile.bio %>
+                </p>
+                <%}%>
+                <% if (user.get("details").profile.location){%>
+                <p class="user-hometown">
+                <%= user.get("details").profile.location %>
+                </p>
+                <%}%>
+                <% if (user.get("details").profile.website){%>
+                <p class="user-website">
+                    <a href="<%= user.get("details").profile.website %>"><span class="ui-icon ui-icon-link extra-icons"></span><%= user.get("details").profile.website %></a>
+                </p>
+                <%}%>
+            <%}else{%>
+                <p class="no-profile">
+                    <i><%= user.get( "username" ) %> has not added a profile yet</i>
+                </p>
+
             <%}%>
         </div>
 
@@ -887,7 +899,7 @@
 
            </div>
            <div data-role="content" data-theme="d">
-               <ul class="image-streams">
+               <ul class="image-streams edit">
                    <li class="image-stream" id="upload-popular-nearby">
                       <a class="ui-bar top-left-arrow" data-role="button" data-iconpos="right" data-icon="arrow-r" data-theme="e">
                           <span class="ui-icon ui-icon-venue extra-icons"></span>
@@ -951,6 +963,10 @@
                                    <img src="https://s3.amazonaws.com/media-server2.snapr.us/thm2/09cd5f890a55389104f9576f7dd0fd2a/S8Q.jpg" alt="Girl mo." class="thumb-image thumb-med">
                                    </a>
 
+
+                               </div>
+                               <div class="edit-overlay trans-bg">
+                                      <a class="remove-stream" data-role="button" data-icon="delete" data-iconpos="right" data-theme="c">Remove</a>
                                </div>
                        </li>
 
@@ -1303,6 +1319,10 @@
 
             <div class="inline-footer ui-body-a trans-bg extra-icons">
                <div class="map-time">
+                   <div class="ui-bar ui-bar-e small-top-left-arrow">
+                       2 days ago
+                   </div>
+
                    <a class="map-time-btn" data-role="button" data-icon="map-time" data-iconpos="notext">
                 </a>
                 </div>

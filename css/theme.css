@@ -139,7 +139,7 @@ hr {
   line-height: 0;
   overflow: visible;
   background-color: transparent;
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(200, 200, 200, 0.3);
 }
 h1,
 h2,
@@ -302,9 +302,32 @@ ul, ul li {
   margin-top: -8px;
 }
 .image-streams .image-stream {
+  position: relative;
   list-style: none;
   padding: 0;
   margin-bottom: 8px;
+}
+.image-streams .image-stream .edit-overlay {
+  display: none;
+  position: absolute;
+  top: 40px;
+  width: 109%;
+  background-color: rgba(255, 255, 255, 0.8);
+  min-height: 100px;
+  margin-left: -8px;
+  margin-right: -8px;
+  display: block;
+  right: 0;
+}
+.image-streams .image-stream .edit-overlay .remove-stream {
+  display: inline-block;
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  margin-top: -18px;
+}
+.image-streams.edit .image-stream .edit-overlay {
+  display: block;
 }
 /*
 * JQuery Mob - Custom 
@@ -755,6 +778,38 @@ input.ui-input-text, textarea.ui-input-text {
   position: absolute;
   top: -11px;
   left: 50%;
+}
+.ui-bar.small-top-left-arrow {
+  position: absolute;
+  top: -31px;
+  white-space: nowrap;
+  font-size: 12px;
+  color: black;
+  padding: 6px;
+  line-height: 12px;
+  min-height: 12px;
+  -moz-border-radius-topleft: 6px;
+  -webkit-border-top-left-radius: 6px;
+  border-top-left-radius: 6px;
+  -moz-border-radius-topright: 6px;
+  -webkit-border-top-right-radius: 6px;
+  border-top-right-radius: 6px;
+}
+.ui-bar.small-top-left-arrow::after {
+  width: 0;
+  height: 0;
+  display: inline-block;
+  content: "&darr;";
+  text-indent: -99999px;
+  vertical-align: top;
+  margin-top: 0;
+  margin-left: -6px;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 6px solid #ffe400;
+  position: absolute;
+  bottom: -6px;
+  left: 24px;
 }
 .arrow-right {
   position: absolute!important;
@@ -1211,7 +1266,7 @@ input.ui-input-text, textarea.ui-input-text {
   position: absolute;
   top: 0;
   left: 0;
-  border-top: solid rgba(255, 255, 255, 0.5) 1px;
+  border-top: solid rgba(200, 200, 200, 0.3) 1px;
 }
 .feed-user-header {
   height: 100px;
@@ -1731,6 +1786,15 @@ input.ui-input-text, textarea.ui-input-text {
   padding-left: 108px;
   position: relative;
 }
+.user-profile .user-info-block .user-icon-left .user-icon-big {
+  background-color: #ffffff;
+  -moz-border-radius: 8px;
+  -webkit-border-radius: 8px;
+  border-radius: 8px;
+}
+.user-profile .user-stats {
+  min-height: 100px;
+}
 .user-profile .real-name {
   line-height: 16px;
 }
@@ -2131,6 +2195,14 @@ input.ui-input-text, textarea.ui-input-text {
   text-shadow: none;
 }
 /* Button Styles */
+.ui-btn-active {
+  border: none;
+  background: transparent;
+  font-weight: normal;
+  color: white;
+  cursor: pointer;
+  text-shadow: 0 -1px 1px rgba(255, 255, 255, 0.2);
+}
 .ui-btn-up-a {
   border: solid 1px rgba(255, 255, 255, 0.1);
   background: none;
@@ -2727,7 +2799,7 @@ input.ui-input-text, textarea.ui-input-text {
   line-height: 0;
   overflow: visible;
   background-color: transparent;
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(200, 200, 200, 0.3);
 }
 .ui-body-c .ui-content .ui-btn-up-c,
 .ui-body-c .ui-content .ui-btn-hover-c,
@@ -2744,7 +2816,7 @@ input.ui-input-text, textarea.ui-input-text {
   box-shadow: none;
 }
 .ui-body-c .ui-btn {
-  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.5);
+  text-shadow: 0 1px 1px rgba(200, 200, 200, 0.3);
 }
 /* Button Styles for header */
 .ui-header .ui-btn-up-c .ui-icon-search {
@@ -2947,6 +3019,50 @@ input.ui-input-text, textarea.ui-input-text {
   top: -11px;
   left: 50%;
 }
+/* Tweak to C theme buttons for transparent BGs */
+.trans-bg .ui-btn-up-c {
+  border: none;
+  border-bottom: solid 1px #ffffff;
+  background: none;
+  background-color: #ffffff;
+  -moz-box-shadow: inset 0 1px 4px rgba(200, 200, 200, 0.3);
+  -webkit-box-shadow: inset 0 1px 4px rgba(200, 200, 200, 0.3);
+  box-shadow: inset 0 1px 4px rgba(200, 200, 200, 0.3);
+  -moz-border-radius: 20px;
+  -webkit-border-radius: 20px;
+  border-radius: 20px;
+}
+.trans-bg .ui-btn-up-c.ui-shadow {
+  -moz-box-shadow: inset 0 1px 4px rgba(200, 200, 200, 0.3);
+  -webkit-box-shadow: inset 0 1px 4px rgba(200, 200, 200, 0.3);
+  box-shadow: inset 0 1px 4px rgba(200, 200, 200, 0.3);
+}
+.trans-bg .ui-btn-up-c .ui-btn-inner {
+  border: none;
+}
+.trans-bg .ui-btn-up-c .ui-icon-delete {
+  background-position: -72px -144px;
+}
+.trans-bg .ui-btn-hover-c, .trans-bg .ui-btn-down-c, .trans-bg .ui-btn-active-c {
+  border: none;
+  border-bottom: solid 1px #ffffff;
+  background: none;
+  background-color: #f2f2f2;
+  -moz-box-shadow: inset 0 1px 4px rgba(200, 200, 200, 0.3);
+  -webkit-box-shadow: inset 0 1px 4px rgba(200, 200, 200, 0.3);
+  box-shadow: inset 0 1px 4px rgba(200, 200, 200, 0.3);
+  -moz-border-radius: 20px;
+  -webkit-border-radius: 20px;
+  border-radius: 20px;
+}
+.trans-bg .ui-btn-hover-c.ui-shadow, .trans-bg .ui-btn-down-c.ui-shadow, .trans-bg .ui-btn-active-c.ui-shadow {
+  -moz-box-shadow: inset 0 1px 4px rgba(200, 200, 200, 0.3);
+  -webkit-box-shadow: inset 0 1px 4px rgba(200, 200, 200, 0.3);
+  box-shadow: inset 0 1px 4px rgba(200, 200, 200, 0.3);
+}
+.trans-bg .ui-btn-hover-c .ui-btn-inner, .trans-bg .ui-btn-down-c .ui-btn-inner, .trans-bg .ui-btn-active-c .ui-btn-inner {
+  border: none;
+}
 /*
 * D
 * the full white BG swatch used for feed views etc
@@ -2991,7 +3107,7 @@ input.ui-input-text, textarea.ui-input-text {
   line-height: 0;
   overflow: visible;
   background-color: transparent;
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(200, 200, 200, 0.3);
 }
 /*
 * E
