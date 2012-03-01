@@ -2055,6 +2055,9 @@ input.ui-input-text, textarea.ui-input-text {
 }
 .photo-map .inline-footer .ui-input-search .ui-input-clear .ui-icon-delete {
   background-position: 0 -576px;
+  top: 1px;
+  right: -5px;
+  left: auto;
 }
 .photo-map .inline-footer .ui-select, .photo-map .inline-footer .ui-input-text {
   display: block;

@@ -785,52 +785,91 @@
     <!-- inset block of content w/ icon -->
     <div class="user-info-block">
         <div class="user-icon-left">
-            <a class="user-profile-icon" href="" data-ajax="false">
+            <a class="user-profile-icon" href="#/feed/?username=<%= user.get( "username" ) %>&list_style=grid" data-ajax="false">
                 <div class="user-icon-big" style="background-image: url('http://sna.pr/avatars/<%= user.get( "username" ) %>?size=large'); background-size: 100% 100%"></div>
 
             </a>
         </div>
 
         <div class="user-stats">
-            <h1 class="real-name"><a class="username"><%= user.get( "username" ) %></a><span class="facebook-sharing sharing-icon-small"><span class="ui-icon"></span></span>
+            <h1 class="real-name">
+            <% if (user.get("details").linked_services.facebook_mobile_url) {%>
+                <a class="username" href="<%= user.get("details").linked_services.facebook_mobile_url %>">
+                <%= user.get("details").linked_services.facebook_name %></a><span class="facebook-sharing sharing-icon-small"><span class="ui-icon"></span></span>
+            <%}else{%>
+                <span class="username">
+                <% if (user.get("details").profile.name) {%>
+                    <%= user.get("details").profile.name %>
+                <%}else{%>
+                    <%= user.get( "username" ) %>
+                <%}%>
+                </span>
+            <%}%>
             </h1>
             <hr>
+             
+             <!-- if any services linked show em -->
+             <% if (user.get("details").linked_services.twitter_username || user.get("details").linked_services.tumblr_username || user.get("details").linked_services.foursquare_username){%>
              <ul class="user-linked-services">
+                
+                <!-- Twitter -->
+                <% if (user.get("details").linked_services.twitter_username) {%>
                 <li>
-                    <a>
-                    <span class="twitter-sharing sharing-icon-small"><span class="ui-icon"></span></span>@rowanwernham
+                    <a href="http://twitter.com/<%= user.get("details").linked_services.twitter_username %>">
+                    <span class="twitter-sharing sharing-icon-small"><span class="ui-icon"></span></span>@<%= user.get("details").linked_services.twitter_username %>
                     </a>
                 </li>
+                <%}%>
+                
+                <!-- Tumblr -->
+                <% if (user.get("details").linked_services.tumblr_username) {%>
                 <li>
-                    <a>
-                    <span class="tumblr-sharing sharing-icon-small"><span class="ui-icon"></span></span>snaprtest
+                    <a href="http://<%= user.get("details").linked_services.tumblr_username %>.tumblr.com/">
+                    <span class="tumblr-sharing sharing-icon-small"><span class="ui-icon"></span></span>@<%= user.get("details").linked_services.tumblr_username %>
                     </a>
                 </li>
-                 <li>
-                    <a>
-                        <span class="foursquare-sharing sharing-icon-small"><span class="ui-icon"></span></span>Rowan W.
-                        </a>
-                    </li>
+                <%}%>
+              <!-- Foursquare -->
+             <% if (user.get("details").linked_services.foursquare_username) {%>
+             <li>
+                 <a href="<%= user.get("details").linked_services.foursquare_url %>">
+                 <span class="foursquare-sharing sharing-icon-small"><span class="ui-icon"></span></span>@<%= user.get("details").linked_services.foursquare_username %>
+                 </a>
+             </li>
+             <%}%>
 
             </ul>
             <hr>
+            <%}%>
+            
+             <% if (user.get("details").profile.bio){%>
             <p class="user-bio">
-            Supoosedly a flim maker. Founder of Snapr.
+            <%= user.get("details").profile.bio %>
             </p>
+            <%}%>
+            <% if (user.get("details").profile.location){%>
             <p class="user-hometown">
-            Brooklyn NY
+            <%= user.get("details").profile.location %>
             </p>
+            <%}%>
+            <% if (user.get("details").profile.website){%>
             <p class="user-website">
-                <a><span class="ui-icon ui-icon-link extra-icons"></span>sna.pr/rowan</a>
+                <a href="<%= user.get("details").profile.website %>"><span class="ui-icon ui-icon-link extra-icons"></span><%= user.get("details").profile.website %></a>
             </p>
+            <%}%>
         </div>
 
     </div>
     <hr>
     <!-- base btns -->
     <div class="user-buttons">
-        <a data-role="button" data-icon="feed" class="extra-icons">1234 Snaps</a>
-        <a data-role="button" data-icon="favs" class="extra-icons">1234 Favourites</a>
+        <% if (user.get("details").stats.photo_count){%>
+        <a href="#/feed/?username=<%= user.get( "username" ) %>&list_style=grid" data-role="button" data-ajax="false" data-icon="feed" class="extra-icons"><%= user.get("details").stats.photo_count %>
+         Snaps</a>
+        <%}%>
+        <% if (user.get("details").stats.photos_favorited){%>
+        <a href="#/feed/?favorited_by=<%= user.get( "username" ) %>&list_style=grid" data-role="button" data-ajax="false" data-icon="favs" class="extra-icons"><%= user.get("details").stats.photos_favorited %> Favourites</a>
+         <%}%>
     </div>
     <hr>
 
