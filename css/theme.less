@@ -695,6 +695,22 @@ fieldset.ui-controlgroup{
     &.bottom-centered-arrow::after{
            .arrow-up(@arrow-size, yellow, 50%, @arrow-y-shift);                     
     }
+    
+    &.small-top-left-arrow{
+        position: absolute;
+        top: -31px;
+        white-space: nowrap;
+        font-size: @txt-size-small;
+        color: black;
+        padding: 6px;
+        line-height: @txt-size-small;
+        min-height: @txt-size-small;
+        .corner-top(@corner-general-rounded); 
+        
+    }
+    &.small-top-left-arrow::after{
+        .arrow-down(6px, @color-bg-highlight-main-tint, 24px, 0);                     
+    }
 }
 
 .arrow-right{
