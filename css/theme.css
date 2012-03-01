@@ -638,7 +638,7 @@ input.ui-input-text, textarea.ui-input-text {
 /*
 * UI Components - Custom Stylz 
 */
-/* Title Bars that pop up all over the place */
+/* @ui-bar Title Bars that pop up all over the place */
 .ui-bar {
   border: none;
   border-top: solid 1px #ffffff;
@@ -701,7 +701,10 @@ input.ui-input-text, textarea.ui-input-text {
   -webkit-border-bottom-right-radius: 0px;
   border-bottom-right-radius: 0px;
 }
-.ui-bar.top-left-arrow {
+.ui-bar.top-no-arrow .ui-btn-text {
+  padding-left: 20px;
+}
+.ui-bar.top-no-arrow, .ui-bar.top-left-arrow {
   -moz-border-radius-topleft: 8px;
   -webkit-border-top-left-radius: 8px;
   border-top-left-radius: 8px;
@@ -716,13 +719,13 @@ input.ui-input-text, textarea.ui-input-text {
   border-bottom-right-radius: 0px;
   text-align: left;
 }
-.ui-bar.top-left-arrow .ui-icon {
+.ui-bar.top-no-arrow .ui-icon-arrow-r, .ui-bar.top-left-arrow .ui-icon-arrow-r {
   right: -2px;
 }
-.ui-bar.top-left-arrow .ui-btn-text {
+.ui-bar.top-no-arrow .ui-btn-text, .ui-bar.top-left-arrow .ui-btn-text {
   padding-left: 20px;
 }
-.ui-bar.top-left-arrow .extra-icons {
+.ui-bar.top-no-arrow .extra-icons, .ui-bar.top-left-arrow .extra-icons {
   right: auto;
   left: -8px;
   top: -7px;
@@ -730,12 +733,12 @@ input.ui-input-text, textarea.ui-input-text {
   height: 32px;
   width: 32px;
 }
-.ui-bar.top-left-arrow .image-time {
+.ui-bar.top-no-arrow .image-time, .ui-bar.top-left-arrow .image-time {
   position: relative;
   padding-left: 20px;
   color: #666666;
 }
-.ui-bar.top-left-arrow .image-time .ui-icon-clock {
+.ui-bar.top-no-arrow .image-time .ui-icon-clock, .ui-bar.top-left-arrow .image-time .ui-icon-clock {
   top: -9px;
 }
 .ui-bar.top-left-arrow::after {
@@ -815,63 +818,6 @@ input.ui-input-text, textarea.ui-input-text {
   position: absolute!important;
   right: 0!important;
   left: auto!important;
-}
-.extra-icons .ui-icon-heart, .extra-icons.ui-icon-heart {
-  background-position: 0 0px;
-}
-.extra-icons .ui-icon-venue, .extra-icons.ui-icon-venue {
-  background-position: 0 -32px;
-}
-.extra-icons .ui-icon-person, .extra-icons.ui-icon-person {
-  background-position: 0 -64px;
-}
-.extra-icons .ui-icon-search, .extra-icons.ui-icon-search {
-  background-position: 0 -96px;
-}
-.extra-icons .ui-icon-activity, .extra-icons.ui-icon-activity {
-  background-position: 0 -128px;
-}
-.extra-icons .ui-icon-location, .extra-icons.ui-icon-location {
-  background-position: 0 -160px;
-}
-.extra-icons .ui-icon-quote, .extra-icons.ui-icon-quote {
-  background-position: 0 -192px;
-}
-.extra-icons .ui-icon-clocksmall, .extra-icons.ui-icon-clocksmall {
-  background-position: 0 -224px;
-}
-.extra-icons .ui-icon-venuesmall, .extra-icons.ui-icon-venuesmall {
-  background-position: 0 -256px;
-}
-.extra-icons .ui-icon-feed, .extra-icons.ui-icon-feed {
-  background-position: 0 -288px;
-}
-.extra-icons .ui-icon-favs, .extra-icons.ui-icon-favs {
-  background-position: 0 -320px;
-}
-.extra-icons .ui-icon-link, .extra-icons.ui-icon-link {
-  background-position: 0 -352px;
-}
-.extra-icons .ui-icon-clock, .extra-icons.ui-icon-clock {
-  background-position: 0 -384px;
-}
-.extra-icons .ui-icon-redheart, .extra-icons.ui-icon-redheart {
-  background-position: 0 -416px;
-}
-.extra-icons .ui-icon-map-time, .extra-icons.ui-icon-map-time {
-  background-position: 0 -448px;
-}
-.extra-icons .ui-icon-person-a, .extra-icons.ui-icon-person-a {
-  background-position: 0 -480px;
-}
-.extra-icons .ui-icon-search-a, .extra-icons.ui-icon-search-a {
-  background-position: 0 -512px;
-}
-.extra-icons .ui-icon-arrow-d, .extra-icons.ui-icon-arrow-d {
-  background-position: 0 -544px;
-}
-.extra-icons .ui-icon-delete, .extra-icons.ui-icon-delete {
-  background-position: 0 -576px;
 }
 .ui-navbar {
   margin: -8px -8px 0 -8px;
@@ -2009,12 +1955,15 @@ input.ui-input-text, textarea.ui-input-text {
 * @map - PAGE 
 */
 #map-layer #google-map {
-  margin: -3px;
+  margin: -3px -8px;
 }
 .photo-map {
   position: relative;
   /* map thumbs */
 
+}
+.photo-map .ui-bar.top-left-arrow, .photo-map .top-no-arrow {
+  margin-top: -8px;
 }
 .photo-map .snaprmappoint {
   width: 1px;
@@ -2712,6 +2661,21 @@ input.ui-input-text, textarea.ui-input-text {
 .ui-bar-b.ui-btn {
   border: none;
 }
+.ui-bar-b .extra-icons .ui-icon-heart, .ui-bar-b .extra-icons.ui-icon-heart {
+  background-position: 0 -608px;
+}
+.ui-bar-b .extra-icons .ui-icon-person, .ui-bar-b .extra-icons.ui-icon-person {
+  background-position: 0 -640px;
+}
+.ui-bar-b .extra-icons .ui-icon-search, .ui-bar-b .extra-icons.ui-icon-search {
+  background-position: 0 -672px;
+}
+.ui-bar-b .extra-icons .ui-icon-activity, .ui-bar-b .extra-icons.ui-icon-activity {
+  background-position: 0 -704px;
+}
+.ui-bar-b .extra-icons .ui-icon-location, .ui-bar-b .extra-icons.ui-icon-location {
+  background-position: 0 -736px;
+}
 .ui-btn-up-b .ui-icon-search {
   background-position: -80px 0px;
 }
@@ -3334,6 +3298,63 @@ input.ui-input-text, textarea.ui-input-text {
   /* Opera 11.10+ */
 
   background-image: linear-gradient(top, #ffff00, #ffe400);
+}
+.extra-icons .ui-icon-heart, .extra-icons.ui-icon-heart {
+  background-position: 0 0px;
+}
+.extra-icons .ui-icon-venue, .extra-icons.ui-icon-venue {
+  background-position: 0 -32px;
+}
+.extra-icons .ui-icon-person, .extra-icons.ui-icon-person {
+  background-position: 0 -64px;
+}
+.extra-icons .ui-icon-search, .extra-icons.ui-icon-search {
+  background-position: 0 -96px;
+}
+.extra-icons .ui-icon-activity, .extra-icons.ui-icon-activity {
+  background-position: 0 -128px;
+}
+.extra-icons .ui-icon-location, .extra-icons.ui-icon-location {
+  background-position: 0 -160px;
+}
+.extra-icons .ui-icon-quote, .extra-icons.ui-icon-quote {
+  background-position: 0 -192px;
+}
+.extra-icons .ui-icon-clocksmall, .extra-icons.ui-icon-clocksmall {
+  background-position: 0 -224px;
+}
+.extra-icons .ui-icon-venuesmall, .extra-icons.ui-icon-venuesmall {
+  background-position: 0 -256px;
+}
+.extra-icons .ui-icon-feed, .extra-icons.ui-icon-feed {
+  background-position: 0 -288px;
+}
+.extra-icons .ui-icon-favs, .extra-icons.ui-icon-favs {
+  background-position: 0 -320px;
+}
+.extra-icons .ui-icon-link, .extra-icons.ui-icon-link {
+  background-position: 0 -352px;
+}
+.extra-icons .ui-icon-clock, .extra-icons.ui-icon-clock {
+  background-position: 0 -384px;
+}
+.extra-icons .ui-icon-redheart, .extra-icons.ui-icon-redheart {
+  background-position: 0 -416px;
+}
+.extra-icons .ui-icon-map-time, .extra-icons.ui-icon-map-time {
+  background-position: 0 -448px;
+}
+.extra-icons .ui-icon-person-a, .extra-icons.ui-icon-person-a {
+  background-position: 0 -480px;
+}
+.extra-icons .ui-icon-search-a, .extra-icons.ui-icon-search-a {
+  background-position: 0 -512px;
+}
+.extra-icons .ui-icon-arrow-d, .extra-icons.ui-icon-arrow-d {
+  background-position: 0 -544px;
+}
+.extra-icons .ui-icon-delete, .extra-icons.ui-icon-delete {
+  background-position: 0 -576px;
 }
 /* Android HDPI - Pixel ratio of 1.5. Background-size is 1/1.5 = 66.67% (of a 150px image) */
 @media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5) {

@@ -634,7 +634,7 @@ fieldset.ui-controlgroup{
 * UI Components - Custom Stylz 
 */
 
-/* Title Bars that pop up all over the place */
+/* @ui-bar Title Bars that pop up all over the place */
 
 .ui-bar{
     border:none;
@@ -684,13 +684,17 @@ fieldset.ui-controlgroup{
     &.top-no-arrow{
         text-align: left;
         .corner-top (@corner-page-element-rounded);
-        .corner-bottom (@corner-not-rounded); 
+        .corner-bottom (@corner-not-rounded);
+         .ui-btn-text{
+                padding-left: 20px;
+        }
     }
+    &.top-no-arrow,
     &.top-left-arrow{
         .corner-top (@corner-page-element-rounded); 
         .corner-bottom (@corner-not-rounded);
         text-align: left;
-        .ui-icon {
+        .ui-icon-arrow-r {
             right: -2px;
         }
         .ui-btn-text{
@@ -749,28 +753,7 @@ fieldset.ui-controlgroup{
     left: auto!important;
 }
 
-.extra-icons{
-    .ui-icon-heart,&.ui-icon-heart{background-position: @ei-offset-x @gfx-extra-icon-sprite-heart-y;}
-    .ui-icon-venue,&.ui-icon-venue{background-position: @ei-offset-x @gfx-extra-icon-sprite-venue-y;}
-    .ui-icon-person,&.ui-icon-person{background-position: @ei-offset-x @gfx-extra-icon-sprite-person-y;}
-    .ui-icon-search,&.ui-icon-search{background-position: @ei-offset-x @gfx-extra-icon-sprite-search-y;}
-    .ui-icon-activity,&.ui-icon-activity{background-position: @ei-offset-x @gfx-extra-icon-sprite-activity-y;}
-    .ui-icon-location,&.ui-icon-location{background-position: @ei-offset-x @gfx-extra-icon-sprite-location-y;}
-    .ui-icon-quote,&.ui-icon-quote{background-position: @ei-offset-x @gfx-extra-icon-sprite-quote-y;}
-    .ui-icon-clocksmall,&.ui-icon-clocksmall{background-position: @ei-offset-x @gfx-extra-icon-sprite-clocksmall-y;}
-    .ui-icon-venuesmall,&.ui-icon-venuesmall{background-position: @ei-offset-x @gfx-extra-icon-sprite-venuesmall-y;}
-    .ui-icon-feed,&.ui-icon-feed{background-position: @ei-offset-x @gfx-extra-icon-sprite-feed-y;}
-    .ui-icon-favs,&.ui-icon-favs{background-position: @ei-offset-x @gfx-extra-icon-sprite-favs-y;}
-    .ui-icon-link,&.ui-icon-link{background-position: @ei-offset-x @gfx-extra-icon-sprite-link-y;}
-    .ui-icon-clock, &.ui-icon-clock{background-position: @ei-offset-x @gfx-extra-icon-sprite-clock-y;}
-    .ui-icon-redheart, &.ui-icon-redheart{background-position: @ei-offset-x @gfx-extra-icon-sprite-redheart-y;}
-    .ui-icon-map-time, &.ui-icon-map-time{background-position: @ei-offset-x @gfx-extra-icon-sprite-map-time-y;}
-    .ui-icon-person-a, &.ui-icon-person-a{background-position: @ei-offset-x @gfx-extra-icon-sprite-person-a-y;}
-    .ui-icon-search-a, &.ui-icon-search-a{background-position: @ei-offset-x @gfx-extra-icon-sprite-search-a-y;}
-    .ui-icon-arrow-d, &.ui-icon-arrow-d{background-position: @ei-offset-x @gfx-extra-icon-sprite-arrow-d-a-y;}
-    .ui-icon-delete, &.ui-icon-delete{background-position: @ei-offset-x @gfx-extra-icon-sprite-delete-a-y;}
 
-}
 
 .ui-navbar{
     margin: -@padding-page-inset -@padding-page-inset 0 -@padding-page-inset;
@@ -1951,12 +1934,17 @@ fieldset.ui-controlgroup{
 
 #map-layer{
     #google-map{
-        margin: -3px; 
+        margin: -3px -8px;
     }
 }
 
 .photo-map{
     position:relative;
+    .ui-bar.top-left-arrow,
+    .top-no-arrow{
+        margin-top: -8px;
+    }
+    
     /* map thumbs */
     .snaprmappoint {
         width: 1px;
@@ -2464,6 +2452,15 @@ fieldset.ui-controlgroup{
     &.ui-btn{
         border: none;
     }
+    
+    .extra-icons{
+        .ui-icon-heart,&.ui-icon-heart{background-position: @ei-offset-x @gfx-extra-icon-sprite-heart-b-y;}
+        .ui-icon-person,&.ui-icon-person{background-position: @ei-offset-x @gfx-extra-icon-sprite-person-b-y;}
+        .ui-icon-search,&.ui-icon-search{background-position: @ei-offset-x @gfx-extra-icon-sprite-search-b-y;}
+        .ui-icon-activity,&.ui-icon-activity{background-position: @ei-offset-x @gfx-extra-icon-sprite-activity-b-y;}
+        .ui-icon-location,&.ui-icon-location{background-position: @ei-offset-x @gfx-extra-icon-sprite-location-b-y;}
+    }
+    
 }
 
 .ui-btn-up-b{
@@ -2837,7 +2834,28 @@ fieldset.ui-controlgroup{
     
 }
 
+.extra-icons{
+    .ui-icon-heart,&.ui-icon-heart{background-position: @ei-offset-x @gfx-extra-icon-sprite-heart-y;}
+    .ui-icon-venue,&.ui-icon-venue{background-position: @ei-offset-x @gfx-extra-icon-sprite-venue-y;}
+    .ui-icon-person,&.ui-icon-person{background-position: @ei-offset-x @gfx-extra-icon-sprite-person-y;}
+    .ui-icon-search,&.ui-icon-search{background-position: @ei-offset-x @gfx-extra-icon-sprite-search-y;}
+    .ui-icon-activity,&.ui-icon-activity{background-position: @ei-offset-x @gfx-extra-icon-sprite-activity-y;}
+    .ui-icon-location,&.ui-icon-location{background-position: @ei-offset-x @gfx-extra-icon-sprite-location-y;}
+    .ui-icon-quote,&.ui-icon-quote{background-position: @ei-offset-x @gfx-extra-icon-sprite-quote-y;}
+    .ui-icon-clocksmall,&.ui-icon-clocksmall{background-position: @ei-offset-x @gfx-extra-icon-sprite-clocksmall-y;}
+    .ui-icon-venuesmall,&.ui-icon-venuesmall{background-position: @ei-offset-x @gfx-extra-icon-sprite-venuesmall-y;}
+    .ui-icon-feed,&.ui-icon-feed{background-position: @ei-offset-x @gfx-extra-icon-sprite-feed-y;}
+    .ui-icon-favs,&.ui-icon-favs{background-position: @ei-offset-x @gfx-extra-icon-sprite-favs-y;}
+    .ui-icon-link,&.ui-icon-link{background-position: @ei-offset-x @gfx-extra-icon-sprite-link-y;}
+    .ui-icon-clock, &.ui-icon-clock{background-position: @ei-offset-x @gfx-extra-icon-sprite-clock-y;}
+    .ui-icon-redheart, &.ui-icon-redheart{background-position: @ei-offset-x @gfx-extra-icon-sprite-redheart-y;}
+    .ui-icon-map-time, &.ui-icon-map-time{background-position: @ei-offset-x @gfx-extra-icon-sprite-map-time-y;}
+    .ui-icon-person-a, &.ui-icon-person-a{background-position: @ei-offset-x @gfx-extra-icon-sprite-person-a-y;}
+    .ui-icon-search-a, &.ui-icon-search-a{background-position: @ei-offset-x @gfx-extra-icon-sprite-search-a-y;}
+    .ui-icon-arrow-d, &.ui-icon-arrow-d{background-position: @ei-offset-x @gfx-extra-icon-sprite-arrow-d-a-y;}
+    .ui-icon-delete, &.ui-icon-delete{background-position: @ei-offset-x @gfx-extra-icon-sprite-delete-a-y;}
 
+}
 
 
 
