@@ -1897,6 +1897,8 @@ fieldset.ui-controlgroup{
         padding-left: @padding-page-inset;
     }
     
+    
+    .activity-follow-item,
     .activity-image-item{
         position: relative;
         margin-top: -@padding-page-inset;
@@ -1914,7 +1916,7 @@ fieldset.ui-controlgroup{
             display: inline-block;
             margin-bottom: 0;
         }
-        .image-comment{
+        .item-comment{
             white-space: normal;
             font-weight: normal;
             font-size: @txt-size-base;
@@ -1923,6 +1925,28 @@ fieldset.ui-controlgroup{
             
         }
         
+    }
+    
+    .activity-follow-item{
+         padding-left: 0;
+         margin-top: 0;
+         min-height:  @size-small-avatar;
+         padding-bottom: @corner-page-element-rounded;
+         .username,
+         .item-comment,
+         .small-text,
+          .ui-li-icon{
+             display: inline-block;
+             vertical-align: middle;
+             line-height: @size-small-avatar;
+             margin-bottom: 0;
+         }
+         .small-text{
+             position: relative;
+             top: 1px;
+             color: @color-txt-light-on-light;
+         }
+         
     }
 }
 
