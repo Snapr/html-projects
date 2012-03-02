@@ -38,26 +38,6 @@ snapr.views.venues = Backbone.View.extend({
         });
 
         this.collection.fetch();
-
-
-        // switch (this.options.follow){
-        //     case "following":
-        //         this.el.find("h1").text("Following");
-        //         this.el.find("#people-search").val('').attr("placeholder", "Search users " + this.options.query.username + " is following…" );
-        //         this.collection.get_following( this.options.query.username );
-        //         break;
-        //     case "followers":
-        //         this.el.find("h1").text("Followers");
-        //         this.el.find("#people-search").val('').attr("placeholder", "Search " + this.options.query.username + "'s followers…" );
-        //         this.collection.get_followers( this.options.query.username );
-        //         break;
-        //     default:
-        //         this.el.find("h1").text("Search");
-        //         this.el.find("#people-search").val(this.options.query.username).attr("placeholder", "Search users…" );
-        //         this.collection.user_search( this.options.query.username )
-        //         break;
-        // }
-
     },
 
     events: {
@@ -87,6 +67,7 @@ snapr.views.venues = Backbone.View.extend({
     reset_collection: function()
     {
         this.display_collection = _.clone( this.collection.models );
+        this.el.find("input").val("")
         this.render();
     },
 
