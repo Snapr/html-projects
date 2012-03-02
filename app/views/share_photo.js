@@ -117,6 +117,12 @@ snapr.views.share_photo = Backbone.View.extend({
         {
             snapr.utils.delete_local_param( e.target.id );
         }
+        if (e.target.id == "foursquare-sharing")
+        {
+            $(this.el).find("#no-foursquare-sharing-location").toggle();
+            $(this.el).find("#foursquare-sharing-location").toggle();
+        }
+
     },
 
     share: function()
