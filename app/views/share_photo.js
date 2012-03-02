@@ -155,13 +155,16 @@ snapr.views.share_photo = Backbone.View.extend({
 
     get_foursquare_venues: function()
     {
-        if (this.query.latitude && this.query.longitude && !this.model.attributes.location.foursquare_venue_id)
+
+        var photo = this;
+
+        var get_venues = function( latitude, longitude )
         {
-            this.collection = new snapr.models.foursquare_venue_collection({
-                ll: this.query.latitude + "," + this.query.longitude
+            photo.collection = new snapr.models.foursquare_venue_collection({
+                ll: latitude + "," + longitude
             });
-            var photo = this;
-            this.collection.fetch({
+
+            photo.collection.fetch({
                 success: function( collection )
                 {
                     var location = _.extend( photo.model.attributes.location, {
@@ -172,7 +175,25 @@ snapr.views.share_photo = Backbone.View.extend({
                     $(photo.el).find("#foursquare-sharing-location").removeClass("ajax-loading");
                     $(photo.el).find(".foursquare-venue-name").text(photo.model.get("location").foursquare_venue_name);
                 }
-            })
+            });
+        }
+
+
+        if (this.query.latitude && this.query.longitude && !this.model.attributes.location.foursquare_venue_id)
+        {
+            get_venues( this.query.latitude, this.query.longitude)
+        }
+        else
+        {
+            snapr.geo.get_location( function( location )
+            {
+                photo.model.set({location: location.coords});
+                get_venues( location.coords.latitude, location.coords.longitude );
+            },
+            function( e )
+            {
+                console.warn( "geocode error", e );
+            });
         }
     },
 
