@@ -1761,7 +1761,9 @@
 
                     <fieldset class="upload-image-location">
 
-                        <div id="no-foursquare-sharing-location" <%if (foursquare_sharing){%> style="display:none;"<%}%>>
+                        <div id="no-foursquare-sharing-location"
+                            <% if (foursquare_sharing){%> style="display:none;"<%}%>
+                            <% if (!photo.attributes.location.location){%> class="ajax-loading"<%}%>>
                             <span class="image-location custom-action-icons">
                                 <input type="checkbox" name="share-location" id="share-location" checked="true"/>
                                 <label for="share-location"><span class="ui-icon ui-icon-location share-location-label" ></span>
@@ -1775,11 +1777,13 @@
                                 </label>
                             </span>
                         </div>
-                        <div id="foursquare-sharing-location" <%if (!foursquare_sharing){%> style="display:none;"<%}%>>
+                        <div id="foursquare-sharing-location"
+                            <%if (!foursquare_sharing){%> style="display:none;"<%}%>
+                            <% if (!photo.attributes.location.foursquare_venue_name){%> class="ajax-loading"<%}%>>
                             <a data-role="button" id="foursquare-venue" data-icon="arrow-right">
                                 <span class="ui-icon ui-icon-venue"></span>
                                 <span class="foursquare-venue-name">
-                                    <% if (photo.attributes.location && photo.attributes.location.foursquare_venue_name){%>
+                                    <% if (photo.attributes.location.foursquare_venue_name){%>
                                         <%= photo.attributes.location.foursquare_venue_name %>
                                     <%}else{%>
                                         Geting venue&hellip;
