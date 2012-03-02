@@ -3108,6 +3108,25 @@ input.ui-input-text, textarea.ui-input-text {
 .ui-body-e.ui-navbar .ui-btn {
   background: none!important;
 }
+.ui-bar-e {
+  background: #ffff00;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#ffff00), to(#ffe400));
+  /* Saf4+, Chrome */
+
+  background-image: -webkit-linear-gradient(top, #ffff00, #ffe400);
+  /* Chrome 10+, Saf5.1+ */
+
+  background-image: -moz-linear-gradient(top, #ffff00, #ffe400);
+  /* FF3.6 */
+
+  background-image: -ms-linear-gradient(top, #ffff00, #ffe400);
+  /* IE10 */
+
+  background-image: -o-linear-gradient(top, #ffff00, #ffe400);
+  /* Opera 11.10+ */
+
+  background-image: linear-gradient(top, #ffff00, #ffe400);
+}
 .ui-btn-up-e {
   border: none;
   background: #ffff00;
@@ -3221,7 +3240,7 @@ input.ui-input-text, textarea.ui-input-text {
   margin-left: -14px;
   border-left: 14px solid transparent;
   border-right: 14px solid transparent;
-  border-bottom: 14px solid #ffe933;
+  border-bottom: 14px solid #ffff33;
   position: absolute;
   top: -11px;
   left: 50%;
@@ -3284,29 +3303,10 @@ input.ui-input-text, textarea.ui-input-text {
   margin-left: -14px;
   border-left: 14px solid transparent;
   border-right: 14px solid transparent;
-  border-bottom: 14px solid #ffff00;
+  border-bottom: 14px solid #f0f000;
   position: absolute;
   top: -11px;
   left: 50%;
-}
-.ui-bar-e {
-  background: #ffff00;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#ffff00), to(#ffe400));
-  /* Saf4+, Chrome */
-
-  background-image: -webkit-linear-gradient(top, #ffff00, #ffe400);
-  /* Chrome 10+, Saf5.1+ */
-
-  background-image: -moz-linear-gradient(top, #ffff00, #ffe400);
-  /* FF3.6 */
-
-  background-image: -ms-linear-gradient(top, #ffff00, #ffe400);
-  /* IE10 */
-
-  background-image: -o-linear-gradient(top, #ffff00, #ffe400);
-  /* Opera 11.10+ */
-
-  background-image: linear-gradient(top, #ffff00, #ffe400);
 }
 /* @dark-icons */
 .dark-icons .ui-icon {
