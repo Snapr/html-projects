@@ -225,7 +225,7 @@
                         <input type="password" name="my-account-password-verify" id=" my-account-password-verify" class="custom"
                         value="" />
                     </fieldset>
-                    <button data-theme="b" class="save">Save</button>
+                    <button data-theme="e" class="save">Save</button>
                 </div>
 
                 <div data-role="collapsible" data-collapsed="true">
@@ -257,7 +257,7 @@
                         <label for="my-account-notify-snapr">Snapr has exciting news</label>
                     </fieldset>
 
-                    <button data-theme="b" class="save">Save</button>
+                    <button data-theme="e" class="save">Save</button>
 
                 </div>
 
@@ -306,7 +306,7 @@
                         <textarea name="my-account-bio" id="my-account-bio" class="custom"><%= settings.profile.bio %></textarea>
                     </fieldset>
 
-                    <button data-theme="b" class="my-account-save">Save</button>
+                    <button data-theme="e" class="my-account-save">Save</button>
                 </div>
 
             </div><!-- End of Nested Collapsible Set -->
@@ -1013,7 +1013,6 @@
                           <a href="#/search/" data-ajax="false" data-role="button" data-icon="search" data-iconpos="notext"></a>
                          <a href="#/" data-ajax="false" data-role="button" data-icon="home" data-iconpos="notext"></a>
                      </div>
-
                  </div>
                  <div data-role="content" data-theme="d">
                      <ul class="activity-streams">
@@ -1023,7 +1022,7 @@
                                 <span class="small-text">6 likes, 22 comments</span>
 
                              </a>
-                             <div class="activity-image-item">
+                             <div class="activity-image-item activity-item">
                                      <a class="image-link" data-ajax="false" href="#/feed/?photo_id=LF8&amp;username=spencer">
                                      <img src="https://s3.amazonaws.com/media-server2.snapr.us/thm2/465e0fb9af869bc4fe562223ec1dd9df/LF8.jpg" alt="Fun in Tokyo, come here!!" class="thumb-image thumb-med">
                                      </a>
@@ -1032,7 +1031,7 @@
                                           <li data-icon="false">
                                               <a data-ajax="false" href="#/feed/?username=rowan">
                                                      <img src="http://sna.pr/avatars/rowan" alt="rowan" class="user-icon-small ui-li-icon"/>
-                                                     <h3 class="username">rowan</h3><span class="image-comment">: Cool, i made a comment.. a longer comment</span>
+                                                     <h3 class="username">rowan</h3><span class="item-comment">: Cool, i made a comment.. a longer comment</span>
                                                      <p class="small-text">2 hr ago</p>
                                                  </a>
                                         </li>
@@ -1040,7 +1039,7 @@
                                          <li data-icon="false">
                                                <a data-ajax="false" href="#/feed/?username=rowan">
                                                       <img src="http://sna.pr/avatars/rowan" alt="rowan" class="user-icon-small ui-li-icon"/>
-                                                      <h3 class="username">rowan</h3><span class="image-comment">: Cool, i made a comment..</span>
+                                                      <h3 class="username">rowan</h3><span class="item-comment">: Cool, i made a comment..</span>
                                                       <p class="small-text">2 hr ago</p>
                                                   </a>
                                          </li>
@@ -1048,7 +1047,7 @@
                                          <li data-icon="false">
                                                 <a data-ajax="false" href="#/feed/?username=rowan">
                                                        <img src="http://sna.pr/avatars/rowan" alt="rowan" class="user-icon-small ui-li-icon"/>
-                                                       <h3 class="username">rowan</h3><span class="image-comment"></span>
+                                                       <h3 class="username">rowan</h3><span class="item-comment"></span>
                                                        <p class="small-text">2 hr ago</p>
                                                    </a>
                                           </li>
@@ -1071,9 +1070,91 @@
 
 
 
-                            </div><!-- end image item -->
-                            <hr>
-                         </li>
+                            </div>
+                            <hr><!-- end image item -->
+                            
+                            <div class="activity-follow-item activity-item">
+                                <a data-ajax="false" href="#/feed/?username=rowan">
+                                          <img src="http://sna.pr/avatars/rowan" alt="rowan" class="user-icon-small ui-li-icon"/>
+                                          <h3 class="username">rowan</h3> <span class="item-comment">is now following you.</span>
+                                          <p class="small-text">2 hr ago</p>
+                                      </a>
+                                
+                            </div>
+                            <hr><!-- end follow item -->
+                            
+                            
+                         </li><!-- end time item -->
+                         
+                         <li class="activity-stream">
+                             <a class="ui-bar top-left-arrow" data-role="button" data-theme="e">
+                                 <em>yesterday</em>
+                                 <span class="small-text">6 likes, 22 comments</span>
+
+                              </a>
+                              <div class="activity-image-item activity-item">
+                                      <a class="image-link" data-ajax="false" href="#/feed/?photo_id=LF8&amp;username=spencer">
+                                      <img src="https://s3.amazonaws.com/media-server2.snapr.us/thm2/465e0fb9af869bc4fe562223ec1dd9df/LF8.jpg" alt="Fun in Tokyo, come here!!" class="thumb-image thumb-med">
+                                      </a>
+
+                                       <ul class="comments-list simple-list" data-role="listview" data-inset="true" data-icon="false" >
+                                           <li data-icon="false">
+                                               <a data-ajax="false" href="#/feed/?username=rowan">
+                                                      <img src="http://sna.pr/avatars/rowan" alt="rowan" class="user-icon-small ui-li-icon"/>
+                                                      <h3 class="username">rowan</h3><span class="item-comment">: Cool, i made a comment.. a longer comment</span>
+                                                      <p class="small-text">2 hr ago</p>
+                                                  </a>
+                                         </li>
+
+                                          <li data-icon="false">
+                                                <a data-ajax="false" href="#/feed/?username=rowan">
+                                                       <img src="http://sna.pr/avatars/rowan" alt="rowan" class="user-icon-small ui-li-icon"/>
+                                                       <h3 class="username">rowan</h3><span class="item-comment">: Cool, i made a comment..</span>
+                                                       <p class="small-text">2 hr ago</p>
+                                                   </a>
+                                          </li>
+
+                                          <li data-icon="false">
+                                                 <a data-ajax="false" href="#/feed/?username=rowan">
+                                                        <img src="http://sna.pr/avatars/rowan" alt="rowan" class="user-icon-small ui-li-icon"/>
+                                                        <h3 class="username">rowan</h3><span class="item-comment"></span>
+                                                        <p class="small-text">2 hr ago</p>
+                                                    </a>
+                                           </li>
+
+
+                                       </ul>
+
+                                       <hr>
+                                       <div class="image-likes">
+                                           <div class="icons-list">
+                                               <a data-ajax="false" href="#/feed/?username=rowan"><img src="http://sna.pr/avatars/rowan" alt="rowan" class="user-icon-small ui-li-icon"/></a>
+                                               <a data-ajax="false" href="#/feed/?username=rowan"><img src="http://sna.pr/avatars/rowan" alt="rowan" class="user-icon-small ui-li-icon"/></a>
+                                           </div>
+                                           <p>
+                                               <a class="username">rowan</a>, <a class="username">tim</a>, &amp; <a class="username">sarah</a> like this.
+                                             </p>
+
+
+                                       </div>
+
+
+
+                             </div>
+                             <hr><!-- end image item -->
+
+                             <div class="activity-follow-item activity-item">
+                                 <a data-ajax="false" href="#/feed/?username=rowan">
+                                           <img src="http://sna.pr/avatars/rowan" alt="rowan" class="user-icon-small ui-li-icon"/>
+                                           <h3 class="username">rowan</h3> <span class="item-comment">is now following you.</span>
+                                           <p class="small-text">2 hr ago</p>
+                                       </a>
+
+                             </div>
+                             <hr><!-- end image item -->
+
+
+                          </li><!-- end time item -->
 
                      </ul>
 

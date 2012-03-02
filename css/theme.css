@@ -1938,27 +1938,50 @@ input.ui-input-text, textarea.ui-input-text {
 .activity-streams .ui-bar.top-left-arrow .ui-btn-text {
   padding-left: 8px;
 }
-.activity-streams .activity-image-item {
+.activity-streams .activity-follow-item, .activity-streams .activity-image-item {
   position: relative;
   margin-top: -8px;
   min-height: 101px;
   padding-left: 101px;
 }
-.activity-streams .activity-image-item .image-link {
+.activity-streams .activity-follow-item .image-link, .activity-streams .activity-image-item .image-link {
   position: absolute;
   left: -4px;
   top: 4px;
 }
-.activity-streams .activity-image-item .simple-list .username, .activity-streams .activity-image-item .ui-li-desc {
+.activity-streams .activity-follow-item .simple-list .username,
+.activity-streams .activity-image-item .simple-list .username,
+.activity-streams .activity-follow-item .ui-li-desc,
+.activity-streams .activity-image-item .ui-li-desc {
   display: inline-block;
   margin-bottom: 0;
 }
-.activity-streams .activity-image-item .image-comment {
+.activity-streams .activity-follow-item .item-comment, .activity-streams .activity-image-item .item-comment {
   white-space: normal;
   font-weight: normal;
   font-size: 15px;
   line-height: 15px;
   color: #666666;
+}
+.activity-streams .activity-follow-item {
+  padding-left: 0;
+  margin-top: 0;
+  min-height: 34px;
+  padding-bottom: 8px;
+}
+.activity-streams .activity-follow-item .username,
+.activity-streams .activity-follow-item .item-comment,
+.activity-streams .activity-follow-item .small-text,
+.activity-streams .activity-follow-item .ui-li-icon {
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 34px;
+  margin-bottom: 0;
+}
+.activity-streams .activity-follow-item .small-text {
+  position: relative;
+  top: 1px;
+  color: #999999;
 }
 /*
 * @map - PAGE 
@@ -3108,6 +3131,25 @@ input.ui-input-text, textarea.ui-input-text {
 .ui-body-e.ui-navbar .ui-btn {
   background: none!important;
 }
+.ui-bar-e {
+  background: #ffff00;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#ffff00), to(#ffe400));
+  /* Saf4+, Chrome */
+
+  background-image: -webkit-linear-gradient(top, #ffff00, #ffe400);
+  /* Chrome 10+, Saf5.1+ */
+
+  background-image: -moz-linear-gradient(top, #ffff00, #ffe400);
+  /* FF3.6 */
+
+  background-image: -ms-linear-gradient(top, #ffff00, #ffe400);
+  /* IE10 */
+
+  background-image: -o-linear-gradient(top, #ffff00, #ffe400);
+  /* Opera 11.10+ */
+
+  background-image: linear-gradient(top, #ffff00, #ffe400);
+}
 .ui-btn-up-e {
   border: none;
   background: #ffff00;
@@ -3221,7 +3263,7 @@ input.ui-input-text, textarea.ui-input-text {
   margin-left: -14px;
   border-left: 14px solid transparent;
   border-right: 14px solid transparent;
-  border-bottom: 14px solid #ffe933;
+  border-bottom: 14px solid #ffff33;
   position: absolute;
   top: -11px;
   left: 50%;
@@ -3284,29 +3326,10 @@ input.ui-input-text, textarea.ui-input-text {
   margin-left: -14px;
   border-left: 14px solid transparent;
   border-right: 14px solid transparent;
-  border-bottom: 14px solid #ffff00;
+  border-bottom: 14px solid #f0f000;
   position: absolute;
   top: -11px;
   left: 50%;
-}
-.ui-bar-e {
-  background: #ffff00;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#ffff00), to(#ffe400));
-  /* Saf4+, Chrome */
-
-  background-image: -webkit-linear-gradient(top, #ffff00, #ffe400);
-  /* Chrome 10+, Saf5.1+ */
-
-  background-image: -moz-linear-gradient(top, #ffff00, #ffe400);
-  /* FF3.6 */
-
-  background-image: -ms-linear-gradient(top, #ffff00, #ffe400);
-  /* IE10 */
-
-  background-image: -o-linear-gradient(top, #ffff00, #ffe400);
-  /* Opera 11.10+ */
-
-  background-image: linear-gradient(top, #ffff00, #ffe400);
 }
 /* @dark-icons */
 .dark-icons .ui-icon {

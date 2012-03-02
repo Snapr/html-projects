@@ -1897,6 +1897,8 @@ fieldset.ui-controlgroup{
         padding-left: @padding-page-inset;
     }
     
+    
+    .activity-follow-item,
     .activity-image-item{
         position: relative;
         margin-top: -@padding-page-inset;
@@ -1914,7 +1916,7 @@ fieldset.ui-controlgroup{
             display: inline-block;
             margin-bottom: 0;
         }
-        .image-comment{
+        .item-comment{
             white-space: normal;
             font-weight: normal;
             font-size: @txt-size-base;
@@ -1923,6 +1925,28 @@ fieldset.ui-controlgroup{
             
         }
         
+    }
+    
+    .activity-follow-item{
+         padding-left: 0;
+         margin-top: 0;
+         min-height:  @size-small-avatar;
+         padding-bottom: @corner-page-element-rounded;
+         .username,
+         .item-comment,
+         .small-text,
+          .ui-li-icon{
+             display: inline-block;
+             vertical-align: middle;
+             line-height: @size-small-avatar;
+             margin-bottom: 0;
+         }
+         .small-text{
+             position: relative;
+             top: 1px;
+             color: @color-txt-light-on-light;
+         }
+         
     }
 }
 
@@ -2758,6 +2782,11 @@ fieldset.ui-controlgroup{
     }
 }
 
+.ui-bar-e{   
+    background: @color-bg-highlight-main;
+    .linear-gradient(@color-bg-highlight-main, @color-bg-highlight-main-tint);
+}
+
 .ui-btn-up-e {
 	border: none;
 	background: @color-bg-highlight-main;
@@ -2797,7 +2826,7 @@ fieldset.ui-controlgroup{
        .arrow-down(@arrow-size, lighten(@color-bg-highlight-main-tint, 10% ), @arrow-offset, 3px); 
    }
    &.bottom-centered-arrow::after{
-          .arrow-up(@arrow-size, lighten(@color-bg-highlight-main-tint, 10% ), 50%, 3px);
+          .arrow-up(@arrow-size, lighten(@color-bg-highlight-main, 10%), 50%, 3px);
    }
 }
 
@@ -2820,18 +2849,12 @@ fieldset.ui-controlgroup{
         .arrow-down(@arrow-size, @color-bg-highlight-main, @arrow-offset, 3px); 
     }
     &.bottom-centered-arrow::after{
-           .arrow-up(@arrow-size, @color-bg-highlight-main, 50%, 3px);
+           .arrow-up(@arrow-size, darken(@color-bg-highlight-main, 3%), 50%, 3px);
     }
 
 }
 
-.ui-bar-e{   
-    background: @color-bg-highlight-main;
-    .linear-gradient(@color-bg-highlight-main, @color-bg-highlight-main-tint);
-    
-   
-    
-}
+
 
 /* @dark-icons */
 .dark-icons{
