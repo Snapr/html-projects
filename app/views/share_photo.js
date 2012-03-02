@@ -41,6 +41,7 @@ snapr.views.share_photo = Backbone.View.extend({
     events: {
         "change input[name='status']": "toggle_status",
         "change .upload-image-sharing input": "toggle_sharing",
+        "click #foursquare-venue": "venue_search",
         "submit form": "share"
     },
 
@@ -123,6 +124,16 @@ snapr.views.share_photo = Backbone.View.extend({
             $(this.el).find("#foursquare-sharing-location").toggle();
         }
 
+    },
+
+    venue_search: function()
+    {
+        console.warn("venue search", this.model)
+
+        Route.navigate( "#/venue/search/?ll=" +
+            this.model.get("location").latitude + "," +
+            this.model.get("location").longitude + "&foursquare_venue_id=" +
+            this.model.get("location").foursquare_venue_id, true);
     },
 
     share: function()
