@@ -22,6 +22,31 @@
 @c-offset-x:                            -4 * @gfx-main-icon-sprite-grid;
 @c-offset-x-hover:                      -5 * @gfx-main-icon-sprite-grid;
 
+
+/*
+* Menu Icon Sprite '../gfx/main-menu-icons.png'
+*/
+@gfx-menu-icon-sprite-width: 80px;
+@gfx-menu-icon-sprite-height: 1280px;
+@gfx-menu-icon-sprite-grid: 80px;
+/* Vertical Layout of Icons */
+@gfx-menu-icon-sprite-feed-y:           -0 * @gfx-menu-icon-sprite-grid; 
+@gfx-menu-icon-sprite-map-y:            -1 * @gfx-menu-icon-sprite-grid;
+@gfx-menu-icon-sprite-camera-y:         -2 * @gfx-menu-icon-sprite-grid;
+@gfx-menu-icon-sprite-popular-y:        -3 * @gfx-menu-icon-sprite-grid;
+@gfx-menu-icon-sprite-dashboard-y:      -4 * @gfx-menu-icon-sprite-grid;
+@gfx-menu-icon-sprite-queue-y:          -5 * @gfx-menu-icon-sprite-grid;
+@gfx-menu-icon-sprite-my-account-y:     -6 * @gfx-menu-icon-sprite-grid;
+@gfx-menu-icon-sprite-activity-y:       -7 * @gfx-menu-icon-sprite-grid;
+@gfx-menu-icon-sprite-join-y:           -8 * @gfx-menu-icon-sprite-grid;
+@gfx-menu-icon-sprite-camera-lib-y:     -9 * @gfx-menu-icon-sprite-grid;
+@gfx-menu-icon-sprite-cities-y:         -10 * @gfx-menu-icon-sprite-grid;
+@gfx-menu-icon-sprite-info-y:           -11 * @gfx-menu-icon-sprite-grid;
+@gfx-menu-icon-sprite-login-y:          -12 * @gfx-menu-icon-sprite-grid;
+/* Horizontal offsets for theme swatches / hover states */
+@mi-offset-x:                            -0 * @gfx-menu-icon-sprite-grid;
+
+
 /*
 * General JQuery Mob Icons '../gfx/general-jquerymob-icons'
 */
@@ -79,19 +104,41 @@
 
 
 /*
+* Dark Action Icon Sprite '../gfx/action-icons-dark.png'
+*/
+@gfx-action-darkicon-sprite-width: 40px;
+@gfx-action-darkicon-sprite-height: 480px;
+@gfx-action-darkicon-sprite-grid: 40px;
+/* Vertical Layout of Icons */
+@gfx-action-darkicon-sprite-settings-y:     -0 * @gfx-action-darkicon-sprite-grid; 
+@gfx-action-darkicon-sprite-flag-y:         -1 * @gfx-action-darkicon-sprite-grid;
+@gfx-action-darkicon-sprite-delete-y:       -2 * @gfx-action-darkicon-sprite-grid;
+@gfx-action-darkicon-sprite-download-y:     -3 * @gfx-action-darkicon-sprite-grid;
+@gfx-action-darkicon-sprite-twitter-y:      -4 * @gfx-action-darkicon-sprite-grid;
+@gfx-action-darkicon-sprite-facebook-up-y:  -5 * @gfx-action-darkicon-sprite-grid;
+@gfx-action-darkicon-sprite-tumblr-y:       -6 * @gfx-action-darkicon-sprite-grid;
+@gfx-action-darkicon-sprite-foursquare-y:   -7 * @gfx-action-darkicon-sprite-grid;
+@gfx-action-darkicon-sprite-email-y:        -8 * @gfx-action-darkicon-sprite-grid;
+@gfx-action-darkicon-sprite-feed-y:         -9 * @gfx-action-darkicon-sprite-grid;
+@gfx-action-darkicon-sprite-grid-y:         -10 * @gfx-action-darkicon-sprite-grid;
+/* Horizontal offsets for theme swatches / hover states */
+@ad-offset-x:                            -0 * @gfx-action-darkicon-sprite-grid;
+
+
+/*
 * Large Sharing Icon Sprite '../gfx/share-icons-large.png'
 */
 @gfx-large-sharing-icon-sprite-width: 84px;
 @gfx-large-sharing-icon-sprite-height: 168px;
 @gfx-large-sharing-icon-sprite-grid: 42px;
 /* Vertical Layout of Icons */
-@gfx-large-sharing-icon-sprite-twitter-y:    -0 * @gfx-large-sharing-icon-sprite-grid; 
+@gfx-large-sharing-icon-sprite-twitter-y:       -0 * @gfx-large-sharing-icon-sprite-grid; 
 @gfx-large-sharing-icon-sprite-facebook-y:      -1 * @gfx-large-sharing-icon-sprite-grid;
-@gfx-large-sharing-icon-sprite-tumblr-y:     -2 * @gfx-large-sharing-icon-sprite-grid;
-@gfx-large-sharing-icon-sprite-foursquare-y:  -3 * @gfx-large-sharing-icon-sprite-grid;
+@gfx-large-sharing-icon-sprite-tumblr-y:        -2 * @gfx-large-sharing-icon-sprite-grid;
+@gfx-large-sharing-icon-sprite-foursquare-y:    -3 * @gfx-large-sharing-icon-sprite-grid;
 /* Horizontal offsets for theme swatches / hover states */
-@ls-offset-x:                            -0 * @gfx-large-sharing-icon-sprite-grid;
-@ls-offset-x-hover:                      -1 * @gfx-large-sharing-icon-sprite-grid;
+@ls-offset-x:                                   -0 * @gfx-large-sharing-icon-sprite-grid;
+@ls-offset-x-hover:                             -1 * @gfx-large-sharing-icon-sprite-grid;
 
 
 /*
@@ -113,7 +160,7 @@
 * Extra Icons '../gfx/extra-icons.png'
 */
 @gfx-extra-icon-sprite-width: 32px;
-@gfx-extra-icon-sprite-height: 448px;
+@gfx-extra-icon-sprite-height: 768px;
 @gfx-extra-icon-sprite-grid: 32px;
 /* Vertical Layout of Icons */
 @gfx-extra-icon-sprite-heart-y:         -0 * @gfx-extra-icon-sprite-grid; 
@@ -135,7 +182,11 @@
 @gfx-extra-icon-sprite-search-a-y:      -16 * @gfx-extra-icon-sprite-grid;
 @gfx-extra-icon-sprite-arrow-d-a-y:     -17 * @gfx-extra-icon-sprite-grid;
 @gfx-extra-icon-sprite-delete-a-y:      -18 * @gfx-extra-icon-sprite-grid;
-
+@gfx-extra-icon-sprite-heart-b-y:       -19 * @gfx-extra-icon-sprite-grid; 
+@gfx-extra-icon-sprite-person-b-y:      -20 * @gfx-extra-icon-sprite-grid;
+@gfx-extra-icon-sprite-search-b-y:      -21 * @gfx-extra-icon-sprite-grid;
+@gfx-extra-icon-sprite-activity-b-y:    -22 * @gfx-extra-icon-sprite-grid;
+@gfx-extra-icon-sprite-location-b-y:    -23 * @gfx-extra-icon-sprite-grid;
 
 /* Horizontal offsets for theme swatches / hover states */
 @ei-offset-x: 0;

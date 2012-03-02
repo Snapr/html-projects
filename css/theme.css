@@ -83,12 +83,22 @@ textarea {
 /* Vertical Layout of Icons */
 /* Horizontal offsets for theme swatches / hover states */
 /*
+* Menu Icon Sprite '../gfx/main-menu-icons.png'
+*/
+/* Vertical Layout of Icons */
+/* Horizontal offsets for theme swatches / hover states */
+/*
 * General JQuery Mob Icons '../gfx/general-jquerymob-icons'
 */
 /* Horizontal Layout of Icons (this one matches the default jQuery mobile horizontal sprite) */
 /* Horizontal offsets for theme swatches / hover states */
 /*
 * Custom Action Icon Sprite '../gfx/action-icons-custom.png'
+*/
+/* Vertical Layout of Icons */
+/* Horizontal offsets for theme swatches / hover states */
+/*
+* Dark Action Icon Sprite '../gfx/action-icons-dark.png'
 */
 /* Vertical Layout of Icons */
 /* Horizontal offsets for theme swatches / hover states */
@@ -408,7 +418,7 @@ input.ui-input-text, textarea.ui-input-text {
   width: 64px;
 }
 .ui-loader .ui-icon-loading {
-  background-image: url(../gfx/spinner.png);
+  background-image: url('../gfx/spinner.png');
   width: 56px;
   height: 56px;
   background-size: 56px 56px;
@@ -638,7 +648,7 @@ input.ui-input-text, textarea.ui-input-text {
 /*
 * UI Components - Custom Stylz 
 */
-/* Title Bars that pop up all over the place */
+/* @ui-bar Title Bars that pop up all over the place */
 .ui-bar {
   border: none;
   border-top: solid 1px #ffffff;
@@ -701,7 +711,10 @@ input.ui-input-text, textarea.ui-input-text {
   -webkit-border-bottom-right-radius: 0px;
   border-bottom-right-radius: 0px;
 }
-.ui-bar.top-left-arrow {
+.ui-bar.top-no-arrow .ui-btn-text {
+  padding-left: 20px;
+}
+.ui-bar.top-no-arrow, .ui-bar.top-left-arrow {
   -moz-border-radius-topleft: 8px;
   -webkit-border-top-left-radius: 8px;
   border-top-left-radius: 8px;
@@ -716,13 +729,13 @@ input.ui-input-text, textarea.ui-input-text {
   border-bottom-right-radius: 0px;
   text-align: left;
 }
-.ui-bar.top-left-arrow .ui-icon {
+.ui-bar.top-no-arrow .ui-icon-arrow-r, .ui-bar.top-left-arrow .ui-icon-arrow-r {
   right: -2px;
 }
-.ui-bar.top-left-arrow .ui-btn-text {
+.ui-bar.top-no-arrow .ui-btn-text, .ui-bar.top-left-arrow .ui-btn-text {
   padding-left: 20px;
 }
-.ui-bar.top-left-arrow .extra-icons {
+.ui-bar.top-no-arrow .extra-icons, .ui-bar.top-left-arrow .extra-icons {
   right: auto;
   left: -8px;
   top: -7px;
@@ -730,12 +743,12 @@ input.ui-input-text, textarea.ui-input-text {
   height: 32px;
   width: 32px;
 }
-.ui-bar.top-left-arrow .image-time {
+.ui-bar.top-no-arrow .image-time, .ui-bar.top-left-arrow .image-time {
   position: relative;
   padding-left: 20px;
   color: #666666;
 }
-.ui-bar.top-left-arrow .image-time .ui-icon-clock {
+.ui-bar.top-no-arrow .image-time .ui-icon-clock, .ui-bar.top-left-arrow .image-time .ui-icon-clock {
   top: -9px;
 }
 .ui-bar.top-left-arrow::after {
@@ -815,63 +828,6 @@ input.ui-input-text, textarea.ui-input-text {
   position: absolute!important;
   right: 0!important;
   left: auto!important;
-}
-.extra-icons .ui-icon-heart, .extra-icons.ui-icon-heart {
-  background-position: 0 0px;
-}
-.extra-icons .ui-icon-venue, .extra-icons.ui-icon-venue {
-  background-position: 0 -32px;
-}
-.extra-icons .ui-icon-person, .extra-icons.ui-icon-person {
-  background-position: 0 -64px;
-}
-.extra-icons .ui-icon-search, .extra-icons.ui-icon-search {
-  background-position: 0 -96px;
-}
-.extra-icons .ui-icon-activity, .extra-icons.ui-icon-activity {
-  background-position: 0 -128px;
-}
-.extra-icons .ui-icon-location, .extra-icons.ui-icon-location {
-  background-position: 0 -160px;
-}
-.extra-icons .ui-icon-quote, .extra-icons.ui-icon-quote {
-  background-position: 0 -192px;
-}
-.extra-icons .ui-icon-clocksmall, .extra-icons.ui-icon-clocksmall {
-  background-position: 0 -224px;
-}
-.extra-icons .ui-icon-venuesmall, .extra-icons.ui-icon-venuesmall {
-  background-position: 0 -256px;
-}
-.extra-icons .ui-icon-feed, .extra-icons.ui-icon-feed {
-  background-position: 0 -288px;
-}
-.extra-icons .ui-icon-favs, .extra-icons.ui-icon-favs {
-  background-position: 0 -320px;
-}
-.extra-icons .ui-icon-link, .extra-icons.ui-icon-link {
-  background-position: 0 -352px;
-}
-.extra-icons .ui-icon-clock, .extra-icons.ui-icon-clock {
-  background-position: 0 -384px;
-}
-.extra-icons .ui-icon-redheart, .extra-icons.ui-icon-redheart {
-  background-position: 0 -416px;
-}
-.extra-icons .ui-icon-map-time, .extra-icons.ui-icon-map-time {
-  background-position: 0 -448px;
-}
-.extra-icons .ui-icon-person-a, .extra-icons.ui-icon-person-a {
-  background-position: 0 -480px;
-}
-.extra-icons .ui-icon-search-a, .extra-icons.ui-icon-search-a {
-  background-position: 0 -512px;
-}
-.extra-icons .ui-icon-arrow-d, .extra-icons.ui-icon-arrow-d {
-  background-position: 0 -544px;
-}
-.extra-icons .ui-icon-delete, .extra-icons.ui-icon-delete {
-  background-position: 0 -576px;
 }
 .ui-navbar {
   margin: -8px -8px 0 -8px;
@@ -1049,43 +1005,43 @@ input.ui-input-text, textarea.ui-input-text {
   box-shadow: none;
 }
 .menu-main .ui-icon-main-menu-feed {
-  background-position: 0 0px;
+  background-position: 0px 0px;
 }
 .menu-main .ui-icon-main-menu-map {
-  background-position: 0 -80px;
+  background-position: 0px -80px;
 }
 .menu-main .ui-icon-main-menu-camera {
-  background-position: 0 -160px;
+  background-position: 0px -160px;
 }
 .menu-main .ui-icon-main-menu-popular {
-  background-position: 0 -240px;
+  background-position: 0px -240px;
 }
 .menu-main .ui-icon-main-menu-dashboard {
-  background-position: 0 -320px;
+  background-position: 0px -320px;
 }
 .menu-main .ui-icon-main-menu-queue {
-  background-position: 0 -400px;
+  background-position: 0px -400px;
 }
 .menu-main .ui-icon-main-menu-my-account {
-  background-position: 0 -480px;
+  background-position: 0px -480px;
 }
 .menu-main .ui-icon-main-menu-activity {
-  background-position: 0 -560px;
+  background-position: 0px -560px;
 }
 .menu-main .ui-icon-main-menu-join {
-  background-position: 0 -640px;
+  background-position: 0px -640px;
 }
 .menu-main .ui-icon-main-menu-camera-lib {
-  background-position: 0 -720px;
+  background-position: 0px -720px;
 }
 .menu-main .ui-icon-main-menu-cities {
-  background-position: 0 -800px;
+  background-position: 0px -800px;
 }
 .menu-main .ui-icon-main-menu-info {
-  background-position: 0 -880px;
+  background-position: 0px -880px;
 }
 .menu-main .ui-icon-main-menu-login {
-  background-position: 0 -960px;
+  background-position: 0px -960px;
 }
 .menu-main .ui-grid-a {
   /* Shadow under top button block */
@@ -1224,7 +1180,6 @@ input.ui-input-text, textarea.ui-input-text {
   display: block;
   width: 32px;
   height: 28px;
-  background-image: url('../gfx/action-icons-dark.png');
   position: absolute;
   top: 1px;
   left: 3px;
@@ -2009,12 +1964,15 @@ input.ui-input-text, textarea.ui-input-text {
 * @map - PAGE 
 */
 #map-layer #google-map {
-  margin: -3px;
+  margin: -3px -8px;
 }
 .photo-map {
   position: relative;
   /* map thumbs */
 
+}
+.photo-map .ui-bar.top-left-arrow, .photo-map .top-no-arrow {
+  margin-top: -8px;
 }
 .photo-map .snaprmappoint {
   width: 1px;
@@ -2712,6 +2670,21 @@ input.ui-input-text, textarea.ui-input-text {
 .ui-bar-b.ui-btn {
   border: none;
 }
+.ui-bar-b .extra-icons .ui-icon-heart, .ui-bar-b .extra-icons.ui-icon-heart {
+  background-position: 0 -608px;
+}
+.ui-bar-b .extra-icons .ui-icon-person, .ui-bar-b .extra-icons.ui-icon-person {
+  background-position: 0 -640px;
+}
+.ui-bar-b .extra-icons .ui-icon-search, .ui-bar-b .extra-icons.ui-icon-search {
+  background-position: 0 -672px;
+}
+.ui-bar-b .extra-icons .ui-icon-activity, .ui-bar-b .extra-icons.ui-icon-activity {
+  background-position: 0 -704px;
+}
+.ui-bar-b .extra-icons .ui-icon-location, .ui-bar-b .extra-icons.ui-icon-location {
+  background-position: 0 -736px;
+}
 .ui-btn-up-b .ui-icon-search {
   background-position: -80px 0px;
 }
@@ -3335,18 +3308,185 @@ input.ui-input-text, textarea.ui-input-text {
 
   background-image: linear-gradient(top, #ffff00, #ffe400);
 }
+/* @dark-icons */
+.dark-icons .ui-icon {
+  background-image: url('../gfx/action-icons-dark.png');
+}
+/* @extra-icons */
+.extra-icons .ui-icon-heart, .extra-icons.ui-icon-heart {
+  background-position: 0 0px;
+}
+.extra-icons .ui-icon-venue, .extra-icons.ui-icon-venue {
+  background-position: 0 -32px;
+}
+.extra-icons .ui-icon-person, .extra-icons.ui-icon-person {
+  background-position: 0 -64px;
+}
+.extra-icons .ui-icon-search, .extra-icons.ui-icon-search {
+  background-position: 0 -96px;
+}
+.extra-icons .ui-icon-activity, .extra-icons.ui-icon-activity {
+  background-position: 0 -128px;
+}
+.extra-icons .ui-icon-location, .extra-icons.ui-icon-location {
+  background-position: 0 -160px;
+}
+.extra-icons .ui-icon-quote, .extra-icons.ui-icon-quote {
+  background-position: 0 -192px;
+}
+.extra-icons .ui-icon-clocksmall, .extra-icons.ui-icon-clocksmall {
+  background-position: 0 -224px;
+}
+.extra-icons .ui-icon-venuesmall, .extra-icons.ui-icon-venuesmall {
+  background-position: 0 -256px;
+}
+.extra-icons .ui-icon-feed, .extra-icons.ui-icon-feed {
+  background-position: 0 -288px;
+}
+.extra-icons .ui-icon-favs, .extra-icons.ui-icon-favs {
+  background-position: 0 -320px;
+}
+.extra-icons .ui-icon-link, .extra-icons.ui-icon-link {
+  background-position: 0 -352px;
+}
+.extra-icons .ui-icon-clock, .extra-icons.ui-icon-clock {
+  background-position: 0 -384px;
+}
+.extra-icons .ui-icon-redheart, .extra-icons.ui-icon-redheart {
+  background-position: 0 -416px;
+}
+.extra-icons .ui-icon-map-time, .extra-icons.ui-icon-map-time {
+  background-position: 0 -448px;
+}
+.extra-icons .ui-icon-person-a, .extra-icons.ui-icon-person-a {
+  background-position: 0 -480px;
+}
+.extra-icons .ui-icon-search-a, .extra-icons.ui-icon-search-a {
+  background-position: 0 -512px;
+}
+.extra-icons .ui-icon-arrow-d, .extra-icons.ui-icon-arrow-d {
+  background-position: 0 -544px;
+}
+.extra-icons .ui-icon-delete, .extra-icons.ui-icon-delete {
+  background-position: 0 -576px;
+}
 /* Android HDPI - Pixel ratio of 1.5. Background-size is 1/1.5 = 66.67% (of a 150px image) */
 @media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5) {
   
 }
 /* High Resolution (iPhone 4) */
 @media only screen and (-webkit-min-device-pixel-ratio: 2) {
+  .ui-icon.extra-icons, .extra-icons .ui-icon {
+    background-image: url('../gfx/retina/extra-icons.png');
+    -moz-background-size: 32px 768px;
+    -o-background-size: 32px 768px;
+    -webkit-background-size: 32px 768px;
+    background-size: 32px 768px;
+  }
+  .ui-icon.helper-icons, .helper-icons .ui-icon {
+    background-image: url('../gfx/retina/helper-icons.png');
+    -moz-background-size: 96px 96px;
+    -o-background-size: 96px 96px;
+    -webkit-background-size: 96px 96px;
+    background-size: 96px 96px;
+  }
+  .ui-icon,
+  .ui-checkbox-on .ui-icon,
+  .ui-radio-on .ui-icon,
+  .ui-icon-searchfield::after {
+    background-image: url('../gfx/retina/general-jquerymob-icons.png');
+    -moz-background-size: 774px 180px;
+    -o-background-size: 774px 180px;
+    -webkit-background-size: 774px 180px;
+    background-size: 774px 180px;
+  }
+  .ui-icon-loading {
+    background-image: url('../gfx/retina/spinner.png');
+    -moz-background-size: 56px 56px;
+    -o-background-size: 56px 56px;
+    -webkit-background-size: 56px 56px;
+    background-size: 56px 56px;
+  }
+  .ui-header .ui-icon {
+    background-image: url('../gfx/retina/bar-icons.png');
+    -moz-background-size: 240px 560px;
+    -o-background-size: 240px 560px;
+    -webkit-background-size: 240px 560px;
+    background-size: 240px 560px;
+  }
+  .sharing-icon-small .ui-icon {
+    background-image: url('../gfx/retina/share-icons-small.png');
+    -moz-background-size: 21px 84px;
+    -o-background-size: 21px 84px;
+    -webkit-background-size: 21px 84px;
+    background-size: 21px 84px;
+  }
   .main-logo {
     background-image: url('../gfx/retina/main-logo.png');
+    -moz-background-size: 160px 42px;
+    -o-background-size: 160px 42px;
+    -webkit-background-size: 160px 42px;
     background-size: 160px 42px;
   }
   .menu-main .ui-icon {
     background-image: url('../gfx/retina/main-menu-icons.png');
+    -moz-background-size: 80px 1280px;
+    -o-background-size: 80px 1280px;
+    -webkit-background-size: 80px 1280px;
     background-size: 80px 1280px;
+  }
+  .dark-icons .ui-icon {
+    background-image: url('../gfx/retina/action-icons-dark.png');
+    -moz-background-size: 40px 480px;
+    -o-background-size: 40px 480px;
+    -webkit-background-size: 40px 480px;
+    background-size: 40px 480px;
+  }
+  .user-info-block .user-icon-left .icon-overlay-info {
+    background-image: url('../gfx/retina/shiny-avatar-info.png');
+    -moz-background-size: 100px 100px;
+    -o-background-size: 100px 100px;
+    -webkit-background-size: 100px 100px;
+    background-size: 100px 100px;
+  }
+  .image-item-block .image-actions .ui-icon,
+  .ui-checkbox .ui-icon,
+  .custom-action-icons .ui-icon,
+  .share-photo .upload-image-privacy .ui-icon,
+  .share-photo .upload-image-location .ui-btn .ui-icon,
+  .share-photo .image-controls .ui-icon {
+    background-image: url('../gfx/retina/action-icons-custom.png');
+    -moz-background-size: 80px 440px;
+    -o-background-size: 80px 440px;
+    -webkit-background-size: 80px 440px;
+    background-size: 80px 440px;
+  }
+  .dash-footer .ui-icon {
+    background-image: url('../gfx/retina/dash-icons.png');
+    -moz-background-size: 64px 64px;
+    -o-background-size: 64px 64px;
+    -webkit-background-size: 64px 64px;
+    background-size: 64px 64px;
+  }
+  .share-photo .upload-image-sharing .ui-icon {
+    background-image: url('../gfx/retina/share-icons-large.png');
+    -moz-background-size: 84px 168px;
+    -o-background-size: 84px 168px;
+    -webkit-background-size: 84px 168px;
+    background-size: 84px 168px;
+  }
+  .photo-map .snaprmapthumb .snaprmappin {
+    background-image: url('../gfx/retina/map-pin.png');
+    -moz-background-size: 28px 35px;
+    -o-background-size: 28px 35px;
+    -webkit-background-size: 28px 35px;
+    background-size: 28px 35px;
+  }
+  .photo-map .snaprmapthumb .snaprthumbbg {
+    background-image: url('../gfx/retina/map-thumb-bg.png');
+    -moz-background-size: 78px 88px;
+    -o-background-size: 78px 88px;
+    -webkit-background-size: 78px 88px;
+    background-size: 78px 88px;
   }
 }
