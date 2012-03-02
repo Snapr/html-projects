@@ -122,6 +122,7 @@ snapr.views.share_photo = Backbone.View.extend({
                     photo.model.set({
                         location: model.attributes
                     });
+                    $(photo.el).find("#no-foursquare-sharing-location").removeClass("ajax-loading");
                     $(photo.el).find(".location-name").text(photo.model.get("location").location);
                 }
             });
@@ -144,6 +145,7 @@ snapr.views.share_photo = Backbone.View.extend({
                         foursquare_venue_name: collection.first().get( "name" )
                     });
                     photo.model.set({location: location});
+                    $(photo.el).find("#foursquare-sharing-location").removeClass("ajax-loading");
                     $(photo.el).find(".foursquare-venue-name").text(photo.model.get("location").foursquare_venue_name);
                 }
             })
