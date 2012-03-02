@@ -1695,7 +1695,7 @@
                         <div id="foursquare-sharing-location" <%if (!foursquare_sharing){%> style="display:none;"<%}%>>
                             <a data-role="button" id="foursquare-venue" data-icon="arrow-right">
                                 <span class="ui-icon ui-icon-venue"></span>
-                                <% if (photo.attributes.location){%>
+                                <% if (photo.attributes.location && photo.attributes.location.foursquare_venue_name){%>
                                     <%= photo.attributes.location.foursquare_venue_name %>
                                 <%}else{%>
                                     Finding nearby venues&hellip;
