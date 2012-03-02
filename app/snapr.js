@@ -388,7 +388,7 @@ snapr.geo.location_error_callbacks = [],
 snapr.geo.get_location = function ( success, error )
 {
     // if in appmode, ask the app for location, otherwise try html5 geolocation
-    if (appmode)
+    if (snapr.utils.get_local_param( "appmode" ))
     {
         // TODO: what is there is no response!? need timeout function.
         snapr.geo.location_callbacks.push( success );
@@ -398,7 +398,7 @@ snapr.geo.get_location = function ( success, error )
             //do nothing
         }else
         {
-            if (appmode == "android")
+            if (snapr.utils.get_local_param( "appmode" ) == "android")
             {
                 // android locks up the UI for like 30 seconds whenever it tries to lookup the location, so we are caching the curr location, and only getting the
                 // new location is if the cached value is greater than 5 minutes old. TODO: this should really be done android-side

@@ -108,13 +108,14 @@ snapr.views.share_photo = Backbone.View.extend({
 
     get_reverse_geocode: function()
     {
-        if (this.query.latitude && this.query.longitude && !this.model.get("location").location)
-        {
-            var photo = this;
 
+        var photo = this;
+
+        var geocode = function( latitude, longitude )
+        {
             var location = new snapr.models.geo_location({
-                latitude: this.query.latitude,
-                longitude: this.query.longitude
+                latitude: latitude,
+                longitude: longitude
             });
             location.fetch({
                 success: function( model )
@@ -125,6 +126,22 @@ snapr.views.share_photo = Backbone.View.extend({
                     $(photo.el).find("#no-foursquare-sharing-location").removeClass("ajax-loading");
                     $(photo.el).find(".location-name").text(photo.model.get("location").location);
                 }
+            });
+        }
+
+        if (this.query.latitude && this.query.longitude && !this.model.get("location").location)
+        {
+            geocode( this.query.latitude, this.query.longitude)
+        }
+        else
+        {
+            snapr.geo.get_location( function( location )
+            {
+                geocode( location.coords.latitude, location.coords.longitude );
+            },
+            function( e )
+            {
+                console.warn( "geocode error", e );
             });
         }
     },
