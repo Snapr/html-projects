@@ -191,8 +191,8 @@
         </div>
 
     </div>
-        
-    <div class="myaccount-settings">    
+
+    <div class="myaccount-settings">
          <a class="ui-bar top-no-arrow" data-role="button" data-theme="e" >
               <em>Settings</em>
          </a>
@@ -238,7 +238,7 @@
                     <% if (settings.profile.notify_when_added_to_group){%> checked="true" <%}%> />
                     <label for="my-account-notify-follow">Someone follows me</label>
                     </p>
-                    
+
                     <p>
                     <input type="checkbox" name="my-account-notify-favorite" id="my-account-notify-favorite" data-role="none"
                     <% if (settings.profile.notify_when_image_favorited){%> checked="true" <%}%> />
@@ -262,7 +262,7 @@
                     <% if (settings.profile.notify_when_image_moderated){%> checked="true" <%}%> />
                     <label for="my-account-notify-moderation">One of my images has been moderated</label>
                     </p>
-                    
+
                     <p>
                     <input type="checkbox" name="my-account-notify-snapr" id="my-account-notify-snapr" data-role="none"
                     <% if (settings.profile.subscribe_to_email_newsletter){%> checked="true" <%}%> />
@@ -336,7 +336,7 @@
          </div>
          </p><!-- Close Content for Master Collapsible Sett -->
 
-    
+
          <a class="ui-bar top-no-arrow" data-role="button" data-theme="e" >
                 <em>Link Services</em>
           </a>
@@ -344,7 +344,7 @@
 
 
          </div>
-         
+
     </div>
     </script>
 
@@ -405,14 +405,14 @@
         <% switch(service.provider) { case 'twitter': %>
             <h3>Twitter - <%= service.get('username') %></h3>
             <fieldset data-role="controlgroup">
-                
+
                 <p>Update my profile details to match Twitter:
                 </p>
-                
+
                 <p>
                 <button data-inline="true" data-theme="c" class="twitter-import-profile">Import Profile</button>
                 </p>
-                
+
                 <input type="checkbox" name="twitter-link" id="twitter-link"  data-role="none"
                 <% if(service.get('show_username')){%> checked="true" <%}%> />
                 <label for="twitter-link">Show Twitter in my Profile</label>
@@ -446,11 +446,11 @@
                 <% if(service.get('show_profile_link')){%> checked="true" <%}%> />
                 <label for="facebook-link">Show Facebook in my Profile</label>
             </fieldset>
-           
+
         <% break; } %>
             <div class="ui-grid-b">
                 <div class="ui-block-a">
-                
+
                 </div>
                 <div class="ui-block-b">
                     <button data-theme="c" class="unlink">Unlink</button>
@@ -1072,20 +1072,20 @@
 
                             </div>
                             <hr><!-- end image item -->
-                            
+
                             <div class="activity-follow-item activity-item">
                                 <a data-ajax="false" href="#/feed/?username=rowan">
                                           <img src="http://sna.pr/avatars/rowan" alt="rowan" class="user-icon-small ui-li-icon"/>
                                           <h3 class="username">rowan</h3> <span class="item-comment">is now following you.</span>
                                           <p class="small-text">2 hr ago</p>
                                       </a>
-                                
+
                             </div>
                             <hr><!-- end follow item -->
-                            
-                            
+
+
                          </li><!-- end time item -->
-                         
+
                          <li class="activity-stream">
                              <a class="ui-bar top-left-arrow" data-role="button" data-theme="e">
                                  <em>yesterday</em>
@@ -1765,13 +1765,17 @@
                             <% if (foursquare_sharing){%> style="display:none;"<%}%>
                             <% if (!photo.attributes.location.location){%> class="ajax-loading"<%}%>>
                             <span class="image-location custom-action-icons">
-                                <input type="checkbox" name="share-location" id="share-location" checked="true"/>
+                                <input type="checkbox" name="share_location" id="share-location" <%if (share_location){%>checked="true"<%}%> />
                                 <label for="share-location"><span class="ui-icon ui-icon-location share-location-label" ></span>
                                     <span class="location-name">
                                     <% if (photo.attributes.location.location){%>
                                             <%= photo.attributes.location.location %>
                                         <%}else{%>
-                                            Getting location&hellip;
+                                            <%if (share_location){%>
+                                                Getting location&hellip;
+                                            <%}else{%>
+                                                Share location.
+                                            <%}%>
                                     <%}%>
                                     </span>
                                 </label>

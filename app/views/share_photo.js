@@ -41,6 +41,7 @@ snapr.views.share_photo = Backbone.View.extend({
 
     events: {
         "change input[name='status']": "toggle_status",
+        "change input[name='share_location']": "toggle_sharing",
         "change .upload-image-sharing input": "toggle_sharing",
         "click #foursquare-venue": "venue_search",
         "submit form": "share"
@@ -51,6 +52,7 @@ snapr.views.share_photo = Backbone.View.extend({
         $(this.el).find("[data-role='content']").html( this.template({
             photo: this.model,
             status: snapr.utils.get_local_param( "status" ),
+            share_location: snapr.utils.get_local_param( "share-location" ) && true || false,
             facebook_sharing: snapr.utils.get_local_param( "facebook-sharing" ) && true || false,
             tumblr_sharing: snapr.utils.get_local_param( "tumblr-sharing" ) && true || false,
             foursquare_sharing: snapr.utils.get_local_param( "foursquare-sharing" ) && true || false,
@@ -108,6 +110,11 @@ snapr.views.share_photo = Backbone.View.extend({
 
     get_reverse_geocode: function()
     {
+
+        if (!snapr.utils.get_local_param( "share-location" ))
+        {
+            return;
+        }
 
         var photo = this;
 
@@ -197,7 +204,10 @@ snapr.views.share_photo = Backbone.View.extend({
                 this.get_reverse_geocode();
             }
         }
-
+        if (e.target.id == "share-location" && $(e.target).attr("checked"))
+        {
+            this.get_reverse_geocode();
+        }
     },
 
     venue_search: function()
@@ -224,6 +234,7 @@ snapr.views.share_photo = Backbone.View.extend({
             this.model.save({
                 description: this.el.find("#description").val(),
                 status: this.el.find("[name='status']:checked").val(),
+                share_location: ( $("#share-location").attr("checked") == "checked" ),
                 faceboook_album: ( $("#facebook-sharing").attr("checked") == "checked" ),
                 tumblr: ( $("#tumblr-sharing").attr("checked") == "checked" ),
                 foursquare_checkin: ( $("#foursquare-sharing").attr("checked") == "checked" ),
