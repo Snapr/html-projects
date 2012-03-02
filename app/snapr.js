@@ -55,7 +55,7 @@ Backbone.sync = function (method, model, options) {
         // if there is no .data attribute on the model set it from the model's id
         // or just pass an empty object
         if (!model.data){
-            model.data = model.attributes || model.has('id') && {id: model.get('id')} || {};
+            model.data = model.attributes || model.get('id') && {id: model.get('id')} || {};
         }
         model.data.access_token = snapr.auth.get('access_token');
     }
