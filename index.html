@@ -1222,10 +1222,11 @@
        <!-- @venue ITEM-->
        <script id="venue-li-template" type="text/template">
               <a data-ajax="false">
-                  <img src="http://placehold.it/60x60" alt="" class="user-icon-small ui-li-icon"/>
-                  <h3 class="username"><%= venue.get('name') %></h3>
+                  <img src="<%= icon %>" alt="" class="user-icon-small ui-li-icon"/>
+                  <h3 class="venue-name"><%= venue.get('name') %></h3>
+                  <p class="small-text"><%= venue.get('location').distance %> m</p>
               </a>
-              <a data-icon="plus" data-iconpos="right" class="follow"></a>
+              <a data-icon="right" data-iconpos="right" class="select"></a>
           </script>
 
     <!-- @join snapr DIALOG-->
