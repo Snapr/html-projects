@@ -48,6 +48,7 @@ snapr.views.share_photo = Backbone.View.extend({
     render: function()
     {
         $(this.el).find("[data-role='content']").html( this.template({
+            photo: this.model,
             status: snapr.utils.get_local_param( "status" ),
             facebook_sharing: snapr.utils.get_local_param( "facebook-sharing" ) && true || false,
             tumblr_sharing: snapr.utils.get_local_param( "tumblr-sharing" ) && true || false,
@@ -60,10 +61,10 @@ snapr.views.share_photo = Backbone.View.extend({
 
     get_photo_from_server: function( id )
     {
-        console.warn( "get_photo_from_server", id );
         var share_photo = this;
         this.model = new snapr.models.photo({id: id});
         this.model.bind( "change:secret", this.render );
+        this.model.bind( "change:location", this.render );
         this.model.fetch({
             success: function()
             {
