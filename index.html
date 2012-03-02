@@ -1765,22 +1765,26 @@
                             <span class="image-location custom-action-icons">
                                 <input type="checkbox" name="share-location" id="share-location" checked="true"/>
                                 <label for="share-location"><span class="ui-icon ui-icon-location share-location-label" ></span>
-                                    <% if (photo.attributes.location){%>
+                                    <span class="location-name">
+                                    <% if (photo.attributes.location.location){%>
                                             <%= photo.attributes.location.location %>
                                         <%}else{%>
-                                            Finding location&hellip;
+                                            Getting location&hellip;
                                     <%}%>
+                                    </span>
                                 </label>
                             </span>
                         </div>
                         <div id="foursquare-sharing-location" <%if (!foursquare_sharing){%> style="display:none;"<%}%>>
                             <a data-role="button" id="foursquare-venue" data-icon="arrow-right">
                                 <span class="ui-icon ui-icon-venue"></span>
-                                <% if (photo.attributes.location){%>
-                                    <%= photo.attributes.location.foursquare_venue_name %>
-                                <%}else{%>
-                                    Finding nearby venues&hellip;
-                                <%}%>
+                                <span class="foursquare-venue-name">
+                                    <% if (photo.attributes.location && photo.attributes.location.foursquare_venue_name){%>
+                                        <%= photo.attributes.location.foursquare_venue_name %>
+                                    <%}else{%>
+                                        Geting venue&hellip;
+                                    <%}%>
+                                </span>
                             </a>
                         </div>
                     </fieldset>
@@ -1875,6 +1879,7 @@
 
 <!-- backbone models -->
 <script src="app/models/auth.js" type="text/javascript" charset="utf-8"></script>
+<script src="app/models/geo_location.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/models/user.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/models/user_collection.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/models/user_settings.js" type="text/javascript" charset="utf-8"></script>
