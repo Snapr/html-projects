@@ -39,6 +39,7 @@ snapr.views.share_photo = Backbone.View.extend({
     },
 
     events: {
+        "change input[name='status']": "toggle_status",
         "change .upload-image-sharing input": "toggle_sharing",
         "submit form": "share"
     },
@@ -46,6 +47,7 @@ snapr.views.share_photo = Backbone.View.extend({
     render: function()
     {
         $(this.el).find("[data-role='content']").html( this.template({
+            status: snapr.utils.get_local_param( "status" ),
             facebook_sharing: snapr.utils.get_local_param( "facebook-sharing" ) && true || false,
             tumblr_sharing: snapr.utils.get_local_param( "tumblr-sharing" ) && true || false,
             foursquare_sharing: snapr.utils.get_local_param( "foursquare-sharing" ) && true || false,
@@ -60,7 +62,7 @@ snapr.views.share_photo = Backbone.View.extend({
         console.warn( "get_photo_from_server", id );
         var share_photo = this;
         this.model = new snapr.models.photo({id: id});
-        this.model.bind( "change", this.render );
+        this.model.bind( "change:secret", this.render );
         this.model.fetch({
             success: function()
             {
@@ -100,6 +102,11 @@ snapr.views.share_photo = Backbone.View.extend({
         $(this.el).find(".image-placeholder").html( this.img_template({img_url: path}) );
     },
 
+    toggle_status: function( e )
+    {
+        snapr.utils.save_local_param( "status", e.target.value );
+    },
+
     toggle_sharing: function( e )
     {
         if ($(e.target).attr("checked"))
@@ -125,8 +132,7 @@ snapr.views.share_photo = Backbone.View.extend({
 
             this.model.save({
                 description: this.el.find("#description").val(),
-                // public_group: ( $("#enter-girl-of-month").val() == "on" ) && snapr.public_group || false,
-                status: "public",
+                status: this.el.find("[name='status']:checked").val(),
                 faceboook_album: ( $("#facebook-sharing").attr("checked") == "checked" ),
                 tumblr: ( $("#tumblr-sharing").attr("checked") == "checked" ),
                 foursquare_checkin: ( $("#foursquare-sharing").attr("checked") == "checked" ),

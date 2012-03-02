@@ -1309,9 +1309,9 @@
                   <span class="ui-icon ui-icon-location extra-icons"></span>
                   <em class="map-description"></em>
                   <span class="image-tag">Show as Feed</span>
-                  
+
                </a>
-            
+
             <div id="google-map">
             </div>
             <div id="map-disambiguation" data-role="content" data-theme="a" style="
@@ -1651,10 +1651,10 @@
 
                     <fieldset data-role="controlgroup" data-type="horizontal" class="upload-image-privacy">
                          <legend>Privacy:</legend>
-                         <input type="radio" name="status" id="status-public" value="public" checked="checked" />
+                         <input type="radio" name="status" id="status-public" value="public" <% if (status != "private"){%> checked <%}%> />
                          <label for="status-public">Public<span class="ui-icon"></span></label>
 
-                        <input type="radio" name="status" id="status-private" value="private"  />
+                        <input type="radio" name="status" id="status-private" value="private" <% if (status == "private"){%> checked <%}%> />
                         <label for="status-private">Private<span class="ui-icon"></span></label>
 
                     </fieldset>
