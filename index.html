@@ -191,151 +191,161 @@
         </div>
 
     </div>
+        
+    <div class="myaccount-settings">    
+         <a class="ui-bar top-no-arrow" data-role="button" data-theme="e" >
+              <em>Settings</em>
+         </a>
 
-    <div data-role="collapsible" data-collapsed="false" data-theme="e">
-        <h3>Settings</h3>
-        <p>
+        <div data-role="collapsible-set" data-theme="c" data-content-theme="d">
 
-            <div data-role="collapsible-set" data-theme="d" data-content-theme="d">
+            <div data-role="collapsible" data-collapsed="true">
+                <h3>Account Name & Email</h3>
+                <fieldset data-role="controlgroup">
+                    <label for="my-account-name">Your Name</label>
+                    <input type="text" name="my-account-name" id="my-account-name" class="custom"
+                    value="<%= settings.profile.name %>" />
+                </fieldset>
+                <fieldset data-role="controlgroup">
+                    <label for="my-account-email">Email</label>
+                    <input type="text" name="my-account-email" id="my-account-email" class="custom"
+                    value="<%= settings.email %>" />
+                </fieldset>
+                <button data-theme="e" class="save">Save</button>
+            </div>
 
-                <div data-role="collapsible" data-collapsed="true">
-                    <h3>Account Name & Email</h3>
-                    <fieldset data-role="controlgroup">
-                        <label for="my-account-name">Your Name</label>
-                        <input type="text" name="my-account-name" id="my-account-name" class="custom"
-                        value="<%= settings.profile.name %>" />
-                    </fieldset>
-                    <fieldset data-role="controlgroup">
-                        <label for="my-account-email">Email</label>
-                        <input type="text" name="my-account-email" id="my-account-email" class="custom"
-                        value="<%= settings.email %>" />
-                    </fieldset>
-                    <button data-theme="e" class="save">Save</button>
-                </div>
+            <div data-role="collapsible" data-collapsed="true">
+                <h3>Password</h3>
+                <fieldset data-role="controlgroup">
+                    <label for="my-account-password">New Password</label>
+                    <input type="password" name="my-account-password" id="my-account-password" class="custom"
+                    value="" />
+                </fieldset>
+                <fieldset data-role="controlgroup">
+                    <label for="my-account-password-verify">Verify</label>
+                    <input type="password" name="my-account-password-verify" id=" my-account-password-verify" class="custom"
+                    value="" />
+                </fieldset>
+                <button data-theme="e" class="save">Save</button>
+            </div>
 
-                <div data-role="collapsible" data-collapsed="true">
-                    <h3>Password</h3>
-                    <fieldset data-role="controlgroup">
-                        <label for="my-account-password">New Password</label>
-                        <input type="password" name="my-account-password" id="my-account-password" class="custom"
-                        value="" />
-                    </fieldset>
-                    <fieldset data-role="controlgroup">
-                        <label for="my-account-password-verify">Verify</label>
-                        <input type="password" name="my-account-password-verify" id=" my-account-password-verify" class="custom"
-                        value="" />
-                    </fieldset>
-                    <button data-theme="e" class="save">Save</button>
-                </div>
+            <div data-role="collapsible" data-collapsed="true">
+                <h3>Notifications</h3>
+                <h4>Email me when:</h4>
+                <fieldset data-role="controlgroup">
+                    <p>
+                    <input type="checkbox" name="my-account-notify-follow" id="my-account-notify-follow" data-role="none"
+                    <% if (settings.profile.notify_when_added_to_group){%> checked="true" <%}%> />
+                    <label for="my-account-notify-follow">Someone follows me</label>
+                    </p>
+                    
+                    <p>
+                    <input type="checkbox" name="my-account-notify-favorite" id="my-account-notify-favorite" data-role="none"
+                    <% if (settings.profile.notify_when_image_favorited){%> checked="true" <%}%> />
+                    <label for="my-account-notify-favorite">Someone favorites one of my images</label>
+                    </p>
 
-                <div data-role="collapsible" data-collapsed="true">
-                    <h3>Notifications</h3>
-                    <legend>Email me when:</legend>
-                    <fieldset data-role="controlgroup">
-                        <input type="checkbox" name="my-account-notify-follow" id="my-account-notify-follow" class="custom"
-                        <% if (settings.profile.notify_when_added_to_group){%> checked="true" <%}%> />
-                        <label for="my-account-notify-follow">Someone follows me</label>
+                    <p>
+                    <input type="checkbox" name="my-account-notify-comment" id="my-account-notify-comment" data-role="none"
+                    <% if (settings.profile.notify_when_comment_added){%> checked="true" <%}%> />
+                    <label for="my-account-notify-comment">Someone comments on one of my images</label>
+                    </p>
 
-                        <input type="checkbox" name="my-account-notify-favorite" id="my-account-notify-favorite" class="custom"
-                        <% if (settings.profile.notify_when_image_favorited){%> checked="true" <%}%> />
-                        <label for="my-account-notify-favorite">Someone favorites one of my images</label>
+                    <p>
+                    <input type="checkbox" name="my-account-notify-comment-after" id="my-account-notify-comment-after" data-role="none"
+                    <% if (settings.profile.notify_after_comment){%> checked="true" <%}%> />
+                    <label for="my-account-notify-comment-after">Someone comments on an image I&apos;ve commented on</label>
+                    </p>
 
-                        <input type="checkbox" name="my-account-notify-comment" id="my-account-notify-comment" class="custom"
-                        <% if (settings.profile.notify_when_comment_added){%> checked="true" <%}%> />
-                        <label for="my-account-notify-comment">Someone comments on one of my images</label>
+                    <p>
+                    <input type="checkbox" name="my-account-notify-moderation" id="my-account-notify-moderation" data-role="none"
+                    <% if (settings.profile.notify_when_image_moderated){%> checked="true" <%}%> />
+                    <label for="my-account-notify-moderation">One of my images has been moderated</label>
+                    </p>
+                    
+                    <p>
+                    <input type="checkbox" name="my-account-notify-snapr" id="my-account-notify-snapr" data-role="none"
+                    <% if (settings.profile.subscribe_to_email_newsletter){%> checked="true" <%}%> />
+                    <label for="my-account-notify-snapr">Snapr has exciting news</label>
+                    </p>
+                </fieldset>
 
-                        <input type="checkbox" name="my-account-notify-comment-after" id="my-account-notify-comment-after" class="custom"
-                        <% if (settings.profile.notify_after_comment){%> checked="true" <%}%> />
-                        <label for="my-account-notify-comment-after">Someone comments on an image I&apos;ve commented on</label>
+                <button data-theme="e" class="save">Save</button>
 
-                        <input type="checkbox" name="my-account-notify-moderation" id="my-account-notify-moderation" class="custom"
-                        <% if (settings.profile.notify_when_image_moderated){%> checked="true" <%}%> />
-                        <label for="my-account-notify-moderation">One of my images has been moderated</label>
+            </div>
 
-                        <input type="checkbox" name="my-account-notify-snapr" id="my-account-notify-snapr" class="custom"
-                        <% if (settings.profile.subscribe_to_email_newsletter){%> checked="true" <%}%> />
-                        <label for="my-account-notify-snapr">Snapr has exciting news</label>
-                    </fieldset>
+            <div data-role="collapsible" data-collapsed="true">
+                <h3>Profile</h3>
 
-                    <button data-theme="e" class="save">Save</button>
+                <fieldset data-role="controlgroup" class="my-account-avatar">
+                    <legend>Avatar</legend>
 
-                </div>
+                    <input type="radio" name="my-account-avatar-twitter" id="my-account-avatar-twitter" value="twitter"
+                    <% if (settings.profile.avatar_type == 'twitter'){ %> checked="true" <% } %> />
+                    <label for="my-account-avatar-twitter">Twitter</label>
 
-                <div data-role="collapsible" data-collapsed="true">
-                    <h3>Profile</h3>
+                    <input type="radio" name="my-account-avatar-facebook" id="my-account-avatar-facebook" value="facebook"
+                    <% if (settings.profile.avatar_type == 'facebook'){ %> checked="true" <% } %> />
+                    <label for="my-account-avatar-facebook">Facebook</label>
 
-                    <fieldset data-role="controlgroup" class="my-account-avatar">
-                        <legend>Avatar</legend>
+                    <input type="radio" name="my-account-avatar-gravatar" id="my-account-avatar-gravatar" value="gravatar"
+                    <% if (settings.profile.avatar_type == 'gravatar'){ %> checked="true" <% } %> />
+                    <label for="my-account-avatar-gravatar">Gravatar</label>
 
-                        <input type="radio" name="my-account-avatar-twitter" id="my-account-avatar-twitter" value="twitter"
-                        <% if (settings.profile.avatar_type == 'twitter'){ %> checked="true" <% } %> />
-                        <label for="my-account-avatar-twitter">Twitter</label>
+                    <button class="my-account-set-up-gravatar">Set up Gravatar</button>
 
-                        <input type="radio" name="my-account-avatar-facebook" id="my-account-avatar-facebook" value="facebook"
-                        <% if (settings.profile.avatar_type == 'facebook'){ %> checked="true" <% } %> />
-                        <label for="my-account-avatar-facebook">Facebook</label>
+                </fieldset>
 
-                        <input type="radio" name="my-account-avatar-gravatar" id="my-account-avatar-gravatar" value="gravatar"
-                        <% if (settings.profile.avatar_type == 'gravatar'){ %> checked="true" <% } %> />
-                        <label for="my-account-avatar-gravatar">Gravatar</label>
+                <fieldset data-role="controlgroup">
+                    <label for="my-account-profile-name">Your Name</label>
+                    <input type="text" name="my-account-profile-name" id="my-account-profile-name" class="custom"
+                    value="<%= settings.profile.name %>" />
+                </fieldset>
 
-                        <button class="my-account-set-up-gravatar">Set up Gravatar</button>
+                <fieldset data-role="controlgroup">
+                    <label for="my-account-location">Location</label>
+                    <input type="text" name="my-account-location" id="my-account-location" class="custom"
+                    value="<%= settings.profile.location %>" />
+                </fieldset>
 
-                    </fieldset>
+                <fieldset data-role="controlgroup">
+                    <label for="my-account-website">Website</label>
+                    <input type="text" name="my-account-website" id="my-account-website" class="custom"
+                    value="<%= settings.profile.website %>" />
+                </fieldset>
 
-                    <fieldset data-role="controlgroup">
-                        <label for="my-account-profile-name">Your Name</label>
-                        <input type="text" name="my-account-profile-name" id="my-account-profile-name" class="custom"
-                        value="<%= settings.profile.name %>" />
-                    </fieldset>
+                <fieldset data-role="controlgroup">
+                    <label for="my-account-bio">Bio</label>
+                    <textarea name="my-account-bio" id="my-account-bio" class="custom"><%= settings.profile.bio %></textarea>
+                </fieldset>
 
-                    <fieldset data-role="controlgroup">
-                        <label for="my-account-location">Location</label>
-                        <input type="text" name="my-account-location" id="my-account-location" class="custom"
-                        value="<%= settings.profile.location %>" />
-                    </fieldset>
+                <button data-theme="e" class="my-account-save">Save</button>
+            </div>
 
-                    <fieldset data-role="controlgroup">
-                        <label for="my-account-website">Website</label>
-                        <input type="text" name="my-account-website" id="my-account-website" class="custom"
-                        value="<%= settings.profile.website %>" />
-                    </fieldset>
-
-                    <fieldset data-role="controlgroup">
-                        <label for="my-account-bio">Bio</label>
-                        <textarea name="my-account-bio" id="my-account-bio" class="custom"><%= settings.profile.bio %></textarea>
-                    </fieldset>
-
-                    <button data-theme="e" class="my-account-save">Save</button>
-                </div>
-
-            </div><!-- End of Nested Collapsible Set -->
-
-         </p><!-- Close Content for Master Collapsible Sett -->
-    </div><!-- Close Master Collapsible Set -->
+        </div><!-- End of Nested Collapsible Set -->
 
 
 
-    <div data-role="collapsible" data-collapsed="false" data-theme="e">
-         <h3>Linked Services</h3>
-         <p >
+
+          <a class="ui-bar top-no-arrow" data-role="button" data-theme="e" >
+               <em>Linked Services</em>
+          </a>
          <div class="linked-services" data-role="collapsible-set" data-theme="c" data-content-theme="d">
 
 
          </div>
          </p><!-- Close Content for Master Collapsible Sett -->
-    </div><!-- Close Master Collapsible Set -->
 
-    <div data-role="collapsible" data-collapsed="false" data-theme="e">
-         <h3>Add Services</h3>
-         <p>
+    
+         <a class="ui-bar top-no-arrow" data-role="button" data-theme="e" >
+                <em>Link Services</em>
+          </a>
          <div class="add-services" data-role="collapsible-set" data-theme="c" data-content-theme="d">
 
 
          </div>
-         </p><!-- Close Content for Master Collapsible Sett -->
-    </div><!-- Close Master Collapsible Set -->
-
+         
+    </div>
     </script>
 
     <!-- @linked @service PAGE list currently linked services and add new ones -->
@@ -395,70 +405,60 @@
         <% switch(service.provider) { case 'twitter': %>
             <h3>Twitter - <%= service.get('username') %></h3>
             <fieldset data-role="controlgroup">
-
-                <button class="twitter-import-profile">Import Profile</button>
-
-                <input type="checkbox" name="twitter-link" id="twitter-link" class="custom"
+                
+                <p>Update my profile details to match Twitter:
+                </p>
+                
+                <p>
+                <button data-inline="true" data-theme="c" class="twitter-import-profile">Import Profile</button>
+                </p>
+                
+                <input type="checkbox" name="twitter-link" id="twitter-link"  data-role="none"
                 <% if(service.get('show_username')){%> checked="true" <%}%> />
-                <label for="twitter-link">Link to my profile from Snapr</label>
+                <label for="twitter-link">Show Twitter in my Profile</label>
 
-                <input type="checkbox" name="twitter-tweet" id="twitter-tweet" class="custom"
-                <% if(service.get('allow_tweet')){%> checked="true" <%}%> />
-                <label for="twitter-tweet">Allow tweets from Snapr</label>
 
             </fieldset>
         <% break; case 'foursquare': %>
             <h3>Foursquare - <%= service.get('username') %></h3>
             <fieldset data-role="controlgroup">
 
-                <input type="checkbox" name="foursquare-link" id="foursquare-link" class="custom"
+                <input type="checkbox" name="foursquare-link" id="foursquare-link" data-role="none"
                 <% if(service.get('show_username')){%> checked="true" <%}%> />
-                <label for="foursquare-link">Display my foursquare username</label>
-
-                <input type="checkbox" name="foursquare-checkin" id="foursquare-checkin" class="custom"
-                <% if(service.get('allow_checkin')){%> checked="true" <%}%> />
-                <label for="foursquare-checkin">Allow checkins from Snapr</label>
+                <label for="foursquare-link">Show Foursquare in my Profile</label>
 
             </fieldset>
         <% break; case 'tumblr': %>
             <h3>Tumblr - <%= service.get('username') %></h3>
             <fieldset data-role="controlgroup">
 
-                <input type="checkbox" name="tumblr-link" id="tumblr-link" class="custom"
+                <input type="checkbox" name="tumblr-link" id="tumblr-link" data-role="none"
                 <% if(service.get('show_username')){%> checked="true" <%}%> />
-                <label for="tumblr-link">Display my Tumblr username</label>
+                <label for="tumblr-link">Show Tumblr in my Profile</label>
 
-                <input type="checkbox" name="tumblr-post" id="tumblr-post" class="custom"
-                <% if(service.get('allow_post')){%> checked="true" <%}%> />
-                <label for="tumblr-post">Allow posts from Snapr</label>
 
             </fieldset>
         <% break; case 'facebook': %>
             <h3>Facebook - <%= service.get('username') %></h3>
             <fieldset data-role="controlgroup">
 
-                <input type="checkbox" name="facebook-link" id="facebook-link" class="custom"
+                <input type="checkbox" name="facebook-link" id="facebook-link" data-role="none"
                 <% if(service.get('show_profile_link')){%> checked="true" <%}%> />
-                <label for="facebook-link">Link to my profile from Snapr</label>
-
-                <input type="checkbox" name="facebook-newsfeed" id="facebook-newsfeed" class="custom"
-                <% if(service.get('allow_newsfeed_posts')){%> checked="true" <%}%> />
-                <label for="facebook-newsfeed">Allow newsfeed posts from Snapr</label>
-
-                <input type="checkbox" name="facebook-gallery" id="facebook-gallery" class="custom"
-                <% if(service.get('allow_gallery_posts')){%> checked="true" <%}%> />
-                <label for="facebook-gallery">Allow newsfeed posts from Snapr</label>
-
+                <label for="facebook-link">Show Facebook in my Profile</label>
             </fieldset>
-            <fieldset data-role="controlgroup">
-
-                <label for="facebook-gallery-name">Gallery Name</label>
-                <input type="text" name="facebook-gallery-name" id="facebook-gallery-name" class="custom"
-                value="<%= service.get('gallery_name') %>" />
-
-            </fieldset>
+           
         <% break; } %>
-            <button data-inline="true" class="unlink">Unlink</button><button data-inline="true" data-theme="b" class="save">Save</button>
+            <div class="ui-grid-b">
+                <div class="ui-block-a">
+                
+                </div>
+                <div class="ui-block-b">
+                    <button data-theme="c" class="unlink">Unlink</button>
+                </div>
+                <div class="ui-block-c">
+                    <button data-theme="e" class="save">Save</button>
+                </div>
+            </div>
         </div>
     </script>
 
