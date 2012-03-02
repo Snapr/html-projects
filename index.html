@@ -1685,10 +1685,10 @@
                                 <input type="checkbox" name="share-location" id="share-location" checked="true"/>
                                 <label for="share-location"><span class="ui-icon ui-icon-location share-location-label" ></span>
                                     <span class="location-name">
-                                    <% if (photo.attributes.location){%>
+                                    <% if (photo.attributes.location.location){%>
                                             <%= photo.attributes.location.location %>
                                         <%}else{%>
-                                            Finding location&hellip;
+                                            Getting location&hellip;
                                     <%}%>
                                     </span>
                                 </label>
@@ -1701,7 +1701,7 @@
                                     <% if (photo.attributes.location && photo.attributes.location.foursquare_venue_name){%>
                                         <%= photo.attributes.location.foursquare_venue_name %>
                                     <%}else{%>
-                                        Finding nearby venues&hellip;
+                                        Geting venue&hellip;
                                     <%}%>
                                 </span>
                             </a>

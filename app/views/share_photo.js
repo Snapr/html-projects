@@ -95,14 +95,27 @@ snapr.views.share_photo = Backbone.View.extend({
         });
         this.render();
 
-        if (this.query.latitude && this.query.longitude)
+        if (snapr.utils.get_local_param( "foursquare-sharing" ))
         {
+            this.get_foursquare_venues();
+        }
+        else
+        {
+            this.get_reverse_geocode();
+        }
+        $(this.el).find(".image-placeholder").html( this.img_template({img_url: path}) );
+    },
+
+    get_reverse_geocode: function()
+    {
+        if (this.query.latitude && this.query.longitude && !this.model.get("location").location)
+        {
+            var photo = this;
+
             var location = new snapr.models.geo_location({
                 latitude: this.query.latitude,
                 longitude: this.query.longitude
             });
-
-            var photo = this;
             location.fetch({
                 success: function( model )
                 {
@@ -110,16 +123,9 @@ snapr.views.share_photo = Backbone.View.extend({
                         location: model.attributes
                     });
                     $(photo.el).find(".location-name").text(photo.model.get("location").location);
-
-                    if (snapr.utils.get_local_param( "foursquare-sharing" ))
-                    {
-                        photo.get_foursquare_venues();
-                    }
                 }
             });
-
         }
-        $(this.el).find(".image-placeholder").html( this.img_template({img_url: path}) );
     },
 
     get_foursquare_venues: function()
@@ -166,6 +172,10 @@ snapr.views.share_photo = Backbone.View.extend({
             if ($(e.target).attr("checked"))
             {
                 this.get_foursquare_venues();
+            }
+            else
+            {
+                this.get_reverse_geocode();
             }
         }
 
