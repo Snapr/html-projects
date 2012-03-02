@@ -386,7 +386,7 @@ fieldset.ui-controlgroup{
 
 
     .ui-icon-loading {
-        background-image: url(../gfx/spinner.png);
+        background-image: url('../gfx/spinner.png');
         width: 56px;
         height: 56px;
         background-size: 56px 56px;
@@ -912,19 +912,19 @@ fieldset.ui-controlgroup{
         .box-shadow(none)
     }
 
-    .ui-icon-main-menu-feed{background-position: 0 -0px;}
-    .ui-icon-main-menu-map{background-position: 0 -80px;}
-    .ui-icon-main-menu-camera{background-position: 0 -160px;}
-    .ui-icon-main-menu-popular{background-position: 0 -240px;}
-    .ui-icon-main-menu-dashboard{background-position: 0 -320px;}
-    .ui-icon-main-menu-queue{background-position: 0 -400px;}
-    .ui-icon-main-menu-my-account{background-position: 0 -480px;}
-    .ui-icon-main-menu-activity{background-position: 0 -560px;}
-    .ui-icon-main-menu-join{background-position: 0 -640px;}
-    .ui-icon-main-menu-camera-lib{background-position: 0 -720px;}
-    .ui-icon-main-menu-cities{background-position: 0 -800px;}
-    .ui-icon-main-menu-info{background-position: 0 -880px;}
-    .ui-icon-main-menu-login{background-position: 0 -960px;}
+    .ui-icon-main-menu-feed{background-position: @mi-offset-x @gfx-menu-icon-sprite-feed-y;}
+    .ui-icon-main-menu-map{background-position: @mi-offset-x @gfx-menu-icon-sprite-map-y;}
+    .ui-icon-main-menu-camera{background-position: @mi-offset-x @gfx-menu-icon-sprite-camera-y;}
+    .ui-icon-main-menu-popular{background-position: @mi-offset-x @gfx-menu-icon-sprite-popular-y;}
+    .ui-icon-main-menu-dashboard{background-position: @mi-offset-x @gfx-menu-icon-sprite-dashboard-y;}
+    .ui-icon-main-menu-queue{background-position: @mi-offset-x @gfx-menu-icon-sprite-queue-y;}
+    .ui-icon-main-menu-my-account{background-position: @mi-offset-x @gfx-menu-icon-sprite-my-account-y;}
+    .ui-icon-main-menu-activity{background-position: @mi-offset-x @gfx-menu-icon-sprite-activity-y;}
+    .ui-icon-main-menu-join{background-position: @mi-offset-x @gfx-menu-icon-sprite-join-y;}
+    .ui-icon-main-menu-camera-lib{background-position: @mi-offset-x @gfx-menu-icon-sprite-camera-lib-y;}
+    .ui-icon-main-menu-cities{background-position: @mi-offset-x @gfx-menu-icon-sprite-cities-y;}
+    .ui-icon-main-menu-info{background-position: @mi-offset-x @gfx-menu-icon-sprite-info-y;}
+    .ui-icon-main-menu-login{background-position: @mi-offset-x @gfx-menu-icon-sprite-login-y;}
 
     /* Larger 2 column Btns */
     .ui-grid-a{
@@ -1073,7 +1073,6 @@ fieldset.ui-controlgroup{
             display: block;
             width: 32px;
             height: 28px;
-            background-image: url('../gfx/action-icons-dark.png');
             position: absolute;
             top: 1px;
             left: 3px;
@@ -2834,6 +2833,14 @@ fieldset.ui-controlgroup{
     
 }
 
+/* @dark-icons */
+.dark-icons{
+    .ui-icon{
+        background-image: url('../gfx/action-icons-dark.png');
+    } 
+}
+
+/* @extra-icons */
 .extra-icons{
     .ui-icon-heart,&.ui-icon-heart{background-position: @ei-offset-x @gfx-extra-icon-sprite-heart-y;}
     .ui-icon-venue,&.ui-icon-venue{background-position: @ei-offset-x @gfx-extra-icon-sprite-venue-y;}
@@ -2869,10 +2876,89 @@ fieldset.ui-controlgroup{
 /* High Resolution (iPhone 4) */
 
 @media only screen and (-webkit-min-device-pixel-ratio: 2) {
-   .main-logo{ background-image: url('../gfx/retina/main-logo.png'); background-size: 160px 42px}
-   .menu-main{
-       .ui-icon{background-image: url('../gfx/retina/main-menu-icons.png'); background-size: 80px 1280px;}
+    .ui-icon.extra-icons,.extra-icons .ui-icon{
+        background-image: url('../gfx/retina/extra-icons.png');
+        .background-size (@gfx-extra-icon-sprite-width, @gfx-extra-icon-sprite-height); 
     }
+
+    .ui-icon.helper-icons,.helper-icons .ui-icon{
+        background-image: url('../gfx/retina/helper-icons.png');
+        .background-size (@gfx-helper-icon-sprite-width, @gfx-helper-icon-sprite-height); 
+    }
+
+    .ui-icon,.ui-checkbox-on .ui-icon, .ui-radio-on .ui-icon,.ui-icon-searchfield::after{
+        background-image: url('../gfx/retina/general-jquerymob-icons.png');
+        .background-size (@gfx-general-icon-sprite-width, @gfx-general-icon-sprite-height); 
+        
+    }
+
+    .ui-icon-loading {
+        background-image: url('../gfx/retina/spinner.png');
+        .background-size (56px, 56px);
+     }
+
+    .ui-header .ui-icon{
+        background-image: url('../gfx/retina/bar-icons.png');
+        .background-size (@gfx-main-icon-sprite-width, @gfx-main-icon-sprite-height); 
+    }
+
+    .sharing-icon-small .ui-icon{
+        background-image: url('../gfx/retina/share-icons-small.png');
+        .background-size (@gfx-small-sharing-icon-sprite-width, @gfx-small-sharing-icon-sprite-height); 
+    }
+
+    .main-logo{
+        background-image: url('../gfx/retina/main-logo.png');
+        .background-size (160px, 42px);
+    }
+
+    .menu-main .ui-icon{
+        background-image: url('../gfx/retina/main-menu-icons.png');
+        .background-size (@gfx-menu-icon-sprite-width, @gfx-menu-icon-sprite-height);
+    }
+
+    .dark-icons .ui-icon{
+        background-image: url('../gfx/retina/action-icons-dark.png');
+        .background-size (@gfx-action-darkicon-sprite-width, @gfx-action-darkicon-sprite-height);
+    }
+
+    .user-info-block .user-icon-left .icon-overlay-info{
+        background-image: url('../gfx/retina/shiny-avatar-info.png');
+        .background-size (100px, 100px);
+    }
+
+    .image-item-block .image-actions .ui-icon,
+    .ui-checkbox .ui-icon,
+    .custom-action-icons .ui-icon,
+    .share-photo .upload-image-privacy .ui-icon,
+    .share-photo .upload-image-location .ui-btn .ui-icon,
+    .share-photo .image-controls .ui-icon{
+        background-image: url('../gfx/retina/action-icons-custom.png');
+        .background-size (@gfx-action-icon-sprite-width, @gfx-action-icon-sprite-height);
+    }
+
+    .dash-footer .ui-icon{
+        background-image: url('../gfx/retina/dash-icons.png');
+        .background-size (@gfx-dash-icon-sprite-width, @gfx-dash-icon-sprite-height);
+        
+    }
+    
+    .share-photo .upload-image-sharing .ui-icon{
+        background-image: url('../gfx/retina/share-icons-large.png');
+        .background-size (@gfx-large-sharing-icon-sprite-width, @gfx-large-sharing-icon-sprite-height);
+    }
+
+    .photo-map .snaprmapthumb {
+        .snaprmappin {
+            background-image: url('../gfx/retina/map-pin.png');
+            .background-size (28px, 35px);
+        }
+        .snaprthumbbg {
+            background-image: url('../gfx/retina/map-thumb-bg.png');
+            .background-size (78px, 88px);
+        }
+    }
+
    
 }
 
