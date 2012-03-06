@@ -15,8 +15,8 @@ snapr.views.connect = Backbone.View.extend({
         });
 
         this.photo_id = this.options.query && this.options.query.photo_id || null;
-        this.to_link = this.options.query && this.options.query.to_link.split(",") || [];
-        this.shared = this.options.query && this.options.query.shared.split(",") || [];
+        this.to_link = this.options.query && this.options.query.to_link && this.options.query.to_link.split(",") || [];
+        this.shared = this.options.query && this.options.query.shared && this.options.query.shared.split(",") || [];
         this.to_share = [];
         if (this.to_link.length && this.options.query && this.options.query.url)
         {
