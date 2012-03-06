@@ -1284,9 +1284,13 @@
 
 
        <!-- @venues PAGE-->
-       <div id="venues" data-add-back-btn="true" data-role="dialog" data-overlay-theme="c" data-theme="c">
+       <div id="venues" data-role="page" data-overlay-theme="c" data-theme="c">
            <div data-role="header" data-theme="c">
                <h1>Venues</h1>
+               <div class="ui-btn-right">
+                   <a class="x-back-to-share" data-role="button" data-icon="delete" data-iconpos="notext"></a>
+               </div>
+
            </div>
            <div data-role="content" data-theme="c">
                <div class="search-header">
@@ -1297,15 +1301,17 @@
            </div>
        </div>
 
-       <!-- @venue ITEM-->
-       <script id="venue-li-template" type="text/template">
-              <a data-ajax="false">
-                  <img src="<%= icon %>" alt="" class="user-icon-small ui-li-icon"/>
-                  <h3 class="venue-name"><%= venue.get('name') %></h3>
-                  <p class="small-text"><%= venue.get('location').distance %> m</p>
-              </a>
-              <a data-icon="right" data-iconpos="right" class="select"></a>
-          </script>
+        <!-- @venue ITEM-->
+        <script id="venue-li-template" type="text/template">
+            <a data-ajax="false">
+                <img src="<%= icon %>" alt="" class="user-icon-small ui-li-icon"/>
+                <h3 class="venue-name"><%= venue.get('name') %></h3>
+                <p class="small-text"><%= venue.get('location').distance %> m</p>
+            </a>
+            <% if (selected) {%>
+            <a data-icon="tick" data-iconpos="right" class="select"></a>
+            <%}%>
+        </script>
 
     <!-- @join snapr DIALOG-->
     <div id="join-snapr" data-add-back-btn="true" data-role="dialog" data-overlay-theme="c" data-theme="c">
@@ -1760,12 +1766,12 @@
 
                         <div id="no-foursquare-sharing-location"
                             <% if (foursquare_sharing){%> style="display:none;"<%}%>
-                            <% if (!photo.attributes.location.location){%> class="ajax-loading"<%}%>>
+                            <% if (photo.attributes.location && !photo.attributes.location.location){%> class="ajax-loading"<%}%>>
                             <span class="image-location custom-action-icons">
                                 <input type="checkbox" name="share_location" id="share-location" <%if (share_location){%>checked="true"<%}%> />
                                 <label for="share-location"><span class="ui-icon ui-icon-location share-location-label" ></span>
                                     <span class="location-name">
-                                    <% if (photo.attributes.location.location){%>
+                                    <% if (photo.attributes.location && photo.attributes.location.location){%>
                                             <%= photo.attributes.location.location %>
                                         <%}else{%>
                                             <%if (share_location){%>
@@ -1780,11 +1786,11 @@
                         </div>
                         <div id="foursquare-sharing-location"
                             <%if (!foursquare_sharing){%> style="display:none;"<%}%>
-                            <% if (!photo.attributes.location.foursquare_venue_name){%> class="ajax-loading"<%}%>>
+                            <% if (photo.attributes.location && !photo.attributes.location.foursquare_venue_name){%> class="ajax-loading"<%}%>>
                             <a data-role="button" id="foursquare-venue" data-icon="arrow-right">
                                 <span class="ui-icon ui-icon-venue"></span>
                                 <span class="foursquare-venue-name">
-                                    <% if (photo.attributes.location.foursquare_venue_name){%>
+                                    <% if (photo.attributes.location && photo.attributes.location.foursquare_venue_name){%>
                                         <%= photo.attributes.location.foursquare_venue_name %>
                                     <%}else{%>
                                         Geting venue&hellip;

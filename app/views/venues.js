@@ -11,6 +11,9 @@ snapr.views.venues = Backbone.View.extend({
             return true;
         });
 
+        this.back_query = this.options.query.back_query;
+        this.selected_id = this.options.query.foursquare_venue_id;
+
         this.el.find("ul.venue-list").empty();
 
         this.collection = new snapr.models.foursquare_venue_collection({
@@ -41,7 +44,8 @@ snapr.views.venues = Backbone.View.extend({
     },
 
     events: {
-        "keyup input": "search"
+        "keyup input": "search",
+        "click div[data-role='header'] a": "back_to_share"
     },
 
     render: function()
@@ -50,11 +54,15 @@ snapr.views.venues = Backbone.View.extend({
 
         var venue_li_template = _.template( $("#venue-li-template").html() );
 
+        var selected_id = this.selected_id;
+        var back_query = this.back_query;
         _.each( this.display_collection, function( model )
         {
             var venue_li = new snapr.views.venue_li({
                 template: venue_li_template,
-                model: model
+                model: model,
+                selected_id: selected_id,
+                back_query: back_query
             });
 
             venue_list.append( venue_li.render().el );
@@ -87,6 +95,15 @@ snapr.views.venues = Backbone.View.extend({
         {
             this.reset_collection();
         }
+    },
+
+    back_to_share: function( e )
+    {
+        e.preventDefault();
+        snapr.info.current_view = new snapr.views.share_photo({
+            query: this.back_query,
+            el: $("#share-photo")
+        });
     }
 
 });
