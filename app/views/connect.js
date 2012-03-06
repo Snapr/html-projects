@@ -14,99 +14,87 @@ snapr.views.connect = Backbone.View.extend({
             changeHash: false
         });
 
-        this.photo_id = this.options.query && this.options.query.photo_id || null;
-        this.to_link = this.options.query && this.options.query.to_link && this.options.query.to_link.split(",") || [];
-        this.shared = this.options.query && this.options.query.shared && this.options.query.shared.split(",") || [];
-        this.to_share = [];
-        if (this.to_link.length && this.options.query && this.options.query.url)
-        {
-            _.each(this.to_link, function(service)
-            {
-                // is the service provider mentioned in the return url?
-                if (this.options.query.url.indexOf(service) > -1)
-                {
-                    this.to_link = _.without(this.to_link, service);
 
-                    this.to_share.push( service );
-                }
-            }, this);
+        var query = new Query(this.options.query),
+            linked = query.pop('linked');
+
+        this.photo_id = query.get('photo_id');
+
+        // if there is a newly linked service, share to it then carry on linking (or finish)
+        if(linked){
+            username = query.pop('username');
+            // is a service username is suppllied
+            if(username){
+                link = this.link;
+                this.share(linked, function(){link(query);});
+            // no service username = something went wrong
+            }else{
+                alert(query.get('error', 'Unknown Error Linking'));
+            }
+        // if there are no newly linked services carry on linking (or finish) stright away
+        }else{
+            this.link(query);
         }
 
-        this.services = [
-            "facebook",
-            "tumblr",
-            "foursquare",
-            "twitter"
-        ];
-
         this.render();
-        // this.user_settings = new snapr.models.user_settings();
-        //
-        // var connect_view = this;
-        // var options = {
-        //     success: function()
-        //     {
-        //         connect_view.user_settings.linked_services_setup();
-        //         connect_view.render();
-        //     },
-        //     error: function()
-        //     {
-        //         console.log( 'error');
-        //     }
-        // }
-        //
-        // this.user_settings.fetch(options);
+    },
+    link: function(query){
+        var to_link = query.get('to_link').split(',');
+        var service = to_link.shift();
+        if(service){
+            query.set('linked', service).set('to_link', to_link.join(','));
+            var next = window.location.href.split('?')[0];
+            next += '?' + query.toString();
+            var url;
+            if (snapr.utils.get_local_param( "appmode" )){
+                url = snapr.api_base + "/linked_services/"+ service + "/oauth/?access_token=" + snapr.auth.get("access_token") +
+                    "&redirect=snapr://redirect?url=" + escape( next );
+            }else{
+                url = snapr.api_base + "/linked_services/" + service + "/oauth/?access_token=" + snapr.auth.get("access_token") +
+                    "&redirect=" + escape( next );
+            }
+            window.location = url;
+        }else{
+            setTimeout(function(){
+                Route.navigate("#/uploading/?shared=true&photo_id=" + query.get('photo_id'), true);
+            }, 600);
+        }
+    },
+    share: function(service, callback){
+        this.model = new snapr.models.photo({id: this.photo_id});
+
+        var options = {
+            success: callback,
+            error: function( error ){
+                console.warn("share error", error);
+            }
+        };
+
+        switch (service){
+            case "facebook":
+                this.model.save({
+                    facebook_feed: true
+                }, options);
+                break;
+            case "tumblr":
+                this.model.save({
+                    tumblr: true
+                }, options);
+                break;
+            case "twitter":
+                this.model.save({
+                    tweet: true
+                }, options);
+                break;
+            case "foursquare":
+                this.model.save({
+                    foursquare_checkin: true
+                }, options);
+                break;
+        }
     },
 
-    render: function()
-    {
-        $(this.el).find("ul").empty();
-
-        _.each(this.services, function( service )
-        {
-            if (_.indexOf( this.to_share, service ) > -1)
-            {
-                // this service has been linked and can now share
-                // the li will do the sharing itself and redirect
-                // when ready
-                var li = new snapr.views.connect_li({
-                    provider: service,
-                    status: "ready",
-                    photo_id: this.photo_id,
-                    parent_view: this
-                });
-                $(this.el).find("ul").append( li.render().el );
-            }
-            else if (_.indexOf( this.to_link, service ) > -1)
-            {
-                // this service was not linked
-                var li = new snapr.views.connect_li({
-                    provider: service,
-                    status: "unlinked",
-                    photo_id: this.photo_id,
-                    parent_view: this
-                });
-                $(this.el).find("ul").append( li.render().el );
-            }
-            else if (_.indexOf( this.shared, service ) > -1)
-            {
-                // this service was shared
-                var li = new snapr.views.connect_li({
-                    provider: service,
-                    status: "shared",
-                    photo_id: this.photo_id,
-                    parent_view: this
-                });
-                $(this.el).find("ul").append( li.render().el );
-            }
-
-
-        }, this);
-
-        $(this.el).find("ul").trigger('create').listview().listview("refresh");
-        console.log( "render connect", this );
-        // $(this.el).trigger("refresh");
-
+    render: function(){
         return this;
     }
 

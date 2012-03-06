@@ -227,13 +227,21 @@ snapr.views.share_photo = Backbone.View.extend({
             share_photo_view.venue_collection.fetch({
                 success: function( collection )
                 {
-                    var location = _.extend( share_photo_view.model.attributes.location, {
-                        foursquare_venue_id: collection.first().get( "id" ),
-                        foursquare_venue_name: collection.first().get( "name" )
-                    });
-                    share_photo_view.model.set({location: location});
-                    $(share_photo_view.el).find("#foursquare-sharing-location").removeClass("ajax-loading");
-                    $(share_photo_view.el).find(".foursquare-venue-name").text(share_photo_view.model.get("location").foursquare_venue_name);
+                    if (collection.length)
+                    {
+                        var location = _.extend( share_photo_view.model.attributes.location, {
+                            foursquare_venue_id: collection.first().get( "id" ),
+                            foursquare_venue_name: collection.first().get( "name" )
+                        });
+                        share_photo_view.model.set({location: location});
+                        $(share_photo_view.el).find("#foursquare-sharing-location").removeClass("ajax-loading");
+                        $(share_photo_view.el).find(".foursquare-venue-name").text(share_photo_view.model.get("location").foursquare_venue_name);
+                    }
+                    else
+                    {
+                        $(share_photo_view.el).find("#foursquare-sharing-location").removeClass("ajax-loading");
+                        $(share_photo_view.el).find(".foursquare-venue-name").text( "No venues nearby." );
+                    }
                 }
             });
         }
