@@ -1,7 +1,7 @@
 snapr.views.connect_li = Backbone.View.extend({
-    
+
     tagName: "li",
-    
+
     initialize: function()
     {
         _.bindAll( this );
@@ -16,7 +16,7 @@ snapr.views.connect_li = Backbone.View.extend({
             this.share();
         }
     },
-    
+
     render: function()
     {
         $(this.el)
@@ -29,12 +29,12 @@ snapr.views.connect_li = Backbone.View.extend({
 
         return this;
     },
-    
+
     events: {
         "submit .tumblr-login": "link_service",
         "click .connect": "link_service"
     },
-    
+
     link_service: function()
     {
         if (this.provider == "tumblr")
@@ -58,17 +58,17 @@ snapr.views.connect_li = Backbone.View.extend({
                         connect_li.render();
                         connect_li.parent_view.to_link = _.without(connect_li.parent_view.to_link, connect_li.provider);
                         connect_li.share();
-                        
+
                     }else{
                         alert( data.error.message );
                     }
                 },
                 error: function( data )
                 {
-                    console.warn('ajax error!');
+                    console.log('ajax error!');
                 },
             });
-            
+
         }
         else
         {
@@ -76,9 +76,9 @@ snapr.views.connect_li = Backbone.View.extend({
                 + this.provider + "/oauth/?access_token=" + snapr.auth.get("access_token") + "&redirect=" + escape( window.location.href );
             window.location = url;
         }
-        
+
     },
-    
+
     share: function()
     {
         this.model = new snapr.models.photo({id: this.photo_id});
@@ -88,7 +88,7 @@ snapr.views.connect_li = Backbone.View.extend({
         var options = {
             success: function( model, xhr )
             {
-                // console.warn("share success", model, xhr);
+                // console.log("share success", model, xhr);
                 connect_li.status = "shared";
                 connect_li.render();
                 if (connect_li.parent_view.to_link.length == 0)
@@ -101,7 +101,7 @@ snapr.views.connect_li = Backbone.View.extend({
             },
             error: function( error )
             {
-                console.warn("share error", error);
+                console.log("share error", error);
             }
         }
 
@@ -119,5 +119,5 @@ snapr.views.connect_li = Backbone.View.extend({
                 break;
         }
     }
-    
+
 });

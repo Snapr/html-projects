@@ -6,7 +6,7 @@ snapr.views.thumbs_li = Backbone.View.extend({
     render: function(callback){
         var el = this.el.empty();
         _.each(this.collection.models,function(item){
-            // console.warn(item.get('id'));
+            // console.log(item.get('id'));
         });
         var results = this.collection.models;
         el.html( this.template( { results: results } ) )

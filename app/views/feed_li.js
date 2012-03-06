@@ -40,7 +40,7 @@ snapr.views.feed_li = Backbone.View.extend({
         }
         else
         {
-            console.warn('reactions already loaded');
+            console.log('reactions already loaded');
         }
     },
 
@@ -160,7 +160,7 @@ snapr.views.feed_li = Backbone.View.extend({
                     },
                     error: function(e)
                     {
-                        console.warn('fav error',e);
+                        console.log('fav error',e);
                     }
                 }
                 fav.destroy( options );
@@ -182,7 +182,7 @@ snapr.views.feed_li = Backbone.View.extend({
                     },
                     error: function(e)
                     {
-                        console.warn('fav error',e);
+                        console.log('fav error',e);
                     }
                 }
                 fav.save( {}, options );
@@ -208,7 +208,7 @@ snapr.views.feed_li = Backbone.View.extend({
             {
                 if (s.get('success'))
                 {
-                    console.warn('save comment success');
+                    console.log('save comment success');
                     var comment_count = parseInt( feed_li.model.get('comments') ) + 1;
                     feed_li.model.set({
                         comments: comment_count
@@ -224,15 +224,15 @@ snapr.views.feed_li = Backbone.View.extend({
                         feed_li.reactions.reaction_collection.fetch({
                             success: function( s )
                             {
-                                // console.warn('fetch reactions success',s);
+                                // console.log('fetch reactions success',s);
                                 comment_area.find('.comment-form textarea').val('');
                                 comment_area.trigger('collapse');
-                                // console.warn('render reactions');
+                                // console.log('render reactions');
                                 feed_li.reactions.render();
                             },
                             error: function( e )
                             {
-                                console.warn('error', e);
+                                console.log('error', e);
                             }
                         });
                     }
@@ -240,7 +240,7 @@ snapr.views.feed_li = Backbone.View.extend({
             },
             error: function( error )
             {
-                console.warn('error', error);
+                console.log('error', error);
             }
         }
 

@@ -8,12 +8,12 @@ snapr.views.popular = Backbone.View.extend({
 
     initialize: function()
     {
-        console.warn('init pop');
+        console.log('init pop');
 
         this.el.live('pagehide', function( e )
         {
             $(e.target).undelegate();
-            
+
             return true;
         });
 
@@ -34,7 +34,7 @@ snapr.views.popular = Backbone.View.extend({
         var time = e && e.currentTarget.id.replace( 'popular-', '' ) || 'time-all';
 
         var popuar_view = this;
-        
+
         switch (time){
             case 'time-today':
                 var today = new Date();
@@ -50,11 +50,11 @@ snapr.views.popular = Backbone.View.extend({
                     delete popuar_view.photo_collection.data.min_date;
                 }
         }
-        
+
         var options = {
             success: function()
             {
-                console.warn('success');
+                console.log('success');
                 popular_list = new snapr.views.thumbs_li({
                     collection: popuar_view.photo_collection,
                     el: $('#popular-thumbs').eq(0)
@@ -63,7 +63,7 @@ snapr.views.popular = Backbone.View.extend({
                 {
                     $.mobile.hidePageLoadingMsg();
                     // store the last query
-                    console.warn('store the last query');
+                    console.log('store the last query');
                     $('#popular-thumbs').eq(0).data('query', {
                         time: time,
                         auth: snapr.auth
@@ -72,15 +72,15 @@ snapr.views.popular = Backbone.View.extend({
             },
             error:function()
             {
-                console.warn('error');
+                console.log('error');
                 $.mobile.hidePageLoadingMsg();
             }
         }
-        
+
         // only update list if the query has changed or is new
         if (!_.isEqual( $('#popular-thumbs').eq(0).data('query'), {time: time, auth: snapr.auth} ))
         {
-            console.warn('loading');
+            console.log('loading');
             $.mobile.loadingMessage = "Loading popular photos";
             $.mobile.showPageLoadingMsg();
             popuar_view.photo_collection.fetch( options );

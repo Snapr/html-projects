@@ -10,16 +10,16 @@ snapr.views.login = Backbone.View.extend({
         this.el.live('pagehide', function( e )
         {
             $(e.target).undelegate();
-            
+
             return true;
         });
-        
+
         if (this.options.query)
         {
             this.message = this.options.query.message;
         }
 
-        
+
         if (this.message)
         {
             $(this.el).find(".login-message").show().text(this.message);
@@ -28,7 +28,7 @@ snapr.views.login = Backbone.View.extend({
         {
             $(this.el).find(".login-message").hide().text("");
         }
-        
+
         $.mobile.changePage( $("#login"), {
             changeHash: false,
             transition: "slidedown"
@@ -37,7 +37,7 @@ snapr.views.login = Backbone.View.extend({
 
     log_in: function()
     {
-        // console.warn('get_auth_token')
+        // console.log('get_auth_token')
         var username = $("#login-dialog-username").val();
         var password = $("#login-dialog-password").val();
 

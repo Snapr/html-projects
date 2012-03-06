@@ -46,10 +46,8 @@ snapr.views.map = Backbone.View.extend({
 
 
         if(this.map) {
-            console.warn("map already");
             this.search_location(this.query.location);
         } else {
-            console.warn("create map");
             this.create_map(this.query.location);
         }
 
@@ -74,14 +72,14 @@ snapr.views.map = Backbone.View.extend({
         //     this.place_pin();
         // }
         var b = google.maps.event.addListener(map_view.map, "bounds_changed", function () {
-            // console.warn( 'bounds_changed' );
+            // console.log( 'bounds_changed' );
         });
         var z = google.maps.event.addListener(map_view.map, "zoom_changed", function () {
-            // console.warn( 'zoom_changed' );
+            // console.log( 'zoom_changed' );
         });
         var idle = google.maps.event.addListener(map_view.map, "idle", function () {
             var query = map_view.thumb_collection && map_view.thumb_collection.data || false;
-            // console.warn( 'idle get thumbs', query );
+            // console.log( 'idle get thumbs', query );
             map_view.get_thumbs(query);
         });
 
@@ -130,7 +128,7 @@ snapr.views.map = Backbone.View.extend({
                 });
             },
             error: function (e) {
-                console.warn('error', e);
+                console.log('error', e);
             }
         });
     },

@@ -8,7 +8,7 @@ snapr.views.about = Backbone.View.extend({
 
     initialize: function()
     {
-        console.warn('about');
+        console.log('about');
 
         this.el.live('pagehide', function( e )
         {

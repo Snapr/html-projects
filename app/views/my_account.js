@@ -5,7 +5,7 @@ snapr.views.my_account = Backbone.View.extend({
         this.el.live('pagehide', function( e )
         {
             $(e.target).undelegate();
-            
+
             return true;
         });
 
@@ -20,14 +20,14 @@ snapr.views.my_account = Backbone.View.extend({
             },
             error: function()
             {
-                console.warn( 'error' , my_account_view );
+                console.log( 'error' , my_account_view );
             }
         }
         this.user_settings.fetch( options );
     },
-    
+
     template: _.template( $('#my-account-template').html() ),
-    
+
     render: function()
     {
         if (snapr.utils.get_local_param("appmode"))
@@ -49,7 +49,7 @@ snapr.views.my_account = Backbone.View.extend({
             .trigger('create');
 
         // set all linked services to false, we will check them off below
-        
+
         var linked_services_list = {
             foursquare:false,
             facebook:false,
@@ -61,10 +61,10 @@ snapr.views.my_account = Backbone.View.extend({
         {
             var v = new snapr.views.linked_service();
             v.model = service;
-            
+
             // keep track of linked services
             linked_services_list[service.provider] = true;
-            
+
             account_content.find('.linked-services').append( v.render().el ).trigger('create');
         });
 
@@ -78,7 +78,7 @@ snapr.views.my_account = Backbone.View.extend({
                 account_content.find('.add-services').append( v.render().el ).trigger('create');
             }
         });
-        
+
         return this;
     },
 
@@ -87,45 +87,45 @@ snapr.views.my_account = Backbone.View.extend({
         "click .my-account-set-up-gravatar": "set_up_gravatar",
         "click .my-account-save": "save_settings"
     },
-    
+
     set_avatar: function(e)
     {
         var input_target = $('#' + e.currentTarget.htmlFor);
 
         var avatar_type = input_target.val();
-        
+
         var user_setting = new snapr.models.user_settings();
-        
+
         var container = input_target.closest( ".my-account-avatar" );
         container.find( "input[type='radio']" ).attr( "checked", false );
         input_target.attr( "checked", true );
         container.find( "input[type='radio']" ).checkboxradio( "refresh" );
-        
+
         // var options = {
         //     success: function()
         //     {
-        //         console.warn( "set avatar success" );
+        //         console.log( "set avatar success" );
         //     },
         //     error: function()
         //     {
-        //         console.warn( "set avatar error" );
+        //         console.log( "set avatar error" );
         //     }
         // }
-        // 
-        
-        console.warn( "set_avatar", avatar_type );
+        //
+
+        console.log( "set_avatar", avatar_type );
     },
-    
+
     set_up_gravatar: function()
     {
         window.open( "http://en.gravatar.com/" );
     },
-    
+
     save_settings: function()
     {
-        console.warn( "save settings" );
+        console.log( "save settings" );
     },
-    
+
     queue_settings: function( upload_mode, paused )
     {
         this.render();

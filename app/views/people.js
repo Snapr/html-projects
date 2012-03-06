@@ -1,20 +1,20 @@
 snapr.views.people = Backbone.View.extend({
-    
+
     initialize: function()
     {
         this.el.live('pagehide', function( e )
         {
             $(e.target).undelegate();
-            
+
             return true;
         });
-        
+
         this.el.find("ul.people-list").empty();
-        
+
         this.collection = new snapr.models.user_collection();
-        
+
         var people_view = this;
-        
+
         this.collection.bind( "reset", function()
         {
             people_view.render();
@@ -29,12 +29,12 @@ snapr.views.people = Backbone.View.extend({
         {
             var transition = "slide";
         }
-        
+
         $.mobile.changePage( $("#people"), {
             changeHash: false,
             transition: transition
         });
-        
+
         switch (this.options.follow){
             case "following":
                 this.el.find("h1").text("Following");
@@ -52,38 +52,38 @@ snapr.views.people = Backbone.View.extend({
                 this.collection.user_search( this.options.query.username )
                 break;
         }
-        
+
     },
-    
+
     events: {
         "keyup input": "search"
     },
-    
+
     render: function()
     {
         var people_list = this.el.find("ul.people-list").empty();
-        
+
         var people_li_template = _.template( $("#people-li-template").html() );
-        
+
         _.each( this.collection.models, function( model )
         {
             var people_li = new snapr.views.people_li({
                 template: people_li_template,
                 model: model
             });
-            
+
             people_list.append( people_li.render().el );
-            
+
         });
-        
+
         people_list.listview().listview("refresh");
     },
-    
+
     search: function(e)
     {
 
         var keywords = $(e.target).val();
-        
+
         if (keywords.length > 1)
         {
             switch (this.options.follow){
@@ -94,11 +94,11 @@ snapr.views.people = Backbone.View.extend({
                     // need new api
                     break;
                 default:
-                    console.warn( "keypress", e, keywords )
+                    console.log( "keypress", e, keywords )
                     // this.collection.user_search( keywords )
                     break;
             }
         }
     }
-    
+
 });

@@ -16,7 +16,7 @@ snapr.views.home = Backbone.View.extend({
 
         if ($.mobile.activePage && $.mobile.activePage.find("#home").length < 1)
         {
-            console.warn( 'changing page' );
+            console.log( 'changing page' );
             $.mobile.changePage( "#home" );
             this.render();
         }

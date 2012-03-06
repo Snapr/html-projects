@@ -5,7 +5,7 @@ snapr.views.love_it = Backbone.View.extend({
         this.el.live( "pagehide", function( e )
         {
             $(e.target).undelegate();
-            
+
             return true;
         });
 
@@ -32,20 +32,20 @@ snapr.views.love_it = Backbone.View.extend({
         }
         else
         {
-            console.warn( "error, no photo_id and no photo_path" );
+            console.log( "error, no photo_id and no photo_path" );
         }
     },
-    
+
     render: function()
     {
         if (this.model)
         {
-            var img_url = "http://media-server2.snapr.us/lrg/" 
-                + this.model.get("secret") + "/" 
+            var img_url = "http://media-server2.snapr.us/lrg/"
+                + this.model.get("secret") + "/"
                 + this.model.get("id") + ".jpg";
             $(this.el).find("[data-role='content']")
                 .html( this.template({
-                    shared: this.shared, 
+                    shared: this.shared,
                     img_url: img_url,
                     height: (this.model.get("height")/this.model.get("width")*$(this.el).find("[data-role='content']").innerWidth()) + "px"
                 }) )
@@ -57,14 +57,14 @@ snapr.views.love_it = Backbone.View.extend({
             var height = $(this.el).find("[data-role='content']").innerWidth() + "px";
             $(this.el).find("[data-role='content']")
                 .html( this.template({
-                    shared: this.shared, 
+                    shared: this.shared,
                     img_url: img_url,
                     height: height
                 }) )
                 .trigger("create");
-            
+
         }
-        
+
         $(this.el).find("img").load(function()
         {
             setTimeout(function(){
@@ -72,8 +72,8 @@ snapr.views.love_it = Backbone.View.extend({
             },100);
         });
 
-        
+
         return this;
     }
-    
+
 });

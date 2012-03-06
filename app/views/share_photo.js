@@ -35,7 +35,7 @@ snapr.views.share_photo = Backbone.View.extend({
             this.get_photo_from_server( this.query.photo_id || this.query.photo );
         }
         else{
-            console.warn( "error, no path or photo_id" );
+            console.log( "error, no path or photo_id" );
         }
     },
 
@@ -71,7 +71,7 @@ snapr.views.share_photo = Backbone.View.extend({
         this.model.fetch({
             success: function()
             {
-                console.warn( "photo fetch success" );
+                console.log( "photo fetch success" );
 
                 // temporary hack to display image
                 var img_url = "http://media-server2.snapr.us/sml/"
@@ -84,7 +84,7 @@ snapr.views.share_photo = Backbone.View.extend({
             },
             error: function()
             {
-                console.warn( "photo fetch error" );
+                console.log( "photo fetch error" );
             }
         });
     },
@@ -148,7 +148,7 @@ snapr.views.share_photo = Backbone.View.extend({
             },
             function( e )
             {
-                console.warn( "geocode error", e );
+                console.log( "geocode error", e );
             });
         }
     },
@@ -192,7 +192,7 @@ snapr.views.share_photo = Backbone.View.extend({
             },
             function( e )
             {
-                console.warn( "geocode error", e );
+                console.log( "geocode error", e );
             });
         }
     },
@@ -233,7 +233,7 @@ snapr.views.share_photo = Backbone.View.extend({
 
     venue_search: function()
     {
-        console.warn("venue search", this.model)
+        console.log("venue search", this.model)
 
         Route.navigate( "#/venue/search/?ll=" +
             this.model.get("location").latitude + "," +
@@ -263,7 +263,7 @@ snapr.views.share_photo = Backbone.View.extend({
             },{
                 success: function( model, xhr )
                 {
-                    // console.warn( model, xhr );
+                    // console.log( model, xhr );
                     if (pink_nation_sharing && !snapr.utils.get_local_param("appmode"))
                     {
                         $.ajax({
@@ -329,7 +329,7 @@ snapr.views.share_photo = Backbone.View.extend({
                 },
                 error: function()
                 {
-                    console.warn( "save/share error" );
+                    console.log( "save/share error" );
                 }
             });
         }

@@ -39,7 +39,7 @@ snapr.views.user_profile = Backbone.View.extend({
 
     render: function()
     {
-        console.warn('render', this)
+        console.log('render', this)
         this.el.find( ".user-profile" ).html( this.template({
             user: this.model
         }) );

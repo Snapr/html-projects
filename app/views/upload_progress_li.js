@@ -1,23 +1,23 @@
 snapr.views.upload_progress_li = Backbone.View.extend({
-    
+
     tagName: "div",
-    
+
     initialize: function()
     {
         this.template = this.options.template;
         this.photo = this.options.photo;
     },
-    
+
     events: {
         "click .cancel": "cancel_upload"
     },
-    
+
     render: function()
     {
         // check that the progress hasn't already reached 100%
         if (!$(this.el).find(".finishing").length)
         {
-            $(this.el).html( 
+            $(this.el).html(
                 this.template({
                     upload_status: this.photo.upload_status,
                     img_url: this.photo.thumbnail,
@@ -41,7 +41,7 @@ snapr.views.upload_progress_li = Backbone.View.extend({
 
         return this;
     },
-    
+
     cancel_upload: function()
     {
         var id = this.photo.id;
@@ -56,7 +56,7 @@ snapr.views.upload_progress_li = Backbone.View.extend({
             }
         });
 
-        console.warn( "cancel upload", this );
+        console.log( "cancel upload", this );
     }
-    
+
 });

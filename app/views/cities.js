@@ -8,7 +8,7 @@ snapr.views.cities = Backbone.View.extend({
 
     initialize: function()
     {
-        console.warn('cities');
+        console.log('cities');
 
         this.el.live('pagehide', function( e )
         {
