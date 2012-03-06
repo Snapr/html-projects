@@ -34,7 +34,9 @@ snapr.views.connect = Backbone.View.extend({
 
         this.services = [
             "facebook",
-            "tumblr"
+            "tumblr",
+            "foursquare",
+            "twitter"
         ];
 
         this.render();
