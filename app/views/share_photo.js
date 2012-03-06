@@ -91,6 +91,7 @@ snapr.views.share_photo = Backbone.View.extend({
         this.model.bind( "change:secret", this.render );
 
         this.model.bind( "change:location", this.render );
+        this.model.bind( "change:foursquare_venue_name", this.render );
 
         this.model.fetch({
             success: function( model )
@@ -362,6 +363,15 @@ snapr.views.share_photo = Backbone.View.extend({
             if (this.model.get("location") && this.model.get("location").latitude && this.model.get("location").longitude)
             {
                 redirect_url += "&ll=" + this.model.get("location").latitude + "," + this.model.get("location").longitude;
+            }
+
+            this.model.unset( "shared", {silent: true} );
+            if (_.isObject(this.model.get( "location" )) )
+            {
+                var location = this.model.get( "location" );
+                this.model.unset( "location", {silent: true} );
+                var attributes = _.extend( this.model.attributes, location );
+                this.model.set( attributes, {silent: true} );
             }
 
             this.model.save({
