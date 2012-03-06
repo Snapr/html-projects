@@ -14,7 +14,7 @@ snapr.views.linked_services = Backbone.View.extend({
             changeHash: false,
             transition: "slidedown"
         });
-        
+
         if(this.options.query.to_link){
             this.to_link = this.options.query.to_link.split(",");
             this.still_to_link = this.to_link;
@@ -34,16 +34,16 @@ snapr.views.linked_services = Backbone.View.extend({
             },
             error: function()
             {
-                console.warn( 'error');
+                console.log( 'error');
             }
         }
 
         this.user_settings.fetch(options);
     },
-    
+
     render: function()
     {
-        console.warn('render')
+        console.log('render')
 
         this.show_tolink_message();
 
@@ -53,17 +53,17 @@ snapr.views.linked_services = Backbone.View.extend({
             tumblr:false,
             // twitter:false
         }
-        
+
         $(this.el).find('.linked-services').empty();
         $(this.el).find('.add-services').empty();
-                
+
         _.each( this.user_settings.get('linked_services'), function( service, index )
         {
             var v = new snapr.views.linked_service({model: service});
-            
+
             // keep track of linked services
             linked_services_list[service.provider] = true;
-            
+
             $(this.el).find('.linked-services').append( v.render().el ).trigger('create');
         }, this);
 
@@ -77,13 +77,13 @@ snapr.views.linked_services = Backbone.View.extend({
                 $(this.el).find('.add-services').append( v.render().el ).trigger('create');
             }
         }, this);
-        
-        console.warn('end linked_services_list', linked_services_list);
-        
+
+        console.log('end linked_services_list', linked_services_list);
+
         return this;
-        
+
     },
-    
+
     show_tolink_message: function()
     {
         if (this.to_link && this.to_link.length)
@@ -103,8 +103,8 @@ snapr.views.linked_services = Backbone.View.extend({
         {
             $(this.el).find(".tolink-message").text("");
         }
-        
+
     }
-    
-    
+
+
 });

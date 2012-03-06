@@ -8,7 +8,7 @@ snapr.views.activity = Backbone.View.extend({
 
     initialize: function()
     {
-        console.warn('activity');
+        console.log('activity');
 
         this.el.live('pagehide', function( e )
         {

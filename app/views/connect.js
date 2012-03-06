@@ -51,7 +51,7 @@ snapr.views.connect = Backbone.View.extend({
         //     },
         //     error: function()
         //     {
-        //         console.warn( 'error');
+        //         console.log( 'error');
         //     }
         // }
         //
@@ -104,7 +104,7 @@ snapr.views.connect = Backbone.View.extend({
         }, this);
 
         $(this.el).find("ul").trigger('create').listview().listview("refresh");
-        console.warn( "render connect", this );
+        console.log( "render connect", this );
         // $(this.el).trigger("refresh");
 
         return this;

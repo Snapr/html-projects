@@ -33,7 +33,7 @@ snapr.constants.share_redirect = "#/uploading/?";
 // Overriding sync to make this a jsonp app
 Backbone.sync = function (method, model, options) {
 
-    // console.warn( "sync", method, model, options )
+    // console.log( "sync", method, model, options )
     // Helper function to get a URL from a Model or Collection as a property
     // or as a function.
     // sends the method as a parameter so that different methods can have
@@ -376,7 +376,7 @@ snapr.utils.get_photo_height = function (orig_width, orig_height, element) {
     var aspect = orig_width/orig_height,
         width = $(element).eq(0).width();
 
-    console.warn("orig_width: "+ orig_width + "orig_height: "+ orig_height + "width: "+ width);
+    console.log("orig_width: "+ orig_width + "orig_height: "+ orig_height + "width: "+ width);
     return width/aspect;
 };
 
@@ -809,7 +809,7 @@ function queue_settings(upload_mode, paused) {
 }
 
 $(".x-launch-camera").live("click", function () {
-    // console.warn("camera");
+    // console.log("camera");
     if(snapr.utils.get_local_param("appmode")) {
         pass_data("snapr://camera");
         setTimeout(function () {
@@ -821,7 +821,7 @@ $(".x-launch-camera").live("click", function () {
 });
 
 $(".x-launch-photo-library").live("click", function () {
-    // console.warn("camera-roll");
+    // console.log("camera-roll");
     if(snapr.utils.get_local_param("appmode")) {
         pass_data("snapr://photo-library");
         setTimeout(function () {

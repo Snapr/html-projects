@@ -46,7 +46,7 @@ snapr.models.user = Backbone.Model.extend({
             {
                 model.url = url_function;
                 model.fetch();
-                console.warn( "follow error", e );
+                console.log( "follow error", e );
             }
         })
 
@@ -70,7 +70,7 @@ snapr.models.user = Backbone.Model.extend({
             {
                 model.url = url_function;
                 model.fetch();
-                console.warn( "unfollow error", e );
+                console.log( "unfollow error", e );
             }
         })
 

@@ -9,7 +9,7 @@ snapr.views.join_snapr = Backbone.View.extend({
         this.el.live('pagehide', function( e )
         {
             $(e.target).undelegate();
-            
+
             return true;
         });
 
@@ -25,9 +25,9 @@ snapr.views.join_snapr = Backbone.View.extend({
            email: this.el.find("#join-dialog-email").val(),
            client_id: snapr.client_id
         }
-        
+
         var join_snapr_view = this;
-        
+
         // these options will be triggered on login (after successful join)
         var login_options = {
             success: function()
@@ -41,7 +41,7 @@ snapr.views.join_snapr = Backbone.View.extend({
             },
             error: function()
             {
-                console.warn('error on login after successful join');
+                console.log('error on login after successful join');
             }
         }
         // these options will be triggered on join
@@ -52,7 +52,7 @@ snapr.views.join_snapr = Backbone.View.extend({
             },
             error: function( e )
             {
-                console.warn( "error", e );
+                console.log( "error", e );
             }
         }
         // save creates a new user

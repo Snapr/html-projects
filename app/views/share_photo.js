@@ -35,7 +35,7 @@ snapr.views.share_photo = Backbone.View.extend({
             this.get_photo_from_server( this.query.photo_id || this.query.photo );
         }
         else{
-            console.warn( "error, no path or photo_id" );
+            console.log( "error, no path or photo_id" );
         }
     },
 
@@ -123,7 +123,7 @@ snapr.views.share_photo = Backbone.View.extend({
             },
             error: function()
             {
-                console.warn( "photo fetch error" );
+                console.log( "photo fetch error" );
             }
         });
     },
@@ -208,7 +208,7 @@ snapr.views.share_photo = Backbone.View.extend({
             },
             function( e )
             {
-                console.warn( "geocode error", e );
+                console.log( "geocode error", e );
             });
         }
     },
@@ -273,7 +273,7 @@ snapr.views.share_photo = Backbone.View.extend({
             },
             function( e )
             {
-                console.warn( "geocode error", e );
+                console.log( "geocode error", e );
             });
         }
     },
@@ -470,7 +470,7 @@ snapr.views.share_photo = Backbone.View.extend({
                 },
                 error: function()
                 {
-                    console.warn( "save/share error" );
+                    console.log( "save/share error" );
                 }
             });
         }

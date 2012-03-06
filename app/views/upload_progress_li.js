@@ -65,7 +65,7 @@ snapr.views.upload_progress_li = Backbone.View.extend({
             }
         });
 
-        console.warn( "cancel upload", this );
+        console.log( "cancel upload", this );
     }
 
 });

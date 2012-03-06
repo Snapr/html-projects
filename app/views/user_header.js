@@ -13,7 +13,7 @@ snapr.views.user_header = Backbone.View.extend({
         this.model.fetch({
             error: function()
             {
-                console.warn( "error fetching user in user_header" );
+                console.log( "error fetching user in user_header" );
             }
         });
     },

@@ -49,7 +49,7 @@ snapr.models.user_collection = Backbone.Collection.extend({
             error: function(e)
             {
                 user_collection.url = url_function;
-                console.warn( "error getting following", e );
+                console.log( "error getting following", e );
             }
         })
     },
@@ -74,7 +74,7 @@ snapr.models.user_collection = Backbone.Collection.extend({
             error: function(e)
             {
                 user_collection.url = url_function;
-                console.warn( "error getting following", e );
+                console.log( "error getting following", e );
             }
         })
     },
@@ -99,7 +99,7 @@ snapr.models.user_collection = Backbone.Collection.extend({
             error: function(e)
             {
                 user_collection.url = url_function;
-                console.warn( "error getting following", e );
+                console.log( "error getting following", e );
             }
         })
     },

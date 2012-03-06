@@ -16,7 +16,7 @@ snapr.views.feed_list = Backbone.View.extend({
         this.list_style = this.options.list_style || 'list';
 
         this.list_content = [];
-        // console.warn( "feed list list_style", init_options, init_options.list_style, this.list_style );
+        // console.log( "feed list list_style", init_options, init_options.list_style, this.list_style );
 
     },
 
@@ -24,7 +24,7 @@ snapr.views.feed_list = Backbone.View.extend({
     {
         var feed_list = this;
 
-        // console.warn( "render", feed_list );
+        // console.log( "render", feed_list );
 
         feed_list.el.empty();
 
