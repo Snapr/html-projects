@@ -388,6 +388,20 @@ snapr.views.share_photo = Backbone.View.extend({
 
                     var sharing_errors = [];
                     var sharing_successes = [];
+                    if (model.get("tweet"))
+                    {
+                        if (xhr.response &&
+                            xhr.response.twitter &&
+                            xhr.response.twitter.error &&
+                            xhr.response.twitter.error.code == 20 )
+                        {
+                            sharing_errors.push("twitter");
+                        }
+                        else
+                        {
+                            sharing_successes.push("twitter");
+                        }
+                    }
                     if (model.get("faceboook_album"))
                     {
                         if (xhr.response &&
@@ -400,6 +414,20 @@ snapr.views.share_photo = Backbone.View.extend({
                         else
                         {
                             sharing_successes.push("facebook");
+                        }
+                    }
+                    if (model.get("foursquare_checkin"))
+                    {
+                        if (xhr.response &&
+                            xhr.response.foursquare &&
+                            xhr.response.foursquare.error &&
+                            xhr.response.foursquare.error.code == 29 )
+                        {
+                            sharing_errors.push("foursquare");
+                        }
+                        else
+                        {
+                            sharing_successes.push("foursquare");
                         }
                     }
                     if (model.get("tumblr"))
