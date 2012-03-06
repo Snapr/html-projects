@@ -63,7 +63,7 @@ snapr.views.share_photo = Backbone.View.extend({
         if (this.model.get("secret"))
         {
             // temporary hack to display image
-            var img_url = "http://media-server2.snapr.us/sml/"
+            var img_url = "http://media-server2.snapr.us/lrg/"
                 + this.model.get("secret") + "/"
                 + this.model.get("id") + ".jpg";
         }
@@ -104,7 +104,7 @@ snapr.views.share_photo = Backbone.View.extend({
                 }
 
                 // temporary hack to display image
-                var img_url = "http://media-server2.snapr.us/sml/"
+                var img_url = "http://media-server2.snapr.us/lrg/"
                     + model.get("secret") + "/"
                     + model.get("id") + ".jpg";
 
