@@ -38,7 +38,6 @@ snapr.views.venue_li = Backbone.View.extend({
 
     select_venue: function()
     {
-        console.warn("selct_venue", this)
         var venue = {
             foursquare_venue_id: this.model.get("id"),
             foursquare_venue_name: this.model.get("name")

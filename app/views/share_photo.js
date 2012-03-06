@@ -305,8 +305,6 @@ snapr.views.share_photo = Backbone.View.extend({
 
     venue_search: function()
     {
-        console.warn("venue search", this.model)
-
         var go_to_venues = function( ll, foursquare_venue_id, back_query )
         {
             snapr.info.current_view = new snapr.views.venues({
