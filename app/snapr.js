@@ -24,9 +24,9 @@ snapr.constants = {};
 snapr.constants.default_zoom = 15;
 snapr.constants.feed_count = 12;
 
-snapr.constants.share_redirect = false;
 // set to hash url to redirect after successful upload/share eg:
-// snapr.constants.upload_redirect = "#/uploading/";
+snapr.constants.share_redirect = "#/uploading/?";
+// snapr.constants.share_redirect = false;
 // if false, redirects to user feed
 
 // Backbone.emulateHTTP = true;
