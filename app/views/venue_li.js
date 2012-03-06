@@ -39,13 +39,13 @@ snapr.views.venue_li = Backbone.View.extend({
     select_venue: function()
     {
         console.warn("selct_venue", this)
-        var location = {
+        var venue = {
             foursquare_venue_id: this.model.get("id"),
             foursquare_venue_name: this.model.get("name")
         };
 
         snapr.info.current_view = new snapr.views.share_photo({
-            query: _.extend(this.back_query, { location: location} ),
+            query: _.extend(this.back_query, { foursquare_venue: venue} ),
             el: $("#share-photo")
         });
     }

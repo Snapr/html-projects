@@ -82,26 +82,11 @@ snapr.views.share_photo = Backbone.View.extend({
 
     get_photo_from_server: function( id )
     {
-        var share_photo = this;
-
-        if (this.query.location)
-        {
-            var location = this.query.location;
-        }
-        else
-        {
-            var location = {};
-        }
-
-        if (this.query.latitude && this.query.longitude)
-        {
-            location.latitude = this.query.latitude;
-            location.longitude = this.query.longitude;
-        }
+        var share_photo_view = this;
 
         this.model = new snapr.models.photo({
             id: id,
-            location: location
+            location: {}
         });
         this.model.bind( "change:secret", this.render );
 
@@ -110,23 +95,28 @@ snapr.views.share_photo = Backbone.View.extend({
         this.model.fetch({
             success: function( model )
             {
-                console.warn( "photo fetch success" );
+                if (share_photo_view.query.foursquare_venue)
+                {
+                    var location = _.extend( model.get("location"), share_photo_view.query.foursquare_venue);
+                    model.set({location: location});
+                    share_photo_view.render();
+                }
 
                 // temporary hack to display image
                 var img_url = "http://media-server2.snapr.us/sml/"
                     + model.get("secret") + "/"
                     + model.get("id") + ".jpg";
 
-                $(share_photo.el).find(".image-placeholder").html( share_photo.img_template({img_url: img_url}) );
-                $(share_photo.el).find("#description").val( model.get("description") );
+                $(share_photo_view.el).find(".image-placeholder").html( share_photo_view.img_template({img_url: img_url}) );
+                $(share_photo_view.el).find("#description").val( model.get("description") );
 
                 if (snapr.utils.get_local_param( "foursquare-sharing" ) && !model.get( "location" ).foursquare_venue_id )
                 {
-                    share_photo.get_foursquare_venues();
+                    share_photo_view.get_foursquare_venues();
                 }
                 else if( !model.get( "location" ).location )
                 {
-                    share_photo.get_reverse_geocode();
+                    share_photo_view.get_reverse_geocode();
                 }
 
             },
@@ -140,26 +130,22 @@ snapr.views.share_photo = Backbone.View.extend({
     get_photo_from_path: function( path )
     {
 
-        if (this.query.location)
+        var location = {};
+        if (this.query.latitude && this.query.longitude)
         {
-            var location = this.query.location;
+            location.latitude = this.query.latitude;
+            location.longitude = this.query.longitude;
         }
-        else
+
+        if (this.query.foursquare_venue)
         {
-            var location = {};
-            if (this.query.latitude && this.query.longitude)
-            {
-                location.latitude = this.query.latitude;
-                location.longitude = this.query.longitude;
-            }
+            location = _.extend( location, this.query.foursquare_venue);
         }
 
         this.model = new snapr.models.photo({
             photo_path: path,
             location: location
         });
-
-        console.warn("model", this.model, this)
 
         this.render();
 
@@ -182,7 +168,7 @@ snapr.views.share_photo = Backbone.View.extend({
             return;
         }
 
-        var photo = this;
+        var share_photo_view = this;
 
         var geocode = function( latitude, longitude )
         {
@@ -193,11 +179,11 @@ snapr.views.share_photo = Backbone.View.extend({
             location.fetch({
                 success: function( model )
                 {
-                    photo.model.set({
+                    share_photo_view.model.set({
                         location: model.attributes
                     });
-                    $(photo.el).find("#no-foursquare-sharing-location").removeClass("ajax-loading");
-                    $(photo.el).find(".location-name").text(photo.model.get("location").location);
+                    $(share_photo_view.el).find("#no-foursquare-sharing-location").removeClass("ajax-loading");
+                    $(share_photo_view.el).find(".location-name").text(share_photo_view.model.get("location").location);
                 }
             });
         }
@@ -229,24 +215,24 @@ snapr.views.share_photo = Backbone.View.extend({
     get_foursquare_venues: function()
     {
 
-        var photo = this;
+        var share_photo_view = this;
 
         var get_venues = function( latitude, longitude )
         {
-            photo.venue_collection = new snapr.models.foursquare_venue_collection({
+            share_photo_view.venue_collection = new snapr.models.foursquare_venue_collection({
                 ll: latitude + "," + longitude
             });
 
-            photo.venue_collection.fetch({
+            share_photo_view.venue_collection.fetch({
                 success: function( collection )
                 {
-                    var location = _.extend( photo.model.attributes.location, {
+                    var location = _.extend( share_photo_view.model.attributes.location, {
                         foursquare_venue_id: collection.first().get( "id" ),
                         foursquare_venue_name: collection.first().get( "name" )
                     });
-                    photo.model.set({location: location});
-                    $(photo.el).find("#foursquare-sharing-location").removeClass("ajax-loading");
-                    $(photo.el).find(".foursquare-venue-name").text(photo.model.get("location").foursquare_venue_name);
+                    share_photo_view.model.set({location: location});
+                    $(share_photo_view.el).find("#foursquare-sharing-location").removeClass("ajax-loading");
+                    $(share_photo_view.el).find(".foursquare-venue-name").text(share_photo_view.model.get("location").foursquare_venue_name);
                 }
             });
         }
@@ -321,14 +307,49 @@ snapr.views.share_photo = Backbone.View.extend({
     {
         console.warn("venue search", this.model)
 
-        snapr.info.current_view = new snapr.views.venues({
-            query: {
-                ll:this.model.get("location").latitude + "," + this.model.get("location").longitude,
-                foursquare_venue_id: this.model.get("location").foursquare_venue_id,
-                back_query: this.query
+        var go_to_venues = function( ll, foursquare_venue_id, back_query )
+        {
+            snapr.info.current_view = new snapr.views.venues({
+                query: {
+                    ll: ll,
+                    foursquare_venue_id: foursquare_venue_id,
+                    back_query: back_query
+                },
+                el: $("#venues"),
+            });
+        }
+
+        if (this.model.get("location").latitude && this.model.get("location").longitude )
+        {
+            var ll = this.model.get("location").latitude + "," + this.model.get("location").longitude;
+        }
+        else if (this.query.latitude && this.query.longitude)
+        {
+            var ll = this.query.latitude + "," + this.query.longitude;
+        }
+
+        if (ll)
+        {
+            go_to_venues( ll, this.model.get("location").foursquare_venue_id , this.query );
+        }
+        else
+        {
+            var share_photo_view = this;
+
+            snapr.geo.get_location( function( location )
+            {
+                var ll = location.coords.latitude + "," + location.coords.longitude;
+
+                go_to_venues( ll, false, share_photo_view.query );
             },
-            el: $("#venues"),
-        });
+            function( e )
+            {
+                console.warn( "geocode error", e );
+            });
+
+        }
+
+
     },
 
     share: function()
