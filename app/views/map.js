@@ -27,7 +27,7 @@ snapr.views.map = Backbone.View.extend({
         }
 
         this.map_settings = {
-            zoom: this.query.zoom || snapr.constants.default_zoom,
+            zoom: parseInt(snapr.utils.get_local_param('map_zoom')) || this.query.zoom || snapr.constants.default_zoom,
             streetViewControl: false,
             mapTypeControl: false,
             mapTypeId: google.maps.MapTypeId.ROADMAP
@@ -35,6 +35,8 @@ snapr.views.map = Backbone.View.extend({
 
         if (this.query.lat && this.query.lng){
             this.map_settings.center = new google.maps.LatLng(this.query.lat, this.query.lng);
+        }else if (snapr.utils.get_local_param('map_latitude')){
+            this.map_settings.center = new google.maps.LatLng(snapr.utils.get_local_param('map_latitude'), snapr.utils.get_local_param('map_longitude'));
         }
 
         $.mobile.changePage("#map", {
@@ -82,16 +84,24 @@ snapr.views.map = Backbone.View.extend({
         // if(this.query.photo_id && this.query.lat && this.query.lng){
         //     this.place_pin();
         // }
-        var b = google.maps.event.addListener(map_view.map, "bounds_changed", function () {
-            // console.log( 'bounds_changed' );
-        });
-        var z = google.maps.event.addListener(map_view.map, "zoom_changed", function () {
-            // console.log( 'zoom_changed' );
-        });
+        // var b = google.maps.event.addListener(map_view.map, "bounds_changed", function () {
+        //     console.log( 'bounds_changed' );
+        // });
+        // var z = google.maps.event.addListener(map_view.map, "zoom_changed", function () {
+        //     console.log( 'zoom_changed' );
+        // });
+        console.log('listening');
         var idle = google.maps.event.addListener(map_view.map, "idle", function () {
             var query = map_view.thumb_collection && map_view.thumb_collection.data || false;
-            // console.log( 'idle get thumbs', query );
+            console.log( 'idle get thumbs', query );
             map_view.get_thumbs(query);
+
+            // remember location
+            console.log('saving location');
+            snapr.utils.save_local_param('map_zoom', map_view.map.getZoom());
+            var ll = map_view.map.getCenter();
+            snapr.utils.save_local_param('map_latitude', ll.lat());
+            snapr.utils.save_local_param('map_longitude', ll.lng());
         });
 
         if(location) {
