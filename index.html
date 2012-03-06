@@ -1287,9 +1287,13 @@
 
 
        <!-- @venues PAGE-->
-       <div id="venues" data-add-back-btn="true" data-role="dialog" data-overlay-theme="c" data-theme="c">
+       <div id="venues" data-role="page" data-overlay-theme="c" data-theme="c">
            <div data-role="header" data-theme="c">
                <h1>Venues</h1>
+               <div class="ui-btn-right">
+                   <a class="x-back-to-share" data-role="button" data-icon="delete" data-iconpos="notext"></a>
+               </div>
+
            </div>
            <div data-role="content" data-theme="c">
                <div class="search-header">
@@ -1300,15 +1304,17 @@
            </div>
        </div>
 
-       <!-- @venue ITEM-->
-       <script id="venue-li-template" type="text/template">
-              <a data-ajax="false">
-                  <img src="<%= icon %>" alt="" class="user-icon-small ui-li-icon"/>
-                  <h3 class="venue-name"><%= venue.get('name') %></h3>
-                  <p class="small-text"><%= venue.get('location').distance %> m</p>
-              </a>
-              <a data-icon="right" data-iconpos="right" class="select"></a>
-          </script>
+        <!-- @venue ITEM-->
+        <script id="venue-li-template" type="text/template">
+            <a data-ajax="false">
+                <img src="<%= icon %>" alt="" class="user-icon-small ui-li-icon"/>
+                <h3 class="venue-name"><%= venue.get('name') %></h3>
+                <p class="small-text"><%= venue.get('location').distance %> m</p>
+            </a>
+            <% if (selected) {%>
+            <a data-icon="tick" data-iconpos="right" class="select"></a>
+            <%}%>
+        </script>
 
     <!-- @join snapr DIALOG-->
     <div id="join-snapr" data-add-back-btn="true" data-role="dialog" data-overlay-theme="c" data-theme="c">

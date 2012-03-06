@@ -59,27 +59,75 @@ snapr.views.share_photo = Backbone.View.extend({
             twitter_sharing: snapr.utils.get_local_param( "twitter-sharing" ) && true || false
         }) ).trigger("create");
 
+
+        if (this.model.get("secret"))
+        {
+            // temporary hack to display image
+            var img_url = "http://media-server2.snapr.us/sml/"
+                + this.model.get("secret") + "/"
+                + this.model.get("id") + ".jpg";
+        }
+        else if (this.query.path)
+        {
+            var img_url = this.query.path;
+        }
+
+        if (img_url)
+        {
+            $(this.el).find(".image-placeholder").html( this.img_template({img_url: img_url}) );
+        }
+
         return this;
     },
 
     get_photo_from_server: function( id )
     {
         var share_photo = this;
-        this.model = new snapr.models.photo({id: id});
+
+        if (this.query.location)
+        {
+            var location = this.query.location;
+        }
+        else
+        {
+            var location = {};
+        }
+
+        if (this.query.latitude && this.query.longitude)
+        {
+            location.latitude = this.query.latitude;
+            location.longitude = this.query.longitude;
+        }
+
+        this.model = new snapr.models.photo({
+            id: id,
+            location: location
+        });
         this.model.bind( "change:secret", this.render );
+
         this.model.bind( "change:location", this.render );
+
         this.model.fetch({
-            success: function()
+            success: function( model )
             {
                 console.warn( "photo fetch success" );
 
                 // temporary hack to display image
                 var img_url = "http://media-server2.snapr.us/sml/"
-                    + share_photo.model.get("secret") + "/"
-                    + share_photo.model.get("id") + ".jpg";
+                    + model.get("secret") + "/"
+                    + model.get("id") + ".jpg";
 
                 $(share_photo.el).find(".image-placeholder").html( share_photo.img_template({img_url: img_url}) );
-                $(share_photo.el).find("#description").val( share_photo.model.get("description") );
+                $(share_photo.el).find("#description").val( model.get("description") );
+
+                if (snapr.utils.get_local_param( "foursquare-sharing" ) && !model.get( "location" ).foursquare_venue_id )
+                {
+                    share_photo.get_foursquare_venues();
+                }
+                else if( !model.get( "location" ).location )
+                {
+                    share_photo.get_reverse_geocode();
+                }
 
             },
             error: function()
@@ -91,10 +139,28 @@ snapr.views.share_photo = Backbone.View.extend({
 
     get_photo_from_path: function( path )
     {
+
+        if (this.query.location)
+        {
+            var location = this.query.location;
+        }
+        else
+        {
+            var location = {};
+            if (this.query.latitude && this.query.longitude)
+            {
+                location.latitude = this.query.latitude;
+                location.longitude = this.query.longitude;
+            }
+        }
+
         this.model = new snapr.models.photo({
             photo_path: path,
-            location: {}
+            location: location
         });
+
+        console.warn("model", this.model, this)
+
         this.render();
 
         if (snapr.utils.get_local_param( "foursquare-sharing" ))
@@ -136,12 +202,19 @@ snapr.views.share_photo = Backbone.View.extend({
             });
         }
 
-        if (this.query.latitude && this.query.longitude && !this.model.get("location").location)
+        if (this.query.latitude && this.query.longitude)
         {
-            geocode( this.query.latitude, this.query.longitude)
+            // get reverse geocode location from query lat & long
+            geocode( this.query.latitude, this.query.longitude);
+        }
+        else if (this.model.get("location").latitude && this.model.get("location").longitude)
+        {
+            // get reverse geocode location from photo lat & long
+            geocode( this.model.get("location").latitude, this.model.get("location").longitude);
         }
         else
         {
+            // get reverse geocode location from current position
             snapr.geo.get_location( function( location )
             {
                 geocode( location.coords.latitude, location.coords.longitude );
@@ -160,11 +233,11 @@ snapr.views.share_photo = Backbone.View.extend({
 
         var get_venues = function( latitude, longitude )
         {
-            photo.collection = new snapr.models.foursquare_venue_collection({
+            photo.venue_collection = new snapr.models.foursquare_venue_collection({
                 ll: latitude + "," + longitude
             });
 
-            photo.collection.fetch({
+            photo.venue_collection.fetch({
                 success: function( collection )
                 {
                     var location = _.extend( photo.model.attributes.location, {
@@ -178,13 +251,26 @@ snapr.views.share_photo = Backbone.View.extend({
             });
         }
 
-
-        if (this.query.latitude && this.query.longitude && !this.model.attributes.location.foursquare_venue_id)
+        if (this.query.location && this.query.location.foursquare_venue_id)
         {
+            //foursquare venue has been set via venues list
+            this.model.set({
+                location: this.query.location
+            });
+        }
+        else if (this.query.latitude && this.query.longitude)
+        {
+            // get venues using query lat and long
             get_venues( this.query.latitude, this.query.longitude)
+        }
+        else if(this.model.get("location").latitude && this.model.get("location").longitude)
+        {
+            // get venues using photo model lat and long
+            get_venues( this.model.get("location").latitude, this.model.get("location").longitude)
         }
         else
         {
+            // get venues based on current location (not photo)
             snapr.geo.get_location( function( location )
             {
                 photo.model.set({location: location.coords});
@@ -235,22 +321,29 @@ snapr.views.share_photo = Backbone.View.extend({
     {
         console.warn("venue search", this.model)
 
-        Route.navigate( "#/venue/search/?ll=" +
-            this.model.get("location").latitude + "," +
-            this.model.get("location").longitude + "&foursquare_venue_id=" +
-            this.model.get("location").foursquare_venue_id, true);
+        snapr.info.current_view = new snapr.views.venues({
+            query: {
+                ll:this.model.get("location").latitude + "," + this.model.get("location").longitude,
+                foursquare_venue_id: this.model.get("location").foursquare_venue_id,
+                back_query: this.query
+            },
+            el: $("#venues"),
+        });
     },
 
     share: function()
     {
-        var pink_nation_sharing = ( $("#enter-girl-of-month").val() == "on" );
-
         // if there is a secret set the picture has already been uploaded
         if (this.model && this.model.has("secret"))
         {
-            var redirect_url = this.redirct_url || snapr.constants.share_redirect ||
-                // "#/uploading/?photo_id=" + this.model.get("id");
-                "#/feed/?photo_id=" + this.model.get("id") + "&username=" + this.model.get("username");
+            var redirect_url = this.redirct_url || snapr.constants.share_redirect;
+
+            redirect_url += "photo_id=" + this.model.get("id");
+
+            if (this.model.get("location") && this.model.get("location").latitude && this.model.get("location").longitude)
+            {
+                redirect_url += "&ll=" + this.model.get("location").latitude + "," + this.model.get("location").longitude;
+            }
 
             this.model.save({
                 description: this.el.find("#description").val(),
@@ -263,32 +356,10 @@ snapr.views.share_photo = Backbone.View.extend({
             },{
                 success: function( model, xhr )
                 {
-                    // console.warn( model, xhr );
-                    if (pink_nation_sharing && !snapr.utils.get_local_param("appmode"))
-                    {
-                        $.ajax({
-                            url: snapr.api_base + "/public_groups/pool/add/",
-                            dataType: "jsonp",
-                            data: {
-                                photo_id: model.get("id"),
-                                group_slug: snapr.public_group,
-                                app_group: snapr.app_group,
-                                access_token: snapr.auth.get("access_token"),
-                                _method: "POST"
-                            },
-                            success: function(response)
-                            {
-                                if (response.error)
-                                {
-                                    alert( response.error.message );
-                                }
-                            }
-                        });
-                    }
 
                     var sharing_errors = [];
                     var sharing_successes = [];
-                    if (model.get("facebook_gallery"))
+                    if (model.get("faceboook_album"))
                     {
                         if (xhr.response &&
                             xhr.response.facebook &&
@@ -315,8 +386,13 @@ snapr.views.share_photo = Backbone.View.extend({
                         {
                             sharing_successes.push("tumblr");
                         }
-
                     }
+
+
+
+
+
+
                     if (sharing_errors.length)
                     {
                         var url = "#/connect/?to_link=" + sharing_errors.join(",") + "&shared=" + sharing_successes.join(",") + "&photo_id=" + model.get("id");
@@ -339,13 +415,9 @@ snapr.views.share_photo = Backbone.View.extend({
             {
                 var params = {};
                 _.each( $(this.el).find("form").serializeArray(), function( o ){
-                    if (["tumblr", "facebook_gallery"].indexOf( o.name ) > -1)
+                    if (["tumblr", "faceboook_album", "tweet", "foursquare_checkin"].indexOf( o.name ) > -1)
                     {
                         params[o.name] = (o.value == "on");
-                    }
-                    else if (o.name == "enter-girl-of-month")
-                    {
-                        // do nothing
                     }
                     else
                     {
