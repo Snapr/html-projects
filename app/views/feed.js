@@ -99,7 +99,7 @@ snapr.views.feed = Backbone.View.extend({
         // detach the previous photoswipe instance if it exists
         var photoSwipeInstance = Code.PhotoSwipe.getInstance( 'feed' );
 
-        if (typeof photoSwipeInstance != "undefined" && photoSwipeInstance != null)
+        if (typeof photoSwipeInstance != "undefined" && photoSwipeInstance !== null)
         {
             Code.PhotoSwipe.detatch(photoSwipeInstance);
         }
@@ -107,7 +107,7 @@ snapr.views.feed = Backbone.View.extend({
         if ($( "#feed-images a.gallery_link", this.el ).length)
         {
             // make sure we set the param backButtonHideEnabled:false to prevent photoswipe from changing the hash
-            var photoSwipeInstance = $( "#feed-images a.gallery_link", this.el )
+            photoSwipeInstance = $( "#feed-images a.gallery_link", this.el )
                 .photoSwipe( {
                     backButtonHideEnabled: false
                 }, 'feed' );

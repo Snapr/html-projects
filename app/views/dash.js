@@ -66,7 +66,7 @@ snapr.views.dash = Backbone.View.extend({
             streams.append( li.render().el );
         }, this);
 
-        streams.listview().listview("refresh");
+        this.el.trigger( "create" );
     }
 
 });

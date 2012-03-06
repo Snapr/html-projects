@@ -12,7 +12,7 @@ snapr.models.dash = Backbone.Collection.extend({
         }
     },
     // override fetch to catch the display attributes for the dash
-    // not just it's models (streams)
+    // in the returned data not just it's models (streams)
     fetch: function(options) {
         options = options ? _.clone(options) : {};
         var success = options.success;
