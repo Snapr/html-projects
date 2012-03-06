@@ -759,20 +759,65 @@
 
     <!-- @feed @uploadprogress ITEM - template for feed uploads queue -->
     <script id="upload-progress-li-template" type="text/template">
-        <a>
-            <img class="ui-li-icon" height="16" width="16" src="<%= thumbnail %>" />
-            <div class="progress-bar <%= upload_status %>">
-                <div class="bar-bg bar">
+        <div class="upload-info-block">
+            <a class="upload-image-thumb-gall gallery_link image-link ui-link">
+               <img src="<%= thumbnail %>" class="thumb-image thumb-med">
+            </a>
+
+            <div class="upload-info">
+                <p class="upload-image-tag"><span class="ui-icon extra-icons ui-icon-quote"></span><%= description %></p>
+                <p class="upload-image-venue"><a class="ui-link">@ <%= venue %></a></p>
+
+                <div class="progress-bar <%= upload_status %>">
+                    <div class="bar-wrapper">
+                       <div class="bar-bg bar">
+                       </div>
+                       <div class="bar-prog bar" style="width:<%= percent_complete %>%">
+                       </div>
+                   </div>
+                   <a class="bar-action ui-btn ui-btn-up-d ui-btn-icon-notext ui-btn-corner-all ui-shadow" data-role="button" data-icon="delete" data-iconpos="notext" title="Cancel" data-theme="d"><span class="ui-btn-inner ui-btn-corner-all" aria-hidden="true"><span class="ui-btn-text">Cancel</span><span class="ui-icon ui-icon-delete ui-icon-shadow"></span></span></a>
                 </div>
-                <div class="bar-prog bar" style="width:<%= percent_complete %>%">
-                </div>
+
+                <ul class="upload-shared-to">
+                <% if (facebook_sharing){ %>
+                    <li>
+                        <div class="facebook-sharing sharing-icon-small">
+                            <span class="ui-icon"></span>
+                        </div>
+                    </li>
+                <% } %>
+                <% if (foursquare_sharing){ %>
+                    <li>
+                        <div class="foursquare-sharing sharing-icon-small">
+                            <span class="ui-icon"></span>
+                        </div>
+                    </li>
+                <% } %>
+                <% if (twitter_sharing){ %>
+                    <li>
+                        <div class="twitter-sharing sharing-icon-small">
+                            <span class="ui-icon"></span>
+                        </div>
+                    </li>
+                <% } %>
+                <% if (tumblr_sharing){ %>
+                    <li>
+                        <div class="tumblr-sharing sharing-icon-small">
+                            <span class="ui-icon"></span>
+                        </div>
+                    </li>
+                <% } %>
+                </ul>
             </div>
-        </a>
+        </div>
+
+        <!-- old
     <% if (percent_complete == 100){ %>
         <a data-icon="forward" data-theme="d" class="processing"></a>
     <% }else{ %>
         <a data-icon="delete" data-theme="d" class="cancel"></a>
     <% } %>
+         -->
     </script>
 
     <!-- @profile DIALOG-->
@@ -1571,43 +1616,9 @@
         </div>
         <div data-role="content" data-theme="d">
 
-            <div class="upload-progress-header page-inset-header">
-                <div class="upload-info-block">
-                    <a class="upload-image-thumb-gall gallery_link image-link">
-                       <img src="http://media-server2.snapr.us/thm2/dev/8ef6a001298fe190ccba5bf483f9c3a6/ZK2.jpg" class="thumb-image thumb-med">
-                    </a>
-
-                    <div class="upload-info">
-                        <p class="upload-image-tag"><span class="ui-icon extra-icons ui-icon-quote"></span>Caption</p>
-                        <p class="upload-image-venue"><a>@ Venue name</a></p>
-
-                        <div class="progress-bar active">
-                            <div class="bar-wrapper">
-                               <div class="bar-bg bar">
-                               </div>
-                               <div class="bar-prog bar" style="width:30%">
-                               </div>
-                           </div>
-                           <a class="bar-action" data-role="button" data-icon="delete" data-iconpos="notext">Cancel</a>
-                        </div>
-
-                        <ul class="upload-shared-to">
-                            <li>
-                                <div class="twitter-sharing sharing-icon-small">
-                                    <span class="ui-icon"></span>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="facebook-sharing sharing-icon-small">
-                                    <span class="ui-icon"></span>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+            <div class="upload-progress-container">
 
             </div>
-
 
             <ul class="image-streams">
                 <li class="image-stream" id="upload-popular-nearby">
@@ -1684,34 +1695,6 @@
         </div>
 
     </div>
-
-    <!-- @uploading ITEM - upload progress / thumb -->
-    <script id="uploading-template" type="text/template">
-       <div class="upload-progress-container">
-           <div class="PINK-upload-image upload-image">
-               <div class="image-placeholder PINK-upload-image-thumb">
-                   <img src="<%= img_url %>" />
-               </div>
-
-               <div class="upload-progress-container PINK-upload-image-info">
-               <h2>Looking good!</h2>
-               <div class="progress-bar <%= upload_status %>">
-                   <div class="bar-bg bar">
-                   </div>
-                   <div class="bar-prog bar" style="width:<%= percent_complete %>%">
-                   </div>
-                   <% if(percent_complete < 100){%>
-                   <p class="progress-count"><%= percent_complete %>%</p>
-                   <%}else{%>
-                   <p class="progress-count finishing"></p>
-                   <%}%>
-
-
-               </div>
-           </div>
-          </div>
-    </script>
-
 
     <!-- @share-photo sharing setup / caption view -->
     <div id="share-photo" class="share-photo" data-role="page" data-theme="a">

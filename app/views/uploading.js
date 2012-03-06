@@ -13,9 +13,7 @@ snapr.views.uploading = Backbone.View.extend({
         //$(this.el).find('[data-role="content"]').empty();
         
         $.mobile.changePage( $("#uploading"), {changeHash: false} );
-        
-        this.template = _.template( $("#uploading-template").html() );
-                
+
         this.current_upload = null;
         this.pending_uploads = {};
         
@@ -166,9 +164,9 @@ snapr.views.uploading = Backbone.View.extend({
     
     upload_progress: function( upload_data )
     {
-        var $content = $(this.el).find('[data-role="content"]');
-        var upload_heart_template = _.template( $("#uploading-template").html() );
-        
+        var $container = $(this.el).find(".upload-progress-container");
+        var upload_progress_template = _.template( $("#upload-progress-li-template").html() );
+
         _.each( upload_data.uploads, function( photo, index )
         {
             // console.warn("photo: ", photo, " index: ", index)
@@ -177,10 +175,10 @@ snapr.views.uploading = Backbone.View.extend({
                 if (!this.pending_uploads[photo.id])
                 {
                     this.pending_uploads[photo.id] = new snapr.views.upload_progress_li({
-                        template: upload_heart_template,
+                        template: upload_progress_template,
                         photo: photo
                     });
-                    $content.html( this.pending_uploads[photo.id].render().el );
+                    $container.html( this.pending_uploads[photo.id].render().el );
                 }
                 else
                 {

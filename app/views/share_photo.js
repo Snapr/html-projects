@@ -53,7 +53,7 @@ snapr.views.share_photo = Backbone.View.extend({
             photo: this.model,
             status: snapr.utils.get_local_param( "status" ),
             share_location: snapr.utils.get_local_param( "share-location" ) && true || false,
-            facebook_sharing: snapr.utils.get_local_param( "facebook-sharing" ) && true || false,
+            facebook_album: snapr.utils.get_local_param( "facebook-sharing" ) && true || false,
             tumblr_sharing: snapr.utils.get_local_param( "tumblr-sharing" ) && true || false,
             foursquare_sharing: snapr.utils.get_local_param( "foursquare-sharing" ) && true || false,
             twitter_sharing: snapr.utils.get_local_param( "twitter-sharing" ) && true || false
