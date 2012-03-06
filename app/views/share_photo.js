@@ -351,7 +351,7 @@ snapr.views.share_photo = Backbone.View.extend({
             },
             function( e )
             {
-                console.warn( "geocode error", e );
+                console.log( "geocode error", e );
             });
 
         }

@@ -16,7 +16,7 @@ snapr.views.upload_progress_li = Backbone.View.extend({
 
     render: function()
     {
-        console.warn("li", this)
+        console.log("li", this)
         // check that the progress hasn't already reached 100%
         if (!$(this.el).find(".finishing").length)
         {

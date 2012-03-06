@@ -66,7 +66,7 @@ snapr.views.connect = Backbone.View.extend({
         var options = {
             success: callback,
             error: function( error ){
-                console.warn("share error", error);
+                console.log("share error", error);
             }
         };
 
