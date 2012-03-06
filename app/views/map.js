@@ -26,16 +26,16 @@ snapr.views.map = Backbone.View.extend({
             this.query.n = 1;
         }
 
-        var center = new google.maps.LatLng(
-        this.query.lat || 0, this.query.lng || 0);
-
         this.map_settings = {
             zoom: this.query.zoom || snapr.constants.default_zoom,
-            center: center,
             streetViewControl: false,
             mapTypeControl: false,
             mapTypeId: google.maps.MapTypeId.ROADMAP
         };
+
+        if (this.query.lat && this.query.lng){
+            this.map_settings.center = new google.maps.LatLng(this.query.lat, this.query.lng);
+        }
 
         $.mobile.changePage("#map", {
             changeHash: false,
@@ -48,7 +48,18 @@ snapr.views.map = Backbone.View.extend({
         if(this.map) {
             this.search_location(this.query.location);
         } else {
-            this.create_map(this.query.location);
+            that = this;
+            if(this.map_settings.center === undefined){
+                snapr.geo.get_location(function(location){
+                    that.map_settings.center = new google.maps.LatLng(location.coords.latitude, location.coords.longitude);
+                    that.create_map(that.query.location);
+                }, function(){
+                    that.map_settings.center = new google.maps.LatLng(42, 12);
+                    that.create_map(that.query.location);
+                });
+            }else{
+                this.create_map(this.query.location);
+            }
         }
 
         // this.render();
@@ -56,7 +67,7 @@ snapr.views.map = Backbone.View.extend({
 
     create_map: function (location) {
         this.map = new google.maps.Map(
-        document.getElementById("google-map"), this.map_settings);
+            document.getElementById("google-map"), this.map_settings);
 
         this.map.snapr = {
             thumb_template: this.thumb_template,
