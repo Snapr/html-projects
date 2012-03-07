@@ -97,7 +97,7 @@ Number.prototype.zeroFill = function (width) {
 
 Number.prototype.ordinal = function(){
     if( this!=11 && this!=12 && this!=13 ){
-    that = String(this)
+    that = String(this);
     switch( that.substr(that.length-1) ){
         case '1':
             return that+'st';

@@ -36,6 +36,8 @@ snapr.views.dash = Backbone.View.extend({
     },
     populate: function(){
         var dash = this;
+        console.log('this is clearly not cached2');
+        this.collection.data = {n:6, feed:true}; //, nearby:true};
         var options = {
             success: function(){
 

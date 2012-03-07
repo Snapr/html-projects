@@ -947,7 +947,7 @@
                <ul class="image-streams edit">
 
 
-                    <li class="image-stream" id="upload-latest-nearby">
+                    <!-- <li class="image-stream" id="upload-latest-nearby">
                           <a class="ui-bar top-left-arrow" data-role="button" data-iconpos="right" data-icon="arrow-r" data-theme="e">
                               <span class="ui-icon ui-icon-person extra-icons"></span>
                               <em>feed</em>
@@ -983,10 +983,10 @@
                                       <a class="remove-stream" data-role="button" data-icon="delete" data-iconpos="right" data-theme="c">Remove</a>
                                </div>
                        </li>
-
+ -->
                </ul>
 
-               <div class="helper-content dash-welcome ui-content-inset">
+               <div class="helper-content dash-welcome ui-content-inset" style="display:none;">
                    <a class="ui-bar top-no-arrow" data-role="button"  data-theme="c">
                        <em>Welcome</em>
                     </a>
@@ -1028,9 +1028,11 @@
                         </span>
                     </a>
                     <div id="upload-popular-nearby-images" class="thumbs-grid thumbs-grid-med n-horizontal-scroll">
-                        <a class="image-link" data-ajax="false" href="#/feed/?photo_id=LF8&amp;username=spencer">
-                        <img src="https://s3.amazonaws.com/media-server2.snapr.us/thm2/<%= stream.get("latest_photo").secret %>/<%= stream.get("latest_photo").id %>.jpg" alt="<%= stream.get("latest_photo").description %>" class="thumb-image thumb-med">
-                        </a>
+                        <% _.each(stream.get("photos"), function(photo) { %>
+                            <a class="image-link" data-ajax="false" href="#/feed/?photo_id=<%= photo.id %>&amp;username=<%= photo.user %>">
+                            <img src="https://s3.amazonaws.com/media-server2.snapr.us/thm2/<%= photo.secret %>/<%= photo.id %>.jpg" alt="<%= photo.description %>" class="thumb-image thumb-med">
+                            </a>
+                        <% }); %>
 
                         show a spinner here while loading the rest
                     </div>
