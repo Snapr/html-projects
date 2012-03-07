@@ -615,6 +615,7 @@ input.ui-input-text, textarea.ui-input-text {
 }
 .ui-header .ui-controlgroup .ui-checkbox label, .ui-header .ui-controlgroup .ui-radio label {
   font-size: 12px;
+  margin: 0;
 }
 /* Style for inset header as seen on user feed and upload pages */
 .page-inset-header {
