@@ -34,9 +34,12 @@ snapr.views.feed_li = Backbone.View.extend({
         if (!this.reactions || reload)
         {
             this.reactions = new snapr.views.reactions({
-                id:this.model.id,
-                el:$(this.el).find('.reactions-list')
+                id: this.model.id,
+                el: $(this.el).find('.reactions-list')
             });
+
+            this.reactions.collection.bind( "change", this.render );
+
         }
         else
         {
@@ -68,11 +71,6 @@ snapr.views.feed_li = Backbone.View.extend({
             item: this.model,
             city: city
         } ));
-
-        $img = $(this.el).find("img");
-        $img.load(function(){
-            $img.css("height","auto");
-        });
 
         $(this.el).trigger('create');
         // delegateEvents makes the event bindings in this view work
