@@ -1,6 +1,9 @@
 snapr.models.user_settings = Backbone.Model.extend({
 
-    //urlRoot: snapr.api_base + '/user/',
+    urlRoot: function()
+    {
+        return snapr.api_base + '/user/'
+    },
 
     url: function( method )
     {
@@ -9,17 +12,17 @@ snapr.models.user_settings = Backbone.Model.extend({
             switch (method)
             {
                 case 'create':
-                    return snapr.api_base + '/user/signup/';
+                    return this.urlRoot() + 'signup/';
                 case 'update':
-                    return snapr.api_base + '/user/settings/';
+                    return this.urlRoot() + 'settings/';
                 default:
                     this.data = _.extend( this.data || {}, {linked_services: true } );
-                    return snapr.api_base + '/user/settings/';
+                    return this.urlRoot() + 'settings/';
             }
         }
         else
         {
-            return snapr.api_base + '/user/';
+            return this.urlRoot();
         }
     },
 
