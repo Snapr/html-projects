@@ -91,17 +91,17 @@ snapr.views.uploading = Backbone.View.extend({
              //        upload_progress(test_data);
              //     }, 3000);
              // //
-                 setTimeout(function() {
-                    console.log("testing 2", test_data);
-                    test_data.uploads[0].percent_complete = 60;
-                    upload_progress(test_data);
-                 }, 6000);
-             //
-                 setTimeout(function() {
-                    console.log("testing 3", test_data);
-                    test_data.uploads[0].percent_complete = 100;
-                    upload_progress(test_data);
-                 }, 8000);
+             //     setTimeout(function() {
+             //        console.log("testing 2", test_data);
+             //        test_data.uploads[0].percent_complete = 60;
+             //        upload_progress(test_data);
+             //     }, 6000);
+             // //
+             //     setTimeout(function() {
+             //        console.log("testing 3", test_data);
+             //        test_data.uploads[0].percent_complete = 100;
+             //        upload_progress(test_data);
+             //     }, 8000);
              //
              //     setTimeout(function() {
              //        console.log("testing 4", test_data);
