@@ -215,7 +215,11 @@ snapr.views.uploading = Backbone.View.extend({
 
     upload_cancelled: function( queue_id )
     {
-
-        Route.navigate( "#/", true );
+        if (this.pending_uploads[queue_id])
+        {
+            this.pending_uploads[queue_id].remove();
+            delete this.pending_uploads[queue_id];
+        }
+        // Route.navigate( "#/", true );
     }
 });

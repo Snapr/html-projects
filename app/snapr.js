@@ -806,9 +806,11 @@ function upload_completed(queue_id, snapr_id)
     }
 }
 
-function upload_cancelled(id) {
-    if(typeof snapr.info.current_view.upload_cancelled == "function") {
-        snapr.info.current_view.upload_cancelled(id);
+function upload_cancelled( id )
+{
+    if (typeof snapr.info.current_view.upload_cancelled == "function")
+    {
+        snapr.info.current_view.upload_cancelled( id );
     }
 }
 
