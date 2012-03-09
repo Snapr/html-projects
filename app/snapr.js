@@ -784,26 +784,26 @@ function upload_progress( data, datatype )
     }
 }
 
-function upload_count(count) {
+function upload_count( count )
+{
     snapr.info.upload_count = count;
 
-    if(typeof snapr.info.current_view.upload_count == "function") {
+    if (typeof snapr.info.current_view.upload_count == "function")
+    {
         snapr.info.current_view.upload_count(count);
     }
 }
 
-function upload_completed(queue_id, snapr_id) {
-
-    var path = snapr.pending_uploads[queue_id] && snapr.pending_uploads[queue_id].photo && snapr.pending_uploads[queue_id].photo.thumbnail || null;
-
-    if(path) {
-        Route.navigate("#/love-it/?shared=true&photo_path=" + path, true);
-    } else {
-        Route.navigate("#/love-it/?shared=true&photo_id=" + snapr_id, true);
+function upload_completed(queue_id, snapr_id)
+{
+    if (typeof snapr.info.current_view.upload_completed == "function")
+    {
+        snapr.info.current_view.upload_completed(queue_id, snapr_id);
     }
-
-    snapr.pending_uploads[queue_id] && delete snapr.pending_uploads[queue_id];
-
+    else
+    {
+        Route.navigate("#/uploading/?photo_id=" + snapr_id + "&queue_id=" + queue_id, true);
+    }
 }
 
 function upload_cancelled(id) {

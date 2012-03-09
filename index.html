@@ -766,17 +766,45 @@
 
             <div class="upload-info">
                 <p class="upload-image-tag"><span class="ui-icon extra-icons ui-icon-quote"></span><%= description %></p>
-                <p class="upload-image-venue"><a class="ui-link">@ <%= venue %></a></p>
+                <% if ( venue ){ %>
+                    <p class="upload-image-venue"><a class="ui-link">@ <%= venue %></a></p>
+                <% } %>
+
 
                 <div class="progress-bar <%= upload_status %>">
                     <div class="bar-wrapper">
-                       <div class="bar-bg bar">
-                       </div>
-                       <div class="bar-prog bar" style="width:<%= percent_complete %>%">
-                       </div>
-                   </div>
-                   <a class="bar-action ui-btn ui-btn-up-d ui-btn-icon-notext ui-btn-corner-all ui-shadow" data-role="button" data-icon="delete" data-iconpos="notext" title="Cancel" data-theme="d"><span class="ui-btn-inner ui-btn-corner-all" aria-hidden="true"><span class="ui-btn-text">Cancel</span><span class="ui-icon ui-icon-delete ui-icon-shadow"></span></span></a>
+                       <% if (message){ %>
+                           <span class="upload-message"><%= message %></span>
+                       <% }else{ %>
+                           <div class="bar-bg bar">
+                           </div>
+                           <div class="bar-prog bar" style="width:<%= percent_complete %>%">
+                           </div>
+                       <% } %>
+                      </div>
+                   <% switch (upload_status) { case 'active': %>
+
+                      <% if (percent_complete == 100){ %>
+                          <a class="bar-action ui-btn ui-btn-up-d ui-btn-icon-notext ui-btn-corner-all ui-shadow" data-role="button" data-icon="refresh" data-iconpos="notext" title="Processing" data-theme="d"><span class="ui-btn-inner ui-btn-corner-all" aria-hidden="true"><span class="ui-btn-text">Processing</span><span class="ui-icon ui-icon-refresh ui-icon-shadow"></span></span></a>
+                      <% }else{ %>
+   <a class="bar-action ui-btn ui-btn-up-d ui-btn-icon-notext ui-btn-corner-all ui-shadow cancel" data-role="button" data-icon="delete" data-iconpos="notext" title="Cancel" data-theme="d"><span class="ui-btn-inner ui-btn-corner-all" aria-hidden="true"><span class="ui-btn-text">Cancel</span><span class="ui-icon ui-icon-delete ui-icon-shadow"></span></span></a>
+                      <% } %>
+
+                   <% break; case 'waiting': %>
+                        <a class="bar-action ui-btn ui-btn-up-d ui-btn-icon-notext ui-btn-corner-all ui-shadow finishing" data-role="button" data-icon="refresh" data-iconpos="notext" title="Processing" data-theme="d"><span class="ui-btn-inner ui-btn-corner-all" aria-hidden="true"><span class="ui-btn-text">Cancel</span><span class="ui-icon ui-icon-refresh ui-icon-shadow"></span></span></a>
+
+                   <% break; case 'canceled': %>
+
+
+                   <% break; case 'hold': %>
+
+                   <% break; case 'completed': %>
+
+                        <a class="bar-action ui-btn ui-btn-up-d ui-btn-icon-notext ui-btn-corner-all ui-shadow" data-role="button" data-icon="tick" data-iconpos="notext" title="Done!" data-theme="d"><span class="ui-btn-inner ui-btn-corner-all" aria-hidden="true"><span class="ui-btn-text">Done!</span><span class="ui-icon ui-icon-tick ui-icon-shadow"></span></span></a>
+
+                   <% break;}%>
                 </div>
+
 
                 <ul class="upload-shared-to">
                 <% if (facebook_sharing){ %>
@@ -810,14 +838,6 @@
                 </ul>
             </div>
         </div>
-
-        <!-- old
-    <% if (percent_complete == 100){ %>
-        <a data-icon="forward" data-theme="d" class="processing"></a>
-    <% }else{ %>
-        <a data-icon="delete" data-theme="d" class="cancel"></a>
-    <% } %>
-         -->
     </script>
 
     <!-- @profile DIALOG-->
