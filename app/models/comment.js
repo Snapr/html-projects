@@ -1,19 +1,27 @@
 snapr.models.comment = Backbone.Model.extend({
-    //urlRoot: snapr.api_base + '/comment/',
-    url: function(method){
-        if(method){
-            switch(method){
+    urlRoot: function()
+    {
+        return snapr.api_base + '/comment/'
+    },
+    url: function( method )
+    {
+        if (method)
+        {
+            switch( method )
+            {
                 case 'create':
-                    return snapr.api_base;
+                    return this.urlRoot();
                 case 'update':
-                    return snapr.api_base + '/comment/edit/';
+                    return this.urlRoot() + 'edit/';
                 case 'delete':
-                    return snapr.api_base + '/comment/delete/';
+                    return this.urlRoot() + 'delete/';
                 default:
-                    return snapr.api_base;
+                    return this.urlRoot();
             }
-        }else{
-            return snapr.api_base;
+        }
+        else
+        {
+            return this.urlRoot();
         }
     }
 });
