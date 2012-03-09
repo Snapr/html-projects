@@ -188,14 +188,13 @@ snapr.views.feed_li = Backbone.View.extend({
         })();
     },
 
-    comment: function()
+    comment: function( e )
     {
-        var comment = $(this.el).find('.comment-form textarea').val();
-        var id = this.model.get('id');
-        var c = new snapr.models.comment();
-        c.data = {
-            id: id,
-            comment: comment
+        var commentText = $(this.el).find('textarea').val();
+        var comment = new snapr.models.comment();
+        comment.data = {
+            photo_id: this.model.get('id'),
+            comment: commentText
         }
         // make a copies of 'this' and the .comment-area to pass to functions in the options object
         var feed_li = this;
@@ -219,7 +218,7 @@ snapr.views.feed_li = Backbone.View.extend({
                     }
                     else
                     {
-                        feed_li.reactions.reaction_collection.fetch({
+                        feed_li.reactions.collection.fetch({
                             success: function( s )
                             {
                                 // console.log('fetch reactions success',s);
@@ -246,7 +245,7 @@ snapr.views.feed_li = Backbone.View.extend({
         {
             // the empty object in this save call is important,
             // without it, the options object will not be used
-            c.save( {}, options );
+            comment.save( {}, options );
         } )();
     }
 });
