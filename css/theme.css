@@ -1641,6 +1641,12 @@ input.ui-input-text, textarea.ui-input-text {
 .share-photo .upload-image-sharing label[for="foursquare-sharing"].ui-checkbox-on .ui-icon {
   background-position: -42px -126px;
 }
+.share-photo .upload-image-location .location-name, .share-photo .upload-image-location .foursquare-venue-name {
+  height: 40px;
+  white-space: normal;
+  display: inline-block;
+  vertical-align: middle;
+}
 .share-photo .upload-image-location .ui-btn {
   margin: 8px 0;
   font-family: 'MuseoSansRounded700', Helvetica, Arial, sans-serif;
@@ -1705,8 +1711,11 @@ input.ui-input-text, textarea.ui-input-text {
   padding-top: 0;
   padding-bottom: 0;
   text-align: left;
+  padding-right: 36px;
+  white-space: normal;
 }
 .share-photo .upload-image-location .ui-btn .ui-btn-inner .ui-btn-text {
+  white-space: normal;
   line-height: 40px;
 }
 .share-photo .upload-image-location .ui-btn .ui-btn-inner .ui-btn-text .ui-icon {
@@ -1866,6 +1875,7 @@ input.ui-input-text, textarea.ui-input-text {
 }
 .simple-list .ui-li-heading {
   margin: 0 0 8px 0;
+  font-weight: normal;
 }
 .simple-list .ui-li-desc {
   margin: -8px 0 0 0;
@@ -1899,6 +1909,9 @@ input.ui-input-text, textarea.ui-input-text {
 .simple-list .ui-li-link-alt .ui-btn .ui-icon-plus {
   background-position: 0px 0px;
 }
+.simple-list .ui-li-link-alt .ui-btn .ui-icon-tick {
+  background-position: -252px -144px;
+}
 .simple-list .ui-shadow, .simple-list.ui-shadow {
   -moz-box-shadow: none;
   -webkit-box-shadow: none;
@@ -1915,6 +1928,9 @@ input.ui-input-text, textarea.ui-input-text {
   -moz-border-radius: 0px;
   -webkit-border-radius: 0px;
   border-radius: 0px;
+}
+.simple-list.venue-list .ui-icon-arrow-r {
+  display: none;
 }
 .search-header {
   overflow: visible;
