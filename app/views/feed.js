@@ -1,7 +1,7 @@
 snapr.views.feed = Backbone.View.extend({
 
     events: {
-        "click button.more": "more",
+        "click button.load-more": "more",
         "change .feed-view-toggle": "feed_view_toggle"
     },
 
