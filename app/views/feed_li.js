@@ -29,22 +29,23 @@ snapr.views.feed_li = Backbone.View.extend({
         this.model.bind( "set", this.render );
     },
 
-    load_reactions: function( reload )
+    load_reactions: function()
     {
-        if (!this.reactions || reload)
+        if (!this.reactions)
         {
             this.reactions = new snapr.views.reactions({
                 id: this.model.id,
                 el: $(this.el).find('.reactions-list')
             });
-
-            this.reactions.collection.bind( "change", this.render );
-
         }
         else
         {
             console.log('reactions already loaded');
         }
+
+        this.reactions.collection.bind( "change", this.render );
+        $(this.el).find('.reactions-list').show();
+        this.reactions.collection.fetch();
     },
 
     render: function()
@@ -113,7 +114,7 @@ snapr.views.feed_li = Backbone.View.extend({
 
         if (!this.reactions)
         {
-            this.load_reactions( false );
+            this.load_reactions();
         }
     },
 
@@ -210,29 +211,8 @@ snapr.views.feed_li = Backbone.View.extend({
                     feed_li.model.set({
                         comments: comment_count
                     });
-                    if (!feed_li.reactions)
-                    {
-                        comment_area.find('.comment-form textarea').val('');
-                        comment_area.trigger('collapse');
-                        $(feed_li.el).find('.reactions-button').trigger('expand');
-                    }
-                    else
-                    {
-                        feed_li.reactions.collection.fetch({
-                            success: function( s )
-                            {
-                                // console.log('fetch reactions success',s);
-                                comment_area.find('.comment-form textarea').val('');
-                                comment_area.trigger('collapse');
-                                // console.log('render reactions');
-                                feed_li.reactions.render();
-                            },
-                            error: function( e )
-                            {
-                                console.log('error', e);
-                            }
-                        });
-                    }
+                    $(feed_li.el).find('textarea').val('');
+                    feed_li.load_reactions();
                 }
             },
             error: function( error )
