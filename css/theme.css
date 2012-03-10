@@ -400,6 +400,9 @@ input.ui-input-text, textarea.ui-input-text {
   margin: 0;
   margin-bottom: 8px;
 }
+.ui-btn-inner {
+  padding: 9px 9px;
+}
 .ui-grid-b .ui-block-a .ui-btn, .ui-grid-b .ui-block-b .ui-btn, .ui-grid-b .ui-block-c .ui-btn {
   margin-left: 8px;
 }
