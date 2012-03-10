@@ -1866,6 +1866,7 @@ input.ui-input-text, textarea.ui-input-text {
 }
 .simple-list .ui-li-heading {
   margin: 0 0 8px 0;
+  font-weight: normal;
 }
 .simple-list .ui-li-desc {
   margin: -8px 0 0 0;
@@ -1899,6 +1900,9 @@ input.ui-input-text, textarea.ui-input-text {
 .simple-list .ui-li-link-alt .ui-btn .ui-icon-plus {
   background-position: 0px 0px;
 }
+.simple-list .ui-li-link-alt .ui-btn .ui-icon-tick {
+  background-position: -252px -144px;
+}
 .simple-list .ui-shadow, .simple-list.ui-shadow {
   -moz-box-shadow: none;
   -webkit-box-shadow: none;
@@ -1915,6 +1919,9 @@ input.ui-input-text, textarea.ui-input-text {
   -moz-border-radius: 0px;
   -webkit-border-radius: 0px;
   border-radius: 0px;
+}
+.simple-list.venue-list .ui-icon-arrow-r {
+  display: none;
 }
 .search-header {
   overflow: visible;
