@@ -44,6 +44,7 @@ snapr.views.feed_li = Backbone.View.extend({
         }
 
         this.reactions.collection.bind( "change", this.render );
+        $(this.el).find('.reactions-button').addClass('selected');
         $(this.el).find('.reactions-list').show();
         this.reactions.collection.fetch();
     },
