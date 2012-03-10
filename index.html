@@ -707,12 +707,11 @@
 
             <div class="image-item-base">
                 <div data-role="controlgroup" data-type="horizontal" class="image-actions">
-
-                    <div data-role="button" data-icon="action-heart" data-inline="true" data-iconpos="left" class="favorite-button <% if(item.get('favorite')){ %> selected <% }%>" ><% if (parseInt(item.get('favorite_count')) > 0){ %>&times; <%= item.get('favorite_count')%><%}%></div>
-
+                    <div data-role="button" data-icon="action-heart" data-inline="true" data-iconpos="left" class="favorite-button <% if(item.get('favorite')){ %> selected <% }%>" ><% if (parseInt(item.get('favorite_count')) > 0){ %>&times; <%= item.get('favorite_count')%><%} else {%> &nbsp;<%}%></div>
 
 
-                    <div data-role="button" data-icon="action-comment" data-inline="true" data-iconpos="left" class="comment-button" ><% if (parseInt(item.get('comments')) > 0){ %>&times; <%= item.get('comments')%><%}%></div>
+
+                    <div data-role="button" data-icon="action-comment" data-inline="true" data-iconpos="left" class="comment-button" ><% if (parseInt(item.get('comments')) > 0){ %>&times; <%= item.get('comments')%><%} else {%> &nbsp;<%}%></div>
 
                      <% if (parseInt(item.get('comments')) + parseInt(item.get('favorite_count')) > 0){ %>
                     <div data-role="button" data-icon="action-show-all" data-inline="true" data-iconpos="right" class="reactions-button" >Show All</div>
