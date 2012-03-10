@@ -978,7 +978,7 @@ input.ui-input-text, textarea.ui-input-text {
   padding: 0;
   margin: 0;
   display: block;
-  background-color: #d7d7d5;
+  background-color: #f0f0ef;
 }
 .n-horizontal-scroll {
   white-space: nowrap;
