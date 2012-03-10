@@ -32,7 +32,7 @@ snapr.views.venues = Backbone.View.extend({
         }
         else
         {
-            var transition = "slide";
+            var transition = "slideup";
         }
 
         $.mobile.changePage( $("#venues"), {

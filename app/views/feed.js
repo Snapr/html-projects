@@ -77,7 +77,7 @@ snapr.views.feed = Backbone.View.extend({
         }
         else
         {
-            var transition = "slide";
+            var transition = "none";
         }
 
         $.mobile.changePage( $("#feed"), {
