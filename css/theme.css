@@ -1641,6 +1641,12 @@ input.ui-input-text, textarea.ui-input-text {
 .share-photo .upload-image-sharing label[for="foursquare-sharing"].ui-checkbox-on .ui-icon {
   background-position: -42px -126px;
 }
+.share-photo .upload-image-location .location-name, .share-photo .upload-image-location .foursquare-venue-name {
+  height: 40px;
+  white-space: normal;
+  display: inline-block;
+  vertical-align: middle;
+}
 .share-photo .upload-image-location .ui-btn {
   margin: 8px 0;
   font-family: 'MuseoSansRounded700', Helvetica, Arial, sans-serif;
@@ -1705,8 +1711,11 @@ input.ui-input-text, textarea.ui-input-text {
   padding-top: 0;
   padding-bottom: 0;
   text-align: left;
+  padding-right: 36px;
+  white-space: normal;
 }
 .share-photo .upload-image-location .ui-btn .ui-btn-inner .ui-btn-text {
+  white-space: normal;
   line-height: 40px;
 }
 .share-photo .upload-image-location .ui-btn .ui-btn-inner .ui-btn-text .ui-icon {
