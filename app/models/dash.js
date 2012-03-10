@@ -3,17 +3,21 @@ snapr.models.dash_stream = Backbone.Model.extend({
 });
 snapr.models.dash = Backbone.Collection.extend({
     model: snapr.models.dash_stream,
-    url: function(method){
+    url: function( method )
+    {
         return snapr.api_base + '/user/dashboard/';
     },
-    parse: function( d, xhr ){
-        if (d.success && d.response){
+    parse: function( d, xhr )
+    {
+        if (d.success && d.response)
+        {
             return d.response.dashboard.streams;
         }
     },
     // override fetch to catch the display attributes for the dash
     // in the returned data not just it's models (streams)
-    fetch: function(options) {
+    fetch: function(options)
+    {
         options = options ? _.clone(options) : {};
         var success = options.success;
         options.success = function(collection, d){
