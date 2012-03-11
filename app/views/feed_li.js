@@ -29,19 +29,24 @@ snapr.views.feed_li = Backbone.View.extend({
         this.model.bind( "set", this.render );
     },
 
-    load_reactions: function( reload )
+    load_reactions: function()
     {
-        if (!this.reactions || reload)
+        if (!this.reactions)
         {
             this.reactions = new snapr.views.reactions({
-                id:this.model.id,
-                el:$(this.el).find('.reactions-list')
+                id: this.model.id,
+                el: $(this.el).find('.reactions-list')
             });
         }
         else
         {
             console.log('reactions already loaded');
         }
+
+        this.reactions.collection.bind( "change", this.render );
+        $(this.el).find('.reactions-button').addClass('selected');
+        $(this.el).find('.reactions-list').show();
+        this.reactions.collection.fetch();
     },
 
     render: function()
@@ -68,11 +73,6 @@ snapr.views.feed_li = Backbone.View.extend({
             item: this.model,
             city: city
         } ));
-
-        $img = $(this.el).find("img");
-        $img.load(function(){
-            $img.css("height","auto");
-        });
 
         $(this.el).trigger('create');
         // delegateEvents makes the event bindings in this view work
@@ -115,7 +115,7 @@ snapr.views.feed_li = Backbone.View.extend({
 
         if (!this.reactions)
         {
-            this.load_reactions( false );
+            this.load_reactions();
         }
     },
 
@@ -190,14 +190,13 @@ snapr.views.feed_li = Backbone.View.extend({
         })();
     },
 
-    comment: function()
+    comment: function( e )
     {
-        var comment = $(this.el).find('.comment-form textarea').val();
-        var id = this.model.get('id');
-        var c = new snapr.models.comment();
-        c.data = {
-            id: id,
-            comment: comment
+        var commentText = $(this.el).find('textarea').val();
+        var comment = new snapr.models.comment();
+        comment.data = {
+            photo_id: this.model.get('id'),
+            comment: commentText
         }
         // make a copies of 'this' and the .comment-area to pass to functions in the options object
         var feed_li = this;
@@ -213,29 +212,8 @@ snapr.views.feed_li = Backbone.View.extend({
                     feed_li.model.set({
                         comments: comment_count
                     });
-                    if (!feed_li.reactions)
-                    {
-                        comment_area.find('.comment-form textarea').val('');
-                        comment_area.trigger('collapse');
-                        $(feed_li.el).find('.reactions-button').trigger('expand');
-                    }
-                    else
-                    {
-                        feed_li.reactions.reaction_collection.fetch({
-                            success: function( s )
-                            {
-                                // console.log('fetch reactions success',s);
-                                comment_area.find('.comment-form textarea').val('');
-                                comment_area.trigger('collapse');
-                                // console.log('render reactions');
-                                feed_li.reactions.render();
-                            },
-                            error: function( e )
-                            {
-                                console.log('error', e);
-                            }
-                        });
-                    }
+                    $(feed_li.el).find('textarea').val('');
+                    feed_li.load_reactions();
                 }
             },
             error: function( error )
@@ -248,7 +226,7 @@ snapr.views.feed_li = Backbone.View.extend({
         {
             // the empty object in this save call is important,
             // without it, the options object will not be used
-            c.save( {}, options );
+            comment.save( {}, options );
         } )();
     }
 });

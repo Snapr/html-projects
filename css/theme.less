@@ -365,6 +365,10 @@ fieldset.ui-controlgroup{
     margin-bottom: @padding-element-inset;
 }
 
+.ui-btn-inner{
+       padding: 9px 9px;
+ }
+
 .ui-grid-b{
     .ui-block-a,
     .ui-block-b,
@@ -602,6 +606,7 @@ fieldset.ui-controlgroup{
         .ui-checkbox label,
         .ui-radio label{
             font-size: @txt-size-small;
+            margin: 0;
         }
         
     }
@@ -891,7 +896,7 @@ fieldset.ui-controlgroup{
         padding: 0;
         margin: 0;
         display: block;
-        background-color: @color-bg-neutral-light-tint;
+        background-color: lighten(@color-bg-neutral-light-tint, 10%);
     }
 }
 
@@ -1562,6 +1567,14 @@ fieldset.ui-controlgroup{
        }
     }
     .upload-image-location{
+         .location-name,
+            .foursquare-venue-name{
+                height: 40px;
+                white-space: normal;
+                display: inline-block;
+                vertical-align: middle;
+            }
+        
         .ui-btn {
             margin: @padding-page-inset 0;
             font-family: @txt-font-special;
@@ -1616,7 +1629,10 @@ fieldset.ui-controlgroup{
                 padding-top: 0;
                 padding-bottom: 0;
                  text-align: left;
+                padding-right: 36px;
+                white-space: normal;
                 .ui-btn-text{
+                    white-space: normal;
                     line-height: @gfx-action-icon-sprite-grid;
                     .ui-icon{
                         position: absolute;
@@ -1817,6 +1833,7 @@ fieldset.ui-controlgroup{
     
     .ui-li-heading{
         margin: 0 0 @padding-element-inset 0;
+        font-weight: normal;
     }
     .ui-li-desc{
         margin: -8px 0 0 0;
@@ -1852,6 +1869,9 @@ fieldset.ui-controlgroup{
             .ui-icon-plus{
                 background-position: @gfx-general-icon-sprite-plus-x @g-light-offset-y;
             }
+            .ui-icon-tick{
+                background-position: @gfx-general-icon-sprite-check-x @g-highlight-offset-y;
+            }
             
         }
     } 
@@ -1869,6 +1889,12 @@ fieldset.ui-controlgroup{
     &.ui-corner-top, 
     &.ui-btn-corner-top{
         .corner-all(@corner-not-rounded);
+    }
+    
+    &.venue-list{
+        .ui-icon-arrow-r{
+            display: none;
+        }
     }
 
 }

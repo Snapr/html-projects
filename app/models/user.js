@@ -7,11 +7,14 @@ snapr.models.user = Backbone.Model.extend({
         }
     },
 
-    //urlRoot: snapr.api_base + '/user/',
+    urlRoot: function()
+    {
+        return snapr.api_base + '/user/'
+    },
 
     url: function( method )
     {
-        return snapr.api_base + '/user/details/';
+        return this.urlRoot() + 'details/';
     },
 
     parse: function( d, xhr )
@@ -32,7 +35,7 @@ snapr.models.user = Backbone.Model.extend({
     {
         var url_function = this.url;
 
-        this.url = snapr.api_base + "/user/follow/";
+        this.url = this.urlRoot() + "follow/";
 
         var model = this;
 
@@ -56,7 +59,7 @@ snapr.models.user = Backbone.Model.extend({
     {
         var url_function = this.url;
 
-        this.url = snapr.api_base + "/user/unfollow/";
+        this.url = this.urlRoot() + "unfollow/";
 
         var model = this;
 

@@ -75,6 +75,8 @@ Backbone.sync = function (method, model, options) {
 
     var url = getUrl(model, method);
 
+    console.log("ajax: ", url + '?' + $.param(model.data || {}) + meth)
+
     $.ajax({
         url: url + '?' + $.param(model.data || {}) + meth,
         type: 'GET',
@@ -737,65 +739,78 @@ snapr.routers = Backbone.Router.extend({
 
 });
 
-function spinner_start(text) {
+function spinner_start( text )
+{
     $('.n-centered-loader .text').text(text || '');
     $('body').addClass('n-loading');
 }
 
-function spinner_stop() {
+function spinner_stop()
+{
     $('body').removeClass('n-loading');
 }
 
 
 // upload/appmode functions
-function pass_data(url) {
+function pass_data( url )
+{
+    console.log("pass data: ", url)
     window.location = url.replace(/\+/g, '%20');
 }
 
-function upload_progress(data, datatype) {
+function upload_progress( data, datatype )
+{
     // data may be passed as an object or a string as specified via the data_type param
     // defualts to JSON object, if 'json_string' it will be a text string that needs to be parsed..
     // dont foget to convert it before you do anything with it..
-    if(datatype == 'json_text') {
+    if (datatype == 'json_text')
+    {
         data = JSON.parse(data);
     }
 
-    if(data.uploads.length) {
-        if(typeof snapr.info.current_view.upload_progress == "function") {
+    if (data.uploads.length)
+    {
+        if (typeof snapr.info.current_view.upload_progress == "function")
+        {
             snapr.info.current_view.upload_progress(data);
         }
-    } else {
-        if(snapr.utils.get_local_param("appmode")) {
+    }
+    else
+    {
+        if (snapr.utils.get_local_param("appmode"))
+        {
             pass_data("snapr://upload_progress?send=false");
         }
     }
 }
 
-function upload_count(count) {
+function upload_count( count )
+{
     snapr.info.upload_count = count;
 
-    if(typeof snapr.info.current_view.upload_count == "function") {
+    if (typeof snapr.info.current_view.upload_count == "function")
+    {
         snapr.info.current_view.upload_count(count);
     }
 }
 
-function upload_completed(queue_id, snapr_id) {
-
-    var path = snapr.pending_uploads[queue_id] && snapr.pending_uploads[queue_id].photo && snapr.pending_uploads[queue_id].photo.thumbnail || null;
-
-    if(path) {
-        Route.navigate("#/love-it/?shared=true&photo_path=" + path, true);
-    } else {
-        Route.navigate("#/love-it/?shared=true&photo_id=" + snapr_id, true);
+function upload_completed(queue_id, snapr_id)
+{
+    if (typeof snapr.info.current_view.upload_completed == "function")
+    {
+        snapr.info.current_view.upload_completed(queue_id, snapr_id);
     }
-
-    snapr.pending_uploads[queue_id] && delete snapr.pending_uploads[queue_id];
-
+    else
+    {
+        Route.navigate("#/uploading/?photo_id=" + snapr_id + "&queue_id=" + queue_id, true);
+    }
 }
 
-function upload_cancelled(id) {
-    if(typeof snapr.info.current_view.upload_cancelled == "function") {
-        snapr.info.current_view.upload_cancelled(id);
+function upload_cancelled( id )
+{
+    if (typeof snapr.info.current_view.upload_cancelled == "function")
+    {
+        snapr.info.current_view.upload_cancelled( id );
     }
 }
 

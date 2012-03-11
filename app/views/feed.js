@@ -1,7 +1,7 @@
 snapr.views.feed = Backbone.View.extend({
 
     events: {
-        "click button.more": "more",
+        "click button.load-more": "more",
         "change .feed-view-toggle": "feed_view_toggle"
     },
 
@@ -77,7 +77,7 @@ snapr.views.feed = Backbone.View.extend({
         }
         else
         {
-            var transition = "slide";
+            var transition = "none";
         }
 
         $.mobile.changePage( $("#feed"), {

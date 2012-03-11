@@ -27,7 +27,7 @@ snapr.views.people = Backbone.View.extend({
         }
         else
         {
-            var transition = "slide";
+            var transition = "slideup";
         }
 
         $.mobile.changePage( $("#people"), {

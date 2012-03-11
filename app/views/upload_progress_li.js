@@ -6,8 +6,10 @@ snapr.views.upload_progress_li = Backbone.View.extend({
 
     initialize: function()
     {
-        this.template = this.options.template;
+        this.template = _.template( $("#upload-progress-li-template").html() );
         this.photo = this.options.photo;
+        this.message = null;
+        this.photo_id = null;
     },
 
     events: {
@@ -22,30 +24,32 @@ snapr.views.upload_progress_li = Backbone.View.extend({
         {
             $(this.el).html(
                 this.template({
-                    upload_status: this.photo.upload_status,
+                    upload_status: this.photo.upload_status.toLowerCase(),
                     description: this.photo.description,
                     venue: this.photo.location.foursquare_venue_name || this.photo.location.location,
-                    facebook_sharing: this.photo.shared.facebook_album,
-                    twitter_sharing: this.photo.shared.tweeted,
-                    foursquare_sharing: this.photo.shared.foursquare_checkin,
-                    tumblr_sharing: this.photo.shared.tumblr,
+                    facebook_sharing: this.photo.sharing && this.photo.sharing.facebook_album,
+                    twitter_sharing: this.photo.sharing && this.photo.sharing.tweeted,
+                    foursquare_sharing: this.photo.sharing && this.photo.sharing.foursquare_checkin,
+                    tumblr_sharing: this.photo.sharing && this.photo.sharing.tumblr,
                     thumbnail: this.photo.thumbnail,
-                    percent_complete: this.photo.percent_complete
+                    percent_complete: this.photo.percent_complete,
+                    message: this.message,
+                    photo_id: this.photo_id
                 })
-            );
+            ).trigger( "create" );
 
-            if (this.photo.percent_complete == 100)
-            {
-                $(this.el).find(".finishing").spin({
-                    lines:10,
-                    length:3,
-                    width:2,
-                    radius:3,
-                    trail:50,
-                    speed:1.0,
-                    color:'#000000'
-                });
-            }
+            // if (this.photo.percent_complete == 100)
+            // {
+            //     $(this.el).find(".finishing").spin({
+            //         lines:10,
+            //         length:3,
+            //         width:2,
+            //         radius:3,
+            //         trail:50,
+            //         speed:1.0,
+            //         color:'#000000'
+            //     });
+            // }
         }
 
         return this;

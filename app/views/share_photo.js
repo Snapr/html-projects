@@ -478,7 +478,15 @@ snapr.views.share_photo = Backbone.View.extend({
         {
             if (snapr.utils.get_local_param("appmode"))
             {
-                var params = {};
+                var d = new Date(),
+                    params = {
+                        'device_time': d.getFullYear() + '-' +
+                            ( d.getMonth() + 1 ).zeroFill( 2 ) + '-' +
+                            d.getDate().zeroFill( 2 ) + ' ' +
+                            d.getHours().zeroFill( 2 ) + ':' +
+                            d.getMinutes().zeroFill( 2 ) + ':' +
+                            d.getSeconds().zeroFill( 2 )
+                    };
                 _.each( $(this.el).find("form").serializeArray(), function( o ){
                     if (["tumblr", "faceboook_album", "tweet", "foursquare_checkin"].indexOf( o.name ) > -1)
                     {
@@ -501,13 +509,6 @@ snapr.views.share_photo = Backbone.View.extend({
 
                 _.extend(params, snapr.auth.attributes);
 
-                if (pink_nation_sharing)
-                {
-                    _.extend(params, {
-                        public_group: snapr.public_group,
-                        app_group: snapr.app_group
-                    });
-                }
                 // temporary
                 Route.navigate("#/uploading/", true );
                 pass_data("snapr://upload?" + $.param(params) );

@@ -26,7 +26,7 @@ snapr.views.user_profile = Backbone.View.extend({
         }
         else
         {
-            var transition = "slidedown";
+            var transition = "slideup";
         }
 
         $.mobile.changePage( $("#user-profile"), {

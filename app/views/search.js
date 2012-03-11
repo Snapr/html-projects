@@ -19,7 +19,7 @@ snapr.views.search = Backbone.View.extend({
 
         $.mobile.changePage($("#search"), {
             changeHash: false,
-            transition: "slidedown"
+            transition: "slideup"
         });
     },
 
