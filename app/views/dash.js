@@ -65,7 +65,9 @@ snapr.views.dash = Backbone.View.extend({
 
         _.each( this.collection.models, function( item ){
             var li = new snapr.views.dash_stream({ model: item });
-            streams.append( li.render().el );
+            stream_el = li.render().el;
+            streams.append( stream_el );
+            new iScroll($('.n-horizontal-scroll', stream_el)[0], { vScroll: false });
         }, this);
 
         this.el.trigger( "create" );
