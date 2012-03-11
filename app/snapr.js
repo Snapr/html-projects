@@ -5,7 +5,7 @@ snapr.settings = {
         'client_secret': "secret"
       },
       'local': {
-        'base_url': "http://localhost:8001",
+        'base_url': "http://localhost:8000",
         'client_id': "client",
         'client_secret': "secret"
       },
@@ -33,7 +33,7 @@ snapr.constants.share_redirect = "#/uploading/?";
 // Overriding sync to make this a jsonp app
 Backbone.sync = function (method, model, options) {
 
-    // console.log( "sync", method, model, options )
+    console.log( "sync", method, model, options )
     // Helper function to get a URL from a Model or Collection as a property
     // or as a function.
     // sends the method as a parameter so that different methods can have
