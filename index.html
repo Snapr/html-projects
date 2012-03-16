@@ -352,13 +352,18 @@
 
     <!-- template for upload settings -->
     <script id="upload-mode-template" type="text/template">
-        <div>
-            <strong>Placeholder</strong>
-            <ul>
-                <li>upload_mode: <%= upload_mode %></li>
-                <li>upload_paused: <%= upload_paused %></li>
-            </ul>
-        </div>
+    <fieldset data-role="controlgroup" data-type="horizontal" class="upload-mode-toggle">
+        <input type="radio" id="upload-mode-on" value="on">
+        <label for="upload-mode-on">On</label>
+        <input type="radio" id="upload-mode-wifi" value="wifi">
+        <label for="upload-mode-wifi">Wifi</label>
+    </fieldset>
+    <% if (upload_paused){ %>
+        <button class="upload-pause" data-inline="true" data-icon="plus" data-iconpos="left">Resume Upload Queue</button>
+    <% } else { %>
+        <button class="upload-pause" data-inline="true" data-icon="minus" data-iconpos="left">Pause Upload Queue</button>
+    <% } %>
+
     </script>
 
     <!-- @linked @service PAGE list currently linked services and add new ones -->
