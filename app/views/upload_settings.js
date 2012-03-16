@@ -17,18 +17,21 @@ snapr.views.upload_settings = Backbone.View.extend({
     {
         $(this.el)
             .empty()
-            .append( this.template({}) )
+            .append( this.template({
+                upload_mode: snapr.info.upload_mode,
+                upload_paused: snapr.info.upload_paused
+            }) )
             .trigger("create");
-        if (snapr.info.upload_mode == "On")
-        {
-            $(this.el).find( "#upload-mode-on" ).attr("checked", true);
-        }
-        else
-        {
-            $(this.el).find( "#upload-mode-wifi" ).attr("checked", true);
-        }
-
-        $(this.el).find( "input[type='radio']" ).checkboxradio( "refresh" )
+        // if (snapr.info.upload_mode == "On")
+        // {
+        //     $(this.el).find( "#upload-mode-on" ).attr("checked", true);
+        // }
+        // else
+        // {
+        //     $(this.el).find( "#upload-mode-wifi" ).attr("checked", true);
+        // }
+        //
+        // $(this.el).find( "input[type='radio']" ).checkboxradio( "refresh" )
 
         return this;
     },

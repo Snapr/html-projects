@@ -30,19 +30,16 @@ snapr.views.my_account = Backbone.View.extend({
 
     render: function()
     {
+
+        var $account_content = this.el.find('.account-content').empty();
+
         if (snapr.utils.get_local_param("appmode"))
         {
-            if (this.upload_settings)
-            {
-                $(this.upload_settings.el).remove();
-            }
             this.upload_settings = new snapr.views.upload_settings();
-            $(this.el).find("[data-role='content']").prepend( this.upload_settings.render().el );
+            $account_content.prepend( this.upload_settings.render().el );
         }
 
-        var account_content = this.el.find('.account-content');
-        account_content
-            .empty()
+        $account_content
             .append( this.template({
                 username: snapr.auth.get( "snapr_user" ),
                 settings: this.user_settings.get('settings')
@@ -66,7 +63,7 @@ snapr.views.my_account = Backbone.View.extend({
             // keep track of linked services
             linked_services_list[service.provider] = true;
 
-            account_content.find('.linked-services').append( v.render().el ).trigger('create');
+            $account_content.find('.linked-services').append( v.render().el ).trigger('create');
         });
 
         // for all services that are not yet linked, add
@@ -76,7 +73,7 @@ snapr.views.my_account = Backbone.View.extend({
             {
                 var v = new snapr.views.linked_service();
                 v.provider = provider;
-                account_content.find('.add-services').append( v.render().el ).trigger('create');
+                $account_content.find('.add-services').append( v.render().el ).trigger('create');
             }
         });
 
