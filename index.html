@@ -598,18 +598,19 @@
     <!-- @feed @titlebar ITEM - title bar for pages such as searches and location feeds -->
        <script id="feed-header-template" type="text/template">
        <div class="ui-bar-e ui-bar top-no-arrow">
-           <h4>
-           <% if (query_data.keywords){ %>
-               Search for <em class="search-term"><%= query_data.keywords %></em>
-           <%}else if (query_data.username){ %>
-               Snaps by <em><%= query_data.username %></em>
-           <%}else if (query_data.spot){%>
-               @ <em><%= query_data.spot %></em>
-           <%}%>
-
-
-
-           </h4>
+        <% switch (feed_type) { case 'spot': %>
+            <h4>@ <em><%= feed_parameter %></em></h4>
+        <% break; case 'location': %>
+            <h4>Location Feed</h4>
+        <% break; case 'search': %>
+            <h4>Search for <%= feed_parameter %></h4>
+        <% break; case 'favorites': %>
+            <h4>Favorited by <%= feed_parameter %></h4>
+        <% break; case 'recent': %>
+            <h4>Recent Uploads</h4>
+        <% break; case 'feed': %>
+            <h4>Feed</h4>
+        <% break;}%>
        </div>
        </script>
 

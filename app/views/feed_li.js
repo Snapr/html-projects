@@ -23,7 +23,8 @@ snapr.views.feed_li = Backbone.View.extend({
             '&lng=' + this.model.get('location').longitude +
             '&photo_id=' + this.model.get('id');
         this.spot_url =
-            '/feed/?spot=' + this.model.get('location').spot_id;
+            '/feed/?spot=' + this.model.get('location').spot_id +
+            "&venue_name=" + this.model.get('location').foursquare_venue_name;
 
         // update the display when we fav/unfav or comment
         this.model.bind( "set", this.render );
