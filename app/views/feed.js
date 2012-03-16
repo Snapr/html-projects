@@ -29,7 +29,7 @@ snapr.views.feed = Backbone.View.extend({
 
         if (query_data.username)
         {
-            var feed_header = new snapr.views.user_header({
+            this.feed_header = new snapr.views.user_header({
                 username: query_data.username,
                 model: new snapr.models.user( {username: query_data.username} ),
                 el: this.el.find(".feed-header").empty()
@@ -37,7 +37,7 @@ snapr.views.feed = Backbone.View.extend({
         }
         else
         {
-            var feed_header = new snapr.views.feed_header({
+            this.feed_header = new snapr.views.feed_header({
                 query_data: query_data,
                 el: this.el.find(".feed-header").empty()
             });
