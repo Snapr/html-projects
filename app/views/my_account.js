@@ -44,6 +44,7 @@ snapr.views.my_account = Backbone.View.extend({
         account_content
             .empty()
             .append( this.template({
+                username: snapr.auth.get( "snapr_user" ),
                 settings: this.user_settings.get('settings')
             }) )
             .trigger('create');
