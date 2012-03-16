@@ -24,6 +24,7 @@ snapr.models.dash = Backbone.Collection.extend({
             collection.display = d.response.dashboard.display;
             if (success) success(collection, d);
         };
+        console.log('fecthing dash with', options);
         return Backbone.Collection.prototype.fetch.call(this, options);
     }
 });
