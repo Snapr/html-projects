@@ -2,13 +2,11 @@ snapr.views.user_header = Backbone.View.extend({
 
     initialize: function()
     {
+        _.bindAll( this );
         this.template = _.template( $("#user-header-template").html() );
         var user_header = this;
 
-        this.model.bind( "change", function()
-        {
-            user_header.render();
-        });
+        this.model.bind( "change", this.render );
 
         this.model.fetch({
             error: function()
