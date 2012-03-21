@@ -10,15 +10,12 @@ snapr.views.reactions = Backbone.View.extend({
         };
         this.collection.bind( "reset", this.render );
         this.collection.bind( "change", this.render );
-
-        this.collection.fetch();
+        this.template = _.template( $('#reaction-li-template').html() );
     },
 
-    template: _.template( $('#reaction-li-template').html() ),
-
-    render: function( callback )
+    render: function()
     {
-        var $el = this.el.empty();
+        var $el = $(this.el).empty();
         _.each( this.collection.models, function( reaction )
         {
             $el.append(this.template({
@@ -26,11 +23,6 @@ snapr.views.reactions = Backbone.View.extend({
             }));
         }, this);
         $el.trigger('create').listview().listview('refresh');
-
-        if (callback && typeof callback == 'function')
-        {
-            callback();
-        }
     }
 
 });

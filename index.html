@@ -726,15 +726,9 @@
 
             <div class="image-item-base">
                 <div data-role="controlgroup" data-type="horizontal" class="image-actions">
-                    <div data-role="button" data-icon="action-heart" data-inline="true" data-iconpos="left" class="favorite-button <% if(item.get('favorite')){ %> selected <% }%>" ><% if (parseInt(item.get('favorite_count')) > 0){ %>&times; <%= item.get('favorite_count')%><%} else {%> &nbsp;<%}%></div>
-
-
-
-                    <div data-role="button" data-icon="action-comment" data-inline="true" data-iconpos="left" class="comment-button" ><% if (parseInt(item.get('comments')) > 0){ %>&times; <%= item.get('comments')%><%} else {%> &nbsp;<%}%></div>
-
-                     <% if (parseInt(item.get('comments')) + parseInt(item.get('favorite_count')) > 0){ %>
-                    <div data-role="button" data-icon="action-show-all" data-inline="true" data-iconpos="right" class="reactions-button" >Show All</div>
-                    <%}%>
+                    <span class="v-fav-button"></span>
+                    <span class="v-comment-button"></span>
+                    <span class="v-show-all-button"></span>
                 </div>
 
 
@@ -764,6 +758,23 @@
     <!-- @feed @thumb ITEM - clicks to gallery view -->
     <script id="feed-li-grid-template" type="text/template">
     <a href="https://s3.amazonaws.com/media-server<%= item.get('server_id') %>.snapr.us/lrg/<%= item.get('secret') %>/<%= item.get('id') %>.jpg" rel="external" class="gallery_link image-link"><img src="https://s3.amazonaws.com/media-server<%= item.get('server_id') %>.snapr.us/thm2/<%= item.get('secret') %>/<%= item.get('id') %>.jpg" alt="<%= item.get('description') %>" class="thumb-image thumb-med" /></a>
+    </script>
+
+    <!-- favorite button template -->
+    <script id="fav-button-template" type="text/template">
+        <div data-role="button" data-icon="action-heart" data-inline="true" data-iconpos="left" class="favorite-button <% if (favorite){ %> selected <% }%>" ><% if (count > 0){ %>&times; <%= count %><%} else {%> &nbsp;<%}%></div>
+    </script>
+
+    <!-- comment button template -->
+    <script id="comment-button-template" type="text/template">
+        <div data-role="button" data-icon="action-comment" data-inline="true" data-iconpos="left" class="comment-button <% if(selected){%> selected<%}%>" ><% if (count > 0){ %>&times; <%= count %><%} else {%> &nbsp;<%}%></div>
+    </script>
+
+    <!-- show all button template -->
+    <script id="show-all-button-template" type="text/template">
+         <% if (reactions > 0){ %>
+        <div data-role="button" data-icon="action-show-all" data-inline="true" data-iconpos="right" class="reactions-button <% if (selected){ %> selected <% } %>">Show All</div>
+        <% } %>
     </script>
 
     <!-- @feed @reactions ITEM - display for comments / favs -->
@@ -1895,6 +1906,9 @@
 <script src="app/views/feed_list.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/feed_li.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/feed_header.js" type="text/javascript" charset="utf-8"></script>
+<script src="app/views/favorite_button.js" type="text/javascript" charset="utf-8"></script>
+<script src="app/views/comment_button.js" type="text/javascript" charset="utf-8"></script>
+<script src="app/views/feed_li_show_all_button.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/map.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/map_disambiguation_li.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/my_account.js" type="text/javascript" charset="utf-8"></script>

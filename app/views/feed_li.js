@@ -5,9 +5,8 @@ snapr.views.feed_li = Backbone.View.extend({
     className: "feed-li",
 
     events: {
-        //"click .reactions-button": "load_reactions",
+        // "click .reactions-button": "load_reactions",
         "click .reactions-button": "toggle_reactions",
-        "click .favorite-button": "favorite",
         "click .comment-button": "toggle_comment_form",
         "click .goto-map": "goto_map",
         "click .goto-spot": "goto_spot",
@@ -16,6 +15,8 @@ snapr.views.feed_li = Backbone.View.extend({
 
     initialize: function()
     {
+        _.bindAll( this );
+
         this.template = this.options.template
         this.map_url =
             '/map/?zoom=' + snapr.constants.default_zoom +
@@ -25,28 +26,10 @@ snapr.views.feed_li = Backbone.View.extend({
         this.spot_url =
             '/feed/?spot=' + this.model.get('location').spot_id +
             "&venue_name=" + this.model.get('location').foursquare_venue_name;
-
-        // update the display when we fav/unfav or comment
-        this.model.bind( "set", this.render );
     },
 
     load_reactions: function()
     {
-        if (!this.reactions)
-        {
-            this.reactions = new snapr.views.reactions({
-                id: this.model.id,
-                el: $(this.el).find('.reactions-list')
-            });
-        }
-        else
-        {
-            console.log('reactions already loaded');
-        }
-
-        this.reactions.collection.bind( "change", this.render );
-        $(this.el).find('.reactions-button').addClass('selected');
-        $(this.el).find('.reactions-list').show();
         this.reactions.collection.fetch();
     },
 
@@ -74,6 +57,32 @@ snapr.views.feed_li = Backbone.View.extend({
             item: this.model,
             city: city
         } ));
+
+        this.fav_button = new snapr.views.favorite_button({
+            model: this.model,
+            el: $(this.el).find(".v-fav-button"),
+            li: this
+        }).render();
+
+        this.comment_button = new snapr.views.comment_button({
+            model: this.model,
+            el: $(this.el).find(".v-comment-button"),
+            li: this
+        }).render();
+
+        this.show_all = new snapr.views.feed_li_show_all_button({
+            model: this.model,
+            el: $(this.el).find(".v-show-all-button"),
+            li: this
+        }).render();
+
+        this.reactions = new snapr.views.reactions({
+            id: this.model.id,
+            el: $(this.el).find('.reactions-list')
+        });
+        // this.model.bind( "change:favorite", this.reactions.fetch );
+        this.model.bind( "change:comments", this.load_reactions );
+
 
         $(this.el).trigger('create');
         // delegateEvents makes the event bindings in this view work
@@ -103,21 +112,23 @@ snapr.views.feed_li = Backbone.View.extend({
 
     toggle_reactions: function()
     {
+        $(this.el).find('.reactions-button').toggleClass('selected');
+
         if ($(this.el).find('.reactions-list:visible').length)
         {
-            this.hide_comment_form();
+            $(this.el).find('.reactions-list').hide();
         }
         else
         {
-            this.show_comment_form();
-        }
-        $(this.el).find('.reactions-button').toggleClass('selected');
-        $(this.el).find('.reactions-list').toggle();
-
-        if (!this.reactions)
-        {
             this.load_reactions();
+            $(this.el).find('.reactions-list').show();
         }
+    },
+
+    show_reactions: function()
+    {
+        $(this.el).find('.reactions-button').addClass('selected');
+        $(this.el).find('.reactions-list').show();
     },
 
     goto_map: function()
@@ -128,67 +139,6 @@ snapr.views.feed_li = Backbone.View.extend({
     goto_spot: function()
     {
         Route.navigate( this.spot_url, true );
-    },
-
-
-    favorite: function()
-    {
-        var feed_li = this;
-        var is_fav = this.model.get('favorite');
-        var fav_count = parseInt( this.model.get('favorite_count') );
-
-        snapr.utils.require_login( function()
-        {
-            var fav = new snapr.models.favorite({
-                id: feed_li.model.get('id')
-            });
-
-            if (is_fav)
-            {
-                // already saved as a fav so we will remove it
-                var options = {
-                    success: function( s )
-                    {
-                        // success is not passed through so we check for error
-                        if (!s.get('error'))
-                        {
-                            feed_li.model.set({
-                                favorite: false,
-                                favorite_count: fav_count - 1
-                            });
-                            feed_li.render();
-                        }
-                    },
-                    error: function(e)
-                    {
-                        console.log('fav error',e);
-                    }
-                }
-                fav.destroy( options );
-            }
-            else
-            {
-                // save a new fav (empty object is important)
-                var options = {
-                    success: function(s)
-                    {
-                        if (s.get('success'))
-                        {
-                            feed_li.model.set({
-                                favorite: true,
-                                favorite_count: fav_count + 1
-                            });
-                            feed_li.render();
-                        }
-                    },
-                    error: function(e)
-                    {
-                        console.log('fav error',e);
-                    }
-                }
-                fav.save( {}, options );
-            }
-        })();
     },
 
     comment: function( e )
@@ -208,12 +158,12 @@ snapr.views.feed_li = Backbone.View.extend({
             {
                 if (s.get('success'))
                 {
-                    console.log('save comment success');
                     var comment_count = parseInt( feed_li.model.get('comments') ) + 1;
                     feed_li.model.set({
                         comments: comment_count
                     });
                     $(feed_li.el).find('textarea').val('');
+                    feed_li.show_reactions();
                     feed_li.load_reactions();
                 }
             },
