@@ -117,11 +117,13 @@ snapr.views.feed_li = Backbone.View.extend({
         if ($(this.el).find('.reactions-list:visible').length)
         {
             $(this.el).find('.reactions-list').hide();
+            this.hide_comment_form();
         }
         else
         {
             this.load_reactions();
             $(this.el).find('.reactions-list').show();
+            this.show_comment_form();
         }
     },
 
