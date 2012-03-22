@@ -77,6 +77,7 @@ snapr.views.map_controls = Backbone.View.extend({
     render: function()
     {
         $(this.el).find("#map-filter option[value='just-me']").attr("disabled", !snapr.auth.has("snapr_user"));
+        $(this.el).find("#map-filter option[value='following']").attr("disabled", !snapr.auth.has("snapr_user"));
         $(this.el).find("#map-filter option[value='just-one']").attr("disabled", !this.model.has("photo_id"));
 
         if (this.model.has( "photo_id" ))

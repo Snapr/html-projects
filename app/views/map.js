@@ -321,9 +321,9 @@ snapr.views.map = Backbone.View.extend({
 
     map_feed: function()
     {
-        if (this.map)
+        if (this.map_query)
         {
-            var urlParams = _.clone( this.query );
+            var urlParams = this.map_query.attributes;
 
             if (urlParams.access_token)
             {
