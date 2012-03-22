@@ -85,11 +85,6 @@ snapr.views.map_controls = Backbone.View.extend({
         if (this.model.has( "photo_id" ) && this.model.get( "n" ) == 1)
         {
             $("#map-filter").val("just-one").selectmenu('refresh', true);
-            var thumb = this.collection.get_photo_by_id( this.model.get( "photo_id" ) );
-            if (thumb)
-            {
-                console.warn("thumb", thumb.get( "date" ));
-            }
         }
         else if (!this.model.has( "username" ) && this.model.get( "group" ) == "following")
         {
@@ -117,8 +112,8 @@ snapr.views.map_controls = Backbone.View.extend({
         }
         else
         {
-            this.show_map_time();
-            this.model.unset("date", {silent: true});
+            this.show_map_time(this.model.get( "date" ));
+            // this.model.unset("date", {silent: true});
         }
 
 
