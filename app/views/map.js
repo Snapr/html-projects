@@ -4,11 +4,7 @@ snapr.views.map = Backbone.View.extend({
 
     events: {
         "click .x-current-location": "go_to_current_location",
-        "change #map-filter": "update_filter",
         "click #map-disambituation-cancel": "hide_dis",
-        "submit #map-keyword": "keyword_search",
-        "blur #map-keyword": "keyword_search",
-        "click #map-keyword .ui-input-clear": "clear_keyword_search",
         "click .x-map-feed": "map_feed"
     },
 
@@ -53,11 +49,6 @@ snapr.views.map = Backbone.View.extend({
             $(this.el).find("#map-keyword input").val(this.query.keywords);
         }
 
-        $.mobile.changePage("#map", {
-            changeHash: false,
-            // transition: 'flip'
-        });
-
         this.geocoder = new google.maps.Geocoder();
 
         if(this.map)
@@ -90,7 +81,19 @@ snapr.views.map = Backbone.View.extend({
             }
         }
 
+        this.map_controls = new snapr.views.map_controls({
+            el: $(this.el).find(".v-map-controls"),
+            map_view: this
+        })
+
         // this.render();
+
+
+        $.mobile.changePage("#map", {
+            changeHash: false,
+            transition: 'flip'
+        });
+
     },
 
     create_map: function (location) {
@@ -181,6 +184,10 @@ snapr.views.map = Backbone.View.extend({
                         map_view.map_thumbs[i] = new snapr.SnapOverlay('photo', thumb.attributes, map_view.map, false);
                     });
                 }
+                else if (map_view.thumb_collection.length == 0)
+                {
+                    map_view.remove_overlays();
+                }
                 else
                 {
                     console.log("same thumbs")
@@ -239,37 +246,6 @@ snapr.views.map = Backbone.View.extend({
         });
     },
 
-    update_filter: function () {
-        var filter = $('#map-filter').val(),
-            query;
-        switch(filter) {
-            case 'all':
-                query = {
-                    n: 10
-                };
-                break;
-            case 'following':
-                query = {
-                    group: 'following',
-                    n: 10
-                };
-                break;
-            case 'just-me':
-                query = {
-                    username: '.',
-                    n: 10
-                };
-                break;
-            case 'just-one':
-                query = {
-                    n: 1
-                };
-                break;
-            }
-
-        this.get_thumbs(query);
-    },
-
     place_current_location: function()
     {
         if(this.marker)
@@ -312,23 +288,6 @@ snapr.views.map = Backbone.View.extend({
         else
         {
             console.warn("map not initialized");
-        }
-    },
-
-    keyword_search: function( e )
-    {
-        if ($(e.currentTarget).find("input").val() != (this.query.keywords || ""))
-        {
-            if ($(e.currentTarget).find("input").val())
-            {
-                this.query.keywords = $(e.currentTarget).find("input").val();
-                this.get_thumbs();
-            }
-            else
-            {
-                delete this.query.keywords;
-                this.get_thumbs();
-            }
         }
     },
 
