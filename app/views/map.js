@@ -21,6 +21,8 @@ snapr.views.map = Backbone.View.extend({
 
         this.flag_template = _.template($('#flag-template').html());
 
+        this.thumb_collection = new snapr.models.thumb_collection();
+
         this.map_thumbs = [];
         this.map_flags = [];
 
@@ -91,7 +93,8 @@ snapr.views.map = Backbone.View.extend({
 
         this.map_controls = new snapr.views.map_controls({
             el: $(this.el).find(".v-map-controls"),
-            model: this.map_query
+            model: this.map_query,
+            collection: this.thumb_collection
         })
 
         // this.render();
@@ -175,7 +178,6 @@ snapr.views.map = Backbone.View.extend({
     get_thumbs: function( query_model )
     {
         var query = query_model && query_model.attributes || this.map_query.attributes;
-        this.thumb_collection = this.thumb_collection || new snapr.models.thumb_collection();
 
         var old_thumb_ids = this.thumb_collection.pluck("id");
 
