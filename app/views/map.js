@@ -160,24 +160,32 @@ snapr.views.map = Backbone.View.extend({
 
     get_thumbs: function (query) {
         query = query || this.query;
-        this.thumb_collection = new snapr.models.thumb_collection();
+        this.thumb_collection = this.thumb_collection || new snapr.models.thumb_collection();
+
+        var old_thumb_ids = this.thumb_collection.pluck("id");
+
         if (this.query.location)
         {
             delete this.query.location;
         }
         this.thumb_collection.data = query || this.query;
         this.thumb_collection.data.area = this.map.getBounds().toUrlValue(4);
-        // if(!query){
-        //     var query = this.query;
-        // }
         var map_view = this;
         this.thumb_collection.fetch({
             success: function (s) {
-                map_view.remove_overlays();
+                if (_.difference( map_view.thumb_collection.pluck("id"), old_thumb_ids ).length)
+                {
+                    map_view.remove_overlays();
 
-                _.each(map_view.thumb_collection.models, function (thumb, i) {
-                    map_view.map_thumbs[i] = new snapr.SnapOverlay('photo', thumb.attributes, map_view.map, false);
-                });
+                    _.each(map_view.thumb_collection.models, function (thumb, i) {
+                        map_view.map_thumbs[i] = new snapr.SnapOverlay('photo', thumb.attributes, map_view.map, false);
+                    });
+                }
+                else
+                {
+                    console.log("same thumbs")
+                }
+
             },
             error: function (e) {
                 console.log('error', e);
