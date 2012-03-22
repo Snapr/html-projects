@@ -9,6 +9,7 @@ snapr.views.map = Backbone.View.extend({
         "submit #map-keyword": "keyword_search",
         "blur #map-keyword": "keyword_search",
         "click #map-keyword .ui-input-clear": "clear_keyword_search",
+        "click .x-map-feed": "map_feed"
     },
 
     initialize: function () {
@@ -40,9 +41,7 @@ snapr.views.map = Backbone.View.extend({
         };
 
         if (this.query.lat && this.query.lng){
-            this.lat = this.query.lat;
-            this.lon = this.query.lng;
-            this.map_settings.center = new google.maps.LatLng( this.lat, this.lng );
+            this.map_settings.center = new google.maps.LatLng( this.query.lat, this.query.lng );
         }
         else if (snapr.utils.get_local_param('map_latitude'))
         {
@@ -270,7 +269,7 @@ snapr.views.map = Backbone.View.extend({
             this.marker.setMap( null );
         }
         this.marker = new google.maps.Marker({
-            position: new google.maps.LatLng(this.lat, this.lng),
+            position: new google.maps.LatLng(this.query.lat, this.query.lng),
             map: this.map,
             title: 'Current location',
             clickable: false,
@@ -329,5 +328,23 @@ snapr.views.map = Backbone.View.extend({
     {
         delete this.query.keywords;
         this.get_thumbs();
+    },
+
+    map_feed: function()
+    {
+        if (this.map)
+        {
+            var urlParams = _.clone( this.query );
+
+            if (urlParams.access_token)
+            {
+                delete urlParams.access_token;
+            }
+            Route.navigate( "#/feed/?" + $.param(urlParams), true );
+        }
+        else
+        {
+            console.warn("map not initialized", this);
+        }
     }
 });
