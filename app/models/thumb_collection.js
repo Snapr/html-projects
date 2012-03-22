@@ -14,5 +14,12 @@ snapr.models.thumb_collection = Backbone.Collection.extend({
     comparator: function( model )
     {
         return - model.get("location").latitude;
+    },
+    get_photo_by_id: function( id )
+    {
+        return this.filter( function( model )
+        {
+            return model.get("id") == id;
+        })[0];
     }
 });
