@@ -7,6 +7,7 @@ snapr.views.map = Backbone.View.extend({
         "change #map-filter": "update_filter",
         "click #map-disambituation-cancel": "hide_dis",
         "submit #map-keyword": "keyword_search",
+        "blur #map-keyword": "keyword_search",
         "click #map-keyword .ui-input-clear": "clear_keyword_search",
     },
 
@@ -309,15 +310,18 @@ snapr.views.map = Backbone.View.extend({
 
     keyword_search: function( e )
     {
-        if ($(e.currentTarget).find("input").val())
+        if ($(e.currentTarget).find("input").val() != (this.query.keywords || ""))
         {
-            this.query.keywords = $(e.currentTarget).find("input").val();
-            this.get_thumbs();
-        }
-        else
-        {
-            delete this.query.keywords;
-            this.get_thumbs();
+            if ($(e.currentTarget).find("input").val())
+            {
+                this.query.keywords = $(e.currentTarget).find("input").val();
+                this.get_thumbs();
+            }
+            else
+            {
+                delete this.query.keywords;
+                this.get_thumbs();
+            }
         }
     },
 
