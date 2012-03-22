@@ -5,7 +5,9 @@ snapr.views.map = Backbone.View.extend({
     events: {
         "click .x-current-location": "go_to_current_location",
         "change #map-filter": "update_filter",
-        "click #map-disambituation-cancel": "hide_dis"
+        "click #map-disambituation-cancel": "hide_dis",
+        "submit #map-keyword": "keyword_search",
+        "click #map-keyword .ui-input-clear": "clear_keyword_search",
     },
 
     initialize: function () {
@@ -44,6 +46,11 @@ snapr.views.map = Backbone.View.extend({
         else if (snapr.utils.get_local_param('map_latitude'))
         {
             this.map_settings.center = new google.maps.LatLng( snapr.utils.get_local_param('map_latitude'), snapr.utils.get_local_param('map_longitude') );
+        }
+
+        if (this.query.keywords)
+        {
+            $(this.el).find("#map-keyword input").val(this.query.keywords);
         }
 
         $.mobile.changePage("#map", {
@@ -152,7 +159,12 @@ snapr.views.map = Backbone.View.extend({
     },
 
     get_thumbs: function (query) {
+        query = query || this.query;
         this.thumb_collection = new snapr.models.thumb_collection();
+        if (this.query.location)
+        {
+            delete this.query.location;
+        }
         this.thumb_collection.data = query || this.query;
         this.thumb_collection.data.area = this.map.getBounds().toUrlValue(4);
         // if(!query){
@@ -293,5 +305,25 @@ snapr.views.map = Backbone.View.extend({
         {
             console.warn("map not initialized");
         }
+    },
+
+    keyword_search: function( e )
+    {
+        if ($(e.currentTarget).find("input").val())
+        {
+            this.query.keywords = $(e.currentTarget).find("input").val();
+            this.get_thumbs();
+        }
+        else
+        {
+            delete this.query.keywords;
+            this.get_thumbs();
+        }
+    },
+
+    clear_keyword_search: function()
+    {
+        delete this.query.keywords;
+        this.get_thumbs();
     }
 });
