@@ -3,11 +3,14 @@ snapr.views.map = Backbone.View.extend({
     el: $("#map"),
 
     events: {
+        "click .x-current-location": "go_to_current_location",
         "change #map-filter": "update_filter",
         "click #map-disambituation-cancel": "hide_dis"
     },
 
-    initialize: function (init_options) {
+    initialize: function () {
+        _.bindAll( this );
+
         this.el.live('pagehide', function (e) {
             $(e.target).undelegate();
 
@@ -21,7 +24,7 @@ snapr.views.map = Backbone.View.extend({
         this.map_thumbs = [];
         this.map_flags = [];
 
-        this.query = init_options.query;
+        this.query = this.options.query;
         if(this.query.photo_id) {
             this.query.n = 1;
         }
@@ -34,33 +37,49 @@ snapr.views.map = Backbone.View.extend({
         };
 
         if (this.query.lat && this.query.lng){
-            this.map_settings.center = new google.maps.LatLng(this.query.lat, this.query.lng);
-        }else if (snapr.utils.get_local_param('map_latitude')){
-            this.map_settings.center = new google.maps.LatLng(snapr.utils.get_local_param('map_latitude'), snapr.utils.get_local_param('map_longitude'));
+            this.lat = this.query.lat;
+            this.lon = this.query.lng;
+            this.map_settings.center = new google.maps.LatLng( this.lat, this.lng );
+        }
+        else if (snapr.utils.get_local_param('map_latitude'))
+        {
+            this.map_settings.center = new google.maps.LatLng( snapr.utils.get_local_param('map_latitude'), snapr.utils.get_local_param('map_longitude') );
         }
 
         $.mobile.changePage("#map", {
             changeHash: false,
-            transition: 'flip'
+            // transition: 'flip'
         });
 
         this.geocoder = new google.maps.Geocoder();
 
+        if(this.map)
+        {
+            if (this.query.location)
+            {
+                this.search_location(this.query.location);
+            }
+            else
+            {
+                this.go_to_current_location();
+            }
+        }
+        else
+        {
+            var map_view = this;
+            var success_callback = function(location){
+                map_view.map_settings.center = new google.maps.LatLng(location.coords.latitude, location.coords.longitude);
+                map_view.create_map(map_view.query.location);
+            };
+            var error_callback = function(){
+                map_view.map_settings.center = new google.maps.LatLng(42, 12);
+                map_view.create_map(map_view.query.location);
+            };
 
-        if(this.map) {
-            this.search_location(this.query.location);
-        } else {
-            that = this;
             if(this.map_settings.center === undefined){
-                snapr.geo.get_location(function(location){
-                    that.map_settings.center = new google.maps.LatLng(location.coords.latitude, location.coords.longitude);
-                    that.create_map(that.query.location);
-                }, function(){
-                    that.map_settings.center = new google.maps.LatLng(42, 12);
-                    that.create_map(that.query.location);
-                });
+                snapr.geo.get_location( success_callback, error_callback );
             }else{
-                this.create_map(this.query.location);
+                this.create_map( this.query.location );
             }
         }
 
@@ -229,5 +248,50 @@ snapr.views.map = Backbone.View.extend({
             }
 
         this.get_thumbs(query);
+    },
+
+    place_current_location: function()
+    {
+        if(this.marker)
+        {
+            this.marker.setMap( null );
+        }
+        this.marker = new google.maps.Marker({
+            position: new google.maps.LatLng(this.lat, this.lng),
+            map: this.map,
+            title: 'Current location',
+            clickable: false,
+            icon: './gfx/map-current-location-marker.png'
+        });
+        setTimeout( this.place_current_location, 30000 );
+    },
+
+    go_to_current_location: function()
+    {
+        // save a reference for this view to be passed to callback functions
+        var map_view = this;
+
+        var success_callback = function( position )
+        {
+            map_view.map.setZoom(snapr.constants.default_zoom);
+            map_view.map.panTo( new google.maps.LatLng( position.coords.latitude, position.coords.longitude) );
+            map_view.lat = position.coords.latitude;
+            map_view.lng = position.coords.longitude;
+            map_view.place_current_location();
+        }
+
+        var error_callback = function( error )
+        {
+            console.warn( "error getting geolocation", error );
+            alert( error.message )
+        }
+        if (this.map)
+        {
+            snapr.geo.get_location( success_callback, error_callback );
+        }
+        else
+        {
+            console.warn("map not initialized");
+        }
     }
 });
