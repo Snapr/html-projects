@@ -24,38 +24,46 @@ snapr.views.map = Backbone.View.extend({
         this.map_thumbs = [];
         this.map_flags = [];
 
-        this.query = this.options.query;
-        if(this.query.photo_id) {
-            this.query.n = 1;
+        var query = this.options.query;
+        if (query.photo_id) {
+            query.n = 1;
         }
 
+        // create a backbone model to store the current map query
+        // this lets us bind functions to changes and pass the query to subviews
+        this.map_query = new Backbone.Model(query);
+        this.map_query.bind( "change", this.get_thumbs )
+
         this.map_settings = {
-            zoom: parseInt(snapr.utils.get_local_param('map_zoom')) || this.query.zoom || snapr.constants.default_zoom,
+            zoom: this.map_query.get( "zoom" ) ||
+                parseInt(snapr.utils.get_local_param('map_zoom')) ||
+                snapr.constants.default_zoom,
             streetViewControl: false,
             mapTypeControl: false,
             mapTypeId: google.maps.MapTypeId.ROADMAP
         };
 
-        if (this.query.lat && this.query.lng){
-            this.map_settings.center = new google.maps.LatLng( this.query.lat, this.query.lng );
+        if (this.map_query.get( "lat" ) && this.map_query.get( "lng" )){
+            this.map_settings.center = new google.maps.LatLng( this.map_query.get( "lat" ), this.map_query.get( "lng" ) );
         }
-        else if (snapr.utils.get_local_param('map_latitude'))
+        else if (snapr.utils.get_local_param('map_latitude') && snapr.utils.get_local_param('map_longitude'))
         {
             this.map_settings.center = new google.maps.LatLng( snapr.utils.get_local_param('map_latitude'), snapr.utils.get_local_param('map_longitude') );
         }
 
-        if (this.query.keywords)
-        {
-            $(this.el).find("#map-keyword input").val(this.query.keywords);
-        }
+        // todo set this in subview
+        // if (this.query.keywords)
+        // {
+        //     $(this.el).find("#map-keyword input").val(this.query.keywords);
+        // }
 
         this.geocoder = new google.maps.Geocoder();
 
         if(this.map)
         {
-            if (this.query.location)
+            if (this.map_query.get( "location" ))
             {
-                this.search_location(this.query.location);
+                this.search_location( this.map_query.get( "location" ) );
             }
             else
             {
@@ -77,17 +85,16 @@ snapr.views.map = Backbone.View.extend({
             if(this.map_settings.center === undefined){
                 snapr.geo.get_location( success_callback, error_callback );
             }else{
-                this.create_map( this.query.location );
+                this.create_map( this.map_query.get( "location" ) );
             }
         }
 
         this.map_controls = new snapr.views.map_controls({
             el: $(this.el).find(".v-map-controls"),
-            map_view: this
+            model: this.map_query
         })
 
         // this.render();
-
 
         $.mobile.changePage("#map", {
             changeHash: false,
@@ -120,11 +127,12 @@ snapr.views.map = Backbone.View.extend({
         //     console.log( 'zoom_changed' );
         // });
         console.log('listening');
-        var idle = google.maps.event.addListener(map_view.map, "idle", function () {
-            var query = map_view.thumb_collection && map_view.thumb_collection.data || false;
-            console.log( 'idle get thumbs', query );
-            map_view.get_thumbs(query);
-
+        var idle = google.maps.event.addListener( map_view.map, "idle", function()
+        {
+            map_view.map_query.set( {
+                area: map_view.map.getBounds().toUrlValue(4),
+                zoom: map_view.map.getZoom()
+            });
             // remember location
             console.log('saving location');
             snapr.utils.save_local_param('map_zoom', map_view.map.getZoom());
@@ -133,55 +141,61 @@ snapr.views.map = Backbone.View.extend({
             snapr.utils.save_local_param('map_longitude', ll.lng());
         });
 
-        if(location) {
-            this.search_location(location);
+        if (location)
+        {
+            this.search_location( location );
         }
-
     },
 
-    place_pin: function (lat, lng) {
-        lat = lat || this.query.lat;
-        lng = lng || this.query.lng;
+    place_pin: function( lat, lng )
+    {
+        lat = lat || this.map_query.get( "lat" );
+        lng = lng || this.map_query.get( "lng" );
         var marker = new google.maps.Marker({
-            position: new google.maps.LatLng(lat, lng),
+            position: new google.maps.LatLng( lat, lng ),
             map: this.map,
             title: 'My workplace',
             clickable: false
         });
     },
 
-    remove_overlays: function () {
-        _.each(this.map_thumbs, function (thumb) {
+    remove_overlays: function()
+    {
+        _.each( this.map_thumbs, function( thumb )
+        {
             thumb.setMap(null);
         });
 
-        _.each(this.map_spots, function (spot) {
-            spot.setMap(null);
+        _.each( this.map_spots, function( spot )
+        {
+            spot.setMap( null );
         });
-
     },
 
-    get_thumbs: function (query) {
-        query = query || this.query;
+    get_thumbs: function( query_model )
+    {
+        var query = query_model && query_model.attributes || this.map_query.attributes;
         this.thumb_collection = this.thumb_collection || new snapr.models.thumb_collection();
 
         var old_thumb_ids = this.thumb_collection.pluck("id");
 
-        if (this.query.location)
+        if (query.location)
         {
-            delete this.query.location;
+            delete query.location;
         }
-        this.thumb_collection.data = query || this.query;
+        this.thumb_collection.data = query;
         this.thumb_collection.data.area = this.map.getBounds().toUrlValue(4);
         var map_view = this;
         this.thumb_collection.fetch({
-            success: function (s) {
+            success: function( s )
+            {
                 if (_.difference( map_view.thumb_collection.pluck("id"), old_thumb_ids ).length)
                 {
                     map_view.remove_overlays();
 
-                    _.each(map_view.thumb_collection.models, function (thumb, i) {
-                        map_view.map_thumbs[i] = new snapr.SnapOverlay('photo', thumb.attributes, map_view.map, false);
+                    _.each(map_view.thumb_collection.models, function( thumb, i )
+                    {
+                        map_view.map_thumbs[ i ] = new snapr.SnapOverlay( 'photo', thumb.attributes, map_view.map, false );
                     });
                 }
                 else if (map_view.thumb_collection.length == 0)
@@ -190,17 +204,17 @@ snapr.views.map = Backbone.View.extend({
                 }
                 else
                 {
-                    console.log("same thumbs")
+                    console.log( "same thumbs" )
                 }
-
             },
-            error: function (e) {
-                console.log('error', e);
+            error: function( e )
+            {
+                console.log( "error getting thumbs", e );
             }
         });
     },
 
-    hide_dis: function () {
+    hide_dis: function() {
         this.el.find("#map-disambiguation").hide();
     },
 
@@ -208,18 +222,23 @@ snapr.views.map = Backbone.View.extend({
         this.el.find("#map-disambiguation").show();
     },
 
-    search_location: function (search_query) {
-
+    search_location: function( search_query )
+    {
         var map_view = this;
         this.geocoder.geocode({
             "address": search_query
-        }, function (results, status) {
-            if(status == google.maps.GeocoderStatus.OK) {
+        },
+        function( results, status )
+        {
+            if (status == google.maps.GeocoderStatus.OK)
+            {
                 //if there is more than one result, show list
-                if(results.length > 1) {
+                if (results.length > 1)
+                {
                     var li_template = _.template($("#map-disambiguation-li-template").html());
                     var dis_list = $("#map-disambiguation-list").empty();
-                    _.each(results, function (result) {
+                    _.each( results, function( result )
+                    {
                         var li = new snapr.views.map_disambiguation_li({
                             result: result,
                             template: li_template,
@@ -232,11 +251,15 @@ snapr.views.map = Backbone.View.extend({
 
                     map_view.show_dis();
                     dis_list.listview().listview("refresh");
-                } else {
-                    map_view.hide_dis();
-                    map_view.map.fitBounds(results[0].geometry.bounds);
                 }
-            } else {
+                else
+                {
+                    map_view.hide_dis();
+                    map_view.map.fitBounds( results[ 0 ].geometry.bounds );
+                }
+            }
+            else
+            {
                 var again = confirm("Sorry, your search returned no results. Would you like to search again?");
 
                 if(again) {
@@ -248,12 +271,12 @@ snapr.views.map = Backbone.View.extend({
 
     place_current_location: function()
     {
-        if(this.marker)
+        if (this.marker)
         {
             this.marker.setMap( null );
         }
         this.marker = new google.maps.Marker({
-            position: new google.maps.LatLng(this.query.lat, this.query.lng),
+            position: new google.maps.LatLng( this.map_query.get( "lat" ), this.map_query.get( "lng" )),
             map: this.map,
             title: 'Current location',
             clickable: false,
@@ -293,8 +316,7 @@ snapr.views.map = Backbone.View.extend({
 
     clear_keyword_search: function()
     {
-        delete this.query.keywords;
-        this.get_thumbs();
+        this.map_query.unset( "keywords" );
     },
 
     map_feed: function()

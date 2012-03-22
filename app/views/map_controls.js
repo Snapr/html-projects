@@ -10,62 +10,68 @@ snapr.views.map_controls = Backbone.View.extend({
     initialize: function () {
         _.bindAll( this );
         this.map_view = this.options.map_view;
+
+        this.model.bind("change", function(){
+            // alert("change from map_controls");
+        })
         // this.render();
     },
 
     update_filter: function( e )
     {
-        var filter = $(e.currentTarget).val(),
-            query;
+        var filter = $(e.currentTarget).val();
         switch(filter) {
             case 'all':
-                query = {
+                this.model.unset( "username", {silent: true});
+                this.model.unset( "group", {silent: true});
+                this.model.set({
                     n: 10
-                };
+                });
                 break;
             case 'following':
-                query = {
-                    group: 'following',
+                this.model.unset( "username", {silent: true});
+                this.model.unset( "group", {silent: true});
+                this.model.set({
+                    group: "following",
                     n: 10
-                };
+                });
                 break;
             case 'just-me':
-                query = {
-                    username: '.',
+                this.model.unset( "group", {silent: true});
+                this.model.set({
+                    username: ".",
                     n: 10
-                };
+                });
                 break;
             case 'just-one':
-                query = {
+                this.model.unset( "username", {silent: true});
+                this.model.unset( "group", {silent: true});
+                this.model.set({
                     n: 1
-                };
+                });
                 break;
             }
-
-        this.map_view.get_thumbs( query );
     },
 
     keyword_search: function( e )
     {
-        if ($(e.currentTarget).find("input").val() != (this.map_view.query.keywords || ""))
+        var keywords = $(e.currentTarget).find("input").val();
+        if (keywords != (this.model.get( "keywords" )))
         {
-            if ($(e.currentTarget).find("input").val())
+            if (keywords)
             {
-                this.map_view.query.keywords = $(e.currentTarget).find("input").val();
-                this.map_view.get_thumbs();
+                this.model.set({keywords: $(e.currentTarget).find("input").val()});
             }
             else
             {
-                delete this.map_view.query.keywords;
-                this.map_view.get_thumbs();
+                this.model.unset( "keywords" );
             }
         }
     },
 
     clear_keyword_search: function()
     {
-        delete this.map_view.query.keywords;
-        this.map_view.get_thumbs();
+        this.model.unset( "keywords" );
     }
 
 });
