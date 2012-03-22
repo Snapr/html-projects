@@ -1354,6 +1354,9 @@ input.ui-input-text, textarea.ui-input-text {
   /* reactions btn off to the right */
 
 }
+.image-item-block .image-actions .v-fav-button, .image-item-block .image-actions .v-comment-button, .image-item-block .image-actions .v-show-all-button {
+  display: inline-block;
+}
 .image-item-block .image-actions .ui-btn,
 .image-item-block .image-actions .ui-btn-hover-d,
 .image-item-block .image-actions .ui-btn-down-d,
