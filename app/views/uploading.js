@@ -22,6 +22,7 @@ snapr.views.uploading = Backbone.View.extend({
         if (this.options.query.photo_id)
         {
             this.upload_completed( 0, this.options.query.photo_id);
+
         }
         else{
             // testing upload stuff
@@ -204,7 +205,31 @@ snapr.views.uploading = Backbone.View.extend({
 
     upload_completed: function( queue_id, snapr_id )
     {
-        if (this.pending_uploads[queue_id])
+        var $container = $(this.el).find(".upload-progress-container");
+
+        var uploading_view = this;
+
+        if (!this.pending_uploads[queue_id])
+        {
+            var photo = new snapr.models.photo({id: snapr_id});
+
+            photo.fetch({
+                success: function( photo )
+                {
+                    var progress_li = new snapr.views.upload_progress_li({
+                        photo: photo.attributes
+                    });
+                    progress_li.message = "Completed!";
+                    progress_li.photo.upload_status = "completed";
+                    progress_li.post_id = snapr_id;
+                    progress_li.photo.thumbnail = "https://s3.amazonaws.com/media-server2.snapr.us/thm2/" +
+                        photo.get("secret") + "/" +
+                        snapr_id + ".jpg"
+                    $container.html( progress_li.render().el );
+                }
+            });
+        }
+        else
         {
             this.pending_uploads[queue_id].message = "Completed!";
             this.pending_uploads[queue_id].photo.upload_status = "completed";
