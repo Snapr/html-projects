@@ -19,9 +19,21 @@ snapr.views.uploading = Backbone.View.extend({
         this.current_upload = null;
         this.pending_uploads = {};
 
-        if (this.options.query.photo_id)
+        this.query = this.options.query;
+
+        if (this.query.ll)
         {
-            this.upload_completed( 0, this.options.query.photo_id);
+            this.latitude = this.query.ll.split(",")[0];
+            this.longitude = this.query.ll.split(",")[1];
+        }
+        this.spot_id = this.query.spot_id;
+        this.photo_id = this.query.photo_id;
+
+        this.render();
+
+        if (this.photo_id)
+        {
+            this.upload_completed( 0, this.photo_id);
 
         }
         else{
@@ -143,6 +155,35 @@ snapr.views.uploading = Backbone.View.extend({
         "click .cancel-upload": "cancel_upload"
     },
 
+    render: function()
+    {
+        $(this.el).find( ".upload-progress-container" ).empty();
+        $image_stream_container = $(this.el).find( ".image-streams" ).empty()
+
+        if (this.spot_id)
+        {
+            this.popular_nearby_stream = new snapr.views.uploading_image_stream({
+                stream_type: "spot",
+                spot_id: this.spot_id,
+                container: $image_stream_container
+            });
+        }
+
+        this.popular_nearby_stream = new snapr.views.uploading_image_stream({
+            stream_type: "popular-nearby",
+            latitude: this.latitude,
+            longitude: this.longitude,
+            container: $image_stream_container
+        });
+        this.recent_nearby_stream = new snapr.views.uploading_image_stream({
+            stream_type: "recent-nearby",
+            latitude: this.latitude,
+            longitude: this.longitude,
+            container: $image_stream_container
+        });
+
+    },
+
     cancel_upload: function()
     {
         if (this.current_upload && this.current_upload.id)
@@ -209,6 +250,7 @@ snapr.views.uploading = Backbone.View.extend({
 
         var uploading_view = this;
 
+        // add the upload progress li at the top
         if (!this.pending_uploads[queue_id])
         {
             var photo = new snapr.models.photo({id: snapr_id});

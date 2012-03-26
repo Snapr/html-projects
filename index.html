@@ -1668,86 +1668,44 @@
 
         </div>
         <div data-role="content" data-theme="d">
-
             <div class="upload-progress-container">
-
             </div>
-
             <ul class="image-streams">
-                <li class="image-stream" id="upload-popular-nearby">
-                   <a class="ui-bar top-left-arrow" data-role="button" data-iconpos="right" data-icon="arrow-r" data-theme="c">
-                       <span class="ui-icon ui-icon-heart extra-icons"></span>
-                       <em>nearby</em>
-                       <span class="image-tag">Image description</span>
-                       <span class="image-time small-text">
-                           <span class="ui-icon ui-icon-clock extra-icons"></span>2 days ago
-                        </span>
-                    </a>
-                    <div id="upload-popular-nearby-images" class="thumbs-grid thumbs-grid-med n-horizontal-scroll">
-                            <a class="image-link" data-ajax="false" href="#/feed/?photo_id=LF8&amp;username=spencer">
-                            <img src="https://s3.amazonaws.com/media-server2.snapr.us/thm2/465e0fb9af869bc4fe562223ec1dd9df/LF8.jpg" alt="Fun in Tokyo, come here!!" class="thumb-image thumb-med">
-                            </a>
-
-                            <a class="image-link" data-ajax="false" href="#/feed/?photo_id=M8D&amp;username=edwardtalbot">
-                            <img src="https://s3.amazonaws.com/media-server2.snapr.us/thm2/a9e5d62b71e1cf3f7c65a97c37a01b77/M8D.jpg" alt="The latest Japanese drink, Bencum" class="thumb-image thumb-med">
-                            </a>
-
-                            <a class="image-link" data-ajax="false" href="#/feed/?photo_id=RYS&amp;username=candyellow">
-                            <img src="https://s3.amazonaws.com/media-server2.snapr.us/thm2/688fc29424259cb7ec7a72ca5771f4f3/RYS.jpg" alt="Ooooh view" class="thumb-image thumb-med">
-                            </a>
-
-                            <a class="image-link" data-ajax="false" href="#/feed/?photo_id=P8S&amp;username=yellow">
-                            <img src="https://s3.amazonaws.com/media-server2.snapr.us/thm2/9e7fff696513668fc31333e1c671c56c/P8S.jpg" alt="Kristians flying karate style " class="thumb-image thumb-med">
-                            </a>
-
-                            <a class="image-link" data-ajax="false" href="#/feed/?photo_id=S8Q&amp;username=candyellow">
-                            <img src="https://s3.amazonaws.com/media-server2.snapr.us/thm2/09cd5f890a55389104f9576f7dd0fd2a/S8Q.jpg" alt="Girl mo." class="thumb-image thumb-med">
-                            </a>
-
-                        </div>
-                </li>
-
-                 <li class="image-stream" id="upload-latest-nearby">
-                       <a class="ui-bar top-left-arrow" data-role="button" data-iconpos="right" data-icon="arrow-r" data-theme="c">
-                           <span class="ui-icon ui-icon-activity extra-icons"></span>
-                           <em>nearby</em>
-                           <span class="image-tag">Blah blah</span>
-                           <span class="image-time small-text">
-                               <span class="ui-icon ui-icon-clock extra-icons"></span>2 mins ago
-                            </span>
-                        </a>
-                        <div id="upload-latest-nearby-images" class="thumbs-grid thumbs-grid-med n-horizontal-scroll">
-                                <a class="image-link" data-ajax="false" href="#/feed/?photo_id=LF8&amp;username=spencer">
-                                <img src="https://s3.amazonaws.com/media-server2.snapr.us/thm2/465e0fb9af869bc4fe562223ec1dd9df/LF8.jpg" alt="Fun in Tokyo, come here!!" class="thumb-image thumb-med">
-                                </a>
-
-                                <a class="image-link" data-ajax="false" href="#/feed/?photo_id=M8D&amp;username=edwardtalbot">
-                                <img src="https://s3.amazonaws.com/media-server2.snapr.us/thm2/a9e5d62b71e1cf3f7c65a97c37a01b77/M8D.jpg" alt="The latest Japanese drink, Bencum" class="thumb-image thumb-med">
-                                </a>
-
-                                <a class="image-link" data-ajax="false" href="#/feed/?photo_id=RYS&amp;username=candyellow">
-                                <img src="https://s3.amazonaws.com/media-server2.snapr.us/thm2/688fc29424259cb7ec7a72ca5771f4f3/RYS.jpg" alt="Ooooh view" class="thumb-image thumb-med">
-                                </a>
-
-                                <a class="image-link" data-ajax="false" href="#/feed/?photo_id=P8S&amp;username=yellow">
-                                <img src="https://s3.amazonaws.com/media-server2.snapr.us/thm2/9e7fff696513668fc31333e1c671c56c/P8S.jpg" alt="Kristians flying karate style " class="thumb-image thumb-med">
-                                </a>
-
-                                <a class="image-link" data-ajax="false" href="#/feed/?photo_id=S8Q&amp;username=candyellow">
-                                <img src="https://s3.amazonaws.com/media-server2.snapr.us/thm2/09cd5f890a55389104f9576f7dd0fd2a/S8Q.jpg" alt="Girl mo." class="thumb-image thumb-med">
-                                </a>
-
-                            </div>
-                    </li>
-
             </ul>
-
         </div>
 
 
         </div>
 
     </div>
+
+    <script id="uploading-image-stream-template" type="text/template">
+        <!--<li class="image-stream" id="upload-popular-nearby">-->
+           <a class="ui-bar top-left-arrow" data-role="button" data-iconpos="right" data-icon="arrow-r" data-theme="c">
+                <% switch (stream_type) { case 'spot': %>
+                <span class="ui-icon ui-icon-location extra-icons"></span>
+                <em>here</em>
+                <% break; case 'popular-nearby': %>
+                <span class="ui-icon ui-icon-heart extra-icons"></span>
+                <em>nearby</em>
+                <% break; case 'recent-nearby': %>
+                <span class="ui-icon ui-icon-activity extra-icons"></span>
+                <em>nearby</em>
+                <% break; } %>
+               <span class="image-tag">Image description</span>
+               <span class="image-time small-text">
+                   <span class="ui-icon ui-icon-clock extra-icons"></span><%= time %>
+                </span>
+            </a>
+            <div class="thumbs-grid thumbs-grid-med n-horizontal-scroll"></div>
+        <!--</li>-->
+    </script>
+
+    <script id="uploading-image-stream-image-template" type="text/template">
+        <a class="image-link" data-ajax="false" href="#/feed/?photo_id=<%= photo.id %>&amp;username=<%= photo.username %>">
+        <img src="https://s3.amazonaws.com/media-server<%= photo.server_id %>.snapr.us/thm2/<%= photo.secret %>/<%= photo.id %>.jpg" alt="<%= photo.description %>" class="thumb-image thumb-med">
+        </a>
+    </script>
 
     <!-- @share-photo sharing setup / caption view -->
     <div id="share-photo" class="share-photo" data-role="page" data-theme="a">
@@ -1894,6 +1852,7 @@
 <script src="app/views/join_snapr.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/limbo.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/upload.js" type="text/javascript" charset="utf-8"></script>
+<script src="app/views/uploading_image_stream.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/uploading.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/share_photo.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/cities.js" type="text/javascript" charset="utf-8"></script>
