@@ -112,7 +112,7 @@
                 <!-- My Snaps / Latest Feed Btn -->
                 <div class="ui-block-b">
                 <% if (logged_in) {%>
-                        <a href="#/feed/?username=<%=username%>&list_style=grid" data-corners="false" data-shadow="false" data-role="button" data-theme="c" class="my-snaps" data-ajax="false" data-iconpos="top" data-icon="main-menu-feed">My Snaps</a>
+                        <a href="#/feed/?username=<%=username%>" data-corners="false" data-shadow="false" data-role="button" data-theme="c" class="my-snaps" data-ajax="false" data-iconpos="top" data-icon="main-menu-feed">My Snaps</a>
                  <%}else{%>
                         <a href="#/feed/" data-corners="false" data-shadow="false" data-role="button" data-theme="c" class="my-snaps" data-ajax="false" data-iconpos="top" data-icon="main-menu-feed">Latest</a>
                 <%}%>
@@ -580,20 +580,20 @@
                 <ul class="feed-upload-list" data-role="listview">
                 </ul>
             </div>
-            <div class="feed-header">
-            </div>
+            <div class="feed-header"></div>
 
-            <div id="feed-images" class="gallery">
+            <div id="feed-images" class="gallery"></div>
 
-            </div>
-
-            <div class="feed-footer inline-footer ui-body-c">
-             <button class="load-more ui-btn-right">Load More</button>
-            </div>
+            <div class="v-feed-more"></div>
         </div>
 
     </div><!-- /page -->
 
+    <script id="feed-more-button" type="text/template">
+        <div class="feed-footer inline-footer ui-body-c">
+            <button class="load-more ui-btn-right">Load More</button>
+        </div>
+    </script>
 
     <!-- @feed @titlebar ITEM - title bar for pages such as searches and location feeds -->
        <script id="feed-header-template" type="text/template">
@@ -882,7 +882,7 @@
     <!-- inset block of content w/ icon -->
     <div class="user-info-block">
         <div class="user-icon-left">
-            <a class="user-profile-icon" href="#/feed/?username=<%= user.get( "username" ) %>&list_style=grid" data-ajax="false">
+            <a class="user-profile-icon" href="#/feed/?username=<%= user.get( "username" ) %>" data-ajax="false">
                 <div class="user-icon-big" style="background-image: url('http://sna.pr/avatars/<%= user.get( "username" ) %>?size=large'); background-size: 100% 100%"></div>
 
             </a>
@@ -970,11 +970,11 @@
     <!-- base btns -->
     <div class="user-buttons">
         <% if (user.get("details").stats.photo_count){%>
-        <a href="#/feed/?username=<%= user.get( "username" ) %>&list_style=grid" data-role="button" data-ajax="false" data-icon="feed" class="extra-icons"><%= user.get("details").stats.photo_count %>
+        <a href="#/feed/?username=<%= user.get( "username" ) %>" data-role="button" data-ajax="false" data-icon="feed" class="extra-icons"><%= user.get("details").stats.photo_count %>
          Snaps</a>
         <%}%>
         <% if (user.get("details").stats.photos_favorited){%>
-        <a href="#/feed/?favorited_by=<%= user.get( "username" ) %>&list_style=grid" data-role="button" data-ajax="false" data-icon="favs" class="extra-icons"><%= user.get("details").stats.photos_favorited %> Favourites</a>
+        <a href="#/feed/?favorited_by=<%= user.get( "username" ) %>" data-role="button" data-ajax="false" data-icon="favs" class="extra-icons"><%= user.get("details").stats.photos_favorited %> Favourites</a>
          <%}%>
     </div>
     <hr>

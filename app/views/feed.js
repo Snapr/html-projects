@@ -7,6 +7,7 @@ snapr.views.feed = Backbone.View.extend({
 
     initialize: function( init_options )
     {
+        _.bindAll( this );
         // console.log( 'initialize feed view', init_options.query );
         var query_data = init_options.query;
 
@@ -90,6 +91,7 @@ snapr.views.feed = Backbone.View.extend({
         this.photo_collection.data = query_data;
         this.photo_collection.data.n = snapr.constants.feed_count;
         this.photo_collection.data.list_style && delete this.photo_collection.data.list_style;
+
         this.populate_feed();
 
     },
@@ -131,9 +133,8 @@ snapr.views.feed = Backbone.View.extend({
 
         var feed_view = this;
         var options = {
-            success: function()
+            success: function( collection, response )
             {
-
                 feed_view.feed_list = new snapr.views.feed_list({
                     el: feed_view.el.find('#feed-images').eq(0),
                     collection: feed_view.photo_collection,
@@ -144,6 +145,7 @@ snapr.views.feed = Backbone.View.extend({
 
                 feed_view.feed_list.render( feed_view.photoswipe_init );
                 $.mobile.hidePageLoadingMsg();
+                feed_view.more_button( response.photos && response.photos.length );
             },
             error:function()
             {
@@ -162,6 +164,18 @@ snapr.views.feed = Backbone.View.extend({
         $.mobile.showPageLoadingMsg();
 
         this.photo_collection.fetch( options );
+    },
+
+    more_button: function( photo_count )
+    {
+        if (photo_count)
+        {
+            $(this.el).find(".v-feed-more").html( $("#feed-more-button").html() ).trigger( "create" );
+        }
+        else
+        {
+            $(this.el).find(".v-feed-more").empty();
+        }
     },
 
     more: function()
