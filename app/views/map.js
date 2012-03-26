@@ -11,10 +11,9 @@ snapr.views.map = Backbone.View.extend({
     initialize: function () {
         _.bindAll( this );
 
-        this.el.live('pagehide', function (e) {
-            $(e.target).undelegate();
-
-            return true;
+        $.mobile.changePage("#map", {
+            changeHash: false,
+            transition: 'flip'
         });
 
         this.thumb_template = _.template($('#thumb-template').html());
@@ -97,11 +96,12 @@ snapr.views.map = Backbone.View.extend({
             collection: this.thumb_collection
         })
 
-        // this.render();
+        var map_view = this;
 
-        $.mobile.changePage("#map", {
-            changeHash: false,
-            transition: 'flip'
+        this.el.live('pagehide', function (e) {
+            google.maps.event.clearListeners( map_view.map, "idle" );
+            $(e.target).undelegate();
+            return true;
         });
 
     },
@@ -116,19 +116,10 @@ snapr.views.map = Backbone.View.extend({
         };
 
         // hack to set google map height
-        $("#google-map").css("height", (window.innerHeight - 150) + "px");
+        $("#google-map").css("height", (window.innerHeight - 85) + "px");
 
         var map_view = this;
 
-        // if(this.query.photo_id && this.query.lat && this.query.lng){
-        //     this.place_pin();
-        // }
-        // var b = google.maps.event.addListener(map_view.map, "bounds_changed", function () {
-        //     console.log( 'bounds_changed' );
-        // });
-        // var z = google.maps.event.addListener(map_view.map, "zoom_changed", function () {
-        //     console.log( 'zoom_changed' );
-        // });
         console.log('listening');
         var idle = google.maps.event.addListener( map_view.map, "idle", function()
         {
