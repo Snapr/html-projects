@@ -2185,6 +2185,43 @@ input.ui-input-text, textarea.ui-input-text {
   margin: 6px;
   margin-left: 48px;
 }
+.photo-map #map-disambiguation {
+  position: absolute;
+  display: none;
+  top: 8px;
+  right: 8px;
+  z-index: 100;
+  min-height: 0px;
+  overflow: visible;
+}
+.photo-map #map-disambiguation .ui-listview {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.photo-map #map-disambiguation .cancel-btn .ui-btn {
+  margin-bottom: 0;
+  margin-top: 8px;
+}
+.photo-map #map-disambiguation .map-link {
+  max-width: 200px;
+  width: 200px;
+}
+.photo-map #map-disambiguation::after {
+  width: 0;
+  height: 0;
+  display: inline-block;
+  content: "&uarr;";
+  text-indent: -99999px;
+  vertical-align: top;
+  margin-top: 0;
+  margin-left: -14px;
+  border-left: 14px solid transparent;
+  border-right: 14px solid transparent;
+  border-bottom: 14px solid #ffffff;
+  position: absolute;
+  top: -9px;
+  left: 186px;
+}
 /*******************************************************************
 * @theme - SWATCHES 
 *******************************************************************/

@@ -2167,6 +2167,36 @@ fieldset.ui-controlgroup{
         }
     }
     
+    #map-disambiguation{
+        position: absolute;
+        display: none;
+        top: @padding-page-inset;
+        right: @padding-page-inset;
+        z-index: 100;
+        min-height: 0px;
+        overflow: visible;
+        .ui-listview {
+            margin-top: 0;
+            margin-bottom: 0;
+        }   
+        .cancel-btn{
+            .ui-btn {
+                margin-bottom: 0;
+                margin-top: 8px;
+            }  
+        }
+        .map-link{
+            max-width: 200px;
+            width: 200px;
+        }
+        
+        &::after{
+            .arrow-up(@arrow-size, @color-bg-neutral-light, 186px ,@arrow-y-shift + 2px);
+        }
+        
+       
+    }
+    
     
 }
 
