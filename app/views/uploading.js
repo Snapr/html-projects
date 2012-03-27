@@ -26,7 +26,8 @@ snapr.views.uploading = Backbone.View.extend({
             this.latitude = this.query.ll.split(",")[0];
             this.longitude = this.query.ll.split(",")[1];
         }
-        this.spot_id = this.query.spot_id;
+        this.spot = this.query.spot;
+        this.venue_name = this.query.venue_name;
         this.photo_id = this.query.photo_id;
 
         this.render();
@@ -160,23 +161,27 @@ snapr.views.uploading = Backbone.View.extend({
         $(this.el).find( ".upload-progress-container" ).empty();
         $image_stream_container = $(this.el).find( ".image-streams" ).empty()
 
-        if (this.spot_id)
+        if (this.spot)
         {
             this.popular_nearby_stream = new snapr.views.uploading_image_stream({
                 stream_type: "spot",
-                spot_id: this.spot_id,
+                spot: this.spot,
+                venue_name: this.venue_name,
+                container: $image_stream_container
+            });
+        }
+        else
+        {
+            this.recent_nearby_stream = new snapr.views.uploading_image_stream({
+                stream_type: "recent-nearby",
+                latitude: this.latitude,
+                longitude: this.longitude,
                 container: $image_stream_container
             });
         }
 
         this.popular_nearby_stream = new snapr.views.uploading_image_stream({
             stream_type: "popular-nearby",
-            latitude: this.latitude,
-            longitude: this.longitude,
-            container: $image_stream_container
-        });
-        this.recent_nearby_stream = new snapr.views.uploading_image_stream({
-            stream_type: "recent-nearby",
             latitude: this.latitude,
             longitude: this.longitude,
             container: $image_stream_container

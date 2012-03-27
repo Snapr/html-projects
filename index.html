@@ -1680,25 +1680,23 @@
     </div>
 
     <script id="uploading-image-stream-template" type="text/template">
-        <!--<li class="image-stream" id="upload-popular-nearby">-->
-           <a class="ui-bar top-left-arrow" data-role="button" data-iconpos="right" data-icon="arrow-r" data-theme="c">
-                <% switch (stream_type) { case 'spot': %>
-                <span class="ui-icon ui-icon-location extra-icons"></span>
-                <em>here</em>
-                <% break; case 'popular-nearby': %>
-                <span class="ui-icon ui-icon-heart extra-icons"></span>
-                <em>nearby</em>
-                <% break; case 'recent-nearby': %>
-                <span class="ui-icon ui-icon-activity extra-icons"></span>
-                <em>nearby</em>
-                <% break; } %>
-               <span class="image-tag">Image description</span>
-               <span class="image-time small-text">
-                   <span class="ui-icon ui-icon-clock extra-icons"></span><%= time %>
-                </span>
-            </a>
-            <div class="thumbs-grid thumbs-grid-med n-horizontal-scroll"></div>
-        <!--</li>-->
+        <a class="ui-bar top-left-arrow" data-role="button" data-iconpos="right" data-icon="arrow-r" data-theme="c" href="#/feed/?<%= query %>" data-ajax="false">
+        <% switch (stream_type) { case 'spot': %>
+            <span class="ui-icon ui-icon-location extra-icons"></span>
+            <em>@ <%= first.location.foursquare_venue_name %></em>
+        <% break; case 'popular-nearby': %>
+            <span class="ui-icon ui-icon-heart extra-icons"></span>
+            <em>nearby</em>
+        <% break; case 'recent-nearby': %>
+            <span class="ui-icon ui-icon-location extra-icons"></span>
+            <em>nearby</em>
+        <% break; } %>
+           <span class="image-tag"><%= first.description %></span>
+           <span class="image-time small-text">
+               <span class="ui-icon ui-icon-clock extra-icons"></span><%= time %>
+            </span>
+        </a>
+        <div class="thumbs-grid thumbs-grid-med n-horizontal-scroll"></div>
     </script>
 
     <script id="uploading-image-stream-image-template" type="text/template">

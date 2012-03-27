@@ -13,7 +13,8 @@ snapr.views.uploading_image_stream = Backbone.View.extend({
         this.stream_type = this.options.stream_type;
         this.latitude = this.options.latitude;
         this.longitude = this.options.longitude;
-        this.spot_id = this.options.spot_id;
+        this.spot = this.options.spot;
+        this.venue_name = this.options.venue_name;
 
         this.container = this.options.container;
 
@@ -41,7 +42,7 @@ snapr.views.uploading_image_stream = Backbone.View.extend({
                 break;
             case "spot":
                 this.collection.data = {
-                    spot_id: this.spot_id,
+                    spot: this.spot,
                     n: 6
                 };
                 break;
@@ -56,10 +57,25 @@ snapr.views.uploading_image_stream = Backbone.View.extend({
     {
         if (this.collection.length)
         {
-            var time = snapr.utils.short_timestamp( this.collection.first().get("date") );
+            var first = this.collection.first();
+            var param = _.clone(this.collection.data);
+            delete param.access_token;
+            if (first.attributes.location.foursquare_venue_name)
+            {
+                param.venue_name = first.attributes.location.foursquare_venue_name;
+            }
+            _.map( param, function( value, key )
+            {
+                param[key] = escape( value );
+            });
+            var query = $.param(param);
+            var time = snapr.utils.short_timestamp( first.get("date") );
+            var description = this.collection.first().get("description");
             $(this.el).html( this.template({
                 stream_type: this.stream_type,
-                time: time
+                time: time,
+                query: query,
+                first: first.attributes
             }) );
 
             var $thumbs_grid = $(this.el).find( ".thumbs-grid" );
