@@ -359,9 +359,6 @@ ul, ul li {
 .ui-br {
   border-bottom: none;
 }
-.ui-input-search {
-  padding-left: 20px;
-}
 .ui-input-search.ui-btn-corner-all {
   -moz-border-radius: 20px;
   -webkit-border-radius: 20px;
