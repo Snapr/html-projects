@@ -373,6 +373,11 @@ snapr.views.share_photo = Backbone.View.extend({
                 redirect_url += "&ll=" + this.model.get("location").latitude + "," + this.model.get("location").longitude;
             }
 
+            if (this.model.get("location") && this.model.get("location").spot_id)
+            {
+                redirect_url += "&spot=" + this.model.get("location").spot_id;
+            }
+
             this.model.unset( "shared", {silent: true} );
             if (_.isObject(this.model.get( "location" )) )
             {
@@ -520,10 +525,5 @@ snapr.views.share_photo = Backbone.View.extend({
     {
         Route.navigate( '#/uploading/', true );
     },
-
-    upload_completed: function( queue_id, snapr_id )
-    {
-        Route.navigate( "#/love-it/?shared=true&photo_id=" + snapr_id, true );
-    }
 
 });
