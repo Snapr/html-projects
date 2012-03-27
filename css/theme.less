@@ -233,8 +233,8 @@ h4{
    
     .bar-action{
         position: absolute;
-        right: -8px;
-        top: -8px;
+        right: -16px;
+        top: -7px;
         margin: 0;
         width: 40px;
         height: 40px;
@@ -243,6 +243,20 @@ h4{
             background-position: -63px 1px;
         }
     }
+    
+    &.completed{
+        padding: 2px 28px 6px 8px;
+    }
+    
+    .upload-message{
+        font-weight: bold;
+        font-size: @txt-size-small;
+    }
+    
+    .ui-icon-check{
+        background-position: @gfx-general-icon-sprite-check-x @g-highlight-offset-y;
+    }
+    
 }
 
 .image-streams{

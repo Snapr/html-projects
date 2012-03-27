@@ -794,23 +794,26 @@
             </a>
 
             <div class="upload-info">
-                <p class="upload-image-tag"><span class="ui-icon extra-icons ui-icon-quote"></span><%= description %></p>
+                <p class="upload-image-tag"><% if(description){ %><span class="ui-icon extra-icons ui-icon-quote"></span><%= description %><% } %>&nbsp;</p>
                 <% if ( venue ){ %>
                     <p class="upload-image-venue"><a class="ui-link">@ <%= venue %></a></p>
                 <% } %>
 
 
                 <div class="progress-bar <%= upload_status %>">
+                     <% if (message){ %>
+                         <span class="upload-message"><%= message %></span>
+                    <% }else{ %>
                     <div class="bar-wrapper">
-                       <% if (message){ %>
-                           <span class="upload-message"><%= message %></span>
-                       <% }else{ %>
+                      
+                       
                            <div class="bar-bg bar">
                            </div>
                            <div class="bar-prog bar" style="width:<%= percent_complete %>%">
                            </div>
-                       <% } %>
+                      
                       </div>
+                       <% } %>
                    <% switch (upload_status) { case 'active': %>
 
                       <% if (percent_complete == 100){ %>
