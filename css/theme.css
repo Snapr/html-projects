@@ -794,6 +794,9 @@ input.ui-input-text, textarea.ui-input-text {
   -webkit-border-bottom-right-radius: 8px;
   border-bottom-right-radius: 8px;
 }
+.ui-bar.bottom-centered-arrow .ui-btn-inner {
+  border: none;
+}
 .ui-bar.bottom-centered-arrow::after {
   width: 0;
   height: 0;

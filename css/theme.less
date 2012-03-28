@@ -759,7 +759,10 @@ fieldset.ui-controlgroup{
     
     &.bottom-centered-arrow{
         overflow: visible;
-        .corner-bottom (@corner-page-element-rounded); 
+        .corner-bottom (@corner-page-element-rounded);
+        .ui-btn-inner{
+            border: none;
+        }
     }
     &.bottom-centered-arrow::after{
            .arrow-up(@arrow-size, yellow, 50%, @arrow-y-shift);                     
