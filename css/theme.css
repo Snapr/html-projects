@@ -1585,6 +1585,9 @@ input.ui-input-text, textarea.ui-input-text {
 .share-photo .upload-image-sharing .ui-checkbox {
   margin-right: 8px;
 }
+.share-photo .upload-image-sharing .ui-checkbox.ui-disabled {
+  opacity: .5;
+}
 .share-photo .upload-image-sharing .ui-btn {
   -moz-border-radius: 6px;
   -webkit-border-radius: 6px;
