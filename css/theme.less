@@ -1448,6 +1448,30 @@ fieldset.ui-controlgroup{
         height: 92px;
     }
     
+    .image-options{
+         .show-upload-settings{
+               display: none;
+           }
+        
+        &.show-image{
+           .upload-settings-layer{
+               display: none;
+           } 
+           .show-upload-settings{
+               display: block;
+           }
+           
+        }
+    }
+    
+    .show-upload-settings{
+        .image-controls{
+            position: absolute;
+            bottom: 0;
+            right: @padding-page-inset;
+        }
+    }
+    
     .upload-image-layer{
         position: absolute;
         width: 100%;
@@ -1696,6 +1720,7 @@ fieldset.ui-controlgroup{
             background-image: url('../gfx/action-icons-custom.png');
         }
         .ui-icon-toggle{background-position: @as-offset-x @gfx-action-icon-sprite-toggle-y;}
+        .ui-icon-toggle-up{background-position: @as-offset-x @gfx-action-icon-sprite-toggle-up-y;}
         
     }
 }

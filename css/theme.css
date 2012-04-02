@@ -1504,6 +1504,20 @@ input.ui-input-text, textarea.ui-input-text {
 */.share-photo #description {
   height: 92px;
 }
+.share-photo .image-options .show-upload-settings {
+  display: none;
+}
+.share-photo .image-options.show-image .upload-settings-layer {
+  display: none;
+}
+.share-photo .image-options.show-image .show-upload-settings {
+  display: block;
+}
+.share-photo .show-upload-settings .image-controls {
+  position: absolute;
+  bottom: 0;
+  right: 8px;
+}
 .share-photo .upload-image-layer {
   position: absolute;
   width: 100%;
@@ -1769,6 +1783,9 @@ input.ui-input-text, textarea.ui-input-text {
 }
 .share-photo .image-controls .ui-icon-toggle {
   background-position: 0px -160px;
+}
+.share-photo .image-controls .ui-icon-toggle-up {
+  background-position: 0px -200px;
 }
 /*
 * @profile - DIALOG 
