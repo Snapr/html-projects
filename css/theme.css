@@ -3522,10 +3522,10 @@ input.ui-input-text, textarea.ui-input-text {
 @media only screen and (-webkit-min-device-pixel-ratio: 2) {
   .ui-icon.extra-icons, .extra-icons .ui-icon {
     background-image: url('../gfx/retina/extra-icons.png');
-    -moz-background-size: 32px 768px;
-    -o-background-size: 32px 768px;
-    -webkit-background-size: 32px 768px;
-    background-size: 32px 768px;
+    -moz-background-size: 32px 800px;
+    -o-background-size: 32px 800px;
+    -webkit-background-size: 32px 800px;
+    background-size: 32px 800px;
   }
   .ui-icon.helper-icons, .helper-icons .ui-icon {
     background-image: url('../gfx/retina/helper-icons.png');
