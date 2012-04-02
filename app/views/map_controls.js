@@ -137,6 +137,7 @@ snapr.views.map_controls = Backbone.View.extend({
     reset_map_time: function()
     {
         this.model.unset( "photo_id", {silent: true} );
+        this.model.unset( "n", {silent: true} );
         this.model.unset( "date" );
     }
 

@@ -47,6 +47,7 @@ snapr.views.popular = Backbone.View.extend({
                 break;
             case 'time-week':
                 $(this.el).find( "#popular-time-week" ).addClass( "ui-btn-active" );
+                break;
             case 'time-all':
                 $(this.el).find( "#popular-time-all" ).addClass( "ui-btn-active" );
                 break;

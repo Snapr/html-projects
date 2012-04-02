@@ -26,21 +26,29 @@ snapr.views.share_photo = Backbone.View.extend({
 
         $.mobile.changePage( $("#share-photo"), {changeHash: false} );
 
-        if (this.query.photo_path)
+        // if we are coming from the venue selection screen the model will be passed in
+        if (!this.model)
         {
-            this.get_photo_from_path( this.query.photo_path + "?ts=" + new Date().getTime() );
+            if (this.query.photo_path)
+            {
+                this.get_photo_from_path( this.query.photo_path + "?ts=" + new Date().getTime() );
+            }
+            else if(this.query.photo_id || this.query.photo)
+            {
+                this.get_photo_from_server( this.query.photo_id || this.query.photo );
+            }
+            else{
+                console.log( "error, no path or photo_id" );
+            }
         }
-        else if(this.query.photo_id || this.query.photo)
+        else
         {
-            this.get_photo_from_server( this.query.photo_id || this.query.photo );
-        }
-        else{
-            console.log( "error, no path or photo_id" );
+            this.render();
         }
     },
 
     events: {
-        "change input[name='status']": "toggle_status",
+        "click .upload-image-privacy label": "toggle_status",
         "change input[name='share_location']": "toggle_sharing",
         "change .upload-image-sharing input": "toggle_sharing",
         "click #foursquare-venue": "venue_search",
@@ -49,6 +57,8 @@ snapr.views.share_photo = Backbone.View.extend({
 
     render: function()
     {
+        var description = $(this.el).find("#description").val();
+
         $(this.el).find("[data-role='content']").html( this.template({
             photo: this.model,
             status: snapr.utils.get_local_param( "status" ),
@@ -59,6 +69,15 @@ snapr.views.share_photo = Backbone.View.extend({
             twitter_sharing: snapr.utils.get_local_param( "twitter-sharing" ) && true || false
         }) ).trigger("create");
 
+
+        if (snapr.utils.get_local_param( "status" ) == "private")
+        {
+            $(this.el).find("[for='status-public']").hide();
+        }
+        else
+        {
+            $(this.el).find("[for='status-private']").hide();
+        }
 
         if (this.model.get("secret"))
         {
@@ -75,6 +94,11 @@ snapr.views.share_photo = Backbone.View.extend({
         if (img_url)
         {
             $(this.el).find(".image-placeholder").html( this.img_template({img_url: img_url}) );
+        }
+
+        if (description)
+        {
+            $(this.el).find("#description").val( description );
         }
 
         return this;
@@ -96,13 +120,6 @@ snapr.views.share_photo = Backbone.View.extend({
         this.model.fetch({
             success: function( model )
             {
-                if (share_photo_view.query.foursquare_venue)
-                {
-                    var location = _.extend( model.get("location"), share_photo_view.query.foursquare_venue);
-                    model.set({location: location});
-                    share_photo_view.render();
-                }
-
                 // temporary hack to display image
                 var img_url = "http://media-server2.snapr.us/lrg/"
                     + model.get("secret") + "/"
@@ -111,8 +128,11 @@ snapr.views.share_photo = Backbone.View.extend({
                 $(share_photo_view.el).find(".image-placeholder").html( share_photo_view.img_template({img_url: img_url}) );
                 $(share_photo_view.el).find("#description").val( model.get("description") );
 
-                if (snapr.utils.get_local_param( "foursquare-sharing" ) && !model.get( "location" ).foursquare_venue_id )
+                if (snapr.utils.get_local_param( "foursquare-sharing" ) &&
+                    !model.get( "location" ).foursquare_venue_id &&
+                    snapr.utils.get_local_param( "status" ) != "private")
                 {
+                    console.warn( "model fetch get venues")
                     share_photo_view.get_foursquare_venues();
                 }
                 else if( !model.get( "location" ).location )
@@ -138,11 +158,6 @@ snapr.views.share_photo = Backbone.View.extend({
             location.longitude = this.query.longitude;
         }
 
-        if (this.query.foursquare_venue)
-        {
-            location = _.extend( location, this.query.foursquare_venue);
-        }
-
         this.model = new snapr.models.photo({
             photo_path: path,
             location: location
@@ -150,11 +165,14 @@ snapr.views.share_photo = Backbone.View.extend({
 
         this.render();
 
-        if (snapr.utils.get_local_param( "foursquare-sharing" ))
+        if (snapr.utils.get_local_param( "foursquare-sharing") &&
+            !this.model.get("location").foursquare_venue_id &&
+            snapr.utils.get_local_param( "status" ) != "private")
         {
+            console.warn("get photo from path get venues")
             this.get_foursquare_venues();
         }
-        else
+        if(!snapr.utils.get_local_param( "foursquare-sharing" ))
         {
             this.get_reverse_geocode();
         }
@@ -246,14 +264,7 @@ snapr.views.share_photo = Backbone.View.extend({
             });
         }
 
-        if (this.query.location && this.query.location.foursquare_venue_id)
-        {
-            //foursquare venue has been set via venues list
-            this.model.set({
-                location: this.query.location
-            });
-        }
-        else if (this.query.latitude && this.query.longitude)
+        if (this.query.latitude && this.query.longitude)
         {
             // get venues using query lat and long
             get_venues( this.query.latitude, this.query.longitude)
@@ -268,7 +279,7 @@ snapr.views.share_photo = Backbone.View.extend({
             // get venues based on current location (not photo)
             snapr.geo.get_location( function( location )
             {
-                photo.model.set({location: location.coords});
+                share_photo_view.model.set({location: location.coords});
                 get_venues( location.coords.latitude, location.coords.longitude );
             },
             function( e )
@@ -280,7 +291,31 @@ snapr.views.share_photo = Backbone.View.extend({
 
     toggle_status: function( e )
     {
-        snapr.utils.save_local_param( "status", e.target.value );
+        e.preventDefault();
+
+        console.warn("toggle_status", e)
+
+        if (e.currentTarget.htmlFor == "status-private")
+        {
+            var status = "public";
+        }
+        else
+        {
+            var status = "private";
+        }
+
+            snapr.utils.save_local_param( "status", status );
+
+            this.render();
+
+            if (status == "private" && snapr.utils.get_local_param( "foursquare-sharing" ))
+            {
+                this.get_reverse_geocode();
+            }
+            else if (status == "public" && snapr.utils.get_local_param( "foursquare-sharing" ))
+            {
+                this.get_foursquare_venues();
+            }
     },
 
     toggle_sharing: function( e )
@@ -299,6 +334,7 @@ snapr.views.share_photo = Backbone.View.extend({
             $(this.el).find("#foursquare-sharing-location").toggle();
             if ($(e.target).attr("checked"))
             {
+                console.warn("toggle sharing get venues")
                 this.get_foursquare_venues();
             }
             else
@@ -314,9 +350,10 @@ snapr.views.share_photo = Backbone.View.extend({
 
     venue_search: function()
     {
-        var go_to_venues = function( ll, foursquare_venue_id, back_query )
+        var go_to_venues = function( ll, foursquare_venue_id, back_query, model )
         {
             snapr.info.current_view = new snapr.views.venues({
+                model: model,
                 query: {
                     ll: ll,
                     foursquare_venue_id: foursquare_venue_id,
@@ -337,7 +374,7 @@ snapr.views.share_photo = Backbone.View.extend({
 
         if (ll)
         {
-            go_to_venues( ll, this.model.get("location").foursquare_venue_id , this.query );
+            go_to_venues( ll, this.model.get("location").foursquare_venue_id , this.query, this.model );
         }
         else
         {
@@ -347,7 +384,7 @@ snapr.views.share_photo = Backbone.View.extend({
             {
                 var ll = location.coords.latitude + "," + location.coords.longitude;
 
-                go_to_venues( ll, false, share_photo_view.query );
+                go_to_venues( ll, false, share_photo_view.query, share_photo_view.model );
             },
             function( e )
             {

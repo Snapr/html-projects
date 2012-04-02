@@ -145,7 +145,10 @@ snapr.views.feed = Backbone.View.extend({
 
                 feed_view.feed_list.render( feed_view.photoswipe_init );
                 $.mobile.hidePageLoadingMsg();
-                feed_view.more_button( collection.length );
+                feed_view.more_button(
+                    response.response &&
+                    response.response.photos &&
+                    response.response.photos.length == feed_view.photo_collection.data.n );
             },
             error:function()
             {
@@ -166,9 +169,9 @@ snapr.views.feed = Backbone.View.extend({
         this.photo_collection.fetch( options );
     },
 
-    more_button: function( photo_count )
+    more_button: function( more_photos )
     {
-        if (photo_count)
+        if (more_photos)
         {
             $(this.el).find(".v-feed-more").html( $("#feed-more-button").html() ).trigger( "create" );
         }
@@ -183,7 +186,7 @@ snapr.views.feed = Backbone.View.extend({
         var data = this.photo_collection.data;
 
         data.photo_id && delete data.photo_id;
-        data.max_date = this.photo_collection.last().get('date');
+        data.paginate_from = this.photo_collection.last().get('id');
 
         this.populate_feed( data );
         // console.log( 'more', this.photo_collection.data );
