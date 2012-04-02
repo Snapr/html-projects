@@ -76,11 +76,11 @@ snapr.views.map = Backbone.View.extend({
             var map_view = this;
             var success_callback = function(location){
                 map_view.map_settings.center = new google.maps.LatLng(location.coords.latitude, location.coords.longitude);
-                map_view.create_map(map_view.query.location);
+                map_view.create_map(map_view.query && map_view.query.location);
             };
             var error_callback = function(){
                 map_view.map_settings.center = new google.maps.LatLng(42, 12);
-                map_view.create_map(map_view.query.location);
+                map_view.create_map(map_view.query && map_view.query.location);
             };
 
             if(this.map_settings.center === undefined){
