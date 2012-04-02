@@ -183,7 +183,7 @@ snapr.views.feed = Backbone.View.extend({
         var data = this.photo_collection.data;
 
         data.photo_id && delete data.photo_id;
-        data.max_date = this.photo_collection.last().get('date');
+        data.paginate_from = this.photo_collection.last().get('id');
 
         this.populate_feed( data );
         // console.log( 'more', this.photo_collection.data );
