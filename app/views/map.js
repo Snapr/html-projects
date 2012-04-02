@@ -80,6 +80,7 @@ snapr.views.map = Backbone.View.extend({
             };
             var error_callback = function(){
                 map_view.map_settings.center = new google.maps.LatLng(42, 12);
+                map_view.map_settings.zoom = 2;
                 map_view.create_map(map_view.query && map_view.query.location);
             };
 
