@@ -47,7 +47,7 @@ snapr.views.popular = Backbone.View.extend({
                 break;
             case 'time-week':
                 $(this.el).find( "#popular-time-week" ).addClass( "ui-btn-active" );
-            default:
+            case 'time-all':
                 $(this.el).find( "#popular-time-all" ).addClass( "ui-btn-active" );
                 break;
         }
@@ -105,8 +105,8 @@ snapr.views.popular = Backbone.View.extend({
 
         this.update_time_buttons();
 
-        // only update list if the query has changed or is new
-        if (!_.isEqual( $('#popular-thumbs').data('query'), {time: this.time_period, auth: snapr.auth.attributes} ))
+        // only update list if the query has changed or the user clicked on a button
+        if (!_.isEqual( $('#popular-thumbs').data('query'), {time: this.time_period, auth: snapr.auth.attributes} ) || e)
         {
             $.mobile.showPageLoadingMsg();
             this.photo_collection.fetch( options );
