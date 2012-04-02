@@ -180,12 +180,21 @@ snapr.views.map = Backbone.View.extend({
         this.thumb_collection.data.area = this.map.getBounds().toUrlValue(4);
         var map_view = this;
         this.thumb_collection.fetch({
-            success: function( s )
+            success: function( collection )
             {
                 if (_.difference( map_view.thumb_collection.pluck("id"), old_thumb_ids ).length)
                 {
+
                     map_view.remove_overlays();
 
+                    if (map_view.thumb_collection.length)
+                    {
+                        map_view.hide_no_results_message();
+                    }
+                    else
+                    {
+                        map_view.show_no_results_message();
+                    }
                     _.each(map_view.thumb_collection.models, function( thumb, i )
                     {
                         map_view.map_thumbs[ i ] = new snapr.SnapOverlay( 'photo', thumb.attributes, map_view.map, false );
@@ -193,6 +202,7 @@ snapr.views.map = Backbone.View.extend({
                 }
                 else if (map_view.thumb_collection.length == 0)
                 {
+                    map_view.show_no_results_message();
                     map_view.remove_overlays();
                 }
                 else
@@ -207,11 +217,23 @@ snapr.views.map = Backbone.View.extend({
         });
     },
 
-    hide_dis: function() {
+    show_no_results_message: function()
+    {
+        this.el.find("#snaprmapalert").show();
+    },
+
+    hide_no_results_message: function()
+    {
+        this.el.find("#snaprmapalert").hide();
+    },
+
+    hide_dis: function()
+    {
         this.el.find("#map-disambiguation").hide();
     },
 
-    show_dis: function () {
+    show_dis: function ()
+    {
         this.el.find("#map-disambiguation").show();
     },
 
