@@ -52,7 +52,7 @@ textarea {
 */
 /* Global BG Colors for Items*/
 /* mess with this yellow at your peril */
-/* Pingy yellow header bars and buttons *//* All colors have a darker tint for when they appear as gradients *//* An orange colour to complement the yellow *//* The Light grey companion to Yellow btns / headers *//* Dark buttons in headers / palettes *//* In this case a calming blue *//* In this case a calming blue *//* Red. argh it burns *//* For Twitter Buttons and Bgs *//* For Facebook Buttons and Bgs *//* For Tumblr Buttons and Bgs *//* For Fsq Buttons and Bgs *//* Global BG Colors for Pages*/
+/* Pingy yellow header bars and buttons *//* All colors have a darker tint for when they appear as gradients *//* An orange colour to complement the yellow *//* The Light grey companion to Yellow btns / headers *//* Dark buttons in headers / palettes *//* In this case a calming blue *//* In this case a calming blue *//* Orange. Danger w/ extra vitamin c *//* For Twitter Buttons and Bgs *//* For Facebook Buttons and Bgs *//* For Tumblr Buttons and Bgs *//* For Fsq Buttons and Bgs *//* Global BG Colors for Pages*/
 /* make a mixin for retina gfx! */
 /* Global Border Colors */
 /* Global Text Shadow Colors */
@@ -2085,6 +2085,37 @@ input.ui-input-text, textarea.ui-input-text {
   height: 88px;
   display: block;
 }
+.photo-map #snaprmapalert {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 160px;
+  margin-left: -80px;
+  margin-top: -30px;
+}
+.photo-map #snaprmapalert .imagealert {
+  background-color: #ffffff;
+  padding: 6px;
+  padding-left: 48px;
+  position: relative;
+  color: #ff8400;
+  -moz-border-radius: 8px;
+  -webkit-border-radius: 8px;
+  border-radius: 8px;
+  border: solid #ffff00 4px;
+  font-size: 12px;
+  -moz-box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+}
+.photo-map #snaprmapalert .imagealert .ui-icon-sadface {
+  position: absolute;
+  left: 9px;
+  top: 3px;
+  width: 32px;
+  height: 32px;
+  background-position: 0 -768px;
+}
 .photo-map .inline-footer {
   position: absolute;
   bottom: 0;
@@ -2179,6 +2210,10 @@ input.ui-input-text, textarea.ui-input-text {
   position: absolute;
   left: 8px;
   top: 6px;
+}
+.photo-map .inline-footer .map-time .ui-bar {
+  padding-left: 10px;
+  padding-right: 10px;
 }
 .photo-map .inline-footer .map-time .map-time-btn {
   background: none;
