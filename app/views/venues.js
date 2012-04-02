@@ -56,11 +56,13 @@ snapr.views.venues = Backbone.View.extend({
 
         var selected_id = this.selected_id;
         var back_query = this.back_query;
+        var photo_model = this.model;
         _.each( this.display_collection, function( model )
         {
             var venue_li = new snapr.views.venue_li({
                 template: venue_li_template,
                 model: model,
+                photo_model: photo_model,
                 selected_id: selected_id,
                 back_query: back_query
             });
@@ -102,6 +104,7 @@ snapr.views.venues = Backbone.View.extend({
         e.preventDefault();
         snapr.info.current_view = new snapr.views.share_photo({
             query: this.back_query,
+            model: this.model,
             el: $("#share-photo")
         });
     }

@@ -1748,16 +1748,24 @@
                     <fieldset data-role="controlgroup" data-type="horizontal" class="upload-image-sharing">
                         <legend>Share to:</legend>
 
-                        <input type="checkbox" name="tweet" id="twitter-sharing" <%if (twitter_sharing){%>checked="true"<%}%> />
+                        <input type="checkbox" name="tweet" id="twitter-sharing"
+                        <%if (status == "private"){%>disabled="true"<%}%>
+                        <%if (twitter_sharing && status != "private"){%>checked="true"<%}%> />
                         <label for="twitter-sharing"><span class="ui-icon"></span>Twitter</label>
 
-                        <input type="checkbox" name="facebook_album" id="facebook-sharing" <%if (facebook_sharing){%>checked="true"<%}%>/>
+                        <input type="checkbox" name="facebook_album" id="facebook-sharing"
+                        <%if (status == "private"){%>disabled="true"<%}%>
+                        <%if (facebook_sharing && status != "private"){%>checked="true"<%}%>/>
                         <label for="facebook-sharing"><span class="ui-icon"></span>Facebook</label>
 
-                        <input type="checkbox" name="tumblr" id="tumblr-sharing"<%if (tumblr_sharing){%>checked="true"<%}%> />
+                        <input type="checkbox" name="tumblr" id="tumblr-sharing"
+                        <%if (status == "private"){%>disabled="true"<%}%>
+                        <%if (tumblr_sharing  && status != "private"){%>checked="true"<%}%> />
                         <label for="tumblr-sharing"><span class="ui-icon"></span>Tumblr</label>
 
-                        <input type="checkbox" name="foursquare_checkin" id="foursquare-sharing" <%if (foursquare_sharing){%>checked="true"<%}%> />
+                        <input type="checkbox" name="foursquare_checkin" id="foursquare-sharing"
+                        <%if (status == "private"){%>disabled="true"<%}%>
+                        <%if (foursquare_sharing && status != "private"){%>checked="true"<%}%> />
                         <label for="foursquare-sharing"><span class="ui-icon"></span>Foursquare</label>
 
                     </fieldset>
@@ -1767,7 +1775,7 @@
                     <fieldset class="upload-image-location">
 
                         <div id="no-foursquare-sharing-location"
-                            <% if (foursquare_sharing){%> style="display:none;"<%}%>
+                            <% if (foursquare_sharing && status != "private"){%> style="display:none;"<%}%>
                             <% if (photo.attributes.location && !photo.attributes.location.location){%> class="ajax-loading"<%}%>>
                             <span class="image-location custom-action-icons">
                                 <input type="checkbox" name="share_location" id="share-location" <%if (share_location){%>checked="true"<%}%> />
@@ -1787,7 +1795,7 @@
                             </span>
                         </div>
                         <div id="foursquare-sharing-location"
-                            <%if (!foursquare_sharing){%> style="display:none;"<%}%>
+                            <%if (!foursquare_sharing || status == "private"){%> style="display:none;"<%}%>
                             <% if (photo.attributes.location && !photo.attributes.location.foursquare_venue_name){%> class="ajax-loading"<%}%>>
                             <a data-role="button" id="foursquare-venue" data-icon="arrow-right">
                                 <span class="ui-icon ui-icon-venue"></span>
