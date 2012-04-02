@@ -1,18 +1,20 @@
 snapr.views.thumbs_li = Backbone.View.extend({
-    initialize: function(){
-        console.log('initialise thumbs_li view');
+
+    initialize: function()
+    {
+        _.bindAll( this );
+        this.collection.bind( "reset", this.render );
+        this.collection.bind( "reset", $.mobile.hidePageLoadingMsg );
     },
+
     template: _.template( $("#thumb-li-template").html() ),
-    render: function(callback){
-        var el = this.el.empty();
-        _.each(this.collection.models,function(item){
-            // console.log(item.get('id'));
-        });
-        var results = this.collection.models;
-        el.html( this.template( { results: results } ) )
-        // .listview().listview("refresh");
-        if(callback && typeof callback == 'function'){
-            callback();
-        }
+
+    render: function( callback )
+    {
+        var $el = $(this.el).empty();
+
+        $el.html( this.template( { results: this.collection.models } ) )
+
+        return this;
     }
 })
