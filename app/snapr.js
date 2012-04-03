@@ -494,6 +494,8 @@ snapr.routers = Backbone.Router.extend({
     routes: {
         "/about/": "about",
         "/about/?*query_string": "about",
+        "/app/": "app",
+        "/app/?*query_string": "app",
         "/login/": "login",
         "/login/?*query_string": "login",
         "/logout/": "logout",
@@ -621,7 +623,14 @@ snapr.routers = Backbone.Router.extend({
                query: query
            });
        },
-
+       app: function( query_string )
+       {
+           var query = snapr.utils.get_query_params( query_string );
+           snapr.info.current_view = new snapr.views.app({
+              el: $("#app"),
+              query: query
+          });
+        },
        activity: function( query_string )
          {
              var query = snapr.utils.get_query_params( query_string );
@@ -831,7 +840,7 @@ $(".x-launch-camera").live("click", function () {
             Route.navigate('#/limbo/', true);
         }, 600);
     } else {
-        Route.navigate('#/upload/', true);
+        Route.navigate('#/app/', true);
     }
 });
 

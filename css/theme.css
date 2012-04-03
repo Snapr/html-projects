@@ -2287,6 +2287,62 @@ input.ui-input-text, textarea.ui-input-text {
   top: -9px;
   left: 186px;
 }
+/*
+* @app - PAGE 
+*/
+.platform-logo {
+  background-repeat: no-repeat;
+  display: block;
+  width: 288px;
+  height: 93px;
+}
+.iphone-appstore .platform-logo {
+  background-repeat: no-repeat;
+  background-image: url('../gfx/iphone-appstore.png');
+}
+.apps-links {
+  margin: 24px 8px;
+}
+.apps-links li {
+  margin-bottom: 8px;
+}
+.apps-links .appstore-badge {
+  background-color: #000000;
+  background-color: rgba(0, 0, 0, 0.9);
+  -webkit-border-radius: 12px;
+  -moz-border-radius: 12px;
+  border-radius: 12px;
+  min-height: 94px;
+  display: block;
+  position: relative;
+}
+.apps-links .appstore-badge.iphone-appstore {
+  background-color: #76797c;
+}
+.apps-links .appstore-badge .platform-logo {
+  background-repeat: no-repeat;
+  display: block;
+  width: 288px;
+  height: 93px;
+}
+.apps-links .appstore-badge .coming-soon {
+  text-shadow: none;
+  color: #B9B9B9;
+  position: absolute;
+  top: 64px;
+  left: 90px;
+}
+.iphone-appstore .platform-logo {
+  background-repeat: no-repeat;
+  background-image: url('../gfx/iphone-appstore.png');
+}
+.android-marketplace .platform-logo {
+  background-repeat: no-repeat;
+  background-image: url('../gfx/android-logo.png');
+}
+.inline-copy p {
+  margin: 8px;
+}
 /*******************************************************************
 * @theme - SWATCHES 
 *******************************************************************/
