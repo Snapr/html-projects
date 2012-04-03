@@ -533,7 +533,6 @@ snapr.views.share_photo = Backbone.View.extend({
 
     toggle_photo: function( e )
     {
-        console.warn( "click", e );
         $(this.el).find(".image-options").toggleClass("show-image");
     },
 
