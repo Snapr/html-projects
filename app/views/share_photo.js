@@ -1,5 +1,13 @@
 snapr.views.share_photo = Backbone.View.extend({
 
+    events: {
+        "change input[name='status']": "toggle_status",
+        "change input[name='share_location']": "toggle_sharing",
+        "change .upload-image-sharing input": "toggle_sharing",
+        "click #foursquare-venue": "venue_search",
+        "submit form": "share"
+    },
+
     initialize: function()
     {
         _.bindAll( this );
@@ -47,14 +55,6 @@ snapr.views.share_photo = Backbone.View.extend({
         }
     },
 
-    events: {
-        "click .upload-image-privacy label": "toggle_status",
-        "change input[name='share_location']": "toggle_sharing",
-        "change .upload-image-sharing input": "toggle_sharing",
-        "click #foursquare-venue": "venue_search",
-        "submit form": "share"
-    },
-
     render: function()
     {
         var description = $(this.el).find("#description").val();
@@ -68,16 +68,6 @@ snapr.views.share_photo = Backbone.View.extend({
             foursquare_sharing: snapr.utils.get_local_param( "foursquare-sharing" ) && true || false,
             twitter_sharing: snapr.utils.get_local_param( "twitter-sharing" ) && true || false
         }) ).trigger("create");
-
-
-        if (snapr.utils.get_local_param( "status" ) == "private")
-        {
-            $(this.el).find("[for='status-public']").hide();
-        }
-        else
-        {
-            $(this.el).find("[for='status-private']").hide();
-        }
 
         if (this.model.get("secret"))
         {
@@ -132,7 +122,6 @@ snapr.views.share_photo = Backbone.View.extend({
                     !model.get( "location" ).foursquare_venue_id &&
                     snapr.utils.get_local_param( "status" ) != "private")
                 {
-                    console.warn( "model fetch get venues")
                     share_photo_view.get_foursquare_venues();
                 }
                 else if( !model.get( "location" ).location )
@@ -169,7 +158,6 @@ snapr.views.share_photo = Backbone.View.extend({
             !this.model.get("location").foursquare_venue_id &&
             snapr.utils.get_local_param( "status" ) != "private")
         {
-            console.warn("get photo from path get venues")
             this.get_foursquare_venues();
         }
         if(!snapr.utils.get_local_param( "foursquare-sharing" ))
@@ -291,31 +279,28 @@ snapr.views.share_photo = Backbone.View.extend({
 
     toggle_status: function( e )
     {
-        e.preventDefault();
 
-        console.warn("toggle_status", e)
-
-        if (e.currentTarget.htmlFor == "status-private")
+        if ($(e.currentTarget).is(":checked"))
         {
-            var status = "public";
+            var status = "public"
         }
         else
         {
             var status = "private";
         }
 
-            snapr.utils.save_local_param( "status", status );
+        snapr.utils.save_local_param( "status", status );
 
-            this.render();
+        setTimeout( this.render, 10 );
 
-            if (status == "private" && snapr.utils.get_local_param( "foursquare-sharing" ))
-            {
-                this.get_reverse_geocode();
-            }
-            else if (status == "public" && snapr.utils.get_local_param( "foursquare-sharing" ))
-            {
-                this.get_foursquare_venues();
-            }
+        if (status == "private" && snapr.utils.get_local_param( "foursquare-sharing" ))
+        {
+            this.get_reverse_geocode();
+        }
+        else if (status == "public" && snapr.utils.get_local_param( "foursquare-sharing" ))
+        {
+            this.get_foursquare_venues();
+        }
     },
 
     toggle_sharing: function( e )
@@ -334,7 +319,6 @@ snapr.views.share_photo = Backbone.View.extend({
             $(this.el).find("#foursquare-sharing-location").toggle();
             if ($(e.target).attr("checked"))
             {
-                console.warn("toggle sharing get venues")
                 this.get_foursquare_venues();
             }
             else
@@ -426,7 +410,7 @@ snapr.views.share_photo = Backbone.View.extend({
 
             this.model.save({
                 description: this.el.find("#description").val(),
-                status: this.el.find("[name='status']:checked").val(),
+                status: this.el.find("[name='status']").is(":checked") ? "public": "private",
                 share_location: ( $("#share-location").attr("checked") == "checked" ),
                 faceboook_album: ( $("#facebook-sharing").attr("checked") == "checked" ),
                 tumblr: ( $("#tumblr-sharing").attr("checked") == "checked" ),

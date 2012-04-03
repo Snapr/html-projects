@@ -1736,12 +1736,8 @@
                     <textarea name="description" id="description" placeholder="Add text..." data-theme="d"></textarea>
 
                     <fieldset data-role="controlgroup" data-type="horizontal" class="upload-image-privacy">
-                         <legend>Privacy:</legend>
-                         <input type="radio" name="status" id="status-public" value="public" <% if (status != "private"){%> checked <%}%> />
-                         <label for="status-public">Public<span class="ui-icon"></span></label>
-
-                        <input type="radio" name="status" id="status-private" value="private" <% if (status == "private"){%> checked <%}%> />
-                        <label for="status-private">Private<span class="ui-icon"></span></label>
+                        <input type="checkbox" name="status" id="status-public" <% if (status == "public"){%> checked="true" <%}%> />
+                        <label for="status-public" class="privacy-toggle">Public<span class="ui-icon"></span></label>
 
                     </fieldset>
 
