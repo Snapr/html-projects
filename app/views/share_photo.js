@@ -71,8 +71,11 @@ snapr.views.share_photo = Backbone.View.extend({
             var img_url = this.model.get("photo_path");
         }
 
+        var screen_height = window.innerHeight - 46;
+
         $(this.el).find("[data-role='content']").html( this.template({
             img_url: img_url,
+            screen_height: screen_height,
             photo: this.model,
             status: snapr.utils.get_local_param( "status" ),
             share_location: snapr.utils.get_local_param( "share-location" ) && true || false,

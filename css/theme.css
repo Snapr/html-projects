@@ -1525,8 +1525,14 @@ input.ui-input-text, textarea.ui-input-text {
   z-index: 5;
   margin: 46px -8px -8px -8px;
 }
+.share-photo .image-placeholder {
+  height: 100%;
+}
 .share-photo .image-placeholder img {
   width: 100%;
+  top: 50%;
+  position: relative;
+  margin-top: -50%;
 }
 .share-photo .upload-settings-layer {
   background-color: rgba(0, 0, 0, 0.6);
