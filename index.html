@@ -1783,7 +1783,9 @@
         <form action="javascript: void(0);">
             <div class="upload-image-layer set-full-height">
 
-                <div class="image-placeholder"></div>
+                <div class="image-placeholder">
+                    <% if (img_url){%><img src="<%= img_url %>" /><%}%>
+                </div>
 
             </div>
 
@@ -1892,18 +1894,6 @@
                 </div>
             </div>
     </script>
-
-    <!-- template for .image-placeholder inside #share-photo -->
-    <script id="share-photo-image-template" type="text/template">
-        <img src="<%= img_url %>" />
-    </script>
-
-
-    <!-- landing page for successful image share/save -->
-    <div id="love-it" data-role="page">
-        <div data-role="content">
-        </div>
-    </div>
 
     <div id="limbo" data-role="page">
         <!-- <h1>You are in limbo</h1> -->

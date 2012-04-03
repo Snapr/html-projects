@@ -5,6 +5,7 @@ snapr.views.share_photo = Backbone.View.extend({
         "change input[name='share_location']": "toggle_sharing",
         "change .upload-image-sharing input": "toggle_sharing",
         "click #foursquare-venue": "venue_search",
+        "click .image-controls": "toggle_photo",
         "submit form": "share"
     },
 
@@ -20,7 +21,7 @@ snapr.views.share_photo = Backbone.View.extend({
         });
 
         this.template = _.template( $("#share-photo-template").html() );
-        this.img_template = _.template( $("#share-photo-image-template").html() );
+
         // this will eventually be stored/retrieved from localstorage
         // but for now we'll start from blank each time
         this.share_photo_settings = {};
@@ -59,7 +60,19 @@ snapr.views.share_photo = Backbone.View.extend({
     {
         var description = $(this.el).find("#description").val();
 
+        if (this.model.get("secret"))
+        {
+            var img_url = "http://media-server2.snapr.us/lrg/"
+                + this.model.get("secret") + "/"
+                + this.model.get("id") + ".jpg";
+        }
+        else if (this.model.has("photo_path"))
+        {
+            var img_url = this.model.get("photo_path");
+        }
+
         $(this.el).find("[data-role='content']").html( this.template({
+            img_url: img_url,
             photo: this.model,
             status: snapr.utils.get_local_param( "status" ),
             share_location: snapr.utils.get_local_param( "share-location" ) && true || false,
@@ -69,22 +82,6 @@ snapr.views.share_photo = Backbone.View.extend({
             twitter_sharing: snapr.utils.get_local_param( "twitter-sharing" ) && true || false
         }) ).trigger("create");
 
-        if (this.model.get("secret"))
-        {
-            // temporary hack to display image
-            var img_url = "http://media-server2.snapr.us/lrg/"
-                + this.model.get("secret") + "/"
-                + this.model.get("id") + ".jpg";
-        }
-        else if (this.query.path)
-        {
-            var img_url = this.query.path;
-        }
-
-        if (img_url)
-        {
-            $(this.el).find(".image-placeholder").html( this.img_template({img_url: img_url}) );
-        }
 
         if (description)
         {
@@ -110,12 +107,6 @@ snapr.views.share_photo = Backbone.View.extend({
         this.model.fetch({
             success: function( model )
             {
-                // temporary hack to display image
-                var img_url = "http://media-server2.snapr.us/lrg/"
-                    + model.get("secret") + "/"
-                    + model.get("id") + ".jpg";
-
-                $(share_photo_view.el).find(".image-placeholder").html( share_photo_view.img_template({img_url: img_url}) );
                 $(share_photo_view.el).find("#description").val( model.get("description") );
 
                 if (snapr.utils.get_local_param( "foursquare-sharing" ) &&
@@ -128,7 +119,6 @@ snapr.views.share_photo = Backbone.View.extend({
                 {
                     share_photo_view.get_reverse_geocode();
                 }
-
             },
             error: function()
             {
@@ -152,6 +142,9 @@ snapr.views.share_photo = Backbone.View.extend({
             location: location
         });
 
+        this.model.bind( "change:location", this.render );
+        this.model.bind( "change:foursquare_venue_name", this.render );
+
         this.render();
 
         if (snapr.utils.get_local_param( "foursquare-sharing") &&
@@ -164,7 +157,6 @@ snapr.views.share_photo = Backbone.View.extend({
         {
             this.get_reverse_geocode();
         }
-        $(this.el).find(".image-placeholder").html( this.img_template({img_url: path}) );
     },
 
     get_reverse_geocode: function()
@@ -374,10 +366,7 @@ snapr.views.share_photo = Backbone.View.extend({
             {
                 console.log( "geocode error", e );
             });
-
         }
-
-
     },
 
     share: function()
@@ -540,6 +529,12 @@ snapr.views.share_photo = Backbone.View.extend({
                 pass_data("snapr://upload?" + $.param(params) );
             }
         }
+    },
+
+    toggle_photo: function( e )
+    {
+        console.warn( "click", e );
+        $(this.el).find(".image-options").toggleClass("show-image");
     },
 
     upload_progress: function( upload_data )
