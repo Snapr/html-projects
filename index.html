@@ -518,6 +518,32 @@
     </div>
     </script>
 
+
+    <!-- @tumblr xauth (for testing - go to #/tumblr-xauth/) -->
+    <div id="tumblr-xauth" data-add-back-btn="true" data-role="dialog" data-overlay-theme="c" data-theme="c">
+       <div data-role="header" data-theme="c">
+           <h1>Connect</h1>
+       </div>
+
+       <div data-role="content">
+           <div class="login-message"></div>
+               <form action="javascript: void(0);" accept-charset="utf-8" id="tumblr-dialog">
+                   <fieldset>
+                       <div data-role="fieldcontain" class="ui-hide-label">
+                           <label for="username">Tumblr Email</label>
+                           <input type="text" name="username" placeholder="Tumblr Email..." autocapitalize="off" autocorrect="off" id="tumblr-username" >
+                        </div>
+                        <div data-role="fieldcontain" class="ui-hide-label">
+                            <label for="password">Password</label>
+                            <input type="password" name="password" placeholder="Password..." id="tumblr-password">
+                        </div>
+                    </fieldset>
+                    <input type="submit" name="login" data-theme="e" value="Link Tumblr">
+               </form>
+           </div>
+       </div><!-- /page -->
+    </div>
+
     <!-- @popular PAGE -->
     <div id="popular" data-title="Popular" data-add-back-btn="true" data-role="page" data-theme="d">
         <div data-role="header" data-theme="b">
@@ -805,13 +831,13 @@
                          <span class="upload-message"><%= message %></span>
                     <% }else{ %>
                     <div class="bar-wrapper">
-                      
-                       
+
+
                            <div class="bar-bg bar">
                            </div>
                            <div class="bar-prog bar" style="width:<%= percent_complete %>%">
                            </div>
-                      
+
                       </div>
                        <% } %>
                    <% switch (upload_status) { case 'active': %>
@@ -1453,6 +1479,37 @@
         </div>
     </div>
 
+    <!-- @app PAGE-->
+       <div id="app" data-add-back-btn="true" data-role="dialog" data-overlay-theme="c" data-theme="c">
+           <div data-role="header" data-theme="c">
+               <h1>Get the App!</h1>
+           </div>
+           <div data-role="content" data-theme="c">
+               <div class="inline-copy">
+                   <p>Snapr makes it easy to share photos on the go and keep track of your friends.</p>
+
+       			   <ul class="apps-links">
+       			       <li>
+       			           <a class="iphone-appstore appstore-badge" href="http://itunes.apple.com/app/snapr/id359528116?mt=8">
+                            <span class="platform-logo"></span>
+                       </a>
+                       </li>
+                       <li>
+                           <a class="android-marketplace appstore-badge" href="market://details?id=pr.sna.snapr&feature=search_result">
+                            <span class="platform-logo"></span>
+                            <!-- <span class="coming-soon">Coming soon!</span> -->
+                            </a>
+                       </li>
+                   </ul>
+
+                   <p>Does your phone allow browser based uploads?</p>
+       			   <a data-role="button" data-theme="e" href="#/upload/" data-ajax="false">Upload via Mobile Web </a>
+       			   <a data-role="button" data-theme="c" href="#/about/" data-ajax="false">More About Snapr</a>
+
+               </div>
+           </div>
+       </div>
+
 
     <!-- @search DIALOG-->
     <div id="search" data-add-back-btn="true" data-role="dialog" data-theme="a">
@@ -1490,9 +1547,9 @@
             </div>
 
         </div>
-        
+
         <div id="map-layer" class="photo-map" data-role="content" data-theme="d">
-            
+
             <a class="x-map-feed ui-bar ui-bar-b top-no-arrow" data-role="button" data-iconpos="right" data-icon="arrow-r" data-theme="b">
                   <span class="ui-icon ui-icon-location extra-icons"></span>
                   <em class="map-description"></em>
@@ -1510,7 +1567,7 @@
                 <button id="map-disambituation-cancel">Cancel</button>
                 </div>
             </div>
-            
+
             <div id="snaprmapalert" style="display:none;"> <p class="imagealert"><span class="ui-icon ui-icon-sadface extra-icons"></span>No Images found in this area</p> </div>
 
             <div class="v-map-controls inline-footer ui-body-a trans-bg extra-icons">
@@ -1731,103 +1788,110 @@
 
             </div>
 
-            <div class="upload-settings-layer trans-bg">
-                <div class="upload-settings">
-                    <textarea name="description" id="description" placeholder="Add text..." data-theme="d"></textarea>
+            <div class="image-options">
+                <div class="upload-settings-layer trans-bg">
+                    <div class="upload-settings">
+                        <textarea name="description" id="description" placeholder="Add text..." data-theme="d"></textarea>
 
-                    <fieldset data-role="controlgroup" data-type="horizontal" class="upload-image-privacy">
-                        <input type="checkbox" name="status" id="status-public" <% if (status == "public"){%> checked="true" <%}%> />
-                        <label for="status-public" class="privacy-toggle">Public<span class="ui-icon"></span></label>
+                        <fieldset data-role="controlgroup" data-type="horizontal" class="upload-image-privacy">
+                            <input type="checkbox" name="status" id="status-public" <% if (status == "public"){%> checked="true" <%}%> />
+                            <label for="status-public" class="privacy-toggle">Public<span class="ui-icon"></span></label>
+                        </fieldset>
 
-                    </fieldset>
+                        <fieldset data-role="controlgroup" data-type="horizontal" class="upload-image-sharing">
+                            <legend>Share to:</legend>
 
-                    <fieldset data-role="controlgroup" data-type="horizontal" class="upload-image-sharing">
-                        <legend>Share to:</legend>
+                            <input type="checkbox" name="tweet" id="twitter-sharing"
+                            <%if (status == "private"){%>disabled="true"<%}%>
+                            <%if (twitter_sharing && status != "private"){%>checked="true"<%}%> />
+                            <label for="twitter-sharing"><span class="ui-icon"></span>Twitter</label>
 
-                        <input type="checkbox" name="tweet" id="twitter-sharing"
-                        <%if (status == "private"){%>disabled="true"<%}%>
-                        <%if (twitter_sharing && status != "private"){%>checked="true"<%}%> />
-                        <label for="twitter-sharing"><span class="ui-icon"></span>Twitter</label>
+                            <input type="checkbox" name="facebook_album" id="facebook-sharing"
+                            <%if (status == "private"){%>disabled="true"<%}%>
+                            <%if (facebook_sharing && status != "private"){%>checked="true"<%}%>/>
+                            <label for="facebook-sharing"><span class="ui-icon"></span>Facebook</label>
 
-                        <input type="checkbox" name="facebook_album" id="facebook-sharing"
-                        <%if (status == "private"){%>disabled="true"<%}%>
-                        <%if (facebook_sharing && status != "private"){%>checked="true"<%}%>/>
-                        <label for="facebook-sharing"><span class="ui-icon"></span>Facebook</label>
+                            <input type="checkbox" name="tumblr" id="tumblr-sharing"
+                            <%if (status == "private"){%>disabled="true"<%}%>
+                            <%if (tumblr_sharing  && status != "private"){%>checked="true"<%}%> />
+                            <label for="tumblr-sharing"><span class="ui-icon"></span>Tumblr</label>
 
-                        <input type="checkbox" name="tumblr" id="tumblr-sharing"
-                        <%if (status == "private"){%>disabled="true"<%}%>
-                        <%if (tumblr_sharing  && status != "private"){%>checked="true"<%}%> />
-                        <label for="tumblr-sharing"><span class="ui-icon"></span>Tumblr</label>
+                            <input type="checkbox" name="foursquare_checkin" id="foursquare-sharing"
+                            <%if (status == "private"){%>disabled="true"<%}%>
+                            <%if (foursquare_sharing && status != "private"){%>checked="true"<%}%> />
+                            <label for="foursquare-sharing"><span class="ui-icon"></span>Foursquare</label>
 
-                        <input type="checkbox" name="foursquare_checkin" id="foursquare-sharing"
-                        <%if (status == "private"){%>disabled="true"<%}%>
-                        <%if (foursquare_sharing && status != "private"){%>checked="true"<%}%> />
-                        <label for="foursquare-sharing"><span class="ui-icon"></span>Foursquare</label>
+                        </fieldset>
 
-                    </fieldset>
+                        <hr />
 
-                    <hr />
+                        <fieldset class="upload-image-location">
 
-                    <fieldset class="upload-image-location">
-
-                        <div id="no-foursquare-sharing-location"
-                            <% if (foursquare_sharing && status != "private"){%> style="display:none;"<%}%>
-                            <% if (photo.attributes.location && !photo.attributes.location.location){%> class="ajax-loading"<%}%>>
-                            <span class="image-location custom-action-icons">
-                                <input type="checkbox" name="share_location" id="share-location" <%if (share_location){%>checked="true"<%}%> />
-                                <label for="share-location"><span class="ui-icon ui-icon-location share-location-label" ></span>
-                                    <span class="location-name">
-                                    <% if (photo.attributes.location && photo.attributes.location.location){%>
-                                            <%= photo.attributes.location.location %>
-                                        <%}else{%>
-                                            <%if (share_location){%>
-                                                Getting location&hellip;
+                            <div id="no-foursquare-sharing-location"
+                                <% if (foursquare_sharing && status != "private"){%> style="display:none;"<%}%>
+                                <% if (photo.attributes.location && !photo.attributes.location.location){%> class="ajax-loading"<%}%>>
+                                <span class="image-location custom-action-icons">
+                                    <input type="checkbox" name="share_location" id="share-location" <%if (share_location){%>checked="true"<%}%> />
+                                    <label for="share-location"><span class="ui-icon ui-icon-location share-location-label" ></span>
+                                        <span class="location-name">
+                                        <% if (photo.attributes.location && photo.attributes.location.location){%>
+                                                <%= photo.attributes.location.location %>
                                             <%}else{%>
-                                                Share location.
-                                            <%}%>
-                                    <%}%>
-                                    </span>
-                                </label>
-                            </span>
-                        </div>
-                        <div id="foursquare-sharing-location"
-                            <%if (!foursquare_sharing || status == "private"){%> style="display:none;"<%}%>
-                            <% if (photo.attributes.location && !photo.attributes.location.foursquare_venue_name){%> class="ajax-loading"<%}%>>
-                            <a data-role="button" id="foursquare-venue" data-icon="arrow-right">
-                                <span class="ui-icon ui-icon-venue"></span>
-                                <span class="foursquare-venue-name">
-                                    <% if (photo.attributes.location && photo.attributes.location.foursquare_venue_name){%>
-                                        <%= photo.attributes.location.foursquare_venue_name %>
-                                    <%}else{%>
-                                        Geting venue&hellip;
-                                    <%}%>
+                                                <%if (share_location){%>
+                                                    Getting location&hellip;
+                                                <%}else{%>
+                                                    Share location.
+                                                <%}%>
+                                        <%}%>
+                                        </span>
+                                    </label>
                                 </span>
-                            </a>
-                        </div>
-                    </fieldset>
+                            </div>
+                            <div id="foursquare-sharing-location"
+                                <%if (!foursquare_sharing || status == "private"){%> style="display:none;"<%}%>
+                                <% if (photo.attributes.location && !photo.attributes.location.foursquare_venue_name){%> class="ajax-loading"<%}%>>
+                                <a data-role="button" id="foursquare-venue" data-icon="arrow-right">
+                                    <span class="ui-icon ui-icon-venue"></span>
+                                    <span class="foursquare-venue-name">
+                                        <% if (photo.attributes.location && photo.attributes.location.foursquare_venue_name){%>
+                                            <%= photo.attributes.location.foursquare_venue_name %>
+                                        <%}else{%>
+                                            Geting venue&hellip;
+                                        <%}%>
+                                    </span>
+                                </a>
+                            </div>
+                        </fieldset>
 
-                    <div class="ui-grid-b">
-                        <div class="ui-block-a">
-                        </div>
+                        <div class="ui-grid-b">
+                            <div class="ui-block-a">
+                            </div>
 
-                        <div class="ui-block-b">
-                        </div>
+                            <div class="ui-block-b">
+                            </div>
 
-                        <div class="ui-block-c">
-                        <input type="submit" data-role="button" data-theme="e" class="share" value="Share"/>
+                            <div class="ui-block-c">
+                            <input type="submit" data-role="button" data-theme="e" class="share" value="Share"/>
+                            </div>
                         </div>
+                    </form>
+
+                    <div class="image-controls ">
+                     <a data-role="button" id="show_photo" data-icon="toggle" data-iconpos="right" >
+                            Show Photo
+                        </a>
                     </div>
-                </form>
 
-                <div class="image-controls">
-                 <a data-role="button" id="show_photo" data-icon="toggle" data-iconpos="right" >
-                        Show Photo
-                    </a>
+                    </div>
                 </div>
-
+                <div class="show-upload-settings set-full-height">
+                    <div class="image-controls">
+                     <a data-role="button" id="show_photo_settings" data-icon="toggle-up" data-iconpos="right" >
+                            Show Options
+                        </a>
+                    </div>
                 </div>
             </div>
-
     </script>
 
     <!-- template for .image-placeholder inside #share-photo -->
@@ -1868,6 +1932,7 @@
 <script src="app/views/upload_settings.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/linked_service.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/linked_services.js" type="text/javascript" charset="utf-8"></script>
+<script src="app/views/tumblr_xauth.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/connect.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/connect_li.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/feed.js" type="text/javascript" charset="utf-8"></script>
@@ -1891,6 +1956,7 @@
 <script src="app/views/thumbs_li.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/popular.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/about.js" type="text/javascript" charset="utf-8"></script>
+<script src="app/views/app.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/activity.js" type="text/javascript" charset="utf-8"></script>
 
 

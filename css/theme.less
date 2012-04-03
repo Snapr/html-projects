@@ -1448,6 +1448,30 @@ fieldset.ui-controlgroup{
         height: 92px;
     }
     
+    .image-options{
+         .show-upload-settings{
+               display: none;
+           }
+        
+        &.show-image{
+           .upload-settings-layer{
+               display: none;
+           } 
+           .show-upload-settings{
+               display: block;
+           }
+           
+        }
+    }
+    
+    .show-upload-settings{
+        .image-controls{
+            position: absolute;
+            bottom: 0;
+            right: @padding-page-inset;
+        }
+    }
+    
     .upload-image-layer{
         position: absolute;
         width: 100%;
@@ -1534,6 +1558,9 @@ fieldset.ui-controlgroup{
     .upload-image-sharing{
         .ui-checkbox{
             margin-right: @padding-element-inset;
+            &.ui-disabled{
+                opacity: .5;
+            }
         }
         .ui-btn{
             .corner-all(@corner-general-rounded);
@@ -1693,6 +1720,7 @@ fieldset.ui-controlgroup{
             background-image: url('../gfx/action-icons-custom.png');
         }
         .ui-icon-toggle{background-position: @as-offset-x @gfx-action-icon-sprite-toggle-y;}
+        .ui-icon-toggle-up{background-position: @as-offset-x @gfx-action-icon-sprite-toggle-up-y;}
         
     }
 }
@@ -2250,6 +2278,76 @@ fieldset.ui-controlgroup{
     
 }
 
+/*
+* @app - PAGE 
+*/
+
+
+.platform-logo {
+    background-repeat: no-repeat;
+    display: block;
+    width: 288px;
+    height: 93px;
+    
+}
+
+.iphone-appstore .platform-logo {
+    background-repeat: no-repeat;
+    background-image: url('../gfx/iphone-appstore.png');
+}
+
+
+.apps-links{
+    margin: @padding-page-inset * 3 @padding-page-inset;
+    li{
+        margin-bottom: @padding-page-inset;
+    }
+    
+    .appstore-badge{
+        background-color: rgb(0,0,0);
+        background-color: rgba(0,0,0, .9);
+        -webkit-border-radius: 12px;
+        -moz-border-radius: 12px;
+        border-radius: 12px;
+        min-height: 94px;
+        display: block;
+        position: relative;
+        
+        &.iphone-appstore{
+           background-color: #76797c; 
+        }
+        
+        .platform-logo{
+            background-repeat: no-repeat;
+            display: block;
+            width: 288px;
+            height: 93px;
+        }
+        .coming-soon{
+            text-shadow: none;
+            color: #B9B9B9;
+            position: absolute;
+            top: 64px;
+            left: 90px;
+        }
+    }
+}
+
+.iphone-appstore .platform-logo{
+    background-repeat: no-repeat;
+    background-image: url('../gfx/iphone-appstore.png');
+}
+
+.android-marketplace .platform-logo{
+    background-repeat: no-repeat;
+    background-image: url('../gfx/android-logo.png');
+}
+
+.inline-copy{
+    p{
+        margin: 8px;
+    }
+}
 
 
 /*******************************************************************

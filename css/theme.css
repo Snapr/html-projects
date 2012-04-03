@@ -1504,6 +1504,20 @@ input.ui-input-text, textarea.ui-input-text {
 */.share-photo #description {
   height: 92px;
 }
+.share-photo .image-options .show-upload-settings {
+  display: none;
+}
+.share-photo .image-options.show-image .upload-settings-layer {
+  display: none;
+}
+.share-photo .image-options.show-image .show-upload-settings {
+  display: block;
+}
+.share-photo .show-upload-settings .image-controls {
+  position: absolute;
+  bottom: 0;
+  right: 8px;
+}
 .share-photo .upload-image-layer {
   position: absolute;
   width: 100%;
@@ -1584,6 +1598,9 @@ input.ui-input-text, textarea.ui-input-text {
 }
 .share-photo .upload-image-sharing .ui-checkbox {
   margin-right: 8px;
+}
+.share-photo .upload-image-sharing .ui-checkbox.ui-disabled {
+  opacity: .5;
 }
 .share-photo .upload-image-sharing .ui-btn {
   -moz-border-radius: 6px;
@@ -1766,6 +1783,9 @@ input.ui-input-text, textarea.ui-input-text {
 }
 .share-photo .image-controls .ui-icon-toggle {
   background-position: 0px -160px;
+}
+.share-photo .image-controls .ui-icon-toggle-up {
+  background-position: 0px -200px;
 }
 /*
 * @profile - DIALOG 
@@ -2266,6 +2286,62 @@ input.ui-input-text, textarea.ui-input-text {
   position: absolute;
   top: -9px;
   left: 186px;
+}
+/*
+* @app - PAGE 
+*/
+.platform-logo {
+  background-repeat: no-repeat;
+  display: block;
+  width: 288px;
+  height: 93px;
+}
+.iphone-appstore .platform-logo {
+  background-repeat: no-repeat;
+  background-image: url('../gfx/iphone-appstore.png');
+}
+.apps-links {
+  margin: 24px 8px;
+}
+.apps-links li {
+  margin-bottom: 8px;
+}
+.apps-links .appstore-badge {
+  background-color: #000000;
+  background-color: rgba(0, 0, 0, 0.9);
+  -webkit-border-radius: 12px;
+  -moz-border-radius: 12px;
+  border-radius: 12px;
+  min-height: 94px;
+  display: block;
+  position: relative;
+}
+.apps-links .appstore-badge.iphone-appstore {
+  background-color: #76797c;
+}
+.apps-links .appstore-badge .platform-logo {
+  background-repeat: no-repeat;
+  display: block;
+  width: 288px;
+  height: 93px;
+}
+.apps-links .appstore-badge .coming-soon {
+  text-shadow: none;
+  color: #B9B9B9;
+  position: absolute;
+  top: 64px;
+  left: 90px;
+}
+.iphone-appstore .platform-logo {
+  background-repeat: no-repeat;
+  background-image: url('../gfx/iphone-appstore.png');
+}
+.android-marketplace .platform-logo {
+  background-repeat: no-repeat;
+  background-image: url('../gfx/android-logo.png');
+}
+.inline-copy p {
+  margin: 8px;
 }
 /*******************************************************************
 * @theme - SWATCHES 
@@ -3522,10 +3598,10 @@ input.ui-input-text, textarea.ui-input-text {
 @media only screen and (-webkit-min-device-pixel-ratio: 2) {
   .ui-icon.extra-icons, .extra-icons .ui-icon {
     background-image: url('../gfx/retina/extra-icons.png');
-    -moz-background-size: 32px 768px;
-    -o-background-size: 32px 768px;
-    -webkit-background-size: 32px 768px;
-    background-size: 32px 768px;
+    -moz-background-size: 32px 800px;
+    -o-background-size: 32px 800px;
+    -webkit-background-size: 32px 800px;
+    background-size: 32px 800px;
   }
   .ui-icon.helper-icons, .helper-icons .ui-icon {
     background-image: url('../gfx/retina/helper-icons.png');

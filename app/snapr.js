@@ -494,6 +494,8 @@ snapr.routers = Backbone.Router.extend({
     routes: {
         "/about/": "about",
         "/about/?*query_string": "about",
+        "/app/": "app",
+        "/app/?*query_string": "app",
         "/login/": "login",
         "/login/?*query_string": "login",
         "/logout/": "logout",
@@ -511,6 +513,8 @@ snapr.routers = Backbone.Router.extend({
         "/linked-services/?*query_string": "linked_services",
         "/connect/": "connect",
         "/connect/?*query_string": "connect",
+        "/tumblr-xauth/": "tumblr_xauth",
+        "/tumblr-xauth/?*query_string": "tumblr_xauth",
         "/cities/": "cities",
         "/cities/?*query_string": "cities",
         "/limbo/": "limbo",
@@ -621,7 +625,14 @@ snapr.routers = Backbone.Router.extend({
                query: query
            });
        },
-
+       app: function( query_string )
+       {
+           var query = snapr.utils.get_query_params( query_string );
+           snapr.info.current_view = new snapr.views.app({
+              el: $("#app"),
+              query: query
+          });
+        },
        activity: function( query_string )
          {
              var query = snapr.utils.get_query_params( query_string );
@@ -666,6 +677,15 @@ snapr.routers = Backbone.Router.extend({
            })
        },
 
+       tumblr_xauth: function( query_string )
+       {
+           var query = snapr.utils.get_query_params( query_string );
+           snapr.info.current_view = new snapr.views.tumblr_xauth({
+               el: $("#tumblr-xauth"),
+               query: query
+           })
+       },
+       
        limbo: function( query_string )
        {
            snapr.utils.get_query_params( query_string );
@@ -831,7 +851,7 @@ $(".x-launch-camera").live("click", function () {
             Route.navigate('#/limbo/', true);
         }, 600);
     } else {
-        Route.navigate('#/upload/', true);
+        Route.navigate('#/app/', true);
     }
 });
 
