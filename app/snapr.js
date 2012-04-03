@@ -513,6 +513,8 @@ snapr.routers = Backbone.Router.extend({
         "/linked-services/?*query_string": "linked_services",
         "/connect/": "connect",
         "/connect/?*query_string": "connect",
+        "/tumblr-xauth/": "tumblr_xauth",
+        "/tumblr-xauth/?*query_string": "tumblr_xauth",
         "/cities/": "cities",
         "/cities/?*query_string": "cities",
         "/limbo/": "limbo",
@@ -675,6 +677,15 @@ snapr.routers = Backbone.Router.extend({
            })
        },
 
+       tumblr_xauth: function( query_string )
+       {
+           var query = snapr.utils.get_query_params( query_string );
+           snapr.info.current_view = new snapr.views.tumblr_xauth({
+               el: $("#tumblr-xauth"),
+               query: query
+           })
+       },
+       
        limbo: function( query_string )
        {
            snapr.utils.get_query_params( query_string );

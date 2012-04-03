@@ -518,6 +518,32 @@
     </div>
     </script>
 
+
+    <!-- @tumblr xauth (for testing - go to #/tumblr-xauth/) -->
+    <div id="tumblr-xauth" data-add-back-btn="true" data-role="dialog" data-overlay-theme="c" data-theme="c">
+       <div data-role="header" data-theme="c">
+           <h1>Connect</h1>
+       </div>
+       
+       <div data-role="content">
+           <div class="login-message"></div>
+               <form action="javascript: void(0);" accept-charset="utf-8" id="tumblr-dialog">
+                   <fieldset>
+                       <div data-role="fieldcontain" class="ui-hide-label">
+                           <label for="username">Tumblr Email</label>
+                           <input type="text" name="username" placeholder="Tumblr Email..." autocapitalize="off" autocorrect="off" id="tumblr-username" >
+                        </div>
+                        <div data-role="fieldcontain" class="ui-hide-label">
+                            <label for="password">Password</label>
+                            <input type="password" name="password" placeholder="Password..." id="tumblr-password">
+                        </div>
+                    </fieldset>
+                    <input type="submit" name="login" data-theme="e" value="Link Tumblr">
+               </form>
+           </div>
+       </div><!-- /page -->
+    </div>
+
     <!-- @popular PAGE -->
     <div id="popular" data-title="Popular" data-add-back-btn="true" data-role="page" data-theme="d">
         <div data-role="header" data-theme="b">
@@ -1911,6 +1937,7 @@
 <script src="app/views/upload_settings.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/linked_service.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/linked_services.js" type="text/javascript" charset="utf-8"></script>
+<script src="app/views/tumblr_xauth.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/connect.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/connect_li.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/feed.js" type="text/javascript" charset="utf-8"></script>
