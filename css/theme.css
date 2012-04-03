@@ -1755,6 +1755,7 @@ input.ui-input-text, textarea.ui-input-text {
 }
 .share-photo .image-controls {
   margin-top: 40px;
+  z-index: 10;
 }
 .share-photo .image-controls .ui-btn {
   font-family: 'MuseoSansRounded700', Helvetica, Arial, sans-serif;
