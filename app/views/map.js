@@ -347,6 +347,7 @@ snapr.views.map = Backbone.View.extend({
             {
                 delete urlParams.access_token;
             }
+            urlParams.back = "Map";
             Route.navigate( "#/feed/?" + $.param(urlParams), true );
         }
         else
