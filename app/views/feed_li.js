@@ -17,18 +17,20 @@ snapr.views.feed_li = Backbone.View.extend({
     {
         _.bindAll( this );
 
+        this.back = this.options.back || "Back";
+
         this.template = this.options.template
         this.map_url =
             '/map/?zoom=' + snapr.constants.default_zoom +
             '&lat=' + this.model.get('location').latitude +
             '&lng=' + this.model.get('location').longitude +
             '&photo_id=' + this.model.get('id') +
-            '&back=Feed';
+            '&back=' + this.back;
 
         this.spot_url =
             '/feed/?spot=' + this.model.get('location').spot_id +
             "&venue_name=" + this.model.get('location').foursquare_venue_name +
-            '&back=Feed';
+            '&back=' + this.back;
     },
 
     load_reactions: function()
@@ -58,7 +60,8 @@ snapr.views.feed_li = Backbone.View.extend({
 
         $(this.el).html(this.template( {
             item: this.model,
-            city: city
+            city: city,
+            back: this.back
         } ));
 
         this.fav_button = new snapr.views.favorite_button({

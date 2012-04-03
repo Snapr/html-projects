@@ -701,10 +701,10 @@
 
         <div class="image-item-block">
             <div class="image-item-topbar">
-                <a class="user-icon-link" data-ajax="false" data-transition="slide" href="#/feed/?username=<%= item.get('username') %>">
+                <a class="user-icon-link" data-ajax="false" data-transition="slide" href="#/feed/?username=<%= item.get('username') %><% if(back){%>&back=<%=back%><%}%>">
                     <div class="user-icon-small" style="background-image: url('http://sna.pr/avatars/<%= item.get('username') %>/'); background-size: 100% 100%"></div>
                 </a>
-                <a class="username" data-ajax="false" data-transition="slide" href="#/feed/?username=<%= item.get('username') %>"><%= item.get('username') %></a>
+                <a class="username" data-ajax="false" data-transition="slide" href="#/feed/?username=<%= item.get('username') %><% if(back){%>&back=<%=back%><%}%>"><%= item.get('username') %></a>
 
                 <!-- Show Time only if no location -->
                 <% if(item.get('location').location){ %>

@@ -10,6 +10,35 @@ snapr.views.feed = Backbone.View.extend({
         _.bindAll( this );
         this.query = this.options.query || {};
 
+        if (this.query.photo_id)
+        {
+            this.back = "Back";
+        }
+        else if (this.query.username)
+        {
+            this.back = this.query.username;
+        }
+        else if (this.query.keywords)
+        {
+            this.back = this.feed_parameter;
+        }
+        else if (this.query.area)
+        {
+            this.back = "Location";
+        }
+        else if (this.query.favorited_by)
+        {
+            this.back = "Favorites";
+        }
+        else if (this.query.spot && this.query.venue_name)
+        {
+            this.back = "Spot";
+        }
+        else
+        {
+            this.back = "Feed";
+        }
+
         var list_style = this.query.list_style || 'list';
 
         var toggle_container = this.el.find( ".feed-view-toggle" );
@@ -141,7 +170,8 @@ snapr.views.feed = Backbone.View.extend({
                 feed_view.feed_list = new snapr.views.feed_list({
                     el: feed_view.el.find('#feed-images').eq(0),
                     collection: feed_view.photo_collection,
-                    list_style: list_style
+                    list_style: list_style,
+                    back: feed_view.back
                 });
 
                 feed_view.feed_list.render( feed_view.photoswipe_init );
