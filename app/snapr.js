@@ -506,7 +506,6 @@ snapr.routers = Backbone.Router.extend({
         "/uploading/": "uploading",
         "/uploading/?*query_string": "uploading",
         "/photo-edit/?*query_string": "share_photo",
-        "/love-it/?*query_string": "love_it",
         "/my-account/": "my_account",
         "/my-account/?*query_string": "my_account",
         "/linked-services/": "linked_services",
