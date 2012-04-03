@@ -22,10 +22,13 @@ snapr.views.feed_li = Backbone.View.extend({
             '/map/?zoom=' + snapr.constants.default_zoom +
             '&lat=' + this.model.get('location').latitude +
             '&lng=' + this.model.get('location').longitude +
-            '&photo_id=' + this.model.get('id');
+            '&photo_id=' + this.model.get('id') +
+            '&back=Feed';
+
         this.spot_url =
             '/feed/?spot=' + this.model.get('location').spot_id +
-            "&venue_name=" + this.model.get('location').foursquare_venue_name;
+            "&venue_name=" + this.model.get('location').foursquare_venue_name +
+            '&back=Feed';
     },
 
     load_reactions: function()

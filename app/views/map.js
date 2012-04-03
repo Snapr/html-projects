@@ -11,6 +11,13 @@ snapr.views.map = Backbone.View.extend({
     initialize: function () {
         _.bindAll( this );
 
+        var query = this.options.query || {};
+        if (query.photo_id) {
+            query.n = 1;
+        }
+
+        snapr.utils.set_header_back_btn_text( this.el, query.back );
+
         $.mobile.changePage("#map", {
             changeHash: false,
             transition: 'flip'
@@ -24,11 +31,6 @@ snapr.views.map = Backbone.View.extend({
 
         this.map_thumbs = [];
         this.map_flags = [];
-
-        var query = this.options.query;
-        if (query.photo_id) {
-            query.n = 1;
-        }
 
         // create a backbone model to store the current map query
         // this lets us bind functions to changes and pass the query to subviews

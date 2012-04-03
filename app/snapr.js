@@ -149,6 +149,17 @@ snapr.auth = new snapr.models.auth();
 snapr.auth.get_locally();
 
 snapr.utils = {};
+snapr.utils.set_header_back_btn_text = function( el, back_text )
+{
+    $(el).find("[data-role='header'] .ui-btn-left").remove();
+    $(el).attr("data-back-btn-text", back_text || "Back");
+    if ( $(el).data("page") && $(el).data("page").options )
+    {
+        $(el).data("page").options.backBtnText = back_text || "Back";
+        $(el).trigger("pagecreate");
+    }
+};
+
 snapr.utils.date_to_snapr_format = function (d) {
     return d.getFullYear() + '-' + (d.getMonth() + 1).zeroFill(2) + '-' + d.getDate().zeroFill(2) + ' 00:00:00';
 };

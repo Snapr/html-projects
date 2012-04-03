@@ -5,13 +5,12 @@ snapr.views.feed = Backbone.View.extend({
         "change .feed-view-toggle": "feed_view_toggle"
     },
 
-    initialize: function( init_options )
+    initialize: function()
     {
         _.bindAll( this );
-        // console.log( 'initialize feed view', init_options.query );
-        var query_data = init_options.query;
+        this.query = this.options.query || {};
 
-        var list_style = query_data.list_style || 'list';
+        var list_style = this.query.list_style || 'list';
 
         var toggle_container = this.el.find( ".feed-view-toggle" );
         toggle_container.find( "input[type='radio']" ).attr( "checked", false );
@@ -28,18 +27,18 @@ snapr.views.feed = Backbone.View.extend({
         }
 
 
-        if (query_data.username)
+        if (this.query.username)
         {
             this.feed_header = new snapr.views.user_header({
-                username: query_data.username,
-                model: new snapr.models.user( {username: query_data.username} ),
+                username: this.query.username,
+                model: new snapr.models.user( {username: this.query.username} ),
                 el: this.el.find(".feed-header").empty()
             });
         }
         else
         {
             this.feed_header = new snapr.views.feed_header({
-                query_data: query_data,
+                query_data: this.query,
                 el: this.el.find(".feed-header").empty()
             });
         }
@@ -81,6 +80,8 @@ snapr.views.feed = Backbone.View.extend({
             var transition = "none";
         }
 
+        snapr.utils.set_header_back_btn_text( this.el, this.query.back );
+
         $.mobile.changePage( $("#feed"), {
             changeHash: false,
             transition: transition
@@ -88,7 +89,7 @@ snapr.views.feed = Backbone.View.extend({
 
         this.photo_collection = new snapr.models.photo_collection();
         this.photo_collection.url = snapr.api_base + "/search/";
-        this.photo_collection.data = query_data;
+        this.photo_collection.data = this.query;
         this.photo_collection.data.n = snapr.constants.feed_count;
         this.photo_collection.data.list_style && delete this.photo_collection.data.list_style;
 
@@ -259,9 +260,9 @@ snapr.views.feed = Backbone.View.extend({
 //     {
 //         _.bindAll( this );
 //
-//         var query_data = this.options.query;
+//         var this.query = this.options.query;
 //
-//         this.list_style = query_data.list_style || 'list';
+//         this.list_style = this.query.list_style || 'list';
 //
 //         var feed_view = this;
 //
@@ -307,7 +308,7 @@ snapr.views.feed = Backbone.View.extend({
 //         this.photo_collection = new snapr.models.photo_collection();
 //         this.photo_collection.additional_data = false;
 //         this.photo_collection.url = snapr.api_base + "/search/";
-//         this.photo_collection.data = query_data;
+//         this.photo_collection.data = this.query;
 //         this.photo_collection.data.list_style && delete this.photo_collection.data.list_style;
 //         this.populate_feed();
 //
