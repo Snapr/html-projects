@@ -1548,7 +1548,7 @@ input.ui-input-text, textarea.ui-input-text {
 .share-photo .upload-image-privacy .ui-controlgroup-label {
   display: none;
 }
-.share-photo .upload-image-privacy .ui-controlgroup-controls {
+.share-photo .upload-image-privacy .ui-checkbox {
   position: absolute;
   right: 0;
   top: 0;
@@ -1585,16 +1585,16 @@ input.ui-input-text, textarea.ui-input-text {
   visibility: hidden;
 }
 .share-photo .upload-image-privacy label[for="status-public"] .ui-icon {
-  background-position: 0px -280px;
+  background-position: -40px -240px;
+}
+.share-photo .upload-image-privacy label[for="status-public"] .ui-btn-text::before {
+  content: "Private";
 }
 .share-photo .upload-image-privacy label[for="status-public"].ui-btn-active .ui-icon {
   background-position: -40px -280px;
 }
-.share-photo .upload-image-privacy label[for="status-private"] .ui-icon {
-  background-position: 0px -240px;
-}
-.share-photo .upload-image-privacy label[for="status-private"].ui-btn-active .ui-icon {
-  background-position: -40px -240px;
+.share-photo .upload-image-privacy label[for="status-public"].ui-btn-active .ui-btn-text::before {
+  content: "Public";
 }
 .share-photo .upload-image-sharing .ui-checkbox {
   margin-right: 8px;

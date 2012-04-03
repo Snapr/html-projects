@@ -1506,7 +1506,7 @@ fieldset.ui-controlgroup{
         .ui-controlgroup-label {
             display: none;
         }
-        .ui-controlgroup-controls{
+        .ui-checkbox{
             position: absolute;
             right: 0;
             top: 0;
@@ -1543,15 +1543,13 @@ fieldset.ui-controlgroup{
             visibility: hidden;
         }
         label[for="status-public"]{
-               .ui-icon{background-position: @as-offset-x @gfx-action-icon-sprite-tick-y;}
-               &.ui-btn-active{.ui-icon{background-position: @as-offset-x-hover @gfx-action-icon-sprite-tick-y;}
+               .ui-icon{background-position: @as-offset-x-hover @gfx-action-icon-sprite-close-y;}
+               .ui-btn-text::before{content: "Private";}
+               &.ui-btn-active{
+                   .ui-icon{background-position: @as-offset-x-hover @gfx-action-icon-sprite-tick-y;}
+                   .ui-btn-text::before{content: "Public";}
                }
         }
-        label[for="status-private"]{
-               .ui-icon{background-position: @as-offset-x @gfx-action-icon-sprite-close-y;}
-               &.ui-btn-active{.ui-icon{background-position: @as-offset-x-hover @gfx-action-icon-sprite-close-y;}
-               }
-           }
     }
     
     
