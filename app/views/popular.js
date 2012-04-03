@@ -28,7 +28,8 @@ snapr.views.popular = Backbone.View.extend({
 
         this.list_view = new snapr.views.thumbs_li({
             collection: this.photo_collection,
-            el: $('#popular-thumbs')
+            el: $('#popular-thumbs'),
+            back: "Popular"
         });
 
         this.time_period = null;
