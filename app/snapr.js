@@ -1008,9 +1008,12 @@ $(function () {
     function preventScroll(e) {
         e.preventDefault();
     }
-    $(document).bind('pagechange', function () {
-        $('.no-drag').unbind('touchmove', preventScroll).bind('touchmove', preventScroll);
-    });
+    if(appmode){
+        $(document).bind('pagechange', function () {
+            $('.no-drag').unbind('touchmove', preventScroll).bind('touchmove', preventScroll);
+        }); 
+    }
+    
 });
 
 

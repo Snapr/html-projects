@@ -39,7 +39,7 @@ snapr.views.login = snapr.views.dialog.extend({
         });
     },
 
-    transition: "slidedown",
+    transition: "slideup",
 
     log_in: function()
     {

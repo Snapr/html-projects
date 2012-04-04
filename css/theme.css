@@ -207,6 +207,9 @@ ul, ul li {
   background-repeat: no-repeat;
   background-position: center;
 }
+.image-loader-bg img {
+  display: block;
+}
 .set-full-height {
   min-height: 400px;
 }
@@ -440,6 +443,7 @@ input.ui-input-text, textarea.ui-input-text {
   margin-top: -40px;
   padding: 16px;
   width: 64px;
+  border: none;
 }
 .ui-loader .ui-icon-loading {
   background-image: url('../gfx/spinner.png');
@@ -584,8 +588,8 @@ input.ui-input-text, textarea.ui-input-text {
   margin-left: -50px;
 }
 .ui-header .ui-btn-inner {
-  padding-top: 9px;
-  padding-bottom: 7px;
+  padding-top: 8px;
+  padding-bottom: 8px;
   border: none;
 }
 .ui-header .ui-btn-icon-notext {
@@ -995,7 +999,7 @@ input.ui-input-text, textarea.ui-input-text {
   padding: 0;
   margin: 0;
   display: block;
-  background-color: #f0f0ef;
+  background-color: #fbfbfb;
 }
 .n-horizontal-scroll {
   white-space: nowrap;
@@ -1593,6 +1597,7 @@ input.ui-input-text, textarea.ui-input-text {
   padding-right: 32px;
   overflow: hidden;
   display: block;
+  vertical-align: top;
 }
 .share-photo .upload-image-privacy input {
   visibility: hidden;
@@ -2080,6 +2085,10 @@ input.ui-input-text, textarea.ui-input-text {
 .photo-map .ui-bar.top-left-arrow, .photo-map .top-no-arrow {
   margin-top: -8px;
 }
+.photo-map .ui-bar.top-left-arrow .extra-icons, .photo-map .top-no-arrow .extra-icons {
+  left: -6px;
+  top: -8px;
+}
 .photo-map .snaprmappoint {
   width: 1px;
   height: 1px;
@@ -2193,12 +2202,18 @@ input.ui-input-text, textarea.ui-input-text {
   margin-top: 0;
 }
 .photo-map .inline-footer .ui-input-search {
-  padding-left: 30px;
+  padding: 8px 24px 8px 28px;
+  height: 16px;
+  overflow: hidden;
 }
 .photo-map .inline-footer .ui-input-search input {
   font-family: 'MuseoSansRounded700', Helvetica, Arial, sans-serif;
   color: #cccccc;
   text-shadow: #000000 0px 1px 1px;
+}
+.photo-map .inline-footer .ui-input-search .ui-input-text {
+  padding: 0;
+  font-size: 14px;
 }
 .photo-map .inline-footer .ui-input-search .ui-input-clear {
   background: none;
@@ -3280,6 +3295,9 @@ input.ui-input-text, textarea.ui-input-text {
   background-image: url('../gfx/bg-texture-dark.gif');
   border-radius: 8px;
   border-top: solid 1px rgba(255, 255, 255, 0.4);
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
 }
 .ui-body-d {
   background: none;
@@ -3722,5 +3740,19 @@ input.ui-input-text, textarea.ui-input-text {
     -o-background-size: 78px 88px;
     -webkit-background-size: 78px 88px;
     background-size: 78px 88px;
+  }
+  .iphone-appstore .platform-logo {
+    background-image: url('../gfx/retina/iphone-appstore.png');
+    -moz-background-size: 288px 93px;
+    -o-background-size: 288px 93px;
+    -webkit-background-size: 288px 93px;
+    background-size: 288px 93px;
+  }
+  .android-marketplace .platform-logo {
+    background-image: url('../gfx/retina/android-logo.png');
+    -moz-background-size: 288px 93px;
+    -o-background-size: 288px 93px;
+    -webkit-background-size: 288px 93px;
+    background-size: 288px 93px;
   }
 }

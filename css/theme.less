@@ -144,6 +144,9 @@ h4{
     background-image: url('../gfx/image-load.gif');
     background-repeat: no-repeat;
     background-position: center;
+    img{
+        display: block;
+    }
 }
 
 .set-full-height{
@@ -425,7 +428,8 @@ fieldset.ui-controlgroup{
     margin-top: -40px;
     padding: 16px;
     width: 64px;
-
+    border: none;
+    
 
     .ui-icon-loading {
         background-image: url('../gfx/spinner.png');
@@ -563,8 +567,8 @@ fieldset.ui-controlgroup{
     }
     
     .ui-btn-inner{
-        padding-top: 9px;
-        padding-bottom: 7px;
+        padding-top: 8px;
+        padding-bottom: 8px;
         border: none;
     }
     
@@ -920,7 +924,7 @@ fieldset.ui-controlgroup{
         padding: 0;
         margin: 0;
         display: block;
-        background-color: lighten(@color-bg-neutral-light-tint, 10%);
+        background-color: @color-off-white-tint;
     }
 }
 
@@ -1518,6 +1522,7 @@ fieldset.ui-controlgroup{
     .upload-image-privacy{
         position: relative;
         margin-top: @padding-page-inset;
+        
         .ui-controlgroup-label {
             display: none;
         }
@@ -1553,6 +1558,7 @@ fieldset.ui-controlgroup{
             padding-right: 32px;
             overflow: hidden;
             display: block;
+            vertical-align: top;
         }
         input{
             visibility: hidden;
@@ -2078,6 +2084,10 @@ fieldset.ui-controlgroup{
     .ui-bar.top-left-arrow,
     .top-no-arrow{
         margin-top: -8px;
+        .extra-icons {
+            left: -6px;
+            top: -8px;    
+        }
     }
     
     /* map thumbs */
@@ -2179,11 +2189,17 @@ fieldset.ui-controlgroup{
         
         
         .ui-input-search{
-            padding-left: 30px;
+            padding:8px 24px 8px 28px;
+            height: 16px;
+            overflow: hidden;
             input{
                 font-family: @txt-font-special;
                 color: @color-txt-light-on-dark;
                 text-shadow: @color-shadow-dark-on-dark 0px 1px 1px;
+            }
+            .ui-input-text{
+                padding: 0;
+                font-size: 14px;
             }
             
             .ui-input-clear{
@@ -2968,6 +2984,7 @@ fieldset.ui-controlgroup{
     background-image: @gfx-bg-dark-texture;
     border-radius: @corner-page-element-rounded;
     border-top: @border-light-on-dark;
+    .border-box();
 }
 
 .ui-body-d {
@@ -3226,6 +3243,16 @@ fieldset.ui-controlgroup{
             background-image: url('../gfx/retina/map-thumb-bg.png');
             .background-size (78px, 88px);
         }
+    }
+    
+    .iphone-appstore .platform-logo{
+        background-image: url('../gfx/retina/iphone-appstore.png');
+        .background-size (288px, 93px);
+    }
+
+    .android-marketplace .platform-logo{
+        background-image: url('../gfx/retina/android-logo.png');
+        .background-size (288px, 93px);
     }
 
    

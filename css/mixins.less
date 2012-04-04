@@ -126,6 +126,13 @@
 	box-shadow: @arguments;
 }
 
+.border-box(@setting: border-box) { 
+    -moz-box-sizing: @setting; 
+    -webkit-box-sizing: @setting; 
+    box-sizing: @setting; 
+}
+
+
 /* keep the corners 45 degrees otherwise they look crap */
 .arrow-up(@height, @color, @x-pos, @y-shift){
     width: 0;
