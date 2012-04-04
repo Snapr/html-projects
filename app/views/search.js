@@ -1,33 +1,40 @@
-snapr.views.search = Backbone.View.extend({
+snapr.views.search = snapr.views.dialog.extend({
 
     el: $('#search'),
 
     events: {
         "change #search-keywords": "update_placeholder",
         "change #search-type": "update_placeholder",
-        "submit #search-form": "search"
+        "submit #search-form": "search",
+        "click div[data-role='header'] a": "back"
     },
 
     initialize: function()
     {
+        this.back_view = this.options.back_view;
+
+        _.bindAll( this );
+
         this.el.live('pagehide', function( e )
         {
             $(e.target).undelegate();
-            
+
             return true;
         });
 
         $.mobile.changePage($("#search"), {
             changeHash: false,
-            transition: "slideup"
+            transition: this.transition
         });
     },
+
+    transition: "slideup",
 
     update_placeholder: function()
     {
         var keywords = $("#search-keywords");
         var type = $("#search-type").val();
-        
+
         if (keywords.val().length == 0)
         {
             switch(type){
@@ -61,9 +68,6 @@ snapr.views.search = Backbone.View.extend({
                 Route.navigate( "/user/search/?username=" + keywords, true );
                 break;
         }
-        
-
-        console.log( "search for ", keywords, " in ", type );
-    }
+    },
 
 });

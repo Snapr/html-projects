@@ -1,7 +1,9 @@
-snapr.views.venues = Backbone.View.extend({
+snapr.views.venues = snapr.views.dialog.extend({
 
     initialize: function()
     {
+        this.back_view = this.options.back_view;
+
         _.bindAll( this );
 
         this.el.live('pagehide', function( e )
@@ -28,16 +30,16 @@ snapr.views.venues = Backbone.View.extend({
         // if we are coming from the map view do a flip, otherwise do a slide transition
         if ($.mobile.activePage.attr('id') == 'map' )
         {
-            var transition = "flip";
+            this.transition = "flip";
         }
         else
         {
-            var transition = "slideup";
+            this.transition = "slideup";
         }
 
         $.mobile.changePage( $("#venues"), {
             changeHash: false,
-            transition: transition
+            transition: this.transition
         });
 
         this.collection.fetch();
@@ -45,7 +47,7 @@ snapr.views.venues = Backbone.View.extend({
 
     events: {
         "keyup input": "search",
-        "click div[data-role='header'] a": "back_to_share"
+        "click .x-back": "back"
     },
 
     render: function()
@@ -98,15 +100,5 @@ snapr.views.venues = Backbone.View.extend({
             this.reset_collection();
         }
     },
-
-    back_to_share: function( e )
-    {
-        e.preventDefault();
-        snapr.info.current_view = new snapr.views.share_photo({
-            query: this.back_query,
-            model: this.model,
-            el: $("#share-photo")
-        });
-    }
 
 });

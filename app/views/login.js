@@ -1,11 +1,15 @@
-snapr.views.login = Backbone.View.extend({
+snapr.views.login = snapr.views.dialog.extend({
+
+    el: $('#login'),
 
     events: {
-        "submit #login-dialog":"log_in"
+        "submit #login-dialog":"log_in",
+        "click .x-back": "back"
     },
 
     initialize: function()
     {
+        this.back_view = this.options.back_view;
 
         this.el.live('pagehide', function( e )
         {
@@ -31,9 +35,11 @@ snapr.views.login = Backbone.View.extend({
 
         $.mobile.changePage( $("#login"), {
             changeHash: false,
-            transition: "slidedown"
+            transition: this.transition
         });
     },
+
+    transition: "slidedown",
 
     log_in: function()
     {

@@ -574,7 +574,6 @@ snapr.routers = Backbone.Router.extend({
        {
            var query = snapr.utils.get_query_params( query_string );
            snapr.info.current_view = new snapr.views.login({
-               el: $('#login'),
                query: query
            });
        },
@@ -878,6 +877,21 @@ $(".x-launch-photo-library").live("click", function () {
     }
 });
 
+$(".x-search").live("click", function()
+{
+    var back_view = _.clone(snapr.info.current_view);
+    snapr.info.current_view = new snapr.views.search({
+        back_view: back_view
+    });
+});
+
+$(".x-login").live("click", function()
+{
+    var back_view = _.clone(snapr.info.current_view);
+    snapr.info.current_view = new snapr.views.login({
+        back_view: back_view
+    });
+});
 
 // end upload/appmode functions
 $(function () {

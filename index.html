@@ -71,7 +71,7 @@
     <div id="home" data-title="Snapr" data-role="page" data-theme="d">
         <div data-role="header" data-theme="b">
             <div class="ui-btn-right">
-            <a href="#/search/" data-ajax="false" data-role="button" data-icon="search" data-iconpos="notext"></a>
+            <a class="x-search" data-ajax="false" data-role="button" data-icon="search" data-iconpos="notext"></a>
             </div>
             <a class="main-logo" href="#/about/" data-ajax="false" data-role="none">Snapr</a>
         </div>
@@ -105,7 +105,7 @@
                 <% if (logged_in) {%>
                         <a class="x-launch-photo-library" data-role="button" data-iconpos="top" data-icon="main-menu-camera-lib" data-corners="false" data-shadow="false">Camera Roll</a>
                  <%}else{%>
-                      <a href="#/login/" data-ajax="false" data-corners="false" data-shadow="false" data-role="button" data-iconpos="top" data-icon="main-menu-login">Log In</a>
+                      <a class="x-login" data-ajax="false" data-corners="false" data-shadow="false" data-role="button" data-iconpos="top" data-icon="main-menu-login">Log In</a>
                 <%}%>
                 </div>
 
@@ -170,7 +170,7 @@
             <h1>My Account</h1>
 
             <div class="ui-btn-right">
-                <a href="#/search/" data-ajax="false" data-role="button" data-icon="search" data-iconpos="notext"></a>
+                <a class="x-search" data-ajax="false" data-role="button" data-icon="search" data-iconpos="notext"></a>
                 <a href="#/" data-ajax="false" data-role="button" data-icon="home" data-iconpos="notext"></a>
             </div>
         </div>
@@ -550,7 +550,7 @@
             <h1>Popular</h1>
 
             <div class="ui-btn-right">
-                <a href="#/search/" data-ajax="false" data-role="button" data-icon="search" data-iconpos="notext"></a>
+                <a class="x-search" data-ajax="false" data-role="button" data-icon="search" data-iconpos="notext"></a>
                 <a href="#/" data-ajax="false" data-role="button" data-icon="home" data-iconpos="notext"></a>
             </div>
 
@@ -595,7 +595,7 @@
             </div>
 
             <div class="ui-btn-right">
-                <a href="#/search/" data-ajax="false" data-role="button" data-icon="search" data-iconpos="notext"></a>
+                <a class="x-search" data-ajax="false" data-role="button" data-icon="search" data-iconpos="notext"></a>
                 <a href="#/" data-ajax="false" data-role="button" data-icon="home" data-iconpos="notext"></a>
             </div>
         </div>
@@ -1134,7 +1134,7 @@
                      <h1>Activity</h1>
 
                       <div class="ui-btn-right">
-                          <a href="#/search/" data-ajax="false" data-role="button" data-icon="search" data-iconpos="notext"></a>
+                          <a class="x-search" data-ajax="false" data-role="button" data-icon="search" data-iconpos="notext"></a>
                          <a href="#/" data-ajax="false" data-role="button" data-icon="home" data-iconpos="notext"></a>
                      </div>
                  </div>
@@ -1415,7 +1415,7 @@
            <div data-role="header" data-theme="c">
                <h1>Venues</h1>
                <div class="ui-btn-right">
-                   <a class="x-back-to-share" data-role="button" data-icon="delete" data-iconpos="notext"></a>
+                   <a class="x-back" data-role="button" data-icon="delete" data-iconpos="notext"></a>
                </div>
 
            </div>
@@ -1511,9 +1511,10 @@
 
 
     <!-- @search DIALOG-->
-    <div id="search" data-add-back-btn="true" data-role="dialog" data-theme="a">
+    <div id="search" data-role="dialog" data-theme="a">
         <div data-role="header">
             <h1>Search</h1>
+            <a class="x-back" data-role="button" data-icon="delete" data-iconpos="notext"></a>
         </div>
         <div data-role="content" data-theme="a">
             <form action="javascript: void(0);" accept-charset="utf-8" id="search-form">
@@ -1540,7 +1541,7 @@
 
 
             <div class="ui-btn-right">
-                <a href="#/search/" data-ajax="false" data-role="button" data-icon="search" data-iconpos="notext"></a>
+                <a class="x-search" data-ajax="false" data-role="button" data-icon="search" data-iconpos="notext"></a>
                 <a data-ajax="false" data-role="button" data-icon="location" data-iconpos="notext" class="x-current-location"></a>
 
             </div>
@@ -1642,9 +1643,10 @@
     </script>
 
     <!-- @login log in as a snapr user (for testing - go to #/login/) -->
-    <div id="login" data-add-back-btn="true" data-role="dialog" data-overlay-theme="c" data-theme="c">
+    <div id="login" data-role="dialog" data-overlay-theme="c" data-theme="c">
         <div data-role="header" data-theme="c">
             <h1>Log in</h1>
+            <a class="x-back" data-role="button" data-icon="delete" data-iconpos="notext"></a>
         </div>
         <div data-role="content">
             <p class="login-message warning-message"></p>
@@ -1725,7 +1727,7 @@
             <h1>Upload</h1>
 
             <div class="ui-btn-right">
-                <a href="#/search/" data-ajax="false" data-role="button" data-icon="search" data-iconpos="notext"></a>
+                <a class="x-search" data-ajax="false" data-role="button" data-icon="search" data-iconpos="notext"></a>
                 <a href="#/" data-ajax="false" data-role="button" data-icon="home" data-iconpos="notext"></a>
             </div>
 
