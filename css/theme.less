@@ -138,6 +138,14 @@ h4{
     height: @size-img-thumb;
 }
 
+/* Loader BG placeholder for images */
+.image-loader-bg{
+    background-color: @color-off-white-tint;
+    background-image: url('../gfx/image-load.gif');
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
 .set-full-height{
     min-height: 400px;
 }
@@ -633,7 +641,7 @@ fieldset.ui-controlgroup{
     margin-right: -@padding-page-inset;
     margin-top:  -@padding-page-inset;
     position: relative;
-    background-color: @color-bg-neutral-light-tint;
+    background-color: @color-off-white-tint;
     background-image: @gfx-bg-light-texture;
     .corner-top (@corner-page-element-rounded);
     .box-shadow(inset 5px 0 20px rgba(0, 0, 0, 0.2));
@@ -1256,8 +1264,11 @@ fieldset.ui-controlgroup{
     
     .main-image-link{
         display: block;
-        
+               
     }
+    
+   
+    
     .main-image{
         width: 100%;
     }

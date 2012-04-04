@@ -200,6 +200,13 @@ ul, ul li {
   width: 101px;
   height: 101px;
 }
+/* Loader BG placeholder for images */
+.image-loader-bg {
+  background-color: #fbfbfb;
+  background-image: url('../gfx/image-load.gif');
+  background-repeat: no-repeat;
+  background-position: center;
+}
 .set-full-height {
   min-height: 400px;
 }
@@ -633,7 +640,7 @@ input.ui-input-text, textarea.ui-input-text {
   margin-right: -8px;
   margin-top: -8px;
   position: relative;
-  background-color: #d7d7d5;
+  background-color: #fbfbfb;
   background-image: url('../gfx/bg-texture-light.gif');
   -moz-border-radius-topleft: 8px;
   -webkit-border-top-left-radius: 8px;
