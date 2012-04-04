@@ -47,19 +47,13 @@ snapr.views.login = snapr.views.dialog.extend({
         var username = $("#login-dialog-username").val();
         var password = $("#login-dialog-password").val();
 
+        var login_view = this;
         var options = {
             success: function( response )
             {
                 $("#login-dialog-username").val('');
                 $("#login-dialog-password").val('');
-                if (window.location.hash.indexOf("#/login/") > -1 )
-                {
-                    window.history.back();
-                }
-                else
-                {
-                    Route.navigate( window.location.hash, true );
-                }
+                login_view.back()
             },
             error: function(error)
             {
