@@ -2,7 +2,7 @@ snapr.views.venues = snapr.views.dialog.extend({
 
     initialize: function()
     {
-        this.back_view = this.options.back_view;
+        snapr.views.dialog.prototype.initialize.call( this );
 
         _.bindAll( this );
 
@@ -100,5 +100,23 @@ snapr.views.venues = snapr.views.dialog.extend({
             this.reset_collection();
         }
     },
+
+    back: function()
+    {
+        if (this.prev_el)
+        {
+            $.mobile.changePage( this.prev_el, {
+                changeHash: false,
+                transition: this.transition,
+                reverse: true
+            });
+        }
+
+        snapr.info.current_view = new snapr.views.share_photo({
+            query: this.back_query,
+            model: this.model,
+            el: $("#share-photo")
+        });
+    }
 
 });
