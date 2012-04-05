@@ -142,7 +142,10 @@ snapr.views.feed = Backbone.View.extend({
             // make sure we set the param backButtonHideEnabled:false to prevent photoswipe from changing the hash
             photoSwipeInstance = $( "#feed-images a.gallery_link", this.el )
                 .photoSwipe( {
-                    backButtonHideEnabled: false
+                    backButtonHideEnabled: false,
+                    preventSlideshow: true,
+                    captionAndToolbarFlipPosition: true,
+                    allowUserZoom: false
                 }, 'feed' );
         }
 
