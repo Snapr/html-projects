@@ -1,6 +1,7 @@
 snapr.views.about = Backbone.View.extend({
 
     el: $('#about'),
+    transition: "slideup",
 
     events: {
        // "click #popular-timeframe a":"update_list"

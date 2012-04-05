@@ -12,7 +12,7 @@ snapr.views.linked_services = Backbone.View.extend({
 
         $.mobile.changePage( $("#linked-services"), {
             changeHash: false,
-            transition: "slidedown"
+            transition: "slideup"
         });
 
         if(this.options.query.to_link){

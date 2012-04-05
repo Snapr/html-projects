@@ -151,6 +151,12 @@ h4{
 
 .set-full-height{
     min-height: 400px;
+    .border-box();
+    position:absolute;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
 }
 
 .ui-icon.extra-icons,
@@ -1458,6 +1464,12 @@ fieldset.ui-controlgroup{
 */   
 
 .share-photo{
+    div[data-role="header"]{
+        z-index: 20;
+    }
+    div[data-role="content"]{
+        z-index: 10;
+    }
     
     #description{
         height: 92px;
@@ -1492,16 +1504,14 @@ fieldset.ui-controlgroup{
         width: 100%;
         top: 0;
         z-index: 5;
-        margin: @size-topbar-height -@padding-page-inset -@padding-page-inset -@padding-page-inset;
     }
     
     .image-placeholder{
         height: 100%;
+      
         img{
             width: 100%;
-            top: 50%;
-            position: relative;
-            margin-top: -50%;
+         
         }
     }
 
@@ -1510,8 +1520,7 @@ fieldset.ui-controlgroup{
         position: absolute;
         width: 100%;
         top: 0;
-        margin: @size-topbar-height -@padding-page-inset -@padding-page-inset -@padding-page-inset;
-        padding-top: 12px;
+        padding-top: 52px;
         z-index: 10;
         .upload-settings{
             padding: @padding-page-inset;
@@ -1528,8 +1537,8 @@ fieldset.ui-controlgroup{
         }
         .ui-checkbox{
             position: absolute;
-            right: 0;
-            top: 0;
+            right: -6px;
+            top: -4px;
             width: auto;
         }
         .ui-btn{
@@ -1539,6 +1548,7 @@ fieldset.ui-controlgroup{
             font-family: @txt-font-base;
             font-weight: normal;
             text-transform: lowercase;
+            height: 32px;
         }
         .ui-btn-inner{
             padding: 0;
@@ -1549,13 +1559,13 @@ fieldset.ui-controlgroup{
             background-image: url('../gfx/action-icons-custom.png');
             display: block;
             position: absolute;
-            top: -12px;
+            top: -8px;
             right: 0;
             background-color: transparent;
         }
         .ui-btn-text{
             height: 32px;
-            padding-right: 32px;
+            padding-right: 28px;
             overflow: hidden;
             display: block;
             vertical-align: top;
@@ -1713,7 +1723,9 @@ fieldset.ui-controlgroup{
         }        
     }
     .image-controls{
-        margin-top: 40px;
+        position:absolute;
+        bottom: 0;
+        right: 8px;    
         z-index: 10;
         .ui-btn{
             font-family: @txt-font-special;
@@ -1726,15 +1738,19 @@ fieldset.ui-controlgroup{
             &.ui-shadow{
                 .box-shadow(none);
             }
+            
         
         }
         .ui-btn-inner{
-            padding-right: 22px;
+            padding: 8px 32px 8px 16px;
+            background-color: rgba(0, 0, 0,.8);
+            border-radius: 20px;
+            
         }
         .ui-icon{
-            top: 0;
+            top: -1px;
             margin-top: 0;
-            right: 0;
+            right: 10px;
             width: @gfx-action-icon-sprite-grid;
             height: @gfx-action-icon-sprite-grid;
             background-image: url('../gfx/action-icons-custom.png');

@@ -31,7 +31,7 @@ snapr.views.tumblr_xauth = Backbone.View.extend({
 
         $.mobile.changePage( $("#tumblr-xauth"), {
             changeHash: false,
-            transition: "slidedown"
+            transition: "slideup"
         });
     },
 

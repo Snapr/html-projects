@@ -71,7 +71,7 @@ snapr.views.share_photo = Backbone.View.extend({
             var img_url = this.model.get("photo_path");
         }
 
-        var screen_height = window.innerHeight - 46;
+        var screen_height = window.innerHeight;
 
         $(this.el).find("[data-role='content']").html( this.template({
             img_url: img_url,
@@ -537,6 +537,7 @@ snapr.views.share_photo = Backbone.View.extend({
     toggle_photo: function( e )
     {
         $(this.el).find(".image-options").toggleClass("show-image");
+        $(this.el).find("div[ data-role='header']").toggle();
     },
 
     upload_progress: function( upload_data )

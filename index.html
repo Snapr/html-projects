@@ -1764,7 +1764,7 @@
     </script>
 
     <!-- @share-photo sharing setup / caption view -->
-    <div id="share-photo" class="share-photo" data-role="page" data-theme="a">
+    <div id="share-photo" class="share-photo" data-role="page" data-theme="a" class="no-drag">
         <div data-role="header">
             <a href="#/" data-ajax="false" data-role="button" data-icon="delete" data-iconpos="notext"></a>
             <h1>Share</h1>
@@ -1776,7 +1776,7 @@
     <!-- template for #share-photo -->
     <script id="share-photo-template" type="text/template">
         <form action="javascript: void(0);">
-            <div class="upload-image-layer set-full-height" <% if (screen_height){%>style="height:<%= screen_height %>px"<%}%>>
+            <div class="upload-image-layer set-full-height">
 
                 <div class="image-placeholder">
                     <% if (img_url){%><img src="<%= img_url %>" /><%}%>
@@ -1785,7 +1785,7 @@
             </div>
 
             <div class="image-options">
-                <div class="upload-settings-layer trans-bg">
+                <div class="upload-settings-layer trans-bg set-full-height">
                     <div class="upload-settings">
                         <textarea name="description" id="description" placeholder="Add text..." data-theme="d"></textarea>
 
@@ -1880,7 +1880,7 @@
 
                     </div>
                 </div>
-                <div class="show-upload-settings set-full-height" <% if (screen_height){%>style="height:<%= screen_height %>px"<%}%>>
+                <div class="show-upload-settings set-full-height">
                     <div class="image-controls">
                      <a data-role="button" id="show_photo_settings" data-icon="toggle-up" data-iconpos="right" >
                             Show Options
