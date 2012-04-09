@@ -694,7 +694,7 @@ snapr.routers = Backbone.Router.extend({
                query: query
            })
        },
-       
+
        limbo: function( query_string )
        {
            snapr.utils.get_query_params( query_string );
@@ -998,22 +998,26 @@ $(function () {
     // initialise router and start backbone
     Route = new snapr.routers;
     Backbone.history.start();
-    if(snapr.utils.get_local_param("appmode")) {
-        $("body").addClass("appmode").addClass("appmode-" + snapr.utils.get_local_param("appmode"));
+    var appmode = snapr.utils.get_local_param("appmode");
+    if (appmode)
+    {
+        $("body").addClass("appmode").addClass("appmode-" + appmode );
     }
-
 
     $(document).trigger('snaprinit');
 
-    function preventScroll(e) {
+    function preventScroll( e )
+    {
         e.preventDefault();
     }
-    if(appmode){
-        $(document).bind('pagechange', function () {
+    if (appmode)
+    {
+        $(document).bind('pagechange', function ()
+        {
             $('.no-drag').unbind('touchmove', preventScroll).bind('touchmove', preventScroll);
-        }); 
+        });
     }
-    
+
 });
 
 
