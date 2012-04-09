@@ -1459,6 +1459,7 @@ input.ui-input-text, textarea.ui-input-text {
 }
 .image-item-block .reactions-list .ui-btn.ui-li .ui-link-inherit {
   padding: 0 0 8px 0;
+  white-space: normal;
 }
 .image-item-block .reactions-list .ui-btn.ui-li .ui-icon-arrow-r {
   display: none;
@@ -2093,6 +2094,7 @@ input.ui-input-text, textarea.ui-input-text {
 }
 .photo-map {
   position: relative;
+  overflow: hidden;
   /* map thumbs */
 
 }
