@@ -159,7 +159,10 @@ snapr.utils.set_header_back_btn_text = function( el, back_text )
         $(el).trigger("pagecreate");
     }
 };
-
+snapr.utils.plural = function( n )
+{
+    return (n > 1) ? "s" : "";
+};
 snapr.utils.date_to_snapr_format = function (d) {
     return d.getFullYear() + '-' + (d.getMonth() + 1).zeroFill(2) + '-' + d.getDate().zeroFill(2) + ' 00:00:00';
 };
