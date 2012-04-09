@@ -17,5 +17,18 @@ snapr.models.photo = Backbone.Model.extend({
         {
             return {};
         }
+    },
+    change_status: function( status, options )
+    {
+        var ajax_options = _.extend( options || {}, {
+            url: this.urlRoot() + "change_status/",
+            dataType: "jsonp",
+            data: _.extend( snapr.auth.attributes, {
+                id: this.get("id"),
+                status: status,
+                _method: "POST"
+            })
+        });
+        $.ajax( ajax_options );
     }
 });
