@@ -1307,13 +1307,11 @@ fieldset.ui-controlgroup{
         margin-top: 8px;
         margin-bottom: 8px;
         
-        .v-fav-button,
-        .v-comment-button,
-        .v-show-all-button{
+        .inline-btn{
             display: inline-block;
         }
     
-        .ui-btn,
+        .ui-btn-up-d,
         .ui-btn-hover-d,
         .ui-btn-down-d,
         .ui-btn-active-d,{
@@ -1322,34 +1320,42 @@ fieldset.ui-controlgroup{
             font-size: @txt-size-small;
             font-family: @txt-font-base;
             color: @color-txt-medium-on-light;
-        }
-        .ui-btn-inner{
-            padding: 0 10px 0 36px;
-        }
-        .ui-icon{
-            background: none;
-            width: 40px;
-            height: 40px;
-            margin-top: -20px;
-            margin-left: -10px;
-            background-image: url('../gfx/action-icons-custom.png');
-            .corner-all(0);
+            
+            .ui-btn-inner{
+                padding: 0 10px 0 36px;
+            }
+            .ui-icon{
+                background: none;
+                width: 40px;
+                height: 40px;
+                margin-top: -20px;
+                margin-left: -10px;
+                background-image: url('../gfx/action-icons-custom.png');
+                .corner-all(0);
+            }
+
+            .ui-btn-text{
+                line-height: 40px;
+            }
+
+            .ui-icon-action-heart{background-position: @as-offset-x @gfx-action-icon-sprite-heart-y}
+            .ui-icon-action-comment{background-position: @as-offset-x @gfx-action-icon-sprite-comment-y}
+            .ui-icon-action-more{background-position: @as-offset-x @gfx-action-icon-sprite-more-y}
+
+
+            &.selected,
+            &.ui-btn-hover-d,
+            &.ui-btn-down-d,
+            &.ui-btn-active-d{
+                .ui-icon-action-heart{background-position: @as-offset-x-hover @gfx-action-icon-sprite-heart-y}
+                .ui-icon-action-comment{background-position: @as-offset-x-hover @gfx-action-icon-sprite-comment-y}
+                .ui-icon-action-more{background-position: @as-offset-x-hover @gfx-action-icon-sprite-more-y}
+
+            }
+            
+            
         }
         
-        .ui-btn-text{
-            line-height: 40px;
-        }
-        
-        .ui-icon-action-heart{background-position: 0 0}
-        .ui-icon-action-comment{background-position: 0 -40px}
-        
-        .selected,
-        .ui-btn-hover-d,
-        .ui-btn-down-d,
-        .ui-btn-active-d{
-            .ui-icon-action-heart{background-position: -40px 0}
-            .ui-icon-action-comment{background-position: -40px -40px}
-        }
         
         /* reactions btn off to the right */
         .reactions-button{
@@ -1437,6 +1443,37 @@ fieldset.ui-controlgroup{
            }
     }
     
+}
+
+.inline-palette{
+    position: absolute;
+    top: -54px;
+    margin-left: -69px;
+    .corner-all(10px);
+    padding: 6px;
+    &::after{
+      .arrow-down(@arrow-size, @color-off-black-tint, 50%, @arrow-y-shift + 3px);  
+    }
+    
+    
+    
+    .ui-controlgroup{
+        margin-bottom: 1px;
+        
+    }
+    .ui-btn{
+        vertical-align: middle;
+        line-height: 22px;
+    }
+    .ui-btn-icon-notext{
+        top:0;
+    }
+    .ui-btn-icon-left .ui-btn-inner {
+        padding-left: 40px;
+        .ui-icon{
+            left: 0;
+        }
+    }
 }
 
 /*
@@ -2568,6 +2605,12 @@ fieldset.ui-controlgroup{
 * The Dark (Textured Grey) swatch, used for title bars, dark btns on palletes
 */
 
+.ui-body-b{
+    background: @color-bg-dark;
+    background-image: @gfx-bg-dark-texture;
+    border: none;
+}
+
 .ui-bar-b{
     
     
@@ -3141,7 +3184,21 @@ fieldset.ui-controlgroup{
 .dark-icons{
     .ui-icon{
         background-image: url('../gfx/action-icons-dark.png');
+        width: @gfx-action-darkicon-sprite-grid;
+        height: @gfx-action-darkicon-sprite-grid;
     } 
+    
+    .ui-icon-settings,&.ui-icon-settings{background-position: @ad-offset-x @gfx-action-darkicon-sprite-settings-y;}
+    .ui-icon-flag,&.ui-icon-flag{background-position: @ad-offset-x @gfx-action-darkicon-sprite-flag-y;}
+    .ui-icon-delete,&.ui-icon-delete{background-position: @ad-offset-x @gfx-action-darkicon-sprite-delete-y;}
+    .ui-icon-download,&.ui-icon-download{background-position: @ad-offset-x @gfx-action-darkicon-sprite-download-y;}
+    .ui-icon-twitter,&.ui-icon-twitter{background-position: @ad-offset-x @gfx-action-darkicon-sprite-twitter-y;}
+    .ui-icon-facebook,&.ui-icon-facebook{background-position: @ad-offset-x @gfx-action-darkicon-sprite-facebook-y;}
+    .ui-icon-tumblr,&.ui-icon-tumblr{background-position: @ad-offset-x @gfx-action-darkicon-sprite-tumblr-y;}
+    .ui-icon-foursquare,&.ui-icon-foursquare{background-position: @ad-offset-x @gfx-action-darkicon-sprite-foursquare-y;}
+    .ui-icon-email,&.ui-icon-email{background-position: @ad-offset-x @gfx-action-darkicon-sprite-email-y;}
+    .ui-icon-feed,&.ui-icon-feed{background-position: @ad-offset-x @gfx-action-darkicon-sprite-feed-y;}
+    .ui-icon-grid,&.ui-icon-grid{background-position: @ad-offset-x @gfx-action-darkicon-sprite-grid-y;}
 }
 
 /* @extra-icons */

@@ -1383,10 +1383,10 @@ input.ui-input-text, textarea.ui-input-text {
   /* reactions btn off to the right */
 
 }
-.image-item-block .image-actions .v-fav-button, .image-item-block .image-actions .v-comment-button, .image-item-block .image-actions .v-show-all-button {
+.image-item-block .image-actions .inline-btn {
   display: inline-block;
 }
-.image-item-block .image-actions .ui-btn,
+.image-item-block .image-actions .ui-btn-up-d,
 .image-item-block .image-actions .ui-btn-hover-d,
 .image-item-block .image-actions .ui-btn-down-d,
 .image-item-block .image-actions .ui-btn-active-d {
@@ -1396,10 +1396,16 @@ input.ui-input-text, textarea.ui-input-text {
   font-family: Helvetica, Arial, sans-serif;
   color: #666666;
 }
-.image-item-block .image-actions .ui-btn-inner {
+.image-item-block .image-actions .ui-btn-up-d .ui-btn-inner,
+.image-item-block .image-actions .ui-btn-hover-d .ui-btn-inner,
+.image-item-block .image-actions .ui-btn-down-d .ui-btn-inner,
+.image-item-block .image-actions .ui-btn-active-d .ui-btn-inner {
   padding: 0 10px 0 36px;
 }
-.image-item-block .image-actions .ui-icon {
+.image-item-block .image-actions .ui-btn-up-d .ui-icon,
+.image-item-block .image-actions .ui-btn-hover-d .ui-icon,
+.image-item-block .image-actions .ui-btn-down-d .ui-icon,
+.image-item-block .image-actions .ui-btn-active-d .ui-icon {
   background: none;
   width: 40px;
   height: 40px;
@@ -1410,26 +1416,83 @@ input.ui-input-text, textarea.ui-input-text {
   -webkit-border-radius: 0;
   border-radius: 0;
 }
-.image-item-block .image-actions .ui-btn-text {
+.image-item-block .image-actions .ui-btn-up-d .ui-btn-text,
+.image-item-block .image-actions .ui-btn-hover-d .ui-btn-text,
+.image-item-block .image-actions .ui-btn-down-d .ui-btn-text,
+.image-item-block .image-actions .ui-btn-active-d .ui-btn-text {
   line-height: 40px;
 }
-.image-item-block .image-actions .ui-icon-action-heart {
-  background-position: 0 0;
-}
-.image-item-block .image-actions .ui-icon-action-comment {
-  background-position: 0 -40px;
-}
-.image-item-block .image-actions .selected .ui-icon-action-heart,
+.image-item-block .image-actions .ui-btn-up-d .ui-icon-action-heart,
 .image-item-block .image-actions .ui-btn-hover-d .ui-icon-action-heart,
 .image-item-block .image-actions .ui-btn-down-d .ui-icon-action-heart,
 .image-item-block .image-actions .ui-btn-active-d .ui-icon-action-heart {
-  background-position: -40px 0;
+  background-position: 0px 0px;
 }
-.image-item-block .image-actions .selected .ui-icon-action-comment,
+.image-item-block .image-actions .ui-btn-up-d .ui-icon-action-comment,
 .image-item-block .image-actions .ui-btn-hover-d .ui-icon-action-comment,
 .image-item-block .image-actions .ui-btn-down-d .ui-icon-action-comment,
 .image-item-block .image-actions .ui-btn-active-d .ui-icon-action-comment {
+  background-position: 0px -40px;
+}
+.image-item-block .image-actions .ui-btn-up-d .ui-icon-action-more,
+.image-item-block .image-actions .ui-btn-hover-d .ui-icon-action-more,
+.image-item-block .image-actions .ui-btn-down-d .ui-icon-action-more,
+.image-item-block .image-actions .ui-btn-active-d .ui-icon-action-more {
+  background-position: 0px -120px;
+}
+.image-item-block .image-actions .ui-btn-up-d.selected .ui-icon-action-heart,
+.image-item-block .image-actions .ui-btn-hover-d.selected .ui-icon-action-heart,
+.image-item-block .image-actions .ui-btn-down-d.selected .ui-icon-action-heart,
+.image-item-block .image-actions .ui-btn-active-d.selected .ui-icon-action-heart,
+.image-item-block .image-actions .ui-btn-up-d.ui-btn-hover-d .ui-icon-action-heart,
+.image-item-block .image-actions .ui-btn-hover-d.ui-btn-hover-d .ui-icon-action-heart,
+.image-item-block .image-actions .ui-btn-down-d.ui-btn-hover-d .ui-icon-action-heart,
+.image-item-block .image-actions .ui-btn-active-d.ui-btn-hover-d .ui-icon-action-heart,
+.image-item-block .image-actions .ui-btn-up-d.ui-btn-down-d .ui-icon-action-heart,
+.image-item-block .image-actions .ui-btn-hover-d.ui-btn-down-d .ui-icon-action-heart,
+.image-item-block .image-actions .ui-btn-down-d.ui-btn-down-d .ui-icon-action-heart,
+.image-item-block .image-actions .ui-btn-active-d.ui-btn-down-d .ui-icon-action-heart,
+.image-item-block .image-actions .ui-btn-up-d.ui-btn-active-d .ui-icon-action-heart,
+.image-item-block .image-actions .ui-btn-hover-d.ui-btn-active-d .ui-icon-action-heart,
+.image-item-block .image-actions .ui-btn-down-d.ui-btn-active-d .ui-icon-action-heart,
+.image-item-block .image-actions .ui-btn-active-d.ui-btn-active-d .ui-icon-action-heart {
+  background-position: -40px 0px;
+}
+.image-item-block .image-actions .ui-btn-up-d.selected .ui-icon-action-comment,
+.image-item-block .image-actions .ui-btn-hover-d.selected .ui-icon-action-comment,
+.image-item-block .image-actions .ui-btn-down-d.selected .ui-icon-action-comment,
+.image-item-block .image-actions .ui-btn-active-d.selected .ui-icon-action-comment,
+.image-item-block .image-actions .ui-btn-up-d.ui-btn-hover-d .ui-icon-action-comment,
+.image-item-block .image-actions .ui-btn-hover-d.ui-btn-hover-d .ui-icon-action-comment,
+.image-item-block .image-actions .ui-btn-down-d.ui-btn-hover-d .ui-icon-action-comment,
+.image-item-block .image-actions .ui-btn-active-d.ui-btn-hover-d .ui-icon-action-comment,
+.image-item-block .image-actions .ui-btn-up-d.ui-btn-down-d .ui-icon-action-comment,
+.image-item-block .image-actions .ui-btn-hover-d.ui-btn-down-d .ui-icon-action-comment,
+.image-item-block .image-actions .ui-btn-down-d.ui-btn-down-d .ui-icon-action-comment,
+.image-item-block .image-actions .ui-btn-active-d.ui-btn-down-d .ui-icon-action-comment,
+.image-item-block .image-actions .ui-btn-up-d.ui-btn-active-d .ui-icon-action-comment,
+.image-item-block .image-actions .ui-btn-hover-d.ui-btn-active-d .ui-icon-action-comment,
+.image-item-block .image-actions .ui-btn-down-d.ui-btn-active-d .ui-icon-action-comment,
+.image-item-block .image-actions .ui-btn-active-d.ui-btn-active-d .ui-icon-action-comment {
   background-position: -40px -40px;
+}
+.image-item-block .image-actions .ui-btn-up-d.selected .ui-icon-action-more,
+.image-item-block .image-actions .ui-btn-hover-d.selected .ui-icon-action-more,
+.image-item-block .image-actions .ui-btn-down-d.selected .ui-icon-action-more,
+.image-item-block .image-actions .ui-btn-active-d.selected .ui-icon-action-more,
+.image-item-block .image-actions .ui-btn-up-d.ui-btn-hover-d .ui-icon-action-more,
+.image-item-block .image-actions .ui-btn-hover-d.ui-btn-hover-d .ui-icon-action-more,
+.image-item-block .image-actions .ui-btn-down-d.ui-btn-hover-d .ui-icon-action-more,
+.image-item-block .image-actions .ui-btn-active-d.ui-btn-hover-d .ui-icon-action-more,
+.image-item-block .image-actions .ui-btn-up-d.ui-btn-down-d .ui-icon-action-more,
+.image-item-block .image-actions .ui-btn-hover-d.ui-btn-down-d .ui-icon-action-more,
+.image-item-block .image-actions .ui-btn-down-d.ui-btn-down-d .ui-icon-action-more,
+.image-item-block .image-actions .ui-btn-active-d.ui-btn-down-d .ui-icon-action-more,
+.image-item-block .image-actions .ui-btn-up-d.ui-btn-active-d .ui-icon-action-more,
+.image-item-block .image-actions .ui-btn-hover-d.ui-btn-active-d .ui-icon-action-more,
+.image-item-block .image-actions .ui-btn-down-d.ui-btn-active-d .ui-icon-action-more,
+.image-item-block .image-actions .ui-btn-active-d.ui-btn-active-d .ui-icon-action-more {
+  background-position: -40px -120px;
 }
 .image-item-block .image-actions .reactions-button {
   position: absolute;
@@ -1502,6 +1565,47 @@ input.ui-input-text, textarea.ui-input-text {
 }
 .ui-checkbox .ui-checkbox-off.ui-btn-active .ui-icon {
   background-position: -40px -240px;
+}
+.inline-palette {
+  position: absolute;
+  top: -54px;
+  margin-left: -69px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  padding: 6px;
+}
+.inline-palette::after {
+  width: 0;
+  height: 0;
+  display: inline-block;
+  content: "&darr;";
+  text-indent: -99999px;
+  vertical-align: top;
+  margin-top: 0;
+  margin-left: -14px;
+  border-left: 14px solid transparent;
+  border-right: 14px solid transparent;
+  border-top: 14px solid #1e2122;
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+}
+.inline-palette .ui-controlgroup {
+  margin-bottom: 1px;
+}
+.inline-palette .ui-btn {
+  vertical-align: middle;
+  line-height: 22px;
+}
+.inline-palette .ui-btn-icon-notext {
+  top: 0;
+}
+.inline-palette .ui-btn-icon-left .ui-btn-inner {
+  padding-left: 40px;
+}
+.inline-palette .ui-btn-icon-left .ui-btn-inner .ui-icon {
+  left: 0;
 }
 /*
 * @dashboard - PAGE 
@@ -2596,6 +2700,11 @@ input.ui-input-text, textarea.ui-input-text {
 * B
 * The Dark (Textured Grey) swatch, used for title bars, dark btns on palletes
 */
+.ui-body-b {
+  background: #000000;
+  background-image: url('../gfx/bg-texture-dark.gif');
+  border: none;
+}
 .ui-btn-up-b, .ui-btn-up-b[data-rel="back"]::before {
   border: solid 1px #000000;
   background: #434748;
@@ -3579,6 +3688,41 @@ input.ui-input-text, textarea.ui-input-text {
 /* @dark-icons */
 .dark-icons .ui-icon {
   background-image: url('../gfx/action-icons-dark.png');
+  width: 40px;
+  height: 40px;
+}
+.dark-icons .ui-icon-settings, .dark-icons.ui-icon-settings {
+  background-position: 0px 0px;
+}
+.dark-icons .ui-icon-flag, .dark-icons.ui-icon-flag {
+  background-position: 0px -40px;
+}
+.dark-icons .ui-icon-delete, .dark-icons.ui-icon-delete {
+  background-position: 0px -80px;
+}
+.dark-icons .ui-icon-download, .dark-icons.ui-icon-download {
+  background-position: 0px -120px;
+}
+.dark-icons .ui-icon-twitter, .dark-icons.ui-icon-twitter {
+  background-position: 0px -160px;
+}
+.dark-icons .ui-icon-facebook, .dark-icons.ui-icon-facebook {
+  background-position: 0px -200px;
+}
+.dark-icons .ui-icon-tumblr, .dark-icons.ui-icon-tumblr {
+  background-position: 0px -240px;
+}
+.dark-icons .ui-icon-foursquare, .dark-icons.ui-icon-foursquare {
+  background-position: 0px -280px;
+}
+.dark-icons .ui-icon-email, .dark-icons.ui-icon-email {
+  background-position: 0px -320px;
+}
+.dark-icons .ui-icon-feed, .dark-icons.ui-icon-feed {
+  background-position: 0px -360px;
+}
+.dark-icons .ui-icon-grid, .dark-icons.ui-icon-grid {
+  background-position: 0px -400px;
 }
 /* @extra-icons */
 .extra-icons .ui-icon-heart, .extra-icons.ui-icon-heart {
