@@ -8,6 +8,7 @@ snapr.views.feed_li = Backbone.View.extend({
         // "click .reactions-button": "load_reactions",
         "click .reactions-button": "toggle_reactions",
         "click .comment-button": "toggle_comment_form",
+        "click .more-button": "toggle_photo_manage",
         "click .goto-map": "goto_map",
         "click .goto-spot": "goto_spot",
         "submit .comment-form": "comment"
@@ -86,6 +87,13 @@ snapr.views.feed_li = Backbone.View.extend({
             id: this.model.id,
             el: $(this.el).find('.reactions-list')
         });
+
+        this.manage = new snapr.views.photo_manage({
+            model: this.model,
+            el: $(this.el).find('.v-photo-manage'),
+            parentView: this
+        });
+
         // this.model.bind( "change:favorite", this.reactions.fetch );
         this.model.bind( "change:comments", this.load_reactions );
 
@@ -130,6 +138,19 @@ snapr.views.feed_li = Backbone.View.extend({
             this.load_reactions();
             $(this.el).find('.reactions-list').show();
             this.show_comment_form();
+        }
+    },
+
+    toggle_photo_manage: function()
+    {
+        $(this.el).find('.more-button').toggleClass('selected');
+        if ($(this.el).find('.v-photo-manage .inline-palette:visible').length)
+        {
+            $(this.el).find('.v-photo-manage').empty();
+        }
+        else
+        {
+            this.manage.render();
         }
     },
 
