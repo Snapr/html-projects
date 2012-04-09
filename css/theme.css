@@ -2170,6 +2170,10 @@ input.ui-input-text, textarea.ui-input-text {
   line-height: 15px;
   color: #666666;
 }
+.activity-streams .image-likes .icons-list, .activity-streams .image-likes p {
+  display: inline-block;
+  vertical-align: top;
+}
 .activity-streams .activity-follow-item {
   padding-left: 0;
   margin-top: 0;
