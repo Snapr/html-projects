@@ -811,92 +811,6 @@
     <% } %>
     </script>
 
-    <!-- @feed @uploadprogress ITEM - template for feed uploads queue -->
-    <script id="upload-progress-li-template" type="text/template">
-        <div class="upload-info-block">
-            <a class="upload-image-thumb-gall gallery_link image-link ui-link">
-               <img src="<%= thumbnail %>" class="thumb-image thumb-med">
-            </a>
-
-            <div class="upload-info">
-                <p class="upload-image-tag"><% if(description){ %><span class="ui-icon extra-icons ui-icon-quote"></span><%= description %><% } %>&nbsp;</p>
-                <% if ( venue ){ %>
-                    <p class="upload-image-venue"><a class="ui-link">@ <%= venue %></a></p>
-                <% } %>
-
-
-                <div class="progress-bar <%= upload_status %>">
-                     <% if (message){ %>
-                         <span class="upload-message"><%= message %></span>
-                    <% }else{ %>
-                    <div class="bar-wrapper">
-
-
-                           <div class="bar-bg bar">
-                           </div>
-                           <div class="bar-prog bar" style="width:<%= percent_complete %>%">
-                           </div>
-
-                      </div>
-                       <% } %>
-                   <% switch (upload_status) { case 'active': %>
-
-                      <% if (percent_complete == 100){ %>
-                          <a class="bar-action ui-btn ui-btn-up-d ui-btn-icon-notext ui-btn-corner-all ui-shadow" data-role="button" data-icon="refresh" data-iconpos="notext" title="Processing" data-theme="d"><span class="ui-btn-inner ui-btn-corner-all" aria-hidden="true"><span class="ui-btn-text">Processing</span><span class="ui-icon ui-icon-refresh ui-icon-shadow"></span></span></a>
-                      <% }else{ %>
-   <a class="bar-action ui-btn ui-btn-up-d ui-btn-icon-notext ui-btn-corner-all ui-shadow cancel" data-role="button" data-icon="delete" data-iconpos="notext" title="Cancel" data-theme="d"><span class="ui-btn-inner ui-btn-corner-all" aria-hidden="true"><span class="ui-btn-text">Cancel</span><span class="ui-icon ui-icon-delete ui-icon-shadow"></span></span></a>
-                      <% } %>
-
-                   <% break; case 'waiting': %>
-                        <a class="bar-action ui-btn ui-btn-up-d ui-btn-icon-notext ui-btn-corner-all ui-shadow finishing" data-role="button" data-icon="refresh" data-iconpos="notext" title="Processing" data-theme="d"><span class="ui-btn-inner ui-btn-corner-all" aria-hidden="true"><span class="ui-btn-text">Cancel</span><span class="ui-icon ui-icon-refresh ui-icon-shadow"></span></span></a>
-
-                   <% break; case 'canceled': %>
-
-
-                   <% break; case 'hold': %>
-
-                   <% break; case 'completed': %>
-
-                        <a class="bar-action ui-btn ui-btn-up-d ui-btn-icon-notext ui-btn-corner-all ui-shadow" data-role="button" data-icon="check" data-iconpos="notext" title="Done!" data-theme="d"><span class="ui-btn-inner ui-btn-corner-all" aria-hidden="true"><span class="ui-btn-text">Done!</span><span class="ui-icon ui-icon-check ui-icon-shadow"></span></span></a>
-
-                   <% break;}%>
-                </div>
-
-
-                <ul class="upload-shared-to">
-                <% if (facebook_sharing){ %>
-                    <li>
-                        <div class="facebook-sharing sharing-icon-small">
-                            <span class="ui-icon"></span>
-                        </div>
-                    </li>
-                <% } %>
-                <% if (foursquare_sharing){ %>
-                    <li>
-                        <div class="foursquare-sharing sharing-icon-small">
-                            <span class="ui-icon"></span>
-                        </div>
-                    </li>
-                <% } %>
-                <% if (twitter_sharing){ %>
-                    <li>
-                        <div class="twitter-sharing sharing-icon-small">
-                            <span class="ui-icon"></span>
-                        </div>
-                    </li>
-                <% } %>
-                <% if (tumblr_sharing){ %>
-                    <li>
-                        <div class="tumblr-sharing sharing-icon-small">
-                            <span class="ui-icon"></span>
-                        </div>
-                    </li>
-                <% } %>
-                </ul>
-            </div>
-        </div>
-    </script>
-
     <!-- @profile DIALOG-->
     <div id="user-profile" data-add-back-btn="true" data-role="dialog" data-overlay-theme="c" data-theme="c">
         <div data-role="header" data-theme="c">
@@ -1736,17 +1650,103 @@
         </div>
 
     </div>
+    
+    <!-- @upload @uploadprogress ITEM - template for upload progress header -->
+    <script id="upload-progress-li-template" type="text/template">
+        <div class="upload-info-block">
+            <a class="upload-image-thumb-gall gallery_link image-link ui-link">
+               <img src="<%= thumbnail %>" class="thumb-image thumb-med">
+            </a>
+
+            <div class="upload-info">
+                <p class="upload-image-tag"><% if(description){ %><span class="ui-icon extra-icons ui-icon-quote"></span><%= description %><% } %>&nbsp;</p>
+                <% if ( venue ){ %>
+                    <p class="upload-image-venue"><a class="ui-link">@ <%= venue %></a></p>
+                <% } %>
+
+
+                <div class="progress-bar <%= upload_status %>">
+                     <% if (message){ %>
+                         <span class="upload-message"><%= message %></span>
+                    <% }else{ %>
+                    <div class="bar-wrapper">
+
+
+                           <div class="bar-bg bar">
+                           </div>
+                           <div class="bar-prog bar" style="width:<%= percent_complete %>%">
+                           </div>
+
+                      </div>
+                       <% } %>
+                   <% switch (upload_status) { case 'active': %>
+
+                      <% if (percent_complete == 100){ %>
+                          <a class="bar-action ui-btn ui-btn-up-d ui-btn-icon-notext ui-btn-corner-all ui-shadow" data-role="button" data-icon="refresh" data-iconpos="notext" title="Processing" data-theme="d"><span class="ui-btn-inner ui-btn-corner-all" aria-hidden="true"><span class="ui-btn-text">Processing</span><span class="ui-icon ui-icon-refresh ui-icon-shadow"></span></span></a>
+                      <% }else{ %>
+   <a class="bar-action ui-btn ui-btn-up-d ui-btn-icon-notext ui-btn-corner-all ui-shadow cancel" data-role="button" data-icon="delete" data-iconpos="notext" title="Cancel" data-theme="d"><span class="ui-btn-inner ui-btn-corner-all" aria-hidden="true"><span class="ui-btn-text">Cancel</span><span class="ui-icon ui-icon-delete ui-icon-shadow"></span></span></a>
+                      <% } %>
+
+                   <% break; case 'waiting': %>
+                        <a class="bar-action ui-btn ui-btn-up-d ui-btn-icon-notext ui-btn-corner-all ui-shadow finishing" data-role="button" data-icon="refresh" data-iconpos="notext" title="Processing" data-theme="d"><span class="ui-btn-inner ui-btn-corner-all" aria-hidden="true"><span class="ui-btn-text">Cancel</span><span class="ui-icon ui-icon-refresh ui-icon-shadow"></span></span></a>
+
+                   <% break; case 'canceled': %>
+
+
+                   <% break; case 'hold': %>
+
+                   <% break; case 'completed': %>
+
+                        <a class="bar-action ui-btn ui-btn-up-d ui-btn-icon-notext ui-btn-corner-all ui-shadow" data-role="button" data-icon="check" data-iconpos="notext" title="Done!" data-theme="d"><span class="ui-btn-inner ui-btn-corner-all" aria-hidden="true"><span class="ui-btn-text">Done!</span><span class="ui-icon ui-icon-check ui-icon-shadow"></span></span></a>
+
+                   <% break;}%>
+                </div>
+
+
+                <ul class="upload-shared-to">
+                <% if (facebook_sharing){ %>
+                    <li>
+                        <div class="facebook-sharing sharing-icon-small">
+                            <span class="ui-icon"></span>
+                        </div>
+                    </li>
+                <% } %>
+                <% if (twitter_sharing){ %>
+                    <li>
+                        <div class="twitter-sharing sharing-icon-small">
+                            <span class="ui-icon"></span>
+                        </div>
+                    </li>
+                <% } %>
+                <% if (tumblr_sharing){ %>
+                    <li>
+                        <div class="tumblr-sharing sharing-icon-small">
+                            <span class="ui-icon"></span>
+                        </div>
+                    </li>
+                <% } %>
+                 <% if (foursquare_sharing){ %>
+                        <li>
+                            <div class="foursquare-sharing sharing-icon-small">
+                                <span class="ui-icon"></span>
+                            </div>
+                        </li>
+                    <% } %>
+                </ul>
+            </div>
+        </div>
+    </script>
 
     <script id="uploading-image-stream-template" type="text/template">
         <a class="ui-bar top-left-arrow" data-role="button" data-iconpos="right" data-icon="arrow-r" data-theme="c" href="#/feed/?<%= query %>" data-ajax="false">
         <% switch (stream_type) { case 'spot': %>
-            <span class="ui-icon ui-icon-location extra-icons"></span>
+            <span class="ui-icon ui-icon-heart extra-icons"></span>
             <em>@ <%= first.location.foursquare_venue_name %></em>
         <% break; case 'popular-nearby': %>
             <span class="ui-icon ui-icon-heart extra-icons"></span>
             <em>nearby</em>
         <% break; case 'recent-nearby': %>
-            <span class="ui-icon ui-icon-location extra-icons"></span>
+            <span class="ui-icon ui-icon-activity extra-icons"></span>
             <em>nearby</em>
         <% break; } %>
            <span class="image-tag"><%= first.description %></span>
