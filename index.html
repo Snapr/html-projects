@@ -1087,10 +1087,12 @@
              </div><!-- /page -->
 
     <script id="activity-stream-template" type="text/template">
-    <a class="ui-bar top-left-arrow" data-role="button" data-theme="e">
-        <em><%= time_period %></em>
-        <span class="small-text"><%= stream_summary %></span>
-    </a>
+    <% if (photo_events){%>
+        <a class="ui-bar top-left-arrow" data-role="button" data-theme="e">
+            <em><%= time_period %></em>
+            <span class="small-text"><%= stream_summary %></span>
+        </a>
+    <%}%>
     </script>
 
     <script id="activity-stream-item-template" type="text/template">
@@ -1107,7 +1109,6 @@
                         <a data-ajax="false" href="#/feed/?username=<%= comment.user.username %>">
                             <img src="http://sna.pr/avatars/<%= comment.user.username %>" alt="<%= comment.user.username %>" class="user-icon-small ui-li-icon"/>
                             <h3 class="username"><%= comment.user.username %></h3> <span class="item-comment"><%= comment.comment %></span>
-                            <p class="small-text"><%= snapr.utils.short_timestamp( comment.date, true) %></p>
                         </a>
                     </li>
                 <% }); %>
@@ -1141,9 +1142,11 @@
         <a data-ajax="false" href="#/feed/?username=<%= item.get("user").username %>">
             <img src="http://sna.pr/avatars/<%= item.get("user").username %>" alt="<%= item.get("user").username %>" class="user-icon-small ui-li-icon"/>
             <h3 class="username"><%= item.get("user").username %></h3> <span class="item-comment">is now following you.</span>
+            <% if (!photo_events) { %>
             <p class="small-text">
                 <%= snapr.utils.short_timestamp( item.get("date"), true) %>
             </p>
+            <% } %>
         </a>
         <%  break;
     }%>

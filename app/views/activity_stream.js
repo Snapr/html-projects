@@ -36,15 +36,18 @@ snapr.views.activity_stream = Backbone.View.extend({
 
         var time_period = snapr.utils.short_timestamp( this.model.get( "min_date" ), true );
 
+        var photo_events = (summary["like"] || summary["comment"]) ? true: false;
         $(this.el).html( this.template({
             time_period: time_period,
-            stream_summary: stream_summary
+            stream_summary: stream_summary,
+            photo_events: photo_events
         }));
 
         this.model.get( "events" ).each( function( item )
         {
             var stream_item = new snapr.views.activity_stream_item({
-                model: item
+                model: item,
+                photo_events: photo_events
             });
 
             $(this.el).append( stream_item.render().el );

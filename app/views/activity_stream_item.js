@@ -4,14 +4,11 @@ snapr.views.activity_stream_item = Backbone.View.extend({
 
     className: "activity-item",
 
-    events: {
-       // "click #popular-timeframe a":"update_list"
-    },
-
     initialize: function()
     {
         _.bindAll( this );
 
+        this.photo_events = this.options.photo_events;
         this.template = _.template( $("#activity-stream-item-template").html() );
 
     },
@@ -19,9 +16,10 @@ snapr.views.activity_stream_item = Backbone.View.extend({
     render: function()
     {
         var likes_list = _.map( this.model.get("favorites"), function(f){return f.user.username});
-        console.warn("likes_list", likes_list);
+
         $(this.el).html( this.template({
             item: this.model,
+            photo_events: this.photo_events,
             likes_list: likes_list
         }));
 

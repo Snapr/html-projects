@@ -53,13 +53,7 @@ snapr.models.activity_event_collection = Backbone.Collection.extend({
             }
         });
 
-        console.warn(event_types, summary_object);
-
         return summary_object;
     }
 
-    // comparator: function( reaction )
-    // {
-    //     return new Date( reaction.get( "date" ) ).getTime();
-    // }
 });
