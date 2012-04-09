@@ -4,6 +4,7 @@ snapr.views.photo_manage = Backbone.View.extend({
     {
         _.bindAll( this );
 
+        this.parentView = this.options.parentView;
         this.template = _.template( $("#photo-manage-template").html() );
         // update the display when we change the photo
         this.model.bind( "change", this.render );
@@ -11,20 +12,17 @@ snapr.views.photo_manage = Backbone.View.extend({
 
     events: {
         "click .x-image-privacy": "toggle_status",
-        "click .x-image-flag": "toggle_flag",
+        "click .x-image-flag": "flag",
         "click .x-image-delete": "delete"
     },
 
     render: function()
     {
-        console.warn("render", this.model)
         $(this.el).html( this.template({
             status: this.model.get("status"),
             flagged: this.model.get("flagged"),
             mine: this.model.get("username") == snapr.auth.get("snapr_user")
-        }));
-
-        $(this.el).trigger("create");
+        })).trigger("create");
 
         return this
     },
@@ -65,19 +63,55 @@ snapr.views.photo_manage = Backbone.View.extend({
         }
     },
 
-    toggle_flag: function()
+    flag: function()
     {
-        console.warn("flag")
         var photo_manage = this;
         snapr.utils.require_login( function()
         {
-
-        });
+            photo_manage.model.flag({
+                success: function( resp )
+                {
+                    if (resp.success)
+                    {
+                        photo_manage.model.set({flagged: true});
+                    }
+                    else
+                    {
+                        console.warn("error flagging photo", resp);
+                    }
+                },
+                error: function( e )
+                {
+                    console.warn("error flagging photo", e);
+                }
+            });
+        })();
     },
 
     delete: function()
     {
-        console.warn("delete");
+        var photo_manage = this;
+        snapr.utils.require_login( function()
+        {
+            photo_manage.model.delete({
+                success: function( resp )
+                {
+                    if (resp.success)
+                    {
+                        photo_manage.remove();
+                        photo_manage.parentView.remove();
+                    }
+                    else
+                    {
+                        console.warn("error deleting photo", resp);
+                    }
+                },
+                error: function( e )
+                {
+                    console.warn("error deleting photo", e);
+                }
+            });
+        })();
     }
 
 });

@@ -90,7 +90,8 @@ snapr.views.feed_li = Backbone.View.extend({
 
         this.manage = new snapr.views.photo_manage({
             model: this.model,
-            el: $(this.el).find('.v-photo-manage')
+            el: $(this.el).find('.v-photo-manage'),
+            parentView: this
         });
 
         // this.model.bind( "change:favorite", this.reactions.fetch );
