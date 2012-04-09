@@ -755,18 +755,9 @@
                     <span class="v-comment-button inline-btn"></span>
                     <span class="v-more-button inline-btn">
                          <div data-role="button" data-icon="action-more" data-inline="true" data-iconpos="left" class="more-button" >&nbsp;</div>
-                         
-                         <div class="inline-palette ui-body-b" data-theme="b">
-                            <div data-role="controlgroup" data-type="horizontal" class="dark-icons">
-                                <a data-role="button" data-icon="settings" data-inline="true" data-iconpos="left" class="x-image-privacy" >public</a>
-                                <a data-role="button" data-icon="flag" data-inline="true" data-iconpos="notext" class="x-image-flag" >flag</a>
-                                <a data-role="button" data-icon="delete" data-inline="true" data-iconpos="notext" class="x-image-delete" >flag</a>
-                                
-                            </div>
-                         </div>
-                         
+                         <div class="v-photo-manage"></div>
                     </span>
-                    
+
                     <span class="v-show-all-button inline-btn"></span>
                 </div>
 
@@ -792,6 +783,26 @@
 
         </div>
 
+    </script>
+
+    <script id="photo-manage-template" type="text/template">
+        <div class="inline-palette ui-body-b" data-theme="b">
+           <div data-role="controlgroup" data-type="horizontal" class="dark-icons">
+           <% if (mine) {%>
+                <a class="x-image-privacy" data-role="button" data-icon="settings" data-inline="true" data-iconpos="left">
+                    <%= status %>
+               </a>
+           <%}%>
+                <a class="x-image-flag" data-role="button" data-icon="flag" data-inline="true" data-iconpos="notext">
+                    <% if (flagged){%> flagged <% }else{ %> flag <% } %>
+                </a>
+           <% if (mine) {%>
+                <a class="x-image-delete" data-role="button" data-icon="delete" data-inline="true" data-iconpos="notext">
+                    delete
+                </a>
+           <%}%>
+           </div>
+        </div>
     </script>
 
     <!-- @feed @thumb ITEM - clicks to gallery view -->
@@ -1588,7 +1599,7 @@
         </div>
 
     </div>
-    
+
     <!-- @upload @uploadprogress ITEM - template for upload progress header -->
     <script id="upload-progress-li-template" type="text/template">
         <div class="upload-info-block">
@@ -1861,6 +1872,7 @@
 <script src="app/views/feed.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/dash.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/upload_progress_li.js" type="text/javascript" charset="utf-8"></script>
+<script src="app/views/photo_manage.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/feed_list.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/feed_li.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/feed_header.js" type="text/javascript" charset="utf-8"></script>
