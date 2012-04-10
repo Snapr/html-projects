@@ -212,6 +212,10 @@ h4{
     margin-bottom: @padding-page-inset * 2;
 }
 
+.ui-shadow-inset {
+    .box-shadow(inset 0 1px 1px rgba(0,0,0,0.2));
+}
+
 .warning-message{
     padding: @padding-page-inset;
     background-color: @color-bg-highlight-main;
@@ -2058,7 +2062,73 @@ fieldset.ui-controlgroup{
     .myaccount-settings{
         margin-top: -@corner-page-element-rounded - 2px;
     }
+    .ui-collapsible-set {
+        margin-bottom: -2px;
+    }
+    
+    .ui-bar{
+        .box-shadow(0 -1px 3px rgba(0,0,0,.05));
+        border-bottom: @border-medium-on-light;
+        .ui-btn-text {
+            padding-left: 8px;
+        } 
+    }
    
+}
+
+.ui-collapsible-set{
+    .ui-collapsible-heading{
+        .ui-btn{
+            margin-top:1px;
+            border-bottom: @border-medium-on-light;
+            
+            .ui-btn-inner{
+                padding: 16px 40px 16px 16px;
+            }
+            
+            .ui-icon{
+                left: auto;
+                right: 8px;
+            }            
+            .ui-icon-plus{background-position: @gfx-general-icon-sprite-arrow-d-x @g-med-offset-y;}
+            .ui-icon-minus{background-position: @gfx-general-icon-sprite-arrow-u-x @g-med-offset-y;}
+        }
+        
+        .ui-btn-up-c{
+            background-color: @color-off-white-tint;
+            background-image:@gfx-bg-light-texture;
+        }
+        .ui-btn-hover-c{
+            background-image: none;
+            background-color: lighten(@color-off-white-tint, .7%);
+            
+        }
+    }
+    .ui-collapsible-content{
+        .ui-btn{
+            .box-shadow( none);
+            .corner-all(@corner-fully-rounded);           
+            border: @border-medium-on-light;
+        }
+        
+      
+      &.ui-body-d{
+          border: none;
+          border-bottom: @border-medium-on-light;            
+      }  
+    } 
+}
+
+.avatar-select-block{
+    padding-left: 112px;
+    position: relative;
+    min-height: 100px;
+    padding-top: 8px;
+    .user-profile-icon{
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
 }
 
 /* @activity custom stylz */

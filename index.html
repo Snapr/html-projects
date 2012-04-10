@@ -198,37 +198,68 @@
          <a class="ui-bar top-no-arrow" data-role="button" data-theme="e" >
               <em>Settings</em>
          </a>
-
         <div data-role="collapsible-set" data-theme="c" data-content-theme="d">
-
+        
             <div data-role="collapsible" data-collapsed="true">
-                <h3>Account Name & Email</h3>
+                <h3>Profile</h3>
+
+                <fieldset data-role="controlgroup" class="my-account-avatar">
+                   <div class="avatar-select-block">
+                       <span class="user-profile-icon">
+                           <div class="user-icon-big" style="background-image: url('http://sna.pr/avatars/<%= username %>?size=large'); background-size: 100% 100%"></div>
+
+                       </span>
+                       
+                        <input type="radio" name="my-account-avatar-twitter" id="my-account-avatar-twitter" value="twitter" data-role="none"
+                           <% if (settings.profile.avatar_type == 'twitter'){ %> checked="true" <% } %> />
+                           <label for="my-account-avatar-twitter">Twitter</label><br>
+
+                           <input type="radio" name="my-account-avatar-facebook" id="my-account-avatar-facebook" value="facebook" data-role="none"
+                           <% if (settings.profile.avatar_type == 'facebook'){ %> checked="true" <% } %> />
+                           <label for="my-account-avatar-facebook">Facebook</label><br>
+
+                           <input type="radio" name="my-account-avatar-gravatar" id="my-account-avatar-gravatar" value="gravatar" data-role="none"
+                           <% if (settings.profile.avatar_type == 'gravatar'){ %> checked="true" <% } %> />
+                           <label for="my-account-avatar-gravatar">Gravatar</label><br>
+
+                           <a class="my-account-set-up-gravatar" href="http://en.gravatar.com/">&rarr; Set up Gravatar</a>
+                       
+                   </div>
+
+                   
+
+                </fieldset>
+
                 <fieldset data-role="controlgroup">
-                    <label for="my-account-name">Your Name</label>
-                    <input type="text" name="my-account-name" id="my-account-name" class="custom"
+                    <label for="my-account-profile-name">Your Name</label>
+                    <input type="text" name="my-account-profile-name" id="my-account-profile-name" class="custom"
                     value="<%= settings.profile.name %>" />
                 </fieldset>
-                <fieldset data-role="controlgroup">
-                    <label for="my-account-email">Email</label>
-                    <input type="text" name="my-account-email" id="my-account-email" class="custom"
-                    value="<%= settings.email %>" />
-                </fieldset>
-                <button data-theme="e" class="save">Save</button>
-            </div>
 
-            <div data-role="collapsible" data-collapsed="true">
-                <h3>Password</h3>
                 <fieldset data-role="controlgroup">
-                    <label for="my-account-password">New Password</label>
-                    <input type="password" name="my-account-password" id="my-account-password" class="custom"
-                    value="" />
+                    <label for="my-account-location">Location</label>
+                    <input type="text" name="my-account-location" id="my-account-location" class="custom"
+                    value="<%= settings.profile.location %>" />
                 </fieldset>
+
                 <fieldset data-role="controlgroup">
-                    <label for="my-account-password-verify">Verify</label>
-                    <input type="password" name="my-account-password-verify" id=" my-account-password-verify" class="custom"
-                    value="" />
+                    <label for="my-account-website">Website</label>
+                    <input type="text" name="my-account-website" id="my-account-website" class="custom"
+                    value="<%= settings.profile.website %>" />
                 </fieldset>
-                <button data-theme="e" class="save">Save</button>
+
+                <fieldset data-role="controlgroup">
+                    <label for="my-account-bio">Bio</label>
+                    <textarea name="my-account-bio" id="my-account-bio" class="custom"><%= settings.profile.bio %></textarea>
+                </fieldset>
+
+
+                 <div class="ui-grid-b">
+                        <div class="ui-block-a"></div>
+                        <div class="ui-block-b"></div>
+                        <div class="ui-block-c"><button data-theme="e" class="my-account-save">Save</button>
+                        </div>
+                </div>
             </div>
 
             <div data-role="collapsible" data-collapsed="true">
@@ -272,61 +303,46 @@
                     </p>
                 </fieldset>
 
-                <button data-theme="e" class="save">Save</button>
-
+                <div class="ui-grid-b">
+                        <div class="ui-block-a"></div>
+                        <div class="ui-block-b"></div>
+                        <div class="ui-block-c"><button data-theme="e" class="save">Save</button>
+                        </div>
+                </div>
             </div>
-
+            
             <div data-role="collapsible" data-collapsed="true">
-                <h3>Profile</h3>
-
-                <fieldset data-role="controlgroup" class="my-account-avatar">
-                    <legend>Avatar</legend>
-
-                    <input type="radio" name="my-account-avatar-twitter" id="my-account-avatar-twitter" value="twitter"
-                    <% if (settings.profile.avatar_type == 'twitter'){ %> checked="true" <% } %> />
-                    <label for="my-account-avatar-twitter">Twitter</label>
-
-                    <input type="radio" name="my-account-avatar-facebook" id="my-account-avatar-facebook" value="facebook"
-                    <% if (settings.profile.avatar_type == 'facebook'){ %> checked="true" <% } %> />
-                    <label for="my-account-avatar-facebook">Facebook</label>
-
-                    <input type="radio" name="my-account-avatar-gravatar" id="my-account-avatar-gravatar" value="gravatar"
-                    <% if (settings.profile.avatar_type == 'gravatar'){ %> checked="true" <% } %> />
-                    <label for="my-account-avatar-gravatar">Gravatar</label>
-
-                    <button class="my-account-set-up-gravatar">Set up Gravatar</button>
-
-                </fieldset>
-
+                <h3>Account</h3>
                 <fieldset data-role="controlgroup">
-                    <label for="my-account-profile-name">Your Name</label>
-                    <input type="text" name="my-account-profile-name" id="my-account-profile-name" class="custom"
-                    value="<%= settings.profile.name %>" />
+                    <label for="my-account-email">Email</label>
+                    <input type="text" name="my-account-email" id="my-account-email" class="custom"
+                    value="<%= settings.email %>" />
                 </fieldset>
-
                 <fieldset data-role="controlgroup">
-                    <label for="my-account-location">Location</label>
-                    <input type="text" name="my-account-location" id="my-account-location" class="custom"
-                    value="<%= settings.profile.location %>" />
+                    <label for="my-account-password">New Password</label>
+                    <input type="password" name="my-account-password" id="my-account-password" class="custom"
+                    value="" />
                 </fieldset>
-
                 <fieldset data-role="controlgroup">
-                    <label for="my-account-website">Website</label>
-                    <input type="text" name="my-account-website" id="my-account-website" class="custom"
-                    value="<%= settings.profile.website %>" />
+                    <label for="my-account-password-verify">Verify</label>
+                    <input type="password" name="my-account-password-verify" id="my-account-password-verify" class="custom"
+                    value="" />
                 </fieldset>
-
-                <fieldset data-role="controlgroup">
-                    <label for="my-account-bio">Bio</label>
-                    <textarea name="my-account-bio" id="my-account-bio" class="custom"><%= settings.profile.bio %></textarea>
-                </fieldset>
-
-                <button data-theme="e" class="my-account-save">Save</button>
+                <div class="ui-grid-b">
+                    <div class="ui-block-a"></div>
+                    <div class="ui-block-b"></div>
+                    <div class="ui-block-c"><button data-theme="e" class="save">Save</button></div>
+                </div>
             </div>
+            
 
         </div><!-- End of Nested Collapsible Set -->
 
-
+        <a class="ui-bar top-no-arrow" data-role="button" data-theme="e" >
+                <em>Connect</em>
+          </a>
+         <div class="add-services" data-role="collapsible-set" data-theme="c" data-content-theme="d">
+         </div>
 
 
           <a class="ui-bar top-no-arrow" data-role="button" data-theme="e" >
@@ -339,13 +355,9 @@
          </p><!-- Close Content for Master Collapsible Sett -->
 
 
-         <a class="ui-bar top-no-arrow" data-role="button" data-theme="e" >
-                <em>Link Services</em>
-          </a>
-         <div class="add-services" data-role="collapsible-set" data-theme="c" data-content-theme="d">
+         
 
-
-         </div>
+         
 
     </div>
     </script>
@@ -374,7 +386,7 @@
         <div data-role="content">
             <div class="services-content">
                 <h2 class="tolink-message"></h2>
-                <h4>Services to Link</h4>
+                <h4>Connect</h4>
                 <div class="add-services">
                 </div>
                 <h4>Linked Services</h4>
@@ -391,12 +403,22 @@
         <h3>Link Twitter</h3>
         <fieldset data-role="controlgroup">
         </fieldset>
-        <button data-inline="true" data-theme="b" class="link-service">Link</button>
+        <div class="ui-grid-b">
+            <div class="ui-block-a"></div>
+            <div class="ui-block-b"></div>
+            <div class="ui-block-c"><button data-theme="e" class="link-service">Link</button>
+        </div>
+
     <% break; case 'foursquare': %>
         <h3>Link Foursquare</h3>
         <fieldset data-role="controlgroup">
         </fieldset>
-        <button data-inline="true" data-theme="b" class="link-service">Link</button>
+        <div class="ui-grid-b">
+            <div class="ui-block-a"></div>
+            <div class="ui-block-b"></div>
+            <div class="ui-block-c"><button data-theme="e" class="link-service">Link</button>
+        </div>
+        
     <% break; case 'tumblr': %>
         <h3>Link Tumblr</h3>
         <form class="tumblr-form" action="javascript:void(0)">
@@ -404,12 +426,24 @@
                 <label>Email:<input type="text" id="tumblr-email" /></label>
                 <label>Password:<input type="password" id="tumblr-password" /></label>
             </fieldset>
-            <input type=submit data-inline="true" data-theme="b" class="link-service" value="Link" />
+            
+            <div class="ui-grid-b">
+                <div class="ui-block-a"></div>
+                <div class="ui-block-b"></div>
+                <div class="ui-block-c"><button data-theme="e" class="link-service">Link</button>
+            </div>
         </form>
     <% break; case 'facebook': %>
         <h3>Link Facebook</h3>
         <fieldset data-role="controlgroup">
         </fieldset>
+        
+        <div class="ui-grid-b">
+            <div class="ui-block-a"></div>
+            <div class="ui-block-b"></div>
+            <div class="ui-block-c"><button data-theme="e" class="link-service">Link</button>
+        </div>
+        
         <button data-inline="true" data-theme="b" class="link-service">Link</button>
     <% break; } %>
     </div>
@@ -1137,8 +1171,12 @@
                     <%}%>
                 </p>
             </div>
+            
+            
         <%  break;
         case "follow":%>
+        <hr>
+        
         <a data-ajax="false" href="#/feed/?username=<%= item.get("user").username %>">
             <img src="http://sna.pr/avatars/<%= item.get("user").username %>" alt="<%= item.get("user").username %>" class="user-icon-small ui-li-icon"/>
             <h3 class="username"><%= item.get("user").username %></h3> <span class="item-comment">is now following you.</span>
