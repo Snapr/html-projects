@@ -3917,13 +3917,6 @@ input.ui-input-text, textarea.ui-input-text {
     -webkit-background-size: 80px 1280px;
     background-size: 80px 1280px;
   }
-  .dark-icons .ui-icon {
-    background-image: url('../gfx/retina/action-icons-dark.png');
-    -moz-background-size: 40px 480px;
-    -o-background-size: 40px 480px;
-    -webkit-background-size: 40px 480px;
-    background-size: 40px 480px;
-  }
   .user-info-block .user-icon-left .icon-overlay-info {
     background-image: url('../gfx/retina/shiny-avatar-info.png');
     -moz-background-size: 100px 100px;
@@ -3931,7 +3924,7 @@ input.ui-input-text, textarea.ui-input-text {
     -webkit-background-size: 100px 100px;
     background-size: 100px 100px;
   }
-  .image-item-block .image-actions .ui-icon,
+  .image-actions .ui-icon,
   .ui-checkbox .ui-icon,
   .custom-action-icons .ui-icon,
   .share-photo .upload-image-privacy .ui-icon,
@@ -3942,6 +3935,13 @@ input.ui-input-text, textarea.ui-input-text {
     -o-background-size: 80px 440px;
     -webkit-background-size: 80px 440px;
     background-size: 80px 440px;
+  }
+  .dark-icons .ui-icon {
+    background-image: url('../gfx/retina/action-icons-dark.png');
+    -moz-background-size: 40px 480px;
+    -o-background-size: 40px 480px;
+    -webkit-background-size: 40px 480px;
+    background-size: 40px 480px;
   }
   .dash-footer .ui-icon {
     background-image: url('../gfx/retina/dash-icons.png');
