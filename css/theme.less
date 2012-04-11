@@ -14,7 +14,7 @@
 }
 
 /*
-* Browser 
+* Browser
 */
 
 html {
@@ -88,7 +88,7 @@ hr{
     color: @color-shadow-medium-on-light;
 }
 
-h1,h2,h3,h4,h5, 
+h1,h2,h3,h4,h5,
 p,ul,li,hr,textarea,input{
     font-weight: normal;
     margin: 0;
@@ -191,7 +191,7 @@ h4{
 .inline-footer{
     margin: @padding-page-inset -@padding-page-inset -@padding-page-inset -@padding-page-inset;
     .corner-bottom(@corner-page-element-rounded);
-    
+
     .ui-grid-a{
         .ui-block-a{
             .ui-btn{
@@ -204,7 +204,7 @@ h4{
             }
         }
     }
-    
+
 }
 
 .ui-collapsible-set{
@@ -251,7 +251,7 @@ h4{
                box-shadow: inset 0 0 9px 2px #AFAEAE;
            }
     }
-   
+
     .bar-action{
         position: absolute;
         right: -16px;
@@ -264,41 +264,41 @@ h4{
             background-position: -63px 1px;
         }
     }
-    
+
     &.completed{
         padding: 2px 28px 6px 8px;
     }
-    
+
     .upload-message{
         font-weight: bold;
         font-size: @txt-size-small;
     }
-    
+
     .ui-icon-check{
         background-position: @gfx-general-icon-sprite-check-x @g-highlight-offset-y;
     }
-    
+
 }
 
 .image-streams{
-    
+
     list-style: none;
     padding: 0;
     margin: 0;
     margin-bottom: @padding-page-inset;
     margin-top: -@padding-page-inset;
-    
+
     .image-stream{
         position: relative;
         list-style: none;
         padding: 0;
         margin-bottom: @padding-page-inset ;
-        
+
         .ui-bar{
-            
-            
+
+
         }
-        
+
         .edit-overlay{
             display: none;
             position: absolute;
@@ -319,22 +319,22 @@ h4{
             }
          }
     }
-    
+
     &.edit{
        .image-stream{
             .edit-overlay{
                    display: block;
             }
-        } 
+        }
     }
-   
-   
-    
+
+
+
 }
 
 
 /*
-* JQuery Mob - Custom 
+* JQuery Mob - Custom
 *   Some basics
 */
 
@@ -348,7 +348,7 @@ h4{
 
 .ui-content .ui-listview-inset{
     margin: @padding-page-inset 0;
-    
+
 }
 
 
@@ -363,7 +363,7 @@ h4{
     &.ui-icon-searchfield::after{
         margin-top: -18px;
     }
-    
+
     .ui-input-clear {
         position: absolute;
         right: -15px;
@@ -380,7 +380,7 @@ h4{
     padding: 0 0 @padding-page-inset 0;
 }
 
-input.ui-input-text, 
+input.ui-input-text,
 textarea.ui-input-text {
     background-color: @color-bg-neutral-light;
     color: @color-txt-medium-on-light;
@@ -392,13 +392,13 @@ textarea.ui-input-text {
     box-sizing: border-box;
 }
 
-.ui-controlgroup, 
+.ui-controlgroup,
 fieldset.ui-controlgroup{
     margin: 0 0 @padding-page-inset 0;
 }
 
 .ui-link{
-    
+
 }
 
 .ui-btn{
@@ -417,12 +417,12 @@ fieldset.ui-controlgroup{
         .ui-btn{
             margin-left: @padding-element-inset;
         }
-        
+
     }
 }
 
 .ui-icon,
-.ui-checkbox-on .ui-icon, 
+.ui-checkbox-on .ui-icon,
 .ui-radio-on .ui-icon,
 .ui-icon-searchfield::after{
     background-color: transparent;
@@ -431,7 +431,7 @@ fieldset.ui-controlgroup{
     height: @gfx-general-icon-sprite-grid;
 }
 
-.ui-btn-icon-left .ui-icon, 
+.ui-btn-icon-left .ui-icon,
 .ui-btn-icon-right .ui-icon {
     margin-top: -@gfx-general-icon-sprite-grid / 2;
 }
@@ -446,7 +446,7 @@ fieldset.ui-controlgroup{
     padding: 16px;
     width: 64px;
     border: none;
-    
+
 
     .ui-icon-loading {
         background-image: url('../gfx/spinner.png');
@@ -454,7 +454,7 @@ fieldset.ui-controlgroup{
         height: 56px;
         background-size: 56px 56px;
     }
-    
+
     h1{
         display: none;
     }
@@ -474,7 +474,7 @@ fieldset.ui-controlgroup{
        &.ui-shadow{
             .box-shadow(none);
        }
-      
+
    }
 
 .ui-icon-shadow{
@@ -483,7 +483,7 @@ fieldset.ui-controlgroup{
 
 
 
-.ui-checkbox .ui-btn-icon-left .ui-btn-inner, 
+.ui-checkbox .ui-btn-icon-left .ui-btn-inner,
 .ui-radio .ui-btn-icon-left .ui-btn-inner {
     padding-left: 36px;
 }
@@ -535,7 +535,7 @@ fieldset.ui-controlgroup{
 }
 
 /*
-* Headers - Custom 
+* Headers - Custom
 *   Header bars in the snapr project are all transparent.. BG comes from layer below
 */
 
@@ -546,7 +546,7 @@ fieldset.ui-controlgroup{
     text-shadow: @color-shadow-dark-on-dark 0px -1px 1px;
     height: @size-topbar-height;
     overflow: hidden;
-    
+
     .ui-title{
         font-family: @txt-font-special;
         font-size: @txt-size-page-heading;
@@ -556,23 +556,23 @@ fieldset.ui-controlgroup{
         vertical-align: middle;
         margin: 0;
     }
-    
+
     .ui-btn{
         font-size:@txt-size-small;
     }
-    
+
     .ui-btn-left{
         position: absolute;
         left: 6px;
         top: 6px;
     }
-    
+
     .ui-btn-right {
         position: absolute;
         right: 6px;
         top: 6px;
     }
-    
+
     .ui-btn-center{
         .ui-btn{
             position: absolute;
@@ -580,16 +580,16 @@ fieldset.ui-controlgroup{
             margin-top: 7px;
             margin-left: -50px;
         }
-       
+
     }
-    
+
     .ui-btn-inner{
         padding-top: 8px;
         padding-bottom: 8px;
         border: none;
     }
-    
-    
+
+
     /* The main Icon Only Buttons */
     .ui-btn-icon-notext{
         border: none;
@@ -603,9 +603,9 @@ fieldset.ui-controlgroup{
         &.ui-shadow{
             .box-shadow(none);
         }
-       
+
     }
-    
+
     .ui-icon{
         width: 40px;
         height: 40px;
@@ -616,44 +616,44 @@ fieldset.ui-controlgroup{
             box-shadow: none;
         }
     }
-    
-    
+
+
     /* Shuffle the close button to the right */
     .ui-btn[data-icon="delete"]{
         right: 6px;
         top: 6px;
         left: auto;
     }
-    
+
     /* Some fiddly stuff for back btns */
     .ui-btn[data-rel="back"]{
-        
+
         .ui-icon{
             display: none;
         }
     }
-    
-     
-    
+
+
+
     .ui-controlgroup{
         display: inline-block;
         margin: 5px 0 0 -40px;
         left: 50%;
         position: absolute;
-        
+
          -moz-box-shadow: 0 1px 0 @color-shadow-light-on-dark;
          -webkit-box-shadow: 0 1px 0 @color-shadow-light-on-dark;
          box-shadow: 0 1px 0 @color-shadow-light-on-dark;
-        
+
         .ui-checkbox label,
         .ui-radio label{
             font-size: @txt-size-small;
             margin: 0;
         }
-        
+
     }
-    
-    
+
+
 }
 
 /* Style for inset header as seen on user feed and upload pages */
@@ -695,7 +695,7 @@ fieldset.ui-controlgroup{
 
 
 /*
-* UI Components - Custom Stylz 
+* UI Components - Custom Stylz
 */
 
 /* @ui-bar Title Bars that pop up all over the place */
@@ -704,10 +704,10 @@ fieldset.ui-controlgroup{
     border:none;
     border-top: @border-light-on-light;
     margin: 0 -@padding-page-inset;
-    padding: 8px @padding-page-inset; 
-    min-height: 19px; 
+    padding: 8px @padding-page-inset;
+    min-height: 19px;
     z-index: 10;
-    position: relative;  
+    position: relative;
     overflow: visible;
 
     .ui-btn-inner,
@@ -719,7 +719,7 @@ fieldset.ui-controlgroup{
         margin: 0;
         padding: 0;
         text-transform: lowercase;
-        
+
         em,
         .ui-btn,
         .ui-btn-hidden,
@@ -729,7 +729,7 @@ fieldset.ui-controlgroup{
             font-style: normal;
             font-family: @txt-font-special;
         }
-        
+
     }
     .ui-btn{
         background: none;
@@ -738,13 +738,13 @@ fieldset.ui-controlgroup{
     .ui-btn-text{
         display: block;
     }
-    
+
     .ui-btn-right{
         position: absolute;
         right: 4px;
         top: 0px;
     }
-    
+
     .image-details{
            display: inline-block;
            width: 93%;
@@ -767,8 +767,8 @@ fieldset.ui-controlgroup{
            overflow: hidden;
            text-overflow: ellipsis;
        }
-    
-    
+
+
     &.top-no-arrow{
         text-align: left;
         .corner-top (@corner-page-element-rounded);
@@ -779,7 +779,7 @@ fieldset.ui-controlgroup{
     }
     &.top-no-arrow,
     &.top-left-arrow{
-        .corner-top (@corner-page-element-rounded); 
+        .corner-top (@corner-page-element-rounded);
         .corner-bottom (@corner-not-rounded);
         text-align: left;
         .ui-icon-arrow-r {
@@ -796,16 +796,16 @@ fieldset.ui-controlgroup{
             height: @gfx-extra-icon-sprite-grid;
             width: @gfx-extra-icon-sprite-grid;
         }
-        
-        
+
+
     }
-    
-   
-    
+
+
+
     &.top-left-arrow::after{
         .arrow-down(@arrow-size, @color-snapr-yellow-tint, @arrow-offset, @arrow-y-shift);
     }
-    
+
     &.bottom-centered-arrow{
         overflow: visible;
         .corner-bottom (@corner-page-element-rounded);
@@ -814,9 +814,9 @@ fieldset.ui-controlgroup{
         }
     }
     &.bottom-centered-arrow::after{
-           .arrow-up(@arrow-size, yellow, 50%, @arrow-y-shift);                     
+           .arrow-up(@arrow-size, yellow, 50%, @arrow-y-shift);
     }
-    
+
     &.small-top-left-arrow{
         position: absolute;
         top: -31px;
@@ -826,11 +826,11 @@ fieldset.ui-controlgroup{
         padding: 6px;
         line-height: @txt-size-small;
         min-height: @txt-size-small;
-        .corner-top(@corner-general-rounded); 
-        
+        .corner-top(@corner-general-rounded);
+
     }
     &.small-top-left-arrow::after{
-        .arrow-down(6px, @color-bg-highlight-main-tint, 24px, 0);                     
+        .arrow-down(6px, @color-bg-highlight-main-tint, 24px, 0);
     }
 }
 
@@ -853,11 +853,11 @@ fieldset.ui-controlgroup{
              text-transform: lowercase;
              line-height: @txt-size-username;
              font-size: @txt-size-base;
-             
-        }   
+
+        }
     }
     .ui-btn-active{
-        
+
         .ui-btn-text{
             position: relative;
             top: -4px;
@@ -881,7 +881,7 @@ fieldset.ui-controlgroup{
         .ui-block-a{
             .ui-btn{
                 .corner-tl (@corner-page-element-rounded)
-            
+
             }
         }
         .ui-block-c{
@@ -890,7 +890,7 @@ fieldset.ui-controlgroup{
             }
         }
     }
-    
+
 }
 
 .ui-content-inset{
@@ -898,7 +898,7 @@ fieldset.ui-controlgroup{
         margin-left: 0px;
         margin-right: 0px;
     }
-    
+
 }
 
 /* Small Colored Icons For Third Party Services */
@@ -908,7 +908,7 @@ fieldset.ui-controlgroup{
     width: 22px;
     height: 22px;
     display: inline-block;
-    
+
     .ui-icon{
         background-image: url('../gfx/share-icons-small.png');
         width: @gfx-small-sharing-icon-sprite-grid;
@@ -922,7 +922,7 @@ fieldset.ui-controlgroup{
        .ui-icon{background-position: @ss-offset-x @gfx-small-sharing-icon-sprite-twitter-y;}
        background-color: @color-bg-twitter-main;
         .box-shadow(inset 0 3px 20px @color-bg-twitter-main-tint);
-    } 
+    }
     &.facebook-sharing{
        .ui-icon{background-position: @ss-offset-x @gfx-small-sharing-icon-sprite-facebook-y;}
        background-color: @color-bg-facebook-main;
@@ -941,15 +941,15 @@ fieldset.ui-controlgroup{
 }
 
 /*
-* Image Views - Custom 
+* Image Views - Custom
 */
 
 .thumbs-grid-med,
 .grid #feed-images{
-    margin: 0 -@padding-page-inset; 
-    padding: @padding-image-grid-inset 0 0 @padding-image-grid-inset; 
-  
-    
+    margin: 0 -@padding-page-inset;
+    padding: @padding-image-grid-inset 0 0 @padding-image-grid-inset;
+
+
     .image-link{
         display: inline-block;
         padding: 0;
@@ -969,9 +969,17 @@ fieldset.ui-controlgroup{
     white-space: nowrap;
 }
 
+.n-horizontal-scroll .scroll-wrapper {
+  white-space: nowrap;
+  display:inline-block;
+}
+.right-pull, .left-pull{
+    display:inline;
+    &.flipped{ color: red; }
+}
 
 /*
-* Main Menu - Custom 
+* Main Menu - Custom
 */
 
 .main-logo{
@@ -989,7 +997,7 @@ fieldset.ui-controlgroup{
 .menu-main{
     padding: 0;
     text-transform: lowercase;
-    
+
     .ui-icon{
         background: transparent;
         background-image: url('../gfx/main-menu-icons.png');
@@ -1019,19 +1027,19 @@ fieldset.ui-controlgroup{
         -webkit-box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 2px;
         -mox-box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 2px;
         box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 2px;
-        
+
         position: relative;
         z-index: 5;
-        
+
         /* Darker sprite versions */
         .ui-icon-main-menu-camera{background-position: 0 -1040px;}
         .ui-icon-main-menu-feed{background-position: 0 -1120px;}
         .ui-icon-main-menu-dash{background-position: 0 -1200px;}
-       
+
         .ui-btn{
             margin: 0;
             border: 0;
-           
+
             font-family: @txt-font-special ;
             font-weight: normal;
             color: @color-txt-medium-on-light;
@@ -1046,13 +1054,13 @@ fieldset.ui-controlgroup{
                 top: 29px;
             }
         }
-        
+
         .ui-btn-hover-c,
         .ui-btn-active-c{
                background-color: @color-bg-highlight-main;
                color: @color-txt-medium-on-light;
         }
-    
+
         /* tricky Border in between btns */
         .ui-block-a{
             border-right: @border-light-on-light;
@@ -1062,7 +1070,7 @@ fieldset.ui-controlgroup{
                 .ui-btn-inner{
                     .corner-tl(@corner-page-element-rounded);
                 }
-                
+
             }
         }
         .ui-block-b{
@@ -1074,16 +1082,16 @@ fieldset.ui-controlgroup{
                 .ui-btn-inner{
                     .corner-tr(@corner-page-element-rounded);
                 }
-                
+
             }
         }
-        
+
     }
      /* Smaller 3 column Btns */
     .ui-grid-b{
         position: relative;
         z-index: 2;
-        
+
         .ui-btn{
             margin: 0;
             border: 0;
@@ -1092,7 +1100,7 @@ fieldset.ui-controlgroup{
             color: @color-txt-medium-on-light;
             background-color:@color-bg-light-tint;
             .ui-btn-inner{
-                
+
                 padding: 78px 10px 13px 10px;
             }
         }
@@ -1101,7 +1109,7 @@ fieldset.ui-controlgroup{
            background-color: @color-bg-highlight-main;
            color: @color-txt-medium-on-light;
        }
-       
+
        /* tricky Border in between btns */
        .ui-block-a{
            margin-left: -1px;
@@ -1118,13 +1126,13 @@ fieldset.ui-controlgroup{
         .ui-block-c{
             border-bottom: @border-medium-on-light;
         }
-    
+
     }
-    
+
     .ui-bar{
         margin-left: 0;
         margin-right: 0;
-        
+
     }
 }
 
@@ -1155,7 +1163,7 @@ fieldset.ui-controlgroup{
         display: block;
         width: 44px;
         height: 30px;
-        
+
         .ui-icon{
             display: block;
             width: 32px;
@@ -1164,17 +1172,17 @@ fieldset.ui-controlgroup{
             top: 1px;
             left: 3px;
         }
-        
+
         .ui-icon-list-view{background-position: 0 -365px;}
         .ui-icon-grid-view{background-position:-2px -406px;}
-        
+
     }
 }
 
 
 .user-info-block{
-    padding-left: @size-large-avatar; 
-    
+    padding-left: @size-large-avatar;
+
     .user-icon-left{
         position:absolute;
         top: 0;
@@ -1190,18 +1198,18 @@ fieldset.ui-controlgroup{
             background-color: @color-bg-neutral-light-tint;
         }
          .icon-overlay-info{
-           background-image: url('../gfx/shiny-avatar-info.png'); 
+           background-image: url('../gfx/shiny-avatar-info.png');
            width: @size-large-avatar;
            height: @size-large-avatar;
-           display: block; 
+           display: block;
            .corner-tl (@corner-page-element-rounded);
            overflow:hidden;
            position: absolute;
            top: 0;
-           left: 0; 
+           left: 0;
            border-top: solid @color-shadow-medium-on-light 1px;
         }
-    } 
+    }
 }
 
 
@@ -1211,18 +1219,18 @@ fieldset.ui-controlgroup{
     overflow: hidden;
     &::after{
         .arrow-up(@arrow-size, @color-bg-neutral-light, @size-large-avatar / 2, @size-large-avatar + @arrow-y-shift);
-	    
+
     }
-    
+
     .ui-bar{
         margin-left: 0;
         margin-right: 0;
         padding-left: @size-large-avatar + @padding-page-inset;
         z-index: 0;
     }
-    
-    
-    
+
+
+
     .user-stats{
          text-align: center;
          color: @color-txt-medium-on-light ;
@@ -1265,7 +1273,7 @@ fieldset.ui-controlgroup{
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
-        
+
         .user-icon-link{
             vertical-align: middle;
             height: @size-small-avatar;
@@ -1278,9 +1286,9 @@ fieldset.ui-controlgroup{
             line-height:@size-small-avatar;
             vertical-align: middle;
             display: inline-block;
-            
+
         }
-        
+
         .image-time{
             color: @color-txt-light-on-light;
             .ui-icon-clock{
@@ -1292,56 +1300,56 @@ fieldset.ui-controlgroup{
             color: @color-txt-light-on-light;
             .ui-link{
                 color: @color-txt-light-on-light;
-                
+
             }
             .ui-icon-venue{
                 background-position: @ei-offset-x - 10px @gfx-extra-icon-sprite-venuesmall-y;
                 width: 10px;
             }
         }
-        
+
     }
-    
-    
+
+
     .main-image-link{
         display: block;
-               
+
     }
-    
-   
-    
+
+
+
     .main-image{
         width: 100%;
     }
-    
+
     .image-description{
         margin-top: @padding-page-inset;
         margin-bottom: -@padding-page-inset;
-        
+
         .ui-icon-quote{
             display: inline-block;
             height: @txt-size-base;
             background-position: -6px @gfx-extra-icon-sprite-quote-y - 8;
             width: 16px;
         }
-    
+
         .goto-spot{
             color: @color-txt-light-on-light;
         }
     }
-    
+
     .image-item-base{
         position: relative;
     }
-    
+
     .image-actions{
         margin-top: 8px;
         margin-bottom: 8px;
-        
+
         .inline-btn{
             display: inline-block;
         }
-    
+
         .ui-btn-up-d,
         .ui-btn-hover-d,
         .ui-btn-down-d,
@@ -1351,7 +1359,7 @@ fieldset.ui-controlgroup{
             font-size: @txt-size-small;
             font-family: @txt-font-base;
             color: @color-txt-medium-on-light;
-            
+
             .ui-btn-inner{
                 padding: 0 10px 0 36px;
             }
@@ -1367,12 +1375,12 @@ fieldset.ui-controlgroup{
                 line-height: 40px;
             }
 
-            
-            
-            
+
+
+
         }
-        
-        
+
+
         /* reactions btn off to the right */
         .reactions-button{
            position: absolute;
@@ -1381,18 +1389,18 @@ fieldset.ui-controlgroup{
            .ui-btn-inner{
                 padding: 0 36px 0 10px;
            }
-            .ui-icon{ 
+            .ui-icon{
                 background-position: 0 -160px;
             }
             &.ui-btn-down-d,
             &.ui-btn-hover-d,
-            &.ui-btn-active-d{ 
+            &.ui-btn-active-d{
                 .ui-icon{
                 background-position: -40px -160px;
                 }
             }
-            &.selected{ 
-            .ui-icon{ 
+            &.selected{
+            .ui-icon{
                 background-position: 0 -200px;
             }
             &.ui-btn-down-d,
@@ -1404,9 +1412,9 @@ fieldset.ui-controlgroup{
                 }
             }
         }
-        
+
     }
-    
+
     .reactions-list{
         display: none;
         .ui-btn.ui-li{
@@ -1419,9 +1427,9 @@ fieldset.ui-controlgroup{
                 display: none;
             }
         }
-       
+
     }
-    
+
     .comment-area{
         display: none;
         .photo-comment{
@@ -1444,11 +1452,11 @@ fieldset.ui-controlgroup{
     .ui-icon{
         width: @gfx-action-icon-sprite-grid;
         height: @gfx-action-icon-sprite-grid;
-        
+
         background-image: url('../gfx/action-icons-custom.png');
     }
-    
-    
+
+
     .ui-checkbox-on {
            .ui-icon{background-position: @as-offset-x @gfx-action-icon-sprite-tick-y;}
            &.ui-btn-active{.ui-icon{background-position: @as-offset-x-hover @gfx-action-icon-sprite-tick-y;}
@@ -1459,7 +1467,7 @@ fieldset.ui-controlgroup{
            &.ui-btn-active{.ui-icon{background-position: @as-offset-x-hover @gfx-action-icon-sprite-close-y;}
            }
     }
-    
+
 }
 
 /* The magical dance to center a palette with variable width */
@@ -1479,7 +1487,7 @@ fieldset.ui-controlgroup{
                 left:-50%;
             }
        }
-    }    
+    }
 }
 
 
@@ -1488,14 +1496,14 @@ fieldset.ui-controlgroup{
     padding: 6px;
     white-space: nowrap;
     &::after{
-      .arrow-down(@arrow-size, @color-off-black-tint, 50%, @arrow-y-shift + 3px);  
+      .arrow-down(@arrow-size, @color-off-black-tint, 50%, @arrow-y-shift + 3px);
     }
-    
-    
-    
+
+
+
     .ui-controlgroup{
         margin-bottom: 1px;
-        
+
     }
     .ui-btn{
         vertical-align: middle;
@@ -1513,7 +1521,7 @@ fieldset.ui-controlgroup{
 }
 
 /*
-* @dashboard - PAGE 
+* @dashboard - PAGE
 */
 
 .dash-footer{
@@ -1528,14 +1536,14 @@ fieldset.ui-controlgroup{
         }
         &.ui-icon-search{
             background-position: @di-offset-x @gfx-dash-icon-sprite-search-y;
-            
+
         }
     }
 }
- 
+
 /*
-* @share - PAGE 
-*/   
+* @share - PAGE
+*/
 
 .share-photo{
     div[data-role="header"]{
@@ -1544,27 +1552,27 @@ fieldset.ui-controlgroup{
     div[data-role="content"]{
         z-index: 10;
     }
-    
+
     #description{
         height: 92px;
     }
-    
+
     .image-options{
          .show-upload-settings{
                display: none;
            }
-        
+
         &.show-image{
            .upload-settings-layer{
                display: none;
-           } 
+           }
            .show-upload-settings{
                display: block;
            }
-           
+
         }
     }
-    
+
     .show-upload-settings{
         .image-controls{
             position: absolute;
@@ -1572,20 +1580,20 @@ fieldset.ui-controlgroup{
             right: @padding-page-inset;
         }
     }
-    
+
     .upload-image-layer{
         position: absolute;
         width: 100%;
         top: 0;
         z-index: 5;
     }
-    
+
     .image-placeholder{
         height: 100%;
-      
+
         img{
             width: 100%;
-         
+
         }
     }
 
@@ -1601,11 +1609,11 @@ fieldset.ui-controlgroup{
             margin: @padding-page-inset;
         }
     }
-    
+
     .upload-image-privacy{
         position: relative;
         margin-top: @padding-page-inset;
-        
+
         .ui-controlgroup-label {
             display: none;
         }
@@ -1656,8 +1664,8 @@ fieldset.ui-controlgroup{
                }
         }
     }
-    
-    
+
+
     .upload-image-sharing{
         .ui-checkbox{
             margin-right: @padding-element-inset;
@@ -1692,7 +1700,7 @@ fieldset.ui-controlgroup{
                 .box-shadow(inset 0 3px 20px @color-bg-twitter-main-tint);
                 .ui-icon{background-position: @ls-offset-x-hover @gfx-large-sharing-icon-sprite-twitter-y;}
            }
-        } 
+        }
         label[for="facebook-sharing"]{
            .ui-icon{background-position: @ls-offset-x @gfx-large-sharing-icon-sprite-facebook-y;}
            &.ui-checkbox-on{
@@ -1726,7 +1734,7 @@ fieldset.ui-controlgroup{
                 display: inline-block;
                 vertical-align: middle;
             }
-        
+
         .ui-btn {
             margin: @padding-page-inset 0;
             font-family: @txt-font-special;
@@ -1743,10 +1751,10 @@ fieldset.ui-controlgroup{
             &.ui-checkbox-on {
                 .ui-icon-checkbox-on{background-position: @as-offset-x-hover @gfx-action-icon-sprite-tick-y;}
                &.ui-btn-active{.ui-icon-checkbox-on{background-position: @as-offset-x-hover @gfx-action-icon-sprite-tick-y;}
-               .ui-icon-location{background-position: @as-offset-x @gfx-action-icon-sprite-location-y;}           
+               .ui-icon-location{background-position: @as-offset-x @gfx-action-icon-sprite-location-y;}
                 }
                 .ui-icon-location{background-position: @as-offset-x @gfx-action-icon-sprite-location-y;}
-                
+
             }
             &.ui-checkbox-off{
                 .ui-btn-text{
@@ -1759,7 +1767,7 @@ fieldset.ui-controlgroup{
                }
                .ui-icon-location{background-position: @as-offset-x @gfx-action-icon-sprite-location-y;}
             }
-              
+
             .ui-icon-arrow-right{background-position: @as-offset-x @gfx-action-icon-sprite-arrow-right-y;}
             .ui-icon-location{background-position: @as-offset-x @gfx-action-icon-sprite-location-y;}
             .ui-icon-venue{background-position: @as-offset-x @gfx-action-icon-sprite-venue-y;}
@@ -1770,7 +1778,7 @@ fieldset.ui-controlgroup{
                 .ui-icon-location{background-position: @as-offset-x-hover @gfx-action-icon-sprite-location-y;}
                 .ui-icon-venue{background-position: @as-offset-x-hover @gfx-action-icon-sprite-venue-y;}
              }
-                        
+
             .ui-icon-checkbox-on,
             .ui-icon-checkbox-off,
             .ui-icon-arrow-right{
@@ -1793,13 +1801,13 @@ fieldset.ui-controlgroup{
                     }
                 }
             }
-            
-        }        
+
+        }
     }
     .image-controls{
         position:absolute;
         bottom: 0;
-        right: 8px;    
+        right: 8px;
         z-index: 10;
         .ui-btn{
             font-family: @txt-font-special;
@@ -1812,14 +1820,14 @@ fieldset.ui-controlgroup{
             &.ui-shadow{
                 .box-shadow(none);
             }
-            
-        
+
+
         }
         .ui-btn-inner{
             padding: 8px 32px 8px 16px;
             background-color: rgba(0, 0, 0,.8);
             border-radius: 20px;
-            
+
         }
         .ui-icon{
             top: -1px;
@@ -1831,12 +1839,12 @@ fieldset.ui-controlgroup{
         }
         .ui-icon-toggle{background-position: @as-offset-x @gfx-action-icon-sprite-toggle-y;}
         .ui-icon-toggle-up{background-position: @as-offset-x @gfx-action-icon-sprite-toggle-up-y;}
-        
+
     }
 }
 
 /*
-* @profile - DIALOG 
+* @profile - DIALOG
 */
 
 .user-profile{
@@ -1845,26 +1853,26 @@ fieldset.ui-controlgroup{
         position: relative;
 
     }
-    
+
     .user-info-block .user-icon-left .user-icon-big{
         background-color: @color-bg-neutral-light;
         .corner-all(@corner-page-element-rounded);
     }
-    
+
     .user-stats{
         min-height: @size-large-avatar;
     }
-    
+
     .real-name{
         line-height: @txt-size-username;
-        
+
         .facebook-sharing{
             position: absolute;
             right: 0;
             top: 0;
         }
     }
-   
+
     .user-linked-services{
         li {
             margin-bottom: 2px;
@@ -1876,12 +1884,12 @@ fieldset.ui-controlgroup{
                     margin-right: 4px;
                 }
                 .ui-icon{
-                
+
                 }
             }
         }
     }
-    
+
     .user-hometown{
         font-style: italic;
     }
@@ -1890,7 +1898,7 @@ fieldset.ui-controlgroup{
             display: inline-block;
             margin-right: @padding-element-inset;
             .corner-all(@corner-fully-rounded);
-            
+
         }
         .ui-btn-icon-left {
              .ui-btn-inner {
@@ -1901,29 +1909,29 @@ fieldset.ui-controlgroup{
                 width: 32px;
                 left: 4px;
                 top: 20px;
-                
+
             }
         }
-           
+
     }
 }
 
 /*
-* @uploading - PAGE 
-*/   
+* @uploading - PAGE
+*/
 
 .upload-progress-header{
     padding: @padding-page-inset;
     height: 108px;
     overflow:hidden;
     .box-shadow(inset 5px -14px 20px rgba(0, 0, 0, 0.2));
-   
+
     .upload-image-thumb-gall{
         position: absolute;
         left:@padding-page-inset;
         top: @padding-page-inset;
     }
-    
+
     .upload-info-block{
         margin-left: @size-img-thumb + @padding-page-inset;
         p{
@@ -1933,21 +1941,21 @@ fieldset.ui-controlgroup{
            white-space: nowrap;
            overflow: hidden;
          }
-         
+
          .ui-icon-quote{
              display: inline-block;
              height: @txt-size-base;
              background-position: -6px @gfx-extra-icon-sprite-quote-y - 8;
-             
+
              width: 20px;
          }
-         
+
         .upload-image-venue{
            a{
                color: @color-txt-light-on-light;
-           } 
+           }
         }
-        
+
         .upload-shared-to{
             margin:@padding-element-inset 0 0 0 ;
             padding: 0;
@@ -1959,18 +1967,18 @@ fieldset.ui-controlgroup{
                 margin-right: 2px;
             }
         }
-        
+
     }
-    
+
 }
 
 /*
-* @people PAGE 
+* @people PAGE
 */
 
 /* Strip bare the normal lists style */
 .simple-list{
-    
+
     .ui-btn{
         background: none;
         border: none!important;
@@ -1980,17 +1988,17 @@ fieldset.ui-controlgroup{
 
         }
     }
-    
+
     .ui-li-icon{
         left: 0;
         top: @padding-element-inset;
     }
-    
+
     .ui-link-inherit{
         padding-top: 8px;
         padding-bottom: 8px;
     }
-    
+
     .ui-li-heading{
         margin: 0 0 @padding-element-inset 0;
         font-weight: normal;
@@ -1999,13 +2007,13 @@ fieldset.ui-controlgroup{
         margin: -8px 0 0 0;
         color: @color-txt-light-on-light;
     }
-    
+
     .ui-li,
     .ui-li-link-alt{
         border-right: none!important;
         border-left: none!important;
     }
-    
+
     .ui-li-link-alt{
         width: 44px;
         .ui-btn {
@@ -2022,7 +2030,7 @@ fieldset.ui-controlgroup{
                 top: 4px;
                 right: 8px;
             }
-            
+
             .ui-icon-check{
                 background-position: @gfx-general-icon-sprite-check-x @g-yellow-offset-y;
             }
@@ -2032,25 +2040,25 @@ fieldset.ui-controlgroup{
             .ui-icon-tick{
                 background-position: @gfx-general-icon-sprite-check-x @g-highlight-offset-y;
             }
-            
+
         }
-    } 
-        
-    .ui-shadow, 
+    }
+
+    .ui-shadow,
     &.ui-shadow {
         .box-shadow(none);
     }
-    .ui-corner-all, 
+    .ui-corner-all,
     .ui-btn-corner-all,
-    &.ui-corner-all, 
+    &.ui-corner-all,
     &.ui-btn-corner-all,
-    .ui-corner-top, 
+    .ui-corner-top,
     .ui-btn-corner-top,
-    &.ui-corner-top, 
+    &.ui-corner-top,
     &.ui-btn-corner-top{
         .corner-all(@corner-not-rounded);
     }
-    
+
     &.venue-list{
         .ui-icon-arrow-r{
             display: none;
@@ -2073,7 +2081,7 @@ fieldset.ui-controlgroup{
         min-height: 60px;
         .box-shadow(inset 0px -11px 33px rgba(0, 0, 0, 0.2));
         .ui-btn,
-       .user-icon-small{ 
+       .user-icon-small{
            display: inline-block;
            vertical-align: middle;
            display: inline-block;
@@ -2097,15 +2105,15 @@ fieldset.ui-controlgroup{
     .ui-collapsible-set {
         margin-bottom: -2px;
     }
-    
+
     .ui-bar{
         .box-shadow(0 -1px 3px rgba(0,0,0,.05));
         border-bottom: @border-medium-on-light;
         .ui-btn-text {
             padding-left: 8px;
-        } 
+        }
     }
-   
+
 }
 
 .ui-collapsible-set{
@@ -2113,19 +2121,19 @@ fieldset.ui-controlgroup{
         .ui-btn{
             margin-top:1px;
             border-bottom: @border-medium-on-light;
-            
+
             .ui-btn-inner{
                 padding: 16px 40px 16px 16px;
             }
-            
+
             .ui-icon{
                 left: auto;
                 right: 8px;
-            }            
+            }
             .ui-icon-plus{background-position: @gfx-general-icon-sprite-arrow-d-x @g-med-offset-y;}
             .ui-icon-minus{background-position: @gfx-general-icon-sprite-arrow-u-x @g-med-offset-y;}
         }
-        
+
         .ui-btn-up-c{
             background-color: @color-off-white-tint;
             background-image:@gfx-bg-light-texture;
@@ -2133,22 +2141,22 @@ fieldset.ui-controlgroup{
         .ui-btn-hover-c{
             background-image: none;
             background-color: lighten(@color-off-white-tint, .7%);
-            
+
         }
     }
     .ui-collapsible-content{
         .ui-btn{
             .box-shadow( none);
-            .corner-all(@corner-fully-rounded);           
+            .corner-all(@corner-fully-rounded);
             border: @border-medium-on-light;
         }
-        
-      
+
+
       &.ui-body-d{
           border: none;
-          border-bottom: @border-medium-on-light;            
-      }  
-    } 
+          border-bottom: @border-medium-on-light;
+      }
+    }
 }
 
 .avatar-select-block{
@@ -2166,31 +2174,31 @@ fieldset.ui-controlgroup{
 /* @activity custom stylz */
 .activity-streams{
     margin-top: -@padding-page-inset;
-  
+
     .ui-bar.top-left-arrow .ui-btn-text{
         padding-left: @padding-page-inset;
     }
-    
+
     .activity-image-item{
         margin-bottom: @padding-page-inset + @padding-image-grid-inset;
     }
-    
 
-    
+
+
     .activity-follow-item,
     .activity-image-item{
         position: relative;
         margin-top: -@padding-page-inset;
         min-height: @size-img-thumb;
         padding-left: @size-img-thumb;
-       
+
         .image-link{
             position: absolute;
             left: -@padding-image-grid-inset;
             top: @padding-image-grid-inset;
         }
-     
-        
+
+
         .simple-list .username,
         .ui-li-desc {
             display: inline-block;
@@ -2202,11 +2210,11 @@ fieldset.ui-controlgroup{
             font-size: @txt-size-base;
             line-height: @txt-size-base;
             color: @color-txt-medium-on-light;
-            
+
         }
-        
+
     }
-    
+
     .image-likes{
         .icons-list,
         p{
@@ -2214,15 +2222,15 @@ fieldset.ui-controlgroup{
             vertical-align: top;
         }
     }
-    
+
     .simple-list .ui-btn.ui-li {
         border: none!important;
         border-bottom: @border-medium-on-light!important;
         margin-bottom: 0;
         padding-bottom: @padding-element-inset;
     }
-    
-    
+
+
     .activity-follow-item{
          padding-left: 0;
          margin-top: 0;
@@ -2244,13 +2252,13 @@ fieldset.ui-controlgroup{
              top: 1px;
              color: @color-txt-light-on-light;
          }
-         
+
     }
 }
 
 
 /*
-* @map - PAGE 
+* @map - PAGE
 */
 
 #map-layer{
@@ -2267,10 +2275,10 @@ fieldset.ui-controlgroup{
         margin-top: -8px;
         .extra-icons {
             left: -6px;
-            top: -8px;    
+            top: -8px;
         }
     }
-    
+
     /* map thumbs */
     .snaprmappoint {
         width: 1px;
@@ -2311,7 +2319,7 @@ fieldset.ui-controlgroup{
             display: block;
         }
     }
-    
+
     #snaprmapalert{
         position: absolute;
         top: 50%;
@@ -2337,8 +2345,8 @@ fieldset.ui-controlgroup{
                 height: @gfx-extra-icon-sprite-grid;
                 background-position: @ei-offset-x @gfx-extra-icon-sprite-mapcamera-y;
             }
-           
-            
+
+
         }
     }
 
@@ -2348,12 +2356,12 @@ fieldset.ui-controlgroup{
         width: 100%;
         margin: 0 -8px;
         .corner-bottom(8px);
-        
+
         &.ui-body-a{
             border: none;
             background: rgba(0, 0, 0, .8);
             .shiny-gradient (rgba(0,0,0,0), rgba(0,0,0,0), rgba(255,255,255,0.1), rgba(255,255,255,0.2));
-        	
+
         }
         .ui-block-a,
         .ui-block-b{
@@ -2367,8 +2375,8 @@ fieldset.ui-controlgroup{
                 margin-top: 0;
             }
         }
-        
-        
+
+
         .ui-input-search{
             padding:8px 24px 8px 28px;
             height: 16px;
@@ -2382,7 +2390,7 @@ fieldset.ui-controlgroup{
                 padding: 0;
                 font-size: 14px;
             }
-            
+
             .ui-input-clear{
                 background: none;
                 box-shadow: none;
@@ -2400,10 +2408,10 @@ fieldset.ui-controlgroup{
                     right: -5px;
                     left: auto;
                 }
-            } 
-            
+            }
+
         }
-      
+
         .ui-select,
         .ui-input-text{
             display: block;
@@ -2422,12 +2430,12 @@ fieldset.ui-controlgroup{
                 right: 2px;
                 left: auto;
             }
-            
+
             .ui-btn-inner{
                 font-size: 14px;
                 padding: 8px 31px;
             }
-            
+
         }
         .map-time{
             position: absolute;
@@ -2449,13 +2457,13 @@ fieldset.ui-controlgroup{
                 }
             }
         }
-        
+
         .map-filters{
             margin: 6px;
             margin-left: 48px;
         }
     }
-    
+
     #map-disambiguation{
         position: absolute;
         display: none;
@@ -2467,30 +2475,30 @@ fieldset.ui-controlgroup{
         .ui-listview {
             margin-top: 0;
             margin-bottom: 0;
-        }   
+        }
         .cancel-btn{
             .ui-btn {
                 margin-bottom: 0;
                 margin-top: 8px;
-            }  
+            }
         }
         .map-link{
             max-width: 200px;
             width: 200px;
         }
-        
+
         &::after{
             .arrow-up(@arrow-size, @color-bg-neutral-light, 186px ,@arrow-y-shift + 2px);
         }
-        
-       
+
+
     }
-    
-    
+
+
 }
 
 /*
-* @app - PAGE 
+* @app - PAGE
 */
 
 
@@ -2499,7 +2507,7 @@ fieldset.ui-controlgroup{
     display: block;
     width: 288px;
     height: 93px;
-    
+
 }
 
 .iphone-appstore .platform-logo {
@@ -2513,7 +2521,7 @@ fieldset.ui-controlgroup{
     li{
         margin-bottom: @padding-page-inset;
     }
-    
+
     .appstore-badge{
         background-color: rgb(0,0,0);
         background-color: rgba(0,0,0, .9);
@@ -2523,11 +2531,11 @@ fieldset.ui-controlgroup{
         min-height: 94px;
         display: block;
         position: relative;
-        
+
         &.iphone-appstore{
-           background-color: #76797c; 
+           background-color: #76797c;
         }
-        
+
         .platform-logo{
             background-repeat: no-repeat;
             display: block;
@@ -2562,11 +2570,11 @@ fieldset.ui-controlgroup{
 
 
 /*******************************************************************
-* @theme - SWATCHES 
+* @theme - SWATCHES
 *******************************************************************/
 
 /*
-* A 
+* A
 * The Dark (Black as Night) swatch, used for screens with black BGs
 */
 
@@ -2584,7 +2592,7 @@ fieldset.ui-controlgroup{
            border-radius: @corner-page-element-rounded;
            /*min-height: 480px - @size-topbar-height - @padding-page-inset - @padding-page-inset;*/
            min-height: 409px;
-       } 
+       }
 }
 
 
@@ -2592,12 +2600,12 @@ fieldset.ui-controlgroup{
 .ui-body-a {
     color: @color-txt-light-on-dark;
     text-shadow: none;
-    
+
     .ui-header{
         color: @color-txt-light-on-dark;
         text-shadow: none;
     }
-   
+
 }
 
 /* Button Styles */
@@ -2609,7 +2617,7 @@ fieldset.ui-controlgroup{
     color: white;
     cursor: pointer;
     text-shadow: 0 -1px 1px @color-shadow-light-on-dark;
-    
+
 }
 
 .ui-btn-up-a {
@@ -2621,12 +2629,12 @@ fieldset.ui-controlgroup{
 	text-shadow: @color-shadow-dark-on-dark 0px 1px 1px;
 	font-size: @txt-size-btn-large;
 	text-decoration: none;
-    
+
     .box-shadow(inset 0 3px 20px @color-shadow-dark-on-dark);
     &.ui-shadow{
 	   .box-shadow(inset 0 3px 20px @color-shadow-dark-on-dark);
 	}
-    
+
     .ui-btn-inner{
         border:none;
     }
@@ -2650,12 +2658,12 @@ fieldset.ui-controlgroup{
 	text-shadow: @color-shadow-dark-on-dark 0px 1px 1px;
 	font-size: @txt-size-btn-large;
 	text-decoration: none;
-    
+
     .box-shadow(inset 0 3px 20px @color-shadow-dark-on-dark);
     &.ui-shadow{
 	   .box-shadow(inset 0 3px 20px @color-shadow-dark-on-dark);
 	}
-    
+
     .ui-btn-inner{
         border:none;
     }
@@ -2710,7 +2718,7 @@ fieldset.ui-controlgroup{
        .ui-icon-location{ background-position: @a-offset-x @gfx-main-icon-sprite-location-icon-y;}
        .ui-icon-camroll{ background-position: @a-offset-x @gfx-main-icon-sprite-camroll-icon-y;}
        .ui-icon-camera{ background-position: @a-offset-x @gfx-main-icon-sprite-camera-icon-y;}
-       
+
 }
 
 .ui-btn-hover-a{
@@ -2721,8 +2729,8 @@ fieldset.ui-controlgroup{
     .ui-icon-location{ background-position: @a-offset-x-hover @gfx-main-icon-sprite-location-icon-y;}
     .ui-icon-camroll{ background-position: @a-offset-x-hover @gfx-main-icon-sprite-camroll-icon-y;}
     .ui-icon-camera{ background-position: @a-offset-x-hover @gfx-main-icon-sprite-camera-icon-y;}
-    
-    
+
+
 }
 
 
@@ -2738,8 +2746,8 @@ fieldset.ui-controlgroup{
 }
 
 .ui-bar-b{
-    
-    
+
+
 }
 
 .ui-btn-up-b,
@@ -2751,9 +2759,9 @@ fieldset.ui-controlgroup{
 	text-shadow: @color-shadow-medium-on-dark 0px 1px 1px;
 	font-size: @txt-size-small;
 	text-decoration: none;
-    
+
 	.linear-gradient(@color-bg-neutral-dark, @color-bg-neutral-dark-tint);
-    
+
     .ui-btn-inner{
         border:none;
     }
@@ -2766,19 +2774,19 @@ fieldset.ui-controlgroup{
        -webkit-box-shadow: 0 1px 0 @color-shadow-light-on-dark;
        box-shadow: 0 1px 0 @color-shadow-light-on-dark;
 	}
-	
+
 	&.ui-btn-active{
 	    background: none;
 	    .linear-gradient(black, @color-bg-neutral-dark-tint);
 	}
-	
+
 	&.top-left-arrow::after{
 	    .arrow-down(@arrow-size, @color-bg-neutral-dark-tint, @arrow-offset, 3px);
 	}
 	&.bottom-centered-arrow::after{
 	    .arrow-up(@arrow-size, @color-bg-neutral-dark, 50%, 3px);
 	}
-	
+
 }
 
 .ui-btn-hover-b,
@@ -2792,9 +2800,9 @@ fieldset.ui-controlgroup{
 	text-shadow: @color-shadow-medium-on-dark 0px 1px 1px;
 	font-size: @txt-size-small;
 	text-decoration: none;
-    
+
     .linear-gradient(lighten(@color-bg-neutral-dark, 3%), lighten(@color-bg-neutral-dark-tint, 3%));
-    
+
     .ui-btn-inner{
         border:none;
     }
@@ -2807,12 +2815,12 @@ fieldset.ui-controlgroup{
        -webkit-box-shadow: 0 1px 0 @color-shadow-light-on-dark;
        box-shadow: 0 1px 0 @color-shadow-light-on-dark;
 	}
-	
+
 	&.ui-btn-active{
 	    background: none;
 	    .linear-gradient(black, @color-bg-neutral-dark-tint);
 	}
-	
+
 	&.top-left-arrow::after{
 	    .arrow-down(@arrow-size, lighten(@color-bg-neutral-dark-tint, 3%), @arrow-offset, 3px);
 	}
@@ -2830,9 +2838,9 @@ fieldset.ui-controlgroup{
 	text-shadow: @color-shadow-medium-on-dark 0px 1px 1px;
 	font-size: @txt-size-small;
 	text-decoration: none;
-    
+
     .pressed-gradient(@color-bg-neutral-dark-tint, 5%);
-    
+
     .ui-btn-inner{
         border:none;
     }
@@ -2845,12 +2853,12 @@ fieldset.ui-controlgroup{
        -webkit-box-shadow: 0 1px 0 @color-shadow-light-on-dark;
        box-shadow: 0 1px 0 @color-shadow-light-on-dark;
 	}
-	
+
 	&.ui-btn-active{
 	    background: none;
 	    .linear-gradient(black, @color-bg-neutral-dark-tint);
 	}
-	
+
 	&.top-left-arrow::after{
 	    .arrow-down(@arrow-size, @color-bg-neutral-dark-tint, @arrow-offset, 3px);
 	}
@@ -2874,7 +2882,7 @@ fieldset.ui-controlgroup{
         width: auto;
         padding: 0 10px 0 6px;
           -webkit-background-size: 30px;
-         height: 30px;   
+         height: 30px;
         .ui-icon{
             display: none;
         }
@@ -2907,7 +2915,7 @@ fieldset.ui-controlgroup{
 }
 
 .ui-bar-b{
-    
+
     em{
         color: white;
     }
@@ -2917,14 +2925,14 @@ fieldset.ui-controlgroup{
         }
         .small-text{
             color: @color-txt-medium-on-dark;
-        } 
+        }
     }
-    
+
     .ui-icon-arrow-r{background-position: @gfx-general-icon-sprite-arrow-r-x @g-med-offset-y;}
     &.ui-btn{
         border: none;
     }
-    
+
     .extra-icons{
         .ui-icon-heart,&.ui-icon-heart{background-position: @ei-offset-x @gfx-extra-icon-sprite-heart-b-y;}
         .ui-icon-person,&.ui-icon-person{background-position: @ei-offset-x @gfx-extra-icon-sprite-person-b-y;}
@@ -2932,7 +2940,7 @@ fieldset.ui-controlgroup{
         .ui-icon-activity,&.ui-icon-activity{background-position: @ei-offset-x @gfx-extra-icon-sprite-activity-b-y;}
         .ui-icon-location,&.ui-icon-location{background-position: @ei-offset-x @gfx-extra-icon-sprite-location-b-y;}
     }
-    
+
 }
 
 .ui-btn-up-b{
@@ -2943,7 +2951,7 @@ fieldset.ui-controlgroup{
        .ui-icon-location{ background-position: @b-offset-x @gfx-main-icon-sprite-location-icon-y;}
        .ui-icon-camroll{ background-position: @b-offset-x @gfx-main-icon-sprite-camroll-icon-y;}
        .ui-icon-camera{ background-position: @b-offset-x @gfx-main-icon-sprite-camera-icon-y;}
-       
+
 }
 
 .ui-btn-hover-b{
@@ -2954,8 +2962,8 @@ fieldset.ui-controlgroup{
     .ui-icon-location{ background-position: @b-offset-x-hover @gfx-main-icon-sprite-location-icon-y;}
     .ui-icon-camroll{ background-position: @b-offset-x-hover @gfx-main-icon-sprite-camroll-icon-y;}
     .ui-icon-camera{ background-position: @b-offset-x-hover @gfx-main-icon-sprite-camera-icon-y;}
-    
-    
+
+
 }
 
 
@@ -2976,26 +2984,26 @@ fieldset.ui-controlgroup{
 }
 
 /* Main Styles */
-.ui-body-c {   
+.ui-body-c {
     div[data-role="content"]{
         background-color: @color-bg-light-tint;
         background-image: @gfx-bg-light-texture;
         border: none;
         border-radius: @corner-page-element-rounded;
-        
-       
-        
+
+
+
     }
     .ui-header{
         color: @color-txt-medium-on-light;
         text-shadow: @color-shadow-light-on-light 0px 1px 1px;
     }
-    
+
     .ui-body-c .ui-link {
         color: @color-txt-dark-on-light;
         font-weight: normal;
     }
-    
+
     hr{
         display: block;
         position: relative;
@@ -3012,7 +3020,7 @@ fieldset.ui-controlgroup{
         background-color: transparent;
         color: @color-shadow-medium-on-light;
     }
-    
+
      /* Grey Btns in body are slightly different */
       .ui-content{
           .ui-btn-up-c,
@@ -3025,14 +3033,14 @@ fieldset.ui-controlgroup{
                  }
            }
       }
-      
+
       .ui-btn{
           text-shadow: 0 1px 1px @color-shadow-medium-on-light;
       }
-      
-      
-        
-    
+
+
+
+
 }
 
 /* Button Styles for header */
@@ -3062,7 +3070,7 @@ fieldset.ui-controlgroup{
 	a.ui-link-inherit {
 		color: @color-txt-dark-on-light;
 	}
-	
+
 	&.top-left-arrow::after{
 	    .arrow-down(@arrow-size, @color-bg-neutral-light-tint, @arrow-offset, 3px);
 	}
@@ -3082,14 +3090,14 @@ fieldset.ui-controlgroup{
 	a.ui-link-inherit {
 		color: @color-txt-dark-on-light;
 	}
-	
+
 	&.top-left-arrow::after{
-       .arrow-down(@arrow-size, lighten(@color-bg-neutral-light-tint, 10%), @arrow-offset, 3px); 
+       .arrow-down(@arrow-size, lighten(@color-bg-neutral-light-tint, 10%), @arrow-offset, 3px);
    }
    &.bottom-centered-arrow::after{
           .arrow-up(@arrow-size, lighten(@color-bg-neutral-light-tint, 10%), 50%, 3px);
    }
-	
+
 }
 
 .ui-btn-down-c {
@@ -3106,9 +3114,9 @@ fieldset.ui-controlgroup{
 	&.ui-shadow {
         .box-shadow(0 1px 4px lighten(@color-shadow-btn-on-light, 20%));
     }
-    
+
     &.top-left-arrow::after{
-       .arrow-down(@arrow-size, @color-bg-neutral-light, @arrow-offset, 3px); 
+       .arrow-down(@arrow-size, @color-bg-neutral-light, @arrow-offset, 3px);
    }
    &.bottom-centered-arrow::after{
           .arrow-up(@arrow-size, @color-bg-neutral-light, 50%, 3px);
@@ -3124,7 +3132,7 @@ fieldset.ui-controlgroup{
     	border-bottom: @border-light-on-light;
     	background: none;
     	background-color: @color-bg-neutral-light;
-        
+
         .box-shadow(inset 0 1px 4px @color-shadow-medium-on-light);
         &.ui-shadow{
     	   .box-shadow(inset 0 1px 4px @color-shadow-medium-on-light);
@@ -3133,9 +3141,9 @@ fieldset.ui-controlgroup{
             border:none;
         }
         .corner-all(@corner-fully-rounded);
-        
+
         .ui-icon-delete{background-position: @gfx-general-icon-sprite-delete-x @g-highlight-offset-y;}
-        
+
     }
 
     .ui-btn-hover-c,
@@ -3145,7 +3153,7 @@ fieldset.ui-controlgroup{
     	border-bottom: @border-light-on-light;
     	background: none;
     	background-color: darken(@color-bg-neutral-light, 5%);
-        
+
         .box-shadow(inset 0 1px 4px @color-shadow-medium-on-light);
         &.ui-shadow{
     	   .box-shadow(inset 0 1px 4px @color-shadow-medium-on-light);
@@ -3154,8 +3162,8 @@ fieldset.ui-controlgroup{
             border:none;
         }
         .corner-all(@corner-fully-rounded);
-        
-        
+
+
     }
 }
 
@@ -3177,7 +3185,7 @@ fieldset.ui-controlgroup{
 .ui-body-d {
     background: none;
     color: @color-txt-medium-on-light;
-    
+
     div[data-role="content"]{
         background-color: @color-bg-light;
         background-image: none;
@@ -3185,7 +3193,7 @@ fieldset.ui-controlgroup{
         /*min-height: 480px - @size-topbar-height - @padding-page-inset - @padding-page-inset;*/
         min-height: 409px;
     }
-    
+
     .ui-link,
     .ui-link:visited,
     .ui-link:hover,
@@ -3193,7 +3201,7 @@ fieldset.ui-controlgroup{
         color: @color-txt-dark-on-light;
         font-weight: normal;
     }
-    
+
     hr{
            display: block;
            position: relative;
@@ -3210,7 +3218,7 @@ fieldset.ui-controlgroup{
            background-color: transparent;
            color: @color-shadow-medium-on-light;
        }
-    
+
 }
 
 
@@ -3226,13 +3234,13 @@ fieldset.ui-controlgroup{
         .ui-btn{
             background: none!important;
         }
-         
-        
-       
+
+
+
     }
 }
 
-.ui-bar-e{   
+.ui-bar-e{
     background: @color-bg-highlight-main;
     .linear-gradient(@color-bg-highlight-main, @color-bg-highlight-main-tint);
 }
@@ -3248,16 +3256,16 @@ fieldset.ui-controlgroup{
 	a.ui-link-inherit {
 		color: @color-txt-dark-on-light;
 	}
-	
+
 
     &.top-left-arrow::after{
-       .arrow-down(@arrow-size, @color-bg-highlight-main-tint, @arrow-offset, 3px); 
+       .arrow-down(@arrow-size, @color-bg-highlight-main-tint, @arrow-offset, 3px);
    }
    &.bottom-centered-arrow::after{
           .arrow-up(@arrow-size, @color-bg-highlight-main, 50%, 3px);
    }
-  
-	
+
+
 }
 
 .ui-btn-hover-e {
@@ -3271,9 +3279,9 @@ fieldset.ui-controlgroup{
 	a.ui-link-inherit {
 		color: @color-txt-dark-on-light;
 	}
-	
+
 	&.top-left-arrow::after{
-       .arrow-down(@arrow-size, lighten(@color-bg-highlight-main-tint, 10% ), @arrow-offset, 3px); 
+       .arrow-down(@arrow-size, lighten(@color-bg-highlight-main-tint, 10% ), @arrow-offset, 3px);
    }
    &.bottom-centered-arrow::after{
           .arrow-up(@arrow-size, lighten(@color-bg-highlight-main, 10%), 50%, 3px);
@@ -3294,9 +3302,9 @@ fieldset.ui-controlgroup{
 	&.ui-shadow {
         .box-shadow(0 1px 4px lighten(@color-shadow-btn-on-light, 20%));
     }
- 
+
     &.top-left-arrow::after{
-        .arrow-down(@arrow-size, @color-bg-highlight-main, @arrow-offset, 3px); 
+        .arrow-down(@arrow-size, @color-bg-highlight-main, @arrow-offset, 3px);
     }
     &.bottom-centered-arrow::after{
            .arrow-up(@arrow-size, darken(@color-bg-highlight-main, 3%), 50%, 3px);
@@ -3312,8 +3320,8 @@ fieldset.ui-controlgroup{
         background-image: url('../gfx/action-icons-custom.png');
         width: @gfx-action-icon-sprite-grid;
         height: @gfx-action-icon-sprite-grid;
-    }   
-    
+    }
+
     .ui-icon-action-heart{background-position: @as-offset-x @gfx-action-icon-sprite-heart-y}
     .ui-icon-action-comment{background-position: @as-offset-x @gfx-action-icon-sprite-comment-y}
     .ui-icon-action-more{background-position: @as-offset-x @gfx-action-icon-sprite-more-y}
@@ -3326,7 +3334,7 @@ fieldset.ui-controlgroup{
         .ui-icon-action-comment{background-position: @as-offset-x-hover @gfx-action-icon-sprite-comment-y}
         .ui-icon-action-more{background-position: @as-offset-x-hover @gfx-action-icon-sprite-more-y}
 
-    }  
+    }
 }
 
 
@@ -3336,8 +3344,8 @@ fieldset.ui-controlgroup{
         background-image: url('../gfx/action-icons-dark.png');
         width: @gfx-action-darkicon-sprite-grid;
         height: @gfx-action-darkicon-sprite-grid;
-    } 
-    
+    }
+
     .ui-icon-settings,&.ui-icon-settings{background-position: @ad-offset-x @gfx-action-darkicon-sprite-settings-y;}
     .ui-icon-flag,&.ui-icon-flag{background-position: @ad-offset-x @gfx-action-darkicon-sprite-flag-y;}
     .ui-icon-delete,&.ui-icon-delete{background-position: @ad-offset-x @gfx-action-darkicon-sprite-delete-y;}
@@ -3379,7 +3387,7 @@ fieldset.ui-controlgroup{
 
 /* Android HDPI - Pixel ratio of 1.5. Background-size is 1/1.5 = 66.67% (of a 150px image) */
 @media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5) {
-   
+
 
 }
 
@@ -3389,18 +3397,18 @@ fieldset.ui-controlgroup{
 @media only screen and (-webkit-min-device-pixel-ratio: 2) {
     .ui-icon.extra-icons,.extra-icons .ui-icon{
         background-image: url('../gfx/retina/extra-icons.png');
-        .background-size (@gfx-extra-icon-sprite-width, @gfx-extra-icon-sprite-height); 
+        .background-size (@gfx-extra-icon-sprite-width, @gfx-extra-icon-sprite-height);
     }
 
     .ui-icon.helper-icons,.helper-icons .ui-icon{
         background-image: url('../gfx/retina/helper-icons.png');
-        .background-size (@gfx-helper-icon-sprite-width, @gfx-helper-icon-sprite-height); 
+        .background-size (@gfx-helper-icon-sprite-width, @gfx-helper-icon-sprite-height);
     }
 
     .ui-icon,.ui-checkbox-on .ui-icon, .ui-radio-on .ui-icon,.ui-icon-searchfield::after{
         background-image: url('../gfx/retina/general-jquerymob-icons.png');
-        .background-size (@gfx-general-icon-sprite-width, @gfx-general-icon-sprite-height); 
-        
+        .background-size (@gfx-general-icon-sprite-width, @gfx-general-icon-sprite-height);
+
     }
 
     .ui-icon-loading {
@@ -3410,12 +3418,12 @@ fieldset.ui-controlgroup{
 
     .ui-header .ui-icon{
         background-image: url('../gfx/retina/bar-icons.png');
-        .background-size (@gfx-main-icon-sprite-width, @gfx-main-icon-sprite-height); 
+        .background-size (@gfx-main-icon-sprite-width, @gfx-main-icon-sprite-height);
     }
 
     .sharing-icon-small .ui-icon{
         background-image: url('../gfx/retina/share-icons-small.png');
-        .background-size (@gfx-small-sharing-icon-sprite-width, @gfx-small-sharing-icon-sprite-height); 
+        .background-size (@gfx-small-sharing-icon-sprite-width, @gfx-small-sharing-icon-sprite-height);
     }
 
     .main-logo{
@@ -3428,7 +3436,7 @@ fieldset.ui-controlgroup{
         .background-size (@gfx-menu-icon-sprite-width, @gfx-menu-icon-sprite-height);
     }
 
-   
+
 
     .user-info-block .user-icon-left .icon-overlay-info{
         background-image: url('../gfx/retina/shiny-avatar-info.png');
@@ -3444,7 +3452,7 @@ fieldset.ui-controlgroup{
         background-image: url('../gfx/retina/action-icons-custom.png');
         .background-size (@gfx-action-icon-sprite-width, @gfx-action-icon-sprite-height);
     }
-    
+
     .dark-icons .ui-icon{
            background-image: url('../gfx/retina/action-icons-dark.png');
            .background-size (@gfx-action-darkicon-sprite-width, @gfx-action-darkicon-sprite-height);
@@ -3453,9 +3461,9 @@ fieldset.ui-controlgroup{
     .dash-footer .ui-icon{
         background-image: url('../gfx/retina/dash-icons.png');
         .background-size (@gfx-dash-icon-sprite-width, @gfx-dash-icon-sprite-height);
-        
+
     }
-    
+
     .share-photo .upload-image-sharing .ui-icon{
         background-image: url('../gfx/retina/share-icons-large.png');
         .background-size (@gfx-large-sharing-icon-sprite-width, @gfx-large-sharing-icon-sprite-height);
@@ -3471,7 +3479,7 @@ fieldset.ui-controlgroup{
             .background-size (78px, 88px);
         }
     }
-    
+
     .iphone-appstore .platform-logo{
         background-image: url('../gfx/retina/iphone-appstore.png');
         .background-size (288px, 93px);
@@ -3482,7 +3490,7 @@ fieldset.ui-controlgroup{
         .background-size (288px, 93px);
     }
 
-   
+
    }
 
 

@@ -64,12 +64,20 @@ snapr.views.dash = Backbone.View.extend({
         streams.empty();
 
         _.each( this.collection.models, function( item ){
-            var li = new snapr.views.dash_stream({ model: item });
-            stream_el = li.render().el;
+            var li = new snapr.views.dash_stream({ model: item }),
+                stream_el = li.render().el,
+                pull_distance = 20,
+                left_pull_el = $('.left-pull', stream_el),
+                right_pull_el = $('.right-pull', stream_el);
             streams.append( stream_el );
+            function flip_pulls(scroller){
+                left_pull_el.toggleClass('flipped', scroller.x > pull_distance);
+                right_pull_el.toggleClass('flipped', scroller.x < (scroller.maxScrollX - pull_distance));
+            }
             try{
                 new iScroll($('.n-horizontal-scroll', stream_el)[0], {
                     vScroll: false,
+                    hScrollbar: false,
                     snap: 'a.image-link',
                     momentum: false,
                     onScrollEnd: function(){
@@ -78,6 +86,21 @@ snapr.views.dash = Backbone.View.extend({
 
                         details.find('.image-tag').text(curr.data('description'));
                         details.find('.x-date').text(curr.data('date'));
+
+                        // Pull to refresh: if scroll elements are .flipped - refresh
+                        console.log(left_pull_el.is('.flipped'), right_pull_el.is('.flipped'));
+
+                        if(left_pull_el.is('.flipped')){
+                            console.log('loading newer');
+                        }
+                        if(right_pull_el.is('.flipped')){
+                            console.log('loading more');
+                        }
+
+                        flip_pulls(this);
+                    },
+                    onScrollMove: function () {
+                        flip_pulls(this);
                     }
                 });
             }catch(err){

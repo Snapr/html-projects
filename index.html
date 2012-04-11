@@ -1081,14 +1081,13 @@
                     </a>
                     <div id="upload-popular-nearby-images" class="thumbs-grid thumbs-grid-med n-horizontal-scroll">
                         <div class="scroll-wrapper"><!-- inner div for scroll -->
+                        <div class="left-pull">-></div>
                         <% _.each(stream.get("photos"), function(photo) { %>
                             <a class="image-link" data-ajax="false" data-date="<%= photo.date %>" data-description="<%= photo.description %>" href="#/feed/?photo_id=<%= photo.id %>&amp;username=<%= photo.user %>">
                             <img src="https://s3.amazonaws.com/media-server2.snapr.us/thm2/<%= photo.secret %>/<%= photo.id %>.jpg" alt="<%= photo.description %>" class="thumb-image thumb-med">
                             </a>
                         <% }); %>
-
-
-                        show a spinner here while loading the rest
+                        <div class="right-pull"><-</div>
                         </div>
                     </div>
                 <% }else{ %>
@@ -1101,7 +1100,7 @@
                 <% } %>
            </li>
         </script>
-        
+
         <!-- @dashaddperson DIAOLOG-->
        <div id="dash-add-person" data-add-back-btn="true" data-role="dialog" data-overlay-theme="c" data-theme="c">
            <div data-role="header" data-theme="c">
@@ -1115,7 +1114,7 @@
                </ul>
            </div>
        </div>
-           
+
      <!-- @dashaddsearch DIALOG-->
      <div id="dash-add-search" data-role="dialog" data-overlay-theme="c" data-theme="c">
          <div data-role="header" data-theme="c">
@@ -1131,7 +1130,7 @@
                          <option value="1000">Nearby (1km)</option>
                          <option value="5000">Nearby (5km)</option>
                          <option value="20000">Nearby (20km)</option>
-                         
+
                      </select>
                      <input type="submit" data-theme="e" value="Search">
                  </fieldset>
@@ -1188,7 +1187,7 @@
                 <% }); %>
             </ul>
 
-           
+
             <div class="image-likes">
                 <div class="icons-list">
                 <% _.each( item.get("favorites"), function( like ){ %>
