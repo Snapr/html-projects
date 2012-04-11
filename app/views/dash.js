@@ -67,7 +67,23 @@ snapr.views.dash = Backbone.View.extend({
             var li = new snapr.views.dash_stream({ model: item });
             stream_el = li.render().el;
             streams.append( stream_el );
-            new iScroll($('.n-horizontal-scroll', stream_el)[0], { vScroll: false });
+            try{
+                new iScroll($('.n-horizontal-scroll', stream_el)[0], {
+                    vScroll: false,
+                    snap: 'a.image-link',
+                    momentum: false,
+                    onScrollEnd: function(){
+                        var details = $(this.wrapper).prev(),
+                            curr = $('a.image-link', this.wrapper).eq(this.currPageX);
+
+                        details.find('.image-tag').text(curr.data('description'));
+                        details.find('.x-date').text(curr.data('date'));
+                    }
+                });
+            }catch(err){
+
+            }
+
         }, this);
 
         this.el.trigger( "create" );
