@@ -1,9 +1,11 @@
 snapr.views.dash_stream = Backbone.View.extend({
 
     template: _.template( $('#dash-stream-template').html() ),
+    thumbs_template: _.template( $('#dash-thumbs-template').html() ),
     render: function(){
         this.el = $(this.template( {
-            stream: this.model
+            stream: this.model,
+            thumbs: this.thumbs_template({ stream: this.model })
         } ));
         return this;
     }
@@ -19,10 +21,8 @@ snapr.views.dash = Backbone.View.extend({
     },
 
     initialize: function(){
-        this.el.live('pagehide', function( e )
-        {
+        this.el.live('pagehide', function( e ){
             $(e.target).undelegate();
-
             return true;
         });
 
@@ -36,7 +36,6 @@ snapr.views.dash = Backbone.View.extend({
     },
     populate: function(){
         var dash = this;
-        console.log('this is clearly not cached2');
         this.collection.data = {n:6, feed:true}; //, nearby:true};
         var options = {
             success: function(){
@@ -85,11 +84,9 @@ snapr.views.dash = Backbone.View.extend({
                             curr = $('a.image-link', this.wrapper).eq(this.currPageX);
 
                         details.find('.image-tag').text(curr.data('description'));
-                        details.find('.x-date').text(curr.data('date'));
+                        details.find('.x-date').text(snapr.utils.short_timestamp(curr.data('date')));
 
                         // Pull to refresh: if scroll elements are .flipped - refresh
-                        console.log(left_pull_el.is('.flipped'), right_pull_el.is('.flipped'));
-
                         if(left_pull_el.is('.flipped')){
                             console.log('loading newer');
                         }

@@ -1082,11 +1082,7 @@
                     <div id="upload-popular-nearby-images" class="thumbs-grid thumbs-grid-med n-horizontal-scroll">
                         <div class="scroll-wrapper"><!-- inner div for scroll -->
                         <div class="left-pull">-></div>
-                        <% _.each(stream.get("photos"), function(photo) { %>
-                            <a class="image-link" data-ajax="false" data-date="<%= photo.date %>" data-description="<%= photo.description %>" href="#/feed/?photo_id=<%= photo.id %>&amp;username=<%= photo.user %>">
-                            <img src="https://s3.amazonaws.com/media-server2.snapr.us/thm2/<%= photo.secret %>/<%= photo.id %>.jpg" alt="<%= photo.description %>" class="thumb-image thumb-med">
-                            </a>
-                        <% }); %>
+                        <%= thumbs %>
                         <div class="right-pull"><-</div>
                         </div>
                     </div>
@@ -1099,6 +1095,13 @@
                     <div id="upload-popular-nearby-images" class="thumbs-grid thumbs-grid-med n-horizontal-scroll"></div>
                 <% } %>
            </li>
+        </script>
+        <script id="dash-thumbs-template" type="text/template">
+            <% _.each(stream.get("photos"), function(photo) { %>
+                <a class="image-link" data-ajax="false" data-date="<%= photo.date %>" data-description="<%= photo.description %>" href="#/feed/?photo_id=<%= photo.id %>&amp;username=<%= photo.user %>">
+                <img src="https://s3.amazonaws.com/media-server2.snapr.us/thm2/<%= photo.secret %>/<%= photo.id %>.jpg" alt="<%= photo.description %>" class="thumb-image thumb-med">
+                </a>
+            <% }); %>
         </script>
 
         <!-- @dashaddperson DIAOLOG-->
