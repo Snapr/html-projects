@@ -9,7 +9,7 @@
   font-style: normal;
 }
 /*
-* Browser 
+* Browser
 */
 html {
   -webkit-user-select: none;
@@ -377,7 +377,7 @@ ul, ul li {
   display: block;
 }
 /*
-* JQuery Mob - Custom 
+* JQuery Mob - Custom
 *   Some basics
 */
 .ui-content {
@@ -555,7 +555,7 @@ input.ui-input-text, textarea.ui-input-text {
   border-radius: 0;
 }
 /*
-* Headers - Custom 
+* Headers - Custom
 *   Header bars in the snapr project are all transparent.. BG comes from layer below
 */
 .ui-header {
@@ -688,7 +688,7 @@ input.ui-input-text, textarea.ui-input-text {
   box-shadow: none;
 }
 /*
-* UI Components - Custom Stylz 
+* UI Components - Custom Stylz
 */
 /* @ui-bar Title Bars that pop up all over the place */
 .ui-bar {
@@ -1009,7 +1009,7 @@ input.ui-input-text, textarea.ui-input-text {
   background-position: 0 -63px !important;
 }
 /*
-* Image Views - Custom 
+* Image Views - Custom
 */
 .thumbs-grid-med, .grid #feed-images {
   margin: 0 -8px;
@@ -1031,8 +1031,18 @@ input.ui-input-text, textarea.ui-input-text {
 .n-horizontal-scroll {
   white-space: nowrap;
 }
+.n-horizontal-scroll .scroll-wrapper {
+  white-space: nowrap;
+  display: inline-block;
+}
+.right-pull, .left-pull {
+  display: inline;
+}
+.right-pull.flipped, .left-pull.flipped {
+  color: red;
+}
 /*
-* Main Menu - Custom 
+* Main Menu - Custom
 */
 .main-logo {
   background-image: url('../gfx/main-logo.png');
@@ -1570,7 +1580,7 @@ input.ui-input-text, textarea.ui-input-text {
   left: 0;
 }
 /*
-* @dashboard - PAGE 
+* @dashboard - PAGE
 */
 .dash-footer .ui-icon {
   background-image: url('../gfx/dash-icons.png');
@@ -1586,8 +1596,9 @@ input.ui-input-text, textarea.ui-input-text {
   background-position: 0 -32px;
 }
 /*
-* @share - PAGE 
-*/.share-photo div[data-role="header"] {
+* @share - PAGE
+*/
+.share-photo div[data-role="header"] {
   z-index: 20;
 }
 .share-photo div[data-role="content"] {
@@ -1888,7 +1899,7 @@ input.ui-input-text, textarea.ui-input-text {
   background-position: 0px -200px;
 }
 /*
-* @profile - DIALOG 
+* @profile - DIALOG
 */
 .user-profile .user-info-block {
   padding-left: 108px;
@@ -1942,8 +1953,9 @@ input.ui-input-text, textarea.ui-input-text {
   top: 20px;
 }
 /*
-* @uploading - PAGE 
-*/.upload-progress-header {
+* @uploading - PAGE
+*/
+.upload-progress-header {
   padding: 8px;
   height: 108px;
   overflow: hidden;
@@ -1987,7 +1999,7 @@ input.ui-input-text, textarea.ui-input-text {
   margin-right: 2px;
 }
 /*
-* @people PAGE 
+* @people PAGE
 */
 /* Strip bare the normal lists style */
 .simple-list .ui-btn {
@@ -2237,7 +2249,7 @@ input.ui-input-text, textarea.ui-input-text {
   color: #999999;
 }
 /*
-* @map - PAGE 
+* @map - PAGE
 */
 #map-layer #google-map {
   margin: -3px -8px;
@@ -2483,7 +2495,7 @@ input.ui-input-text, textarea.ui-input-text {
   left: 186px;
 }
 /*
-* @app - PAGE 
+* @app - PAGE
 */
 .platform-logo {
   background-repeat: no-repeat;
@@ -2539,10 +2551,10 @@ input.ui-input-text, textarea.ui-input-text {
   margin: 8px;
 }
 /*******************************************************************
-* @theme - SWATCHES 
+* @theme - SWATCHES
 *******************************************************************/
 /*
-* A 
+* A
 * The Dark (Black as Night) swatch, used for screens with black BGs
 */
 /* Set bgs */
