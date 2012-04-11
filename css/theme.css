@@ -738,6 +738,27 @@ input.ui-input-text, textarea.ui-input-text {
   right: 4px;
   top: 0px;
 }
+.ui-bar .image-details {
+  display: inline-block;
+  width: 93%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.ui-bar .image-time {
+  position: relative;
+  display: inline-block;
+  padding-left: 20px;
+  color: #666666;
+}
+.ui-bar .image-time .ui-icon-clock {
+  top: -9px !important;
+}
+.ui-bar .image-tag {
+  max-width: 50%;
+  display: inline-block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 .ui-bar.top-no-arrow {
   text-align: left;
   -moz-border-radius-topleft: 8px;
@@ -784,14 +805,6 @@ input.ui-input-text, textarea.ui-input-text {
   margin: 0;
   height: 32px;
   width: 32px;
-}
-.ui-bar.top-no-arrow .image-time, .ui-bar.top-left-arrow .image-time {
-  position: relative;
-  padding-left: 20px;
-  color: #666666;
-}
-.ui-bar.top-no-arrow .image-time .ui-icon-clock, .ui-bar.top-left-arrow .image-time .ui-icon-clock {
-  top: -9px;
 }
 .ui-bar.top-left-arrow::after {
   width: 0;

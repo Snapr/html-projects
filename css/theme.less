@@ -287,11 +287,18 @@ h4{
     margin: 0;
     margin-bottom: @padding-page-inset;
     margin-top: -@padding-page-inset;
+    
     .image-stream{
         position: relative;
         list-style: none;
         padding: 0;
         margin-bottom: @padding-page-inset ;
+        
+        .ui-bar{
+            
+            
+        }
+        
         .edit-overlay{
             display: none;
             position: absolute;
@@ -738,6 +745,30 @@ fieldset.ui-controlgroup{
         top: 0px;
     }
     
+    .image-details{
+           display: inline-block;
+           width: 93%;
+           overflow: hidden;
+           text-overflow: ellipsis;
+       }
+
+       .image-time{
+           position: relative;
+           display: inline-block;
+           padding-left: 20px;
+           color: @color-txt-medium-on-light;
+           .ui-icon-clock{
+               top: -9px!important;
+           }
+       }
+       .image-tag{
+           max-width: 50%;
+           display: inline-block;
+           overflow: hidden;
+           text-overflow: ellipsis;
+       }
+    
+    
     &.top-no-arrow{
         text-align: left;
         .corner-top (@corner-page-element-rounded);
@@ -766,15 +797,11 @@ fieldset.ui-controlgroup{
             width: @gfx-extra-icon-sprite-grid;
         }
         
-        .image-time{
-            position: relative;
-            padding-left: 20px;
-            color: @color-txt-medium-on-light;
-            .ui-icon-clock{
-                top: -9px;
-            }
-        }
+        
     }
+    
+   
+    
     &.top-left-arrow::after{
         .arrow-down(@arrow-size, @color-snapr-yellow-tint, @arrow-offset, @arrow-y-shift);
     }
