@@ -199,7 +199,7 @@
               <em>Settings</em>
          </a>
         <div data-role="collapsible-set" data-theme="c" data-content-theme="d">
-        
+
             <div data-role="collapsible" data-collapsed="true">
                 <h3>Profile</h3>
 
@@ -209,7 +209,7 @@
                            <div class="user-icon-big" style="background-image: url('http://sna.pr/avatars/<%= username %>?size=large'); background-size: 100% 100%"></div>
 
                        </span>
-                       
+
                         <input type="radio" name="my-account-avatar-twitter" id="my-account-avatar-twitter" value="twitter" data-role="none"
                            <% if (settings.profile.avatar_type == 'twitter'){ %> checked="true" <% } %> />
                            <label for="my-account-avatar-twitter">Twitter</label><br>
@@ -223,10 +223,10 @@
                            <label for="my-account-avatar-gravatar">Gravatar</label><br>
 
                            <a class="my-account-set-up-gravatar" href="http://en.gravatar.com/">&rarr; Set up Gravatar</a>
-                       
+
                    </div>
 
-                   
+
 
                 </fieldset>
 
@@ -310,7 +310,7 @@
                         </div>
                 </div>
             </div>
-            
+
             <div data-role="collapsible" data-collapsed="true">
                 <h3>Account</h3>
                 <fieldset data-role="controlgroup">
@@ -334,7 +334,7 @@
                     <div class="ui-block-c"><button data-theme="e" class="save">Save</button></div>
                 </div>
             </div>
-            
+
 
         </div><!-- End of Nested Collapsible Set -->
 
@@ -355,9 +355,9 @@
          </p><!-- Close Content for Master Collapsible Sett -->
 
 
-         
 
-         
+
+
 
     </div>
     </script>
@@ -418,7 +418,7 @@
             <div class="ui-block-b"></div>
             <div class="ui-block-c"><button data-theme="e" class="link-service">Link</button>
         </div>
-        
+
     <% break; case 'tumblr': %>
         <h3>Link Tumblr</h3>
         <form class="tumblr-form" action="javascript:void(0)">
@@ -426,7 +426,7 @@
                 <label>Email:<input type="text" id="tumblr-email" /></label>
                 <label>Password:<input type="password" id="tumblr-password" /></label>
             </fieldset>
-            
+
             <div class="ui-grid-b">
                 <div class="ui-block-a"></div>
                 <div class="ui-block-b"></div>
@@ -437,7 +437,7 @@
         <h3>Link Facebook</h3>
         <fieldset data-role="controlgroup">
         </fieldset>
-        
+
         <div class="ui-grid-b">
             <div class="ui-block-a"></div>
             <div class="ui-block-b"></div>
@@ -1072,13 +1072,13 @@
                         <em><%= stream.get("display").short_title %></em>
                         <span class="image-tag"><%= stream.get("latest_photo").description %></span>
                         <span class="image-time small-text">
-                            <span class="ui-icon ui-icon-clock extra-icons"></span><%= stream.get("latest_photo").date %>
+                            <span class="ui-icon ui-icon-clock extra-icons"></span><span class="x-date"><%= stream.get("latest_photo").date %></span>
                         </span>
                     </a>
                     <div id="upload-popular-nearby-images" class="thumbs-grid thumbs-grid-med n-horizontal-scroll">
-                        <div><!-- inner div for scroll -->
+                        <div class="scroll-wrapper"><!-- inner div for scroll -->
                         <% _.each(stream.get("photos"), function(photo) { %>
-                            <a class="image-link" data-ajax="false" href="#/feed/?photo_id=<%= photo.id %>&amp;username=<%= photo.user %>">
+                            <a class="image-link" data-ajax="false" data-date="<%= photo.date %>" data-description="<%= photo.description %>" href="#/feed/?photo_id=<%= photo.id %>&amp;username=<%= photo.user %>">
                             <img src="https://s3.amazonaws.com/media-server2.snapr.us/thm2/<%= photo.secret %>/<%= photo.id %>.jpg" alt="<%= photo.description %>" class="thumb-image thumb-med">
                             </a>
                         <% }); %>
@@ -1169,12 +1169,12 @@
                     <%}%>
                 </p>
             </div>
-            
-            
+
+
         <%  break;
         case "follow":%>
         <hr>
-        
+
         <a data-ajax="false" href="#/feed/?username=<%= item.get("user").username %>">
             <img src="http://sna.pr/avatars/<%= item.get("user").username %>" alt="<%= item.get("user").username %>" class="user-icon-small ui-li-icon"/>
             <h3 class="username"><%= item.get("user").username %></h3> <span class="item-comment">is now following you.</span>
