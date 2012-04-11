@@ -536,6 +536,10 @@ snapr.routers = Backbone.Router.extend({
         "/feed/?*query_string": "feed",
         "/dash/": "dash",
         "/dash/?*query_string": "dash",
+        "/dash-add-person/": "dash_add_person",
+        "/dash-add-person/?*query_string": "dash_add_person",
+        "/dash-add-search/": "dash_add_search",
+        "/dash-add-search/?*query_string": "dash_add_search",
         "/activity/": "activity",
         "/activity/?*query_string": "activity",
         "/map/": "map",
@@ -719,11 +723,26 @@ snapr.routers = Backbone.Router.extend({
        },
 
        dash: function( query_string )
+       {
+           snapr.utils.get_query_params( query_string );
+           snapr.info.current_view = new snapr.views.dash();
+       },
+       dash_add_person: function( follow, query_string )
+       {
+           var query = snapr.utils.get_query_params( query_string );
+           snapr.info.current_view = new snapr.views.dash_add_person({
+               query: query,
+               el: $("#dash-add-person")
+           });
+       },
+       dash_add_search: function( follow, query_string )
           {
-              snapr.utils.get_query_params( query_string );
-              snapr.info.current_view = new snapr.views.dash();
+              var query = snapr.utils.get_query_params( query_string );
+              snapr.info.current_view = new snapr.views.dash_add_search({
+                  query: query,
+                  el: $("#dash-add-search")
+              });
           },
-
        search: function( query_string )
        {
            snapr.utils.get_query_params( query_string );

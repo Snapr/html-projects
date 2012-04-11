@@ -1054,10 +1054,10 @@
                <div class="dash-footer inline-footer ui-body-c ">
                    <div class="ui-content ui-grid-a">
                        <div class="ui-block-a">
-                           <a class="more ui-btn-right" data-role="button" data-iconpos="top" data-icon="person">Add a Person</a>
+                           <a class="more ui-btn-right" data-role="button" data-iconpos="top" data-icon="person"  href="#/dash-add-person/" data-ajax="false">Add a Person</a>
                        </div>
                        <div class="ui-block-b">
-                           <a class="more ui-btn-right" data-role="button" data-iconpos="top" data-icon="search">Add a Search</a>
+                           <a class="more ui-btn-right" data-role="button" data-iconpos="top" data-icon="search" href="#/dash-add-search/" data-ajax="false">Add a Search</a>
                        </div>
                    </div>
                </div>
@@ -1101,6 +1101,44 @@
                 <% } %>
            </li>
         </script>
+        
+        <!-- @dashaddperson DIAOLOG-->
+       <div id="dash-add-person" data-add-back-btn="true" data-role="dialog" data-overlay-theme="c" data-theme="c">
+           <div data-role="header" data-theme="c">
+               <h1>Add Person</h1>
+           </div>
+           <div data-role="content" data-theme="c">
+               <div class="search-header">
+                   <input type="search" id="people-search" value="" placeholder="Search&hellip;" />
+               </div>
+               <ul class="people-list simple-list" data-role="listview" data-inset="true" >
+               </ul>
+           </div>
+       </div>
+           
+     <!-- @dashaddsearch DIALOG-->
+     <div id="dash-add-search" data-role="dialog" data-overlay-theme="c" data-theme="c">
+         <div data-role="header" data-theme="c">
+             <h1>Add Search</h1>
+             <a class="x-back" data-role="button" data-icon="delete" data-iconpos="notext"></a>
+         </div>
+         <div data-role="content" data-theme="c">
+             <form action="javascript: void(0);" accept-charset="utf-8" id="search-form">
+                 <fieldset>
+                     <input type="text" placeholder="Place Name&hellip;" autocapitalize="off" id="search-keywords">
+                     <select id="search-type">
+                         <option value="location">Anywhere</option>
+                         <option value="1000">Nearby (1km)</option>
+                         <option value="5000">Nearby (5km)</option>
+                         <option value="20000">Nearby (20km)</option>
+                         
+                     </select>
+                     <input type="submit" data-theme="e" value="Search">
+                 </fieldset>
+             </form>
+
+         </div>
+     </div><!-- /page -->
 
 
        <!-- @activity PAGE -->
@@ -1914,6 +1952,8 @@
 <script src="app/views/connect_li.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/feed.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/dash.js" type="text/javascript" charset="utf-8"></script>
+<script src="app/views/dash_add_person.js" type="text/javascript" charset="utf-8"></script>
+<script src="app/views/dash_add_search.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/upload_progress_li.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/photo_manage.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/feed_list.js" type="text/javascript" charset="utf-8"></script>
