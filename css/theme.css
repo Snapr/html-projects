@@ -2167,6 +2167,9 @@ input.ui-input-text, textarea.ui-input-text {
 .activity-streams .ui-bar.top-left-arrow .ui-btn-text {
   padding-left: 8px;
 }
+.activity-streams .activity-image-item {
+  margin-bottom: 12px;
+}
 .activity-streams .activity-follow-item, .activity-streams .activity-image-item {
   position: relative;
   margin-top: -8px;
@@ -2196,11 +2199,19 @@ input.ui-input-text, textarea.ui-input-text {
   display: inline-block;
   vertical-align: top;
 }
+.activity-streams .simple-list .ui-btn.ui-li {
+  border: none!important;
+  border-bottom: solid 1px #e4e4e4 !important;
+  margin-bottom: 0;
+  padding-bottom: 8px;
+}
 .activity-streams .activity-follow-item {
   padding-left: 0;
   margin-top: 0;
   min-height: 34px;
-  padding-bottom: 8px;
+  padding-top: 8px;
+  border: none;
+  border-top: solid 1px #e4e4e4;
 }
 .activity-streams .activity-follow-item .username,
 .activity-streams .activity-follow-item .item-comment,

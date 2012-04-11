@@ -1188,7 +1188,7 @@
                 <% }); %>
             </ul>
 
-            <hr>
+           
             <div class="image-likes">
                 <div class="icons-list">
                 <% _.each( item.get("favorites"), function( like ){ %>
@@ -1215,7 +1215,6 @@
 
         <%  break;
         case "follow":%>
-        <hr>
 
         <a data-ajax="false" href="#/feed/?username=<%= item.get("user").username %>">
             <img src="http://sna.pr/avatars/<%= item.get("user").username %>" alt="<%= item.get("user").username %>" class="user-icon-small ui-li-icon"/>

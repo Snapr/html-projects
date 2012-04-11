@@ -2171,6 +2171,11 @@ fieldset.ui-controlgroup{
         padding-left: @padding-page-inset;
     }
     
+    .activity-image-item{
+        margin-bottom: @padding-page-inset + @padding-image-grid-inset;
+    }
+    
+
     
     .activity-follow-item,
     .activity-image-item{
@@ -2178,6 +2183,7 @@ fieldset.ui-controlgroup{
         margin-top: -@padding-page-inset;
         min-height: @size-img-thumb;
         padding-left: @size-img-thumb;
+       
         .image-link{
             position: absolute;
             left: -@padding-image-grid-inset;
@@ -2209,11 +2215,21 @@ fieldset.ui-controlgroup{
         }
     }
     
+    .simple-list .ui-btn.ui-li {
+        border: none!important;
+        border-bottom: @border-medium-on-light!important;
+        margin-bottom: 0;
+        padding-bottom: @padding-element-inset;
+    }
+    
+    
     .activity-follow-item{
          padding-left: 0;
          margin-top: 0;
          min-height:  @size-small-avatar;
-         padding-bottom: @corner-page-element-rounded;
+         padding-top: @padding-element-inset;
+         border: none;
+         border-top: @border-medium-on-light;
          .username,
          .item-comment,
          .small-text,
