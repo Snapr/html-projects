@@ -688,7 +688,7 @@ input.ui-input-text, textarea.ui-input-text {
   box-shadow: none;
 }
 /*
-* UI Components - Custom Stylz
+* UI Components - Custom Stylz 
 */
 /* @ui-bar Title Bars that pop up all over the place */
 .ui-bar {
@@ -995,7 +995,7 @@ input.ui-input-text, textarea.ui-input-text {
   background-position: 0 -63px;
 }
 /*
-* Image Views - Custom
+* Image Views - Custom 
 */
 .thumbs-grid-med, .grid #feed-images {
   margin: 0 -8px;
@@ -1016,13 +1016,9 @@ input.ui-input-text, textarea.ui-input-text {
 }
 .n-horizontal-scroll {
   white-space: nowrap;
-  overflow-x: scroll;
-}
-.n-horizontal-scroll .scroll-wrapper{
-  display: inline-block;
 }
 /*
-* Main Menu - Custom
+* Main Menu - Custom 
 */
 .main-logo {
   background-image: url('../gfx/main-logo.png');
@@ -1501,14 +1497,31 @@ input.ui-input-text, textarea.ui-input-text {
 .ui-checkbox .ui-checkbox-off.ui-btn-active .ui-icon {
   background-position: -40px -240px;
 }
-.inline-palette {
+/* The magical dance to center a palette with variable width */
+.has-palette {
+  position: relative;
+}
+.has-palette .action-palette {
   position: absolute;
-  top: -54px;
-  margin-left: -69px;
+  bottom: 100%;
+  left: 20px;
+  width: 0px;
+}
+.has-palette .action-palette .center-palette {
+  display: inline-block;
+  position: relative;
+  left: 50%;
+}
+.has-palette .action-palette .center-palette .inline-palette {
+  position: relative;
+  left: -50%;
+}
+.inline-palette {
   -moz-border-radius: 10px;
   -webkit-border-radius: 10px;
   border-radius: 10px;
   padding: 6px;
+  white-space: nowrap;
 }
 .inline-palette::after {
   width: 0;
@@ -1543,7 +1556,7 @@ input.ui-input-text, textarea.ui-input-text {
   left: 0;
 }
 /*
-* @dashboard - PAGE
+* @dashboard - PAGE 
 */
 .dash-footer .ui-icon {
   background-image: url('../gfx/dash-icons.png');
@@ -1559,7 +1572,7 @@ input.ui-input-text, textarea.ui-input-text {
   background-position: 0 -32px;
 }
 /*
-* @share - PAGE
+* @share - PAGE 
 */.share-photo div[data-role="header"] {
   z-index: 20;
 }
@@ -1861,7 +1874,7 @@ input.ui-input-text, textarea.ui-input-text {
   background-position: 0px -200px;
 }
 /*
-* @profile - DIALOG
+* @profile - DIALOG 
 */
 .user-profile .user-info-block {
   padding-left: 108px;
@@ -1915,7 +1928,7 @@ input.ui-input-text, textarea.ui-input-text {
   top: 20px;
 }
 /*
-* @uploading - PAGE
+* @uploading - PAGE 
 */.upload-progress-header {
   padding: 8px;
   height: 108px;
@@ -1960,7 +1973,7 @@ input.ui-input-text, textarea.ui-input-text {
   margin-right: 2px;
 }
 /*
-* @people PAGE
+* @people PAGE 
 */
 /* Strip bare the normal lists style */
 .simple-list .ui-btn {
@@ -2191,7 +2204,7 @@ input.ui-input-text, textarea.ui-input-text {
   color: #999999;
 }
 /*
-* @map - PAGE
+* @map - PAGE 
 */
 #map-layer #google-map {
   margin: -3px -8px;
@@ -2437,7 +2450,7 @@ input.ui-input-text, textarea.ui-input-text {
   left: 186px;
 }
 /*
-* @app - PAGE
+* @app - PAGE 
 */
 .platform-logo {
   background-repeat: no-repeat;
@@ -2493,10 +2506,10 @@ input.ui-input-text, textarea.ui-input-text {
   margin: 8px;
 }
 /*******************************************************************
-* @theme - SWATCHES
+* @theme - SWATCHES 
 *******************************************************************/
 /*
-* A
+* A 
 * The Dark (Black as Night) swatch, used for screens with black BGs
 */
 /* Set bgs */
@@ -3818,7 +3831,7 @@ input.ui-input-text, textarea.ui-input-text {
 }
 /* Android HDPI - Pixel ratio of 1.5. Background-size is 1/1.5 = 66.67% (of a 150px image) */
 @media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5) {
-
+  
 }
 /* High Resolution (iPhone 4) */
 @media only screen and (-webkit-min-device-pixel-ratio: 2) {

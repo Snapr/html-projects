@@ -785,9 +785,9 @@
                 <div data-role="controlgroup" data-type="horizontal" class="image-actions">
                     <span class="v-fav-button inline-btn"></span>
                     <span class="v-comment-button inline-btn"></span>
-                    <span class="v-more-button inline-btn">
+                    <span class="v-more-button inline-btn has-palette">
                          <div data-role="button" data-icon="action-more" data-inline="true" data-iconpos="left" class="more-button action-icons" >&nbsp;</div>
-                         <div class="v-photo-manage"></div>
+                         <div class="v-photo-manage action-palette"></div>
                     </span>
 
                     <span class="v-show-all-button inline-btn"></span>
@@ -818,6 +818,7 @@
     </script>
 
     <script id="photo-manage-template" type="text/template">
+    <div class="center-palette">
         <div class="inline-palette ui-body-b" data-theme="b">
            <div data-role="controlgroup" data-type="horizontal" class="dark-icons">
            <% if (mine) {%>
@@ -835,6 +836,7 @@
            <%}%>
            </div>
         </div>
+    </div>
     </script>
 
     <!-- @feed @thumb ITEM - clicks to gallery view -->

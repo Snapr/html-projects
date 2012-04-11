@@ -1435,12 +1435,31 @@ fieldset.ui-controlgroup{
     
 }
 
+/* The magical dance to center a palette with variable width */
+.has-palette{
+    position: relative;
+    .action-palette{
+        position: absolute;
+        bottom: 100%;
+        left: 20px;
+        width: 0px;
+        .center-palette{
+            display:inline-block;
+            position:relative;
+            left:50%;
+            .inline-palette{
+                position:relative;
+                left:-50%;
+            }
+       }
+    }    
+}
+
+
 .inline-palette{
-    position: absolute;
-    top: -54px;
-    margin-left: -69px;
     .corner-all(10px);
     padding: 6px;
+    white-space: nowrap;
     &::after{
       .arrow-down(@arrow-size, @color-off-black-tint, 50%, @arrow-y-shift + 3px);  
     }
