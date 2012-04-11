@@ -400,7 +400,12 @@
     <script id="add-linked-service-template" type="text/template">
     <div data-role="collapsible" data-collapsed="true">
     <% switch(provider) { case 'twitter': %>
-        <h3>Link Twitter</h3>
+        <h3>
+            <span class="twitter-sharing sharing-icon-small">
+                <span class="ui-icon"></span>
+            </span>
+        Link Twitter
+        </h3>
         <fieldset data-role="controlgroup">
         </fieldset>
         <div class="ui-grid-b">
@@ -410,7 +415,12 @@
         </div>
 
     <% break; case 'foursquare': %>
-        <h3>Link Foursquare</h3>
+        <h3>
+            <span class="foursquare-sharing sharing-icon-small">
+                <span class="ui-icon"></span>
+            </span>
+        Link Foursquare
+        </h3>
         <fieldset data-role="controlgroup">
         </fieldset>
         <div class="ui-grid-b">
@@ -420,7 +430,12 @@
         </div>
 
     <% break; case 'tumblr': %>
-        <h3>Link Tumblr</h3>
+        <h3>
+            <span class="tumblr-sharing sharing-icon-small">
+                <span class="ui-icon"></span>
+            </span>
+        Link Tumblr
+        </h3>
         <form class="tumblr-form" action="javascript:void(0)">
             <fieldset data-role="controlgroup">
                 <label>Email:<input type="text" id="tumblr-email" /></label>
@@ -434,7 +449,12 @@
             </div>
         </form>
     <% break; case 'facebook': %>
-        <h3>Link Facebook</h3>
+        <h3>
+        <span class="facebook-sharing sharing-icon-small">
+            <span class="ui-icon"></span>
+        </span>
+        Link Facebook
+        </h3>
         <fieldset data-role="controlgroup">
         </fieldset>
 
@@ -453,7 +473,11 @@
 
         <div data-role="collapsible" data-collapsed="true">
         <% switch(service.provider) { case 'twitter': %>
-            <h3>Twitter - <%= service.get('username') %></h3>
+            <h3>
+                <span class="twitter-sharing sharing-icon-small">
+                    <span class="ui-icon"></span>
+                </span>
+                <%= service.get('username') %></h3>
             <fieldset data-role="controlgroup">
 
                 <p>Update my profile details to match Twitter:
@@ -470,7 +494,11 @@
 
             </fieldset>
         <% break; case 'foursquare': %>
-            <h3>Foursquare - <%= service.get('username') %></h3>
+            <h3>
+                <span class="foursquare-sharing sharing-icon-small">
+                    <span class="ui-icon"></span>
+                </span>
+            <%= service.get('username') %></h3>
             <fieldset data-role="controlgroup">
 
                 <input type="checkbox" name="foursquare-link" id="foursquare-link" data-role="none"
@@ -479,7 +507,11 @@
 
             </fieldset>
         <% break; case 'tumblr': %>
-            <h3>Tumblr - <%= service.get('username') %></h3>
+            <h3>
+            <span class="tumblr-sharing sharing-icon-small">
+                <span class="ui-icon"></span>
+            </span>
+             <%= service.get('username') %></h3>
             <fieldset data-role="controlgroup">
 
                 <input type="checkbox" name="tumblr-link" id="tumblr-link" data-role="none"
@@ -489,7 +521,12 @@
 
             </fieldset>
         <% break; case 'facebook': %>
-            <h3>Facebook - <%= service.get('username') %></h3>
+            <h3>
+            <span class="facebook-sharing sharing-icon-small">
+                <span class="ui-icon"></span>
+            </span>
+            Link Facebook
+            </h3> <%= service.get('username') %></h3>
             <fieldset data-role="controlgroup">
 
                 <input type="checkbox" name="facebook-link" id="facebook-link" data-role="none"
