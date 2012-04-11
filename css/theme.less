@@ -1329,12 +1329,10 @@ fieldset.ui-controlgroup{
                 padding: 0 10px 0 36px;
             }
             .ui-icon{
-                background: none;
                 width: 40px;
                 height: 40px;
                 margin-top: -20px;
                 margin-left: -10px;
-                background-image: url('../gfx/action-icons-custom.png');
                 .corner-all(0);
             }
 
@@ -1342,20 +1340,7 @@ fieldset.ui-controlgroup{
                 line-height: 40px;
             }
 
-            .ui-icon-action-heart{background-position: @as-offset-x @gfx-action-icon-sprite-heart-y}
-            .ui-icon-action-comment{background-position: @as-offset-x @gfx-action-icon-sprite-comment-y}
-            .ui-icon-action-more{background-position: @as-offset-x @gfx-action-icon-sprite-more-y}
-
-
-            &.selected,
-            &.ui-btn-hover-d,
-            &.ui-btn-down-d,
-            &.ui-btn-active-d{
-                .ui-icon-action-heart{background-position: @as-offset-x-hover @gfx-action-icon-sprite-heart-y}
-                .ui-icon-action-comment{background-position: @as-offset-x-hover @gfx-action-icon-sprite-comment-y}
-                .ui-icon-action-more{background-position: @as-offset-x-hover @gfx-action-icon-sprite-more-y}
-
-            }
+            
             
             
         }
@@ -1432,6 +1417,7 @@ fieldset.ui-controlgroup{
     .ui-icon{
         width: @gfx-action-icon-sprite-grid;
         height: @gfx-action-icon-sprite-grid;
+        
         background-image: url('../gfx/action-icons-custom.png');
     }
     
@@ -3257,6 +3243,30 @@ fieldset.ui-controlgroup{
 }
 
 
+/* @action-icons */
+.action-icons{
+    .ui-icon{
+        background: none;
+        background-image: url('../gfx/action-icons-custom.png');
+        width: @gfx-action-icon-sprite-grid;
+        height: @gfx-action-icon-sprite-grid;
+    }   
+    
+    .ui-icon-action-heart{background-position: @as-offset-x @gfx-action-icon-sprite-heart-y}
+    .ui-icon-action-comment{background-position: @as-offset-x @gfx-action-icon-sprite-comment-y}
+    .ui-icon-action-more{background-position: @as-offset-x @gfx-action-icon-sprite-more-y}
+
+    &.selected,
+    &.ui-btn-hover-d,
+    &.ui-btn-down-d,
+    &.ui-btn-active-d{
+        .ui-icon-action-heart{background-position: @as-offset-x-hover @gfx-action-icon-sprite-heart-y}
+        .ui-icon-action-comment{background-position: @as-offset-x-hover @gfx-action-icon-sprite-comment-y}
+        .ui-icon-action-more{background-position: @as-offset-x-hover @gfx-action-icon-sprite-more-y}
+
+    }  
+}
+
 
 /* @dark-icons */
 .dark-icons{
@@ -3363,7 +3373,7 @@ fieldset.ui-controlgroup{
         .background-size (100px, 100px);
     }
 
-    .image-actions .ui-icon,
+    .action-icons .ui-icon,
     .ui-checkbox .ui-icon,
     .custom-action-icons .ui-icon,
     .share-photo .upload-image-privacy .ui-icon,

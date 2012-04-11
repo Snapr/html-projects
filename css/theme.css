@@ -1411,12 +1411,10 @@ input.ui-input-text, textarea.ui-input-text {
 .image-item-block .image-actions .ui-btn-hover-d .ui-icon,
 .image-item-block .image-actions .ui-btn-down-d .ui-icon,
 .image-item-block .image-actions .ui-btn-active-d .ui-icon {
-  background: none;
   width: 40px;
   height: 40px;
   margin-top: -20px;
   margin-left: -10px;
-  background-image: url('../gfx/action-icons-custom.png');
   -moz-border-radius: 0;
   -webkit-border-radius: 0;
   border-radius: 0;
@@ -1426,78 +1424,6 @@ input.ui-input-text, textarea.ui-input-text {
 .image-item-block .image-actions .ui-btn-down-d .ui-btn-text,
 .image-item-block .image-actions .ui-btn-active-d .ui-btn-text {
   line-height: 40px;
-}
-.image-item-block .image-actions .ui-btn-up-d .ui-icon-action-heart,
-.image-item-block .image-actions .ui-btn-hover-d .ui-icon-action-heart,
-.image-item-block .image-actions .ui-btn-down-d .ui-icon-action-heart,
-.image-item-block .image-actions .ui-btn-active-d .ui-icon-action-heart {
-  background-position: 0px 0px;
-}
-.image-item-block .image-actions .ui-btn-up-d .ui-icon-action-comment,
-.image-item-block .image-actions .ui-btn-hover-d .ui-icon-action-comment,
-.image-item-block .image-actions .ui-btn-down-d .ui-icon-action-comment,
-.image-item-block .image-actions .ui-btn-active-d .ui-icon-action-comment {
-  background-position: 0px -40px;
-}
-.image-item-block .image-actions .ui-btn-up-d .ui-icon-action-more,
-.image-item-block .image-actions .ui-btn-hover-d .ui-icon-action-more,
-.image-item-block .image-actions .ui-btn-down-d .ui-icon-action-more,
-.image-item-block .image-actions .ui-btn-active-d .ui-icon-action-more {
-  background-position: 0px -120px;
-}
-.image-item-block .image-actions .ui-btn-up-d.selected .ui-icon-action-heart,
-.image-item-block .image-actions .ui-btn-hover-d.selected .ui-icon-action-heart,
-.image-item-block .image-actions .ui-btn-down-d.selected .ui-icon-action-heart,
-.image-item-block .image-actions .ui-btn-active-d.selected .ui-icon-action-heart,
-.image-item-block .image-actions .ui-btn-up-d.ui-btn-hover-d .ui-icon-action-heart,
-.image-item-block .image-actions .ui-btn-hover-d.ui-btn-hover-d .ui-icon-action-heart,
-.image-item-block .image-actions .ui-btn-down-d.ui-btn-hover-d .ui-icon-action-heart,
-.image-item-block .image-actions .ui-btn-active-d.ui-btn-hover-d .ui-icon-action-heart,
-.image-item-block .image-actions .ui-btn-up-d.ui-btn-down-d .ui-icon-action-heart,
-.image-item-block .image-actions .ui-btn-hover-d.ui-btn-down-d .ui-icon-action-heart,
-.image-item-block .image-actions .ui-btn-down-d.ui-btn-down-d .ui-icon-action-heart,
-.image-item-block .image-actions .ui-btn-active-d.ui-btn-down-d .ui-icon-action-heart,
-.image-item-block .image-actions .ui-btn-up-d.ui-btn-active-d .ui-icon-action-heart,
-.image-item-block .image-actions .ui-btn-hover-d.ui-btn-active-d .ui-icon-action-heart,
-.image-item-block .image-actions .ui-btn-down-d.ui-btn-active-d .ui-icon-action-heart,
-.image-item-block .image-actions .ui-btn-active-d.ui-btn-active-d .ui-icon-action-heart {
-  background-position: -40px 0px;
-}
-.image-item-block .image-actions .ui-btn-up-d.selected .ui-icon-action-comment,
-.image-item-block .image-actions .ui-btn-hover-d.selected .ui-icon-action-comment,
-.image-item-block .image-actions .ui-btn-down-d.selected .ui-icon-action-comment,
-.image-item-block .image-actions .ui-btn-active-d.selected .ui-icon-action-comment,
-.image-item-block .image-actions .ui-btn-up-d.ui-btn-hover-d .ui-icon-action-comment,
-.image-item-block .image-actions .ui-btn-hover-d.ui-btn-hover-d .ui-icon-action-comment,
-.image-item-block .image-actions .ui-btn-down-d.ui-btn-hover-d .ui-icon-action-comment,
-.image-item-block .image-actions .ui-btn-active-d.ui-btn-hover-d .ui-icon-action-comment,
-.image-item-block .image-actions .ui-btn-up-d.ui-btn-down-d .ui-icon-action-comment,
-.image-item-block .image-actions .ui-btn-hover-d.ui-btn-down-d .ui-icon-action-comment,
-.image-item-block .image-actions .ui-btn-down-d.ui-btn-down-d .ui-icon-action-comment,
-.image-item-block .image-actions .ui-btn-active-d.ui-btn-down-d .ui-icon-action-comment,
-.image-item-block .image-actions .ui-btn-up-d.ui-btn-active-d .ui-icon-action-comment,
-.image-item-block .image-actions .ui-btn-hover-d.ui-btn-active-d .ui-icon-action-comment,
-.image-item-block .image-actions .ui-btn-down-d.ui-btn-active-d .ui-icon-action-comment,
-.image-item-block .image-actions .ui-btn-active-d.ui-btn-active-d .ui-icon-action-comment {
-  background-position: -40px -40px;
-}
-.image-item-block .image-actions .ui-btn-up-d.selected .ui-icon-action-more,
-.image-item-block .image-actions .ui-btn-hover-d.selected .ui-icon-action-more,
-.image-item-block .image-actions .ui-btn-down-d.selected .ui-icon-action-more,
-.image-item-block .image-actions .ui-btn-active-d.selected .ui-icon-action-more,
-.image-item-block .image-actions .ui-btn-up-d.ui-btn-hover-d .ui-icon-action-more,
-.image-item-block .image-actions .ui-btn-hover-d.ui-btn-hover-d .ui-icon-action-more,
-.image-item-block .image-actions .ui-btn-down-d.ui-btn-hover-d .ui-icon-action-more,
-.image-item-block .image-actions .ui-btn-active-d.ui-btn-hover-d .ui-icon-action-more,
-.image-item-block .image-actions .ui-btn-up-d.ui-btn-down-d .ui-icon-action-more,
-.image-item-block .image-actions .ui-btn-hover-d.ui-btn-down-d .ui-icon-action-more,
-.image-item-block .image-actions .ui-btn-down-d.ui-btn-down-d .ui-icon-action-more,
-.image-item-block .image-actions .ui-btn-active-d.ui-btn-down-d .ui-icon-action-more,
-.image-item-block .image-actions .ui-btn-up-d.ui-btn-active-d .ui-icon-action-more,
-.image-item-block .image-actions .ui-btn-hover-d.ui-btn-active-d .ui-icon-action-more,
-.image-item-block .image-actions .ui-btn-down-d.ui-btn-active-d .ui-icon-action-more,
-.image-item-block .image-actions .ui-btn-active-d.ui-btn-active-d .ui-icon-action-more {
-  background-position: -40px -120px;
 }
 .image-item-block .image-actions .reactions-button {
   position: absolute;
@@ -3755,6 +3681,40 @@ input.ui-input-text, textarea.ui-input-text {
   top: -11px;
   left: 50%;
 }
+/* @action-icons */
+.action-icons .ui-icon {
+  background: none;
+  background-image: url('../gfx/action-icons-custom.png');
+  width: 40px;
+  height: 40px;
+}
+.action-icons .ui-icon-action-heart {
+  background-position: 0px 0px;
+}
+.action-icons .ui-icon-action-comment {
+  background-position: 0px -40px;
+}
+.action-icons .ui-icon-action-more {
+  background-position: 0px -120px;
+}
+.action-icons.selected .ui-icon-action-heart,
+.action-icons.ui-btn-hover-d .ui-icon-action-heart,
+.action-icons.ui-btn-down-d .ui-icon-action-heart,
+.action-icons.ui-btn-active-d .ui-icon-action-heart {
+  background-position: -40px 0px;
+}
+.action-icons.selected .ui-icon-action-comment,
+.action-icons.ui-btn-hover-d .ui-icon-action-comment,
+.action-icons.ui-btn-down-d .ui-icon-action-comment,
+.action-icons.ui-btn-active-d .ui-icon-action-comment {
+  background-position: -40px -40px;
+}
+.action-icons.selected .ui-icon-action-more,
+.action-icons.ui-btn-hover-d .ui-icon-action-more,
+.action-icons.ui-btn-down-d .ui-icon-action-more,
+.action-icons.ui-btn-active-d .ui-icon-action-more {
+  background-position: -40px -120px;
+}
 /* @dark-icons */
 .dark-icons .ui-icon {
   background-image: url('../gfx/action-icons-dark.png');
@@ -3924,7 +3884,7 @@ input.ui-input-text, textarea.ui-input-text {
     -webkit-background-size: 100px 100px;
     background-size: 100px 100px;
   }
-  .image-actions .ui-icon,
+  .action-icons .ui-icon,
   .ui-checkbox .ui-icon,
   .custom-action-icons .ui-icon,
   .share-photo .upload-image-privacy .ui-icon,

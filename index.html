@@ -786,7 +786,7 @@
                     <span class="v-fav-button inline-btn"></span>
                     <span class="v-comment-button inline-btn"></span>
                     <span class="v-more-button inline-btn">
-                         <div data-role="button" data-icon="action-more" data-inline="true" data-iconpos="left" class="more-button" >&nbsp;</div>
+                         <div data-role="button" data-icon="action-more" data-inline="true" data-iconpos="left" class="more-button action-icons" >&nbsp;</div>
                          <div class="v-photo-manage"></div>
                     </span>
 
@@ -844,18 +844,18 @@
 
     <!-- favorite button template -->
     <script id="fav-button-template" type="text/template">
-        <div data-role="button" data-icon="action-heart" data-inline="true" data-iconpos="left" class="favorite-button <% if (favorite){ %> selected <% }%>" ><% if (count > 0){ %>&times; <%= count %><%} else {%> &nbsp;<%}%></div>
+        <div data-role="button" data-icon="action-heart" data-inline="true" data-iconpos="left" class="favorite-button action-icons <% if (favorite){ %> selected <% }%>" ><% if (count > 0){ %>&times; <%= count %><%} else {%> &nbsp;<%}%></div>
     </script>
 
     <!-- comment button template -->
     <script id="comment-button-template" type="text/template">
-        <div data-role="button" data-icon="action-comment" data-inline="true" data-iconpos="left" class="comment-button <% if(selected){%> selected<%}%>" ><% if (count > 0){ %>&times; <%= count %><%} else {%> &nbsp;<%}%></div>
+        <div data-role="button" data-icon="action-comment" data-inline="true" data-iconpos="left" class="comment-button action-icons <% if(selected){%> selected<%}%>" ><% if (count > 0){ %>&times; <%= count %><%} else {%> &nbsp;<%}%></div>
     </script>
 
     <!-- show all button template -->
     <script id="show-all-button-template" type="text/template">
          <% if (reactions > 0){ %>
-        <div data-role="button" data-icon="action-show-all" data-inline="true" data-iconpos="right" class="reactions-button <% if (selected){ %> selected <% } %>">Show</div>
+        <div data-role="button" data-icon="action-show-all" data-inline="true" data-iconpos="right" class="reactions-button action-icons <% if (selected){ %> selected <% } %>">Show</div>
         <% } %>
     </script>
 
