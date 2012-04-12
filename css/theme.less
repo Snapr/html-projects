@@ -3562,8 +3562,26 @@ fieldset.ui-controlgroup{
         background-image: url('../gfx/retina/android-logo.png');
         .background-size (288px, 93px);
     }
-
-
-   }
+    
+    .image-streams{
+         .image-stream{
+             .load-more-inline{
+                 .ui-icon-refresh{
+                     background-image: url('../gfx/retina/refresh.png');
+                     .background-size (56px, 56px);
+                 }
+         	    }
+          }
+          &.loading {
+              .load-more-inline{
+                  .ui-icon-refresh{
+                      background-image: url('../gfx/retina/spinner.png');
+                      .background-size (56px, 56px);
+                      
+                  }
+              }
+          }
+      }
+ }
 
 
