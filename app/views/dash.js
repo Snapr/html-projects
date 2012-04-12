@@ -1,16 +1,33 @@
 snapr.views.dash_stream = Backbone.View.extend({
 
     template: _.template( $('#dash-stream-template').html() ),
-    thumbs_template: _.template( $('#dash-thumbs-template').html() ),
     render: function(){
+        this.photos = new snapr.views.dash_stream_thumbs({collection: this.model.photos});
+        this.photos.render();
         this.el = $(this.template( {
-            stream: this.model,
-            thumbs: this.thumbs_template({ stream: this.model })
+            stream: this.model
         } ));
+        $(this.photos.el).insertAfter($(this.el).find('.left-pull'));
         return this;
     }
 
 });
+
+snapr.views.dash_stream_thumbs = Backbone.View.extend({
+
+    template: _.template( $('#dash-thumbs-template').html() ),
+    render: function(){
+        if(this.collection.length){
+            html = this.template({
+                photos: this.collection.models
+            });
+            $(this.el).html(html);
+        }
+        return this;
+    }
+
+});
+
 
 snapr.views.dash = Backbone.View.extend({
 
@@ -88,7 +105,13 @@ snapr.views.dash = Backbone.View.extend({
 
                         // Pull to refresh: if scroll elements are .flipped - refresh
                         if(left_pull_el.is('.flipped')){
-                            console.log('loading newer');
+                            photos = item.get_photos();
+                            photos.data.min_date = curr.data('date');
+                            photos.fetch({
+                                success:function(self, response){
+                                    if(self.length){}
+                                }
+                            });
                         }
                         if(right_pull_el.is('.flipped')){
                             console.log('loading more');
