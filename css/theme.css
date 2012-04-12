@@ -354,6 +354,9 @@ ul, ul li {
   padding: 0;
   margin-bottom: 8px;
 }
+.image-streams .image-stream .thumbs {
+  display: inline-block;
+}
 .image-streams .image-stream .load-more-inline {
   background-color: #fbfbfb;
   display: inline-block;
@@ -385,6 +388,11 @@ ul, ul li {
 }
 .image-streams .image-stream .load-more-inline.flip .ui-icon {
   -webkit-transform: rotate(-180deg) translatez(0);
+}
+.image-streams .image-stream .load-more-inline.left-pull {
+  position: absolute;
+  left: -101px;
+  top: 0;
 }
 .image-streams .image-stream.loading .load-more-inline .ui-icon-refresh {
   background-image: url('../gfx/spinner.png');
