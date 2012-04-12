@@ -354,6 +354,32 @@ ul, ul li {
   padding: 0;
   margin-bottom: 8px;
 }
+.image-streams .image-stream .load-more-inline {
+  background-color: #fbfbfb;
+  display: inline-block;
+  vertical-align: top;
+}
+.image-streams .image-stream .load-more-inline .ui-btn-text {
+  display: inline-block;
+  text-align: center;
+  font-size: 11px;
+  font-weight: bold;
+  text-transform: lowercase;
+  bottom: 12px;
+  position: absolute;
+  width: 101px;
+  color: #999999;
+}
+.image-streams .image-stream .load-more-inline .ui-icon {
+  width: 101px;
+  height: 101px;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: block;
+}
+.image-streams .image-stream .load-more-inline .ui-icon-refresh {
+  background-image: url('../gfx/refresh.png');
+}
 .image-streams .image-stream .edit-overlay {
   display: none;
   position: absolute;

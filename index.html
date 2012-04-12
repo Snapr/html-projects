@@ -1118,9 +1118,16 @@
                     </a>
                     <div id="upload-popular-nearby-images" class="thumbs-grid thumbs-grid-med n-horizontal-scroll">
                         <div class="scroll-wrapper"><!-- inner div for scroll -->
-                        <div class="left-pull">-></div>
+                        <div class="left-pull thumb-med load-more-inline">
+                            <span class="ui-icon ui-icon-refresh"></span>
+                            <span class="ui-btn-text">Refresh</span>
+
+                        </div>
                         <%= thumbs %>
-                        <div class="right-pull"><-</div>
+                        <div class="right-pull thumb-med load-more-inline">
+                            <span class="ui-icon ui-icon-refresh"></span>
+                            <span class="ui-btn-text">Load More</span>
+
                         </div>
                     </div>
                 <% }else{ %>
