@@ -4056,4 +4056,18 @@ input.ui-input-text, textarea.ui-input-text {
     -webkit-background-size: 288px 93px;
     background-size: 288px 93px;
   }
+  .image-streams .image-stream .load-more-inline .ui-icon-refresh {
+    background-image: url('../gfx/retina/refresh.png');
+    -moz-background-size: 56px 56px;
+    -o-background-size: 56px 56px;
+    -webkit-background-size: 56px 56px;
+    background-size: 56px 56px;
+  }
+  .image-streams.loading .load-more-inline .ui-icon-refresh {
+    background-image: url('../gfx/retina/spinner.png');
+    -moz-background-size: 56px 56px;
+    -o-background-size: 56px 56px;
+    -webkit-background-size: 56px 56px;
+    background-size: 56px 56px;
+  }
 }
