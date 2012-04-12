@@ -33,7 +33,7 @@ snapr.constants.share_redirect = "#/uploading/?";
 // Overriding sync to make this a jsonp app
 Backbone.sync = function (method, model, options) {
 
-    console.log( "sync", method, model, options )
+    //console.log( "sync", method, model, options );
     // Helper function to get a URL from a Model or Collection as a property
     // or as a function.
     // sends the method as a parameter so that different methods can have
@@ -51,42 +51,44 @@ Backbone.sync = function (method, model, options) {
         'read': 'GET'
     };
 
-    if(snapr.auth && snapr.auth.get('access_token')) {
-        // if there is no .data attribute on the model set it from the model's id
-        // or just pass an empty object
-        if (!model.data){
-            model.data = model.attributes || model.get('id') && {id: model.get('id')} || {};
-        }
-        model.data.access_token = snapr.auth.get('access_token');
+    var type = method_map[method];
+    // Default options, unless specified.
+    options || (options = {});
+    // Default JSON-request options.
+    var params = {
+        type: type,
+        dataType: 'jsonp',
+        data: model.data || model.attributes || model.get('id') && {id: model.get('id')} || {}
+    };
+    // Ensure that we have a URL.
+    if (!options.url) {
+      params.url = getUrl(model, method) || urlError();
     }
 
-    if(snapr.app_group && !model.data.app_group) {
-        _.extend(model.data, {
-            app_group: snapr.app_group
-        });
+    // auth
+    if(snapr.auth && snapr.auth.get('access_token')) {
+        params.data.access_token = snapr.auth.get('access_token');
+    }
+
+    if(snapr.app_group && !params.data.app_group) {
+        params.data.app_group = snapr.app_group;
     }
 
     // our hack to get jsonp to emulate http methods by appending them to the querystring
     if(method_map[method] != 'GET') {
-        var meth = '&_method=' + method_map[method];
-    } else {
-        var meth = '';
+        params.data._method = method_map[method];
+        params.type = 'GET';
     }
 
-    var url = getUrl(model, method);
+    // deep extend data
+    if(options.data){
+        options.data = _.extend(params.data, options.data);
+    }
 
-    console.log("ajax: ", url + '?' + $.param(model.data || {}) + meth)
 
-    $.ajax({
-        url: url + '?' + $.param(model.data || {}) + meth,
-        type: 'GET',
-        // data is sent in the url only
-        data: null,
-        dataType: options.dataType || 'jsonp',
-        processData: false,
-        success: options.success,
-        error: options.error
-    });
+    // Make the request, allowing the user to override any Ajax options.
+    return $.ajax(_.extend(params, options));
+
 };
 
 Number.prototype.zeroFill = function (width) {

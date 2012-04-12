@@ -3,6 +3,7 @@ snapr.views.dash_stream = Backbone.View.extend({
     template: _.template( $('#dash-stream-template').html() ),
     render: function(){
         this.photos = new snapr.views.dash_stream_thumbs({collection: this.model.photos});
+        this.photos.stream = this;
         this.photos.render();
         this.el = $(this.template( {
             stream: this.model
@@ -16,12 +17,23 @@ snapr.views.dash_stream = Backbone.View.extend({
 snapr.views.dash_stream_thumbs = Backbone.View.extend({
 
     template: _.template( $('#dash-thumbs-template').html() ),
+    initialize: function() {
+        this.collection.bind('all', this.render, this);
+    },
     render: function(){
         if(this.collection.length){
             html = this.template({
                 photos: this.collection.models
             });
             $(this.el).html(html).addClass('thumbs');
+
+            // if the scroller is set up, refresh it
+            if(this.stream.scroller){
+                scroller = this.stream.scroller;
+                setTimeout(function () {
+                    scroller.refresh();
+                }, 0);
+            }
         }
         return this;
     }
@@ -59,7 +71,7 @@ snapr.views.dash = Backbone.View.extend({
 
                 dash.render();
 
-               //  feed_view.feed_list.render( feed_view.photoswipe_init );
+                // feed_view.feed_list.render( feed_view.photoswipe_init );
                 $.mobile.hidePageLoadingMsg();
             },
             error:function(){
@@ -91,7 +103,7 @@ snapr.views.dash = Backbone.View.extend({
                 right_pull_el.toggleClass('flipped', scroller.x < (scroller.maxScrollX - pull_distance));
             }
             try{
-                new iScroll($('.n-horizontal-scroll', stream_el)[0], {
+                li.scroller = new iScroll($('.n-horizontal-scroll', stream_el)[0], {
                     vScroll: false,
                     hScrollbar: false,
                     snap: 'a.image-link',
@@ -105,16 +117,9 @@ snapr.views.dash = Backbone.View.extend({
 
                         // Pull to refresh: if scroll elements are .flipped - refresh
                         if(left_pull_el.is('.flipped')){
-                            photos = item.get_photos();
-                            photos.data.min_date = curr.data('date');
-                            photos.fetch({
-                                success:function(self, response){
-                                    if(self.length){}
-                                }
-                            });
-                        }
-                        if(right_pull_el.is('.flipped')){
-                            console.log('loading more');
+                            item.photos.fetch_newer();
+                        }else if(right_pull_el.is('.flipped')){
+                            item.photos.fetch_older();
                         }
 
                         flip_pulls(this);
