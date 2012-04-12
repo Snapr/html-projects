@@ -376,9 +376,24 @@ ul, ul li {
   background-repeat: no-repeat;
   background-position: center;
   display: block;
+  -webkit-transition-property: -webkit-transform;
+  -webkit-transition-duration: 250ms;
+  -webkit-transform: rotate(0deg) translatez(0);
 }
 .image-streams .image-stream .load-more-inline .ui-icon-refresh {
   background-image: url('../gfx/refresh.png');
+}
+.image-streams .image-stream .load-more-inline.flip .ui-icon {
+  -webkit-transform: rotate(-180deg) translatez(0);
+}
+.image-streams .image-stream.loading .load-more-inline .ui-icon-refresh {
+  background-image: url('../gfx/spinner.png');
+  -webkit-transform: rotate(0deg) translatez(0);
+  -webkit-transition-duration: 0ms;
+  -webkit-animation-name: loading;
+  -webkit-animation-duration: 2s;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
 }
 .image-streams .image-stream .edit-overlay {
   display: none;
@@ -401,6 +416,14 @@ ul, ul li {
 }
 .image-streams.edit .image-stream .edit-overlay {
   display: block;
+}
+@-webkit-keyframes loading {
+  from {
+    -webkit-transform: rotate(0deg) translatez(0);
+  }
+  to {
+    -webkit-transform: rotate(360deg) translatez(0);
+  }
 }
 /*
 * JQuery Mob - Custom

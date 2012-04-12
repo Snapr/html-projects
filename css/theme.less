@@ -315,12 +315,35 @@ h4{
                 background-repeat: no-repeat;
                 background-position: center;
                 display: block;
+                -webkit-transition-property:-webkit-transform;
+            	-webkit-transition-duration:250ms;
+            	-webkit-transform:rotate(0deg) translateZ(0);
+            	
             } 
             .ui-icon-refresh{
                 background-image: url('../gfx/refresh.png');
             }
+            
+            &.flip{
+                .ui-icon{
+    	        -webkit-transform:rotate(-180deg) translateZ(0);
+	            }
+    	    }
         }
-
+        
+        &.loading {
+            .load-more-inline{
+                 .ui-icon-refresh{
+                    background-image: url('../gfx/spinner.png');
+                    -webkit-transform:rotate(0deg) translateZ(0);
+                    -webkit-transition-duration:0ms;
+                    -webkit-animation-name:loading;
+                    -webkit-animation-duration:2s;
+                    -webkit-animation-iteration-count:infinite;
+                    -webkit-animation-timing-function:linear;
+                } 
+            }    
+        }
 
         .ui-bar{
 
@@ -355,10 +378,16 @@ h4{
             }
         }
     }
-
-
-
 }
+
+@-webkit-keyframes loading {
+    from { -webkit-transform:rotate(0deg) translateZ(0); }
+    to { -webkit-transform:rotate(360deg) translateZ(0); }
+}
+
+
+
+
 
 
 /*
