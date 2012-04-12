@@ -353,6 +353,7 @@ ul, ul li {
   list-style: none;
   padding: 0;
   margin-bottom: 8px;
+  white-space: no-wrap;
 }
 .image-streams .image-stream .thumbs {
   display: inline-block;
