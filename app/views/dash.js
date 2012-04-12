@@ -21,7 +21,7 @@ snapr.views.dash_stream_thumbs = Backbone.View.extend({
             html = this.template({
                 photos: this.collection.models
             });
-            $(this.el).html(html);
+            $(this.el).html(html).addClass('thumbs');
         }
         return this;
     }

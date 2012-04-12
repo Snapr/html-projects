@@ -77,7 +77,7 @@ textarea {
 * Global - stuffs from prinzhorn
 */
 /* Global Icon Sprites Layouts */
-/* 
+/*
 * Top Bar Icon Sprite - '../gfx/bar-icons.png'
 */
 /* Vertical Layout of Icons */
@@ -1081,6 +1081,10 @@ input.ui-input-text, textarea.ui-input-text {
   white-space: nowrap;
 }
 .n-horizontal-scroll .scroll-wrapper {
+  white-space: nowrap;
+  display: inline-block;
+}
+.n-horizontal-scroll .scroll-wrapper .thumbs{
   white-space: nowrap;
   display: inline-block;
 }
@@ -3925,7 +3929,7 @@ input.ui-input-text, textarea.ui-input-text {
 }
 /* Android HDPI - Pixel ratio of 1.5. Background-size is 1/1.5 = 66.67% (of a 150px image) */
 @media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5) {
-  
+
 }
 /* High Resolution (iPhone 4) */
 @media only screen and (-webkit-min-device-pixel-ratio: 2) {
