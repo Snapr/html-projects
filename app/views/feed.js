@@ -127,31 +127,7 @@ snapr.views.feed = Backbone.View.extend({
         this.populate_feed();
     },
 
-    photoswipe_init: function()
-    {
-        // detach the previous photoswipe instance if it exists
-        var photoSwipeInstance = Code.PhotoSwipe.getInstance( 'feed' );
-
-        if (typeof photoSwipeInstance != "undefined" && photoSwipeInstance !== null)
-        {
-            Code.PhotoSwipe.detatch(photoSwipeInstance);
-        }
-
-        if ($( "#feed-images a.gallery_link", this.el ).length)
-        {
-            // make sure we set the param backButtonHideEnabled:false to prevent photoswipe from changing the hash
-            photoSwipeInstance = $( "#feed-images a.gallery_link", this.el )
-                .photoSwipe( {
-                    backButtonHideEnabled: false,
-                    preventSlideshow: true,
-                    captionAndToolbarFlipPosition: true,
-                    allowUserZoom: false
-                }, 'feed' );
-        }
-
-
-        $.mobile.hidePageLoadingMsg();
-    },
+    photoswipe_init: function(){ photoswipe_init('feed', $( "#feed-images a.gallery_link", this.el )); },
 
     populate_feed: function( additional_data )
     {

@@ -10,6 +10,9 @@ snapr.views.dash_stream = Backbone.View.extend({
         } ));
         $(this.photos.el).insertAfter($(this.el).find('.left-pull'));
         return this;
+    },
+    photoswipe_init: function(){
+        photoswipe_init('stream'+this.model.cid, $( "a.image-link", this.el ));
     }
 
 });
@@ -18,7 +21,7 @@ snapr.views.dash_stream_thumbs = Backbone.View.extend({
 
     template: _.template( $('#dash-thumbs-template').html() ),
     initialize: function() {
-        this.collection.bind('all', this.render, this);
+        this.collection.bind('all', this.re_render, this);
     },
     render: function(){
         if(this.collection.length){
@@ -26,6 +29,13 @@ snapr.views.dash_stream_thumbs = Backbone.View.extend({
                 photos: this.collection.models
             });
             $(this.el).html(html).addClass('thumbs');
+        }
+        return this;
+    },
+    re_render: function(){
+        if(this.collection.length){
+
+            this.render();
 
             // if the scroller is set up, refresh it
             if(this.stream.scroller){
@@ -34,6 +44,8 @@ snapr.views.dash_stream_thumbs = Backbone.View.extend({
                     scroller.refresh();
                 }, 0);
             }
+            console.log("photoswipe from re-render");
+            this.stream.photoswipe_init();
         }
         return this;
     }
@@ -68,14 +80,12 @@ snapr.views.dash = Backbone.View.extend({
         this.collection.data = {n:6, feed:true}; //, nearby:true};
         var options = {
             success: function(){
-
                 dash.render();
-
-                // feed_view.feed_list.render( feed_view.photoswipe_init );
-                $.mobile.hidePageLoadingMsg();
             },
             error:function(){
                 console.error('Error loading dash from server');
+            },
+            complete: function(){
                 $.mobile.hidePageLoadingMsg();
             }
         };
@@ -97,6 +107,7 @@ snapr.views.dash = Backbone.View.extend({
                 pull_distance = 20,
                 left_pull_el = $('.left-pull', stream_el),
                 right_pull_el = $('.right-pull', stream_el);
+            li.photoswipe_init();
             streams.append( stream_el );
             function flip_pulls(scroller){
                 left_pull_el.toggleClass('flipped', scroller.x > pull_distance);
@@ -135,6 +146,7 @@ snapr.views.dash = Backbone.View.extend({
         }, this);
 
         this.el.trigger( "create" );
+
     }
 
 });

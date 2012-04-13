@@ -1141,14 +1141,13 @@
         </script>
         <script id="dash-thumbs-template" type="text/template">
             <% _.each(photos, function(photo) { %>
-                <a class="image-link" data-ajax="false" data-date="<%= photo.get('date') %>" data-description="<%= photo.get('description') %>">
+                <a class="image-link" href="https://s3.amazonaws.com/media-server2.snapr.us/lrg/<%= photo.get('secret') %>/<%= photo.get('id') %>.jpg" rel="external" data-date="<%= photo.get('date') %>" data-description="<%= photo.get('description') %>">
                 <img src="https://s3.amazonaws.com/media-server2.snapr.us/thm2/<%= photo.get('secret') %>/<%= photo.get('id') %>.jpg" alt="<%= photo.get('description') %>" class="thumb-image thumb-med">
                 </a>
             <% }); %>
         </script>
-        <!-- href="#/feed/?photo_id=<%= photo.id %>&amp;username=<%= photo.user %>" -->
 
-        <!-- @dashaddperson DIAOLOG-->
+        <!-- @dashaddperson DIALOG-->
        <div id="dash-add-person" data-add-back-btn="true" data-role="dialog" data-overlay-theme="c" data-theme="c">
            <div data-role="header" data-theme="c">
                <h1>Add Person</h1>
