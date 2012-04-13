@@ -322,24 +322,29 @@ h4{
                 -webkit-transition-property:-webkit-transform;
             	-webkit-transition-duration:250ms;
             	-webkit-transform:rotate(0deg) translateZ(0);
-            	
-            } 
+
+            }
             .ui-icon-refresh{
                 background-image: url('../gfx/refresh.png');
             }
-            
+
             &.flip{
                 .ui-icon{
     	        -webkit-transform:rotate(-180deg) translateZ(0);
 	            }
     	    }
-    	    &.left-pull{
-    	        position: absolute;
+            &.left-pull{
+                position: absolute;
                 left: -@size-img-thumb;
                 top: 0;
-    	    }
+            }
+            &.right-pull{
+                position: absolute;
+                right: -@size-img-thumb;
+                top: 0;
+            }
         }
-        
+
         &.loading {
             .load-more-inline{
                  .ui-icon-refresh{
@@ -350,8 +355,8 @@ h4{
                     -webkit-animation-duration:2s;
                     -webkit-animation-iteration-count:infinite;
                     -webkit-animation-timing-function:linear;
-                } 
-            }    
+                }
+            }
         }
 
         .ui-bar{
@@ -1042,7 +1047,6 @@ fieldset.ui-controlgroup{
 }
 .right-pull, .left-pull{
     display:inline;
-    &.flipped{ color: red; }
 }
 
 /*
@@ -2235,10 +2239,10 @@ fieldset.ui-controlgroup{
        .sharing-icon-small {
            position: absolute;
            top: -3px;
-           left: 0;   
-       }  
+           left: 0;
+       }
     }
-   
+
 }
 
 .avatar-select-block{
@@ -3571,7 +3575,7 @@ fieldset.ui-controlgroup{
         background-image: url('../gfx/retina/android-logo.png');
         .background-size (288px, 93px);
     }
-    
+
     .image-streams{
          .image-stream{
              .load-more-inline{
@@ -3586,7 +3590,7 @@ fieldset.ui-controlgroup{
                   .ui-icon-refresh{
                       background-image: url('../gfx/retina/spinner.png');
                       .background-size (56px, 56px);
-                      
+
                   }
               }
           }

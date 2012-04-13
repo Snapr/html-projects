@@ -395,6 +395,11 @@ ul, ul li {
   left: -101px;
   top: 0;
 }
+.image-streams .image-stream .load-more-inline.right-pull {
+  position: absolute;
+  right: -101px;
+  top: 0;
+}
 .image-streams .image-stream.loading .load-more-inline .ui-icon-refresh {
   background-image: url('../gfx/spinner.png');
   -webkit-transform: rotate(0deg) translatez(0);
