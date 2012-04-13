@@ -63,7 +63,8 @@ snapr.views.people = snapr.views.page.extend({
         {
             var people_li = new snapr.views.people_li({
                 template: people_li_template,
-                model: model
+                model: model,
+                parentView: this
             });
 
             people_list.append( people_li.render().el );

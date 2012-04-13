@@ -2,14 +2,12 @@ snapr.views.people_li = Backbone.View.extend({
 
     initialize: function()
     {
+        _.bindAll( this);
         this.template = this.options.template;
 
         var people_li = this;
 
-        this.model.bind( "change", function()
-        {
-            people_li.refresh();
-        });
+        this.model.bind( "change", this.refresh );
     },
 
     tagName: 'li',
@@ -21,7 +19,7 @@ snapr.views.people_li = Backbone.View.extend({
                 user: this.model,
                 auth_username: snapr.auth.get( "snapr_user" ),
                 logged_in: snapr.auth.has( "access_token" )
-            }) )
+            }) );
 
         return this;
     },
@@ -33,25 +31,28 @@ snapr.views.people_li = Backbone.View.extend({
 
         var follow_button = this.$el.find("a[data-icon]");
         var following = this.model.get("relationship").you_follow;
+
         if (following)
         {
             follow_button
                 .attr("data-icon", "check")
                 .removeClass("follow")
-                .addClass("unfollow")
-                .find("span.ui-icon")
+                .addClass("unfollow");
+
+            follow_button.find("span.ui-icon")
                     .removeClass("ui-icon-plus")
-                    .addClass("ui-icon-check")
+                    .addClass("ui-icon-check");
         }
         else
         {
             follow_button
                 .attr("data-icon", "plus")
                 .removeClass("unfollow")
-                .addClass("follow")
-                .find("span.ui-icon")
+                .addClass("follow");
+
+            follow_button.find("span.ui-icon")
                     .removeClass("ui-icon-check")
-                    .addClass("ui-icon-plus")
+                    .addClass("ui-icon-plus");
         }
 
         this.$el.find(".followers").text( this.model.get("followers") );
