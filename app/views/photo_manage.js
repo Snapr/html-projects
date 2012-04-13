@@ -8,7 +8,8 @@ snapr.views.photo_manage = Backbone.View.extend({
         this.template = _.template( $("#photo-manage-template").html() );
 
         // update the display when we change the photo
-        this.model.bind( "change", this.render );
+        this.model.bind( "change:status", this.render );
+        this.model.bind( "change:flagged", this.render );
     },
 
     events: {
