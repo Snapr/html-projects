@@ -18,8 +18,8 @@ snapr.views.dash_add_search = snapr.views.dialog.extend({
 
     update_placeholder: function()
     {
-        var keywords = $("#search-keywords");
-        var type = $("#search-type").val();
+        var keywords = $("#dash-search-keywords");
+        var type = $("#dash-search-type").val();
 
         if (keywords.val().length == 0)
         {
@@ -40,8 +40,8 @@ snapr.views.dash_add_search = snapr.views.dialog.extend({
 
     search: function()
     {
-        var keywords = $("#search-keywords").val();
-        var type = $("#search-type").val();
+        var keywords = $("#dash-search-keywords").val();
+        var type = $("#dash-search-type").val();
 
         switch(type){
             case 'location':
