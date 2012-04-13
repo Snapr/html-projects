@@ -585,7 +585,6 @@ snapr.routers = Backbone.Router.extend({
 
     home: function( query_string )
     {
-        console.warn("/home÷", this)
         snapr.utils.get_query_params( query_string );
         snapr.info.current_view = new snapr.views.home({
             el: $('#home')[0]
@@ -656,6 +655,7 @@ snapr.routers = Backbone.Router.extend({
             query: query
         });
     },
+
     app: function( query_string )
     {
         var query = snapr.utils.get_query_params( query_string );
@@ -664,22 +664,23 @@ snapr.routers = Backbone.Router.extend({
            query: query
        });
      },
+
     activity: function( query_string )
-      {
-          var query = snapr.utils.get_query_params( query_string );
-          snapr.info.current_view = new snapr.views.activity({
-              el: $("#activity")[0],
-              query: query
-          });
-      },
+    {
+        var query = snapr.utils.get_query_params( query_string );
+        snapr.info.current_view = new snapr.views.activity({
+            el: $("#activity")[0],
+            query: query
+        });
+    },
 
     cities: function( query_string )
-       {
-           var query = snapr.utils.get_query_params( query_string );
-           snapr.info.current_view = new snapr.views.cities({
-               el: $("#cities")[0],
-               query: query
-           });
+    {
+        var query = snapr.utils.get_query_params( query_string );
+        snapr.info.current_view = new snapr.views.cities({
+            el: $("#cities")[0],
+            query: query
+        });
     },
 
     my_account: function( query_string )
@@ -736,7 +737,6 @@ snapr.routers = Backbone.Router.extend({
 
     popular: function( query_string )
     {
-        console.warn("go to popular")
         snapr.utils.get_query_params( query_string );
         snapr.info.current_view = new snapr.views.popular({
             el: $( "#popular" )[0]
@@ -750,6 +750,7 @@ snapr.routers = Backbone.Router.extend({
             el: $( "#dashboard" )[0]
         });
     },
+
     dash_add_person: function( follow, query_string )
     {
         var query = snapr.utils.get_query_params( query_string );
@@ -758,14 +759,16 @@ snapr.routers = Backbone.Router.extend({
             el: $("#dash-add-person")[0]
         });
     },
+
     dash_add_search: function( follow, query_string )
-       {
-           var query = snapr.utils.get_query_params( query_string );
-           snapr.info.current_view = new snapr.views.dash_add_search({
-               query: query,
-               el: $("#dash-add-search")[0]
-           });
-       },
+    {
+        var query = snapr.utils.get_query_params( query_string );
+        snapr.info.current_view = new snapr.views.dash_add_search({
+            query: query,
+            el: $("#dash-add-search")[0]
+        });
+    },
+
     search: function( query_string )
     {
         snapr.utils.get_query_params( query_string );

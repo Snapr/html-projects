@@ -14,7 +14,6 @@ snapr.views.map = snapr.views.page.extend({
         snapr.utils.set_header_back_btn_text( this.el, query.back );
 
         this.change_page({
-            changeHash: false,
             transition: 'flip'
         });
 
@@ -71,36 +70,42 @@ snapr.views.map = snapr.views.page.extend({
         else
         {
             var map_view = this;
-            var success_callback = function(location){
-                map_view.map_settings.center = new google.maps.LatLng(location.coords.latitude, location.coords.longitude);
-                map_view.create_map(map_view.query && map_view.query.location);
-            };
-            var error_callback = function(){
-                map_view.map_settings.center = new google.maps.LatLng(42, 12);
-                map_view.map_settings.zoom = 2;
-                map_view.create_map(map_view.query && map_view.query.location);
-            };
 
-            if(this.map_settings.center === undefined){
-                snapr.geo.get_location( success_callback, error_callback );
-            }else{
-                this.create_map( this.map_query.get( "location" ) );
-            }
+            this.$el.on( "pageshow", function()
+            {
+                var success_callback = function( location )
+                {
+                    map_view.map_settings.center = new google.maps.LatLng(location.coords.latitude, location.coords.longitude);
+                    map_view.create_map(map_view.query && map_view.query.location);
+                };
+                var error_callback = function()
+                {
+                    map_view.map_settings.center = new google.maps.LatLng(42, 12);
+                    map_view.map_settings.zoom = 2;
+                    map_view.create_map(map_view.query && map_view.query.location);
+                };
+
+                if (map_view.map_settings.center === undefined)
+                {
+                    snapr.geo.get_location( success_callback, error_callback );
+                }
+                else
+                {
+                    map_view.create_map( map_view.map_query.get( "location" ) );
+                }
+
+                map_view.$el.live('pagehide', function (e) {
+                    google.maps.event.clearListeners( map_view.map, "idle" );
+                    return true;
+                });
+            });
         }
 
         this.map_controls = new snapr.views.map_controls({
             el: this.$el.find(".v-map-controls")[0],
             model: this.map_query,
             collection: this.thumb_collection
-        })
-
-        var map_view = this;
-
-        this.$el.live('pagehide', function (e) {
-            google.maps.event.clearListeners( map_view.map, "idle" );
-            return true;
         });
-
     },
     events: {
         "click .x-current-location": "go_to_current_location",
