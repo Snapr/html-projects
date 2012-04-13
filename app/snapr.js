@@ -163,6 +163,22 @@ snapr.utils.plural = function( n )
 {
     return (n > 1) ? "s" : "";
 };
+snapr.utils.amp_join = function( array_of_strings )
+{
+    if (arrray_of_strings.length == 1)
+    {
+        return arrray_of_strings[0];
+    }
+    else if (arrray_of_strings.length > 1)
+    {
+        return arrray_of_strings.slice( 0, arrray_of_strings.length -1 ).join(", ") +
+            ", &amp; " + arrray_of_strings[arrray_of_strings.length - 1];
+    }
+    else
+    {
+        return "";
+    }
+};
 snapr.utils.date_to_snapr_format = function (d) {
     return d.getFullYear() + '-' + (d.getMonth() + 1).zeroFill(2) + '-' + d.getDate().zeroFill(2) + ' 00:00:00';
 };
