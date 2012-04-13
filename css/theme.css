@@ -9,7 +9,7 @@
   font-style: normal;
 }
 /*
-* Browser 
+* Browser
 */
 html {
   -webkit-user-select: none;
@@ -77,7 +77,7 @@ textarea {
 * Global - stuffs from prinzhorn
 */
 /* Global Icon Sprites Layouts */
-/* 
+/*
 * Top Bar Icon Sprite - '../gfx/bar-icons.png'
 */
 /* Vertical Layout of Icons */
@@ -261,6 +261,11 @@ ul, ul li {
   margin: 0;
   margin-bottom: 16px;
 }
+.ui-shadow-inset {
+  -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.2);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.2);
+}
 .warning-message {
   padding: 8px;
   background-color: #ffff00;
@@ -348,6 +353,61 @@ ul, ul li {
   list-style: none;
   padding: 0;
   margin-bottom: 8px;
+  white-space: no-wrap;
+}
+.image-streams .image-stream .thumbs {
+  display: inline-block;
+}
+.image-streams .image-stream .load-more-inline {
+  background-color: #fbfbfb;
+  display: inline-block;
+  vertical-align: top;
+}
+.image-streams .image-stream .load-more-inline .ui-btn-text {
+  display: inline-block;
+  text-align: center;
+  font-size: 11px;
+  font-weight: bold;
+  text-transform: lowercase;
+  bottom: 12px;
+  position: absolute;
+  width: 101px;
+  color: #999999;
+}
+.image-streams .image-stream .load-more-inline .ui-icon {
+  width: 101px;
+  height: 101px;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: block;
+  -webkit-transition-property: -webkit-transform;
+  -webkit-transition-duration: 250ms;
+  -webkit-transform: rotate(0deg) translatez(0);
+}
+.image-streams .image-stream .load-more-inline .ui-icon-refresh {
+  background-image: url('../gfx/refresh.png');
+}
+.image-streams .image-stream .load-more-inline.flip .ui-icon {
+  -webkit-transform: rotate(-180deg) translatez(0);
+}
+.image-streams .image-stream .load-more-inline.left-pull {
+  position: absolute;
+  left: -101px;
+  top: 0;
+}
+.image-streams .image-stream .load-more-inline.right-pull {
+  position: absolute;
+  right: -101px;
+  top: 0;
+}
+.image-streams .image-stream.loading .load-more-inline .ui-icon-refresh {
+  background-image: url('../gfx/spinner.png');
+  -webkit-transform: rotate(0deg) translatez(0);
+  -webkit-transition-duration: 0ms;
+  -webkit-animation-name: loading;
+  -webkit-animation-duration: 2s;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
 }
 .image-streams .image-stream .edit-overlay {
   display: none;
@@ -371,8 +431,16 @@ ul, ul li {
 .image-streams.edit .image-stream .edit-overlay {
   display: block;
 }
+@-webkit-keyframes loading {
+  from {
+    -webkit-transform: rotate(0deg) translatez(0);
+  }
+  to {
+    -webkit-transform: rotate(360deg) translatez(0);
+  }
+}
 /*
-* JQuery Mob - Custom 
+* JQuery Mob - Custom
 *   Some basics
 */
 .ui-content {
@@ -550,7 +618,7 @@ input.ui-input-text, textarea.ui-input-text {
   border-radius: 0;
 }
 /*
-* Headers - Custom 
+* Headers - Custom
 *   Header bars in the snapr project are all transparent.. BG comes from layer below
 */
 .ui-header {
@@ -683,7 +751,7 @@ input.ui-input-text, textarea.ui-input-text {
   box-shadow: none;
 }
 /*
-* UI Components - Custom Stylz 
+* UI Components - Custom Stylz
 */
 /* @ui-bar Title Bars that pop up all over the place */
 .ui-bar {
@@ -733,6 +801,27 @@ input.ui-input-text, textarea.ui-input-text {
   right: 4px;
   top: 0px;
 }
+.ui-bar .image-details {
+  display: inline-block;
+  width: 93%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.ui-bar .image-time {
+  position: relative;
+  display: inline-block;
+  padding-left: 20px;
+  color: #666666;
+}
+.ui-bar .image-time .ui-icon-clock {
+  top: -9px !important;
+}
+.ui-bar .image-tag {
+  max-width: 50%;
+  display: inline-block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 .ui-bar.top-no-arrow {
   text-align: left;
   -moz-border-radius-topleft: 8px;
@@ -779,14 +868,6 @@ input.ui-input-text, textarea.ui-input-text {
   margin: 0;
   height: 32px;
   width: 32px;
-}
-.ui-bar.top-no-arrow .image-time, .ui-bar.top-left-arrow .image-time {
-  position: relative;
-  padding-left: 20px;
-  color: #666666;
-}
-.ui-bar.top-no-arrow .image-time .ui-icon-clock, .ui-bar.top-left-arrow .image-time .ui-icon-clock {
-  top: -9px;
 }
 .ui-bar.top-left-arrow::after {
   width: 0;
@@ -950,8 +1031,9 @@ input.ui-input-text, textarea.ui-input-text {
   height: 21px;
   position: relative;
   display: block;
-  top: 1px;
-  left: 1px;
+  top: 1px!important;
+  left: 1px!important;
+  margin: 0;
 }
 .sharing-icon-small.twitter-sharing {
   background-color: #68d9ff;
@@ -960,7 +1042,7 @@ input.ui-input-text, textarea.ui-input-text {
   box-shadow: inset 0 3px 20px #309dc2;
 }
 .sharing-icon-small.twitter-sharing .ui-icon {
-  background-position: 0 0px;
+  background-position: 0 0px !important;
 }
 .sharing-icon-small.facebook-sharing {
   background-color: #507ab8;
@@ -969,7 +1051,7 @@ input.ui-input-text, textarea.ui-input-text {
   box-shadow: inset 0 3px 20px #2e5998;
 }
 .sharing-icon-small.facebook-sharing .ui-icon {
-  background-position: 0 -21px;
+  background-position: 0 -21px !important;
 }
 .sharing-icon-small.tumblr-sharing {
   background-color: #5a687d;
@@ -978,7 +1060,7 @@ input.ui-input-text, textarea.ui-input-text {
   box-shadow: inset 0 3px 20px #2c3c54;
 }
 .sharing-icon-small.tumblr-sharing .ui-icon {
-  background-position: 0 -42px;
+  background-position: 0 -42px !important;
 }
 .sharing-icon-small.foursquare-sharing {
   background-color: #34a0ce;
@@ -987,10 +1069,10 @@ input.ui-input-text, textarea.ui-input-text {
   box-shadow: inset 0 3px 20px #29708e;
 }
 .sharing-icon-small.foursquare-sharing .ui-icon {
-  background-position: 0 -63px;
+  background-position: 0 -63px !important;
 }
 /*
-* Image Views - Custom 
+* Image Views - Custom
 */
 .thumbs-grid-med, .grid #feed-images {
   margin: 0 -8px;
@@ -1012,8 +1094,22 @@ input.ui-input-text, textarea.ui-input-text {
 .n-horizontal-scroll {
   white-space: nowrap;
 }
+.n-horizontal-scroll .scroll-wrapper {
+  white-space: nowrap;
+  display: inline-block;
+}
+.n-horizontal-scroll .scroll-wrapper .thumbs{
+  white-space: nowrap;
+  display: inline-block;
+}
+.right-pull, .left-pull {
+  display: inline;
+}
+.right-pull.flipped, .left-pull.flipped {
+  color: red;
+}
 /*
-* Main Menu - Custom 
+* Main Menu - Custom
 */
 .main-logo {
   background-image: url('../gfx/main-logo.png');
@@ -1406,12 +1502,10 @@ input.ui-input-text, textarea.ui-input-text {
 .image-item-block .image-actions .ui-btn-hover-d .ui-icon,
 .image-item-block .image-actions .ui-btn-down-d .ui-icon,
 .image-item-block .image-actions .ui-btn-active-d .ui-icon {
-  background: none;
   width: 40px;
   height: 40px;
   margin-top: -20px;
   margin-left: -10px;
-  background-image: url('../gfx/action-icons-custom.png');
   -moz-border-radius: 0;
   -webkit-border-radius: 0;
   border-radius: 0;
@@ -1421,78 +1515,6 @@ input.ui-input-text, textarea.ui-input-text {
 .image-item-block .image-actions .ui-btn-down-d .ui-btn-text,
 .image-item-block .image-actions .ui-btn-active-d .ui-btn-text {
   line-height: 40px;
-}
-.image-item-block .image-actions .ui-btn-up-d .ui-icon-action-heart,
-.image-item-block .image-actions .ui-btn-hover-d .ui-icon-action-heart,
-.image-item-block .image-actions .ui-btn-down-d .ui-icon-action-heart,
-.image-item-block .image-actions .ui-btn-active-d .ui-icon-action-heart {
-  background-position: 0px 0px;
-}
-.image-item-block .image-actions .ui-btn-up-d .ui-icon-action-comment,
-.image-item-block .image-actions .ui-btn-hover-d .ui-icon-action-comment,
-.image-item-block .image-actions .ui-btn-down-d .ui-icon-action-comment,
-.image-item-block .image-actions .ui-btn-active-d .ui-icon-action-comment {
-  background-position: 0px -40px;
-}
-.image-item-block .image-actions .ui-btn-up-d .ui-icon-action-more,
-.image-item-block .image-actions .ui-btn-hover-d .ui-icon-action-more,
-.image-item-block .image-actions .ui-btn-down-d .ui-icon-action-more,
-.image-item-block .image-actions .ui-btn-active-d .ui-icon-action-more {
-  background-position: 0px -120px;
-}
-.image-item-block .image-actions .ui-btn-up-d.selected .ui-icon-action-heart,
-.image-item-block .image-actions .ui-btn-hover-d.selected .ui-icon-action-heart,
-.image-item-block .image-actions .ui-btn-down-d.selected .ui-icon-action-heart,
-.image-item-block .image-actions .ui-btn-active-d.selected .ui-icon-action-heart,
-.image-item-block .image-actions .ui-btn-up-d.ui-btn-hover-d .ui-icon-action-heart,
-.image-item-block .image-actions .ui-btn-hover-d.ui-btn-hover-d .ui-icon-action-heart,
-.image-item-block .image-actions .ui-btn-down-d.ui-btn-hover-d .ui-icon-action-heart,
-.image-item-block .image-actions .ui-btn-active-d.ui-btn-hover-d .ui-icon-action-heart,
-.image-item-block .image-actions .ui-btn-up-d.ui-btn-down-d .ui-icon-action-heart,
-.image-item-block .image-actions .ui-btn-hover-d.ui-btn-down-d .ui-icon-action-heart,
-.image-item-block .image-actions .ui-btn-down-d.ui-btn-down-d .ui-icon-action-heart,
-.image-item-block .image-actions .ui-btn-active-d.ui-btn-down-d .ui-icon-action-heart,
-.image-item-block .image-actions .ui-btn-up-d.ui-btn-active-d .ui-icon-action-heart,
-.image-item-block .image-actions .ui-btn-hover-d.ui-btn-active-d .ui-icon-action-heart,
-.image-item-block .image-actions .ui-btn-down-d.ui-btn-active-d .ui-icon-action-heart,
-.image-item-block .image-actions .ui-btn-active-d.ui-btn-active-d .ui-icon-action-heart {
-  background-position: -40px 0px;
-}
-.image-item-block .image-actions .ui-btn-up-d.selected .ui-icon-action-comment,
-.image-item-block .image-actions .ui-btn-hover-d.selected .ui-icon-action-comment,
-.image-item-block .image-actions .ui-btn-down-d.selected .ui-icon-action-comment,
-.image-item-block .image-actions .ui-btn-active-d.selected .ui-icon-action-comment,
-.image-item-block .image-actions .ui-btn-up-d.ui-btn-hover-d .ui-icon-action-comment,
-.image-item-block .image-actions .ui-btn-hover-d.ui-btn-hover-d .ui-icon-action-comment,
-.image-item-block .image-actions .ui-btn-down-d.ui-btn-hover-d .ui-icon-action-comment,
-.image-item-block .image-actions .ui-btn-active-d.ui-btn-hover-d .ui-icon-action-comment,
-.image-item-block .image-actions .ui-btn-up-d.ui-btn-down-d .ui-icon-action-comment,
-.image-item-block .image-actions .ui-btn-hover-d.ui-btn-down-d .ui-icon-action-comment,
-.image-item-block .image-actions .ui-btn-down-d.ui-btn-down-d .ui-icon-action-comment,
-.image-item-block .image-actions .ui-btn-active-d.ui-btn-down-d .ui-icon-action-comment,
-.image-item-block .image-actions .ui-btn-up-d.ui-btn-active-d .ui-icon-action-comment,
-.image-item-block .image-actions .ui-btn-hover-d.ui-btn-active-d .ui-icon-action-comment,
-.image-item-block .image-actions .ui-btn-down-d.ui-btn-active-d .ui-icon-action-comment,
-.image-item-block .image-actions .ui-btn-active-d.ui-btn-active-d .ui-icon-action-comment {
-  background-position: -40px -40px;
-}
-.image-item-block .image-actions .ui-btn-up-d.selected .ui-icon-action-more,
-.image-item-block .image-actions .ui-btn-hover-d.selected .ui-icon-action-more,
-.image-item-block .image-actions .ui-btn-down-d.selected .ui-icon-action-more,
-.image-item-block .image-actions .ui-btn-active-d.selected .ui-icon-action-more,
-.image-item-block .image-actions .ui-btn-up-d.ui-btn-hover-d .ui-icon-action-more,
-.image-item-block .image-actions .ui-btn-hover-d.ui-btn-hover-d .ui-icon-action-more,
-.image-item-block .image-actions .ui-btn-down-d.ui-btn-hover-d .ui-icon-action-more,
-.image-item-block .image-actions .ui-btn-active-d.ui-btn-hover-d .ui-icon-action-more,
-.image-item-block .image-actions .ui-btn-up-d.ui-btn-down-d .ui-icon-action-more,
-.image-item-block .image-actions .ui-btn-hover-d.ui-btn-down-d .ui-icon-action-more,
-.image-item-block .image-actions .ui-btn-down-d.ui-btn-down-d .ui-icon-action-more,
-.image-item-block .image-actions .ui-btn-active-d.ui-btn-down-d .ui-icon-action-more,
-.image-item-block .image-actions .ui-btn-up-d.ui-btn-active-d .ui-icon-action-more,
-.image-item-block .image-actions .ui-btn-hover-d.ui-btn-active-d .ui-icon-action-more,
-.image-item-block .image-actions .ui-btn-down-d.ui-btn-active-d .ui-icon-action-more,
-.image-item-block .image-actions .ui-btn-active-d.ui-btn-active-d .ui-icon-action-more {
-  background-position: -40px -120px;
 }
 .image-item-block .image-actions .reactions-button {
   position: absolute;
@@ -1566,14 +1588,31 @@ input.ui-input-text, textarea.ui-input-text {
 .ui-checkbox .ui-checkbox-off.ui-btn-active .ui-icon {
   background-position: -40px -240px;
 }
-.inline-palette {
+/* The magical dance to center a palette with variable width */
+.has-palette {
+  position: relative;
+}
+.has-palette .action-palette {
   position: absolute;
-  top: -54px;
-  margin-left: -69px;
+  bottom: 100%;
+  left: 20px;
+  width: 0px;
+}
+.has-palette .action-palette .center-palette {
+  display: inline-block;
+  position: relative;
+  left: 50%;
+}
+.has-palette .action-palette .center-palette .inline-palette {
+  position: relative;
+  left: -50%;
+}
+.inline-palette {
   -moz-border-radius: 10px;
   -webkit-border-radius: 10px;
   border-radius: 10px;
   padding: 6px;
+  white-space: nowrap;
 }
 .inline-palette::after {
   width: 0;
@@ -1608,7 +1647,7 @@ input.ui-input-text, textarea.ui-input-text {
   left: 0;
 }
 /*
-* @dashboard - PAGE 
+* @dashboard - PAGE
 */
 .dash-footer .ui-icon {
   background-image: url('../gfx/dash-icons.png');
@@ -1624,8 +1663,9 @@ input.ui-input-text, textarea.ui-input-text {
   background-position: 0 -32px;
 }
 /*
-* @share - PAGE 
-*/.share-photo div[data-role="header"] {
+* @share - PAGE
+*/
+.share-photo div[data-role="header"] {
   z-index: 20;
 }
 .share-photo div[data-role="content"] {
@@ -1926,7 +1966,7 @@ input.ui-input-text, textarea.ui-input-text {
   background-position: 0px -200px;
 }
 /*
-* @profile - DIALOG 
+* @profile - DIALOG
 */
 .user-profile .user-info-block {
   padding-left: 108px;
@@ -1980,8 +2020,9 @@ input.ui-input-text, textarea.ui-input-text {
   top: 20px;
 }
 /*
-* @uploading - PAGE 
-*/.upload-progress-header {
+* @uploading - PAGE
+*/
+.upload-progress-header {
   padding: 8px;
   height: 108px;
   overflow: hidden;
@@ -2025,7 +2066,7 @@ input.ui-input-text, textarea.ui-input-text {
   margin-right: 2px;
 }
 /*
-* @people PAGE 
+* @people PAGE
 */
 /* Strip bare the normal lists style */
 .simple-list .ui-btn {
@@ -2138,12 +2179,84 @@ input.ui-input-text, textarea.ui-input-text {
 .account-content .myaccount-settings {
   margin-top: -10px;
 }
+.account-content .ui-collapsible-set {
+  margin-bottom: -2px;
+}
+.account-content .ui-bar {
+  -moz-box-shadow: 0 -1px 3px rgba(0, 0, 0, 0.05);
+  -webkit-box-shadow: 0 -1px 3px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 -1px 3px rgba(0, 0, 0, 0.05);
+  border-bottom: solid 1px #e4e4e4;
+}
+.account-content .ui-bar .ui-btn-text {
+  padding-left: 8px;
+}
+.ui-collapsible-set .ui-collapsible-heading .ui-btn {
+  margin-top: 1px;
+  border-bottom: solid 1px #e4e4e4;
+}
+.ui-collapsible-set .ui-collapsible-heading .ui-btn .ui-btn-inner {
+  padding: 16px 40px 16px 16px;
+}
+.ui-collapsible-set .ui-collapsible-heading .ui-btn .ui-icon {
+  left: auto;
+  right: 8px;
+}
+.ui-collapsible-set .ui-collapsible-heading .ui-btn .ui-icon-plus {
+  background-position: -216px -36px;
+}
+.ui-collapsible-set .ui-collapsible-heading .ui-btn .ui-icon-minus {
+  background-position: -180px -36px;
+}
+.ui-collapsible-set .ui-collapsible-heading .ui-btn-up-c {
+  background-color: #fbfbfb;
+  background-image: url('../gfx/bg-texture-light.gif');
+}
+.ui-collapsible-set .ui-collapsible-heading .ui-btn-hover-c {
+  background-image: none;
+  background-color: #fdfdfd;
+}
+.ui-collapsible-set .ui-collapsible-content .ui-btn {
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  -moz-border-radius: 20px;
+  -webkit-border-radius: 20px;
+  border-radius: 20px;
+  border: solid 1px #e4e4e4;
+}
+.ui-collapsible-set .ui-collapsible-content.ui-body-d {
+  border: none;
+  border-bottom: solid 1px #e4e4e4;
+}
+.add-services .ui-collapsible-heading .ui-btn-text, .linked-services .ui-collapsible-heading .ui-btn-text {
+  padding-left: 28px;
+}
+.add-services .ui-collapsible-heading .sharing-icon-small, .linked-services .ui-collapsible-heading .sharing-icon-small {
+  position: absolute;
+  top: -3px;
+  left: 0;
+}
+.avatar-select-block {
+  padding-left: 112px;
+  position: relative;
+  min-height: 100px;
+  padding-top: 8px;
+}
+.avatar-select-block .user-profile-icon {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
 /* @activity custom stylz */
 .activity-streams {
   margin-top: -8px;
 }
 .activity-streams .ui-bar.top-left-arrow .ui-btn-text {
   padding-left: 8px;
+}
+.activity-streams .activity-image-item {
+  margin-bottom: 12px;
 }
 .activity-streams .activity-follow-item, .activity-streams .activity-image-item {
   position: relative;
@@ -2174,11 +2287,19 @@ input.ui-input-text, textarea.ui-input-text {
   display: inline-block;
   vertical-align: top;
 }
+.activity-streams .simple-list .ui-btn.ui-li {
+  border: none!important;
+  border-bottom: solid 1px #e4e4e4 !important;
+  margin-bottom: 0;
+  padding-bottom: 8px;
+}
 .activity-streams .activity-follow-item {
   padding-left: 0;
   margin-top: 0;
   min-height: 34px;
-  padding-bottom: 8px;
+  padding-top: 8px;
+  border: none;
+  border-top: solid 1px #e4e4e4;
 }
 .activity-streams .activity-follow-item .username,
 .activity-streams .activity-follow-item .item-comment,
@@ -2195,7 +2316,7 @@ input.ui-input-text, textarea.ui-input-text {
   color: #999999;
 }
 /*
-* @map - PAGE 
+* @map - PAGE
 */
 #map-layer #google-map {
   margin: -3px -8px;
@@ -2441,7 +2562,7 @@ input.ui-input-text, textarea.ui-input-text {
   left: 186px;
 }
 /*
-* @app - PAGE 
+* @app - PAGE
 */
 .platform-logo {
   background-repeat: no-repeat;
@@ -2497,10 +2618,10 @@ input.ui-input-text, textarea.ui-input-text {
   margin: 8px;
 }
 /*******************************************************************
-* @theme - SWATCHES 
+* @theme - SWATCHES
 *******************************************************************/
 /*
-* A 
+* A
 * The Dark (Black as Night) swatch, used for screens with black BGs
 */
 /* Set bgs */
@@ -3689,6 +3810,40 @@ input.ui-input-text, textarea.ui-input-text {
   top: -11px;
   left: 50%;
 }
+/* @action-icons */
+.action-icons .ui-icon {
+  background: none;
+  background-image: url('../gfx/action-icons-custom.png');
+  width: 40px;
+  height: 40px;
+}
+.action-icons .ui-icon-action-heart {
+  background-position: 0px 0px;
+}
+.action-icons .ui-icon-action-comment {
+  background-position: 0px -40px;
+}
+.action-icons .ui-icon-action-more {
+  background-position: 0px -120px;
+}
+.action-icons.selected .ui-icon-action-heart,
+.action-icons.ui-btn-hover-d .ui-icon-action-heart,
+.action-icons.ui-btn-down-d .ui-icon-action-heart,
+.action-icons.ui-btn-active-d .ui-icon-action-heart {
+  background-position: -40px 0px;
+}
+.action-icons.selected .ui-icon-action-comment,
+.action-icons.ui-btn-hover-d .ui-icon-action-comment,
+.action-icons.ui-btn-down-d .ui-icon-action-comment,
+.action-icons.ui-btn-active-d .ui-icon-action-comment {
+  background-position: -40px -40px;
+}
+.action-icons.selected .ui-icon-action-more,
+.action-icons.ui-btn-hover-d .ui-icon-action-more,
+.action-icons.ui-btn-down-d .ui-icon-action-more,
+.action-icons.ui-btn-active-d .ui-icon-action-more {
+  background-position: -40px -120px;
+}
 /* @dark-icons */
 .dark-icons .ui-icon {
   background-image: url('../gfx/action-icons-dark.png');
@@ -3788,7 +3943,7 @@ input.ui-input-text, textarea.ui-input-text {
 }
 /* Android HDPI - Pixel ratio of 1.5. Background-size is 1/1.5 = 66.67% (of a 150px image) */
 @media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5) {
-  
+
 }
 /* High Resolution (iPhone 4) */
 @media only screen and (-webkit-min-device-pixel-ratio: 2) {
@@ -3851,13 +4006,6 @@ input.ui-input-text, textarea.ui-input-text {
     -webkit-background-size: 80px 1280px;
     background-size: 80px 1280px;
   }
-  .dark-icons .ui-icon {
-    background-image: url('../gfx/retina/action-icons-dark.png');
-    -moz-background-size: 40px 480px;
-    -o-background-size: 40px 480px;
-    -webkit-background-size: 40px 480px;
-    background-size: 40px 480px;
-  }
   .user-info-block .user-icon-left .icon-overlay-info {
     background-image: url('../gfx/retina/shiny-avatar-info.png');
     -moz-background-size: 100px 100px;
@@ -3865,7 +4013,7 @@ input.ui-input-text, textarea.ui-input-text {
     -webkit-background-size: 100px 100px;
     background-size: 100px 100px;
   }
-  .image-item-block .image-actions .ui-icon,
+  .action-icons .ui-icon,
   .ui-checkbox .ui-icon,
   .custom-action-icons .ui-icon,
   .share-photo .upload-image-privacy .ui-icon,
@@ -3876,6 +4024,13 @@ input.ui-input-text, textarea.ui-input-text {
     -o-background-size: 80px 440px;
     -webkit-background-size: 80px 440px;
     background-size: 80px 440px;
+  }
+  .dark-icons .ui-icon {
+    background-image: url('../gfx/retina/action-icons-dark.png');
+    -moz-background-size: 40px 480px;
+    -o-background-size: 40px 480px;
+    -webkit-background-size: 40px 480px;
+    background-size: 40px 480px;
   }
   .dash-footer .ui-icon {
     background-image: url('../gfx/retina/dash-icons.png');
@@ -3918,5 +4073,19 @@ input.ui-input-text, textarea.ui-input-text {
     -o-background-size: 288px 93px;
     -webkit-background-size: 288px 93px;
     background-size: 288px 93px;
+  }
+  .image-streams .image-stream .load-more-inline .ui-icon-refresh {
+    background-image: url('../gfx/retina/refresh.png');
+    -moz-background-size: 56px 56px;
+    -o-background-size: 56px 56px;
+    -webkit-background-size: 56px 56px;
+    background-size: 56px 56px;
+  }
+  .image-streams.loading .load-more-inline .ui-icon-refresh {
+    background-image: url('../gfx/retina/spinner.png');
+    -moz-background-size: 56px 56px;
+    -o-background-size: 56px 56px;
+    -webkit-background-size: 56px 56px;
+    background-size: 56px 56px;
   }
 }
