@@ -26,7 +26,13 @@ snapr.models.user = Backbone.Model.extend({
                 d.response.user.details = d.response.details;
             }
             return d.response.user;
-        }else{
+        }
+        else if (d.user_id)
+        {
+            return d;
+        }
+        else
+        {
             return {};
         }
     },
