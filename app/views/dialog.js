@@ -22,7 +22,7 @@ snapr.views.dialog = snapr.views.page.extend({
 
     // needs to be re-declared in decendent views
     events: {
-        "click x-back": "back"
+        "click .x-back": "back"
     },
 
     back: function()
