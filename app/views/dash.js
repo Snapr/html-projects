@@ -12,7 +12,7 @@ snapr.views.dash_stream = Backbone.View.extend({
         return this;
     },
     photoswipe_init: function(){
-        photoswipe_init('stream'+this.model.cid, $( "a.image-link", this.el ));
+        //photoswipe_init('stream'+this.model.cid, $( "a.image-link", this.el ));
     }
 
 });
@@ -104,12 +104,13 @@ snapr.views.dash = Backbone.View.extend({
         _.each( this.collection.models, function( item ){
             var li = new snapr.views.dash_stream({ model: item }),
                 stream_el = li.render().el,
-                pull_distance = 20,
+                pull_distance = -40,
                 left_pull_el = $('.left-pull', stream_el),
                 right_pull_el = $('.right-pull', stream_el);
             li.photoswipe_init();
             streams.append( stream_el );
             function flip_pulls(scroller){
+                //console.log(scroller.x, scroller.maxScrollX);
                 left_pull_el.toggleClass('flipped', scroller.x > pull_distance);
                 right_pull_el.toggleClass('flipped', scroller.x < (scroller.maxScrollX - pull_distance));
             }
@@ -117,7 +118,7 @@ snapr.views.dash = Backbone.View.extend({
                 li.scroller = new iScroll($('.n-horizontal-scroll', stream_el)[0], {
                     vScroll: false,
                     hScrollbar: false,
-                    snap: 'a.image-link',
+                    snap: 'a.image-link, .left-pull',
                     momentum: false,
                     onScrollEnd: function(){
                         var details = $(this.wrapper).prev(),
@@ -128,9 +129,23 @@ snapr.views.dash = Backbone.View.extend({
 
                         // Pull to refresh: if scroll elements are .flipped - refresh
                         if(left_pull_el.is('.flipped')){
-                            item.photos.fetch_newer();
+                            stream_el.addClass('loading');
+                            scroller = this;
+                            item.photos.fetch_newer({success: function(){
+                                if(scroller.currPageX === 0){
+                                    scroller.scrollToPage(1);
+                                }
+                                stream_el.removeClass('loading');
+                            }});
                         }else if(right_pull_el.is('.flipped')){
-                            item.photos.fetch_older();
+                            stream_el.addClass('loading');
+                            scroller = this;
+                            item.photos.fetch_older({success: function(){
+                                if(scroller.currPageX === scroller.pagesX.length){
+                                    scroller.scrollToPage(scroller.pagesX.length - 1);
+                                }
+                                stream_el.removeClass('loading');
+                            }});
                         }
 
                         flip_pulls(this);
@@ -139,6 +154,8 @@ snapr.views.dash = Backbone.View.extend({
                         flip_pulls(this);
                     }
                 });
+                li.scroller.scrollToPage(1);
+                window.sc = window.sc || li.scroller;
             }catch(err){
 
             }

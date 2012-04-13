@@ -11,11 +11,13 @@ snapr.models.photo_collection = Backbone.Collection.extend({
             return [];
         }
     },
-    fetch_newer: function(){
-        this.fetch({add:true, data:{min_date: this.models[0].get('date')}});
+    fetch_newer: function(options){
+        _.extend(options, {add:true, data:{min_date: this.models[0].get('date')}});
+        this.fetch(options);
     },
-    fetch_older: function(){
-        this.fetch({add:true, data:{paginate_from: this.models[this.length-1].get('id')}});
+    fetch_older: function(options){
+        _.extend(options, {add:true, data:{paginate_from: this.models[this.length-1].get('id')}});
+        this.fetch(options);
     },
     get_photo_by_id: function( id ){
         return this.filter( function( model ){
