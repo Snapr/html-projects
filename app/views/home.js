@@ -1,22 +1,15 @@
-snapr.views.home = Backbone.View.extend({
+snapr.views.home = snapr.views.page.extend({
 
     initialize: function()
     {
-        _.bindAll( this );
+        snapr.views.page.prototype.initialize.call( this );
+
         this.template = _.template( $("#home-template").html() );
-
-        this.el.live('pagehide', function( e )
-        {
-            $(e.target).undelegate();
-
-            return true;
-        });
 
         snapr.auth.bind("change", this.render);
 
         if ($.mobile.activePage && $.mobile.activePage.find("#home").length < 1)
         {
-            console.log( 'changing page' );
             $.mobile.changePage( "#home" );
             this.render();
         }
@@ -24,7 +17,7 @@ snapr.views.home = Backbone.View.extend({
 
     render: function()
     {
-        $(this.el)
+        this.$el
             .find("[data-role='content']")
             .html( this.template( {
                 logged_in: snapr.auth.has("access_token"),

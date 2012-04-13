@@ -1,15 +1,10 @@
-snapr.views.dash_add_person = Backbone.View.extend({
+snapr.views.dash_add_person = snapr.views.page.extend({
 
     initialize: function()
     {
-        this.el.live('pagehide', function( e )
-        {
-            $(e.target).undelegate();
+        snapr.views.page.prototype.initialize.call( this );
 
-            return true;
-        });
-
-        this.el.find("ul.people-list").empty();
+        this.$el.find("ul.people-list").empty();
 
         this.collection = new snapr.models.user_collection();
 
@@ -30,11 +25,9 @@ snapr.views.dash_add_person = Backbone.View.extend({
             var transition = "slideup";
         }
 
-        $.mobile.changePage( $("#dash-add-person"), {
-            changeHash: false,
+        this.change_page( {
             transition: transition
         });
-
 
     },
 
@@ -44,7 +37,7 @@ snapr.views.dash_add_person = Backbone.View.extend({
 
     render: function()
     {
-        var people_list = this.el.find("ul.people-list").empty();
+        var people_list = this.$el.find("ul.people-list").empty();
 
         var people_li_template = _.template( $("#people-li-template").html() );
 

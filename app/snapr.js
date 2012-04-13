@@ -524,288 +524,292 @@ snapr.geo.location_error = function( error )
 
 snapr.routers = Backbone.Router.extend({
     routes: {
-        "/about/": "about",
-        "/about/?*query_string": "about",
-        "/app/": "app",
-        "/app/?*query_string": "app",
-        "/login/": "login",
-        "/login/?*query_string": "login",
-        "/logout/": "logout",
-        "/join/": "join_snapr",
-        "/join/?*query_string": "join_snapr",
-        "/upload/": "upload",
-        "/upload/?*query_string": "upload",
-        "/uploading/": "uploading",
-        "/uploading/?*query_string": "uploading",
-        "/photo-edit/?*query_string": "share_photo",
-        "/my-account/": "my_account",
-        "/my-account/?*query_string": "my_account",
-        "/linked-services/": "linked_services",
-        "/linked-services/?*query_string": "linked_services",
-        "/connect/": "connect",
-        "/connect/?*query_string": "connect",
-        "/tumblr-xauth/": "tumblr_xauth",
-        "/tumblr-xauth/?*query_string": "tumblr_xauth",
-        "/cities/": "cities",
-        "/cities/?*query_string": "cities",
-        "/limbo/": "limbo",
-        "/limbo/?*": "limbo",
-        "/feed/": "feed",
-        "/feed/?*query_string": "feed",
-        "/dash/": "dash",
-        "/dash/?*query_string": "dash",
-        "/dash-add-person/": "dash_add_person",
-        "/dash-add-person/?*query_string": "dash_add_person",
-        "/dash-add-search/": "dash_add_search",
-        "/dash-add-search/?*query_string": "dash_add_search",
-        "/activity/": "activity",
-        "/activity/?*query_string": "activity",
-        "/map/": "map",
-        "/map/?*query_string": "map",
-        "/popular/": "popular",
-        "/popular/?*query_string": "popular",
-        "/search/": "search",
-        "/search/?*query_string": "search",
-        "/user/profile/?*query_string": "user_profile",
-        "/user/search/?*query_string": "user_search",
-        "/user/:follow/?*query_string": "people",
-        "/venue/search/?*query_string": "venues",
-
-
-        "/": "home",
+        "about/": "about",
+        "about/?*query_string": "about",
+        "app/": "app",
+        "app/?*query_string": "app",
+        "login/": "login",
+        "login/?*query_string": "login",
+        "logout/": "logout",
+        "join/": "join_snapr",
+        "join/?*query_string": "join_snapr",
+        "upload/": "upload",
+        "upload/?*query_string": "upload",
+        "uploading/": "uploading",
+        "uploading/?*query_string": "uploading",
+        "photo-edit/?*query_string": "share_photo",
+        "my-account/": "my_account",
+        "my-account/?*query_string": "my_account",
+        "linked-services/": "linked_services",
+        "linked-services/?*query_string": "linked_services",
+        "connect/": "connect",
+        "connect/?*query_string": "connect",
+        "tumblr-xauth/": "tumblr_xauth",
+        "tumblr-xauth/?*query_string": "tumblr_xauth",
+        "cities/": "cities",
+        "cities/?*query_string": "cities",
+        "limbo/": "limbo",
+        "limbo/?*": "limbo",
+        "feed/": "feed",
+        "feed/?*query_string": "feed",
+        "dash/": "dash",
+        "dash/?*query_string": "dash",
+        "dash-add-person/": "dash_add_person",
+        "dash-add-person/?*query_string": "dash_add_person",
+        "dash-add-search/": "dash_add_search",
+        "dash-add-search/?*query_string": "dash_add_search",
+        "activity/": "activity",
+        "activity/?*query_string": "activity",
+        "map/": "map",
+        "map/?*query_string": "map",
+        "popular/": "popular",
+        "popular/?*query_string": "popular",
+        "search/": "search",
+        "search/?*query_string": "search",
+        "user/profile/?*query_string": "user_profile",
+        "user/search/?*query_string": "user_search",
+        "user/:follow/?*query_string": "people",
+        "venue/search/?*query_string": "venues",
         "?*query_string": "home",
-        "/?*query_string": "home",
         "*path": "home"
     },
 
     feed: function( query_string )
-       {
-           var query = snapr.utils.get_query_params( query_string );
-           snapr.info.current_view = new snapr.views.feed({
-               query: query,
-               el: $("#feed")
-           });
-       },
+    {
+        var query = snapr.utils.get_query_params( query_string );
+        snapr.info.current_view = new snapr.views.feed({
+            query: query,
+            el: $("#feed")
+        });
+    },
 
-       home: function( query_string )
-       {
-           snapr.utils.get_query_params( query_string );
-           snapr.info.current_view = new snapr.views.home({
-               el: $('#home')
-           });
-       },
+    home: function( query_string )
+    {
+        console.warn("/home÷", this)
+        snapr.utils.get_query_params( query_string );
+        snapr.info.current_view = new snapr.views.home({
+            el: $('#home')[0]
+        });
+    },
 
-       login: function( query_string )
-       {
-           var query = snapr.utils.get_query_params( query_string );
-           snapr.info.current_view = new snapr.views.login({
-               query: query
-           });
-       },
+    login: function( query_string )
+    {
+        var query = snapr.utils.get_query_params( query_string );
+        snapr.info.current_view = new snapr.views.login({
+            query: query
+        });
+    },
 
-       logout: function( query_string )
-       {
-           snapr.utils.get_query_params( query_string );
-           if (snapr.auth)
-           {
-              snapr.auth.logout();
-           }
-           else
-           {
-               snapr.auth = new snapr.models.auth;
-           }
-           window.location.hash = "";
-       },
+    logout: function( query_string )
+    {
+        snapr.utils.get_query_params( query_string );
+        if (snapr.auth)
+        {
+           snapr.auth.logout();
+        }
+        else
+        {
+            snapr.auth = new snapr.models.auth;
+        }
+        window.location.hash = "";
+    },
 
-       join_snapr: function( query_string )
-       {
-           snapr.utils.get_query_params( query_string );
-           snapr.info.current_view = new snapr.views.join_snapr({
-               el: $("join-snapr")
-           });
-       },
+    join_snapr: function( query_string )
+    {
+        snapr.utils.get_query_params( query_string );
+        snapr.info.current_view = new snapr.views.join_snapr({
+            el: $("#join-snapr")[0]
+        });
+    },
 
-       upload: function( query_string )
-       {
-           snapr.utils.get_query_params( query_string );
-           snapr.info.current_view = new snapr.views.upload({
-               el: $("#upload")
-           });
-       },
+    upload: function( query_string )
+    {
+        snapr.utils.get_query_params( query_string );
+        snapr.info.current_view = new snapr.views.upload({
+            el: $("#upload")[0]
+        });
+    },
 
-       uploading: function( query_string )
-       {
-           var query = snapr.utils.get_query_params( query_string );
-           snapr.info.current_view = new snapr.views.uploading({
-               el: $("#uploading"),
-               query: query
-           });
-       },
+    uploading: function( query_string )
+    {
+        var query = snapr.utils.get_query_params( query_string );
+        snapr.info.current_view = new snapr.views.uploading({
+            el: $("#uploading")[0],
+            query: query
+        });
+    },
 
-       share_photo: function( query_string )
-       {
-           var query = snapr.utils.get_query_params( query_string );
-           snapr.info.current_view = new snapr.views.share_photo({
-               el: $("#share-photo"),
-               query: query
-           });
-       },
+    share_photo: function( query_string )
+    {
+        var query = snapr.utils.get_query_params( query_string );
+        snapr.info.current_view = new snapr.views.share_photo({
+            el: $("#share-photo")[0],
+            query: query
+        });
+    },
 
-       about: function( query_string )
-       {
-           var query = snapr.utils.get_query_params( query_string );
-           snapr.info.current_view = new snapr.views.about({
-               el: $("#about"),
-               query: query
-           });
-       },
-       app: function( query_string )
-       {
-           var query = snapr.utils.get_query_params( query_string );
-           snapr.info.current_view = new snapr.views.app({
-              el: $("#app"),
+    about: function( query_string )
+    {
+        var query = snapr.utils.get_query_params( query_string );
+        snapr.info.current_view = new snapr.views.about({
+            el: $("#about")[0],
+            query: query
+        });
+    },
+    app: function( query_string )
+    {
+        var query = snapr.utils.get_query_params( query_string );
+        snapr.info.current_view = new snapr.views.app({
+           el: $("#app")[0],
+           query: query
+       });
+     },
+    activity: function( query_string )
+      {
+          var query = snapr.utils.get_query_params( query_string );
+          snapr.info.current_view = new snapr.views.activity({
+              el: $("#activity")[0],
               query: query
           });
-        },
-       activity: function( query_string )
-         {
-             var query = snapr.utils.get_query_params( query_string );
-             snapr.info.current_view = new snapr.views.activity({
-                 el: $("#activity"),
-                 query: query
-             });
-         },
+      },
 
-       cities: function( query_string )
-          {
-              var query = snapr.utils.get_query_params( query_string );
-              snapr.info.current_view = new snapr.views.cities({
-                  el: $("#cities"),
-                  query: query
-              });
-       },
-
-       my_account: function( query_string )
-       {
-           snapr.utils.get_query_params( query_string );
-           snapr.info.current_view = new snapr.views.my_account({
-               el: $("#my-account")
-           });
-       },
-
-       linked_services: function( query_string )
+    cities: function( query_string )
        {
            var query = snapr.utils.get_query_params( query_string );
-           snapr.info.current_view = new snapr.views.linked_services({
-               el: $("#linked-services"),
+           snapr.info.current_view = new snapr.views.cities({
+               el: $("#cities")[0],
                query: query
            });
-       },
+    },
 
-       connect: function( query_string )
+    my_account: function( query_string )
+    {
+        snapr.utils.get_query_params( query_string );
+        snapr.info.current_view = new snapr.views.my_account({
+            el: $("#my-account")[0]
+        });
+    },
+
+    linked_services: function( query_string )
+    {
+        var query = snapr.utils.get_query_params( query_string );
+        snapr.info.current_view = new snapr.views.linked_services({
+            el: $("#linked-services")[0],
+            query: query
+        });
+    },
+
+    connect: function( query_string )
+    {
+        var query = snapr.utils.get_query_params( query_string );
+        snapr.info.current_view = new snapr.views.connect({
+            el: $("#connect")[0],
+            query: query
+        })
+    },
+
+    tumblr_xauth: function( query_string )
+    {
+        var query = snapr.utils.get_query_params( query_string );
+        snapr.info.current_view = new snapr.views.tumblr_xauth({
+            el: $("#tumblr-xauth")[0],
+            query: query
+        })
+    },
+
+    limbo: function( query_string )
+    {
+        snapr.utils.get_query_params( query_string );
+        snapr.info.current_view = new snapr.views.limbo({
+            el: $("#limbo")[0]
+        })
+    },
+
+    map: function( query_string )
+    {
+        var query = snapr.utils.get_query_params( query_string );
+        snapr.info.current_view = new snapr.views.map({
+            query: query,
+            el: $("#map")[0]
+        });
+    },
+
+    popular: function( query_string )
+    {
+        console.warn("go to popular")
+        snapr.utils.get_query_params( query_string );
+        snapr.info.current_view = new snapr.views.popular({
+            el: $( "#popular" )[0]
+        });
+    },
+
+    dash: function( query_string )
+    {
+        snapr.utils.get_query_params( query_string );
+        snapr.info.current_view = new snapr.views.dash({
+            el: $( "#dashboard" )[0]
+        });
+    },
+    dash_add_person: function( follow, query_string )
+    {
+        var query = snapr.utils.get_query_params( query_string );
+        snapr.info.current_view = new snapr.views.dash_add_person({
+            query: query,
+            el: $("#dash-add-person")[0]
+        });
+    },
+    dash_add_search: function( follow, query_string )
        {
            var query = snapr.utils.get_query_params( query_string );
-           snapr.info.current_view = new snapr.views.connect({
-               el: $("#connect"),
-               query: query
-           })
-       },
-
-       tumblr_xauth: function( query_string )
-       {
-           var query = snapr.utils.get_query_params( query_string );
-           snapr.info.current_view = new snapr.views.tumblr_xauth({
-               el: $("#tumblr-xauth"),
-               query: query
-           })
-       },
-
-       limbo: function( query_string )
-       {
-           snapr.utils.get_query_params( query_string );
-           snapr.info.current_view = new snapr.views.limbo({
-               el: $("#limbo")
-           })
-       },
-
-       map: function( query_string )
-       {
-           var query = snapr.utils.get_query_params( query_string );
-           snapr.info.current_view = new snapr.views.map( {query: query} );
-       },
-
-       popular: function( query_string )
-       {
-           snapr.utils.get_query_params( query_string );
-           snapr.info.current_view = new snapr.views.popular();
-       },
-
-       dash: function( query_string )
-       {
-           snapr.utils.get_query_params( query_string );
-           snapr.info.current_view = new snapr.views.dash();
-       },
-       dash_add_person: function( follow, query_string )
-       {
-           var query = snapr.utils.get_query_params( query_string );
-           snapr.info.current_view = new snapr.views.dash_add_person({
+           snapr.info.current_view = new snapr.views.dash_add_search({
                query: query,
-               el: $("#dash-add-person")
+               el: $("#dash-add-search")[0]
            });
        },
-       dash_add_search: function( follow, query_string )
-          {
-              var query = snapr.utils.get_query_params( query_string );
-              snapr.info.current_view = new snapr.views.dash_add_search({
-                  query: query,
-                  el: $("#dash-add-search")
-              });
-          },
-       search: function( query_string )
-       {
-           snapr.utils.get_query_params( query_string );
-           snapr.info.current_view = new snapr.views.search();
-       },
+    search: function( query_string )
+    {
+        snapr.utils.get_query_params( query_string );
+        snapr.info.current_view = new snapr.views.search({
+            el: $("#search")[0]
+        });
+    },
 
-       user_profile: function( query_string )
-       {
-           var query = snapr.utils.get_query_params( query_string );
-           snapr.info.current_view = new snapr.views.user_profile({
-               query: query,
-               el: $("#user-profile")
-           });
-       },
+    user_profile: function( query_string )
+    {
+        var query = snapr.utils.get_query_params( query_string );
+        snapr.info.current_view = new snapr.views.user_profile({
+            query: query,
+            el: $("#user-profile")[0]
+        });
+    },
 
-       user_search: function( query_string )
-       {
-           var query = snapr.utils.get_query_params( query_string );
-           snapr.info.current_view = new snapr.views.people({
-               query: query,
-               el: $("#people")
-           });
-       },
+    user_search: function( query_string )
+    {
+        var query = snapr.utils.get_query_params( query_string );
+        snapr.info.current_view = new snapr.views.people({
+            query: query,
+            el: $("#people")[0]
+        });
+    },
 
-       people: function( follow, query_string )
-       {
-           var query = snapr.utils.get_query_params( query_string );
-           snapr.info.current_view = new snapr.views.people({
-               query: query,
-               follow: follow,
-               el: $("#people")
-           });
-       },
+    people: function( follow, query_string )
+    {
+        var query = snapr.utils.get_query_params( query_string );
+        snapr.info.current_view = new snapr.views.people({
+            query: query,
+            follow: follow,
+            el: $("#people")[0]
+        });
+    },
 
-       venues: function( query_string )
-       {
-           var query = snapr.utils.get_query_params( query_string );
-           snapr.info.current_view = new snapr.views.venues({
-               query: query,
-               el: $("#venues")
-           });
-       }
-
-
-
+    venues: function( query_string )
+    {
+        var query = snapr.utils.get_query_params( query_string );
+        snapr.info.current_view = new snapr.views.venues({
+            query: query,
+            el: $("#venues")[0]
+        });
+    }
 });
 
 function photoswipe_init(id, elements){
@@ -941,7 +945,8 @@ $(".x-search").live("click", function()
 {
     var back_view = _.clone(snapr.info.current_view);
     snapr.info.current_view = new snapr.views.search({
-        back_view: back_view
+        back_view: back_view,
+        el: $("#search")[0]
     });
 });
 
@@ -949,9 +954,31 @@ $(".x-login").live("click", function()
 {
     var back_view = _.clone(snapr.info.current_view);
     snapr.info.current_view = new snapr.views.login({
+        el: $("#login")[0],
         back_view: back_view
     });
 });
+
+$(".x-join-snapr").live("click", function()
+{
+    var back_view = _.clone(snapr.info.current_view);
+    snapr.info.current_view = new snapr.views.join_snapr({
+        el: $("#join-snapr")[0],
+        back_view: back_view
+    });
+});
+
+// not sure if this is used anymore
+$(".x-linked-services").live("click", function()
+{
+    var back_view = _.clone(snapr.info.current_view);
+    snapr.info.current_view = new snapr.views.linked_services({
+        el: $("#linked-services")[0],
+        back_view: back_view
+    });
+});
+
+
 
 // end upload/appmode functions
 $(function () {
@@ -1056,7 +1083,7 @@ $(function () {
 
 
     // initialise router and start backbone
-    Route = new snapr.routers;
+    Route = new snapr.routers();
     Backbone.history.start();
     var appmode = snapr.utils.get_local_param("appmode");
     if (appmode)

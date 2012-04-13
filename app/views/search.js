@@ -1,6 +1,15 @@
 snapr.views.search = snapr.views.dialog.extend({
 
-    el: $('#search'),
+    initialize: function()
+    {
+        snapr.views.dialog.prototype.initialize.call( this );
+
+        this.change_page({
+            transition: this.transition
+        });
+    },
+
+    transition: "slideup",
 
     events: {
         "change #search-keywords": "update_placeholder",
@@ -8,27 +17,6 @@ snapr.views.search = snapr.views.dialog.extend({
         "submit #search-form": "search",
         "click div[data-role='header'] a": "back"
     },
-
-    initialize: function()
-    {
-        this.back_view = this.options.back_view;
-
-        _.bindAll( this );
-
-        this.el.live('pagehide', function( e )
-        {
-            $(e.target).undelegate();
-
-            return true;
-        });
-
-        $.mobile.changePage($("#search"), {
-            changeHash: false,
-            transition: this.transition
-        });
-    },
-
-    transition: "slideup",
 
     update_placeholder: function()
     {
@@ -48,7 +36,6 @@ snapr.views.search = snapr.views.dialog.extend({
                     keywords.attr( "placeholder", "Username…" );
                     break;
             }
-
         }
     },
 
@@ -68,6 +55,5 @@ snapr.views.search = snapr.views.dialog.extend({
                 Route.navigate( "/user/search/?username=" + keywords, true );
                 break;
         }
-    },
-
+    }
 });

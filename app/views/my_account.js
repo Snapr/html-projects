@@ -1,16 +1,13 @@
-snapr.views.my_account = Backbone.View.extend({
+snapr.views.my_account = snapr.views.page.extend({
 
     initialize:function()
     {
-        this.el.live('pagehide', function( e )
-        {
-            $(e.target).undelegate();
+        snapr.views.page.prototype.initialize.call( this );
 
-            return true;
-        });
+        this.change_page();
 
-        $.mobile.changePage( $("#my-account"), {changeHash: false} );
         this.user_settings = new snapr.models.user_settings();
+
         var my_account_view = this;
         var options = {
             success: function()
@@ -30,8 +27,7 @@ snapr.views.my_account = Backbone.View.extend({
 
     render: function()
     {
-
-        var $account_content = this.el.find('.account-content').empty();
+        var $account_content = this.$el.find('.account-content').empty();
 
         if (snapr.utils.get_local_param("appmode"))
         {

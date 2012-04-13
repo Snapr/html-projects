@@ -5,8 +5,9 @@ snapr.views.favorite_button = Backbone.View.extend({
         _.bindAll( this );
 
         this.li = this.options.li;
-
+        this.setElement( this.options.el );
         this.template = _.template( $("#fav-button-template").html() );
+
         // update the display when we fav/unfav or comment
         this.model.bind( "change", this.render );
     },
@@ -81,12 +82,12 @@ snapr.views.favorite_button = Backbone.View.extend({
 
     render: function()
     {
-        $(this.el).html( this.template({
+        this.$el.html( this.template({
             favorite: this.model.get("favorite"),
             count: parseInt( this.model.get("favorite_count"))
         }));
 
-        $(this.li.el).trigger("create");
+        this.li.$el.trigger("create");
 
         return this
     }

@@ -4,19 +4,9 @@ snapr.views.venues = snapr.views.dialog.extend({
     {
         snapr.views.dialog.prototype.initialize.call( this );
 
-        _.bindAll( this );
-
-        this.el.live('pagehide', function( e )
-        {
-            $(e.target).undelegate();
-
-            return true;
-        });
-
-        this.back_query = this.options.query.back_query;
         this.selected_id = this.options.query.foursquare_venue_id;
 
-        this.el.find("ul.venue-list").empty();
+        this.$el.find("ul.venue-list").empty();
 
         this.collection = new snapr.models.foursquare_venue_collection({
             ll: this.options.query.ll
@@ -37,8 +27,7 @@ snapr.views.venues = snapr.views.dialog.extend({
             this.transition = "slideup";
         }
 
-        $.mobile.changePage( $("#venues"), {
-            changeHash: false,
+        this.change_page({
             transition: this.transition
         });
 
@@ -52,7 +41,7 @@ snapr.views.venues = snapr.views.dialog.extend({
 
     render: function()
     {
-        var venue_list = this.el.find("ul.venue-list").empty();
+        var venue_list = this.$el.find("ul.venue-list").empty();
 
         var venue_li_template = _.template( $("#venue-li-template").html() );
 
@@ -79,7 +68,7 @@ snapr.views.venues = snapr.views.dialog.extend({
     reset_collection: function()
     {
         this.display_collection = _.clone( this.collection.models );
-        this.el.find("input").val("")
+        this.$el.find("input").val("")
         this.render();
     },
 
@@ -99,24 +88,5 @@ snapr.views.venues = snapr.views.dialog.extend({
         {
             this.reset_collection();
         }
-    },
-
-    back: function()
-    {
-        if (this.prev_el)
-        {
-            $.mobile.changePage( this.prev_el, {
-                changeHash: false,
-                transition: this.transition,
-                reverse: true
-            });
-        }
-
-        snapr.info.current_view = new snapr.views.share_photo({
-            query: this.back_query,
-            model: this.model,
-            el: $("#share-photo")
-        });
     }
-
 });

@@ -1,12 +1,10 @@
 snapr.views.feed_list = Backbone.View.extend({
 
-    tagName: "ul",
-
-    className: "gallery",
-
     initialize: function()
     {
         _.bindAll( this );
+
+        this.setElement( this.options.el );
 
         this.li_templates = {
             list: _.template( $("#feed-li-list-template").html() ),
@@ -24,36 +22,32 @@ snapr.views.feed_list = Backbone.View.extend({
 
     render: function( callback )
     {
-        var feed_list = this;
-
-        // console.log( "render", feed_list );
-
-        feed_list.el.empty();
+        this.$el.empty();
 
         _.each( this.collection.models, function( item )
         {
             var li = new snapr.views.feed_li({
                 model: item,
-                template: feed_list.li_templates[feed_list.list_style],
-                back: feed_list.back
+                template: this.li_templates[ this.list_style ],
+                back: this.back
             });
-            $(this.el).append( li.render().el );
+            this.$el.append( li.render().el );
         }, this);
 
-        $img = $(this.el).find("img");
+        $img = this.$el.find("img");
         $img.load(function(){
             $img.css("height","auto");
         });
 
         // create jquery mobile markup, set to listview and refresh
 
-        $(this.el)
+        this.$el
             .trigger("create");
 
-        $(this.el)
+        this.$el
             .removeClass('thumbs-grid-med')
 
-        if(callback && typeof callback == 'function'){
+        if (callback && typeof callback == 'function'){
             callback();
         }
 

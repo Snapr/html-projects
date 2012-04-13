@@ -19,7 +19,7 @@ snapr.views.connect_li = Backbone.View.extend({
 
     render: function()
     {
-        $(this.el)
+        this.$el
             .attr("data-role", "fieldcontain")
             .html( this.template({
                 provider: this.provider,

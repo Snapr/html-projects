@@ -1,18 +1,10 @@
-snapr.views.limbo = Backbone.View.extend({
+snapr.views.limbo = snapr.views.page.extend({
+
     initialize: function()
     {
-        _.bindAll( this );
-        this.el.live('pagehide', function( e )
-        {
-            $(e.target).undelegate();
-            spinner_stop();
+        snapr.views.page.prototype.initialize.call( this );
 
-            return true;
-        });
-        
-        $.mobile.changePage( $("#limbo"), {
-            changeHash: false
-        });
+        this.change_page();
 
         setTimeout(function()
         {

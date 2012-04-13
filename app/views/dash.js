@@ -2,17 +2,21 @@ snapr.views.dash_stream = Backbone.View.extend({
 
     template: _.template( $('#dash-stream-template').html() ),
     render: function(){
-        this.photos = new snapr.views.dash_stream_thumbs({collection: this.model.photos});
+        this.photos = new snapr.views.dash_stream_thumbs({
+            collection: this.model.photos
+        });
         this.photos.stream = this;
         this.photos.render();
-        this.el = $(this.template( {
-            stream: this.model
-        } ));
-        $(this.photos.el).insertAfter($(this.el).find('.left-pull'));
+        this.$el.html(
+            this.template( {
+                stream: this.model
+            } )
+        );
+        this.photos.$el.insertAfter( this.$el.find('.left-pull') );
         return this;
     },
     photoswipe_init: function(){
-        //photoswipe_init('stream'+this.model.cid, $( "a.image-link", this.el ));
+        //photoswipe_init('stream'+this.model.cid, $( "a.image-link", this.$el ));
     }
 
 });
@@ -25,10 +29,10 @@ snapr.views.dash_stream_thumbs = Backbone.View.extend({
     },
     render: function(){
         if(this.collection.length){
-            html = this.template({
+            this.$el.html(this.template({
                 photos: this.collection.models
-            });
-            $(this.el).html(html).addClass('thumbs');
+            }));
+            this.$el.addClass('thumbs');
         }
         return this;
     },
@@ -53,29 +57,21 @@ snapr.views.dash_stream_thumbs = Backbone.View.extend({
 });
 
 
-snapr.views.dash = Backbone.View.extend({
-
-    el: $('#dashboard'),
-
-    events: {
-       // "click #popular-timeframe a":"update_list"
-    },
+snapr.views.dash = snapr.views.page.extend({
 
     initialize: function(){
-        this.el.live('pagehide', function( e ){
-            $(e.target).undelegate();
-            return true;
-        });
 
-        $.mobile.changePage( $("#dashboard"), {
-            changeHash: false
-        });
+        snapr.views.page.prototype.initialize.call( this );
+
+        this.change_page();
 
         this.collection = new snapr.models.dash();
         this.populate();
 
     },
-    populate: function(){
+
+    populate: function()
+    {
         var dash = this;
         this.collection.data = {n:6, feed:true}; //, nearby:true};
         var options = {
@@ -95,15 +91,17 @@ snapr.views.dash = Backbone.View.extend({
 
         this.collection.fetch( options );
     },
-    render: function(){
+
+    render: function()
+    {
         var dash = this,
-            streams = this.el.find('.image-streams');
+            streams = this.$el.find('.image-streams');
 
         streams.empty();
 
         _.each( this.collection.models, function( item ){
             var li = new snapr.views.dash_stream({ model: item }),
-                stream_el = li.render().el,
+                stream_el = li.render().$el,
                 pull_distance = -40,
                 left_pull_el = $('.left-pull', stream_el),
                 right_pull_el = $('.right-pull', stream_el);
@@ -162,7 +160,7 @@ snapr.views.dash = Backbone.View.extend({
 
         }, this);
 
-        this.el.trigger( "create" );
+        this.$el.trigger( "create" );
 
     }
 

@@ -1,27 +1,10 @@
-snapr.views.cities = Backbone.View.extend({
-
-    el: $('#cities'),
-
-    events: {
-       // "click #popular-timeframe a":"update_list"
-    },
+snapr.views.cities = snapr.views.page.extend({
 
     initialize: function()
     {
-        console.log('cities');
+        snapr.views.page.prototype.initialize.call( this );
 
-        this.el.live('pagehide', function( e )
-        {
-            $(e.target).undelegate();
-
-            return true;
-        });
-
-        $.mobile.changePage( $("#cities"), {
-            changeHash: false
-        });
-
+        this.change_page();
     },
-
 
 })

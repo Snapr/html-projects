@@ -10,20 +10,17 @@ snapr.views.people_li = Backbone.View.extend({
         {
             people_li.refresh();
         });
-
     },
 
     tagName: 'li',
 
     render: function()
     {
-        $(this.el)
-            .empty()
-            .append( this.template({
+        this.$el
+            .html( this.template({
                 user: this.model,
                 auth_username: snapr.auth.get( "snapr_user" ),
-                logged_in: snapr.auth.has( "access_token" ),
-
+                logged_in: snapr.auth.has( "access_token" )
             }) )
 
         return this;
@@ -34,7 +31,7 @@ snapr.views.people_li = Backbone.View.extend({
         // unfortunately jquery mobile doesn't like refreshing inividual listview items
         // when the listview has already been created so we need to change things manually
 
-        var follow_button = $(this.el).find("a[data-icon]");
+        var follow_button = this.$el.find("a[data-icon]");
         var following = this.model.get("relationship").you_follow;
         if (following)
         {
@@ -57,8 +54,8 @@ snapr.views.people_li = Backbone.View.extend({
                     .addClass("ui-icon-plus")
         }
 
-        $(this.el).find(".followers").text( this.model.get("followers") );
-        $(this.el).find(".photo-count").text( this.model.get("photo_count") );
+        this.$el.find(".followers").text( this.model.get("followers") );
+        this.$el.find(".photo-count").text( this.model.get("photo_count") );
     },
 
     events: {
@@ -81,5 +78,4 @@ snapr.views.people_li = Backbone.View.extend({
             user.unfollow();
         })();
     }
-
 });

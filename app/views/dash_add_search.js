@@ -1,32 +1,20 @@
 snapr.views.dash_add_search = snapr.views.dialog.extend({
 
-    el: $('#dash-add-search'),
-
-    events: {
-        "submit #search-form": "search",
-        "click div[data-role='header'] a": "back"
-    },
-
     initialize: function()
     {
-        this.back_view = this.options.back_view;
+        snapr.views.dialog.prototype.initialize.call( this );
 
-        _.bindAll( this );
-
-        this.el.live('pagehide', function( e )
-        {
-            $(e.target).undelegate();
-
-            return true;
-        });
-
-        $.mobile.changePage($("#dash-add-search"), {
-            changeHash: false,
+        this.change_page({
             transition: this.transition
         });
     },
 
     transition: "slideup",
+
+    events: {
+        "submit #search-form": "search",
+        "click div[data-role='header'] a": "back"
+    },
 
     update_placeholder: function()
     {

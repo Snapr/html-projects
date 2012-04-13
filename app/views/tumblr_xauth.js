@@ -1,38 +1,38 @@
-snapr.views.tumblr_xauth = Backbone.View.extend({
-
-    events: {
-        "submit #tumblr-dialog":"link_tumblr"
-    },
+snapr.views.tumblr_xauth = snapr.views.page.extend({
 
     initialize: function()
     {
+        snapr.views.page.prototype.initialize.call( this );
 
-        this.el.live('pagehide', function( e ){
-            $(e.target).undelegate();
-
-            return true;
-        });
-
-        if (this.options.query){
+        if (this.options.query)
+        {
             this.redirect = this.options.query.redirect;
             console.log(this.options.query);
         }
 
-        if (this.options.query){
+        if (this.options.query)
+        {
             this.message = this.options.query.message;
         }
 
-
-        if (this.message){
-            $(this.el).find(".login-message").text(this.message);
-        }else{
-            $(this.el).find(".login-message").text("");
+        if (this.message)
+        {
+            this.$el.find(".login-message").text(this.message);
+        }
+        else
+        {
+            this.$el.find(".login-message").text("");
         }
 
-        $.mobile.changePage( $("#tumblr-xauth"), {
-            changeHash: false,
-            transition: "slideup"
+        this.change_page({
+            transition: this.transition
         });
+    },
+
+    transition: "slideup",
+
+    events: {
+        "submit #tumblr-dialog":"link_tumblr"
     },
 
     link_tumblr: function(){
@@ -62,6 +62,5 @@ snapr.views.tumblr_xauth = Backbone.View.extend({
                 console.error('ajax error!');
             }
         });
-
     }
 });

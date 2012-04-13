@@ -1,11 +1,11 @@
 snapr.views.map_disambiguation_li = Backbone.View.extend({
-    
+
     tagName: "li",
-    
+
     events: {
         "click .map-link": "goto_map"
     },
-    
+
     initialize: function()
     {
         this.template = this.options.template;
@@ -13,14 +13,14 @@ snapr.views.map_disambiguation_li = Backbone.View.extend({
         this.map = this.options.map;
         this.parent_view = this.options.parent_view;
     },
-    
+
     render: function()
     {
-        $(this.el).empty().append( this.template( {location: this.location} ) );
-        
+        this.$el.html( this.template( {location: this.location} ) );
+
         return this;
     },
-    
+
     goto_map: function()
     {
         this.map.fitBounds( this.location.geometry.viewport );

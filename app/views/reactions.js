@@ -3,8 +3,9 @@ snapr.views.reactions = Backbone.View.extend({
     initialize: function()
     {
         _.bindAll( this );
+        this.setElement( this.options.el );
 
-        this.collection = new snapr.models.reaction_collection;
+        this.collection = new snapr.models.reaction_collection();
         this.collection.data = {
             photo_id: this.id
         };
@@ -15,14 +16,14 @@ snapr.views.reactions = Backbone.View.extend({
 
     render: function()
     {
-        var $el = $(this.el).empty();
+        this.$el.empty();
         _.each( this.collection.models, function( reaction )
         {
-            $el.append(this.template({
+            this.$el.append(this.template({
                 reaction: reaction
             }));
         }, this);
-        $el.trigger('create').listview().listview('refresh');
+        this.$el.trigger('create').listview().listview('refresh');
     }
 
 });

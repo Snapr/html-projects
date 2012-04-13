@@ -1,20 +1,9 @@
-snapr.views.uploading = Backbone.View.extend({
+snapr.views.uploading = snapr.views.page.extend({
     initialize: function()
     {
-        _.bindAll( this );
+        snapr.views.page.prototype.initialize.call( this );
 
-        this.el.live( "pagehide", function( e )
-        {
-            $(e.target).undelegate();
-            this.pending_uploads = [];
-            $(this.el).find(".upload-progress-container").empty()
-
-            return true;
-        });
-
-        //$(this.el).find('[data-role="content"]').empty();
-
-        $.mobile.changePage( $("#uploading"), {changeHash: false} );
+        this.change_page();
 
         this.current_upload = null;
         this.pending_uploads = {};
@@ -67,12 +56,6 @@ snapr.views.uploading = Backbone.View.extend({
                  //         }
                  //     },
                  //
-
-
-
-
-
-
                      // {
                      //     "id": 5345234,
                      //     "thumbnail": "./gfx/demo-vert.jpg",
@@ -158,8 +141,8 @@ snapr.views.uploading = Backbone.View.extend({
 
     render: function()
     {
-        $(this.el).find( ".upload-progress-container" ).empty();
-        $image_stream_container = $(this.el).find( ".image-streams" ).empty()
+        this.$el.find( ".upload-progress-container" ).empty();
+        $image_stream_container = this.$el.find( ".image-streams" ).empty()
 
         if (this.spot)
         {
@@ -223,7 +206,7 @@ snapr.views.uploading = Backbone.View.extend({
     {
         console.warn( 'upload_progress: ', JSON.stringify( upload_data ) );
 
-        var $container = $(this.el).find(".upload-progress-container");
+        var $container = this.$el.find(".upload-progress-container");
 
         _.each( upload_data.uploads, function( photo, index )
         {
@@ -251,7 +234,7 @@ snapr.views.uploading = Backbone.View.extend({
 
     upload_completed: function( queue_id, snapr_id )
     {
-        var $container = $(this.el).find(".upload-progress-container");
+        var $container = this.$el.find(".upload-progress-container");
 
         var uploading_view = this;
 

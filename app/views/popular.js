@@ -1,6 +1,4 @@
-snapr.views.popular = Backbone.View.extend({
-
-    el: $('#popular'),
+snapr.views.popular = snapr.views.page.extend({
 
     events: {
         "click #popular-timeframe a":"update_list"
@@ -8,16 +6,9 @@ snapr.views.popular = Backbone.View.extend({
 
     initialize: function()
     {
-        this.el.live('pagehide', function( e )
-        {
-            $(e.target).undelegate();
+        snapr.views.page.prototype.initialize.call( this );
 
-            return true;
-        });
-
-        $.mobile.changePage( $("#popular"), {
-            changeHash: false
-        });
+        this.change_page();
 
         this.photo_collection = new snapr.models.photo_collection();
         this.photo_collection.url = snapr.api_base + "/search/";
@@ -39,18 +30,18 @@ snapr.views.popular = Backbone.View.extend({
 
     update_time_buttons: function()
     {
-        $(this.el).find( "#popular-timeframe a" ).removeClass( "ui-btn-active" );
+        this.$el.find( "#popular-timeframe a" ).removeClass( "ui-btn-active" );
 
         switch (this.time_period)
         {
             case 'time-today':
-                $(this.el).find( "#popular-time-today" ).addClass( "ui-btn-active" );
+                this.$el.find( "#popular-time-today" ).addClass( "ui-btn-active" );
                 break;
             case 'time-week':
-                $(this.el).find( "#popular-time-week" ).addClass( "ui-btn-active" );
+                this.$el.find( "#popular-time-week" ).addClass( "ui-btn-active" );
                 break;
             case 'time-all':
-                $(this.el).find( "#popular-time-all" ).addClass( "ui-btn-active" );
+                this.$el.find( "#popular-time-all" ).addClass( "ui-btn-active" );
                 break;
         }
     },
@@ -104,7 +95,6 @@ snapr.views.popular = Backbone.View.extend({
             }
         }
 
-
         this.update_time_buttons();
 
         // only update list if the query has changed or the user clicked on a button
@@ -114,4 +104,4 @@ snapr.views.popular = Backbone.View.extend({
             this.photo_collection.fetch( options );
         }
     }
-})
+});

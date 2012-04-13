@@ -1,28 +1,28 @@
-snapr.views.join_snapr = Backbone.View.extend({
-
-    events: {
-        "submit #join-dialog": "join"
-    },
+snapr.views.join_snapr = snapr.views.dialog.extend({
 
     initialize: function()
     {
-        this.el.live('pagehide', function( e )
-        {
-            $(e.target).undelegate();
+        snapr.views.dialog.prototype.initialize.call( this );
 
-            return true;
+        this.change_page({
+            transition: this.transition
         });
+    },
 
-        $.mobile.changePage( $("#join-snapr"), {changeHash: false});
+    transition: "slideup",
+
+    events: {
+        "submit #join-dialog": "join",
+        "click .x-back": "back"
     },
 
     join: function()
     {
         var new_user = new snapr.models.user_settings();
         new_user.data = {
-           username: this.el.find("#join-dialog-username").val(),
-           password: this.el.find("#join-dialog-password").val(),
-           email: this.el.find("#join-dialog-email").val(),
+           username: this.$el.find("#join-dialog-username").val(),
+           password: this.$el.find("#join-dialog-password").val(),
+           email: this.$el.find("#join-dialog-email").val(),
            client_id: snapr.client_id
         }
 

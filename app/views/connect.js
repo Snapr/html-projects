@@ -1,19 +1,10 @@
-snapr.views.connect = Backbone.View.extend({
+snapr.views.connect = snapr.views.page.extend({
 
     initialize: function()
     {
-        _.bindAll( this );
-        this.el.live('pagehide', function( e )
-        {
-            $(e.target).undelegate();
+        snapr.views.page.prototype.initialize.call( this );
 
-            return true;
-        });
-
-        $.mobile.changePage( $("#connect"), {
-            changeHash: false
-        });
-
+        this.change_page();
 
         var query = new Query(this.options.query),
             linked = query.pop('linked');
@@ -21,27 +12,35 @@ snapr.views.connect = Backbone.View.extend({
         this.photo_id = query.get('photo_id');
 
         // if there is a newly linked service, share to it then carry on linking (or finish)
-        if(linked){
+        if (linked)
+        {
             username = query.pop('username');
             // is a service username is suppllied
-            if(username){
+            if (username)
+            {
                 link = this.link;
                 this.share(linked, function(){link(query);});
             // no service username = something went wrong
-            }else{
-                alert(query.get('error', 'Unknown Error Linking'));
+            }
+            else
+            {
+                alert( query.get('error', 'Unknown Error Linking') );
             }
         // if there are no newly linked services carry on linking (or finish) stright away
-        }else{
-            this.link(query);
+        }
+        else
+        {
+            this.link( query );
         }
 
-        this.render();
     },
-    link: function(query){
-        var to_link = query.get('to_link').split(',');
+
+    link: function( query )
+    {
+        var to_link = query.get('to_link') ? query.get('to_link').split(','): [];
         var service = to_link.shift();
-        if(service){
+        if (service)
+        {
             query.set('linked', service).set('to_link', to_link.join(','));
             var next = window.location.href.split('?')[0];
             next += '?' + query.toString();
@@ -54,13 +53,18 @@ snapr.views.connect = Backbone.View.extend({
                     "&redirect=" + escape( next );
             }
             window.location = url;
-        }else{
-            setTimeout(function(){
+        }
+        else
+        {
+            setTimeout( function()
+            {
                 Route.navigate("#/uploading/?shared=true&photo_id=" + query.get('photo_id'), true);
             }, 600);
         }
     },
-    share: function(service, callback){
+
+    share: function( service, callback )
+    {
         this.model = new snapr.models.photo({id: this.photo_id});
 
         var options = {
@@ -93,9 +97,5 @@ snapr.views.connect = Backbone.View.extend({
                 break;
         }
     },
-
-    render: function(){
-        return this;
-    }
 
 });

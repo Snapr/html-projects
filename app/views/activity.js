@@ -1,14 +1,8 @@
-snapr.views.activity = Backbone.View.extend({
-
-    el: $('#activity'),
-
-    events: {
-       // "click #popular-timeframe a":"update_list"
-    },
+snapr.views.activity = snapr.views.page.extend({
 
     initialize: function()
     {
-        _.bindAll( this );
+        snapr.views.page.prototype.initialize.call( this );
 
         this.collection = new snapr.models.news_period_collection();
 
@@ -21,21 +15,12 @@ snapr.views.activity = Backbone.View.extend({
 
         this.collection.fetch();
 
-        this.el.live('pagehide', function( e )
-        {
-            $(e.target).undelegate();
-
-            return true;
-        });
-
-        $.mobile.changePage( $("#activity"), {
-            changeHash: false
-        });
+        this.change_page();
     },
 
     render: function()
     {
-        $streams = $(this.el).find(".activity-streams").empty();
+        $streams = this.$el.find(".activity-streams").empty();
 
         _.each( this.collection.models, function( stream )
         {

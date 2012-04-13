@@ -18,17 +18,18 @@ snapr.views.upload_progress_li = Backbone.View.extend({
 
     render: function()
     {
-        console.log("li", this)
+        // console.log("li", this)
         // check that the progress hasn't already reached 100%
-        if (!$(this.el).find(".finishing").length)
+        if (!this.$el.find(".finishing").length)
         {
-            $(this.el).html(
+            this.$el.html(
                 this.template({
                     upload_status: this.photo.upload_status.toLowerCase(),
                     description: this.photo.description,
                     venue: this.photo.location.foursquare_venue_name || this.photo.location.location,
                     spot_id: this.photo.location.spot_id,
-                    facebook_sharing: this.photo.shared && this.photo.shared.facebook_album || this.photo.shared && this.photo.shared.facebook_newsfeed,
+                    facebook_sharing: this.photo.shared && this.photo.shared.facebook_album ||
+                        this.photo.shared && this.photo.shared.facebook_newsfeed,
                     twitter_sharing: this.photo.shared && this.photo.shared.tweeted,
                     foursquare_sharing: this.photo.shared && this.photo.shared.foursquare_checkin,
                     tumblr_sharing: this.photo.shared && this.photo.shared.tumblr,
@@ -41,7 +42,7 @@ snapr.views.upload_progress_li = Backbone.View.extend({
 
             // if (this.photo.percent_complete == 100)
             // {
-            //     $(this.el).find(".finishing").spin({
+            //     this.$el.find(".finishing").spin({
             //         lines:10,
             //         length:3,
             //         width:2,

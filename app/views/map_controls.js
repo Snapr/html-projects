@@ -1,19 +1,20 @@
 snapr.views.map_controls = Backbone.View.extend({
 
+    initialize: function()
+    {
+        _.bindAll( this );
+        this.setElement( this.options.el );
+        this.map_view = this.options.map_view;
+        this.model.bind( "change", this.render );
+        this.collection.bind( "reset", this.render );
+    },
+
     events: {
         "change #map-filter": "update_filter",
         "submit #map-keyword": "keyword_search",
         "blur #map-keyword": "keyword_search",
         "click #map-keyword .ui-input-clear": "clear_keyword_search",
         "click .map-time": "reset_map_time"
-    },
-
-    initialize: function()
-    {
-        _.bindAll( this );
-        this.map_view = this.options.map_view;
-        this.model.bind( "change", this.render );
-        this.collection.bind( "reset", this.render );
     },
 
     update_filter: function( e )
@@ -78,9 +79,9 @@ snapr.views.map_controls = Backbone.View.extend({
 
     render: function()
     {
-        $(this.el).find("#map-filter option[value='just-me']").attr("disabled", !snapr.auth.has("snapr_user"));
-        $(this.el).find("#map-filter option[value='following']").attr("disabled", !snapr.auth.has("snapr_user"));
-        $(this.el).find("#map-filter option[value='just-one']").attr("disabled", !this.model.has("photo_id"));
+        this.$el.find("#map-filter option[value='just-me']").attr("disabled", !snapr.auth.has("snapr_user"));
+        this.$el.find("#map-filter option[value='following']").attr("disabled", !snapr.auth.has("snapr_user"));
+        this.$el.find("#map-filter option[value='just-one']").attr("disabled", !this.model.has("photo_id"));
 
         if (this.model.has( "photo_id" ) && this.model.get( "n" ) == 1)
         {
@@ -117,7 +118,7 @@ snapr.views.map_controls = Backbone.View.extend({
         }
 
 
-        $(this.el).find("#map-keyword input").val( this.model.get("keywords") || "" );
+        this.$el.find("#map-keyword input").val( this.model.get("keywords") || "" );
 
         return this;
     },
@@ -126,11 +127,11 @@ snapr.views.map_controls = Backbone.View.extend({
     {
         if (time)
         {
-            $(this.el).find(".map-time").find(".ui-bar").text( snapr.utils.short_timestamp( time, true) );
+            this.$el.find(".map-time").find(".ui-bar").text( snapr.utils.short_timestamp( time, true) );
         }
         else
         {
-            $(this.el).find(".map-time").find(".ui-bar").text( "Now" );
+            this.$el.find(".map-time").find(".ui-bar").text( "Now" );
         }
     },
 

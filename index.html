@@ -7,7 +7,7 @@
         <meta name="apple-mobile-web-app-status-bar-style" content="black">
 
         <script src="app/libs/json2.js" type="text/javascript" charset="utf-8"></script> <!-- just in case the browser sucks at JSON -->
-        <script src="app/libs/jquery-1.7.1.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="app/libs/jquery-1.7.2.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="app/libs/jq.cookie.js" type="text/javascript" charset="utf-8"></script>
 
         <script type="text/javascript" charset="utf-8">
@@ -32,6 +32,7 @@
             // we go to the home screen and re-trigger the navigate event
             snapr.redirect = window.location.hash.replace('#','')
             $(document).bind('snaprinit',function(){
+
                 if(snapr.redirect.length){
                     console.warn('redirect to',snapr.redirect)
                     Route.navigate(snapr.redirect, true);
@@ -48,7 +49,7 @@
         <script src="app/libs/spin.min.js" type="text/javascript" charset="utf-8"></script>
 
         <script src="app/libs/underscore-min.js" type="text/javascript" charset="utf-8"></script> <!-- required by backbone -->
-        <script src="app/libs/backbone-min.js" type="text/javascript" charset="utf-8"></script> <!-- handles routing, models and sync -->
+        <script src="app/libs/backbone.js" type="text/javascript" charset="utf-8"></script> <!-- handles routing, models and sync -->
 
         <script src="app/libs/iscroll.js" type="text/javascript" charset="utf-8"></script>
 
@@ -136,7 +137,7 @@
                     <% if(logged_in) { %>
                         <a href="#/my-account/" data-ajax="false" data-corners="false" data-shadow="false" data-role="button" data-iconpos="top" data-icon="main-menu-my-account">My Account</a>
                     <% }else{ %>
-                        <a href="#/join/" data-ajax="false" data-corners="false" data-shadow="false" data-role="button" data-iconpos="top" data-icon="main-menu-join">Join Snapr</a>
+                        <a class="x-join-snapr" data-ajax="false" data-corners="false" data-shadow="false" data-role="button" data-iconpos="top" data-icon="main-menu-join">Join Snapr</a>
                     <% } %>
                 </div>
 
@@ -379,9 +380,10 @@
     </script>
 
     <!-- @linked @service PAGE list currently linked services and add new ones -->
-    <div id="linked-services" data-title="Linked Services" data-add-back-btn="true" data-role="dialog">
+    <div id="linked-services" data-title="Linked Services" data-role="dialog">
         <div data-role="header">
             <h1>Linked Services</h1>
+            <a class="x-back" data-role="button" data-icon="delete" data-iconpos="notext"></a>
         </div>
         <div data-role="content">
             <div class="services-content">
@@ -676,7 +678,7 @@
             </div>
             <div class="feed-header"></div>
 
-            <div id="feed-images" class="gallery"></div>
+            <ul id="feed-images" class="gallery"></ul>
 
             <div class="v-feed-more"></div>
         </div>
@@ -776,7 +778,7 @@
                 <a class="username" data-ajax="false" data-transition="slide" href="#/feed/?username=<%= item.get('username') %><% if(back){%>&back=<%=back%><%}%>"><%= item.get('username') %></a>
 
                 <!-- Show Time only if no location -->
-                <% if(item.get('location').location){ %>
+                <% if(item.has('location') && item.get('location').location){ %>
                 <span class="image-time-and-location">
                 <a class="goto-map">
                     <span class="ui-icon extra-icons ui-icon-venue"></span>
@@ -811,7 +813,7 @@
                 <%}%>
                 <%= item.get('description') %>
 
-                <% if (item.get('location').spot_id){%>
+                <% if (item.has('location') && item.get('location').spot_id){%>
                 <a class="goto-spot">
                     @ <%= item.get('location').foursquare_venue_name %>
                 </a>
@@ -912,8 +914,7 @@
         <div data-role="header" data-theme="c">
             <h1>Profile</h1>
         </div>
-        <div data-role="content" class="user-profile">
-        </div>
+        <div data-role="content" class="user-profile"></div>
     </div>
 
     <script id="user-profile-template" type="text/template">
@@ -1427,9 +1428,10 @@
         </script>
 
     <!-- @join snapr DIALOG-->
-    <div id="join-snapr" data-add-back-btn="true" data-role="dialog" data-overlay-theme="c" data-theme="c">
+    <div id="join-snapr" data-role="dialog" data-overlay-theme="c" data-theme="c">
         <div data-role="header" data-theme="c">
             <h1>Join Snapr</h1>
+            <a class="x-back" data-role="button" data-icon="delete" data-iconpos="notext"></a>
         </div>
         <div data-role="content">
             <form action="javascript: void(0);" accept-charset="utf-8" id="join-dialog">
@@ -1654,7 +1656,7 @@
             </div> -->
 
             <ul data-role="listview" data-theme="d" data-inset="true">
-                <li><a href="#/join/" data-ajax="false">Join Snapr</a></li>
+                <li><a class="x-join-snapr" data-ajax="false">Join Snapr</a></li>
                 <!-- <li><a href="#">Forgot your username or password?</a></li> -->
             </ul>
         </div>
@@ -1976,6 +1978,7 @@
 <!-- <script src="http://localhost:8080/target/target-script-min.js#anonymous"></script> -->
 
 <!-- backbone views PAGES -->
+<script src="app/views/page.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/dialog.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/home.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/login.js" type="text/javascript" charset="utf-8"></script>
