@@ -161,13 +161,20 @@ snapr.views.dash = Backbone.View.extend({
                             stream_el.addClass('loading');
                             right_pull_msg.text('loading');
                             scroller = this;
-                            item.photos.fetch_older({success: function(){
-                                if(scroller.currPageX === scroller.pagesX.length){
-                                    scroller.scrollToPage(scroller.pagesX.length - 1);
+                            item.photos.fetch_older({
+                                success: function(collection, response){
+                                    if (response.response.photos.length){
+                                        if(scroller.currPageX === scroller.pagesX.length){
+                                            scroller.scrollToPage(scroller.pagesX.length - 1);
+                                        }
+                                        stream_el.removeClass('loading');
+                                        right_pull_msg.text('load more');
+                                    }else{
+                                        stream_el.addClass('no-more');
+                                        right_pull_msg.text('end');
+                                    }
                                 }
-                                stream_el.removeClass('loading');
-                                right_pull_msg.text('load more');
-                            }});
+                            });
                         }
 
                         flip_pulls(this);
