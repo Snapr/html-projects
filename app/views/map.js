@@ -351,8 +351,21 @@ snapr.views.map = snapr.views.page.extend({
             {
                 delete urlParams.access_token;
             }
+            if (urlParams.zoom)
+            {
+                delete urlParams.zoom;
+            }
+            if (urlParams.lat)
+            {
+                delete urlParams.lat;
+            }
+            if (urlParams.lng)
+            {
+                delete urlParams.lng;
+            }
+
             urlParams.back = "Map";
-            Route.navigate( "#/feed/?" + $.param(urlParams), true );
+            Route.navigate( "#/feed/?" + $.param( urlParams ) );
         }
         else
         {
