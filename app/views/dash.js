@@ -12,7 +12,7 @@ snapr.views.dash_stream = Backbone.View.extend({
         return this;
     },
     photoswipe_init: function(){
-        //photoswipe_init('stream'+this.model.cid, $( "a.image-link", this.el ));
+        photoswipe_init('stream'+this.model.cid, $( "a.image-link", this.el ));
     }
 
 });
@@ -106,13 +106,31 @@ snapr.views.dash = Backbone.View.extend({
                 stream_el = li.render().el,
                 pull_distance = -40,
                 left_pull_el = $('.left-pull', stream_el),
-                right_pull_el = $('.right-pull', stream_el);
+                right_pull_el = $('.right-pull', stream_el),
+                left_pull_msg = $('.x-msg', left_pull_el),
+                right_pull_msg = $('.x-msg', right_pull_el);
             li.photoswipe_init();
             streams.append( stream_el );
             function flip_pulls(scroller){
                 //console.log(scroller.x, scroller.maxScrollX);
-                left_pull_el.toggleClass('flipped', scroller.x > pull_distance);
-                right_pull_el.toggleClass('flipped', scroller.x < (scroller.maxScrollX - pull_distance));
+                if(scroller.x > pull_distance){
+                    left_pull_el.addClass('flipped');
+                    if(!stream_el.is('.loading')){
+                        left_pull_msg.text('release');
+                    }
+                }else{
+                    left_pull_el.removeClass('flipped');
+                    left_pull_msg.text('refresh');
+                }
+                if(scroller.x < (scroller.maxScrollX - pull_distance)){
+                    right_pull_el.addClass('flipped');
+                    if(!stream_el.is('.loading')){
+                        right_pull_msg.text('release');
+                    }
+                }else{
+                    right_pull_el.removeClass('flipped');
+                    right_pull_msg.text('load more');
+                }
             }
             try{
                 li.scroller = new iScroll($('.n-horizontal-scroll', stream_el)[0], {
@@ -130,21 +148,25 @@ snapr.views.dash = Backbone.View.extend({
                         // Pull to refresh: if scroll elements are .flipped - refresh
                         if(left_pull_el.is('.flipped') && !stream_el.is('.loading')){
                             stream_el.addClass('loading');
+                            left_pull_msg.text('loading');
                             scroller = this;
                             item.photos.fetch_newer({success: function(){
                                 if(scroller.currPageX === 0){
                                     scroller.scrollToPage(1);
                                 }
                                 stream_el.removeClass('loading');
+                                left_pull_msg.text('load more');
                             }});
                         }else if(right_pull_el.is('.flipped') && !stream_el.is('.loading')){
                             stream_el.addClass('loading');
+                            right_pull_msg.text('loading');
                             scroller = this;
                             item.photos.fetch_older({success: function(){
                                 if(scroller.currPageX === scroller.pagesX.length){
                                     scroller.scrollToPage(scroller.pagesX.length - 1);
                                 }
                                 stream_el.removeClass('loading');
+                                right_pull_msg.text('load more');
                             }});
                         }
 

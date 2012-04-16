@@ -1120,12 +1120,12 @@
                         <div class="scroll-wrapper"><!-- inner div for scroll -->
                         <div class="left-pull thumb-med load-more-inline">
                             <span class="ui-icon ui-icon-refresh"></span>
-                            <span class="ui-btn-text">Refresh</span>
+                            <span class="ui-btn-text x-msg">Refresh</span>
 
                         </div>
                         <div class="right-pull thumb-med load-more-inline">
                             <span class="ui-icon ui-icon-refresh"></span>
-                            <span class="ui-btn-text">Load More</span>
+                            <span class="ui-btn-text x-msg">Load More</span>
 
                         </div>
                     </div>
@@ -1140,10 +1140,10 @@
            </li>
         </script>
         <script id="dash-thumbs-template" type="text/template">
-            <% _.each(photos, function(photo) { %><a class="image-link" rel="external" data-date="<%= photo.get('date') %>" data-description="<%= photo.get('description') %>">
+            <% _.each(photos, function(photo) { %><a href="https://s3.amazonaws.com/media-server2.snapr.us/lrg/<%= photo.get('secret') %>/<%= photo.get('id') %>.jpg" class="image-link" rel="external" data-date="<%= photo.get('date') %>" data-description="<%= photo.get('description') %>">
                 <img src="https://s3.amazonaws.com/media-server2.snapr.us/thm2/<%= photo.get('secret') %>/<%= photo.get('id') %>.jpg" alt="<%= photo.get('description') %>" class="thumb-image thumb-med">
             </a><% }); %>
-        </script><!--  href="https://s3.amazonaws.com/media-server2.snapr.us/lrg/<%= photo.get('secret') %>/<%= photo.get('id') %>.jpg" -->
+        </script>
 
         <!-- @dashaddperson DIALOG-->
        <div id="dash-add-person" data-add-back-btn="true" data-role="dialog" data-overlay-theme="c" data-theme="c">
