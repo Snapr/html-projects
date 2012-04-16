@@ -128,7 +128,7 @@ snapr.views.dash = Backbone.View.extend({
                         details.find('.x-date').text(snapr.utils.short_timestamp(curr.data('date')));
 
                         // Pull to refresh: if scroll elements are .flipped - refresh
-                        if(left_pull_el.is('.flipped')){
+                        if(left_pull_el.is('.flipped') && !stream_el.is('.loading')){
                             stream_el.addClass('loading');
                             scroller = this;
                             item.photos.fetch_newer({success: function(){
@@ -137,7 +137,7 @@ snapr.views.dash = Backbone.View.extend({
                                 }
                                 stream_el.removeClass('loading');
                             }});
-                        }else if(right_pull_el.is('.flipped')){
+                        }else if(right_pull_el.is('.flipped') && !stream_el.is('.loading')){
                             stream_el.addClass('loading');
                             scroller = this;
                             item.photos.fetch_older({success: function(){
