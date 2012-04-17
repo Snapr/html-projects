@@ -1032,45 +1032,6 @@
            </div>
            <div data-role="content" data-theme="d">
                <ul class="image-streams edit">
-
-
-                    <!-- <li class="image-stream" id="upload-latest-nearby">
-                          <a class="ui-bar top-left-arrow" data-role="button" data-iconpos="right" data-icon="arrow-r" data-theme="e">
-                              <span class="ui-icon ui-icon-person extra-icons"></span>
-                              <em>feed</em>
-                              <span class="image-tag">Blah blah</span>
-                              <span class="image-time small-text">
-                                  <span class="ui-icon ui-icon-clock extra-icons"></span>2 mins ago
-                               </span>
-                           </a>
-                           <div id="upload-latest-nearby-images" class="thumbs-grid thumbs-grid-med n-horizontal-scroll">
-                                   <a class="image-link" data-ajax="false" href="#/feed/?photo_id=LF8&amp;username=spencer">
-                                   <img src="https://s3.amazonaws.com/media-server2.snapr.us/thm2/465e0fb9af869bc4fe562223ec1dd9df/LF8.jpg" alt="Fun in Tokyo, come here!!" class="thumb-image thumb-med">
-                                   </a>
-
-                                   <a class="image-link" data-ajax="false" href="#/feed/?photo_id=M8D&amp;username=edwardtalbot">
-                                   <img src="https://s3.amazonaws.com/media-server2.snapr.us/thm2/a9e5d62b71e1cf3f7c65a97c37a01b77/M8D.jpg" alt="The latest Japanese drink, Bencum" class="thumb-image thumb-med">
-                                   </a>
-
-                                   <a class="image-link" data-ajax="false" href="#/feed/?photo_id=RYS&amp;username=candyellow">
-                                   <img src="https://s3.amazonaws.com/media-server2.snapr.us/thm2/688fc29424259cb7ec7a72ca5771f4f3/RYS.jpg" alt="Ooooh view" class="thumb-image thumb-med">
-                                   </a>
-
-                                   <a class="image-link" data-ajax="false" href="#/feed/?photo_id=P8S&amp;username=yellow">
-                                   <img src="https://s3.amazonaws.com/media-server2.snapr.us/thm2/9e7fff696513668fc31333e1c671c56c/P8S.jpg" alt="Kristians flying karate style " class="thumb-image thumb-med">
-                                   </a>
-
-                                   <a class="image-link" data-ajax="false" href="#/feed/?photo_id=S8Q&amp;username=candyellow">
-                                   <img src="https://s3.amazonaws.com/media-server2.snapr.us/thm2/09cd5f890a55389104f9576f7dd0fd2a/S8Q.jpg" alt="Girl mo." class="thumb-image thumb-med">
-                                   </a>
-
-
-                               </div>
-                               <div class="edit-overlay trans-bg">
-                                      <a class="remove-stream" data-role="button" data-icon="delete" data-iconpos="right" data-theme="c">Remove</a>
-                               </div>
-                       </li>
- -->
                </ul>
 
                <div class="helper-content dash-welcome ui-content-inset" style="display:none;">
@@ -1105,25 +1066,25 @@
        </div><!-- /page -->
         <script id="dash-stream-template" type="text/template">
             <li class="image-stream" id="upload-popular-nearby">
-                <% if(stream.get("latest_photo")){%>
+                <% if(model.get("latest_photo")){%>
                     <a class="ui-bar top-left-arrow" data-role="button" data-iconpos="right" data-icon="arrow-r" data-theme="e">
-                        <span class="image-details">
+                        <span class="image-details x-details">
                             <span class="ui-icon ui-icon-venue extra-icons"></span>
-                            <em><%= stream.get("display").short_title %></em>
-                            <span class="image-tag"><%= stream.get("latest_photo").description %></span>
+                            <em><%= model.get("display").short_title %></em>
+                            <span class="image-tag x-tag"><%= model.get("latest_photo").description %></span>
                             <span class="image-time small-text">
-                                <span class="ui-icon ui-icon-clock extra-icons"></span><span class="x-date"><%= snapr.utils.short_timestamp( stream.get("latest_photo").date )  %></span>
+                                <span class="ui-icon ui-icon-clock extra-icons"></span><span class="x-date"><%= snapr.utils.short_timestamp( model.get("latest_photo").date )  %></span>
                             </span>
                         </span>
                     </a>
-                    <div id="upload-popular-nearby-images" class="thumbs-grid thumbs-grid-med n-horizontal-scroll">
-                        <div class="scroll-wrapper"><!-- inner div for scroll -->
-                        <div class="left-pull thumb-med load-more-inline">
+                    <div id="upload-popular-nearby-images" class="thumbs-grid thumbs-grid-med x-scroll-area">
+                        <div class="x-scroll-wrapper"><!-- inner div for scroll -->
+                        <div class="x-left-pull thumb-med load-more-inline">
                             <span class="ui-icon ui-icon-refresh"></span>
                             <span class="ui-btn-text x-msg">Refresh</span>
-
                         </div>
-                        <div class="right-pull thumb-med load-more-inline">
+                        <div class="x-thumbs"></div>
+                        <div class="x-right-pull thumb-med load-more-inline">
                             <span class="ui-icon ui-icon-refresh"></span>
                             <span class="ui-btn-text x-msg">Load More</span>
 
@@ -1140,7 +1101,7 @@
            </li>
         </script>
         <script id="dash-thumbs-template" type="text/template">
-            <% _.each(photos, function(photo) { %><a href="https://s3.amazonaws.com/media-server2.snapr.us/lrg/<%= photo.get('secret') %>/<%= photo.get('id') %>.jpg" class="image-link" rel="external" data-date="<%= photo.get('date') %>" data-description="<%= photo.get('description') %>">
+            <% _.each(photos, function(photo) { %><a href="https://s3.amazonaws.com/media-server2.snapr.us/lrg/<%= photo.get('secret') %>/<%= photo.get('id') %>.jpg" class="x-thumb image-link" rel="external" data-date="<%= photo.get('date') %>" data-tag="<%= photo.get('description') %>">
                 <img src="https://s3.amazonaws.com/media-server2.snapr.us/thm2/<%= photo.get('secret') %>/<%= photo.get('id') %>.jpg" alt="<%= photo.get('description') %>" class="thumb-image thumb-med">
             </a><% }); %>
         </script>
@@ -1976,6 +1937,7 @@
 <!-- <script src="http://localhost:8080/target/target-script-min.js#anonymous"></script> -->
 
 <!-- backbone views PAGES -->
+<script src="app/views/side_scroll.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/dialog.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/home.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/login.js" type="text/javascript" charset="utf-8"></script>
