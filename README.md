@@ -18,65 +18,48 @@ You can do the bulk of your development in any webkit browser - we recommend Chr
 Key Libraries
 -------------
 
-*jQuery Mobile*
+*jQuery Mobile* - The app primarily uses the [jQuery mobile framework](http://jquerymobile.com/)
 
-The app primarily uses the [jQuery mobile framework](http://jquerymobile.com/)
+*Backbone.js* - [backbone.js](http://documentcloud.github.com/backbone/) is used for #hash url navigation and data handling (In combination with jQuery mobile page transitions).
 
-*Backbone.js*
+*Underscore.js* - [underscore.js](http://documentcloud.github.com/underscore/) is used for templating.
 
-[backbone.js](http://documentcloud.github.com/backbone/) is used for #hash url navigation and data handling (In combination with jQuery mobile page transitions).
+*Less CSS* - The theme for the app is written using [Less CSS](http://lesscss.org/). We recommend using an app/script to compile your styles as you work( such as http://incident57.com/less/ ). 
 
-*Underscore.js*
-
-[underscore.js](http://documentcloud.github.com/underscore/) is used for templating.
-
-*Less CSS*
-
-The theme for the app is written using [Less CSS](http://lesscss.org/). We recommend using an app/script to compile your styles as you work( such as http://incident57.com/less/ ). 
-
-Using the javascript compiler (commented out in index.html <head>) will slow things down, especially when testing / building for mobile devices.
+Using the javascript compiler (commented out in index.html `<head>`) will slow things down, especially when running on mobile devices.
 
 
 Styling the App
 ---------------
 
-*variables.less*
-
-Many of the key UI aspects are defined in a single variables file (/css/variables.less)
+*variables.less* - Many of the key UI aspects are defined in a single variables file (/css/variables.less)
 
 Here you can edit things such as colors, fonts, font sizes, borders, page margins, etc and the changes will flow through the whole app.
 
 This file should be your first port of call for customization (before doing more advanced edits to theme.less)
 
-*Graphics Sprites*
-
-PSD files for the sprites used in the app are supplied @2x resolution. To accommodate different device screen pixel densities you should export three versions of each file. 
+*Graphics Sprites* - PSD files for the sprites used in the app are supplied @2x resolution. To accommodate different device screen pixel densities you should export three versions of each file. 
 
 * Standard : @1x pixel density, 50% size of @2x version. Lives in root /gfx/ folder (For iPhone 3 and MDPI android devices)
 * HDPI : @1.5x pixel density, 75% size of @2x version. Lives in /gfx/hdpi/ (For HDPI Android devices)
 * Retina : @2x pixeldensity, 100% size of @2x version. Lives in  /gfx/retina/ (for iPhone 4 and XHDPI Android devices)
 
-
-*sprites.less*
-
-Layout data for all the graphics sprites used in the app is set up via sprites.less (css/sprites.less). The aim of this is to take the pain out of calculating background positioning for large sprites, and to make it easier to edit sprites and have the changes update globally.
+*sprites.less* - Layout data for all the graphics sprites used in the app is set up via sprites.less (css/sprites.less). The aim of this is to take the pain out of calculating background positioning for large sprites, and to make it easier to edit sprites and have the changes update globally.
 
 Be sure to change the width and height variables if you edit the size of the graphics as these will be used to size the sprites for devices with different pixel density (match @1x pixel res version).
 
-*theme.less*
-
-UI details / styles are set out in theme.less (/css/theme.less ). Custom page styles & edits to the jQuery mobile defaults / theme swatches are set out here.
+*theme.less* - UI details / styles are set out in theme.less (/css/theme.less ). Custom page styles & edits to the jQuery mobile defaults / theme swatches are set out here.
 
 
 Editing the App
-===============
+---------------
 
 All the HTML for pages / views within the app is included in index.html. The different pages are contained within divs with `data-role="page"`, pages with dynamic content have javascript templated elements.
 
 The javascript for each page is in its own file, i.e. feed.js (/app/views/feed.js)
 
 Creating an OAuth Client
-========================
+------------------------
 
 Register your app via our [developer portal](http://developers.sna.pr/)
 
@@ -99,12 +82,6 @@ Once you do this all calls will automatically send your app_group and data will 
 Note that you can have different groups of settings for ‘dev’, ‘live’ and ‘default’.
 
 When publishing for iOS and Android the parent app will set environment=live || environment=dev to the URL when it loads your project in order to easily toggle which server environment you are working off.
-
-
-Extending the App
-=================
-
-Initial documentation for how to add / remove views from the app are included in the README.md document in the root folder of the project.
 
 
 Adding and Removing Views
@@ -185,7 +162,7 @@ In our combination of the two libraries we follow a common pattern for adding ne
                 </div>
             </div>
 
-    *   See the [jQuery page anatomy documentation](http://jquerymobile.com/demos/1.0.1/docs/pages/page-anatomy.html) for more info on the markup used.
+*   See the [jQuery page anatomy documentation](http://jquerymobile.com/demos/1.0.1/docs/pages/page-anatomy.html) for more info on the markup used.
 
 2.  The page content may be included in the HTML above for static content, or generated dynamically via a template. We use the lightweight  [Underscore templating](http://documentcloud.github.com/underscore/#template) system which is included in Backbone to render dynamic content. These templates are included in `index.html` as script tags with unique ids and `type` set to `"text/template"`. Underscore templates allow you to use standard JavaScript markup wrapped in `<% %>` symbols and let you print variables as string literals with `<%= variable_name %>` Eg:
 
@@ -199,7 +176,7 @@ In our combination of the two libraries we follow a common pattern for adding ne
 
 3.  To manage the showing/hiding and dynamic generation of page content, each page view has a [Backbone view](http://documentcloud.github.com/backbone/#View) defined, which lives in `app/views/` and must be referenced in `index.html`. These view files can be customised and extended to do all sorts of things, but they all share a number of common basic functions. You can read more about how they work in the [Backbone documentation](http://documentcloud.github.com/backbone/#View).
 
-    *   In the Snapr app, we define an `initialize` function which (among other things) tells jQuery Mobile to show the HTML div we added above (`id="profile"`) with an optional transition. It is important to set `changeHash` to `false` since we are using Backbone's hash navigation and not jQuery Mobile's.
+*   In the Snapr app, we define an `initialize` function which (among other things) tells jQuery Mobile to show the HTML div we added above (`id="profile"`) with an optional transition. It is important to set `changeHash` to `false` since we are using Backbone's hash navigation and not jQuery Mobile's.
 
             hs.views.profile = Backbone.View.extend({
                 initialize: function()
@@ -213,9 +190,9 @@ In our combination of the two libraries we follow a common pattern for adding ne
                 // ...
             });
 
-    *   If the page only displays static content you don't need to define a new `render` function, however in this example we would like to use the template defined above to render different content depending on whether a `username` parameter is passed in to the view.
+*   If the page only displays static content you don't need to define a new `render` function, however in this example we would like to use the template defined above to render different content depending on whether a `username` parameter is passed in to the view.
 
-    *   In this case we need to add to the initialize function to tell it which template markup to use, and to get the `username` if it is passed via the initialization options (see 5. below):
+*   In this case we need to add to the initialize function to tell it which template markup to use, and to get the `username` if it is passed via the initialization options (see 5. below):
 
             hs.views.profile = Backbone.View.extend({
                 initialize: function()
@@ -229,7 +206,7 @@ In our combination of the two libraries we follow a common pattern for adding ne
                 },
             });
 
-    *   Now that the view has the information needed to render the content, we can add the `render` function to add the dynamic content to the page. The `render` function takes the `this.username` variable and passes it to the template, replacing the current page content (`data-role='content'`) with the template function's output. By calling `this.render()` in the `initialization` function we will render the new page content straight away in this example. Often rendering triggered by a "bound" network event or user interaction.
+*   Now that the view has the information needed to render the content, we can add the `render` function to add the dynamic content to the page. The `render` function takes the `this.username` variable and passes it to the template, replacing the current page content (`data-role='content'`) with the template function's output. By calling `this.render()` in the `initialization` function we will render the new page content straight away in this example. Often rendering triggered by a "bound" network event or user interaction.
 
             hs.views.profile = Backbone.View.extend({
                 initialize: function()
@@ -251,17 +228,17 @@ In our combination of the two libraries we follow a common pattern for adding ne
                 }
             });
 
-    *   The `render` function should always return `this`, so we can chain it together with other functions later.
+*   The `render` function should always return `this`, so we can chain it together with other functions later.
 
 
 4.  As described above, each page view has a hash url route (or routes) defined and an associated route function. This tells the app to load a particular page in response to a url hash.
 
-    *   So if we wanting to show our new `profile` view when the user goes to `index.html#/profile/` or `index.html#/?username=rowan` we would add the following extra lines to `routes:`:
+*   So if we wanting to show our new `profile` view when the user goes to `index.html#/profile/` or `index.html#/?username=rowan` we would add the following extra lines to `routes:`:
 
             "/profile/": "profile",
             "/profile/?query_string": "profile"
 
-    *   Now that we've directed the routes to the the `profile` function we need to create it.
+*   Now that we've directed the routes to the the `profile` function we need to create it.
 
 5.  The `profile` function handles the instantiation of the `hs.view.profile` view, set the div with id `profile` as the view's element and passes in any parameters from the url like so:
 
@@ -274,3 +251,26 @@ In our combination of the two libraries we follow a common pattern for adding ne
                 el: $("#profile")
             });
         }
+        
+
+Building the native versions of the App
+=======================================
+
+The SnaprKit HTML app can be added to Snapr’s wrapper apps for iOS and Android 
+
+The html code is set up to work differently when run in 'appmode'.
+
+Custom URLs (snapr://) are used to launch native views such as the device camera. These URLs are also used to request data from the native wrapper (such as location data).
+
+These interfaces are documented separately.
+
+
+Including SnaprKit in an existing App
+=====================================
+
+The SnaprKit modules for iOS and Android can be included as components for an existing app.
+
+Data is passed to the parent app via snaprkit-parent:// urls.
+
+See separate documentation included with the SnaprKit Libraries for iOS / Android.
+
