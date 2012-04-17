@@ -332,7 +332,7 @@ snapr.views.share_photo = snapr.views.page.extend({
                     foursquare_venue_id: foursquare_venue_id,
                     back_query: back_query
                 },
-                el: $("#venues"),
+                el: $("#venues")[0],
             });
         }
 

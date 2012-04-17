@@ -14,6 +14,10 @@ snapr.models.foursquare_venue = Backbone.Model.extend({
         {
             return d.response.foursquare_response.response.venues;
         }
+        else if (d.id)
+        {
+            return d;
+        }
         else
         {
             return [];

@@ -6,6 +6,8 @@ snapr.views.venues = snapr.views.dialog.extend({
 
         this.selected_id = this.options.query.foursquare_venue_id;
 
+        this.query = this.options.query;
+
         this.$el.find("ul.venue-list").empty();
 
         this.collection = new snapr.models.foursquare_venue_collection({
@@ -46,7 +48,7 @@ snapr.views.venues = snapr.views.dialog.extend({
         var venue_li_template = _.template( $("#venue-li-template").html() );
 
         var selected_id = this.selected_id;
-        var back_query = this.back_query;
+        var back_query = this.query.back_query;
         var photo_model = this.model;
         _.each( this.display_collection, function( model )
         {
@@ -55,12 +57,13 @@ snapr.views.venues = snapr.views.dialog.extend({
                 model: model,
                 photo_model: photo_model,
                 selected_id: selected_id,
-                back_query: back_query
+                back_query: back_query,
+                back_view: this.back_view
             });
 
             venue_list.append( venue_li.render().el );
 
-        });
+        }, this);
 
         venue_list.listview().listview("refresh");
     },

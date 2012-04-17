@@ -11,6 +11,8 @@ snapr.views.venue_li = Backbone.View.extend({
         this.photo_model = this.options.photo_model;
 
         this.back_query = this.options.back_query;
+
+        this.back_view = this.options.back_view;
     },
 
     tagName: 'li',
@@ -41,17 +43,18 @@ snapr.views.venue_li = Backbone.View.extend({
             foursquare_venue_id: this.model.get("id"),
             foursquare_venue_name: this.model.get("name")
         };
-        // console.warn('photo_model', this.photo_model);
+
         var location = _.extend( this.photo_model.get( "location" ), venue );
 
         this.photo_model.set({
             location: location
         })
 
-        snapr.info.current_view = new snapr.views.share_photo({
+        this.back_view.initialize.call({
             query: this.back_query,
             model: this.photo_model,
             el: $("#share-photo")[0]
         });
+        snapr.info.current_view = this.back_view;
     }
 });
