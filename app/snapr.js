@@ -968,7 +968,7 @@ $(".x-launch-photo-library").live("click", function () {
 });
 
 // handle dialog links
-$("[data-snapr-dialog='true']").live("click", function( e )
+$("a[data-snapr-dialog='true']").live("vclick", function( e )
 {
     e.preventDefault();
 
