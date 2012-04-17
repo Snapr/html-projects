@@ -46,7 +46,7 @@ snapr.views.side_scroll = Backbone.View.extend({
             this.scroller = new iScroll(scroll_el[0], {
                 vScroll: false,
                 hScrollbar: false,
-                snap: 'a.x-thumb',
+                snap: 'a.x-thumb, .x-left-pull',
                 momentum: false,
                 onScrollEnd: function(){
                     var curr = $('a.x-thumb', this.wrapper).eq(this.currPageX);
