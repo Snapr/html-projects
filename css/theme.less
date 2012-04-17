@@ -301,7 +301,7 @@ h4{
         .image-link{
             padding-left: @padding-image-grid-inset;
         }
-
+        
         .load-more-inline{
             background-color: @color-off-white-tint;
             display: inline-block;
@@ -332,9 +332,9 @@ h4{
                 background-image: url('../gfx/refresh.png');
             }
 
-            &.flipped{
+            &.x-flipped{
                 .ui-icon{
-    	        -webkit-transform:rotate(-180deg) translateZ(0);
+    	        -webkit-transform:rotate(180deg) translateZ(0);
 	            }
     	    }
             &.noooo-right-pull{
@@ -344,7 +344,7 @@ h4{
             }
         }
 
-        &.loading {
+        .x-loading {
             .load-more-inline{
                  .ui-icon-refresh{
                     background-image: url('../gfx/spinner.png');
@@ -3580,7 +3580,7 @@ fieldset.ui-controlgroup{
                  }
          	    }
           }
-          &.loading {
+          &.x-loading {
               .load-more-inline{
                   .ui-icon-refresh{
                       background-image: url('../gfx/retina/spinner.png');
