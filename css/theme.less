@@ -1,4 +1,19 @@
 /*
+* jQuery Mobile Framework
+* Copyright (c) jQuery Project
+* Dual licensed under the MIT (MIT-LICENSE.txt) and GPL (GPL-LICENSE.txt) licenses.
+*/
+
+/*
+* Less CSS theme in part based on work by by Alexander Prinzhorn
+*/
+
+/*
+* CSS only back buttons based on work by Gregor Adams - http://dream-world.us/2011/11/30/the-best-pure-css3-ios-style-arrow-back-button/
+*/
+
+
+/*
 * Special Fonts
 */
 
@@ -14,7 +29,16 @@
 }
 
 /*
-* Browser
+* @import
+*/
+
+@import "variables.less";
+@import "sprites.less";
+@import "mixins.less";
+
+
+/*
+* Browser Defaults
 */
 
 html {
@@ -41,30 +65,9 @@ textarea{
 }
 
 
-
-/*
-* jQuery Mobile Framework
-* Copyright (c) jQuery Project
-* Dual licensed under the MIT (MIT-LICENSE.txt) and GPL (GPL-LICENSE.txt) licenses.
-*/
-
-/*
-* Ported to lesscss.org by Alexander Prinzhorn
-*/
-
-/*
-* CSS only back buttons based on work by Gregor Adams - http://dream-world.us/2011/11/30/the-best-pure-css3-ios-style-arrow-back-button/
-*/
-
-
-@import "variables.less";
-@import "sprites.less";
-@import "mixins.less";
-
-
 body {
    	font-size: @txt-size-base;
-   	background-color: @color-bg-dark;
+   	background-color: @color-bg-dark!important;
 }
 
 a{
@@ -89,7 +92,7 @@ hr{
 }
 
 h1,h2,h3,h4,h5,
-p,ul,li,hr,textarea,input{
+p,ul,li,hr,textarea,input, .ui-select{
     font-weight: normal;
     margin: 0;
     margin-bottom: @padding-page-inset;
@@ -251,7 +254,6 @@ h4{
                box-shadow: inset 0 0 9px 2px #AFAEAE;
            }
     }
-
     .bar-action{
         position: absolute;
         right: -16px;
@@ -281,7 +283,6 @@ h4{
 }
 
 .image-streams{
-
     list-style: none;
     padding: 0;
     margin: 0;
@@ -509,6 +510,10 @@ fieldset.ui-controlgroup{
     }
 }
 
+.ui-btn-icon-right .ui-icon {
+    right: @padding-element-inset;
+}
+
 .ui-disabled {
     opacity: .9;
 }
@@ -559,6 +564,17 @@ fieldset.ui-controlgroup{
 .ui-checkbox .ui-btn-icon-left .ui-btn-inner,
 .ui-radio .ui-btn-icon-left .ui-btn-inner {
     padding-left: 36px;
+}
+
+.ui-dialog {
+    margin-top: 0;
+}
+
+.ui-dialog-contain {
+    width: auto;
+    max-width: none;
+    padding: 0;
+    margin: 0;
 }
 
 
@@ -993,7 +1009,7 @@ fieldset.ui-controlgroup{
         display: block;
         top: 1px!important;
         left: 1px!important;
-        margin: 0;
+        margin: 0!important;
     }
     &.twitter-sharing{
        .ui-icon{background-position: @ss-offset-x @gfx-small-sharing-icon-sprite-twitter-y!important;}
@@ -1502,6 +1518,8 @@ fieldset.ui-controlgroup{
              .ui-link-inherit{
                     padding: 0 0 @padding-element-inset 0;
                     white-space: normal;
+                    font-weight: normal;
+                    color: @color-txt-medium-on-light;
                 }
             .ui-icon-arrow-r{
                 display: none;
@@ -1731,6 +1749,7 @@ fieldset.ui-controlgroup{
             overflow: hidden;
             display: block;
             vertical-align: top;
+            width: auto;
         }
         input{
             visibility: hidden;
@@ -2674,10 +2693,14 @@ fieldset.ui-controlgroup{
 */
 
 /* Set bgs */
-.ui-body-a,
-.ui-dialog.ui-overlay-a{
+.ui-body-a{
        background: none;
        background-color: @color-bg-dark;
+}
+
+.ui-dialog.ui-overlay-a{
+       background: none;
+       background-color: @color-bg-dark!important;
 }
 
 .ui-body-d{
@@ -3069,11 +3092,18 @@ fieldset.ui-controlgroup{
 
 
 /* Set bg for dialog */
-.ui-dialog.ui-overlay-c,
 .ui-body-c {
        background: none;
        background-color: @color-bg-light-tint;
        background-image: @gfx-bg-light-texture;
+       border: @border-medium-on-light;
+       text-shadow: 0 1px 1px @color-shadow-light-on-light;
+}
+
+.ui-dialog.ui-overlay-c{
+       background: none;
+       background-color: @color-bg-light-tint!important;
+       background-image: @gfx-bg-light-texture!important;
        border: @border-medium-on-light;
        text-shadow: 0 1px 1px @color-shadow-light-on-light;
 }
