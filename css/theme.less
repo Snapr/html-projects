@@ -501,9 +501,12 @@ fieldset.ui-controlgroup{
     height: @gfx-general-icon-sprite-grid;
 }
 
-.ui-btn-icon-left .ui-icon,
-.ui-btn-icon-right .ui-icon {
-    margin-top: -@gfx-general-icon-sprite-grid / 2;
+.ui-btn-icon-left .ui-btn-inner,
+.ui-btn-icon-right .ui-btn-inner {
+    .ui-icon{
+        margin-top: -@gfx-general-icon-sprite-grid / 2;
+        
+    }
 }
 
 .ui-disabled {
@@ -809,10 +812,13 @@ fieldset.ui-controlgroup{
         display: block;
     }
 
-    .ui-btn-right{
+    .ui-btn-icon-right{
         position: absolute;
         right: 4px;
         top: 0px;
+        .ui-btn-inner{
+            padding-right: 40px;
+        }
     }
 
     .image-details{
@@ -1067,30 +1073,34 @@ fieldset.ui-controlgroup{
 .menu-main{
     padding: 0;
     text-transform: lowercase;
-
-    .ui-icon{
-        background: transparent;
-        background-image: url('../gfx/main-menu-icons.png');
-        width: 80px;
-        height: 80px;
-        margin-left: -40px;
-        .box-shadow(none)
+    .ui-btn-inner{
+        .ui-icon{
+            background: transparent;
+            background-image: url('../gfx/main-menu-icons.png');
+            width: 80px;
+            height: 80px;
+            margin-left: -40px;
+            .box-shadow(none)
+        }
+        
+        .ui-icon-main-menu-feed{background-position: @mi-offset-x @gfx-menu-icon-sprite-feed-y;}
+          .ui-icon-main-menu-map{background-position: @mi-offset-x @gfx-menu-icon-sprite-map-y;}
+          .ui-icon-main-menu-camera{background-position: @mi-offset-x @gfx-menu-icon-sprite-camera-y;}
+          .ui-icon-main-menu-popular{background-position: @mi-offset-x @gfx-menu-icon-sprite-popular-y;}
+          .ui-icon-main-menu-dashboard{background-position: @mi-offset-x @gfx-menu-icon-sprite-dashboard-y;}
+          .ui-icon-main-menu-queue{background-position: @mi-offset-x @gfx-menu-icon-sprite-queue-y;}
+          .ui-icon-main-menu-my-account{background-position: @mi-offset-x @gfx-menu-icon-sprite-my-account-y;}
+          .ui-icon-main-menu-activity{background-position: @mi-offset-x @gfx-menu-icon-sprite-activity-y;}
+          .ui-icon-main-menu-join{background-position: @mi-offset-x @gfx-menu-icon-sprite-join-y;}
+          .ui-icon-main-menu-camera-lib{background-position: @mi-offset-x @gfx-menu-icon-sprite-camera-lib-y;}
+          .ui-icon-main-menu-cities{background-position: @mi-offset-x @gfx-menu-icon-sprite-cities-y;}
+          .ui-icon-main-menu-info{background-position: @mi-offset-x @gfx-menu-icon-sprite-info-y;}
+          .ui-icon-main-menu-login{background-position: @mi-offset-x @gfx-menu-icon-sprite-login-y;}
+        
+        
     }
-
-    .ui-icon-main-menu-feed{background-position: @mi-offset-x @gfx-menu-icon-sprite-feed-y;}
-    .ui-icon-main-menu-map{background-position: @mi-offset-x @gfx-menu-icon-sprite-map-y;}
-    .ui-icon-main-menu-camera{background-position: @mi-offset-x @gfx-menu-icon-sprite-camera-y;}
-    .ui-icon-main-menu-popular{background-position: @mi-offset-x @gfx-menu-icon-sprite-popular-y;}
-    .ui-icon-main-menu-dashboard{background-position: @mi-offset-x @gfx-menu-icon-sprite-dashboard-y;}
-    .ui-icon-main-menu-queue{background-position: @mi-offset-x @gfx-menu-icon-sprite-queue-y;}
-    .ui-icon-main-menu-my-account{background-position: @mi-offset-x @gfx-menu-icon-sprite-my-account-y;}
-    .ui-icon-main-menu-activity{background-position: @mi-offset-x @gfx-menu-icon-sprite-activity-y;}
-    .ui-icon-main-menu-join{background-position: @mi-offset-x @gfx-menu-icon-sprite-join-y;}
-    .ui-icon-main-menu-camera-lib{background-position: @mi-offset-x @gfx-menu-icon-sprite-camera-lib-y;}
-    .ui-icon-main-menu-cities{background-position: @mi-offset-x @gfx-menu-icon-sprite-cities-y;}
-    .ui-icon-main-menu-info{background-position: @mi-offset-x @gfx-menu-icon-sprite-info-y;}
-    .ui-icon-main-menu-login{background-position: @mi-offset-x @gfx-menu-icon-sprite-login-y;}
-
+    
+  
     /* Larger 2 column Btns */
     .ui-grid-a{
         /* Shadow under top button block */

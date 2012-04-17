@@ -77,7 +77,7 @@ textarea {
 * Global - stuffs from prinzhorn
 */
 /* Global Icon Sprites Layouts */
-/*
+/* 
 * Top Bar Icon Sprite - '../gfx/bar-icons.png'
 */
 /* Vertical Layout of Icons */
@@ -357,6 +357,10 @@ ul, ul li {
 }
 .image-streams .image-stream .thumbs {
   display: inline-block;
+  padding-right: 5px;
+}
+.image-streams .image-stream .image-link {
+  padding-left: 4px;
 }
 .image-streams .image-stream .load-more-inline {
   background-color: #fbfbfb;
@@ -387,15 +391,10 @@ ul, ul li {
 .image-streams .image-stream .load-more-inline .ui-icon-refresh {
   background-image: url('../gfx/refresh.png');
 }
-.image-streams .image-stream .load-more-inline.flip .ui-icon {
+.image-streams .image-stream .load-more-inline.flipped .ui-icon {
   -webkit-transform: rotate(-180deg) translatez(0);
 }
-.image-streams .image-stream .load-more-inline.left-pull {
-  position: absolute;
-  left: -101px;
-  top: 0;
-}
-.image-streams .image-stream .load-more-inline.right-pull {
+.image-streams .image-stream .load-more-inline.noooo-right-pull {
   position: absolute;
   right: -101px;
   top: 0;
@@ -508,7 +507,7 @@ input.ui-input-text, textarea.ui-input-text {
   width: 18px;
   height: 36px;
 }
-.ui-btn-icon-left .ui-icon, .ui-btn-icon-right .ui-icon {
+.ui-btn-icon-left .ui-btn-inner .ui-icon, .ui-btn-icon-right .ui-btn-inner .ui-icon {
   margin-top: -18px;
 }
 .ui-disabled {
@@ -796,10 +795,13 @@ input.ui-input-text, textarea.ui-input-text {
 .ui-bar .ui-btn-text {
   display: block;
 }
-.ui-bar .ui-btn-right {
+.ui-bar .ui-btn-icon-right {
   position: absolute;
   right: 4px;
   top: 0px;
+}
+.ui-bar .ui-btn-icon-right .ui-btn-inner {
+  padding-right: 40px;
 }
 .ui-bar .image-details {
   display: inline-block;
@@ -1076,7 +1078,7 @@ input.ui-input-text, textarea.ui-input-text {
 */
 .thumbs-grid-med, .grid #feed-images {
   margin: 0 -8px;
-  padding: 4px 0 0 4px;
+  padding: 4px 0 0 0;
 }
 .thumbs-grid-med .image-link, .grid #feed-images .image-link {
   display: inline-block;
@@ -1098,15 +1100,8 @@ input.ui-input-text, textarea.ui-input-text {
   white-space: nowrap;
   display: inline-block;
 }
-.n-horizontal-scroll .scroll-wrapper .thumbs{
-  white-space: nowrap;
-  display: inline-block;
-}
 .right-pull, .left-pull {
   display: inline;
-}
-.right-pull.flipped, .left-pull.flipped {
-  color: red;
 }
 /*
 * Main Menu - Custom
@@ -1130,7 +1125,7 @@ input.ui-input-text, textarea.ui-input-text {
   /* Smaller 3 column Btns */
 
 }
-.menu-main .ui-icon {
+.menu-main .ui-btn-inner .ui-icon {
   background: transparent;
   background-image: url('../gfx/main-menu-icons.png');
   width: 80px;
@@ -1140,43 +1135,43 @@ input.ui-input-text, textarea.ui-input-text {
   -webkit-box-shadow: none;
   box-shadow: none;
 }
-.menu-main .ui-icon-main-menu-feed {
+.menu-main .ui-btn-inner .ui-icon-main-menu-feed {
   background-position: 0px 0px;
 }
-.menu-main .ui-icon-main-menu-map {
+.menu-main .ui-btn-inner .ui-icon-main-menu-map {
   background-position: 0px -80px;
 }
-.menu-main .ui-icon-main-menu-camera {
+.menu-main .ui-btn-inner .ui-icon-main-menu-camera {
   background-position: 0px -160px;
 }
-.menu-main .ui-icon-main-menu-popular {
+.menu-main .ui-btn-inner .ui-icon-main-menu-popular {
   background-position: 0px -240px;
 }
-.menu-main .ui-icon-main-menu-dashboard {
+.menu-main .ui-btn-inner .ui-icon-main-menu-dashboard {
   background-position: 0px -320px;
 }
-.menu-main .ui-icon-main-menu-queue {
+.menu-main .ui-btn-inner .ui-icon-main-menu-queue {
   background-position: 0px -400px;
 }
-.menu-main .ui-icon-main-menu-my-account {
+.menu-main .ui-btn-inner .ui-icon-main-menu-my-account {
   background-position: 0px -480px;
 }
-.menu-main .ui-icon-main-menu-activity {
+.menu-main .ui-btn-inner .ui-icon-main-menu-activity {
   background-position: 0px -560px;
 }
-.menu-main .ui-icon-main-menu-join {
+.menu-main .ui-btn-inner .ui-icon-main-menu-join {
   background-position: 0px -640px;
 }
-.menu-main .ui-icon-main-menu-camera-lib {
+.menu-main .ui-btn-inner .ui-icon-main-menu-camera-lib {
   background-position: 0px -720px;
 }
-.menu-main .ui-icon-main-menu-cities {
+.menu-main .ui-btn-inner .ui-icon-main-menu-cities {
   background-position: 0px -800px;
 }
-.menu-main .ui-icon-main-menu-info {
+.menu-main .ui-btn-inner .ui-icon-main-menu-info {
   background-position: 0px -880px;
 }
-.menu-main .ui-icon-main-menu-login {
+.menu-main .ui-btn-inner .ui-icon-main-menu-login {
   background-position: 0px -960px;
 }
 .menu-main .ui-grid-a {
@@ -3943,7 +3938,7 @@ input.ui-input-text, textarea.ui-input-text {
 }
 /* Android HDPI - Pixel ratio of 1.5. Background-size is 1/1.5 = 66.67% (of a 150px image) */
 @media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5) {
-
+  
 }
 /* High Resolution (iPhone 4) */
 @media only screen and (-webkit-min-device-pixel-ratio: 2) {
