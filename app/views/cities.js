@@ -68,26 +68,6 @@ snapr.views.cities = Backbone.View.extend({
 
         this.render();
     },
-    // populate: function(){
-    //     var dash = this;
-    //     var options = {
-    //         data: {n:6, feed:true},
-    //         success: function(){
-    //             dash.render();
-    //         },
-    //         error:function(){
-    //             console.error('Error loading dash from server');
-    //         },
-    //         complete: function(){
-    //             $.mobile.hidePageLoadingMsg();
-    //         }
-    //     };
-
-    //     $.mobile.loadingMessage = "Loading";
-    //     $.mobile.showPageLoadingMsg();
-
-    //     this.collection.fetch( options );
-    // },
     render: function(){
         var $el = this.$el,
             streams = this.$el.find('.image-streams');
@@ -109,7 +89,5 @@ snapr.views.cities = Backbone.View.extend({
             });
         }, this);
 
-
     }
-
 });
