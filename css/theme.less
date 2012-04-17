@@ -91,6 +91,40 @@ hr{
     color: @color-shadow-medium-on-light;
 }
 
+
+/*
+* Workspace hacks for browser testing
+*/
+
+body.browser-testing{
+    width: 320px!important;
+    margin: 20px auto 0 20px!important;
+    display: block;
+    position: relative; 
+    height: 100%!important;
+    
+    /* so loader relates to container rather than being fixed */
+    .ui-loader{
+        position: absolute;
+    }
+    /* hack for photoswipe plugin */
+    .ps-caption,
+    .ps-toolbar,
+    .ps-uilayer,
+    .ps-carousel,
+    .ps-document-overlay{
+        width: 320px!important;
+    }
+    .ps-carousel,
+    .ps-uilayer{
+        height: 480px!important;
+    }
+    .ps-caption-bottom{
+        top: 435px!important;
+    }
+}
+
+
 h1,h2,h3,h4,h5,
 p,ul,li,hr,textarea,input, .ui-select{
     font-weight: normal;
