@@ -9,7 +9,7 @@ snapr.views.dash = Backbone.View.extend({
 
     el: $('#dashboard'),
     initialize: function(){
-        this.el.live('pagehide', function( e ){
+        this.$el.live('pagehide', function( e ){
             $(e.target).undelegate();
             return true;
         });
@@ -43,7 +43,7 @@ snapr.views.dash = Backbone.View.extend({
         this.collection.fetch( options );
     },
     render: function(){
-        var streams = this.el.find('.image-streams');
+        var streams = this.$el.find('.image-streams');
         streams.empty();
 
         _.each( this.collection.models, function( item ){
@@ -52,7 +52,7 @@ snapr.views.dash = Backbone.View.extend({
             li.render();
         }, this);
 
-        this.el.trigger( "create" );
+        this.$el.trigger( "create" );
 
     }
 
