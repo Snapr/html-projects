@@ -45,13 +45,13 @@ snapr.views.dash_add_search = snapr.views.dialog.extend({
 
         switch(type){
             case 'location':
-                Route.navigate( "/map/?location=" + keywords, true );
+                Route.navigate( "#/map/?location=" + keywords );
                 break;
             case 'tag':
-                Route.navigate( "/feed/?keywords=" + keywords + "&list_style=grid", true );
+                Route.navigate( "#/feed/?keywords=" + keywords + "&list_style=grid" );
                 break;
             case 'user':
-                Route.navigate( "/user/search/?username=" + keywords, true );
+                Route.navigate( "#/user/search/?username=" + keywords );
                 break;
         }
     },

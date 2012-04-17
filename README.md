@@ -117,18 +117,17 @@ Hash-URL Routing
 
 The routes are defined in the main `app/snapr.js` file as below.
 
-Imagine an app which had just three views, `popular`, `feed`, and `home`. These views could be loaded with the url hashes `#/popular/`, `#/feed/`, and `#/` or `*anything-else` (we'd use *anything-else as a catch-all).
+Imagine an app which had just three views, `popular`, `feed`, and `home`. These views could be loaded with the url hashes `#/popular/`, `#/feed/`, and `*anything-else` (we'd use *anything-else as a catch-all).
 
 The router for this app would look like so:
 
     snapr.routers = Backbone.Router.extend({
         routes: {
-            "/feed/": "feed",
-            "/feed/?*query_string": "feed",
-            "/popular/": "popular",
-            "/feed/?*query_string": "popular",
-            "/": "home",
-            "/?*query_string": "home",
+            "feed/": "feed",
+            "feed/?*query_string": "feed",
+            "popular/": "popular",
+            "feed/?*query_string": "popular",
+            "?*query_string": "home",
             "*path": "home"
         },
         feed: function( query_string )
