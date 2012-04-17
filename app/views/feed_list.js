@@ -22,6 +22,7 @@ snapr.views.feed_list = Backbone.View.extend({
 
     render: function( callback )
     {
+        var scrollY = window.scrollY;
         this.$el.empty();
 
         _.each( this.collection.models, function( item )
@@ -46,6 +47,12 @@ snapr.views.feed_list = Backbone.View.extend({
 
         this.$el
             .removeClass('thumbs-grid-med')
+
+
+        if (scrollY)
+        {
+            window.scrollTo(0, scrollY);
+        }
 
         if (callback && typeof callback == 'function'){
             callback();
