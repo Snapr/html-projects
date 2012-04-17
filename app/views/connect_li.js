@@ -95,7 +95,7 @@ snapr.views.connect_li = Backbone.View.extend({
                 {
                     setTimeout(function()
                     {
-                        Route.navigate("#/love-it/?shared=true&photo_id=" + model.get("id"), true);
+                        Route.navigate("#/love-it/?shared=true&photo_id=" + model.get("id"));
                     }, 600);
                 }
             },

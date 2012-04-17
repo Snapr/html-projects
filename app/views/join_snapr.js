@@ -37,7 +37,7 @@ snapr.views.join_snapr = snapr.views.dialog.extend({
                 join_snapr_view.el.find("#join-dialog-password").val('');
                 join_snapr_view.el.find("#join-dialog-email").val('')
                 // go back to home screen
-                Route.navigate('#',true);
+                Route.navigate('#');
             },
             error: function()
             {

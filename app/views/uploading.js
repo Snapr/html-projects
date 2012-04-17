@@ -29,7 +29,7 @@ snapr.views.uploading = snapr.views.page.extend({
         else{
             // testing upload stuff
 
-            var test_data = {"uploads":[{"description":"Pzzz","percent_complete":10,"id":"013FBD4D-7","sharing":{},"date":"2012-03-09 14:25:59 -0500","status":"private","location":{},"shared":{tweeted:true},"upload_status":"Active","thumbnail":"file:///Users/dpwolf/Library/Application Support/iPhone Simulator/5.0/Applications/ECF32C66-12DE-44D8-B2C2-9A02A0DD77BE/Documents/upload/00000000000353013969.jpg"}]}
+            // var test_data = {"uploads":[{"description":"Pzzz","percent_complete":10,"id":"013FBD4D-7","sharing":{},"date":"2012-03-09 14:25:59 -0500","status":"private","location":{},"shared":{tweeted:true},"upload_status":"Active","thumbnail":"file:///Users/dpwolf/Library/Application Support/iPhone Simulator/5.0/Applications/ECF32C66-12DE-44D8-B2C2-9A02A0DD77BE/Documents/upload/00000000000353013969.jpg"}]}
 
                  // "uploads": [
                  //     {
@@ -188,7 +188,7 @@ snapr.views.uploading = snapr.views.page.extend({
                     }
                     else
                     {
-                        Route.navigate( "#/upload/", true );
+                        Route.navigate( "#/upload/" );
                     }
                 }
             });
@@ -197,7 +197,7 @@ snapr.views.uploading = snapr.views.page.extend({
         else
         {
             console.log("current_upload not set when trying to cancel upload");
-            Route.navigate( "#/", true );
+            Route.navigate( "#/" );
         }
 
     },
@@ -275,6 +275,6 @@ snapr.views.uploading = snapr.views.page.extend({
             this.pending_uploads[queue_id].remove();
             delete this.pending_uploads[queue_id];
         }
-        // Route.navigate( "#/", true );
+        // Route.navigate( "#/" );
     }
 });

@@ -402,7 +402,7 @@ snapr.utils.require_login = function (funct) {
             if(e) {
                 e.preventDefault();
             }
-            Route.navigate('#/login/?message=Sorry, you need to log in first.', true);
+            Route.navigate('#/login/?message=Sorry, you need to log in first.');
         } else {
             $.proxy(funct, this)(e);
         }
@@ -925,7 +925,7 @@ function upload_completed(queue_id, snapr_id)
     }
     else
     {
-        Route.navigate("#/uploading/?photo_id=" + snapr_id + "&queue_id=" + queue_id, true);
+        Route.navigate("#/uploading/?photo_id=" + snapr_id + "&queue_id=" + queue_id);
     }
 }
 
@@ -950,10 +950,10 @@ $(".x-launch-camera").live("click", function () {
     if(snapr.utils.get_local_param("appmode")) {
         pass_data("snapr://camera");
         setTimeout(function () {
-            Route.navigate('#/limbo/', true);
+            Route.navigate('#/limbo/');
         }, 600);
     } else {
-        Route.navigate('#/app/', true);
+        Route.navigate('#/app/');
     }
 });
 
@@ -961,11 +961,11 @@ $(".x-launch-photo-library").live("click", function () {
     if(snapr.utils.get_local_param("appmode")) {
         pass_data("snapr://photo-library");
         setTimeout(function () {
-            Route.navigate('#/limbo/', true);
+            Route.navigate('#/limbo/');
         }, 600);
 
     } else {
-        Route.navigate('#/upload/', true);
+        Route.navigate('#/upload/');
     }
 });
 

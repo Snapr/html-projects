@@ -32,18 +32,18 @@ snapr.views.home = snapr.views.page.extend({
     {
         if (count)
         {
-            Route.navigate( '#/uploading/', true );
+            Route.navigate( '#/uploading/' );
         }
     },
 
     upload_progress: function( upload_data )
     {
-        Route.navigate( '#/uploading/', true );
+        Route.navigate( '#/uploading/' );
     },
 
     upload_completed: function( queue_id, snapr_id )
     {
-        Route.navigate( "#/love-it/?shared=true&photo_id=" + snapr_id, true );
+        Route.navigate( "#/love-it/?shared=true&photo_id=" + snapr_id );
     }
 
 

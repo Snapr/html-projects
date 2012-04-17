@@ -58,7 +58,7 @@ snapr.views.connect = snapr.views.page.extend({
         {
             setTimeout( function()
             {
-                Route.navigate("#/uploading/?shared=true&photo_id=" + query.get('photo_id'), true);
+                Route.navigate("#/uploading/?shared=true&photo_id=" + query.get('photo_id'));
             }, 600);
         }
     },

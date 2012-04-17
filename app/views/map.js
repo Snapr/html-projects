@@ -285,7 +285,7 @@ snapr.views.map = snapr.views.page.extend({
                 var again = confirm("Sorry, your search returned no results. Would you like to search again?");
 
                 if(again) {
-                    Route.navigate("/search", true);
+                    Route.navigate("/search");
                 }
             }
         });

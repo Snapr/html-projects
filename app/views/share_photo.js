@@ -97,7 +97,7 @@ snapr.views.share_photo = snapr.views.page.extend({
         });
         this.model.bind( "change:secret", this.render );
 
-        this.model.bind( "change:location", this.render );
+        this.model.bind( "set:location", this.render );
         this.model.bind( "change:foursquare_venue_name", this.render );
 
         this.model.fetch({
@@ -323,6 +323,7 @@ snapr.views.share_photo = snapr.views.page.extend({
 
     venue_search: function()
     {
+        var share_view = this;
         var go_to_venues = function( ll, foursquare_venue_id, back_query, model )
         {
             snapr.info.current_view = new snapr.views.venues({
@@ -333,6 +334,7 @@ snapr.views.share_photo = snapr.views.page.extend({
                     back_query: back_query
                 },
                 el: $("#venues")[0],
+                back_view: share_view
             });
         }
 
@@ -394,7 +396,7 @@ snapr.views.share_photo = snapr.views.page.extend({
                 this.model.set( attributes, {silent: true} );
             }
 
-            this.model.save({
+            this.model.set({
                 description: this.$el.find("#description").val(),
                 status: this.$el.find("[name='status']").is(":checked") ? "public": "private",
                 share_location: ( $("#share-location").attr("checked") == "checked" ),
@@ -402,7 +404,9 @@ snapr.views.share_photo = snapr.views.page.extend({
                 tumblr: ( $("#tumblr-sharing").attr("checked") == "checked" ),
                 foursquare_checkin: ( $("#foursquare-sharing").attr("checked") == "checked" ),
                 tweet: ( $("#twitter-sharing").attr("checked") == "checked" )
-            },{
+            }, {silent: true});
+
+            this.model.save({},{
                 success: function( model, xhr )
                 {
 
@@ -473,11 +477,11 @@ snapr.views.share_photo = snapr.views.page.extend({
                     if (sharing_errors.length)
                     {
                         var url = "#/connect/?to_link=" + sharing_errors.join(",") + "&shared=" + sharing_successes.join(",") + "&photo_id=" + model.get("id");
-                        Route.navigate( url, true );
+                        Route.navigate( url );
                     }
                     else
                     {
-                        Route.navigate( redirect_url, true );
+                        Route.navigate( redirect_url );
                     }
                 },
                 error: function()
@@ -521,8 +525,8 @@ snapr.views.share_photo = snapr.views.page.extend({
 
                 _.extend(params, snapr.auth.attributes);
 
-                // temporary
-                Route.navigate("#/uploading/", true );
+
+                Route.navigate("#/uploading/" );
                 pass_data("snapr://upload?" + $.param(params) );
             }
         }
@@ -536,7 +540,7 @@ snapr.views.share_photo = snapr.views.page.extend({
 
     upload_progress: function( upload_data )
     {
-        Route.navigate( '#/uploading/', true );
+        Route.navigate( '#/uploading/' );
     },
 
 });
