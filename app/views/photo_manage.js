@@ -3,11 +3,13 @@ snapr.views.photo_manage = Backbone.View.extend({
     initialize: function()
     {
         _.bindAll( this );
-
+        this.setElement( this.options.el );
         this.parentView = this.options.parentView;
         this.template = _.template( $("#photo-manage-template").html() );
+
         // update the display when we change the photo
-        this.model.bind( "change", this.render );
+        this.model.bind( "change:status", this.render );
+        this.model.bind( "change:flagged", this.render );
     },
 
     events: {
@@ -18,7 +20,7 @@ snapr.views.photo_manage = Backbone.View.extend({
 
     render: function()
     {
-        $(this.el).html( this.template({
+        this.$el.html( this.template({
             status: this.model.get("status"),
             flagged: this.model.get("flagged"),
             mine: this.model.get("username") == snapr.auth.get("snapr_user")

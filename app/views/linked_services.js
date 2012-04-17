@@ -1,17 +1,10 @@
-snapr.views.linked_services = Backbone.View.extend({
+snapr.views.linked_services = snapr.views.dialog.extend({
 
     initialize: function()
     {
-        _.bindAll( this );
-        this.el.live('pagehide', function( e )
-        {
-            $(e.target).undelegate();
+        snapr.views.dialog.prototype.initialize.call( this );
 
-            return true;
-        });
-
-        $.mobile.changePage( $("#linked-services"), {
-            changeHash: false,
+        this.change_page({
             transition: "slideup"
         });
 
@@ -23,7 +16,6 @@ snapr.views.linked_services = Backbone.View.extend({
         }
 
         this.user_settings = new snapr.models.user_settings();
-        // this.user_settings.bind( "change:linked_services", this.render);
 
         var linked_services_view = this;
         var options = {
@@ -41,10 +33,12 @@ snapr.views.linked_services = Backbone.View.extend({
         this.user_settings.fetch(options);
     },
 
+    events: {
+        "click .x-back": "back"
+    },
+
     render: function()
     {
-        console.log('render')
-
         this.show_tolink_message();
 
         var linked_services_list = {
@@ -54,8 +48,8 @@ snapr.views.linked_services = Backbone.View.extend({
             // twitter:false
         }
 
-        $(this.el).find('.linked-services').empty();
-        $(this.el).find('.add-services').empty();
+        this.$el.find('.linked-services').empty();
+        this.$el.find('.add-services').empty();
 
         _.each( this.user_settings.get('linked_services'), function( service, index )
         {
@@ -64,7 +58,7 @@ snapr.views.linked_services = Backbone.View.extend({
             // keep track of linked services
             linked_services_list[service.provider] = true;
 
-            $(this.el).find('.linked-services').append( v.render().el ).trigger('create');
+            this.$el.find('.linked-services').append( v.render().el ).trigger('create');
         }, this);
 
         // for all services that are not yet linked, add
@@ -74,11 +68,11 @@ snapr.views.linked_services = Backbone.View.extend({
             {
                 var v = new snapr.views.linked_service();
                 v.provider = provider;
-                $(this.el).find('.add-services').append( v.render().el ).trigger('create');
+                this.$el.find('.add-services').append( v.render().el ).trigger('create');
             }
         }, this);
 
-        console.log('end linked_services_list', linked_services_list);
+        // console.log('end linked_services_list', linked_services_list);
 
         return this;
 
@@ -90,21 +84,18 @@ snapr.views.linked_services = Backbone.View.extend({
         {
             if (this.to_link.length == 1)
             {
-                $(this.el).find(".tolink-message").text(
+                this.$el.find(".tolink-message").text(
                     'Sharing to ' + this.to_link[0] + ' failed. Please connect this service.')
             }
             if (this.to_link.length > 1)
             {
-                $(this.el).find(".tolink-message").text(
+                this.$el.find(".tolink-message").text(
                     'Sharing to services: ' + this.to_link.human_list() + ' failed. Please connect these services.')
             }
         }
         else
         {
-            $(this.el).find(".tolink-message").text("");
+            this.$el.find(".tolink-message").text("");
         }
-
     }
-
-
 });

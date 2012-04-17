@@ -1,24 +1,8 @@
-snapr.views.share_photo = Backbone.View.extend({
-
-    events: {
-        "change input[name='status']": "toggle_status",
-        "change input[name='share_location']": "toggle_sharing",
-        "change .upload-image-sharing input": "toggle_sharing",
-        "click #foursquare-venue": "venue_search",
-        "click .image-controls": "toggle_photo",
-        "submit form": "share"
-    },
+snapr.views.share_photo = snapr.views.page.extend({
 
     initialize: function()
     {
-        _.bindAll( this );
-
-        this.el.live( "pagehide", function( e )
-        {
-            $(e.target).undelegate();
-
-            return true;
-        });
+        snapr.views.page.prototype.initialize.call( this );
 
         this.template = _.template( $("#share-photo-template").html() );
 
@@ -33,7 +17,7 @@ snapr.views.share_photo = Backbone.View.extend({
             this.redirect_url = this.query.redirect_url;
         }
 
-        $.mobile.changePage( $("#share-photo"), {changeHash: false} );
+        this.change_page();
 
         // if we are coming from the venue selection screen the model will be passed in
         if (!this.model)
@@ -56,9 +40,18 @@ snapr.views.share_photo = Backbone.View.extend({
         }
     },
 
+    events: {
+        "change input[name='status']": "toggle_status",
+        "change input[name='share_location']": "toggle_sharing",
+        "change .upload-image-sharing input": "toggle_sharing",
+        "click #foursquare-venue": "venue_search",
+        "click .image-controls": "toggle_photo",
+        "submit form": "share"
+    },
+
     render: function()
     {
-        var description = $(this.el).find("#description").val();
+        var description = this.$el.find("#description").val();
 
         if (this.model.get("secret"))
         {
@@ -73,7 +66,7 @@ snapr.views.share_photo = Backbone.View.extend({
 
         var screen_height = window.innerHeight;
 
-        $(this.el).find("[data-role='content']").html( this.template({
+        this.$el.find("[data-role='content']").html( this.template({
             img_url: img_url,
             screen_height: screen_height,
             photo: this.model,
@@ -88,7 +81,7 @@ snapr.views.share_photo = Backbone.View.extend({
 
         if (description)
         {
-            $(this.el).find("#description").val( description );
+            this.$el.find("#description").val( description );
         }
 
         return this;
@@ -104,13 +97,13 @@ snapr.views.share_photo = Backbone.View.extend({
         });
         this.model.bind( "change:secret", this.render );
 
-        this.model.bind( "change:location", this.render );
+        this.model.bind( "set:location", this.render );
         this.model.bind( "change:foursquare_venue_name", this.render );
 
         this.model.fetch({
             success: function( model )
             {
-                $(share_photo_view.el).find("#description").val( model.get("description") );
+                share_photo_view.$el.find("#description").val( model.get("description") );
 
                 if (snapr.utils.get_local_param( "foursquare-sharing" ) &&
                     !model.get( "location" ).foursquare_venue_id &&
@@ -184,8 +177,8 @@ snapr.views.share_photo = Backbone.View.extend({
                     share_photo_view.model.set({
                         location: model.attributes
                     });
-                    $(share_photo_view.el).find("#no-foursquare-sharing-location").removeClass("ajax-loading");
-                    $(share_photo_view.el).find(".location-name").text(share_photo_view.model.get("location").location);
+                    share_photo_view.$el.find("#no-foursquare-sharing-location").removeClass("ajax-loading");
+                    share_photo_view.$el.find(".location-name").text(share_photo_view.model.get("location").location);
                 }
             });
         }
@@ -235,13 +228,14 @@ snapr.views.share_photo = Backbone.View.extend({
                             foursquare_venue_name: collection.first().get( "name" )
                         });
                         share_photo_view.model.set({location: location});
-                        $(share_photo_view.el).find("#foursquare-sharing-location").removeClass("ajax-loading");
-                        $(share_photo_view.el).find(".foursquare-venue-name").text(share_photo_view.model.get("location").foursquare_venue_name);
+                        share_photo_view.$el.find("#foursquare-sharing-location").removeClass("ajax-loading");
+                        share_photo_view.$el.find(".foursquare-venue-name")
+                            .text(share_photo_view.model.get("location").foursquare_venue_name);
                     }
                     else
                     {
-                        $(share_photo_view.el).find("#foursquare-sharing-location").removeClass("ajax-loading");
-                        $(share_photo_view.el).find(".foursquare-venue-name").text( "No venues nearby." );
+                        share_photo_view.$el.find("#foursquare-sharing-location").removeClass("ajax-loading");
+                        share_photo_view.$el.find(".foursquare-venue-name").text( "No venues nearby." );
                     }
                 }
             });
@@ -310,8 +304,8 @@ snapr.views.share_photo = Backbone.View.extend({
         }
         if (e.target.id == "foursquare-sharing")
         {
-            $(this.el).find("#no-foursquare-sharing-location").toggle();
-            $(this.el).find("#foursquare-sharing-location").toggle();
+            this.$el.find("#no-foursquare-sharing-location").toggle();
+            this.$el.find("#foursquare-sharing-location").toggle();
             if ($(e.target).attr("checked"))
             {
                 this.get_foursquare_venues();
@@ -329,6 +323,7 @@ snapr.views.share_photo = Backbone.View.extend({
 
     venue_search: function()
     {
+        var share_view = this;
         var go_to_venues = function( ll, foursquare_venue_id, back_query, model )
         {
             snapr.info.current_view = new snapr.views.venues({
@@ -338,7 +333,8 @@ snapr.views.share_photo = Backbone.View.extend({
                     foursquare_venue_id: foursquare_venue_id,
                     back_query: back_query
                 },
-                el: $("#venues"),
+                el: $("#venues")[0],
+                back_view: share_view
             });
         }
 
@@ -400,15 +396,17 @@ snapr.views.share_photo = Backbone.View.extend({
                 this.model.set( attributes, {silent: true} );
             }
 
-            this.model.save({
-                description: this.el.find("#description").val(),
-                status: this.el.find("[name='status']").is(":checked") ? "public": "private",
+            this.model.set({
+                description: this.$el.find("#description").val(),
+                status: this.$el.find("[name='status']").is(":checked") ? "public": "private",
                 share_location: ( $("#share-location").attr("checked") == "checked" ),
                 faceboook_album: ( $("#facebook-sharing").attr("checked") == "checked" ),
                 tumblr: ( $("#tumblr-sharing").attr("checked") == "checked" ),
                 foursquare_checkin: ( $("#foursquare-sharing").attr("checked") == "checked" ),
                 tweet: ( $("#twitter-sharing").attr("checked") == "checked" )
-            },{
+            }, {silent: true});
+
+            this.model.save({},{
                 success: function( model, xhr )
                 {
 
@@ -479,11 +477,11 @@ snapr.views.share_photo = Backbone.View.extend({
                     if (sharing_errors.length)
                     {
                         var url = "#/connect/?to_link=" + sharing_errors.join(",") + "&shared=" + sharing_successes.join(",") + "&photo_id=" + model.get("id");
-                        Route.navigate( url, true );
+                        Route.navigate( url );
                     }
                     else
                     {
-                        Route.navigate( redirect_url, true );
+                        Route.navigate( redirect_url );
                     }
                 },
                 error: function()
@@ -505,7 +503,7 @@ snapr.views.share_photo = Backbone.View.extend({
                             d.getMinutes().zeroFill( 2 ) + ':' +
                             d.getSeconds().zeroFill( 2 )
                     };
-                _.each( $(this.el).find("form").serializeArray(), function( o ){
+                _.each( this.$el.find("form").serializeArray(), function( o ){
                     if (["tumblr", "faceboook_album", "tweet", "foursquare_checkin"].indexOf( o.name ) > -1)
                     {
                         params[o.name] = (o.value == "on");
@@ -527,8 +525,8 @@ snapr.views.share_photo = Backbone.View.extend({
 
                 _.extend(params, snapr.auth.attributes);
 
-                // temporary
-                Route.navigate("#/uploading/", true );
+
+                Route.navigate("#/uploading/" );
                 pass_data("snapr://upload?" + $.param(params) );
             }
         }
@@ -536,13 +534,13 @@ snapr.views.share_photo = Backbone.View.extend({
 
     toggle_photo: function( e )
     {
-        $(this.el).find(".image-options").toggleClass("show-image");
-        $(this.el).find("div[ data-role='header']").toggle();
+        this.$el.find(".image-options").toggleClass("show-image");
+        this.$el.find("div[ data-role='header']").toggle();
     },
 
     upload_progress: function( upload_data )
     {
-        Route.navigate( '#/uploading/', true );
+        Route.navigate( '#/uploading/' );
     },
 
 });

@@ -1,27 +1,10 @@
-snapr.views.app = Backbone.View.extend({
-
-    el: $('#app'),
-
-    events: {
-       // "click #popular-timeframe a":"update_list"
-    },
+snapr.views.app = snapr.views.page.extend({
 
     initialize: function()
     {
-        console.log('app');
+        snapr.views.page.prototype.initialize.call( this );
 
-        this.el.live('pagehide', function( e )
-        {
-            $(e.target).undelegate();
-
-            return true;
-        });
-
-        $.mobile.changePage( $("#app"), {
-            changeHash: false
-        });
-
+        this.change_page();
     },
-
 
 })

@@ -1,45 +1,34 @@
 snapr.views.login = snapr.views.dialog.extend({
 
-    el: $('#login'),
-
-    events: {
-        "submit #login-dialog":"log_in",
-        "click .x-back": "back"
-    },
-
     initialize: function()
     {
-        this.back_view = this.options.back_view;
-
-        this.el.live('pagehide', function( e )
-        {
-            $(e.target).undelegate();
-
-            return true;
-        });
+        snapr.views.dialog.prototype.initialize.call( this );
 
         if (this.options.query)
         {
             this.message = this.options.query.message;
         }
 
-
         if (this.message)
         {
-            $(this.el).find(".login-message").show().text(this.message);
+            this.$el.find(".login-message").show().text(this.message);
         }
         else
         {
-            $(this.el).find(".login-message").hide().text("");
+            this.$el.find(".login-message").hide().text("");
         }
 
-        $.mobile.changePage( $("#login"), {
-            changeHash: false,
+        this.change_page({
             transition: this.transition
         });
     },
 
     transition: "slideup",
+
+    events: {
+        "submit #login-dialog":"log_in",
+        "click .x-back": "back"
+    },
 
     log_in: function()
     {

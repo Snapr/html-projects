@@ -26,7 +26,13 @@ snapr.models.user = Backbone.Model.extend({
                 d.response.user.details = d.response.details;
             }
             return d.response.user;
-        }else{
+        }
+        else if (d.user_id)
+        {
+            return d;
+        }
+        else
+        {
             return {};
         }
     },
@@ -37,18 +43,20 @@ snapr.models.user = Backbone.Model.extend({
 
         this.url = this.urlRoot() + "follow/";
 
-        var model = this;
-
         this.save({},{
-            success: function()
+            success: function( new_model, response )
             {
-                model.url = url_function;
-                model.fetch();
+                if (response.success && response.response && response.response.users)
+                {
+                    new_model.set( response.response.users[0] );
+                }
+                else
+                {
+                    console.warn(new_model, response);
+                }
             },
             error: function(e)
             {
-                model.url = url_function;
-                model.fetch();
                 console.log( "follow error", e );
             }
         })
@@ -61,18 +69,20 @@ snapr.models.user = Backbone.Model.extend({
 
         this.url = this.urlRoot() + "unfollow/";
 
-        var model = this;
-
         this.save({},{
-            success: function(s)
+            success: function( new_model, response )
             {
-                model.url = url_function;
-                model.fetch();
+                if (response.success && response.response && response.response.users && response.response.users[0])
+                {
+                    new_model.set( response.response.users[0][0] );
+                }
+                else
+                {
+                    console.warn(new_model, response);
+                }
             },
             error: function(e)
             {
-                model.url = url_function;
-                model.fetch();
                 console.log( "unfollow error", e );
             }
         })

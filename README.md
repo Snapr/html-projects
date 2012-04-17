@@ -1,13 +1,114 @@
-Snapr Mobile App
-================
+Getting Started with the SnaprKit HTML 5 App
+============================================
 
-Kitchen sink edition.
----------------------
 
-Featuring:
-* jQuery Mobile widgets and framework
-* Backbone.js structure, routing and events
+Browser Testing
+---------------
 
+You can do the bulk of your development in any webkit browser - we recommend Chrome or Safari.
+
+-    Run the app in an environment that performs like a web server such as the 'Sites' folder on mac. 
+-    If you enable web sharing you can access this page at your computers IP i.e. http://192.168.1.131/~username/ and test from your mobile device.
+
+-    Append *browser_testing=true* to the query string when you first load the page if testing in a desktop browser. This will add a class to the body and set a flag in local storage so that the project will limited to a 320px wide section of your screen. 
+
+-    Note that the app uses a slightly different upload flow on desktop/mobile web.
+
+
+Key Libraries
+-------------
+
+*jQuery Mobile*
+
+The app primarily uses the [jQuery mobile framework](http://jquerymobile.com/)
+
+*Backbone.js*
+
+[backbone.js](http://documentcloud.github.com/backbone/) is used for #hash url navigation and data handling (In combination with jQuery mobile page transitions).
+
+*Underscore.js*
+
+[underscore.js](http://documentcloud.github.com/underscore/) is used for templating.
+
+*Less CSS*
+
+The theme for the app is written using [Less CSS](http://lesscss.org/). We recommend using an app/script to compile your styles as you work( such as http://incident57.com/less/ ). 
+
+Using the javascript compiler (commented out in index.html <head>) will slow things down, especially when testing / building for mobile devices.
+
+
+Styling the App
+---------------
+
+*variables.less*
+
+Many of the key UI aspects are defined in a single variables file (/css/variables.less)
+
+Here you can edit things such as colors, fonts, font sizes, borders, page margins, etc and the changes will flow through the whole app.
+
+This file should be your first port of call for customization (before doing more advanced edits to theme.less)
+
+*Graphics Sprites*
+
+PSD files for the sprites used in the app are supplied @2x resolution. To accommodate different device screen pixel densities you should export three versions of each file. 
+
+* Standard : @1x pixel density, 50% size of @2x version. Lives in root /gfx/ folder (For iPhone 3 and MDPI android devices)
+* HDPI : @1.5x pixel density, 75% size of @2x version. Lives in /gfx/hdpi/ (For HDPI Android devices)
+* Retina : @2x pixeldensity, 100% size of @2x version. Lives in  /gfx/retina/ (for iPhone 4 and XHDPI Android devices)
+
+
+*sprites.less*
+
+Layout data for all the graphics sprites used in the app is set up via sprites.less (css/sprites.less). The aim of this is to take the pain out of calculating background positioning for large sprites, and to make it easier to edit sprites and have the changes update globally.
+
+Be sure to change the width and height variables if you edit the size of the graphics as these will be used to size the sprites for devices with different pixel density (match @1x pixel res version).
+
+*theme.less*
+
+UI details / styles are set out in theme.less (/css/theme.less ). Custom page styles & edits to the jQuery mobile defaults / theme swatches are set out here.
+
+
+Editing the App
+===============
+
+All the HTML for pages / views within the app is included in index.html. The different pages are contained within divs with `data-role="page"`, pages with dynamic content have javascript templated elements.
+
+The javascript for each page is in its own file, i.e. feed.js (/app/views/feed.js)
+
+Creating an OAuth Client
+========================
+
+Register your app via our [developer portal](http://developers.sna.pr/)
+
+The portal is still pre-release so you will need to enter a username / pw the first time you visit: snapr / advance
+
+Login to the portal using a Snapr account created via [our website](http://sna.pr/join-snapr/)
+
+Note that for now all development and testing should take place in our staging environment.
+
+Setting the OAuth details and App Group for your app
+
+When you register your app you will be given an OAuth Client / Secret, and you will also create an ‘App Group’ for your app. 
+
+By sending app_group=yourapp with any API call you tell the API to return data relative to your app and its users.
+
+At the top of snapr.js (app/snapr.js) you can enter your client, secret, and app_group. 
+
+Once you do this all calls will automatically send your app_group and data will be specific to your app.
+
+Note that you can have different groups of settings for ‘dev’, ‘live’ and ‘default’.
+
+When publishing for iOS and Android the parent app will set environment=live || environment=dev to the URL when it loads your project in order to easily toggle which server environment you are working off.
+
+
+Extending the App
+=================
+
+Initial documentation for how to add / remove views from the app are included in the README.md document in the root folder of the project.
+
+
+Adding and Removing Views
+=========================
 
 Hash-URL Routing
 ----------------
@@ -16,18 +117,17 @@ Hash-URL Routing
 
 The routes are defined in the main `app/snapr.js` file as below.
 
-Imagine an app which had just three views, `popular`, `feed`, and `home`. These views could be loaded with the url hashes `#/popular/`, `#/feed/`, and `#/` or `*anything-else` (we'd use *anything-else as a catch-all).
+Imagine an app which had just three views, `popular`, `feed`, and `home`. These views could be loaded with the url hashes `#/popular/`, `#/feed/`, and `*anything-else` (we'd use *anything-else as a catch-all).
 
 The router for this app would look like so:
 
     snapr.routers = Backbone.Router.extend({
         routes: {
-            "/feed/": "feed",
-            "/feed/?*query_string": "feed",
-            "/popular/": "popular",
-            "/feed/?*query_string": "popular",
-            "/": "home",
-            "/?*query_string": "home",
+            "feed/": "feed",
+            "feed/?*query_string": "feed",
+            "popular/": "popular",
+            "feed/?*query_string": "popular",
+            "?*query_string": "home",
             "*path": "home"
         },
         feed: function( query_string )

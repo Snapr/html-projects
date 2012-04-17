@@ -4,10 +4,6 @@ snapr.views.activity_stream = Backbone.View.extend({
 
     className: "activity-stream",
 
-    events: {
-       // "click #popular-timeframe a":"update_list"
-    },
-
     initialize: function()
     {
         _.bindAll( this );
@@ -37,7 +33,7 @@ snapr.views.activity_stream = Backbone.View.extend({
         var time_period = snapr.utils.short_timestamp( this.model.get( "min_date" ), true );
 
         var photo_events = (summary["like"] || summary["comment"]) ? true: false;
-        $(this.el).html( this.template({
+        this.$el.html( this.template({
             time_period: time_period,
             stream_summary: stream_summary,
             photo_events: photo_events
@@ -50,7 +46,7 @@ snapr.views.activity_stream = Backbone.View.extend({
                 photo_events: photo_events
             });
 
-            $(this.el).append( stream_item.render().el );
+            this.$el.append( stream_item.render().el );
         }, this);
 
         return this;

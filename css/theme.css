@@ -1,4 +1,15 @@
 /*
+* jQuery Mobile Framework
+* Copyright (c) jQuery Project
+* Dual licensed under the MIT (MIT-LICENSE.txt) and GPL (GPL-LICENSE.txt) licenses.
+*/
+/*
+* Less CSS theme in part based on work by by Alexander Prinzhorn
+*/
+/*
+* CSS only back buttons based on work by Gregor Adams - http://dream-world.us/2011/11/30/the-best-pure-css3-ios-style-arrow-back-button/
+*/
+/*
 * Special Fonts
 */
 @font-face {
@@ -9,37 +20,7 @@
   font-style: normal;
 }
 /*
-* Browser
-*/
-html {
-  -webkit-user-select: none;
-  -webkit-text-size-adjust: none;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-  -webkit-touch-callout: none;
-  -webkit-font-smoothing: antialiased;
-}
-input[type="search"]::-webkit-search-cancel-button {
-  -webkit-appearance: none;
-}
-.main-image {
-  -webkit-touch-callout: default;
-}
-.image-caption, user-details {
-  -webkit-user-select: text;
-}
-textarea {
-  resize: none;
-}
-/*
-* jQuery Mobile Framework
-* Copyright (c) jQuery Project
-* Dual licensed under the MIT (MIT-LICENSE.txt) and GPL (GPL-LICENSE.txt) licenses.
-*/
-/*
-* Ported to lesscss.org by Alexander Prinzhorn
-*/
-/*
-* CSS only back buttons based on work by Gregor Adams - http://dream-world.us/2011/11/30/the-best-pure-css3-ios-style-arrow-back-button/
+* @import
 */
 /*
 * SNAPR EASY THEME DEFINIIONS
@@ -128,9 +109,31 @@ textarea {
 /* Vertical Layout of Icons */
 /* Horizontal offsets for theme swatches / hover states */
 /* keep the corners 45 degrees otherwise they look crap */
+/*
+* Browser Defaults
+*/
+html {
+  -webkit-user-select: none;
+  -webkit-text-size-adjust: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-touch-callout: none;
+  -webkit-font-smoothing: antialiased;
+}
+input[type="search"]::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+}
+.main-image {
+  -webkit-touch-callout: default;
+}
+.image-caption, user-details {
+  -webkit-user-select: text;
+}
+textarea {
+  resize: none;
+}
 body {
   font-size: 15px;
-  background-color: #000000;
+  background-color: #000000 !important;
 }
 a {
   text-decoration: none;
@@ -151,6 +154,36 @@ hr {
   background-color: transparent;
   color: rgba(200, 200, 200, 0.3);
 }
+/*
+* Workspace hacks for browser testing
+*/
+body.browser-testing {
+  width: 320px!important;
+  margin: 20px auto 0 20px!important;
+  display: block;
+  position: relative;
+  height: 100%!important;
+  /* so loader relates to container rather than being fixed */
+
+  /* hack for photoswipe plugin */
+
+}
+body.browser-testing .ui-loader {
+  position: absolute;
+}
+body.browser-testing .ps-caption,
+body.browser-testing .ps-toolbar,
+body.browser-testing .ps-uilayer,
+body.browser-testing .ps-carousel,
+body.browser-testing .ps-document-overlay {
+  width: 320px!important;
+}
+body.browser-testing .ps-carousel, body.browser-testing .ps-uilayer {
+  height: 480px!important;
+}
+body.browser-testing .ps-caption-bottom {
+  top: 435px!important;
+}
 h1,
 h2,
 h3,
@@ -161,7 +194,8 @@ ul,
 li,
 hr,
 textarea,
-input {
+input,
+.ui-select {
   font-weight: normal;
   margin: 0;
   margin-bottom: 8px;
@@ -404,7 +438,7 @@ ul, ul li {
   -webkit-transform: rotate(0deg) translatez(0);
   -webkit-transition-duration: 0ms;
   -webkit-animation-name: loading;
-  -webkit-animation-duration: 2s;
+  -webkit-animation-duration: 1.2s;
   -webkit-animation-iteration-count: infinite;
   -webkit-animation-timing-function: linear;
 }
@@ -507,8 +541,11 @@ input.ui-input-text, textarea.ui-input-text {
   width: 18px;
   height: 36px;
 }
-.ui-btn-icon-left .ui-icon, .ui-btn-icon-right .ui-icon {
+.ui-btn-icon-left .ui-btn-inner .ui-icon, .ui-btn-icon-right .ui-btn-inner .ui-icon {
   margin-top: -18px;
+}
+.ui-btn-icon-right .ui-icon {
+  right: 8px;
 }
 .ui-disabled {
   opacity: .9;
@@ -517,14 +554,23 @@ input.ui-input-text, textarea.ui-input-text {
   margin-left: -40px;
   margin-top: -40px;
   padding: 16px;
-  width: 64px;
+  width: 56px;
+  height: 56px;
   border: none;
+  opacity: 1;
 }
 .ui-loader .ui-icon-loading {
   background-image: url('../gfx/spinner.png');
   width: 56px;
   height: 56px;
   background-size: 56px 56px;
+  background-position: center;
+  -webkit-transform: rotate(0deg) translatez(0);
+  -webkit-transition-duration: 0ms;
+  -webkit-animation-name: loading;
+  -webkit-animation-duration: 1.2s;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
 }
 .ui-loader h1 {
   display: none;
@@ -551,6 +597,15 @@ input.ui-input-text, textarea.ui-input-text {
 }
 .ui-checkbox .ui-btn-icon-left .ui-btn-inner, .ui-radio .ui-btn-icon-left .ui-btn-inner {
   padding-left: 36px;
+}
+.ui-dialog {
+  margin-top: 0;
+}
+.ui-dialog-contain {
+  width: auto;
+  max-width: none;
+  padding: 0;
+  margin: 0;
 }
 /* corner rounding classes
 -----------------------------------------------------------------------------------------------------------*/
@@ -667,6 +722,19 @@ input.ui-input-text, textarea.ui-input-text {
   padding-bottom: 8px;
   border: none;
 }
+.ui-header .ui-btn-inner .ui-icon {
+  width: 40px;
+  height: 40px;
+  background: none;
+  background-image: url('../gfx/bar-icons.png');
+  background-position: 0 0;
+  margin: 0;
+  position: relative;
+  top: -1px;
+}
+.ui-header .ui-btn-inner .ui-icon.ui-icon-shadow {
+  box-shadow: none;
+}
 .ui-header .ui-btn-icon-notext {
   border: none;
   background: none;
@@ -680,16 +748,6 @@ input.ui-input-text, textarea.ui-input-text {
 .ui-header .ui-btn-icon-notext.ui-shadow {
   -moz-box-shadow: none;
   -webkit-box-shadow: none;
-  box-shadow: none;
-}
-.ui-header .ui-icon {
-  width: 40px;
-  height: 40px;
-  background: none;
-  background-image: url('../gfx/bar-icons.png');
-  background-position: 0 0;
-}
-.ui-header .ui-icon.ui-icon-shadow {
   box-shadow: none;
 }
 .ui-header .ui-btn[data-icon="delete"] {
@@ -795,10 +853,13 @@ input.ui-input-text, textarea.ui-input-text {
 .ui-bar .ui-btn-text {
   display: block;
 }
-.ui-bar .ui-btn-right {
+.ui-bar .ui-btn-icon-right {
   position: absolute;
   right: 4px;
   top: 0px;
+}
+.ui-bar .ui-btn-icon-right .ui-btn-inner {
+  padding-right: 40px;
 }
 .ui-bar .image-details {
   display: inline-block;
@@ -1032,7 +1093,7 @@ input.ui-input-text, textarea.ui-input-text {
   display: block;
   top: 1px!important;
   left: 1px!important;
-  margin: 0;
+  margin: 0!important;
 }
 .sharing-icon-small.twitter-sharing {
   background-color: #68d9ff;
@@ -1075,7 +1136,7 @@ input.ui-input-text, textarea.ui-input-text {
 */
 .thumbs-grid-med, .grid #feed-images {
   margin: 0 -8px;
-  padding: 4px 0 0 0;
+  padding: 4px 0 0 4px;
 }
 .thumbs-grid-med .image-link, .grid #feed-images .image-link {
   display: inline-block;
@@ -1119,7 +1180,7 @@ input.ui-input-text, textarea.ui-input-text {
   /* Smaller 3 column Btns */
 
 }
-.menu-main .ui-icon {
+.menu-main .ui-btn-inner .ui-icon {
   background: transparent;
   background-image: url('../gfx/main-menu-icons.png');
   width: 80px;
@@ -1129,43 +1190,43 @@ input.ui-input-text, textarea.ui-input-text {
   -webkit-box-shadow: none;
   box-shadow: none;
 }
-.menu-main .ui-icon-main-menu-feed {
+.menu-main .ui-btn-inner .ui-icon-main-menu-feed {
   background-position: 0px 0px;
 }
-.menu-main .ui-icon-main-menu-map {
+.menu-main .ui-btn-inner .ui-icon-main-menu-map {
   background-position: 0px -80px;
 }
-.menu-main .ui-icon-main-menu-camera {
+.menu-main .ui-btn-inner .ui-icon-main-menu-camera {
   background-position: 0px -160px;
 }
-.menu-main .ui-icon-main-menu-popular {
+.menu-main .ui-btn-inner .ui-icon-main-menu-popular {
   background-position: 0px -240px;
 }
-.menu-main .ui-icon-main-menu-dashboard {
+.menu-main .ui-btn-inner .ui-icon-main-menu-dashboard {
   background-position: 0px -320px;
 }
-.menu-main .ui-icon-main-menu-queue {
+.menu-main .ui-btn-inner .ui-icon-main-menu-queue {
   background-position: 0px -400px;
 }
-.menu-main .ui-icon-main-menu-my-account {
+.menu-main .ui-btn-inner .ui-icon-main-menu-my-account {
   background-position: 0px -480px;
 }
-.menu-main .ui-icon-main-menu-activity {
+.menu-main .ui-btn-inner .ui-icon-main-menu-activity {
   background-position: 0px -560px;
 }
-.menu-main .ui-icon-main-menu-join {
+.menu-main .ui-btn-inner .ui-icon-main-menu-join {
   background-position: 0px -640px;
 }
-.menu-main .ui-icon-main-menu-camera-lib {
+.menu-main .ui-btn-inner .ui-icon-main-menu-camera-lib {
   background-position: 0px -720px;
 }
-.menu-main .ui-icon-main-menu-cities {
+.menu-main .ui-btn-inner .ui-icon-main-menu-cities {
   background-position: 0px -800px;
 }
-.menu-main .ui-icon-main-menu-info {
+.menu-main .ui-btn-inner .ui-icon-main-menu-info {
   background-position: 0px -880px;
 }
-.menu-main .ui-icon-main-menu-login {
+.menu-main .ui-btn-inner .ui-icon-main-menu-login {
   background-position: 0px -960px;
 }
 .menu-main .ui-grid-a {
@@ -1534,6 +1595,8 @@ input.ui-input-text, textarea.ui-input-text {
 .image-item-block .reactions-list .ui-btn.ui-li .ui-link-inherit {
   padding: 0 0 8px 0;
   white-space: normal;
+  font-weight: normal;
+  color: #666666;
 }
 .image-item-block .reactions-list .ui-btn.ui-li .ui-icon-arrow-r {
   display: none;
@@ -1638,17 +1701,17 @@ input.ui-input-text, textarea.ui-input-text {
 /*
 * @dashboard - PAGE
 */
-.dash-footer .ui-icon {
+.dash-footer .ui-btn-inner .ui-icon {
   background-image: url('../gfx/dash-icons.png');
   width: 64px;
   height: 32px;
   top: 0;
   margin-left: -32px;
 }
-.dash-footer .ui-icon.ui-icon-person {
+.dash-footer .ui-btn-inner .ui-icon.ui-icon-person {
   background-position: 0 0px;
 }
-.dash-footer .ui-icon.ui-icon-search {
+.dash-footer .ui-btn-inner .ui-icon.ui-icon-search {
   background-position: 0 -32px;
 }
 /*
@@ -1742,6 +1805,7 @@ input.ui-input-text, textarea.ui-input-text {
   overflow: hidden;
   display: block;
   vertical-align: top;
+  width: auto;
 }
 .share-photo .upload-image-privacy input {
   visibility: hidden;
@@ -2614,9 +2678,13 @@ input.ui-input-text, textarea.ui-input-text {
 * The Dark (Black as Night) swatch, used for screens with black BGs
 */
 /* Set bgs */
-.ui-body-a, .ui-dialog.ui-overlay-a {
+.ui-body-a {
   background: none;
   background-color: #000000;
+}
+.ui-dialog.ui-overlay-a {
+  background: none;
+  background-color: #000000 !important;
 }
 .ui-body-d .ui-body-a[data-role="content"] {
   background: none;
@@ -2768,46 +2836,46 @@ input.ui-input-text, textarea.ui-input-text {
 .trans-bg .ui-btn-hover-a .ui-btn-inner, .trans-bg .ui-btn-down-a .ui-btn-inner, .trans-bg .ui-btn-active-a .ui-btn-inner {
   border: none;
 }
-.ui-btn-up-a .ui-icon-search {
+.ui-btn-up-a .ui-btn-inner .ui-icon-search {
   background-position: 0px 0px;
 }
-.ui-btn-up-a .ui-icon-home {
+.ui-btn-up-a .ui-btn-inner .ui-icon-home {
   background-position: 0px -40px;
 }
-.ui-btn-up-a .ui-icon-delete {
+.ui-btn-up-a .ui-btn-inner .ui-icon-delete {
   background-position: 0px -80px;
 }
-.ui-btn-up-a .ui-icon-settings {
+.ui-btn-up-a .ui-btn-inner .ui-icon-settings {
   background-position: 0px -120px;
 }
-.ui-btn-up-a .ui-icon-location {
+.ui-btn-up-a .ui-btn-inner .ui-icon-location {
   background-position: 0px -160px;
 }
-.ui-btn-up-a .ui-icon-camroll {
+.ui-btn-up-a .ui-btn-inner .ui-icon-camroll {
   background-position: 0px -200px;
 }
-.ui-btn-up-a .ui-icon-camera {
+.ui-btn-up-a .ui-btn-inner .ui-icon-camera {
   background-position: 0px -240px;
 }
-.ui-btn-hover-a .ui-icon-search {
+.ui-btn-hover-a .ui-btn-inner .ui-icon-search {
   background-position: -40px 0px;
 }
-.ui-btn-hover-a .ui-icon-home {
+.ui-btn-hover-a .ui-btn-inner .ui-icon-home {
   background-position: -40px -40px;
 }
-.ui-btn-hover-a .ui-icon-delete {
+.ui-btn-hover-a .ui-btn-inner .ui-icon-delete {
   background-position: -40px -80px;
 }
-.ui-btn-hover-a .ui-icon-settings {
+.ui-btn-hover-a .ui-btn-inner .ui-icon-settings {
   background-position: -40px -120px;
 }
-.ui-btn-hover-a .ui-icon-location {
+.ui-btn-hover-a .ui-btn-inner .ui-icon-location {
   background-position: -40px -160px;
 }
-.ui-btn-hover-a .ui-icon-camroll {
+.ui-btn-hover-a .ui-btn-inner .ui-icon-camroll {
   background-position: -40px -200px;
 }
-.ui-btn-hover-a .ui-icon-camera {
+.ui-btn-hover-a .ui-btn-inner .ui-icon-camera {
   background-position: -40px -240px;
 }
 /*
@@ -3173,46 +3241,46 @@ input.ui-input-text, textarea.ui-input-text {
 .ui-bar-b .extra-icons .ui-icon-location, .ui-bar-b .extra-icons.ui-icon-location {
   background-position: 0 -736px;
 }
-.ui-btn-up-b .ui-icon-search {
+.ui-btn-up-b .ui-btn-inner .ui-icon-search {
   background-position: -80px 0px;
 }
-.ui-btn-up-b .ui-icon-home {
+.ui-btn-up-b .ui-btn-inner .ui-icon-home {
   background-position: -80px -40px;
 }
-.ui-btn-up-b .ui-icon-delete {
+.ui-btn-up-b .ui-btn-inner .ui-icon-delete {
   background-position: -80px -80px;
 }
-.ui-btn-up-b .ui-icon-settings {
+.ui-btn-up-b .ui-btn-inner .ui-icon-settings {
   background-position: -80px -120px;
 }
-.ui-btn-up-b .ui-icon-location {
+.ui-btn-up-b .ui-btn-inner .ui-icon-location {
   background-position: -80px -160px;
 }
-.ui-btn-up-b .ui-icon-camroll {
+.ui-btn-up-b .ui-btn-inner .ui-icon-camroll {
   background-position: -80px -200px;
 }
-.ui-btn-up-b .ui-icon-camera {
+.ui-btn-up-b .ui-btn-inner .ui-icon-camera {
   background-position: -80px -240px;
 }
-.ui-btn-hover-b .ui-icon-search {
+.ui-btn-hover-b .ui-btn-inner .ui-icon-search {
   background-position: -120px 0px;
 }
-.ui-btn-hover-b .ui-icon-home {
+.ui-btn-hover-b .ui-btn-inner .ui-icon-home {
   background-position: -120px -40px;
 }
-.ui-btn-hover-b .ui-icon-delete {
+.ui-btn-hover-b .ui-btn-inner .ui-icon-delete {
   background-position: -120px -80px;
 }
-.ui-btn-hover-b .ui-icon-settings {
+.ui-btn-hover-b .ui-btn-inner .ui-icon-settings {
   background-position: -120px -120px;
 }
-.ui-btn-hover-b .ui-icon-location {
+.ui-btn-hover-b .ui-btn-inner .ui-icon-location {
   background-position: -120px -160px;
 }
-.ui-btn-hover-b .ui-icon-camroll {
+.ui-btn-hover-b .ui-btn-inner .ui-icon-camroll {
   background-position: -120px -200px;
 }
-.ui-btn-hover-b .ui-icon-camera {
+.ui-btn-hover-b .ui-btn-inner .ui-icon-camera {
   background-position: -120px -240px;
 }
 /*
@@ -3220,10 +3288,17 @@ input.ui-input-text, textarea.ui-input-text {
 * - Standard light BG swatch, has subtle gray bg texture, used mainly for light colored dialog style views
 */
 /* Set bg for dialog */
-.ui-dialog.ui-overlay-c, .ui-body-c {
+.ui-body-c {
   background: none;
   background-color: #f7f7f7;
   background-image: url('../gfx/bg-texture-light.gif');
+  border: solid 1px #e4e4e4;
+  text-shadow: 0 1px 1px #ffffff;
+}
+.ui-dialog.ui-overlay-c {
+  background: none;
+  background-color: #f7f7f7 !important;
+  background-image: url('../gfx/bg-texture-light.gif') !important;
   border: solid 1px #e4e4e4;
   text-shadow: 0 1px 1px #ffffff;
 }
@@ -3280,22 +3355,22 @@ input.ui-input-text, textarea.ui-input-text {
   text-shadow: 0 1px 1px rgba(200, 200, 200, 0.3);
 }
 /* Button Styles for header */
-.ui-header .ui-btn-up-c .ui-icon-search {
+.ui-header .ui-btn-up-c .ui-btn-inner .ui-icon-search {
   background-position: -160px 0px;
 }
-.ui-header .ui-btn-up-c .ui-icon-home {
+.ui-header .ui-btn-up-c .ui-btn-inner .ui-icon-home {
   background-position: -160px -40px;
 }
-.ui-header .ui-btn-up-c .ui-icon-delete {
+.ui-header .ui-btn-up-c .ui-btn-inner .ui-icon-delete {
   background-position: -160px -80px;
 }
-.ui-header .ui-btn-hover-c .ui-icon-search {
+.ui-header .ui-btn-hover-c .ui-btn-inner .ui-icon-search {
   background-position: -200px 0px;
 }
-.ui-header .ui-btn-hover-c .ui-icon-home {
+.ui-header .ui-btn-hover-c .ui-btn-inner .ui-icon-home {
   background-position: -200px -40px;
 }
-.ui-header .ui-btn-hover-c .ui-icon-delete {
+.ui-header .ui-btn-hover-c .ui-btn-inner .ui-icon-delete {
   background-position: -200px -80px;
 }
 /* Grey Btns */
@@ -3834,42 +3909,42 @@ input.ui-input-text, textarea.ui-input-text {
   background-position: -40px -120px;
 }
 /* @dark-icons */
-.dark-icons .ui-icon {
+.dark-icons .ui-btn-inner .ui-icon {
   background-image: url('../gfx/action-icons-dark.png');
   width: 40px;
   height: 40px;
 }
-.dark-icons .ui-icon-settings, .dark-icons.ui-icon-settings {
+.dark-icons .ui-btn-inner .ui-icon-settings, .dark-icons .ui-btn-inner.ui-icon-settings {
   background-position: 0px 0px;
 }
-.dark-icons .ui-icon-flag, .dark-icons.ui-icon-flag {
+.dark-icons .ui-btn-inner .ui-icon-flag, .dark-icons .ui-btn-inner.ui-icon-flag {
   background-position: 0px -40px;
 }
-.dark-icons .ui-icon-delete, .dark-icons.ui-icon-delete {
+.dark-icons .ui-btn-inner .ui-icon-delete, .dark-icons .ui-btn-inner.ui-icon-delete {
   background-position: 0px -80px;
 }
-.dark-icons .ui-icon-download, .dark-icons.ui-icon-download {
+.dark-icons .ui-btn-inner .ui-icon-download, .dark-icons .ui-btn-inner.ui-icon-download {
   background-position: 0px -120px;
 }
-.dark-icons .ui-icon-twitter, .dark-icons.ui-icon-twitter {
+.dark-icons .ui-btn-inner .ui-icon-twitter, .dark-icons .ui-btn-inner.ui-icon-twitter {
   background-position: 0px -160px;
 }
-.dark-icons .ui-icon-facebook, .dark-icons.ui-icon-facebook {
+.dark-icons .ui-btn-inner .ui-icon-facebook, .dark-icons .ui-btn-inner.ui-icon-facebook {
   background-position: 0px -200px;
 }
-.dark-icons .ui-icon-tumblr, .dark-icons.ui-icon-tumblr {
+.dark-icons .ui-btn-inner .ui-icon-tumblr, .dark-icons .ui-btn-inner.ui-icon-tumblr {
   background-position: 0px -240px;
 }
-.dark-icons .ui-icon-foursquare, .dark-icons.ui-icon-foursquare {
+.dark-icons .ui-btn-inner .ui-icon-foursquare, .dark-icons .ui-btn-inner.ui-icon-foursquare {
   background-position: 0px -280px;
 }
-.dark-icons .ui-icon-email, .dark-icons.ui-icon-email {
+.dark-icons .ui-btn-inner .ui-icon-email, .dark-icons .ui-btn-inner.ui-icon-email {
   background-position: 0px -320px;
 }
-.dark-icons .ui-icon-feed, .dark-icons.ui-icon-feed {
+.dark-icons .ui-btn-inner .ui-icon-feed, .dark-icons .ui-btn-inner.ui-icon-feed {
   background-position: 0px -360px;
 }
-.dark-icons .ui-icon-grid, .dark-icons.ui-icon-grid {
+.dark-icons .ui-btn-inner .ui-icon-grid, .dark-icons .ui-btn-inner.ui-icon-grid {
   background-position: 0px -400px;
 }
 /* @extra-icons */
@@ -3936,24 +4011,24 @@ input.ui-input-text, textarea.ui-input-text {
 }
 /* High Resolution (iPhone 4) */
 @media only screen and (-webkit-min-device-pixel-ratio: 2) {
-  .ui-icon.extra-icons, .extra-icons .ui-icon {
+  .ui-btn-inner .ui-icon.extra-icons, .extra-icons .ui-btn-inner .ui-icon {
     background-image: url('../gfx/retina/extra-icons.png');
     -moz-background-size: 32px 800px;
     -o-background-size: 32px 800px;
     -webkit-background-size: 32px 800px;
     background-size: 32px 800px;
   }
-  .ui-icon.helper-icons, .helper-icons .ui-icon {
+  .ui-btn-inner .ui-icon.helper-icons, .helper-icons .ui-btn-inner .ui-icon {
     background-image: url('../gfx/retina/helper-icons.png');
     -moz-background-size: 96px 96px;
     -o-background-size: 96px 96px;
     -webkit-background-size: 96px 96px;
     background-size: 96px 96px;
   }
-  .ui-icon,
-  .ui-checkbox-on .ui-icon,
-  .ui-radio-on .ui-icon,
-  .ui-icon-searchfield::after {
+  .ui-btn-inner .ui-icon,
+  .ui-checkbox-on .ui-btn-inner .ui-icon,
+  .ui-radio-on .ui-btn-inner .ui-icon,
+  .ui-btn-inner .ui-icon-searchfield::after {
     background-image: url('../gfx/retina/general-jquerymob-icons.png');
     -moz-background-size: 774px 180px;
     -o-background-size: 774px 180px;
@@ -3967,14 +4042,14 @@ input.ui-input-text, textarea.ui-input-text {
     -webkit-background-size: 56px 56px;
     background-size: 56px 56px;
   }
-  .ui-header .ui-icon {
+  .ui-header .ui-btn-inner .ui-icon {
     background-image: url('../gfx/retina/bar-icons.png');
     -moz-background-size: 240px 560px;
     -o-background-size: 240px 560px;
     -webkit-background-size: 240px 560px;
     background-size: 240px 560px;
   }
-  .sharing-icon-small .ui-icon {
+  .sharing-icon-small .ui-btn-inner .ui-icon {
     background-image: url('../gfx/retina/share-icons-small.png');
     -moz-background-size: 21px 84px;
     -o-background-size: 21px 84px;
@@ -3988,7 +4063,7 @@ input.ui-input-text, textarea.ui-input-text {
     -webkit-background-size: 160px 42px;
     background-size: 160px 42px;
   }
-  .menu-main .ui-icon {
+  .menu-main .ui-btn-inner .ui-icon {
     background-image: url('../gfx/retina/main-menu-icons.png');
     -moz-background-size: 80px 1280px;
     -o-background-size: 80px 1280px;
@@ -4002,33 +4077,32 @@ input.ui-input-text, textarea.ui-input-text {
     -webkit-background-size: 100px 100px;
     background-size: 100px 100px;
   }
-  .action-icons .ui-icon,
-  .ui-checkbox .ui-icon,
-  .custom-action-icons .ui-icon,
-  .share-photo .upload-image-privacy .ui-icon,
-  .share-photo .upload-image-location .ui-btn .ui-icon,
-  .share-photo .image-controls .ui-icon {
+  .action-icons .ui-btn-inner .ui-icon,
+  .ui-checkbox .ui-btn-inner .ui-icon,
+  .custom-action-icons .ui-btn-inner .ui-icon,
+  .share-photo .upload-image-privacy .ui-btn-inner .ui-icon,
+  .share-photo .upload-image-location .ui-btn .share-photo .image-controls .ui-btn-inner .ui-icon {
     background-image: url('../gfx/retina/action-icons-custom.png');
     -moz-background-size: 80px 440px;
     -o-background-size: 80px 440px;
     -webkit-background-size: 80px 440px;
     background-size: 80px 440px;
   }
-  .dark-icons .ui-icon {
+  .dark-icons .ui-btn-inner .ui-icon {
     background-image: url('../gfx/retina/action-icons-dark.png');
     -moz-background-size: 40px 480px;
     -o-background-size: 40px 480px;
     -webkit-background-size: 40px 480px;
     background-size: 40px 480px;
   }
-  .dash-footer .ui-icon {
+  .dash-footer .ui-btn-inner .ui-icon {
     background-image: url('../gfx/retina/dash-icons.png');
     -moz-background-size: 64px 64px;
     -o-background-size: 64px 64px;
     -webkit-background-size: 64px 64px;
     background-size: 64px 64px;
   }
-  .share-photo .upload-image-sharing .ui-icon {
+  .share-photo .upload-image-sharing .ui-btn-inner .ui-icon {
     background-image: url('../gfx/retina/share-icons-large.png');
     -moz-background-size: 84px 168px;
     -o-background-size: 84px 168px;

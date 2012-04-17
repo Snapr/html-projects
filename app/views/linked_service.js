@@ -4,12 +4,9 @@ snapr.views.linked_service = Backbone.View.extend({
 
     initialize: function()
     {
-        // console.log( "initialize linked_service", this );
-
         this.linked_service_template = _.template( $('#linked-service-template').html() );
 
         this.add_service_template = _.template( $('#add-linked-service-template').html() );
-
     },
 
     events: {
@@ -32,20 +29,19 @@ snapr.views.linked_service = Backbone.View.extend({
 
         "change #tumblr-link": "tumblr_link",
         "change #tumblr-post": "tumblr_post"
-
     },
 
     render: function()
     {
         if (this.model)
         {
-            $(this.el).empty().append( this.linked_service_template( {service: this.model} ) );
+            this.$el.html( this.linked_service_template( {service: this.model} ) );
         }
         else
         {
             if (this.provider)
             {
-                $(this.el).empty().append( this.add_service_template( {provider:this.provider} ) );
+                this.$el.html( this.add_service_template( {provider:this.provider} ) );
             }
         }
 
@@ -68,10 +64,12 @@ snapr.views.linked_service = Backbone.View.extend({
                 },
                 success: function( data )
                 {
-                    if( data.success )
+                    if (data.success)
                     {
                         snapr.info.current_view.initialize();
-                    }else{
+                    }
+                    else
+                    {
                         alert( data.error.message );
                     }
                 },
@@ -80,15 +78,15 @@ snapr.views.linked_service = Backbone.View.extend({
                     console.log('ajax error!');
                 },
             });
-
         }
         else
         {
-            url = snapr.api_base + "/linked_services/"
-                + this.provider + "/oauth/?access_token=" + snapr.auth.get("access_token") + "&redirect=" + escape( window.location.href );
+            url = snapr.api_base + "/linked_services/" +
+                  this.provider + "/oauth/?access_token=" +
+                  snapr.auth.get("access_token") +
+                  "&redirect=" + escape( window.location.href );
             window.location = url;
         }
-
     },
 
     unlink_service: function()
@@ -112,14 +110,12 @@ snapr.views.linked_service = Backbone.View.extend({
 
     save_changes: function()
     {
-        console.log( "save", this.model );
-
         var linked_service = this;
 
         var options = {
             success: function()
             {
-                $(linked_service.el).find("[data-role='collapsible']").trigger('collapse');
+                linked_service.$el.find("[data-role='collapsible']").trigger('collapse');
             },
             error: function()
             {
@@ -130,7 +126,7 @@ snapr.views.linked_service = Backbone.View.extend({
         if(this.model.provider == 'facebook')
         {
             this.model.set({
-                gallery_name: $(this.el).find("#facebook-gallery-name").val()
+                gallery_name: this.$el.find("#facebook-gallery-name").val()
             })
         }
 
@@ -171,66 +167,63 @@ snapr.views.linked_service = Backbone.View.extend({
     twitter_link: function()
     {
         this.model.set({
-            show_name: $(this.el).find("#twitter-link").is(':checked')
+            show_name: this.$el.find("#twitter-link").is(':checked')
         });
     },
 
     twitter_tweet: function()
     {
         this.model.set({
-            allow_tweets: $(this.el).find('#twitter-tweet').is(':checked')
+            allow_tweets: this.$el.find('#twitter-tweet').is(':checked')
         });
     },
 
     foursquare_link: function()
     {
         this.model.set({
-            show_username: $(this.el).find("#foursquare-link").is(':checked')
+            show_username: this.$el.find("#foursquare-link").is(':checked')
         });
     },
 
     foursquare_checkin: function()
     {
         this.model.set({
-            allow_checkin: $(this.el).find('#foursquare-checkin').is(':checked')
+            allow_checkin: this.$el.find('#foursquare-checkin').is(':checked')
         });
     },
 
     facebook_link: function()
     {
         this.model.set({
-            show_profile_link: $(this.el).find('#facebook-link').is(':checked')
+            show_profile_link: this.$el.find('#facebook-link').is(':checked')
         });
     },
 
     facebook_newsfeed: function()
     {
         this.model.set({
-            allow_newsfeed_posts: $(this.el).find('#facebook-newsfeed').is(':checked')
+            allow_newsfeed_posts: this.$el.find('#facebook-newsfeed').is(':checked')
         });
     },
 
     facebook_gallery: function()
     {
         this.model.set({
-            allow_gallery_posts: $(this.el).find('#facebook-gallery').is(':checked')
+            allow_gallery_posts: this.$el.find('#facebook-gallery').is(':checked')
         });
     },
 
     tumblr_link: function()
     {
         this.model.set({
-            show_name: $(this.el).find('#tumblr-link').is(':checked')
+            show_name: this.$el.find('#tumblr-link').is(':checked')
         });
     },
 
     tumblr_post: function()
     {
         this.model.set({
-            allow_posts: $(this.el).find('#tumblr-post').is(':checked')
+            allow_posts: this.$el.find('#tumblr-post').is(':checked')
         });
     }
-
-
-
 });

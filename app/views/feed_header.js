@@ -38,7 +38,7 @@ snapr.views.feed_header = Backbone.View.extend({
     render: function()
     {
 
-        this.el.html( this.template( {
+        this.$el.html( this.template( {
             feed_type: this.feed_type,
             feed_parameter: this.feed_parameter
         } ));

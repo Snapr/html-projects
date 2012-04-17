@@ -12,12 +12,10 @@ snapr.views.thumbs_li = Backbone.View.extend({
 
     render: function( callback )
     {
-        var $el = $(this.el).empty();
-
-        $el.html( this.template( {
+        this.$el.html( this.template( {
             results: this.collection.models,
             back: this.back
-        }) )
+        }) );
 
         return this;
     }

@@ -1,25 +1,19 @@
-snapr.views.map = Backbone.View.extend({
+snapr.views.map = snapr.views.page.extend({
 
-    el: $("#map"),
-
-    events: {
-        "click .x-current-location": "go_to_current_location",
-        "click #map-disambituation-cancel": "hide_dis",
-        "click .x-map-feed": "map_feed"
-    },
-
-    initialize: function () {
-        _.bindAll( this );
+    initialize: function()
+    {
+        snapr.views.page.prototype.initialize.call( this );
 
         var query = this.options.query || {};
-        if (query.photo_id) {
+
+        if (query.photo_id)
+        {
             query.n = 1;
         }
 
         snapr.utils.set_header_back_btn_text( this.el, query.back );
 
-        $.mobile.changePage("#map", {
-            changeHash: false,
+        this.change_page({
             transition: 'flip'
         });
 
@@ -57,7 +51,7 @@ snapr.views.map = Backbone.View.extend({
         // todo set this in subview
         // if (this.query.keywords)
         // {
-        //     $(this.el).find("#map-keyword input").val(this.query.keywords);
+        //     this.$el.find("#map-keyword input").val(this.query.keywords);
         // }
 
         this.geocoder = new google.maps.Geocoder();
@@ -76,37 +70,47 @@ snapr.views.map = Backbone.View.extend({
         else
         {
             var map_view = this;
-            var success_callback = function(location){
-                map_view.map_settings.center = new google.maps.LatLng(location.coords.latitude, location.coords.longitude);
-                map_view.create_map(map_view.query && map_view.query.location);
-            };
-            var error_callback = function(){
-                map_view.map_settings.center = new google.maps.LatLng(42, 12);
-                map_view.map_settings.zoom = 2;
-                map_view.create_map(map_view.query && map_view.query.location);
-            };
 
-            if(this.map_settings.center === undefined){
-                snapr.geo.get_location( success_callback, error_callback );
-            }else{
-                this.create_map( this.map_query.get( "location" ) );
-            }
+            this.$el.on( "pageshow", function()
+            {
+                var success_callback = function( location )
+                {
+                    map_view.map_settings.center = new google.maps.LatLng(location.coords.latitude, location.coords.longitude);
+                    map_view.create_map(map_view.query && map_view.query.location);
+                };
+                var error_callback = function()
+                {
+                    map_view.map_settings.center = new google.maps.LatLng(42, 12);
+                    map_view.map_settings.zoom = 2;
+                    map_view.create_map(map_view.query && map_view.query.location);
+                };
+
+                if (map_view.map_settings.center === undefined)
+                {
+                    snapr.geo.get_location( success_callback, error_callback );
+                }
+                else
+                {
+                    map_view.create_map( map_view.map_query.get( "location" ) );
+                }
+
+                map_view.$el.live('pagehide', function (e) {
+                    google.maps.event.clearListeners( map_view.map, "idle" );
+                    return true;
+                });
+            });
         }
 
         this.map_controls = new snapr.views.map_controls({
-            el: $(this.el).find(".v-map-controls"),
+            el: this.$el.find(".v-map-controls")[0],
             model: this.map_query,
             collection: this.thumb_collection
-        })
-
-        var map_view = this;
-
-        this.el.live('pagehide', function (e) {
-            google.maps.event.clearListeners( map_view.map, "idle" );
-            $(e.target).undelegate();
-            return true;
         });
-
+    },
+    events: {
+        "click .x-current-location": "go_to_current_location",
+        "click #map-disambituation-cancel": "hide_dis",
+        "click .x-map-feed": "map_feed"
     },
 
     create_map: function (location) {
@@ -222,22 +226,22 @@ snapr.views.map = Backbone.View.extend({
 
     show_no_results_message: function()
     {
-        this.el.find("#snaprmapalert").show();
+        this.$el.find("#snaprmapalert").show();
     },
 
     hide_no_results_message: function()
     {
-        this.el.find("#snaprmapalert").hide();
+        this.$el.find("#snaprmapalert").hide();
     },
 
     hide_dis: function()
     {
-        this.el.find("#map-disambiguation").hide();
+        this.$el.find("#map-disambiguation").hide();
     },
 
     show_dis: function ()
     {
-        this.el.find("#map-disambiguation").show();
+        this.$el.find("#map-disambiguation").show();
     },
 
     search_location: function( search_query )
@@ -281,7 +285,7 @@ snapr.views.map = Backbone.View.extend({
                 var again = confirm("Sorry, your search returned no results. Would you like to search again?");
 
                 if(again) {
-                    Route.navigate("/search", true);
+                    Route.navigate("/search");
                 }
             }
         });
@@ -347,8 +351,21 @@ snapr.views.map = Backbone.View.extend({
             {
                 delete urlParams.access_token;
             }
+            if (urlParams.zoom)
+            {
+                delete urlParams.zoom;
+            }
+            if (urlParams.lat)
+            {
+                delete urlParams.lat;
+            }
+            if (urlParams.lng)
+            {
+                delete urlParams.lng;
+            }
+
             urlParams.back = "Map";
-            Route.navigate( "#/feed/?" + $.param(urlParams), true );
+            Route.navigate( "#/feed/?" + $.param( urlParams ) );
         }
         else
         {

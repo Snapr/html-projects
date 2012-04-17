@@ -3,10 +3,10 @@ snapr.views.user_header = Backbone.View.extend({
     initialize: function()
     {
         _.bindAll( this );
+        this.setElement( this.options.el );
         this.template = _.template( $("#user-header-template").html() );
-        var user_header = this;
 
-        this.model.bind( "change", this.render );
+        this.model.bind( "change:relationship", this.render );
 
         this.model.fetch({
             error: function()
@@ -18,7 +18,7 @@ snapr.views.user_header = Backbone.View.extend({
 
     render: function()
     {
-        this.el.empty().append( this.template({
+        this.$el.html( this.template({
             user: this.model,
             auth_username: snapr.auth.get( "snapr_user" ),
             logged_in: snapr.auth.has( "access_token" ),

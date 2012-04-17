@@ -1,15 +1,10 @@
-snapr.views.people = Backbone.View.extend({
+snapr.views.people = snapr.views.dialog.extend({
 
     initialize: function()
     {
-        this.el.live('pagehide', function( e )
-        {
-            $(e.target).undelegate();
+        snapr.views.dialog.prototype.initialize.call( this );
 
-            return true;
-        });
-
-        this.el.find("ul.people-list").empty();
+        this.$el.find("ul.people-list").empty();
 
         this.collection = new snapr.models.user_collection();
 
@@ -30,25 +25,24 @@ snapr.views.people = Backbone.View.extend({
             var transition = "slideup";
         }
 
-        $.mobile.changePage( $("#people"), {
-            changeHash: false,
+        this.change_page({
             transition: transition
         });
 
         switch (this.options.follow){
             case "following":
-                this.el.find("h1").text("Following");
-                this.el.find("#people-search").val('').attr("placeholder", "Search users " + this.options.query.username + " is following…" );
+                this.$el.find("h1").text("Following");
+                this.$el.find("#people-search").val('').attr("placeholder", "Search users " + this.options.query.username + " is following…" );
                 this.collection.get_following( this.options.query.username );
                 break;
             case "followers":
-                this.el.find("h1").text("Followers");
-                this.el.find("#people-search").val('').attr("placeholder", "Search " + this.options.query.username + "'s followers…" );
+                this.$el.find("h1").text("Followers");
+                this.$el.find("#people-search").val('').attr("placeholder", "Search " + this.options.query.username + "'s followers…" );
                 this.collection.get_followers( this.options.query.username );
                 break;
             default:
-                this.el.find("h1").text("Search");
-                this.el.find("#people-search").val(this.options.query.username).attr("placeholder", "Search users…" );
+                this.$el.find("h1").text("Search");
+                this.$el.find("#people-search").val(this.options.query.username).attr("placeholder", "Search users…" );
                 this.collection.user_search( this.options.query.username )
                 break;
         }
@@ -56,12 +50,13 @@ snapr.views.people = Backbone.View.extend({
     },
 
     events: {
-        "keyup input": "search"
+        "keyup input": "search",
+        "click .x-back": "back"
     },
 
     render: function()
     {
-        var people_list = this.el.find("ul.people-list").empty();
+        var people_list = this.$el.find("ul.people-list").empty();
 
         var people_li_template = _.template( $("#people-li-template").html() );
 
@@ -69,7 +64,8 @@ snapr.views.people = Backbone.View.extend({
         {
             var people_li = new snapr.views.people_li({
                 template: people_li_template,
-                model: model
+                model: model,
+                parentView: this
             });
 
             people_list.append( people_li.render().el );
@@ -81,7 +77,6 @@ snapr.views.people = Backbone.View.extend({
 
     search: function(e)
     {
-
         var keywords = $(e.target).val();
 
         if (keywords.length > 1)
@@ -100,5 +95,4 @@ snapr.views.people = Backbone.View.extend({
             }
         }
     }
-
 });
