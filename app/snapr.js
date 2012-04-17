@@ -1090,7 +1090,12 @@ $(function () {
     var appmode = snapr.utils.get_local_param("appmode");
     if (appmode)
     {
+        $("body").addClass("appmode").addClass("appmode-true" );
         $("body").addClass("appmode").addClass("appmode-" + appmode );
+    }
+    else
+    {
+        $("body").addClass("appmode").addClass("appmode-false" );
     }
 
     $(document).trigger('snaprinit');
