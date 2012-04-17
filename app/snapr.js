@@ -808,7 +808,7 @@ snapr.routers = Backbone.Router.extend({
         });
     },
 
-    people_followers: function( query_string )
+    people_followers: function( query_string, back_view )
     {
         var query = snapr.utils.get_query_params( query_string, back_view );
         snapr.info.current_view = new snapr.views.people({
@@ -819,7 +819,7 @@ snapr.routers = Backbone.Router.extend({
         });
     },
 
-    people_following: function( query_string )
+    people_following: function( query_string, back_view )
     {
         var query = snapr.utils.get_query_params( query_string, back_view );
         snapr.info.current_view = new snapr.views.people({
