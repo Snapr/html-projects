@@ -29,6 +29,10 @@ snapr.views.user_profile = snapr.views.dialog.extend({
         this.model.fetch();
     },
 
+    events: {
+        "click .x-back": "back"
+    },
+
     render: function()
     {
         this.$el.find( ".user-profile" ).html( this.template({

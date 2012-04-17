@@ -15,7 +15,7 @@ snapr.views.search = snapr.views.dialog.extend({
         "change #search-keywords": "update_placeholder",
         "change #search-type": "update_placeholder",
         "submit #search-form": "search",
-        "click div[data-role='header'] a": "back"
+        "click .x-back": "back"
     },
 
     update_placeholder: function()

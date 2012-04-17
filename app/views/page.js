@@ -7,9 +7,21 @@ snapr.views.page = Backbone.View.extend({
     {
         this.setElement( this.options.el );
 
-        this.$el.on( "pagehide", function( e )
+        this.$el.on( "pagebeforehide", function( e, to )
         {
-            $(e.target).undelegate();
+            if (to &&
+                to.nextPage &&
+                to.nextPage[0] &&
+                to.nextPage[0].dataset &&
+                to.nextPage[0].dataset.role == "dialog")
+            {
+                // console.log( "going to dialog" );
+            }
+            else
+            {
+                // console.log( "not going to dialog - undelegate" );
+                $(e.target).undelegate();
+            }
 
             return true;
         });
@@ -23,5 +35,6 @@ snapr.views.page = Backbone.View.extend({
             changeHash: false
         }, options || {});
         $.mobile.changePage( this.$el, options);
-    }
+    },
+
 });

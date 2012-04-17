@@ -1,10 +1,5 @@
 snapr.views.feed = snapr.views.page.extend({
 
-    events: {
-        "click .x-load-more": "more",
-        "change .feed-view-toggle": "feed_view_toggle"
-    },
-
     initialize: function()
     {
         snapr.views.page.prototype.initialize.call( this );
@@ -111,6 +106,11 @@ snapr.views.feed = snapr.views.page.extend({
         this.more_button(false);
 
         this.populate_feed();
+    },
+
+    events: {
+        "click .x-load-more": "more",
+        "change .feed-view-toggle": "feed_view_toggle"
     },
 
     photoswipe_init: function(){ photoswipe_init('feed', $( "#feed-images a.gallery_link", this.el )); },

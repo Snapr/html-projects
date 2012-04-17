@@ -70,7 +70,7 @@
     <div id="home" data-title="Snapr" data-role="page" data-theme="d" class="no-drag">
         <div data-role="header" data-theme="b">
             <div class="ui-btn-right">
-            <a class="x-search" data-ajax="false" data-role="button" data-icon="search" data-iconpos="notext"></a>
+            <a href="#/search/" data-snapr-dialog="true" data-ajax="false" data-role="button" data-icon="search" data-iconpos="notext"></a>
             </div>
             <a class="main-logo" href="#/about/" data-ajax="false" data-role="none">Snapr</a>
         </div>
@@ -104,7 +104,7 @@
                 <% if (logged_in) {%>
                         <a class="x-launch-photo-library" data-role="button" data-iconpos="top" data-icon="main-menu-camera-lib" data-corners="false" data-shadow="false">Camera Roll</a>
                  <%}else{%>
-                      <a class="x-login" data-ajax="false" data-corners="false" data-shadow="false" data-role="button" data-iconpos="top" data-icon="main-menu-login">Log In</a>
+                      <a href="#/login/" data-snapr-dialog="true" data-ajax="false" data-corners="false" data-shadow="false" data-role="button" data-iconpos="top" data-icon="main-menu-login">Log In</a>
                 <%}%>
                 </div>
 
@@ -169,7 +169,7 @@
             <h1>My Account</h1>
 
             <div class="ui-btn-right">
-                <a class="x-search" data-ajax="false" data-role="button" data-icon="search" data-iconpos="notext"></a>
+                <a href="#/search/" data-snapr-dialog="true" data-ajax="false" data-role="button" data-icon="search" data-iconpos="notext"></a>
                 <a href="#/" data-ajax="false" data-role="button" data-icon="home" data-iconpos="notext"></a>
             </div>
         </div>
@@ -619,7 +619,7 @@
             <h1>Popular</h1>
 
             <div class="ui-btn-right">
-                <a class="x-search" data-ajax="false" data-role="button" data-icon="search" data-iconpos="notext"></a>
+                <a href="#/search/" data-snapr-dialog="true" data-ajax="false" data-role="button" data-icon="search" data-iconpos="notext"></a>
                 <a href="#/" data-ajax="false" data-role="button" data-icon="home" data-iconpos="notext"></a>
             </div>
 
@@ -664,7 +664,7 @@
             </div>
 
             <div class="ui-btn-right">
-                <a class="x-search" data-ajax="false" data-role="button" data-icon="search" data-iconpos="notext"></a>
+                <a href="#/search/" data-snapr-dialog="true" data-ajax="false" data-role="button" data-icon="search" data-iconpos="notext"></a>
                 <a href="#/" data-ajax="false" data-role="button" data-icon="home" data-iconpos="notext"></a>
             </div>
         </div>
@@ -733,7 +733,7 @@
 
            <div class="user-info-block">
                <div class="user-icon-left">
-                   <a class="user-profile-icon" href="#/user/profile/?username=<%= user.get('username') %>" data-ajax="false">
+                   <a class="user-profile-icon" data-snapr-dialog="true" data-ajax="false" href="#/user/profile/?username=<%= user.get('username') %>">
                        <div class="user-icon-big" style="background-image: url('http://sna.pr/avatars/<%= user.get('username') %>?size=large'); background-size: 100% 100%"></div>
                        <div class="icon-overlay-info"></div>
                    </a>
@@ -747,13 +747,13 @@
                        </a>
                    </div>
                    <div class="ui-block-b">
-                       <a href="#/user/followers/?username=<%= user.get('username') %>" data-ajax="false">
+                       <a href="#/user/followers/?username=<%= user.get('username') %>" data-snapr-dialog="true" data-ajax="false">
                            <span class="big-number"><%= user.get('followers') %></span>
                            <span>Followers</span>
                        </a>
                    </div>
                    <div class="ui-block-c">
-                       <a href="#/user/following/?username=<%= user.get('username') %>" data-ajax="false">
+                       <a href="#/user/following/?username=<%= user.get('username') %>" data-snapr-dialog="true" data-ajax="false">
                            <span class="big-number"><%= user.get('following') %></span>
                            <span>Following</span>
                        </a>
@@ -908,9 +908,10 @@
     </script>
 
     <!-- @profile DIALOG-->
-    <div id="user-profile" data-add-back-btn="true" data-role="dialog" data-overlay-theme="c" data-theme="c">
+    <div id="user-profile" data-role="dialog" data-overlay-theme="c" data-theme="c">
         <div data-role="header" data-theme="c">
             <h1>Profile</h1>
+            <a class="x-back" data-role="button" data-icon="delete" data-iconpos="notext"></a>
         </div>
         <div data-role="content" class="user-profile"></div>
     </div>
@@ -1189,7 +1190,7 @@
                      <h1>Activity</h1>
 
                       <div class="ui-btn-right">
-                          <a class="x-search" data-ajax="false" data-role="button" data-icon="search" data-iconpos="notext"></a>
+                          <a href="#/search/" data-snapr-dialog="true" data-ajax="false" data-role="button" data-icon="search" data-iconpos="notext"></a>
                          <a href="#/" data-ajax="false" data-role="button" data-icon="home" data-iconpos="notext"></a>
                      </div>
                  </div>
@@ -1359,9 +1360,10 @@
     </div><!-- /page -->
 
     <!-- @people PAGE-->
-    <div id="people" data-add-back-btn="true" data-role="dialog" data-overlay-theme="c" data-theme="c">
+    <div id="people" data-role="dialog" data-overlay-theme="c" data-theme="c">
         <div data-role="header" data-theme="c">
             <h1>People</h1>
+            <a class="x-back" data-role="button" data-icon="delete" data-iconpos="notext"></a>
         </div>
         <div data-role="content" data-theme="c">
             <div class="search-header">
@@ -1523,7 +1525,7 @@
         <div data-role="header" data-theme="b">
            <h1>Map</h1>
             <div class="ui-btn-right">
-                <a class="x-search" data-ajax="false" data-role="button" data-icon="search" data-iconpos="notext"></a>
+                <a href="#/search/" data-snapr-dialog="true" data-ajax="false" data-role="button" data-icon="search" data-iconpos="notext"></a>
                 <a data-ajax="false" data-role="button" data-icon="location" data-iconpos="notext" class="x-current-location"></a>
             </div>
         </div>
@@ -1654,7 +1656,7 @@
             </div> -->
 
             <ul data-role="listview" data-theme="d" data-inset="true">
-                <li><a class="x-join-snapr" data-ajax="false">Join Snapr</a></li>
+                <li><a href="#/join/" data-snapr-dialog="true" data-ajax="false">Join Snapr</a></li>
                 <!-- <li><a href="#">Forgot your username or password?</a></li> -->
             </ul>
         </div>
@@ -1706,7 +1708,7 @@
             <h1>Upload</h1>
 
             <div class="ui-btn-right">
-                <a class="x-search" data-ajax="false" data-role="button" data-icon="search" data-iconpos="notext"></a>
+                <a href="#/search/" data-snapr-dialog="true" data-ajax="false" data-role="button" data-icon="search" data-iconpos="notext"></a>
                 <a href="#/" data-ajax="false" data-role="button" data-icon="home" data-iconpos="notext"></a>
             </div>
 

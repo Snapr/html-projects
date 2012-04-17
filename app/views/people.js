@@ -1,8 +1,8 @@
-snapr.views.people = snapr.views.page.extend({
+snapr.views.people = snapr.views.dialog.extend({
 
     initialize: function()
     {
-        snapr.views.page.prototype.initialize.call( this );
+        snapr.views.dialog.prototype.initialize.call( this );
 
         this.$el.find("ul.people-list").empty();
 
@@ -50,7 +50,8 @@ snapr.views.people = snapr.views.page.extend({
     },
 
     events: {
-        "keyup input": "search"
+        "keyup input": "search",
+        "click .x-back": "back"
     },
 
     render: function()
