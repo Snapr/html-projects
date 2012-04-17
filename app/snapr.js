@@ -255,9 +255,11 @@ snapr.utils.save_local_param = function (key, value) {
     } else {
         $.cookie(key, value);
     }
-
     if(key == "appmode") {
-        $("body").addClass("appmode").addClass("appmode-" + value);
+        $("body").addClass("appmode-true").addClass("appmode-" + value);
+    }
+    if(key == "browser_testing") {
+        $("body").addClass("browser-testing");
     }
 };
 
@@ -295,7 +297,7 @@ function get_query_params(query) {
                     var obj = {};
                     obj[kv[0]] = unescape(kv[1]);
                     snapr.auth.set(obj);
-                } else if(_.indexOf(["snapr_user_public_group", "snapr_user_public_group_name", "appmode", "new_user", "demo_mode", "environment"], kv[0]) > -1) {
+                } else if(_.indexOf(["snapr_user_public_group", "snapr_user_public_group_name", "appmode", "new_user", "demo_mode", "environment", "browser_testing"], kv[0]) > -1) {
                     snapr.utils.save_local_param(key, value);
                 } else {
                     key = unescape(key);
@@ -1090,12 +1092,16 @@ $(function () {
     var appmode = snapr.utils.get_local_param("appmode");
     if (appmode)
     {
-        $("body").addClass("appmode").addClass("appmode-true" );
-        $("body").addClass("appmode").addClass("appmode-" + appmode );
+        $("body").addClass("appmode-true" ).addClass("appmode-" + appmode );
     }
     else
     {
-        $("body").addClass("appmode").addClass("appmode-false" );
+        $("body").addClass("appmode-false" );
+    }
+    var browser_testing = snapr.utils.get_local_param("browser_testing");
+    if (browser_testing)
+    {
+        $("body").addClass("browser-testing" );
     }
 
     $(document).trigger('snaprinit');
