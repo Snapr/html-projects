@@ -329,14 +329,14 @@ h4{
         padding: 0;
         margin-bottom: @padding-page-inset ;
         white-space: no-wrap;
-        .thumbs{
+        .x-thumbs{
             display: inline-block;
             padding-right: @padding-image-grid-inset + 1;
         }
         .image-link{
             padding-left: @padding-image-grid-inset;
         }
-
+        
         .load-more-inline{
             background-color: @color-off-white-tint;
             display: inline-block;
@@ -367,9 +367,9 @@ h4{
                 background-image: url('../gfx/refresh.png');
             }
 
-            &.flipped{
+            &.x-flipped{
                 .ui-icon{
-    	        -webkit-transform:rotate(-180deg) translateZ(0);
+    	        -webkit-transform:rotate(180deg) translateZ(0);
 	            }
     	    }
             &.noooo-right-pull{
@@ -379,7 +379,7 @@ h4{
             }
         }
 
-        &.loading {
+        .x-loading {
             .load-more-inline{
                  .ui-icon-refresh{
                     background-image: url('../gfx/spinner.png');
@@ -1105,15 +1105,11 @@ fieldset.ui-controlgroup{
     }
 }
 
-.n-horizontal-scroll{
-    white-space: nowrap;
-}
-
-.n-horizontal-scroll .scroll-wrapper {
+.x-scroll-wrapper {
   white-space: nowrap;
   display:inline-block;
 }
-.right-pull, .left-pull{
+.x-right-pull, .x-left-pull{
     display:inline;
 }
 
@@ -3686,7 +3682,7 @@ fieldset.ui-controlgroup{
                  }
          	    }
           }
-          &.loading {
+          &.x-loading {
               .load-more-inline{
                   .ui-icon-refresh{
                       background-image: url('../gfx/retina/spinner.png');

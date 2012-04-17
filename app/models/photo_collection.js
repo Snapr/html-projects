@@ -23,22 +23,28 @@ snapr.models.photo_collection = Backbone.Collection.extend({
 
     fetch_newer: function( options )
     {
+        var data = {};
+        if (this.models.length)
+        {
+            data.min_date = this.models[0].get('date');
+        }
         _.extend( options, {
             add: true,
-            data: {
-                min_date: this.models[0].get('date')
-            }
+            data: data
         });
         this.fetch( options );
     },
 
     fetch_older: function( options )
     {
+        var data = {};
+        if (this.models.length)
+        {
+            data.paginate_from = this.models[this.length-1].get('id');
+        }
         _.extend( options, {
             add: true,
-            data: {
-                paginate_from: this.models[this.length-1].get('id')
-            }
+            data: data
         });
         this.fetch( options );
     },

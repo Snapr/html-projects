@@ -389,7 +389,7 @@ ul, ul li {
   margin-bottom: 8px;
   white-space: no-wrap;
 }
-.image-streams .image-stream .thumbs {
+.image-streams .image-stream .x-thumbs {
   display: inline-block;
   padding-right: 5px;
 }
@@ -425,15 +425,15 @@ ul, ul li {
 .image-streams .image-stream .load-more-inline .ui-icon-refresh {
   background-image: url('../gfx/refresh.png');
 }
-.image-streams .image-stream .load-more-inline.flipped .ui-icon {
-  -webkit-transform: rotate(-180deg) translatez(0);
+.image-streams .image-stream .load-more-inline.x-flipped .ui-icon {
+  -webkit-transform: rotate(180deg) translatez(0);
 }
 .image-streams .image-stream .load-more-inline.noooo-right-pull {
   position: absolute;
   right: -101px;
   top: 0;
 }
-.image-streams .image-stream.loading .load-more-inline .ui-icon-refresh {
+.image-streams .image-stream .x-loading .load-more-inline .ui-icon-refresh {
   background-image: url('../gfx/spinner.png');
   -webkit-transform: rotate(0deg) translatez(0);
   -webkit-transition-duration: 0ms;
@@ -1151,14 +1151,11 @@ input.ui-input-text, textarea.ui-input-text {
   display: block;
   background-color: #fbfbfb;
 }
-.n-horizontal-scroll {
-  white-space: nowrap;
-}
-.n-horizontal-scroll .scroll-wrapper {
+.x-scroll-wrapper {
   white-space: nowrap;
   display: inline-block;
 }
-.right-pull, .left-pull {
+.x-right-pull, .x-left-pull {
   display: inline;
 }
 /*
@@ -4147,7 +4144,7 @@ input.ui-input-text, textarea.ui-input-text {
     -webkit-background-size: 56px 56px;
     background-size: 56px 56px;
   }
-  .image-streams.loading .load-more-inline .ui-icon-refresh {
+  .image-streams.x-loading .load-more-inline .ui-icon-refresh {
     background-image: url('../gfx/retina/spinner.png');
     -moz-background-size: 56px 56px;
     -o-background-size: 56px 56px;

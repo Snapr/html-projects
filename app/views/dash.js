@@ -1,5 +1,5 @@
-snapr.views.dash_stream = Backbone.View.extend({
-
+snapr.views.dash_stream = snapr.views.side_scroll.extend({
+    id: 'dash',
     template: _.template( $('#dash-stream-template').html() ),
     render: function(){
         this.photos = new snapr.views.dash_stream_thumbs({
@@ -73,8 +73,8 @@ snapr.views.dash = snapr.views.page.extend({
     populate: function()
     {
         var dash = this;
-        this.collection.data = {n:6, feed:true}; //, nearby:true};
         var options = {
+            data: {n:6, feed:true},
             success: function(){
                 dash.render();
             },
@@ -100,6 +100,7 @@ snapr.views.dash = snapr.views.page.extend({
         streams.empty();
 
         _.each( this.collection.models, function( item ){
+
             var li = new snapr.views.dash_stream({ model: item }),
                 stream_el = li.render().$el,
                 pull_distance = -40,
