@@ -42,7 +42,7 @@ snapr.views.side_scroll = Backbone.View.extend({
             }
         }
         try{
-            collection = this.collection;
+            var collection = this.collection;
             this.scroller = new iScroll(scroll_el[0], {
                 vScroll: false,
                 hScrollbar: false,
@@ -70,7 +70,7 @@ snapr.views.side_scroll = Backbone.View.extend({
                         scroll_el.addClass('x-loading');
                         right_pull_msg.text('loading');
                         scroller = this;
-                        collection.fetch_older({
+                        options  = {
                             success: function(collection, response){
                                 if (response.response.photos.length){
                                     if(scroller.currPageX === scroller.pagesX.length){
@@ -88,7 +88,8 @@ snapr.views.side_scroll = Backbone.View.extend({
                                     right_pull_msg.text('end');
                                 }
                             }
-                        });
+                        };
+                        collection.fetch_older(options);
                     }
 
                     flip_pulls(this);

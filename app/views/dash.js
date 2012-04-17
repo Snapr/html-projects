@@ -49,7 +49,6 @@ snapr.views.dash = Backbone.View.extend({
         streams.empty();
 
         _.each( this.collection.models, function( item ){
-            console.log(item, item.cid, item.collection);
             var li = new snapr.views.dash_stream({ collection: item.photos, model: item });
             streams.append( li.el );
             li.render();
