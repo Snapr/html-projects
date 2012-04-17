@@ -1240,85 +1240,48 @@
            <h1>Cities</h1>
 
            <div class="ui-btn-right">
-               <a class="x-edit-dash" data-ajax="false" data-role="button" data-icon="settings" data-iconpos="notext"></a>
+               <!-- <a class="x-edit-dash" data-ajax="false" data-role="button" data-icon="settings" data-iconpos="notext"></a> -->
                <a href="#/" data-ajax="false" data-role="button" data-icon="home" data-iconpos="notext"></a>
            </div>
 
        </div>
        <div data-role="content" data-theme="a">
            <ul class="image-streams">
-               <li class="image-stream" id="tokyo-imagestream">
-                  <a class="ui-bar ui-bar-b top-left-arrow" data-role="button" data-iconpos="right" data-icon="arrow-r" data-theme="b">
-                      <span class="ui-icon ui-icon-redheart extra-icons"></span>
-                      <em>tokyo</em>
-                      <span class="image-tag">Image description</span>
-                      <span class="image-time small-text">
-                          <span class="ui-icon ui-icon-clock extra-icons"></span>2 days ago
-                       </span>
-                   </a>
-                   <div id="tokyo-images" class="thumbs-grid thumbs-grid-med n-horizontal-scroll">
-                           <a class="image-link" data-ajax="false" href="#/feed/?photo_id=LF8&amp;username=spencer">
-                           <img src="https://s3.amazonaws.com/media-server2.snapr.us/thm2/465e0fb9af869bc4fe562223ec1dd9df/LF8.jpg" alt="Fun in Tokyo, come here!!" class="thumb-image thumb-med">
-                           </a>
-
-                           <a class="image-link" data-ajax="false" href="#/feed/?photo_id=M8D&amp;username=edwardtalbot">
-                           <img src="https://s3.amazonaws.com/media-server2.snapr.us/thm2/a9e5d62b71e1cf3f7c65a97c37a01b77/M8D.jpg" alt="The latest Japanese drink, Bencum" class="thumb-image thumb-med">
-                           </a>
-
-                           <a class="image-link" data-ajax="false" href="#/feed/?photo_id=RYS&amp;username=candyellow">
-                           <img src="https://s3.amazonaws.com/media-server2.snapr.us/thm2/688fc29424259cb7ec7a72ca5771f4f3/RYS.jpg" alt="Ooooh view" class="thumb-image thumb-med">
-                           </a>
-
-                           <a class="image-link" data-ajax="false" href="#/feed/?photo_id=P8S&amp;username=yellow">
-                           <img src="https://s3.amazonaws.com/media-server2.snapr.us/thm2/9e7fff696513668fc31333e1c671c56c/P8S.jpg" alt="Kristians flying karate style " class="thumb-image thumb-med">
-                           </a>
-
-                           <a class="image-link" data-ajax="false" href="#/feed/?photo_id=S8Q&amp;username=candyellow">
-                           <img src="https://s3.amazonaws.com/media-server2.snapr.us/thm2/09cd5f890a55389104f9576f7dd0fd2a/S8Q.jpg" alt="Girl mo." class="thumb-image thumb-med">
-                           </a>
-
-                       </div>
-               </li>
-
-                <li class="image-stream" id="newyork-image-stream">
-                      <a class="ui-bar ui-bar-b top-left-arrow" data-role="button" data-iconpos="right" data-icon="arrow-r" data-theme="b">
-                          <span class="ui-icon ui-icon-redheart extra-icons"></span>
-                          <em>new york</em>
-                          <span class="image-tag">Image description</span>
-                          <span class="image-time small-text">
-                              <span class="ui-icon ui-icon-clock extra-icons"></span>2 days ago
-                           </span>
-                       </a>
-                       <div id="newyork-images" class="thumbs-grid thumbs-grid-med n-horizontal-scroll">
-                               <a class="image-link" data-ajax="false" href="#/feed/?photo_id=LF8&amp;username=spencer">
-                               <img src="https://s3.amazonaws.com/media-server2.snapr.us/thm2/465e0fb9af869bc4fe562223ec1dd9df/LF8.jpg" alt="Fun in Tokyo, come here!!" class="thumb-image thumb-med">
-                               </a>
-
-                               <a class="image-link" data-ajax="false" href="#/feed/?photo_id=M8D&amp;username=edwardtalbot">
-                               <img src="https://s3.amazonaws.com/media-server2.snapr.us/thm2/a9e5d62b71e1cf3f7c65a97c37a01b77/M8D.jpg" alt="The latest Japanese drink, Bencum" class="thumb-image thumb-med">
-                               </a>
-
-                               <a class="image-link" data-ajax="false" href="#/feed/?photo_id=RYS&amp;username=candyellow">
-                               <img src="https://s3.amazonaws.com/media-server2.snapr.us/thm2/688fc29424259cb7ec7a72ca5771f4f3/RYS.jpg" alt="Ooooh view" class="thumb-image thumb-med">
-                               </a>
-
-                               <a class="image-link" data-ajax="false" href="#/feed/?photo_id=P8S&amp;username=yellow">
-                               <img src="https://s3.amazonaws.com/media-server2.snapr.us/thm2/9e7fff696513668fc31333e1c671c56c/P8S.jpg" alt="Kristians flying karate style " class="thumb-image thumb-med">
-                               </a>
-
-                               <a class="image-link" data-ajax="false" href="#/feed/?photo_id=S8Q&amp;username=candyellow">
-                               <img src="https://s3.amazonaws.com/media-server2.snapr.us/thm2/09cd5f890a55389104f9576f7dd0fd2a/S8Q.jpg" alt="Girl mo." class="thumb-image thumb-med">
-                               </a>
-
-                           </div>
-                   </li>
-
+               <!-- Streams get injected here -->
            </ul>
-
        </div>
-
-
     </div><!-- /page -->
+    <script id="cities-stream-template" type="text/template">
+            <li class="image-stream" id="newyork-image-stream">
+                <a class="ui-bar ui-bar-b top-left-arrow x-details" data-role="button" data-iconpos="right" data-icon="arrow-r" data-theme="b">
+                    <span class="ui-icon ui-icon-redheart extra-icons"></span>
+                    <em><%= 'CITY' %></em>
+                    <span class="image-tag x-tag"><%= collection.models[0].get("description") %></span>
+                    <span class="image-time small-text">
+                        <span class="ui-icon ui-icon-clock extra-icons"></span>
+                        <span class="x-date"><%= snapr.utils.short_timestamp( collection.models[0].get("date") )  %></span>
+                    </span>
+                </a>
+                <div id="upload-popular-nearby-images" class="thumbs-grid thumbs-grid-med x-scroll-area">
+                    <div class="x-scroll-wrapper"><!-- inner div for scroll -->
+                    <div class="x-left-pull thumb-med load-more-inline">
+                        <span class="ui-icon ui-icon-refresh"></span>
+                        <span class="ui-btn-text x-msg">Refresh</span>
+                    </div>
+                    <div class="x-thumbs"></div>
+                    <div class="x-right-pull thumb-med load-more-inline">
+                        <span class="ui-icon ui-icon-refresh"></span>
+                        <span class="ui-btn-text x-msg">Load More</span>
+
+                    </div>
+                </div>
+           </li>
+        </script>
+        <script id="cities-thumbs-template" type="text/template">
+            <% _.each(photos, function(photo) { %><a href="https://s3.amazonaws.com/media-server2.snapr.us/lrg/<%= photo.get('secret') %>/<%= photo.get('id') %>.jpg" class="x-thumb image-link" rel="external" data-date="<%= photo.get('date') %>" data-tag="<%= photo.get('description') %>">
+                <img src="https://s3.amazonaws.com/media-server2.snapr.us/thm2/<%= photo.get('secret') %>/<%= photo.get('id') %>.jpg" alt="<%= photo.get('description') %>" class="thumb-image thumb-med">
+            </a><% }); %>
+        </script>
 
     <!-- @people PAGE-->
     <div id="people" data-add-back-btn="true" data-role="dialog" data-overlay-theme="c" data-theme="c">

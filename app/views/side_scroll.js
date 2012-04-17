@@ -130,6 +130,7 @@ snapr.views.side_scroll = Backbone.View.extend({
         return this;
     },
     photoswipe_init: function(){
-        photoswipe_init(this.id + this.model.cid, $( "a.x-thumb", this.el ));
+        id = this.id + this.cid;
+        photoswipe_init(id, $( "a.x-thumb", this.el ));
     }
 });

@@ -43,9 +43,7 @@ snapr.views.dash = Backbone.View.extend({
         this.collection.fetch( options );
     },
     render: function(){
-        var dash = this,
-            streams = this.el.find('.image-streams');
-
+        var streams = this.el.find('.image-streams');
         streams.empty();
 
         _.each( this.collection.models, function( item ){
