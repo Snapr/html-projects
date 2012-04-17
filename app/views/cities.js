@@ -57,7 +57,7 @@ snapr.views.cities = Backbone.View.extend({
 
     initialize: function()
     {
-        this.el.live('pagehide', function( e ){
+        this.$el.live('pagehide', function( e ){
             $(e.target).undelegate();
             return true;
         });
@@ -89,8 +89,8 @@ snapr.views.cities = Backbone.View.extend({
     //     this.collection.fetch( options );
     // },
     render: function(){
-        var el = this.el,
-            streams = this.el.find('.image-streams');
+        var $el = this.$el,
+            streams = this.$el.find('.image-streams');
 
         streams.empty();
 
@@ -104,7 +104,7 @@ snapr.views.cities = Backbone.View.extend({
                     var li = new snapr.views.city_stream({ collection: photos, details: {name: details.name, id: id} });
                     streams.append( li.el );
                     li.render();
-                    el.trigger( "create" );
+                    $el.trigger( "create" );
                 }
             });
         }, this);
