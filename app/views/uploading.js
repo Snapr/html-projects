@@ -142,15 +142,14 @@ snapr.views.uploading = snapr.views.page.extend({
     render: function()
     {
         this.$el.find( ".upload-progress-container" ).empty();
-        $image_stream_container = this.$el.find( ".image-streams" ).empty()
+        $image_stream_container = this.$el.find( ".image-streams" ).empty();
 
         if (this.spot)
         {
-            this.popular_nearby_stream = new snapr.views.uploading_image_stream({
+            this.recent_nearby_stream = new snapr.views.uploading_image_stream({
                 stream_type: "spot",
                 spot: this.spot,
-                venue_name: this.venue_name,
-                container: $image_stream_container
+                venue_name: this.venue_name
             });
         }
         else
@@ -158,8 +157,7 @@ snapr.views.uploading = snapr.views.page.extend({
             this.recent_nearby_stream = new snapr.views.uploading_image_stream({
                 stream_type: "recent-nearby",
                 latitude: this.latitude,
-                longitude: this.longitude,
-                container: $image_stream_container
+                longitude: this.longitude
             });
         }
 
@@ -168,6 +166,26 @@ snapr.views.uploading = snapr.views.page.extend({
             latitude: this.latitude,
             longitude: this.longitude,
             container: $image_stream_container
+        });
+
+        recent_nearby_stream = this.recent_nearby_stream;
+        recent_nearby_stream.collection.fetch({
+            data:{n:6},
+            success: function(){
+                $image_stream_container .append( recent_nearby_stream.el );
+                recent_nearby_stream.render();
+                recent_nearby_stream.$el.trigger( "create" );
+            }
+        });
+
+        popular_nearby_stream = this.popular_nearby_stream;
+        popular_nearby_stream.collection.fetch({
+            data:{n:6},
+            success: function(){
+                $image_stream_container .append( popular_nearby_stream.el );
+                popular_nearby_stream.render();
+                popular_nearby_stream.$el.trigger( "create" );
+            }
         });
 
     },
