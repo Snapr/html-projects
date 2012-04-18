@@ -35,48 +35,37 @@ snapr.views.connect_li = Backbone.View.extend({
         "click .connect": "link_service"
     },
 
-    link_service: function()
+    link_service: function(e)
     {
-        if (this.provider == "tumblr")
+        this.parent_view.to_link.pop( this.provider );
+        var to_link = this.parent_view.to_link;
+        this.parent_view.shared.push( this.provider );
+        var shared = this.parent_view.shared;
+
+        var redirect_params = {};
+
+        if (shared.length)
         {
-            var connect_li = this;
-            $.ajax({
-                url: snapr.api_base + '/linked_services/tumblr/',
-                type: 'POST',
-                dataType: 'jsonp',
-                data:{
-                    username: $('#connect-tumblr-email').val(),
-                    password: $('#connect-tumblr-password').val(),
-                    access_token: snapr.auth.get("access_token"),
-                    _method: "POST"
-                },
-                success: function( data )
-                {
-                    if( data.success )
-                    {
-                        connect_li.status = "ready";
-                        connect_li.render();
-                        connect_li.parent_view.to_link = _.without(connect_li.parent_view.to_link, connect_li.provider);
-                        connect_li.share();
-
-                    }else{
-                        alert( data.error.message );
-                    }
-                },
-                error: function( data )
-                {
-                    console.log('ajax error!');
-                },
-            });
-
+            redirect_params["shared"] = shared.join(",");
         }
-        else
+        if (this.photo_id)
         {
-            url = snapr.api_base + "/linked_services/"
-                + this.provider + "/oauth/?access_token=" + snapr.auth.get("access_token") + "&redirect=" + escape( window.location.href );
-            window.location = url;
+            redirect_params["photo_id"] = this.photo_id;
+        }
+        if (to_link.length)
+        {
+            redirect_params["to_link"] = to_link.join(",");
         }
 
+        var redirect = window.location.origin +
+            window.location.pathname +
+            window.location.hash.split("?")[0] +
+            "?" + $.param( redirect_params );
+        url = snapr.api_base + "/linked_services/"
+            + this.provider + "/oauth/?access_token=" + snapr.auth.get("access_token") + "&redirect=" + escape( redirect );
+
+        console.log(url);
+        window.location = url;
     },
 
     share: function()

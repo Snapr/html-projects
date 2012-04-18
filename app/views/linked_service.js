@@ -50,43 +50,11 @@ snapr.views.linked_service = Backbone.View.extend({
 
     link_service: function()
     {
-        if (this.provider == "tumblr")
-        {
-            $.ajax({
-                url: snapr.api_base + '/linked_services/tumblr/',
-                type: 'POST',
-                dataType: 'jsonp',
-                data:{
-                    username: $('#tumblr-email').val(),
-                    password: $('#tumblr-password').val(),
-                    access_token: snapr.auth.get("access_token"),
-                    _method: "POST"
-                },
-                success: function( data )
-                {
-                    if (data.success)
-                    {
-                        snapr.info.current_view.initialize();
-                    }
-                    else
-                    {
-                        alert( data.error.message );
-                    }
-                },
-                error: function( data )
-                {
-                    console.log('ajax error!');
-                },
-            });
-        }
-        else
-        {
-            url = snapr.api_base + "/linked_services/" +
-                  this.provider + "/oauth/?access_token=" +
-                  snapr.auth.get("access_token") +
-                  "&redirect=" + escape( window.location.href );
-            window.location = url;
-        }
+        url = snapr.api_base + "/linked_services/" +
+              this.provider + "/oauth/?access_token=" +
+              snapr.auth.get("access_token") +
+              "&redirect=" + escape( window.location.href );
+        window.location = url;
     },
 
     unlink_service: function()
