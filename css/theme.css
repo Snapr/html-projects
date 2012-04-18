@@ -4074,6 +4074,47 @@ input.ui-input-text, textarea.ui-input-text {
   top: -11px;
   left: 50%;
 }
+/* @ui-slider-switch
+    over rides theme swatch styles for general blue / white style switch
+*/
+.ui-slider-switch {
+  -moz-border-radius: 20px;
+  -webkit-border-radius: 20px;
+  border-radius: 20px;
+  border: solid 1px #e4e4e4;
+  background: white;
+}
+.ui-slider-switch .ui-slider-label {
+  font-size: 15px;
+  text-transform: uppercase;
+  text-align: center;
+  color: #999;
+  font-weight: bold;
+  -moz-border-radius: 20px;
+  -webkit-border-radius: 20px;
+  border-radius: 20px;
+  text-shadow: none;
+  background: white;
+  -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.2);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.2);
+}
+.ui-slider-switch .ui-slider-label.ui-btn-active {
+  color: white;
+  text-shadow: rgba(0, 0, 0, 0.5) 0px -1px 1px;
+  background: #007FEA;
+  text-shadow: 0 -1px 0px #093b5c;
+  -moz-box-shadow: 0 4px 5px -2px rgba(0, 0, 0, 0.3) inset;
+  -webkit-box-shadow: 0 4px 5px -2px rgba(0, 0, 0, 0.3) inset;
+  box-shadow: 0 4px 5px -2px rgba(0, 0, 0, 0.3) inset;
+}
+.ui-slider-switch .ui-slider-handle {
+  border: 1px solid #AAA;
+  background: #F6F6F6;
+  -moz-box-shadow: 0 4px 0 -2px #f1f1f1 inset 0 2em 2em -2em #aaaaaa inset 0 0 2px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 0 4px 0 -2px #f1f1f1 inset 0 2em 2em -2em #aaaaaa inset 0 0 2px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 4px 0 -2px #f1f1f1 inset 0 2em 2em -2em #aaaaaa inset 0 0 2px rgba(0, 0, 0, 0.5);
+}
 /* @action-icons */
 .action-icons .ui-icon {
   background: none;
