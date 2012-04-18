@@ -7,48 +7,64 @@ Browser Testing
 
 You can do the bulk of your development in any webkit browser - we recommend Chrome or Safari.
 
--    Run the app in an environment that performs like a web server such as the 'Sites' folder on mac. 
--    If you enable web sharing you can access this page at your computers IP i.e. http://192.168.1.131/~username/ and test from your mobile device.
+- Run the app in an environment that performs like a web server such as the 'Sites' folder on mac. 
+- If you enable web sharing you can access this page at your computers IP i.e. http://(your ip)/~username/ and test from your mobile device.
 
--    Append *browser_testing=true* to the query string when you first load the page if testing in a desktop browser. This will add a class to the body and set a flag in local storage so that the project will limited to a 320px wide section of your screen. 
+- Alternatively you can navigate to the directory where the project is located via terminal and run `python -m SimpleHTTPServer` to serve it up at http://(your ip):8000
 
--    Note that the app uses a slightly different upload flow on desktop/mobile web.
+- No other local development setup is necessary since the project will interact with a web based API.
+
+- Append *browser_testing=true* to the query string when you first load the page if testing in a desktop browser. This will add a class to the body and set a flag in local storage so that the project will limited to a 320px wide section of your screen. 
+
+- Note that the app uses a slightly different upload flow on desktop/mobile web.
 
 
 Key Libraries
 -------------
 
-*jQuery Mobile* - The app primarily uses the [jQuery mobile framework](http://jquerymobile.com/)
+You should familiarize yourself with these projects before starting work:
 
-*Backbone.js* - [backbone.js](http://documentcloud.github.com/backbone/) is used for #hash url navigation and data handling (In combination with jQuery mobile page transitions).
+- *jQuery Mobile* - The app primarily uses the [jQuery mobile framework](http://jquerymobile.com/)
 
-*Underscore.js* - [underscore.js](http://documentcloud.github.com/underscore/) is used for templating.
+- *Backbone.js* - [backbone.js](http://documentcloud.github.com/backbone/) is used for #hash url navigation and data handling (In combination with jQuery mobile page transitions).
 
-*Less CSS* - The theme for the app is written using [Less CSS](http://lesscss.org/). We recommend using an app/script to compile your styles as you work( such as http://incident57.com/less/ ). 
+- *Less CSS* - The theme for the app is written using [Less CSS](http://lesscss.org/). We recommend using an app/script to compile your styles as you work( such as http://incident57.com/less/ ). 
 
-Using the javascript compiler (commented out in index.html `<head>`) will slow things down, especially when running on mobile devices.
+
+Other Libraries
+---------------
+
+These libraries are also used in the project, here are the links if you need to look them up:
+
+- *Underscore.js* - [underscore.js](http://documentcloud.github.com/underscore/) is used for templating.
+
+- *Photoswipe.js* - [photoswipe.js](http://www.photoswipe.com/) is used for native feeling photo galleries.
+
+- *iScroll 4* - [iscroll.js](http://cubiq.org/iscroll-4) is used for horizontal scrolling on some views.
+
+- *Google Maps* - (https://developers.google.com/maps/documentation/)
 
 
 Styling the App
 ---------------
 
-*variables.less* - Many of the key UI aspects are defined in a single variables file (/css/variables.less)
+- *variables.less* - Many of the key UI aspects are defined in a single variables file (/css/variables.less)
 
-Here you can edit things such as colors, fonts, font sizes, borders, page margins, etc and the changes will flow through the whole app.
+    Here you can edit things such as colors, fonts, font sizes, borders, page margins, etc and the changes will flow through the whole app.
 
-This file should be your first port of call for customization (before doing more advanced edits to theme.less)
+    This file should be your first port of call for customization (before doing more advanced edits to theme.less)
 
-*Graphics Sprites* - PSD files for the sprites used in the app are supplied @2x resolution. To accommodate different device screen pixel densities you should export three versions of each file. 
+- *Graphics Sprites* - PSD files for the sprites used in the app are supplied @2x resolution. To accommodate different device screen pixel densities you should export three versions of each file. 
 
-* Standard : @1x pixel density, 50% size of @2x version. Lives in root /gfx/ folder (For iPhone 3 and MDPI android devices)
-* HDPI : @1.5x pixel density, 75% size of @2x version. Lives in /gfx/hdpi/ (For HDPI Android devices)
-* Retina : @2x pixeldensity, 100% size of @2x version. Lives in  /gfx/retina/ (for iPhone 4 and XHDPI Android devices)
+    * Standard : @1x pixel density, 50% size of @2x version. Lives in root /gfx/ folder (For iPhone 3 and MDPI android devices)
+    * HDPI : @1.5x pixel density, 75% size of @2x version. Lives in /gfx/hdpi/ (For HDPI Android devices)
+    * Retina : @2x pixeldensity, 100% size of @2x version. Lives in  /gfx/retina/ (for iPhone 4 and XHDPI Android devices)
 
-*sprites.less* - Layout data for all the graphics sprites used in the app is set up via sprites.less (css/sprites.less). The aim of this is to take the pain out of calculating background positioning for large sprites, and to make it easier to edit sprites and have the changes update globally.
+- *sprites.less* - Layout data for all the graphics sprites used in the app is set up via sprites.less (css/sprites.less). The aim of this is to take the pain out of calculating background positioning for large sprites, and to make it easier to edit sprites and have the changes update globally.
 
-Be sure to change the width and height variables if you edit the size of the graphics as these will be used to size the sprites for devices with different pixel density (match @1x pixel res version).
+    Be sure to change the width and height variables if you edit the size of the graphics as these will be used to size the sprites for devices with different pixel density (match @1x pixel res version).
 
-*theme.less* - UI details / styles are set out in theme.less (/css/theme.less ). Custom page styles & edits to the jQuery mobile defaults / theme swatches are set out here.
+- *theme.less* - UI details / styles are set out in theme.less (/css/theme.less ). Custom page styles & edits to the jQuery mobile defaults / theme swatches are set out here.
 
 
 Editing the App
@@ -134,7 +150,7 @@ We have base hash `"/feed/"`, and a second hash `"/feed/?*query_string"` that ta
 
 These routes tell Backbone which function to call the url hash changes to a particular pattern. The second part refers to the function name.
 
-If we take `feed` as an example, the function takes the `query_string` which has been passed to it, and uses the `snapr.utils.get_query_params` function to interpret any globally useful parameters like `appmode` and `access_token`, and return a hash of parameter pairs (eg. {username: "rowan"}) as variable `query`.
+If we take `feed` as an example, the function takes the `query_string` which has been passed to it, and uses the `snapr.utils.get_query_params` function to interpret any globally useful parameters like `appmode` and `access_token`, and return a hash of parameter pairs (eg. `{username: "rowan"}`) as variable `query`.
 
 Since we will only ever have one page view at a time, the function creates a new view of the type requested and assigns it to `snapr.info.current_view` for easy access.
 
