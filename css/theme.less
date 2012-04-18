@@ -3404,6 +3404,80 @@ fieldset.ui-controlgroup{
 }
 
 
+
+.ui-bar-d{
+    background: @color-bg-highlight-secondary;
+    .linear-gradient(@color-bg-highlight-secondary, @color-bg-highlight-secondary-tint);
+}
+
+.ui-btn-up-d {
+	border: none;
+	background: @color-bg-highlight-secondary;
+    .linear-gradient(@color-bg-highlight-secondary, @color-bg-highlight-secondary-tint);
+	color: @color-txt-dark-on-light;
+	font-family: @txt-font-special;
+	font-weight: normal;
+	text-decoration: none;
+	a.ui-link-inherit {
+		color: @color-txt-dark-on-light;
+	}
+
+
+    &.top-left-arrow::after{
+       .arrow-down(@arrow-size, @color-bg-highlight-secondary-tint, @arrow-offset, 3px);
+   }
+   &.bottom-centered-arrow::after{
+          .arrow-up(@arrow-size, @color-bg-highlight-secondary, 50%, 3px);
+   }
+
+
+}
+
+.ui-btn-hover-d {
+	border: none;
+	background: lighten(@color-bg-highlight-secondary, 10% );
+    .linear-gradient(lighten(@color-bg-highlight-secondary, 10%), lighten(@color-bg-highlight-secondary-tint, 10%));
+	color: @color-txt-dark-on-light;
+	font-family: @txt-font-special;
+	font-weight: normal;
+	text-decoration: none;
+	a.ui-link-inherit {
+		color: @color-txt-dark-on-light;
+	}
+
+	&.top-left-arrow::after{
+       .arrow-down(@arrow-size, lighten(@color-bg-highlight-secondary-tint, 10% ), @arrow-offset, 3px);
+   }
+   &.bottom-centered-arrow::after{
+          .arrow-up(@arrow-size, lighten(@color-bg-highlight-secondary, 10%), 50%, 3px);
+   }
+}
+
+.ui-btn-down-d {
+	border: none;
+	background: @color-bg-highlight-secondary;
+    .pressed-gradient(@color-bg-highlight-secondary, 3%);
+	color: @color-txt-dark-on-light;
+	font-family: @txt-font-special;
+	font-weight: normal;
+	text-decoration: none;
+	a.ui-link-inherit {
+		color: @color-txt-dark-on-light;
+	}
+	&.ui-shadow {
+        .box-shadow(0 1px 4px lighten(@color-bg-highlight-secondary, 20%));
+    }
+
+    &.top-left-arrow::after{
+        .arrow-down(@arrow-size, @color-bg-highlight-secondary, @arrow-offset, 3px);
+    }
+    &.bottom-centered-arrow::after{
+           .arrow-up(@arrow-size, darken(@color-bg-highlight-secondary, 3%), 50%, 3px);
+    }
+}
+
+
+
 /*
 * E
 * - highlight swatch - all about mad yellow shiz..
