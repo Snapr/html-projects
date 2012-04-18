@@ -50,11 +50,50 @@ snapr.views.linked_service = Backbone.View.extend({
 
     link_service: function()
     {
-        url = snapr.api_base + "/linked_services/" +
-              this.provider + "/oauth/?access_token=" +
-              snapr.auth.get("access_token") +
-              "&redirect=" + escape( window.location.href );
-        window.location = url;
+        var url;
+        if (this.provider == 'tumblr' && snapr.tumblr_xauth)
+        {
+            url = '#/tumblr-xauth/?redirect='+ escape( escape( window.location.href ) + '' );
+            Route.navigate( url );
+        }
+        else
+        {
+            if (snapr.utils.get_local_param( "appmode" ))
+            {
+                if (snapr.utils.get_local_param("appmode") == 'iphone')
+                {
+                    // double encode for iphone - the iOS code should be changed to handle it
+                    // without this so this can be removed in future
+
+                    url = snapr.api_base + "/linked_services/"+ provider +
+                        "/oauth/?display=touch&access_token=" + snapr.auth.get("access_token") +
+                        "&double_encode=true&redirect=" + escape("snapr://redirect?url=" + escape( window.location.href ));
+                }
+                else if(snapr.utils.get_local_param("appmode") == 'android')
+                {
+                     // android needs a snapr://link?url=
+                        url = "snapr://link?url=" + snapr.api_base +
+                            "/linked_services/"+ this.provider + "/oauth/?display=touch&access_token=" +
+                            snapr.auth.get("access_token") + "&redirect=snapr://redirect?url=" +
+                            escape( window.location.href );
+                }
+                else
+                {
+                    // non-ios builds should be made to handle the redirect param escaped property so
+                    // this can be changed to escape("snapr://redirect?url=" + escape( window.location.href ))
+                    url = snapr.api_base + "/linked_services/"+ this.provider + "/oauth/?display=touch&access_token=" +
+                        snapr.auth.get("access_token") +
+                        "&redirect=snapr://redirect?url=" + escape( window.location.href );
+                }
+            }
+            else
+            {
+                url = snapr.api_base + "/linked_services/" + this.provider +
+                    "/oauth/?display=touch&access_token=" + snapr.auth.get("access_token") +
+                    "&redirect=" + escape( window.location.href );
+            }
+            window.location = url;
+        }
     },
 
     unlink_service: function()

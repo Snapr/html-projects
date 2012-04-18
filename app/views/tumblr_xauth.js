@@ -1,8 +1,8 @@
-snapr.views.tumblr_xauth = snapr.views.page.extend({
+snapr.views.tumblr_xauth = snapr.views.dialog.extend({
 
     initialize: function()
     {
-        snapr.views.page.prototype.initialize.call( this );
+        snapr.views.dialog.prototype.initialize.call( this );
 
         if (this.options.query)
         {
@@ -32,7 +32,8 @@ snapr.views.tumblr_xauth = snapr.views.page.extend({
     transition: "slideup",
 
     events: {
-        "submit #tumblr-dialog":"link_tumblr"
+        "submit #tumblr-dialog":"link_tumblr",
+        "click .x-back": "back"
     },
 
     link_tumblr: function(){

@@ -400,7 +400,7 @@ snapr.views.share_photo = snapr.views.page.extend({
                 description: this.$el.find("#description").val(),
                 status: this.$el.find("[name='status']").is(":checked") ? "public": "private",
                 share_location: ( $("#share-location").attr("checked") == "checked" ),
-                faceboook_album: ( $("#facebook-sharing").attr("checked") == "checked" ),
+                facebook_album: ( $("#facebook-sharing").attr("checked") == "checked" ),
                 tumblr: ( $("#tumblr-sharing").attr("checked") == "checked" ),
                 foursquare_checkin: ( $("#foursquare-sharing").attr("checked") == "checked" ),
                 tweet: ( $("#twitter-sharing").attr("checked") == "checked" )
@@ -414,10 +414,11 @@ snapr.views.share_photo = snapr.views.page.extend({
                     var sharing_successes = [];
                     if (model.get("tweet"))
                     {
+                        console.warn("tweet", model, xhr)
                         if (xhr.response &&
                             xhr.response.twitter &&
                             xhr.response.twitter.error &&
-                            xhr.response.twitter.error.code == 20 )
+                            xhr.response.twitter.error.code == 30 )
                         {
                             sharing_errors.push("twitter");
                         }
@@ -426,7 +427,7 @@ snapr.views.share_photo = snapr.views.page.extend({
                             sharing_successes.push("twitter");
                         }
                     }
-                    if (model.get("faceboook_album"))
+                    if (model.get("facebook_album"))
                     {
                         if (xhr.response &&
                             xhr.response.facebook &&
@@ -445,7 +446,7 @@ snapr.views.share_photo = snapr.views.page.extend({
                         if (xhr.response &&
                             xhr.response.foursquare &&
                             xhr.response.foursquare.error &&
-                            xhr.response.foursquare.error.code == 29 )
+                            xhr.response.foursquare.error.code == 28 )
                         {
                             sharing_errors.push("foursquare");
                         }
@@ -468,11 +469,6 @@ snapr.views.share_photo = snapr.views.page.extend({
                             sharing_successes.push("tumblr");
                         }
                     }
-
-
-
-
-
 
                     if (sharing_errors.length)
                     {
@@ -504,7 +500,7 @@ snapr.views.share_photo = snapr.views.page.extend({
                             d.getSeconds().zeroFill( 2 )
                     };
                 _.each( this.$el.find("form").serializeArray(), function( o ){
-                    if (["tumblr", "faceboook_album", "tweet", "foursquare_checkin"].indexOf( o.name ) > -1)
+                    if (["tumblr", "facebook_album", "tweet", "foursquare_checkin"].indexOf( o.name ) > -1)
                     {
                         params[o.name] = (o.value == "on");
                     }

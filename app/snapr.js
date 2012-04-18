@@ -24,6 +24,8 @@ snapr.constants = {};
 snapr.constants.default_zoom = 15;
 snapr.constants.feed_count = 12;
 
+snapr.tumblr_xauth = true;
+
 // set to hash url to redirect after successful upload/share eg:
 snapr.constants.share_redirect = "#/uploading/?";
 // snapr.constants.share_redirect = false;

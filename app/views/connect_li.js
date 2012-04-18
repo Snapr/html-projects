@@ -35,12 +35,10 @@ snapr.views.connect_li = Backbone.View.extend({
         "click .connect": "link_service"
     },
 
-    link_service: function(e)
+    link_service: function()
     {
-        this.parent_view.to_link.pop( this.provider );
-        var to_link = this.parent_view.to_link;
-        this.parent_view.shared.push( this.provider );
-        var shared = this.parent_view.shared;
+        var to_link = _.without( this.parent_view.to_link, this.provider );
+        var shared = _.without( this.parent_view.shared, this.provider );
 
         var redirect_params = {};
 
@@ -57,15 +55,51 @@ snapr.views.connect_li = Backbone.View.extend({
             redirect_params["to_link"] = to_link.join(",");
         }
 
-        var redirect = window.location.origin +
-            window.location.pathname +
-            window.location.hash.split("?")[0] +
-            "?" + $.param( redirect_params );
-        url = snapr.api_base + "/linked_services/"
-            + this.provider + "/oauth/?access_token=" + snapr.auth.get("access_token") + "&redirect=" + escape( redirect );
-
-        console.log(url);
-        window.location = url;
+        var next = window.location.href.split('?')[0];
+        next += "?" + $.param( redirect_params );
+        var url;
+        if (this.provider == 'tumblr' && snapr.tumblr_xauth)
+        {
+            url = '#/tumblr-xauth/?redirect='+ escape( escape( next ) + '' );
+            Route.navigate( url );
+        }
+        else
+        {
+            if (snapr.utils.get_local_param( "appmode" ))
+            {
+                if (snapr.utils.get_local_param("appmode") == 'iphone')
+                {
+                    // double encode for iphone - the iOS code should be changed to handle it
+                    // without this so this can be removed in future
+                    url = snapr.api_base + "/linked_services/"+ provider +
+                        "/oauth/?display=touch&access_token=" + snapr.auth.get("access_token") +
+                        "&double_encode=true&redirect=" + escape("snapr://redirect?url=" + escape( next ));
+                }
+                else if(snapr.utils.get_local_param("appmode") == 'android')
+                {
+                     // android needs a snapr://link?url=
+                        url = "snapr://link?url=" + snapr.api_base +
+                            "/linked_services/"+ this.provider + "/oauth/?display=touch&access_token=" +
+                            snapr.auth.get("access_token") + "&redirect=snapr://redirect?url=" +
+                            escape( next );
+                }
+                else
+                {
+                    // non-ios builds should be made to handle the redirect param escaped property so
+                    // this can be changed to escape("snapr://redirect?url=" + escape( next ))
+                    url = snapr.api_base + "/linked_services/"+ this.provider + "/oauth/?display=touch&access_token=" +
+                        snapr.auth.get("access_token") +
+                        "&redirect=snapr://redirect?url=" + escape( next );
+                }
+            }
+            else
+            {
+                url = snapr.api_base + "/linked_services/" + this.provider +
+                    "/oauth/?display=touch&access_token=" + snapr.auth.get("access_token") +
+                    "&redirect=" + escape( next );
+            }
+            window.location = url;
+        }
     },
 
     share: function()
@@ -84,7 +118,7 @@ snapr.views.connect_li = Backbone.View.extend({
                 {
                     setTimeout(function()
                     {
-                        Route.navigate("#/love-it/?shared=true&photo_id=" + model.get("id"));
+                        Route.navigate("#/uploading/?shared=true&photo_id=" + model.get("id"));
                     }, 600);
                 }
             },
