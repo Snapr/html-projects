@@ -53,7 +53,7 @@ snapr.views.linked_service = Backbone.View.extend({
         var url;
         if (this.provider == 'tumblr' && snapr.tumblr_xauth)
         {
-            url = '#/tumblr-xauth/?redirect='+ escape( escape( window.location.href ) + '' );
+            url = '#/tumblr-xauth/?redirect='+ escape( window.location.href + '' );
             Route.navigate( url );
         }
         else

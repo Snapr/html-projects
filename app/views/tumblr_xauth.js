@@ -51,12 +51,14 @@ snapr.views.tumblr_xauth = snapr.views.dialog.extend({
             },
             success: function( data ){
                 if(data.success){
+                    redirect = (redirect.indexOf("?") > -1) ?
+                        redirect + "&username=" + data.response.username :
+                        redirect + "?username=" + data.response.username;
 
-                    window.location.href = redirect + "&username=" + data.response.redirect;
+                    window.location = redirect;
                 }else{
                     console.error(data);
                     snapr.utils.notification('Tumblr Error', 'Incorrect login details');
-                    //window.location.href = redirect.replace('&linked=tumblr', '');
                 }
             },
             error: function( data ){
