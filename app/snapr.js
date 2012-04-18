@@ -5,7 +5,7 @@ snapr.settings = {
         'client_secret': "secret"
       },
       'live': {
-          'base_url': "http://sna.pr",
+          'base_url': "https://sna.pr",
           'client_id':'76e5be0eec71b28fb4380b0ac42201cf',
           'client_secret':'d293011a0a17dfc8aa191455af4ab7ba'
         },
