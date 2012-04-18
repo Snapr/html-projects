@@ -3734,10 +3734,7 @@ fieldset.ui-controlgroup{
         .background-size (@gfx-main-icon-sprite-width, @gfx-main-icon-sprite-height);
     }
 
-    .sharing-icon-small .ui-btn-inner .ui-icon{
-        background-image: url('../gfx/retina/share-icons-small.png');
-        .background-size (@gfx-small-sharing-icon-sprite-width, @gfx-small-sharing-icon-sprite-height);
-    }
+   
 
     .main-logo{
         background-image: url('../gfx/retina/main-logo.png');
@@ -3786,6 +3783,12 @@ fieldset.ui-controlgroup{
         background-image: url('../gfx/retina/share-icons-large.png');
         .background-size (@gfx-large-sharing-icon-sprite-width, @gfx-large-sharing-icon-sprite-height);
     }
+    
+    .sharing-icon-small .ui-btn-inner .ui-icon,
+    .ui-btn-inner .sharing-icon-small .ui-icon {
+           background-image: url('../gfx/retina/share-icons-small.png');
+           .background-size (@gfx-small-sharing-icon-sprite-width, @gfx-small-sharing-icon-sprite-height);
+       }
 
     .photo-map .snaprmapthumb {
         .snaprmappin {

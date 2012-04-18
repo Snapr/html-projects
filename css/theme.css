@@ -4305,13 +4305,6 @@ input.ui-input-text, textarea.ui-input-text {
     -webkit-background-size: 240px 560px;
     background-size: 240px 560px;
   }
-  .sharing-icon-small .ui-btn-inner .ui-icon {
-    background-image: url('../gfx/retina/share-icons-small.png');
-    -moz-background-size: 21px 84px;
-    -o-background-size: 21px 84px;
-    -webkit-background-size: 21px 84px;
-    background-size: 21px 84px;
-  }
   .main-logo {
     background-image: url('../gfx/retina/main-logo.png');
     -moz-background-size: 160px 42px;
@@ -4364,6 +4357,13 @@ input.ui-input-text, textarea.ui-input-text {
     -o-background-size: 84px 168px;
     -webkit-background-size: 84px 168px;
     background-size: 84px 168px;
+  }
+  .sharing-icon-small .ui-btn-inner .ui-icon, .ui-btn-inner .sharing-icon-small .ui-icon {
+    background-image: url('../gfx/retina/share-icons-small.png');
+    -moz-background-size: 21px 84px;
+    -o-background-size: 21px 84px;
+    -webkit-background-size: 21px 84px;
+    background-size: 21px 84px;
   }
   .photo-map .snaprmapthumb .snaprmappin {
     background-image: url('../gfx/retina/map-pin.png');
