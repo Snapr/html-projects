@@ -39,7 +39,12 @@ snapr.views.my_account = snapr.views.page.extend({
         $account_content
             .append( this.template({
                 username: snapr.auth.get( "snapr_user" ),
-                settings: this.user_settings.get('settings')
+                settings: this.user_settings.get( "settings" ),
+                camplus: {
+                    camplus_camera: (snapr.utils.get_local_param( "camplus_camera" ) == "true"),
+                    camplus_edit: (snapr.utils.get_local_param( "camplus_edit" ) == "true"),
+                    camplus_lightbox: (snapr.utils.get_local_param( "camplus_lightbox" ) == "true"),
+                }
             }) )
             .trigger('create');
 
@@ -80,7 +85,9 @@ snapr.views.my_account = snapr.views.page.extend({
     events: {
         "click .my-account-avatar label": "set_avatar",
         "click .my-account-set-up-gravatar": "set_up_gravatar",
-        "click .my-account-save": "save_settings"
+        "click .my-account-notifications .save": "save_notifications",
+        "click .my-account-account .save": "save_account",
+        "click .my-account-camplus .save": "save_camplus"
     },
 
     set_avatar: function(e)
@@ -116,16 +123,82 @@ snapr.views.my_account = snapr.views.page.extend({
         window.open( "http://en.gravatar.com/" );
     },
 
-    save_settings: function()
+    save_settings: function( param )
     {
-        console.log( "save settings" );
+        // prevent backbone from thinking this is a new user
+        this.user_settings.id = true;
+
+        this.user_settings.save({},{
+            data: param,
+            success: function( model, xhr )
+            {
+                if (xhr.success)
+                {
+                    $collapse.trigger( "collapse" );
+                }
+                else
+                {
+                    console.warn( "error saving notifications", xhr );
+                }
+            },
+            error: function( e )
+            {
+                console.warn( "error saving notifications", e );
+            }
+        });
+    },
+
+    save_notifications: function( e )
+    {
+        var $collapse = $(e.currentTarget).closest("[data-role='collapsible']");
+        var selects = $collapse.find("select");
+
+        var param = {};
+
+        _.each(selects, function(select)
+        {
+            param[$(select).attr("name")] = ($(select).val() == "true") ? true: false;
+        });
+
+        this.save_settings( param );
+    },
+
+    save_account: function()
+    {
+        console.log( "save account" );
+    },
+
+    save_camplus: function( e )
+    {
+        var $collapse = $(e.currentTarget).closest("[data-role='collapsible']");
+        var selects = $collapse.find("select");
+
+        var param = {};
+
+        _.each( selects, function( select )
+        {
+            var key = $(select).attr("name");
+            var value = ($(select).val() == "true") ? true: false
+            param[key] = value;
+            snapr.utils.save_local_param( key, value )
+        });
+
+        $collapse.trigger("collapse");
+
+        if (snapr.utils.get_local_param("appmode") == "iphone")
+        {
+            pass_data( "snapr://camplus/settings/?" + $.param( param ) );
+        }
+        else
+        {
+            console.log( "snapr://camplus/settings/?" + $.param( param ) );
+        }
     },
 
     queue_settings: function( upload_mode, paused )
     {
         this.render();
     }
-
 
 });
 

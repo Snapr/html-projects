@@ -199,7 +199,7 @@
          </a>
         <div data-role="collapsible-set" data-theme="c" data-content-theme="d">
 
-            <div data-role="collapsible" data-collapsed="true">
+            <div data-role="collapsible" data-collapsed="true" class="my-account-profile">
                 <h3>Profile</h3>
 
                 <fieldset data-role="controlgroup" class="my-account-avatar">
@@ -256,66 +256,66 @@
                  <div class="ui-grid-b">
                         <div class="ui-block-a"></div>
                         <div class="ui-block-b"></div>
-                        <div class="ui-block-c"><button data-theme="e" class="my-account-save">Save</button>
-                        </div>
-                </div>
-            </div>
-
-            <div data-role="collapsible" data-collapsed="true">
-                <h3>Notifications</h3>
-                <fieldset data-role="controlgroup ui-body-c">
-                    <div data-role="fieldcontain" class="switch-setting">
-                        <span class="setting-label">Follows</span>
-                        <select  name="my-account-notify-follow" id="my-account-notify-follow" data-role="slider" data-mini="true">   
-                            <option value="false">Off</option>
-                        		<option value="true" <% if (settings.profile.notify_when_added_to_group){%>selected<%}%>>On</option>
-                        </select>
-                    </div>
-                    
-                    
-                    <div data-role="fieldcontain" class="switch-setting">
-                        <span class="setting-label">Likes</span>
-                        <select name="my-account-notify-favorite" id="my-account-notify-favorite" data-role="slider" data-mini="true">   
-                            <option value="false">Off</option>
-                        		<option value="true" <% if (settings.profile.notify_when_image_favorited){%>selected<%}%>>On</option>
-                        </select>
-                    </div>
-
-                    <div data-role="fieldcontain" class="switch-setting">
-                        <span class="setting-label">Comments</span>
-                        <select name="my-account-notify-comment" id="my-account-notify-comment" data-role="slider" data-mini="true">   
-                            <option value="false">Off</option>
-                        		<option value="true" <% if (settings.profile.notify_when_comment_added){%>selected<%}%>>On</option>
-                        </select>
-                    </div>
-  
-                    <div data-role="fieldcontain" class="switch-setting">
-                        <span class="setting-label">Comments on Comments</span>
-                        <select name="my-account-notify-comment-after" id="my-account-notify-comment-after" data-role="slider" data-mini="true">   
-                            <option value="false">Off</option>
-                        		<option value="true" <% if (settings.profile.notify_after_comment){%>selected<%}%>>On</option>
-                        </select>
-                    </div>
-                    
-                    <div data-role="fieldcontain" class="switch-setting">
-                        <span class="setting-label">News Updates</span>
-                        <select  name="my-account-notify-snapr" id="my-account-notify-snapr" data-role="slider" data-mini="true">   
-                            <option value="false">Off</option>
-                        		<option value="true" <% if (settings.profile.subscribe_to_email_newsletter){%>selected<%}%>>On</option>
-                        </select>
-                    </div>
-                  
-                </fieldset>
-
-                <div class="ui-grid-b">
-                        <div class="ui-block-a"></div>
-                        <div class="ui-block-b"></div>
                         <div class="ui-block-c"><button data-theme="e" class="save">Save</button>
                         </div>
                 </div>
             </div>
 
-            <div data-role="collapsible" data-collapsed="true">
+            <div data-role="collapsible" data-collapsed="true" class="my-account-notifications">
+                <h3>Notifications</h3>
+                <fieldset data-role="controlgroup ui-body-c">
+                    <div data-role="fieldcontain" class="switch-setting">
+                        <span class="setting-label">Follows</span>
+                        <select  name="notify_when_added_to_group" id="my-account-notify-follow" data-role="slider" data-mini="true">
+                            <option value="false">Off</option>
+                            <option value="true" <% if (settings.profile.notify_when_added_to_group){%>selected<%}%>>On</option>
+                        </select>
+                    </div>
+
+                    <div data-role="fieldcontain" class="switch-setting">
+                        <span class="setting-label">Likes</span>
+                        <select name="notify_when_image_favorited" id="my-account-notify-favorite" data-role="slider" data-mini="true">
+                            <option value="false">Off</option>
+                            <option value="true" <% if (settings.profile.notify_when_image_favorited){%>selected<%}%>>On</option>
+                        </select>
+                    </div>
+
+                    <div data-role="fieldcontain" class="switch-setting">
+                        <span class="setting-label">Comments</span>
+                        <select name="notify_when_comment_added" id="my-account-notify-comment" data-role="slider" data-mini="true">
+                            <option value="false">Off</option>
+                            <option value="true" <% if (settings.profile.notify_when_comment_added){%>selected<%}%>>On</option>
+                        </select>
+                    </div>
+
+                    <div data-role="fieldcontain" class="switch-setting">
+                        <span class="setting-label">Comments on Comments</span>
+                        <select name="notify_after_comment" id="my-account-notify-comment-after" data-role="slider" data-mini="true">
+                            <option value="false">Off</option>
+                            <option value="true" <% if (settings.profile.notify_after_comment){%>selected<%}%>>On</option>
+                        </select>
+                    </div>
+
+                    <div data-role="fieldcontain" class="switch-setting">
+                        <span class="setting-label">News Updates</span>
+                        <select  name="subscribeToEmailNewsletter" id="my-account-notify-snapr" data-role="slider" data-mini="true">
+                            <option value="false">Off</option>
+                            <option value="true" <% if (settings.profile.subscribe_to_email_newsletter){%>selected<%}%>>On</option>
+                        </select>
+                    </div>
+
+                </fieldset>
+
+                <div class="ui-grid-b">
+                        <div class="ui-block-a"></div>
+                        <div class="ui-block-b"></div>
+                        <div class="ui-block-c">
+                            <button data-theme="e" class="save">Save</button>
+                        </div>
+                </div>
+            </div>
+
+            <div data-role="collapsible" data-collapsed="true" class="my-account-account">
                 <h3>Account</h3>
                 <fieldset data-role="controlgroup">
                     <label for="my-account-email">Email</label>
@@ -335,50 +335,51 @@
                 <div class="ui-grid-b">
                     <div class="ui-block-a"></div>
                     <div class="ui-block-b"></div>
-                    <div class="ui-block-c"><button data-theme="e" class="save">Save</button></div>
+                    <div class="ui-block-c">
+                        <button data-theme="e" class="save">Save</button>
+                    </div>
                 </div>
             </div>
 
-
-             <div data-role="collapsible" data-collapsed="true">
-                    <h3>Camera+</h3>
-                    <fieldset data-role="controlgroup ui-body-c">
-                        <div data-role="fieldcontain" class="switch-setting">
-                            <span class="setting-label">Use Camera</span>
-                            <select  name="camplus-use-camera" id="camplus-use-camera" data-role="slider" data-mini="true">   
-                                <option value="false">Off</option>
-                            		<option value="true">On</option>
-                            </select>
-                        </div>
-
-
-                        <div data-role="fieldcontain" class="switch-setting">
-                            <span class="setting-label">Edit With Camera+</span>
-                            <select name="camplus-edit" id="camplus-edit" data-role="slider" data-mini="true">   
-                                <option value="false">Off</option>
-                            		<option value="true">On</option>
-                            </select>
-                        </div>
-
-                        <div data-role="fieldcontain" class="switch-setting">
-                            <span class="setting-label">Use Lightbox</span>
-                            <select name="camplus-lightbox" id="camplus-lightbox" data-role="slider" data-mini="true">   
-                                <option value="false">Off</option>
-                            		<option value="true">On</option>
-                            </select>
-                        </div>
-
-                    </fieldset>
-
-                    <div class="ui-grid-b">
-                            <div class="ui-block-a"></div>
-                            <div class="ui-block-b"></div>
-                            <div class="ui-block-c"><button data-theme="e" class="save">Save</button>
-                            </div>
+            <div data-role="collapsible" data-collapsed="true" class="my-account-camplus">
+                <h3>Camera+</h3>
+                <fieldset data-role="controlgroup ui-body-c">
+                    <div data-role="fieldcontain" class="switch-setting">
+                        <span class="setting-label">Use Camera</span>
+                        <select  name="camplus_camera" id="camplus-use-camera" data-role="slider" data-mini="true">
+                            <option value="false">Off</option>
+                            <option value="true" <% if (camplus.camplus_camera){%>selected<%}%>>On</option>
+                        </select>
                     </div>
-                </div>
 
-                <!-- End camplus -->
+                    <div data-role="fieldcontain" class="switch-setting">
+                        <span class="setting-label">Edit With Camera+</span>
+                        <select name="camplus_edit" id="camplus-edit" data-role="slider" data-mini="true">
+                            <option value="false">Off</option>
+                            <option value="true" <% if (camplus.camplus_edit){%>selected<%}%>>On</option>
+                        </select>
+                    </div>
+
+                    <div data-role="fieldcontain" class="switch-setting">
+                        <span class="setting-label">Use Lightbox</span>
+                        <select name="camplus_lightbox" id="camplus-lightbox" data-role="slider" data-mini="true">
+                            <option value="false">Off</option>
+                            <option value="true" <% if (camplus.camplus_lightbox){%>selected<%}%>>On</option>
+                        </select>
+                    </div>
+
+                </fieldset>
+
+                <div class="ui-grid-b">
+                        <div class="ui-block-a"></div>
+                        <div class="ui-block-b"></div>
+                        <div class="ui-block-c">
+                            <button data-theme="e" class="save">Save</button>
+                        </div>
+                </div>
+            </div>
+
+            <!-- End camplus -->
 
         </div><!-- End of Nested Collapsible Set -->
 

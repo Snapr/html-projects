@@ -253,14 +253,22 @@ snapr.utils.short_location = function(txt)
 }
 snapr.utils.save_local_param = function( key, value )
 {
-    if (snapr.info.supports_local_storage)
+    if (value == "false")
     {
-        localStorage.setItem( key, value );
+        snapr.utils.delete_local_param( key );
     }
     else
     {
-        $.cookie( key, value );
+        if (snapr.info.supports_local_storage)
+        {
+            localStorage.setItem( key, value );
+        }
+        else
+        {
+            $.cookie( key, value );
+        }
     }
+
     if (key == "appmode")
     {
         $("body").addClass("appmode-true").addClass("appmode-" + value);
@@ -273,6 +281,23 @@ snapr.utils.save_local_param = function( key, value )
     {
         $("body").addClass("aviary");
     }
+    if (key == "camplus")
+    {
+        $("body").addClass("camplus");
+    }
+    if (key == "camplus_camera")
+    {
+        $("body").addClass("camplus-camera");
+    }
+    if (key == "camplus_edit")
+    {
+        $("body").addClass("camplus-edit");
+    }
+    if (key == "camplus_lightbox")
+    {
+        $("body").addClass("camplus-lightbox");
+    }
+
 };
 
 // defined differently so the function is hoisted for earlier use
@@ -309,7 +334,7 @@ function get_query_params(query) {
                     var obj = {};
                     obj[kv[0]] = unescape(kv[1]);
                     snapr.auth.set(obj);
-                } else if(_.indexOf(["snapr_user_public_group", "snapr_user_public_group_name", "appmode", "new_user", "demo_mode", "environment", "browser_testing", "aviary", "camplus"], kv[0]) > -1) {
+                } else if(_.indexOf(["snapr_user_public_group", "snapr_user_public_group_name", "appmode", "new_user", "demo_mode", "environment", "browser_testing", "aviary", "camplus", "camplus_camera", "camplus_edit", "camplus_lightbox"], kv[0]) > -1) {
                     snapr.utils.save_local_param(key, value);
                 } else {
                     key = unescape(key);
@@ -1110,6 +1135,7 @@ $(function () {
     {
         $("body").addClass( "appmode-false" );
     }
+
     if (snapr.utils.get_local_param( "browser_testing" ))
     {
         $("body").addClass( "browser-testing" );
@@ -1120,10 +1146,22 @@ $(function () {
     }
     if (snapr.utils.get_local_param( "camplus" ))
     {
-        $("body").addClass( "camplus" );
+        if (snapr.utils.get_local_param( "camplus_camera" ))
+        {
+            $("body").addClass( "camplus-camera" );
+        }
+        if (snapr.utils.get_local_param( "camplus_edit" ))
+        {
+            $("body").addClass( "camplus-edit" );
+        }
+        if (snapr.utils.get_local_param( "camplus_lightbox" ))
+        {
+            $("body").addClass( "camplus-lightbox" );
+        }
     }
 
-    $(document).trigger('snaprinit');
+
+    $(document).trigger( "snaprinit" );
 
     function preventScroll( e )
     {
@@ -1131,7 +1169,7 @@ $(function () {
     }
     if (appmode)
     {
-        $(document).bind('pagechange', function ()
+        $(document).bind('pagechange', function()
         {
             $('.no-drag').unbind('touchmove', preventScroll).bind('touchmove', preventScroll);
         });
