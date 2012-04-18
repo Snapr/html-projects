@@ -49,9 +49,22 @@ snapr.views.side_scroll = Backbone.View.extend({
                 snap: 'a.x-thumb, .x-left-pull',
                 momentum: false,
                 onScrollEnd: function(){
-                    var curr = $('a.x-thumb', this.wrapper).eq(this.currPageX);
+                    $('.active', this.wrapper).removeClass('active');
+                    var curr = $('a.x-thumb', this.wrapper).eq(this.currPageX-1).addClass('active');
 
-                    details.find('.x-tag').text(curr.data('tag'));
+                    var text = curr.data('tag'),
+                        tag = details.find('.x-tag');
+
+                    // webkit bug!
+                    // if text is blank and we set tag.text('') then the next time we
+                    // set tag.text('real value') the element will not be visible.
+                    // setting tag.html('&nbsp;') means the element is never really
+                    // blank and never dissapears.
+                    if(text){
+                        tag.text(text);
+                    }else{
+                        tag.html('&nbsp;');
+                    }
                     details.find('.x-date').text(snapr.utils.short_timestamp(curr.data('date')));
 
                     // Pull to refresh: if scroll elements are .x-flipped - refresh
