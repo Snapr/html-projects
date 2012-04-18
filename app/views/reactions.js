@@ -3,6 +3,7 @@ snapr.views.reactions = Backbone.View.extend({
     initialize: function()
     {
         _.bindAll( this );
+        $(this.options.el).undelegate();
         this.setElement( this.options.el );
 
         this.collection = new snapr.models.reaction_collection();

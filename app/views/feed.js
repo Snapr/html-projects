@@ -57,14 +57,14 @@ snapr.views.feed = snapr.views.page.extend({
             this.feed_header = new snapr.views.user_header({
                 username: this.query.username,
                 model: new snapr.models.user( {username: this.query.username} ),
-                el: this.$el.find(".feed-header").empty()
+                el: this.$el.find(".feed-header").empty()[0]
             });
         }
         else
         {
             this.feed_header = new snapr.views.feed_header({
                 query_data: this.query,
-                el: this.$el.find(".feed-header").empty()
+                el: this.$el.find(".feed-header").empty()[0]
             });
         }
 

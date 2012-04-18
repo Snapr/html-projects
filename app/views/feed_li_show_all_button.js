@@ -5,6 +5,7 @@ snapr.views.feed_li_show_all_button = Backbone.View.extend({
         _.bindAll( this );
 
         this.li = this.options.li;
+        $(this.options.el).undelegate();
         this.setElement( this.options.el );
         this.template = _.template( $("#show-all-button-template").html() );
 

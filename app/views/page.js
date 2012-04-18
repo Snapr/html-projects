@@ -5,6 +5,7 @@ snapr.views.page = Backbone.View.extend({
 
     initialize: function()
     {
+        $(this.options.el).undelegate();
         this.setElement( this.options.el );
 
         this.$el.on( "pagebeforehide", function( e, to )

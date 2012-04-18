@@ -3,6 +3,7 @@ snapr.views.photo_manage = Backbone.View.extend({
     initialize: function()
     {
         _.bindAll( this );
+        $(this.options.el).undelegate();
         this.setElement( this.options.el );
         this.parentView = this.options.parentView;
         this.template = _.template( $("#photo-manage-template").html() );

@@ -2,6 +2,7 @@ snapr.views.comment_button = Backbone.View.extend({
 
     initialize: function()
     {
+        $(this.options.el).undelegate();
         this.setElement( this.options.el );
         this.li = this.options.li;
         this.template = _.template( $("#comment-button-template").html() );
