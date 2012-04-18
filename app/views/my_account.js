@@ -10,6 +10,7 @@ snapr.views.my_account = snapr.views.page.extend({
 
         var my_account_view = this;
         var options = {
+            data: {linked_services: true},
             success: function()
             {
                 my_account_view.user_settings.linked_services_setup();
