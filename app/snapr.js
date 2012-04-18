@@ -249,17 +249,27 @@ snapr.utils.short_location = function(txt)
     }
     return new_txt_array.join( ", " );
 }
-snapr.utils.save_local_param = function (key, value) {
-    if(snapr.info.supports_local_storage) {
-        localStorage.setItem(key, value);
-    } else {
-        $.cookie(key, value);
+snapr.utils.save_local_param = function( key, value )
+{
+    if (snapr.info.supports_local_storage)
+    {
+        localStorage.setItem( key, value );
     }
-    if(key == "appmode") {
+    else
+    {
+        $.cookie( key, value );
+    }
+    if (key == "appmode")
+    {
         $("body").addClass("appmode-true").addClass("appmode-" + value);
     }
-    if(key == "browser_testing") {
+    if (key == "browser_testing")
+    {
         $("body").addClass("browser-testing");
+    }
+    if (key == "aviary")
+    {
+        $("body").addClass("aviary");
     }
 };
 
@@ -297,7 +307,7 @@ function get_query_params(query) {
                     var obj = {};
                     obj[kv[0]] = unescape(kv[1]);
                     snapr.auth.set(obj);
-                } else if(_.indexOf(["snapr_user_public_group", "snapr_user_public_group_name", "appmode", "new_user", "demo_mode", "environment", "browser_testing"], kv[0]) > -1) {
+                } else if(_.indexOf(["snapr_user_public_group", "snapr_user_public_group_name", "appmode", "new_user", "demo_mode", "environment", "browser_testing", "aviary", "camplus"], kv[0]) > -1) {
                     snapr.utils.save_local_param(key, value);
                 } else {
                     key = unescape(key);
@@ -1092,16 +1102,23 @@ $(function () {
     var appmode = snapr.utils.get_local_param("appmode");
     if (appmode)
     {
-        $("body").addClass("appmode-true" ).addClass("appmode-" + appmode );
+        $("body").addClass( "appmode-true" ).addClass("appmode-" + appmode );
     }
     else
     {
-        $("body").addClass("appmode-false" );
+        $("body").addClass( "appmode-false" );
     }
-    var browser_testing = snapr.utils.get_local_param("browser_testing");
-    if (browser_testing)
+    if (snapr.utils.get_local_param( "browser_testing" ))
     {
-        $("body").addClass("browser-testing" );
+        $("body").addClass( "browser-testing" );
+    }
+    if (snapr.utils.get_local_param( "aviary" ))
+    {
+        $("body").addClass( "aviary" );
+    }
+    if (snapr.utils.get_local_param( "camplus" ))
+    {
+        $("body").addClass( "camplus" );
     }
 
     $(document).trigger('snaprinit');
