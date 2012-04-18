@@ -441,18 +441,14 @@
             </span>
         Link Tumblr
         </h3>
-        <form class="tumblr-form" action="javascript:void(0)">
-            <fieldset data-role="controlgroup">
-                <label>Email:<input type="text" id="tumblr-email" /></label>
-                <label>Password:<input type="password" id="tumblr-password" /></label>
-            </fieldset>
+        <fieldset data-role="controlgroup">
+        </fieldset>
+        <div class="ui-grid-b">
+            <div class="ui-block-a"></div>
+            <div class="ui-block-b"></div>
+            <div class="ui-block-c"><button data-theme="e" class="link-service">Link</button>
+        </div>
 
-            <div class="ui-grid-b">
-                <div class="ui-block-a"></div>
-                <div class="ui-block-b"></div>
-                <div class="ui-block-c"><button data-theme="e" class="link-service">Link</button>
-            </div>
-        </form>
     <% break; case 'facebook': %>
         <h3>
         <span class="facebook-sharing sharing-icon-small">
@@ -572,15 +568,6 @@
     <!-- wrapped in = <li data-role="fieldcontain"> -->
     <script id="connect-li-template" type="text/template">
     <legend class="provider"><%= provider %></legend>
-    <% switch(provider){ case 'tumblr': %>
-    <% if(status == "unlinked"){%>
-        <form class="tumblr-login" action="javascript:void(0);">
-            <label>Email:<input id="connect-tumblr-email" type="text"></label>
-            <label>Password:<input id="connect-tumblr-password" type="password"></label>
-        </form>
-    <%}%>
-    <% break; default: %>
-    <%}%>
     <div class="PINK-right-button">
     <% switch(status) { case 'ready': %>
         <button data-inline="true" data-theme="b" class="connected">Connected</button>
