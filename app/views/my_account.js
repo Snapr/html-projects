@@ -123,7 +123,7 @@ snapr.views.my_account = snapr.views.page.extend({
         window.open( "http://en.gravatar.com/" );
     },
 
-    save_settings: function( param )
+    save_settings: function( param, collapse_container )
     {
         // prevent backbone from thinking this is a new user
         this.user_settings.id = true;
@@ -134,7 +134,7 @@ snapr.views.my_account = snapr.views.page.extend({
             {
                 if (xhr.success)
                 {
-                    $collapse.trigger( "collapse" );
+                    $(collapse_container).trigger( "collapse" );
                 }
                 else
                 {
@@ -160,7 +160,7 @@ snapr.views.my_account = snapr.views.page.extend({
             param[$(select).attr("name")] = ($(select).val() == "true") ? true: false;
         });
 
-        this.save_settings( param );
+        this.save_settings( param, $collapse[0] );
     },
 
     save_account: function()
