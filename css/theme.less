@@ -65,6 +65,8 @@ textarea{
 }
 
 
+
+
 body {
    	font-size: @txt-size-base;
    	background-color: @color-bg-dark!important;
@@ -3565,6 +3567,65 @@ fieldset.ui-controlgroup{
 }
 
 
+/* @ui-slider-switch
+    over rides theme swatch styles for general blue / white style switch
+*/
+.ui-slider-switch{
+    
+    .corner-all(@corner-fully-rounded);
+    border: @border-medium-on-light;
+    background: white;
+    
+    .ui-slider-label{
+        font-size: 15px;
+        text-transform: uppercase;
+        text-align: center;
+        color: #999;
+        font-weight: bold;
+        .corner-all(@corner-fully-rounded);
+        text-shadow: none;
+        background: white;
+        .box-shadow(inset 0 1px 1px rgba(0, 0, 0, 0.2));
+     
+        
+        &.ui-btn-active{
+            color: white;
+            text-shadow: rgba(0, 0, 0, .5) 0px -1px 1px;
+            background: #007FEA;
+            text-shadow: 0 -1px 0px #093B5C;
+            .box-shadow(0 4px 5px -2px rgba(0,0,0,0.3) inset);
+           
+        }
+    }
+    
+    .ui-slider-handle{
+        border: 1px solid #AAA;
+        background: #F6F6F6;
+        .box-shadow(0 4px 0 -2px #F1F1F1 inset, 0 2em 2em -2em #AAA inset, 0 0 2px rgba(0,0,0,.5));
+       
+    }
+
+}
+
+.switch-setting{
+    
+    border-bottom: @border-medium-on-light;
+    margin: 0;
+    padding-bottom: @padding-element-inset;
+    margin-bottom: @padding-element-inset;
+    
+    .setting-label{
+        font-family: @txt-font-special;
+        line-height: 36px;
+        vertical-align: middle;
+    }
+    .ui-slider-switch{
+        float: right;
+        margin-right: 0;
+    }
+}
+
+
 /* @action-icons */
 .action-icons{
     .ui-icon{
@@ -3673,10 +3734,7 @@ fieldset.ui-controlgroup{
         .background-size (@gfx-main-icon-sprite-width, @gfx-main-icon-sprite-height);
     }
 
-    .sharing-icon-small .ui-btn-inner .ui-icon{
-        background-image: url('../gfx/retina/share-icons-small.png');
-        .background-size (@gfx-small-sharing-icon-sprite-width, @gfx-small-sharing-icon-sprite-height);
-    }
+   
 
     .main-logo{
         background-image: url('../gfx/retina/main-logo.png');
@@ -3725,6 +3783,12 @@ fieldset.ui-controlgroup{
         background-image: url('../gfx/retina/share-icons-large.png');
         .background-size (@gfx-large-sharing-icon-sprite-width, @gfx-large-sharing-icon-sprite-height);
     }
+    
+    .sharing-icon-small .ui-btn-inner .ui-icon,
+    .ui-btn-inner .sharing-icon-small .ui-icon {
+           background-image: url('../gfx/retina/share-icons-small.png');
+           .background-size (@gfx-small-sharing-icon-sprite-width, @gfx-small-sharing-icon-sprite-height);
+       }
 
     .photo-map .snaprmapthumb {
         .snaprmappin {
