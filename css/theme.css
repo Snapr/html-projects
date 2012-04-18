@@ -4115,6 +4115,21 @@ input.ui-input-text, textarea.ui-input-text {
   -webkit-box-shadow: 0 4px 0 -2px #f1f1f1 inset 0 2em 2em -2em #aaaaaa inset 0 0 2px rgba(0, 0, 0, 0.5);
   box-shadow: 0 4px 0 -2px #f1f1f1 inset 0 2em 2em -2em #aaaaaa inset 0 0 2px rgba(0, 0, 0, 0.5);
 }
+.switch-setting {
+  border-bottom: solid 1px #e4e4e4;
+  margin: 0;
+  padding-bottom: 8px;
+  margin-bottom: 8px;
+}
+.switch-setting .setting-label {
+  font-family: 'MuseoSansRounded700', Helvetica, Arial, sans-serif;
+  line-height: 36px;
+  vertical-align: middle;
+}
+.switch-setting .ui-slider-switch {
+  float: right;
+  margin-right: 0;
+}
 /* @action-icons */
 .action-icons .ui-icon {
   background: none;

@@ -263,43 +263,48 @@
 
             <div data-role="collapsible" data-collapsed="true">
                 <h3>Notifications</h3>
-                <h4>Email me when:</h4>
-                <fieldset data-role="controlgroup">
-                    <p>
-                    <input type="checkbox" name="my-account-notify-follow" id="my-account-notify-follow" data-role="none"
-                    <% if (settings.profile.notify_when_added_to_group){%> checked="true" <%}%> />
-                    <label for="my-account-notify-follow">Someone follows me</label>
-                    </p>
+                <fieldset data-role="controlgroup ui-body-c">
+                    <div data-role="fieldcontain" class="switch-setting">
+                        <span class="setting-label">Follows</span>
+                        <select  name="my-account-notify-follow" id="my-account-notify-follow" data-role="slider" data-mini="true">   
+                            <option value="false">Off</option>
+                        		<option value="true" <% if (settings.profile.notify_when_added_to_group){%>selected<%}%>>On</option>
+                        </select>
+                    </div>
+                    
+                    
+                    <div data-role="fieldcontain" class="switch-setting">
+                        <span class="setting-label">Likes</span>
+                        <select name="my-account-notify-favorite" id="my-account-notify-favorite" data-role="slider" data-mini="true">   
+                            <option value="false">Off</option>
+                        		<option value="true" <% if (settings.profile.notify_when_image_favorited){%>selected<%}%>>On</option>
+                        </select>
+                    </div>
 
-                    <p>
-                    <input type="checkbox" name="my-account-notify-favorite" id="my-account-notify-favorite" data-role="none"
-                    <% if (settings.profile.notify_when_image_favorited){%> checked="true" <%}%> />
-                    <label for="my-account-notify-favorite">Someone favorites one of my images</label>
-                    </p>
-
-                    <p>
-                    <input type="checkbox" name="my-account-notify-comment" id="my-account-notify-comment" data-role="none"
-                    <% if (settings.profile.notify_when_comment_added){%> checked="true" <%}%> />
-                    <label for="my-account-notify-comment">Someone comments on one of my images</label>
-                    </p>
-
-                    <p>
-                    <input type="checkbox" name="my-account-notify-comment-after" id="my-account-notify-comment-after" data-role="none"
-                    <% if (settings.profile.notify_after_comment){%> checked="true" <%}%> />
-                    <label for="my-account-notify-comment-after">Someone comments on an image I&apos;ve commented on</label>
-                    </p>
-
-                    <p>
-                    <input type="checkbox" name="my-account-notify-moderation" id="my-account-notify-moderation" data-role="none"
-                    <% if (settings.profile.notify_when_image_moderated){%> checked="true" <%}%> />
-                    <label for="my-account-notify-moderation">One of my images has been moderated</label>
-                    </p>
-
-                    <p>
-                    <input type="checkbox" name="my-account-notify-snapr" id="my-account-notify-snapr" data-role="none"
-                    <% if (settings.profile.subscribe_to_email_newsletter){%> checked="true" <%}%> />
-                    <label for="my-account-notify-snapr">Snapr has exciting news</label>
-                    </p>
+                    <div data-role="fieldcontain" class="switch-setting">
+                        <span class="setting-label">Comments</span>
+                        <select name="my-account-notify-comment" id="my-account-notify-comment" data-role="slider" data-mini="true">   
+                            <option value="false">Off</option>
+                        		<option value="true" <% if (settings.profile.notify_when_comment_added){%>selected<%}%>>On</option>
+                        </select>
+                    </div>
+  
+                    <div data-role="fieldcontain" class="switch-setting">
+                        <span class="setting-label">Comments on Comments</span>
+                        <select name="my-account-notify-comment-after" id="my-account-notify-comment-after" data-role="slider" data-mini="true">   
+                            <option value="false">Off</option>
+                        		<option value="true" <% if (settings.profile.notify_after_comment){%>selected<%}%>>On</option>
+                        </select>
+                    </div>
+                    
+                    <div data-role="fieldcontain" class="switch-setting">
+                        <span class="setting-label">News Updates</span>
+                        <select  name="my-account-notify-snapr" id="my-account-notify-snapr" data-role="slider" data-mini="true">   
+                            <option value="false">Off</option>
+                        		<option value="true" <% if (settings.profile.subscribe_to_email_newsletter){%>selected<%}%>>On</option>
+                        </select>
+                    </div>
+                  
                 </fieldset>
 
                 <div class="ui-grid-b">
