@@ -3438,7 +3438,8 @@ fieldset.ui-controlgroup{
         }
         
         input[type="text"],
-        input[type="password"]{
+        input[type="password"],
+        input[type="email"]{
             width: 100%;
             border: none;
             background: transparent;
@@ -3613,7 +3614,7 @@ fieldset.ui-controlgroup{
 }
 
 
-/* @ui-slider-switch
+/* @switch
     over rides theme swatch styles for general blue / white style switch
 */
 .ui-slider-switch{
@@ -3631,6 +3632,7 @@ fieldset.ui-controlgroup{
         .corner-all(@corner-fully-rounded);
         text-shadow: none;
         background: white;
+        border: none!important;
         .box-shadow(inset 0 1px 1px rgba(0, 0, 0, 0.2));
      
         
@@ -3648,7 +3650,7 @@ fieldset.ui-controlgroup{
         border: 1px solid #AAA;
         background: #F6F6F6;
         .box-shadow(0 4px 0 -2px #F1F1F1 inset, 0 2em 2em -2em #AAA inset, 0 0 2px rgba(0,0,0,.5));
-       
+        .corner-all(@corner-fully-rounded);
     }
 
 }

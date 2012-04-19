@@ -1391,33 +1391,7 @@
             <%}%>
         </script>
 
-    <!-- @join snapr DIALOG-->
-    <div id="join-snapr" data-role="dialog" data-overlay-theme="c" data-theme="c">
-        <div data-role="header" data-theme="c">
-            <h1>Join Snapr</h1>
-            <a class="x-back" data-role="button" data-icon="delete" data-iconpos="notext"></a>
-        </div>
-        <div data-role="content">
-            <form action="javascript: void(0);" accept-charset="utf-8" id="join-dialog">
-                <fieldset data-role="controlgroup" class="ui-hide-label">
-                    <label for="username">Username</label><input type="text" name="username" placeholder="Username..." autocapitalize="off" id="join-dialog-username">
-                    <label for="password">Password</label><input type="password" name="password" placeholder="Password..." id="join-dialog-password">
-                    <label for="email">Email</label><input type="email" name="email" placeholder="Email Address..." id="join-dialog-email">
-                </fieldset>
-
-
-                <label for="snapr-tos" data-role="none">I agree to the <a href="http://sna.pr/terms/" target="_blank" >Terms of Use</a></label>
-                <input type="checkbox" data-role="none" name="checkbox-1" id="snapr-tos"  />
-
-
-                <input type="submit" name="login" data-theme="e" value="Join">
-            </form>
-
-            <!-- <div data-role="fieldcontain"> -->
-            <!-- </div> -->
-        </div>
-
-    </div><!-- /page -->
+    
 
 
     <!-- @about PAGE-->
@@ -1624,14 +1598,58 @@
 
             
                 <p class="centered-link">
-                    <a href="#/join/" data-snapr-dialog="true" data-ajax="false">Join Snapr &rarr;</a></li>
+                    <a href="#/join/" data-snapr-dialog="true" data-ajax="false">Join Snapr &rsaquo;</a></li>
                 </p>
             </div>
         </div>
     </div><!-- /page -->
 
     <!-- no templates for #login -->
+    
+    <!-- @join snapr DIALOG-->
+    <div id="join-snapr" data-role="dialog" data-overlay-theme="c" data-theme="c">
+        <div data-role="header" data-theme="c">
+            <h1>Join Snapr</h1>
+            <a class="x-back" data-role="button" data-icon="delete" data-iconpos="notext"></a>
+        </div>
+        <div data-role="content">
+            <div class="inset-page-content">
+            
+                <form action="javascript: void(0);" accept-charset="utf-8" id="join-dialog" autocomplete="off">
+                    <ul data-role="listview" data-inset="true" data-theme="d">
+                        <li class="ui-hide-label">
+                            <label for="username">Username</label><input type="text" name="username" placeholder="Username" autocapitalize="off" autocomplete="off" id="join-dialog-username">
+                        </li>
+                        <li class="ui-hide-label">
+                            <label for="password">Password</label><input type="password" name="password" placeholder="Password" autocomplete="off" id="join-dialog-password">
+                        </li>
+                        <li class="ui-hide-label">
+                            <label for="email">Email</label><input type="email" name="email" placeholder="Email Address" autocomplete="off" id="join-dialog-email">
+                        </li>
+                        
+                    </ul>
 
+                    <div data-role="fieldcontain" class="switch-setting">
+                        <span class="setting-label">I agree to the <a href="http://sna.pr/terms/" target="_blank" >Terms of Use</a></span>
+                        <select name="checkbox-1" id="snapr-tos" data-role="slider" data-mini="true">
+                            <option value="false">No</option>
+                            <option value="true" selected="true">Yes</option>
+                        </select>
+                    </div>
+                    
+                    
+                    <input type="submit" name="login" data-theme="e" value="Join">
+                </form>
+
+               
+                <p class="centered-link">
+                    <a href="#/login/" data-snapr-dialog="true" data-ajax="false">Already have an account?</a></li>
+                </p>
+               
+            </div>
+        </div>
+
+    </div><!-- /page -->
 
     <!-- @upload form for web-based uploading/testing (go to #/upload/) -->
     <div id="upload" data-role="page" data-theme="a">
