@@ -870,10 +870,13 @@ input.ui-input-text, textarea.ui-input-text {
   padding-right: 40px;
 }
 .ui-bar .image-details {
-  display: inline-block;
-  width: 93%;
+  display: block;
+  margin-right: 20px;
   overflow: hidden;
   text-overflow: ellipsis;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
 }
 .ui-bar .image-time {
   position: relative;
@@ -928,6 +931,9 @@ input.ui-input-text, textarea.ui-input-text {
 }
 .ui-bar.top-no-arrow .ui-btn-text, .ui-bar.top-left-arrow .ui-btn-text {
   padding-left: 20px;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
 }
 .ui-bar.top-no-arrow .extra-icons, .ui-bar.top-left-arrow .extra-icons {
   right: auto;
@@ -2718,6 +2724,12 @@ input.ui-input-text, textarea.ui-input-text {
 .ui-body-a .ui-header {
   color: #cccccc;
   text-shadow: none;
+}
+.ui-body-a .image-streams .image-stream .load-more-inline {
+  background-color: #121414;
+}
+.ui-body-a .thumb-image {
+  background-color: #121414;
 }
 /* Button Styles */
 .ui-btn-active {

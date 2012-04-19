@@ -899,10 +899,11 @@ fieldset.ui-controlgroup{
     }
 
     .image-details{
-           display: inline-block;
-           width: 93%;
+           display: block;
+           margin-right: 20px;
            overflow: hidden;
            text-overflow: ellipsis;
+           .border-box();
        }
 
        .image-time{
@@ -928,6 +929,7 @@ fieldset.ui-controlgroup{
         .corner-bottom (@corner-not-rounded);
          .ui-btn-text{
                 padding-left: 20px;
+                
         }
     }
     &.top-no-arrow,
@@ -940,6 +942,7 @@ fieldset.ui-controlgroup{
         }
         .ui-btn-text{
             padding-left: 20px;
+            .border-box();
         }
         .extra-icons{
             right: auto;
@@ -2793,6 +2796,14 @@ fieldset.ui-controlgroup{
     .ui-header{
         color: @color-txt-light-on-dark;
         text-shadow: none;
+    }
+    
+    .image-streams .image-stream .load-more-inline{
+        background-color: darken(@color-off-black-tint, 5%);
+    }
+    
+    .thumb-image{
+       background-color: darken(@color-off-black-tint, 5%); 
     }
 
 }
