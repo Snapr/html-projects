@@ -387,7 +387,7 @@ snapr.views.share_photo = snapr.views.page.extend({
             var img_url = this.model.get("photo_path");
         }
 
-        if (appmode)
+        if (appmode && img_url)
         {
             if (camplus && camplus_edit)
             {
@@ -405,7 +405,7 @@ snapr.views.share_photo = snapr.views.page.extend({
         }
         else
         {
-            Route.navigate( "#/upload/" );
+            console.log("clicked on edit but not in appmode or no img_url", img_url );
         }
     },
 
