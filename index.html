@@ -1594,35 +1594,39 @@
             <a class="x-back" data-role="button" data-icon="delete" data-iconpos="notext"></a>
         </div>
         <div data-role="content">
-            <p class="login-message warning-message"></p>
-            <form action="javascript: void(0);" accept-charset="utf-8" id="login-dialog">
-                <fieldset>
-                    <div data-role="fieldcontain" class="ui-hide-label">
-                        <label for="username">Username</label>
-                        <input type="text" name="username"  placeholder="Username..." autocapitalize="off" autocorrect="off" id="login-dialog-username">
-                    </div>
-                    <div data-role="fieldcontain" class="ui-hide-label">
+            <div class="inset-page-content">
+                <p class="login-message warning-message"></p>
+            
+            
+                <form action="javascript: void(0);" accept-charset="utf-8" id="login-dialog">
+                    <ul data-role="listview" data-inset="true" data-theme="d">
+                    
+                        <li data-role="fieldcontain" class="ui-hide-label">
+                            <label for="username">Username</label>
+                            <input type="text" name="username"  placeholder="Username..." autocapitalize="off" autocorrect="off" id="login-dialog-username">
+                        </li>
+                        <li data-role="fieldcontain" class="ui-hide-label">
 
-                        <label for="password">Password</label><input type="password" name="password" placeholder="Password..." id="login-dialog-password">
-                    </div>
+                            <label for="password">Password</label><input type="password" name="password" placeholder="Password..." id="login-dialog-password">
+                        </li>
+                    </ul>
+                        <input type="submit" name="login" data-theme="e" value="Log In">
 
-                    <input type="submit" name="login" data-theme="e" value="Log In">
+                </form>
 
-                </fieldset>
-            </form>
+                <!-- <p>Log in with:</p>
+                <div data-role="navbar">
+                    <ul>
+                        <li><a href="#" data-role="button" data-theme="c">Twitter</a></li>
+                        <li><a href="#" data-role="button" data-theme="c">Facebook</a></li>
+                    </ul>
+                </div> -->
 
-            <!-- <p>Log in with:</p>
-            <div data-role="navbar">
-                <ul>
-                    <li><a href="#" data-role="button" data-theme="c">Twitter</a></li>
-                    <li><a href="#" data-role="button" data-theme="c">Facebook</a></li>
-                </ul>
-            </div> -->
-
-            <ul data-role="listview" data-theme="d" data-inset="true">
-                <li><a href="#/join/" data-snapr-dialog="true" data-ajax="false">Join Snapr</a></li>
-                <!-- <li><a href="#">Forgot your username or password?</a></li> -->
-            </ul>
+            
+                <p class="centered-link">
+                    <a href="#/join/" data-snapr-dialog="true" data-ajax="false">Join Snapr &rarr;</a></li>
+                </p>
+            </div>
         </div>
     </div><!-- /page -->
 
