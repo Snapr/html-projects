@@ -255,6 +255,13 @@ ul, ul li {
   left: 0;
   right: 0;
 }
+/* Some extra paddy things */
+.ui-content .inset-page-content {
+  padding: 0 8px;
+}
+.ui-content .inset-page-content .ui-listview-inset {
+  margin-bottom: 16px;
+}
 .ui-icon.extra-icons, .extra-icons .ui-icon {
   background-image: url('../gfx/extra-icons.png');
 }
@@ -1159,7 +1166,7 @@ input.ui-input-text, textarea.ui-input-text {
   display: inline;
 }
 /*
-* Main Menu - Custom
+* @menu - Custom
 */
 .main-logo {
   background-image: url('../gfx/main-logo.png');
@@ -1340,6 +1347,14 @@ input.ui-input-text, textarea.ui-input-text {
 .menu-main .ui-bar {
   margin-left: 0;
   margin-right: 0;
+}
+/*
+* @login - Custom
+*/
+.centered-link {
+  text-align: center;
+  margin-top: 60px;
+  font-family: 'MuseoSansRounded700', Helvetica, Arial, sans-serif;
 }
 /*
 * @feed PAGE
@@ -3647,6 +3662,27 @@ input.ui-input-text, textarea.ui-input-text {
   overflow: visible;
   background-color: transparent;
   color: rgba(200, 200, 200, 0.3);
+}
+/* Inset list views for white BG content blocks and sneaky login field groups */
+.ui-listview-inset .ui-li.ui-body-d {
+  padding: 8px;
+  border: none;
+  border-top: solid 1px #e4e4e4;
+}
+.ui-listview-inset .ui-li.ui-body-d:first-child {
+  border: none;
+}
+.ui-listview-inset .ui-li.ui-body-d input[type="text"], .ui-listview-inset .ui-li.ui-body-d input[type="password"] {
+  width: 100%;
+  border: none;
+  background: transparent;
+  margin: 0;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
 }
 .ui-bar-d {
   background: #ffcc00;
