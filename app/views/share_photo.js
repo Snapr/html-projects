@@ -46,6 +46,7 @@ snapr.views.share_photo = snapr.views.page.extend({
         "change .upload-image-sharing input": "toggle_sharing",
         "click #foursquare-venue": "venue_search",
         "click .image-controls": "toggle_photo",
+        "click .x-edit-photo": "edit",
         "submit form": "share"
     },
 
@@ -365,6 +366,46 @@ snapr.views.share_photo = snapr.views.page.extend({
             {
                 console.log( "geocode error", e );
             });
+        }
+    },
+
+    edit: function()
+    {
+        var appmode = snapr.utils.get_local_param( "appmode" );
+        var camplus = snapr.utils.get_local_param( "camplus" );
+        var camplus_edit = snapr.utils.get_local_param( "camplus_edit" );
+        var aviary = snapr.utils.get_local_param( "aviary" );
+
+        if (this.model.get("secret"))
+        {
+            var img_url = "http://media-server2.snapr.us/lrg/"
+                + this.model.get("secret") + "/"
+                + this.model.get("id") + ".jpg";
+        }
+        else if (this.model.has("photo_path"))
+        {
+            var img_url = this.model.get("photo_path");
+        }
+
+        if (appmode && img_url)
+        {
+            if (camplus && camplus_edit)
+            {
+                pass_data( "snapr://camplus/edit/?photo_url=" + img_url );
+            }
+            else if (aviary)
+            {
+                pass_data("snapr://aviary/edit/?photo_url=" + img_url);
+            }
+
+            setTimeout( function()
+            {
+                Route.navigate( "#/limbo/" );
+            }, 600);
+        }
+        else
+        {
+            console.log("clicked on edit but not in appmode or no img_url", img_url );
         }
     },
 

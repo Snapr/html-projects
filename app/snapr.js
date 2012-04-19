@@ -983,26 +983,59 @@ function queue_settings(upload_mode, paused) {
     }
 }
 
-$(".x-launch-camera").live("click", function () {
-    if(snapr.utils.get_local_param("appmode")) {
-        pass_data("snapr://camera");
-        setTimeout(function () {
-            Route.navigate('#/limbo/');
+$(".x-launch-camera").live( "click", function ()
+{
+    var appmode = snapr.utils.get_local_param( "appmode" );
+    var camplus = snapr.utils.get_local_param( "camplus" );
+    var camplus_camera = snapr.utils.get_local_param( "camplus_camera" );
+
+    if (appmode)
+    {
+        if (camplus && camplus_camera)
+        {
+            pass_data( "snapr://camplus/shoot/" );
+        }
+        else
+        {
+            pass_data( "snapr://camera" );
+        }
+
+        setTimeout( function()
+        {
+            Route.navigate( "#/limbo/" );
         }, 600);
-    } else {
-        Route.navigate('#/app/');
+    }
+    else
+    {
+        Route.navigate( "#/app/" );
     }
 });
 
-$(".x-launch-photo-library").live("click", function () {
-    if(snapr.utils.get_local_param("appmode")) {
-        pass_data("snapr://photo-library");
-        setTimeout(function () {
-            Route.navigate('#/limbo/');
-        }, 600);
+$(".x-launch-photo-library").live( "click", function()
+{
+    var appmode = snapr.utils.get_local_param( "appmode" );
+    var camplus = snapr.utils.get_local_param( "camplus" );
+    var camplus_lightbox = snapr.utils.get_local_param( "camplus_lightbox" );
 
-    } else {
-        Route.navigate('#/upload/');
+    if (appmode)
+    {
+        if (camplus && camplus_lightbox)
+        {
+            pass_data( "snapr://camplus/lightbox/" );
+        }
+        else
+        {
+            pass_data( "snapr://photo-library" );
+        }
+
+        setTimeout( function()
+        {
+            Route.navigate( "#/limbo/" );
+        }, 600);
+    }
+    else
+    {
+        Route.navigate( "#/upload/" );
     }
 });
 
