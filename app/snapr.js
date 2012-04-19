@@ -572,6 +572,8 @@ snapr.routers = Backbone.Router.extend({
         "logout/": "logout",
         "join/": "join_snapr",
         "join/?*query_string": "join_snapr",
+        "join-success/": "join_success",
+        "join-success/?*query_string": "join_success",
         "upload/": "upload",
         "upload/?*query_string": "upload",
         "uploading/": "uploading",
@@ -674,6 +676,14 @@ snapr.routers = Backbone.Router.extend({
         });
     },
 
+    join_success: function( query_string, back_view )
+    {
+        snapr.utils.get_query_params( query_string );
+        snapr.info.current_view = new snapr.views.join_success({
+            el: $("#join-success")[0],
+            back_view: back_view
+        });
+    },
     upload: function( query_string )
     {
         snapr.utils.get_query_params( query_string );
