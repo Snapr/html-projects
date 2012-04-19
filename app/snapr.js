@@ -658,7 +658,11 @@ snapr.routers = Backbone.Router.extend({
         {
             snapr.auth = new snapr.models.auth;
         }
+        
         window.location.hash = "";
+        if(appmode){
+            pass_data('snapr://logout');
+        }
     },
 
     join_snapr: function( query_string, back_view )
