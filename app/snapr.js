@@ -993,7 +993,7 @@ $(".x-launch-camera").live( "click", function ()
     {
         if (camplus && camplus_camera)
         {
-            pass_data( "snapr://camplus/shoot/" );
+            pass_data( "snapr://camplus/camera/" );
         }
         else
         {
