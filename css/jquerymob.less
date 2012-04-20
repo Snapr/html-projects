@@ -40,13 +40,9 @@
     width: auto;
 }
 
-.ui-overlay-shadow{
- -moz-box-shadow: none;
- -webkit-box-shadow: none;
- box-shadow: none;
- }
- 
 
+ /* Custom stuff for this Theme */
+ 
  /* Round off the corners of the pages */
 
 div[data-role="page"],
@@ -100,7 +96,6 @@ fieldset.ui-controlgroup{
 }
 
 .ui-link{
-
 }
 
 .ui-btn{
@@ -145,9 +140,6 @@ fieldset.ui-controlgroup{
     right: @padding-element-inset;
 }
 
-.ui-disabled {
-    opacity: .9;
-}
 
 .ui-loader{
     margin-left: -40px;
@@ -225,52 +217,212 @@ fieldset.ui-controlgroup{
     margin-bottom: @padding-page-inset * 2;
 }
 
+
+
+
+/* Structure */
+
+/* links within "buttons" 
+-----------------------------------------------------------------------------------------------------------*/
+
+a.ui-link-inherit {
+	text-decoration: none !important;
+}
+
+/* Active class states are defined for individual swatches in swatches.less
+-----------------------------------------------------------------------------------------------------------*/
+.ui-btn-active {
+}
+.ui-btn-active a.ui-link-inherit {
+}
+
+
+/* button inner top highlight
+-----------------------------------------------------------------------------------------------------------*/
+
+.ui-btn-inner {
+}
+
+
+/* corner rounding classes ** Lessified
+-----------------------------------------------------------------------------------------------------------*/
+
+.ui-corner-tl {.corner-tl();}
+.ui-corner-tr {.corner-tr();}
+.ui-corner-bl {.corner-bl();}
+.ui-corner-br {.corner-br();}
+.ui-corner-top {.corner-top();}
+.ui-corner-bottom {.corner-bottom();}
+.ui-corner-right {.corner-right();}
+.ui-corner-left {.corner-left();}
+.ui-corner-all,
+.ui-btn-corner-all {.corner-all();}
+.ui-corner-none {.corner-none();}
+
+
+/* Form field separator
+-----------------------------------------------------------------------------------------------------------*/
+.ui-br {
+	border-bottom: rgb(130,130,130);
+	border-bottom: rgba(130,130,130,.3);
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+/* Interaction cues
+-----------------------------------------------------------------------------------------------------------*/
+.ui-disabled {
+	opacity:.9;
+}
+.ui-disabled,
+.ui-disabled a {
+	cursor: default !important;
+	pointer-events: none;
+}
+.ui-disabled .ui-btn-text {
+	filter: alpha(opacity=30);
+	zoom: 1;
+}
+
+/* Icons
+-----------------------------------------------------------------------------------------------------------*/
+
+/* shift this into icons.. */
+.ui-icon,
+.ui-icon-searchfield:after {
+	background: 						rgba(0,0,0,.4) /*{global-icon-disc}*/;
+	background-image: url(images/icons-18-white.png) /*{global-icon-set}*/;
+	background-repeat: no-repeat;
+
+}
+
+
+/* Alt icon color
+-----------------------------------------------------------------------------------------------------------*/
+
+/*.ui-icon-alt {
+    background:                         #fff;
+    background:                         rgba(255,255,255,.3);
+    background-image: url(images/icons-18-black.png);
+    background-repeat: no-repeat;
+}
+*/
+
+/* Icon positions moved to icons.less */
+
+
+/* checks,radios 
+.ui-checkbox .ui-icon {
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+}
+.ui-icon-checkbox-off,
+.ui-icon-radio-off {
+	background-color: transparent;	
+}
+.ui-checkbox-on .ui-icon,
+.ui-radio-on .ui-icon {
+	background-color: #4596ce;
+}*/
+
+/* loading icon */
+.ui-icon-loading {
+	background: url(images/ajax-loader.gif);
+	background-size: 46px 46px;
+}
+
+
+/* Button corner classes **Lesified
+-----------------------------------------------------------------------------------------------------------*/
+
+.ui-btn-corner-tl {.corner-tl();}
+.ui-btn-corner-tr {.corner-tr();}
+.ui-btn-corner-bl {.corner-bl();}
+.ui-btn-corner-br {.corner-br();}
+.ui-btn-corner-top {.corner-top();}
+.ui-btn-corner-bottom {.corner-bottom();}
+.ui-btn-corner-right {.corner-right();}
+.ui-btn-corner-left {.corner-left();}
+.ui-btn-corner-all,
+.ui-btn-corner-all {.corner-all();}
+.ui-btn-corner-none {.corner-none();}
+
+
+/* radius clip workaround for cleaning up corner trapping */
+.ui-corner-tl,
+.ui-corner-tr,
+.ui-corner-bl, 
+.ui-corner-br,
+.ui-corner-top,
+.ui-corner-bottom, 
+.ui-corner-right,
+.ui-corner-left,
+.ui-corner-all,
+.ui-btn-corner-tl,
+.ui-btn-corner-tr,
+.ui-btn-corner-bl, 
+.ui-btn-corner-br,
+.ui-btn-corner-top,
+.ui-btn-corner-bottom, 
+.ui-btn-corner-right,
+.ui-btn-corner-left,
+.ui-btn-corner-all {
+  .background-clip-padding()
+}
+
+/* Overlay / modal
+-----------------------------------------------------------------------------------------------------------*/
+
+.ui-overlay {
+  background: #666;
+    opacity: .5;
+    filter: Alpha(Opacity=50);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+.ui-overlay-shadow {
+}
+.ui-shadow {
+    .box-shadow( 0 1px 0 @color-shadow-light-on-dark);
+}
+.ui-bar-a .ui-shadow,
+.ui-bar-b .ui-shadow ,
+.ui-bar-c .ui-shadow  {    
+}
 .ui-shadow-inset {
     .box-shadow(inset 0 1px 1px rgba(0,0,0,0.2));
 }
+.ui-icon-shadow {
+}
 
-
-
-/* corner rounding classes
+/* Focus state - set here for specificity (note: these classes are added by JavaScript)
 -----------------------------------------------------------------------------------------------------------*/
 
-.ui-corner-tl {
-	.corner-tl();
+.ui-btn:focus {
+	outline: 0;
 }
 
-.ui-corner-tr {
-	.corner-tr();
+.ui-focus,
+.ui-btn:focus {
+	-moz-box-shadow: 0px 0px 12px 		#387bbe /*{global-active-background-color}*/;
+	-webkit-box-shadow: 0px 0px 12px 	#387bbe /*{global-active-background-color}*/;
+	box-shadow: 0px 0px 12px 			#387bbe /*{global-active-background-color}*/;
 }
 
-.ui-corner-bl {
-	.corner-bl();
+/* unset box shadow in browsers that don't do it right
+-----------------------------------------------------------------------------------------------------------*/
+
+.ui-mobile-nosupport-boxshadow * {
+	.box-shadow(none)!important;
 }
 
-.ui-corner-br {
-	.corner-br();
+/* ...and bring back focus */
+.ui-mobile-nosupport-boxshadow .ui-focus,
+.ui-mobile-nosupport-boxshadow .ui-btn:focus {
+	outline-width: 1px;
+	outline-style: dotted;
 }
 
-.ui-corner-top {
-	.corner-top();
-}
 
-.ui-corner-bottom {
-	.corner-bottom();
-}
-
-.ui-corner-right {
-	.corner-right();
-}
-
-.ui-corner-left {
-	.corner-left();
-}
-
-.ui-corner-all,
-.ui-btn-corner-all {
-	.corner-all();
-}
-
-.ui-corner-none {
-	.corner-none();
-}
