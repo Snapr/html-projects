@@ -3348,7 +3348,7 @@ input.ui-input-text, textarea.ui-input-text {
   color: #666666;
   text-shadow: #ffffff 0px 1px 1px;
 }
-.ui-body-c .ui-body-c .ui-link {
+.ui-body-c .ui-link, .ui-body-c .ui-link:visited {
   color: #333333;
   font-weight: normal;
 }
