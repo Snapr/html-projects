@@ -566,11 +566,13 @@ input.ui-input-text, textarea.ui-input-text {
   height: 56px;
   border: none;
   opacity: 1;
+  background-color: rgba(0, 0, 0, 0.8) !important;
   -moz-box-shadow: none;
   -webkit-box-shadow: none;
   box-shadow: none;
 }
 .ui-loader .ui-icon-loading {
+  background-color: transparent;
   background-image: url('../gfx/spinner.png');
   width: 56px;
   height: 56px;
