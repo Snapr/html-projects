@@ -1157,146 +1157,135 @@ div[data-role="dialog"]{
 .menu-main{
     padding: 0;
     text-transform: lowercase;
-    .ui-btn-inner{
-        .ui-icon{
-            background: transparent;
-            background-image: url('../gfx/main-menu-icons.png');
-            width: 80px;
-            height: 80px;
-            margin-left: -40px;
-            .box-shadow(none)
-        }
-
-        .ui-icon-main-menu-feed{background-position: @mi-offset-x @gfx-menu-icon-sprite-feed-y;}
-          .ui-icon-main-menu-map{background-position: @mi-offset-x @gfx-menu-icon-sprite-map-y;}
-          .ui-icon-main-menu-camera{background-position: @mi-offset-x @gfx-menu-icon-sprite-camera-y;}
-          .ui-icon-main-menu-popular{background-position: @mi-offset-x @gfx-menu-icon-sprite-popular-y;}
-          .ui-icon-main-menu-dashboard{background-position: @mi-offset-x @gfx-menu-icon-sprite-dashboard-y;}
-          .ui-icon-main-menu-queue{background-position: @mi-offset-x @gfx-menu-icon-sprite-queue-y;}
-          .ui-icon-main-menu-my-account{background-position: @mi-offset-x @gfx-menu-icon-sprite-my-account-y;}
-          .ui-icon-main-menu-activity{background-position: @mi-offset-x @gfx-menu-icon-sprite-activity-y;}
-          .ui-icon-main-menu-join{background-position: @mi-offset-x @gfx-menu-icon-sprite-join-y;}
-          .ui-icon-main-menu-camera-lib{background-position: @mi-offset-x @gfx-menu-icon-sprite-camera-lib-y;}
-          .ui-icon-main-menu-cities{background-position: @mi-offset-x @gfx-menu-icon-sprite-cities-y;}
-          .ui-icon-main-menu-info{background-position: @mi-offset-x @gfx-menu-icon-sprite-info-y;}
-          .ui-icon-main-menu-login{background-position: @mi-offset-x @gfx-menu-icon-sprite-login-y;}
-
-
-    }
-
-
-    /* Larger 2 column Btns */
-    .ui-grid-a{
-        /* Shadow under top button block */
-        -webkit-box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 2px;
-        -mox-box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 2px;
-        box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 2px;
-
+    
+    /* Standard 3 column btns + shared styles */
+    .ui-grid-a,
+    .ui-grid-b{
         position: relative;
-        z-index: 5;
-
-        /* Darker sprite versions */
-        .ui-icon-main-menu-camera{background-position: 0 -1040px;}
-        .ui-icon-main-menu-feed{background-position: 0 -1120px;}
-        .ui-icon-main-menu-dash{background-position: 0 -1200px;}
-
+        z-index: 2;
         .ui-btn{
             margin: 0;
             border: 0;
-
             font-family: @txt-font-special ;
             font-weight: normal;
+            font-size: @txt-size-small;
             color: @color-txt-medium-on-light;
-            background: transparent;
+            background:transparent;
+            background-color:@color-bg-light-tint;
+        }
+        .ui-btn-inner{
+             min-height: 105px;
+             padding: 0;
+            .ui-icon{
+                background: transparent;
+                background-image: url('../gfx/main-menu-icons.png');
+                width: 80px;
+                height: 80px;
+                left: 50%;
+                top: 50%;
+                margin-left: -40px;
+                margin-top: -40px;
+                .box-shadow(none);
+            }
+            .ui-icon-main-menu-feed{background-position: @mi-offset-x @gfx-menu-icon-sprite-feed-y;}
+            .ui-icon-main-menu-map{background-position: @mi-offset-x @gfx-menu-icon-sprite-map-y;}
+            .ui-icon-main-menu-camera{background-position: @mi-offset-x @gfx-menu-icon-sprite-camera-y;}
+            .ui-icon-main-menu-popular{background-position: @mi-offset-x @gfx-menu-icon-sprite-popular-y;}
+            .ui-icon-main-menu-dashboard{background-position: @mi-offset-x @gfx-menu-icon-sprite-dashboard-y;}
+            .ui-icon-main-menu-queue{background-position: @mi-offset-x @gfx-menu-icon-sprite-queue-y;}
+            .ui-icon-main-menu-my-account{background-position: @mi-offset-x @gfx-menu-icon-sprite-my-account-y;}
+            .ui-icon-main-menu-activity{background-position: @mi-offset-x @gfx-menu-icon-sprite-activity-y;}
+            .ui-icon-main-menu-join{background-position: @mi-offset-x @gfx-menu-icon-sprite-join-y;}
+            .ui-icon-main-menu-camera-lib{background-position: @mi-offset-x @gfx-menu-icon-sprite-camera-lib-y;}
+            .ui-icon-main-menu-cities{background-position: @mi-offset-x @gfx-menu-icon-sprite-cities-y;}
+            .ui-icon-main-menu-info{background-position: @mi-offset-x @gfx-menu-icon-sprite-info-y;}
+            .ui-icon-main-menu-login{background-position: @mi-offset-x @gfx-menu-icon-sprite-login-y;}
+            .ui-btn-text{
+                top: 50%;
+                position: absolute;
+                left: 0;
+                margin-top: 24px;
+            }
+        }
+        .ui-btn-hover-c,
+        .ui-btn-active-c{
+            background-color: @color-bg-highlight-main;
+            color: @color-txt-medium-on-light;
+        }
+       
+    }
+    
+     /* Smaller 3 column Btns */
+    .ui-grid-b{              
+       /* tricky Border in between btns */
+       .ui-block-b{
+           border-left: @border-medium-on-light;
+           border-right: @border-medium-on-light;
+       }
+       .ui-block-a,
+       .ui-block-b,
+       .ui-block-c{
+           border-bottom: @border-medium-on-light;
+           .border-box();
+        }
+    }
+    
+    /* Larger 2 column Btns */
+    .ui-grid-a{
+        /* Shadow under top button block */
+        .box-shadow(rgba(0, 0, 0, 0.2) 0px 2px 2px);
+        z-index: 5;
+        
+        .ui-btn{
+            color: @color-txt-medium-on-light;
+            font-size: @txt-size-base;
+            
             background-color: #f2f2f2;
             background-color: rgba(128,128,128, .1);
             .ui-btn-inner{
-                 padding-top: 116px;
-                 padding-bottom: 26px;
+                 min-height: 160px;
+                 padding: 0;
+                 /* Darker sprite versions */
+                 .ui-icon-main-menu-camera{background-position: 0 -1040px;}
+                 .ui-icon-main-menu-feed{background-position: 0 -1120px;}
+                 .ui-icon-main-menu-dash{background-position: 0 -1200px;}
             }
             .ui-icon{
-                top: 29px;
+                margin-top: -44px;
             }
+            .ui-btn-text{
+                margin-top: 44px;
+            }
+           
         }
-
-        .ui-btn-hover-c,
-        .ui-btn-active-c{
-               background-color: @color-bg-highlight-main;
-               color: @color-txt-medium-on-light;
-        }
-
-        /* tricky Border in between btns */
+       
+        /* tricky Border in between btns + rounded corners */
         .ui-block-a{
             border-right: @border-light-on-light;
-            margin-right: -1px;
+            .border-box();
             .ui-btn{
                 .corner-tl(@corner-page-element-rounded);
                 .ui-btn-inner{
                     .corner-tl(@corner-page-element-rounded);
                 }
-
             }
         }
         .ui-block-b{
             .corner-tr(@corner-page-element-rounded);
             border-left: @border-medium-on-light;
-            margin-left: -1px;
+            .border-box();
             .ui-btn{
                 .corner-tr(@corner-page-element-rounded);
                 .ui-btn-inner{
                     .corner-tr(@corner-page-element-rounded);
                 }
-
             }
         }
-
     }
-     /* Smaller 3 column Btns */
-    .ui-grid-b{
-        position: relative;
-        z-index: 2;
-
-        .ui-btn{
-            margin: 0;
-            border: 0;
-            font-size: @txt-size-small;
-            background: transparent;
-            color: @color-txt-medium-on-light;
-            background-color:@color-bg-light-tint;
-            .ui-btn-inner{
-
-                padding: 78px 10px 13px 10px;
-            }
-        }
-        .ui-btn-hover-c,
-        .ui-btn-active-c{
-           background-color: @color-bg-highlight-main;
-           color: @color-txt-medium-on-light;
-       }
-
-       /* tricky Border in between btns */
-       .ui-block-a{
-           margin-left: -1px;
-       }
-       .ui-block-b{
-           border-left: @border-medium-on-light;
-           border-right: @border-medium-on-light;
-       }
-       .ui-block-c{
-            margin-right: -1px;
-        }
-        .ui-block-a,
-        .ui-block-b,
-        .ui-block-c{
-            border-bottom: @border-medium-on-light;
-        }
-
-    }
-
+    
     .ui-bar{
         margin-left: 0;
         margin-right: 0;
-
     }
 }
 
