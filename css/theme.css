@@ -818,6 +818,12 @@ input.ui-input-text, textarea.ui-input-text {
   -webkit-box-shadow: none;
   box-shadow: none;
 }
+/* Round off the corners of the pages */
+div[data-role="page"], div[data-role="dialog"] {
+  -moz-border-radius: 8px;
+  -webkit-border-radius: 8px;
+  border-radius: 8px;
+}
 /*
 * UI Components - Custom Stylz
 */
@@ -3332,6 +3338,7 @@ input.ui-input-text, textarea.ui-input-text {
   background-image: url('../gfx/bg-texture-light.gif') !important;
   border: solid 1px #e4e4e4;
   text-shadow: 0 1px 1px #ffffff;
+  border: none;
 }
 /* Main Styles */
 .ui-body-c {

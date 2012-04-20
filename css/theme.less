@@ -843,7 +843,14 @@ fieldset.ui-controlgroup{
  -webkit-box-shadow: none;
  box-shadow: none;
  }
+ 
 
+ /* Round off the corners of the pages */
+
+div[data-role="page"],
+div[data-role="dialog"]{
+    .corner-all(@corner-page-element-rounded);
+}
 
 /*
 * UI Components - Custom Stylz
@@ -3187,6 +3194,8 @@ fieldset.ui-controlgroup{
        background-image: @gfx-bg-light-texture;
        border: @border-medium-on-light;
        text-shadow: 0 1px 1px @color-shadow-light-on-light;
+       
+       
 }
 
 .ui-dialog.ui-overlay-c{
@@ -3195,6 +3204,7 @@ fieldset.ui-controlgroup{
        background-image: @gfx-bg-light-texture!important;
        border: @border-medium-on-light;
        text-shadow: 0 1px 1px @color-shadow-light-on-light;
+       border:none;
 }
 
 /* Main Styles */
