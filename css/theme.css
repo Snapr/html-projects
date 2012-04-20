@@ -566,6 +566,9 @@ input.ui-input-text, textarea.ui-input-text {
   height: 56px;
   border: none;
   opacity: 1;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
 }
 .ui-loader .ui-icon-loading {
   background-image: url('../gfx/spinner.png');

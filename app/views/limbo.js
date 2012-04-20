@@ -4,11 +4,29 @@ snapr.views.limbo = snapr.views.page.extend({
     {
         snapr.views.page.prototype.initialize.call( this );
 
-        this.change_page();
+        this.change_page();        
 
         setTimeout(function()
         {
-            spinner_start();
+           $.mobile.showPageLoadingMsg();
         },100);
+        
+        _.bindAll( this );
+        this.el.live('pagehide', function( e )
+        {
+            $(e.target).undelegate();
+            $.mobile.hidePageLoadingMsg();
+
+            return true;
+        });
+      
+    },
+    events: {
+        "click": "home"
+    },
+    
+    home: function()
+    {
+        Route.navigate( "#/", true );
     }
 });
