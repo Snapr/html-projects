@@ -1279,7 +1279,7 @@ div[data-role="page"], div[data-role="dialog"] {
   top: 50%;
   position: absolute;
   left: 0;
-  margin-top: 24px;
+  margin-top: 25px;
 }
 .menu-main .ui-grid-a .ui-btn-hover-c,
 .menu-main .ui-grid-b .ui-btn-hover-c,
@@ -1334,10 +1334,10 @@ div[data-role="page"], div[data-role="dialog"] {
   background-position: 0 -1200px;
 }
 .menu-main .ui-grid-a .ui-btn .ui-icon {
-  margin-top: -44px;
+  margin-top: -48px;
 }
 .menu-main .ui-grid-a .ui-btn .ui-btn-text {
-  margin-top: 44px;
+  margin-top: 36px;
 }
 .menu-main .ui-grid-a .ui-block-a {
   border-right: solid 1px #ffffff;
@@ -4389,7 +4389,7 @@ div[data-role="page"], div[data-role="dialog"] {
     -webkit-background-size: 160px 42px;
     background-size: 160px 42px;
   }
-  .menu-main .ui-btn-inner .ui-icon {
+  .menu-main .ui-btn .ui-btn-inner .ui-icon {
     background-image: url('../gfx/retina/main-menu-icons.png');
     -moz-background-size: 80px 1280px;
     -o-background-size: 80px 1280px;
