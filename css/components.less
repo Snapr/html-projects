@@ -1,0 +1,840 @@
+/*
+* Components - Non-Jquery Mobile Design Patterns that are shared across multiple pages
+*/
+
+/* @ui-bar Title Bars that pop up all over the place */
+.ui-bar{
+    border:none;
+    border-top: @border-light-on-light;
+    margin: 0 -@padding-page-inset;
+    padding: 8px @padding-page-inset;
+    min-height: 19px;
+    z-index: 10;
+    position: relative;
+    overflow: visible;
+    .ui-btn-inner,
+    h4,
+    .ui-bar-inner{
+        font-size: @txt-size-base;
+        font-weight: normal;
+        font-family: @txt-font-base;
+        margin: 0;
+        padding: 0;
+        text-transform: lowercase;
+        em,
+        .ui-btn,
+        .ui-btn-hidden,
+        .username{
+            text-transform: none;
+            font-size: @txt-size-bar-heading;
+            font-style: normal;
+            font-family: @txt-font-special;
+        }
+    }
+    .ui-btn{
+        background: none;
+        line-height: 32px;
+    }
+    .ui-btn-text{
+        display: block;
+    }
+    .ui-btn-icon-right{
+        position: absolute;
+        right: 4px;
+        top: 0px;
+        .ui-btn-inner{
+            padding-right: 40px;
+        }
+    }
+    .image-details{
+           display: block;
+           margin-right: 20px;
+           overflow: hidden;
+           text-overflow: ellipsis;
+           .border-box();
+     }
+       .image-time{
+           position: relative;
+           display: inline-block;
+           padding-left: 20px;
+           color: @color-txt-medium-on-light;
+           .ui-icon-clock{
+               top: -9px!important;
+           }
+       }
+       .image-tag{
+           max-width: 50%;
+           display: inline-block;
+           overflow: hidden;
+           text-overflow: ellipsis;
+       }
+    &.top-no-arrow{
+        text-align: left;
+        .corner-top (@corner-page-element-rounded);
+        .corner-bottom (@corner-not-rounded);
+         .ui-btn-text{
+                padding-left: 20px;
+        }
+    }
+    &.top-no-arrow,
+    &.top-left-arrow{
+        .corner-top (@corner-page-element-rounded);
+        .corner-bottom (@corner-not-rounded);
+        text-align: left;
+        .ui-icon-arrow-r {
+            right: -2px;
+        }
+        .ui-btn-text{
+            padding-left: 20px;
+            .border-box();
+        }
+        .extra-icons{
+            right: auto;
+            left: -8px;
+            top: -7px;
+            margin: 0;
+            height: @gfx-extra-icon-sprite-grid;
+            width: @gfx-extra-icon-sprite-grid;
+        }
+    }
+    &.bottom-centered-arrow{
+        overflow: visible;
+        .corner-bottom (@corner-page-element-rounded);
+        .ui-btn-inner{
+            border: none;
+        }
+    }
+    &.small-top-left-arrow{
+        position: absolute;
+        top: -31px;
+        white-space: nowrap;
+        font-size: @txt-size-small;
+        color: black;
+        padding: 6px;
+        line-height: @txt-size-small;
+        min-height: @txt-size-small;
+        .corner-top(@corner-general-rounded);
+    }
+    /* Note that the actual arrows get added in the swatches so they get the right colors */
+   
+}
+
+.arrow-right{
+    position: absolute!important;
+    right: 0!important;
+    left: auto!important;
+}
+
+.ui-navbar{
+    margin: -@padding-page-inset -@padding-page-inset 0 -@padding-page-inset;
+    border: none;
+    border-top: @border-light-on-light;
+    .corner-top (@corner-page-element-rounded);
+    .ui-btn{
+        font-family: @txt-font-base;
+         .ui-btn-text{
+             text-transform: lowercase;
+             line-height: @txt-size-username;
+             font-size: @txt-size-base;
+        }
+    }
+    .ui-btn-active{
+        .ui-btn-text{
+            position: relative;
+            top: -4px;
+            text-shadow: @color-shadow-light-on-light 0px 1px 0px;
+            font-family: @txt-font-special;
+             font-size: @txt-size-username;
+        }
+        &::after{
+            .arrow-up(@arrow-size, @color-bg-neutral-light, 50% , 51px);
+        }
+    }
+    .ui-btn-inner{
+           border-top: none;
+           padding-top: 16px!important;
+           padding-bottom: 11px!important;
+           height: 20px;
+           line-height: 20px
+     }
+    /* Rounding for 3 column bars */
+    .ui-grid-b{
+        .ui-block-a{
+            .ui-btn{
+                .corner-tl (@corner-page-element-rounded)
+            }
+        }
+        .ui-block-c{
+            .ui-btn{
+            .corner-tr (@corner-page-element-rounded);
+            }
+        }
+    }
+
+}
+
+.ui-content-inset{
+    .ui-bar{
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+}
+
+/* Small Colored Icons For Third Party Services */
+.sharing-icon-small{
+    background-color: lighten(@color-bg-neutral-light-tint, 10%);
+    .corner-all(@corner-general-less-rounded);
+    width: 22px;
+    height: 22px;
+    display: inline-block;
+    .ui-icon{
+        background-image: url('../gfx/share-icons-small.png');
+        width: @gfx-small-sharing-icon-sprite-grid;
+        height: @gfx-small-sharing-icon-sprite-grid;
+        position: relative;
+        display: block;
+        top: 1px!important;
+        left: 1px!important;
+        margin: 0!important;
+    }
+    &.twitter-sharing{
+       .ui-icon{background-position: @ss-offset-x @gfx-small-sharing-icon-sprite-twitter-y!important;}
+       background-color: @color-bg-twitter-main;
+        .box-shadow(inset 0 3px 20px @color-bg-twitter-main-tint);
+    }
+    &.facebook-sharing{
+       .ui-icon{background-position: @ss-offset-x @gfx-small-sharing-icon-sprite-facebook-y!important;}
+       background-color: @color-bg-facebook-main;
+       .box-shadow(inset 0 3px 20px @color-bg-facebook-main-tint);
+   }
+   &.tumblr-sharing{
+       .ui-icon{background-position: @ss-offset-x @gfx-small-sharing-icon-sprite-tumblr-y!important;}
+       background-color: @color-bg-tumblr-main;
+       .box-shadow(inset 0 3px 20px @color-bg-tumblr-main-tint);
+   }
+   &.foursquare-sharing{
+       .ui-icon{background-position: @ss-offset-x @gfx-small-sharing-icon-sprite-foursquare-y!important;}
+        background-color: @color-bg-foursquare-main;
+        .box-shadow(inset 0 3px 20px @color-bg-foursquare-main-tint);
+   }
+}
+
+/*
+* Image Views - Custom
+*/
+.thumbs-grid-med,
+.grid #feed-images{
+    margin: 0 -@padding-page-inset;
+    padding: @padding-image-grid-inset 0 0 @padding-image-grid-inset;
+
+
+    .image-link{
+        display: inline-block;
+        padding: 0;
+        margin: 0;
+    }
+    .thumb-image{
+        width: @size-img-thumb;
+        height: @size-img-thumb;
+        padding: 0;
+        margin: 0;
+        display: block;
+        background-color: @color-off-white-tint;
+    }
+}
+
+
+
+
+
+
+/* Horizontally scrolling image stream components */
+.image-streams{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    margin-bottom: @padding-page-inset;
+    margin-top: -@padding-page-inset;
+
+    .image-stream{
+        position: relative;
+        list-style: none;
+        padding: 0;
+        margin-bottom: @padding-page-inset ;
+        white-space: no-wrap;
+        .x-thumbs{
+            display: inline-block;
+            padding-right: @padding-image-grid-inset + 1;
+        }
+        .image-link{
+            padding-left: @padding-image-grid-inset;
+        }
+
+        .load-more-inline{
+            background-color: @color-off-white-tint;
+            display: inline-block;
+            vertical-align: top;
+            .ui-btn-text{
+                display: inline-block;
+                text-align: center;
+                font-size: 11px;
+                font-weight: bold;
+                text-transform: lowercase;
+                bottom: 12px;
+                position: absolute;
+                width: 101px;
+                color: @color-txt-light-on-light;
+            }
+            .ui-icon{
+                width: 101px;
+                height: 101px;
+                background-repeat: no-repeat;
+                background-position: center;
+                display: block;
+                -webkit-transition-property:-webkit-transform;
+            	-webkit-transition-duration:250ms;
+            	-webkit-transform:rotate(0deg) translateZ(0);
+
+            }
+            .ui-icon-refresh{
+                background-image: url('../gfx/refresh.png');
+            }
+
+            &.x-flipped{
+                .ui-icon{
+    	        -webkit-transform:rotate(180deg) translateZ(0);
+	            }
+    	    }
+            &.noooo-right-pull{
+                position: absolute;
+                right: -@size-img-thumb;
+                top: 0;
+            }
+        }
+
+        .x-loading {
+            .load-more-inline{
+                 .ui-icon-refresh{
+                    background-image: url('../gfx/spinner.png');
+                    -webkit-transform:rotate(0deg) translateZ(0);
+                    -webkit-transition-duration:0ms;
+                    -webkit-animation-name:loading;
+                    -webkit-animation-duration:1.2s;
+                    -webkit-animation-iteration-count:infinite;
+                    -webkit-animation-timing-function:linear;
+                }
+            }
+        }
+
+        .ui-bar{
+
+
+        }
+
+        .edit-overlay{
+            display: none;
+            position: absolute;
+            top: 40px;
+            width: 109%;
+            background-color: rgba(255, 255, 255, .8);
+            min-height: 100px;
+            margin-left: -8px;
+            margin-right: -8px;
+            display: block;
+            right: 0;
+            .remove-stream{
+                display: inline-block;
+                position: absolute;
+                right: 8px;
+                top: 50%;
+                margin-top: -18px;
+            }
+         }
+    }
+
+    &.edit{
+       .image-stream{
+            .edit-overlay{
+                   display: block;
+            }
+        }
+    }
+}
+
+.x-scroll-wrapper {
+  white-space: nowrap;
+  display:inline-block;
+}
+.x-right-pull, .x-left-pull{
+    display:inline;
+}
+
+@-webkit-keyframes loading {
+    from { -webkit-transform:rotate(0deg) translateZ(0); }
+    to { -webkit-transform:rotate(360deg) translateZ(0); }
+}
+
+
+/* progress bars */
+.progress-bar{
+    position: relative;
+    top: 2px;
+    margin: 8px 0;
+    padding: 8px 28px 8px 8px;
+    background-color: lighten(@color-bg-neutral-light-tint, 10%);
+    border-radius: 13px;
+
+    .bar-wrapper{
+        position: relative;
+        .bar{
+               height: 8px;
+               .corner-all(4px);
+           }
+           .bar-prog{
+               position: absolute;
+               top: 0;
+               left: 0;
+               .linear-gradient(@color-bg-highlight-main, @color-bg-highlight-main-tint);
+           }
+           .bar-bg{
+               background-color: #C5C4C4;
+               -moz-box-shadow: inset 0 0 9px 2px #AFAEAE;
+               -webkit-box-shadow: inset 0 0 9px 2px #AFAEAE;
+               box-shadow: inset 0 0 9px 2px #AFAEAE;
+           }
+    }
+    .bar-action{
+        position: absolute;
+        right: -16px;
+        top: -7px;
+        margin: 0;
+        width: 40px;
+        height: 40px;
+        background: none;
+        .ui-icon-delete{
+            width: 32px;
+            background-position: -63px 1px;
+        }
+    }
+
+    &.completed{
+        padding: 2px 28px 6px 8px;
+    }
+
+    .upload-message{
+        font-weight: bold;
+        font-size: @txt-size-small;
+    }
+
+    .ui-icon-check{
+        background-position: @gfx-general-icon-sprite-check-x @g-highlight-offset-y;
+    }
+
+}
+
+
+/* Strip bare the normal lists style */
+.simple-list{
+    .ui-btn{
+        background: none;
+        border: none!important;
+        &.ui-li{
+            border-top: @border-medium-on-light!important;
+            margin-bottom: 0;
+        }
+    }
+    .ui-li-icon{
+        left: 0;
+        top: @padding-element-inset;
+    }
+    .ui-link-inherit{
+        padding-top: 8px;
+        padding-bottom: 8px;
+    }
+    .ui-li-heading{
+        margin: 0 0 @padding-element-inset 0;
+        font-weight: normal;
+    }
+    .ui-li-desc{
+        margin: -8px 0 0 0;
+        color: @color-txt-light-on-light;
+    }
+    .ui-li,
+    .ui-li-link-alt{
+        border-right: none!important;
+        border-left: none!important;
+    }
+    .ui-li-link-alt{
+        width: 44px;
+        .ui-btn {
+            border: none;
+            width: 44px;
+            height: 44px;
+            top: 4px;
+            right: 0;
+            margin-top: 0;
+            .ui-icon{
+                height: 32px;
+                width: 32px;
+                margin-top: 0;
+                top: 4px;
+                right: 8px;
+            }
+            .ui-icon-check{
+                background-position: @gfx-general-icon-sprite-check-x @g-yellow-offset-y;
+            }
+            .ui-icon-plus{
+                background-position: @gfx-general-icon-sprite-plus-x @g-light-offset-y;
+            }
+            .ui-icon-tick{
+                background-position: @gfx-general-icon-sprite-check-x @g-highlight-offset-y;
+            }
+        }
+    }
+    .ui-shadow,
+    &.ui-shadow {
+        .box-shadow(none);
+    }
+    .ui-corner-all,
+    .ui-btn-corner-all,
+    &.ui-corner-all,
+    &.ui-btn-corner-all,
+    .ui-corner-top,
+    .ui-btn-corner-top,
+    &.ui-corner-top,
+    &.ui-btn-corner-top{
+        .corner-all(@corner-not-rounded);
+    }
+    &.venue-list{
+        .ui-icon-arrow-r{
+            display: none;
+        }
+    }
+}
+
+.search-header{
+    overflow: visible;
+    input{
+        overflow: visible;
+    }
+}
+
+
+/* @switch
+    over rides theme swatch styles for general blue / white style switch
+*/
+.ui-slider-switch{
+    
+    .corner-all(@corner-fully-rounded);
+    border: @border-medium-on-light;
+    background: white;
+    
+    .ui-slider-label{
+        font-size: 15px;
+        text-transform: uppercase;
+        text-align: center;
+        color: #999;
+        font-weight: bold;
+        .corner-all(@corner-fully-rounded);
+        text-shadow: none;
+        background: white;
+        border: none!important;
+        .box-shadow(inset 0 1px 1px rgba(0, 0, 0, 0.2));
+     
+        
+        &.ui-btn-active{
+            color: white;
+            text-shadow: rgba(0, 0, 0, .5) 0px -1px 1px;
+            background: #007FEA;
+            text-shadow: 0 -1px 0px #093B5C;
+            .box-shadow(0 4px 5px -2px rgba(0,0,0,0.3) inset);
+           
+        }
+    }
+    
+    .ui-slider-handle{
+        border: 1px solid #AAA;
+        background: #F6F6F6;
+        .box-shadow(0 4px 0 -2px #F1F1F1 inset, 0 2em 2em -2em #AAA inset, 0 0 2px rgba(0,0,0,.5));
+        .corner-all(@corner-fully-rounded);
+    }
+
+}
+.switch-setting{   
+    border-bottom: @border-medium-on-light;
+    margin: 0;
+    padding-bottom: @padding-element-inset;
+    margin-bottom: @padding-element-inset;
+    .setting-label{
+        font-family: @txt-font-special;
+        line-height: 36px;
+        vertical-align: middle;
+    }
+    .ui-slider-switch{
+        float: right;
+        margin-right: 0;
+    }
+}
+
+
+/* Style for inset header as seen on user feed and upload pages */
+.page-inset-header{
+    margin-left: -@padding-page-inset;
+    margin-right: -@padding-page-inset;
+    margin-top:  -@padding-page-inset;
+    position: relative;
+    background-color: @color-off-white-tint;
+    background-image: @gfx-bg-light-texture;
+    .corner-top (@corner-page-element-rounded);
+    .box-shadow(inset 5px 0 20px rgba(0, 0, 0, 0.2));
+}
+
+/* Ground breaking style for links used below login details */
+
+.centered-link{
+    text-align: center;
+    margin-top: 60px;
+    font-family: @txt-font-special;
+}
+
+
+.small-text{
+    font-size: @txt-size-small;
+    font-family: @txt-font-base;
+}
+
+.ui-controlgroup-label,
+.ui-select .ui-btn{
+    font-family: @txt-font-special;
+    text-transform: lowercase;
+    text-align: left;
+}
+
+.user-icon-small{
+    width: @size-small-avatar;
+    height: @size-small-avatar;
+    .corner-all(2px);
+}
+
+.user-icon-big{
+    width: @size-large-avatar;
+    height: @size-large-avatar;
+}
+
+.thumb-med{
+    width: @size-img-thumb;
+    height: @size-img-thumb;
+}
+
+
+
+/* Loader BG placeholder for images */
+.image-loader-bg{
+    background-color: @color-off-white-tint;
+    background-image: url('../gfx/image-load.gif');
+    background-repeat: no-repeat;
+    background-position: center;
+    img{
+        display: block;
+    }
+}
+
+.set-full-height{
+    min-height: 400px;
+    .border-box();
+    position:absolute;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+}
+
+/* Some extra paddy things */
+.ui-content{
+    .inset-page-content{
+        padding: 0 @padding-page-inset;
+        .ui-listview-inset{
+            margin-bottom:  @padding-page-inset * 2 ;
+        }
+    } 
+}
+
+
+.helper-content{
+    .ui-body{
+        position: relative;
+        min-height: @gfx-helper-icon-sprite-grid;
+    }
+    .icon-left{
+        padding: @padding-page-inset @padding-page-inset @padding-page-inset * 2 @gfx-helper-icon-sprite-grid + @padding-page-inset;
+
+    }
+    .helper-icons{
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: block;
+    }
+}
+
+.inline-footer{
+    margin: @padding-page-inset -@padding-page-inset -@padding-page-inset -@padding-page-inset;
+    .corner-bottom(@corner-page-element-rounded);
+
+    .ui-grid-a{
+        .ui-block-a{
+            .ui-btn{
+                margin-right: @padding-element-inset / 2;
+            }
+        }
+        .ui-block-b{
+            .ui-btn{
+                margin-left: @padding-element-inset / 2;
+            }
+        }
+    }
+}
+
+.username,
+h4{
+    font-family: @txt-font-special;
+    font-size: @txt-size-username;
+    font-weight: normal;
+    color: @color-txt-dark-on-light;
+}
+
+
+
+
+.warning-message{
+    padding: @padding-page-inset;
+    background-color: @color-bg-highlight-main;
+    .corner-all(@corner-general-rounded);
+    border-bottom: @border-light-on-dark;
+}
+
+/*
+* Headers - Custom
+*   Header bars in the snapr project are all transparent.. BG comes from layer below
+*/
+
+.ui-header{
+    background: none;
+    border: none;
+    color: @color-txt-medium-on-dark;
+    text-shadow: @color-shadow-dark-on-dark 0px -1px 1px;
+    height: @size-topbar-height;
+    overflow: hidden;
+    .ui-title{
+        font-family: @txt-font-special;
+        font-size: @txt-size-page-heading;
+        font-weight: normal;
+        text-transform: lowercase;
+        line-height: @size-topbar-height;
+        vertical-align: middle;
+        margin: 0;
+    }
+
+    .ui-btn{
+        font-size:@txt-size-small;
+    }
+    .ui-btn-left{
+        position: absolute;
+        left: 6px;
+        top: 6px;
+    }
+    .ui-btn-right {
+        position: absolute;
+        right: 6px;
+        top: 6px;
+    }
+    .ui-btn-center{
+        .ui-btn{
+            position: absolute;
+            left: 50%;
+            margin-top: 7px;
+            margin-left: -50px;
+        }
+    }
+    .ui-btn-inner{
+        padding-top: 8px;
+        padding-bottom: 8px;
+        border: none;
+        .ui-icon{
+            width: 40px;
+            height: 40px;
+            background: transparent;
+            background-image: url('../gfx/bar-icons.png');
+            margin: 0;
+            position: relative;
+            top: -1px;
+            &.ui-icon-shadow{
+                box-shadow: none;
+            }
+        }
+    }
+    /* The main Icon Only Buttons */
+    .ui-btn-icon-notext{
+        border: none;
+        background: none;
+        width: 40px;
+        height: 40px;
+        top: -4px;
+        .ui-btn-inner {
+        padding: 0;
+        }
+        &.ui-shadow{
+            .box-shadow(none);
+        }
+    }
+    /* Shuffle the close button to the right */
+    .ui-btn[data-icon="delete"]{
+        right: 6px;
+        top: 6px;
+        left: auto;
+    }
+    /* Some fiddly stuff for back btns */
+    .ui-btn[data-rel="back"]{
+        .ui-icon{
+            display: none;
+        }
+    }
+    .ui-controlgroup{
+        display: inline-block;
+        margin: 5px 0 0 -40px;
+        left: 50%;
+        position: absolute;
+         -moz-box-shadow: 0 1px 0 @color-shadow-light-on-dark;
+         -webkit-box-shadow: 0 1px 0 @color-shadow-light-on-dark;
+         box-shadow: 0 1px 0 @color-shadow-light-on-dark;
+        .ui-checkbox label,
+        .ui-radio label{
+            font-size: @txt-size-small;
+            margin: 0;
+        }
+    }
+}
+
+
+/* Inset list views for white BG content blocks and sneaky login field groups */
+.ui-listview-inset {
+    .ui-li{
+        padding: 8px;
+        border: none;
+        &:first-child{
+            border: none; 
+        }
+        
+        input[type="text"],
+        input[type="password"],
+        input[type="email"]{
+            width: 100%;
+            border: none;
+            background: transparent;
+            margin: 0;
+            .border-box();
+            .box-shadow(none);
+        }
+    }
+}
+
