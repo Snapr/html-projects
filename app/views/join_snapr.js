@@ -7,6 +7,92 @@ snapr.views.join_snapr = snapr.views.dialog.extend({
         this.change_page({
             transition: this.transition
         });
+
+        $("#join-dialog").validate({
+            // submitHandler: function(form){
+            //      $('#createaccountsnapr').addClass('loading');
+
+            //      var data = {
+            //         'username': $("#snaprusername").val(),
+            //         'password': $("#snaprpassword").val(),
+            //         'email': $("#snapremail").val(),
+            //         'client_id': client_id
+            //      }
+            //      if(window.twitter_token){
+            //          data['twitter_token'] = twitter_token;
+            //      }
+            //      if(window.facebook_token){
+            //          data['facebook_token'] = facebook_token;
+            //      }
+            //      $.ajax({
+            //         url: api_url+'/user/signup/',
+            //         type: 'POST',
+            //         dataType: 'jsonp',
+            //         data: data,
+            //         success: function(response){
+            //             $('#createaccountsnapr').removeClass('loading');
+            //             if(response.success){
+            //                 login($("#snaprusername").val(), $("#snaprpassword").val(), function(){
+            //                     window.location.hash = add_extra_params('#join-snapr-success.html');
+            //                 })
+            //             }else{
+            //                 notification(response.error.message);
+            //             }
+            //         }
+            //     });
+            // },
+            errorClass: "x-invalid",
+            validClass: "x-valid",
+            errorElement: "li",
+            errorPlacement: function(error, element) {
+                error.insertAfter( element.parent("li"));
+            },
+            rules: {
+                username:{
+                    required: true,
+                    minlength: 2,
+                    maxlength: 15,
+                    alphanum_: true,
+                    snapr_username: {
+                        beforeSend: function(){
+                            $('#join-dialog-username').addClass('x-validating').removeClass('x-valid');
+                        }
+                    }
+                },
+                password: {
+                    required: true,
+                    minlength: 6
+                },
+                email: {
+                    required: true,
+                    email: true
+                },
+                'snapr-tos': {
+                    required: true
+                }
+            },
+            messages: {
+                username:{
+                    required: "Please choose a username",
+                    minlength: "Username must be more than 2 letters",
+                    maxlength: "Username must be less than 16 letters",
+                    alphanum_: "Username must contain only letters, numbers and underscore",
+                    snapr_username: "Sorry, this username is not available"
+                    //snapr_username: (params['snapr_username'] && window.twitter_token) ? "Unfortunately someone on Snapr already has your Twitter name! Please enter a new username" : "Sorry, this username is not available"
+                },
+                password:{
+                    required: "Please choose a password",
+                    minlength: "Your password must be at least 6 characters"
+                },
+                email:{
+                    required: "We need your email address to contact you",
+                    email: "Your email address must be in the correct format"
+                },
+                'snapr-tos':{
+                    required: "You must agree to the Snapr Terms of Use"
+                }
+            }
+        });
     },
 
     transition: "slideup",
@@ -16,15 +102,15 @@ snapr.views.join_snapr = snapr.views.dialog.extend({
         "click .x-back": "back"
     },
 
-    join: function()
-    {
+    join: function(){
+
         var new_user = new snapr.models.user_settings();
         new_user.data = {
            username: this.$el.find("#join-dialog-username").val(),
            password: this.$el.find("#join-dialog-password").val(),
            email: this.$el.find("#join-dialog-email").val(),
            client_id: snapr.client_id
-        }
+        };
 
         var join_snapr_view = this;
 
@@ -33,17 +119,17 @@ snapr.views.join_snapr = snapr.views.dialog.extend({
             success: function()
             {
                 // empty all the forms
-                join_snapr_view.el.find("#join-dialog-username").val('');
-                join_snapr_view.el.find("#join-dialog-password").val('');
-                join_snapr_view.el.find("#join-dialog-email").val('')
+                join_snapr_view.$el.find("#join-dialog-username").val('');
+                join_snapr_view.$el.find("#join-dialog-password").val('');
+                join_snapr_view.$el.find("#join-dialog-email").val('');
                 // go back to home screen
-                Route.navigate('#');
+                Route.navigate('#/join-success/');
             },
             error: function()
             {
                 console.log('error on login after successful join');
             }
-        }
+        };
         // these options will be triggered on join
         var join_options = {
             success: function()
@@ -54,12 +140,65 @@ snapr.views.join_snapr = snapr.views.dialog.extend({
             {
                 console.log( "error", e );
             }
-        }
+        };
         // save creates a new user
-        new_user.save({},join_options);
+        new_user.save({}, join_options);
     }
 });
 
+jQuery.validator.addMethod("alphanum_", function(value, element) {
+    return this.optional(element) || /^[0-9a-z_]+$/i.test(value);
+}, "Letters, numbers and _ only please");
 
+jQuery.validator.addMethod("snapr_username",
+    function(value, element, param) {
+        if (this.optional(element))
+            return "dependency-mismatch";
 
+        var previous = this.previousValue(element);
+        if (!this.settings.messages[element.name])
+        this.settings.messages[element.name] = {};
+        previous.originalMessage = this.settings.messages[element.name].snapr_username;
+        this.settings.messages[element.name].snapr_username = previous.message;
 
+        param = typeof param == "string" && {
+            url: param
+        } || param;
+
+        if (previous.old !== value) {
+            previous.old = value;
+            var validator = this;
+            this.startRequest(element);
+            var data = {};
+            data[element.name] = value;
+            $.ajax($.extend(true, {
+                url: snapr.api_base + '/user/validate/',
+                mode: "abort",
+                port: "validate" + element.name,
+                dataType: "jsonp",
+                data: data,
+                success: function(response) {
+                    validator.settings.messages[element.name].snapr_username = previous.originalMessage;
+                    var valid = response.success;
+                    if (valid) {
+                        var submitted = validator.formSubmitted;
+                        validator.prepareElement(element);
+                        validator.formSubmitted = submitted;
+                        validator.successList.push(element);
+                        validator.showErrors();
+                    } else {
+                        var errors = {};
+                        errors[element.name] = response.error.message;
+                        validator.showErrors(errors);
+                    }
+                    previous.valid = valid;
+                    validator.stopRequest(element, valid);
+                }
+            },
+            param));
+            return "pending";
+        } else if (this.pending[element.name]) {
+            return "pending";
+        }
+        return previous.valid;
+    });
