@@ -1,5 +1,3 @@
-
-
 /*******************************************************************
 * @theme - SWATCHES
 *******************************************************************/
@@ -30,25 +28,20 @@
        }
 }
 
-
 /* Main Styles */
 .ui-body-a {
     color: @color-txt-light-on-dark;
     text-shadow: none;
-
     .ui-header{
         color: @color-txt-light-on-dark;
         text-shadow: none;
     }
-    
     .image-streams .image-stream .load-more-inline{
         background-color: darken(@color-off-black-tint, 5%);
     }
-    
     .thumb-image{
        background-color: darken(@color-off-black-tint, 5%); 
     }
-
 }
 
 /* Button Styles */
@@ -60,7 +53,6 @@
     color: white;
     cursor: pointer;
     text-shadow: 0 -1px 1px @color-shadow-light-on-dark;
-
 }
 
 .ui-btn-up-a {
@@ -72,16 +64,13 @@
 	text-shadow: @color-shadow-dark-on-dark 0px 1px 1px;
 	font-size: @txt-size-btn-large;
 	text-decoration: none;
-
     .box-shadow(inset 0 3px 20px @color-shadow-dark-on-dark);
     &.ui-shadow{
 	   .box-shadow(inset 0 3px 20px @color-shadow-dark-on-dark);
 	}
-
     .ui-btn-inner{
         border:none;
     }
-
 	a.ui-link-inherit {
 		color: @color-txt-light-on-dark;
 	}
@@ -101,16 +90,13 @@
 	text-shadow: @color-shadow-dark-on-dark 0px 1px 1px;
 	font-size: @txt-size-btn-large;
 	text-decoration: none;
-
     .box-shadow(inset 0 3px 20px @color-shadow-dark-on-dark);
     &.ui-shadow{
 	   .box-shadow(inset 0 3px 20px @color-shadow-dark-on-dark);
 	}
-
     .ui-btn-inner{
         border:none;
     }
-
 	a.ui-link-inherit {
 		color: @color-txt-light-on-dark;
 	}
@@ -134,7 +120,6 @@
             border:none;
         }
     }
-
     .ui-btn-hover-a,
     .ui-btn-down-a,
     .ui-btn-active-a   {
@@ -166,7 +151,6 @@
 
 .ui-bar-b{
 
-
 }
 
 .ui-btn-up-b,
@@ -178,32 +162,26 @@
 	text-shadow: @color-shadow-medium-on-dark 0px 1px 1px;
 	font-size: @txt-size-small;
 	text-decoration: none;
-
 	.linear-gradient(@color-bg-neutral-dark, @color-bg-neutral-dark-tint);
-
     .ui-btn-inner{
         border:none;
     }
-
 	a.ui-link-inherit {
 		color: @color-txt-medium-on-dark;
 	}
 	&.ui-shadow{
 	    .box-shadow( 0 1px 0 @color-shadow-light-on-dark);
 	}
-
 	&.ui-btn-active{
 	    background: none;
 	    .linear-gradient(black, @color-bg-neutral-dark-tint);
 	}
-
 	&.top-left-arrow::after{
 	    .arrow-down(@arrow-size, @color-bg-neutral-dark-tint, @arrow-offset, 3px);
 	}
 	&.bottom-centered-arrow::after{
 	    .arrow-up(@arrow-size, @color-bg-neutral-dark, 50%, 3px);
 	}
-
 }
 
 .ui-btn-hover-b,
@@ -217,13 +195,10 @@
 	text-shadow: @color-shadow-medium-on-dark 0px 1px 1px;
 	font-size: @txt-size-small;
 	text-decoration: none;
-
     .linear-gradient(lighten(@color-bg-neutral-dark, 3%), lighten(@color-bg-neutral-dark-tint, 3%));
-
     .ui-btn-inner{
         border:none;
     }
-
 	a.ui-link-inherit {
 		color: @color-txt-medium-on-dark;
 	}
@@ -232,12 +207,10 @@
        -webkit-box-shadow: 0 1px 0 @color-shadow-light-on-dark;
        box-shadow: 0 1px 0 @color-shadow-light-on-dark;
 	}
-
 	&.ui-btn-active{
 	    background: none;
 	    .linear-gradient(black, @color-bg-neutral-dark-tint);
 	}
-
 	&.top-left-arrow::after{
 	    .arrow-down(@arrow-size, lighten(@color-bg-neutral-dark-tint, 3%), @arrow-offset, 3px);
 	}
@@ -255,13 +228,10 @@
 	text-shadow: @color-shadow-medium-on-dark 0px 1px 1px;
 	font-size: @txt-size-small;
 	text-decoration: none;
-
     .pressed-gradient(@color-bg-neutral-dark-tint, 5%);
-
     .ui-btn-inner{
         border:none;
     }
-
 	a.ui-link-inherit {
 		color: @color-txt-medium-on-dark;
 	}
@@ -270,12 +240,10 @@
        -webkit-box-shadow: 0 1px 0 @color-shadow-light-on-dark;
        box-shadow: 0 1px 0 @color-shadow-light-on-dark;
 	}
-
 	&.ui-btn-active{
 	    background: none;
 	    .linear-gradient(black, @color-bg-neutral-dark-tint);
 	}
-
 	&.top-left-arrow::after{
 	    .arrow-down(@arrow-size, @color-bg-neutral-dark-tint, @arrow-offset, 3px);
 	}
@@ -298,8 +266,8 @@
         z-index: 0;
         width: auto;
         padding: 0 10px 0 6px;
-          -webkit-background-size: 30px;
-         height: 30px;
+        -webkit-background-size: 30px;
+        height: 30px;
         .ui-icon{
             display: none;
         }
@@ -352,7 +320,6 @@
 * C
 * - Standard light BG swatch, has subtle gray bg texture, used mainly for light colored dialog style views
 */
-
 
 /* Set bg for dialog */
 .ui-body-c {
@@ -424,7 +391,6 @@
 }
 
 
-
 /* Grey Btns */
 .ui-btn-up-c {
 	border: none;
@@ -437,7 +403,6 @@
 	a.ui-link-inherit {
 		color: @color-txt-dark-on-light;
 	}
-
 	&.top-left-arrow::after{
 	    .arrow-down(@arrow-size, @color-bg-neutral-light-tint, @arrow-offset, 3px);
 	}
@@ -457,7 +422,6 @@
 	a.ui-link-inherit {
 		color: @color-txt-dark-on-light;
 	}
-
 	&.top-left-arrow::after{
        .arrow-down(@arrow-size, lighten(@color-bg-neutral-light-tint, 10%), @arrow-offset, 3px);
    }
@@ -691,18 +655,12 @@
 	a.ui-link-inherit {
 		color: @color-txt-dark-on-light;
 	}
-
-
     &.top-left-arrow::after{
        .arrow-down(@arrow-size, @color-bg-highlight-main-tint, @arrow-offset, 3px);
    }
    &.bottom-centered-arrow::after{
           .arrow-up(@arrow-size, @color-bg-highlight-main, 50%, 3px);
    }
-   
-  
-
-
 }
 
 .ui-btn-hover-e {
@@ -716,7 +674,6 @@
 	a.ui-link-inherit {
 		color: @color-txt-dark-on-light;
 	}
-
 	&.top-left-arrow::after{
        .arrow-down(@arrow-size, lighten(@color-bg-highlight-main-tint, 10% ), @arrow-offset, 3px);
    }
@@ -739,7 +696,6 @@
 	&.ui-shadow {
         .box-shadow(0 1px 4px lighten(@color-shadow-btn-on-light, 20%));
     }
-
     &.top-left-arrow::after{
         .arrow-down(@arrow-size, @color-bg-highlight-main, @arrow-offset, 3px);
     }

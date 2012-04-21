@@ -641,9 +641,6 @@ div[data-role="page"], div[data-role="dialog"] {
 .ui-btn-inner {
   padding: 9px 9px;
 }
-.ui-br {
-  border-bottom: none;
-}
 .ui-input-search.ui-btn-corner-all {
   -moz-border-radius: 20px;
   -webkit-border-radius: 20px;
@@ -836,9 +833,6 @@ a.ui-link-inherit {
 }
 /* Form field separator
 -----------------------------------------------------------------------------------------------------------*/
-.ui-br {
-  border: solid 1px #e4e4e4;
-}
 /* Interaction cues
 -----------------------------------------------------------------------------------------------------------*/
 .ui-disabled {

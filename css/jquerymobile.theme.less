@@ -4,29 +4,21 @@
 * Dual licensed under the MIT (MIT-LICENSE.txt) and GPL (GPL-LICENSE.txt) licenses.
 */
 
-
 /*
-* JQuery Mob - Custom
-*   Some basics
+* JQuery Mob - Overwriting some layout aspects of the jquerymobile.structure css
+*   
 */
 
-.ui-content{
-    padding: @padding-page-inset;
-}
+/* Round off the corners of the pages */
 
-.ui-content .ui-listview{
-    margin: -@padding-page-inset;
-}
-
-.ui-content .ui-listview-inset{
-    margin: @padding-page-inset 0;
-
+div[data-role="page"],
+div[data-role="dialog"]{
+    .corner-all(@corner-page-element-rounded);
 }
 
 /*
 * Dialogs - Stripping a lot of the jMob stuff
 */
-
 
 .ui-dialog .ui-content{
     margin: 0;
@@ -40,19 +32,11 @@
     width: auto;
 }
 
-
- /* Custom stuff for this Theme */
- 
- /* Round off the corners of the pages */
-
-div[data-role="page"],
-div[data-role="dialog"]{
-    .corner-all(@corner-page-element-rounded);
-}
-
-.ui-br {
-    border-bottom: none
-}
+.ui-content{padding: @padding-page-inset;}
+.ui-content .ui-listview{margin: -@padding-page-inset;}
+.ui-content .ui-listview-inset{margin: @padding-page-inset 0;}
+.ui-btn{margin: 0; margin-bottom: @padding-element-inset;}
+.ui-btn-inner{padding: 9px 9px;}
 
 .ui-input-search{
     &.ui-btn-corner-all{
@@ -61,7 +45,6 @@ div[data-role="dialog"]{
     &.ui-icon-searchfield::after{
         margin-top: -18px;
     }
-
     .ui-input-clear {
         position: absolute;
         right: -10px;
@@ -98,18 +81,6 @@ fieldset.ui-controlgroup{
     margin: 0 0 @padding-page-inset 0;
 }
 
-.ui-link{
-}
-
-.ui-btn{
-    margin: 0;
-    margin-bottom: @padding-element-inset;
-}
-
-.ui-btn-inner{
-       padding: 9px 9px;
- }
-
 .ui-grid-b{
     .ui-block-a,
     .ui-block-b,
@@ -117,7 +88,6 @@ fieldset.ui-controlgroup{
         .ui-btn{
             margin-left: @padding-element-inset;
         }
-
     }
 }
 
@@ -125,8 +95,6 @@ fieldset.ui-controlgroup{
 .ui-checkbox-on .ui-icon,
 .ui-radio-on .ui-icon,
 .ui-icon-searchfield::after{
-    background-color: transparent;
-    background-image: url('../gfx/general-jquerymob-icons.png');
     width: @gfx-general-icon-sprite-grid / 2;
     height: @gfx-general-icon-sprite-grid;
 }
@@ -135,14 +103,12 @@ fieldset.ui-controlgroup{
 .ui-btn-icon-right .ui-btn-inner {
     .ui-icon{
         margin-top: -@gfx-general-icon-sprite-grid / 2;
-
     }
 }
 
 .ui-btn-icon-right .ui-icon {
     right: @padding-element-inset;
 }
-
 
 .ui-loader{
     margin-left: -40px;
@@ -175,28 +141,19 @@ fieldset.ui-controlgroup{
     }
 }
 
-
-
 .ui-btn-icon-notext{
-       border: none;
-       background: none;
-       width: 40px;
-       height: 40px;
-       top: -4px;
-       .ui-btn-inner {
-       padding: 0;
-       }
-       &.ui-shadow{
-            .box-shadow(none);
-       }
-
+   border: none;
+   background: none;
+   width: 40px;
+   height: 40px;
+   top: -4px;
+   .ui-btn-inner {
+   padding: 0;
    }
-
-.ui-icon-shadow{
+   &.ui-shadow{
         .box-shadow(none);
+   }
 }
-
-
 
 .ui-checkbox .ui-btn-icon-left .ui-btn-inner,
 .ui-radio .ui-btn-icon-left .ui-btn-inner {
@@ -214,16 +171,12 @@ fieldset.ui-controlgroup{
     margin: 0;
 }
 
-
 .ui-collapsible-set{
     margin: 0;
     margin-bottom: @padding-page-inset * 2;
 }
 
-
-
-
-/* Structure */
+/* Less CSS rework of jQuery Mobile Theme */
 
 /* links within "buttons" 
 -----------------------------------------------------------------------------------------------------------*/
@@ -239,13 +192,11 @@ a.ui-link-inherit {
 .ui-btn-active a.ui-link-inherit {
 }
 
-
 /* button inner top highlight
 -----------------------------------------------------------------------------------------------------------*/
 
 .ui-btn-inner {
 }
-
 
 /* corner rounding classes ** Lessified
 -----------------------------------------------------------------------------------------------------------*/
@@ -265,12 +216,7 @@ a.ui-link-inherit {
 
 /* Form field separator
 -----------------------------------------------------------------------------------------------------------*/
-.ui-br {
-	border-bottom: rgb(130,130,130);
-	border-bottom: rgba(130,130,130,.3);
-	border-bottom-width: 1px;
-	border-bottom-style: solid;
-}
+
 
 /* Interaction cues
 -----------------------------------------------------------------------------------------------------------*/
@@ -290,36 +236,7 @@ a.ui-link-inherit {
 /* Icons
 -----------------------------------------------------------------------------------------------------------*/
 
-/* shifted this into icons.. */
-
-/* Alt icon color
------------------------------------------------------------------------------------------------------------*/
-
-/*.ui-icon-alt {
-    background:                         #fff;
-    background:                         rgba(255,255,255,.3);
-    background-image: url(images/icons-18-black.png);
-    background-repeat: no-repeat;
-}
-*/
-
-/* Icon positions moved to icons.less */
-
-
-/* checks,radios 
-.ui-checkbox .ui-icon {
-	-moz-border-radius: 3px;
-	-webkit-border-radius: 3px;
-	border-radius: 3px;
-}
-.ui-icon-checkbox-off,
-.ui-icon-radio-off {
-	background-color: transparent;	
-}
-.ui-checkbox-on .ui-icon,
-.ui-radio-on .ui-icon {
-	background-color: #4596ce;
-}*/
+/* All icon related styles moved to icons.less */
 
 /* loading icon */
 .ui-icon-loading {
@@ -328,7 +245,7 @@ a.ui-link-inherit {
 }
 
 
-/* Button corner classes **Lesified
+/* Button corner classes 
 -----------------------------------------------------------------------------------------------------------*/
 
 .ui-btn-corner-tl {.corner-tl();}
@@ -377,8 +294,6 @@ a.ui-link-inherit {
     width: 100%;
     height: 100%;
 }
-.ui-overlay-shadow {
-}
 .ui-shadow {
     .box-shadow(0 1px 4px @color-shadow-btn-on-light);
 }
@@ -388,8 +303,6 @@ a.ui-link-inherit {
 }
 .ui-shadow-inset {
     .box-shadow(inset 0 1px 1px rgba(0,0,0,0.2));
-}
-.ui-icon-shadow {
 }
 
 /* Focus state - set here for specificity (note: these classes are added by JavaScript)
