@@ -1,6 +1,12 @@
 /* High Resolution (iPhone 4) */
 
 @media only screen and (-webkit-min-device-pixel-ratio: 2) {
+    .ui-icon,
+    .ui-icon-searchfield:after {
+        background-image: url('../gfx/general-jquerymob-icons.png');    
+    	background-repeat: no-repeat;
+    }
+    
     .ui-btn-inner .ui-icon.extra-icons,.extra-icons .ui-btn-inner .ui-icon{
         background-image: url('../gfx/retina/extra-icons.png');
         .background-size (@gfx-extra-icon-sprite-width, @gfx-extra-icon-sprite-height);
@@ -11,7 +17,11 @@
         .background-size (@gfx-helper-icon-sprite-width, @gfx-helper-icon-sprite-height);
     }
 
-    .ui-btn-inner .ui-icon,.ui-checkbox-on .ui-btn-inner .ui-icon, .ui-radio-on .ui-btn-inner .ui-icon,.ui-btn-inner .ui-icon-searchfield::after{
+    .ui-icon,
+    .ui-checkbox-on 
+    .ui-icon, 
+    .ui-radio-on .ui-icon,
+    .ui-icon-searchfield::after{
         background-image: url('../gfx/retina/general-jquerymob-icons.png');
         .background-size (@gfx-general-icon-sprite-width, @gfx-general-icon-sprite-height);
 
@@ -50,8 +60,8 @@
     .ui-checkbox,
     .custom-action-icons,
     .share-photo .upload-image-privacy ,
-    .share-photo .upload-image-location .ui-btn
-    .share-photo .image-controls{
+    .share-photo .upload-image-location .ui-btn,
+    .share-photo .image-controls {
         .ui-btn-inner{
              .ui-icon{
                  background-image: url('../gfx/retina/action-icons-custom.png');
@@ -61,7 +71,7 @@
 
     }
 
-    .dark-icons .ui-btn-inner .ui-icon{
+    .dark-icons .ui-btn .ui-btn-inner .ui-icon{
            background-image: url('../gfx/retina/action-icons-dark.png');
            .background-size (@gfx-action-darkicon-sprite-width, @gfx-action-darkicon-sprite-height);
        }
@@ -78,6 +88,7 @@
     }
     
     .sharing-icon-small .ui-btn-inner .ui-icon,
+    .sharing-icon-small .ui-icon,
     .ui-btn-inner .sharing-icon-small .ui-icon {
            background-image: url('../gfx/retina/share-icons-small.png');
            .background-size (@gfx-small-sharing-icon-sprite-width, @gfx-small-sharing-icon-sprite-height);

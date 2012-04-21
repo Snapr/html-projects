@@ -682,7 +682,7 @@ ul, ul li {
   background-position: -576px -72px;
 }
 .ui-icon-search, .ui-icon-searchfield:after {
-  background-position: -612px 50%;
+  background-position: -612px -72px;
 }
 .ui-icon-checkbox-off {
   background-position: -684px 50%;
@@ -956,6 +956,62 @@ ul, ul li {
 }
 .ui-bar-b .ui-icon-arrow-r {
   background-position: -108px -36px;
+}
+/* Small Colored Icons For Third Party Services */
+.sharing-icon-small {
+  background-color: #f0f0ef;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+  width: 22px;
+  height: 22px;
+  display: inline-block;
+}
+.sharing-icon-small .ui-icon {
+  background-image: url('../gfx/share-icons-small.png');
+  width: 21px;
+  height: 21px;
+  position: relative;
+  display: block;
+  top: 1px!important;
+  left: 1px!important;
+  margin: 0!important;
+}
+.sharing-icon-small.twitter-sharing {
+  background-color: #68d9ff;
+  -moz-box-shadow: inset 0 3px 20px #309dc2;
+  -webkit-box-shadow: inset 0 3px 20px #309dc2;
+  box-shadow: inset 0 3px 20px #309dc2;
+}
+.sharing-icon-small.twitter-sharing .ui-icon {
+  background-position: 0 0px !important;
+}
+.sharing-icon-small.facebook-sharing {
+  background-color: #507ab8;
+  -moz-box-shadow: inset 0 3px 20px #2e5998;
+  -webkit-box-shadow: inset 0 3px 20px #2e5998;
+  box-shadow: inset 0 3px 20px #2e5998;
+}
+.sharing-icon-small.facebook-sharing .ui-icon {
+  background-position: 0 -21px !important;
+}
+.sharing-icon-small.tumblr-sharing {
+  background-color: #5a687d;
+  -moz-box-shadow: inset 0 3px 20px #2c3c54;
+  -webkit-box-shadow: inset 0 3px 20px #2c3c54;
+  box-shadow: inset 0 3px 20px #2c3c54;
+}
+.sharing-icon-small.tumblr-sharing .ui-icon {
+  background-position: 0 -42px !important;
+}
+.sharing-icon-small.foursquare-sharing {
+  background-color: #34a0ce;
+  -moz-box-shadow: inset 0 3px 20px #29708e;
+  -webkit-box-shadow: inset 0 3px 20px #29708e;
+  box-shadow: inset 0 3px 20px #29708e;
+}
+.sharing-icon-small.foursquare-sharing .ui-icon {
+  background-position: 0 -63px !important;
 }
 /*******************************************************************
 * @theme - SWATCHES
@@ -2499,62 +2555,6 @@ ul, ul li {
   margin-left: 0px;
   margin-right: 0px;
 }
-/* Small Colored Icons For Third Party Services */
-.sharing-icon-small {
-  background-color: #f0f0ef;
-  -moz-border-radius: 4px;
-  -webkit-border-radius: 4px;
-  border-radius: 4px;
-  width: 22px;
-  height: 22px;
-  display: inline-block;
-}
-.sharing-icon-small .ui-icon {
-  background-image: url('../gfx/share-icons-small.png');
-  width: 21px;
-  height: 21px;
-  position: relative;
-  display: block;
-  top: 1px!important;
-  left: 1px!important;
-  margin: 0!important;
-}
-.sharing-icon-small.twitter-sharing {
-  background-color: #68d9ff;
-  -moz-box-shadow: inset 0 3px 20px #309dc2;
-  -webkit-box-shadow: inset 0 3px 20px #309dc2;
-  box-shadow: inset 0 3px 20px #309dc2;
-}
-.sharing-icon-small.twitter-sharing .ui-icon {
-  background-position: 0 0px !important;
-}
-.sharing-icon-small.facebook-sharing {
-  background-color: #507ab8;
-  -moz-box-shadow: inset 0 3px 20px #2e5998;
-  -webkit-box-shadow: inset 0 3px 20px #2e5998;
-  box-shadow: inset 0 3px 20px #2e5998;
-}
-.sharing-icon-small.facebook-sharing .ui-icon {
-  background-position: 0 -21px !important;
-}
-.sharing-icon-small.tumblr-sharing {
-  background-color: #5a687d;
-  -moz-box-shadow: inset 0 3px 20px #2c3c54;
-  -webkit-box-shadow: inset 0 3px 20px #2c3c54;
-  box-shadow: inset 0 3px 20px #2c3c54;
-}
-.sharing-icon-small.tumblr-sharing .ui-icon {
-  background-position: 0 -42px !important;
-}
-.sharing-icon-small.foursquare-sharing {
-  background-color: #34a0ce;
-  -moz-box-shadow: inset 0 3px 20px #29708e;
-  -webkit-box-shadow: inset 0 3px 20px #29708e;
-  box-shadow: inset 0 3px 20px #29708e;
-}
-.sharing-icon-small.foursquare-sharing .ui-icon {
-  background-position: 0 -63px !important;
-}
 /*
 * Image Views - Custom
 */
@@ -2748,7 +2748,7 @@ ul, ul li {
 .progress-bar .ui-icon-check {
   background-position: -252px -144px;
 }
-/* Strip bare the normal lists style */
+/* Strip bare the normal list style */
 .simple-list .ui-li {
   padding: 0!important;
 }
@@ -2765,8 +2765,8 @@ ul, ul li {
   top: 8px;
 }
 .simple-list .ui-btn-inner .ui-link-inherit {
-  padding-top: 8px;
-  padding-bottom: 8px;
+  padding-top: 8px!important;
+  padding-bottom: 10px!important;
 }
 .simple-list .ui-li-heading {
   margin: 0 0 8px 0;
@@ -4589,6 +4589,10 @@ ul, ul li {
 }
 /* High Resolution (iPhone 4) */
 @media only screen and (-webkit-min-device-pixel-ratio: 2) {
+  .ui-icon, .ui-icon-searchfield:after {
+    background-image: url('../gfx/general-jquerymob-icons.png');
+    background-repeat: no-repeat;
+  }
   .ui-btn-inner .ui-icon.extra-icons, .extra-icons .ui-btn-inner .ui-icon {
     background-image: url('../gfx/retina/extra-icons.png');
     -moz-background-size: 32px 800px;
@@ -4603,10 +4607,10 @@ ul, ul li {
     -webkit-background-size: 96px 96px;
     background-size: 96px 96px;
   }
-  .ui-btn-inner .ui-icon,
-  .ui-checkbox-on .ui-btn-inner .ui-icon,
-  .ui-radio-on .ui-btn-inner .ui-icon,
-  .ui-btn-inner .ui-icon-searchfield::after {
+  .ui-icon,
+  .ui-checkbox-on .ui-icon,
+  .ui-radio-on .ui-icon,
+  .ui-icon-searchfield::after {
     background-image: url('../gfx/retina/general-jquerymob-icons.png');
     -moz-background-size: 774px 180px;
     -o-background-size: 774px 180px;
@@ -4652,14 +4656,15 @@ ul, ul li {
   .ui-checkbox .ui-btn-inner .ui-icon,
   .custom-action-icons .ui-btn-inner .ui-icon,
   .share-photo .upload-image-privacy .ui-btn-inner .ui-icon,
-  .share-photo .upload-image-location .ui-btn .share-photo .image-controls .ui-btn-inner .ui-icon {
+  .share-photo .upload-image-location .ui-btn .ui-btn-inner .ui-icon,
+  .share-photo .image-controls .ui-btn-inner .ui-icon {
     background-image: url('../gfx/retina/action-icons-custom.png');
     -moz-background-size: 80px 440px;
     -o-background-size: 80px 440px;
     -webkit-background-size: 80px 440px;
     background-size: 80px 440px;
   }
-  .dark-icons .ui-btn-inner .ui-icon {
+  .dark-icons .ui-btn .ui-btn-inner .ui-icon {
     background-image: url('../gfx/retina/action-icons-dark.png');
     -moz-background-size: 40px 480px;
     -o-background-size: 40px 480px;
@@ -4680,7 +4685,7 @@ ul, ul li {
     -webkit-background-size: 84px 168px;
     background-size: 84px 168px;
   }
-  .sharing-icon-small .ui-btn-inner .ui-icon, .ui-btn-inner .sharing-icon-small .ui-icon {
+  .sharing-icon-small .ui-btn-inner .ui-icon, .sharing-icon-small .ui-icon, .ui-btn-inner .sharing-icon-small .ui-icon {
     background-image: url('../gfx/retina/share-icons-small.png');
     -moz-background-size: 21px 84px;
     -o-background-size: 21px 84px;
