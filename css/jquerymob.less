@@ -64,8 +64,8 @@ div[data-role="dialog"]{
 
     .ui-input-clear {
         position: absolute;
-        right: -15px;
-        margin-top: -18px;
+        right: -10px;
+        margin-top: -19px;
         background: none;
         border: none!important;
         .ui-icon-delete{
@@ -80,14 +80,17 @@ div[data-role="dialog"]{
 
 input.ui-input-text,
 textarea.ui-input-text {
+    background:transparent;
+    border: @border-dark-on-light;
+    font-family:@txt-font-base;
+    outline: 0;
+    line-height: 1.4;
     background-color: @color-bg-neutral-light;
     color: @color-txt-medium-on-light;
     font-size: @txt-size-base;
     padding: @padding-element-inset;
     width: 100%;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
+    .border-box();
 }
 
 .ui-controlgroup,
@@ -287,15 +290,7 @@ a.ui-link-inherit {
 /* Icons
 -----------------------------------------------------------------------------------------------------------*/
 
-/* shift this into icons.. */
-.ui-icon,
-.ui-icon-searchfield:after {
-	background: 						rgba(0,0,0,.4) /*{global-icon-disc}*/;
-	background-image: url(images/icons-18-white.png) /*{global-icon-set}*/;
-	background-repeat: no-repeat;
-
-}
-
+/* shifted this into icons.. */
 
 /* Alt icon color
 -----------------------------------------------------------------------------------------------------------*/
@@ -385,7 +380,7 @@ a.ui-link-inherit {
 .ui-overlay-shadow {
 }
 .ui-shadow {
-    .box-shadow( 0 1px 0 @color-shadow-light-on-dark);
+    .box-shadow(0 1px 4px @color-shadow-btn-on-light);
 }
 .ui-bar-a .ui-shadow,
 .ui-bar-b .ui-shadow ,
@@ -401,14 +396,12 @@ a.ui-link-inherit {
 -----------------------------------------------------------------------------------------------------------*/
 
 .ui-btn:focus {
-	outline: 0;
+    outline: 0;
 }
 
 .ui-focus,
 .ui-btn:focus {
-	-moz-box-shadow: 0px 0px 12px 		#387bbe /*{global-active-background-color}*/;
-	-webkit-box-shadow: 0px 0px 12px 	#387bbe /*{global-active-background-color}*/;
-	box-shadow: 0px 0px 12px 			#387bbe /*{global-active-background-color}*/;
+    
 }
 
 /* unset box shadow in browsers that don't do it right

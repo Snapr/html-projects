@@ -43,7 +43,7 @@
         right: 4px;
         top: 0px;
         .ui-btn-inner{
-            padding-right: 40px;
+            padding-right: 32px;
         }
     }
     .image-details{
@@ -435,6 +435,10 @@
 
 /* Strip bare the normal lists style */
 .simple-list{
+    .ui-li{
+        padding: 0!important;
+    }
+    
     .ui-btn{
         background: none;
         border: none!important;
@@ -447,10 +451,13 @@
         left: 0;
         top: @padding-element-inset;
     }
-    .ui-link-inherit{
-        padding-top: 8px;
-        padding-bottom: 8px;
+    .ui-btn-inner{
+        .ui-link-inherit{
+            padding-top: 8px;
+            padding-bottom: 8px;
+        } 
     }
+   
     .ui-li-heading{
         margin: 0 0 @padding-element-inset 0;
         font-weight: normal;

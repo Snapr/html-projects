@@ -101,7 +101,7 @@
             background-color: #f2f2f2;
             background-color: rgba(128,128,128, .1);
             .ui-btn-inner{
-                 min-height: 160px;
+                 min-height: 161px;
                  padding: 0;
                  /* Darker sprite versions */
                  .ui-icon-main-menu-camera{background-position: 0 -1040px;}
@@ -358,6 +358,7 @@
             border: none;
             font-size: @txt-size-small;
             font-family: @txt-font-base;
+            font-weight: bold;
             color: @color-txt-medium-on-light;
 
             .ui-btn-inner{
@@ -412,12 +413,14 @@
 
     .reactions-list{
         display: none;
-        .ui-btn.ui-li{
+        .ui-li{
             border: none!important;
+            padding:0;
              .ui-link-inherit{
                     padding: 0 0 @padding-element-inset 0;
                     white-space: normal;
                     font-weight: normal;
+                    font-family: @txt-font-base;
                     color: @color-txt-medium-on-light;
                 }
             .ui-icon-arrow-r{
