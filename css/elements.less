@@ -264,7 +264,11 @@
             }
             
             &.x-right-pull{
-                margin-right:8px;
+                margin-right:@padding-image-grid-inset;
+            }
+
+            &.x-left-pull{
+                margin-right:-@padding-image-grid-inset;
             }
 
             &.x-flipped{
@@ -286,6 +290,13 @@
                     -webkit-animation-timing-function:linear;
                 }
             }
+        }
+        .x-no-more{
+            .x-right-pull{
+                .ui-icon-refresh{
+                    display: none;
+                }
+            } 
         }
 
         .ui-bar{
