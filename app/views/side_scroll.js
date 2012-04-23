@@ -15,7 +15,7 @@ snapr.views.side_scroll = Backbone.View.extend({
     scroll_init: function(){
         var scroll_el = $('.x-scroll-area', this.el),
             details = $('.x-details', this.el),
-            pull_distance = -40,
+            pull_distance = -110,
             left_pull_el = $('.x-left-pull', this.el),
             right_pull_el = $('.x-right-pull', this.el),
             left_pull_msg = $('.x-msg', left_pull_el),

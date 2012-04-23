@@ -1,4 +1,3 @@
-
 /*
 * Browser Defaults
 */
@@ -22,12 +21,17 @@ input[type="search"]::-webkit-search-cancel-button {-webkit-appearance: none;}
     -webkit-user-select: text;
 }
 
+input:focus {
+    outline: none;
+}
+
 textarea{
     resize:none;
 }
 
 body {
    	font-size: @txt-size-base;
+   	font-family: @txt-font-base;
    	background-color: @color-bg-dark!important;
 }
 

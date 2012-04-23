@@ -2,6 +2,40 @@
 * Icons - Positioning for icons in the app based on sprites.less
 */
 
+/* @defaulticons */
+.ui-icon,
+.ui-icon-searchfield:after {
+    background-image: url('../gfx/general-jquerymob-icons.png');    
+	background-repeat: no-repeat;
+}
+
+
+/* JQuery Mob icons */
+.ui-icon-plus {     background-position:@gfx-general-icon-sprite-plus-x @g-dark-offset-y;}
+.ui-icon-minus {    background-position: @gfx-general-icon-sprite-minus-x @g-dark-offset-y;}
+.ui-icon-delete {   background-position: @gfx-general-icon-sprite-delete-x @g-dark-offset-y;}
+.ui-icon-arrow-r {  background-position: @gfx-general-icon-sprite-arrow-r-x @g-dark-offset-y;}
+.ui-icon-arrow-l {  background-position: @gfx-general-icon-sprite-arrow-l-x @g-dark-offset-y;}
+.ui-icon-arrow-u {  background-position: @gfx-general-icon-sprite-arrow-u-x @g-dark-offset-y;}
+.ui-icon-arrow-d {  background-position: @gfx-general-icon-sprite-arrow-d-x @g-dark-offset-y;}
+.ui-icon-check {    background-position: @gfx-general-icon-sprite-check-x @g-dark-offset-y;}
+.ui-icon-gear {     background-position: @gfx-general-icon-sprite-gear-x @g-dark-offset-y;}
+.ui-icon-refresh {  background-position: @gfx-general-icon-sprite-refresh-x @g-dark-offset-y;}
+.ui-icon-forward {  background-position: @gfx-general-icon-sprite-forward-x @g-dark-offset-y;}
+.ui-icon-back {     background-position: @gfx-general-icon-sprite-back-x @g-dark-offset-y;}
+.ui-icon-grid {     background-position: @gfx-general-icon-sprite-grid-x @g-dark-offset-y;}
+.ui-icon-star {     background-position: @gfx-general-icon-sprite-star-x @g-dark-offset-y;}
+.ui-icon-alert {    background-position: @gfx-general-icon-sprite-alert-x @g-dark-offset-y;}
+.ui-icon-info {     background-position: @gfx-general-icon-sprite-info-x @g-dark-offset-y;}
+.ui-icon-home {     background-position: @gfx-general-icon-sprite-home-x @g-dark-offset-y;}
+.ui-icon-search,
+.ui-icon-searchfield:after {background-position: @gfx-general-icon-sprite-search-x @g-dark-offset-y;}
+.ui-icon-checkbox-off {background-position: 	-684px 50%;}
+.ui-icon-checkbox-on {background-position: 	-648px 50%;}
+.ui-icon-radio-off {background-position: 	-756px 50%;}
+.ui-icon-radio-on {background-position: 	-720px 50%;}
+
+
 /* @topbaricons */
 .ui-header{
     .ui-btn-up-a{
@@ -162,5 +196,50 @@
     }
     .ui-icon-arrow-r{background-position: @gfx-general-icon-sprite-arrow-r-x @g-med-offset-y;}
 }
+
+
+/* Small Colored Icons For Third Party Services */
+.sharing-icon-small{
+    background-color: lighten(@color-bg-neutral-light-tint, 10%);
+    .corner-all(@corner-general-less-rounded);
+    width: 22px;
+    height: 22px;
+    display: inline-block;
+    .ui-icon{
+        background-image: url('../gfx/share-icons-small.png');
+        width: @gfx-small-sharing-icon-sprite-grid;
+        height: @gfx-small-sharing-icon-sprite-grid;
+        position: relative;
+        display: block;
+        top: 1px!important;
+        left: 1px!important;
+        margin: 0!important;
+    }
+    &.twitter-sharing{
+       .ui-icon{background-position: @ss-offset-x @gfx-small-sharing-icon-sprite-twitter-y!important;}
+       background-color: @color-bg-twitter-main;
+        .box-shadow(inset 0 3px 20px @color-bg-twitter-main-tint);
+    }
+    &.facebook-sharing{
+       .ui-icon{background-position: @ss-offset-x @gfx-small-sharing-icon-sprite-facebook-y!important;}
+       background-color: @color-bg-facebook-main;
+       .box-shadow(inset 0 3px 20px @color-bg-facebook-main-tint);
+   }
+   &.tumblr-sharing{
+       .ui-icon{background-position: @ss-offset-x @gfx-small-sharing-icon-sprite-tumblr-y!important;}
+       background-color: @color-bg-tumblr-main;
+       .box-shadow(inset 0 3px 20px @color-bg-tumblr-main-tint);
+   }
+   &.foursquare-sharing{
+       .ui-icon{background-position: @ss-offset-x @gfx-small-sharing-icon-sprite-foursquare-y!important;}
+        background-color: @color-bg-foursquare-main;
+        .box-shadow(inset 0 3px 20px @color-bg-foursquare-main-tint);
+   }
+}
+
+
+
+
+
 
 
