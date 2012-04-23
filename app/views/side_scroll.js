@@ -22,6 +22,8 @@ snapr.views.side_scroll = Backbone.View.extend({
             right_pull_msg = $('.x-msg', right_pull_el);
 
         function flip_pulls(scroller){
+            if(scroll_el.is('.x-loading')){ return; }
+
             if(scroller.x > pull_distance){
                 left_pull_el.addClass('x-flipped');
                 if(!scroll_el.is('.x-loading')){
