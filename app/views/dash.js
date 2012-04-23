@@ -30,19 +30,21 @@ snapr.views.dash = Backbone.View.extend({
 
     },
     populate: function(){
-        var dash = this;
-        var options = {
-            data: {n:6, feed:true},
-            success: function(){
-                dash.render();
-            },
-            error:function(){
-                console.error('Error loading dash from server');
-            },
-            complete: function(){
-                $.mobile.hidePageLoadingMsg();
-            }
-        };
+        var dash = this,
+            latitude = -37.8,
+            longitude = 175.3,
+            options = {
+                data: {n:6, feed:!!snapr.auth.get("access_token"), nearby:!!(latitude && longitude), latitude:latitude, longitude:longitude},
+                success: function(){
+                    dash.render();
+                },
+                error:function(){
+                    console.error('Error loading dash from server');
+                },
+                complete: function(){
+                    $.mobile.hidePageLoadingMsg();
+                }
+            };
 
         $.mobile.loadingMessage = "Loading";
         $.mobile.showPageLoadingMsg();
@@ -50,6 +52,9 @@ snapr.views.dash = Backbone.View.extend({
         this.collection.fetch( options );
     },
     render: function(){
+        if(!snapr.auth.get("access_token")){
+            this.$el.find('.dash-welcome').show();
+        }
         var streams = this.$el.find('.image-streams');
         streams.empty();
 

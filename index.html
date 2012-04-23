@@ -1083,13 +1083,30 @@
            </div>
            <div data-role="content" data-theme="d">
                <ul class="image-streams edit">
+                    <li class="image-stream" id="upload-popular-nearby">
+                        <a class="ui-bar top-left-arrow x-details" data-role="button" data-iconpos="right" data-icon="arrow-r" data-theme="e">
+                            <span class="image-details">
+                                <span class="ui-icon ui-icon-nearby extra-icons"></span>
+                                <em>Nearby</em>
+                            </span>
+                        </a>
+                        <div id="upload-popular-nearby-images" class="thumbs-grid thumbs-grid-med x-loading x-scroll-area">
+                            <div class="x-scroll-wrapper"><!-- inner div for scroll -->
+                                <div class="x-left-pull thumb-med load-more-inline">
+                                    <span class="ui-icon ui-icon-refresh"></span>
+                                    <span class="ui-btn-text x-msg">Refresh</span>
+                                </div>
+                                <div class="x-thumbs"></div>
+                            </div>
+                        </div>
+                    </li>
                </ul>
 
-               <div class="helper-content dash-welcome ui-content-inset" style="display:none;">
+                <div class="helper-content dash-welcome ui-content-inset" style="display:none;">
                    <a class="ui-bar top-no-arrow" data-role="button"  data-theme="c">
                        <em>Welcome</em>
                     </a>
-                   <div class="ui-body-c ui-body">
+                    <div class="ui-body-c ui-body">
                        <div class="ui-icon helper-icons ui-icon-dash">
                         </div>
                         <p class="icon-left">
@@ -1128,26 +1145,31 @@
                             </span>
                         </span>
                     </a>
-                    <div id="upload-popular-nearby-images" class="thumbs-grid thumbs-grid-med x-scroll-area">
+                    <div class="thumbs-grid thumbs-grid-med x-scroll-area">
                         <div class="x-scroll-wrapper"><!-- inner div for scroll -->
-                        <div class="x-left-pull thumb-med load-more-inline">
-                            <span class="ui-icon ui-icon-refresh"></span>
-                            <span class="ui-btn-text x-msg">Refresh</span>
-                        </div>
-                        <div class="x-thumbs"></div>
-                        <div class="x-right-pull thumb-med load-more-inline">
-                            <span class="ui-icon ui-icon-refresh"></span>
-                            <span class="ui-btn-text x-msg">Load More</span>
+                            <div class="x-left-pull thumb-med load-more-inline">
+                                <span class="ui-icon ui-icon-refresh"></span>
+                                <span class="ui-btn-text x-msg">Refresh</span>
+                            </div>
+                            <div class="x-thumbs"></div>
+                            <div class="x-right-pull thumb-med load-more-inline">
+                                <span class="ui-icon ui-icon-refresh"></span>
+                                <span class="ui-btn-text x-msg">Load More</span>
 
+                            </div>
                         </div>
                     </div>
                 <% }else{ %>
                     <a class="ui-bar top-left-arrow" data-role="button" data-iconpos="right" data-icon="arrow-r" data-theme="e">
-                        <span class="ui-icon ui-icon-venue extra-icons"></span>
-                        <em>nearby</em>
+                        <span class="ui-icon ui-icon-<%= model.get("display").type %> extra-icons"></span>
+                        <em><%= model.get("display").short_title %></em>
                         <span class="image-tag">No photos yet</span>
                     </a>
-                    <div id="upload-popular-nearby-images" class="thumbs-grid thumbs-grid-med n-horizontal-scroll"></div>
+                    <div class="thumbs-grid thumbs-grid-med x-scroll-area">
+                        <div class="x-scroll-wrapper">
+                            <div class="x-thumbs"></div>
+                        </div>
+                    </div>
                 <% } %>
            </li>
         </script>
