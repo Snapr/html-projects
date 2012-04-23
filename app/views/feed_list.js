@@ -8,8 +8,8 @@ snapr.views.feed_list = Backbone.View.extend({
 
         this.li_templates = {
             list: _.template( $("#feed-li-list-template").html() ),
-            grid: _.template( $("#feed-li-grid-template").html() ),
-        }
+            grid: _.template( $("#feed-li-grid-template").html() )
+        };
 
         this.list_style = this.options.list_style || 'list';
 
@@ -25,8 +25,7 @@ snapr.views.feed_list = Backbone.View.extend({
         var scrollY = window.scrollY;
         this.$el.empty();
 
-        _.each( this.collection.models, function( item )
-        {
+        _.each( this.collection.models, function( item ){
             var li = new snapr.views.feed_li({
                 model: item,
                 template: this.li_templates[ this.list_style ],
@@ -35,22 +34,22 @@ snapr.views.feed_list = Backbone.View.extend({
             this.$el.append( li.render().el );
         }, this);
 
-        $img = this.$el.find("img");
-        $img.load(function(){
-            $img.css("height","auto");
-        });
+        if(this.list_style == 'list'){
+            $img = this.$el.find("img");
+            $img.load(function(){
+                $img.css("height","auto");
+            });
+        }
 
         // create jquery mobile markup, set to listview and refresh
 
-        this.$el
-            .trigger("create");
+        this.$el.trigger("create");
 
-        this.$el
-            .removeClass('thumbs-grid-med')
+        // what's this for?
+        this.$el.removeClass('thumbs-grid-med');
 
 
-        if (scrollY)
-        {
+        if (scrollY){
             window.scrollTo(0, scrollY);
         }
 
@@ -60,4 +59,4 @@ snapr.views.feed_list = Backbone.View.extend({
 
         return this;
     }
-})
+});
