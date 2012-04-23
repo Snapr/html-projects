@@ -18,6 +18,13 @@ snapr.views.dash = Backbone.View.extend({
             changeHash: false
         });
 
+        $('a[data-query]', this.$el).live('click', function( e ){
+            var query = $(this).data('query'),
+                current = $(this).data('current');
+            Route.navigate('#/feed/?'+unescape(query)+'&photo_id='+current);
+
+        });
+
         this.collection = new snapr.models.dash();
         this.populate();
 

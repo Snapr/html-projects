@@ -1119,8 +1119,8 @@
         <script id="dash-stream-template" type="text/template">
             <li class="image-stream" id="upload-popular-nearby">
                 <% if(model.get("latest_photo")){%>
-                    <a class="ui-bar top-left-arrow" data-role="button" data-iconpos="right" data-icon="arrow-r" data-theme="e">
-                        <span class="image-details x-details">
+                    <a class="ui-bar top-left-arrow x-details" data-query="<%= escape($.param(model.get("query"))) %>" data-role="button" data-iconpos="right" data-icon="arrow-r" data-theme="e">
+                        <span class="image-details">
                             <span class="ui-icon ui-icon-<%= model.get("display").type %> extra-icons"></span>
                             <em><%= model.get("display").short_title %></em>
                             <span class="image-tag x-tag"><%= model.get("latest_photo").description %></span>
@@ -1158,7 +1158,7 @@
            </li>
         </script>
         <script id="dash-thumbs-template" type="text/template">
-            <% _.each(photos, function(photo) { %><a href="https://s3.amazonaws.com/media-server2.snapr.us/lrg/<%= photo.get('secret') %>/<%= photo.get('id') %>.jpg" class="x-thumb image-link" rel="external" data-date="<%= photo.get('date') %>" data-tag="<%= photo.get('description') %>">
+            <% _.each(photos, function(photo) { %><a href="https://s3.amazonaws.com/media-server2.snapr.us/lrg/<%= photo.get('secret') %>/<%= photo.get('id') %>.jpg" class="x-thumb image-link" rel="external" data-date="<%= photo.get('date') %>" data-id="<%= photo.get('id') %>" data-tag="<%= photo.get('description') %>">
                 <img src="https://s3.amazonaws.com/media-server2.snapr.us/thm2/<%= photo.get('secret') %>/<%= photo.get('id') %>.jpg" alt="<%= photo.get('description') %>" class="thumb-image thumb-med">
             </a><% }); %>
         </script>
