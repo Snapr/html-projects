@@ -1148,13 +1148,13 @@
                     <div class="thumbs-grid thumbs-grid-med x-scroll-area">
                         <div class="x-scroll-wrapper"><!-- inner div for scroll -->
                             <div class="x-left-pull thumb-med load-more-inline">
-                                <span class="ui-icon ui-icon-refresh"></span>
-                                <span class="ui-btn-text x-msg">Refresh</span>
+                            <span class="ui-icon ui-icon-refresh"></span>
+                            <span class="ui-btn-text x-msg">Load Newer...</span>
                             </div>
                             <div class="x-thumbs"></div>
                             <div class="x-right-pull thumb-med load-more-inline">
                                 <span class="ui-icon ui-icon-refresh"></span>
-                                <span class="ui-btn-text x-msg">Load More</span>
+                                <span class="ui-btn-text x-msg">Load More...</span>
 
                             </div>
                         </div>
@@ -1171,6 +1171,11 @@
                         </div>
                     </div>
                 <% } %>
+                
+                <div class="edit-overlay trans-bg">
+                    <a class="remove-stream" data-role="button" data-icon="delete" data-iconpos="right" data-theme="c">Remove</a>
+                </div>
+                
            </li>
         </script>
         <script id="dash-thumbs-template" type="text/template">

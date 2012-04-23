@@ -29,7 +29,7 @@ snapr.views.side_scroll = Backbone.View.extend({
                 }
             }else{
                 left_pull_el.removeClass('x-flipped');
-                left_pull_msg.text('refresh');
+                left_pull_msg.text('Load Newer...');
             }
             if(scroller.x < (scroller.maxScrollX - pull_distance)){
                 right_pull_el.addClass('x-flipped');
@@ -38,7 +38,7 @@ snapr.views.side_scroll = Backbone.View.extend({
                 }
             }else{
                 right_pull_el.removeClass('x-flipped');
-                right_pull_msg.text('load more');
+                right_pull_msg.text('Load More...');
             }
         }
         try{
@@ -71,18 +71,18 @@ snapr.views.side_scroll = Backbone.View.extend({
                     // Pull to refresh: if scroll elements are .x-flipped - refresh
                     if(left_pull_el.is('.x-flipped') && !scroll_el.is('.x-loading')){
                         scroll_el.addClass('x-loading');
-                        left_pull_msg.text('loading');
+                        left_pull_msg.text('Loading...');
                         scroller = this;
                         collection.fetch_newer({success: function(){
                             if(scroller.currPageX === 0){
                                 scroller.scrollToPage(1);
                             }
                             scroll_el.removeClass('x-loading');
-                            left_pull_msg.text('load more');
+                            left_pull_msg.text('Load More...');
                         }});
                     }else if(right_pull_el.is('.x-flipped') && !scroll_el.is('.x-loading')){
                         scroll_el.addClass('x-loading');
-                        right_pull_msg.text('loading');
+                        right_pull_msg.text('Loading...');
                         scroller = this;
                         options  = {
                             success: function(collection, response){
@@ -91,14 +91,14 @@ snapr.views.side_scroll = Backbone.View.extend({
                                         scroller.scrollToPage(scroller.pagesX.length - 1);
                                     }
                                     scroll_el.removeClass('x-loading');
-                                    right_pull_msg.text('load more');
+                                    right_pull_msg.text('Load More...');
                                 }else{
                                     if(scroller.currPageX === scroller.pagesX.length){
                                         scroller.scrollToPage(scroller.pagesX.length - 1);
                                     }
 
                                     scroll_el.addClass('x-no-more');
-                                    right_pull_msg.text('end');
+                                    right_pull_msg.text('The End');
                                 }
                             }
                         };

@@ -229,6 +229,9 @@
             .ui-icon-search{
                 background-position: @ei-offset-x + 2px @gfx-extra-icon-sprite-search-y;
             }
+            .ui-icon-feed{
+                background-position: @ei-offset-x @gfx-extra-icon-sprite-person-y;
+            }
         }
         .load-more-inline{
             background-color: @color-off-white-tint;
@@ -259,6 +262,14 @@
             .ui-icon-refresh{
                 background-image: url('../gfx/refresh.png');
             }
+            
+            &.x-right-pull{
+                margin-right:@padding-image-grid-inset;
+            }
+
+            &.x-left-pull{
+                margin-right:-@padding-image-grid-inset;
+            }
 
             &.x-flipped{
                 .ui-icon{
@@ -280,6 +291,13 @@
                 }
             }
         }
+        .x-no-more{
+            .x-right-pull{
+                .ui-icon-refresh{
+                    display: none;
+                }
+            } 
+        }
 
         .ui-bar{
 
@@ -292,10 +310,9 @@
             top: 40px;
             width: 109%;
             background-color: rgba(255, 255, 255, .8);
-            min-height: 100px;
+            min-height: @size-img-thumb;
             margin-left: -8px;
             margin-right: -8px;
-            display: block;
             right: 0;
             .remove-stream{
                 display: inline-block;

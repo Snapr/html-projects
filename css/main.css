@@ -2565,6 +2565,9 @@ a.ui-link-inherit {
 .image-streams .image-stream .image-details .ui-icon-search {
   background-position: 2px -96px;
 }
+.image-streams .image-stream .image-details .ui-icon-feed {
+  background-position: 0 -64px;
+}
 .image-streams .image-stream .load-more-inline {
   background-color: #fbfbfb;
   display: inline-block;
@@ -2594,6 +2597,12 @@ a.ui-link-inherit {
 .image-streams .image-stream .load-more-inline .ui-icon-refresh {
   background-image: url('../gfx/refresh.png');
 }
+.image-streams .image-stream .load-more-inline.x-right-pull {
+  margin-right: 4px;
+}
+.image-streams .image-stream .load-more-inline.x-left-pull {
+  margin-right: -4px;
+}
 .image-streams .image-stream .load-more-inline.x-flipped .ui-icon {
   -webkit-transform: rotate(180deg) translatez(0);
 }
@@ -2606,16 +2615,18 @@ a.ui-link-inherit {
   -webkit-animation-iteration-count: infinite;
   -webkit-animation-timing-function: linear;
 }
+.image-streams .image-stream .x-no-more .x-right-pull .ui-icon-refresh {
+  display: none;
+}
 .image-streams .image-stream .edit-overlay {
   display: none;
   position: absolute;
   top: 40px;
   width: 109%;
   background-color: rgba(255, 255, 255, 0.8);
-  min-height: 100px;
+  min-height: 101px;
   margin-left: -8px;
   margin-right: -8px;
-  display: block;
   right: 0;
 }
 .image-streams .image-stream .edit-overlay .remove-stream {
