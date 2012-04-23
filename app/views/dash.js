@@ -52,9 +52,7 @@ snapr.views.dash = Backbone.View.extend({
         this.collection.fetch( options );
     },
     render: function(){
-        if(!snapr.auth.get("access_token")){
-            this.$el.find('.dash-welcome').show();
-        }
+        this.$el.find('.dash-welcome').toggle(!snapr.auth.get("access_token"));
         var streams = this.$el.find('.image-streams');
         streams.empty();
 
