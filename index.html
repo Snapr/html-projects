@@ -59,12 +59,12 @@
         <link rel="stylesheet" href="app/libs/jquery.mobile-1.1.0/jquery.mobile.structure-1.1.0.min.css" type="text/css" charset="utf-8">
 
         <!-- jQuery Mobs theme is replaced by a less css version
-        <link rel="stylesheet" href="app/libs/jquery.mobile-1.1.0/jquery.mobile-1.1.0.min.css" type="text/css" charset="utf-8"> 
+        <link rel="stylesheet" href="app/libs/jquery.mobile-1.1.0/jquery.mobile-1.1.0.min.css" type="text/css" charset="utf-8">
         -->
 
         <link rel="stylesheet" href="app/libs/photoswipe/photoswipe.css" type="text/css" charset="utf-8">
 
-        <!-- 
+        <!--
         You should use a less.css compiler to build your theme dynamically as you work..
         But if you don't have one you can uncomment the JS compiler and comment out theme.css
         <link href="css/main.less" rel="stylesheet/less" type="text/css">
@@ -1120,7 +1120,7 @@
                 <% if(model.get("latest_photo")){%>
                     <a class="ui-bar top-left-arrow" data-role="button" data-iconpos="right" data-icon="arrow-r" data-theme="e">
                         <span class="image-details x-details">
-                            <span class="ui-icon ui-icon-venue extra-icons"></span>
+                            <span class="ui-icon ui-icon-<%= model.get("display").type %> extra-icons"></span>
                             <em><%= model.get("display").short_title %></em>
                             <span class="image-tag x-tag"><%= model.get("latest_photo").description %></span>
                             <span class="image-time small-text">
