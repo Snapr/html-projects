@@ -2562,6 +2562,9 @@ a.ui-link-inherit {
 .image-streams .image-stream .image-link {
   padding-left: 4px;
 }
+.image-streams .image-stream .image-details .ui-icon-search {
+  background-position: 2px -96px;
+}
 .image-streams .image-stream .load-more-inline {
   background-color: #fbfbfb;
   display: inline-block;
