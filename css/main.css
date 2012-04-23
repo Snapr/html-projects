@@ -2612,10 +2612,9 @@ a.ui-link-inherit {
   top: 40px;
   width: 109%;
   background-color: rgba(255, 255, 255, 0.8);
-  min-height: 100px;
+  min-height: 101px;
   margin-left: -8px;
   margin-right: -8px;
-  display: block;
   right: 0;
 }
 .image-streams .image-stream .edit-overlay .remove-stream {

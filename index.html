@@ -1082,7 +1082,8 @@
 
            </div>
            <div data-role="content" data-theme="d">
-               <ul class="image-streams edit">
+               <ul class="image-streams">
+                   
                </ul>
 
                <div class="helper-content dash-welcome ui-content-inset" style="display:none;">
@@ -1149,6 +1150,11 @@
                     </a>
                     <div id="upload-popular-nearby-images" class="thumbs-grid thumbs-grid-med n-horizontal-scroll"></div>
                 <% } %>
+                
+                <div class="edit-overlay trans-bg">
+                    <a class="remove-stream" data-role="button" data-icon="delete" data-iconpos="right" data-theme="c">Remove</a>
+                </div>
+                
            </li>
         </script>
         <script id="dash-thumbs-template" type="text/template">
