@@ -66,6 +66,7 @@ snapr.views.side_scroll = Backbone.View.extend({
                         tag.html('&nbsp;');
                     }
                     details.find('.x-date').text(snapr.utils.short_timestamp(curr.data('date')));
+                    details.data('current', curr.data('id'));
 
                     // Pull to refresh: if scroll elements are .x-flipped - refresh
                     if(left_pull_el.is('.x-flipped') && !scroll_el.is('.x-loading')){

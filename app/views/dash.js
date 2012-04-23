@@ -19,8 +19,9 @@ snapr.views.dash = Backbone.View.extend({
         });
 
         $('a[data-query]', this.$el).live('click', function( e ){
-            var query = $(this).data('query');
-            Route.navigate('#/feed/?'+unescape(query));
+            var query = $(this).data('query'),
+                current = $(this).data('current');
+            Route.navigate('#/feed/?'+unescape(query)+'&photo_id='+current);
 
         });
 
