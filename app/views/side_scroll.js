@@ -111,7 +111,7 @@ snapr.views.side_scroll = Backbone.View.extend({
                     flip_pulls(this);
                 }
             });
-            this.scroller.scrollToPage(1);
+            this.scroller.scrollToPage(1, 1, 0);
         }catch(err){
 
         }
