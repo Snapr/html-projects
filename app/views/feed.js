@@ -131,26 +131,31 @@ snapr.views.feed = snapr.views.page.extend({
         var options = {
             success: function( collection, response )
             {
-                feed_view.feed_list = new snapr.views.feed_list({
-                    el: feed_view.$el.find('#feed-images')[0],
-                    collection: feed_view.photo_collection,
-                    list_style: list_style,
-                    back: feed_view.back
-                });
+                if(collection.length){
+                    feed_view.feed_list = new snapr.views.feed_list({
+                        el: feed_view.$el.find('#feed-images')[0],
+                        collection: feed_view.photo_collection,
+                        list_style: list_style,
+                        back: feed_view.back
+                    });
 
-                feed_view.feed_list.render( feed_view.photoswipe_init );
-                $.mobile.hidePageLoadingMsg();
-                feed_view.more_button(
-                    response.response &&
-                    response.response.photos &&
-                    response.response.photos.length == feed_view.photo_collection.data.n );
+                    feed_view.feed_list.render( feed_view.photoswipe_init );
+                    $.mobile.hidePageLoadingMsg();
+                    feed_view.more_button(
+                        response.response &&
+                        response.response.photos &&
+                        response.response.photos.length == feed_view.photo_collection.data.n );
+                }else{
+                    snapr.no_results.render('No Photos', 'delete').$el.appendTo(feed_view.$el.find('#feed-images'));
+                    $.mobile.hidePageLoadingMsg();
+                }
             },
             error:function()
             {
                 console.log('error');
                 $.mobile.hidePageLoadingMsg();
             }
-        }
+        };
 
         if (additional_data)
         {

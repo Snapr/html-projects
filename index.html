@@ -958,6 +958,13 @@
     <% } %>
     </script>
 
+    <!-- No Results element-->
+    <script id="no-results-template" type="text/template">
+        <div id="no-results">
+            <p class="imagealert"><span class="ui-icon ui-icon-<%= icon || "sadface" %> extra-icons"></span><%= message || "No results" %></p>
+        </div>
+    </script>
+
     <!-- @profile DIALOG-->
     <div id="user-profile" data-role="dialog" data-overlay-theme="c" data-theme="c">
         <div data-role="header" data-theme="c">
@@ -2087,6 +2094,7 @@
 <script src="app/views/activity.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/activity_stream.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/activity_stream_item.js" type="text/javascript" charset="utf-8"></script>
+<script src="app/views/no_results.js" type="text/javascript" charset="utf-8"></script>
 
 
 <script src="app/views/user_header.js" type="text/javascript" charset="utf-8"></script>
