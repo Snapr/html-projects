@@ -15,7 +15,7 @@ snapr.views.side_scroll = Backbone.View.extend({
     scroll_init: function(){
         var scroll_el = $('.x-scroll-area', this.el),
             details = $('.x-details', this.el),
-            pull_distance = -110,
+            pull_distance = -0,
             left_pull_el = $('.x-left-pull', this.el),
             right_pull_el = $('.x-right-pull', this.el),
             left_pull_msg = $('.x-msg', left_pull_el),
@@ -92,10 +92,9 @@ snapr.views.side_scroll = Backbone.View.extend({
                                     scroll_el.removeClass('x-loading');
                                     right_pull_msg.text('load more');
                                 }else{
-                                    // don't scroll the loading element off
-                                    // if(scroller.currPageX === scroller.pagesX.length){
-                                    //     scroller.scrollToPage(scroller.pagesX.length - 1);
-                                    // }
+                                    if(scroller.currPageX === scroller.pagesX.length){
+                                        scroller.scrollToPage(scroller.pagesX.length - 1);
+                                    }
 
                                     scroll_el.addClass('x-no-more');
                                     right_pull_msg.text('end');

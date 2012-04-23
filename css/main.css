@@ -2558,7 +2558,6 @@ a.ui-link-inherit {
 }
 .image-streams .image-stream .x-thumbs {
   display: inline-block;
-  padding-right: 5px;
 }
 .image-streams .image-stream .image-link {
   padding-left: 4px;
@@ -2594,11 +2593,6 @@ a.ui-link-inherit {
 }
 .image-streams .image-stream .load-more-inline.x-flipped .ui-icon {
   -webkit-transform: rotate(180deg) translatez(0);
-}
-.image-streams .image-stream .load-more-inline.noooo-right-pull {
-  position: absolute;
-  right: -101px;
-  top: 0;
 }
 .image-streams .image-stream .x-loading .load-more-inline .ui-icon-refresh {
   background-image: url('../gfx/spinner.png');
