@@ -2527,6 +2527,7 @@ a.ui-link-inherit {
 .thumbs-grid-med, .grid #feed-images {
   margin: 0 -8px;
   padding: 4px 0 0 4px;
+  min-height: 101px;
 }
 .thumbs-grid-med .image-link, .grid #feed-images .image-link {
   display: inline-block;
