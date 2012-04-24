@@ -4054,6 +4054,9 @@ a.ui-link-inherit {
   left: 4px;
   top: 20px;
 }
+.user-profile .user-buttons {
+  white-space: nowrap;
+}
 /*
 * @uploading - PAGE
 */
