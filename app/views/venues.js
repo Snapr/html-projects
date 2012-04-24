@@ -38,6 +38,7 @@ snapr.views.venues = snapr.views.dialog.extend({
 
     events: {
         "keyup input": "search",
+        "click .ui-input-clear": "search",
         "click .x-back": "back"
     },
 
@@ -71,13 +72,15 @@ snapr.views.venues = snapr.views.dialog.extend({
     reset_collection: function()
     {
         this.display_collection = _.clone( this.collection.models );
-        this.$el.find("input").val("")
+        // this.$el.find("input").val("")
         this.render();
     },
 
-    search: function(e)
+    search: function( e )
     {
-        var keywords = e.target.value.toLowerCase();
+        var venues_view = this;
+
+        var keywords = e.target && e.target.value && e.target.value.toLowerCase() || "";
 
         if (keywords.length > 0)
         {
@@ -86,10 +89,39 @@ snapr.views.venues = snapr.views.dialog.extend({
                 return (venue.get( "name" ).toLowerCase().indexOf( keywords ) > -1);
             });
             this.render();
+            var doSearch = function()
+            {
+                venues_view.collection.data.query = keywords;
+                venues_view.collection.fetch();
+            }
         }
         else
         {
-            this.reset_collection();
+            var doSearch = null;
+
+            this.display_collection = this.collection.models;
+            this.render();
+
+            if (this.collection.data.query)
+            {
+                delete this.collection.data.query;
+            }
+            this.collection.fetch();
         }
+
+        if (this.timer) {
+            // clear the previous timeout
+            window.clearTimeout(this.timer);
+        }
+
+        if (doSearch)
+        {
+            // set up a new timeout function
+            this.timer = window.setTimeout( function() {
+                venues_view.timer = null;
+                doSearch();
+            }, 300 );
+        }
+
     }
 });
