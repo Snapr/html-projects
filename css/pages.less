@@ -229,6 +229,11 @@
         margin-right: 0;
         padding-left: @size-large-avatar + @padding-page-inset;
         z-index: 0;
+        .ui-btn-right{
+            position: absolute;
+            right: -4px;
+            top: 2px;
+        }
     }
     .user-stats{
          text-align: center;
@@ -244,7 +249,12 @@
             font-size: @txt-size-big-number;
             font-family: @txt-font-special;
             padding: 10px 0 0 0;
+            height: 30px;
+            line-height:@txt-size-big-number + 4px ;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
+      
     }
     .ui-grid-b{
         .ui-block-a{
@@ -262,7 +272,7 @@
 
 .image-item-block{
     .image-item-topbar{
-        height:  @size-small-avatar;
+        height:  @size-small-avatar + 1px;/*haxy to account for mysterious icon overhang */
         margin-bottom: @padding-page-inset;
         vertical-align: middle;
         font-size: @txt-size-small;
