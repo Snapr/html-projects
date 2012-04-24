@@ -1067,7 +1067,7 @@
          Snaps</a>
         <%}%>
         <% if (user.get("details").stats.photos_favorited){%>
-        <a href="#/feed/?favorited_by=<%= user.get( "username" ) %>" data-role="button" data-ajax="false" data-icon="favs" class="extra-icons"><%= user.get("details").stats.photos_favorited %> Favourites</a>
+        <a href="#/feed/?favorited_by=<%= user.get( "username" ) %>" data-role="button" data-ajax="false" data-icon="favs" class="extra-icons"><%= user.get("details").stats.favorite_count %> Favourites</a>
          <%}%>
     </div>
     <hr>
