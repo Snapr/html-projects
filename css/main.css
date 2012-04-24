@@ -3403,6 +3403,11 @@ a.ui-link-inherit {
   padding-left: 108px;
   z-index: 0;
 }
+.feed-user-header .ui-bar .ui-btn-right {
+  position: absolute;
+  right: -4px;
+  top: 2px;
+}
 .feed-user-header .user-stats {
   text-align: center;
   color: #666666;
@@ -3418,6 +3423,10 @@ a.ui-link-inherit {
   font-size: 24px;
   font-family: 'MuseoSansRounded700', Helvetica, Arial, sans-serif;
   padding: 10px 0 0 0;
+  height: 30px;
+  line-height: 28px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .feed-user-header .ui-grid-b .ui-block-a {
   margin-left: -1px;
@@ -3430,7 +3439,9 @@ a.ui-link-inherit {
   margin-right: -1px;
 }
 .image-item-block .image-item-topbar {
-  height: 34px;
+  height: 35px;
+  /*haxy to account for mysterious icon overhang */
+
   margin-bottom: 8px;
   vertical-align: middle;
   font-size: 12px;
@@ -4042,6 +4053,9 @@ a.ui-link-inherit {
   width: 32px;
   left: 4px;
   top: 20px;
+}
+.user-profile .user-buttons {
+  white-space: nowrap;
 }
 /*
 * @uploading - PAGE
