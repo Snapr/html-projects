@@ -6,8 +6,7 @@ snapr.views.tumblr_xauth = snapr.views.dialog.extend({
 
         if (this.options.query)
         {
-            this.redirect = this.options.query.redirect;
-            console.log(this.options.query);
+            this.redirect = unescape( this.options.query.redirect );
         }
 
         if (this.options.query)
