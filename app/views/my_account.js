@@ -79,6 +79,17 @@ snapr.views.my_account = snapr.views.page.extend({
             }
         });
 
+        var hide_connect_heading = _.filter(linked_services_list, function(val){return !val;}).length ? false: true;
+        var hide_linked_heading = _.filter(linked_services_list, function(val){return val;}).length ? false: true;
+        if (hide_connect_heading)
+        {
+            this.$el.find(".connect-heading").hide();
+        }
+        if (hide_linked_heading)
+        {
+            this.$el.find(".linked-heading").hide();
+        }
+
         return this;
     },
 
@@ -163,9 +174,53 @@ snapr.views.my_account = snapr.views.page.extend({
         this.save_settings( param, $collapse[0] );
     },
 
-    save_account: function()
+    save_account: function( e )
     {
-        console.log( "save account" );
+        var $collapse = $(e.currentTarget).closest("[data-role='collapsible']");
+
+        var param = {};
+
+        var email = this.$el.find("#my-account-email").val();
+        var password = this.$el.find("#my-account-password").val();
+        var password_verify = this.$el.find("#my-account-password-verify").val();
+
+        this.$el.find("#my-account-password").val("");
+        this.$el.find("#my-account-password-verify").val("");
+
+        if (!email)
+        {
+            snapr.utils.notification("No email", "Please provide an email address", $.noop);
+            return;
+        }
+        else
+        {
+            if (email != this.user_settings.get("settings") && this.user_settings.get("settings").email)
+            {
+                param.email = email;
+            }
+        }
+        if (password)
+        {
+            if (!password_verify)
+            {
+                snapr.utils.notification("No verification password", "Please enter your password again", $.noop);
+                return;
+            }
+            else if (password != password_verify)
+            {
+                snapr.utils.notification("Passwords don't match", "Please enter your password again", $.noop);
+                return;
+            }
+            else
+            {
+                param.password = password;
+            }
+        }
+
+        if (!_.isEmpty( param ))
+        {
+            this.save_settings( param, $collapse[0] );
+        }
     },
 
     save_camplus: function( e )
