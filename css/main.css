@@ -4567,10 +4567,13 @@ a.ui-link-inherit {
 /* High Resolution (iPhone 4) */
 @media only screen and (-webkit-min-device-pixel-ratio: 2) {
   .ui-icon, .ui-icon-searchfield:after {
-    background-image: url('../gfx/general-jquerymob-icons.png');
-    background-repeat: no-repeat;
+    background-image: url('../gfx/retina/general-jquerymob-icons.png');
+    -moz-background-size: 774px 180px;
+    -o-background-size: 774px 180px;
+    -webkit-background-size: 774px 180px;
+    background-size: 774px 180px;
   }
-  .ui-btn-inner .ui-icon.extra-icons, .extra-icons .ui-btn-inner .ui-icon {
+  .ui-icon.extra-icons, .extra-icons .ui-icon {
     background-image: url('../gfx/retina/extra-icons.png');
     -moz-background-size: 32px 800px;
     -o-background-size: 32px 800px;

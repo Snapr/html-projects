@@ -1,13 +1,13 @@
 /* High Resolution (iPhone 4) */
 
 @media only screen and (-webkit-min-device-pixel-ratio: 2) {
-    .ui-icon,
+  .ui-icon,
     .ui-icon-searchfield:after {
-        background-image: url('../gfx/general-jquerymob-icons.png');
-    	background-repeat: no-repeat;
+        background-image: url('../gfx/retina/general-jquerymob-icons.png');
+    	.background-size (@gfx-general-icon-sprite-width, @gfx-general-icon-sprite-height);
     }
 
-    .ui-btn-inner .ui-icon.extra-icons,.extra-icons .ui-btn-inner .ui-icon{
+    .ui-icon.extra-icons,.extra-icons .ui-icon{
         background-image: url('../gfx/retina/extra-icons.png');
         .background-size (@gfx-extra-icon-sprite-width, @gfx-extra-icon-sprite-height);
     }
