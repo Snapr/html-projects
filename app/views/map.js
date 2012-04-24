@@ -309,6 +309,11 @@ snapr.views.map = snapr.views.page.extend({
 
     go_to_current_location: function()
     {
+        this.map_query.unset( "username", {silent: true} );
+        this.map_query.unset( "group", {silent: true} );
+        this.map_query.unset( "photo_id", {silent: true} );
+        this.map_query.set( {n: 10}, {silent: true} );
+
         // save a reference for this view to be passed to callback functions
         var map_view = this;
 
