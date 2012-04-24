@@ -649,17 +649,21 @@
 
        <div data-role="content" data-ajax="false">
            <div class="login-message"></div>
+           
+           
                <form action="javascript: void(0);" accept-charset="utf-8" id="tumblr-dialog">
-                   <fieldset>
-                       <div data-role="fieldcontain" class="ui-hide-label">
-                           <label for="username">Tumblr Email</label>
-                           <input type="text" name="username" placeholder="Tumblr Email..." autocapitalize="off" autocorrect="off" id="tumblr-username" >
-                        </div>
-                        <div data-role="fieldcontain" class="ui-hide-label">
+                   
+                    <ul data-role="listview" data-inset="true" data-theme="d">
+                        <li data-role="fieldcontain" class="ui-hide-label">
+                            <label for="username">Tumblr Email</label>
+                            <input type="text" name="username" placeholder="Tumblr Email" autocapitalize="off" autocorrect="off" id="tumblr-username" >
+                        </li>
+                        <li data-role="fieldcontain" class="ui-hide-label">
                             <label for="password">Password</label>
-                            <input type="password" name="password" placeholder="Password..." id="tumblr-password">
-                        </div>
-                    </fieldset>
+                            <input type="password" name="password" placeholder="Password" id="tumblr-password">
+                       </li>
+                    </ul>
+                   
                     <input type="submit" name="login" data-theme="e" value="Link Tumblr">
                </form>
            </div>
