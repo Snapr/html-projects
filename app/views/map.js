@@ -369,6 +369,10 @@ snapr.views.map = snapr.views.page.extend({
             {
                 delete urlParams.lng;
             }
+            if (urlParams.date)
+            {
+                urlParams.date = escape(urlParams.date);
+            }
 
             urlParams.back = "Map";
             Route.navigate( "#/feed/?" + $.param( urlParams ) );
