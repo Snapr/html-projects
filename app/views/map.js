@@ -29,7 +29,8 @@ snapr.views.map = snapr.views.page.extend({
         // create a backbone model to store the current map query
         // this lets us bind functions to changes and pass the query to subviews
         this.map_query = new Backbone.Model(query);
-        this.map_query.bind( "change", this.get_thumbs )
+        this.map_query.bind( "change", this.hide_no_results_message );
+        this.map_query.bind( "change", this.get_thumbs );
 
         this.map_settings = {
             zoom: this.map_query.get( "zoom" ) ||

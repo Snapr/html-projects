@@ -5,7 +5,6 @@ snapr.views.map_controls = Backbone.View.extend({
         _.bindAll( this );
         $(this.options.el).undelegate();
         this.setElement( this.options.el );
-        this.map_view = this.options.map_view;
         this.model.bind( "change", this.render );
         this.collection.bind( "reset", this.render );
     },
