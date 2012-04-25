@@ -9,8 +9,6 @@ snapr.views.dash_add_search = snapr.views.dialog.extend({
         });
     },
 
-    transition: "slideup",
-
     events: {
         "submit #search-form": "search",
         "click div[data-role='header'] a": "back"

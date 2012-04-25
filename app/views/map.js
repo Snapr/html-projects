@@ -10,6 +10,9 @@ snapr.views.map = snapr.views.page.extend({
         {
             query.n = 1;
         }
+        else{
+          query.n = 10;  
+        }
 
         snapr.utils.set_header_back_btn_text( this.el, query.back );
 
@@ -29,7 +32,8 @@ snapr.views.map = snapr.views.page.extend({
         // create a backbone model to store the current map query
         // this lets us bind functions to changes and pass the query to subviews
         this.map_query = new Backbone.Model(query);
-        this.map_query.bind( "change", this.get_thumbs )
+        this.map_query.bind( "change", this.hide_no_results_message );
+        this.map_query.bind( "change", this.get_thumbs );
 
         this.map_settings = {
             zoom: this.map_query.get( "zoom" ) ||
@@ -309,6 +313,11 @@ snapr.views.map = snapr.views.page.extend({
 
     go_to_current_location: function()
     {
+        this.map_query.unset( "username", {silent: true} );
+        this.map_query.unset( "group", {silent: true} );
+        this.map_query.unset( "photo_id", {silent: true} );
+        this.map_query.set( {n: 10}, {silent: true} );
+
         // save a reference for this view to be passed to callback functions
         var map_view = this;
 
@@ -362,6 +371,10 @@ snapr.views.map = snapr.views.page.extend({
             if (urlParams.lng)
             {
                 delete urlParams.lng;
+            }
+            if (urlParams.date)
+            {
+                urlParams.date = escape(urlParams.date);
             }
 
             urlParams.back = "Map";

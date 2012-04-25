@@ -70,8 +70,6 @@ snapr.views.join_snapr = snapr.views.dialog.extend({
         });
     },
 
-    transition: "slideup",
-
     events: {
         "submit #join-dialog": "join",
         "click .x-back": "back"

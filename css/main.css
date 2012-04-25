@@ -3431,6 +3431,11 @@ a.ui-link-inherit {
   padding-left: 108px;
   z-index: 0;
 }
+.feed-user-header .ui-bar .ui-btn-right {
+  position: absolute;
+  right: -4px;
+  top: 2px;
+}
 .feed-user-header .user-stats {
   text-align: center;
   color: #666666;
@@ -3446,6 +3451,10 @@ a.ui-link-inherit {
   font-size: 24px;
   font-family: 'MuseoSansRounded700', Helvetica, Arial, sans-serif;
   padding: 10px 0 0 0;
+  height: 30px;
+  line-height: 28px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .feed-user-header .ui-grid-b .ui-block-a {
   margin-left: -1px;
@@ -3458,7 +3467,9 @@ a.ui-link-inherit {
   margin-right: -1px;
 }
 .image-item-block .image-item-topbar {
-  height: 34px;
+  height: 35px;
+  /*haxy to account for mysterious icon overhang */
+
   margin-bottom: 8px;
   vertical-align: middle;
   font-size: 12px;
@@ -3700,6 +3711,9 @@ a.ui-link-inherit {
 /*
 * @dashboard - PAGE
 */
+.dash-wrapper {
+  min-height: 322px;
+}
 .dash-footer .ui-btn-inner .ui-icon {
   background-image: url('../gfx/dash-icons.png');
   width: 64px;
@@ -4070,6 +4084,9 @@ a.ui-link-inherit {
   width: 32px;
   left: 4px;
   top: 20px;
+}
+.user-profile .user-buttons {
+  white-space: nowrap;
 }
 /*
 * @uploading - PAGE
@@ -4595,10 +4612,13 @@ a.ui-link-inherit {
 /* High Resolution (iPhone 4) */
 @media only screen and (-webkit-min-device-pixel-ratio: 2) {
   .ui-icon, .ui-icon-searchfield:after {
-    background-image: url('../gfx/general-jquerymob-icons.png');
-    background-repeat: no-repeat;
+    background-image: url('../gfx/retina/general-jquerymob-icons.png');
+    -moz-background-size: 774px 180px;
+    -o-background-size: 774px 180px;
+    -webkit-background-size: 774px 180px;
+    background-size: 774px 180px;
   }
-  .ui-btn-inner .ui-icon.extra-icons, .extra-icons .ui-btn-inner .ui-icon {
+  .ui-icon.extra-icons, .extra-icons .ui-icon {
     background-image: url('../gfx/retina/extra-icons.png');
     -moz-background-size: 32px 800px;
     -o-background-size: 32px 800px;
