@@ -9,8 +9,6 @@ snapr.views.about = snapr.views.dialog.extend({
         });
     },
 
-    transition: "slideup",
-
     events: {
         "click .x-back": "back"
     }

@@ -23,8 +23,6 @@ snapr.views.login = snapr.views.dialog.extend({
         });
     },
 
-    transition: "slideup",
-
     events: {
         "submit #login-dialog":"log_in",
         "click .x-back": "back"

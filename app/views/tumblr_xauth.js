@@ -28,8 +28,6 @@ snapr.views.tumblr_xauth = snapr.views.dialog.extend({
         });
     },
 
-    transition: "slideup",
-
     events: {
         "submit #tumblr-dialog":"link_tumblr",
         "click .x-back": "back"

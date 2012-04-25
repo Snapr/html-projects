@@ -9,8 +9,6 @@ snapr.views.search = snapr.views.dialog.extend({
         });
     },
 
-    transition: "slideup",
-
     events: {
         "change #search-keywords": "update_placeholder",
         "change #search-type": "update_placeholder",

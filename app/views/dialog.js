@@ -51,6 +51,8 @@ snapr.views.dialog = snapr.views.page.extend({
             window.history.back();
         }
 
-    }
+    },
+
+    transition: "slideup",
 
 });
