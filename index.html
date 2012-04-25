@@ -193,7 +193,7 @@
     <div class="myaccount-header page-inset-header ui-body-c">
         <div class="ui-content">
          <a class="username" href="">
-                <div class="user-icon-small" style="background-image: url('http://sna.pr/avatars/<%= user_id %>?size=large'); background-size: 100% 100%"></div>
+                <div class="user-icon-small" style="background-image: url('<%= snapr.avatar_url %>/<%= user_id %>?size=large'); background-size: 100% 100%"></div>
                 <%= username %>
             </a>
                 <a href="#/logout/" class="logout-button" data-role="button" data-icon="delete" data-iconpos="right">Logout</a>
@@ -213,7 +213,7 @@
                 <fieldset data-role="controlgroup" class="my-account-avatar">
                    <div class="avatar-select-block">
                        <span class="user-profile-icon">
-                           <div class="user-icon-big" style="background-image: url('http://sna.pr/avatars/<%= user_id %>?size=large'); background-size: 100% 100%"></div>
+                           <div class="user-icon-big" style="background-image: url('<%= snapr.avatar_url %>/<%= user_id %>?size=large'); background-size: 100% 100%"></div>
 
                        </span>
 
@@ -789,7 +789,7 @@
            <div class="user-info-block">
                <div class="user-icon-left">
                    <a class="user-profile-icon" data-snapr-dialog="true" href="#/user/profile/?username=<%= user.get('username') %>">
-                       <div class="user-icon-big" style="background-image: url('http://sna.pr/avatars/<%= user.get('user_id') %>?size=large'); background-size: 100% 100%"></div>
+                       <div class="user-icon-big" style="background-image: url('<%= snapr.avatar_url %>/<%= user.get('user_id') %>?size=large'); background-size: 100% 100%"></div>
                        <div class="icon-overlay-info"></div>
                    </a>
                </div>
@@ -826,7 +826,7 @@
         <div class="image-item-block">
             <div class="image-item-topbar">
                 <a class="user-icon-link" data-transition="slide" href="#/feed/?username=<%= item.get('username') %><% if(back){%>&back=<%=back%><%}%>">
-                    <div class="user-icon-small" style="background-image: url('http://sna.pr/avatars/<%= item.get('user_id') %>/'); background-size: 100% 100%"></div>
+                    <div class="user-icon-small" style="background-image: url('<%= snapr.avatar_url %>/<%= item.get('user_id') %>/'); background-size: 100% 100%"></div>
                 </a>
                 <a class="username" data-transition="slide" href="#/feed/?username=<%= item.get('username') %><% if(back){%>&back=<%=back%><%}%>"><%= item.get('username') %></a>
 
@@ -983,7 +983,7 @@
     <div class="user-info-block">
         <div class="user-icon-left">
             <a class="user-profile-icon" href="#/feed/?username=<%= user.get( "username" ) %>">
-                <div class="user-icon-big" style="background-image: url('http://sna.pr/avatars/<%= user.get( "user_id" ) %>?size=large'); background-size: 100% 100%"></div>
+                <div class="user-icon-big" style="background-image: url('<%= snapr.avatar_url %>/<%= user.get( "user_id" ) %>?size=large'); background-size: 100% 100%"></div>
 
             </a>
         </div>
@@ -1274,7 +1274,7 @@
                 <% _.each( item.get("comments"), function( comment ){ %>
                     <li data-icon="false">
                         <a href="#/feed/?username=<%= comment.user.username %>">
-                            <img src="http://sna.pr/avatars/<%= comment.user.user_id %>" alt="<%= comment.user.username %>" class="user-icon-small ui-li-icon"/>
+                            <img src="<%= snapr.avatar_url %>/<%= comment.user.user_id %>" alt="<%= comment.user.username %>" class="user-icon-small ui-li-icon"/>
                             <h3 class="username"><%= comment.user.username %></h3> <span class="item-comment"><%= comment.comment %></span>
                         </a>
                     </li>
@@ -1285,7 +1285,7 @@
             <div class="image-likes">
                 <div class="icons-list">
                 <% _.each( item.get("favorites"), function( like ){ %>
-                    <a href="#/feed/?username=<% like.user.username %>"><img src="http://sna.pr/avatars/<%= like.user.user_id %>" alt="<%= like.user.username %>" class="user-icon-small ui-li-icon"/></a>
+                    <a href="#/feed/?username=<% like.user.username %>"><img src="<%= snapr.avatar_url %>/<%= like.user.user_id %>" alt="<%= like.user.username %>" class="user-icon-small ui-li-icon"/></a>
                 <% }); %>
                 </div>
                 <p>
@@ -1310,7 +1310,7 @@
         case "follow":%>
 
         <a href="#/feed/?username=<%= item.get("user").username %>">
-            <img src="http://sna.pr/avatars/<%= item.get("user").username %>" alt="<%= item.get("user").user_id %>" class="user-icon-small ui-li-icon"/>
+            <img src="<%= snapr.avatar_url %>/<%= item.get("user").username %>" alt="<%= item.get("user").user_id %>" class="user-icon-small ui-li-icon"/>
             <h3 class="username"><%= item.get("user").username %></h3> <span class="item-comment">is now following you.</span>
             <% if (!photo_events) { %>
             <p class="small-text">
@@ -1393,7 +1393,7 @@
     <!-- @person ITEM-->
     <script id="people-li-template" type="text/template">
            <a href="#/feed/?username=<%= user.get('username') %>">
-               <img src="http://sna.pr/avatars/<%= user.get('user_id') %>" alt="<%= user.get('username') %>" class="user-icon-small ui-li-icon"/>
+               <img src="<%= snapr.avatar_url %>/<%= user.get('user_id') %>" alt="<%= user.get('username') %>" class="user-icon-small ui-li-icon"/>
                <h3 class="username"><%= user.get('username') %></h3>
                <p class="small-text"><span class="photo-count"><%= user.get('photo_count') %></span> photos, <span class="followers"><%= user.get('followers') %></span> followers</p>
            </a>

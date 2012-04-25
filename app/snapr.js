@@ -363,6 +363,7 @@ function get_query_params(query) {
     });
 
     snapr.api_base = snapr.base_url + "/api";
+    snapr.avatar_url = snapr.base_url + "/avatars";
     snapr.access_token_url = snapr.base_url + "/ext/oauth/access_token/";
 
     return params;
@@ -660,7 +661,7 @@ snapr.routers = Backbone.Router.extend({
         {
             snapr.auth = new snapr.models.auth;
         }
-        
+
         window.location.hash = "";
         if(appmode){
             pass_data('snapr://logout');
@@ -672,7 +673,7 @@ snapr.routers = Backbone.Router.extend({
         snapr.utils.get_query_params( query_string );
         snapr.info.current_view = new snapr.views.join_snapr({
             el: $("#join-snapr")[0],
-           
+
         });
     },
 
