@@ -3683,6 +3683,9 @@ a.ui-link-inherit {
 /*
 * @dashboard - PAGE
 */
+.dash-wrapper {
+  min-height: 322px;
+}
 .dash-footer .ui-btn-inner .ui-icon {
   background-image: url('../gfx/dash-icons.png');
   width: 64px;
