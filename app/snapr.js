@@ -710,12 +710,13 @@ snapr.routers = Backbone.Router.extend({
         });
     },
 
-    about: function( query_string )
+    about: function( query_string, back_view )
     {
         var query = snapr.utils.get_query_params( query_string );
         snapr.info.current_view = new snapr.views.about({
             el: $("#about")[0],
-            query: query
+            query: query,
+            back_view: back_view
         });
     },
 
