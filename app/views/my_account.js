@@ -10,7 +10,7 @@ snapr.views.my_account = snapr.views.page.extend({
 
         var my_account_view = this;
         var options = {
-            data: {linked_services: true},
+            data: {linked_services: true, user_object: true},
             success: function()
             {
                 my_account_view.user_settings.linked_services_setup();
@@ -20,7 +20,7 @@ snapr.views.my_account = snapr.views.page.extend({
             {
                 console.log( 'error' , my_account_view );
             }
-        }
+        };
         this.user_settings.fetch( options );
     },
 
@@ -39,6 +39,7 @@ snapr.views.my_account = snapr.views.page.extend({
         $account_content
             .append( this.template({
                 username: snapr.auth.get( "snapr_user" ),
+                user_id: this.user_settings.get( "user" ).user_id,
                 settings: this.user_settings.get( "settings" ),
                 camplus: {
                     camplus_camera: (snapr.utils.get_local_param( "camplus_camera" ) == "true"),
