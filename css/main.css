@@ -1,4 +1,4 @@
-/* 
+/*
 *   - Always compile from this master file
 *   - Compiling individual files will throw errors because they require the
 *    variables, mixins, and sprites to come first.
@@ -3742,11 +3742,14 @@ a.ui-link-inherit {
 .share-photo .image-options .show-upload-settings {
   display: none;
 }
-.share-photo .image-options.show-image .upload-settings-layer {
+.share-photo.show-image .upload-settings-layer {
   display: none;
 }
-.share-photo .image-options.show-image .show-upload-settings {
+.share-photo.show-image .show-upload-settings {
   display: block;
+}
+.share-photo.show-image .ui-header {
+  display: none;
 }
 .share-photo .show-upload-settings .image-controls {
   position: absolute;

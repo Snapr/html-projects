@@ -571,8 +571,7 @@ snapr.views.share_photo = snapr.views.page.extend({
 
     toggle_photo: function( e )
     {
-        this.$el.find(".image-options").toggleClass("show-image");
-        this.$el.find("div[ data-role='header']").toggle();
+        this.$el.toggleClass("show-image");
     },
 
     upload_progress: function( upload_data )
