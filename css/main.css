@@ -551,7 +551,10 @@ hr {
 */
 body.browser-testing {
   width: 320px!important;
-  margin: 20px auto 0 20px!important;
+  margin: 0 auto 0 0!important;
+  /* this was 20px but some things are set to window height, meaning they were going 20px off the bottom
+    margin: 20px auto 0 20px!important; */
+
   display: block;
   position: relative;
   height: 100%!important;

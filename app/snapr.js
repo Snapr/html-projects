@@ -186,6 +186,10 @@ snapr.utils.amp_join = function( array_of_strings )
 snapr.utils.date_to_snapr_format = function (d) {
     return d.getFullYear() + '-' + (d.getMonth() + 1).zeroFill(2) + '-' + d.getDate().zeroFill(2) + ' 00:00:00';
 };
+snapr.utils.convert_snapr_date = function(time){
+    time = (time || "").replace(/-/g,"/").replace(/ \//g," -").replace(/[TZ]/g," ");
+    return new Date(time);
+};
 snapr.utils.short_timestamp = function( time, relative )
 {
     time = (time || "").replace(/-/g,"/").replace(/ \//g," -").replace(/[TZ]/g," ");
