@@ -643,8 +643,8 @@
 
 
     <!-- @tumblr xauth (for testing - go to #/tumblr-xauth/) -->
-    <div id="tumblr-xauth" data-add-back-btn="true" data-role="dialog" data-overlay-theme="c" data-theme="c">
-       <div data-role="header" data-theme="c">
+    <div id="tumblr-xauth" data-add-back-btn="true" data-role="dialog" data-overlay-theme="a" data-theme="a" class="special-bg tumblr-bg">
+       <div data-role="header" data-theme="a">
            <h1>Connect</h1>
        </div>
 
@@ -665,7 +665,9 @@
                        </li>
                     </ul>
 
-                    <input type="submit" name="login" data-theme="e" value="Link Tumblr">
+                    <a data-role="button" class="tumblr-button logo-button" data-theme="e">
+                        Connect <span class="tumblr-logo button-logo">Tumblr</span>
+                    </a>
                </form>
            </div>
        </div><!-- /page -->
@@ -1614,7 +1616,7 @@
     </script>
 
     <!-- @login log in as a snapr user (for testing - go to #/login/) -->
-    <div id="login" data-role="dialog" data-overlay-theme="c" data-theme="c" data-ajax="false" class="snapr-bg">
+    <div id="login" data-role="dialog" data-overlay-theme="c" data-theme="c" data-ajax="false" class="snapr-bg special-bg">
         <div data-role="header" data-theme="c">
             <h1>Log in</h1>
             <a class="x-back" data-role="button" data-icon="delete" data-iconpos="notext"></a>

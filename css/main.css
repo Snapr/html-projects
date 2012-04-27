@@ -1518,8 +1518,8 @@ a.ui-link-inherit {
 }
 .ui-dialog.ui-overlay-c {
   background: none;
-  background-color: #f7f7f7;
-  background-image: url('../gfx/bg-texture-light.gif');
+  background-color: #f7f7f7 !important;
+  background-image: url('../gfx/bg-texture-light.gif') !important;
   border: solid 1px #e4e4e4;
   text-shadow: 0 1px 1px #ffffff;
   border: none;
@@ -2954,11 +2954,12 @@ a.ui-link-inherit {
 }
 .button-logo.foursquare-logo {
   width: 100px;
-  background-position: 0 0px;
+  background-position: 0 -72px;
 }
 .button-logo.tumblr-logo {
-  width: 100px;
-  background-position: 0 0px;
+  width: 102px;
+  background-position: 0 -36px;
+  height: 32px;
 }
 .small-text {
   font-size: 12px;
@@ -3377,14 +3378,23 @@ a.ui-link-inherit {
 /*
 * @login - Custom
 */
-.snapr-bg {
+.ui-dialog.special-bg {
+  background-image: none!important;
+}
+.ui-dialog.special-bg div[data-role="content"] {
+  background: none;
+}
+.ui-dialog.snapr-bg {
   background-color: #ffff33 !important;
   -moz-box-shadow: inset 0px -2px 100px #ffe400;
   -webkit-box-shadow: inset 0px -2px 100px #ffe400;
   box-shadow: inset 0px -2px 100px #ffe400;
 }
-.snapr-bg div[data-role="content"] {
-  background: none;
+.ui-dialog.tumblr-bg {
+  background-color: #718199 !important;
+  -moz-box-shadow: inset 0px -2px 100px #2c3c54;
+  -webkit-box-shadow: inset 0px -2px 100px #2c3c54;
+  box-shadow: inset 0px -2px 100px #2c3c54;
 }
 .twitter-button.ui-btn-up-e {
   background: #68d9ff;
@@ -3454,6 +3464,76 @@ a.ui-link-inherit {
   color: white;
 }
 .twitter-button.ui-btn-down-e a.ui-link-inherit {
+  color: white;
+}
+.tumblr-button.ui-btn-up-e {
+  background: #5a687d;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#5a687d), to(#2c3c54));
+  /* Saf4+, Chrome */
+
+  background-image: -webkit-linear-gradient(top, #5a687d, #2c3c54);
+  /* Chrome 10+, Saf5.1+ */
+
+  background-image: -moz-linear-gradient(top, #5a687d, #2c3c54);
+  /* FF3.6 */
+
+  background-image: -ms-linear-gradient(top, #5a687d, #2c3c54);
+  /* IE10 */
+
+  background-image: -o-linear-gradient(top, #5a687d, #2c3c54);
+  /* Opera 11.10+ */
+
+  background-image: linear-gradient(top, #5a687d, #2c3c54);
+  color: white;
+}
+.tumblr-button.ui-btn-up-e a.ui-link-inherit {
+  color: white;
+}
+.tumblr-button.ui-btn-hover-e {
+  border: none;
+  background: #718199;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#65748c), to(#354865));
+  /* Saf4+, Chrome */
+
+  background-image: -webkit-linear-gradient(top, #65748c, #354865);
+  /* Chrome 10+, Saf5.1+ */
+
+  background-image: -moz-linear-gradient(top, #65748c, #354865);
+  /* FF3.6 */
+
+  background-image: -ms-linear-gradient(top, #65748c, #354865);
+  /* IE10 */
+
+  background-image: -o-linear-gradient(top, #65748c, #354865);
+  /* Opera 11.10+ */
+
+  background-image: linear-gradient(top, #65748c, #354865);
+  color: white;
+}
+.tumblr-button.ui-btn-hover-e a.ui-link-inherit {
+  color: white;
+}
+.tumblr-button.ui-btn-down-e {
+  border: none;
+  background: #5a687d;
+  background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, #5a687d), color-stop(0.7, #5a687d), color-stop(1, #4f5c6e));
+  /* Saf4+, Chrome */
+  background-image: -webkit-linear-gradient(bottom, #5a687d 0%, #5a687d 70%, #546174 100%);
+  /* Chrome 10+, Saf5.1+ */
+
+  background-image: -moz-linear-gradient(bottom, #5a687d 0%, #5a687d 70%, #546174 100%);
+  /* FF3.6 */
+
+  background-image: -ms-linear-gradient(bottom, #5a687d 0%, #5a687d 70%, #546174 100%);
+  /* IE10 */
+
+  background-image: -o-linear-gradient(bottom, #5a687d 0%, #5a687d 70%, #546174 100%);
+  /* Opera 11.10+ */
+
+  background-image: linear-gradient(bottom, #5a687d 0%, #5a687d 70%, #546174 100%);
+  color: white;
+}
+.tumblr-button.ui-btn-down-e a.ui-link-inherit {
   color: white;
 }
 /*

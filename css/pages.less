@@ -152,13 +152,21 @@
 * @login - Custom
 */
 
-.snapr-bg{
-    background-color: lighten(@color-snapr-yellow, 10%)!important;
-    .box-shadow(inset 0px -2px 100px @color-snapr-yellow-tint);
-    
+.ui-dialog.special-bg{
+    background-image: none!important;
     div[data-role="content"]{
         background: none;
     }
+}
+
+.ui-dialog.snapr-bg{
+    background-color: lighten(@color-snapr-yellow, 10%)!important;
+    .box-shadow(inset 0px -2px 100px @color-snapr-yellow-tint);
+}
+
+.ui-dialog.tumblr-bg{
+    background-color: lighten(@color-bg-tumblr-main, 10%)!important;
+    .box-shadow(inset 0px -2px 100px @color-bg-tumblr-main-tint);
 }
 
 
@@ -185,6 +193,35 @@
 	border: none;
 	background: @color-bg-twitter-main;
     .pressed-gradient(@color-bg-twitter-main, 3%);
+	color: white;
+	a.ui-link-inherit {
+		color: white;
+	}
+}
+
+.tumblr-button.ui-btn-up-e {
+	background: @color-bg-tumblr-main;
+    .linear-gradient(@color-bg-tumblr-main, @color-bg-tumblr-main-tint);
+	color: white;
+	a.ui-link-inherit {
+		color: white;
+	}
+}
+
+.tumblr-button.ui-btn-hover-e {
+	border: none;
+	background: lighten(@color-bg-tumblr-main, 10% );
+    .linear-gradient(lighten(@color-bg-tumblr-main, 5%), lighten(@color-bg-tumblr-main-tint, 5%));
+	color: white;
+	a.ui-link-inherit {
+		color: white;
+    }
+}
+
+.tumblr-button.ui-btn-down-e {
+	border: none;
+	background: @color-bg-tumblr-main;
+    .pressed-gradient(@color-bg-tumblr-main, 3%);
 	color: white;
 	a.ui-link-inherit {
 		color: white;
