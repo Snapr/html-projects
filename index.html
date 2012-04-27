@@ -1176,16 +1176,11 @@
                         </div>
                     </div>
                 <% }else{ %>
-                    <a class="ui-bar top-left-arrow" data-role="button" data-iconpos="right" data-icon="arrow-r" data-theme="e">
+                    <a class="ui-bar" data-role="button" data-iconpos="right" data-icon="arrow-r" data-theme="e">
                         <span class="ui-icon ui-icon-<%= model.get("display").type %> extra-icons"></span>
                         <em><%= model.get("display").short_title %></em>
                         <span class="image-tag">No photos yet</span>
                     </a>
-                    <div class="thumbs-grid thumbs-grid-med x-scroll-area">
-                        <div class="x-scroll-wrapper">
-                            <div class="x-thumbs"></div>
-                        </div>
-                    </div>
                 <% } %>
 
                 <div class="edit-overlay trans-bg">

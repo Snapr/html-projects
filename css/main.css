@@ -2308,32 +2308,15 @@ a.ui-link-inherit {
 * Elements - Non-Jquery Mobile Design Patterns that are shared across multiple pages
 */
 /* the thing that shows any time there are no results */
-#no-results {
-  width: 70%;
-}
 #no-results .imagealert {
-  background-color: #ffffff;
-  padding: 6px;
-  padding-left: 48px;
+  padding: 8px;
   position: relative;
-  color: #ff8400;
-  -moz-border-radius: 8px;
-  -webkit-border-radius: 8px;
-  border-radius: 8px;
-  border: solid #ffff00 4px;
-  font-size: 12px;
-  -moz-box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
-  -webkit-box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+  font-style: italic;
+  /* Not going to use icons for now */
+
 }
 #no-results .imagealert .ui-icon {
-  position: absolute;
-  left: 9px;
-  top: 3px;
-  /*
-            width: 32px;
-            height: 32px;*/
-
+  display: none;
 }
 /* @ui-bar Title Bars that pop up all over the place */
 .ui-bar {
@@ -4749,6 +4732,33 @@ a.ui-link-inherit {
   position: absolute;
   top: -9px;
   left: 186px;
+}
+.photo-map #no-results {
+  width: 70%;
+}
+.photo-map #no-results .imagealert {
+  background-color: #ffffff;
+  padding: 6px;
+  padding-left: 48px;
+  position: relative;
+  color: #ff8400;
+  -moz-border-radius: 8px;
+  -webkit-border-radius: 8px;
+  border-radius: 8px;
+  border: solid #ffff00 4px;
+  font-size: 12px;
+  -moz-box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+}
+.photo-map #no-results .imagealert .ui-icon {
+  position: absolute;
+  left: 9px;
+  top: 3px;
+  /*
+                width: 32px;
+                height: 32px;*/
+
 }
 /*
 * @app - PAGE
