@@ -73,7 +73,7 @@ snapr.views.people = snapr.views.dialog.extend({
 
             });
         }else{
-            snapr.no_results.render('No Matches', 'delete').$el.appendTo(this.$el);
+            snapr.no_results.render('Oops.. Nobody here yet.', 'delete').$el.appendTo(this.$el);
         }
 
         people_list.listview().listview("refresh");
