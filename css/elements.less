@@ -606,6 +606,41 @@
     font-family: @txt-font-special;
 }
 
+.block-link{
+    line-height: 36px;
+}
+
+.logo-button{
+    .ui-btn-inner{
+        padding-top: 1px;
+        padding-bottom: 1px;
+        line-height: 36px;
+    } 
+}
+
+.button-logo{
+    background-image: url('../gfx/service-full-logos.png');
+    height: 36px;
+    width: 150px;
+    display: inline-block;
+    overflow: hidden;
+    text-indent: -300px;
+    background-repeat: no-repeat;
+    &.twitter-logo{
+        width: 100px;
+        background-position: @ls-offset-x @gfx-service-logo-twitter-y;
+    }
+    &.foursquare-logo{
+        width: 100px;
+        background-position: @ls-offset-x @gfx-service-logo-foursquare-y;
+    }
+    &.tumblr-logo{
+        width: 100px;
+        background-position: @ls-offset-x @gfx-service-logo-tumblr-y;
+    }
+}
+
+
 
 .small-text{
     font-size: @txt-size-small;

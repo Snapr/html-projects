@@ -1614,7 +1614,7 @@
     </script>
 
     <!-- @login log in as a snapr user (for testing - go to #/login/) -->
-    <div id="login" data-role="dialog" data-overlay-theme="c" data-theme="c" data-ajax="false">
+    <div id="login" data-role="dialog" data-overlay-theme="c" data-theme="c" data-ajax="false" class="snapr-bg">
         <div data-role="header" data-theme="c">
             <h1>Log in</h1>
             <a class="x-back" data-role="button" data-icon="delete" data-iconpos="notext"></a>
@@ -1639,19 +1639,17 @@
                         <input type="submit" name="login" data-theme="e" value="Log In">
 
                 </form>
+                
+                <p class="block-link"><a href="#/forgot-password/">Forgot Password?</a></p>
 
-                <!-- <p>Log in with:</p>
-                <div data-role="navbar">
-                    <ul>
-                        <li><a href="#" data-role="button" data-theme="c">Twitter</a></li>
-                        <li><a href="#" data-role="button" data-theme="c">Facebook</a></li>
-                    </ul>
-                </div> -->
-
+             
+                
+                 <a data-role="button" class="twitter-button logo-button" data-theme="e">Login with <span class="twitter-logo button-logo">Twitter</span></a>
 
                 <p class="centered-link">
                     <a href="#/join/" data-snapr-dialog="true">Join Snapr &rsaquo;</a></li>
                 </p>
+               
             </div>
         </div>
     </div><!-- /page -->

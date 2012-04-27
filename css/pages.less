@@ -152,6 +152,45 @@
 * @login - Custom
 */
 
+.snapr-bg{
+    background-color: lighten(@color-snapr-yellow, 10%)!important;
+    .box-shadow(inset 0px -2px 100px @color-snapr-yellow-tint);
+    
+    div[data-role="content"]{
+        background: none;
+    }
+}
+
+
+.twitter-button.ui-btn-up-e {
+	background: @color-bg-twitter-main;
+    .linear-gradient(@color-bg-twitter-main, @color-bg-twitter-main-tint);
+	color: white;
+	a.ui-link-inherit {
+		color: white;
+	}
+}
+
+.twitter-button.ui-btn-hover-e {
+	border: none;
+	background: lighten(@color-bg-twitter-main, 10% );
+    .linear-gradient(lighten(@color-bg-twitter-main, 5%), lighten(@color-bg-twitter-main-tint, 5%));
+	color: white;
+	a.ui-link-inherit {
+		color: white;
+    }
+}
+
+.twitter-button.ui-btn-down-e {
+	border: none;
+	background: @color-bg-twitter-main;
+    .pressed-gradient(@color-bg-twitter-main, 3%);
+	color: white;
+	a.ui-link-inherit {
+		color: white;
+	}
+}
+
 
 /*
 * @feed PAGE
