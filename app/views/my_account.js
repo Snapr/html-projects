@@ -13,6 +13,7 @@ snapr.views.my_account = snapr.views.page.extend({
             data: {linked_services: true, user_object: true},
             success: function()
             {
+                $.mobile.hidePageLoadingMsg();
                 my_account_view.user_settings.linked_services_setup();
                 my_account_view.render();
             },
@@ -21,6 +22,7 @@ snapr.views.my_account = snapr.views.page.extend({
                 console.log( 'error' , my_account_view );
             }
         };
+        $.mobile.showPageLoadingMsg();
         this.user_settings.fetch( options );
     },
 
