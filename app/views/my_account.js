@@ -44,6 +44,7 @@ snapr.views.my_account = snapr.views.page.extend({
                 user_id: this.user_settings.get( "user" ).user_id,
                 settings: this.user_settings.get( "settings" ),
                 camplus: {
+                    camplus_menu: (snapr.utils.get_local_param( "camplus" ) == "true"),
                     camplus_camera: (snapr.utils.get_local_param( "camplus_camera" ) == "true"),
                     camplus_edit: (snapr.utils.get_local_param( "camplus_edit" ) == "true"),
                     camplus_lightbox: (snapr.utils.get_local_param( "camplus_lightbox" ) == "true"),
