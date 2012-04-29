@@ -708,7 +708,8 @@ snapr.routers = Backbone.Router.extend({
         }
 
         window.location.hash = "";
-        if(appmode){
+        if (snapr.utils.get_local_param( "appmode" ))
+        {
             pass_data('snapr://logout');
         }
     },
