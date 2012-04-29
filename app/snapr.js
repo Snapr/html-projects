@@ -862,21 +862,23 @@ snapr.routers = Backbone.Router.extend({
         });
     },
 
-    dash_add_person: function( query_string )
+    dash_add_person: function( query_string, back_view )
     {
         var query = snapr.utils.get_query_params( query_string );
         snapr.info.current_view = new snapr.views.dash_add_person({
             query: query,
-            el: $("#dash-add-person")[0]
+            el: $("#dash-add-person")[0],
+            back_view: back_view
         });
     },
 
-    dash_add_search: function( query_string )
+    dash_add_search: function( query_string, back_view )
     {
         var query = snapr.utils.get_query_params( query_string );
         snapr.info.current_view = new snapr.views.dash_add_search({
             query: query,
-            el: $("#dash-add-search")[0]
+            el: $("#dash-add-search")[0],
+            back_view: back_view
         });
     },
 
