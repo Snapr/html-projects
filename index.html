@@ -56,6 +56,9 @@
 
         <script src="app/libs/jquery.validate.min.js" type="text/javascript" charset="utf-8"></script>
 
+        <script src="app/libs/mobiscroll/mobiscroll-1.6.js" type="text/javascript" charset="utf-8"></script>
+        <link rel="stylesheet" href="app/libs/mobiscroll/mobiscroll-1.6.css" type="text/css" charset="utf-8">
+
         <link rel="stylesheet" href="app/libs/jquery.mobile-1.1.0/jquery.mobile.structure-1.1.0.min.css" type="text/css" charset="utf-8">
 
         <!-- jQuery Mobs theme is replaced by a less css version
@@ -193,7 +196,7 @@
     <div class="myaccount-header page-inset-header ui-body-c">
         <div class="ui-content">
          <a class="username" href="">
-                <div class="user-icon-small" style="background-image: url('http://sna.pr/avatars/<%= username %>?size=large'); background-size: 100% 100%"></div>
+                <div class="user-icon-small" style="background-image: url('<%= snapr.avatar_url %>/<%= user_id %>?size=large'); background-size: 100% 100%"></div>
                 <%= username %>
             </a>
                 <a href="#/logout/" class="logout-button" data-role="button" data-icon="delete" data-iconpos="right">Logout</a>
@@ -213,7 +216,7 @@
                 <fieldset data-role="controlgroup" class="my-account-avatar">
                    <div class="avatar-select-block">
                        <span class="user-profile-icon">
-                           <div class="user-icon-big" style="background-image: url('http://sna.pr/avatars/<%= username %>?size=large'); background-size: 100% 100%"></div>
+                           <div class="user-icon-big" style="background-image: url('<%= snapr.avatar_url %>/<%= user_id %>?size=large'); background-size: 100% 100%"></div>
 
                        </span>
 
@@ -640,8 +643,8 @@
 
 
     <!-- @tumblr xauth (for testing - go to #/tumblr-xauth/) -->
-    <div id="tumblr-xauth" data-add-back-btn="true" data-role="dialog" data-overlay-theme="c" data-theme="c">
-       <div data-role="header" data-theme="c">
+    <div id="tumblr-xauth" data-add-back-btn="true" data-role="dialog" data-overlay-theme="a" data-theme="a" class="special-bg tumblr-bg">
+       <div data-role="header" data-theme="a">
            <h1>Connect</h1>
        </div>
 
@@ -662,7 +665,9 @@
                        </li>
                     </ul>
 
-                    <input type="submit" name="login" data-theme="e" value="Link Tumblr">
+                    <a data-role="button" class="tumblr-button logo-button" data-theme="e">
+                        Connect <span class="tumblr-logo button-logo">Tumblr</span>
+                    </a>
                </form>
            </div>
        </div><!-- /page -->
@@ -789,7 +794,7 @@
            <div class="user-info-block">
                <div class="user-icon-left">
                    <a class="user-profile-icon" data-snapr-dialog="true" href="#/user/profile/?username=<%= user.get('username') %>">
-                       <div class="user-icon-big" style="background-image: url('http://sna.pr/avatars/<%= user.get('username') %>?size=large'); background-size: 100% 100%"></div>
+                       <div class="user-icon-big" style="background-image: url('<%= snapr.avatar_url %>/<%= user.get('user_id') %>?size=large'); background-size: 100% 100%"></div>
                        <div class="icon-overlay-info"></div>
                    </a>
                </div>
@@ -826,7 +831,7 @@
         <div class="image-item-block">
             <div class="image-item-topbar">
                 <a class="user-icon-link" data-transition="slide" href="#/feed/?username=<%= item.get('username') %><% if(back){%>&back=<%=back%><%}%>">
-                    <div class="user-icon-small" style="background-image: url('http://sna.pr/avatars/<%= item.get('username') %>/'); background-size: 100% 100%"></div>
+                    <div class="user-icon-small" style="background-image: url('<%= snapr.avatar_url %>/<%= item.get('user_id') %>/'); background-size: 100% 100%"></div>
                 </a>
                 <a class="username" data-transition="slide" href="#/feed/?username=<%= item.get('username') %><% if(back){%>&back=<%=back%><%}%>"><%= item.get('username') %></a>
 
@@ -962,6 +967,13 @@
     <% } %>
     </script>
 
+    <!-- No Results element-->
+    <script id="no-results-template" type="text/template">
+        <div id="no-results">
+            <p class="imagealert"><span class="ui-icon ui-icon-<%= icon || "sadface" %> extra-icons"></span><%= message || "No results" %></p>
+        </div>
+    </script>
+
     <!-- @profile DIALOG-->
     <div id="user-profile" data-role="dialog" data-overlay-theme="c" data-theme="c" data-ajax="false">
         <div data-role="header" data-theme="c">
@@ -976,7 +988,7 @@
     <div class="user-info-block">
         <div class="user-icon-left">
             <a class="user-profile-icon" href="#/feed/?username=<%= user.get( "username" ) %>">
-                <div class="user-icon-big" style="background-image: url('http://sna.pr/avatars/<%= user.get( "username" ) %>?size=large'); background-size: 100% 100%"></div>
+                <div class="user-icon-big" style="background-image: url('<%= snapr.avatar_url %>/<%= user.get( "user_id" ) %>?size=large'); background-size: 100% 100%"></div>
 
             </a>
         </div>
@@ -1086,39 +1098,39 @@
 
            </div>
            <div data-role="content" data-theme="d" data-ajax="false">
-               <ul class="image-streams">
-                    <li class="image-stream" id="upload-popular-nearby">
-                        <a class="ui-bar top-left-arrow x-details" data-role="button" data-iconpos="right" data-icon="arrow-r" data-theme="e">
-                            <span class="image-details">
-                                <span class="ui-icon ui-icon-nearby extra-icons"></span>
-                                <em>Nearby</em>
-                            </span>
-                        </a>
-                        <div id="upload-popular-nearby-images" class="thumbs-grid thumbs-grid-med x-loading x-scroll-area">
-                            <div class="x-scroll-wrapper"><!-- inner div for scroll -->
-                                <div class="x-left-pull thumb-med load-more-inline">
-                                    <span class="ui-icon ui-icon-refresh"></span>
-                                    <span class="ui-btn-text x-msg">Refresh</span>
+               <div class="dash-wrapper">
+                   <ul class="image-streams">
+                        <li class="image-stream" id="upload-popular-nearby">
+                            <a class="ui-bar top-left-arrow x-details" data-role="button" data-iconpos="right" data-icon="arrow-r" data-theme="e">
+                                <span class="image-details">
+                                    <span class="ui-icon ui-icon-nearby extra-icons"></span>
+                                    <em>Nearby</em>
+                                </span>
+                            </a>
+                            <div id="upload-popular-nearby-images" class="thumbs-grid thumbs-grid-med x-loading x-scroll-area">
+                                <div class="x-scroll-wrapper"><!-- inner div for scroll -->
+                                    <div class="x-left-pull thumb-med load-more-inline">
+                                        <span class="ui-icon ui-icon-refresh"></span>
+                                        <span class="ui-btn-text x-msg">Refresh</span>
+                                    </div>
+                                    <div class="x-thumbs"></div>
                                 </div>
-                                <div class="x-thumbs"></div>
                             </div>
-                        </div>
-                    </li>
-               </ul>
+                        </li>
+                   </ul>
 
-                <div class="helper-content dash-welcome ui-content-inset" style="display:none;">
-                   <a class="ui-bar top-no-arrow" data-role="button"  data-theme="c">
-                       <em>Welcome</em>
-                    </a>
-                    <div class="ui-body-c ui-body">
-                       <div class="ui-icon helper-icons ui-icon-dash">
+                    <div class="helper-content dash-welcome ui-content-inset" style="display:none;">
+                       <a class="ui-bar top-no-arrow" data-role="button"  data-theme="c">
+                           <em>Welcome</em>
+                        </a>
+                        <div class="ui-body-c ui-body">
+                           <div class="ui-icon helper-icons ui-icon-dash">
+                            </div>
+                            <p class="icon-left">
+                               Add your favorite people, or a search for something you want to keep track of.
+                            </p>
                         </div>
-                        <p class="icon-left">
-                           Add your favorite people, or a search for something you want to keep track of.
-                        </p>
-
                     </div>
-
                 </div>
 
                <div class="dash-footer inline-footer ui-body-c ">
@@ -1164,16 +1176,11 @@
                         </div>
                     </div>
                 <% }else{ %>
-                    <a class="ui-bar top-left-arrow" data-role="button" data-iconpos="right" data-icon="arrow-r" data-theme="e">
+                    <a class="ui-bar" data-role="button" data-iconpos="right" data-icon="arrow-r" data-theme="e">
                         <span class="ui-icon ui-icon-<%= model.get("display").type %> extra-icons"></span>
                         <em><%= model.get("display").short_title %></em>
                         <span class="image-tag">No photos yet</span>
                     </a>
-                    <div class="thumbs-grid thumbs-grid-med x-scroll-area">
-                        <div class="x-scroll-wrapper">
-                            <div class="x-thumbs"></div>
-                        </div>
-                    </div>
                 <% } %>
 
                 <div class="edit-overlay trans-bg">
@@ -1267,7 +1274,7 @@
                 <% _.each( item.get("comments"), function( comment ){ %>
                     <li data-icon="false">
                         <a href="#/feed/?username=<%= comment.user.username %>">
-                            <img src="http://sna.pr/avatars/<%= comment.user.username %>" alt="<%= comment.user.username %>" class="user-icon-small ui-li-icon"/>
+                            <img src="<%= snapr.avatar_url %>/<%= comment.user.user_id %>" alt="<%= comment.user.username %>" class="user-icon-small ui-li-icon"/>
                             <h3 class="username"><%= comment.user.username %></h3> <span class="item-comment"><%= comment.comment %></span>
                         </a>
                     </li>
@@ -1278,7 +1285,7 @@
             <div class="image-likes">
                 <div class="icons-list">
                 <% _.each( item.get("favorites"), function( like ){ %>
-                    <a href="#/feed/?username=<% like.user.username %>"><img src="http://sna.pr/avatars/<%= like.user.username %>" alt="<%= like.user.username %>" class="user-icon-small ui-li-icon"/></a>
+                    <a href="#/feed/?username=<% like.user.username %>"><img src="<%= snapr.avatar_url %>/<%= like.user.user_id %>" alt="<%= like.user.username %>" class="user-icon-small ui-li-icon"/></a>
                 <% }); %>
                 </div>
                 <p>
@@ -1303,7 +1310,7 @@
         case "follow":%>
 
         <a href="#/feed/?username=<%= item.get("user").username %>">
-            <img src="http://sna.pr/avatars/<%= item.get("user").username %>" alt="<%= item.get("user").username %>" class="user-icon-small ui-li-icon"/>
+            <img src="<%= snapr.avatar_url %>/<%= item.get("user").username %>" alt="<%= item.get("user").user_id %>" class="user-icon-small ui-li-icon"/>
             <h3 class="username"><%= item.get("user").username %></h3> <span class="item-comment">is now following you.</span>
             <% if (!photo_events) { %>
             <p class="small-text">
@@ -1386,7 +1393,7 @@
     <!-- @person ITEM-->
     <script id="people-li-template" type="text/template">
            <a href="#/feed/?username=<%= user.get('username') %>">
-               <img src="http://sna.pr/avatars/<%= user.get('username') %>" alt="<%= user.get('username') %>" class="user-icon-small ui-li-icon"/>
+               <img src="<%= snapr.avatar_url %>/<%= user.get('user_id') %>" alt="<%= user.get('username') %>" class="user-icon-small ui-li-icon"/>
                <h3 class="username"><%= user.get('username') %></h3>
                <p class="small-text"><span class="photo-count"><%= user.get('photo_count') %></span> photos, <span class="followers"><%= user.get('followers') %></span> followers</p>
            </a>
@@ -1604,7 +1611,7 @@
     </script>
 
     <!-- @login log in as a snapr user (for testing - go to #/login/) -->
-    <div id="login" data-role="dialog" data-overlay-theme="c" data-theme="c" data-ajax="false">
+    <div id="login" data-role="dialog" data-overlay-theme="c" data-theme="c" data-ajax="false" class="snapr-bg special-bg">
         <div data-role="header" data-theme="c">
             <h1>Log in</h1>
             <a class="x-back" data-role="button" data-icon="delete" data-iconpos="notext"></a>
@@ -1629,19 +1636,17 @@
                         <input type="submit" name="login" data-theme="e" value="Log In">
 
                 </form>
+                
+                <p class="block-link"><a href="#/forgot-password/">Forgot Password?</a></p>
 
-                <!-- <p>Log in with:</p>
-                <div data-role="navbar">
-                    <ul>
-                        <li><a href="#" data-role="button" data-theme="c">Twitter</a></li>
-                        <li><a href="#" data-role="button" data-theme="c">Facebook</a></li>
-                    </ul>
-                </div> -->
-
+             
+                
+                 <a data-role="button" class="twitter-button logo-button" data-theme="e">Login with <span class="twitter-logo button-logo">Twitter</span></a>
 
                 <p class="centered-link">
                     <a href="#/join/" data-snapr-dialog="true">Join Snapr &rsaquo;</a></li>
                 </p>
+               
             </div>
         </div>
     </div><!-- /page -->
@@ -2091,6 +2096,7 @@
 <script src="app/views/activity.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/activity_stream.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/activity_stream_item.js" type="text/javascript" charset="utf-8"></script>
+<script src="app/views/no_results.js" type="text/javascript" charset="utf-8"></script>
 
 
 <script src="app/views/user_header.js" type="text/javascript" charset="utf-8"></script>

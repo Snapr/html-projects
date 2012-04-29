@@ -16,6 +16,9 @@ snapr.views.thumbs_li = Backbone.View.extend({
             results: this.collection.models,
             back: this.back
         }) );
+        if(!this.collection.length){
+            snapr.no_results.render('No photos yet...', 'delete').$el.appendTo(this.$el);
+        }
 
         return this;
     }

@@ -15,7 +15,7 @@ snapr.views.popular = snapr.views.page.extend({
         this.photo_collection.data = {
             sort:"favorite_count",
             n:20
-        }
+        };
 
         this.list_view = new snapr.views.thumbs_li({
             collection: this.photo_collection,
@@ -50,7 +50,7 @@ snapr.views.popular = snapr.views.page.extend({
     {
         if (e && e.currentTarget)
         {
-            this.time_period = e.currentTarget.id.replace( 'popular-', '' )
+            this.time_period = e.currentTarget.id.replace( 'popular-', '' );
             snapr.utils.save_local_param( "popular-time", this.time_period );
         }
         else
@@ -82,7 +82,6 @@ snapr.views.popular = snapr.views.page.extend({
             success: function()
             {
                 // store the last query
-                console.log('store the last query');
                 $('#popular-thumbs').data('query', {
                     time: popular_view.time_period,
                     auth: snapr.auth.attributes
@@ -93,7 +92,7 @@ snapr.views.popular = snapr.views.page.extend({
                 console.log( "error fetching popular photos", e );
                 $.mobile.hidePageLoadingMsg();
             }
-        }
+        };
 
         this.update_time_buttons();
 

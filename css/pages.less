@@ -75,7 +75,7 @@
         }
     }
      /* Smaller 3 column Btns */
-    .ui-grid-b{              
+    .ui-grid-b{
        /* tricky Border in between btns */
        .ui-block-b{
            border-left: @border-medium-on-light;
@@ -93,11 +93,11 @@
         /* Shadow under top button block */
         .box-shadow(rgba(0, 0, 0, 0.2) 0px 2px 2px);
         z-index: 5;
-        
+
         .ui-btn{
             color: @color-txt-medium-on-light;
             font-size: @txt-size-base;
-            
+
             background-color: #f2f2f2;
             background-color: rgba(128,128,128, .1);
             .ui-btn-inner{
@@ -114,9 +114,9 @@
             .ui-btn-text{
                 margin-top: 36px;
             }
-           
+
         }
-       
+
         /* tricky Border in between btns + rounded corners */
         .ui-block-a{
             border-right: @border-light-on-light;
@@ -140,7 +140,7 @@
             }
         }
     }
-    
+
     .ui-bar{
         margin-left: 0;
         margin-right: 0;
@@ -151,6 +151,82 @@
 /*
 * @login - Custom
 */
+
+.ui-dialog.special-bg{
+    background-image: none!important;
+    div[data-role="content"]{
+        background: none;
+    }
+}
+
+.ui-dialog.snapr-bg{
+    background-color: lighten(@color-snapr-yellow, 10%)!important;
+    .box-shadow(inset 0px -2px 100px @color-snapr-yellow-tint);
+}
+
+.ui-dialog.tumblr-bg{
+    background-color: lighten(@color-bg-tumblr-main, 10%)!important;
+    .box-shadow(inset 0px -2px 100px @color-bg-tumblr-main-tint);
+}
+
+
+.twitter-button.ui-btn-up-e {
+	background: @color-bg-twitter-main;
+    .linear-gradient(@color-bg-twitter-main, @color-bg-twitter-main-tint);
+	color: white;
+	a.ui-link-inherit {
+		color: white;
+	}
+}
+
+.twitter-button.ui-btn-hover-e {
+	border: none;
+	background: lighten(@color-bg-twitter-main, 10% );
+    .linear-gradient(lighten(@color-bg-twitter-main, 5%), lighten(@color-bg-twitter-main-tint, 5%));
+	color: white;
+	a.ui-link-inherit {
+		color: white;
+    }
+}
+
+.twitter-button.ui-btn-down-e {
+	border: none;
+	background: @color-bg-twitter-main;
+    .pressed-gradient(@color-bg-twitter-main, 3%);
+	color: white;
+	a.ui-link-inherit {
+		color: white;
+	}
+}
+
+.tumblr-button.ui-btn-up-e {
+	background: @color-bg-tumblr-main;
+    .linear-gradient(@color-bg-tumblr-main, @color-bg-tumblr-main-tint);
+	color: white;
+	a.ui-link-inherit {
+		color: white;
+	}
+}
+
+.tumblr-button.ui-btn-hover-e {
+	border: none;
+	background: lighten(@color-bg-tumblr-main, 10% );
+    .linear-gradient(lighten(@color-bg-tumblr-main, 5%), lighten(@color-bg-tumblr-main-tint, 5%));
+	color: white;
+	a.ui-link-inherit {
+		color: white;
+    }
+}
+
+.tumblr-button.ui-btn-down-e {
+	border: none;
+	background: @color-bg-tumblr-main;
+    .pressed-gradient(@color-bg-tumblr-main, 3%);
+	color: white;
+	a.ui-link-inherit {
+		color: white;
+	}
+}
 
 
 /*
@@ -254,7 +330,7 @@
             overflow: hidden;
             text-overflow: ellipsis;
         }
-      
+
     }
     .ui-grid-b{
         .ui-block-a{
@@ -501,7 +577,11 @@
 /*
 * @dashboard - PAGE
 */
-.dash-footer{  
+.dash-wrapper{
+    min-height: 322px;
+}
+
+.dash-footer{
     .ui-btn-inner{
         .ui-icon{
             background-image: url('../gfx/dash-icons.png');
@@ -534,18 +614,19 @@
     #description{
         height: 92px;
     }
-    .image-options{
-         .show-upload-settings{
-               display: none;
-           }
-        &.show-image{
-           .upload-settings-layer{
-               display: none;
-           }
-           .show-upload-settings{
-               display: block;
-           }
-        }
+    .image-options .show-upload-settings{
+        display: none;
+    }
+    &.show-image{
+       .upload-settings-layer{
+           display: none;
+       }
+       .show-upload-settings{
+           display: block;
+       }
+       .ui-header{
+           display: none;
+       }
     }
     .show-upload-settings{
         .image-controls{
@@ -1322,6 +1403,34 @@
         }
         &::after{
             .arrow-up(@arrow-size, @color-bg-neutral-light, 186px ,@arrow-y-shift + 2px);
+        }
+    }
+    
+    #no-results {
+        width:70%;
+
+        .imagealert {
+            background-color: #ffffff;
+            padding: 6px;
+            padding-left: 48px;
+            position: relative;
+            color: #ff8400;
+            -moz-border-radius: 8px;
+            -webkit-border-radius: 8px;
+            border-radius: 8px;
+            border: solid #ffff00 4px;
+            font-size: 12px;
+            -moz-box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+            -webkit-box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+
+            .ui-icon {
+                position: absolute;
+                left: 9px;
+                top: 3px;/*
+                width: 32px;
+                height: 32px;*/
+            }
         }
     }
 }

@@ -186,6 +186,10 @@ snapr.utils.amp_join = function( array_of_strings )
 snapr.utils.date_to_snapr_format = function (d) {
     return d.getFullYear() + '-' + (d.getMonth() + 1).zeroFill(2) + '-' + d.getDate().zeroFill(2) + ' 00:00:00';
 };
+snapr.utils.convert_snapr_date = function(time){
+    time = (time || "").replace(/-/g,"/").replace(/ \//g," -").replace(/[TZ]/g," ");
+    return new Date(time);
+};
 snapr.utils.short_timestamp = function( time, relative )
 {
     time = (time || "").replace(/-/g,"/").replace(/ \//g," -").replace(/[TZ]/g," ");
@@ -363,6 +367,7 @@ function get_query_params(query) {
     });
 
     snapr.api_base = snapr.base_url + "/api";
+    snapr.avatar_url = snapr.base_url + "/avatars";
     snapr.access_token_url = snapr.base_url + "/ext/oauth/access_token/";
 
     return params;
@@ -660,7 +665,7 @@ snapr.routers = Backbone.Router.extend({
         {
             snapr.auth = new snapr.models.auth;
         }
-        
+
         window.location.hash = "";
         if(appmode){
             pass_data('snapr://logout');
@@ -672,7 +677,7 @@ snapr.routers = Backbone.Router.extend({
         snapr.utils.get_query_params( query_string );
         snapr.info.current_view = new snapr.views.join_snapr({
             el: $("#join-snapr")[0],
-           
+
         });
     },
 
