@@ -32,6 +32,23 @@ snapr.views.page = Backbone.View.extend({
 
     change_page: function( options )
     {
+        if (this.$el.is("[data-add-back-btn='true']"))
+        {
+            var page = this;
+            var back_text = null;
+            this.$el.on( "pagebeforeshow", function( e, obj )
+            {
+                if (obj && obj.prevPage && obj.prevPage.length)
+                {
+                    if ($(obj.prevPage[0]).attr("id") == "home")
+                    {
+                        back_text = "Menu";
+                    }
+                }
+                snapr.utils.set_header_back_btn_text( page.el, back_text || page.options.query && page.options.query.back );
+            });
+        }
+
         var options = _.extend({
             changeHash: false
         }, options || {});
