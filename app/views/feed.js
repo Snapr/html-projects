@@ -91,8 +91,6 @@ snapr.views.feed = snapr.views.page.extend({
             var transition = "none";
         }
 
-        snapr.utils.set_header_back_btn_text( this.el, this.query.back );
-
         this.change_page({
             transition: transition
         });

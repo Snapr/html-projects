@@ -152,6 +152,82 @@
 * @login - Custom
 */
 
+.ui-dialog.special-bg{
+    background-image: none!important;
+    div[data-role="content"]{
+        background: none;
+    }
+}
+
+.ui-dialog.snapr-bg{
+    background-color: lighten(@color-snapr-yellow, 10%)!important;
+    .box-shadow(inset 0px -2px 100px @color-snapr-yellow-tint);
+}
+
+.ui-dialog.tumblr-bg{
+    background-color: lighten(@color-bg-tumblr-main, 10%)!important;
+    .box-shadow(inset 0px -2px 100px @color-bg-tumblr-main-tint);
+}
+
+
+.twitter-button.ui-btn-up-e {
+	background: @color-bg-twitter-main;
+    .linear-gradient(@color-bg-twitter-main, @color-bg-twitter-main-tint);
+	color: white;
+	a.ui-link-inherit {
+		color: white;
+	}
+}
+
+.twitter-button.ui-btn-hover-e {
+	border: none;
+	background: lighten(@color-bg-twitter-main, 10% );
+    .linear-gradient(lighten(@color-bg-twitter-main, 5%), lighten(@color-bg-twitter-main-tint, 5%));
+	color: white;
+	a.ui-link-inherit {
+		color: white;
+    }
+}
+
+.twitter-button.ui-btn-down-e {
+	border: none;
+	background: @color-bg-twitter-main;
+    .pressed-gradient(@color-bg-twitter-main, 3%);
+	color: white;
+	a.ui-link-inherit {
+		color: white;
+	}
+}
+
+.tumblr-button.ui-btn-up-e {
+	background: @color-bg-tumblr-main;
+    .linear-gradient(@color-bg-tumblr-main, @color-bg-tumblr-main-tint);
+	color: white;
+	a.ui-link-inherit {
+		color: white;
+	}
+}
+
+.tumblr-button.ui-btn-hover-e {
+	border: none;
+	background: lighten(@color-bg-tumblr-main, 10% );
+    .linear-gradient(lighten(@color-bg-tumblr-main, 5%), lighten(@color-bg-tumblr-main-tint, 5%));
+	color: white;
+	a.ui-link-inherit {
+		color: white;
+    }
+}
+
+.tumblr-button.ui-btn-down-e {
+	border: none;
+	background: @color-bg-tumblr-main;
+    .pressed-gradient(@color-bg-tumblr-main, 3%);
+	color: white;
+	a.ui-link-inherit {
+		color: white;
+	}
+}
+
 
 /*
 * @feed PAGE
@@ -1327,6 +1403,34 @@
         }
         &::after{
             .arrow-up(@arrow-size, @color-bg-neutral-light, 186px ,@arrow-y-shift + 2px);
+        }
+    }
+    
+    #no-results {
+        width:70%;
+
+        .imagealert {
+            background-color: #ffffff;
+            padding: 6px;
+            padding-left: 48px;
+            position: relative;
+            color: #ff8400;
+            -moz-border-radius: 8px;
+            -webkit-border-radius: 8px;
+            border-radius: 8px;
+            border: solid #ffff00 4px;
+            font-size: 12px;
+            -moz-box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+            -webkit-box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+
+            .ui-icon {
+                position: absolute;
+                left: 9px;
+                top: 3px;/*
+                width: 32px;
+                height: 32px;*/
+            }
         }
     }
 }

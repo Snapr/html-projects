@@ -183,6 +183,47 @@ snapr.utils.amp_join = function( array_of_strings )
         return "";
     }
 };
+snapr.utils.hashtag_links = function( comment )
+{
+    if (comment.length)
+    {
+        var hashcomment = comment.replace( /[#]+[A-Za-z0-9-_]+/g,
+        function( k )
+        {
+            var keyword = k.replace('#', '');
+            return '<a href="#/feed/?keywords=' + keyword + '">' + k + '</a>';
+        });
+        return hashcomment;
+    }
+    else
+    {
+        return "";
+    }
+}
+snapr.utils.at_links = function( comment )
+{
+    if (comment.length)
+    {
+        var atcomment = comment.replace( /[@]+[A-Za-z0-9-_]+/g,
+        function( u )
+        {
+            var user = u.replace('@', '');
+            return '<a href="#/feed/?username=' + user + '">' + u + '</a>';
+        });
+        return atcomment;
+    }
+    else
+    {
+        return "";
+    }
+}
+snapr.utils.comment_links = function( comment )
+{
+    var hashedcomment = snapr.utils.hashtag_links( comment );
+    var output = snapr.utils.at_links( hashedcomment );
+    return output;
+}
+
 snapr.utils.date_to_snapr_format = function (d) {
     return d.getFullYear() + '-' + (d.getMonth() + 1).zeroFill(2) + '-' + d.getDate().zeroFill(2) + ' 00:00:00';
 };
@@ -667,7 +708,8 @@ snapr.routers = Backbone.Router.extend({
         }
 
         window.location.hash = "";
-        if(appmode){
+        if (snapr.utils.get_local_param( "appmode" ))
+        {
             pass_data('snapr://logout');
         }
     },
@@ -821,21 +863,23 @@ snapr.routers = Backbone.Router.extend({
         });
     },
 
-    dash_add_person: function( query_string )
+    dash_add_person: function( query_string, back_view )
     {
         var query = snapr.utils.get_query_params( query_string );
         snapr.info.current_view = new snapr.views.dash_add_person({
             query: query,
-            el: $("#dash-add-person")[0]
+            el: $("#dash-add-person")[0],
+            back_view: back_view
         });
     },
 
-    dash_add_search: function( query_string )
+    dash_add_search: function( query_string, back_view )
     {
         var query = snapr.utils.get_query_params( query_string );
         snapr.info.current_view = new snapr.views.dash_add_search({
             query: query,
-            el: $("#dash-add-search")[0]
+            el: $("#dash-add-search")[0],
+            back_view: back_view
         });
     },
 

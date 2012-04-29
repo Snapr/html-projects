@@ -17,6 +17,9 @@ snapr.views.share_photo = snapr.views.page.extend({
             this.redirect_url = this.query.redirect_url;
         }
 
+        // make sure the view is empty
+        this.$el.find("[data-role='content']").empty();
+
         this.change_page();
 
         // if we are coming from the venue selection screen the model will be passed in
@@ -76,7 +79,8 @@ snapr.views.share_photo = snapr.views.page.extend({
             facebook_sharing: snapr.utils.get_local_param( "facebook-sharing" ) && true || false,
             tumblr_sharing: snapr.utils.get_local_param( "tumblr-sharing" ) && true || false,
             foursquare_sharing: snapr.utils.get_local_param( "foursquare-sharing" ) && true || false,
-            twitter_sharing: snapr.utils.get_local_param( "twitter-sharing" ) && true || false
+            twitter_sharing: snapr.utils.get_local_param( "twitter-sharing" ) && true || false,
+            edit: (snapr.utils.get_local_param( "aviary" )  == "true" || snapr.utils.get_local_param( "camplus_edit" )  == "true" ) && true || false
         }) ).trigger("create");
 
 

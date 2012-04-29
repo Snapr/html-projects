@@ -1,8 +1,8 @@
-snapr.views.dash_add_person = snapr.views.page.extend({
+snapr.views.dash_add_person = snapr.views.dialog.extend({
 
     initialize: function()
     {
-        snapr.views.page.prototype.initialize.call( this );
+        snapr.views.dialog.prototype.initialize.call( this );
 
         this.$el.find("ul.people-list").empty();
 
@@ -15,24 +15,15 @@ snapr.views.dash_add_person = snapr.views.page.extend({
             people_view.render();
         });
 
-        // if we are coming from the map view do a flip, otherwise do a slide transition
-        if ($.mobile.activePage.attr('id') == 'map' )
-        {
-            var transition = "flip";
-        }
-        else
-        {
-            var transition = "slideup";
-        }
-
         this.change_page( {
-            transition: transition
+            transition: this.transition
         });
 
     },
 
     events: {
-        "keyup input": "search"
+        "keyup input": "search",
+        "click .x-back": "back"
     },
 
     render: function()

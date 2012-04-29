@@ -11,10 +11,8 @@ snapr.views.map = snapr.views.page.extend({
             query.n = 1;
         }
         else{
-          query.n = 10;  
+          query.n = 10;
         }
-
-        snapr.utils.set_header_back_btn_text( this.el, query.back );
 
         this.change_page({
             transition: 'flip'

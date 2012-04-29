@@ -13,6 +13,7 @@ snapr.views.my_account = snapr.views.page.extend({
             data: {linked_services: true, user_object: true},
             success: function()
             {
+                $.mobile.hidePageLoadingMsg();
                 my_account_view.user_settings.linked_services_setup();
                 my_account_view.render();
             },
@@ -21,6 +22,7 @@ snapr.views.my_account = snapr.views.page.extend({
                 console.log( 'error' , my_account_view );
             }
         };
+        $.mobile.showPageLoadingMsg();
         this.user_settings.fetch( options );
     },
 
@@ -30,11 +32,13 @@ snapr.views.my_account = snapr.views.page.extend({
     {
         var $account_content = this.$el.find('.account-content').empty();
 
-        if (snapr.utils.get_local_param("appmode"))
-        {
-            this.upload_settings = new snapr.views.upload_settings();
-            $account_content.prepend( this.upload_settings.render().el );
-        }
+        // hidden for the moment
+
+        // if (snapr.utils.get_local_param("appmode"))
+        // {
+        //     this.upload_settings = new snapr.views.upload_settings();
+        //     $account_content.prepend( this.upload_settings.render().el );
+        // }
 
         $account_content
             .append( this.template({
@@ -42,6 +46,7 @@ snapr.views.my_account = snapr.views.page.extend({
                 user_id: this.user_settings.get( "user" ).user_id,
                 settings: this.user_settings.get( "settings" ),
                 camplus: {
+                    camplus_menu: (snapr.utils.get_local_param( "camplus" ) == "true"),
                     camplus_camera: (snapr.utils.get_local_param( "camplus_camera" ) == "true"),
                     camplus_edit: (snapr.utils.get_local_param( "camplus_edit" ) == "true"),
                     camplus_lightbox: (snapr.utils.get_local_param( "camplus_lightbox" ) == "true"),

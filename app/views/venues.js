@@ -72,7 +72,6 @@ snapr.views.venues = snapr.views.dialog.extend({
     reset_collection: function()
     {
         this.display_collection = _.clone( this.collection.models );
-        // this.$el.find("input").val("")
         this.render();
     },
 

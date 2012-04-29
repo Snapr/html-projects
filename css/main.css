@@ -105,6 +105,11 @@
 /* Vertical Layout of Icons */
 /* Horizontal offsets for theme swatches / hover states */
 /*
+* Linked services Logos '../gfx/service-full-logos.png'
+*/
+/* Vertical Layout of Icons */
+/* Horizontal offsets for theme swatches / hover states */
+/*
 * Icons - Positioning for icons in the app based on sprites.less
 */
 /* @defaulticons */
@@ -1554,6 +1559,10 @@ a.ui-link-inherit {
   background-color: transparent;
   color: rgba(200, 200, 200, 0.3);
 }
+.ui-body-c #no-results .imagealert {
+  padding: 16px;
+  color: #999999;
+}
 .ui-body-c .ui-content .ui-btn-up-c,
 .ui-body-c .ui-content .ui-btn-hover-c,
 .ui-body-c .ui-content .ui-btn-down-c,
@@ -1847,6 +1856,9 @@ a.ui-link-inherit {
   color: rgba(200, 200, 200, 0.3);
 }
 /* Border for inset list views for white BG content blocks and sneaky login field groups */
+.ui-listview-inset {
+  background-color: #ffffff;
+}
 .ui-listview-inset .ui-li.ui-body-d {
   border-top: solid 1px #e4e4e4;
 }
@@ -2300,32 +2312,15 @@ a.ui-link-inherit {
 * Elements - Non-Jquery Mobile Design Patterns that are shared across multiple pages
 */
 /* the thing that shows any time there are no results */
-#no-results {
-  width: 70%;
-}
 #no-results .imagealert {
-  background-color: #ffffff;
-  padding: 6px;
-  padding-left: 48px;
+  padding: 8px;
   position: relative;
-  color: #ff8400;
-  -moz-border-radius: 8px;
-  -webkit-border-radius: 8px;
-  border-radius: 8px;
-  border: solid #ffff00 4px;
-  font-size: 12px;
-  -moz-box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
-  -webkit-box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+  font-style: italic;
+  /* Not going to use icons for now */
+
 }
 #no-results .imagealert .ui-icon {
-  position: absolute;
-  left: 9px;
-  top: 3px;
-  /*
-            width: 32px;
-            height: 32px;*/
-
+  display: none;
 }
 /* @ui-bar Title Bars that pop up all over the place */
 .ui-bar {
@@ -2923,6 +2918,36 @@ a.ui-link-inherit {
   margin-top: 60px;
   font-family: 'MuseoSansRounded700', Helvetica, Arial, sans-serif;
 }
+.block-link {
+  line-height: 36px;
+}
+.logo-button .ui-btn-inner {
+  padding-top: 1px;
+  padding-bottom: 1px;
+  line-height: 36px;
+}
+.button-logo {
+  background-image: url('../gfx/service-full-logos.png');
+  height: 36px;
+  width: 150px;
+  display: inline-block;
+  overflow: hidden;
+  text-indent: -300px;
+  background-repeat: no-repeat;
+}
+.button-logo.twitter-logo {
+  width: 100px;
+  background-position: 0 0px;
+}
+.button-logo.foursquare-logo {
+  width: 100px;
+  background-position: 0 -72px;
+}
+.button-logo.tumblr-logo {
+  width: 102px;
+  background-position: 0 -36px;
+  height: 32px;
+}
 .small-text {
   font-size: 12px;
   font-family: Helvetica, Arial, sans-serif;
@@ -3340,6 +3365,164 @@ a.ui-link-inherit {
 /*
 * @login - Custom
 */
+.ui-dialog.special-bg {
+  background-image: none!important;
+}
+.ui-dialog.special-bg div[data-role="content"] {
+  background: none;
+}
+.ui-dialog.snapr-bg {
+  background-color: #ffff33 !important;
+  -moz-box-shadow: inset 0px -2px 100px #ffe400;
+  -webkit-box-shadow: inset 0px -2px 100px #ffe400;
+  box-shadow: inset 0px -2px 100px #ffe400;
+}
+.ui-dialog.tumblr-bg {
+  background-color: #718199 !important;
+  -moz-box-shadow: inset 0px -2px 100px #2c3c54;
+  -webkit-box-shadow: inset 0px -2px 100px #2c3c54;
+  box-shadow: inset 0px -2px 100px #2c3c54;
+}
+.twitter-button.ui-btn-up-e {
+  background: #68d9ff;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#68d9ff), to(#309dc2));
+  /* Saf4+, Chrome */
+
+  background-image: -webkit-linear-gradient(top, #68d9ff, #309dc2);
+  /* Chrome 10+, Saf5.1+ */
+
+  background-image: -moz-linear-gradient(top, #68d9ff, #309dc2);
+  /* FF3.6 */
+
+  background-image: -ms-linear-gradient(top, #68d9ff, #309dc2);
+  /* IE10 */
+
+  background-image: -o-linear-gradient(top, #68d9ff, #309dc2);
+  /* Opera 11.10+ */
+
+  background-image: linear-gradient(top, #68d9ff, #309dc2);
+  color: white;
+}
+.twitter-button.ui-btn-up-e a.ui-link-inherit {
+  color: white;
+}
+.twitter-button.ui-btn-hover-e {
+  border: none;
+  background: #9be6ff;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#82dfff), to(#3daacf));
+  /* Saf4+, Chrome */
+
+  background-image: -webkit-linear-gradient(top, #82dfff, #3daacf);
+  /* Chrome 10+, Saf5.1+ */
+
+  background-image: -moz-linear-gradient(top, #82dfff, #3daacf);
+  /* FF3.6 */
+
+  background-image: -ms-linear-gradient(top, #82dfff, #3daacf);
+  /* IE10 */
+
+  background-image: -o-linear-gradient(top, #82dfff, #3daacf);
+  /* Opera 11.10+ */
+
+  background-image: linear-gradient(top, #82dfff, #3daacf);
+  color: white;
+}
+.twitter-button.ui-btn-hover-e a.ui-link-inherit {
+  color: white;
+}
+.twitter-button.ui-btn-down-e {
+  border: none;
+  background: #68d9ff;
+  background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, #68d9ff), color-stop(0.7, #68d9ff), color-stop(1, #4ed3ff));
+  /* Saf4+, Chrome */
+  background-image: -webkit-linear-gradient(bottom, #68d9ff 0%, #68d9ff 70%, #59d5ff 100%);
+  /* Chrome 10+, Saf5.1+ */
+
+  background-image: -moz-linear-gradient(bottom, #68d9ff 0%, #68d9ff 70%, #59d5ff 100%);
+  /* FF3.6 */
+
+  background-image: -ms-linear-gradient(bottom, #68d9ff 0%, #68d9ff 70%, #59d5ff 100%);
+  /* IE10 */
+
+  background-image: -o-linear-gradient(bottom, #68d9ff 0%, #68d9ff 70%, #59d5ff 100%);
+  /* Opera 11.10+ */
+
+  background-image: linear-gradient(bottom, #68d9ff 0%, #68d9ff 70%, #59d5ff 100%);
+  color: white;
+}
+.twitter-button.ui-btn-down-e a.ui-link-inherit {
+  color: white;
+}
+.tumblr-button.ui-btn-up-e {
+  background: #5a687d;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#5a687d), to(#2c3c54));
+  /* Saf4+, Chrome */
+
+  background-image: -webkit-linear-gradient(top, #5a687d, #2c3c54);
+  /* Chrome 10+, Saf5.1+ */
+
+  background-image: -moz-linear-gradient(top, #5a687d, #2c3c54);
+  /* FF3.6 */
+
+  background-image: -ms-linear-gradient(top, #5a687d, #2c3c54);
+  /* IE10 */
+
+  background-image: -o-linear-gradient(top, #5a687d, #2c3c54);
+  /* Opera 11.10+ */
+
+  background-image: linear-gradient(top, #5a687d, #2c3c54);
+  color: white;
+}
+.tumblr-button.ui-btn-up-e a.ui-link-inherit {
+  color: white;
+}
+.tumblr-button.ui-btn-hover-e {
+  border: none;
+  background: #718199;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#65748c), to(#354865));
+  /* Saf4+, Chrome */
+
+  background-image: -webkit-linear-gradient(top, #65748c, #354865);
+  /* Chrome 10+, Saf5.1+ */
+
+  background-image: -moz-linear-gradient(top, #65748c, #354865);
+  /* FF3.6 */
+
+  background-image: -ms-linear-gradient(top, #65748c, #354865);
+  /* IE10 */
+
+  background-image: -o-linear-gradient(top, #65748c, #354865);
+  /* Opera 11.10+ */
+
+  background-image: linear-gradient(top, #65748c, #354865);
+  color: white;
+}
+.tumblr-button.ui-btn-hover-e a.ui-link-inherit {
+  color: white;
+}
+.tumblr-button.ui-btn-down-e {
+  border: none;
+  background: #5a687d;
+  background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, #5a687d), color-stop(0.7, #5a687d), color-stop(1, #4f5c6e));
+  /* Saf4+, Chrome */
+  background-image: -webkit-linear-gradient(bottom, #5a687d 0%, #5a687d 70%, #546174 100%);
+  /* Chrome 10+, Saf5.1+ */
+
+  background-image: -moz-linear-gradient(bottom, #5a687d 0%, #5a687d 70%, #546174 100%);
+  /* FF3.6 */
+
+  background-image: -ms-linear-gradient(bottom, #5a687d 0%, #5a687d 70%, #546174 100%);
+  /* IE10 */
+
+  background-image: -o-linear-gradient(bottom, #5a687d 0%, #5a687d 70%, #546174 100%);
+  /* Opera 11.10+ */
+
+  background-image: linear-gradient(bottom, #5a687d 0%, #5a687d 70%, #546174 100%);
+  color: white;
+}
+.tumblr-button.ui-btn-down-e a.ui-link-inherit {
+  color: white;
+}
 /*
 * @feed PAGE
 */
@@ -3869,7 +4052,7 @@ a.ui-link-inherit {
   padding: 0;
 }
 .share-photo .upload-image-sharing label[for="twitter-sharing"] .ui-icon {
-  background-position: 0px 0px;
+  background-position: 0 0px;
 }
 .share-photo .upload-image-sharing label[for="twitter-sharing"].ui-checkbox-on {
   background-color: #68d9ff;
@@ -3881,7 +4064,7 @@ a.ui-link-inherit {
   background-position: -42px 0px;
 }
 .share-photo .upload-image-sharing label[for="facebook-sharing"] .ui-icon {
-  background-position: 0px -42px;
+  background-position: 0 -42px;
 }
 .share-photo .upload-image-sharing label[for="facebook-sharing"].ui-checkbox-on {
   background-color: #507ab8;
@@ -3893,7 +4076,7 @@ a.ui-link-inherit {
   background-position: -42px -42px;
 }
 .share-photo .upload-image-sharing label[for="tumblr-sharing"] .ui-icon {
-  background-position: 0px -84px;
+  background-position: 0 -84px;
 }
 .share-photo .upload-image-sharing label[for="tumblr-sharing"].ui-checkbox-on {
   background-color: #5a687d;
@@ -3905,7 +4088,7 @@ a.ui-link-inherit {
   background-position: -42px -84px;
 }
 .share-photo .upload-image-sharing label[for="foursquare-sharing"] .ui-icon {
-  background-position: 0px -126px;
+  background-position: 0 -126px;
 }
 .share-photo .upload-image-sharing label[for="foursquare-sharing"].ui-checkbox-on {
   background-color: #34a0ce;
@@ -4554,6 +4737,33 @@ a.ui-link-inherit {
   top: -9px;
   left: 186px;
 }
+.photo-map #no-results {
+  width: 70%;
+}
+.photo-map #no-results .imagealert {
+  background-color: #ffffff;
+  padding: 6px;
+  padding-left: 48px;
+  position: relative;
+  color: #ff8400;
+  -moz-border-radius: 8px;
+  -webkit-border-radius: 8px;
+  border-radius: 8px;
+  border: solid #ffff00 4px;
+  font-size: 12px;
+  -moz-box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+}
+.photo-map #no-results .imagealert .ui-icon {
+  position: absolute;
+  left: 9px;
+  top: 3px;
+  /*
+                width: 32px;
+                height: 32px;*/
+
+}
 /*
 * @app - PAGE
 */
@@ -4750,6 +4960,13 @@ a.ui-link-inherit {
     -o-background-size: 288px 93px;
     -webkit-background-size: 288px 93px;
     background-size: 288px 93px;
+  }
+  .button-logo {
+    background-image: url('../gfx/retina/service-full-logos.png');
+    -moz-background-size: 150px 144px;
+    -o-background-size: 150px 144px;
+    -webkit-background-size: 150px 144px;
+    background-size: 150px 144px;
   }
   .image-streams .image-stream .load-more-inline .ui-icon-refresh {
     background-image: url('../gfx/retina/refresh.png');

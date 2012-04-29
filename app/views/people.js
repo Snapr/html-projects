@@ -6,14 +6,12 @@ snapr.views.people = snapr.views.dialog.extend({
 
         this.$el.find("ul.people-list").empty();
 
+        // a simple array of people which will be filtered and displayed
+        this.display_collection = [];
+
         this.collection = new snapr.models.user_collection();
 
-        var people_view = this;
-
-        this.collection.bind( "reset", function()
-        {
-            people_view.render();
-        });
+        this.collection.bind( "reset", this.reset_collection );
 
         // if we are coming from the map view do a flip, otherwise do a slide transition
         if ($.mobile.activePage.attr('id') == 'map' )
@@ -51,6 +49,7 @@ snapr.views.people = snapr.views.dialog.extend({
 
     events: {
         "keyup input": "search",
+        "click .ui-input-clear": "search",
         "click .x-back": "back"
     },
 
@@ -73,30 +72,43 @@ snapr.views.people = snapr.views.dialog.extend({
 
             });
         }else{
-            snapr.no_results.render('No Matches', 'delete').$el.appendTo(this.$el);
+            snapr.no_results.render('Oops.. Nobody here yet.', 'delete').$el.appendTo(this.$el);
         }
 
         people_list.listview().listview("refresh");
     },
 
-    search: function(e)
+    reset_collection: function()
     {
-        var keywords = $(e.target).val();
+        this.display_collection = _.clone( this.collection.models );
+        this.render();
+    },
+
+    search: function( e )
+    {
+        var people_view = this;
+
+        var keywords = e.target && e.target.value && e.target.value.toLowerCase() || "";
 
         if (keywords.length > 1)
         {
-            switch (this.options.follow){
-                case "following":
-                    // need new api
-                    break;
-                case "followers":
-                    // need new api
-                    break;
-                default:
-                    console.log( "keypress", e, keywords )
-                    // this.collection.user_search( keywords )
-                    break;
-            }
+            this.collection.data.username = keywords;
+            // switch (this.options.follow){
+            //     case "following":
+            //         // need new api
+            //         break;
+            //     case "followers":
+            //         // need new api
+            //         break;
+            //     default:
+            //         console.log( "keypress", e, keywords )
+            //         // this.collection.user_search( keywords )
+            //         break;
+            // }
+        }
+        else
+        {
+
         }
     }
 });

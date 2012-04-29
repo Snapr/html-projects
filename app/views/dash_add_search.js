@@ -11,7 +11,7 @@ snapr.views.dash_add_search = snapr.views.dialog.extend({
 
     events: {
         "submit #search-form": "search",
-        "click div[data-role='header'] a": "back"
+        "click .x-back": "back"
     },
 
     update_placeholder: function()

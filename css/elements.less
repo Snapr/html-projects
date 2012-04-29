@@ -4,29 +4,13 @@
 
 /* the thing that shows any time there are no results */
 #no-results {
-    width:70%;
-
     .imagealert {
-        background-color: #ffffff;
-        padding: 6px;
-        padding-left: 48px;
+        padding: @padding-element-inset;
         position: relative;
-        color: #ff8400;
-        -moz-border-radius: 8px;
-        -webkit-border-radius: 8px;
-        border-radius: 8px;
-        border: solid #ffff00 4px;
-        font-size: 12px;
-        -moz-box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
-        -webkit-box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
-        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
-
+        font-style: italic;
+        /* Not going to use icons for now */
         .ui-icon {
-            position: absolute;
-            left: 9px;
-            top: 3px;/*
-            width: 32px;
-            height: 32px;*/
+            display:none;
         }
     }
 }
@@ -605,6 +589,42 @@
     margin-top: 60px;
     font-family: @txt-font-special;
 }
+
+.block-link{
+    line-height: 36px;
+}
+
+.logo-button{
+    .ui-btn-inner{
+        padding-top: 1px;
+        padding-bottom: 1px;
+        line-height: 36px;
+    } 
+}
+
+.button-logo{
+    background-image: url('../gfx/service-full-logos.png');
+    height: 36px;
+    width: 150px;
+    display: inline-block;
+    overflow: hidden;
+    text-indent: -300px;
+    background-repeat: no-repeat;
+    &.twitter-logo{
+        width: 100px;
+        background-position: @ls-offset-x @gfx-service-logo-twitter-y;
+    }
+    &.foursquare-logo{
+        width: 100px;
+        background-position: @ls-offset-x @gfx-service-logo-foursquare-y;
+    }
+    &.tumblr-logo{
+        width: 102px;
+        background-position: @ls-offset-x @gfx-service-logo-tumblr-y;
+        height: 32px;
+    }
+}
+
 
 
 .small-text{

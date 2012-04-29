@@ -195,7 +195,7 @@
 
     <div class="myaccount-header page-inset-header ui-body-c">
         <div class="ui-content">
-         <a class="username" href="">
+         <a class="username" href="#/feed/?username=<%= username %>&back=My Account">
                 <div class="user-icon-small" style="background-image: url('<%= snapr.avatar_url %>/<%= user_id %>?size=large'); background-size: 100% 100%"></div>
                 <%= username %>
             </a>
@@ -352,6 +352,7 @@
                 </div>
             </div>
 
+            <% if (camplus.camplus_menu){ %>
             <div data-role="collapsible" data-collapsed="true" class="my-account-camplus">
                 <h3>Camera+</h3>
                 <fieldset data-role="controlgroup ui-body-c">
@@ -389,8 +390,8 @@
                         </div>
                 </div>
             </div>
-
             <!-- End camplus -->
+            <% } %>
 
         </div><!-- End of Nested Collapsible Set -->
 
@@ -643,8 +644,8 @@
 
 
     <!-- @tumblr xauth (for testing - go to #/tumblr-xauth/) -->
-    <div id="tumblr-xauth" data-add-back-btn="true" data-role="dialog" data-overlay-theme="c" data-theme="c">
-       <div data-role="header" data-theme="c">
+    <div id="tumblr-xauth" data-add-back-btn="true" data-role="dialog" data-overlay-theme="a" data-theme="a" class="special-bg tumblr-bg">
+       <div data-role="header" data-theme="a">
            <h1>Connect</h1>
        </div>
 
@@ -665,7 +666,9 @@
                        </li>
                     </ul>
 
-                    <input type="submit" name="login" data-theme="e" value="Link Tumblr">
+                    <a data-role="button" class="tumblr-button logo-button" data-theme="e">
+                        Connect <span class="tumblr-logo button-logo">Tumblr</span>
+                    </a>
                </form>
            </div>
        </div><!-- /page -->
@@ -757,7 +760,7 @@
         <% break; case 'search': %>
             <h4>Search for <em><%= feed_parameter %></em></h4>
         <% break; case 'favorites': %>
-            <h4>Favorited by <em><%= feed_parameter %></em></h4>
+            <h4>Favorited by <a href="#/feed/?username=<%= feed_parameter %>"><em><%= feed_parameter %></em></a></h4>
         <% break; case 'recent': %>
             <h4>Recent Uploads</h4>
         <% break; case 'feed': %>
@@ -867,7 +870,7 @@
                 <% if (item.get('description')){%>
                     <span class="ui-icon extra-icons ui-icon-quote"></span>
                 <%}%>
-                <%= item.get('description') %>
+                <%= snapr.utils.comment_links( item.get('description') ) %>
 
                 <% if (item.has('location') && item.get('location').spot_id){%>
                 <a class="goto-spot">
@@ -959,7 +962,7 @@
     <!-- @feed @reactions ITEM - display for comments / favs -->
     <script id="reaction-li-template" type="text/template">
     <% if(reaction.get('type') == 'comment'){ %>
-        <li><a href="#/feed/?username=<%= reaction.get('username') %>"><span class="username"><%= reaction.get('username') %>:</span> <%= reaction.get('comment') %></a></li>
+        <li><a href="#/feed/?username=<%= reaction.get('username') %>"><span class="username"><%= reaction.get('username') %>:</span></a><span><%= snapr.utils.comment_links( reaction.get('comment') ) %></span></li>
     <% }else{ %>
         <li><a href="#/feed/?username=<%= reaction.get('username') %>"><span class="username"><%= reaction.get('username') %></span> likes this.</a></li>
     <% } %>
@@ -1134,10 +1137,10 @@
                <div class="dash-footer inline-footer ui-body-c ">
                    <div class="ui-content ui-grid-a">
                        <div class="ui-block-a">
-                           <a class="more" data-role="button" data-iconpos="top" data-icon="person"  href="#/dash-add-person/">Add a Person</a>
+                           <a class="more" data-role="button" data-iconpos="top" data-icon="person" data-snapr-dialog="true" href="#/dash-add-person/">Add a Person</a>
                        </div>
                        <div class="ui-block-b">
-                           <a class="more" data-role="button" data-iconpos="top" data-icon="search" href="#/dash-add-search/">Add a Search</a>
+                           <a class="more" data-role="button" data-iconpos="top" data-icon="search" data-snapr-dialog="true" href="#/dash-add-search/">Add a Search</a>
                        </div>
                    </div>
                </div>
@@ -1174,16 +1177,11 @@
                         </div>
                     </div>
                 <% }else{ %>
-                    <a class="ui-bar top-left-arrow" data-role="button" data-iconpos="right" data-icon="arrow-r" data-theme="e">
+                    <a class="ui-bar" data-role="button" data-iconpos="right" data-icon="arrow-r" data-theme="e">
                         <span class="ui-icon ui-icon-<%= model.get("display").type %> extra-icons"></span>
                         <em><%= model.get("display").short_title %></em>
                         <span class="image-tag">No photos yet</span>
                     </a>
-                    <div class="thumbs-grid thumbs-grid-med x-scroll-area">
-                        <div class="x-scroll-wrapper">
-                            <div class="x-thumbs"></div>
-                        </div>
-                    </div>
                 <% } %>
 
                 <div class="edit-overlay trans-bg">
@@ -1199,9 +1197,10 @@
         </script>
 
         <!-- @dashaddperson DIALOG-->
-       <div id="dash-add-person" data-add-back-btn="true" data-role="dialog" data-overlay-theme="c" data-theme="c">
+       <div id="dash-add-person" data-role="dialog" data-overlay-theme="c" data-theme="c">
            <div data-role="header" data-theme="c">
                <h1>Add Person</h1>
+               <a class="x-back" data-role="button" data-icon="delete" data-iconpos="notext"></a>
            </div>
            <div data-role="content" data-theme="c" data-ajax="false">
                <div class="search-header">
@@ -1614,7 +1613,7 @@
     </script>
 
     <!-- @login log in as a snapr user (for testing - go to #/login/) -->
-    <div id="login" data-role="dialog" data-overlay-theme="c" data-theme="c" data-ajax="false">
+    <div id="login" data-role="dialog" data-overlay-theme="c" data-theme="c" data-ajax="false" class="snapr-bg special-bg">
         <div data-role="header" data-theme="c">
             <h1>Log in</h1>
             <a class="x-back" data-role="button" data-icon="delete" data-iconpos="notext"></a>
@@ -1640,18 +1639,16 @@
 
                 </form>
 
-                <!-- <p>Log in with:</p>
-                <div data-role="navbar">
-                    <ul>
-                        <li><a href="#" data-role="button" data-theme="c">Twitter</a></li>
-                        <li><a href="#" data-role="button" data-theme="c">Facebook</a></li>
-                    </ul>
-                </div> -->
+                <p class="block-link"><a href="#/forgot-password/">Forgot Password?</a></p>
 
+
+
+                 <a data-role="button" class="twitter-button logo-button" data-theme="e">Login with <span class="twitter-logo button-logo">Twitter</span></a>
 
                 <p class="centered-link">
                     <a href="#/join/" data-snapr-dialog="true">Join Snapr &rsaquo;</a></li>
                 </p>
+
             </div>
         </div>
     </div><!-- /page -->
@@ -2012,7 +2009,9 @@
                             </div>
 
                             <div class="ui-block-b">
+                            <% if (edit){ %>
                                 <a data-role="button" data-theme="d" class="x-edit-photo">Edit</a>
+                            <% } %>
                             </div>
 
                             <div class="ui-block-c">

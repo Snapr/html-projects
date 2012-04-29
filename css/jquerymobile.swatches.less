@@ -372,6 +372,12 @@
         background-color: transparent;
         color: @color-shadow-medium-on-light;
     }
+    #no-results{
+        .imagealert {
+            padding: @padding-element-inset * 2;
+            color: @color-txt-light-on-light;
+        }
+    }
 
      /* Grey Btns in body are slightly different */
       .ui-content{
@@ -542,6 +548,7 @@
 
 /* Border for inset list views for white BG content blocks and sneaky login field groups */
 .ui-listview-inset {
+    background-color: @color-bg-neutral-light;
     .ui-li.ui-body-d{
         border-top: @border-medium-on-light;
         &:first-child{
@@ -703,4 +710,7 @@
            .arrow-up(@arrow-size, darken(@color-bg-highlight-main, 3%), 50%, 3px);
     }
 }
+
+
+
 
