@@ -17,6 +17,9 @@ snapr.views.share_photo = snapr.views.page.extend({
             this.redirect_url = this.query.redirect_url;
         }
 
+        // make sure the view is empty
+        this.$el.find("[data-role='content']").empty();
+
         this.change_page();
 
         // if we are coming from the venue selection screen the model will be passed in
