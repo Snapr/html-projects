@@ -760,7 +760,7 @@
         <% break; case 'search': %>
             <h4>Search for <em><%= feed_parameter %></em></h4>
         <% break; case 'favorites': %>
-            <h4>Favorited by <em><%= feed_parameter %></em></h4>
+            <h4>Favorited by <a href="#/feed/?username=<%= feed_parameter %>"><em><%= feed_parameter %></em></a></h4>
         <% break; case 'recent': %>
             <h4>Recent Uploads</h4>
         <% break; case 'feed': %>
