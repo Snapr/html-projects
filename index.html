@@ -870,7 +870,7 @@
                 <% if (item.get('description')){%>
                     <span class="ui-icon extra-icons ui-icon-quote"></span>
                 <%}%>
-                <%= item.get('description') %>
+                <%= snapr.utils.comment_links( item.get('description') ) %>
 
                 <% if (item.has('location') && item.get('location').spot_id){%>
                 <a class="goto-spot">
@@ -962,7 +962,7 @@
     <!-- @feed @reactions ITEM - display for comments / favs -->
     <script id="reaction-li-template" type="text/template">
     <% if(reaction.get('type') == 'comment'){ %>
-        <li><a href="#/feed/?username=<%= reaction.get('username') %>"><span class="username"><%= reaction.get('username') %>:</span> <%= reaction.get('comment') %></a></li>
+        <li><a href="#/feed/?username=<%= reaction.get('username') %>"><span class="username"><%= reaction.get('username') %>:</span></a><span><%= snapr.utils.comment_links( reaction.get('comment') ) %></span></li>
     <% }else{ %>
         <li><a href="#/feed/?username=<%= reaction.get('username') %>"><span class="username"><%= reaction.get('username') %></span> likes this.</a></li>
     <% } %>
