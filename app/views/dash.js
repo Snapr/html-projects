@@ -21,6 +21,10 @@ snapr.views.dash = snapr.views.page.extend({
                 current = $(this).data('current');
             Route.navigate('#/feed/?' + unescape( query ) + '&photo_id=' + current );
         });
+
+        // make sure image streams are emptied
+        this.$el.find('.image-streams').empty();
+
         this.collection = new snapr.models.dash();
         this.populate();
     },
@@ -59,7 +63,7 @@ snapr.views.dash = snapr.views.page.extend({
 
     render: function()
     {
-        this.$el.find('.dash-welcome').toggle(!snapr.auth.get("access_token"));
+        this.$el.find('.dash-welcome').toggle(!snapr.auth.has("access_token"));
         var $streams = this.$el.find('.image-streams').empty();
         _.each( this.collection.models, function( item ){
             var li = new snapr.views.dash_stream({ collection: item.photos, model: item });
