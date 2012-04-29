@@ -30,11 +30,13 @@ snapr.views.my_account = snapr.views.page.extend({
     {
         var $account_content = this.$el.find('.account-content').empty();
 
-        if (snapr.utils.get_local_param("appmode"))
-        {
-            this.upload_settings = new snapr.views.upload_settings();
-            $account_content.prepend( this.upload_settings.render().el );
-        }
+        // hidden for the moment
+
+        // if (snapr.utils.get_local_param("appmode"))
+        // {
+        //     this.upload_settings = new snapr.views.upload_settings();
+        //     $account_content.prepend( this.upload_settings.render().el );
+        // }
 
         $account_content
             .append( this.template({
