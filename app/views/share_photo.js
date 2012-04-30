@@ -566,8 +566,16 @@ snapr.views.share_photo = snapr.views.page.extend({
 
                 _.extend(params, snapr.auth.attributes);
 
+                if (params.latitude && params.longitude)
+                {
+                    var ll = "?latitude=" + params.latitude + "&longitude=" + params.longitude;
+                }
+                else
+                {
+                    var ll = ""
+                }
 
-                Route.navigate("#/uploading/" );
+                Route.navigate( "#/uploading/" + ll );
                 pass_data("snapr://upload?" + $.param(params) );
             }
         }
