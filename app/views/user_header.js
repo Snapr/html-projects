@@ -7,6 +7,7 @@ snapr.views.user_header = Backbone.View.extend({
         this.setElement( this.options.el );
         this.template = _.template( $("#user-header-template").html() );
 
+        this.model.bind( "change:user_id", this.render );
         this.model.bind( "change:relationship", this.render );
 
         this.model.fetch({
