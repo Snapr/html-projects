@@ -568,7 +568,7 @@ snapr.views.share_photo = snapr.views.page.extend({
 
                 if (params.latitude && params.longitude)
                 {
-                    var ll = "?latitude=" + params.latitude + "&longitude=" + params.longitude;
+                    var ll = "?ll=" + params.latitude + "," + params.longitude;
                 }
                 else
                 {
