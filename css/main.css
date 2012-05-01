@@ -2663,7 +2663,7 @@ a.ui-link-inherit {
   top: 50%;
   margin-top: -18px;
 }
-.image-streams.edit .image-stream .edit-overlay {
+.edit .image-stream.user-stream .edit-overlay {
   display: block;
 }
 .x-scroll-wrapper {

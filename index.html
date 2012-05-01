@@ -1150,7 +1150,7 @@
 
        </div><!-- /page -->
         <script id="dash-stream-template" type="text/template">
-            <li class="image-stream" id="upload-popular-nearby">
+            <li class="image-stream<% if(model.get('id')){%> user-stream<% } %>" data-id="<%= model.get('id') %>">
                 <% if(model.get("latest_photo")){%>
                     <a class="ui-bar top-left-arrow x-details" data-query="<%= escape($.param(model.get("query"))) %>" data-role="button" data-iconpos="right" data-icon="arrow-r" data-theme="e">
                         <span class="image-details">
