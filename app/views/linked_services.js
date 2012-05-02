@@ -72,6 +72,7 @@ snapr.views.linked_services = snapr.views.dialog.extend({
             }
         }, this);
 
+        this.$el.find('.add-services').listview().listview("refresh");
         // console.log('end linked_services_list', linked_services_list);
 
         return this;
