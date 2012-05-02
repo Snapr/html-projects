@@ -911,13 +911,34 @@ h4{
     }
 }
 
+
 /* Inset list views for white BG content blocks and sneaky login field groups */
 .ui-listview-inset {
-    .ui-li{
+    background-color: @color-bg-neutral-light;
+    
+    li.ui-li{
         padding: 8px;
+        margin: 0;
         border: none;
+        background:none;
+        border-top: @border-medium-on-light;
+        
         &:first-child{
             border: none;
+        }
+        
+        h1,
+        h2,
+        h3,{
+            padding-left: 8px;
+            font-family: @txt-font-special;
+            font-weight: normal;
+            color: @color-txt-dark-on-light;
+        }
+        
+        .ui-link-inherit,
+        p{
+            padding-left: 8px;
         }
 
         input[type="text"],
@@ -929,6 +950,10 @@ h4{
             margin: 0;
             .border-box();
             .box-shadow(none);
+        }
+        
+        .ui-icon-arrow-r {
+            background-position: @gfx-general-icon-sprite-arrow-r-x @g-med-offset-y;
         }
     }
 }

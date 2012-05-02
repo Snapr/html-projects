@@ -1865,16 +1865,6 @@ a.ui-link-inherit {
   background-color: transparent;
   color: rgba(200, 200, 200, 0.3);
 }
-/* Border for inset list views for white BG content blocks and sneaky login field groups */
-.ui-listview-inset {
-  background-color: #ffffff;
-}
-.ui-listview-inset .ui-li.ui-body-d {
-  border-top: solid 1px #e4e4e4;
-}
-.ui-listview-inset .ui-li.ui-body-d:first-child {
-  border: none;
-}
 .ui-bar-d {
   background: #ffcc00;
   background-image: -webkit-gradient(linear, left top, left bottom, from(#ffcc00), to(#ff8400));
@@ -3234,14 +3224,29 @@ a.ui-link-inherit {
   margin: 0;
 }
 /* Inset list views for white BG content blocks and sneaky login field groups */
-.ui-listview-inset .ui-li {
+.ui-listview-inset {
+  background-color: #ffffff;
+}
+.ui-listview-inset li.ui-li {
   padding: 8px;
+  margin: 0;
+  border: none;
+  background: none;
+  border-top: solid 1px #e4e4e4;
+}
+.ui-listview-inset li.ui-li:first-child {
   border: none;
 }
-.ui-listview-inset .ui-li:first-child {
-  border: none;
+.ui-listview-inset li.ui-li h1, .ui-listview-inset li.ui-li h2, .ui-listview-inset li.ui-li h3 {
+  padding-left: 8px;
+  font-family: 'MuseoSansRounded700', Helvetica, Arial, sans-serif;
+  font-weight: normal;
+  color: #333333;
 }
-.ui-listview-inset .ui-li input[type="text"], .ui-listview-inset .ui-li input[type="password"], .ui-listview-inset .ui-li input[type="email"] {
+.ui-listview-inset li.ui-li .ui-link-inherit, .ui-listview-inset li.ui-li p {
+  padding-left: 8px;
+}
+.ui-listview-inset li.ui-li input[type="text"], .ui-listview-inset li.ui-li input[type="password"], .ui-listview-inset li.ui-li input[type="email"] {
   width: 100%;
   border: none;
   background: transparent;
@@ -3252,6 +3257,9 @@ a.ui-link-inherit {
   -moz-box-shadow: none;
   -webkit-box-shadow: none;
   box-shadow: none;
+}
+.ui-listview-inset li.ui-li .ui-icon-arrow-r {
+  background-position: -108px -36px;
 }
 /*
 * Page Specific Styles / Elelments
