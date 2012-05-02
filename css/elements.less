@@ -553,8 +553,18 @@
         &.ui-li{
             border-top: @border-medium-on-light!important;
             margin-bottom: 0;
+            &:first-child{
+                border-top: none!important;
+            }
         }
     }
+    /* Put the border back on for people / venues lists because i like it there */
+    &.people-list,
+    &.venue-list{
+        border-top: @border-medium-on-light!important;
+        
+    }
+    
     .ui-btn-inner{
        .ui-link-inherit{
            padding-top: @padding-element-inset * 2px!important;

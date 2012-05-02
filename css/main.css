@@ -2877,6 +2877,8 @@ a.ui-link-inherit {
 /* Strip bare the normal list style */
 .simple-list {
   background: none;
+  /* Put the border back on for people / venues lists because i like it there */
+
 }
 .simple-list .ui-li {
   padding: 0!important;
@@ -2889,6 +2891,12 @@ a.ui-link-inherit {
 .simple-list .ui-btn.ui-li {
   border-top: solid 1px #e4e4e4 !important;
   margin-bottom: 0;
+}
+.simple-list .ui-btn.ui-li:first-child {
+  border-top: none!important;
+}
+.simple-list.people-list, .simple-list.venue-list {
+  border-top: solid 1px #e4e4e4 !important;
 }
 .simple-list .ui-btn-inner .ui-link-inherit {
   padding-top: 16px !important;
