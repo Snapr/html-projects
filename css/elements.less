@@ -484,8 +484,65 @@
 }
 
 
+/* Inset list views for white BG content blocks and sneaky login field groups */
+.ui-listview-inset {
+    background-color: @color-bg-neutral-light;
+    
+    li.ui-li{
+        padding: 8px;
+        margin: 0;
+        border: none;
+        background:none;
+        border-top: @border-medium-on-light;
+        
+        &:first-child{
+            border: none;
+        }
+        
+        h1,
+        h2,
+        h3,{
+            padding-left: 8px;
+            font-family: @txt-font-special;
+            font-weight: normal;
+            color: @color-txt-dark-on-light;
+        }
+        
+        .ui-link-inherit,
+        p{
+            padding-left: 8px;
+        }
+
+        &.ui-li-has-icon{
+            .ui-link-inherit{
+                padding-left: @size-small-avatar;
+            }
+        }
+
+        input[type="text"],
+        input[type="password"],
+        input[type="email"]{
+            width: 100%;
+            border: none;
+            background: transparent;
+            margin: 0;
+            .border-box();
+            .box-shadow(none);
+        }
+        
+        .ui-icon-arrow-r {
+            background-position: @gfx-general-icon-sprite-arrow-r-x @g-med-offset-y;
+        }
+    }
+    
+    
+}
+
+
 /* Strip bare the normal list style */
 .simple-list{
+    background: none;
+    
     .ui-li{
         padding: 0!important;
     }
@@ -498,6 +555,10 @@
             margin-bottom: 0;
         }
     }
+    .ui-li-has-icon{
+        padding-left: @size-small-avatar + 4px;
+    }
+    
     .ui-li-icon{
         left: 0;
         top: @padding-element-inset;
@@ -515,6 +576,7 @@
     }
     .ui-li-desc{
         margin: -8px 0 0 0;
+        padding: 0;
         color: @color-txt-light-on-light;
     }
     .ui-li,
@@ -911,50 +973,4 @@ h4{
     }
 }
 
-
-/* Inset list views for white BG content blocks and sneaky login field groups */
-.ui-listview-inset {
-    background-color: @color-bg-neutral-light;
-    
-    li.ui-li{
-        padding: 8px;
-        margin: 0;
-        border: none;
-        background:none;
-        border-top: @border-medium-on-light;
-        
-        &:first-child{
-            border: none;
-        }
-        
-        h1,
-        h2,
-        h3,{
-            padding-left: 8px;
-            font-family: @txt-font-special;
-            font-weight: normal;
-            color: @color-txt-dark-on-light;
-        }
-        
-        .ui-link-inherit,
-        p{
-            padding-left: 8px;
-        }
-
-        input[type="text"],
-        input[type="password"],
-        input[type="email"]{
-            width: 100%;
-            border: none;
-            background: transparent;
-            margin: 0;
-            .border-box();
-            .box-shadow(none);
-        }
-        
-        .ui-icon-arrow-r {
-            background-position: @gfx-general-icon-sprite-arrow-r-x @g-med-offset-y;
-        }
-    }
-}
 

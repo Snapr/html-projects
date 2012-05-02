@@ -659,6 +659,10 @@ div[data-role="page"], div[data-role="dialog"] {
 .ui-btn-inner {
   padding: 9px 9px;
 }
+.ui-input-search {
+  background-color: white!important;
+  background-image: none!important;
+}
 .ui-input-search.ui-btn-corner-all {
   -moz-border-radius: 20px;
   -webkit-border-radius: 20px;
@@ -2826,7 +2830,51 @@ a.ui-link-inherit {
 .progress-bar .ui-icon-check {
   background-position: -252px -144px;
 }
+/* Inset list views for white BG content blocks and sneaky login field groups */
+.ui-listview-inset {
+  background-color: #ffffff;
+}
+.ui-listview-inset li.ui-li {
+  padding: 8px;
+  margin: 0;
+  border: none;
+  background: none;
+  border-top: solid 1px #e4e4e4;
+}
+.ui-listview-inset li.ui-li:first-child {
+  border: none;
+}
+.ui-listview-inset li.ui-li h1, .ui-listview-inset li.ui-li h2, .ui-listview-inset li.ui-li h3 {
+  padding-left: 8px;
+  font-family: 'MuseoSansRounded700', Helvetica, Arial, sans-serif;
+  font-weight: normal;
+  color: #333333;
+}
+.ui-listview-inset li.ui-li .ui-link-inherit, .ui-listview-inset li.ui-li p {
+  padding-left: 8px;
+}
+.ui-listview-inset li.ui-li.ui-li-has-icon .ui-link-inherit {
+  padding-left: 34px;
+}
+.ui-listview-inset li.ui-li input[type="text"], .ui-listview-inset li.ui-li input[type="password"], .ui-listview-inset li.ui-li input[type="email"] {
+  width: 100%;
+  border: none;
+  background: transparent;
+  margin: 0;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+.ui-listview-inset li.ui-li .ui-icon-arrow-r {
+  background-position: -108px -36px;
+}
 /* Strip bare the normal list style */
+.simple-list {
+  background: none;
+}
 .simple-list .ui-li {
   padding: 0!important;
 }
@@ -2837,6 +2885,9 @@ a.ui-link-inherit {
 .simple-list .ui-btn.ui-li {
   border-top: solid 1px #e4e4e4 !important;
   margin-bottom: 0;
+}
+.simple-list .ui-li-has-icon {
+  padding-left: 38px;
 }
 .simple-list .ui-li-icon {
   left: 0;
@@ -2852,6 +2903,7 @@ a.ui-link-inherit {
 }
 .simple-list .ui-li-desc {
   margin: -8px 0 0 0;
+  padding: 0;
   color: #999999;
 }
 .simple-list .ui-li, .simple-list .ui-li-link-alt {
@@ -3222,44 +3274,6 @@ a.ui-link-inherit {
 .ui-header .ui-controlgroup .ui-checkbox label, .ui-header .ui-controlgroup .ui-radio label {
   font-size: 12px;
   margin: 0;
-}
-/* Inset list views for white BG content blocks and sneaky login field groups */
-.ui-listview-inset {
-  background-color: #ffffff;
-}
-.ui-listview-inset li.ui-li {
-  padding: 8px;
-  margin: 0;
-  border: none;
-  background: none;
-  border-top: solid 1px #e4e4e4;
-}
-.ui-listview-inset li.ui-li:first-child {
-  border: none;
-}
-.ui-listview-inset li.ui-li h1, .ui-listview-inset li.ui-li h2, .ui-listview-inset li.ui-li h3 {
-  padding-left: 8px;
-  font-family: 'MuseoSansRounded700', Helvetica, Arial, sans-serif;
-  font-weight: normal;
-  color: #333333;
-}
-.ui-listview-inset li.ui-li .ui-link-inherit, .ui-listview-inset li.ui-li p {
-  padding-left: 8px;
-}
-.ui-listview-inset li.ui-li input[type="text"], .ui-listview-inset li.ui-li input[type="password"], .ui-listview-inset li.ui-li input[type="email"] {
-  width: 100%;
-  border: none;
-  background: transparent;
-  margin: 0;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-  -moz-box-shadow: none;
-  -webkit-box-shadow: none;
-  box-shadow: none;
-}
-.ui-listview-inset li.ui-li .ui-icon-arrow-r {
-  background-position: -108px -36px;
 }
 /*
 * Page Specific Styles / Elelments
@@ -4497,7 +4511,7 @@ a.ui-link-inherit {
 .account-content .myaccount-header .logout-button .ui-icon-delete {
   background-position: -72px -36px;
 }
-.account-content .myaccount-settings {
+.account-content .myaccount-quicklinks {
   margin-top: -10px;
 }
 .account-content .ui-collapsible-set {
