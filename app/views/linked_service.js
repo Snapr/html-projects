@@ -1,6 +1,6 @@
 snapr.views.linked_service = Backbone.View.extend({
 
-    tagName: 'div',
+    tagName: 'li',
 
     initialize: function()
     {

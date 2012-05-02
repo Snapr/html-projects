@@ -775,6 +775,9 @@ input.ui-input-text, textarea.ui-input-text {
   margin: 0;
   margin-bottom: 16px;
 }
+.ui-collapsible-set li {
+  list-style: none;
+}
 /* Less CSS rework of jQuery Mobile Theme */
 /* links within "buttons" 
 -----------------------------------------------------------------------------------------------------------*/

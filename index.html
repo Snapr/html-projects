@@ -409,9 +409,10 @@
         <a class="ui-bar top-no-arrow connect-heading" data-role="button" data-theme="e" >
                 <em>Connect</em>
           </a>
-         <div class="add-services" data-role="collapsible-set" data-theme="c" data-content-theme="d">
-         </div>
 
+         <ul class="simple-list add-services" data-role="listview">
+         
+         </ul>
 
           <a class="ui-bar top-no-arrow linked-heading" data-role="button" data-theme="e" >
                <em>Linked Services</em>
@@ -456,80 +457,51 @@
             <div class="services-content">
                 <h2 class="tolink-message"></h2>
                 <h4>Connect</h4>
-                <div class="add-services">
-                </div>
+                <ul class="simple-list add-services" data-role="listview">
+                </ul>
                 <h4>Linked Services</h4>
                 <div class="linked-services">
                 </div>
+                
             </div>
         </div>
     </div>
 
     <!-- @link @service ITEMfor linking a service in #linked-services -->
     <script id="add-linked-service-template" type="text/template">
-    <div data-role="collapsible" data-collapsed="true">
+    
     <% switch(provider) { case 'twitter': %>
-        <h3>
+        <a class="link-service">
             <span class="twitter-sharing sharing-icon-small">
                 <span class="ui-icon"></span>
             </span>
         Link Twitter
-        </h3>
-        <fieldset data-role="controlgroup">
-        </fieldset>
-        <div class="ui-grid-b">
-            <div class="ui-block-a"></div>
-            <div class="ui-block-b"></div>
-            <div class="ui-block-c"><button data-theme="e" class="link-service">Link</button>
-        </div>
+        </a>
 
     <% break; case 'foursquare': %>
-        <h3>
+        <a class="link-service">
             <span class="foursquare-sharing sharing-icon-small">
                 <span class="ui-icon"></span>
             </span>
         Link Foursquare
-        </h3>
-        <fieldset data-role="controlgroup">
-        </fieldset>
-        <div class="ui-grid-b">
-            <div class="ui-block-a"></div>
-            <div class="ui-block-b"></div>
-            <div class="ui-block-c"><button data-theme="e" class="link-service">Link</button>
-        </div>
+        </a>
 
     <% break; case 'tumblr': %>
-        <h3>
+        <a class="link-service">
             <span class="tumblr-sharing sharing-icon-small">
                 <span class="ui-icon"></span>
             </span>
         Link Tumblr
-        </h3>
-        <fieldset data-role="controlgroup">
-        </fieldset>
-        <div class="ui-grid-b">
-            <div class="ui-block-a"></div>
-            <div class="ui-block-b"></div>
-            <div class="ui-block-c"><button data-theme="e" class="link-service">Link</button>
-        </div>
-
+        </a>
     <% break; case 'facebook': %>
-        <h3>
-        <span class="facebook-sharing sharing-icon-small">
-            <span class="ui-icon"></span>
-        </span>
-        Link Facebook
-        </h3>
-        <fieldset data-role="controlgroup">
-        </fieldset>
-
-        <div class="ui-grid-b">
-            <div class="ui-block-a"></div>
-            <div class="ui-block-b"></div>
-            <div class="ui-block-c"><button data-theme="e" class="link-service">Link</button>
-        </div>
+        <a class="link-service">
+            <span class="facebook-sharing sharing-icon-small">
+                <span class="ui-icon"></span>
+                </span>
+                Link Facebook
+        </a>
+        
     <% break; } %>
-    </div>
 
     </script>
 
