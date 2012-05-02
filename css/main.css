@@ -3936,6 +3936,10 @@ a.ui-link-inherit {
 .dash-footer .ui-btn-inner .ui-icon.ui-icon-search {
   background-position: 0 -32px;
 }
+#dashboard.edit {
+  /* Tick state for button while in edit mode */
+
+}
 #dashboard.edit .dash-wrapper {
   margin-top: 86px;
 }
@@ -3956,6 +3960,24 @@ a.ui-link-inherit {
   -moz-border-radius-bottomright: 0;
   -webkit-border-bottom-right-radius: 0;
   border-bottom-right-radius: 0;
+}
+#dashboard.edit .ui-header .ui-btn-up-a .ui-btn-inner .ui-icon-settings {
+  background-position: 0px -280px;
+}
+#dashboard.edit .ui-header .ui-btn-hover-a .ui-btn-inner .ui-icon-settings {
+  background-position: -40px -280px;
+}
+#dashboard.edit .ui-header .ui-btn-up-b .ui-btn-inner .ui-icon-settings {
+  background-position: -80px -280px;
+}
+#dashboard.edit .ui-header .ui-btn-hover-b .ui-btn-inner .ui-icon-settings {
+  background-position: -120px -280px;
+}
+#dashboard.edit .ui-header .ui-btn-up-b .ui-btn-inner .ui-icon-settings {
+  background-position: -80px -280px;
+}
+#dashboard.edit .ui-header .ui-btn-hover-b .ui-btn-inner .ui-icon-settings {
+  background-position: -120px -280px;
 }
 /*
 * @share - PAGE
