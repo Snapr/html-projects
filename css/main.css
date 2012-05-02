@@ -536,6 +536,8 @@ input:focus {
 }
 textarea {
   resize: none;
+  min-height: 60px;
+  overflow: hidden;
 }
 body {
   font-size: 15px;
