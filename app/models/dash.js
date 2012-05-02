@@ -12,6 +12,8 @@ snapr.models.dash_stream = Backbone.Model.extend({
             data = data.response.stream;
         }
         data.id = data.display.id;
+        this.photos = new snapr.models.photo_collection(data.photos);
+        this.photos.data = this.data.query;
         return data;
     },
     'delete': function( options ){

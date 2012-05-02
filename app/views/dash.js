@@ -98,15 +98,13 @@ snapr.views.dash = snapr.views.page.extend({
     remove_stream: function(stream){
         this.$el.find('.image-stream[data-id='+stream.get('id')+']').remove();
     },
-    add_stream: function(item,a,b,c){
+    add_stream: function(item){
         var li = new snapr.views.dash_stream({ collection: item.photos, model: item });
         this.$el.find('.image-streams').append( li.el );
         // this must be rendered after it's appended because sizing details
         // needed by scroller are only available after the element is in the DOM
         li.render();
         li.$el.trigger('create');
-        window.li = li;
-        console.log(li,a,b,c);
     }
 
 });

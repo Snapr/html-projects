@@ -25,16 +25,19 @@ snapr.views.dash_add_search = snapr.views.dialog.extend({
                     "type": "search"
                 }
             });
-        stream.save();
-        stream.photos.fetch({
-            data:{
-                n: 6,
-                _method: "GET"
-            },
-            success: function(){
+        window.s = stream;
+        stream.save({}, {success: function(){
                 dash.add(stream);
-            }
-        });
+            }});
+        // stream.photos.fetch({
+        //     data:{
+        //         n: 6,
+        //         _method: "GET"
+        //     },
+        //     success: function(){
+        //         dash.add(stream);
+        //     }
+        // });
         this.back();
     }
 
