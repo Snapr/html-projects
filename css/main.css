@@ -2960,6 +2960,8 @@ a.ui-link-inherit {
 .user-icon-small {
   width: 34px;
   height: 34px;
+  background-size: 100% 100%;
+  background-size: cover;
   -moz-border-radius: 2px;
   -webkit-border-radius: 2px;
   border-radius: 2px;
@@ -2967,6 +2969,8 @@ a.ui-link-inherit {
 .user-icon-big {
   width: 100px;
   height: 100px;
+  background-size: 100% 100%;
+  background-size: cover;
 }
 .thumb-med {
   width: 101px;

@@ -196,7 +196,7 @@
     <div class="myaccount-header page-inset-header ui-body-c">
         <div class="ui-content">
          <a class="username" href="#/feed/?username=<%= username %>&back=My Account">
-                <div class="user-icon-small" style="background-image: url('<%= snapr.avatar_url %>/<%= user_id %>?size=large'); background-size: 100% 100%"></div>
+                <div class="user-icon-small" style="background-image: url('<%= snapr.avatar_url %>/<%= user_id %>?size=large');"></div>
                 <%= username %>
             </a>
                 <a href="#/logout/" class="logout-button" data-role="button" data-icon="delete" data-iconpos="right">Logout</a>
@@ -216,7 +216,7 @@
                 <fieldset data-role="controlgroup" class="my-account-avatar">
                    <div class="avatar-select-block">
                        <span class="user-profile-icon">
-                           <div class="user-icon-big" style="background-image: url('<%= snapr.avatar_url %>/<%= user_id %>?size=large'); background-size: 100% 100%"></div>
+                           <div class="user-icon-big" style="background-image: url('<%= snapr.avatar_url %>/<%= user_id %>?size=large');"></div>
 
                        </span>
 
@@ -795,7 +795,7 @@
            <div class="user-info-block">
                <div class="user-icon-left">
                    <a class="user-profile-icon" data-snapr-dialog="true" href="#/user/profile/?username=<%= user.get('username') %>">
-                       <div class="user-icon-big" style="background-image: url('<%= snapr.avatar_url %>/<%= user.get('user_id') %>?size=large'); background-size: 100% 100%"></div>
+                       <div class="user-icon-big" style="background-image: url('<%= snapr.avatar_url %>/<%= user.get('user_id') %>?size=large');"></div>
                        <div class="icon-overlay-info"></div>
                    </a>
                </div>
@@ -832,7 +832,7 @@
         <div class="image-item-block">
             <div class="image-item-topbar">
                 <a class="user-icon-link" data-transition="slide" href="#/feed/?username=<%= item.get('username') %><% if(back){%>&back=<%=back%><%}%>">
-                    <div class="user-icon-small" style="background-image: url('<%= snapr.avatar_url %>/<%= item.get('user_id') %>/'); background-size: 100% 100%"></div>
+                    <div class="user-icon-small" style="background-image: url('<%= snapr.avatar_url %>/<%= item.get('user_id') %>/');"></div>
                 </a>
                 <a class="username" data-transition="slide" href="#/feed/?username=<%= item.get('username') %><% if(back){%>&back=<%=back%><%}%>"><%= item.get('username') %></a>
 
@@ -989,7 +989,7 @@
     <div class="user-info-block">
         <div class="user-icon-left">
             <a class="user-profile-icon" href="#/feed/?username=<%= user.get( "username" ) %>">
-                <div class="user-icon-big" style="background-image: url('<%= snapr.avatar_url %>/<%= user.get( "user_id" ) %>?size=large'); background-size: 100% 100%"></div>
+                <div class="user-icon-big" style="background-image: url('<%= snapr.avatar_url %>/<%= user.get( "user_id" ) %>?size=large');"></div>
 
             </a>
         </div>
