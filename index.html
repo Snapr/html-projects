@@ -1222,7 +1222,7 @@
                  <fieldset>
                      <input type="text" placeholder="Place Name&hellip;" autocapitalize="off" id="dash-search-keywords">
                      <select id="dash-search-type">
-                         <option value="location">Anywhere</option>
+                         <option value="">Anywhere</option>
                          <option value="1000">Nearby (1km)</option>
                          <option value="5000">Nearby (5km)</option>
                          <option value="20000">Nearby (20km)</option>
@@ -1394,7 +1394,7 @@
 
     <!-- @person ITEM-->
     <script id="people-li-template" type="text/template">
-           <a href="#/feed/?username=<%= user.get('username') %>">
+           <a href="#/feed/?username=<%= user.get('username') %>" data-username="<%= user.get('username') %>">
                <img src="<%= snapr.avatar_url %>/<%= user.get('user_id') %>" alt="<%= user.get('username') %>" class="user-icon-small ui-li-icon"/>
                <h3 class="username"><%= user.get('username') %></h3>
                <p class="small-text"><span class="photo-count"><%= user.get('photo_count') %></span> photos, <span class="followers"><%= user.get('followers') %></span> followers</p>

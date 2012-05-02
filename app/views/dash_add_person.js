@@ -40,7 +40,26 @@ snapr.views.dash_add_person = snapr.views.dialog.extend({
             });
 
             people_list.append( people_li.render().el );
+        });
 
+        var this_back = this.back;
+        people_list.find('a').click(function(e){
+            e.preventDefault();
+            var username = $(this).data('username'),
+                stream = new snapr.models.dash_stream({
+                    query: {
+                        username: username
+                    },
+                    display: {
+                        "title": "Photos by "+username,
+                        "short_title": username,
+                        "type": "search"
+                    }
+                });
+            stream.save({}, {success: function(){
+                dash.add(stream);
+            }});
+            this_back();
         });
 
         people_list.listview().listview("refresh");
@@ -61,8 +80,7 @@ snapr.views.dash_add_person = snapr.views.dialog.extend({
                     // need new api
                     break;
                 default:
-                    console.log( "keypress", e, keywords )
-                    // this.collection.user_search( keywords )
+                    this.collection.user_search( keywords );
                     break;
             }
         }

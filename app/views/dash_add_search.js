@@ -17,27 +17,23 @@ snapr.views.dash_add_search = snapr.views.dialog.extend({
     search: function()
     {
         var keywords = $("#dash-search-keywords").val(),
+            nearby = $("#dash-search-type").val(),
+
             stream = new snapr.models.dash_stream({
-                query: {keywords: keywords},
+                query: {
+                    keywords: keywords,
+                    nearby: !!nearby,
+                    radius: nearby || null
+                },
                 display: {
                     "title": "Search for "+keywords,
                     "short_title": keywords,
                     "type": "search"
                 }
             });
-        window.s = stream;
         stream.save({}, {success: function(){
                 dash.add(stream);
             }});
-        // stream.photos.fetch({
-        //     data:{
-        //         n: 6,
-        //         _method: "GET"
-        //     },
-        //     success: function(){
-        //         dash.add(stream);
-        //     }
-        // });
         this.back();
     }
 

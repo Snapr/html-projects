@@ -2,10 +2,6 @@ snapr.models.dash_stream = Backbone.Model.extend({
     url: function( method ){
         return snapr.api_base + '/user/dashboard/';
     },
-    initialize: function(){
-        this.photos = new snapr.models.photo_collection(this.get('photos'));
-        this.photos.data = this.get('query');
-    },
     parse: function(data){
         // have we been given a stream object or a full response
         if(data.response && data.response.stream){
@@ -13,7 +9,7 @@ snapr.models.dash_stream = Backbone.Model.extend({
         }
         data.id = data.display.id;
         this.photos = new snapr.models.photo_collection(data.photos);
-        this.photos.data = this.data.query;
+        this.photos.data = data.query;
         return data;
     },
     'delete': function( options ){
