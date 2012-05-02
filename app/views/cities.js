@@ -51,20 +51,15 @@ snapr.views.city_stream = snapr.views.side_scroll.extend({
     }
 });
 
-snapr.views.cities = Backbone.View.extend({
+snapr.views.cities = snapr.views.page.extend({
 
     el: $('#cities'),
 
     initialize: function()
     {
-        this.$el.live('pagehide', function( e ){
-            $(e.target).undelegate();
-            return true;
-        });
+        snapr.views.page.prototype.initialize.call( this );
 
-        $.mobile.changePage( $("#cities"), {
-            changeHash: false
-        });
+        this.change_page();
 
         this.render();
     },
