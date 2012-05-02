@@ -27,7 +27,10 @@ snapr.views.dash_add_search = snapr.views.dialog.extend({
             });
         stream.save();
         stream.photos.fetch({
-            data:{n:6},
+            data:{
+                n: 6,
+                _method: "GET"
+            },
             success: function(){
                 dash.add(stream);
             }
