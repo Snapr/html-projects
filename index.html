@@ -1484,17 +1484,25 @@
             <a class="x-back" data-role="button" data-icon="delete" data-iconpos="notext"></a>
         </div>
         <div data-role="content" data-theme="a">
-            <form action="javascript: void(0);" accept-charset="utf-8" id="search-form">
-                <fieldset>
-                    <input type="text" placeholder="Place Name&hellip;" autocapitalize="off" id="search-keywords">
-                    <select id="search-type">
-                        <option value="location">Search Locations</option>
-                        <option value="tag">Search Tags</option>
-                        <option value="user">Search Users</option>
-                    </select>
+            <div class="inset-page-content">
+                <form action="javascript: void(0);" accept-charset="utf-8" id="search-form">
+                    <ul data-role="listview" data-inset="true" data-theme="d">
+                        <li data-role="fieldcontain" class="ui-hide-label">
+                            <input type="text" placeholder="Keywords&hellip;" autocapitalize="off" id="search-keywords">
+                        </li>
+                        <li data-role="fieldcontain" class="ui-hide-label has-select">
+                            <select id="search-type" data-theme="c">
+                                <option value="tag">Search Tags</option>
+                                <option value="location">Search Locations</option>
+                                <option value="user">Search Users</option>
+                            </select>
+                        </li>
+                        
+                    </ul>
+                    
                     <input type="submit" data-theme="e" value="Search">
-                </fieldset>
-            </form>
+                </form>
+            </div>
 
         </div>
     </div><!-- /page -->

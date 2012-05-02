@@ -2871,6 +2871,32 @@ a.ui-link-inherit {
   -webkit-box-shadow: none;
   box-shadow: none;
 }
+.ui-listview-inset li.ui-li.has-select {
+  padding: 0;
+}
+.ui-listview-inset li.ui-li.has-select .ui-select {
+  width: 100%;
+  margin: 0;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+.ui-listview-inset li.ui-li.has-select .ui-select .ui-btn {
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  -moz-border-radius-topleft: 0;
+  -webkit-border-top-left-radius: 0;
+  border-top-left-radius: 0;
+  -moz-border-radius-topright: 0;
+  -webkit-border-top-right-radius: 0;
+  border-top-right-radius: 0;
+}
+.ui-listview-inset li.ui-li.has-select .ui-select .ui-btn-inner {
+  padding-top: 18px;
+  padding-bottom: 18px;
+  padding-left: 16px;
+}
 .ui-listview-inset li.ui-li .ui-icon-arrow-r {
   background-position: -108px -36px;
 }

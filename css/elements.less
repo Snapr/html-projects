@@ -530,10 +530,32 @@
             .box-shadow(none);
         }
         
+        &.has-select{
+            padding: 0;
+                        
+            .ui-select{
+                width: 100%;
+                margin: 0;
+                .box-shadow(none);
+                .ui-btn{
+                    .box-shadow(none);
+                    .corner-top(0);
+                }
+                .ui-btn-inner{
+                    padding-top: 18px;
+                    padding-bottom: 18px;
+                    padding-left: 16px;
+                }
+            }
+        }
+        
+        
+        
         .ui-icon-arrow-r {
             background-position: @gfx-general-icon-sprite-arrow-r-x @g-med-offset-y;
         }
     }
+    
     
     
 }
