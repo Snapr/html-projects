@@ -20,7 +20,6 @@ snapr.models.photo_collection = Backbone.Collection.extend({
             return [];
         }
     },
-
     fetch_newer: function( options )
     {
         var data = {};

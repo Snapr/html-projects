@@ -14,44 +14,25 @@ snapr.views.dash_add_search = snapr.views.dialog.extend({
         "click .x-back": "back"
     },
 
-    update_placeholder: function()
-    {
-        var keywords = $("#dash-search-keywords");
-        var type = $("#dash-search-type").val();
-
-        if (keywords.val().length == 0)
-        {
-            switch(type){
-                case 'location':
-                    keywords.attr( "placeholder", "Place Name…" );
-                    break;
-                case 'tag':
-                    keywords.attr( "placeholder", "Keywords…" );
-                    break;
-                case 'user':
-                    keywords.attr( "placeholder", "Username…" );
-                    break;
-            }
-
-        }
-    },
-
     search: function()
     {
-        var keywords = $("#dash-search-keywords").val();
-        var type = $("#dash-search-type").val();
-
-        switch(type){
-            case 'location':
-                Route.navigate( "#/map/?location=" + keywords );
-                break;
-            case 'tag':
-                Route.navigate( "#/feed/?keywords=" + keywords + "&list_style=grid" );
-                break;
-            case 'user':
-                Route.navigate( "#/user/search/?username=" + keywords );
-                break;
-        }
-    },
+        var keywords = $("#dash-search-keywords").val(),
+            stream = new snapr.models.dash_stream({
+                query: {keywords: keywords},
+                display: {
+                    "title": "Search for "+keywords,
+                    "short_title": keywords,
+                    "type": "search"
+                }
+            });
+        stream.save();
+        stream.photos.fetch({
+            data:{n:6},
+            success: function(){
+                dash.add(stream);
+            }
+        });
+        this.back();
+    }
 
 });

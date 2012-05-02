@@ -1,14 +1,20 @@
 snapr.models.dash_stream = Backbone.Model.extend({
+    url: function( method ){
+        return snapr.api_base + '/user/dashboard/';
+    },
     initialize: function(){
         this.photos = new snapr.models.photo_collection(this.get('photos'));
         this.photos.data = this.get('query');
     },
     parse: function(data){
+        // have we been given a stream object or a full response
+        if(data.response && data.response.stream){
+            data = data.response.stream;
+        }
         data.id = data.display.id;
         return data;
     },
     'delete': function( options ){
-        console.log(options);
         var ajax_options = _.extend( options || {}, {
             url: snapr.api_base + "/user/dashboard/delete/",
             dataType: "jsonp",
@@ -18,6 +24,9 @@ snapr.models.dash_stream = Backbone.Model.extend({
             })
         });
         $.ajax( ajax_options );
+    },
+    prep_data: function(method, options){
+        return this.attributes.query || {};
     }
 
 });

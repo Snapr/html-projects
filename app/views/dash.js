@@ -45,8 +45,10 @@ snapr.views.dash = snapr.views.page.extend({
         this.$el.find('.image-streams').empty();
 
         this.collection = new snapr.models.dash();
+        window.dash = this.collection;
         //this.collection.bind('all', this.render, this);
         this.collection.bind('remove', this.remove_stream, this);
+        this.collection.bind('add', this.add_stream, this);
         this.populate();
     },
 
@@ -95,6 +97,16 @@ snapr.views.dash = snapr.views.page.extend({
 
     remove_stream: function(stream){
         this.$el.find('.image-stream[data-id='+stream.get('id')+']').remove();
+    },
+    add_stream: function(item,a,b,c){
+        var li = new snapr.views.dash_stream({ collection: item.photos, model: item });
+        this.$el.find('.image-streams').append( li.el );
+        // this must be rendered after it's appended because sizing details
+        // needed by scroller are only available after the element is in the DOM
+        li.render();
+        li.$el.trigger('create');
+        window.li = li;
+        console.log(li,a,b,c);
     }
 
 });

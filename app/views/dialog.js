@@ -15,9 +15,8 @@ snapr.views.dialog = snapr.views.page.extend({
         this.$el.live( "pageshow", function( e, ui )
         {
             dialog.prev_el = ui.prevPage;
-        })
+        });
 
-        this.back_view = this.options.back_view;
     },
 
     // needs to be re-declared in decendent views

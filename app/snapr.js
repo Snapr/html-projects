@@ -35,7 +35,7 @@ snapr.constants.share_redirect = "#/uploading/?";
 // Overriding sync to make this a jsonp app
 Backbone.sync = function (method, model, options) {
 
-    //console.log( "sync", method, model, options );
+    console.log( "sync", method, model, options );
     // Helper function to get a URL from a Model or Collection as a property
     // or as a function.
     // sends the method as a parameter so that different methods can have
@@ -56,11 +56,19 @@ Backbone.sync = function (method, model, options) {
     var type = method_map[method];
     // Default options, unless specified.
     options || (options = {});
+
+    // give model the change to prepare it's data
+    var data;
+    if(model.prep_data && $.isFunction(model.prep_data)){
+        data = model.prep_data(method, options);
+    }else{
+        data = model.data || model.attributes || model.get('id') && {id: model.get('id')} || {};
+    }
     // Default JSON-request options.
     var params = {
         type: type,
         dataType: 'jsonp',
-        data: model.data || model.attributes || model.get('id') && {id: model.get('id')} || {}
+        data: data
     };
     // Ensure that we have a URL.
     if (!options.url) {
