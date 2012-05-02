@@ -69,6 +69,7 @@ snapr.views.dash_add_person = snapr.views.dialog.extend({
     {
 
         var keywords = $(e.target).val();
+        var this_el = this.$el;
 
         if (keywords.length > 1)
         {
@@ -80,7 +81,14 @@ snapr.views.dash_add_person = snapr.views.dialog.extend({
                     // need new api
                     break;
                 default:
-                    this.collection.user_search( keywords );
+                    this_el.addClass('loading');
+                    this.collection.fetch({
+                        data:{username:keywords},
+                        url: snapr.api_base + '/user/search/',
+                        success: function(){
+                            this_el.removeClass('loading');
+                        }
+                    });
                     break;
             }
         }
