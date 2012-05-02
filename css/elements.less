@@ -542,34 +542,41 @@
 /* Strip bare the normal list style */
 .simple-list{
     background: none;
-    
     .ui-li{
         padding: 0!important;
     }
-
     .ui-btn{
-        background: none;
+        background-color: @color-off-white-tint;
+        background-image: @gfx-bg-light-texture;
+        
         border: none!important;
         &.ui-li{
             border-top: @border-medium-on-light!important;
             margin-bottom: 0;
         }
     }
+    .ui-btn-inner{
+       .ui-link-inherit{
+           padding-top: @padding-element-inset * 2px!important;
+           padding-bottom: @padding-element-inset * 2px!important;
+       }
+    }
     .ui-li-has-icon{
-        padding-left: @size-small-avatar + 4px;
+       padding-left: @size-small-avatar + 4px;
+       .ui-btn-inner{
+          .ui-link-inherit{
+              padding-top: @padding-element-inset!important;
+              padding-bottom: @padding-element-inset + 2px!important;
+          }
+        }
     }
     
+       
     .ui-li-icon{
         left: 0;
         top: @padding-element-inset;
     }
-    .ui-btn-inner{
-        .ui-link-inherit{
-            padding-top: 8px!important;
-            padding-bottom: 10px!important;
-        }
-    }
-
+   
     .ui-li-heading{
         margin: 0 0 @padding-element-inset 0;
         font-weight: normal;
@@ -629,6 +636,9 @@
         .ui-icon-arrow-r{
             display: none;
         }
+    }
+    .ui-icon-arrow-r {
+        background-position: @gfx-general-icon-sprite-arrow-r-x @g-med-offset-y;
     }
 }
 

@@ -647,7 +647,7 @@ div[data-role="page"], div[data-role="dialog"] {
   padding: 8px;
 }
 .ui-content .ui-listview {
-  margin: -8px;
+  margin: 0 -8px;
 }
 .ui-content .ui-listview-inset {
   margin: 8px 0;
@@ -658,10 +658,6 @@ div[data-role="page"], div[data-role="dialog"] {
 }
 .ui-btn-inner {
   padding: 9px 9px;
-}
-.ui-input-search {
-  background-color: white!important;
-  background-image: none!important;
 }
 .ui-input-search.ui-btn-corner-all {
   -moz-border-radius: 20px;
@@ -1556,6 +1552,10 @@ a.ui-link-inherit {
 .ui-body-c .ui-link, .ui-body-c .ui-link:visited {
   color: #333333;
   font-weight: normal;
+}
+.ui-body-c .ui-input-search {
+  background-color: white;
+  background-image: none;
 }
 .ui-body-c hr {
   display: block;
@@ -2879,23 +2879,28 @@ a.ui-link-inherit {
   padding: 0!important;
 }
 .simple-list .ui-btn {
-  background: none;
+  background-color: #fbfbfb;
+  background-image: url('../gfx/bg-texture-light.gif');
   border: none!important;
 }
 .simple-list .ui-btn.ui-li {
   border-top: solid 1px #e4e4e4 !important;
   margin-bottom: 0;
 }
+.simple-list .ui-btn-inner .ui-link-inherit {
+  padding-top: 16px !important;
+  padding-bottom: 16px !important;
+}
 .simple-list .ui-li-has-icon {
   padding-left: 38px;
+}
+.simple-list .ui-li-has-icon .ui-btn-inner .ui-link-inherit {
+  padding-top: 8px !important;
+  padding-bottom: 10px !important;
 }
 .simple-list .ui-li-icon {
   left: 0;
   top: 8px;
-}
-.simple-list .ui-btn-inner .ui-link-inherit {
-  padding-top: 8px!important;
-  padding-bottom: 10px!important;
 }
 .simple-list .ui-li-heading {
   margin: 0 0 8px 0;
@@ -2956,6 +2961,9 @@ a.ui-link-inherit {
 }
 .simple-list.venue-list .ui-icon-arrow-r {
   display: none;
+}
+.simple-list .ui-icon-arrow-r {
+  background-position: -108px -36px;
 }
 .search-header {
   overflow: visible;
