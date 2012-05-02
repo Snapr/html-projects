@@ -2332,10 +2332,11 @@ a.ui-link-inherit {
   z-index: 10;
   position: relative;
   overflow: visible;
+  text-align: left;
   /* Note that the actual arrows get added in the swatches so they get the right colors */
 
 }
-.ui-bar .ui-btn-inner, .ui-bar h4, .ui-bar .ui-bar-inner {
+.ui-bar h4, .ui-bar .ui-btn-inner, .ui-bar .ui-bar-inner {
   font-size: 15px;
   font-weight: normal;
   font-family: Helvetica, Arial, sans-serif;
@@ -2343,29 +2344,36 @@ a.ui-link-inherit {
   padding: 0;
   text-transform: lowercase;
 }
-.ui-bar .ui-btn-inner em,
 .ui-bar h4 em,
+.ui-bar .ui-btn-inner em,
 .ui-bar .ui-bar-inner em,
-.ui-bar .ui-btn-inner .ui-btn,
 .ui-bar h4 .ui-btn,
+.ui-bar .ui-btn-inner .ui-btn,
 .ui-bar .ui-bar-inner .ui-btn,
-.ui-bar .ui-btn-inner .ui-btn-hidden,
 .ui-bar h4 .ui-btn-hidden,
+.ui-bar .ui-btn-inner .ui-btn-hidden,
 .ui-bar .ui-bar-inner .ui-btn-hidden,
-.ui-bar .ui-btn-inner .username,
 .ui-bar h4 .username,
+.ui-bar .ui-btn-inner .username,
 .ui-bar .ui-bar-inner .username {
   text-transform: none;
   font-size: 16px;
   font-style: normal;
   font-family: 'MuseoSansRounded700', Helvetica, Arial, sans-serif;
 }
+.ui-bar h4 .extra-icons, .ui-bar .ui-btn-inner .extra-icons, .ui-bar .ui-bar-inner .extra-icons {
+  right: auto;
+  display: block;
+  position: absolute;
+  left: -8px;
+  top: -7px;
+  margin: 0;
+  height: 32px;
+  width: 32px;
+}
 .ui-bar .ui-btn {
   background: none;
   line-height: 32px;
-}
-.ui-bar .ui-btn-text {
-  display: block;
 }
 .ui-bar .ui-btn-icon-right {
   position: absolute;
@@ -2399,6 +2407,16 @@ a.ui-link-inherit {
   overflow: hidden;
   text-overflow: ellipsis;
 }
+.ui-bar .ui-icon-arrow-r {
+  right: -2px;
+}
+.ui-bar .ui-btn-text {
+  padding-left: 20px;
+  display: block;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
 .ui-bar.top-no-arrow {
   text-align: left;
   -moz-border-radius-topleft: 8px;
@@ -2430,27 +2448,11 @@ a.ui-link-inherit {
   -moz-border-radius-bottomright: 0px;
   -webkit-border-bottom-right-radius: 0px;
   border-bottom-right-radius: 0px;
-  text-align: left;
-}
-.ui-bar.top-no-arrow .ui-icon-arrow-r, .ui-bar.top-left-arrow .ui-icon-arrow-r {
-  right: -2px;
-}
-.ui-bar.top-no-arrow .ui-btn-text, .ui-bar.top-left-arrow .ui-btn-text {
-  padding-left: 20px;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-}
-.ui-bar.top-no-arrow .extra-icons, .ui-bar.top-left-arrow .extra-icons {
-  right: auto;
-  left: -8px;
-  top: -7px;
-  margin: 0;
-  height: 32px;
-  width: 32px;
 }
 .ui-bar.bottom-centered-arrow {
   overflow: visible;
+  text-align: center;
+  padding-right: 20px;
   -moz-border-radius-bottomleft: 8px;
   -webkit-border-bottom-left-radius: 8px;
   border-bottom-left-radius: 8px;
@@ -2655,6 +2657,8 @@ a.ui-link-inherit {
   margin-left: -8px;
   margin-right: -8px;
   right: 0;
+  /* Styles for remove btn on streams with no images */
+
 }
 .image-streams .image-stream .edit-overlay .remove-stream {
   display: inline-block;
@@ -2662,6 +2666,18 @@ a.ui-link-inherit {
   right: 8px;
   top: 50%;
   margin-top: -18px;
+}
+.image-streams .image-stream .edit-overlay.over-bar {
+  top: 2px;
+  width: auto;
+  min-height: 0;
+  z-index: 10;
+}
+.image-streams .image-stream .edit-overlay.over-bar .remove-stream {
+  margin-top: 4px;
+}
+.image-streams .image-stream .edit-overlay.over-bar .remove-stream .ui-btn-inner {
+  padding: 4px 32px 4px 16px;
 }
 .edit .image-stream.user-stream .edit-overlay {
   display: block;

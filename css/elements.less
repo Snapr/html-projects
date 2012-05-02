@@ -26,8 +26,9 @@
     z-index: 10;
     position: relative;
     overflow: visible;
-    .ui-btn-inner,
+    text-align: left;   
     h4,
+    .ui-btn-inner,
     .ui-bar-inner{
         font-size: @txt-size-base;
         font-weight: normal;
@@ -44,14 +45,22 @@
             font-style: normal;
             font-family: @txt-font-special;
         }
+        .extra-icons{
+            right: auto;
+            display: block;
+            position: absolute;
+            left: -8px;
+            top: -7px;
+            margin: 0;
+            height: @gfx-extra-icon-sprite-grid;
+            width: @gfx-extra-icon-sprite-grid;
+        }
     }
     .ui-btn{
         background: none;
         line-height: 32px;
     }
-    .ui-btn-text{
-        display: block;
-    }
+   
     .ui-btn-icon-right{
         position: absolute;
         right: 4px;
@@ -67,7 +76,7 @@
            text-overflow: ellipsis;
            .border-box();
      }
-       .image-time{
+     .image-time{
            position: relative;
            display: inline-block;
            padding-left: 20px;
@@ -82,6 +91,15 @@
            overflow: hidden;
            text-overflow: ellipsis;
        }
+       .ui-icon-arrow-r {
+           right: -2px;
+       }
+      .ui-btn-text{
+          padding-left: 20px;
+           display: block;
+          .border-box();
+      }
+     
     &.top-no-arrow{
         text-align: left;
         .corner-top (@corner-page-element-rounded);
@@ -94,29 +112,16 @@
     &.top-left-arrow{
         .corner-top (@corner-page-element-rounded);
         .corner-bottom (@corner-not-rounded);
-        text-align: left;
-        .ui-icon-arrow-r {
-            right: -2px;
-        }
-        .ui-btn-text{
-            padding-left: 20px;
-            .border-box();
-        }
-        .extra-icons{
-            right: auto;
-            left: -8px;
-            top: -7px;
-            margin: 0;
-            height: @gfx-extra-icon-sprite-grid;
-            width: @gfx-extra-icon-sprite-grid;
-        }
+        
     }
     &.bottom-centered-arrow{
         overflow: visible;
+        text-align: center;
+        padding-right: 20px;
         .corner-bottom (@corner-page-element-rounded);
         .ui-btn-inner{
             border: none;
-        }
+        }  
     }
     &.small-top-left-arrow{
         position: absolute;
@@ -335,7 +340,22 @@
                 top: 50%;
                 margin-top: -18px;
             }
+            /* Styles for remove btn on streams with no images */
+            &.over-bar{
+                top: 2px;
+                width: auto;
+                min-height: 0;
+                z-index: 10;
+                .remove-stream{
+                    margin-top: 4px;
+                    .ui-btn-inner{
+                        padding: 4px 32px 4px 16px;
+                    }
+                }
+            }
+            
          }
+         
     }
 }
 .edit{
