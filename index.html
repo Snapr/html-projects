@@ -893,7 +893,6 @@
 
 
                 <ul data-inset="true" class="reactions-list simple-list">
-                    Loading..
                 </ul>
 
                 <div class="comment-area">
@@ -1676,6 +1675,7 @@
                     <ul data-role="listview" data-inset="true" data-theme="d">
                         <li class="ui-hide-label">
                             <label for="username">Username</label><input type="text" name="username" placeholder="Username" autocapitalize="off" autocomplete="off" id="join-dialog-username">
+                            <span class="ui-icon ui-icon-validation"></span>
                         </li>
                         <li class="ui-hide-label">
                             <label for="password">Password</label><input type="password" name="password" placeholder="Password" autocomplete="off" id="join-dialog-password">
@@ -1686,15 +1686,9 @@
 
                     </ul>
 
-                    <div data-role="fieldcontain" class="switch-setting">
-                        <span class="setting-label">I agree to the <a href="http://sna.pr/terms/" target="_blank" >Terms of Use</a></span>
-                        <select name="snapr_tos" id="snapr-tos" data-role="slider" data-mini="true">
-                            <option value="false">No</option>
-                            <option value="true" selected="true">Yes</option>
-                        </select>
-                    </div>
-
                     <input type="submit" name="login" data-theme="e" value="Join">
+                      <p class="block-link small-text light-text">All users must agree to the <a href="http://sna.pr/terms/" target="_blank" class="underline">Terms of Use</a></p>
+                    
                 </form>
 
 

@@ -133,7 +133,9 @@
 }
 
 
-/* keep the corners 45 degrees otherwise they look crap */
+/* keep the corners 45 degrees otherwise they look crap 
+   apply these to elements using the ::after psuedo class..
+*/
 .arrow-up(@height, @color, @x-pos, @y-shift){
     width: 0;
     height: 0;
@@ -166,4 +168,18 @@
     position: absolute;
     bottom: -@height + @y-shift;
     left: @x-pos;
+}
+
+.spin(){
+    -webkit-transform:rotate(0deg) translateZ(0);
+    -webkit-transition-duration:0ms;
+    -webkit-animation-name:loading;
+    -webkit-animation-duration:1.2s;
+    -webkit-animation-iteration-count:infinite;
+    -webkit-animation-timing-function:linear;
+}
+
+@-webkit-keyframes loading {
+    from { -webkit-transform:rotate(0deg) translateZ(0); }
+    to { -webkit-transform:rotate(360deg) translateZ(0); }
 }

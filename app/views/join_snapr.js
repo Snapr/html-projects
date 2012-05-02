@@ -27,7 +27,7 @@ snapr.views.join_snapr = snapr.views.dialog.extend({
                     alphanum_: true,
                     snapr_username: {
                         beforeSend: function(){
-                            $('#join-dialog-username').addClass('x-validating').removeClass('x-valid');
+                            $('#join-dialog-username').parent().addClass('x-validating').removeClass('x-valid');
                         }
                     }
                 },
@@ -38,13 +38,7 @@ snapr.views.join_snapr = snapr.views.dialog.extend({
                 email: {
                     required: true,
                     email: true
-                }//,
-                // snapr_tos: {
-                //     required: function(element) {
-                //         console.log($(element).val() == 'true');
-                //         return $(element).val() == 'true';
-                //     }
-                // }
+                }
             },
             messages: {
                 username:{
@@ -62,10 +56,7 @@ snapr.views.join_snapr = snapr.views.dialog.extend({
                 email:{
                     required: "We need your email address to contact you",
                     email: "Your email address must be in the correct format"
-                }//,
-                // snapr_tos:{
-                //     required: "You must agree to the Snapr Terms of Use"
-                // }
+                }
             }
         });
     },
@@ -76,12 +67,6 @@ snapr.views.join_snapr = snapr.views.dialog.extend({
     },
 
     join: function(){
-
-        if(this.$el.find("#snapr-tos").val() != 'true'){
-            alert('You must agree to the Terms of Use');
-            return false;
-        }
-
         var new_user = new snapr.models.user_settings();
         new_user.data = {
            username: this.$el.find("#join-dialog-username").val(),

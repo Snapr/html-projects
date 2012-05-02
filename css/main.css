@@ -51,7 +51,17 @@
 * Global - stuffs from prinzhorn
 */
 /* Some Handy Functions */
-/* keep the corners 45 degrees otherwise they look crap */
+/* keep the corners 45 degrees otherwise they look crap 
+   apply these to elements using the ::after psuedo class..
+*/
+@-webkit-keyframes loading {
+  from {
+    -webkit-transform: rotate(0deg) translatez(0);
+  }
+  to {
+    -webkit-transform: rotate(360deg) translatez(0);
+  }
+}
 /* Definititions for GFX Sprites and icon positioning */
 /* Global Icon Sprites Layouts */
 /* 
@@ -2549,6 +2559,75 @@ a.ui-link-inherit {
   margin-left: 0px;
   margin-right: 0px;
 }
+.x-invalid {
+  font-size: 12px;
+  line-height: 14px;
+  color: #666666;
+  padding: 4px;
+  margin: 0 8px 8px 8px;
+  display: block;
+  background-color: #ffff66;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+  position: relative;
+}
+.x-invalid::after {
+  width: 0;
+  height: 0;
+  display: inline-block;
+  content: "&uarr;";
+  text-indent: -99999px;
+  vertical-align: top;
+  margin-top: 0;
+  margin-left: -6px;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-bottom: 6px solid #ffff66;
+  position: absolute;
+  top: -6px;
+  left: 16px;
+}
+.ui-icon-validation {
+  width: 36px;
+  height: 36px;
+  display: none;
+  position: absolute;
+  right: 4px;
+  top: 8px;
+}
+.x-validating {
+  overflow: hidden;
+  /* if the spinning element overlaps other form elements can cause flicker */
+
+}
+.x-validating .ui-icon-validation {
+  display: block;
+  background-image: url('../gfx/small-spinner-light.png');
+  background-position: center;
+  -webkit-transform: rotate(0deg) translatez(0);
+  -webkit-transition-duration: 0ms;
+  -webkit-animation-name: loading;
+  -webkit-animation-duration: 1.2s;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+}
+.x-valid .ui-icon-validation {
+  display: block;
+  background-position: -244px -144px;
+}
+.underline {
+  text-decoration: underline;
+}
+.small-text {
+  font-size: 12px;
+}
+.light-text {
+  color: #999999;
+}
+.light-text a {
+  color: #999999 !important;
+}
 /*
 * Image Views - Custom
 */
@@ -2688,14 +2767,6 @@ a.ui-link-inherit {
 }
 .x-right-pull, .x-left-pull {
   display: inline;
-}
-@-webkit-keyframes loading {
-  from {
-    -webkit-transform: rotate(0deg) translatez(0);
-  }
-  to {
-    -webkit-transform: rotate(360deg) translatez(0);
-  }
 }
 /* progress bars */
 .progress-bar {
@@ -5033,6 +5104,13 @@ a.ui-link-inherit {
     -o-background-size: 150px 144px;
     -webkit-background-size: 150px 144px;
     background-size: 150px 144px;
+  }
+  .x-validating .ui-icon-validation {
+    background-image: url('../gfx/retina/small-spinner-light.png');
+    -moz-background-size: 24px 24px;
+    -o-background-size: 24px 24px;
+    -webkit-background-size: 24px 24px;
+    background-size: 24px 24px;
   }
   .image-streams .image-stream .load-more-inline .ui-icon-refresh {
     background-image: url('../gfx/retina/refresh.png');

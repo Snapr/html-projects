@@ -198,6 +198,62 @@
     }
 }
 
+.x-invalid{
+    font-size: @txt-size-small;
+    line-height: 14px;
+    color: @color-txt-medium-on-light;
+    padding: 4px;
+    margin: 0 @padding-element-inset @padding-element-inset @padding-element-inset;
+    display: block;
+    background-color: lighten(@color-bg-highlight-main, 20%);
+    .corner-all(@corner-general-less-rounded);
+    position: relative;
+    &::after{
+        .arrow-up(6px, lighten(@color-bg-highlight-main, 20%), 16px, 0)   
+    }
+}
+
+.ui-icon-validation{
+    width: @gfx-general-icon-sprite-grid;
+    height: @gfx-general-icon-sprite-grid;
+    display: none;
+    position: absolute;
+    right: @padding-element-inset / 2;
+    top: @padding-element-inset;
+}
+
+.x-validating{
+    overflow: hidden; /* if the spinning element overlaps other form elements can cause flicker */
+   .ui-icon-validation{
+       display: block;
+       background-image: url('../gfx/small-spinner-light.png');
+       background-position: center;
+       .spin();
+   }
+}
+
+.x-valid{
+   .ui-icon-validation{
+       display: block;
+       background-position: @gfx-general-icon-sprite-check-x + @padding-element-inset @g-highlight-offset-y;
+   }
+}
+
+.underline{
+    text-decoration: underline;
+}
+
+.small-text{
+    font-size: @txt-size-small;
+}
+
+.light-text{
+    color: @color-txt-light-on-light;
+    a{
+        color: @color-txt-light-on-light!important;
+    }
+}
+
 
 /*
 * Image Views - Custom
@@ -301,12 +357,7 @@
             .load-more-inline{
                  .ui-icon-refresh{
                     background-image: url('../gfx/spinner.png');
-                    -webkit-transform:rotate(0deg) translateZ(0);
-                    -webkit-transition-duration:0ms;
-                    -webkit-animation-name:loading;
-                    -webkit-animation-duration:1.2s;
-                    -webkit-animation-iteration-count:infinite;
-                    -webkit-animation-timing-function:linear;
+                    .spin();
                 }
             }
         }
@@ -372,11 +423,6 @@
 }
 .x-right-pull, .x-left-pull{
     display:inline;
-}
-
-@-webkit-keyframes loading {
-    from { -webkit-transform:rotate(0deg) translateZ(0); }
-    to { -webkit-transform:rotate(360deg) translateZ(0); }
 }
 
 
