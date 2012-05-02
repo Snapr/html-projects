@@ -577,6 +577,13 @@
 /*
 * @dashboard - PAGE
 */
+
+#dashboard{
+    div[data-role="content"]{
+        position: relative;
+    }
+}
+
 .dash-wrapper{
     min-height: 322px;
 }
@@ -599,6 +606,22 @@
         }
     }
 }
+
+#dashboard.edit{
+    .dash-wrapper{
+       margin-top: 86px;
+    }
+    
+    .dash-footer{
+        position: absolute;
+        top: 0;
+        width: 100%;
+        margin-top: 0;
+        .corner-top (8px);
+        .corner-bottom(0);
+    }
+}
+
 
 /*
 * @share - PAGE

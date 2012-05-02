@@ -3901,6 +3901,9 @@ a.ui-link-inherit {
 /*
 * @dashboard - PAGE
 */
+#dashboard div[data-role="content"] {
+  position: relative;
+}
 .dash-wrapper {
   min-height: 322px;
 }
@@ -3916,6 +3919,27 @@ a.ui-link-inherit {
 }
 .dash-footer .ui-btn-inner .ui-icon.ui-icon-search {
   background-position: 0 -32px;
+}
+#dashboard.edit .dash-wrapper {
+  margin-top: 86px;
+}
+#dashboard.edit .dash-footer {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  margin-top: 0;
+  -moz-border-radius-topleft: 8px;
+  -webkit-border-top-left-radius: 8px;
+  border-top-left-radius: 8px;
+  -moz-border-radius-topright: 8px;
+  -webkit-border-top-right-radius: 8px;
+  border-top-right-radius: 8px;
+  -moz-border-radius-bottomleft: 0;
+  -webkit-border-bottom-left-radius: 0;
+  border-bottom-left-radius: 0;
+  -moz-border-radius-bottomright: 0;
+  -webkit-border-bottom-right-radius: 0;
+  border-bottom-right-radius: 0;
 }
 /*
 * @share - PAGE
