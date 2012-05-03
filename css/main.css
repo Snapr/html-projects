@@ -2589,6 +2589,15 @@ a.ui-link-inherit {
   right: 4px;
   top: 8px;
 }
+.x-valid {
+  overflow: hidden;
+  /* if the spinning element overlaps other form elements can cause flicker */
+
+}
+.x-valid .ui-icon-validation {
+  display: block;
+  background-position: -244px -144px;
+}
 .x-validating {
   overflow: hidden;
   /* if the spinning element overlaps other form elements can cause flicker */
@@ -2597,18 +2606,14 @@ a.ui-link-inherit {
 .x-validating .ui-icon-validation {
   display: block;
   background-image: url('../gfx/small-spinner-light.png');
-  background-position: center;
-  background-repeat: no-repeat;
+  background-position: center!important;
+  background-repeat: no-repeat !important;
   -webkit-transform: rotate(0deg) translatez(0);
   -webkit-transition-duration: 0ms;
   -webkit-animation-name: loading;
   -webkit-animation-duration: 1.2s;
   -webkit-animation-iteration-count: infinite;
   -webkit-animation-timing-function: linear;
-}
-.x-valid .ui-icon-validation {
-  display: block;
-  background-position: -244px -144px;
 }
 .underline {
   text-decoration: underline;
@@ -3033,8 +3038,8 @@ a.ui-link-inherit {
 .loading .ui-input-search .ui-input-clear .ui-icon-delete {
   display: block;
   background-image: url('../gfx/small-spinner-light.png');
-  background-position: center;
-  background-repeat: no-repeat;
+  background-position: center!important;
+  background-repeat: no-repeat !important;
   -webkit-transform: rotate(0deg) translatez(0);
   -webkit-transition-duration: 0ms;
   -webkit-animation-name: loading;

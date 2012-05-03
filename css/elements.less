@@ -228,6 +228,16 @@
     top: @padding-element-inset;
 }
 
+
+.x-valid{
+    overflow: hidden; /* if the spinning element overlaps other form elements can cause flicker */
+    
+   .ui-icon-validation{
+       display: block;
+       background-position: @gfx-general-icon-sprite-check-x + @padding-element-inset @g-highlight-offset-y;
+   }
+}
+
 .x-validating{
     overflow: hidden; /* if the spinning element overlaps other form elements can cause flicker */
    .ui-icon-validation{
@@ -236,12 +246,6 @@
    }
 }
 
-.x-valid{
-   .ui-icon-validation{
-       display: block;
-       background-position: @gfx-general-icon-sprite-check-x + @padding-element-inset @g-highlight-offset-y;
-   }
-}
 
 .underline{
     text-decoration: underline;
