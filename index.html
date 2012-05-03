@@ -1127,14 +1127,14 @@
                        </div>
                    </div>
                </div>
-               
+
                <div class="dash-edit-done inline-footer ui-body-c ">
                       <div class="ui-content ui-grid-b">
                           <div class="ui-block-a">
-                            
+
                           </div>
                           <div class="ui-block-b">
-                              
+
                           </div>
                           <div class="ui-block-c">
                               <a data-role="button" data-iconpos="right" data-icon="check" class="x-edit-done">Done</a>
@@ -1152,7 +1152,7 @@
                     <a class="ui-bar top-left-arrow x-details" data-query="<%= escape($.param(model.get("query"))) %>" data-role="button" data-iconpos="right" data-icon="arrow-r" data-theme="e">
                         <span class="image-details">
                             <span class="ui-icon ui-icon-<%= model.get("display").type %> extra-icons"></span>
-                            <em><%= model.get("display").short_title %></em>
+                            <em><%= model.get("display").short_title %><% if(model.get("query").radius){ %> (<%= model.get("query").radius/1000 %>km)<% } %></em>
                             <span class="image-tag x-tag"><%= collection.models[0].get('description') %></span>
                             <span class="image-time small-text">
                                 <span class="ui-icon ui-icon-clock extra-icons"></span><span class="x-date"><%= snapr.utils.short_timestamp( collection.models[0].get('date') )  %></span>
@@ -1182,7 +1182,7 @@
                     <a class="ui-bar" data-role="button" data-theme="e">
                         <span class="image-details">
                             <span class="ui-icon ui-icon-<%= model.get("display").type %> extra-icons"></span>
-                            <em><%= model.get("display").short_title %></em>
+                            <em><%= model.get("display").short_title %><% if(model.get("query").radius){ %> (<%= model.get("query").radius/1000 %>km)<% } %></em>
                             <span class="image-tag">No photos yet</span>
                         </span>
                     </a>
@@ -1224,7 +1224,7 @@
          </div>
          <div data-role="content" data-theme="c">
              <div class="inset-page-content">
-             
+
                  <form action="javascript: void(0);" accept-charset="utf-8" id="search-form">
                      <ul data-role="listview" data-inset="true" data-theme="d">
                          <li data-role="fieldcontain" class="ui-hide-label">
@@ -1240,7 +1240,7 @@
                         </li>
                     </ul>
                     <input type="submit" data-theme="e" value="Search">
-                     
+
                  </form>
              </div>
          </div>
@@ -1489,7 +1489,7 @@
        <div id="app" data-role="dialog" data-overlay-theme="c" data-theme="c">
            <div data-role="header" data-theme="c">
                <h1>Get the App!</h1>
-               
+
                <a class="x-back" data-role="button" data-icon="delete" data-iconpos="notext"></a>
            </div>
            <div data-role="content" data-theme="c" data-ajax="false">
@@ -1512,12 +1512,12 @@
                    </ul>
                    <p class="small-text">Does your phone allow browser based uploads?</p>
                       <a data-role="button" data-theme="e" href="#/upload/">Upload via Mobile Web </a>
-                     
+
            </div>
 
-                 
 
-                  
+
+
 
                </div>
            </div>
