@@ -2890,6 +2890,9 @@ a.ui-link-inherit {
 .ui-listview-inset li.ui-li .ui-icon-arrow-r {
   background-position: -108px -36px;
 }
+.wrap-content p {
+  white-space: normal;
+}
 /* Strip bare the normal list style */
 .simple-list {
   background: none;
@@ -5026,8 +5029,8 @@ a.ui-link-inherit {
 .platform-logo {
   background-repeat: no-repeat;
   display: block;
-  width: 288px;
-  height: 93px;
+  width: 200px;
+  height: 60px;
 }
 .iphone-appstore .platform-logo {
   background-repeat: no-repeat;

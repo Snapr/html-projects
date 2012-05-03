@@ -1475,29 +1475,35 @@
        <div id="app" data-role="dialog" data-overlay-theme="c" data-theme="c">
            <div data-role="header" data-theme="c">
                <h1>Get the App!</h1>
+               
                <a class="x-back" data-role="button" data-icon="delete" data-iconpos="notext"></a>
            </div>
            <div data-role="content" data-theme="c" data-ajax="false">
-               <div class="inline-copy">
-                   <p>Snapr makes it easy to share photos on the go and keep track of your friends.</p>
-
-                   <ul class="apps-links">
+               <div class="inset-page-content">
+                   <ul data-role="listview" data-ajax="false" class="" data-inset="true" data-theme="d">
+                       <li class="wrap-content">
+                           <h2>Share &amp; Discover with Snapr</h2>
+                           <p >For the best experience download one of our apps:</a>
+                       </li>
                        <li>
                            <a class="iphone-appstore appstore-badge" href="http://itunes.apple.com/app/snapr/id359528116?mt=8">
                                <span class="platform-logo"></span>
-                           </a>
+                            </a>
                        </li>
                        <li>
                            <a class="android-marketplace appstore-badge" href="market://details?id=pr.sna.snapr&feature=search_result">
-                            <span class="platform-logo"></span>
-                            <!-- <span class="coming-soon">Coming soon!</span> -->
-                            </a>
+                               <span class="platform-logo"></span>
+                           </a>
                        </li>
                    </ul>
+                   <p class="small-text">Does your phone allow browser based uploads?</p>
+                      <a data-role="button" data-theme="e" href="#/upload/">Upload via Mobile Web </a>
+                     
+           </div>
 
-                   <p>Does your phone allow browser based uploads?</p>
-                   <a data-role="button" data-theme="e" href="#/upload/">Upload via Mobile Web </a>
-                   <a data-role="button" data-theme="c" href="#/about/">More About Snapr</a>
+                 
+
+                  
 
                </div>
            </div>
