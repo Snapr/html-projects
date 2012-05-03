@@ -2654,6 +2654,7 @@ a.ui-link-inherit {
 }
 .image-streams .image-stream .x-thumbs {
   display: inline-block;
+  min-width: 311px;
 }
 .image-streams .image-stream .image-link {
   padding-left: 4px;
