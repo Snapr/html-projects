@@ -14,6 +14,13 @@ snapr.views.join_snapr = snapr.views.dialog.extend({
             errorClass: "x-invalid",
             validClass: "x-valid",
 
+            highlight: function (element, errorClass, validClass) {
+                $(element).parent().addClass(errorClass).removeClass(validClass);
+            },
+            unhighlight: function (element, errorClass, validClass) {
+                $(element).parent().removeClass(errorClass).addClass(validClass);
+            },
+
             errorElement: "li",
             errorPlacement: function(error, element) {
                 error.insertAfter( element.parent("li"));
@@ -27,7 +34,11 @@ snapr.views.join_snapr = snapr.views.dialog.extend({
                     alphanum_: true,
                     snapr_username: {
                         beforeSend: function(){
-                            $('#join-dialog-username').parent().addClass('x-validating').removeClass('x-valid');
+                            $('#join-dialog-username').parent().addClass('x-validating').removeClass('x-valid x-invalid');
+                        },
+                        complete: function(){
+                            console.log('complete');
+                            $('#join-dialog-username').parent().removeClass('x-validating');
                         }
                     }
                 },

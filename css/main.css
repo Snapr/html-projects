@@ -2558,7 +2558,7 @@ a.ui-link-inherit {
   margin-left: 0px;
   margin-right: 0px;
 }
-.x-invalid {
+.x-invalid[for] {
   font-size: 12px;
   line-height: 14px;
   color: #666666;
@@ -2571,7 +2571,7 @@ a.ui-link-inherit {
   border-radius: 4px;
   position: relative;
 }
-.x-invalid::after {
+.x-invalid[for]::after {
   width: 0;
   height: 0;
   display: inline-block;
@@ -2586,6 +2586,10 @@ a.ui-link-inherit {
   position: absolute;
   top: -6px;
   left: 16px;
+}
+.x-invalid .ui-icon-validation {
+  display: block;
+  background-position: -64px -144px;
 }
 .ui-icon-validation {
   width: 36px;
