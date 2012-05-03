@@ -49,15 +49,15 @@ snapr.views.side_scroll = Backbone.View.extend({
             this.scroller = new iScroll(scroll_el[0], {
                 vScroll: false,
                 hScrollbar: false,
-                snap: 'a.x-thumb, .x-left-pull',
+                snap: 'a.x-thumb:not(:last-child), .x-left-pull',
                 momentum: false,
                 onScrollEnd: function(){
+
+                    // Set active thumb
                     $('.active', this.wrapper).removeClass('active');
                     var curr = $('a.x-thumb', this.wrapper).eq(this.currPageX-1).addClass('active');
-
                     var text = curr.data('tag'),
                         tag = details.find('.x-tag');
-
                     // webkit bug!
                     // if text is blank and we set tag.text('') then the next time we
                     // set tag.text('real value') the element will not be visible.
