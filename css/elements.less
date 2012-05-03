@@ -144,7 +144,7 @@
 }
 
 .ui-navbar{
-    margin: -@padding-page-inset -@padding-page-inset 0 -@padding-page-inset;
+    margin: 0 -@padding-page-inset;
     border: none;
     border-top: @border-light-on-light;
     .corner-top (@corner-page-element-rounded);
@@ -288,7 +288,6 @@
     padding: 0;
     margin: 0;
     margin-bottom: @padding-page-inset;
-    margin-top: -@padding-page-inset;
 
     .image-stream{
         position: relative;
@@ -520,7 +519,6 @@
                 padding-left: @size-small-avatar;
             }
         }
-
         input[type="text"],
         input[type="password"],
         input[type="email"]{
@@ -531,7 +529,6 @@
             .border-box();
             .box-shadow(none);
         }
-
         &.has-select{
             padding: 0;
 
@@ -551,16 +548,10 @@
                 }
             }
         }
-
-
-
         .ui-icon-arrow-r {
             background-position: @gfx-general-icon-sprite-arrow-r-x @g-med-offset-y;
         }
     }
-
-
-
 }
 
 .wrap-content{
@@ -720,7 +711,6 @@
                 .spinner();
                 .spin();
             }
-            
         }
     } 
 }
@@ -788,7 +778,6 @@
 .page-inset-header{
     margin-left: -@padding-page-inset;
     margin-right: -@padding-page-inset;
-    margin-top:  -@padding-page-inset;
     position: relative;
     background-color: @color-off-white-tint;
     background-image: @gfx-bg-light-texture;
@@ -856,6 +845,7 @@
 .user-icon-small{
     width: @size-small-avatar;
     height: @size-small-avatar;
+    background-color: @color-icon-bg;
     background-size: 100% 100%;
     background-size: cover;
     .corner-all(2px);
@@ -864,6 +854,7 @@
 .user-icon-big{
     width: @size-large-avatar;
     height: @size-large-avatar;
+    background-color: @color-icon-bg;
     background-size: 100% 100%;
     background-size: cover;
 }
@@ -926,7 +917,7 @@
 }
 
 .inline-footer{
-    margin: @padding-page-inset -@padding-page-inset -@padding-page-inset -@padding-page-inset;
+    margin: @padding-page-inset -@padding-page-inset 0 -@padding-page-inset;
     .corner-bottom(@corner-page-element-rounded);
 
     .ui-grid-a{

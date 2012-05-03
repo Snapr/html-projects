@@ -238,6 +238,8 @@
 .feed-header{
     margin-bottom: @padding-page-inset;
 }
+
+
 .load-more{
     display: none;
 }
@@ -581,6 +583,7 @@
 #dashboard{
     div[data-role="content"]{
         position: relative;
+        padding-bottom: 0;
     }
 }
 
@@ -1024,6 +1027,14 @@
 /*
 * @uploading - PAGE
 */
+
+/*Shift up the image streams to overlap the header */
+#uploading{
+    .image-streams{
+        margin-top: -@padding-page-inset;
+    }
+}
+
 .upload-progress-header{
     padding: @padding-page-inset;
     height: 108px;
@@ -1285,6 +1296,13 @@
 * @map - PAGE
 */
 
+#map{
+    div[data-role="content"]{
+        padding-top: 0;
+        padding-bottom: 8px;
+    }
+}
+
 #map-layer{
     #google-map{
         margin: -3px -8px;
@@ -1296,7 +1314,6 @@
     overflow:hidden;
     .ui-bar.top-left-arrow,
     .top-no-arrow{
-        margin-top: -8px;
         .extra-icons {
             left: -6px;
             top: -8px;

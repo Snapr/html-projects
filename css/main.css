@@ -646,6 +646,9 @@ div[data-role="page"], div[data-role="dialog"] {
   width: auto;
 }
 .ui-content {
+  padding: 0 8px;
+}
+.ui-content .ui-content {
   padding: 8px;
 }
 .ui-content .ui-listview {
@@ -2476,7 +2479,7 @@ a.ui-link-inherit {
   left: auto!important;
 }
 .ui-navbar {
-  margin: -8px -8px 0 -8px;
+  margin: 0 -8px;
   border: none;
   border-top: solid 1px #ffffff;
   -moz-border-radius-topleft: 8px;
@@ -2641,7 +2644,6 @@ a.ui-link-inherit {
   padding: 0;
   margin: 0;
   margin-bottom: 8px;
-  margin-top: -8px;
 }
 .image-streams .image-stream {
   position: relative;
@@ -3098,7 +3100,6 @@ a.ui-link-inherit {
 .page-inset-header {
   margin-left: -8px;
   margin-right: -8px;
-  margin-top: -8px;
   position: relative;
   background-color: #fbfbfb;
   background-image: url('../gfx/bg-texture-light.gif');
@@ -3160,6 +3161,7 @@ a.ui-link-inherit {
 .user-icon-small {
   width: 34px;
   height: 34px;
+  background-color: #efefee;
   background-size: 100% 100%;
   background-size: cover;
   -moz-border-radius: 2px;
@@ -3169,6 +3171,7 @@ a.ui-link-inherit {
 .user-icon-big {
   width: 100px;
   height: 100px;
+  background-color: #efefee;
   background-size: 100% 100%;
   background-size: cover;
 }
@@ -3219,7 +3222,7 @@ a.ui-link-inherit {
   display: block;
 }
 .inline-footer {
-  margin: 8px -8px -8px -8px;
+  margin: 8px -8px 0 -8px;
   -moz-border-radius-bottomleft: 8px;
   -webkit-border-bottom-left-radius: 8px;
   border-bottom-left-radius: 8px;
@@ -4083,6 +4086,7 @@ a.ui-link-inherit {
 */
 #dashboard div[data-role="content"] {
   position: relative;
+  padding-bottom: 0;
 }
 .dash-wrapper {
   min-height: 322px;
@@ -4513,6 +4517,10 @@ a.ui-link-inherit {
 /*
 * @uploading - PAGE
 */
+/*Shift up the image streams to overlap the header */
+#uploading .image-streams {
+  margin-top: -8px;
+}
 .upload-progress-header {
   padding: 8px;
   height: 108px;
@@ -4753,6 +4761,10 @@ a.ui-link-inherit {
 /*
 * @map - PAGE
 */
+#map div[data-role="content"] {
+  padding-top: 0;
+  padding-bottom: 8px;
+}
 #map-layer #google-map {
   margin: -3px -8px;
 }
@@ -4761,9 +4773,6 @@ a.ui-link-inherit {
   overflow: hidden;
   /* map thumbs */
 
-}
-.photo-map .ui-bar.top-left-arrow, .photo-map .top-no-arrow {
-  margin-top: -8px;
 }
 .photo-map .ui-bar.top-left-arrow .extra-icons, .photo-map .top-no-arrow .extra-icons {
   left: -6px;
@@ -5208,17 +5217,17 @@ a.ui-link-inherit {
   }
   .iphone-appstore .platform-logo {
     background-image: url('../gfx/retina/iphone-appstore.png');
-    -moz-background-size: 288px 93px;
-    -o-background-size: 288px 93px;
-    -webkit-background-size: 288px 93px;
-    background-size: 288px 93px;
+    -moz-background-size: 200px 60px;
+    -o-background-size: 200px 60px;
+    -webkit-background-size: 200px 60px;
+    background-size: 200px 60px;
   }
   .android-marketplace .platform-logo {
     background-image: url('../gfx/retina/android-logo.png');
-    -moz-background-size: 288px 93px;
-    -o-background-size: 288px 93px;
-    -webkit-background-size: 288px 93px;
-    background-size: 288px 93px;
+    -moz-background-size: 200px 60px;
+    -o-background-size: 200px 60px;
+    -webkit-background-size: 200px 60px;
+    background-size: 200px 60px;
   }
   .button-logo {
     background-image: url('../gfx/retina/service-full-logos.png');
@@ -5228,6 +5237,13 @@ a.ui-link-inherit {
     background-size: 150px 144px;
   }
   .x-validating .ui-icon-validation {
+    background-image: url('../gfx/retina/small-spinner-light.png');
+    -moz-background-size: 24px 24px;
+    -o-background-size: 24px 24px;
+    -webkit-background-size: 24px 24px;
+    background-size: 24px 24px;
+  }
+  .loading .ui-input-search .ui-input-clear .ui-icon-delete {
     background-image: url('../gfx/retina/small-spinner-light.png');
     -moz-background-size: 24px 24px;
     -o-background-size: 24px 24px;
