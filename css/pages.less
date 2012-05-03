@@ -68,11 +68,7 @@
                 margin-top: 25px;
             }
         }
-        .ui-btn-hover-c,
-        .ui-btn-active-c{
-            background-color: @color-bg-highlight-main;
-            color: @color-txt-medium-on-light;
-        }
+        
     }
      /* Smaller 3 column Btns */
     .ui-grid-b{
@@ -140,7 +136,14 @@
             }
         }
     }
-
+    .ui-grid-a,
+    .ui-grid-b{
+        .ui-btn-hover-c,
+        .ui-btn-active-c{
+            background-color: @color-bg-highlight-main;
+            color: @color-txt-medium-on-light;
+        }
+    }
     .ui-bar{
         margin-left: 0;
         margin-right: 0;
@@ -504,6 +507,7 @@
 }
 
 .feed-footer{
+    
     .ui-btn{
         .corner-top(0);
         .corner-bottom(@corner-page-element-rounded);

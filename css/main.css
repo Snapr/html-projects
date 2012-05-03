@@ -701,6 +701,9 @@ input.ui-input-text, textarea.ui-input-text {
 .ui-btn-icon-right .ui-icon {
   right: 8px;
 }
+.ui-btn-icon-notext .ui-btn-inner .ui-icon {
+  margin: 0;
+}
 .ui-loader {
   margin-left: -40px;
   margin-top: -40px;
@@ -1022,7 +1025,7 @@ a.ui-link-inherit {
 .ui-body-a .image-streams .image-stream .load-more-inline {
   background-color: #121414;
 }
-.ui-body-a .thumb-image {
+.ui-body-a .thumbs-grid-med .thumb-image, .ui-body-a .grid #feed-images .thumb-image, .ui-body-a .thumb-image {
   background-color: #121414;
 }
 /* Button Styles */
@@ -2393,7 +2396,7 @@ a.ui-link-inherit {
   color: #666666;
 }
 .ui-bar .image-time .ui-icon-clock {
-  top: -9px !important;
+  top: -7px !important;
 }
 .ui-bar .image-tag {
   max-width: 50%;
@@ -2410,6 +2413,8 @@ a.ui-link-inherit {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
+  height: 18px;
+  line-height: 18px;
 }
 .ui-bar.top-no-arrow {
   text-align: left;
@@ -3015,8 +3020,8 @@ a.ui-link-inherit {
 }
 .ui-input-search .ui-input-clear {
   position: absolute;
-  right: -2px;
-  margin-top: -19px;
+  right: -5px;
+  margin-top: -17px;
   background: none;
   border: none!important;
 }
@@ -3453,13 +3458,6 @@ a.ui-link-inherit {
   left: 0;
   margin-top: 25px;
 }
-.menu-main .ui-grid-a .ui-btn-hover-c,
-.menu-main .ui-grid-b .ui-btn-hover-c,
-.menu-main .ui-grid-a .ui-btn-active-c,
-.menu-main .ui-grid-b .ui-btn-active-c {
-  background-color: #ffff00;
-  color: #666666;
-}
 .menu-main .ui-grid-b {
   /* tricky Border in between btns */
 
@@ -3545,6 +3543,13 @@ a.ui-link-inherit {
   -moz-border-radius-topright: 8px;
   -webkit-border-top-right-radius: 8px;
   border-top-right-radius: 8px;
+}
+.menu-main .ui-grid-a .ui-btn-hover-c,
+.menu-main .ui-grid-b .ui-btn-hover-c,
+.menu-main .ui-grid-a .ui-btn-active-c,
+.menu-main .ui-grid-b .ui-btn-active-c {
+  background-color: #ffff00;
+  color: #666666;
 }
 .menu-main .ui-bar {
   margin-left: 0;

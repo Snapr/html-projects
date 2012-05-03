@@ -1209,7 +1209,7 @@
            </div>
            <div data-role="content" data-theme="c" data-ajax="false">
                <div class="search-header">
-                   <input type="search" id="people-search" value="" placeholder="Search&hellip;" />
+                   <input type="search" id="people-search" value="" placeholder="Username&hellip;" />
                </div>
                <ul class="people-list simple-list" data-role="listview" data-inset="true" >
                </ul>
@@ -1920,6 +1920,7 @@
     <script id="uploading-stream-template" type="text/template">
         <div class="image-stream">
             <a class="ui-bar top-left-arrow x-details" data-role="button" data-iconpos="right" data-icon="arrow-r" data-theme="c" href="#/feed/?<%= collection.query %>">
+            <span class="image-details">
             <% switch (details.stream_type) { case 'spot': %>
                 <span class="ui-icon ui-icon-heart extra-icons"></span>
                 <em>@ <%= collection.models[0].location.foursquare_venue_name %></em>
@@ -1934,6 +1935,7 @@
                <span class="image-time small-text">
                    <span class="ui-icon ui-icon-clock extra-icons"></span>
                    <span class="x-date"><%= snapr.utils.short_timestamp( collection.models[0].get("date") )  %></span>
+                </span>
                 </span>
             </a>
             <div class="thumbs-grid thumbs-grid-med x-scroll-area">
