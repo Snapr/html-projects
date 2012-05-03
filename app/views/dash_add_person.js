@@ -69,28 +69,37 @@ snapr.views.dash_add_person = snapr.views.dialog.extend({
     {
 
         var keywords = $(e.target).val();
-        var this_el = this.$el;
+        var this_view = this;
 
-        if (keywords.length > 1)
-        {
-            switch (this.options.follow){
-                case "following":
-                    // need new api
-                    break;
-                case "followers":
-                    // need new api
-                    break;
-                default:
-                    this_el.addClass('loading');
-                    this.collection.fetch({
-                        data:{username:keywords},
-                        url: snapr.api_base + '/user/search/',
-                        success: function(){
-                            this_el.removeClass('loading');
-                        }
-                    });
-                    break;
-            }
+        if (keywords.length > 1){
+            // switch (this.options.follow){
+            //     case "following":
+            //         // need new api
+            //         break;
+            //     case "followers":
+            //         // need new api
+            //         break;
+            //     default:
+            //         // do it
+            //         break;
+            // }
+
+            this.timer && clearTimeout(this.timer);
+            this.xhr && this.xhr.abort();
+
+            this.timer = setTimeout( function() {
+                this_view.timer = null;
+                this_view.$el.addClass('loading');
+                this_view.xhr = this_view.collection.fetch({
+                    data:{username:keywords},
+                    url: snapr.api_base + '/user/search/',
+                    success: function(){
+                        this_view.xhr = null;
+                        this_view.$el.removeClass('loading');
+                    }
+                });
+            }, 300 );
+
         }
     }
 
