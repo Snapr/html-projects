@@ -4096,7 +4096,7 @@ a.ui-link-inherit {
   background-image: url('../gfx/dash-icons.png');
   width: 64px;
   height: 32px;
-  top: 0;
+  top: 6px;
   margin-left: -32px;
 }
 .dash-footer .ui-btn-inner .ui-icon.ui-icon-person {
@@ -4105,9 +4105,27 @@ a.ui-link-inherit {
 .dash-footer .ui-btn-inner .ui-icon.ui-icon-search {
   background-position: 0 -32px;
 }
+.dash-edit-done {
+  display: none;
+}
+.dash-edit-done .ui-btn {
+  -moz-border-radius: 20px;
+  -webkit-border-radius: 20px;
+  border-radius: 20px;
+}
+.dash-edit-done .ui-btn .ui-icon-check {
+  background-position: -252px -144px;
+}
 #dashboard.edit {
+  /* Show the btn to exit edit mode */
+
+  /* Shuffle the app people buttons to the top */
+
   /* Tick state for button while in edit mode */
 
+}
+#dashboard.edit .dash-edit-done {
+  display: block;
 }
 #dashboard.edit .dash-wrapper {
   margin-top: 86px;

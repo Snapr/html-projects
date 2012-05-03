@@ -597,7 +597,7 @@
             background-image: url('../gfx/dash-icons.png');
             width: 64px;
             height: 32px;
-            top: 0;
+            top: 6px;
             margin-left: -32px;
             &.ui-icon-person{
                 background-position: @di-offset-x @gfx-dash-icon-sprite-person-y;
@@ -610,7 +610,23 @@
     }
 }
 
+.dash-edit-done{
+    display: none;
+    .ui-btn{
+        .corner-all(@corner-fully-rounded);
+        .ui-icon-check{
+            background-position: @gfx-general-icon-sprite-check-x @g-highlight-offset-y;
+        }
+    }
+}
+
 #dashboard.edit{
+    /* Show the btn to exit edit mode */
+    .dash-edit-done{
+        display: block;
+    }
+    
+    /* Shuffle the app people buttons to the top */
     .dash-wrapper{
        margin-top: 86px;
     }
