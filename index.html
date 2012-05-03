@@ -212,7 +212,7 @@
             <li>
                 <a>Find Friends</a>
             </li>
-         </ul> 
+         </ul>
     </div>
 
     <div class="myaccount-settings">
@@ -411,7 +411,7 @@
           </a>
 
          <ul class="simple-list add-services" data-role="listview">
-         
+
          </ul>
 
           <a class="ui-bar top-no-arrow linked-heading" data-role="button" data-theme="e" >
@@ -462,14 +462,14 @@
                 <h4>Linked Services</h4>
                 <div class="linked-services">
                 </div>
-                
+
             </div>
         </div>
     </div>
 
     <!-- @link @service ITEMfor linking a service in #linked-services -->
     <script id="add-linked-service-template" type="text/template">
-    
+
     <% switch(provider) { case 'twitter': %>
         <a class="link-service">
             <span class="twitter-sharing sharing-icon-small">
@@ -500,7 +500,7 @@
                 </span>
                 Link Facebook
         </a>
-        
+
     <% break; } %>
 
     </script>
@@ -1158,11 +1158,11 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="edit-overlay trans-bg">
                         <a class="remove-stream" data-role="button" data-icon="delete" data-iconpos="right" data-theme="c">Remove</a>
                     </div>
-                    
+
                 <% }else{ %>
                     <a class="ui-bar" data-role="button" data-theme="e">
                         <span class="image-details">
@@ -1176,7 +1176,7 @@
                      </div>
                 <% } %>
 
-               
+
 
            </li>
         </script>
@@ -1383,6 +1383,12 @@
     </div>
 
     <!-- @person ITEM-->
+     <script id="people-li-min-template" type="text/template">
+           <a href="#/feed/?username=<%= user.get('username') %>" data-username="<%= user.get('username') %>">
+               <img src="<%= snapr.avatar_url %>/<%= user.get('user_id') %>" alt="<%= user.get('username') %>" class="user-icon-small ui-li-icon"/>
+               <h3 class="username"><%= user.get('username') %></h3>
+           </a>
+       </script>
     <script id="people-li-template" type="text/template">
            <a href="#/feed/?username=<%= user.get('username') %>" data-username="<%= user.get('username') %>">
                <img src="<%= snapr.avatar_url %>/<%= user.get('user_id') %>" alt="<%= user.get('username') %>" class="user-icon-small ui-li-icon"/>
@@ -1497,9 +1503,9 @@
                                 <option value="user">Search Users</option>
                             </select>
                         </li>
-                        
+
                     </ul>
-                    
+
                     <input type="submit" data-theme="e" value="Search">
                 </form>
             </div>
@@ -1679,7 +1685,7 @@
 
                     <input type="submit" name="login" data-theme="e" value="Join">
                       <p class="block-link small-text light-text">All users must agree to the <a href="http://sna.pr/terms/" target="_blank" class="underline">Terms of Use</a></p>
-                    
+
                 </form>
 
 
@@ -1705,7 +1711,7 @@
                             <h2>Welcome to Snapr!</h2>
                             <p>What would you like to do now?</p>
                         </li>
-                        
+
                          <li>
                             <a>Find your friends</a>
                         </li>
@@ -1715,7 +1721,7 @@
                         <li>
                             <a href="#/menu/">Dive right in!</a>
                         </li>
-                        
+
                     </ul>
             </div>
         </div>

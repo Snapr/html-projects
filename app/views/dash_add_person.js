@@ -30,7 +30,7 @@ snapr.views.dash_add_person = snapr.views.dialog.extend({
     {
         var people_list = this.$el.find("ul.people-list").empty();
 
-        var people_li_template = _.template( $("#people-li-template").html() );
+        var people_li_template = _.template( $("#people-li-min-template").html() );
 
         _.each( this.collection.models, function( model )
         {
@@ -91,7 +91,10 @@ snapr.views.dash_add_person = snapr.views.dialog.extend({
                 this_view.timer = null;
                 this_view.$el.addClass('loading');
                 this_view.xhr = this_view.collection.fetch({
-                    data:{username:keywords},
+                    data:{
+                        username:keywords,
+                        detail:0
+                    },
                     url: snapr.api_base + '/user/search/',
                     success: function(){
                         this_view.xhr = null;
