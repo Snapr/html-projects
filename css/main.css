@@ -2897,6 +2897,7 @@ a.ui-link-inherit {
   -moz-border-radius-topright: 0;
   -webkit-border-top-right-radius: 0;
   border-top-right-radius: 0;
+  border: none;
 }
 .ui-listview-inset li.ui-li.has-select .ui-select .ui-btn-inner {
   padding-top: 18px;
