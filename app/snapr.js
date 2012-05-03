@@ -215,8 +215,7 @@ snapr.utils.at_links = function( comment )
         var atcomment = comment.replace( /[@]+[A-Za-z0-9-_]+/g,
         function( u )
         {
-            var user = u.replace('@', '');
-            return '<a href="#/feed/?username=' + user + '">' + u + '</a>';
+            return '<a href="#/feed/?keywords=' + u + '">' + u + '</a>';
         });
         return atcomment;
     }

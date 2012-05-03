@@ -85,6 +85,8 @@ snapr.views.my_account = snapr.views.page.extend({
             }
         });
 
+        $account_content.find('.add-services').listview().listview("refresh");
+
         var hide_connect_heading = _.filter(linked_services_list, function(val){return !val;}).length ? false: true;
         var hide_linked_heading = _.filter(linked_services_list, function(val){return val;}).length ? false: true;
         if (hide_connect_heading)
