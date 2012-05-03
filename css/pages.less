@@ -1143,11 +1143,14 @@
     }
 }
 
-.add-services,
+/* Icons for linked services */
 .linked-services{
     .ui-collapsible-heading{
-        .ui-btn-text{
-           padding-left: 28px;
+        .ui-btn-inner{
+           padding: 16px 40px 16px 16px;
+           .ui-btn-text{
+                padding-left: 28px;
+           }
        }
        .sharing-icon-small {
            position: absolute;
@@ -1155,7 +1158,37 @@
            left: 0;
        }
     }
+    li{
+        margin-bottom: 0;
+    }
+    
+   
 }
+
+/* making list style icons look the same is a drag.. 
+ different markup format between collapsible headings and list links */
+
+.add-services{
+    li.ui-li{
+       margin-bottom: 0;
+       .ui-btn-text{
+          padding: 16px 40px 16px 16px;
+          .ui-link-inherit{
+             padding: 0!important;
+             padding-left: 28px!important;
+             position: relative;
+             overflow: visible;
+          }
+      }
+      .sharing-icon-small {
+          position: absolute;
+          top: -3px;
+          left: 0;
+      }
+   }    
+}
+
+
 
 .avatar-select-block{
     padding-left: 112px;

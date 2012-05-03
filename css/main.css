@@ -469,7 +469,7 @@
   background-image: url('../gfx/share-icons-small.png');
   width: 21px;
   height: 21px;
-  position: relative;
+  position: relative!important;
   display: block;
   top: 1px!important;
   left: 1px!important;
@@ -4611,10 +4611,36 @@ a.ui-link-inherit {
   border: none;
   border-bottom: solid 1px #e4e4e4;
 }
-.add-services .ui-collapsible-heading .ui-btn-text, .linked-services .ui-collapsible-heading .ui-btn-text {
+/* Icons for linked services */
+.linked-services .ui-collapsible-heading .ui-btn-inner {
+  padding: 16px 40px 16px 16px;
+}
+.linked-services .ui-collapsible-heading .ui-btn-inner .ui-btn-text {
   padding-left: 28px;
 }
-.add-services .ui-collapsible-heading .sharing-icon-small, .linked-services .ui-collapsible-heading .sharing-icon-small {
+.linked-services .ui-collapsible-heading .sharing-icon-small {
+  position: absolute;
+  top: -3px;
+  left: 0;
+}
+.linked-services li {
+  margin-bottom: 0;
+}
+/* making list style icons look the same is a drag.. 
+ different markup format between collapsible headings and list links */
+.add-services li.ui-li {
+  margin-bottom: 0;
+}
+.add-services li.ui-li .ui-btn-text {
+  padding: 16px 40px 16px 16px;
+}
+.add-services li.ui-li .ui-btn-text .ui-link-inherit {
+  padding: 0!important;
+  padding-left: 28px!important;
+  position: relative;
+  overflow: visible;
+}
+.add-services li.ui-li .sharing-icon-small {
   position: absolute;
   top: -3px;
   left: 0;
