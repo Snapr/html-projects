@@ -32,8 +32,9 @@ snapr.views.dash_add_search = snapr.views.dialog.extend({
                 }
             });
         stream.save({}, {success: function(){
-                dash.add(stream);
-            }});
+            dash.add(stream);
+        }});
+        this.back_view.$el.removeClass('edit');
         this.back();
     }
 

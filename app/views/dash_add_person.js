@@ -43,6 +43,7 @@ snapr.views.dash_add_person = snapr.views.dialog.extend({
         });
 
         var this_back = this.back;
+        var this_back_view = this.back_view;
         people_list.find('a').click(function(e){
             e.preventDefault();
             var username = $(this).data('username'),
@@ -59,6 +60,7 @@ snapr.views.dash_add_person = snapr.views.dialog.extend({
             stream.save({}, {success: function(){
                 dash.add(stream);
             }});
+            this_back_view.$el.removeClass('edit');
             this_back();
         });
 
