@@ -661,24 +661,6 @@ div[data-role="page"], div[data-role="dialog"] {
 .ui-btn-inner {
   padding: 9px 9px;
 }
-.ui-input-search.ui-btn-corner-all {
-  -moz-border-radius: 20px;
-  -webkit-border-radius: 20px;
-  border-radius: 20px;
-}
-.ui-input-search.ui-icon-searchfield::after {
-  margin-top: -18px;
-}
-.ui-input-search .ui-input-clear {
-  position: absolute;
-  right: -10px;
-  margin-top: -19px;
-  background: none;
-  border: none!important;
-}
-.ui-input-search .ui-input-clear .ui-icon-delete {
-  background-position: -72px 0px;
-}
 .ui-field-contain {
   padding: 0 0 8px 0;
 }
@@ -2608,6 +2590,7 @@ a.ui-link-inherit {
   display: block;
   background-image: url('../gfx/small-spinner-light.png');
   background-position: center;
+  background-repeat: no-repeat;
   -webkit-transform: rotate(0deg) translatez(0);
   -webkit-transition-duration: 0ms;
   -webkit-animation-name: loading;
@@ -2928,7 +2911,7 @@ a.ui-link-inherit {
 .simple-list .ui-btn.ui-li:first-child {
   border-top: none!important;
 }
-.simple-list.people-list, .simple-list.venue-list {
+.simple-list.people-list .ui-btn.ui-li:first-child, .simple-list.venue-list .ui-btn.ui-li:first-child {
   border-top: solid 1px #e4e4e4 !important;
 }
 .simple-list .ui-btn-inner .ui-link-inherit {
@@ -3009,11 +2992,44 @@ a.ui-link-inherit {
 .simple-list .ui-icon-arrow-r {
   background-position: -108px -36px;
 }
+/* @search fields at top of pages like people / venues */
 .search-header {
   overflow: visible;
 }
 .search-header input {
   overflow: visible;
+}
+.ui-input-search.ui-btn-corner-all {
+  -moz-border-radius: 20px;
+  -webkit-border-radius: 20px;
+  border-radius: 20px;
+}
+.ui-input-search.ui-icon-searchfield::after {
+  margin-top: -18px;
+}
+.ui-input-search .ui-input-clear {
+  position: absolute;
+  right: -2px;
+  margin-top: -19px;
+  background: none;
+  border: none!important;
+}
+.ui-input-search .ui-input-clear .ui-icon-delete {
+  width: 36px;
+  height: 36px;
+  background-position: -63px 0px;
+}
+.loading .ui-input-search .ui-input-clear .ui-icon-delete {
+  display: block;
+  background-image: url('../gfx/small-spinner-light.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  -webkit-transform: rotate(0deg) translatez(0);
+  -webkit-transition-duration: 0ms;
+  -webkit-animation-name: loading;
+  -webkit-animation-duration: 1.2s;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
 }
 /* @switch
     over rides theme swatch styles for general blue / white style switch
@@ -4123,6 +4139,9 @@ a.ui-link-inherit {
 }
 #dashboard.edit .ui-header .ui-btn-hover-b .ui-btn-inner .ui-icon-settings {
   background-position: -120px -280px;
+}
+#dash-add-person .people-list .follow-btn {
+  display: none;
 }
 /*
 * @share - PAGE

@@ -29,7 +29,7 @@ snapr.views.people_li = Backbone.View.extend({
         // unfortunately jquery mobile doesn't like refreshing inividual listview items
         // when the listview has already been created so we need to change things manually
 
-        var follow_button = this.$el.find("a[data-icon]");
+        var follow_button = this.$el.find(".follow-btn");
         var following = this.model.get("relationship").you_follow;
 
         if (following)

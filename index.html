@@ -1214,7 +1214,7 @@
                  <form action="javascript: void(0);" accept-charset="utf-8" id="search-form">
                      <ul data-role="listview" data-inset="true" data-theme="d">
                          <li data-role="fieldcontain" class="ui-hide-label">
-                             <input type="text" placeholder="Place Name&hellip;" autocapitalize="off" id="dash-search-keywords">
+                             <input type="text" placeholder="Keyword&hellip;" autocapitalize="off" id="dash-search-keywords">
                         </li>
                         <li data-role="fieldcontain" class="ui-hide-label has-select">
                             <select id="dash-search-type" data-theme="c">
@@ -1397,15 +1397,15 @@
                <p class="small-text"><span class="photo-count"><%= user.get('photo_count') %></span> photos, <span class="followers"><%= user.get('followers') %></span> followers</p>
            </a>
            <% if (!logged_in) {%>
-                    <a data-icon="plus" data-iconpos="right" class="follow"></a>
+                    <a data-icon="plus" data-iconpos="right" class="follow follow-btn"></a>
            <%}else{%>
                <% if (user.get('username') == auth_username){%>
-                   <a disabled="true" data-icon="check" data-iconpos="right"></a>
+                   <a disabled="true" data-icon="check" data-iconpos="right" class="follow-btn"></a>
                <%}else{%>
                    <% if (user.get('relationship').you_follow) {%>
-                   <a data-icon="check" data-iconpos="right" class="unfollow"></a>
+                   <a data-icon="check" data-iconpos="right" class="unfollow follow-btn"></a>
                    <%}else{%>
-                   <a data-icon="plus" data-iconpos="right" class="follow"></a>
+                   <a data-icon="plus" data-iconpos="right" class="follow follow-btn"></a>
                    <%}%>
                <%}%>
            <%}%>

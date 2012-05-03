@@ -229,9 +229,7 @@
 .x-validating{
     overflow: hidden; /* if the spinning element overlaps other form elements can cause flicker */
    .ui-icon-validation{
-       display: block;
-       background-image: url('../gfx/small-spinner-light.png');
-       background-position: center;
+       .spinner();
        .spin();
    }
 }
@@ -588,8 +586,9 @@
     /* Put the border back on for people / venues lists because i like it there */
     &.people-list,
     &.venue-list{
-        border-top: @border-medium-on-light!important;
-
+        .ui-btn.ui-li:first-child{
+            border-top: @border-medium-on-light!important;
+        }
     }
 
     .ui-btn-inner{
@@ -679,12 +678,47 @@
     }
 }
 
+/* @search fields at top of pages like people / venues */
 .search-header{
     overflow: visible;
     input{
         overflow: visible;
     }
 }
+
+.ui-input-search{
+    &.ui-btn-corner-all{
+        .corner-all(@corner-fully-rounded);
+    }
+    &.ui-icon-searchfield::after{
+        margin-top: -18px;
+    }
+    .ui-input-clear {
+        position: absolute;
+        right: -2px;
+        margin-top: -19px;
+        background: none;
+        border: none!important;
+        .ui-icon-delete{
+            width: @gfx-general-icon-sprite-grid;
+            height: @gfx-general-icon-sprite-grid;
+            background-position: @gfx-general-icon-sprite-delete-x + 9px @g-light-offset-y;
+        }
+    }
+}
+
+.loading{
+    .ui-input-search{
+        .ui-input-clear {
+            .ui-icon-delete{
+                .spinner();
+                .spin();
+            }
+            
+        }
+    } 
+}
+
 
 
 /* @switch
