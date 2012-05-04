@@ -129,7 +129,6 @@ snapr.views.map = snapr.views.page.extend({
 
         var map_view = this;
 
-        console.log('listening');
         var idle = google.maps.event.addListener( map_view.map, "idle", function()
         {
             map_view.map_query.set( {
@@ -137,7 +136,6 @@ snapr.views.map = snapr.views.page.extend({
                 zoom: map_view.map.getZoom()
             });
             // remember location
-            console.log('saving location');
             snapr.utils.save_local_param('map_zoom', map_view.map.getZoom());
             var ll = map_view.map.getCenter();
             snapr.utils.save_local_param('map_latitude', ll.lat());
@@ -177,6 +175,7 @@ snapr.views.map = snapr.views.page.extend({
 
     get_thumbs: function( query_model )
     {
+        this.$el.addClass('loading');
         var query = query_model && query_model.attributes || this.map_query.attributes;
 
         var old_thumb_ids = this.thumb_collection.pluck("id");
@@ -191,6 +190,7 @@ snapr.views.map = snapr.views.page.extend({
         this.thumb_collection.fetch({
             success: function( collection )
             {
+                map_view.$el.removeClass('loading');
                 if (_.difference( map_view.thumb_collection.pluck("id"), old_thumb_ids ).length)
                 {
 
