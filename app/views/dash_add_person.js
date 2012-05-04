@@ -73,6 +73,10 @@ snapr.views.dash_add_person = snapr.views.dialog.extend({
         var keywords = $(e.target).val();
         var this_view = this;
 
+
+        this.timer && clearTimeout(this.timer);
+        this.xhr && this.xhr.abort();
+
         if (keywords.length > 1){
             // switch (this.options.follow){
             //     case "following":
@@ -85,9 +89,6 @@ snapr.views.dash_add_person = snapr.views.dialog.extend({
             //         // do it
             //         break;
             // }
-
-            this.timer && clearTimeout(this.timer);
-            this.xhr && this.xhr.abort();
 
             this.timer = setTimeout( function() {
                 this_view.timer = null;
@@ -106,6 +107,8 @@ snapr.views.dash_add_person = snapr.views.dialog.extend({
                 });
             }, 300 );
 
+        }else{
+            this_view.collection.reset();
         }
     }
 
