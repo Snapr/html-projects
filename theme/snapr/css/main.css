@@ -3056,7 +3056,7 @@ a.ui-link-inherit {
   height: 36px;
   background-position: -63px 0px;
 }
-.loading .ui-input-search .ui-input-clear .ui-icon-delete {
+.loading .search-header .ui-input-search .ui-input-clear .ui-icon-delete {
   display: block;
   background-image: url('../gfx/small-spinner-light.png') !important;
   background-position: center!important;
@@ -4008,13 +4008,17 @@ a.ui-link-inherit {
 }
 .image-item-block .reactions-list .ui-li .ui-link-inherit {
   padding: 0 0 8px 0 !important;
+  display: inline-block;
+  white-space: normal;
+}
+.image-item-block .reactions-list .ui-li .ui-icon-arrow-r {
+  display: none;
+}
+.image-item-block .reactions-list .ui-li .comment, .image-item-block .reactions-list .ui-li .like-text {
   white-space: normal;
   font-weight: normal;
   font-family: Helvetica, Arial, sans-serif;
   color: #666666;
-}
-.image-item-block .reactions-list .ui-li .ui-icon-arrow-r {
-  display: none;
 }
 .image-item-block .comment-area {
   display: none;
