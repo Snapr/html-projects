@@ -1,6 +1,6 @@
 snapr.views.activity_stream_item = Backbone.View.extend({
 
-    tagName: "div",
+    tagName: "li",
 
     className: "activity-item",
 
