@@ -2835,8 +2835,8 @@ a.ui-link-inherit {
 }
 .progress-bar .bar-action {
   position: absolute;
-  right: -16px;
-  top: -7px;
+  right: -10px;
+  top: -5px;
   margin: 0;
   width: 40px;
   height: 40px;
@@ -2853,8 +2853,12 @@ a.ui-link-inherit {
   font-weight: bold;
   font-size: 12px;
 }
+.progress-bar .ui-icon {
+  width: 36px;
+  height: 36px;
+}
 .progress-bar .ui-icon-check {
-  background-position: -252px -144px;
+  background-position: -244px -144px;
 }
 /* Inset list views for white BG content blocks and sneaky login field groups */
 .ui-listview-inset {

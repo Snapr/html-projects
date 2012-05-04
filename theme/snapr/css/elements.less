@@ -472,8 +472,8 @@
     }
     .bar-action{
         position: absolute;
-        right: -16px;
-        top: -7px;
+        right: -10px;
+        top: -5px;
         margin: 0;
         width: 40px;
         height: 40px;
@@ -492,9 +492,13 @@
         font-weight: bold;
         font-size: @txt-size-small;
     }
+    .ui-icon{
+       width: @gfx-general-icon-sprite-grid;
+       height: @gfx-general-icon-sprite-grid; 
+    }
 
     .ui-icon-check{
-        background-position: @gfx-general-icon-sprite-check-x @g-highlight-offset-y;
+        background-position: @gfx-general-icon-sprite-check-x + 8px @g-highlight-offset-y;
     }
 
 }

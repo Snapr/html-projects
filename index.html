@@ -1900,13 +1900,13 @@
                    <% switch (upload_status) { case 'active': %>
 
                       <% if (percent_complete == 100){ %>
-                          <a class="bar-action ui-btn ui-btn-up-d ui-btn-icon-notext ui-btn-corner-all ui-shadow" data-role="button" data-icon="refresh" data-iconpos="notext" title="Processing" data-theme="d"><span class="ui-btn-inner ui-btn-corner-all" aria-hidden="true"><span class="ui-btn-text">Processing</span><span class="ui-icon ui-icon-refresh ui-icon-shadow"></span></span></a>
+                          <a class="bar-action ui-btn ui-btn-up-d ui-btn-icon-notext ui-btn-corner-all ui-shadow" data-role="button" data-icon="refresh" data-iconpos="notext" title="Processing" data-theme="d"><span class="ui-btn-inner ui-btn-corner-all" aria-hidden="true"><span class="ui-btn-text">Processing</span><span class="ui-icon ui-icon-spinner ui-icon-shadow"></span></span></a>
                       <% }else{ %>
    <a class="bar-action ui-btn ui-btn-up-d ui-btn-icon-notext ui-btn-corner-all ui-shadow cancel" data-role="button" data-icon="delete" data-iconpos="notext" title="Cancel" data-theme="d"><span class="ui-btn-inner ui-btn-corner-all" aria-hidden="true"><span class="ui-btn-text">Cancel</span><span class="ui-icon ui-icon-delete ui-icon-shadow"></span></span></a>
                       <% } %>
 
                    <% break; case 'waiting': %>
-                        <a class="bar-action ui-btn ui-btn-up-d ui-btn-icon-notext ui-btn-corner-all ui-shadow finishing" data-role="button" data-icon="refresh" data-iconpos="notext" title="Processing" data-theme="d"><span class="ui-btn-inner ui-btn-corner-all" aria-hidden="true"><span class="ui-btn-text">Cancel</span><span class="ui-icon ui-icon-refresh ui-icon-shadow"></span></span></a>
+                        <a class="bar-action ui-btn ui-btn-up-d ui-btn-icon-notext ui-btn-corner-all ui-shadow finishing" data-role="button" data-icon="refresh" data-iconpos="notext" title="Processing" data-theme="d"><span class="ui-btn-inner ui-btn-corner-all" aria-hidden="true"><span class="ui-btn-text">Cancel</span><span class="ui-icon ui-icon-delete ui-icon-shadow"></span></span></a>
 
                    <% break; case 'canceled': %>
 
