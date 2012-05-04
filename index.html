@@ -1574,12 +1574,12 @@
 
             <div id="google-map">
             </div>
-            <div id="map-disambiguation" data-role="content" data-theme="c" style="">
+            <div id="map-disambiguation" data-role="content" data-theme="d" style="">
                 <h4>Did you mean&hellip;</h4>
-                <ul data-role="listview" id="map-disambiguation-list" class="simple-list">
+                <ul data-role="listview" id="map-disambiguation-list" class="simple-list map-list">
                 </ul>
                 <div class="cancel-btn">
-                <button id="map-disambituation-cancel">Cancel</button>
+                <button id="map-disambituation-cancel" data-theme="c">Cancel</button>
                 </div>
             </div>
 
@@ -1593,6 +1593,10 @@
 
                    <a class="map-time-btn" data-role="button" data-icon="map-time" data-iconpos="notext">
                 </a>
+                    <div class="map-loading ui-shadow">
+                        <span class="ui-icon ui-icon-spinner"></span>
+                    </div>
+                
                 </div>
                 <div class="map-filters">
                     <div class="ui-grid-a">

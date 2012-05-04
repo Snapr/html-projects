@@ -1321,6 +1321,24 @@
         padding-top: 0;
         padding-bottom: 8px;
     }
+    &.loading{
+        .map-time{
+            .map-time-btn{
+                display: none;
+            }
+        }
+        .map-loading{
+            width: 32px;
+            height:32px;
+            overflow: hidden;
+            .corner-all(16px);
+            .ui-icon{
+                opacity: .7;
+                width: 32px;
+                height:32px;
+            }
+        }
+    }
 }
 
 #map-layer{
@@ -1507,6 +1525,7 @@
                 }
             }
         }
+       
 
         .map-filters{
             margin: 6px;
@@ -1521,6 +1540,9 @@
         z-index: 100;
         min-height: 0px;
         overflow: visible;
+        h4{
+            margin-top: @padding-element-inset;
+        }
         .ui-listview {
             margin-top: 0;
             margin-bottom: 0;
@@ -1567,6 +1589,7 @@
             }
         }
     }
+    
 }
 
 /*
