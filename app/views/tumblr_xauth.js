@@ -30,6 +30,7 @@ snapr.views.tumblr_xauth = snapr.views.dialog.extend({
 
     events: {
         "submit #tumblr-dialog":"link_tumblr",
+        "click .tumblr-button":"link_tumblr",
         "click .x-back": "back"
     },
 
