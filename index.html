@@ -641,12 +641,14 @@
     <!-- @connect -->
     <div id="connect" data-role="page" data-ajax="false">
         <div data-role="header">
-            <h1>Sharing</h1>
+            <h1>Connect</h1>
             <a href="#/" data-role="button" data-icon="delete" data-iconpos="notext"></a>
         </div>
         <div data-role="content">
-            <h2>Please link up for sharing:</h2>
-            <ul data-role="listview" data-inset="true" data-theme="c">
+            <div class="inset-page-content">
+                <p>Please link up for sharing:</p>
+                <ul data-role="listview" data-ajax="false" class="add-services" data-inset="true" data-theme="d">
+            
             </ul>
         </div>
     </div>
@@ -655,16 +657,17 @@
     <!-- vars provider, status -->
     <!-- wrapped in = <li data-role="fieldcontain"> -->
     <script id="connect-li-template" type="text/template">
-    <legend class="provider"><%= provider %></legend>
-    <div class="PINK-right-button">
-    <% switch(status) { case 'ready': %>
-        <button data-inline="true" data-theme="b" class="connected">Connected</button>
-    <% break; case 'shared': %>
-        <button data-inline="true" data-theme="b" class="shared">Shared</button>
-    <% break; default:%>
-        <button data-inline="true" data-theme="b" class="connect">Connect</button>
-    <% }%>
-    </div>
+    <a class="<%= status %>">
+        <span class="<%= provider %>-sharing sharing-icon-small">
+            <span class="ui-icon"></span>
+        </span>       
+        <%= provider %>
+        <% switch(status) { case 'ready': %>
+            <span class="connect-status connected">Sharing <span class="ui-icon"></span></span>
+        <% break; case 'shared': %>
+            <span class="connect-status connected">Shared<span class="ui-icon"></span></span>
+        <% }%>
+    </a>
     </script>
 
 
