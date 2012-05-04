@@ -635,6 +635,10 @@ snapr.routers = Backbone.Router.extend({
         "photo-edit/?*query_string": "share_photo",
         "my-account/": "my_account",
         "my-account/?*query_string": "my_account",
+        "find-friends/": "find_friends",
+        "find-friends/?*query_string": "find_friends",
+        "find-friends-twitter/": "find_friends_twitter",
+        "find-friends-twitter/?*query_string": "find_friends_twitter",
         "linked-services/": "linked_services",
         "linked-services/?*query_string": "linked_services",
         "connect/": "connect",
@@ -808,6 +812,20 @@ snapr.routers = Backbone.Router.extend({
             el: $("#my-account")[0]
         });
     },
+    find_friends: function( query_string )
+    {
+        snapr.utils.get_query_params( query_string );
+        snapr.info.current_view = new snapr.views.find_friends({
+            el: $("#find-friends")[0]
+        });
+    },
+    find_friends_twitter: function( query_string )
+       {
+           snapr.utils.get_query_params( query_string );
+           snapr.info.current_view = new snapr.views.find_friends_twitter({
+               el: $("#find-friends-twitter")[0]
+           });
+       },
 
     linked_services: function( query_string, back_view )
     {

@@ -3056,6 +3056,9 @@ a.ui-link-inherit {
   height: 36px;
   background-position: -63px 0px;
 }
+.loading .search-header .ui-input-search .ui-input-clear {
+  display: block;
+}
 .loading .search-header .ui-input-search .ui-input-clear .ui-icon-delete {
   display: block;
   background-image: url('../gfx/small-spinner-light.png') !important;
@@ -4717,19 +4720,19 @@ a.ui-link-inherit {
 }
 /* making list style icons look the same is a drag.. 
  different markup format between collapsible headings and list links */
-.add-services li.ui-li {
+.add-services li.ui-li, .share-icons-list li.ui-li {
   margin-bottom: 0;
 }
-.add-services li.ui-li .ui-btn-text {
+.add-services li.ui-li .ui-btn-text, .share-icons-list li.ui-li .ui-btn-text {
   padding: 16px 40px 16px 16px;
 }
-.add-services li.ui-li .ui-btn-text .ui-link-inherit {
+.add-services li.ui-li .ui-btn-text .ui-link-inherit, .share-icons-list li.ui-li .ui-btn-text .ui-link-inherit {
   padding: 0!important;
   padding-left: 28px!important;
   position: relative;
   overflow: visible;
 }
-.add-services li.ui-li .sharing-icon-small {
+.add-services li.ui-li .sharing-icon-small, .share-icons-list li.ui-li .sharing-icon-small {
   position: absolute;
   top: -3px;
   left: 0;

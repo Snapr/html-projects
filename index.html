@@ -156,9 +156,6 @@
                 </div>
             </div>
 
-
-
-
             <% if(logged_in) { %>
                 <a href="#/activity/"
                 data-corners="false" data-shadow="false"
@@ -168,8 +165,6 @@
                 data-corners="false" data-shadow="false"
                 data-role="button" class="ui-bar ui-bar-e bottom-centered-arrow">About Snapr</a>
             <% } %>
-
-
 
     </script>
 
@@ -209,7 +204,7 @@
          </a>
          <ul class="simple-list" data-role="listview">
             <li>
-                <a>Find Friends</a>
+                <a href="#/find-friends/">Find Friends</a>
             </li>
          </ul>
     </div>
@@ -594,6 +589,54 @@
             </div>
         </div>
     </script>
+
+
+     <!-- @findfriends PAGE-->
+    <div id="find-friends" data-role="dialog" data-overlay-theme="c" data-theme="c">
+        <div data-role="header" data-theme="c">
+            <h1>Find Friends</h1>
+            
+            <a class="x-back" data-role="button" data-icon="delete" data-iconpos="notext"></a>
+        </div>
+        <div data-role="content" data-theme="c" data-ajax="false">
+            <div class="inset-page-content">
+                <ul data-role="listview" data-ajax="false" class="share-icons-list" data-inset="true" data-theme="d">
+                    <li>
+                        <a class="" href="#/find-friends-twitter/">
+                            <span class="facebook-sharing sharing-icon-small">
+                                <span class="ui-icon"></span>
+                            </span>
+                            Facebook
+                         </a>
+                    </li>
+                    <li>
+                        <a class="" href="#/find-friends-twitter/">
+                            <span class="twitter-sharing sharing-icon-small">
+                                <span class="ui-icon"></span>
+                            </span>
+                            Twitter
+                        </a>
+                    </li>                    
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+     <!-- @findfriendstwitter DIALOG-->
+       <div id="find-friends-twitter" data-role="dialog" data-overlay-theme="c" data-theme="c">
+           <div data-role="header" data-theme="c">
+               <h1>Twitter Friends</h1>
+               <a class="x-back" data-role="button" data-icon="delete" data-iconpos="notext"></a>
+           </div>
+           <div data-role="content" data-theme="c" data-ajax="false">
+               <div class="search-header">
+                   <input type="search" id="people-search" value="" placeholder="@username&hellip;" />
+               </div>
+               <ul class="people-list simple-list" data-role="listview" data-inset="true" >
+               </ul>
+           </div>
+       </div>
+
 
     <!-- @connect -->
     <div id="connect" data-role="page" data-ajax="false">
@@ -1485,42 +1528,35 @@
     </div>
 
     <!-- @app PAGE-->
-       <div id="app" data-role="dialog" data-overlay-theme="c" data-theme="c">
-           <div data-role="header" data-theme="c">
-               <h1>Get the App!</h1>
-
-               <a class="x-back" data-role="button" data-icon="delete" data-iconpos="notext"></a>
-           </div>
-           <div data-role="content" data-theme="c" data-ajax="false">
-               <div class="inset-page-content">
-                   <ul data-role="listview" data-ajax="false" class="" data-inset="true" data-theme="d">
-                       <li class="wrap-content">
-                           <h2>Share &amp; Discover with Snapr</h2>
-                           <p >For the best experience download one of our apps:</a>
-                       </li>
-                       <li>
-                           <a class="iphone-appstore appstore-badge" href="http://itunes.apple.com/app/snapr/id359528116?mt=8">
-                               <span class="platform-logo"></span>
-                            </a>
-                       </li>
-                       <li>
-                           <a class="android-marketplace appstore-badge" href="market://details?id=pr.sna.snapr&feature=search_result">
-                               <span class="platform-logo"></span>
-                           </a>
-                       </li>
-                   </ul>
-                   <p class="small-text">Does your phone allow browser based uploads?</p>
-                      <a data-role="button" data-theme="e" href="#/upload/">Upload via Mobile Web </a>
-
-           </div>
-
-
-
-
-
+   <div id="app" data-role="dialog" data-overlay-theme="c" data-theme="c">
+       <div data-role="header" data-theme="c">
+           <h1>Get the App!</h1>
+           <a class="x-back" data-role="button" data-icon="delete" data-iconpos="notext"></a>
+       </div>
+       <div data-role="content" data-theme="c" data-ajax="false">
+           <div class="inset-page-content">
+               <ul data-role="listview" data-ajax="false" class="" data-inset="true" data-theme="d">
+                   <li class="wrap-content">
+                       <h2>Share &amp; Discover with Snapr</h2>
+                       <p >For the best experience download one of our apps:</a>
+                   </li>
+                   <li>
+                       <a class="iphone-appstore appstore-badge" href="http://itunes.apple.com/app/snapr/id359528116?mt=8">
+                           <span class="platform-logo"></span>
+                        </a>
+                   </li>
+                   <li>
+                       <a class="android-marketplace appstore-badge" href="market://details?id=pr.sna.snapr&feature=search_result">
+                           <span class="platform-logo"></span>
+                       </a>
+                   </li>
+               </ul>
+               <p class="small-text">Does your phone allow browser based uploads?</p>
+               <a data-role="button" data-theme="e" href="#/upload/">Upload via Mobile Web </a>
                </div>
            </div>
        </div>
+   </div>
 
 
     <!-- @search DIALOG-->
@@ -1794,10 +1830,6 @@
                     <input type="file" name="photo" id="upload-file" />
                    </p>
                     <input disabled="true" type="submit" value="Upload Snap" id="upload-submit" data-theme="e" />
-
-
-
-
                 </form>
             </div>
         </div>
@@ -2147,6 +2179,9 @@
 <script src="app/views/map_controls.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/map_disambiguation_li.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/my_account.js" type="text/javascript" charset="utf-8"></script>
+<script src="app/views/find_friends.js" type="text/javascript" charset="utf-8"></script>
+<script src="app/views/find_friends_twitter.js" type="text/javascript" charset="utf-8"></script>
+
 <script src="app/views/people.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/people_li.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/venues.js" type="text/javascript" charset="utf-8"></script>
