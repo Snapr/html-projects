@@ -5178,7 +5178,7 @@ a.ui-link-inherit {
     -webkit-background-size: 32px 800px;
     background-size: 32px 800px;
   }
-  .ui-btn-inner .ui-icon.helper-icons, .helper-icons .ui-btn-inner .ui-icon {
+  .ui-icon.helper-icons, .helper-icons .ui-icon {
     background-image: url('../gfx/retina/helper-icons.png');
     -moz-background-size: 96px 96px;
     -o-background-size: 96px 96px;
@@ -5306,14 +5306,30 @@ a.ui-link-inherit {
     background-size: 150px 144px;
   }
   .x-validating .ui-icon-validation {
-    background-image: url('../gfx/retina/small-spinner-light.png');
+    display: block;
+    background-image: url('../gfx/retina/small-spinner-light.png') !important;
+    background-position: center!important;
+    background-repeat: no-repeat !important;
     -moz-background-size: 24px 24px;
     -o-background-size: 24px 24px;
     -webkit-background-size: 24px 24px;
     background-size: 24px 24px;
   }
   .loading .ui-input-search .ui-input-clear .ui-icon-delete {
-    background-image: url('../gfx/retina/small-spinner-light.png');
+    display: block;
+    background-image: url('../gfx/retina/small-spinner-light.png') !important;
+    background-position: center!important;
+    background-repeat: no-repeat !important;
+    -moz-background-size: 24px 24px;
+    -o-background-size: 24px 24px;
+    -webkit-background-size: 24px 24px;
+    background-size: 24px 24px;
+  }
+  .ui-icon-spinner {
+    display: block;
+    background-image: url('../gfx/retina/small-spinner-light.png') !important;
+    background-position: center!important;
+    background-repeat: no-repeat !important;
     -moz-background-size: 24px 24px;
     -o-background-size: 24px 24px;
     -webkit-background-size: 24px 24px;
