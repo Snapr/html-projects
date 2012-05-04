@@ -595,7 +595,7 @@
     <div id="find-friends" data-role="dialog" data-overlay-theme="c" data-theme="c">
         <div data-role="header" data-theme="c">
             <h1>Find Friends</h1>
-            
+
             <a class="x-back" data-role="button" data-icon="delete" data-iconpos="notext"></a>
         </div>
         <div data-role="content" data-theme="c" data-ajax="false">
@@ -616,12 +616,12 @@
                             </span>
                             Twitter
                         </a>
-                    </li>                    
+                    </li>
                 </ul>
             </div>
         </div>
     </div>
-    
+
      <!-- @findfriendstwitter DIALOG-->
        <div id="find-friends-twitter" data-role="dialog" data-overlay-theme="c" data-theme="c">
            <div data-role="header" data-theme="c">
@@ -648,7 +648,7 @@
             <div class="inset-page-content">
                 <p>Please link up for sharing:</p>
                 <ul data-role="listview" data-ajax="false" class="add-services" data-inset="true" data-theme="d">
-            
+
             </ul>
         </div>
     </div>
@@ -660,7 +660,7 @@
     <a class="<%= status %>">
         <span class="<%= provider %>-sharing sharing-icon-small">
             <span class="ui-icon"></span>
-        </span>       
+        </span>
         <%= provider %>
         <% switch(status) { case 'ready': %>
             <span class="connect-status connected">Sharing <span class="ui-icon"></span></span>
@@ -1318,6 +1318,8 @@
             <span class="small-text"><%= stream_summary %></span>
         </a>
     <%}%>
+        <ul>
+        </ul>
     </script>
 
     <script id="activity-stream-item-template" type="text/template">
@@ -1634,7 +1636,7 @@
                     <div class="map-loading ui-shadow">
                         <span class="ui-icon ui-icon-spinner"></span>
                     </div>
-                
+
                 </div>
                 <div class="map-filters">
                     <div class="ui-grid-a">
