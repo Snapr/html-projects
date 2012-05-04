@@ -2615,6 +2615,9 @@ a.ui-link-inherit {
   -webkit-animation-iteration-count: infinite;
   -webkit-animation-timing-function: linear;
 }
+.loading #no-results {
+  display: none;
+}
 .underline {
   text-decoration: underline;
 }
