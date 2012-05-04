@@ -54,22 +54,25 @@ snapr.views.side_scroll = Backbone.View.extend({
                 onScrollEnd: function(){
 
                     // Set active thumb
-                    $('.active', this.wrapper).removeClass('active');
-                    var curr = $('a.x-thumb', this.wrapper).eq(this.currPageX-1).addClass('active');
-                    var text = curr.data('tag'),
-                        tag = details.find('.x-tag');
-                    // webkit bug!
-                    // if text is blank and we set tag.text('') then the next time we
-                    // set tag.text('real value') the element will not be visible.
-                    // setting tag.html('&nbsp;') means the element is never really
-                    // blank and never dissapears.
-                    if(text){
-                        tag.text(text);
-                    }else{
-                        tag.html('&nbsp;');
+                    var page = this.currPageX-1;
+                    if(page >= 0){
+                        $('.active', this.wrapper).removeClass('active');
+                        var curr = $('a.x-thumb', this.wrapper).eq(page).addClass('active');
+                        var text = curr.data('tag'),
+                            tag = details.find('.x-tag');
+                        // webkit bug!
+                        // if text is blank and we set tag.text('') then the next time we
+                        // set tag.text('real value') the element will not be visible.
+                        // setting tag.html('&nbsp;') means the element is never really
+                        // blank and never dissapears.
+                        if(text){
+                            tag.text(text);
+                        }else{
+                            tag.html('&nbsp;');
+                        }
+                        details.find('.x-date').text(snapr.utils.short_timestamp(curr.data('date')));
+                        details.data('current', curr.data('id'));
                     }
-                    details.find('.x-date').text(snapr.utils.short_timestamp(curr.data('date')));
-                    details.data('current', curr.data('id'));
 
                     // Pull to refresh: if scroll elements are .x-flipped - refresh
                     if(left_pull_el.is('.x-flipped') && !scroll_el.is('.x-loading')){
