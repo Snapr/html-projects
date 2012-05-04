@@ -846,12 +846,13 @@ snapr.routers = Backbone.Router.extend({
         })
     },
 
-    tumblr_xauth: function( query_string )
+    tumblr_xauth: function( query_string, back_view )
     {
         var query = snapr.utils.get_query_params( query_string );
         snapr.info.current_view = new snapr.views.tumblr_xauth({
             el: $("#tumblr-xauth")[0],
-            query: query
+            query: query,
+            back_view: back_view
         })
     },
 

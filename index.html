@@ -648,8 +648,8 @@
             <div class="inset-page-content">
                 <p>Please link up for sharing:</p>
                 <ul data-role="listview" data-ajax="false" class="add-services" data-inset="true" data-theme="d">
-
-            </ul>
+                </ul>
+            </div>
         </div>
     </div>
 
@@ -679,29 +679,26 @@
        </div>
 
        <div data-role="content" data-ajax="false">
-           <div class="login-message"></div>
-
-
-               <form action="javascript: void(0);" accept-charset="utf-8" id="tumblr-dialog">
-
-                    <ul data-role="listview" data-inset="true" data-theme="d">
-                        <li data-role="fieldcontain" class="ui-hide-label">
-                            <label for="username">Tumblr Email</label>
-                            <input type="text" name="username" placeholder="Tumblr Email" autocapitalize="off" autocorrect="off" id="tumblr-username" >
-                        </li>
-                        <li data-role="fieldcontain" class="ui-hide-label">
-                            <label for="password">Password</label>
-                            <input type="password" name="password" placeholder="Password" id="tumblr-password">
-                       </li>
-                    </ul>
-
-                    <a data-role="button" class="tumblr-button logo-button" data-theme="e">
-                        Connect <span class="tumblr-logo button-logo">Tumblr</span>
-                    </a>
-               </form>
+           <div class="login-message">
            </div>
-       </div><!-- /page -->
-    </div>
+           <form action="javascript: void(0);" accept-charset="utf-8" id="tumblr-dialog">
+                <ul data-role="listview" data-inset="true" data-theme="d">
+                    <li data-role="fieldcontain" class="ui-hide-label">
+                        <label for="username">Tumblr Email</label>
+                        <input type="text" name="username" placeholder="Tumblr Email" autocapitalize="off" autocorrect="off" id="tumblr-username" >
+                    </li>
+                    <li data-role="fieldcontain" class="ui-hide-label">
+                        <label for="password">Password</label>
+                        <input type="password" name="password" placeholder="Password" id="tumblr-password">
+                   </li>
+                </ul>
+                <a data-role="button" class="tumblr-button logo-button" data-theme="e">
+                    Connect <span class="tumblr-logo button-logo">Tumblr</span>
+                </a>
+           </form>
+       </div>
+   </div><!-- /page -->
+
 
     <!-- @popular PAGE -->
     <div id="popular" data-title="Popular" data-add-back-btn="true" data-role="page" data-theme="d">
