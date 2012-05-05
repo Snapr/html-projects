@@ -893,7 +893,6 @@ snapr.routers = Backbone.Router.extend({
     {
         var query = snapr.utils.get_query_params( query_string );
         snapr.info.current_view = new snapr.views.dash_add_person({
-            query: query,
             el: $("#dash-add-person")[0],
             back_view: back_view
         });
@@ -903,7 +902,6 @@ snapr.routers = Backbone.Router.extend({
     {
         var query = snapr.utils.get_query_params( query_string );
         snapr.info.current_view = new snapr.views.dash_add_search({
-            query: query,
             el: $("#dash-add-search")[0],
             back_view: back_view
         });

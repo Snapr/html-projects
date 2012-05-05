@@ -16,21 +16,27 @@ snapr.views.dash_add_search = snapr.views.dialog.extend({
 
     search: function()
     {
-        var keywords = $("#dash-search-keywords").val(),
-            nearby = $("#dash-search-type").val(),
+        var keywords = $("#dash-search-keywords").val();
+        var nearby = $("#dash-search-type").val();
 
-            stream = new snapr.models.dash_stream({
-                query: {
-                    keywords: keywords,
-                    nearby: !!nearby,
-                    radius: nearby || null
-                },
-                display: {
-                    "title": "Search for "+keywords,
-                    "short_title": keywords,
-                    "type": "search"
-                }
-            });
+        var stream_object = {
+            query: {
+                keywords: keywords,
+                nearby: !!nearby,
+            },
+            display: {
+                "title": "Search for "+keywords,
+                "short_title": keywords,
+                "type": "search"
+            }
+        }
+
+        if (nearby)
+        {
+            stream_object.query.radius = nearby;
+        }
+
+        var stream = new snapr.models.dash_stream( stream_object );
         stream.save({}, {success: function(){
             dash.add(stream);
         }});
