@@ -36,7 +36,7 @@ snapr.models.auth = Backbone.Model.extend({
                     delete auth.data;
                     if (typeof options.error == "function")
                     {
-                        options.error( auth.get( "error_description" ) );
+                        options.error( auth.attributes );
                     }
                 }
             },
@@ -44,7 +44,7 @@ snapr.models.auth = Backbone.Model.extend({
             {
                 if (typeof options.error == "function")
                 {
-                    options.error( auth.get( "error_description" ) );
+                    options.error();
                 }
             }
         }
