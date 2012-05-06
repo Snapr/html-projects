@@ -27,13 +27,15 @@ snapr.views.photo_manage = Backbone.View.extend({
             mine: this.model.get("username") == snapr.auth.get("snapr_user")
         })).trigger("create");
 
-        return this
+        return this;
     },
 
     toggle_status: function()
     {
         var photo_manage = this;
         var current_status = this.model.get('status');
+
+        photo_manage.$('.x-image-privacy').x_loading();
 
         if (current_status == "public")
         {
@@ -57,10 +59,12 @@ snapr.views.photo_manage = Backbone.View.extend({
                     {
                         console.warn("error changing status", resp);
                     }
+                    photo_manage.$('.x-image-privacy').x_loading(false);
                 },
                 error: function( e )
                 {
                     console.warn("error changing status", e);
+                    photo_manage.$('.x-image-privacy').x_loading(false);
                 }
             });
         }
@@ -69,6 +73,7 @@ snapr.views.photo_manage = Backbone.View.extend({
     flag: function()
     {
         var photo_manage = this;
+        photo_manage.$('.x-image-flag').x_loading();
         snapr.utils.require_login( function()
         {
             photo_manage.model.flag({
@@ -82,10 +87,12 @@ snapr.views.photo_manage = Backbone.View.extend({
                     {
                         console.warn("error flagging photo", resp);
                     }
+                    photo_manage.$('.x-image-flag').x_loading(false);
                 },
                 error: function( e )
                 {
                     console.warn("error flagging photo", e);
+                    photo_manage.$('.x-image-flag').x_loading(false);
                 }
             });
         })();
@@ -94,6 +101,7 @@ snapr.views.photo_manage = Backbone.View.extend({
     delete: function()
     {
         var photo_manage = this;
+        photo_manage.$('.x-image-delete').x_loading();
         snapr.utils.require_login( function()
         {
             photo_manage.model.delete({
@@ -108,10 +116,12 @@ snapr.views.photo_manage = Backbone.View.extend({
                     {
                         console.warn("error deleting photo", resp);
                     }
+                    photo_manage.$('.x-image-delete').x_loading(false);
                 },
                 error: function( e )
                 {
                     console.warn("error deleting photo", e);
+                    photo_manage.$('.x-image-delete').x_loading(false);
                 }
             });
         })();
