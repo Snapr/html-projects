@@ -1303,7 +1303,12 @@ $.fn.x_loading = function(loading){
         loading = true;
     }
     this.each(function() {
-      $(this).data('button').button.toggleClass('x-ajax-loading', loading);
+        var element = $(this),
+            details = element.data('button');
+        if(details){
+            element = details.button;
+        }
+        element.toggleClass('x-ajax-loading', loading);
     });
 };
 
