@@ -19,6 +19,9 @@ snapr.views.dash_add_person = snapr.views.dialog.extend({
             transition: this.transition
         });
 
+        this.$el.live( "pageshow", function( e, ui ){
+            people_view.$('#people-search').focus();
+        });
     },
 
     events: {
@@ -69,6 +72,8 @@ snapr.views.dash_add_person = snapr.views.dialog.extend({
         });
 
         people_list.listview().listview("refresh");
+
+
     },
 
     search: function(e)
@@ -82,17 +87,6 @@ snapr.views.dash_add_person = snapr.views.dialog.extend({
         this.xhr && this.xhr.abort();
 
         if (keywords.length > 1){
-            // switch (this.options.follow){
-            //     case "following":
-            //         // need new api
-            //         break;
-            //     case "followers":
-            //         // need new api
-            //         break;
-            //     default:
-            //         // do it
-            //         break;
-            // }
 
             this.timer = setTimeout( function() {
                 this_view.timer = null;

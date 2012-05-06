@@ -7,6 +7,13 @@ snapr.views.dash_add_search = snapr.views.dialog.extend({
         this.change_page({
             transition: this.transition
         });
+
+        var dialog = this;
+        this.$el.live( "pageshow", function( e, ui )
+        {
+            dialog.$('#dash-search-keywords').focus();
+        });
+
     },
 
     events: {

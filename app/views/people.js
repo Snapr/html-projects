@@ -45,6 +45,11 @@ snapr.views.people = snapr.views.dialog.extend({
                 break;
         }
 
+        var dialog = this;
+        this.$el.live( "pageshow", function( e, ui ){
+            dialog.$('#people-search').focus();
+        });
+
     },
 
     events: {
@@ -84,31 +89,36 @@ snapr.views.people = snapr.views.dialog.extend({
         this.render();
     },
 
-    search: function( e )
+    search: function(e)
     {
-        var people_view = this;
 
-        var keywords = e.target && e.target.value && e.target.value.toLowerCase() || "";
+        var keywords = $(e.target).val();
+        var this_view = this;
 
-        if (keywords.length > 1)
-        {
-            this.collection.data.username = keywords;
-            // switch (this.options.follow){
-            //     case "following":
-            //         // need new api
-            //         break;
-            //     case "followers":
-            //         // need new api
-            //         break;
-            //     default:
-            //         console.log( "keypress", e, keywords )
-            //         // this.collection.user_search( keywords )
-            //         break;
-            // }
-        }
-        else
-        {
+        this.timer && clearTimeout(this.timer);
+        this.xhr && this.xhr.abort();
 
+        if (keywords.length > 1){
+
+            this.timer = setTimeout( function() {
+                this_view.timer = null;
+                this_view.$el.addClass('loading');
+                this_view.xhr = this_view.collection.fetch({
+                    data:{
+                        username:keywords,
+                        n:20,
+                        detail:1
+                    },
+                    url: snapr.api_base + '/user/search/',
+                    success: function(){
+                        this_view.xhr = null;
+                        this_view.$el.removeClass('loading');
+                    }
+                });
+            }, 300 );
+
+        }else{
+            this_view.collection.reset();
         }
     }
 });
