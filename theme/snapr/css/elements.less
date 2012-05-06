@@ -125,10 +125,12 @@
     &.bottom-centered-arrow{
         overflow: visible;
         text-align: center;
-        padding-right: 20px;
         .corner-bottom (@corner-page-element-rounded);
         .ui-btn-inner{
             border: none;
+            .ui-btn-text{
+                padding-left: 0;
+            }
         }
     }
     &.small-top-left-arrow{
@@ -250,6 +252,12 @@
        .spinner();
        .spin();
    }
+}
+
+.loading{
+    #no-results{
+        display: none;
+    }   
 }
 
 
@@ -470,8 +478,8 @@
     }
     .bar-action{
         position: absolute;
-        right: -16px;
-        top: -7px;
+        right: -10px;
+        top: -5px;
         margin: 0;
         width: 40px;
         height: 40px;
@@ -490,9 +498,13 @@
         font-weight: bold;
         font-size: @txt-size-small;
     }
+    .ui-icon{
+       width: @gfx-general-icon-sprite-grid;
+       height: @gfx-general-icon-sprite-grid; 
+    }
 
     .ui-icon-check{
-        background-position: @gfx-general-icon-sprite-check-x @g-highlight-offset-y;
+        background-position: @gfx-general-icon-sprite-check-x + 8px @g-highlight-offset-y;
     }
 
 }
@@ -595,7 +607,8 @@
     }
     /* Put the border back on for people / venues lists because i like it there */
     &.people-list,
-    &.venue-list{
+    &.venue-list,
+    &.map-list{
         .ui-btn.ui-li:first-child{
             border-top: @border-medium-on-light!important;
         }
@@ -718,14 +731,18 @@
 }
 
 .loading{
-    .ui-input-search{
-        .ui-input-clear {
-            .ui-icon-delete{
-                .spinner();
-                .spin();
-            }
-        }
+    .search-header{
+        .ui-input-search{
+               .ui-input-clear {
+                   display:block;
+                   .ui-icon-delete{
+                       .spinner();
+                       .spin();
+                   }
+               }
+           }
     }
+   
 }
 
 

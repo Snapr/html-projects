@@ -22,6 +22,16 @@ snapr.views.activity = snapr.views.page.extend({
     {
         $streams = this.$el.find(".activity-streams").empty();
 
+        var first = this.collection.first();
+
+        // add "latest yellow topbar" if the first date doesn't have a photo event
+        if (first && first.has("events") && first.get("events").length && first.get("events").photo == undefined)
+        {
+            $streams.append( new snapr.views.activity_stream({
+                model: new Backbone.Model()
+            }).render().el );
+        }
+
         _.each( this.collection.models, function( stream )
         {
             if (stream.get( "events" ).length)

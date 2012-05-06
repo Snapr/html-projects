@@ -170,9 +170,9 @@
     left: @x-pos;
 }
 
-.spinner(){
+.spinner(@file: '../gfx/small-spinner-light.png'){
     display: block;
-    background-image: url('../gfx/small-spinner-light.png');
+    background-image: url(@file)!important;
     background-position: center!important;
     background-repeat: no-repeat!important;
 }

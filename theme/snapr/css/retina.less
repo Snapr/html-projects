@@ -12,7 +12,7 @@
         .background-size (@gfx-extra-icon-sprite-width, @gfx-extra-icon-sprite-height);
     }
 
-    .ui-btn-inner .ui-icon.helper-icons,.helper-icons .ui-btn-inner .ui-icon{
+    .ui-icon.helper-icons,.helper-icons .ui-icon{
         background-image: url('../gfx/retina/helper-icons.png');
         .background-size (@gfx-helper-icon-sprite-width, @gfx-helper-icon-sprite-height);
     }
@@ -120,7 +120,7 @@
     }
     .x-validating{
        .ui-icon-validation{
-           background-image: url('../gfx/retina/small-spinner-light.png');
+           .spinner('../gfx/retina/small-spinner-light.png');
            .background-size (24px, 24px);
        }
     }
@@ -128,11 +128,16 @@
         .ui-input-search{
             .ui-input-clear {
                 .ui-icon-delete{
-                     background-image: url('../gfx/retina/small-spinner-light.png');
-                     .background-size (24px, 24px);
+                    .spinner('../gfx/retina/small-spinner-light.png');
+                    .background-size (24px, 24px);
                 }
             }
         } 
+    }
+    .extra-icons .ui-icon-spinner,
+    .ui-icon-spinner{
+        .spinner('../gfx/retina/small-spinner-light.png');
+        .background-size (24px, 24px);
     }
 
     .image-streams{

@@ -28,11 +28,25 @@ snapr.views.upload_progress_li = Backbone.View.extend({
                     description: this.photo.description,
                     venue: this.photo.location.foursquare_venue_name || this.photo.location.location,
                     spot_id: this.photo.location.spot_id,
-                    facebook_sharing: this.photo.shared && this.photo.shared.facebook_album ||
-                        this.photo.shared && this.photo.shared.facebook_newsfeed,
-                    twitter_sharing: this.photo.shared && this.photo.shared.tweeted,
-                    foursquare_sharing: this.photo.shared && this.photo.shared.foursquare_checkin,
-                    tumblr_sharing: this.photo.shared && this.photo.shared.tumblr,
+                    shared: this.photo.shared,
+                    facebook_sharing: (
+                        this.photo.shared && this.photo.shared.facebook_album ||
+                        this.photo.shared && this.photo.shared.facebook_newsfeed ||
+                        this.photo.sharing && this.photo.sharing.facebook_album ||
+                        this.photo.sharing && this.photo.sharing.facebook_newsfeed
+                    ),
+                    twitter_sharing: (
+                        this.photo.shared && this.photo.shared.tweeted ||
+                        this.photo.sharing && this.photo.sharing.tweeted
+                        ),
+                    foursquare_sharing: (
+                        this.photo.shared && this.photo.shared.foursquare_checkin ||
+                        this.photo.sharing && this.photo.sharing.foursquare_checkin
+                    ),
+                    tumblr_sharing: (
+                        this.photo.shared && this.photo.shared.tumblr ||
+                        this.photo.sharing && this.photo.sharing.tumblr
+                    ),
                     thumbnail: this.photo.thumbnail,
                     percent_complete: this.photo.percent_complete,
                     message: this.message,

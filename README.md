@@ -8,13 +8,13 @@ Browser Testing
 You can do the bulk of your development in any webkit browser - we recommend Chrome or Safari.
 
 - Run the app in an environment that performs like a web server such as the 'Sites' folder on mac. 
-- If you enable web sharing you can access this page at your computers IP i.e. http://(your ip)/~username/ and test from your mobile device.
+- If you enable web sharing you can access this page at your computers IP i.e. `http://(your ip)/~username/` and test from your mobile device.
 
-- Alternatively you can navigate to the directory where the project is located via terminal and run `python -m SimpleHTTPServer` to serve it up at http://(your ip):8000
+- Alternatively you can navigate to the directory where the project is located via terminal and run `python -m SimpleHTTPServer` to serve it up at `http://(your ip):8000`
 
 - No other local development setup is necessary since the project will interact with a web based API.
 
-- Append *browser_testing=true* to the query string when you first load the page if testing in a desktop browser. This will add a class to the body and set a flag in local storage so that the project will limited to a 320px wide section of your screen. 
+- Append `browser_testing=true` to the query string when you first load the page if testing in a desktop browser. This will add a class to the body and set a flag in local storage so that the project will limited to a 320px wide section of your screen. 
 
 - Note that the app uses a slightly different upload flow on desktop/mobile web.
 
@@ -48,7 +48,7 @@ These libraries are also used in the project, here are the links if you need to 
 Styling the App
 ---------------
 
-- *variables.less* - Many of the key UI aspects are defined in a single variables file (/css/variables.less)
+- *variables.less* - Many of the key UI aspects are defined in a single variables file (`theme/<name>/css/variables.less`)
 
     Here you can edit things such as colors, fonts, font sizes, borders, page margins, etc and the changes will flow through the whole app.
 
@@ -56,15 +56,15 @@ Styling the App
 
 - *Graphics Sprites* - PSD files for the sprites used in the app are supplied @2x resolution. To accommodate different device screen pixel densities you should export three versions of each file. 
 
-    * Standard : @1x pixel density, 50% size of @2x version. Lives in root /gfx/ folder (For iPhone 3 and MDPI android devices)
-    * HDPI : @1.5x pixel density, 75% size of @2x version. Lives in /gfx/hdpi/ (For HDPI Android devices)
-    * Retina : @2x pixeldensity, 100% size of @2x version. Lives in  /gfx/retina/ (for iPhone 4 and XHDPI Android devices)
+    * Standard : @1x pixel density, 50% size of @2x version. Lives in `theme/<name>/gfx/` (For iPhone 3 and MDPI android devices)
+    * HDPI : @1.5x pixel density, 75% size of @2x version. Lives in `theme/<name>/gfx/hdpi/` (For HDPI Android devices)
+    * Retina : @2x pixeldensity, 100% size of @2x version. Lives in `theme/<name>/gfx/retina/` (for iPhone 4 and XHDPI Android devices)
 
-- *sprites.less* - Layout data for all the graphics sprites used in the app is set up via sprites.less (css/sprites.less). The aim of this is to take the pain out of calculating background positioning for large sprites, and to make it easier to edit sprites and have the changes update globally.
+- *sprites.less* - Layout data for all the graphics sprites used in the app is set up via sprites.less. The aim of this is to take the pain out of calculating background positioning for large sprites, and to make it easier to edit sprites and have the changes update globally.
 
     Be sure to change the width and height variables if you edit the size of the graphics as these will be used to size the sprites for devices with different pixel density (match @1x pixel res version).
 
-- *theme.less* - UI details / styles are set out in theme.less (/css/theme.less ). Custom page styles & edits to the jQuery mobile defaults / theme swatches are set out here.
+- *theme.less* - UI details / styles are set out in theme.less. Custom page styles & edits to the jQuery mobile defaults / theme swatches are set out here.
 
 
 Editing the App

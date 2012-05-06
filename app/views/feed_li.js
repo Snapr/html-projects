@@ -44,7 +44,13 @@ snapr.views.feed_li = Backbone.View.extend({
 
     load_reactions: function()
     {
-        this.reactions.collection.fetch();
+        var li_view = this;
+        this.reactions.collection.fetch({
+            success: function()
+            {
+                li_view.show_comment_form();
+            }
+        });
     },
 
     render: function()
@@ -145,7 +151,10 @@ snapr.views.feed_li = Backbone.View.extend({
         {
             this.load_reactions();
             this.$el.find('.reactions-list').show();
-            this.show_comment_form();
+            if (this.$el.find('.reactions-list li').length)
+            {
+                this.show_comment_form();
+            }
         }
     },
 

@@ -4,6 +4,22 @@ snapr.views.search = snapr.views.dialog.extend({
     {
         snapr.views.dialog.prototype.initialize.call( this );
 
+        var page = this;
+        this.$el.on( "pagebeforeshow", function( e, obj )
+        {
+            if (obj && obj.prevPage && obj.prevPage.length)
+            {
+                if ($(obj.prevPage[0]).attr("id") == "map")
+                {
+                    $(e.currentTarget).find("#search-type").val("location").selectmenu("refresh");
+                }
+                else
+                {
+                    $(e.currentTarget).find("#search-type").val("tags").selectmenu("refresh");
+                }
+            }
+        });
+
         this.change_page({
             transition: this.transition
         });

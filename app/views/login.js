@@ -42,9 +42,17 @@ snapr.views.login = snapr.views.dialog.extend({
                 $("#login-dialog-password").val('');
                 login_view.back()
             },
-            error: function(error)
+            error: function( error )
             {
-                alert( error || "Sorry, we had trouble logging in. Please try again." );
+                console.warn("error", error)
+                if (error && error.error && error.error == "invalid_grant")
+                {
+                    alert( "Oops.. Your login or password was incorrect." )
+                }
+                else
+                {
+                    alert( "Sorry, we had trouble logging in. Please try again." );
+                }
             }
         }
         snapr.auth.get_token( username, password, options );

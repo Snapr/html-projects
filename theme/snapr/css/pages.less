@@ -313,7 +313,7 @@
         .ui-btn-right{
             position: absolute;
             right: -4px;
-            top: 2px;
+            top: 8px;
         }
     }
     .user-stats{
@@ -487,13 +487,18 @@
             padding:0;
              .ui-link-inherit{
                     padding: 0 0 @padding-element-inset 0!important;
-                    white-space: normal;
-                    font-weight: normal;
-                    font-family: @txt-font-base;
-                    color: @color-txt-medium-on-light;
+                    display: inline-block;
+                    white-space: normal;                    
                 }
             .ui-icon-arrow-r{
                 display: none;
+            }
+            .comment,
+            .like-text{
+                white-space: normal;
+                font-weight: normal;
+                font-family: @txt-font-base;
+                color: @color-txt-medium-on-light;
             }
         }
 
@@ -1207,7 +1212,8 @@
 /* making list style icons look the same is a drag.. 
  different markup format between collapsible headings and list links */
 
-.add-services{
+.add-services,
+.share-icons-list{
     li.ui-li{
        margin-bottom: 0;
        .ui-btn-text{
@@ -1320,6 +1326,24 @@
     div[data-role="content"]{
         padding-top: 0;
         padding-bottom: 8px;
+    }
+    &.loading{
+        .map-time{
+            .map-time-btn{
+                display: none;
+            }
+        }
+        .map-loading{
+            width: 32px;
+            height:32px;
+            overflow: hidden;
+            .corner-all(16px);
+            .ui-icon{
+                opacity: .7;
+                width: 32px;
+                height:32px;
+            }
+        }
     }
 }
 
@@ -1507,6 +1531,7 @@
                 }
             }
         }
+       
 
         .map-filters{
             margin: 6px;
@@ -1521,6 +1546,9 @@
         z-index: 100;
         min-height: 0px;
         overflow: visible;
+        h4{
+            margin-top: @padding-element-inset;
+        }
         .ui-listview {
             margin-top: 0;
             margin-bottom: 0;
@@ -1567,6 +1595,7 @@
             }
         }
     }
+    
 }
 
 /*

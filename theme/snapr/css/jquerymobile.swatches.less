@@ -110,7 +110,8 @@
 /* Tweak to A theme buttons for transparent BGs */
 .trans-bg{
     .ui-btn-up-a,
-    .ui-input-search {
+    .ui-input-search,
+    .map-loading {
     	border: none;
     	border-bottom: @border-light-on-dark;
     	background-color: @color-bg-neutral-dark-tint;
@@ -549,6 +550,12 @@
            overflow: visible;
            background-color: transparent;
            color: @color-shadow-medium-on-light;
+       }
+       
+       .simple-list{
+           .ui-btn.ui-li{
+                background: none;
+           }
        }
 }
 
