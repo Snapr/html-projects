@@ -1298,6 +1298,15 @@ $(function () {
 
 });
 
+$.fn.x_loading = function(loading){
+    if (loading !== false){
+        loading = true;
+    }
+    this.each(function() {
+      $(this).data('button').button.toggleClass('x-ajax-loading', loading);
+    });
+};
+
 
 function Query(input) {
     if(typeof (input) == "string") {

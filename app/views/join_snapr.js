@@ -78,7 +78,7 @@ snapr.views.join_snapr = snapr.views.dialog.extend({
     },
 
     join: function(){
-        $('.x-join-btn').data('button').button.addClass('x-ajax-loading');
+        $('.x-join-btn').x_loading();
         var new_user = new snapr.models.user_settings();
         new_user.data = {
            username: this.$el.find("#join-dialog-username").val(),
@@ -105,7 +105,7 @@ snapr.views.join_snapr = snapr.views.dialog.extend({
                 console.log('error on login after successful join');
             },
             complete: function(){
-                $('.x-join-btn').data('button').button.removeClass('x-ajax-loading');
+                $('.x-join-btn').x_loading(false);
             }
         };
         // these options will be triggered on join
@@ -116,7 +116,7 @@ snapr.views.join_snapr = snapr.views.dialog.extend({
             },
             error: function( e )
             {
-                $('.x-join-btn').data('button').button.removeClass('x-ajax-loading');
+                $('.x-join-btn').x_loading(false);
                 console.log( "error", e );
             }
         };

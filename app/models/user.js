@@ -37,7 +37,7 @@ snapr.models.user = Backbone.Model.extend({
         }
     },
 
-    follow: function()
+    follow: function(callback)
     {
         var url_function = this.url;
 
@@ -54,16 +54,22 @@ snapr.models.user = Backbone.Model.extend({
                 {
                     console.warn(new_model, response);
                 }
+                if($.isFunction(callack)){
+                    callback(new_model, response);
+                }
             },
             error: function(e)
             {
                 console.log( "follow error", e );
+                if($.isFunction(callack)){
+                    callback(e);
+                }
             }
-        })
+        });
 
     },
 
-    unfollow: function()
+    unfollow: function(callback)
     {
         var url_function = this.url;
 
@@ -80,12 +86,19 @@ snapr.models.user = Backbone.Model.extend({
                 {
                     console.warn(new_model, response);
                 }
+                if($.isFunction(callack)){
+                    callback(new_model, response);
+                }
             },
             error: function(e)
             {
                 console.log( "unfollow error", e );
+
+                if($.isFunction(callack)){
+                    callback(e);
+                }
             }
-        })
+        });
 
     }
 
