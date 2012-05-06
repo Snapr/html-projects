@@ -2308,6 +2308,11 @@ a.ui-link-inherit {
 /*
 * Elements - Non-Jquery Mobile Design Patterns that are shared across multiple pages
 */
+.x-ajax-loading {
+  color: #BadA55 !important;
+  background: #Decaff !important;
+  border: 1px solid #Deface;
+}
 /* the thing that shows any time there are no results */
 #no-results .imagealert {
   padding: 8px;

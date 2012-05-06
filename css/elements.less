@@ -2,6 +2,12 @@
 * Elements - Non-Jquery Mobile Design Patterns that are shared across multiple pages
 */
 
+.x-ajax-loading{
+    color: #BadA55 !important;
+    background:#Decaff !important;
+    border: 1px solid #Deface;
+}
+
 /* the thing that shows any time there are no results */
 #no-results {
     .imagealert {
@@ -231,7 +237,7 @@
 
 .x-valid{
     overflow: hidden; /* if the spinning element overlaps other form elements can cause flicker */
-    
+
    .ui-icon-validation{
        display: block;
        background-position: @gfx-general-icon-sprite-check-x + @padding-element-inset @g-highlight-offset-y;
@@ -719,7 +725,7 @@
                 .spin();
             }
         }
-    } 
+    }
 }
 
 
