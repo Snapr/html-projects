@@ -49,7 +49,7 @@ snapr.views.side_scroll = Backbone.View.extend({
             this.scroller = new iScroll(scroll_el[0], {
                 vScroll: false,
                 hScrollbar: false,
-                snap: collection.length > 1 ? 'a.x-thumb:not(:last-child), .x-left-pull': 'a.x-thumb, .x-left-pull',
+                snap: collection.length > 2 ? 'a.x-thumb:not(:last-child), .x-left-pull': 'a.x-thumb, .x-left-pull',
                 momentum: false,
                 onScrollEnd: function(){
 
