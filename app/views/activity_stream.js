@@ -20,7 +20,7 @@ snapr.views.activity_stream = Backbone.View.extend({
 
         var summary = this.model.has( "events" ) && this.model.get( "events" ).summary();
 
-        var event_types = ["like", "comment", "follow"];
+        var event_types = ["like", "comment", "follow", "comment-on-comment"];
 
         _.each( event_types, function(type)
         {
@@ -33,7 +33,7 @@ snapr.views.activity_stream = Backbone.View.extend({
         if (time_period = this.model.has( "min_date" ))
         {
             var time_period = snapr.utils.short_timestamp( this.model.get( "min_date" ), true )
-            var photo_events = (summary["like"] || summary["comment"]) ? true: false;
+            var photo_events = (summary["like"] || summary["comment"] || summary["comment-on-comment"]) ? true: false;
         }
         else
         {
@@ -53,8 +53,15 @@ snapr.views.activity_stream = Backbone.View.extend({
                 model: item,
                 photo_events: photo_events
             });
+            if (photo_events)
+            {
+                this.$el.find("ul.photo-activity").append( stream_item.render().el );
+            }
+            else
+            {
+                this.$el.find("ul.non-photo-activity").append( stream_item.render().el );
+            }
 
-            this.$el.find("ul").append( stream_item.render().el );
         }, this);
 
         return this;

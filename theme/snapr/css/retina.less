@@ -118,27 +118,16 @@
         background-image: url('../gfx/retina/service-full-logos.png');
         .background-size (@gfx-service-logo-sprite-width, @gfx-service-logo-sprite-height);
     }
-    .x-validating{
-       .ui-icon-validation{
-           .spinner('../gfx/retina/small-spinner-light.png');
-           .background-size (24px, 24px);
-       }
-    }
-    .loading{
-        .ui-input-search{
-            .ui-input-clear {
-                .ui-icon-delete{
-                    .spinner('../gfx/retina/small-spinner-light.png');
-                    .background-size (24px, 24px);
-                }
-            }
-        } 
-    }
+ 
+    .x-validating .ui-icon-validation,
     .extra-icons .ui-icon-spinner,
-    .ui-icon-spinner{
-        .spinner('../gfx/retina/small-spinner-light.png');
-        .background-size (24px, 24px);
+    .ui-icon-spinner,
+    .x-ajax-loading .ui-icon,
+    .loading .ui-input-search .ui-input-clear .ui-icon-delete {
+                    .spinner('../gfx/retina/small-spinner-light.png');
+                    .background-size (24px, 24px)!important;
     }
+
 
     .image-streams{
          .image-stream{

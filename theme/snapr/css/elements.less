@@ -3,10 +3,54 @@
 */
 
 .x-ajax-loading{
-    color: #BadA55 !important;
-    background:#Decaff !important;
-    border: 1px solid #Deface;
+    .ui-btn-inner{
+        overflow: hidden;
+    }
+    .ui-icon{
+        .spinner('../gfx/small-spinner-dark.png');
+        .spin();
+    }
+    &[data-icon="null"]{
+        .ui-btn-text{
+            opacity: 0;
+        }
+        :after{
+                display: block;
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                height: 36px;
+                width: 36px;
+                margin-top: -18px;
+                margin-left: -18px;
+                content: " ";
+                .spinner('../gfx/small-spinner-dark.png');
+                .spin();
+            }
+           
+        
+    }
 }
+
+/* light version of spinner action btns on white & dark bg buttons */
+.image-actions,
+.dark-icons{
+    .x-ajax-loading{
+        .ui-icon{
+            .spinner();
+        }
+    } 
+}
+
+
+.dark-icons{
+    .x-ajax-loading{
+        .ui-icon{
+            opacity: .4;        
+            }
+    } 
+}
+
 
 /* the thing that shows any time there are no results */
 #no-results {
@@ -650,6 +694,7 @@
         border-right: none!important;
         border-left: none!important;
     }
+
     .ui-li-link-alt{
         width: 44px;
         .ui-btn {
@@ -660,20 +705,20 @@
             right: 0;
             margin-top: 0;
             .ui-icon{
-                height: 32px;
-                width: 32px;
+                height: @gfx-general-icon-sprite-grid;
+                width:@gfx-general-icon-sprite-grid;
                 margin-top: 0;
                 top: 4px;
-                right: 8px;
+                right: 0;
             }
             .ui-icon-check{
-                background-position: @gfx-general-icon-sprite-check-x @g-yellow-offset-y;
+                background-position: @gfx-general-icon-sprite-check-x + 9px @g-yellow-offset-y;
             }
             .ui-icon-plus{
-                background-position: @gfx-general-icon-sprite-plus-x @g-light-offset-y;
+                background-position: @gfx-general-icon-sprite-plus-x + 9px @g-light-offset-y;
             }
             .ui-icon-tick{
-                background-position: @gfx-general-icon-sprite-check-x @g-highlight-offset-y;
+                background-position: @gfx-general-icon-sprite-check-x + 9px @g-highlight-offset-y;
             }
         }
     }

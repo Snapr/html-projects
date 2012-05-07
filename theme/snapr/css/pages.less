@@ -1249,59 +1249,108 @@
 
 /* @activity custom stylz */
 .activity-streams{
-    margin-top: -@padding-page-inset;
+    
+    
+    
     .ui-bar.top-left-arrow .ui-btn-text{
         padding-left: @padding-page-inset;
     }
-    .activity-image-item{
-        margin-bottom: @padding-page-inset + @padding-image-grid-inset;
+    
+    /* General Styles */
+    .simple-list .username,
+    .ui-li-desc {
+        display: inline-block;
+        margin-bottom: 0;
     }
-    .activity-follow-item,
-    .activity-image-item{
-        position: relative;
-        margin-top: -@padding-page-inset;
-        min-height: @size-img-thumb;
-        padding-left: @size-img-thumb;
-        .image-link{
-            position: absolute;
-            left: -@padding-image-grid-inset;
-            top: @padding-image-grid-inset;
+   
+    .activity-item{
+        border: none;
+        border-top: @border-medium-on-light;
+        margin-top: @padding-element-inset;
+        padding-top: @padding-element-inset;
+        &:first{
+            border-top: none;
+            margin-top: 0;
+                padding-top: 0; 
         }
-        .simple-list .username,
-        .ui-li-desc {
-            display: inline-block;
-            margin-bottom: 0;
-        }
-        .item-comment{
+         
+        .activity-desc{
             white-space: normal;
             font-weight: normal;
             font-size: @txt-size-base;
             line-height: @txt-size-base;
             color: @color-txt-medium-on-light;
+            font-family:@txt-font-base;
+        }
+        .small-text{
+             position: relative;
+             top: 1px;
+             color: @color-txt-light-on-light;
+         }
+       
+    }
+    
+     .image-link{
+            position: absolute;
+            left: -@padding-image-grid-inset;
+        }
+        
+        
+    .photo-activity{
+       .activity-item:first-child{
+           border-top: none;
+           margin-top: 0;
+           padding-top: 0;
+       }
+   }
+    
+    /* Image Items */
+    .activity-image-item{
+        position: relative;
+         min-height: @size-img-thumb;
+        padding-left: @size-img-thumb;
+        margin-bottom: @padding-page-inset + @padding-image-grid-inset;
+    }
+    
+     
+    /* Tweaks for comments */
+    .comments-list{
+        .comment-item.ui-li-has-icon{
+            .ui-link-inherit{
+                padding-top: 0!important;
+                padding-bottom: 0!important;
+                padding-left: @size-small-avatar + @padding-image-grid-inset;
+                min-height: @size-small-avatar;
+            }
+            .ui-li-icon{
+                top:0;
+            }
+            .ui-li-heading{
+                padding-left: 0;
+            }
         }
     }
+    
+    /* Tweaks for likes */
     .image-likes{
+        min-height: @size-small-avatar;
         .icons-list,
         p{
             display: inline-block;
             vertical-align: top;
         }
     }
-    .simple-list .ui-btn.ui-li {
-        border: none!important;
-        border-bottom: @border-medium-on-light!important;
-        margin-bottom: 0;
-        padding-bottom: @padding-element-inset;
-    }
+  
+    /* Tweaks for follow item */
     .activity-follow-item{
+        position: relative;
          padding-left: 0;
-         margin-top: 0;
+        
          min-height:  @size-small-avatar;
-         padding-top: @padding-element-inset;
-         border: none;
-         border-top: @border-medium-on-light;
+         
+         
          .username,
-         .item-comment,
+         .activity-desc,
          .small-text,
           .ui-li-icon{
              display: inline-block;
@@ -1309,11 +1358,7 @@
              line-height: @size-small-avatar;
              margin-bottom: 0;
          }
-         .small-text{
-             position: relative;
-             top: 1px;
-             color: @color-txt-light-on-light;
-         }
+        
     }
 }
 

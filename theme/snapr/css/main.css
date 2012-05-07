@@ -2324,10 +2324,54 @@ a.ui-link-inherit {
 /*
 * Elements - Non-Jquery Mobile Design Patterns that are shared across multiple pages
 */
-.x-ajax-loading {
-  color: #BadA55 !important;
-  background: #Decaff !important;
-  border: 1px solid #Deface;
+.x-ajax-loading .ui-btn-inner {
+  overflow: hidden;
+}
+.x-ajax-loading .ui-icon {
+  display: block;
+  background-image: url('../gfx/small-spinner-dark.png') !important;
+  background-position: center!important;
+  background-repeat: no-repeat !important;
+  -webkit-transform: rotate(0deg) translatez(0);
+  -webkit-transition-duration: 0ms;
+  -webkit-animation-name: loading;
+  -webkit-animation-duration: 1.2s;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+}
+.x-ajax-loading[data-icon="null"] .ui-btn-text {
+  opacity: 0;
+}
+.x-ajax-loading[data-icon="null"] :after {
+  display: block;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  height: 36px;
+  width: 36px;
+  margin-top: -18px;
+  margin-left: -18px;
+  content: " ";
+  display: block;
+  background-image: url('../gfx/small-spinner-dark.png') !important;
+  background-position: center!important;
+  background-repeat: no-repeat !important;
+  -webkit-transform: rotate(0deg) translatez(0);
+  -webkit-transition-duration: 0ms;
+  -webkit-animation-name: loading;
+  -webkit-animation-duration: 1.2s;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+}
+/* light version of spinner action btns on white & dark bg buttons */
+.image-actions .x-ajax-loading .ui-icon, .dark-icons .x-ajax-loading .ui-icon {
+  display: block;
+  background-image: url('../gfx/small-spinner-light.png') !important;
+  background-position: center!important;
+  background-repeat: no-repeat !important;
+}
+.dark-icons .x-ajax-loading .ui-icon {
+  opacity: .4;
 }
 /* the thing that shows any time there are no results */
 #no-results .imagealert {
@@ -3000,20 +3044,20 @@ a.ui-link-inherit {
   margin-top: 0;
 }
 .simple-list .ui-li-link-alt .ui-btn .ui-icon {
-  height: 32px;
-  width: 32px;
+  height: 36px;
+  width: 36px;
   margin-top: 0;
   top: 4px;
-  right: 8px;
+  right: 0;
 }
 .simple-list .ui-li-link-alt .ui-btn .ui-icon-check {
-  background-position: -252px -108px;
+  background-position: -243px -108px;
 }
 .simple-list .ui-li-link-alt .ui-btn .ui-icon-plus {
-  background-position: 0px 0px;
+  background-position: 9px 0px;
 }
 .simple-list .ui-li-link-alt .ui-btn .ui-icon-tick {
-  background-position: -252px -144px;
+  background-position: -243px -144px;
 }
 .simple-list .ui-shadow, .simple-list.ui-shadow {
   -moz-box-shadow: none;
@@ -4759,70 +4803,95 @@ a.ui-link-inherit {
 }
 /* @activity custom stylz */
 .activity-streams {
-  margin-top: -8px;
+  /* General Styles */
+
+  /* Image Items */
+
+  /* Tweaks for comments */
+
+  /* Tweaks for likes */
+
+  /* Tweaks for follow item */
+
 }
 .activity-streams .ui-bar.top-left-arrow .ui-btn-text {
   padding-left: 8px;
 }
-.activity-streams .activity-image-item {
-  margin-bottom: 12px;
-}
-.activity-streams .activity-follow-item, .activity-streams .activity-image-item {
-  position: relative;
-  margin-top: -8px;
-  min-height: 101px;
-  padding-left: 101px;
-}
-.activity-streams .activity-follow-item .image-link, .activity-streams .activity-image-item .image-link {
-  position: absolute;
-  left: -4px;
-  top: 4px;
-}
-.activity-streams .activity-follow-item .simple-list .username,
-.activity-streams .activity-image-item .simple-list .username,
-.activity-streams .activity-follow-item .ui-li-desc,
-.activity-streams .activity-image-item .ui-li-desc {
+.activity-streams .simple-list .username, .activity-streams .ui-li-desc {
   display: inline-block;
   margin-bottom: 0;
 }
-.activity-streams .activity-follow-item .item-comment, .activity-streams .activity-image-item .item-comment {
+.activity-streams .activity-item {
+  border: none;
+  border-top: solid 1px #e4e4e4;
+  margin-top: 8px;
+  padding-top: 8px;
+}
+.activity-streams .activity-item:first {
+  border-top: none;
+  margin-top: 0;
+  padding-top: 0;
+}
+.activity-streams .activity-item .activity-desc {
   white-space: normal;
   font-weight: normal;
   font-size: 15px;
   line-height: 15px;
   color: #666666;
+  font-family: Helvetica, Arial, sans-serif;
+}
+.activity-streams .activity-item .small-text {
+  position: relative;
+  top: 1px;
+  color: #999999;
+}
+.activity-streams .image-link {
+  position: absolute;
+  left: -4px;
+}
+.activity-streams .photo-activity .activity-item:first-child {
+  border-top: none;
+  margin-top: 0;
+  padding-top: 0;
+}
+.activity-streams .activity-image-item {
+  position: relative;
+  min-height: 101px;
+  padding-left: 101px;
+  margin-bottom: 12px;
+}
+.activity-streams .comments-list .comment-item.ui-li-has-icon .ui-link-inherit {
+  padding-top: 0!important;
+  padding-bottom: 0!important;
+  padding-left: 38px;
+  min-height: 34px;
+}
+.activity-streams .comments-list .comment-item.ui-li-has-icon .ui-li-icon {
+  top: 0;
+}
+.activity-streams .comments-list .comment-item.ui-li-has-icon .ui-li-heading {
+  padding-left: 0;
+}
+.activity-streams .image-likes {
+  min-height: 34px;
 }
 .activity-streams .image-likes .icons-list, .activity-streams .image-likes p {
   display: inline-block;
   vertical-align: top;
 }
-.activity-streams .simple-list .ui-btn.ui-li {
-  border: none!important;
-  border-bottom: solid 1px #e4e4e4 !important;
-  margin-bottom: 0;
-  padding-bottom: 8px;
-}
 .activity-streams .activity-follow-item {
+  position: relative;
   padding-left: 0;
-  margin-top: 0;
   min-height: 34px;
-  padding-top: 8px;
-  border: none;
-  border-top: solid 1px #e4e4e4;
 }
 .activity-streams .activity-follow-item .username,
-.activity-streams .activity-follow-item .item-comment,
+.activity-streams .activity-follow-item .activity-desc,
 .activity-streams .activity-follow-item .small-text,
 .activity-streams .activity-follow-item .ui-li-icon {
   display: inline-block;
   vertical-align: middle;
   line-height: 34px;
   margin-bottom: 0;
-}
-.activity-streams .activity-follow-item .small-text {
-  position: relative;
-  top: 1px;
-  color: #999999;
 }
 /*
 * @map - PAGE
@@ -5321,35 +5390,19 @@ a.ui-link-inherit {
     -webkit-background-size: 150px 144px;
     background-size: 150px 144px;
   }
-  .x-validating .ui-icon-validation {
-    display: block;
-    background-image: url('../gfx/retina/small-spinner-light.png') !important;
-    background-position: center!important;
-    background-repeat: no-repeat !important;
-    -moz-background-size: 24px 24px;
-    -o-background-size: 24px 24px;
-    -webkit-background-size: 24px 24px;
-    background-size: 24px 24px;
-  }
+  .x-validating .ui-icon-validation,
+  .extra-icons .ui-icon-spinner,
+  .ui-icon-spinner,
+  .x-ajax-loading .ui-icon,
   .loading .ui-input-search .ui-input-clear .ui-icon-delete {
     display: block;
     background-image: url('../gfx/retina/small-spinner-light.png') !important;
     background-position: center!important;
     background-repeat: no-repeat !important;
-    -moz-background-size: 24px 24px;
-    -o-background-size: 24px 24px;
-    -webkit-background-size: 24px 24px;
-    background-size: 24px 24px;
-  }
-  .extra-icons .ui-icon-spinner, .ui-icon-spinner {
-    display: block;
-    background-image: url('../gfx/retina/small-spinner-light.png') !important;
-    background-position: center!important;
-    background-repeat: no-repeat !important;
-    -moz-background-size: 24px 24px;
-    -o-background-size: 24px 24px;
-    -webkit-background-size: 24px 24px;
-    background-size: 24px 24px;
+    -moz-background-size: 24px 24px !important;
+    -o-background-size: 24px 24px !important;
+    -webkit-background-size: 24px 24px !important;
+    background-size: 24px 24px !important;
   }
   .image-streams .image-stream .load-more-inline .ui-icon-refresh {
     background-image: url('../gfx/retina/refresh.png');
