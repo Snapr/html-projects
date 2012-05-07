@@ -23,9 +23,8 @@ snapr.views.user_header = Backbone.View.extend({
         this.$el.html( this.template({
             user: this.model,
             auth_username: snapr.auth.get( "snapr_user" ),
-            logged_in: snapr.auth.has( "access_token" ),
+            logged_in: snapr.auth.has( "access_token" )
         }) ).trigger("create");
-
         return this;
     },
 
@@ -37,16 +36,22 @@ snapr.views.user_header = Backbone.View.extend({
     follow: function()
     {
         var user_header_view = this;
+        user_header_view.$('.follow').x_loading();
         snapr.utils.require_login( function(){
-                user_header_view.model.follow();
+            user_header_view.model.follow(function(){
+                user_header_view.$('.follow').x_loading(flase);
+            });
         })();
     },
 
     unfollow: function()
     {
         var user_header_view = this;
+        user_header_view.$('.unfollow').x_loading();
         snapr.utils.require_login( function(){
-                user_header_view.model.unfollow();
+            user_header_view.model.unfollow(function(){
+                user_header_view.$('.unfollow').x_loading(false);
+            });
         })();
     }
 

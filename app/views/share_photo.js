@@ -12,8 +12,7 @@ snapr.views.share_photo = snapr.views.page.extend({
 
         this.query = this.options.query;
 
-        if (this.query.redirect_url)
-        {
+        if (this.query.redirect_url){
             this.redirect_url = this.query.redirect_url;
         }
 
@@ -34,11 +33,10 @@ snapr.views.share_photo = snapr.views.page.extend({
                 this.get_photo_from_server( this.query.photo_id || this.query.photo );
             }
             else{
-                console.log( "error, no path or photo_id" );
+                console.error( "no path or photo_id" );
             }
         }
-        else
-        {
+        else{
             this.render();
         }
     },
@@ -108,6 +106,7 @@ snapr.views.share_photo = snapr.views.page.extend({
         this.model.fetch({
             success: function( model )
             {
+                console.log(model);
                 share_photo_view.$el.find("#description").val( model.get("description") );
 
                 if (snapr.utils.get_local_param( "foursquare-sharing" ) &&
@@ -186,7 +185,7 @@ snapr.views.share_photo = snapr.views.page.extend({
                     share_photo_view.$el.find(".location-name").text(share_photo_view.model.get("location").location);
                 }
             });
-        }
+        };
 
         if (this.query.latitude && this.query.longitude)
         {
@@ -244,24 +243,27 @@ snapr.views.share_photo = snapr.views.page.extend({
                     }
                 }
             });
-        }
+        };
 
         if (this.query.latitude && this.query.longitude)
         {
             // get venues using query lat and long
-            get_venues( this.query.latitude, this.query.longitude)
+            get_venues( this.query.latitude, this.query.longitude);
         }
         else if(this.model.get("location").latitude && this.model.get("location").longitude)
         {
             // get venues using photo model lat and long
-            get_venues( this.model.get("location").latitude, this.model.get("location").longitude)
+            get_venues( this.model.get("location").latitude, this.model.get("location").longitude);
         }
         else
         {
             // get venues based on current location (not photo)
             snapr.geo.get_location( function( location )
             {
-                share_photo_view.model.set({location: location.coords});
+                var photo_location = share_photo_view.model.get('location');
+                photo_location.latitude = location.coords.latitude;
+                photo_location.longitude = location.coords.longitude;
+                share_photo_view.model.set({location: photo_location});
                 get_venues( location.coords.latitude, location.coords.longitude );
             },
             function( e )
@@ -341,7 +343,7 @@ snapr.views.share_photo = snapr.views.page.extend({
                 el: $("#venues")[0],
                 back_view: share_view
             });
-        }
+        };
 
         if (this.model.get("location").latitude && this.model.get("location").longitude )
         {
@@ -452,18 +454,23 @@ snapr.views.share_photo = snapr.views.page.extend({
             }, {silent: true});
 
             this.model.save({},{
-                success: function( model, xhr )
+                success: function( model, response )
                 {
+                    console.log(model, response);
+                    if(!response.success){
+                        console.log(response.error);
+                        return;
+                    }
 
                     var sharing_errors = [];
                     var sharing_successes = [];
                     if (model.get("tweet"))
                     {
-                        console.warn("tweet", model, xhr)
-                        if (xhr.response &&
-                            xhr.response.twitter &&
-                            xhr.response.twitter.error &&
-                            xhr.response.twitter.error.code == 30 )
+                        console.warn("tweet", model);
+                        if (response.response &&
+                            response.response.twitter &&
+                            response.response.twitter.error &&
+                            response.response.twitter.error.code == 30 )
                         {
                             sharing_errors.push("twitter");
                         }
@@ -474,10 +481,10 @@ snapr.views.share_photo = snapr.views.page.extend({
                     }
                     if (model.get("facebook_album"))
                     {
-                        if (xhr.response &&
-                            xhr.response.facebook &&
-                            xhr.response.facebook.error &&
-                            xhr.response.facebook.error.code == 28 )
+                        if (response.response &&
+                            response.response.facebook &&
+                            response.response.facebook.error &&
+                            response.response.facebook.error.code == 28 )
                         {
                             sharing_errors.push("facebook");
                         }
@@ -488,10 +495,10 @@ snapr.views.share_photo = snapr.views.page.extend({
                     }
                     if (model.get("foursquare_checkin"))
                     {
-                        if (xhr.response &&
-                            xhr.response.foursquare &&
-                            xhr.response.foursquare.error &&
-                            xhr.response.foursquare.error.code == 28 )
+                        if (response.response &&
+                            response.response.foursquare &&
+                            response.response.foursquare.error &&
+                            response.response.foursquare.error.code == 28 )
                         {
                             sharing_errors.push("foursquare");
                         }
@@ -502,10 +509,10 @@ snapr.views.share_photo = snapr.views.page.extend({
                     }
                     if (model.get("tumblr"))
                     {
-                        if (xhr.response &&
-                            xhr.response.tumblr &&
-                            xhr.response.tumblr.error &&
-                            xhr.response.tumblr.error.code == 30 )
+                        if (response.response &&
+                            response.response.tumblr &&
+                            response.response.tumblr.error &&
+                            response.response.tumblr.error.code == 30 )
                         {
                             sharing_errors.push("tumblr");
                         }

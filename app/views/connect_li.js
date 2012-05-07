@@ -40,7 +40,7 @@ snapr.views.connect_li = Backbone.View.extend({
         var to_link = _.without( this.parent_view.to_link, this.provider );
         var shared = _.without( this.parent_view.shared, this.provider );
 
-        var redirect_params = {};
+        var redirect_params = {linked: this.provider};
 
         if (shared.length)
         {

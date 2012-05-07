@@ -52,6 +52,11 @@ snapr.views.dash = snapr.views.page.extend({
         this.populate();
     },
 
+    events: {
+        "click .x-add-search": "add_search",
+        "click .x-add-person": "add_person",
+    },
+
     populate: function(){
         var dash = this,
             latitude = -37.8,
@@ -93,6 +98,30 @@ snapr.views.dash = snapr.views.page.extend({
         }, this);
 
         this.$el.trigger( "create" );
+    },
+
+    add_search: function()
+    {
+        var dash_view = this;
+        snapr.utils.require_login( function()
+        {
+            snapr.info.current_view = new snapr.views.dash_add_search({
+                el: $("#dash-add-search")[0],
+                back_view: dash_view
+            });
+        })();
+    },
+
+    add_person: function()
+    {
+        var dash_view = this;
+        snapr.utils.require_login( function()
+        {
+            snapr.info.current_view = new snapr.views.dash_add_person({
+                el: $("#dash-add-person")[0],
+                back_view: dash_view
+            });
+        })();
     },
 
     remove_stream: function(stream){

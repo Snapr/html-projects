@@ -44,7 +44,13 @@ snapr.views.feed_li = Backbone.View.extend({
 
     load_reactions: function()
     {
-        this.reactions.collection.fetch();
+        var li_view = this;
+        this.reactions.collection.fetch({
+            success: function()
+            {
+                li_view.show_comment_form();
+            }
+        });
     },
 
     render: function()
@@ -145,7 +151,10 @@ snapr.views.feed_li = Backbone.View.extend({
         {
             this.load_reactions();
             this.$el.find('.reactions-list').show();
-            this.show_comment_form();
+            if (this.$el.find('.reactions-list li').length)
+            {
+                this.show_comment_form();
+            }
         }
     },
 
@@ -185,9 +194,11 @@ snapr.views.feed_li = Backbone.View.extend({
         comment.data = {
             photo_id: this.model.get('id'),
             comment: commentText
-        }
+        };
         // make a copies of 'this' to pass to functions in the options object
         var feed_li = this;
+
+        feed_li.$('.comment-form .ui-btn').x_loading();
 
         var options = {
             success: function( s )
@@ -201,13 +212,15 @@ snapr.views.feed_li = Backbone.View.extend({
                     feed_li.$el.find('textarea').val('');
                     feed_li.show_reactions();
                     feed_li.load_reactions();
+                    feed_li.$('.comment-form .ui-btn').x_loading(false);
                 }
             },
             error: function( error )
             {
                 console.log('error', error);
+                feed_li.$('.comment-form .ui-btn').x_loading(false);
             }
-        }
+        };
 
         snapr.utils.require_login( function()
         {

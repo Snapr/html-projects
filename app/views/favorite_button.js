@@ -23,6 +23,9 @@ snapr.views.favorite_button = Backbone.View.extend({
         var is_fav = this.model.get('favorite');
         var fav_count = parseInt( this.model.get('favorite_count') );
 
+        window.f = fav_btn;
+        fav_btn.$('.favorite-button').x_loading();
+
         snapr.utils.require_login( function()
         {
             var fav = new snapr.models.favorite({
@@ -47,12 +50,14 @@ snapr.views.favorite_button = Backbone.View.extend({
                             fav_btn.render();
                             fav_btn.li.load_reactions();
                         }
+                        fav_btn.$('.favorite-button').x_loading(false);
                     },
                     error: function(e)
                     {
                         console.log('fav error',e);
+                        fav_btn.$('.favorite-button').x_loading(false);
                     }
-                }
+                };
                 fav.destroy( options );
             }
             else
@@ -70,10 +75,12 @@ snapr.views.favorite_button = Backbone.View.extend({
                             fav_btn.render();
                             fav_btn.li.load_reactions();
                         }
+                        fav_btn.$('.favorite-button').x_loading(false);
                     },
                     error: function(e)
                     {
                         console.log('fav error',e);
+                        fav_btn.$('.favorite-button').x_loading(false);
                     }
                 }
                 fav.save( {}, options );

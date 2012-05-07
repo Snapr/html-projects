@@ -4,6 +4,8 @@ snapr.views.my_account = snapr.views.page.extend({
     {
         snapr.views.page.prototype.initialize.call( this );
 
+        this.$el.find('.account-content').empty();
+
         this.change_page();
 
         this.user_settings = new snapr.models.user_settings();
