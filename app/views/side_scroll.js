@@ -140,6 +140,7 @@ snapr.views.side_scroll = Backbone.View.extend({
             // if the scroller is set up, refresh it
             if(this.scroller){
                 scroller = this.scroller;
+                scroller.options.snap = this.collection.length > 2 ? 'a.x-thumb:not(:last-child), .x-left-pull': 'a.x-thumb, .x-left-pull';
                 setTimeout(function () {
                     scroller.refresh();
                 }, 0);
