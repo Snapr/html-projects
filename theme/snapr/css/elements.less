@@ -3,10 +3,54 @@
 */
 
 .x-ajax-loading{
-    color: #BadA55 !important;
-    background:#Decaff !important;
-    border: 1px solid #Deface;
+    .ui-btn-inner{
+        overflow: hidden;
+    }
+    .ui-icon{
+        .spinner('../gfx/small-spinner-dark.png');
+        .spin();
+    }
+    &[data-icon="null"]{
+        .ui-btn-text{
+            opacity: 0;
+        }
+        :after{
+                display: block;
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                height: 36px;
+                width: 36px;
+                margin-top: -18px;
+                margin-left: -18px;
+                content: " ";
+                .spinner('../gfx/small-spinner-dark.png');
+                .spin();
+            }
+           
+        
+    }
 }
+
+/* light version of spinner action btns on white & dark bg buttons */
+.image-actions,
+.dark-icons{
+    .x-ajax-loading{
+        .ui-icon{
+            .spinner();
+        }
+    } 
+}
+
+
+.dark-icons{
+    .x-ajax-loading{
+        .ui-icon{
+            opacity: .4;        
+            }
+    } 
+}
+
 
 /* the thing that shows any time there are no results */
 #no-results {
