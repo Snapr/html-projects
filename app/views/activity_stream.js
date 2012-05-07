@@ -20,7 +20,7 @@ snapr.views.activity_stream = Backbone.View.extend({
 
         var summary = this.model.has( "events" ) && this.model.get( "events" ).summary();
 
-        var event_types = ["like", "comment", "follow"];
+        var event_types = ["like", "comment", "follow", "comment-on-comments"];
 
         _.each( event_types, function(type)
         {
