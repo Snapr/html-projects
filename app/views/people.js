@@ -41,7 +41,20 @@ snapr.views.people = snapr.views.dialog.extend({
             default:
                 this.$el.find("h1").text("Search");
                 this.$el.find("#people-search").val(this.options.query.username).attr("placeholder", "Search users…" );
-                this.collection.user_search( this.options.query.username )
+
+                var this_view = this;
+                this_view.$el.addClass('loading');
+                this.collection.fetch({
+                    data:{
+                        username:this.options.query.username,
+                        n:20,
+                        detail:1
+                    },
+                    url: snapr.api_base + '/user/search/',
+                    success: function(){
+                        this_view.$el.removeClass('loading');
+                    }
+                });
                 break;
         }
 
