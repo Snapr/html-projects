@@ -3000,20 +3000,20 @@ a.ui-link-inherit {
   margin-top: 0;
 }
 .simple-list .ui-li-link-alt .ui-btn .ui-icon {
-  height: 32px;
-  width: 32px;
+  height: 36px;
+  width: 36px;
   margin-top: 0;
   top: 4px;
-  right: 8px;
+  right: 0;
 }
 .simple-list .ui-li-link-alt .ui-btn .ui-icon-check {
-  background-position: -252px -108px;
+  background-position: -243px -108px;
 }
 .simple-list .ui-li-link-alt .ui-btn .ui-icon-plus {
-  background-position: 0px 0px;
+  background-position: 9px 0px;
 }
 .simple-list .ui-li-link-alt .ui-btn .ui-icon-tick {
-  background-position: -252px -144px;
+  background-position: -243px -144px;
 }
 .simple-list .ui-shadow, .simple-list.ui-shadow {
   -moz-box-shadow: none;

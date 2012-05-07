@@ -650,6 +650,7 @@
         border-right: none!important;
         border-left: none!important;
     }
+
     .ui-li-link-alt{
         width: 44px;
         .ui-btn {
@@ -660,20 +661,20 @@
             right: 0;
             margin-top: 0;
             .ui-icon{
-                height: 32px;
-                width: 32px;
+                height: @gfx-general-icon-sprite-grid;
+                width:@gfx-general-icon-sprite-grid;
                 margin-top: 0;
                 top: 4px;
-                right: 8px;
+                right: 0;
             }
             .ui-icon-check{
-                background-position: @gfx-general-icon-sprite-check-x @g-yellow-offset-y;
+                background-position: @gfx-general-icon-sprite-check-x + 9px @g-yellow-offset-y;
             }
             .ui-icon-plus{
-                background-position: @gfx-general-icon-sprite-plus-x @g-light-offset-y;
+                background-position: @gfx-general-icon-sprite-plus-x + 9px @g-light-offset-y;
             }
             .ui-icon-tick{
-                background-position: @gfx-general-icon-sprite-check-x @g-highlight-offset-y;
+                background-position: @gfx-general-icon-sprite-check-x + 9px @g-highlight-offset-y;
             }
         }
     }
