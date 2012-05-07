@@ -1249,6 +1249,9 @@
 
 /* @activity custom stylz */
 .activity-streams{
+    
+    
+    
     .ui-bar.top-left-arrow .ui-btn-text{
         padding-left: @padding-page-inset;
     }
@@ -1259,13 +1262,18 @@
         display: inline-block;
         margin-bottom: 0;
     }
-    .simple-list .ui-btn.ui-li {
-          border: none!important;
-          border-bottom: @border-medium-on-light!important;
-          margin-bottom: 0;
-          padding-bottom: @padding-element-inset;
-    }
+   
     .activity-item{
+        border: none;
+        border-top: @border-medium-on-light;
+        margin-top: @padding-element-inset;
+        padding-top: @padding-element-inset;
+        &:first{
+            border-top: none;
+            margin-top: 0;
+                padding-top: 0; 
+        }
+         
         .activity-desc{
             white-space: normal;
             font-weight: normal;
@@ -1286,6 +1294,15 @@
             position: absolute;
             left: -@padding-image-grid-inset;
         }
+        
+        
+    .photo-activity{
+       .activity-item:first-child{
+           border-top: none;
+           margin-top: 0;
+           padding-top: 0;
+       }
+   }
     
     /* Image Items */
     .activity-image-item{
@@ -1300,8 +1317,13 @@
     .comments-list{
         .comment-item.ui-li-has-icon{
             .ui-link-inherit{
+                padding-top: 0!important;
+                padding-bottom: 0!important;
                 padding-left: @size-small-avatar + @padding-image-grid-inset;
                 min-height: @size-small-avatar;
+            }
+            .ui-li-icon{
+                top:0;
             }
             .ui-li-heading{
                 padding-left: 0;
@@ -1323,11 +1345,10 @@
     .activity-follow-item{
         position: relative;
          padding-left: 0;
-         margin-top: 0;
+        
          min-height:  @size-small-avatar;
-         padding-top: @padding-element-inset;
-         border: none;
-         border-top: @border-medium-on-light;
+         
+         
          .username,
          .activity-desc,
          .small-text,

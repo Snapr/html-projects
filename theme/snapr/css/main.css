@@ -4821,11 +4821,16 @@ a.ui-link-inherit {
   display: inline-block;
   margin-bottom: 0;
 }
-.activity-streams .simple-list .ui-btn.ui-li {
-  border: none!important;
-  border-bottom: solid 1px #e4e4e4 !important;
-  margin-bottom: 0;
-  padding-bottom: 8px;
+.activity-streams .activity-item {
+  border: none;
+  border-top: solid 1px #e4e4e4;
+  margin-top: 8px;
+  padding-top: 8px;
+}
+.activity-streams .activity-item:first {
+  border-top: none;
+  margin-top: 0;
+  padding-top: 0;
 }
 .activity-streams .activity-item .activity-desc {
   white-space: normal;
@@ -4844,6 +4849,11 @@ a.ui-link-inherit {
   position: absolute;
   left: -4px;
 }
+.activity-streams .photo-activity .activity-item:first-child {
+  border-top: none;
+  margin-top: 0;
+  padding-top: 0;
+}
 .activity-streams .activity-image-item {
   position: relative;
   min-height: 101px;
@@ -4851,8 +4861,13 @@ a.ui-link-inherit {
   margin-bottom: 12px;
 }
 .activity-streams .comments-list .comment-item.ui-li-has-icon .ui-link-inherit {
+  padding-top: 0!important;
+  padding-bottom: 0!important;
   padding-left: 38px;
   min-height: 34px;
+}
+.activity-streams .comments-list .comment-item.ui-li-has-icon .ui-li-icon {
+  top: 0;
 }
 .activity-streams .comments-list .comment-item.ui-li-has-icon .ui-li-heading {
   padding-left: 0;
@@ -4867,11 +4882,7 @@ a.ui-link-inherit {
 .activity-streams .activity-follow-item {
   position: relative;
   padding-left: 0;
-  margin-top: 0;
   min-height: 34px;
-  padding-top: 8px;
-  border: none;
-  border-top: solid 1px #e4e4e4;
 }
 .activity-streams .activity-follow-item .username,
 .activity-streams .activity-follow-item .activity-desc,

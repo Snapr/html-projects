@@ -1389,7 +1389,7 @@
         <%  break;
         case "follow":%>
 
-        <a href="#/feed/?username=<%= item.get("user").username %>" class="activity-item">
+        <a href="#/feed/?username=<%= item.get("user").username %>" class="">
             <img src="<%= snapr.avatar_url %>/<%= item.get("user").username %>" alt="<%= item.get("user").user_id %>" class="user-icon-small ui-li-icon"/>
             <h3 class="username"><%= item.get("user").username %></h3> <span class="activity-desc">is now following you.</span>
             <% if (!photo_events) { %>
