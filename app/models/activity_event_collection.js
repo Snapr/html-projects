@@ -37,6 +37,14 @@ snapr.models.activity_event_collection = Backbone.Collection.extend({
                 return memo + num;
             }, 0);
 
+            var total_comments_on_comments_array = _.map( event_types["photo-activity"], function( item ){
+                return item.get( "total_comment-on-comments" )
+            });
+
+            summary_object.comment_on_comment = _.reduce( total_comments_on_comments_array, function( memo, num ){
+                return memo + num;
+            }, 0);
+
             var total_favorites_array = _.map( event_types["photo-activity"], function( item ){
                 return item.get( "total_favorites" )
             });

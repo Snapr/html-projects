@@ -1321,12 +1321,12 @@
         </a>
     <%}%>
         <!-- // Wrap all the items in the stream in a <ul> -->
-        <ul <% if (photo_events){%>class="photo-activity"<%}%>>
+        <ul <% if (photo_events){%>class="photo-activity"<%}else{%>class="non-photo-activity"<%}%>>
         </ul>
     </script>
 
     <script id="activity-stream-item-template" type="text/template">
-    <!-- // Each of these is enclosed in an li --> 
+    <!-- // Each of these is enclosed in an li -->
     <% switch (item.get("type"))
     {
          <!-- For news around a photo -->
@@ -1354,7 +1354,7 @@
                     </a>
                 </li>
             <% }); %>
-            
+
             </ul>
 
              <!-- // Now the Likes -->

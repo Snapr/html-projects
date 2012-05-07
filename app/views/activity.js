@@ -22,10 +22,12 @@ snapr.views.activity = snapr.views.page.extend({
     {
         $streams = this.$el.find(".activity-streams").empty();
 
-        var first = this.collection.filter( function( s )
+        var events = this.collection.filter( function( s )
         {
             return s.has("events") && s.get("events").length > 0;
-        })[0];
+        });
+
+        var first = events[0];
 
         // add "latest yellow topbar" if the first date doesn't have a photo event
         if (first && first.get("events").first().has("photo") == false)
@@ -35,15 +37,15 @@ snapr.views.activity = snapr.views.page.extend({
             }).render().el );
         }
 
-        _.each( this.collection.models, function( stream )
+        _.each( events, function( stream )
         {
-            if (stream.get( "events" ).length)
-            {
-                $streams.append( new snapr.views.activity_stream({
-                    group_by: this.group_by,
-                    model: stream
-                }).render().el );
-            }
+            var stream_li = new snapr.views.activity_stream({
+                group_by: this.group_by,
+                model: stream
+            }).render().el;
+
+            $streams.append( stream_li );
+            console.log("stream", stream_li)
         });
 
         $streams.trigger( "create" );
