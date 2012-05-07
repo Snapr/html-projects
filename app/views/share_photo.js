@@ -524,7 +524,7 @@ snapr.views.share_photo = snapr.views.page.extend({
 
                     if (sharing_errors.length)
                     {
-                        var url = "#/connect/?to_link=" + sharing_errors.join(",") + "&shared=" + sharing_successes.join(",") + "&photo_id=" + model.get("id");
+                        var url = "#/connect/?to_link=" + sharing_errors.join(",") + "&photo_id=" + model.get("id");  //  + "&shared=" + sharing_successes.join(",")
                         Route.navigate( url );
                     }
                     else
