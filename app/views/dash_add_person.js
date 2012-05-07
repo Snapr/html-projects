@@ -38,6 +38,7 @@ snapr.views.dash_add_person = snapr.views.dialog.extend({
         if(this.collection.length){
             _.each( this.collection.models, function( model )
             {
+                snapr.no_results.$el.hide();
                 var people_li = new snapr.views.people_li({
                     template: people_li_template,
                     model: model

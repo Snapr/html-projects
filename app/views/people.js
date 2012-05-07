@@ -65,6 +65,7 @@ snapr.views.people = snapr.views.dialog.extend({
         var people_li_template = _.template( $("#people-li-template").html() );
 
         if(this.collection.length){
+            snapr.no_results.$el.hide();
             _.each( this.collection.models, function( model )
             {
                 var people_li = new snapr.views.people_li({
