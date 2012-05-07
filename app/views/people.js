@@ -78,7 +78,8 @@ snapr.views.people = snapr.views.dialog.extend({
         var people_li_template = _.template( $("#people-li-template").html() );
 
         if(this.collection.length){
-            snapr.no_results.$el.hide();
+            console.log('results');
+            snapr.no_results.$el.remove();  // use remove(), hide() keeps it hidden and requires show() later
             _.each( this.collection.models, function( model )
             {
                 var people_li = new snapr.views.people_li({
