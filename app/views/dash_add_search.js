@@ -29,14 +29,14 @@ snapr.views.dash_add_search = snapr.views.dialog.extend({
         var stream_object = {
             query: {
                 keywords: keywords,
-                nearby: !!nearby,
+                nearby: !!nearby
             },
             display: {
                 "title": "Search for "+keywords,
                 "short_title": keywords,
                 "type": "search"
             }
-        }
+        };
 
         if (nearby)
         {

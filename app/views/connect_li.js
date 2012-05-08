@@ -25,7 +25,7 @@ snapr.views.connect_li = Backbone.View.extend({
                 provider: this.provider,
                 status: this.status
             }))
-            .trigger("create")
+            .trigger("create");
 
         return this;
     },

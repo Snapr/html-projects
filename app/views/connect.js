@@ -6,45 +6,20 @@ snapr.views.connect = snapr.views.page.extend({
 
         this.change_page();
 
-        var query = new Query(this.options.query),
-            linked = query.pop('linked');
+        this.query = new Query(this.options.query);
 
-        this.photo_id = query.get('photo_id');
+        this.linked = this.query.pop('linked');
+        this.photo_id = this.query.get('photo_id');
+        this.shared = this.query.get('shared') ? this.query.get('shared').split(','): [];
+        this.to_link = this.query.get('to_link') ? this.query.get('to_link').split(','): [];
 
-        // if there is a newly linked service, share to it then carry on linking (or finish)
-        if (linked)
-        {
-            username = query.pop('username');
-            // is a service username is suppllied
-            if (username)
-            {
-                link = this.link;
-                this.share(linked, function(){link(query);});
-            // no service username = something went wrong
-            }
-            else
-            {
-                alert( query.get('error', 'Unknown Error Linking') );
-            }
-        // if there are no newly linked services carry on linking (or finish) stright away
-        }
-        else
-        {
-            this.link( query );
-        }
+        this.render();
 
     },
 
-    link: function( query )
+    render: function()
     {
-
-        this.to_link = query.get('to_link') ? query.get('to_link').split(','): [];
-        this.shared = query.get('shared') ? query.get('shared').split(','): [];
-        // var service = to_link.shift();
-
         this.$el.find("ul").empty();
-
-        // console.warn("query", query, to_link);
 
         _.each( this.to_link, function( provider )
         {
@@ -57,7 +32,25 @@ snapr.views.connect = snapr.views.page.extend({
             this.$el.find("ul").append( li.render().el );
         }, this);
 
-        this.$el.find("ul").listview().listview("refresh");
+        if(this.linked){
+            // is a service username is suppllied
+            if (this.query.get('username')){
+
+                var li = new snapr.views.connect_li({
+                    provider: this.linked,
+                    status: "ready",
+                    photo_id: this.photo_id,
+                    parent_view: this
+                });
+                this.$el.find("ul").append( li.render().el );
+
+                this.share(this.linked);
+
+            // no service username = something went wrong
+            }else{
+                alert( this.query.get('error', 'Unknown Error Linking') );
+            }
+        }
 
         _.each( this.shared, function( provider )
         {
@@ -96,14 +89,20 @@ snapr.views.connect = snapr.views.page.extend({
         // }
     },
 
-    share: function( service, callback )
+    share: function( service )
     {
         this.model = new snapr.models.photo({id: this.photo_id});
 
+        var connect_view = this;
+
         var options = {
-            success: callback,
+            success: function(){
+                connect_view.linked = null;
+                connect_view.shared.push(service);
+                connect_view.render();
+            },
             error: function( error ){
-                console.log("share error", error);
+                console.error("share error", error);
             }
         };
 
@@ -129,6 +128,6 @@ snapr.views.connect = snapr.views.page.extend({
                 }, options);
                 break;
         }
-    },
+    }
 
 });
