@@ -1455,10 +1455,10 @@
                     <span class="image-details x-details">
                         <span class="ui-icon ui-icon-redheart extra-icons"></span>
                         <em><%= details.name %></em>
-                        <span class="image-tag x-tag"><%= collection.models[0].get("description") %></span>
+                        <span class="image-tag x-tag"><% if(collection.length){ %><%= collection.models[0].get("description") %><% } %></span>
                         <span class="image-time small-text">
                             <span class="ui-icon ui-icon-clock extra-icons"></span>
-                            <span class="x-date"><%= snapr.utils.short_timestamp( collection.models[0].get("date") )  %></span>
+                            <span class="x-date"><% if(collection.length){ %><%= snapr.utils.short_timestamp( collection.models[0].get("date") )  %><% } %></span>
                         </span>
                     </span>
 

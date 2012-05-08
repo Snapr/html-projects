@@ -79,22 +79,18 @@ snapr.views.cities = snapr.views.page.extend({
             console.log(details);
             var photos = new snapr.models.photo_collection();
             photos.data = {'area': details.area};
-            photos.fetch({
-                data:{n:6},
-                success: function(){
-                    var li = new snapr.views.city_stream({
-                        collection: photos,
-                        details: {
-                            name: details.name,
-                            area: details.area,
-                            id: id
-                        }
-                    });
-                    streams.append( li.el );
-                    li.render();
-                    $el.trigger( "create" );
+            var li = new snapr.views.city_stream({
+                collection: photos,
+                details: {
+                    name: details.name,
+                    area: details.area,
+                    id: id
                 }
             });
+            streams.append( li.el );
+            li.render();
+            $el.trigger( "create" );
+            photos.fetch({ data:{n:6 } });
         }, this);
 
     }

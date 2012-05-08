@@ -143,6 +143,9 @@ snapr.views.side_scroll = Backbone.View.extend({
                 scroller.options.snap = this.collection.length > 2 ? 'a.x-thumb:not(:last-child), .x-left-pull': 'a.x-thumb, .x-left-pull';
                 setTimeout(function () {
                     scroller.refresh();
+                    if(scroller.currPageX === 0){
+                        scroller.scrollToPage(1, 1, 0);
+                    }
                 }, 0);
             }
             this.photoswipe_init();
