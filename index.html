@@ -661,15 +661,15 @@
     <!-- vars provider, status -->
     <!-- wrapped in = <li data-role="fieldcontain"> -->
     <script id="connect-li-template" type="text/template">
-    <a class="connect">
+    <a class="<%= status %>">
         <span class="<%= provider %>-sharing sharing-icon-small">
             <span class="ui-icon"></span>
         </span>
         <%= provider %>
         <% switch(status) { case 'ready': %>
-            <span class="connect-status connected">Sharing <span class="ui-icon"></span></span>
+            <span class="connect-status">Sharing <span class="ui-icon ui-icon-spinner"></span></span>
         <% break; case 'shared': %>
-            <span class="connect-status connected">Shared<span class="ui-icon"></span></span>
+            <span class="connect-status">Shared<span class="ui-icon ui-icon-check"></span></span>
         <% }%>
     </a>
     </script>

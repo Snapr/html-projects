@@ -984,6 +984,41 @@
 
     }
 }
+
+/*
+* @connect - DIALOG ?
+*/
+
+.add-services{
+   
+   .shared,
+   .ready{
+     .ui-icon-arrow-r{
+        display: none;
+     }
+   }
+   
+    .connect-status{
+        position: absolute;
+        right: -40px;
+        padding-right: @gfx-general-icon-sprite-grid;
+        font-family: @txt-font-base;
+        text-transform: lowercase;
+        .ui-icon{
+            right: 0;
+            width: @gfx-general-icon-sprite-grid;
+            height: @gfx-general-icon-sprite-grid;
+        }
+        .ui-icon-check{
+            background-position: @gfx-general-icon-sprite-check-x + 9px @g-highlight-offset-y;
+        }
+    }
+    
+}
+
+
+
+
 /*
 * @profile - DIALOG
 */
@@ -1218,6 +1253,7 @@
        margin-bottom: 0;
        .ui-btn-text{
           padding: 16px 40px 16px 16px;
+          width: auto;
           .ui-link-inherit{
              padding: 0!important;
              padding-left: 28px!important;
@@ -1249,9 +1285,6 @@
 
 /* @activity custom stylz */
 .activity-streams{
-    
-    
-    
     .ui-bar.top-left-arrow .ui-btn-text{
         padding-left: @padding-page-inset;
     }

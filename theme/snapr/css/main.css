@@ -4568,6 +4568,27 @@ a.ui-link-inherit {
   background-position: 0px -200px;
 }
 /*
+* @connect - DIALOG ?
+*/
+.add-services .shared .ui-icon-arrow-r, .add-services .ready .ui-icon-arrow-r {
+  display: none;
+}
+.add-services .connect-status {
+  position: absolute;
+  right: -40px;
+  padding-right: 36px;
+  font-family: Helvetica, Arial, sans-serif;
+  text-transform: lowercase;
+}
+.add-services .connect-status .ui-icon {
+  right: 0;
+  width: 36px;
+  height: 36px;
+}
+.add-services .connect-status .ui-icon-check {
+  background-position: -243px -144px;
+}
+/*
 * @profile - DIALOG
 */
 .user-profile .user-info-block {
@@ -4778,6 +4799,7 @@ a.ui-link-inherit {
 }
 .add-services li.ui-li .ui-btn-text, .share-icons-list li.ui-li .ui-btn-text {
   padding: 16px 40px 16px 16px;
+  width: auto;
 }
 .add-services li.ui-li .ui-btn-text .ui-link-inherit, .share-icons-list li.ui-li .ui-btn-text .ui-link-inherit {
   padding: 0!important;
