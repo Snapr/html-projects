@@ -25,6 +25,7 @@ snapr.constants.default_zoom = 15;
 snapr.constants.feed_count = 12;
 
 snapr.tumblr_xauth = true;
+snapr.twitter_xauth = true;
 
 // set to hash url to redirect after successful upload/share eg:
 snapr.constants.share_redirect = "#/uploading/?";
@@ -645,6 +646,8 @@ snapr.routers = Backbone.Router.extend({
         "connect/?*query_string": "connect",
         "tumblr-xauth/": "tumblr_xauth",
         "tumblr-xauth/?*query_string": "tumblr_xauth",
+        "twitter-xauth/": "twitter_xauth",
+        "twitter-xauth/?*query_string": "twitter_xauth",
         "cities/": "cities",
         "cities/?*query_string": "cities",
         "limbo/": "limbo",
@@ -843,7 +846,7 @@ snapr.routers = Backbone.Router.extend({
         snapr.info.current_view = new snapr.views.connect({
             el: $("#connect")[0],
             query: query
-        })
+        });
     },
 
     tumblr_xauth: function( query_string, back_view )
@@ -853,7 +856,17 @@ snapr.routers = Backbone.Router.extend({
             el: $("#tumblr-xauth")[0],
             query: query,
             back_view: back_view
-        })
+        });
+    },
+
+    twitter_xauth: function( query_string, back_view )
+    {
+        var query = snapr.utils.get_query_params( query_string );
+        snapr.info.current_view = new snapr.views.twitter_xauth({
+            el: $("#twitter-xauth")[0],
+            query: query,
+            back_view: back_view
+        });
     },
 
     limbo: function( query_string )
@@ -861,7 +874,7 @@ snapr.routers = Backbone.Router.extend({
         snapr.utils.get_query_params( query_string );
         snapr.info.current_view = new snapr.views.limbo({
             el: $("#limbo")[0]
-        })
+        });
     },
 
     map: function( query_string )

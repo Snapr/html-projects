@@ -51,13 +51,13 @@ snapr.views.linked_service = Backbone.View.extend({
     link_service: function()
     {
         var url;
-        if (this.provider == 'tumblr' && snapr.tumblr_xauth)
-        {
+        if (this.provider == 'twitter' && snapr.twitter_xauth){
+            url = '#/twitter-xauth/?redirect='+ escape( window.location.href + '' );
+            Route.navigate( url );
+        }else if (this.provider == 'tumblr' && snapr.tumblr_xauth){
             url = '#/tumblr-xauth/?redirect='+ escape( window.location.href + '' );
             Route.navigate( url );
-        }
-        else
-        {
+        }else{
             if (snapr.utils.get_local_param( "appmode" ))
             {
                 if (snapr.utils.get_local_param("appmode") == 'iphone')

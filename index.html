@@ -704,6 +704,35 @@
    </div><!-- /page -->
 
 
+    <!-- @twitter xauth (for testing - go to #/twitter-xauth/) -->
+    <div id="twitter-xauth" data-role="dialog" data-overlay-theme="a" data-theme="a" class="special-bg twitter-bg">
+       <div data-role="header" data-theme="a">
+           <h1>Connect</h1>
+           <a class="x-back" data-role="button" data-icon="delete" data-iconpos="notext"></a>
+       </div>
+
+       <div data-role="content" data-ajax="false">
+           <div class="login-message">
+           </div>
+           <form action="javascript: void(0);" accept-charset="utf-8" id="twitter-dialog">
+                <ul data-role="listview" data-inset="true" data-theme="d">
+                    <li data-role="fieldcontain" class="ui-hide-label">
+                        <label for="username">Twitter Email</label>
+                        <input type="text" name="username" placeholder="Twitter Email" autocapitalize="off" autocorrect="off" id="twitter-username" >
+                    </li>
+                    <li data-role="fieldcontain" class="ui-hide-label">
+                        <label for="password">Password</label>
+                        <input type="password" name="password" placeholder="Password" id="twitter-password">
+                   </li>
+                </ul>
+                <a data-role="button" class="twitter-button logo-button" data-theme="e">
+                    Connect <span class="twitter-logo button-logo">Twitter</span>
+                </a>
+           </form>
+       </div>
+   </div><!-- /page -->
+
+
     <!-- @popular PAGE -->
     <div id="popular" data-title="Popular" data-add-back-btn="true" data-role="page" data-theme="d">
         <div data-role="header" data-theme="b">
@@ -2186,6 +2215,7 @@
 <script src="app/views/linked_service.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/linked_services.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/tumblr_xauth.js" type="text/javascript" charset="utf-8"></script>
+<script src="app/views/twitter_xauth.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/connect.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/connect_li.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/feed.js" type="text/javascript" charset="utf-8"></script>
