@@ -152,7 +152,7 @@ snapr.info.supports_local_storage = (function () {
 /*********
  * make photoswipe basebar click
  ***************************/
-$('.ps-caption').live('click', function(){
+$('.ps-caption').live('vclick', function(){
     var ps = Code.PhotoSwipe.activeInstances[0].instance,
         src = ps.cache.images[ps.currentIndex].src,
         id = src.match('/(.{2,6})\.jpg$')[1];
