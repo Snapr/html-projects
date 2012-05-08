@@ -61,6 +61,12 @@ snapr.views.cities = snapr.views.page.extend({
 
         this.change_page();
 
+        $('a[data-query]', this.$el).live( 'click', function( e ){
+            var query = $(this).data('query'),
+                current = $(this).data('current');
+            Route.navigate('#/feed/?' + unescape( query ) + '&photo_id=' + current );
+        });
+
         this.render();
     },
     render: function(){
@@ -76,7 +82,14 @@ snapr.views.cities = snapr.views.page.extend({
             photos.fetch({
                 data:{n:6},
                 success: function(){
-                    var li = new snapr.views.city_stream({ collection: photos, details: {name: details.name, id: id} });
+                    var li = new snapr.views.city_stream({
+                        collection: photos,
+                        details: {
+                            name: details.name,
+                            area: details.area,
+                            id: id
+                        }
+                    });
                     streams.append( li.el );
                     li.render();
                     $el.trigger( "create" );

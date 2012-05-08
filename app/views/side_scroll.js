@@ -6,8 +6,8 @@ snapr.views.side_scroll = Backbone.View.extend({
         this.collection.bind('all', this.re_render_thumbs, this);
     },
     render: function(){
+        console.log(this.collection);
         $(this.el).html($(this.template({collection: this.collection, model: this.model, details: this.details})));
-        console.log({collection: this.collection, model: this.model, details: this.details});
         this.render_thumbs();
         this.photoswipe_init();
         this.scroll_init();
