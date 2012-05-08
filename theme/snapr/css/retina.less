@@ -1,7 +1,7 @@
 /* High Resolution (iPhone 4) */
 
-/*@media only screen and (-webkit-min-device-pixel-ratio: 2) {
-*/  .ui-icon,
+@media only screen and (-webkit-min-device-pixel-ratio: 2) {
+  .ui-icon,
     .ui-icon-searchfield:after {
         background-image: url('../gfx/retina/general-jquerymob-icons.png');
     	.background-size (@gfx-general-icon-sprite-width, @gfx-general-icon-sprite-height);
@@ -119,14 +119,25 @@
         .background-size (@gfx-service-logo-sprite-width, @gfx-service-logo-sprite-height);
     }
  
+    
+ 
     .x-validating .ui-icon-validation,
     .extra-icons .ui-icon-spinner,
     .ui-icon-spinner,
-    .x-ajax-loading .ui-icon,
     .loading .ui-input-search .ui-input-clear .ui-icon-delete {
                     .spinner('../gfx/retina/small-spinner-light.png');
                     .background-size (24px, 24px)!important;
     }
+    
+    .x-ajax-loading .ui-icon {
+                    .spinner('../gfx/retina/small-spinner-dark.png');
+                    .background-size (24px, 24px)!important;
+    }
+    
+    .loading .map-filters .ui-input-search .ui-input-clear .ui-icon-delete {
+           background-image: url('../gfx/retina/extra-icons.png')!important;
+           .background-size(32px, 800px)!important;
+     }
     
     .ps-toolbar{
         .ps-toolbar-close{
@@ -142,6 +153,10 @@
             background-image: url('../gfx/retina/gallery-quote.png');
             .background-size (14px, 10px);
         }
+    }
+    div.ps-carousel-item-loading { 
+    	.spinner('../gfx/retina/spinner.png');
+    	.background-size (56px, 56px);
     }
 
 
@@ -164,6 +179,6 @@
               }
           }
       }
-/* }*/
+ }
   
 

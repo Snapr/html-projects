@@ -3530,6 +3530,18 @@ a.ui-link-inherit {
   background-repeat: no-repeat;
   background-position: 10px 8px;
 }
+div.ps-carousel-item-loading {
+  display: block;
+  background-image: url('../gfx/spinner.png') !important;
+  background-position: center!important;
+  background-repeat: no-repeat !important;
+  -webkit-transform: rotate(0deg) translatez(0);
+  -webkit-transition-duration: 0ms;
+  -webkit-animation-name: loading;
+  -webkit-animation-duration: 1.2s;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+}
 /*
 * Page Specific Styles / Elelments
 */
@@ -5184,7 +5196,7 @@ a.ui-link-inherit {
   height: 32px;
 }
 .photo-map .inline-footer .ui-input-search .ui-input-clear .ui-icon-delete {
-  background-position: 0 -576px;
+  background-position: 0 -576px !important;
   top: 1px;
   right: -5px;
   left: auto;
@@ -5364,188 +5376,214 @@ a.ui-link-inherit {
   
 }
 /* High Resolution (iPhone 4) */
-/*@media only screen and (-webkit-min-device-pixel-ratio: 2) {
-*/.ui-icon, .ui-icon-searchfield:after {
-  background-image: url('../gfx/retina/general-jquerymob-icons.png');
-  -moz-background-size: 774px 180px;
-  -o-background-size: 774px 180px;
-  -webkit-background-size: 774px 180px;
-  background-size: 774px 180px;
+@media only screen and (-webkit-min-device-pixel-ratio: 2) {
+  .ui-icon, .ui-icon-searchfield:after {
+    background-image: url('../gfx/retina/general-jquerymob-icons.png');
+    -moz-background-size: 774px 180px;
+    -o-background-size: 774px 180px;
+    -webkit-background-size: 774px 180px;
+    background-size: 774px 180px;
+  }
+  .ui-icon.extra-icons, .extra-icons .ui-icon {
+    background-image: url('../gfx/retina/extra-icons.png');
+    -moz-background-size: 32px 800px;
+    -o-background-size: 32px 800px;
+    -webkit-background-size: 32px 800px;
+    background-size: 32px 800px;
+  }
+  .ui-icon.helper-icons, .helper-icons .ui-icon {
+    background-image: url('../gfx/retina/helper-icons.png');
+    -moz-background-size: 96px 96px;
+    -o-background-size: 96px 96px;
+    -webkit-background-size: 96px 96px;
+    background-size: 96px 96px;
+  }
+  .ui-icon,
+  .ui-checkbox-on .ui-icon,
+  .ui-radio-on .ui-icon,
+  .ui-icon-searchfield::after {
+    background-image: url('../gfx/retina/general-jquerymob-icons.png');
+    -moz-background-size: 774px 180px;
+    -o-background-size: 774px 180px;
+    -webkit-background-size: 774px 180px;
+    background-size: 774px 180px;
+  }
+  .ui-header .ui-btn-inner .ui-icon {
+    background-image: url('../gfx/retina/bar-icons.png');
+    -moz-background-size: 240px 560px;
+    -o-background-size: 240px 560px;
+    -webkit-background-size: 240px 560px;
+    background-size: 240px 560px;
+  }
+  .main-logo {
+    background-image: url('../gfx/retina/main-logo.png');
+    -moz-background-size: 160px 42px;
+    -o-background-size: 160px 42px;
+    -webkit-background-size: 160px 42px;
+    background-size: 160px 42px;
+  }
+  .menu-main .ui-btn .ui-btn-inner .ui-icon {
+    background-image: url('../gfx/retina/main-menu-icons.png');
+    -moz-background-size: 80px 1280px;
+    -o-background-size: 80px 1280px;
+    -webkit-background-size: 80px 1280px;
+    background-size: 80px 1280px;
+  }
+  .user-info-block .user-icon-left .icon-overlay-info {
+    background-image: url('../gfx/retina/shiny-avatar-info.png');
+    -moz-background-size: 100px 100px;
+    -o-background-size: 100px 100px;
+    -webkit-background-size: 100px 100px;
+    background-size: 100px 100px;
+  }
+  .action-icons .ui-btn-inner .ui-icon,
+  .ui-checkbox .ui-btn-inner .ui-icon,
+  .custom-action-icons .ui-btn-inner .ui-icon,
+  .share-photo .upload-image-privacy .ui-btn-inner .ui-icon,
+  .share-photo .upload-image-location .ui-btn .ui-btn-inner .ui-icon,
+  .share-photo .image-controls .ui-btn-inner .ui-icon {
+    background-image: url('../gfx/retina/action-icons-custom.png');
+    -moz-background-size: 80px 440px;
+    -o-background-size: 80px 440px;
+    -webkit-background-size: 80px 440px;
+    background-size: 80px 440px;
+  }
+  .dark-icons .ui-btn .ui-btn-inner .ui-icon {
+    background-image: url('../gfx/retina/action-icons-dark.png');
+    -moz-background-size: 40px 480px;
+    -o-background-size: 40px 480px;
+    -webkit-background-size: 40px 480px;
+    background-size: 40px 480px;
+  }
+  .dash-footer .ui-btn-inner .ui-icon {
+    background-image: url('../gfx/retina/dash-icons.png');
+    -moz-background-size: 64px 64px;
+    -o-background-size: 64px 64px;
+    -webkit-background-size: 64px 64px;
+    background-size: 64px 64px;
+  }
+  .share-photo .upload-image-sharing .ui-btn-inner .ui-icon {
+    background-image: url('../gfx/retina/share-icons-large.png');
+    -moz-background-size: 84px 168px;
+    -o-background-size: 84px 168px;
+    -webkit-background-size: 84px 168px;
+    background-size: 84px 168px;
+  }
+  .sharing-icon-small .ui-btn-inner .ui-icon, .sharing-icon-small .ui-icon, .ui-btn-inner .sharing-icon-small .ui-icon {
+    background-image: url('../gfx/retina/share-icons-small.png');
+    -moz-background-size: 21px 84px;
+    -o-background-size: 21px 84px;
+    -webkit-background-size: 21px 84px;
+    background-size: 21px 84px;
+  }
+  .photo-map .snaprmapthumb .snaprmappin {
+    background-image: url('../gfx/retina/map-pin.png');
+    -moz-background-size: 28px 35px;
+    -o-background-size: 28px 35px;
+    -webkit-background-size: 28px 35px;
+    background-size: 28px 35px;
+  }
+  .photo-map .snaprmapthumb .snaprthumbbg {
+    background-image: url('../gfx/retina/map-thumb-bg.png');
+    -moz-background-size: 78px 88px;
+    -o-background-size: 78px 88px;
+    -webkit-background-size: 78px 88px;
+    background-size: 78px 88px;
+  }
+  .ui-loader .ui-icon-loading {
+    background-image: url('../gfx/retina/spinner.png');
+    -moz-background-size: 56px 56px;
+    -o-background-size: 56px 56px;
+    -webkit-background-size: 56px 56px;
+    background-size: 56px 56px;
+  }
+  .iphone-appstore .platform-logo {
+    background-image: url('../gfx/retina/iphone-appstore.png');
+    -moz-background-size: 200px 60px;
+    -o-background-size: 200px 60px;
+    -webkit-background-size: 200px 60px;
+    background-size: 200px 60px;
+  }
+  .android-marketplace .platform-logo {
+    background-image: url('../gfx/retina/android-logo.png');
+    -moz-background-size: 200px 60px;
+    -o-background-size: 200px 60px;
+    -webkit-background-size: 200px 60px;
+    background-size: 200px 60px;
+  }
+  .button-logo {
+    background-image: url('../gfx/retina/service-full-logos.png');
+    -moz-background-size: 150px 144px;
+    -o-background-size: 150px 144px;
+    -webkit-background-size: 150px 144px;
+    background-size: 150px 144px;
+  }
+  .x-validating .ui-icon-validation,
+  .extra-icons .ui-icon-spinner,
+  .ui-icon-spinner,
+  .loading .ui-input-search .ui-input-clear .ui-icon-delete {
+    display: block;
+    background-image: url('../gfx/retina/small-spinner-light.png') !important;
+    background-position: center!important;
+    background-repeat: no-repeat !important;
+    -moz-background-size: 24px 24px !important;
+    -o-background-size: 24px 24px !important;
+    -webkit-background-size: 24px 24px !important;
+    background-size: 24px 24px !important;
+  }
+  .x-ajax-loading .ui-icon {
+    display: block;
+    background-image: url('../gfx/retina/small-spinner-dark.png') !important;
+    background-position: center!important;
+    background-repeat: no-repeat !important;
+    -moz-background-size: 24px 24px !important;
+    -o-background-size: 24px 24px !important;
+    -webkit-background-size: 24px 24px !important;
+    background-size: 24px 24px !important;
+  }
+  .loading .map-filters .ui-input-search .ui-input-clear .ui-icon-delete {
+    background-image: url('../gfx/retina/extra-icons.png') !important;
+    -moz-background-size: 32px 800px !important;
+    -o-background-size: 32px 800px !important;
+    -webkit-background-size: 32px 800px !important;
+    background-size: 32px 800px !important;
+  }
+  .ps-toolbar .ps-toolbar-close .ps-toolbar-content {
+    background-image: url('../gfx/retina/general-jquerymob-icons.png');
+    -moz-background-size: 774px 180px;
+    -o-background-size: 774px 180px;
+    -webkit-background-size: 774px 180px;
+    background-size: 774px 180px;
+  }
+  .ps-caption-bottom .ps-caption-content {
+    background-image: url('../gfx/retina/gallery-quote.png');
+    -moz-background-size: 14px 10px;
+    -o-background-size: 14px 10px;
+    -webkit-background-size: 14px 10px;
+    background-size: 14px 10px;
+  }
+  div.ps-carousel-item-loading {
+    display: block;
+    background-image: url('../gfx/retina/spinner.png') !important;
+    background-position: center!important;
+    background-repeat: no-repeat !important;
+    -moz-background-size: 56px 56px;
+    -o-background-size: 56px 56px;
+    -webkit-background-size: 56px 56px;
+    background-size: 56px 56px;
+  }
+  .image-streams .image-stream .load-more-inline .ui-icon-refresh {
+    background-image: url('../gfx/retina/refresh.png');
+    -moz-background-size: 56px 56px;
+    -o-background-size: 56px 56px;
+    -webkit-background-size: 56px 56px;
+    background-size: 56px 56px;
+  }
+  .image-streams.x-loading .load-more-inline .ui-icon-refresh {
+    background-image: url('../gfx/retina/spinner.png');
+    -moz-background-size: 56px 56px;
+    -o-background-size: 56px 56px;
+    -webkit-background-size: 56px 56px;
+    background-size: 56px 56px;
+  }
 }
-.ui-icon.extra-icons, .extra-icons .ui-icon {
-  background-image: url('../gfx/retina/extra-icons.png');
-  -moz-background-size: 32px 800px;
-  -o-background-size: 32px 800px;
-  -webkit-background-size: 32px 800px;
-  background-size: 32px 800px;
-}
-.ui-icon.helper-icons, .helper-icons .ui-icon {
-  background-image: url('../gfx/retina/helper-icons.png');
-  -moz-background-size: 96px 96px;
-  -o-background-size: 96px 96px;
-  -webkit-background-size: 96px 96px;
-  background-size: 96px 96px;
-}
-.ui-icon,
-.ui-checkbox-on .ui-icon,
-.ui-radio-on .ui-icon,
-.ui-icon-searchfield::after {
-  background-image: url('../gfx/retina/general-jquerymob-icons.png');
-  -moz-background-size: 774px 180px;
-  -o-background-size: 774px 180px;
-  -webkit-background-size: 774px 180px;
-  background-size: 774px 180px;
-}
-.ui-header .ui-btn-inner .ui-icon {
-  background-image: url('../gfx/retina/bar-icons.png');
-  -moz-background-size: 240px 560px;
-  -o-background-size: 240px 560px;
-  -webkit-background-size: 240px 560px;
-  background-size: 240px 560px;
-}
-.main-logo {
-  background-image: url('../gfx/retina/main-logo.png');
-  -moz-background-size: 160px 42px;
-  -o-background-size: 160px 42px;
-  -webkit-background-size: 160px 42px;
-  background-size: 160px 42px;
-}
-.menu-main .ui-btn .ui-btn-inner .ui-icon {
-  background-image: url('../gfx/retina/main-menu-icons.png');
-  -moz-background-size: 80px 1280px;
-  -o-background-size: 80px 1280px;
-  -webkit-background-size: 80px 1280px;
-  background-size: 80px 1280px;
-}
-.user-info-block .user-icon-left .icon-overlay-info {
-  background-image: url('../gfx/retina/shiny-avatar-info.png');
-  -moz-background-size: 100px 100px;
-  -o-background-size: 100px 100px;
-  -webkit-background-size: 100px 100px;
-  background-size: 100px 100px;
-}
-.action-icons .ui-btn-inner .ui-icon,
-.ui-checkbox .ui-btn-inner .ui-icon,
-.custom-action-icons .ui-btn-inner .ui-icon,
-.share-photo .upload-image-privacy .ui-btn-inner .ui-icon,
-.share-photo .upload-image-location .ui-btn .ui-btn-inner .ui-icon,
-.share-photo .image-controls .ui-btn-inner .ui-icon {
-  background-image: url('../gfx/retina/action-icons-custom.png');
-  -moz-background-size: 80px 440px;
-  -o-background-size: 80px 440px;
-  -webkit-background-size: 80px 440px;
-  background-size: 80px 440px;
-}
-.dark-icons .ui-btn .ui-btn-inner .ui-icon {
-  background-image: url('../gfx/retina/action-icons-dark.png');
-  -moz-background-size: 40px 480px;
-  -o-background-size: 40px 480px;
-  -webkit-background-size: 40px 480px;
-  background-size: 40px 480px;
-}
-.dash-footer .ui-btn-inner .ui-icon {
-  background-image: url('../gfx/retina/dash-icons.png');
-  -moz-background-size: 64px 64px;
-  -o-background-size: 64px 64px;
-  -webkit-background-size: 64px 64px;
-  background-size: 64px 64px;
-}
-.share-photo .upload-image-sharing .ui-btn-inner .ui-icon {
-  background-image: url('../gfx/retina/share-icons-large.png');
-  -moz-background-size: 84px 168px;
-  -o-background-size: 84px 168px;
-  -webkit-background-size: 84px 168px;
-  background-size: 84px 168px;
-}
-.sharing-icon-small .ui-btn-inner .ui-icon, .sharing-icon-small .ui-icon, .ui-btn-inner .sharing-icon-small .ui-icon {
-  background-image: url('../gfx/retina/share-icons-small.png');
-  -moz-background-size: 21px 84px;
-  -o-background-size: 21px 84px;
-  -webkit-background-size: 21px 84px;
-  background-size: 21px 84px;
-}
-.photo-map .snaprmapthumb .snaprmappin {
-  background-image: url('../gfx/retina/map-pin.png');
-  -moz-background-size: 28px 35px;
-  -o-background-size: 28px 35px;
-  -webkit-background-size: 28px 35px;
-  background-size: 28px 35px;
-}
-.photo-map .snaprmapthumb .snaprthumbbg {
-  background-image: url('../gfx/retina/map-thumb-bg.png');
-  -moz-background-size: 78px 88px;
-  -o-background-size: 78px 88px;
-  -webkit-background-size: 78px 88px;
-  background-size: 78px 88px;
-}
-.ui-loader .ui-icon-loading {
-  background-image: url('../gfx/retina/spinner.png');
-  -moz-background-size: 56px 56px;
-  -o-background-size: 56px 56px;
-  -webkit-background-size: 56px 56px;
-  background-size: 56px 56px;
-}
-.iphone-appstore .platform-logo {
-  background-image: url('../gfx/retina/iphone-appstore.png');
-  -moz-background-size: 200px 60px;
-  -o-background-size: 200px 60px;
-  -webkit-background-size: 200px 60px;
-  background-size: 200px 60px;
-}
-.android-marketplace .platform-logo {
-  background-image: url('../gfx/retina/android-logo.png');
-  -moz-background-size: 200px 60px;
-  -o-background-size: 200px 60px;
-  -webkit-background-size: 200px 60px;
-  background-size: 200px 60px;
-}
-.button-logo {
-  background-image: url('../gfx/retina/service-full-logos.png');
-  -moz-background-size: 150px 144px;
-  -o-background-size: 150px 144px;
-  -webkit-background-size: 150px 144px;
-  background-size: 150px 144px;
-}
-.x-validating .ui-icon-validation,
-.extra-icons .ui-icon-spinner,
-.ui-icon-spinner,
-.x-ajax-loading .ui-icon,
-.loading .ui-input-search .ui-input-clear .ui-icon-delete {
-  display: block;
-  background-image: url('../gfx/retina/small-spinner-light.png') !important;
-  background-position: center!important;
-  background-repeat: no-repeat !important;
-  -moz-background-size: 24px 24px !important;
-  -o-background-size: 24px 24px !important;
-  -webkit-background-size: 24px 24px !important;
-  background-size: 24px 24px !important;
-}
-.ps-toolbar .ps-toolbar-close .ps-toolbar-content {
-  background-image: url('../gfx/retina/general-jquerymob-icons.png');
-  -moz-background-size: 774px 180px;
-  -o-background-size: 774px 180px;
-  -webkit-background-size: 774px 180px;
-  background-size: 774px 180px;
-}
-.ps-caption-bottom .ps-caption-content {
-  background-image: url('../gfx/retina/gallery-quote.png');
-  -moz-background-size: 14px 10px;
-  -o-background-size: 14px 10px;
-  -webkit-background-size: 14px 10px;
-  background-size: 14px 10px;
-}
-.image-streams .image-stream .load-more-inline .ui-icon-refresh {
-  background-image: url('../gfx/retina/refresh.png');
-  -moz-background-size: 56px 56px;
-  -o-background-size: 56px 56px;
-  -webkit-background-size: 56px 56px;
-  background-size: 56px 56px;
-}
-.image-streams.x-loading .load-more-inline .ui-icon-refresh {
-  background-image: url('../gfx/retina/spinner.png');
-  -moz-background-size: 56px 56px;
-  -o-background-size: 56px 56px;
-  -webkit-background-size: 56px 56px;
-  background-size: 56px 56px;
-}
-/* }*/
