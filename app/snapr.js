@@ -149,6 +149,17 @@ snapr.info.supports_local_storage = (function () {
     }
 })();
 
+/*********
+ * make photoswipe basebar click
+ ***************************/
+$('.ps-caption').live('click', function(){
+    var ps = Code.PhotoSwipe.activeInstances[0].instance,
+        src = ps.cache.images[ps.currentIndex].src,
+        id = src.match('/(.{2,6})\.jpg$')[1];
+    ps.hide();
+    Route.navigate('#/feed/?photo_id=' + id );
+});
+
 snapr.info.upload_count = 0;
 snapr.info.upload_mode = "On";
 snapr.info.upload_paused = false;
