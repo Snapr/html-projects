@@ -77,6 +77,7 @@
 /*
 * General JQuery Mob Icons '../gfx/general-jquerymob-icons'
 */
+/*The jQuery mob sprite has the icons left aligned instead of centered.. */
 /* Horizontal Layout of Icons (this one matches the default jQuery mobile horizontal sprite) */
 /* Horizontal offsets for theme swatches / hover states */
 /*
@@ -3454,6 +3455,82 @@ a.ui-link-inherit {
   margin: 0;
 }
 /*
+* @photoswipe - Custom
+*   css hacks to tweak the photoswipe gallery
+*/
+.ps-toolbar.ps-toolbar-top {
+  border: none;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#000000), to(#1d1d1d));
+  /* Saf4+, Chrome */
+
+  background-image: -webkit-linear-gradient(top, #000000, #1d1d1d);
+  /* Chrome 10+, Saf5.1+ */
+
+  background-image: -moz-linear-gradient(top, #000000, #1d1d1d);
+  /* FF3.6 */
+
+  background-image: -ms-linear-gradient(top, #000000, #1d1d1d);
+  /* IE10 */
+
+  background-image: -o-linear-gradient(top, #000000, #1d1d1d);
+  /* Opera 11.10+ */
+
+  background-image: linear-gradient(top, #000000, #1d1d1d);
+}
+.ps-toolbar.ps-toolbar-top {
+  -moz-border-radius-bottomleft: 6px;
+  -webkit-border-bottom-left-radius: 6px;
+  border-bottom-left-radius: 6px;
+  -moz-border-radius-bottomright: 6px;
+  -webkit-border-bottom-right-radius: 6px;
+  border-bottom-right-radius: 6px;
+}
+.ps-toolbar .ps-toolbar-previous, .ps-toolbar .ps-toolbar-next {
+  display: none;
+}
+.ps-toolbar .ps-toolbar-close .ps-toolbar-content {
+  margin-right: 0px;
+  background-image: url('../gfx/general-jquerymob-icons.png');
+  background-position: -58px 5px;
+  width: 46px;
+  height: 46px;
+}
+.ps-caption-bottom {
+  -moz-border-radius-topleft: 6px;
+  -webkit-border-top-left-radius: 6px;
+  border-top-left-radius: 6px;
+  -moz-border-radius-topright: 6px;
+  -webkit-border-top-right-radius: 6px;
+  border-top-right-radius: 6px;
+  border: none;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#1d1d1d), to(#000000));
+  /* Saf4+, Chrome */
+
+  background-image: -webkit-linear-gradient(top, #1d1d1d, #000000);
+  /* Chrome 10+, Saf5.1+ */
+
+  background-image: -moz-linear-gradient(top, #1d1d1d, #000000);
+  /* FF3.6 */
+
+  background-image: -ms-linear-gradient(top, #1d1d1d, #000000);
+  /* IE10 */
+
+  background-image: -o-linear-gradient(top, #1d1d1d, #000000);
+  /* Opera 11.10+ */
+
+  background-image: linear-gradient(top, #1d1d1d, #000000);
+}
+.ps-caption-bottom .ps-caption-content {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 15px;
+  color: #cccccc;
+  text-align: left;
+  padding: 8px 8px 8px 28px;
+  background-image: url('../gfx/gallery-quote.png');
+  background-repeat: no-repeat;
+  background-position: 10px 8px;
+}
+/*
 * Page Specific Styles / Elelments
 */
 /*
@@ -5287,174 +5364,188 @@ a.ui-link-inherit {
   
 }
 /* High Resolution (iPhone 4) */
-@media only screen and (-webkit-min-device-pixel-ratio: 2) {
-  .ui-icon, .ui-icon-searchfield:after {
-    background-image: url('../gfx/retina/general-jquerymob-icons.png');
-    -moz-background-size: 774px 180px;
-    -o-background-size: 774px 180px;
-    -webkit-background-size: 774px 180px;
-    background-size: 774px 180px;
-  }
-  .ui-icon.extra-icons, .extra-icons .ui-icon {
-    background-image: url('../gfx/retina/extra-icons.png');
-    -moz-background-size: 32px 800px;
-    -o-background-size: 32px 800px;
-    -webkit-background-size: 32px 800px;
-    background-size: 32px 800px;
-  }
-  .ui-icon.helper-icons, .helper-icons .ui-icon {
-    background-image: url('../gfx/retina/helper-icons.png');
-    -moz-background-size: 96px 96px;
-    -o-background-size: 96px 96px;
-    -webkit-background-size: 96px 96px;
-    background-size: 96px 96px;
-  }
-  .ui-icon,
-  .ui-checkbox-on .ui-icon,
-  .ui-radio-on .ui-icon,
-  .ui-icon-searchfield::after {
-    background-image: url('../gfx/retina/general-jquerymob-icons.png');
-    -moz-background-size: 774px 180px;
-    -o-background-size: 774px 180px;
-    -webkit-background-size: 774px 180px;
-    background-size: 774px 180px;
-  }
-  .ui-header .ui-btn-inner .ui-icon {
-    background-image: url('../gfx/retina/bar-icons.png');
-    -moz-background-size: 240px 560px;
-    -o-background-size: 240px 560px;
-    -webkit-background-size: 240px 560px;
-    background-size: 240px 560px;
-  }
-  .main-logo {
-    background-image: url('../gfx/retina/main-logo.png');
-    -moz-background-size: 160px 42px;
-    -o-background-size: 160px 42px;
-    -webkit-background-size: 160px 42px;
-    background-size: 160px 42px;
-  }
-  .menu-main .ui-btn .ui-btn-inner .ui-icon {
-    background-image: url('../gfx/retina/main-menu-icons.png');
-    -moz-background-size: 80px 1280px;
-    -o-background-size: 80px 1280px;
-    -webkit-background-size: 80px 1280px;
-    background-size: 80px 1280px;
-  }
-  .user-info-block .user-icon-left .icon-overlay-info {
-    background-image: url('../gfx/retina/shiny-avatar-info.png');
-    -moz-background-size: 100px 100px;
-    -o-background-size: 100px 100px;
-    -webkit-background-size: 100px 100px;
-    background-size: 100px 100px;
-  }
-  .action-icons .ui-btn-inner .ui-icon,
-  .ui-checkbox .ui-btn-inner .ui-icon,
-  .custom-action-icons .ui-btn-inner .ui-icon,
-  .share-photo .upload-image-privacy .ui-btn-inner .ui-icon,
-  .share-photo .upload-image-location .ui-btn .ui-btn-inner .ui-icon,
-  .share-photo .image-controls .ui-btn-inner .ui-icon {
-    background-image: url('../gfx/retina/action-icons-custom.png');
-    -moz-background-size: 80px 440px;
-    -o-background-size: 80px 440px;
-    -webkit-background-size: 80px 440px;
-    background-size: 80px 440px;
-  }
-  .dark-icons .ui-btn .ui-btn-inner .ui-icon {
-    background-image: url('../gfx/retina/action-icons-dark.png');
-    -moz-background-size: 40px 480px;
-    -o-background-size: 40px 480px;
-    -webkit-background-size: 40px 480px;
-    background-size: 40px 480px;
-  }
-  .dash-footer .ui-btn-inner .ui-icon {
-    background-image: url('../gfx/retina/dash-icons.png');
-    -moz-background-size: 64px 64px;
-    -o-background-size: 64px 64px;
-    -webkit-background-size: 64px 64px;
-    background-size: 64px 64px;
-  }
-  .share-photo .upload-image-sharing .ui-btn-inner .ui-icon {
-    background-image: url('../gfx/retina/share-icons-large.png');
-    -moz-background-size: 84px 168px;
-    -o-background-size: 84px 168px;
-    -webkit-background-size: 84px 168px;
-    background-size: 84px 168px;
-  }
-  .sharing-icon-small .ui-btn-inner .ui-icon, .sharing-icon-small .ui-icon, .ui-btn-inner .sharing-icon-small .ui-icon {
-    background-image: url('../gfx/retina/share-icons-small.png');
-    -moz-background-size: 21px 84px;
-    -o-background-size: 21px 84px;
-    -webkit-background-size: 21px 84px;
-    background-size: 21px 84px;
-  }
-  .photo-map .snaprmapthumb .snaprmappin {
-    background-image: url('../gfx/retina/map-pin.png');
-    -moz-background-size: 28px 35px;
-    -o-background-size: 28px 35px;
-    -webkit-background-size: 28px 35px;
-    background-size: 28px 35px;
-  }
-  .photo-map .snaprmapthumb .snaprthumbbg {
-    background-image: url('../gfx/retina/map-thumb-bg.png');
-    -moz-background-size: 78px 88px;
-    -o-background-size: 78px 88px;
-    -webkit-background-size: 78px 88px;
-    background-size: 78px 88px;
-  }
-  .ui-loader .ui-icon-loading {
-    background-image: url('../gfx/retina/spinner.png');
-    -moz-background-size: 56px 56px;
-    -o-background-size: 56px 56px;
-    -webkit-background-size: 56px 56px;
-    background-size: 56px 56px;
-  }
-  .iphone-appstore .platform-logo {
-    background-image: url('../gfx/retina/iphone-appstore.png');
-    -moz-background-size: 200px 60px;
-    -o-background-size: 200px 60px;
-    -webkit-background-size: 200px 60px;
-    background-size: 200px 60px;
-  }
-  .android-marketplace .platform-logo {
-    background-image: url('../gfx/retina/android-logo.png');
-    -moz-background-size: 200px 60px;
-    -o-background-size: 200px 60px;
-    -webkit-background-size: 200px 60px;
-    background-size: 200px 60px;
-  }
-  .button-logo {
-    background-image: url('../gfx/retina/service-full-logos.png');
-    -moz-background-size: 150px 144px;
-    -o-background-size: 150px 144px;
-    -webkit-background-size: 150px 144px;
-    background-size: 150px 144px;
-  }
-  .x-validating .ui-icon-validation,
-  .extra-icons .ui-icon-spinner,
-  .ui-icon-spinner,
-  .x-ajax-loading .ui-icon,
-  .loading .ui-input-search .ui-input-clear .ui-icon-delete {
-    display: block;
-    background-image: url('../gfx/retina/small-spinner-light.png') !important;
-    background-position: center!important;
-    background-repeat: no-repeat !important;
-    -moz-background-size: 24px 24px !important;
-    -o-background-size: 24px 24px !important;
-    -webkit-background-size: 24px 24px !important;
-    background-size: 24px 24px !important;
-  }
-  .image-streams .image-stream .load-more-inline .ui-icon-refresh {
-    background-image: url('../gfx/retina/refresh.png');
-    -moz-background-size: 56px 56px;
-    -o-background-size: 56px 56px;
-    -webkit-background-size: 56px 56px;
-    background-size: 56px 56px;
-  }
-  .image-streams.x-loading .load-more-inline .ui-icon-refresh {
-    background-image: url('../gfx/retina/spinner.png');
-    -moz-background-size: 56px 56px;
-    -o-background-size: 56px 56px;
-    -webkit-background-size: 56px 56px;
-    background-size: 56px 56px;
-  }
+/*@media only screen and (-webkit-min-device-pixel-ratio: 2) {
+*/.ui-icon, .ui-icon-searchfield:after {
+  background-image: url('../gfx/retina/general-jquerymob-icons.png');
+  -moz-background-size: 774px 180px;
+  -o-background-size: 774px 180px;
+  -webkit-background-size: 774px 180px;
+  background-size: 774px 180px;
 }
+.ui-icon.extra-icons, .extra-icons .ui-icon {
+  background-image: url('../gfx/retina/extra-icons.png');
+  -moz-background-size: 32px 800px;
+  -o-background-size: 32px 800px;
+  -webkit-background-size: 32px 800px;
+  background-size: 32px 800px;
+}
+.ui-icon.helper-icons, .helper-icons .ui-icon {
+  background-image: url('../gfx/retina/helper-icons.png');
+  -moz-background-size: 96px 96px;
+  -o-background-size: 96px 96px;
+  -webkit-background-size: 96px 96px;
+  background-size: 96px 96px;
+}
+.ui-icon,
+.ui-checkbox-on .ui-icon,
+.ui-radio-on .ui-icon,
+.ui-icon-searchfield::after {
+  background-image: url('../gfx/retina/general-jquerymob-icons.png');
+  -moz-background-size: 774px 180px;
+  -o-background-size: 774px 180px;
+  -webkit-background-size: 774px 180px;
+  background-size: 774px 180px;
+}
+.ui-header .ui-btn-inner .ui-icon {
+  background-image: url('../gfx/retina/bar-icons.png');
+  -moz-background-size: 240px 560px;
+  -o-background-size: 240px 560px;
+  -webkit-background-size: 240px 560px;
+  background-size: 240px 560px;
+}
+.main-logo {
+  background-image: url('../gfx/retina/main-logo.png');
+  -moz-background-size: 160px 42px;
+  -o-background-size: 160px 42px;
+  -webkit-background-size: 160px 42px;
+  background-size: 160px 42px;
+}
+.menu-main .ui-btn .ui-btn-inner .ui-icon {
+  background-image: url('../gfx/retina/main-menu-icons.png');
+  -moz-background-size: 80px 1280px;
+  -o-background-size: 80px 1280px;
+  -webkit-background-size: 80px 1280px;
+  background-size: 80px 1280px;
+}
+.user-info-block .user-icon-left .icon-overlay-info {
+  background-image: url('../gfx/retina/shiny-avatar-info.png');
+  -moz-background-size: 100px 100px;
+  -o-background-size: 100px 100px;
+  -webkit-background-size: 100px 100px;
+  background-size: 100px 100px;
+}
+.action-icons .ui-btn-inner .ui-icon,
+.ui-checkbox .ui-btn-inner .ui-icon,
+.custom-action-icons .ui-btn-inner .ui-icon,
+.share-photo .upload-image-privacy .ui-btn-inner .ui-icon,
+.share-photo .upload-image-location .ui-btn .ui-btn-inner .ui-icon,
+.share-photo .image-controls .ui-btn-inner .ui-icon {
+  background-image: url('../gfx/retina/action-icons-custom.png');
+  -moz-background-size: 80px 440px;
+  -o-background-size: 80px 440px;
+  -webkit-background-size: 80px 440px;
+  background-size: 80px 440px;
+}
+.dark-icons .ui-btn .ui-btn-inner .ui-icon {
+  background-image: url('../gfx/retina/action-icons-dark.png');
+  -moz-background-size: 40px 480px;
+  -o-background-size: 40px 480px;
+  -webkit-background-size: 40px 480px;
+  background-size: 40px 480px;
+}
+.dash-footer .ui-btn-inner .ui-icon {
+  background-image: url('../gfx/retina/dash-icons.png');
+  -moz-background-size: 64px 64px;
+  -o-background-size: 64px 64px;
+  -webkit-background-size: 64px 64px;
+  background-size: 64px 64px;
+}
+.share-photo .upload-image-sharing .ui-btn-inner .ui-icon {
+  background-image: url('../gfx/retina/share-icons-large.png');
+  -moz-background-size: 84px 168px;
+  -o-background-size: 84px 168px;
+  -webkit-background-size: 84px 168px;
+  background-size: 84px 168px;
+}
+.sharing-icon-small .ui-btn-inner .ui-icon, .sharing-icon-small .ui-icon, .ui-btn-inner .sharing-icon-small .ui-icon {
+  background-image: url('../gfx/retina/share-icons-small.png');
+  -moz-background-size: 21px 84px;
+  -o-background-size: 21px 84px;
+  -webkit-background-size: 21px 84px;
+  background-size: 21px 84px;
+}
+.photo-map .snaprmapthumb .snaprmappin {
+  background-image: url('../gfx/retina/map-pin.png');
+  -moz-background-size: 28px 35px;
+  -o-background-size: 28px 35px;
+  -webkit-background-size: 28px 35px;
+  background-size: 28px 35px;
+}
+.photo-map .snaprmapthumb .snaprthumbbg {
+  background-image: url('../gfx/retina/map-thumb-bg.png');
+  -moz-background-size: 78px 88px;
+  -o-background-size: 78px 88px;
+  -webkit-background-size: 78px 88px;
+  background-size: 78px 88px;
+}
+.ui-loader .ui-icon-loading {
+  background-image: url('../gfx/retina/spinner.png');
+  -moz-background-size: 56px 56px;
+  -o-background-size: 56px 56px;
+  -webkit-background-size: 56px 56px;
+  background-size: 56px 56px;
+}
+.iphone-appstore .platform-logo {
+  background-image: url('../gfx/retina/iphone-appstore.png');
+  -moz-background-size: 200px 60px;
+  -o-background-size: 200px 60px;
+  -webkit-background-size: 200px 60px;
+  background-size: 200px 60px;
+}
+.android-marketplace .platform-logo {
+  background-image: url('../gfx/retina/android-logo.png');
+  -moz-background-size: 200px 60px;
+  -o-background-size: 200px 60px;
+  -webkit-background-size: 200px 60px;
+  background-size: 200px 60px;
+}
+.button-logo {
+  background-image: url('../gfx/retina/service-full-logos.png');
+  -moz-background-size: 150px 144px;
+  -o-background-size: 150px 144px;
+  -webkit-background-size: 150px 144px;
+  background-size: 150px 144px;
+}
+.x-validating .ui-icon-validation,
+.extra-icons .ui-icon-spinner,
+.ui-icon-spinner,
+.x-ajax-loading .ui-icon,
+.loading .ui-input-search .ui-input-clear .ui-icon-delete {
+  display: block;
+  background-image: url('../gfx/retina/small-spinner-light.png') !important;
+  background-position: center!important;
+  background-repeat: no-repeat !important;
+  -moz-background-size: 24px 24px !important;
+  -o-background-size: 24px 24px !important;
+  -webkit-background-size: 24px 24px !important;
+  background-size: 24px 24px !important;
+}
+.ps-toolbar .ps-toolbar-close .ps-toolbar-content {
+  background-image: url('../gfx/retina/general-jquerymob-icons.png');
+  -moz-background-size: 774px 180px;
+  -o-background-size: 774px 180px;
+  -webkit-background-size: 774px 180px;
+  background-size: 774px 180px;
+}
+.ps-caption-bottom .ps-caption-content {
+  background-image: url('../gfx/retina/gallery-quote.png');
+  -moz-background-size: 14px 10px;
+  -o-background-size: 14px 10px;
+  -webkit-background-size: 14px 10px;
+  background-size: 14px 10px;
+}
+.image-streams .image-stream .load-more-inline .ui-icon-refresh {
+  background-image: url('../gfx/retina/refresh.png');
+  -moz-background-size: 56px 56px;
+  -o-background-size: 56px 56px;
+  -webkit-background-size: 56px 56px;
+  background-size: 56px 56px;
+}
+.image-streams.x-loading .load-more-inline .ui-icon-refresh {
+  background-image: url('../gfx/retina/spinner.png');
+  -moz-background-size: 56px 56px;
+  -o-background-size: 56px 56px;
+  -webkit-background-size: 56px 56px;
+  background-size: 56px 56px;
+}
+/* }*/

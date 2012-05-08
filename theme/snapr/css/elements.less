@@ -1137,4 +1137,48 @@ h4{
     }
 }
 
+/*
+* @photoswipe - Custom
+*   css hacks to tweak the photoswipe gallery
+*/
+
+.ps-toolbar{
+    &.ps-toolbar-top{
+        border: none;
+        .linear-gradient (#000000, #1d1d1d);
+    }
+    &.ps-toolbar-top{
+        .corner-bottom();
+    }
+    .ps-toolbar-previous,
+    .ps-toolbar-next{
+        display: none;
+    }
+    .ps-toolbar-close{
+        .ps-toolbar-content{
+            margin-right: 0px;
+            background-image: url('../gfx/general-jquerymob-icons.png');
+            background-position: @gfx-general-icon-sprite-delete-x + @gfx-general-icon-extra-x-offset + 5px @g-light-offset-y + 5px;
+            width: @size-topbar-height;
+            height: @size-topbar-height;
+        }
+    }
+    
+}
+
+.ps-caption-bottom{
+    .corner-top();
+    border: none;
+    .linear-gradient (#1d1d1d, #000000);
+    .ps-caption-content{
+        font-family: @txt-font-base;
+        font-size: @txt-size-base;
+        color: @color-txt-light-on-dark;
+        text-align: left;
+        padding: @padding-element-inset @padding-element-inset @padding-element-inset 28px;
+        background-image: url('../gfx/gallery-quote.png');
+        background-repeat: no-repeat;
+        background-position: 10px 8px;
+    }
+}
 

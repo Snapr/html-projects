@@ -1,7 +1,7 @@
 /* High Resolution (iPhone 4) */
 
-@media only screen and (-webkit-min-device-pixel-ratio: 2) {
-  .ui-icon,
+/*@media only screen and (-webkit-min-device-pixel-ratio: 2) {
+*/  .ui-icon,
     .ui-icon-searchfield:after {
         background-image: url('../gfx/retina/general-jquerymob-icons.png');
     	.background-size (@gfx-general-icon-sprite-width, @gfx-general-icon-sprite-height);
@@ -127,6 +127,22 @@
                     .spinner('../gfx/retina/small-spinner-light.png');
                     .background-size (24px, 24px)!important;
     }
+    
+    .ps-toolbar{
+        .ps-toolbar-close{
+            .ps-toolbar-content{
+                background-image: url('../gfx/retina/general-jquerymob-icons.png');
+                .background-size (@gfx-general-icon-sprite-width, @gfx-general-icon-sprite-height);
+            }
+        } 
+    }
+    
+    .ps-caption-bottom{
+        .ps-caption-content{
+            background-image: url('../gfx/retina/gallery-quote.png');
+            .background-size (14px, 10px);
+        }
+    }
 
 
     .image-streams{
@@ -148,6 +164,6 @@
               }
           }
       }
- }
+/* }*/
   
 
