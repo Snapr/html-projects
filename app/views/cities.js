@@ -70,6 +70,8 @@ snapr.views.cities = snapr.views.page.extend({
         this.render();
     },
     render: function(){
+        $.mobile.showPageLoadingMsg();
+
         var $el = this.$el,
             streams = this.$el.find('.image-streams');
 
@@ -90,7 +92,12 @@ snapr.views.cities = snapr.views.page.extend({
             streams.append( li.el );
             li.render();
             $el.trigger( "create" );
-            photos.fetch({ data:{n:6 } });
+            photos.fetch({
+                data:{n:6 },
+                success: function(){
+                    $.mobile.hidePageLoadingMsg();
+                }
+            });
         }, this);
 
     }
