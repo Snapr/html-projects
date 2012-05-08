@@ -2792,8 +2792,24 @@ a.ui-link-inherit {
   -webkit-animation-iteration-count: infinite;
   -webkit-animation-timing-function: linear;
 }
+.image-streams .image-stream .x-no-more .x-right-pull {
+  /* turns 'the end' into big full stop.. */
+
+}
 .image-streams .image-stream .x-no-more .x-right-pull .ui-icon-refresh {
   display: none;
+}
+.image-streams .image-stream .x-no-more .x-right-pull .x-msg {
+  background-color: rgba(0, 0, 0, 0.12);
+  padding: 36px 0;
+  width: 84px;
+  -moz-border-radius: 44px;
+  -webkit-border-radius: 44px;
+  border-radius: 44px;
+  color: white;
+  height: 12px;
+  vertical-align: middle;
+  margin-left: 10px;
 }
 .image-streams .image-stream .edit-overlay {
   display: none;
@@ -4044,13 +4060,14 @@ a.ui-link-inherit {
   padding: 0 36px 0 10px;
 }
 .image-item-block .image-actions .reactions-button .ui-icon {
-  background-position: 0 -160px;
+  background-position: 0px -160px;
+  right: 0;
 }
 .image-item-block .image-actions .reactions-button.ui-btn-down-d .ui-icon, .image-item-block .image-actions .reactions-button.ui-btn-hover-d .ui-icon, .image-item-block .image-actions .reactions-button.ui-btn-active-d .ui-icon {
   background-position: -40px -160px;
 }
 .image-item-block .image-actions .reactions-button.selected .ui-icon {
-  background-position: 0 -200px;
+  background-position: 0px -200px;
 }
 .image-item-block .image-actions .reactions-button.selected.ui-btn-down-d .ui-icon, .image-item-block .image-actions .reactions-button.selected.ui-btn-hover-d .ui-icon, .image-item-block .image-actions .reactions-button.selected.ui-btn-active-d .ui-icon {
   background-position: -40px -200px;
@@ -4556,7 +4573,7 @@ a.ui-link-inherit {
 .share-photo .image-controls .ui-icon {
   top: -1px;
   margin-top: 0;
-  right: 10px;
+  right: 0;
   width: 40px;
   height: 40px;
   background-image: url('../gfx/action-icons-custom.png');

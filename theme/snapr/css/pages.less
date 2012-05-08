@@ -455,24 +455,25 @@
                 padding: 0 36px 0 10px;
            }
             .ui-icon{
-                background-position: 0 -160px;
+                background-position: @as-offset-x @gfx-action-icon-sprite-toggle-y;
+                right: 0;
             }
             &.ui-btn-down-d,
             &.ui-btn-hover-d,
             &.ui-btn-active-d{
                 .ui-icon{
-                background-position: -40px -160px;
+                background-position: @as-offset-x-hover @gfx-action-icon-sprite-toggle-y;
                 }
             }
             &.selected{
             .ui-icon{
-                background-position: 0 -200px;
+                background-position: @as-offset-x @gfx-action-icon-sprite-toggle-up-y;
             }
             &.ui-btn-down-d,
             &.ui-btn-hover-d,
             &.ui-btn-active-d{
                     .ui-icon{
-                    background-position: -40px -200px;
+                    background-position: @as-offset-x-hover @gfx-action-icon-sprite-toggle-up-y;
                     }
                 }
             }
@@ -974,7 +975,7 @@
         .ui-icon{
             top: -1px;
             margin-top: 0;
-            right: 10px;
+            right: 0;
             width: @gfx-action-icon-sprite-grid;
             height: @gfx-action-icon-sprite-grid;
             background-image: url('../gfx/action-icons-custom.png');
