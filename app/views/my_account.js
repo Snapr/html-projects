@@ -51,7 +51,7 @@ snapr.views.my_account = snapr.views.page.extend({
                     camplus_menu: (snapr.utils.get_local_param( "camplus" ) == "true"),
                     camplus_camera: (snapr.utils.get_local_param( "camplus_camera" ) == "true"),
                     camplus_edit: (snapr.utils.get_local_param( "camplus_edit" ) == "true"),
-                    camplus_lightbox: (snapr.utils.get_local_param( "camplus_lightbox" ) == "true"),
+                    camplus_lightbox: (snapr.utils.get_local_param( "camplus_lightbox" ) == "true")
                 }
             }) )
             .trigger('create');
@@ -63,7 +63,7 @@ snapr.views.my_account = snapr.views.page.extend({
             facebook:false,
             tumblr:false,
             twitter:false
-        }
+        };
 
         _.each( this.user_settings.get('linked_services'), function( service, index )
         {
@@ -79,7 +79,7 @@ snapr.views.my_account = snapr.views.page.extend({
         // for all services that are not yet linked, add
         _.each( linked_services_list, function( val, provider )
         {
-            if (val == false)
+            if (!val)
             {
                 var v = new snapr.views.linked_service();
                 v.provider = provider;

@@ -118,27 +118,47 @@
         background-image: url('../gfx/retina/service-full-logos.png');
         .background-size (@gfx-service-logo-sprite-width, @gfx-service-logo-sprite-height);
     }
-    .x-validating{
-       .ui-icon-validation{
-           .spinner('../gfx/retina/small-spinner-light.png');
-           .background-size (24px, 24px);
-       }
-    }
-    .loading{
-        .ui-input-search{
-            .ui-input-clear {
-                .ui-icon-delete{
+ 
+    
+ 
+    .x-validating .ui-icon-validation,
+    .extra-icons .ui-icon-spinner,
+    .ui-icon-spinner,
+    .loading .ui-input-search .ui-input-clear .ui-icon-delete {
                     .spinner('../gfx/retina/small-spinner-light.png');
-                    .background-size (24px, 24px);
-                }
+                    .background-size (24px, 24px)!important;
+    }
+    
+    .x-ajax-loading .ui-icon {
+                    .spinner('../gfx/retina/small-spinner-dark.png');
+                    .background-size (24px, 24px)!important;
+    }
+    
+    .loading .map-filters .ui-input-search .ui-input-clear .ui-icon-delete {
+           background-image: url('../gfx/retina/extra-icons.png')!important;
+           .background-size(32px, 800px)!important;
+     }
+    
+    .ps-toolbar{
+        .ps-toolbar-close{
+            .ps-toolbar-content{
+                background-image: url('../gfx/retina/general-jquerymob-icons.png');
+                .background-size (@gfx-general-icon-sprite-width, @gfx-general-icon-sprite-height);
             }
         } 
     }
-    .extra-icons .ui-icon-spinner,
-    .ui-icon-spinner{
-        .spinner('../gfx/retina/small-spinner-light.png');
-        .background-size (24px, 24px);
+    
+    .ps-caption-bottom{
+        .ps-caption-content{
+            background-image: url('../gfx/retina/gallery-quote.png');
+            .background-size (14px, 10px);
+        }
     }
+    div.ps-carousel-item-loading { 
+    	.spinner('../gfx/retina/spinner.png');
+    	.background-size (56px, 56px);
+    }
+
 
     .image-streams{
          .image-stream{

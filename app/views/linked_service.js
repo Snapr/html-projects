@@ -48,16 +48,22 @@ snapr.views.linked_service = Backbone.View.extend({
         return this;
     },
 
-    link_service: function()
-    {
-        var url;
-        if (this.provider == 'tumblr' && snapr.tumblr_xauth)
-        {
-            url = '#/tumblr-xauth/?redirect='+ escape( window.location.href + '' );
+    // can be overriden when extending this view
+    get_return_url: function(){
+        return window.location.href;
+    },
+
+    link_service: function(){
+        var url,
+            next = this.get_return_url();
+
+        if (this.provider == 'twitter' && snapr.twitter_xauth){
+            url = '#/twitter-xauth/?redirect='+ escape( next );
             Route.navigate( url );
-        }
-        else
-        {
+        }else if (this.provider == 'tumblr' && snapr.tumblr_xauth){
+            url = '#/tumblr-xauth/?redirect='+ escape( next );
+            Route.navigate( url );
+        }else{
             if (snapr.utils.get_local_param( "appmode" ))
             {
                 if (snapr.utils.get_local_param("appmode") == 'iphone')
@@ -67,7 +73,7 @@ snapr.views.linked_service = Backbone.View.extend({
 
                     url = snapr.api_base + "/linked_services/"+ provider +
                         "/oauth/?display=touch&access_token=" + snapr.auth.get("access_token") +
-                        "&double_encode=true&redirect=" + escape("snapr://redirect?url=" + escape( window.location.href ));
+                        "&double_encode=true&redirect=" + escape("snapr://redirect?url=" + escape( next ));
                 }
                 else if(snapr.utils.get_local_param("appmode") == 'android')
                 {
@@ -75,7 +81,7 @@ snapr.views.linked_service = Backbone.View.extend({
                         url = "snapr://link?url=" + snapr.api_base +
                             "/linked_services/"+ this.provider + "/oauth/?display=touch&access_token=" +
                             snapr.auth.get("access_token") + "&redirect=snapr://redirect?url=" +
-                            escape( window.location.href );
+                            escape( next );
                 }
                 else
                 {
@@ -83,14 +89,14 @@ snapr.views.linked_service = Backbone.View.extend({
                     // this can be changed to escape("snapr://redirect?url=" + escape( window.location.href ))
                     url = snapr.api_base + "/linked_services/"+ this.provider + "/oauth/?display=touch&access_token=" +
                         snapr.auth.get("access_token") +
-                        "&redirect=snapr://redirect?url=" + escape( window.location.href );
+                        "&redirect=snapr://redirect?url=" + escape( next );
                 }
             }
             else
             {
                 url = snapr.api_base + "/linked_services/" + this.provider +
                     "/oauth/?display=touch&access_token=" + snapr.auth.get("access_token") +
-                    "&redirect=" + escape( window.location.href );
+                    "&redirect=" + escape( next );
             }
             window.location = url;
         }

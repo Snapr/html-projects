@@ -61,25 +61,45 @@ snapr.views.cities = snapr.views.page.extend({
 
         this.change_page();
 
+        $('a[data-query]', this.$el).live( 'click', function( e ){
+            var query = $(this).data('query'),
+                current = $(this).data('current');
+            Route.navigate('#/feed/?' + unescape( query ) + '&photo_id=' + current );
+        });
+
         this.render();
     },
     render: function(){
+        $.mobile.showPageLoadingMsg();
+
         var $el = this.$el,
             streams = this.$el.find('.image-streams');
 
-        streams.empty();
+        var empty_once = function(){
+            empty_once = $.noop;
+            streams.empty();
+        };
 
         _.each( cities, function( details, id ){
             console.log(details);
             var photos = new snapr.models.photo_collection();
             photos.data = {'area': details.area};
+            var li = new snapr.views.city_stream({
+                collection: photos,
+                details: {
+                    name: details.name,
+                    area: details.area,
+                    id: id
+                }
+            });
             photos.fetch({
-                data:{n:6},
+                data:{n:6 },
                 success: function(){
-                    var li = new snapr.views.city_stream({ collection: photos, details: {name: details.name, id: id} });
+                    empty_once();
                     streams.append( li.el );
                     li.render();
                     $el.trigger( "create" );
+                    $.mobile.hidePageLoadingMsg();
                 }
             });
         }, this);

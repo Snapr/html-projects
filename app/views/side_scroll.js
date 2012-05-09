@@ -6,8 +6,8 @@ snapr.views.side_scroll = Backbone.View.extend({
         this.collection.bind('all', this.re_render_thumbs, this);
     },
     render: function(){
+        console.log(this.collection);
         $(this.el).html($(this.template({collection: this.collection, model: this.model, details: this.details})));
-        console.log({collection: this.collection, model: this.model, details: this.details});
         this.render_thumbs();
         this.photoswipe_init();
         this.scroll_init();
@@ -49,7 +49,7 @@ snapr.views.side_scroll = Backbone.View.extend({
             this.scroller = new iScroll(scroll_el[0], {
                 vScroll: false,
                 hScrollbar: false,
-                snap: collection.length > 1 ? 'a.x-thumb:not(:last-child), .x-left-pull': 'a.x-thumb, .x-left-pull',
+                snap: collection.length > 2 ? 'a.x-thumb:not(:last-child), .x-left-pull': 'a.x-thumb, .x-left-pull',
                 momentum: false,
                 onScrollEnd: function(){
 
@@ -140,8 +140,12 @@ snapr.views.side_scroll = Backbone.View.extend({
             // if the scroller is set up, refresh it
             if(this.scroller){
                 scroller = this.scroller;
+                scroller.options.snap = this.collection.length > 2 ? 'a.x-thumb:not(:last-child), .x-left-pull': 'a.x-thumb, .x-left-pull';
                 setTimeout(function () {
                     scroller.refresh();
+                    if(scroller.currPageX === 0){
+                        scroller.scrollToPage(1, 1, 0);
+                    }
                 }, 0);
             }
             this.photoswipe_init();

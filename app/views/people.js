@@ -41,7 +41,20 @@ snapr.views.people = snapr.views.dialog.extend({
             default:
                 this.$el.find("h1").text("Search");
                 this.$el.find("#people-search").val(this.options.query.username).attr("placeholder", "Search users…" );
-                this.collection.user_search( this.options.query.username )
+
+                var this_view = this;
+                this_view.$el.addClass('loading');
+                this.collection.fetch({
+                    data:{
+                        username:this.options.query.username,
+                        n:20,
+                        detail:1
+                    },
+                    url: snapr.api_base + '/user/search/',
+                    success: function(){
+                        this_view.$el.removeClass('loading');
+                    }
+                });
                 break;
         }
 
@@ -65,6 +78,8 @@ snapr.views.people = snapr.views.dialog.extend({
         var people_li_template = _.template( $("#people-li-template").html() );
 
         if(this.collection.length){
+            console.log('results');
+            snapr.no_results.$el.remove();  // use remove(), hide() keeps it hidden and requires show() later
             _.each( this.collection.models, function( model )
             {
                 var people_li = new snapr.views.people_li({

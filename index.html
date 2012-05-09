@@ -644,7 +644,7 @@
 
     <!-- @connect -->
     <div id="connect" data-role="page" data-ajax="false">
-        <div data-role="header">
+        <div data-role="header" data-theme="c">
             <h1>Connect</h1>
             <a href="#/" data-role="button" data-icon="delete" data-iconpos="notext"></a>
         </div>
@@ -661,15 +661,15 @@
     <!-- vars provider, status -->
     <!-- wrapped in = <li data-role="fieldcontain"> -->
     <script id="connect-li-template" type="text/template">
-    <a class="connect">
+    <a class="<%= status %>">
         <span class="<%= provider %>-sharing sharing-icon-small">
             <span class="ui-icon"></span>
         </span>
         <%= provider %>
         <% switch(status) { case 'ready': %>
-            <span class="connect-status connected">Sharing <span class="ui-icon"></span></span>
+            <span class="connect-status">Sharing <span class="ui-icon ui-icon-spinner"></span></span>
         <% break; case 'shared': %>
-            <span class="connect-status connected">Shared<span class="ui-icon"></span></span>
+            <span class="connect-status">Shared<span class="ui-icon ui-icon-check"></span></span>
         <% }%>
     </a>
     </script>
@@ -698,6 +698,35 @@
                 </ul>
                 <a data-role="button" class="tumblr-button logo-button" data-theme="e">
                     Connect <span class="tumblr-logo button-logo">Tumblr</span>
+                </a>
+           </form>
+       </div>
+   </div><!-- /page -->
+
+
+    <!-- @twitter xauth (for testing - go to #/twitter-xauth/) -->
+    <div id="twitter-xauth" data-role="dialog" data-overlay-theme="a" data-theme="a" class="special-bg twitter-bg">
+       <div data-role="header" data-theme="a">
+           <h1>Connect</h1>
+           <a class="x-back" data-role="button" data-icon="delete" data-iconpos="notext"></a>
+       </div>
+
+       <div data-role="content" data-ajax="false">
+           <div class="login-message">
+           </div>
+           <form action="javascript: void(0);" accept-charset="utf-8" id="twitter-dialog">
+                <ul data-role="listview" data-inset="true" data-theme="d">
+                    <li data-role="fieldcontain" class="ui-hide-label">
+                        <label for="username">Twitter Email</label>
+                        <input type="text" name="username" placeholder="Twitter Email" autocapitalize="off" autocorrect="off" id="twitter-username" >
+                    </li>
+                    <li data-role="fieldcontain" class="ui-hide-label">
+                        <label for="password">Password</label>
+                        <input type="password" name="password" placeholder="Password" id="twitter-password">
+                   </li>
+                </ul>
+                <a data-role="button" class="twitter-button logo-button" data-theme="e">
+                    Connect <span class="twitter-logo button-logo">Twitter</span>
                 </a>
            </form>
        </div>
@@ -1389,7 +1418,7 @@
         <%  break;
         case "follow":%>
 
-        <a href="#/feed/?username=<%= item.get("user").username %>" class="activity-item">
+        <a href="#/feed/?username=<%= item.get("user").username %>" class="">
             <img src="<%= snapr.avatar_url %>/<%= item.get("user").username %>" alt="<%= item.get("user").user_id %>" class="user-icon-small ui-li-icon"/>
             <h3 class="username"><%= item.get("user").username %></h3> <span class="activity-desc">is now following you.</span>
             <% if (!photo_events) { %>
@@ -1417,19 +1446,33 @@
        <div data-role="content" data-theme="a" data-ajax="false">
            <ul class="image-streams">
                <!-- Streams get injected here -->
+               <li class="image-stream">
+                <a class="ui-bar ui-bar-b top-left-arrow x-details" data-role="button" data-iconpos="right" data-icon="arrow-r" data-theme="b">
+                    <span class="image-details x-details">
+                        <span class="ui-icon ui-icon-redheart extra-icons"></span>
+                        <em></em>
+                        <span class="image-tag x-tag"></span>
+                        <span class="image-time small-text">
+                            <span class="ui-icon ui-icon-clock extra-icons"></span>
+                            <span class="x-date"></span>
+                        </span>
+                    </span>
+
+                </a>
+           </li>
            </ul>
        </div>
     </div><!-- /page -->
     <script id="cities-stream-template" type="text/template">
             <li class="image-stream">
-                <a class="ui-bar ui-bar-b top-left-arrow x-details" data-role="button" data-iconpos="right" data-icon="arrow-r" data-theme="b">
+                <a class="ui-bar ui-bar-b top-left-arrow x-details" data-query="<%= escape("area="+details.area) %>" data-role="button" data-iconpos="right" data-icon="arrow-r" data-theme="b">
                     <span class="image-details x-details">
                         <span class="ui-icon ui-icon-redheart extra-icons"></span>
                         <em><%= details.name %></em>
-                        <span class="image-tag x-tag"><%= collection.models[0].get("description") %></span>
+                        <span class="image-tag x-tag"><% if(collection.length){ %><%= collection.models[0].get("description") %><% } %></span>
                         <span class="image-time small-text">
                             <span class="ui-icon ui-icon-clock extra-icons"></span>
-                            <span class="x-date"><%= snapr.utils.short_timestamp( collection.models[0].get("date") )  %></span>
+                            <span class="x-date"><% if(collection.length){ %><%= snapr.utils.short_timestamp( collection.models[0].get("date") )  %><% } %></span>
                         </span>
                     </span>
 
@@ -1450,7 +1493,7 @@
            </li>
         </script>
         <script id="cities-thumbs-template" type="text/template">
-            <% _.each(photos, function(photo) { %><a href="https://s3.amazonaws.com/media-server2.snapr.us/lrg/<%= photo.get('secret') %>/<%= photo.get('id') %>.jpg" class="x-thumb image-link" rel="external" data-date="<%= photo.get('date') %>" data-tag="<%= photo.get('description') %>">
+            <% _.each(photos, function(photo) { %><a href="https://s3.amazonaws.com/media-server2.snapr.us/lrg/<%= photo.get('secret') %>/<%= photo.get('id') %>.jpg" class="x-thumb image-link" rel="external" data-date="<%= photo.get('date') %>" data-id="<%= photo.get('id') %>" data-tag="<%= photo.get('description') %>">
                 <img src="https://s3.amazonaws.com/media-server2.snapr.us/thm2/<%= photo.get('secret') %>/<%= photo.get('id') %>.jpg" alt="<%= photo.get('description') %>" class="thumb-image thumb-med">
             </a><% }); %>
         </script>
@@ -2186,6 +2229,7 @@
 <script src="app/views/linked_service.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/linked_services.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/tumblr_xauth.js" type="text/javascript" charset="utf-8"></script>
+<script src="app/views/twitter_xauth.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/connect.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/connect_li.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/feed.js" type="text/javascript" charset="utf-8"></script>

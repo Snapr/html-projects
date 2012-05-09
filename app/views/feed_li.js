@@ -48,6 +48,7 @@ snapr.views.feed_li = Backbone.View.extend({
         this.reactions.collection.fetch({
             success: function()
             {
+                li_view.$('.reactions-button').x_loading(false);
                 li_view.show_comment_form();
             }
         });
@@ -149,6 +150,7 @@ snapr.views.feed_li = Backbone.View.extend({
         }
         else
         {
+            this.$('.reactions-button').x_loading();
             this.load_reactions();
             this.$el.find('.reactions-list').show();
             if (this.$el.find('.reactions-list li').length)

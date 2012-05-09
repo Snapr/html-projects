@@ -77,6 +77,7 @@
 /*
 * General JQuery Mob Icons '../gfx/general-jquerymob-icons'
 */
+/*The jQuery mob sprite has the icons left aligned instead of centered.. */
 /* Horizontal Layout of Icons (this one matches the default jQuery mobile horizontal sprite) */
 /* Horizontal offsets for theme swatches / hover states */
 /*
@@ -2324,10 +2325,54 @@ a.ui-link-inherit {
 /*
 * Elements - Non-Jquery Mobile Design Patterns that are shared across multiple pages
 */
-.x-ajax-loading {
-  color: #BadA55 !important;
-  background: #Decaff !important;
-  border: 1px solid #Deface;
+.x-ajax-loading .ui-btn-inner {
+  overflow: hidden;
+}
+.x-ajax-loading .ui-icon {
+  display: block;
+  background-image: url('../gfx/small-spinner-dark.png') !important;
+  background-position: center!important;
+  background-repeat: no-repeat !important;
+  -webkit-transform: rotate(0deg) translatez(0);
+  -webkit-transition-duration: 0ms;
+  -webkit-animation-name: loading;
+  -webkit-animation-duration: 1.2s;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+}
+.x-ajax-loading[data-icon="null"] .ui-btn-text {
+  opacity: 0;
+}
+.x-ajax-loading[data-icon="null"] :after {
+  display: block;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  height: 36px;
+  width: 36px;
+  margin-top: -18px;
+  margin-left: -18px;
+  content: " ";
+  display: block;
+  background-image: url('../gfx/small-spinner-dark.png') !important;
+  background-position: center!important;
+  background-repeat: no-repeat !important;
+  -webkit-transform: rotate(0deg) translatez(0);
+  -webkit-transition-duration: 0ms;
+  -webkit-animation-name: loading;
+  -webkit-animation-duration: 1.2s;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+}
+/* light version of spinner action btns on white & dark bg buttons */
+.image-actions .x-ajax-loading .ui-icon, .dark-icons .x-ajax-loading .ui-icon {
+  display: block;
+  background-image: url('../gfx/small-spinner-light.png') !important;
+  background-position: center!important;
+  background-repeat: no-repeat !important;
+}
+.dark-icons .x-ajax-loading .ui-icon {
+  opacity: .4;
 }
 /* the thing that shows any time there are no results */
 #no-results .imagealert {
@@ -2748,8 +2793,24 @@ a.ui-link-inherit {
   -webkit-animation-iteration-count: infinite;
   -webkit-animation-timing-function: linear;
 }
+.image-streams .image-stream .x-no-more .x-right-pull {
+  /* turns 'the end' into big full stop.. */
+
+}
 .image-streams .image-stream .x-no-more .x-right-pull .ui-icon-refresh {
   display: none;
+}
+.image-streams .image-stream .x-no-more .x-right-pull .x-msg {
+  background-color: rgba(0, 0, 0, 0.12);
+  padding: 36px 0;
+  width: 84px;
+  -moz-border-radius: 44px;
+  -webkit-border-radius: 44px;
+  border-radius: 44px;
+  color: white;
+  height: 12px;
+  vertical-align: middle;
+  margin-left: 10px;
 }
 .image-streams .image-stream .edit-overlay {
   display: none;
@@ -3394,6 +3455,94 @@ a.ui-link-inherit {
   margin: 0;
 }
 /*
+* @photoswipe - Custom
+*   css hacks to tweak the photoswipe gallery
+*/
+.ps-toolbar.ps-toolbar-top {
+  border: none;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#000000), to(#1d1d1d));
+  /* Saf4+, Chrome */
+
+  background-image: -webkit-linear-gradient(top, #000000, #1d1d1d);
+  /* Chrome 10+, Saf5.1+ */
+
+  background-image: -moz-linear-gradient(top, #000000, #1d1d1d);
+  /* FF3.6 */
+
+  background-image: -ms-linear-gradient(top, #000000, #1d1d1d);
+  /* IE10 */
+
+  background-image: -o-linear-gradient(top, #000000, #1d1d1d);
+  /* Opera 11.10+ */
+
+  background-image: linear-gradient(top, #000000, #1d1d1d);
+}
+.ps-toolbar.ps-toolbar-top {
+  -moz-border-radius-bottomleft: 6px;
+  -webkit-border-bottom-left-radius: 6px;
+  border-bottom-left-radius: 6px;
+  -moz-border-radius-bottomright: 6px;
+  -webkit-border-bottom-right-radius: 6px;
+  border-bottom-right-radius: 6px;
+}
+.ps-toolbar .ps-toolbar-previous, .ps-toolbar .ps-toolbar-next {
+  display: none;
+}
+.ps-toolbar .ps-toolbar-close .ps-toolbar-content {
+  margin-right: 0px;
+  background-image: url('../gfx/general-jquerymob-icons.png');
+  background-position: -58px 5px;
+  width: 46px;
+  height: 46px;
+}
+.ps-caption-bottom {
+  -moz-border-radius-topleft: 6px;
+  -webkit-border-top-left-radius: 6px;
+  border-top-left-radius: 6px;
+  -moz-border-radius-topright: 6px;
+  -webkit-border-top-right-radius: 6px;
+  border-top-right-radius: 6px;
+  border: none;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#1d1d1d), to(#000000));
+  /* Saf4+, Chrome */
+
+  background-image: -webkit-linear-gradient(top, #1d1d1d, #000000);
+  /* Chrome 10+, Saf5.1+ */
+
+  background-image: -moz-linear-gradient(top, #1d1d1d, #000000);
+  /* FF3.6 */
+
+  background-image: -ms-linear-gradient(top, #1d1d1d, #000000);
+  /* IE10 */
+
+  background-image: -o-linear-gradient(top, #1d1d1d, #000000);
+  /* Opera 11.10+ */
+
+  background-image: linear-gradient(top, #1d1d1d, #000000);
+}
+.ps-caption-bottom .ps-caption-content {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 15px;
+  color: #cccccc;
+  text-align: left;
+  padding: 8px 8px 8px 28px;
+  background-image: url('../gfx/gallery-quote.png');
+  background-repeat: no-repeat;
+  background-position: 10px 8px;
+}
+div.ps-carousel-item-loading {
+  display: block;
+  background-image: url('../gfx/spinner.png') !important;
+  background-position: center!important;
+  background-repeat: no-repeat !important;
+  -webkit-transform: rotate(0deg) translatez(0);
+  -webkit-transition-duration: 0ms;
+  -webkit-animation-name: loading;
+  -webkit-animation-duration: 1.2s;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+}
+/*
 * Page Specific Styles / Elelments
 */
 /*
@@ -4000,13 +4149,14 @@ a.ui-link-inherit {
   padding: 0 36px 0 10px;
 }
 .image-item-block .image-actions .reactions-button .ui-icon {
-  background-position: 0 -160px;
+  background-position: 0px -160px;
+  right: 0;
 }
 .image-item-block .image-actions .reactions-button.ui-btn-down-d .ui-icon, .image-item-block .image-actions .reactions-button.ui-btn-hover-d .ui-icon, .image-item-block .image-actions .reactions-button.ui-btn-active-d .ui-icon {
   background-position: -40px -160px;
 }
 .image-item-block .image-actions .reactions-button.selected .ui-icon {
-  background-position: 0 -200px;
+  background-position: 0px -200px;
 }
 .image-item-block .image-actions .reactions-button.selected.ui-btn-down-d .ui-icon, .image-item-block .image-actions .reactions-button.selected.ui-btn-hover-d .ui-icon, .image-item-block .image-actions .reactions-button.selected.ui-btn-active-d .ui-icon {
   background-position: -40px -200px;
@@ -4512,7 +4662,7 @@ a.ui-link-inherit {
 .share-photo .image-controls .ui-icon {
   top: -1px;
   margin-top: 0;
-  right: 10px;
+  right: 0;
   width: 40px;
   height: 40px;
   background-image: url('../gfx/action-icons-custom.png');
@@ -4522,6 +4672,27 @@ a.ui-link-inherit {
 }
 .share-photo .image-controls .ui-icon-toggle-up {
   background-position: 0px -200px;
+}
+/*
+* @connect - DIALOG ?
+*/
+.add-services .shared .ui-icon-arrow-r, .add-services .ready .ui-icon-arrow-r {
+  display: none;
+}
+.add-services .connect-status {
+  position: absolute;
+  right: -40px;
+  padding-right: 36px;
+  font-family: Helvetica, Arial, sans-serif;
+  text-transform: lowercase;
+}
+.add-services .connect-status .ui-icon {
+  right: 0;
+  width: 36px;
+  height: 36px;
+}
+.add-services .connect-status .ui-icon-check {
+  background-position: -243px -144px;
 }
 /*
 * @profile - DIALOG
@@ -4734,6 +4905,7 @@ a.ui-link-inherit {
 }
 .add-services li.ui-li .ui-btn-text, .share-icons-list li.ui-li .ui-btn-text {
   padding: 16px 40px 16px 16px;
+  width: auto;
 }
 .add-services li.ui-li .ui-btn-text .ui-link-inherit, .share-icons-list li.ui-li .ui-btn-text .ui-link-inherit {
   padding: 0!important;
@@ -4777,11 +4949,16 @@ a.ui-link-inherit {
   display: inline-block;
   margin-bottom: 0;
 }
-.activity-streams .simple-list .ui-btn.ui-li {
-  border: none!important;
-  border-bottom: solid 1px #e4e4e4 !important;
-  margin-bottom: 0;
-  padding-bottom: 8px;
+.activity-streams .activity-item {
+  border: none;
+  border-top: solid 1px #e4e4e4;
+  margin-top: 8px;
+  padding-top: 8px;
+}
+.activity-streams .activity-item:first {
+  border-top: none;
+  margin-top: 0;
+  padding-top: 0;
 }
 .activity-streams .activity-item .activity-desc {
   white-space: normal;
@@ -4800,6 +4977,11 @@ a.ui-link-inherit {
   position: absolute;
   left: -4px;
 }
+.activity-streams .photo-activity .activity-item:first-child {
+  border-top: none;
+  margin-top: 0;
+  padding-top: 0;
+}
 .activity-streams .activity-image-item {
   position: relative;
   min-height: 101px;
@@ -4807,8 +4989,13 @@ a.ui-link-inherit {
   margin-bottom: 12px;
 }
 .activity-streams .comments-list .comment-item.ui-li-has-icon .ui-link-inherit {
+  padding-top: 0!important;
+  padding-bottom: 0!important;
   padding-left: 38px;
   min-height: 34px;
+}
+.activity-streams .comments-list .comment-item.ui-li-has-icon .ui-li-icon {
+  top: 0;
 }
 .activity-streams .comments-list .comment-item.ui-li-has-icon .ui-li-heading {
   padding-left: 0;
@@ -4823,11 +5010,7 @@ a.ui-link-inherit {
 .activity-streams .activity-follow-item {
   position: relative;
   padding-left: 0;
-  margin-top: 0;
   min-height: 34px;
-  padding-top: 8px;
-  border: none;
-  border-top: solid 1px #e4e4e4;
 }
 .activity-streams .activity-follow-item .username,
 .activity-streams .activity-follow-item .activity-desc,
@@ -5013,7 +5196,7 @@ a.ui-link-inherit {
   height: 32px;
 }
 .photo-map .inline-footer .ui-input-search .ui-input-clear .ui-icon-delete {
-  background-position: 0 -576px;
+  background-position: 0 -576px !important;
   top: 1px;
   right: -5px;
   left: auto;
@@ -5335,35 +5518,59 @@ a.ui-link-inherit {
     -webkit-background-size: 150px 144px;
     background-size: 150px 144px;
   }
-  .x-validating .ui-icon-validation {
-    display: block;
-    background-image: url('../gfx/retina/small-spinner-light.png') !important;
-    background-position: center!important;
-    background-repeat: no-repeat !important;
-    -moz-background-size: 24px 24px;
-    -o-background-size: 24px 24px;
-    -webkit-background-size: 24px 24px;
-    background-size: 24px 24px;
-  }
+  .x-validating .ui-icon-validation,
+  .extra-icons .ui-icon-spinner,
+  .ui-icon-spinner,
   .loading .ui-input-search .ui-input-clear .ui-icon-delete {
     display: block;
     background-image: url('../gfx/retina/small-spinner-light.png') !important;
     background-position: center!important;
     background-repeat: no-repeat !important;
-    -moz-background-size: 24px 24px;
-    -o-background-size: 24px 24px;
-    -webkit-background-size: 24px 24px;
-    background-size: 24px 24px;
+    -moz-background-size: 24px 24px !important;
+    -o-background-size: 24px 24px !important;
+    -webkit-background-size: 24px 24px !important;
+    background-size: 24px 24px !important;
   }
-  .extra-icons .ui-icon-spinner, .ui-icon-spinner {
+  .x-ajax-loading .ui-icon {
     display: block;
-    background-image: url('../gfx/retina/small-spinner-light.png') !important;
+    background-image: url('../gfx/retina/small-spinner-dark.png') !important;
     background-position: center!important;
     background-repeat: no-repeat !important;
-    -moz-background-size: 24px 24px;
-    -o-background-size: 24px 24px;
-    -webkit-background-size: 24px 24px;
-    background-size: 24px 24px;
+    -moz-background-size: 24px 24px !important;
+    -o-background-size: 24px 24px !important;
+    -webkit-background-size: 24px 24px !important;
+    background-size: 24px 24px !important;
+  }
+  .loading .map-filters .ui-input-search .ui-input-clear .ui-icon-delete {
+    background-image: url('../gfx/retina/extra-icons.png') !important;
+    -moz-background-size: 32px 800px !important;
+    -o-background-size: 32px 800px !important;
+    -webkit-background-size: 32px 800px !important;
+    background-size: 32px 800px !important;
+  }
+  .ps-toolbar .ps-toolbar-close .ps-toolbar-content {
+    background-image: url('../gfx/retina/general-jquerymob-icons.png');
+    -moz-background-size: 774px 180px;
+    -o-background-size: 774px 180px;
+    -webkit-background-size: 774px 180px;
+    background-size: 774px 180px;
+  }
+  .ps-caption-bottom .ps-caption-content {
+    background-image: url('../gfx/retina/gallery-quote.png');
+    -moz-background-size: 14px 10px;
+    -o-background-size: 14px 10px;
+    -webkit-background-size: 14px 10px;
+    background-size: 14px 10px;
+  }
+  div.ps-carousel-item-loading {
+    display: block;
+    background-image: url('../gfx/retina/spinner.png') !important;
+    background-position: center!important;
+    background-repeat: no-repeat !important;
+    -moz-background-size: 56px 56px;
+    -o-background-size: 56px 56px;
+    -webkit-background-size: 56px 56px;
+    background-size: 56px 56px;
   }
   .image-streams .image-stream .load-more-inline .ui-icon-refresh {
     background-image: url('../gfx/retina/refresh.png');
