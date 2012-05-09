@@ -21,72 +21,45 @@ snapr.views.connect = snapr.views.page.extend({
     {
         this.$el.find("ul").empty();
 
-        _.each( this.to_link, function( provider )
-        {
-            var li = new snapr.views.connect_li({
-                provider: provider,
-                status: "unlinked",
-                photo_id: this.photo_id,
-                parent_view: this
-            });
-            this.$el.find("ul").append( li.render().el );
-        }, this);
-
-        if(this.linked){
-            // is a service username is suppllied
-            if (this.query.get('username')){
-
+        _.each( [ 'twitter', 'facebook', 'tumblr', 'foursquare'], function( provider ){
+            if(_.contains(this.to_link, provider)){
                 var li = new snapr.views.connect_li({
-                    provider: this.linked,
-                    status: "ready",
+                    provider: provider,
+                    status: "unlinked",
                     photo_id: this.photo_id,
                     parent_view: this
                 });
                 this.$el.find("ul").append( li.render().el );
+            }else if(provider == this.linked){
+                // is a service username is suppllied
+                if (this.query.get('username')){
+                    var li = new snapr.views.connect_li({
+                        provider: this.linked,
+                        status: "ready",
+                        photo_id: this.photo_id,
+                        parent_view: this
+                    });
+                    this.$el.find("ul").append( li.render().el );
 
-                this.share(this.linked);
+                    this.share(this.linked);
 
-            // no service username = something went wrong
-            }else{
-                alert( this.query.get('error', 'Unknown Error Linking') );
+                // no service username = something went wrong
+                }else{
+                    alert( this.query.get('error', 'Unknown Error Linking') );
+                }
+            }else if(_.contains(this.shared, provider)){
+                var li = new snapr.views.connect_li({
+                        provider: provider,
+                        status: "shared",
+                        photo_id: this.photo_id,
+                        parent_view: this
+                    });
+                this.$el.find("ul").append( li.render().el );
             }
-        }
-
-        _.each( this.shared, function( provider )
-        {
-            var li = new snapr.views.connect_li({
-                provider: provider,
-                status: "shared",
-                photo_id: this.photo_id,
-                parent_view: this
-            });
-            this.$el.find("ul").append( li.render().el );
-        }, this);
+        }, this );
 
         this.$el.find("ul").listview().listview("refresh");
 
-        // if (service)
-        // {
-        //     query.set('linked', service).set('to_link', to_link.join(','));
-        //     var next = window.location.href.split('?')[0];
-        //     next += '?' + query.toString();
-        //     var url;
-        //     if (snapr.utils.get_local_param( "appmode" )){
-        //         url = snapr.api_base + "/linked_services/"+ service + "/oauth/?access_token=" + snapr.auth.get("access_token") +
-        //             "&redirect=snapr://redirect?url=" + escape( next );
-        //     }else{
-        //         url = snapr.api_base + "/linked_services/" + service + "/oauth/?access_token=" + snapr.auth.get("access_token") +
-        //             "&redirect=" + escape( next );
-        //     }
-        //     // window.location = url;
-        // }
-        // else
-        // {
-        //     setTimeout( function()
-        //     {
-        //         Route.navigate("#/uploading/?shared=true&photo_id=" + query.get('photo_id'));
-        //     }, 600);
-        // }
     },
 
     share: function( service )
