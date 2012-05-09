@@ -155,14 +155,16 @@
 * @login - Custom
 */
 
-.ui-dialog.special-bg{
+.ui-dialog.special-bg,
+.ui-page.special-bg{
     background-image: none!important;
     div[data-role="content"]{
         background: none;
     }
 }
 
-.ui-dialog.snapr-bg{
+.ui-dialog.snapr-bg,
+.ui-page.snapr-bg{
     background-color: lighten(@color-snapr-yellow, 10%)!important;
     .box-shadow(inset 0px -2px 100px @color-snapr-yellow-tint);
 }
@@ -172,6 +174,10 @@
     .box-shadow(inset 0px -2px 100px @color-bg-tumblr-main-tint);
 }
 
+.ui-dialog.twitter-bg{
+    background-color: lighten(@color-bg-twitter-main-tint, 20%)!important;
+    .box-shadow(inset 0px -2px 100px @color-bg-twitter-main-tint);
+}
 
 .twitter-button.ui-btn-up-e {
 	background: @color-bg-twitter-main;

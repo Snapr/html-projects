@@ -1531,14 +1531,14 @@ a.ui-link-inherit {
   background-image: url('../gfx/bg-texture-light.gif');
   border: solid 1px #e4e4e4;
   color: #333333;
-  text-shadow: 0 1px 1px #ffffff;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.8);
 }
 .ui-dialog.ui-overlay-c {
   background: none;
   background-color: #f7f7f7 !important;
   background-image: url('../gfx/bg-texture-light.gif') !important;
   border: solid 1px #e4e4e4;
-  text-shadow: 0 1px 1px #ffffff;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.8);
   border: none;
 }
 /* Main Styles */
@@ -1554,7 +1554,7 @@ a.ui-link-inherit {
 }
 .ui-body-c .ui-header {
   color: #666666;
-  text-shadow: #ffffff 0px 1px 1px;
+  text-shadow: rgba(255, 255, 255, 0.8) 0px 1px 1px;
 }
 .ui-body-c .ui-link, .ui-body-c .ui-link:visited {
   color: #333333;
@@ -2575,7 +2575,7 @@ a.ui-link-inherit {
 .ui-navbar .ui-btn-active .ui-btn-text {
   position: relative;
   top: -4px;
-  text-shadow: #ffffff 0px 1px 0px;
+  text-shadow: rgba(255, 255, 255, 0.8) 0px 1px 0px;
   font-family: 'MuseoSansRounded700', Helvetica, Arial, sans-serif;
   font-size: 16px;
 }
@@ -2682,6 +2682,11 @@ a.ui-link-inherit {
   -webkit-animation-duration: 1.2s;
   -webkit-animation-iteration-count: infinite;
   -webkit-animation-timing-function: linear;
+}
+/* margins on bottom element not having proper effect */
+.margin-clear {
+  margin-bottom: -1px;
+  padding-bottom: 1px;
 }
 .loading #no-results {
   display: none;
@@ -3745,13 +3750,13 @@ div.ps-carousel-item-loading {
 /*
 * @login - Custom
 */
-.ui-dialog.special-bg {
+.ui-dialog.special-bg, .ui-page.special-bg {
   background-image: none!important;
 }
-.ui-dialog.special-bg div[data-role="content"] {
+.ui-dialog.special-bg div[data-role="content"], .ui-page.special-bg div[data-role="content"] {
   background: none;
 }
-.ui-dialog.snapr-bg {
+.ui-dialog.snapr-bg, .ui-page.snapr-bg {
   background-color: #ffff33 !important;
   -moz-box-shadow: inset 0px -2px 100px #ffe400;
   -webkit-box-shadow: inset 0px -2px 100px #ffe400;
@@ -3762,6 +3767,12 @@ div.ps-carousel-item-loading {
   -moz-box-shadow: inset 0px -2px 100px #2c3c54;
   -webkit-box-shadow: inset 0px -2px 100px #2c3c54;
   box-shadow: inset 0px -2px 100px #2c3c54;
+}
+.ui-dialog.twitter-bg {
+  background-color: #7ac5de !important;
+  -moz-box-shadow: inset 0px -2px 100px #309dc2;
+  -webkit-box-shadow: inset 0px -2px 100px #309dc2;
+  box-shadow: inset 0px -2px 100px #309dc2;
 }
 .twitter-button.ui-btn-up-e {
   background: #68d9ff;

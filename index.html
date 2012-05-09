@@ -705,8 +705,8 @@
 
 
     <!-- @twitter xauth (for testing - go to #/twitter-xauth/) -->
-    <div id="twitter-xauth" data-role="dialog" data-overlay-theme="a" data-theme="a" class="special-bg twitter-bg">
-       <div data-role="header" data-theme="a">
+    <div id="twitter-xauth" data-role="dialog" data-overlay-theme="c" data-theme="c" class="special-bg twitter-bg">
+       <div data-role="header" data-theme="c">
            <h1>Connect</h1>
            <a class="x-back" data-role="button" data-icon="delete" data-iconpos="notext"></a>
        </div>
@@ -717,8 +717,8 @@
            <form action="javascript: void(0);" accept-charset="utf-8" id="twitter-dialog">
                 <ul data-role="listview" data-inset="true" data-theme="d">
                     <li data-role="fieldcontain" class="ui-hide-label">
-                        <label for="username">Twitter Email</label>
-                        <input type="text" name="username" placeholder="Twitter Email" autocapitalize="off" autocorrect="off" id="twitter-username" >
+                        <label for="username">@username</label>
+                        <input type="text" name="username" placeholder="@username" autocapitalize="off" autocorrect="off" id="twitter-username" >
                     </li>
                     <li data-role="fieldcontain" class="ui-hide-label">
                         <label for="password">Password</label>
@@ -1808,7 +1808,7 @@
     <!-- no templates for #login -->
 
     <!-- @join snapr DIALOG-->
-    <div id="join-snapr" data-role="page" data-theme="c" data-ajax="false">
+    <div id="join-snapr" data-role="page" data-theme="c" data-ajax="false" class="snapr-bg special-bg">
         <div data-role="header" data-theme="c">
             <h1>Join Snapr</h1>
             <a class="x-back" data-role="button" data-icon="delete" data-iconpos="notext"></a>
@@ -1830,7 +1830,7 @@
                             <label for="email">Email</label><input type="email" name="email" placeholder="Email Address" autocomplete="off" id="join-dialog-email">
                             <span class="ui-icon ui-icon-validation"></span>
                         </li>
-
+                        <div class="margin-clear"></div>
                     </ul>
 
                     <input type="submit" name="login" data-theme="e" value="Join" class="x-join-btn">
