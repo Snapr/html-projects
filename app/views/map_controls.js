@@ -83,13 +83,14 @@ snapr.views.map_controls = Backbone.View.extend({
         this.$el.find("#map-filter option[value='following']").attr("disabled", !snapr.auth.has("snapr_user"));
         this.$el.find("#map-filter option[value='just-one']").attr("disabled", !this.model.has("photo_id"));
 
+
         var map_controls = this;
         this.$el.find(".map-time-btn").scroller({
             'cancelText': 'now', //  String  'Cancel'     Text for Cancel button
             //'delay': , //   Integer 300  Specifies the speed in milliseconds to change values in clickpick mode with tap & hold
             //'disabled': , //    Boolean false    Disables (true) or enables (false) the scroller. Can be set when initialising the scroller
             //'display': , // String  'modal'  Use 'inline' for inline display, or 'modal' for modal popup
-            //'headerText': , //  String  '{value}'    Specifies a custom string which appears in the popup header. If the string contains '{value}' substring, it is replaced with the formatted value of the scroller. If it's set to false, the header is hidden.
+            'headerText': false , //  String  '{value}'    Specifies a custom string which appears in the popup header. If the string contains '{value}' substring, it is replaced with the formatted value of the scroller. If it's set to false, the header is hidden.
             //'height': , //  Number  40   Height in pixels of one row on the wheel
             //'mode': , //    String  'scroller'   Option to choose between modes. Possible modes: 'scroller' - standard behaviour, 'clickpick' - '+' and '-' buttons
             'preset': 'datetime', //  String  'date'   Preset configurations for date, time and datetime pickers, possible values: 'date', 'time', 'datetime'
@@ -97,7 +98,7 @@ snapr.views.map_controls = Backbone.View.extend({
             //'setText': , // String  'Set'    Text for Set button
             //'showLabel': , //   Boolean true     Show/hide labels above wheels
             //'showOnFocus': , // Boolean true     Pops up the scroller on input focus
-            'theme': 'android-ics', //   String  ''   Sets the scroller's visual appearance. Supplied themes: 'android', 'android-ics', 'android-ics light', 'sense-ui', 'ios', 'jqm'. It's possible to create custom themes in css by prefixing any css class used in the scroller markup with the theme name, e.g.: .my-theme .dww { / My CSS / }, and set the theme option to 'my-theme'
+            'theme': 'jqm', //   String  ''   Sets the scroller's visual appearance. Supplied themes: 'android', 'android-ics', 'android-ics light', 'sense-ui', 'ios', 'jqm'. It's possible to create custom themes in css by prefixing any css class used in the scroller markup with the theme name, e.g.: .my-theme .dww { / My CSS / }, and set the theme option to 'my-theme'
             //'wheels': , //  Object  null     Wheels configuration. Example: [ { 'Label 1': { x: 'x', y: 'y', z: 'z' }, 'Label 2': { a: 'a', b: 'b' } }, { 'Label 3': { 1: '1', 2: '2' }, 'Label 4': { 4: '4', 5: '5' } } ]
             //'width': , //   Number  80   Minimum width in pixels of the wheels, expand to fit values and labels
             //'ampm': , //    Boolean true     12/24 hour format on timepicker
