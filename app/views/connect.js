@@ -22,40 +22,31 @@ snapr.views.connect = snapr.views.page.extend({
         this.$el.find("ul").empty();
 
         _.each( [ 'twitter', 'facebook', 'tumblr', 'foursquare'], function( provider ){
+            var status;
             if(_.contains(this.to_link, provider)){
-                var li = new snapr.views.connect_li({
-                    provider: provider,
-                    status: "unlinked",
-                    photo_id: this.photo_id,
-                    parent_view: this
-                });
-                this.$el.find("ul").append( li.render().el );
+                status = 'unlinked';
             }else if(provider == this.linked){
                 // is a service username is suppllied
                 if (this.query.get('username')){
-                    var li = new snapr.views.connect_li({
-                        provider: this.linked,
-                        status: "ready",
-                        photo_id: this.photo_id,
-                        parent_view: this
-                    });
-                    this.$el.find("ul").append( li.render().el );
-
+                    status = 'ready';
                     this.share(this.linked);
-
                 // no service username = something went wrong
                 }else{
+                    status = 'error';
                     alert( this.query.get('error', 'Unknown Error Linking') );
                 }
             }else if(_.contains(this.shared, provider)){
-                var li = new snapr.views.connect_li({
-                        provider: provider,
-                        status: "shared",
-                        photo_id: this.photo_id,
-                        parent_view: this
-                    });
-                this.$el.find("ul").append( li.render().el );
+                status = 'shared';
             }
+
+            var li = new snapr.views.connect_li({
+                    provider: provider,
+                    status: status,
+                    photo_id: this.photo_id,
+                    parent_view: this
+                });
+            this.$el.find("ul").append( li.render().el );
+
         }, this );
 
         this.$el.find("ul").listview().listview("refresh");
