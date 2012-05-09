@@ -48,7 +48,6 @@ snapr.views.favorite_button = Backbone.View.extend({
                         if (!s.get('error'))
                         {
                             fav_btn.render();
-                            fav_btn.li.load_reactions();
                         }
                         fav_btn.$('.favorite-button').x_loading(false);
                     },
@@ -73,7 +72,6 @@ snapr.views.favorite_button = Backbone.View.extend({
                                 favorite_count: fav_count + 1
                             });
                             fav_btn.render();
-                            fav_btn.li.load_reactions();
                         }
                         fav_btn.$('.favorite-button').x_loading(false);
                     },
