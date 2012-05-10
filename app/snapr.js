@@ -689,6 +689,8 @@ snapr.routers = Backbone.Router.extend({
         "user/following/?*query_string": "people_following",
         "venue/search/": "venues",
         "venue/search/?*query_string": "venues",
+        "welcome/": "welcome",
+        "welcome/?*query_string": "welcome",
         "?*query_string": "home",
         "*path": "home"
     },
@@ -988,7 +990,15 @@ snapr.routers = Backbone.Router.extend({
             query: query,
             el: $("#venues")[0]
         });
-    }
+    },
+    welcome: function( query_string )
+       {
+           var query = snapr.utils.get_query_params( query_string );
+           snapr.info.current_view = new snapr.views.welcome({
+               query: query,
+               el: $("#welcome")[0]
+           });
+       }
 });
 
 function photoswipe_init(id, elements){
