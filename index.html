@@ -1572,22 +1572,40 @@
             <a class="x-back" data-role="button" data-icon="delete" data-iconpos="notext"></a>
         </div>
         <div data-role="content" data-theme="c" data-ajax="false">
-            <div class="inset-page-content">
+            <div class="inset-page-content wrap-content">
                     <ul data-role="listview" data-ajax="false" class="" data-inset="true" data-theme="d">
                         <li>
-                            <h2>Share + Discover</h2>
-                            <p>Snapr helps you discover nearby photos as you share.</p>
+                            <h2>A world of Photo Sharing Awesomeness..</h2>
                         </li>
-
+                        <li>
+                            <a>Create</a>
+                            <p>Tweak your photos to perfection - add effects, adjust colors, crop and add captions</p>
+                            <p>
+                               Now you can also use Camera+ directly from Snapr 
+                            </p>
+                        </li>
                          <li>
-                            <a>Dash</a>
+                            <a href="#/menu/">Share</a>
+                            <p>You can link Snapr with Twitter, Facebook, Tumblr, and Foursquare and broadcast to all your favorite networks.</p>
                         </li>
                         <li>
-                            <a href="#/map/">Map</a>
+                            <a>Discover</a>
+                            <p>Snapr shows you nearby content each time you upload.</p>
+                            <p>Search our photo map and explore the world around you.</p>
                         </li>
+                         <li>
+                            <a href="#/dash/">Dash</a>
+                            <p>Keep track of your best friends and favorite searches on the fly with our special dashboard view.</p>
+                        </li>
+                       
                         <li>
-                            <a href="#/menu/">Etc</a>
+                            <a href="#/apps/">Get Some Apps!</a>
+                            <p>Find a photo sharing community that matches your interests!</p>
+                            
+                            <p>You can sign in with Snapr so all your images can still be found in one place.</p>
                         </li>
+                       
+                        
 
                     </ul>
             </div>
@@ -1595,7 +1613,7 @@
     </div>
     
     <!-- @welcome PAGE-->
-    <div id="welcome" data-role="dialog" data-overlay-theme="c" data-theme="c" class="snapr-bg special-bg">
+    <div id="welcome" data-role="dialog" data-overlay-theme="c" data-theme="c" class="welcome-bg special-bg">
         <div data-role="header" data-theme="c">
             <h1>Welcome!</h1>
             <a class="x-back" data-role="button" data-icon="delete" data-iconpos="notext"></a>
@@ -1604,22 +1622,13 @@
             <div class="inset-page-content wrap-content">
                     <ul data-role="listview" data-ajax="false" class="" data-inset="true" data-theme="d">
                         <li>
-                            <h1>Hi There!</h1>
-                            
-                            <p>What would you like to do to get started?</p>
+                            <a href="#/about/" class="plain-link">Find out more about what you can do with Snapr</a>
                         </li>
-
-                         <li>
-                            <a href="#/about/">Find out more about Snapr</a>
-                        </li>
-                        <li>
-                            <a href="#/login/">Login</a>
-                        </li>
-                        <li>
-                            <a href="#/join/">Join Snapr</a>
-                        </li>
-
                     </ul>
+                    <a data-role="button" data-theme="e" href="#/login/">Login</a>
+                      
+                    <a data-role="button" data-theme="d" href="#/join/">Join Snapr</a>
+                    
             </div>
         </div>
     </div>
@@ -1862,8 +1871,8 @@
                         <div class="margin-clear"></div>
                     </ul>
 
-                    <input type="submit" name="login" data-theme="e" value="Join" class="x-join-btn">
-                      <p class="block-link small-text light-text">All users must agree to the <a href="http://sna.pr/terms/" target="_blank" class="underline">Terms of Use</a></p>
+                    <input type="submit" name="login" data-theme="d" value="Join" class="x-join-btn">
+                      <p class="block-link small-text">All users must agree to the <a href="http://sna.pr/terms/" target="_blank" class="underline">Terms of Use</a></p>
 
                 </form>
 

@@ -2999,8 +2999,11 @@ a.ui-link-inherit {
 .ui-listview-inset li.ui-li .ui-icon-arrow-r {
   background-position: -108px -36px;
 }
-.wrap-content p {
-  white-space: normal;
+.wrap-content h1, .wrap-content p, .wrap-content a {
+  white-space: normal!important;
+}
+.plain-link {
+  font-family: Helvetica, Arial, sans-serif;
 }
 /* Strip bare the normal list style */
 .simple-list {
@@ -3773,6 +3776,16 @@ div.ps-carousel-item-loading {
   -moz-box-shadow: inset 0px -2px 100px #309dc2;
   -webkit-box-shadow: inset 0px -2px 100px #309dc2;
   box-shadow: inset 0px -2px 100px #309dc2;
+}
+.ui-dialog.welcome-bg, .ui-page.welcome-bg {
+  background-color: #acebdd!important;
+  background-image: url('../gfx/welcome-image.png') !important;
+  -moz-background-size: 320px 318px !important;
+  -o-background-size: 320px 318px !important;
+  -webkit-background-size: 320px 318px !important;
+  background-size: 320px 318px !important;
+  background-repeat: no-repeat !important;
+  background-position: center bottom!important;
 }
 .twitter-button.ui-btn-up-e {
   background: #68d9ff;
