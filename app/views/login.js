@@ -25,7 +25,8 @@ snapr.views.login = snapr.views.dialog.extend({
 
     events: {
         "submit #login-dialog":"log_in",
-        "click .x-back": "back"
+        "click .x-back": "back",
+        "click .twitter-button": 'twitter_login'
     },
 
     log_in: function()
@@ -56,5 +57,8 @@ snapr.views.login = snapr.views.dialog.extend({
             }
         }
         snapr.auth.get_token( username, password, options );
+    },
+    twitter_login: function(){
+        Route.navigate( "#/twitter-xauth/" );
     }
 });

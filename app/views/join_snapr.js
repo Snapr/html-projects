@@ -70,6 +70,13 @@ snapr.views.join_snapr = snapr.views.dialog.extend({
                 }
             }
         });
+
+        console.debug('this.options.query', this.options.query);
+        if(this.options.query && this.options.query.twitter_name){
+            $('#join-dialog-username').val(this.options.query.twitter_name).valid();
+        }else{
+            $('#join-dialog-username').val("");
+        }
     },
 
     events: {

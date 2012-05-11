@@ -743,10 +743,10 @@ snapr.routers = Backbone.Router.extend({
 
     join_snapr: function( query_string)
     {
-        snapr.utils.get_query_params( query_string );
+        var query = snapr.utils.get_query_params( query_string );
         snapr.info.current_view = new snapr.views.join_snapr({
             el: $("#join-snapr")[0],
-
+            query: query
         });
     },
 

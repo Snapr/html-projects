@@ -7,11 +7,8 @@ snapr.views.twitter_xauth = snapr.views.dialog.extend({
         if (this.options.query)
         {
             this.redirect = unescape( this.options.query.redirect );
-        }
-
-        if (this.options.query)
-        {
             this.message = this.options.query.message;
+            this.signin = !!this.options.query.signin;
         }
 
         if (this.message)
@@ -35,33 +32,71 @@ snapr.views.twitter_xauth = snapr.views.dialog.extend({
     },
 
     link_twitter: function(){
-        var redirect = this.redirect;
+        var options,
+            xauth_view = this,
+            redirect = this.redirect;
 
-        $.ajax({
-            url: snapr.api_base + '/linked_services/twitter/xauth/',
+        if(this.signin){
+            options = {
+                url: snapr.api_base + '/linked_services/twitter/xauth/signin/',
+                data:{
+                    client_id: snapr.client_id,
+                    client_secret: snapr.client_secret,
+                    _method: "POST"
+                },
+                success: function( data ){
+                    if(data.success){
+                        if(data.response.access_token){
+                            //login
+                            snapr.auth.set({
+                                "access_token": data.response.access_token,
+                                "snapr_user": data.response.snapr_user
+                            });
+                            snapr.auth.save_locally();
+                            xauth_view.back();
+                        }else{
+                            // sign up
+                            Route.navigate( "#/join/?twitter_name="+data.response.username+"&twitter_token="+escape(data.response.twitter_token) );
+                        }
+                    }else{
+                        console.error(data);
+                        snapr.utils.notification('Twitter Error', 'Incorrect login details');
+                    }
+                }
+            };
+        }else{
+            options =  {
+                url: snapr.api_base + '/linked_services/twitter/xauth/',
+                data:{
+                    access_token: snapr.auth.get("access_token"),
+                    _method: "POST"
+                },
+                success: function( data ){
+                    if(data.success){
+                        redirect = (redirect.indexOf("?") > -1) ?
+                            redirect + "&":
+                            redirect + "?";
+                        window.location = redirect + $.param(data.response);
+                    }else{
+                        console.error(data);
+                        snapr.utils.notification('Twitter Error', 'Incorrect login details');
+                    }
+                }
+            };
+        }
+
+        $.extend(!!"deep", options, {
             type: 'GET',
             dataType: 'jsonp',
             data:{
                 username: $('#twitter-username').val(),
-                password: $('#twitter-password').val(),
-                access_token: snapr.auth.get("access_token"),
-                _method: "POST"
-            },
-            success: function( data ){
-                if(data.success){
-                    redirect = (redirect.indexOf("?") > -1) ?
-                        redirect + "&username=" + data.response.username :
-                        redirect + "?username=" + data.response.username;
-
-                    window.location = redirect;
-                }else{
-                    console.error(data);
-                    snapr.utils.notification('Twitter Error', 'Incorrect login details');
-                }
+                password: $('#twitter-password').val()
             },
             error: function( data ){
                 console.error('ajax error!');
             }
         });
+
+        $.ajax(options);
     }
 });
