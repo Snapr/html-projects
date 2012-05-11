@@ -121,6 +121,11 @@
 /* Vertical Layout of Icons */
 /* Horizontal offsets for theme swatches / hover states */
 /*
+* Pull to refresh '../gfx/pull-to-refresh.png'
+*/
+/* Vertical Layout of Icons */
+/* Horizontal offsets for theme swatches / hover states */
+/*
 * Icons - Positioning for icons in the app based on sprites.less
 */
 /* @defaulticons */
@@ -2755,6 +2760,7 @@ a.ui-link-inherit {
   background-color: #fbfbfb;
   display: inline-block;
   vertical-align: top;
+  position: relative;
 }
 .image-streams .image-stream .load-more-inline .ui-btn-text {
   display: inline-block;
@@ -2767,30 +2773,40 @@ a.ui-link-inherit {
   width: 101px;
   color: #999999;
 }
-.image-streams .image-stream .load-more-inline .ui-icon {
-  width: 101px;
-  height: 101px;
+.image-streams .image-stream .load-more-inline .ui-icon-refresh {
+  background-image: url('../gfx/pull-to-refresh.png');
   background-repeat: no-repeat;
-  background-position: center;
+  position: absolute;
   display: block;
+  left: 50%;
+  top: 50%;
+  width: 56px;
+  height: 56px;
+  margin-top: -28px;
+  margin-left: -28px;
   -webkit-transition-property: -webkit-transform;
   -webkit-transition-duration: 250ms;
   -webkit-transform: rotate(0deg) translatez(0);
 }
-.image-streams .image-stream .load-more-inline .ui-icon-refresh {
-  background-image: url('../gfx/refresh.png');
-}
 .image-streams .image-stream .load-more-inline.x-right-pull {
   margin-right: 9px;
+}
+.image-streams .image-stream .load-more-inline.x-right-pull .ui-icon-refresh {
+  background-position: 0 -56px;
 }
 .image-streams .image-stream .load-more-inline.x-left-pull {
   margin-right: -4px;
 }
-.image-streams .image-stream .load-more-inline.x-flipped .ui-icon {
+.image-streams .image-stream .load-more-inline.x-left-pull .ui-icon-refresh {
+  background-position: 0 0px;
+}
+.image-streams .image-stream .load-more-inline.x-flipped .ui-icon-refresh {
+  background-position: 0 -112px;
   -webkit-transform: rotate(180deg) translatez(0);
 }
 .image-streams .image-stream .x-loading .load-more-inline .ui-icon-refresh {
   background-image: url('../gfx/spinner.png');
+  background-position: center;
   -webkit-transform: rotate(0deg) translatez(0);
   -webkit-transition-duration: 0ms;
   -webkit-animation-name: loading;
@@ -5625,14 +5641,14 @@ div.ps-carousel-item-loading {
     background-size: 56px 56px;
   }
   .image-streams .image-stream .load-more-inline .ui-icon-refresh {
-    background-image: url('../gfx/retina/refresh.png');
-    -moz-background-size: 56px 56px;
-    -o-background-size: 56px 56px;
-    -webkit-background-size: 56px 56px;
-    background-size: 56px 56px;
+    background-image: url('../gfx/retina/pull-to-refresh.png');
+    -moz-background-size: 56px 168px;
+    -o-background-size: 56px 168px;
+    -webkit-background-size: 56px 168px;
+    background-size: 56px 168px;
   }
-  .image-streams.x-loading .load-more-inline .ui-icon-refresh {
-    background-image: url('../gfx/retina/spinner.png');
+  .image-streams .image-stream .x-loading .load-more-inline .ui-icon-refresh {
+    background-image: url('../gfx/retina/spinner.png') !important;
     -moz-background-size: 56px 56px;
     -o-background-size: 56px 56px;
     -webkit-background-size: 56px 56px;

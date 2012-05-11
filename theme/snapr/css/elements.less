@@ -385,6 +385,7 @@
             background-color: @color-off-white-tint;
             display: inline-block;
             vertical-align: top;
+            position: relative;
             .ui-btn-text{
                 display: inline-block;
                 text-align: center;
@@ -396,32 +397,41 @@
                 width: 101px;
                 color: @color-txt-light-on-light;
             }
-            .ui-icon{
-                width: 101px;
-                height: 101px;
+           
+            .ui-icon-refresh{
+                background-image: url('../gfx/pull-to-refresh.png');
                 background-repeat: no-repeat;
-                background-position: center;
+                position: absolute;
                 display: block;
+                left: 50%;
+                top: 50%;
+                width: @gfx-refresh-sprite-grid;
+                height: @gfx-refresh-sprite-grid;
+                margin-top: -@gfx-refresh-sprite-grid / 2;
+                margin-left: -@gfx-refresh-sprite-grid / 2;
                 -webkit-transition-property:-webkit-transform;
             	-webkit-transition-duration:250ms;
             	-webkit-transform:rotate(0deg) translateZ(0);
-
-            }
-            .ui-icon-refresh{
-                background-image: url('../gfx/refresh.png');
             }
 
             &.x-right-pull{
                 margin-right: 9px;
+                .ui-icon-refresh{
+                    background-position: @ri-offset-x @gfx-refresh-sprite-right-y;
+                }
             }
 
             &.x-left-pull{
                 margin-right:-@padding-image-grid-inset;
+                 .ui-icon-refresh{
+                     background-position: @ri-offset-x @gfx-refresh-sprite-left-y;
+                 }
             }
 
             &.x-flipped{
-                .ui-icon{
-    	        -webkit-transform:rotate(180deg) translateZ(0);
+                 .ui-icon-refresh{
+                     background-position: @ri-offset-x @gfx-refresh-sprite-refresh-y;
+    	            -webkit-transform:rotate(180deg) translateZ(0);
 	            }
     	    }
         }
@@ -430,6 +440,7 @@
             .load-more-inline{
                  .ui-icon-refresh{
                     background-image: url('../gfx/spinner.png');
+                    background-position: center;
                     .spin();
                 }
             }

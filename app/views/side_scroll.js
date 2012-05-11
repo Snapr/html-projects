@@ -32,7 +32,7 @@ snapr.views.side_scroll = Backbone.View.extend({
                 }
             }else{
                 left_pull_el.removeClass('x-flipped');
-                left_pull_msg.text('Load Newer...');
+                left_pull_msg.text('Load Newer');
             }
             if(scroller.x < (scroller.maxScrollX - pull_distance)){
                 right_pull_el.addClass('x-flipped');
@@ -41,7 +41,7 @@ snapr.views.side_scroll = Backbone.View.extend({
                 }
             }else{
                 right_pull_el.removeClass('x-flipped');
-                right_pull_msg.text('Load More...');
+                right_pull_msg.text('Load More');
             }
         }
         try{
@@ -84,11 +84,11 @@ snapr.views.side_scroll = Backbone.View.extend({
                                 scroller.scrollToPage(1);
                             }
                             scroll_el.removeClass('x-loading');
-                            left_pull_msg.text('Load More...');
+                            left_pull_msg.text('Load More');
                         }});
                     }else if(right_pull_el.is('.x-flipped') && !scroll_el.is('.x-loading')){
                         scroll_el.addClass('x-loading');
-                        right_pull_msg.text('Loading...');
+                        right_pull_msg.text('Loading');
                         scroller = this;
                         options  = {
                             success: function(collection, response){
@@ -96,7 +96,7 @@ snapr.views.side_scroll = Backbone.View.extend({
                                     if(scroller.currPageX === scroller.pagesX.length){
                                         scroller.scrollToPage(scroller.pagesX.length - 1);
                                     }
-                                    right_pull_msg.text('Load More...');
+                                    right_pull_msg.text('Load More');
                                 }else{
                                     if(scroller.currPageX === scroller.pagesX.length){
                                         scroller.scrollToPage(scroller.pagesX.length - 1);

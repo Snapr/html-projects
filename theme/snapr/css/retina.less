@@ -169,24 +169,13 @@
     }
 
 
-    .image-streams{
-         .image-stream{
-             .load-more-inline{
-                 .ui-icon-refresh{
-                     background-image: url('../gfx/retina/refresh.png');
-                     .background-size (56px, 56px);
-                 }
-         	    }
-          }
-          &.x-loading {
-              .load-more-inline{
-                  .ui-icon-refresh{
-                      background-image: url('../gfx/retina/spinner.png');
-                      .background-size (56px, 56px);
-
-                  }
-              }
-          }
+    .image-streams .image-stream .load-more-inline .ui-icon-refresh{
+        background-image: url('../gfx/retina/pull-to-refresh.png');
+        .background-size (@gfx-refresh-sprite-width, @gfx-refresh-sprite-height);
+    }
+    .image-streams .image-stream .x-loading .load-more-inline .ui-icon-refresh{
+        background-image: url('../gfx/retina/spinner.png')!important;
+        .background-size (56px, 56px);
       }
  }
   
