@@ -1105,6 +1105,17 @@ function queue_settings(upload_mode, paused) {
     }
 }
 
+function set_location(latitude, longitude)
+{
+    snapr.geo.set_location(latitude, longitude);
+}
+
+function location_error(error)
+{
+    snapr.geo.location_error(error);
+}
+
+
 $(".x-launch-camera").live( "click", function ()
 {
     var appmode = snapr.utils.get_local_param( "appmode" );
