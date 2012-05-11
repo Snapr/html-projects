@@ -331,7 +331,10 @@ snapr.views.map = snapr.views.page.extend({
         var error_callback = function( error )
         {
             console.warn( "error getting geolocation", error );
-            alert( error.message )
+            if (error.message)
+            {
+                alert( error.message );
+            }
         }
         if (this.map)
         {
