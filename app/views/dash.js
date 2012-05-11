@@ -54,7 +54,7 @@ snapr.views.dash = snapr.views.page.extend({
 
     events: {
         "click .x-add-search": "add_search",
-        "click .x-add-person": "add_person",
+        "click .x-add-person": "add_person"
     },
 
     populate: function(){

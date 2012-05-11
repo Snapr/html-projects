@@ -64,8 +64,10 @@ snapr.views.dash_add_person = snapr.views.dialog.extend({
                         "type": "search"
                     }
                 });
+            $.mobile.showPageLoadingMsg();
             stream.save({}, {success: function(){
                 dash.add(stream);
+                $.mobile.hidePageLoadingMsg();
             }});
             this_back_view.$el.removeClass('edit');
             this_back();

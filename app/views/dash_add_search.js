@@ -44,8 +44,10 @@ snapr.views.dash_add_search = snapr.views.dialog.extend({
         }
 
         var stream = new snapr.models.dash_stream( stream_object );
+        $.mobile.showPageLoadingMsg();
         stream.save({}, {success: function(){
             dash.add(stream);
+            $.mobile.hidePageLoadingMsg();
         }});
         this.back_view.$el.removeClass('edit');
         this.back();
