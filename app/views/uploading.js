@@ -19,6 +19,7 @@ snapr.views.uploading = snapr.views.page.extend({
         this.venue_name = this.query.venue_name;
         this.photo_id = this.query.photo_id;
 
+        this.$el.find( ".upload-progress-container" ).empty();
         this.render();
 
         if (this.photo_id)
@@ -141,7 +142,6 @@ snapr.views.uploading = snapr.views.page.extend({
 
     render: function()
     {
-        this.$el.find( ".upload-progress-container" ).empty();
         $image_stream_container = this.$el.find( ".image-streams" ).empty();
 
         if (this.spot)
@@ -286,6 +286,11 @@ snapr.views.uploading = snapr.views.page.extend({
                         photo.get("secret") + "/" +
                         snapr_id + ".jpg"
                     $container.html( progress_li.render().el );
+                    uploading_view.latitude = photo.has("location") && photo.get("location").latitude;
+                    uploading_view.longitude = photo.has("location") && photo.get("location").longitude;
+                    uploading_view.spot = photo.has("location") && photo.get("location").spot_id;
+                    uploading_view.venue_name = photo.has("location") && photo.get("location").foursquare_venue_name;
+                    uploading_view.render();
                 }
             });
         }

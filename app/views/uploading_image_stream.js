@@ -3,16 +3,16 @@ snapr.views.uploading_image_stream = snapr.views.side_scroll.extend({
     template: _.template( $('#uploading-stream-template').html() ),
     thumbs_template: _.template( $('#uploading-stream-thumb-template').html() ),
 
-    initialize: function(options)
+    initialize: function()
     {
         //_.bindAll( this );
 
         this.details = {
-            stream_type: options.stream_type,
-            latitude: options.latitude,
-            longitude: options.longitude,
-            spot: options.spot,
-            venue_name: options.venue_name
+            stream_type: this.options.stream_type,
+            latitude: this.options.latitude,
+            longitude: this.options.longitude,
+            spot: this.options.spot,
+            venue_name: this.options.venue_name
         };
 
         this.collection = new snapr.models.photo_collection();
@@ -41,8 +41,8 @@ snapr.views.uploading_image_stream = snapr.views.side_scroll.extend({
                 break;
         }
 
-        snapr.views.side_scroll.prototype.initialize.call(this, options);
-    }
+        snapr.views.side_scroll.prototype.initialize.call(this);
+    },
 
     // render: function()
     // {
