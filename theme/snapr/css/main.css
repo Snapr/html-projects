@@ -2365,7 +2365,7 @@ a.ui-link-inherit {
   -webkit-animation-timing-function: linear;
 }
 /* light version of spinner action btns on white & dark bg buttons */
-.image-actions .x-ajax-loading .ui-icon, .dark-icons .x-ajax-loading .ui-icon {
+.simple-list .x-ajax-loading .ui-icon, .image-actions .x-ajax-loading .ui-icon, .dark-icons .x-ajax-loading .ui-icon {
   display: block;
   background-image: url('../gfx/small-spinner-light.png') !important;
   background-position: center!important;
@@ -5338,6 +5338,28 @@ div.ps-carousel-item-loading {
                 height: 32px;*/
 
 }
+/* a tweak for the mobiscroll time picker css */
+.jqm {
+  /* Place it at bottom left */
+
+  /*.dw{
+            bottom: 50px!important;
+            top: auto!important;
+            left: 8px!important;
+            ::after{
+                .arrow-down(8px, black, 16px, 2px);
+            }
+        }*/
+
+  /*Margins for btns */
+
+}
+.jqm .dwo {
+  background-color: rgba(0, 0, 0, 0.6);
+}
+.jqm .dwbc .dwbw .dwb {
+  margin: 8px;
+}
 /*
 * @app - PAGE
 */
@@ -5564,6 +5586,12 @@ div.ps-carousel-item-loading {
     -o-background-size: 24px 24px !important;
     -webkit-background-size: 24px 24px !important;
     background-size: 24px 24px !important;
+  }
+  .simple-list .x-ajax-loading .ui-icon, .image-actions .x-ajax-loading .ui-icon, .dark-icons .x-ajax-loading .ui-icon {
+    display: block;
+    background-image: url('../gfx/retina/small-spinner-light.png') !important;
+    background-position: center!important;
+    background-repeat: no-repeat !important;
   }
   .loading .map-filters .ui-input-search .ui-input-clear .ui-icon-delete {
     background-image: url('../gfx/retina/extra-icons.png') !important;

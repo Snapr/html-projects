@@ -86,7 +86,7 @@ snapr.views.map_controls = Backbone.View.extend({
 
         var map_controls = this;
         this.$el.find(".map-time-btn").scroller({
-            'cancelText': 'now', //  String  'Cancel'     Text for Cancel button
+            'cancelText': 'Set to Now', //  String  'Cancel'     Text for Cancel button
             //'delay': , //   Integer 300  Specifies the speed in milliseconds to change values in clickpick mode with tap & hold
             //'disabled': , //    Boolean false    Disables (true) or enables (false) the scroller. Can be set when initialising the scroller
             //'display': , // String  'modal'  Use 'inline' for inline display, or 'modal' for modal popup
@@ -95,22 +95,22 @@ snapr.views.map_controls = Backbone.View.extend({
             //'mode': , //    String  'scroller'   Option to choose between modes. Possible modes: 'scroller' - standard behaviour, 'clickpick' - '+' and '-' buttons
             'preset': 'datetime', //  String  'date'   Preset configurations for date, time and datetime pickers, possible values: 'date', 'time', 'datetime'
             //'rows': , //    Number  3    Number of visible rows on the wheel
-            //'setText': , // String  'Set'    Text for Set button
-            //'showLabel': , //   Boolean true     Show/hide labels above wheels
+            'setText': 'Set Time', // String  'Set'    Text for Set button
+            'showLabel': false , //   Boolean true     Show/hide labels above wheels
             //'showOnFocus': , // Boolean true     Pops up the scroller on input focus
             'theme': 'jqm', //   String  ''   Sets the scroller's visual appearance. Supplied themes: 'android', 'android-ics', 'android-ics light', 'sense-ui', 'ios', 'jqm'. It's possible to create custom themes in css by prefixing any css class used in the scroller markup with the theme name, e.g.: .my-theme .dww { / My CSS / }, and set the theme option to 'my-theme'
-            //jqmBody: 'c',
+            'jqmBody': 'b',
             //jqmHeader:'b',
             //jqmWheel: 'd',
             //jqmClickPick: 'c',
-            //jqmSet: 'b',
-            //jqmCancel: 'c',
+            'jqmSet': 'e',
+            'jqmCancel': 'd',
             //'wheels': , //  Object  null     Wheels configuration. Example: [ { 'Label 1': { x: 'x', y: 'y', z: 'z' }, 'Label 2': { a: 'a', b: 'b' } }, { 'Label 3': { 1: '1', 2: '2' }, 'Label 4': { 4: '4', 5: '5' } } ]
             //'width': , //   Number  80   Minimum width in pixels of the wheels, expand to fit values and labels
             //'ampm': , //    Boolean true     12/24 hour format on timepicker
             //'ampmText': , //    String  ''   Label for AM/PM wheel
             'dateFormat': 'yy-mm-dd', //  String  'mm/dd/yy'   The format for parsed and displayed dates (m - month of year (no leading zero), mm - month of year (two digit), M - month name short, MM - month name long, d - day of month (no leading zero), dd - day of month (two digit), y - year (two digit), yy - year (four digit)
-            //'dateOrder': , //   String  'mmddy'  Display order and formating for month/day/year wheels. (m - month of year (no leading zero), mm - month of year (two digit), M - month name short, MM - month name long, d - day of month (no leading zero), dd - day of month (two digit), y - year (two digit), yy - year (four digit). The options also controls if a specific wheel should appear or not, e.g. use 'mmyy' to display month and year wheels only
+            'dateOrder': 'ddMyy' , //   String  'mmddy'  Display order and formating for month/day/year wheels. (m - month of year (no leading zero), mm - month of year (two digit), M - month name short, MM - month name long, d - day of month (no leading zero), dd - day of month (two digit), y - year (two digit), yy - year (four digit). The options also controls if a specific wheel should appear or not, e.g. use 'mmyy' to display month and year wheels only
             //'dayNames': , //    Array   ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']   The list of long day names, starting from Sunday, for use as requested via the dateFormat setting
             //'dayNamesShort': , //   Array   ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']    The list of abbreviated day names, starting from Sunday, for use as requested via the dateFormat setting
             //'dayText': , // String  'Day'    Label for Day wheel
