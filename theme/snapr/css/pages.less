@@ -1316,12 +1316,8 @@
         border: none;
         border-top: @border-medium-on-light;
         margin-top: @padding-element-inset;
-        padding-top: @padding-element-inset;
-        &:first{
-            border-top: none;
-            margin-top: 0;
-                padding-top: 0; 
-        }
+        padding-top: 0;
+    
          
         .activity-desc{
             white-space: normal;
@@ -1342,29 +1338,20 @@
      .image-link{
             position: absolute;
             left: -@padding-image-grid-inset;
+            top:0;
         }
         
         
-    .photo-activity{
-       .activity-item:first-child{
-           border-top: none;
-           margin-top: 0;
-           padding-top: 0;
-       }
-   }
+  
     
-    /* Image Items */
-    .activity-image-item{
-        position: relative;
-         min-height: @size-img-thumb;
-        padding-left: @size-img-thumb;
-        margin-bottom: @padding-page-inset + @padding-image-grid-inset;
-    }
+   
     
      
     /* Tweaks for comments */
     .comments-list{
         .comment-item.ui-li-has-icon{
+            margin-top: 8px;
+            padding-top: 8px!important;
             .ui-link-inherit{
                 padding-top: 0!important;
                 padding-bottom: 0!important;
@@ -1388,16 +1375,17 @@
             display: inline-block;
             vertical-align: top;
         }
+        .like-icons-list{
+            margin-top: @padding-page-inset;
+        }
     }
   
     /* Tweaks for follow item */
     .activity-follow-item{
         position: relative;
          padding-left: 0;
-        
+         padding-top: 8px;
          min-height:  @size-small-avatar;
-         
-         
          .username,
          .activity-desc,
          .small-text,
@@ -1407,8 +1395,40 @@
              line-height: @size-small-avatar;
              margin-bottom: 0;
          }
-        
     }
+    
+    .photo-activity{
+         .activity-item:first-child{
+             border-top: none;
+             margin-top: 0!important;
+             padding-top: 0!important;
+         }
+     }
+    
+    .activity-item{
+           border: none;
+           border-top: @border-medium-on-light;
+           margin-top: @padding-element-inset;
+           padding-top: 0;
+           &:first{
+               border-top: none;
+               margin-top: 0!important;
+               padding-top: 0!important; 
+           }
+    }   
+    
+    /* Image Items */
+   .activity-image-item{
+       position: relative;
+        min-height: @size-img-thumb;
+       padding-left: @size-img-thumb;
+       margin-bottom: @padding-page-inset + @padding-image-grid-inset;
+       .activity-item:first{
+            border-top: none;
+            margin-top: 0!important;
+            padding-top: 0!important;
+       }
+   }
 }
 
 

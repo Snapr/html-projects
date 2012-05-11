@@ -4973,13 +4973,13 @@ div.ps-carousel-item-loading {
 .activity-streams {
   /* General Styles */
 
-  /* Image Items */
-
   /* Tweaks for comments */
 
   /* Tweaks for likes */
 
   /* Tweaks for follow item */
+
+  /* Image Items */
 
 }
 .activity-streams .ui-bar.top-left-arrow .ui-btn-text {
@@ -4993,11 +4993,6 @@ div.ps-carousel-item-loading {
   border: none;
   border-top: solid 1px #e4e4e4;
   margin-top: 8px;
-  padding-top: 8px;
-}
-.activity-streams .activity-item:first {
-  border-top: none;
-  margin-top: 0;
   padding-top: 0;
 }
 .activity-streams .activity-item .activity-desc {
@@ -5016,17 +5011,11 @@ div.ps-carousel-item-loading {
 .activity-streams .image-link {
   position: absolute;
   left: -4px;
+  top: 0;
 }
-.activity-streams .photo-activity .activity-item:first-child {
-  border-top: none;
-  margin-top: 0;
-  padding-top: 0;
-}
-.activity-streams .activity-image-item {
-  position: relative;
-  min-height: 101px;
-  padding-left: 101px;
-  margin-bottom: 12px;
+.activity-streams .comments-list .comment-item.ui-li-has-icon {
+  margin-top: 8px;
+  padding-top: 8px!important;
 }
 .activity-streams .comments-list .comment-item.ui-li-has-icon .ui-link-inherit {
   padding-top: 0!important;
@@ -5047,9 +5036,13 @@ div.ps-carousel-item-loading {
   display: inline-block;
   vertical-align: top;
 }
+.activity-streams .image-likes .like-icons-list {
+  margin-top: 8px;
+}
 .activity-streams .activity-follow-item {
   position: relative;
   padding-left: 0;
+  padding-top: 8px;
   min-height: 34px;
 }
 .activity-streams .activity-follow-item .username,
@@ -5060,6 +5053,33 @@ div.ps-carousel-item-loading {
   vertical-align: middle;
   line-height: 34px;
   margin-bottom: 0;
+}
+.activity-streams .photo-activity .activity-item:first-child {
+  border-top: none;
+  margin-top: 0!important;
+  padding-top: 0!important;
+}
+.activity-streams .activity-item {
+  border: none;
+  border-top: solid 1px #e4e4e4;
+  margin-top: 8px;
+  padding-top: 0;
+}
+.activity-streams .activity-item:first {
+  border-top: none;
+  margin-top: 0!important;
+  padding-top: 0!important;
+}
+.activity-streams .activity-image-item {
+  position: relative;
+  min-height: 101px;
+  padding-left: 101px;
+  margin-bottom: 12px;
+}
+.activity-streams .activity-image-item .activity-item:first {
+  border-top: none;
+  margin-top: 0!important;
+  padding-top: 0!important;
 }
 /*
 * @map - PAGE
