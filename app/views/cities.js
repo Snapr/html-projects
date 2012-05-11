@@ -64,7 +64,7 @@ snapr.views.cities = snapr.views.page.extend({
         $('a[data-query]', this.$el).live( 'click', function( e ){
             var query = $(this).data('query'),
                 current = $(this).data('current');
-            Route.navigate('#/feed/?' + unescape( query ) + '&photo_id=' + current );
+            Route.navigate('#/feed/?' + unescape( query ) + '&photo_id=' + current + "&back=Cities" );
         });
 
         this.render();
