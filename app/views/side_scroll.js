@@ -96,7 +96,6 @@ snapr.views.side_scroll = Backbone.View.extend({
                                     if(scroller.currPageX === scroller.pagesX.length){
                                         scroller.scrollToPage(scroller.pagesX.length - 1);
                                     }
-                                    scroll_el.removeClass('x-loading');
                                     right_pull_msg.text('Load More...');
                                 }else{
                                     if(scroller.currPageX === scroller.pagesX.length){
@@ -106,6 +105,7 @@ snapr.views.side_scroll = Backbone.View.extend({
                                     scroll_el.addClass('x-no-more');
                                     right_pull_msg.text('The End');
                                 }
+                                scroll_el.removeClass('x-loading');
                             }
                         };
                         collection.fetch_older(options);
