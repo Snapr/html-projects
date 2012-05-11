@@ -54,14 +54,14 @@ snapr.models.user = Backbone.Model.extend({
                 {
                     console.warn(new_model, response);
                 }
-                if($.isFunction(callack)){
+                if($.isFunction(callback)){
                     callback(new_model, response);
                 }
             },
             error: function(e)
             {
                 console.log( "follow error", e );
-                if($.isFunction(callack)){
+                if($.isFunction(callback)){
                     callback(e);
                 }
             }
@@ -86,7 +86,7 @@ snapr.models.user = Backbone.Model.extend({
                 {
                     console.warn(new_model, response);
                 }
-                if($.isFunction(callack)){
+                if($.isFunction(callback)){
                     callback(new_model, response);
                 }
             },
@@ -94,7 +94,7 @@ snapr.models.user = Backbone.Model.extend({
             {
                 console.log( "unfollow error", e );
 
-                if($.isFunction(callack)){
+                if($.isFunction(callback)){
                     callback(e);
                 }
             }

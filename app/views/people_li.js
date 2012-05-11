@@ -64,19 +64,25 @@ snapr.views.people_li = Backbone.View.extend({
         "click .unfollow": "unfollow"
     },
 
-    follow: function()
-    {
-        var user = this.model;
+    follow: function(){
+        var user = this.model,
+            button = this.$('.follow');
+        button.x_loading();
         snapr.utils.require_login( function(){
-            user.follow();
+            user.follow(function(){
+                button.x_loading(false);
+            });
         })();
     },
 
-    unfollow: function()
-    {
-        var user = this.model;
+    unfollow: function(){
+        var user = this.model,
+            button = this.$('.unfollow');
+        button.x_loading();
         snapr.utils.require_login( function(){
-            user.unfollow();
+            user.unfollow(function(){
+                button.x_loading(false);
+            });
         })();
     }
 });

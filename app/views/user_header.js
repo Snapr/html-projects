@@ -39,7 +39,7 @@ snapr.views.user_header = Backbone.View.extend({
         user_header_view.$('.follow').x_loading();
         snapr.utils.require_login( function(){
             user_header_view.model.follow(function(){
-                user_header_view.$('.follow').x_loading(flase);
+                user_header_view.$('.follow').x_loading(false);
             });
         })();
     },
