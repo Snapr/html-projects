@@ -5,6 +5,7 @@ snapr.views.people = snapr.views.dialog.extend({
         snapr.views.dialog.prototype.initialize.call( this );
 
         this.$el.find("ul.people-list").empty();
+        this.$el.addClass('loading');
 
         // a simple array of people which will be filtered and displayed
         this.display_collection = [];
@@ -95,6 +96,7 @@ snapr.views.people = snapr.views.dialog.extend({
             snapr.no_results.render('Oops.. Nobody here yet.', 'delete').$el.appendTo(this.$el);
         }
 
+        this.$el.removeClass('loading');
         people_list.listview().listview("refresh");
     },
 
