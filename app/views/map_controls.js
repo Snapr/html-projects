@@ -99,6 +99,12 @@ snapr.views.map_controls = Backbone.View.extend({
             //'showLabel': , //   Boolean true     Show/hide labels above wheels
             //'showOnFocus': , // Boolean true     Pops up the scroller on input focus
             'theme': 'jqm', //   String  ''   Sets the scroller's visual appearance. Supplied themes: 'android', 'android-ics', 'android-ics light', 'sense-ui', 'ios', 'jqm'. It's possible to create custom themes in css by prefixing any css class used in the scroller markup with the theme name, e.g.: .my-theme .dww { / My CSS / }, and set the theme option to 'my-theme'
+            //jqmBody: 'c',
+            //jqmHeader:'b',
+            //jqmWheel: 'd',
+            //jqmClickPick: 'c',
+            //jqmSet: 'b',
+            //jqmCancel: 'c',
             //'wheels': , //  Object  null     Wheels configuration. Example: [ { 'Label 1': { x: 'x', y: 'y', z: 'z' }, 'Label 2': { a: 'a', b: 'b' } }, { 'Label 3': { 1: '1', 2: '2' }, 'Label 4': { 4: '4', 5: '5' } } ]
             //'width': , //   Number  80   Minimum width in pixels of the wheels, expand to fit values and labels
             //'ampm': , //    Boolean true     12/24 hour format on timepicker
