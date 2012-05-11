@@ -157,7 +157,7 @@ $('.ps-caption').live('vclick', function(){
         src = ps.cache.images[ps.currentIndex].src,
         id = src.match('/(.{2,6})\.jpg$')[1];
     ps.hide();
-    Route.navigate('#/feed/?photo_id=' + id );
+    Route.navigate('#/feed/?n=1&photo_id=' + id );
 });
 
 snapr.info.upload_count = 0;
