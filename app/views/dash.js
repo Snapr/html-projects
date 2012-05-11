@@ -86,7 +86,7 @@ snapr.views.dash = snapr.views.page.extend({
     },
 
     render: function(){
-        this.$el.find('.dash-welcome').toggle(!snapr.auth.has("access_token"));
+        this.$el.find('.dash-welcome').toggle(!snapr.auth.has("access_token") || this.collection.length < 3);
         var $streams = this.$el.find('.image-streams').empty();
         _.each( this.collection.models, function( item ){
             console.log(item);
