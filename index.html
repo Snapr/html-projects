@@ -942,7 +942,7 @@
                     <span class="v-fav-button inline-btn"></span>
                     <span class="v-comment-button inline-btn"></span>
                     <span class="v-more-button inline-btn has-palette">
-                         <div data-role="button" data-icon="action-more" data-inline="true" data-iconpos="left" class="more-button action-icons" >&nbsp;</div>
+                         <div data-role="button" data-icon="action-more" data-inline="true" data-iconpos="left" class="more-button action-icons" >&nbsp;<% if (item.get("status") == "private"){%>(private)<%}%></div>
                          <div class="v-photo-manage action-palette"></div>
                     </span>
 

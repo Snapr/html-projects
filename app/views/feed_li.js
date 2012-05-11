@@ -18,6 +18,8 @@ snapr.views.feed_li = Backbone.View.extend({
     {
         _.bindAll( this );
 
+        this.model.bind( "change:status", this.render );
+
         this.back = this.options.back || "Back";
 
         this.template = this.options.template
