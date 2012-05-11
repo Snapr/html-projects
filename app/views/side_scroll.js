@@ -7,7 +7,17 @@ snapr.views.side_scroll = Backbone.View.extend({
     },
     render: function(){
         console.log(this.collection);
-        $(this.el).html($(this.template({collection: this.collection, model: this.model, details: this.details})));
+        var feed_data = this.collection.data || {};
+        if (feed_data.access_token){ delete feed_data.access_token; }
+        if (feed_data.n){ delete feed_data.n; }
+        feed_data.back = "Upload";
+        var feed_param = $.param(feed_data);
+        $(this.el).html($(this.template({
+            collection: this.collection,
+            model: this.model,
+            details: this.details,
+            feed_param: feed_param
+        })));
         this.render_thumbs();
         this.photoswipe_init();
         this.scroll_init();
