@@ -1057,13 +1057,6 @@ function upload_progress( data, datatype )
             snapr.info.current_view.upload_progress(data);
         }
     }
-    else
-    {
-        if (snapr.utils.get_local_param("appmode"))
-        {
-            pass_data("snapr://upload_progress?send=false");
-        }
-    }
 }
 
 function upload_count( count )
@@ -1081,10 +1074,6 @@ function upload_completed(queue_id, snapr_id)
     if (typeof snapr.info.current_view.upload_completed == "function")
     {
         snapr.info.current_view.upload_completed(queue_id, snapr_id);
-    }
-    else
-    {
-        Route.navigate("#/uploading/?photo_id=" + snapr_id + "&queue_id=" + queue_id);
     }
 }
 
