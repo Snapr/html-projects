@@ -556,6 +556,10 @@ snapr.views.share_photo = snapr.views.page.extend({
                     {
                         params[o.name] = (o.value == "on");
                     }
+                    else if(o.name == "status")
+                    {
+                        params[o.name] = (o.value == "on") ? "public": "private";
+                    }
                     else
                     {
                         params[o.name] = o.value;
