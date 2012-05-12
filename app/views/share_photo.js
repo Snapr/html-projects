@@ -131,7 +131,10 @@ snapr.views.share_photo = snapr.views.page.extend({
     {
 
         var location = {};
-        if (this.query.latitude && this.query.longitude)
+        if (this.query.latitude &&
+            this.query.longitude &&
+            this.query.latitude !== "0.000000" &&
+            this.query.longitude !== "0.000000")
         {
             location.latitude = this.query.latitude;
             location.longitude = this.query.longitude;
@@ -187,12 +190,7 @@ snapr.views.share_photo = snapr.views.page.extend({
             });
         };
 
-        if (this.query.latitude && this.query.longitude)
-        {
-            // get reverse geocode location from query lat & long
-            geocode( this.query.latitude, this.query.longitude);
-        }
-        else if (this.model.get("location").latitude && this.model.get("location").longitude)
+        if (this.model.get("location").latitude && this.model.get("location").longitude)
         {
             // get reverse geocode location from photo lat & long
             geocode( this.model.get("location").latitude, this.model.get("location").longitude);
@@ -245,12 +243,7 @@ snapr.views.share_photo = snapr.views.page.extend({
             });
         };
 
-        if (this.query.latitude && this.query.longitude)
-        {
-            // get venues using query lat and long
-            get_venues( this.query.latitude, this.query.longitude);
-        }
-        else if(this.model.get("location").latitude && this.model.get("location").longitude)
+        if (this.model.get("location").latitude && this.model.get("location").longitude)
         {
             // get venues using photo model lat and long
             get_venues( this.model.get("location").latitude, this.model.get("location").longitude);
@@ -558,7 +551,7 @@ snapr.views.share_photo = snapr.views.page.extend({
                     }
                     else if(o.name == "status")
                     {
-                        params[o.name] = (o.value == "on") ? "queued";
+                        params[o.name] = (o.value == "on") && "queued";
                     }
                     else
                     {
