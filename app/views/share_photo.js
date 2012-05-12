@@ -558,7 +558,7 @@ snapr.views.share_photo = snapr.views.page.extend({
                     }
                     else if(o.name == "status")
                     {
-                        params[o.name] = (o.value == "on") ? "queued": "private";
+                        params[o.name] = (o.value == "on") ? "queued";
                     }
                     else
                     {
@@ -566,6 +566,11 @@ snapr.views.share_photo = snapr.views.page.extend({
                     }
 
                 });
+
+                if( !params["status"])
+                {
+                    params.status = "private";
+                }
                 _.extend(params, this.query);
 
                 var photo = this.query && this.query.photo_path || null;
