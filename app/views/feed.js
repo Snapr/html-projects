@@ -338,6 +338,7 @@ snapr.views.feed = snapr.views.page.extend({
 
     upload_completed: function( queue_id, snapr_id )
     {
+        this.$el.find(".upload-id-" + queue_id).remove();
         // if we are on a feed for the current snapr user
         if (this.options.query.username == snapr.auth.get("snapr_user")
             && !this.options.query.photo_id)
@@ -346,10 +347,6 @@ snapr.views.feed = snapr.views.page.extend({
             if (this.photo_collection.data.max_date)
             {
                 delete this.photo_collection.data.max_date;
-            }
-            if (this.photo_collection.data.photo_id)
-            {
-                delete this.photo_collection.data.photo_id;
             }
             // refresh the feed content
             this.populate_feed();
