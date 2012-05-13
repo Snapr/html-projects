@@ -1410,7 +1410,7 @@
                 </p>
             </div>
             <%}%>
-            
+
              <!-- // Show the photo -->
                 <a class="image-link" href="#/feed/?photo_id=<%= item.get("photo").id %>&amp;username=<%= item.get("photo").username %>&back=Activity">
                     <img src="https://s3.amazonaws.com/media-server<%= item.get("photo").server_id %>.snapr.us/thm2/<%= item.get("photo").secret %>/<%= item.get("photo").id %>.jpg" alt="<%= item.get("photo").description %>" class="thumb-image thumb-med">
@@ -1583,7 +1583,7 @@
                             <a>Create</a>
                             <p>Tweak your photos to perfection - add effects, adjust colors, crop and add captions</p>
                             <p>
-                               Now you can also use Camera+ directly from Snapr 
+                               Now you can also use Camera+ directly from Snapr
                             </p>
                         </li>
                          <li>
@@ -1599,21 +1599,21 @@
                             <a href="#/dash/">Dash</a>
                             <p>Keep track of your best friends and favorite searches on the fly with our special dashboard view.</p>
                         </li>
-                       
+
                         <li>
                             <a href="#/apps/">Get Some Apps!</a>
                             <p>Find a photo sharing community that matches your interests!</p>
-                            
+
                             <p>You can sign in with Snapr so all your images can still be found in one place.</p>
                         </li>
-                       
-                        
+
+
 
                     </ul>
             </div>
         </div>
     </div>
-    
+
     <!-- @welcome PAGE-->
     <div id="welcome" data-role="dialog" data-overlay-theme="c" data-theme="c" class="welcome-bg special-bg">
         <div data-role="header" data-theme="c">
@@ -1628,9 +1628,9 @@
                         </li>
                     </ul>
                     <a data-role="button" data-theme="e" href="#/login/">Login</a>
-                      
+
                     <a data-role="button" data-theme="d" href="#/join/">Join Snapr</a>
-                    
+
             </div>
         </div>
     </div>
@@ -1855,6 +1855,8 @@
         </div>
         <div data-role="content">
             <div class="inset-page-content">
+
+                <div class="linked-message" style="display:none;">great, we have you linked up, but we still need to get a username and password for your snapr account</div>
 
                 <form action="javascript: void(0);" accept-charset="utf-8" id="join-dialog" autocomplete="off">
                     <ul data-role="listview" data-inset="true" data-theme="d">
