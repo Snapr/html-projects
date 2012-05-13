@@ -59,6 +59,6 @@ snapr.views.login = snapr.views.dialog.extend({
         snapr.auth.get_token( username, password, options );
     },
     twitter_login: function(){
-        Route.navigate( "#/twitter-xauth/" );
+        Route.navigate( "#/twitter-xauth/?signin=true" );
     }
 });
