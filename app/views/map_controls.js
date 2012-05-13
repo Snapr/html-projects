@@ -131,12 +131,11 @@ snapr.views.map_controls = Backbone.View.extend({
             'timeFormat': 'HH:ii:00', //  String  'hh:ii A'    The format for parsed and displayed dates (h - 12 hour format (no leading zero), hh - 12 hour format (leading zero), H - 24 hour format (no leading zero), HH - 24 hour format (leading zero), i - minutes (no leading zero), ii - minutes (leading zero), s - seconds (no leading zero), ss - seconds (leading zero), a - lowercase am/pm, A - uppercase AM/PM)
             //'yearText': , //    String  'Year'   Label for year wheel
             'onSelect': function(value){
-                console.log(value);
                 map_controls.model.set({'date': value});
                 //map_controls.show_map_time(value);
             },
-            'onCancel': function(valeu, scroller){
-                scroller.setDate(new Date());
+            'onCancel': function(value, scroller, c){
+                scroller.setValue(new Date());
                 map_controls.reset_map_time();
             }
         });
@@ -182,7 +181,6 @@ snapr.views.map_controls = Backbone.View.extend({
 
     show_map_time: function( time ){
         if (time){
-            console.log('setting date to', time ,snapr.utils.convert_snapr_date(time));
             this.$el.find(".map-time-btn").scroller('setDate', snapr.utils.convert_snapr_date(time));
             this.$el.find(".map-time").find(".ui-bar").text( snapr.utils.short_timestamp( time, true) || "Now" );
         }
