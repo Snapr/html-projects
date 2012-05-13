@@ -99,7 +99,7 @@ snapr.views.feed = snapr.views.page.extend({
         this.photo_collection = new snapr.models.photo_collection();
         this.photo_collection.url = snapr.api_base + "/search/";
         this.photo_collection.data = this.query;
-        this.photo_collection.data.n = snapr.constants.feed_count;
+        this.photo_collection.data.n = this.photo_collection.data.n || snapr.constants.feed_count;
         this.photo_collection.data.list_style && delete this.photo_collection.data.list_style;
 
         this.more_button(false);
