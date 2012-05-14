@@ -74,26 +74,34 @@ snapr.views.photo_manage = Backbone.View.extend({
     {
         var photo_manage = this;
         photo_manage.$('.x-image-flag').x_loading();
-        snapr.utils.require_login( function()
-        {
-            photo_manage.model.flag({
-                success: function( resp )
-                {
-                    if (resp.success)
-                    {
-                        photo_manage.model.set({flagged: true});
-                    }
-                    else
-                    {
-                        console.warn("error flagging photo", resp);
-                    }
-                    photo_manage.$('.x-image-flag').x_loading(false);
+        snapr.utils.require_login( function(){
+            snapr.utils.approve({
+                'title': 'Flag this image as innapropriate?',
+                'yes': 'Flag',
+                'no': 'Cancel',
+                'yes_callback': function(){
+                    photo_manage.model.flag({
+                        success: function( resp )
+                        {
+                            if (resp.success)
+                            {
+                                photo_manage.model.set({flagged: true});
+                                snapr.utils.notification("Flagged ", "Thanks, a moderator will review this image ASAP");
+                            }
+                            else
+                            {
+                                console.warn("error flagging photo", resp);
+                            }
+                            photo_manage.$('.x-image-flag').x_loading(false);
+                        },
+                        error: function( e )
+                        {
+                            console.warn("error flagging photo", e);
+                            photo_manage.$('.x-image-flag').x_loading(false);
+                        }
+                    });
                 },
-                error: function( e )
-                {
-                    console.warn("error flagging photo", e);
-                    photo_manage.$('.x-image-flag').x_loading(false);
-                }
+                'no_callback': function(){ photo_manage.$('.x-image-flag').x_loading(false); }
             });
         })();
     },
