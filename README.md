@@ -48,9 +48,9 @@ These libraries are also used in the project, here are the links if you need to 
 Styling the App
 ---------------
 
-- *main.less* - See this file for a breakdown of the different style sheets and their uses. Always compile your less from this file only (`/theme/<name>/css/main.less`)
+- *main.less* - See this file for a breakdown of the different style sheets and their uses. Always compile your less from this file only `/theme/<name>/css/main.less`
     
-- *variables.less* - Many of the key UI aspects are defined in a single variables file (`/theme/<name>/css/variables.less`)
+- *variables.less* - Many of the key UI aspects are defined in a single variables file `/theme/<name>/css/variables.less`
 
     Here you can edit things such as colors, fonts, font sizes, borders, page margins, etc and the changes will flow through the whole app.
 
@@ -68,7 +68,9 @@ Styling the App
 
 - *jquerymobile.theme.less* - Tweaks to the jQuery mobile structure and basic jQuery mobile theme elements. 
 
-- *jquerymobile.swatches.less* - jQuery mobile theme swatches are defined in here. Note that the normal jQuery mobile theme css has been replaced completely with this less css version.
+- *jquerymobile.swatches.less* - jQuery mobile theme swatches are defined in here. 
+
+    Note that the normal jQuery mobile theme css has been replaced completely with this less css version.
 
 
 Editing the App
