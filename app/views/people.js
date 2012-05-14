@@ -15,33 +15,23 @@ snapr.views.people = snapr.views.dialog.extend({
         this.collection.bind( "reset", this.reset_collection );
 
         // if we are coming from the map view do a flip, otherwise do a slide transition
-        if ($.mobile.activePage.attr('id') == 'map' )
-        {
-            var transition = "flip";
-        }
-        else
-        {
-            var transition = "slideup";
-        }
-
-        this.change_page({
-            transition: transition
-        });
+        var transition = ($.mobile.activePage.attr('id') == 'map') ? "flip" : "slideup";
+        this.change_page({ transition: transition });
 
         switch (this.options.follow){
             case "following":
                 this.$el.find("h1").text("Following");
-                this.$el.find("#people-search").val('').attr("placeholder", "Search users " + this.options.query.username + " is following…" );
+                this.$el.find("#people-search").val('').attr("placeholder", "Search users " + this.options.query.username + " is following\u2026" );
                 this.collection.get_following( this.options.query.username );
                 break;
             case "followers":
                 this.$el.find("h1").text("Followers");
-                this.$el.find("#people-search").val('').attr("placeholder", "Search " + this.options.query.username + "'s followers…" );
+                this.$el.find("#people-search").val('').attr("placeholder", "Search " + this.options.query.username + "'s followers\u2026" );
                 this.collection.get_followers( this.options.query.username );
                 break;
             default:
                 this.$el.find("h1").text("Search");
-                this.$el.find("#people-search").val(this.options.query.username).attr("placeholder", "Search users…" );
+                this.$el.find("#people-search").val(this.options.query.username).attr("placeholder", "Search users\u2026" );
 
                 var this_view = this;
                 this_view.$el.addClass('loading');
@@ -115,17 +105,35 @@ snapr.views.people = snapr.views.dialog.extend({
         this.timer && clearTimeout(this.timer);
         this.xhr && this.xhr.abort();
 
-        if (keywords.length > 1){
+        var data = {
+            n:20,
+            detail:1
+        };
+
+        switch (this.options.follow){
+            case "following":
+                data['followed_by'] = this.options.query.username;
+                data['username'] = keywords;
+                break;
+            case "followers":
+                data['following'] = this.options.query.username;
+                data['username'] = keywords;
+                break;
+            default:
+                if (keywords.length > 1){
+                    data['username'] = keywords;
+                }
+        }
+
+        console.log(data);
+
+        if(data.username || data.followed_by || data.following){
 
             this.timer = setTimeout( function() {
                 this_view.timer = null;
                 this_view.$el.addClass('loading');
                 this_view.xhr = this_view.collection.fetch({
-                    data:{
-                        username:keywords,
-                        n:20,
-                        detail:1
-                    },
+                    data: data,
                     url: snapr.api_base + '/user/search/',
                     success: function(){
                         this_view.xhr = null;
