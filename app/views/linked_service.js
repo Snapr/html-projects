@@ -57,6 +57,8 @@ snapr.views.linked_service = Backbone.View.extend({
         var url,
             next = this.get_return_url();
 
+        this.$('.link-service').x_loading();
+
         if (this.provider == 'twitter' && snapr.twitter_xauth){
             url = '#/twitter-xauth/?redirect='+ escape( next );
             Route.navigate( url );
