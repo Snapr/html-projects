@@ -252,7 +252,7 @@
 */
 
 #feed-images{
-    min-height: 280px;
+    min-height: 324px;
 }
 .feed-header{
     margin-bottom: @padding-page-inset;
@@ -406,6 +406,23 @@
                 background-position: @ei-offset-x - 10px @gfx-extra-icon-sprite-venuesmall-y;
                 width: 10px;
             }
+        }
+    }
+    .image-item{
+        position: relative;
+        .image-status{
+            position: absolute;
+            top: -16px;
+            background-color: #e5592f;
+            color: white;
+            font-size: 12px;
+            font-weight: bold;
+            padding: 1px 4px;
+            right: 0;
+            height: 14px;
+            .corner-top(4px);
+            opacity: .5;
+            display: none;
         }
     }
     .main-image-link{

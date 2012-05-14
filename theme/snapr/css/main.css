@@ -3997,7 +3997,7 @@ div.ps-carousel-item-loading {
 * @feed PAGE
 */
 #feed-images {
-  min-height: 280px;
+  min-height: 324px;
 }
 .feed-header {
   margin-bottom: 8px;
@@ -4163,6 +4163,28 @@ div.ps-carousel-item-loading {
 .image-item-block .image-item-topbar .image-time-and-location .ui-icon-venue {
   background-position: -10px -256px;
   width: 10px;
+}
+.image-item-block .image-item {
+  position: relative;
+}
+.image-item-block .image-item .image-status {
+  position: absolute;
+  top: -16px;
+  background-color: #e5592f;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 1px 4px;
+  right: 0;
+  height: 14px;
+  -moz-border-radius-topleft: 4px;
+  -webkit-border-top-left-radius: 4px;
+  border-top-left-radius: 4px;
+  -moz-border-radius-topright: 4px;
+  -webkit-border-top-right-radius: 4px;
+  border-top-right-radius: 4px;
+  opacity: .5;
+  display: none;
 }
 .image-item-block .main-image-link {
   display: block;
