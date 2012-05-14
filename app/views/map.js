@@ -318,7 +318,6 @@ snapr.views.map = snapr.views.page.extend({
             map: this.map,
             title: 'Current location',
             clickable: false,
-            icon: './gfx/map-current-location-marker.png'
         });
         setTimeout( this.place_current_location, 30000 );
     },
