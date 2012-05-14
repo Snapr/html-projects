@@ -398,7 +398,7 @@ function get_query_params(query) {
                     var obj = {};
                     obj[kv[0]] = unescape(kv[1]);
                     snapr.auth.set(obj);
-                } else if(_.indexOf(["snapr_user_public_group", "snapr_user_public_group_name", "appmode", "new_user", "demo_mode", "environment", "browser_testing", "aviary", "camplus", "camplus_camera", "camplus_edit", "camplus_lightbox"], kv[0]) > -1) {
+                } else if(_.indexOf(["snapr_user_public_group", "snapr_user_public_group_name", "appmode", "demo_mode", "environment", "browser_testing", "aviary", "camplus", "camplus_camera", "camplus_edit", "camplus_lightbox"], kv[0]) > -1) {
                     snapr.utils.save_local_param(key, value);
                 } else {
                     key = unescape(key);
@@ -416,7 +416,6 @@ function get_query_params(query) {
     }
 
     env = snapr.utils.get_local_param('environment');
-    console.log('env', env);
     if (_.has(snapr.settings, env)){
         var settings = snapr.settings[env];
     }else{
@@ -706,10 +705,15 @@ snapr.routers = Backbone.Router.extend({
 
     home: function( query_string )
     {
-        snapr.utils.get_query_params( query_string );
-        snapr.info.current_view = new snapr.views.home({
-            el: $('#home')[0]
-        });
+        var query = snapr.utils.get_query_params( query_string );
+        if(query.new_user){
+            Route.navigate( "#", true );  // go here so that back is not new_user
+            Route.navigate( "#/welcome/" );
+        }else{
+            snapr.info.current_view = new snapr.views.home({
+                el: $('#home')[0]
+            });
+        }
     },
 
     login: function( query_string, back_view )
