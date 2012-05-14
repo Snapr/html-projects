@@ -104,26 +104,35 @@ snapr.views.photo_manage = Backbone.View.extend({
         photo_manage.$('.x-image-delete').x_loading();
         snapr.utils.require_login( function()
         {
-            photo_manage.model.delete({
-                success: function( resp )
-                {
-                    if (resp.success)
+            snapr.utils.approve({
+                'title': 'Are you sure you want to delete this photo?',
+                'yes': 'Delete',
+                'no': 'Cancel',
+                'yes_callback': function(){
+                    photo_manage.model.delete({
+                    success: function( resp )
                     {
-                        photo_manage.remove();
-                        photo_manage.parentView.remove();
-                    }
-                    else
+                        if (resp.success)
+                        {
+                            photo_manage.remove();
+                            photo_manage.parentView.remove();
+                        }
+                        else
+                        {
+                            console.warn("error deleting photo", resp);
+                        }
+                        photo_manage.$('.x-image-delete').x_loading(false);
+                    },
+                    error: function( e )
                     {
-                        console.warn("error deleting photo", resp);
+                        console.warn("error deleting photo", e);
+                        photo_manage.$('.x-image-delete').x_loading(false);
                     }
-                    photo_manage.$('.x-image-delete').x_loading(false);
-                },
-                error: function( e )
-                {
-                    console.warn("error deleting photo", e);
-                    photo_manage.$('.x-image-delete').x_loading(false);
-                }
+                });
+            },
+                'no_callback': function(){ photo_manage.$('.x-image-delete').x_loading(false); }
             });
+
         })();
     }
 
