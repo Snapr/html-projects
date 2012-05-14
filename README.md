@@ -14,7 +14,7 @@ You can do the bulk of your development in any webkit browser - we recommend Chr
 
 - No other local development setup is necessary since the project will interact with a web based API.
 
-- Append `browser_testing=true` to the query string when you first load the page if testing in a desktop browser. This will add a class to the body and set a flag in local storage so that the project will limited to a 320px wide section of your screen. 
+- Append `#/?browser_testing=true` to the url when you first load the page if testing in a desktop browser. This will add a class to the `<body>` and set a flag in local storage so that the project will limited to a 320px wide section of your screen. 
 
 - Note that the app uses a slightly different upload flow on desktop/mobile web.
 
@@ -48,11 +48,13 @@ These libraries are also used in the project, here are the links if you need to 
 Styling the App
 ---------------
 
+- *main.less* - See this file for a breakdown of the different style sheets and their uses. Always compile your less from this file only (`theme/<name>/css/main.less`)
+    
 - *variables.less* - Many of the key UI aspects are defined in a single variables file (`theme/<name>/css/variables.less`)
 
     Here you can edit things such as colors, fonts, font sizes, borders, page margins, etc and the changes will flow through the whole app.
 
-    This file should be your first port of call for customization (before doing more advanced edits to theme.less)
+    This file should be your first port of call for customization
 
 - *Graphics Sprites* - PSD files for the sprites used in the app are supplied @2x resolution. To accommodate different device screen pixel densities you should export three versions of each file. 
 
@@ -64,7 +66,9 @@ Styling the App
 
     Be sure to change the width and height variables if you edit the size of the graphics as these will be used to size the sprites for devices with different pixel density (match @1x pixel res version).
 
-- *theme.less* - UI details / styles are set out in theme.less. Custom page styles & edits to the jQuery mobile defaults / theme swatches are set out here.
+- *jquerymobile.theme.less* - Tweaks to the jQuery mobile structure css files are made in here. 
+
+- *jquerymobile.swatches.less* - jQuery mobile theme swatches are defined in here. Note that the normal jQuery mobile theme css has been replaced completely with this less css version.
 
 
 Editing the App
