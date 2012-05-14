@@ -86,7 +86,7 @@ snapr.views.photo_manage = Backbone.View.extend({
                             if (resp.success)
                             {
                                 photo_manage.model.set({flagged: true});
-                                snapr.utils.notification("Flagged ", "Thanks, a moderator will review this image ASAP");
+                                snapr.utils.notification("Flagged", "Thanks, a moderator will review this image shortly");
                             }
                             else
                             {
