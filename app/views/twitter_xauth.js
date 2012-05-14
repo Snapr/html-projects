@@ -53,6 +53,7 @@ snapr.views.twitter_xauth = snapr.views.dialog.extend({
                                 "snapr_user": data.response.snapr_user
                             });
                             snapr.auth.save_locally();
+                            snapr.utils.notification('Logged in as ' + data.response.snapr_user);
                             xauth_view.back();
                         }else{
                             // sign up
