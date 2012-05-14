@@ -664,6 +664,12 @@
         .corner-top (8px);
         .corner-bottom(0);
     }
+    
+    /* Hide the default streams that are unremovable */
+       .image-stream[data-id="null"]{
+          display: none; 
+       }
+    
     /* Tick state for button while in edit mode */
     .ui-header{
         .ui-btn-up-a{
