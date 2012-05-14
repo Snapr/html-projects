@@ -22,6 +22,8 @@ snapr.views.map = snapr.views.page.extend({
 
         this.flag_template = _.template($('#flag-template').html());
 
+        this.location_template = _.template($('#location-template').html());
+
         this.thumb_collection = new snapr.models.thumb_collection();
 
         this.map_thumbs = [];
@@ -119,9 +121,20 @@ snapr.views.map = snapr.views.page.extend({
         this.map = new google.maps.Map(
             document.getElementById("google-map"), this.map_settings);
 
+        snapr.geo.get_location(function(location){
+            console.log('pinning', location);
+            new snapr.CurrentLocation( {
+                location: {
+                    latitude: location.coords.latitude,
+                    longitude: location.coords.longitude
+                }},
+                map_view.map );
+        });
+
         this.map.snapr = {
             thumb_template: this.thumb_template,
-            spot_template: this.spot_template
+            spot_template: this.spot_template,
+            location_template: this.location_template
         };
 
         // hack to set google map height
@@ -148,17 +161,18 @@ snapr.views.map = snapr.views.page.extend({
         }
     },
 
-    place_pin: function( lat, lng )
-    {
-        lat = lat || this.map_query.get( "lat" );
-        lng = lng || this.map_query.get( "lng" );
-        var marker = new google.maps.Marker({
-            position: new google.maps.LatLng( lat, lng ),
-            map: this.map,
-            title: 'My workplace',
-            clickable: false
-        });
-    },
+    // surely this isn't used, it looks like example code
+    // place_pin: function( lat, lng )
+    // {
+    //     lat = lat || this.map_query.get( "lat" );
+    //     lng = lng || this.map_query.get( "lng" );
+    //     var marker = new google.maps.Marker({
+    //         position: new google.maps.LatLng( lat, lng ),
+    //         map: this.map,
+    //         title: 'My workplace',
+    //         clickable: false
+    //     });
+    // },
 
     remove_overlays: function()
     {

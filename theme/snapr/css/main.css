@@ -51,7 +51,7 @@
 * Global - stuffs from prinzhorn
 */
 /* Some Handy Functions */
-/* keep the corners 45 degrees otherwise they look crap 
+/* keep the corners 45 degrees otherwise they look crap
    apply these to elements using the ::after psuedo class..
 */
 @-webkit-keyframes loading {
@@ -64,7 +64,7 @@
 }
 /* Definititions for GFX Sprites and icon positioning */
 /* Global Icon Sprites Layouts */
-/* 
+/*
 * Top Bar Icon Sprite - '../gfx/bar-icons.png'
 */
 /* Vertical Layout of Icons */
@@ -643,7 +643,7 @@ ul, ul li {
 */
 /*
 * JQuery Mob - Overwriting some layout aspects of the jquerymobile.structure css
-*   
+*
 */
 /* Round off the corners of the pages */
 div[data-role="page"], div[data-role="dialog"] {
@@ -788,7 +788,7 @@ input.ui-input-text, textarea.ui-input-text {
   list-style: none;
 }
 /* Less CSS rework of jQuery Mobile Theme */
-/* links within "buttons" 
+/* links within "buttons"
 -----------------------------------------------------------------------------------------------------------*/
 a.ui-link-inherit {
   text-decoration: none !important;
@@ -884,7 +884,7 @@ a.ui-link-inherit {
   background: url(images/ajax-loader.gif);
   background-size: 46px 46px;
 }
-/* Button corner classes 
+/* Button corner classes
 -----------------------------------------------------------------------------------------------------------*/
 .ui-btn-corner-tl {
   -moz-border-radius-topleft: 6px;
@@ -4938,7 +4938,7 @@ div.ps-carousel-item-loading {
 .linked-services li {
   margin-bottom: 0;
 }
-/* making list style icons look the same is a drag.. 
+/* making list style icons look the same is a drag..
  different markup format between collapsible headings and list links */
 .add-services li.ui-li, .share-icons-list li.ui-li {
   margin-bottom: 0;
@@ -5122,6 +5122,15 @@ div.ps-carousel-item-loading {
   height: 1px;
   overflow: visible;
   position: absolute;
+}
+.photo-map .map-current-location{
+  position: absolute;
+  top: -9px;
+  left: -9px;
+  width: 17px;
+  height: 17px;
+  z-index: 100;
+  background-image: url(../gfx/map-current-location-marker.png);
 }
 .photo-map .snaprmapthumb {
   position: absolute;
@@ -5455,7 +5464,7 @@ div.ps-carousel-item-loading {
 /* GFX styles for screens with high pixel density */
 /* Android HDPI - Pixel ratio of 1.5. Background-size is 1/1.5 = 66.67% (of a 150px image) */
 @media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5) {
-  
+
 }
 /* High Resolution (iPhone 4) */
 @media only screen and (-webkit-min-device-pixel-ratio: 2) {

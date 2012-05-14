@@ -1198,24 +1198,26 @@ $(function () {
 
         // Explicitly call setMap() on this overlay
         this.setMap(map);
-    }
+    };
 
     snapr.SnapOverlay.prototype = new google.maps.OverlayView();
+    snapr.SnapOverlay.prototype.get_div = function(){
+        var data_id = this.data_.id;
+
+        if (this.type_ == 'photo') {
+            return $(this.map.snapr.thumb_template({photo:this.data_})).show();
+        } else {  //spot
+            return $(this.map.snapr.spot_template({spot:this.data_})).show();
+        }
+
+    };
     snapr.SnapOverlay.prototype.onAdd = function()
     {
         // Note: an overlay's receipt of onAdd() indicates that
         // the map's panes are now available for attaching
         // the overlay to the map via the DOM.
 
-        var data_id = this.data_.id;
-
-        if (this.type_ == 'photo') {
-            var div = $(this.map.snapr.thumb_template({photo:this.data_}));
-            div.show();
-        } else {  //spot
-            var div = $(this.map.snapr.spot_template({spot:this.data_}));
-            div.show();
-        }
+        var div = this.get_div();
 
         // Set the overlay's div_ property to this DIV
         this.div_ = div;
@@ -1224,7 +1226,7 @@ $(function () {
         // We'll add this overlay to the overlayImage pane.
         var panes = this.getPanes();
         $(panes.floatPane).append(this.div_);
-    }
+    };
     snapr.SnapOverlay.prototype.draw = function()
     {
         var overlayProjection = this.getProjection();
@@ -1235,12 +1237,12 @@ $(function () {
             .css('position', 'absolute')
             .css('left', px.x + 'px')
             .css('top', px.y + 'px');
-    }
+    };
     snapr.SnapOverlay.prototype.onRemove = function()
     {
         $(this.div_).remove();
         this.div_ = null;
-    }
+    };
     snapr.SnapOverlay.prototype.hide = function()
     {
         if (this.div_)
@@ -1254,7 +1256,7 @@ $(function () {
         {
           this.div_.style.visibility = "visible";
         }
-    }
+    };
     snapr.SnapOverlay.prototype.toggle = function()
     {
         if (this.div_)
@@ -1268,7 +1270,7 @@ $(function () {
             this.hide();
           }
         }
-    }
+    };
     snapr.SnapOverlay.prototype.toggleDOM = function()
     {
         if (this.getMap())
@@ -1279,8 +1281,16 @@ $(function () {
         {
           this.setMap( this.map_ );
         }
-    }
+    };
 
+    snapr.CurrentLocation = function(data, map){
+        snapr.SnapOverlay.call(this, undefined, data, map);
+    };
+    snapr.CurrentLocation.prototype= new snapr.SnapOverlay();
+    snapr.CurrentLocation.prototype.get_div = function()
+    {
+        return $(this.map.snapr.location_template()).show();
+    };
 
     // initialise router and start backbone
     Route = new snapr.routers();
