@@ -3056,6 +3056,11 @@ a.ui-link-inherit {
 .wrap-content h1, .wrap-content p, .wrap-content a {
   white-space: normal!important;
 }
+.wrap-content p {
+  margin-bottom: 16px;
+  margin-right: 24px;
+  font-family: Helvetica, Arial, sans-serif;
+}
 .plain-link {
   font-family: Helvetica, Arial, sans-serif;
 }
@@ -5032,6 +5037,8 @@ div.ps-carousel-item-loading {
 
   /* Image Items */
 
+  /* If the first item (after the top bar) is a follow item get rid of its top border */
+
 }
 .activity-streams .ui-bar.top-left-arrow .ui-btn-text {
   padding-left: 8px;
@@ -5064,6 +5071,12 @@ div.ps-carousel-item-loading {
   left: -4px;
   top: 0;
 }
+.activity-streams .activity-item {
+  border: none;
+  border-top: solid 1px #e4e4e4;
+  margin-top: 8px;
+  padding-top: 0;
+}
 .activity-streams .comments-list .comment-item.ui-li-has-icon {
   margin-top: 8px;
   padding-top: 8px!important;
@@ -5089,6 +5102,7 @@ div.ps-carousel-item-loading {
 }
 .activity-streams .image-likes .like-icons-list {
   margin-top: 8px;
+  margin-bottom: 0;
 }
 .activity-streams .activity-follow-item {
   position: relative;
@@ -5110,12 +5124,6 @@ div.ps-carousel-item-loading {
   margin-top: 0!important;
   padding-top: 0!important;
 }
-.activity-streams .activity-item {
-  border: none;
-  border-top: solid 1px #e4e4e4;
-  margin-top: 8px;
-  padding-top: 0;
-}
 .activity-streams .activity-item:first {
   border-top: none;
   margin-top: 0!important;
@@ -5128,6 +5136,11 @@ div.ps-carousel-item-loading {
   margin-bottom: 12px;
 }
 .activity-streams .activity-image-item .activity-item:first {
+  border-top: none;
+  margin-top: 0!important;
+  padding-top: 0!important;
+}
+.activity-streams .activity-stream:nth-child(2) .activity-follow-item {
   border-top: none;
   margin-top: 0!important;
   padding-top: 0!important;

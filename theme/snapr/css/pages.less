@@ -1325,14 +1325,11 @@
         display: inline-block;
         margin-bottom: 0;
     }
-
     .activity-item{
         border: none;
         border-top: @border-medium-on-light;
         margin-top: @padding-element-inset;
         padding-top: 0;
-
-
         .activity-desc{
             white-space: normal;
             font-weight: normal;
@@ -1342,24 +1339,25 @@
             font-family:@txt-font-base;
         }
         .small-text{
-             position: relative;
-             top: 1px;
-             color: @color-txt-light-on-light;
-         }
+            position: relative;
+            top: 1px;
+            color: @color-txt-light-on-light;
+        }
 
     }
 
-     .image-link{
-            position: absolute;
-            left: -@padding-image-grid-inset;
-            top:0;
-        }
+    .image-link{
+        position: absolute;
+        left: -@padding-image-grid-inset;
+        top:0;
+    }
 
-
-
-
-
-
+    .activity-item{
+        border: none;
+        border-top: @border-medium-on-light;
+        margin-top: @padding-element-inset;
+        padding-top: 0;
+    }
 
     /* Tweaks for comments */
     .comments-list{
@@ -1391,58 +1389,65 @@
         }
         .like-icons-list{
             margin-top: @padding-page-inset;
+            margin-bottom: 0;
+           
         }
     }
 
     /* Tweaks for follow item */
     .activity-follow-item{
         position: relative;
-         padding-left: 0;
-         padding-top: 8px;
-         min-height:  @size-small-avatar;
-         .username,
-         .activity-desc,
-         .small-text,
-          .ui-li-icon{
-             display: inline-block;
-             vertical-align: middle;
-             line-height: @size-small-avatar;
-             margin-bottom: 0;
-         }
+        padding-left: 0;
+        padding-top: 8px;
+        min-height:  @size-small-avatar;
+        .username,
+        .activity-desc,
+        .small-text,
+        .ui-li-icon{
+            display: inline-block;
+            vertical-align: middle;
+            line-height: @size-small-avatar;
+            margin-bottom: 0;
+        }
     }
 
     .photo-activity{
-         .activity-item:first-child{
-             border-top: none;
-             margin-top: 0!important;
-             padding-top: 0!important;
-         }
-     }
-
-    .activity-item{
-           border: none;
-           border-top: @border-medium-on-light;
-           margin-top: @padding-element-inset;
-           padding-top: 0;
-           &:first{
-               border-top: none;
-               margin-top: 0!important;
-               padding-top: 0!important;
-           }
-    }
-
-    /* Image Items */
-   .activity-image-item{
-       position: relative;
-        min-height: @size-img-thumb;
-       padding-left: @size-img-thumb;
-       margin-bottom: @padding-page-inset + @padding-image-grid-inset;
-       .activity-item:first{
+        .activity-item:first-child{
             border-top: none;
             margin-top: 0!important;
             padding-top: 0!important;
-       }
-   }
+        }
+    }
+
+    .activity-item{
+        &:first{
+            border-top: none;
+            margin-top: 0!important;
+            padding-top: 0!important;
+        }
+    }
+
+    /* Image Items */
+    .activity-image-item{
+        position: relative;
+        min-height: @size-img-thumb;
+        padding-left: @size-img-thumb;
+        margin-bottom: @padding-page-inset + @padding-image-grid-inset;
+        .activity-item:first{
+            border-top: none;
+            margin-top: 0!important;
+            padding-top: 0!important;
+        }
+    }
+    
+    /* If the first item (after the top bar) is a follow item get rid of its top border */
+    .activity-stream:nth-child(2){
+        .activity-follow-item{
+            border-top: none;
+            margin-top: 0!important;
+            padding-top: 0!important;
+        }
+    }
 }
 
 

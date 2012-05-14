@@ -1570,7 +1570,7 @@
 
 
     <!-- @about PAGE-->
-    <div id="about" data-role="dialog" data-overlay-theme="c" data-theme="c">
+    <div id="about" class="welcome-bg special-bg" data-role="dialog" data-overlay-theme="c" data-theme="c">
         <div data-role="header" data-theme="c">
             <h1>About</h1>
             <a class="x-back" data-role="button" data-icon="delete" data-iconpos="notext"></a>
@@ -1578,39 +1578,28 @@
         <div data-role="content" data-theme="c" data-ajax="false">
             <div class="inset-page-content wrap-content">
                     <ul data-role="listview" data-ajax="false" class="" data-inset="true" data-theme="d">
+                        
                         <li>
-                            <h2>A world of Photo Sharing Awesomeness..</h2>
-                        </li>
-                        <li>
-                            <a>Create</a>
-                            <p>Tweak your photos to perfection - add effects, adjust colors, crop and add captions</p>
-                            <p>
-                               Now you can also use Camera+ directly from Snapr
-                            </p>
-                        </li>
-                         <li>
-                            <a href="#/menu/">Share</a>
-                            <p>You can link Snapr with Twitter, Facebook, Tumblr, and Foursquare and broadcast to all your favorite networks.</p>
-                        </li>
-                        <li>
-                            <a>Discover</a>
-                            <p>Snapr shows you nearby content each time you upload.</p>
+                            <a href="#/map/?back=About">Share &amp; Discover</a>
+                            
+                            <p>Snapr helps you discover new things by showing you nearby shots each time you upload.</p>
                             <p>Search our photo map and explore the world around you.</p>
                         </li>
-                         <li>
-                            <a href="#/dash/">Dash</a>
-                            <p>Keep track of your best friends and favorite searches on the fly with our special dashboard view.</p>
-                        </li>
-
+                        </ul>
+                        
+                        <ul data-role="listview" data-ajax="false" class="" data-inset="true" data-theme="d">
                         <li>
-                            <a href="#/apps/">Get Some Apps!</a>
-                            <p>Find a photo sharing community that matches your interests!</p>
-
-                            <p>You can sign in with Snapr so all your images can still be found in one place.</p>
+                            <a href="#/apps/?back=About">Find Apps for your Interests</a>
+                            
+                            <p>Snapr apps build dedicated communities around your favorite things.</p>
+                            <p></p>
                         </li>
-
-
-
+                    </ul>
+                    <ul data-role="listview" data-ajax="false" class="" data-inset="true" data-theme="d">
+                     <li>
+                        <a href="#/dash/?back=About">Never miss the things that matter</a>
+                        <p>Keep track of your best friends and favorite searches on the fly with our special dashboard view.</p>
+                    </li>
                     </ul>
             </div>
         </div>
@@ -1626,7 +1615,7 @@
             <div class="inset-page-content wrap-content">
                     <ul data-role="listview" data-ajax="false" class="" data-inset="true" data-theme="d">
                         <li>
-                            <a href="#/about/" class="plain-link">Find out more about what you can do with Snapr</a>
+                            <a href="#/about/" class="plain-link">Would you like to find out more about what you can do with Snapr?</a>
                         </li>
                     </ul>
                     <a data-role="button" data-theme="e" href="#/login/">Login</a>
