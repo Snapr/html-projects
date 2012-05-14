@@ -36,6 +36,8 @@ snapr.views.twitter_xauth = snapr.views.dialog.extend({
             xauth_view = this,
             redirect = this.redirect;
 
+        $.mobile.showPageLoadingMsg();
+
         if(this.signin){
             options = {
                 url: snapr.api_base + '/linked_services/twitter/xauth/signin/',
@@ -63,6 +65,9 @@ snapr.views.twitter_xauth = snapr.views.dialog.extend({
                         console.error(data);
                         snapr.utils.notification('Twitter Error', 'Incorrect login details');
                     }
+                },
+                complete: function(){
+                    $.mobile.hidePageLoadingMsg();
                 }
             };
         }else{
@@ -82,6 +87,9 @@ snapr.views.twitter_xauth = snapr.views.dialog.extend({
                         console.error(data);
                         snapr.utils.notification('Twitter Error', 'Incorrect login details');
                     }
+                },
+                complete: function(){
+                    $.mobile.hidePageLoadingMsg();
                 }
             };
         }

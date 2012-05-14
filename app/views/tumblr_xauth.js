@@ -37,6 +37,8 @@ snapr.views.tumblr_xauth = snapr.views.dialog.extend({
     link_tumblr: function(){
         var redirect = this.redirect;
 
+        $.mobile.showPageLoadingMsg();
+
         $.ajax({
             url: snapr.api_base + '/linked_services/tumblr/xauth/',
             type: 'GET',
@@ -61,6 +63,9 @@ snapr.views.tumblr_xauth = snapr.views.dialog.extend({
             },
             error: function( data ){
                 console.error('ajax error!');
+            },
+            complete: function(){
+                $.mobile.hidePageLoadingMsg();
             }
         });
     }
