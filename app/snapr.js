@@ -36,7 +36,7 @@ snapr.constants.share_redirect = "#/uploading/?";
 // Overriding sync to make this a jsonp app
 Backbone.sync = function (method, model, options) {
 
-    console.log( "sync", method, model, options );
+    //console.debug( "sync", method, model, options );
     // Helper function to get a URL from a Model or Collection as a property
     // or as a function.
     // sends the method as a parameter so that different methods can have
@@ -513,7 +513,7 @@ snapr.utils.get_photo_height = function (orig_width, orig_height, element) {
     var aspect = orig_width/orig_height,
         width = $(element).eq(0).width();
 
-    console.log("orig_width: "+ orig_width + "orig_height: "+ orig_height + "width: "+ width);
+    //console.debug("orig_width: "+ orig_width + "orig_height: "+ orig_height + "width: "+ width);
     return width/aspect;
 };
 
@@ -1040,7 +1040,7 @@ function spinner_stop()
 // upload/appmode functions
 function pass_data( url )
 {
-    console.log("pass data: ", url)
+    //console.debug("pass data: ", url)
     window.location = url.replace(/\+/g, '%20');
 }
 
@@ -1176,7 +1176,7 @@ $("a[data-snapr-dialog='true']").live("vclick", function( e )
     var snapr_url = stripped_link.split("?")[0].replace( routeStripper, "");
     var query_string = stripped_link.split("?")[1];
 
-    console.warn("dialog", snapr_url, query_string);
+    //console.debug("dialog", snapr_url, query_string);
     snapr.routers.prototype[ snapr.routers.prototype.routes[ snapr_url ]  ]( query_string, snapr.info.current_view );
 });
 

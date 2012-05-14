@@ -227,7 +227,7 @@ snapr.views.feed = snapr.views.page.extend({
 
         var list_style = this.$el.find("#feed-view-grid").is(":checked") && 'grid' || 'list';
 
-        console.log('populate feed list style', list_style);
+        //console.debug('populate feed list style', list_style);
 
         if (this.feed_list)
         {

@@ -69,7 +69,6 @@ snapr.views.people = snapr.views.dialog.extend({
         var people_li_template = _.template( $("#people-li-template").html() );
 
         if(this.collection.length){
-            console.log('results');
             snapr.no_results.$el.remove();  // use remove(), hide() keeps it hidden and requires show() later
             _.each( this.collection.models, function( model )
             {
@@ -124,8 +123,6 @@ snapr.views.people = snapr.views.dialog.extend({
                     data['username'] = keywords;
                 }
         }
-
-        console.log(data);
 
         if(data.username || data.followed_by || data.following){
 
