@@ -250,13 +250,13 @@
 /*
 * @feed PAGE
 */
+
 #feed-images{
     min-height: 280px;
 }
 .feed-header{
     margin-bottom: @padding-page-inset;
 }
-
 
 .load-more{
     display: none;
@@ -1117,49 +1117,57 @@
     }
 }
 
-.upload-progress-header{
-    padding: @padding-page-inset;
-    height: 108px;
-    overflow:hidden;
-    .box-shadow(inset 5px -14px 20px rgba(0, 0, 0, 0.2));
-    .upload-image-thumb-gall{
-        position: absolute;
-        left:@padding-page-inset;
-        top: @padding-page-inset;
-    }
-    .upload-info-block{
-        margin-left: @size-img-thumb + @padding-page-inset;
-        p{
-            margin-top: 0;
-           margin-bottom: 2px;
-           text-overflow: ellipsis;
-           white-space: nowrap;
-           overflow: hidden;
-         }
-         .ui-icon-quote{
-             display: inline-block;
-             height: @txt-size-base;
-             background-position: -6px @gfx-extra-icon-sprite-quote-y - 8;
 
-             width: 20px;
-         }
-        .upload-image-venue{
-           a{
-               color: @color-txt-light-on-light;
-           }
+
+#uploading{
+    .upload-progress-header{
+        height: @size-img-thumb + @padding-page-inset * 3;
+    } 
+    .upload-progress-item{
+        padding: 0;
+        .upload-image-thumb-gall{
+            position: absolute;
+            left:0;
+            top: @padding-page-inset;
         }
-        .upload-shared-to{
-            margin:@padding-element-inset 0 0 0 ;
-            padding: 0;
-            li{
-                list-style: none;
-                display: inline-block;
-                width: 20px;
-                height: 20px;
-                margin-right: 2px;
+        .progress-bar{
+            margin: 8px 0;
+        }
+        .upload-info-block{
+            padding-left: @size-img-thumb + @padding-page-inset;
+            p{
+                margin-top: 0;
+               margin-bottom: 2px;
+               text-overflow: ellipsis;
+               white-space: nowrap;
+               overflow: hidden;
+             }
+             .ui-icon-quote{
+                 display: inline-block;
+                 height: @txt-size-base;
+                 background-position: -6px @gfx-extra-icon-sprite-quote-y - 8;
+
+                 width: 20px;
+             }
+            .upload-image-venue{
+               a{
+                   color: @color-txt-light-on-light;
+               }
+            }
+            .upload-shared-to{
+                margin:@padding-element-inset 0 0 0 ;
+                padding: 0;
+                li{
+                    list-style: none;
+                    display: inline-block;
+                    width: 20px;
+                    height: 20px;
+                    margin-right: 2px;
+                }
             }
         }
     }
+    
 }
 
 /*

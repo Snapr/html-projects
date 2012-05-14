@@ -789,15 +789,17 @@
         </div>
 
         <div class="feed-content" data-role="content" data-theme="d" data-ajax="false">
-            <div class="feed-upload-progress">
+            <div class="feed-upload-progress upload-progress-header page-inset-header">
                 <ul class="feed-upload-list" data-role="listview">
                 </ul>
             </div>
-            <div class="feed-header"></div>
+            <div class="main-feed-content">
+                <div class="feed-header"></div>
 
-            <ul id="feed-images" class="gallery"></ul>
+                <ul id="feed-images" class="gallery"></ul>
 
-            <div class="v-feed-more"></div>
+                <div class="v-feed-more"></div>
+            </div>
         </div>
 
     </div><!-- /page -->
@@ -1971,7 +1973,7 @@
 
         </div>
         <div data-role="content" data-theme="d">
-            <div class="upload-progress-container">
+            <div class="upload-progress-container upload-progress-header page-inset-header">
             </div>
             <ul class="image-streams">
             </ul>
@@ -1986,7 +1988,7 @@
     <script id="upload-progress-li-template" type="text/template">
         <div class="upload-info-block">
             <a class="upload-image-thumb-gall gallery_link image-link ui-link">
-               <img src="<%= thumbnail %>" class="thumb-image thumb-med">
+               <div style="background-image: url('<%= thumbnail %>')" class="thumb-image thumb-med css-thumb"></div>
             </a>
 
             <div class="upload-info">
@@ -2073,7 +2075,7 @@
      <script id="feed-upload-progress-li-template" type="text/template">
          <div class="upload-info-block">
              <a class="upload-image-thumb-gall gallery_link image-link ui-link">
-                <img src="<%= thumbnail %>" class="thumb-image thumb-med">
+                <div style="background-image: url('<%= thumbnail %>')" class="thumb-image thumb-small css-thumb"></div>
              </a>
 
              <div class="upload-info">

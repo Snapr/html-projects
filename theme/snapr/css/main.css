@@ -2048,9 +2048,9 @@ a.ui-link-inherit {
   color: #333333;
 }
 .ui-btn-down-d.ui-shadow {
-  -moz-box-shadow: 0 1px 4px #ffe066;
-  -webkit-box-shadow: 0 1px 4px #ffe066;
-  box-shadow: 0 1px 4px #ffe066;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
 }
 .ui-btn-down-d.top-left-arrow::after {
   width: 0;
@@ -2875,12 +2875,48 @@ a.ui-link-inherit {
 .x-right-pull, .x-left-pull {
   display: inline;
 }
+/* Upload Progress items */
+.upload-progress-header {
+  padding: 0 8px;
+  overflow: hidden;
+  -moz-box-shadow: inset 5px -14px 20px rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: inset 5px -14px 20px rgba(0, 0, 0, 0.2);
+  box-shadow: inset 5px -14px 20px rgba(0, 0, 0, 0.2);
+}
+.upload-progress-header .upload-progress-item {
+  list-style: none;
+  padding: 0 8px;
+  min-height: 34px;
+  margin-bottom: 8px;
+  position: relative;
+}
+.upload-progress-header .upload-progress-item:first-child {
+  padding-top: 8px;
+}
+.upload-progress-header .upload-progress-item .upload-image-thumb-gall {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+.upload-progress-header .upload-progress-item .upload-info-block {
+  position: relative;
+  padding-left: 42px;
+}
+.upload-progress-header .upload-progress-item .upload-info-block .upload-info {
+  padding-top: 5px;
+}
+.upload-progress-header .upload-progress-item .upload-info-block p {
+  margin-top: 0;
+  margin-bottom: 2px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
 /* progress bars */
 .progress-bar {
   position: relative;
-  top: 2px;
-  margin: 8px 0;
   padding: 8px 28px 8px 8px;
+  height: 8px;
   background-color: #f0f0ef;
   border-radius: 13px;
 }
@@ -2922,8 +2958,8 @@ a.ui-link-inherit {
 }
 .progress-bar .bar-action {
   position: absolute;
-  right: -10px;
-  top: -5px;
+  right: -9px;
+  top: -6px;
   margin: 0;
   width: 40px;
   height: 40px;
@@ -2931,12 +2967,14 @@ a.ui-link-inherit {
 }
 .progress-bar .bar-action .ui-icon-delete {
   width: 32px;
-  background-position: -63px 1px;
-}
-.progress-bar.completed {
-  padding: 2px 28px 6px 8px;
+  background-position: -63px 0px;
 }
 .progress-bar .upload-message {
+  position: absolute;
+  line-height: 24px;
+  vertical-align: middle;
+  top: 0px;
+  left: 8px;
   font-weight: bold;
   font-size: 12px;
 }
@@ -2945,7 +2983,7 @@ a.ui-link-inherit {
   height: 36px;
 }
 .progress-bar .ui-icon-check {
-  background-position: -244px -144px;
+  background-position: -243px -144px;
 }
 /* Inset list views for white BG content blocks and sneaky login field groups */
 .ui-listview-inset {
@@ -3287,15 +3325,22 @@ a.ui-link-inherit {
   text-transform: lowercase;
   text-align: left;
 }
-.user-icon-small {
+.user-icon-small, .thumb-small {
   width: 34px;
   height: 34px;
   background-color: #efefee;
   background-size: 100% 100%;
   background-size: cover;
+  background-position: center;
   -moz-border-radius: 2px;
   -webkit-border-radius: 2px;
   border-radius: 2px;
+}
+.css-thumb {
+  background-color: #efefee;
+  background-position: center;
+  background-size: 100% 100%;
+  background-size: cover;
 }
 .user-icon-big {
   width: 100px;
@@ -4803,43 +4848,44 @@ div.ps-carousel-item-loading {
 #uploading .image-streams {
   margin-top: -8px;
 }
-.upload-progress-header {
-  padding: 8px;
-  height: 108px;
-  overflow: hidden;
-  -moz-box-shadow: inset 5px -14px 20px rgba(0, 0, 0, 0.2);
-  -webkit-box-shadow: inset 5px -14px 20px rgba(0, 0, 0, 0.2);
-  box-shadow: inset 5px -14px 20px rgba(0, 0, 0, 0.2);
+#uploading .upload-progress-header {
+  height: 125px;
 }
-.upload-progress-header .upload-image-thumb-gall {
+#uploading .upload-progress-item {
+  padding: 0;
+}
+#uploading .upload-progress-item .upload-image-thumb-gall {
   position: absolute;
-  left: 8px;
+  left: 0;
   top: 8px;
 }
-.upload-progress-header .upload-info-block {
-  margin-left: 109px;
+#uploading .upload-progress-item .progress-bar {
+  margin: 8px 0;
 }
-.upload-progress-header .upload-info-block p {
+#uploading .upload-progress-item .upload-info-block {
+  padding-left: 109px;
+}
+#uploading .upload-progress-item .upload-info-block p {
   margin-top: 0;
   margin-bottom: 2px;
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
 }
-.upload-progress-header .upload-info-block .ui-icon-quote {
+#uploading .upload-progress-item .upload-info-block .ui-icon-quote {
   display: inline-block;
   height: 15px;
   background-position: -6px -200px;
   width: 20px;
 }
-.upload-progress-header .upload-info-block .upload-image-venue a {
+#uploading .upload-progress-item .upload-info-block .upload-image-venue a {
   color: #999999;
 }
-.upload-progress-header .upload-info-block .upload-shared-to {
+#uploading .upload-progress-item .upload-info-block .upload-shared-to {
   margin: 8px 0 0 0;
   padding: 0;
 }
-.upload-progress-header .upload-info-block .upload-shared-to li {
+#uploading .upload-progress-item .upload-info-block .upload-shared-to li {
   list-style: none;
   display: inline-block;
   width: 20px;

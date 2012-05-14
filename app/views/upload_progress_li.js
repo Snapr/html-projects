@@ -1,8 +1,8 @@
 snapr.views.upload_progress_li = Backbone.View.extend({
 
-    tagName: "div",
+    tagName: "li",
 
-    className: "upload-progress-header page-inset-header",
+    className: "upload-progress-item",
 
     initialize: function()
     {
