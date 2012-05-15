@@ -3994,6 +3994,12 @@ div.ps-carousel-item-loading {
   color: white;
 }
 /*
+* @join PAGE
+*/
+.linked-message {
+  display: none;
+}
+/*
 * @feed PAGE
 */
 #feed-images {
