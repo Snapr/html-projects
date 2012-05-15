@@ -48,14 +48,16 @@ snapr.views.side_scroll = Backbone.View.extend({
                 left_pull_el.removeClass('x-flipped');
                 left_pull_msg.text('Load Newer');
             }
-            if(scroller.x < (scroller.maxScrollX - pull_distance)){
-                right_pull_el.addClass('x-flipped');
-                if(!scroll_el.is('.loading')){
-                    right_pull_msg.text('release');
+            if(!scroll_el.is('.x-no-more')){
+                if(scroller.x < (scroller.maxScrollX - pull_distance)){
+                    right_pull_el.addClass('x-flipped');
+                    if(!scroll_el.is('.loading')){
+                        right_pull_msg.text('release');
+                    }
+                }else{
+                    right_pull_el.removeClass('x-flipped');
+                    right_pull_msg.text('Load More');
                 }
-            }else{
-                right_pull_el.removeClass('x-flipped');
-                right_pull_msg.text('Load More');
             }
         }
         try{
@@ -100,7 +102,7 @@ snapr.views.side_scroll = Backbone.View.extend({
                             scroll_el.removeClass('x-loading');
                             left_pull_msg.text('Load More');
                         }});
-                    }else if(right_pull_el.is('.x-flipped') && !scroll_el.is('.x-loading')){
+                    }else if(right_pull_el.is('.x-flipped') && !scroll_el.is('.x-loading') && !scroll_el.is('.x-no-more')){
                         scroll_el.addClass('x-loading');
                         right_pull_msg.text('Loading');
                         scroller = this;
