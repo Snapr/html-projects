@@ -1,7 +1,11 @@
 snapr.views.side_scroll = Backbone.View.extend({
+
+    // The following 3 attrs need to be set when extending this view
     // id: 'unique name for this set of side-scrollers'
     // template: _.template( $('#template').html() ),
     // thumbs_template: _.template( $('#thumbs-template').html() ),
+
+
     initialize: function() {
         this.collection.bind('all', this.re_render_thumbs, this);
     },
