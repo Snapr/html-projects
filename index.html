@@ -2237,7 +2237,7 @@
                         <textarea name="description" id="description" placeholder="Add text..." data-theme="d"></textarea>
 
                         <fieldset data-role="controlgroup" data-type="horizontal" class="upload-image-privacy">
-                            <input type="checkbox" name="status" id="status-public" <% if (status == "public"){%> checked="true" <%}%> />
+                            <input type="checkbox" name="status" id="status-public" <% if (status != "private"){%> checked="true" <%}%> />
                             <label for="status-public" class="privacy-toggle">&nbsp;<span class="ui-icon"></span></label>
                         </fieldset>
 
