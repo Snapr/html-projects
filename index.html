@@ -814,7 +814,7 @@
        <script id="feed-header-template" type="text/template">
        <div class="ui-bar-e ui-bar top-no-arrow">
         <% if(feed_title){ %>
-            <h4><%= feed_title %></h4>
+            <h4><em><%= feed_title %></em></h4>
         <% }else{ %>
             <% switch (feed_type) { case 'spot': %>
                 <h4>@ <em><%= feed_parameter %></em></h4>
