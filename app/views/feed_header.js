@@ -6,6 +6,7 @@ snapr.views.feed_header = Backbone.View.extend({
 
         this.feed_type = null;
         this.feed_parameter = null;
+        this.feed_title = this.query_data.feed_title;
 
         if (this.query_data.keywords)
         {
@@ -39,6 +40,7 @@ snapr.views.feed_header = Backbone.View.extend({
     {
 
         this.$el.html( this.template( {
+            feed_title: this.feed_title,
             feed_type: this.feed_type,
             feed_parameter: this.feed_parameter
         } ));
