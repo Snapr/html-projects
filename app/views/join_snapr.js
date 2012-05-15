@@ -8,7 +8,7 @@ snapr.views.join_snapr = snapr.views.dialog.extend({
             transition: this.transition
         });
 
-        this.$('.linked-message').toggle(this.options.query && this.options.query.linked);
+        this.$('.linked-message').toggle(!!(this.options.query && this.options.query.linked));
 
         this.validator = $("#join-dialog").validate({
             //debug: true,
