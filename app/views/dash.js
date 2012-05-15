@@ -59,14 +59,10 @@ snapr.views.dash = snapr.views.page.extend({
 
     populate: function(){
         var dash = this,
-            latitude = -37.8,
-            longitude = 175.3,
             options = {
                 data: {
                     n:6,
-                    feed:!!snapr.auth.get("access_token"),
-                    nearby:!!(latitude && longitude),
-                    latitude:latitude, longitude:longitude
+                    feed:!!snapr.auth.get("access_token")
                 },
                 success: function(){
                     dash.render();
@@ -82,7 +78,14 @@ snapr.views.dash = snapr.views.page.extend({
         $.mobile.loadingMessage = "Loading";
         $.mobile.showPageLoadingMsg();
 
-        this.collection.fetch( options );
+        snapr.geo.get_location( function(location){
+            options.data.latitude = location.coords.latitude;
+            options.data.longitude = location.coords.longitude;
+            options.data.nearby = true;
+            dash.collection.fetch( options );
+        }, function(e){
+            dash.collection.fetch( options );
+        } );
     },
 
     render: function(){
