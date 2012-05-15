@@ -629,6 +629,8 @@ snapr.routers = Backbone.Router.extend({
     routes: {
         "about/": "about",
         "about/?*query_string": "about",
+        "snapr-apps/": "snapr_apps",
+        "snapr-apps/?*query_string": "snapr_apps",
         "app/": "app",
         "app/?*query_string": "app",
         "login/": "login",
@@ -809,6 +811,14 @@ snapr.routers = Backbone.Router.extend({
             back_view: back_view
         });
     },
+    snapr_apps: function( query_string, back_view )
+       {
+           var query = snapr.utils.get_query_params( query_string );
+           snapr.info.current_view = new snapr.views.snapr_apps({
+               el: $("#snapr-apps")[0],
+               back_view: back_view
+           });
+       },
 
     app: function( query_string )
     {

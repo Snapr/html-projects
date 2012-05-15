@@ -1571,41 +1571,7 @@
             <%}%>
         </script>
 
-    <!-- @about PAGE-->
-    <div id="about" class="welcome-bg special-bg" data-role="dialog" data-overlay-theme="c" data-theme="c">
-        <div data-role="header" data-theme="c">
-            <h1>About</h1>
-            <a class="x-back" data-role="button" data-icon="delete" data-iconpos="notext"></a>
-        </div>
-        <div data-role="content" data-theme="c" data-ajax="false">
-            <div class="inset-page-content wrap-content">
-                    <ul data-role="listview" data-ajax="false" class="" data-inset="true" data-theme="d">
-                        
-                        <li>
-                            <a href="#/map/?back=About">Share &amp; Discover</a>
-                            
-                            <p>Snapr helps you discover new things by showing you nearby shots each time you upload.</p>
-                            <p>Search our photo map and explore the world around you.</p>
-                        </li>
-                        </ul>
-                        
-                        <ul data-role="listview" data-ajax="false" class="" data-inset="true" data-theme="d">
-                        <li>
-                            <a href="#/apps/?back=About">Find Apps for your Interests</a>
-                            
-                            <p>Snapr apps build dedicated communities around your favorite things.</p>
-                            <p></p>
-                        </li>
-                    </ul>
-                    <ul data-role="listview" data-ajax="false" class="" data-inset="true" data-theme="d">
-                     <li>
-                        <a href="#/dash/?back=About">Never miss the things that matter</a>
-                        <p>Keep track of your best friends and favorite searches on the fly with our special dashboard view.</p>
-                    </li>
-                    </ul>
-            </div>
-        </div>
-    </div>
+ 
 
     <!-- @welcome PAGE-->
     <div id="welcome" data-role="dialog" data-overlay-theme="c" data-theme="c" class="welcome-bg special-bg">
@@ -1624,6 +1590,60 @@
 
                     <a data-role="button" data-theme="d" href="#/join/">Join Snapr</a>
 
+            </div>
+        </div>
+    </div>
+    
+    <!-- @about PAGE-->
+     <div id="about" class="welcome-bg special-bg" data-role="dialog" data-overlay-theme="c" data-theme="c">
+         <div data-role="header" data-theme="c">
+             <h1>About</h1>
+             <a class="x-back" data-role="button" data-icon="delete" data-iconpos="notext"></a>
+         </div>
+         <div data-role="content" data-theme="c" data-ajax="false">
+             <div class="inset-page-content wrap-content">
+                     <ul data-role="listview" data-ajax="false" class="" data-inset="true" data-theme="d">
+
+                         <li>
+                             <a href="#/map/?back=About">Share &amp; Discover</a>
+
+                             <p>Snapr helps you discover new things by showing you nearby shots each time you upload.</p>
+                             <p>Search our photo map and explore the world around you.</p>
+                         </li>
+                         </ul>
+
+                         <ul data-role="listview" data-ajax="false" class="" data-inset="true" data-theme="d">
+                         <li>
+                             <a href="#/snapr-apps/?back=About">Find Apps for your Interests</a>
+
+                             <p>Snapr apps build dedicated communities around your favorite things.</p>
+                             <p></p>
+                         </li>
+                     </ul>
+                     <ul data-role="listview" data-ajax="false" class="" data-inset="true" data-theme="d">
+                      <li>
+                         <a href="#/dash/?back=About">Never miss the things that matter</a>
+                         <p>Keep track of your best friends and favorite searches on the fly with our special dashboard view.</p>
+                     </li>
+                     </ul>
+             </div>
+         </div>
+     </div>
+    
+    <!-- @snapr_apps PAGE-->
+    <div id="snapr-apps" class="welcome-bg special-bg" data-role="dialog" data-overlay-theme="c" data-theme="c">
+        <div data-role="header" data-theme="c">
+            <h1>Apps</h1>
+            <a class="x-back" data-role="button" data-icon="delete" data-iconpos="notext"></a>
+        </div>
+        <div data-role="content" data-theme="c" data-ajax="false">
+            <div class="inset-page-content wrap-content">
+                    <ul data-role="listview" data-ajax="false" class="" data-inset="true" data-theme="d">
+                        <li>
+                            <a href="#/about/">Featured Apps TBC</a>
+                          </li>
+                        </ul>
+               
             </div>
         </div>
     </div>
@@ -1867,9 +1887,6 @@
                     <input type="submit" name="login" data-theme="e" value="Reset Password">
 
                  </form>
-
-               
-
              </div>
          </div>
      </div><!-- /page -->
@@ -2383,6 +2400,8 @@
 <script src="app/views/thumbs_li.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/popular.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/about.js" type="text/javascript" charset="utf-8"></script>
+<script src="app/views/snapr_apps.js" type="text/javascript" charset="utf-8"></script>
+
 <script src="app/views/app.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/activity.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/activity_stream.js" type="text/javascript" charset="utf-8"></script>
