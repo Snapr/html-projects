@@ -633,6 +633,8 @@ snapr.routers = Backbone.Router.extend({
         "app/?*query_string": "app",
         "login/": "login",
         "login/?*query_string": "login",
+        "forgot-password/": "forgot_password",
+        "forgot-password/?*query_string": "forgot_password",
         "logout/": "logout",
         "join/": "join_snapr",
         "join/?*query_string": "join_snapr",
@@ -725,6 +727,16 @@ snapr.routers = Backbone.Router.extend({
             back_view: back_view
         });
     },
+    
+    forgot_password: function( query_string, back_view )
+      {
+          var query = snapr.utils.get_query_params( query_string );
+          snapr.info.current_view = new snapr.views.forgot_password({
+              query: query,
+              el: $("#forgot-password")[0],
+              back_view: back_view
+          });
+      },
 
     logout: function( query_string )
     {

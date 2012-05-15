@@ -1843,8 +1843,37 @@
             </div>
         </div>
     </div><!-- /page -->
+    
+    <!-- @forgot-password  -->
+     <div id="forgot-password" data-role="dialog" data-overlay-theme="c" data-theme="c" data-ajax="false" class="snapr-bg special-bg">
+         <div data-role="header" data-theme="c">
+             <h1>Forgot Password</h1>
+             <a class="x-back" data-role="button" data-icon="delete" data-iconpos="notext"></a>
+         </div>
+         <div data-role="content">
+             <div class="inset-page-content">
+                 <p class="login-message warning-message"></p>
 
-    <!-- no templates for #login -->
+
+                 <form action="javascript: void(0);" accept-charset="utf-8" id="login-dialog">
+                     <ul data-role="listview" data-inset="true" data-theme="d">
+
+                         <li data-role="fieldcontain" class="ui-hide-label">
+                             <label for="username">Username or Email</label>
+                             <input type="text" name="username"  placeholder="Username or Email" autocapitalize="off" autocorrect="off" id="login-dialog-username">
+                         </li>
+                         
+                     </ul>
+                    <input type="submit" name="login" data-theme="e" value="Reset Password">
+
+                 </form>
+
+               
+
+             </div>
+         </div>
+     </div><!-- /page -->
+
 
     <!-- @join snapr DIALOG-->
     <div id="join-snapr" data-role="page" data-theme="c" data-ajax="false" class="snapr-bg special-bg">
@@ -2310,6 +2339,8 @@
 <script src="app/views/dialog.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/home.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/login.js" type="text/javascript" charset="utf-8"></script>
+<script src="app/views/forgot_password.js" type="text/javascript" charset="utf-8"></script>
+
 <script src="app/views/join_snapr.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/join_success.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/limbo.js" type="text/javascript" charset="utf-8"></script>
