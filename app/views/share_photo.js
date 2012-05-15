@@ -73,7 +73,7 @@ snapr.views.share_photo = snapr.views.page.extend({
             screen_height: screen_height,
             photo: this.model,
             status: snapr.utils.get_local_param( "status" ),
-            share_location: snapr.utils.get_local_param( "share-location" ) && true || false,
+            share_location: snapr.utils.get_local_param( "share-location" ) !== false,
             facebook_sharing: snapr.utils.get_local_param( "facebook-sharing" ) && true || false,
             tumblr_sharing: snapr.utils.get_local_param( "tumblr-sharing" ) && true || false,
             foursquare_sharing: snapr.utils.get_local_param( "foursquare-sharing" ) && true || false,
@@ -165,7 +165,7 @@ snapr.views.share_photo = snapr.views.page.extend({
     get_reverse_geocode: function()
     {
 
-        if (!snapr.utils.get_local_param( "share-location" ))
+        if (snapr.utils.get_local_param( "share-location" ) === false)
         {
             return;
         }
