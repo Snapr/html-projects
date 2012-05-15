@@ -10,7 +10,7 @@ snapr.views.join_snapr = snapr.views.dialog.extend({
 
         this.$('.linked-message').toggle(this.options.query && this.options.query.linked);
 
-        $("#join-dialog").validate({
+        this.validator = $("#join-dialog").validate({
             //debug: true,
 
             errorClass: "x-invalid",
@@ -27,6 +27,11 @@ snapr.views.join_snapr = snapr.views.dialog.extend({
             errorPlacement: function(error, element) {
                 error.insertAfter( element.parent("li"));
             },
+            // HAXXY: this is not a validate option (yet) but we will add it to the validator once created
+            errors: function(a,b,c) {
+                // override the function for returning the error elements to not return the actual fields
+                return $( this.settings.errorElement + "." + this.settings.errorClass+":not(.ui-li)", this.errorContext );
+            },
 
             rules: {
                 username:{
@@ -39,7 +44,6 @@ snapr.views.join_snapr = snapr.views.dialog.extend({
                             $('#join-dialog-username').parent().addClass('x-validating').removeClass('x-valid x-invalid');
                         },
                         complete: function(){
-                            console.log('complete');
                             $('#join-dialog-username').parent().removeClass('x-validating');
                         }
                     }
@@ -72,8 +76,9 @@ snapr.views.join_snapr = snapr.views.dialog.extend({
                 }
             }
         });
+        // HAXXY: errors is not an option of the validate method, here we actually apply it
+        this.validator.errors = this.validator.settings.errors;
 
-        console.debug('this.options.query', this.options.query);
         if(this.options.query && this.options.query.twitter_name){
             $('#join-dialog-username').val(this.options.query.twitter_name).valid();
         }else{
@@ -111,7 +116,7 @@ snapr.views.join_snapr = snapr.views.dialog.extend({
             },
             error: function()
             {
-                console.log('error on login after successful join');
+                console.error('error on login after successful join');
             },
             complete: function(){
                 $('.x-join-btn').x_loading(false);
