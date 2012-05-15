@@ -59,7 +59,7 @@ snapr.views.twitter_xauth = snapr.views.dialog.extend({
                             xauth_view.back();
                         }else{
                             // sign up
-                            Route.navigate( "#/join/?message=linked=true&twitter_name="+data.response.username+"&twitter_token="+escape(data.response.twitter_token) );
+                            Route.navigate( "#/join/?linked=true&twitter_name="+data.response.username+"&twitter_token="+escape(data.response.twitter_token) );
                         }
                     }else{
                         console.error(data);

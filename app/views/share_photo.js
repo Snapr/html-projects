@@ -428,7 +428,7 @@ snapr.views.share_photo = snapr.views.page.extend({
             }
 
             this.model.unset( "shared", {silent: true} );
-            if (_.isObject(this.model.get( "location" )) )
+            if (_.isObject(this.model.get( "location" )))
             {
                 var location = this.model.get( "location" );
                 this.model.unset( "location", {silent: true} );
