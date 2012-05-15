@@ -300,7 +300,7 @@ snapr.views.share_photo = snapr.views.page.extend({
         }
         else
         {
-            snapr.utils.delete_local_param( e.target.id );
+            snapr.utils.save_local_param( e.target.id, false );
         }
         if (e.target.id == "foursquare-sharing")
         {
