@@ -101,6 +101,10 @@ snapr.views.join_snapr = snapr.views.dialog.extend({
            client_id: snapr.client_id
         };
 
+        if(this.options.query && this.options.query.twitter_token){
+            new_user.data.twitter_token = this.options.query.twitter_token;
+        }
+
         var join_snapr_view = this;
 
         // these options will be triggered on login (after successful join)
@@ -131,9 +135,10 @@ snapr.views.join_snapr = snapr.views.dialog.extend({
             error: function( e )
             {
                 $('.x-join-btn').x_loading(false);
-                console.log( "error", e );
+                console.error( "error", e );
             }
         };
+
         // save creates a new user
         new_user.save({}, join_options);
     }
