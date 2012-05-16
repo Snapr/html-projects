@@ -25,6 +25,8 @@ snapr.views.home = snapr.views.page.extend({
             } ))
             .trigger("create");
 
+        new snapr.views.news_ticker({el:this.$('.news-ticker')}).render().tick();
+
         return this;
     },
 

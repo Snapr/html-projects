@@ -158,7 +158,7 @@
             <% if(logged_in) { %>
                 <a href="#/activity/"
                 data-corners="false" data-shadow="false"
-                data-role="button" class="ui-bar ui-bar-e bottom-centered-arrow">News</a>
+                data-role="button" class="news-ticker ui-bar ui-bar-e bottom-centered-arrow">News</a>
             <% }else{ %>
                 <a href="#/about/"
                 data-corners="false" data-shadow="false"
@@ -1444,6 +1444,23 @@
 
     </script>
 
+    <script id="news-ticker-template" type="text/template">
+        <% switch (type){
+            case "follow":%>
+                <%= user.username %> is now following you.
+            <%  break;
+            case "favorite":%>
+                <%= user.username %> likes your photo.
+            <%  break;
+            case "comment":%>
+                <%= user.username %> commented on your photo. "<%= comment %>"
+            <%  break;
+            case "comment-on-comment":%>
+                <%= user.username %> commented after you. "<%= comment %>"
+            <%  break;
+        }%>
+    </script>
+
     <!-- @cities PAGE -->
     <div id="cities" data-title="Cities" data-add-back-btn="true" data-role="page" data-theme="d">
        <div data-role="header" data-theme="b">
@@ -2410,6 +2427,7 @@
 <script src="app/views/activity.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/activity_stream.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/activity_stream_item.js" type="text/javascript" charset="utf-8"></script>
+<script src="app/views/activity_ticker.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/no_results.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/welcome.js" type="text/javascript" charset="utf-8"></script>
 
