@@ -1449,16 +1449,16 @@
     <script id="news-ticker-template" type="text/template">
         <% switch (type){
             case "follow":%>
-                <%= user.username %> is now following you.
+                <em><%= user.username %></em> is now following you
             <%  break;
             case "favorite":%>
-                <%= user.username %> likes your photo.
+                <em><%= user.username %></em> liked your photo
             <%  break;
             case "comment":%>
-                <%= user.username %> commented on your photo. "<%= comment %>"
+                <em><%= user.username %></em> commented on your photo
             <%  break;
             case "comment-on-comment":%>
-                <%= user.username %> commented after you. "<%= comment %>"
+                <em><%= user.username %></em> posted a comment
             <%  break;
         }%>
     </script>

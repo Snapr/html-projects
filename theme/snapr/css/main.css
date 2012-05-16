@@ -3633,6 +3633,15 @@ div.ps-carousel-item-loading {
   top: 0!important;
   left: 0!important;
 }
+#home .ui-bar.news-ticker {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 15px;
+}
+#home .ui-bar.news-ticker em {
+  font-family: 'MuseoSansRounded700', Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  font-style: normal;
+}
 .menu-main {
   padding: 0;
   text-transform: lowercase;
