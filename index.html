@@ -325,13 +325,13 @@
 
                 </fieldset>
 
-                <div class="ui-grid-b">
+                <!-- <div class="ui-grid-b">
                         <div class="ui-block-a"></div>
                         <div class="ui-block-b"></div>
                         <div class="ui-block-c">
                             <button data-theme="e" class="save">Save</button>
                         </div>
-                </div>
+                </div> -->
             </div>
 
             <div data-role="collapsible" data-collapsed="true" class="my-account-account">
@@ -574,7 +574,7 @@
                 <span class="setting-label">Show Facebook in my Profile</span>
                 <select name="facebook-link" id="facebook-link" data-role="slider" data-mini="true">
                     <option value="false">Off</option>
-                    <option value="true" <% if (service.get('show_username')){%>selected<%}%>>On</option>
+                    <option value="true" <% if (service.get('show_profile_link')){%>selected<%}%>>On</option>
                 </select>
             </div>
 
@@ -584,11 +584,13 @@
 
                 </div>
                 <div class="ui-block-b">
-                    <button data-theme="c" class="unlink">Unlink</button>
                 </div>
                 <div class="ui-block-c">
-                    <button data-theme="e" class="save">Save</button>
+                    <button data-theme="c" class="unlink">Unlink</button>
                 </div>
+                <!-- <div class="ui-block-c">
+                    <button data-theme="e" class="save">Save</button>
+                </div> -->
             </div>
         </div>
     </script>

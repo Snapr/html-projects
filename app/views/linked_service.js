@@ -7,6 +7,11 @@ snapr.views.linked_service = Backbone.View.extend({
         this.linked_service_template = _.template( $('#linked-service-template').html() );
 
         this.add_service_template = _.template( $('#add-linked-service-template').html() );
+
+        // if(this.model){
+        //     console.log('binding');
+        //     this.model.bind( "change", this.render, this);
+        // }
     },
 
     events: {
@@ -128,13 +133,17 @@ snapr.views.linked_service = Backbone.View.extend({
         var linked_service = this;
 
         var options = {
-            success: function()
+            success: function(response)
             {
-                linked_service.$el.find("[data-role='collapsible']").trigger('collapse');
+                if(!response.success){
+                    //linked_service.model.fetch();
+                }
+                //linked_service.$el.find("[data-role='collapsible']").trigger('collapse');
             },
             error: function()
             {
-                alert( "Sorry, we had trouble saving your settings." )
+                linked_service.model.fetch();
+                alert( "Sorry, we had trouble saving your settings." );
             }
         }
 
@@ -147,7 +156,7 @@ snapr.views.linked_service = Backbone.View.extend({
 
         if(this.model.provider == 'tumblr')
         {
-            this.model.unset('show_username');
+            //this.model.unset('username');
             this.model.unset('allow_post');
         }
 
@@ -182,63 +191,72 @@ snapr.views.linked_service = Backbone.View.extend({
     twitter_link: function()
     {
         this.model.set({
-            show_name: this.$el.find("#twitter-link").is(':checked')
+            show_username: this.$el.find("#twitter-link").val()
         });
+        this.save_changes();
     },
 
     twitter_tweet: function()
     {
         this.model.set({
-            allow_tweets: this.$el.find('#twitter-tweet').is(':checked')
+            allow_tweets: this.$el.find('#twitter-tweet').val()
         });
+        this.save_changes();
     },
 
     foursquare_link: function()
     {
         this.model.set({
-            show_username: this.$el.find("#foursquare-link").is(':checked')
+            show_username: this.$el.find("#foursquare-link").val()
         });
+        this.save_changes();
     },
 
     foursquare_checkin: function()
     {
         this.model.set({
-            allow_checkin: this.$el.find('#foursquare-checkin').is(':checked')
+            allow_checkin: this.$el.find('#foursquare-checkin').val()
         });
+        this.save_changes();
     },
 
     facebook_link: function()
     {
         this.model.set({
-            show_profile_link: this.$el.find('#facebook-link').is(':checked')
+            show_profile_link: this.$el.find('#facebook-link').val()
         });
+        this.save_changes();
     },
 
     facebook_newsfeed: function()
     {
         this.model.set({
-            allow_newsfeed_posts: this.$el.find('#facebook-newsfeed').is(':checked')
+            allow_newsfeed_posts: this.$el.find('#facebook-newsfeed').val()
         });
+        this.save_changes();
     },
 
     facebook_gallery: function()
     {
         this.model.set({
-            allow_gallery_posts: this.$el.find('#facebook-gallery').is(':checked')
+            allow_gallery_posts: this.$el.find('#facebook-gallery').val()
         });
+        this.save_changes();
     },
 
     tumblr_link: function()
     {
         this.model.set({
-            show_name: this.$el.find('#tumblr-link').is(':checked')
+            show_username: this.$el.find('#tumblr-link').val()
         });
+        this.save_changes();
     },
 
     tumblr_post: function()
     {
         this.model.set({
-            allow_posts: this.$el.find('#tumblr-post').is(':checked')
+            allow_posts: this.$el.find('#tumblr-post').val()
         });
+        this.save_changes();
     }
 });

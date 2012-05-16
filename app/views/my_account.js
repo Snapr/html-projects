@@ -67,8 +67,7 @@ snapr.views.my_account = snapr.views.page.extend({
 
         _.each( this.user_settings.get('linked_services'), function( service, index )
         {
-            var v = new snapr.views.linked_service();
-            v.model = service;
+            var v = new snapr.views.linked_service({model: service});
 
             // keep track of linked services
             linked_services_list[service.provider] = true;
@@ -107,6 +106,7 @@ snapr.views.my_account = snapr.views.page.extend({
         "click .my-account-avatar label": "set_avatar",
         "click .my-account-set-up-gravatar": "set_up_gravatar",
         "click .my-account-notifications .save": "save_notifications",
+        "change .my-account-notifications .ui-slider-switch": "save_notifications",
         "click .my-account-account .save": "save_account",
         "click .my-account-camplus .save": "save_camplus"
     },
@@ -153,9 +153,10 @@ snapr.views.my_account = snapr.views.page.extend({
             data: param,
             success: function( model, xhr )
             {
-                if (xhr.success)
-                {
-                    $(collapse_container).trigger( "collapse" );
+                if (xhr.success){
+                    if(collapse_container){
+                        $(collapse_container).trigger( "collapse" );
+                    }
                 }
                 else
                 {
@@ -181,7 +182,7 @@ snapr.views.my_account = snapr.views.page.extend({
             param[$(select).attr("name")] = ($(select).val() == "true") ? true: false;
         });
 
-        this.save_settings( param, $collapse[0] );
+        this.save_settings( param );
     },
 
     save_account: function( e )
