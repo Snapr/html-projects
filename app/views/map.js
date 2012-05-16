@@ -35,74 +35,66 @@ snapr.views.map = snapr.views.page.extend({
         this.map_query.bind( "change", this.hide_no_results_message );
         this.map_query.bind( "change", this.get_thumbs );
 
-        this.map_settings = {
-            zoom: this.map_query.get( "zoom" ) ||
-                parseInt(snapr.utils.get_local_param('map_zoom')) ||
-                snapr.constants.default_zoom,
-            streetViewControl: false,
-            mapTypeControl: false,
-            mapTypeId: google.maps.MapTypeId.ROADMAP
-        };
-
-        if (this.map_query.get( "lat" ) && this.map_query.get( "lng" )){
-            this.map_settings.center = new google.maps.LatLng( this.map_query.get( "lat" ), this.map_query.get( "lng" ) );
-        }
-        else if (snapr.utils.get_local_param('map_latitude') && snapr.utils.get_local_param('map_longitude'))
-        {
-            this.map_settings.center = new google.maps.LatLng( snapr.utils.get_local_param('map_latitude'), snapr.utils.get_local_param('map_longitude') );
-        }
-
-        // todo set this in subview
-        // if (this.query.keywords)
-        // {
-        //     this.$el.find("#map-keyword input").val(this.query.keywords);
-        // }
-
-        this.geocoder = new google.maps.Geocoder();
-
-        if(this.map)
-        {
-            if (this.map_query.get( "location" ))
-            {
+        if(this.map){
+            if (this.map_query.get( "location" )){
                 this.search_location( this.map_query.get( "location" ) );
-            }
-            else
-            {
+            }else{
                 this.go_to_current_location();
             }
-        }
-        else
-        {
+        }else{
+
             var map_view = this;
+            window.gmap_script_loaded = function(){
+                map_view.create_custom_overlays();
 
-            this.$el.on( "pageshow", function()
-            {
-                var success_callback = function( location )
-                {
-                    map_view.map_settings.center = new google.maps.LatLng(location.coords.latitude, location.coords.longitude);
-                    map_view.create_map(map_view.query && map_view.query.location);
-                };
-                var error_callback = function()
-                {
-                    map_view.map_settings.center = new google.maps.LatLng(42, 12);
-                    map_view.map_settings.zoom = 2;
-                    map_view.create_map(map_view.query && map_view.query.location);
+                map_view.map_settings = {
+                    zoom: map_view.map_query.get( "zoom" ) ||
+                        parseInt(snapr.utils.get_local_param('map_zoom')) ||
+                        snapr.constants.default_zoom,
+                    streetViewControl: false,
+                    mapTypeControl: false,
+                    mapTypeId: google.maps.MapTypeId.ROADMAP
                 };
 
-                if (map_view.map_settings.center === undefined)
-                {
-                    snapr.geo.get_location( success_callback, error_callback );
+                if (map_view.map_query.get( "lat" ) && map_view.map_query.get( "lng" )){
+                    map_view.map_settings.center = new google.maps.LatLng( map_view.map_query.get( "lat" ), map_view.map_query.get( "lng" ) );
                 }
-                else
+                else if (snapr.utils.get_local_param('map_latitude') && snapr.utils.get_local_param('map_longitude'))
                 {
-                    map_view.create_map( map_view.map_query.get( "location" ) );
+                    map_view.map_settings.center = new google.maps.LatLng( snapr.utils.get_local_param('map_latitude'), snapr.utils.get_local_param('map_longitude') );
                 }
+
+                map_view.geocoder = new google.maps.Geocoder();
 
                 map_view.$el.live('pagehide', function (e) {
                     google.maps.event.clearListeners( map_view.map, "idle" );
                     return true;
                 });
+
+                map_view.$el.on( "pageshow", function(){
+                var success_callback = function( location ){
+                    map_view.map_settings.center = new google.maps.LatLng(location.coords.latitude, location.coords.longitude);
+                    map_view.create_map(map_view.query && map_view.query.location);
+                };
+                var error_callback = function(){
+                    map_view.map_settings.center = new google.maps.LatLng(42, 12);
+                    map_view.map_settings.zoom = 2;
+                    map_view.create_map(map_view.query && map_view.query.location);
+                };
+
+                if (map_view.map_settings.center === undefined){
+                    snapr.geo.get_location( success_callback, error_callback );
+                }else{
+                    map_view.create_map( map_view.map_query.get( "location" ) );
+                }
+
             });
+            };
+            // this loads the google loader script with the maps lib autoloaded with a callback to gmap_script_loaded
+            // {"modules":[{"name":"maps","version":"3.x","callback":"gmap_script_loaded",'other_params':"sensor=false"}]}
+            $(document.body).append($('<script src="https://www.google.com/jsapi?autoload=%7B%22modules%22%3A%5B%7B%22name%22%3A%22maps%22%2C%22version%22%3A%223.x%22%2C%22callback%22%3A%22gmap_script_loaded%22%2C\'other_params\'%3A%22sensor%3Dfalse%22%7D%5D%7D"></script>'));
+
+
         }
 
         this.map_controls = new snapr.views.map_controls({
@@ -398,5 +390,134 @@ snapr.views.map = snapr.views.page.extend({
         {
             console.warn("map not initialized", this);
         }
+    },
+    create_custom_overlays: function(){
+        snapr.SnapOverlay = function(type, data, map, extra_class)
+        {
+            // image as JS object in format the snapr api returns
+            this.type_ = type;
+            this.data_ = data;
+            this.map_ = map;
+            this.extra_class_ = extra_class;
+
+            // We define a property to hold the image's
+            // div. We'll actually create this div
+            // upon receipt of the add() method so we'll
+            // leave it null for now.
+            this.div_ = null;
+
+            // Explicitly call setMap() on this overlay
+            this.setMap(map);
+        };
+
+        snapr.SnapOverlay.prototype = new google.maps.OverlayView();
+        snapr.SnapOverlay.prototype.get_div = function(){
+            var data_id = this.data_.id;
+
+            if (this.type_ == 'photo') {
+                console.debug("photo");
+                return $(this.map.snapr.thumb_template({photo:this.data_})).show();
+            } else {  //spot
+                console.debug("spot");
+                return $(this.map.snapr.spot_template({spot:this.data_})).show();
+            }
+
+        };
+        snapr.SnapOverlay.prototype.onAdd = function()
+        {
+            // Note: an overlay's receipt of onAdd() indicates that
+            // the map's panes are now available for attaching
+            // the overlay to the map via the DOM.
+
+            var div = this.get_div();
+
+            // Set the overlay's div_ property to this DIV
+            this.div_ = div;
+            console.log('add', $(this.div_).children().attr('class'));
+
+            // We add an overlay to a map via one of the map's panes.
+            // We'll add this overlay to the overlayImage pane.
+            var panes = this.getPanes();
+            $(panes.floatPane).append(this.div_);
+        };
+        snapr.SnapOverlay.prototype.draw = function()
+        {
+            console.log('draw thumb');
+            var overlayProjection = this.getProjection();
+            var position = new google.maps.LatLng( this.data_.location.latitude, this.data_.location.longitude );
+            var px = overlayProjection.fromLatLngToDivPixel( position );
+
+            this.div_ = this.div_
+                .css('position', 'absolute')
+                .css('left', px.x + 'px')
+                .css('top', px.y + 'px');
+        };
+        snapr.SnapOverlay.prototype.onRemove = function()
+        {
+            console.log('removed', $(this.div_).children().attr('class'));
+            $(this.div_).remove();
+            this.div_ = null;
+        };
+        snapr.SnapOverlay.prototype.hide = function()
+        {
+            if (this.div_)
+            {
+              this.div_.style.visibility = "hidden";
+            }
+        }
+        snapr.SnapOverlay.prototype.show = function()
+        {
+            if (this.div_)
+            {
+              this.div_.style.visibility = "visible";
+            }
+        };
+        snapr.SnapOverlay.prototype.toggle = function()
+        {
+            if (this.div_)
+            {
+              if (this.div_.style.visibility == "hidden")
+              {
+                this.show();
+              }
+              else
+              {
+                this.hide();
+              }
+            }
+        };
+        snapr.SnapOverlay.prototype.toggleDOM = function()
+        {
+            if (this.getMap())
+            {
+              this.setMap( null );
+            }
+            else
+            {
+              this.setMap( this.map_ );
+            }
+        };
+
+        snapr.CurrentLocation = function(data, map){
+            snapr.SnapOverlay.call(this, undefined, data, map);
+        };
+        snapr.CurrentLocation.prototype= new snapr.SnapOverlay();
+        snapr.CurrentLocation.prototype.get_div = function()
+        {
+            console.debug("current", $(this.map.snapr.location_template()).show());
+            return $(this.map.snapr.location_template()).show();
+        };
+        snapr.CurrentLocation.prototype.draw = function()
+        {
+            console.log('draw CurrentLocation', this.div_);
+            var overlayProjection = this.getProjection();
+            var position = new google.maps.LatLng( this.data_.location.latitude, this.data_.location.longitude );
+            var px = overlayProjection.fromLatLngToDivPixel( position );
+
+            this.div_ = this.div_
+                .css('position', 'absolute')
+                .css('left', px.x + 'px')
+                .css('top', px.y + 'px');
+        };
     }
 });
