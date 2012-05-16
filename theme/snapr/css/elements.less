@@ -106,6 +106,9 @@
             height: @gfx-extra-icon-sprite-grid;
             width: @gfx-extra-icon-sprite-grid;
         }
+         .ui-icon-arrow-r {
+               right: -10px;
+           }
     }
     .ui-btn{
         background: none;
@@ -142,9 +145,7 @@
            overflow: hidden;
            text-overflow: ellipsis;
        }
-       .ui-icon-arrow-r {
-           right: -2px;
-       }
+      
       .ui-btn-text{
           padding-left: 20px;
            display: block;
@@ -598,7 +599,7 @@
         background: none;
         .ui-icon-delete{
             width: 32px;
-            background-position: @gfx-general-icon-sprite-delete-x + @gfx-general-icon-extra-x-offset @g-light-offset-y;
+            background-position: @gfx-general-icon-sprite-delete-x @g-light-offset-y;
         }
     }
 
@@ -619,7 +620,7 @@
     }
 
     .ui-icon-check{
-        background-position: @gfx-general-icon-sprite-check-x + @gfx-general-icon-extra-x-offset @g-highlight-offset-y;
+        background-position: @gfx-general-icon-sprite-check-x @g-highlight-offset-y;
     }
 
 }
@@ -794,13 +795,13 @@
                 right: 0;
             }
             .ui-icon-check{
-                background-position: @gfx-general-icon-sprite-check-x + 9px @g-yellow-offset-y;
+                background-position: @gfx-general-icon-sprite-check-x @g-yellow-offset-y;
             }
             .ui-icon-plus{
-                background-position: @gfx-general-icon-sprite-plus-x + 9px @g-light-offset-y;
+                background-position: @gfx-general-icon-sprite-plus-x @g-light-offset-y;
             }
             .ui-icon-tick{
-                background-position: @gfx-general-icon-sprite-check-x + 9px @g-highlight-offset-y;
+                background-position: @gfx-general-icon-sprite-check-x @g-highlight-offset-y;
             }
         }
     }
@@ -842,6 +843,7 @@
     }
     &.ui-icon-searchfield::after{
         margin-top: -18px;
+        margin-left: -@gfx-general-icon-extra-x-offset;
     }
     .ui-input-clear {
         position: absolute;
@@ -852,7 +854,7 @@
         .ui-icon-delete{
             width: @gfx-general-icon-sprite-grid;
             height: @gfx-general-icon-sprite-grid;
-            background-position: @gfx-general-icon-sprite-delete-x + 9px @g-light-offset-y;
+            background-position: @gfx-general-icon-sprite-delete-x @g-light-offset-y;
         }
     }
 }
@@ -1238,7 +1240,7 @@ h4{
         .ps-toolbar-content{
             margin-right: 0px;
             background-image: url('../gfx/general-jquerymob-icons.png');
-            background-position: @gfx-general-icon-sprite-delete-x + @gfx-general-icon-extra-x-offset + 5px @g-light-offset-y + 5px;
+            background-position: @gfx-general-icon-sprite-delete-x + 5px @g-light-offset-y + 5px;
             width: @size-topbar-height;
             height: @size-topbar-height;
         }

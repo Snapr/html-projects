@@ -346,9 +346,23 @@
         padding-left: @size-large-avatar + @padding-page-inset;
         z-index: 0;
         .ui-btn-right{
+            
             position: absolute;
             right: -4px;
-            top: 8px;
+            top: 0px;
+            .ui-btn {
+                margin-bottom: 0px;
+                .ui-btn-inner{
+                    height: 36px;
+                    .ui-btn-text{
+                        line-height: 34px;
+                    }
+                    .ui-icon{
+                        width: 36px;
+                    }
+                }
+            }
+            
         }
     }
     .user-stats{
@@ -1074,7 +1088,7 @@
             height: @gfx-general-icon-sprite-grid;
         }
         .ui-icon-check{
-            background-position: @gfx-general-icon-sprite-check-x + 9px @g-highlight-offset-y;
+            background-position: @gfx-general-icon-sprite-check-x @g-highlight-offset-y;
         }
     }
 
