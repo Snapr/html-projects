@@ -893,7 +893,7 @@
     <!-- @feed @image ITEM correct one -->
     <script id="feed-li-list-template" type="text/template">
 
-        <div class="image-item-block">
+        <div class="image-item-block<% if (item.get("status") != "public"){%> private<%}%>">
             <div class="image-item-topbar">
                 <a class="user-icon-link" data-transition="slide" href="#/feed/?username=<%= item.get('username') %><% if(back){%>&back=<%=back%><%}%>">
                     <div class="user-icon-small" style="background-image: url('<%= snapr.avatar_url %>/<%= item.get('user_id') %>/');"></div>
@@ -953,7 +953,7 @@
                     <span class="v-fav-button inline-btn"></span>
                     <span class="v-comment-button inline-btn"></span>
                     <span class="v-more-button inline-btn has-palette">
-                         <div data-role="button" data-icon="action-more" data-inline="true" data-iconpos="left" class="more-button action-icons" >&nbsp;<% if (item.get("status") == "private"){%>(private)<%}%></div>
+                         <div data-role="button" data-icon="action-more" data-inline="true" data-iconpos="left" class="more-button action-icons" >&nbsp;</div>
                          <div class="v-photo-manage action-palette"></div>
                     </span>
 

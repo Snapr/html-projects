@@ -550,6 +550,11 @@
         }
     }
 }
+.image-item-block.private{
+    .image-status{
+        display:inherit;
+    }
+}
 
 .feed-footer{
 
@@ -688,12 +693,12 @@
         .corner-top (8px);
         .corner-bottom(0);
     }
-    
+
     /* Hide the default streams that are unremovable */
        .image-stream[data-id="null"]{
-          display: none; 
+          display: none;
        }
-    
+
     /* Tick state for button while in edit mode */
     .ui-header{
         .ui-btn-up-a{
@@ -1146,7 +1151,7 @@
 #uploading{
     .upload-progress-header{
         height: @size-img-thumb + @padding-page-inset * 3;
-    } 
+    }
     .upload-progress-item{
         padding: 0;
         .upload-image-thumb-gall{
@@ -1191,7 +1196,7 @@
             }
         }
     }
-    
+
 }
 
 /*
@@ -1414,7 +1419,7 @@
         .like-icons-list{
             margin-top: @padding-page-inset;
             margin-bottom: 0;
-           
+
         }
     }
 
@@ -1463,7 +1468,7 @@
             padding-top: 0!important;
         }
     }
-    
+
     /* If the first item (after the top bar) is a follow item get rid of its top border */
     .activity-stream:nth-child(2){
         .activity-follow-item{

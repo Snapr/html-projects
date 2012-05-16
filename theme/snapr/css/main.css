@@ -4306,6 +4306,9 @@ div.ps-carousel-item-loading {
 .image-item-block .comment-area .photo-comment {
   min-height: 75px;
 }
+.image-item-block.private .image-status {
+  display: inherit;
+}
 .feed-footer .ui-btn {
   -moz-border-radius-topleft: 0;
   -webkit-border-top-left-radius: 0;
