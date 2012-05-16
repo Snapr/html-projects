@@ -42,59 +42,7 @@ snapr.views.map = snapr.views.page.extend({
                 this.go_to_current_location();
             }
         }else{
-
-            var map_view = this;
-            window.gmap_script_loaded = function(){
-                map_view.create_custom_overlays();
-
-                map_view.map_settings = {
-                    zoom: map_view.map_query.get( "zoom" ) ||
-                        parseInt(snapr.utils.get_local_param('map_zoom')) ||
-                        snapr.constants.default_zoom,
-                    streetViewControl: false,
-                    mapTypeControl: false,
-                    mapTypeId: google.maps.MapTypeId.ROADMAP
-                };
-
-                if (map_view.map_query.get( "lat" ) && map_view.map_query.get( "lng" )){
-                    map_view.map_settings.center = new google.maps.LatLng( map_view.map_query.get( "lat" ), map_view.map_query.get( "lng" ) );
-                }
-                else if (snapr.utils.get_local_param('map_latitude') && snapr.utils.get_local_param('map_longitude'))
-                {
-                    map_view.map_settings.center = new google.maps.LatLng( snapr.utils.get_local_param('map_latitude'), snapr.utils.get_local_param('map_longitude') );
-                }
-
-                map_view.geocoder = new google.maps.Geocoder();
-
-                map_view.$el.live('pagehide', function (e) {
-                    google.maps.event.clearListeners( map_view.map, "idle" );
-                    return true;
-                });
-
-                map_view.$el.on( "pageshow", function(){
-                var success_callback = function( location ){
-                    map_view.map_settings.center = new google.maps.LatLng(location.coords.latitude, location.coords.longitude);
-                    map_view.create_map(map_view.query && map_view.query.location);
-                };
-                var error_callback = function(){
-                    map_view.map_settings.center = new google.maps.LatLng(42, 12);
-                    map_view.map_settings.zoom = 2;
-                    map_view.create_map(map_view.query && map_view.query.location);
-                };
-
-                if (map_view.map_settings.center === undefined){
-                    snapr.geo.get_location( success_callback, error_callback );
-                }else{
-                    map_view.create_map( map_view.map_query.get( "location" ) );
-                }
-
-            });
-            };
-            // this loads the google loader script with the maps lib autoloaded with a callback to gmap_script_loaded
-            // {"modules":[{"name":"maps","version":"3.x","callback":"gmap_script_loaded",'other_params':"sensor=false"}]}
-            $(document.body).append($('<script src="https://www.google.com/jsapi?autoload=%7B%22modules%22%3A%5B%7B%22name%22%3A%22maps%22%2C%22version%22%3A%223.x%22%2C%22callback%22%3A%22gmap_script_loaded%22%2C\'other_params\'%3A%22sensor%3Dfalse%22%7D%5D%7D"></script>'));
-
-
+            this.init_map_options();
         }
 
         this.map_controls = new snapr.views.map_controls({
@@ -109,12 +57,68 @@ snapr.views.map = snapr.views.page.extend({
         "click .x-map-feed": "map_feed"
     },
 
+    init_map_options: function(){
+
+        // load maps libs if needed
+        if(!window.google || !window.google.maps){
+            window.gmap_script_loaded = this.init_map_options;
+            // this loads the google loader script with the maps lib autoloaded with a callback to gmap_script_loaded
+            // {"modules":[{"name":"maps","version":"3.x","callback":"gmap_script_loaded",'other_params':"sensor=false"}]}
+            $(document.body).append($('<script src="https://www.google.com/jsapi?autoload=%7B%22modules%22%3A%5B%7B%22name%22%3A%22maps%22%2C%22version%22%3A%223.x%22%2C%22callback%22%3A%22gmap_script_loaded%22%2C\'other_params\'%3A%22sensor%3Dfalse%22%7D%5D%7D"></script>'));
+        }
+
+        var map_view = this;
+
+        map_view.create_custom_overlays();
+
+        map_view.map_settings = {
+            zoom: map_view.map_query.get( "zoom" ) ||
+                parseInt(snapr.utils.get_local_param('map_zoom')) ||
+                snapr.constants.default_zoom,
+            streetViewControl: false,
+            mapTypeControl: false,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+
+        if (map_view.map_query.get( "lat" ) && map_view.map_query.get( "lng" )){
+            map_view.map_settings.center = new google.maps.LatLng( map_view.map_query.get( "lat" ), map_view.map_query.get( "lng" ) );
+        }else if (snapr.utils.get_local_param('map_latitude') && snapr.utils.get_local_param('map_longitude')){
+            map_view.map_settings.center = new google.maps.LatLng( snapr.utils.get_local_param('map_latitude'), snapr.utils.get_local_param('map_longitude') );
+        }
+
+        map_view.geocoder = new google.maps.Geocoder();
+
+        map_view.$el.live('pagehide', function (e) {
+            google.maps.event.clearListeners( map_view.map, "idle" );
+            return true;
+        });
+
+        map_view.$el.on( "pageshow", function(){
+            var success_callback = function( location ){
+                map_view.map_settings.center = new google.maps.LatLng(location.coords.latitude, location.coords.longitude);
+                map_view.create_map(map_view.query && map_view.query.location);
+            };
+            var error_callback = function(){
+                map_view.map_settings.center = new google.maps.LatLng(42, 12);
+                map_view.map_settings.zoom = 2;
+                map_view.create_map(map_view.query && map_view.query.location);
+            };
+
+            if (map_view.map_settings.center === undefined){
+                snapr.geo.get_location( success_callback, error_callback );
+            }else{
+                map_view.create_map( map_view.map_query.get( "location" ) );
+            }
+        });
+    },
+
     create_map: function (location) {
+
         this.map = new google.maps.Map(
             document.getElementById("google-map"), this.map_settings);
 
         snapr.geo.get_location(function(location){
-            console.log('pinning', location);
+            console.debug('pinning', location);
             new snapr.CurrentLocation( {
                 location: {
                     latitude: location.coords.latitude,
