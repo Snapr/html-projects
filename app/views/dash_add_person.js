@@ -109,7 +109,9 @@ snapr.views.dash_add_person = snapr.views.dialog.extend({
             }, 300 );
 
         }else{
-            this_view.collection.reset();
+            if(this_view.collection.length){  // stops the list showing no-results on initial searches
+                this_view.collection.reset();
+            }
         }
     }
 
