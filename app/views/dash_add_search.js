@@ -3,6 +3,7 @@ snapr.views.dash_add_search = snapr.views.dialog.extend({
     initialize: function()
     {
         snapr.views.dialog.prototype.initialize.call( this );
+        this.$el.find(".ui-input-text").val('');
 
         this.change_page({
             transition: this.transition

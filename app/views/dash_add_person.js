@@ -5,6 +5,7 @@ snapr.views.dash_add_person = snapr.views.dialog.extend({
         snapr.views.dialog.prototype.initialize.call( this );
 
         this.$el.find("ul.people-list").empty();
+        this.$el.find(".ui-input-text").val('');
 
         this.collection = new snapr.models.user_collection();
 
