@@ -65,9 +65,11 @@ snapr.views.my_account = snapr.views.page.extend({
             twitter:false
         };
 
+        var my_account = this;
         _.each( this.user_settings.get('linked_services'), function( service, index )
         {
             var v = new snapr.views.linked_service({model: service});
+            v.my_account = my_account;
 
             // keep track of linked services
             linked_services_list[service.provider] = true;
@@ -148,6 +150,7 @@ snapr.views.my_account = snapr.views.page.extend({
     {
         // prevent backbone from thinking this is a new user
         this.user_settings.id = true;
+        var my_account = this;
 
         this.user_settings.save({},{
             data: param,
@@ -161,11 +164,15 @@ snapr.views.my_account = snapr.views.page.extend({
                 else
                 {
                     console.warn( "error saving notifications", xhr );
+                    alert( "Sorry, we had trouble saving your settings." );
+                    my_account.initialize();
                 }
             },
             error: function( e )
             {
                 console.warn( "error saving notifications", e );
+                alert( "Sorry, we had trouble saving your settings." );
+                my_account.initialize();
             }
         });
     },

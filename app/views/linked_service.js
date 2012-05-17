@@ -133,30 +133,31 @@ snapr.views.linked_service = Backbone.View.extend({
         var linked_service = this;
 
         var options = {
-            success: function(response)
+            success: function(model, response)
             {
                 if(!response.success){
-                    //linked_service.model.fetch();
+                    alert( "Sorry, we had trouble saving your settings." );
+                    linked_service.my_account.initialize();
                 }
                 //linked_service.$el.find("[data-role='collapsible']").trigger('collapse');
             },
             error: function()
             {
-                linked_service.model.fetch();
                 alert( "Sorry, we had trouble saving your settings." );
+                linked_service.my_account.initialize();
             }
-        }
+        };
 
         if(this.model.provider == 'facebook')
         {
             this.model.set({
                 gallery_name: this.$el.find("#facebook-gallery-name").val()
-            })
+            });
         }
 
         if(this.model.provider == 'tumblr')
         {
-            //this.model.unset('username');
+            this.model.unset('username');
             this.model.unset('allow_post');
         }
 
@@ -168,7 +169,7 @@ snapr.views.linked_service = Backbone.View.extend({
         // set the data to be posted here since it's not part of the model
         this.model.data = {
             import_profile: true
-        }
+        };
 
         var linked_service = this;
 
@@ -183,7 +184,7 @@ snapr.views.linked_service = Backbone.View.extend({
             {
                 console.log( 'import profile error', e );
             }
-        }
+        };
 
         this.model.save( {}, options );
     },
