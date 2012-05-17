@@ -3728,6 +3728,47 @@ div.ps-carousel-item-loading {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
+  position: relative;
+}
+.menu-main .ui-grid-b .upload-count {
+  background-color: #4185f4;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#4185f4), to(#194fdc));
+  /* Saf4+, Chrome */
+
+  background-image: -webkit-linear-gradient(top, #4185f4, #194fdc);
+  /* Chrome 10+, Saf5.1+ */
+
+  background-image: -moz-linear-gradient(top, #4185f4, #194fdc);
+  /* FF3.6 */
+
+  background-image: -ms-linear-gradient(top, #4185f4, #194fdc);
+  /* IE10 */
+
+  background-image: -o-linear-gradient(top, #4185f4, #194fdc);
+  /* Opera 11.10+ */
+
+  background-image: linear-gradient(top, #4185f4, #194fdc);
+  display: none;
+  position: absolute;
+  top: 20%;
+  right: 16%;
+  min-height: 13px;
+  min-width: 13px;
+  padding: 2px 3px 4px 3px;
+  -moz-border-radius: 20px;
+  -webkit-border-radius: 20px;
+  border-radius: 20px;
+  color: white;
+  text-shadow: rgba(0, 0, 0, 0.5) 0px -1px 0px;
+  font-weight: bold;
+  -moz-box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 2px 0px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 2px 0px;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 2px 0px;
+  font-size: 13px;
+  line-height: 13px;
+  text-align: center;
+  text-transform: none;
+  vertical-align: middle;
 }
 .menu-main .ui-grid-a {
   /* Shadow under top button block */

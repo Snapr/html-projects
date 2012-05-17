@@ -95,7 +95,31 @@
        .ui-block-c{
            border-bottom: @border-medium-on-light;
            .border-box();
+           position: relative;
         }
+        
+        .upload-count{
+            background-color: @color-bg-system-main;
+            .linear-gradient(@color-bg-system-main, @color-bg-system-main-tint);
+            display: none;
+            position: absolute;
+            top: 20%;
+            right: 16%;
+            min-height: 13px;
+            min-width: 13px;
+            padding:  2px 3px 4px 3px;
+            .corner-all(20px);
+            color: white;
+            text-shadow: @color-shadow-medium-on-dark 0px -1px 0px;
+            font-weight: bold;
+            .box-shadow(rgba(0, 0, 0, 0.15) 0px 2px 2px 0px);
+            font-size: 13px;
+            line-height: 13px;
+            text-align: center;
+            text-transform: none;
+            vertical-align: middle;
+        }
+        
     }
     /* Larger 2 column Btns */
     .ui-grid-a{
