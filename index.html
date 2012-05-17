@@ -125,7 +125,7 @@
                         My Snaps
                         </a>
                         <span class="upload-count">1</span>
-                        
+
                  <%}else{%>
                         <a href="#/feed/" data-corners="false" data-shadow="false" data-role="button" data-theme="c" data-iconpos="top" data-icon="main-menu-feed">Latest</a>
                 <%}%>
@@ -701,7 +701,7 @@
                         <input type="password" name="password" placeholder="Password" id="tumblr-password">
                    </li>
                 </ul>
-                
+
                 <!-- So pressing enter will still submit form, but so we can also add custom gfx to the button -->
                 <div class="invisible-submit-button">
                     <input type="submit" name="tumblr-dialog" data-theme="e" value="Connect Tumblr">
@@ -709,7 +709,7 @@
                 <a data-role="button" class="tumblr-button logo-button" data-theme="e">
                     Connect <span class="tumblr-logo button-logo">Tumblr</span>
                 </a>
-                
+
            </form>
        </div>
    </div><!-- /page -->
@@ -1000,7 +1000,7 @@
     </script>
 
     <!-- @feed @pallette ITEM - clicks to gallery view -->
-    
+
     <script id="photo-manage-template" type="text/template">
     <div class="center-palette">
         <div class="inline-palette ui-body-b" data-theme="b">
@@ -1012,7 +1012,7 @@
                 <a class="x-image-delete" data-role="button" data-icon="delete" data-inline="true" data-iconpos="notext">
                        delete
                    </a>
-                <%} else {%>               
+                <%} else {%>
                 <a class="x-image-flag" data-role="button" data-icon="flag" data-inline="true" data-iconpos="notext">
                     <% if (flagged){%> flagged <% }else{ %> flag <% } %>
                 </a>
@@ -1475,7 +1475,9 @@
             case "comment-on-comment":%>
                 <em><%= user.username %></em> posted a comment
             <%  break;
-        }%>
+            default: %>
+                activity
+        <%}%>
     </script>
 
     <!-- @cities PAGE -->
@@ -1884,7 +1886,7 @@
                             <label for="password">Password</label><input type="password" name="password" placeholder="Password" id="login-dialog-password">
                         </li>
                     </ul>
-                    
+
                     <input type="submit" name="login" data-theme="e" value="Log In">
 
                 </form>
