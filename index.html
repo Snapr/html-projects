@@ -835,15 +835,15 @@
             <% switch (feed_type) { case 'spot': %>
                 <h4>@ <em><%= feed_parameter %></em></h4>
             <% break; case 'location': %>
-                <h4>Location Feed</h4>
+                <h4><em>Location Feed</em></h4>
             <% break; case 'search': %>
                 <h4>Search for <em><%= feed_parameter %></em></h4>
             <% break; case 'favorites': %>
                 <h4>Favorited by <a href="#/feed/?username=<%= feed_parameter %>"><em><%= feed_parameter %></em></a></h4>
             <% break; case 'recent': %>
-                <h4>Recent Uploads</h4>
+                <h4><em>Recent Uploads</em></h4>
             <% break; case 'feed': %>
-                <h4>Feed</h4>
+                <h4><em>Feed</em></h4>
             <% break;}%>
         <% } %>
        </div>
@@ -999,6 +999,8 @@
 
     </script>
 
+    <!-- @feed @pallette ITEM - clicks to gallery view -->
+    
     <script id="photo-manage-template" type="text/template">
     <div class="center-palette">
         <div class="inline-palette ui-body-b" data-theme="b">
@@ -1007,13 +1009,12 @@
                 <a class="x-image-privacy" data-role="button" data-icon="settings" data-inline="true" data-iconpos="left">
                     <%= status %>
                </a>
-           <%}%>
+                <a class="x-image-delete" data-role="button" data-icon="delete" data-inline="true" data-iconpos="notext">
+                       delete
+                   </a>
+                <%} else {%>               
                 <a class="x-image-flag" data-role="button" data-icon="flag" data-inline="true" data-iconpos="notext">
                     <% if (flagged){%> flagged <% }else{ %> flag <% } %>
-                </a>
-           <% if (mine) {%>
-                <a class="x-image-delete" data-role="button" data-icon="delete" data-inline="true" data-iconpos="notext">
-                    delete
                 </a>
            <%}%>
            </div>
