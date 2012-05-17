@@ -63,7 +63,7 @@ snapr.views.twitter_xauth = snapr.views.dialog.extend({
                         }
                     }else{
                         console.error(data);
-                        snapr.utils.notification('Twitter Error', 'Incorrect login details');
+                        snapr.utils.notification('oops', 'your twitter login details were incorrect');
                     }
                 },
                 complete: function(){
@@ -85,7 +85,7 @@ snapr.views.twitter_xauth = snapr.views.dialog.extend({
                         window.location = redirect + $.param(data.response);
                     }else{
                         console.error(data);
-                        snapr.utils.notification('Twitter Error', 'Incorrect login details');
+                        snapr.utils.notification('oops', 'your twitter login details were incorrect');
                     }
                 },
                 complete: function(){
