@@ -2688,7 +2688,7 @@ a.ui-link-inherit {
 */
 .thumbs-grid-med, .grid #feed-images {
   margin: 0 -8px;
-  padding: 4px 0 0 4px;
+  padding: 0 0 0 4px;
   min-height: 101px;
 }
 .thumbs-grid-med .image-link, .grid #feed-images .image-link {
@@ -3572,10 +3572,24 @@ a.ui-link-inherit {
   font-size: 15px;
   color: #cccccc;
   text-align: left;
-  padding: 8px 8px 8px 28px;
+  padding: 0 14px 0 32px;
   background-image: url('../gfx/gallery-quote.png');
   background-repeat: no-repeat;
-  background-position: 10px 8px;
+  background-position: 10px 0;
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+.ps-caption-bottom .ps-caption-content::after {
+  content: " ";
+  width: 36px;
+  height: 36px;
+  display: block;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  margin-top: -18px;
+  background-image: url('../gfx/general-jquerymob-icons.png');
+  background-position: -99px -72px;
 }
 div.ps-carousel-item-loading {
   display: block;
@@ -3985,7 +3999,7 @@ div.ps-carousel-item-loading {
 * @feed PAGE
 */
 #feed-images {
-  min-height: 324px;
+  min-height: 324px!important;
 }
 .feed-header {
   margin-bottom: 8px;
@@ -4393,6 +4407,9 @@ div.ps-carousel-item-loading {
 }
 .inline-palette .ui-btn-icon-left .ui-btn-inner .ui-icon {
   left: 0;
+}
+#popular-thumbs {
+  margin-top: 4px;
 }
 /*
 * @dashboard - PAGE
@@ -5745,6 +5762,13 @@ div.ps-carousel-item-loading {
     -o-background-size: 14px 10px;
     -webkit-background-size: 14px 10px;
     background-size: 14px 10px;
+  }
+  .ps-caption-bottom .ps-caption-content::after {
+    background-image: url('../gfx/general-jquerymob-icons.png');
+    -moz-background-size: 774px 180px;
+    -o-background-size: 774px 180px;
+    -webkit-background-size: 774px 180px;
+    background-size: 774px 180px;
   }
   div.ps-carousel-item-loading {
     display: block;

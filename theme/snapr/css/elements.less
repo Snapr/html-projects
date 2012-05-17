@@ -314,7 +314,7 @@
 .thumbs-grid-med,
 .grid #feed-images{
     margin: 0 -@padding-page-inset;
-    padding: @padding-image-grid-inset 0 0 @padding-image-grid-inset;
+    padding: 0 0 0 @padding-image-grid-inset;
     min-height: @size-img-thumb;
 
     .image-link{
@@ -1231,10 +1231,24 @@ h4{
         font-size: @txt-size-base;
         color: @color-txt-light-on-dark;
         text-align: left;
-        padding: @padding-element-inset @padding-element-inset @padding-element-inset 28px;
+        padding: 0 14px 0 32px;
         background-image: url('../gfx/gallery-quote.png');
         background-repeat: no-repeat;
-        background-position: 10px 8px;
+        background-position: 10px 0;
+        margin-top:  @padding-element-inset;
+        margin-bottom:  @padding-element-inset;
+        &::after{
+            content: " ";
+            width: 36px;
+            height: 36px;
+            display: block;
+            position: absolute;
+            right: 0;
+            top:50%;
+            margin-top: -18px;
+            background-image: url('../gfx/general-jquerymob-icons.png');
+            background-position: @gfx-general-icon-sprite-arrow-r-x @g-dark-offset-y;
+        }
     }
 }
 
