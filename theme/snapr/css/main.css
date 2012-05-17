@@ -5081,19 +5081,18 @@ div.ps-carousel-item-loading {
   margin-bottom: 0;
 }
 .add-services li.ui-li .ui-btn-text, .share-icons-list li.ui-li .ui-btn-text {
-  padding: 16px 40px 16px 16px;
+  padding: 0;
   width: auto;
 }
 .add-services li.ui-li .ui-btn-text .ui-link-inherit, .share-icons-list li.ui-li .ui-btn-text .ui-link-inherit {
-  padding: 0!important;
-  padding-left: 28px!important;
+  padding: 16px 40px 16px 44px!important;
   position: relative;
   overflow: visible;
 }
 .add-services li.ui-li .sharing-icon-small, .share-icons-list li.ui-li .sharing-icon-small {
   position: absolute;
-  top: -3px;
-  left: 0;
+  top: 14px;
+  left: 16px;
 }
 .avatar-select-block {
   padding-left: 112px;
