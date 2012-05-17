@@ -37,6 +37,8 @@ snapr.views.connect = snapr.views.page.extend({
                 }
             }else if(_.contains(this.shared, provider)){
                 status = 'shared';
+            }else{
+                return;  // we don't need to deal with this service
             }
 
             var li = new snapr.views.connect_li({
