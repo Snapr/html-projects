@@ -44,9 +44,11 @@ snapr.views.news_ticker = Backbone.View.extend({
             interval = 30;
         }
         this.interval_id = setInterval(this.render, interval * 1000);
+        return this;
     },
 
     stop: function(){
         clearInterval(this.interval_id);
+        return this;
     }
 });

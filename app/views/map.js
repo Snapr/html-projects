@@ -15,6 +15,7 @@ snapr.views.map = snapr.views.page.extend({
         }
 
         var map_view = this;
+        this.$el.die('pageshow');
         this.$el.live('pageshow', function (e) {
             map_view.when_page_showen();
         });
@@ -102,6 +103,7 @@ snapr.views.map = snapr.views.page.extend({
         // this might be ready to run now - it will decide for itself
         map_view.when_page_showen_and_maps_loaded();
 
+        map_view.$el.die('pagehide');
         map_view.$el.live('pagehide', function (e) {
             google.maps.event.clearListeners( map_view.map, "idle" );
             return true;

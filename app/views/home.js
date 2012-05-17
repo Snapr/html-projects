@@ -25,7 +25,11 @@ snapr.views.home = snapr.views.page.extend({
             } ))
             .trigger("create");
 
-        new snapr.views.news_ticker({el:this.$('.news-ticker')}).render().tick();
+        ticker = new snapr.views.news_ticker({el:this.$('.news-ticker')}).render().tick();
+        $( '#home' ).die('pagehide').live( 'pagehide',function(event, ui){
+            ticker.stop();
+            return true;
+        });
 
         return this;
     },
@@ -36,7 +40,6 @@ snapr.views.home = snapr.views.page.extend({
         // {
         //     Route.navigate( '#/uploading/' );
         // }
-    },
-
+    }
 
 });
