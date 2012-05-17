@@ -686,7 +686,7 @@
        <div data-role="content" data-ajax="false">
            <div class="login-message">
            </div>
-           <form action="javascript: void(0);" accept-charset="utf-8" id="tumblr-dialog">
+           <form action="javascript: void(0);" accept-charset="utf-8" id="tumblr-dialog" name="tumblr-dialog">
                 <ul data-role="listview" data-inset="true" data-theme="d">
                     <li data-role="fieldcontain" class="ui-hide-label">
                         <label for="username">Tumblr Email</label>
@@ -697,9 +697,15 @@
                         <input type="password" name="password" placeholder="Password" id="tumblr-password">
                    </li>
                 </ul>
+                
+                <!-- So pressing enter will still submit form, but so we can also add custom gfx to the button -->
+                <div class="invisible-submit-button">
+                    <input type="submit" name="tumblr-dialog" data-theme="e" value="Connect Tumblr">
+                </div>
                 <a data-role="button" class="tumblr-button logo-button" data-theme="e">
                     Connect <span class="tumblr-logo button-logo">Tumblr</span>
                 </a>
+                
            </form>
        </div>
    </div><!-- /page -->
@@ -715,7 +721,7 @@
        <div data-role="content" data-ajax="false">
            <div class="login-message">
            </div>
-           <form action="javascript: void(0);" accept-charset="utf-8" id="twitter-dialog">
+           <form action="javascript: void(0);" accept-charset="utf-8" id="twitter-dialog" name="twitter-dialog">
                 <ul data-role="listview" data-inset="true" data-theme="d">
                     <li data-role="fieldcontain" class="ui-hide-label">
                         <label for="username">@username</label>
@@ -726,6 +732,10 @@
                         <input type="password" name="password" placeholder="Password" id="twitter-password">
                    </li>
                 </ul>
+                <!-- So pressing enter will still submit form, but so we can also add custom gfx to the other button -->
+                <div class="invisible-submit-button">
+                    <input type="submit" name="twitter-dialog" data-theme="e" value="Connect Twitter">
+                </div>
                 <a data-role="button" class="twitter-button logo-button" data-theme="e">
                     Connect <span class="twitter-logo button-logo">Twitter</span>
                 </a>
@@ -1869,7 +1879,8 @@
                             <label for="password">Password</label><input type="password" name="password" placeholder="Password" id="login-dialog-password">
                         </li>
                     </ul>
-                        <input type="submit" name="login" data-theme="e" value="Log In">
+                    
+                    <input type="submit" name="login" data-theme="e" value="Log In">
 
                 </form>
 

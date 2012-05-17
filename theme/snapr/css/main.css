@@ -3299,6 +3299,11 @@ a.ui-link-inherit {
   background-position: 0 -36px;
   height: 32px;
 }
+.invisible-submit-button {
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
 .small-text {
   font-size: 12px;
   font-family: Helvetica, Arial, sans-serif;
