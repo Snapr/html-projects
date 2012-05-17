@@ -2632,8 +2632,6 @@ a.ui-link-inherit {
   background-position: -55px -144px;
 }
 .ui-icon-validation {
-  width: 36px;
-  height: 36px;
   display: none;
   position: absolute;
   right: 4px;
@@ -2646,7 +2644,7 @@ a.ui-link-inherit {
 }
 .x-valid .ui-icon-validation {
   display: block;
-  background-position: -235px -144px;
+  background-position: -243px -144px;
 }
 .x-validating {
   overflow: hidden;
@@ -2955,10 +2953,6 @@ a.ui-link-inherit {
   font-weight: bold;
   font-size: 12px;
 }
-.progress-bar .ui-icon {
-  width: 36px;
-  height: 36px;
-}
 .progress-bar .ui-icon-check {
   background-position: -243px -144px;
 }
@@ -3105,8 +3099,6 @@ a.ui-link-inherit {
   margin-top: 0;
 }
 .simple-list .ui-li-link-alt .ui-btn .ui-icon {
-  height: 36px;
-  width: 36px;
   margin-top: 0;
   top: 4px;
   right: 0;
@@ -3167,8 +3159,6 @@ a.ui-link-inherit {
   border: none!important;
 }
 .ui-input-search .ui-input-clear .ui-icon-delete {
-  width: 36px;
-  height: 36px;
   background-position: -63px 0px;
 }
 .loading .search-header .ui-input-search .ui-input-clear {
@@ -4818,8 +4808,6 @@ div.ps-carousel-item-loading {
 }
 .add-services .connect-status .ui-icon {
   right: 0;
-  width: 36px;
-  height: 36px;
 }
 .add-services .connect-status .ui-icon-check {
   background-position: -243px -144px;
