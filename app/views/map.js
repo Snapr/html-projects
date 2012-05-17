@@ -14,6 +14,11 @@ snapr.views.map = snapr.views.page.extend({
           query.n = 10;
         }
 
+        var map_view = this;
+        this.$el.live('pageshow', function (e) {
+            map_view.when_page_showen();
+        });
+
         this.change_page({
             transition: 'flip'
         });
@@ -35,15 +40,18 @@ snapr.views.map = snapr.views.page.extend({
         this.map_query.bind( "change", this.hide_no_results_message );
         this.map_query.bind( "change", this.get_thumbs );
 
-        if(this.map){
-            if (this.map_query.get( "location" )){
-                this.search_location( this.map_query.get( "location" ) );
-            }else{
-                this.go_to_current_location();
-            }
-        }else{
-            this.init_map_options();
-        }
+        // I doubt this could ever happen, isn't initialize only called when the object is created?
+        // if(this.map){
+        //     console.log("########### map exists ##########");
+        //     if (this.map_query.get( "location" )){
+        //         this.search_location( this.map_query.get( "location" ) );
+        //     }else{
+        //         this.go_to_current_location();
+        //     }
+        // }else{
+        //     console.log("no map");
+        // }
+        this.load_maps_then();
 
         this.map_controls = new snapr.views.map_controls({
             el: this.$el.find(".v-map-controls")[0],
@@ -56,19 +64,22 @@ snapr.views.map = snapr.views.page.extend({
         "click #map-disambituation-cancel": "hide_dis",
         "click .x-map-feed": "map_feed"
     },
+    load_maps_then: function(){
 
-    init_map_options: function(){
-
-        // load maps libs if needed
+        // load maps libs if needed then callback to here
         if(!window.google || !window.google.maps){
-            window.gmap_script_loaded = this.init_map_options;
+            console.debug('no maps lib, loading it');
+            window.gmap_script_loaded = _.bind(this.load_maps_then, this);
             // this loads the google loader script with the maps lib autoloaded with a callback to gmap_script_loaded
             // {"modules":[{"name":"maps","version":"3.x","callback":"gmap_script_loaded",'other_params':"sensor=false"}]}
             $(document.body).append($('<script src="https://www.google.com/jsapi?autoload=%7B%22modules%22%3A%5B%7B%22name%22%3A%22maps%22%2C%22version%22%3A%223.x%22%2C%22callback%22%3A%22gmap_script_loaded%22%2C\'other_params\'%3A%22sensor%3Dfalse%22%7D%5D%7D"></script>'));
+            return;
         }
+        console.debug('maps lib loaded');
 
         var map_view = this;
 
+        // this will only run once.
         map_view.create_custom_overlays();
 
         map_view.map_settings = {
@@ -88,38 +99,62 @@ snapr.views.map = snapr.views.page.extend({
 
         map_view.geocoder = new google.maps.Geocoder();
 
+        // this might be ready to run now - it will decide for itself
+        map_view.when_page_showen_and_maps_loaded();
+
         map_view.$el.live('pagehide', function (e) {
             google.maps.event.clearListeners( map_view.map, "idle" );
             return true;
         });
+    },
+    when_page_showen: function(){
+        this.page_shown = true;
 
-        map_view.$el.on( "pageshow", function(){
-            var success_callback = function( location ){
-                map_view.map_settings.center = new google.maps.LatLng(location.coords.latitude, location.coords.longitude);
-                map_view.create_map(map_view.query && map_view.query.location);
-            };
-            var error_callback = function(){
-                map_view.map_settings.center = new google.maps.LatLng(42, 12);
-                map_view.map_settings.zoom = 2;
-                map_view.create_map(map_view.query && map_view.query.location);
-            };
+        // hack to set google map height
+        $("#google-map").css("height", (window.innerHeight - 85) + "px");
 
-            if (map_view.map_settings.center === undefined){
-                snapr.geo.get_location( success_callback, error_callback );
-            }else{
-                map_view.create_map( map_view.map_query.get( "location" ) );
-            }
-        });
+        // this might be ready to run now - it will decide for itself
+        this.when_page_showen_and_maps_loaded();
+    },
+    when_page_showen_and_maps_loaded: function(){
+
+        // don't run if not ready - anything becoming ready will re-call this function
+        if(!window.google || !window.google.maps || !this.page_shown){ return; }
+
+        //only run once
+        if(this.page_showen_and_maps_loaded){ return; }
+        this.page_showen_and_maps_loaded = true;
+
+        var map_view = this;
+
+        if (map_view.map_settings.center === undefined){
+            snapr.geo.get_location(
+                // success
+                function( location ){
+                    map_view.map_settings.center = new google.maps.LatLng(location.coords.latitude, location.coords.longitude);
+                    map_view.create_map(map_view.query && map_view.query.location);
+                },
+                // error
+                function(){
+                    map_view.map_settings.center = new google.maps.LatLng(42, 12);
+                    map_view.map_settings.zoom = 2;
+                    map_view.create_map(map_view.query && map_view.query.location);
+                }
+            );
+        }else{
+            map_view.create_map( map_view.map_query.get( "location" ) );
+        }
     },
 
     create_map: function (location) {
+
+        var map_view = this;
 
         this.map = new google.maps.Map(
             document.getElementById("google-map"), this.map_settings);
 
         snapr.geo.get_location(function(location){
-            console.debug('pinning', location);
-            new snapr.CurrentLocation( {
+            map_view.dot = new snapr.CurrentLocation( {
                 location: {
                     latitude: location.coords.latitude,
                     longitude: location.coords.longitude
@@ -133,10 +168,6 @@ snapr.views.map = snapr.views.page.extend({
             location_template: this.location_template
         };
 
-        // hack to set google map height
-        $("#google-map").css("height", (window.innerHeight - 85) + "px");
-
-        var map_view = this;
 
         var idle = google.maps.event.addListener( map_view.map, "idle", function()
         {
@@ -219,14 +250,10 @@ snapr.views.map = snapr.views.page.extend({
                         map_view.map_thumbs[ i ] = new snapr.SnapOverlay( 'photo', thumb.attributes, map_view.map, false );
                     });
                 }
-                else if (map_view.thumb_collection.length == 0)
+                else if (map_view.thumb_collection.length === 0)
                 {
                     map_view.show_no_results_message();
                     map_view.remove_overlays();
-                }
-                else
-                {
-                    console.log( "same thumbs" )
                 }
             },
             error: function( e )
@@ -313,7 +340,7 @@ snapr.views.map = snapr.views.page.extend({
             position: new google.maps.LatLng( this.map_query.get( "lat" ), this.map_query.get( "lng" )),
             map: this.map,
             title: 'Current location',
-            clickable: false,
+            clickable: false
         });
         setTimeout( this.place_current_location, 30000 );
     },
@@ -335,7 +362,7 @@ snapr.views.map = snapr.views.page.extend({
             map_view.lat = position.coords.latitude;
             map_view.lng = position.coords.longitude;
             map_view.place_current_location();
-        }
+        };
 
         var error_callback = function( error )
         {
@@ -344,7 +371,7 @@ snapr.views.map = snapr.views.page.extend({
             {
                 alert( error.message );
             }
-        }
+        };
         if (this.map)
         {
             snapr.geo.get_location( success_callback, error_callback );
@@ -396,6 +423,9 @@ snapr.views.map = snapr.views.page.extend({
         }
     },
     create_custom_overlays: function(){
+        // no need to do this more than once:
+        if( snapr.SnapOverlay ){ return; }
+
         snapr.SnapOverlay = function(type, data, map, extra_class)
         {
             // image as JS object in format the snapr api returns
@@ -419,16 +449,15 @@ snapr.views.map = snapr.views.page.extend({
             var data_id = this.data_.id;
 
             if (this.type_ == 'photo') {
-                console.debug("photo");
                 return $(this.map.snapr.thumb_template({photo:this.data_})).show();
             } else {  //spot
-                console.debug("spot");
                 return $(this.map.snapr.spot_template({spot:this.data_})).show();
             }
 
         };
         snapr.SnapOverlay.prototype.onAdd = function()
         {
+            this.added = true;  // google maps sometimes tries to draw a point that hasn't been added - keep track
             // Note: an overlay's receipt of onAdd() indicates that
             // the map's panes are now available for attaching
             // the overlay to the map via the DOM.
@@ -437,16 +466,18 @@ snapr.views.map = snapr.views.page.extend({
 
             // Set the overlay's div_ property to this DIV
             this.div_ = div;
-            console.log('add', $(this.div_).children().attr('class'));
 
             // We add an overlay to a map via one of the map's panes.
             // We'll add this overlay to the overlayImage pane.
             var panes = this.getPanes();
             $(panes.floatPane).append(this.div_);
         };
-        snapr.SnapOverlay.prototype.draw = function()
-        {
-            console.log('draw thumb');
+        snapr.SnapOverlay.prototype.draw = function(){
+            // google maps sometimes foolishly tries to draw a point that hasn't
+            // been added - so add it before confinuing.
+            if(!this.added){
+                this.onAdd();
+            }
             var overlayProjection = this.getProjection();
             var position = new google.maps.LatLng( this.data_.location.latitude, this.data_.location.longitude );
             var px = overlayProjection.fromLatLngToDivPixel( position );
@@ -458,7 +489,6 @@ snapr.views.map = snapr.views.page.extend({
         };
         snapr.SnapOverlay.prototype.onRemove = function()
         {
-            console.log('removed', $(this.div_).children().attr('class'));
             $(this.div_).remove();
             this.div_ = null;
         };
@@ -468,7 +498,7 @@ snapr.views.map = snapr.views.page.extend({
             {
               this.div_.style.visibility = "hidden";
             }
-        }
+        };
         snapr.SnapOverlay.prototype.show = function()
         {
             if (this.div_)
@@ -508,20 +538,7 @@ snapr.views.map = snapr.views.page.extend({
         snapr.CurrentLocation.prototype= new snapr.SnapOverlay();
         snapr.CurrentLocation.prototype.get_div = function()
         {
-            console.debug("current", $(this.map.snapr.location_template()).show());
             return $(this.map.snapr.location_template()).show();
-        };
-        snapr.CurrentLocation.prototype.draw = function()
-        {
-            console.log('draw CurrentLocation', this.div_);
-            var overlayProjection = this.getProjection();
-            var position = new google.maps.LatLng( this.data_.location.latitude, this.data_.location.longitude );
-            var px = overlayProjection.fromLatLngToDivPixel( position );
-
-            this.div_ = this.div_
-                .css('position', 'absolute')
-                .css('left', px.x + 'px')
-                .css('top', px.y + 'px');
         };
     }
 });
