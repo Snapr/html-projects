@@ -2330,34 +2330,11 @@ a.ui-link-inherit {
 /*
 * Elements - Non-Jquery Mobile Design Patterns that are shared across multiple pages
 */
+/* change the icon to a spinner if a button is loading an ajax event */
 .x-ajax-loading .ui-btn-inner {
   overflow: hidden;
 }
 .x-ajax-loading .ui-icon {
-  display: block;
-  background-image: url('../gfx/small-spinner-dark.png') !important;
-  background-position: center!important;
-  background-repeat: no-repeat !important;
-  -webkit-transform: rotate(0deg) translatez(0);
-  -webkit-transition-duration: 0ms;
-  -webkit-animation-name: loading;
-  -webkit-animation-duration: 1.2s;
-  -webkit-animation-iteration-count: infinite;
-  -webkit-animation-timing-function: linear;
-}
-.x-ajax-loading[data-icon="null"] .ui-btn-text {
-  opacity: 0;
-}
-.x-ajax-loading[data-icon="null"] :after {
-  display: block;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  height: 36px;
-  width: 36px;
-  margin-top: -18px;
-  margin-left: -18px;
-  content: " ";
   display: block;
   background-image: url('../gfx/small-spinner-dark.png') !important;
   background-position: center!important;
