@@ -135,70 +135,70 @@
 }
 /* JQuery Mob icons */
 .ui-icon-plus {
-  background-position: 0px -72px;
+  background-position: 9px -72px;
 }
 .ui-icon-minus {
-  background-position: -36px -72px;
+  background-position: -27px -72px;
 }
 .ui-icon-delete {
-  background-position: -72px -72px;
+  background-position: -63px -72px;
 }
 .ui-icon-arrow-r {
-  background-position: -108px -72px;
+  background-position: -99px -72px;
 }
 .ui-icon-arrow-l {
-  background-position: -144px -72px;
+  background-position: -135px -72px;
 }
 .ui-icon-arrow-u {
-  background-position: -180px -72px;
+  background-position: -171px -72px;
 }
 .ui-icon-arrow-d {
-  background-position: -216px -72px;
+  background-position: -207px -72px;
 }
 .ui-icon-check {
-  background-position: -252px -72px;
+  background-position: -243px -72px;
 }
 .ui-icon-gear {
-  background-position: -288px -72px;
+  background-position: -279px -72px;
 }
 .ui-icon-refresh {
-  background-position: -324px -72px;
+  background-position: -315px -72px;
 }
 .ui-icon-forward {
-  background-position: -360px -72px;
+  background-position: -351px -72px;
 }
 .ui-icon-back {
-  background-position: -396px -72px;
+  background-position: -387px -72px;
 }
 .ui-icon-grid {
-  background-position: -432px -72px;
+  background-position: -423px -72px;
 }
 .ui-icon-star {
-  background-position: -468px -72px;
+  background-position: -459px -72px;
 }
 .ui-icon-alert {
-  background-position: -504px -72px;
+  background-position: -495px -72px;
 }
 .ui-icon-info {
-  background-position: -540px -72px;
+  background-position: -531px -72px;
 }
 .ui-icon-home {
-  background-position: -576px -72px;
+  background-position: -567px -72px;
 }
 .ui-icon-search, .ui-icon-searchfield:after {
-  background-position: -612px -72px;
+  background-position: -603px -72px;
 }
 .ui-icon-checkbox-off {
-  background-position: -684px 50%;
+  background-position: -27px -72px;
 }
 .ui-icon-checkbox-on {
-  background-position: -648px 50%;
+  background-position: -243px -144px;
 }
 .ui-icon-radio-off {
-  background-position: -756px 50%;
+  background-position: -27px -72px;
 }
 .ui-icon-radio-on {
-  background-position: -720px 50%;
+  background-position: -243px -144px;
 }
 /* @topbaricons */
 .ui-header .ui-btn-up-a .ui-btn-inner .ui-icon-search {
@@ -459,7 +459,7 @@
   background-position: 0 -736px;
 }
 .ui-bar-b .ui-icon-arrow-r {
-  background-position: -108px -36px;
+  background-position: -99px -36px;
 }
 /* Small Colored Icons For Third Party Services */
 .sharing-icon-small {
@@ -711,14 +711,14 @@ input.ui-input-text, textarea.ui-input-text {
 .ui-checkbox-on .ui-icon,
 .ui-radio-on .ui-icon,
 .ui-icon-searchfield::after {
-  width: 18px;
+  width: 36px;
   height: 36px;
 }
 .ui-btn-icon-left .ui-btn-inner .ui-icon, .ui-btn-icon-right .ui-btn-inner .ui-icon {
   margin-top: -18px;
 }
-.ui-btn-icon-right .ui-icon {
-  right: 8px;
+.ui-btn-icon-right .ui-btn-inner .ui-icon {
+  right: 0;
 }
 .ui-btn-icon-notext .ui-btn-inner .ui-icon {
   margin: 0;
@@ -1810,7 +1810,7 @@ a.ui-link-inherit {
   border: none;
 }
 .trans-bg .ui-btn-up-c .ui-icon-delete {
-  background-position: -72px -144px;
+  background-position: -63px -144px;
 }
 .trans-bg .ui-btn-hover-c, .trans-bg .ui-btn-down-c, .trans-bg .ui-btn-active-c {
   border: none;
@@ -2439,6 +2439,9 @@ a.ui-link-inherit {
   height: 32px;
   width: 32px;
 }
+.ui-bar h4 .ui-icon-arrow-r, .ui-bar .ui-btn-inner .ui-icon-arrow-r, .ui-bar .ui-bar-inner .ui-icon-arrow-r {
+  right: -10px;
+}
 .ui-bar .ui-btn {
   background: none;
   line-height: 32px;
@@ -2474,9 +2477,6 @@ a.ui-link-inherit {
   display: inline-block;
   overflow: hidden;
   text-overflow: ellipsis;
-}
-.ui-bar .ui-icon-arrow-r {
-  right: -2px;
 }
 .ui-bar .ui-btn-text {
   padding-left: 20px;
@@ -2652,7 +2652,7 @@ a.ui-link-inherit {
 }
 .x-invalid .ui-icon-validation {
   display: block;
-  background-position: -64px -144px;
+  background-position: -55px -144px;
 }
 .ui-icon-validation {
   width: 36px;
@@ -2669,7 +2669,7 @@ a.ui-link-inherit {
 }
 .x-valid .ui-icon-validation {
   display: block;
-  background-position: -244px -144px;
+  background-position: -235px -144px;
 }
 .x-validating {
   overflow: hidden;
@@ -3051,7 +3051,7 @@ a.ui-link-inherit {
   padding-left: 16px;
 }
 .ui-listview-inset li.ui-li .ui-icon-arrow-r {
-  background-position: -108px -36px;
+  background-position: -99px -36px;
 }
 .wrap-content h1, .wrap-content p, .wrap-content a {
   white-space: normal!important;
@@ -3164,7 +3164,7 @@ a.ui-link-inherit {
   display: none;
 }
 .simple-list .ui-icon-arrow-r {
-  background-position: -108px -36px;
+  background-position: -99px -36px;
 }
 /* @search fields at top of pages like people / venues */
 .search-header {
@@ -3180,6 +3180,7 @@ a.ui-link-inherit {
 }
 .ui-input-search.ui-icon-searchfield::after {
   margin-top: -18px;
+  margin-left: -9px;
 }
 .ui-input-search .ui-input-clear {
   position: absolute;
@@ -4105,7 +4106,19 @@ div.ps-carousel-item-loading {
 .feed-user-header .ui-bar .ui-btn-right {
   position: absolute;
   right: -4px;
-  top: 8px;
+  top: 0px;
+}
+.feed-user-header .ui-bar .ui-btn-right .ui-btn {
+  margin-bottom: 0px;
+}
+.feed-user-header .ui-bar .ui-btn-right .ui-btn .ui-btn-inner {
+  height: 36px;
+}
+.feed-user-header .ui-bar .ui-btn-right .ui-btn .ui-btn-inner .ui-btn-text {
+  line-height: 34px;
+}
+.feed-user-header .ui-bar .ui-btn-right .ui-btn .ui-btn-inner .ui-icon {
+  width: 36px;
 }
 .feed-user-header .user-stats {
   text-align: center;
@@ -4441,7 +4454,7 @@ div.ps-carousel-item-loading {
   border-radius: 20px;
 }
 .dash-edit-done .ui-btn .ui-icon-check {
-  background-position: -252px -144px;
+  background-position: -243px -144px;
 }
 #dashboard.edit {
   /* Show the btn to exit edit mode */
@@ -4964,7 +4977,7 @@ div.ps-carousel-item-loading {
   padding-left: 20px;
 }
 .account-content .myaccount-header .logout-button .ui-icon-delete {
-  background-position: -72px -36px;
+  background-position: -63px -36px;
 }
 .account-content .myaccount-quicklinks {
   margin-top: -10px;
@@ -4993,10 +5006,10 @@ div.ps-carousel-item-loading {
   right: 8px;
 }
 .ui-collapsible-set .ui-collapsible-heading .ui-btn .ui-icon-plus {
-  background-position: -216px -36px;
+  background-position: -207px -36px;
 }
 .ui-collapsible-set .ui-collapsible-heading .ui-btn .ui-icon-minus {
-  background-position: -180px -36px;
+  background-position: -171px -36px;
 }
 .ui-collapsible-set .ui-collapsible-heading .ui-btn-up-c {
   background-color: #fbfbfb;
