@@ -324,4 +324,37 @@ a.ui-link-inherit {
 	outline-style: dotted;
 }
 
+/* Make up for things were killing corners doesn't yet work 
+-----------------------------------------------------------------------------------------------------------*/
+
+*[data-shadow="false"] {
+    .box-shadow(none)!important;
+    .ui-shadow{
+        .box-shadow(none)!important;
+    }
+}
+    
+*[data-corners="false"]{
+    .corner-all(@corner-not-rounded)!important;
+    .ui-corner-tl,
+    .ui-corner-tr,
+    .ui-corner-bl, 
+    .ui-corner-br,
+    .ui-corner-top,
+    .ui-corner-bottom, 
+    .ui-corner-right,
+    .ui-corner-left,
+    .ui-corner-all,
+    .ui-btn-corner-tl,
+    .ui-btn-corner-tr,
+    .ui-btn-corner-bl, 
+    .ui-btn-corner-br,
+    .ui-btn-corner-top,
+    .ui-btn-corner-bottom, 
+    .ui-btn-corner-right,
+    .ui-btn-corner-left,
+    .ui-btn-corner-all{
+        .corner-all(@corner-not-rounded)!important;
+    }
+}
 

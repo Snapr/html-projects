@@ -15,6 +15,7 @@
 
 /* light version of spinner action btns on white & dark bg buttons */
 .simple-list,
+.ui-body-c .ui-listview,
 .image-actions,
 .dark-icons{
     .x-ajax-loading{
@@ -251,7 +252,7 @@
 }
 .x-invalid .ui-icon-validation{
        display: block;
-       background-position: @gfx-general-icon-sprite-delete-x + @padding-element-inset @g-highlight-offset-y;
+       background-position: @gfx-general-icon-sprite-delete-x @g-highlight-offset-y;
 }
 
 .ui-icon-validation{
@@ -308,6 +309,9 @@
 }
 
 
+
+
+
 /*
 * Image Views - Custom
 */
@@ -346,6 +350,9 @@
         padding: 0;
         margin-bottom: @padding-page-inset ;
         white-space: no-wrap;
+        .thumbs-grid{
+            padding-top: @padding-image-grid-inset;
+        }
         .x-thumbs{
             display: inline-block;
             min-width: @size-img-thumb * 3 + @padding-image-grid-inset * 2;
@@ -600,7 +607,7 @@
 
 
 /* Inset list views for white BG content blocks and sneaky login field groups */
-.ui-listview-inset {
+/*.ui-listview-inset {
     background-color: @color-bg-neutral-light;
 
     li.ui-li{
@@ -666,7 +673,7 @@
             background-position: @gfx-general-icon-sprite-arrow-r-x @g-med-offset-y;
         }
     }
-}
+}*/
 
 .wrap-content{
     h1,
@@ -675,8 +682,8 @@
         white-space: normal!important;
     }
     p{
-        margin-bottom:16px;
-        margin-right: 24px;
+        margin-bottom:16px!important;
+        margin-right: 24px!important;
         font-family:@txt-font-base;
     }
 }

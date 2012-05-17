@@ -1008,6 +1008,45 @@ a.ui-link-inherit {
   outline-width: 1px;
   outline-style: dotted;
 }
+/* Make up for things were killing corners doesn't yet work 
+-----------------------------------------------------------------------------------------------------------*/
+*[data-shadow="false"] {
+  -moz-box-shadow: none !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+}
+*[data-shadow="false"] .ui-shadow {
+  -moz-box-shadow: none !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+}
+*[data-corners="false"] {
+  -moz-border-radius: 0px !important;
+  -webkit-border-radius: 0px !important;
+  border-radius: 0px !important;
+}
+*[data-corners="false"] .ui-corner-tl,
+*[data-corners="false"] .ui-corner-tr,
+*[data-corners="false"] .ui-corner-bl,
+*[data-corners="false"] .ui-corner-br,
+*[data-corners="false"] .ui-corner-top,
+*[data-corners="false"] .ui-corner-bottom,
+*[data-corners="false"] .ui-corner-right,
+*[data-corners="false"] .ui-corner-left,
+*[data-corners="false"] .ui-corner-all,
+*[data-corners="false"] .ui-btn-corner-tl,
+*[data-corners="false"] .ui-btn-corner-tr,
+*[data-corners="false"] .ui-btn-corner-bl,
+*[data-corners="false"] .ui-btn-corner-br,
+*[data-corners="false"] .ui-btn-corner-top,
+*[data-corners="false"] .ui-btn-corner-bottom,
+*[data-corners="false"] .ui-btn-corner-right,
+*[data-corners="false"] .ui-btn-corner-left,
+*[data-corners="false"] .ui-btn-corner-all {
+  -moz-border-radius: 0px !important;
+  -webkit-border-radius: 0px !important;
+  border-radius: 0px !important;
+}
 /*******************************************************************
 * @theme - SWATCHES
 *******************************************************************/
@@ -1832,6 +1871,114 @@ a.ui-link-inherit {
 .trans-bg .ui-btn-hover-c .ui-btn-inner, .trans-bg .ui-btn-down-c .ui-btn-inner, .trans-bg .ui-btn-active-c .ui-btn-inner {
   border: none;
 }
+/* List hover effects are going to be a little bit different to normal buttons 
+    and we are going to strip the hell out of them..
+*/
+.ui-body-c .ui-listview {
+  background: none;
+  /* Put the border back on for people / venues lists because i like it there */
+
+  /* Right hand buttons in split lists */
+
+}
+.ui-body-c .ui-listview .ui-li, .ui-body-c .ui-listview .ui-li-has-icon {
+  padding: 0;
+}
+.ui-body-c .ui-listview .ui-btn {
+  border: none!important;
+  background: none;
+}
+.ui-body-c .ui-listview .ui-btn.ui-li {
+  border-top: solid 1px #e4e4e4 !important;
+  margin-bottom: 0;
+}
+.ui-body-c .ui-listview .ui-btn.ui-li:first-child {
+  border-top: none!important;
+}
+.ui-body-c .ui-listview .ui-btn-hover-c {
+  background-color: rgba(255, 255, 255, 0.8);
+}
+.ui-body-c .ui-listview .ui-btn-down-c, .ui-body-c .ui-listview .ui-btn-active {
+  background-color: transparent;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0)), to(#ffffff));
+  /* Saf4+, Chrome */
+
+  background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, 0), #ffffff);
+  /* Chrome 10+, Saf5.1+ */
+
+  background-image: -moz-linear-gradient(top, rgba(255, 255, 255, 0), #ffffff);
+  /* FF3.6 */
+
+  background-image: -ms-linear-gradient(top, rgba(255, 255, 255, 0), #ffffff);
+  /* IE10 */
+
+  background-image: -o-linear-gradient(top, rgba(255, 255, 255, 0), #ffffff);
+  /* Opera 11.10+ */
+
+  background-image: linear-gradient(top, rgba(255, 255, 255, 0), #ffffff);
+}
+.ui-body-c .ui-listview.people-list .ui-btn.ui-li:first-child, .ui-body-c .ui-listview.venue-list .ui-btn.ui-li:first-child, .ui-body-c .ui-listview.map-list .ui-btn.ui-li:first-child {
+  border-top: solid 1px #e4e4e4 !important;
+}
+.ui-body-c .ui-listview .ui-btn-inner .ui-link-inherit {
+  padding-top: 16px !important;
+  padding-bottom: 16px !important;
+}
+.ui-body-c .ui-listview .ui-li-has-icon .ui-btn-inner .ui-link-inherit {
+  padding-top: 8px !important;
+  padding-bottom: 10px !important;
+}
+.ui-body-c .ui-listview .ui-li-icon {
+  left: 0;
+  top: 8px;
+}
+.ui-body-c .ui-listview .ui-li-heading {
+  margin: 0 0 8px 0;
+  font-weight: normal;
+}
+.ui-body-c .ui-listview .ui-li-desc {
+  margin: -8px 0 0 0;
+  padding: 0;
+  padding-left: 8px;
+  color: #999999;
+}
+.ui-body-c .ui-listview .ui-li, .ui-body-c .ui-listview .ui-li-link-alt {
+  border-right: none!important;
+  border-left: none!important;
+}
+.ui-body-c .ui-listview .ui-li-link-alt {
+  width: 44px;
+  background: none;
+}
+.ui-body-c .ui-listview .ui-li-link-alt .ui-btn {
+  border: none;
+  width: 44px;
+  height: 44px;
+  top: 4px;
+  right: 0;
+  margin-top: 0;
+  background: none;
+}
+.ui-body-c .ui-listview .ui-li-link-alt .ui-btn .ui-icon {
+  margin-top: 0;
+  top: 4px;
+  right: 0;
+}
+.ui-body-c .ui-listview .ui-li-link-alt .ui-btn .ui-icon-check {
+  background-position: -243px -108px;
+}
+.ui-body-c .ui-listview .ui-li-link-alt .ui-btn .ui-icon-plus {
+  background-position: 9px 0px;
+}
+.ui-body-c .ui-listview .ui-li-link-alt .ui-btn .ui-icon-tick {
+  background-position: -243px -144px;
+}
+.ui-body-c .ui-listview.venue-list .ui-icon-arrow-r {
+  display: none;
+}
+.ui-body-c .ui-listview .ui-icon-arrow-r {
+  background-position: -99px -36px;
+}
 /*
 * D
 * the full white BG swatch used for feed views etc
@@ -2083,6 +2230,77 @@ a.ui-link-inherit {
   position: absolute;
   top: -11px;
   left: 50%;
+}
+.ui-body-d {
+  /* These are our white pop out elements and sexy fields for login etc */
+
+}
+.ui-body-d .ui-listview-inset {
+  background-color: #ffffff;
+}
+.ui-body-d .ui-listview-inset li.ui-li {
+  padding: 8px;
+  margin: 0;
+  border: none;
+  background: none;
+  border-top: solid 1px #e4e4e4;
+}
+.ui-body-d .ui-listview-inset li.ui-li:first-child {
+  border: none;
+}
+.ui-body-d .ui-listview-inset li.ui-li h1, .ui-body-d .ui-listview-inset li.ui-li h2, .ui-body-d .ui-listview-inset li.ui-li h3 {
+  padding-left: 8px;
+  font-family: 'MuseoSansRounded700', Helvetica, Arial, sans-serif;
+  font-weight: normal;
+  color: #333333;
+}
+.ui-body-d .ui-listview-inset li.ui-li .ui-link-inherit, .ui-body-d .ui-listview-inset li.ui-li p {
+  padding-left: 8px;
+}
+.ui-body-d .ui-listview-inset li.ui-li.ui-li-has-icon .ui-link-inherit {
+  padding-left: 34px;
+}
+.ui-body-d .ui-listview-inset li.ui-li input[type="text"], .ui-body-d .ui-listview-inset li.ui-li input[type="password"], .ui-body-d .ui-listview-inset li.ui-li input[type="email"] {
+  width: 100%;
+  border: none;
+  background: transparent;
+  margin: 0;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+.ui-body-d .ui-listview-inset li.ui-li.has-select {
+  padding: 0;
+}
+.ui-body-d .ui-listview-inset li.ui-li.has-select .ui-select {
+  width: 100%;
+  margin: 0;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+.ui-body-d .ui-listview-inset li.ui-li.has-select .ui-select .ui-btn {
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  -moz-border-radius-topleft: 0;
+  -webkit-border-top-left-radius: 0;
+  border-top-left-radius: 0;
+  -moz-border-radius-topright: 0;
+  -webkit-border-top-right-radius: 0;
+  border-top-right-radius: 0;
+  border: none;
+}
+.ui-body-d .ui-listview-inset li.ui-li.has-select .ui-select .ui-btn-inner {
+  padding-top: 18px;
+  padding-bottom: 18px;
+  padding-left: 16px;
+}
+.ui-body-d .ui-listview-inset li.ui-li .ui-icon-arrow-r {
+  background-position: -99px -36px;
 }
 /*
 * E
@@ -2347,7 +2565,10 @@ a.ui-link-inherit {
   -webkit-animation-timing-function: linear;
 }
 /* light version of spinner action btns on white & dark bg buttons */
-.simple-list .x-ajax-loading .ui-icon, .image-actions .x-ajax-loading .ui-icon, .dark-icons .x-ajax-loading .ui-icon {
+.simple-list .x-ajax-loading .ui-icon,
+.ui-body-c .ui-listview .x-ajax-loading .ui-icon,
+.image-actions .x-ajax-loading .ui-icon,
+.dark-icons .x-ajax-loading .ui-icon {
   display: block;
   background-image: url('../gfx/small-spinner-light.png') !important;
   background-position: center!important;
@@ -2629,7 +2850,7 @@ a.ui-link-inherit {
 }
 .x-invalid .ui-icon-validation {
   display: block;
-  background-position: -55px -144px;
+  background-position: -63px -144px;
 }
 .ui-icon-validation {
   display: none;
@@ -2717,6 +2938,9 @@ a.ui-link-inherit {
   padding: 0;
   margin-bottom: 8px;
   white-space: no-wrap;
+}
+.image-streams .image-stream .thumbs-grid {
+  padding-top: 4px;
 }
 .image-streams .image-stream .x-thumbs {
   display: inline-block;
@@ -2957,79 +3181,79 @@ a.ui-link-inherit {
   background-position: -243px -144px;
 }
 /* Inset list views for white BG content blocks and sneaky login field groups */
-.ui-listview-inset {
-  background-color: #ffffff;
-}
-.ui-listview-inset li.ui-li {
-  padding: 8px;
-  margin: 0;
-  border: none;
-  background: none;
-  border-top: solid 1px #e4e4e4;
-}
-.ui-listview-inset li.ui-li:first-child {
-  border: none;
-}
-.ui-listview-inset li.ui-li h1, .ui-listview-inset li.ui-li h2, .ui-listview-inset li.ui-li h3 {
-  padding-left: 8px;
-  font-family: 'MuseoSansRounded700', Helvetica, Arial, sans-serif;
-  font-weight: normal;
-  color: #333333;
-}
-.ui-listview-inset li.ui-li .ui-link-inherit, .ui-listview-inset li.ui-li p {
-  padding-left: 8px;
-}
-.ui-listview-inset li.ui-li.ui-li-has-icon .ui-link-inherit {
-  padding-left: 34px;
-}
-.ui-listview-inset li.ui-li input[type="text"], .ui-listview-inset li.ui-li input[type="password"], .ui-listview-inset li.ui-li input[type="email"] {
-  width: 100%;
-  border: none;
-  background: transparent;
-  margin: 0;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-  -moz-box-shadow: none;
-  -webkit-box-shadow: none;
-  box-shadow: none;
-}
-.ui-listview-inset li.ui-li.has-select {
-  padding: 0;
-}
-.ui-listview-inset li.ui-li.has-select .ui-select {
-  width: 100%;
-  margin: 0;
-  -moz-box-shadow: none;
-  -webkit-box-shadow: none;
-  box-shadow: none;
-}
-.ui-listview-inset li.ui-li.has-select .ui-select .ui-btn {
-  -moz-box-shadow: none;
-  -webkit-box-shadow: none;
-  box-shadow: none;
-  -moz-border-radius-topleft: 0;
-  -webkit-border-top-left-radius: 0;
-  border-top-left-radius: 0;
-  -moz-border-radius-topright: 0;
-  -webkit-border-top-right-radius: 0;
-  border-top-right-radius: 0;
-  border: none;
-}
-.ui-listview-inset li.ui-li.has-select .ui-select .ui-btn-inner {
-  padding-top: 18px;
-  padding-bottom: 18px;
-  padding-left: 16px;
-}
-.ui-listview-inset li.ui-li .ui-icon-arrow-r {
-  background-position: -99px -36px;
-}
+/*.ui-listview-inset {
+    background-color: @color-bg-neutral-light;
+
+    li.ui-li{
+        padding: 8px;
+        margin: 0;
+        border: none;
+        background:none;
+        border-top: @border-medium-on-light;
+
+        &:first-child{
+            border: none;
+        }
+
+        h1,
+        h2,
+        h3,{
+            padding-left: 8px;
+            font-family: @txt-font-special;
+            font-weight: normal;
+            color: @color-txt-dark-on-light;
+        }
+
+        .ui-link-inherit,
+        p{
+            padding-left: 8px;
+        }
+
+        &.ui-li-has-icon{
+            .ui-link-inherit{
+                padding-left: @size-small-avatar;
+            }
+        }
+        input[type="text"],
+        input[type="password"],
+        input[type="email"]{
+            width: 100%;
+            border: none;
+            background: transparent;
+            margin: 0;
+            .border-box();
+            .box-shadow(none);
+        }
+        &.has-select{
+            padding: 0;
+
+            .ui-select{
+                width: 100%;
+                margin: 0;
+                .box-shadow(none);
+                .ui-btn{
+                    .box-shadow(none);
+                    .corner-top(0);
+                    border: none;
+                }
+                .ui-btn-inner{
+                    padding-top: 18px;
+                    padding-bottom: 18px;
+                    padding-left: 16px;
+                }
+            }
+        }
+        .ui-icon-arrow-r {
+            background-position: @gfx-general-icon-sprite-arrow-r-x @g-med-offset-y;
+        }
+    }
+}*/
 .wrap-content h1, .wrap-content p, .wrap-content a {
   white-space: normal!important;
 }
 .wrap-content p {
-  margin-bottom: 16px;
-  margin-right: 24px;
+  margin-bottom: 16px!important;
+  margin-right: 24px!important;
   font-family: Helvetica, Arial, sans-serif;
 }
 .plain-link {
@@ -3814,16 +4038,25 @@ div.ps-carousel-item-loading {
   box-sizing: border-box;
 }
 .menu-main .ui-grid-a .ui-block-a .ui-btn {
+  -moz-border-radius: 0;
+  -webkit-border-radius: 0;
+  border-radius: 0;
   -moz-border-radius-topleft: 8px;
   -webkit-border-top-left-radius: 8px;
   border-top-left-radius: 8px;
 }
 .menu-main .ui-grid-a .ui-block-a .ui-btn .ui-btn-inner {
+  -moz-border-radius: 0;
+  -webkit-border-radius: 0;
+  border-radius: 0;
   -moz-border-radius-topleft: 8px;
   -webkit-border-top-left-radius: 8px;
   border-top-left-radius: 8px;
 }
 .menu-main .ui-grid-a .ui-block-b {
+  -moz-border-radius: 0;
+  -webkit-border-radius: 0;
+  border-radius: 0;
   -moz-border-radius-topright: 8px;
   -webkit-border-top-right-radius: 8px;
   border-top-right-radius: 8px;
@@ -3833,6 +4066,9 @@ div.ps-carousel-item-loading {
   box-sizing: border-box;
 }
 .menu-main .ui-grid-a .ui-block-b .ui-btn {
+  -moz-border-radius: 0;
+  -webkit-border-radius: 0;
+  border-radius: 0;
   -moz-border-radius-topright: 8px;
   -webkit-border-top-right-radius: 8px;
   border-top-right-radius: 8px;

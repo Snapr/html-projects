@@ -95,15 +95,15 @@
                <!-- Camera Button -->
                <div class="ui-block-a">
                 <% if (logged_in) {%>
-                    <a class="x-launch-camera" data-role="button" data-iconpos="top" data-icon="main-menu-camera" data-corners="false" data-shadow="false">Shoot</a>
+                    <a class="x-launch-camera" data-role="button" data-iconpos="top" data-icon="main-menu-camera" data-shadow="false">Shoot</a>
                 <%}else{%>
-                    <a href="#/login/" data-role="button" data-iconpos="top" data-icon="main-menu-camera" data-corners="false" data-shadow="false">Share</a>
+                    <a href="#/login/" data-role="button" data-iconpos="top" data-icon="main-menu-camera" data-shadow="false">Share</a>
                 <%}%>
                 </div>
 
                  <!-- Dashboard Button -->
                 <div class="ui-block-b">
-                     <a href="#/dash/" data-role="button" data-iconpos="top" data-icon="main-menu-dash" data-corners="false" data-shadow="false">Dashboard</a>
+                     <a href="#/dash/" data-role="button" data-iconpos="top" data-icon="main-menu-dash" data-shadow="false">Dashboard</a>
                 </div>
             </div>
 
@@ -687,7 +687,7 @@
            <a class="x-back" data-role="button" data-icon="delete" data-iconpos="notext"></a>
        </div>
 
-       <div data-role="content" data-ajax="false">
+       <div data-role="content" data-ajax="false" data-theme="d">
            <div class="login-message">
            </div>
            <form action="javascript: void(0);" accept-charset="utf-8" id="tumblr-dialog" name="tumblr-dialog">
@@ -722,7 +722,7 @@
            <a class="x-back" data-role="button" data-icon="delete" data-iconpos="notext"></a>
        </div>
 
-       <div data-role="content" data-ajax="false">
+       <div data-role="content" data-ajax="false" data-theme="d">
            <div class="login-message">
            </div>
            <form action="javascript: void(0);" accept-charset="utf-8" id="twitter-dialog" name="twitter-dialog">
@@ -1554,7 +1554,7 @@
             <div class="search-header">
                 <input type="search" id="people-search" value="" placeholder="Search&hellip;" />
             </div>
-            <ul class="people-list simple-list" data-role="listview" data-inset="true" >
+            <ul class="people-list" data-role="listview" data-inset="true" data-theme="c" data-split-theme="c" data-corners="false" data-shadow="false">
             </ul>
         </div>
     </div>
@@ -1617,7 +1617,7 @@
             <h1>Welcome!</h1>
             <a class="x-back" data-role="button" data-icon="delete" data-iconpos="notext"></a>
         </div>
-        <div data-role="content" data-theme="c" data-ajax="false">
+        <div data-role="content" data-theme="d" data-ajax="false">
             <div class="inset-page-content wrap-content">
                     <ul data-role="listview" data-ajax="false" class="" data-inset="true" data-theme="d">
                         <li>
@@ -1638,7 +1638,7 @@
              <h1>About</h1>
              <a class="x-back" data-role="button" data-icon="delete" data-iconpos="notext"></a>
          </div>
-         <div data-role="content" data-theme="c" data-ajax="false">
+         <div data-role="content" data-theme="d" data-ajax="false">
              <div class="inset-page-content wrap-content">
                      <ul data-role="listview" data-ajax="false" class="" data-inset="true" data-theme="d">
 
@@ -1668,13 +1668,13 @@
          </div>
      </div>
 
-    <!-- @snapr_apps PAGE-->
+    <!-- @snapr-apps PAGE-->
     <div id="snapr-apps" class="welcome-bg special-bg" data-role="dialog" data-overlay-theme="c" data-theme="c">
         <div data-role="header" data-theme="c">
             <h1>Apps</h1>
             <a class="x-back" data-role="button" data-icon="delete" data-iconpos="notext"></a>
         </div>
-        <div data-role="content" data-theme="c" data-ajax="false">
+        <div data-role="content" data-theme="d" data-ajax="false">
             <div class="inset-page-content wrap-content">
                     <ul data-role="listview" data-ajax="false" class="" data-inset="true" data-theme="d">
                         <li>
@@ -1692,7 +1692,7 @@
            <h1>Get the App!</h1>
            <a class="x-back" data-role="button" data-icon="delete" data-iconpos="notext"></a>
        </div>
-       <div data-role="content" data-theme="c" data-ajax="false">
+       <div data-role="content" data-theme="d" data-ajax="false">
            <div class="inset-page-content">
                <ul data-role="listview" data-ajax="false" class="" data-inset="true" data-theme="d">
                    <li class="wrap-content">
@@ -1724,7 +1724,7 @@
             <h1>Search</h1>
             <a class="x-back" data-role="button" data-icon="delete" data-iconpos="notext"></a>
         </div>
-        <div data-role="content" data-theme="a">
+        <div data-role="content" data-theme="d">
             <div class="inset-page-content">
                 <form action="javascript: void(0);" accept-charset="utf-8" id="search-form">
                     <ul data-role="listview" data-inset="true" data-theme="d">
@@ -1867,7 +1867,7 @@
             <h1>Log in</h1>
             <a class="x-back" data-role="button" data-icon="delete" data-iconpos="notext"></a>
         </div>
-        <div data-role="content">
+        <div data-role="content" data-theme="d">
             <div class="inset-page-content">
                 <p class="login-message warning-message"></p>
 
@@ -1909,7 +1909,7 @@
              <h1>Forgot Password</h1>
              <a class="x-back" data-role="button" data-icon="delete" data-iconpos="notext"></a>
          </div>
-         <div data-role="content">
+         <div data-role="content" data-theme="d">
              <div class="inset-page-content">
                  <p class="login-message warning-message"></p>
 
@@ -1937,7 +1937,7 @@
             <h1>Join Snapr</h1>
             <a class="x-back" data-role="button" data-icon="delete" data-iconpos="notext"></a>
         </div>
-        <div data-role="content">
+        <div data-role="content" data-theme="d">
             <div class="inset-page-content">
 
                 <div class="linked-message" style="display:none;">Great, nearly there! To finish up please enter the details for your new account:</div>
@@ -1980,7 +1980,7 @@
             <h1>Success!</h1>
             <a href="#/" data-role="button" data-icon="delete" data-iconpos="notext"></a>
         </div>
-        <div data-role="content">
+        <div data-role="content" data-theme="d">
             <div class="inset-page-content">
                     <ul data-role="listview" data-ajax="false" class="" data-inset="true" data-theme="d">
                         <li>

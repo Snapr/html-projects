@@ -503,6 +503,124 @@
     }
 }
 
+/* List hover effects are going to be a little bit different to normal buttons 
+    and we are going to strip the hell out of them..
+*/
+.ui-body-c{
+    .ui-listview{
+        background: none;
+        .ui-li,
+        .ui-li-has-icon{
+            padding: 0;
+        }
+        .ui-btn{
+            border: none!important;
+            background: none;
+            &.ui-li{
+                border-top: @border-medium-on-light!important;
+                margin-bottom: 0;
+                &:first-child{
+                    border-top: none!important;
+                }
+            }
+        }
+        .ui-btn-up-c {
+             
+        }
+        .ui-btn-hover-c {
+            background-color: rgba(255,255,255,.8);
+        }
+        .ui-btn-down-c,
+        .ui-btn-active {
+            background-color: transparent;
+            .linear-gradient(rgba(255,255,255, 0), rgba(255,255,255,1));
+        }
+
+        /* Put the border back on for people / venues lists because i like it there */
+        &.people-list,
+        &.venue-list,
+        &.map-list{
+            .ui-btn.ui-li:first-child{
+                border-top: @border-medium-on-light!important;
+            }
+        }
+
+        .ui-btn-inner{
+           .ui-link-inherit{
+               padding-top: @padding-element-inset * 2px!important;
+               padding-bottom: @padding-element-inset * 2px!important;
+           }
+        }
+        .ui-li-has-icon{
+           .ui-btn-inner{
+              .ui-link-inherit{
+                  padding-top: @padding-element-inset!important;
+                  padding-bottom: @padding-element-inset + 2px!important;
+              }
+            }
+        }
+
+        .ui-li-icon{
+            left: 0;
+            top: @padding-element-inset;
+        }
+
+        .ui-li-heading{
+            margin: 0 0 @padding-element-inset 0;
+            font-weight: normal;
+        }
+        .ui-li-desc{
+            margin: -8px 0 0 0;
+            padding: 0;
+            padding-left: @padding-element-inset;
+            color: @color-txt-light-on-light;
+        }
+        .ui-li,
+        .ui-li-link-alt{
+            border-right: none!important;
+            border-left: none!important;
+        }
+        
+        /* Right hand buttons in split lists */
+        .ui-li-link-alt{
+            width: 44px;
+            background: none;
+            .ui-btn {
+                border: none;
+                width: 44px;
+                height: 44px;
+                top: 4px;
+                right: 0;
+                margin-top: 0;
+                background: none;
+                .ui-icon{
+                    margin-top: 0;
+                    top: 4px;
+                    right: 0;
+                }
+                .ui-icon-check{
+                    background-position: @gfx-general-icon-sprite-check-x @g-yellow-offset-y;
+                }
+                .ui-icon-plus{
+                    background-position: @gfx-general-icon-sprite-plus-x @g-light-offset-y;
+                }
+                .ui-icon-tick{
+                    background-position: @gfx-general-icon-sprite-check-x @g-highlight-offset-y;
+                }
+            }
+        }
+
+        &.venue-list{
+            .ui-icon-arrow-r{
+                display: none;
+            }
+        }
+        .ui-icon-arrow-r {
+            background-position: @gfx-general-icon-sprite-arrow-r-x @g-med-offset-y;
+        }
+    }
+}
+
 
 /*
 * D
@@ -627,6 +745,79 @@
     }
 }
 
+
+.ui-body-d{
+    
+    
+    /* These are our white pop out elements and sexy fields for login etc */
+    .ui-listview-inset {
+        background-color: @color-bg-neutral-light;
+
+        li.ui-li{
+            padding: 8px;
+            margin: 0;
+            border: none;
+            background:none;
+            border-top: @border-medium-on-light;
+
+            &:first-child{
+                border: none;
+            }
+
+            h1,
+            h2,
+            h3,{
+                padding-left: 8px;
+                font-family: @txt-font-special;
+                font-weight: normal;
+                color: @color-txt-dark-on-light;
+            }
+
+            .ui-link-inherit,
+            p{
+                padding-left: 8px;
+            }
+
+            &.ui-li-has-icon{
+                .ui-link-inherit{
+                    padding-left: @size-small-avatar;
+                }
+            }
+            input[type="text"],
+            input[type="password"],
+            input[type="email"]{
+                width: 100%;
+                border: none;
+                background: transparent;
+                margin: 0;
+                .border-box();
+                .box-shadow(none);
+            }
+            &.has-select{
+                padding: 0;
+
+                .ui-select{
+                    width: 100%;
+                    margin: 0;
+                    .box-shadow(none);
+                    .ui-btn{
+                        .box-shadow(none);
+                        .corner-top(0);
+                        border: none;
+                    }
+                    .ui-btn-inner{
+                        padding-top: 18px;
+                        padding-bottom: 18px;
+                        padding-left: 16px;
+                    }
+                }
+            }
+            .ui-icon-arrow-r {
+                background-position: @gfx-general-icon-sprite-arrow-r-x @g-med-offset-y;
+            }
+        }
+    }
+}
 
 
 /*
