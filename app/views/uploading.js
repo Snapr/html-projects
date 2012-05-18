@@ -138,7 +138,7 @@ snapr.views.uploading = snapr.views.page.extend({
     },
 
     events: {
-        "click .cancel-upload": "cancel_upload"
+        "click .x-cancel-upload": "cancel_upload"
     },
 
     render: function()
