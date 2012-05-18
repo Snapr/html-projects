@@ -69,6 +69,7 @@ snapr.views.feed = snapr.views.page.extend({
         }
 
         this.pending_uploads = {};
+        this.$el.removeClass("showing-upload-queue");
         this.$el.find(".feed-upload-list").empty();
 
         var feed_view = this;
@@ -331,6 +332,11 @@ snapr.views.feed = snapr.views.page.extend({
                 });
                 this.$el.find(".feed-upload-list").append( this.pending_uploads[photo.id].render().el );
             }, this);
+
+            if (upload_data.uploads)
+            {
+                this.$el.addClass("showing-upload-queue");
+            }
 
             this.$el.find(".feed-upload-list").listview().listview("refresh");
         }

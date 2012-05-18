@@ -124,7 +124,7 @@
                         <a href="#/feed/?username=<%=username%>" data-corners="false" data-shadow="false" data-role="button" data-theme="c" class="my-snaps" data-iconpos="top" data-icon="main-menu-feed">
                         My Snaps
                         </a>
-                        <span class="upload-count">1</span>
+                        <span class="upload-count">&nbsp;</span>
 
                  <%}else{%>
                         <a href="#/feed/" data-corners="false" data-shadow="false" data-role="button" data-theme="c" data-iconpos="top" data-icon="main-menu-feed">Latest</a>
@@ -2077,7 +2077,9 @@
                 <div class="progress-bar <%= upload_status %>">
                      <% if (message){ %>
                          <span class="upload-message"><%= message %></span>
-                    <% }else{ %>
+                    <% } else if(percent_complete == 100){%>
+                        <span class="upload-message">Finishing</span>
+                    <%}else{ %>
                     <div class="bar-wrapper">
 
 
@@ -2159,16 +2161,13 @@
              <div class="progress-bar <%= upload_status %>">
                   <% if (message){ %>
                       <span class="upload-message"><%= message %></span>
-                 <% }else{ %>
-                 <div class="bar-wrapper">
-
-
-                        <div class="bar-bg bar">
-                        </div>
-                        <div class="bar-prog bar" style="width:<%= percent_complete %>%">
-                        </div>
-
-                   </div>
+                 <% } else if(percent_complete == 100){%>
+                     <span class="upload-message">Finishing</span>
+                 <%}else{ %>
+                     <div class="bar-wrapper">
+                        <div class="bar-bg bar"></div>
+                        <div class="bar-prog bar" style="width:<%= percent_complete %>%"></div>
+                    </div>
                     <% } %>
                     <% switch (upload_status) { case 'active': %>
 

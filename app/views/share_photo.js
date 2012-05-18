@@ -45,6 +45,7 @@ snapr.views.share_photo = snapr.views.page.extend({
         "change input[name='status']": "toggle_status",
         "change input[name='share_location']": "toggle_sharing",
         "change .upload-image-sharing input": "toggle_sharing",
+        "click .upload-image-sharing .ui-disabled label": "share_alert",
         "click #foursquare-venue": "venue_search",
         "click .image-controls": "toggle_photo",
         "click .x-edit-photo": "edit",
@@ -88,6 +89,11 @@ snapr.views.share_photo = snapr.views.page.extend({
         }
 
         return this;
+    },
+
+    share_alert: function(e)
+    {
+        snapr.utils.notification( "Share: ", "Please set the image to Public before sharing to other services", $.noop );
     },
 
     get_photo_from_server: function( id )

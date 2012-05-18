@@ -37,10 +37,14 @@ snapr.views.home = snapr.views.page.extend({
 
     upload_count: function( count )
     {
-        // if (count)
-        // {
-        //     Route.navigate( '#/uploading/' );
-        // }
+        if (count)
+        {
+            this.$el.find( ".upload-count" ).show().text( count );
+        }
+        else
+        {
+            this.$el.find( ".upload-count" ).hide().text( "0" );
+        }
     }
 
 });
