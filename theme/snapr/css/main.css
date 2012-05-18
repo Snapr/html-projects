@@ -5106,7 +5106,7 @@ div.ps-carousel-item-loading {
 }
 .add-services .connect-status {
   position: absolute;
-  right: -40px;
+  right: 8px;
   padding-right: 36px;
   font-family: Helvetica, Arial, sans-serif;
   text-transform: lowercase;
