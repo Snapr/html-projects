@@ -1486,7 +1486,7 @@
             .ui-link-inherit{
                 padding-top: 0!important;
                 padding-bottom: 0!important;
-                padding-left: @size-small-avatar + @padding-image-grid-inset;
+                padding-left: @size-small-avatar + @padding-image-grid-inset!important;
                 min-height: @size-small-avatar;
             }
             .ui-li-icon{
@@ -1495,7 +1495,7 @@
             .ui-li-heading{
                 padding-left: 0;
             }
-        }
+        }    
     }
 
     /* Tweaks for likes */
@@ -1550,7 +1550,7 @@
     .activity-image-item{
         position: relative;
         min-height: @size-img-thumb;
-        padding-left: @size-img-thumb;
+        padding-left: @size-img-thumb + @padding-image-grid-inset;
         margin-bottom: @padding-page-inset + @padding-image-grid-inset;
         .activity-item:first{
             border-top: none;
