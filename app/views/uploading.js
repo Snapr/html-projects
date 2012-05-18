@@ -19,6 +19,7 @@ snapr.views.uploading = snapr.views.page.extend({
         this.venue_name = this.query.venue_name;
         this.photo_id = this.query.photo_id;
 
+        this.$el.removeClass("showing-upload-queue");
         this.$el.find( ".upload-progress-container" ).empty();
         this.render();
 
@@ -259,6 +260,11 @@ snapr.views.uploading = snapr.views.page.extend({
             }
 
         }, this );
+
+        if (upload_data.uploads)
+        {
+            this.$el.addClass("showing-upload-queue");
+        }
 
     },
 
