@@ -446,7 +446,7 @@ snapr.utils.notification = function (title, text, callback) {
         pass_data("snapr://alert?" + $.param(par));
     } else {
         if(text) {
-            title = title + ' ' + text;
+            title = title + ': ' + text;
         }
         alert(title);
         if(_.isFunction(callback)) {

@@ -93,7 +93,7 @@ snapr.views.share_photo = snapr.views.page.extend({
 
     share_alert: function(e)
     {
-        snapr.utils.notification( "Share: ", "Please set the image to Public before sharing to other services", $.noop );
+        snapr.utils.notification( "Share", "Please set the image to Public before sharing to other services", $.noop );
     },
 
     get_photo_from_server: function( id )
