@@ -775,9 +775,12 @@
     }
 
     /* Hide the default streams that are unremovable */
-       .image-stream[data-id="null"]{
-          display: none;
-       }
+   .image-stream{
+      display: none;
+      &.user-stream{
+        display: block;
+      }
+   }
 
     /* Tick state for button while in edit mode */
     .ui-header{

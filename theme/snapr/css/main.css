@@ -4783,8 +4783,11 @@ div.ps-carousel-item-loading {
   -webkit-border-bottom-right-radius: 0;
   border-bottom-right-radius: 0;
 }
-#dashboard.edit .image-stream[data-id="null"] {
+#dashboard.edit .image-stream {
   display: none;
+}
+#dashboard.edit .image-stream.user-stream {
+  display: block;
 }
 #dashboard.edit .ui-header .ui-btn-up-a .ui-btn-inner .ui-icon-settings {
   background-position: 0px -280px;
