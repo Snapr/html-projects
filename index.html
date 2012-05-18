@@ -1249,7 +1249,7 @@
 
        </div><!-- /page -->
         <script id="dash-stream-template" type="text/template">
-            <li class="image-stream<% if(model.get('id')){%> user-stream<% } %>" data-id="<%= model.get('id') %>">
+            <div <% if(model.get('id')){%>class="user-stream"<% } %> <% if(model.get('id')){%>data-id="<%= model.get('id')%>" <%}%>>
                 <% if(collection.length){%>
                     <a class="ui-bar top-left-arrow x-details" data-query="<%= escape($.param(model.get("query"))) %>" data-role="button" data-iconpos="right" data-icon="arrow-r" data-theme="e">
                         <span class="image-details">
@@ -1295,7 +1295,7 @@
 
 
 
-           </li>
+           </div>
         </script>
         <script id="dash-thumbs-template" type="text/template">
             <% _.each(photos, function(photo) { %><a href="https://s3.amazonaws.com/media-server2.snapr.us/lrg/<%= photo.get('secret') %>/<%= photo.get('id') %>.jpg" class="x-thumb image-link" rel="external" data-date="<%= photo.get('date') %>" data-id="<%= photo.get('id') %>" data-tag="<%= photo.get('description') %>">
@@ -2074,7 +2074,7 @@
                 <% } %>
 
 
-                 <div class="progress-bar <%= upload_status %>"> 
+                 <div class="progress-bar <%= upload_status %>">
                     <!-- //Active uploads -->
                     <% switch (upload_status) { case 'active': %>
                     <% if (percent_complete == 100){ %>
@@ -2153,7 +2153,7 @@
             <div style="background-image: url('<%= thumbnail %>')" class="thumb-image thumb-small css-thumb"></div>
         </a>
         <div class="upload-info">
-            <div class="progress-bar <%= upload_status %>">     
+            <div class="progress-bar <%= upload_status %>">
                 <!-- //Active uploads -->
                 <% switch (upload_status) { case 'active': %>
                 <% if (percent_complete == 100){ %>
