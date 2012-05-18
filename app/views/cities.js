@@ -42,7 +42,7 @@ var cities = {
 };
 
 snapr.views.city_stream = snapr.views.side_scroll.extend({
-    id: 'cities',
+    className: 'city',
     template: _.template( $('#cities-stream-template').html() ),
     thumbs_template: _.template( $('#cities-thumbs-template').html() ),
     initialize: function(options){
