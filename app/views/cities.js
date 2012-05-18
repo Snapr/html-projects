@@ -83,7 +83,6 @@ snapr.views.cities = snapr.views.page.extend({
         };
 
         _.each( cities, function( details, id ){
-            console.log(details);
             var photos = new snapr.models.photo_collection();
             photos.data = {'area': details.area};
             var li = new snapr.views.city_stream({

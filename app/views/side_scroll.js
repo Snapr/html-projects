@@ -10,7 +10,6 @@ snapr.views.side_scroll = Backbone.View.extend({
         this.collection.bind('all', this.re_render_thumbs, this);
     },
     render: function(){
-        console.log(this.collection);
         var feed_data = this.collection.data || {};
         if (feed_data.access_token){ delete feed_data.access_token; }
         if (feed_data.n){ delete feed_data.n; }
