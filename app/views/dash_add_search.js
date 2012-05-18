@@ -41,17 +41,45 @@ snapr.views.dash_add_search = snapr.views.dialog.extend({
 
         if (nearby)
         {
+            var add_search = this;
             stream_object.query.radius = nearby;
+
+            var success_callback = function( position )
+            {
+                stream_object.query.latitude = position.coords.latitude;
+                stream_object.query.longitude = position.coords.longitude;
+
+                var stream = new snapr.models.dash_stream( stream_object );
+                $.mobile.showPageLoadingMsg();
+                stream.save({}, {success: function(){
+                    dash.add(stream);
+                    $.mobile.hidePageLoadingMsg();
+                }});
+                add_search.back_view.$el.removeClass('edit');
+                add_search.back();
+            }
+            var error_callback = function( error )
+            {
+                console.warn( "error getting geolocation", error );
+                if (error.message)
+                {
+                    snapr.utils.notification( error.message );
+                }
+            }
+            snapr.geo.get_location( success_callback, error_callback );
+        }
+        else
+        {
+            var stream = new snapr.models.dash_stream( stream_object );
+            $.mobile.showPageLoadingMsg();
+            stream.save({}, {success: function(){
+                dash.add(stream);
+                $.mobile.hidePageLoadingMsg();
+            }});
+            this.back_view.$el.removeClass('edit');
+            this.back();
         }
 
-        var stream = new snapr.models.dash_stream( stream_object );
-        $.mobile.showPageLoadingMsg();
-        stream.save({}, {success: function(){
-            dash.add(stream);
-            $.mobile.hidePageLoadingMsg();
-        }});
-        this.back_view.$el.removeClass('edit');
-        this.back();
     }
 
 });
