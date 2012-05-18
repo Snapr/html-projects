@@ -58,7 +58,7 @@ snapr.views.tumblr_xauth = snapr.views.dialog.extend({
                     window.location = redirect;
                 }else{
                     console.error(data);
-                    snapr.utils.notification('oops', 'your tumblr login details were incorrect');
+                    snapr.utils.notification('Oops!', 'Your Tumblr login details were incorrect.');
                 }
             },
             error: function( data ){
