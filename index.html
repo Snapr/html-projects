@@ -2079,7 +2079,9 @@
                 <div class="progress-bar <%= upload_status %>">
                      <% if (message){ %>
                          <span class="upload-message"><%= message %></span>
-                    <% }else{ %>
+                    <% } else if(percent_complete == 100){%>
+                        <span class="upload-message">Finishing</span>
+                    <%}else{ %>
                     <div class="bar-wrapper">
 
 
@@ -2161,16 +2163,13 @@
              <div class="progress-bar <%= upload_status %>">
                   <% if (message){ %>
                       <span class="upload-message"><%= message %></span>
-                 <% }else{ %>
-                 <div class="bar-wrapper">
-
-
-                        <div class="bar-bg bar">
-                        </div>
-                        <div class="bar-prog bar" style="width:<%= percent_complete %>%">
-                        </div>
-
-                   </div>
+                 <% } else if(percent_complete == 100){%>
+                     <span class="upload-message">Finishing</span>
+                 <%}else{ %>
+                     <div class="bar-wrapper">
+                        <div class="bar-bg bar"></div>
+                        <div class="bar-prog bar" style="width:<%= percent_complete %>%"></div>
+                    </div>
                     <% } %>
                     <% switch (upload_status) { case 'active': %>
 
