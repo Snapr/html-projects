@@ -1512,33 +1512,31 @@
        </div>
     </div><!-- /page -->
     <script id="cities-stream-template" type="text/template">
-            <li class="image-stream">
-                <a class="ui-bar ui-bar-b top-left-arrow x-details" data-query="<%= escape("area="+details.area) %>" data-city="<%= details.name %>" data-role="button" data-iconpos="right" data-icon="arrow-r" data-theme="b">
-                    <span class="image-details x-details">
-                        <span class="ui-icon ui-icon-redheart extra-icons"></span>
-                        <em><%= details.name %></em>
-                        <span class="image-tag x-tag"><% if(collection.length){ %><%= collection.models[0].get("description") %><% } %></span>
-                        <span class="image-time small-text">
-                            <span class="ui-icon ui-icon-clock extra-icons"></span>
-                            <span class="x-date"><% if(collection.length){ %><%= snapr.utils.short_timestamp( collection.models[0].get("date") )  %><% } %></span>
-                        </span>
+            <a class="ui-bar ui-bar-b top-left-arrow x-details" data-query="<%= escape("area="+details.area) %>" data-city="<%= details.name %>" data-role="button" data-iconpos="right" data-icon="arrow-r" data-theme="b">
+                <span class="image-details x-details">
+                    <span class="ui-icon ui-icon-redheart extra-icons"></span>
+                    <em><%= details.name %></em>
+                    <span class="image-tag x-tag"><% if(collection.length){ %><%= collection.models[0].get("description") %><% } %></span>
+                    <span class="image-time small-text">
+                        <span class="ui-icon ui-icon-clock extra-icons"></span>
+                        <span class="x-date"><% if(collection.length){ %><%= snapr.utils.short_timestamp( collection.models[0].get("date") )  %><% } %></span>
                     </span>
+                </span>
 
-                </a>
-                <div id="upload-popular-nearby-images" class="thumbs-grid thumbs-grid-med x-scroll-area">
-                    <div class="x-scroll-wrapper"><!-- inner div for scroll -->
-                    <div class="x-left-pull thumb-med load-more-inline">
-                        <span class="ui-icon ui-icon-refresh"></span>
-                        <span class="ui-btn-text x-msg">Refresh</span>
-                    </div>
-                    <div class="x-thumbs"></div>
-                    <div class="x-right-pull thumb-med load-more-inline">
-                        <span class="ui-icon ui-icon-refresh"></span>
-                        <span class="ui-btn-text x-msg">Load More</span>
-
-                    </div>
+            </a>
+            <div id="upload-popular-nearby-images" class="thumbs-grid thumbs-grid-med x-scroll-area">
+                <div class="x-scroll-wrapper"><!-- inner div for scroll -->
+                <div class="x-left-pull thumb-med load-more-inline">
+                    <span class="ui-icon ui-icon-refresh"></span>
+                    <span class="ui-btn-text x-msg">Refresh</span>
                 </div>
-           </li>
+                <div class="x-thumbs"></div>
+                <div class="x-right-pull thumb-med load-more-inline">
+                    <span class="ui-icon ui-icon-refresh"></span>
+                    <span class="ui-btn-text x-msg">Load More</span>
+
+                </div>
+            </div>
         </script>
         <script id="cities-thumbs-template" type="text/template">
             <% _.each(photos, function(photo) { %><a href="https://s3.amazonaws.com/media-server2.snapr.us/lrg/<%= photo.get('secret') %>/<%= photo.get('id') %>.jpg" class="x-thumb image-link" rel="external" data-date="<%= photo.get('date') %>" data-id="<%= photo.get('id') %>" data-tag="<%= photo.get('description') %>">
