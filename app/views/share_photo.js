@@ -45,7 +45,7 @@ snapr.views.share_photo = snapr.views.page.extend({
         "change input[name='status']": "toggle_status",
         "change input[name='share_location']": "toggle_sharing",
         "change .upload-image-sharing input": "toggle_sharing",
-        "click .upload-image-sharing .ui-disabled label": "share_alert",
+        "vclick .upload-image-sharing .ui-disabled": "share_alert",
         "click #foursquare-venue": "venue_search",
         "click .image-controls": "toggle_photo",
         "click .x-edit-photo": "edit",
