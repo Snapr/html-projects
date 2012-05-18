@@ -15,6 +15,12 @@ snapr.views.dash_stream = snapr.views.side_scroll.extend({
     initialize: function( options )
     {
         snapr.views.side_scroll.prototype.initialize.call( this, options );
+
+        if (this.model.has("id"))
+        {
+            this.$el.addClass("user-stream");
+            this.$el.attr("data-id", this.model.get("id"));
+        }
     },
 
     remove_stream: function()
