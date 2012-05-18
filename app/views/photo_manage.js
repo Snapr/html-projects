@@ -122,8 +122,7 @@ snapr.views.photo_manage = Backbone.View.extend({
                     {
                         if (resp.success)
                         {
-                            photo_manage.remove();
-                            photo_manage.parentView.remove();
+                            photo_manage.model.collection.remove( photo_manage.model );
                         }
                         else
                         {

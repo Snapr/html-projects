@@ -1,5 +1,5 @@
 snapr.views.dash_stream = snapr.views.side_scroll.extend({
-    id: 'dash',
+    className: 'dash-stream',
     template: _.template( $('#dash-stream-template').html() ),
     thumbs_template: _.template( $('#dash-thumbs-template').html() ),
     initialize: function(options){

@@ -4,6 +4,8 @@ snapr.views.feed_list = Backbone.View.extend({
     {
         _.bindAll( this );
 
+        this.collection.bind( "remove", this.render );
+
         this.setElement( this.options.el );
 
         this.li_templates = {
