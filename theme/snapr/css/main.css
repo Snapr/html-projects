@@ -713,6 +713,7 @@ input.ui-input-text, textarea.ui-input-text {
 .ui-icon-searchfield::after {
   width: 36px;
   height: 36px;
+  display: block;
 }
 .ui-btn-icon-left .ui-btn-inner .ui-icon, .ui-btn-icon-right .ui-btn-inner .ui-icon {
   margin-top: -18px;

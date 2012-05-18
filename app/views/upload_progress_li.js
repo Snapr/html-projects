@@ -13,7 +13,7 @@ snapr.views.upload_progress_li = Backbone.View.extend({
     },
 
     events: {
-        "click .cancel": "cancel_upload"
+        "click .x-cancel-upload": "cancel_upload"
     },
 
     render: function()
@@ -54,19 +54,6 @@ snapr.views.upload_progress_li = Backbone.View.extend({
                     photo_id: this.photo_id
                 })
             ).trigger( "create" );
-
-            // if (this.photo.percent_complete == 100)
-            // {
-            //     this.$el.find(".finishing").spin({
-            //         lines:10,
-            //         length:3,
-            //         width:2,
-            //         radius:3,
-            //         trail:50,
-            //         speed:1.0,
-            //         color:'#000000'
-            //     });
-            // }
         }
 
         return this;
