@@ -1,10 +1,7 @@
 snapr.views.forgot_password = snapr.views.dialog.extend({
-    // hacked from login page.. left stuff in to edit / delete..
-    initialize: function()
-    {
+
+    initialize: function(){
         snapr.views.dialog.prototype.initialize.call( this );
-
-
 
         this.change_page({
             transition: this.transition
@@ -12,41 +9,39 @@ snapr.views.forgot_password = snapr.views.dialog.extend({
     },
 
     events: {
-        "submit #login-dialog":"log_in",
-        "click .x-back": "back",
-        "click .twitter-button": 'twitter_login'
+        "submit #forgot-form":"forgot",
+        "click .x-back": "back"
     },
 
-    log_in: function()
+    forgot: function()
     {
-        // console.log('get_auth_token')
-        var username = $("#login-dialog-username").val();
-        var password = $("#login-dialog-password").val();
+        var username = this.$("#forgot-form input[name=username]").val();
 
-        var login_view = this;
-        var options = {
-            success: function( response )
-            {
-                $("#login-dialog-username").val('');
-                $("#login-dialog-password").val('');
-                login_view.back();
+        var data = {_method: 'POST'};
+        // maybe this should be detected api-side
+        if(username.indexOf('@') > -1){
+            data['email_address'] = username;
+        }else{
+            data['username'] = username;
+        }
+
+        var forgot_view = this;
+         $.ajax({
+            url:snapr.api_base + '/user/forgot_password/',
+            data: data,
+            dataType: 'jsonp',
+            success: function(response){
+                    console.debug(response);
+                if(response.success){
+                    forgot_view.$("#forgot-form input[name=username]").val('');
+                    alert('A password reset link has been emailed to you.');
+                }else{
+                    alert('Sorry, we had trouble with that. ' + response.error.message);
+                }
             },
-            error: function( error )
-            {
-                console.warn("error", error);
-                if (error && error.error && error.error == "invalid_grant")
-                {
-                    alert( "Oops.. Your login or password was incorrect." );
-                }
-                else
-                {
-                    alert( "Sorry, we had trouble logging in. Please try again." );
-                }
+            error: function(){
+                alert( "Sorry, we had trouble with that. Please try again." );
             }
-        };
-        snapr.auth.get_token( username, password, options );
-    },
-    twitter_login: function(){
-        Route.navigate( "#/twitter-xauth/?signin=true" );
+        });
     }
 });
