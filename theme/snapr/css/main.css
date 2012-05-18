@@ -4423,6 +4423,23 @@ div.ps-carousel-item-loading {
 .feed-user-header .ui-grid-b .ui-block-c {
   margin-right: -1px;
 }
+/* Nix the rounded top edges when the upload queue shows above */
+.showing-upload-queue .feed-header .user-icon-left .user-profile-icon, .showing-upload-queue .feed-header .user-icon-left .user-icon-big {
+  -moz-border-radius-topleft: 0;
+  -webkit-border-top-left-radius: 0;
+  border-top-left-radius: 0;
+  overflow: hidden;
+}
+.showing-upload-queue .feed-header .user-icon-left .icon-overlay-info {
+  -moz-border-radius-topleft: 8px;
+  -webkit-border-top-left-radius: 8px;
+  border-top-left-radius: 8px;
+}
+.showing-upload-queue .feed-header .ui-bar {
+  -moz-border-radius-topright: 0;
+  -webkit-border-top-right-radius: 0;
+  border-top-right-radius: 0;
+}
 .image-item-block .image-item-topbar {
   height: 35px;
   /*haxy to account for mysterious icon overhang */
@@ -5148,6 +5165,13 @@ div.ps-carousel-item-loading {
   position: absolute;
   right: 0;
   top: 0;
+}
+.user-profile .user-website .ui-icon-link {
+  display: inline-block;
+  vertical-align: middle;
+  width: 24px;
+  left: -8px;
+  position: relative;
 }
 .user-profile .user-linked-services li {
   margin-bottom: 2px;
