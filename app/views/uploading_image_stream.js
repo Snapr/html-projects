@@ -1,5 +1,6 @@
 snapr.views.uploading_image_stream = snapr.views.side_scroll.extend({
-    id: 'uploads',
+    tagName: 'li',
+    className: 'image-stream',
     template: _.template( $('#uploading-stream-template').html() ),
     thumbs_template: _.template( $('#uploading-stream-thumb-template').html() ),
 
