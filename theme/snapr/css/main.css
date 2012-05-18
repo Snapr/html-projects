@@ -4907,6 +4907,7 @@ div.ps-carousel-item-loading {
 }
 .share-photo .upload-image-sharing .ui-checkbox.ui-disabled {
   opacity: .5;
+  pointer-events: initial;
 }
 .share-photo .upload-image-sharing .ui-btn {
   -moz-border-radius: 6px;
