@@ -428,6 +428,27 @@
     }
 }
 
+/* Nix the rounded top edges when the upload queue shows above */
+.showing-upload-queue{
+    .feed-header{
+        .user-icon-left{
+            .user-profile-icon,
+            .user-icon-big{
+                .corner-tl (0);
+                overflow:hidden;
+            }
+            .icon-overlay-info{
+               .corner-tl (@corner-page-element-rounded);
+            }
+        }
+        .ui-bar{
+           .corner-tr(0); 
+        }
+    }
+}
+
+
+
 .image-item-block{
     .image-item-topbar{
         height:  @size-small-avatar + 1px;/*haxy to account for mysterious icon overhang */
@@ -1152,6 +1173,15 @@
             position: absolute;
             right: 0;
             top: 0;
+        }
+    }
+    .user-website{
+        .ui-icon-link{
+            display: inline-block;
+            vertical-align: middle;
+            width: 24px;
+            left: -8px;
+            position: relative;
         }
     }
     .user-linked-services{
