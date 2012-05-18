@@ -5443,7 +5443,7 @@ div.ps-carousel-item-loading {
 .activity-streams .comments-list .comment-item.ui-li-has-icon .ui-link-inherit {
   padding-top: 0!important;
   padding-bottom: 0!important;
-  padding-left: 38px;
+  padding-left: 38px !important;
   min-height: 34px;
 }
 .activity-streams .comments-list .comment-item.ui-li-has-icon .ui-li-icon {
@@ -5491,7 +5491,7 @@ div.ps-carousel-item-loading {
 .activity-streams .activity-image-item {
   position: relative;
   min-height: 101px;
-  padding-left: 101px;
+  padding-left: 105px;
   margin-bottom: 12px;
 }
 .activity-streams .activity-image-item .activity-item:first {
