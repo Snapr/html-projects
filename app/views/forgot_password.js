@@ -4,7 +4,7 @@ snapr.views.forgot_password = snapr.views.dialog.extend({
     {
         snapr.views.dialog.prototype.initialize.call( this );
 
-      
+
 
         this.change_page({
             transition: this.transition
@@ -29,21 +29,21 @@ snapr.views.forgot_password = snapr.views.dialog.extend({
             {
                 $("#login-dialog-username").val('');
                 $("#login-dialog-password").val('');
-                login_view.back()
+                login_view.back();
             },
             error: function( error )
             {
-                console.warn("error", error)
+                console.warn("error", error);
                 if (error && error.error && error.error == "invalid_grant")
                 {
-                    alert( "Oops.. Your login or password was incorrect." )
+                    alert( "Oops.. Your login or password was incorrect." );
                 }
                 else
                 {
                     alert( "Sorry, we had trouble logging in. Please try again." );
                 }
             }
-        }
+        };
         snapr.auth.get_token( username, password, options );
     },
     twitter_login: function(){
