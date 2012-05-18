@@ -88,7 +88,8 @@ snapr.views.join_snapr = snapr.views.dialog.extend({
 
     events: {
         "submit #join-dialog": "join",
-        "click .x-back": "back"
+        "click .x-back": "back",
+        "click .twitter-button": 'twitter_login'
     },
 
     join: function(){
@@ -141,6 +142,10 @@ snapr.views.join_snapr = snapr.views.dialog.extend({
 
         // save creates a new user
         new_user.save({}, join_options);
+    },
+    
+    twitter_login: function(){
+        Route.navigate( "#/twitter-xauth/?signin=true" );
     }
 });
 
