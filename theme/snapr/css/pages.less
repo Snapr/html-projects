@@ -842,13 +842,19 @@
         width: 100%;
         top: 0;
         z-index: 5;
+        overflow:hidden;
     }
     .image-placeholder{
-        height: 100%;
-
+        position: absolute;
+        top: 50%;
+        height: 1024px;
+        margin-top: -512px;
+        line-height: 1024px;
+        text-align: center;
+        max-width: 1024px;
         img{
             width: 100%;
-
+            vertical-align: middle;
         }
     }
     .upload-settings-layer{

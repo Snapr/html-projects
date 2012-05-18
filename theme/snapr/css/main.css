@@ -2955,6 +2955,9 @@ a.ui-link-inherit {
 .image-streams .image-stream .image-details .ui-icon-feed {
   background-position: 0 -64px;
 }
+.image-streams .image-stream .image-details .ui-icon-nearby {
+  background-position: 0 -32px;
+}
 .image-streams .image-stream .load-more-inline {
   background-color: #fbfbfb;
   display: inline-block;
@@ -4814,12 +4817,20 @@ div.ps-carousel-item-loading {
   width: 100%;
   top: 0;
   z-index: 5;
+  overflow: hidden;
 }
 .share-photo .image-placeholder {
-  height: 100%;
+  position: absolute;
+  top: 50%;
+  height: 1024px;
+  margin-top: -512px;
+  line-height: 1024px;
+  text-align: center;
+  max-width: 1024px;
 }
 .share-photo .image-placeholder img {
   width: 100%;
+  vertical-align: middle;
 }
 .share-photo .upload-settings-layer {
   background-color: rgba(0, 0, 0, 0.6);
