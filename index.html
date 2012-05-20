@@ -611,7 +611,7 @@
             <div class="inset-page-content">
                 <ul data-role="listview" data-ajax="false" class="share-icons-list" data-inset="true" data-theme="d">
                     <li>
-                        <a class="" href="#/find-friends-twitter/">
+                        <a class="" href="#/find-friends-facebook/">
                             <span class="facebook-sharing sharing-icon-small">
                                 <span class="ui-icon"></span>
                             </span>
@@ -639,12 +639,27 @@
            </div>
            <div data-role="content" data-theme="c" data-ajax="false">
                <div class="search-header">
-                   <input type="search" id="people-search" value="" placeholder="@username&hellip;" />
+                   <input type="search" id="people-search-twitter" value="" placeholder="@username&hellip;" />
                </div>
                <ul class="people-list simple-list" data-role="listview" data-inset="true" >
                </ul>
            </div>
        </div>
+
+       <!-- @findfriendstwitter DIALOG-->
+         <div id="find-friends-facebook" data-role="dialog" data-overlay-theme="c" data-theme="c">
+             <div data-role="header" data-theme="c">
+                 <h1>Facebook Friends</h1>
+                 <a class="x-back" data-role="button" data-icon="delete" data-iconpos="notext"></a>
+             </div>
+             <div data-role="content" data-theme="c" data-ajax="false">
+                 <div class="search-header">
+                     <input type="search" id="people-search-facebook"  value="" placeholder="Bobby Digital" />
+                 </div>
+                 <ul class="people-list simple-list" data-role="listview" data-inset="true" >
+                 </ul>
+             </div>
+         </div>
 
 
     <!-- @connect -->
@@ -2418,7 +2433,7 @@
 <script src="app/views/map_disambiguation_li.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/my_account.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/find_friends.js" type="text/javascript" charset="utf-8"></script>
-<script src="app/views/find_friends_twitter.js" type="text/javascript" charset="utf-8"></script>
+<script src="app/views/find_friends_linked_services.js" type="text/javascript" charset="utf-8"></script>
 
 <script src="app/views/people.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/people_li.js" type="text/javascript" charset="utf-8"></script>
