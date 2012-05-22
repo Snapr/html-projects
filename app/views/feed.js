@@ -112,7 +112,7 @@ snapr.views.feed = snapr.views.page.extend({
 
 
        //testing upload stuff
-        // 
+        //
         // var test_data = {
         //     "uploads": [
         //     {
@@ -138,7 +138,7 @@ snapr.views.feed = snapr.views.page.extend({
         //             "venue_source": "Foursquare"
         //         }
         //     },
-        // 
+        //
         //     {
         //         "id": 5345234,
         //         "thumbnail": "http://media-server2.snapr.us/sml/247f51a82ca7abb2adf0228b390010ef/2BD4.jpg",
@@ -164,50 +164,50 @@ snapr.views.feed = snapr.views.page.extend({
         //     }
         //     ]
         // };
-        // 
+        //
         // setTimeout(function() {
         //     console.log("testing 1", test_data);
         //     test_data.uploads[0].percent_complete = 40;
         //     upload_progress(test_data);
         //     }, 3000);
-        // 
+        //
         //     setTimeout(function() {
         //         console.log("testing 2", test_data);
         //         test_data.uploads[0].percent_complete = 60;
         //         upload_progress(test_data);
         //         }, 6000);
-        // 
+        //
         //         setTimeout(function() {
         //             console.log("testing 3", test_data);
         //             test_data.uploads[0].percent_complete = 100;
         //             upload_progress(test_data);
         //             }, 8000);
-        // 
+        //
         //             setTimeout(function() {
         //                 console.log("testing 4", test_data);
         //                 test_data.uploads[0].percent_complete = 100;
         //                 upload_progress(test_data);
         //                 }, 12000);
-        // 
+        //
         //                 setTimeout(function() {
         //                     console.log("testing 5");
         //                     upload_completed( 5345233, "Z4K");
         //                     }, 14000);
-        // 
-        // 
+        //
+        //
         //                     setTimeout(function() {
         //                         console.log("testing 3", test_data);
         //                         test_data.uploads.shift();
         //                         test_data.uploads[0].percent_complete = 50;
         //                         upload_progress(test_data);
         //                         }, 9000);
-        // 
+        //
         //                         setTimeout(function() {
         //                             console.log("testing 4", test_data);
         //                             test_data.uploads[0].percent_complete = 100;
         //                             upload_progress(test_data);
         //                             }, 12000);
-        // 
+        //
         //                             setTimeout(function() {
         //                                 console.log("testing 5", test_data);
         //                                 test_data.uploads.shift();

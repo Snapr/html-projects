@@ -113,7 +113,6 @@ snapr.views.dash = snapr.views.page.extend({
         var $streams = this.$el.find('.image-streams').empty();
         _.each( this.collection.models, function( item )
         {
-            console.log(item);
             var li = new snapr.views.dash_stream({
                 collection: item.photos,
                 model: item

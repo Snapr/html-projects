@@ -35,10 +35,10 @@ snapr.views.page = Backbone.View.extend({
             }else if(options.prevPage){
                 back_text = options.prevPage.data('short-title');
             }else{
-                console.log('BACK', 'no prev page');
+                //console.debug('BACK', 'no prev page');
             }
             if(back_text)
-                console.log('BACK', back_text);
+                //console.debug('BACK', back_text);
                 //page.$el.find("[data-role='header'] .ui-btn-left").remove();
                 page.$el.find("[data-rel='back'] .ui-btn-text").text(back_text);
                 window.history.replaceState({'back_text': back_text}, 'title', window.location);
