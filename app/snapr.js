@@ -13,6 +13,11 @@ snapr.settings = {
         'base_url': "http://dev.sna.pr",
         'client_id': "client",
         'client_secret': "secret"
+      },
+      'local': {
+        'base_url': "http://localhost:8000",
+        'client_id': "client",
+        'client_secret': "secret"
       }
 };
 
