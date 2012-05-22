@@ -75,6 +75,7 @@ snapr.views.dash = snapr.views.page.extend({
             options = {
                 data: {
                     n:6,
+                    detail:0,
                     feed:!!snapr.auth.get("access_token")
                 },
                 success: function()

@@ -95,7 +95,10 @@ snapr.views.cities = snapr.views.page.extend({
                 }
             });
             photos.fetch({
-                data:{n:6 },
+                data:{
+                    n:6,
+                    detail:0
+                },
                 success: function(){
                     empty_once();
                     streams.append( li.el );
