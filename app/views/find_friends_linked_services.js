@@ -74,9 +74,20 @@ snapr.views.find_friends_linked_services = snapr.views.dialog.extend({
                 detail:1
             },
             url: snapr.api_base + '/linked_services/' + this.service + '/find_friends/',
-            success: function(){
+            success: function(collection, response){
                 this_view.xhr = null;
                 this_view.$el.removeClass('loading');
+                if(response.error){
+                    if(response.error.code == 30){
+                        var v = new snapr.views.linked_service();
+                        v.provider = 'twitter';
+                        this_view.$('.people-list').addClass('to-link').append( v.render().el ).trigger('create');
+                    }else if(response.error.code == 20){
+                        var v = new snapr.views.linked_service();
+                        v.provider = 'facebook';
+                        this_view.$('.people-list').addClass('to-link').append( v.render().el ).trigger('create');
+                    }
+                }
             }
         });
     },
