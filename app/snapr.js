@@ -733,7 +733,7 @@ function location_error(error)
 }
 
 
-$(".x-launch-camera").live( "click", function ()
+$(".x-launch-camera").live( "click", snapr.utils.require_login( function ()
 {
     var appmode = snapr.utils.get_local_param( "appmode" );
     var camplus = snapr.utils.get_local_param( "camplus" );
@@ -759,9 +759,9 @@ $(".x-launch-camera").live( "click", function ()
     {
         Route.navigate( "#/app/" );
     }
-});
+}) );
 
-$(".x-launch-photo-library").live( "click", function()
+$(".x-launch-photo-library").live( "click", snapr.utils.require_login( function()
 {
     var appmode = snapr.utils.get_local_param( "appmode" );
     var camplus = snapr.utils.get_local_param( "camplus" );
@@ -787,7 +787,7 @@ $(".x-launch-photo-library").live( "click", function()
     {
         Route.navigate( "#/upload/" );
     }
-});
+}) );
 
 // handle dialog links
 $("a[data-snapr-dialog='true']").live("vclick", function( e )
