@@ -56,7 +56,7 @@ snapr.views.twitter_xauth = snapr.views.dialog.extend({
                             });
                             snapr.auth.save_locally();
                             snapr.utils.notification('Logged in as ' + data.response.snapr_user);
-                            xauth_view.back();
+                            Route.navigate("#/");
                         }else{
                             // sign up
                             Route.navigate( "#/join/?linked=true&twitter_name="+data.response.username+"&twitter_token="+escape(data.response.twitter_token) );
