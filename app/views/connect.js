@@ -73,7 +73,7 @@ snapr.views.connect = snapr.views.page.extend({
         };
 
         this.model = new snapr.models.post({provider: service, photo_id: this.photo_id});
-        this.model.save(options);
+        this.model.save({}, options);
     }
 
 });

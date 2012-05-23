@@ -85,7 +85,7 @@ snapr.views.connect_li = snapr.views.linked_service.extend({
             },
             error: function( error )
             {
-                console.log("share error", error);
+                console.error("share error", error);
             }
         };
 
