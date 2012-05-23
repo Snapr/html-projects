@@ -13,7 +13,7 @@ snapr.views.popular = snapr.views.page.extend({
         this.photo_collection = new snapr.models.photo_collection();
         this.photo_collection.url = snapr.api_base + "/search/";
         this.photo_collection.data = {
-            sort:"favorite_count",
+            sort:"weighted_score",
             n:20
         };
 
