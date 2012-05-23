@@ -84,6 +84,8 @@ snapr.views.join_snapr = snapr.views.dialog.extend({
         }else{
             $('#join-dialog-username').val("");
         }
+
+        this.$('.twitter-button').toggle(!(this.options.query && this.options.query.twitter_name));
     },
 
     events: {
@@ -143,7 +145,7 @@ snapr.views.join_snapr = snapr.views.dialog.extend({
         // save creates a new user
         new_user.save({}, join_options);
     },
-    
+
     twitter_login: function(){
         Route.navigate( "#/twitter-xauth/?signin=true" );
     }
