@@ -57,7 +57,7 @@ snapr.views.connect = snapr.views.page.extend({
 
     share: function( service )
     {
-        this.model = new snapr.models.photo({id: this.photo_id});
+        //this.model = new snapr.models.photo({id: this.photo_id});
 
         var connect_view = this;
 
@@ -72,28 +72,8 @@ snapr.views.connect = snapr.views.page.extend({
             }
         };
 
-        switch (service){
-            case "facebook":
-                this.model.save({
-                    facebook_feed: true
-                }, options);
-                break;
-            case "tumblr":
-                this.model.save({
-                    tumblr: true
-                }, options);
-                break;
-            case "twitter":
-                this.model.save({
-                    tweet: true
-                }, options);
-                break;
-            case "foursquare":
-                this.model.save({
-                    foursquare_checkin: true
-                }, options);
-                break;
-        }
+        this.model = new snapr.models.post({provider: service, photo_id: this.photo_id});
+        this.model.save(options);
     }
 
 });
