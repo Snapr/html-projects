@@ -5349,6 +5349,11 @@ div.ps-carousel-item-loading {
   right: 0;
   top: 0;
 }
+.user-profile .user-website {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 .user-profile .user-website .ui-icon-link {
   display: inline-block;
   vertical-align: middle;
