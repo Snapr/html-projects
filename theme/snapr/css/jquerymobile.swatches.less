@@ -506,9 +506,14 @@
 /* List hover effects are going to be a little bit different to normal buttons 
     and we are going to strip the hell out of them..
 */
-.ui-body-c{
-    .ui-listview{
+.ui-body-c > .ui-listview{
         background: none;
+        &.ui-shadow{
+            .box-shadow(none);
+        }
+        .corner-all(0);
+        
+        
         .ui-li,
         .ui-li-has-icon{
             padding: 0;
@@ -572,7 +577,6 @@
         .ui-li-desc{
             margin: -8px 0 0 0;
             padding: 0;
-            padding-left: @padding-element-inset;
             color: @color-txt-light-on-light;
         }
         .ui-li,
@@ -619,7 +623,7 @@
             background-position: @gfx-general-icon-sprite-arrow-r-x @g-med-offset-y;
         }
     }
-}
+
 
 
 /*
@@ -670,7 +674,7 @@
            color: @color-shadow-medium-on-light;
        }
        
-       .simple-list{
+       .ui-listview{
            .ui-btn.ui-li{
                 background: none;
            }

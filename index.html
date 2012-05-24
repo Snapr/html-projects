@@ -204,7 +204,7 @@
          <a class="ui-bar top-no-arrow" data-role="button" data-theme="e" >
             <em>Quick Links</em>
          </a>
-         <ul class="simple-list" data-role="listview">
+         <ul  data-role="listview">
             <li><a href="#/find-friends/">Find Friends</a></li>
          </ul>
     </div>
@@ -235,7 +235,7 @@
          <a class="ui-bar top-no-arrow" data-role="button" data-theme="e" >
               <em>Quick Links</em>
          </a>
-         <ul class="simple-list" data-role="listview">
+         <ul data-role="listview">
             <li>
                 <a href="#/find-friends/">Find Friends</a>
             </li>
@@ -437,7 +437,7 @@
                 <em>Connect</em>
           </a>
 
-         <ul class="simple-list add-services" data-role="listview">
+         <ul class=" add-services" data-role="listview">
 
          </ul>
 
@@ -484,7 +484,7 @@
             <div class="services-content">
                 <h2 class="tolink-message"></h2>
                 <h4>Connect</h4>
-                <ul class="simple-list add-services" data-role="listview">
+                <ul class=" add-services" data-role="listview">
                 </ul>
                 <h4>Linked Services</h4>
                 <div class="linked-services">
@@ -644,7 +644,7 @@
 
             <a class="x-back" data-role="button" data-icon="delete" data-iconpos="notext"></a>
         </div>
-        <div data-role="content" data-theme="c" data-ajax="false">
+        <div data-role="content" data-theme="d" data-ajax="false">
             <div class="inset-page-content">
                 <ul data-role="listview" data-ajax="false" class="share-icons-list" data-inset="true" data-theme="d">
                     <li>
@@ -678,7 +678,7 @@
                <div class="search-header">
                    <input type="search" id="people-search-twitter" value="" placeholder="@username&hellip;" />
                </div>
-               <ul class="people-list simple-list" data-role="listview" data-inset="true" >
+               <ul class="people-list " data-role="listview" data-inset="true" >
                </ul>
            </div>
        </div>
@@ -693,7 +693,7 @@
                  <div class="search-header">
                      <input type="search" id="people-search-facebook"  value="" placeholder="Bobby Digital" />
                  </div>
-                 <ul class="people-list simple-list" data-role="listview" data-inset="true" >
+                 <ul class="people-list " data-role="listview" data-inset="true" >
                  </ul>
              </div>
          </div>
@@ -1029,7 +1029,7 @@
                 </div>
 
 
-                <ul data-inset="true" class="reactions-list simple-list">
+                <ul data-inset="true" class="reactions-list ">
                 </ul>
 
                 <div class="comment-area">
@@ -1361,7 +1361,7 @@
                <div class="search-header">
                    <input type="search" id="people-search" value="" placeholder="Username&hellip;" />
                </div>
-               <ul class="people-list simple-list" data-role="listview" data-inset="true" >
+               <ul class="people-list " data-role="listview" data-inset="true" >
                </ul>
            </div>
        </div>
@@ -1437,7 +1437,7 @@
         case "photo-activity":%>
             <% if (item.get("comments").length || item.get("comment-on-comments").length) {%>
             <!-- // List the comments followed by the comments on comments -->
-            <ul class="comments-list simple-list" data-role="listview" data-inset="true" data-icon="false" >
+            <ul class="comments-list " data-role="listview" data-inset="true" data-icon="false" >
             <% _.each( item.get("comments"), function( comment ){ %>
                 <li data-icon="false" class="comment-item activity-item">
                     <a href="#/feed/?username=<%= comment.user.username %>&back=Activity">
@@ -1640,7 +1640,7 @@
                <div class="search-header">
                    <input type="search" id="venue-search" value="" placeholder="Search&hellip;" />
                </div>
-               <ul class="venue-list simple-list" data-role="listview" data-inset="true" >
+               <ul class="venue-list " data-role="listview" data-inset="true" >
                </ul>
            </div>
        </div>
@@ -1818,7 +1818,7 @@
             </div>
             <div id="map-disambiguation" data-role="content" data-theme="d" style="">
                 <h4>Did you mean&hellip;</h4>
-                <ul data-role="listview" id="map-disambiguation-list" class="simple-list map-list">
+                <ul data-role="listview" id="map-disambiguation-list" class=" map-list">
                 </ul>
                 <div class="cancel-btn">
                 <button id="map-disambituation-cancel" data-theme="c">Cancel</button>

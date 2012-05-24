@@ -1979,33 +1979,41 @@ a.ui-link-inherit {
 /* List hover effects are going to be a little bit different to normal buttons 
     and we are going to strip the hell out of them..
 */
-.ui-body-c .ui-listview {
+.ui-body-c > .ui-listview {
   background: none;
+  -moz-border-radius: 0;
+  -webkit-border-radius: 0;
+  border-radius: 0;
   /* Put the border back on for people / venues lists because i like it there */
 
   /* Right hand buttons in split lists */
 
 }
-.ui-body-c .ui-listview .ui-li,
-.ui-body-c .ui-listview .ui-li-has-icon {
+.ui-body-c > .ui-listview.ui-shadow {
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+.ui-body-c > .ui-listview .ui-li,
+.ui-body-c > .ui-listview .ui-li-has-icon {
   padding: 0;
 }
-.ui-body-c .ui-listview .ui-btn {
+.ui-body-c > .ui-listview .ui-btn {
   border: none!important;
   background: none;
 }
-.ui-body-c .ui-listview .ui-btn.ui-li {
+.ui-body-c > .ui-listview .ui-btn.ui-li {
   border-top: solid 1px #e4e4e4 !important;
   margin-bottom: 0;
 }
-.ui-body-c .ui-listview .ui-btn.ui-li:first-child {
+.ui-body-c > .ui-listview .ui-btn.ui-li:first-child {
   border-top: none!important;
 }
-.ui-body-c .ui-listview .ui-btn-hover-c {
+.ui-body-c > .ui-listview .ui-btn-hover-c {
   background-color: rgba(255, 255, 255, 0.8);
 }
-.ui-body-c .ui-listview .ui-btn-down-c,
-.ui-body-c .ui-listview .ui-btn-active {
+.ui-body-c > .ui-listview .ui-btn-down-c,
+.ui-body-c > .ui-listview .ui-btn-active {
   background-color: transparent;
   background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0)), to(#ffffff));
   /* Saf4+, Chrome */
@@ -2024,43 +2032,42 @@ a.ui-link-inherit {
 
   background-image: linear-gradient(top, rgba(255, 255, 255, 0), #ffffff);
 }
-.ui-body-c .ui-listview.people-list .ui-btn.ui-li:first-child,
-.ui-body-c .ui-listview.venue-list .ui-btn.ui-li:first-child,
-.ui-body-c .ui-listview.map-list .ui-btn.ui-li:first-child {
+.ui-body-c > .ui-listview.people-list .ui-btn.ui-li:first-child,
+.ui-body-c > .ui-listview.venue-list .ui-btn.ui-li:first-child,
+.ui-body-c > .ui-listview.map-list .ui-btn.ui-li:first-child {
   border-top: solid 1px #e4e4e4 !important;
 }
-.ui-body-c .ui-listview .ui-btn-inner .ui-link-inherit {
+.ui-body-c > .ui-listview .ui-btn-inner .ui-link-inherit {
   padding-top: 16px !important;
   padding-bottom: 16px !important;
 }
-.ui-body-c .ui-listview .ui-li-has-icon .ui-btn-inner .ui-link-inherit {
+.ui-body-c > .ui-listview .ui-li-has-icon .ui-btn-inner .ui-link-inherit {
   padding-top: 8px !important;
   padding-bottom: 10px !important;
 }
-.ui-body-c .ui-listview .ui-li-icon {
+.ui-body-c > .ui-listview .ui-li-icon {
   left: 0;
   top: 8px;
 }
-.ui-body-c .ui-listview .ui-li-heading {
+.ui-body-c > .ui-listview .ui-li-heading {
   margin: 0 0 8px 0;
   font-weight: normal;
 }
-.ui-body-c .ui-listview .ui-li-desc {
+.ui-body-c > .ui-listview .ui-li-desc {
   margin: -8px 0 0 0;
   padding: 0;
-  padding-left: 8px;
   color: #999999;
 }
-.ui-body-c .ui-listview .ui-li,
-.ui-body-c .ui-listview .ui-li-link-alt {
+.ui-body-c > .ui-listview .ui-li,
+.ui-body-c > .ui-listview .ui-li-link-alt {
   border-right: none!important;
   border-left: none!important;
 }
-.ui-body-c .ui-listview .ui-li-link-alt {
+.ui-body-c > .ui-listview .ui-li-link-alt {
   width: 44px;
   background: none;
 }
-.ui-body-c .ui-listview .ui-li-link-alt .ui-btn {
+.ui-body-c > .ui-listview .ui-li-link-alt .ui-btn {
   border: none;
   width: 44px;
   height: 44px;
@@ -2069,24 +2076,24 @@ a.ui-link-inherit {
   margin-top: 0;
   background: none;
 }
-.ui-body-c .ui-listview .ui-li-link-alt .ui-btn .ui-icon {
+.ui-body-c > .ui-listview .ui-li-link-alt .ui-btn .ui-icon {
   margin-top: 0;
   top: 4px;
   right: 0;
 }
-.ui-body-c .ui-listview .ui-li-link-alt .ui-btn .ui-icon-check {
+.ui-body-c > .ui-listview .ui-li-link-alt .ui-btn .ui-icon-check {
   background-position: -243px -108px;
 }
-.ui-body-c .ui-listview .ui-li-link-alt .ui-btn .ui-icon-plus {
+.ui-body-c > .ui-listview .ui-li-link-alt .ui-btn .ui-icon-plus {
   background-position: 9px 0px;
 }
-.ui-body-c .ui-listview .ui-li-link-alt .ui-btn .ui-icon-tick {
+.ui-body-c > .ui-listview .ui-li-link-alt .ui-btn .ui-icon-tick {
   background-position: -243px -144px;
 }
-.ui-body-c .ui-listview.venue-list .ui-icon-arrow-r {
+.ui-body-c > .ui-listview.venue-list .ui-icon-arrow-r {
   display: none;
 }
-.ui-body-c .ui-listview .ui-icon-arrow-r {
+.ui-body-c > .ui-listview .ui-icon-arrow-r {
   background-position: -99px -36px;
 }
 /*
@@ -2138,7 +2145,7 @@ a.ui-link-inherit {
   background-color: transparent;
   color: rgba(200, 200, 200, 0.3);
 }
-.ui-body-d .simple-list .ui-btn.ui-li {
+.ui-body-d .ui-listview .ui-btn.ui-li {
   background: none;
 }
 .ui-bar-d {
@@ -2682,7 +2689,6 @@ a.ui-link-inherit {
   -webkit-animation-timing-function: linear;
 }
 /* light version of spinner action btns on white & dark bg buttons */
-.simple-list .x-ajax-loading .ui-icon,
 .ui-body-c .ui-listview .x-ajax-loading .ui-icon,
 .image-actions .x-ajax-loading .ui-icon,
 .dark-icons .x-ajax-loading .ui-icon {
@@ -3397,110 +3403,6 @@ a.ui-link-inherit {
 }
 .plain-link {
   font-family: Helvetica, Arial, sans-serif;
-}
-/* Strip bare the normal list style */
-.simple-list {
-  background: none;
-  /* Put the border back on for people / venues lists because i like it there */
-
-}
-.simple-list .ui-li {
-  padding: 0!important;
-}
-.simple-list .ui-btn {
-  background-color: #fbfbfb;
-  background-image: url('../gfx/bg-texture-light.gif');
-  border: none!important;
-}
-.simple-list .ui-btn.ui-li {
-  border-top: solid 1px #e4e4e4 !important;
-  margin-bottom: 0;
-}
-.simple-list .ui-btn.ui-li:first-child {
-  border-top: none!important;
-}
-.simple-list.people-list .ui-btn.ui-li:first-child,
-.simple-list.venue-list .ui-btn.ui-li:first-child,
-.simple-list.map-list .ui-btn.ui-li:first-child {
-  border-top: solid 1px #e4e4e4 !important;
-}
-.simple-list .ui-btn-inner .ui-link-inherit {
-  padding-top: 16px !important;
-  padding-bottom: 16px !important;
-}
-.simple-list .ui-li-has-icon {
-  padding-left: 38px;
-}
-.simple-list .ui-li-has-icon .ui-btn-inner .ui-link-inherit {
-  padding-top: 8px !important;
-  padding-bottom: 10px !important;
-}
-.simple-list .ui-li-icon {
-  left: 0;
-  top: 8px;
-}
-.simple-list .ui-li-heading {
-  margin: 0 0 8px 0;
-  font-weight: normal;
-}
-.simple-list .ui-li-desc {
-  margin: -8px 0 0 0;
-  padding: 0;
-  color: #999999;
-}
-.simple-list .ui-li,
-.simple-list .ui-li-link-alt {
-  border-right: none!important;
-  border-left: none!important;
-}
-.simple-list .ui-li-link-alt {
-  width: 44px;
-}
-.simple-list .ui-li-link-alt .ui-btn {
-  border: none;
-  width: 44px;
-  height: 44px;
-  top: 4px;
-  right: 0;
-  margin-top: 0;
-}
-.simple-list .ui-li-link-alt .ui-btn .ui-icon {
-  margin-top: 0;
-  top: 4px;
-  right: 0;
-}
-.simple-list .ui-li-link-alt .ui-btn .ui-icon-check {
-  background-position: -243px -108px;
-}
-.simple-list .ui-li-link-alt .ui-btn .ui-icon-plus {
-  background-position: 9px 0px;
-}
-.simple-list .ui-li-link-alt .ui-btn .ui-icon-tick {
-  background-position: -243px -144px;
-}
-.simple-list .ui-shadow,
-.simple-list.ui-shadow {
-  -moz-box-shadow: none;
-  -webkit-box-shadow: none;
-  box-shadow: none;
-}
-.simple-list .ui-corner-all,
-.simple-list .ui-btn-corner-all,
-.simple-list.ui-corner-all,
-.simple-list.ui-btn-corner-all,
-.simple-list .ui-corner-top,
-.simple-list .ui-btn-corner-top,
-.simple-list.ui-corner-top,
-.simple-list.ui-btn-corner-top {
-  -moz-border-radius: 0px;
-  -webkit-border-radius: 0px;
-  border-radius: 0px;
-}
-.simple-list.venue-list .ui-icon-arrow-r {
-  display: none;
-}
-.simple-list .ui-icon-arrow-r {
-  background-position: -99px -36px;
 }
 /* @search fields at top of pages like people / venues */
 .search-header {
@@ -4764,21 +4666,24 @@ div.ps-carousel-item-loading {
 }
 .image-item-block .reactions-list {
   display: none;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
 }
-.image-item-block .reactions-list .ui-li {
+.image-item-block .reactions-list li.ui-li {
   border: none!important;
   padding: 0;
 }
-.image-item-block .reactions-list .ui-li .ui-link-inherit {
+.image-item-block .reactions-list li.ui-li .ui-link-inherit {
   padding: 0 0 8px 0 !important;
   display: inline-block;
   white-space: normal;
 }
-.image-item-block .reactions-list .ui-li .ui-icon-arrow-r {
+.image-item-block .reactions-list li.ui-li .ui-icon-arrow-r {
   display: none;
 }
-.image-item-block .reactions-list .ui-li .comment,
-.image-item-block .reactions-list .ui-li .like-text {
+.image-item-block .reactions-list li.ui-li .comment,
+.image-item-block .reactions-list li.ui-li .like-text {
   white-space: normal;
   font-weight: normal;
   font-family: Helvetica, Arial, sans-serif;
@@ -5595,7 +5500,7 @@ div.ps-carousel-item-loading {
 .activity-streams .ui-bar.top-left-arrow .ui-btn-text {
   padding-left: 8px;
 }
-.activity-streams .simple-list .username,
+.activity-streams .username,
 .activity-streams .ui-li-desc {
   display: inline-block;
   margin-bottom: 0;
@@ -6264,7 +6169,7 @@ div.ps-carousel-item-loading {
     -webkit-background-size: 24px 24px !important;
     background-size: 24px 24px !important;
   }
-  .simple-list .x-ajax-loading .ui-icon,
+  .ui-listview .x-ajax-loading .ui-icon,
   .image-actions .x-ajax-loading .ui-icon,
   .dark-icons .x-ajax-loading .ui-icon {
     display: block;

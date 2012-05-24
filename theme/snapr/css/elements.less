@@ -14,7 +14,6 @@
 }
 
 /* light version of spinner action btns on white & dark bg buttons */
-.simple-list,
 .ui-body-c .ui-listview,
 .image-actions,
 .dark-icons{
@@ -690,120 +689,6 @@
     font-family: @txt-font-base;
 }
 
-
-/* Strip bare the normal list style */
-.simple-list{
-    background: none;
-    .ui-li{
-        padding: 0!important;
-    }
-    .ui-btn{
-        background-color: @color-off-white-tint;
-        background-image: @gfx-bg-light-texture;
-
-        border: none!important;
-        &.ui-li{
-            border-top: @border-medium-on-light!important;
-            margin-bottom: 0;
-            &:first-child{
-                border-top: none!important;
-            }
-        }
-    }
-    /* Put the border back on for people / venues lists because i like it there */
-    &.people-list,
-    &.venue-list,
-    &.map-list{
-        .ui-btn.ui-li:first-child{
-            border-top: @border-medium-on-light!important;
-        }
-    }
-
-    .ui-btn-inner{
-       .ui-link-inherit{
-           padding-top: @padding-element-inset * 2px!important;
-           padding-bottom: @padding-element-inset * 2px!important;
-       }
-    }
-    .ui-li-has-icon{
-       padding-left: @size-small-avatar + 4px;
-       .ui-btn-inner{
-          .ui-link-inherit{
-              padding-top: @padding-element-inset!important;
-              padding-bottom: @padding-element-inset + 2px!important;
-          }
-        }
-    }
-
-
-    .ui-li-icon{
-        left: 0;
-        top: @padding-element-inset;
-    }
-
-    .ui-li-heading{
-        margin: 0 0 @padding-element-inset 0;
-        font-weight: normal;
-    }
-    .ui-li-desc{
-        margin: -8px 0 0 0;
-        padding: 0;
-        color: @color-txt-light-on-light;
-    }
-    .ui-li,
-    .ui-li-link-alt{
-        border-right: none!important;
-        border-left: none!important;
-    }
-
-    .ui-li-link-alt{
-        width: 44px;
-        .ui-btn {
-            border: none;
-            width: 44px;
-            height: 44px;
-            top: 4px;
-            right: 0;
-            margin-top: 0;
-            .ui-icon{
-                margin-top: 0;
-                top: 4px;
-                right: 0;
-            }
-            .ui-icon-check{
-                background-position: @gfx-general-icon-sprite-check-x @g-yellow-offset-y;
-            }
-            .ui-icon-plus{
-                background-position: @gfx-general-icon-sprite-plus-x @g-light-offset-y;
-            }
-            .ui-icon-tick{
-                background-position: @gfx-general-icon-sprite-check-x @g-highlight-offset-y;
-            }
-        }
-    }
-    .ui-shadow,
-    &.ui-shadow {
-        .box-shadow(none);
-    }
-    .ui-corner-all,
-    .ui-btn-corner-all,
-    &.ui-corner-all,
-    &.ui-btn-corner-all,
-    .ui-corner-top,
-    .ui-btn-corner-top,
-    &.ui-corner-top,
-    &.ui-btn-corner-top{
-        .corner-all(@corner-not-rounded);
-    }
-    &.venue-list{
-        .ui-icon-arrow-r{
-            display: none;
-        }
-    }
-    .ui-icon-arrow-r {
-        background-position: @gfx-general-icon-sprite-arrow-r-x @g-med-offset-y;
-    }
-}
 
 /* @search fields at top of pages like people / venues */
 .search-header{
