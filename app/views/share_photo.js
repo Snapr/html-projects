@@ -112,7 +112,6 @@ snapr.views.share_photo = snapr.views.page.extend({
         this.model.fetch({
             success: function( model )
             {
-                console.log(model);
                 share_photo_view.$el.find("#description").val( model.get("description") );
 
                 if (snapr.utils.get_local_param( "foursquare-sharing" ) &&
@@ -128,7 +127,7 @@ snapr.views.share_photo = snapr.views.page.extend({
             },
             error: function()
             {
-                console.log( "photo fetch error" );
+                console.error( "photo fetch error" );
             }
         });
     },
@@ -210,7 +209,7 @@ snapr.views.share_photo = snapr.views.page.extend({
             },
             function( e )
             {
-                console.log( "geocode error", e );
+                console.error( "geocode error", e );
             });
         }
     },
@@ -267,7 +266,7 @@ snapr.views.share_photo = snapr.views.page.extend({
             },
             function( e )
             {
-                console.log( "geocode error", e );
+                console.error( "geocode error", e );
             });
         }
     },
@@ -369,7 +368,7 @@ snapr.views.share_photo = snapr.views.page.extend({
             },
             function( e )
             {
-                console.log( "geocode error", e );
+                console.error( "geocode error", e );
             });
         }
     },
@@ -410,7 +409,7 @@ snapr.views.share_photo = snapr.views.page.extend({
         }
         else
         {
-            console.log("clicked on edit but not in appmode or no img_url", img_url );
+            console.error("clicked on edit but not in appmode or no img_url", img_url );
         }
     },
 
@@ -455,9 +454,7 @@ snapr.views.share_photo = snapr.views.page.extend({
             this.model.save({},{
                 success: function( model, response )
                 {
-                    console.log(model, response);
                     if(!response.success){
-                        console.log(response.error);
                         return;
                     }
 
@@ -465,7 +462,6 @@ snapr.views.share_photo = snapr.views.page.extend({
                     var sharing_successes = [];
                     if (model.get("tweet"))
                     {
-                        console.warn("tweet", model);
                         if (response.response &&
                             response.response.twitter &&
                             response.response.twitter.error &&
@@ -523,7 +519,7 @@ snapr.views.share_photo = snapr.views.page.extend({
 
                     if (sharing_errors.length)
                     {
-                        var url = "#/connect/?to_link=" + sharing_errors.join(",") + "&photo_id=" + model.get("id");  //  + "&shared=" + sharing_successes.join(",")
+                        var url = "#/connect/?to_link=" + sharing_errors.join(",") + "&photo_id=" + model.get("id") + "&redirect_url=" + escape(redirect_url);  //  + "&shared=" + sharing_successes.join(",")
                         Route.navigate( url );
                     }
                     else
@@ -533,7 +529,7 @@ snapr.views.share_photo = snapr.views.page.extend({
                 },
                 error: function()
                 {
-                    console.log( "save/share error" );
+                    console.error( "save/share error" );
                 }
             });
         }

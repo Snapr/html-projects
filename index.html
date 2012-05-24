@@ -186,6 +186,31 @@
         </div>
     </div>
 
+    <!--  Fake template for my-account while loading -->
+    <script id="my-account-initial-template" type="text/template">
+
+    <div class="myaccount-header page-inset-header ui-body-c">
+        <div class="ui-content">
+            <a class="username" href="#/feed/?username=<%= username %>&back=My Account">
+                <div class="user-icon-small"></div>
+                <%= username %>
+            </a>
+            <a href="#/logout/" class="logout-button" data-role="button" data-icon="delete" data-iconpos="right">Logout</a>
+        </div>
+
+    </div>
+
+    <div class="myaccount-quicklinks">
+         <a class="ui-bar top-no-arrow" data-role="button" data-theme="e" >
+            <em>Quick Links</em>
+         </a>
+         <ul class="simple-list" data-role="listview">
+            <li><a href="#/find-friends/">Find Friends</a></li>
+         </ul>
+    </div>
+
+    </script>
+
     <!--  template for my-account -->
     <script id="my-account-template" type="text/template">
 
@@ -497,6 +522,17 @@
                 Link Facebook
         </a>
 
+    <% break; } %>
+
+    </script>
+
+     <!-- @link @service BUTTON for linking a service in #find-friends -->
+    <script id="add-linked-service-button-template" type="text/template">
+
+    <% switch(provider) { case 'twitter': %>
+        <a data-role="button" class="link-service twitter-button logo-button" data-theme="e">Link <span class="twitter-logo button-logo">Twitter</span></a>
+    <% break; case 'facebook': %>
+        <a data-role="button" class="link-service facebook-button logo-button" data-theme="e">Link <span class="facebook-logo button-logo">Facebook</span></a>
     <% break; } %>
 
     </script>
@@ -2023,7 +2059,7 @@
                     <input type="hidden" name="privacy" id="privacy" value="queued"/>
 
                     <ul data-role="listview" data-inset="true" data-theme="d">
-                        
+
                         <li>
                             <h1>Select a photo to upload:</h1>
                             <input type="file" name="photo" id="upload-file" />

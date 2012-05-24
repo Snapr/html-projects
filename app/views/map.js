@@ -101,6 +101,7 @@ snapr.views.map = snapr.views.page.extend({
         map_view.geocoder = new google.maps.Geocoder();
 
         // this might be ready to run now - it will decide for itself
+        map_view.maps_loaded = true;
         map_view.when_page_showen_and_maps_loaded();
 
         map_view.$el.die('pagehide');
@@ -121,7 +122,7 @@ snapr.views.map = snapr.views.page.extend({
     when_page_showen_and_maps_loaded: function(){
 
         // don't run if not ready - anything becoming ready will re-call this function
-        if(!window.google || !window.google.maps || !this.page_shown){ return; }
+        if(!this.maps_loaded || !this.page_shown){ return; }
 
         //only run once
         if(this.page_showen_and_maps_loaded){ return; }

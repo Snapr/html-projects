@@ -9,10 +9,10 @@ snapr.views.connect_li = snapr.views.linked_service.extend({
         this.photo_id = this.options.photo_id || null;
         this.parent_view = this.options.parent_view || null;
 
-        if (this.photo_id && this.status == "ready")
-        {
-            this.share();
-        }
+        // if (this.photo_id && this.status == "ready")
+        // {
+        //     this.share();
+        // }
     },
 
     render: function()
@@ -38,7 +38,7 @@ snapr.views.connect_li = snapr.views.linked_service.extend({
         var to_link = _.without( this.parent_view.to_link, this.provider );
         var shared = _.without( this.parent_view.shared, this.provider );
 
-        var redirect_params = {linked: this.provider};
+        var redirect_params = {linked: this.provider, redirect_url: this.parent_view.redirect_url};
 
         if (shared.length)
         {
@@ -72,7 +72,6 @@ snapr.views.connect_li = snapr.views.linked_service.extend({
         var options = {
             success: function( model, xhr )
             {
-                // console.log("share success", model, xhr);
                 connect_li.status = "shared";
                 connect_li.render();
                 if (connect_li.parent_view.to_link.length === 0)
@@ -85,7 +84,7 @@ snapr.views.connect_li = snapr.views.linked_service.extend({
             },
             error: function( error )
             {
-                console.log("share error", error);
+                console.error("share error", error);
             }
         };
 

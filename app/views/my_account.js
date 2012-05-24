@@ -24,13 +24,17 @@ snapr.views.my_account = snapr.views.page.extend({
                 console.log( 'error' , my_account_view );
             }
         };
+
+        my_account_view.render(!!'initial');
+
         $.mobile.showPageLoadingMsg();
         this.user_settings.fetch( options );
     },
 
     template: _.template( $('#my-account-template').html() ),
+    initial_template: _.template( $('#my-account-initial-template').html() ),
 
-    render: function()
+    render: function(initial)
     {
         var $account_content = this.$el.find('.account-content').empty();
 
@@ -41,9 +45,14 @@ snapr.views.my_account = snapr.views.page.extend({
         //     this.upload_settings = new snapr.views.upload_settings();
         //     $account_content.prepend( this.upload_settings.render().el );
         // }
-
-        $account_content
-            .append( this.template({
+        if(initial){
+            template = this.initial_template;
+            data={
+                username: snapr.auth.get( "snapr_user" )
+            };
+        }else{
+            template = this.template;
+            data={
                 username: snapr.auth.get( "snapr_user" ),
                 user_id: this.user_settings.get( "user" ).user_id,
                 settings: this.user_settings.get( "settings" ),
@@ -53,8 +62,13 @@ snapr.views.my_account = snapr.views.page.extend({
                     camplus_edit: (snapr.utils.get_local_param( "camplus_edit" ) == "true"),
                     camplus_lightbox: (snapr.utils.get_local_param( "camplus_lightbox" ) == "true")
                 }
-            }) )
-            .trigger('create');
+            };
+        }
+
+        $account_content
+            .append( template(data) ).trigger('create');
+
+        if(initial){ return this; }
 
         // set all linked services to false, we will check them off below
 
