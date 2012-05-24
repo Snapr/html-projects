@@ -186,6 +186,31 @@
         </div>
     </div>
 
+    <!--  Fake template for my-account while loading -->
+    <script id="my-account-initial-template" type="text/template">
+
+    <div class="myaccount-header page-inset-header ui-body-c">
+        <div class="ui-content">
+            <a class="username" href="#/feed/?username=<%= username %>&back=My Account">
+                <div class="user-icon-small"></div>
+                <%= username %>
+            </a>
+            <a href="#/logout/" class="logout-button" data-role="button" data-icon="delete" data-iconpos="right">Logout</a>
+        </div>
+
+    </div>
+
+    <div class="myaccount-quicklinks">
+         <a class="ui-bar top-no-arrow" data-role="button" data-theme="e" >
+            <em>Quick Links</em>
+         </a>
+         <ul class="simple-list" data-role="listview">
+            <li><a href="#/find-friends/">Find Friends</a></li>
+         </ul>
+    </div>
+
+    </script>
+
     <!--  template for my-account -->
     <script id="my-account-template" type="text/template">
 
