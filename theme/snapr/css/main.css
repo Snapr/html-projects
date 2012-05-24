@@ -2362,7 +2362,7 @@ a.ui-link-inherit {
 .ui-body-d .ui-listview-inset li.ui-li h1,
 .ui-body-d .ui-listview-inset li.ui-li h2,
 .ui-body-d .ui-listview-inset li.ui-li h3 {
-  padding-left: 8px;
+  padding: 8px;
   font-family: 'MuseoSansRounded700', Helvetica, Arial, sans-serif;
   font-weight: normal;
   color: #333333;
