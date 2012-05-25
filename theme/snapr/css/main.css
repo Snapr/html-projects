@@ -2486,6 +2486,9 @@ a.ui-link-inherit {
   bottom: -6px;
   left: 24px;
 }
+.ui-bar-e a {
+  color: #666666;
+}
 .ui-btn-up-e {
   border: none;
   background: #ffff00;
@@ -5575,6 +5578,7 @@ div.ps-carousel-item-loading {
 }
 .activity-streams .image-likes .like-icon {
   margin-bottom: 4px;
+  display: inline-block;
 }
 .activity-streams .activity-follow-item {
   position: relative;
