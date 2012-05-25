@@ -155,7 +155,7 @@ snapr.views.uploading = snapr.views.page.extend({
         }
         else
         {
-            if (this.latitude && this.longitude)
+            if (this.latitude && this.longitude && parseFloat(this.latitude, 10) && parseFloat(this.longitude, 10))
             {
                 this.recent_nearby_stream = new snapr.views.uploading_image_stream({
                     stream_type: "recent-nearby",
@@ -165,7 +165,7 @@ snapr.views.uploading = snapr.views.page.extend({
             }
         }
 
-        if (this.latitude && this.longitude)
+        if (this.latitude && this.longitude && parseFloat(this.latitude, 10) && parseFloat(this.longitude, 10))
         {
             this.popular_nearby_stream = new snapr.views.uploading_image_stream({
                 stream_type: "popular-nearby",
@@ -199,6 +199,11 @@ snapr.views.uploading = snapr.views.page.extend({
                     popular_nearby_stream.$el.trigger( "create" );
                 }
             });
+        }
+
+        if(!this.recent_nearby_stream && !this.popular_nearby_stream)
+        {
+            $image_stream_container.append( $("#uploading-stream-placeholder-template").html() );
         }
 
     },
