@@ -359,6 +359,18 @@ snapr.views.feed = snapr.views.page.extend({
             // refresh the feed content
             this.populate_feed();
         }
+    },
+
+    upload_count: function( count )
+    {
+        if (count)
+        {
+            this.$el.addClass("showing-upload-queue");
+        }
+        else
+        {
+            this.$el.removeClass("showing-upload-queue");
+        }
     }
 
 });

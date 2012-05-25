@@ -317,5 +317,17 @@ snapr.views.uploading = snapr.views.page.extend({
             delete this.pending_uploads[queue_id];
         }
         // Route.navigate( "#/" );
+    },
+
+    upload_count: function( count )
+    {
+        if (count)
+        {
+            this.$el.addClass("showing-upload-queue");
+        }
+        else
+        {
+            this.$el.removeClass("showing-upload-queue");
+        }
     }
 });
