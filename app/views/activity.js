@@ -12,6 +12,7 @@ snapr.views.activity = snapr.views.page.extend({
         };
 
         this.collection.bind( "reset", this.render );
+        this.$el.find(".activity-streams").empty();
 
         this.collection.fetch();
 
@@ -34,6 +35,14 @@ snapr.views.activity = snapr.views.page.extend({
         {
             $streams.append( new snapr.views.activity_stream({
                 model: new Backbone.Model()
+            }).render().el );
+        }
+        if (!first)
+        {
+            $streams.append( new snapr.views.activity_stream({
+                model: new Backbone.Model({
+                    type: "placeholder"
+                })
             }).render().el );
         }
 

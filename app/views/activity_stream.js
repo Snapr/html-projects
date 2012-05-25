@@ -40,7 +40,7 @@ snapr.views.activity_stream = Backbone.View.extend({
             {
                 stream_summary += summary[ type ] + " " + type + snapr.utils.plural( summary[ type ] ) + " " ;
             }
-        })
+        });
 
         if (time_period = this.model.has( "min_date" ))
         {
@@ -75,6 +75,15 @@ snapr.views.activity_stream = Backbone.View.extend({
             }
 
         }, this);
+
+        if (!this.model.has( "events" ))
+        {
+            var stream_item = new snapr.views.activity_stream_item({
+                model: this.model
+            });
+
+            this.$el.find("ul").append( stream_item.render().el );
+        }
 
         return this;
     }
