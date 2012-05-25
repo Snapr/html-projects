@@ -550,6 +550,10 @@ snapr.views.share_photo = snapr.views.page.extend({
                     if (["tumblr", "facebook_album", "tweet", "foursquare_checkin"].indexOf( o.name ) > -1)
                     {
                         params[o.name] = (o.value == "on");
+                        if (o.name == "foursquare_checkin")
+                        {
+                            params.foursquare_venue = this.model.get( "location" ).foursquare_venue_id;
+                        }
                     }
                     else if(o.name == "status")
                     {
@@ -567,7 +571,7 @@ snapr.views.share_photo = snapr.views.page.extend({
                         params[o.name] = o.value;
                     }
 
-                });
+                }, this);
 
                 // default to public if not set above
                 if( !params["status"])
@@ -589,9 +593,22 @@ snapr.views.share_photo = snapr.views.page.extend({
                 {
                     var ll = "?ll=" + params.latitude + "," + params.longitude;
                 }
+                else if (this.model.get( "location" ) &&
+                    this.model.get( "location" ).latitude &&
+                    this.model.get( "location" ).longitude )
+                {
+                    params.latitude = this.model.get( "location" ).latitude;
+                    params.longitude = this.model.get( "location" ).longitude;
+                    var ll = "?ll=" + params.latitude + "," + params.longitude;
+                }
                 else
                 {
                     var ll = ""
+                }
+
+                if (params.foursquare_venue)
+                {
+                    var ll += "&spot=" + params.foursquare_venue;
                 }
 
                 Route.navigate( "#/uploading/" + ll );
