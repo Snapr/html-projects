@@ -58,9 +58,9 @@ snapr.views.share_photo = snapr.views.page.extend({
 
         if (this.model.get("secret"))
         {
-            var img_url = "http://media-server2.snapr.us/lrg/"
-                + this.model.get("secret") + "/"
-                + this.model.get("id") + ".jpg";
+            var img_url = "http://media-server2.snapr.us/lrg/" +
+                this.model.get("secret") + "/" +
+                this.model.get("id") + ".jpg";
         }
         else if (this.model.has("photo_path"))
         {

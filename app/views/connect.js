@@ -18,6 +18,10 @@ snapr.views.connect = snapr.views.page.extend({
 
     },
 
+    events: {
+        "click .x-close": "close"
+    },
+
     render: function()
     {
         this.$el.find("ul").empty();
@@ -78,6 +82,11 @@ snapr.views.connect = snapr.views.page.extend({
 
         this.model = new snapr.models.post({provider: service, photo_id: this.photo_id});
         this.model.save({}, options);
+    },
+
+    close: function(e){
+        Route.navigate( unescape(this.redirect_url) );
+        e.preventDefault();
     }
 
 });
