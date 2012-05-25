@@ -1125,7 +1125,7 @@
     <!-- inset block of content w/ icon -->
     <div class="user-info-block">
         <div class="user-icon-left">
-            <a class="user-profile-icon" href="#/feed/?username=<%= user.get( "username" ) %>">
+            <a class="user-profile-icon x-back">
                 <div class="user-icon-big" style="background-image: url('<%= snapr.avatar_url %>/<%= user.get( "user_id" ) %>?size=large');"></div>
 
             </a>
@@ -1213,7 +1213,7 @@
     <!-- base btns -->
     <div class="user-buttons">
         <% if (user.get("details").stats.photo_count){%>
-        <a href="#/feed/?username=<%= user.get( "username" ) %>" data-role="button" data-icon="feed" class="extra-icons"><%= user.get("details").stats.photo_count %>
+        <a data-role="button" data-icon="feed" class="extra-icons x-back"><%= user.get("details").stats.photo_count %>
          Snaps</a>
         <%}%>
         <% if (user.get("details").stats.photos_favorited){%>

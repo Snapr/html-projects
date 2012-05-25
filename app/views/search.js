@@ -60,13 +60,35 @@ snapr.views.search = snapr.views.dialog.extend({
 
         switch(type){
             case 'location':
-                Route.navigate( "#/map/?location=" + keywords );
+                if (window.location.hash == "#/map/?location=" + keywords )
+                {
+                    this.back();
+                    this.back_view && this.back_view.search_location( keywords );
+                }
+                else
+                {
+                    Route.navigate( "#/map/?location=" + keywords );
+                }
                 break;
             case 'tag':
-                Route.navigate( "#/feed/?keywords=" + keywords + "&list_style=grid" );
+                if (window.location.hash == "#/feed/?keywords=" + keywords + "&list_style=grid" )
+                {
+                    this.back();
+                }
+                else
+                {
+                    Route.navigate( "#/feed/?keywords=" + keywords + "&list_style=grid" );
+                }
                 break;
             case 'user':
-                Route.navigate( "#/user/search/?username=" + keywords );
+                if (window.location.hash == "#/user/search/?username=" + keywords )
+                {
+                    this.back();
+                }
+                else
+                {
+                    Route.navigate( "#/user/search/?username=" + keywords );
+                }
                 break;
         }
     }
