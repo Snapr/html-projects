@@ -2486,6 +2486,9 @@ a.ui-link-inherit {
   bottom: -6px;
   left: 24px;
 }
+.ui-bar-e a {
+  color: #666666;
+}
 .ui-btn-up-e {
   border: none;
   background: #ffff00;
