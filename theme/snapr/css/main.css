@@ -5537,7 +5537,13 @@ div.ps-carousel-item-loading {
   margin-top: 8px;
   padding-top: 0;
 }
+.activity-streams .comments-list {
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
 .activity-streams .comments-list .comment-item.ui-li-has-icon {
+  padding: 0;
   margin-top: 8px;
   padding-top: 8px!important;
 }
@@ -5549,9 +5555,11 @@ div.ps-carousel-item-loading {
 }
 .activity-streams .comments-list .comment-item.ui-li-has-icon .ui-li-icon {
   top: 0;
+  left: 0;
 }
 .activity-streams .comments-list .comment-item.ui-li-has-icon .ui-li-heading {
-  padding-left: 0;
+  padding: 0;
+  margin: 0;
 }
 .activity-streams .image-likes {
   min-height: 34px;
@@ -5564,6 +5572,9 @@ div.ps-carousel-item-loading {
 .activity-streams .image-likes .like-icons-list {
   margin-top: 8px;
   margin-bottom: 0;
+}
+.activity-streams .image-likes .like-icon {
+  margin-bottom: 4px;
 }
 .activity-streams .activity-follow-item {
   position: relative;
