@@ -27,7 +27,7 @@ snapr.views.dash_stream = snapr.views.side_scroll.extend({
     {
         var stream = this;
         snapr.utils.approve({
-            title: 'Are you sure you want to delete this stream?',
+            title: 'Are you sure you want to remove this stream?',
             yes_callback: function()
             {
                 stream.model.delete({
