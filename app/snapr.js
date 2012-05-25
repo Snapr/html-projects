@@ -61,7 +61,7 @@ Backbone.sync = function (method, model, options) {
 
     var type = method_map[method];
     // Default options, unless specified.
-    options || (options = {});
+    options = options || {};
 
     // give model the change to prepare it's data
     var data;
@@ -806,7 +806,6 @@ $("a[data-snapr-dialog='true']").live("vclick", function( e )
 
 // end upload/appmode functions
 $(function () {
-
     // initialise router and start backbone
     Route = new snapr.routers();
     Backbone.history.start();

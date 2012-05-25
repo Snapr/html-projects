@@ -41,7 +41,6 @@ snapr.models.user_settings = Backbone.Model.extend({
 
     linked_services_setup: function()
     {
-        console.log("linked_services_setup");
 
         var linked_services = this.get('linked_services');
         var ls = [];
