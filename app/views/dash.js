@@ -55,8 +55,8 @@ snapr.views.dash = snapr.views.page.extend({
         // make sure image streams are emptied
         this.$el.find('.image-streams').empty();
 
-        this.dash = new snapr.models.dash();
-        // window.dash = this.collection;
+        this.collection = new snapr.models.dash();
+        window.dash = this.collection;
 
         this.collection.bind( 'remove', this.remove_stream );
         this.collection.bind( 'add', this.add_stream );
