@@ -553,7 +553,14 @@ snapr.views.share_photo = snapr.views.page.extend({
                     }
                     else if(o.name == "status")
                     {
-                        params[o.name] = (o.value == "on") && "queued";
+                        if (o.value == "off")
+                        {
+                            params[o.name] = "private";
+                        }
+                        else
+                        {
+                            params[o.name] = "public";
+                        }
                     }
                     else
                     {
@@ -562,9 +569,10 @@ snapr.views.share_photo = snapr.views.page.extend({
 
                 });
 
+                // default to public if not set above
                 if( !params["status"])
                 {
-                    params.status = "private";
+                    params.status = "public";
                 }
                 _.extend(params, this.query);
 
