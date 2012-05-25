@@ -26,7 +26,7 @@ snapr.views.upload_progress_li = Backbone.View.extend({
             this.$el.html(
                 this.template({
                     upload_status: this.photo.upload_status.toLowerCase(),
-                    description: this.photo.description,
+                    description: unescape( this.photo.description ),
                     venue: this.photo.location.foursquare_venue_name || this.photo.location.location,
                     spot_id: this.photo.location.spot_id,
                     shared: this.photo.shared,
