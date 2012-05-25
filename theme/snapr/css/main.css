@@ -5575,6 +5575,7 @@ div.ps-carousel-item-loading {
 }
 .activity-streams .image-likes .like-icon {
   margin-bottom: 4px;
+  display: inline-block;
 }
 .activity-streams .activity-follow-item {
   position: relative;
