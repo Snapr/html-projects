@@ -588,11 +588,12 @@ snapr.views.share_photo = snapr.views.page.extend({
                     params["photo"] = photo;
                 }
 
+                var ll = "";
                 _.extend(params, snapr.auth.attributes);
 
                 if (params.latitude && params.longitude)
                 {
-                    var ll = "?ll=" + params.latitude + "," + params.longitude;
+                    ll = "?ll=" + params.latitude + "," + params.longitude;
                 }
                 else if (this.model.get( "location" ) &&
                     this.model.get( "location" ).latitude &&
@@ -600,16 +601,16 @@ snapr.views.share_photo = snapr.views.page.extend({
                 {
                     params.latitude = this.model.get( "location" ).latitude;
                     params.longitude = this.model.get( "location" ).longitude;
-                    var ll = "?ll=" + params.latitude + "," + params.longitude;
+                    ll = "?ll=" + params.latitude + "," + params.longitude;
                 }
                 else
                 {
-                    var ll = ""
+                    ll = ""
                 }
 
                 if (params.foursquare_venue)
                 {
-                    var ll += "&spot=" + params.foursquare_venue;
+                    ll += "&spot=" + params.foursquare_venue;
                 }
 
                 Route.navigate( "#/uploading/" + ll );
