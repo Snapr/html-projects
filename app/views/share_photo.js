@@ -553,6 +553,7 @@ snapr.views.share_photo = snapr.views.page.extend({
                         if (o.name == "foursquare_checkin")
                         {
                             params.foursquare_venue = this.model.get( "location" ).foursquare_venue_id;
+                            params.venue_name = this.model.get( "location" ).foursquare_venue_name;
                         }
                     }
                     else if(o.name == "status")
@@ -568,7 +569,7 @@ snapr.views.share_photo = snapr.views.page.extend({
                     }
                     else
                     {
-                        params[o.name] = o.value;
+                        params[o.name] = escape( o.value );
                     }
 
                 }, this);
