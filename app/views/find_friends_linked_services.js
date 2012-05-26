@@ -78,14 +78,11 @@ snapr.views.find_friends_linked_services = snapr.views.dialog.extend({
                 this_view.xhr = null;
                 this_view.$el.removeClass('loading');
                 if(response.error){
-                    var v = new snapr.views.linked_service();
-                    v.add_service_template = _.template( $('#add-linked-service-button-template').html() );
+                    var next = window.location.href;
                     if(response.error.code == 30){
-                        v.provider = 'twitter';
-                        this_view.$('.people-list').addClass('to-link').append( v.render().el ).trigger('create');
+                        Route.navigate( '#/twitter-xauth/?redirect='+ escape( next ) );
                     }else if(response.error.code == 20){
-                        v.provider = 'facebook';
-                        this_view.$('.people-list').addClass('to-link').append( v.render().el ).trigger('create');
+                        Route.navigate( '#/facebook-xauth/?redirect='+ escape( next ) );
                     }
                 }
             }
