@@ -80,9 +80,9 @@ snapr.views.find_friends_linked_services = snapr.views.dialog.extend({
                 if(response.error){
                     var next = window.location.href;
                     if(response.error.code == 30){
-                        Route.navigate( '#/twitter-xauth/?redirect='+ escape( next ) );
+                        snapr.link_service('twitter', window.location.href);
                     }else if(response.error.code == 20){
-                        Route.navigate( '#/facebook-xauth/?redirect='+ escape( next ) );
+                        snapr.link_service('facebook', window.location.href);
                     }
                 }
             }
