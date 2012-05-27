@@ -14,9 +14,11 @@ snapr.views.activity = snapr.views.page.extend({
         this.collection.bind( "reset", this.render );
         this.$el.find(".activity-streams").empty();
 
+
         this.collection.fetch();
 
         this.change_page();
+        $.mobile.showPageLoadingMsg();
     },
 
     render: function()
@@ -31,7 +33,7 @@ snapr.views.activity = snapr.views.page.extend({
         var first = events[0];
 
         // add "latest yellow topbar" if the first date doesn't have a photo event
-        if (first && first.get("events").first().has("photo") == false)
+        if (first && first.get("events").first().has("photo") === false)
         {
             $streams.append( new snapr.views.activity_stream({
                 model: new Backbone.Model()
@@ -54,12 +56,12 @@ snapr.views.activity = snapr.views.page.extend({
             }).render().el;
 
             $streams.append( stream_li );
-            console.log("stream", stream_li)
         });
 
         $streams.trigger( "create" );
+        $.mobile.hidePageLoadingMsg();
 
         return this;
     }
 
-})
+});
