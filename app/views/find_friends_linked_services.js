@@ -27,6 +27,11 @@ snapr.views.find_friends_linked_services = snapr.views.dialog.extend({
         {
             console.warn( "find friends linked services called without a service" );
         }
+
+        if(this.options.query && this.options.query.back_url){
+            var back_url = this.options.query.back_url;
+            this.$('.x-back').attr('href', unescape(back_url)).attr('data-ajax', false).removeClass('x-back');
+        }
     },
 
     events: {

@@ -224,7 +224,7 @@ snapr.routers = Backbone.Router.extend({
 
     my_account: function( query_string )
     {
-        snapr.utils.get_query_params( query_string );
+        var query = snapr.utils.get_query_params( query_string );
         snapr.info.current_view = new snapr.views.my_account({
             el: $("#my-account")[0]
         });
@@ -232,27 +232,30 @@ snapr.routers = Backbone.Router.extend({
 
     find_friends: function( query_string )
     {
-        snapr.utils.get_query_params( query_string );
+        var query = snapr.utils.get_query_params( query_string );
         snapr.info.current_view = new snapr.views.find_friends({
-            el: $("#find-friends")[0]
+            el: $("#find-friends")[0],
+            query: query
         });
     },
 
     find_friends_twitter: function( query_string )
     {
-        snapr.utils.get_query_params( query_string );
+        var query = snapr.utils.get_query_params( query_string );
         snapr.info.current_view = new snapr.views.find_friends_linked_services({
             el: $("#find-friends-twitter")[0],
-            service: "twitter"
+            service: "twitter",
+            query: query
         });
     },
 
     find_friends_facebook: function( query_string )
     {
-        snapr.utils.get_query_params( query_string );
+        var query = snapr.utils.get_query_params( query_string );
         snapr.info.current_view = new snapr.views.find_friends_linked_services({
             el: $("#find-friends-facebook")[0],
-            service: "facebook"
+            service: "facebook",
+            query: query
         });
     },
 
