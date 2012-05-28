@@ -223,7 +223,7 @@
     <div class="myaccount-header page-inset-header ui-body-c">
         <div class="ui-content">
          <a class="username" href="#/feed/?username=<%= username %>&back=My Account">
-                <div class="user-icon-small" style="background-image: url('<%= snapr.avatar_url %>/<%= user_id %>?size=large');"></div>
+                <div class="user-icon-small" style="background-image: url('<%= snapr.avatar_url %>/<%= user_id %>?size=large&_salt=<%= settings.profile.avatar_type %>');"></div>
                 <%= username %>
             </a>
                 <a href="#/logout/" class="logout-button" data-role="button" data-icon="delete" data-iconpos="right">Logout</a>
@@ -254,7 +254,7 @@
                 <fieldset data-role="controlgroup" class="my-account-avatar">
                    <div class="avatar-select-block">
                        <span class="user-profile-icon">
-                           <div class="user-icon-big" style="background-image: url('<%= snapr.avatar_url %>/<%= user_id %>?size=large');"></div>
+                           <div class="user-icon-big" style="background-image: url('<%= snapr.avatar_url %>/<%= user_id %>?size=large&_salt=<%= settings.profile.avatar_type %>');"></div>
 
                        </span>
 
