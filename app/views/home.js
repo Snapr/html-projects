@@ -25,10 +25,9 @@ snapr.views.home = snapr.views.page.extend({
             } ))
             .trigger("create");
 
-        this.ticker = new snapr.views.news_ticker({el:this.$('.news-ticker')}).render().tick();
-        var home = this;
+        window.ticker = new snapr.views.news_ticker({el:this.$('.news-ticker')}).render().tick();
         $( '#home' ).die('pagehide').live( 'pagehide',function(event, ui){
-            home.ticker.stop();
+            window.ticker.stop();
             return true;
         });
 
