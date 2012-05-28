@@ -29,7 +29,10 @@ snapr.views.news_ticker = Backbone.View.extend({
                     if(!news){
                         news = {"type": null};  // prevent undefined error
                     }
-                    ticker.$el.html(ticker.template(news));
+                    var html = ticker.template(news);
+                    if(ticker.$el.html() != html){
+                        ticker.$el.html(html);
+                    }
                 }else{
                     console.warn('API error fetching news for ticker.');
                 }
