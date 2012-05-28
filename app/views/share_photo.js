@@ -415,6 +415,7 @@ snapr.views.share_photo = snapr.views.page.extend({
 
     share: function()
     {
+        $.mobile.showPageLoadingMsg();
         // if there is a secret set the picture has already been uploaded
         if (this.model && this.model.has("secret"))
         {
