@@ -203,7 +203,7 @@ snapr.views.uploading = snapr.views.page.extend({
 
         if(!this.recent_nearby_stream && !this.popular_nearby_stream)
         {
-            $image_stream_container.append( $("#uploading-stream-placeholder-template").html() );
+            $image_stream_container.append( $("#uploading-stream-placeholder-template").html() ).trigger('create');
         }
 
     },
