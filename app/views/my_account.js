@@ -160,7 +160,7 @@ snapr.views.my_account = snapr.views.page.extend({
         window.open( "http://en.gravatar.com/" );
     },
 
-    save_settings: function( param, collapse_container )
+    save_settings: function( param, collapse_container, callback )
     {
         // prevent backbone from thinking this is a new user
         this.user_settings.id = true;
@@ -173,6 +173,9 @@ snapr.views.my_account = snapr.views.page.extend({
                 if (xhr.success){
                     if(collapse_container){
                         $(collapse_container).trigger( "collapse" );
+                    }
+                    if($.isFunction(callback)){
+                        callback( model, xhr );
                     }
                 }
                 else
@@ -212,6 +215,9 @@ snapr.views.my_account = snapr.views.page.extend({
 
         var param = {};
 
+        var param = {},
+            callback;
+
         var email = this.$el.find("#my-account-email").val();
         var password = this.$el.find("#my-account-password").val();
         var password_verify = this.$el.find("#my-account-password-verify").val();
@@ -246,12 +252,15 @@ snapr.views.my_account = snapr.views.page.extend({
             else
             {
                 param.password = password;
+                callback = function(){
+                    snapr.utils.notification('Thanks', ' your password has been saved');
+                };
             }
         }
 
         if (!_.isEmpty( param ))
         {
-            this.save_settings( param, $collapse[0] );
+            this.save_settings( param, $collapse[0], callback );
         }
     },
 
