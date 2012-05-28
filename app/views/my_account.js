@@ -119,44 +119,21 @@ snapr.views.my_account = snapr.views.page.extend({
     },
 
     events: {
-        "click .my-account-avatar label": "set_avatar",
+        "change .my-account-avatar input[type=radio]": "set_avatar",
         "click .my-account-set-up-gravatar": "set_up_gravatar",
         "click .my-account-notifications .save": "save_notifications",
         "change .my-account-notifications .ui-slider-switch": "save_notifications",
         "click .my-account-account .save": "save_account",
-        "click .my-account-camplus .save": "save_camplus"
+        "click .my-account-camplus .save": "save_camplus",
+        "click .my-account-profile .save": "save_profile"
     },
 
-    set_avatar: function(e)
-    {
-        var input_target = $('#' + e.currentTarget.htmlFor);
-
-        var avatar_type = input_target.val();
-
-        var user_setting = new snapr.models.user_settings();
-
-        var container = input_target.closest( ".my-account-avatar" );
-        container.find( "input[type='radio']" ).attr( "checked", false );
-        input_target.attr( "checked", true );
-        container.find( "input[type='radio']" ).checkboxradio( "refresh" );
-
-        // var options = {
-        //     success: function()
-        //     {
-        //         console.log( "set avatar success" );
-        //     },
-        //     error: function()
-        //     {
-        //         console.log( "set avatar error" );
-        //     }
-        // }
-        //
-
-        console.log( "set_avatar", avatar_type );
+    set_avatar: function(e){
+        var avatar_type = this.$('.my-account-avatar input[type=radio]:checked').val();
+        console.debug(avatar_type);
     },
 
-    set_up_gravatar: function()
-    {
+    set_up_gravatar: function(){
         window.open( "http://en.gravatar.com/" );
     },
 
@@ -209,11 +186,23 @@ snapr.views.my_account = snapr.views.page.extend({
         this.save_settings( param );
     },
 
-    save_account: function( e )
+    save_profile: function( e )
     {
         var $collapse = $(e.currentTarget).closest("[data-role='collapsible']");
 
         var param = {};
+
+        _.each(['name', 'location', 'website', 'bio'], function(item){
+            param[item] = $collapse.find("#my-account-"+item).val();
+        });
+        param['avatar_type'] = $collapse.find('[name=my-account-avatar]:checked').val();
+
+        this.save_settings( param, $collapse[0] );
+    },
+
+    save_account: function( e )
+    {
+        var $collapse = $(e.currentTarget).closest("[data-role='collapsible']");
 
         var param = {},
             callback;
