@@ -13,6 +13,7 @@ snapr.views.find_friends_linked_services = snapr.views.dialog.extend({
         this.display_collection = new snapr.models.user_collection();
         this.display_collection.bind( "reset", this.render );
 
+        this.transition = 'none';
         this.change_page( {
             transition: this.transition
         });
