@@ -31,7 +31,7 @@ snapr.views.find_friends_linked_services = snapr.views.dialog.extend({
 
         if(this.options.query && this.options.query.back_url){
             var back_url = this.options.query.back_url;
-            this.$('.x-back').attr('href', unescape(back_url)).attr('data-ajax', false).removeClass('x-back');
+            this.$('[data-role=header] .ui-btn-right').attr('href', unescape(back_url)).attr('data-ajax', false).removeClass('x-back');
         }
     },
 
