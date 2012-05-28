@@ -279,26 +279,26 @@
                 </fieldset>
 
                 <fieldset data-role="controlgroup">
-                    <label for="my-account-profile-name">Your Name</label>
-                    <input type="text" name="my-account-profile-name" id="my-account-profile-name" class="custom"
+                    <label for="my-account-name">Your Name</label>
+                    <input type="text" name="my-account-name" id="my-account-name" class="custom"
                     value="<%= settings.profile.name %>" />
                 </fieldset>
 
                 <fieldset data-role="controlgroup">
                     <label for="my-account-location">Location</label>
                     <input type="text" name="my-account-location" id="my-account-location" class="custom"
-                    value="<%= settings.profile.location %>" />
+                    value="<%= settings.profile.location || "" %>" />
                 </fieldset>
 
                 <fieldset data-role="controlgroup">
                     <label for="my-account-website">Website</label>
                     <input type="text" name="my-account-website" id="my-account-website" class="custom"
-                    value="<%= settings.profile.website %>" />
+                    value="<%= settings.profile.website || "" %>" />
                 </fieldset>
 
                 <fieldset data-role="controlgroup">
                     <label for="my-account-bio">Bio</label>
-                    <textarea name="my-account-bio" id="my-account-bio" class="custom"><%= settings.profile.bio %></textarea>
+                    <textarea name="my-account-bio" id="my-account-bio" class="custom"><%= settings.profile.bio || "" %></textarea>
                 </fieldset>
 
 
