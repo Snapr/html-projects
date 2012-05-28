@@ -32,6 +32,18 @@ snapr.constants.feed_count = 12;
 snapr.tumblr_xauth = true;
 snapr.twitter_xauth = true;
 
+snapr.offline = false;
+snapr.timeout = 20000; // 20000;
+snapr.offline_timeout = 5000;  // 5000;
+$.ajaxSetup({timeout:snapr.timeout});
+
+snapr.retry_connection = function(){
+    $.ajaxSetup({timeout:snapr.timeout});
+    window.location.reload();
+};
+
+$('.x-retry-connection').live('click', snapr.retry_connection);
+
 // set to hash url to redirect after successful upload/share eg:
 snapr.constants.share_redirect = "#/uploading/?";
 // snapr.constants.share_redirect = false;
@@ -101,6 +113,25 @@ Backbone.sync = function (method, model, options) {
         options.data = _.extend(params.data, options.data);
     }
 
+    if(options.complete){
+        options._complete = options.complete;
+    }
+    options.complete = function(xhr, status){
+        if(options._complete){
+            options._complete.call(this, status, xhr);
+        }
+        if(!snapr.offline && status == 'timeout'){
+            snapr.offline = true;
+            $.ajaxSetup({timeout:snapr.offline_timeout});
+            $(document.body).addClass('x-offline');
+            console.debug('TIMEOUT!');
+        }else if(snapr.offline && (status == 'success' || status == 'notmodified')){
+            snapr.offline = false;
+            $.ajaxSetup({timeout:snapr.timeout});
+            console.debug('back online!');
+            $(document.body).removeClass('x-offline');
+        }
+    };
 
     // Make the request, allowing the user to override any Ajax options.
     return $.ajax(_.extend(params, options));

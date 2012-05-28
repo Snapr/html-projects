@@ -2675,6 +2675,12 @@ a.ui-link-inherit {
 /*
 * Elements - Non-Jquery Mobile Design Patterns that are shared across multiple pages
 */
+.x-offline-msg {
+  display: none;
+}
+.x-offline .x-offline-msg {
+  display: inherit;
+}
 /* change the icon to a spinner if a button is loading an ajax event */
 .x-ajax-loading .ui-btn-inner {
   overflow: hidden;
