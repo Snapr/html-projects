@@ -197,7 +197,7 @@ snapr.views.my_account = snapr.views.page.extend({
         });
         param['avatar_type'] = $collapse.find('[name=my-account-avatar]:checked').val();
 
-        this.save_settings( param, $collapse[0] );
+        this.save_settings( param, $collapse[0], function(){ window.location.reload(); } );
     },
 
     save_account: function( e )
