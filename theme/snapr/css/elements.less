@@ -852,6 +852,11 @@
     overflow: hidden;
 }
 
+strong{
+    font-weight: normal;
+    font-size: @txt-size-username;
+    font-family: @txt-font-special;
+}
 
 .small-text{
     font-size: @txt-size-small;
@@ -930,6 +935,23 @@
     }
 }
 
+.retry-offline{
+    display: block;
+    padding-left: 24px;
+    padding-right: 24px;
+    
+    .ui-icon-connection{
+        position: absolute;
+        left: 0;
+        top: 0; 
+    }
+    
+    .ui-icon-forward{
+        position: absolute;
+        right: -1px;
+        top: -1px;
+    }
+}
 
 .helper-content{
     .ui-body{

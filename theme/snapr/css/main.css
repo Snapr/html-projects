@@ -470,6 +470,42 @@
 .extra-icons.ui-icon-delete {
   background-position: 0 -576px;
 }
+.extra-icons .ui-icon-heart-b,
+.extra-icons.ui-icon-heart-b {
+  background-position: 0 -608px;
+}
+.extra-icons .ui-icon-person-b,
+.extra-icons.ui-icon-person-b {
+  background-position: 0 -640px;
+}
+.extra-icons .ui-icon-search-b,
+.extra-icons.ui-icon-search-b {
+  background-position: 0 -672px;
+}
+.extra-icons .ui-icon-activity-b,
+.extra-icons.ui-icon-activity-b {
+  background-position: 0 -704px;
+}
+.extra-icons .ui-icon-location-b,
+.extra-icons.ui-icon-location-b {
+  background-position: 0 -736px;
+}
+.extra-icons .ui-icon-mapcamera-y,
+.extra-icons.ui-icon-mapcamera {
+  background-position: 0 -768px;
+}
+.extra-icons .ui-icon-photoedit,
+.extra-icons.ui-icon-photoedit {
+  background-position: 0 -800px;
+}
+.extra-icons .ui-icon-delete,
+.extra-icons.ui-icon-delete {
+  background-position: 0 -576px;
+}
+.extra-icons .ui-icon-connection,
+.extra-icons.ui-icon-connection {
+  background-position: 0 -832px;
+}
 .ui-icon.helper-icons,
 .helper-icons .ui-icon {
   background-image: url('../gfx/helper-icons.png');
@@ -3566,6 +3602,11 @@ a.ui-link-inherit {
   height: 0;
   overflow: hidden;
 }
+strong {
+  font-weight: normal;
+  font-size: 16px;
+  font-family: 'MuseoSansRounded700', Helvetica, Arial, sans-serif;
+}
 .small-text {
   font-size: 12px;
   font-family: Helvetica, Arial, sans-serif;
@@ -3633,6 +3674,21 @@ a.ui-link-inherit {
 }
 .ui-content .inset-page-content .ui-listview-inset {
   margin-bottom: 16px;
+}
+.retry-offline {
+  display: block;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+.retry-offline .ui-icon-connection {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+.retry-offline .ui-icon-forward {
+  position: absolute;
+  right: -1px;
+  top: -1px;
 }
 .helper-content .ui-body {
   position: relative;
@@ -6028,10 +6084,10 @@ div.ps-carousel-item-loading {
   .ui-icon.extra-icons,
   .extra-icons .ui-icon {
     background-image: url('../gfx/retina/extra-icons.png');
-    -moz-background-size: 32px 800px;
-    -o-background-size: 32px 800px;
-    -webkit-background-size: 32px 800px;
-    background-size: 32px 800px;
+    -moz-background-size: 32px 864px;
+    -o-background-size: 32px 864px;
+    -webkit-background-size: 32px 864px;
+    background-size: 32px 864px;
   }
   .ui-icon.helper-icons,
   .helper-icons .ui-icon {
