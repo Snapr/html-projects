@@ -828,7 +828,7 @@
     <script id="thumb-li-template" type="text/template">
         <% _.each( results, function( item, i ){ %>
         <a class="image-link" href="#/feed/?photo_id=<%= item.get('id') %>&username=<%= item.get('username') %><% if(back){%>&back=<%=back%><%}%>">
-        <img src="https://s3.amazonaws.com/media-server<%= item.get('server_id') %>.snapr.us/thm2/<%= item.get('secret') %>/<%= item.get('id') %>.jpg" alt="<%= item.get('description') %>" class="thumb-image thumb-med" />
+        <img src="https://s3.amazonaws.com/media-server<%= item.get('server_id') %>.snapr.us/thm2/<%= item.get('secret') %>/<%= item.get('id') %>.jpg" <% if(item.get('description')){ %>alt="<%= item.get('description') %>"<% } %> class="thumb-image thumb-med" />
         </a>
         <% }); %>
     </script>
@@ -992,7 +992,7 @@
             </video>
             <%}else{%>
             <a href="https://s3.amazonaws.com/media-server<%= item.get('server_id') %>.snapr.us/lrg/<%= item.get('secret') %>/<%= item.get('id') %>.jpg" rel="external" class="gallery_link main-image-link image-loader-bg">
-                <img style="height:<%= snapr.utils.get_photo_height(item.get('width'), item.get('height'), '#feed-images') %>px;" src="https://s3.amazonaws.com/media-server<%= item.get('server_id') %>.snapr.us/lrg/<%= item.get('secret') %>/<%= item.get('id') %>.jpg" alt="<%= item.get('description') %>" class="main-image" />
+                <img style="height:<%= snapr.utils.get_photo_height(item.get('width'), item.get('height'), '#feed-images') %>px;" src="https://s3.amazonaws.com/media-server<%= item.get('server_id') %>.snapr.us/lrg/<%= item.get('secret') %>/<%= item.get('id') %>.jpg" <% if(item.get('description')){ %>alt="<%= item.get('description') %>"<% } %> class="main-image" />
             </a>
             <% }%>
 
@@ -1075,7 +1075,7 @@
 
     <!-- @feed @thumb ITEM - clicks to gallery view -->
     <script id="feed-li-grid-template" type="text/template">
-    <a href="https://s3.amazonaws.com/media-server<%= item.get('server_id') %>.snapr.us/lrg/<%= item.get('secret') %>/<%= item.get('id') %>.jpg" rel="external" class="gallery_link image-link"><img src="https://s3.amazonaws.com/media-server<%= item.get('server_id') %>.snapr.us/thm2/<%= item.get('secret') %>/<%= item.get('id') %>.jpg" alt="<%= item.get('description') %>" class="thumb-image thumb-med" /></a>
+    <a href="https://s3.amazonaws.com/media-server<%= item.get('server_id') %>.snapr.us/lrg/<%= item.get('secret') %>/<%= item.get('id') %>.jpg" rel="external" class="gallery_link image-link"><img src="https://s3.amazonaws.com/media-server<%= item.get('server_id') %>.snapr.us/thm2/<%= item.get('secret') %>/<%= item.get('id') %>.jpg" <% if(item.get('description')){ %>alt="<%= item.get('description') %>"<% } %> class="thumb-image thumb-med" /></a>
     </script>
 
     <!-- favorite button template -->
@@ -1355,7 +1355,7 @@
 
         <script id="dash-thumbs-template" type="text/template">
             <% _.each(photos, function(photo) { %><a href="https://s3.amazonaws.com/media-server2.snapr.us/lrg/<%= photo.get('secret') %>/<%= photo.get('id') %>.jpg" class="x-thumb image-link" rel="external" data-date="<%= photo.get('date') %>" data-id="<%= photo.get('id') %>" data-tag="<%= photo.get('description') %>">
-                <img src="https://s3.amazonaws.com/media-server2.snapr.us/thm2/<%= photo.get('secret') %>/<%= photo.get('id') %>.jpg" alt="<%= photo.get('description') %>" class="thumb-image thumb-med">
+                <img src="https://s3.amazonaws.com/media-server2.snapr.us/thm2/<%= photo.get('secret') %>/<%= photo.get('id') %>.jpg" <% if(photo.get('description')){ %>alt="<%= photo.get('description') %>"<% } %> class="thumb-image thumb-med">
             </a><% }); %>
         </script>
 
@@ -1497,7 +1497,7 @@
 
              <!-- // Show the photo -->
                 <a class="image-link" href="#/feed/?photo_id=<%= item.get("photo").id %>&amp;username=<%= item.get("photo").username %>&back=Activity">
-                    <img src="https://s3.amazonaws.com/media-server<%= item.get("photo").server_id %>.snapr.us/thm2/<%= item.get("photo").secret %>/<%= item.get("photo").id %>.jpg" alt="<%= item.get("photo").description %>" class="thumb-image thumb-med">
+                    <img src="https://s3.amazonaws.com/media-server<%= item.get("photo").server_id %>.snapr.us/thm2/<%= item.get("photo").secret %>/<%= item.get("photo").id %>.jpg" <% if(item.get('photo').description){ %>alt="<%= item.get('photo').description %>"<% } %> class="thumb-image thumb-med">
                 </a>
 
         <%  break;
@@ -1601,7 +1601,7 @@
         </script>
         <script id="cities-thumbs-template" type="text/template">
             <% _.each(photos, function(photo) { %><a href="https://s3.amazonaws.com/media-server2.snapr.us/lrg/<%= photo.get('secret') %>/<%= photo.get('id') %>.jpg" class="x-thumb image-link" rel="external" data-date="<%= photo.get('date') %>" data-id="<%= photo.get('id') %>" data-tag="<%= photo.get('description') %>">
-                <img src="https://s3.amazonaws.com/media-server2.snapr.us/thm2/<%= photo.get('secret') %>/<%= photo.get('id') %>.jpg" alt="<%= photo.get('description') %>" class="thumb-image thumb-med">
+                <img src="https://s3.amazonaws.com/media-server2.snapr.us/thm2/<%= photo.get('secret') %>/<%= photo.get('id') %>.jpg" <% if(photo.get('description')){ %>alt="<%= photo.get('description') %>"<% } %> class="thumb-image thumb-med">
             </a><% }); %>
         </script>
 
@@ -1890,7 +1890,7 @@
         <div class="snaprmapthumb">
             <span class="snaprthumbbg"></span>
             <span class="snaprmappin"></span>
-            <a href="#/feed/?photo_id=<%= photo.id %>&back=Map" class="clickable" data-ajax="false"><img src="https://s3.amazonaws.com/media-server<%= photo.server_id %>.snapr.us/thm2/<%= photo.secret %>/<%= photo.id %>.jpg" alt="<%= photo.description %>" class="snaprmapthumbimage"></a>
+            <a href="#/feed/?photo_id=<%= photo.id %>&back=Map" class="clickable" data-ajax="false"><img src="https://s3.amazonaws.com/media-server<%= photo.server_id %>.snapr.us/thm2/<%= photo.secret %>/<%= photo.id %>.jpg" <% if(photo.description){ %>alt="<%= photo.description %>"<% } %> class="snaprmapthumbimage"></a>
         </div>
     </div>
     </script>
@@ -2296,12 +2296,12 @@
 
     <script id="uploading-stream-thumb-template" type="text/template">
         <% _.each(photos, function(photo) { %><a href="https://s3.amazonaws.com/media-server2.snapr.us/lrg/<%= photo.get('secret') %>/<%= photo.get('id') %>.jpg" class="x-thumb image-link" rel="external" data-date="<%= photo.get('date') %>" data-tag="<%= photo.get('description') %>">
-            <img src="https://s3.amazonaws.com/media-server2.snapr.us/thm2/<%= photo.get('secret') %>/<%= photo.get('id') %>.jpg" alt="<%= photo.get('description') %>" class="thumb-image thumb-med">
+            <img src="https://s3.amazonaws.com/media-server2.snapr.us/thm2/<%= photo.get('secret') %>/<%= photo.get('id') %>.jpg" <% if(photo.get('description')){ %>alt="<%= photo.get('description') %>"<% } %> %>" class="thumb-image thumb-med">
         </a><% }); %>
     </script>
     <script id="old-uploading-stream-thumb-template" type="text/template">
         <a class="image-link" href="#/feed/?photo_id=<%= photo.id %>&amp;username=<%= photo.username %>">
-        <img src="https://s3.amazonaws.com/media-server<%= photo.server_id %>.snapr.us/thm2/<%= photo.secret %>/<%= photo.id %>.jpg" alt="<%= photo.description %>" class="thumb-image thumb-med">
+        <img src="https://s3.amazonaws.com/media-server<%= photo.server_id %>.snapr.us/thm2/<%= photo.secret %>/<%= photo.id %>.jpg" <% if(photo.get('description')){ %>alt="<%= photo.get('description') %>"<% } %> class="thumb-image thumb-med">
         </a>
     </script>
 
