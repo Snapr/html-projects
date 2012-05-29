@@ -819,8 +819,6 @@
                         <li><a id="popular-time-all">All</a></li>
                     </ul>
                 </div>
-
-            <div class="x-offline-msg">offLINE! <a class="x-retry-connection">[Fix it]</a></div>
             <div id="popular-thumbs" class="thumbs-grid thumbs-grid-med">
             </div>
         </div>
@@ -1110,6 +1108,15 @@
     <script id="no-results-template" type="text/template">
         <div id="no-results">
             <p class="imagealert"><span class="ui-icon ui-icon-<%= icon || "sadface" %> extra-icons"></span><%= message || "No results" %></p>
+        </div>
+    </script>
+
+    <!-- offline element-->
+    <script id="offline-template" type="text/template">
+        <div class="x-offline page-inset-header ui-body-c">
+            <div class="ui-content">
+                <a>Offline Mode - Click to retry</a>
+            </div>
         </div>
     </script>
 
@@ -2511,6 +2518,7 @@
 <script src="app/views/activity_stream_item.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/activity_ticker.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/no_results.js" type="text/javascript" charset="utf-8"></script>
+<script src="app/views/offline.js" type="text/javascript" charset="utf-8"></script>
 <script src="app/views/welcome.js" type="text/javascript" charset="utf-8"></script>
 
 

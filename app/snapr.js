@@ -123,13 +123,13 @@ Backbone.sync = function (method, model, options) {
         if(!snapr.offline && status == 'timeout'){
             snapr.offline = true;
             $.ajaxSetup({timeout:snapr.offline_timeout});
-            $(document.body).addClass('x-offline');
-            console.debug('TIMEOUT!');
+            console.debug('offline', snapr.offline_view.render());
+            snapr.current_view.$('[data-role=content]').prepend(snapr.offline_view.render().el);
         }else if(snapr.offline && (status == 'success' || status == 'notmodified')){
             snapr.offline = false;
             $.ajaxSetup({timeout:snapr.timeout});
-            console.debug('back online!');
-            $(document.body).removeClass('x-offline');
+            console.debug('online', snapr.current_view.$('.x-offline'));
+            snapr.current_view.$('.x-offline').remove();
         }
     };
 

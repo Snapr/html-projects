@@ -5,6 +5,7 @@ snapr.views.page = Backbone.View.extend({
 
     initialize: function()
     {
+        snapr.current_view = this;
         $(this.options.el).undelegate();
         this.setElement( this.options.el );
 
