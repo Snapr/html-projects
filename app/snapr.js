@@ -27,7 +27,7 @@ snapr.settings = {
 
 snapr.constants = {};
 snapr.constants.default_zoom = 15;
-snapr.constants.feed_count = 12;
+snapr.constants.feed_count = 9;
 
 snapr.tumblr_xauth = true;
 snapr.twitter_xauth = true;
