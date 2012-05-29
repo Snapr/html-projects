@@ -97,6 +97,7 @@ snapr.views.cities = snapr.views.page.extend({
             photos.fetch({
                 data:{
                     n:6,
+                    sort:'weighted_score',
                     detail:0
                 },
                 success: function(){
