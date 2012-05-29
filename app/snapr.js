@@ -42,7 +42,7 @@ snapr.retry_connection = function(){
     window.location.reload();
 };
 
-$('.x-retry-connection').live('click', snapr.retry_connection);
+$('.x-offline').live('click', snapr.retry_connection);
 
 // set to hash url to redirect after successful upload/share eg:
 snapr.constants.share_redirect = "#/uploading/?";
@@ -120,15 +120,13 @@ Backbone.sync = function (method, model, options) {
         if(options._complete){
             options._complete.call(this, status, xhr);
         }
-        if(!snapr.offline && status == 'timeout'){
+        if(status == 'timeout'){
             snapr.offline = true;
             $.ajaxSetup({timeout:snapr.offline_timeout});
-            console.debug('offline', snapr.offline_view.render());
-            snapr.current_view.$('[data-role=content]').prepend(snapr.offline_view.render().el);
+            snapr.current_view.$('[data-role=content]').prepend(snapr.offline_el);
         }else if(snapr.offline && (status == 'success' || status == 'notmodified')){
             snapr.offline = false;
             $.ajaxSetup({timeout:snapr.timeout});
-            console.debug('online', snapr.current_view.$('.x-offline'));
             snapr.current_view.$('.x-offline').remove();
         }
     };

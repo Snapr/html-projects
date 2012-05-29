@@ -34,7 +34,7 @@ snapr.views.page = Backbone.View.extend({
             if(history.state && history.state.back_text){
                 back_text = history.state.back_text;
             }else if(options.prevPage){
-                back_text = options.prevPage.data('short-title');
+                back_text = options.prevPage.data('short-title') || options.prevPage.data('title');
             }else{
                 //console.debug('BACK', 'no prev page');
             }

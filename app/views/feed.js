@@ -229,8 +229,6 @@ snapr.views.feed = snapr.views.page.extend({
 
         var list_style = this.$el.find("#feed-view-grid").is(":checked") && 'grid' || 'list';
 
-        //console.debug('populate feed list style', list_style);
-
         if (this.feed_list)
         {
             this.feed_list.list_style = list_style;
@@ -251,9 +249,11 @@ snapr.views.feed = snapr.views.page.extend({
                     feed_view.feed_list.render( feed_view.photoswipe_init );
                     $.mobile.hidePageLoadingMsg();
                     feed_view.more_button(
-                        response.response &&
-                        response.response.photos &&
-                        response.response.photos.length == feed_view.photo_collection.data.n );
+                        !feed_view.photo_collection.data.n || (
+                            response.response &&
+                            response.response.photos &&
+                            response.response.photos.length >= feed_view.photo_collection.data.n )
+                        );
                 }else{
                     snapr.no_results.render('No Photos', 'delete').$el.appendTo(feed_view.$el.find('#feed-images'));
                     $.mobile.hidePageLoadingMsg();
@@ -294,11 +294,10 @@ snapr.views.feed = snapr.views.page.extend({
     {
         var data = this.photo_collection.data;
 
-        data.n && delete data.n;
+        data.n = snapr.constants.feed_count;
         data.paginate_from = this.photo_collection.last().get('id');
 
         this.populate_feed( data );
-        // console.log( 'more', this.photo_collection.data );
     },
 
     feed_view_toggle: function(e)
