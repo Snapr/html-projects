@@ -11,7 +11,6 @@ snapr.views.offline = Backbone.View.extend({
         this.setElement(
             $( this.template() )
             .trigger("create")
-            .click(snapr.retry_connection)
         );
 
         return this;
@@ -19,4 +18,4 @@ snapr.views.offline = Backbone.View.extend({
 
 });
 
-snapr.offline_view = new snapr.views.offline();
+snapr.offline_el = new snapr.views.offline().render().el;
