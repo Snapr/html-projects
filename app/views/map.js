@@ -538,7 +538,7 @@ snapr.views.map = snapr.views.page.extend({
         snapr.CurrentLocation = function(data, map){
             snapr.SnapOverlay.call(this, undefined, data, map);
         };
-        snapr.CurrentLocation.prototype= new snapr.SnapOverlay();
+        snapr.CurrentLocation.prototype=_.clone(snapr.SnapOverlay.prototype);
         snapr.CurrentLocation.prototype.get_div = function()
         {
             return $(this.map.snapr.location_template()).show();
