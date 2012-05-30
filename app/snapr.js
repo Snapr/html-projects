@@ -113,6 +113,7 @@ Backbone.sync = function (method, model, options) {
         options.data = _.extend(params.data, options.data);
     }
 
+    // control offline mode
     if(options.complete){
         options._complete = options.complete;
     }
@@ -127,7 +128,7 @@ Backbone.sync = function (method, model, options) {
         }else if(snapr.offline && (status == 'success' || status == 'notmodified')){
             snapr.offline = false;
             $.ajaxSetup({timeout:snapr.timeout});
-            snapr.current_view.$('.x-offline').remove();
+            $('.x-offline').remove();
         }
     };
 
