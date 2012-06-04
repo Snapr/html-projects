@@ -191,7 +191,7 @@
 
     <div class="myaccount-header page-inset-header ui-body-c">
         <div class="ui-content">
-            <a class="username" href="#/feed/?username=<%= username %>&back=My Account">
+            <a class="username" href="#/feed/?username=<%= username %>">
                 <div class="user-icon-small"></div>
                 <%= username %>
             </a>
@@ -222,7 +222,7 @@
 
     <div class="myaccount-header page-inset-header ui-body-c">
         <div class="ui-content">
-         <a class="username" href="#/feed/?username=<%= username %>&back=My Account">
+         <a class="username" href="#/feed/?username=<%= username %>">
                 <div class="user-icon-small" style="background-image: url('<%= snapr.avatar_url %>/<%= user_id %>?size=large&_salt=<%= settings.profile.avatar_type %>');"></div>
                 <%= username %>
             </a>
@@ -700,7 +700,7 @@
 
 
     <!-- @connect -->
-    <div id="connect" data-role="page" data-short-title="Connect" data-ajax="false">
+    <div id="connect" data-role="page" data-title="Connect" data-ajax="false">
         <div data-role="header" data-theme="c">
             <h1>Connect</h1>
             <a href="#/" data-role="button" data-icon="delete" data-iconpos="notext" class="x-close"></a>
@@ -801,7 +801,7 @@
 
 
     <!-- @popular PAGE -->
-    <div id="popular" data-title="Popular" data-add-back-btn="true" data-role="page" data-short-title="Popular" data-theme="d">
+    <div id="popular" data-title="Popular" data-add-back-btn="true" data-role="page" data-theme="d">
         <div data-role="header" data-theme="b">
             <h1>Popular</h1>
 
@@ -827,14 +827,14 @@
     <!-- @thumb @image ITEM -->
     <script id="thumb-li-template" type="text/template">
         <% _.each( results, function( item, i ){ %>
-        <a class="image-link" href="#/feed/?photo_id=<%= item.get('id') %>&n=1&username=<%= item.get('username') %><% if(back){%>&back=<%=back%><%}%>">
+        <a class="image-link" href="#/feed/?photo_id=<%= item.get('id') %>&n=1&username=<%= item.get('username') %>">
         <img src="https://s3.amazonaws.com/media-server<%= item.get('server_id') %>.snapr.us/thm2/<%= item.get('secret') %>/<%= item.get('id') %>.jpg" <% if(item.get('description')){ %>alt="<%= item.get('description') %>"<% } %> class="thumb-image thumb-med" />
         </a>
         <% }); %>
     </script>
 
     <!-- @feed PAGE the main image display view -->
-    <div id="feed" data-role="page" data-short-title="Feed" data-theme="d" data-add-back-btn="true">
+    <div id="feed" data-role="page" data-title="Feed" data-theme="d" data-add-back-btn="true">
         <div data-role="header" data-theme="b">
             <div class="ui-grid-b">
                 <div class="ui-block-a">
@@ -962,10 +962,10 @@
 
         <div class="image-item-block<% if (item.get("status") != "public"){%> private<%}%>">
             <div class="image-item-topbar">
-                <a class="user-icon-link" data-transition="slide" href="#/feed/?username=<%= item.get('username') %><% if(back){%>&back=<%=back%><%}%>">
+                <a class="user-icon-link" data-transition="slide" href="#/feed/?username=<%= item.get('username') %>">
                     <div class="user-icon-small" style="background-image: url('<%= snapr.avatar_url %>/<%= item.get('user_id') %>/');"></div>
                 </a>
-                <a class="username" data-transition="slide" href="#/feed/?username=<%= item.get('username') %><% if(back){%>&back=<%=back%><%}%>"><%= item.get('username') %></a>
+                <a class="username" data-transition="slide" href="#/feed/?username=<%= item.get('username') %>"><%= item.get('username') %></a>
 
                 <!-- Show Time only if no location -->
                 <% if(item.has('location') && item.get('location').location){ %>
@@ -1233,7 +1233,7 @@
     </script>
 
     <!-- @dashboard PAGE -->
-       <div id="dashboard" data-title="Dash" data-add-back-btn="true" data-role="page" data-short-title="Dash" data-theme="d">
+       <div id="dashboard" data-title="Dash" data-add-back-btn="true" data-role="page" data-theme="d">
            <div data-role="header" data-theme="b">
                <h1>Dash</h1>
 
@@ -1406,7 +1406,7 @@
 
 
        <!-- @activity PAGE -->
-             <div id="activity" data-title="Activity" data-add-back-btn="true" data-role="page" data-short-title="Activity" data-theme="d">
+             <div id="activity" data-title="Activity" data-add-back-btn="true" data-role="page" data-theme="d">
                  <div data-role="header" data-theme="b">
                      <h1>Activity</h1>
 
@@ -1448,7 +1448,7 @@
             <ul class="comments-list " data-role="listview" data-inset="true" data-icon="false" >
             <% _.each( item.get("comments"), function( comment ){ %>
                 <li data-icon="false" class="comment-item activity-item">
-                    <a href="#/feed/?username=<%= comment.user.username %>&back=Activity">
+                    <a href="#/feed/?username=<%= comment.user.username %>">
                         <img src="<%= snapr.avatar_url %>/<%= comment.user.user_id %>" alt="<%= comment.user.username %>" class="user-icon-small ui-li-icon"/>
                         <h3 class="username"><%= comment.user.username %></h3> <span class="activity-desc"><%= comment.comment %></span>
                     </a>
@@ -1456,7 +1456,7 @@
             <% }); %>
             <% _.each( item.get("comment-on-comments"), function( comment ){ %>
                 <li data-icon="false" class="comment-item comment-on-comment-item activity-item">
-                    <a href="#/feed/?username=<%= comment.user.username %>&back=Activity">
+                    <a href="#/feed/?username=<%= comment.user.username %>">
                         <img src="<%= snapr.avatar_url %>/<%= comment.user.user_id %>" alt="<%= comment.user.username %>" class="user-icon-small ui-li-icon"/>
                         <h3 class="username"><%= comment.user.username %></h3> <span class="activity-desc"><%= comment.comment %></span>
                     </a>
@@ -1472,7 +1472,7 @@
                 <ul class="like-icons-list">
                 <% _.each( item.get("favorites"), function( like ){ %>
                     <li class="like-icon">
-                        <a href="#/feed/?username=<% like.user.username %>&back=Activity"><img src="<%= snapr.avatar_url %>/<%= like.user.user_id %>" alt="<%= like.user.username %>" class="user-icon-small ui-li-icon"/></a>
+                        <a href="#/feed/?username=<% like.user.username %>"><img src="<%= snapr.avatar_url %>/<%= like.user.user_id %>" alt="<%= like.user.username %>" class="user-icon-small ui-li-icon"/></a>
                     </li>
                 <% }); %>
                 </ul>
@@ -1496,14 +1496,14 @@
             <%}%>
 
              <!-- // Show the photo -->
-                <a class="image-link" href="#/feed/?photo_id=<%= item.get("photo").id %>&amp;username=<%= item.get("photo").username %>&back=Activity">
+                <a class="image-link" href="#/feed/?photo_id=<%= item.get("photo").id %>&amp;username=<%= item.get("photo").username %>">
                     <img src="https://s3.amazonaws.com/media-server<%= item.get("photo").server_id %>.snapr.us/thm2/<%= item.get("photo").secret %>/<%= item.get("photo").id %>.jpg" <% if(item.get('photo').description){ %>alt="<%= item.get('photo').description %>"<% } %> class="thumb-image thumb-med">
                 </a>
 
         <%  break;
         case "follow":%>
 
-        <a href="#/feed/?username=<%= item.get("user").username %>&back=Activity" class="">
+        <a href="#/feed/?username=<%= item.get("user").username %>" class="">
             <img src="<%= snapr.avatar_url %>/<%= item.get("user").username %>" alt="<%= item.get("user").user_id %>" class="user-icon-small ui-li-icon"/>
             <h3 class="username"><%= item.get("user").username %></h3> <span class="activity-desc">is now following you.</span>
             <% if (!photo_events) { %>
@@ -1542,7 +1542,7 @@
     </script>
 
     <!-- @cities PAGE -->
-    <div id="cities" data-title="Cities" data-add-back-btn="true" data-role="page" data-short-title="Cities" data-theme="d">
+    <div id="cities" data-title="Cities" data-add-back-btn="true" data-role="page" data-theme="d">
        <div data-role="header" data-theme="b">
            <h1>Cities</h1>
 
@@ -1704,7 +1704,7 @@
                      <ul data-role="listview" data-ajax="false" class="" data-inset="true" data-theme="d">
 
                          <li>
-                             <a href="#/map/?back=About">Share &amp; Discover</a>
+                             <a href="#/map/">Share &amp; Discover</a>
 
                              <p>Snapr helps you discover new things by showing you nearby shots each time you upload.</p>
                              <p>Search our photo map and explore the world around you.</p>
@@ -1713,7 +1713,7 @@
 
                          <ul data-role="listview" data-ajax="false" class="" data-inset="true" data-theme="d">
                          <li>
-                             <a href="#/snapr-apps/?back=About">Find Apps for your Interests</a>
+                             <a href="#/snapr-apps/">Find Apps for your Interests</a>
 
                              <p>Snapr apps build dedicated communities around your favorite things.</p>
                              <p></p>
@@ -1721,7 +1721,7 @@
                      </ul>
                      <ul data-role="listview" data-ajax="false" class="" data-inset="true" data-theme="d">
                       <li>
-                         <a href="#/dash/?back=About">Never miss the things that matter</a>
+                         <a href="#/dash/">Never miss the things that matter</a>
                          <p>Keep track of your best friends and favorite searches on the fly with our special dashboard view.</p>
                      </li>
                      </ul>
@@ -1810,7 +1810,7 @@
     </div><!-- /page -->
 
     <!-- @map PAGE-->
-    <div id="map" data-role="page" data-short-title="Map" data-add-back-btn="true" data-theme="d">
+    <div id="map" data-role="page" data-title="Map" data-add-back-btn="true" data-theme="d">
         <div data-role="header" data-theme="b">
            <h1>Map</h1>
             <div class="ui-btn-right" data-ajax="false">
@@ -1890,7 +1890,7 @@
         <div class="snaprmapthumb">
             <span class="snaprthumbbg"></span>
             <span class="snaprmappin"></span>
-            <a href="#/feed/?photo_id=<%= photo.id %>&back=Map" class="clickable" data-ajax="false"><img src="https://s3.amazonaws.com/media-server<%= photo.server_id %>.snapr.us/thm2/<%= photo.secret %>/<%= photo.id %>.jpg" <% if(photo.description){ %>alt="<%= photo.description %>"<% } %> class="snaprmapthumbimage"></a>
+            <a href="#/feed/?photo_id=<%= photo.id %>" class="clickable" data-ajax="false"><img src="https://s3.amazonaws.com/media-server<%= photo.server_id %>.snapr.us/thm2/<%= photo.secret %>/<%= photo.id %>.jpg" <% if(photo.description){ %>alt="<%= photo.description %>"<% } %> class="snaprmapthumbimage"></a>
         </div>
     </div>
     </script>

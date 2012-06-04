@@ -73,346 +73,96 @@ snapr.routers = Backbone.Router.extend({
         "*path": "home"
     },
 
-    feed: function( query_string )
-    {
-        var query = snapr.utils.get_query_params( query_string );
-        snapr.info.current_view = new snapr.views.feed({
-            query: query,
-            el: $("#feed")
-        });
-    },
+    home: _make_route(snapr.views.home, "#home"),
 
-    home: function( query_string )
-    {
-        var query = snapr.utils.get_query_params( query_string );
-        if(query.new_user){
-            Route.navigate( "#", true );  // go here so that back is not new_user
-            Route.navigate( "#/welcome/" );
-        }else{
-            snapr.info.current_view = new snapr.views.home({
-                el: $('#home')[0]
-            });
-        }
-    },
+    join_snapr: _make_route(snapr.views.join_snapr, "#join-snapr"),
+    join_success: _make_route(snapr.views.join_success, "#join-success"),
+    login: _make_route(snapr.views.login, "#login"),
+    welcome: _make_route(snapr.views.welcome, "#welcome"),
+    forgot_password: _make_route(snapr.views.forgot_password, "#forgot-password"),
+    logout: function( query_string ){
 
-    login: function( query_string, back_view )
-    {
-        var query = snapr.utils.get_query_params( query_string );
-        snapr.info.current_view = new snapr.views.login({
-            query: query,
-            el: $("#login")[0],
-            back_view: back_view
-        });
-    },
-
-    forgot_password: function( query_string, back_view )
-      {
-          var query = snapr.utils.get_query_params( query_string );
-          snapr.info.current_view = new snapr.views.forgot_password({
-              query: query,
-              el: $("#forgot-password")[0],
-              back_view: back_view
-          });
-      },
-
-    logout: function( query_string )
-    {
         snapr.utils.get_query_params( query_string );
-        if (snapr.auth)
-        {
+        if (snapr.auth){
            snapr.auth.logout();
-        }
-        else
-        {
-            snapr.auth = new snapr.models.auth;
+        }else{
+            snapr.auth = new snapr.models.auth();
         }
 
         window.location.hash = "";
-        if (snapr.utils.get_local_param( "appmode" ))
-        {
+        if (snapr.utils.get_local_param( "appmode" )){
             pass_data('snapr://logout');
         }
     },
 
-    join_snapr: function( query_string)
-    {
-        var query = snapr.utils.get_query_params( query_string );
-        snapr.info.current_view = new snapr.views.join_snapr({
-            el: $("#join-snapr")[0],
-            query: query
-        });
-    },
+    feed: _make_route(snapr.views.feed, "#feed"),
 
-    join_success: function( query_string, back_view )
-    {
-        snapr.utils.get_query_params( query_string );
-        snapr.info.current_view = new snapr.views.join_success({
-            el: $("#join-success")[0],
-            back_view: back_view
-        });
-    },
-    upload: function( query_string )
-    {
-        snapr.utils.get_query_params( query_string );
-        snapr.info.current_view = new snapr.views.upload({
-            el: $("#upload")[0]
-        });
-    },
+    activity: _make_route(snapr.views.activity, "#activity"),
 
-    uploading: function( query_string )
-    {
-        var query = snapr.utils.get_query_params( query_string );
-        snapr.info.current_view = new snapr.views.uploading({
-            el: $("#uploading")[0],
-            query: query
-        });
-    },
+    upload: _make_route(snapr.views.upload, "#upload"),
+    uploading: _make_route(snapr.views.uploading, "#uploading"),
+    share_photo: _make_route(snapr.views.share_photo, "#share-photo"),
 
-    share_photo: function( query_string )
-    {
-        var query = snapr.utils.get_query_params( query_string );
-        snapr.info.current_view = new snapr.views.share_photo({
-            el: $("#share-photo")[0],
-            query: query
-        });
-    },
+    about: _make_route(snapr.views.about, "#about"),
+    snapr_apps: _make_route(snapr.views.snapr_apps, "#snapr-apps"),
+    app: _make_route(snapr.views.app, "#app"),
 
-    about: function( query_string, back_view )
-    {
-        var query = snapr.utils.get_query_params( query_string );
-        snapr.info.current_view = new snapr.views.about({
-            el: $("#about")[0],
-            query: query,
-            back_view: back_view
-        });
-    },
-    snapr_apps: function( query_string, back_view )
-       {
-           var query = snapr.utils.get_query_params( query_string );
-           snapr.info.current_view = new snapr.views.snapr_apps({
-               el: $("#snapr-apps")[0],
-               back_view: back_view
-           });
-       },
+    cities: _make_route(snapr.views.cities, "#cities"),
 
-    app: function( query_string )
-    {
-        var query = snapr.utils.get_query_params( query_string );
-        snapr.info.current_view = new snapr.views.app({
-           el: $("#app")[0],
-           query: query
-       });
-     },
+    popular: _make_route(snapr.views.popular, "#popular" ),
 
-    activity: function( query_string )
-    {
-        var query = snapr.utils.get_query_params( query_string );
-        snapr.info.current_view = new snapr.views.activity({
-            el: $("#activity")[0],
-            query: query
-        });
-    },
+    my_account: _make_route(snapr.views.my_account, "#my-account"),
 
-    cities: function( query_string )
-    {
-        var query = snapr.utils.get_query_params( query_string );
-        snapr.info.current_view = new snapr.views.cities({
-            el: $("#cities")[0],
-            query: query
-        });
-    },
+    find_friends: _make_route(snapr.views.find_friends, "#find-friends"),
+    find_friends_twitter: _make_route(
+        snapr.views.find_friends_linked_services,
+        "#find-friends-twitter",
+        {service: "twitter"}
+    ),
+    find_friends_facebook: _make_route(
+        snapr.views.find_friends_linked_services,
+        "#find-friends-twitter",
+        {service: "facebook"}
+    ),
 
-    my_account: function( query_string )
-    {
-        var query = snapr.utils.get_query_params( query_string );
-        snapr.info.current_view = new snapr.views.my_account({
-            el: $("#my-account")[0]
-        });
-    },
+    linked_services: _make_route(snapr.views.linked_services, "#linked-services"),
+    connect: _make_route(snapr.views.connect, "#connect"),
+    tumblr_xauth: _make_route(snapr.views.tumblr_xauth, "#tumblr-xauth"),
+    twitter_xauth: _make_route(snapr.views.twitter_xauth, "#twitter-xauth"),
 
-    find_friends: function( query_string )
-    {
-        var query = snapr.utils.get_query_params( query_string );
-        snapr.info.current_view = new snapr.views.find_friends({
-            el: $("#find-friends")[0],
-            query: query
-        });
-    },
 
-    find_friends_twitter: function( query_string )
-    {
-        var query = snapr.utils.get_query_params( query_string );
-        snapr.info.current_view = new snapr.views.find_friends_linked_services({
-            el: $("#find-friends-twitter")[0],
-            service: "twitter",
-            query: query
-        });
-    },
+    map: _make_route(snapr.views.map, "#map"),
 
-    find_friends_facebook: function( query_string )
-    {
-        var query = snapr.utils.get_query_params( query_string );
-        snapr.info.current_view = new snapr.views.find_friends_linked_services({
-            el: $("#find-friends-facebook")[0],
-            service: "facebook",
-            query: query
-        });
-    },
+    dash: _make_route(snapr.views.dash, "#dashboard" ),
+    dash_add_person: _make_route(snapr.views.dash_add_person, "#dash-add-person"),
+    dash_add_search: _make_route(snapr.views.dash_add_search, "#dash-add-search"),
 
-    linked_services: function( query_string, back_view )
-    {
-        var query = snapr.utils.get_query_params( query_string );
-        snapr.info.current_view = new snapr.views.linked_services({
-            el: $("#linked-services")[0],
-            query: query,
-            back_view: back_view
-        });
-    },
+    search: _make_route(snapr.views.search, "#search"),
 
-    connect: function( query_string )
-    {
-        var query = snapr.utils.get_query_params( query_string );
-        snapr.info.current_view = new snapr.views.connect({
-            el: $("#connect")[0],
-            query: query
-        });
-    },
+    user_profile: _make_route(snapr.views.user_profile, "#user-profile"),
+    user_search: _make_route(snapr.views.people, "#people"),
 
-    tumblr_xauth: function( query_string, back_view )
-    {
-        var query = snapr.utils.get_query_params( query_string );
-        snapr.info.current_view = new snapr.views.tumblr_xauth({
-            el: $("#tumblr-xauth")[0],
-            query: query,
-            back_view: back_view
-        });
-    },
+    people_followers: _make_route(snapr.views.people, "#people", {follow: "followers"}),
+    people_following: _make_route(snapr.views.people, "#people", {follow: "following"}),
 
-    twitter_xauth: function( query_string, back_view )
-    {
-        var query = snapr.utils.get_query_params( query_string );
-        snapr.info.current_view = new snapr.views.twitter_xauth({
-            el: $("#twitter-xauth")[0],
-            query: query,
-            back_view: back_view
-        });
-    },
+    venues: _make_route(snapr.views.venues, "#venues"),
 
-    limbo: function( query_string )
-    {
-        snapr.utils.get_query_params( query_string );
-        snapr.info.current_view = new snapr.views.limbo({
-            el: $("#limbo")[0]
-        });
-    },
+    limbo: _make_route(snapr.views.limbo, "#limbo")
 
-    map: function( query_string )
-    {
-        var query = snapr.utils.get_query_params( query_string );
-        snapr.info.current_view = new snapr.views.map({
-            query: query,
-            el: $("#map")[0]
-        });
-    },
-
-    popular: function( query_string )
-    {
-        snapr.utils.get_query_params( query_string );
-        snapr.info.current_view = new snapr.views.popular({
-            el: $( "#popular" )[0]
-        });
-    },
-
-    dash: function( query_string )
-    {
-        snapr.utils.get_query_params( query_string );
-        snapr.info.current_view = new snapr.views.dash({
-            el: $( "#dashboard" )[0]
-        });
-    },
-
-    dash_add_person: function( query_string, back_view )
-    {
-        var query = snapr.utils.get_query_params( query_string );
-        snapr.info.current_view = new snapr.views.dash_add_person({
-            el: $("#dash-add-person")[0],
-            back_view: back_view
-        });
-    },
-
-    dash_add_search: function( query_string, back_view )
-    {
-        var query = snapr.utils.get_query_params( query_string );
-        snapr.info.current_view = new snapr.views.dash_add_search({
-            el: $("#dash-add-search")[0],
-            back_view: back_view
-        });
-    },
-
-    search: function( query_string, back_view )
-    {
-        snapr.utils.get_query_params( query_string );
-        snapr.info.current_view = new snapr.views.search({
-            el: $("#search")[0],
-            back_view: back_view
-        });
-    },
-
-    user_profile: function( query_string, back_view )
-    {
-        var query = snapr.utils.get_query_params( query_string );
-        snapr.info.current_view = new snapr.views.user_profile({
-            query: query,
-            el: $("#user-profile")[0],
-            back_view: back_view
-        });
-    },
-
-    user_search: function( query_string )
-    {
-        var query = snapr.utils.get_query_params( query_string );
-        snapr.info.current_view = new snapr.views.people({
-            query: query,
-            el: $("#people")[0]
-        });
-    },
-
-    people_followers: function( query_string, back_view )
-    {
-        var query = snapr.utils.get_query_params( query_string, back_view );
-        snapr.info.current_view = new snapr.views.people({
-            query: query,
-            follow: "followers",
-            el: $("#people")[0],
-            back_view: back_view
-        });
-    },
-
-    people_following: function( query_string, back_view )
-    {
-        var query = snapr.utils.get_query_params( query_string, back_view );
-        snapr.info.current_view = new snapr.views.people({
-            query: query,
-            follow: "following",
-            el: $("#people")[0],
-            back_view: back_view
-        });
-    },
-
-    venues: function( query_string )
-    {
-        var query = snapr.utils.get_query_params( query_string );
-        snapr.info.current_view = new snapr.views.venues({
-            query: query,
-            el: $("#venues")[0]
-        });
-    },
-    welcome: function( query_string )
-       {
-           var query = snapr.utils.get_query_params( query_string );
-           snapr.info.current_view = new snapr.views.welcome({
-               query: query,
-               el: $("#welcome")[0]
-           });
-       }
 });
+
+function _make_route(view, el, extra_data){
+    extra_data = extra_data || {};
+    var route = function(query_string){
+        var query = snapr.utils.get_query_params(query_string);
+        if(!route.el_cached){
+            route.el_cached = $(el);
+        }
+        snapr.info.previous_view = snapr.info.current_view;
+        snapr.info.current_view = new view(_.extend({
+            query: query,
+            el: route.el_cached
+        }, extra_data));
+    };
+    return route;
+}

@@ -242,19 +242,9 @@ snapr.link_service = function(service, next){
         }
         window.location = url;
     }
-}
+};
 
 snapr.utils = {};
-snapr.utils.set_header_back_btn_text = function( el, back_text )
-{
-    $(el).find("[data-role='header'] .ui-btn-left").remove();
-    $(el).attr("data-back-btn-text", back_text || "Back");
-    if ( $(el).data("page") && $(el).data("page").options )
-    {
-        $(el).data("page").options.backBtnText = back_text || "Back";
-        $(el).trigger("pagecreate");
-    }
-};
 snapr.utils.plural = function( n )
 {
     return (n > 1) ? "s" : "";

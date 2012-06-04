@@ -2,6 +2,11 @@ snapr.views.home = snapr.views.page.extend({
 
     initialize: function()
     {
+        if(query.new_user){
+            Route.navigate( "#", true );  // go here first so that back is not new_user
+            Route.navigate( "#/welcome/" );
+        }
+
         snapr.views.page.prototype.initialize.call( this );
 
         this.template = _.template( $("#home-template").html() );

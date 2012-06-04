@@ -6,34 +6,23 @@ snapr.views.feed = snapr.views.page.extend({
 
         this.query = this.options.query || {};
 
-        if (this.query.photo_id)
-        {
-            this.back = "Back";
+        if (this.query.photo_id){
+            this.back_text = "Back";
+        }else if (this.query.username){
+            this.back_text = this.query.username;
+        }else if (this.query.keywords){
+            this.back_text = this.feed_parameter;
+        }else if (this.query.area){
+            this.back_text = "Location";
+        }else if (this.query.favorited_by){
+            this.back_text = "Favorites";
+        }else if (this.query.spot && this.query.venue_name){
+            this.back_text = "Spot";
+        }else{
+            this.back_text = "Feed";
         }
-        else if (this.query.username)
-        {
-            this.back = this.query.username;
-        }
-        else if (this.query.keywords)
-        {
-            this.back = this.feed_parameter;
-        }
-        else if (this.query.area)
-        {
-            this.back = "Location";
-        }
-        else if (this.query.favorited_by)
-        {
-            this.back = "Favorites";
-        }
-        else if (this.query.spot && this.query.venue_name)
-        {
-            this.back = "Spot";
-        }
-        else
-        {
-            this.back = "Feed";
-        }
+        console.debug('setting feed page back text to', this.back_text);
+        this.$el.data('back-text', this.back_text);
 
         var list_style = this.query.list_style || 'list';
 
@@ -242,8 +231,7 @@ snapr.views.feed = snapr.views.page.extend({
                     feed_view.feed_list = new snapr.views.feed_list({
                         el: feed_view.$el.find('#feed-images')[0],
                         collection: feed_view.photo_collection,
-                        list_style: list_style,
-                        back: feed_view.back
+                        list_style: list_style
                     });
 
                     feed_view.feed_list.render( feed_view.photoswipe_init );
@@ -346,12 +334,9 @@ snapr.views.feed = snapr.views.page.extend({
     {
         this.$el.find(".upload-id-" + queue_id).remove();
         // if we are on a feed for the current snapr user
-        if (this.options.query.username == snapr.auth.get("snapr_user")
-            && !this.options.query.photo_id)
-        {
+        if (this.options.query.username == snapr.auth.get("snapr_user") && !this.options.query.photo_id){
             // remove the date restriction if it is present
-            if (this.photo_collection.data.max_date)
-            {
+            if (this.photo_collection.data.max_date){
                 delete this.photo_collection.data.max_date;
             }
             // refresh the feed content
