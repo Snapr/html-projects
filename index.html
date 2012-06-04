@@ -2296,7 +2296,7 @@
 
     <script id="uploading-stream-thumb-template" type="text/template">
         <% _.each(photos, function(photo) { %><a href="https://s3.amazonaws.com/media-server2.snapr.us/lrg/<%= photo.get('secret') %>/<%= photo.get('id') %>.jpg" class="x-thumb image-link" rel="external" data-date="<%= photo.get('date') %>" data-tag="<%= photo.get('description') %>">
-            <img src="https://s3.amazonaws.com/media-server2.snapr.us/thm2/<%= photo.get('secret') %>/<%= photo.get('id') %>.jpg" <% if(photo.get('description')){ %>alt="<%= photo.get('description') %>"<% } %> %>" class="thumb-image thumb-med">
+            <img src="https://s3.amazonaws.com/media-server2.snapr.us/thm2/<%= photo.get('secret') %>/<%= photo.get('id') %>.jpg" <% if(photo.get('description')){ %>alt="<%= photo.get('description') %>"<% } %> class="thumb-image thumb-med">
         </a><% }); %>
     </script>
     <script id="old-uploading-stream-thumb-template" type="text/template">
