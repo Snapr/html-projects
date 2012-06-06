@@ -1,4 +1,5 @@
-snapr.views.linked_service = Backbone.View.extend({
+define(['backbone'], function(Backbone){
+return Backbone.View.extend({
 
     tagName: 'li',
 
@@ -217,4 +218,5 @@ snapr.views.linked_service = Backbone.View.extend({
         });
         this.save_changes();
     }
+});
 });

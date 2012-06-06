@@ -1,27 +1,25 @@
-snapr.views.home = snapr.views.page.extend({
+define(['views/base/page', 'views/activity_ticker'], function(page_view, ticker){
+snapr.views.home = page_view.extend({
 
-    initialize: function()
-    {
-        if(query.new_user){
+    snapr_initialize: function(options){
+        if(options.query.new_user){
             Route.navigate( "#", true );  // go here first so that back is not new_user
             Route.navigate( "#/welcome/" );
         }
-
-        snapr.views.page.prototype.initialize.call( this );
 
         this.template = _.template( $("#home-template").html() );
 
         snapr.auth.bind("change", this.render);
 
-        if ($.mobile.activePage && $.mobile.activePage.find("#home").length < 1)
-        {
+        console.debug(_.extend($.mobile, {}), $.mobile.activePage);
+        if ($.mobile.activePage && $.mobile.activePage.find("#home").length < 1){
             $.mobile.changePage( "#home" );
             this.render();
         }
+        this.render();
     },
 
-    render: function()
-    {
+    render: function(){
         this.$el
             .find("[data-role='content']")
             .html( this.template( {
@@ -30,7 +28,7 @@ snapr.views.home = snapr.views.page.extend({
             } ))
             .trigger("create");
 
-        window.ticker = new snapr.views.news_ticker({el:this.$('.news-ticker')}).render().tick();
+        window.ticker = new ticker({el:this.$('.news-ticker')}).render().tick();
         $( '#home' ).die('pagehide').live( 'pagehide',function(event, ui){
             window.ticker.stop();
             return true;
@@ -51,4 +49,7 @@ snapr.views.home = snapr.views.page.extend({
         }
     }
 
+});
+
+return snapr.views.home;
 });

@@ -1,4 +1,5 @@
-snapr.views.snapr_apps = snapr.views.dialog.extend({
+define(['views/dialog'], function(dialog_view){
+snapr.views.snapr_apps = dialog_view.extend({
 
     initialize: function()
     {
@@ -12,4 +13,7 @@ snapr.views.snapr_apps = snapr.views.dialog.extend({
     events: {
         "click .x-back": "back"
     }
+});
+
+return snapr.views.snapr_apps;
 });

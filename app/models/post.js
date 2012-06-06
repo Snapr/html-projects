@@ -1,4 +1,5 @@
-snapr.models.post = Backbone.Model.extend({
+define(['backbone'], function(Backbone){
+return  Backbone.Model.extend({
 
     initialize: function(options){
         this.provider = options.provider;
@@ -9,4 +10,5 @@ snapr.models.post = Backbone.Model.extend({
             return snapr.api_base + '/linked_services/' + this.provider + '/share/';
         }
     }
+});
 });

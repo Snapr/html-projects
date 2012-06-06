@@ -1,4 +1,5 @@
-snapr.views.forgot_password = snapr.views.dialog.extend({
+define(['views/dialog'], function(dialog_view){
+snapr.views.forgot_password = dialog_view.extend({
 
     initialize: function(){
         snapr.views.dialog.prototype.initialize.call( this );
@@ -44,4 +45,7 @@ snapr.views.forgot_password = snapr.views.dialog.extend({
             }
         });
     }
+});
+
+return snapr.views.forgot_password;
 });

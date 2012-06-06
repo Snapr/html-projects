@@ -1,4 +1,5 @@
-snapr.views.uploading = snapr.views.page.extend({
+define(['views/base/page'], function(page_view){
+snapr.views.uploading = page_view.extend({
     initialize: function()
     {
         snapr.views.page.prototype.initialize.call( this );
@@ -335,4 +336,7 @@ snapr.views.uploading = snapr.views.page.extend({
             this.$el.removeClass("showing-upload-queue");
         }
     }
+});
+
+return snapr.views.uploading;
 });

@@ -1,4 +1,5 @@
-snapr.views.feed_header = Backbone.View.extend({
+define(['backbone'], function(Backbone){
+return Backbone.View.extend({
 
     initialize: function()
     {
@@ -48,4 +49,5 @@ snapr.views.feed_header = Backbone.View.extend({
         return this;
     }
 
+});
 });

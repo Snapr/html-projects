@@ -1,4 +1,5 @@
-snapr.views.thumbs_li = Backbone.View.extend({
+define(['backbone'], function(Backbone){
+return Backbone.View.extend({
 
     initialize: function()
     {
@@ -22,4 +23,5 @@ snapr.views.thumbs_li = Backbone.View.extend({
 
         return this;
     }
-})
+});
+});

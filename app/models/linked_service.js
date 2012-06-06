@@ -1,4 +1,5 @@
-snapr.models.linked_service = Backbone.Model.extend({
+define(['backbone'], function(Backbone){
+return  Backbone.Model.extend({
 
     initialize: function()
     {
@@ -40,4 +41,5 @@ snapr.models.linked_service = Backbone.Model.extend({
             return {}
         }
     }
+});
 });

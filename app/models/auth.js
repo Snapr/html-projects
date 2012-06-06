@@ -1,3 +1,5 @@
+define(['backbone', 'jquery', 'cookie'], function(Backbone) {
+
 snapr.models.auth = Backbone.Model.extend({
 
     url: function()
@@ -14,7 +16,7 @@ snapr.models.auth = Backbone.Model.extend({
             username: username,
             password: password,
             _method: "POST"
-        }
+        };
         var auth = this;
         var opt = {
             success: function( response )
@@ -47,7 +49,7 @@ snapr.models.auth = Backbone.Model.extend({
                     options.error();
                 }
             }
-        }
+        };
 
         this.fetch( opt );
     },
@@ -112,4 +114,7 @@ snapr.models.auth = Backbone.Model.extend({
             $.cookie( "access_token", null );
         }
     }
+});
+
+return snapr.models.auth;
 });

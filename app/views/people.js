@@ -1,4 +1,5 @@
-snapr.views.people = snapr.views.dialog.extend({
+define(['views/dialog'], function(dialog_view){
+snapr.views.people = dialog_view.extend({
 
     initialize: function()
     {
@@ -143,4 +144,7 @@ snapr.views.people = snapr.views.dialog.extend({
             this_view.collection.reset();
         }
     }
+});
+
+return snapr.views.people;
 });

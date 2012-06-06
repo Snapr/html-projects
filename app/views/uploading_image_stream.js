@@ -1,4 +1,5 @@
-snapr.views.uploading_image_stream = snapr.views.side_scroll.extend({
+define(['backbone'], function(Backbone){
+return  snapr.views.side_scroll.extend({
     tagName: 'li',
     className: 'image-stream',
     template: _.template( $('#uploading-stream-template').html() ),
@@ -88,4 +89,5 @@ snapr.views.uploading_image_stream = snapr.views.side_scroll.extend({
 
     //     return this;
     // }
+});
 });

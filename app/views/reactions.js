@@ -1,4 +1,5 @@
-snapr.views.reactions = Backbone.View.extend({
+define(['backbone'], function(Backbone){
+return Backbone.View.extend({
 
     initialize: function()
     {
@@ -27,4 +28,5 @@ snapr.views.reactions = Backbone.View.extend({
         this.$el.trigger('create').listview().listview('refresh');
     }
 
+});
 });

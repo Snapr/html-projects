@@ -1,4 +1,5 @@
-snapr.views.login = snapr.views.dialog.extend({
+define(['views/dialog'], function(dialog_view){
+snapr.views.login = dialog_view.extend({
 
     initialize: function()
     {
@@ -61,4 +62,7 @@ snapr.views.login = snapr.views.dialog.extend({
     twitter_login: function(){
         Route.navigate( "#/twitter-xauth/?signin=true" );
     }
+});
+
+return snapr.views.login;
 });

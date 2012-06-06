@@ -1,4 +1,7 @@
-snapr.models.dash_stream = Backbone.Model.extend({
+define(['backbone', 'collections/photo'],
+function(Backbone,   photo_collection){
+
+var stream = Backbone.Model.extend({
     url: function( method ){
         return snapr.api_base + '/user/dashboard/';
     },
@@ -8,7 +11,7 @@ snapr.models.dash_stream = Backbone.Model.extend({
             data = data.response.stream;
         }
         data.id = data.display.id;
-        this.photos = new snapr.models.photo_collection(data.photos);
+        this.photos = new photo_collection(data.photos);
         this.photos.data = data.query;
         return data;
     },
@@ -29,9 +32,9 @@ snapr.models.dash_stream = Backbone.Model.extend({
 
 });
 
-snapr.models.dash = Backbone.Collection.extend({
+return Backbone.Collection.extend({
 
-    model: snapr.models.dash_stream,
+    model: stream,
 
     url: function( method )
     {
@@ -60,9 +63,4 @@ snapr.models.dash = Backbone.Collection.extend({
         return Backbone.Collection.prototype.fetch.call(this, options);
     }
 });
-
-//    (r'^users?/dashboard/$',
-//    (r'^users?/dashboard/theme/$',
-//    (r'^users?/dashboard/edit/$',
-//    (r'^users?/dashboard/delete/$',
-//    (r'^users?/dashboard/reorder/$',
+});

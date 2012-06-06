@@ -1,4 +1,5 @@
-snapr.models.comment = Backbone.Model.extend({
+define(['backbone'], function(Backbone){
+return Backbone.Model.extend({
     urlRoot: function()
     {
         return snapr.api_base + '/comment/'
@@ -24,4 +25,4 @@ snapr.models.comment = Backbone.Model.extend({
             return this.urlRoot();
         }
     }
-});
+});});

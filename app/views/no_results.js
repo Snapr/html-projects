@@ -1,4 +1,5 @@
-snapr.views.no_results = Backbone.View.extend({
+define(['backbone'], function(Backbone){
+return new Backbone.View.extend({
 
     tagName: "div",
 
@@ -19,6 +20,6 @@ snapr.views.no_results = Backbone.View.extend({
         return this;
     }
 
-});
+})();
 
-snapr.no_results = new snapr.views.no_results();
+});

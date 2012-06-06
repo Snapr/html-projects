@@ -1,3 +1,5 @@
+define(['views/base/page', 'views/side_scroll'], function(page_view, side_scroll){
+
 var cities = {
     'new-york': {
         'name': 'New York',
@@ -41,7 +43,7 @@ var cities = {
     }
 };
 
-snapr.views.city_stream = snapr.views.side_scroll.extend({
+snapr.views.city_stream = side_scroll.extend({
     tagName: 'li',
     className: 'image-stream',
     template: _.template( $('#cities-stream-template').html() ),
@@ -52,7 +54,7 @@ snapr.views.city_stream = snapr.views.side_scroll.extend({
     }
 });
 
-snapr.views.cities = snapr.views.page.extend({
+snapr.views.cities = page_view.extend({
 
     el: $('#cities'),
 
@@ -111,4 +113,6 @@ snapr.views.cities = snapr.views.page.extend({
         }, this);
 
     }
+});
+return snapr.views.cities;
 });

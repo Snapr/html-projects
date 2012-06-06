@@ -1,4 +1,5 @@
-snapr.views.find_friends = snapr.views.dialog.extend({
+define(['views/dialog'], function(dialog_view){
+snapr.views.find_friends = dialog_view.extend({
 
     initialize: function()
     {
@@ -16,4 +17,7 @@ snapr.views.find_friends = snapr.views.dialog.extend({
             });
         }
     }
+});
+
+return snapr.views.find_friends;
 });

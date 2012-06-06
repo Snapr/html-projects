@@ -1,4 +1,5 @@
-snapr.views.activity_stream = Backbone.View.extend({
+define(['backbone'], function(Backbone){
+return Backbone.View.extend({
 
     tagName: "li",
 
@@ -89,3 +90,4 @@ snapr.views.activity_stream = Backbone.View.extend({
     }
 
 })
+});

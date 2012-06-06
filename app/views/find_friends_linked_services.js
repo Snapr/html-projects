@@ -1,6 +1,7 @@
 // abstract base class for both twitter and facebook
 
-snapr.views.find_friends_linked_services = snapr.views.dialog.extend({
+define(['views/dialog'], function(dialog_view){
+snapr.views.find_friends_linked_services = dialog_view.extend({
 
     initialize: function()
     {
@@ -94,4 +95,7 @@ snapr.views.find_friends_linked_services = snapr.views.dialog.extend({
             });
         }, 300 );
     }
+});
+
+return snapr.views.find_friends_linked_services;
 });

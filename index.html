@@ -6,64 +6,10 @@
         <meta name="apple-mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-status-bar-style" content="black">
 
-        <script src="app/libs/json2.js" type="text/javascript" charset="utf-8"></script> <!-- just in case the browser sucks at JSON -->
-        <script src="app/libs/jquery-1.7.1.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="app/libs/jq.cookie.js" type="text/javascript" charset="utf-8"></script>
+        <script data-main="app/main" src="app/require.js"></script>
 
-        <script type="text/javascript" charset="utf-8">
-        snapr = {};
-        snapr.redirect = '';
-        snapr.models = {};
-        snapr.views = {};
-
-        // disable jquery-mobile's hash nav so we can replace it with backbone.js
-        $(document).bind("mobileinit", function(){
-            // disable ajax nav
-            $.mobile.ignoreContentEnabled = true;
-            $.mobile.ajaxEnabled = false;
-            $.mobile.pushStateEnabled = false;
-            $.mobile.hashListeningEnabled = false;
-            $.mobile.defaultPageTransition = 'none';
-            $.mobile.buttonMarkup.hoverDelay = 0;
-
-            // true fixed positioned headers still seem buggy so is disabled
-            // $.mobile.touchOverflowEnabled = true;
-
-            // hack to handle cases where we're going directly to a hash
-            // we go to the home screen and re-trigger the navigate event
-            snapr.redirect = window.location.hash.replace('#','')
-            $(document).bind('snaprinit',function(){
-
-                if(snapr.redirect.length){
-                    Route.navigate(snapr.redirect);
-                }
-            });
-        });
-        </script>
-
-        <script src="app/libs/jquery.mobile-1.1.0/jquery.mobile-1.1.0.js" type="text/javascript" charset="utf-8"></script>
-
-        <script src="app/libs/klass.min.js" type="text/javascript" charset="utf-8"></script> <!-- used by photoswipe -->
-        <script src="app/libs/photoswipe/code.photoswipe.jquery-3.0.4.min.js" type="text/javascript" charset="utf-8"></script><!-- photoswipe -->
-
-        <script src="app/libs/spin.min.js" type="text/javascript" charset="utf-8"></script>
-
-        <script src="app/libs/underscore-min.js" type="text/javascript" charset="utf-8"></script> <!-- required by backbone -->
-        <script src="app/libs/backbone.js" type="text/javascript" charset="utf-8"></script> <!-- handles routing, models and sync -->
-
-        <script src="app/libs/iscroll.js" type="text/javascript" charset="utf-8"></script>
-
-        <script src="app/libs/jquery.validate.min.js" type="text/javascript" charset="utf-8"></script>
-
-        <script src="app/libs/mobiscroll/mobiscroll-2.0rc2.full.min.js" type="text/javascript" charset="utf-8"></script>
         <link rel="stylesheet" href="app/libs/mobiscroll/mobiscroll-2.0rc2.full.min.css" type="text/css" charset="utf-8">
-
         <link rel="stylesheet" href="app/libs/jquery.mobile-1.1.0/jquery.mobile.structure-1.1.0.min.css" type="text/css" charset="utf-8">
-
-        <!-- jQuery Mobs theme is replaced by a less css version
-        <link rel="stylesheet" href="app/libs/jquery.mobile-1.1.0/jquery.mobile-1.1.0.min.css" type="text/css" charset="utf-8">
-        -->
-
         <link rel="stylesheet" href="app/libs/photoswipe/photoswipe.css" type="text/css" charset="utf-8">
 
         <!--
@@ -2429,7 +2375,7 @@
                     </form>
 
                     <div class="image-controls ">
-                     <a data-role="button" id="show_photo" data-icon="toggle" data-iconpos="right" >
+                        <a data-role="button" id="show_photo" data-icon="toggle" data-iconpos="right" >
                             Show Photo
                         </a>
                     </div>
@@ -2438,7 +2384,7 @@
                 </div>
                 <div class="show-upload-settings set-full-height">
                     <div class="image-controls">
-                     <a data-role="button" id="show_photo_settings" data-icon="toggle-up" data-iconpos="right" >
+                        <a data-role="button" id="show_photo_settings" data-icon="toggle-up" data-iconpos="right" >
                             Show Options
                         </a>
                     </div>
@@ -2447,111 +2393,8 @@
     </script>
 
     <div id="limbo" data-role="page" data-theme="a">
-        <div data-role="content" data-theme="a">
-
-        </div>
+        <div data-role="content" data-theme="a"></div>
     </div>
 
-
-
-<!-- end page content and templates -->
-
-
-<!-- weinre script for remote debugging -->
-<!-- <script src="http://localhost:8080/target/target-script-min.js#anonymous"></script> -->
-
-<!-- backbone views PAGES -->
-<script src="app/views/side_scroll.js" type="text/javascript" charset="utf-8"></script>
-<script src="app/views/page.js" type="text/javascript" charset="utf-8"></script>
-<script src="app/views/dialog.js" type="text/javascript" charset="utf-8"></script>
-<script src="app/views/home.js" type="text/javascript" charset="utf-8"></script>
-<script src="app/views/login.js" type="text/javascript" charset="utf-8"></script>
-<script src="app/views/forgot_password.js" type="text/javascript" charset="utf-8"></script>
-
-<script src="app/views/join_snapr.js" type="text/javascript" charset="utf-8"></script>
-<script src="app/views/join_success.js" type="text/javascript" charset="utf-8"></script>
-<script src="app/views/limbo.js" type="text/javascript" charset="utf-8"></script>
-<script src="app/views/upload.js" type="text/javascript" charset="utf-8"></script>
-<script src="app/views/uploading_image_stream.js" type="text/javascript" charset="utf-8"></script>
-<script src="app/views/uploading.js" type="text/javascript" charset="utf-8"></script>
-<script src="app/views/share_photo.js" type="text/javascript" charset="utf-8"></script>
-<script src="app/views/cities.js" type="text/javascript" charset="utf-8"></script>
-<script src="app/views/upload_settings.js" type="text/javascript" charset="utf-8"></script>
-<script src="app/views/linked_service.js" type="text/javascript" charset="utf-8"></script>
-<script src="app/views/linked_services.js" type="text/javascript" charset="utf-8"></script>
-<script src="app/views/tumblr_xauth.js" type="text/javascript" charset="utf-8"></script>
-<script src="app/views/twitter_xauth.js" type="text/javascript" charset="utf-8"></script>
-<script src="app/views/connect.js" type="text/javascript" charset="utf-8"></script>
-<script src="app/views/connect_li.js" type="text/javascript" charset="utf-8"></script>
-<script src="app/views/feed.js" type="text/javascript" charset="utf-8"></script>
-<script src="app/views/dash.js" type="text/javascript" charset="utf-8"></script>
-<script src="app/views/dash_add_person.js" type="text/javascript" charset="utf-8"></script>
-<script src="app/views/dash_add_search.js" type="text/javascript" charset="utf-8"></script>
-<script src="app/views/upload_progress_li.js" type="text/javascript" charset="utf-8"></script>
-<script src="app/views/photo_manage.js" type="text/javascript" charset="utf-8"></script>
-<script src="app/views/feed_list.js" type="text/javascript" charset="utf-8"></script>
-<script src="app/views/feed_li.js" type="text/javascript" charset="utf-8"></script>
-<script src="app/views/feed_header.js" type="text/javascript" charset="utf-8"></script>
-<script src="app/views/favorite_button.js" type="text/javascript" charset="utf-8"></script>
-<script src="app/views/comment_button.js" type="text/javascript" charset="utf-8"></script>
-<script src="app/views/feed_li_show_all_button.js" type="text/javascript" charset="utf-8"></script>
-<script src="app/views/map.js" type="text/javascript" charset="utf-8"></script>
-<script src="app/views/map_controls.js" type="text/javascript" charset="utf-8"></script>
-<script src="app/views/map_disambiguation_li.js" type="text/javascript" charset="utf-8"></script>
-<script src="app/views/my_account.js" type="text/javascript" charset="utf-8"></script>
-<script src="app/views/find_friends.js" type="text/javascript" charset="utf-8"></script>
-<script src="app/views/find_friends_linked_services.js" type="text/javascript" charset="utf-8"></script>
-
-<script src="app/views/people.js" type="text/javascript" charset="utf-8"></script>
-<script src="app/views/people_li.js" type="text/javascript" charset="utf-8"></script>
-<script src="app/views/venues.js" type="text/javascript" charset="utf-8"></script>
-<script src="app/views/venue_li.js" type="text/javascript" charset="utf-8"></script>
-<script src="app/views/search.js" type="text/javascript" charset="utf-8"></script>
-<script src="app/views/thumbs_li.js" type="text/javascript" charset="utf-8"></script>
-<script src="app/views/popular.js" type="text/javascript" charset="utf-8"></script>
-<script src="app/views/about.js" type="text/javascript" charset="utf-8"></script>
-<script src="app/views/snapr_apps.js" type="text/javascript" charset="utf-8"></script>
-
-<script src="app/views/app.js" type="text/javascript" charset="utf-8"></script>
-<script src="app/views/activity.js" type="text/javascript" charset="utf-8"></script>
-<script src="app/views/activity_stream.js" type="text/javascript" charset="utf-8"></script>
-<script src="app/views/activity_stream_item.js" type="text/javascript" charset="utf-8"></script>
-<script src="app/views/activity_ticker.js" type="text/javascript" charset="utf-8"></script>
-<script src="app/views/no_results.js" type="text/javascript" charset="utf-8"></script>
-<script src="app/views/offline.js" type="text/javascript" charset="utf-8"></script>
-<script src="app/views/welcome.js" type="text/javascript" charset="utf-8"></script>
-
-
-<script src="app/views/user_header.js" type="text/javascript" charset="utf-8"></script>
-<script src="app/views/user_profile.js" type="text/javascript" charset="utf-8"></script>
-<script src="app/views/reactions.js" type="text/javascript" charset="utf-8"></script>
-
-
-<!-- backbone models -->
-<script src="app/models/auth.js" type="text/javascript" charset="utf-8"></script>
-<script src="app/models/geo_location.js" type="text/javascript" charset="utf-8"></script>
-<script src="app/models/user.js" type="text/javascript" charset="utf-8"></script>
-<script src="app/models/user_collection.js" type="text/javascript" charset="utf-8"></script>
-<script src="app/models/user_settings.js" type="text/javascript" charset="utf-8"></script>
-<script src="app/models/linked_service.js" type="text/javascript" charset="utf-8"></script>
-<script src="app/models/post.js" type="text/javascript" charset="utf-8"></script>
-<script src="app/models/photo.js" type="text/javascript" charset="utf-8"></script>
-<script src="app/models/photo_collection.js" type="text/javascript" charset="utf-8"></script>
-<script src="app/models/foursquare_venue.js" type="text/javascript" charset="utf-8"></script>
-<script src="app/models/foursquare_venue_collection.js" type="text/javascript" charset="utf-8"></script>
-<script src="app/models/comment.js" type="text/javascript" charset="utf-8"></script>
-<script src="app/models/favorite.js" type="text/javascript" charset="utf-8"></script>
-<script src="app/models/thumb.js" type="text/javascript" charset="utf-8"></script>
-<script src="app/models/thumb_collection.js" type="text/javascript" charset="utf-8"></script>
-<script src="app/models/reaction.js" type="text/javascript" charset="utf-8"></script>
-<script src="app/models/reaction_collection.js" type="text/javascript" charset="utf-8"></script>
-<script src="app/models/news_period.js" type="text/javascript" charset="utf-8"></script>
-<script src="app/models/news_period_collection.js" type="text/javascript" charset="utf-8"></script>
-<script src="app/models/activity_event.js" type="text/javascript" charset="utf-8"></script>
-<script src="app/models/activity_event_collection.js" type="text/javascript" charset="utf-8"></script>
-<script src="app/models/dash.js" type="text/javascript" charset="utf-8"></script>
-<script src="app/snapr.js" type="text/javascript" charset="utf-8"></script>
-<script src="app/routers.js" type="text/javascript" charset="utf-8"></script>
-<!-- load later <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script> --> <!-- google maps -->
 </body>
 </html>

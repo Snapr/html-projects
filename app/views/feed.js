@@ -1,8 +1,8 @@
-snapr.views.feed = snapr.views.page.extend({
+define(['views/base/page', 'models/user', 'views/user_header', 'collections/photo', 'views/feed_list' ],
+function(page_view, user_model, user_header, photo_collection, feed_list){
+snapr.views.feed = page_view.extend({
 
-    initialize: function()
-    {
-        snapr.views.page.prototype.initialize.call( this );
+    snapr_initialize: function(){
 
         this.query = this.options.query || {};
 
@@ -21,7 +21,7 @@ snapr.views.feed = snapr.views.page.extend({
         }else{
             this.back_text = "Feed";
         }
-        console.debug('setting feed page back text to', this.back_text);
+        //console.debug('setting feed page back text to', this.back_text);
         this.$el.data('back-text', this.back_text);
 
         var list_style = this.query.list_style || 'list';
@@ -43,9 +43,9 @@ snapr.views.feed = snapr.views.page.extend({
 
         if (this.query.username)
         {
-            this.feed_header = new snapr.views.user_header({
+            this.feed_header = new user_header({
                 username: this.query.username,
-                model: new snapr.models.user( {username: this.query.username} ),
+                model: new user_model( {username: this.query.username} ),
                 el: this.$el.find(".feed-header").empty()[0]
             });
         }
@@ -73,20 +73,21 @@ snapr.views.feed = snapr.views.page.extend({
         });
 
         // if we are coming from the map view do a flip, otherwise do a slide transition
+        var transition;
         if ($.mobile.activePage.attr('id') == 'map' )
         {
-            var transition = "flip";
+            transition = "flip";
         }
         else
         {
-            var transition = "none";
+            transition = "none";
         }
 
         this.change_page({
             transition: transition
         });
 
-        this.photo_collection = new snapr.models.photo_collection();
+        this.photo_collection = new photo_collection();
         this.photo_collection.url = snapr.api_base + "/search/";
         this.photo_collection.data = this.query;
         this.photo_collection.data.n = this.photo_collection.data.n || snapr.constants.feed_count;
@@ -97,113 +98,11 @@ snapr.views.feed = snapr.views.page.extend({
 
         this.populate_feed();
 
-
-
-
-       //testing upload stuff
-        //
-        // var test_data = {
-        //     "uploads": [
-        //     {
-        //         "id": 5345233,
-        //         "thumbnail": "http://media-server2.snapr.us/sml/dev/b1329ff1029c2a686ad78b94a66eea76/Z4K.jpg",
-        //         "upload_status": "active", //"waiting|active|canceled|hold",
-        //         "percent_complete": 50,
-        //         "status": 'public', //"public|private|queued",
-        //         "description": "Here's a cool photo of stuff!",
-        //         "location": {
-        //             "latitude": 51.553978,
-        //             "location": "New York",
-        //             "longitude": -0.076529
-        //         },
-        //         "date": "2011-04-12 20:50:10 +0100",
-        //         "shared": {
-        //             "tweeted": true,
-        //             "facebook_newsfeed": true,
-        //             "foursquare_checkin": true,
-        //             "tumblr": true,
-        //             "venue_id": 123,
-        //             "venue_name": "some bar",
-        //             "venue_source": "Foursquare"
-        //         }
-        //     },
-        //
-        //     {
-        //         "id": 5345234,
-        //         "thumbnail": "http://media-server2.snapr.us/sml/247f51a82ca7abb2adf0228b390010ef/2BD4.jpg",
-        //         "upload_status": "waiting", //"waiting|active|canceled|hold",
-        //         "percent_complete": 0,
-        //         "status": 'private', //"public|private|queued",
-        //         "description": "test2",
-        //         "location": {
-        //             "latitude": 51.553978,
-        //             "location": "New York",
-        //             "longitude": -0.076529
-        //         },
-        //         "date": "2011-04-12 20:50:10 +0100",
-        //         "shared": {
-        //             "tweeted": true,
-        //             "facebook_newsfeed": true,
-        //             "foursquare_checkin": true,
-        //             "tumblr": true,
-        //             "venue_id": 123,
-        //             "venue_name": "some bar",
-        //             "venue_source": "Foursquare"
-        //         }
-        //     }
-        //     ]
-        // };
-        //
-        // setTimeout(function() {
-        //     console.log("testing 1", test_data);
-        //     test_data.uploads[0].percent_complete = 40;
-        //     upload_progress(test_data);
-        //     }, 3000);
-        //
-        //     setTimeout(function() {
-        //         console.log("testing 2", test_data);
-        //         test_data.uploads[0].percent_complete = 60;
-        //         upload_progress(test_data);
-        //         }, 6000);
-        //
-        //         setTimeout(function() {
-        //             console.log("testing 3", test_data);
-        //             test_data.uploads[0].percent_complete = 100;
-        //             upload_progress(test_data);
-        //             }, 8000);
-        //
-        //             setTimeout(function() {
-        //                 console.log("testing 4", test_data);
-        //                 test_data.uploads[0].percent_complete = 100;
-        //                 upload_progress(test_data);
-        //                 }, 12000);
-        //
-        //                 setTimeout(function() {
-        //                     console.log("testing 5");
-        //                     upload_completed( 5345233, "Z4K");
-        //                     }, 14000);
-        //
-        //
-        //                     setTimeout(function() {
-        //                         console.log("testing 3", test_data);
-        //                         test_data.uploads.shift();
-        //                         test_data.uploads[0].percent_complete = 50;
-        //                         upload_progress(test_data);
-        //                         }, 9000);
-        //
-        //                         setTimeout(function() {
-        //                             console.log("testing 4", test_data);
-        //                             test_data.uploads[0].percent_complete = 100;
-        //                             upload_progress(test_data);
-        //                             }, 12000);
-        //
-        //                             setTimeout(function() {
-        //                                 console.log("testing 5", test_data);
-        //                                 test_data.uploads.shift();
-        //                                 upload_progress(test_data);
-        //                                 }, 14000);
-
-        //end testing
+        // test data
+        // var test_data={uploads:[{id:5345233,thumbnail:"http://media-server2.snapr.us/sml/dev/b1329ff1029c2a686ad78b94a66eea76/Z4K.jpg",upload_status:"active",percent_complete:50,status:"public",description:"Here's a cool photo of stuff!",location:{latitude:51.553978,location:"New York",longitude:-0.076529},date:"2011-04-12 20:50:10 +0100",shared:{tweeted:!0,facebook_newsfeed:!0,foursquare_checkin:!0,tumblr:!0,venue_id:123,venue_name:"some bar",venue_source:"Foursquare"}},{id:5345234,thumbnail:"http://media-server2.snapr.us/sml/247f51a82ca7abb2adf0228b390010ef/2BD4.jpg",
+        // upload_status:"waiting",percent_complete:0,status:"private",description:"test2",location:{latitude:51.553978,location:"New York",longitude:-0.076529},date:"2011-04-12 20:50:10 +0100",shared:{tweeted:!0,facebook_newsfeed:!0,foursquare_checkin:!0,tumblr:!0,venue_id:123,venue_name:"some bar",venue_source:"Foursquare"}}]};setTimeout(function(){console.log("testing 1",test_data);test_data.uploads[0].percent_complete=40;upload_progress(test_data)},3E3);
+        // setTimeout(function(){console.log("testing 2",test_data);test_data.uploads[0].percent_complete=60;upload_progress(test_data)},6E3);setTimeout(function(){console.log("testing 3",test_data);test_data.uploads[0].percent_complete=100;upload_progress(test_data)},8E3);setTimeout(function(){console.log("testing 4",test_data);test_data.uploads[0].percent_complete=100;upload_progress(test_data)},12E3);setTimeout(function(){console.log("testing 5");upload_completed(5345233,"Z4K")},14E3);
+        // setTimeout(function(){console.log("testing 3",test_data);test_data.uploads.shift();test_data.uploads[0].percent_complete=50;upload_progress(test_data)},9E3);setTimeout(function(){console.log("testing 4",test_data);test_data.uploads[0].percent_complete=100;upload_progress(test_data)},12E3);setTimeout(function(){console.log("testing 5",test_data);test_data.uploads.shift();upload_progress(test_data)},14E3);
     },
 
     events: {
@@ -228,7 +127,7 @@ snapr.views.feed = snapr.views.page.extend({
             success: function( collection, response )
             {
                 if(collection.length){
-                    feed_view.feed_list = new snapr.views.feed_list({
+                    feed_view.feed_list = new feed_list({
                         el: feed_view.$el.find('#feed-images')[0],
                         collection: feed_view.photo_collection,
                         list_style: list_style
@@ -356,4 +255,7 @@ snapr.views.feed = snapr.views.page.extend({
         }
     }
 
+});
+
+return snapr.views.feed;
 });

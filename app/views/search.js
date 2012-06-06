@@ -1,4 +1,5 @@
-snapr.views.search = snapr.views.dialog.extend({
+define(['views/dialog'], function(dialog_view){
+snapr.views.search = dialog_view.extend({
 
     initialize: function()
     {
@@ -92,4 +93,7 @@ snapr.views.search = snapr.views.dialog.extend({
                 break;
         }
     }
+});
+
+return snapr.views.search;
 });

@@ -1,3 +1,5 @@
+define(['backbone', 'utils'], function(Backbone) {
+
 snapr.routers = Backbone.Router.extend({
     routes: {
         "about/": "about",
@@ -73,13 +75,13 @@ snapr.routers = Backbone.Router.extend({
         "*path": "home"
     },
 
-    home: _make_route(snapr.views.home, "#home"),
+    home: _make_route("views/home", "#home"),
 
-    join_snapr: _make_route(snapr.views.join_snapr, "#join-snapr"),
-    join_success: _make_route(snapr.views.join_success, "#join-success"),
-    login: _make_route(snapr.views.login, "#login"),
-    welcome: _make_route(snapr.views.welcome, "#welcome"),
-    forgot_password: _make_route(snapr.views.forgot_password, "#forgot-password"),
+    join_snapr: _make_route("views/join_snapr", "#join-snapr"),
+    join_success: _make_route("views/join_success", "#join-success"),
+    login: _make_route("views/login", "#login"),
+    welcome: _make_route("views/welcome", "#welcome"),
+    forgot_password: _make_route("views/forgot_password", "#forgot-password"),
     logout: function( query_string ){
 
         snapr.utils.get_query_params( query_string );
@@ -95,74 +97,80 @@ snapr.routers = Backbone.Router.extend({
         }
     },
 
-    feed: _make_route(snapr.views.feed, "#feed"),
+    feed: _make_route('views/feed', "#feed"),
 
-    activity: _make_route(snapr.views.activity, "#activity"),
+    activity: _make_route("views/activity", "#activity"),
 
-    upload: _make_route(snapr.views.upload, "#upload"),
-    uploading: _make_route(snapr.views.uploading, "#uploading"),
-    share_photo: _make_route(snapr.views.share_photo, "#share-photo"),
+    upload: _make_route("views/upload", "#upload"),
+    uploading: _make_route("views/uploading", "#uploading"),
+    share_photo: _make_route("views/share_photo", "#share-photo"),
 
-    about: _make_route(snapr.views.about, "#about"),
-    snapr_apps: _make_route(snapr.views.snapr_apps, "#snapr-apps"),
-    app: _make_route(snapr.views.app, "#app"),
+    about: _make_route("views/about", "#about"),
+    snapr_apps: _make_route("views/snapr_apps", "#snapr-apps"),
+    app: _make_route("views/app", "#app"),
 
-    cities: _make_route(snapr.views.cities, "#cities"),
+    cities: _make_route("views/cities", "#cities"),
 
-    popular: _make_route(snapr.views.popular, "#popular" ),
+    popular: _make_route("views/popular", "#popular" ),
 
-    my_account: _make_route(snapr.views.my_account, "#my-account"),
+    my_account: _make_route("views/my_account", "#my-account"),
 
-    find_friends: _make_route(snapr.views.find_friends, "#find-friends"),
+    find_friends: _make_route("views/find_friends", "#find-friends"),
     find_friends_twitter: _make_route(
-        snapr.views.find_friends_linked_services,
+        "views/find_friends_linked_services",
         "#find-friends-twitter",
         {service: "twitter"}
     ),
     find_friends_facebook: _make_route(
-        snapr.views.find_friends_linked_services,
+        "views/find_friends_linked_services",
         "#find-friends-twitter",
         {service: "facebook"}
     ),
 
-    linked_services: _make_route(snapr.views.linked_services, "#linked-services"),
-    connect: _make_route(snapr.views.connect, "#connect"),
-    tumblr_xauth: _make_route(snapr.views.tumblr_xauth, "#tumblr-xauth"),
-    twitter_xauth: _make_route(snapr.views.twitter_xauth, "#twitter-xauth"),
+    linked_services: _make_route("views/linked_services", "#linked-services"),
+    connect: _make_route("views/connect", "#connect"),
+    tumblr_xauth: _make_route("views/tumblr_xauth", "#tumblr-xauth"),
+    twitter_xauth: _make_route("views/twitter_xauth", "#twitter-xauth"),
 
 
-    map: _make_route(snapr.views.map, "#map"),
+    map: _make_route("views/map", "#map"),
 
-    dash: _make_route(snapr.views.dash, "#dashboard" ),
-    dash_add_person: _make_route(snapr.views.dash_add_person, "#dash-add-person"),
-    dash_add_search: _make_route(snapr.views.dash_add_search, "#dash-add-search"),
+    dash: _make_route("views/dash", "#dashboard" ),
+    dash_add_person: _make_route("views/dash_add_person", "#dash-add-person"),
+    dash_add_search: _make_route("views/dash_add_search", "#dash-add-search"),
 
-    search: _make_route(snapr.views.search, "#search"),
+    search: _make_route("views/search", "#search"),
 
-    user_profile: _make_route(snapr.views.user_profile, "#user-profile"),
-    user_search: _make_route(snapr.views.people, "#people"),
+    user_profile: _make_route("views/user_profile", "#user-profile"),
+    user_search: _make_route("views/people", "#people"),
 
-    people_followers: _make_route(snapr.views.people, "#people", {follow: "followers"}),
-    people_following: _make_route(snapr.views.people, "#people", {follow: "following"}),
+    people_followers: _make_route("views/people", "#people", {follow: "followers"}),
+    people_following: _make_route("views/people", "#people", {follow: "following"}),
 
-    venues: _make_route(snapr.views.venues, "#venues"),
+    venues: _make_route("views/venues", "#venues"),
 
-    limbo: _make_route(snapr.views.limbo, "#limbo")
+    limbo: _make_route("views/limbo", "#limbo")
 
 });
 
 function _make_route(view, el, extra_data){
     extra_data = extra_data || {};
     var route = function(query_string){
-        var query = snapr.utils.get_query_params(query_string);
-        if(!route.el_cached){
-            route.el_cached = $(el);
-        }
-        snapr.info.previous_view = snapr.info.current_view;
-        snapr.info.current_view = new view(_.extend({
-            query: query,
-            el: route.el_cached
-        }, extra_data));
+        require([view], function(view) {
+            var query = snapr.utils.get_query_params(query_string);
+            if(!route.el_cached){
+                route.el_cached = $(el);
+            }
+            snapr.info.previous_view = snapr.info.current_view;
+            snapr.info.current_view = new view(_.extend({
+                query: query,
+                el: route.el_cached
+            }, extra_data));
+        });
     };
     return route;
 }
+
+return snapr.routers;
+
+});

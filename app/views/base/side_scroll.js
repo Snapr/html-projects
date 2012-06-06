@@ -1,4 +1,4 @@
-define(['backbone', 'utils/photoswipe'], function(Backbone, photoswipe){
+define(['backbone'], function(Backbone){
 return Backbone.View.extend({
 
     // The following 3 attrs need to be set when extending this view
@@ -174,7 +174,7 @@ return Backbone.View.extend({
     },
     photoswipe_init: function(){
         id = this.id + this.cid;
-        $( "a.x-thumb", this.el ).photoswipe_init(id);
+        photoswipe_init(id, $( "a.x-thumb", this.el ));
     }
 });
 });

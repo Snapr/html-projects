@@ -1,4 +1,5 @@
-snapr.views.linked_services = snapr.views.dialog.extend({
+define(['views/dialog'], function(dialog_view){
+snapr.views.linked_services = dialog_view.extend({
 
     initialize: function()
     {
@@ -99,4 +100,7 @@ snapr.views.linked_services = snapr.views.dialog.extend({
             this.$el.find(".tolink-message").text("");
         }
     }
+});
+
+return snapr.views.linked_services;
 });

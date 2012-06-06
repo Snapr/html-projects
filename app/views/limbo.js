@@ -1,16 +1,17 @@
-snapr.views.limbo = snapr.views.page.extend({
+define(['views/base/page'], function(page_view){
+snapr.views.limbo = page_view.extend({
 
     initialize: function()
     {
         snapr.views.page.prototype.initialize.call( this );
 
-        this.change_page();        
+        this.change_page();
 
         setTimeout(function()
         {
            $.mobile.showPageLoadingMsg();
         },100);
-        
+
         _.bindAll( this );
         this.el.live('pagehide', function( e )
         {
@@ -19,14 +20,17 @@ snapr.views.limbo = snapr.views.page.extend({
 
             return true;
         });
-      
+
     },
     events: {
         "click": "home"
     },
-    
+
     home: function()
     {
         Route.navigate( "#/", true );
     }
+});
+
+return snapr.views.limbo;
 });

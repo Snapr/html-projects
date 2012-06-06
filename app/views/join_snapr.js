@@ -1,4 +1,5 @@
-snapr.views.join_snapr = snapr.views.dialog.extend({
+define(['views/dialog', 'jquery', 'validate'], function(dialog_view, $){
+snapr.views.join_snapr = dialog_view.extend({
 
     initialize: function()
     {
@@ -151,11 +152,11 @@ snapr.views.join_snapr = snapr.views.dialog.extend({
     }
 });
 
-jQuery.validator.addMethod("alphanum_", function(value, element) {
+$.validator.addMethod("alphanum_", function(value, element) {
     return this.optional(element) || /^[0-9a-z_]+$/i.test(value);
 }, "Letters, numbers and _ only please");
 
-jQuery.validator.addMethod("snapr_username",
+$.validator.addMethod("snapr_username",
     function(value, element, param) {
         if (this.optional(element))
             return "dependency-mismatch";
@@ -207,3 +208,6 @@ jQuery.validator.addMethod("snapr_username",
         }
         return previous.valid;
     });
+
+return snapr.views.join_snapr;
+});

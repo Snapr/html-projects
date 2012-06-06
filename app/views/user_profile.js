@@ -1,4 +1,5 @@
-snapr.views.user_profile = snapr.views.dialog.extend({
+define(['views/dialog'], function(dialog_view){
+snapr.views.user_profile = dialog_view.extend({
 
     initialize: function()
     {
@@ -40,4 +41,7 @@ snapr.views.user_profile = snapr.views.dialog.extend({
         }) );
         this.$el.trigger( "create" );
     }
+});
+
+return snapr.views.user_profile;
 });

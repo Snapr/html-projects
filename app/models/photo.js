@@ -1,17 +1,16 @@
-snapr.models.photo = Backbone.Model.extend({
+define(['backbone'], function(Backbone){
 
-    urlRoot: function()
-    {
-        return snapr.api_base + '/photo/'
+return Backbone.Model.extend({
+
+    urlRoot: function(){
+        return snapr.api_base + '/photo/';
     },
 
-    url: function( method )
-    {
+    url: function( method ){
         return this.urlRoot();
     },
 
-    parse: function( d, xhr )
-    {
+    parse: function( d, xhr ){
         // handle cases where we're parsing response from a direct server request
         if (d.response && d.response.photos)
         {
@@ -28,8 +27,7 @@ snapr.models.photo = Backbone.Model.extend({
         }
     },
 
-    change_status: function( status, options )
-    {
+    change_status: function( status, options ){
         var ajax_options = _.extend( options || {}, {
             url: this.urlRoot() + "change_status/",
             dataType: "jsonp",
@@ -42,8 +40,7 @@ snapr.models.photo = Backbone.Model.extend({
         $.ajax( ajax_options );
     },
 
-    flag: function( options )
-    {
+    flag: function( options ){
         var ajax_options = _.extend( options || {}, {
             url: snapr.api_base + "/report/",
             dataType: "jsonp",
@@ -55,8 +52,7 @@ snapr.models.photo = Backbone.Model.extend({
         $.ajax( ajax_options );
     },
 
-    delete: function( options )
-    {
+    'delete': function( options ){
         var ajax_options = _.extend( options || {}, {
             url: snapr.api_base + "/remove/",
             dataType: "jsonp",
@@ -67,4 +63,5 @@ snapr.models.photo = Backbone.Model.extend({
         });
         $.ajax( ajax_options );
     }
+});
 });

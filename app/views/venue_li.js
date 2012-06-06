@@ -1,4 +1,5 @@
-snapr.views.venue_li = Backbone.View.extend({
+define(['backbone'], function(Backbone){
+return Backbone.View.extend({
 
     initialize: function()
     {
@@ -48,7 +49,7 @@ snapr.views.venue_li = Backbone.View.extend({
 
         this.photo_model.set({
             location: location
-        })
+        });
 
         this.back_view.initialize.call({
             query: this.back_query,
@@ -57,4 +58,5 @@ snapr.views.venue_li = Backbone.View.extend({
         });
         snapr.info.current_view = this.back_view;
     }
+});
 });

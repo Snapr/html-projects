@@ -1,4 +1,5 @@
-snapr.views.upload = snapr.views.page.extend({
+define(['views/base/page'], function(page_view){
+snapr.views.upload = page_view.extend({
 
     initialize: function()
     {
@@ -52,4 +53,7 @@ snapr.views.upload = snapr.views.page.extend({
     }
 
 
+});
+
+return snapr.views.upload;
 });

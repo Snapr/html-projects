@@ -1,4 +1,5 @@
-snapr.models.favorite = Backbone.Model.extend({
+define(['backbone'], function(Backbone){
+return  Backbone.Model.extend({
     urlRoot: function()
     {
         return snapr.api_base + '/favorite/';
@@ -23,4 +24,5 @@ snapr.models.favorite = Backbone.Model.extend({
             return this.urlRoot();
         }
     }
+});
 });

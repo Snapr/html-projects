@@ -1,6 +1,8 @@
-snapr.models.photo_collection = Backbone.Collection.extend({
+define(['backbone', 'models/photo'], function(Backbone, photo_model){
 
-    model: snapr.models.photo,
+return Backbone.Collection.extend({
+
+    model: photo_model,
 
     data: {},
 
@@ -55,4 +57,5 @@ snapr.models.photo_collection = Backbone.Collection.extend({
             return model.get("id") == id;
         })[0];
     }
+});
 });

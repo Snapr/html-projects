@@ -1,10 +1,13 @@
-snapr.views.join_success = snapr.views.page.extend({
+define(['views/base/page'], function(page_view){
+snapr.views.join_success = page_view.extend({
 
-    initialize: function()
-    {
+    initialize: function(){
         snapr.views.page.prototype.initialize.call( this );
 
         this.change_page();
-    },
+    }
 
+});
+
+return snapr.views.join_success;
 });

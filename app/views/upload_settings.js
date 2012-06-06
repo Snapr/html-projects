@@ -1,4 +1,5 @@
-snapr.views.upload_settings = Backbone.View.extend({
+define(['backbone'], function(Backbone){
+return Backbone.View.extend({
 
     className: "upload-settings",
 
@@ -52,11 +53,12 @@ snapr.views.upload_settings = Backbone.View.extend({
             pass_data( "snapr://upload?setting=Wi-Fi Only" );
         }
 
-        this.$el.find( "input[type='radio']" ).checkboxradio().checkboxradio("refresh")
+        this.$el.find( "input[type='radio']" ).checkboxradio().checkboxradio("refresh");
     },
 
     upload_pause_toggle: function( e )
     {
         console.log( "upload_pause_toggle", e, $(e.target).data("icon") );
     }
+});
 });

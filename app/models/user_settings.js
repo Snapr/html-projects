@@ -1,4 +1,5 @@
-snapr.models.user_settings = Backbone.Model.extend({
+define(['backbone'], function(Backbone){
+return  Backbone.Model.extend({
 
     urlRoot: function()
     {
@@ -60,4 +61,5 @@ snapr.models.user_settings = Backbone.Model.extend({
             linked_services: ls
         });
     }
+});
 });

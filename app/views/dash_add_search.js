@@ -1,4 +1,5 @@
-snapr.views.dash_add_search = snapr.views.dialog.extend({
+define(['views/dialog'], function(dialog_view){
+snapr.views.dash_add_search = dialog_view.extend({
 
     initialize: function()
     {
@@ -82,4 +83,7 @@ snapr.views.dash_add_search = snapr.views.dialog.extend({
 
     }
 
+});
+
+return snapr.views.dash_add_search;
 });

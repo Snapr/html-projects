@@ -1,23 +1,22 @@
-snapr.views.popular = snapr.views.page.extend({
+define(['views/base/page', 'collections/photo', 'views/thumbnail'], function(page_view, photo_collection, thumbnail){
+snapr.views.popular = page_view.extend({
 
     events: {
         "click #popular-timeframe a":"update_list"
     },
 
-    initialize: function()
-    {
-        snapr.views.page.prototype.initialize.call( this );
+    snapr_initialize: function(){
 
         this.change_page();
 
-        this.photo_collection = new snapr.models.photo_collection();
+        this.photo_collection = new photo_collection();
         this.photo_collection.url = snapr.api_base + "/search/";
         this.photo_collection.data = {
             sort:"weighted_score",
             n:20
         };
 
-        this.list_view = new snapr.views.thumbs_li({
+        this.list_view = new thumbnail({
             collection: this.photo_collection,
             el: $('#popular-thumbs'),
             back: "Popular"
@@ -103,4 +102,7 @@ snapr.views.popular = snapr.views.page.extend({
             this.photo_collection.fetch( options );
         }
     }
+});
+
+return snapr.views.popular;
 });

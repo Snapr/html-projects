@@ -1,4 +1,5 @@
-snapr.views.map = snapr.views.page.extend({
+define(['views/base/page'], function(page_view){
+snapr.views.map = page_view.extend({
 
     initialize: function()
     {
@@ -544,4 +545,7 @@ snapr.views.map = snapr.views.page.extend({
             return $(this.map.snapr.location_template()).show();
         };
     }
+});
+
+return snapr.views.map;
 });

@@ -1,4 +1,5 @@
-snapr.models.user = Backbone.Model.extend({
+define(['backbone'], function(Backbone){
+return Backbone.Model.extend({
 
     initialize: function( init_options )
     {
@@ -103,4 +104,5 @@ snapr.models.user = Backbone.Model.extend({
     }
 
 
+});
 });

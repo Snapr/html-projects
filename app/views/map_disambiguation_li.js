@@ -1,4 +1,5 @@
-snapr.views.map_disambiguation_li = Backbone.View.extend({
+define(['backbone'], function(Backbone){
+return Backbone.View.extend({
 
     tagName: "li",
 
@@ -26,4 +27,5 @@ snapr.views.map_disambiguation_li = Backbone.View.extend({
         this.map.fitBounds( this.location.geometry.viewport );
         this.parent_view.hide_dis();
     }
+});
 });

@@ -1,4 +1,5 @@
-snapr.models.news_period = Backbone.Model.extend({
+define(['backbone'], function(Backbone){
+return  Backbone.Model.extend({
 
     initialize: function( period )
     {
@@ -6,4 +7,4 @@ snapr.models.news_period = Backbone.Model.extend({
         this.set({events: new snapr.models.activity_event_collection( events )});
     }
 
-});
+});});

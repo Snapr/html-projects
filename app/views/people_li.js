@@ -1,4 +1,5 @@
-snapr.views.people_li = Backbone.View.extend({
+define(['backbone'], function(Backbone){
+return Backbone.View.extend({
 
     initialize: function()
     {
@@ -85,4 +86,5 @@ snapr.views.people_li = Backbone.View.extend({
             });
         })();
     }
+});
 });

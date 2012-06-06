@@ -1,4 +1,5 @@
-snapr.models.foursquare_venue = Backbone.Model.extend({
+define(['backbone'], function(Backbone){
+return  Backbone.Model.extend({
 
     url: function( method )
     {
@@ -24,4 +25,5 @@ snapr.models.foursquare_venue = Backbone.Model.extend({
         }
     }
 
+});
 });

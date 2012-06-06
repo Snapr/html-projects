@@ -1,3 +1,1 @@
-snapr.models.reaction = Backbone.Model.extend({
-    
-});
+define(['backbone'], Backbone.Model.extend({}));

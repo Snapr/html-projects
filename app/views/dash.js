@@ -1,4 +1,6 @@
-snapr.views.dash_stream = snapr.views.side_scroll.extend({
+define(['views/base/page', 'views/side_scroll', 'models/dash'], function(page_view, side_scroll, dash_model){
+
+snapr.views.dash_stream = side_scroll.extend({
 
     tagName: 'li',
 
@@ -12,9 +14,7 @@ snapr.views.dash_stream = snapr.views.side_scroll.extend({
 
     thumbs_template: _.template( $('#dash-thumbs-template').html() ),
 
-    initialize: function( options )
-    {
-        snapr.views.side_scroll.prototype.initialize.call( this, options );
+    snapr_initialize: function( options ){
 
         if (this.model.has("id"))
         {
@@ -23,14 +23,13 @@ snapr.views.dash_stream = snapr.views.side_scroll.extend({
         }
     },
 
-    remove_stream: function()
-    {
+    remove_stream: function(){
         var stream = this;
         snapr.utils.approve({
             title: 'Are you sure you want to remove this stream?',
             yes_callback: function()
             {
-                stream.model.delete({
+                stream.model['delete']({
                     success: function()
                     {
                         stream.model.collection.remove(stream.model);
@@ -42,20 +41,17 @@ snapr.views.dash_stream = snapr.views.side_scroll.extend({
     }
 });
 
-
-snapr.views.dash = snapr.views.page.extend({
+return page_view.extend({
 
     el: $('#dashboard'),
 
-    initialize: function(){
-        snapr.views.page.prototype.initialize.call( this );
-
+    snapr_initialize: function(){
         this.change_page();
 
         // make sure image streams are emptied
         this.$el.find('.image-streams').empty();
 
-        this.collection = new snapr.models.dash();
+        this.collection = new dash_model();
         window.dash = this.collection;
 
         this.collection.bind( 'remove', this.remove_stream );
@@ -173,5 +169,7 @@ snapr.views.dash = snapr.views.page.extend({
         li.render();
         li.$el.trigger('create');
     }
+
+});
 
 });

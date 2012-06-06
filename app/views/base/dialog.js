@@ -1,7 +1,8 @@
 // Abstract base class for dialogs
 // adds the "back" function
 
-snapr.views.dialog = snapr.views.page.extend({
+define(['views/base/page'], function(page_view){
+return page_view.extend({
 
     // needs to be called in decendent views to use "prevPage" functionality
     initialize: function()
@@ -52,6 +53,8 @@ snapr.views.dialog = snapr.views.page.extend({
 
     },
 
-    transition: "slideup",
+    transition: "slideup"
+
+});
 
 });

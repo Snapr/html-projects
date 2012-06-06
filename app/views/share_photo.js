@@ -1,4 +1,5 @@
-snapr.views.share_photo = snapr.views.page.extend({
+define(['views/base/page'], function(page_view){
+snapr.views.share_photo = page_view.extend({
 
     initialize: function()
     {
@@ -630,4 +631,7 @@ snapr.views.share_photo = snapr.views.page.extend({
         Route.navigate( '#/uploading/' );
     },
 
+});
+
+return snapr.views.photo_share;
 });

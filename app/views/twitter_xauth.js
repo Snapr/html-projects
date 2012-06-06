@@ -1,4 +1,5 @@
-snapr.views.twitter_xauth = snapr.views.dialog.extend({
+define(['views/dialog'], function(dialog_view){
+snapr.views.twitter_xauth = dialog_view.extend({
 
     initialize: function()
     {
@@ -108,4 +109,7 @@ snapr.views.twitter_xauth = snapr.views.dialog.extend({
 
         $.ajax(options);
     }
+});
+
+return snapr.views.twitter_xauth;
 });

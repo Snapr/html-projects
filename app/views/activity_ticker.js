@@ -1,4 +1,5 @@
-snapr.views.news_ticker = Backbone.View.extend({
+define(['backbone'], function(Backbone){
+return Backbone.View.extend({
 
     tagName: "div",
     className: "news-ticker",
@@ -57,4 +58,5 @@ snapr.views.news_ticker = Backbone.View.extend({
         clearInterval(this.interval_id);
         return this;
     }
+});
 });

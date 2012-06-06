@@ -1,4 +1,5 @@
-snapr.models.geo_location = Backbone.Model.extend({
+define(['backbone'], function(Backbone){
+return  Backbone.Model.extend({
     initialize: function( init_options )
     {
         if (init_options.latitude && init_options.longitude)
@@ -20,4 +21,5 @@ snapr.models.geo_location = Backbone.Model.extend({
             return d.response;
         }
     }
+});
 });

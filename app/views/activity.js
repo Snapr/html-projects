@@ -1,4 +1,5 @@
-snapr.views.activity = snapr.views.page.extend({
+define(['views/base/page'], function(page_view){
+snapr.views.activity = page_view.extend({
 
     initialize: function()
     {
@@ -64,4 +65,7 @@ snapr.views.activity = snapr.views.page.extend({
         return this;
     }
 
+});
+
+return snapr.views.activity;
 });

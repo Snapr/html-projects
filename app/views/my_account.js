@@ -1,4 +1,5 @@
-snapr.views.my_account = snapr.views.page.extend({
+define(['views/base/page'], function(page_view){
+snapr.views.my_account = page_view.extend({
 
     initialize:function()
     {
@@ -287,10 +288,5 @@ snapr.views.my_account = snapr.views.page.extend({
 
 });
 
-
-// notifyWhenImageModerated: $('#ntmoderation',form).is(':checked'),
-// notifyWhenCommentAdded: $('#ntcomment',form).is(':checked'),
-// notifyAfterComment: $('#ntafter_comment',form).is(':checked'),
-// notifyWhenImageFavorited: $('#ntfav',form).is(':checked'),
-// notifyWhenAddedToGroup: $('#ntfollow',form).is(':checked'),
-// subscribeToEmailNewsletter: $('#ntnewsupdates',form).is(':checked')
+return snapr.views.my_account;
+});

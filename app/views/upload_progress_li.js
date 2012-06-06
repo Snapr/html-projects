@@ -1,4 +1,5 @@
-snapr.views.upload_progress_li = Backbone.View.extend({
+define(['backbone'], function(Backbone){
+return Backbone.View.extend({
 
     tagName: "li",
 
@@ -76,4 +77,5 @@ snapr.views.upload_progress_li = Backbone.View.extend({
         });
     }
 
+});
 });

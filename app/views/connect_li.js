@@ -1,4 +1,5 @@
-snapr.views.connect_li = snapr.views.linked_service.extend({
+define(['backbone'], function(Backbone){
+return snapr.views.linked_service.extend({
 
     initialize: function()
     {
@@ -103,4 +104,5 @@ snapr.views.connect_li = snapr.views.linked_service.extend({
         }
     }
 
+});
 });

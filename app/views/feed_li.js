@@ -1,4 +1,5 @@
-snapr.views.feed_li = Backbone.View.extend({
+define(['backbone'], function(Backbone){
+return Backbone.View.extend({
 
     tagName: "span",
 
@@ -22,7 +23,7 @@ snapr.views.feed_li = Backbone.View.extend({
 
         this.back = this.options.back || "Back";
 
-        this.template = this.options.template
+        this.template = this.options.template;
         if (this.model.has('location'))
         {
             this.map_url =
@@ -58,22 +59,23 @@ snapr.views.feed_li = Backbone.View.extend({
 
     render: function()
     {
-        var location = this.model.has("location") && this.model.get("location").location;
+        var location = this.model.has("location") && this.model.get("location").location,
+            city;
 
         if (location)
         {
             if (location.split(",").length > 1)
             {
-                var city = location.split(",")[location.split(",").length - 2].replace(/.[0-9]/g, "");
+                city = location.split(",")[location.split(",").length - 2].replace(/.[0-9]/g, "");
             }
             else
             {
-                var city = location.split(",")[0].replace(/.[0-9]/g, "");
+                city = location.split(",")[0].replace(/.[0-9]/g, "");
             }
         }
         else
         {
-            var city = ""
+            city = "";
         }
 
         this.$el.html(this.template( {
@@ -233,4 +235,5 @@ snapr.views.feed_li = Backbone.View.extend({
             comment.save( {}, options );
         } )();
     }
+});
 });

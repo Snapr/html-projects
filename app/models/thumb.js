@@ -1,3 +1,1 @@
-snapr.models.thumb = Backbone.Model.extend({
-
-});
+define(['backbone'], Backbone.Model.extend({}));

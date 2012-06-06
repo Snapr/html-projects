@@ -1,3 +1,1 @@
-snapr.models.activity_event = Backbone.Model.extend({
-
-});
+define(['backbone'], Backbone.Model.extend({}));

@@ -1,4 +1,5 @@
-snapr.views.favorite_button = Backbone.View.extend({
+define(['backbone'], function(Backbone){
+return Backbone.View.extend({
 
     initialize: function()
     {
@@ -14,7 +15,7 @@ snapr.views.favorite_button = Backbone.View.extend({
     },
 
     events: {
-        "click .favorite-button": "favorite",
+        "click .favorite-button": "favorite"
     },
 
     favorite: function()
@@ -97,5 +98,7 @@ snapr.views.favorite_button = Backbone.View.extend({
 
         return this
     }
+
+});
 
 });
