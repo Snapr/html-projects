@@ -1,24 +1,26 @@
 // Abstract base class for dialogs
 // adds the "back" function
 
+/*global _ Route define require */
 define(['views/base/page'], function(page_view){
 return page_view.extend({
 
     // needs to be called in decendent views to use "prevPage" functionality
     initialize: function()
     {
-        snapr.views.page.prototype.initialize.call( this );
 
         this.back_view = this.options.back_view;
 
         var dialog = this;
 
-        this.$el.live( "pageshow", function( e, ui )
-        {
+        this.$el.live( "pageshow", function( e, ui ){
             dialog.prev_el = ui.prevPage;
         });
 
+        this.post_initialize.apply(this, arguments);
     },
+
+    post_initialize: function(){},
 
     // needs to be re-declared in decendent views
     events: {

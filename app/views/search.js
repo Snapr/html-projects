@@ -1,9 +1,8 @@
-define(['views/dialog'], function(dialog_view){
-snapr.views.search = dialog_view.extend({
+/*global _ Route define require */
+define(['views/base/dialog'], function(dialog_view){
+return dialog_view.extend({
 
-    initialize: function()
-    {
-        snapr.views.dialog.prototype.initialize.call( this );
+    post_initialize: function(){
 
         var page = this;
         this.$el.on( "pagebeforeshow", function( e, obj )
@@ -38,7 +37,7 @@ snapr.views.search = dialog_view.extend({
         var keywords = $("#search-keywords");
         var type = $("#search-type").val();
 
-        if (keywords.val().length == 0)
+        if (keywords.val().length === 0)
         {
             switch(type){
                 case 'location':
@@ -95,5 +94,4 @@ snapr.views.search = dialog_view.extend({
     }
 });
 
-return snapr.views.search;
 });

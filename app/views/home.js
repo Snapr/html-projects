@@ -1,7 +1,8 @@
-define(['views/base/page', 'views/activity_ticker'], function(page_view, ticker){
-snapr.views.home = page_view.extend({
+/*global _ Route define require snapr */
+define(['views/base/page', 'views/components/activity_ticker'], function(page_view, ticker){
+return page_view.extend({
 
-    snapr_initialize: function(options){
+    post_initialize: function(options){
         if(options.query.new_user){
             Route.navigate( "#", true );  // go here first so that back is not new_user
             Route.navigate( "#/welcome/" );
@@ -11,12 +12,11 @@ snapr.views.home = page_view.extend({
 
         snapr.auth.bind("change", this.render);
 
-        console.debug(_.extend($.mobile, {}), $.mobile.activePage);
+        // only render the home page the first time we load
         if ($.mobile.activePage && $.mobile.activePage.find("#home").length < 1){
             $.mobile.changePage( "#home" );
             this.render();
         }
-        this.render();
     },
 
     render: function(){
@@ -50,6 +50,4 @@ snapr.views.home = page_view.extend({
     }
 
 });
-
-return snapr.views.home;
 });

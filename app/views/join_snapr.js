@@ -1,4 +1,5 @@
-define(['views/dialog', 'jquery', 'validate'], function(dialog_view, $){
+/*global _ Route define require */
+define(['views/base/dialog', 'jquery', 'validate'], function(dialog_view, $){
 snapr.views.join_snapr = dialog_view.extend({
 
     initialize: function()

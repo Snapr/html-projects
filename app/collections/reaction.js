@@ -1,22 +1,21 @@
-snapr.models.reaction_collection = Backbone.Collection.extend({
-    model:snapr.models.reaction,
-    url: function( method )
-    {
+/*global _ Route define require */
+define(['backbone', 'models/reaction'], function(Backbone, reaction_model){
+
+return Backbone.Collection.extend({
+    model: reaction_model,
+    url: function( method ){
         return snapr.api_base + '/reaction/';
     },
-    parse: function( d, xhr )
-    {
-        if (d.response && d.response.reactions)
-        {
+    parse: function( d, xhr ){
+        if (d.response && d.response.reactions){
             return d.response.reactions;
-        }
-        else
-        {
+        }else{
             return [];
         }
     },
-    comparator: function( reaction )
-    {
+    comparator: function( reaction ){
         return new Date( reaction.get( "date" ) ).getTime();
     }
+});
+
 });

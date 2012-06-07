@@ -1,5 +1,6 @@
+/*global _ Route define require */
 define(['backbone'], function(Backbone){
-return new Backbone.View.extend({
+var no_results = Backbone.View.extend({
 
     tagName: "div",
 
@@ -7,8 +8,7 @@ return new Backbone.View.extend({
         this.template = _.template( $("#no-results-template").html() );
     },
 
-    render: function(message, icon)
-    {
+    render: function(message, icon){
         this.$el
             .attr('id', 'no-results')
             .html( this.template({
@@ -20,6 +20,7 @@ return new Backbone.View.extend({
         return this;
     }
 
-})();
+});
 
+return new no_results();
 });

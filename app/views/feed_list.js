@@ -1,3 +1,4 @@
+/*global _ Route define require */
 define(['backbone', 'views/feed_li'], function(Backbone, feed_li){
 return Backbone.View.extend({
 

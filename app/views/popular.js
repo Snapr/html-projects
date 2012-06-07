@@ -1,11 +1,12 @@
-define(['views/base/page', 'collections/photo', 'views/thumbnail'], function(page_view, photo_collection, thumbnail){
-snapr.views.popular = page_view.extend({
+/*global _ Route define require */
+define(['views/base/page', 'collections/photo', 'views/components/thumbnail'], function(page_view, photo_collection, thumbnail){
+return page_view.extend({
 
     events: {
         "click #popular-timeframe a":"update_list"
     },
 
-    snapr_initialize: function(){
+    post_initialize: function(){
 
         this.change_page();
 

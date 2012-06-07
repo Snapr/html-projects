@@ -1,3 +1,4 @@
+/*global _ Route define require */
 define(['views/base/page'], function(page_view){
 snapr.views.share_photo = page_view.extend({
 

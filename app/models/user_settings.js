@@ -1,9 +1,10 @@
-define(['backbone'], function(Backbone){
+/*global _ Route define require */
+/*global _ Route define require */
+define(['backbone', 'models/linked_service'], function(Backbone, linked_service){
 return  Backbone.Model.extend({
 
-    urlRoot: function()
-    {
-        return snapr.api_base + '/user/'
+    urlRoot: function(){
+        return snapr.api_base + '/user/';
     },
 
     url: function( method )
@@ -48,7 +49,7 @@ return  Backbone.Model.extend({
         _.each( linked_services, function( service, key )
         {
             // create a new linked_service model for each linked service
-            var linked = new snapr.models.linked_service( service );
+            var linked = new linked_service( service );
             // set the provider so we know which url to hit if we want to make changes
             linked.provider = key;
             // remove the 'lined_services' data added above as we no longer need it

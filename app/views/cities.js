@@ -1,4 +1,6 @@
-define(['views/base/page', 'views/side_scroll'], function(page_view, side_scroll){
+/*global _ Route define require */
+define(['views/base/page', 'views/base/side_scroll', 'collections/photo'],
+    function(page_view, side_scroll, photo_collection){
 
 var cities = {
     'new-york': {
@@ -43,24 +45,22 @@ var cities = {
     }
 };
 
-snapr.views.city_stream = side_scroll.extend({
+var city_stream = side_scroll.extend({
     tagName: 'li',
     className: 'image-stream',
     template: _.template( $('#cities-stream-template').html() ),
     thumbs_template: _.template( $('#cities-thumbs-template').html() ),
     initialize: function(options){
         this.details = options.details;
-        snapr.views.side_scroll.prototype.initialize.call(this, options);
+        side_scroll.prototype.initialize.call(this, options);
     }
 });
 
-snapr.views.cities = page_view.extend({
+return page_view.extend({
 
     el: $('#cities'),
 
-    initialize: function()
-    {
-        snapr.views.page.prototype.initialize.call( this );
+    post_initialize: function(){
 
         this.change_page();
 
@@ -86,9 +86,9 @@ snapr.views.cities = page_view.extend({
         };
 
         _.each( cities, function( details, id ){
-            var photos = new snapr.models.photo_collection();
+            var photos = new photo_collection();
             photos.data = {'area': details.area};
-            var li = new snapr.views.city_stream({
+            var li = new city_stream({
                 collection: photos,
                 details: {
                     name: details.name,
@@ -114,5 +114,4 @@ snapr.views.cities = page_view.extend({
 
     }
 });
-return snapr.views.cities;
 });

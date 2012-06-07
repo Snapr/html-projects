@@ -1,4 +1,5 @@
-snapr = {};
+/*global _:false Route:false requirejs:false define:false require:false urlError:false */
+var snapr = {};
 snapr.models = {};
 snapr.views = {};
 snapr.settings = {
@@ -54,6 +55,9 @@ requirejs.config({
         'photoswipe': {
             deps: ['jquery', 'klass'],
             exports: 'Code.PhotoSwipe'
+        },
+        'iscroll': {
+            exports: 'iScroll'
         }
     }
 });
@@ -63,7 +67,7 @@ requirejs.config({
 snapr.info = {};
 snapr.info.supports_local_storage = (function () {
     try {
-        return 'localStorage' in window && window['localStorage'] !== null;
+        return 'localStorage' in window && window.localStorage !== null;
     } catch(e) {
         return false;
     }
@@ -83,13 +87,14 @@ require(['models/auth'], function() {
 
 /* routers
 ***************************/
-require(['routers'], function(routers){
+require(['routers', 'backbone'], function(routers, Backbone){
     window.Route = new routers();
     snapr.routers = routers;
-    Backbone.history.start();
+    // don't start history until jQm id ready to deal with pageCanges
+    $(window).on("pagecontainercreate", function(){ Backbone.history.start(); });
 });
 
-require(['jquery', 'backbone'], function($, Backbone) {
+require(['jquery', 'backbone', 'photoswipe'], function($, Backbone, PhotoSwipe) {
 
 
     /* offline mode / timeout
@@ -115,7 +120,7 @@ require(['jquery', 'backbone'], function($, Backbone) {
         // Helper function to get a URL from a Model or Collection as a property or as a function.
         // sends the method as a parameter so that different methods can have different urls.
         var getUrl = function (object, method) {
-                if(!(object && object.url)) return null;
+                if(!(object && object.url)){ return null; }
                 return _.isFunction(object.url) ? object.url(method) : object.url;
             };
 
@@ -211,9 +216,9 @@ require(['jquery', 'backbone'], function($, Backbone) {
     /* make photoswipe basebar click
     ***************************/
     $('.ps-caption').live('vclick', function(){
-        var ps = Code.PhotoSwipe.activeInstances[0].instance,
+        var ps = PhotoSwipe.activeInstances[0].instance,
             src = ps.cache.images[ps.currentIndex].src,
-            id = src.match(/\/(.{2,6})\.jpg$/)[1];
+            id = src.match(/\/(\w{2,6})\.jpg$/)[1];
         ps.hide();
         Route.navigate('#/feed/?n=1&photo_id=' + id );
     });

@@ -1,6 +1,7 @@
-define(['views/base/page', 'views/side_scroll', 'models/dash'], function(page_view, side_scroll, dash_model){
+/*global _ Route define require */
+define(['views/base/page', 'views/base/side_scroll', 'models/dash'], function(page_view, side_scroll, dash_model){
 
-snapr.views.dash_stream = side_scroll.extend({
+var dash_stream = side_scroll.extend({
 
     tagName: 'li',
 
@@ -14,7 +15,7 @@ snapr.views.dash_stream = side_scroll.extend({
 
     thumbs_template: _.template( $('#dash-thumbs-template').html() ),
 
-    snapr_initialize: function( options ){
+    post_initialize: function( options ){
 
         if (this.model.has("id"))
         {
@@ -45,7 +46,7 @@ return page_view.extend({
 
     el: $('#dashboard'),
 
-    snapr_initialize: function(){
+    post_initialize: function(){
         this.change_page();
 
         // make sure image streams are emptied
@@ -100,7 +101,7 @@ return page_view.extend({
 
         var error_callback = function(){
             dash.collection.fetch( options );
-        }
+        };
         snapr.geo.get_location( success_callback, error_callback );
     },
 
@@ -109,7 +110,7 @@ return page_view.extend({
         var $streams = this.$el.find('.image-streams').empty();
         _.each( this.collection.models, function( item )
         {
-            var li = new snapr.views.dash_stream({
+            var li = new dash_stream({
                 collection: item.photos,
                 model: item
             });
@@ -162,7 +163,7 @@ return page_view.extend({
         this.$el.find('.image-stream[data-id='+stream.get('id')+']').remove();
     },
     add_stream: function(item){
-        var li = new snapr.views.dash_stream({ collection: item.photos, model: item });
+        var li = new dash_stream({ collection: item.photos, model: item });
         this.$el.find('.image-streams').append( li.el );
         // this must be rendered after it's appended because sizing details
         // needed by scroller are only available after the element is in the DOM

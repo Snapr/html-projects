@@ -1,3 +1,4 @@
+/*global _ Route define require */
 define(['backbone', 'jquery', 'cookie'], function(Backbone) {
 
 snapr.models.auth = Backbone.Model.extend({

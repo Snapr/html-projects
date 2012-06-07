@@ -1,9 +1,8 @@
+/*global _ Route define require */
 define(['views/base/page'], function(page_view){
-snapr.views.upload = page_view.extend({
+return page_view.extend({
 
-    initialize: function()
-    {
-        snapr.views.page.prototype.initialize.call( this );
+    post_initialize: function(){
 
         // we will redirect to this url on successful upload
         this.redirect_uri = window.location.origin + window.location.pathname + "#/photo-edit/";
@@ -55,5 +54,4 @@ snapr.views.upload = page_view.extend({
 
 });
 
-return snapr.views.upload;
 });

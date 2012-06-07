@@ -1,3 +1,4 @@
+/*global _ Route snapr define require */
 require(['jquery'], function($) {
 
 /* utils

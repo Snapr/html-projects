@@ -1,4 +1,5 @@
-define(['backbone'], function(Backbone){
+/*global _ Route define require */
+define(['backbone', 'utils/photoswipe', 'iscroll'], function(Backbone, photoswipe, iScroll){
 return Backbone.View.extend({
 
     // The following 3 attrs need to be set when extending this view
@@ -9,10 +10,10 @@ return Backbone.View.extend({
 
     initialize: function() {
         this.collection.bind('all', this.re_render_thumbs, this);
-        this.snapr_initialize.apply(this, arguments);
+        this.post_initialize.apply(this, arguments);
     },
 
-    snapr_initialize: function(){},
+    post_initialize: function(){},
 
     render: function(){
         var feed_data = this.collection.data || {};
@@ -95,6 +96,7 @@ return Backbone.View.extend({
                     }
 
                     // Pull to refresh: if scroll elements are .x-flipped - refresh
+                    var scroller;
                     if(left_pull_el.is('.x-flipped') && !scroll_el.is('.x-loading')){
                         scroll_el.addClass('x-loading');
                         left_pull_msg.text('Loading...');
@@ -110,7 +112,7 @@ return Backbone.View.extend({
                         scroll_el.addClass('x-loading');
                         right_pull_msg.text('Loading');
                         scroller = this;
-                        options  = {
+                        var options  = {
                             success: function(collection, response){
                                 if (response.response.photos.length){
                                     if(scroller.currPageX === scroller.pagesX.length){
@@ -145,7 +147,7 @@ return Backbone.View.extend({
     },
     render_thumbs: function(){
         if(this.collection.length){
-            html = this.thumbs_template({
+            var html = this.thumbs_template({
                 photos: this.collection.models
             });
             $(this.el).find('.x-thumbs').html(html);
@@ -159,7 +161,7 @@ return Backbone.View.extend({
 
             // if the scroller is set up, refresh it
             if(this.scroller){
-                scroller = this.scroller;
+                var scroller = this.scroller;
                 scroller.options.snap = this.collection.length > 2 ? 'a.x-thumb:not(:last-child), .x-left-pull': 'a.x-thumb, .x-left-pull';
                 setTimeout(function () {
                     scroller.refresh();
@@ -173,8 +175,8 @@ return Backbone.View.extend({
         return this;
     },
     photoswipe_init: function(){
-        id = this.id + this.cid;
-        photoswipe_init(id, $( "a.x-thumb", this.el ));
+        var id = this.id + this.cid;
+        $( "a.x-thumb", this.el ).photoswipe_init(id);
     }
 });
 });

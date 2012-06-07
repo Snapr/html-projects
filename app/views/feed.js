@@ -1,8 +1,10 @@
-define(['views/base/page', 'models/user', 'views/user_header', 'collections/photo', 'views/feed_list' ],
-function(page_view, user_model, user_header, photo_collection, feed_list){
-snapr.views.feed = page_view.extend({
+/*global _ Route define require */
+define(['views/base/page', 'models/user', 'views/user_header', 'views/feed_header', 'collections/photo', 'views/feed_list', 'utils/photoswipe', 'views/components/no_results'],
+function(page_view, user_model, user_header, feed_header, photo_collection, feed_list, photoswipe, no_results){
 
-    snapr_initialize: function(){
+return page_view.extend({
+
+    post_initialize: function(){
 
         this.query = this.options.query || {};
 
@@ -51,7 +53,7 @@ snapr.views.feed = page_view.extend({
         }
         else
         {
-            this.feed_header = new snapr.views.feed_header({
+            this.feed_header = new feed_header({
                 query_data: this.query,
                 el: this.$el.find(".feed-header").empty()[0]
             });
@@ -110,7 +112,7 @@ snapr.views.feed = page_view.extend({
         "change .feed-view-toggle": "feed_view_toggle"
     },
 
-    photoswipe_init: function(){ photoswipe_init('feed', $( "#feed-images a.gallery_link", this.el )); },
+    photoswipe_init: function(){ $( "#feed-images a.gallery_link", this.el ).photoswipe_init('feed'); },
 
     populate_feed: function( additional_data )
     {
@@ -142,7 +144,7 @@ snapr.views.feed = page_view.extend({
                             response.response.photos.length >= feed_view.photo_collection.data.n )
                         );
                 }else{
-                    snapr.no_results.render('No Photos', 'delete').$el.appendTo(feed_view.$el.find('#feed-images'));
+                    no_results.render('No Photos', 'delete').$el.appendTo(feed_view.$el.find('#feed-images'));
                     $.mobile.hidePageLoadingMsg();
                 }
             },
@@ -257,5 +259,4 @@ snapr.views.feed = page_view.extend({
 
 });
 
-return snapr.views.feed;
 });

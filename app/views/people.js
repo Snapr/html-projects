@@ -1,9 +1,9 @@
-define(['views/dialog'], function(dialog_view){
-snapr.views.people = dialog_view.extend({
+/*global _ Route define require */
+define(['views/base/dialog', 'collections/user', 'views/components/no_results', 'views/people_li'],
+    function(dialog_view, user_collection, no_results, people_li){
+return dialog_view.extend({
 
-    initialize: function()
-    {
-        snapr.views.dialog.prototype.initialize.call( this );
+    post_initialize: function(){
 
         this.$el.find("ul.people-list").empty();
         this.$el.addClass('loading');
@@ -11,9 +11,9 @@ snapr.views.people = dialog_view.extend({
         // a simple array of people which will be filtered and displayed
         this.display_collection = [];
 
-        this.collection = new snapr.models.user_collection();
+        this.collection = new user_collection();
 
-        this.collection.bind( "reset", this.reset_collection );
+        this.collection.bind( "reset", _.bind(this.reset_collection, this) );
 
         // if we are coming from the map view do a flip, otherwise do a slide transition
         var transition = ($.mobile.activePage.attr('id') == 'map') ? "flip" : "slideup";
@@ -70,10 +70,10 @@ snapr.views.people = dialog_view.extend({
         var people_li_template = _.template( $("#people-li-template").html() );
 
         if(this.collection.length){
-            snapr.no_results.$el.remove();  // use remove(), hide() keeps it hidden and requires show() later
+            no_results.$el.remove();  // use remove(), hide() keeps it hidden and requires show() later
             _.each( this.collection.models, function( model )
             {
-                var people_li = new snapr.views.people_li({
+                var people_li = new people_li({
                     template: people_li_template,
                     model: model,
                     parentView: this
@@ -83,15 +83,14 @@ snapr.views.people = dialog_view.extend({
 
             });
         }else{
-            snapr.no_results.render('Oops.. Nobody here yet.', 'delete').$el.appendTo(this.$el);
+            no_results.render('Oops.. Nobody here yet.', 'delete').$el.appendTo(this.$el);
         }
 
         this.$el.removeClass('loading');
         people_list.listview().listview("refresh");
     },
 
-    reset_collection: function()
-    {
+    reset_collection: function(){
         this.display_collection = _.clone( this.collection.models );
         this.render();
     },
@@ -112,16 +111,16 @@ snapr.views.people = dialog_view.extend({
 
         switch (this.options.follow){
             case "following":
-                data['followed_by'] = this.options.query.username;
-                data['username'] = keywords;
+                data.followed_by = this.options.query.username;
+                data.username = keywords;
                 break;
             case "followers":
-                data['following'] = this.options.query.username;
-                data['username'] = keywords;
+                data.following = this.options.query.username;
+                data.username = keywords;
                 break;
             default:
                 if (keywords.length > 1){
-                    data['username'] = keywords;
+                    data.username = keywords;
                 }
         }
 
@@ -146,5 +145,4 @@ snapr.views.people = dialog_view.extend({
     }
 });
 
-return snapr.views.people;
 });

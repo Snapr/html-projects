@@ -1,5 +1,8 @@
-define(['backbone'], function(Backbone){
-return Backbone.View.extend({
+/*global _ Route define require */
+define(['backbone', 'views/components/favorite_button', 'collections/reaction', 'models/comment'],
+    function(Backbone, favorite_button, reaction_collection, comment_model){
+
+var feed_li =  Backbone.View.extend({
 
     tagName: "span",
 
@@ -84,30 +87,30 @@ return Backbone.View.extend({
             back: this.back
         } ));
 
-        this.fav_button = new snapr.views.favorite_button({
+        this.fav_button = new favorite_button({
             model: this.model,
             el: this.$el.find(".v-fav-button")[0],
             li: this
         }).render();
 
-        this.comment_button = new snapr.views.comment_button({
+        this.comment_button = new comment_button({
             model: this.model,
             el: this.$el.find(".v-comment-button")[0],
             li: this
         }).render();
 
-        this.show_all = new snapr.views.feed_li_show_all_button({
+        this.show_all = new show_all_button({
             model: this.model,
             el: this.$el.find(".v-show-all-button")[0],
             li: this
         }).render();
 
-        this.reactions = new snapr.views.reactions({
+        this.reactions = new reactions({
             id: this.model.id,
             el: this.$el.find('.reactions-list')[0]
         });
 
-        this.manage = new snapr.views.photo_manage({
+        this.manage = new photo_manage({
             model: this.model,
             el: this.$el.find('.v-photo-manage')[0],
             parentView: this
@@ -196,7 +199,7 @@ return Backbone.View.extend({
     comment: function( e )
     {
         var commentText = this.$el.find('textarea').val();
-        var comment = new snapr.models.comment();
+        var comment = new comment_model();
         comment.data = {
             photo_id: this.model.get('id'),
             comment: commentText
@@ -211,7 +214,7 @@ return Backbone.View.extend({
             {
                 if (s.get('success'))
                 {
-                    var comment_count = parseInt( feed_li.model.get('comments') ) + 1;
+                    var comment_count = parseInt( feed_li.model.get('comments'), 10 ) + 1;
                     feed_li.model.set({
                         comments: comment_count
                     });
@@ -236,4 +239,219 @@ return Backbone.View.extend({
         } )();
     }
 });
+
+var comment_button = Backbone.View.extend({
+
+    initialize: function(){
+        // TODO - is everything in here needed?
+        $(this.options.el).undelegate();
+        this.setElement( this.options.el );
+        this.li = this.options.li;
+        this.template = _.template( $("#comment-button-template").html() );
+        _.bindAll( this );
+
+        // update the display when the comment count changes
+        this.model.bind( "change:comments", this.render );
+    },
+
+    render: function(){
+        var selected = this.$el.find( ".selected" ).length > 0;
+        this.$el.html( this.template({
+            count: parseInt( this.model.get( "comments" ), 10 ),
+            selected: selected
+        }));
+
+        // TODO this seems inefficient
+        $(this.li.el).trigger("create");
+
+        return this;
+    }
+
+});
+
+var show_all_button = Backbone.View.extend({
+
+    initialize: function()
+    {
+        _.bindAll( this );
+
+        this.li = this.options.li;
+        $(this.options.el).undelegate();
+        this.setElement( this.options.el );
+        this.template = _.template( $("#show-all-button-template").html() );
+
+        // update the display when we fav/unfav or comment
+        this.model.bind( "change", this.render );
+    },
+
+    render: function()
+    {
+        var selected = this.$el.find(".selected").length > 0;
+        this.$el.html( this.template({
+            reactions: parseInt( this.model.get("favorite_count"), 10) + parseInt( this.model.get("comments"), 10),
+            selected: selected
+        }));
+
+        this.li.$el.trigger("create");
+
+        return this;
+    }
+
+});
+
+var reactions = Backbone.View.extend({
+
+    initialize: function()
+    {
+        _.bindAll( this );
+        $(this.options.el).undelegate();
+        this.setElement( this.options.el );
+
+        this.collection = new reaction_collection();
+        this.collection.data = {
+            photo_id: this.id
+        };
+        this.collection.bind( "reset", this.render );
+        this.collection.bind( "change", this.render );
+        this.template = _.template( $('#reaction-li-template').html() );
+    },
+
+    render: function()
+    {
+        this.$el.empty();
+        _.each( this.collection.models, function( reaction )
+        {
+            this.$el.append(this.template({
+                reaction: reaction
+            }));
+        }, this);
+        this.$el.trigger('create').listview().listview('refresh');
+    }
+
+});
+
+var photo_manage = Backbone.View.extend({
+
+    initialize: function(){
+        _.bindAll( this );
+        $(this.options.el).undelegate();
+        this.setElement( this.options.el );
+        this.parentView = this.options.parentView;
+        this.template = _.template( $("#photo-manage-template").html() );
+
+        // update the display when we change the photo
+        this.model.bind( "change:status", this.render );
+        this.model.bind( "change:flagged", this.render );
+    },
+
+    events: {
+        "click .x-image-privacy": "toggle_status",
+        "click .x-image-flag": "flag",
+        "click .x-image-delete": "delete"
+    },
+
+    render: function(){
+        this.$el.html( this.template({
+            status: this.model.get("status"),
+            flagged: this.model.get("flagged"),
+            mine: this.model.get("username") == snapr.auth.get("snapr_user")
+        })).trigger("create");
+
+        return this;
+    },
+
+    toggle_status: function(){
+        var photo_manage = this,
+            current_status = this.model.get('status'),
+            status;
+
+        photo_manage.$('.x-image-privacy').x_loading();
+
+        if (current_status == "public"){
+            status = "private";
+        }
+        else if (current_status == "private"){
+            status = "public";
+        }
+
+        if (status){
+            photo_manage.model.change_status( status, {
+                success: function( resp ){
+                    if (resp.success){
+                        photo_manage.model.set({status: status});
+                    }else{
+                        console.warn("error changing status", resp);
+                    }
+                    photo_manage.$('.x-image-privacy').x_loading(false);
+                },
+                error: function( e ){
+                    console.warn("error changing status", e);
+                    photo_manage.$('.x-image-privacy').x_loading(false);
+                }
+            });
+        }
+    },
+
+    flag: function(){
+        var photo_manage = this;
+        photo_manage.$('.x-image-flag').x_loading();
+        snapr.utils.require_login( function(){
+            snapr.utils.approve({
+                'title': 'Flag this image as innapropriate?',
+                'yes': 'Flag',
+                'no': 'Cancel',
+                'yes_callback': function(){
+                    photo_manage.model.flag({
+                        success: function( resp ){
+                            if (resp.success){
+                                photo_manage.model.set({flagged: true});
+                                snapr.utils.notification("Flagged", "Thanks, a moderator will review this image shortly");
+                            }else{
+                                console.warn("error flagging photo", resp);
+                            }
+                            photo_manage.$('.x-image-flag').x_loading(false);
+                        },
+                        error: function( e ){
+                            console.warn("error flagging photo", e);
+                            photo_manage.$('.x-image-flag').x_loading(false);
+                        }
+                    });
+                },
+                'no_callback': function(){ photo_manage.$('.x-image-flag').x_loading(false); }
+            });
+        })();
+    },
+
+    'delete': function(){
+        var photo_manage = this;
+        photo_manage.$('.x-image-delete').x_loading();
+        snapr.utils.require_login( function(){
+            snapr.utils.approve({
+                'title': 'Are you sure you want to delete this photo?',
+                'yes': 'Delete',
+                'no': 'Cancel',
+                'yes_callback': function(){
+                    photo_manage.model['delete']({
+                    success: function( resp ){
+                        if (resp.success){
+                            photo_manage.model.collection.remove( photo_manage.model );
+                        }else{
+                            console.warn("error deleting photo", resp);
+                        }
+                        photo_manage.$('.x-image-delete').x_loading(false);
+                    },
+                    error: function( e ){
+                        console.warn("error deleting photo", e);
+                        photo_manage.$('.x-image-delete').x_loading(false);
+                    }
+                });
+            },
+                'no_callback': function(){ photo_manage.$('.x-image-delete').x_loading(false); }
+            });
+        })();
+    }
+});
+
+return feed_li;
+
 });

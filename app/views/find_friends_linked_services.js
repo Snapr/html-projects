@@ -1,6 +1,7 @@
 // abstract base class for both twitter and facebook
 
-define(['views/dialog'], function(dialog_view){
+/*global _ Route define require */
+define(['views/base/dialog'], function(dialog_view){
 snapr.views.find_friends_linked_services = dialog_view.extend({
 
     initialize: function()

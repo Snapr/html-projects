@@ -1,15 +1,14 @@
-define(['views/base/page'], function(page_view){
-snapr.views.my_account = page_view.extend({
+/*global _ Route define require */
+define(['views/base/page', 'models/user_settings', 'views/linked_service'], function(page_view, user_settings, linked_service){
+return page_view.extend({
 
-    initialize:function()
-    {
-        snapr.views.page.prototype.initialize.call( this );
+    post_initialize:function(){
 
         this.$el.find('.account-content').empty();
 
         this.change_page();
 
-        this.user_settings = new snapr.models.user_settings();
+        this.user_settings = new user_settings();
 
         var my_account_view = this;
         var options = {
@@ -37,7 +36,9 @@ snapr.views.my_account = page_view.extend({
 
     render: function(initial)
     {
-        var $account_content = this.$el.find('.account-content').empty();
+        var $account_content = this.$el.find('.account-content').empty(),
+            template,
+            data;
 
         // hidden for the moment
 
@@ -83,7 +84,7 @@ snapr.views.my_account = page_view.extend({
         var my_account = this;
         _.each( this.user_settings.get('linked_services'), function( service, index )
         {
-            var v = new snapr.views.linked_service({model: service});
+            var v = new linked_service({model: service});
             v.my_account = my_account;
 
             // keep track of linked services
@@ -97,7 +98,7 @@ snapr.views.my_account = page_view.extend({
         {
             if (!val)
             {
-                var v = new snapr.views.linked_service();
+                var v = new linked_service();
                 v.provider = provider;
                 $account_content.find('.add-services').append( v.render().el ).trigger('create');
             }
@@ -196,7 +197,7 @@ snapr.views.my_account = page_view.extend({
         _.each(['name', 'location', 'website', 'bio'], function(item){
             param[item] = $collapse.find("#my-account-"+item).val();
         });
-        param['avatar_type'] = $collapse.find('[name=my-account-avatar]:checked').val();
+        param.avatar_type = $collapse.find('[name=my-account-avatar]:checked').val();
 
         this.save_settings( param, $collapse[0], function(){ window.location.reload(); } );
     },
@@ -261,22 +262,18 @@ snapr.views.my_account = page_view.extend({
 
         var param = {};
 
-        _.each( selects, function( select )
-        {
+        _.each( selects, function( select ){
             var key = $(select).attr("name");
-            var value = ($(select).val() == "true") ? true: false
+            var value = ($(select).val() == "true") ? true: false;
             param[key] = value;
-            snapr.utils.save_local_param( key, value )
+            snapr.utils.save_local_param( key, value );
         });
 
         $collapse.trigger("collapse");
 
-        if (snapr.utils.get_local_param("appmode") == "iphone")
-        {
+        if (snapr.utils.get_local_param("appmode") == "iphone"){
             pass_data( "snapr://camplus/settings/?" + $.param( param ) );
-        }
-        else
-        {
+        }else{
             console.log( "snapr://camplus/settings/?" + $.param( param ) );
         }
     },
@@ -288,5 +285,4 @@ snapr.views.my_account = page_view.extend({
 
 });
 
-return snapr.views.my_account;
 });

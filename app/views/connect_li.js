@@ -1,3 +1,4 @@
+/*global _ Route define require */
 define(['backbone'], function(Backbone){
 return snapr.views.linked_service.extend({
 

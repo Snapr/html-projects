@@ -1,5 +1,6 @@
 // Abstract base class for pages
 // sets the page element and binds pagehide
+/*global _ Route define require */
 define(['backbone'], function(Backbone){
 
 return Backbone.View.extend({
@@ -42,10 +43,10 @@ return Backbone.View.extend({
 
         _.bindAll( this );
 
-        this.snapr_initialize.apply(this, arguments);
+        this.post_initialize.apply(this, arguments);
     },
 
-    snapr_initialize: function(){},
+    post_initialize: function(){},
 
     set_back_text: function(text){
         if(text){
@@ -56,7 +57,6 @@ return Backbone.View.extend({
     },
 
     change_page: function( options ){
-
         options = _.extend({
             changeHash: false
         }, options || {});

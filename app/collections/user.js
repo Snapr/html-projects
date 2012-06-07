@@ -1,33 +1,26 @@
-snapr.models.user_collection = Backbone.Collection.extend({
+/*global _ Route define require */
+define(['backbone', 'models/user'],
+function(Backbone, user){
+return  Backbone.Collection.extend({
 
-    model: snapr.models.user,
+    model: user,
 
-    urlRoot: function()
-    {
+    urlRoot: function(){
         return snapr.api_base + '/user/';
     },
 
-    url: function( method )
-    {
+    url: function( method ){
         return this.urlRoot();
     },
 
-    parse: function( d, xhr )
-    {
-        if (d.success && d.response && d.response.groups && d.response.groups[0] && d.response.groups[0].users)
-        {
+    parse: function( d, xhr ){
+        if (d.success && d.response && d.response.groups && d.response.groups[0] && d.response.groups[0].users){
             return d.response.groups[0].users;
-        }
-        else if (d.success && d.response && d.response.followers)
-        {
+        }else if (d.success && d.response && d.response.followers){
             return d.response.followers;
-        }
-        else if(d.success && d.response && d.response.users )
-        {
+        }else if(d.success && d.response && d.response.users ){
             return d.response.users;
-        }
-        else
-        {
+        }else{
             return [];
         }
     },
@@ -40,7 +33,7 @@ snapr.models.user_collection = Backbone.Collection.extend({
 
         this.data = {
             username: username
-        }
+        };
 
         var user_collection = this;
 
@@ -54,7 +47,7 @@ snapr.models.user_collection = Backbone.Collection.extend({
                 user_collection.url = url_function;
                 console.log( "error getting following", e );
             }
-        })
+        });
     },
 
     get_followers: function( username )
@@ -65,7 +58,7 @@ snapr.models.user_collection = Backbone.Collection.extend({
 
         this.data = {
             username: username
-        }
+        };
 
         var user_collection = this;
 
@@ -79,7 +72,7 @@ snapr.models.user_collection = Backbone.Collection.extend({
                 user_collection.url = url_function;
                 console.log( "error getting following", e );
             }
-        })
+        });
     },
 
     user_search: function( username )
@@ -90,7 +83,7 @@ snapr.models.user_collection = Backbone.Collection.extend({
 
         this.data = {
             username: username
-        }
+        };
 
         var user_collection = this;
 
@@ -104,6 +97,8 @@ snapr.models.user_collection = Backbone.Collection.extend({
                 user_collection.url = url_function;
                 console.log( "error getting following", e );
             }
-        })
-    },
+        });
+    }
+});
+
 });

@@ -1,3 +1,4 @@
+/*global _ Route define require */
 define(['backbone', 'utils'], function(Backbone) {
 
 snapr.routers = Backbone.Router.extend({

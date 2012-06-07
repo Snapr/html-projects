@@ -1,26 +1,24 @@
-define(['views/dialog'], function(dialog_view){
-snapr.views.user_profile = dialog_view.extend({
+/*global _ Route define require */
+define(['views/base/dialog', 'models/user'], function(dialog_view, user_model){
 
-    initialize: function()
-    {
-        snapr.views.dialog.prototype.initialize.call( this );
+return dialog_view.extend({
+
+    post_initialize: function(){
 
         this.$el.find( ".user-profile" ).empty();
 
-        this.model = new snapr.models.user( {username: this.options.query.username} );
+        this.model = new user_model( {username: this.options.query.username} );
 
         this.template = _.template( $("#user-profile-template").html() );
 
-        this.model.bind( "change", this.render );
+        this.model.bind( "change", function(){this.render();} );
 
         // if we are coming from the map view do a flip, otherwise do a slide transition
-        if ($.mobile.activePage.attr('id') == 'map')
-        {
-            var transition = "flip";
-        }
-        else
-        {
-            var transition = "slideup";
+        var transition;
+        if ($.mobile.activePage.attr('id') == 'map'){
+            transition = "flip";
+        }else{
+            transition = "slideup";
         }
 
         this.change_page({
@@ -34,14 +32,12 @@ snapr.views.user_profile = dialog_view.extend({
         "click .x-back": "back"
     },
 
-    render: function()
-    {
+    render: function(){
+        console.log(this);
         this.$el.find( ".user-profile" ).html( this.template({
             user: this.model
         }) );
         this.$el.trigger( "create" );
     }
 });
-
-return snapr.views.user_profile;
 });

@@ -1,3 +1,4 @@
+/*global _ Route define require */
 define(['backbone', 'collections/photo'],
 function(Backbone,   photo_collection){
 
