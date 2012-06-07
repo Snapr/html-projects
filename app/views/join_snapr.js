@@ -1,10 +1,9 @@
 /*global _ Route define require */
-define(['views/base/dialog', 'jquery', 'validate'], function(dialog_view, $){
-snapr.views.join_snapr = dialog_view.extend({
+define(['views/base/dialog', 'jquery', 'validate', 'models/user_settings'], function(dialog_view, $, validate, user_settings){
 
-    initialize: function()
-    {
-        snapr.views.dialog.prototype.initialize.call( this );
+var join_dialog = dialog_view.extend({
+
+    post_initialize: function(){
 
         this.change_page({
             transition: this.transition
@@ -98,7 +97,7 @@ snapr.views.join_snapr = dialog_view.extend({
 
     join: function(){
         $('.x-join-btn').x_loading();
-        var new_user = new snapr.models.user_settings();
+        var new_user = new user_settings();
         new_user.data = {
            username: this.$el.find("#join-dialog-username").val(),
            password: this.$el.find("#join-dialog-password").val(),
@@ -159,12 +158,14 @@ $.validator.addMethod("alphanum_", function(value, element) {
 
 $.validator.addMethod("snapr_username",
     function(value, element, param) {
-        if (this.optional(element))
+        if (this.optional(element)){
             return "dependency-mismatch";
+        }
 
         var previous = this.previousValue(element);
-        if (!this.settings.messages[element.name])
-        this.settings.messages[element.name] = {};
+        if (!this.settings.messages[element.name]){
+            this.settings.messages[element.name] = {};
+        }
         previous.originalMessage = this.settings.messages[element.name].snapr_username;
         this.settings.messages[element.name].snapr_username = previous.message;
 
@@ -210,5 +211,6 @@ $.validator.addMethod("snapr_username",
         return previous.valid;
     });
 
-return snapr.views.join_snapr;
+return join_dialog;
+
 });

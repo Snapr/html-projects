@@ -4,17 +4,13 @@ return dialog_view.extend({
 
     post_initialize: function(){
 
-        if (this.options.query)
-        {
+        if (this.options.query){
             this.message = this.options.query.message;
         }
 
-        if (this.message)
-        {
+        if (this.message){
             this.$el.find(".login-message").show().text(this.message);
-        }
-        else
-        {
+        }else{
             this.$el.find(".login-message").hide().text("");
         }
 
@@ -29,29 +25,23 @@ return dialog_view.extend({
         "click .twitter-button": 'twitter_login'
     },
 
-    log_in: function()
-    {
+    log_in: function(){
         // console.log('get_auth_token')
         var username = $("#login-dialog-username").val();
         var password = $("#login-dialog-password").val();
 
         var login_view = this;
         var options = {
-            success: function( response )
-            {
+            success: function( response ){
                 $("#login-dialog-username").val('');
                 $("#login-dialog-password").val('');
                 login_view.back();
             },
-            error: function( error )
-            {
+            error: function( error ){
                 console.warn("error", error);
-                if (error && error.error && error.error == "invalid_grant")
-                {
+                if (error && error.error && error.error == "invalid_grant"){
                     alert( "Oops.. Your login or password was incorrect." );
-                }
-                else
-                {
+                }else{
                     alert( "Sorry, we had trouble logging in. Please try again." );
                 }
             }
