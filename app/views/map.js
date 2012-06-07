@@ -297,7 +297,7 @@ var map_view = page_view.extend({
                     var dis_list = $("#map-disambiguation-list").empty();
                     _.each( results, function( result )
                     {
-                        var li = new snapr.views.map_disambiguation_li({
+                        var li = new map_disambiguation({
                             result: result,
                             template: li_template,
                             map: map_view.map,
@@ -742,6 +742,33 @@ var map_controls = Backbone.View.extend({
         this.$el.find(".map-time-btn").scroller('show');
     }
 
+});
+
+var map_disambiguation = Backbone.View.extend({
+
+    tagName: "li",
+
+    events: {
+        "click .map-link": "goto_map"
+    },
+
+    initialize: function(){
+        this.template = this.options.template;
+        this.location = this.options.result;
+        this.map = this.options.map;
+        this.parent_view = this.options.parent_view;
+    },
+
+    render: function(){
+        this.$el.html( this.template( {location: this.location} ) );
+
+        return this;
+    },
+
+    goto_map: function(){
+        this.map.fitBounds( this.location.geometry.viewport );
+        this.parent_view.hide_dis();
+    }
 });
 
 return map_view;
