@@ -70,7 +70,7 @@ return Backbone.View.extend({
         var user = this.model,
             button = this.$('.follow');
         button.x_loading();
-        snapr.utils.require_login( function(){
+        auth.require_login( function(){
             user.follow(function(){
                 button.x_loading(false);
             });
@@ -81,7 +81,7 @@ return Backbone.View.extend({
         var user = this.model,
             button = this.$('.unfollow');
         button.x_loading();
-        snapr.utils.require_login( function(){
+        auth.require_login( function(){
             user.unfollow(function(){
                 button.x_loading(false);
             });

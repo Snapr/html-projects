@@ -231,7 +231,7 @@ var feed_li =  Backbone.View.extend({
             }
         };
 
-        snapr.utils.require_login( function()
+        auth.require_login( function()
         {
             // the empty object in this save call is important,
             // without it, the options object will not be used
@@ -395,7 +395,7 @@ var photo_manage = Backbone.View.extend({
     flag: function(){
         var photo_manage = this;
         photo_manage.$('.x-image-flag').x_loading();
-        snapr.utils.require_login( function(){
+        auth.require_login( function(){
             snapr.utils.approve({
                 'title': 'Flag this image as innapropriate?',
                 'yes': 'Flag',
@@ -425,7 +425,7 @@ var photo_manage = Backbone.View.extend({
     'delete': function(){
         var photo_manage = this;
         photo_manage.$('.x-image-delete').x_loading();
-        snapr.utils.require_login( function(){
+        auth.require_login( function(){
             snapr.utils.approve({
                 'title': 'Are you sure you want to delete this photo?',
                 'yes': 'Delete',

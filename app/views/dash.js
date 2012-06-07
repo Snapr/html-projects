@@ -89,7 +89,7 @@ var dash_view = page_view.extend({
     add_search: function()
     {
         var dash_view = this;
-        snapr.utils.require_login( function()
+        auth.require_login( function()
         {
             snapr.info.current_view = new add_search({
                 el: $("#dash-add-search")[0],
@@ -101,7 +101,7 @@ var dash_view = page_view.extend({
     add_person: function()
     {
         var dash_view = this;
-        snapr.utils.require_login( function()
+        auth.require_login( function()
         {
             snapr.info.current_view = new add_person({
                 el: $("#dash-add-person")[0],

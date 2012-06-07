@@ -357,18 +357,6 @@ tapped_action.add = function (yes, no) {
     return id;
 };
 
-snapr.utils.require_login = function (funct) {
-    return function (e) {
-        if(!auth.has('access_token')) {
-            if(e) {
-                e.preventDefault();
-            }
-            Route.navigate('#/login/?message=Sorry, you need to log in first.');
-        } else {
-            $.proxy(funct, this)(e);
-        }
-    };
-};
 snapr.utils.get_photo_height = function (orig_width, orig_height, element) {
     var aspect = orig_width/orig_height,
         width = $(element).eq(0).width();

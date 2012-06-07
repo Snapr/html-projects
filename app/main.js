@@ -255,7 +255,7 @@ require(['jquery', 'backbone', 'photoswipe', 'auth'], function($, Backbone, Phot
         });
 
         // camera button
-        $(".x-launch-camera").live( "click", snapr.utils.require_login( function (){
+        $(".x-launch-camera").live( "click", auth.require_login( function (){
             var appmode = snapr.utils.get_local_param( "appmode" );
             var camplus = snapr.utils.get_local_param( "camplus" );
             var camplus_camera = snapr.utils.get_local_param( "camplus_camera" );
@@ -276,7 +276,7 @@ require(['jquery', 'backbone', 'photoswipe', 'auth'], function($, Backbone, Phot
         }) );
 
         // photo library button
-        $(".x-launch-photo-library").live( "click", snapr.utils.require_login( function(){
+        $(".x-launch-photo-library").live( "click", auth.require_login( function(){
             var appmode = snapr.utils.get_local_param( "appmode" );
             var camplus = snapr.utils.get_local_param( "camplus" );
             var camplus_lightbox = snapr.utils.get_local_param( "camplus_lightbox" );

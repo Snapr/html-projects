@@ -39,7 +39,7 @@ return Backbone.View.extend({
     {
         var user_header_view = this;
         user_header_view.$('.follow').x_loading();
-        snapr.utils.require_login( function(){
+        auth.require_login( function(){
             user_header_view.model.follow(function(){
                 user_header_view.$('.follow').x_loading(false);
             });
@@ -50,7 +50,7 @@ return Backbone.View.extend({
     {
         var user_header_view = this;
         user_header_view.$('.unfollow').x_loading();
-        snapr.utils.require_login( function(){
+        auth.require_login( function(){
             user_header_view.model.unfollow(function(){
                 user_header_view.$('.unfollow').x_loading(false);
             });

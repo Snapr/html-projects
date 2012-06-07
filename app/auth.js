@@ -94,6 +94,20 @@ var auth_model = Backbone.Model.extend({
             $.cookie( "snapr_user", null );
             $.cookie( "access_token", null );
         }
+    },
+
+    // decorator function
+    require_login: function (funct) {
+        return function (e) {
+            if(!auth.has('access_token')) {
+                if(e) {
+                    e.preventDefault();
+                }
+                Route.navigate('#/login/?message=Sorry, you need to log in first.');
+            } else {
+                $.proxy(funct, this)(e);
+            }
+        };
     }
 });
 

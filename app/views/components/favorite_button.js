@@ -1,5 +1,5 @@
 /*global _ Route define require */
-define(['backbone'], function(Backbone){
+define(['backbone', 'auth'], function(Backbone, auth){
 return Backbone.View.extend({
 
     initialize: function()
@@ -28,7 +28,7 @@ return Backbone.View.extend({
         window.f = fav_btn;
         fav_btn.$('.favorite-button').x_loading();
 
-        snapr.utils.require_login( function()
+        auth.require_login( function()
         {
             var fav = new snapr.models.favorite({
                 id: fav_btn.model.get('id')
