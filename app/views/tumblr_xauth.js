@@ -2,7 +2,7 @@
 define(['views/base/dialog'], function(dialog_view){
 return dialog_view.extend({
 
-    postinitialize: function(){
+    post_initialize: function(){
 
         if (this.options.query){
             this.redirect = unescape( this.options.query.redirect );
