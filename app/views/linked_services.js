@@ -1,10 +1,8 @@
 /*global _ Route define require */
-define(['views/base/dialog'], function(dialog_view){
-snapr.views.linked_services = dialog_view.extend({
+define(['views/base/dialog', 'models/user_settings', 'views/linked_service'], function(dialog_view, user_settings, linked_service){
+return dialog_view.extend({
 
-    initialize: function()
-    {
-        snapr.views.dialog.prototype.initialize.call( this );
+    post_initialize: function(){
 
         this.change_page({
             transition: "slideup"
@@ -17,7 +15,7 @@ snapr.views.linked_services = dialog_view.extend({
             this.still_to_link = [];
         }
 
-        this.user_settings = new snapr.models.user_settings();
+        this.user_settings = new user_settings();
 
         var linked_services_view = this;
         var options = {
@@ -30,7 +28,7 @@ snapr.views.linked_services = dialog_view.extend({
             {
                 console.log( 'error');
             }
-        }
+        };
 
         this.user_settings.fetch(options);
     },
@@ -46,16 +44,16 @@ snapr.views.linked_services = dialog_view.extend({
         var linked_services_list = {
             // foursquare:false,
             facebook:false,
-            tumblr:false,
+            tumblr:false
             // twitter:false
-        }
+        };
 
         this.$el.find('.linked-services').empty();
         this.$el.find('.add-services').empty();
 
         _.each( this.user_settings.get('linked_services'), function( service, index )
         {
-            var v = new snapr.views.linked_service({model: service});
+            var v = new linked_service({model: service});
 
             // keep track of linked services
             linked_services_list[service.provider] = true;
@@ -66,9 +64,9 @@ snapr.views.linked_services = dialog_view.extend({
         // for all services that are not yet linked, add
         _.each( linked_services_list, function( val, provider )
         {
-            if (val == false)
+            if (val === false)
             {
-                var v = new snapr.views.linked_service();
+                var v = new linked_service();
                 v.provider = provider;
                 this.$el.find('.add-services').append( v.render().el ).trigger('create');
             }
@@ -88,12 +86,12 @@ snapr.views.linked_services = dialog_view.extend({
             if (this.to_link.length == 1)
             {
                 this.$el.find(".tolink-message").text(
-                    'Sharing to ' + this.to_link[0] + ' failed. Please connect this service.')
+                    'Sharing to ' + this.to_link[0] + ' failed. Please connect this service.');
             }
             if (this.to_link.length > 1)
             {
                 this.$el.find(".tolink-message").text(
-                    'Sharing to services: ' + this.to_link.human_list() + ' failed. Please connect these services.')
+                    'Sharing to services: ' + this.to_link.human_list() + ' failed. Please connect these services.');
             }
         }
         else
@@ -103,5 +101,4 @@ snapr.views.linked_services = dialog_view.extend({
     }
 });
 
-return snapr.views.linked_services;
 });
