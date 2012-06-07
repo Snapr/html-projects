@@ -1,10 +1,8 @@
 /*global _ Route define require */
 define(['views/base/dialog'], function(dialog_view){
-snapr.views.forgot_password = dialog_view.extend({
+return dialog_view.extend({
 
-    initialize: function(){
-        snapr.views.dialog.prototype.initialize.call( this );
-
+    post_initialize: function(){
         this.change_page({
             transition: this.transition
         });
@@ -15,21 +13,20 @@ snapr.views.forgot_password = dialog_view.extend({
         "click .x-back": "back"
     },
 
-    forgot: function()
-    {
+    forgot: function(){
         var username = this.$("#forgot-form input[name=username]").val();
 
         var data = {_method: 'POST'};
         // maybe this should be detected api-side
         if(username.indexOf('@') > -1){
-            data['email_address'] = username;
+            data.email_address = username;
         }else{
-            data['username'] = username;
+            data.username = username;
         }
 
         var forgot_view = this;
          $.ajax({
-            url:snapr.api_base + '/user/forgot_password/',
+            url: snapr.api_base + '/user/forgot_password/',
             data: data,
             dataType: 'jsonp',
             success: function(response){
@@ -48,5 +45,4 @@ snapr.views.forgot_password = dialog_view.extend({
     }
 });
 
-return snapr.views.forgot_password;
 });
