@@ -1,10 +1,8 @@
 /*global _ Route define require */
 define(['views/base/dialog'], function(dialog_view){
-snapr.views.login = dialog_view.extend({
+return dialog_view.extend({
 
-    initialize: function()
-    {
-        snapr.views.dialog.prototype.initialize.call( this );
+    post_initialize: function(){
 
         if (this.options.query)
         {
@@ -43,21 +41,21 @@ snapr.views.login = dialog_view.extend({
             {
                 $("#login-dialog-username").val('');
                 $("#login-dialog-password").val('');
-                login_view.back()
+                login_view.back();
             },
             error: function( error )
             {
-                console.warn("error", error)
+                console.warn("error", error);
                 if (error && error.error && error.error == "invalid_grant")
                 {
-                    alert( "Oops.. Your login or password was incorrect." )
+                    alert( "Oops.. Your login or password was incorrect." );
                 }
                 else
                 {
                     alert( "Sorry, we had trouble logging in. Please try again." );
                 }
             }
-        }
+        };
         snapr.auth.get_token( username, password, options );
     },
     twitter_login: function(){
@@ -65,5 +63,4 @@ snapr.views.login = dialog_view.extend({
     }
 });
 
-return snapr.views.login;
 });
