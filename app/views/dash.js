@@ -1,48 +1,8 @@
 /*global _ Route define require */
-define(['views/base/page', 'views/base/side_scroll', 'models/dash'], function(page_view, side_scroll, dash_model){
+define(['views/base/page', 'views/base/dialog', 'views/base/side_scroll', 'models/dash', 'models/dash_stream', 'collections/user', 'views/components/no_results', 'views/people_li'],
+    function(page_view, dialog_view, side_scroll, dash_model, dash_stream_model, user_collection, no_results, people_li){
 
-var dash_stream = side_scroll.extend({
-
-    tagName: 'li',
-
-    className: 'image-stream',
-
-    events: {
-        "click .remove-stream": "remove_stream"
-    },
-
-    template: _.template( $('#dash-stream-template').html() ),
-
-    thumbs_template: _.template( $('#dash-thumbs-template').html() ),
-
-    post_initialize: function( options ){
-
-        if (this.model.has("id"))
-        {
-            this.$el.addClass("user-stream");
-            this.$el.attr("data-id", this.model.get("id"));
-        }
-    },
-
-    remove_stream: function(){
-        var stream = this;
-        snapr.utils.approve({
-            title: 'Are you sure you want to remove this stream?',
-            yes_callback: function()
-            {
-                stream.model['delete']({
-                    success: function()
-                    {
-                        stream.model.collection.remove(stream.model);
-                        console.log(stream.model.collection===stream.collection);
-                    }
-                });
-            }
-        });
-    }
-});
-
-return page_view.extend({
+var dash_view = page_view.extend({
 
     el: $('#dashboard'),
 
@@ -128,7 +88,7 @@ return page_view.extend({
         var dash_view = this;
         snapr.utils.require_login( function()
         {
-            snapr.info.current_view = new snapr.views.dash_add_search({
+            snapr.info.current_view = new add_search({
                 el: $("#dash-add-search")[0],
                 back_view: dash_view
             });
@@ -140,7 +100,7 @@ return page_view.extend({
         var dash_view = this;
         snapr.utils.require_login( function()
         {
-            snapr.info.current_view = new snapr.views.dash_add_person({
+            snapr.info.current_view = new add_person({
                 el: $("#dash-add-person")[0],
                 back_view: dash_view
             });
@@ -172,5 +132,248 @@ return page_view.extend({
     }
 
 });
+
+var dash_stream = side_scroll.extend({
+
+    tagName: 'li',
+
+    className: 'image-stream',
+
+    events: {
+        "click .remove-stream": "remove_stream"
+    },
+
+    template: _.template( $('#dash-stream-template').html() ),
+
+    thumbs_template: _.template( $('#dash-thumbs-template').html() ),
+
+    post_initialize: function( options ){
+
+        if (this.model.has("id"))
+        {
+            this.$el.addClass("user-stream");
+            this.$el.attr("data-id", this.model.get("id"));
+        }
+    },
+
+    remove_stream: function(){
+        var stream = this;
+        snapr.utils.approve({
+            title: 'Are you sure you want to remove this stream?',
+            yes_callback: function()
+            {
+                stream.model['delete']({
+                    success: function()
+                    {
+                        stream.model.collection.remove(stream.model);
+                        console.log(stream.model.collection===stream.collection);
+                    }
+                });
+            }
+        });
+    }
+});
+
+var add_person = dialog_view.extend({
+
+    post_initialize: function(){
+
+        this.$el.find("ul.people-list").empty();
+        this.$el.find(".ui-input-text").val('');
+
+        this.collection = new user_collection();
+
+        var people_view = this;
+
+        this.collection.bind( "reset", function()
+        {
+            people_view.render();
+        });
+
+        this.change_page( {
+            transition: this.transition
+        });
+
+        this.$el.live( "pageshow", function( e, ui ){
+            people_view.$('#people-search').focus();
+        });
+    },
+
+    events: {
+        "keyup input": "search",
+        "click .x-back": "back"
+    },
+
+    render: function()
+    {
+        var people_list = this.$el.find("ul.people-list").empty();
+
+        var people_li_template = _.template( $("#people-li-template").html() );
+
+        if(this.collection.length){
+            no_results.$el.remove();  // use remove(), hide() keeps it hidden and requires show() later
+            _.each( this.collection.models, function( model ){
+                var li = new people_li({
+                    template: people_li_template,
+                    model: model
+                });
+
+                people_list.append( li.render().el );
+            });
+        }else{
+            no_results.render('Oops.. Nobody here yet.', 'delete').$el.appendTo(people_list);
+        }
+
+        var this_back = this.back;
+        var this_back_view = this.back_view;
+        people_list.find('a').click(function(e){
+            e.preventDefault();
+            var username = $(this).data('username'),
+                stream = new dash_stream_model({
+                    query: {
+                        username: username
+                    },
+                    display: {
+                        "title": "Photos by "+username,
+                        "short_title": username,
+                        "type": "search"
+                    }
+                });
+            $.mobile.showPageLoadingMsg();
+            stream.save({}, {success: function(){
+                dash.add(stream);
+                $.mobile.hidePageLoadingMsg();
+            }});
+            this_back_view.$el.removeClass('edit');
+            this_back();
+        });
+
+        people_list.listview().listview("refresh");
+
+
+    },
+
+    search: function(e)
+    {
+
+        var keywords = $(e.target).val();
+        var this_view = this;
+
+
+        this.timer && clearTimeout(this.timer);
+        this.xhr && this.xhr.abort();
+
+        if (keywords.length > 1){
+
+            this.timer = setTimeout( function() {
+                this_view.timer = null;
+                this_view.$el.addClass('loading');
+                this_view.xhr = this_view.collection.fetch({
+                    data:{
+                        username:keywords,
+                        n:20,
+                        detail:1
+                    },
+                    url: snapr.api_base + '/user/search/',
+                    success: function(){
+                        this_view.xhr = null;
+                        this_view.$el.removeClass('loading');
+                    }
+                });
+            }, 300 );
+
+        }else{
+            if(this_view.collection.length){  // stops the list showing no-results on initial searches
+                this_view.collection.reset();
+            }
+        }
+    }
+
+});
+
+var add_search = dialog_view.extend({
+
+    post_initialize: function(){
+        this.$el.find(".ui-input-text").val('');
+
+        this.change_page({
+            transition: this.transition
+        });
+
+        var dialog = this;
+        this.$el.live( "pageshow", function( e, ui )
+        {
+            dialog.$('#dash-search-keywords').focus();
+        });
+
+    },
+
+    events: {
+        "submit #search-form": "search",
+        "click .x-back": "back"
+    },
+
+    search: function(){
+        var keywords = $("#dash-search-keywords").val();
+        var nearby = $("#dash-search-type").val();
+
+        var stream_object = {
+            query: {
+                keywords: keywords,
+                nearby: !!nearby
+            },
+            display: {
+                "title": "Search for "+keywords,
+                "short_title": keywords,
+                "type": "search"
+            }
+        };
+
+        if (nearby)
+        {
+            var add_search = this;
+            stream_object.query.radius = nearby;
+
+            var success_callback = function( position )
+            {
+                stream_object.query.latitude = position.coords.latitude;
+                stream_object.query.longitude = position.coords.longitude;
+
+                var stream = new dash_stream_model( stream_object );
+                $.mobile.showPageLoadingMsg();
+                stream.save({}, {success: function(){
+                    dash.add(stream);
+                    $.mobile.hidePageLoadingMsg();
+                }});
+                add_search.back_view.$el.removeClass('edit');
+                add_search.back();
+            };
+            var error_callback = function( error )
+            {
+                console.warn( "error getting geolocation", error );
+                if (error.message)
+                {
+                    snapr.utils.notification( error.message );
+                }
+            };
+            snapr.geo.get_location( success_callback, error_callback );
+        }
+        else
+        {
+            var stream = new dash_stream_model( stream_object );
+            $.mobile.showPageLoadingMsg();
+            stream.save({}, {success: function(){
+                dash.add(stream);
+                $.mobile.hidePageLoadingMsg();
+            }});
+            this.back_view.$el.removeClass('edit');
+            this.back();
+        }
+
+    }
+
+});
+
+return dash_view;
 
 });
