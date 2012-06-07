@@ -1,24 +1,18 @@
 /*global _ Route define require */
 define(['views/base/dialog'], function(dialog_view){
-snapr.views.twitter_xauth = dialog_view.extend({
+return dialog_view.extend({
 
-    initialize: function()
-    {
-        snapr.views.dialog.prototype.initialize.call( this );
+    post_initialize: function(){
 
-        if (this.options.query)
-        {
+        if (this.options.query){
             this.redirect = unescape( this.options.query.redirect );
             this.message = this.options.query.message;
             this.signin = !!this.options.query.signin;
         }
 
-        if (this.message)
-        {
+        if (this.message){
             this.$el.find(".login-message").text(this.message);
-        }
-        else
-        {
+        }else{
             this.$el.find(".login-message").text("");
         }
 
@@ -112,5 +106,4 @@ snapr.views.twitter_xauth = dialog_view.extend({
     }
 });
 
-return snapr.views.twitter_xauth;
 });

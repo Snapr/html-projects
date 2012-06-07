@@ -1,6 +1,6 @@
 /*global _ Route define require */
-define(['views/base/page', 'models/user', 'views/user_header', 'views/feed_header', 'collections/photo', 'views/feed_list', 'utils/photoswipe', 'views/components/no_results'],
-function(page_view, user_model, user_header, feed_header, photo_collection, feed_list, photoswipe, no_results){
+define(['views/base/page', 'models/user', 'views/user_header', 'views/feed_header', 'collections/photo', 'views/feed_list', 'utils/photoswipe', 'views/components/no_results', 'views/upload_progress_li'],
+function(page_view, user_model, user_header, feed_header, photo_collection, feed_list, photoswipe, no_results, upload_progress_li){
 
 return page_view.extend({
 
@@ -214,7 +214,7 @@ return page_view.extend({
 
             _.each( upload_data.uploads, function( photo )
             {
-                this.pending_uploads[photo.id] = new snapr.views.upload_progress_li({
+                this.pending_uploads[photo.id] = new upload_progress_li({
                     template: upload_li_template,
                     photo: photo
                 });

@@ -1,27 +1,17 @@
 /*global _ Route define require */
 define(['views/base/dialog'], function(dialog_view){
-snapr.views.tumblr_xauth = dialog_view.extend({
+return dialog_view.extend({
 
-    initialize: function()
-    {
-        snapr.views.dialog.prototype.initialize.call( this );
+    postinitialize: function(){
 
-        if (this.options.query)
-        {
+        if (this.options.query){
             this.redirect = unescape( this.options.query.redirect );
-        }
-
-        if (this.options.query)
-        {
             this.message = this.options.query.message;
         }
 
-        if (this.message)
-        {
+        if (this.message){
             this.$el.find(".login-message").text(this.message);
-        }
-        else
-        {
+        }else{
             this.$el.find(".login-message").text("");
         }
 
@@ -73,5 +63,4 @@ snapr.views.tumblr_xauth = dialog_view.extend({
     }
 });
 
-return snapr.views.tumblr_xauth;
 });

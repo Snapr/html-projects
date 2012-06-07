@@ -1,18 +1,15 @@
 /*global _ Route define require */
-define(['views/base/dialog'], function(dialog_view){
-snapr.views.venues = dialog_view.extend({
+define(['views/base/dialog', 'collections/foursquare_venue', 'views/venue_li'], function(dialog_view, foursquare_venue_collection, venue_li){
+return dialog_view.extend({
 
-    initialize: function()
-    {
-        snapr.views.dialog.prototype.initialize.call( this );
-
+    post_initialize: function(){
         this.selected_id = this.options.query.foursquare_venue_id;
 
         this.query = this.options.query;
 
         this.$el.find("ul.venue-list").empty();
 
-        this.collection = new snapr.models.foursquare_venue_collection({
+        this.collection = new foursquare_venue_collection({
             ll: this.options.query.ll
         });
 
@@ -55,7 +52,7 @@ snapr.views.venues = dialog_view.extend({
         var photo_model = this.model;
         _.each( this.display_collection, function( model )
         {
-            var venue_li = new snapr.views.venue_li({
+            var venue_li = new venue_li({
                 template: venue_li_template,
                 model: model,
                 photo_model: photo_model,
@@ -83,22 +80,18 @@ snapr.views.venues = dialog_view.extend({
 
         var keywords = e.target && e.target.value && e.target.value.toLowerCase() || "";
 
-        if (keywords.length > 0)
-        {
-            this.display_collection = _.filter( this.collection.models, function( venue )
-            {
+        var doSearch;
+        if (keywords.length > 0){
+            this.display_collection = _.filter( this.collection.models, function( venue ){
                 return (venue.get( "name" ).toLowerCase().indexOf( keywords ) > -1);
             });
             this.render();
-            var doSearch = function()
-            {
+            doSearch = function(){
                 venues_view.collection.data.query = keywords;
                 venues_view.collection.fetch();
-            }
-        }
-        else
-        {
-            var doSearch = null;
+            };
+        }else{
+            doSearch = null;
 
             this.display_collection = this.collection.models;
             this.render();
@@ -115,8 +108,7 @@ snapr.views.venues = dialog_view.extend({
             window.clearTimeout(this.timer);
         }
 
-        if (doSearch)
-        {
+        if (doSearch){
             // set up a new timeout function
             this.timer = window.setTimeout( function() {
                 venues_view.timer = null;
@@ -126,5 +118,5 @@ snapr.views.venues = dialog_view.extend({
 
     }
 });
-return snapr.views.venues;
+
 });

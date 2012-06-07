@@ -1,11 +1,8 @@
 /*global _ Route define require */
 define(['views/base/dialog'], function(dialog_view){
-snapr.views.welcome = dialog_view.extend({
+return dialog_view.extend({
 
-    initialize: function()
-    {
-        snapr.views.dialog.prototype.initialize.call( this );
-
+    post_initialize: function(){
         this.change_page({
             transition: this.transition
         });
@@ -16,5 +13,4 @@ snapr.views.welcome = dialog_view.extend({
     }
 });
 
-return snapr.views.welcome;
 });
