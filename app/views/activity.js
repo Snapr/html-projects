@@ -1,12 +1,10 @@
 /*global _ Route define require */
-define(['views/base/page'], function(page_view){
-snapr.views.activity = page_view.extend({
+define(['views/base/page', 'backbone', 'collections/news_period', 'views/activity_stream'], function(page_view, Backbone, news_period_collection, activity_stream){
+return page_view.extend({
 
-    initialize: function()
-    {
-        snapr.views.page.prototype.initialize.call( this );
+    post_initialize: function(){
 
-        this.collection = new snapr.models.news_period_collection();
+        this.collection = new news_period_collection();
 
         this.collection.data = {
             group_by: "day",
@@ -25,7 +23,7 @@ snapr.views.activity = page_view.extend({
 
     render: function()
     {
-        $streams = this.$el.find(".activity-streams").empty();
+        var $streams = this.$el.find(".activity-streams").empty();
 
         var events = this.collection.filter( function( s )
         {
@@ -37,13 +35,13 @@ snapr.views.activity = page_view.extend({
         // add "latest yellow topbar" if the first date doesn't have a photo event
         if (first && first.get("events").first().has("photo") === false)
         {
-            $streams.append( new snapr.views.activity_stream({
+            $streams.append( new activity_stream({
                 model: new Backbone.Model()
             }).render().el );
         }
         if (!first)
         {
-            $streams.append( new snapr.views.activity_stream({
+            $streams.append( new activity_stream({
                 model: new Backbone.Model({
                     type: "placeholder"
                 })
@@ -52,7 +50,7 @@ snapr.views.activity = page_view.extend({
 
         _.each( events, function( stream )
         {
-            var stream_li = new snapr.views.activity_stream({
+            var stream_li = new activity_stream({
                 group_by: this.group_by,
                 model: stream
             }).render().el;
@@ -67,6 +65,4 @@ snapr.views.activity = page_view.extend({
     }
 
 });
-
-return snapr.views.activity;
 });
