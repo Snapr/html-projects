@@ -1,10 +1,8 @@
 /*global _ Route define require */
-define(['views/base/page'], function(page_view){
-snapr.views.connect = page_view.extend({
+define(['views/base/page', 'views/connect_li', 'models/post'], function(page_view, connect_li, post_model){
+return page_view.extend({
 
-    initialize: function()
-    {
-        snapr.views.page.prototype.initialize.call( this );
+    post_initialize: function(){
 
         this.change_page();
 
@@ -48,7 +46,7 @@ snapr.views.connect = page_view.extend({
                 return;  // we don't need to deal with this service
             }
 
-            var li = new snapr.views.connect_li({
+            var li = new connect_li({
                     provider: provider,
                     status: status,
                     photo_id: this.photo_id,
@@ -82,7 +80,7 @@ snapr.views.connect = page_view.extend({
             }
         };
 
-        this.model = new snapr.models.post({provider: service, photo_id: this.photo_id});
+        this.model = new post_model({provider: service, photo_id: this.photo_id});
         this.model.save({}, options);
     },
 
@@ -93,5 +91,4 @@ snapr.views.connect = page_view.extend({
 
 });
 
-return snapr.views.connect;
 });
