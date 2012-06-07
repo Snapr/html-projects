@@ -1,10 +1,8 @@
 /*global _ Route define require */
 define(['views/base/page'], function(page_view){
-snapr.views.limbo = page_view.extend({
+return page_view.extend({
 
-    initialize: function()
-    {
-        snapr.views.page.prototype.initialize.call( this );
+    post_initialize: function(){
 
         this.change_page();
 
@@ -32,6 +30,4 @@ snapr.views.limbo = page_view.extend({
         Route.navigate( "#/", true );
     }
 });
-
-return snapr.views.limbo;
 });
