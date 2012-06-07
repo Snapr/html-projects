@@ -1,6 +1,6 @@
 /*global _ Route define require */
-define(['backbone', 'views/components/favorite_button', 'collections/reaction', 'models/comment'],
-    function(Backbone, favorite_button, reaction_collection, comment_model){
+define(['backbone', 'views/components/favorite_button', 'collections/reaction', 'models/comment', 'auth'],
+    function(Backbone, favorite_button, reaction_collection, comment_model, auth){
 
 var feed_li =  Backbone.View.extend({
 
@@ -354,7 +354,7 @@ var photo_manage = Backbone.View.extend({
         this.$el.html( this.template({
             status: this.model.get("status"),
             flagged: this.model.get("flagged"),
-            mine: this.model.get("username") == snapr.auth.get("snapr_user")
+            mine: this.model.get("username") == auth.get("snapr_user")
         })).trigger("create");
 
         return this;

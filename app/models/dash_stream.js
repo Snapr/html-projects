@@ -1,6 +1,6 @@
 /*global _ Route define require */
-define(['backbone', 'collections/photo'],
-function(Backbone,   photo_collection){
+define(['backbone', 'collections/photo', 'auth'],
+function(Backbone, photo_collection, auth){
 
 return Backbone.Model.extend({
     url: function( method ){
@@ -20,7 +20,7 @@ return Backbone.Model.extend({
         var ajax_options = _.extend( options || {}, {
             url: snapr.api_base + "/user/dashboard/delete/",
             dataType: "jsonp",
-            data: _.extend( snapr.auth.attributes, {
+            data: _.extend( auth.attributes, {
                 id: this.get("id"),
                 _method: "POST"
             })

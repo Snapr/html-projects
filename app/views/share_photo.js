@@ -1,6 +1,7 @@
 /*global _ Route define require */
-define(['views/base/page', 'models/photo', 'models/geo_location', 'collections/foursquare_venue', 'views/venues', 'utils/geo'],
-function(page_view, photo_model, geo_location, foursquare_venue_collection, venues_view, geo){
+define(['views/base/page', 'models/photo', 'models/geo_location', 'collections/foursquare_venue',
+    'views/venues', 'utils/geo', 'auth'],
+function(page_view, photo_model, geo_location, foursquare_venue_collection, venues_view, geo, auth){
 return page_view.extend({
 
     initialize: function(){
@@ -552,7 +553,7 @@ return page_view.extend({
                 }
 
                 var ll = "";
-                _.extend(params, snapr.auth.attributes);
+                _.extend(params, auth.attributes);
 
                 if (params.latitude && params.longitude)
                 {

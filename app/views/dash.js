@@ -1,9 +1,9 @@
 /*global _ Route define require */
 define(['views/base/page', 'views/base/dialog', 'views/base/side_scroll',
     'models/dash', 'models/dash_stream', 'collections/user',
-    'views/components/no_results', 'views/people_li', 'utils/geo'],
+    'views/components/no_results', 'views/people_li', 'utils/geo', 'auth'],
     function(page_view, dialog_view, side_scroll, dash_model, dash_stream_model,
-        user_collection, no_results, people_li, geo){
+        user_collection, no_results, people_li, geo, auth){
 
 var dash_view = page_view.extend({
 
@@ -36,7 +36,7 @@ var dash_view = page_view.extend({
                 data: {
                     n:6,
                     detail:0,
-                    feed:!!snapr.auth.get("access_token")
+                    feed:!!auth.get("access_token")
                 },
                 success: function()
                 {
@@ -69,7 +69,7 @@ var dash_view = page_view.extend({
     },
 
     render: function(){
-        this.$el.find('.dash-welcome').toggle(!snapr.auth.has("access_token") || this.collection.length < 3);
+        this.$el.find('.dash-welcome').toggle(!auth.has("access_token") || this.collection.length < 3);
         var $streams = this.$el.find('.image-streams').empty();
         _.each( this.collection.models, function( item )
         {

@@ -1,5 +1,5 @@
 /*global _ Route define require */
-define(['views/base/dialog'], function(dialog_view){
+define(['views/base/dialog', 'auth'], function(dialog_view, auth){
 return dialog_view.extend({
 
     post_initialize: function(){
@@ -38,7 +38,7 @@ return dialog_view.extend({
             data:{
                 username: $('#tumblr-username').val(),
                 password: $('#tumblr-password').val(),
-                access_token: snapr.auth.get("access_token"),
+                access_token: auth.get("access_token"),
                 _method: "POST"
             },
             success: function( data ){

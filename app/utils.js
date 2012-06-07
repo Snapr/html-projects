@@ -1,10 +1,11 @@
 /*global _ Route snapr define require */
-require(['jquery'], function($) {
+require(['jquery', 'auth'], function($, auth) {
 
 /* utils
 ***************************/
 
 snapr.link_service = function(service, next){
+    var url;
     if (service == 'twitter' && snapr.twitter_xauth){
         url = '#/twitter-xauth/?redirect='+ escape( next );
         Route.navigate( url );
@@ -17,24 +18,24 @@ snapr.link_service = function(service, next){
                 // double encode for iphone - the iOS code should be changed to handle it
                 // without this so this can be removed in future
                 url = snapr.api_base + "/linked_services/"+ service +
-                    "/oauth/?display=touch&access_token=" + snapr.auth.get("access_token") +
+                    "/oauth/?display=touch&access_token=" + auth.get("access_token") +
                     "&double_encode=true&redirect=" + escape("snapr://redirect?url=" + escape( next ));
             }else if(snapr.utils.get_local_param("appmode") == 'android'){
                 // android needs a snapr://link?url=
                 url = "snapr://link?url=" + snapr.api_base +
                     "/linked_services/"+ service + "/oauth/?display=touch&access_token=" +
-                    snapr.auth.get("access_token") + "&redirect=snapr://redirect?url=" +
+                    auth.get("access_token") + "&redirect=snapr://redirect?url=" +
                     escape( next );
             }else{
                 // non-ios builds should be made to handle the redirect param escaped property so
                 // this can be changed to escape("snapr://redirect?url=" + escape( window.location.href ))
                 url = snapr.api_base + "/linked_services/"+ service + "/oauth/?display=touch&access_token=" +
-                    snapr.auth.get("access_token") +
+                    auth.get("access_token") +
                     "&redirect=snapr://redirect?url=" + escape( next );
             }
         }else{
             url = snapr.api_base + "/linked_services/" + service +
-                "/oauth/?display=touch&access_token=" + snapr.auth.get("access_token") +
+                "/oauth/?display=touch&access_token=" + auth.get("access_token") +
                 "&redirect=" + escape( next );
         }
         window.location = url;
@@ -256,7 +257,7 @@ function get_query_params(query) {
                 if(_.indexOf(["access_token", "snapr_user"], key) > -1) {
                     var obj = {};
                     obj[kv[0]] = unescape(kv[1]);
-                    snapr.auth.set(obj);
+                    auth.set(obj);
                 } else if(_.indexOf(["snapr_user_public_group", "snapr_user_public_group_name", "appmode", "demo_mode", "environment", "browser_testing", "aviary", "camplus", "camplus_camera", "camplus_edit", "camplus_lightbox"], kv[0]) > -1) {
                     snapr.utils.save_local_param(key, value);
                 } else {
@@ -358,7 +359,7 @@ tapped_action.add = function (yes, no) {
 
 snapr.utils.require_login = function (funct) {
     return function (e) {
-        if(!snapr.auth.has('access_token')) {
+        if(!auth.has('access_token')) {
             if(e) {
                 e.preventDefault();
             }

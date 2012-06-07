@@ -1,6 +1,9 @@
 /*global _ Route define require */
-define(['views/base/page', 'models/user', 'views/user_header', 'views/feed_header', 'collections/photo', 'views/feed_list', 'utils/photoswipe', 'views/components/no_results', 'views/upload_progress_li'],
-function(page_view, user_model, user_header, feed_header, photo_collection, feed_list, photoswipe, no_results, upload_progress_li){
+define(['views/base/page', 'models/user', 'views/user_header', 'views/feed_header',
+    'collections/photo', 'views/feed_list', 'utils/photoswipe', 'views/components/no_results',
+    'views/upload_progress_li', 'auth'],
+function(page_view, user_model, user_header, feed_header, photo_collection,
+    feed_list, photoswipe, no_results, upload_progress_li, auth){
 
 return page_view.extend({
 
@@ -206,7 +209,7 @@ return page_view.extend({
 
     upload_progress: function( upload_data )
     {
-        if (snapr.auth.has("snapr_user") && snapr.auth.get("snapr_user") == this.query.username)
+        if (auth.has("snapr_user") && auth.get("snapr_user") == this.query.username)
         {
             this.$el.find(".feed-upload-list").empty();
 
@@ -235,7 +238,7 @@ return page_view.extend({
     {
         this.$el.find(".upload-id-" + queue_id).remove();
         // if we are on a feed for the current snapr user
-        if (this.options.query.username == snapr.auth.get("snapr_user") && !this.options.query.photo_id){
+        if (this.options.query.username == auth.get("snapr_user") && !this.options.query.photo_id){
             // remove the date restriction if it is present
             if (this.photo_collection.data.max_date){
                 delete this.photo_collection.data.max_date;

@@ -1,6 +1,6 @@
 /*global _ Route define require */
-define(['backbone', 'views/base/page', 'collections/thumb', 'mobiscroll', 'utils/geo'],
-function(Backbone, page_view, thumb_collection, mobiscroll, geo){
+define(['backbone', 'views/base/page', 'collections/thumb', 'mobiscroll', 'utils/geo', 'auth'],
+function(Backbone, page_view, thumb_collection, mobiscroll, geo, auth){
 var map_view = page_view.extend({
 
     post_initialize: function(){
@@ -622,8 +622,8 @@ var map_controls = Backbone.View.extend({
 
     render: function()
     {
-        this.$el.find("#map-filter option[value='just-me']").attr("disabled", !snapr.auth.has("snapr_user"));
-        this.$el.find("#map-filter option[value='following']").attr("disabled", !snapr.auth.has("snapr_user"));
+        this.$el.find("#map-filter option[value='just-me']").attr("disabled", !auth.has("snapr_user"));
+        this.$el.find("#map-filter option[value='following']").attr("disabled", !auth.has("snapr_user"));
         this.$el.find("#map-filter option[value='just-one']").attr("disabled", !this.model.has("photo_id"));
 
 

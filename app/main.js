@@ -78,13 +78,6 @@ snapr.info.upload_paused = false;
 snapr.info.geolocation_enabled = true;
 snapr.info.current_view = null;
 
-/* auth
-***************************/
-require(['models/auth'], function() {
-    snapr.auth = new snapr.models.auth();
-    snapr.auth.get_locally();
-});
-
 /* routers
 ***************************/
 require(['routers', 'backbone'], function(routers, Backbone){
@@ -94,7 +87,7 @@ require(['routers', 'backbone'], function(routers, Backbone){
     $(window).on("pagecontainercreate", function(){ Backbone.history.start(); });
 });
 
-require(['jquery', 'backbone', 'photoswipe'], function($, Backbone, PhotoSwipe) {
+require(['jquery', 'backbone', 'photoswipe', 'auth'], function($, Backbone, PhotoSwipe, auth) {
 
 
     /* offline mode / timeout
@@ -155,8 +148,8 @@ require(['jquery', 'backbone', 'photoswipe'], function($, Backbone, PhotoSwipe) 
         }
 
         // auth
-        if(snapr.auth && snapr.auth.get('access_token')) {
-            params.data.access_token = snapr.auth.get('access_token');
+        if(auth && auth.get('access_token')) {
+            params.data.access_token = auth.get('access_token');
         }
 
         if(snapr.app_group && !params.data.app_group) {

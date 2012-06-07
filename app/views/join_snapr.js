@@ -1,5 +1,6 @@
 /*global _ Route define require */
-define(['views/base/dialog', 'jquery', 'validate', 'models/user_settings'], function(dialog_view, $, validate, user_settings){
+define(['views/base/dialog', 'jquery', 'validate', 'models/user_settings', 'auth'],
+    function(dialog_view, $, validate, user_settings, auth){
 
 var join_dialog = dialog_view.extend({
 
@@ -134,7 +135,7 @@ var join_dialog = dialog_view.extend({
         var join_options = {
             success: function()
             {
-                snapr.auth.get_token( new_user.data.username, new_user.data.password, login_options );
+                auth.get_token( new_user.data.username, new_user.data.password, login_options );
             },
             error: function( e )
             {

@@ -1,5 +1,5 @@
 /*global _ Route define require */
-define(['backbone'], function(Backbone){
+define(['backbone', 'auth'], function(Backbone, auth){
 return Backbone.View.extend({
 
     initialize: function()
@@ -19,8 +19,8 @@ return Backbone.View.extend({
         this.$el
             .html( this.template({
                 user: this.model,
-                auth_username: snapr.auth.get( "snapr_user" ),
-                logged_in: snapr.auth.has( "access_token" )
+                auth_username: auth.get( "snapr_user" ),
+                logged_in: auth.has( "access_token" )
             }) );
 
         return this;

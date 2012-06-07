@@ -1,5 +1,5 @@
 /*global _ Route define require */
-define(['views/base/dialog'], function(dialog_view){
+define(['views/base/dialog', 'auth'], function(dialog_view, auth){
 return dialog_view.extend({
 
     post_initialize: function(){
@@ -46,7 +46,7 @@ return dialog_view.extend({
                 }
             }
         };
-        snapr.auth.get_token( username, password, options );
+        auth.get_token( username, password, options );
     },
     twitter_login: function(){
         Route.navigate( "#/twitter-xauth/?signin=true" );

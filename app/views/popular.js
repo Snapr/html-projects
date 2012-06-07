@@ -1,5 +1,6 @@
 /*global _ Route define require */
-define(['views/base/page', 'collections/photo', 'views/components/thumbnail'], function(page_view, photo_collection, thumbnail){
+define(['views/base/page', 'collections/photo', 'views/components/thumbnail', 'auth'],
+function(page_view, photo_collection, thumbnail, auth){
 return page_view.extend({
 
     events: {
@@ -84,7 +85,7 @@ return page_view.extend({
                 // store the last query
                 $('#popular-thumbs').data('query', {
                     time: popular_view.time_period,
-                    auth: snapr.auth.attributes
+                    auth: auth.attributes
                 });
             },
             error: function( e )
@@ -97,7 +98,7 @@ return page_view.extend({
         this.update_time_buttons();
 
         // only update list if the query has changed or the user clicked on a button
-        if (!_.isEqual( $('#popular-thumbs').data('query'), {time: this.time_period, auth: snapr.auth.attributes} ) || e)
+        if (!_.isEqual( $('#popular-thumbs').data('query'), {time: this.time_period, auth: auth.attributes} ) || e)
         {
             $.mobile.showPageLoadingMsg();
             this.photo_collection.fetch( options );

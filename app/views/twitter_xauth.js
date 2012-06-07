@@ -1,5 +1,5 @@
 /*global _ Route define require */
-define(['views/base/dialog'], function(dialog_view){
+define(['views/base/dialog', 'auth'], function(dialog_view, auth){
 return dialog_view.extend({
 
     post_initialize: function(){
@@ -46,11 +46,11 @@ return dialog_view.extend({
                     if(data.success){
                         if(data.response.access_token){
                             //login
-                            snapr.auth.set({
+                            auth.set({
                                 "access_token": data.response.access_token,
                                 "snapr_user": data.response.snapr_user
                             });
-                            snapr.auth.save_locally();
+                            auth.save_locally();
                             snapr.utils.notification('Logged in as ' + data.response.snapr_user);
                             Route.navigate("#/");
                         }else{
@@ -70,7 +70,7 @@ return dialog_view.extend({
             options =  {
                 url: snapr.api_base + '/linked_services/twitter/xauth/',
                 data:{
-                    access_token: snapr.auth.get("access_token"),
+                    access_token: auth.get("access_token"),
                     _method: "POST"
                 },
                 success: function( data ){

@@ -1,5 +1,5 @@
 /*global _ Route define require */
-define(['views/base/page'], function(page_view){
+define(['views/base/page', 'auth'], function(page_view, auth){
 return page_view.extend({
 
     post_initialize: function(){
@@ -42,7 +42,7 @@ return page_view.extend({
             d.getSeconds().zeroFill( 2 )
         );
         $("#redirect_uri").val( this.redirect_uri );
-        $("#_access_token").attr("name", "access_token").val( snapr.auth.get("access_token") );
+        $("#_access_token").attr("name", "access_token").val( auth.get("access_token") );
     },
 
     show_uploading_dialog: function()

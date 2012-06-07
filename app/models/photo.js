@@ -1,5 +1,5 @@
 /*global _ Route define require */
-define(['backbone'], function(Backbone){
+define(['backbone', 'auth'], function(Backbone, auth){
 
 return Backbone.Model.extend({
 
@@ -32,7 +32,7 @@ return Backbone.Model.extend({
         var ajax_options = _.extend( options || {}, {
             url: this.urlRoot() + "change_status/",
             dataType: "jsonp",
-            data: _.extend( snapr.auth.attributes, {
+            data: _.extend( auth.attributes, {
                 id: this.get("id"),
                 status: status,
                 _method: "POST"
@@ -45,7 +45,7 @@ return Backbone.Model.extend({
         var ajax_options = _.extend( options || {}, {
             url: snapr.api_base + "/report/",
             dataType: "jsonp",
-            data: _.extend( snapr.auth.attributes, {
+            data: _.extend( auth.attributes, {
                 id: this.get("id"),
                 _method: "POST"
             })
@@ -57,7 +57,7 @@ return Backbone.Model.extend({
         var ajax_options = _.extend( options || {}, {
             url: snapr.api_base + "/remove/",
             dataType: "jsonp",
-            data: _.extend( snapr.auth.attributes, {
+            data: _.extend( auth.attributes, {
                 id: this.get("id"),
                 _method: "POST"
             })

@@ -1,5 +1,6 @@
 /*global _ Route define require */
-define(['views/base/page', 'models/user_settings', 'views/linked_service'], function(page_view, user_settings, linked_service){
+define(['views/base/page', 'models/user_settings', 'views/linked_service', 'auth'],
+function(page_view, user_settings, linked_service, auth){
 return page_view.extend({
 
     post_initialize:function(){
@@ -50,12 +51,12 @@ return page_view.extend({
         if(initial){
             template = this.initial_template;
             data={
-                username: snapr.auth.get( "snapr_user" )
+                username: auth.get( "snapr_user" )
             };
         }else{
             template = this.template;
             data={
-                username: snapr.auth.get( "snapr_user" ),
+                username: auth.get( "snapr_user" ),
                 user_id: this.user_settings.get( "user" ).user_id,
                 settings: this.user_settings.get( "settings" ),
                 camplus: {

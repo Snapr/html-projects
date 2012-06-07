@@ -1,5 +1,5 @@
 /*global _ Route define require */
-define(['backbone'], function(Backbone){
+define(['backbone', 'auth'], function(Backbone, auth){
 return Backbone.View.extend({
 
     tagName: "div",
@@ -14,7 +14,7 @@ return Backbone.View.extend({
         var ticker=this,
             data = {
                 n: 1,
-                access_token: snapr.auth.get('access_token')
+                access_token: auth.get('access_token')
             };
 
         if(snapr.app_group) {
