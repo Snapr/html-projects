@@ -212,17 +212,6 @@ require(['jquery', 'backbone', 'photoswipe'], function($, Backbone, PhotoSwipe) 
     // now we can load jQmobile
     require(['jquery.mobile']);
 
-
-    /* make photoswipe basebar click
-    ***************************/
-    $('.ps-caption').live('vclick', function(){
-        var ps = PhotoSwipe.activeInstances[0].instance,
-            src = ps.cache.images[ps.currentIndex].src,
-            id = src.match(/\/(\w{2,6})\.jpg$/)[1];
-        ps.hide();
-        Route.navigate('#/feed/?n=1&photo_id=' + id );
-    });
-
     $(function () {
 
         /* setup body classes - used to turn features on and off
@@ -262,6 +251,16 @@ require(['jquery', 'backbone', 'photoswipe'], function($, Backbone, PhotoSwipe) 
 
         /* global live click hadlers
         ***************************/
+
+        // make photoswipe basebar click
+        $('.ps-caption').live('vclick', function(){
+            var ps = PhotoSwipe.activeInstances[0].instance,
+                src = ps.cache.images[ps.currentIndex].src,
+                id = src.match(/\/(\w{2,6})\.jpg$/)[1];
+            ps.hide();
+            Route.navigate('#/feed/?n=1&photo_id=' + id );
+        });
+
         // camera button
         $(".x-launch-camera").live( "click", snapr.utils.require_login( function (){
             var appmode = snapr.utils.get_local_param( "appmode" );
