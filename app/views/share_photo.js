@@ -1,6 +1,6 @@
 /*global _ Route define require */
-define(['views/base/page', 'models/photo', 'models/geo_location', 'collections/foursquare_venue', 'views/venues'],
-function(page_view, photo_model, geo_location, foursquare_venue_collection, venues_view){
+define(['views/base/page', 'models/photo', 'models/geo_location', 'collections/foursquare_venue', 'views/venues', 'utils/geo'],
+function(page_view, photo_model, geo_location, foursquare_venue_collection, venues_view, geo){
 return page_view.extend({
 
     initialize: function(){
@@ -202,7 +202,7 @@ return page_view.extend({
         else
         {
             // get reverse geocode location from current position
-            snapr.geo.get_location( function( location )
+            geo.get_location( function( location )
             {
                 geocode( location.coords.latitude, location.coords.longitude );
             },
@@ -255,7 +255,7 @@ return page_view.extend({
         else
         {
             // get venues based on current location (not photo)
-            snapr.geo.get_location( function( location )
+            geo.get_location( function( location )
             {
                 var photo_location = share_photo_view.model.get('location');
                 photo_location.latitude = location.coords.latitude;
@@ -354,7 +354,7 @@ return page_view.extend({
         }else{
             var share_photo_view = this;
 
-            snapr.geo.get_location( function( location )
+            geo.get_location( function( location )
             {
                 var ll = location.coords.latitude + "," + location.coords.longitude;
 

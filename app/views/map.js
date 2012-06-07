@@ -1,5 +1,6 @@
 /*global _ Route define require */
-define(['backbone', 'views/base/page', 'collections/thumb', 'mobiscroll'], function(Backbone, page_view, thumb_collection, mobiscroll){
+define(['backbone', 'views/base/page', 'collections/thumb', 'mobiscroll', 'utils/geo'],
+function(Backbone, page_view, thumb_collection, mobiscroll, geo){
 var map_view = page_view.extend({
 
     post_initialize: function(){
@@ -125,7 +126,7 @@ var map_view = page_view.extend({
         var map_view = this;
 
         if (map_view.map_settings.center === undefined){
-            snapr.geo.get_location(
+            geo.get_location(
                 // success
                 function( location ){
                     map_view.map_settings.center = new google.maps.LatLng(location.coords.latitude, location.coords.longitude);
@@ -150,7 +151,7 @@ var map_view = page_view.extend({
         this.map = new google.maps.Map(
             document.getElementById("google-map"), this.map_settings);
 
-        snapr.geo.get_location(function(location){
+        geo.get_location(function(location){
             map_view.dot = new snapr.CurrentLocation( {
                 location: {
                     latitude: location.coords.latitude,
@@ -371,7 +372,7 @@ var map_view = page_view.extend({
         };
         if (this.map)
         {
-            snapr.geo.get_location( success_callback, error_callback );
+            geo.get_location( success_callback, error_callback );
         }
         else
         {

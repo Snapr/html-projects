@@ -328,3 +328,6 @@ require(['jquery', 'backbone', 'photoswipe'], function($, Backbone, PhotoSwipe) 
     });
 
 });
+
+// defines function for native code to call
+require(['native'], function(){});

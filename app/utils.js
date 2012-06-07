@@ -376,113 +376,6 @@ snapr.utils.get_photo_height = function (orig_width, orig_height, element) {
     return width/aspect;
 };
 
-
-snapr.geo = {};
-snapr.geo.location_callbacks = [],
-snapr.geo.location_error_callbacks = [],
-
-snapr.geo.get_location = function ( success, error )
-{
-    // if in appmode, ask the app for location, otherwise try html5 geolocation
-    if (snapr.utils.get_local_param( "appmode" ))
-    {
-        // TODO: what is there is no response!? need timeout function.
-        snapr.geo.location_callbacks.push( success );
-        snapr.geo.location_callbacks.push( error );
-        if (window.override && window.override( "snapr://get_location" ))
-        {
-            //do nothing
-        }else
-        {
-            if (snapr.utils.get_local_param( "appmode" ) == "android")
-            {
-                // android locks up the UI for like 30 seconds whenever it tries to lookup the location, so we are caching the curr location, and only getting the
-                // new location is if the cached value is greater than 5 minutes old. TODO: this should really be done android-side
-                var cached_location = snapr.geo.get_cached_geolocation();
-                if (cached_location != null)
-                {
-                    success( cached_location );
-                }
-                else
-                {
-                    pass_data( "snapr://get_location" );
-                }
-            } else {
-                pass_data( "snapr://get_location" );
-            }
-        }
-    }
-    else
-    {
-        if (navigator.geolocation)
-        {
-            navigator.geolocation.getCurrentPosition( success, error );
-        }
-        else
-        {
-            error( "Geolocation is not supported by your browser." );
-        }
-    }
-}
-
-/* only used for android */
-snapr.geo.get_cached_geolocation = function()
-{
-    if (snapr.info.supports_local_storage)
-    {
-        var now = new Date().getTime();
-        if (localStorage.getItem('curr_geolocation') != undefined
-            && now < localStorage.getItem('geolocation_cache_expires'))
-        {
-            return JSON.parse(localStorage.getItem('curr_geolocation'));
-        }
-        else
-        {
-            return null;
-        }
-    }
-    else
-    {
-        return null;
-    }
-}
-
-/* only used for android */
-snapr.geo.set_cached_geolocation = function( location )
-{
-    var geolocation_cache_time = 1000*60*5; //5 minutes in milliseconds
-    if (snapr.info.supports_local_storage)
-    {
-        var now = new Date().getTime();
-        if (localStorage.getItem('geolocation_cache_expires') == undefined
-            || localStorage.getItem('geolocation_cache_expires') < now)
-        {
-            localStorage.setItem('geolocation_cache_expires', now + geolocation_cache_time);
-            localStorage.setItem('curr_geolocation', JSON.stringify( location ));
-        }
-    }
-}
-
-snapr.geo.set_location = function( latitude, longitude )
-{
-    while (snapr.geo.location_callbacks.length)
-    {
-        snapr.geo.location_callbacks.pop()({
-            coords: {
-                latitude: latitude,
-                longitude: longitude
-            }
-        });
-    }
-};
-snapr.geo.location_error = function( error )
-{
-    while (snapr.geo.location_error_callbacks.length)
-    {
-        snapr.geo.location_error_callbacks.pop()( error );
-    }
-};
-
 function spinner_start( text )
 {
     $('.n-centered-loader .text').text(text || '');
@@ -554,16 +447,6 @@ function queue_settings(upload_mode, paused) {
     if(typeof snapr.info.current_view.queue_settings == "function") {
         snapr.info.current_view.queue_settings(upload_mode, paused);
     }
-}
-
-function set_location(latitude, longitude)
-{
-    snapr.geo.set_location(latitude, longitude);
-}
-
-function location_error(error)
-{
-    snapr.geo.location_error(error);
 }
 
 /* jQuery extentions

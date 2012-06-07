@@ -1,6 +1,9 @@
 /*global _ Route define require */
-define(['views/base/page', 'views/base/dialog', 'views/base/side_scroll', 'models/dash', 'models/dash_stream', 'collections/user', 'views/components/no_results', 'views/people_li'],
-    function(page_view, dialog_view, side_scroll, dash_model, dash_stream_model, user_collection, no_results, people_li){
+define(['views/base/page', 'views/base/dialog', 'views/base/side_scroll',
+    'models/dash', 'models/dash_stream', 'collections/user',
+    'views/components/no_results', 'views/people_li', 'utils/geo'],
+    function(page_view, dialog_view, side_scroll, dash_model, dash_stream_model,
+        user_collection, no_results, people_li, geo){
 
 var dash_view = page_view.extend({
 
@@ -62,7 +65,7 @@ var dash_view = page_view.extend({
         var error_callback = function(){
             dash.collection.fetch( options );
         };
-        snapr.geo.get_location( success_callback, error_callback );
+        geo.get_location( success_callback, error_callback );
     },
 
     render: function(){
@@ -356,7 +359,7 @@ var add_search = dialog_view.extend({
                     snapr.utils.notification( error.message );
                 }
             };
-            snapr.geo.get_location( success_callback, error_callback );
+            geo.get_location( success_callback, error_callback );
         }
         else
         {
