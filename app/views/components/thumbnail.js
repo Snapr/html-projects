@@ -1,5 +1,5 @@
 /*global _ Route define require */
-define(['backbone'], function(Backbone){
+define(['backbone', 'views/components/no_results'], function(Backbone, no_results){
 return Backbone.View.extend({
 
     initialize: function()
@@ -19,7 +19,7 @@ return Backbone.View.extend({
             back: this.back
         }) );
         if(!this.collection.length){
-            snapr.no_results.render('No photos yet...', 'delete').$el.appendTo(this.$el);
+            no_results.render('No photos yet...', 'delete').$el.appendTo(this.$el);
         }
 
         return this;
