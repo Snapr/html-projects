@@ -1,10 +1,9 @@
 /*global _ Route define require */
-define(['views/base/page'], function(page_view){
-snapr.views.share_photo = page_view.extend({
+define(['views/base/page', 'models/photo', 'models/geo_location', 'collections/foursquare_venue', 'views/venues'],
+function(page_view, photo_model, geo_location, foursquare_venue_collection, venues_view){
+return page_view.extend({
 
-    initialize: function()
-    {
-        snapr.views.page.prototype.initialize.call( this );
+    initialize: function(){
 
         this.template = _.template( $("#share-photo-template").html() );
 
@@ -58,15 +57,13 @@ snapr.views.share_photo = page_view.extend({
     {
         var description = this.$el.find("#description").val();
 
-        if (this.model.get("secret"))
-        {
-            var img_url = "http://media-server2.snapr.us/lrg/" +
+        var img_url;
+        if (this.model.get("secret")){
+            img_url = "http://media-server2.snapr.us/lrg/" +
                 this.model.get("secret") + "/" +
                 this.model.get("id") + ".jpg";
-        }
-        else if (this.model.has("photo_path"))
-        {
-            var img_url = this.model.get("photo_path");
+        }else if (this.model.has("photo_path")){
+            img_url = this.model.get("photo_path");
         }
 
         var screen_height = window.innerHeight;
@@ -102,7 +99,7 @@ snapr.views.share_photo = page_view.extend({
     {
         var share_photo_view = this;
 
-        this.model = new snapr.models.photo({
+        this.model = new photo_model({
             id: id,
             location: {}
         });
@@ -147,7 +144,7 @@ snapr.views.share_photo = page_view.extend({
             location.longitude = this.query.longitude;
         }
 
-        this.model = new snapr.models.photo({
+        this.model = new photo_model({
             photo_path: path,
             location: location
         });
@@ -181,7 +178,7 @@ snapr.views.share_photo = page_view.extend({
 
         var geocode = function( latitude, longitude )
         {
-            var location = new snapr.models.geo_location({
+            var location = new geo_location({
                 latitude: latitude,
                 longitude: longitude
             });
@@ -223,7 +220,7 @@ snapr.views.share_photo = page_view.extend({
 
         var get_venues = function( latitude, longitude )
         {
-            share_photo_view.venue_collection = new snapr.models.foursquare_venue_collection({
+            share_photo_view.venue_collection = new foursquare_venue_collection({
                 ll: latitude + "," + longitude
             });
 
@@ -273,16 +270,16 @@ snapr.views.share_photo = page_view.extend({
         }
     },
 
-    toggle_status: function( e )
-    {
+    toggle_status: function( e ){
 
+        var status;
         if ($(e.currentTarget).is(":checked"))
         {
-            var status = "public";
+            status = "public";
         }
         else
         {
-            var status = "private";
+            status = "private";
         }
 
         snapr.utils.save_local_param( "status", status );
@@ -333,7 +330,7 @@ snapr.views.share_photo = page_view.extend({
         var share_view = this;
         var go_to_venues = function( ll, foursquare_venue_id, back_query, model )
         {
-            snapr.info.current_view = new snapr.views.venues({
+            snapr.info.current_view = new venues_view({
                 model: model,
                 query: {
                     ll: ll,
@@ -345,21 +342,16 @@ snapr.views.share_photo = page_view.extend({
             });
         };
 
-        if (this.model.get("location").latitude && this.model.get("location").longitude )
-        {
-            var ll = this.model.get("location").latitude + "," + this.model.get("location").longitude;
-        }
-        else if (this.query.latitude && this.query.longitude)
-        {
-            var ll = this.query.latitude + "," + this.query.longitude;
+        var ll;
+        if (this.model.get("location").latitude && this.model.get("location").longitude ){
+            ll = this.model.get("location").latitude + "," + this.model.get("location").longitude;
+        }else if (this.query.latitude && this.query.longitude){
+            ll = this.query.latitude + "," + this.query.longitude;
         }
 
-        if (ll)
-        {
+        if (ll){
             go_to_venues( ll, this.model.get("location").foursquare_venue_id , this.query, this.model );
-        }
-        else
-        {
+        }else{
             var share_photo_view = this;
 
             snapr.geo.get_location( function( location )
@@ -382,30 +374,23 @@ snapr.views.share_photo = page_view.extend({
         var camplus_edit = snapr.utils.get_local_param( "camplus_edit" );
         var aviary = snapr.utils.get_local_param( "aviary" );
 
-        if (this.model.get("secret"))
-        {
-            var img_url = "http://media-server2.snapr.us/lrg/"
-                + this.model.get("secret") + "/"
-                + this.model.get("id") + ".jpg";
-        }
-        else if (this.model.has("photo_path"))
-        {
-            var img_url = this.model.get("photo_path");
+        var img_url;
+        if (this.model.get("secret")){
+            img_url = "http://media-server2.snapr.us/lrg/" +
+                this.model.get("secret") + "/" +
+                this.model.get("id") + ".jpg";
+        }else if (this.model.has("photo_path")){
+            img_url = this.model.get("photo_path");
         }
 
-        if (appmode && img_url)
-        {
-            if (camplus && camplus_edit)
-            {
+        if (appmode && img_url){
+            if (camplus && camplus_edit){
                 pass_data( "snapr://camplus/edit/?photo_url=" + img_url );
-            }
-            else if (aviary)
-            {
+            }else if (aviary){
                 pass_data("snapr://aviary/edit/?photo_url=" + img_url);
             }
 
-            setTimeout( function()
-            {
+            setTimeout( function(){
                 Route.navigate( "#/limbo/" );
             }, 600);
         }
@@ -415,12 +400,10 @@ snapr.views.share_photo = page_view.extend({
         }
     },
 
-    share: function()
-    {
+    share: function(){
         $.mobile.showPageLoadingMsg();
         // if there is a secret set the picture has already been uploaded
-        if (this.model && this.model.has("secret"))
-        {
+        if (this.model && this.model.has("secret")){
             var redirect_url = this.redirct_url || snapr.constants.share_redirect;
 
             redirect_url += "photo_id=" + this.model.get("id");
@@ -463,83 +446,60 @@ snapr.views.share_photo = page_view.extend({
 
                     var sharing_errors = [];
                     var sharing_successes = [];
-                    if (model.get("tweet"))
-                    {
+                    if (model.get("tweet")){
                         if (response.response &&
                             response.response.twitter &&
                             response.response.twitter.error &&
-                            response.response.twitter.error.code == 30 )
-                        {
+                            response.response.twitter.error.code == 30 ){
                             sharing_errors.push("twitter");
-                        }
-                        else
-                        {
+                        }else{
                             sharing_successes.push("twitter");
                         }
                     }
-                    if (model.get("facebook_album"))
-                    {
+                    if (model.get("facebook_album")){
                         if (response.response &&
                             response.response.facebook &&
                             response.response.facebook.error &&
-                            response.response.facebook.error.code == 28 )
-                        {
+                            response.response.facebook.error.code == 28 ){
                             sharing_errors.push("facebook");
-                        }
-                        else
-                        {
+                        }else{
                             sharing_successes.push("facebook");
                         }
                     }
-                    if (model.get("foursquare_checkin"))
-                    {
+                    if (model.get("foursquare_checkin")){
                         if (response.response &&
                             response.response.foursquare &&
                             response.response.foursquare.error &&
-                            response.response.foursquare.error.code == 28 )
-                        {
+                            response.response.foursquare.error.code == 28 ){
                             sharing_errors.push("foursquare");
-                        }
-                        else
-                        {
+                        }else{
                             sharing_successes.push("foursquare");
                         }
                     }
-                    if (model.get("tumblr"))
-                    {
+                    if (model.get("tumblr")){
                         if (response.response &&
                             response.response.tumblr &&
                             response.response.tumblr.error &&
-                            response.response.tumblr.error.code == 30 )
-                        {
+                            response.response.tumblr.error.code == 30 ){
                             sharing_errors.push("tumblr");
-                        }
-                        else
-                        {
+                        }else{
                             sharing_successes.push("tumblr");
                         }
                     }
 
-                    if (sharing_errors.length)
-                    {
+                    if (sharing_errors.length){
                         var url = "#/connect/?to_link=" + sharing_errors.join(",") + "&photo_id=" + model.get("id") + "&redirect_url=" + escape(redirect_url);  //  + "&shared=" + sharing_successes.join(",")
                         Route.navigate( url );
-                    }
-                    else
-                    {
+                    }else{
                         Route.navigate( redirect_url );
                     }
                 },
-                error: function()
-                {
+                error: function(){
                     console.error( "save/share error" );
                 }
             });
-        }
-        else
-        {
-            if (snapr.utils.get_local_param("appmode"))
-            {
+        }else{
+            if (snapr.utils.get_local_param("appmode")){
                 var d = new Date(),
                     params = {
                         'device_time': d.getFullYear() + '-' +
@@ -578,7 +538,7 @@ snapr.views.share_photo = page_view.extend({
                 }, this);
 
                 // default to public if not set above
-                if( !params["status"])
+                if( !params.status)
                 {
                     params.status = "public";
                 }
@@ -588,7 +548,7 @@ snapr.views.share_photo = page_view.extend({
                 if (photo)
                 {
                     delete params.photo_path;
-                    params["photo"] = photo;
+                    params.photo = photo;
                 }
 
                 var ll = "";
@@ -608,7 +568,7 @@ snapr.views.share_photo = page_view.extend({
                 }
                 else
                 {
-                    ll = ""
+                    ll = "";
                 }
 
                 if (params.foursquare_venue)
@@ -630,9 +590,8 @@ snapr.views.share_photo = page_view.extend({
     upload_progress: function( upload_data )
     {
         Route.navigate( '#/uploading/' );
-    },
+    }
 
 });
 
-return snapr.views.photo_share;
 });
