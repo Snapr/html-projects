@@ -1,5 +1,5 @@
 /*global _ Route define require */
-define(['backbone', 'utils', 'auth'], function(Backbone, utils, auth) {
+define(['backbone', 'utils', 'auth', 'utils/local_storage'], function(Backbone, utils, auth, local_storage) {
 
 var routers = Backbone.Router.extend({
     routes: {
@@ -89,7 +89,7 @@ var routers = Backbone.Router.extend({
         auth.logout();
 
         window.location.hash = "";
-        if (snapr.utils.get_local_param( "appmode" )){
+        if (local_storage.get( "appmode" )){
             pass_data('snapr://logout');
         }
     },

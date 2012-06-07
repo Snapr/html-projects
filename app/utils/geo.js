@@ -1,19 +1,19 @@
 /*global _ Route define require */
-define(function(){
+define(['utils/local_storage'], function(local_storage){
 var geo = {};
 geo.location_callbacks = [],
 geo.location_error_callbacks = [],
 
 geo.get_location = function ( success, error ){
     // if in appmode, ask the app for location, otherwise try html5 geolocation
-    if (snapr.utils.get_local_param( "appmode" )){
+    if (local_storage.get( "appmode" )){
         // TODO: what is there is no response!? need timeout function.
         geo.location_callbacks.push( success );
         geo.location_callbacks.push( error );
         if (window.override && window.override( "snapr://get_location" )){
             //do nothing
         }else{
-            if (snapr.utils.get_local_param( "appmode" ) == "android"){
+            if (local_storage.get( "appmode" ) == "android"){
                 // android locks up the UI for like 30 seconds whenever it tries to lookup the location, so we are caching the curr location, and only getting the
                 // new location is if the cached value is greater than 5 minutes old. TODO: this should really be done android-side
                 var cached_location = geo.get_cached_geolocation();

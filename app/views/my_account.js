@@ -1,6 +1,6 @@
 /*global _ Route define require */
-define(['views/base/page', 'models/user_settings', 'views/linked_service', 'auth'],
-function(page_view, user_settings, linked_service, auth){
+define(['views/base/page', 'models/user_settings', 'views/linked_service', 'auth', 'utils/local_storage'],
+function(page_view, user_settings, linked_service, auth, local_storage){
 return page_view.extend({
 
     post_initialize:function(){
@@ -43,7 +43,7 @@ return page_view.extend({
 
         // hidden for the moment
 
-        // if (snapr.utils.get_local_param("appmode"))
+        // if (local_storage.get("appmode"))
         // {
         //     this.upload_settings = new snapr.views.upload_settings();
         //     $account_content.prepend( this.upload_settings.render().el );
@@ -60,10 +60,10 @@ return page_view.extend({
                 user_id: this.user_settings.get( "user" ).user_id,
                 settings: this.user_settings.get( "settings" ),
                 camplus: {
-                    camplus_menu: (snapr.utils.get_local_param( "camplus" ) == "true"),
-                    camplus_camera: (snapr.utils.get_local_param( "camplus_camera" ) == "true"),
-                    camplus_edit: (snapr.utils.get_local_param( "camplus_edit" ) == "true"),
-                    camplus_lightbox: (snapr.utils.get_local_param( "camplus_lightbox" ) == "true")
+                    camplus_menu: (local_storage.get( "camplus" ) == "true"),
+                    camplus_camera: (local_storage.get( "camplus_camera" ) == "true"),
+                    camplus_edit: (local_storage.get( "camplus_edit" ) == "true"),
+                    camplus_lightbox: (local_storage.get( "camplus_lightbox" ) == "true")
                 }
             };
         }
@@ -267,12 +267,12 @@ return page_view.extend({
             var key = $(select).attr("name");
             var value = ($(select).val() == "true") ? true: false;
             param[key] = value;
-            snapr.utils.save_local_param( key, value );
+            local_storage.save( key, value );
         });
 
         $collapse.trigger("collapse");
 
-        if (snapr.utils.get_local_param("appmode") == "iphone"){
+        if (local_storage.get("appmode") == "iphone"){
             pass_data( "snapr://camplus/settings/?" + $.param( param ) );
         }else{
             console.log( "snapr://camplus/settings/?" + $.param( param ) );

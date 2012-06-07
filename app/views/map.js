@@ -1,6 +1,6 @@
 /*global _ Route define require */
-define(['backbone', 'views/base/page', 'collections/thumb', 'mobiscroll', 'utils/geo', 'auth'],
-function(Backbone, page_view, thumb_collection, mobiscroll, geo, auth){
+define(['backbone', 'views/base/page', 'collections/thumb', 'mobiscroll', 'utils/geo', 'auth', 'utils/local_storage'],
+function(Backbone, page_view, thumb_collection, mobiscroll, geo, auth, local_storage){
 var map_view = page_view.extend({
 
     post_initialize: function(){
@@ -80,7 +80,7 @@ var map_view = page_view.extend({
 
         map_view.map_settings = {
             zoom: map_view.map_query.get( "zoom" ) ||
-                parseInt(snapr.utils.get_local_param('map_zoom'), 10) ||
+                parseInt(local_storage.get('map_zoom'), 10) ||
                 snapr.constants.default_zoom,
             streetViewControl: false,
             mapTypeControl: false,
@@ -89,8 +89,8 @@ var map_view = page_view.extend({
 
         if (map_view.map_query.get( "lat" ) && map_view.map_query.get( "lng" )){
             map_view.map_settings.center = new google.maps.LatLng( map_view.map_query.get( "lat" ), map_view.map_query.get( "lng" ) );
-        }else if (snapr.utils.get_local_param('map_latitude') && snapr.utils.get_local_param('map_longitude')){
-            map_view.map_settings.center = new google.maps.LatLng( snapr.utils.get_local_param('map_latitude'), snapr.utils.get_local_param('map_longitude') );
+        }else if (local_storage.get('map_latitude') && local_storage.get('map_longitude')){
+            map_view.map_settings.center = new google.maps.LatLng( local_storage.get('map_latitude'), local_storage.get('map_longitude') );
         }
 
         map_view.geocoder = new google.maps.Geocoder();
@@ -174,10 +174,10 @@ var map_view = page_view.extend({
                 zoom: map_view.map.getZoom()
             });
             // remember location
-            snapr.utils.save_local_param('map_zoom', map_view.map.getZoom());
+            local_storage.save('map_zoom', map_view.map.getZoom());
             var ll = map_view.map.getCenter();
-            snapr.utils.save_local_param('map_latitude', ll.lat());
-            snapr.utils.save_local_param('map_longitude', ll.lng());
+            local_storage.save('map_latitude', ll.lat());
+            local_storage.save('map_longitude', ll.lng());
         });
 
         if (location)

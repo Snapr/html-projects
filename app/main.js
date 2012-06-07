@@ -65,13 +65,6 @@ requirejs.config({
 /* store some info about the environment
 ***************************/
 snapr.info = {};
-snapr.info.supports_local_storage = (function () {
-    try {
-        return 'localStorage' in window && window.localStorage !== null;
-    } catch(e) {
-        return false;
-    }
-})();
 snapr.info.upload_count = 0;
 snapr.info.upload_mode = "On";
 snapr.info.upload_paused = false;
@@ -87,7 +80,7 @@ require(['routers', 'backbone'], function(routers, Backbone){
     $(window).on("pagecontainercreate", function(){ Backbone.history.start(); });
 });
 
-require(['jquery', 'backbone', 'photoswipe', 'auth'], function($, Backbone, PhotoSwipe, auth) {
+require(['jquery', 'backbone', 'photoswipe', 'auth', 'utils/local_storage'], function($, Backbone, PhotoSwipe, auth, local_storage) {
 
 
     /* offline mode / timeout
@@ -209,7 +202,7 @@ require(['jquery', 'backbone', 'photoswipe', 'auth'], function($, Backbone, Phot
 
         /* setup body classes - used to turn features on and off
         ***************************/
-        var appmode = snapr.utils.get_local_param("appmode");
+        var appmode = local_storage.get("appmode");
         if (appmode){
             $("body").addClass( "appmode-true" ).addClass("appmode-" + appmode );
         }else{
@@ -218,12 +211,12 @@ require(['jquery', 'backbone', 'photoswipe', 'auth'], function($, Backbone, Phot
 
         function class_if_local(param){
             // add dash-serperated class to body if localstorage param is true
-            $("body").toggleClass( param.replace('_', '-'), !!snapr.utils.get_local_param( param ) );
+            $("body").toggleClass( param.replace('_', '-'), !!local_storage.get( param ) );
         }
 
         class_if_local("browser_testing");
         class_if_local("aviary");
-        if (snapr.utils.get_local_param( "camplus" )){
+        if (local_storage.get( "camplus" )){
             class_if_local("camplus_camera");
             class_if_local("camplus_edit");
             class_if_local("camplus_lightbox");
@@ -256,9 +249,9 @@ require(['jquery', 'backbone', 'photoswipe', 'auth'], function($, Backbone, Phot
 
         // camera button
         $(".x-launch-camera").live( "click", auth.require_login( function (){
-            var appmode = snapr.utils.get_local_param( "appmode" );
-            var camplus = snapr.utils.get_local_param( "camplus" );
-            var camplus_camera = snapr.utils.get_local_param( "camplus_camera" );
+            var appmode = local_storage.get( "appmode" );
+            var camplus = local_storage.get( "camplus" );
+            var camplus_camera = local_storage.get( "camplus_camera" );
 
             if (appmode){
                 if (camplus && camplus_camera){
@@ -277,9 +270,9 @@ require(['jquery', 'backbone', 'photoswipe', 'auth'], function($, Backbone, Phot
 
         // photo library button
         $(".x-launch-photo-library").live( "click", auth.require_login( function(){
-            var appmode = snapr.utils.get_local_param( "appmode" );
-            var camplus = snapr.utils.get_local_param( "camplus" );
-            var camplus_lightbox = snapr.utils.get_local_param( "camplus_lightbox" );
+            var appmode = local_storage.get( "appmode" );
+            var camplus = local_storage.get( "camplus" );
+            var camplus_lightbox = local_storage.get( "camplus_lightbox" );
 
             if (appmode){
                 if (camplus && camplus_lightbox){

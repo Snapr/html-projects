@@ -1,5 +1,5 @@
 /*global _ Route define require */
-define(['backbone'], function(Backbone){
+define(['backbone', 'utils/local_storage'], function(Backbone, local_storage){
 return Backbone.View.extend({
 
     tagName: "li",
@@ -69,7 +69,7 @@ return Backbone.View.extend({
             "title": "Cancel this upload?",
             "yes_callback": function()
             {
-                if (snapr.utils.get_local_param( "appmode" ))
+                if (local_storage.get( "appmode" ))
                 {
                     pass_data( "snapr://upload?cancel=" + id );
                 }

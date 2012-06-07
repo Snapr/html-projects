@@ -1,5 +1,6 @@
 /*global _ Route define require */
-define(['views/base/page', 'views/uploading_image_stream', 'views/upload_progress_li', 'models/photo'], function(page_view, uploading_image_stream, upload_progress_li, photo_model){
+define(['views/base/page', 'views/uploading_image_stream', 'views/upload_progress_li', 'models/photo', 'utils/local_storage'],
+function(page_view, uploading_image_stream, upload_progress_li, photo_model, local_storage){
 return  page_view.extend({
     post_initialize: function(){
 
@@ -98,7 +99,7 @@ return  page_view.extend({
     {
         if (this.current_upload && this.current_upload.id){
             var current_upload = this.current_upload;
-            var appmode = snapr.utils.get_local_param("appmode");
+            var appmode = local_storage.get("appmode");
 
             snapr.utils.approve({
                 "title": "Cancel this upload?",

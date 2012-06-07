@@ -1,5 +1,5 @@
 /*global _ Route define require */
-define(['backbone', 'jquery', 'cookie'], function(Backbone) {
+define(['backbone', 'jquery', 'utils/local_storage'], function(Backbone, $, local_storage) {
 
 var auth_model = Backbone.Model.extend({
 
@@ -48,15 +48,9 @@ var auth_model = Backbone.Model.extend({
     },
 
     get_locally: function(){
-        var snapr_user;
-        var access_token;
-        if (snapr.info.supports_local_storage){
-            snapr_user = localStorage.getItem( "snapr_user" );
-            access_token = localStorage.getItem( "access_token" );
-        }else{
-            snapr_user = $.cookie( "snapr_user" );
-            access_token = $.cookie( "access_token" );
-        }
+        var snapr_user = local_storage.get( "snapr_user" );
+        var access_token = local_storage.get( "access_token" );
+
         if (snapr_user && access_token){
             this.set({
                 access_token: access_token,
@@ -70,7 +64,7 @@ var auth_model = Backbone.Model.extend({
         var snapr_user = this.get( "snapr_user" );
         var access_token = this.get( "access_token" );
 
-        if (snapr.utils.get_local_param( "appmode" )){
+        if (local_storage.get( "appmode" )){
             pass_data( "snapr://login?snapr_user=" + encodeURI( snapr_user ) + "&access_token=" + encodeURI( access_token ) );
         }else{
             if (snapr.info.supports_local_storage){

@@ -1,7 +1,7 @@
 /*global _ Route define require */
 define(['views/base/page', 'models/photo', 'models/geo_location', 'collections/foursquare_venue',
-    'views/venues', 'utils/geo', 'auth'],
-function(page_view, photo_model, geo_location, foursquare_venue_collection, venues_view, geo, auth){
+    'views/venues', 'utils/geo', 'auth', 'utils/local_storage'],
+function(page_view, photo_model, geo_location, foursquare_venue_collection, venues_view, geo, auth, local_storage){
 return page_view.extend({
 
     initialize: function(){
@@ -73,13 +73,13 @@ return page_view.extend({
             img_url: img_url,
             screen_height: screen_height,
             photo: this.model,
-            status: snapr.utils.get_local_param( "status" ),
-            share_location: snapr.utils.get_local_param( "share-location" ) !== 'false',
-            facebook_sharing: snapr.utils.get_local_param( "facebook-sharing" ) && true || false,
-            tumblr_sharing: snapr.utils.get_local_param( "tumblr-sharing" ) && true || false,
-            foursquare_sharing: snapr.utils.get_local_param( "foursquare-sharing" ) && true || false,
-            twitter_sharing: snapr.utils.get_local_param( "twitter-sharing" ) && true || false,
-            edit: (snapr.utils.get_local_param( "aviary" )  == "true" || snapr.utils.get_local_param( "camplus_edit" )  == "true" ) && true || false
+            status: local_storage.get( "status" ),
+            share_location: local_storage.get( "share-location" ) !== 'false',
+            facebook_sharing: local_storage.get( "facebook-sharing" ) && true || false,
+            tumblr_sharing: local_storage.get( "tumblr-sharing" ) && true || false,
+            foursquare_sharing: local_storage.get( "foursquare-sharing" ) && true || false,
+            twitter_sharing: local_storage.get( "twitter-sharing" ) && true || false,
+            edit: (local_storage.get( "aviary" )  == "true" || local_storage.get( "camplus_edit" )  == "true" ) && true || false
         }) ).trigger("create");
 
 
@@ -114,9 +114,9 @@ return page_view.extend({
             {
                 share_photo_view.$el.find("#description").val( model.get("description") );
 
-                if (snapr.utils.get_local_param( "foursquare-sharing" ) &&
+                if (local_storage.get( "foursquare-sharing" ) &&
                     !model.get( "location" ).foursquare_venue_id &&
-                    snapr.utils.get_local_param( "status" ) != "private")
+                    local_storage.get( "status" ) != "private")
                 {
                     share_photo_view.get_foursquare_venues();
                 }
@@ -155,13 +155,13 @@ return page_view.extend({
 
         this.render();
 
-        if (snapr.utils.get_local_param( "foursquare-sharing") &&
+        if (local_storage.get( "foursquare-sharing") &&
             !this.model.get("location").foursquare_venue_id &&
-            snapr.utils.get_local_param( "status" ) != "private")
+            local_storage.get( "status" ) != "private")
         {
             this.get_foursquare_venues();
         }
-        if(!snapr.utils.get_local_param( "foursquare-sharing" ))
+        if(!local_storage.get( "foursquare-sharing" ))
         {
             this.get_reverse_geocode();
         }
@@ -170,7 +170,7 @@ return page_view.extend({
     get_reverse_geocode: function()
     {
 
-        if (snapr.utils.get_local_param( "share-location" ) === 'false')
+        if (local_storage.get( "share-location" ) === 'false')
         {
             return;
         }
@@ -283,15 +283,15 @@ return page_view.extend({
             status = "private";
         }
 
-        snapr.utils.save_local_param( "status", status );
+        local_storage.save( "status", status );
 
         setTimeout( this.render, 10 );
 
-        if (status == "private" && snapr.utils.get_local_param( "foursquare-sharing" ))
+        if (status == "private" && local_storage.get( "foursquare-sharing" ))
         {
             this.get_reverse_geocode();
         }
-        else if (status == "public" && snapr.utils.get_local_param( "foursquare-sharing" ))
+        else if (status == "public" && local_storage.get( "foursquare-sharing" ))
         {
             this.get_foursquare_venues();
         }
@@ -301,11 +301,11 @@ return page_view.extend({
     {
         if ($(e.target).attr("checked"))
         {
-            snapr.utils.save_local_param( e.target.id, true );
+            local_storage.save( e.target.id, true );
         }
         else
         {
-            snapr.utils.save_local_param( e.target.id, false );
+            local_storage.save( e.target.id, false );
         }
         if (e.target.id == "foursquare-sharing")
         {
@@ -370,10 +370,10 @@ return page_view.extend({
 
     edit: function()
     {
-        var appmode = snapr.utils.get_local_param( "appmode" );
-        var camplus = snapr.utils.get_local_param( "camplus" );
-        var camplus_edit = snapr.utils.get_local_param( "camplus_edit" );
-        var aviary = snapr.utils.get_local_param( "aviary" );
+        var appmode = local_storage.get( "appmode" );
+        var camplus = local_storage.get( "camplus" );
+        var camplus_edit = local_storage.get( "camplus_edit" );
+        var aviary = local_storage.get( "aviary" );
 
         var img_url;
         if (this.model.get("secret")){
@@ -500,7 +500,7 @@ return page_view.extend({
                 }
             });
         }else{
-            if (snapr.utils.get_local_param("appmode")){
+            if (local_storage.get("appmode")){
                 var d = new Date(),
                     params = {
                         'device_time': d.getFullYear() + '-' +

@@ -1,6 +1,6 @@
 /*global _ Route define require */
-define(['views/base/page', 'collections/photo', 'views/components/thumbnail', 'auth'],
-function(page_view, photo_collection, thumbnail, auth){
+define(['views/base/page', 'collections/photo', 'views/components/thumbnail', 'auth', 'utils/local_storage'],
+function(page_view, photo_collection, thumbnail, auth, local_storage){
 return page_view.extend({
 
     events: {
@@ -52,11 +52,11 @@ return page_view.extend({
         if (e && e.currentTarget)
         {
             this.time_period = e.currentTarget.id.replace( 'popular-', '' );
-            snapr.utils.save_local_param( "popular-time", this.time_period );
+            local_storage.save( "popular-time", this.time_period );
         }
         else
         {
-            this.time_period = snapr.utils.get_local_param( "popular-time" ) || 'time-all';
+            this.time_period = local_storage.get( "popular-time" ) || 'time-all';
         }
 
         switch (this.time_period)

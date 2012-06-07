@@ -1,5 +1,5 @@
 /*global _ Route snapr define require */
-require(['jquery', 'auth'], function($, auth) {
+require(['jquery', 'auth', 'utils/local_storage', 'utils/local_storage'], function($, auth, local_storage) {
 
 /* utils
 ***************************/
@@ -13,14 +13,14 @@ snapr.link_service = function(service, next){
         url = '#/tumblr-xauth/?redirect='+ escape( next );
         Route.navigate( url );
     }else{
-        if (snapr.utils.get_local_param( "appmode" )){
-            if (snapr.utils.get_local_param("appmode") == 'iphone'){
+        if (local_storage.get( "appmode" )){
+            if (local_storage.get("appmode") == 'iphone'){
                 // double encode for iphone - the iOS code should be changed to handle it
                 // without this so this can be removed in future
                 url = snapr.api_base + "/linked_services/"+ service +
                     "/oauth/?display=touch&access_token=" + auth.get("access_token") +
                     "&double_encode=true&redirect=" + escape("snapr://redirect?url=" + escape( next ));
-            }else if(snapr.utils.get_local_param("appmode") == 'android'){
+            }else if(local_storage.get("appmode") == 'android'){
                 // android needs a snapr://link?url=
                 url = "snapr://link?url=" + snapr.api_base +
                     "/linked_services/"+ service + "/oauth/?display=touch&access_token=" +
@@ -43,12 +43,10 @@ snapr.link_service = function(service, next){
 };
 
 snapr.utils = {};
-snapr.utils.plural = function( n )
-{
+snapr.utils.plural = function( n ){
     return (n > 1) ? "s" : "";
 };
-snapr.utils.amp_join = function( array_of_strings )
-{
+snapr.utils.amp_join = function( array_of_strings ){
     if (arrray_of_strings.length == 1)
     {
         return arrray_of_strings[0];
@@ -79,12 +77,12 @@ snapr.utils.hashtag_links = function( comment )
     {
         return "";
     }
-}
+};
 snapr.utils.at_links = function( comment )
 {
     if (comment.length)
     {
-        var atcomment = comment.replace( /[@]+[A-Za-z0-9-_]+/g,
+        var atcomment = comment.replace( /[@]+[A-Za-z0-9\-_]+/g,
         function( u )
         {
             return '<a href="#/feed/?keywords=' + u + '">' + u + '</a>';
@@ -95,13 +93,13 @@ snapr.utils.at_links = function( comment )
     {
         return "";
     }
-}
+};
 snapr.utils.comment_links = function( comment )
 {
     var hashedcomment = snapr.utils.hashtag_links( comment );
     var output = snapr.utils.at_links( hashedcomment );
     return output;
-}
+};
 
 snapr.utils.date_to_snapr_format = function (d) {
     return d.getFullYear() + '-' + (d.getMonth() + 1).zeroFill(2) + '-' + d.getDate().zeroFill(2) + ' 00:00:00';
@@ -124,17 +122,17 @@ snapr.utils.short_timestamp = function( time, relative )
     date = new Date(time.replace(/ [\+-]\d{4}$/,'')); //strip TZ
     if (date.getHours() <= 12){
         var hours = date.getHours(),
-        ap = 'AM'
+        ap = 'AM';
     }
     else
     {
         var hours = date.getHours() -12,
-        ap = 'PM'
+        ap = 'PM';
     }
     if (relative !== false){
         if ( isNaN(day_diff) || day_diff < 0 )//|| day_diff >= 31 )
             return;
-        if (day_diff == 0){
+        if (day_diff === 0){
             return(
                 diff < 60 && 'just now' ||
                 diff < 3600 && Math.floor( diff / 60 ) + "min" ||
@@ -159,12 +157,11 @@ snapr.utils.short_timestamp = function( time, relative )
     }
     var full_date = hours+' '+ap+', '+months[date.getMonth()]+' '+date.getDate();
     if (date.getFullYear() == new Date().getFullYear())
-        return full_date
-    return full_date+', '+date.getFullYear()
-}
+        return full_date;
+    return full_date+', '+date.getFullYear();
+};
 
-snapr.utils.short_location = function(txt)
-{
+snapr.utils.short_location = function(txt){
     txt_array = txt.split(', ');
     new_txt_array = [];
     new_txt_array.push(txt_array[0]);
@@ -174,71 +171,6 @@ snapr.utils.short_location = function(txt)
         }
     }
     return new_txt_array.join( ", " );
-}
-snapr.utils.save_local_param = function( key, value )
-{
-    if (value == "false")
-    {
-        snapr.utils.delete_local_param( key );
-    }
-    else
-    {
-        if (snapr.info.supports_local_storage)
-        {
-            localStorage.setItem( key, value );
-        }
-        else
-        {
-            $.cookie( key, value );
-        }
-    }
-
-    if (key == "appmode")
-    {
-        $("body").addClass("appmode-true").addClass("appmode-" + value);
-    }
-    if (key == "browser_testing")
-    {
-        $("body").addClass("browser-testing");
-    }
-    if (key == "aviary")
-    {
-        $("body").addClass("aviary");
-    }
-    if (key == "camplus")
-    {
-        $("body").addClass("camplus");
-    }
-    if (key == "camplus_camera")
-    {
-        $("body").addClass("camplus-camera");
-    }
-    if (key == "camplus_edit")
-    {
-        $("body").addClass("camplus-edit");
-    }
-    if (key == "camplus_lightbox")
-    {
-        $("body").addClass("camplus-lightbox");
-    }
-
-};
-
-// defined differently so the function is hoisted for earlier use
-snapr.utils.get_local_param = get_local_param;
-function get_local_param (key) {
-    if(snapr.info.supports_local_storage) {
-        return localStorage.getItem(key);
-    } else {
-        return $.cookie(key);
-    }
-}
-snapr.utils.delete_local_param = function (key) {
-    if(snapr.info.supports_local_storage) {
-        localStorage.removeItem(key);
-    } else {
-        $.cookie(key, null);
-    }
 };
 
 // defined differently so the function is hoisted for earlier use
@@ -259,7 +191,7 @@ function get_query_params(query) {
                     obj[kv[0]] = unescape(kv[1]);
                     auth.set(obj);
                 } else if(_.indexOf(["snapr_user_public_group", "snapr_user_public_group_name", "appmode", "demo_mode", "environment", "browser_testing", "aviary", "camplus", "camplus_camera", "camplus_edit", "camplus_lightbox"], kv[0]) > -1) {
-                    snapr.utils.save_local_param(key, value);
+                    local_storage.save(key, value);
                 } else {
                     key = unescape(key);
                     if(key in params) {
@@ -275,7 +207,7 @@ function get_query_params(query) {
         });
     }
 
-    env = snapr.utils.get_local_param('environment');
+    env = local_storage.get('environment');
     if (_.has(snapr.settings, env)){
         var settings = snapr.settings[env];
     }else{
@@ -294,7 +226,7 @@ function get_query_params(query) {
 // alert/confirm replacements
 snapr.utils.notification = function (title, text, callback) {
     var context = this;
-    if(snapr.utils.get_local_param("appmode") == "iphone") {
+    if(local_storage.get("appmode") == "iphone") {
         var par = {
             "title": title,
             "otherButton1": "OK",
@@ -325,7 +257,7 @@ snapr.utils.approve = function (options) {
         'no_callback': $.noop
     }, options);
 
-    if(snapr.utils.get_local_param("appmode") == 'iphone') {
+    if(local_storage.get("appmode") == 'iphone') {
         var actionID = tapped_action.add(options.yes_callback, options.no_callback);
         pass_data('snapr://action?' + $.param({
             'title': options.title,
