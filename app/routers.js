@@ -1,7 +1,7 @@
 /*global _ Route define require */
 define(['backbone', 'utils', 'auth'], function(Backbone, utils, auth) {
 
-snapr.routers = Backbone.Router.extend({
+var routers = Backbone.Router.extend({
     routes: {
         "about/": "about",
         "about/?*query_string": "about",
@@ -86,11 +86,7 @@ snapr.routers = Backbone.Router.extend({
     logout: function( query_string ){
 
         snapr.utils.get_query_params( query_string );
-        if (auth){
-           auth.logout();
-        }else{
-            auth = new snapr.models.auth();
-        }
+        auth.logout();
 
         window.location.hash = "";
         if (snapr.utils.get_local_param( "appmode" )){
@@ -172,6 +168,6 @@ function _make_route(view, el, extra_data){
     return route;
 }
 
-return snapr.routers;
+return routers;
 
 });
