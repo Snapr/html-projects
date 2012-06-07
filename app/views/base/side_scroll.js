@@ -1,3 +1,4 @@
+// Abstract base class side-scroll views
 /*global _ Route define require */
 define(['backbone', 'utils/photoswipe', 'iscroll'], function(Backbone, photoswipe, iScroll){
 return Backbone.View.extend({

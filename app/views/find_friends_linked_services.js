@@ -1,19 +1,17 @@
 // abstract base class for both twitter and facebook
 
 /*global _ Route define require */
-define(['views/base/dialog'], function(dialog_view){
-snapr.views.find_friends_linked_services = dialog_view.extend({
+define(['views/base/dialog', 'collections/user', 'views/people_li', 'views/components/no_results'], function(dialog_view, user_collection, people_li, no_results){
+return dialog_view.extend({
 
-    initialize: function()
-    {
-        snapr.views.dialog.prototype.initialize.call( this );
+    post_initialize: function(){
 
         this.people_li_template = _.template( $("#people-li-template").html() );
 
         this.$el.find("ul.people-list").empty();
 
-        this.collection = new snapr.models.user_collection();
-        this.collection.bind( "reset", this.render );
+        this.collection = new user_collection();
+        this.collection.bind( "reset", _.bind(this.render, this) );
 
         this.transition = 'none';
         this.change_page( {
@@ -42,15 +40,15 @@ snapr.views.find_friends_linked_services = dialog_view.extend({
 
         if(this.collection.length){
             _.each( this.collection.models, function( model ){
-                var people_li = new snapr.views.people_li({
+                var li = new people_li({
                     template: this_view.people_li_template,
                     model: model
                 });
 
-                people_list.append( people_li.render().el );
+                people_list.append( li.render().el );
             });
         }else{
-            snapr.no_results.render('Oops.. Nobody here yet.', 'delete').$el.appendTo(people_list);
+            no_results.render('Oops.. Nobody here yet.', 'delete').$el.appendTo(people_list);
         }
 
         people_list.listview().listview("refresh");
@@ -98,5 +96,4 @@ snapr.views.find_friends_linked_services = dialog_view.extend({
     }
 });
 
-return snapr.views.find_friends_linked_services;
 });

@@ -73,13 +73,13 @@ return dialog_view.extend({
             no_results.$el.remove();  // use remove(), hide() keeps it hidden and requires show() later
             _.each( this.collection.models, function( model )
             {
-                var people_li = new people_li({
+                var li = new people_li({
                     template: people_li_template,
                     model: model,
                     parentView: this
                 });
 
-                people_list.append( people_li.render().el );
+                people_list.append( li.render().el );
 
             });
         }else{

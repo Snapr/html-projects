@@ -1,4 +1,6 @@
-snapr.views.offline = Backbone.View.extend({
+/*global _ Route define require */
+define(['backbone'], function(Backbone){
+var offline = Backbone.View.extend({
 
     tagName: "div",
 
@@ -18,4 +20,6 @@ snapr.views.offline = Backbone.View.extend({
 
 });
 
-snapr.offline_el = new snapr.views.offline().render().el;
+return new offline().render().el;
+
+});
