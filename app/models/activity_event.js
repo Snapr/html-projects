@@ -1,2 +1,2 @@
 /*global _ Route define require */
-define(['backbone'], Backbone.Model.extend({}));
+define(['backbone'], function(Backbone){ return Backbone.Model.extend({}); });

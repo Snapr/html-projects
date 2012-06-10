@@ -1,11 +1,12 @@
 /*global _ Route define require */
-define(['backbone'], function(Backbone){
-return  Backbone.Model.extend({
+define(['backbone', 'collections/activity_event'], function(Backbone, activity_event_collection){
+return Backbone.Model.extend({
 
-    initialize: function( period )
-    {
+    initialize: function( period ){
         var events = _.clone( period.events );
-        this.set({events: new snapr.models.activity_event_collection( events )});
+        this.set({events: new activity_event_collection( events )});
     }
 
-});});
+});
+
+});

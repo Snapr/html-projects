@@ -11,7 +11,7 @@ return page_view.extend({
             n: 50
         };
 
-        this.collection.bind( "reset", this.render );
+        this.collection.bind( "reset", _.bind(this.render, this) );
         this.$el.find(".activity-streams").empty();
 
 

@@ -103,4 +103,6 @@ string_utils.short_location = function(txt){
     }
     return new_txt_array.join( ", " );
 };
+
+return string_utils;
 });

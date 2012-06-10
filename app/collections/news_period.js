@@ -1,22 +1,21 @@
-snapr.models.news_period_collection = Backbone.Collection.extend({
+/*global _ Route define require */
+define(['backbone', 'models/news_period'], function(Backbone, news_period){
+return Backbone.Collection.extend({
 
-    model: snapr.models.news_period,
+    model: news_period,
 
-    url: function( method )
-    {
+    url: function( method ){
         return snapr.api_base + '/user/activity/';
     },
 
-    parse: function( d, xhr )
-    {
-        if (d.response && d.response.news)
-        {
+    parse: function( d, xhr ){
+        if (d.response && d.response.news){
             return d.response.news;
-        }
-        else
-        {
+        }else{
             return [];
         }
     }
+
+});
 
 });
