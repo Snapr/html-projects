@@ -93,7 +93,10 @@ require(['jquery'], function($) {
         $.mobile.buttonMarkup.hoverDelay = 0;
     });
     // now we can load jQmobile
-    require(['jquery.mobile']);
+    require(['jquery.mobile'], function(){
+        // Now jQm is loaded and applied styles we can show everything.
+        $(document.body).show();
+    });
 });
 
 require(['jquery', 'backbone', 'photoswipe', 'auth', 'utils/local_storage'], function($, Backbone, PhotoSwipe, auth, local_storage) {
