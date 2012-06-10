@@ -918,12 +918,12 @@
                 <span class="image-time-and-location">
                 <a class="goto-map">
                     <span class="ui-icon extra-icons ui-icon-venue"></span>
-                    <%= snapr.utils.short_timestamp(item.get('date'), true ) %>, <%= snapr.utils.short_location(item.get('location').location) %> </a>
+                    <%= string_utils.short_timestamp(item.get('date'), true ) %>, <%= string_utils.short_location(item.get('location').location) %> </a>
                 </span>
                 <%}else{%>
                 <span class="image-time">
                     <span class="ui-icon extra-icons ui-icon-clock"></span>
-                    <%= snapr.utils.short_timestamp(item.get('date'), true ) %>
+                    <%= string_utils.short_timestamp(item.get('date'), true ) %>
                 </span>
                 <% }%>
             </div>
@@ -952,7 +952,7 @@
                 <% if (item.get('description')){%>
                     <span class="ui-icon extra-icons ui-icon-quote"></span>
                 <%}%>
-                <%= snapr.utils.comment_links( item.get('description') ) %>
+                <%= string_utils.comment_links( item.get('description') ) %>
 
                 <% if (item.has('location') && item.get('location').spot_id){%>
                 <a class="goto-spot">
@@ -1044,7 +1044,7 @@
     <!-- @feed @reactions ITEM - display for comments / favs -->
     <script id="reaction-li-template" type="text/template">
     <% if(reaction.get('type') == 'comment'){ %>
-        <li><a href="#/feed/?username=<%= reaction.get('username') %>"><span class="username"><%= reaction.get('username') %>:</span> <span class="comment"><%= snapr.utils.comment_links( reaction.get('comment') ) %></span></a></li>
+        <li><a href="#/feed/?username=<%= reaction.get('username') %>"><span class="username"><%= reaction.get('username') %>:</span> <span class="comment"><%= string_utils.comment_links( reaction.get('comment') ) %></span></a></li>
     <% }else{ %>
         <li><a href="#/feed/?username=<%= reaction.get('username') %>"><span class="username"><%= reaction.get('username') %></span> <span class="like-text">likes this</span></a></li>
     <% } %>
@@ -1262,7 +1262,7 @@
                     <em><%= model.get("display").short_title %><% if(model.get("query").radius){ %> (<%= model.get("query").radius/1000 %>km)<% } %></em>
                     <span class="image-tag x-tag"><%= collection.models[0].get('description') %></span>
                     <span class="image-time small-text">
-                        <span class="ui-icon ui-icon-clock extra-icons"></span><span class="x-date"><%= snapr.utils.short_timestamp( collection.models[0].get('date') )  %></span>
+                        <span class="ui-icon ui-icon-clock extra-icons"></span><span class="x-date"><%= string_utils.short_timestamp( collection.models[0].get('date') )  %></span>
                     </span>
                 </span>
             </a>
@@ -1454,7 +1454,7 @@
             <h3 class="username"><%= item.get("user").username %></h3> <span class="activity-desc">is now following you.</span>
             <% if (!photo_events) { %>
             <p class="small-text">
-                <%= snapr.utils.short_timestamp( item.get("date"), true) %>
+                <%= string_utils.short_timestamp( item.get("date"), true) %>
             </p>
             <% } %>
         </a>
@@ -1526,7 +1526,7 @@
                     <span class="image-tag x-tag"><% if(collection.length){ %><%= collection.models[0].get("description") %><% } %></span>
                     <span class="image-time small-text">
                         <span class="ui-icon ui-icon-clock extra-icons"></span>
-                        <span class="x-date"><% if(collection.length){ %><%= snapr.utils.short_timestamp( collection.models[0].get("date") )  %><% } %></span>
+                        <span class="x-date"><% if(collection.length){ %><%= string_utils.short_timestamp( collection.models[0].get("date") )  %><% } %></span>
                     </span>
                 </span>
 
@@ -2221,7 +2221,7 @@
            <span class="image-tag x-tag"><%= collection.models[0].description %></span>
            <span class="image-time small-text">
                <span class="ui-icon ui-icon-clock extra-icons"></span>
-               <span class="x-date"><%= snapr.utils.short_timestamp( collection.models[0].get("date") )  %></span>
+               <span class="x-date"><%= string_utils.short_timestamp( collection.models[0].get("date") )  %></span>
             </span>
             </span>
         </a>

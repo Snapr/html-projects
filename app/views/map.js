@@ -1,6 +1,6 @@
 /*global _ Route define require */
-define(['backbone', 'views/base/page', 'collections/thumb', 'mobiscroll', 'utils/geo', 'auth', 'utils/local_storage'],
-function(Backbone, page_view, thumb_collection, mobiscroll, geo, auth, local_storage){
+define(['backbone', 'views/base/page', 'collections/thumb', 'mobiscroll', 'utils/geo', 'auth', 'utils/local_storage', 'utils/string'],
+function(Backbone, page_view, thumb_collection, mobiscroll, geo, auth, local_storage, string_utils){
 var map_view = page_view.extend({
 
     post_initialize: function(){
@@ -724,8 +724,8 @@ var map_controls = Backbone.View.extend({
 
     show_map_time: function( time ){
         if (time){
-            this.$el.find(".map-time-btn").scroller('setDate', snapr.utils.convert_snapr_date(time));
-            this.$el.find(".map-time").find(".ui-bar").text( snapr.utils.short_timestamp( time, true) || "Now" );
+            this.$el.find(".map-time-btn").scroller('setDate', string_utils.convert_snapr_date(time));
+            this.$el.find(".map-time").find(".ui-bar").text( string_utils.short_timestamp( time, true) || "Now" );
         }
         else{
             this.$el.find(".map-time").find(".ui-bar").text( "Now" );

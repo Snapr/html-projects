@@ -1,6 +1,6 @@
 /*global _ Route define require */
-define(['views/base/page', 'collections/photo', 'views/components/thumbnail', 'auth', 'utils/local_storage'],
-function(page_view, photo_collection, thumbnail, auth, local_storage){
+define(['views/base/page', 'collections/photo', 'views/components/thumbnail', 'auth', 'utils/local_storage', 'utils/string'],
+function(page_view, photo_collection, thumbnail, auth, local_storage, string_utils){
 return page_view.extend({
 
     events: {
@@ -63,12 +63,12 @@ return page_view.extend({
         {
             case 'time-today':
                 var today = new Date();
-                this.photo_collection.data.min_date = snapr.utils.date_to_snapr_format( today );
+                this.photo_collection.data.min_date = string_utils.date_to_snapr_format( today );
                 break;
             case 'time-week':
                 var day = new Date();
                 day.setMilliseconds( day.getMilliseconds() - (7*24*60*60*1000) );
-                this.photo_collection.data.min_date = snapr.utils.date_to_snapr_format( day );
+                this.photo_collection.data.min_date = string_utils.date_to_snapr_format( day );
                 break;
             case 'time-all':
                 if (this.photo_collection.data.min_date)

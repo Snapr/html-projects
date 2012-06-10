@@ -1,6 +1,6 @@
 // Abstract base class side-scroll views
 /*global _ Route define require */
-define(['backbone', 'utils/photoswipe', 'iscroll'], function(Backbone, photoswipe, iScroll){
+define(['backbone', 'utils/photoswipe', 'iscroll', 'utils/string'], function(Backbone, photoswipe, iScroll, string_utils){
 return Backbone.View.extend({
 
     // The following 3 attrs need to be set when extending this view
@@ -92,7 +92,7 @@ return Backbone.View.extend({
                         }else{
                             tag.html('&nbsp;');
                         }
-                        details.find('.x-date').text(snapr.utils.short_timestamp(curr.data('date')));
+                        details.find('.x-date').text(string_utils.short_timestamp(curr.data('date')));
                         details.data('current', curr.data('id'));
                     }
 

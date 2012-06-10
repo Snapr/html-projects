@@ -63,7 +63,7 @@ return  snapr.views.side_scroll.extend({
     //             param[key] = escape( value );
     //         });
     //         var query = $.param(param);
-    //         var time = snapr.utils.short_timestamp( first.get("date") );
+    //         var time = string_utils.short_timestamp( first.get("date") );
     //         var description = this.collection.first().get("description");
     //         this.$el.html( this.template({
     //             stream_type: this.stream_type,

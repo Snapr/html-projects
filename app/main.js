@@ -322,3 +322,10 @@ require(['jquery', 'backbone', 'photoswipe', 'auth', 'utils/local_storage'], fun
 
 // defines function for native code to call
 require(['native'], function(){});
+
+// export string utils for templates to use
+require(['utils/string'], function(string_utils) {
+    window.string_utils = string_utils;
+});
+
+
