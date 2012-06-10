@@ -80,6 +80,22 @@ require(['routers', 'backbone'], function(routers, Backbone){
     $(window).on("pagecontainercreate", function(){ Backbone.history.start(); });
 });
 
+require(['jquery'], function($) {
+
+    /* disable jquery-mobile's hash nav so we can replace it with backbone.js
+    ***************************/
+    $(document).bind("mobileinit", function(){
+        $.mobile.ignoreContentEnabled = true;
+        $.mobile.ajaxEnabled = false;
+        $.mobile.pushStateEnabled = false;
+        $.mobile.hashListeningEnabled = false;
+        $.mobile.defaultPageTransition = 'none';
+        $.mobile.buttonMarkup.hoverDelay = 0;
+    });
+    // now we can load jQmobile
+    require(['jquery.mobile']);
+});
+
 require(['jquery', 'backbone', 'photoswipe', 'auth', 'utils/local_storage'], function($, Backbone, PhotoSwipe, auth, local_storage) {
 
 
@@ -183,20 +199,6 @@ require(['jquery', 'backbone', 'photoswipe', 'auth', 'utils/local_storage'], fun
         return $.ajax(_.extend(params, options));
 
     };
-
-
-    /* disable jquery-mobile's hash nav so we can replace it with backbone.js
-    ***************************/
-    $(document).bind("mobileinit", function(){
-        $.mobile.ignoreContentEnabled = true;
-        $.mobile.ajaxEnabled = false;
-        $.mobile.pushStateEnabled = false;
-        $.mobile.hashListeningEnabled = false;
-        $.mobile.defaultPageTransition = 'none';
-        $.mobile.buttonMarkup.hoverDelay = 0;
-    });
-    // now we can load jQmobile
-    require(['jquery.mobile']);
 
     $(function () {
 
