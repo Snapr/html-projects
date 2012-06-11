@@ -3,11 +3,12 @@ define(['views/base/page', 'auth'], function(page_view, auth){
 return page_view.extend({
 
     post_initialize: function(){
+        this.$el.find("form").attr( "action", snapr.base_url + "/api/upload/" );
+    },
 
+    activate: function(){
         // we will redirect to this url on successful upload
         this.redirect_uri = window.location.origin + window.location.pathname + "#/photo-edit/";
-
-        this.$el.find("form").attr( "action", snapr.base_url + "/api/upload/" );
 
         this.change_page();
     },
@@ -17,21 +18,12 @@ return page_view.extend({
         "submit #upload-form": "show_uploading_dialog"
     },
 
-    enable_upload_submit: function( e )
-    {
-        if ($(e.target).val())
-        {
-            $("#upload-form input[type='submit']").button("enable");
-        }
-        else
-        {
-            $("#upload-form input[type='submit']").button("disable");
-        }
+    enable_upload_submit: function( e ){
+        $("#upload-form input[type='submit']").button( $(e.target).val() ? "enable": "disable" );
         this.set_hidden_fields();
     },
 
-    set_hidden_fields: function()
-    {
+    set_hidden_fields: function(){
         var d = new Date();
         $("#device-time").val(
             d.getFullYear() + '-' +
@@ -45,8 +37,7 @@ return page_view.extend({
         $("#_access_token").attr("name", "access_token").val( auth.get("access_token") );
     },
 
-    show_uploading_dialog: function()
-    {
+    show_uploading_dialog: function(){
         $.mobile.loadingMessage = "Uploading…";
         $.mobile.showPageLoadingMsg();
     }

@@ -11,6 +11,9 @@ return page_view.extend({
         // this will eventually be stored/retrieved from localstorage
         // but for now we'll start from blank each time
         this.share_photo_settings = {};
+    },
+
+    activate: function(){
 
         this.query = this.options.query;
 
@@ -24,21 +27,15 @@ return page_view.extend({
         this.change_page();
 
         // if we are coming from the venue selection screen the model will be passed in
-        if (!this.model)
-        {
-            if (this.query.photo_path)
-            {
+        if (!this.model){
+            if (this.query.photo_path){
                 this.get_photo_from_path( this.query.photo_path + "?ts=" + new Date().getTime() );
-            }
-            else if(this.query.photo_id || this.query.photo)
-            {
+            }else if(this.query.photo_id || this.query.photo){
                 this.get_photo_from_server( this.query.photo_id || this.query.photo );
-            }
-            else{
+            }else{
                 console.error( "no path or photo_id" );
             }
-        }
-        else{
+        }else{
             this.render();
         }
     },

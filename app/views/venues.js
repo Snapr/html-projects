@@ -2,7 +2,7 @@
 define(['backbone', 'views/base/dialog', 'collections/foursquare_venue'], function(Backbone, dialog_view, foursquare_venue_collection){
 var venues = dialog_view.extend({
 
-    post_initialize: function(){
+    activate: function(){
         this.selected_id = this.options.query.foursquare_venue_id;
 
         this.query = this.options.query;
@@ -19,15 +19,7 @@ var venues = dialog_view.extend({
         this.collection.bind( "reset", _.bind(this.reset_collection, this) );
 
         // if we are coming from the map view do a flip, otherwise do a slide transition
-        if ($.mobile.activePage.attr('id') == 'map' )
-        {
-            this.transition = "flip";
-        }
-        else
-        {
-            this.transition = "slideup";
-        }
-
+        var transition = ($.mobile.activePage.attr('id') == 'map') ? "flip" : "slideup";
         this.change_page({
             transition: this.transition
         });
@@ -37,8 +29,7 @@ var venues = dialog_view.extend({
 
     events: {
         "keyup input": "search",
-        "click .ui-input-clear": "search",
-        "click .x-back": "back"
+        "click .ui-input-clear": "search"
     },
 
     render: function(){

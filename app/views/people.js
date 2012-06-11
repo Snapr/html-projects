@@ -4,6 +4,13 @@ define(['views/base/dialog', 'collections/user', 'views/components/no_results', 
 return dialog_view.extend({
 
     post_initialize: function(){
+        var dialog = this;
+        this.$el.live( "pageshow", function(){
+            dialog.$('#people-search').focus();
+        });
+    },
+
+    activate: function(){
 
         this.$el.find("ul.people-list").empty();
         this.$el.addClass('loading');
@@ -50,17 +57,11 @@ return dialog_view.extend({
                 break;
         }
 
-        var dialog = this;
-        this.$el.live( "pageshow", function( e, ui ){
-            dialog.$('#people-search').focus();
-        });
-
     },
 
     events: {
         "keyup input": "search",
-        "click .ui-input-clear": "search",
-        "click .x-back": "back"
+        "click .ui-input-clear": "search"
     },
 
     render: function()

@@ -1,4 +1,4 @@
-/*global _ Route define require */
+/*global _ Route define require snapr */
 define(['backbone', 'utils', 'auth', 'utils/local_storage'], function(Backbone, utils, auth, local_storage) {
 
 var routers = Backbone.Router.extend({
@@ -154,15 +154,20 @@ function _make_route(view, el, extra_data){
     extra_data = extra_data || {};
     var route = function(query_string){
         require([view], function(view) {
-            var query = snapr.utils.get_query_params(query_string);
-            if(!route.el_cached){
-                route.el_cached = $(el);
+            var query = snapr.utils.get_query_params(query_string),
+                options = _.extend({
+                    query: query,
+                    el: route.cached_el
+                }, extra_data);
+            if(!route.cached_view){
+                options.el = $(el);
+                route.cached_view = new view(options);
+            }else{
+                route.cached_view.activate(options);
             }
-            snapr.info.previous_view = snapr.info.current_view;
-            snapr.info.current_view = new view(_.extend({
-                query: query,
-                el: route.el_cached
-            }, extra_data));
+            route.cached_view.previous_view = snapr.info.current_view;
+            snapr.info.current_view = route.cached_view;
+
         });
     };
     return route;

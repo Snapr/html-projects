@@ -2,7 +2,7 @@
 define(['views/base/page'], function(page_view){
 return page_view.extend({
 
-    post_initialize: function(){
+    activate: function(){
         this.change_page();
     }
 

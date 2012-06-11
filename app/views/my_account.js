@@ -3,7 +3,7 @@ define(['views/base/page', 'models/user_settings', 'views/linked_service', 'auth
 function(page_view, user_settings, linked_service, auth, local_storage){
 return page_view.extend({
 
-    post_initialize:function(){
+    activate:function(){
 
         this.$el.find('.account-content').empty();
 
@@ -14,14 +14,12 @@ return page_view.extend({
         var my_account_view = this;
         var options = {
             data: {linked_services: true, user_object: true},
-            success: function()
-            {
+            success: function(){
                 $.mobile.hidePageLoadingMsg();
                 my_account_view.user_settings.linked_services_setup();
                 my_account_view.render();
             },
-            error: function()
-            {
+            error: function(){
                 console.log( 'error' , my_account_view );
             }
         };
@@ -35,8 +33,7 @@ return page_view.extend({
     template: _.template( $('#my-account-template').html() ),
     initial_template: _.template( $('#my-account-initial-template').html() ),
 
-    render: function(initial)
-    {
+    render: function(initial){
         var $account_content = this.$el.find('.account-content').empty(),
             template,
             data;

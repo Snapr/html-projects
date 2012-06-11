@@ -5,13 +5,6 @@ define(['views/base/dialog', 'jquery', 'validate', 'models/user_settings', 'auth
 var join_dialog = dialog_view.extend({
 
     post_initialize: function(){
-
-        this.change_page({
-            transition: this.transition
-        });
-
-        this.$('.linked-message').toggle(!!(this.options.query && this.options.query.linked));
-
         this.validator = $("#join-dialog").validate({
             //debug: true,
 
@@ -80,19 +73,24 @@ var join_dialog = dialog_view.extend({
         });
         // HAXXY: errors is not an option of the validate method, here we actually apply it
         this.validator.errors = this.validator.settings.errors;
+    },
+
+    activate: function(){
+
+        this.change_page();
+
+        this.$('.linked-message').toggle(!!(this.options.query && this.options.query.linked));
+        this.$('.twitter-button').toggle(!(this.options.query && this.options.query.twitter_name));
 
         if(this.options.query && this.options.query.twitter_name){
             $('#join-dialog-username').val(this.options.query.twitter_name).valid();
         }else{
             $('#join-dialog-username').val("");
         }
-
-        this.$('.twitter-button').toggle(!(this.options.query && this.options.query.twitter_name));
     },
 
     events: {
         "submit #join-dialog": "join",
-        "click .x-back": "back",
         "click .twitter-button": 'twitter_login'
     },
 

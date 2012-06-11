@@ -2,7 +2,8 @@
 define(['views/base/page', 'views/uploading_image_stream', 'views/upload_progress_li', 'models/photo', 'utils/local_storage'],
 function(page_view, uploading_image_stream, upload_progress_li, photo_model, local_storage){
 return  page_view.extend({
-    post_initialize: function(){
+
+    activate: function(){
 
         this.change_page();
 

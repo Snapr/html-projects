@@ -5,18 +5,17 @@ define(['views/base/dialog', 'collections/user', 'views/people_li', 'views/compo
 return dialog_view.extend({
 
     post_initialize: function(){
-
         this.people_li_template = _.template( $("#people-li-template").html() );
-
-        this.$el.find("ul.people-list").empty();
 
         this.collection = new user_collection();
         this.collection.bind( "reset", _.bind(this.render, this) );
+    },
 
-        this.transition = 'none';
-        this.change_page( {
-            transition: this.transition
-        });
+    activate: function(){
+
+        this.$el.find("ul.people-list").empty();
+
+        this.change_page();
 
         this.service = this.options.service;
 
@@ -27,6 +26,8 @@ return dialog_view.extend({
             this.$('[data-role=header] .ui-btn-right').attr('href', unescape(back_url)).attr('data-ajax', false).removeClass('x-back');
         }
     },
+
+    transition: 'none',
 
     events: {
         "keyup input": "search",

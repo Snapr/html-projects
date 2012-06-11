@@ -62,8 +62,6 @@ return page_view.extend({
 
     post_initialize: function(){
 
-        this.change_page();
-
         $('a[data-query]', this.$el).live( 'click', function( e ){
             var query = $(this).data('query'),
                 current = $(this).data('current'),
@@ -72,8 +70,13 @@ return page_view.extend({
             Route.navigate('#/feed/?' + unescape( query ) + '&photo_id=' + current + "&back=Cities&feed_title=" + city );
         });
 
+    },
+
+    activate: function(){
+        this.change_page();
         this.render();
     },
+
     render: function(){
         $.mobile.showPageLoadingMsg();
 

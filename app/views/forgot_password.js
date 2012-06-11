@@ -2,15 +2,8 @@
 define(['views/base/dialog'], function(dialog_view){
 return dialog_view.extend({
 
-    post_initialize: function(){
-        this.change_page({
-            transition: this.transition
-        });
-    },
-
     events: {
-        "submit #forgot-form":"forgot",
-        "click .x-back": "back"
+        "submit #forgot-form":"forgot"
     },
 
     forgot: function(){

@@ -3,17 +3,16 @@ define(['views/base/page', 'backbone', 'collections/news_period', 'views/activit
 return page_view.extend({
 
     post_initialize: function(){
-
         this.collection = new news_period_collection();
-
+        this.collection.bind( "reset", this.render );
         this.collection.data = {
             group_by: "day",
             n: 50
         };
+    },
 
-        this.collection.bind( "reset", _.bind(this.render, this) );
+    activate: function(){
         this.$el.find(".activity-streams").empty();
-
 
         this.collection.fetch();
 
@@ -21,26 +20,22 @@ return page_view.extend({
         $.mobile.showPageLoadingMsg();
     },
 
-    render: function()
-    {
+    render: function(){
         var $streams = this.$el.find(".activity-streams").empty();
 
-        var events = this.collection.filter( function( s )
-        {
+        var events = this.collection.filter( function( s ){
             return s.has("events") && s.get("events").length > 0;
         });
 
         var first = events[0];
 
         // add "latest yellow topbar" if the first date doesn't have a photo event
-        if (first && first.get("events").first().has("photo") === false)
-        {
+        if (first && first.get("events").first().has("photo") === false){
             $streams.append( new activity_stream({
                 model: new Backbone.Model()
             }).render().el );
         }
-        if (!first)
-        {
+        if (!first){
             $streams.append( new activity_stream({
                 model: new Backbone.Model({
                     type: "placeholder"

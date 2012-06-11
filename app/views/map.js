@@ -5,18 +5,9 @@ var map_view = page_view.extend({
 
     post_initialize: function(){
 
-        var query = this.options.query || {};
-
-        query.n = query.photo_id ? 1 : 10;
-
         var map_view = this;
-        this.$el.die('pageshow');
         this.$el.live('pageshow', function (e) {
             map_view.when_page_showen();
-        });
-
-        this.change_page({
-            transition: 'flip'
         });
 
         this.thumb_template = _.template($('#thumb-template').html());
@@ -27,6 +18,18 @@ var map_view = page_view.extend({
 
         this.thumb_collection = new thumb_collection();
 
+    },
+
+    activate: function(){
+
+        var query = this.options.query || {};
+
+        query.n = query.photo_id ? 1 : 10;
+
+        this.change_page({
+            transition: 'flip'
+        });
+
         this.map_thumbs = [];
         this.map_flags = [];
 
@@ -36,17 +39,6 @@ var map_view = page_view.extend({
         this.map_query.bind( "change", this.hide_no_results_message );
         this.map_query.bind( "change", this.get_thumbs );
 
-        // I doubt this could ever happen, isn't initialize only called when the object is created?
-        // if(this.map){
-        //     console.log("########### map exists ##########");
-        //     if (this.map_query.get( "location" )){
-        //         this.search_location( this.map_query.get( "location" ) );
-        //     }else{
-        //         this.go_to_current_location();
-        //     }
-        // }else{
-        //     console.log("no map");
-        // }
         this.load_maps_then();
 
         this.map_controls = new map_controls({
@@ -71,7 +63,6 @@ var map_view = page_view.extend({
             $(document.body).append($('<script src="https://www.google.com/jsapi?autoload=%7B%22modules%22%3A%5B%7B%22name%22%3A%22maps%22%2C%22version%22%3A%223.x%22%2C%22callback%22%3A%22gmap_script_loaded%22%2C\'other_params\'%3A%22sensor%3Dfalse%22%7D%5D%7D"></script>'));
             return;
         }
-        console.debug('maps lib loaded');
 
         var map_view = this;
 

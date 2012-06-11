@@ -2,7 +2,7 @@
 define(['views/base/page', 'views/connect_li', 'models/post'], function(page_view, connect_li, post_model){
 return page_view.extend({
 
-    post_initialize: function(){
+    activate: function(){
 
         this.change_page();
 
@@ -22,8 +22,7 @@ return page_view.extend({
         "click .x-close": "close"
     },
 
-    render: function()
-    {
+    render: function(){
         this.$el.find("ul").empty();
 
         _.each( [ 'twitter', 'facebook', 'tumblr', 'foursquare'], function( provider ){
@@ -60,8 +59,7 @@ return page_view.extend({
 
     },
 
-    share: function( service )
-    {
+    share: function( service ){
         //this.model = new snapr.models.photo({id: this.photo_id});
 
         var connect_view = this;

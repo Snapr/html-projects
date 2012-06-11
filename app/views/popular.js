@@ -3,108 +3,75 @@ define(['views/base/page', 'collections/photo', 'views/components/thumbnail', 'a
 function(page_view, photo_collection, thumbnail, auth, local_storage, string_utils){
 return page_view.extend({
 
-    events: {
-        "click #popular-timeframe a":"update_list"
-    },
-
     post_initialize: function(){
-
-        this.change_page();
-
-        this.photo_collection = new photo_collection();
-        this.photo_collection.url = snapr.api_base + "/search/";
-        this.photo_collection.data = {
+        this.collection = new photo_collection();
+        this.collection.url = snapr.api_base + "/search/";
+        this.collection.data = {
             sort:"weighted_score",
             n:20
         };
 
         this.list_view = new thumbnail({
-            collection: this.photo_collection,
+            collection: this.collection,
             el: $('#popular-thumbs'),
             back: "Popular"
         });
 
         this.time_period = null;
+    },
 
+    activate: function(){
+        this.collection.reset();
+        this.change_page();
         this.update_list();
     },
 
-    update_time_buttons: function()
-    {
-        this.$el.find( "#popular-timeframe a" ).removeClass( "ui-btn-active" );
-
-        switch (this.time_period)
-        {
-            case 'time-today':
-                this.$el.find( "#popular-time-today" ).addClass( "ui-btn-active" );
-                break;
-            case 'time-week':
-                this.$el.find( "#popular-time-week" ).addClass( "ui-btn-active" );
-                break;
-            case 'time-all':
-                this.$el.find( "#popular-time-all" ).addClass( "ui-btn-active" );
-                break;
-        }
+    events: {
+        "click #popular-timeframe a":"update_list"
     },
 
-    update_list: function( e )
-    {
-        if (e && e.currentTarget)
-        {
+    update_list: function( e ){
+        $.mobile.showPageLoadingMsg();
+
+        var click = !!(e && e.currentTarget);
+        if (click){
             this.time_period = e.currentTarget.id.replace( 'popular-', '' );
             local_storage.save( "popular-time", this.time_period );
-        }
-        else
-        {
+        }else{
             this.time_period = local_storage.get( "popular-time" ) || 'time-all';
         }
 
-        switch (this.time_period)
-        {
+        switch (this.time_period){
             case 'time-today':
                 var today = new Date();
-                this.photo_collection.data.min_date = string_utils.date_to_snapr_format( today );
+                this.collection.data.min_date = string_utils.date_to_snapr_format( today );
                 break;
             case 'time-week':
                 var day = new Date();
                 day.setMilliseconds( day.getMilliseconds() - (7*24*60*60*1000) );
-                this.photo_collection.data.min_date = string_utils.date_to_snapr_format( day );
+                this.collection.data.min_date = string_utils.date_to_snapr_format( day );
                 break;
             case 'time-all':
-                if (this.photo_collection.data.min_date)
-                {
-                    delete this.photo_collection.data.min_date;
+                if (this.collection.data.min_date){
+                    delete this.collection.data.min_date;
                 }
         }
 
-        var popular_view = this;
-
-        var options = {
-            success: function()
-            {
-                // store the last query
-                $('#popular-thumbs').data('query', {
-                    time: popular_view.time_period,
-                    auth: auth.attributes
-                });
-            },
-            error: function( e )
-            {
-                console.log( "error fetching popular photos", e );
-                $.mobile.hidePageLoadingMsg();
-            }
-        };
-
         this.update_time_buttons();
 
-        // only update list if the query has changed or the user clicked on a button
-        if (!_.isEqual( $('#popular-thumbs').data('query'), {time: this.time_period, auth: auth.attributes} ) || e)
-        {
-            $.mobile.showPageLoadingMsg();
-            this.photo_collection.fetch( options );
-        }
+        this.collection.fetch();
+    },
+
+    update_time_buttons: function(){
+        var id_map = {
+            'time-today': "#popular-time-today",
+            'time-week': "#popular-time-week",
+            'time-all': "#popular-time-all"
+        };
+
+        this.$( "#popular-timeframe a" ).removeClass( "ui-btn-active" );
+        this.$( id_map[this.time_period] ).addClass( "ui-btn-active" );
     }
 });
 
-return snapr.views.popular;
 });

@@ -1,27 +1,40 @@
 // Abstract base class for pages
 // sets the page element and binds pagehide
+
 /*global _ Route define require */
+
+/*
+Page{
+    initialize{
+        things to do once only - when view first used
+        deligate events
+
+    }
+    activate{
+        everytime the view is shown
+        responsible for calling render
+        set back button text
+    }
+    render{
+        everytime page is showen or something changes
+    }
+}
+*/
 define(['backbone'], function(Backbone){
 
 return Backbone.View.extend({
 
-    initialize: function(){
-        snapr.current_view = this;
-        $(this.options.el).undelegate();
-        this.setElement( this.options.el );
+    initialize: function(options){
+        _.bindAll( this );
 
-        this.$el.on( "pagebeforehide", function( e, to ){
-            try{  // sometimes some part of to.nextPage[0].dataset.role is undefined
+        this.post_initialize.apply(this, arguments);
+        this.activate.apply(this, arguments);
+    },
 
-                if (to.nextPage[0].dataset.role != "dialog"){
-                    //not going to dialog - undelegate
-                    $(e.target).undelegate();
-                }
+    post_initialize: function(){},
 
-            }catch(e){}
-
-            return true;
-        });
+    // TODO: this is always overridden - move it so it's not
+    activate: function(options){
 
         var page = this;
         this.$el.on( "pagebeforeshow", function(e, options){
@@ -40,13 +53,7 @@ return Backbone.View.extend({
 
             page.set_back_text(back_text);
         });
-
-        _.bindAll( this );
-
-        this.post_initialize.apply(this, arguments);
     },
-
-    post_initialize: function(){},
 
     set_back_text: function(text){
         if(text){

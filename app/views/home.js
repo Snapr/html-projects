@@ -13,10 +13,11 @@ return page_view.extend({
         auth.bind("change", this.render);
 
         // only render the home page the first time we load
-        if ($.mobile.activePage && $.mobile.activePage.find("#home").length < 1){
-            $.mobile.changePage( "#home" );
-            this.render();
-        }
+        this.render();
+    },
+
+    activate: function(){
+        $.mobile.changePage( "#home" );
     },
 
     render: function(){
@@ -37,16 +38,8 @@ return page_view.extend({
         return this;
     },
 
-    upload_count: function( count )
-    {
-        if (count)
-        {
-            this.$el.find( ".upload-count" ).show().text( count );
-        }
-        else
-        {
-            this.$el.find( ".upload-count" ).hide().text( "0" );
-        }
+    upload_count: function( count ){
+        this.$(".upload-count").toggle(!!count).text( count || "0" );
     }
 
 });

@@ -3,30 +3,25 @@ define(['views/base/page'], function(page_view){
 return page_view.extend({
 
     post_initialize: function(){
+        this.el.live('pagehide', function( e ){
+            $.mobile.hidePageLoadingMsg();
+            return true;
+        });
+    },
+    activate: function(){
 
         this.change_page();
 
-        setTimeout(function()
-        {
+        setTimeout(function(){
            $.mobile.showPageLoadingMsg();
         },100);
-
-        _.bindAll( this );
-        this.el.live('pagehide', function( e )
-        {
-            $(e.target).undelegate();
-            $.mobile.hidePageLoadingMsg();
-
-            return true;
-        });
 
     },
     events: {
         "click": "home"
     },
 
-    home: function()
-    {
+    home: function(){
         Route.navigate( "#/", true );
     }
 });

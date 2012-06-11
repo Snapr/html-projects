@@ -2,7 +2,7 @@
 define(['views/base/dialog', 'auth'], function(dialog_view, auth){
 return dialog_view.extend({
 
-    post_initialize: function(){
+    activate: function(){
 
         if (this.options.query){
             this.message = this.options.query.message;
@@ -14,14 +14,11 @@ return dialog_view.extend({
             this.$el.find(".login-message").hide().text("");
         }
 
-        this.change_page({
-            transition: this.transition
-        });
+        this.change_page();
     },
 
     events: {
         "submit #login-dialog":"log_in",
-        "click .x-back": "back",
         "click .twitter-button": 'twitter_login'
     },
 

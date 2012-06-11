@@ -10,16 +10,19 @@ var dash_view = page_view.extend({
     el: $('#dashboard'),
 
     post_initialize: function(){
-        this.change_page();
-
-        // make sure image streams are emptied
-        this.$el.find('.image-streams').empty();
-
         this.collection = new dash_model();
         window.dash = this.collection;
 
         this.collection.bind( 'remove', this.remove_stream );
         this.collection.bind( 'add', this.add_stream );
+    },
+
+    activate: function(){
+        this.change_page();
+
+        // make sure image streams are emptied
+        this.$el.find('.image-streams').empty();
+
         this.populate();
     },
 
@@ -180,31 +183,29 @@ var dash_stream = side_scroll.extend({
 var add_person = dialog_view.extend({
 
     post_initialize: function(){
-
-        this.$el.find("ul.people-list").empty();
-        this.$el.find(".ui-input-text").val('');
+        var dialog = this;
+        this.$el.live( "pageshow", function( e, ui )
+        {
+            dialog.$('#people-search').focus();
+        });
 
         this.collection = new user_collection();
 
-        var people_view = this;
-
-        this.collection.bind( "reset", function()
-        {
-            people_view.render();
+        this.collection.bind( "reset", function(){
+            dialog.render();
         });
 
-        this.change_page( {
-            transition: this.transition
-        });
+    },
 
-        this.$el.live( "pageshow", function( e, ui ){
-            people_view.$('#people-search').focus();
-        });
+    activate: function(){
+        this.$el.find("ul.people-list").empty();
+        this.$el.find(".ui-input-text").val('');
+
+        this.change_page();
     },
 
     events: {
-        "keyup input": "search",
-        "click .x-back": "back"
+        "keyup input": "search"
     },
 
     render: function()
@@ -297,11 +298,18 @@ var add_person = dialog_view.extend({
 var add_search = dialog_view.extend({
 
     post_initialize: function(){
+        var dialog = this;
+        this.$el.live( "pageshow", function( e, ui )
+        {
+            dialog.$('#dash-search-keywords').focus();
+        });
+
+    },
+
+    activate: function(){
         this.$el.find(".ui-input-text").val('');
 
-        this.change_page({
-            transition: this.transition
-        });
+        this.change_page();
 
         var dialog = this;
         this.$el.live( "pageshow", function( e, ui )

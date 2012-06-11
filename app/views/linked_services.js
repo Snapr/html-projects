@@ -2,7 +2,7 @@
 define(['views/base/dialog', 'models/user_settings', 'views/linked_service'], function(dialog_view, user_settings, linked_service){
 return dialog_view.extend({
 
-    post_initialize: function(){
+    activate: function(){
 
         this.change_page({
             transition: "slideup"
@@ -19,22 +19,16 @@ return dialog_view.extend({
 
         var linked_services_view = this;
         var options = {
-            success: function()
-            {
+            success: function(){
                 linked_services_view.user_settings.linked_services_setup();
                 linked_services_view.render();
             },
-            error: function()
-            {
+            error: function(){
                 console.log( 'error');
             }
         };
 
         this.user_settings.fetch(options);
-    },
-
-    events: {
-        "click .x-back": "back"
     },
 
     render: function()

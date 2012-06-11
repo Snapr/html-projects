@@ -2,7 +2,7 @@
 define(['views/base/dialog', 'auth'], function(dialog_view, auth){
 return dialog_view.extend({
 
-    post_initialize: function(){
+    activate: function(){
 
         if (this.options.query){
             this.redirect = unescape( this.options.query.redirect );
@@ -15,15 +15,12 @@ return dialog_view.extend({
             this.$el.find(".login-message").text("");
         }
 
-        this.change_page({
-            transition: this.transition
-        });
+        this.change_page();
     },
 
     events: {
         "submit #tumblr-dialog":"link_tumblr",
-        "click .tumblr-button":"link_tumblr",
-        "click .x-back": "back"
+        "click .tumblr-button":"link_tumblr"
     },
 
     link_tumblr: function(){

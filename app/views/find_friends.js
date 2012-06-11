@@ -2,11 +2,9 @@
 define(['views/base/dialog'], function(dialog_view){
 return dialog_view.extend({
 
-    post_initialize: function(){
+    activate: function(){
 
-        this.change_page({
-            transition: this.transition
-        });
+        this.change_page();
 
         if(this.options.query && this.options.query.back_url){
             var back_url = this.options.query.back_url;

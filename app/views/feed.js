@@ -8,6 +8,10 @@ function(page_view, user_model, user_header, feed_header, photo_collection,
 return page_view.extend({
 
     post_initialize: function(){
+        this.photo_collection = new photo_collection();
+        this.photo_collection.url = snapr.api_base + "/search/";
+    },
+    activate: function(){
 
         this.query = this.options.query || {};
 
@@ -34,28 +38,23 @@ return page_view.extend({
         var toggle_container = this.$el.find( ".feed-view-toggle" );
         toggle_container.find( "input[type='radio']" ).attr( "checked", false );
 
-        if (list_style == 'grid')
-        {
+        if (list_style == 'grid'){
             this.$el.find(".feed-content").addClass("grid");
             toggle_container.find("#feed-view-grid").attr( "checked", true );
         }
-        else
-        {
+        else{
             this.$el.find(".feed-content").removeClass("grid");
             toggle_container.find("#feed-view-list").attr( "checked", true );
         }
 
 
-        if (this.query.username)
-        {
+        if (this.query.username){
             this.feed_header = new user_header({
                 username: this.query.username,
                 model: new user_model( {username: this.query.username} ),
                 el: this.$el.find(".feed-header").empty()[0]
             });
-        }
-        else
-        {
+        }else{
             this.feed_header = new feed_header({
                 query_data: this.query,
                 el: this.$el.find(".feed-header").empty()[0]
@@ -71,29 +70,17 @@ return page_view.extend({
         this.$el.find(".feed-upload-list").empty();
         this.$el.find('#feed-images').empty();
 
-        this.$el.on( "pageshow", function()
-        {
+        this.$el.on( "pageshow", function(){
             toggle_container.find( "input[type='radio']" ).checkboxradio( "refresh" );
 
         });
 
         // if we are coming from the map view do a flip, otherwise do a slide transition
-        var transition;
-        if ($.mobile.activePage.attr('id') == 'map' )
-        {
-            transition = "flip";
-        }
-        else
-        {
-            transition = "none";
-        }
-
+        var transition = ($.mobile.activePage.attr('id') == 'map') ? "flip" : "slideup";
         this.change_page({
             transition: transition
         });
 
-        this.photo_collection = new photo_collection();
-        this.photo_collection.url = snapr.api_base + "/search/";
         this.photo_collection.data = this.query;
         this.photo_collection.data.n = this.photo_collection.data.n || snapr.constants.feed_count;
         this.photo_collection.data.detail = 2;
