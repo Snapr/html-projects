@@ -80,7 +80,7 @@ require(['routers', 'backbone'], function(routers, Backbone){
     $(window).on("pagecontainercreate", function(){ Backbone.history.start(); });
 });
 
-require(['jquery'], function($) {
+require(['jquery', 'backbone', 'photoswipe', 'auth', 'utils/local_storage'], function($, Backbone, PhotoSwipe, auth, local_storage) {
 
     /* disable jquery-mobile's hash nav so we can replace it with backbone.js
     ***************************/
@@ -97,10 +97,6 @@ require(['jquery'], function($) {
         // Now jQm is loaded and applied styles we can show everything.
         $(document.body).show();
     });
-});
-
-require(['jquery', 'backbone', 'photoswipe', 'auth', 'utils/local_storage'], function($, Backbone, PhotoSwipe, auth, local_storage) {
-
 
     /* offline mode / timeout
     ***************************/

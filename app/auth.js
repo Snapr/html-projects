@@ -59,35 +59,23 @@ var auth_model = Backbone.Model.extend({
         }
     },
 
-    save_locally: function()
-    {
+    save_locally: function(){
         var snapr_user = this.get( "snapr_user" );
         var access_token = this.get( "access_token" );
 
         if (local_storage.get( "appmode" )){
             pass_data( "snapr://login?snapr_user=" + encodeURI( snapr_user ) + "&access_token=" + encodeURI( access_token ) );
         }else{
-            if (snapr.info.supports_local_storage){
-                localStorage.setItem( "snapr_user", snapr_user );
-                localStorage.setItem( "access_token", access_token );
-            }else{
-                $.cookie( "snapr_user", snapr_user );
-                $.cookie( "access_token", access_token );
-            }
+            localStorage.setItem( "snapr_user", snapr_user );
+            localStorage.setItem( "access_token", access_token );
         }
     },
 
-    logout: function()
-    {
+    logout: function(){
         this.unset( "snapr_user" );
         this.unset( "access_token" );
-        if (snapr.info.supports_local_storage){
-            var snapr_user = localStorage.removeItem( "snapr_user" );
-            var access_token = localStorage.removeItem( "access_token" );
-        }else{
-            $.cookie( "snapr_user", null );
-            $.cookie( "access_token", null );
-        }
+        localStorage.removeItem( "snapr_user" );
+        localStorage.removeItem( "access_token" );
     },
 
     // decorator function
