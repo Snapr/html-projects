@@ -289,18 +289,14 @@ require(['jquery', 'backbone', 'photoswipe', 'auth', 'utils/local_storage'], fun
             }
         }) );
 
-        // handle dialog links
+        // handle dialog links to stop them changing the url
         $("a[data-snapr-dialog='true']").live("vclick", function( e ){
-            e.preventDefault();
-
-            var routeStripper = /^[#\/]/;
-            var stripped_link = e.currentTarget.hash.replace( routeStripper, "");
-
-            var snapr_url = stripped_link.split("?")[0].replace( routeStripper, "");
-            var query_string = stripped_link.split("?")[1];
-
-            //console.debug("dialog", snapr_url, query_string);
-            snapr.routers.prototype[ snapr.routers.prototype.routes[ snapr_url ]  ]( query_string, snapr.info.current_view );
+            var found = Backbone.history.loadUrl(
+                Backbone.history.getHash({location:{href:e.currentTarget.href}})
+            );
+            if(found){
+                e.preventDefault();
+            }
         });
 
 
