@@ -1,9 +1,8 @@
 /*global _ Route define require */
-define(['backbone', 'auth'], function(Backbone, auth){
+define(['backbone', 'auth', 'models/favorite'], function(Backbone, auth, favorite_model){
 return Backbone.View.extend({
 
-    initialize: function()
-    {
+    initialize: function(){
         _.bindAll( this );
 
         this.li = this.options.li;
@@ -19,23 +18,20 @@ return Backbone.View.extend({
         "click .favorite-button": "favorite"
     },
 
-    favorite: function()
-    {
+    favorite: function(){
         var fav_btn = this;
         var is_fav = this.model.get('favorite');
-        var fav_count = parseInt( this.model.get('favorite_count') );
+        var fav_count = parseInt( this.model.get('favorite_count'), 10 );
 
         window.f = fav_btn;
         fav_btn.$('.favorite-button').x_loading();
 
-        auth.require_login( function()
-        {
-            var fav = new snapr.models.favorite({
+        auth.require_login( function(){
+            var fav = new favorite_model({
                 id: fav_btn.model.get('id')
             });
 
-            if (is_fav)
-            {
+            if (is_fav){
 
                 fav_btn.model.set({
                     favorite: false,
@@ -44,8 +40,7 @@ return Backbone.View.extend({
 
                 // already saved as a fav so we will remove it
                 var options = {
-                    success: function( s )
-                    {
+                    success: function( s ){
                         // success is not passed through so we check for error
                         if (!s.get('error'))
                         {
@@ -53,16 +48,13 @@ return Backbone.View.extend({
                         }
                         fav_btn.$('.favorite-button').x_loading(false);
                     },
-                    error: function(e)
-                    {
+                    error: function(e){
                         console.log('fav error',e);
                         fav_btn.$('.favorite-button').x_loading(false);
                     }
                 };
                 fav.destroy( options );
-            }
-            else
-            {
+            }else{
                 // save a new fav (empty object is important)
                 var options = {
                     success: function(s)
@@ -77,27 +69,25 @@ return Backbone.View.extend({
                         }
                         fav_btn.$('.favorite-button').x_loading(false);
                     },
-                    error: function(e)
-                    {
+                    error: function(e){
                         console.log('fav error',e);
                         fav_btn.$('.favorite-button').x_loading(false);
                     }
-                }
+                };
                 fav.save( {}, options );
             }
         })();
     },
 
-    render: function()
-    {
+    render: function(){
         this.$el.html( this.template({
             favorite: this.model.get("favorite"),
-            count: parseInt( this.model.get("favorite_count"))
+            count: parseInt( this.model.get("favorite_count"), 10)
         }));
 
         this.li.$el.trigger("create");
 
-        return this
+        return this;
     }
 
 });
