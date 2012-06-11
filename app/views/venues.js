@@ -1,6 +1,6 @@
 /*global _ Route define require */
-define(['views/base/dialog', 'collections/foursquare_venue', 'views/venue_li'], function(dialog_view, foursquare_venue_collection, venue_li){
-return dialog_view.extend({
+define(['backbone', 'views/base/dialog', 'collections/foursquare_venue'], function(Backbone, dialog_view, foursquare_venue_collection){
+var venues = dialog_view.extend({
 
     post_initialize: function(){
         this.selected_id = this.options.query.foursquare_venue_id;
@@ -16,7 +16,7 @@ return dialog_view.extend({
         // a simple array of venues which will be filtered and displayed
         this.display_collection = [];
 
-        this.collection.bind( "reset", this.reset_collection );
+        this.collection.bind( "reset", _.bind(this.reset_collection, this) );
 
         // if we are coming from the map view do a flip, otherwise do a slide transition
         if ($.mobile.activePage.attr('id') == 'map' )
@@ -41,8 +41,7 @@ return dialog_view.extend({
         "click .x-back": "back"
     },
 
-    render: function()
-    {
+    render: function(){
         var venue_list = this.$el.find("ul.venue-list").empty();
 
         var venue_li_template = _.template( $("#venue-li-template").html() );
@@ -52,7 +51,7 @@ return dialog_view.extend({
         var photo_model = this.model;
         _.each( this.display_collection, function( model )
         {
-            var venue_li = new venue_li({
+            var li = new venue_li({
                 template: venue_li_template,
                 model: model,
                 photo_model: photo_model,
@@ -61,21 +60,19 @@ return dialog_view.extend({
                 back_view: this.back_view
             });
 
-            venue_list.append( venue_li.render().el );
+            venue_list.append( li.render().el );
 
         }, this);
 
         venue_list.listview().listview("refresh");
     },
 
-    reset_collection: function()
-    {
+    reset_collection: function(){
         this.display_collection = _.clone( this.collection.models );
         this.render();
     },
 
-    search: function( e )
-    {
+    search: function( e ){
         var venues_view = this;
 
         var keywords = e.target && e.target.value && e.target.value.toLowerCase() || "";
@@ -118,5 +115,68 @@ return dialog_view.extend({
 
     }
 });
+
+var venue_li = Backbone.View.extend({
+
+    initialize: function()
+    {
+        _.bindAll( this );
+
+        this.template = this.options.template;
+
+        this.selected_id = this.options.selected_id;
+
+        this.photo_model = this.options.photo_model;
+
+        this.back_query = this.options.back_query;
+
+        this.back_view = this.options.back_view;
+    },
+
+    tagName: 'li',
+
+    events: {
+        "click a": "select_venue"
+    },
+
+    render: function()
+    {
+        var icon = this.model.get( "categories" ).length &&
+            this.model.get( "categories" )[0].icon ||
+            'http://foursquare.com/img/categories/none_64.png';
+        var selected = (this.model.get( "id" ) == this.selected_id);
+
+        this.$el.html( this.template({
+            venue: this.model,
+            icon: icon,
+            selected: selected
+        }) );
+
+        return this;
+    },
+
+    select_venue: function()
+    {
+        var venue = {
+            foursquare_venue_id: this.model.get("id"),
+            foursquare_venue_name: this.model.get("name")
+        };
+
+        var location = _.extend( this.photo_model.get( "location" ), venue );
+
+        this.photo_model.set({
+            location: location
+        });
+
+        this.back_view.initialize.call({
+            query: this.back_query,
+            model: this.photo_model,
+            el: $("#share-photo")[0]
+        });
+        snapr.info.current_view = this.back_view;
+    }
+});
+
+return venues;
 
 });

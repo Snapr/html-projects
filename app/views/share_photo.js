@@ -4,7 +4,7 @@ define(['views/base/page', 'models/photo', 'models/geo_location', 'collections/f
 function(page_view, photo_model, geo_location, foursquare_venue_collection, venues_view, geo, auth, local_storage){
 return page_view.extend({
 
-    initialize: function(){
+    post_initialize: function(){
 
         this.template = _.template( $("#share-photo-template").html() );
 
