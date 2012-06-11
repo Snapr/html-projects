@@ -18,6 +18,7 @@ return page_view.extend({
 
         this.post_initialize.apply(this, arguments);
         this.activate.apply(this, arguments);
+        $(document.body).show();
     },
 
     activate: function(){

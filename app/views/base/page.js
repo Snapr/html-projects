@@ -1,22 +1,19 @@
 // Abstract base class for pages
-// sets the page element and binds pagehide
 
 /*global _ Route define require */
 
 /*
+things to deine:
 Page{
-    initialize{
+    post_initialize{
         things to do once only - when view first used
-        deligate events
-
     }
     activate{
         everytime the view is shown
         responsible for calling render
-        set back button text
     }
     render{
-        everytime page is showen or something changes
+        everytime view is showen or something changes
     }
 }
 */
@@ -29,6 +26,7 @@ return Backbone.View.extend({
 
         this.post_initialize.apply(this, arguments);
         this.activate.apply(this, arguments);
+        $(document.body).show();
     },
 
     post_initialize: function(){},

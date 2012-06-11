@@ -95,7 +95,6 @@ require(['jquery', 'backbone', 'photoswipe', 'auth', 'utils/local_storage'], fun
     // now we can load jQmobile
     require(['jquery.mobile'], function(){
         // Now jQm is loaded and applied styles we can show everything.
-        $(document.body).show();
     });
 
     /* offline mode / timeout

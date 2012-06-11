@@ -14,6 +14,7 @@ return page_view.extend({
     },
 
     activate: function(){
+        this.change_page();
 
         this.query = this.options.query;
 
@@ -23,8 +24,6 @@ return page_view.extend({
 
         // make sure the view is empty
         this.$el.find("[data-role='content']").empty();
-
-        this.change_page();
 
         // if we are coming from the venue selection screen the model will be passed in
         if (!this.model){
@@ -63,11 +62,9 @@ return page_view.extend({
             img_url = this.model.get("photo_path");
         }
 
-        var screen_height = window.innerHeight;
-
         this.$el.find("[data-role='content']").html( this.template({
             img_url: img_url,
-            screen_height: screen_height,
+            screen_height: window.innerHeight,
             photo: this.model,
             status: local_storage.get( "status" ),
             share_location: local_storage.get( "share-location" ) !== 'false',
@@ -79,16 +76,14 @@ return page_view.extend({
         }) ).trigger("create");
 
 
-        if (description)
-        {
+        if (description){
             this.$el.find("#description").val( description );
         }
 
         return this;
     },
 
-    share_alert: function(e)
-    {
+    share_alert: function(e){
         snapr.utils.notification( "Share", "Please set the image to Public before sharing to other services", $.noop );
     },
 
