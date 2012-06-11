@@ -11,7 +11,7 @@ return dialog_view.extend({
 
         this.template = _.template( $("#user-profile-template").html() );
 
-        this.model.bind( "change", function(){this.render();} );
+        this.model.bind( "change", _.bind(this.render, this) );
 
         // if we are coming from the map view do a flip, otherwise do a slide transition
         var transition;
@@ -33,7 +33,6 @@ return dialog_view.extend({
     },
 
     render: function(){
-        console.log(this);
         this.$el.find( ".user-profile" ).html( this.template({
             user: this.model
         }) );
