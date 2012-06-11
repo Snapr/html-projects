@@ -3436,8 +3436,7 @@ a.ui-link-inherit {
   white-space: normal!important;
 }
 .wrap-content p {
-  margin-bottom: 16px!important;
-  margin-right: 24px!important;
+  margin: 8px 24px 8px 0!important;
   font-family: Helvetica, Arial, sans-serif;
 }
 .plain-link {
