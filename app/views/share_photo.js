@@ -54,8 +54,7 @@ return page_view.extend({
         "submit form": "share"
     },
 
-    render: function()
-    {
+    render: function(){
         var description = this.$el.find("#description").val();
 
         var img_url;
@@ -104,10 +103,10 @@ return page_view.extend({
             id: id,
             location: {}
         });
-        this.model.bind( "change:secret", this.render );
+        this.model.bind( "change:secret", _.bind(this.render, this) );
 
-        this.model.bind( "set:location", this.render );
-        this.model.bind( "change:foursquare_venue_name", this.render );
+        this.model.bind( "set:location", _.bind(this.render, this) );
+        this.model.bind( "change:foursquare_venue_name", _.bind(this.render, this) );
 
         this.model.fetch({
             success: function( model )
