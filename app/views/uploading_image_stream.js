@@ -40,50 +40,6 @@ return side_scroll.extend({
                 break;
         }
 
-    },
-
-    // render: function()
-    // {
-    //     if (this.collection.length)
-    //     {
-    //         var first = this.collection.first();
-    //         var param = _.clone(this.collection.data);
-    //         delete param.access_token;
-    //         if (first.attributes.location.foursquare_venue_name)
-    //         {
-    //             param.venue_name = first.attributes.location.foursquare_venue_name;
-    //         }
-    //         _.map( param, function( value, key )
-    //         {
-    //             param[key] = escape( value );
-    //         });
-    //         var query = $.param(param);
-    //         var time = string_utils.short_timestamp( first.get("date") );
-    //         var description = this.collection.first().get("description");
-    //         this.$el.html( this.template({
-    //             stream_type: this.stream_type,
-    //             time: time,
-    //             query: query,
-    //             first: first.attributes
-    //         }) );
-
-    //         var $thumbs_grid = this.$el.find( ".thumbs-grid" );
-    //         var thumb_template = _.template( $("#uploading-image-stream-image-template").html() );
-
-    //         _.each( this.collection.models, function( photo )
-    //         {
-    //             var thumb = thumb_template({
-    //                 photo: photo.attributes
-    //             });
-    //             $thumbs_grid.append( thumb );
-    //         });
-
-    //         $(this.container).append( this.el );
-    //     }
-
-    //     this.$el.trigger( "create" );
-
-    //     return this;
-    // }
+    }
 });
 });

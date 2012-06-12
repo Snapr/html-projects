@@ -243,7 +243,6 @@ var feed_li =  Backbone.View.extend({
 var comment_button = Backbone.View.extend({
 
     initialize: function(){
-        // TODO - is everything in here needed?
         $(this.options.el).undelegate();
         this.setElement( this.options.el );
         this.li = this.options.li;
@@ -261,7 +260,6 @@ var comment_button = Backbone.View.extend({
             selected: selected
         }));
 
-        // TODO this seems inefficient
         $(this.li.el).trigger("create");
 
         return this;

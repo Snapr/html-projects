@@ -25,14 +25,6 @@ return Backbone.View.extend({
         _.bindAll( this );
 
         this.post_initialize.apply(this, arguments);
-        this.activate.apply(this, arguments);
-        $(document.body).show();
-    },
-
-    post_initialize: function(){},
-
-    // TODO: this is always overridden - move it so it's not
-    activate: function(options){
 
         var page = this;
         this.$el.on( "pagebeforeshow", function(e, options){
@@ -40,18 +32,25 @@ return Backbone.View.extend({
             var back_text;
             if(history.state && history.state.back_text){
                 back_text = history.state.back_text;
-                //console.debug('back from history state: '+back_text);
+                console.debug('back from history state: '+back_text);
             }else if(options.prevPage){
                 back_text = options.prevPage.data('back_text-title') || options.prevPage.data('short-title') || options.prevPage.data('title');
-                //console.debug('prevPage backtext, short title, title', options.prevPage.data('back_text-title'), options.prevPage.data('short-title'), options.prevPage.data('title'));
-                //console.debug('back from options: '+back_text);
+                console.debug('prevPage backtext, short title, title', options.prevPage.data('back_text-title'), options.prevPage.data('short-title'), options.prevPage.data('title'));
+                console.debug('back from options: '+back_text);
             }else{
-                //console.debug("no back text from hisory or options.prevPage");
+                console.debug("no back text from hisory or options.prevPage");
             }
 
             page.set_back_text(back_text);
         });
+
+        this.activate.apply(this, arguments);
+        $(document.body).show();
     },
+
+    post_initialize: function(){},
+
+    activate: function(){},
 
     set_back_text: function(text){
         if(text){
