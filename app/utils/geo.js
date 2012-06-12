@@ -36,47 +36,37 @@ geo.get_location = function ( success, error ){
 };
 
 /* only used for android */
-geo.get_cached_geolocation = function()
-{
-    if (snapr.info.supports_local_storage)
-    {
+geo.get_cached_geolocation = function(){
+    if (local_storage.supported){
         var now = new Date().getTime();
-        if (localStorage.getItem('curr_geolocation') !== undefined &&
-            now < localStorage.getItem('geolocation_cache_expires'))
+        if (local_storage.get('curr_geolocation') !== undefined &&
+            now < local_storage.get('geolocation_cache_expires'))
         {
-            return JSON.parse(localStorage.getItem('curr_geolocation'));
-        }
-        else
-        {
+            return JSON.parse(local_storage.get('curr_geolocation'));
+        }else{
             return null;
         }
-    }
-    else
-    {
+    }else{
         return null;
     }
 };
 
 /* only used for android */
-geo.set_cached_geolocation = function( location )
-{
+geo.set_cached_geolocation = function( location ){
     var geolocation_cache_time = 1000*60*5; //5 minutes in milliseconds
-    if (snapr.info.supports_local_storage)
-    {
+    if (local_storage.supported){
         var now = new Date().getTime();
-        if (localStorage.getItem('geolocation_cache_expires') === undefined ||
-            localStorage.getItem('geolocation_cache_expires') < now)
+        if (local_storage.get('geolocation_cache_expires') === undefined ||
+            local_storage.get('geolocation_cache_expires') < now)
         {
-            localStorage.setItem('geolocation_cache_expires', now + geolocation_cache_time);
-            localStorage.setItem('curr_geolocation', JSON.stringify( location ));
+            local_storage.set('geolocation_cache_expires', now + geolocation_cache_time);
+            local_storage.set('curr_geolocation', JSON.stringify( location ));
         }
     }
 };
 
-geo.set_location = function( latitude, longitude )
-{
-    while (geo.location_callbacks.length)
-    {
+geo.set_location = function( latitude, longitude ){
+    while (geo.location_callbacks.length){
         geo.location_callbacks.pop()({
             coords: {
                 latitude: latitude,
@@ -85,10 +75,8 @@ geo.set_location = function( latitude, longitude )
         });
     }
 };
-geo.location_error = function( error )
-{
-    while (geo.location_error_callbacks.length)
-    {
+geo.location_error = function( error ){
+    while (geo.location_error_callbacks.length){
         geo.location_error_callbacks.pop()( error );
     }
 };
