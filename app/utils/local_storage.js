@@ -37,30 +37,6 @@ local_storage.save = function( key, value ){
             $.cookie( key, value );
         }
     }
-
-    // TODO: this is not the right place to be setting these.
-    if (key == "appmode"){
-        $("body").addClass("appmode-true").addClass("appmode-" + value);
-    }
-    if (key == "browser_testing"){
-        $("body").addClass("browser-testing");
-    }
-    if (key == "aviary"){
-        $("body").addClass("aviary");
-    }
-    if (key == "camplus"){
-        $("body").addClass("camplus");
-    }
-    if (key == "camplus_camera"){
-        $("body").addClass("camplus-camera");
-    }
-    if (key == "camplus_edit"){
-        $("body").addClass("camplus-edit");
-    }
-    if (key == "camplus_lightbox"){
-        $("body").addClass("camplus-lightbox");
-    }
-
 };
 
 return local_storage;

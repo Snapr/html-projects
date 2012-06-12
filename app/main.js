@@ -200,6 +200,12 @@ require(['jquery', 'backbone', 'photoswipe', 'auth', 'utils/local_storage'], fun
 
     $(function () {
 
+        // this saves certain params to local storage
+        var hash = window.location.hash.split('?');
+        if(hash.length > 1){
+            snapr.utils.get_query_params(hash[1]);
+        }
+
         /* setup body classes - used to turn features on and off
         ***************************/
         var appmode = local_storage.get("appmode");
