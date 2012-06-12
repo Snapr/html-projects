@@ -8,7 +8,7 @@ return page_view.extend({
     initialize: function(){
         _.bindAll( this );
 
-        this.events = _.extend(this.events, {
+        this.events = _.extend(this.events || {}, {
             "click .x-back": "back"
         });
 
@@ -46,7 +46,7 @@ return page_view.extend({
             });
             snapr.info.current_view = this.previous_view;
         }else{
-            console.error('NO WAY OUT OF DIALOG! Tell Jake.');
+            Route.navigte('#');
         }
         // else if (this.back_view){
         //     console.debug('this.back_view',this.back_view);

@@ -1,14 +1,12 @@
 /*global _ Route define require */
-define(['backbone'], function(Backbone){
-return  snapr.views.side_scroll.extend({
+define(['backbone', 'views/base/side_scroll', 'collections/photo'], function(Backbone, side_scroll, photo_collection){
+return side_scroll.extend({
     tagName: 'li',
     className: 'image-stream',
     template: _.template( $('#uploading-stream-template').html() ),
     thumbs_template: _.template( $('#uploading-stream-thumb-template').html() ),
 
-    initialize: function()
-    {
-        //_.bindAll( this );
+    post_initialize: function(){
 
         this.details = {
             stream_type: this.options.stream_type,
@@ -17,8 +15,6 @@ return  snapr.views.side_scroll.extend({
             spot: this.options.spot,
             venue_name: this.options.venue_name
         };
-
-        this.collection = new snapr.models.photo_collection();
 
         switch (this.details.stream_type)
         {
@@ -44,7 +40,6 @@ return  snapr.views.side_scroll.extend({
                 break;
         }
 
-        snapr.views.side_scroll.prototype.initialize.call(this);
     },
 
     // render: function()

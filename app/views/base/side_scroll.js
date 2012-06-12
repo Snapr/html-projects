@@ -1,6 +1,6 @@
 // Abstract base class side-scroll views
 /*global _ Route define require */
-define(['backbone', 'utils/photoswipe', 'iscroll', 'utils/string'], function(Backbone, photoswipe, iScroll, string_utils){
+define(['backbone', 'utils/photoswipe', 'iscroll', 'utils/string', 'collections/photo'], function(Backbone, photoswipe, iScroll, string_utils, photo_collection){
 return Backbone.View.extend({
 
     // The following 3 attrs need to be set when extending this view
@@ -10,6 +10,8 @@ return Backbone.View.extend({
 
 
     initialize: function() {
+        _.bindAll(this);
+        this.collection = this.collection || new photo_collection();
         this.collection.bind('all', this.re_render_thumbs, this);
         this.post_initialize.apply(this, arguments);
     },
