@@ -1,8 +1,8 @@
 /*global _ Route define require */
-define(['backbone', 'views/base/dialog', 'collections/foursquare_venue'], function(Backbone, dialog_view, foursquare_venue_collection){
-var venues = dialog_view.extend({
+define(['backbone', 'views/base/page', 'collections/foursquare_venue'], function(Backbone, page_view, foursquare_venue_collection){
+var venues = page_view.extend({
 
-    activate: function(){
+    post_activate: function(){
         this.selected_id = this.options.query.foursquare_venue_id;
 
         this.query = this.options.query;

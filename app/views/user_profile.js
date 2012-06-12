@@ -1,13 +1,13 @@
 /*global _ Route define require */
-define(['views/base/dialog', 'models/user'], function(dialog_view, user_model){
+define(['views/base/page', 'models/user'], function(page_view, user_model){
 
-return dialog_view.extend({
+return page_view.extend({
 
     post_initialize: function(){
         this.template = _.template( $("#user-profile-template").html() );
     },
 
-    activate: function(){
+    post_activate: function(){
 
         this.$el.find( ".user-profile" ).empty();
 

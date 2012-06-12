@@ -6,7 +6,7 @@ return page_view.extend({
         this.$el.find("form").attr( "action", snapr.base_url + "/api/upload/" );
     },
 
-    activate: function(){
+    post_activate: function(){
         // we will redirect to this url on successful upload
         this.redirect_uri = window.location.origin + window.location.pathname + "#/photo-edit/";
 

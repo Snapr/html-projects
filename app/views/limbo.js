@@ -8,7 +8,7 @@ return page_view.extend({
             return true;
         });
     },
-    activate: function(){
+    post_activate: function(){
 
         this.change_page();
 

@@ -152,12 +152,12 @@ var routers = Backbone.Router.extend({
 
 function _make_route(view, el, extra_data){
     extra_data = extra_data || {};
-    var route = function(query_string){
+    var route = function(query_string, dialog){
         require([view], function(view) {
             var query = snapr.utils.get_query_params(query_string),
                 options = _.extend({
                     query: query,
-                    el: route.cached_el
+                    dialog: !!dialog
                 }, extra_data);
             if(!route.cached_view){
                 options.el = $(el);

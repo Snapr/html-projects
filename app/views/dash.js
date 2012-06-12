@@ -1,8 +1,8 @@
 /*global _ Route define require */
-define(['views/base/page', 'views/base/dialog', 'views/base/side_scroll',
+define(['views/base/page', 'views/base/page', 'views/base/side_scroll',
     'models/dash', 'models/dash_stream', 'collections/user',
     'views/components/no_results', 'views/people_li', 'utils/geo', 'auth'],
-    function(page_view, dialog_view, side_scroll, dash_model, dash_stream_model,
+    function(page_view, page_view, side_scroll, dash_model, dash_stream_model,
         user_collection, no_results, people_li, geo, auth){
 
 var dash_view = page_view.extend({
@@ -17,7 +17,7 @@ var dash_view = page_view.extend({
         this.collection.bind( 'add', this.add_stream );
     },
 
-    activate: function(){
+    post_activate: function(){
         this.change_page();
 
         // make sure image streams are emptied
@@ -180,7 +180,7 @@ var dash_stream = side_scroll.extend({
     }
 });
 
-var add_person = dialog_view.extend({
+var add_person = page_view.extend({
 
     post_initialize: function(){
         var dialog = this;
@@ -197,7 +197,7 @@ var add_person = dialog_view.extend({
 
     },
 
-    activate: function(){
+    post_activate: function(){
         this.$el.find("ul.people-list").empty();
         this.$el.find(".ui-input-text").val('');
 
@@ -295,7 +295,7 @@ var add_person = dialog_view.extend({
 
 });
 
-var add_search = dialog_view.extend({
+var add_search = page_view.extend({
 
     post_initialize: function(){
         var dialog = this;
@@ -306,7 +306,7 @@ var add_search = dialog_view.extend({
 
     },
 
-    activate: function(){
+    post_activate: function(){
         this.$el.find(".ui-input-text").val('');
 
         this.change_page();

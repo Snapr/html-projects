@@ -2,7 +2,7 @@
 define(['views/base/page', 'views/linked_service', 'models/post'], function(page_view, linked_service, post_model){
 var connect_page = page_view.extend({
 
-    activate: function(){
+    post_activate: function(){
 
         this.change_page();
 

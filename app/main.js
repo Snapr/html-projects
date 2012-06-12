@@ -297,13 +297,17 @@ require(['jquery', 'backbone', 'photoswipe', 'auth', 'utils/local_storage'], fun
 
         // handle dialog links to stop them changing the url
         $("a[data-snapr-dialog='true']").live("vclick", function( e ){
-            var found = Backbone.history.loadUrl(
-                Backbone.history.getHash({location: e.currentTarget})
-            );
-            snapr.info.current_view.change_hash = false;
-            if(found){
-                e.preventDefault();
-            }
+            var hash = Backbone.history.getHash({location: e.currentTarget});
+            var fragment = Backbone.history.getFragment(hash);
+            var matched = _.any(Route.routes, function(callback, route) {
+                route = Route._routeToRegExp(route);
+                if (route.test(fragment)) {
+                    var options = Route._extractParameters(route, fragment);
+                    Route[callback](options, 'dialog');
+                    e.preventDefault();
+                    return true;
+                }
+            });
         });
 
 

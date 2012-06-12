@@ -20,7 +20,7 @@ return page_view.extend({
         this.time_period = null;
     },
 
-    activate: function(){
+    post_activate: function(){
         this.collection.reset();
         this.change_page();
         this.update_list();

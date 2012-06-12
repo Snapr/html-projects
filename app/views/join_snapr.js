@@ -1,8 +1,8 @@
 /*global _ Route define require */
-define(['views/base/dialog', 'jquery', 'validate', 'models/user_settings', 'auth'],
-    function(dialog_view, $, validate, user_settings, auth){
+define(['views/base/page', 'jquery', 'validate', 'models/user_settings', 'auth'],
+    function(page_view, $, validate, user_settings, auth){
 
-var join_dialog = dialog_view.extend({
+var join_dialog = page_view.extend({
 
     post_initialize: function(){
         this.validator = $("#join-dialog").validate({
@@ -75,7 +75,7 @@ var join_dialog = dialog_view.extend({
         this.validator.errors = this.validator.settings.errors;
     },
 
-    activate: function(){
+    post_activate: function(){
 
         this.change_page();
 

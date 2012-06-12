@@ -1,7 +1,7 @@
 /*global _ Route define require */
-define(['views/base/dialog', 'collections/user', 'views/components/no_results', 'views/people_li'],
-    function(dialog_view, user_collection, no_results, people_li){
-return dialog_view.extend({
+define(['views/base/page', 'collections/user', 'views/components/no_results', 'views/people_li'],
+    function(page_view, user_collection, no_results, people_li){
+return page_view.extend({
 
     post_initialize: function(){
         var dialog = this;
@@ -10,7 +10,7 @@ return dialog_view.extend({
         });
     },
 
-    activate: function(){
+    post_activate: function(){
 
         this.$el.find("ul.people-list").empty();
         this.$el.addClass('loading');

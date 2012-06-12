@@ -20,7 +20,7 @@ var map_view = page_view.extend({
 
     },
 
-    activate: function(){
+    post_activate: function(){
 
         var query = this.options.query || {};
 

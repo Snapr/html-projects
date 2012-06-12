@@ -3,7 +3,7 @@ define(['views/base/page', 'views/uploading_image_stream', 'views/upload_progres
 function(page_view, uploading_image_stream, upload_progress_li, photo_model, local_storage){
 return  page_view.extend({
 
-    activate: function(){
+    post_activate: function(){
 
         this.change_page();
 
@@ -37,9 +37,8 @@ return  page_view.extend({
         "click .x-cancel-upload": "cancel_upload"
     },
 
-    render: function()
-    {
-        var $image_stream_container = this.$el.find( ".image-streams" ).empty();
+    render: function(){
+        var $image_stream_container = this.$( ".image-streams" ).empty();
 
         if (this.spot){
             this.recent_nearby_stream = new uploading_image_stream({
@@ -71,7 +70,7 @@ return  page_view.extend({
             recent_nearby_stream.collection.fetch({
                 data:{n:6},
                 success: function(){
-                    $image_stream_container .append( recent_nearby_stream.el );
+                    $image_stream_container.append( recent_nearby_stream.el );
                     recent_nearby_stream.render();
                     recent_nearby_stream.$el.trigger( "create" );
                 }

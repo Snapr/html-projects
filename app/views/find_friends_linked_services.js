@@ -1,8 +1,8 @@
 // abstract base class for both twitter and facebook
 
 /*global _ Route define require */
-define(['views/base/dialog', 'collections/user', 'views/people_li', 'views/components/no_results'], function(dialog_view, user_collection, people_li, no_results){
-return dialog_view.extend({
+define(['views/base/page', 'collections/user', 'views/people_li', 'views/components/no_results'], function(page_view, user_collection, people_li, no_results){
+return page_view.extend({
 
     post_initialize: function(){
         this.people_li_template = _.template( $("#people-li-template").html() );
@@ -11,7 +11,7 @@ return dialog_view.extend({
         this.collection.bind( "reset", _.bind(this.render, this) );
     },
 
-    activate: function(){
+    post_activate: function(){
 
         this.$el.find("ul.people-list").empty();
 

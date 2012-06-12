@@ -1,4 +1,4 @@
 /*global _ Route define require */
-define(['views/base/dialog'], function(dialog_view){
-    return dialog_view.extend({});
+define(['views/base/page'], function(page_view){
+    return page_view.extend({});
 });

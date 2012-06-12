@@ -1,8 +1,8 @@
 /*global _ Route define require */
-define(['views/base/dialog', 'models/user_settings', 'views/linked_service'], function(dialog_view, user_settings, linked_service){
-return dialog_view.extend({
+define(['views/base/page', 'models/user_settings', 'views/linked_service'], function(page_view, user_settings, linked_service){
+return page_view.extend({
 
-    activate: function(){
+    post_activate: function(){
 
         this.change_page({
             transition: "slideup"

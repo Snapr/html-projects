@@ -16,7 +16,7 @@ return page_view.extend({
         this.render();
     },
 
-    activate: function(){
+    post_activate: function(){
         $.mobile.changePage( "#home" );
     },
 

@@ -1,8 +1,8 @@
 /*global _ Route define require */
-define(['views/base/dialog', 'auth'], function(dialog_view, auth){
-return dialog_view.extend({
+define(['views/base/page', 'auth'], function(page_view, auth){
+return page_view.extend({
 
-    activate: function(){
+    post_activate: function(){
 
         if (this.options.query){
             this.message = this.options.query.message;

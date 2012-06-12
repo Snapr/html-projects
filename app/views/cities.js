@@ -72,7 +72,7 @@ return page_view.extend({
 
     },
 
-    activate: function(){
+    post_activate: function(){
         this.change_page();
         this.render();
     },

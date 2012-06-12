@@ -3,7 +3,7 @@ define(['views/base/page', 'models/user_settings', 'views/linked_service', 'auth
 function(page_view, user_settings, linked_service, auth, local_storage){
 return page_view.extend({
 
-    activate:function(){
+    post_activate:function(){
 
         this.$el.find('.account-content').empty();
 

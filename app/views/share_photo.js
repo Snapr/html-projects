@@ -13,7 +13,7 @@ return page_view.extend({
         this.share_photo_settings = {};
     },
 
-    activate: function(){
+    post_activate: function(){
         this.change_page();
 
         this.query = this.options.query;

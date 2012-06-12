@@ -11,7 +11,7 @@ return page_view.extend({
         };
     },
 
-    activate: function(){
+    post_activate: function(){
         this.$el.find(".activity-streams").empty();
 
         this.collection.fetch();
