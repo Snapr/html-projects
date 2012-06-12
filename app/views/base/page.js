@@ -36,7 +36,8 @@ return Backbone.View.extend({
     post_initialize: function(){},
 
     activate: function(options){
-        this.dialog = options.dialog;
+        if(options){ this.dialog = options.dialog; }
+
         var back_text;
         if(history.state && history.state.back_text){
             back_text = history.state.back_text;

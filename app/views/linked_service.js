@@ -74,7 +74,7 @@ return Backbone.View.extend({
         var options = {
             success: function()
             {
-                snapr.info.current_view.initialize();
+                snapr.info.current_view.activate();
             },
             error: function()
             {
