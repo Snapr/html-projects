@@ -26,8 +26,7 @@ return page_view.extend({
 
     link_twitter: function(){
         var options,
-            xauth_view = this,
-            redirect = this.redirect;
+            xauth_view = this;
 
         $.mobile.showPageLoadingMsg();
 
@@ -72,10 +71,7 @@ return page_view.extend({
                 },
                 success: function( data ){
                     if(data.success){
-                        redirect = (redirect.indexOf("?") > -1) ?
-                            redirect + "&":
-                            redirect + "?";
-                        window.location = redirect + $.param(data.response);
+                        xauth_view.back();
                     }else{
                         console.error(data);
                         snapr.utils.notification('Oops!', 'Your Twitter login details were incorrect.');

@@ -24,7 +24,6 @@ return page_view.extend({
     },
 
     link_tumblr: function(){
-        //var redirect = this.redirect;
 
         $.mobile.showPageLoadingMsg();
 
