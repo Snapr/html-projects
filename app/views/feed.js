@@ -7,11 +7,10 @@ function(page_view, user_model, user_header, feed_header, photo_collection,
 
 return page_view.extend({
 
-    post_initialize: function(){
+    activate: function(options){
+        this.options = options;
         this.photo_collection = new photo_collection();
         this.photo_collection.url = snapr.api_base + "/search/";
-    },
-    activate: function(){
 
         this.query = this.options.query || {};
 
