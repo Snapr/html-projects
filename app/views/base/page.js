@@ -32,13 +32,8 @@ return Backbone.View.extend({
             var back_text;
             if(history.state && history.state.back_text){
                 back_text = history.state.back_text;
-                console.debug('back from history state: '+back_text);
             }else if(options.prevPage){
                 back_text = options.prevPage.data('back_text-title') || options.prevPage.data('short-title') || options.prevPage.data('title');
-                console.debug('prevPage backtext, short title, title', options.prevPage.data('back_text-title'), options.prevPage.data('short-title'), options.prevPage.data('title'));
-                console.debug('back from options: '+back_text);
-            }else{
-                console.debug("no back text from hisory or options.prevPage");
             }
 
             page.set_back_text(back_text);
