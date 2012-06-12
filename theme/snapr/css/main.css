@@ -2750,6 +2750,9 @@ a.ui-link-inherit {
 #no-results .imagealert .ui-icon {
   display: none;
 }
+.ui-loading #no-results {
+  display: none;
+}
 /* @ui-bar Title Bars that pop up all over the place */
 .ui-bar {
   border: none;
