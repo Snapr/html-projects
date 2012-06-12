@@ -298,8 +298,9 @@ require(['jquery', 'backbone', 'photoswipe', 'auth', 'utils/local_storage'], fun
         // handle dialog links to stop them changing the url
         $("a[data-snapr-dialog='true']").live("vclick", function( e ){
             var found = Backbone.history.loadUrl(
-                Backbone.history.getHash({location:{href:e.currentTarget.href}})
+                Backbone.history.getHash({location: e.currentTarget})
             );
+            snapr.info.current_view.change_hash = false;
             if(found){
                 e.preventDefault();
             }

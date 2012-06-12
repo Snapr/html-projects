@@ -14,8 +14,6 @@ return page_view.extend({
 
         this.back_view = this.options.back_view;
 
-        this.$el.on("pageshow", this.set_prev_page );
-
         this.post_initialize.apply(this, arguments);
         this.activate.apply(this, arguments);
         $(document.body).show();
@@ -32,15 +30,12 @@ return page_view.extend({
         page_view.prototype.change_page.apply(this, options);
     },
 
-    set_prev_page: function( e, ui ){
-        this.prev_el = ui.prevPage;
-    },
+    change_hash: true,
 
     back: function(){
         if (this.previous_view){
-
             this.previous_view.change_page({
-                changeHash: false,
+                changeHash: this.change_hash,
                 transition: this.transition,
                 reverse: true
             });
@@ -48,26 +43,6 @@ return page_view.extend({
         }else{
             Route.navigte('#');
         }
-        // else if (this.back_view){
-        //     console.debug('this.back_view',this.back_view);
-
-        //     this.back_view.change_page({
-        //         changeHash: false,
-        //         transition: this.transition,
-        //         reverse: true
-        //     });
-        // }else if (this.prev_el && this.prev_el.length){
-        //     console.debug('this.prev_el',this.prev_el);
-        //     $.mobile.changePage( this.prev_el, {
-        //         changeHash: false,
-        //         transition: this.transition,
-        //         reverse: true
-        //     });
-        //     //window.history.back();
-        // }else{
-        //     console.debug('back');
-        //     //window.history.back();
-        // }
 
     },
 

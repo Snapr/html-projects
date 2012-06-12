@@ -1,7 +1,7 @@
 /*global _ Route snapr define require */
 require(['jquery', 'auth', 'utils/local_storage', 'utils/local_storage'], function($, auth, local_storage) {
 
-/* utils
+/* utils - this file should be split up into proper requirejs modules
 ***************************/
 
 snapr.link_service = function(service, next){
