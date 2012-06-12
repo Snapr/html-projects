@@ -10,7 +10,7 @@ return page_view.extend({
         });
     },
 
-    post_activate: function(){
+    post_activate: function(options){
 
         this.$el.find("ul.people-list").empty();
         this.$el.addClass('loading');
@@ -26,26 +26,26 @@ return page_view.extend({
         var transition = ($.mobile.activePage.attr('id') == 'map') ? "flip" : "slideup";
         this.change_page({ transition: transition });
 
-        switch (this.options.follow){
+        switch (options.follow){
             case "following":
                 this.$el.find("h1").text("Following");
-                this.$el.find("#people-search").val('').attr("placeholder", "Search users " + this.options.query.username + " is following\u2026" );
-                this.collection.get_following( this.options.query.username );
+                this.$el.find("#people-search").val('').attr("placeholder", "Search users " + options.query.username + " is following\u2026" );
+                this.collection.get_following( options.query.username );
                 break;
             case "followers":
                 this.$el.find("h1").text("Followers");
-                this.$el.find("#people-search").val('').attr("placeholder", "Search " + this.options.query.username + "'s followers\u2026" );
-                this.collection.get_followers( this.options.query.username );
+                this.$el.find("#people-search").val('').attr("placeholder", "Search " + options.query.username + "'s followers\u2026" );
+                this.collection.get_followers( options.query.username );
                 break;
             default:
                 this.$el.find("h1").text("Search");
-                this.$el.find("#people-search").val(this.options.query.username).attr("placeholder", "Search users\u2026" );
+                this.$el.find("#people-search").val(options.query.username).attr("placeholder", "Search users\u2026" );
 
                 var this_view = this;
                 this_view.$el.addClass('loading');
                 this.collection.fetch({
                     data:{
-                        username:this.options.query.username,
+                        username:options.query.username,
                         n:20,
                         detail:1
                     },

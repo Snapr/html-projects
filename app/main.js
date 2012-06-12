@@ -302,7 +302,7 @@ require(['jquery', 'backbone', 'photoswipe', 'auth', 'utils/local_storage'], fun
             var matched = _.any(Route.routes, function(callback, route) {
                 route = Route._routeToRegExp(route);
                 if (route.test(fragment)) {
-                    var options = Route._extractParameters(route, fragment);
+                    var options = Route._extractParameters(route, fragment)[0];
                     Route[callback](options, 'dialog');
                     e.preventDefault();
                     return true;
