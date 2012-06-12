@@ -45,7 +45,6 @@ return Backbone.View.extend({
             while(current_view && current_view.dialog){
                 current_view = current_view.previous_view;
             }
-            console.log('current_view', current_view.$el.selector, current_view.dialog);
             if(current_view){
                 back_text = current_view.$el.data('short-title') || current_view.$el.data('title');
             }
