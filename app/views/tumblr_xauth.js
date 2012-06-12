@@ -5,7 +5,7 @@ return page_view.extend({
     post_activate: function(){
 
         if (this.options.query){
-            this.redirect = unescape( this.options.query.redirect );
+            //this.redirect = unescape( this.options.query.redirect );
             this.message = this.options.query.message;
         }
 
@@ -24,10 +24,11 @@ return page_view.extend({
     },
 
     link_tumblr: function(){
-        var redirect = this.redirect;
+        //var redirect = this.redirect;
 
         $.mobile.showPageLoadingMsg();
 
+        var this_view = this;
         $.ajax({
             url: snapr.api_base + '/linked_services/tumblr/xauth/',
             type: 'GET',
@@ -40,11 +41,7 @@ return page_view.extend({
             },
             success: function( data ){
                 if(data.success){
-                    redirect = (redirect.indexOf("?") > -1) ?
-                        redirect + "&username=" + data.response.username :
-                        redirect + "?username=" + data.response.username;
-
-                    window.location = redirect;
+                    this_view.back();
                 }else{
                     console.error(data);
                     snapr.utils.notification('Oops!', 'Your Tumblr login details were incorrect.');

@@ -81,18 +81,20 @@ return Backbone.View.extend({
     },
 
     back: function(){
-        if (this.previous_view){
-            this.previous_view.change_page({
-                changeHash: !this.dialog,
-                transition: this.transition,
-                reverse: true
-            });
-            snapr.info.current_view = this.previous_view;
+        if(this.dialog){
+            if (this.previous_view){
+                this.previous_view.change_page({
+                    changeHash: false,
+                    transition: this.transition,
+                    reverse: true
+                });
+                snapr.info.current_view = this.previous_view;
+            }else{
+                Route.navigte('#');
+            }
         }else{
-            Route.navigte('#');
+            history.go(-1);
         }
-
     }
-
 });
 });
