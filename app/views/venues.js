@@ -159,7 +159,7 @@ var venue_li = Backbone.View.extend({
             location: location
         });
 
-        this.back_view.initialize.call({
+        this.previous_view.initialize.call({
             query: this.back_query,
             model: this.photo_model,
             el: $("#share-photo")[0]
