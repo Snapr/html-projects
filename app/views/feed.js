@@ -7,7 +7,7 @@ function(page_view, user_model, user_header, feed_header, photo_collection,
 
 return page_view.extend({
 
-    activate: function(options){
+    post_activate: function(options){
         this.options = options;
         this.photo_collection = new photo_collection();
         this.photo_collection.url = snapr.api_base + "/search/";
@@ -75,7 +75,7 @@ return page_view.extend({
         });
 
         // if we are coming from the map view do a flip, otherwise do a slide transition
-        var transition = ($.mobile.activePage.attr('id') == 'map') ? "flip" : "slideup";
+        var transition = ($.mobile.activePage.attr('id') == 'map') ? "flip" : "none";
         this.change_page({
             transition: transition
         });
