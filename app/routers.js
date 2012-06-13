@@ -112,14 +112,14 @@ var routers = Backbone.Router.extend({
 
     my_account: _make_route("views/my_account", "#my-account"),
 
-    find_friends: _make_route("views/find_friends", "#find-friends"),
+    find_friends: _make_route("views/find_friends_list", "#find-friends"),
     find_friends_twitter: _make_route(
-        "views/find_friends_linked_services",
+        "views/find_friends",
         "#find-friends-twitter",
         {service: "twitter"}
     ),
     find_friends_facebook: _make_route(
-        "views/find_friends_linked_services",
+        "views/find_friends",
         "#find-friends-twitter",
         {service: "facebook"}
     ),
