@@ -354,7 +354,7 @@ var add_search = page_view.extend({
                     dash.add(stream);
                     $.mobile.hidePageLoadingMsg();
                 }});
-                add_search.back_view.$el.removeClass('edit');
+                add_search.previous_view.$el.removeClass('edit');
                 add_search.back();
             };
             var error_callback = function( error )
@@ -375,7 +375,7 @@ var add_search = page_view.extend({
                 dash.add(stream);
                 $.mobile.hidePageLoadingMsg();
             }});
-            this.back_view.$el.removeClass('edit');
+            this.previous_view.$el.removeClass('edit');
             this.back();
         }
 
