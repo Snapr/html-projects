@@ -1418,7 +1418,7 @@
                 <ul class="like-icons-list">
                 <% _.each( item.get("favorites"), function( like ){ %>
                     <li class="like-icon">
-                        <a href="#/feed/?username=<% like.user.username %>"><img src="<%= snapr.avatar_url %>/<%= like.user.user_id %>" alt="<%= like.user.username %>" class="user-icon-small ui-li-icon"/></a>
+                        <a href="#/feed/?username=<%= like.user.username %>"><img src="<%= snapr.avatar_url %>/<%= like.user.user_id %>" alt="<%= like.user.username %>" class="user-icon-small ui-li-icon"/></a>
                     </li>
                 <% }); %>
                 </ul>

@@ -89,27 +89,27 @@ var dash_view = page_view.extend({
         this.$el.trigger( "create" );
     },
 
-    add_search: function()
-    {
+    add_search: function(){
         var dash_view = this;
-        auth.require_login( function()
-        {
-            snapr.info.current_view = new add_search({
+        auth.require_login( function(){
+            var add = new add_search({
                 el: $("#dash-add-search")[0],
-                back_view: dash_view
+                dialog: true
             });
+            add.previous_view = snapr.info.current_view;
+            snapr.info.current_view = add;
         })();
     },
 
-    add_person: function()
-    {
+    add_person: function(){
         var dash_view = this;
-        auth.require_login( function()
-        {
-            snapr.info.current_view = new add_person({
+        auth.require_login( function(){
+            var add = new add_person({
                 el: $("#dash-add-person")[0],
-                back_view: dash_view
+                dialog: true
             });
+            add.previous_view = snapr.info.current_view;
+            snapr.info.current_view = add;
         })();
     },
 
@@ -184,8 +184,7 @@ var add_person = page_view.extend({
 
     post_initialize: function(){
         var dialog = this;
-        this.$el.live( "pageshow", function( e, ui )
-        {
+        this.$el.live( "pageshow", function( e, ui ){
             dialog.$('#people-search').focus();
         });
 
@@ -208,8 +207,7 @@ var add_person = page_view.extend({
         "keyup input": "search"
     },
 
-    render: function()
-    {
+    render: function(){
         var people_list = this.$el.find("ul.people-list").empty();
 
         var people_li_template = _.template( $("#people-li-template").html() );
@@ -229,7 +227,7 @@ var add_person = page_view.extend({
         }
 
         var this_back = this.back;
-        var this_back_view = this.back_view;
+        var this_back_view = this.previous_view;
         people_list.find('a').click(function(e){
             e.preventDefault();
             var username = $(this).data('username'),
@@ -356,7 +354,7 @@ var add_search = page_view.extend({
                     dash.add(stream);
                     $.mobile.hidePageLoadingMsg();
                 }});
-                add_search.back_view.$el.removeClass('edit');
+                add_search.previous_view.$el.removeClass('edit');
                 add_search.back();
             };
             var error_callback = function( error )
@@ -377,7 +375,7 @@ var add_search = page_view.extend({
                 dash.add(stream);
                 $.mobile.hidePageLoadingMsg();
             }});
-            this.back_view.$el.removeClass('edit');
+            this.previous_view.$el.removeClass('edit');
             this.back();
         }
 
