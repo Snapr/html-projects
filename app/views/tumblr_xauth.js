@@ -2,11 +2,11 @@
 define(['views/base/page', 'auth'], function(page_view, auth){
 return page_view.extend({
 
-    post_activate: function(){
+    post_activate: function(options){
 
-        if (this.options.query){
-            //this.redirect = unescape( this.options.query.redirect );
-            this.message = this.options.query.message;
+        if (options.query){
+            this.redirect = unescape( options.query.redirect );
+            this.message = options.query.message;
         }
 
         if (this.message){
@@ -40,7 +40,15 @@ return page_view.extend({
             },
             success: function( data ){
                 if(data.success){
-                    this_view.back();
+                    if(this_view.redirect){
+                        var redirect = (this_view.redirect.indexOf("?") > -1) ?
+                            this_view.redirect + "&username=" + data.response.username :
+                            this_view.redirect + "?username=" + data.response.username;
+                        window.location = redirect;
+                    }else{
+                        this_view.back();
+                    }
+
                 }else{
                     console.error(data);
                     snapr.utils.notification('Oops!', 'Your Tumblr login details were incorrect.');

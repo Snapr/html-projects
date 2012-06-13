@@ -2,11 +2,11 @@
 define(['views/base/page', 'views/linked_service', 'models/post'], function(page_view, linked_service, post_model){
 var connect_page = page_view.extend({
 
-    post_activate: function(){
+    post_activate: function(options){
 
         this.change_page();
 
-        this.query = new Query(this.options.query);
+        this.query = new Query(options.query);
 
         this.linked = this.query.pop('linked');
         this.photo_id = this.query.get('photo_id');
@@ -129,7 +129,7 @@ var connect_li = linked_service.extend({
         var to_link = _.without( this.parent_view.to_link, this.provider );
         var shared = _.without( this.parent_view.shared, this.provider );
 
-        var redirect_params = {linked: this.provider, redirect_url: this.parent_view.redirect_url};
+        var redirect_params = {linked: this.provider, redirect_url: escape(this.parent_view.redirect_url)};
 
         if (shared.length)
         {

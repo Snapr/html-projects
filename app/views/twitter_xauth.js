@@ -71,7 +71,14 @@ return page_view.extend({
                 },
                 success: function( data ){
                     if(data.success){
-                        xauth_view.back();
+                        if(xauth_view.redirect){
+                            var redirect = (xauth_view.redirect.indexOf("?") > -1) ?
+                                xauth_view.redirect + "&":
+                                xauth_view.redirect + "?";
+                            window.location = redirect + $.param(data.response);
+                        }else{
+                            xauth_view.back();
+                        }
                     }else{
                         console.error(data);
                         snapr.utils.notification('Oops!', 'Your Twitter login details were incorrect.');
