@@ -1,5 +1,5 @@
 /*global _ Route define require */
-define(['views/base/page', 'auth'], function(page_view, auth){
+define(['views/base/page', 'auth', 'utils/alerts'], function(page_view, auth, alerts){
 return page_view.extend({
 
     post_activate: function(){
@@ -47,7 +47,7 @@ return page_view.extend({
                                 "snapr_user": data.response.snapr_user
                             });
                             auth.save_locally();
-                            snapr.utils.notification('Logged in as ' + data.response.snapr_user);
+                            alerts.notification('Logged in as ' + data.response.snapr_user);
                             Route.navigate("#/");
                         }else{
                             // sign up
@@ -55,7 +55,7 @@ return page_view.extend({
                         }
                     }else{
                         console.error(data);
-                        snapr.utils.notification('Oops!', 'Your Twitter login details were incorrect.');
+                        alerts.notification('Oops!', 'Your Twitter login details were incorrect.');
                     }
                 },
                 complete: function(){
@@ -81,7 +81,7 @@ return page_view.extend({
                         }
                     }else{
                         console.error(data);
-                        snapr.utils.notification('Oops!', 'Your Twitter login details were incorrect.');
+                        alerts.notification('Oops!', 'Your Twitter login details were incorrect.');
                     }
                 },
                 complete: function(){

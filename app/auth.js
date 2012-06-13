@@ -1,5 +1,5 @@
 /*global _ Route define require */
-define(['backbone', 'jquery', 'utils/local_storage'], function(Backbone, $, local_storage) {
+define(['backbone', 'jquery', 'utils/local_storage', 'native'], function(Backbone, $, local_storage, native) {
 
 var auth_model = Backbone.Model.extend({
 
@@ -64,7 +64,7 @@ var auth_model = Backbone.Model.extend({
         var access_token = this.get( "access_token" );
 
         if (local_storage.get( "appmode" )){
-            pass_data( "snapr://login?snapr_user=" + encodeURI( snapr_user ) + "&access_token=" + encodeURI( access_token ) );
+            native.pass_data( "snapr://login?snapr_user=" + encodeURI( snapr_user ) + "&access_token=" + encodeURI( access_token ) );
         }else{
             localStorage.setItem( "snapr_user", snapr_user );
             localStorage.setItem( "access_token", access_token );

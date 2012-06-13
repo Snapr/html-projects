@@ -1,11 +1,10 @@
 /*global _ Route define require */
 define(['views/base/page', 'models/photo', 'models/geo_location', 'collections/foursquare_venue',
-    'views/venues', 'utils/geo', 'auth', 'utils/local_storage'],
-function(page_view, photo_model, geo_location, foursquare_venue_collection, venues_view, geo, auth, local_storage){
+    'views/venues', 'utils/geo', 'auth', 'utils/local_storage', 'utils/alerts', 'native'],
+function(page_view, photo_model, geo_location, foursquare_venue_collection, venues_view, geo, auth, local_storage, alerts, native){
 return page_view.extend({
 
     post_initialize: function(){
-
         this.template = _.template( $("#share-photo-template").html() );
 
         // this will eventually be stored/retrieved from localstorage
@@ -37,6 +36,8 @@ return page_view.extend({
         }else{
             this.render();
         }
+        this.model.bind( "change", function(){console.log('change!');} );
+        window.test = this.model ;
     },
 
     events: {
@@ -51,6 +52,7 @@ return page_view.extend({
     },
 
     render: function(){
+        console.log('remnder');
         var description = this.$el.find("#description").val();
 
         var img_url;
@@ -84,7 +86,7 @@ return page_view.extend({
     },
 
     share_alert: function(e){
-        snapr.utils.notification( "Share", "Please set the image to Public before sharing to other services", $.noop );
+        alerts.notification( "Share", "Please set the image to Public before sharing to other services", $.noop );
     },
 
     get_photo_from_server: function( id )
@@ -320,18 +322,20 @@ return page_view.extend({
     venue_search: function()
     {
         var share_view = this;
-        var go_to_venues = function( ll, foursquare_venue_id, back_query, model )
-        {
-            snapr.info.current_view = new venues_view({
-                model: model,
-                query: {
-                    ll: ll,
-                    foursquare_venue_id: foursquare_venue_id,
-                    back_query: back_query
-                },
-                el: $("#venues")[0],
-                back_view: share_view
-            });
+        var go_to_venues = function( ll, foursquare_venue_id, back_query, model ){
+            console.log('venues',ll, foursquare_venue_id, back_query, model );
+            snapr.utils.dialog('venue/search/?ll='+ll+'&foursquare_venue_id=' + foursquare_venue_id, {model: model});
+            // var venues = new venues_view({
+            //     model: model,
+            //     query: {
+            //         ll: ll,
+            //         foursquare_venue_id: foursquare_venue_id,
+            //         back_query: back_query
+            //     },
+            //     el: $("#venues")[0]
+            // });
+            // venues.previous_view = snapr.info.current_view;
+            // snapr.info.current_view = venues;
         };
 
         var ll;
@@ -377,9 +381,9 @@ return page_view.extend({
 
         if (appmode && img_url){
             if (camplus && camplus_edit){
-                pass_data( "snapr://camplus/edit/?photo_url=" + img_url );
+                native.pass_data( "snapr://camplus/edit/?photo_url=" + img_url );
             }else if (aviary){
-                pass_data("snapr://aviary/edit/?photo_url=" + img_url);
+                native.pass_data("snapr://aviary/edit/?photo_url=" + img_url);
             }
 
             setTimeout( function(){
@@ -569,7 +573,7 @@ return page_view.extend({
                 }
 
                 Route.navigate( "#/uploading/" + ll );
-                pass_data("snapr://upload?" + $.param(params) );
+                native.pass_data("snapr://upload?" + $.param(params) );
             }
         }
     },

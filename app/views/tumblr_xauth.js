@@ -1,5 +1,5 @@
 /*global _ Route define require */
-define(['views/base/page', 'auth'], function(page_view, auth){
+define(['views/base/page', 'auth', 'utils/alerts'], function(page_view, auth, alerts){
 return page_view.extend({
 
     post_activate: function(options){
@@ -51,7 +51,7 @@ return page_view.extend({
 
                 }else{
                     console.error(data);
-                    snapr.utils.notification('Oops!', 'Your Tumblr login details were incorrect.');
+                    alerts.notification('Oops!', 'Your Tumblr login details were incorrect.');
                 }
             },
             error: function( data ){

@@ -1,6 +1,6 @@
 /*global _ Route define require */
-define(['views/base/page', 'models/user_settings', 'views/linked_service', 'auth', 'utils/local_storage'],
-function(page_view, user_settings, linked_service, auth, local_storage){
+define(['views/base/page', 'models/user_settings', 'views/linked_service', 'auth', 'utils/local_storage', 'utils/alerts', 'native'],
+function(page_view, user_settings, linked_service, auth, local_storage, alerts, native){
 return page_view.extend({
 
     post_activate:function(){
@@ -216,7 +216,7 @@ return page_view.extend({
 
         if (!email)
         {
-            snapr.utils.notification("No email", "Please provide an email address", $.noop);
+            alerts.notification("No email", "Please provide an email address", $.noop);
             return;
         }
         else
@@ -230,19 +230,19 @@ return page_view.extend({
         {
             if (!password_verify)
             {
-                snapr.utils.notification("No verification password", "Please enter your password again", $.noop);
+                alerts.notification("No verification password", "Please enter your password again", $.noop);
                 return;
             }
             else if (password != password_verify)
             {
-                snapr.utils.notification("Passwords don't match", "Please enter your password again", $.noop);
+                alerts.notification("Passwords don't match", "Please enter your password again", $.noop);
                 return;
             }
             else
             {
                 param.password = password;
                 callback = function(){
-                    snapr.utils.notification('Thanks', ' your password has been saved');
+                    alerts.notification('Thanks', ' your password has been saved');
                 };
             }
         }
@@ -270,7 +270,7 @@ return page_view.extend({
         $collapse.trigger("collapse");
 
         if (local_storage.get("appmode") == "iphone"){
-            pass_data( "snapr://camplus/settings/?" + $.param( param ) );
+            native.pass_data( "snapr://camplus/settings/?" + $.param( param ) );
         }else{
             console.log( "snapr://camplus/settings/?" + $.param( param ) );
         }

@@ -1,7 +1,7 @@
 // abstract base class for both twitter and facebook
 
 /*global _ Route define require */
-define(['views/base/page', 'collections/user', 'views/people_li', 'views/components/no_results'], function(page_view, user_collection, people_li, no_results){
+define(['views/base/page', 'collections/user', 'views/people_li', 'views/components/no_results', 'utils/link_service'], function(page_view, user_collection, people_li, no_results, link_service){
 return page_view.extend({
 
     post_initialize: function(){
@@ -86,9 +86,9 @@ return page_view.extend({
                     if(response.error){
                         var next = window.location.href;
                         if(response.error.code == 30){
-                            snapr.link_service('twitter', window.location.href);
+                            link_service('twitter', window.location.href);
                         }else if(response.error.code == 20){
-                            snapr.link_service('facebook', window.location.href);
+                            link_service('facebook', window.location.href);
                         }
                     }
                 }

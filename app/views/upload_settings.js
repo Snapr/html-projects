@@ -1,5 +1,5 @@
 /*global _ Route define require */
-define(['backbone'], function(Backbone){
+define(['backbone', 'native'], function(Backbone, native){
 return Backbone.View.extend({
 
     className: "upload-settings",
@@ -46,12 +46,12 @@ return Backbone.View.extend({
         if (upload_mode == "upload-mode-on")
         {
             this.$el.find( "#upload-mode-on" ).attr("checked", true);
-            pass_data( "snapr://upload?setting=On" );
+            native.pass_data( "snapr://upload?setting=On" );
         }
         else
         {
             this.$el.find( "#upload-mode-wifi" ).attr("checked", true);
-            pass_data( "snapr://upload?setting=Wi-Fi Only" );
+            native.pass_data( "snapr://upload?setting=Wi-Fi Only" );
         }
 
         this.$el.find( "input[type='radio']" ).checkboxradio().checkboxradio("refresh");

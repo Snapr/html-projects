@@ -2,15 +2,16 @@
 define(['backbone', 'views/base/page', 'collections/foursquare_venue'], function(Backbone, page_view, foursquare_venue_collection){
 var venues = page_view.extend({
 
-    post_activate: function(){
-        this.selected_id = this.options.query.foursquare_venue_id;
+    post_activate: function(options){
+        this.model = options.model;
+        this.selected_id = options.query.foursquare_venue_id;
 
-        this.query = this.options.query;
+        this.query = options.query;
 
         this.$el.find("ul.venue-list").empty();
 
         this.collection = new foursquare_venue_collection({
-            ll: this.options.query.ll
+            ll: options.query.ll
         });
 
         // a simple array of venues which will be filtered and displayed
@@ -20,9 +21,7 @@ var venues = page_view.extend({
 
         // if we are coming from the map view do a flip, otherwise do a slide transition
         var transition = ($.mobile.activePage.attr('id') == 'map') ? "flip" : "slideup";
-        this.change_page({
-            transition: this.transition
-        });
+        this.change_page();
 
         this.collection.fetch();
     },
@@ -40,16 +39,17 @@ var venues = page_view.extend({
         var selected_id = this.selected_id;
         var back_query = this.query.back_query;
         var photo_model = this.model;
+        var this_view = this;
         _.each( this.display_collection, function( model )
         {
             var li = new venue_li({
                 template: venue_li_template,
                 model: model,
                 photo_model: photo_model,
-                selected_id: selected_id,
-                back_query: back_query,
-                back_view: this.back_view
+                selected_id: selected_id
             });
+
+            li.parent_view = this_view;
 
             venue_list.append( li.render().el );
 
@@ -109,8 +109,7 @@ var venues = page_view.extend({
 
 var venue_li = Backbone.View.extend({
 
-    initialize: function()
-    {
+    initialize: function(){
         _.bindAll( this );
 
         this.template = this.options.template;
@@ -130,8 +129,7 @@ var venue_li = Backbone.View.extend({
         "click a": "select_venue"
     },
 
-    render: function()
-    {
+    render: function(){
         var icon = this.model.get( "categories" ).length &&
             this.model.get( "categories" )[0].icon ||
             'http://foursquare.com/img/categories/none_64.png';
@@ -146,25 +144,19 @@ var venue_li = Backbone.View.extend({
         return this;
     },
 
-    select_venue: function()
-    {
+    select_venue: function(){
         var venue = {
             foursquare_venue_id: this.model.get("id"),
             foursquare_venue_name: this.model.get("name")
         };
 
-        var location = _.extend( this.photo_model.get( "location" ), venue );
+        var location = _.extend( this.parent_view.model.get( "location" ), venue );
 
-        this.photo_model.set({
+        this.parent_view.model.set({
             location: location
         });
 
-        this.previous_view.initialize.call({
-            query: this.back_query,
-            model: this.photo_model,
-            el: $("#share-photo")[0]
-        });
-        snapr.info.current_view = this.back_view;
+        this.parent_view.back();
     }
 });
 

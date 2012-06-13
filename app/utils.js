@@ -1,48 +1,21 @@
 /*global _ Route snapr define require */
-require(['jquery', 'auth', 'utils/local_storage', 'utils/local_storage'], function($, auth, local_storage) {
+require(['jquery', 'auth', 'utils/local_storage', 'utils/local_storage'], function($, auth, local_storage, native) {
 
 /* utils - this file should be split up into proper requirejs modules
 ***************************/
 
-snapr.link_service = function(service, next){
-    var url;
-    if (service == 'twitter' && snapr.twitter_xauth){
-        url = '#/twitter-xauth/?redirect='+ escape( next );
-        Route.navigate( url );
-    }else if (service == 'tumblr' && snapr.tumblr_xauth){
-        url = '#/tumblr-xauth/?redirect='+ escape( next );
-        Route.navigate( url );
-    }else{
-        if (local_storage.get( "appmode" )){
-            if (local_storage.get("appmode") == 'iphone'){
-                // double encode for iphone - the iOS code should be changed to handle it
-                // without this so this can be removed in future
-                url = snapr.api_base + "/linked_services/"+ service +
-                    "/oauth/?display=touch&access_token=" + auth.get("access_token") +
-                    "&double_encode=true&redirect=" + escape("snapr://redirect?url=" + escape( next ));
-            }else if(local_storage.get("appmode") == 'android'){
-                // android needs a snapr://link?url=
-                url = "snapr://link?url=" + snapr.api_base +
-                    "/linked_services/"+ service + "/oauth/?display=touch&access_token=" +
-                    auth.get("access_token") + "&redirect=snapr://redirect?url=" +
-                    escape( next );
-            }else{
-                // non-ios builds should be made to handle the redirect param escaped property so
-                // this can be changed to escape("snapr://redirect?url=" + escape( window.location.href ))
-                url = snapr.api_base + "/linked_services/"+ service + "/oauth/?display=touch&access_token=" +
-                    auth.get("access_token") +
-                    "&redirect=snapr://redirect?url=" + escape( next );
-            }
-        }else{
-            url = snapr.api_base + "/linked_services/" + service +
-                "/oauth/?display=touch&access_token=" + auth.get("access_token") +
-                "&redirect=" + escape( next );
-        }
-        window.location = url;
-    }
-};
-
 snapr.utils = {};
+
+snapr.utils.dialog = function(fragment, extra_data){
+    return _.any(Route.routes, function(callback, route) {
+        route = Route._routeToRegExp(route);
+        if (route.test(fragment)) {
+            var options = Route._extractParameters(route, fragment)[0];
+            Route[callback](options, 'dialog', extra_data);
+            return true;
+        }
+    });
+};
 
 // defined differently so the function is hoisted for earlier use
 snapr.utils.get_query_params = get_query_params;
@@ -78,7 +51,7 @@ function get_query_params(query) {
         });
     }
 
-    env = local_storage.get('environment');
+    var env = local_storage.get('environment');
     if (_.has(snapr.settings, env)){
         var settings = snapr.settings[env];
     }else{
@@ -94,71 +67,6 @@ function get_query_params(query) {
 
     return params;
 }
-// alert/confirm replacements
-snapr.utils.notification = function (title, text, callback) {
-    var context = this;
-    if(local_storage.get("appmode") == "iphone") {
-        var par = {
-            "title": title,
-            "otherButton1": "OK",
-            "alertID": 0
-        };
-        if(text) {
-            par.message = text;
-        }
-        pass_data("snapr://alert?" + $.param(par));
-    } else {
-        if(text) {
-            title = title + ': ' + text;
-        }
-        alert(title);
-        if(_.isFunction(callback)) {
-            $.proxy(callback, context)();
-        }
-    }
-};
-
-snapr.utils.approve = function (options) {
-    var context = this;
-    options = _.extend({
-        'title': 'Are you sure?',
-        'yes': 'Yes',
-        'no': 'Cancel',
-        'yes_callback': $.noop,
-        'no_callback': $.noop
-    }, options);
-
-    if(local_storage.get("appmode") == 'iphone') {
-        var actionID = tapped_action.add(options.yes_callback, options.no_callback);
-        pass_data('snapr://action?' + $.param({
-            'title': options.title,
-            'destructiveButton': options.yes,
-            'cancelButton': options.no,
-            'actionID': actionID
-        }));
-    } else {
-        if(confirm(options.title)) {
-            $.proxy(options.yes_callback, context)();
-        } else {
-            $.proxy(options.no_callback, context)();
-        }
-    }
-};
-// what the app calls after an approve
-function tapped_action(alertID, buttonIndex) {
-    tapped_action.alerts[alertID][buttonIndex]();
-    delete tapped_action.alerts[alertID];
-}
-tapped_action.alerts = {};
-tapped_action.counter = 1;
-tapped_action.add = function (yes, no) {
-    var id = tapped_action.counter++;
-    tapped_action.alerts[id] = {
-        '-1': yes,
-        '0': no
-    };
-    return id;
-};
 
 snapr.utils.get_photo_height = function (orig_width, orig_height, element) {
     var aspect = orig_width/orig_height,
@@ -177,14 +85,6 @@ function spinner_start( text )
 function spinner_stop()
 {
     $('body').removeClass('n-loading');
-}
-
-
-// upload/appmode functions
-function pass_data( url )
-{
-    //console.debug("pass data: ", url)
-    window.location = url.replace(/\+/g, '%20');
 }
 
 function upload_progress( data, datatype )

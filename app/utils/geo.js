@@ -1,5 +1,5 @@
 /*global _ Route define require */
-define(['utils/local_storage'], function(local_storage){
+define(['utils/local_storage', 'native'], function(local_storage, native){
 var geo = {};
 geo.location_callbacks = [],
 geo.location_error_callbacks = [],
@@ -20,10 +20,10 @@ geo.get_location = function ( success, error ){
                 if (cached_location !== null){
                     success( cached_location );
                 }else{
-                    pass_data( "snapr://get_location" );
+                    native.pass_data( "snapr://get_location" );
                 }
             }else{
-                pass_data( "snapr://get_location" );
+                native.pass_data( "snapr://get_location" );
             }
         }
     }else{

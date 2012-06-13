@@ -1,9 +1,9 @@
 /*global _ Route define require */
 define(['views/base/page', 'views/base/page', 'views/base/side_scroll',
     'models/dash', 'models/dash_stream', 'collections/user',
-    'views/components/no_results', 'views/people_li', 'utils/geo', 'auth'],
+    'views/components/no_results', 'views/people_li', 'utils/geo', 'auth', 'utils/alerts'],
     function(page_view, page_view, side_scroll, dash_model, dash_stream_model,
-        user_collection, no_results, people_li, geo, auth){
+        user_collection, no_results, people_li, geo, auth, alerts){
 
 var dash_view = page_view.extend({
 
@@ -164,7 +164,7 @@ var dash_stream = side_scroll.extend({
 
     remove_stream: function(){
         var stream = this;
-        snapr.utils.approve({
+        alerts.approve({
             title: 'Are you sure you want to remove this stream?',
             yes_callback: function()
             {
@@ -362,7 +362,7 @@ var add_search = page_view.extend({
                 console.warn( "error getting geolocation", error );
                 if (error.message)
                 {
-                    snapr.utils.notification( error.message );
+                    alerts.notification( error.message );
                 }
             };
             geo.get_location( success_callback, error_callback );

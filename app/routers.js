@@ -1,5 +1,5 @@
 /*global _ Route define require snapr */
-define(['backbone', 'utils', 'auth', 'utils/local_storage'], function(Backbone, utils, auth, local_storage) {
+define(['backbone', 'utils', 'auth', 'utils/local_storage', 'native'], function(Backbone, utils, auth, local_storage, native) {
 
 var routers = Backbone.Router.extend({
     routes: {
@@ -48,10 +48,10 @@ var routers = Backbone.Router.extend({
         "feed/?*query_string": "feed",
         "dash/": "dash",
         "dash/?*query_string": "dash",
-        "dash-add-person/": "dash_add_person",
-        "dash-add-person/?*query_string": "dash_add_person",
-        "dash-add-search/": "dash_add_search",
-        "dash-add-search/?*query_string": "dash_add_search",
+        // "dash-add-person/": "dash_add_person",
+        // "dash-add-person/?*query_string": "dash_add_person",
+        // "dash-add-search/": "dash_add_search",
+        // "dash-add-search/?*query_string": "dash_add_search",
         "activity/": "activity",
         "activity/?*query_string": "activity",
         "map/": "map",
@@ -90,7 +90,7 @@ var routers = Backbone.Router.extend({
 
         window.location.hash = "";
         if (local_storage.get( "appmode" )){
-            pass_data('snapr://logout');
+            native.pass_data('snapr://logout');
         }
     },
 
@@ -151,14 +151,13 @@ var routers = Backbone.Router.extend({
 });
 
 function _make_route(view, el, extra_data){
-    extra_data = extra_data || {};
-    var route = function(query_string, dialog){
+    var route = function(query_string, dialog, extra_data_2){
         require([view], function(view) {
             var query = snapr.utils.get_query_params(query_string),
                 options = _.extend({
                     query: query,
                     dialog: !!dialog
-                }, extra_data);
+                }, extra_data || {}, extra_data_2 || {});
             if(!route.cached_view){
                 options.el = $(el);
                 route.cached_view = new view(options);

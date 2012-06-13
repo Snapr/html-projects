@@ -80,7 +80,7 @@ require(['routers', 'backbone'], function(routers, Backbone){
     $(window).on("pagecontainercreate", function(){ Backbone.history.start(); });
 });
 
-require(['jquery', 'backbone', 'photoswipe', 'auth', 'utils/local_storage'], function($, Backbone, PhotoSwipe, auth, local_storage) {
+require(['jquery', 'backbone', 'photoswipe', 'auth', 'utils/local_storage', 'native'], function($, Backbone, PhotoSwipe, auth, local_storage, native) {
 
     /* disable jquery-mobile's hash nav so we can replace it with backbone.js
     ***************************/
@@ -261,9 +261,9 @@ require(['jquery', 'backbone', 'photoswipe', 'auth', 'utils/local_storage'], fun
 
             if (appmode){
                 if (camplus && camplus_camera){
-                    pass_data( "snapr://camplus/camera/" );
+                    native.pass_data( "snapr://camplus/camera/" );
                 }else{
-                    pass_data( "snapr://camera" );
+                    native.pass_data( "snapr://camera" );
                 }
 
                 setTimeout( function(){
@@ -282,9 +282,9 @@ require(['jquery', 'backbone', 'photoswipe', 'auth', 'utils/local_storage'], fun
 
             if (appmode){
                 if (camplus && camplus_lightbox){
-                    pass_data( "snapr://camplus/lightbox/" );
+                    native.pass_data( "snapr://camplus/lightbox/" );
                 }else{
-                    pass_data( "snapr://photo-library" );
+                    native.pass_data( "snapr://photo-library" );
                 }
 
                 setTimeout( function(){
@@ -299,15 +299,13 @@ require(['jquery', 'backbone', 'photoswipe', 'auth', 'utils/local_storage'], fun
         $("a[data-snapr-dialog='true']").live("vclick", function( e ){
             var hash = Backbone.history.getHash({location: e.currentTarget});
             var fragment = Backbone.history.getFragment(hash);
-            var matched = _.any(Route.routes, function(callback, route) {
-                route = Route._routeToRegExp(route);
-                if (route.test(fragment)) {
-                    var options = Route._extractParameters(route, fragment)[0];
-                    Route[callback](options, 'dialog');
-                    e.preventDefault();
-                    return true;
-                }
-            });
+            console.log(fragment);
+
+            var matched = snapr.utils.dialog(fragment);
+
+            if(matched){
+                e.preventDefault();
+            }
         });
 
 
@@ -321,9 +319,6 @@ require(['jquery', 'backbone', 'photoswipe', 'auth', 'utils/local_storage'], fun
     });
 
 });
-
-// defines function for native code to call
-require(['native'], function(){});
 
 // export string utils for templates to use
 require(['utils/string'], function(string_utils) {

@@ -1,5 +1,5 @@
 /*global _ Route define require */
-define(['backbone', 'utils/local_storage'], function(Backbone, local_storage){
+define(['backbone', 'utils/local_storage', 'utils/alerts', 'native'], function(Backbone, local_storage, alerts, native){
 return Backbone.View.extend({
 
     tagName: "li",
@@ -65,13 +65,13 @@ return Backbone.View.extend({
     {
         var id = this.photo.id;
         var li_view = this;
-        snapr.utils.approve({
+        alerts.approve({
             "title": "Cancel this upload?",
             "yes_callback": function()
             {
                 if (local_storage.get( "appmode" ))
                 {
-                    pass_data( "snapr://upload?cancel=" + id );
+                    native.pass_data( "snapr://upload?cancel=" + id );
                 }
                 li_view.remove();
             }

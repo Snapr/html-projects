@@ -1,7 +1,9 @@
 /*global _ Route define require */
-define(['views/base/page', 'views/uploading_image_stream', 'views/upload_progress_li', 'models/photo', 'utils/local_storage'],
-function(page_view, uploading_image_stream, upload_progress_li, photo_model, local_storage){
-return  page_view.extend({
+define(['views/base/page', 'views/upload_progress_li',
+    'models/photo', 'views/base/side_scroll', 'collections/photo', 'utils/local_storage', 'utils/alerts', 'native'],
+function(page_view, upload_progress_li, photo_model, side_scroll, photo_collection, local_storage, alerts, native){
+
+var uploading = page_view.extend({
 
     post_activate: function(){
 
@@ -22,12 +24,12 @@ return  page_view.extend({
 
         this.$el.removeClass("showing-upload-queue");
         this.$el.find( ".upload-progress-container" ).empty();
-        this.render();
 
         if (this.photo_id){
             this.upload_completed( 0, this.photo_id);
         }
         else{
+            this.render();
             // testing upload stuff
             //var test_data = {"uploads":[{"description":"Pzzz","percent_complete":10,"id":"013FBD4D-7","sharing":{},"date":"2012-03-09 14:25:59 -0500","status":"private","location":{},"shared":{tweeted:true},"upload_status":"Active","thumbnail":"file:///Users/dpwolf/Library/Application Support/iPhone Simulator/5.0/Applications/ECF32C66-12DE-44D8-B2C2-9A02A0DD77BE/Documents/upload/00000000000353013969.jpg"}]}
         }
@@ -60,8 +62,8 @@ return  page_view.extend({
             this.popular_nearby_stream = new uploading_image_stream({
                 stream_type: "popular-nearby",
                 latitude: this.latitude,
-                longitude: this.longitude,
-                container: $image_stream_container
+                longitude: this.longitude
+                //container: $image_stream_container
             });
         }
 
@@ -82,7 +84,7 @@ return  page_view.extend({
             popular_nearby_stream.collection.fetch({
                 data:{n:6},
                 success: function(){
-                    $image_stream_container .append( popular_nearby_stream.el );
+                    $image_stream_container.append( popular_nearby_stream.el );
                     popular_nearby_stream.render();
                     popular_nearby_stream.$el.trigger( "create" );
                 }
@@ -101,12 +103,12 @@ return  page_view.extend({
             var current_upload = this.current_upload;
             var appmode = local_storage.get("appmode");
 
-            snapr.utils.approve({
+            alerts.approve({
                 "title": "Cancel this upload?",
                 "yes_callback": function(){
                     if (appmode)
                     {
-                        pass_data("snapr://upload?cancel=" + current_upload.id);
+                        native.pass_data("snapr://upload?cancel=" + current_upload.id);
                     }
                     else
                     {
@@ -116,7 +118,6 @@ return  page_view.extend({
             });
 
         }else{
-            console.log("current_upload not set when trying to cancel upload");
             Route.navigate( "#/" );
         }
 
@@ -124,12 +125,10 @@ return  page_view.extend({
 
     upload_progress: function( upload_data )
     {
-        console.warn( 'upload_progress: ', JSON.stringify( upload_data ) );
 
         var $container = this.$el.find(".upload-progress-container");
 
         _.each( upload_data.uploads, function( photo, index ){
-            // console.log("photo: ", photo, " index: ", index)
             if ((photo.upload_status.toLowerCase() == "active") && (!this.current_upload || this.current_upload.id == photo.id))
             {
                 if (!this.pending_uploads[photo.id])
@@ -211,5 +210,50 @@ return  page_view.extend({
         }
     }
 });
+
+var uploading_image_stream = side_scroll.extend({
+    tagName: 'li',
+    className: 'image-stream',
+    template: _.template( $('#uploading-stream-template').html() ),
+    thumbs_template: _.template( $('#uploading-stream-thumb-template').html() ),
+
+    post_initialize: function(){
+
+        this.details = {
+            stream_type: this.options.stream_type,
+            latitude: this.options.latitude,
+            longitude: this.options.longitude,
+            spot: this.options.spot,
+            venue_name: this.options.venue_name
+        };
+
+        switch (this.details.stream_type)
+        {
+            case "popular-nearby":
+                this.collection.data = {
+                    latitude: this.details.latitude,
+                    longitude: this.details.longitude,
+                    radius: 5000,
+                    sort: "favorite_count"
+                };
+                break;
+            case "recent-nearby":
+                this.collection.data = {
+                    latitude: this.details.latitude,
+                    longitude: this.details.longitude,
+                    radius: 5000
+                };
+                break;
+            case "spot":
+                this.collection.data = {
+                    spot: this.details.spot
+                };
+                break;
+        }
+
+    }
+});
+
+return uploading;
 
 });

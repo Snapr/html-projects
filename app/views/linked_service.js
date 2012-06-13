@@ -1,5 +1,5 @@
 /*global _ Route define require */
-define(['backbone'], function(Backbone){
+define(['backbone', 'utils/link_service'], function(Backbone, link_service){
 return Backbone.View.extend({
 
     tagName: 'li',
@@ -66,7 +66,7 @@ return Backbone.View.extend({
 
         $.mobile.showPageLoadingMsg();
 
-        snapr.link_service(this.provider, next);
+        link_service(this.provider, next);
     },
 
     unlink_service: function()
@@ -80,7 +80,7 @@ return Backbone.View.extend({
             {
                 alert('Sorry, we had trouble unlinking your account');
             }
-        }
+        };
 
         // set the id to a non-null value so that backbone doesn't think it is new and abort
         this.model.id = false;

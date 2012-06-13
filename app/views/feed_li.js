@@ -1,6 +1,6 @@
 /*global _ Route define require */
-define(['backbone', 'views/components/favorite_button', 'collections/reaction', 'models/comment', 'auth'],
-    function(Backbone, favorite_button, reaction_collection, comment_model, auth){
+define(['backbone', 'views/components/favorite_button', 'collections/reaction', 'models/comment', 'auth', 'utils/alerts'],
+    function(Backbone, favorite_button, reaction_collection, comment_model, auth, alerts){
 
 var feed_li =  Backbone.View.extend({
 
@@ -394,7 +394,7 @@ var photo_manage = Backbone.View.extend({
         var photo_manage = this;
         photo_manage.$('.x-image-flag').x_loading();
         auth.require_login( function(){
-            snapr.utils.approve({
+            alerts.approve({
                 'title': 'Flag this image as innapropriate?',
                 'yes': 'Flag',
                 'no': 'Cancel',
@@ -403,7 +403,7 @@ var photo_manage = Backbone.View.extend({
                         success: function( resp ){
                             if (resp.success){
                                 photo_manage.model.set({flagged: true});
-                                snapr.utils.notification("Flagged", "Thanks, a moderator will review this image shortly");
+                                alerts.notification("Flagged", "Thanks, a moderator will review this image shortly");
                             }else{
                                 console.warn("error flagging photo", resp);
                             }
@@ -424,7 +424,7 @@ var photo_manage = Backbone.View.extend({
         var photo_manage = this;
         photo_manage.$('.x-image-delete').x_loading();
         auth.require_login( function(){
-            snapr.utils.approve({
+            alerts.approve({
                 'title': 'Are you sure you want to delete this photo?',
                 'yes': 'Delete',
                 'no': 'Cancel',
