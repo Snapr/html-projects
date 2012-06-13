@@ -29,11 +29,13 @@ return page_view.extend({
             } ))
             .trigger("create");
 
-        window.ticker = new ticker({el:this.$('.news-ticker')}).render().tick();
-        $( '#home' ).die('pagehide').live( 'pagehide',function(event, ui){
-            window.ticker.stop();
-            return true;
-        });
+        if(auth.has("access_token")){
+            window.ticker = new ticker({el:this.$('.news-ticker')}).render().tick();
+            $( '#home' ).die('pagehide').live( 'pagehide',function(event, ui){
+                window.ticker.stop();
+                return true;
+            });
+        }
 
         return this;
     },
