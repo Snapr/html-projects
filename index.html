@@ -1426,14 +1426,14 @@
                 <p class="like-names-list">
                     <% if (likes_list.length == 1)
                     {%>
-                        <a class="username"><%= likes_list[0]%></a> likes this.
+                        <a class="username"  href="#/feed/?username=<%= likes_list[0]%>"><%= likes_list[0]%></a> likes this.
                     <%}
                     else if (likes_list.length > 1)
                     {
                         _.each( likes_list, function( username, index )
                         {
                             if (index < likes_list.length - 1)
-                            {%><a class="username"><%= username %></a>, <%}
+                            {%><a class="username"  href="#/feed/?username=<%= username %>"><%= username %></a>, <%}
                         });%>
                         &amp; <a class="username"><%= likes_list[likes_list.length - 1]%></a> like this.
                     <%}%>
