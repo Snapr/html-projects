@@ -1,5 +1,5 @@
 /*global _ Route define require */
-define(['backbone', 'views/feed_li'], function(Backbone, feed_li){
+define(['backbone', 'views/feed_li', 'views/components/no_results'], function(Backbone, feed_li, no_results){
 return Backbone.View.extend({
 
     initialize: function(){
@@ -26,23 +26,27 @@ return Backbone.View.extend({
         var scrollY = window.scrollY;
         this.$el.empty();
 
-        _.each( this.collection.models, function( item ){
-            var li = new feed_li({
-                model: item,
-                template: this.li_templates[ this.list_style ],
-                back: this.back
-            });
-            this.$el.append( li.render().el );
-        }, this);
-
-        if(this.list_style == 'list'){
-            this.$el.find("img").each(function()
-            {
-                $img = $(this);
-                $img.load(function(){
-                    $(this).css("height","auto");
+        if(this.collection.length){
+            _.each( this.collection.models, function( item ){
+                var li = new feed_li({
+                    model: item,
+                    template: this.li_templates[ this.list_style ],
+                    back: this.back
                 });
-            });
+                this.$el.append( li.render().el );
+            }, this);
+
+            if(this.list_style == 'list'){
+                this.$el.find("img").each(function()
+                {
+                    var $img = $(this);
+                    $img.load(function(){
+                        $(this).css("height","auto");
+                    });
+                });
+            }
+        }else{
+            no_results.render('No Photos', 'delete').$el.appendTo(this.$el);
         }
 
         // create jquery mobile markup, set to listview and refresh

@@ -1,9 +1,9 @@
 /*global _ Route define require */
 define(['views/base/page', 'models/user', 'views/user_header', 'views/feed_header',
-    'collections/photo', 'views/feed_list', 'utils/photoswipe', 'views/components/no_results',
+    'collections/photo', 'views/feed_list', 'utils/photoswipe',
     'views/upload_progress_li', 'auth'],
 function(page_view, user_model, user_header, feed_header, photo_collection,
-    feed_list, photoswipe, no_results, upload_progress_li, auth){
+    feed_list, photoswipe, upload_progress_li, auth){
 
 return page_view.extend({
 
@@ -108,8 +108,7 @@ return page_view.extend({
 
         var list_style = this.$el.find("#feed-view-grid").is(":checked") && 'grid' || 'list';
 
-        if (this.feed_list)
-        {
+        if (this.feed_list){
             this.feed_list.list_style = list_style;
         }
 
@@ -133,7 +132,12 @@ return page_view.extend({
                             response.response.photos.length >= feed_view.photo_collection.data.n )
                         );
                 }else{
-                    no_results.render('No Photos', 'delete').$el.appendTo(feed_view.$el.find('#feed-images'));
+                    feed_view.feed_list = new feed_list({
+                        el: feed_view.$el.find('#feed-images')[0],
+                        collection: feed_view.photo_collection,
+                        list_style: list_style
+                    });
+                    feed_view.feed_list.render();
                     $.mobile.hidePageLoadingMsg();
                 }
             },

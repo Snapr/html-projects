@@ -298,7 +298,6 @@ require(['jquery', 'backbone', 'photoswipe', 'auth', 'utils/local_storage', 'nat
         $("a[data-snapr-dialog='true']").live("vclick", function( e ){
             var hash = Backbone.history.getHash({location: e.currentTarget});
             var fragment = Backbone.history.getFragment(hash);
-            console.log(fragment);
 
             var matched = snapr.utils.dialog(fragment);
 
