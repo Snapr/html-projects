@@ -74,9 +74,8 @@ snapr.info.current_view = null;
 /* routers
 ***************************/
 require(['routers', 'backbone'], function(routers, Backbone){
-    window.Route = new routers();
-    snapr.routers = routers;
-    // don't start history until jQm id ready to deal with pageCanges
+    new routers();
+    // don't start history until jQm is ready to deal with pageCanges
     $(window).on("pagecontainercreate", function(){ Backbone.history.start(); });
 });
 
