@@ -16,7 +16,7 @@ You can do the bulk of your development in any webkit browser - we recommend Chr
 
 - Append `#/?browser_testing=true` to the url when you first load the page if testing in a desktop browser. This will add a class to the `<body>` and set a flag in local storage so that the project will limited to a 320px wide section of your screen. 
 
-- Note that the app uses a slightly different upload flow on desktop/mobile web.
+- Note that the app uses a slightly different upload flow on desktop vs mobile web.
 
 
 Key Libraries
