@@ -36,8 +36,6 @@ return page_view.extend({
         }else{
             this.render();
         }
-        this.model.bind( "change", function(){console.log('change!');} );
-        window.test = this.model ;
     },
 
     events: {
@@ -52,7 +50,6 @@ return page_view.extend({
     },
 
     render: function(){
-        console.log('remnder');
         var description = this.$el.find("#description").val();
 
         var img_url;
@@ -97,10 +94,8 @@ return page_view.extend({
             id: id,
             location: {}
         });
-        this.model.bind( "change:secret", _.bind(this.render, this) );
 
-        this.model.bind( "set:location", _.bind(this.render, this) );
-        this.model.bind( "change:foursquare_venue_name", _.bind(this.render, this) );
+        this.model.bind( "change", this.render );
 
         this.model.fetch({
             success: function( model )
@@ -143,8 +138,7 @@ return page_view.extend({
             location: location
         });
 
-        this.model.bind( "change:location", this.render );
-        this.model.bind( "change:foursquare_venue_name", this.render );
+        this.model.bind( "change", this.render );
 
         this.render();
 
@@ -323,7 +317,6 @@ return page_view.extend({
     {
         var share_view = this;
         var go_to_venues = function( ll, foursquare_venue_id, back_query, model ){
-            console.log('venues',ll, foursquare_venue_id, back_query, model );
             snapr.utils.dialog('venue/search/?ll='+ll+'&foursquare_venue_id=' + foursquare_venue_id, {model: model});
             // var venues = new venues_view({
             //     model: model,

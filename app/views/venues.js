@@ -40,8 +40,7 @@ var venues = page_view.extend({
         var back_query = this.query.back_query;
         var photo_model = this.model;
         var this_view = this;
-        _.each( this.display_collection, function( model )
-        {
+        _.each( this.display_collection, function( model ){
             var li = new venue_li({
                 template: venue_li_template,
                 model: model,
@@ -150,10 +149,10 @@ var venue_li = Backbone.View.extend({
             foursquare_venue_name: this.model.get("name")
         };
 
-        var location = _.extend( this.parent_view.model.get( "location" ), venue );
+        var location = _.extend({}, this.parent_view.model.get( "location" ), venue );
 
         this.parent_view.model.set({
-            location: location
+            'location': location
         });
 
         this.parent_view.back();
