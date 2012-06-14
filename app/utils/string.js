@@ -1,4 +1,4 @@
-/*global _ Route define require */
+/*global _  define require */
 define([], function(){
 var string_utils = {};
 

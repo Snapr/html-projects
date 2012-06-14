@@ -1,4 +1,4 @@
-/*global _ Route requirejs require urlError */
+/*global _  requirejs require urlError */
 var snapr = {};
 snapr.models = {};
 snapr.views = {};

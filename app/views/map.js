@@ -1,4 +1,4 @@
-/*global _ Route define require */
+/*global _  define require */
 define(['backbone', 'views/base/page', 'collections/thumb', 'mobiscroll', 'utils/geo', 'auth', 'utils/local_storage', 'utils/string'],
 function(Backbone, page_view, thumb_collection, mobiscroll, geo, auth, local_storage, string_utils){
 var map_view = page_view.extend({

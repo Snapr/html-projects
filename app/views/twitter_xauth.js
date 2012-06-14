@@ -1,4 +1,4 @@
-/*global _ Route define require */
+/*global _  define require */
 define(['backbone', 'views/base/page', 'auth', 'utils/alerts'], function(Backbone, page_view, auth, alerts){
 return page_view.extend({
 

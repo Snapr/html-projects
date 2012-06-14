@@ -1,4 +1,4 @@
-/*global _ Route define require */
+/*global _  define require */
 define(['backbone', 'models/dash_stream'],
 function(Backbone,   dash_stream_model){
 

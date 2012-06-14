@@ -1,4 +1,4 @@
-/*global _ Route define require */
+/*global _  define require */
 define(['backbone', 'views/base/page', 'jquery', 'validate', 'models/user_settings', 'auth'],
     function(Backbone, page_view, $, validate, user_settings, auth){
 

@@ -1,4 +1,4 @@
-/*global _ Route define require */
+/*global _  define require */
 define(['backbone', 'views/base/page', 'views/base/page', 'views/base/side_scroll',
     'models/dash', 'models/dash_stream', 'collections/user',
     'views/components/no_results', 'views/people_li', 'utils/geo', 'auth', 'utils/alerts'],

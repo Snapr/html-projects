@@ -1,4 +1,4 @@
-/*global _ Route define require */
+/*global _  define require */
 define(['backbone', 'utils/local_storage', 'auth'], function(Backbone, local_storage, auth){
 return function(service, next){
     var url;

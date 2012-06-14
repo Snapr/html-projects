@@ -1,4 +1,4 @@
-/*global _ Route define require */
+/*global _  define require */
 define(['backbone', 'utils/string'], function(Backbone, string_utils){
 var activity_stream = Backbone.View.extend({
 

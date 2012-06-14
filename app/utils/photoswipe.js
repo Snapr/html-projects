@@ -1,4 +1,4 @@
-/*global _ Route define require */
+/*global _  define require */
 define(['photoswipe'], function(){
     $.fn.photoswipe_init = function(id){
         if (this.length){

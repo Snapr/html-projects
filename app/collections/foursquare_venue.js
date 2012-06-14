@@ -1,4 +1,4 @@
-/*global _ Route define require */
+/*global _  define require */
 define(['backbone', 'models/foursquare_venue'], function(Backbone, foursquare_venue){
 return Backbone.Collection.extend({
 

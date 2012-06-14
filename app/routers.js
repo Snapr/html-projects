@@ -1,4 +1,4 @@
-/*global _ Route define require */
+/*global _  define require */
 define(['backbone', 'auth', 'utils/local_storage', 'native'], function(Backbone, auth, local_storage, native) {
 
 // this saves certain params to local storage

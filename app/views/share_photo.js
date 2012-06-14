@@ -1,4 +1,4 @@
-/*global _ Route define require */
+/*global _  define require */
 define(['backbone', 'views/base/page', 'models/photo', 'models/geo_location', 'collections/foursquare_venue',
     'views/venues', 'utils/geo', 'auth', 'utils/local_storage', 'utils/alerts', 'native', 'utils/dialog'],
 function(Backbone, page_view, photo_model, geo_location, foursquare_venue_collection, venues_view, geo,

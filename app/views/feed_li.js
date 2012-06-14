@@ -1,4 +1,4 @@
-/*global _ Route define require */
+/*global _  define require */
 define(['backbone', 'views/components/favorite_button', 'collections/reaction', 'models/comment', 'auth', 'utils/alerts'],
     function(Backbone, favorite_button, reaction_collection, comment_model, auth, alerts){
 

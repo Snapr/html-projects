@@ -1,6 +1,6 @@
 // Abstract base class for pages
 
-/*global _ Route define require */
+/*global _  define require */
 
 /*
 things to define:
@@ -81,6 +81,7 @@ return Backbone.View.extend({
     },
 
     back: function(){
+        console.debug('back', this.dialog);
         if(this.dialog){
             if (this.previous_view){
                 this.previous_view.change_page({

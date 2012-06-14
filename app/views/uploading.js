@@ -1,4 +1,4 @@
-/*global _ Route define require */
+/*global _  define require */
 define(['backbone', 'views/base/page', 'views/upload_progress_li',
     'models/photo', 'views/base/side_scroll', 'collections/photo', 'utils/local_storage', 'utils/alerts', 'native'],
 function(Backbone, page_view, upload_progress_li, photo_model, side_scroll, photo_collection, local_storage, alerts, native){

@@ -1,4 +1,4 @@
-/*global _ Route define require */
+/*global _  define require */
 define(['jquery', 'cookie'], function($, cookie){
 
 var local_storage = {};

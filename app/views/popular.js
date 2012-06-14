@@ -1,4 +1,4 @@
-/*global _ Route define require */
+/*global _  define require */
 define(['views/base/page', 'collections/photo', 'views/components/thumbnail', 'auth', 'utils/local_storage', 'utils/string'],
 function(page_view, photo_collection, thumbnail, auth, local_storage, string_utils){
 return page_view.extend({

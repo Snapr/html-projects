@@ -1,4 +1,4 @@
-/*global _ Route define require */
+/*global _  define require */
 define(['backbone', 'utils/local_storage', 'utils/alerts', 'native'], function(Backbone, local_storage, alerts, native){
 return Backbone.View.extend({
 

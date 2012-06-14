@@ -1,4 +1,4 @@
-/*global _ Route define require */
+/*global _  define require */
 define(['backbone', 'views/base/page', 'views/linked_service', 'models/post', 'utils/query'], function(Backbone, page_view, linked_service, post_model, Query){
 var connect_page = page_view.extend({
 

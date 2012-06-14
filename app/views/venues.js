@@ -1,4 +1,4 @@
-/*global _ Route define require */
+/*global _  define require */
 define(['backbone', 'views/base/page', 'collections/foursquare_venue'], function(Backbone, page_view, foursquare_venue_collection){
 var venues = page_view.extend({
 

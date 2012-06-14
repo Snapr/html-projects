@@ -1,4 +1,4 @@
-/*global _ Route define require */
+/*global _  define require */
 define(['backbone', 'collections/activity_event'], function(Backbone, activity_event_collection){
 return Backbone.Model.extend({
 

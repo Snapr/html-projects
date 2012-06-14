@@ -1,4 +1,4 @@
-/*global _ Route define require */
+/*global _  define require */
 define(['utils/local_storage', 'native'], function(local_storage, native){
 var alerts = {};
 alerts.notification = function (title, text, callback) {

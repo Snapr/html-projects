@@ -1,4 +1,4 @@
-/*global _ Route define require */
+/*global _  define require */
 define(['backbone', 'jquery', 'utils/local_storage', 'native'], function(Backbone, $, local_storage, native) {
 
 var auth_model = Backbone.Model.extend({

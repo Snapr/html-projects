@@ -1,4 +1,4 @@
-/*global _ Route define require */
+/*global _  define require */
 define(['backbone', 'auth', 'models/favorite'], function(Backbone, auth, favorite_model){
 return Backbone.View.extend({
 

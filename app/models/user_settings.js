@@ -1,5 +1,5 @@
-/*global _ Route define require */
-/*global _ Route define require */
+/*global _  define require */
+/*global _  define require */
 define(['backbone', 'models/linked_service'], function(Backbone, linked_service){
 return  Backbone.Model.extend({
 

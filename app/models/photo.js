@@ -1,4 +1,4 @@
-/*global _ Route define require */
+/*global _  define require */
 define(['backbone', 'auth'], function(Backbone, auth){
 
 return Backbone.Model.extend({

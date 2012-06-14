@@ -1,4 +1,4 @@
-/*global _ Route define require */
+/*global _  define require */
 define(['backbone', 'native'], function(Backbone, native){
 return Backbone.View.extend({
 

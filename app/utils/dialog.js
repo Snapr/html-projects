@@ -1,4 +1,4 @@
-/*global _ Route define require */
+/*global _  define require */
 define([], function(){
     return function(fragment, extra_data){
         return _.any(Route.routes, function(callback, route) {

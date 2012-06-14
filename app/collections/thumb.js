@@ -1,4 +1,4 @@
-/*global _ Route define require */
+/*global _  define require */
 define(['collections/photo', 'models/thumb'], function(photo_collection, thumb){
 return photo_collection.extend({
 

@@ -1,6 +1,6 @@
 // abstract base class for both twitter and facebook
 
-/*global _ Route define require */
+/*global _  define require */
 define(['views/base/page', 'collections/user', 'views/people_li', 'views/components/no_results', 'utils/link_service'], function(page_view, user_collection, people_li, no_results, link_service){
 return page_view.extend({
 

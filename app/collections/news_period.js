@@ -1,4 +1,4 @@
-/*global _ Route define require */
+/*global _  define require */
 define(['backbone', 'models/news_period'], function(Backbone, news_period){
 return Backbone.Collection.extend({
 

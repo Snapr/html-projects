@@ -1,4 +1,4 @@
-/*global _ Route define require */
+/*global _  define require */
 define(['views/base/page', 'backbone', 'collections/news_period', 'views/activity_stream'], function(page_view, Backbone, news_period_collection, activity_stream){
 return page_view.extend({
 

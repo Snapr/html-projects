@@ -1,4 +1,4 @@
-/*global _ Route define require */
+/*global _  define require */
 define(['views/base/page', 'models/user', 'views/user_header', 'views/feed_header',
     'collections/photo', 'views/feed_list', 'utils/photoswipe',
     'views/upload_progress_li', 'auth'],

@@ -1,4 +1,4 @@
-/*global _ Route define require */
+/*global _  define require */
 define(['backbone', 'views/components/no_results'], function(Backbone, no_results){
 return Backbone.View.extend({
 

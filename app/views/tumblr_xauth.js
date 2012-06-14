@@ -1,4 +1,4 @@
-/*global _ Route define require */
+/*global _  define require */
 define(['views/base/page', 'auth', 'utils/alerts'], function(page_view, auth, alerts){
 return page_view.extend({
 

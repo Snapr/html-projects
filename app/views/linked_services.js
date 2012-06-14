@@ -1,4 +1,4 @@
-/*global _ Route define require */
+/*global _  define require */
 define(['views/base/page', 'models/user_settings', 'views/linked_service', 'utils/string'],
     function(page_view, user_settings, linked_service, string_utils){
 return page_view.extend({

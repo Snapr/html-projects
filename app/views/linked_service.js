@@ -1,4 +1,4 @@
-/*global _ Route define require */
+/*global _  define require */
 define(['backbone', 'utils/link_service', 'auth'], function(Backbone, link_service, auth){
 return Backbone.View.extend({
 
