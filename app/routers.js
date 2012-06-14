@@ -152,6 +152,7 @@ var routers = Backbone.Router.extend({
 
 function _make_route(view, el, extra_data){
     var route = function(query_string, dialog, extra_data_2){
+        console.debug('route', view);
         require([view], function(view) {
             var query = snapr.utils.get_query_params(query_string),
                 options = _.extend({

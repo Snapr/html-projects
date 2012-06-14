@@ -71,7 +71,7 @@ return page_view.extend({
             tumblr_sharing: local_storage.get( "tumblr-sharing" ) !== 'false',
             foursquare_sharing: local_storage.get( "foursquare-sharing" ) !== 'false',
             twitter_sharing: local_storage.get( "twitter-sharing" ) !== 'false',
-            edit: (local_storage.get( "aviary" )  == "true" || local_storage.get( "camplus_edit" )  == "true" ) !== 'false'
+            edit: (local_storage.get( "aviary" )  == "true" || local_storage.get( "camplus_edit" )  == "true" )
         }) ).trigger("create");
 
 

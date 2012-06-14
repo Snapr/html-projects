@@ -394,9 +394,9 @@ var map_view = page_view.extend({
             if (urlParams.lng){
                 delete urlParams.lng;
             }
-            if (urlParams.date){
-                urlParams.date = escape(urlParams.date);
-            }
+            // if (urlParams.date){
+            //     urlParams.date = escape(urlParams.date);
+            // }
 
             Route.navigate( "#/feed/?" + $.param( urlParams ) );
         }
