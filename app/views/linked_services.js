@@ -1,5 +1,6 @@
 /*global _ Route define require */
-define(['views/base/page', 'models/user_settings', 'views/linked_service'], function(page_view, user_settings, linked_service){
+define(['views/base/page', 'models/user_settings', 'views/linked_service', 'utils/string'],
+    function(page_view, user_settings, linked_service, string_utils){
 return page_view.extend({
 
     post_activate: function(){
@@ -85,7 +86,7 @@ return page_view.extend({
             if (this.to_link.length > 1)
             {
                 this.$el.find(".tolink-message").text(
-                    'Sharing to services: ' + this.to_link.human_list() + ' failed. Please connect these services.');
+                    'Sharing to services: ' + string_utils.human_list(this.to_link) + ' failed. Please connect these services.');
             }
         }
         else

@@ -1,5 +1,5 @@
 /*global _ Route define require */
-define(['views/base/page', 'views/linked_service', 'models/post'], function(page_view, linked_service, post_model){
+define(['views/base/page', 'views/linked_service', 'models/post', 'utils/query'], function(page_view, linked_service, post_model, Query){
 var connect_page = page_view.extend({
 
     post_activate: function(options){

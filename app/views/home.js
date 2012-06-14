@@ -1,4 +1,4 @@
-/*global _ Route define require snapr */
+/*global _ Route define require */
 define(['views/base/page', 'views/components/activity_ticker', 'auth'], function(page_view, ticker, auth){
 return page_view.extend({
 

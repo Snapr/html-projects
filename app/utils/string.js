@@ -2,6 +2,29 @@
 define([], function(){
 var string_utils = {};
 
+string_utils.ordinal = function(number){
+    if( number!=11 && number!=12 && number!=13 ){
+        number = String(number);
+        switch( number.substr(number.length-1) ){
+            case '1':
+                return number+'st';
+            case '2':
+                return number+'nd';
+            case '3':
+                return number+'rd';
+        }
+    }
+    return number+'th';
+};
+
+string_utils.zeroFill = function (number, width) {
+    width -= number.toString().length;
+    if(width > 0) {
+        return new Array(width + (/\./.test(number) ? 2 : 1)).join('0') + number;
+    }
+    return number.toString();
+};
+
 string_utils.plural = function(n){
     return (n > 1) ? "s" : "";
 };
@@ -38,7 +61,7 @@ string_utils.comment_links = function( comment ){
 };
 
 string_utils.date_to_snapr_format = function (d) {
-    return d.getFullYear() + '-' + (d.getMonth() + 1).zeroFill(2) + '-' + d.getDate().zeroFill(2) + ' 00:00:00';
+    return d.getFullYear() + '-' + string_utils.zeroFill(d.getMonth() + 1, 2) + '-' + string_utils.zeroFill(d.getDate(), 2) + ' 00:00:00';
 };
 string_utils.convert_snapr_date = function(time){
     time = (time || "").replace(/-/g,"/").replace(/ \//g," -").replace(/[TZ]/g," ");
@@ -79,11 +102,11 @@ string_utils.short_timestamp = function( time, relative ){
             return day_diff + 'd ago';
         }
         if (date.getYear() == now.getYear()){
-            return (date.getDate()).ordinal() + ' ' + months[date.getMonth()];
+            return string_utils.ordinal(date.getDate()) + ' ' + months[date.getMonth()];
         }else{
             var yr = String( date.getFullYear() );
             yr = yr.substring(yr.length - 2,yr.length);
-            return (date.getDate()).ordinal() + ' ' + months[date.getMonth()] + ' \'' + yr;
+            return string_utils.ordinal(date.getDate()) + ' ' + months[date.getMonth()] + ' \'' + yr;
         }
     }
     var full_date = hours+' '+ap+', '+months[date.getMonth()]+' '+date.getDate();
@@ -102,6 +125,19 @@ string_utils.short_location = function(txt){
         }
     }
     return new_txt_array.join( ", " );
+};
+
+string_utils.human_list = function (list) {
+    if(list.length == 1) {
+        return list[0];
+    }
+    var copy = list.slice(0);
+    var text = copy.pop();
+    text = copy.pop() + ' and ' + text;
+    while(copy.length) {
+        text = copy.pop() + ', ' + text;
+    }
+    return text;
 };
 
 return string_utils;

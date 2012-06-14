@@ -932,13 +932,13 @@
             <div class="image-item">
 
             <% if(item.get('external_video')){ %>
-            <video class="main-image x-feed-image external-vid image-loader-bg" data-vid-width="<%= item.get('external_video').width %>" data-vid-duration="<%= item.get('external_video').duration %>" data-vid-height="<%= item.get('external_video').height %>" poster="https://s3.amazonaws.com/media-server<%= item.get('server_id') %>.snapr.us/lrg/<%= item.get('secret') %>/<%= item.get('id') %>.jpg" style="height:<%= snapr.utils.get_photo_height(item.get('width'), item.get('height'), '#feed-images') %>px;" preload="none" controls="true" onclick="if(this.paused){this.play();}else{this.pause();}">
+            <video class="main-image x-feed-image external-vid image-loader-bg" data-vid-width="<%= item.get('external_video').width %>" data-vid-duration="<%= item.get('external_video').duration %>" data-vid-height="<%= item.get('external_video').height %>" poster="https://s3.amazonaws.com/media-server<%= item.get('server_id') %>.snapr.us/lrg/<%= item.get('secret') %>/<%= item.get('id') %>.jpg" style="height:<%= get_photo_height(item.get('width'), item.get('height'), '#feed-images') %>px;" preload="none" controls="true" onclick="if(this.paused){this.play();}else{this.pause();}">
 
                 <source src="<%= item.get('external_video').source %>" />
             </video>
             <%}else{%>
             <a href="https://s3.amazonaws.com/media-server<%= item.get('server_id') %>.snapr.us/lrg/<%= item.get('secret') %>/<%= item.get('id') %>.jpg" rel="external" class="gallery_link main-image-link image-loader-bg">
-                <img style="height:<%= snapr.utils.get_photo_height(item.get('width'), item.get('height'), '#feed-images') %>px;" src="https://s3.amazonaws.com/media-server<%= item.get('server_id') %>.snapr.us/lrg/<%= item.get('secret') %>/<%= item.get('id') %>.jpg" <% if(item.get('description')){ %>alt="<%= item.get('description') %>"<% } %> class="main-image" />
+                <img style="height:<%= get_photo_height(item.get('width'), item.get('height'), '#feed-images') %>px;" src="https://s3.amazonaws.com/media-server<%= item.get('server_id') %>.snapr.us/lrg/<%= item.get('secret') %>/<%= item.get('id') %>.jpg" <% if(item.get('description')){ %>alt="<%= item.get('description') %>"<% } %> class="main-image" />
             </a>
             <% }%>
 

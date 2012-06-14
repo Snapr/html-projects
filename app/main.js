@@ -80,7 +80,8 @@ require(['routers', 'backbone'], function(routers, Backbone){
     $(window).on("pagecontainercreate", function(){ Backbone.history.start(); });
 });
 
-require(['jquery', 'backbone', 'photoswipe', 'auth', 'utils/local_storage', 'native'], function($, Backbone, PhotoSwipe, auth, local_storage, native) {
+require(['jquery', 'backbone', 'photoswipe', 'auth', 'utils/local_storage', 'native', 'utils/dialog'],
+    function($, Backbone, PhotoSwipe, auth, local_storage, native, dialog) {
 
     /* disable jquery-mobile's hash nav so we can replace it with backbone.js
     ***************************/
@@ -199,12 +200,6 @@ require(['jquery', 'backbone', 'photoswipe', 'auth', 'utils/local_storage', 'nat
 
     $(function () {
 
-        // this saves certain params to local storage
-        var hash = window.location.hash.split('?');
-        if(hash.length > 1){
-            snapr.utils.get_query_params(hash[1]);
-        }
-
         /* setup body classes - used to turn features on and off
         ***************************/
         var appmode = local_storage.get("appmode");
@@ -299,7 +294,7 @@ require(['jquery', 'backbone', 'photoswipe', 'auth', 'utils/local_storage', 'nat
             var hash = Backbone.history.getHash({location: e.currentTarget});
             var fragment = Backbone.history.getFragment(hash);
 
-            var matched = snapr.utils.dialog(fragment);
+            var matched = dialog(fragment);
 
             if(matched){
                 e.preventDefault();
@@ -316,11 +311,31 @@ require(['jquery', 'backbone', 'photoswipe', 'auth', 'utils/local_storage', 'nat
 
     });
 
+    $.fn.x_loading = function(loading){
+        if (loading !== false){
+            loading = true;
+        }
+        this.each(function() {
+            var element = $(this),
+                details = element.data('button');
+            if(details){
+                element = details.button;
+            }
+            element.toggleClass('x-ajax-loading', loading);
+        });
+    };
+
 });
 
-// export string utils for templates to use
+// export utils for templates to use
 require(['utils/string'], function(string_utils) {
     window.string_utils = string_utils;
+
+    window.get_photo_height = function (orig_width, orig_height, element) {
+        var aspect = orig_width/orig_height,
+            width = $(element).eq(0).width();
+        return width/aspect;
+    };
 });
 
 

@@ -1,7 +1,8 @@
 /*global _ Route define require */
 define(['views/base/page', 'models/photo', 'models/geo_location', 'collections/foursquare_venue',
-    'views/venues', 'utils/geo', 'auth', 'utils/local_storage', 'utils/alerts', 'native'],
-function(page_view, photo_model, geo_location, foursquare_venue_collection, venues_view, geo, auth, local_storage, alerts, native){
+    'views/venues', 'utils/geo', 'auth', 'utils/local_storage', 'utils/alerts', 'native', 'utils/dialog'],
+function(page_view, photo_model, geo_location, foursquare_venue_collection, venues_view, geo,
+    auth, local_storage, alerts, native, dialog){
 return page_view.extend({
 
     post_initialize: function(){
@@ -317,7 +318,7 @@ return page_view.extend({
     {
         var share_view = this;
         var go_to_venues = function( ll, foursquare_venue_id, back_query, model ){
-            snapr.utils.dialog('venue/search/?ll='+ll+'&foursquare_venue_id=' + foursquare_venue_id, {model: model});
+            dialog('venue/search/?ll='+ll+'&foursquare_venue_id=' + foursquare_venue_id, {model: model});
             // var venues = new venues_view({
             //     model: model,
             //     query: {
