@@ -74,7 +74,9 @@ snapr.info.current_view = null;
 /* routers
 ***************************/
 require(['routers', 'backbone'], function(routers, Backbone){
-    new routers();
+    var routers_instance = new routers();
+    // keep a ref to the instance so it can ba accessed if needed (see utils/dialog)
+    routers.routers_instance = routers_instance;
     // don't start history until jQm is ready to deal with pageCanges
     $(window).on("pagecontainercreate", function(){ Backbone.history.start(); });
 });
