@@ -106,10 +106,10 @@ require(['jquery', 'backbone', 'photoswipe', 'auth', 'utils/local_storage', 'nat
     $.ajaxSetup({timeout:snapr.timeout});
 
     $.ajaxPrefilter( function( options, originalOptions, jqXHR ) {
-        var old_complete = _.bind(options.complete, this);
+        var old_complete = options.complete;
         options.complete = function(xhr, status){
             if(old_complete){
-                old_complete(status, xhr);
+                old_complete.call(this, status, xhr);
             }
             if(!options.no_offline_mode && status == 'timeout'){
                 snapr.offline = true;

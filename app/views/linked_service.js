@@ -1,5 +1,5 @@
 /*global _ Route define require */
-define(['backbone', 'utils/link_service'], function(Backbone, link_service){
+define(['backbone', 'utils/link_service', 'auth'], function(Backbone, link_service, auth){
 return Backbone.View.extend({
 
     tagName: 'li',
@@ -122,29 +122,23 @@ return Backbone.View.extend({
         this.model.save( {}, options );
     },
 
-    twitter_import_profile: function()
-    {
-        // set the data to be posted here since it's not part of the model
-        this.model.data = {
-            import_profile: true
-        };
+    twitter_import_profile: function(){
 
         var linked_service = this;
-
-        var options = {
-            success: function()
-            {
-                // remove the additional post data set above
-                delete linked_service.model.data;
+        $.ajax({
+            url: snapr.api_base + '/linked_services/twitter/import_profile/',
+            data: {
+                access_token: auth.get('access_token'),
+                _method: 'POST'
+            },
+            dataType: 'jsonp',
+            success: function(response){
                 alert( "Profile imported.");
             },
-            error: function(e)
-            {
-                console.log( 'import profile error', e );
+            error: function(e){
+                console.error( 'import profile error', e );
             }
-        };
-
-        this.model.save( {}, options );
+        });
     },
 
     twitter_link: function()
