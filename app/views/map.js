@@ -16,11 +16,14 @@ var map_view = page_view.extend({
 
         this.location_template = _.template($('#location-template').html());
 
-        this.thumb_collection = new thumb_collection();
-
     },
 
     post_activate: function(){
+        this.thumb_collection = new thumb_collection();
+
+        this.page_shown = false;
+        this.maps_loaded = false;
+        this.page_showen_and_maps_loaded = false;
 
         var query = this.options.query || {};
 
@@ -56,7 +59,6 @@ var map_view = page_view.extend({
 
         // load maps libs if needed then callback to here
         if(!window.google || !window.google.maps){
-            console.debug('no maps lib, loading it');
             window.gmap_script_loaded = _.bind(this.load_maps_then, this);
             // this loads the google loader script with the maps lib autoloaded with a callback to gmap_script_loaded
             // {"modules":[{"name":"maps","version":"3.x","callback":"gmap_script_loaded",'other_params':"sensor=false"}]}
@@ -106,7 +108,6 @@ var map_view = page_view.extend({
         this.when_page_showen_and_maps_loaded();
     },
     when_page_showen_and_maps_loaded: function(){
-
         // don't run if not ready - anything becoming ready will re-call this function
         if(!this.maps_loaded || !this.page_shown){ return; }
 
@@ -157,9 +158,7 @@ var map_view = page_view.extend({
             location_template: this.location_template
         };
 
-
-        var idle = google.maps.event.addListener( map_view.map, "idle", function()
-        {
+        var idle = google.maps.event.addListener( map_view.map, "idle", function(){
             map_view.map_query.set( {
                 area: map_view.map.getBounds().toUrlValue(4),
                 zoom: map_view.map.getZoom()
@@ -217,6 +216,7 @@ var map_view = page_view.extend({
         this.thumb_collection.data = query;
         this.thumb_collection.data.area = this.map.getBounds().toUrlValue(4);
         var map_view = this;
+
         this.thumb_collection.fetch({
             success: function( collection )
             {
@@ -382,28 +382,22 @@ var map_view = page_view.extend({
         {
             var urlParams = this.map_query.attributes;
 
-            if (urlParams.access_token)
-            {
+            if (urlParams.access_token){
                 delete urlParams.access_token;
             }
-            if (urlParams.zoom)
-            {
+            if (urlParams.zoom){
                 delete urlParams.zoom;
             }
-            if (urlParams.lat)
-            {
+            if (urlParams.lat){
                 delete urlParams.lat;
             }
-            if (urlParams.lng)
-            {
+            if (urlParams.lng){
                 delete urlParams.lng;
             }
-            if (urlParams.date)
-            {
+            if (urlParams.date){
                 urlParams.date = escape(urlParams.date);
             }
 
-            urlParams.back = "Map";
             Route.navigate( "#/feed/?" + $.param( urlParams ) );
         }
         else
