@@ -22,6 +22,7 @@ return Backbone.View.extend({
         }
 
         $.ajax({
+            no_offline_mode: true, // don't trigger offline mode if this fails
             url:snapr.api_base + '/user/news/',
             data: data,
             dataType: 'jsonp',

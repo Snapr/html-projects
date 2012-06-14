@@ -105,6 +105,24 @@ require(['jquery', 'backbone', 'photoswipe', 'auth', 'utils/local_storage', 'nat
     snapr.offline_timeout = 5000;  // 5000;
     $.ajaxSetup({timeout:snapr.timeout});
 
+    $.ajaxPrefilter( function( options, originalOptions, jqXHR ) {
+        var old_complete = _.bind(options.complete, this);
+        options.complete = function(xhr, status){
+            if(old_complete){
+                old_complete(status, xhr);
+            }
+            if(!options.no_offline_mode && status == 'timeout'){
+                snapr.offline = true;
+                $.ajaxSetup({timeout:snapr.offline_timeout});
+                snapr.current_view.$('[data-role=content]').prepend(snapr.offline_el);
+            }else if(snapr.offline && (status == 'success' || status == 'notmodified')){
+                snapr.offline = false;
+                $.ajaxSetup({timeout:snapr.timeout});
+                $('.x-offline').remove();
+            }
+        };
+    });
+
     snapr.retry_connection = function(){
         $.ajaxSetup({timeout:snapr.timeout});
         window.location.reload();
@@ -173,25 +191,6 @@ require(['jquery', 'backbone', 'photoswipe', 'auth', 'utils/local_storage', 'nat
         if(options.data){
             options.data = _.extend(params.data, options.data);
         }
-
-        // control offline mode
-        if(options.complete){
-            options._complete = options.complete;
-        }
-        options.complete = function(xhr, status){
-            if(options._complete){
-                options._complete.call(this, status, xhr);
-            }
-            if(status == 'timeout'){
-                snapr.offline = true;
-                $.ajaxSetup({timeout:snapr.offline_timeout});
-                snapr.current_view.$('[data-role=content]').prepend(snapr.offline_el);
-            }else if(snapr.offline && (status == 'success' || status == 'notmodified')){
-                snapr.offline = false;
-                $.ajaxSetup({timeout:snapr.timeout});
-                $('.x-offline').remove();
-            }
-        };
 
         // Make the request, allowing the user to override any Ajax options.
         return $.ajax(_.extend(params, options));
