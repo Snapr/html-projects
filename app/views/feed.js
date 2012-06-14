@@ -80,6 +80,9 @@ return page_view.extend({
             transition: transition
         });
 
+        if(this.query.date){
+            this.query.date = this.query.date.replace('+', ' ');
+        }
         this.photo_collection.data = this.query;
         this.photo_collection.data.n = this.photo_collection.data.n || snapr.constants.feed_count;
         this.photo_collection.data.detail = 2;
