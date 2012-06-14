@@ -5,7 +5,7 @@ return page_view.extend({
     post_activate: function(options){
 
         if (options.query){
-            this.redirect = unescape( options.query.redirect );
+            this.redirect = options.query.redirect;
             this.message = options.query.message;
         }
 

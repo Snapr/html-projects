@@ -1,5 +1,5 @@
 /*global _ Route define require */
-define(['utils/local_storage'], function(local_storage){
+define(['utils/local_storage', 'auth'], function(local_storage, auth){
 return function(service, next){
     var url;
     if (service == 'twitter' && snapr.twitter_xauth){

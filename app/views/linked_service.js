@@ -61,8 +61,7 @@ return Backbone.View.extend({
     },
 
     link_service: function(){
-        var url,
-            next = this.get_return_url();
+        var next = this.get_return_url();
 
         $.mobile.showPageLoadingMsg();
 

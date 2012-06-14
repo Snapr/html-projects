@@ -99,11 +99,6 @@ var connect_li = linked_service.extend({
         this.status = this.options.status || null;
         this.photo_id = this.options.photo_id || null;
         this.parent_view = this.options.parent_view || null;
-
-        // if (this.photo_id && this.status == "ready")
-        // {
-        //     this.share();
-        // }
     },
 
     render: function()
@@ -129,19 +124,16 @@ var connect_li = linked_service.extend({
         var to_link = _.without( this.parent_view.to_link, this.provider );
         var shared = _.without( this.parent_view.shared, this.provider );
 
-        var redirect_params = {linked: this.provider, redirect_url: escape(this.parent_view.redirect_url)};
+        var redirect_params = {linked: this.provider, redirect_url: this.parent_view.redirect_url};
 
-        if (shared.length)
-        {
-            redirect_params["shared"] = shared.join(",");
+        if (shared.length){
+            redirect_params.shared = shared.join(",");
         }
-        if (this.photo_id)
-        {
-            redirect_params["photo_id"] = this.photo_id;
+        if (this.photo_id){
+            redirect_params.photo_id = this.photo_id;
         }
-        if (to_link.length)
-        {
-            redirect_params["to_link"] = to_link.join(",");
+        if (to_link.length){
+            redirect_params.to_link = to_link.join(",");
         }
 
         var next = window.location.href.split('?')[0];
@@ -154,8 +146,7 @@ var connect_li = linked_service.extend({
     // link_service inherited from snapr.views.linked_service, uses this.get_return_url
     // link_service: function(){},
 
-    share: function()
-    {
+    share: function(){
         this.model = new snapr.models.photo({id: this.photo_id});
 
         var connect_li = this;
