@@ -67,11 +67,11 @@ return page_view.extend({
             photo: this.model,
             status: local_storage.get( "status" ),
             share_location: local_storage.get( "share-location" ) !== 'false',
-            facebook_sharing: local_storage.get( "facebook-sharing" ) && true || false,
-            tumblr_sharing: local_storage.get( "tumblr-sharing" ) && true || false,
-            foursquare_sharing: local_storage.get( "foursquare-sharing" ) && true || false,
-            twitter_sharing: local_storage.get( "twitter-sharing" ) && true || false,
-            edit: (local_storage.get( "aviary" )  == "true" || local_storage.get( "camplus_edit" )  == "true" ) && true || false
+            facebook_sharing: local_storage.get( "facebook-sharing" ) !== 'false',
+            tumblr_sharing: local_storage.get( "tumblr-sharing" ) !== 'false',
+            foursquare_sharing: local_storage.get( "foursquare-sharing" ) !== 'false',
+            twitter_sharing: local_storage.get( "twitter-sharing" ) !== 'false',
+            edit: (local_storage.get( "aviary" )  == "true" || local_storage.get( "camplus_edit" )  == "true" ) !== 'false'
         }) ).trigger("create");
 
 
