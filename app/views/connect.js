@@ -1,5 +1,5 @@
 /*global _ Route define require */
-define(['views/base/page', 'views/linked_service', 'models/post', 'utils/query'], function(page_view, linked_service, post_model, Query){
+define(['backbone', 'views/base/page', 'views/linked_service', 'models/post', 'utils/query'], function(Backbone, page_view, linked_service, post_model, Query){
 var connect_page = page_view.extend({
 
     post_activate: function(options){
@@ -67,7 +67,7 @@ var connect_page = page_view.extend({
         var options = {
             success: function(){
                 if(!connect_view.to_link.length){
-                    Route.navigate( unescape(connect_view.redirect_url) );
+                    Backbone.history.navigate( unescape(connect_view.redirect_url) );
                 }
                 connect_view.linked = null;
                 connect_view.shared.push(service);
@@ -83,7 +83,7 @@ var connect_page = page_view.extend({
     },
 
     close: function(e){
-        Route.navigate( unescape(this.redirect_url) );
+        Backbone.history.navigate( unescape(this.redirect_url) );
         e.preventDefault();
     }
 
@@ -160,7 +160,7 @@ var connect_li = linked_service.extend({
                 {
                     setTimeout(function()
                     {
-                        Route.navigate("#/uploading/?shared=true&photo_id=" + model.get("id"));
+                        Backbone.history.navigate("#/uploading/?shared=true&photo_id=" + model.get("id"));
                     }, 600);
                 }
             },

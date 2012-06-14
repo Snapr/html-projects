@@ -1,4 +1,4 @@
-/*global _:false Route:false requirejs:false define:false require:false urlError:false */
+/*global _ Route requirejs require urlError */
 var snapr = {};
 snapr.models = {};
 snapr.views = {};
@@ -244,7 +244,7 @@ require(['jquery', 'backbone', 'photoswipe', 'auth', 'utils/local_storage', 'nat
                 src = ps.cache.images[ps.currentIndex].src,
                 id = src.match(/\/(\w{2,6})\.jpg$/)[1];
             ps.hide();
-            Route.navigate('#/feed/?n=1&photo_id=' + id );
+            Backbone.history.navigate('#/feed/?n=1&photo_id=' + id );
         });
 
         // camera button
@@ -261,10 +261,10 @@ require(['jquery', 'backbone', 'photoswipe', 'auth', 'utils/local_storage', 'nat
                 }
 
                 setTimeout( function(){
-                    Route.navigate( "#/limbo/" );
+                    Backbone.history.navigate( "#/limbo/" );
                 }, 600);
             }else{
-                Route.navigate( "#/app/" );
+                Backbone.history.navigate( "#/app/" );
             }
         }) );
 
@@ -282,10 +282,10 @@ require(['jquery', 'backbone', 'photoswipe', 'auth', 'utils/local_storage', 'nat
                 }
 
                 setTimeout( function(){
-                    Route.navigate( "#/limbo/" );
+                    Backbone.history.navigate( "#/limbo/" );
                 }, 600);
             }else{
-                Route.navigate( "#/upload/" );
+                Backbone.history.navigate( "#/upload/" );
             }
         }) );
 
@@ -306,7 +306,7 @@ require(['jquery', 'backbone', 'photoswipe', 'auth', 'utils/local_storage', 'nat
         ***************************/
         var redirect = window.location.hash.replace('#','');
         if(redirect.length){
-            Route.navigate(redirect);
+            Backbone.history.navigate(redirect);
         }
 
     });

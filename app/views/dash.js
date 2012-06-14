@@ -1,8 +1,8 @@
 /*global _ Route define require */
-define(['views/base/page', 'views/base/page', 'views/base/side_scroll',
+define(['backbone', 'views/base/page', 'views/base/page', 'views/base/side_scroll',
     'models/dash', 'models/dash_stream', 'collections/user',
     'views/components/no_results', 'views/people_li', 'utils/geo', 'auth', 'utils/alerts'],
-    function(page_view, page_view, side_scroll, dash_model, dash_stream_model,
+    function(Backbone, page_view, page_view, side_scroll, dash_model, dash_stream_model,
         user_collection, no_results, people_li, geo, auth, alerts){
 
 var dash_view = page_view.extend({
@@ -122,7 +122,7 @@ var dash_view = page_view.extend({
     {
         var query = $(e.currentTarget).data('query');
         var current = $(e.currentTarget).data('current');
-        Route.navigate('#/feed/?' + unescape( query ) + '&photo_id=' + current );
+        Backbone.history.navigate('#/feed/?' + unescape( query ) + '&photo_id=' + current );
     },
 
     remove_stream: function(stream){

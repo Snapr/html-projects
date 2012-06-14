@@ -1,7 +1,7 @@
 /*global _ Route define require */
-define(['views/base/page', 'views/upload_progress_li',
+define(['backbone', 'views/base/page', 'views/upload_progress_li',
     'models/photo', 'views/base/side_scroll', 'collections/photo', 'utils/local_storage', 'utils/alerts', 'native'],
-function(page_view, upload_progress_li, photo_model, side_scroll, photo_collection, local_storage, alerts, native){
+function(Backbone, page_view, upload_progress_li, photo_model, side_scroll, photo_collection, local_storage, alerts, native){
 
 var uploading = page_view.extend({
 
@@ -112,13 +112,13 @@ var uploading = page_view.extend({
                     }
                     else
                     {
-                        Route.navigate( "#/upload/" );
+                        Backbone.history.navigate( "#/upload/" );
                     }
                 }
             });
 
         }else{
-            Route.navigate( "#/" );
+            Backbone.history.navigate( "#/" );
         }
 
     },
@@ -198,7 +198,7 @@ var uploading = page_view.extend({
             this.pending_uploads[queue_id].remove();
             delete this.pending_uploads[queue_id];
         }
-        // Route.navigate( "#/" );
+        // Backbone.history.navigate( "#/" );
     },
 
     upload_count: function( count )

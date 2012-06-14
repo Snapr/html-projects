@@ -1,5 +1,5 @@
 /*global _ Route define require */
-define(['views/base/page'], function(page_view){
+define(['backbone', 'views/base/page'], function(Backbone, page_view){
 return page_view.extend({
 
     post_initialize: function(){
@@ -22,7 +22,7 @@ return page_view.extend({
     },
 
     home: function(){
-        Route.navigate( "#/", true );
+        Backbone.history.navigate( "#/", true );
     }
 });
 });

@@ -90,7 +90,7 @@ return Backbone.View.extend({
                 });
                 snapr.info.current_view = this.previous_view;
             }else{
-                Route.navigte('#');
+                Backbone.history.navigte('#');
             }
         }else{
             history.go(-1);

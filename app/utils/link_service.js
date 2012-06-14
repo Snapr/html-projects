@@ -1,13 +1,13 @@
 /*global _ Route define require */
-define(['utils/local_storage', 'auth'], function(local_storage, auth){
+define(['backbone', 'utils/local_storage', 'auth'], function(Backbone, local_storage, auth){
 return function(service, next){
     var url;
     if (service == 'twitter' && snapr.twitter_xauth){
         url = '#/twitter-xauth/?redirect='+ escape( next );
-        Route.navigate( url );
+        Backbone.history.navigate( url );
     }else if (service == 'tumblr' && snapr.tumblr_xauth){
         url = '#/tumblr-xauth/?redirect='+ escape( next );
-        Route.navigate( url );
+        Backbone.history.navigate( url );
     }else{
         if (local_storage.get( "appmode" )){
             if (local_storage.get("appmode") == 'iphone'){

@@ -1,6 +1,6 @@
 /*global _ Route define require */
-define(['views/base/page', 'views/base/side_scroll', 'collections/photo'],
-    function(page_view, side_scroll, photo_collection){
+define(['backbone', 'views/base/page', 'views/base/side_scroll', 'collections/photo'],
+    function(Backbone, page_view, side_scroll, photo_collection){
 
 var cities = {
     'new-york': {
@@ -67,7 +67,7 @@ return page_view.extend({
                 current = $(this).data('current'),
                 city = $(this).data('city');
 
-            Route.navigate('#/feed/?' + unescape( query ) + '&photo_id=' + current + "&back=Cities&feed_title=" + city );
+            Backbone.history.navigate('#/feed/?' + unescape( query ) + '&photo_id=' + current + "&back=Cities&feed_title=" + city );
         });
 
     },

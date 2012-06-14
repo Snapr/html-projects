@@ -188,12 +188,12 @@ var feed_li =  Backbone.View.extend({
 
     goto_map: function()
     {
-        Route.navigate( this.map_url );
+        Backbone.history.navigate( this.map_url );
     },
 
     goto_spot: function()
     {
-        Route.navigate( this.spot_url );
+        Backbone.history.navigate( this.spot_url );
     },
 
     comment: function( e )

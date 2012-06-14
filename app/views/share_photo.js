@@ -1,7 +1,7 @@
 /*global _ Route define require */
-define(['views/base/page', 'models/photo', 'models/geo_location', 'collections/foursquare_venue',
+define(['backbone', 'views/base/page', 'models/photo', 'models/geo_location', 'collections/foursquare_venue',
     'views/venues', 'utils/geo', 'auth', 'utils/local_storage', 'utils/alerts', 'native', 'utils/dialog'],
-function(page_view, photo_model, geo_location, foursquare_venue_collection, venues_view, geo,
+function(Backbone, page_view, photo_model, geo_location, foursquare_venue_collection, venues_view, geo,
     auth, local_storage, alerts, native, dialog){
 return page_view.extend({
 
@@ -381,7 +381,7 @@ return page_view.extend({
             }
 
             setTimeout( function(){
-                Route.navigate( "#/limbo/" );
+                Backbone.history.navigate( "#/limbo/" );
             }, 600);
         }
         else
@@ -479,9 +479,9 @@ return page_view.extend({
 
                     if (sharing_errors.length){
                         var url = "#/connect/?to_link=" + sharing_errors.join(",") + "&photo_id=" + model.get("id") + "&redirect_url=" + escape(redirect_url);  //  + "&shared=" + sharing_successes.join(",")
-                        Route.navigate( url );
+                        Backbone.history.navigate( url );
                     }else{
-                        Route.navigate( redirect_url );
+                        Backbone.history.navigate( redirect_url );
                     }
                 },
                 error: function(){
@@ -566,7 +566,7 @@ return page_view.extend({
                     ll += "&spot=" + params.foursquare_venue;
                 }
 
-                Route.navigate( "#/uploading/" + ll );
+                Backbone.history.navigate( "#/uploading/" + ll );
                 native.pass_data("snapr://upload?" + $.param(params) );
             }
         }
@@ -579,7 +579,7 @@ return page_view.extend({
 
     upload_progress: function( upload_data )
     {
-        Route.navigate( '#/uploading/' );
+        Backbone.history.navigate( '#/uploading/' );
     }
 
 });

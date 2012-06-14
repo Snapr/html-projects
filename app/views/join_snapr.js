@@ -1,6 +1,6 @@
 /*global _ Route define require */
-define(['views/base/page', 'jquery', 'validate', 'models/user_settings', 'auth'],
-    function(page_view, $, validate, user_settings, auth){
+define(['backbone', 'views/base/page', 'jquery', 'validate', 'models/user_settings', 'auth'],
+    function(Backbone, page_view, $, validate, user_settings, auth){
 
 var join_dialog = page_view.extend({
 
@@ -119,7 +119,7 @@ var join_dialog = page_view.extend({
                 join_snapr_view.$el.find("#join-dialog-password").val('');
                 join_snapr_view.$el.find("#join-dialog-email").val('');
                 // go back to home screen
-                Route.navigate('#/join-success/');
+                Backbone.history.navigate('#/join-success/');
             },
             error: function()
             {
@@ -147,7 +147,7 @@ var join_dialog = page_view.extend({
     },
 
     twitter_login: function(){
-        Route.navigate( "#/twitter-xauth/?signin=true" );
+        Backbone.history.navigate( "#/twitter-xauth/?signin=true" );
     }
 });
 

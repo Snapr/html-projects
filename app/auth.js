@@ -85,7 +85,7 @@ var auth_model = Backbone.Model.extend({
                 if(e) {
                     e.preventDefault();
                 }
-                Route.navigate('#/login/?message=Sorry, you need to log in first.');
+                Backbone.history.navigate('#/login/?message=Sorry, you need to log in first.');
             } else {
                 $.proxy(funct, this)(e);
             }

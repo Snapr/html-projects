@@ -1,5 +1,5 @@
 /*global _ Route define require */
-define(['views/base/page'], function(page_view){
+define(['backbone', 'views/base/page'], function(Backbone, page_view){
 return page_view.extend({
 
     post_activate: function(){
@@ -53,21 +53,21 @@ return page_view.extend({
                     this.back();
                     this.back_view && this.back_view.search_location( keywords );
                 }else{
-                    Route.navigate( "#/map/?location=" + keywords );
+                    Backbone.history.navigate( "#/map/?location=" + keywords );
                 }
                 break;
             case 'tag':
                 if (window.location.hash == "#/feed/?keywords=" + keywords + "&list_style=grid" ){
                     this.back();
                 }else{
-                    Route.navigate( "#/feed/?keywords=" + keywords + "&list_style=grid" );
+                    Backbone.history.navigate( "#/feed/?keywords=" + keywords + "&list_style=grid" );
                 }
                 break;
             case 'user':
                 if (window.location.hash == "#/user/search/?username=" + keywords ){
                     this.back();
                 }else{
-                    Route.navigate( "#/user/search/?username=" + keywords );
+                    Backbone.history.navigate( "#/user/search/?username=" + keywords );
                 }
                 break;
         }

@@ -1,5 +1,5 @@
 /*global _ Route define require */
-define(['views/base/page', 'auth'], function(page_view, auth){
+define(['backbone', 'views/base/page', 'auth'], function(Backbone, page_view, auth){
 return page_view.extend({
 
     post_activate: function(){
@@ -46,7 +46,7 @@ return page_view.extend({
         auth.get_token( username, password, options );
     },
     twitter_login: function(){
-        Route.navigate( "#/twitter-xauth/?signin=true" );
+        Backbone.history.navigate( "#/twitter-xauth/?signin=true" );
     }
 });
 

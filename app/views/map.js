@@ -313,7 +313,7 @@ var map_view = page_view.extend({
                 var again = confirm("Sorry, your search returned no results. Would you like to search again?");
 
                 if(again) {
-                    Route.navigate("/search");
+                    Backbone.history.navigate("/search");
                 }
             }
         });
@@ -398,7 +398,7 @@ var map_view = page_view.extend({
                 delete urlParams.date;
             }
 
-            Route.navigate( "#/feed/?" + $.param( urlParams ) );
+            Backbone.history.navigate( "#/feed/?" + $.param( urlParams ) );
         }
         else
         {

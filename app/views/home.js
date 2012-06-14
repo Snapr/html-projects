@@ -1,11 +1,11 @@
 /*global _ Route define require */
-define(['views/base/page', 'views/components/activity_ticker', 'auth'], function(page_view, ticker, auth){
+define(['backbone', 'views/base/page', 'views/components/activity_ticker', 'auth'], function(Backbone, page_view, ticker, auth){
 return page_view.extend({
 
     post_initialize: function(options){
         if(options.query.new_user){
-            Route.navigate( "#", true );  // go here first so that back is not new_user
-            Route.navigate( "#/welcome/" );
+            Backbone.history.navigate( "#", true );  // go here first so that back is not new_user
+            Backbone.history.navigate( "#/welcome/" );
         }
 
         this.template = _.template( $("#home-template").html() );

@@ -1,5 +1,5 @@
 /*global _ Route define require */
-define(['views/base/page', 'auth', 'utils/alerts'], function(page_view, auth, alerts){
+define(['backbone', 'views/base/page', 'auth', 'utils/alerts'], function(Backbone, page_view, auth, alerts){
 return page_view.extend({
 
     post_activate: function(){
@@ -48,10 +48,10 @@ return page_view.extend({
                             });
                             auth.save_locally();
                             alerts.notification('Logged in as ' + data.response.snapr_user);
-                            Route.navigate("#/");
+                            Backbone.history.navigate("#/");
                         }else{
                             // sign up
-                            Route.navigate( "#/join/?linked=true&twitter_name="+data.response.username+"&twitter_token="+escape(data.response.twitter_token) );
+                            Backbone.history.navigate( "#/join/?linked=true&twitter_name="+data.response.username+"&twitter_token="+escape(data.response.twitter_token) );
                         }
                     }else{
                         console.error(data);
