@@ -221,7 +221,7 @@ snapr.link_service = function(service, next){
                 // without this so this can be removed in future
                 url = snapr.api_base + "/linked_services/"+ service +
                     "/oauth/?display=touch&access_token=" + snapr.auth.get("access_token") +
-                    "&double_encode=true&redirect=" + escape("snapr://redirect?url=" + escape( next ));
+                    "&redirect=" + escape("snapr://redirect?url=" + escape( next ));
             }else if(snapr.utils.get_local_param("appmode") == 'android'){
                 // android needs a snapr://link?url=
                 url = "snapr://link?url=" + snapr.api_base +
