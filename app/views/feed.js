@@ -15,22 +15,20 @@ return page_view.extend({
         this.query = this.options.query || {};
 
         if (this.query.photo_id){
-            this.back_text = "Back";
+            this.title = "Back";
         }else if (this.query.username){
-            this.back_text = this.query.username;
+            this.title = this.query.username;
         }else if (this.query.keywords){
-            this.back_text = this.feed_parameter;
+            this.title = this.feed_parameter;
         }else if (this.query.area){
-            this.back_text = "Location";
+            this.title = "Location";
         }else if (this.query.favorited_by){
-            this.back_text = "Favorites";
+            this.title = "Favorites";
         }else if (this.query.spot && this.query.venue_name){
-            this.back_text = "Spot";
+            this.title = "Spot";
         }else{
-            this.back_text = "Feed";
+            this.title = "Feed";
         }
-        //console.debug('setting feed page back text to', this.back_text);
-        this.$el.data('back-text', this.back_text);
 
         var list_style = this.query.list_style || 'list';
 

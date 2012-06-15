@@ -47,7 +47,11 @@ return Backbone.View.extend({
                 current_view = current_view.previous_view;
             }
             if(current_view){
-                back_text = current_view.$el.data('short-title') || current_view.$el.data('title');
+                if(current_view.title){
+                    back_text = current_view.title;
+                }else{
+                    back_text = current_view.$el.data('short-title') || current_view.$el.data('title');
+                }
             }
         }
         this.set_back_text(back_text);
