@@ -5273,6 +5273,17 @@ div.ps-carousel-item-loading {
 .share-photo .image-controls .ui-icon-toggle-up {
   background-position: 0px -200px;
 }
+.camplus-icon {
+  background: none!important;
+  background-image: url('../gfx/camplus.png') !important;
+  background-repeat: no-repeat;
+  width: 37px;
+  height: 36px;
+  float: right;
+}
+.camplus-icon span {
+  display: none;
+}
 /*
 * @connect - DIALOG ?
 */
@@ -6303,5 +6314,12 @@ div.ps-carousel-item-loading {
     -o-background-size: 56px 56px;
     -webkit-background-size: 56px 56px;
     background-size: 56px 56px;
+  }
+  .camplus-icon {
+    background-image: url('../gfx/retina/camplus.png') !important;
+    -moz-background-size: 37px 36px !important;
+    -o-background-size: 37px 36px !important;
+    -webkit-background-size: 37px 36px !important;
+    background-size: 37px 36px !important;
   }
 }
