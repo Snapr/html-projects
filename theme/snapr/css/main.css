@@ -3679,31 +3679,35 @@ strong {
 }
 .message-overlay {
   position: absolute;
-  top: 46px;
+  padding-top: 46px;
   margin: 0;
   left: 0;
+  top: 0;
+  bottom: 0;
   width: 100%;
   background: none;
   border: none;
+  z-index: 999;
 }
 .message-overlay .message-body {
   margin: 8px;
   display: block;
+  padding: 0;
 }
 .retry-offline {
   display: block;
   padding-left: 24px;
   padding-right: 24px;
 }
+.retry-offline .ui-btn-inner {
+  padding-left: 32px;
+  padding-right: 32px;
+  text-align: left;
+}
 .retry-offline .ui-icon-connection {
   position: absolute;
   left: 0;
   top: 0;
-}
-.retry-offline .ui-icon-forward {
-  position: absolute;
-  right: -1px;
-  top: -1px;
 }
 .helper-content .ui-body {
   position: relative;
