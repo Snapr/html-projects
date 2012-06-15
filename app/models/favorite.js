@@ -1,9 +1,9 @@
 /*global _  define require */
-define(['backbone'], function(Backbone){
+define(['config', 'backbone'], function(config, Backbone){
 return  Backbone.Model.extend({
     urlRoot: function()
     {
-        return snapr.api_base + '/favorite/';
+        return config.get('api_base') + '/favorite/';
     },
     url: function( method )
     {

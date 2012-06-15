@@ -1,8 +1,8 @@
 /*global _  define require */
-define(['backbone', 'views/base/page', 'views/base/page', 'views/base/side_scroll',
+define(['config', 'backbone', 'views/base/page', 'views/base/side_scroll',
     'models/dash', 'models/dash_stream', 'collections/user',
     'views/components/no_results', 'views/people_li', 'utils/geo', 'auth', 'utils/alerts'],
-    function(Backbone, page_view, page_view, side_scroll, dash_model, dash_stream_model,
+    function(config, Backbone, page_view, side_scroll, dash_model, dash_stream_model,
         user_collection, no_results, people_li, geo, auth, alerts){
 
 var dash_view = page_view.extend({
@@ -11,6 +11,7 @@ var dash_view = page_view.extend({
 
     post_initialize: function(){
         this.collection = new dash_model();
+        // TODO: don't store the collectin on window
         window.dash = this.collection;
 
         this.collection.bind( 'remove', this.remove_stream );
@@ -96,8 +97,8 @@ var dash_view = page_view.extend({
                 el: $("#dash-add-search")[0],
                 dialog: true
             });
-            add.previous_view = snapr.info.current_view;
-            snapr.info.current_view = add;
+            add.previous_view = config.get('current_view');
+            config.set('current_view', add);
         })();
     },
 
@@ -108,8 +109,8 @@ var dash_view = page_view.extend({
                 el: $("#dash-add-person")[0],
                 dialog: true
             });
-            add.previous_view = snapr.info.current_view;
-            snapr.info.current_view = add;
+            add.previous_view = config.get('current_view');
+            config.set('current_view', add);
         })();
     },
 
@@ -276,7 +277,7 @@ var add_person = page_view.extend({
                         n:20,
                         detail:1
                     },
-                    url: snapr.api_base + '/user/search/',
+                    url: config.get('api_base') + '/user/search/',
                     success: function(){
                         this_view.xhr = null;
                         this_view.$el.removeClass('loading');

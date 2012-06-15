@@ -1,10 +1,10 @@
 /*global _  define require */
-define(['backbone', 'collections/photo', 'auth'],
-function(Backbone, photo_collection, auth){
+define(['config', 'backbone', 'collections/photo', 'auth'],
+function(config, Backbone, photo_collection, auth){
 
 return Backbone.Model.extend({
     url: function( method ){
-        return snapr.api_base + '/user/dashboard/';
+        return config.get('api_base') + '/user/dashboard/';
     },
     parse: function(data){
         // have we been given a stream object or a full response
@@ -18,7 +18,7 @@ return Backbone.Model.extend({
     },
     'delete': function( options ){
         var ajax_options = _.extend( options || {}, {
-            url: snapr.api_base + "/user/dashboard/delete/",
+            url: config.get('api_base') + "/user/dashboard/delete/",
             dataType: "jsonp",
             data: _.extend( auth.attributes, {
                 id: this.get("id"),

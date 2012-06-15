@@ -1,6 +1,6 @@
 /*global _  define require */
-define(['backbone', 'views/components/favorite_button', 'collections/reaction', 'models/comment', 'auth', 'utils/alerts'],
-    function(Backbone, favorite_button, reaction_collection, comment_model, auth, alerts){
+define(['config', 'backbone', 'views/components/favorite_button', 'collections/reaction', 'models/comment', 'auth', 'utils/alerts'],
+    function(config, Backbone, favorite_button, reaction_collection, comment_model, auth, alerts){
 
 var feed_li =  Backbone.View.extend({
 
@@ -30,7 +30,7 @@ var feed_li =  Backbone.View.extend({
         if (this.model.has('location'))
         {
             this.map_url =
-                '#/map/?zoom=' + snapr.constants.default_zoom +
+                '#/map/?zoom=' + config.get('default_zoom') +
                 '&lat=' + this.model.get('location').latitude +
                 '&lng=' + this.model.get('location').longitude +
                 '&photo_id=' + this.model.get('id') +

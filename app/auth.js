@@ -1,17 +1,17 @@
 /*global _  define require */
-define(['backbone', 'jquery', 'utils/local_storage', 'native'], function(Backbone, $, local_storage, native) {
+define(['config', 'backbone', 'jquery', 'utils/local_storage', 'native'], function(config, Backbone, $, local_storage, native) {
 
 var auth_model = Backbone.Model.extend({
 
     url: function(){
-        return snapr.access_token_url;
+        return config.get('access_token_url');
     },
 
     get_token: function( username, password, options ){
         this.data = {
             grant_type: "password",
-            client_id: snapr.client_id,
-            client_secret: snapr.client_secret,
+            client_id: config.get('client_id'),
+            client_secret: config.get('client_secret'),
             username: username,
             password: password,
             _method: "POST"

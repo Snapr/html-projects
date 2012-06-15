@@ -1,10 +1,10 @@
 /*global _  define require */
-define(['backbone'], function(Backbone){
+define(['config', 'backbone'], function(config, Backbone){
 return  Backbone.Model.extend({
 
     url: function( method )
     {
-        return snapr.api_base + '/linked_services/foursquare/venues/';
+        return config.get('api_base') + '/linked_services/foursquare/venues/';
     },
 
     parse: function( d, xhr )

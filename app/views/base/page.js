@@ -17,7 +17,7 @@ Page{
     }
 }
 */
-define(['backbone'], function(Backbone){
+define(['config', 'backbone'], function(config, Backbone){
 
 return Backbone.View.extend({
 
@@ -42,7 +42,7 @@ return Backbone.View.extend({
         if(history.state && history.state.back_text){
             back_text = history.state.back_text;
         }else{
-            var current_view = snapr.info.current_view;
+            var current_view = config.get('current_view');
             while(current_view && current_view.dialog){
                 current_view = current_view.previous_view;
             }
@@ -89,7 +89,7 @@ return Backbone.View.extend({
                     transition: this.transition,
                     reverse: true
                 });
-                snapr.info.current_view = this.previous_view;
+                config.set('current_view', this.previous_view);
             }else{
                 Backbone.history.navigte('#');
             }

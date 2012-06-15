@@ -1,11 +1,11 @@
 /*global _  define require */
-define(['collections/photo', 'models/thumb'], function(photo_collection, thumb){
+define(['config', 'collections/photo', 'models/thumb'], function(config, photo_collection, thumb){
 return photo_collection.extend({
 
     model: thumb,
 
     url: function( method ){
-        return snapr.api_base + '/thumbs/';
+        return config.get('api_base') + '/thumbs/';
     },
 
     comparator: function( model ){

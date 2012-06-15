@@ -1,7 +1,7 @@
 /*global _  define require */
-define(['backbone', 'views/base/page', 'models/photo', 'models/geo_location', 'collections/foursquare_venue',
+define(['config', 'backbone', 'views/base/page', 'models/photo', 'models/geo_location', 'collections/foursquare_venue',
     'views/venues', 'utils/geo', 'auth', 'utils/local_storage', 'utils/alerts', 'native', 'utils/dialog'],
-function(Backbone, page_view, photo_model, geo_location, foursquare_venue_collection, venues_view, geo,
+function(config, Backbone, page_view, photo_model, geo_location, foursquare_venue_collection, venues_view, geo,
     auth, local_storage, alerts, native, dialog){
 return page_view.extend({
 
@@ -319,17 +319,6 @@ return page_view.extend({
         var share_view = this;
         var go_to_venues = function( ll, foursquare_venue_id, back_query, model ){
             dialog('venue/search/?ll='+ll+'&foursquare_venue_id=' + foursquare_venue_id, {model: model});
-            // var venues = new venues_view({
-            //     model: model,
-            //     query: {
-            //         ll: ll,
-            //         foursquare_venue_id: foursquare_venue_id,
-            //         back_query: back_query
-            //     },
-            //     el: $("#venues")[0]
-            // });
-            // venues.previous_view = snapr.info.current_view;
-            // snapr.info.current_view = venues;
         };
 
         var ll;
@@ -394,7 +383,7 @@ return page_view.extend({
         $.mobile.showPageLoadingMsg();
         // if there is a secret set the picture has already been uploaded
         if (this.model && this.model.has("secret")){
-            var redirect_url = this.redirct_url || snapr.constants.share_redirect;
+            var redirect_url = this.redirct_url || config.get('share_redirect');
 
             redirect_url += "photo_id=" + this.model.get("id");
 

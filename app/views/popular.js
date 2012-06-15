@@ -1,11 +1,11 @@
 /*global _  define require */
-define(['views/base/page', 'collections/photo', 'views/components/thumbnail', 'auth', 'utils/local_storage', 'utils/string'],
-function(page_view, photo_collection, thumbnail, auth, local_storage, string_utils){
+define(['config', 'views/base/page', 'collections/photo', 'views/components/thumbnail', 'auth', 'utils/local_storage', 'utils/string'],
+function(config, page_view, photo_collection, thumbnail, auth, local_storage, string_utils){
 return page_view.extend({
 
     post_initialize: function(){
         this.collection = new photo_collection();
-        this.collection.url = snapr.api_base + "/search/";
+        this.collection.url = config.get('api_base') + "/search/";
         this.collection.data = {
             sort:"weighted_score",
             n:20

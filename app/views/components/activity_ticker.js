@@ -1,5 +1,5 @@
 /*global _  define require */
-define(['backbone', 'auth'], function(Backbone, auth){
+define(['config', 'backbone', 'auth'], function(config, Backbone, auth){
 return Backbone.View.extend({
 
     tagName: "div",
@@ -17,18 +17,18 @@ return Backbone.View.extend({
                 access_token: auth.get('access_token')
             };
 
-        if(snapr.app_group) {
-            data.app_group = snapr.app_group;
+        if(config.get('app_group')) {
+            data.app_group = config.get('app_group');
         }
 
         $.ajax({
             no_offline_mode: true, // don't trigger offline mode if this fails
-            url:snapr.api_base + '/user/news/',
+            url:config.get('api_base') + '/user/news/',
             data: data,
             dataType: 'jsonp',
             success: function(response){
                 if(response.success){
-                    news = response.response.news[0];
+                    var news = response.response.news[0];
                     if(!news){
                         news = {"type": null};  // prevent undefined error
                     }

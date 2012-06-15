@@ -1,5 +1,5 @@
 /*global _  define require */
-define(['backbone'], function(Backbone){
+define(['config', 'backbone'], function(config, Backbone){
 return  Backbone.Model.extend({
     initialize: function( init_options ){
         if (init_options.latitude && init_options.longitude){
@@ -10,7 +10,7 @@ return  Backbone.Model.extend({
         }
     },
     url: function( method ){
-        return snapr.api_base + '/utils/reverse_geocode/';
+        return config.get('api_base') + '/utils/reverse_geocode/';
     },
     parse: function( d, xhr ){
         if (d.response && d.response.location){

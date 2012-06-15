@@ -1,12 +1,10 @@
 /*global _  define require */
-define(['backbone'], function(Backbone){
+define(['config', 'backbone'], function(config, Backbone){
 return Backbone.Model.extend({
-    urlRoot: function()
-    {
-        return snapr.api_base + '/comment/'
+    urlRoot: function(){
+        return config.get('api_base') + '/comment/';
     },
-    url: function( method )
-    {
+    url: function( method ){
         if (method)
         {
             switch( method )

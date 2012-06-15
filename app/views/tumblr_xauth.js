@@ -1,5 +1,5 @@
 /*global _  define require */
-define(['views/base/page', 'auth', 'utils/alerts'], function(page_view, auth, alerts){
+define(['config', 'views/base/page', 'auth', 'utils/alerts'], function(config, page_view, auth, alerts){
 return page_view.extend({
 
     post_activate: function(options){
@@ -29,7 +29,7 @@ return page_view.extend({
 
         var this_view = this;
         $.ajax({
-            url: snapr.api_base + '/linked_services/tumblr/xauth/',
+            url: config.get('api_base') + '/linked_services/tumblr/xauth/',
             type: 'GET',
             dataType: 'jsonp',
             data:{

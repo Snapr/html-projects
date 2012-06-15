@@ -1,12 +1,12 @@
 /*global _  define require */
-define(['backbone', 'models/user'],
-function(Backbone, user){
+define(['config', 'backbone', 'models/user'],
+function(config, Backbone, user){
 return  Backbone.Collection.extend({
 
     model: user,
 
     urlRoot: function(){
-        return snapr.api_base + '/user/';
+        return config.get('api_base') + '/user/';
     },
 
     url: function( method ){

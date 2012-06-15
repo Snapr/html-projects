@@ -1,5 +1,5 @@
 /*global _  define require */
-define(['views/base/page'], function(page_view){
+define(['config', 'views/base/page'], function(config, page_view){
 return page_view.extend({
 
     events: {
@@ -19,7 +19,7 @@ return page_view.extend({
 
         var forgot_view = this;
          $.ajax({
-            url: snapr.api_base + '/user/forgot_password/',
+            url: config.get('api_base') + '/user/forgot_password/',
             data: data,
             dataType: 'jsonp',
             success: function(response){

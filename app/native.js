@@ -1,5 +1,5 @@
 /*global require */
-require(['utils/geo', 'utils/alerts'], function(geo, alerts){
+require(['config', 'utils/geo', 'utils/alerts'], function(config, geo, alerts){
     //export
     window.set_location = geo.set_location;
     window.location_error = geo.location_error;
@@ -20,38 +20,38 @@ require(['utils/geo', 'utils/alerts'], function(geo, alerts){
         }
 
         if (data.uploads.length){
-            if (typeof snapr.info.current_view.upload_progress == "function"){
-                snapr.info.current_view.upload_progress(data);
+            if (typeof config.get('current_view').upload_progress == "function"){
+                config.get('current_view').upload_progress(data);
             }
         }
     };
 
     window.upload_count = function( count ){
-        snapr.info.upload_count = count;
+        config.set('upload_count', count);
 
-        if (typeof snapr.info.current_view.upload_count == "function"){
-            snapr.info.current_view.upload_count(count);
+        if (typeof config.get('current_view').upload_count == "function"){
+            config.get('current_view').upload_count(count);
         }
     };
 
     window.upload_completed = function(queue_id, snapr_id){
-        if (typeof snapr.info.current_view.upload_completed == "function"){
-            snapr.info.current_view.upload_completed(queue_id, snapr_id);
+        if (typeof config.get('current_view').upload_completed == "function"){
+            config.get('current_view').upload_completed(queue_id, snapr_id);
         }
     };
 
     window.upload_cancelled = function( id ){
-        if (typeof snapr.info.current_view.upload_cancelled == "function"){
-            snapr.info.current_view.upload_cancelled( id );
+        if (typeof config.get('current_view').upload_cancelled == "function"){
+            config.get('current_view').upload_cancelled( id );
         }
     };
 
     window.queue_settings = function(upload_mode, paused) {
-        snapr.info.upload_mode = upload_mode;
-        snapr.info.paused = paused;
+        config.set('upload_mode', upload_mode);
+        config.set('paused', paused);
 
-        if(typeof snapr.info.current_view.queue_settings == "function") {
-            snapr.info.current_view.queue_settings(upload_mode, paused);
+        if(typeof config.get('current_view').queue_settings == "function") {
+            config.get('current_view').queue_settings(upload_mode, paused);
         }
     };
 });

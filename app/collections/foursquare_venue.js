@@ -1,5 +1,5 @@
 /*global _  define require */
-define(['backbone', 'models/foursquare_venue'], function(Backbone, foursquare_venue){
+define(['config', 'backbone', 'models/foursquare_venue'], function(config, Backbone, foursquare_venue){
 return Backbone.Collection.extend({
 
     initialize: function( init_options ){
@@ -23,7 +23,7 @@ return Backbone.Collection.extend({
     model: foursquare_venue,
 
     url: function( method ){
-        return snapr.api_base + '/linked_services/foursquare/venues/';
+        return config.get('api_base') + '/linked_services/foursquare/venues/';
     },
 
     parse: function( d, xhr ){

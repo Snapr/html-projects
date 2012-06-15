@@ -1,6 +1,6 @@
 /*global _  define require */
-define(['backbone', 'views/base/page', 'jquery', 'validate', 'models/user_settings', 'auth'],
-    function(Backbone, page_view, $, validate, user_settings, auth){
+define(['config', 'backbone', 'views/base/page', 'jquery', 'validate', 'models/user_settings', 'auth'],
+    function(config, Backbone, page_view, $, validate, user_settings, auth){
 
 var join_dialog = page_view.extend({
 
@@ -101,7 +101,7 @@ var join_dialog = page_view.extend({
            username: this.$el.find("#join-dialog-username").val(),
            password: this.$el.find("#join-dialog-password").val(),
            email: this.$el.find("#join-dialog-email").val(),
-           client_id: snapr.client_id
+           client_id: config.get('client_id')
         };
 
         if(this.options.query && this.options.query.twitter_token){
@@ -179,7 +179,7 @@ $.validator.addMethod("snapr_username",
             var data = {};
             data[element.name] = value;
             $.ajax($.extend(true, {
-                url: snapr.api_base + '/user/validate/',
+                url: config.get('api_base') + '/user/validate/',
                 mode: "abort",
                 port: "validate" + element.name,
                 dataType: "jsonp",

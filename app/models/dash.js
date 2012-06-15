@@ -1,6 +1,6 @@
 /*global _  define require */
-define(['backbone', 'models/dash_stream'],
-function(Backbone,   dash_stream_model){
+define(['config', 'backbone', 'models/dash_stream'],
+function(config, Backbone,   dash_stream_model){
 
 return Backbone.Collection.extend({
 
@@ -8,7 +8,7 @@ return Backbone.Collection.extend({
 
     url: function( method )
     {
-        return snapr.api_base + '/user/dashboard/';
+        return config.get('api_base') + '/user/dashboard/';
     },
 
     parse: function( d, xhr )

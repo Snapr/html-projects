@@ -1,12 +1,12 @@
 /*global _  define require */
-define(['backbone', 'models/activity_event'], function(Backbone, activity_event){
+define(['config', 'backbone', 'models/activity_event'], function(config, Backbone, activity_event){
 
 return Backbone.Collection.extend({
 
     model: activity_event,
 
     url: function( method ){
-        return snapr.api_base + '/user/activity/';
+        return config.get('api_base') + '/user/activity/';
     },
 
     parse: function( d, xhr ){

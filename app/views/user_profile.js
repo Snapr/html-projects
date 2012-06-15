@@ -14,11 +14,7 @@ return page_view.extend({
         this.model = new user_model( {username: this.options.query.username} );
         this.model.bind( "change", _.bind(this.render, this) );
 
-        // if we are coming from the map view do a flip, otherwise do a slide transition
-        var transition = ($.mobile.activePage.attr('id') == 'map') ? "flip" : "slideup";
-        this.change_page({
-            transition: transition
-        });
+        this.change_page();
 
         this.model.fetch();
     },
@@ -28,6 +24,8 @@ return page_view.extend({
             user: this.model
         }) );
         this.$el.trigger( "create" );
-    }
+    },
+
+    transition: "slideup"
 });
 });

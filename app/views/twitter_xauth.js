@@ -1,5 +1,5 @@
 /*global _  define require */
-define(['backbone', 'views/base/page', 'auth', 'utils/alerts'], function(Backbone, page_view, auth, alerts){
+define(['config', 'backbone', 'views/base/page', 'auth', 'utils/alerts'], function(config, Backbone, page_view, auth, alerts){
 return page_view.extend({
 
     post_activate: function(){
@@ -32,10 +32,10 @@ return page_view.extend({
 
         if(this.signin){
             options = {
-                url: snapr.api_base + '/linked_services/twitter/xauth/signin/',
+                url: config.get('api_base') + '/linked_services/twitter/xauth/signin/',
                 data:{
-                    client_id: snapr.client_id,
-                    client_secret: snapr.client_secret,
+                    client_id: config.get('client_id'),
+                    client_secret: config.get('client_secret'),
                     _method: "POST"
                 },
                 success: function( data ){
@@ -64,7 +64,7 @@ return page_view.extend({
             };
         }else{
             options =  {
-                url: snapr.api_base + '/linked_services/twitter/xauth/',
+                url: config.get('api_base') + '/linked_services/twitter/xauth/',
                 data:{
                     access_token: auth.get("access_token"),
                     _method: "POST"

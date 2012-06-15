@@ -1,5 +1,5 @@
 /*global _  define require */
-define(['backbone', 'native'], function(Backbone, native){
+define(['config', 'backbone', 'native'], function(config, Backbone, native){
 return Backbone.View.extend({
 
     className: "upload-settings",
@@ -19,11 +19,11 @@ return Backbone.View.extend({
     {
         this.$el
             .html( this.template({
-                upload_mode: snapr.info.upload_mode,
-                upload_paused: snapr.info.upload_paused
+                upload_mode: config.get('upload_mode'),
+                upload_paused: config.get('upload_paused')
             }) )
             .trigger("create");
-        if (snapr.info.upload_mode == "On")
+        if (config.get('upload_mode') == "On")
         {
             this.$el.find( "#upload-mode-on" ).attr("checked", true);
         }
@@ -32,7 +32,7 @@ return Backbone.View.extend({
             this.$el.find( "#upload-mode-wifi" ).attr("checked", true);
         }
 
-        this.$el.find( "input[type='radio']" ).trigger( "refresh" )
+        this.$el.find( "input[type='radio']" ).trigger( "refresh" );
 
         return this;
     },

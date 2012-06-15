@@ -1,6 +1,8 @@
-/*global _  define require */
-define(['backbone', 'views/base/page', 'collections/thumb', 'mobiscroll', 'utils/geo', 'auth', 'utils/local_storage', 'utils/string'],
-function(Backbone, page_view, thumb_collection, mobiscroll, geo, auth, local_storage, string_utils){
+/*global _  define require google */
+define(['config', 'backbone', 'views/base/page', 'collections/thumb', 'mobiscroll', 'utils/geo', 'auth', 'utils/local_storage', 'utils/string'],
+function(config, Backbone, page_view, thumb_collection, mobiscroll, geo, auth, local_storage, string_utils){
+var SnapOverlay, CurrentLocation;
+
 var map_view = page_view.extend({
 
     post_initialize: function(){
@@ -29,9 +31,7 @@ var map_view = page_view.extend({
 
         query.n = query.photo_id ? 1 : 10;
 
-        this.change_page({
-            transition: 'flip'
-        });
+        this.change_page();
 
         this.map_thumbs = [];
         this.map_flags = [];
@@ -74,7 +74,7 @@ var map_view = page_view.extend({
         map_view.map_settings = {
             zoom: map_view.map_query.get( "zoom" ) ||
                 parseInt(local_storage.get('map_zoom'), 10) ||
-                snapr.constants.default_zoom,
+                config.get('default_zoom'),
             streetViewControl: false,
             mapTypeControl: false,
             mapTypeId: google.maps.MapTypeId.ROADMAP
@@ -144,7 +144,7 @@ var map_view = page_view.extend({
             document.getElementById("google-map"), this.map_settings);
 
         geo.get_location(function(location){
-            map_view.dot = new snapr.CurrentLocation( {
+            map_view.dot = new CurrentLocation( {
                 location: {
                     latitude: location.coords.latitude,
                     longitude: location.coords.longitude
@@ -236,7 +236,7 @@ var map_view = page_view.extend({
                     }
                     _.each(map_view.thumb_collection.models, function( thumb, i )
                     {
-                        map_view.map_thumbs[ i ] = new snapr.SnapOverlay( 'photo', thumb.attributes, map_view.map, false );
+                        map_view.map_thumbs[ i ] = new SnapOverlay( 'photo', thumb.attributes, map_view.map, false );
                     });
                 }
                 else if (map_view.thumb_collection.length === 0)
@@ -346,7 +346,7 @@ var map_view = page_view.extend({
 
         var success_callback = function( position )
         {
-            map_view.map.setZoom(snapr.constants.default_zoom);
+            map_view.map.setZoom(config.get('default_zoom'));
             map_view.map.panTo( new google.maps.LatLng( position.coords.latitude, position.coords.longitude) );
             map_view.lat = position.coords.latitude;
             map_view.lng = position.coords.longitude;
@@ -407,9 +407,9 @@ var map_view = page_view.extend({
     },
     create_custom_overlays: function(){
         // no need to do this more than once:
-        if( snapr.SnapOverlay ){ return; }
+        if( SnapOverlay ){ return; }
 
-        snapr.SnapOverlay = function(type, data, map, extra_class)
+        SnapOverlay = function(type, data, map, extra_class)
         {
             // image as JS object in format the snapr api returns
             this.type_ = type;
@@ -427,8 +427,8 @@ var map_view = page_view.extend({
             this.setMap(map);
         };
 
-        snapr.SnapOverlay.prototype = new google.maps.OverlayView();
-        snapr.SnapOverlay.prototype.get_div = function(){
+        SnapOverlay.prototype = new google.maps.OverlayView();
+        SnapOverlay.prototype.get_div = function(){
             var data_id = this.data_.id;
 
             if (this.type_ == 'photo') {
@@ -438,7 +438,7 @@ var map_view = page_view.extend({
             }
 
         };
-        snapr.SnapOverlay.prototype.onAdd = function()
+        SnapOverlay.prototype.onAdd = function()
         {
             this.added = true;  // google maps sometimes tries to draw a point that hasn't been added - keep track
             // Note: an overlay's receipt of onAdd() indicates that
@@ -455,7 +455,7 @@ var map_view = page_view.extend({
             var panes = this.getPanes();
             $(panes.floatPane).append(this.div_);
         };
-        snapr.SnapOverlay.prototype.draw = function(){
+        SnapOverlay.prototype.draw = function(){
             // google maps sometimes foolishly tries to draw a point that hasn't
             // been added - so add it before confinuing.
             if(!this.added){
@@ -470,26 +470,26 @@ var map_view = page_view.extend({
                 .css('left', px.x + 'px')
                 .css('top', px.y + 'px');
         };
-        snapr.SnapOverlay.prototype.onRemove = function()
+        SnapOverlay.prototype.onRemove = function()
         {
             $(this.div_).remove();
             this.div_ = null;
         };
-        snapr.SnapOverlay.prototype.hide = function()
+        SnapOverlay.prototype.hide = function()
         {
             if (this.div_)
             {
               this.div_.style.visibility = "hidden";
             }
         };
-        snapr.SnapOverlay.prototype.show = function()
+        SnapOverlay.prototype.show = function()
         {
             if (this.div_)
             {
               this.div_.style.visibility = "visible";
             }
         };
-        snapr.SnapOverlay.prototype.toggle = function()
+        SnapOverlay.prototype.toggle = function()
         {
             if (this.div_)
             {
@@ -503,7 +503,7 @@ var map_view = page_view.extend({
               }
             }
         };
-        snapr.SnapOverlay.prototype.toggleDOM = function()
+        SnapOverlay.prototype.toggleDOM = function()
         {
             if (this.getMap())
             {
@@ -515,11 +515,11 @@ var map_view = page_view.extend({
             }
         };
 
-        snapr.CurrentLocation = function(data, map){
-            snapr.SnapOverlay.call(this, undefined, data, map);
+        CurrentLocation = function(data, map){
+            SnapOverlay.call(this, undefined, data, map);
         };
-        snapr.CurrentLocation.prototype=_.clone(snapr.SnapOverlay.prototype);
-        snapr.CurrentLocation.prototype.get_div = function()
+        CurrentLocation.prototype=_.clone(SnapOverlay.prototype);
+        CurrentLocation.prototype.get_div = function()
         {
             return $(this.map.snapr.location_template()).show();
         };

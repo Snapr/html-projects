@@ -1,5 +1,5 @@
 /*global _  define require */
-define(['backbone'], function(Backbone){
+define(['config', 'backbone'], function(config, Backbone){
 return  Backbone.Model.extend({
 
     initialize: function()
@@ -7,7 +7,7 @@ return  Backbone.Model.extend({
         this.data = {linked_services: true}
     },
 
-    //urlRoot: snapr.api_base + '/linked_services/',
+    //urlRoot: config.get('api_base') + '/linked_services/',
 
     url: function( method )
     {
@@ -16,18 +16,18 @@ return  Backbone.Model.extend({
             switch (method)
             {
                 case 'create':
-                    return snapr.api_base + '/linked_services/' + this.provider + '/';
+                    return config.get('api_base') + '/linked_services/' + this.provider + '/';
                 case 'update':
-                    return snapr.api_base + '/linked_services/' + this.provider + '/';
+                    return config.get('api_base') + '/linked_services/' + this.provider + '/';
                 case 'delete':
-                    return snapr.api_base + '/linked_services/' + this.provider + '/delete/';
+                    return config.get('api_base') + '/linked_services/' + this.provider + '/delete/';
                 default:
-                    return snapr.api_base + '/user/settings/';
+                    return config.get('api_base') + '/user/settings/';
             }
         }
         else
         {
-            return snapr.api_base + '/linked_services/';
+            return config.get('api_base') + '/linked_services/';
         }
     },
 

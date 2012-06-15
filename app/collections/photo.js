@@ -1,5 +1,5 @@
 /*global _  define require */
-define(['backbone', 'models/photo'], function(Backbone, photo_model){
+define(['config', 'backbone', 'models/photo'], function(config, Backbone, photo_model){
 
 return Backbone.Collection.extend({
 
@@ -9,7 +9,7 @@ return Backbone.Collection.extend({
 
     url: function( method )
     {
-        return snapr.api_base + '/search/';
+        return config.get('api_base') + '/search/';
     },
 
     parse: function( d, xhr )

@@ -169,7 +169,7 @@
     <div class="myaccount-header page-inset-header ui-body-c">
         <div class="ui-content">
          <a class="username" href="#/feed/?username=<%= username %>">
-                <div class="user-icon-small" style="background-image: url('<%= snapr.avatar_url %>/<%= user_id %>?size=large&_salt=<%= settings.profile.avatar_type %>');"></div>
+                <div class="user-icon-small" style="background-image: url('<%= config.get('avatar_url') %>/<%= user_id %>?size=large&_salt=<%= settings.profile.avatar_type %>');"></div>
                 <%= username %>
             </a>
                 <a href="#/logout/" class="logout-button" data-role="button" data-icon="delete" data-iconpos="right">Logout</a>
@@ -200,7 +200,7 @@
                 <fieldset data-role="controlgroup" class="my-account-avatar">
                    <div class="avatar-select-block">
                        <span class="user-profile-icon">
-                           <div class="user-icon-big" style="background-image: url('<%= snapr.avatar_url %>/<%= user_id %>?size=large&_salt=<%= settings.profile.avatar_type %>');"></div>
+                           <div class="user-icon-big" style="background-image: url('<%= config.get('avatar_url') %>/<%= user_id %>?size=large&_salt=<%= settings.profile.avatar_type %>');"></div>
 
                        </span>
 
@@ -872,7 +872,7 @@
            <div class="user-info-block">
                <div class="user-icon-left">
                    <a class="user-profile-icon" data-snapr-dialog="true" href="#/user/profile/?username=<%= user.get('username') %>">
-                       <div class="user-icon-big" style="background-image: url('<%= snapr.avatar_url %>/<%= user.get('user_id') %>?size=large');"></div>
+                       <div class="user-icon-big" style="background-image: url('<%= config.get('avatar_url') %>/<%= user.get('user_id') %>?size=large');"></div>
                        <div class="icon-overlay-info"></div>
                    </a>
                </div>
@@ -909,7 +909,7 @@
         <div class="image-item-block<% if (item.get("status") != "public"){%> private<%}%>">
             <div class="image-item-topbar">
                 <a class="user-icon-link" data-transition="slide" href="#/feed/?username=<%= item.get('username') %>">
-                    <div class="user-icon-small" style="background-image: url('<%= snapr.avatar_url %>/<%= item.get('user_id') %>/');"></div>
+                    <div class="user-icon-small" style="background-image: url('<%= config.get('avatar_url') %>/<%= item.get('user_id') %>/');"></div>
                 </a>
                 <a class="username" data-transition="slide" href="#/feed/?username=<%= item.get('username') %>"><%= item.get('username') %></a>
 
@@ -1080,7 +1080,7 @@
     <div class="user-info-block">
         <div class="user-icon-left">
             <a class="user-profile-icon x-back">
-                <div class="user-icon-big" style="background-image: url('<%= snapr.avatar_url %>/<%= user.get( "user_id" ) %>?size=large');"></div>
+                <div class="user-icon-big" style="background-image: url('<%= config.get('avatar_url') %>/<%= user.get( "user_id" ) %>?size=large');"></div>
 
             </a>
         </div>
@@ -1395,7 +1395,7 @@
             <% _.each( item.get("comments"), function( comment ){ %>
                 <li data-icon="false" class="comment-item activity-item">
                     <a href="#/feed/?username=<%= comment.user.username %>">
-                        <img src="<%= snapr.avatar_url %>/<%= comment.user.user_id %>" alt="<%= comment.user.username %>" class="user-icon-small ui-li-icon"/>
+                        <img src="<%= config.get('avatar_url') %>/<%= comment.user.user_id %>" alt="<%= comment.user.username %>" class="user-icon-small ui-li-icon"/>
                         <h3 class="username"><%= comment.user.username %></h3> <span class="activity-desc"><%= comment.comment %></span>
                     </a>
                 </li>
@@ -1403,7 +1403,7 @@
             <% _.each( item.get("comment-on-comments"), function( comment ){ %>
                 <li data-icon="false" class="comment-item comment-on-comment-item activity-item">
                     <a href="#/feed/?username=<%= comment.user.username %>">
-                        <img src="<%= snapr.avatar_url %>/<%= comment.user.user_id %>" alt="<%= comment.user.username %>" class="user-icon-small ui-li-icon"/>
+                        <img src="<%= config.get('avatar_url') %>/<%= comment.user.user_id %>" alt="<%= comment.user.username %>" class="user-icon-small ui-li-icon"/>
                         <h3 class="username"><%= comment.user.username %></h3> <span class="activity-desc"><%= comment.comment %></span>
                     </a>
                 </li>
@@ -1418,7 +1418,7 @@
                 <ul class="like-icons-list">
                 <% _.each( item.get("favorites"), function( like ){ %>
                     <li class="like-icon">
-                        <a href="#/feed/?username=<%= like.user.username %>"><img src="<%= snapr.avatar_url %>/<%= like.user.user_id %>" alt="<%= like.user.username %>" class="user-icon-small ui-li-icon"/></a>
+                        <a href="#/feed/?username=<%= like.user.username %>"><img src="<%= config.get('avatar_url') %>/<%= like.user.user_id %>" alt="<%= like.user.username %>" class="user-icon-small ui-li-icon"/></a>
                     </li>
                 <% }); %>
                 </ul>
@@ -1450,7 +1450,7 @@
         case "follow":%>
 
         <a href="#/feed/?username=<%= item.get("user").username %>" class="">
-            <img src="<%= snapr.avatar_url %>/<%= item.get("user").username %>" alt="<%= item.get("user").user_id %>" class="user-icon-small ui-li-icon"/>
+            <img src="<%= config.get('avatar_url') %>/<%= item.get("user").username %>" alt="<%= item.get("user").user_id %>" class="user-icon-small ui-li-icon"/>
             <h3 class="username"><%= item.get("user").username %></h3> <span class="activity-desc">is now following you.</span>
             <% if (!photo_events) { %>
             <p class="small-text">
@@ -1569,7 +1569,7 @@
     <!-- @person ITEM-->
     <script id="people-li-template" type="text/template">
            <a href="#/feed/?username=<%= user.get('username') %>" data-username="<%= user.get('username') %>">
-               <img src="<%= snapr.avatar_url %>/<%= user.get('user_id') %>" alt="<%= user.get('username') %>" class="user-icon-small ui-li-icon"/>
+               <img src="<%= config.get('avatar_url') %>/<%= user.get('user_id') %>" alt="<%= user.get('username') %>" class="user-icon-small ui-li-icon"/>
                <h3 class="username"><%= user.get('username') %></h3>
                <p class="small-text"><span class="photo-count"><%= user.get('photo_count') %></span> photos, <span class="followers"><%= user.get('followers') %></span> followers</p>
            </a>

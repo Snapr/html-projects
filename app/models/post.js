@@ -1,5 +1,5 @@
 /*global _  define require */
-define(['backbone'], function(Backbone){
+define(['config', 'backbone'], function(config, Backbone){
 return  Backbone.Model.extend({
 
     initialize: function(options){
@@ -8,7 +8,7 @@ return  Backbone.Model.extend({
 
     url: function( method ){
         if (method == 'create'){
-            return snapr.api_base + '/linked_services/' + this.provider + '/share/';
+            return config.get('api_base') + '/linked_services/' + this.provider + '/share/';
         }
     }
 });

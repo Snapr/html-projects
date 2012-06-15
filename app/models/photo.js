@@ -1,10 +1,10 @@
 /*global _  define require */
-define(['backbone', 'auth'], function(Backbone, auth){
+define(['config', 'backbone', 'auth'], function(config, Backbone, auth){
 
 return Backbone.Model.extend({
 
     urlRoot: function(){
-        return snapr.api_base + '/photo/';
+        return config.get('api_base') + '/photo/';
     },
 
     url: function( method ){
@@ -43,7 +43,7 @@ return Backbone.Model.extend({
 
     flag: function( options ){
         var ajax_options = _.extend( options || {}, {
-            url: snapr.api_base + "/report/",
+            url: config.get('api_base') + "/report/",
             dataType: "jsonp",
             data: _.extend( auth.attributes, {
                 id: this.get("id"),
@@ -55,7 +55,7 @@ return Backbone.Model.extend({
 
     'delete': function( options ){
         var ajax_options = _.extend( options || {}, {
-            url: snapr.api_base + "/remove/",
+            url: config.get('api_base') + "/remove/",
             dataType: "jsonp",
             data: _.extend( auth.attributes, {
                 id: this.get("id"),

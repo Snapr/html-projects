@@ -1,5 +1,6 @@
 /*global _  define require */
-define(['backbone', 'views/base/page', 'views/linked_service', 'models/post', 'utils/query'], function(Backbone, page_view, linked_service, post_model, Query){
+define(['backbone', 'views/base/page', 'views/linked_service', 'models/post', 'models/photo', 'utils/query'],
+    function(Backbone, page_view, linked_service, post_model, photo_model, Query){
 var connect_page = page_view.extend({
 
     post_activate: function(options){
@@ -60,7 +61,6 @@ var connect_page = page_view.extend({
     },
 
     share: function( service ){
-        //this.model = new snapr.models.photo({id: this.photo_id});
 
         var connect_view = this;
 
@@ -143,11 +143,11 @@ var connect_li = linked_service.extend({
         return next;
     },
 
-    // link_service inherited from snapr.views.linked_service, uses this.get_return_url
+    // link_service inherited from views/linked_service, uses this.get_return_url
     // link_service: function(){},
 
     share: function(){
-        this.model = new snapr.models.photo({id: this.photo_id});
+        this.model = new photo_model({id: this.photo_id});
 
         var connect_li = this;
 

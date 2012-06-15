@@ -1,34 +1,22 @@
 /*global _  requirejs require urlError */
-var snapr = {};
-snapr.models = {};
-snapr.views = {};
-snapr.settings = {
-    'dev': {
-        'base_url': "http://dev.sna.pr",
-        'client_id': "client",
-        'client_secret': "secret"
-    },
-    'live': {
-        'base_url': "https://sna.pr",
-        'client_id':'76e5be0eec71b28fb4380b0ac42201cf',
-        'client_secret':'d293011a0a17dfc8aa191455af4ab7ba'
-    },
-    'local': {
-        'base_url': "http://localhost:8000",
-        'client_id': "client",
-        'client_secret': "secret"
-    }
-};
-snapr.settings['default'] = snapr.settings.dev;
 
-snapr.constants = {};
-snapr.constants.default_zoom = 15;  // for map
-snapr.constants.feed_count = 9;
-snapr.constants.share_redirect = "#/uploading/?";  // set to hash url to redirect after successful upload/share. if false, redirects to user feed
+require(['config'], function(config){
+    config.set({
+        //environment: 'live',  // defaults to dev
 
-// client must have xAuth permission from 3rd party
-snapr.tumblr_xauth = true;
-snapr.twitter_xauth = true;
+        // client must have xAuth permission from 3rd party
+        tumblr_xauth: true,
+        twitter_xauth: true,
+
+        //app_group: 'group-slug',
+
+        //zoom: 15, // for map
+        //feed_count: 9, // number of images to show in feed views
+        share_redirect: "#/uploading/?"  // set to hash url to redirect after successful upload/share. Defaults to user feed
+    });
+
+    window.config = config;  // export for templates
+});
 
 requirejs.config({
     paths: {
@@ -62,15 +50,6 @@ requirejs.config({
     }
 });
 
-/* store some info about the environment
-***************************/
-snapr.info = {};
-snapr.info.upload_count = 0;
-snapr.info.upload_mode = "On";
-snapr.info.upload_paused = false;
-snapr.info.geolocation_enabled = true;
-snapr.info.current_view = null;
-
 /* routers
 ***************************/
 require(['routers', 'backbone'], function(routers, Backbone){
@@ -81,8 +60,8 @@ require(['routers', 'backbone'], function(routers, Backbone){
     $(window).on("pagecontainercreate", function(){ Backbone.history.start(); });
 });
 
-require(['jquery', 'backbone', 'photoswipe', 'auth', 'utils/local_storage', 'native', 'utils/dialog'],
-    function($, Backbone, PhotoSwipe, auth, local_storage, native, dialog) {
+require(['config', 'jquery', 'backbone', 'photoswipe', 'auth', 'utils/local_storage', 'native', 'utils/dialog', 'views/components/offline'],
+    function(config, $, Backbone, PhotoSwipe, auth, local_storage, native, dialog, offline_el) {
 
     /* disable jquery-mobile's hash nav so we can replace it with backbone.js
     ***************************/
@@ -101,11 +80,7 @@ require(['jquery', 'backbone', 'photoswipe', 'auth', 'utils/local_storage', 'nat
 
     /* offline mode / timeout
     ***************************/
-    // there is come code in our Backbone.sync for this too
-    snapr.offline = false;
-    snapr.timeout = 20000; // 20000;
-    snapr.offline_timeout = 5000;  // 5000;
-    $.ajaxSetup({timeout:snapr.timeout});
+    $.ajaxSetup({timeout:config.get('timeout')});
 
     $.ajaxPrefilter( function( options, originalOptions, jqXHR ) {
         var old_complete = options.complete;
@@ -114,23 +89,21 @@ require(['jquery', 'backbone', 'photoswipe', 'auth', 'utils/local_storage', 'nat
                 old_complete.call(this, status, xhr);
             }
             if(!options.no_offline_mode && status == 'timeout'){
-                snapr.offline = true;
-                $.ajaxSetup({timeout:snapr.offline_timeout});
-                snapr.current_view.$('[data-role=content]').prepend(snapr.offline_el);
-            }else if(snapr.offline && (status == 'success' || status == 'notmodified')){
-                snapr.offline = false;
-                $.ajaxSetup({timeout:snapr.timeout});
+                config.set('offline', true);
+                $.ajaxSetup({timeout:config.get('offline_timeout')});
+                config.get('current_view').$('[data-role=content]').prepend(offline_el);
+            }else if(config.get('offline') && (status == 'success' || status == 'notmodified')){
+                config.set('offline', false);
+                $.ajaxSetup({timeout:config.get('timeout')});
                 $('.x-offline').remove();
             }
         };
     });
 
-    snapr.retry_connection = function(){
-        $.ajaxSetup({timeout:snapr.timeout});
+    $('.x-offline').live('click', function(){
+        $.ajaxSetup({timeout:config.get('timeout')});
         window.location.reload();
-    };
-
-    $('.x-offline').live('click', snapr.retry_connection);
+    });
 
     /* Overriding Backbone.sync
     ***************************/
@@ -179,8 +152,8 @@ require(['jquery', 'backbone', 'photoswipe', 'auth', 'utils/local_storage', 'nat
             params.data.access_token = auth.get('access_token');
         }
 
-        if(snapr.app_group && !params.data.app_group) {
-            params.data.app_group = snapr.app_group;
+        if(config.get('app_group') && !params.data.app_group) {
+            params.data.app_group = config.get('app_group');
         }
 
         // our hack to get jsonp to emulate http methods by appending them to the querystring
@@ -335,6 +308,7 @@ require(['utils/string'], function(string_utils) {
     window.get_photo_height = function (orig_width, orig_height, element) {
         var aspect = orig_width/orig_height,
             width = $(element).eq(0).width();
+        //console.debug('Getting height for', element, 'width:', $(element).eq(0).width(), 'height:', width/aspect);
         return width/aspect;
     };
 });

@@ -1,5 +1,66 @@
 /*global _  define require */
-define(['backbone', 'auth', 'utils/local_storage', 'native'], function(Backbone, auth, local_storage, native) {
+define(['config', 'backbone', 'auth', 'utils/local_storage', 'native'], function(config, Backbone, auth, local_storage, native) {
+
+function _make_route(view, el, extra_data){
+    var route = function(query_string, dialog, extra_data_2){
+        require([view], function(view) {
+            var query = get_query_params(query_string),
+                options = _.extend({
+                    query: query,
+                    dialog: !!dialog
+                }, extra_data || {}, extra_data_2 || {});
+            if(!route.cached_view){
+                options.el = $(el);
+                route.cached_view = new view(options);
+            }else{
+                route.cached_view.activate(options);
+            }
+            route.cached_view.previous_view = config.get('current_view');
+            config.set('current_view', route.cached_view);
+
+        });
+    };
+    return route;
+}
+
+
+// TODO: some of the things done in here seem like they should be in the main.js or config
+function get_query_params(query) {
+    var params = {};
+    if(query && query.indexOf('=') > -1) {
+        _.each(query.split('&'), function (part) {
+            var kv = part.split('='),
+                key = kv[0],
+                value = kv[1];
+            if(kv[0] == "zoom") {
+                params[key] = parseInt(unescape(value), 10);
+            } else {
+                if(_.indexOf(["access_token", "snapr_user"], key) > -1) {
+                    var obj = {};
+                    obj[kv[0]] = unescape(kv[1]);
+                    auth.set(obj);
+                } else if(_.indexOf(["snapr_user_public_group", "snapr_user_public_group_name", "appmode", "demo_mode", "environment", "browser_testing", "aviary", "camplus", "camplus_camera", "camplus_edit", "camplus_lightbox"], kv[0]) > -1) {
+                    local_storage.save(key, value);
+                } else {
+                    key = unescape(key);
+                    if(key in params) {
+                        if(!_.isArray(params[key])) {
+                            params[key] = [params[key]];
+                        }
+                        params[key].push(value);
+                    } else {
+                        params[key] = unescape(value);
+                    }
+                }
+            }
+        });
+    }
+
+    var env = local_storage.get('environment');
+    config.set('environment', env);
+
+    return params;
+}
 
 // this saves certain params to local storage
 var hash = window.location.hash.split('?');
@@ -155,79 +216,6 @@ var routers = Backbone.Router.extend({
     limbo: _make_route("views/limbo", "#limbo")
 
 });
-
-
-function _make_route(view, el, extra_data){
-    var route = function(query_string, dialog, extra_data_2){
-        require([view], function(view) {
-            var query = get_query_params(query_string),
-                options = _.extend({
-                    query: query,
-                    dialog: !!dialog
-                }, extra_data || {}, extra_data_2 || {});
-            if(!route.cached_view){
-                options.el = $(el);
-                route.cached_view = new view(options);
-            }else{
-                route.cached_view.activate(options);
-            }
-            route.cached_view.previous_view = snapr.info.current_view;
-            snapr.info.current_view = route.cached_view;
-
-        });
-    };
-    return route;
-}
-
-
-// TODO: some of the things done in here seem like they should be in the main.js
-function get_query_params(query) {
-    var params = {};
-    if(query && query.indexOf('=') > -1) {
-        _.each(query.split('&'), function (part) {
-            var kv = part.split('='),
-                key = kv[0],
-                value = kv[1];
-            if(kv[0] == "zoom") {
-                params[key] = parseInt(unescape(value), 10);
-            } else {
-                if(_.indexOf(["access_token", "snapr_user"], key) > -1) {
-                    var obj = {};
-                    obj[kv[0]] = unescape(kv[1]);
-                    auth.set(obj);
-                } else if(_.indexOf(["snapr_user_public_group", "snapr_user_public_group_name", "appmode", "demo_mode", "environment", "browser_testing", "aviary", "camplus", "camplus_camera", "camplus_edit", "camplus_lightbox"], kv[0]) > -1) {
-                    local_storage.save(key, value);
-                } else {
-                    key = unescape(key);
-                    if(key in params) {
-                        if(!_.isArray(params[key])) {
-                            params[key] = [params[key]];
-                        }
-                        params[key].push(value);
-                    } else {
-                        params[key] = unescape(value);
-                    }
-                }
-            }
-        });
-    }
-
-    var env = local_storage.get('environment');
-    if (_.has(snapr.settings, env)){
-        var settings = snapr.settings[env];
-    }else{
-        var settings = snapr.settings['default'];
-    }
-    _.each(settings, function(value, key){
-        snapr[key] = value;
-    });
-
-    snapr.api_base = snapr.base_url + "/api";
-    snapr.avatar_url = snapr.base_url + "/avatars";
-    snapr.access_token_url = snapr.base_url + "/ext/oauth/access_token/";
-
-    return params;
-}
 
 return routers;
 

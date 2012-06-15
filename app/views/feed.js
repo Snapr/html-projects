@@ -1,8 +1,8 @@
 /*global _  define require */
-define(['views/base/page', 'models/user', 'views/user_header', 'views/feed_header',
+define(['config', 'views/base/page', 'models/user', 'views/user_header', 'views/feed_header',
     'collections/photo', 'views/feed_list', 'utils/photoswipe',
     'views/upload_progress_li', 'auth'],
-function(page_view, user_model, user_header, feed_header, photo_collection,
+function(config, page_view, user_model, user_header, feed_header, photo_collection,
     feed_list, photoswipe, upload_progress_li, auth){
 
 return page_view.extend({
@@ -10,7 +10,7 @@ return page_view.extend({
     post_activate: function(options){
         this.options = options;
         this.photo_collection = new photo_collection();
-        this.photo_collection.url = snapr.api_base + "/search/";
+        this.photo_collection.url = config.get('api_base') + "/search/";
 
         this.query = this.options.query || {};
 
@@ -84,7 +84,7 @@ return page_view.extend({
             this.query.date = this.query.date.replace('+', ' ');
         }
         this.photo_collection.data = this.query;
-        this.photo_collection.data.n = this.photo_collection.data.n || snapr.constants.feed_count;
+        this.photo_collection.data.n = this.photo_collection.data.n || config.get('feed_count');
         this.photo_collection.data.detail = 2;
         this.photo_collection.data.list_style && delete this.photo_collection.data.list_style;
 
@@ -179,7 +179,7 @@ return page_view.extend({
     {
         var data = this.photo_collection.data;
 
-        data.n = snapr.constants.feed_count;
+        data.n = config.get('feed_count');
         data.paginate_from = this.photo_collection.last().get('id');
 
         this.populate_feed( data );

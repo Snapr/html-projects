@@ -19,12 +19,12 @@ var venues = page_view.extend({
 
         this.collection.bind( "reset", _.bind(this.reset_collection, this) );
 
-        // if we are coming from the map view do a flip, otherwise do a slide transition
-        var transition = ($.mobile.activePage.attr('id') == 'map') ? "flip" : "slideup";
         this.change_page();
 
         this.collection.fetch();
     },
+
+    transition: "slideup",
 
     events: {
         "keyup input": "search",

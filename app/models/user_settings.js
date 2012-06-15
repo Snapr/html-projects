@@ -1,10 +1,9 @@
 /*global _  define require */
-/*global _  define require */
-define(['backbone', 'models/linked_service'], function(Backbone, linked_service){
+define(['config', 'backbone', 'models/linked_service'], function(config, Backbone, linked_service){
 return  Backbone.Model.extend({
 
     urlRoot: function(){
-        return snapr.api_base + '/user/';
+        return config.get('api_base') + '/user/';
     },
 
     url: function( method )

@@ -1,9 +1,9 @@
 /*global _  define require */
-define(['views/base/page', 'auth', 'utils/string'], function(page_view, auth, string_utils){
+define(['config', 'views/base/page', 'auth', 'utils/string'], function(config, page_view, auth, string_utils){
 return page_view.extend({
 
     post_initialize: function(){
-        this.$el.find("form").attr( "action", snapr.base_url + "/api/upload/" );
+        this.$el.find("form").attr( "action", config.get('base_url') + "/api/upload/" );
     },
 
     post_activate: function(){

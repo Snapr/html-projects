@@ -1,7 +1,9 @@
 // abstract base class for both twitter and facebook
 
 /*global _  define require */
-define(['views/base/page', 'collections/user', 'views/people_li', 'views/components/no_results', 'utils/link_service'], function(page_view, user_collection, people_li, no_results, link_service){
+define(['config', 'views/base/page', 'collections/user', 'views/people_li', 'views/components/no_results',
+    'utils/link_service'],
+function(config, page_view, user_collection, people_li, no_results, link_service){
 return page_view.extend({
 
     post_initialize: function(){
@@ -79,7 +81,7 @@ return page_view.extend({
             this_view.$el.addClass('loading');
             this_view.collection.fetch({
                 data:data,
-                url: snapr.api_base + '/linked_services/' + this_view.service + '/find_friends/',
+                url: config.get('api_base') + '/linked_services/' + this_view.service + '/find_friends/',
                 success: function(collection, response){
                     this_view.xhr = null;
                     this_view.$el.removeClass('loading');

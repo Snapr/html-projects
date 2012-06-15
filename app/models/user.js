@@ -1,5 +1,5 @@
 /*global _  define require */
-define(['backbone'], function(Backbone){
+define(['config', 'backbone'], function(config, Backbone){
 return Backbone.Model.extend({
 
     initialize: function( init_options )
@@ -11,7 +11,7 @@ return Backbone.Model.extend({
 
     urlRoot: function()
     {
-        return snapr.api_base + '/user/'
+        return config.get('api_base') + '/user/'
     },
 
     url: function( method )

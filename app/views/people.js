@@ -1,6 +1,6 @@
 /*global _  define require */
-define(['views/base/page', 'collections/user', 'views/components/no_results', 'views/people_li'],
-    function(page_view, user_collection, no_results, people_li){
+define(['config', 'views/base/page', 'collections/user', 'views/components/no_results', 'views/people_li'],
+    function(config, page_view, user_collection, no_results, people_li){
 return page_view.extend({
 
     post_initialize: function(){
@@ -22,9 +22,7 @@ return page_view.extend({
 
         this.collection.bind( "reset", _.bind(this.reset_collection, this) );
 
-        // if we are coming from the map view do a flip, otherwise do a slide transition
-        var transition = ($.mobile.activePage.attr('id') == 'map') ? "flip" : "slideup";
-        this.change_page({ transition: transition });
+        this.change_page();
 
         switch (options.follow){
             case "following":
@@ -49,7 +47,7 @@ return page_view.extend({
                         n:20,
                         detail:1
                     },
-                    url: snapr.api_base + '/user/search/',
+                    url: config.get('api_base') + '/user/search/',
                     success: function(){
                         this_view.$el.removeClass('loading');
                     }
@@ -132,7 +130,7 @@ return page_view.extend({
                 this_view.$el.addClass('loading');
                 this_view.xhr = this_view.collection.fetch({
                     data: data,
-                    url: snapr.api_base + '/user/search/',
+                    url: config.get('api_base') + '/user/search/',
                     success: function(){
                         this_view.xhr = null;
                         this_view.$el.removeClass('loading');
@@ -143,7 +141,9 @@ return page_view.extend({
         }else{
             this_view.collection.reset();
         }
-    }
+    },
+
+    transition: "slideup"
 });
 
 });

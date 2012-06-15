@@ -1,5 +1,5 @@
 /*global _  define require */
-define(['backbone', 'utils/link_service', 'auth'], function(Backbone, link_service, auth){
+define(['config', 'backbone', 'utils/link_service', 'auth'], function(config, Backbone, link_service, auth){
 return Backbone.View.extend({
 
     tagName: 'li',
@@ -71,9 +71,8 @@ return Backbone.View.extend({
     unlink_service: function()
     {
         var options = {
-            success: function()
-            {
-                snapr.info.current_view.activate();
+            success: function(){
+                config.get('current_view').activate();
             },
             error: function()
             {
@@ -126,7 +125,7 @@ return Backbone.View.extend({
 
         var linked_service = this;
         $.ajax({
-            url: snapr.api_base + '/linked_services/twitter/import_profile/',
+            url: config.get('api_base') + '/linked_services/twitter/import_profile/',
             data: {
                 access_token: auth.get('access_token'),
                 _method: 'POST'

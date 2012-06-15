@@ -1,10 +1,10 @@
 /*global _  define require */
-define(['backbone', 'models/reaction'], function(Backbone, reaction_model){
+define(['config', 'backbone', 'models/reaction'], function(config, Backbone, reaction_model){
 
 return Backbone.Collection.extend({
     model: reaction_model,
     url: function( method ){
-        return snapr.api_base + '/reaction/';
+        return config.get('api_base') + '/reaction/';
     },
     parse: function( d, xhr ){
         if (d.response && d.response.reactions){
