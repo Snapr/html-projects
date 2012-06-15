@@ -1,5 +1,6 @@
 /*global _  define require */
-define(['backbone', 'views/base/page', 'views/components/activity_ticker', 'auth'], function(Backbone, page_view, ticker, auth){
+define(['backbone', 'views/base/page', 'views/components/activity_ticker', 'auth'],
+    function(Backbone, page_view, ticker, auth){
 return page_view.extend({
 
     post_initialize: function(options){
@@ -14,13 +15,6 @@ return page_view.extend({
 
         // only render the home page the first time we load
         this.render();
-
-        if(auth.has("access_token")){
-            var ticker = this.ticker = new ticker({el:this.$('.news-ticker')}).render().tick();
-            this.$el.on('pagehide', function(event, ui){
-                ticker.stop();
-            });
-        }
     },
 
     post_activate: function(){
@@ -36,7 +30,17 @@ return page_view.extend({
             } ))
             .trigger("create");
 
-        this.ticker.tick();
+        console.log(auth.has("access_token"));
+        if(auth.has("access_token")){
+            var ticker_instance = new ticker({el:this.$('.news-ticker')}).render().tick();
+            console.log(ticker_instance);
+            this.$el.on('pagehide', function(event, ui){
+                ticker_instance.stop();
+            });
+            this.$el.on('pageshow', function(event, ui){
+                ticker_instance.tick();
+            });
+        }
 
         return this;
     },
