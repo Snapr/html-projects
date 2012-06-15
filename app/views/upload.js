@@ -1,5 +1,5 @@
 /*global _  define require */
-define(['views/base/page', 'auth'], function(page_view, auth){
+define(['views/base/page', 'auth', 'utils/string'], function(page_view, auth, string_utils){
 return page_view.extend({
 
     post_initialize: function(){
@@ -27,11 +27,11 @@ return page_view.extend({
         var d = new Date();
         $("#device-time").val(
             d.getFullYear() + '-' +
-            ( d.getMonth() + 1 ).zeroFill( 2 ) + '-' +
-            d.getDate().zeroFill( 2 ) + ' ' +
-            d.getHours().zeroFill( 2 ) + ':' +
-            d.getMinutes().zeroFill( 2 ) + ':' +
-            d.getSeconds().zeroFill( 2 )
+            string_utils.zeroFill( ( d.getMonth() + 1 ), 2 ) + '-' +
+            string_utils.zeroFill( d.getDate(), 2 ) + ' ' +
+            string_utils.zeroFill( d.getHours(), 2 ) + ':' +
+            string_utils.zeroFill( d.getMinutes(), 2 ) + ':' +
+            string_utils.zeroFill( d.getSeconds(), 2 )
         );
         $("#redirect_uri").val( this.redirect_uri );
         $("#_access_token").attr("name", "access_token").val( auth.get("access_token") );
