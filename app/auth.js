@@ -4,6 +4,10 @@ define(['config', 'backbone', 'jquery', 'utils/local_storage', 'native'], functi
 var auth_model = Backbone.Model.extend({
 
     url: function(){
+        if (!config.has("access_token_url"))
+        {
+            config.trigger("change:environment");
+        }
         return config.get('access_token_url');
     },
 

@@ -3677,20 +3677,37 @@ strong {
 .ui-content .inset-page-content .ui-listview-inset {
   margin-bottom: 16px;
 }
+.message-overlay {
+  position: absolute;
+  padding-top: 46px;
+  margin: 0;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  background: none;
+  border: none;
+  z-index: 999;
+}
+.message-overlay .message-body {
+  margin: 8px;
+  display: block;
+  padding: 0;
+}
 .retry-offline {
   display: block;
   padding-left: 24px;
   padding-right: 24px;
 }
+.retry-offline .ui-btn-inner {
+  padding-left: 32px;
+  padding-right: 32px;
+  text-align: left;
+}
 .retry-offline .ui-icon-connection {
   position: absolute;
   left: 0;
   top: 0;
-}
-.retry-offline .ui-icon-forward {
-  position: absolute;
-  right: -1px;
-  top: -1px;
 }
 .helper-content .ui-body {
   position: relative;
@@ -5273,6 +5290,17 @@ div.ps-carousel-item-loading {
 .share-photo .image-controls .ui-icon-toggle-up {
   background-position: 0px -200px;
 }
+.camplus-icon {
+  background: none!important;
+  background-image: url('../gfx/camplus.png') !important;
+  background-repeat: no-repeat;
+  width: 37px;
+  height: 36px;
+  float: right;
+}
+.camplus-icon span {
+  display: none;
+}
 /*
 * @connect - DIALOG ?
 */
@@ -6303,5 +6331,12 @@ div.ps-carousel-item-loading {
     -o-background-size: 56px 56px;
     -webkit-background-size: 56px 56px;
     background-size: 56px 56px;
+  }
+  .camplus-icon {
+    background-image: url('../gfx/retina/camplus.png') !important;
+    -moz-background-size: 37px 36px !important;
+    -o-background-size: 37px 36px !important;
+    -webkit-background-size: 37px 36px !important;
+    background-size: 37px 36px !important;
   }
 }

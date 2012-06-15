@@ -47,6 +47,7 @@ return page_view.extend({
         "click #foursquare-venue": "venue_search",
         "click .image-controls": "toggle_photo",
         "click .x-edit-photo": "edit",
+        "click .x-camplus-edit-photo": "edit_camplus",
         "submit form": "share"
     },
 
@@ -72,7 +73,8 @@ return page_view.extend({
             tumblr_sharing: local_storage.get( "tumblr-sharing" ) !== 'false',
             foursquare_sharing: local_storage.get( "foursquare-sharing" ) !== 'false',
             twitter_sharing: local_storage.get( "twitter-sharing" ) !== 'false',
-            edit: (local_storage.get( "aviary" )  == "true" || local_storage.get( "camplus_edit" )  == "true" )
+            edit: (local_storage.get( "aviary" )  == "true" || local_storage.get( "camplus_edit" )  == "true" ),
+            camplus: local_storage.get( "camplus" )  == "true"
         }) ).trigger("create");
 
 
@@ -349,8 +351,6 @@ return page_view.extend({
     edit: function()
     {
         var appmode = local_storage.get( "appmode" );
-        var camplus = local_storage.get( "camplus" );
-        var camplus_edit = local_storage.get( "camplus_edit" );
         var aviary = local_storage.get( "aviary" );
 
         var img_url;
@@ -363,12 +363,8 @@ return page_view.extend({
         }
 
         if (appmode && img_url){
-            if (camplus && camplus_edit){
-                native.pass_data( "snapr://camplus/edit/?photo_url=" + img_url );
-            }else if (aviary){
-                native.pass_data("snapr://aviary/edit/?photo_url=" + img_url);
-            }
-
+            native.pass_data("snapr://aviary/edit/?photo_url=" + img_url);
+          
             setTimeout( function(){
                 Backbone.history.navigate( "#/limbo/" );
             }, 600);
@@ -378,7 +374,33 @@ return page_view.extend({
             console.error("clicked on edit but not in appmode or no img_url", img_url );
         }
     },
+    edit_camplus: function()
+    {
+        var appmode = local_storage.get( "appmode" );
+        var camplus = local_storage.get( "camplus" );
 
+        var img_url;
+        if (this.model.get("secret")){
+            img_url = "http://media-server2.snapr.us/lrg/" +
+                this.model.get("secret") + "/" +
+                this.model.get("id") + ".jpg";
+        }else if (this.model.has("photo_path")){
+            img_url = this.model.get("photo_path");
+        }
+
+        if (appmode && img_url){
+            if (camplus){
+                native.pass_data( "snapr://camplus/edit/?photo_url=" + img_url );
+            }
+            setTimeout( function(){
+                Backbone.history.navigate( "#/limbo/" );
+            }, 600);
+        }
+        else
+        {
+            console.error("clicked on camplus edit but not in appmode or no img_url", img_url );
+        }
+    },
     share: function(){
         $.mobile.showPageLoadingMsg();
         // if there is a secret set the picture has already been uploaded
