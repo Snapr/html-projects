@@ -14,6 +14,13 @@ return page_view.extend({
 
         // only render the home page the first time we load
         this.render();
+
+        if(auth.has("access_token")){
+            var ticker = this.ticker = new ticker({el:this.$('.news-ticker')}).render().tick();
+            this.$el.on('pagehide', function(event, ui){
+                ticker.stop();
+            });
+        }
     },
 
     post_activate: function(){
@@ -29,13 +36,7 @@ return page_view.extend({
             } ))
             .trigger("create");
 
-        if(auth.has("access_token")){
-            window.ticker = new ticker({el:this.$('.news-ticker')}).render().tick();
-            $( '#home' ).die('pagehide').live( 'pagehide',function(event, ui){
-                window.ticker.stop();
-                return true;
-            });
-        }
+        this.ticker.tick();
 
         return this;
     },
