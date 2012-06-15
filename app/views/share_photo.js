@@ -145,13 +145,13 @@ return page_view.extend({
 
         this.render();
 
-        if (local_storage.get( "foursquare-sharing") &&
+        if (local_storage.get( "foursquare-sharing") != "false" &&
             !this.model.get("location").foursquare_venue_id &&
             local_storage.get( "status" ) != "private")
         {
             this.get_foursquare_venues();
         }
-        if(!local_storage.get( "foursquare-sharing" ))
+        if(local_storage.get( "foursquare-sharing" ) != "true")
         {
             this.get_reverse_geocode();
         }
@@ -277,11 +277,11 @@ return page_view.extend({
 
         setTimeout( this.render, 10 );
 
-        if (status == "private" && local_storage.get( "foursquare-sharing" ))
+        if (status == "private" && local_storage.get( "foursquare-sharing" ) == "true")
         {
             this.get_reverse_geocode();
         }
-        else if (status == "public" && local_storage.get( "foursquare-sharing" ))
+        else if (status == "public" && local_storage.get( "foursquare-sharing" ) == "true")
         {
             this.get_foursquare_venues();
         }
@@ -364,7 +364,7 @@ return page_view.extend({
 
         if (appmode && img_url){
             native.pass_data("snapr://aviary/edit/?photo_url=" + img_url);
-          
+
             setTimeout( function(){
                 Backbone.history.navigate( "#/limbo/" );
             }, 600);
