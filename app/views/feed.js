@@ -72,11 +72,7 @@ return page_view.extend({
 
         });
 
-        // if we are coming from the map view do a flip, otherwise do a slide transition
-        var transition = ($.mobile.activePage.attr('id') == 'map') ? "flip" : "none";
-        this.change_page({
-            transition: transition
-        });
+        this.change_page();
 
         if(this.query.date){
             this.query.date = this.query.date.replace('+', ' ');

@@ -33,10 +33,8 @@ return page_view.extend({
             } ))
             .trigger("create");
 
-        console.log(auth.has("access_token"));
         if(auth.has("access_token")){
             var ticker_instance = new ticker({el:this.$('.news-ticker')}).render().tick();
-            console.log(ticker_instance);
             this.$el.on('pagehide', function(event, ui){
                 ticker_instance.stop();
             });
@@ -44,6 +42,7 @@ return page_view.extend({
                 ticker_instance.tick();
             });
         }
+
 
         return this;
     },
