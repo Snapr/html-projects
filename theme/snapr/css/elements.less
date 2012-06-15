@@ -940,6 +940,20 @@ strong{
     }
 }
 
+.message-overlay{
+    position: absolute;
+    top: @size-topbar-height;
+    margin: 0;
+    left: 0;
+    width: 100%;
+    background: none;
+    border: none;    
+    .message-body{
+        margin: @padding-page-inset;
+        display: block;
+    }
+}
+
 .retry-offline{
     display: block;
     padding-left: 24px;

@@ -3677,6 +3677,19 @@ strong {
 .ui-content .inset-page-content .ui-listview-inset {
   margin-bottom: 16px;
 }
+.message-overlay {
+  position: absolute;
+  top: 46px;
+  margin: 0;
+  left: 0;
+  width: 100%;
+  background: none;
+  border: none;
+}
+.message-overlay .message-body {
+  margin: 8px;
+  display: block;
+}
 .retry-offline {
   display: block;
   padding-left: 24px;

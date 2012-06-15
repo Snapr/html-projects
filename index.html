@@ -1059,10 +1059,8 @@
 
     <!-- offline element-->
     <script id="offline-template" type="text/template">
-        <div class="x-offline page-inset-header ui-body-c">
-            <div class="ui-content">
-                <a class="retry-offline"><span class="ui-icon ui-icon-connection extra-icons"></span><strong>Offline Mode</strong><span class="small-text"> (click to retry)</span><span class="ui-icon ui-icon-forward"></span></a>
-            </div>
+        <div class="x-offline message-overlay message-warning ui-body-c">
+                <a class="retry-offline message-body" data-role="button" data-icon="connection" data-theme="d"><strong>Connection Error!</strong><span class="small-text"> (click to retry)</span><span class="ui-icon ui-icon-forward"></span></a>
         </div>
     </script>
 
