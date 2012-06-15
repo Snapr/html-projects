@@ -1,5 +1,5 @@
 /*global require */
-require(['config', 'utils/geo', 'utils/alerts'], function(config, geo, alerts){
+define(['config', 'utils/geo', 'utils/alerts'], function(config, geo, alerts){
     //export
     window.set_location = geo.set_location;
     window.location_error = geo.location_error;
@@ -54,5 +54,6 @@ require(['config', 'utils/geo', 'utils/alerts'], function(config, geo, alerts){
             config.get('current_view').queue_settings(upload_mode, paused);
         }
     };
-});
 
+    return native;
+});
