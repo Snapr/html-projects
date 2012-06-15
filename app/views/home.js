@@ -1,12 +1,15 @@
 /*global _  define require */
-define(['backbone', 'views/base/page', 'views/components/activity_ticker', 'auth'],
-    function(Backbone, page_view, ticker, auth){
+define(['backbone', 'views/base/page', 'views/components/activity_ticker', 'auth', 'utils/local_storage'],
+    function(Backbone, page_view, ticker, auth, local_storage){
 return page_view.extend({
 
     post_initialize: function(options){
         if(options.query.new_user){
-            Backbone.history.navigate( "#", true );  // go here first so that back is not new_user
-            Backbone.history.navigate( "#/welcome/" );
+            if (!local_storage.get("welcome_shown"))
+            {
+                Backbone.history.navigate( "#", true );  // go here first so that back is not new_user
+                Backbone.history.navigate( "#/welcome/" );
+            }
         }
 
         this.template = _.template( $("#home-template").html() );
