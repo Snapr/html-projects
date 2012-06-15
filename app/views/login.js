@@ -32,7 +32,14 @@ return page_view.extend({
             success: function( response ){
                 $("#login-dialog-username").val('');
                 $("#login-dialog-password").val('');
-                login_view.back();
+                if (login_view.previous_view.welcome_view)
+                {
+                    Backbone.history.navigate( "#/", true );
+                }
+                else
+                {
+                    login_view.back();
+                }
             },
             error: function( error ){
                 console.warn("error", error);
