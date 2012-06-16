@@ -13,9 +13,9 @@ return Backbone.View.extend({
         this.model.bind( "change:relationship", this.render );
 
         this.model.fetch({
-            error: function()
+            error: function(e)
             {
-                console.log( "error fetching user in user_header" );
+                console.log( "error fetching user in user_header", e );
             }
         });
     },

@@ -20,6 +20,7 @@ var auth_model = Backbone.Model.extend({
             password: password,
             _method: "POST"
         };
+
         var auth = this;
         var opt = {
             success: function( response ){
@@ -67,11 +68,14 @@ var auth_model = Backbone.Model.extend({
         var snapr_user = this.get( "snapr_user" );
         var access_token = this.get( "access_token" );
 
-        if (local_storage.get( "appmode" )){
+        localStorage.setItem( "snapr_user", snapr_user );
+        localStorage.setItem( "access_token", access_token );
+
+        // only save to the app if we're in appmode
+        // and the hash doesn't have "access_token" in it
+        // (which would cause an infinite loop)
+        if (local_storage.get( "appmode" ) && window.location.hash.indexOf("access_token") < 0){
             native.pass_data( "snapr://login?snapr_user=" + encodeURI( snapr_user ) + "&access_token=" + encodeURI( access_token ) );
-        }else{
-            localStorage.setItem( "snapr_user", snapr_user );
-            localStorage.setItem( "access_token", access_token );
         }
     },
 

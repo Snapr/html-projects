@@ -199,7 +199,7 @@ return page_view.extend({
             },
             function( e )
             {
-                console.error( "geocode error", e );
+                console.error( "get reverse geocode: geocode error model doesn't have lat lon", e );
             });
         }
     },
@@ -256,7 +256,7 @@ return page_view.extend({
             },
             function( e )
             {
-                console.error( "geocode error", e );
+                console.error( "get foursquare venue geocode error", e );
             });
         }
     },
@@ -343,7 +343,7 @@ return page_view.extend({
             },
             function( e )
             {
-                console.error( "geocode error", e );
+                console.error( "venue search geocode error", e );
             });
         }
     },

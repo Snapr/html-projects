@@ -39,6 +39,7 @@ function get_query_params(query) {
                     var obj = {};
                     obj[kv[0]] = unescape(kv[1]);
                     auth.set(obj);
+                    auth.save_locally();
                 } else if(_.indexOf(["snapr_user_public_group", "snapr_user_public_group_name", "appmode", "demo_mode", "environment", "browser_testing", "aviary", "camplus", "camplus_camera", "camplus_edit", "camplus_lightbox"], kv[0]) > -1) {
                     local_storage.save(key, value);
                 } else {
