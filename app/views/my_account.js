@@ -55,13 +55,13 @@ return page_view.extend({
             data={
                 username: auth.get( "snapr_user" ),
                 user_id: this.user_settings.get( "user" ).user_id,
-                settings: this.user_settings.get( "settings" ),
-                camplus: {
-                    camplus_menu: (local_storage.get( "camplus" ) == "true"),
-                    camplus_camera: (local_storage.get( "camplus_camera" ) == "true"),
-                    camplus_edit: (local_storage.get( "camplus_edit" ) == "true"),
-                    camplus_lightbox: (local_storage.get( "camplus_lightbox" ) == "true")
-                }
+                settings: this.user_settings.get( "settings" )
+                // camplus: {
+                //     camplus_menu: (local_storage.get( "camplus" ) == "true"),
+                //     camplus_camera: (local_storage.get( "camplus_camera" ) == "true"),
+                //     camplus_edit: (local_storage.get( "camplus_edit" ) == "true"),
+                //     camplus_lightbox: (local_storage.get( "camplus_lightbox" ) == "true")
+                // }
             };
         }
 
