@@ -75,7 +75,12 @@ require(['config', 'jquery', 'backbone', 'photoswipe', 'auth', 'utils/local_stor
     });
     // now we can load jQmobile
     require(['jquery.mobile'], function(){
-        // Now jQm is loaded and applied styles we can show everything.
+
+        // jQm triggers showPageLoadingMsg on dom-ready, do not want.
+        $(function(){
+            $.mobile.hidePageLoadingMsg();
+        });
+
     });
 
     /* offline mode / timeout
