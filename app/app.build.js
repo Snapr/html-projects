@@ -4,7 +4,7 @@
     dir: "../build",
     mainConfigFile: "main.js",
     optimizeCss: "none",
-    optimize: "none",
+    //optimize: "none",
     modules: [
         {
             name: "main",
