@@ -74,7 +74,7 @@ var map_view = page_view.extend({
         map_view.map_settings = {
             zoom: map_view.map_query.get( "zoom" ) ||
                 parseInt(local_storage.get('map_zoom'), 10) ||
-                config.get('default_zoom'),
+                config.get('zoom'),
             streetViewControl: false,
             mapTypeControl: false,
             mapTypeId: google.maps.MapTypeId.ROADMAP
@@ -346,7 +346,7 @@ var map_view = page_view.extend({
 
         var success_callback = function( position )
         {
-            map_view.map.setZoom(config.get('default_zoom'));
+            map_view.map.setZoom(config.get('zoom'));
             map_view.map.panTo( new google.maps.LatLng( position.coords.latitude, position.coords.longitude) );
             map_view.lat = position.coords.latitude;
             map_view.lng = position.coords.longitude;

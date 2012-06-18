@@ -30,7 +30,7 @@ var feed_li =  Backbone.View.extend({
         if (this.model.has('location'))
         {
             this.map_url =
-                '#/map/?zoom=' + config.get('default_zoom') +
+                '#/map/?zoom=' + config.get('zoom') +
                 '&lat=' + this.model.get('location').latitude +
                 '&lng=' + this.model.get('location').longitude +
                 '&photo_id=' + this.model.get('id') +
