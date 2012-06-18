@@ -1052,9 +1052,7 @@
 
     <!-- No Results element-->
     <script id="no-results-template" type="text/template">
-        <div id="no-results">
-            <p class="imagealert"><span class="ui-icon ui-icon-<%= icon || "sadface" %> extra-icons"></span><%= message || "No results" %></p>
-        </div>
+        <p class="imagealert"><span class="ui-icon ui-icon-<%= icon || "sadface" %> extra-icons"></span><%= message || "No results" %></p>
     </script>
 
     <!-- offline element-->
@@ -1459,8 +1457,8 @@
         <%  break;
         case "placeholder":%>
             <div id="no-results">
-                    <p class="imagealert"><span class="ui-icon ui-icon-delete extra-icons"></span>No news yet...</p>
-                </div>
+                <p class="imagealert"><span class="ui-icon ui-icon-delete extra-icons"></span>No news yet...</p>
+            </div>
         <% break;
     }%>
 
