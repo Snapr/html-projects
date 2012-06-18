@@ -21,6 +21,8 @@ var config_model = Backbone.Model.extend({
         upload_paused: false,
         geolocation_enabled: true,
 
+        camplus_options: false,  // show camera-plus options in my-account page
+
         current_view: null,
 
         zoom: 15,

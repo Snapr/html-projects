@@ -1,6 +1,6 @@
 /*global _  define require */
-define(['views/base/page', 'models/user_settings', 'views/linked_service', 'auth', 'utils/local_storage', 'utils/alerts', 'native'],
-function(page_view, user_settings, linked_service, auth, local_storage, alerts, native){
+define(['views/base/page', 'models/user_settings', 'views/linked_service', 'auth', 'utils/local_storage', 'utils/alerts', 'native', 'config'],
+function(page_view, user_settings, linked_service, auth, local_storage, alerts, native, config){
 return page_view.extend({
 
     post_activate:function(){
@@ -56,13 +56,15 @@ return page_view.extend({
                 username: auth.get( "snapr_user" ),
                 user_id: this.user_settings.get( "user" ).user_id,
                 settings: this.user_settings.get( "settings" )
-                // camplus: {
-                //     camplus_menu: (local_storage.get( "camplus" ) == "true"),
-                //     camplus_camera: (local_storage.get( "camplus_camera" ) == "true"),
-                //     camplus_edit: (local_storage.get( "camplus_edit" ) == "true"),
-                //     camplus_lightbox: (local_storage.get( "camplus_lightbox" ) == "true")
-                // }
             };
+            if(config.get('camplus_options')){
+                data.camplus = {
+                    camplus_menu: (local_storage.get( "camplus" ) == "true"),
+                    camplus_camera: (local_storage.get( "camplus_camera" ) == "true"),
+                    camplus_edit: (local_storage.get( "camplus_edit" ) == "true"),
+                    camplus_lightbox: (local_storage.get( "camplus_lightbox" ) == "true")
+                };
+            }
         }
 
         $account_content
