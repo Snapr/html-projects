@@ -55,7 +55,8 @@ return page_view.extend({
             data={
                 username: auth.get( "snapr_user" ),
                 user_id: this.user_settings.get( "user" ).user_id,
-                settings: this.user_settings.get( "settings" )
+                settings: this.user_settings.get( "settings" ),
+                camplus: false
             };
             if(config.get('camplus_options')){
                 data.camplus = {
