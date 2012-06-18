@@ -38,7 +38,7 @@ var dash_view = page_view.extend({
         var dash = this,
             options = {
                 data: {
-                    n:6,
+                    n: config.get('side_scroll_initial'),
                     detail:0,
                     feed:!!auth.get("access_token")
                 },

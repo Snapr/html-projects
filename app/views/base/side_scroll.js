@@ -1,6 +1,7 @@
 // Abstract base class side-scroll views
 /*global _  define require */
-define(['backbone', 'utils/photoswipe', 'iscroll', 'utils/string', 'collections/photo'], function(Backbone, photoswipe, iScroll, string_utils, photo_collection){
+define(['backbone', 'utils/photoswipe', 'iscroll', 'utils/string', 'collections/photo', 'config'],
+    function(Backbone, photoswipe, iScroll, string_utils, photo_collection, config){
 return Backbone.View.extend({
 
     // The following 3 attrs need to be set when extending this view
@@ -104,18 +105,22 @@ return Backbone.View.extend({
                         scroll_el.addClass('x-loading');
                         left_pull_msg.text('Loading...');
                         scroller = this;
-                        collection.fetch_newer({success: function(){
-                            if(scroller.currPageX === 0){
-                                scroller.scrollToPage(1);
+                        collection.fetch_newer({
+                            data: {n: config.get('side_scroll_more')},
+                            success: function(){
+                                if(scroller.currPageX === 0){
+                                    scroller.scrollToPage(1);
+                                }
+                                scroll_el.removeClass('x-loading');
+                                left_pull_msg.text('Load More');
                             }
-                            scroll_el.removeClass('x-loading');
-                            left_pull_msg.text('Load More');
-                        }});
+                        });
                     }else if(right_pull_el.is('.x-flipped') && !scroll_el.is('.x-loading') && !scroll_el.is('.x-no-more')){
                         scroll_el.addClass('x-loading');
                         right_pull_msg.text('Loading');
                         scroller = this;
                         var options  = {
+                            data: {n: config.get('side_scroll_more')},
                             success: function(collection, response){
                                 if (response.response.photos.length){
                                     if(scroller.currPageX === scroller.pagesX.length){

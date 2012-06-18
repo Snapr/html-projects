@@ -1,6 +1,6 @@
 /*global _  define require */
-define(['backbone', 'views/base/page', 'views/base/side_scroll', 'collections/photo'],
-    function(Backbone, page_view, side_scroll, photo_collection){
+define(['backbone', 'views/base/page', 'views/base/side_scroll', 'collections/photo', 'config'],
+    function(Backbone, page_view, side_scroll, photo_collection, config){
 
 var cities = {
     'new-york': {
@@ -90,7 +90,10 @@ return page_view.extend({
 
         _.each( cities, function( details, id ){
             var photos = new photo_collection();
-            photos.data = {'area': details.area};
+            photos.data = {
+                area: details.area,
+                n: config.get('side_scroll_initial')
+            };
             var li = new city_stream({
                 collection: photos,
                 details: {

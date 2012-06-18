@@ -27,6 +27,8 @@ var config_model = Backbone.Model.extend({
 
         zoom: 15,
         feed_count: 9,
+        side_scroll_initial: 6,
+        side_scroll_more: 10,
         share_redirect: "#/feed/"
     },
     environments: {
