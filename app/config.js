@@ -49,14 +49,15 @@ var config_model = Backbone.Model.extend({
         }
     },
     initialize: function(){
-        this.bind('change:environment', function(){
+        var update_env = _.bind(function(){
             this.set(this.environments[this.get('environment')]);
             this.set('api_base', this.get('base_url') + "/api");
             this.set('avatar_url', this.get('base_url') + "/avatars");
             this.set('access_token_url', this.get('base_url') + "/ext/oauth/access_token/");
-        });
+        }, this);
+        this.bind('change:environment', update_env);
         this.set(this.defaults);
-        this.set(this.environments[this.get('environment')]);
+        update_env();
     }
 });
 
