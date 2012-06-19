@@ -81,5 +81,8 @@ geo.location_error = function( error ){
     }
 };
 
+window.set_location = geo.set_location;
+window.location_error = geo.location_error;
+
 return geo;
 });

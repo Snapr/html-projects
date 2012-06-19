@@ -1,8 +1,10 @@
-/*global require */
-define(['config', 'utils/geo', 'utils/alerts'], function(config, geo, alerts){
+/*global define */
+define(['config', 'utils/alerts'], function(config, alerts){
     //export
-    window.set_location = geo.set_location;
-    window.location_error = geo.location_error;
+
+    // we can't to this here because geo relises on pass_data - circ.dep.
+    // window.set_location = geo.set_location;
+    // window.location_error = geo.location_error;
 
     window.tapped_action = alerts.tapped_action;
 
