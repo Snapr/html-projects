@@ -52,12 +52,10 @@ requirejs.config({
 
 /* routers
 ***************************/
-require(['routers', 'backbone'], function(routers, Backbone){
+require(['routers'], function(routers){
     var routers_instance = new routers();
     // keep a ref to the instance so it can ba accessed if needed (see utils/dialog)
     routers.routers_instance = routers_instance;
-    // don't start history until jQm is ready to deal with pageCanges
-    $(window).on("pagecontainercreate", function(){ Backbone.history.start(); });
 });
 
 require(['config', 'jquery', 'backbone', 'photoswipe', 'auth', 'utils/local_storage', 'native', 'utils/dialog', 'views/components/offline'],
@@ -79,6 +77,10 @@ require(['config', 'jquery', 'backbone', 'photoswipe', 'auth', 'utils/local_stor
         // jQm triggers showPageLoadingMsg on dom-ready, do not want.
         $(function(){
             $.mobile.hidePageLoadingMsg();
+            // don't start history until jQm is ready to deal with pageCanges
+            // also jQm must have finished it's init otherwise it will load the
+            // "first page" - home - even if we requested another url
+            Backbone.history.start();
         });
 
     });
