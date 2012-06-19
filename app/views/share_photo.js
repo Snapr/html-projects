@@ -1,8 +1,8 @@
 /*global _  define require */
 define(['config', 'backbone', 'views/base/page', 'models/photo', 'models/geo_location', 'collections/foursquare_venue',
-    'views/venues', 'utils/geo', 'auth', 'utils/local_storage', 'utils/alerts', 'native', 'utils/dialog'],
+    'views/venues', 'utils/geo', 'auth', 'utils/local_storage', 'utils/alerts', 'native', 'utils/dialog', 'utils/string'],
 function(config, Backbone, page_view, photo_model, geo_location, foursquare_venue_collection, venues_view, geo,
-    auth, local_storage, alerts, native, dialog){
+    auth, local_storage, alerts, native, dialog, string_utils){
 return page_view.extend({
 
     post_initialize: function(){
@@ -504,11 +504,11 @@ return page_view.extend({
                 var d = new Date(),
                     params = {
                         'device_time': d.getFullYear() + '-' +
-                            ( d.getMonth() + 1 ).zeroFill( 2 ) + '-' +
-                            d.getDate().zeroFill( 2 ) + ' ' +
-                            d.getHours().zeroFill( 2 ) + ':' +
-                            d.getMinutes().zeroFill( 2 ) + ':' +
-                            d.getSeconds().zeroFill( 2 )
+                            string_utils.zeroFill(d.getMonth() + 1, 2) + '-' +
+                            string_utils.zeroFill(d.getDate(), 2 ) + ' ' +
+                            string_utils.zeroFill(d.getHours(), 2 ) + ':' +
+                            string_utils.zeroFill(d.getMinutes(), 2 ) + ':' +
+                            string_utils.zeroFill(d.getSeconds(), 2 )
                     };
                 _.each( this.$el.find("form").serializeArray(), function( o ){
                     if (["tumblr", "facebook_album", "tweet", "foursquare_checkin"].indexOf( o.name ) > -1)
