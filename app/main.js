@@ -20,6 +20,8 @@ require(['config'], function(config){
 
 requirejs.config({
     paths: {
+        "async": 'libs/require-plugins/async',
+
         "jquery": "libs/jquery-1.7.1.min",
         "jquery.mobile": "libs/jquery.mobile-1.1.0/jquery.mobile-1.1.0",
         "json": "libs/json2",
