@@ -1634,9 +1634,29 @@
     } 
 }
 
-.spot{
-    padding-left: 101px + 8px;
+.spots-results-header{
     position: relative;
+    top: -@padding-image-grid-inset;.
+    .ui-btn-text{
+        padding-left: 0;
+    }
+}
+
+.spot-item{
+    margin-bottom: @padding-element-inset / 2;
+    padding-bottom: @padding-element-inset / 2;
+    border-bottom: @border-medium-on-light;
+    margin-left: -@padding-page-inset;
+    margin-right: -@padding-page-inset;
+    padding-left: @padding-image-grid-inset;
+    padding-right: @padding-page-inset;
+    min-height:@size-img-thumb;
+}
+
+.spot{
+    padding-left: @size-img-thumb + @padding-element-inset;
+    position: relative;
+    display: block;
     .spot-photo-crop{
         position:  absolute;
         left: 0;
@@ -1661,7 +1681,20 @@
     }
     
     .spot-header{
-        
+       .spot-name{
+            display: inline-block;
+            padding-right: 24px;
+            position: relative;
+            margin-bottom: 0;
+            padding-top: 2px;
+            margin-top: 4px;
+            .spot-icon{
+                position: absolute;
+                right: 0;
+                top: 0;
+                margin: 0;
+            }
+       } 
     }
     
     
