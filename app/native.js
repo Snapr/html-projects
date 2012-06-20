@@ -11,6 +11,7 @@ define(['config', 'utils/alerts'], function(config, alerts){
     var native = {};
     native.pass_data = function( url ){
         window.location = url.replace(/\+/g, '%20');
+        // prompt(url.replace(/\+/g, '%20'));
     };
 
     window.upload_progress = function( data, datatype ){
