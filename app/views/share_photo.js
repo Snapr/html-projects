@@ -7,16 +7,12 @@ return page_view.extend({
 
     post_initialize: function(){
         this.template = _.template( $("#share-photo-template").html() );
-
-        // this will eventually be stored/retrieved from localstorage
-        // but for now we'll start from blank each time
-        this.share_photo_settings = {};
     },
 
-    post_activate: function(){
+    post_activate: function(options){
         this.change_page();
 
-        this.query = this.options.query;
+        this.query = options.query;
 
         if (this.query.redirect_url){
             this.redirect_url = this.query.redirect_url;
@@ -26,7 +22,10 @@ return page_view.extend({
         this.$el.find("[data-role='content']").empty();
 
         // if we are coming from the venue selection screen the model will be passed in
-        if (!this.model){
+        if (this.use_cached_model){
+            this.render();
+            this.use_cached_model = false;
+        }else{
             if (this.query.photo_path){
                 this.get_photo_from_path( this.query.photo_path + "?ts=" + new Date().getTime() );
             }else if(this.query.photo_id || this.query.photo){
@@ -34,8 +33,6 @@ return page_view.extend({
             }else{
                 console.error( "no path or photo_id" );
             }
-        }else{
-            this.render();
         }
     },
 
@@ -89,8 +86,7 @@ return page_view.extend({
         alerts.notification( "Share", "Please set the image to Public before sharing to other services", $.noop );
     },
 
-    get_photo_from_server: function( id )
-    {
+    get_photo_from_server: function( id ){
         var share_photo_view = this;
 
         this.model = new photo_model({
@@ -101,37 +97,30 @@ return page_view.extend({
         this.model.bind( "change", this.render );
 
         this.model.fetch({
-            success: function( model )
-            {
+            success: function( model ){
                 share_photo_view.$el.find("#description").val( model.get("description") );
 
                 if (local_storage.get( "foursquare-sharing" ) &&
                     !model.get( "location" ).foursquare_venue_id &&
-                    local_storage.get( "status" ) != "private")
-                {
+                    local_storage.get( "status" ) != "private"){
                     share_photo_view.get_foursquare_venues();
-                }
-                else if( !model.get( "location" ).location )
-                {
+                }else if( !model.get( "location" ).location ){
                     share_photo_view.get_reverse_geocode();
                 }
             },
-            error: function()
-            {
+            error: function(){
                 console.error( "photo fetch error" );
             }
         });
     },
 
-    get_photo_from_path: function( path )
-    {
+    get_photo_from_path: function( path ){
 
         var location = {};
         if (this.query.latitude &&
             this.query.longitude &&
             this.query.latitude !== "0.000000" &&
-            this.query.longitude !== "0.000000")
-        {
+            this.query.longitude !== "0.000000"){
             location.latitude = this.query.latitude;
             location.longitude = this.query.longitude;
         }
@@ -147,35 +136,29 @@ return page_view.extend({
 
         if (local_storage.get( "foursquare-sharing") != "false" &&
             !this.model.get("location").foursquare_venue_id &&
-            local_storage.get( "status" ) != "private")
-        {
+            local_storage.get( "status" ) != "private"){
             this.get_foursquare_venues();
         }
-        if(local_storage.get( "foursquare-sharing" ) != "true")
-        {
+        if(local_storage.get( "foursquare-sharing" ) != "true"){
             this.get_reverse_geocode();
         }
     },
 
-    get_reverse_geocode: function()
-    {
+    get_reverse_geocode: function(){
 
-        if (local_storage.get( "share-location" ) === 'false')
-        {
+        if (local_storage.get( "share-location" ) === 'false'){
             return;
         }
 
         var share_photo_view = this;
 
-        var geocode = function( latitude, longitude )
-        {
+        var geocode = function( latitude, longitude ){
             var location = new geo_location({
                 latitude: latitude,
                 longitude: longitude
             });
             location.fetch({
-                success: function( model )
-                {
+                success: function( model ){
                     share_photo_view.model.set({
                         location: model.attributes
                     });
@@ -185,41 +168,32 @@ return page_view.extend({
             });
         };
 
-        if (this.model.get("location").latitude && this.model.get("location").longitude)
-        {
+        if (this.model.get("location").latitude && this.model.get("location").longitude){
             // get reverse geocode location from photo lat & long
             geocode( this.model.get("location").latitude, this.model.get("location").longitude);
-        }
-        else
-        {
+        }else{
             // get reverse geocode location from current position
-            geo.get_location( function( location )
-            {
+            geo.get_location( function( location ){
                 geocode( location.coords.latitude, location.coords.longitude );
             },
-            function( e )
-            {
+            function( e ){
                 console.error( "get reverse geocode: geocode error model doesn't have lat lon", e );
             });
         }
     },
 
-    get_foursquare_venues: function()
-    {
+    get_foursquare_venues: function(){
 
         var share_photo_view = this;
 
-        var get_venues = function( latitude, longitude )
-        {
+        var get_venues = function( latitude, longitude ){
             share_photo_view.venue_collection = new foursquare_venue_collection({
                 ll: latitude + "," + longitude
             });
 
             share_photo_view.venue_collection.fetch({
-                success: function( collection )
-                {
-                    if (collection.length)
-                    {
+                success: function( collection ){
+                    if (collection.length){
                         var location = _.extend( share_photo_view.model.attributes.location, {
                             foursquare_venue_id: collection.first().get( "id" ),
                             foursquare_venue_name: collection.first().get( "name" )
@@ -228,9 +202,7 @@ return page_view.extend({
                         share_photo_view.$el.find("#foursquare-sharing-location").removeClass("ajax-loading");
                         share_photo_view.$el.find(".foursquare-venue-name")
                             .text(share_photo_view.model.get("location").foursquare_venue_name);
-                    }
-                    else
-                    {
+                    }else{
                         share_photo_view.$el.find("#foursquare-sharing-location").removeClass("ajax-loading");
                         share_photo_view.$el.find(".foursquare-venue-name").text( "No venues nearby." );
                     }
@@ -238,24 +210,19 @@ return page_view.extend({
             });
         };
 
-        if (this.model.get("location").latitude && this.model.get("location").longitude)
-        {
+        if (this.model.get("location").latitude && this.model.get("location").longitude){
             // get venues using photo model lat and long
             get_venues( this.model.get("location").latitude, this.model.get("location").longitude);
-        }
-        else
-        {
+        }else{
             // get venues based on current location (not photo)
-            geo.get_location( function( location )
-            {
+            geo.get_location( function( location ){
                 var photo_location = share_photo_view.model.get('location');
                 photo_location.latitude = location.coords.latitude;
                 photo_location.longitude = location.coords.longitude;
                 share_photo_view.model.set({location: photo_location});
                 get_venues( location.coords.latitude, location.coords.longitude );
             },
-            function( e )
-            {
+            function( e ){
                 console.error( "get foursquare venue geocode error", e );
             });
         }
@@ -264,12 +231,9 @@ return page_view.extend({
     toggle_status: function( e ){
 
         var status;
-        if ($(e.currentTarget).is(":checked"))
-        {
+        if ($(e.currentTarget).is(":checked")){
             status = "public";
-        }
-        else
-        {
+        }else{
             status = "private";
         }
 
@@ -277,47 +241,34 @@ return page_view.extend({
 
         setTimeout( this.render, 10 );
 
-        if (status == "private" && local_storage.get( "foursquare-sharing" ) == "true")
-        {
+        if (status == "private" && local_storage.get( "foursquare-sharing" ) == "true"){
             this.get_reverse_geocode();
-        }
-        else if (status == "public" && local_storage.get( "foursquare-sharing" ) == "true")
-        {
+        }else if (status == "public" && local_storage.get( "foursquare-sharing" ) == "true"){
             this.get_foursquare_venues();
         }
     },
 
-    toggle_sharing: function( e )
-    {
-        if ($(e.target).attr("checked"))
-        {
+    toggle_sharing: function( e ){
+        if ($(e.target).attr("checked")){
             local_storage.save( e.target.id, true );
-        }
-        else
-        {
+        }else{
             local_storage.save( e.target.id, false );
         }
-        if (e.target.id == "foursquare-sharing")
-        {
+        if (e.target.id == "foursquare-sharing"){
             this.$el.find("#no-foursquare-sharing-location").toggle();
             this.$el.find("#foursquare-sharing-location").toggle();
-            if ($(e.target).attr("checked"))
-            {
+            if ($(e.target).attr("checked")){
                 this.get_foursquare_venues();
-            }
-            else
-            {
+            }else{
                 this.get_reverse_geocode();
             }
         }
-        if (e.target.id == "share-location" && $(e.target).attr("checked"))
-        {
+        if (e.target.id == "share-location" && $(e.target).attr("checked")){
             this.get_reverse_geocode();
         }
     },
 
-    venue_search: function()
-    {
+    venue_search: function(){
         var share_view = this;
         var go_to_venues = function( ll, foursquare_venue_id, back_query, model ){
             dialog('venue/search/?ll='+ll+'&foursquare_venue_id=' + foursquare_venue_id, {model: model});
@@ -335,21 +286,18 @@ return page_view.extend({
         }else{
             var share_photo_view = this;
 
-            geo.get_location( function( location )
-            {
+            geo.get_location( function( location ){
                 var ll = location.coords.latitude + "," + location.coords.longitude;
 
                 go_to_venues( ll, false, share_photo_view.query, share_photo_view.model );
             },
-            function( e )
-            {
+            function( e ){
                 console.error( "venue search geocode error", e );
             });
         }
     },
 
-    edit: function()
-    {
+    edit: function(){
         var appmode = local_storage.get( "appmode" );
         var aviary = local_storage.get( "aviary" );
 
@@ -368,14 +316,11 @@ return page_view.extend({
             setTimeout( function(){
                 Backbone.history.navigate( "#/limbo/" );
             }, 600);
-        }
-        else
-        {
+        }else{
             console.error("clicked on edit but not in appmode or no img_url", img_url );
         }
     },
-    edit_camplus: function()
-    {
+    edit_camplus: function(){
         var appmode = local_storage.get( "appmode" );
         var camplus = local_storage.get( "camplus" );
 
@@ -395,9 +340,7 @@ return page_view.extend({
             setTimeout( function(){
                 Backbone.history.navigate( "#/limbo/" );
             }, 600);
-        }
-        else
-        {
+        }else{
             console.error("clicked on camplus edit but not in appmode or no img_url", img_url );
         }
     },
@@ -409,19 +352,16 @@ return page_view.extend({
 
             redirect_url += "photo_id=" + this.model.get("id");
 
-            if (this.model.get("location") && this.model.get("location").latitude && this.model.get("location").longitude)
-            {
+            if (this.model.get("location") && this.model.get("location").latitude && this.model.get("location").longitude){
                 redirect_url += "&ll=" + this.model.get("location").latitude + "," + this.model.get("location").longitude;
             }
 
-            if (this.model.get("location") && this.model.get("location").spot_id)
-            {
+            if (this.model.get("location") && this.model.get("location").spot_id){
                 redirect_url += "&spot=" + this.model.get("location").spot_id;
             }
 
             this.model.unset( "shared", {silent: true} );
-            if (_.isObject(this.model.get( "location" )))
-            {
+            if (_.isObject(this.model.get( "location" ))){
                 var location = this.model.get( "location" );
                 this.model.unset( "location", {silent: true} );
                 var attributes = _.extend( this.model.attributes, location );
@@ -439,8 +379,7 @@ return page_view.extend({
             }, {silent: true});
 
             this.model.save({},{
-                success: function( model, response )
-                {
+                success: function( model, response ){
                     if(!response.success){
                         return;
                     }
@@ -511,43 +450,32 @@ return page_view.extend({
                             string_utils.zeroFill(d.getSeconds(), 2 )
                     };
                 _.each( this.$el.find("form").serializeArray(), function( o ){
-                    if (["tumblr", "facebook_album", "tweet", "foursquare_checkin"].indexOf( o.name ) > -1)
-                    {
+                    if (["tumblr", "facebook_album", "tweet", "foursquare_checkin"].indexOf( o.name ) > -1){
                         params[o.name] = (o.value == "on");
-                        if (o.name == "foursquare_checkin")
-                        {
+                        if (o.name == "foursquare_checkin"){
                             params.foursquare_venue = this.model.get( "location" ).foursquare_venue_id;
                             params.venue_name = this.model.get( "location" ).foursquare_venue_name;
                         }
-                    }
-                    else if(o.name == "status")
-                    {
-                        if (o.value == "off")
-                        {
+                    }else if(o.name == "status"){
+                        if (o.value == "off"){
                             params[o.name] = "private";
-                        }
-                        else
-                        {
+                        }else{
                             params[o.name] = "public";
                         }
-                    }
-                    else
-                    {
+                    }else{
                         params[o.name] = escape( o.value );
                     }
 
                 }, this);
 
                 // default to public if not set above
-                if( !params.status)
-                {
+                if( !params.status){
                     params.status = "public";
                 }
                 _.extend(params, this.query);
 
                 var photo = this.query && this.query.photo_path || null;
-                if (photo)
-                {
+                if (photo){
                     delete params.photo_path;
                     params.photo = photo;
                 }
@@ -555,25 +483,19 @@ return page_view.extend({
                 var ll = "";
                 _.extend(params, auth.attributes);
 
-                if (params.latitude && params.longitude)
-                {
+                if (params.latitude && params.longitude){
                     ll = "?ll=" + params.latitude + "," + params.longitude;
-                }
-                else if (this.model.get( "location" ) &&
+                }else if (this.model.get( "location" ) &&
                     this.model.get( "location" ).latitude &&
-                    this.model.get( "location" ).longitude )
-                {
+                    this.model.get( "location" ).longitude ){
                     params.latitude = this.model.get( "location" ).latitude;
                     params.longitude = this.model.get( "location" ).longitude;
                     ll = "?ll=" + params.latitude + "," + params.longitude;
-                }
-                else
-                {
+                }else{
                     ll = "";
                 }
 
-                if (params.foursquare_venue)
-                {
+                if (params.foursquare_venue){
                     ll += "&spot=" + params.foursquare_venue;
                 }
 
@@ -583,13 +505,11 @@ return page_view.extend({
         }
     },
 
-    toggle_photo: function( e )
-    {
+    toggle_photo: function( e ){
         this.$el.toggleClass("show-image");
     },
 
-    upload_progress: function( upload_data )
-    {
+    upload_progress: function( upload_data ){
         Backbone.history.navigate( '#/uploading/' );
     }
 
