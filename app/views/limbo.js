@@ -3,7 +3,7 @@ define(['backbone', 'views/base/page'], function(Backbone, page_view){
 return page_view.extend({
 
     post_initialize: function(){
-        this.el.live('pagehide', function( e ){
+        this.$el.live('pagehide', function( e ){
             $.mobile.hidePageLoadingMsg();
             return true;
         });
