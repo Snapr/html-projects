@@ -6,10 +6,10 @@ return Backbone.View.extend({
 
     className: "upload-progress-item",
 
-    initialize: function()
-    {
+    initialize: function(options){
         this.template = this.options.template || _.template( $("#upload-progress-li-template").html() );
-        this.photo = this.options.photo;
+
+        this.photo = options.photo;
         this.message = null;
         this.photo_id = null;
     },
@@ -18,12 +18,9 @@ return Backbone.View.extend({
         "click .x-cancel-upload": "cancel_upload"
     },
 
-    render: function()
-    {
-        // console.log("li", this)
+    render: function(){
         // check that the progress hasn't already reached 100%
-        if (!this.$el.find(".finishing").length)
-        {
+        if (!this.$el.find(".finishing").length){
             this.$el.addClass("upload-id-" + this.photo.id);
             this.$el.html(
                 this.template({
@@ -61,16 +58,13 @@ return Backbone.View.extend({
         return this;
     },
 
-    cancel_upload: function()
-    {
+    cancel_upload: function(){
         var id = this.photo.id;
         var li_view = this;
         alerts.approve({
             "title": "Cancel this upload?",
-            "yes_callback": function()
-            {
-                if (local_storage.get( "appmode" ))
-                {
+            "yes_callback": function(){
+                if (local_storage.get( "appmode" )){
                     native.pass_data( "snapr://upload?cancel=" + id );
                 }
                 li_view.remove();

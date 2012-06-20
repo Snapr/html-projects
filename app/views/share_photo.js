@@ -10,6 +10,7 @@ return page_view.extend({
     },
 
     post_activate: function(options){
+        this.$('.image-placeholder img').attr('src', '');
         this.change_page();
 
         this.query = options.query;
