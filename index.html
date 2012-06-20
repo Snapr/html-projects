@@ -1624,7 +1624,7 @@
                  </div>
              </div>
              <div data-role="content" data-theme="d" data-ajax="false">
-                 <div class="page-inset-header ui-body-c">
+                 <div class="page-inset-header ui-body-c spots-search-header">
                      <div class="ui-content">
                      <form id="spots-search">
                          <input type="search" id="people-search" value="" placeholder="Venue Name&hellip;" />
@@ -1667,11 +1667,13 @@
                      </form>
                      </div>
                 </div>
-                 <a class="ui-bar top-left-arrow" data-role="button" data-theme="e" data-iconpos="right" data-icon="arrow-r">
+                <div class="spots-results-content">
+                 <a class="spots-results-header ui-bar top-left-arrow" data-role="button" data-theme="e" data-iconpos="right" data-icon="arrow-r">
                     <em>XX results</em>
                     <span class="small-text">show on map</span>
                 </a>
                  <ul class="spots">
+                 
                     <li class="spot-item">
                          
                          <a class="spot" href="#hotspot.html?spot_id=${id}&back=List">
@@ -1690,9 +1692,9 @@
                             </span>
                             
                             <span class="spot-header">
-                                 <span class="icon spot-icon"></span>
-                                 <h2 class="spot-name">Name</h2>
-                                 <p class="spot-subheading">
+                                 
+                                 <h4 class="spot-name">Name <span class="ui-icon spot-icon"></span></h4>
+                                 <p class="spot-subheading small-text">
                                      5k
                                      <!-- {{if location.distance}}<span class="spot-distance">${location.pretty_distance}</span>{{/if}} -->
                                  </p>
@@ -1729,8 +1731,9 @@
                          
                              
                     </li>
+                 
                  </ul>
-
+                 </div>
              </div>
 
 

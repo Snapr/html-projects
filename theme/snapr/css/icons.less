@@ -247,6 +247,28 @@
    }
 }
 
+/* @spot icons*/
+
+/* default */
+.ui-icon.spot-icon{
+    background-position: @si-cd-offset-x @gfx-spot-icon-y;
+    background-image: url('../gfx/spot-icons.png');
+    width: @gfx-spot-icon-sprite-grid;
+    height: @gfx-spot-icon-sprite-grid;
+    }
+/* if parent class is set */
+.great-outdoors .spot-icon{background-position: @si-cd-offset-x @gfx-spot-icon-great-outdoors-y}
+.shops .spot-icon{background-position: @si-cd-offset-x @gfx-spot-icon-shops-y}
+.nightlife-spots .spot-icon{background-position: @si-cd-offset-x @gfx-spot-icon-nightlife-spots-y}
+.food .spot-icon{background-position: @si-cd-offset-x @gfx-spot-icon-food-y}
+.arts-and-entertainment .spot-icon{background-position: @si-cd-offset-x @gfx-spot-icon-arts-and-entertainment-y}
+.all-categories .spot-icon{background-position: @si-cd-offset-x @gfx-spot-icon-all-categories-y}
+
+.beer .spot-icon{background-position: @si-cd-offset-x @gfx-spot-icon-beer-y}
+.cafe .spot-icon{background-position: @si-cd-offset-x @gfx-spot-icon-cafe-y}
+
+
+
 /* Misc Spinner */
 .ui-icon-spinner{
     .spinner();
