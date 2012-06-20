@@ -37,6 +37,8 @@
                 //"views/dash_add_person",
                 //"views/dash_add_search",
                 "views/search",
+                "views/spots",
+                "views/spot",
                 "views/user_profile",
                 "views/people",
                 "views/venues",

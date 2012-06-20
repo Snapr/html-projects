@@ -128,6 +128,10 @@ var routers = Backbone.Router.extend({
         "popular/?*query_string": "popular",
         "search/": "search",
         "search/?*query_string": "search",
+        "spots/": "spots",
+        "spots/?*query_string": "spots",
+        "spot/": "spot",
+        "spot/?*query_string": "spot",
         "user/profile/": "user_profile",
         "user/profile/?*query_string": "user_profile",
         "user/search/": "user_search",
@@ -205,6 +209,9 @@ var routers = Backbone.Router.extend({
     dash_add_search: _make_route("views/dash_add_search", "#dash-add-search"),
 
     search: _make_route("views/search", "#search"),
+
+    spots: _make_route("views/spots", "#spots"),
+    spot: _make_route("views/spot", "#spot"),
 
     user_profile: _make_route("views/user_profile", "#user-profile"),
     user_search: _make_route("views/people", "#people"),

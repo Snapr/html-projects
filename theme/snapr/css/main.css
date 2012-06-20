@@ -5302,7 +5302,7 @@ div.ps-carousel-item-loading {
   display: none;
 }
 /*
-* @connect - DIALOG ?
+* @connect - DIALOG 
 */
 .add-services .shared .ui-icon-arrow-r,
 .add-services .ready .ui-icon-arrow-r {
@@ -5706,6 +5706,57 @@ div.ps-carousel-item-loading {
   border-top: none;
   margin-top: 0!important;
   padding-top: 0!important;
+}
+/*
+* @spots - PAGE
+*/
+.spots-search-filters {
+  padding-left: 44px;
+  margin-top: 8px;
+  position: relative;
+}
+.spots-search-filters .ui-btn {
+  -moz-border-radius: 20px;
+  -webkit-border-radius: 20px;
+  border-radius: 20px;
+}
+.spots-search-filters .category-btn {
+  width: 36px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.spots-search-filters .ui-grid-a .ui-block-a .ui-btn {
+  margin-right: 4px;
+}
+.spots-search-filters .ui-grid-a .ui-block-b .ui-btn {
+  margin-left: 4px;
+}
+.spot {
+  padding-left: 109px;
+  position: relative;
+}
+.spot .spot-photo-crop {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+.spot .spot-photo-crop .no-photo-yet {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 60px;
+  height: 60px;
+  background-color: #EFEFEE;
+  margin: 15px;
+  border-radius: 45px;
+  text-align: center;
+  padding: 15px;
+  color: white;
+  text-shadow: none;
+  font-weight: bold;
+  line-height: 18px;
+  font-size: 14px;
 }
 /*
 * @map - PAGE
