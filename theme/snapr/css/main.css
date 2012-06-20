@@ -5774,6 +5774,9 @@ div.ps-carousel-item-loading {
   position: relative;
   top: -4px;
 }
+.spots-results-header .ui-btn-text {
+  padding-left: 0;
+}
 .spot-item {
   margin-bottom: 4px;
   padding-bottom: 4px;
@@ -6456,5 +6459,12 @@ div.ps-carousel-item-loading {
     -o-background-size: 37px 36px !important;
     -webkit-background-size: 37px 36px !important;
     background-size: 37px 36px !important;
+  }
+  .image-loader-bg {
+    background-image: url('../gfx/retina/image-load.gif');
+    -moz-background-size: 24px 24px;
+    -o-background-size: 24px 24px;
+    -webkit-background-size: 24px 24px;
+    background-size: 24px 24px;
   }
 }
