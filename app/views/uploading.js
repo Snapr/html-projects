@@ -173,6 +173,7 @@ var uploading = page_view.extend({
                     progress_li.message = "Completed!";
                     progress_li.photo.upload_status = "completed";
                     progress_li.post_id = snapr_id;
+                    progress_li.photo.id = snapr_id;
                     progress_li.photo.thumbnail = "https://s3.amazonaws.com/media-server2.snapr.us/thm2/" +
                         photo.get("secret") + "/" +
                         snapr_id + ".jpg";
@@ -187,6 +188,7 @@ var uploading = page_view.extend({
         }else{
             this.pending_uploads[queue_id].message = "Completed!";
             this.pending_uploads[queue_id].photo.upload_status = "completed";
+            this.pending_uploads[queue_id].photo.id = snapr_id;
             this.pending_uploads[queue_id].post_id = snapr_id;
             this.pending_uploads[queue_id].render();
         }
