@@ -16,6 +16,9 @@ var map_view = page_view.extend({
             return true;
         });
 
+        this.map_thumbs = [];
+        this.map_flags = [];
+
         this.thumb_template = _.template($('#thumb-template').html());
 
         this.flag_template = _.template($('#flag-template').html());
@@ -32,9 +35,6 @@ var map_view = page_view.extend({
         query.n = query.photo_id ? 1 : 10;
 
         this.change_page();
-
-        this.map_thumbs = [];
-        this.map_flags = [];
 
         // create a backbone model to store the current map query
         // this lets us bind functions to changes and pass the query to subviews
