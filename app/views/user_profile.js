@@ -7,11 +7,11 @@ return page_view.extend({
         this.template = _.template( $("#user-profile-template").html() );
     },
 
-    post_activate: function(){
+    post_activate: function(options){
 
         this.$el.find( ".user-profile" ).empty();
 
-        this.model = new user_model( {username: this.options.query.username} );
+        this.model = new user_model( {username: options.query.username} );
         this.model.bind( "change", _.bind(this.render, this) );
 
         this.change_page();
