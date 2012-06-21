@@ -2,19 +2,15 @@
 define(['config', 'backbone'], function(config, Backbone){
 return  Backbone.Model.extend({
 
-    initialize: function()
-    {
-        this.data = {linked_services: true}
+    initialize: function(){
+        this.data = {linked_services: true};
     },
 
     //urlRoot: config.get('api_base') + '/linked_services/',
 
-    url: function( method )
-    {
-        if (method)
-        {
-            switch (method)
-            {
+    url: function( method ){
+        if (method){
+            switch (method){
                 case 'create':
                     return config.get('api_base') + '/linked_services/' + this.provider + '/';
                 case 'update':
@@ -24,22 +20,16 @@ return  Backbone.Model.extend({
                 default:
                     return config.get('api_base') + '/user/settings/';
             }
-        }
-        else
-        {
+        }else{
             return config.get('api_base') + '/linked_services/';
         }
     },
 
-    parse: function( d, xhr )
-    {
-        if (d.response && d.response.linked_services[this.provider])
-        {
+    parse: function( d, xhr ){
+        if (d.response && d.response.linked_services[this.provider]){
             return d.response.linked_services[this.provider];
-        }
-        else
-        {
-            return {}
+        }else{
+            return {};
         }
     }
 });
