@@ -226,19 +226,19 @@
 
                 <fieldset data-role="controlgroup">
                     <label for="my-account-name">Your Name</label>
-                    <input type="text" name="my-account-name" id="my-account-name" class="custom"
+                    <input type="text" name="my-account-name" id="my-account-name" class="custom" autocorrect="off"
                     value="<%= settings.profile.name %>" />
                 </fieldset>
 
                 <fieldset data-role="controlgroup">
                     <label for="my-account-location">Location</label>
-                    <input type="text" name="my-account-location" id="my-account-location" class="custom"
+                    <input type="text" name="my-account-location" id="my-account-location" class="custom" autocorrect="off"
                     value="<%= settings.profile.location || "" %>" />
                 </fieldset>
 
                 <fieldset data-role="controlgroup">
                     <label for="my-account-website">Website</label>
-                    <input type="text" name="my-account-website" id="my-account-website" class="custom"
+                    <input type="text" name="my-account-website" id="my-account-website" class="custom" autocapitalize="off" autocorrect="off"
                     value="<%= settings.profile.website || "" %>" />
                 </fieldset>
 
@@ -622,7 +622,7 @@
            </div>
            <div data-role="content" data-theme="c" data-ajax="false">
                <div class="search-header">
-                   <input type="search" id="people-search-twitter" value="" placeholder="@username&hellip;" />
+                   <input type="search" id="people-search-twitter" value="" placeholder="@username&hellip;" autocapitalize="off" autocorrect="off"/>
                </div>
                <ul class="people-list " data-role="listview" data-inset="true" >
                </ul>
@@ -637,7 +637,7 @@
              </div>
              <div data-role="content" data-theme="c" data-ajax="false">
                  <div class="search-header">
-                     <input type="search" id="people-search-facebook"  value="" placeholder="Search Friends&hellip;" />
+                     <input type="search" id="people-search-facebook"  value="" placeholder="Search Friends&hellip;" autocorrect="off"/>
                  </div>
                  <ul class="people-list " data-role="listview" data-inset="true" >
                  </ul>
@@ -1309,7 +1309,7 @@
            </div>
            <div data-role="content" data-theme="c" data-ajax="false">
                <div class="search-header">
-                   <input type="search" id="people-search" value="" placeholder="Username&hellip;" />
+                   <input type="search" id="people-search" value="" placeholder="Username&hellip;" autocapitalize="off" autocorrect="off"/>
                </div>
                <ul class="people-list " data-role="listview" data-inset="true" >
                </ul>
@@ -1555,7 +1555,7 @@
         </div>
         <div data-role="content" data-theme="c">
             <div class="search-header">
-                <input type="search" id="people-search" value="" placeholder="Search&hellip;" />
+                <input type="search" id="people-search" value="" placeholder="Search&hellip;" autocapitalize="off" autocorrect="off"/>
             </div>
             <ul class="people-list" data-role="listview" data-inset="true" data-theme="c" data-split-theme="c" data-corners="false" data-shadow="false">
             </ul>
@@ -1958,7 +1958,7 @@
                         </div>
                         <div class="ui-block-b">
                             <form id="map-keyword" action="javascript:void(0);">
-                                <input type="search" name="map-keyword"  placeholder="#keywords" class="" />
+                                <input type="search" name="map-keyword"  placeholder="#keywords" class="" autocapitalize="off"/>
                             </form>
                             <span class="ui-icon ui-icon-search-a"></span>
 
@@ -2096,7 +2096,7 @@
                 <form action="javascript: void(0);" accept-charset="utf-8" id="join-dialog" autocomplete="off">
                     <ul data-role="listview" data-inset="true" data-theme="d">
                         <li class="ui-hide-label">
-                            <label for="username">Username</label><input type="text" name="username" placeholder="Username" autocapitalize="off" autocomplete="off" id="join-dialog-username">
+                            <label for="username">Username</label><input type="text" name="username" placeholder="Username" autocapitalize="off" autocomplete="off" autocorrect="off" id="join-dialog-username">
                             <span class="ui-icon ui-icon-validation"></span>
                         </li>
                         <li class="ui-hide-label">
