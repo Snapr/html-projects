@@ -39,6 +39,7 @@ alerts.tapped_action.add = function (yes, no) {
     };
     return id;
 };
+window.tapped_action = alerts.tapped_action;
 
 alerts.approve = function (options) {
     var context = this;

@@ -1,12 +1,13 @@
 /*global define */
-define(['config', 'utils/alerts'], function(config, alerts){
+define(['config'], function(config){
     //export
 
     // we can't to this here because geo relises on pass_data - circ.dep.
     // window.set_location = geo.set_location;
     // window.location_error = geo.location_error;
 
-    window.tapped_action = alerts.tapped_action;
+    // we can't to this here because alerts relises on pass_data - circ.dep.
+    // window.tapped_action = alerts.tapped_action;
 
     var native = {};
     native.pass_data = function( url ){
