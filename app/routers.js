@@ -70,9 +70,16 @@ if(hash.length > 1){
 }
 
 var routers = Backbone.Router.extend({
+    initialize: function() {
+        _.each(this.pages, _.bind(function(page){
+            var regex = new RegExp('^' + page + '/(.*?)?$');
+            this.route(regex, page, _make_route("views/"+page, "#"+page));
+        }, this));
+    },
+    pages: [
+        'about'
+    ],
     routes: {
-        "about/": "about",
-        "about/?*query_string": "about",
         "snapr-apps/": "snapr_apps",
         "snapr-apps/?*query_string": "snapr_apps",
         "app/": "app",
@@ -174,7 +181,6 @@ var routers = Backbone.Router.extend({
     uploading: _make_route("views/uploading", "#uploading"),
     share_photo: _make_route("views/share_photo", "#share-photo"),
 
-    about: _make_route("views/about", "#about"),
     snapr_apps: _make_route("views/snapr_apps", "#snapr-apps"),
     app: _make_route("views/app", "#app"),
 
