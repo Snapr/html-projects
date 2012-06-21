@@ -5611,6 +5611,11 @@ div.ps-carousel-item-loading {
   left: 0;
   top: 0;
 }
+.avatar-select-block .user-profile-icon .user-icon-big {
+  -moz-border-radius: 8px;
+  -webkit-border-radius: 8px;
+  border-radius: 8px;
+}
 /* @activity custom stylz */
 .activity-streams {
   /* General Styles */
