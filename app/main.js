@@ -78,6 +78,10 @@ require(['config', 'jquery', 'backbone', 'photoswipe', 'auth', 'utils/local_stor
 
         // jQm triggers showPageLoadingMsg on dom-ready, do not want.
         $(function(){
+            // jQm runs a little experiment on dom ready to decide on this value
+            // but it fails because our homescreen can't scroll, it's too short.
+            // Doing this will probably stop the urlbar hiding in android browsers
+            $.mobile.defaultHomeScroll = 0;
             $.mobile.hidePageLoadingMsg();
             // don't start history until jQm is ready to deal with pageCanges
             // also jQm must have finished it's init otherwise it will load the

@@ -5,14 +5,14 @@ function(Backbone, page_view, upload_progress_li, photo_model, side_scroll, phot
 
 var uploading = page_view.extend({
 
-    post_activate: function(){
+    post_activate: function(options){
 
         this.change_page();
 
         this.current_upload = null;
         this.pending_uploads = {};
 
-        this.query = this.options.query;
+        this.query = options.query;
 
         if (this.query.ll){
             this.latitude = this.query.ll.split(",")[0];
