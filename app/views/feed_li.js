@@ -212,6 +212,7 @@ var feed_li =  Backbone.View.extend({
         var options = {
             success: function( s )
             {
+                $.mobile.hidePageLoadingMsg();
                 if (s.get('success'))
                 {
                     var comment_count = parseInt( feed_li.model.get('comments'), 10 ) + 1;
@@ -226,6 +227,7 @@ var feed_li =  Backbone.View.extend({
             },
             error: function( error )
             {
+                $.mobile.hidePageLoadingMsg();
                 console.log('error', error);
                 feed_li.$('.comment-form .ui-btn').x_loading(false);
             }
@@ -233,6 +235,7 @@ var feed_li =  Backbone.View.extend({
 
         auth.require_login( function()
         {
+            $.mobile.showPageLoadingMsg();
             // the empty object in this save call is important,
             // without it, the options object will not be used
             comment.save( {}, options );
