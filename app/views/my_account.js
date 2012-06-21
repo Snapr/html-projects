@@ -33,6 +33,10 @@ return page_view.extend({
     template: _.template( $('#my-account-template').html() ),
     initial_template: _.template( $('#my-account-initial-template').html() ),
 
+    dialog_closed: function(dialog){
+        this.render();
+    },
+
     render: function(initial){
         var $account_content = this.$el.find('.account-content').empty(),
             template,

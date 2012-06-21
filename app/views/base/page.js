@@ -84,6 +84,8 @@ return Backbone.View.extend({
         $.mobile.changePage( this.$el, options);
     },
 
+    dialog_closed: function( dialog ){ /* called when a dialog is closed and this page is displayed again */ },
+
     back: function(){
         console.debug('back', this.dialog);
         if(this.dialog){
@@ -94,6 +96,7 @@ return Backbone.View.extend({
                     reverse: true
                 });
                 config.set('current_view', this.previous_view);
+                this.previous_view.dialog_closed(this);
             }else{
                 Backbone.history.navigte('#');
             }

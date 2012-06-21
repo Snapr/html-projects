@@ -22,11 +22,11 @@ return page_view.extend({
         this.service = this.options.service;
 
         this.search();
+    },
 
-        if(this.options.query && this.options.query.back_url){
-            var back_url = this.options.query.back_url;
-            this.$('[data-role=header] .ui-btn-right').attr('href', unescape(back_url)).attr('data-ajax', false).removeClass('x-back');
-        }
+    dialog_closed: function(){
+        this.$el.find("ul.people-list").empty();
+        this.search();
     },
 
     transition: 'none',
@@ -36,8 +36,7 @@ return page_view.extend({
         "vclick .ui-input-clear": "search"
     },
 
-    render: function()
-    {
+    render: function(){
         var people_list = this.$el.find("ul.people-list").empty();
         var this_view = this;
 
@@ -57,8 +56,7 @@ return page_view.extend({
         people_list.listview().listview("refresh");
     },
 
-    search: function()
-    {
+    search: function(){
         var username = this.$('input').val(),
             this_view = this,
             data = {
