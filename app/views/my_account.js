@@ -11,6 +11,21 @@ return page_view.extend({
 
         this.user_settings = new user_settings();
 
+        this.render(!!'initial');
+        this.fetch();
+
+    },
+
+    template: _.template( $('#my-account-template').html() ),
+    initial_template: _.template( $('#my-account-initial-template').html() ),
+
+    dialog_closed: function(dialog){
+        this.user_settings.cache_bust();
+        this.fetch();
+    },
+
+    fetch: function(){
+        $.mobile.showPageLoadingMsg();
         var my_account_view = this;
         var options = {
             data: {linked_services: true, user_object: true},
@@ -23,18 +38,8 @@ return page_view.extend({
                 console.log( 'error' , my_account_view );
             }
         };
-
-        my_account_view.render(!!'initial');
-
-        $.mobile.showPageLoadingMsg();
+        this.user_settings.data = {};
         this.user_settings.fetch( options );
-    },
-
-    template: _.template( $('#my-account-template').html() ),
-    initial_template: _.template( $('#my-account-initial-template').html() ),
-
-    dialog_closed: function(dialog){
-        this.render();
     },
 
     render: function(initial){
@@ -87,8 +92,7 @@ return page_view.extend({
         };
 
         var my_account = this;
-        _.each( this.user_settings.get('linked_services'), function( service, index )
-        {
+        _.each( this.user_settings.get('linked_services'), function( service, index ){
             var v = new linked_service({model: service});
             v.my_account = my_account;
 
@@ -99,10 +103,8 @@ return page_view.extend({
         });
 
         // for all services that are not yet linked, add
-        _.each( linked_services_list, function( val, provider )
-        {
-            if (!val)
-            {
+        _.each( linked_services_list, function( val, provider ){
+            if (!val){
                 var v = new linked_service();
                 v.provider = provider;
                 $account_content.find('.add-services').append( v.render().el ).trigger('create');
@@ -113,12 +115,10 @@ return page_view.extend({
 
         var hide_connect_heading = _.filter(linked_services_list, function(val){return !val;}).length ? false: true;
         var hide_linked_heading = _.filter(linked_services_list, function(val){return val;}).length ? false: true;
-        if (hide_connect_heading)
-        {
+        if (hide_connect_heading){
             this.$el.find(".connect-heading").hide();
         }
-        if (hide_linked_heading)
-        {
+        if (hide_linked_heading){
             this.$el.find(".linked-heading").hide();
         }
 
@@ -144,16 +144,15 @@ return page_view.extend({
         window.open( "http://en.gravatar.com/" );
     },
 
-    save_settings: function( param, collapse_container, callback )
-    {
+    save_settings: function( param, collapse_container, callback ){
         // prevent backbone from thinking this is a new user
         this.user_settings.id = true;
+        this.user_settings.set(param);
         var my_account = this;
 
         this.user_settings.save({},{
             data: param,
-            success: function( model, xhr )
-            {
+            success: function( model, xhr ){
                 if (xhr.success){
                     if(collapse_container){
                         $(collapse_container).trigger( "collapse" );
@@ -161,16 +160,13 @@ return page_view.extend({
                     if($.isFunction(callback)){
                         callback( model, xhr );
                     }
-                }
-                else
-                {
+                }else{
                     console.warn( "error saving notifications", xhr );
                     alert( "Sorry, we had trouble saving your settings." );
                     my_account.initialize();
                 }
             },
-            error: function( e )
-            {
+            error: function( e ){
                 console.warn( "error saving notifications", e );
                 alert( "Sorry, we had trouble saving your settings." );
                 my_account.initialize();
@@ -178,37 +174,36 @@ return page_view.extend({
         });
     },
 
-    save_notifications: function( e )
-    {
+    save_notifications: function( e ){
         var $collapse = $(e.currentTarget).closest("[data-role='collapsible']");
         var selects = $collapse.find("select");
 
         var param = {};
 
-        _.each(selects, function(select)
-        {
+        _.each(selects, function(select){
             param[$(select).attr("name")] = ($(select).val() == "true") ? true: false;
         });
 
         this.save_settings( param );
     },
 
-    save_profile: function( e )
-    {
+    save_profile: function( e ){
         var $collapse = $(e.currentTarget).closest("[data-role='collapsible']");
 
-        var param = {};
+        var my_account = this,
+            param = {};
 
         _.each(['name', 'location', 'website', 'bio'], function(item){
             param[item] = $collapse.find("#my-account-"+item).val();
         });
         param.avatar_type = $collapse.find('[name=my-account-avatar]:checked').val();
-
-        this.save_settings( param, $collapse[0], function(){ window.location.reload(); } );
+        this.save_settings( param, $collapse[0], function(){
+            my_account.user_settings.cache_bust();
+            my_account.fetch();
+        });
     },
 
-    save_account: function( e )
-    {
+    save_account: function( e ){
         var $collapse = $(e.currentTarget).closest("[data-role='collapsible']");
 
         var param = {},
@@ -221,32 +216,22 @@ return page_view.extend({
         this.$el.find("#my-account-password").val("");
         this.$el.find("#my-account-password-verify").val("");
 
-        if (!email)
-        {
+        if (!email){
             alerts.notification("No email", "Please provide an email address", $.noop);
             return;
-        }
-        else
-        {
-            if (email != this.user_settings.get("settings") && this.user_settings.get("settings").email)
-            {
+        }else{
+            if (email != this.user_settings.get("settings") && this.user_settings.get("settings").email){
                 param.email = email;
             }
         }
-        if (password)
-        {
-            if (!password_verify)
-            {
+        if (password){
+            if (!password_verify){
                 alerts.notification("No verification password", "Please enter your password again", $.noop);
                 return;
-            }
-            else if (password != password_verify)
-            {
+            }else if (password != password_verify){
                 alerts.notification("Passwords don't match", "Please enter your password again", $.noop);
                 return;
-            }
-            else
-            {
+            }else{
                 param.password = password;
                 callback = function(){
                     alerts.notification('Thanks', ' your password has been saved');
@@ -254,14 +239,12 @@ return page_view.extend({
             }
         }
 
-        if (!_.isEmpty( param ))
-        {
+        if (!_.isEmpty( param )){
             this.save_settings( param, $collapse[0], callback );
         }
     },
 
-    save_camplus: function( e )
-    {
+    save_camplus: function( e ){
         var $collapse = $(e.currentTarget).closest("[data-role='collapsible']");
         var selects = $collapse.find("select");
 
@@ -283,8 +266,7 @@ return page_view.extend({
         }
     },
 
-    queue_settings: function( upload_mode, paused )
-    {
+    queue_settings: function( upload_mode, paused ){
         this.render();
     }
 

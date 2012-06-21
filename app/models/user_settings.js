@@ -6,11 +6,12 @@ var user_settings_cache;
 return  Backbone.Model.extend({
 
     initialize: function(){
-        function cache_bust(){
-            user_settings_cache = false;
-        }
-        this.bind('change', cache_bust);
-        auth.bind('change', cache_bust);
+        this.bind('change', this.cache_bust);
+        auth.bind('change', this.cache_bust);
+    },
+
+    cache_bust: function(a,b){
+        user_settings_cache = false;
     },
 
     urlRoot: function(){
