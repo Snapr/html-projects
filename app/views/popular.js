@@ -22,6 +22,7 @@ return page_view.extend({
 
     post_activate: function(){
         this.collection.reset();
+        this.list_view.$el.empty();
         this.change_page();
         this.update_list();
     },
