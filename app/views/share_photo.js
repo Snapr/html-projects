@@ -50,8 +50,6 @@ return page_view.extend({
     },
 
     render: function(){
-        var description = this.$el.find("#description").val();
-
         var img_url;
         if (this.model.get("secret")){
             img_url = "http://media-server2.snapr.us/lrg/" +
@@ -74,11 +72,6 @@ return page_view.extend({
             edit: (local_storage.get( "aviary" )  == "true" || local_storage.get( "camplus_edit" )  == "true" ),
             camplus: local_storage.get( "camplus" )  == "true"
         }) ).trigger("create");
-
-
-        if (description){
-            this.$el.find("#description").val( description );
-        }
 
         return this;
     },
@@ -124,11 +117,26 @@ return page_view.extend({
             this.query.longitude !== "0.000000"){
             location.latitude = this.query.latitude;
             location.longitude = this.query.longitude;
+            if (this.query.foursquare_venue_id && this.query.foursquare_venue_name){
+                location.foursquare_venue_id = this.query.foursquare_venue_id;
+                location.foursquare_venue_name = unescape(this.query.foursquare_venue_name);
+            }
         }
+
+        var description;
+        if (this.query.description){
+            description = unescape(this.query.description);
+        }
+        else
+        {
+            description = "";
+        }
+
 
         this.model = new photo_model({
             photo_path: path,
-            location: location
+            location: location,
+            description: description
         });
 
         this.model.bind( "change", this.render );
@@ -299,6 +307,7 @@ return page_view.extend({
     },
 
     edit: function(){
+
         var appmode = local_storage.get( "appmode" );
         var aviary = local_storage.get( "aviary" );
 
@@ -312,7 +321,7 @@ return page_view.extend({
         }
 
         if (appmode && img_url){
-            native.pass_data("snapr://aviary/edit/?photo_url=" + img_url);
+            native.pass_data("snapr://aviary/edit/?photo_url=" + img_url + "&" + this.get_photo_edit_params());
 
             setTimeout( function(){
                 Backbone.history.navigate( "#/limbo/" );
@@ -321,7 +330,11 @@ return page_view.extend({
             console.error("clicked on edit but not in appmode or no img_url", img_url );
         }
     },
+
     edit_camplus: function(){
+        this.query.description = escape(this.$("#description").val());
+        window.navigator.hash = "#/photo-edit/?" + $.param( this.query );
+
         var appmode = local_storage.get( "appmode" );
         var camplus = local_storage.get( "camplus" );
 
@@ -336,7 +349,7 @@ return page_view.extend({
 
         if (appmode && img_url){
             if (camplus){
-                native.pass_data( "snapr://camplus/edit/?photo_url=" + img_url );
+                native.pass_data( "snapr://camplus/edit/?photo_url=" + img_url + "&" + this.get_photo_edit_params());
             }
             setTimeout( function(){
                 Backbone.history.navigate( "#/limbo/" );
@@ -344,6 +357,20 @@ return page_view.extend({
         }else{
             console.error("clicked on camplus edit but not in appmode or no img_url", img_url );
         }
+    },
+
+    get_photo_edit_params: function()
+    {
+        var params = {};
+        params.description = escape(this.$el.find("#description").val());
+        var location = this.model.get("location") || {};
+        if (location.foursquare_venue_name && location.foursquare_venue_id)
+        {
+            params.foursquare_venue_name = escape(location.foursquare_venue_name);
+            params.foursquare_venue_id = location.foursquare_venue_id;
+        }
+        return $.param( params )
+
     },
     share: function(){
         $.mobile.showPageLoadingMsg();
