@@ -198,7 +198,7 @@ var routers = Backbone.Router.extend({
     ),
     find_friends_facebook: _make_route(
         "views/find_friends",
-        "#find-friends-twitter",
+        "#find-friends-facebook",
         {service: "facebook"}
     ),
 
