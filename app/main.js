@@ -1,20 +1,7 @@
 /*global _  requirejs require urlError */
 
 require(['config'], function(config){
-    config.set({
-        //environment: 'live',  // defaults to dev
-
-        // client must have xAuth permission from 3rd party
-        tumblr_xauth: true,
-        twitter_xauth: true,
-
-        //app_group: 'group-slug',
-
-        //zoom: 15, // for map
-        //feed_count: 9, // number of images to show in feed views
-        share_redirect: "#/uploading/?"  // set to hash url to redirect after successful upload/share. Defaults to user feed
-    });
-
+    // requiring config initalizes it
     window.config = config;  // export for templates
 });
 
