@@ -115,7 +115,7 @@ var routers = Backbone.Router.extend({
             }else{
                 view = "views/" + name.replace('-', '_').replace('/', '_');
             }
-            var regex = new RegExp('^' + name + '\\/\\?(.*?)?$');
+            var regex = new RegExp('^' + name + '\\/\\??(.*?)?$');
             var element = "#" + name;
             var callback = _make_route(view, element, extra_data);
             this.urls.push({
