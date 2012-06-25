@@ -630,6 +630,35 @@
 .cafe .spot-icon {
   background-position: 0px -168px;
 }
+/* dark icon */
+.ui-icon.dark-spot-icon {
+  background-position: -48px 0px;
+}
+/* if parent class is set */
+.great-outdoors .dark-spot-icon.spot-icon {
+  background-position: -48px -24px;
+}
+.shops .dark-spot-icon.spot-icon {
+  background-position: -48px -48px;
+}
+.nightlife-spots .dark-spot-icon.spot-icon {
+  background-position: -48px -72px;
+}
+.food .dark-spot-icon.spot-icon {
+  background-position: -48px -120px;
+}
+.arts-and-entertainment .dark-spot-icon.spot-icon {
+  background-position: -48px -144px;
+}
+.all-categories .dark-spot-icon.spot-icon {
+  background-position: -48px -192px;
+}
+.beer .dark-spot-icon.spot-icon {
+  background-position: -48px -96px;
+}
+.cafe .dark-spot-icon.spot-icon {
+  background-position: -48px -168px;
+}
 /* Misc Spinner */
 .ui-icon-spinner {
   display: block;
@@ -2844,6 +2873,18 @@ a.ui-link-inherit {
   height: 32px;
   width: 32px;
 }
+.ui-bar h4 .spot-icon,
+.ui-bar .ui-btn-inner .spot-icon,
+.ui-bar .ui-bar-inner .spot-icon {
+  right: auto;
+  display: block;
+  position: absolute;
+  left: -3px;
+  top: -3px;
+  margin: 0;
+  height: 24px;
+  width: 24px;
+}
 .ui-bar h4 .ui-icon-arrow-r,
 .ui-bar .ui-btn-inner .ui-icon-arrow-r,
 .ui-bar .ui-bar-inner .ui-icon-arrow-r {
@@ -3119,6 +3160,12 @@ a.ui-link-inherit {
 }
 .light-text a {
   color: #999999 !important;
+}
+/*
+* Top user Avatar list
+*/
+.top-users .top-user-item {
+  display: inline-block;
 }
 /*
 * Image Views - Custom
@@ -3403,74 +3450,6 @@ a.ui-link-inherit {
 .progress-bar .ui-icon-check {
   background-position: -243px -144px;
 }
-/* Inset list views for white BG content blocks and sneaky login field groups */
-/*.ui-listview-inset {
-    background-color: @color-bg-neutral-light;
-
-    li.ui-li{
-        padding: 8px;
-        margin: 0;
-        border: none;
-        background:none;
-        border-top: @border-medium-on-light;
-
-        &:first-child{
-            border: none;
-        }
-
-        h1,
-        h2,
-        h3,{
-            padding-left: 8px;
-            font-family: @txt-font-special;
-            font-weight: normal;
-            color: @color-txt-dark-on-light;
-        }
-
-        .ui-link-inherit,
-        p{
-            padding-left: 8px;
-        }
-
-        &.ui-li-has-icon{
-            .ui-link-inherit{
-                padding-left: @size-small-avatar;
-            }
-        }
-        input[type="text"],
-        input[type="password"],
-        input[type="email"]{
-            width: 100%;
-            border: none;
-            background: transparent;
-            margin: 0;
-            .border-box();
-            .box-shadow(none);
-        }
-        &.has-select{
-            padding: 0;
-
-            .ui-select{
-                width: 100%;
-                margin: 0;
-                .box-shadow(none);
-                .ui-btn{
-                    .box-shadow(none);
-                    .corner-top(0);
-                    border: none;
-                }
-                .ui-btn-inner{
-                    padding-top: 18px;
-                    padding-bottom: 18px;
-                    padding-left: 16px;
-                }
-            }
-        }
-        .ui-icon-arrow-r {
-            background-position: @gfx-general-icon-sprite-arrow-r-x @g-med-offset-y;
-        }
-    }
-}*/
 .wrap-content h1,
 .wrap-content p,
 .wrap-content a {
@@ -3669,6 +3648,18 @@ strong {
   -webkit-border-radius: 2px;
   border-radius: 2px;
 }
+.user-icon-med {
+  width: 50px;
+  height: 50px;
+  background-color: #efefee;
+  background-size: 100% 100%;
+  background-size: cover;
+  background-position: center;
+  display: block;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+}
 .css-thumb {
   background-color: #efefee;
   background-position: center;
@@ -3781,6 +3772,11 @@ h4 {
   font-size: 16px;
   font-weight: normal;
   color: #333333;
+}
+.small-username {
+  font-size: 11px;
+  font-weight: normal;
+  color: #666666;
 }
 .warning-message {
   padding: 8px;
@@ -5793,14 +5789,19 @@ div.ps-carousel-item-loading {
   min-height: 101px;
 }
 .spot {
-  padding-left: 109px;
+  padding: 0!important;
+  padding-left: 109px !important;
   position: relative;
   display: block;
+  overflow: visible;
 }
 .spot .spot-photo-crop {
   position: absolute;
   left: 0;
   top: 0;
+}
+.spot .spot-photo-crop img {
+  display: block;
 }
 .spot .spot-photo-crop .no-photo-yet {
   position: absolute;
@@ -5819,7 +5820,7 @@ div.ps-carousel-item-loading {
   line-height: 18px;
   font-size: 14px;
 }
-.spot .spot-header .spot-name {
+.spot .spot-heading .spot-name {
   display: inline-block;
   padding-right: 24px;
   position: relative;
@@ -5827,11 +5828,49 @@ div.ps-carousel-item-loading {
   padding-top: 2px;
   margin-top: 4px;
 }
-.spot .spot-header .spot-name .spot-icon {
+.spot .spot-heading .spot-name .spot-icon {
   position: absolute;
   right: 0;
   top: 0;
   margin: 0;
+}
+.top-user-item {
+  width: 50px;
+}
+.top-user-item .small-username {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: center;
+  margin-top: 4px;
+  display: block;
+}
+/*
+* @spot - PAGE
+*/
+.spot-header {
+  margin-left: -8px;
+  margin-right: -8px;
+  position: relative;
+  background-color: #fbfbfb;
+  background-image: url('../gfx/bg-texture-light.gif');
+  padding: 4px;
+  min-height: 101px;
+}
+.spot-header p {
+  padding-top: 4px;
+}
+.spot-header .foursquare-btn {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  margin-top: -12px;
+  width: 70px;
+  height: 24px;
+}
+.spot-header .foursquare-btn .ui-icon-foursquare-logo {
+  background-image: url('../gfx/foursquare-btn.png');
+  height: 24px;
+  width: 70px;
 }
 /*
 * @map - PAGE
@@ -6471,5 +6510,19 @@ div.ps-carousel-item-loading {
     -o-background-size: 24px 24px;
     -webkit-background-size: 24px 24px;
     background-size: 24px 24px;
+  }
+  .ui-icon.spot-icon {
+    background-image: url('../gfx/retina/spot-icons.png');
+    -moz-background-size: 72px 216px;
+    -o-background-size: 72px 216px;
+    -webkit-background-size: 72px 216px;
+    background-size: 72px 216px;
+  }
+  .spot-header .foursquare-btn .ui-icon-foursquare-logo {
+    background-image: url('../gfx/retina/foursquare-btn.png');
+    -moz-background-size: 69px 24px;
+    -o-background-size: 69px 24px;
+    -webkit-background-size: 69px 24px;
+    background-size: 69px 24px;
   }
 }

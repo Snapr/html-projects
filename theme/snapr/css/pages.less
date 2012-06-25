@@ -1611,7 +1611,6 @@
 
     .ui-btn{
         .corner-all(@corner-fully-rounded);
-
     }
 
     .category-btn{
@@ -1620,7 +1619,6 @@
         top: 0;
         left: 0;
     }
-
 
    .ui-grid-a{
         .ui-block-a{
@@ -1657,13 +1655,18 @@
 }
 
 .spot{
-    padding-left: @size-img-thumb + @padding-element-inset;
+    padding: 0!important;
+    padding-left: @size-img-thumb + @padding-element-inset!important;
     position: relative;
     display: block;
+    overflow: visible;
     .spot-photo-crop{
         position:  absolute;
         left: 0;
         top: 0;
+        img{
+            display: block;
+        }
         .no-photo-yet{
             position: absolute;
             left: 0;
@@ -1683,7 +1686,7 @@
         }
     }
 
-    .spot-header{
+    .spot-heading{
        .spot-name{
             display: inline-block;
             padding-right: 24px;
@@ -1701,6 +1704,48 @@
     }
 
 
+}
+
+.top-user-item{
+    width: @size-med-avatar;    
+    .small-username{
+        overflow: hidden;
+        text-overflow: ellipsis;
+        text-align: center;
+        margin-top: 4px;
+        display: block;
+    } 
+}
+
+
+/*
+* @spot - PAGE
+*/
+
+.spot-header{
+    margin-left: -@padding-page-inset;
+    margin-right: -@padding-page-inset;
+    position: relative;
+    background-color: @color-off-white-tint;
+    background-image: @gfx-bg-light-texture;
+    padding: @padding-image-grid-inset;
+    min-height:@size-img-thumb;
+    p{
+        padding-top:@padding-element-inset / 2 ;
+    }
+    .foursquare-btn{
+        position: absolute;
+        right: 0;
+        top: 50%;
+        margin-top: -12px;
+        width: 70px;
+        height: 24px;
+        .ui-icon-foursquare-logo{
+            background-image: url('../gfx/foursquare-btn.png');
+            height: 24px;
+            width: 70px;
+        }
+    }
 }
 
 
