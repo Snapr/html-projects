@@ -23,7 +23,7 @@ return page_view.extend({
     },
 
     log_in: function(){
-        // console.log('get_auth_token')
+        $.mobile.showPageLoadingMsg();
         var username = $("#login-dialog-username").val();
         var password = $("#login-dialog-password").val();
 
@@ -32,12 +32,9 @@ return page_view.extend({
             success: function( response ){
                 $("#login-dialog-username").val('');
                 $("#login-dialog-password").val('');
-                if (login_view.previous_view.welcome_view)
-                {
+                if (login_view.previous_view.welcome_view){
                     Backbone.history.navigate( "#/", true );
-                }
-                else
-                {
+                }else{
                     login_view.back();
                 }
             },
@@ -48,6 +45,7 @@ return page_view.extend({
                 }else{
                     alert( "Sorry, we had trouble logging in. Please try again." );
                 }
+                $.mobile.hidePageLoadingMsg();
             }
         };
         auth.get_token( username, password, options );
