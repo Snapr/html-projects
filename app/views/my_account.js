@@ -144,7 +144,7 @@ return page_view.extend({
         window.open( "http://en.gravatar.com/" );
     },
 
-    save_settings: function( param, collapse_container, callback ){
+    save_settings: function( param, callback ){
         // prevent backbone from thinking this is a new user
         this.user_settings.id = true;
         this.user_settings.set(param);
@@ -154,9 +154,6 @@ return page_view.extend({
             data: param,
             success: function( model, xhr ){
                 if (xhr.success){
-                    if(collapse_container){
-                        $(collapse_container).trigger( "collapse" );
-                    }
                     if($.isFunction(callback)){
                         callback( model, xhr );
                     }
@@ -188,24 +185,22 @@ return page_view.extend({
     },
 
     save_profile: function( e ){
-        var $collapse = $(e.currentTarget).closest("[data-role='collapsible']");
+        var section = $(e.currentTarget).closest("[data-role='collapsible']");
 
         var my_account = this,
             param = {};
 
         _.each(['name', 'location', 'website', 'bio'], function(item){
-            param[item] = $collapse.find("#my-account-"+item).val();
+            param[item] = section.find("#my-account-"+item).val();
         });
-        param.avatar_type = $collapse.find('[name=my-account-avatar]:checked').val();
-        this.save_settings( param, $collapse[0], function(){
+        param.avatar_type = section.find('[name=my-account-avatar]:checked').val();
+        this.save_settings( param, function(){
             my_account.user_settings.cache_bust();
             my_account.fetch();
         });
     },
 
     save_account: function( e ){
-        var $collapse = $(e.currentTarget).closest("[data-role='collapsible']");
-
         var param = {},
             callback;
 
@@ -240,13 +235,12 @@ return page_view.extend({
         }
 
         if (!_.isEmpty( param )){
-            this.save_settings( param, $collapse[0], callback );
+            this.save_settings( param, callback );
         }
     },
 
     save_camplus: function( e ){
-        var $collapse = $(e.currentTarget).closest("[data-role='collapsible']");
-        var selects = $collapse.find("select");
+        var selects = $(e.currentTarget).closest("[data-role='collapsible'] select");
 
         var param = {};
 
@@ -256,8 +250,6 @@ return page_view.extend({
             param[key] = value;
             local_storage.save( key, value );
         });
-
-        $collapse.trigger("collapse");
 
         if (local_storage.get("appmode") == "iphone"){
             native.pass_data( "snapr://camplus/settings/?" + $.param( param ) );
