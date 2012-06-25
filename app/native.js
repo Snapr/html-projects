@@ -11,8 +11,11 @@ define(['config'], function(config){
 
     var native = {};
     native.pass_data = function( url ){
-        window.location = url.replace(/\+/g, '%20');
-        // prompt(url.replace(/\+/g, '%20'));
+        var iframe = document.createElement("IFRAME");
+        iframe.setAttribute("src", url);
+        document.documentElement.appendChild(iframe);
+        iframe.parentNode.removeChild(iframe);
+        iframe = null;
     };
 
     window.upload_progress = function( data, datatype ){

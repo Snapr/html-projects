@@ -1,11 +1,20 @@
 /*global _  define require */
 define(['config', 'views/base/page', 'models/user', 'views/user_header', 'views/feed_header',
-    'collections/photo', 'views/feed_list', 'utils/photoswipe',
-    'views/upload_progress_li', 'auth'],
+    'collections/photo', 'views/feed_list', 'utils/photoswipe', 'views/upload_progress_li', 'auth'],
 function(config, page_view, user_model, user_header, feed_header, photo_collection,
     feed_list, photoswipe, upload_progress_li, auth){
 
 return page_view.extend({
+
+    post_initialize: function(){
+        var feed_view = this;
+        this.$el.on( "pageshow", function(){
+            feed_view.$( ".feed-view-toggle input[type='radio']" ).checkboxradio( "refresh" );
+        });
+        this.$el.on( "pagehide", function(){
+            feed_view.$( ".v-feed-more" ).hide();
+        });
+    },
 
     post_activate: function(options){
         this.options = options;
@@ -45,8 +54,7 @@ return page_view.extend({
         if (list_style == 'grid'){
             this.$el.find(".feed-content").addClass("grid");
             toggle_container.find("#feed-view-grid").attr( "checked", true );
-        }
-        else{
+        }else{
             this.$el.find(".feed-content").removeClass("grid");
             toggle_container.find("#feed-view-list").attr( "checked", true );
         }
@@ -69,15 +77,8 @@ return page_view.extend({
         this.$el.removeClass("showing-upload-queue");
         this.$el.find(".feed-upload-list").empty();
 
-        var feed_view = this;
-
         this.$el.find(".feed-upload-list").empty();
         this.$el.find('#feed-images').empty();
-
-        this.$el.on( "pageshow", function(){
-            toggle_container.find( "input[type='radio']" ).checkboxradio( "refresh" );
-
-        });
 
         this.change_page();
 
@@ -107,8 +108,7 @@ return page_view.extend({
 
     photoswipe_init: function(){ $( "#feed-images a.gallery_link", this.el ).photoswipe_init('feed'); },
 
-    populate_feed: function( additional_data )
-    {
+    populate_feed: function( additional_data ){
 
         var list_style = this.$el.find("#feed-view-grid").is(":checked") && 'grid' || 'list';
 
@@ -118,8 +118,7 @@ return page_view.extend({
 
         var feed_view = this;
         var options = {
-            success: function( collection, response )
-            {
+            success: function( collection, response ){
                 if(collection.length){
                     feed_view.feed_list = new feed_list({
                         el: feed_view.$el.find('#feed-images')[0],
@@ -145,15 +144,13 @@ return page_view.extend({
                     $.mobile.hidePageLoadingMsg();
                 }
             },
-            error:function()
-            {
+            error:function(){
                 console.log('error');
                 $.mobile.hidePageLoadingMsg();
             }
         };
 
-        if (additional_data)
-        {
+        if (additional_data){
             options.add = true;
             this.photo_collection.data = $.extend(this.photo_collection.data, additional_data);
         }
@@ -164,20 +161,15 @@ return page_view.extend({
         this.photo_collection.fetch( options );
     },
 
-    more_button: function( more_photos )
-    {
-        if (more_photos)
-        {
+    more_button: function( more_photos ){
+        if (more_photos){
             this.$el.find(".v-feed-more").html( $("#feed-more-button").html() ).trigger( "create" );
-        }
-        else
-        {
+        }else{
             this.$el.find(".v-feed-more").empty().trigger( "create" );
         }
     },
 
-    more: function()
-    {
+    more: function(){
         var data = this.photo_collection.data;
 
         data.n = config.get('feed_count');
@@ -186,8 +178,7 @@ return page_view.extend({
         this.populate_feed( data );
     },
 
-    feed_view_toggle: function(e)
-    {
+    feed_view_toggle: function(e){
         var input_target = $('#' + e.target.id);
         var list_style = input_target.val();
 
@@ -201,16 +192,13 @@ return page_view.extend({
         this.feed_list.render( this.photoswipe_init );
     },
 
-    upload_progress: function( upload_data )
-    {
-        if (auth.has("snapr_user") && auth.get("snapr_user") == this.query.username)
-        {
+    upload_progress: function( upload_data ){
+        if (auth.has("snapr_user") && auth.get("snapr_user") == this.query.username){
             this.$el.find(".feed-upload-list").empty();
 
             var upload_li_template = _.template( $("#feed-upload-progress-li-template").html() );
 
-            _.each( upload_data.uploads, function( photo )
-            {
+            _.each( upload_data.uploads, function( photo ){
                 this.pending_uploads[photo.id] = new upload_progress_li({
                     template: upload_li_template,
                     photo: photo
@@ -218,8 +206,7 @@ return page_view.extend({
                 this.$el.find(".feed-upload-list").append( this.pending_uploads[photo.id].render().el );
             }, this);
 
-            if (upload_data.uploads)
-            {
+            if (upload_data.uploads){
                 this.$el.addClass("showing-upload-queue");
             }
 
@@ -228,8 +215,7 @@ return page_view.extend({
 
     },
 
-    upload_completed: function( queue_id, snapr_id )
-    {
+    upload_completed: function( queue_id, snapr_id ){
         this.$el.find(".upload-id-" + queue_id).remove();
         // if we are on a feed for the current snapr user
         if (this.options.query.username == auth.get("snapr_user") && !this.options.query.photo_id){
@@ -242,14 +228,10 @@ return page_view.extend({
         }
     },
 
-    upload_count: function( count )
-    {
-        if (count)
-        {
+    upload_count: function( count ){
+        if (count){
             this.$el.addClass("showing-upload-queue");
-        }
-        else
-        {
+        }else{
             this.$el.removeClass("showing-upload-queue");
         }
     }
