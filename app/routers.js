@@ -95,29 +95,47 @@ var routers = Backbone.Router.extend({
         'join-success',
         'my-account',
         'find-friends',
-        ['find-friends-twitter', 'find_friends_list', {service: "twitter"}],
-        ['find-friends-facebook', 'find_friends_list', {service: "facebook"}],
+        {
+            name: 'find-friends-twitter',
+            view: 'find_friends_list',
+            extra: {service: "twitter"}
+        },
+        {
+            name: 'find-friends-facebook',
+            view: 'find_friends_list',
+            extra: {service: "facebook"}
+        },
         'linked-services',
         'tumblr-xauth',
         'twitter-xauth',
         'share',
-        ['user/followers', 'people', {follow: "followers"}],
-        ['user/following', 'people', {follow: "following"}],
+        {
+            name: 'user/followers',
+            view: 'people',
+            element: 'people',
+            extra: {follow: "followers"}
+        },
+        {
+            name: 'user/following',
+            view: 'people',
+            element: 'people',
+            extra: {follow: "following"}
+        },
         'foursquare_venues'
     ],
     initialize: function() {
         _.each(this.pages, _.bind(function(name){
-            var view, extra_data;
-            if($.isArray(name)){
-                view = "views/" + name[1];
-                extra_data = name[2];
-                name = name[0];
-            }else{
-                view = "views/" + name.replace('-', '_').replace('/', '_');
+            var view, extra_data, element;
+            if(_.isObject(name)){
+                view = name.view;
+                extra_data = name.extra;
+                element = name.element;
+                name = name.name;
             }
-            var regex = new RegExp('^' + name + '\\/\\??(.*?)?$');
-            var element = "#" + name;
+            view = "views/" + (view || name.replace('-', '_').replace('/', '_'));
+            element = "#" + (element || name);
             var callback = _make_route(view, element, extra_data);
+            var regex = new RegExp('^' + name + '\\/\\??(.*?)?$');
             this.urls.push({
                 regex:regex,
                 callback: callback
