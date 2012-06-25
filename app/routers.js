@@ -72,6 +72,7 @@ if(hash.length > 1){
 var routers = Backbone.Router.extend({
     pages: [
         'about',
+        'map',
         'app',
         'login',
         'logout',
@@ -131,18 +132,7 @@ var routers = Backbone.Router.extend({
         "*path": "home"
     },
 
-    home: _make_route("views/home", "#home"),
-
-    logout: function( query_string ){
-
-        get_query_params( query_string );
-        auth.logout();
-
-        window.location.hash = "";
-        if (local_storage.get( "appmode" )){
-            native.pass_data('snapr://logout');
-        }
-    }
+    home: _make_route("views/home", "#home")
 
 });
 
