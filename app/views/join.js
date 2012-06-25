@@ -95,6 +95,7 @@ var join_dialog = page_view.extend({
     },
 
     join: function(){
+        $.mobile.showPageLoadingMsg();
         $('.x-join-btn').x_loading();
         var new_user = new user_settings();
         new_user.data = {
