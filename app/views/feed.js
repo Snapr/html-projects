@@ -16,18 +16,25 @@ return page_view.extend({
 
         if (this.query.photo_id){
             this.title = "Back";
+            console.log('This page is "Back" because photo_id exists');
         }else if (this.query.username){
             this.title = this.query.username;
+            console.log('This page is "'+this.query.username+'" because username exists');
         }else if (this.query.keywords){
             this.title = this.feed_parameter;
+            console.log('This page is "'+this.feed_parameter+'" because keywords exists');
         }else if (this.query.area){
             this.title = "Location";
+            console.log('This page is "Locaiton" because area exists');
         }else if (this.query.favorited_by){
             this.title = "Favorites";
+            console.log('This page is "Favorites" because favorited_by exists');
         }else if (this.query.spot && this.query.venue_name){
             this.title = "Spot";
+            console.log('This page is "Spot" because venue_name exists');
         }else{
             this.title = "Feed";
+            console.log('This page is "Feed" because its not anything else');
         }
 
         var list_style = this.query.list_style || 'list';

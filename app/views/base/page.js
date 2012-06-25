@@ -37,21 +37,28 @@ return Backbone.View.extend({
 
     activate: function(options){
         if(options){ this.dialog = options.dialog; }
+        console.log('dialog?', this.dialog);
 
         var back_text;
         if(history.state && history.state.back_text){
             back_text = history.state.back_text;
+            console.log('back_text from history', back_text);
         }else{
             var current_view = config.get('current_view');
             while(current_view && current_view.dialog){
+                console.log("view is a dialog, checking prev one");
                 current_view = current_view.previous_view;
             }
             if(current_view){
                 if(current_view.title){
                     back_text = current_view.title;
+                    console.log('back_text from view title', back_text);
                 }else{
                     back_text = current_view.$el.data('short-title') || current_view.$el.data('title');
+                    console.log('back_text from view data(title)', back_text);
                 }
+            }else{
+                console.log("no view in history that's not a dialog");
             }
         }
         this.set_back_text(back_text);
@@ -63,6 +70,7 @@ return Backbone.View.extend({
     },
 
     set_back_text: function(text){
+        // console.debug('set back text for', this.$el.selector, 'from', this.$("[data-rel='back'] .ui-btn-text").text(), 'to', text);
         if(text){
             this.$("[data-rel='back'] .ui-btn-text").text(text);
             window.history.replaceState({'back_text': text}, 'title', window.location);
