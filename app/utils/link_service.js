@@ -17,19 +17,19 @@ return function(service, next){
                 // without this so this can be removed in future
                 url = config.get('api_base') + "/linked_services/"+ service +
                     "/oauth/?display=touch&access_token=" + auth.get("access_token") +
-                    "&double_encode=true&redirect=" + escape("snapr://redirect?url=" + escape( next ));
+                    "&redirect=" + escape("snapr://redirect?redirect_url=" + escape( next ));
             }else if(local_storage.get("appmode") == 'android'){
                 // android needs a snapr://link?url=
                 url = "snapr://link?url=" + config.get('api_base') +
                     "/linked_services/"+ service + "/oauth/?display=touch&access_token=" +
-                    auth.get("access_token") + "&redirect=snapr://redirect?url=" +
+                    auth.get("access_token") + "&redirect=snapr://redirect?redirect_url=" +
                     escape( next );
             }else{
                 // non-ios builds should be made to handle the redirect param escaped property so
-                // this can be changed to escape("snapr://redirect?url=" + escape( window.location.href ))
+                // this can be changed to escape("snapr://redirect?redirect_url=" + escape( window.location.href ))
                 url = config.get('api_base') + "/linked_services/"+ service + "/oauth/?display=touch&access_token=" +
                     auth.get("access_token") +
-                    "&redirect=snapr://redirect?url=" + escape( next );
+                    "&redirect=snapr://redirect?redirect_url=" + escape( next );
             }
         }else{
             url = config.get('api_base') + "/linked_services/" + service +
