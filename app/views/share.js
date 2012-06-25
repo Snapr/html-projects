@@ -333,7 +333,7 @@ return page_view.extend({
 
     edit_camplus: function(){
         this.query.description = escape(this.$("#description").val());
-        window.navigator.hash = "#/photo-edit/?" + $.param( this.query );
+        window.navigator.hash = "#/share/?" + $.param( this.query );
 
         var appmode = local_storage.get( "appmode" );
         var camplus = local_storage.get( "camplus" );

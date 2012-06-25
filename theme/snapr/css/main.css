@@ -4913,7 +4913,7 @@ div.ps-carousel-item-loading {
 /*
 * @dashboard - PAGE
 */
-#dashboard div[data-role="content"] {
+#dash div[data-role="content"] {
   position: relative;
   padding-bottom: 0;
 }
@@ -4944,7 +4944,7 @@ div.ps-carousel-item-loading {
 .dash-edit-done .ui-btn .ui-icon-check {
   background-position: -243px -144px;
 }
-#dashboard.edit {
+#dash.edit {
   /* Show the btn to exit edit mode */
 
   /* Shuffle the app people buttons to the top */
@@ -4954,13 +4954,13 @@ div.ps-carousel-item-loading {
   /* Tick state for button while in edit mode */
 
 }
-#dashboard.edit .dash-edit-done {
+#dash.edit .dash-edit-done {
   display: block;
 }
-#dashboard.edit .dash-wrapper {
+#dash.edit .dash-wrapper {
   margin-top: 86px;
 }
-#dashboard.edit .dash-footer {
+#dash.edit .dash-footer {
   position: absolute;
   top: 0;
   width: 100%;
@@ -4978,28 +4978,28 @@ div.ps-carousel-item-loading {
   -webkit-border-bottom-right-radius: 0;
   border-bottom-right-radius: 0;
 }
-#dashboard.edit .image-stream {
+#dash.edit .image-stream {
   display: none;
 }
-#dashboard.edit .image-stream.user-stream {
+#dash.edit .image-stream.user-stream {
   display: block;
 }
-#dashboard.edit .ui-header .ui-btn-up-a .ui-btn-inner .ui-icon-settings {
+#dash.edit .ui-header .ui-btn-up-a .ui-btn-inner .ui-icon-settings {
   background-position: 0px -280px;
 }
-#dashboard.edit .ui-header .ui-btn-hover-a .ui-btn-inner .ui-icon-settings {
+#dash.edit .ui-header .ui-btn-hover-a .ui-btn-inner .ui-icon-settings {
   background-position: -40px -280px;
 }
-#dashboard.edit .ui-header .ui-btn-up-b .ui-btn-inner .ui-icon-settings {
+#dash.edit .ui-header .ui-btn-up-b .ui-btn-inner .ui-icon-settings {
   background-position: -80px -280px;
 }
-#dashboard.edit .ui-header .ui-btn-hover-b .ui-btn-inner .ui-icon-settings {
+#dash.edit .ui-header .ui-btn-hover-b .ui-btn-inner .ui-icon-settings {
   background-position: -120px -280px;
 }
-#dashboard.edit .ui-header .ui-btn-up-b .ui-btn-inner .ui-icon-settings {
+#dash.edit .ui-header .ui-btn-up-b .ui-btn-inner .ui-icon-settings {
   background-position: -80px -280px;
 }
-#dashboard.edit .ui-header .ui-btn-hover-b .ui-btn-inner .ui-icon-settings {
+#dash.edit .ui-header .ui-btn-hover-b .ui-btn-inner .ui-icon-settings {
   background-position: -120px -280px;
 }
 #dash-add-person .people-list .follow-btn {
@@ -5340,7 +5340,7 @@ div.ps-carousel-item-loading {
   display: none;
 }
 /*
-* @connect - DIALOG 
+* @connect - DIALOG
 */
 .add-services .shared .ui-icon-arrow-r,
 .add-services .ready .ui-icon-arrow-r {

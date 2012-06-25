@@ -70,98 +70,69 @@ if(hash.length > 1){
 }
 
 var routers = Backbone.Router.extend({
-    initialize: function() {
-        _.each(this.pages, _.bind(function(page){
-            var regex = new RegExp('^' + page + '/(.*?)?$');
-            this.route(regex, page, _make_route("views/"+page, "#"+page));
-        }, this));
-    },
     pages: [
-        'about'
+        'about',
+        'app',
+        'login',
+        'logout',
+        'upload',
+        'uploading',
+        'connect',
+        'cities',
+        'limbo',
+        'feed',
+        'dash',
+        'activity',
+        'popular',
+        'search',
+        'spots',
+        'spot',
+        'welcome',
+        'snapr-apps',
+        'forgot-password',
+        'join',
+        'join-success',
+        'my-account',
+        'find-friends',
+        ['find-friends-twitter', 'find_friends_list', {service: "twitter"}],
+        ['find-friends-facebook', 'find_friends_list', {service: "facebook"}],
+        'linked-services',
+        'tumblr-xauth',
+        'twitter-xauth',
+        'share',
+        ['user/followers', 'people', {follow: "followers"}],
+        ['user/following', 'people', {follow: "following"}],
+        'foursquare_venues'
     ],
+    initialize: function() {
+        _.each(this.pages, _.bind(function(name){
+            var view, extra_data;
+            if($.isArray(name)){
+                view = "views/" + name[1];
+                extra_data = name[2];
+                name = name[0];
+            }else{
+                view = "views/" + name.replace('-', '_').replace('/', '_');
+            }
+            var regex = new RegExp('^' + name + '\/(.*?)?$');
+            var element = "#" + name;
+            var callback = _make_route(view, element, extra_data);
+            this.urls.push({
+                regex:regex,
+                callback: callback
+            });
+            this.route(regex, name, callback);
+        }, this));
+
+    },
+    urls:[],
     routes: {
-        "snapr-apps/": "snapr_apps",
-        "snapr-apps/?*query_string": "snapr_apps",
-        "app/": "app",
-        "app/?*query_string": "app",
-        "login/": "login",
-        "login/?*query_string": "login",
-        "forgot-password/": "forgot_password",
-        "forgot-password/?*query_string": "forgot_password",
-        "logout/": "logout",
-        "join/": "join_snapr",
-        "join/?*query_string": "join_snapr",
-        "join-success/": "join_success",
-        "join-success/?*query_string": "join_success",
-        "upload/": "upload",
-        "upload/?*query_string": "upload",
-        "uploading/": "uploading",
-        "uploading/?*query_string": "uploading",
-        "photo-edit/": "share_photo",
-        "photo-edit/?*query_string": "share_photo",
-        "my-account/": "my_account",
-        "my-account/?*query_string": "my_account",
-        "find-friends/": "find_friends",
-        "find-friends/?*query_string": "find_friends",
-        "find-friends-twitter/": "find_friends_twitter",
-        "find-friends-twitter/?*query_string": "find_friends_twitter",
-        "find-friends-facebook/": "find_friends_facebook",
-        "find-friends-facebook/?*query_string": "find_friends_facebook",
-        "linked-services/": "linked_services",
-        "linked-services/?*query_string": "linked_services",
-        "connect/": "connect",
-        "connect/?*query_string": "connect",
-        "tumblr-xauth/": "tumblr_xauth",
-        "tumblr-xauth/?*query_string": "tumblr_xauth",
-        "twitter-xauth/": "twitter_xauth",
-        "twitter-xauth/?*query_string": "twitter_xauth",
-        "cities/": "cities",
-        "cities/?*query_string": "cities",
-        "limbo/": "limbo",
-        "limbo/?*": "limbo",
-        "feed/": "feed",
-        "feed/?*query_string": "feed",
-        "dash/": "dash",
-        "dash/?*query_string": "dash",
-        // "dash-add-person/": "dash_add_person",
-        // "dash-add-person/?*query_string": "dash_add_person",
-        // "dash-add-search/": "dash_add_search",
-        // "dash-add-search/?*query_string": "dash_add_search",
-        "activity/": "activity",
-        "activity/?*query_string": "activity",
-        "map/": "map",
-        "map/?*query_string": "map",
-        "popular/": "popular",
-        "popular/?*query_string": "popular",
-        "search/": "search",
-        "search/?*query_string": "search",
-        "spots/": "spots",
-        "spots/?*query_string": "spots",
-        "spot/": "spot",
-        "spot/?*query_string": "spot",
-        "user/profile/": "user_profile",
-        "user/profile/?*query_string": "user_profile",
-        "user/search/": "user_search",
-        "user/search/?*query_string": "user_search",
-        "user/followers/": "people_followers",
-        "user/followers/?*query_string": "people_followers",
-        "user/following/": "people_following",
-        "user/following/?*query_string": "people_following",
-        "venue/search/": "venues",
-        "venue/search/?*query_string": "venues",
-        "welcome/": "welcome",
-        "welcome/?*query_string": "welcome",
         "?*query_string": "home",
         "*path": "home"
     },
 
     home: _make_route("views/home", "#home"),
 
-    join_snapr: _make_route("views/join_snapr", "#join-snapr"),
-    join_success: _make_route("views/join_success", "#join-success"),
-    login: _make_route("views/login", "#login"),
-    welcome: _make_route("views/welcome", "#welcome"),
-    forgot_password: _make_route("views/forgot_password", "#forgot-password"),
     logout: function( query_string ){
 
         get_query_params( query_string );
@@ -171,63 +142,7 @@ var routers = Backbone.Router.extend({
         if (local_storage.get( "appmode" )){
             native.pass_data('snapr://logout');
         }
-    },
-
-    feed: _make_route('views/feed', "#feed"),
-
-    activity: _make_route("views/activity", "#activity"),
-
-    upload: _make_route("views/upload", "#upload"),
-    uploading: _make_route("views/uploading", "#uploading"),
-    share_photo: _make_route("views/share_photo", "#share-photo"),
-
-    snapr_apps: _make_route("views/snapr_apps", "#snapr-apps"),
-    app: _make_route("views/app", "#app"),
-
-    cities: _make_route("views/cities", "#cities"),
-
-    popular: _make_route("views/popular", "#popular" ),
-
-    my_account: _make_route("views/my_account", "#my-account"),
-
-    find_friends: _make_route("views/find_friends_list", "#find-friends"),
-    find_friends_twitter: _make_route(
-        "views/find_friends",
-        "#find-friends-twitter",
-        {service: "twitter"}
-    ),
-    find_friends_facebook: _make_route(
-        "views/find_friends",
-        "#find-friends-facebook",
-        {service: "facebook"}
-    ),
-
-    linked_services: _make_route("views/linked_services", "#linked-services"),
-    connect: _make_route("views/connect", "#connect"),
-    tumblr_xauth: _make_route("views/tumblr_xauth", "#tumblr-xauth"),
-    twitter_xauth: _make_route("views/twitter_xauth", "#twitter-xauth"),
-
-
-    map: _make_route("views/map", "#map"),
-
-    dash: _make_route("views/dash", "#dashboard" ),
-    dash_add_person: _make_route("views/dash_add_person", "#dash-add-person"),
-    dash_add_search: _make_route("views/dash_add_search", "#dash-add-search"),
-
-    search: _make_route("views/search", "#search"),
-
-    spots: _make_route("views/spots", "#spots"),
-    spot: _make_route("views/spot", "#spot"),
-
-    user_profile: _make_route("views/user_profile", "#user-profile"),
-    user_search: _make_route("views/people", "#people"),
-
-    people_followers: _make_route("views/people", "#people", {follow: "followers"}),
-    people_following: _make_route("views/people", "#people", {follow: "following"}),
-
-    venues: _make_route("views/venues", "#venues"),
-
-    limbo: _make_route("views/limbo", "#limbo")
+    }
 
 });
 

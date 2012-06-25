@@ -1,11 +1,12 @@
 /*global _  define require */
-define(['routers'], function(routers){
+define(['backbone', 'routers'], function(Backbone, routers){
     return function(fragment, extra_data){
-        return _.any(routers.routers_instance.routes, function(callback, route) {
-            route = routers.routers_instance._routeToRegExp(route);
-            if (route.test(fragment)) {
-                var options = routers.routers_instance._extractParameters(route, fragment)[0];
-                routers.routers_instance[callback](options, 'dialog', extra_data);
+        return _.any(routers.urls, function(url) {
+            console.log('testing', url.regex, fragment);
+            if (url.regex.test(fragment)) {
+                console.log('extract', url.regex, fragment);
+                var options = Backbone.Router.prototype._extractParameters(url.regex, fragment)[0];
+                url.callback(options, 'dialog', extra_data);
                 return true;
             }
         });
