@@ -39,7 +39,7 @@
                 "views/spot",
                 "views/user_profile",
                 "views/people",
-                "views/venues",
+                "views/foursquare_venues",
                 "views/limbo"
             ]
         }

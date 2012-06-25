@@ -1,7 +1,7 @@
 /*global _  define require */
 define(['config', 'backbone', 'views/base/page', 'models/photo', 'models/geo_location', 'collections/foursquare_venue',
-    'views/venues', 'utils/geo', 'auth', 'utils/local_storage', 'utils/alerts', 'native', 'utils/dialog', 'utils/string'],
-function(config, Backbone, page_view, photo_model, geo_location, foursquare_venue_collection, venues_view, geo,
+    'utils/geo', 'auth', 'utils/local_storage', 'utils/alerts', 'native', 'utils/dialog', 'utils/string'],
+function(config, Backbone, page_view, photo_model, geo_location, foursquare_venue_collection, geo,
     auth, local_storage, alerts, native, dialog, string_utils){
 return page_view.extend({
 
@@ -280,7 +280,7 @@ return page_view.extend({
     venue_search: function(){
         var share_view = this;
         var go_to_venues = function( ll, foursquare_venue_id, back_query, model ){
-            dialog('venue/search/?ll='+ll+'&foursquare_venue_id=' + foursquare_venue_id, {model: model});
+            dialog('foursquare_venues/?ll='+ll+'&foursquare_venue_id=' + foursquare_venue_id, {model: model});
         };
 
         var ll;
