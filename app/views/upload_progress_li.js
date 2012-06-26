@@ -50,7 +50,8 @@ return Backbone.View.extend({
                     thumbnail: this.photo.thumbnail,
                     percent_complete: this.photo.percent_complete,
                     message: this.message,
-                    photo_id: this.photo.id
+                    photo_id: this.photo.id,
+                    username: this.photo.username
                 })
             ).trigger( "create" );
         }
