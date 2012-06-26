@@ -128,6 +128,7 @@ return page_view.extend({
 
                     feed_view.feed_list.render( feed_view.photoswipe_init );
                     $.mobile.hidePageLoadingMsg();
+                    feed_view.$( ".v-feed-more" ).show();
                     feed_view.more_button(
                         !feed_view.photo_collection.data.n || (
                             response.response &&
