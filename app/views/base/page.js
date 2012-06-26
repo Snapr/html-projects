@@ -96,7 +96,8 @@ return Backbone.View.extend({
         if(this.transition){
             return this.transition;
         }
-        return this.dialog ? "slideup" : "none";
+        return "none";
+        //return this.dialog ? "slideup" : "none";
     },
     change_page: function( options ){
         options = _.extend({

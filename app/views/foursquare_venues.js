@@ -24,8 +24,6 @@ var venues = page_view.extend({
         this.collection.fetch();
     },
 
-    transition: "slideup",
-
     events: {
         "keyup input": "search",
         "click .ui-input-clear": "search"
