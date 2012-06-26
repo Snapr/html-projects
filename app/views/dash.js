@@ -42,21 +42,17 @@ var dash_view = page_view.extend({
                     detail:0,
                     feed:!!auth.get("access_token")
                 },
-                success: function()
-                {
+                success: function(){
                     dash.render();
                 },
-                error: function()
-                {
+                error: function(){
                     console.error('Error loading dash from server');
                 },
-                complete: function()
-                {
+                complete: function(){
                     $.mobile.hidePageLoadingMsg();
                 }
             };
 
-        $.mobile.loadingMessage = "Loading";
         $.mobile.showPageLoadingMsg();
 
         var success_callback = function( location ){
@@ -75,8 +71,7 @@ var dash_view = page_view.extend({
     render: function(){
         this.$el.find('.dash-welcome').toggle(!auth.has("access_token") || this.collection.length < 3);
         var $streams = this.$el.find('.image-streams').empty();
-        _.each( this.collection.models, function( item )
-        {
+        _.each( this.collection.models, function( item ){
             var li = new dash_stream({
                 collection: item.photos,
                 model: item
@@ -114,13 +109,11 @@ var dash_view = page_view.extend({
         })();
     },
 
-    edit_dash: function()
-    {
+    edit_dash: function(){
         this.$el.toggleClass('edit');
     },
 
-    data_query_link: function( e )
-    {
+    data_query_link: function( e ){
         var query = $(e.currentTarget).data('query');
         var current = $(e.currentTarget).data('current');
         Backbone.history.navigate('#/feed/?' + unescape( query ) + '&photo_id=' + current );
@@ -156,8 +149,7 @@ var dash_stream = side_scroll.extend({
 
     post_initialize: function( options ){
 
-        if (this.model.has("id"))
-        {
+        if (this.model.has("id")){
             this.$el.addClass("user-stream");
             this.$el.attr("data-id", this.model.get("id"));
         }
@@ -167,11 +159,9 @@ var dash_stream = side_scroll.extend({
         var stream = this;
         alerts.approve({
             title: 'Are you sure you want to remove this stream?',
-            yes_callback: function()
-            {
+            yes_callback: function(){
                 stream.model['delete']({
-                    success: function()
-                    {
+                    success: function(){
                         stream.model.collection.remove(stream.model);
                         console.log(stream.model.collection===stream.collection);
                     }
@@ -256,8 +246,7 @@ var add_person = page_view.extend({
 
     },
 
-    search: function(e)
-    {
+    search: function(e){
 
         var keywords = $(e.target).val();
         var this_view = this;
@@ -298,8 +287,7 @@ var add_search = page_view.extend({
 
     post_initialize: function(){
         var dialog = this;
-        this.$el.live( "pageshow", function( e, ui )
-        {
+        this.$el.live( "pageshow", function( e, ui ){
             dialog.$('#dash-search-keywords').focus();
         });
 
@@ -311,8 +299,7 @@ var add_search = page_view.extend({
         this.change_page();
 
         var dialog = this;
-        this.$el.live( "pageshow", function( e, ui )
-        {
+        this.$el.live( "pageshow", function( e, ui ){
             dialog.$('#dash-search-keywords').focus();
         });
 
@@ -339,13 +326,11 @@ var add_search = page_view.extend({
             }
         };
 
-        if (nearby)
-        {
+        if (nearby){
             var add_search = this;
             stream_object.query.radius = nearby;
 
-            var success_callback = function( position )
-            {
+            var success_callback = function( position ){
                 stream_object.query.latitude = position.coords.latitude;
                 stream_object.query.longitude = position.coords.longitude;
 
@@ -358,18 +343,14 @@ var add_search = page_view.extend({
                 add_search.previous_view.$el.removeClass('edit');
                 add_search.back();
             };
-            var error_callback = function( error )
-            {
+            var error_callback = function( error ){
                 console.warn( "error getting geolocation", error );
-                if (error.message)
-                {
+                if (error.message){
                     alerts.notification( error.message );
                 }
             };
             geo.get_location( success_callback, error_callback );
-        }
-        else
-        {
+        }else{
             var stream = new dash_stream_model( stream_object );
             $.mobile.showPageLoadingMsg();
             stream.save({}, {success: function(){
