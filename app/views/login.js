@@ -1,5 +1,5 @@
 /*global _  define require */
-define(['backbone', 'views/base/page', 'auth'], function(Backbone, page_view, auth){
+define(['backbone', 'views/base/page', 'auth', 'utils/alerts'], function(Backbone, page_view, auth, alerts){
 return page_view.extend({
 
     post_activate: function(){
@@ -23,9 +23,14 @@ return page_view.extend({
     },
 
     log_in: function(){
-        $.mobile.showPageLoadingMsg();
         var username = $("#login-dialog-username").val();
         var password = $("#login-dialog-password").val();
+
+        if(username === "" || password === ""){
+            alerts.notification('Error', 'You must enter your usename and password');
+            return;
+        }
+        $.mobile.showPageLoadingMsg();
 
         var login_view = this;
         var options = {
