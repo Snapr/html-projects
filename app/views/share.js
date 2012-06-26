@@ -14,6 +14,9 @@ return page_view.extend({
         this.change_page();
 
         this.query = options.query;
+        if(this.query.latitude === "0.000000"){ delete this.query.latitude; }
+        if(this.query.longitude === "0.000000"){ delete this.query.longitude; }
+
 
         if (this.query.redirect_url){
             this.redirect_url = this.query.redirect_url;
@@ -112,9 +115,7 @@ return page_view.extend({
 
         var location = {};
         if (this.query.latitude &&
-            this.query.longitude &&
-            this.query.latitude !== "0.000000" &&
-            this.query.longitude !== "0.000000"){
+            this.query.longitude){
             location.latitude = this.query.latitude;
             location.longitude = this.query.longitude;
             if (this.query.foursquare_venue_id && this.query.foursquare_venue_name){
