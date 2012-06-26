@@ -9,7 +9,7 @@ geo.get_location = function ( success, error ){
     if (local_storage.get( "appmode" )){
         // TODO: what is there is no response!? need timeout function.
         geo.location_callbacks.push( success );
-        geo.location_callbacks.push( error );
+        geo.location_error_callbacks.push( error );
         if (window.override && window.override( "snapr://get_location" )){
             //do nothing
         }else{
