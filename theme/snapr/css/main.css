@@ -6445,10 +6445,10 @@ body.browser-testing .ps-caption-bottom {
   }
   .loading .map-filters .ui-input-search .ui-input-clear .ui-icon-delete {
     background-image: url('../gfx/retina/extra-icons.png') !important;
-    -moz-background-size: 32px 800px !important;
-    -o-background-size: 32px 800px !important;
-    -webkit-background-size: 32px 800px !important;
-    background-size: 32px 800px !important;
+    -moz-background-size: 32px 864px !important;
+    -o-background-size: 32px 864px !important;
+    -webkit-background-size: 32px 864px !important;
+    background-size: 32px 864px !important;
   }
   .ps-toolbar .ps-toolbar-close .ps-toolbar-content {
     background-image: url('../gfx/retina/general-jquerymob-icons.png');
