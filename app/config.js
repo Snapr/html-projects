@@ -15,7 +15,7 @@ var config_model = Backbone.Model.extend({
         //feed_count: 9, // number of images to show in feed views
         // side_scroll_initial: 6, // numbers of images to show in side-scrollers initially
         // side_scroll_more: 10, // number of extra images to load into side-scrollers when "load more" is activated
-        share_redirect: "#/uploading/?"  // set to hash url to redirect after successful upload/share. Defaults to user feed
+        // share_redirect: "#/uploading/?"  // set to hash url to redirect after successful upload/share.
     },
     environments: {
         'dev': {
@@ -70,7 +70,7 @@ var config_model = Backbone.Model.extend({
         feed_count: 9,
         side_scroll_initial: 6,
         side_scroll_more: 10,
-        share_redirect: "#/feed/"
+        share_redirect: "#/uploading/?"
     },
     initialize: function(){
         var update_env = _.bind(function(){
@@ -80,7 +80,7 @@ var config_model = Backbone.Model.extend({
             this.set('access_token_url', this.get('base_url') + "/ext/oauth/access_token/");
         }, this);
         this.bind('change:environment', update_env);
-        this.set(_.extend(this.config, this.defaults));
+        this.set(_.extend(this.defaults, this.config));
         update_env();
     }
 });
