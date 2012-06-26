@@ -24,8 +24,6 @@ return page_view.extend({
             user: this.model
         }) );
         this.$el.trigger( "create" );
-    },
-
-    transition: "slideup"
+    }
 });
 });

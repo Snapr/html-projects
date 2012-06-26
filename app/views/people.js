@@ -145,9 +145,7 @@ return page_view.extend({
         }else{
             this_view.collection.reset();
         }
-    },
-
-    transition: "slideup"
+    }
 });
 
 });

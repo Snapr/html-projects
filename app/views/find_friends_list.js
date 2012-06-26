@@ -29,8 +29,6 @@ return page_view.extend({
         this.search();
     },
 
-    transition: 'none',
-
     events: {
         "keyup input": "search",
         "vclick .ui-input-clear": "search"

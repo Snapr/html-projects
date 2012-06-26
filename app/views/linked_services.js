@@ -5,9 +5,7 @@ return page_view.extend({
 
     post_activate: function(){
 
-        this.change_page({
-            transition: "slideup"
-        });
+        this.change_page();
 
         if(this.options.query.to_link){
             this.to_link = this.options.query.to_link.split(",");
