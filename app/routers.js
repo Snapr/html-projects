@@ -121,6 +121,15 @@ var routers = Backbone.Router.extend({
             element: 'people',
             extra: {follow: "following"}
         },
+        {
+            name: 'user/search',
+            view: 'people',
+            element: 'people'
+        },
+        {
+            name: 'user/profile',
+            element: 'user-profile'
+        },
         'foursquare_venues'
     ],
     initialize: function() {

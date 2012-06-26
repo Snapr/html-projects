@@ -1,5 +1,5 @@
 /*global _  define require */
-define(['backbone', 'views/base/page'], function(Backbone, page_view){
+define(['backbone', 'views/base/page', 'utils/dialog'], function(Backbone, page_view, dialog){
 return page_view.extend({
 
     post_activate: function(){
@@ -64,11 +64,7 @@ return page_view.extend({
                 }
                 break;
             case 'user':
-                if (window.location.hash == "#/user/search/?username=" + keywords ){
-                    this.back();
-                }else{
-                    Backbone.history.navigate( "#/user/search/?username=" + keywords );
-                }
+                dialog('user/search/?username='+keywords);
                 break;
         }
     }
