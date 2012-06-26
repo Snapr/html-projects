@@ -1,5 +1,5 @@
 /*global _  define require */
-define(['config', 'backbone', 'utils/link_service', 'auth'], function(config, Backbone, link_service, auth){
+define(['config', 'backbone', 'utils/link_service', 'auth', 'utils/alerts'], function(config, Backbone, link_service, auth, alerts){
 return Backbone.View.extend({
 
     tagName: 'li',
@@ -70,7 +70,7 @@ return Backbone.View.extend({
                 parent.fetch();
             },
             error: function(){
-                alert('Sorry, we had trouble unlinking your account');
+                alerts.notification('Error', 'Sorry, we had trouble unlinking your account');
             }
         };
 
@@ -85,13 +85,13 @@ return Backbone.View.extend({
         var options = {
             success: function(model, response){
                 if(!response.success){
-                    alert( "Sorry, we had trouble saving your settings." );
+                    alerts.notification('Error', "Sorry, we had trouble saving your settings." );
                     linked_service.my_account.initialize();
                 }
                 //linked_service.$el.find("[data-role='collapsible']").trigger('collapse');
             },
             error: function(){
-                alert( "Sorry, we had trouble saving your settings." );
+                alerts.notification('Error', "Sorry, we had trouble saving your settings." );
                 linked_service.my_account.initialize();
             }
         };
@@ -121,7 +121,7 @@ return Backbone.View.extend({
             },
             dataType: 'jsonp',
             success: function(response){
-                alert( "Profile imported.");
+                alerts.notification('Success', "Profile imported.");
             },
             error: function(e){
                 console.error( 'import profile error', e );

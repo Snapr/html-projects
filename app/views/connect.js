@@ -1,6 +1,6 @@
 /*global _  define require */
-define(['backbone', 'views/base/page', 'views/linked_service', 'models/post', 'models/photo', 'utils/query'],
-    function(Backbone, page_view, linked_service, post_model, photo_model, Query){
+define(['backbone', 'views/base/page', 'views/linked_service', 'models/post', 'models/photo', 'utils/query', 'utils/alerts'],
+    function(Backbone, page_view, linked_service, post_model, photo_model, Query, alerts){
 var connect_page = page_view.extend({
 
     post_activate: function(options){
@@ -38,7 +38,7 @@ var connect_page = page_view.extend({
                 // no service username = something went wrong
                 }else{
                     status = 'error';
-                    alert( this.query.get('error', 'Unknown Error Linking') );
+                    alerts.notification('Error Linking', this.query.get('error', 'Unknown Error') );
                 }
             }else if(_.contains(this.shared, provider)){
                 status = 'shared';

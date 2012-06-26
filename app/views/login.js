@@ -46,9 +46,9 @@ return page_view.extend({
             error: function( error ){
                 console.warn("error", error);
                 if (error && error.error && error.error == "invalid_grant"){
-                    alert( "Oops.. Your login or password was incorrect." );
+                    alerts.notification('Error',  "Oops.. Your login or password was incorrect." );
                 }else{
-                    alert( "Sorry, we had trouble logging in. Please try again." );
+                    alerts.notification('Error',  "Sorry, we had trouble logging in. Please try again." );
                 }
                 $.mobile.hidePageLoadingMsg();
             }

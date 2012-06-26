@@ -1,6 +1,6 @@
 /*global _  define require google */
-define(['config', 'backbone', 'views/base/page', 'collections/thumb', 'mobiscroll', 'utils/geo', 'utils/map', 'auth', 'utils/local_storage', 'utils/string'],
-function(config, Backbone, page_view, thumb_collection, mobiscroll, geo, map, auth, local_storage, string_utils){
+define(['config', 'backbone', 'views/base/page', 'collections/thumb', 'mobiscroll', 'utils/geo', 'utils/map', 'auth', 'utils/local_storage', 'utils/string', 'utils/alerts'],
+function(config, Backbone, page_view, thumb_collection, mobiscroll, geo, map, auth, local_storage, string_utils, alerts){
 
 var map_view = page_view.extend({
 
@@ -276,7 +276,7 @@ var map_view = page_view.extend({
         var error_callback = function( error ){
             console.warn( "error getting geolocation", error );
             if (error.message){
-                alert( error.message );
+                alerts.notification('Error', error.message );
             }
         };
         if (this.map){

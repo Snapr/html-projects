@@ -159,13 +159,13 @@ return page_view.extend({
                     }
                 }else{
                     console.warn( "error saving notifications", xhr );
-                    alert( "Sorry, we had trouble saving your settings." );
+                    alerts.notification('Error',  "Sorry, we had trouble saving your settings." );
                     my_account.initialize();
                 }
             },
             error: function( e ){
                 console.warn( "error saving notifications", e );
-                alert( "Sorry, we had trouble saving your settings." );
+                alerts.notification('Error',  "Sorry, we had trouble saving your settings." );
                 my_account.initialize();
             }
         });
