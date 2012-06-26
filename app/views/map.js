@@ -11,10 +11,6 @@ var map_view = page_view.extend({
             // hack to set google map height
             $("#google-map").css("height", (window.innerHeight - 85) + "px");
         });
-        this.$el.on('pagehide', function (e) {
-            google.maps.event.clearListeners( map_view.map, "idle" );
-            return true;
-        });
 
         this.map_thumbs = [];
         this.map_flags = [];
@@ -26,6 +22,8 @@ var map_view = page_view.extend({
         this.location_template = _.template($('#location-template').html());
 
     },
+
+    history_ignore_params: ['zoom', 'lat', 'lng', 'photo_id'],
 
     post_activate: function(options){
         this.thumb_collection = new thumb_collection();

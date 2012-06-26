@@ -17,7 +17,7 @@ Page{
     }
 }
 */
-define(['config', 'backbone'], function(config, Backbone){
+define(['config', 'backbone', 'utils/history_state'], function(config, Backbone, history_state){
 
 return Backbone.View.extend({
 
@@ -35,14 +35,28 @@ return Backbone.View.extend({
 
     post_initialize: function(){},
 
+    history_ignore_params: false,  // array of url params to ignore when navigating to a view via history
+
     activate: function(options){
+
+        if(this.history_ignore_params){
+            // if we've been here before, ignore some params from the url,
+            // they will reset page to original state not last state
+            var ignore_params = history_state.get('ignore_params') || [];
+            _.each(ignore_params, function(param){
+                delete options.query[param];
+            });
+            history_state.set('ignore_params', this.history_ignore_params);
+        }
+
+
         if(options){ this.dialog = options.dialog; }
         console.log('dialog?', this.dialog);
 
         var back_text;
-        if(history.state && history.state.back_text){
-            back_text = history.state.back_text;
-            console.log('back_text from history', back_text);
+        if(history_state.get('back_text')){
+            back_text = history_state.get('back_text');
+            console.log('back_text from history:', back_text);
         }else{
             var current_view = config.get('current_view');
             while(current_view && current_view.dialog){
@@ -52,10 +66,10 @@ return Backbone.View.extend({
             if(current_view){
                 if(current_view.title){
                     back_text = current_view.title;
-                    console.log('back_text from view title', back_text);
+                    console.log('back_text from view title:', back_text);
                 }else{
                     back_text = current_view.$el.data('short-title') || current_view.$el.data('title');
-                    console.log('back_text from view data(title)', back_text);
+                    console.log('back_text from view data(title):', back_text);
                 }
             }else{
                 console.log("no view in history that's not a dialog");
@@ -73,7 +87,7 @@ return Backbone.View.extend({
         // console.debug('set back text for', this.$el.selector, 'from', this.$("[data-rel='back'] .ui-btn-text").text(), 'to', text);
         if(text){
             this.$("[data-rel='back'] .ui-btn-text").text(text);
-            window.history.replaceState({'back_text': text}, 'title', window.location);
+            history_state.set('back_text', text);
         }
         return this;
     },
