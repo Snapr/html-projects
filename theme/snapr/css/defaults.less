@@ -1,5 +1,5 @@
 /*
-* Browser Defaults
+* Browser Defaults, Mobile Browser Hacks, Basic Styles
 */
 
 html {
@@ -41,6 +41,19 @@ a{
     text-decoration: none;
 }
 
+h1,h2,h3,h4,h5,
+p,ul,li,hr,textarea,input, .ui-select{
+    font-weight: normal;
+    margin: 0;
+    margin-bottom: @padding-page-inset;
+}
+
+ul,
+ul li{
+    list-style: none;
+    padding: 0;
+}
+
 hr{
     display: block;
     position: relative;
@@ -58,54 +71,119 @@ hr{
     color: @color-shadow-medium-on-light;
 }
 
-
-/*
-* Workspace hacks for browser testing
-*/
-
-body.browser-testing{
-    width: 320px!important;
-    margin: 0 auto 0 0!important;
-    /* this was 20px but some things are set to window height, meaning they were going 20px off the bottom
-    margin: 20px auto 0 20px!important; */
-    display: block;
-    position: relative;
-    height: 100%!important;
-
-    /* so loader relates to container rather than being fixed */
-    .ui-loader{
-        position: absolute;
-    }
-    /* hack for photoswipe plugin */
-    .ps-caption,
-    .ps-toolbar,
-    .ps-uilayer,
-    .ps-carousel,
-    .ps-document-overlay{
-        width: 320px!important;
-    }
-    .ps-carousel,
-    .ps-uilayer{
-        height: 480px!important;
-    }
-    .ps-caption-bottom{
-        top: 435px!important;
-    }
-}
-
-
-h1,h2,h3,h4,h5,
-p,ul,li,hr,textarea,input, .ui-select{
+strong{
     font-weight: normal;
-    margin: 0;
-    margin-bottom: @padding-page-inset;
+    font-size: @txt-size-username;
+    font-family: @txt-font-special;
 }
 
-ul,
-ul li{
-    list-style: none;
-    padding: 0;
+.underline{
+    text-decoration: underline;
 }
+
+.small-text{
+    font-size: @txt-size-small;
+    font-family: @txt-font-base;
+    
+}
+
+.light-text{
+    color: @color-txt-light-on-light;
+    a{
+        color: @color-txt-light-on-light!important;
+    }
+}
+
+
+/* Icons and thumbs */
+.user-icon-small,
+.thumb-small{
+    width: @size-small-avatar;
+    height: @size-small-avatar;
+    background-color: @color-icon-bg;
+    background-size: 100% 100%;
+    background-size: cover;
+    background-position: center;
+    .corner-all(2px);
+}
+
+.user-icon-med{
+    width: @size-med-avatar;
+    height: @size-med-avatar;
+    background-color: @color-icon-bg;
+    background-size: 100% 100%;
+    background-size: cover;
+    background-position: center;
+    display: block;
+    .corner-all(4px);
+}
+
+.css-thumb{
+    background-color: @color-icon-bg;
+    background-position: center;
+    background-size: 100% 100%;
+    background-size: cover;
+}
+
+.user-icon-big{
+    width: @size-large-avatar;
+    height: @size-large-avatar;
+    background-color: @color-icon-bg;
+    background-size: 100% 100%;
+    background-size: cover;
+}
+
+.thumb-med{
+    width: @size-img-thumb;
+    height: @size-img-thumb;
+}
+
+/* Usernames etc */
+.username,
+h4{
+    font-family: @txt-font-special;
+    font-size: @txt-size-username;
+    font-weight: normal;
+    color: @color-txt-dark-on-light;
+}
+
+.small-username{
+    font-size: 11px;
+    font-weight: normal;
+    color: @color-txt-medium-on-light;
+}
+
+.warning-message{
+    padding: @padding-page-inset;
+    background-color: @color-bg-highlight-main;
+    .corner-all(@corner-general-rounded);
+    border-bottom: @border-light-on-dark;
+}
+
+
+.centered-link{
+    text-align: center;
+    margin-top: 60px;
+    font-family: @txt-font-special;
+}
+
+.block-link{
+    line-height: 36px;
+}
+
+
+
+
+
+/* margins on bottom element not having proper effect */
+.margin-clear{
+    margin-bottom: -1px;
+    padding-bottom: 1px;
+}
+
+
+
+
 
 
 

@@ -170,6 +170,16 @@ fieldset.ui-controlgroup{
     }
 }
 
+/* Some extra paddy things */
+.ui-content{
+    .inset-page-content{
+        padding: 0 @padding-page-inset;
+        .ui-listview-inset{
+            margin-bottom:  @padding-page-inset * 2 ;
+        }
+    }
+}
+
 /* Less CSS rework of jQuery Mobile Theme */
 
 /* links within "buttons" 
@@ -325,7 +335,7 @@ a.ui-link-inherit {
 	outline-style: dotted;
 }
 
-/* Make up for things were killing corners doesn't yet work 
+/* Make up for things where killing corners doesn't yet work 
 -----------------------------------------------------------------------------------------------------------*/
 
 *[data-shadow="false"] {

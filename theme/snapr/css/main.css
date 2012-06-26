@@ -41,15 +41,6 @@
 /* things where you really are serious about them not being rounded despite jQuery mobs thoughts otherwise*/
 /* Global layout sizes */
 /* Global item sizes */
-/*
-* jQuery Mobile Theme Swatches
-*   -Based on Less Css jQuery Mobile Framework by Prinzhorn
-*   -Only customize these values after setting your globals above
-*   -Customization of theme swatches may not be necc
-*/
-/*
-* Global - stuffs from prinzhorn
-*/
 /* Some Handy Functions */
 /* keep the corners 45 degrees otherwise they look crap
    apply these to elements using the ::after psuedo class..
@@ -672,9 +663,9 @@
   -webkit-animation-iteration-count: infinite;
   -webkit-animation-timing-function: linear;
 }
-/* Browser Defaults and Mobile Specific Hacks */
+/* Browser Defaults, Mobile Specific Hacks, & Basic Styles */
 /*
-* Browser Defaults
+* Browser Defaults, Mobile Browser Hacks, Basic Styles
 */
 html {
   -webkit-user-select: none;
@@ -709,56 +700,6 @@ body {
 a {
   text-decoration: none;
 }
-hr {
-  display: block;
-  position: relative;
-  padding: 0;
-  width: 100%;
-  height: 0;
-  clear: both;
-  border: none;
-  border-bottom: solid 1px rgba(255, 255, 255, 0.4);
-  border-top: solid 1px #000000;
-  font-size: 1px;
-  line-height: 0;
-  overflow: visible;
-  background-color: transparent;
-  color: rgba(200, 200, 200, 0.3);
-}
-/*
-* Workspace hacks for browser testing
-*/
-body.browser-testing {
-  width: 320px!important;
-  margin: 0 auto 0 0!important;
-  /* this was 20px but some things are set to window height, meaning they were going 20px off the bottom
-    margin: 20px auto 0 20px!important; */
-
-  display: block;
-  position: relative;
-  height: 100%!important;
-  /* so loader relates to container rather than being fixed */
-
-  /* hack for photoswipe plugin */
-
-}
-body.browser-testing .ui-loader {
-  position: absolute;
-}
-body.browser-testing .ps-caption,
-body.browser-testing .ps-toolbar,
-body.browser-testing .ps-uilayer,
-body.browser-testing .ps-carousel,
-body.browser-testing .ps-document-overlay {
-  width: 320px!important;
-}
-body.browser-testing .ps-carousel,
-body.browser-testing .ps-uilayer {
-  height: 480px!important;
-}
-body.browser-testing .ps-caption-bottom {
-  top: 435px!important;
-}
 h1,
 h2,
 h3,
@@ -779,6 +720,116 @@ ul,
 ul li {
   list-style: none;
   padding: 0;
+}
+hr {
+  display: block;
+  position: relative;
+  padding: 0;
+  width: 100%;
+  height: 0;
+  clear: both;
+  border: none;
+  border-bottom: solid 1px rgba(255, 255, 255, 0.4);
+  border-top: solid 1px #000000;
+  font-size: 1px;
+  line-height: 0;
+  overflow: visible;
+  background-color: transparent;
+  color: rgba(200, 200, 200, 0.3);
+}
+strong {
+  font-weight: normal;
+  font-size: 16px;
+  font-family: 'MuseoSansRounded700', Helvetica, Arial, sans-serif;
+}
+.underline {
+  text-decoration: underline;
+}
+.small-text {
+  font-size: 12px;
+  font-family: Helvetica, Arial, sans-serif;
+}
+.light-text {
+  color: #999999;
+}
+.light-text a {
+  color: #999999 !important;
+}
+/* Icons and thumbs */
+.user-icon-small,
+.thumb-small {
+  width: 34px;
+  height: 34px;
+  background-color: #efefee;
+  background-size: 100% 100%;
+  background-size: cover;
+  background-position: center;
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+}
+.user-icon-med {
+  width: 50px;
+  height: 50px;
+  background-color: #efefee;
+  background-size: 100% 100%;
+  background-size: cover;
+  background-position: center;
+  display: block;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+}
+.css-thumb {
+  background-color: #efefee;
+  background-position: center;
+  background-size: 100% 100%;
+  background-size: cover;
+}
+.user-icon-big {
+  width: 100px;
+  height: 100px;
+  background-color: #efefee;
+  background-size: 100% 100%;
+  background-size: cover;
+}
+.thumb-med {
+  width: 101px;
+  height: 101px;
+}
+/* Usernames etc */
+.username,
+h4 {
+  font-family: 'MuseoSansRounded700', Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  font-weight: normal;
+  color: #333333;
+}
+.small-username {
+  font-size: 11px;
+  font-weight: normal;
+  color: #666666;
+}
+.warning-message {
+  padding: 8px;
+  background-color: #ffff00;
+  -moz-border-radius: 6px;
+  -webkit-border-radius: 6px;
+  border-radius: 6px;
+  border-bottom: solid 1px rgba(255, 255, 255, 0.4);
+}
+.centered-link {
+  text-align: center;
+  margin-top: 60px;
+  font-family: 'MuseoSansRounded700', Helvetica, Arial, sans-serif;
+}
+.block-link {
+  line-height: 36px;
+}
+/* margins on bottom element not having proper effect */
+.margin-clear {
+  margin-bottom: -1px;
+  padding-bottom: 1px;
 }
 /* Jquery Mobile Themes Converted to less.css */
 /*
@@ -939,6 +990,13 @@ fieldset.ui-controlgroup {
 }
 .ui-collapsible-set li {
   list-style: none;
+}
+/* Some extra paddy things */
+.ui-content .inset-page-content {
+  padding: 0 8px;
+}
+.ui-content .inset-page-content .ui-listview-inset {
+  margin-bottom: 16px;
 }
 /* Less CSS rework of jQuery Mobile Theme */
 /* links within "buttons" 
@@ -1165,7 +1223,7 @@ a.ui-link-inherit {
   outline-width: 1px;
   outline-style: dotted;
 }
-/* Make up for things were killing corners doesn't yet work 
+/* Make up for things where killing corners doesn't yet work 
 -----------------------------------------------------------------------------------------------------------*/
 *[data-shadow="false"] {
   -moz-box-shadow: none !important;
@@ -1205,7 +1263,7 @@ a.ui-link-inherit {
   border-radius: 0px !important;
 }
 /*******************************************************************
-* @theme - SWATCHES
+* @theme - SWATCHES - less css version of jQuery Mobile swatches
 *******************************************************************/
 /*
 * A
@@ -2778,48 +2836,6 @@ a.ui-link-inherit {
 /*
 * Elements - Non-Jquery Mobile Design Patterns that are shared across multiple pages
 */
-/* change the icon to a spinner if a button is loading an ajax event */
-.x-ajax-loading .ui-btn-inner {
-  overflow: hidden;
-}
-.x-ajax-loading .ui-icon {
-  display: block;
-  background-image: url('../gfx/small-spinner-dark.png') !important;
-  background-position: center!important;
-  background-repeat: no-repeat !important;
-  -webkit-transform: rotate(0deg) translatez(0);
-  -webkit-transition-duration: 0ms;
-  -webkit-animation-name: loading;
-  -webkit-animation-duration: 1.2s;
-  -webkit-animation-iteration-count: infinite;
-  -webkit-animation-timing-function: linear;
-}
-/* light version of spinner action btns on white & dark bg buttons */
-.ui-body-c .ui-listview .x-ajax-loading .ui-icon,
-.image-actions .x-ajax-loading .ui-icon,
-.dark-icons .x-ajax-loading .ui-icon {
-  display: block;
-  background-image: url('../gfx/small-spinner-light.png') !important;
-  background-position: center!important;
-  background-repeat: no-repeat !important;
-}
-.dark-icons .x-ajax-loading .ui-icon {
-  opacity: .4;
-}
-/* the thing that shows any time there are no results */
-#no-results .imagealert {
-  padding: 8px;
-  position: relative;
-  font-style: italic;
-  /* Not going to use icons for now */
-
-}
-#no-results .imagealert .ui-icon {
-  display: none;
-}
-.ui-loading #no-results {
-  display: none;
-}
 /* @ui-bar Title Bars that pop up all over the place */
 .ui-bar {
   border: none;
@@ -3011,6 +3027,7 @@ a.ui-link-inherit {
   right: 0!important;
   left: auto!important;
 }
+/* Bar style tabbed nav like at the top of the popular page */
 .ui-navbar {
   margin: 0 -8px;
   border: none;
@@ -3076,6 +3093,7 @@ a.ui-link-inherit {
   margin-left: 0px;
   margin-right: 0px;
 }
+/* Form Validation like on join page */
 .x-invalid[for] {
   font-size: 12px;
   line-height: 14px;
@@ -3140,26 +3158,6 @@ a.ui-link-inherit {
   -webkit-animation-duration: 1.2s;
   -webkit-animation-iteration-count: infinite;
   -webkit-animation-timing-function: linear;
-}
-/* margins on bottom element not having proper effect */
-.margin-clear {
-  margin-bottom: -1px;
-  padding-bottom: 1px;
-}
-.loading #no-results {
-  display: none;
-}
-.underline {
-  text-decoration: underline;
-}
-.small-text {
-  font-size: 12px;
-}
-.light-text {
-  color: #999999;
-}
-.light-text a {
-  color: #999999 !important;
 }
 /*
 * Top user Avatar list
@@ -3580,15 +3578,7 @@ a.ui-link-inherit {
   -webkit-box-shadow: inset 5px 0 20px rgba(0, 0, 0, 0.2);
   box-shadow: inset 5px 0 20px rgba(0, 0, 0, 0.2);
 }
-/* Ground breaking style for links used below login details */
-.centered-link {
-  text-align: center;
-  margin-top: 60px;
-  font-family: 'MuseoSansRounded700', Helvetica, Arial, sans-serif;
-}
-.block-link {
-  line-height: 36px;
-}
+/* Custom images in buttons */
 .logo-button .ui-btn-inner {
   padding-top: 1px;
   padding-bottom: 1px;
@@ -3621,61 +3611,11 @@ a.ui-link-inherit {
   height: 0;
   overflow: hidden;
 }
-strong {
-  font-weight: normal;
-  font-size: 16px;
-  font-family: 'MuseoSansRounded700', Helvetica, Arial, sans-serif;
-}
-.small-text {
-  font-size: 12px;
-  font-family: Helvetica, Arial, sans-serif;
-}
 .ui-controlgroup-label,
 .ui-select .ui-btn {
   font-family: 'MuseoSansRounded700', Helvetica, Arial, sans-serif;
   text-transform: lowercase;
   text-align: left;
-}
-.user-icon-small,
-.thumb-small {
-  width: 34px;
-  height: 34px;
-  background-color: #efefee;
-  background-size: 100% 100%;
-  background-size: cover;
-  background-position: center;
-  -moz-border-radius: 2px;
-  -webkit-border-radius: 2px;
-  border-radius: 2px;
-}
-.user-icon-med {
-  width: 50px;
-  height: 50px;
-  background-color: #efefee;
-  background-size: 100% 100%;
-  background-size: cover;
-  background-position: center;
-  display: block;
-  -moz-border-radius: 4px;
-  -webkit-border-radius: 4px;
-  border-radius: 4px;
-}
-.css-thumb {
-  background-color: #efefee;
-  background-position: center;
-  background-size: 100% 100%;
-  background-size: cover;
-}
-.user-icon-big {
-  width: 100px;
-  height: 100px;
-  background-color: #efefee;
-  background-size: 100% 100%;
-  background-size: cover;
-}
-.thumb-med {
-  width: 101px;
-  height: 101px;
 }
 /* Loader BG placeholder for images */
 .image-loader-bg {
@@ -3699,13 +3639,7 @@ strong {
   left: 0;
   right: 0;
 }
-/* Some extra paddy things */
-.ui-content .inset-page-content {
-  padding: 0 8px;
-}
-.ui-content .inset-page-content .ui-listview-inset {
-  margin-bottom: 16px;
-}
+/* Offline mode default display */
 .message-overlay {
   position: absolute;
   padding-top: 46px;
@@ -3738,6 +3672,7 @@ strong {
   left: 0;
   top: 0;
 }
+/* Content shown to new users */
 .helper-content .ui-body {
   position: relative;
   min-height: 96px;
@@ -3751,6 +3686,7 @@ strong {
   left: 0;
   display: block;
 }
+/* Footer as part of page content like on dash  */
 .inline-footer {
   margin: 8px -8px 0 -8px;
   -moz-border-radius-bottomleft: 8px;
@@ -3765,26 +3701,6 @@ strong {
 }
 .inline-footer .ui-grid-a .ui-block-b .ui-btn {
   margin-left: 4px;
-}
-.username,
-h4 {
-  font-family: 'MuseoSansRounded700', Helvetica, Arial, sans-serif;
-  font-size: 16px;
-  font-weight: normal;
-  color: #333333;
-}
-.small-username {
-  font-size: 11px;
-  font-weight: normal;
-  color: #666666;
-}
-.warning-message {
-  padding: 8px;
-  background-color: #ffff00;
-  -moz-border-radius: 6px;
-  -webkit-border-radius: 6px;
-  border-radius: 6px;
-  border-bottom: solid 1px rgba(255, 255, 255, 0.4);
 }
 /*
 * Headers - Custom
@@ -3988,6 +3904,83 @@ div.ps-carousel-item-loading {
   -webkit-animation-duration: 1.2s;
   -webkit-animation-iteration-count: infinite;
   -webkit-animation-timing-function: linear;
+}
+/* change the icon to a spinner if a button is loading an ajax event */
+.x-ajax-loading .ui-btn-inner {
+  overflow: hidden;
+}
+.x-ajax-loading .ui-icon {
+  display: block;
+  background-image: url('../gfx/small-spinner-dark.png') !important;
+  background-position: center!important;
+  background-repeat: no-repeat !important;
+  -webkit-transform: rotate(0deg) translatez(0);
+  -webkit-transition-duration: 0ms;
+  -webkit-animation-name: loading;
+  -webkit-animation-duration: 1.2s;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+}
+/* light version of spinner action btns on white & dark bg buttons */
+.ui-body-c .ui-listview .x-ajax-loading .ui-icon,
+.image-actions .x-ajax-loading .ui-icon,
+.dark-icons .x-ajax-loading .ui-icon {
+  display: block;
+  background-image: url('../gfx/small-spinner-light.png') !important;
+  background-position: center!important;
+  background-repeat: no-repeat !important;
+}
+.dark-icons .x-ajax-loading .ui-icon {
+  opacity: .4;
+}
+/* default element when a search returns no results */
+#no-results .imagealert {
+  padding: 8px;
+  position: relative;
+  font-style: italic;
+  /* Not going to use icons for now */
+
+}
+#no-results .imagealert .ui-icon {
+  display: none;
+}
+.ui-loading #no-results,
+.loading #no-results {
+  display: none;
+}
+/*
+* Workspace hacks for browser testing
+*/
+body.browser-testing {
+  width: 320px!important;
+  margin: 0 auto 0 0!important;
+  /* this was 20px but some things are set to window height, meaning they were going 20px off the bottom
+    margin: 20px auto 0 20px!important; */
+
+  display: block;
+  position: relative;
+  height: 100%!important;
+  /* so loader relates to container rather than being fixed */
+
+  /* hack for photoswipe plugin */
+
+}
+body.browser-testing .ui-loader {
+  position: absolute;
+}
+body.browser-testing .ps-caption,
+body.browser-testing .ps-toolbar,
+body.browser-testing .ps-uilayer,
+body.browser-testing .ps-carousel,
+body.browser-testing .ps-document-overlay {
+  width: 320px!important;
+}
+body.browser-testing .ps-carousel,
+body.browser-testing .ps-uilayer {
+  height: 480px!important;
+}
+body.browser-testing .ps-caption-bottom {
+  top: 435px!important;
 }
 /*
 * Page Specific Styles / Elelments

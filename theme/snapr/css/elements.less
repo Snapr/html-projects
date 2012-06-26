@@ -2,57 +2,6 @@
 * Elements - Non-Jquery Mobile Design Patterns that are shared across multiple pages
 */
 
-/* change the icon to a spinner if a button is loading an ajax event */
-.x-ajax-loading{
-    .ui-btn-inner{
-        overflow: hidden;
-    }
-    .ui-icon{
-        .spinner('../gfx/small-spinner-dark.png');
-        .spin();
-    }
-}
-
-/* light version of spinner action btns on white & dark bg buttons */
-.ui-body-c .ui-listview,
-.image-actions,
-.dark-icons{
-    .x-ajax-loading{
-        .ui-icon{
-            .spinner();
-        }
-    }
-}
-
-
-.dark-icons{
-    .x-ajax-loading{
-        .ui-icon{
-            opacity: .4;
-            }
-    }
-}
-
-
-/* the thing that shows any time there are no results */
-#no-results {
-    .imagealert {
-        padding: @padding-element-inset;
-        position: relative;
-        font-style: italic;
-        /* Not going to use icons for now */
-        .ui-icon {
-            display:none;
-        }
-    }
-}
-
-.ui-loading{
-    #no-results{
-        display: none;
-    }
-}
-
 
 /* @ui-bar Title Bars that pop up all over the place */
 .ui-bar{
@@ -197,6 +146,7 @@
     left: auto!important;
 }
 
+/* Bar style tabbed nav like at the top of the popular page */
 .ui-navbar{
     margin: 0 -@padding-page-inset;
     border: none;
@@ -252,6 +202,8 @@
     }
 }
 
+
+/* Form Validation like on join page */
 .x-invalid[for]{
     font-size: @txt-size-small;
     line-height: 14px;
@@ -294,34 +246,6 @@
        .spinner();
        .spin();
    }
-}
-
-/* margins on bottom element not having proper effect */
-.margin-clear{
-    margin-bottom: -1px;
-    padding-bottom: 1px;
-}
-
-.loading{
-    #no-results{
-        display: none;
-    }
-}
-
-
-.underline{
-    text-decoration: underline;
-}
-
-.small-text{
-    font-size: @txt-size-small;
-}
-
-.light-text{
-    color: @color-txt-light-on-light;
-    a{
-        color: @color-txt-light-on-light!important;
-    }
 }
 
 
@@ -757,18 +681,7 @@
     .box-shadow(inset 5px 0 20px rgba(0, 0, 0, 0.2));
 }
 
-/* Ground breaking style for links used below login details */
-
-.centered-link{
-    text-align: center;
-    margin-top: 60px;
-    font-family: @txt-font-special;
-}
-
-.block-link{
-    line-height: 36px;
-}
-
+/* Custom images in buttons */
 .logo-button{
     .ui-btn-inner{
         padding-top: 1px;
@@ -806,17 +719,6 @@
     overflow: hidden;
 }
 
-strong{
-    font-weight: normal;
-    font-size: @txt-size-username;
-    font-family: @txt-font-special;
-}
-
-.small-text{
-    font-size: @txt-size-small;
-    font-family: @txt-font-base;
-}
-
 .ui-controlgroup-label,
 .ui-select .ui-btn{
     font-family: @txt-font-special;
@@ -824,47 +726,7 @@ strong{
     text-align: left;
 }
 
-.user-icon-small,
-.thumb-small{
-    width: @size-small-avatar;
-    height: @size-small-avatar;
-    background-color: @color-icon-bg;
-    background-size: 100% 100%;
-    background-size: cover;
-    background-position: center;
-    .corner-all(2px);
-}
 
-.user-icon-med{
-    width: @size-med-avatar;
-    height: @size-med-avatar;
-    background-color: @color-icon-bg;
-    background-size: 100% 100%;
-    background-size: cover;
-    background-position: center;
-    display: block;
-    .corner-all(4px);
-}
-
-.css-thumb{
-    background-color: @color-icon-bg;
-    background-position: center;
-    background-size: 100% 100%;
-    background-size: cover;
-}
-
-.user-icon-big{
-    width: @size-large-avatar;
-    height: @size-large-avatar;
-    background-color: @color-icon-bg;
-    background-size: 100% 100%;
-    background-size: cover;
-}
-
-.thumb-med{
-    width: @size-img-thumb;
-    height: @size-img-thumb;
-}
 
 
 
@@ -890,16 +752,8 @@ strong{
     right:0;
 }
 
-/* Some extra paddy things */
-.ui-content{
-    .inset-page-content{
-        padding: 0 @padding-page-inset;
-        .ui-listview-inset{
-            margin-bottom:  @padding-page-inset * 2 ;
-        }
-    }
-}
 
+/* Offline mode default display */
 .message-overlay{
     position: absolute;
     padding-top: @size-topbar-height;
@@ -915,7 +769,6 @@ strong{
         margin: @padding-page-inset;
         display: block;
         padding: 0;
-       
     }
 }
 
@@ -935,6 +788,7 @@ strong{
     }
 }
 
+/* Content shown to new users */
 .helper-content{
     .ui-body{
         position: relative;
@@ -952,6 +806,7 @@ strong{
     }
 }
 
+/* Footer as part of page content like on dash  */
 .inline-footer{
     margin: @padding-page-inset -@padding-page-inset 0 -@padding-page-inset;
     .corner-bottom(@corner-page-element-rounded);
@@ -968,27 +823,6 @@ strong{
             }
         }
     }
-}
-
-.username,
-h4{
-    font-family: @txt-font-special;
-    font-size: @txt-size-username;
-    font-weight: normal;
-    color: @color-txt-dark-on-light;
-}
-
-.small-username{
-    font-size: 11px;
-    font-weight: normal;
-    color: @color-txt-medium-on-light;
-}
-
-.warning-message{
-    padding: @padding-page-inset;
-    background-color: @color-bg-highlight-main;
-    .corner-all(@corner-general-rounded);
-    border-bottom: @border-light-on-dark;
 }
 
 /*
@@ -1156,5 +990,91 @@ div.ps-carousel-item-loading
 {
 	.spinner('../gfx/spinner.png');
 	.spin();
+}
+
+/* change the icon to a spinner if a button is loading an ajax event */
+.x-ajax-loading{
+    .ui-btn-inner{
+        overflow: hidden;
+    }
+    .ui-icon{
+        .spinner('../gfx/small-spinner-dark.png');
+        .spin();
+    }
+}
+
+/* light version of spinner action btns on white & dark bg buttons */
+.ui-body-c .ui-listview,
+.image-actions,
+.dark-icons{
+    .x-ajax-loading{
+        .ui-icon{
+            .spinner();
+        }
+    }
+}
+
+
+.dark-icons{
+    .x-ajax-loading{
+        .ui-icon{
+            opacity: .4;
+            }
+    }
+}
+
+
+/* default element when a search returns no results */
+#no-results {
+    .imagealert {
+        padding: @padding-element-inset;
+        position: relative;
+        font-style: italic;
+        /* Not going to use icons for now */
+        .ui-icon {
+            display:none;
+        }
+    }
+}
+
+.ui-loading,
+.loading{
+    #no-results{
+        display: none;
+    }
+}
+
+/*
+* Workspace hacks for browser testing
+*/
+
+body.browser-testing{
+    width: 320px!important;
+    margin: 0 auto 0 0!important;
+    /* this was 20px but some things are set to window height, meaning they were going 20px off the bottom
+    margin: 20px auto 0 20px!important; */
+    display: block;
+    position: relative;
+    height: 100%!important;
+
+    /* so loader relates to container rather than being fixed */
+    .ui-loader{
+        position: absolute;
+    }
+    /* hack for photoswipe plugin */
+    .ps-caption,
+    .ps-toolbar,
+    .ps-uilayer,
+    .ps-carousel,
+    .ps-document-overlay{
+        width: 320px!important;
+    }
+    .ps-carousel,
+    .ps-uilayer{
+        height: 480px!important;
+    }
+    .ps-caption-bottom{
+        top: 435px!important;
+    }
 }
 
