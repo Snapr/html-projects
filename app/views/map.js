@@ -23,7 +23,7 @@ var map_view = page_view.extend({
 
     },
 
-    history_ignore_params: ['zoom', 'lat', 'lng', 'photo_id'],
+    history_ignore_params: ['zoom', 'lat', 'lng', 'photo_id', 'location'],
 
     post_activate: function(options){
         this.thumb_collection = new thumb_collection();
@@ -89,6 +89,9 @@ var map_view = page_view.extend({
     update_or_create_map: function (location) {
 
         if(this.map){
+            if (location){
+                this.search_location( location );
+            }
             this.go_to({
                 latitude: this.map_settings.center.lat(),
                 longitude: this.map_settings.center.lng()
