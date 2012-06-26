@@ -1,6 +1,6 @@
 /*global _  define require */
-define(['backbone', 'views/base/page', 'views/components/activity_ticker', 'auth', 'utils/local_storage'],
-    function(Backbone, page_view, ticker, auth, local_storage){
+define(['backbone', 'views/base/page', 'views/components/activity_ticker', 'auth', 'utils/local_storage', 'config'],
+    function(Backbone, page_view, ticker, auth, local_storage, config){
 return page_view.extend({
 
     post_initialize: function(options){
@@ -22,6 +22,7 @@ return page_view.extend({
 
     post_activate: function(){
         $.mobile.changePage( "#home" );
+        this.upload_count(config.get('upload_count'));
     },
 
     render: function(){

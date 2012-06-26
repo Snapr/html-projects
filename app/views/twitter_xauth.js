@@ -2,18 +2,21 @@
 define(['config', 'backbone', 'views/base/page', 'auth', 'utils/alerts'], function(config, Backbone, page_view, auth, alerts){
 return page_view.extend({
 
-    post_activate: function(){
+    post_activate: function(options){
 
-        if (this.options.query){
-            this.redirect = this.options.query.redirect;
-            this.message = this.options.query.message;
-            this.signin = !!this.options.query.signin;
-        }
+        if (options.query){
+            this.redirect = options.query.redirect;
+            this.message = options.query.message;
+            this.signin = !!options.query.signin;
 
-        if (this.message){
-            this.$el.find(".login-message").text(this.message);
+            if (options.query.message){
+                this.$el.find(".login-message").text(options.query.message);
+            }else{
+                this.$el.find(".login-message").text("");
+            }
         }else{
-            this.$el.find(".login-message").text("");
+            delete this.redirect;
+            delete this.signin;
         }
 
         this.change_page();

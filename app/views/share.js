@@ -536,10 +536,6 @@ return page_view.extend({
 
     toggle_photo: function( e ){
         this.$el.toggleClass("show-image");
-    },
-
-    upload_progress: function( upload_data ){
-        Backbone.history.navigate( '#/uploading/' );
     }
 
 });
