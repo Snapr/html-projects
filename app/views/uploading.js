@@ -15,8 +15,9 @@ var uploading = page_view.extend({
         this.query = options.query;
 
         if (this.query.ll){
-            this.latitude = this.query.ll.split(",")[0];
-            this.longitude = this.query.ll.split(",")[1];
+            var ll = this.query.ll.split(",");
+            this.latitude = ll[0];
+            this.longitude = ll[1];
         }
         this.spot = this.query.spot;
         this.venue_name = this.query.venue_name;
