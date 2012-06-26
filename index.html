@@ -588,13 +588,13 @@
         <div data-role="header" data-theme="c">
             <h1>Find Friends</h1>
 
-            <a class="x-back" data-role="button" data-icon="delete" data-iconpos="notext" data-transition="none"></a>
+            <a href="#/my-account/" data-ajax="false" data-role="button" data-icon="delete" data-iconpos="notext" data-transition="none"></a>
         </div>
         <div data-role="content" data-theme="d" data-ajax="false">
             <div class="inset-page-content">
                 <ul data-role="listview" data-ajax="false" class="share-icons-list" data-inset="true" data-theme="d">
                     <li>
-                        <a class="find-friends-link" data-snapr-dialog="true" href="#/find-friends-facebook/">
+                        <a class="find-friends-link" href="#/find-friends-facebook/">
                             <span class="facebook-sharing sharing-icon-small">
                                 <span class="ui-icon"></span>
                             </span>
@@ -602,7 +602,7 @@
                          </a>
                     </li>
                     <li>
-                        <a class="find-friends-link" data-snapr-dialog="true" href="#/find-friends-twitter/">
+                        <a class="find-friends-link" href="#/find-friends-twitter/">
                             <span class="twitter-sharing sharing-icon-small">
                                 <span class="ui-icon"></span>
                             </span>
@@ -618,7 +618,7 @@
        <div id="find-friends-twitter" data-title="Find Friends" data-role="dialog" data-overlay-theme="c" data-theme="c">
            <div data-role="header" data-theme="c">
                <h1>Twitter Friends</h1>
-               <a class="x-back" data-role="button" data-icon="delete" data-iconpos="notext"></a>
+               <a href="#/find-friends/" data-ajax="false" data-role="button" data-icon="delete" data-iconpos="notext"></a>
            </div>
            <div data-role="content" data-theme="c" data-ajax="false">
                <div class="search-header">
@@ -633,7 +633,7 @@
          <div id="find-friends-facebook" data-title="Find Friends" data-role="dialog" data-overlay-theme="c" data-theme="c">
              <div data-role="header" data-theme="c">
                  <h1>Facebook Friends</h1>
-                 <a class="x-back" data-role="button" data-icon="delete" data-iconpos="notext"></a>
+                 <a href="#/find-friends/" data-ajax="false" data-role="button" data-icon="delete" data-iconpos="notext"></a>
              </div>
              <div data-role="content" data-theme="c" data-ajax="false">
                  <div class="search-header">
@@ -1777,7 +1777,7 @@
     <div id="welcome" data-role="dialog" data-overlay-theme="c" data-theme="c" class="welcome-bg special-bg">
         <div data-role="header" data-theme="c">
             <h1>Welcome</h1>
-            <a class="x-back" data-role="button" data-icon="delete" data-iconpos="notext"></a>
+            <a href="#" data-ajax="false" data-role="button" data-icon="delete" data-iconpos="notext"></a>
         </div>
         <div data-role="content" data-theme="d" data-ajax="false">
             <div class="inset-page-content wrap-content">
@@ -1793,7 +1793,7 @@
 
             </div>
              <p class="centered-link">
-                    <a href="#/about/" data-snapr-dialog="true">Find Out More &rsaquo;</a></li>
+                    <a href="#/about/">Find Out More &rsaquo;</a></li>
                 </p>
         </div>
     </div>
@@ -1811,7 +1811,7 @@
                          <li>
                              <h4>Share &amp; Discover</h4>
 
-                             <p>Snapr is a photo sharing app that &hearts;&lsquo;s location :)</p>
+                             <p>Snapr is a photo sharing app that &hearts;&lsquo;s geotagging :)</p>
       
                              <p>&bull; Discover nearby popular shots each time you upload</p>
                              
@@ -2057,7 +2057,7 @@
                  <a data-role="button" class="twitter-button logo-button" data-theme="e">Login with <span class="twitter-logo button-logo">Twitter</span></a>
 
                 <p class="centered-link">
-                    <a href="#/join/" data-snapr-dialog="true">Join Snapr &rsaquo;</a></li>
+                    <a href="#/join/">Join Snapr &rsaquo;</a></li>
                 </p>
 
             </div>
@@ -2148,7 +2148,7 @@
                         </li>
 
                          <li>
-                            <a data-snapr-dialog="true" href="#/find-friends/">Find your friends</a>
+                            <a href="#/find-friends/">Find your friends</a>
                         </li>
                         <li>
                             <a href="#/about/">Find out more about Snapr</a>
