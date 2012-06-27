@@ -1812,19 +1812,19 @@
                              <h4>Share &amp; Discover</h4>
 
                              <p>Snapr is a photo sharing app that &hearts;&lsquo;s geotagging :)</p>
-      
+
                              <p>&bull; Discover nearby popular shots each time you upload</p>
-                             
+
                              <p>&bull; Browse Snapr's map and set advanced search filters</p>
-                             
+
                              <p>&bull; Use our custom dashboard to keep track of your best friends and favorite searches</p>
-                             
+
                              <p>&bull; Share to Facebook, Twitter, Tumblr &amp; Foursquare</p>
-                             
+
                          </li>
                          </ul>
 
-                     
+
              </div>
          </div>
      </div>
@@ -2213,6 +2213,7 @@
         <div data-role="content" data-theme="d">
             <div class="upload-progress-container upload-progress-header page-inset-header">
             </div>
+            <div class="offline" style="display:none;">Offline!</div>
             <ul class="image-streams">
             </ul>
         </div>
@@ -2240,37 +2241,37 @@
                  <div class="progress-bar <%= upload_status %>">
                     <!-- //Active uploads -->
                     <% switch (upload_status) { case 'active': %>
-                    <% if (percent_complete == 100){ %>
-                    <span class="upload-message">Finishing</span>
-                    <a class="bar-action">
-                        <span class="ui-icon ui-icon-spinner"></span>
-                    </a>
-                    <% }else{ %>
-                    <div class="bar-wrapper">
-                        <div class="bar-bg bar"></div>
-                        <div class="bar-prog bar" style="width:<%= percent_complete %>%"></div>
-                    </div>
-                    <a class="bar-action x-cancel-upload">
-                        <span class="ui-icon ui-icon-delete"></span>
-                    </a>
-                    <% } %>
-
+                        <% if (percent_complete == 100){ %>
+                            <span class="upload-message">Finishing</span>
+                            <a class="bar-action">
+                                <span class="ui-icon ui-icon-spinner"></span>
+                            </a>
+                        <% }else{ %>
+                            <div class="bar-wrapper">
+                                <div class="bar-bg bar"></div>
+                                <div class="bar-prog bar" style="width:<%= percent_complete %>%"></div>
+                            </div>
+                            <a class="bar-action x-cancel-upload">
+                                <span class="ui-icon ui-icon-delete"></span>
+                            </a>
+                        <% } %>
                     <% break; case 'waiting': %>
-                    <span class="upload-message">Waiting</span>
-                    <a class="bar-action x-cancel-upload">
-                        <span class="ui-icon ui-icon-delete"></span>
-                    </a>
-
+                        <span class="upload-message">Waiting</span>
+                        <a class="bar-action x-cancel-upload">
+                            <span class="ui-icon ui-icon-delete"></span>
+                        </a>
                     <% break; case 'canceled': %>
 
-
-                    <% break; case 'hold': %>
-
+                    <% break; case 'queued': %>
+                        <span class="upload-message">Queued</span>
+                        <a class="bar-action">
+                            <span class="ui-icon ui-icon-refresh"></span>
+                        </a>
                     <% break; case 'completed': %>
-                    <span class="upload-message">Complete</span>
-                    <a class="bar-action">
-                        <span class="ui-icon ui-icon-check"></span>
-                    </a>
+                        <span class="upload-message">Complete</span>
+                        <a class="bar-action">
+                            <span class="ui-icon ui-icon-check"></span>
+                        </a>
                     <% break;}%>
                 </div>
 

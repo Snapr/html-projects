@@ -25,7 +25,7 @@ return Backbone.View.extend({
             this.$el.addClass("upload-id-" + this.photo.id);
             this.$el.html(
                 this.template({
-                    upload_status: this.photo.upload_status.toLowerCase(),
+                    upload_status: this.is_queued ? 'queued' : this.photo.upload_status.toLowerCase(),
                     description: unescape( this.photo.description ),
                     venue: this.photo.location.foursquare_venue_name || this.venue_name || this.photo.location.location,
                     spot_id: this.photo.location.spot_id,
@@ -58,6 +58,11 @@ return Backbone.View.extend({
         }
 
         return this;
+    },
+
+    queued: function(){
+        this.is_queued = true;
+        this.render();
     },
 
     cancel_upload: function(){

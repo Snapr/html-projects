@@ -144,17 +144,17 @@ var uploading = page_view.extend({
 
         photo.fetch({
             success: function( photo ){
-                this.progress_el = new upload_progress_li({
+                this.progress_view = new upload_progress_li({
                     photo: photo.attributes
                 });
-                this.progress_el.message = "Completed!";
-                this.progress_el.photo.upload_status = "completed";
-                this.progress_el.post_id = snapr_id;
-                this.progress_el.photo.id = snapr_id;
-                this.progress_el.photo.thumbnail = "https://s3.amazonaws.com/media-server2.snapr.us/thm2/" +
+                this.progress_view.message = "Completed!";
+                this.progress_view.photo.upload_status = "completed";
+                this.progress_view.post_id = snapr_id;
+                this.progress_view.photo.id = snapr_id;
+                this.progress_view.photo.thumbnail = "https://s3.amazonaws.com/media-server2.snapr.us/thm2/" +
                     photo.get("secret") + "/" +
                     snapr_id + ".jpg";
-                $container.html( this.progress_el.render().el );
+                $container.html( this.progress_view.render().el );
                 uploading_view.latitude = photo.has("location") && photo.get("location").latitude;
                 uploading_view.longitude = photo.has("location") && photo.get("location").longitude;
                 uploading_view.spot = photo.has("location") && photo.get("location").spot_id;
@@ -177,6 +177,13 @@ var uploading = page_view.extend({
         }else{
             this.$el.removeClass("showing-upload-queue");
         }
+    },
+
+    offline: function(offline_mode){
+        if (this.progress_view){
+            this.progress_view.queued();
+        }
+        this.$('.offline').show();
     }
 });
 
