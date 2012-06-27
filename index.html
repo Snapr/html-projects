@@ -588,13 +588,13 @@
         <div data-role="header" data-theme="c">
             <h1>Find Friends</h1>
 
-            <a class="x-back" data-role="button" data-icon="delete" data-iconpos="notext" data-transition="none"></a>
+            <a href="#/my-account/" data-ajax="false" data-role="button" data-icon="delete" data-iconpos="notext" data-transition="none"></a>
         </div>
         <div data-role="content" data-theme="d" data-ajax="false">
             <div class="inset-page-content">
                 <ul data-role="listview" data-ajax="false" class="share-icons-list" data-inset="true" data-theme="d">
                     <li>
-                        <a class="find-friends-link" data-snapr-dialog="true" href="#/find-friends-facebook/">
+                        <a class="find-friends-link" href="#/find-friends-facebook/">
                             <span class="facebook-sharing sharing-icon-small">
                                 <span class="ui-icon"></span>
                             </span>
@@ -602,7 +602,7 @@
                          </a>
                     </li>
                     <li>
-                        <a class="find-friends-link" data-snapr-dialog="true" href="#/find-friends-twitter/">
+                        <a class="find-friends-link" href="#/find-friends-twitter/">
                             <span class="twitter-sharing sharing-icon-small">
                                 <span class="ui-icon"></span>
                             </span>
@@ -618,7 +618,7 @@
        <div id="find-friends-twitter" data-title="Find Friends" data-role="dialog" data-overlay-theme="c" data-theme="c">
            <div data-role="header" data-theme="c">
                <h1>Twitter Friends</h1>
-               <a class="x-back" data-role="button" data-icon="delete" data-iconpos="notext"></a>
+               <a href="#/find-friends/" data-ajax="false" data-role="button" data-icon="delete" data-iconpos="notext"></a>
            </div>
            <div data-role="content" data-theme="c" data-ajax="false">
                <div class="search-header">
@@ -633,7 +633,7 @@
          <div id="find-friends-facebook" data-title="Find Friends" data-role="dialog" data-overlay-theme="c" data-theme="c">
              <div data-role="header" data-theme="c">
                  <h1>Facebook Friends</h1>
-                 <a class="x-back" data-role="button" data-icon="delete" data-iconpos="notext"></a>
+                 <a href="#/find-friends/" data-ajax="false" data-role="button" data-icon="delete" data-iconpos="notext"></a>
              </div>
              <div data-role="content" data-theme="c" data-ajax="false">
                  <div class="search-header">
@@ -1548,7 +1548,7 @@
         </script>
 
     <!-- @people PAGE-->
-    <div id="people" data-role="dialog" data-overlay-theme="c" data-theme="c" data-ajax="false">
+    <div id="people" data-role="dialog" data-overlay-theme="c" data-theme="c" data-ajax="false" data-add-back-btn="false">
         <div data-role="header" data-theme="c">
             <h1>People</h1>
             <a class="x-back" data-role="button" data-icon="delete" data-iconpos="notext"></a>
@@ -1776,14 +1776,15 @@
     <!-- @welcome PAGE-->
     <div id="welcome" data-role="dialog" data-overlay-theme="c" data-theme="c" class="welcome-bg special-bg">
         <div data-role="header" data-theme="c">
-            <h1>Welcome!</h1>
-            <a class="x-back" data-role="button" data-icon="delete" data-iconpos="notext"></a>
+            <h1>Welcome</h1>
+            <a href="#" data-ajax="false" data-role="button" data-icon="delete" data-iconpos="notext"></a>
         </div>
         <div data-role="content" data-theme="d" data-ajax="false">
             <div class="inset-page-content wrap-content">
                     <ul data-role="listview" data-ajax="false" class="" data-inset="true" data-theme="d">
                         <li>
-                            <a href="#/about/" class="plain-link">Would you like to find out more about what you can do with Snapr?</a>
+                            <h4>Hi :)</h4>
+                            <p>Do you already have an account? Or would you like to join up?</p>
                         </li>
                     </ul>
                     <a data-role="button" data-theme="e" href="#/login/">Login</a>
@@ -1791,6 +1792,9 @@
                     <a data-role="button" data-theme="d" href="#/join/">Join Snapr</a>
 
             </div>
+             <p class="centered-link">
+                    <a href="#/about/">Find Out More &rsaquo;</a></li>
+                </p>
         </div>
     </div>
 
@@ -1805,27 +1809,22 @@
                      <ul data-role="listview" data-ajax="false" class="" data-inset="true" data-theme="d">
 
                          <li>
-                             <a href="#/map/">Share &amp; Discover</a>
+                             <h4>Share &amp; Discover</h4>
 
-                             <p>Snapr helps you discover new things by showing you nearby shots each time you upload.</p>
-                             <p>Search our photo map and explore the world around you.</p>
+                             <p>Snapr is a photo sharing app that &hearts;&lsquo;s geotagging :)</p>
+      
+                             <p>&bull; Discover nearby popular shots each time you upload</p>
+                             
+                             <p>&bull; Browse Snapr's map and set advanced search filters</p>
+                             
+                             <p>&bull; Use our custom dashboard to keep track of your best friends and favorite searches</p>
+                             
+                             <p>&bull; Share to Facebook, Twitter, Tumblr &amp; Foursquare</p>
+                             
                          </li>
                          </ul>
 
-                         <ul data-role="listview" data-ajax="false" class="" data-inset="true" data-theme="d">
-                         <li>
-                             <a href="#/snapr-apps/">Find Apps for your Interests</a>
-
-                             <p>Snapr apps build dedicated communities around your favorite things.</p>
-                             <p></p>
-                         </li>
-                     </ul>
-                     <ul data-role="listview" data-ajax="false" class="" data-inset="true" data-theme="d">
-                      <li>
-                         <a href="#/dash/">Never miss the things that matter</a>
-                         <p>Keep track of your best friends and favorite searches on the fly with our special dashboard view.</p>
-                     </li>
-                     </ul>
+                     
              </div>
          </div>
      </div>
@@ -2058,7 +2057,7 @@
                  <a data-role="button" class="twitter-button logo-button" data-theme="e">Login with <span class="twitter-logo button-logo">Twitter</span></a>
 
                 <p class="centered-link">
-                    <a href="#/join/" data-snapr-dialog="true">Join Snapr &rsaquo;</a></li>
+                    <a href="#/join/">Join Snapr &rsaquo;</a></li>
                 </p>
 
             </div>
@@ -2073,9 +2072,6 @@
          </div>
          <div data-role="content" data-theme="d">
              <div class="inset-page-content">
-                 <p class="login-message warning-message"></p>
-
-
                  <form action="javascript: void(0);" accept-charset="utf-8" id="forgot-form">
                      <ul data-role="listview" data-inset="true" data-theme="d">
 
@@ -2149,7 +2145,7 @@
                         </li>
 
                          <li>
-                            <a data-snapr-dialog="true" href="#/find-friends/">Find your friends</a>
+                            <a href="#/find-friends/">Find your friends</a>
                         </li>
                         <li>
                             <a href="#/about/">Find out more about Snapr</a>

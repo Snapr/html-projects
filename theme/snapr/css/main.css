@@ -802,7 +802,7 @@ strong {
 h4 {
   font-family: 'MuseoSansRounded700', Helvetica, Arial, sans-serif;
   font-size: 16px;
-  font-weight: normal;
+  font-weight: normal!important;
   color: #333333;
 }
 .small-username {
@@ -3449,9 +3449,14 @@ a.ui-link-inherit {
   background-position: -243px -144px;
 }
 .wrap-content h1,
+.wrap-content h4,
 .wrap-content p,
 .wrap-content a {
   white-space: normal!important;
+}
+.wrap-content h1,
+.wrap-content h4 {
+  margin-left: 8px!important;
 }
 .wrap-content p {
   margin: 8px 24px 8px 0!important;
@@ -6440,10 +6445,10 @@ body.browser-testing .ps-caption-bottom {
   }
   .loading .map-filters .ui-input-search .ui-input-clear .ui-icon-delete {
     background-image: url('../gfx/retina/extra-icons.png') !important;
-    -moz-background-size: 32px 800px !important;
-    -o-background-size: 32px 800px !important;
-    -webkit-background-size: 32px 800px !important;
-    background-size: 32px 800px !important;
+    -moz-background-size: 32px 864px !important;
+    -o-background-size: 32px 864px !important;
+    -webkit-background-size: 32px 864px !important;
+    background-size: 32px 864px !important;
   }
   .ps-toolbar .ps-toolbar-close .ps-toolbar-content {
     background-image: url('../gfx/retina/general-jquerymob-icons.png');
