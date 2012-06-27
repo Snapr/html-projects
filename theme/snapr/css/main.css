@@ -5323,12 +5323,15 @@ body.browser-testing .ps-caption-bottom {
   background-position: 0px -200px;
 }
 .camplus-icon {
-  background: none!important;
   background-image: url('../gfx/camplus.png') !important;
   background-repeat: no-repeat;
-  width: 37px;
-  height: 36px;
+  background-position: center!important;
+  width: 38px;
+  height: 38px;
   float: right;
+  -moz-border-radius: 6px !important;
+  -webkit-border-radius: 6px !important;
+  border-radius: 6px !important;
 }
 .camplus-icon span {
   display: none;
@@ -6497,10 +6500,10 @@ body.browser-testing .ps-caption-bottom {
   }
   .camplus-icon {
     background-image: url('../gfx/retina/camplus.png') !important;
-    -moz-background-size: 37px 36px !important;
-    -o-background-size: 37px 36px !important;
-    -webkit-background-size: 37px 36px !important;
-    background-size: 37px 36px !important;
+    -moz-background-size: 38px 38px !important;
+    -o-background-size: 38px 38px !important;
+    -webkit-background-size: 38px 38px !important;
+    background-size: 38px 38px !important;
   }
   .image-loader-bg {
     background-image: url('../gfx/retina/image-load.gif');
