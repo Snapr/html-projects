@@ -9,8 +9,8 @@ var uploading = page_view.extend({
 
         this.change_page();
 
-        this.current_upload = null;
-        this.pending_uploads = {};
+        //this.current_upload = null;
+        //this.pending_uploads = {};
 
         this.query = options.query;
 
@@ -23,13 +23,12 @@ var uploading = page_view.extend({
         this.venue_name = this.query.venue_name;
         this.photo_id = this.query.photo_id;
 
-        this.$el.removeClass("showing-upload-queue");
-        this.$el.find( ".upload-progress-container" ).empty();
+        //this.$el.removeClass("showing-upload-queue");
+        this.progress_el = this.$( ".upload-progress-container" ).empty();
 
         if (this.photo_id){
             this.upload_completed( 0, this.photo_id);
-        }
-        else{
+        }else{
             this.render();
             // testing upload stuff
             //var test_data = {"uploads":[{"description":"Pzzz","percent_complete":10,"id":"013FBD4D-7","sharing":{},"date":"2012-03-09 14:25:59 -0500","status":"private","location":{},"shared":{tweeted:true},"upload_status":"Active","thumbnail":"file:///Users/dpwolf/Library/Application Support/iPhone Simulator/5.0/Applications/ECF32C66-12DE-44D8-B2C2-9A02A0DD77BE/Documents/upload/00000000000353013969.jpg"}]}
@@ -98,8 +97,7 @@ var uploading = page_view.extend({
 
     },
 
-    cancel_upload: function()
-    {
+    cancel_upload: function(){
         if (this.current_upload && this.current_upload.id){
             var current_upload = this.current_upload;
             var appmode = local_storage.get("appmode");
@@ -107,12 +105,9 @@ var uploading = page_view.extend({
             alerts.approve({
                 "title": "Cancel this upload?",
                 "yes_callback": function(){
-                    if (appmode)
-                    {
+                    if (appmode){
                         native.pass_data("snapr://upload?cancel=" + current_upload.id);
-                    }
-                    else
-                    {
+                    }else{
                         Backbone.history.navigate( "#/upload/" );
                     }
                 }
@@ -124,39 +119,45 @@ var uploading = page_view.extend({
 
     },
 
-    upload_progress: function( upload_data )
-    {
+    upload_progress: function( upload_data ){
 
-        var $container = this.$el.find(".upload-progress-container");
+        //var progress_el = this.progress_el;
 
-        _.each( upload_data.uploads, function( photo, index ){
-            if ((photo.upload_status.toLowerCase() == "active") && (!this.current_upload || this.current_upload.id == photo.id))
-            {
-                if (!this.pending_uploads[photo.id])
-                {
-                    this.pending_uploads[photo.id] = new upload_progress_li({
-                        photo: photo
-                    });
-                    $container.html( this.pending_uploads[photo.id].render().el );
-                }
-                else
-                {
-                    this.pending_uploads[photo.id].photo = photo;
-                    this.pending_uploads[photo.id].render();
-                }
-                this.current_upload = photo;
-            }
+        var photo = upload_data.uploads[upload_data.uploads.length-1];
 
-        }, this );
-
-        if (upload_data.uploads){
-            this.$el.addClass("showing-upload-queue");
+        if(!this.progress_view){
+            this.progress_view = new upload_progress_li({
+                photo: photo
+            });
+            this.progress_el.html( this.progress_view.render().el );
+        }else{
+            this.progress_view.photo = photo;
         }
+        this.progress_view.render();
+
+        // _.each( upload_data.uploads, function( photo, index ){
+        //     if ((photo.upload_status.toLowerCase() == "active") && (!this.current_upload || this.current_upload.id == photo.id)){
+        //         if (!this.pending_uploads[photo.id]){
+        //             this.pending_uploads[photo.id] = new upload_progress_li({
+        //                 photo: photo
+        //             });
+        //             $container.html( this.pending_uploads[photo.id].render().el );
+        //         }else{
+        //             this.pending_uploads[photo.id].photo = photo;
+        //             this.pending_uploads[photo.id].render();
+        //         }
+        //         this.current_upload = photo;
+        //     }
+
+        // }, this );
+
+        // if (upload_data.uploads){
+        //     this.$el.addClass("showing-upload-queue");
+        // }
 
     },
 
-    upload_completed: function( queue_id, snapr_id )
-    {
+    upload_completed: function( queue_id, snapr_id ){
         var $container = this.$el.find(".upload-progress-container");
 
         var uploading_view = this;
@@ -166,8 +167,7 @@ var uploading = page_view.extend({
             var photo = new photo_model({id: snapr_id});
 
             photo.fetch({
-                success: function( photo )
-                {
+                success: function( photo ){
                     var progress_li = new upload_progress_li({
                         photo: photo.attributes
                     });
@@ -195,8 +195,7 @@ var uploading = page_view.extend({
         }
     },
 
-    upload_cancelled: function( queue_id )
-    {
+    upload_cancelled: function( queue_id ){
         if (this.pending_uploads[queue_id]){
             this.pending_uploads[queue_id].remove();
             delete this.pending_uploads[queue_id];
@@ -204,8 +203,7 @@ var uploading = page_view.extend({
         // Backbone.history.navigate( "#/" );
     },
 
-    upload_count: function( count )
-    {
+    upload_count: function( count ){
         if (count){
             this.$el.addClass("showing-upload-queue");
         }else{
@@ -230,8 +228,7 @@ var uploading_image_stream = side_scroll.extend({
             venue_name: this.options.venue_name
         };
 
-        switch (this.details.stream_type)
-        {
+        switch (this.details.stream_type){
             case "popular-nearby":
                 this.collection.data = {
                     latitude: this.details.latitude,
