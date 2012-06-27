@@ -5476,6 +5476,13 @@ body.browser-testing .ps-caption-bottom {
   height: 20px;
   margin-right: 2px;
 }
+#uploading .offline-uploading {
+  position: relative;
+  top: -8px;
+}
+#uploading .offline-uploading .ui-btn-inner {
+  overflow: visible;
+}
 /*
 * @people PAGE
 */
