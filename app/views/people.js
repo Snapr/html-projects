@@ -15,6 +15,11 @@ return page_view.extend({
     },
 
     post_activate: function(options){
+        // because of the above fix (undeligate on pagehide) we must make sure
+        // subsequent activations of the same view deligate events again.
+        // TODO: do this more cleanly
+        this.undelegateEvents();
+        this.delegateEvents();
 
         this.$el.find("ul.people-list").empty();
         this.$el.addClass('loading');
