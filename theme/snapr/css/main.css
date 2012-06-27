@@ -1853,6 +1853,7 @@ a.ui-link-inherit {
   background-image: url('../gfx/bg-texture-light.gif');
   border: none;
   border-radius: 8px;
+  overflow: visible;
 }
 .ui-body-c .ui-header {
   color: #666666;
