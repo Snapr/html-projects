@@ -1282,9 +1282,9 @@ a.ui-link-inherit {
   background: none;
   background-color: #000000;
   border-radius: 8px;
-  /*min-height: 480px - @size-topbar-height - @padding-page-inset - @padding-page-inset;*/
-
-  min-height: 409px;
+  /*           min-height: 460px - @size-topbar-height - @padding-page-inset - @padding-page-inset;
+*/
+  min-height: 412px;
 }
 /* Main Styles */
 .ui-body-a {
@@ -2282,7 +2282,7 @@ a.ui-link-inherit {
   border-radius: 8px;
   /*        min-height: 460px - @size-topbar-height - @padding-page-inset * 2;
 */
-  min-height: 409px;
+  min-height: 412px;
 }
 .ui-body-d .ui-link,
 .ui-body-d .ui-link:visited,
@@ -3195,7 +3195,6 @@ a.ui-link-inherit {
   list-style: none;
   padding: 0;
   margin: 0;
-  margin-bottom: 8px;
 }
 .image-streams .image-stream {
   position: relative;
@@ -4876,10 +4875,16 @@ body.browser-testing .ps-caption-bottom {
 */
 #dash div[data-role="content"] {
   position: relative;
-  padding-bottom: 0;
+  /*padding-bottom: 0;*/
+
 }
 .dash-wrapper {
-  min-height: 322px;
+  min-height: 316px;
+  oveflow: hidden;
+}
+.dash-footer {
+  height: 86px;
+  overflow: hidden;
 }
 .dash-footer .ui-btn-inner .ui-icon {
   background-image: url('../gfx/dash-icons.png');
