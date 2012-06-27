@@ -127,9 +127,7 @@ return page_view.extend({
         var description;
         if (this.query.description){
             description = unescape(this.query.description);
-        }
-        else
-        {
+        }else{
             description = "";
         }
 
@@ -308,6 +306,7 @@ return page_view.extend({
     },
 
     edit: function(){
+        $.mobile.showPageLoadingMsg();
 
         var appmode = local_storage.get( "appmode" );
         var aviary = local_storage.get( "aviary" );
@@ -333,6 +332,7 @@ return page_view.extend({
     },
 
     edit_camplus: function(){
+        $.mobile.showPageLoadingMsg();
         this.query.description = escape(this.$("#description").val());
         window.navigator.hash = "#/share/?" + $.param( this.query );
 
@@ -360,17 +360,15 @@ return page_view.extend({
         }
     },
 
-    get_photo_edit_params: function()
-    {
+    get_photo_edit_params: function(){
         var params = {};
         params.description = escape(this.$el.find("#description").val());
         var location = this.model.get("location") || {};
-        if (location.foursquare_venue_name && location.foursquare_venue_id)
-        {
+        if (location.foursquare_venue_name && location.foursquare_venue_id){
             params.foursquare_venue_name = escape(location.foursquare_venue_name);
             params.foursquare_venue_id = location.foursquare_venue_id;
         }
-        return $.param( params )
+        return $.param( params );
 
     },
     share: function(){
