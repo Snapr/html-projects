@@ -60,8 +60,8 @@ return Backbone.View.extend({
         return this;
     },
 
-    queued: function(){
-        this.is_queued = true;
+    queued: function(is_queued){
+        this.is_queued = is_queued;
         this.render();
     },
 

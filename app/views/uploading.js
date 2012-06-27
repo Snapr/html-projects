@@ -120,6 +120,10 @@ var uploading = page_view.extend({
     },
 
     upload_progress: function( upload_data ){
+        if (this.progress_view){
+            this.progress_view.queued(false);
+        }
+        this.$('.offline').hide();
 
         var photo = upload_data.uploads[upload_data.uploads.length-1];
 
@@ -137,6 +141,10 @@ var uploading = page_view.extend({
     },
 
     upload_completed: function( queue_id, snapr_id ){
+        if (this.progress_view){
+            this.progress_view.queued(false);
+        }
+        this.$('.offline').hide();
 
         var $container = this.$el.find(".upload-progress-container");
         var uploading_view = this;
@@ -181,7 +189,7 @@ var uploading = page_view.extend({
 
     offline: function(offline_mode){
         if (this.progress_view){
-            this.progress_view.queued();
+            this.progress_view.queued(true);
         }
         this.$('.offline').show();
     }
