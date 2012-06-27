@@ -193,16 +193,23 @@ return page_view.extend({
         _.each(['name', 'location', 'website', 'bio'], function(item){
             param[item] = section.find("#my-account-"+item).val();
         });
+
         param.avatar_type = section.find('[name=my-account-avatar]:checked').val();
+        var current_avatar = this.user_settings.get('avatar_type') || this.user_settings.get('settings').profile.avatar_type;
+        var avatar_changed = param.avatar_type !== current_avatar;
+
         this.save_settings( param, function(){
-            my_account.user_settings.cache_bust();
-            my_account.fetch();
+            if(avatar_changed){
+                my_account.user_settings.cache_bust();
+                my_account.fetch();
+            }else{
+                alerts.notification('Thanks', 'Your settings have been saved');
+            }
         });
     },
 
     save_account: function( e ){
-        var param = {},
-            callback;
+        var param = {};
 
         var email = this.$el.find("#my-account-email").val();
         var password = this.$el.find("#my-account-password").val();
@@ -228,14 +235,13 @@ return page_view.extend({
                 return;
             }else{
                 param.password = password;
-                callback = function(){
-                    alerts.notification('Thanks', ' your password has been saved');
-                };
             }
         }
 
         if (!_.isEmpty( param )){
-            this.save_settings( param, callback );
+            this.save_settings( param, function(){
+                alerts.notification('Thanks', 'Your settings have been saved');
+            });
         }
     },
 
