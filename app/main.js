@@ -105,7 +105,7 @@ require(['config', 'jquery', 'backbone', 'photoswipe', 'auth', 'utils/local_stor
     });
     $('.x-offline .x-refresh').live('click', function(){
         $.ajaxSetup({timeout:config.get('timeout')});
-        window.location.reload();
+        config.get('current_view').activate();
     });
 
     /* Overriding Backbone.sync

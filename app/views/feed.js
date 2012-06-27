@@ -17,7 +17,6 @@ return page_view.extend({
     },
 
     post_activate: function(options){
-        this.options = options;
         this.photo_collection = new photo_collection();
         this.photo_collection.url = config.get('api_base') + "/search/";
 

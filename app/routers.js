@@ -13,6 +13,7 @@ function _make_route(view, el, extra_data){
                 options.el = $(el);
                 route.cached_view = new view(options);
             }else{
+                route.cached_view.options = options;
                 route.cached_view.activate(options);
             }
             route.cached_view.previous_view = config.get('current_view');

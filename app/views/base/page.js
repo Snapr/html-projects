@@ -38,6 +38,9 @@ return Backbone.View.extend({
     history_ignore_params: false,  // array of url params to ignore when navigating to a view via history
 
     activate: function(options){
+        if(options === undefined){
+            options = this.options;
+        }
 
         if(this.history_ignore_params){
             // if we've been here before, ignore some params from the url,
@@ -76,7 +79,7 @@ return Backbone.View.extend({
             }
         }
         this.set_back_text(back_text);
-        this.post_activate.apply(this, arguments);
+        this.post_activate.apply(this, options);
     },
 
     post_activate: function(){
