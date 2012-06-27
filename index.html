@@ -53,28 +53,28 @@
                 <!-- Image Library Button -->
                 <div class="ui-block-a">
                 <% if (logged_in) {%>
-                        <a class="x-launch-photo-library" data-role="button" data-iconpos="top" data-icon="main-menu-camera-lib" data-corners="false" data-shadow="false">Camera Roll</a>
+                        <a class="x-launch-photo-library" data-role="button" data-iconpos="top" data-icon="main-menu-camera-lib" data-shadow="false">Camera Roll</a>
                  <%}else{%>
-                      <a href="#/login/" data-snapr-dialog="true" data-corners="false" data-shadow="false" data-role="button" data-iconpos="top" data-icon="main-menu-login">Log In</a>
+                      <a href="#/login/" data-snapr-dialog="true" data-shadow="false" data-role="button" data-iconpos="top" data-icon="main-menu-login">Log In</a>
                 <%}%>
                 </div>
 
                 <!-- My Snaps / Latest Feed Btn -->
                 <div class="ui-block-b">
                 <% if (logged_in) {%>
-                        <a href="#/feed/?username=<%=username%>" data-corners="false" data-shadow="false" data-role="button" data-theme="c" class="my-snaps" data-iconpos="top" data-icon="main-menu-feed">
+                        <a href="#/feed/?username=<%=username%>" data-shadow="false" data-role="button" data-theme="c" class="my-snaps" data-iconpos="top" data-icon="main-menu-feed">
                         My Snaps
                         </a>
                         <span class="upload-count">&nbsp;</span>
 
                  <%}else{%>
-                        <a href="#/feed/" data-corners="false" data-shadow="false" data-role="button" data-theme="c" data-iconpos="top" data-icon="main-menu-feed">Latest</a>
+                        <a href="#/feed/" data-shadow="false" data-role="button" data-theme="c" data-iconpos="top" data-icon="main-menu-feed">Latest</a>
                 <%}%>
                 </div>
 
                 <!-- Popular btn -->
                 <div class="ui-block-c">
-                    <a href="#/popular/" data-role="button" data-corners="false" data-shadow="false" data-iconpos="top" data-icon="main-menu-popular">Popular</a>
+                    <a href="#/popular/" data-role="button" data-shadow="false" data-iconpos="top" data-icon="main-menu-popular">Popular</a>
                 </div>
 
             </div>
@@ -82,21 +82,21 @@
             <div class="ui-grid-b">
                 <!-- Map Btn -->
                 <div class="ui-block-a">
-                    <a href="#/map/" data-corners="false" data-shadow="false" data-role="button" data-theme="c" data-iconpos="top" data-icon="main-menu-map">Map</a>
+                    <a href="#/map/" data-shadow="false" data-role="button" data-theme="c" data-iconpos="top" data-icon="main-menu-map">Map</a>
                 </div>
 
                 <!-- Join / My Account Btn -->
                 <div class="ui-block-b">
                     <% if(logged_in) { %>
-                        <a href="#/my-account/" data-corners="false" data-shadow="false" data-role="button" data-iconpos="top" data-icon="main-menu-my-account">My Account</a>
+                        <a href="#/my-account/" data-shadow="false" data-role="button" data-iconpos="top" data-icon="main-menu-my-account">My Account</a>
                     <% }else{ %>
-                        <a href="#/join/" data-corners="false" data-shadow="false" data-role="button" data-iconpos="top" data-icon="main-menu-join">Join Snapr</a>
+                        <a href="#/join/" data-shadow="false" data-role="button" data-iconpos="top" data-icon="main-menu-join">Join Snapr</a>
                     <% } %>
                 </div>
 
                 <!-- cities btn -->
                 <div class="ui-block-c">
-                    <a href="#/cities/" data-corners="false" data-shadow="false" data-role="button" data-theme="c" data-iconpos="top" data-icon="main-menu-cities">Cities</a>
+                    <a href="#/cities/" data-shadow="false" data-role="button" data-theme="c" data-iconpos="top" data-icon="main-menu-cities">Cities</a>
                 </div>
             </div>
 
