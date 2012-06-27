@@ -525,6 +525,10 @@ return page_view.extend({
                 if (params.foursquare_venue){
                     ll += "&spot=" + params.foursquare_venue;
                 }
+                if (params.venue_name){
+                    ll += "&venue_name=" + params.venue_name;
+                }
+
 
                 Backbone.history.navigate( "#/uploading/" + ll );
                 native.pass_data("snapr://upload?" + $.param(params) );

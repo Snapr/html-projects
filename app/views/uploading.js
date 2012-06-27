@@ -121,13 +121,12 @@ var uploading = page_view.extend({
 
     upload_progress: function( upload_data ){
 
-        //var progress_el = this.progress_el;
-
         var photo = upload_data.uploads[upload_data.uploads.length-1];
 
         if(!this.progress_view){
             this.progress_view = new upload_progress_li({
-                photo: photo
+                photo: photo,
+                venue_name: this.venue_name
             });
             this.progress_el.html( this.progress_view.render().el );
         }else{
@@ -135,72 +134,41 @@ var uploading = page_view.extend({
         }
         this.progress_view.render();
 
-        // _.each( upload_data.uploads, function( photo, index ){
-        //     if ((photo.upload_status.toLowerCase() == "active") && (!this.current_upload || this.current_upload.id == photo.id)){
-        //         if (!this.pending_uploads[photo.id]){
-        //             this.pending_uploads[photo.id] = new upload_progress_li({
-        //                 photo: photo
-        //             });
-        //             $container.html( this.pending_uploads[photo.id].render().el );
-        //         }else{
-        //             this.pending_uploads[photo.id].photo = photo;
-        //             this.pending_uploads[photo.id].render();
-        //         }
-        //         this.current_upload = photo;
-        //     }
-
-        // }, this );
-
-        // if (upload_data.uploads){
-        //     this.$el.addClass("showing-upload-queue");
-        // }
-
     },
 
     upload_completed: function( queue_id, snapr_id ){
+
         var $container = this.$el.find(".upload-progress-container");
-
         var uploading_view = this;
+        var photo = new photo_model({id: snapr_id});
 
-        // add the upload progress li at the top
-        if (!this.pending_uploads[queue_id]){
-            var photo = new photo_model({id: snapr_id});
-
-            photo.fetch({
-                success: function( photo ){
-                    var progress_li = new upload_progress_li({
-                        photo: photo.attributes
-                    });
-                    progress_li.message = "Completed!";
-                    progress_li.photo.upload_status = "completed";
-                    progress_li.post_id = snapr_id;
-                    progress_li.photo.id = snapr_id;
-                    progress_li.photo.thumbnail = "https://s3.amazonaws.com/media-server2.snapr.us/thm2/" +
-                        photo.get("secret") + "/" +
-                        snapr_id + ".jpg";
-                    $container.html( progress_li.render().el );
-                    uploading_view.latitude = photo.has("location") && photo.get("location").latitude;
-                    uploading_view.longitude = photo.has("location") && photo.get("location").longitude;
-                    uploading_view.spot = photo.has("location") && photo.get("location").spot_id;
-                    uploading_view.venue_name = photo.has("location") && photo.get("location").foursquare_venue_name;
-                    uploading_view.render();
-                }
-            });
-        }else{
-            this.pending_uploads[queue_id].message = "Completed!";
-            this.pending_uploads[queue_id].photo.upload_status = "completed";
-            this.pending_uploads[queue_id].photo.id = snapr_id;
-            this.pending_uploads[queue_id].post_id = snapr_id;
-            this.pending_uploads[queue_id].render();
-        }
+        photo.fetch({
+            success: function( photo ){
+                this.progress_el = new upload_progress_li({
+                    photo: photo.attributes
+                });
+                this.progress_el.message = "Completed!";
+                this.progress_el.photo.upload_status = "completed";
+                this.progress_el.post_id = snapr_id;
+                this.progress_el.photo.id = snapr_id;
+                this.progress_el.photo.thumbnail = "https://s3.amazonaws.com/media-server2.snapr.us/thm2/" +
+                    photo.get("secret") + "/" +
+                    snapr_id + ".jpg";
+                $container.html( this.progress_el.render().el );
+                uploading_view.latitude = photo.has("location") && photo.get("location").latitude;
+                uploading_view.longitude = photo.has("location") && photo.get("location").longitude;
+                uploading_view.spot = photo.has("location") && photo.get("location").spot_id;
+                uploading_view.venue_name = photo.has("location") && photo.get("location").foursquare_venue_name;
+                uploading_view.render();
+            }
+        });
     },
 
     upload_cancelled: function( queue_id ){
-        if (this.pending_uploads[queue_id]){
-            this.pending_uploads[queue_id].remove();
-            delete this.pending_uploads[queue_id];
+        if (this.progress_el){
+            this.progress_el.remove();
+            delete this.progress_el;
         }
-        // Backbone.history.navigate( "#/" );
     },
 
     upload_count: function( count ){

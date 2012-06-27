@@ -12,6 +12,7 @@ return Backbone.View.extend({
         this.photo = options.photo;
         this.message = null;
         this.photo_id = null;
+        this.venue_name = options.venue_name;
     },
 
     events: {
@@ -26,7 +27,7 @@ return Backbone.View.extend({
                 this.template({
                     upload_status: this.photo.upload_status.toLowerCase(),
                     description: unescape( this.photo.description ),
-                    venue: this.photo.location.foursquare_venue_name || this.photo.location.location,
+                    venue: this.photo.location.foursquare_venue_name || this.venue_name || this.photo.location.location,
                     spot_id: this.photo.location.spot_id,
                     shared: this.photo.shared,
                     facebook_sharing: (
