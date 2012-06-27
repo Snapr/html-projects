@@ -536,6 +536,12 @@ return page_view.extend({
 
     toggle_photo: function( e ){
         this.$el.toggleClass("show-image");
+    },
+
+    offline: function(offline_mode){
+        if(offline_mode){
+            this.$(".location-name").text('Offline');
+        }
     }
 
 });

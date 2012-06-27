@@ -91,11 +91,11 @@ require(['config', 'jquery', 'backbone', 'photoswipe', 'auth', 'utils/local_stor
             if(!options.no_offline_mode && status == 'timeout'){
                 config.set('offline', true);
                 $.ajaxSetup({timeout:config.get('offline_timeout')});
-                config.get('current_view').$('[data-role=content]').prepend(offline_el).trigger("create");
+                config.get('current_view').offline(true);
             }else if(config.get('offline') && (status == 'success' || status == 'notmodified')){
                 config.set('offline', false);
                 $.ajaxSetup({timeout:config.get('timeout')});
-                $('.x-offline').remove();
+                config.get('current_view').offline(false);
             }
         };
     });

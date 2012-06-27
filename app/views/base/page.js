@@ -17,7 +17,7 @@ Page{
     }
 }
 */
-define(['config', 'backbone', 'utils/history_state'], function(config, Backbone, history_state){
+define(['config', 'backbone', 'utils/history_state', 'views/components/offline'], function(config, Backbone, history_state, offline_el){
 
 return Backbone.View.extend({
 
@@ -79,7 +79,7 @@ return Backbone.View.extend({
             }
         }
         this.set_back_text(back_text);
-        this.post_activate.apply(this, options);
+        this.post_activate.call(this, options);
     },
 
     post_activate: function(){
@@ -128,6 +128,14 @@ return Backbone.View.extend({
             }
         }else{
             history.go(-1);
+        }
+    },
+
+    offline: function(offline_mode){
+        if(offline_mode){
+            this.$('[data-role=content]').prepend(offline_el).trigger("create");
+        }else{
+            $('.x-offline').remove();
         }
     }
 });
