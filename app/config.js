@@ -15,6 +15,7 @@ var config_model = Backbone.Model.extend({
         //feed_count: 9, // number of images to show in feed views
         // side_scroll_initial: 6, // numbers of images to show in side-scrollers initially
         // side_scroll_more: 10, // number of extra images to load into side-scrollers when "load more" is activated
+        // activity_count: 25,  // how many items to load in activity page
         // share_redirect: "#/uploading/?"  // set to hash url to redirect after successful upload/share.
     },
     environments: {
@@ -70,6 +71,7 @@ var config_model = Backbone.Model.extend({
         feed_count: 9,
         side_scroll_initial: 6,
         side_scroll_more: 10,
+        activity_count: 25,
         share_redirect: "#/uploading/?"
     },
     initialize: function(){

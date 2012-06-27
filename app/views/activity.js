@@ -1,5 +1,6 @@
 /*global _  define require */
-define(['views/base/page', 'backbone', 'collections/news_period', 'views/activity_stream'], function(page_view, Backbone, news_period_collection, activity_stream){
+define(['views/base/page', 'backbone', 'collections/news_period', 'views/activity_stream', 'config'],
+    function(page_view, Backbone, news_period_collection, activity_stream, config){
 return page_view.extend({
 
     post_initialize: function(){
@@ -7,7 +8,7 @@ return page_view.extend({
         this.collection.bind( "reset", this.render );
         this.collection.data = {
             group_by: "day",
-            n: 50
+            n: config.get('activity_count')
         };
     },
 
