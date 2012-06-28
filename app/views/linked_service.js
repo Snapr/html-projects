@@ -6,13 +6,7 @@ return Backbone.View.extend({
 
     initialize: function(){
         this.linked_service_template = _.template( $('#linked-service-template').html() );
-
         this.add_service_template = _.template( $('#add-linked-service-template').html() );
-
-        // if(this.model){
-        //     console.log('binding');
-        //     this.model.bind( "change", this.render, this);
-        // }
     },
 
     events: {
@@ -51,7 +45,7 @@ return Backbone.View.extend({
 
     // can be overriden when extending this view
     get_return_url: function(){
-        return window.location.href;
+        return window.location.href.replace(/(username|id|url)=[^&]+&?/g, '');
     },
 
     link_service: function(){

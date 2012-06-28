@@ -13,7 +13,7 @@ var connect_page = page_view.extend({
         this.photo_id = this.query.get('photo_id');
         this.shared = this.query.get('shared') ? this.query.get('shared').split(','): [];
         this.to_link = this.query.get('to_link') ? this.query.get('to_link').split(','): [];
-        this.redirect_url = this.query.get('redirect_url');
+        this.redirect_url = this.query.get('redirect_url') || "%23%2F";  //  = "/"
 
         this.render();
 
@@ -57,6 +57,7 @@ var connect_page = page_view.extend({
         }, this );
 
         this.$el.find("ul").listview().listview("refresh");
+        $.mobile.hidePageLoadingMsg();
 
     },
 
@@ -91,8 +92,7 @@ var connect_page = page_view.extend({
 
 var connect_li = linked_service.extend({
 
-    initialize: function()
-    {
+    initialize: function(){
         _.bindAll( this );
         this.template = _.template( $("#connect-li-template").html() );
         this.provider = this.options.provider || null;
@@ -101,8 +101,7 @@ var connect_li = linked_service.extend({
         this.parent_view = this.options.parent_view || null;
     },
 
-    render: function()
-    {
+    render: function(){
         this.$el
             .attr("data-role", "fieldcontain")
             .addClass(this.status)
@@ -124,7 +123,7 @@ var connect_li = linked_service.extend({
         var to_link = _.without( this.parent_view.to_link, this.provider );
         var shared = _.without( this.parent_view.shared, this.provider );
 
-        var redirect_params = {linked: this.provider, redirect_url: this.parent_view.redirect_url};
+        var redirect_params = {linked: this.provider, redirect_url: escape(this.parent_view.redirect_url)};
 
         if (shared.length){
             redirect_params.shared = shared.join(",");
@@ -138,8 +137,6 @@ var connect_li = linked_service.extend({
 
         var next = window.location.href.split('?')[0];
         next += "?" + $.param( redirect_params );
-        // add '' after escaping to dirty the escaped string so that it can be re-escaped later
-        // (at least I think that's why it's done)
         return next;
     },
 
@@ -152,26 +149,21 @@ var connect_li = linked_service.extend({
         var connect_li = this;
 
         var options = {
-            success: function( model, xhr )
-            {
+            success: function( model, xhr ){
                 connect_li.status = "shared";
                 connect_li.render();
-                if (connect_li.parent_view.to_link.length === 0)
-                {
-                    setTimeout(function()
-                    {
+                if (connect_li.parent_view.to_link.length === 0){
+                    setTimeout(function(){
                         Backbone.history.navigate("#/uploading/?shared=true&photo_id=" + model.get("id"));
                     }, 600);
                 }
             },
-            error: function( error )
-            {
+            error: function( error ){
                 console.error("share error", error);
             }
         };
 
-        switch (this.provider)
-        {
+        switch (this.provider){
             case "facebook":
                 this.model.save({
                     facebook_gallery: true
