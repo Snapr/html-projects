@@ -43,6 +43,8 @@ return page_view.extend({
                 },
                 success: function( data ){
                     if(data.success){
+                        $('#twitter-username').val("");
+                        $('#twitter-password').val("");
                         if(data.response.access_token){
                             //login
                             auth.set({
@@ -74,6 +76,8 @@ return page_view.extend({
                 },
                 success: function( data ){
                     if(data.success){
+                        $('#twitter-username').val("");
+                        $('#twitter-password').val("");
                         if(xauth_view.redirect){
                             var redirect = (xauth_view.redirect.indexOf("?") > -1) ?
                                 xauth_view.redirect + "&":

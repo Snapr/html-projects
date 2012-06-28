@@ -40,6 +40,8 @@ return page_view.extend({
             },
             success: function( data ){
                 if(data.success){
+                    $('#tumblr-username').val("");
+                    $('#tumblr-password').val("");
                     if(this_view.redirect){
                         var redirect = (this_view.redirect.indexOf("?") > -1) ?
                             this_view.redirect + "&username=" + data.response.username :
