@@ -145,6 +145,7 @@ return page_view.extend({
     },
 
     save_settings: function( param, callback ){
+        $.mobile.showPageLoadingMsg();
         // prevent backbone from thinking this is a new user
         this.user_settings.id = true;
         this.user_settings.set(param);
@@ -153,11 +154,13 @@ return page_view.extend({
         this.user_settings.save({},{
             data: param,
             success: function( model, xhr ){
+                $.mobile.hidePageLoadingMsg();
                 if (xhr.success){
                     if($.isFunction(callback)){
                         callback( model, xhr );
                     }
                 }else{
+                    $.mobile.hidePageLoadingMsg();
                     console.warn( "error saving notifications", xhr );
                     alerts.notification('Error',  "Sorry, we had trouble saving your settings." );
                     my_account.initialize();
