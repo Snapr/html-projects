@@ -30,8 +30,9 @@
 }
 
 .menu-main{
-    padding: 0;
+    padding: @padding-page-inset @padding-page-inset / 2 0 @padding-page-inset / 2;
     text-transform: lowercase;
+    min-height: 402px!important;
     /* Standard 3 column btns + shared styles */
     .ui-grid-a,
     .ui-grid-b{
@@ -45,10 +46,11 @@
             font-size: @txt-size-small;
             color: @color-txt-medium-on-light;
             background:transparent;
-            background-color:@color-bg-light-tint;
+            background-color:lighten(@color-bg-light-tint, 2%);
+            .corner-all(@corner-general-rounded);
         }
         .ui-btn-inner{
-             min-height: 105px;
+             min-height: 95px;
              padding: 0;
             .ui-icon{
                 background: transparent;
@@ -86,16 +88,17 @@
      /* Smaller 3 column Btns */
     .ui-grid-b{
        /* tricky Border in between btns */
-       .ui-block-b{
-           border-left: @border-medium-on-light;
-           border-right: @border-medium-on-light;
-       }
        .ui-block-a,
        .ui-block-b,
        .ui-block-c{
-           border-bottom: @border-medium-on-light;
+           padding-left: @padding-page-inset / 2;
+           padding-right: @padding-page-inset /2;
+           padding-bottom: @padding-page-inset;
            .border-box();
            position: relative;
+           .ui-btn{
+               .corner-all(@corner-general-rounded);
+           }
         }
 
         .upload-count{
@@ -123,18 +126,25 @@
     }
     /* Larger 2 column Btns */
     .ui-grid-a{
-        /* Shadow under top button block */
-        .box-shadow(rgba(0, 0, 0, 0.2) 0px 2px 2px);
-        z-index: 5;
+        .ui-block-a,
+        .ui-block-b{
+            padding-left: @padding-page-inset / 2;
+            padding-right: @padding-page-inset /2;
+            padding-bottom: @padding-page-inset;
+            .border-box();
+            .ui-btn{
+                .corner-all(@corner-general-rounded);
+                
+            }
+        }
 
         .ui-btn{
             color: @color-txt-medium-on-light;
             font-size: @txt-size-base;
-
-            background-color: #f2f2f2;
-            background-color: rgba(128,128,128, .1);
+            background-color: @color-bg-light-tint;
+            
             .ui-btn-inner{
-                 min-height: 161px;
+                 min-height: 152px;
                  padding: 0;
                  /* Darker sprite versions */
                  .ui-icon-main-menu-camera{background-position: 0 -1040px;}
@@ -150,32 +160,7 @@
 
         }
 
-        /* tricky Border in between btns + rounded corners */
-        .ui-block-a{
-            border-right: @border-light-on-light;
-            .border-box();
-            .ui-btn{
-                .corner-all(0);
-                .corner-tl(@corner-page-element-rounded);
-                .ui-btn-inner{
-                    .corner-all(0);
-                    .corner-tl(@corner-page-element-rounded);
-                }
-            }
-        }
-        .ui-block-b{
-            .corner-all(0);
-            .corner-tr(@corner-page-element-rounded);
-            border-left: @border-medium-on-light;
-            .border-box();
-            .ui-btn{
-                .corner-all(0);
-                .corner-tr(@corner-page-element-rounded);
-                .ui-btn-inner{
-                    .corner-tr(@corner-page-element-rounded);
-                }
-            }
-        }
+       
     }
     .ui-grid-a,
     .ui-grid-b{
@@ -185,10 +170,12 @@
             color: @color-txt-medium-on-light;
         }
     }
+    
     .ui-bar{
-        margin-left: 0;
-        margin-right: 0;
+        margin-right: -@padding-page-inset / 2;
+        margin-left: -@padding-page-inset / 2;
     }
+   
 }
 
 
@@ -720,15 +707,18 @@
 #dash{
     div[data-role="content"]{
         position: relative;
-        padding-bottom: 0;
+        /*padding-bottom: 0;*/
     }
 }
 
 .dash-wrapper{
-    min-height: 322px;
+    min-height: 316px;
+    oveflow: hidden;
 }
 
 .dash-footer{
+    height: 86px;
+    overflow: hidden;
     .ui-btn-inner{
         .ui-icon{
             background-image: url('../gfx/dash-icons.png');
@@ -1133,8 +1123,8 @@
     background-image: url('../gfx/camplus.png')!important;
     background-repeat: no-repeat;
     background-position: center!important;
-    width: 38px;
-    height: 38px;
+    width: 36px;
+    height: 36px;
     float: right;
     .corner-all(@corner-general-rounded)!important;
     span{

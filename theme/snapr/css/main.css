@@ -1282,9 +1282,9 @@ a.ui-link-inherit {
   background: none;
   background-color: #000000;
   border-radius: 8px;
-  /*min-height: 480px - @size-topbar-height - @padding-page-inset - @padding-page-inset;*/
-
-  min-height: 409px;
+  /*           min-height: 460px - @size-topbar-height - @padding-page-inset - @padding-page-inset;
+*/
+  min-height: 412px;
 }
 /* Main Styles */
 .ui-body-a {
@@ -1853,6 +1853,7 @@ a.ui-link-inherit {
   background-image: url('../gfx/bg-texture-light.gif');
   border: none;
   border-radius: 8px;
+  overflow: visible;
 }
 .ui-body-c .ui-header {
   color: #666666;
@@ -2279,9 +2280,9 @@ a.ui-link-inherit {
   background-color: #ffffff;
   background-image: none;
   border-radius: 8px;
-  /*min-height: 480px - @size-topbar-height - @padding-page-inset - @padding-page-inset;*/
-
-  min-height: 409px;
+  /*        min-height: 460px - @size-topbar-height - @padding-page-inset * 2;
+*/
+  min-height: 412px;
 }
 .ui-body-d .ui-link,
 .ui-body-d .ui-link:visited,
@@ -3194,7 +3195,6 @@ a.ui-link-inherit {
   list-style: none;
   padding: 0;
   margin: 0;
-  margin-bottom: 8px;
 }
 .image-streams .image-stream {
   position: relative;
@@ -4014,8 +4014,9 @@ body.browser-testing .ps-caption-bottom {
   font-style: normal;
 }
 .menu-main {
-  padding: 0;
+  padding: 8px 4px 0 4px;
   text-transform: lowercase;
+  min-height: 402px!important;
   /* Standard 3 column btns + shared styles */
 
   /* Smaller 3 column Btns */
@@ -4037,11 +4038,14 @@ body.browser-testing .ps-caption-bottom {
   font-size: 12px;
   color: #666666;
   background: transparent;
-  background-color: #f7f7f7;
+  background-color: #fcfcfc;
+  -moz-border-radius: 6px;
+  -webkit-border-radius: 6px;
+  border-radius: 6px;
 }
 .menu-main .ui-grid-a .ui-btn-inner,
 .menu-main .ui-grid-b .ui-btn-inner {
-  min-height: 105px;
+  min-height: 95px;
   padding: 0;
 }
 .menu-main .ui-grid-a .ui-btn-inner .ui-icon,
@@ -4121,18 +4125,23 @@ body.browser-testing .ps-caption-bottom {
   /* tricky Border in between btns */
 
 }
-.menu-main .ui-grid-b .ui-block-b {
-  border-left: solid 1px #e4e4e4;
-  border-right: solid 1px #e4e4e4;
-}
 .menu-main .ui-grid-b .ui-block-a,
 .menu-main .ui-grid-b .ui-block-b,
 .menu-main .ui-grid-b .ui-block-c {
-  border-bottom: solid 1px #e4e4e4;
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-bottom: 8px;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   position: relative;
+}
+.menu-main .ui-grid-b .ui-block-a .ui-btn,
+.menu-main .ui-grid-b .ui-block-b .ui-btn,
+.menu-main .ui-grid-b .ui-block-c .ui-btn {
+  -moz-border-radius: 6px;
+  -webkit-border-radius: 6px;
+  border-radius: 6px;
 }
 .menu-main .ui-grid-b .upload-count {
   background-color: #4185f4;
@@ -4174,24 +4183,28 @@ body.browser-testing .ps-caption-bottom {
   text-transform: none;
   vertical-align: middle;
 }
-.menu-main .ui-grid-a {
-  /* Shadow under top button block */
-
-  -moz-box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 2px;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 2px;
-  box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 2px;
-  z-index: 5;
-  /* tricky Border in between btns + rounded corners */
-
+.menu-main .ui-grid-a .ui-block-a,
+.menu-main .ui-grid-a .ui-block-b {
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-bottom: 8px;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.menu-main .ui-grid-a .ui-block-a .ui-btn,
+.menu-main .ui-grid-a .ui-block-b .ui-btn {
+  -moz-border-radius: 6px;
+  -webkit-border-radius: 6px;
+  border-radius: 6px;
 }
 .menu-main .ui-grid-a .ui-btn {
   color: #666666;
   font-size: 15px;
-  background-color: #f2f2f2;
-  background-color: rgba(128, 128, 128, 0.1);
+  background-color: #f7f7f7;
 }
 .menu-main .ui-grid-a .ui-btn .ui-btn-inner {
-  min-height: 161px;
+  min-height: 152px;
   padding: 0;
   /* Darker sprite versions */
 
@@ -4211,53 +4224,6 @@ body.browser-testing .ps-caption-bottom {
 .menu-main .ui-grid-a .ui-btn .ui-btn-text {
   margin-top: 36px;
 }
-.menu-main .ui-grid-a .ui-block-a {
-  border-right: solid 1px #ffffff;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-}
-.menu-main .ui-grid-a .ui-block-a .ui-btn {
-  -moz-border-radius: 0;
-  -webkit-border-radius: 0;
-  border-radius: 0;
-  -moz-border-radius-topleft: 8px;
-  -webkit-border-top-left-radius: 8px;
-  border-top-left-radius: 8px;
-}
-.menu-main .ui-grid-a .ui-block-a .ui-btn .ui-btn-inner {
-  -moz-border-radius: 0;
-  -webkit-border-radius: 0;
-  border-radius: 0;
-  -moz-border-radius-topleft: 8px;
-  -webkit-border-top-left-radius: 8px;
-  border-top-left-radius: 8px;
-}
-.menu-main .ui-grid-a .ui-block-b {
-  -moz-border-radius: 0;
-  -webkit-border-radius: 0;
-  border-radius: 0;
-  -moz-border-radius-topright: 8px;
-  -webkit-border-top-right-radius: 8px;
-  border-top-right-radius: 8px;
-  border-left: solid 1px #e4e4e4;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-}
-.menu-main .ui-grid-a .ui-block-b .ui-btn {
-  -moz-border-radius: 0;
-  -webkit-border-radius: 0;
-  border-radius: 0;
-  -moz-border-radius-topright: 8px;
-  -webkit-border-top-right-radius: 8px;
-  border-top-right-radius: 8px;
-}
-.menu-main .ui-grid-a .ui-block-b .ui-btn .ui-btn-inner {
-  -moz-border-radius-topright: 8px;
-  -webkit-border-top-right-radius: 8px;
-  border-top-right-radius: 8px;
-}
 .menu-main .ui-grid-a .ui-btn-hover-c,
 .menu-main .ui-grid-b .ui-btn-hover-c,
 .menu-main .ui-grid-a .ui-btn-active-c,
@@ -4266,8 +4232,8 @@ body.browser-testing .ps-caption-bottom {
   color: #666666;
 }
 .menu-main .ui-bar {
-  margin-left: 0;
-  margin-right: 0;
+  margin-right: -4px;
+  margin-left: -4px;
 }
 /*
 * @login - Custom
@@ -4909,10 +4875,16 @@ body.browser-testing .ps-caption-bottom {
 */
 #dash div[data-role="content"] {
   position: relative;
-  padding-bottom: 0;
+  /*padding-bottom: 0;*/
+
 }
 .dash-wrapper {
-  min-height: 322px;
+  min-height: 316px;
+  oveflow: hidden;
+}
+.dash-footer {
+  height: 86px;
+  overflow: hidden;
 }
 .dash-footer .ui-btn-inner .ui-icon {
   background-image: url('../gfx/dash-icons.png');
@@ -5326,8 +5298,8 @@ body.browser-testing .ps-caption-bottom {
   background-image: url('../gfx/camplus.png') !important;
   background-repeat: no-repeat;
   background-position: center!important;
-  width: 38px;
-  height: 38px;
+  width: 36px;
+  height: 36px;
   float: right;
   -moz-border-radius: 6px !important;
   -webkit-border-radius: 6px !important;
