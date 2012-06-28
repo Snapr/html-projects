@@ -118,7 +118,7 @@ return Backbone.View.extend({
             if (this.previous_view){
                 this.previous_view.change_page({
                     changeHash: false,
-                    transition: this.transition,
+                    transition: this.get_transition(),
                     reverse: true
                 });
                 config.set('current_view', this.previous_view);
