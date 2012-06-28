@@ -5,9 +5,10 @@ return page_view.extend({
 
     post_initialize: function(){
         var dialog = this;
-        this.$el.live( "pageshow", function(){
-            dialog.$('#people-search').focus();
-        });
+        // this gets anoying on iphone
+        // this.$el.live( "pageshow", function(){
+        //     dialog.$('#people-search').focus();
+        // });
         // undeligate events because the people el gets resued by other instances of this view
         this.$el.live( "pagehide", function(){
             dialog.undelegateEvents();
