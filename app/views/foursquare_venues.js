@@ -72,8 +72,11 @@ var venues = page_view.extend({
             });
             this.render();
             doSearch = function(){
+                venues_view.$el.addClass('loading');
                 venues_view.collection.data.query = keywords;
-                venues_view.collection.fetch();
+                venues_view.collection.fetch({complete:function(){
+                    venues_view.$el.removeClass('loading');
+                }});
             };
         }else{
             doSearch = null;
