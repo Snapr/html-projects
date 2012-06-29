@@ -140,5 +140,16 @@ string_utils.human_list = function (list) {
     return text;
 };
 
+string_utils.short_distance = function(d) {
+    d = ~~d;
+    if (d < 1000) {
+        return d + 'm';
+    }
+    else {
+        d = Math.floor(d/1000);
+        return (d > 100) ? '100+ km' : d + 'km';
+    }
+}
+
 return string_utils;
 });
