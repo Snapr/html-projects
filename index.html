@@ -1744,9 +1744,11 @@
             <a class="ui-bar top-left-arrow <%= spot.get('category').slug %>" data-role="button" data-theme="e" data-iconpos="right" data-icon="arrow-r">
                 <span class="ui-icon ui-icon-category spot-icon dark-spot-icon"></span>
                 <em><%= spot.get('name') %></em>
-                <%= spot.get('stats').photo_count %> photos
+                <% if (spot.get('stats').photos_count) { %>
+                    <%= spot.get('stats').photos_count %> photos
+                <% } %>
                 <% if (spot.get('location').distance) { %>
-                <span class="spot-distance small-text">(<%= string_utils.short_distance( spot.get('location').distance ) %>)</span>
+                    <span class="spot-distance small-text">(<%= string_utils.short_distance( spot.get('location').distance ) %>)</span>
                 <% } %>
             </a>
 
