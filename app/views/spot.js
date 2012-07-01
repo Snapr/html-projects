@@ -11,6 +11,11 @@ var spot_view = page_view.extend({
     },
 
     post_activate: function(options) {
+
+        this.$el.find('.spot-head').empty();
+        this.$el.find('.image-streams').empty();
+        this.$el.find('.top-users').empty();
+
         this.spot_id = options.query.spot_id || 0;
         this.change_page();
         this.fetch_spot();
@@ -26,7 +31,8 @@ var spot_view = page_view.extend({
         var spot_view = this,
             options = {
                 data: {
-                    spot_id: spot_view.spot_id
+                    spot_id: spot_view.spot_id,
+                    full: true
                 },
                 success: function() {
                     spot_view.fetch_photos();

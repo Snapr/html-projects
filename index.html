@@ -1627,7 +1627,7 @@
                  <div class="page-inset-header ui-body-c spots-search-header">
                      <div class="ui-content">
                      <form id="spots-search">
-                         <input type="search" id="people-search" value="" placeholder="Venue Name&hellip;" />
+                         <input type="search" id="spot-search" value="" placeholder="Venue Name&hellip;" />
 
                          <div class="spots-search-filters">
                              <span class="category-btn">
@@ -1645,7 +1645,7 @@
 
                              <div class="ui-grid-a">
                                  <div class="ui-block-a">
-                                     <select data-theme="c" name="category" id="options-category" data-native-menu="true">
+                                     <select data-theme="c" name="category" id="options-location" data-native-menu="true">
                                          <option value='nearby' id='location-nearby'>Nearby</option>
                                          <option value='anywhere' id="location-anywhere">Anywhere</option>
 
@@ -1673,23 +1673,6 @@
                         <span class="small-text">show on map</span>
                     </a>
                     <ul class="spots">
-                        <li class="spot-item">
-                            <a class="spot" href="#/spot/?spot_id=">
-                                <span class="spot-photo-crop">
-                                    <img src="https://s3.amazonaws.com/media-server2.snapr.us/thm2/dev/0f56166223a61001dd6e91a83774fba4/10A5.jpg" class="thumb-image thumb-med" />
-                                </span>
-                                <span class="spot-heading">
-                                    <h4 class="spot-name">Name <span class="ui-icon spot-icon"></span></h4>
-                                    <p class="spot-subheading small-text">
-                                        5k
-                                    </p>
-                                </span>
-                                <p class="spot-address">
-                                    address line 1</br>
-                                    address line 2
-                                </p>
-                            </a>
-                        </li>
                     </ul>
                 </div>
 
@@ -1697,6 +1680,35 @@
 
 
          </div><!-- /page -->
+
+         <script id="spots-result-item" type="text/template">
+            <a class="spot <%= spot.get('category').slug %>" href="#/spot/?spot_id=<%=spot.get('id')%>">
+                <span class="spot-photo-crop">
+                <% if (spot.get('info').hero_image) { %>
+                    <img src="https://s3.amazonaws.com/media-server2.snapr.us/thm2/<%= spot.get('info').hero_image.secret %>/<%= spot.get('info').hero_image.id %>.jpg" class="thumb-image thumb-med" />
+                <%} else { %>
+                    <div class="no-photo-yet"></div>
+                <% } %>
+                </span>
+
+                <span class="spot-heading">
+                    <h4 class="spot-name"><%= spot.get('name') %> <span class="ui-icon spot-icon"></span></h4>
+                    <p class="spot-subheading small-text">
+                        <% if (spot.get('location').distance) { %>
+                        <%= string_utils.short_distance( spot.get('location').distance ) %>
+                        <% } %>
+                    </p>
+                </span>
+                <p class="spot-address">
+                    <% if (spot.get('location').address && spot.get('location').city) { %>
+                        
+                        <%= spot.get('location').address %></br>
+                        <%= spot.get('location').city %>
+                        
+                    <% } %>
+                </p>
+            </a>
+         </script>
 
          <!-- @spot PAGE -->
          <div id="spot" data-title="Spots" data-add-back-btn="true" data-role="page" data-theme="d">
@@ -1718,6 +1730,7 @@
 
                       <ul class="top-users">
                       </ul>
+                      
 
                   </div>
               </div>
@@ -1731,7 +1744,7 @@
             <a class="ui-bar top-left-arrow <%= spot.get('category').slug %>" data-role="button" data-theme="e" data-iconpos="right" data-icon="arrow-r">
                 <span class="ui-icon ui-icon-category spot-icon dark-spot-icon"></span>
                 <em><%= spot.get('name') %></em>
-                55 photos
+                <%= spot.get('stats').photo_count %> photos
                 <% if (spot.get('location').distance) { %>
                 <span class="spot-distance small-text">(<%= string_utils.short_distance( spot.get('location').distance ) %>)</span>
                 <% } %>
@@ -1740,7 +1753,11 @@
             <div class="spot-header ui-body-c">
                 <div class="spot ui-content">
                     <a class="spot-photo-crop">
-                        <img src="https://s3.amazonaws.com/media-server2.snapr.us/thm2/dev/0f56166223a61001dd6e91a83774fba4/10A5.jpg" class="thumb-image thumb-med" />
+                    <% if (spot.get('info').hero_image) { %>
+                        <img src="https://s3.amazonaws.com/media-server2.snapr.us/thm2/<%= spot.get('info').hero_image.secret %>/<%= spot.get('info').hero_image.id %>.jpg" class="thumb-image thumb-med" />
+                    <%} else { %>
+                        <div class="no-photo-yet"></div>
+                    <% } %>
                     </a>
                     <p class="spot-address">
                         <%= spot.get('location').address %></br>
@@ -1750,7 +1767,9 @@
                         <%= spot.get('contact').phone %>
                     </p>
                     <p class="spot-photo-credit small-text">
-                        &lsaquo; photo by <a href="#/feed/?username=">username</a>
+                        <% if (spot.get('info').hero_image) { %>
+                        &lsaquo; photo by <a href="#/feed/?username=<%= spot.get('info').hero_image.username %>"><%= spot.get('info').hero_image.username %></a>
+                        <% } %>
                     </p>
 
                     <a class="foursquare-btn" data-role="button" data-icon="foursquare-logo" data-iconpos="notext" data-theme="c"></a>
@@ -1794,11 +1813,13 @@
     </script>
 
     <!-- @spot TOP USER ITEM -->
-    <script id="spot-top-user-item" type="text/template">   
-        <a href="#/feed/?username=<%= user.get('username') %>">
-            <span class="user-icon-med" style="background-image: url('http://dev.sna.pr/avatars/22?size=large&_salt=gravatar');"></span>
-            <span class="small-username"><%= user.get('username') %></span>
-        </a>
+    <script id="spot-top-user-item" type="text/template">  
+        <li class="top-user-item"> 
+            <a href="#/feed/?username=<%= user.get('username') %>">
+                <span class="user-icon-med" style="background-image: url('http://dev.sna.pr/avatars/22?size=large&_salt=gravatar');"></span>
+                <span class="small-username"><%= user.get('username') %></span>
+            </a>
+        </li>
     </script>
 
 

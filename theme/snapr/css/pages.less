@@ -1651,6 +1651,17 @@
     padding-left: @padding-image-grid-inset;
     padding-right: @padding-page-inset;
     min-height:@size-img-thumb;
+    .spot {
+        min-height: 101px;
+        .spot-heading {
+            .spot-name {
+                margin: 4px 0;
+            }
+        }
+        .spot-address {
+            margin-top: 10px;
+        }
+    }
 }
 
 .spot{
@@ -1707,6 +1718,7 @@
 
 .top-user-item{
     width: @size-med-avatar;    
+    margin-right: 5px;
     .small-username{
         overflow: hidden;
         text-overflow: ellipsis;
