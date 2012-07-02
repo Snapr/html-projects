@@ -547,6 +547,7 @@ return page_view.extend({
     offline: function(offline_mode){
         if(offline_mode){
             this.$(".location-name").text('Offline');
+            this.$(".foursquare-venue-name").text('Offline');
         }
     }
 
