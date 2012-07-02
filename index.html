@@ -1624,9 +1624,9 @@
                  </div>
              </div>
              <div data-role="content" data-theme="d" data-ajax="false">
-                 <div class="page-inset-header ui-body-c spots-search-header">
+                 <div class="page-inset-header ui-body-c spots-search-header search-header">
                      <div class="ui-content">
-                     <form id="spots-search">
+                     <form id="spots-search" class="all-categories">
                          <input type="search" id="spot-search" value="" placeholder="Venue Name&hellip;" />
 
                          <div class="spots-search-filters">
@@ -1687,7 +1687,11 @@
                 <% if (spot.get('info').hero_image) { %>
                     <img src="https://s3.amazonaws.com/media-server2.snapr.us/thm2/<%= spot.get('info').hero_image.secret %>/<%= spot.get('info').hero_image.id %>.jpg" class="thumb-image thumb-med" />
                 <%} else { %>
-                    <div class="no-photo-yet"></div>
+                    <div class="no-photo-yet">
+                        no<br />
+						photos<br />
+						yet<br />
+                    </div>
                 <% } %>
                 </span>
 
@@ -1728,6 +1732,7 @@
                       <ul class="image-streams">
                       </ul>
 
+                      <h4>Top Users</h4>
                       <ul class="top-users">
                       </ul>
                       
@@ -1743,12 +1748,9 @@
         <script id="spot-header-template" type="text/template">
             <a class="ui-bar top-left-arrow <%= spot.get('category').slug %>" data-role="button" data-theme="e" data-iconpos="right" data-icon="arrow-r">
                 <span class="ui-icon ui-icon-category spot-icon dark-spot-icon"></span>
-                <em><%= spot.get('name') %></em>
+                <em class="spot-name"><%= spot.get('name') %></em>
                 <% if (spot.get('stats').photos_count) { %>
-                    <%= spot.get('stats').photos_count %> photos
-                <% } %>
-                <% if (spot.get('location').distance) { %>
-                    <span class="spot-distance small-text">(<%= string_utils.short_distance( spot.get('location').distance ) %>)</span>
+                    <span class="small-text">(<%= spot.get('stats').photos_count %> photo<% if ((spot.get('stats').photos_count) > 1) { %>s<% } %>)</span>
                 <% } %>
             </a>
 
@@ -1758,23 +1760,34 @@
                     <% if (spot.get('info').hero_image) { %>
                         <img src="https://s3.amazonaws.com/media-server2.snapr.us/thm2/<%= spot.get('info').hero_image.secret %>/<%= spot.get('info').hero_image.id %>.jpg" class="thumb-image thumb-med" />
                     <%} else { %>
-                        <div class="no-photo-yet"></div>
+                        <div class="no-photo-yet">
+                            no<br />
+							photos<br />
+							yet<br />
+                        </div>
                     <% } %>
                     </a>
-                    <p class="spot-address">
-                        <%= spot.get('location').address %></br>
-                        <%= spot.get('location').city %>
-                    </p>
-                    <p class="spot-phone small-text">
-                        <%= spot.get('contact').phone %>
-                    </p>
+                    <div class="spot-venue-details">
+                        <a class="spot-address small-text" href="http://maps.google.com/maps?ll=<%= spot.get('location').latitude %>,<%= spot.get('location').longitude %>&q=<%= spot.get('name') %>">
+                            <%= spot.get('location').address %></br>
+                            <%= spot.get('location').city %>
+                            <% if (spot.get('location').distance) { %>
+                                <span class="spot-distance "><%= string_utils.short_distance( spot.get('location').distance ) %> </span>
+                            <% } %><span class="spot-distance ">&rsaquo;</span>
+                        </a>
+                        <a  href="tel:<%= spot.get('contact').phone %>" class="spot-phone small-text">
+                            &#9742; <%= spot.get('contact').phone %>
+                        </a>
+                    </div>
                     <p class="spot-photo-credit small-text">
                         <% if (spot.get('info').hero_image) { %>
-                        &lsaquo; photo by <a href="#/feed/?username=<%= spot.get('info').hero_image.username %>"><%= spot.get('info').hero_image.username %></a>
+                        &lsaquo; photo by <a href="#/feed/?username=<%= spot.get('info').hero_image.username %>" class="username"><%= spot.get('info').hero_image.username %></a>
                         <% } %>
                     </p>
-
-                    <a class="foursquare-btn" data-role="button" data-icon="foursquare-logo" data-iconpos="notext" data-theme="c"></a>
+                    
+                    <% if (spot.get('foursquare').venue_page) { %>
+                    <a href="<%= spot.get('foursquare').venue_page %>" class="foursquare-btn" data-role="button" data-icon="foursquare-logo" data-iconpos="notext" data-theme="c"></a>
+                    <% } %>
 
                 </div>
             </div>

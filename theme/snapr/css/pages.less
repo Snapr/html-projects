@@ -1617,6 +1617,22 @@
         position: absolute;
         top: 0;
         left: 0;
+        .ui-select{
+            .ui-btn-inner{
+                width: 18px;
+                height: 18px;
+            }
+            .ui-btn-text{
+                display: none;
+            }
+            .ui-icon{
+                right: auto;
+                left: 6px;
+                top: 6px;
+                margin-top: 0;
+              
+            }
+        }
     }
 
    .ui-grid-a{
@@ -1640,14 +1656,15 @@
     .ui-btn-text{
         padding-left: 0;
     }
+    
 }
 
 .spot-item{
     margin-bottom: @padding-element-inset / 2;
     padding-bottom: @padding-element-inset / 2;
     border-bottom: @border-medium-on-light;
-    margin-left: -@padding-page-inset;
-    margin-right: -@padding-page-inset;
+    margin-left: 0;
+    margin-right:0;
     padding-left: @padding-image-grid-inset;
     padding-right: @padding-page-inset;
     min-height:@size-img-thumb;
@@ -1658,9 +1675,17 @@
                 margin: 4px 0;
             }
         }
+        .spot-subheading{
+            color: @color-txt-medium-on-light;
+        }
         .spot-address {
             margin-top: 10px;
+            font-family: @txt-font-base;
+            color: @color-txt-medium-on-light;
         }
+    }
+    &.ui-btn-icon-right .ui-btn-inner .ui-icon.ui-icon-arrow-r{
+        right: -@padding-element-inset;
     }
 }
 
@@ -1684,7 +1709,7 @@
             width: 60px;
             height: 60px;
             background-color: #EFEFEE;
-            margin: 15px;
+            margin: 6px;
             border-radius: 45px;
             text-align: center;
             padding: 15px;
@@ -1693,6 +1718,7 @@
             font-weight: bold;
             line-height: 18px;
             font-size: 14px;
+            font-weight: normal;
         }
     }
 
@@ -1704,6 +1730,8 @@
             margin-bottom: 0;
             padding-top: 2px;
             margin-top: 4px;
+            max-width: 100%;
+            .border-box();
             .spot-icon{
                 position: absolute;
                 right: 0;
@@ -1741,14 +1769,30 @@
     background-image: @gfx-bg-light-texture;
     padding: @padding-image-grid-inset;
     min-height:@size-img-thumb;
+    .spot-venue-details{
+        min-height: 64px;
+    }
+    
     p{
         padding-top:@padding-element-inset / 2 ;
+        color: @color-txt-medium-on-light;
+    }
+   
+    .spot-phone,
+    .spot-address{
+        padding-top:@padding-element-inset / 2 ;
+        margin-bottom: @padding-element-inset;
+        display: block;
+    }
+    .spot-distance {
+        color: @color-txt-light-on-light;
+        font-size: @txt-size-small;
     }
     .foursquare-btn{
         position: absolute;
         right: 0;
         top: 50%;
-        margin-top: -12px;
+        margin-top: -4px;
         width: 70px;
         height: 24px;
         .ui-icon-foursquare-logo{

@@ -590,36 +590,37 @@
 }
 /* @spot icons*/
 /* default */
-.ui-icon.spot-icon {
+.ui-icon.spot-icon,
+.category-btn .ui-icon {
   background-position: 0px 0px;
   background-image: url('../gfx/spot-icons.png');
   width: 24px;
   height: 24px;
 }
 /* if parent class is set */
+.great-outdoors .category-btn .ui-icon,
 .great-outdoors .spot-icon {
   background-position: 0px -24px;
 }
+.shops .category-btn .ui-icon,
 .shops .spot-icon {
   background-position: 0px -48px;
 }
+.nightlife-spots .category-btn .ui-icon,
 .nightlife-spots .spot-icon {
   background-position: 0px -72px;
 }
+.food .category-btn .ui-icon,
 .food .spot-icon {
   background-position: 0px -120px;
 }
+.arts-and-entertainment .category-btn .ui-icon,
 .arts-and-entertainment .spot-icon {
   background-position: 0px -144px;
 }
+.all-categories .category-btn .ui-icon,
 .all-categories .spot-icon {
   background-position: 0px -192px;
-}
-.beer .spot-icon {
-  background-position: 0px -96px;
-}
-.cafe .spot-icon {
-  background-position: 0px -168px;
 }
 /* dark icon */
 .ui-icon.dark-spot-icon {
@@ -748,6 +749,9 @@ strong {
 .small-text {
   font-size: 12px;
   font-family: Helvetica, Arial, sans-serif;
+}
+.small-text .username {
+  font-size: 12px;
 }
 .light-text {
   color: #999999;
@@ -2939,6 +2943,12 @@ a.ui-link-inherit {
 }
 .ui-bar .image-tag {
   max-width: 50%;
+  display: inline-block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.ui-bar .spot-name {
+  max-width: 70%;
   display: inline-block;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -5745,6 +5755,19 @@ body.browser-testing .ps-caption-bottom {
   top: 0;
   left: 0;
 }
+.spots-search-filters .category-btn .ui-select .ui-btn-inner {
+  width: 18px;
+  height: 18px;
+}
+.spots-search-filters .category-btn .ui-select .ui-btn-text {
+  display: none;
+}
+.spots-search-filters .category-btn .ui-select .ui-icon {
+  right: auto;
+  left: 6px;
+  top: 6px;
+  margin-top: 0;
+}
 .spots-search-filters .ui-grid-a .ui-block-a .ui-btn {
   margin-right: 4px;
 }
@@ -5762,8 +5785,8 @@ body.browser-testing .ps-caption-bottom {
   margin-bottom: 4px;
   padding-bottom: 4px;
   border-bottom: solid 1px #e4e4e4;
-  margin-left: -8px;
-  margin-right: -8px;
+  margin-left: 0;
+  margin-right: 0;
   padding-left: 4px;
   padding-right: 8px;
   min-height: 101px;
@@ -5774,8 +5797,16 @@ body.browser-testing .ps-caption-bottom {
 .spot-item .spot .spot-heading .spot-name {
   margin: 4px 0;
 }
+.spot-item .spot .spot-subheading {
+  color: #666666;
+}
 .spot-item .spot .spot-address {
   margin-top: 10px;
+  font-family: Helvetica, Arial, sans-serif;
+  color: #666666;
+}
+.spot-item.ui-btn-icon-right .ui-btn-inner .ui-icon.ui-icon-arrow-r {
+  right: -8px;
 }
 .spot {
   padding: 0!important;
@@ -5799,7 +5830,7 @@ body.browser-testing .ps-caption-bottom {
   width: 60px;
   height: 60px;
   background-color: #EFEFEE;
-  margin: 15px;
+  margin: 6px;
   border-radius: 45px;
   text-align: center;
   padding: 15px;
@@ -5808,6 +5839,7 @@ body.browser-testing .ps-caption-bottom {
   font-weight: bold;
   line-height: 18px;
   font-size: 14px;
+  font-weight: normal;
 }
 .spot .spot-heading .spot-name {
   display: inline-block;
@@ -5816,6 +5848,10 @@ body.browser-testing .ps-caption-bottom {
   margin-bottom: 0;
   padding-top: 2px;
   margin-top: 4px;
+  max-width: 100%;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
 }
 .spot .spot-heading .spot-name .spot-icon {
   position: absolute;
@@ -5846,14 +5882,28 @@ body.browser-testing .ps-caption-bottom {
   padding: 4px;
   min-height: 101px;
 }
+.spot-header .spot-venue-details {
+  min-height: 64px;
+}
 .spot-header p {
   padding-top: 4px;
+  color: #666666;
+}
+.spot-header .spot-phone,
+.spot-header .spot-address {
+  padding-top: 4px;
+  margin-bottom: 8px;
+  display: block;
+}
+.spot-header .spot-distance {
+  color: #999999;
+  font-size: 12px;
 }
 .spot-header .foursquare-btn {
   position: absolute;
   right: 0;
   top: 50%;
-  margin-top: -12px;
+  margin-top: -4px;
   width: 70px;
   height: 24px;
 }
@@ -6501,7 +6551,8 @@ body.browser-testing .ps-caption-bottom {
     -webkit-background-size: 24px 24px;
     background-size: 24px 24px;
   }
-  .ui-icon.spot-icon {
+  .ui-icon.spot-icon,
+  .category-btn .ui-icon {
     background-image: url('../gfx/retina/spot-icons.png');
     -moz-background-size: 72px 216px;
     -o-background-size: 72px 216px;
