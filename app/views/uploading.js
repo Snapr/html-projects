@@ -1,11 +1,24 @@
 /*global _  define require */
-define(['backbone', 'views/base/page', 'views/upload_progress_li',
+define(['backbone', 'views/base/page', 'views/upload_progress_li', 'collections/upload_progress',
     'models/photo', 'views/base/side_scroll', 'collections/photo', 'utils/local_storage', 'utils/alerts', 'native', 'config'],
-function(Backbone, page_view, upload_progress_li, photo_model, side_scroll, photo_collection, local_storage, alerts, native, config){
+function(Backbone, page_view, upload_progress_li, upload_progress, photo_model, side_scroll, photo_collection, local_storage, alerts, native, config){
 
 var uploading = page_view.extend({
 
+    post_initialize: function(){
+        var view = this;
+        this.$el.on( "pageshow", function(){
+            view.watch_uploads();
+        });
+        this.$el.on( "pagehide", function(){
+            view.watch_uploads(false);
+        });
+    },
+
     post_activate: function(options){
+
+        // our photo is the last one in the queue, if there is one there.
+        this.photo = upload_progress.at(0);
 
         this.change_page();
 
@@ -33,6 +46,7 @@ var uploading = page_view.extend({
             // testing upload stuff
             //var test_data = {"uploads":[{"description":"Pzzz","percent_complete":10,"id":"013FBD4D-7","sharing":{},"date":"2012-03-09 14:25:59 -0500","status":"private","location":{},"shared":{tweeted:true},"upload_status":"Active","thumbnail":"file:///Users/dpwolf/Library/Application Support/iPhone Simulator/5.0/Applications/ECF32C66-12DE-44D8-B2C2-9A02A0DD77BE/Documents/upload/00000000000353013969.jpg"}]}
         }
+        this.update_uploads();
     },
 
     events: {
@@ -119,49 +133,64 @@ var uploading = page_view.extend({
 
     },
 
-    upload_progress: function( upload_data ){
+    watch_uploads: function(on){
+        if(on !== false){
+            upload_progress.on('change add remove', this.update_uploads);
+            upload_progress.on('complete', this.upload_complete);
+        }else{
+            upload_progress.off('change add remove', this.update_uploads);
+            upload_progress.off('complete', this.upload_complete);
+        }
+    },
+
+    update_uploads: function(model, changes){
+        // if we don't know what photo we are targeting yet, take the last one in the queue;
+        this.photo = this.photo || upload_progress.at(0);
+        if(this.progress_view && model != this.photo){
+            return;
+        }
+
         if (this.progress_view){
             this.progress_view.queued(false);
         }
         this.$('.offline').hide();
 
-        var photo = upload_data.uploads[upload_data.uploads.length-1];
-
         if(!this.progress_view){
             this.progress_view = new upload_progress_li({
-                photo: photo,
+                photo: this.photo,
                 venue_name: this.venue_name
             });
             this.progress_el.html( this.progress_view.render().el );
         }else{
-            this.progress_view.photo = photo;
+            this.progress_view.photo = this.photo;
+            this.progress_view.render(); // 2
         }
-        this.progress_view.render();
-
     },
 
-    upload_completed: function( queue_id, snapr_id ){
+    upload_complete: function( model, queue_id ){
+        if(model != this.photo){
+            return;
+        }
         if (this.progress_view){
             this.progress_view.queued(false);
         }
         this.$('.offline').hide();
 
-        var $container = this.$el.find(".upload-progress-container");
+        var $container = this.$(".upload-progress-container");
         var uploading_view = this;
-        var photo = new photo_model({id: snapr_id});
+        var photo = new photo_model({id: model.id});
 
         photo.fetch({
             success: function( photo ){
                 this.progress_view = new upload_progress_li({
-                    photo: photo.attributes
+                    photo: model
                 });
                 this.progress_view.message = "Completed!";
-                this.progress_view.photo.upload_status = "completed";
-                this.progress_view.post_id = snapr_id;
-                this.progress_view.photo.id = snapr_id;
-                this.progress_view.photo.thumbnail = "https://s3.amazonaws.com/media-server2.snapr.us/thm2/" +
+                this.progress_view.photo.set('upload_status', "completed");
+                this.progress_view.post_id = model.id;
+                this.progress_view.photo.set('thumbnail', "https://s3.amazonaws.com/media-server2.snapr.us/thm2/" +
                     photo.get("secret") + "/" +
-                    snapr_id + ".jpg";
+                    model.id + ".jpg");
                 $container.html( this.progress_view.render().el );
                 uploading_view.latitude = photo.has("location") && photo.get("location").latitude;
                 uploading_view.longitude = photo.has("location") && photo.get("location").longitude;
