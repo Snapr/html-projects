@@ -5749,6 +5749,9 @@ body.browser-testing .ps-caption-bottom {
   -webkit-border-radius: 20px;
   border-radius: 20px;
 }
+.spots-search-filters .ui-select .ui-btn-icon-right .ui-btn-inner {
+  padding-right: 25px;
+}
 .spots-search-filters .category-btn {
   width: 36px;
   position: absolute;
