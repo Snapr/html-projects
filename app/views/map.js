@@ -95,7 +95,7 @@ var map_view = page_view.extend({
             this.go_to({
                 latitude: this.map_settings.center.lat(),
                 longitude: this.map_settings.center.lng()
-            });
+            }, this.map_settings.zoom);
             this.get_thumbs();
             return;
         }
@@ -126,10 +126,10 @@ var map_view = page_view.extend({
                 zoom: map_view.map.getZoom()
             });
             // remember location
-            local_storage.save('map_zoom', map_view.map.getZoom());
+            local_storage.set('map_zoom', map_view.map.getZoom());
             var ll = map_view.map.getCenter();
-            local_storage.save('map_latitude', ll.lat());
-            local_storage.save('map_longitude', ll.lng());
+            local_storage.set('map_latitude', ll.lat());
+            local_storage.set('map_longitude', ll.lng());
         });
 
         if (location){
@@ -257,8 +257,8 @@ var map_view = page_view.extend({
         setTimeout( this.place_current_location, 30000 );
     },
 
-    go_to: function(location){
-        this.map.setZoom(config.get('zoom'));
+    go_to: function(location, zoom){
+        this.map.setZoom(zoom || config.get('zoom'));
         this.map.panTo( new google.maps.LatLng( location.latitude, location.longitude) );
         this.lat = location.latitude;
         this.lng = location.longitude;
