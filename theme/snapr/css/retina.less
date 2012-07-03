@@ -32,15 +32,24 @@
         .background-size (@gfx-main-icon-sprite-width, @gfx-main-icon-sprite-height);
     }
 
-    .main-logo{
-        background-image: url('../gfx/retina/main-logo.png');
-        .background-size (160px, 42px);
-    }
-
     .menu-main .ui-btn .ui-btn-inner .ui-icon{
-        background-image: url('../gfx/retina/main-menu-icons.png');
+        background-image: url('../gfx/retina/menu-icons.png');
         .background-size (@gfx-menu-icon-sprite-width, @gfx-menu-icon-sprite-height);
     }
+     
+    .menu-main .menu-btns{
+        .ui-btn{
+            background-image: url('../gfx/retina/menu-icons.png');
+            .background-size (@gfx-menu-icon-sprite-width, @gfx-menu-icon-sprite-height);
+            
+            
+        }
+        .ui-icon-big-arrow-d{
+                background-image: url('../gfx/big-arrow-d.png');
+                .background-size (40px, 20px);
+            } 
+    }
+     
 
 
 

@@ -23,94 +23,141 @@
 <body style="display: none;"><!-- initially hidden until jQmobile can load and style everything -->
 
     <!-- @menu HOME PAGE-->
-    <div id="home" data-title="Snapr" data-role="page" data-short-title="Menu" data-theme="d" class="no-drag" data-ajax="false">
-        <div data-role="header" data-theme="b">
-            <div class="ui-btn-right">
-            <a href="#/search/" data-snapr-dialog="true" data-role="button" data-icon="search" data-iconpos="notext"></a>
-            </div>
-            <a class="main-logo" href="#/about/" data-role="none">Snapr</a>
-        </div>
-        <div data-role="content" class="menu-main" data-theme="c">
-        </div><!-- /content -->
-    </div><!-- /page -->
+       <div id="home" data-title="Snapr" data-role="page" data-short-title="Menu" data-theme="d" class="no-drag" data-ajax="false">
+           <div data-role="header" data-theme="b">
+               <div class="ui-btn-left">
+                   <!-- <a class="avatar-block" data-role="button" data-shadow="false" data-corners="false" href="#/my-account/">
+                                       <span class="user-icon-small" style="background-image: url('http://dev.sna.pr/avatars/29?size=large&amp;_salt=facebook');"></span>
+                                       rowan
+                                   </a> -->
+                   <a href="#/join/" data-snapr-dialog="true" data-role="button" data-icon="join" data-iconpos="left">Join</a>
+               </div>    
 
-    <script id="home-template" type="text/template">
-            <!-- top row btns -->
-            <div class="ui-grid-a">
-               <!-- Camera Button -->
-               <div class="ui-block-a">
-                    <a class="x-launch-camera" data-role="button" data-iconpos="top" data-icon="main-menu-camera" data-shadow="false">Shoot</a>
-                </div>
+               <div class="ui-btn-right">
+               <a href="#/search/" data-snapr-dialog="true" data-role="button" data-icon="search" data-iconpos="notext"></a>
+               </div>
+           </div>
+           <div data-role="content" class="menu-main" data-theme="e">
+           </div><!-- /content -->
+       </div><!-- /page -->
 
-                 <!-- Dashboard Button -->
-                <div class="ui-block-b">
-                     <a href="#/dash/" data-role="button" data-iconpos="top" data-icon="main-menu-dash" data-shadow="false">Dashboard</a>
-                </div>
-            </div>
+       <script id="home-template" type="text/template">
+               <ul class="menu-btns">
+                   <li>
+                       <div class="centered-title">
+                       <h4>
+                       Snapr Base Project</br>
+                       Check out all the default views
+                       </h4>
+                       <span class="ui-icon ui-icon-big-arrow-d extra-icons"></span>
+                       </div>
+                   </li>
 
-            <!-- secondary buttons -->
-            <div class="ui-grid-b">
-                <!-- Image Library Button -->
-                <div class="ui-block-a">
-                <% if (logged_in) {%>
-                        <a class="x-launch-photo-library" data-role="button" data-iconpos="top" data-icon="main-menu-camera-lib" data-shadow="false">Camera Roll</a>
-                 <%}else{%>
-                      <a href="#/login/" data-snapr-dialog="true" data-shadow="false" data-role="button" data-iconpos="top" data-icon="main-menu-login">Log In</a>
-                <%}%>
-                </div>
+                  <li>
+                       <!-- Camera Button -->
+                       <a class="x-launch-camera" data-role="button" data-iconpos="left" data-icon="main-menu-camera">Shoot</a>
+                   </li>
 
-                <!-- My Snaps / Latest Feed Btn -->
-                <div class="ui-block-b">
-                <% if (logged_in) {%>
-                        <a href="#/feed/?username=<%=username%>" data-shadow="false" data-role="button" data-theme="c" class="my-snaps" data-iconpos="top" data-icon="main-menu-feed">
-                        My Snaps
-                        </a>
-                        <span class="upload-count">&nbsp;</span>
+                   <li>
+                       <!-- Login / Image Library Button -->
+                       <% if (logged_in) {%>
+                               <a class="x-launch-photo-library" data-role="button" data-iconpos="left" data-icon="main-menu-camera-lib">Camera Roll</a>
+                        <%}else{%>
+                             <a href="#/login/" data-snapr-dialog="true" data-role="button" data-iconpos="left" data-icon="main-menu-login">Log In</a>
+                       <%}%>
+                   </li>
 
-                 <%}else{%>
-                        <a href="#/feed/" data-shadow="false" data-role="button" data-theme="c" data-iconpos="top" data-icon="main-menu-feed">Latest</a>
-                <%}%>
-                </div>
+                    <li>
+                       <!-- Dash Button -->
+                       <a href="#/dash/" data-role="button" data-iconpos="left" data-icon="main-menu-dashboard">Dashboard</a>
+                   </li>
 
-                <!-- Popular btn -->
-                <div class="ui-block-c">
-                    <a href="#/popular/" data-role="button" data-shadow="false" data-iconpos="top" data-icon="main-menu-popular">Popular</a>
-                </div>
+                   <li>
+                       <!-- Image Feed Button -->
+                       <% if (logged_in) {%>
+                           <a href="#/feed/?username=<%=username%>" data-role="button" data-theme="c" data-iconpos="left" data-icon="main-menu-feed">
+                           My Snaps
+                           </a>
+                           <span class="upload-count">&nbsp;</span>
+                       <%}else{%>
+                           <a href="#/feed/" data-role="button" data-iconpos="left" data-icon="main-menu-feed">Latest</a>
+                       <%}%>
+                   </li>
 
-            </div>
 
-            <div class="ui-grid-b">
-                <!-- Map Btn -->
-                <div class="ui-block-a">
-                    <a href="#/map/" data-shadow="false" data-role="button" data-theme="c" data-iconpos="top" data-icon="main-menu-map">Map</a>
-                </div>
+                   <li>
+                       <!-- Popular Button -->
+                        <a href="#/popular/" data-role="button" data-iconpos="left" data-icon="main-menu-popular">Popular</a>
 
-                <!-- Join / My Account Btn -->
-                <div class="ui-block-b">
+                   </li>
+
+
+                    <li>
+                       <!-- Map Button -->
+                       <a href="#/map/" data-shadow="false" data-role="button" data-iconpos="left" data-icon="main-menu-map">Map</a>
+
+                    </li>
+
+                    <li>
+                    <!-- My Account / Welcome Button -->
                     <% if(logged_in) { %>
-                        <a href="#/my-account/" data-shadow="false" data-role="button" data-iconpos="top" data-icon="main-menu-my-account">My Account</a>
+                        <a href="#/my-account/" data-role="button" data-iconpos="left" data-icon="main-menu-my-account">My Account</a>
                     <% }else{ %>
-                        <a href="#/join/" data-shadow="false" data-role="button" data-iconpos="top" data-icon="main-menu-join">Join Snapr</a>
+                        <a href="#/welcome/" data-role="button" data-iconpos="left" data-icon="main-menu-join">Welcome</a>
                     <% } %>
-                </div>
 
-                <!-- cities btn -->
-                <div class="ui-block-c">
-                    <a href="#/cities/" data-shadow="false" data-role="button" data-theme="c" data-iconpos="top" data-icon="main-menu-cities">Cities</a>
-                </div>
-            </div>
+                    </li>
 
-            <% if(logged_in) { %>
-                <a href="#/activity/"
-                data-shadow="false"
-                data-role="button" class="news-ticker ui-bar ui-bar-e bottom-centered-arrow">loading news&hellip;</a>
-            <% }else{ %>
-                <a href="#/about/"
-                data-shadow="false"
-                data-role="button" class="ui-bar ui-bar-e bottom-centered-arrow">About Snapr</a>
-            <% } %>
+                    <li>
+                    <!-- Cities Button -->
+                     <a href="#/cities/" data-role="button" data-iconpos="left" data-icon="main-menu-cities">Cities</a>
 
-    </script>
+                    </li>
+
+                    <li>
+                    <!-- Spots Button -->
+                    <a href="#/spots/" data-role="button" data-iconpos="left" data-icon="main-menu-spots">Spots</a>
+
+                    </li>
+
+                    <li>
+                       <!-- Activity / About Button -->
+                       <% if(logged_in) { %>
+                           <a href="#/activity/" data-role="button" data-iconpos="left" data-icon="main-menu-activity">Activity</a>                     
+                       <% }else{ %>
+                           <a href="#/about/" data-role="button" data-iconpos="left" data-icon="main-menu-info">About</a>
+                        <% } %>
+                    </li>
+
+                    <li>
+                    <!-- Leaderboard Button -->
+                     <a href="#/leaderboard/" data-role="button" data-iconpos="left" data-icon="main-menu-leaderboard">Leaderboard</a>
+
+                    </li>
+
+
+
+               </ul>
+
+               <div class="menu-stream thumbs-block">
+                   <div class="thumbs-block-overlay">
+                       <a href="#/feed/" data-iconpos="right" data-icon="arrow-r" data-role="button" class="centered-btn">Nearby Images</a>
+                   </div>
+
+                   <ul class="thumbs-preview-stream">
+                       <li><img src="https://s3.amazonaws.com/media-server2.snapr.us/thm2/dev/db4b1e0c3565a20d3a3c7ed87b6ac0df/ZVA.jpg" alt="snapr mob" class="thumb-image thumb-med"></li>
+
+                       <li><img src="https://s3.amazonaws.com/media-server2.snapr.us/thm2/dev/db4b1e0c3565a20d3a3c7ed87b6ac0df/ZVA.jpg" alt="snapr mob" class="thumb-image thumb-med"></li>
+                       <li><img src="https://s3.amazonaws.com/media-server2.snapr.us/thm2/dev/db4b1e0c3565a20d3a3c7ed87b6ac0df/ZVA.jpg" alt="snapr mob" class="thumb-image thumb-med"></li>
+                       <li><img src="https://s3.amazonaws.com/media-server2.snapr.us/thm2/dev/db4b1e0c3565a20d3a3c7ed87b6ac0df/ZVA.jpg" alt="snapr mob" class="thumb-image thumb-med"></li>
+                   </ul>
+
+               </div>
+
+
+
+
+       </script>
 
     <!-- @myaccount PAGE -->
     <div id="my-account" data-title="My Account" data-role="page" data-short-title="My Account" data-theme="d">

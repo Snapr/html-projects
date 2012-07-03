@@ -105,6 +105,7 @@ strong{
     background-size: cover;
     background-position: center;
     .corner-all(2px);
+    display: block;
 }
 
 .user-icon-med{
@@ -116,6 +117,30 @@ strong{
     background-position: center;
     display: block;
     .corner-all(4px);
+}
+
+.avatar-block{
+    height:  @size-small-avatar ;
+    line-height: @size-small-avatar;
+    padding-left:0;
+    background: none!important;
+    border: none!important;
+    &.ui-btn{
+        .ui-btn-inner{
+            padding: 0;
+            .ui-btn-text{
+                display: block;
+                text-align: left;
+                padding-left: @size-small-avatar + @padding-element-inset ;
+            }
+        }
+        .user-icon-small{
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+    }
+    
 }
 
 .css-thumb{

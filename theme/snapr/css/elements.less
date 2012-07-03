@@ -891,18 +891,38 @@
         }
     }
     /* The main Icon Only Buttons */
-    .ui-btn-icon-notext{
+    .ui-btn-icon-notext,
+    .ui-btn-icon-left{
         border: none;
         background: none;
-        width: 40px;
-        height: 40px;
+        width: @gfx-main-icon-sprite-grid;
+        height: @gfx-main-icon-sprite-grid;
         top: -4px;
         .ui-btn-inner {
-        padding: 0;
+            padding: 0;
+            .ui-icon{
+                position: absolute;
+                left: 0;
+                top: 0;
+            }
         }
         &.ui-shadow{
             .box-shadow(none);
         }
+    }
+    .ui-btn-icon-left{
+        width: auto;
+        .ui-btn-inner {
+            padding: 0;
+            height: @gfx-main-icon-sprite-grid;
+            .ui-btn-text{
+                padding-left: @gfx-main-icon-sprite-grid;
+                line-height: @gfx-main-icon-sprite-grid;
+            }
+            .ui-icon{
+                position: absolute;
+            }
+        } 
     }
     /* Shuffle the close button to the right */
     .ui-btn[data-icon="delete"]{
