@@ -160,7 +160,11 @@ var map_view = page_view.extend({
         this.thumb_collection.data.area = this.map.getBounds().toUrlValue(4);
         var map_view = this;
 
-        this.thumb_collection.fetch({
+
+        // we are about to look for new thumbs, abort any old requests, they will no longer be needed
+        try{ this.thumb_collection.current_query.abort(); }catch(e){}
+
+        this.thumb_collection.current_query = this.thumb_collection.fetch({
             success: function( collection ){
                 map_view.$el.removeClass('loading');
                 if (_.difference( map_view.thumb_collection.pluck("id"), old_thumb_ids ).length){
