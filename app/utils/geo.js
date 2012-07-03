@@ -1,5 +1,5 @@
 /*global _  define require */
-define(['utils/local_storage', 'native'], function(local_storage, native){
+define(['utils/local_storage', 'native', 'config'], function(local_storage, native, config){
 var geo = {};
 geo.location_callbacks = [],
 geo.location_error_callbacks = [],
@@ -7,8 +7,12 @@ geo.location_error_callbacks = [],
 geo.get_location = function ( success, error ){
     // if in appmode, ask the app for location, otherwise try html5 geolocation
     if (local_storage.get( "appmode" )){
-        // TODO: what is there is no response!? need timeout function.
-        geo.location_callbacks.push( success );
+        var timeout = setTimeout(function(){geo.location_error('timeout');},  config.get('timeout'));
+
+        geo.location_callbacks.push( function(location){
+            clearTimeout(timeout);
+            success(location);
+        } );
         geo.location_error_callbacks.push( error );
         if (window.override && window.override( "snapr://get_location" )){
             //do nothing

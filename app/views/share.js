@@ -478,7 +478,7 @@ return page_view.extend({
                     };
                 _.each( this.$el.find("form").serializeArray(), function( o ){
                     if (["tumblr", "facebook_album", "tweet", "foursquare_checkin"].indexOf( o.name ) > -1){
-                        if (o.name == "foursquare_checkin"){
+                        if (o.name == "foursquare_checkin" && o.value == "on"){
                             if (this.model.get( "location" ).foursquare_venue_id){
                                 params.foursquare_venue = this.model.get( "location" ).foursquare_venue_id;
                                 params.venue_name = this.model.get( "location" ).foursquare_venue_name;
@@ -547,6 +547,7 @@ return page_view.extend({
     offline: function(offline_mode){
         if(offline_mode){
             this.$(".location-name").text('Offline');
+            this.$(".foursquare-venue-name").text('Offline');
         }
     }
 

@@ -1,16 +1,26 @@
 /*global _  define require */
-define(['backbone', 'views/base/page', 'views/upload_progress_li',
+define(['backbone', 'views/base/page', 'views/upload_progress_li', 'collections/upload_progress',
     'models/photo', 'views/base/side_scroll', 'collections/photo', 'utils/local_storage', 'utils/alerts', 'native', 'config'],
-function(Backbone, page_view, upload_progress_li, photo_model, side_scroll, photo_collection, local_storage, alerts, native, config){
+function(Backbone, page_view, upload_progress_li, upload_progress, photo_model, side_scroll, photo_collection, local_storage, alerts, native, config){
 
 var uploading = page_view.extend({
 
-    post_activate: function(options){
+    post_initialize: function(){
+        var view = this;
+        this.$el.on( "pageshow", function(){
+            view.watch_uploads();
+        });
+        this.$el.on( "pagehide", function(){
+            view.watch_uploads(false);
+        });
+    },
 
+    post_activate: function(options){
         this.change_page();
 
-        //this.current_upload = null;
-        //this.pending_uploads = {};
+        //reset photo to latest one in progress object
+        // calls to upload_porgress will set this
+        this.progress_view = null;
 
         this.query = options.query;
 
@@ -23,16 +33,19 @@ var uploading = page_view.extend({
         this.venue_name = this.query.venue_name;
         this.photo_id = this.query.photo_id;
 
-        //this.$el.removeClass("showing-upload-queue");
         this.progress_el = this.$( ".upload-progress-container" ).empty();
 
         if (this.photo_id){
+            // web flow - photo is uploaded then user is sent here
+            // so the id and photo on the server are available
+            // TODO: this probably won't work anymore
             this.upload_completed( 0, this.photo_id);
         }else{
+            // no photo_id = in appmode the photo is probably being uploaded by the native
+            // app in the background, we can show progress here.
             this.render();
-            // testing upload stuff
-            //var test_data = {"uploads":[{"description":"Pzzz","percent_complete":10,"id":"013FBD4D-7","sharing":{},"date":"2012-03-09 14:25:59 -0500","status":"private","location":{},"shared":{tweeted:true},"upload_status":"Active","thumbnail":"file:///Users/dpwolf/Library/Application Support/iPhone Simulator/5.0/Applications/ECF32C66-12DE-44D8-B2C2-9A02A0DD77BE/Documents/upload/00000000000353013969.jpg"}]}
         }
+        //this.update_uploads();
     },
 
     events: {
@@ -119,57 +132,42 @@ var uploading = page_view.extend({
 
     },
 
-    upload_progress: function( upload_data ){
-        if (this.progress_view){
-            this.progress_view.queued(false);
-        }
-        this.$('.offline').hide();
-
-        var photo = upload_data.uploads[upload_data.uploads.length-1];
-
-        if(!this.progress_view){
-            this.progress_view = new upload_progress_li({
-                photo: photo,
-                venue_name: this.venue_name
-            });
-            this.progress_el.html( this.progress_view.render().el );
+    watch_uploads: function(on){
+        if(on !== false){
+            upload_progress.on('add', this.update_uploads);
         }else{
-            this.progress_view.photo = photo;
+            upload_progress.off('add', this.update_uploads);
         }
-        this.progress_view.render();
-
     },
 
-    upload_completed: function( queue_id, snapr_id ){
-        if (this.progress_view){
-            this.progress_view.queued(false);
-        }
+    update_uploads: function(model, changes){
+        this.$('.offline').hide();
+        if(this.progress_view){ return; }
+
+        // our photo must be the last one in the queue
+        var photo = upload_progress.at(upload_progress.length-1);
+
+        // if there's no photo yet we probably haven't recieved an upload_progress call
+        // native code, when we do this function will get called again
+        if(!photo){ return; }
+
+        this.progress_view = new upload_progress_li({
+            photo: photo,
+            venue_name: this.venue_name,
+            update_on_complete: true
+        });
+        this.progress_el.html( this.progress_view.render().el );
+        this.progress_view.on('complete', this.upload_complete);
+    },
+
+    upload_complete: function( model, photo ){
         this.$('.offline').hide();
 
-        var $container = this.$el.find(".upload-progress-container");
-        var uploading_view = this;
-        var photo = new photo_model({id: snapr_id});
-
-        photo.fetch({
-            success: function( photo ){
-                this.progress_view = new upload_progress_li({
-                    photo: photo.attributes
-                });
-                this.progress_view.message = "Completed!";
-                this.progress_view.photo.upload_status = "completed";
-                this.progress_view.post_id = snapr_id;
-                this.progress_view.photo.id = snapr_id;
-                this.progress_view.photo.thumbnail = "https://s3.amazonaws.com/media-server2.snapr.us/thm2/" +
-                    photo.get("secret") + "/" +
-                    snapr_id + ".jpg";
-                $container.html( this.progress_view.render().el );
-                uploading_view.latitude = photo.has("location") && photo.get("location").latitude;
-                uploading_view.longitude = photo.has("location") && photo.get("location").longitude;
-                uploading_view.spot = photo.has("location") && photo.get("location").spot_id;
-                uploading_view.venue_name = photo.has("location") && photo.get("location").foursquare_venue_name;
-                uploading_view.render();
-            }
-        });
+        this.latitude = photo.has("location") && photo.get("location").latitude;
+        this.longitude = photo.has("location") && photo.get("location").longitude;
+        this.spot = photo.has("location") && photo.get("location").spot_id;
+        this.venue_name = photo.has("location") && photo.get("location").foursquare_venue_name;
+        this.render();
     },
 
     upload_cancelled: function( queue_id ){

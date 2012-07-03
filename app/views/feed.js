@@ -1,8 +1,8 @@
 /*global _  define require */
 define(['config', 'views/base/page', 'models/user', 'views/user_header', 'views/feed_header',
-    'collections/photo', 'views/feed_list', 'utils/photoswipe', 'views/upload_progress_li', 'auth'],
+    'collections/photo', 'views/feed_list', 'utils/photoswipe', 'views/upload_progress_li', 'collections/upload_progress',  'auth'],
 function(config, page_view, user_model, user_header, feed_header, photo_collection,
-    feed_list, photoswipe, upload_progress_li, auth){
+    feed_list, photoswipe, upload_progress_li, upload_progress, auth){
 
 return page_view.extend({
 
@@ -10,9 +10,11 @@ return page_view.extend({
         var feed_view = this;
         this.$el.on( "pageshow", function(){
             feed_view.$( ".feed-view-toggle input[type='radio']" ).checkboxradio( "refresh" );
+            feed_view.watch_uploads();
         });
         this.$el.on( "pagehide", function(){
             feed_view.$( ".v-feed-more" ).hide();
+            feed_view.watch_uploads(false);
         });
     },
 
@@ -92,13 +94,8 @@ return page_view.extend({
         this.more_button(false);
 
         this.populate_feed();
-
-        // test data
-        // var test_data={uploads:[{id:5345233,thumbnail:"http://media-server2.snapr.us/sml/dev/b1329ff1029c2a686ad78b94a66eea76/Z4K.jpg",upload_status:"active",percent_complete:50,status:"public",description:"Here's a cool photo of stuff!",location:{latitude:51.553978,location:"New York",longitude:-0.076529},date:"2011-04-12 20:50:10 +0100",shared:{tweeted:!0,facebook_newsfeed:!0,foursquare_checkin:!0,tumblr:!0,venue_id:123,venue_name:"some bar",venue_source:"Foursquare"}},{id:5345234,thumbnail:"http://media-server2.snapr.us/sml/247f51a82ca7abb2adf0228b390010ef/2BD4.jpg",
-        // upload_status:"waiting",percent_complete:0,status:"private",description:"test2",location:{latitude:51.553978,location:"New York",longitude:-0.076529},date:"2011-04-12 20:50:10 +0100",shared:{tweeted:!0,facebook_newsfeed:!0,foursquare_checkin:!0,tumblr:!0,venue_id:123,venue_name:"some bar",venue_source:"Foursquare"}}]};setTimeout(function(){console.log("testing 1",test_data);test_data.uploads[0].percent_complete=40;upload_progress(test_data)},3E3);
-        // setTimeout(function(){console.log("testing 2",test_data);test_data.uploads[0].percent_complete=60;upload_progress(test_data)},6E3);setTimeout(function(){console.log("testing 3",test_data);test_data.uploads[0].percent_complete=100;upload_progress(test_data)},8E3);setTimeout(function(){console.log("testing 4",test_data);test_data.uploads[0].percent_complete=100;upload_progress(test_data)},12E3);setTimeout(function(){console.log("testing 5");upload_completed(5345233,"Z4K")},14E3);
-        // setTimeout(function(){console.log("testing 3",test_data);test_data.uploads.shift();test_data.uploads[0].percent_complete=50;upload_progress(test_data)},9E3);setTimeout(function(){console.log("testing 4",test_data);test_data.uploads[0].percent_complete=100;upload_progress(test_data)},12E3);setTimeout(function(){console.log("testing 5",test_data);test_data.uploads.shift();upload_progress(test_data)},14E3);
-    },
+        this.update_uploads();
+ },
 
     events: {
         "click .x-load-more": "more",
@@ -192,31 +189,40 @@ return page_view.extend({
         this.feed_list.render( this.photoswipe_init );
     },
 
-    upload_progress: function( upload_data ){
+    watch_uploads: function(on){
+        if(on !== false){
+            upload_progress.on('add', this.update_uploads);
+            upload_progress.on('complete', this.upload_complete);
+        }else{
+            upload_progress.off('add', this.update_uploads);
+            upload_progress.off('complete', this.upload_complete);
+        }
+    },
+
+    update_uploads: function(model, changes){
         if (auth.has("snapr_user") && auth.get("snapr_user") == this.query.username){
-            this.$el.find(".feed-upload-list").empty();
 
             var upload_li_template = _.template( $("#feed-upload-progress-li-template").html() );
 
-            _.each( upload_data.uploads, function( photo ){
-                this.pending_uploads[photo.id] = new upload_progress_li({
+            // reverse models - newest last
+            _.each(model && [model] || upload_progress.models.slice().reverse(), function( photo ){
+                var li =  new upload_progress_li({
                     template: upload_li_template,
                     photo: photo
                 });
-                this.$el.find(".feed-upload-list").append( this.pending_uploads[photo.id].render().el );
+                this.$el.find(".feed-upload-list").prepend( li.render().el );
             }, this);
 
-            if (upload_data.uploads){
+            if (upload_progress.models.length){
                 this.$el.addClass("showing-upload-queue");
             }
 
             this.$el.find(".feed-upload-list").listview().listview("refresh");
         }
-
     },
 
-    upload_completed: function( queue_id, snapr_id ){
-        this.$el.find(".upload-id-" + queue_id).remove();
+    upload_complete: function( model, queue_id ){
+        this.$(".upload-id-" + model.id).remove();
         // if we are on a feed for the current snapr user
         if (this.options.query.username == auth.get("snapr_user") && !this.options.query.photo_id){
             // remove the date restriction if it is present
@@ -225,14 +231,6 @@ return page_view.extend({
             }
             // refresh the feed content
             this.populate_feed();
-        }
-    },
-
-    upload_count: function( count ){
-        if (count){
-            this.$el.addClass("showing-upload-queue");
-        }else{
-            this.$el.removeClass("showing-upload-queue");
         }
     }
 

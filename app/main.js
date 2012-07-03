@@ -318,3 +318,14 @@ require(['utils/string'], function(string_utils) {
 });
 
 
+function test_upload(){
+    var test_data={uploads:[{id:8888888,thumbnail:"http://media-server2.snapr.us/sml/dev/b1329ff1029c2a686ad78b94a66eea76/Z4K.jpg",upload_status:"active",percent_complete:50,status:"public",description:"Here's a cool photo of stuff!",location:{latitude:51.553978,location:"New York",longitude:-0.076529},date:"2011-04-12 20:50:10 +0100",shared:{tweeted:!0,facebook_newsfeed:!0,foursquare_checkin:!0,tumblr:!0,venue_id:123,venue_name:"some bar",venue_source:"Foursquare"}},{id:1111111,thumbnail:"http://media-server2.snapr.us/sml/04486f2ba3f8943a1136cacdd57ad62f/LOG.jpg",upload_status:"waiting",percent_complete:0,status:"private",description:"test2",location:{latitude:51.553978,location:"New York",longitude:-0.076529},date:"2011-04-12 20:50:10 +0100",shared:{tweeted:!0,facebook_newsfeed:!0,foursquare_checkin:!0,tumblr:!0,venue_id:123,venue_name:"some bar",venue_source:"Foursquare"}}]};
+    setTimeout(function(){console.log("1:40",test_data);test_data.uploads[0].percent_complete=40;window.upload_progress(test_data);},1E3);
+    setTimeout(function(){console.log("1:60",test_data);test_data.uploads[0].percent_complete=60;window.upload_progress(test_data);},3E3);
+    setTimeout(function(){console.log("1:100",test_data);test_data.uploads[0].percent_complete=100;window.upload_progress(test_data);},5E3);
+    setTimeout(function(){console.log("1:complete");window.upload_completed(8888888,"Z4K");},7E3);
+    setTimeout(function(){console.log("2:50",test_data);test_data.uploads.shift();test_data.uploads[0].upload_status="active";test_data.uploads[0].percent_complete=50;window.upload_progress(test_data);},9E3);
+    setTimeout(function(){console.log("2:100",test_data);test_data.uploads[0].percent_complete=100;window.upload_progress(test_data);},11E3);
+    setTimeout(function(){console.log("2:complete");window.upload_completed(1111111,"LOG");},13E3);
+    setTimeout(function(){console.log("2:removed",test_data);test_data.uploads.shift();window.upload_progress(test_data);},15E3);
+}

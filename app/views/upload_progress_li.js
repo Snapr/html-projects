@@ -1,5 +1,5 @@
 /*global _  define require */
-define(['backbone', 'utils/local_storage', 'utils/alerts', 'native'], function(Backbone, local_storage, alerts, native){
+define(['backbone', 'utils/local_storage', 'utils/alerts', 'native', 'models/photo'], function(Backbone, local_storage, alerts, native, photo_model){
 return Backbone.View.extend({
 
     tagName: "li",
@@ -7,11 +7,19 @@ return Backbone.View.extend({
     className: "upload-progress-item",
 
     initialize: function(options){
+        _.bindAll(this);
+        // an upload porgress li is creted for each upload, don't re-use them by changing the photo attribute
+
+        // allow options to override template
         this.template = this.options.template || _.template( $("#upload-progress-li-template").html() );
 
         this.photo = options.photo;
+        this.photo.on('change', this.render);
+        // this has to be explicitly enabled because it's not always needed and is a waste of time otherwise
+        if(options.update_on_complete){
+            this.photo.on('complete', this.upload_complete);
+        }
         this.message = null;
-        this.photo_id = null;
         this.venue_name = options.venue_name;
     },
 
@@ -21,43 +29,62 @@ return Backbone.View.extend({
 
     render: function(){
         // check that the progress hasn't already reached 100%
-        if (!this.$el.find(".finishing").length){
+        if (!this.$(".finishing").length){
             this.$el.addClass("upload-id-" + this.photo.id);
             this.$el.html(
                 this.template({
-                    upload_status: this.is_queued ? 'queued' : this.photo.upload_status.toLowerCase(),
-                    description: unescape( this.photo.description ),
-                    venue: this.photo.location.foursquare_venue_name || this.venue_name || this.photo.location.location,
-                    spot_id: this.photo.location.spot_id,
-                    shared: this.photo.shared,
+                    upload_status: this.is_queued ? 'queued' : this.photo.get('upload_status').toLowerCase(),
+                    description: unescape( this.photo.get('description') ),
+                    venue: this.photo.get('location').foursquare_venue_name || this.venue_name || this.photo.get('location').location,
+                    spot_id: this.photo.get('location').spot_id,
+                    shared: this.photo.get('shared'),
                     facebook_sharing: (
-                        this.photo.shared && this.photo.shared.facebook_album ||
-                        this.photo.shared && this.photo.shared.facebook_newsfeed ||
-                        this.photo.sharing && this.photo.sharing.facebook_album ||
-                        this.photo.sharing && this.photo.sharing.facebook_newsfeed
+                        this.photo.get('shared') && this.photo.get('shared').facebook_album ||
+                        this.photo.get('shared') && this.photo.get('shared').facebook_newsfeed ||
+                        this.photo.get('sharing') && this.photo.get('sharing').facebook_album ||
+                        this.photo.get('sharing') && this.photo.get('sharing').facebook_newsfeed
                     ),
                     twitter_sharing: (
-                        this.photo.shared && this.photo.shared.tweeted ||
-                        this.photo.sharing && this.photo.sharing.tweeted
+                        this.photo.get('shared') && this.photo.get('shared').tweeted ||
+                        this.photo.get('sharing') && this.photo.get('sharing').tweeted
                         ),
                     foursquare_sharing: (
-                        this.photo.shared && this.photo.shared.foursquare_checkin ||
-                        this.photo.sharing && this.photo.sharing.foursquare_checkin
+                        this.photo.get('shared') && this.photo.get('shared').foursquare_checkin ||
+                        this.photo.get('sharing') && this.photo.get('sharing').foursquare_checkin
                     ),
                     tumblr_sharing: (
-                        this.photo.shared && this.photo.shared.tumblr ||
-                        this.photo.sharing && this.photo.sharing.tumblr
+                        this.photo.get('shared') && this.photo.get('shared').tumblr ||
+                        this.photo.get('sharing') && this.photo.get('sharing').tumblr
                     ),
-                    thumbnail: this.photo.thumbnail,
-                    percent_complete: this.photo.percent_complete,
+                    thumbnail: this.photo.get('thumbnail'),
+                    percent_complete: this.photo.get('percent_complete'),
                     message: this.message,
-                    photo_id: this.photo.id,
-                    username: this.photo.username
+                    photo_id: this.photo.get('id'),
+                    username: this.photo.get('username')
                 })
             ).trigger( "create" );
         }
 
         return this;
+    },
+
+    upload_complete: function( model, queue_id ){
+        this.is_queued = false;
+        var photo = new photo_model({id: model.id});
+
+        var progress_view = this;
+        photo.fetch({
+            success: function( photo ){
+                progress_view.trigger('complete', model, photo);
+                progress_view.message = "Completed!";
+                progress_view.photo.set('upload_status', "completed");
+                progress_view.post_id = model.id;
+                progress_view.photo.set('thumbnail', "https://s3.amazonaws.com/media-server2.snapr.us/thm2/" +
+                    photo.get("secret") + "/" +
+                    model.id + ".jpg");
+                progress_view.render();
+            }
+        });
     },
 
     queued: function(is_queued){
