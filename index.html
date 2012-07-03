@@ -1438,7 +1438,7 @@
             <%}%>
 
              <!-- // Show the photo -->
-                <a class="image-link" href="#/feed/?photo_id=<%= item.get("photo").id %>&amp;username=<%= item.get("photo").username %>">
+                <a class="image-link" href="#/feed/?photo_id=<%= item.get("photo").id %>&amp;username=<%= item.get("photo").username %>&n=1">
                     <img src="https://s3.amazonaws.com/media-server<%= item.get("photo").server_id %>.snapr.us/thm2/<%= item.get("photo").secret %>/<%= item.get("photo").id %>.jpg" <% if(item.get('photo').description){ %>alt="<%= item.get('photo').description %>"<% } %> class="thumb-image thumb-med">
                 </a>
 
