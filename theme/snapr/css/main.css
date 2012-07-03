@@ -5858,6 +5858,9 @@ body.browser-testing .ps-caption-bottom {
 #map div[data-role="content"] {
   padding-top: 0;
   padding-bottom: 8px;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
 }
 #map.loading .map-time .map-time-btn {
   display: none;
