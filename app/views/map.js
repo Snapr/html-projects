@@ -97,6 +97,13 @@ var map_view = page_view.extend({
                 longitude: this.map_settings.center.lng()
             }, this.map_settings.zoom);
             this.get_thumbs();
+            var keywords = local_storage.get('map_keywords');
+            if(keywords){
+                var t=this;
+                setTimeout(function(){
+                t.map_controls.keyword_search(keywords);
+                }, 1000);
+            }
             return;
         }
 
@@ -104,6 +111,14 @@ var map_view = page_view.extend({
 
         this.map = new google.maps.Map(
             document.getElementById("google-map"), this.map_settings);
+
+        var keywords = local_storage.get('map_keywords');
+        if(keywords){
+            var t=this;
+            setTimeout(function(){
+            t.map_controls.keyword_search(keywords);
+            }, 1000);
+        }
 
         geo.get_location(function(location){
             map_view.dot = new map.overlays.CurrentLocation( {
@@ -378,18 +393,26 @@ var map_controls = Backbone.View.extend({
             }
     },
 
-    keyword_search: function( e ){
-        var keywords = $(e.currentTarget).find("input").val();
+    keyword_search: function( keywords ){
+        var input = this.$('#map-keyword').find("input");
+        if(!_.isString(keywords)){
+            keywords = input.val();
+        }else{
+            input.val(keywords);
+        }
         if (keywords != (this.model.get( "keywords" ))){
             if (keywords){
-                this.model.set({keywords: $(e.currentTarget).find("input").val()});
+                local_storage.set('map_keywords', keywords);
+                this.model.set({keywords: keywords});
             }else{
+                local_storage['delete']('map_keywords');
                 this.model.unset( "keywords" );
             }
         }
     },
 
     clear_keyword_search: function(){
+        this.$('#map-keyword').find("input").val("");
         this.model.unset( "keywords" );
     },
 
