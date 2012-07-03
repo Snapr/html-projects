@@ -144,8 +144,10 @@ return page_view.extend({
         window.open( "http://en.gravatar.com/" );
     },
 
-    save_settings: function( param, callback ){
-        $.mobile.showPageLoadingMsg();
+    save_settings: function( param, callback, spin ){
+        if(spin){
+            $.mobile.showPageLoadingMsg();
+        }
         // prevent backbone from thinking this is a new user
         this.user_settings.id = true;
         this.user_settings.set(param);
@@ -184,7 +186,7 @@ return page_view.extend({
             param[$(select).attr("name")] = ($(select).val() == "true") ? true: false;
         });
 
-        this.save_settings( param );
+        this.save_settings( param, null, false );
     },
 
     save_profile: function( e ){
