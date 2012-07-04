@@ -14,13 +14,9 @@ var venues = page_view.extend({
             ll: options.query.ll
         });
 
-        // a simple array of venues which will be filtered and displayed
-        this.display_collection = [];
-
-        this.collection.bind( "reset", _.bind(this.reset_collection, this) );
-
         this.change_page();
 
+        this.collection.on('reset', this.render);
         this.collection.fetch();
     },
 
@@ -38,7 +34,7 @@ var venues = page_view.extend({
         var back_query = this.query.back_query;
         var photo_model = this.model;
         var this_view = this;
-        _.each( this.display_collection, function( model ){
+        _.each( this.collection.models, function( model ){
             var li = new venue_li({
                 template: venue_li_template,
                 model: model,
@@ -55,11 +51,6 @@ var venues = page_view.extend({
         venue_list.listview().listview("refresh");
     },
 
-    reset_collection: function(){
-        this.display_collection = _.clone( this.collection.models );
-        this.render();
-    },
-
     search: function( e ){
         var venues_view = this;
 
@@ -67,10 +58,6 @@ var venues = page_view.extend({
 
         var doSearch;
         if (keywords.length > 0){
-            this.display_collection = _.filter( this.collection.models, function( venue ){
-                return (venue.get( "name" ).toLowerCase().indexOf( keywords ) > -1);
-            });
-            this.render();
             doSearch = function(){
                 venues_view.$el.addClass('loading');
                 venues_view.collection.data.query = keywords;
@@ -81,11 +68,7 @@ var venues = page_view.extend({
         }else{
             doSearch = null;
 
-            this.display_collection = this.collection.models;
-            this.render();
-
-            if (this.collection.data.query)
-            {
+            if (this.collection.data.query){
                 delete this.collection.data.query;
             }
             this.collection.fetch();
