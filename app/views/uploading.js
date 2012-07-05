@@ -29,16 +29,15 @@ var uploading = page_view.extend({
             this.latitude = ll[0];
             this.longitude = ll[1];
         }
-        this.spot = this.query.spot;
+        this.foursquare_venue = this.query.spot;
         this.venue_name = this.query.venue_name;
-        this.photo_id = this.query.photo_id;
 
         this.progress_el = this.$( ".upload-progress-container" ).empty();
 
-        if (this.photo_id){
+        if (this.query.photo_id){
             // web flow - photo is uploaded then user is sent here
             // so the id and photo on the server are available
-            this.upload_complete(this.photo_id);
+            this.upload_complete(this.query.photo_id);
         }else{
             // no photo_id = in appmode the photo is probably being uploaded by the native
             // app in the background, we can show progress here.
@@ -54,10 +53,10 @@ var uploading = page_view.extend({
     render: function(){
         var $image_stream_container = this.$( ".image-streams" ).empty();
 
-        if (this.spot){
+        if (this.foursquare_venue){
             this.recent_nearby_stream = new uploading_image_stream({
                 stream_type: "spot",
-                spot: this.spot,
+                foursquare_venue: this.foursquare_venue,
                 venue_name: this.venue_name
             });
         }else{
@@ -174,6 +173,13 @@ var uploading = page_view.extend({
                     photo: photo
                 });
                 uploading_view.progress_el.html( uploading_view.progress_view.render().el );
+
+                if(photo.get('location').foursquare_venue_id){
+                    uploading_view.foursquare_venue = photo.get('location').foursquare_venue_id;
+                    uploading_view.venue_name = photo.get('location').foursquare_venue_name;
+                }
+
+                uploading_view.render();
             }
         });
     },
@@ -213,7 +219,7 @@ var uploading_image_stream = side_scroll.extend({
             stream_type: this.options.stream_type,
             latitude: this.options.latitude,
             longitude: this.options.longitude,
-            spot: this.options.spot,
+            foursquare_venue: this.options.foursquare_venue,
             venue_name: this.options.venue_name
         };
 
@@ -235,7 +241,7 @@ var uploading_image_stream = side_scroll.extend({
                 break;
             case "spot":
                 this.collection.data = {
-                    spot: this.details.spot
+                    foursquare_venue: this.details.foursquare_venue
                 };
                 break;
         }
