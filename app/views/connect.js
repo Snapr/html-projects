@@ -138,44 +138,44 @@ var connect_li = linked_service.extend({
         var next = window.location.href.split('?')[0];
         next += "?" + $.param( redirect_params );
         return next;
-    },
+    }
 
     // link_service inherited from views/linked_service, uses this.get_return_url
     // link_service: function(){},
 
-    share: function(){
-        this.model = new photo_model({id: this.photo_id});
+    // share: function(){
+    //     this.model = new photo_model({id: this.photo_id});
 
-        var connect_li = this;
+    //     var connect_li = this;
 
-        var options = {
-            success: function( model, xhr ){
-                connect_li.status = "shared";
-                connect_li.render();
-                if (connect_li.parent_view.to_link.length === 0){
-                    setTimeout(function(){
-                        Backbone.history.navigate("#/uploading/?shared=true&photo_id=" + model.get("id"));
-                    }, 600);
-                }
-            },
-            error: function( error ){
-                console.error("share error", error);
-            }
-        };
+    //     var options = {
+    //         success: function( model, xhr ){
+    //             connect_li.status = "shared";
+    //             connect_li.render();
+    //             if (connect_li.parent_view.to_link.length === 0){
+    //                 setTimeout(function(){
+    //                     Backbone.history.navigate("#/uploading/?shared=true&photo_id=" + model.get("id"));
+    //                 }, 600);
+    //             }
+    //         },
+    //         error: function( error ){
+    //             console.error("share error", error);
+    //         }
+    //     };
 
-        switch (this.provider){
-            case "facebook":
-                this.model.save({
-                    facebook_gallery: true
-                }, options);
-                break;
-            case "tumblr":
-                this.model.save({
-                    tumblr: true
-                }, options);
-                break;
-        }
-    }
+    //     switch (this.provider){
+    //         case "facebook":
+    //             this.model.save({
+    //                 facebook_gallery: true
+    //             }, options);
+    //             break;
+    //         case "tumblr":
+    //             this.model.save({
+    //                 tumblr: true
+    //             }, options);
+    //             break;
+    //     }
+    // }
 
 });
 
