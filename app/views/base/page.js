@@ -25,7 +25,9 @@ return Backbone.View.extend({
         _.bindAll( this );
 
         this.events = _.extend(this.events || {}, {
-            "click .x-back": "back"
+            "click .x-back": "back",
+            "click a[data-rel=back]": "back",
+            "click a[data-back-here]": "add_back_url"
         });
 
         this.post_initialize.apply(this, arguments);
@@ -41,6 +43,10 @@ return Backbone.View.extend({
         if(options === undefined){
             options = this.options;
         }
+
+        try{
+            this.options.back_url = options.query.back_url;
+        }catch(e){}
 
         if(this.history_ignore_params){
             // if we've been here before, ignore some params from the url,
@@ -112,10 +118,25 @@ return Backbone.View.extend({
 
     dialog_closed: function( dialog ){ /* called when a dialog is closed and this page is displayed again */ },
 
-    back: function(){
-        console.debug('back', this.dialog);
+    add_back_url: function(e){
+        var dest = e.target.hash;
+        dest += dest.indexOf('?') == -1 ? "?" : "&";
+        dest += "back_url=" + escape(window.location.hash);
+        Backbone.history.navigate(dest);
+        e.preventDefault();
+        return false;
+    },
+
+    back: function(e){
+        if(this.options.back_url){
+            console.debug('Back to back_url:', this.options.back_url);
+            Backbone.history.navigate(this.options.back_url);
+            e.preventDefault();
+            return false;
+        }
         if(this.dialog){
             if (this.previous_view){
+                console.debug('Back to previous_view:', this.previous_view, '(This is a dialog)');
                 this.previous_view.change_page({
                     changeHash: false,
                     transition: this.get_transition(),
@@ -124,9 +145,11 @@ return Backbone.View.extend({
                 config.set('current_view', this.previous_view);
                 this.previous_view.dialog_closed(this);
             }else{
-                Backbone.history.navigte('#');
+                console.debug('Back to # (This is a dialog, no previous_view)');
+                Backbone.history.navigate('#');
             }
         }else{
+            console.debug('Back via history');
             history.go(-1);
         }
     },
