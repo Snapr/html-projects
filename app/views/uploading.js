@@ -38,8 +38,7 @@ var uploading = page_view.extend({
         if (this.photo_id){
             // web flow - photo is uploaded then user is sent here
             // so the id and photo on the server are available
-            // TODO: this probably won't work anymore
-            this.upload_completed( 0, this.photo_id);
+            this.upload_complete(this.photo_id);
         }else{
             // no photo_id = in appmode the photo is probably being uploaded by the native
             // app in the background, we can show progress here.
@@ -157,6 +156,26 @@ var uploading = page_view.extend({
             update_on_complete: true
         });
         this.progress_el.html( this.progress_view.render().el );
+    },
+
+    upload_complete: function(photo_id){
+        this.$('.offline').hide();
+
+        var photo = new photo_model({id:photo_id});
+        var uploading_view = this;
+        photo.fetch({
+            success: function(){
+                photo.set('upload_status', 'completed');
+                photo.set('thumbnail', "https://s3.amazonaws.com/media-server2.snapr.us/thm2/" +
+                    photo.get("secret") + "/" +
+                    photo.get("id") + ".jpg");
+
+                uploading_view.progress_view = new upload_progress_li({
+                    photo: photo
+                });
+                uploading_view.progress_el.html( uploading_view.progress_view.render().el );
+            }
+        });
     },
 
     upload_cancelled: function( queue_id ){
