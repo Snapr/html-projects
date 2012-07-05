@@ -157,17 +157,6 @@ var uploading = page_view.extend({
             update_on_complete: true
         });
         this.progress_el.html( this.progress_view.render().el );
-        this.progress_view.on('complete', this.upload_complete);
-    },
-
-    upload_complete: function( model, photo ){
-        this.$('.offline').hide();
-
-        this.latitude = photo.has("location") && photo.get("location").latitude;
-        this.longitude = photo.has("location") && photo.get("location").longitude;
-        this.spot = photo.has("location") && photo.get("location").spot_id;
-        this.venue_name = photo.has("location") && photo.get("location").foursquare_venue_name;
-        this.render();
     },
 
     upload_cancelled: function( queue_id ){
