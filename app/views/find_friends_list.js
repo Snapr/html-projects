@@ -79,7 +79,8 @@ var find_friends = page_view.extend({
                 data:data,
                 url: config.get('api_base') + '/linked_services/' + this_view.service + '/find_friends/',
                 success: function(collection, response){
-                    var people_list = this_view.$("ul.people-list").empty();
+                    var people_list = this_view.$(".people-list").empty();
+                    var helper_content = this_view.$(".helper-content").empty();
                     this_view.xhr = null;
                     this_view.$el.removeClass('loading');
 
@@ -87,11 +88,11 @@ var find_friends = page_view.extend({
                         var button = new link_button();
                         if(response.error.code == 30){
                             button.provider = 'twitter';
-                            people_list.append( button.render().$el ).trigger('create');
+                            helper_content.append( button.render().$el ).trigger('create');
                             return;
                         }else if(response.error.code == 20){
                             button.provider = 'facebook';
-                            people_list.append( button.render().$el ).trigger('create');
+                            helper_content.append( button.render().$el ).trigger('create');
                             return;
                         }
                     }
