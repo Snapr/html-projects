@@ -31,7 +31,7 @@ return page_view.extend({
         var first = events[0];
 
         // add "latest yellow topbar" if the first date doesn't have a photo event
-        if (first && first.get("events").first().has("photo") === false){
+        if (first && !first.get("events").any(function(e){return e.has("photo");})){
             $streams.append( new activity_stream({
                 model: new Backbone.Model()
             }).render().el );
