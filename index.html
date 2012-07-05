@@ -479,14 +479,12 @@
     </script>
 
      <!-- @link @service BUTTON for linking a service in #find-friends -->
-    <script id="add-linked-service-button-template" type="text/template">
-
+    <script id="ff-link-service-template" type="text/template">
     <% switch(provider) { case 'twitter': %>
         <a data-role="button" class="link-service twitter-button logo-button" data-theme="e">Link <span class="twitter-logo button-logo">Twitter</span></a>
     <% break; case 'facebook': %>
         <a data-role="button" class="link-service facebook-button logo-button" data-theme="e">Link <span class="facebook-logo button-logo">Facebook</span></a>
     <% break; } %>
-
     </script>
 
     <!-- @linked @service ITEM for showing a linked service in #linked-services -->
