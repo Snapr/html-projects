@@ -44,8 +44,7 @@ return page_view.extend({
             }).render().el );
         }
 
-        _.each( events, function( stream )
-        {
+        _.each( events, function( stream ){
             var stream_li = new activity_stream({
                 group_by: this.group_by,
                 model: stream

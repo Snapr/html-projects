@@ -18,7 +18,6 @@ function _make_route(view, el, extra_data){
             }
             route.cached_view.previous_view = config.get('current_view');
             config.set('current_view', route.cached_view);
-
         });
     };
     return route;
