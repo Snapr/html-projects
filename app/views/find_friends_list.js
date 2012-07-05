@@ -87,11 +87,11 @@ var find_friends = page_view.extend({
                         var button = new link_button();
                         if(response.error.code == 30){
                             button.provider = 'twitter';
-                            people_list.append( button.render().el );
+                            people_list.append( button.render().$el ).trigger('create');
                             return;
                         }else if(response.error.code == 20){
                             button.provider = 'facebook';
-                            people_list.append( button.render().el );
+                            people_list.append( button.render().$el ).trigger('create');
                             return;
                         }
                     }
