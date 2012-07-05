@@ -1548,23 +1548,34 @@
     .activity-follow-item{
         position: relative;
         padding-left: 0;
-        padding-top: 8px;
+        margin-top: 8px;
         min-height:  @size-small-avatar;
+        display: block;
         .username,
         .activity-desc,
-        .small-text,
-        .ui-li-icon{
+        .small-text{
             display: inline-block;
-            vertical-align: middle;
-            line-height: @size-small-avatar;
+            vertical-align: baseline;
             margin-bottom: 0;
+        }
+        .ui-link{
+            display: block;
+            padding-left:  @size-small-avatar;
+            padding-top: 8px ;
+            min-height: @size-small-avatar;
+            .border-box();
+        }
+        .ui-li-icon{
+            display: block;
+            position: absolute;
+            left: -@padding-image-grid-inset;
+            top: 0;
         }
     }
 
     .photo-activity{
         .activity-item:first-child{
             border-top: none;
-            margin-top: 0!important;
             padding-top: 0!important;
         }
     }
@@ -1576,7 +1587,7 @@
             padding-top: 0!important;
         }
     }
-
+    
     /* Image Items */
     .activity-image-item{
         position: relative;

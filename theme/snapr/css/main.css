@@ -5688,21 +5688,34 @@ body.browser-testing .ps-caption-bottom {
 .activity-streams .activity-follow-item {
   position: relative;
   padding-left: 0;
-  padding-top: 8px;
+  margin-top: 8px;
   min-height: 34px;
+  display: block;
 }
 .activity-streams .activity-follow-item .username,
 .activity-streams .activity-follow-item .activity-desc,
-.activity-streams .activity-follow-item .small-text,
-.activity-streams .activity-follow-item .ui-li-icon {
+.activity-streams .activity-follow-item .small-text {
   display: inline-block;
-  vertical-align: middle;
-  line-height: 34px;
+  vertical-align: baseline;
   margin-bottom: 0;
+}
+.activity-streams .activity-follow-item .ui-link {
+  display: block;
+  padding-left: 34px;
+  padding-top: 8px ;
+  min-height: 34px;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.activity-streams .activity-follow-item .ui-li-icon {
+  display: block;
+  position: absolute;
+  left: -4px;
+  top: 0;
 }
 .activity-streams .photo-activity .activity-item:first-child {
   border-top: none;
-  margin-top: 0!important;
   padding-top: 0!important;
 }
 .activity-streams .activity-item:first {
