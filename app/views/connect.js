@@ -123,7 +123,7 @@ var connect_li = linked_service.extend({
         var to_link = _.without( this.parent_view.to_link, this.provider );
         var shared = _.without( this.parent_view.shared, this.provider );
 
-        var redirect_params = {linked: this.provider, redirect_url: escape(this.parent_view.redirect_url)};
+        var redirect_params = {linked: this.provider, redirect_url: this.parent_view.redirect_url};
 
         if (shared.length){
             redirect_params.shared = shared.join(",");
@@ -142,40 +142,6 @@ var connect_li = linked_service.extend({
 
     // link_service inherited from views/linked_service, uses this.get_return_url
     // link_service: function(){},
-
-    // share: function(){
-    //     this.model = new photo_model({id: this.photo_id});
-
-    //     var connect_li = this;
-
-    //     var options = {
-    //         success: function( model, xhr ){
-    //             connect_li.status = "shared";
-    //             connect_li.render();
-    //             if (connect_li.parent_view.to_link.length === 0){
-    //                 setTimeout(function(){
-    //                     Backbone.history.navigate("#/uploading/?shared=true&photo_id=" + model.get("id"));
-    //                 }, 600);
-    //             }
-    //         },
-    //         error: function( error ){
-    //             console.error("share error", error);
-    //         }
-    //     };
-
-    //     switch (this.provider){
-    //         case "facebook":
-    //             this.model.save({
-    //                 facebook_gallery: true
-    //             }, options);
-    //             break;
-    //         case "tumblr":
-    //             this.model.save({
-    //                 tumblr: true
-    //             }, options);
-    //             break;
-    //     }
-    // }
 
 });
 

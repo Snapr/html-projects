@@ -131,7 +131,9 @@ return Backbone.View.extend({
         if(this.options.back_url){
             console.debug('Back to back_url:', this.options.back_url);
             Backbone.history.navigate(this.options.back_url);
-            e.preventDefault();
+            if(e){
+                e.preventDefault();
+            }
             return false;
         }
         if(this.dialog){

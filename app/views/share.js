@@ -437,7 +437,7 @@ return page_view.extend({
                         if (response.response &&
                             response.response.foursquare &&
                             response.response.foursquare.error &&
-                            response.response.foursquare.error.code == 28 ){
+                            response.response.foursquare.error.code == 29 ){
                             sharing_errors.push("foursquare");
                         }else{
                             sharing_successes.push("foursquare");
