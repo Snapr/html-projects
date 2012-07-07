@@ -1,6 +1,6 @@
 /*global _  define require - this has been duplicated from the people.js page.. redefine dependencies etc*/
-define(['config', 'views/base/page', 'collections/spot', 'views/components/no_results', 'views/people_li', 'utils/geo'],
-    function(config, page_view, spot_collection, no_results, people_li, geo){
+define(['config', 'views/base/page', 'collections/spot', 'views/components/no_results', 'views/people_li', 'utils/geo', 'utils/local_storage'],
+    function(config, page_view, spot_collection, no_results, people_li, geo, local_storage){
 var spots_view =  page_view.extend({
 
     post_initialize: function() {
@@ -9,35 +9,47 @@ var spots_view =  page_view.extend({
             dialog.$('#venue-search').focus();
         });
 
+        this.defaults = {
+            n:20,
+            spot_name: '',
+            sort: 'nearby',
+            full: true
+        }
+
         this.collection = new spot_collection();
         this.collection.on('all', this.render, this);
     },
 
     post_activate: function(options) {
 
-        var this_view = this;
+        var this_view = this,
+            stored_search_options = JSON.parse(local_storage.get("sports-search"));
+            
 
-        this.change_page();
+        this.search_options = (stored_search_options) ? stored_search_options : this.defaults;
 
-        var success_callback = function( location ) {
-            this_view.latitude = location.coords.latitude;
-            this_view.longitude = location.coords.longitude;
-            this_view.render();
+        var success_callback = function( location ) {            
+            this_view.search_options.latitude = location.coords.latitude;
+            this_view.search_options.longitude = location.coords.longitude;
+            this_view.search_options.nearby = true;
+            this_view.search_options.radius = 50000;
+            this_view.$el.find('form').submit();
         };
 
         var error_callback = function() {
-            this_view.render();
+            this_view.$el.find('form').submit();
         };
-
-        geo.get_location( success_callback, error_callback );
+       
+       geo.get_location( success_callback, error_callback );
+       this.change_page();
 
     },
 
     events: {
-        "keyup input": "search",
-        "change select": "search",
-        "click .ui-input-clear": "search",
-        "submit form": "search"
+        "keyup input": "search_event",
+        "change select": "search_event",
+        "click .ui-input-clear": "search_event",
+        "submit form": "search_event"
     },
 
     render: function() {
@@ -73,25 +85,58 @@ var spots_view =  page_view.extend({
         //         this.render();
     },
 
-    search: function(e) {
+    search: function(options) {
+
+        var this_view = this;
+
+        this.timer && clearTimeout(this.timer);
+        this.xhr && this.xhr.abort();
+
+        this.timer = setTimeout( function() {
+            this_view.timer = null;
+            this_view.$el.addClass('loading');
+            this_view.xhr = this_view.collection.fetch({
+                data: options,
+                success: function () {
+                    this_view.xhr = null;
+                    this_view.$el.removeClass('loading');
+                }
+            });
+        }, 300 );
+
+
+        local_storage.save("spots-search", options);
+        this.search_options = options;
+
+    },
+
+    search_event: function(e) {
 
         e.preventDefault();
+        this.$el.find('#spots-search').attr('class', '');
 
         var keywords = this.$el.find('#spot-search').val(),
             category = this.$el.find('#options-category').val(),
             sort = this.$el.find('#options-sort').val(),
             nearby = this.$el.find('#options-location').val() === 'nearby',
-            this_view = this;
+            this_view = this,
+            data = this.defaults;
 
-        this.timer && clearTimeout(this.timer);
-        this.xhr && this.xhr.abort();
 
-        var data = {
-            n:20,
-            spot_name: keywords,
-            sort: sort,
-            full: true
-        };
+        if (category !== 'all')  {
+            data.category = category;
+            this.$el.find('#spots-search').addClass(category);
+        }
+        else {
+            this.$el.find('#spots-search').addClass('all-categories');
+        }
+
+        
+
+        data.spot_name = keywords;
+
+        data.sort = sort;
+        
 
         if (this.latitude && this.longitude && nearby) {
             data.latitude = this.latitude;
@@ -104,24 +149,8 @@ var spots_view =  page_view.extend({
             data.category = category;
         }
 
-        if(data.spot_name){
+        this.search(data);
 
-            this.timer = setTimeout( function() {
-                this_view.timer = null;
-                this_view.$el.addClass('loading');
-                this_view.xhr = this_view.collection.fetch({
-                    data: data,
-                    success: function () {
-                        this_view.xhr = null;
-                        this_view.$el.removeClass('loading');
-                    }
-                });
-            }, 300 );
-
-        }
-        else {
-            this_view.collection.reset();
-        }
     },
 
 });
