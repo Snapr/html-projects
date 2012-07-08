@@ -5,6 +5,8 @@ return page_view.extend({
 
     post_activate:function(options){
 
+        this.options.back_url = "#/";
+
         this.$el.find('.account-content').empty();
 
         this.change_page();
