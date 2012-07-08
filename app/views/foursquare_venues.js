@@ -3,6 +3,10 @@ define(['backbone', 'views/base/page', 'collections/foursquare_venue'], function
 var venues = page_view.extend({
 
     post_activate: function(options){
+        if(!options.retry){
+            this.$('.venue-search input').val('');
+        }
+
         this.model = options.model;
         this.selected_id = options.query.foursquare_venue_id;
 

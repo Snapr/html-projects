@@ -2,20 +2,16 @@
 define(['backbone', 'auth'], function(Backbone, auth){
 return Backbone.View.extend({
 
-    initialize: function()
-    {
+    initialize: function(){
         _.bindAll( this);
         this.template = this.options.template;
-
-        var people_li = this;
 
         this.model.bind( "change", this.refresh );
     },
 
     tagName: 'li',
 
-    render: function()
-    {
+    render: function(){
         this.$el
             .html( this.template({
                 user: this.model,
@@ -26,16 +22,14 @@ return Backbone.View.extend({
         return this;
     },
 
-    refresh: function()
-    {
+    refresh: function(){
         // unfortunately jquery mobile doesn't like refreshing inividual listview items
         // when the listview has already been created so we need to change things manually
 
         var follow_button = this.$el.find(".follow-btn");
         var following = this.model.get("relationship").you_follow;
 
-        if (following)
-        {
+        if (following){
             follow_button
                 .attr("data-icon", "check")
                 .removeClass("follow")
@@ -44,9 +38,7 @@ return Backbone.View.extend({
             follow_button.find("span.ui-icon")
                     .removeClass("ui-icon-plus")
                     .addClass("ui-icon-check");
-        }
-        else
-        {
+        }else{
             follow_button
                 .attr("data-icon", "plus")
                 .removeClass("unfollow")
