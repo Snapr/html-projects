@@ -64,7 +64,7 @@ return Backbone.View.extend({
         var options = {
             success: function(){
                 var parent = config.get('current_view');
-                parent.user_settings.cache_bust();
+                auth.user_settings.cache_bust();
                 parent.fetch();
             },
             error: function(){

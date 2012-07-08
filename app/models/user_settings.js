@@ -1,5 +1,5 @@
 /*global _  define require */
-define(['config', 'backbone', 'models/linked_service', 'auth'], function(config, Backbone, linked_service, auth){
+define(['config', 'backbone', 'models/linked_service'], function(config, Backbone, linked_service){
 
 var user_settings_cache;
 
@@ -7,7 +7,6 @@ return  Backbone.Model.extend({
 
     initialize: function(){
         this.bind('change', this.cache_bust);
-        auth.bind('change', this.cache_bust);
     },
 
     cache_bust: function(a,b){

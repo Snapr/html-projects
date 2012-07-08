@@ -1,6 +1,6 @@
 /*global _  define require */
-define(['backbone', 'views/base/page', 'views/linked_service', 'models/post', 'models/photo', 'utils/query', 'utils/alerts'],
-    function(Backbone, page_view, linked_service, post_model, photo_model, Query, alerts){
+define(['backbone', 'views/base/page', 'views/linked_service', 'models/post', 'models/photo', 'utils/query', 'utils/alerts', 'auth'],
+    function(Backbone, page_view, linked_service, post_model, photo_model, Query, alerts, auth){
 var connect_page = page_view.extend({
 
     post_activate: function(options){
@@ -33,6 +33,7 @@ var connect_page = page_view.extend({
             }else if(provider == this.linked){
                 // is a service username is suppllied
                 if (this.query.get('username')){
+                    auth.user_settings.cache_bust();
                     status = 'ready';
                     this.share(this.linked);
                 // no service username = something went wrong
