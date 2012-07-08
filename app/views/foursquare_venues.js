@@ -21,7 +21,7 @@ var venues = page_view.extend({
     },
 
     events: {
-        "keyup input": "search",
+        "submit form.venue-search": "search",
         "click .ui-input-clear": "search"
     },
 
@@ -51,41 +51,36 @@ var venues = page_view.extend({
         venue_list.listview().listview("refresh");
     },
 
-    search: function( e ){
+    search: function(e){
+        if(e){
+            e.preventDefault();
+        }
         var venues_view = this;
 
-        var keywords = e.target && e.target.value && e.target.value.toLowerCase() || "";
+        var keywords = this.$('#venue-search').val().toLowerCase();
 
         var doSearch;
         if (keywords.length > 0){
-            doSearch = function(){
+            if (this.timer) {
+                // clear the previous timeout
+                window.clearTimeout(this.timer);
+            }
+            // set up a new timeout function
+            this.timer = window.setTimeout( function() {
+                venues_view.timer = null;
                 venues_view.$el.addClass('loading');
                 venues_view.collection.data.query = keywords;
                 venues_view.collection.fetch({complete:function(){
                     venues_view.$el.removeClass('loading');
                 }});
-            };
+            }, 300 );
         }else{
-            doSearch = null;
-
             if (this.collection.data.query){
                 delete this.collection.data.query;
             }
             this.collection.fetch();
         }
-
-        if (this.timer) {
-            // clear the previous timeout
-            window.clearTimeout(this.timer);
-        }
-
-        if (doSearch){
-            // set up a new timeout function
-            this.timer = window.setTimeout( function() {
-                venues_view.timer = null;
-                doSearch();
-            }, 300 );
-        }
+        return false;
 
     }
 });
