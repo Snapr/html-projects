@@ -1,5 +1,5 @@
 /*global define */
-define(['config', 'collections/upload_progress', 'utils/alerts'], function(config, upload_progress, alerts){
+define(['config', 'collections/upload_progress'], function(config, upload_progress){
     //export
 
     // we can't to this here because geo relises on pass_data - circ.dep.
@@ -71,8 +71,7 @@ define(['config', 'collections/upload_progress', 'utils/alerts'], function(confi
 
     window.upload_failed = function(id, error){
         upload_progress.remove(id);
-
-        alerts.notification('Upload Error', error || 'Unknown error');
+        upload_progress.trigger('error', id, error);
 
         run_if_function(config.get('current_view').upload_failed)(id, error);
     };

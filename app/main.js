@@ -305,6 +305,13 @@ require(['config', 'jquery', 'backbone', 'photoswipe', 'auth', 'utils/local_stor
 
 });
 
+// bind this here to prevent circular dependencies
+require(['utils/alerts', 'collections/upload_progress'], function(alerts, upload_progress){
+    upload_progress.on('error', function(id, error){
+        alerts.notification('Upload Error', error || 'Unknown error');
+    });
+});
+
 // export utils for templates to use
 require(['utils/string'], function(string_utils) {
     window.string_utils = string_utils;
