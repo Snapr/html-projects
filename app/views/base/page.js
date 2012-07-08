@@ -40,9 +40,7 @@ return Backbone.View.extend({
     history_ignore_params: false,  // array of url params to ignore when navigating to a view via history
 
     activate: function(options){
-        if(options === undefined){
-            options = this.options;
-        }
+        options = _.extend(options || {}, this.options);
 
         try{
             this.options.back_url = options.query.back_url;
@@ -63,21 +61,21 @@ return Backbone.View.extend({
         console.log('dialog?', this.dialog);
 
         var back_text;
+        var previous_view = options.retry ? this.previous_view : config.get('current_view') ;
         if(history_state.get('back_text')){
             back_text = history_state.get('back_text');
             console.log('back_text from history:', back_text);
         }else{
-            var current_view = config.get('current_view');
-            while(current_view && current_view.dialog){
+            while(previous_view && previous_view.dialog){
                 console.log("view is a dialog, checking prev one");
-                current_view = current_view.previous_view;
+                previous_view = previous_view.previous_view;
             }
-            if(current_view){
-                if(current_view.title){
-                    back_text = current_view.title;
+            if(previous_view){
+                if(previous_view.title){
+                    back_text = previous_view.title;
                     console.log('back_text from view title:', back_text);
                 }else{
-                    back_text = current_view.$el.data('short-title') || current_view.$el.data('title');
+                    back_text = previous_view.$el.data('short-title') || previous_view.$el.data('title');
                     console.log('back_text from view data(title):', back_text);
                 }
             }else{
