@@ -3,11 +3,15 @@ define(['views/base/page', 'views/linked_service', 'auth', 'utils/local_storage'
 function(page_view, linked_service, auth, local_storage, alerts, native, config){
 return page_view.extend({
 
-    post_activate:function(){
+    post_activate:function(options){
 
         this.$el.find('.account-content').empty();
 
         this.change_page();
+
+        if(options.query.username){
+            auth.user_settings.cache_bust();
+        }
 
         this.render(!!'initial');
         this.fetch();
