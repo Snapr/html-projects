@@ -4,6 +4,7 @@ define(['backbone', 'views/base/page', 'views/linked_service', 'models/post', 'm
 var connect_page = page_view.extend({
 
     post_activate: function(options){
+        this.$("ul").empty();
 
         this.change_page();
 
@@ -24,7 +25,7 @@ var connect_page = page_view.extend({
     },
 
     render: function(){
-        this.$el.find("ul").empty();
+        var list_el = this.$("ul").empty();
 
         _.each( [ 'twitter', 'facebook', 'tumblr', 'foursquare'], function( provider ){
             var status;
@@ -53,11 +54,11 @@ var connect_page = page_view.extend({
                     photo_id: this.photo_id,
                     parent_view: this
                 });
-            this.$el.find("ul").append( li.render().el );
+            list_el.append( li.render().el );
 
         }, this );
 
-        this.$el.find("ul").listview().listview("refresh");
+        list_el.listview().listview("refresh");
         $.mobile.hidePageLoadingMsg();
 
     },
