@@ -8,7 +8,8 @@ var venues = page_view.extend({
 
         this.query = options.query;
 
-        this.$el.find("ul.venue-list").empty();
+        this.$("ul.venue-list").empty();
+        this.$el.addClass('loading');
 
         this.collection = new foursquare_venue_collection({
             ll: options.query.ll
@@ -26,7 +27,7 @@ var venues = page_view.extend({
     },
 
     render: function(){
-        var venue_list = this.$el.find("ul.venue-list").empty();
+        var venue_list = this.$("ul.venue-list").empty();
 
         var venue_li_template = _.template( $("#venue-li-template").html() );
 
@@ -49,6 +50,7 @@ var venues = page_view.extend({
         }, this);
 
         venue_list.listview().listview("refresh");
+        this.$el.removeClass('loading');
     },
 
     search: function(e){
