@@ -27,22 +27,28 @@ var spots_view =  page_view.extend({
             
         this.search_options = (stored_search_options) ? stored_search_options : this.defaults;
 
-        var success_callback = function( location ) {            
-            this_view.search_options.latitude = this.latitude = location.coords.latitude;
-            this_view.search_options.longitude = this.longitude = location.coords.longitude;
+        var success_callback = function( location ) {      
+            this_view.search_options.latitude = this_view.latitude = location.coords.latitude;
+            this_view.search_options.longitude = this_view.longitude = location.coords.longitude;
             this_view.search_options.nearby = true;
             this_view.search_options.radius = 50000;
-            // this_view.$el.find('form').submit();
             this_view.search(this_view.search_options);
         };
 
         var error_callback = function() {
-            // this_view.$el.find('form').submit();
             this_view.search(this_view.search_options);
         };
        
-       geo.get_location( success_callback, error_callback );
-       this.change_page();
+        geo.get_location( success_callback, error_callback );
+        
+        this.change_page();
+        
+        this.search_options.nearby || this.$el.find('#options-location').val('anywhere').selectmenu('refresh'); //ugh dirty
+        this.$el.find('#spot-search').val(this.search_options.spot_name);
+        this.$el.find('#options-category').val(this.search_options.category).selectmenu("refresh");
+        this.$el.find('#options-sort').val(this.search_options.sort).selectmenu("refresh");
+        this.$el.find('#spots-search').attr('class', '').addClass(this.search_options.category || 'all-categories');
+
 
     },
 
@@ -138,7 +144,7 @@ var spots_view =  page_view.extend({
 
         data.sort = sort;
         
-
+        console.log(this.latitude, this.longitude, nearby);
         if (this.latitude && this.longitude && nearby) {
             data.latitude = this.latitude;
             data.longitude = this.longitude;
