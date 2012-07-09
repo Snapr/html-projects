@@ -103,7 +103,9 @@ return Backbone.View.extend({
 
         console.debug('set back text for', this.$el.selector, 'from', this.$("[data-rel='back'] .ui-btn-text").text(), 'to', back_text);
         this.$("[data-rel='back'] .ui-btn-text").text(back_text);
-        history_state.set('back_text', back_text);
+        if(!this.dialog){
+            history_state.set('back_text', back_text);
+        }
         return this;
     },
 
