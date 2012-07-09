@@ -159,20 +159,18 @@
     border-top: @border-light-on-light;
     .corner-top (@corner-page-element-rounded);
     .ui-btn{
-        font-family: @txt-font-base;
          .ui-btn-text{
-             text-transform: lowercase;
-             line-height: @txt-size-username;
              font-size: @txt-size-base;
+             .button-font-light()
         }
     }
     .ui-btn-active{
         .ui-btn-text{
             position: relative;
             top: -4px;
-            text-shadow: @color-shadow-light-on-light 0px 1px 0px;
-            font-family: @txt-font-special;
-             font-size: @txt-size-username;
+            text-shadow: @color-shadow-light-on-light 0px 1px 0px;            
+            .button-font-bold();
+            font-size: @txt-size-username;
         }
         &::after{
             .arrow-up(@arrow-size, @color-bg-neutral-light, 50% , 51px);
@@ -849,10 +847,7 @@
     height: @size-topbar-height;
     overflow: hidden;
     .ui-title{
-        font-family: @txt-font-special;
-        font-size: @txt-size-page-heading;
-        font-weight: normal;
-        text-transform: lowercase;
+        .title-bar-font();
         line-height: @size-topbar-height;
         vertical-align: middle;
         margin: 0;

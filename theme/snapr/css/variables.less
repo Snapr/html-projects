@@ -89,7 +89,7 @@
 
 @color-txt-light-on-light: #999999;
 @color-txt-medium-on-light: #666666;
-@color-txt-dark-on-light: #333333;
+@color-txt-dark-on-light: #474747;
 
 @color-txt-light-on-dark: #cccccc;
 @color-txt-medium-on-dark: #999999;
@@ -98,11 +98,9 @@
 /* Global Fonts*/
 
 @txt-font-base: Helvetica, Arial, sans-serif;
-@txt-font-special:'MuseoSansRounded700', Helvetica, Arial, sans-serif; /* In the case of Snapr we just have one special font */ 
-@txt-font-special-numbers: @txt-font-special;
-@txt-font-page-headings: @txt-font-special;
-@txt-font-usernames: @txt-font-special;
-@txt-font-buttons: @txt-font-special;
+@txt-font-special: Helvetica, Arial, sans-serif; /* In the case of Snapr we just have one special font */ 
+@txt-font-buttons: Helvetica, Arial, sans-serif; /* In the case of Snapr we just have one special font */ 
+
 
 @txt-size-base: 15px;
 @txt-size-small: 12px;
@@ -112,6 +110,40 @@
 @txt-size-btn-large: @txt-size-username;
 @txt-size-btn-small: @txt-size-small;
 @txt-size-big-number: 24px;
+
+
+/* Font Mixins For More Control */
+.button-font-bold(){
+    font-family: @txt-font-buttons;
+    font-weight: bold;
+    text-transform: lowercase;
+    -webkit-font-smoothing: antialiased;
+    text-decoration: none;
+}
+.button-font-small(){
+    font-family: @txt-font-base;
+    font-weight: bold;
+    font-size: @txt-size-small;
+}
+.button-font-light(){
+    font-family: @txt-font-buttons;
+    font-weight: normal;
+    text-transform: lowercase;
+}
+.heading-font(){
+    font-family: @txt-font-special;
+    font-weight: bold;
+}
+.title-bar-font(){
+    font-family: @txt-font-special;
+    font-weight: bold;
+    text-transform: lowercase;
+    font-size: @txt-size-page-heading;
+}
+.username-font(){
+    font-family: @txt-font-special;
+    font-weight: normal;    
+}
 
 /* Global Rounded Corners */
 

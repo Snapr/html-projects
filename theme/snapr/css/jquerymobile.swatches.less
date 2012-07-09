@@ -49,19 +49,19 @@
 /* Button Styles */
 
 .ui-btn-active{
+    .button-font-bold();
     border: none;
     background: transparent;
-    font-weight: normal;
     color: white;
     cursor: pointer;
     text-shadow: 0 -1px 1px @color-shadow-light-on-dark;
 }
 
 .ui-btn-up-a {
+    .button-font-bold();
 	border: @border-medium-on-dark;
 	background: none;
 	background-color: @color-bg-dark;
-	font-weight: normal;
 	color: @color-txt-light-on-dark;
 	text-shadow: @color-shadow-dark-on-dark 0px 1px 1px;
 	font-size: @txt-size-btn-large;
@@ -84,10 +84,10 @@
 .ui-btn-hover-a,
 .ui-btn-down-a,
 .ui-btn-active-a {
+    .button-font-bold();
 	border: @border-light-on-dark;
 	background: none;
 	background-color: @color-bg-dark;
-	font-weight: normal;
 	color: @color-bg-light;
 	text-shadow: @color-shadow-dark-on-dark 0px 1px 1px;
 	font-size: @txt-size-btn-large;
@@ -156,10 +156,9 @@
 .ui-btn-up-b[data-rel="back"]::before {
 	border: @border-dark-on-dark;
 	background: @color-bg-neutral-dark;
-	font-weight: bold;
+	.button-font-small();
 	color: @color-txt-medium-on-dark;
 	text-shadow: @color-shadow-medium-on-dark 0px 1px 1px;
-	font-size: @txt-size-small;
 	text-decoration: none;
 	.linear-gradient(@color-bg-neutral-dark, @color-bg-neutral-dark-tint);
     .ui-btn-inner{
@@ -189,7 +188,7 @@
 .ui-btn-active-b[data-rel="back"]::before{
 	border: @border-dark-on-dark;
 	background: @color-bg-neutral-dark;
-	font-weight: bold;
+	.button-font-small();
 	color: lighten(@color-txt-medium-on-dark, 3%);
 	text-shadow: @color-shadow-medium-on-dark 0px 1px 1px;
 	font-size: @txt-size-small;
@@ -202,9 +201,7 @@
 		color: @color-txt-medium-on-dark;
 	}
 	&.ui-shadow{
-	   -moz-box-shadow: 0 1px 0 @color-shadow-light-on-dark;
-       -webkit-box-shadow: 0 1px 0 @color-shadow-light-on-dark;
-       box-shadow: 0 1px 0 @color-shadow-light-on-dark;
+       .box-shadow(0 1px 0 @color-shadow-light-on-dark);
 	}
 	&.ui-btn-active{
 	    background: none;
@@ -222,10 +219,9 @@
 .ui-btn-down-b[data-rel="back"]::before{
 	border: @border-dark-on-dark;
 	background: @color-bg-neutral-dark;
-	font-weight: bold;
+	.button-font-small();
 	color: darken(@color-txt-medium-on-dark, 20%);
 	text-shadow: @color-shadow-medium-on-dark 0px 1px 1px;
-	font-size: @txt-size-small;
 	text-decoration: none;
     .pressed-gradient(@color-bg-neutral-dark-tint, 5%);
     .ui-btn-inner{
@@ -406,9 +402,7 @@
 	background: @color-bg-neutral-light;
     .linear-gradient(@color-bg-neutral-light, @color-bg-neutral-light-tint);
 	color: @color-txt-dark-on-light;
-	font-family: @txt-font-special;
-	font-weight: normal;
-	text-decoration: none;
+	.button-font-bold();
 	a.ui-link-inherit {
 		color: @color-txt-dark-on-light;
 	}
@@ -425,9 +419,7 @@
 	background: lighten(@color-bg-neutral-light, 10% );
     .linear-gradient(lighten(@color-bg-neutral-light, 10%), lighten(@color-bg-neutral-light-tint, 10%));
 	color: @color-txt-dark-on-light;
-	font-family: @txt-font-special;
-	font-weight: normal;
-	text-decoration: none;
+	.button-font-bold();
 	a.ui-link-inherit {
 		color: @color-txt-dark-on-light;
 	}
@@ -444,9 +436,7 @@
 	background: @color-bg-neutral-light;
     .pressed-gradient(@color-bg-neutral-light, 3%);
 	color: @color-txt-dark-on-light;
-	font-family: @txt-font-special;
-	font-weight: normal;
-	text-decoration: none;
+    .button-font-bold();
 	a.ui-link-inherit {
 		color: @color-txt-dark-on-light;
 	}
@@ -651,7 +641,6 @@
     .ui-link:hover,
     .ui-link:active {
         color: @color-txt-dark-on-light;
-        font-weight: normal;
     }
     hr{
            display: block;
@@ -687,9 +676,7 @@
 	background: @color-bg-highlight-secondary;
     .linear-gradient(@color-bg-highlight-secondary, @color-bg-highlight-secondary-tint);
 	color: @color-txt-dark-on-light;
-	font-family: @txt-font-special;
-	font-weight: normal;
-	text-decoration: none;
+	.button-font-bold();
 	a.ui-link-inherit {
 		color: @color-txt-dark-on-light;
 	}
@@ -707,9 +694,7 @@
 	background: lighten(@color-bg-highlight-secondary, 10% );
     .linear-gradient(lighten(@color-bg-highlight-secondary, 10%), lighten(@color-bg-highlight-secondary-tint, 10%));
 	color: @color-txt-dark-on-light;
-	font-family: @txt-font-special;
-	font-weight: normal;
-	text-decoration: none;
+	.button-font-bold();
 	a.ui-link-inherit {
 		color: @color-txt-dark-on-light;
 	}
@@ -727,9 +712,7 @@
 	background: @color-bg-highlight-secondary;
     .pressed-gradient(@color-bg-highlight-secondary, 3%);
 	color: @color-txt-dark-on-light;
-	font-family: @txt-font-special;
-	font-weight: normal;
-	text-decoration: none;
+	.button-font-bold();
 	a.ui-link-inherit {
 		color: @color-txt-dark-on-light;
 	}
@@ -768,8 +751,7 @@
             h2,
             h3,{
                 padding: 8px;
-                font-family: @txt-font-special;
-                font-weight: normal;
+                .heading-font();
                 color: @color-txt-dark-on-light;
             }
 
@@ -893,8 +875,7 @@
 	background: @color-bg-highlight-main;
     .linear-gradient(@color-bg-highlight-main, @color-bg-highlight-main-tint);
 	color: @color-txt-dark-on-light;
-	font-family: @txt-font-special;
-	font-weight: normal;
+	.button-font-bold();
 	text-decoration: none;
 	a.ui-link-inherit {
 		color: @color-txt-dark-on-light;
@@ -912,8 +893,7 @@
 	background: lighten(@color-bg-highlight-main, 10% );
     .linear-gradient(lighten(@color-bg-highlight-main, 10%), lighten(@color-bg-highlight-main-tint, 10%));
 	color: @color-txt-dark-on-light;
-	font-family: @txt-font-special;
-	font-weight: normal;
+	.button-font-bold();
 	text-decoration: none;
 	a.ui-link-inherit {
 		color: @color-txt-dark-on-light;
@@ -931,8 +911,7 @@
 	background: @color-bg-highlight-main;
     .pressed-gradient(@color-bg-highlight-main, 3%);
 	color: @color-txt-dark-on-light;
-	font-family: @txt-font-special;
-	font-weight: normal;
+	.button-font-bold();
 	text-decoration: none;
 	a.ui-link-inherit {
 		color: @color-txt-dark-on-light;
