@@ -4094,10 +4094,10 @@ body.browser-testing .ps-caption-bottom {
 }
 .menu-main .menu-btns {
   margin-bottom: 0;
-  background: #ffff00;
-  -moz-box-shadow: inset 0 0 100px 100px #ffe400;
-  -webkit-box-shadow: inset 0 0 100px 100px #ffe400;
-  box-shadow: inset 0 0 100px 100px #ffe400;
+  background: #ffff33 !important;
+  -moz-box-shadow: inset 0 -2px 100px #ffe400;
+  -webkit-box-shadow: inset 0 -2px 100px #ffe400;
+  box-shadow: inset 0 -2px 100px #ffe400;
   -moz-border-radius-topleft: 8px;
   -webkit-border-top-left-radius: 8px;
   border-top-left-radius: 8px;
