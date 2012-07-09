@@ -63,7 +63,8 @@ var venues = page_view.extend({
         }
         var venues_view = this;
 
-        var keywords = this.$('#venue-search').val().toLowerCase();
+        var input = this.$('#venue-search').blur();
+        var keywords = input.val().toLowerCase();
 
         var doSearch;
         if (keywords.length > 0){
