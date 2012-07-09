@@ -2,8 +2,8 @@
 
 /*global _  define require */
 define(['config', 'views/base/page', 'collections/user', 'views/people_li', 'views/linked_service', 'views/components/no_results',
-    'utils/link_service'],
-function(config, page_view, user_collection, people_li, link_service_view, no_results, link_service){
+    'utils/link_service', 'auth'],
+function(config, page_view, user_collection, people_li, link_service_view, no_results, link_service, auth){
 
 var find_friends = page_view.extend({
 
@@ -13,13 +13,17 @@ var find_friends = page_view.extend({
         this.collection = new user_collection();
     },
 
-    post_activate: function(){
+    post_activate: function(options){
 
         this.$el.find("ul.people-list").empty();
 
         this.change_page();
 
         this.service = this.options.service;
+
+        if (options.query.username){
+            auth.user_settings.cache_bust();
+        }
 
         this.search();
     },
