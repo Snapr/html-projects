@@ -15,7 +15,8 @@ var find_friends = page_view.extend({
 
     post_activate: function(options){
 
-        this.$el.find("ul.people-list").empty();
+        this.$("ul.people-list").empty();
+        this.$(".helper-content").empty();
 
         this.change_page();
 
