@@ -1835,7 +1835,7 @@
     <script id="spot-top-user-item" type="text/template">  
         <li class="top-user-item"> 
             <a href="#/feed/?username=<%= user.get('username') %>">
-                <span class="user-icon-med" style="background-image: url('http://dev.sna.pr/avatars/22?size=large&_salt=gravatar');"></span>
+                <span class="user-icon-med" style="background-image: url('http://dev.sna.pr/avatars/<%= user.get('user_id') %>?size=large');"></span>
                 <span class="small-username"><%= user.get('username') %></span>
             </a>
         </li>
