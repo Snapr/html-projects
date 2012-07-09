@@ -70,7 +70,7 @@ define(['config', 'collections/upload_progress'], function(config, upload_progre
     };
 
     window.upload_failed = function(id, error){
-        upload_progress.remove(id);
+        //upload_progress.remove(id);
         upload_progress.trigger('error', id, error);
 
         run_if_function(config.get('current_view').upload_failed)(id, error);

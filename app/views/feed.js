@@ -74,7 +74,6 @@ return page_view.extend({
             });
         }
 
-        this.pending_uploads = {};
         this.$el.removeClass("showing-upload-queue");
         this.$el.find(".feed-upload-list").empty();
 
