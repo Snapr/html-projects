@@ -191,27 +191,26 @@ return page_view.extend({
 
     watch_uploads: function(on){
         if(on !== false){
-            upload_progress.on('change add remove', this.update_uploads);
+            upload_progress.on('add', this.update_uploads);
             upload_progress.on('complete', this.upload_complete);
         }else{
-            upload_progress.off('change add remove', this.update_uploads);
+            upload_progress.off('add', this.update_uploads);
             upload_progress.off('complete', this.upload_complete);
         }
     },
 
     update_uploads: function(model, changes){
         if (auth.has("snapr_user") && auth.get("snapr_user") == this.query.username){
-            this.$el.find(".feed-upload-list").empty();
 
             var upload_li_template = _.template( $("#feed-upload-progress-li-template").html() );
 
             // reverse models - newest last
-            _.each( upload_progress.models.slice().reverse(), function( photo ){
+            _.each(model && [model] || upload_progress.models.slice().reverse(), function( photo ){
                 var li =  new upload_progress_li({
                     template: upload_li_template,
                     photo: photo
                 });
-                this.$el.find(".feed-upload-list").append( li.render().el );
+                this.$el.find(".feed-upload-list").prepend( li.render().el );
             }, this);
 
             if (upload_progress.models.length){

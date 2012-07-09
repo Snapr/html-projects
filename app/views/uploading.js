@@ -16,14 +16,11 @@ var uploading = page_view.extend({
     },
 
     post_activate: function(options){
-
-        // our photo is the last one in the queue, if there is one there.
-        this.photo = upload_progress.at(0);
-
         this.change_page();
 
-        //this.current_upload = null;
-        //this.pending_uploads = {};
+        //reset photo to latest one in progress object
+        // calls to upload_porgress will set this
+        this.progress_view = null;
 
         this.query = options.query;
 
@@ -36,17 +33,19 @@ var uploading = page_view.extend({
         this.venue_name = this.query.venue_name;
         this.photo_id = this.query.photo_id;
 
-        //this.$el.removeClass("showing-upload-queue");
         this.progress_el = this.$( ".upload-progress-container" ).empty();
 
         if (this.photo_id){
+            // web flow - photo is uploaded then user is sent here
+            // so the id and photo on the server are available
+            // TODO: this probably won't work anymore
             this.upload_completed( 0, this.photo_id);
         }else{
+            // no photo_id = in appmode the photo is probably being uploaded by the native
+            // app in the background, we can show progress here.
             this.render();
-            // testing upload stuff
-            //var test_data = {"uploads":[{"description":"Pzzz","percent_complete":10,"id":"013FBD4D-7","sharing":{},"date":"2012-03-09 14:25:59 -0500","status":"private","location":{},"shared":{tweeted:true},"upload_status":"Active","thumbnail":"file:///Users/dpwolf/Library/Application Support/iPhone Simulator/5.0/Applications/ECF32C66-12DE-44D8-B2C2-9A02A0DD77BE/Documents/upload/00000000000353013969.jpg"}]}
         }
-        this.update_uploads();
+        //this.update_uploads();
     },
 
     events: {
@@ -135,70 +134,40 @@ var uploading = page_view.extend({
 
     watch_uploads: function(on){
         if(on !== false){
-            upload_progress.on('change add remove', this.update_uploads);
-            upload_progress.on('complete', this.upload_complete);
+            upload_progress.on('add', this.update_uploads);
         }else{
-            upload_progress.off('change add remove', this.update_uploads);
-            upload_progress.off('complete', this.upload_complete);
+            upload_progress.off('add', this.update_uploads);
         }
     },
 
     update_uploads: function(model, changes){
-        // if we don't know what photo we are targeting yet, take the last one in the queue;
-        this.photo = this.photo || upload_progress.at(0);
-        if(this.progress_view && model != this.photo){
-            return;
-        }
-
-        if (this.progress_view){
-            this.progress_view.queued(false);
-        }
         this.$('.offline').hide();
+        if(this.progress_view){ return; }
 
-        if(!this.progress_view){
-            this.progress_view = new upload_progress_li({
-                photo: this.photo,
-                venue_name: this.venue_name
-            });
-            this.progress_el.html( this.progress_view.render().el );
-        }else{
-            this.progress_view.photo = this.photo;
-            this.progress_view.render(); // 2
-        }
+        // our photo must be the last one in the queue
+        var photo = upload_progress.at(upload_progress.length-1);
+
+        // if there's no photo yet we probably haven't recieved an upload_progress call
+        // native code, when we do this function will get called again
+        if(!photo){ return; }
+
+        this.progress_view = new upload_progress_li({
+            photo: photo,
+            venue_name: this.venue_name,
+            update_on_complete: true
+        });
+        this.progress_el.html( this.progress_view.render().el );
+        this.progress_view.on('complete', this.upload_complete);
     },
 
-    upload_complete: function( model, queue_id ){
-        if(model != this.photo){
-            return;
-        }
-        if (this.progress_view){
-            this.progress_view.queued(false);
-        }
+    upload_complete: function( model, photo ){
         this.$('.offline').hide();
 
-        var $container = this.$(".upload-progress-container");
-        var uploading_view = this;
-        var photo = new photo_model({id: model.id});
-
-        photo.fetch({
-            success: function( photo ){
-                this.progress_view = new upload_progress_li({
-                    photo: model
-                });
-                this.progress_view.message = "Completed!";
-                this.progress_view.photo.set('upload_status', "completed");
-                this.progress_view.post_id = model.id;
-                this.progress_view.photo.set('thumbnail', "https://s3.amazonaws.com/media-server2.snapr.us/thm2/" +
-                    photo.get("secret") + "/" +
-                    model.id + ".jpg");
-                $container.html( this.progress_view.render().el );
-                uploading_view.latitude = photo.has("location") && photo.get("location").latitude;
-                uploading_view.longitude = photo.has("location") && photo.get("location").longitude;
-                uploading_view.spot = photo.has("location") && photo.get("location").spot_id;
-                uploading_view.venue_name = photo.has("location") && photo.get("location").foursquare_venue_name;
-                uploading_view.render();
-            }
-        });
+        this.latitude = photo.has("location") && photo.get("location").latitude;
+        this.longitude = photo.has("location") && photo.get("location").longitude;
+        this.spot = photo.has("location") && photo.get("location").spot_id;
+        this.venue_name = photo.has("location") && photo.get("location").foursquare_venue_name;
+        this.render();
     },
 
     upload_cancelled: function( queue_id ){

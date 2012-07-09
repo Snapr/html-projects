@@ -98,6 +98,31 @@ return  Backbone.Collection.extend({
                 console.log( "error getting following", e );
             }
         });
+    },
+
+    get_top_users: function(spot_id) {
+        var url_function = this.url;
+        this.url = this.urlRoot() + 'search/';
+
+        this.data = {
+            n: 10,
+            sort: 'score',
+            spot: spot_id
+        }
+
+        var user_collection = this;
+        this.fetch({
+            success: function()
+            {
+                user_collection.url = url_function;
+            },
+            error: function(e)
+            {
+                user_collection.url = url_function;
+                console.log( "error getting following", e );
+            }
+        });
+
     }
 });
 

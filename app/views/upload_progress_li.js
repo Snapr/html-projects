@@ -1,5 +1,5 @@
 /*global _  define require */
-define(['backbone', 'utils/local_storage', 'utils/alerts', 'native'], function(Backbone, local_storage, alerts, native){
+define(['backbone', 'utils/local_storage', 'utils/alerts', 'native', 'models/photo'], function(Backbone, local_storage, alerts, native, photo_model){
 return Backbone.View.extend({
 
     tagName: "li",
@@ -7,11 +7,19 @@ return Backbone.View.extend({
     className: "upload-progress-item",
 
     initialize: function(options){
+        _.bindAll(this);
+        // an upload porgress li is creted for each upload, don't re-use them by changing the photo attribute
+
+        // allow options to override template
         this.template = this.options.template || _.template( $("#upload-progress-li-template").html() );
 
         this.photo = options.photo;
+        this.photo.on('change', this.render);
+        // this has to be explicitly enabled because it's not always needed and is a waste of time otherwise
+        if(options.update_on_complete){
+            this.photo.on('complete', this.upload_complete);
+        }
         this.message = null;
-        this.photo_id = null;
         this.venue_name = options.venue_name;
     },
 
@@ -60,9 +68,28 @@ return Backbone.View.extend({
         return this;
     },
 
+    upload_complete: function( model, queue_id ){
+        this.is_queued = false;
+        var photo = new photo_model({id: model.id});
+
+        var progress_view = this;
+        photo.fetch({
+            success: function( photo ){
+                progress_view.trigger('complete', model, photo);
+                progress_view.message = "Completed!";
+                progress_view.photo.set('upload_status', "completed");
+                progress_view.post_id = model.id;
+                progress_view.photo.set('thumbnail', "https://s3.amazonaws.com/media-server2.snapr.us/thm2/" +
+                    photo.get("secret") + "/" +
+                    model.id + ".jpg");
+                progress_view.render();
+            }
+        });
+    },
+
     queued: function(is_queued){
         this.is_queued = is_queued;
-        //this.render();
+        this.render();
     },
 
     cancel_upload: function(){

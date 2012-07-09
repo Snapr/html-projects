@@ -27,7 +27,6 @@ define(['config', 'collections/upload_progress'], function(config, upload_progre
     }
 
     window.upload_progress = function( data, datatype ){
-        console.log('upload_completed', data, datatype);
         // data may be passed as an object or a string as specified via the data_type param
         // defualts to JSON object, if 'json_string' it will be a text string that needs to be parsed..
         // dont foget to convert it before you do anything with it..
@@ -50,13 +49,13 @@ define(['config', 'collections/upload_progress'], function(config, upload_progre
     };
 
     window.upload_completed = function(queue_id, snapr_id){
-        console.log('upload_completed', queue_id, snapr_id);
         var model = upload_progress.get(queue_id);
         if(model){
             model.set({
                 id: snapr_id,
                 queue_id: queue_id
             }).trigger('complete', model, queue_id);
+            upload_progress.remove(model);
         }else{
             console.warn('tried to set '+queue_id+'s id to '+snapr_id+' but it doesnt exist');
         }
