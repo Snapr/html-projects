@@ -1751,11 +1751,11 @@
                     </p>
                 </span>
                 <p class="spot-address">
-                    <% if (spot.get('location').address && spot.get('location').city) { %>
-                        
+                    <% if (spot.get('location').address !== "False") { %>
                         <%= spot.get('location').address %></br>
-                        <%= spot.get('location').city %>
-                        
+                    <% } %>
+                    <% if (spot.get('location').city !== "False") { %>
+                        <%= spot.get('location').city %>                        
                     <% } %>
                 </p>
             </a>
@@ -1779,7 +1779,7 @@
                       <ul class="image-streams">
                       </ul>
 
-                      <h4>Top Users</h4>
+                      <h4 class="top-users-heading" style="display:none;">Top Users</h4>
                       <ul class="top-users">
                       </ul>
                       
@@ -1793,7 +1793,7 @@
 
         <!-- @spot HEADER -->
         <script id="spot-header-template" type="text/template">
-            <a class="ui-bar top-left-arrow <%= spot.get('category').slug %>" data-role="button" data-theme="e" data-iconpos="right" data-icon="arrow-r">
+            <a class="ui-bar top-left-arrow <%= spot.get('category').slug %>" data-role="button" data-theme="e" data-iconpos="right" data-icon="arrow-r" data-ajax="false" href="#/feed/?spot=<%= spot.get('id') %>&venue_name=<%= spot.get('name') %>">
                 <span class="ui-icon ui-icon-category spot-icon dark-spot-icon"></span>
                 <em class="spot-name"><%= spot.get('name') %></em>
                 <% if (spot.get('stats').photos_count) { %>
@@ -1816,15 +1816,19 @@
                     </a>
                     <div class="spot-venue-details">
                         <a class="spot-address small-text" href="http://maps.google.com/maps?ll=<%= spot.get('location').latitude %>,<%= spot.get('location').longitude %>&q=<%= spot.get('name') %>">
-                            <%= spot.get('location').address %></br>
-                            <%= spot.get('location').city %>
+                            <% if (spot.get('location').address !== "False") { %>
+                                <%= spot.get('location').address %></br>
+                            <% } %>
+                            <% if(spot.get('location').city !== "False") { %><%= spot.get('location').city %><% } %>
                             <% if (spot.get('location').distance) { %>
                                 <span class="spot-distance "><%= string_utils.short_distance( spot.get('location').distance ) %> </span>
                             <% } %><span class="spot-distance ">&rsaquo;</span>
                         </a>
-                        <a  href="tel:<%= spot.get('contact').phone %>" class="spot-phone small-text">
-                            &#9742; <%= spot.get('contact').phone %>
-                        </a>
+                        <% if(spot.get('contact').phone !== "False") { %>
+                            <a  href="tel:<%= spot.get('contact').phone %>" class="spot-phone small-text">
+                                &#9742; <%= spot.get('contact').phone %>
+                            </a>
+                        <% } %>
                     </div>
                     <p class="spot-photo-credit small-text">
                         <% if (spot.get('info').hero_image) { %>
@@ -1878,7 +1882,7 @@
     <script id="spot-top-user-item" type="text/template">  
         <li class="top-user-item"> 
             <a href="#/feed/?username=<%= user.get('username') %>">
-                <span class="user-icon-med" style="background-image: url('http://dev.sna.pr/avatars/22?size=large&_salt=gravatar');"></span>
+                <span class="user-icon-med" style="background-image: url('http://dev.sna.pr/avatars/<%= user.get('user_id') %>?size=large');"></span>
                 <span class="small-username"><%= user.get('username') %></span>
             </a>
         </li>

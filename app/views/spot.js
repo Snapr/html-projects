@@ -12,6 +12,7 @@ var spot_view = page_view.extend({
 
     post_activate: function(options) {
 
+        this.$el.find('.top-users-heading').hide();
         this.$el.find('.spot-head').empty();
         this.$el.find('.image-streams').empty();
         this.$el.find('.top-users').empty();
@@ -81,7 +82,8 @@ var spot_view = page_view.extend({
         var $el = this.$el,
             $spot_header = $el.find('.spot-head').empty(),
             $streams = $el.find('.image-streams').empty(),
-            $top_users = $el.find('.top-users').empty();
+            $top_users = $el.find('.top-users').empty(),
+            spot_view = this;;
 
         var header = new spot_header_view({
             model: this.model,
@@ -89,24 +91,35 @@ var spot_view = page_view.extend({
         $spot_header.append( header.el );
         header.render();
 
-        var stream_li = new spot_image_stream({
-            collection: this.photos,
-            details: {
-                spot: this.spot_id,
-                stream_type: "spot",
-            }
-        });
-
-        $streams.append( stream_li.el );
-        stream_li.render();
-
-        this.top_users.each( function(user) {
-            var user_li = new spot_user_view({
-                model: user
+        // Filter out the photo that is the hero image
+        this.photos = new photo_collection(this.photos.filter(function (model) {
+            return spot_view.model.get('info').hero_image && model.get('secret') !== spot_view.model.get('info').hero_image.secret;
+        }));
+        if (this.photos.length > 0) {
+            var stream_li = new spot_image_stream({
+                collection: this.photos,
+                details: {
+                    spot: this.spot_id,
+                    stream_type: "spot",
+                }
             });
-            $top_users.append( user_li.el );
-            user_li.render();
-        });
+
+            $streams.append( stream_li.el );
+            stream_li.render();
+        }
+
+
+        // Don't shot if only 1 user as this is the hero
+        if (this.top_users.length > 1) {
+            this.$el.find('.top-users-heading').show();
+            this.top_users.each( function(user) {
+                var user_li = new spot_user_view({
+                    model: user
+                });
+                $top_users.append( user_li.el );
+                user_li.render();
+            });
+        }
         
         
         $.mobile.hidePageLoadingMsg();
