@@ -1746,7 +1746,7 @@
 
         <!-- @spot HEADER -->
         <script id="spot-header-template" type="text/template">
-            <a class="ui-bar top-left-arrow <%= spot.get('category').slug %>" data-role="button" data-theme="e" data-iconpos="right" data-icon="arrow-r">
+            <a class="ui-bar top-left-arrow <%= spot.get('category').slug %>" data-role="button" data-theme="e" data-iconpos="right" data-icon="arrow-r" data-ajax="false" href="#/feed/?spot=<%= spot.get('id') %>&venue_name=<%= spot.get('name') %>">
                 <span class="ui-icon ui-icon-category spot-icon dark-spot-icon"></span>
                 <em class="spot-name"><%= spot.get('name') %></em>
                 <% if (spot.get('stats').photos_count) { %>
