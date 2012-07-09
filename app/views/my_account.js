@@ -20,6 +20,8 @@ return page_view.extend({
 
     },
 
+    back_text: "Menu",
+
     template: _.template( $('#my-account-template').html() ),
     initial_template: _.template( $('#my-account-initial-template').html() ),
 

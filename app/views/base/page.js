@@ -30,6 +30,11 @@ return Backbone.View.extend({
             "click a[data-back-here]": "add_back_url"
         });
 
+        var page = this;
+        this.$el.one( "pageshow", function(){
+            page.set_back_text(options);
+        });
+
         this.post_initialize.apply(this, arguments);
         this.activate.apply(this, arguments);
         $(document.body).show();
@@ -60,12 +65,25 @@ return Backbone.View.extend({
         if(options){ this.dialog = options.dialog; }
         console.log('dialog?', this.dialog);
 
+        this.set_back_text(options);
+
+        this.post_activate.call(this, options);
+    },
+
+    post_activate: function(){
+        this.change_page();
+    },
+
+    set_back_text: function(options){
         var back_text;
-        var previous_view = options.retry ? this.previous_view : config.get('current_view') ;
-        if(history_state.get('back_text')){
+        if(this.back_text){
+            back_text = this.back_text;
+            console.log('back_text from view (hard coded):', back_text);
+        }else if(history_state.get('back_text')){
             back_text = history_state.get('back_text');
             console.log('back_text from history:', back_text);
         }else{
+            var previous_view = (options && options.retry) ? this.previous_view : config.get('current_view') ;
             while(previous_view && previous_view.dialog){
                 console.log("view is a dialog, checking prev one");
                 previous_view = previous_view.previous_view;
@@ -82,20 +100,10 @@ return Backbone.View.extend({
                 console.log("no view in history that's not a dialog");
             }
         }
-        this.set_back_text(back_text);
-        this.post_activate.call(this, options);
-    },
 
-    post_activate: function(){
-        this.change_page();
-    },
-
-    set_back_text: function(text){
-        // console.debug('set back text for', this.$el.selector, 'from', this.$("[data-rel='back'] .ui-btn-text").text(), 'to', text);
-        if(text){
-            this.$("[data-rel='back'] .ui-btn-text").text(text);
-            history_state.set('back_text', text);
-        }
+        console.debug('set back text for', this.$el.selector, 'from', this.$("[data-rel='back'] .ui-btn-text").text(), 'to', back_text);
+        this.$("[data-rel='back'] .ui-btn-text").text(back_text);
+        history_state.set('back_text', back_text);
         return this;
     },
 
