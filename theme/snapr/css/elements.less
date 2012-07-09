@@ -18,8 +18,7 @@
     .ui-btn-inner,
     .ui-bar-inner{
         font-size: @txt-size-base;
-        font-weight: normal;
-        font-family: @txt-font-base;
+        .button-font-light();
         margin: 0;
         padding: 0;
         text-transform: lowercase;
@@ -27,10 +26,8 @@
         .ui-btn,
         .ui-btn-hidden,
         .username{
-            text-transform: none;
             font-size: @txt-size-bar-heading;
-            font-style: normal;
-            font-family: @txt-font-special;
+            .ui-bar-font();
         }
         .extra-icons{
             right: auto;

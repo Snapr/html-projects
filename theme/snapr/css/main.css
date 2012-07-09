@@ -2995,8 +2995,9 @@ a.ui-link-inherit {
 .ui-bar .ui-btn-inner,
 .ui-bar .ui-bar-inner {
   font-size: 15px;
-  font-weight: normal;
   font-family: Helvetica, Arial, sans-serif;
+  font-weight: normal;
+  text-transform: lowercase;
   margin: 0;
   padding: 0;
   text-transform: lowercase;
@@ -3013,10 +3014,11 @@ a.ui-link-inherit {
 .ui-bar h4 .username,
 .ui-bar .ui-btn-inner .username,
 .ui-bar .ui-bar-inner .username {
-  text-transform: none;
   font-size: 16px;
-  font-style: normal;
   font-family: Helvetica, Arial, sans-serif;
+  font-weight: bold;
+  font-style: normal;
+  text-transform: lowercase;
 }
 .ui-bar h4 .extra-icons,
 .ui-bar .ui-btn-inner .extra-icons,
