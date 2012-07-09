@@ -86,11 +86,11 @@ var find_friends = page_view.extend({
 
                     if(response.error){
                         var button = new link_button();
-                        if(response.error.code == 30){
+                        if(response.error.type == 'linked_service.twitter.no_account'){
                             button.provider = 'twitter';
                             helper_content.append( button.render().$el ).trigger('create');
                             return;
-                        }else if(response.error.code == 20){
+                        }else if(response.error.type == 'linked_service.facebook.no_account'){
                             button.provider = 'facebook';
                             helper_content.append( button.render().$el ).trigger('create');
                             return;
