@@ -14,7 +14,7 @@ requirejs.config({
         "json": "libs/json2",
         "cookie": "libs/jq.cookie",
         "klass": "libs/klass.min",
-        "photoswipe": "libs/photoswipe/code.photoswipe.jquery-3.0.4.min",
+        "photoswipe": "libs/photoswipe/code.photoswipe.jquery-3.0.5.min",
         "spin": "libs/spin.min",
         "underscore": "libs/underscore-min",
         "backbone": "libs/backbone",

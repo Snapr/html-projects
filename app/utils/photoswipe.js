@@ -13,8 +13,7 @@ define(['photoswipe'], function(){
             photoSwipeInstance = this.photoSwipe( {
                 backButtonHideEnabled: false,
                 preventSlideshow: true,
-                captionAndToolbarFlipPosition: true,
-                allowUserZoom: false
+                captionAndToolbarFlipPosition: true
             }, id );
         }
     };
