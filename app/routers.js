@@ -1,6 +1,69 @@
 /*global _  define require */
 define(['config', 'backbone', 'auth', 'utils/local_storage', 'native'], function(config, Backbone, auth, local_storage, native) {
 
+var pages = [
+    'about',
+    'map',
+    'app',
+    'login',
+    'logout',
+    'upload',
+    'uploading',
+    'connect',
+    'cities',
+    'limbo',
+    'feed',
+    'dash',
+    'activity',
+    'popular',
+    'search',
+    'spots',
+    'spot',
+    'welcome',
+    'snapr-apps',
+    'forgot-password',
+    'join',
+    'join-success',
+    'my-account',
+    'find-friends',
+    {
+        name: 'find-friends-twitter',
+        view: 'find_friends_list',
+        extra: {service: "twitter"}
+    },
+    {
+        name: 'find-friends-facebook',
+        view: 'find_friends_list',
+        extra: {service: "facebook"}
+    },
+    'linked-services',
+    'tumblr-xauth',
+    'twitter-xauth',
+    'share',
+    {
+        name: 'user/followers',
+        view: 'people',
+        element: 'people',
+        extra: {follow: "followers"}
+    },
+    {
+        name: 'user/following',
+        view: 'people',
+        element: 'people',
+        extra: {follow: "following"}
+    },
+    {
+        name: 'user/search',
+        view: 'people',
+        element: 'people'
+    },
+    {
+        name: 'user/profile',
+        element: 'user-profile'
+    },
+    'foursquare_venues'
+];
+
 function _make_route(view, el, extra_data){
     var route = function(query_string, dialog, extra_data_2){
         require([view], function(view) {
@@ -70,68 +133,7 @@ if(hash.length > 1){
 }
 
 var routers = Backbone.Router.extend({
-    pages: [
-        'about',
-        'map',
-        'app',
-        'login',
-        'logout',
-        'upload',
-        'uploading',
-        'connect',
-        'cities',
-        'limbo',
-        'feed',
-        'dash',
-        'activity',
-        'popular',
-        'search',
-        //'spots',
-        //'spot',
-        'welcome',
-        'snapr-apps',
-        'forgot-password',
-        'join',
-        'join-success',
-        'my-account',
-        'find-friends',
-        {
-            name: 'find-friends-twitter',
-            view: 'find_friends_list',
-            extra: {service: "twitter"}
-        },
-        {
-            name: 'find-friends-facebook',
-            view: 'find_friends_list',
-            extra: {service: "facebook"}
-        },
-        'linked-services',
-        'tumblr-xauth',
-        'twitter-xauth',
-        'share',
-        {
-            name: 'user/followers',
-            view: 'people',
-            element: 'people',
-            extra: {follow: "followers"}
-        },
-        {
-            name: 'user/following',
-            view: 'people',
-            element: 'people',
-            extra: {follow: "following"}
-        },
-        {
-            name: 'user/search',
-            view: 'people',
-            element: 'people'
-        },
-        {
-            name: 'user/profile',
-            element: 'user-profile'
-        },
-        'foursquare_venues'
-    ],
+    pages: pages,
     initialize: function() {
         _.each(this.pages, _.bind(function(name){
             var view, extra_data, element;
