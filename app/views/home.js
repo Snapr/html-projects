@@ -1,6 +1,6 @@
 /*global _  define require */
-define(['backbone', 'views/base/page', 'views/components/activity_ticker', 'auth', 'utils/local_storage', 'config'],
-    function(Backbone, page_view, ticker, auth, local_storage, config){
+define(['backbone', 'views/base/page', 'views/components/activity_ticker', 'views/signed_in_header', 'auth', 'utils/local_storage', 'config'],
+    function(Backbone, page_view, ticker, signedin_header_view, auth, local_storage, config){
 return page_view.extend({
 
     post_initialize: function(options){
@@ -33,6 +33,10 @@ return page_view.extend({
                 username: auth.get("snapr_user")
             } ))
             .trigger("create");
+
+        var signedin_header = new signedin_header_view({
+            el: this.$('.signedin_header')
+        });
 
         if(auth.has("access_token")){
             var ticker_instance = new ticker({el:this.$('.news-ticker')}).render().tick();
