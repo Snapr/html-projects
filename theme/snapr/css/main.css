@@ -6352,14 +6352,6 @@ body.browser-testing .ps-caption-bottom {
     -webkit-background-size: 774px 180px;
     background-size: 774px 180px;
   }
-  .ui-icon.extra-icons,
-  .extra-icons .ui-icon {
-    background-image: url('../gfx/retina/extra-icons.png');
-    -moz-background-size: 32px 864px;
-    -o-background-size: 32px 864px;
-    -webkit-background-size: 32px 864px;
-    background-size: 32px 864px;
-  }
   .ui-icon.helper-icons,
   .helper-icons .ui-icon {
     background-image: url('../gfx/retina/helper-icons.png');
@@ -6405,6 +6397,15 @@ body.browser-testing .ps-caption-bottom {
     -o-background-size: 100px 100px;
     -webkit-background-size: 100px 100px;
     background-size: 100px 100px;
+  }
+  .ui-icon.extra-icons,
+  .extra-icons .ui-icon,
+  .x-offline .extra-icons .ui-btn-inner .ui-icon {
+    background-image: url('../gfx/retina/extra-icons.png');
+    -moz-background-size: 32px 864px;
+    -o-background-size: 32px 864px;
+    -webkit-background-size: 32px 864px;
+    background-size: 32px 864px;
   }
   .action-icons .ui-btn-inner .ui-icon,
   .ui-checkbox .ui-btn-inner .ui-icon,
