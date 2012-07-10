@@ -1,25 +1,31 @@
 // abstract base class for both twitter and facebook
 
 /*global _  define require */
-define(['config', 'views/base/page', 'collections/user', 'views/people_li', 'views/components/no_results',
-    'utils/link_service'],
-function(config, page_view, user_collection, people_li, no_results, link_service){
-return page_view.extend({
+define(['config', 'views/base/page', 'collections/user', 'views/people_li', 'views/linked_service', 'views/components/no_results',
+    'utils/link_service', 'auth'],
+function(config, page_view, user_collection, people_li, link_service_view, no_results, link_service, auth){
+
+var find_friends = page_view.extend({
 
     post_initialize: function(){
         this.people_li_template = _.template( $("#people-li-template").html() );
 
         this.collection = new user_collection();
-        this.collection.bind( "reset", _.bind(this.render, this) );
     },
 
-    post_activate: function(){
+    post_activate: function(options){
 
-        this.$el.find("ul.people-list").empty();
+        this.$("ul.people-list").empty();
+        this.$(".helper-content").empty();
+        $.mobile.hidePageLoadingMsg();
 
         this.change_page();
 
         this.service = this.options.service;
+
+        if (options.query.username){
+            auth.user_settings.cache_bust();
+        }
 
         this.search();
     },
@@ -35,7 +41,7 @@ return page_view.extend({
     },
 
     render: function(){
-        var people_list = this.$el.find("ul.people-list").empty();
+        var people_list = this.$("ul.people-list");
         var this_view = this;
 
         if(this.collection.length){
@@ -79,20 +85,37 @@ return page_view.extend({
                 data:data,
                 url: config.get('api_base') + '/linked_services/' + this_view.service + '/find_friends/',
                 success: function(collection, response){
+                    var people_list = this_view.$(".people-list").empty();
+                    var helper_content = this_view.$(".helper-content").empty();
                     this_view.xhr = null;
                     this_view.$el.removeClass('loading');
+
                     if(response.error){
-                        var next = window.location.href;
-                        if(response.error.code == 30){
-                            link_service('twitter', window.location.href);
-                        }else if(response.error.code == 20){
-                            link_service('facebook', window.location.href);
+                        var button = new link_button();
+                        if(response.error.type == 'linked_service.twitter.no_account'){
+                            button.provider = 'twitter';
+                            helper_content.append( button.render().$el ).trigger('create');
+                            return;
+                        }else if(response.error.type == 'linked_service.facebook.no_account'){
+                            button.provider = 'facebook';
+                            helper_content.append( button.render().$el ).trigger('create');
+                            return;
                         }
                     }
+
+                    this_view.render();
                 }
             });
         }, 300 );
     }
 });
+
+var link_button = link_service_view.extend({
+    initialize: function(){
+        this.add_service_template = _.template( $('#ff-link-service-template').html() );
+    }
+});
+
+return find_friends;
 
 });

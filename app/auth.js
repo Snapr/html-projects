@@ -1,11 +1,15 @@
 /*global _  define require */
-define(['config', 'backbone', 'jquery', 'utils/local_storage', 'native'], function(config, Backbone, $, local_storage, native) {
+define(['config', 'backbone', 'jquery', 'utils/local_storage', 'native', 'models/user_settings'], function(config, Backbone, $, local_storage, native, user_settings) {
 
 var auth_model = Backbone.Model.extend({
 
+    initialize: function(){
+        this.user_settings = new user_settings();
+        this.bind('change', this.user_settings.cache_bust);
+    },
+
     url: function(){
-        if (!config.has("access_token_url"))
-        {
+        if (!config.has("access_token_url")){
             config.trigger("change:environment");
         }
         return config.get('access_token_url');

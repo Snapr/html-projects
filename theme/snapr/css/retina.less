@@ -7,10 +7,7 @@
     	.background-size (@gfx-general-icon-sprite-width, @gfx-general-icon-sprite-height);
     }
 
-    .ui-icon.extra-icons,.extra-icons .ui-icon{
-        background-image: url('../gfx/retina/extra-icons.png');
-        .background-size (@gfx-extra-icon-sprite-width, @gfx-extra-icon-sprite-height);
-    }
+   
 
     .ui-icon.helper-icons,.helper-icons .ui-icon{
         background-image: url('../gfx/retina/helper-icons.png');
@@ -30,6 +27,11 @@
     .ui-header .ui-btn-inner .ui-icon{
         background-image: url('../gfx/retina/bar-icons.png');
         .background-size (@gfx-main-icon-sprite-width, @gfx-main-icon-sprite-height);
+    }
+
+    .main-logo{
+        background-image: url('../gfx/retina/main-logo.png');
+        .background-size (160px, 42px);
     }
 
     .menu-main .ui-btn .ui-btn-inner .ui-icon{
@@ -57,6 +59,13 @@
         background-image: url('../gfx/retina/shiny-avatar-info.png');
         .background-size (100px, 100px);
     }
+    
+    .ui-icon.extra-icons,
+    .extra-icons .ui-icon,
+    .x-offline .extra-icons .ui-btn-inner .ui-icon {
+           background-image: url('../gfx/retina/extra-icons.png');
+           .background-size (@gfx-extra-icon-sprite-width, @gfx-extra-icon-sprite-height);
+     }
 
     .action-icons,
     .ui-checkbox,

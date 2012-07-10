@@ -417,7 +417,7 @@ return page_view.extend({
                         if (response.response &&
                             response.response.twitter &&
                             response.response.twitter.error &&
-                            response.response.twitter.error.code == 30 ){
+                            response.response.twitter.error.type == "linked_service.twitter.no_account" ){
                             sharing_errors.push("twitter");
                         }else{
                             sharing_successes.push("twitter");
@@ -437,7 +437,7 @@ return page_view.extend({
                         if (response.response &&
                             response.response.foursquare &&
                             response.response.foursquare.error &&
-                            response.response.foursquare.error.code == 28 ){
+                            response.response.foursquare.error.type == "linked_service.foursquare.no_account" ){
                             sharing_errors.push("foursquare");
                         }else{
                             sharing_successes.push("foursquare");
@@ -447,7 +447,7 @@ return page_view.extend({
                         if (response.response &&
                             response.response.tumblr &&
                             response.response.tumblr.error &&
-                            response.response.tumblr.error.code == 30 ){
+                            response.response.tumblr.error.type == "linked_service.tumblr.no_account" ){
                             sharing_errors.push("tumblr");
                         }else{
                             sharing_successes.push("tumblr");

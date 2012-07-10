@@ -1,26 +1,32 @@
 /*global _  define require */
-define(['views/base/page', 'models/user_settings', 'views/linked_service', 'auth', 'utils/local_storage', 'utils/alerts', 'native', 'config'],
-function(page_view, user_settings, linked_service, auth, local_storage, alerts, native, config){
+define(['views/base/page', 'views/linked_service', 'auth', 'utils/local_storage', 'utils/alerts', 'native', 'config'],
+function(page_view, linked_service, auth, local_storage, alerts, native, config){
 return page_view.extend({
 
-    post_activate:function(){
+    post_activate:function(options){
+
+        this.options.back_url = "#/";
 
         this.$el.find('.account-content').empty();
 
         this.change_page();
 
-        this.user_settings = new user_settings();
+        if(options.query.username){
+            auth.user_settings.cache_bust();
+        }
 
         this.render(!!'initial');
         this.fetch();
 
     },
 
+    back_text: "Menu",
+
     template: _.template( $('#my-account-template').html() ),
     initial_template: _.template( $('#my-account-initial-template').html() ),
 
     dialog_closed: function(dialog){
-        this.user_settings.cache_bust();
+        auth.user_settings.cache_bust();
         this.fetch();
     },
 
@@ -31,15 +37,15 @@ return page_view.extend({
             data: {linked_services: true, user_object: true},
             success: function(){
                 $.mobile.hidePageLoadingMsg();
-                my_account_view.user_settings.linked_services_setup();
+                auth.user_settings.linked_services_setup();
                 my_account_view.render();
             },
             error: function(){
                 console.log( 'error' , my_account_view );
             }
         };
-        this.user_settings.data = {};
-        this.user_settings.fetch( options );
+        auth.user_settings.data = {};
+        auth.user_settings.fetch( options );
     },
 
     render: function(initial){
@@ -63,8 +69,8 @@ return page_view.extend({
             template = this.template;
             data={
                 username: auth.get( "snapr_user" ),
-                user_id: this.user_settings.get( "user" ).user_id,
-                settings: this.user_settings.get( "settings" ),
+                user_id: auth.user_settings.get( "user" ).user_id,
+                settings: auth.user_settings.get( "settings" ),
                 camplus: false
             };
             if(config.get('camplus_options')){
@@ -92,7 +98,7 @@ return page_view.extend({
         };
 
         var my_account = this;
-        _.each( this.user_settings.get('linked_services'), function( service, index ){
+        _.each( auth.user_settings.get('linked_services'), function( service, index ){
             var v = new linked_service({model: service});
             v.my_account = my_account;
 
@@ -144,14 +150,16 @@ return page_view.extend({
         window.open( "http://en.gravatar.com/" );
     },
 
-    save_settings: function( param, callback ){
-        $.mobile.showPageLoadingMsg();
+    save_settings: function( param, callback, spin ){
+        if(spin){
+            $.mobile.showPageLoadingMsg();
+        }
         // prevent backbone from thinking this is a new user
-        this.user_settings.id = true;
-        this.user_settings.set(param);
+        auth.user_settings.id = true;
+        auth.user_settings.set(param);
         var my_account = this;
 
-        this.user_settings.save({},{
+        auth.user_settings.save({},{
             data: param,
             success: function( model, xhr ){
                 $.mobile.hidePageLoadingMsg();
@@ -184,7 +192,7 @@ return page_view.extend({
             param[$(select).attr("name")] = ($(select).val() == "true") ? true: false;
         });
 
-        this.save_settings( param );
+        this.save_settings( param, null, false );
     },
 
     save_profile: function( e ){
@@ -198,12 +206,12 @@ return page_view.extend({
         });
 
         param.avatar_type = section.find('[name=my-account-avatar]:checked').val();
-        var current_avatar = this.user_settings.get('avatar_type') || this.user_settings.get('settings').profile.avatar_type;
+        var current_avatar = auth.user_settings.get('avatar_type') || auth.user_settings.get('settings').profile.avatar_type;
         var avatar_changed = param.avatar_type !== current_avatar;
 
         this.save_settings( param, function(){
             if(avatar_changed){
-                my_account.user_settings.cache_bust();
+                auth.user_settings.cache_bust();
                 my_account.fetch();
             }else{
                 alerts.notification('Thanks', 'Your settings have been saved');
@@ -225,7 +233,7 @@ return page_view.extend({
             alerts.notification("No email", "Please provide an email address", $.noop);
             return;
         }else{
-            if (email != this.user_settings.get("settings") && this.user_settings.get("settings").email){
+            if (email != auth.user_settings.get("settings") && auth.user_settings.get("settings").email){
                 param.email = email;
             }
         }

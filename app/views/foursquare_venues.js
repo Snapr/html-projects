@@ -3,34 +3,35 @@ define(['backbone', 'views/base/page', 'collections/foursquare_venue'], function
 var venues = page_view.extend({
 
     post_activate: function(options){
+        if(!options.retry){
+            this.$('.venue-search input').val('');
+        }
+
         this.model = options.model;
         this.selected_id = options.query.foursquare_venue_id;
 
         this.query = options.query;
 
-        this.$el.find("ul.venue-list").empty();
+        this.$("ul.venue-list").empty();
+        this.$el.addClass('loading');
 
         this.collection = new foursquare_venue_collection({
             ll: options.query.ll
         });
 
-        // a simple array of venues which will be filtered and displayed
-        this.display_collection = [];
-
-        this.collection.bind( "reset", _.bind(this.reset_collection, this) );
-
         this.change_page();
 
+        this.collection.on('reset', this.render);
         this.collection.fetch();
     },
 
     events: {
-        "keyup input": "search",
+        "submit form.venue-search": "search",
         "click .ui-input-clear": "search"
     },
 
     render: function(){
-        var venue_list = this.$el.find("ul.venue-list").empty();
+        var venue_list = this.$("ul.venue-list").empty();
 
         var venue_li_template = _.template( $("#venue-li-template").html() );
 
@@ -38,7 +39,7 @@ var venues = page_view.extend({
         var back_query = this.query.back_query;
         var photo_model = this.model;
         var this_view = this;
-        _.each( this.display_collection, function( model ){
+        _.each( this.collection.models, function( model ){
             var li = new venue_li({
                 template: venue_li_template,
                 model: model,
@@ -53,56 +54,40 @@ var venues = page_view.extend({
         }, this);
 
         venue_list.listview().listview("refresh");
+        this.$el.removeClass('loading');
     },
 
-    reset_collection: function(){
-        this.display_collection = _.clone( this.collection.models );
-        this.render();
-    },
-
-    search: function( e ){
+    search: function(e){
+        if(e){
+            e.preventDefault();
+        }
         var venues_view = this;
 
-        var keywords = e.target && e.target.value && e.target.value.toLowerCase() || "";
+        var input = this.$('#venue-search').blur();
+        var keywords = input.val().toLowerCase();
 
         var doSearch;
         if (keywords.length > 0){
-            this.display_collection = _.filter( this.collection.models, function( venue ){
-                return (venue.get( "name" ).toLowerCase().indexOf( keywords ) > -1);
-            });
-            this.render();
-            doSearch = function(){
+            if (this.timer) {
+                // clear the previous timeout
+                window.clearTimeout(this.timer);
+            }
+            // set up a new timeout function
+            this.timer = window.setTimeout( function() {
+                venues_view.timer = null;
                 venues_view.$el.addClass('loading');
                 venues_view.collection.data.query = keywords;
                 venues_view.collection.fetch({complete:function(){
                     venues_view.$el.removeClass('loading');
                 }});
-            };
+            }, 300 );
         }else{
-            doSearch = null;
-
-            this.display_collection = this.collection.models;
-            this.render();
-
-            if (this.collection.data.query)
-            {
+            if (this.collection.data.query){
                 delete this.collection.data.query;
             }
             this.collection.fetch();
         }
-
-        if (this.timer) {
-            // clear the previous timeout
-            window.clearTimeout(this.timer);
-        }
-
-        if (doSearch){
-            // set up a new timeout function
-            this.timer = window.setTimeout( function() {
-                venues_view.timer = null;
-                doSearch();
-            }, 300 );
-        }
+        return false;
 
     }
 });

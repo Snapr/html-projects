@@ -14,7 +14,7 @@ requirejs.config({
         "json": "libs/json2",
         "cookie": "libs/jq.cookie",
         "klass": "libs/klass.min",
-        "photoswipe": "libs/photoswipe/code.photoswipe.jquery-3.0.4.min",
+        "photoswipe": "libs/photoswipe/code.photoswipe.jquery-3.0.5.min",
         "spin": "libs/spin.min",
         "underscore": "libs/underscore-min",
         "backbone": "libs/backbone",
@@ -106,7 +106,7 @@ require(['config', 'jquery', 'backbone', 'photoswipe', 'auth', 'utils/local_stor
     });
     $('.x-offline .x-refresh').live('click', function(){
         $.ajaxSetup({timeout:config.get('timeout')});
-        config.get('current_view').activate();
+        config.get('current_view').activate({'retry': true});
     });
 
     /* Overriding Backbone.sync
@@ -303,6 +303,13 @@ require(['config', 'jquery', 'backbone', 'photoswipe', 'auth', 'utils/local_stor
         });
     };
 
+});
+
+// bind this here to prevent circular dependencies
+require(['utils/alerts', 'collections/upload_progress'], function(alerts, upload_progress){
+    upload_progress.on('error', function(id, error){
+        alerts.notification('Upload Error', error || 'Unknown error');
+    });
 });
 
 // export utils for templates to use

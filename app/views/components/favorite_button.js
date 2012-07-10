@@ -20,11 +20,11 @@ return Backbone.View.extend({
 
     favorite: function(){
         var fav_btn = this;
+        fav_btn.$('.favorite-button').x_loading();
+
         var is_fav = this.model.get('favorite');
         var fav_count = parseInt( this.model.get('favorite_count'), 10 );
 
-        window.f = fav_btn;
-        fav_btn.$('.favorite-button').x_loading();
 
         auth.require_login( function(){
             var fav = new favorite_model({

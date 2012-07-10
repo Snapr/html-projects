@@ -1,5 +1,5 @@
 /*global _  define require */
-define(['config', 'backbone', 'utils/link_service', 'auth', 'utils/alerts'], function(config, Backbone, link_service, auth, alerts){
+define(['config', 'backbone', 'utils/link_service', 'auth', 'utils/alerts', 'utils/query'], function(config, Backbone, link_service, auth, alerts, Query){
 return Backbone.View.extend({
 
     tagName: 'li',
@@ -45,7 +45,11 @@ return Backbone.View.extend({
 
     // can be overriden when extending this view
     get_return_url: function(){
-        return window.location.href.replace(/(username|id|url)=[^&]+&?/g, '');
+        var split = window.location.href.split('?'),
+            path = split[0],
+            query = new Query(split[1]);
+            query.remove('url').remove('username').remove('id');
+            return path + '?' + query.toString();
     },
 
     link_service: function(){
@@ -60,7 +64,7 @@ return Backbone.View.extend({
         var options = {
             success: function(){
                 var parent = config.get('current_view');
-                parent.user_settings.cache_bust();
+                auth.user_settings.cache_bust();
                 parent.fetch();
             },
             error: function(){

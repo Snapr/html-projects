@@ -3,13 +3,13 @@ define(['config', 'backbone', 'utils/local_storage', 'auth', 'utils/dialog'], fu
 return function(service, next){
     var url;
     if (service == 'twitter' && config.get('twitter_xauth')){
-        dialog('twitter-xauth/');
-        //url = '#/twitter-xauth/?redirect='+ escape( next );
-        //Backbone.history.navigate( url );
+        //dialog('twitter-xauth/');
+        url = '#/twitter-xauth/?redirect='+ escape( next );
+        Backbone.history.navigate( url );
     }else if (service == 'tumblr' && config.get('tumblr_xauth')){
-        dialog('tumblr-xauth/');
-        //url = '#/tumblr-xauth/?redirect='+ escape( next );
-        //Backbone.history.navigate( url );
+        //dialog('tumblr-xauth/');
+        url = '#/tumblr-xauth/?redirect='+ escape( next );
+        Backbone.history.navigate( url );
     }else{
         if (local_storage.get( "appmode" )){
             if (local_storage.get("appmode") == 'iphone'){

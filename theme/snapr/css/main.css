@@ -2745,7 +2745,7 @@ a.ui-link-inherit {
   left: 24px;
 }
 .ui-bar-e a {
-  color: #666666;
+  color: #333333;
 }
 .ui-body-e {
   background: none;
@@ -3761,6 +3761,11 @@ a.ui-link-inherit {
   background-position: 0 -36px;
   height: 32px;
 }
+.button-logo.facebook-logo {
+  width: 108px;
+  background-position: 0 -108px;
+  height: 32px;
+}
 .invisible-submit-button {
   width: 0;
   height: 0;
@@ -4551,6 +4556,77 @@ body.browser-testing .ps-caption-bottom {
   color: white;
 }
 .tumblr-button.ui-btn-down-e a.ui-link-inherit {
+  color: white;
+}
+.facebook-button.ui-btn-up-e {
+  background: #507ab8;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#507ab8), to(#2e5998));
+  /* Saf4+, Chrome */
+
+  background-image: -webkit-linear-gradient(top, #507ab8, #2e5998);
+  /* Chrome 10+, Saf5.1+ */
+
+  background-image: -moz-linear-gradient(top, #507ab8, #2e5998);
+  /* FF3.6 */
+
+  background-image: -ms-linear-gradient(top, #507ab8, #2e5998);
+  /* IE10 */
+
+  background-image: -o-linear-gradient(top, #507ab8, #2e5998);
+  /* Opera 11.10+ */
+
+  background-image: linear-gradient(top, #507ab8, #2e5998);
+  color: white;
+}
+.facebook-button.ui-btn-up-e a.ui-link-inherit {
+  color: white;
+}
+.facebook-button.ui-btn-hover-e {
+  border: none;
+  background: #7496c7;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#6288bf), to(#3464ac));
+  /* Saf4+, Chrome */
+
+  background-image: -webkit-linear-gradient(top, #6288bf, #3464ac);
+  /* Chrome 10+, Saf5.1+ */
+
+  background-image: -moz-linear-gradient(top, #6288bf, #3464ac);
+  /* FF3.6 */
+
+  background-image: -ms-linear-gradient(top, #6288bf, #3464ac);
+  /* IE10 */
+
+  background-image: -o-linear-gradient(top, #6288bf, #3464ac);
+  /* Opera 11.10+ */
+
+  background-image: linear-gradient(top, #6288bf, #3464ac);
+  color: white;
+}
+.facebook-button.ui-btn-hover-e a.ui-link-inherit {
+  color: white;
+}
+.facebook-button.ui-btn-down-e {
+  border: none;
+  background: #507ab8;
+  background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, #507ab8), color-stop(0.7, #507ab8), color-stop(1, #456eaa));
+  /* Saf4+, Chrome */
+
+  background-image: -webkit-linear-gradient(bottom, #507ab8 0%, #507ab8 70%, #4872b1 100%);
+  /* Chrome 10+, Saf5.1+ */
+
+  background-image: -moz-linear-gradient(bottom, #507ab8 0%, #507ab8 70%, #4872b1 100%);
+  /* FF3.6 */
+
+  background-image: -ms-linear-gradient(bottom, #507ab8 0%, #507ab8 70%, #4872b1 100%);
+  /* IE10 */
+
+  background-image: -o-linear-gradient(bottom, #507ab8 0%, #507ab8 70%, #4872b1 100%);
+  /* Opera 11.10+ */
+
+  background-image: linear-gradient(bottom, #507ab8 0%, #507ab8 70%, #4872b1 100%);
+  color: white;
+}
+.facebook-button.ui-btn-down-e a.ui-link-inherit {
   color: white;
 }
 /*
@@ -5727,6 +5803,10 @@ body.browser-testing .ps-caption-bottom {
   -webkit-border-radius: 8px;
   border-radius: 8px;
 }
+/* @findfriends custom stylz */
+.ff-linking {
+  margin: 12px;
+}
 /* @activity custom stylz */
 .activity-streams {
   /* General Styles */
@@ -5823,21 +5903,34 @@ body.browser-testing .ps-caption-bottom {
 .activity-streams .activity-follow-item {
   position: relative;
   padding-left: 0;
-  padding-top: 8px;
+  margin-top: 8px;
   min-height: 34px;
+  display: block;
 }
 .activity-streams .activity-follow-item .username,
 .activity-streams .activity-follow-item .activity-desc,
-.activity-streams .activity-follow-item .small-text,
-.activity-streams .activity-follow-item .ui-li-icon {
+.activity-streams .activity-follow-item .small-text {
   display: inline-block;
-  vertical-align: middle;
-  line-height: 34px;
+  vertical-align: baseline;
   margin-bottom: 0;
+}
+.activity-streams .activity-follow-item .ui-link {
+  display: block;
+  padding-left: 34px;
+  padding-top: 8px ;
+  min-height: 34px;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.activity-streams .activity-follow-item .ui-li-icon {
+  display: block;
+  position: absolute;
+  left: -4px;
+  top: 0;
 }
 .activity-streams .photo-activity .activity-item:first-child {
   border-top: none;
-  margin-top: 0!important;
   padding-top: 0!important;
 }
 .activity-streams .activity-item:first {
@@ -6046,6 +6139,9 @@ body.browser-testing .ps-caption-bottom {
 #map div[data-role="content"] {
   padding-top: 0;
   padding-bottom: 8px;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
 }
 #map.loading .map-time .map-time-btn {
   display: none;
@@ -6444,14 +6540,6 @@ body.browser-testing .ps-caption-bottom {
     -webkit-background-size: 774px 180px;
     background-size: 774px 180px;
   }
-  .ui-icon.extra-icons,
-  .extra-icons .ui-icon {
-    background-image: url('../gfx/retina/extra-icons.png');
-    -moz-background-size: 32px 864px;
-    -o-background-size: 32px 864px;
-    -webkit-background-size: 32px 864px;
-    background-size: 32px 864px;
-  }
   .ui-icon.helper-icons,
   .helper-icons .ui-icon {
     background-image: url('../gfx/retina/helper-icons.png');
@@ -6504,6 +6592,15 @@ body.browser-testing .ps-caption-bottom {
     -o-background-size: 100px 100px;
     -webkit-background-size: 100px 100px;
     background-size: 100px 100px;
+  }
+  .ui-icon.extra-icons,
+  .extra-icons .ui-icon,
+  .x-offline .extra-icons .ui-btn-inner .ui-icon {
+    background-image: url('../gfx/retina/extra-icons.png');
+    -moz-background-size: 32px 864px;
+    -o-background-size: 32px 864px;
+    -webkit-background-size: 32px 864px;
+    background-size: 32px 864px;
   }
   .action-icons .ui-btn-inner .ui-icon,
   .ui-checkbox .ui-btn-inner .ui-icon,

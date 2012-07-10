@@ -194,61 +194,90 @@
 }
 
 .twitter-button.ui-btn-up-e {
-	background: @color-bg-twitter-main;
+    background: @color-bg-twitter-main;
     .linear-gradient(@color-bg-twitter-main, @color-bg-twitter-main-tint);
-	color: white;
-	a.ui-link-inherit {
-		color: white;
-	}
+    color: white;
+    a.ui-link-inherit {
+        color: white;
+    }
 }
 
 .twitter-button.ui-btn-hover-e {
-	border: none;
-	background: lighten(@color-bg-twitter-main, 10% );
+    border: none;
+    background: lighten(@color-bg-twitter-main, 10% );
     .linear-gradient(lighten(@color-bg-twitter-main, 5%), lighten(@color-bg-twitter-main-tint, 5%));
-	color: white;
-	a.ui-link-inherit {
-		color: white;
+    color: white;
+    a.ui-link-inherit {
+        color: white;
     }
 }
 
 .twitter-button.ui-btn-down-e {
-	border: none;
-	background: @color-bg-twitter-main;
+    border: none;
+    background: @color-bg-twitter-main;
     .pressed-gradient(@color-bg-twitter-main, 3%);
-	color: white;
-	a.ui-link-inherit {
-		color: white;
-	}
+    color: white;
+    a.ui-link-inherit {
+        color: white;
+    }
 }
 
 .tumblr-button.ui-btn-up-e {
-	background: @color-bg-tumblr-main;
+    background: @color-bg-tumblr-main;
     .linear-gradient(@color-bg-tumblr-main, @color-bg-tumblr-main-tint);
-	color: white;
-	a.ui-link-inherit {
-		color: white;
-	}
+    color: white;
+    a.ui-link-inherit {
+        color: white;
+    }
 }
 
 .tumblr-button.ui-btn-hover-e {
-	border: none;
-	background: lighten(@color-bg-tumblr-main, 10% );
+    border: none;
+    background: lighten(@color-bg-tumblr-main, 10% );
     .linear-gradient(lighten(@color-bg-tumblr-main, 5%), lighten(@color-bg-tumblr-main-tint, 5%));
-	color: white;
-	a.ui-link-inherit {
-		color: white;
+    color: white;
+    a.ui-link-inherit {
+        color: white;
     }
 }
 
 .tumblr-button.ui-btn-down-e {
-	border: none;
-	background: @color-bg-tumblr-main;
+    border: none;
+    background: @color-bg-tumblr-main;
     .pressed-gradient(@color-bg-tumblr-main, 3%);
-	color: white;
-	a.ui-link-inherit {
-		color: white;
-	}
+    color: white;
+    a.ui-link-inherit {
+        color: white;
+    }
+}
+
+.facebook-button.ui-btn-up-e {
+    background: @color-bg-facebook-main;
+    .linear-gradient(@color-bg-facebook-main, @color-bg-facebook-main-tint);
+    color: white;
+    a.ui-link-inherit {
+        color: white;
+    }
+}
+
+.facebook-button.ui-btn-hover-e {
+    border: none;
+    background: lighten(@color-bg-facebook-main, 10% );
+    .linear-gradient(lighten(@color-bg-facebook-main, 5%), lighten(@color-bg-facebook-main-tint, 5%));
+    color: white;
+    a.ui-link-inherit {
+        color: white;
+    }
+}
+
+.facebook-button.ui-btn-down-e {
+    border: none;
+    background: @color-bg-facebook-main;
+    .pressed-gradient(@color-bg-facebook-main, 3%);
+    color: white;
+    a.ui-link-inherit {
+        color: white;
+    }
 }
 
 /*
@@ -1432,6 +1461,11 @@
     }
 }
 
+/* @findfriends custom stylz */
+.ff-linking{
+    margin: 12px;
+}
+
 /* @activity custom stylz */
 .activity-streams{
     .ui-bar.top-left-arrow .ui-btn-text{
@@ -1525,23 +1559,34 @@
     .activity-follow-item{
         position: relative;
         padding-left: 0;
-        padding-top: 8px;
+        margin-top: 8px;
         min-height:  @size-small-avatar;
+        display: block;
         .username,
         .activity-desc,
-        .small-text,
-        .ui-li-icon{
+        .small-text{
             display: inline-block;
-            vertical-align: middle;
-            line-height: @size-small-avatar;
+            vertical-align: baseline;
             margin-bottom: 0;
+        }
+        .ui-link{
+            display: block;
+            padding-left:  @size-small-avatar;
+            padding-top: 8px ;
+            min-height: @size-small-avatar;
+            .border-box();
+        }
+        .ui-li-icon{
+            display: block;
+            position: absolute;
+            left: -@padding-image-grid-inset;
+            top: 0;
         }
     }
 
     .photo-activity{
         .activity-item:first-child{
             border-top: none;
-            margin-top: 0!important;
             padding-top: 0!important;
         }
     }
@@ -1553,7 +1598,7 @@
             padding-top: 0!important;
         }
     }
-
+    
     /* Image Items */
     .activity-image-item{
         position: relative;
@@ -1783,15 +1828,16 @@
     }
 }
 
-
 /*
 * @map - PAGE
 */
+
 
 #map{
     div[data-role="content"]{
         padding-top: 0;
         padding-bottom: 8px;
+        .border-box();
     }
     &.loading{
         .map-time{

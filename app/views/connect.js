@@ -1,9 +1,10 @@
 /*global _  define require */
-define(['backbone', 'views/base/page', 'views/linked_service', 'models/post', 'models/photo', 'utils/query', 'utils/alerts'],
-    function(Backbone, page_view, linked_service, post_model, photo_model, Query, alerts){
+define(['backbone', 'views/base/page', 'views/linked_service', 'models/post', 'models/photo', 'utils/query', 'utils/alerts', 'auth'],
+    function(Backbone, page_view, linked_service, post_model, photo_model, Query, alerts, auth){
 var connect_page = page_view.extend({
 
     post_activate: function(options){
+        this.$("ul").empty();
 
         this.change_page();
 
@@ -13,7 +14,7 @@ var connect_page = page_view.extend({
         this.photo_id = this.query.get('photo_id');
         this.shared = this.query.get('shared') ? this.query.get('shared').split(','): [];
         this.to_link = this.query.get('to_link') ? this.query.get('to_link').split(','): [];
-        this.redirect_url = this.query.get('redirect_url') || "%23%2F";  //  = "/"
+        this.redirect_url = this.query.get('redirect_url') || "#/";  //  = "/"
 
         this.render();
 
@@ -24,7 +25,7 @@ var connect_page = page_view.extend({
     },
 
     render: function(){
-        this.$el.find("ul").empty();
+        var list_el = this.$("ul").empty();
 
         _.each( [ 'twitter', 'facebook', 'tumblr', 'foursquare'], function( provider ){
             var status;
@@ -33,6 +34,7 @@ var connect_page = page_view.extend({
             }else if(provider == this.linked){
                 // is a service username is suppllied
                 if (this.query.get('username')){
+                    auth.user_settings.cache_bust();
                     status = 'ready';
                     this.share(this.linked);
                 // no service username = something went wrong
@@ -52,11 +54,11 @@ var connect_page = page_view.extend({
                     photo_id: this.photo_id,
                     parent_view: this
                 });
-            this.$el.find("ul").append( li.render().el );
+            list_el.append( li.render().el );
 
         }, this );
 
-        this.$el.find("ul").listview().listview("refresh");
+        list_el.listview().listview("refresh");
         $.mobile.hidePageLoadingMsg();
 
     },
@@ -123,7 +125,7 @@ var connect_li = linked_service.extend({
         var to_link = _.without( this.parent_view.to_link, this.provider );
         var shared = _.without( this.parent_view.shared, this.provider );
 
-        var redirect_params = {linked: this.provider, redirect_url: escape(this.parent_view.redirect_url)};
+        var redirect_params = {linked: this.provider, redirect_url: this.parent_view.redirect_url};
 
         if (shared.length){
             redirect_params.shared = shared.join(",");
@@ -138,44 +140,10 @@ var connect_li = linked_service.extend({
         var next = window.location.href.split('?')[0];
         next += "?" + $.param( redirect_params );
         return next;
-    },
+    }
 
     // link_service inherited from views/linked_service, uses this.get_return_url
     // link_service: function(){},
-
-    share: function(){
-        this.model = new photo_model({id: this.photo_id});
-
-        var connect_li = this;
-
-        var options = {
-            success: function( model, xhr ){
-                connect_li.status = "shared";
-                connect_li.render();
-                if (connect_li.parent_view.to_link.length === 0){
-                    setTimeout(function(){
-                        Backbone.history.navigate("#/uploading/?shared=true&photo_id=" + model.get("id"));
-                    }, 600);
-                }
-            },
-            error: function( error ){
-                console.error("share error", error);
-            }
-        };
-
-        switch (this.provider){
-            case "facebook":
-                this.model.save({
-                    facebook_gallery: true
-                }, options);
-                break;
-            case "tumblr":
-                this.model.save({
-                    tumblr: true
-                }, options);
-                break;
-        }
-    }
 
 });
 

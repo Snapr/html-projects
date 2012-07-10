@@ -52,8 +52,8 @@ return page_view.extend({
                     }
 
                 }else{
-                    console.error(data);
                     alerts.notification('Oops!', 'Your Tumblr login details were incorrect.');
+                    console.warn(data);
                 }
             },
             error: function( data ){

@@ -87,8 +87,8 @@ return page_view.extend({
                             xauth_view.back();
                         }
                     }else{
-                        console.error(data);
                         alerts.notification('Oops!', 'Your Twitter login details were incorrect.');
+                        console.warn(data);
                     }
                 },
                 complete: function(){

@@ -33,7 +33,7 @@ return Backbone.View.extend({
             this.$el.addClass("upload-id-" + this.photo.id);
             this.$el.html(
                 this.template({
-                    upload_status: this.is_queued ? 'queued' : this.photo.get('upload_status').toLowerCase(),
+                    upload_status: this.is_queued ? 'waiting' : this.photo.get('upload_status').toLowerCase(),
                     description: unescape( this.photo.get('description') ),
                     venue: this.photo.get('location').foursquare_venue_name || this.venue_name || this.photo.get('location').location,
                     spot_id: this.photo.get('location').spot_id,

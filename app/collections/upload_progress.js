@@ -10,20 +10,22 @@ define(['config', 'backbone'], function(config, Backbone){
             var ids = [];
 
             _(col_in).each(function(mod_in){
-            if (that.get(mod_in.id)){
-                that.get(mod_in.id).set(mod_in);
-            } else {
-                that.add(mod_in);
-            }
+                if (that.get(mod_in.id)){
+                    that.get(mod_in.id).set(mod_in);
+                } else {
+                    that.add(mod_in);
+                }
 
-            ids.push(mod_in.id);
+                ids.push(mod_in.id);
             });
+
 
             var to_remove = that.reject(function(mod){
                 return _(ids).include(mod.id);
             });
 
             this.remove(to_remove);
+            return this;
         }
     });
 

@@ -52,7 +52,13 @@ var map_view = page_view.extend({
                 config.get('zoom'),
             streetViewControl: false,
             mapTypeControl: false,
-            mapTypeId: google.maps.MapTypeId.ROADMAP
+            mapTypeId: google.maps.MapTypeId.ROADMAP,
+            styles: [{
+                featureType: "poi.business",
+                stylers: [
+                    { visibility: "off" }
+                ]
+            }]
         };
 
         if (this.map_query.get( "lat" ) && this.map_query.get( "lng" )){
@@ -95,8 +101,15 @@ var map_view = page_view.extend({
             this.go_to({
                 latitude: this.map_settings.center.lat(),
                 longitude: this.map_settings.center.lng()
-            });
+            }, this.map_settings.zoom);
             this.get_thumbs();
+            var keywords = local_storage.get('map_keywords');
+            if(keywords){
+                var t=this;
+                setTimeout(function(){
+                t.map_controls.keyword_search(keywords);
+                }, 1000);
+            }
             return;
         }
 
@@ -104,6 +117,14 @@ var map_view = page_view.extend({
 
         this.map = new google.maps.Map(
             document.getElementById("google-map"), this.map_settings);
+
+        var keywords = local_storage.get('map_keywords');
+        if(keywords){
+            var t=this;
+            setTimeout(function(){
+            t.map_controls.keyword_search(keywords);
+            }, 1000);
+        }
 
         geo.get_location(function(location){
             map_view.dot = new map.overlays.CurrentLocation( {
@@ -126,10 +147,10 @@ var map_view = page_view.extend({
                 zoom: map_view.map.getZoom()
             });
             // remember location
-            local_storage.save('map_zoom', map_view.map.getZoom());
+            local_storage.set('map_zoom', map_view.map.getZoom());
             var ll = map_view.map.getCenter();
-            local_storage.save('map_latitude', ll.lat());
-            local_storage.save('map_longitude', ll.lng());
+            local_storage.set('map_latitude', ll.lat());
+            local_storage.set('map_longitude', ll.lng());
         });
 
         if (location){
@@ -160,7 +181,11 @@ var map_view = page_view.extend({
         this.thumb_collection.data.area = this.map.getBounds().toUrlValue(4);
         var map_view = this;
 
-        this.thumb_collection.fetch({
+
+        // we are about to look for new thumbs, abort any old requests, they will no longer be needed
+        try{ this.thumb_collection.current_query.abort(); }catch(e){}
+
+        this.thumb_collection.current_query = this.thumb_collection.fetch({
             success: function( collection ){
                 map_view.$el.removeClass('loading');
                 if (_.difference( map_view.thumb_collection.pluck("id"), old_thumb_ids ).length){
@@ -253,8 +278,8 @@ var map_view = page_view.extend({
         setTimeout( this.place_current_location, 30000 );
     },
 
-    go_to: function(location){
-        this.map.setZoom(config.get('zoom'));
+    go_to: function(location, zoom){
+        this.map.setZoom(zoom || config.get('zoom'));
         this.map.panTo( new google.maps.LatLng( location.latitude, location.longitude) );
         this.lat = location.latitude;
         this.lng = location.longitude;
@@ -338,6 +363,7 @@ var map_controls = Backbone.View.extend({
 
     update_filter: function( e ){
         var filter = $(e.currentTarget).val();
+        local_storage.set('map_filter', filter);
         switch(filter) {
             case 'all':
                 this.model.unset( "username", {silent: true});
@@ -374,18 +400,26 @@ var map_controls = Backbone.View.extend({
             }
     },
 
-    keyword_search: function( e ){
-        var keywords = $(e.currentTarget).find("input").val();
+    keyword_search: function( keywords ){
+        var input = this.$('#map-keyword').find("input");
+        if(!_.isString(keywords)){
+            keywords = input.val();
+        }else{
+            input.val(keywords);
+        }
         if (keywords != (this.model.get( "keywords" ))){
             if (keywords){
-                this.model.set({keywords: $(e.currentTarget).find("input").val()});
+                local_storage.set('map_keywords', keywords);
+                this.model.set({keywords: keywords});
             }else{
+                local_storage['delete']('map_keywords');
                 this.model.unset( "keywords" );
             }
         }
     },
 
     clear_keyword_search: function(){
+        this.$('#map-keyword').find("input").val("");
         this.model.unset( "keywords" );
     },
 
@@ -458,7 +492,8 @@ var map_controls = Backbone.View.extend({
         }else if (this.model.get( "username" ) == "." && !this.model.has( "group" )){
             $("#map-filter").val("just-me").selectmenu('refresh', true);
         }else{
-            $("#map-filter").val("all").selectmenu('refresh', true);
+            var filter = local_storage.get('map_filter');
+            $("#map-filter").val(filter || "all").selectmenu('refresh', true);
         }
 
         if (this.model.has( "photo_id" ) &&

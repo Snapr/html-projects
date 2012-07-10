@@ -2,11 +2,16 @@
 define([], function(){
 
 function Query(input) {
+    if(!input){
+        this.query={};
+        return this;
+    }
     if(typeof (input) == "string") {
         this.query = this.parse(input);
     } else if(typeof (input) == "object") {
         this.query = input;
     }
+    return this;
 }
 
 Query.prototype.parse = function (querystring) {

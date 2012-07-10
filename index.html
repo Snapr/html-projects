@@ -171,7 +171,7 @@
     <div id="my-account" data-title="My Account" data-role="page" data-short-title="My Account" data-theme="d">
         <div data-role="header" data-theme="b">
             <div class="ui-btn-left" data-ajax="false">
-                <a href="#/" data-role="button" data-rel="back">Menu</a>
+                <a data-role="button" data-rel="back">Menu</a>
             </div>
 
             <h1>My Account</h1>
@@ -206,7 +206,7 @@
             <em>Quick Links</em>
          </a>
          <ul  data-role="listview">
-            <li><a  data-snapr-dialog="true" href="#/find-friends/">Find Friends</a></li>
+            <li><a data-back-here="true" href="#/find-friends/">Find Friends</a></li>
          </ul>
     </div>
 
@@ -238,7 +238,7 @@
          </a>
          <ul data-role="listview">
             <li>
-                <a  data-snapr-dialog="true" href="#/find-friends/">Find Friends</a>
+                <a data-back-here="true" href="#/find-friends/">Find Friends</a>
             </li>
          </ul>
     </div>
@@ -534,14 +534,17 @@
     </script>
 
      <!-- @link @service BUTTON for linking a service in #find-friends -->
-    <script id="add-linked-service-button-template" type="text/template">
+    <script id="ff-link-service-template" type="text/template">
 
+    <div class="ff-linking">
     <% switch(provider) { case 'twitter': %>
+        <p class="small-text light-text">Please connect your account:</p>
         <a data-role="button" class="link-service twitter-button logo-button" data-theme="e">Link <span class="twitter-logo button-logo">Twitter</span></a>
     <% break; case 'facebook': %>
+        <p class="small-text light-text">Please connect your account:</p>
         <a data-role="button" class="link-service facebook-button logo-button" data-theme="e">Link <span class="facebook-logo button-logo">Facebook</span></a>
     <% break; } %>
-
+    </div>
     </script>
 
     <!-- @linked @service ITEM for showing a linked service in #linked-services -->
@@ -643,13 +646,13 @@
         <div data-role="header" data-theme="c">
             <h1>Find Friends</h1>
 
-            <a href="#/my-account/" data-ajax="false" data-role="button" data-icon="delete" data-iconpos="notext" data-transition="none"></a>
+            <a class="x-back" data-ajax="false" data-role="button" data-icon="delete" data-iconpos="notext" data-transition="none"></a>
         </div>
         <div data-role="content" data-theme="d" data-ajax="false">
             <div class="inset-page-content">
                 <ul data-role="listview" data-ajax="false" class="share-icons-list" data-inset="true" data-theme="d">
                     <li>
-                        <a class="find-friends-link" href="#/find-friends-facebook/">
+                        <a class="find-friends-link" data-back-here="true" href="#/find-friends-facebook/">
                             <span class="facebook-sharing sharing-icon-small">
                                 <span class="ui-icon"></span>
                             </span>
@@ -657,7 +660,7 @@
                          </a>
                     </li>
                     <li>
-                        <a class="find-friends-link" href="#/find-friends-twitter/">
+                        <a class="find-friends-link" data-back-here="true" href="#/find-friends-twitter/">
                             <span class="twitter-sharing sharing-icon-small">
                                 <span class="ui-icon"></span>
                             </span>
@@ -673,14 +676,19 @@
        <div id="find-friends-twitter" data-title="Find Friends" data-role="dialog" data-overlay-theme="c" data-theme="c">
            <div data-role="header" data-theme="c">
                <h1>Twitter Friends</h1>
-               <a href="#/find-friends/" data-ajax="false" data-role="button" data-icon="delete" data-iconpos="notext"></a>
+               <a class="x-back" data-ajax="false" data-role="button" data-icon="delete" data-iconpos="notext"></a>
            </div>
            <div data-role="content" data-theme="c" data-ajax="false">
                <div class="search-header">
                    <input type="search" id="people-search-twitter" value="" placeholder="@username&hellip;" autocapitalize="off" autocorrect="off"/>
                </div>
+
+               <ul class="helper-content">
+                </ul>
+
                <ul class="people-list " data-role="listview" data-inset="true" >
                </ul>
+
            </div>
        </div>
 
@@ -688,12 +696,14 @@
          <div id="find-friends-facebook" data-title="Find Friends" data-role="dialog" data-overlay-theme="c" data-theme="c">
              <div data-role="header" data-theme="c">
                  <h1>Facebook Friends</h1>
-                 <a href="#/find-friends/" data-ajax="false" data-role="button" data-icon="delete" data-iconpos="notext"></a>
+                 <a class="x-back" data-ajax="false" data-role="button" data-icon="delete" data-iconpos="notext"></a>
              </div>
              <div data-role="content" data-theme="c" data-ajax="false">
                  <div class="search-header">
                      <input type="search" id="people-search-facebook"  value="" placeholder="Search Friends&hellip;" autocorrect="off"/>
                  </div>
+                  <ul class="helper-content">
+                </ul>
                  <ul class="people-list " data-role="listview" data-inset="true" >
                  </ul>
              </div>
@@ -992,7 +1002,7 @@
                 <source src="<%= item.get('external_video').source %>" />
             </video>
             <%}else{%>
-            <a href="https://s3.amazonaws.com/media-server<%= item.get('server_id') %>.snapr.us/lrg/<%= item.get('secret') %>/<%= item.get('id') %>.jpg" rel="external" class="gallery_link main-image-link image-loader-bg">
+            <a href="https://s3.amazonaws.com/media-server<%= item.get('server_id') %>.snapr.us/lrg2/<%= item.get('secret') %>/<%= item.get('id') %>.jpg" rel="external" class="gallery_link main-image-link image-loader-bg">
                 <img style="height:<%= get_photo_height(item.get('width'), item.get('height'), '#feed-images') %>px;" src="https://s3.amazonaws.com/media-server<%= item.get('server_id') %>.snapr.us/lrg/<%= item.get('secret') %>/<%= item.get('id') %>.jpg" <% if(item.get('description')){ %>alt="<%= item.get('description') %>"<% } %> class="main-image" />
             </a>
             <% }%>
@@ -1076,7 +1086,7 @@
 
     <!-- @feed @thumb ITEM - clicks to gallery view -->
     <script id="feed-li-grid-template" type="text/template">
-    <a href="https://s3.amazonaws.com/media-server<%= item.get('server_id') %>.snapr.us/lrg/<%= item.get('secret') %>/<%= item.get('id') %>.jpg" rel="external" class="gallery_link image-link"><img src="https://s3.amazonaws.com/media-server<%= item.get('server_id') %>.snapr.us/thm2/<%= item.get('secret') %>/<%= item.get('id') %>.jpg" <% if(item.get('description')){ %>alt="<%= item.get('description') %>"<% } %> class="thumb-image thumb-med" /></a>
+    <a href="https://s3.amazonaws.com/media-server<%= item.get('server_id') %>.snapr.us/lrg2/<%= item.get('secret') %>/<%= item.get('id') %>.jpg" rel="external" class="gallery_link image-link"><img src="https://s3.amazonaws.com/media-server<%= item.get('server_id') %>.snapr.us/thm2/<%= item.get('secret') %>/<%= item.get('id') %>.jpg" <% if(item.get('description')){ %>alt="<%= item.get('description') %>"<% } %> class="thumb-image thumb-med" /></a>
     </script>
 
     <!-- favorite button template -->
@@ -1222,7 +1232,7 @@
          Snaps</a>
         <%}%>
         <% if (user.get("details").stats.photos_favorited){%>
-        <a href="#/feed/?favorited_by=<%= user.get( "username" ) %>" data-role="button" data-icon="favs" class="extra-icons"><%= user.get("details").stats.favorite_count %> Favourites</a>
+        <a href="#/feed/?favorited_by=<%= user.get( "username" ) %>&list_style=grid" data-role="button" data-icon="favs" class="extra-icons"><%= user.get("details").stats.favorite_count %> Favourites</a>
          <%}%>
     </div>
     <hr>
@@ -1351,7 +1361,7 @@
         </script>
 
         <script id="dash-thumbs-template" type="text/template">
-            <% _.each(photos, function(photo) { %><a href="https://s3.amazonaws.com/media-server2.snapr.us/lrg/<%= photo.get('secret') %>/<%= photo.get('id') %>.jpg" class="x-thumb image-link" rel="external" data-date="<%= photo.get('date') %>" data-id="<%= photo.get('id') %>" data-tag="<%= photo.get('description') %>">
+            <% _.each(photos, function(photo) { %><a href="https://s3.amazonaws.com/media-server2.snapr.us/lrg2/<%= photo.get('secret') %>/<%= photo.get('id') %>.jpg" class="x-thumb image-link" rel="external" data-date="<%= photo.get('date') %>" data-id="<%= photo.get('id') %>" data-tag="<%= photo.get('description') %>">
                 <img src="https://s3.amazonaws.com/media-server2.snapr.us/thm2/<%= photo.get('secret') %>/<%= photo.get('id') %>.jpg" <% if(photo.get('description')){ %>alt="<%= photo.get('description') %>"<% } %> class="thumb-image thumb-med">
             </a><% }); %>
         </script>
@@ -1493,7 +1503,7 @@
             <%}%>
 
              <!-- // Show the photo -->
-                <a class="image-link" href="#/feed/?photo_id=<%= item.get("photo").id %>&amp;username=<%= item.get("photo").username %>">
+                <a class="image-link" href="#/feed/?photo_id=<%= item.get("photo").id %>&amp;username=<%= item.get("photo").username %>&n=1">
                     <img src="https://s3.amazonaws.com/media-server<%= item.get("photo").server_id %>.snapr.us/thm2/<%= item.get("photo").secret %>/<%= item.get("photo").id %>.jpg" <% if(item.get('photo').description){ %>alt="<%= item.get('photo').description %>"<% } %> class="thumb-image thumb-med">
                 </a>
 
@@ -1597,7 +1607,7 @@
             </div>
         </script>
         <script id="cities-thumbs-template" type="text/template">
-            <% _.each(photos, function(photo) { %><a href="https://s3.amazonaws.com/media-server2.snapr.us/lrg/<%= photo.get('secret') %>/<%= photo.get('id') %>.jpg" class="x-thumb image-link" rel="external" data-date="<%= photo.get('date') %>" data-id="<%= photo.get('id') %>" data-tag="<%= photo.get('description') %>">
+            <% _.each(photos, function(photo) { %><a href="https://s3.amazonaws.com/media-server2.snapr.us/lrg2/<%= photo.get('secret') %>/<%= photo.get('id') %>.jpg" class="x-thumb image-link" rel="external" data-date="<%= photo.get('date') %>" data-id="<%= photo.get('id') %>" data-tag="<%= photo.get('description') %>">
                 <img src="https://s3.amazonaws.com/media-server2.snapr.us/thm2/<%= photo.get('secret') %>/<%= photo.get('id') %>.jpg" <% if(photo.get('description')){ %>alt="<%= photo.get('description') %>"<% } %> class="thumb-image thumb-med">
             </a><% }); %>
         </script>
@@ -1648,7 +1658,9 @@
            </div>
            <div data-role="content" data-theme="c">
                <div class="search-header">
-                   <input type="search" id="venue-search" value="" placeholder="Search&hellip;" />
+                    <form class="venue-search">
+                       <input type="search" id="venue-search" value="" placeholder="Search&hellip;" autocapitalize="off" autocorrect="off"/>
+                   </form>
                </div>
                <ul class="venue-list " data-role="listview" data-inset="true" >
                </ul>
@@ -2269,7 +2281,7 @@
                         </li>
 
                          <li>
-                            <a href="#/find-friends/">Find your friends</a>
+                            <a data-back-here="true" href="#/find-friends/">Find your friends</a>
                         </li>
                         <li>
                             <a href="#/about/">Find out more about Snapr</a>
@@ -2337,17 +2349,17 @@
         <div data-role="content" data-theme="d">
             <div class="upload-progress-container upload-progress-header page-inset-header">
             </div>
-            <a class="offline ui-bar top-no-arrow x-refresh offline-uploading" data-role="button" data-theme="c">
+            <a class="offline ui-bar top-no-arrow x-refresh offline-uploading" data-role="button" data-theme="c" style="display:none;">
                 <span class="image-details">
                     <span class="ui-icon ui-icon-connection extra-icons"></span>
                     <span class="image-tag"><strong>Offline Mode</strong></span>
                 </span>
             </a>
-            
+
             <ul class="image-streams">
             </ul>
-            
-            
+
+
         </div>
 
 
@@ -2501,7 +2513,7 @@
             <em>nearby</em>
         <% break; case 'recent-nearby': %>
             <span class="ui-icon ui-icon-activity extra-icons"></span>
-            <em>nearby</em>myaccount-quicklinks
+            <em>nearby</em>
         <% break; } %>
            <span class="image-tag x-tag"><%= collection.models[0].description %></span>
            <span class="image-time small-text">
@@ -2526,7 +2538,7 @@
     </script>
 
     <script id="uploading-stream-thumb-template" type="text/template">
-        <% _.each(photos, function(photo) { %><a href="https://s3.amazonaws.com/media-server2.snapr.us/lrg/<%= photo.get('secret') %>/<%= photo.get('id') %>.jpg" class="x-thumb image-link" rel="external" data-date="<%= photo.get('date') %>" data-tag="<%= photo.get('description') %>">
+        <% _.each(photos, function(photo) { %><a href="https://s3.amazonaws.com/media-server2.snapr.us/lrg2/<%= photo.get('secret') %>/<%= photo.get('id') %>.jpg" class="x-thumb image-link" rel="external" data-date="<%= photo.get('date') %>" data-tag="<%= photo.get('description') %>">
             <img src="https://s3.amazonaws.com/media-server2.snapr.us/thm2/<%= photo.get('secret') %>/<%= photo.get('id') %>.jpg" <% if(photo.get('description')){ %>alt="<%= photo.get('description') %>"<% } %> class="thumb-image thumb-med">
         </a><% }); %>
     </script>

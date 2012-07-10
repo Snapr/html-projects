@@ -69,6 +69,13 @@ define(['config', 'collections/upload_progress'], function(config, upload_progre
         run_if_function(config.get('current_view').upload_cancelled)(id);
     };
 
+    window.upload_failed = function(id, error){
+        //upload_progress.remove(id);
+        upload_progress.trigger('error', id, error);
+
+        run_if_function(config.get('current_view').upload_failed)(id, error);
+    };
+
     window.queue_settings = function(upload_mode, paused) {
         config.set('upload_mode', upload_mode);
         config.set('paused', paused);

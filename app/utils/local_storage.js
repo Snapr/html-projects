@@ -27,7 +27,7 @@ local_storage['delete'] = function (key) {
     }
 };
 
-local_storage.save = function( key, value ){
+local_storage.set = function( key, value ){
     if (value == "false"){
         local_storage['delete']( key );
     }else{
@@ -37,6 +37,10 @@ local_storage.save = function( key, value ){
             $.cookie( key, value );
         }
     }
+};
+local_storage.save = function( key, value ){
+    console.warn('local_storage.save should be local_storage.set');
+    local_storage.set(key, value);
 };
 
 return local_storage;
