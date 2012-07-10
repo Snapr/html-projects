@@ -363,6 +363,7 @@ var map_controls = Backbone.View.extend({
 
     update_filter: function( e ){
         var filter = $(e.currentTarget).val();
+        local_storage.set('map_filter', filter);
         switch(filter) {
             case 'all':
                 this.model.unset( "username", {silent: true});
@@ -491,7 +492,8 @@ var map_controls = Backbone.View.extend({
         }else if (this.model.get( "username" ) == "." && !this.model.has( "group" )){
             $("#map-filter").val("just-me").selectmenu('refresh', true);
         }else{
-            $("#map-filter").val("all").selectmenu('refresh', true);
+            var filter = local_storage.get('map_filter');
+            $("#map-filter").val(filter || "all").selectmenu('refresh', true);
         }
 
         if (this.model.has( "photo_id" ) &&
