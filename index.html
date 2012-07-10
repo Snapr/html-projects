@@ -1031,7 +1031,7 @@
 
     <!-- @feed @thumb ITEM - clicks to gallery view -->
     <script id="feed-li-grid-template" type="text/template">
-    <a href="https://s3.amazonaws.com/media-server<%= item.get('server_id') %>.snapr.us/lrg/<%= item.get('secret') %>/<%= item.get('id') %>.jpg" rel="external" class="gallery_link image-link"><img src="https://s3.amazonaws.com/media-server<%= item.get('server_id') %>.snapr.us/thm2/<%= item.get('secret') %>/<%= item.get('id') %>.jpg" <% if(item.get('description')){ %>alt="<%= item.get('description') %>"<% } %> class="thumb-image thumb-med" /></a>
+    <a href="https://s3.amazonaws.com/media-server<%= item.get('server_id') %>.snapr.us/lrg2/<%= item.get('secret') %>/<%= item.get('id') %>.jpg" rel="external" class="gallery_link image-link"><img src="https://s3.amazonaws.com/media-server<%= item.get('server_id') %>.snapr.us/thm2/<%= item.get('secret') %>/<%= item.get('id') %>.jpg" <% if(item.get('description')){ %>alt="<%= item.get('description') %>"<% } %> class="thumb-image thumb-med" /></a>
     </script>
 
     <!-- favorite button template -->
