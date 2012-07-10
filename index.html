@@ -947,7 +947,7 @@
                 <source src="<%= item.get('external_video').source %>" />
             </video>
             <%}else{%>
-            <a href="https://s3.amazonaws.com/media-server<%= item.get('server_id') %>.snapr.us/lrg/<%= item.get('secret') %>/<%= item.get('id') %>.jpg" rel="external" class="gallery_link main-image-link image-loader-bg">
+            <a href="https://s3.amazonaws.com/media-server<%= item.get('server_id') %>.snapr.us/lrg2/<%= item.get('secret') %>/<%= item.get('id') %>.jpg" rel="external" class="gallery_link main-image-link image-loader-bg">
                 <img style="height:<%= get_photo_height(item.get('width'), item.get('height'), '#feed-images') %>px;" src="https://s3.amazonaws.com/media-server<%= item.get('server_id') %>.snapr.us/lrg/<%= item.get('secret') %>/<%= item.get('id') %>.jpg" <% if(item.get('description')){ %>alt="<%= item.get('description') %>"<% } %> class="main-image" />
             </a>
             <% }%>
@@ -1177,7 +1177,7 @@
          Snaps</a>
         <%}%>
         <% if (user.get("details").stats.photos_favorited){%>
-        <a href="#/feed/?favorited_by=<%= user.get( "username" ) %>" data-role="button" data-icon="favs" class="extra-icons"><%= user.get("details").stats.favorite_count %> Favourites</a>
+        <a href="#/feed/?favorited_by=<%= user.get( "username" ) %>&list_style=grid" data-role="button" data-icon="favs" class="extra-icons"><%= user.get("details").stats.favorite_count %> Favourites</a>
          <%}%>
     </div>
     <hr>
@@ -1306,7 +1306,7 @@
         </script>
 
         <script id="dash-thumbs-template" type="text/template">
-            <% _.each(photos, function(photo) { %><a href="https://s3.amazonaws.com/media-server2.snapr.us/lrg/<%= photo.get('secret') %>/<%= photo.get('id') %>.jpg" class="x-thumb image-link" rel="external" data-date="<%= photo.get('date') %>" data-id="<%= photo.get('id') %>" data-tag="<%= photo.get('description') %>">
+            <% _.each(photos, function(photo) { %><a href="https://s3.amazonaws.com/media-server2.snapr.us/lrg2/<%= photo.get('secret') %>/<%= photo.get('id') %>.jpg" class="x-thumb image-link" rel="external" data-date="<%= photo.get('date') %>" data-id="<%= photo.get('id') %>" data-tag="<%= photo.get('description') %>">
                 <img src="https://s3.amazonaws.com/media-server2.snapr.us/thm2/<%= photo.get('secret') %>/<%= photo.get('id') %>.jpg" <% if(photo.get('description')){ %>alt="<%= photo.get('description') %>"<% } %> class="thumb-image thumb-med">
             </a><% }); %>
         </script>
@@ -1552,7 +1552,7 @@
             </div>
         </script>
         <script id="cities-thumbs-template" type="text/template">
-            <% _.each(photos, function(photo) { %><a href="https://s3.amazonaws.com/media-server2.snapr.us/lrg/<%= photo.get('secret') %>/<%= photo.get('id') %>.jpg" class="x-thumb image-link" rel="external" data-date="<%= photo.get('date') %>" data-id="<%= photo.get('id') %>" data-tag="<%= photo.get('description') %>">
+            <% _.each(photos, function(photo) { %><a href="https://s3.amazonaws.com/media-server2.snapr.us/lrg2/<%= photo.get('secret') %>/<%= photo.get('id') %>.jpg" class="x-thumb image-link" rel="external" data-date="<%= photo.get('date') %>" data-id="<%= photo.get('id') %>" data-tag="<%= photo.get('description') %>">
                 <img src="https://s3.amazonaws.com/media-server2.snapr.us/thm2/<%= photo.get('secret') %>/<%= photo.get('id') %>.jpg" <% if(photo.get('description')){ %>alt="<%= photo.get('description') %>"<% } %> class="thumb-image thumb-med">
             </a><% }); %>
         </script>
@@ -1625,167 +1625,7 @@
         </script>
 
 
-        <!-- @spots PAGE -->
-        <!--
-        <div id="spots" data-title="Spots" data-add-back-btn="true" data-role="page" data-theme="d">
-             <div data-role="header" data-theme="b">
-                 <h1>Spots</h1>
-
-                  <div class="ui-btn-right" data-ajax="false">
-                      <a href="#/search/" data-snapr-dialog="true" data-role="button" data-icon="search" data-iconpos="notext"></a>
-                     <a href="#/" data-role="button" data-icon="home" data-iconpos="notext"></a>
-                 </div>
-             </div>
-             <div data-role="content" data-theme="d" data-ajax="false">
-                 <div class="page-inset-header ui-body-c spots-search-header">
-                     <div class="ui-content">
-                     <form id="spots-search">
-                         <input type="search" id="people-search" value="" placeholder="Venue Name&hellip;" />
-
-                         <div class="spots-search-filters">
-                             <span class="category-btn">
-                                 <select data-theme="c" name="category" id="options-category" data-native-menu="true">
-                                     <option value='all' id='location-anywhere'>Everything</option>
-                                     <option value='food' id="category-nearby">Food and Drink</option>
-                                     <option value='nightlife-spots' id="category-nightlife-spots">Nightlife Spots</option>
-                                     <option value='arts-and-entertainment' id="category-arts-and-entertainment">Arts &amp; Entertainment</option>
-
-                                     <option value='great-outdoors' id="category-great-outdoors">Great Outdoors</option>
-                                     <option value='shops' id="category-shops">Shops</option>
-
-                                 </select>
-                             </span>
-
-                             <div class="ui-grid-a">
-                                 <div class="ui-block-a">
-                                     <select data-theme="c" name="category" id="options-category" data-native-menu="true">
-                                         <option value='nearby' id='location-nearby'>Nearby</option>
-                                         <option value='anywhere' id="location-anywhere">Anywhere</option>
-
-                                     </select>
-                                 </div>
-                                 <div class="ui-block-b">
-                                     <select data-theme="c" name="sort" id="options-sort" data-native-menu="true">
-                                         <option value='weighted_score' id='options-weighted_score'>Hotspots</option>
-                                         <option value='distance' id="options-distance">Nearest First</option>
-
-
-                                         <option value='alphabetical' id="options-alphabetical">Alphabetical</option>
-
-                                     </select>
-                                 </div>
-                             </div>
-                         </div>
-
-                     </form>
-                     </div>
-                </div>
-                <div class="spots-results-content">
-                    <a class="spots-results-header ui-bar top-left-arrow" data-role="button" data-theme="e" data-iconpos="right" data-icon="arrow-r">
-                        <em>XX results</em>
-                        <span class="small-text">show on map</span>
-                    </a>
-                    <ul class="spots">
-                        <li class="spot-item">
-                            <a class="spot" href="#/spot/?spot_id=">
-                                <span class="spot-photo-crop">
-                                    <img src="https://s3.amazonaws.com/media-server2.snapr.us/thm2/dev/0f56166223a61001dd6e91a83774fba4/10A5.jpg" class="thumb-image thumb-med" />
-                                </span>
-                                <span class="spot-heading">
-                                    <h4 class="spot-name">Name <span class="ui-icon spot-icon"></span></h4>
-                                    <p class="spot-subheading small-text">
-                                        5k
-                                    </p>
-                                </span>
-                                <p class="spot-address">
-                                    address line 1</br>
-                                    address line 2
-                                </p>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-
-            </div>
-
-
-         </div>
-
-         <div id="spot" data-title="Spots" data-add-back-btn="true" data-role="page" data-theme="d">
-              <div data-role="header" data-theme="b">
-                  <h1>Spots</h1>
-
-                   <div class="ui-btn-right" data-ajax="false">
-                       <a href="#/search/" data-snapr-dialog="true" data-role="button" data-icon="search" data-iconpos="notext"></a>
-                      <a href="#/" data-role="button" data-icon="home" data-iconpos="notext"></a>
-                  </div>
-              </div>
-              <div data-role="content" data-theme="d" data-ajax="false">
-                  <a class="ui-bar top-left-arrow" data-role="button" data-theme="e" data-iconpos="right" data-icon="arrow-r">
-                        <span class="ui-icon ui-icon-category spot-icon dark-spot-icon"></span>
-                        <em>Spot Name</em>
-                        55 photos
-                        <span class="spot-distance small-text">(5k)</span>
-                    </a>
-
-                  <div class="spot-header ui-body-c">
-                      <div class="spot ui-content">
-                          <a class="spot-photo-crop">
-                              <img src="https://s3.amazonaws.com/media-server2.snapr.us/thm2/dev/0f56166223a61001dd6e91a83774fba4/10A5.jpg" class="thumb-image thumb-med" />
-                          </a>
-                          <p class="spot-address">
-                              address line 1</br>
-                              address line 2
-                          </p>
-                          <p class="spot-phone small-text">
-                                +22 222 222
-                            </p>
-                            <p class="spot-photo-credit small-text">
-                                &lsaquo; photo by <a href="#/feed/?username=">username</a>
-                            </p>
-
-                            <a class="foursquare-btn" data-role="button" data-icon="foursquare-logo" data-iconpos="notext" data-theme="c"></a>
-
-                      </div>
-                  </div>
-                  <div class="spot-body">
-                      <ul class="image-streams">
-                      </ul>
-
-                      <ul class="top-users">
-                          <li class="top-user-item">
-                            <a href="#/feed/?username=">
-                                <span class="user-icon-med" style="background-image: url('http://dev.sna.pr/avatars/22?size=large&_salt=gravatar');"></span>
-                                <span class="small-username">ro</span>
-                            </a>
-                            </li>
-                            <li class="top-user-item">
-
-                            <a href="#/feed/?username=">
-                                <span class="user-icon-med" style="background-image: url('http://dev.sna.pr/avatars/22?size=large&_salt=gravatar');"></span>
-                                <span class="small-username">username</span>
-                            </a>
-
-                          </li>
-
-                           <li class="top-user-item">
-
-                              <a href="#/feed/?username=">
-                                  <span class="user-icon-med" style="background-image: url('http://dev.sna.pr/avatars/22?size=large&_salt=gravatar');"></span>
-                                  <span class="small-username">harrylongname</span>
-                              </a>
-
-                            </li>
-                      </ul>
-
-                  </div>
-              </div>
-
-
-          </div>
-          -->
-
-
+       
     <!-- @welcome PAGE-->
     <div id="welcome" data-role="dialog" data-overlay-theme="c" data-theme="c" class="welcome-bg special-bg">
         <div data-role="header" data-theme="c">
@@ -2415,7 +2255,7 @@
     </script>
 
     <script id="uploading-stream-thumb-template" type="text/template">
-        <% _.each(photos, function(photo) { %><a href="https://s3.amazonaws.com/media-server2.snapr.us/lrg/<%= photo.get('secret') %>/<%= photo.get('id') %>.jpg" class="x-thumb image-link" rel="external" data-date="<%= photo.get('date') %>" data-tag="<%= photo.get('description') %>">
+        <% _.each(photos, function(photo) { %><a href="https://s3.amazonaws.com/media-server2.snapr.us/lrg2/<%= photo.get('secret') %>/<%= photo.get('id') %>.jpg" class="x-thumb image-link" rel="external" data-date="<%= photo.get('date') %>" data-tag="<%= photo.get('description') %>">
             <img src="https://s3.amazonaws.com/media-server2.snapr.us/thm2/<%= photo.get('secret') %>/<%= photo.get('id') %>.jpg" <% if(photo.get('description')){ %>alt="<%= photo.get('description') %>"<% } %> class="thumb-image thumb-med">
         </a><% }); %>
     </script>
