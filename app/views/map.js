@@ -52,7 +52,13 @@ var map_view = page_view.extend({
                 config.get('zoom'),
             streetViewControl: false,
             mapTypeControl: false,
-            mapTypeId: google.maps.MapTypeId.ROADMAP
+            mapTypeId: google.maps.MapTypeId.ROADMAP,
+            styles: [{
+                featureType: "poi.business",
+                stylers: [
+                    { visibility: "off" }
+                ]
+            }]
         };
 
         if (this.map_query.get( "lat" ) && this.map_query.get( "lng" )){
