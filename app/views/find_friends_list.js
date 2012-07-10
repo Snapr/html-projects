@@ -17,6 +17,7 @@ var find_friends = page_view.extend({
 
         this.$("ul.people-list").empty();
         this.$(".helper-content").empty();
+        $.mobile.hidePageLoadingMsg();
 
         this.change_page();
 
