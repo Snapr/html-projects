@@ -31,7 +31,7 @@ var map_view = page_view.extend({
 
     events: {
         "click .x-current-location": "go_to_current_location",
-        "click #map-disambituation-cancel": "hide_dis",
+        "click #map-disambituation-cancel": "location_search_toggle_disambiguation",
         "click .x-map-feed": "map_feed",
         "change #map-filter": "filter_update",
         "submit #map-keyword": "keyword_search",
@@ -66,23 +66,29 @@ var map_view = page_view.extend({
             { zoom:config.get('zoom') }
         );
 
+        // photo_params may have been saved in local_storage
+        photo_params = _.defaults( photo_params,
+            local_storage.get('map_photo_params') || {}
+        );
+
 
         // create backbone models to store the params. This lets us bind
         // functions to changes
         this.photo_query = new Backbone.Model(photo_params);
         this.photo_query.on( "change", this.hide_no_results_message );
-        this.photo_query.on( "change", this.get_thumbs );
+        this.photo_query.on( "change", this.thumbs_get );
         this.photo_query.on( "change", this.map_time_update_display );
+        this.photo_query.on( "change", this.photo_query_save );  // keep in local_storage
 
         this.spot_query = new Backbone.Model(spot_params);
         this.spot_query.on( "change", this.hide_no_results_message );
-        this.spot_query.on( "change", this.get_spots );
+        this.spot_query.on( "change", this.spots_get );
 
         this.map_query = new Backbone.Model(map_params);
         this.map_query.on( "change", this.hide_no_results_message );
-        this.map_query.on( "change", this.get_thumbs );
-        this.map_query.on( "change", this.get_spots );
-        this.map_query.on( "change", this.save_map_query );  // keep in local_storage
+        this.map_query.on( "change", this.thumbs_get );
+        this.map_query.on( "change", this.spots_get );
+        this.map_query.on( "change", this.map_query_save );  // keep in local_storage
 
 
         // map filter <select>
@@ -94,14 +100,14 @@ var map_view = page_view.extend({
         // location search
         if(this.map_query.get('location')){
             this.location_search(this.map_query.get('location'));
-            // the above will call update_or_create_map
+            // the above will call map_update_or_create
             return this;
         }
 
 
         // if center is available from query or local_storage
         if (this.map_query.get( "lat" ) && this.map_query.get( "lng" )){
-            this.update_or_create_map();
+            this.map_update_or_create();
         }else{
             var map_view = this;
             geo.get_location(
@@ -111,7 +117,7 @@ var map_view = page_view.extend({
                         lat: location.coords.latitude,
                         lng: location.coords.longitude
                     }, {silent:true});
-                    map_view.update_or_create_map();
+                    map_view.map_update_or_create();
                 },
                 // error
                 function(){
@@ -121,17 +127,20 @@ var map_view = page_view.extend({
                         lng: 12,
                         zoom: 2
                     }, {silent:true});
-                    map_view.update_or_create_map();
+                    map_view.map_update_or_create();
                 }
             );
         }
 
         this.map_time_render();
+        if(this.photo_query.has('keywords')){
+            this.keyword_search(this.photo_query.get('keywords'));
+        }
 
         return this;
     },
 
-    update_or_create_map: function () {
+    map_update_or_create: function () {
 
         // update map...
 
@@ -185,11 +194,15 @@ var map_view = page_view.extend({
         });
     },
 
-    save_map_query: function(){
+    map_query_save: function(){
         local_storage.set('map_params', _(this.map_query.attributes).pick(['lat', 'lng', 'zoom']));
     },
 
-    remove_overlays: function(overlays){
+    photo_query_save: function(){
+        local_storage.set('map_photo_params', _(this.photo_query.attributes).pick(['date', 'keywords', 'username', 'group']));
+    },
+
+    overlays_remove: function(overlays){
 
         _.each( this.thumb_overlays, function(thumb){
             if(!overlays || _(overlays).contains(thumb.data.id)){
@@ -202,7 +215,7 @@ var map_view = page_view.extend({
         });
     },
 
-    get_thumbs: function(){
+    thumbs_get: function(){
         this.$el.addClass('loading');
 
         var old_thumb_ids = this.thumb_collection.pluck("id");
@@ -224,10 +237,10 @@ var map_view = page_view.extend({
 
                 var new_thumb_ids = map_view.thumb_collection.pluck("id");
 
-                map_view.toggle_no_results_message(!new_thumb_ids.length);
+                map_view.no_results_message_toggle(!new_thumb_ids.length);
 
                 // remove thumbs not in the new set
-                map_view.remove_overlays(_(old_thumb_ids).difference(new_thumb_ids));
+                map_view.overlays_remove(_(old_thumb_ids).difference(new_thumb_ids));
 
                 // add thumbs not in the old set
                 _(map_view.thumb_collection.models).each(function( photo ){
@@ -251,20 +264,11 @@ var map_view = page_view.extend({
         });
     },
 
-    get_spots: function(){},
+    spots_get: function(){},
 
-    toggle_no_results_message: function(show){
+    no_results_message_toggle: function(show){
         if(show !== true){ show = false; }
         this.$el.find("#snaprmapalert").toggle(show);
-    },
-
-    // TODO move these
-    hide_dis: function(){
-        this.$el.find("#map-disambiguation").hide();
-    },
-
-    show_dis: function (){
-        this.$el.find("#map-disambiguation").show();
     },
 
     location_search: function( search_query ){
@@ -286,7 +290,7 @@ var map_view = page_view.extend({
                         dis_list.append(li.render().el);
                     });
 
-                    map_view.show_dis();
+                    map_view.location_search_toggle_disambiguation(true);
                     dis_list.listview().listview("refresh");
                 }else{
                     map_view.hide_dis();
@@ -294,7 +298,7 @@ var map_view = page_view.extend({
                         area: results[ 0 ].geometry.bounds,
                         location: null
                     }, {silent:true});
-                    map_view.update_or_create_map();
+                    map_view.map_update_or_create();
                 }
             }else{
                 var again = confirm("Sorry, your search returned no results. Would you like to search again?");
@@ -304,6 +308,11 @@ var map_view = page_view.extend({
                 }
             }
         });
+    },
+
+    location_search_toggle_disambiguation: function(show){
+        if(show !== true){ show = false; }
+        this.$("#map-disambiguation").toggle(show);
     },
 
     place_current_location: function(){
@@ -455,6 +464,8 @@ var map_view = page_view.extend({
             }
         });
 
+        this.map_time_update_display();
+
         return this;
     },
 
@@ -510,15 +521,14 @@ var map_disambiguation = Backbone.View.extend({
     },
 
     render: function(){
-        console.log(this, this.template);
         this.$el.html( this.template( {location: this.location} ) );
         return this;
     },
 
     goto_map: function(){
         this.parent_view.map_query.set('area', this.location.geometry.viewport);
-        this.parent_view.update_or_create_map();
-        this.parent_view.hide_dis();
+        this.parent_view.map_update_or_create();
+        this.parent_view.location_search_toggle_disambiguation(false);
     }
 });
 
