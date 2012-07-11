@@ -2745,7 +2745,7 @@ a.ui-link-inherit {
   left: 24px;
 }
 .ui-bar-e a {
-  color: #333333;
+  color: #474747;
 }
 .ui-body-e {
   background: none;
@@ -6564,6 +6564,13 @@ body.browser-testing .ps-caption-bottom {
     -o-background-size: 240px 560px;
     -webkit-background-size: 240px 560px;
     background-size: 240px 560px;
+  }
+  .main-logo {
+    background-image: url('../gfx/retina/main-logo.png');
+    -moz-background-size: 160px 42px;
+    -o-background-size: 160px 42px;
+    -webkit-background-size: 160px 42px;
+    background-size: 160px 42px;
   }
   .menu-main .ui-btn .ui-btn-inner .ui-icon {
     background-image: url('../gfx/retina/menu-icons.png');
