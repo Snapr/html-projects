@@ -3,9 +3,10 @@ define(['async!http://maps.googleapis.com/maps/api/js?sensor=true'], function(){
     var map = {};
     map.overlays = {};
 
-    map.overlays.Base = function(data, map_instance){
-        this.data_ = data;
-        this.map_ = map_instance;
+    map.overlays.Base = function(data, map_instance, template){
+        this.data = data;
+        this.map_instance = map_instance;
+        this.template = template;
 
         // We'll actually create this div in the add() method.
         this.div_ = null;
@@ -15,7 +16,7 @@ define(['async!http://maps.googleapis.com/maps/api/js?sensor=true'], function(){
 
     map.overlays.Base.prototype = new google.maps.OverlayView();
     map.overlays.Base.prototype.get_div = function(){
-        return $(this.template({data:this.data_})).show();
+        return $(this.template({data:this.data})).show();
     };
     map.overlays.Base.prototype.onAdd = function(){
         // Note: an overlay's receipt of onAdd() indicates that
@@ -32,7 +33,7 @@ define(['async!http://maps.googleapis.com/maps/api/js?sensor=true'], function(){
     };
     map.overlays.Base.prototype.draw = function(){
         var overlayProjection = this.getProjection();
-        var position = new google.maps.LatLng( this.data_.location.latitude, this.data_.location.longitude );
+        var position = new google.maps.LatLng( this.data.location.latitude, this.data.location.longitude );
         var px = overlayProjection.fromLatLngToDivPixel( position );
 
         this.div_ = this.div_
@@ -67,37 +68,9 @@ define(['async!http://maps.googleapis.com/maps/api/js?sensor=true'], function(){
         if (this.getMap()){
             this.setMap( null );
         }else{
-            this.setMap( this.map_ );
+            this.setMap( this.map_instance );
         }
     };
-
-
-    /* photo
-    *********/
-
-    map.overlays.Thumb = function(data, map_instance){
-        map.overlays.Base.call(this, data, map_instance);
-        this.template = this.map.overlay_templates.thumb;
-    };
-    map.overlays.Thumb.prototype=_.clone(map.overlays.Base.prototype);
-
-
-    /* Spot
-    ********/
-    map.overlays.Spot = function(data, map_instance){
-        map.overlays.Base.call(this, data, map_instance);
-        this.template = this.map.overlay_templates.spot;
-    };
-    map.overlays.Spot.prototype=_.clone(map.overlays.Base.prototype);
-
-
-    /* Current location
-    *******************/
-    map.overlays.CurrentLocation = function(data, map_instance){
-        map.overlays.Base.call(this, data, map_instance);
-        this.template = this.map.overlay_templates.location;
-    };
-    map.overlays.CurrentLocation.prototype=_.clone(map.overlays.Base.prototype);
 
 
     /* Geocoder

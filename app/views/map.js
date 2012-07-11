@@ -2,12 +2,9 @@
 define(['config', 'backbone', 'views/base/page', 'collections/thumb', 'collections/spot', 'mobiscroll', 'utils/geo', 'utils/map', 'auth', 'utils/local_storage', 'utils/string', 'utils/alerts'],
 function(config, Backbone, page_view, thumb_collection, spot_collection, mobiscroll, geo, map, auth, local_storage, string_utils, alerts){
 
-// TODO: set filter select to current options on actiavete
-
 var map_view = page_view.extend({
 
     post_initialize: function(){
-
         _.bindAll(this);
 
         this.$el.on('pageshow', function (e) {
@@ -15,6 +12,7 @@ var map_view = page_view.extend({
             $("#google-map").css("height", (window.innerHeight - 85) + "px");
         });
 
+        // store what's currently on the map so old thumbs can be removed
         this.thumb_overlays = {};
         this.spot_overlays = {};
 
@@ -24,7 +22,6 @@ var map_view = page_view.extend({
 
         this.thumb_collection = new thumb_collection();
         this.spot_collection = new spot_collection();
-
     },
 
     // ignore these params in the url when arriving via history
@@ -32,8 +29,21 @@ var map_view = page_view.extend({
     // where it was initially (where the params specify)
     history_ignore_params: ['zoom', 'lat', 'lng', 'photo_id', 'location'],
 
+    events: {
+        "click .x-current-location": "go_to_current_location",
+        "click #map-disambituation-cancel": "hide_dis",
+        "click .x-map-feed": "map_feed",
+        "change #map-filter": "filter_update",
+        "submit #map-keyword": "keyword_search",
+        "blur #map-keyword": "keyword_search",
+        "click #map-keyword .ui-input-clear": "keyword_search_clear",
+        "click .map-time-btn": "map_time"
+    },
+
     post_activate: function(options){
         this.change_page();
+
+        // sort params into map(display) and photo/spot(api)
 
         var photo_params = {},
             spot_params = {},
@@ -49,72 +59,76 @@ var map_view = page_view.extend({
             }
         });
 
+        // map diaplay params come from query, local_storage and config in that
+        // order
         map_params = _.defaults( map_params,
             local_storage.get('map_params') || {},
             { zoom:config.get('zoom') }
         );
 
-        // create a backbone model to store the current map query this
-        // lets us bind functions to changes and pass the query to subviews
+
+        // create backbone models to store the params. This lets us bind
+        // functions to changes
         this.photo_query = new Backbone.Model(photo_params);
-        this.photo_query.bind( "change", this.hide_no_results_message );
-        this.photo_query.bind( "change", this.get_thumbs );
+        this.photo_query.on( "change", this.hide_no_results_message );
+        this.photo_query.on( "change", this.get_thumbs );
+        this.photo_query.on( "change", this.map_time_update_display );
 
         this.spot_query = new Backbone.Model(spot_params);
-        this.spot_query.bind( "change", this.hide_no_results_message );
-        this.spot_query.bind( "change", this.get_spots );
+        this.spot_query.on( "change", this.hide_no_results_message );
+        this.spot_query.on( "change", this.get_spots );
 
         this.map_query = new Backbone.Model(map_params);
-        this.map_query.bind( "change", this.hide_no_results_message );
-        this.map_query.bind( "change", this.get_thumbs );
-        this.map_query.bind( "change", this.get_spots );
-        this.map_query.bind( "change", this.save_map_query );
+        this.map_query.on( "change", this.hide_no_results_message );
+        this.map_query.on( "change", this.get_thumbs );
+        this.map_query.on( "change", this.get_spots );
+        this.map_query.on( "change", this.save_map_query );  // keep in local_storage
 
+
+        // map filter <select>
+        this.photo_query.on( "change", this.filter_set_options );  // update what's selected and enabled
+        auth.on( "change", this.filter_set_options );  // update what's enabled
+        this.filter_set_options();  // set initial state
+
+
+        // location search
         if(this.map_query.get('location')){
             this.location_search(this.map_query.get('location'));
             // the above will call update_or_create_map
             return this;
         }
 
-        // if center is available
+
+        // if center is available from query or local_storage
         if (this.map_query.get( "lat" ) && this.map_query.get( "lng" )){
             this.update_or_create_map();
-            return this;
+        }else{
+            var map_view = this;
+            geo.get_location(
+                // success
+                function( location ){
+                    map_view.map_query.set({
+                        lat: location.coords.latitude,
+                        lng: location.coords.longitude
+                    }, {silent:true});
+                    map_view.update_or_create_map();
+                },
+                // error
+                function(){
+                    // show world
+                    map_view.map_query.set({
+                        lat: 42,
+                        lng: 12,
+                        zoom: 2
+                    }, {silent:true});
+                    map_view.update_or_create_map();
+                }
+            );
         }
 
-        var map_view = this;
-        geo.get_location(
-            // success
-            function( location ){
-                map_view.map_query.set({
-                    lat: location.coords.latitude,
-                    lng: location.coords.longitude
-                }, {silent:true});
-                map_view.update_or_create_map();
-            },
-            // error
-            function(){
-                // show world
-                map_view.map_query.set({
-                    lat: 42,
-                    lng: 12,
-                    zoom: 2
-                });
-                map_view.update_or_create_map();
-            }
-        );
+        this.map_time_render();
 
         return this;
-    },
-    events: {
-        "click .x-current-location": "go_to_current_location",
-        "click #map-disambituation-cancel": "hide_dis",
-        "click .x-map-feed": "map_feed",
-        "change #map-filter": "update_filter",
-        "submit #map-keyword": "keyword_search",
-        "blur #map-keyword": "keyword_search",
-        "click #map-keyword .ui-input-clear": "clear_keyword_search",
-        "click .map-time-btn": "map_time"
     },
 
     update_or_create_map: function () {
@@ -131,21 +145,21 @@ var map_view = page_view.extend({
                     longitude: this.map_query.get('lng')
                 }, this.map_query.get('zoom'));
             }
-            //this.get_thumbs();
             return;
         }
 
         // or
 
         // create map...
-            console.log('create map');
+        console.log('create map');
 
-        this.map_settings = {
+        var map_settings = {
             zoom: this.map_query.get( "zoom" ),
             center: new google.maps.LatLng( this.map_query.get( "lat" ), this.map_query.get( "lng" ) ),
             streetViewControl: false,
             mapTypeControl: false,
             mapTypeId: google.maps.MapTypeId.ROADMAP,
+            // hide local business markers
             styles: [{
                 featureType: "poi.business",
                 stylers: [
@@ -154,27 +168,11 @@ var map_view = page_view.extend({
             }]
         };
 
-        this.map = new google.maps.Map(document.getElementById("google-map"), this.map_settings);
+        this.map = new google.maps.Map(document.getElementById("google-map"), map_settings);
 
-        this.map.overlay_templates = {
-            thumb: this.thumb_template,
-            spot: this.spot_template,
-            location: this.location_template
-        };
-
-        //this.get_thumbs();
-
+        // update thumbs when map moves
         var map_view = this;
-        geo.get_location(function(location){
-            map_view.dot = new map.overlays.CurrentLocation( {
-                location: {
-                    latitude: location.coords.latitude,
-                    longitude: location.coords.longitude
-                }},
-                map_view.map );
-        });
-
-        var idle = google.maps.event.addListener( map_view.map, "idle", function(){
+        google.maps.event.addListener( map_view.map, "idle", function(){
             var center = map_view.map.getCenter();
             map_view.map_query.set( {
                 lat: center.lat(),
@@ -194,7 +192,7 @@ var map_view = page_view.extend({
     remove_overlays: function(overlays){
 
         _.each( this.thumb_overlays, function(thumb){
-            if(!overlays || _(overlays).contains(thumb.data_.id)){
+            if(!overlays || _(overlays).contains(thumb.data.id)){
                 thumb.setMap(null);
             }
         });
@@ -211,7 +209,7 @@ var map_view = page_view.extend({
 
         this.thumb_collection.data = _.clone(this.photo_query.attributes);
         this.thumb_collection.data.area = this.map.getBounds().toUrlValue(4);
-        if(this.photo_query.get('photo_id')){
+        if(this.photo_query.has('photo_id')){
             this.thumb_collection.data.n=1;
         }
 
@@ -226,11 +224,7 @@ var map_view = page_view.extend({
 
                 var new_thumb_ids = map_view.thumb_collection.pluck("id");
 
-                if (new_thumb_ids.length){
-                    map_view.hide_no_results_message();
-                }else{
-                    map_view.show_no_results_message();
-                }
+                map_view.toggle_no_results_message(!new_thumb_ids.length);
 
                 // remove thumbs not in the new set
                 map_view.remove_overlays(_(old_thumb_ids).difference(new_thumb_ids));
@@ -239,9 +233,17 @@ var map_view = page_view.extend({
                 _(map_view.thumb_collection.models).each(function( photo ){
                     var id = photo.get('id');
                     if(!_(old_thumb_ids).contains(id)){
-                        map_view.thumb_overlays[id] = new map.overlays.Thumb( photo.attributes, map_view.map );
+                        map_view.thumb_overlays[id] = new map.overlays.Base(
+                            photo.attributes,
+                            map_view.map,
+                            map_view.thumb_template
+                        );
                     }
                 });
+
+                // update time display if in 'just one' mode now we have the
+                // photo and know its date
+                if(map_view.photo_query.has('photo_id')){ map_view.map_time_update_display(); }
             },
             error: function( e ){
                 console.warn( "error getting thumbs", e );
@@ -249,15 +251,11 @@ var map_view = page_view.extend({
         });
     },
 
-
     get_spots: function(){},
 
-    show_no_results_message: function(){
-        this.$el.find("#snaprmapalert").show();
-    },
-
-    hide_no_results_message: function(){
-        this.$el.find("#snaprmapalert").hide();
+    toggle_no_results_message: function(show){
+        if(show !== true){ show = false; }
+        this.$el.find("#snaprmapalert").toggle(show);
     },
 
     // TODO move these
@@ -309,16 +307,17 @@ var map_view = page_view.extend({
     },
 
     place_current_location: function(){
-        if (this.marker){
-            this.marker.setMap( null );
-        }
-        this.marker = new google.maps.Marker({
-            position: new google.maps.LatLng( this.map_query.get( "lat" ), this.map_query.get( "lng" )),
-            map: this.map,
-            title: 'Current location',
-            clickable: false
+        var map_view = this;
+        geo.get_location(function(location){
+            map_view.dot = new map.overlays.Base( {
+                location: {
+                    latitude: location.coords.latitude,
+                    longitude: location.coords.longitude
+                }},
+                map_view.map,
+                map_view.location_template
+            );
         });
-        setTimeout( this.place_current_location, 30000 );
     },
 
     go_to: function(location, zoom){
@@ -326,6 +325,7 @@ var map_view = page_view.extend({
         this.map.panTo( new google.maps.LatLng( location.latitude, location.longitude) );
     },
 
+    // TODO
     go_to_current_location: function(){
         this.map_query.unset( "username", {silent: true} );
         this.map_query.unset( "group", {silent: true} );
@@ -353,10 +353,6 @@ var map_view = page_view.extend({
         }
     },
 
-    clear_keyword_search: function(){
-        this.map_query.unset( "keywords" );
-    },
-
     map_feed: function(){
         if (this.map_query){
             var urlParams = this.photo_query.attributes;
@@ -372,32 +368,48 @@ var map_view = page_view.extend({
         }else{
             console.warn("map not initialized", this);
         }
+        return this;
     },
 
-    update_filter: function( e ){
+    filter_update: function( e ){
         var filter = $(e.currentTarget).val();
         switch(filter) {
             case 'all':
                 this.photo_query.unset( "username", {silent: true});
                 this.photo_query.unset( "group", {silent: true});
                 this.photo_query.unset( "photo_id", {silent: true});
+
                 this.photo_query.trigger('change');
                 break;
             case 'following':
                 this.photo_query.unset( "username", {silent: true});
                 this.photo_query.unset( "photo_id", {silent: true});
-                this.photo_query.set({
-                    group: "following"
-                });
+
+                this.photo_query.set({ group: "following" });
                 break;
             case 'just-me':
                 this.photo_query.unset( "group", {silent: true});
                 this.photo_query.unset( "photo_id", {silent: true});
-                this.photo_query.set({
-                    username: "."
-                });
+
+                this.photo_query.set({ username: "." });
                 break;
             }
+    },
+
+    filter_set_options: function(){
+        this.$("#map-filter option[value='just-me']").attr("disabled", !auth.has("snapr_user"));
+        this.$("#map-filter option[value='following']").attr("disabled", !auth.has("snapr_user"));
+        this.$("#map-filter option[value='just-one']").attr("disabled", !this.photo_query.has("photo_id"));
+
+        if (this.photo_query.has( "photo_id" )){
+            $("#map-filter").val("just-one").selectmenu('refresh', true);
+        }else if (!this.photo_query.has( "username" ) && this.photo_query.get( "group" ) == "following"){
+            $("#map-filter").val("following").selectmenu('refresh', true);
+        }else if (this.photo_query.get( "username" ) == "." && !this.photo_query.has( "group" )){
+            $("#map-filter").val("just-me").selectmenu('refresh', true);
+        }else{
+            $("#map-filter").val("all").selectmenu('refresh', true);
+        }
     },
 
     keyword_search: function( keywords ){
@@ -407,134 +419,78 @@ var map_view = page_view.extend({
         }else{
             input.val(keywords);
         }
-        if (keywords != (this.model.get( "keywords" ))){
-            if (keywords){
-                local_storage.set('map_keywords', keywords);
-                this.model.set({keywords: keywords});
-            }else{
-                local_storage['delete']('map_keywords');
-                this.model.unset( "keywords" );
-            }
-        }
-    },
-
-/*
-    clear_keyword_search: function(){
-        this.$('#map-keyword').find("input").val("");
-        this.model.unset( "keywords" );
-    },
-
-    render: function(){
-        this.$el.find("#map-filter option[value='just-me']").attr("disabled", !auth.has("snapr_user"));
-        this.$el.find("#map-filter option[value='following']").attr("disabled", !auth.has("snapr_user"));
-        this.$el.find("#map-filter option[value='just-one']").attr("disabled", !this.model.has("photo_id"));
-
-
-        var map_controls = this;
-        this.$el.find(".map-time-btn").scroller({
-            'cancelText': 'Set to Now', //  String  'Cancel'     Text for Cancel button
-            //'delay': , //   Integer 300  Specifies the speed in milliseconds to change values in clickpick mode with tap & hold
-            //'disabled': , //    Boolean false    Disables (true) or enables (false) the scroller. Can be set when initialising the scroller
-            //'display': , // String  'modal'  Use 'inline' for inline display, or 'modal' for modal popup
-            'headerText': false , //  String  '{value}'    Specifies a custom string which appears in the popup header. If the string contains '{value}' substring, it is replaced with the formatted value of the scroller. If it's set to false, the header is hidden.
-            //'height': , //  Number  40   Height in pixels of one row on the wheel
-            //'mode': , //    String  'scroller'   Option to choose between modes. Possible modes: 'scroller' - standard behaviour, 'clickpick' - '+' and '-' buttons
-            'preset': 'datetime', //  String  'date'   Preset configurations for date, time and datetime pickers, possible values: 'date', 'time', 'datetime'
-            //'rows': , //    Number  3    Number of visible rows on the wheel
-            'setText': 'Set Time', // String  'Set'    Text for Set button
-            'showLabel': false , //   Boolean true     Show/hide labels above wheels
-            //'showOnFocus': , // Boolean true     Pops up the scroller on input focus
-            'theme': 'jqm', //   String  ''   Sets the scroller's visual appearance. Supplied themes: 'android', 'android-ics', 'android-ics light', 'sense-ui', 'ios', 'jqm'. It's possible to create custom themes in css by prefixing any css class used in the scroller markup with the theme name, e.g.: .my-theme .dww { / My CSS / }, and set the theme option to 'my-theme'
-            'jqmBody': 'b',
-            //jqmHeader:'b',
-            //jqmWheel: 'd',
-            //jqmClickPick: 'c',
-            'jqmSet': 'e',
-            'jqmCancel': 'd',
-            //'wheels': , //  Object  null     Wheels configuration. Example: [ { 'Label 1': { x: 'x', y: 'y', z: 'z' }, 'Label 2': { a: 'a', b: 'b' } }, { 'Label 3': { 1: '1', 2: '2' }, 'Label 4': { 4: '4', 5: '5' } } ]
-            //'width': , //   Number  80   Minimum width in pixels of the wheels, expand to fit values and labels
-            //'ampm': , //    Boolean true     12/24 hour format on timepicker
-            //'ampmText': , //    String  ''   Label for AM/PM wheel
-            'dateFormat': 'yy-mm-dd', //  String  'mm/dd/yy'   The format for parsed and displayed dates (m - month of year (no leading zero), mm - month of year (two digit), M - month name short, MM - month name long, d - day of month (no leading zero), dd - day of month (two digit), y - year (two digit), yy - year (four digit)
-            'dateOrder': 'ddMyy' , //   String  'mmddy'  Display order and formating for month/day/year wheels. (m - month of year (no leading zero), mm - month of year (two digit), M - month name short, MM - month name long, d - day of month (no leading zero), dd - day of month (two digit), y - year (two digit), yy - year (four digit). The options also controls if a specific wheel should appear or not, e.g. use 'mmyy' to display month and year wheels only
-            //'dayNames': , //    Array   ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']   The list of long day names, starting from Sunday, for use as requested via the dateFormat setting
-            //'dayNamesShort': , //   Array   ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']    The list of abbreviated day names, starting from Sunday, for use as requested via the dateFormat setting
-            //'dayText': , // String  'Day'    Label for Day wheel
-            'endYear': new Date().getFullYear(), // Number  currYear + 10    Last displayed year on year wheel
-            //'hourText': , //    String  'Hours'  Label for hours wheel
-            //'maxDate': , // Date    null     Maximum date that can be selected
-            //'minDate': , // Date    null     Minimum date that can be selected
-            //'minuteText': , //  String  'Minutes'    Label for minutes wheel
-            //'monthNames': , //  Array   ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']   The list of full month names, for use as requested via the dateFormat setting
-            //'monthNamesShort': , // Array   ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']     The list of abbreviated month names, for use as requested via the dateFormat setting
-            //'monthText': , //   String  'Month'  Label for month wheel
-            //'seconds': , // Boolean false    Show seconds on timepicker
-            //'secText': , // String  'Seconds'    Label for seconds wheel
-            //'startYear': , //   Number  currYear - 10    First displayed year on year wheel
-            //'stepHour': , //    Number   1   Steps between hours on timepicker
-            //'stepMinute': , //  Number   1   Steps between minutes on timepicker
-            //'stepSecond': , //  Number   1   Steps between seconds on timepicker
-            'timeFormat': 'HH:ii:00', //  String  'hh:ii A'    The format for parsed and displayed dates (h - 12 hour format (no leading zero), hh - 12 hour format (leading zero), H - 24 hour format (no leading zero), HH - 24 hour format (leading zero), i - minutes (no leading zero), ii - minutes (leading zero), s - seconds (no leading zero), ss - seconds (leading zero), a - lowercase am/pm, A - uppercase AM/PM)
-            //'yearText': , //    String  'Year'   Label for year wheel
-            'onSelect': function(value){
-                map_controls.model.set({'date': value});
-                //map_controls.show_map_time(value);
-            },
-            'onCancel': function(value, scroller, c){
-                scroller.setValue(new Date());
-                map_controls.reset_map_time();
-            }
-        });
-
-        if (this.model.has( "photo_id" ) && this.model.get( "n" ) == 1){
-            $("#map-filter").val("just-one").selectmenu('refresh', true);
-        }else if (!this.model.has( "username" ) && this.model.get( "group" ) == "following"){
-            $("#map-filter").val("following").selectmenu('refresh', true);
-        }else if (this.model.get( "username" ) == "." && !this.model.has( "group" )){
-            $("#map-filter").val("just-me").selectmenu('refresh', true);
-        }else{
-            var filter = local_storage.get('map_filter');
-            $("#map-filter").val(filter || "all").selectmenu('refresh', true);
-        }
-
-        if (this.model.has( "photo_id" ) &&
-            this.model.get( "n" ) == 1 &&
-            this.collection.get_photo_by_id( this.model.get( "photo_id" ) ) ){
-            var thumb = this.collection.get_photo_by_id( this.model.get( "photo_id" ) );
-            if (thumb){
-                this.show_map_time( thumb.get( "date" ) );
-                this.model.set({date: thumb.get( "date" )}, {silent: true});
-            }
-        }else{
-            this.show_map_time(this.model.get( "date" ));
-            // this.model.unset("date", {silent: true});
-        }
-
-        this.$el.find("#map-keyword input").val( this.model.get("keywords") || "" );
+        this.photo_query.set({keywords: keywords});
 
         return this;
     },
 
-    */
+    keyword_search_clear: function(){
+        this.$('#map-keyword').find("input").val("");
+        this.photo_query.unset( "keywords" );
 
-    show_map_time: function( time ){
-        if (time){
-            this.$el.find(".map-time-btn").scroller('setDate', string_utils.convert_snapr_date(time));
-            this.$el.find(".map-time").find(".ui-bar").text( string_utils.short_timestamp( time, true) || "Now" );
-        }else{
-            this.$el.find(".map-time").find(".ui-bar").text( "Now" );
-        }
+        return this;
     },
 
-    reset_map_time: function(){
-        this.model.unset( "photo_id", {silent: true} );
-        this.model.unset( "n", {silent: true} );
-        this.model.unset( "date" );
-        this.show_map_time();
+    map_time_render: function(){
+
+        var map_view = this;
+        this.$(".map-time-btn").scroller({
+            'cancelText': 'Set to Now',
+            'headerText': false ,
+            'preset': 'datetime',
+            'setText': 'Set Time',
+            'showLabel': false ,
+            'theme': 'jqm',
+            'jqmBody': 'b',
+            'jqmSet': 'e',
+            'jqmCancel': 'd',
+            'dateFormat': 'yy-mm-dd',
+            'timeFormat': 'HH:ii:00',
+            'onSelect': function(value){
+                map_view.photo_query.set({'date': value});
+            },
+            'onCancel': function(value, scroller, c){
+                scroller.setValue(new Date());
+                map_view.map_time_reset();
+            }
+        });
+
+        return this;
+    },
+
+    map_time_update_display: function(){
+        var time;
+        if (this.photo_query.has("photo_id")){
+            var photo = this.thumb_collection.get_photo_by_id( this.photo_query.get( "photo_id" ) );
+            if (photo){
+                time = photo.get( "date" );
+            }
+        }else{
+            time = this.photo_query.get('date');
+        }
+
+        if (time){
+            this.$(".map-time-btn").scroller('setDate', string_utils.convert_snapr_date(time));
+            this.$(".map-time").find(".ui-bar").text( string_utils.short_timestamp( time, true) || "Now" );
+        }else{
+            this.$(".map-time-btn").scroller('setDate', new Date());
+            this.$(".map-time").find(".ui-bar").text( "Now" );
+        }
+
+        return this;
+    },
+
+    map_time_reset: function(){
+        this.photo_query.unset( "photo_id", {silent: true} );
+        this.photo_query.unset( "date", {silent: true} );
+        this.photo_query.trigger( "change" );
+
+        return this;
     },
 
     map_time: function(){
-        this.$el.find(".map-time-btn").scroller('show');
+        this.$(".map-time-btn").scroller('show');
+        return this;
     }
 
 });
