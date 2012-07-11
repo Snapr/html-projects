@@ -30,7 +30,7 @@ var map_view = page_view.extend({
     history_ignore_params: ['zoom', 'lat', 'lng', 'photo_id', 'location'],
 
     events: {
-        "click .x-current-location": "go_to_current_location",
+        "click .x-current-location": "current_location_go_to",
         "click #map-disambituation-cancel": "location_search_toggle_disambiguation",
         "click .x-map-feed": "map_feed",
         "change #map-filter": "filter_update",
@@ -315,9 +315,17 @@ var map_view = page_view.extend({
         this.$("#map-disambiguation").toggle(show);
     },
 
-    place_current_location: function(){
+    go_to: function(location, zoom){
+        this.map.setZoom(zoom || config.get('zoom'));
+        this.map.panTo( new google.maps.LatLng( location.latitude, location.longitude) );
+    },
+
+    current_location_place: function(known_location){
         var map_view = this;
-        geo.get_location(function(location){
+        var callback = function(location){
+            if(map_view.dot){
+                map_view.dot.setMap(null);
+            }
             map_view.dot = new map.overlays.Base( {
                 location: {
                     latitude: location.coords.latitude,
@@ -326,37 +334,32 @@ var map_view = page_view.extend({
                 map_view.map,
                 map_view.location_template
             );
-        });
+        };
+        if(known_location){
+            callback(known_location);
+        }else{
+            geo.get_location(callback);
+        }
     },
 
-    go_to: function(location, zoom){
-        this.map.setZoom(zoom || config.get('zoom'));
-        this.map.panTo( new google.maps.LatLng( location.latitude, location.longitude) );
-    },
-
-    // TODO
-    go_to_current_location: function(){
-        this.map_query.unset( "username", {silent: true} );
-        this.map_query.unset( "group", {silent: true} );
+    current_location_go_to: function(){
+        // exit "just one" mode
         this.map_query.unset( "photo_id", {silent: true} );
-        this.map_query.set( {n: 10}, {silent: true} );
 
-        // save a reference for this view to be passed to callback functions
-        var map_view = this;
-
-        var success_callback = function( position ){
-            map_view.go_to(position.coords);
-            map_view.place_current_location();
-        };
-
-        var error_callback = function( error ){
-            console.warn( "error getting geolocation", error );
-            if (error.message){
-                alerts.notification('Error', error.message );
-            }
-        };
         if (this.map){
-            geo.get_location( success_callback, error_callback );
+            var map_view = this;
+            geo.get_location(
+                function( position ){
+                    map_view.go_to(position.coords);
+                    map_view.current_location_place(position);
+                },
+                function( error ){
+                    console.warn( "error getting geolocation", error );
+                    if (error.message){
+                        alerts.notification('Error', error.message );
+                    }
+                }
+            );
         }else{
             console.warn("map not initialized");
         }
@@ -454,6 +457,8 @@ var map_view = page_view.extend({
             'jqmSet': 'e',
             'jqmCancel': 'd',
             'dateFormat': 'yy-mm-dd',
+            'dateOrder': 'ddMyy',
+            'endYear': new Date().getFullYear(),
             'timeFormat': 'HH:ii:00',
             'onSelect': function(value){
                 map_view.photo_query.set({'date': value});
