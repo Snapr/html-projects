@@ -2,6 +2,8 @@
 define(['config', 'backbone', 'views/base/page', 'collections/thumb', 'collections/spot', 'mobiscroll', 'utils/geo', 'utils/map', 'auth', 'utils/local_storage', 'utils/string', 'utils/alerts'],
 function(config, Backbone, page_view, thumb_collection, spot_collection, mobiscroll, geo, map, auth, local_storage, string_utils, alerts){
 
+// TODO: set filter select to current options on actiavete
+
 var map_view = page_view.extend({
 
     post_initialize: function(){
@@ -103,17 +105,16 @@ var map_view = page_view.extend({
         );
 
         return this;
-
-        // this.map_controls = new map_controls({
-        //     el: this.$el.find(".v-map-controls")[0],
-        //     model: this.map_query,
-        //     collection: this.thumb_collection
-        // });
     },
     events: {
         "click .x-current-location": "go_to_current_location",
         "click #map-disambituation-cancel": "hide_dis",
-        "click .x-map-feed": "map_feed"
+        "click .x-map-feed": "map_feed",
+        "change #map-filter": "update_filter",
+        "submit #map-keyword": "keyword_search",
+        "blur #map-keyword": "keyword_search",
+        "click #map-keyword .ui-input-clear": "clear_keyword_search",
+        "click .map-time-btn": "map_time"
     },
 
     update_or_create_map: function () {
@@ -259,6 +260,7 @@ var map_view = page_view.extend({
         this.$el.find("#snaprmapalert").hide();
     },
 
+    // TODO move these
     hide_dis: function(){
         this.$el.find("#map-disambiguation").hide();
     },
@@ -280,7 +282,6 @@ var map_view = page_view.extend({
                     _.each( results, function( result ){
                         var li = new map_disambiguation({
                             result: result,
-                            map: map_view.map,
                             parent_view: map_view
                         });
 
@@ -371,61 +372,29 @@ var map_view = page_view.extend({
         }else{
             console.warn("map not initialized", this);
         }
-    }
-});
-
-var map_controls = Backbone.View.extend({
-
-    initialize: function(){
-        _.bindAll( this );
-        $(this.options.el).undelegate();
-        this.setElement( this.options.el );
-        this.model.bind( "change", this.render );
-        this.collection.bind( "reset", this.render );
-    },
-
-    events: {
-        "change #map-filter": "update_filter",
-        "submit #map-keyword": "keyword_search",
-        "blur #map-keyword": "keyword_search",
-        "click #map-keyword .ui-input-clear": "clear_keyword_search",
-        "click .map-time-btn": "map_time"
     },
 
     update_filter: function( e ){
         var filter = $(e.currentTarget).val();
-        local_storage.set('map_filter', filter);
         switch(filter) {
             case 'all':
-                this.model.unset( "username", {silent: true});
-                this.model.unset( "group", {silent: true});
-                this.model.unset( "photo_id", {silent: true});
-                this.model.set({
-                    n: 10
-                });
+                this.photo_query.unset( "username", {silent: true});
+                this.photo_query.unset( "group", {silent: true});
+                this.photo_query.unset( "photo_id", {silent: true});
+                this.photo_query.trigger('change');
                 break;
             case 'following':
-                this.model.unset( "username", {silent: true});
-                this.model.unset( "group", {silent: true});
-                this.model.unset( "photo_id", {silent: true});
-                this.model.set({
-                    group: "following",
-                    n: 10
+                this.photo_query.unset( "username", {silent: true});
+                this.photo_query.unset( "photo_id", {silent: true});
+                this.photo_query.set({
+                    group: "following"
                 });
                 break;
             case 'just-me':
-                this.model.unset( "group", {silent: true});
-                this.model.unset( "photo_id", {silent: true});
-                this.model.set({
-                    username: ".",
-                    n: 10
-                });
-                break;
-            case 'just-one':
-                this.model.unset( "username", {silent: true});
-                this.model.unset( "group", {silent: true});
-                this.model.set({
-                    n: 1
+                this.photo_query.unset( "group", {silent: true});
+                this.photo_query.unset( "photo_id", {silent: true});
+                this.photo_query.set({
+                    username: "."
                 });
                 break;
             }
@@ -449,6 +418,7 @@ var map_controls = Backbone.View.extend({
         }
     },
 
+/*
     clear_keyword_search: function(){
         this.$('#map-keyword').find("input").val("");
         this.model.unset( "keywords" );
@@ -545,6 +515,8 @@ var map_controls = Backbone.View.extend({
         return this;
     },
 
+    */
+
     show_map_time: function( time ){
         if (time){
             this.$el.find(".map-time-btn").scroller('setDate', string_utils.convert_snapr_date(time));
@@ -570,7 +542,6 @@ var map_controls = Backbone.View.extend({
 var map_disambiguation = Backbone.View.extend({
 
     tagName: "li",
-
     template: _.template($("#map-disambiguation-li-template").html()),
 
     events: {
@@ -579,7 +550,6 @@ var map_disambiguation = Backbone.View.extend({
 
     initialize: function(){
         this.location = this.options.result;
-        this.map = this.options.map;
         this.parent_view = this.options.parent_view;
     },
 
