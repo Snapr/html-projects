@@ -12,10 +12,16 @@ local_storage.supported = (function () {
 })();
 
 local_storage.get = function(key) {
+    var value;
     if(local_storage.supported) {
-        return localStorage.getItem(key);
+        value = localStorage.getItem(key);
     } else {
-        return $.cookie(key);
+        value = $.cookie(key);
+    }
+    try{
+        return JSON.parse(value);
+    }catch(e){
+        return value;
     }
 };
 
@@ -31,6 +37,9 @@ local_storage.set = function( key, value ){
     if (value == "false"){
         local_storage['delete']( key );
     }else{
+        if(_.isObject(value)){
+            value = JSON.stringify(value);
+        }
         if (local_storage.supported){
             localStorage.setItem( key, value );
         }else{

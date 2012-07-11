@@ -131,7 +131,7 @@
                     <li>
                        <!-- Activity / About Button -->
                        <% if(logged_in) { %>
-                           <a href="#/activity/" data-role="button" data-iconpos="left" data-icon="main-menu-activity">Activity</a>                     
+                           <a href="#/activity/" data-role="button" data-iconpos="left" data-icon="main-menu-activity">Activity</a>
                        <% }else{ %>
                            <a href="#/about/" data-role="button" data-iconpos="left" data-icon="main-menu-info">About</a>
                         <% } %>
@@ -1775,7 +1775,7 @@
                         <%= spot.get('location').address %></br>
                     <% } %>
                     <% if (spot.get('location').city !== "False") { %>
-                        <%= spot.get('location').city %>                        
+                        <%= spot.get('location').city %>
                     <% } %>
                 </p>
             </a>
@@ -1794,7 +1794,7 @@
               <div data-role="content" data-theme="d" data-ajax="false">
                   <div class="spot-head">
                   </div>
-                  
+
                   <div class="spot-body">
                       <ul class="image-streams">
                       </ul>
@@ -1802,7 +1802,7 @@
                       <h4 class="top-users-heading" style="display:none;">Top Users</h4>
                       <ul class="top-users">
                       </ul>
-                      
+
 
                   </div>
               </div>
@@ -1855,7 +1855,7 @@
                         &lsaquo; photo by <a href="#/feed/?username=<%= spot.get('info').hero_image.username %>" class="username"><%= spot.get('info').hero_image.username %></a>
                         <% } %>
                     </p>
-                    
+
                     <% if (spot.get('foursquare').venue_page) { %>
                     <a href="<%= spot.get('foursquare').venue_page %>" class="foursquare-btn" data-role="button" data-icon="foursquare-logo" data-iconpos="notext" data-theme="c"></a>
                     <% } %>
@@ -1899,8 +1899,8 @@
     </script>
 
     <!-- @spot TOP USER ITEM -->
-    <script id="spot-top-user-item" type="text/template">  
-        <li class="top-user-item"> 
+    <script id="spot-top-user-item" type="text/template">
+        <li class="top-user-item">
             <a href="#/feed/?username=<%= user.get('username') %>">
                 <span class="user-icon-med" style="background-image: url('http://dev.sna.pr/avatars/<%= user.get('user_id') %>?size=large');"></span>
                 <span class="small-username"><%= user.get('username') %></span>
@@ -2126,7 +2126,7 @@
         <div class="snaprmapthumb">
             <span class="snaprthumbbg"></span>
             <span class="snaprmappin"></span>
-            <a href="#/feed/?photo_id=<%= photo.id %>&n=1" class="clickable" data-ajax="false"><img src="https://s3.amazonaws.com/media-server<%= photo.server_id %>.snapr.us/thm2/<%= photo.secret %>/<%= photo.id %>.jpg" <% if(photo.description){ %>alt="<%= photo.description %>"<% } %> class="snaprmapthumbimage"></a>
+            <a href="#/feed/?photo_id=<%= data.id %>&n=1" class="clickable" data-ajax="false"><img src="https://s3.amazonaws.com/media-server<%= data.server_id %>.snapr.us/thm2/<%= data.secret %>/<%= data.id %>.jpg" <% if(data.description){ %>alt="<%= data.description %>"<% } %> class="snaprmapthumbimage"></a>
         </div>
     </div>
     </script>
