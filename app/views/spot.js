@@ -12,6 +12,7 @@ var spot_view = page_view.extend({
 
     post_activate: function(options) {
 
+
         this.$el.find('.top-users-heading').hide();
         this.$el.find('.spot-head').empty();
         this.$el.find('.image-streams').empty();
