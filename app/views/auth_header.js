@@ -4,7 +4,7 @@ define(['backbone', 'auth', 'models/user_settings'],
 
 return Backbone.View.extend({
 
-	template: _.template( $("#signed-in-template").html() ),
+	template: _.template( $("#auth-header-template").html() ),
 
 	initialize: function () {
 		var view = this;

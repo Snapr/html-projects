@@ -1,6 +1,6 @@
 /*global _  define require */
-define(['backbone', 'views/base/page', 'views/components/activity_ticker', 'views/signed_in_header', 'auth', 'utils/local_storage', 'config'],
-    function(Backbone, page_view, ticker, signedin_header_view, auth, local_storage, config){
+define(['backbone', 'views/base/page', 'views/components/activity_ticker', 'views/auth_header', 'auth', 'utils/local_storage', 'config'],
+    function(Backbone, page_view, ticker, auth_header_view, auth, local_storage, config){
 return page_view.extend({
 
     post_initialize: function(options){
@@ -34,8 +34,8 @@ return page_view.extend({
             } ))
             .trigger("create");
 
-        var signedin_header = new signedin_header_view({
-            el: this.$('.signedin_header')
+        var auth_header = new auth_header_view({
+            el: this.$('.auth-header')
         });
 
         if(auth.has("access_token")){
