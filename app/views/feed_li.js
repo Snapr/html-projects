@@ -18,31 +18,23 @@ var feed_li =  Backbone.View.extend({
         "submit .comment-form": "comment"
     },
 
-    initialize: function()
-    {
+    initialize: function(){
         _.bindAll( this );
 
         this.model.bind( "change:status", this.render );
 
-        this.back = this.options.back || "Back";
-
         this.template = this.options.template;
-        if (this.model.has('location'))
-        {
+        if (this.model.has('location')){
             this.map_url =
                 '#/map/?zoom=' + config.get('zoom') +
                 '&lat=' + this.model.get('location').latitude +
                 '&lng=' + this.model.get('location').longitude +
-                '&photo_id=' + this.model.get('id') +
-                '&back=' + this.back;
+                '&photo_id=' + this.model.get('id');
 
             this.spot_url =
                 '#/feed/?spot=' + this.model.get('location').spot_id +
-                "&venue_name=" + this.model.get('location').foursquare_venue_name +
-                '&back=' + this.back;
-        }
-        else
-        {
+                "&venue_name=" + this.model.get('location').foursquare_venue_name;
+        }else{
             this.map_url = null;
             this.spot_url = null;
         }
