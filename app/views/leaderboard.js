@@ -1,6 +1,6 @@
 /*global _  define require */
-define(['config', 'views/base/page', 'collections/user', 'views/components/no_results', 'views/people_li'],
-    function(config, page_view, user_collection, no_results, people_li){
+define(['config', 'views/base/page', 'collections/user', 'views/components/no_results', 'views/leaderboard_li'],
+    function(config, page_view, user_collection, no_results, leaderboard_li){
 return page_view.extend({
 
     post_initialize: function(){
@@ -30,56 +30,34 @@ return page_view.extend({
 
         this.change_page();
 
-        switch (options.follow){
-            case "following":
-                this.$el.find("h1").text("Following");
-                this.$el.find("#people-search").val('').attr("placeholder", "Search users " + options.query.username + " is following\u2026" );
-                this.collection.get_following( options.query.username );
-                break;
-            case "followers":
-                this.$el.find("h1").text("Followers");
-                this.$el.find("#people-search").val('').attr("placeholder", "Search " + options.query.username + "'s followers\u2026" );
-                this.collection.get_followers( options.query.username );
-                break;
-            default:
-                this.$el.find("h1").text("Search");
-                this.$el.find("#people-search").val(options.query.username).attr("placeholder", "Search users\u2026" );
+        var this_view = this;
+        this_view.$el.addClass('loading');
+        this.collection.fetch({
+            data:{
+                sort: "score",
+                n:20,
+                detail:1
+            },
+            url: config.get('api_base') + '/user/search/',
+            success: function(){
+                this_view.$el.removeClass('loading');
+            }
+        });
 
-                var this_view = this;
-                this_view.$el.addClass('loading');
-                this.collection.fetch({
-                    data:{
-                        username:options.query.username,
-                        n:20,
-                        detail:1
-                    },
-                    url: config.get('api_base') + '/user/search/',
-                    success: function(){
-                        this_view.$el.removeClass('loading');
-                    }
-                });
-                break;
-        }
-
-    },
-
-    events: {
-        "keyup input": "search",
-        "click .ui-input-clear": "search"
     },
 
     render: function()
     {
         var people_list = this.$el.find("ul.people-list").empty();
 
-        var people_li_template = _.template( $("#people-li-template").html() );
+        var leaderboard_li_template = _.template( $("#leaderboard-li-template").html() );
 
         if(this.collection.length){
             no_results.$el.remove();  // use remove(), hide() keeps it hidden and requires show() later
             _.each( this.collection.models, function( model )
             {
-                var li = new people_li({
-                    template: people_li_template,
+                var li = new leaderboard_li({
+                    template: leaderboard_li_template,
                     model: model,
                     parentView: this
                 });

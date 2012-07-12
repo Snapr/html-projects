@@ -1646,6 +1646,33 @@
            <%}%>
        </script>
 
+       <!-- @leaderboard PAGE-->
+       <div id="leaderboard" data-role="dialog" data-overlay-theme="c" data-theme="c" data-ajax="false" data-add-back-btn="false">
+           <div data-role="header" data-theme="c">
+               <h1>Leaderboard</h1>
+               <a class="x-back" data-role="button" data-icon="delete" data-iconpos="notext"></a>
+           </div>
+           <div data-role="content" data-theme="c">
+               <div class="info-header">
+                   <p class="message">Each photo you take earns points. Get bonus points for sharing to social networks and if people comment on and like your images.
+               </div>
+               <ul class="people-list leaderboard-list" data-role="listview" data-inset="true" data-theme="c" data-split-theme="c" data-corners="false" data-shadow="false">
+               </ul>
+           </div>
+       </div>
+
+       <!-- @leaderboardPerson ITEM-->
+       <script id="leaderboard-li-template" type="text/template">
+              <a href="#/feed/?username=<%= user.get('username') %>" data-username="<%= user.get('username') %>">
+                    <span class="game-rank">1</span>
+                  <img src="<%= config.get('avatar_url') %>/<%= user.get('user_id') %>" alt="<%= user.get('username') %>" class="user-icon-small ui-li-icon"/>
+                  <h3 class="username"><%= user.get('username') %></h3>
+                  <p class="small-text"><span class="photo-count"><%= user.get('photo_count') %></span> photos, <span class="points"><%= user.get('followers') %></span> points</p>
+              </a>
+              
+          </script>
+
+
 
        <!-- @venues PAGE-->
        <div id="foursquare_venues" data-role="dialog" data-overlay-theme="c" data-theme="c" data-ajax="false">
