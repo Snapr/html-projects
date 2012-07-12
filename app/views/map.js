@@ -459,7 +459,9 @@ var map_view = page_view.extend({
             'endYear': new Date().getFullYear(),
             'timeFormat': 'HH:ii:00',
             'onSelect': function(value){
-                map_view.photo_query.set({'date': value});
+                map_view.photo_query.set({'date': value}, {silent: true});
+                map_view.photo_query.unset('photo_id', {silent: true});
+                map_view.photo_query.trigger( "change" );
             },
             'onCancel': function(value, scroller, c){
                 scroller.setValue(new Date());
