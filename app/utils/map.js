@@ -31,6 +31,11 @@ define(['async!http://maps.googleapis.com/maps/api/js?sensor=true'], function(){
         var panes = this.getPanes();
         $(panes.floatPane).append(this.div_);
     };
+    map.overlays.Base.prototype.moveToTop = function(){
+        var panes = this.getPanes();
+        this.setMap( null );
+        this.setMap( this.map_instance );
+    };
     map.overlays.Base.prototype.draw = function(){
         var overlayProjection = this.getProjection();
         var position = new google.maps.LatLng( this.data.location.latitude, this.data.location.longitude );

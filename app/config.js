@@ -12,7 +12,8 @@ var config_model = Backbone.Model.extend({
         //app_group: 'group-slug',
 
         //zoom: 15, // for map
-        //feed_count: 9, // number of images to show in feed views
+        // feed_count: 9, // number of images to show in feed views
+        // map_count: 10, // number of images to show on the map
         // side_scroll_initial: 6, // numbers of images to show in side-scrollers initially
         // side_scroll_more: 10, // number of extra images to load into side-scrollers when "load more" is activated
         // activity_count: 25,  // how many items to load in activity page
@@ -69,6 +70,7 @@ var config_model = Backbone.Model.extend({
 
         zoom: 15,
         feed_count: 9,
+        map_count: 10,
         side_scroll_initial: 6,
         side_scroll_more: 10,
         activity_count: 25,

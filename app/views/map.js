@@ -7,9 +7,15 @@ var map_view = page_view.extend({
     post_initialize: function(){
         _.bindAll(this);
 
+        var map_view = this;
         this.$el.on('pageshow', function (e) {
+            map_view.hidden=false;
             // hack to set google map height
             $("#google-map").css("height", (window.innerHeight - 85) + "px");
+        });
+
+        this.$el.on('pagehide', function (e) {
+            map_view.hidden=true;
         });
 
         // store what's currently on the map so old thumbs can be removed
@@ -68,24 +74,25 @@ var map_view = page_view.extend({
 
         // photo_params may have been saved in local_storage
         photo_params = _.defaults( photo_params,
-            local_storage.get('map_photo_params') || {}
+            local_storage.get('map_photo_params') || {},
+            { n:config.get('map_count') }
         );
 
 
         // create backbone models to store the params. This lets us bind
         // functions to changes
         this.photo_query = new Backbone.Model(photo_params);
-        this.photo_query.on( "change", this.hide_no_results_message );
+        this.photo_query.on( "change", this.no_results_message_toggle );
         this.photo_query.on( "change", this.thumbs_get );
         this.photo_query.on( "change", this.map_time_update_display );
         this.photo_query.on( "change", this.photo_query_save );  // keep in local_storage
 
         this.spot_query = new Backbone.Model(spot_params);
-        this.spot_query.on( "change", this.hide_no_results_message );
+        this.spot_query.on( "change", this.no_results_message_toggle );
         this.spot_query.on( "change", this.spots_get );
 
         this.map_query = new Backbone.Model(map_params);
-        this.map_query.on( "change", this.hide_no_results_message );
+        this.map_query.on( "change", this.no_results_message_toggle );
         this.map_query.on( "change", this.thumbs_get );
         this.map_query.on( "change", this.spots_get );
         this.map_query.on( "change", this.map_query_save );  // keep in local_storage
@@ -184,6 +191,10 @@ var map_view = page_view.extend({
         // update thumbs when map moves
         var map_view = this;
         google.maps.event.addListener( map_view.map, "idle", function(){
+
+            //don't bother if map is not visible
+            if(map_view.hidden){ return; }
+
             var center = map_view.map.getCenter();
             map_view.map_query.set( {
                 lat: center.lat(),
@@ -245,7 +256,7 @@ var map_view = page_view.extend({
                 map_view.overlays_remove(_(old_thumb_ids).difference(new_thumb_ids));
 
                 // add thumbs not in the old set
-                _(map_view.thumb_collection.models).each(function( photo ){
+                _.chain(map_view.thumb_collection.models).sortBy(function(model){ return -model.get('location').latitude; }).each(function( photo ){
                     var id = photo.get('id');
                     if(!_(old_thumb_ids).contains(id)){
                         map_view.thumb_overlays[id] = new map.overlays.Base(
@@ -253,6 +264,8 @@ var map_view = page_view.extend({
                             map_view.map,
                             map_view.thumb_template
                         );
+                    }else{
+                        map_view.thumb_overlays[id].moveToTop();
                     }
                 });
 
@@ -270,7 +283,7 @@ var map_view = page_view.extend({
 
     no_results_message_toggle: function(show){
         if(show !== true){ show = false; }
-        this.$el.find("#snaprmapalert").toggle(show);
+        this.$("#snaprmapalert").toggle(!!show);
     },
 
     location_search: function( search_query ){
