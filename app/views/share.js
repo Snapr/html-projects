@@ -487,22 +487,21 @@ return page_view.extend({
                         }else{
                             params[o.name] = (o.value == "on");
                         }
-                    }else if(o.name == "status"){
-                        if (o.value == "off"){
-                            params[o.name] = "private";
-                        }else{
-                            params[o.name] = "public";
-                        }
+                    }else if(o.name == "status" && o.value == "on"){
+                        params[o.name] = "public";
                     }else{
                         params[o.name] = escape( o.value );
                     }
 
                 }, this);
 
-                // default to public if not set above
+                // default to private if not set above
                 if( !params.status){
-                    params.status = "public";
+                    params.status = "private";
                 }
+
+                // if share_location is not checked serializeArray will not include it
+                params.share_location = $("#share-location").attr("checked") == "checked";
                 _.extend(params, this.query);
 
                 var photo = this.query && this.query.photo_path || null;

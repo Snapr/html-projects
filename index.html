@@ -2573,11 +2573,9 @@
     <script id="share-photo-template" type="text/template">
         <form action="javascript: void(0);">
             <div class="upload-image-layer set-full-height">
-
                 <div class="image-placeholder">
                     <% if (img_url){%><img src="<%= img_url %>" /><%}%>
                 </div>
-
             </div>
 
             <div class="image-options">
@@ -2623,18 +2621,18 @@
                                 <% if (foursquare_sharing && status != "private"){%> style="display:none;"<%}%>
                                 <% if (photo.attributes.location && !photo.attributes.location.location){%> class="ajax-loading"<%}%>>
                                 <span class="image-location custom-action-icons">
-                                    <input type="checkbox" name="share_location" id="share-location" <%if (share_location){%>checked="true"<%}%> />
+                                    <input type="checkbox" name="share-location" id="share-location" <%if (share_location){ %>checked="true"<% } %> />
                                     <label for="share-location"><span class="ui-icon ui-icon-location share-location-label" ></span>
                                         <span class="location-name">
                                         <% if (photo.attributes.location && photo.attributes.location.location){%>
-                                                <%= photo.attributes.location.location %>
-                                            <%}else{%>
-                                                <%if (share_location){%>
-                                                    Getting location&hellip;
-                                                <%}else{%>
-                                                    Share location.
-                                                <%}%>
-                                        <%}%>
+                                             <%= photo.attributes.location.location %>
+                                        <% }else{ %>
+                                            <% if (share_location){ %>
+                                                Getting location&hellip;
+                                            <% }else{ %>
+                                                Share location.
+                                            <% } %>
+                                        <% } %>
                                         </span>
                                     </label>
                                 </span>
@@ -2669,27 +2667,27 @@
                             </div>
 
                             <div class="ui-block-c">
-                            <input type="submit" data-role="button" data-theme="e" class="share" value="Share"/>
+                                <input type="submit" data-role="button" data-theme="e" class="share" value="Share"/>
                             </div>
                         </div>
-                    </form>
+                    </div> <!-- .upload-settings -->
+                </div> <!-- .upload-settings-layer -->
+            </div> <!-- .image-options -->
+        </form>
 
-                    <div class="image-controls ">
-                        <a data-role="button" id="show_photo" data-icon="toggle" data-iconpos="right" >
-                            Show Photo
-                        </a>
-                    </div>
+        <div class="image-controls ">
+            <a data-role="button" id="show_photo" data-icon="toggle" data-iconpos="right" >
+                Show Photo
+            </a>
+        </div>
 
-                    </div>
-                </div>
-                <div class="show-upload-settings set-full-height">
-                    <div class="image-controls">
-                        <a data-role="button" id="show_photo_settings" data-icon="toggle-up" data-iconpos="right" >
-                            Show Options
-                        </a>
-                    </div>
-                </div>
+        <div class="show-upload-settings set-full-height">
+            <div class="image-controls">
+                <a data-role="button" id="show_photo_settings" data-icon="toggle-up" data-iconpos="right" >
+                    Show Options
+                </a>
             </div>
+        </div>
     </script>
 
     <div id="limbo" data-role="page" data-theme="a">
