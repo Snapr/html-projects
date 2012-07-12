@@ -25,7 +25,7 @@
     <!-- @menu HOME PAGE-->
        <div id="home" data-title="Snapr" data-role="page" data-short-title="Menu" data-theme="d" class="" data-ajax="false">
            <div data-role="header" data-theme="b">
-              <div class="signedin_header"></div>
+              <div class="auth-header"></div>
 
               <div class="ui-btn-right">
                  <a href="#/search/" data-snapr-dialog="true" data-role="button" data-icon="search" data-iconpos="notext"></a>
@@ -35,8 +35,8 @@
            </div><!-- /content -->
        </div><!-- /page -->
 
-      <!-- Signed in header section -->
-      <script id="signed-in-template" type="text/template">
+      <!-- auth header section -->
+      <script id="auth-header-template" type="text/template">
         <div class="ui-btn-left join-block">
           <% if (logged_in) { %>
             <a class="avatar-block" data-role="button" data-shadow="false" data-corners="false" href="#/my-account/">
@@ -148,23 +148,20 @@
                </ul>
 
                <div class="menu-stream thumbs-block">
-                   <div class="thumbs-block-overlay">
-                       <a href="#/feed/" data-iconpos="right" data-icon="arrow-r" data-role="button" class="centered-btn">Nearby Images</a>
-                   </div>
-
-                   <ul class="thumbs-preview-stream">
-                       <li><img src="https://s3.amazonaws.com/media-server2.snapr.us/thm2/dev/db4b1e0c3565a20d3a3c7ed87b6ac0df/ZVA.jpg" alt="snapr mob" class="thumb-image thumb-med"></li>
-
-                       <li><img src="https://s3.amazonaws.com/media-server2.snapr.us/thm2/dev/db4b1e0c3565a20d3a3c7ed87b6ac0df/ZVA.jpg" alt="snapr mob" class="thumb-image thumb-med"></li>
-                       <li><img src="https://s3.amazonaws.com/media-server2.snapr.us/thm2/dev/db4b1e0c3565a20d3a3c7ed87b6ac0df/ZVA.jpg" alt="snapr mob" class="thumb-image thumb-med"></li>
-                       <li><img src="https://s3.amazonaws.com/media-server2.snapr.us/thm2/dev/db4b1e0c3565a20d3a3c7ed87b6ac0df/ZVA.jpg" alt="snapr mob" class="thumb-image thumb-med"></li>
-                   </ul>
-
                </div>
+       </script>
 
+       <script id="nearby-photostream-template" type="text/template">
+          <div class="thumbs-block-overlay">
+             <a href="#/feed/" data-iconpos="right" data-icon="arrow-r" data-role="button" class="centered-btn">Nearby Images</a>
+         </div>
 
+         <ul class="thumbs-preview-stream">
+         </ul>
+       </script>
 
-
+       <script id="nearby-photstream-item-template" type="text/template">
+         <img src="https://s3.amazonaws.com/media-server2.snapr.us/thm2/<%= photo.get('secret') %>/<%= photo.get('id') %>.jpg" alt="snapr mob" class="thumb-image thumb-med">
        </script>
 
     <!-- @myaccount PAGE -->
@@ -1648,6 +1645,33 @@
                <%}%>
            <%}%>
        </script>
+
+       <!-- @leaderboard PAGE-->
+       <div id="leaderboard" data-role="dialog" data-overlay-theme="c" data-theme="c" data-ajax="false" data-add-back-btn="false">
+           <div data-role="header" data-theme="c">
+               <h1>Leaderboard</h1>
+               <a class="x-back" data-role="button" data-icon="delete" data-iconpos="notext"></a>
+           </div>
+           <div data-role="content" data-theme="c">
+               <div class="info-header">
+                   <p class="message">Each photo you take earns points. Get bonus points for sharing to social networks and if people comment on and like your images.
+               </div>
+               <ul class="people-list leaderboard-list" data-role="listview" data-inset="true" data-theme="c" data-split-theme="c" data-corners="false" data-shadow="false">
+               </ul>
+           </div>
+       </div>
+
+       <!-- @leaderboardPerson ITEM-->
+       <script id="leaderboard-li-template" type="text/template">
+              <a href="#/feed/?username=<%= user.get('username') %>" data-username="<%= user.get('username') %>">
+                    <span class="game-rank">1</span>
+                  <img src="<%= config.get('avatar_url') %>/<%= user.get('user_id') %>" alt="<%= user.get('username') %>" class="user-icon-small ui-li-icon"/>
+                  <h3 class="username"><%= user.get('username') %></h3>
+                  <p class="small-text"><span class="photo-count"><%= user.get('photo_count') %></span> photos, <span class="points"><%= user.get('followers') %></span> points</p>
+              </a>
+              
+          </script>
+
 
 
        <!-- @venues PAGE-->

@@ -14,6 +14,7 @@ var pages = [
     'limbo',
     'feed',
     'dash',
+    'leaderboard',
     'activity',
     'popular',
     'search',

@@ -1317,9 +1317,38 @@
 }
 
 /*
-* @people PAGE
+* @leaderboard PAGE
 */
 
+.leaderboard-list{
+    
+    
+    .game-rank{
+        display: block;
+        position: absolute;
+        width: @size-small-avatar;
+        padding-right: @corner-general-less-rounded;
+        height: @size-small-avatar;
+        background: @color-bg-highlight-main;
+        .linear-gradient(@color-bg-highlight-main-tint, @color-bg-highlight-main);
+        text-align: center;
+        line-height: @size-small-avatar;
+        left: 0;
+        top: @padding-element-inset;
+        .corner-tl(@corner-general-less-rounded);
+        .corner-bl(@corner-general-less-rounded);
+    }
+    .ui-li-has-icon .ui-btn-inner a.ui-link-inherit, 
+    .ui-li-static.ui-li-has-icon{
+        padding-left: @size-small-avatar * 2 + @padding-element-inset!important;
+        
+    }
+    .ui-li-icon{
+        left: @size-small-avatar!important;
+        .corner-tl(0);
+        .corner-bl(0);
+    }
+}
 
 /* @myaccount custom stylz */
 .account-content{
