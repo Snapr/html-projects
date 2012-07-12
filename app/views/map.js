@@ -351,6 +351,7 @@ var map_view = page_view.extend({
             geo.get_location(
                 function( position ){
                     map_view.go_to(position.coords);
+                    map_view.photo_query.unset('photo_id');
                     map_view.current_location_place(position);
                 },
                 function( error ){
