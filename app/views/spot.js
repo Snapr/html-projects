@@ -5,12 +5,12 @@ function(Backbone, page_view, spot_model, side_scroll, photo_collection, users_c
 var spot_view = page_view.extend({
 
     post_initialize: function() {
-        this.model = new spot_model();
         this.photos = new photo_collection();
         this.top_users = new users_collection();
     },
 
     post_activate: function(options) {
+        this.model = new spot_model();
 
 
         this.$el.find('.top-users-heading').hide();
