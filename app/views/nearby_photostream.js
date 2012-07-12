@@ -6,7 +6,7 @@ var nearby_photostream_view = Backbone.View.extend({
 
 	template: _.template( $("#nearby-photostream-template").html() ),
 	collection: new photo_collection(),
-
+	
 	initialize: function () {
 
 		var this_view = this;
