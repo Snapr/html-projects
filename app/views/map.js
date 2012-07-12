@@ -293,7 +293,7 @@ var map_view = page_view.extend({
                     map_view.location_search_toggle_disambiguation(true);
                     dis_list.listview().listview("refresh");
                 }else{
-                    map_view.hide_dis();
+                    map_view.location_search_toggle_disambiguation(false);
                     map_view.map_query.set({
                         area: results[ 0 ].geometry.bounds,
                         location: null
@@ -367,16 +367,9 @@ var map_view = page_view.extend({
 
     map_feed: function(){
         if (this.map_query){
-            var urlParams = this.photo_query.attributes;
-
-            if (urlParams.access_token){
-                delete urlParams.access_token;
-            }
-            // if (urlParams.date && urlParams.photo_id){
-            //     delete urlParams.date;
-            // }
-
-            Backbone.history.navigate( "#/feed/?" + $.param( urlParams ) );
+            var params = this.photo_query.attributes;
+            params.area = this.map.getBounds().toUrlValue(4);
+            Backbone.history.navigate( "#/feed/?" + $.param(params) );
         }else{
             console.warn("map not initialized", this);
         }
@@ -431,7 +424,11 @@ var map_view = page_view.extend({
         }else{
             input.val(keywords);
         }
-        this.photo_query.set({keywords: keywords});
+        if(keywords === ''){
+            this.photo_query.unset('keywords');
+        }else{
+            this.photo_query.set({keywords: keywords});
+        }
 
         return this;
     },
