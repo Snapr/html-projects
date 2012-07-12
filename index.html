@@ -148,23 +148,20 @@
                </ul>
 
                <div class="menu-stream thumbs-block">
-                   <div class="thumbs-block-overlay">
-                       <a href="#/feed/" data-iconpos="right" data-icon="arrow-r" data-role="button" class="centered-btn">Nearby Images</a>
-                   </div>
-
-                   <ul class="thumbs-preview-stream">
-                       <li><img src="https://s3.amazonaws.com/media-server2.snapr.us/thm2/dev/db4b1e0c3565a20d3a3c7ed87b6ac0df/ZVA.jpg" alt="snapr mob" class="thumb-image thumb-med"></li>
-
-                       <li><img src="https://s3.amazonaws.com/media-server2.snapr.us/thm2/dev/db4b1e0c3565a20d3a3c7ed87b6ac0df/ZVA.jpg" alt="snapr mob" class="thumb-image thumb-med"></li>
-                       <li><img src="https://s3.amazonaws.com/media-server2.snapr.us/thm2/dev/db4b1e0c3565a20d3a3c7ed87b6ac0df/ZVA.jpg" alt="snapr mob" class="thumb-image thumb-med"></li>
-                       <li><img src="https://s3.amazonaws.com/media-server2.snapr.us/thm2/dev/db4b1e0c3565a20d3a3c7ed87b6ac0df/ZVA.jpg" alt="snapr mob" class="thumb-image thumb-med"></li>
-                   </ul>
-
                </div>
+       </script>
 
+       <script id="nearby-photostream-template" type="text/template">
+          <div class="thumbs-block-overlay">
+             <a href="#/feed/" data-iconpos="right" data-icon="arrow-r" data-role="button" class="centered-btn">Nearby Images</a>
+         </div>
 
+         <ul class="thumbs-preview-stream">
+         </ul>
+       </script>
 
-
+       <script id="nearby-photstream-item-template" type="text/template">
+         <img src="https://s3.amazonaws.com/media-server2.snapr.us/thm2/<%= photo.get('secret') %>/<%= photo.get('id') %>.jpg" alt="snapr mob" class="thumb-image thumb-med">
        </script>
 
     <!-- @myaccount PAGE -->

@@ -1,6 +1,6 @@
 /*global _  define require */
-define(['backbone', 'views/base/page', 'views/components/activity_ticker', 'views/auth_header', 'auth', 'utils/local_storage', 'config'],
-    function(Backbone, page_view, ticker, auth_header_view, auth, local_storage, config){
+define(['backbone', 'views/base/page', 'views/components/activity_ticker', 'views/auth_header', 'views/nearby_photostream', 'auth', 'utils/local_storage', 'config'],
+    function(Backbone, page_view, ticker, auth_header_view, nearby_photostream_view, auth, local_storage, config){
 return page_view.extend({
 
     post_initialize: function(options){
@@ -37,6 +37,11 @@ return page_view.extend({
         var auth_header = new auth_header_view({
             el: this.$('.auth-header')
         });
+
+        var nearby_photostream = new nearby_photostream_view({
+           el: this.$('.menu-stream') 
+        });
+        nearby_photostream.render();
 
         if(auth.has("access_token")){
             var ticker_instance = new ticker({el:this.$('.news-ticker')}).render().tick();
