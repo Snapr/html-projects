@@ -146,6 +146,8 @@ var map_view = page_view.extend({
 
         if(this.map){
             console.log('update map', this.map_query);
+            // trigger a resize event so gmap doesn't think it has 0 width and height after being hidden in iphone
+            google.maps.event.trigger(this.map, "resize");
             if(this.map_query.get('area')){  // area is used by location search to specify viewport
                 this.map.fitBounds(this.map_query.get('area'));
             }else{
