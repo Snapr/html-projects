@@ -23,11 +23,11 @@ var spots_view =  page_view.extend({
     post_activate: function(options) {
 
         var this_view = this,
-            stored_search_options = JSON.parse(local_storage.get("spots-search"));
-            
+            stored_search_options = local_storage.get("spots-search");
+
         this.search_options = (stored_search_options) ? stored_search_options : this.defaults;
 
-        var success_callback = function( location ) {      
+        var success_callback = function( location ) {
             this_view.search_options.latitude = this_view.latitude = location.coords.latitude;
             this_view.search_options.longitude = this_view.longitude = location.coords.longitude;
             this_view.search_options.nearby = true;
@@ -38,11 +38,11 @@ var spots_view =  page_view.extend({
         var error_callback = function() {
             this_view.search(this_view.search_options);
         };
-       
+
         geo.get_location( success_callback, error_callback );
-        
+
         this.change_page();
-        
+
         this.search_options.nearby || this.$el.find('#options-location').val('anywhere').selectmenu('refresh'); //ugh dirty
         this.$el.find('#spot-search').val(this.search_options.spot_name);
         this.$el.find('#options-category').val(this.search_options.category).selectmenu("refresh");
@@ -112,7 +112,7 @@ var spots_view =  page_view.extend({
         }, 300 );
 
 
-        local_storage.save("spots-search", JSON.stringify(options));
+        local_storage.set("spots-search", options);
         this.search_options = options;
 
     },
@@ -138,12 +138,12 @@ var spots_view =  page_view.extend({
             this.$el.find('#spots-search').addClass('all-categories');
         }
 
-        
+
 
         data.spot_name = keywords;
 
         data.sort = sort;
-        
+
         console.log(this.latitude, this.longitude, nearby);
         if (this.latitude && this.longitude && nearby) {
             data.latitude = this.latitude;
@@ -166,7 +166,7 @@ var spots_item = Backbone.View.extend({
     tagName: 'li',
     className: 'spot-item',
     template: _.template( $("#spots-result-item").html() ),
-    
+
     render: function () {
         this.$el.html( this.template({
             spot: this.model
