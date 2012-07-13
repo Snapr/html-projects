@@ -16,7 +16,7 @@ define(['async!http://maps.googleapis.com/maps/api/js?sensor=true'], function(){
 
     map.overlays.Base.prototype = new google.maps.OverlayView();
     map.overlays.Base.prototype.get_div = function(){
-        return $(this.template({data:this.data})).show();
+        return $(this.template({data:this.data})).show().data('latitude', this.data.location.latitude);
     };
     map.overlays.Base.prototype.onAdd = function(){
         // Note: an overlay's receipt of onAdd() indicates that
@@ -28,13 +28,32 @@ define(['async!http://maps.googleapis.com/maps/api/js?sensor=true'], function(){
 
         // We add an overlay to a map via one of the map's panes.
         // We'll add this overlay to the overlayImage pane.
-        var panes = this.getPanes();
-        $(panes.floatPane).append(this.div_);
-    };
-    map.overlays.Base.prototype.moveToTop = function(){
-        var panes = this.getPanes();
-        this.setMap( null );
-        this.setMap( this.map_instance );
+        var panes = this.getPanes(),
+            float_pane = $(panes.floatPane),
+            others = float_pane.find('.snaprmappoint-thumb');
+
+        if(!others.length){
+            float_pane.append(this.div_);
+            return;
+        }
+
+        var latitude = this.div_.data('latitude'),
+            after;
+
+        others.each(function(i, other){
+            var other_latitude = $(other).data('latitude');
+            if(other_latitude > latitude){
+                after = other;
+            }
+        });
+
+        if(after){
+            this.div_.insertAfter(after);
+        }else{
+            float_pane.prepend(this.div_);
+        }
+
+
     };
     map.overlays.Base.prototype.draw = function(){
         var overlayProjection = this.getProjection();

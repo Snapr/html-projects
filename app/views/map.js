@@ -264,8 +264,6 @@ var map_view = page_view.extend({
                             map_view.map,
                             map_view.thumb_template
                         );
-                    }else{
-                        map_view.thumb_overlays[id].moveToTop();
                     }
                 });
 
