@@ -22,6 +22,9 @@ return page_view.extend({
 
     post_activate: function(){
         $.mobile.changePage( "#home" );
+        
+        this.nearby_photostream.refresh();
+        
         this.upload_count(config.get('upload_count'));
     },
 
@@ -38,11 +41,6 @@ return page_view.extend({
             el: this.$('.auth-header')
         });
 
-        var nearby_photostream = new nearby_photostream_view({
-           el: this.$('.menu-stream') 
-        });
-        nearby_photostream.render();
-
         if(auth.has("access_token")){
             var ticker_instance = new ticker({el:this.$('.news-ticker')}).render().tick();
             this.$el.on('pagehide', function(event, ui){
@@ -53,6 +51,9 @@ return page_view.extend({
             });
         }
 
+        this.nearby_photostream = new nearby_photostream_view({
+           el: this.$el.find('.menu-stream') 
+        });
 
         return this;
     },
