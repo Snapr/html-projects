@@ -18,6 +18,7 @@ var spots_view =  page_view.extend({
 
         this.collection = new spot_collection();
         this.collection.on('all', this.render, this);
+        this.$el.find('.spots-results-header').hide();
     },
 
     post_activate: function(options) {
@@ -144,7 +145,6 @@ var spots_view =  page_view.extend({
 
         data.sort = sort;
 
-        console.log(this.latitude, this.longitude, nearby);
         if (this.latitude && this.longitude && nearby) {
             data.latitude = this.latitude;
             data.longitude = this.longitude;
