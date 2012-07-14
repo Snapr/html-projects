@@ -19,10 +19,6 @@ return page_view.extend({
         this.delegateEvents();
 
         this.$el.find("ul.people-list").empty();
-        this.$el.addClass('loading');
-
-        // a simple array of people which will be filtered and displayed
-        this.display_collection = [];
 
         this.collection = new user_collection();
 
@@ -35,14 +31,15 @@ return page_view.extend({
         this.collection.fetch({
             data:{
                 sort: "score",
-                n:20,
-                detail:1
+                n:20
             },
             url: config.get('api_base') + '/user/search/',
             success: function(){
                 this_view.$el.removeClass('loading');
             }
         });
+
+        $.mobile.showPageLoadingMsg();
 
     },
 
@@ -54,12 +51,13 @@ return page_view.extend({
 
         if(this.collection.length){
             no_results.$el.remove();  // use remove(), hide() keeps it hidden and requires show() later
-            _.each( this.collection.models, function( model )
+            _.each( this.collection.models, function( model, index )
             {
                 var li = new leaderboard_li({
                     template: leaderboard_li_template,
                     model: model,
-                    parentView: this
+                    parentView: this,
+                    rank: index+1
                 });
 
                 people_list.append( li.render().el );
@@ -69,62 +67,12 @@ return page_view.extend({
             no_results.render('Oops.. Nobody here yet.', 'delete').$el.appendTo(this.$el);
         }
 
-        this.$el.removeClass('loading');
         people_list.listview().listview("refresh");
+        $.mobile.hidePageLoadingMsg();
     },
 
     reset_collection: function(){
-        this.display_collection = _.clone( this.collection.models );
         this.render();
-    },
-
-    search: function(e)
-    {
-
-        var keywords = $(e.target).val();
-        var this_view = this;
-
-        this.timer && clearTimeout(this.timer);
-        this.xhr && this.xhr.abort();
-
-        var data = {
-            n:20,
-            detail:1
-        };
-
-        switch (this.options.follow){
-            case "following":
-                data.followed_by = this.options.query.username;
-                data.username = keywords;
-                break;
-            case "followers":
-                data.following = this.options.query.username;
-                data.username = keywords;
-                break;
-            default:
-                if (keywords.length > 1){
-                    data.username = keywords;
-                }
-        }
-
-        if(data.username || data.followed_by || data.following){
-
-            this.timer = setTimeout( function() {
-                this_view.timer = null;
-                this_view.$el.addClass('loading');
-                this_view.xhr = this_view.collection.fetch({
-                    data: data,
-                    url: config.get('api_base') + '/user/search/',
-                    success: function(){
-                        this_view.xhr = null;
-                        this_view.$el.removeClass('loading');
-                    }
-                });
-            }, 300 );
-
-        }else{
-            this_view.collection.reset();
-        }
     }
 });
 
