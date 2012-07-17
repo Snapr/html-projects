@@ -14,7 +14,7 @@ You can do the bulk of your development in any webkit browser - we recommend Chr
 
 - No other local development setup is necessary since the project will interact with a web based API.
 
-- Append `#/?browser_testing=true` to the url when you first load the page if testing in a desktop browser. This will add a class to the `<body>` and set a flag in local storage so that the project will limited to a 320px wide section of your screen. 
+- Append `#/?browser_testing=true` to the url when you first load the page if testing in a desktop browser (hit refresh after loading the URL). This will add a class to the `<body>` and set a flag in local storage so that the project will limited to a 320px wide section of your screen. 
 
 - Note that the app uses a slightly different upload flow on desktop vs mobile web.
 
@@ -27,6 +27,10 @@ You should familiarize yourself with these projects before starting work:
 - *jQuery Mobile* - The app primarily uses the [jQuery mobile framework](http://jquerymobile.com/)
 
 - *Backbone.js* - [backbone.js](http://documentcloud.github.com/backbone/) is used for #hash url navigation and data handling (In combination with jQuery mobile page transitions).
+
+
+- *Require.js* - [require.js](http://requirejs.org/) is a modular script loading package used to improve the performance of the app as it scales.
+
 
 - *Less CSS* - The theme for the app is written using [Less CSS](http://lesscss.org/). We recommend using an app/script to compile your styles as you work( such as http://incident57.com/less/ ). 
 
@@ -109,7 +113,7 @@ When publishing for iOS and Android the parent app will set environment=live || 
 Adding and Removing Views
 =========================
 
-Hash-URL Routing
+Hash-URL Routing SECTION REQUIRES UPDATE..
 ----------------
 
 [Backbone.js](http://documentcloud.github.com/backbone/) is used to manage the #hash navigation system for the app.
