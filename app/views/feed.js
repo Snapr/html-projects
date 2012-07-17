@@ -13,12 +13,13 @@ return page_view.extend({
             feed_view.watch_uploads();
         });
         this.$el.on( "pagehide", function(){
-            feed_view.$( ".v-feed-more" ).hide();
             feed_view.watch_uploads(false);
         });
     },
 
     post_activate: function(options){
+        this.more_button(false);
+
         this.photo_collection = new photo_collection();
         this.photo_collection.url = config.get('api_base') + "/search/";
 
@@ -90,8 +91,6 @@ return page_view.extend({
         this.photo_collection.data.detail = 2;
         this.photo_collection.data.list_style && delete this.photo_collection.data.list_style;
 
-        this.more_button(false);
-
         this.populate_feed();
         this.update_uploads();
  },
@@ -159,9 +158,9 @@ return page_view.extend({
 
     more_button: function( more_photos ){
         if (more_photos){
-            this.$el.find(".v-feed-more").html( $("#feed-more-button").html() ).trigger( "create" );
+            this.$(".v-feed-more").html( $("#feed-more-button").html() ).trigger( "create" );
         }else{
-            this.$el.find(".v-feed-more").empty().trigger( "create" );
+            this.$(".v-feed-more").empty().trigger( "create" );
         }
     },
 
