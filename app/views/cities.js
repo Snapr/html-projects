@@ -67,7 +67,7 @@ return page_view.extend({
                 current = $(this).data('current'),
                 city = $(this).data('city');
 
-            Backbone.history.navigate('#/feed/?' + unescape( query ) + '&photo_id=' + current + "&back=Cities&feed_title=" + city );
+            Backbone.history.navigate('#/feed/?' + unescape( query ) + "&feed_title=" + city );
         });
 
     },
