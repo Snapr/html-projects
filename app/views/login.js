@@ -60,7 +60,9 @@ return page_view.extend({
         Backbone.history.navigate( "#/twitter-xauth/?signin=true" );
     },
     facebook_login: function(){
-        link_service('facebook', window.location.href, !!'signin');
+        var next = window.location.href;
+        next += next.indexOf('?') == -1 ? '?facebook_signin=true' : '&facebook_signin=true';
+        link_service('facebook', next, !!'signin');
     }
 });
 
