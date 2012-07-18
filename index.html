@@ -41,7 +41,7 @@
           <% if (logged_in) { %>
             <a class="avatar-block" data-role="button" data-shadow="false" data-corners="false" href="#/my-account/">
               <span class="user-icon-small" style="background-image: url('http://dev.sna.pr/avatars/<%= user_settings.get('user').user_id %>?size=large&amp;_salt=facebook');"></span>
-              <%= user_settings.get('user').username %>
+              <%= user_settings.get('user').display_username %>
             </a>
           <% } else { %>
             <a href="#/join/" data-snapr-dialog="true" data-role="button" data-icon="join" data-iconpos="left">Join</a>
@@ -913,7 +913,7 @@
        <div class="feed-user-header page-inset-header">
            <div class="ui-bar-e feed-follow-bar ui-bar top-no-arrow">
                <span class="ui-bar-inner">
-               <span class="username"><%= user.get('username') %></span>
+               <span class="username"><%= user.get('display_username') %></span>
                   <div class=" ui-btn-right">
                    <% if (!logged_in) {%>
                        <button data-inline="true" data-icon="plus" data-iconpos="right" data-corners="false" data-shadow="false" class="follow">Follow</button>
@@ -941,7 +941,7 @@
 
                <div class="ui-grid-b user-stats">
                    <div class="ui-block-a">
-                       <a data-transition="slide" href="#/feed/?username=<%= user.get('username') %>">
+                       <a href="#/feed/?username=<%= user.get('username') %>">
                            <span class="big-number"><%= user.get('photo_count') %></span>
                            <span>Photos</span>
                        </a>
@@ -973,7 +973,7 @@
                 <a class="user-icon-link" data-transition="slide" href="#/feed/?username=<%= item.get('username') %>">
                     <div class="user-icon-small" style="background-image: url('<%= config.get('avatar_url') %>/<%= item.get('user_id') %>/');"></div>
                 </a>
-                <a class="username" data-transition="slide" href="#/feed/?username=<%= item.get('username') %>"><%= item.get('username') %></a>
+                <a class="username" data-transition="slide" href="#/feed/?username=<%= item.get('username') %>"><%= item.get('display_username') %></a>
 
                 <!-- Show Time only if no location -->
                 <% if(item.has('location') && item.get('location').location){ %>
@@ -1106,9 +1106,9 @@
     <!-- @feed @reactions ITEM - display for comments / favs -->
     <script id="reaction-li-template" type="text/template">
     <% if(reaction.get('type') == 'comment'){ %>
-        <li><a href="#/feed/?username=<%= reaction.get('username') %>"><span class="username"><%= reaction.get('username') %>:</span> <span class="comment"><%= string_utils.comment_links( reaction.get('comment') ) %></span></a></li>
+        <li><a href="#/feed/?username=<%= reaction.get('username') %>"><span class="username"><%= reaction.get('display_username') %>:</span> <span class="comment"><%= string_utils.comment_links( reaction.get('comment') ) %></span></a></li>
     <% }else{ %>
-        <li><a href="#/feed/?username=<%= reaction.get('username') %>"><span class="username"><%= reaction.get('username') %></span> <span class="like-text">likes this</span></a></li>
+        <li><a href="#/feed/?username=<%= reaction.get('username') %>"><span class="username"><%= reaction.get('display_username') %></span> <span class="like-text">likes this</span></a></li>
     <% } %>
     </script>
 
@@ -1154,7 +1154,7 @@
                 <% if (user.get("details").profile.name) {%>
                     <%= user.get("details").profile.name %>
                 <%}else{%>
-                    <%= user.get( "username" ) %>
+                    <%= user.get( "display_username" ) %>
                 <%}%>
                 </span>
             <%}%>
@@ -1214,7 +1214,7 @@
                 <%}%>
             <%}else{%>
                 <p class="no-profile">
-                    <i><%= user.get( "username" ) %> has not added a profile yet</i>
+                    <i><%= user.get( "display_username" ) %> has not added a profile yet</i>
                 </p>
 
             <%}%>
@@ -1453,16 +1453,16 @@
             <% _.each( item.get("comments"), function( comment ){ %>
                 <li data-icon="false" class="comment-item activity-item">
                     <a href="#/feed/?username=<%= comment.user.username %>">
-                        <img src="<%= config.get('avatar_url') %>/<%= comment.user.user_id %>" alt="<%= comment.user.username %>" class="user-icon-small ui-li-icon"/>
-                        <h3 class="username"><%= comment.user.username %></h3> <span class="activity-desc"><%= comment.comment %></span>
+                        <img src="<%= config.get('avatar_url') %>/<%= comment.user.user_id %>" alt="<%= comment.user.display_username %>" class="user-icon-small ui-li-icon"/>
+                        <h3 class="username"><%= comment.user.display_username %></h3> <span class="activity-desc"><%= comment.comment %></span>
                     </a>
                 </li>
             <% }); %>
             <% _.each( item.get("comment-on-comments"), function( comment ){ %>
                 <li data-icon="false" class="comment-item comment-on-comment-item activity-item">
                     <a href="#/feed/?username=<%= comment.user.username %>">
-                        <img src="<%= config.get('avatar_url') %>/<%= comment.user.user_id %>" alt="<%= comment.user.username %>" class="user-icon-small ui-li-icon"/>
-                        <h3 class="username"><%= comment.user.username %></h3> <span class="activity-desc"><%= comment.comment %></span>
+                        <img src="<%= config.get('avatar_url') %>/<%= comment.user.user_id %>" alt="<%= comment.user.display_username %>" class="user-icon-small ui-li-icon"/>
+                        <h3 class="username"><%= comment.user.display_username %></h3> <span class="activity-desc"><%= comment.comment %></span>
                     </a>
                 </li>
             <% }); %>
@@ -1476,7 +1476,7 @@
                 <ul class="like-icons-list">
                 <% _.each( item.get("favorites"), function( like ){ %>
                     <li class="like-icon">
-                        <a href="#/feed/?username=<%= like.user.username %>"><img src="<%= config.get('avatar_url') %>/<%= like.user.user_id %>" alt="<%= like.user.username %>" class="user-icon-small ui-li-icon"/></a>
+                        <a href="#/feed/?username=<%= like.user.username %>"><img src="<%= config.get('avatar_url') %>/<%= like.user.user_id %>" alt="<%= like.user.display_username %>" class="user-icon-small ui-li-icon"/></a>
                     </li>
                 <% }); %>
                 </ul>
@@ -1491,7 +1491,7 @@
                         _.each( likes_list, function( username, index )
                         {
                             if (index < likes_list.length - 1)
-                            {%><a class="username"  href="#/feed/?username=<%= username %>"><%= username %></a>, <%}
+                            {%><a class="username"  href="#/feed/?username=<%= username %>"><%= display_username %></a>, <%}
                         });%>
                         &amp; <a class="username"><%= likes_list[likes_list.length - 1]%></a> like this.
                     <%}%>
@@ -1509,7 +1509,7 @@
 
         <a href="#/feed/?username=<%= item.get("user").username %>" class="">
             <img src="<%= config.get('avatar_url') %>/<%= item.get("user").username %>" alt="<%= item.get("user").user_id %>" class="user-icon-small ui-li-icon"/>
-            <h3 class="username"><%= item.get("user").username %></h3> <span class="activity-desc">is now following you.</span>
+            <h3 class="username"><%= item.get("user").display_username %></h3> <span class="activity-desc">is now following you.</span>
             <% if (!photo_events) { %>
             <p class="small-text">
                 <%= string_utils.short_timestamp( item.get("date"), true) %>
@@ -1529,16 +1529,16 @@
     <script id="news-ticker-template" type="text/template">
         <% switch (type){
             case "follow":%>
-                <em><%= user.username %></em> is now following you
+                <em><%= user.display_username %></em> is now following you
             <%  break;
             case "favorite":%>
-                <em><%= user.username %></em> liked your photo
+                <em><%= user.display_username %></em> liked your photo
             <%  break;
             case "comment":%>
-                <em><%= user.username %></em> commented on your photo
+                <em><%= user.display_username %></em> commented on your photo
             <%  break;
             case "comment-on-comment":%>
-                <em><%= user.username %></em> posted a comment
+                <em><%= user.display_username %></em> posted a comment
             <%  break;
             default: %>
                 No news yet..
@@ -1626,9 +1626,9 @@
 
     <!-- @person ITEM-->
     <script id="people-li-template" type="text/template">
-           <a href="#/feed/?username=<%= user.get('username') %>" data-username="<%= user.get('username') %>">
-               <img src="<%= config.get('avatar_url') %>/<%= user.get('user_id') %>" alt="<%= user.get('username') %>" class="user-icon-small ui-li-icon"/>
-               <h3 class="username"><%= user.get('username') %></h3>
+           <a href="#/feed/?username=<%= user.get('username') %>" data-username="<%= user.get('display_username') %>">
+               <img src="<%= config.get('avatar_url') %>/<%= user.get('user_id') %>" alt="<%= user.get('display_username') %>" class="user-icon-small ui-li-icon"/>
+               <h3 class="username"><%= user.get('display_username') %></h3>
                <p class="small-text"><span class="photo-count"><%= user.get('photo_count') %></span> photos, <span class="followers"><%= user.get('followers') %></span> followers</p>
            </a>
            <% if (!logged_in) {%>
@@ -1666,7 +1666,7 @@
               <a href="#/feed/?username=<%= user.get('username') %>" data-username="<%= user.get('username') %>">
                     <span class="game-rank"><%= rank %></span>
                   <img src="<%= config.get('avatar_url') %>/<%= user.get('user_id') %>" alt="<%= user.get('username') %>" class="user-icon-small ui-li-icon"/>
-                  <h3 class="username"><%= user.get('username') %></h3>
+                  <h3 class="username"><%= user.get('display_username') %></h3>
                   <p class="small-text">
                     <span class="photo-count"><%= user.get('photo_count') %></span> photos
                     <% if (user.get('score')) { %>, <span class="points"><%= user.get('score') %></span> points<% } %>
@@ -1878,7 +1878,7 @@
                     </div>
                     <p class="spot-photo-credit small-text">
                         <% if (spot.get('info').hero_image) { %>
-                        &lsaquo; photo by <a href="#/feed/?username=<%= spot.get('info').hero_image.username %>" class="username"><%= spot.get('info').hero_image.username %></a>
+                        &lsaquo; photo by <a href="#/feed/?username=<%= spot.get('info').hero_image.username %>" class="username"><%= spot.get('info').hero_image.display_username %></a>
                         <% } %>
                     </p>
 
@@ -1929,7 +1929,7 @@
         <li class="top-user-item">
             <a href="#/feed/?username=<%= user.get('username') %>">
                 <span class="user-icon-med" style="background-image: url('http://dev.sna.pr/avatars/<%= user.get('user_id') %>?size=large');"></span>
-                <span class="small-username"><%= user.get('username') %></span>
+                <span class="small-username"><%= user.get('display_username') %></span>
             </a>
         </li>
     </script>
