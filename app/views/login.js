@@ -1,5 +1,5 @@
 /*global _  define require */
-define(['backbone', 'views/base/page', 'auth', 'utils/alerts'], function(Backbone, page_view, auth, alerts){
+define(['backbone', 'views/base/page', 'auth', 'utils/alerts', 'utils/link_service'], function(Backbone, page_view, auth, alerts, link_service){
 return page_view.extend({
 
     post_activate: function(){
@@ -19,7 +19,8 @@ return page_view.extend({
 
     events: {
         "submit #login-dialog":"log_in",
-        "click .twitter-button": 'twitter_login'
+        "click .twitter-button": 'twitter_login',
+        "click .facebook-button": 'facebook_login'
     },
 
     log_in: function(){
@@ -57,6 +58,9 @@ return page_view.extend({
     },
     twitter_login: function(){
         Backbone.history.navigate( "#/twitter-xauth/?signin=true" );
+    },
+    facebook_login: function(){
+        link_service('facebook', window.location.href, !!'signin');
     }
 });
 
