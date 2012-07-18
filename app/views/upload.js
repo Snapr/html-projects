@@ -34,6 +34,9 @@ return page_view.extend({
             string_utils.zeroFill( d.getSeconds(), 2 )
         );
         $("#redirect_uri").val( this.redirect_uri );
+        if(config.get('app_group')){
+            $("#app_group").val( config.get('app_group') );
+        }
         $("#_access_token").attr("name", "access_token").val( auth.get("access_token") );
     },
 
