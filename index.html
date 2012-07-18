@@ -191,7 +191,7 @@
         <div class="ui-content">
             <a class="username" href="#/feed/?username=<%= username %>">
                 <div class="user-icon-small"></div>
-                <%= username %>
+                <%= display_username %>
             </a>
             <a href="#/logout/" class="logout-button" data-role="button" data-icon="delete" data-iconpos="right">Logout</a>
         </div>
@@ -222,7 +222,7 @@
         <div class="ui-content">
          <a class="username" href="#/feed/?username=<%= username %>">
                 <div class="user-icon-small" style="background-image: url('<%= config.get('avatar_url') %>/<%= user_id %>?size=large&_salt=<%= settings.profile.avatar_type %>');"></div>
-                <%= username %>
+                <%= display_username %>
             </a>
                 <a href="#/logout/" class="logout-button" data-role="button" data-icon="delete" data-iconpos="right">Logout</a>
         </div>
@@ -2217,7 +2217,7 @@
 
 
                  <a data-role="button" class="twitter-button logo-button" data-theme="e">Login with <span class="twitter-logo button-logo">Twitter</span></a>
-                 
+
                  <a data-role="button" class="facebook-button logo-button" data-theme="e">Login with <span class="facebook-logo button-logo">Facebook</span></a>
 
                 <p class="centered-link">
@@ -2336,6 +2336,7 @@
                     <input type="hidden" name="redirect_uri" id="redirect_uri"/>
                     <input type="hidden" name="device-time" id="device-time"/>
                     <input type="hidden" name="-set-later-" id="_access_token"/>
+                    <input type="hidden" name="app_group" id="app_group"/>
                     <input type="hidden" name="privacy" id="privacy" value="queued"/>
 
                     <ul data-role="listview" data-inset="true" data-theme="d">

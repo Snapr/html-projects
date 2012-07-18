@@ -63,12 +63,14 @@ return page_view.extend({
         if(initial){
             template = this.initial_template;
             data={
-                username: auth.get( "snapr_user" )
+                username: auth.get( "snapr_user" ),
+                display_username: ""
             };
         }else{
             template = this.template;
             data={
-                username: auth.get( "snapr_user" ),
+                username: auth.user_settings.get( "user" ).username,
+                display_username: auth.user_settings.get( "user" ).display_username,
                 user_id: auth.user_settings.get( "user" ).user_id,
                 settings: auth.user_settings.get( "settings" ),
                 camplus: false

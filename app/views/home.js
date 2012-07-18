@@ -1,6 +1,6 @@
 /*global _  define require */
-define(['backbone', 'views/base/page', 'views/components/activity_ticker', 'views/auth_header', 'views/nearby_photostream', 'auth', 'utils/local_storage', 'config'],
-    function(Backbone, page_view, ticker, auth_header_view, nearby_photostream_view, auth, local_storage, config){
+define(['backbone', 'views/base/page', 'views/components/activity_ticker', 'views/auth_header', 'views/nearby_photostream', 'auth', 'utils/local_storage', 'config', 'utils/alerts'],
+    function(Backbone, page_view, ticker, auth_header_view, nearby_photostream_view, auth, local_storage, config, alerts){
 return page_view.extend({
 
     post_initialize: function(options){
@@ -20,11 +20,16 @@ return page_view.extend({
         this.render();
     },
 
-    post_activate: function(){
+    post_activate: function(options){
         $.mobile.changePage( "#home" );
-        
+
+        if(options.query.facebook_signin && auth.get('access_token')){
+            alerts.notification('Logged in as ' + (options.query.display_username || auth.get('snapr_user')));
+            Backbone.history.navigate( "#", true );  // strip login params
+        }
+
         this.nearby_photostream.refresh();
-        
+
         this.upload_count(config.get('upload_count'));
     },
 
@@ -52,7 +57,7 @@ return page_view.extend({
         }
 
         this.nearby_photostream = new nearby_photostream_view({
-           el: this.$el.find('.menu-stream') 
+           el: this.$el.find('.menu-stream')
         });
 
         return this;
