@@ -21,7 +21,7 @@ return page_view.extend({
     },
 
     post_activate: function(options){
-        $.mobile.changePage( "#home" );
+        $.mobile.changePage( "#home", {changeHash: false} );  // must be false or jQm will change the url from x/y/z/#/ to x/y/z/#/x/y/z
 
         if(options.query.facebook_signin && auth.get('access_token')){
             alerts.notification('Logged in as ' + (options.query.display_username || auth.get('snapr_user')));
