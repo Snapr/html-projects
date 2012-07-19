@@ -1453,11 +1453,9 @@
             <% _.each( item.get("comments"), function( comment ){ %>
                 <li data-icon="false" class="comment-item activity-item">
                     <a href="#/feed/?username=<%= comment.user.username %>">
-<<<<<<< HEAD
+
                         <img src="<%= config.get('avatar_url') %>/<%= comment.user.user_id %>" alt="<%= comment.user.display_username %>" class="user-icon-small ui-li-icon"/>
-=======
-                        <img src="<%= config.get('avatar_url') %>/<%= comment.user.user_id %>" alt="<%= comment.user.username %>" class="user-icon-small ui-li-icon"/>
->>>>>>> fb23f8150dc0085d3f4c6c04213d63ec5d3d0ec8
+
                         <h3 class="username"><%= comment.user.display_username %></h3> <span class="activity-desc"><%= comment.comment %></span>
                     </a>
                 </li>
@@ -1465,11 +1463,8 @@
             <% _.each( item.get("comment-on-comments"), function( comment ){ %>
                 <li data-icon="false" class="comment-item comment-on-comment-item activity-item">
                     <a href="#/feed/?username=<%= comment.user.username %>">
-<<<<<<< HEAD
                         <img src="<%= config.get('avatar_url') %>/<%= comment.user.user_id %>" alt="<%= comment.user.display_username %>" class="user-icon-small ui-li-icon"/>
-=======
-                        <img src="<%= config.get('avatar_url') %>/<%= comment.user.user_id %>" alt="<%= comment.user.username %>" class="user-icon-small ui-li-icon"/>
->>>>>>> fb23f8150dc0085d3f4c6c04213d63ec5d3d0ec8
+
                         <h3 class="username"><%= comment.user.display_username %></h3> <span class="activity-desc"><%= comment.comment %></span>
                     </a>
                 </li>
@@ -1499,11 +1494,8 @@
                         _.each( likes_list, function( like, index )
                         {
                             if (index < likes_list.length - 1)
-<<<<<<< HEAD
-                            {%><a class="username"  href="#/feed/?username=<%= username %>"><%= display_username %></a>, <%}
-=======
+
                             {%><a class="username"  href="#/feed/?username=<%= like.user.username %>"><%= like.user.display_username %></a>, <%}
->>>>>>> fb23f8150dc0085d3f4c6c04213d63ec5d3d0ec8
                         });%>
                         &amp; <a class="username"><%= likes_list[likes_list.length - 1].user.display_username%></a> like this.
                     <%}%>
