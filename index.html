@@ -1106,9 +1106,9 @@
     <!-- @feed @reactions ITEM - display for comments / favs -->
     <script id="reaction-li-template" type="text/template">
     <% if(reaction.get('type') == 'comment'){ %>
-        <li><a href="#/feed/?username=<%= reaction.get('username') %>"><span class="username"><%= reaction.get('username') %>:</span> <span class="comment"><%= string_utils.comment_links( reaction.get('comment') ) %></span></a></li>
+        <li><a href="#/feed/?username=<%= reaction.get('username') %>"><span class="username"><%= reaction.get('display_username') %>:</span> <span class="comment"><%= string_utils.comment_links( reaction.get('comment') ) %></span></a></li>
     <% }else{ %>
-        <li><a href="#/feed/?username=<%= reaction.get('username') %>"><span class="username"><%= reaction.get('username') %></span> <span class="like-text">likes this</span></a></li>
+        <li><a href="#/feed/?username=<%= reaction.get('username') %>"><span class="username"><%= reaction.get('display_username') %></span> <span class="like-text">likes this</span></a></li>
     <% } %>
     </script>
 
