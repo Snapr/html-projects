@@ -109,10 +109,12 @@ return page_view.extend({
                     detail:0
                 },
                 success: function(){
-                    empty_once();
-                    streams.append( li.el );
-                    li.render();
-                    $el.trigger( "create" );
+                    if(photos.length){
+                        empty_once();
+                        streams.append( li.el );
+                        li.render();
+                        $el.trigger( "create" );
+                    }
                     $.mobile.hidePageLoadingMsg();
                 }
             });
