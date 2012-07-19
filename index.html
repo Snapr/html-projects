@@ -973,7 +973,7 @@
                 <a class="user-icon-link" data-transition="slide" href="#/feed/?username=<%= item.get('username') %>">
                     <div class="user-icon-small" style="background-image: url('<%= config.get('avatar_url') %>/<%= item.get('user_id') %>/');"></div>
                 </a>
-                <a class="username" data-transition="slide" href="#/feed/?username=<%= item.get('username') %>"><%= item.get('username') %></a>
+                <a class="username" data-transition="slide" href="#/feed/?username=<%= item.get('username') %>"><%= item.get('display_username') %></a>
 
                 <!-- Show Time only if no location -->
                 <% if(item.has('location') && item.get('location').location){ %>
@@ -1454,7 +1454,7 @@
                 <li data-icon="false" class="comment-item activity-item">
                     <a href="#/feed/?username=<%= comment.user.username %>">
                         <img src="<%= config.get('avatar_url') %>/<%= comment.user.user_id %>" alt="<%= comment.user.username %>" class="user-icon-small ui-li-icon"/>
-                        <h3 class="username"><%= comment.user.username %></h3> <span class="activity-desc"><%= comment.comment %></span>
+                        <h3 class="username"><%= comment.user.display_username %></h3> <span class="activity-desc"><%= comment.comment %></span>
                     </a>
                 </li>
             <% }); %>
@@ -1462,7 +1462,7 @@
                 <li data-icon="false" class="comment-item comment-on-comment-item activity-item">
                     <a href="#/feed/?username=<%= comment.user.username %>">
                         <img src="<%= config.get('avatar_url') %>/<%= comment.user.user_id %>" alt="<%= comment.user.username %>" class="user-icon-small ui-li-icon"/>
-                        <h3 class="username"><%= comment.user.username %></h3> <span class="activity-desc"><%= comment.comment %></span>
+                        <h3 class="username"><%= comment.user.display_username %></h3> <span class="activity-desc"><%= comment.comment %></span>
                     </a>
                 </li>
             <% }); %>
@@ -1476,7 +1476,7 @@
                 <ul class="like-icons-list">
                 <% _.each( item.get("favorites"), function( like ){ %>
                     <li class="like-icon">
-                        <a href="#/feed/?username=<%= like.user.username %>"><img src="<%= config.get('avatar_url') %>/<%= like.user.user_id %>" alt="<%= like.user.username %>" class="user-icon-small ui-li-icon"/></a>
+                        <a href="#/feed/?username=<%= like.user.username %>"><img src="<%= config.get('avatar_url') %>/<%= like.user.user_id %>" alt="<%= like.user.display_username %>" class="user-icon-small ui-li-icon"/></a>
                     </li>
                 <% }); %>
                 </ul>
@@ -1484,16 +1484,16 @@
                 <p class="like-names-list">
                     <% if (likes_list.length == 1)
                     {%>
-                        <a class="username"  href="#/feed/?username=<%= likes_list[0]%>"><%= likes_list[0]%></a> likes this.
+                        <a class="username"  href="#/feed/?username=<%= likes_list[0].user.username%>"><%= likes_list[0].user.display_username %></a> likes this.
                     <%}
                     else if (likes_list.length > 1)
                     {
-                        _.each( likes_list, function( username, index )
+                        _.each( likes_list, function( like, index )
                         {
                             if (index < likes_list.length - 1)
-                            {%><a class="username"  href="#/feed/?username=<%= username %>"><%= username %></a>, <%}
+                            {%><a class="username"  href="#/feed/?username=<%= like.user.username %>"><%= like.user.display_username %></a>, <%}
                         });%>
-                        &amp; <a class="username"><%= likes_list[likes_list.length - 1]%></a> like this.
+                        &amp; <a class="username"><%= likes_list[likes_list.length - 1].user.display_username%></a> like this.
                     <%}%>
                 </p>
             </div>

@@ -99,7 +99,7 @@ var activity_stream_item = Backbone.View.extend({
         this.$el.html( this.template({
             item: this.model,
             photo_events: this.photo_events,
-            likes_list: likes_list
+            likes_list: this.model.get("favorites")
         }));
 
         switch (this.model.get("type")){
