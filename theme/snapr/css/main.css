@@ -4426,6 +4426,17 @@ body.browser-testing .ps-caption-bottom {
   background-repeat: no-repeat !important;
   background-position: center bottom!important;
 }
+.ui-dialog.snapr-welcome-bg,
+.ui-page.snapr-welcome-bg {
+  background-color: #acebdd!important;
+  background-image: url('../gfx/welcome-image.png') !important;
+  -moz-background-size: 320px 318px !important;
+  -o-background-size: 320px 318px !important;
+  -webkit-background-size: 320px 318px !important;
+  background-size: 320px 318px !important;
+  background-repeat: no-repeat !important;
+  background-position: center bottom!important;
+}
 .twitter-button.ui-btn-up-e {
   background: #68d9ff;
   background-image: -webkit-gradient(linear, left top, left bottom, from(#68d9ff), to(#309dc2));
