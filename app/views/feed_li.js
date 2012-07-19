@@ -138,22 +138,20 @@ var feed_li =  Backbone.View.extend({
         this.$el.find('.comment-area').hide();
     },
 
-    toggle_reactions: function()
-    {
+    toggle_reactions: function(){
         this.$el.find('.reactions-button').toggleClass('selected');
 
-        if (this.$el.find('.reactions-list:visible').length)
-        {
+        if (this.$el.find('.reactions-list:visible').length){
+            this.$el.find('.reactions-button .ui-btn-text').text('show');
             this.$el.find('.reactions-list').hide();
             this.hide_comment_form();
         }
-        else
-        {
+        else{
+            this.$el.find('.reactions-button .ui-btn-text').text('hide');
             this.$('.reactions-button').x_loading();
             this.load_reactions();
             this.$el.find('.reactions-list').show();
-            if (this.$el.find('.reactions-list li').length)
-            {
+            if (this.$el.find('.reactions-list li').length){
                 this.show_comment_form();
             }
         }

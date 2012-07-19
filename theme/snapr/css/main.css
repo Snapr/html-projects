@@ -5216,6 +5216,12 @@ body.browser-testing .ps-caption-bottom {
 .share-photo.show-image .ui-header {
   display: none;
 }
+.share-photo.show-image .image-controls {
+  display: none;
+}
+.share-photo.show-image .show-upload-settings .image-controls {
+  display: block;
+}
 .share-photo .show-upload-settings .image-controls {
   position: absolute;
   bottom: 0;
