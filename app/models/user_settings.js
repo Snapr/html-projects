@@ -36,14 +36,14 @@ return  Backbone.Model.extend({
     sync: function(method, model, options) {
         if(method == 'read'){
             var success = options.success;
-            options.success = function(data, status, xhr){
-                success(data, status, xhr);
-                user_settings_cache = data;
-            };
             if(user_settings_cache){
                 options.success(user_settings_cache);
                 return;
             }
+            options.success = function(data, status, xhr){
+                success(data, status, xhr);
+                user_settings_cache = data;
+            };
         }
         Backbone.sync.call(this, method, model, options);
     },

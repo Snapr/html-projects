@@ -64,7 +64,7 @@ return page_view.extend({
             template = this.initial_template;
             data={
                 username: auth.get( "snapr_user" ),
-                display_username: ""
+                display_username: auth.get( "display_username" )
             };
         }else{
             template = this.template;

@@ -1,6 +1,6 @@
 /*global _  define require */
-define(['backbone', 'auth', 'models/user_settings'],
-    function(Backbone, auth, user_settings) {
+define(['backbone', 'auth'],
+    function(Backbone, auth) {
 
 return Backbone.View.extend({
 
@@ -8,10 +8,8 @@ return Backbone.View.extend({
 
 	initialize: function () {
 		var view = this;
-
-		this.user_settings = new user_settings();
 		if (auth.has("access_token")) {
-			this.user_settings.fetch({
+			auth.user_settings.fetch({
 				data: {
 					user_object: true
 				},
@@ -32,7 +30,7 @@ return Backbone.View.extend({
 	render: function () {
 		this.$el.html( this.template( {
 			logged_in: auth.has("access_token"),
-			user_settings: this.user_settings
+			user_settings: auth.user_settings
         } ));
 
         this.$el.find('[data-role="button"]').button();

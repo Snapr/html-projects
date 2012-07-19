@@ -4,8 +4,10 @@ define(['config', 'backbone', 'jquery', 'utils/local_storage', 'native', 'models
 var auth_model = Backbone.Model.extend({
 
     initialize: function(){
+        _.bindAll(this);
         this.user_settings = new user_settings();
-        this.bind('change', this.user_settings.cache_bust);
+        this.on('change', this.user_settings.cache_bust);
+        this.user_settings.on('change', this.save_display_username);
     },
 
     url: function(){
@@ -30,18 +32,17 @@ var auth_model = Backbone.Model.extend({
             success: function( response ){
                 if (auth.get( "access_token" )){
                     auth.set({
-                        snapr_user: username
+                        snapr_user: username,
+                        display_username: username
                     });
                     auth.save_locally();
                     delete auth.data;
-                    if (typeof options.success == "function")
-                    {
+                    if (typeof options.success == "function"){
                         options.success();
                     }
                 }else{
                     delete auth.data;
-                    if (typeof options.error == "function")
-                    {
+                    if (typeof options.error == "function"){
                         options.error( auth.attributes );
                     }
                 }
@@ -57,37 +58,33 @@ var auth_model = Backbone.Model.extend({
     },
 
     get_locally: function(){
-        var snapr_user = local_storage.get( "snapr_user" );
-        var access_token = local_storage.get( "access_token" );
+        var attributes = local_storage.get('auth') || {};
 
-        if (snapr_user && access_token){
-            this.set({
-                access_token: access_token,
-                snapr_user: snapr_user
-            });
+        if (attributes.snapr_user && attributes.access_token){
+            this.set(attributes);
         }
     },
 
-    save_locally: function(){
-        var snapr_user = this.get( "snapr_user" );
-        var access_token = this.get( "access_token" );
+    save_display_username: function(save, display, username){
+        this.set({'display_username': this.user_settings.get('user').display_username}, {silent:true});
+        console.log('settings changed', this.attributes);
+        local_storage.set('auth', this.attributes);
+    },
 
-        localStorage.setItem( "snapr_user", snapr_user );
-        localStorage.setItem( "access_token", access_token );
+    save_locally: function(){
+        local_storage.set('auth', this.attributes);
 
         // only save to the app if we're in appmode
         // and the hash doesn't have "access_token" in it
         // (which would cause an infinite loop)
         if (local_storage.get( "appmode" ) && window.location.hash.indexOf("access_token") < 0){
-            native.pass_data( "snapr://login?snapr_user=" + encodeURI( snapr_user ) + "&access_token=" + encodeURI( access_token ) );
+            native.pass_data( "snapr://login?snapr_user=" + encodeURI( this.get( "snapr_user" ) ) + "&access_token=" + encodeURI( this.get( "access_token" ) ) );
         }
     },
 
     logout: function(){
-        this.unset( "snapr_user" );
-        this.unset( "access_token" );
-        localStorage.removeItem( "snapr_user" );
-        localStorage.removeItem( "access_token" );
+        this.clear();
+        local_storage['delete']( "auth" );
     },
 
     // decorator function
