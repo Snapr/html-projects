@@ -4352,6 +4352,8 @@ body.browser-testing .ps-caption-bottom {
 }
 .menu-main .menu-stream.thumbs-block {
   position: relative;
+  margin-bottom: -8px;
+  background-color: black;
 }
 .menu-main .menu-stream.thumbs-block .thumbs-block-overlay {
   position: absolute;
