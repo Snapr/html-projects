@@ -11,7 +11,7 @@ var config_model = Backbone.Model.extend({
 
         //app_group: 'group-slug',
 
-        get_user_points: true // request points when getting users form the api
+        // get_user_points: true // request points when getting users form the api
 
         //zoom: 15, // for map
         // feed_count: 9, // number of images to show in feed views
