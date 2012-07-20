@@ -51,7 +51,8 @@ return page_view.extend({
                     data:{
                         username:options.query.username,
                         n:20,
-                        detail:1
+                        detail:1,
+                        sort: config.get('get_user_points') ? 'score' : ''
                     },
                     url: config.get('api_base') + '/user/search/',
                     success: function(){
@@ -68,16 +69,14 @@ return page_view.extend({
         "click .ui-input-clear": "search"
     },
 
-    render: function()
-    {
+    render: function(){
         var people_list = this.$el.find("ul.people-list").empty();
 
         var people_li_template = _.template( $("#people-li-template").html() );
 
         if(this.collection.length){
             no_results.$el.remove();  // use remove(), hide() keeps it hidden and requires show() later
-            _.each( this.collection.models, function( model )
-            {
+            _.each( this.collection.models, function( model ){
                 var li = new people_li({
                     template: people_li_template,
                     model: model,
@@ -100,8 +99,7 @@ return page_view.extend({
         this.render();
     },
 
-    search: function(e)
-    {
+    search: function(e){
 
         var keywords = $(e.target).val();
         var this_view = this;

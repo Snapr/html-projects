@@ -34,6 +34,9 @@ return  Backbone.Collection.extend({
         this.data = {
             username: username
         };
+        if(config.get('get_user_points')){
+            this.data.sort = 'score';
+        }
 
         var user_collection = this;
 
@@ -59,6 +62,9 @@ return  Backbone.Collection.extend({
         this.data = {
             username: username
         };
+        if(config.get('get_user_points')){
+            this.data.sort = 'score';
+        }
 
         var user_collection = this;
 
@@ -84,6 +90,9 @@ return  Backbone.Collection.extend({
         this.data = {
             username: username
         };
+        if(config.get('get_user_points')){
+            this.data.sort = 'score';
+        }
 
         var user_collection = this;
 
@@ -108,7 +117,7 @@ return  Backbone.Collection.extend({
             n: 10,
             sort: 'score',
             spot: spot_id
-        }
+        };
 
         var user_collection = this;
         this.fetch({
