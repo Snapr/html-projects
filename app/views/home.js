@@ -4,17 +4,17 @@ define(['backbone', 'views/base/page', 'views/components/activity_ticker', 'view
 return page_view.extend({
 
     post_initialize: function(options){
-        if(options.query.new_user){
-            if (!local_storage.get("welcome_shown"))
-            {
-                Backbone.history.navigate( "#", true );  // go here first so that back is not new_user
-                Backbone.history.navigate( "#/welcome/" );
-            }
-        }
 
         this.template = _.template( $("#home-template").html() );
 
         auth.bind("change", this.render);
+
+        if(options.query.new_user){
+            if (!local_storage.get("welcome_shown")){
+                Backbone.history.navigate( "#", true );  // go here first so that back is not new_user
+                Backbone.history.navigate( "#/welcome/" );
+            }
+        }
 
         // only render the home page the first time we load
         this.render();
