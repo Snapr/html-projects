@@ -47,8 +47,8 @@ require(['routers'], function(routers){
     routers.routers_instance = routers_instance;
 });
 
-require(['config', 'jquery', 'backbone', 'photoswipe', 'auth', 'utils/local_storage', 'native', 'utils/dialog', 'views/components/offline'],
-    function(config, $, Backbone, PhotoSwipe, auth, local_storage, native, dialog, offline_el) {
+require(['config', 'jquery', 'backbone', 'photoswipe', 'auth', 'utils/local_storage', 'native', 'utils/dialog', 'views/components/offline', 'utils/alerts'],
+    function(config, $, Backbone, PhotoSwipe, auth, local_storage, native, dialog, offline_el, alerts) {
 
     /* disable jquery-mobile's hash nav so we can replace it with backbone.js
     ***************************/
@@ -226,7 +226,7 @@ require(['config', 'jquery', 'backbone', 'photoswipe', 'auth', 'utils/local_stor
         });
 
         // camera button
-        $(".x-launch-camera").live( "click", auth.require_login( function (){
+        function launch_camera(){
             var appmode = local_storage.get( "appmode" );
             var camplus = local_storage.get( "camplus" );
             var camplus_camera = local_storage.get( "camplus_camera" );
@@ -244,10 +244,11 @@ require(['config', 'jquery', 'backbone', 'photoswipe', 'auth', 'utils/local_stor
             }else{
                 Backbone.history.navigate( "#/app/" );
             }
-        }) );
+        }
+        $(".x-launch-camera").live( "click", auth.require_login( launch_camera ));
 
         // photo library button
-        $(".x-launch-photo-library").live( "click", auth.require_login( function(){
+        function photo_library(){
             var appmode = local_storage.get( "appmode" );
             var camplus = local_storage.get( "camplus" );
             var camplus_lightbox = local_storage.get( "camplus_lightbox" );
@@ -264,6 +265,22 @@ require(['config', 'jquery', 'backbone', 'photoswipe', 'auth', 'utils/local_stor
                 }, 600);
             }else{
                 Backbone.history.navigate( "#/upload/" );
+            }
+        }
+        $(".x-launch-photo-library").live( "click", auth.require_login( photo_library ) );
+
+        // camera / photostream actionsheet
+        $(".x-launch-camera-options").live( "click", auth.require_login( function(){
+            if(local_storage.get( "appmode" )){
+                alerts.approve({
+                    'title': 'Share Photo',
+                    'yes': "Take Picture",
+                    'no': "Use Existing",
+                    'yes_callback': launch_camera,
+                    'no_callback': photo_library
+                });
+            }else{
+                photo_library();
             }
         }) );
 
