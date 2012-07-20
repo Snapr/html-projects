@@ -11,6 +11,8 @@ var config_model = Backbone.Model.extend({
 
         //app_group: 'group-slug',
 
+        get_user_points: true // request points when getting users form the api
+
         //zoom: 15, // for map
         // feed_count: 9, // number of images to show in feed views
         // map_count: 10, // number of images to show on the map
@@ -63,6 +65,8 @@ var config_model = Backbone.Model.extend({
         upload_mode: "On",
         upload_paused: false,
         geolocation_enabled: true,
+
+        get_user_points: false,
 
         camplus_options: false,  // show camera-plus options in my-account page
 
