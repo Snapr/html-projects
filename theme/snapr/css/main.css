@@ -3774,6 +3774,11 @@ a.ui-link-inherit {
   background-position: 0 -108px;
   height: 32px;
 }
+.button-logo.snapr-logo {
+  width: 80px;
+  background-position: 0 -144px;
+  height: 32px;
+}
 .invisible-submit-button {
   width: 0;
   height: 0;
@@ -4426,6 +4431,17 @@ body.browser-testing .ps-caption-bottom {
   background-repeat: no-repeat !important;
   background-position: center bottom!important;
 }
+.ui-dialog.snapr-welcome-bg,
+.ui-page.snapr-welcome-bg {
+  background-color: #acebdd!important;
+  background-image: url('../gfx/welcome-image.png') !important;
+  -moz-background-size: 320px 318px !important;
+  -o-background-size: 320px 318px !important;
+  -webkit-background-size: 320px 318px !important;
+  background-size: 320px 318px !important;
+  background-repeat: no-repeat !important;
+  background-position: center bottom!important;
+}
 .twitter-button.ui-btn-up-e {
   background: #68d9ff;
   background-image: -webkit-gradient(linear, left top, left bottom, from(#68d9ff), to(#309dc2));
@@ -4634,10 +4650,82 @@ body.browser-testing .ps-caption-bottom {
   /* Opera 11.10+ */
 
   background-image: linear-gradient(bottom, #507ab8 0%, #507ab8 70%, #4872b1 100%);
-  color: white;
+  color: #333333;
 }
 .facebook-button.ui-btn-down-e a.ui-link-inherit {
-  color: white;
+  color: #333333;
+}
+.snapr-button.ui-btn-up-e {
+  background: #ffff00;
+  text-shadow: 0 1px 1px white;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#ffff00), to(#ffe400));
+  /* Saf4+, Chrome */
+
+  background-image: -webkit-linear-gradient(top, #ffff00, #ffe400);
+  /* Chrome 10+, Saf5.1+ */
+
+  background-image: -moz-linear-gradient(top, #ffff00, #ffe400);
+  /* FF3.6 */
+
+  background-image: -ms-linear-gradient(top, #ffff00, #ffe400);
+  /* IE10 */
+
+  background-image: -o-linear-gradient(top, #ffff00, #ffe400);
+  /* Opera 11.10+ */
+
+  background-image: linear-gradient(top, #ffff00, #ffe400);
+  color: #333333;
+}
+.snapr-button.ui-btn-up-e a.ui-link-inherit {
+  color: #333333;
+}
+.snapr-button.ui-btn-hover-e {
+  border: none;
+  background: #ffff33;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#ffff1a), to(#ffe71a));
+  /* Saf4+, Chrome */
+
+  background-image: -webkit-linear-gradient(top, #ffff1a, #ffe71a);
+  /* Chrome 10+, Saf5.1+ */
+
+  background-image: -moz-linear-gradient(top, #ffff1a, #ffe71a);
+  /* FF3.6 */
+
+  background-image: -ms-linear-gradient(top, #ffff1a, #ffe71a);
+  /* IE10 */
+
+  background-image: -o-linear-gradient(top, #ffff1a, #ffe71a);
+  /* Opera 11.10+ */
+
+  background-image: linear-gradient(top, #ffff1a, #ffe71a);
+  color: #333333;
+}
+.snapr-button.ui-btn-hover-e a.ui-link-inherit {
+  color: #333333;
+}
+.snapr-button.ui-btn-down-e {
+  border: none;
+  background: #ffff00;
+  background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, #ffff00), color-stop(0.7, #ffff00), color-stop(1, #e5e600));
+  /* Saf4+, Chrome */
+
+  background-image: -webkit-linear-gradient(bottom, #ffff00 0%, #ffff00 70%, #f0f000 100%);
+  /* Chrome 10+, Saf5.1+ */
+
+  background-image: -moz-linear-gradient(bottom, #ffff00 0%, #ffff00 70%, #f0f000 100%);
+  /* FF3.6 */
+
+  background-image: -ms-linear-gradient(bottom, #ffff00 0%, #ffff00 70%, #f0f000 100%);
+  /* IE10 */
+
+  background-image: -o-linear-gradient(bottom, #ffff00 0%, #ffff00 70%, #f0f000 100%);
+  /* Opera 11.10+ */
+
+  background-image: linear-gradient(bottom, #ffff00 0%, #ffff00 70%, #f0f000 100%);
+  color: #333333;
+}
+.snapr-button.ui-btn-down-e a.ui-link-inherit {
+  color: #333333;
 }
 /*
 * @join PAGE
@@ -6751,10 +6839,10 @@ body.browser-testing .ps-caption-bottom {
   }
   .button-logo {
     background-image: url('../gfx/retina/service-full-logos.png');
-    -moz-background-size: 150px 144px;
-    -o-background-size: 150px 144px;
-    -webkit-background-size: 150px 144px;
-    background-size: 150px 144px;
+    -moz-background-size: 150px 180px;
+    -o-background-size: 150px 180px;
+    -webkit-background-size: 150px 180px;
+    background-size: 150px 180px;
   }
   .x-validating .ui-icon-validation,
   .extra-icons .ui-icon-spinner,

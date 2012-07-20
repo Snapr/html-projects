@@ -195,6 +195,16 @@
     background-position: center bottom!important;
 }
 
+//Please leave this as is for the about snapr page
+.ui-dialog.snapr-welcome-bg,
+.ui-page.snapr-welcome-bg{
+    background-color: #acebdd!important;
+    background-image: url('../gfx/welcome-image.png')!important;
+    .background-size(320px, 318px)!important;
+    background-repeat: no-repeat!important;
+    background-position: center bottom!important;
+}
+
 .twitter-button.ui-btn-up-e {
     background: @color-bg-twitter-main;
     .linear-gradient(@color-bg-twitter-main, @color-bg-twitter-main-tint);
@@ -276,9 +286,39 @@
     border: none;
     background: @color-bg-facebook-main;
     .pressed-gradient(@color-bg-facebook-main, 3%);
-    color: white;
+    color: #333333;
     a.ui-link-inherit {
-        color: white;
+        color: #333333;
+    }
+}
+
+.snapr-button.ui-btn-up-e {
+    background: @color-snapr-yellow;
+    text-shadow: 0 1px 1px white;
+    .linear-gradient(@color-snapr-yellow, @color-snapr-yellow-tint);
+    color: #333333;
+    a.ui-link-inherit {
+        color: #333333;
+    }
+}
+
+.snapr-button.ui-btn-hover-e {
+    border: none;
+    background: lighten(@color-snapr-yellow, 10% );
+    .linear-gradient(lighten(@color-snapr-yellow, 5%), lighten(@color-snapr-yellow-tint, 5%));
+    color: #333333;
+    a.ui-link-inherit {
+        color: #333333;
+    }
+}
+
+.snapr-button.ui-btn-down-e {
+    border: none;
+    background: @color-snapr-yellow;
+    .pressed-gradient(@color-snapr-yellow, 3%);
+    color: #333333;
+    a.ui-link-inherit {
+        color: #333333;
     }
 }
 

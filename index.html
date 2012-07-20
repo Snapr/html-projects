@@ -1967,7 +1967,7 @@
     <!-- @about PAGE-->
      <div id="about" class="welcome-bg special-bg" data-role="dialog" data-overlay-theme="c" data-theme="c">
          <div data-role="header" data-theme="c">
-             <h1>About</h1>
+             <h1>Info</h1>
              <a class="x-back" data-role="button" data-icon="delete" data-iconpos="notext"></a>
          </div>
          <div data-role="content" data-theme="d" data-ajax="false">
@@ -1975,25 +1975,48 @@
                      <ul data-role="listview" data-ajax="false" class="" data-inset="true" data-theme="d">
 
                          <li>
-                             <h4>Share &amp; Discover</h4>
-
-                             <p>Snapr is a photo sharing app that &hearts;&lsquo;s geotagging :)</p>
-
-                             <p>&bull; Discover nearby popular shots each time you upload</p>
-
-                             <p>&bull; Browse Snapr's map and set advanced search filters</p>
-
-                             <p>&bull; Use our custom dashboard to keep track of your best friends and favorite searches</p>
-
-                             <p>&bull; Share to Facebook, Twitter, Tumblr &amp; Foursquare</p>
-
+                             <h4>About Your App</h4>
+                             <p>Put info about your app here :)</p>
                          </li>
                          </ul>
+                         
+                         <p class="centered-link">
+                                 <a href="#/about-snapr/">About Snapr &rsaquo;</a></li>
+                             </p>
 
 
              </div>
          </div>
      </div>
+
+     <!-- @aboutsnapr PAGE-->
+      <div id="about-snapr" class="snapr-welcome-bg special-bg" data-role="dialog" data-overlay-theme="c" data-theme="c">
+          <div data-role="header" data-theme="c">
+              <h1>About Snapr</h1>
+              <a class="x-back" data-role="button" data-icon="delete" data-iconpos="notext"></a>
+          </div>
+          <div data-role="content" data-theme="d" data-ajax="false">
+              <div class="inset-page-content wrap-content">
+                      <ul data-role="listview" data-ajax="false" class="" data-inset="true" data-theme="d">
+
+                          <li>
+                             
+                              <p>Snapr is a new service that makes it easy for people to make their own photo sharing apps for different activities, interests, or causes. </p>
+
+                              <p>Login with Snapr so you can keep track off your photos from different apps all in one place.</p>
+
+                              
+                          </li>
+                          <li>
+                                <a href="#/get-snapr/">Download Snapr</a>
+                          </li>
+                         
+                          </ul>
+
+
+              </div>
+          </div>
+      </div>
 
     <!-- @snapr-apps PAGE-->
     <div id="snapr-apps" class="welcome-bg special-bg" data-role="dialog" data-overlay-theme="c" data-theme="c">
@@ -2211,9 +2234,12 @@
                             <label for="password">Password</label><input type="password" name="password" placeholder="Password" id="login-dialog-password">
                         </li>
                     </ul>
-
-                    <input type="submit" name="login" data-theme="e" value="Log In">
-
+                    <div class="invisible-submit-button">
+                    <input type="submit" name="login" data-theme="e" value="Log In with Snapr">
+                    </div>
+                    <a data-role="button" class="snapr-button logo-button" data-theme="e">Login with <span class="snapr-logo button-logo">Snapr</span></a>
+                    
+                    
                 </form>
 
                 <p class="block-link"><a href="#/forgot-password/">Forgot Password?</a></p>
@@ -2225,7 +2251,7 @@
                  <a data-role="button" class="facebook-button logo-button" data-theme="e">Login with <span class="facebook-logo button-logo">Facebook</span></a>
 
                 <p class="centered-link">
-                    <a href="#/join/">Join Snapr &rsaquo;</a></li>
+                    <a href="#/join/">About Snapr</a> &middot; <a href="#/join/">Join Snapr &rsaquo;</a></li>
                 </p>
 
             </div>

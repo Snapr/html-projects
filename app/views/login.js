@@ -19,6 +19,7 @@ return page_view.extend({
 
     events: {
         "submit #login-dialog":"log_in",
+        "click .snapr-button": "log_in",
         "click .twitter-button": 'twitter_login',
         "click .facebook-button": 'facebook_login'
     },

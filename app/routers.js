@@ -3,6 +3,7 @@ define(['config', 'backbone', 'auth', 'utils/local_storage', 'native'], function
 
 var pages = [
     'about',
+    'about-snapr',
     'map',
     'app',
     'login',
