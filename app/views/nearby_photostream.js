@@ -14,6 +14,9 @@ var nearby_photostream_view = Backbone.View.extend({
             sort:'weighted_score'
         };
     },
+    events: {
+        "click #home-nearby-link": "go_to_feed"
+    },
     refresh: function () {
 
         var this_view = this;
@@ -69,6 +72,11 @@ var nearby_photostream_view = Backbone.View.extend({
             $stream.append( stream_item.el );
             stream_item.render();
         });
+    },
+    go_to_feed: function(){
+        var params = _.clone(this.search_options);
+        delete params.n;
+        Backbone.history.navigate( "#/feed/?" + $.param(params) );
     }
 
 });
