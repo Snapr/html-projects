@@ -11,7 +11,8 @@ return Backbone.View.extend({
 		if (auth.has("access_token")) {
 			auth.user_settings.fetch({
 				data: {
-					user_object: true
+					user_object: true,
+					linked_services: true  // get this too bacuse the results are cached for my_account page.
 				},
 				success: function () {
 					view.render();

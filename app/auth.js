@@ -67,7 +67,6 @@ var auth_model = Backbone.Model.extend({
 
     save_display_username: function(save, display, username){
         this.set({'display_username': this.user_settings.get('user').display_username}, {silent:true});
-        console.log('settings changed', this.attributes);
         local_storage.set('auth', this.attributes);
     },
 

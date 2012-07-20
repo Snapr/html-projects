@@ -1,5 +1,5 @@
 /*global _  define require */
-define(['config', 'backbone', 'auth', 'utils/local_storage', 'native'], function(config, Backbone, auth, local_storage, native) {
+define(['config', 'backbone', 'auth', 'utils/local_storage', 'native', 'utils/alerts', 'utils/query'], function(config, Backbone, auth, local_storage, native, alerts, Query) {
 
 var pages = [
     'about',
@@ -94,15 +94,17 @@ function get_query_params(query) {
     var params = {};
     if(query && query.indexOf('=') > -1) {
         _.each(query.split('&'), function (part) {
+
             var kv = part.split('='),
                 key = kv[0],
                 value = kv[1];
-            if(kv[0] == "zoom") {
+
+            if(key == "zoom") {
                 params[key] = parseInt(unescape(value), 10);
             } else {
                 if(_.indexOf(["access_token", "snapr_user"], key) > -1) {
                     var obj = {};
-                    obj[kv[0]] = unescape(kv[1]);
+                    obj[key] = unescape(value);
                     auth.set(obj);
                     auth.save_locally();
                 } else if(_.indexOf(["snapr_user_public_group", "snapr_user_public_group_name", "appmode", "demo_mode", "environment", "browser_testing", "aviary", "camplus", "camplus_camera", "camplus_edit", "camplus_lightbox"], kv[0]) > -1) {
@@ -124,6 +126,17 @@ function get_query_params(query) {
 
     var env = local_storage.get('environment');
     config.set('environment', env);
+
+    if(params.facebook_signin && auth.get('access_token')){
+        alerts.notification('Logged in as ' + (params.display_username || auth.get('snapr_user')));
+        query = new Query(query);
+        query.remove('facebook_signin');
+        if(Backbone.History.started){
+            Backbone.history.navigate( "#/?" + query.toString(), true );  // strip login params
+        }else{
+            window.location.hash = "#/?" + query.toString();
+        }
+    }
 
     return params;
 }
