@@ -1,6 +1,6 @@
 /*global _  define require */
-define(['config', 'backbone', 'views/base/page', 'jquery', 'validate', 'models/user_settings', 'auth'],
-    function(config, Backbone, page_view, $, validate, user_settings, auth){
+define(['config', 'backbone', 'views/base/page', 'jquery', 'validate', 'models/user_settings', 'auth', 'utils/link_service'],
+    function(config, Backbone, page_view, $, validate, user_settings, auth, link_service){
 
 var join_dialog = page_view.extend({
 
@@ -91,7 +91,9 @@ var join_dialog = page_view.extend({
 
     events: {
         "submit #join-dialog": "join",
-        "click .twitter-button": 'twitter_login'
+        "click .twitter-button": 'twitter_login',
+        "click .facebook-button": 'facebook_login'
+        
     },
 
     join: function(){
@@ -149,6 +151,11 @@ var join_dialog = page_view.extend({
 
     twitter_login: function(){
         Backbone.history.navigate( "#/twitter-xauth/?signin=true" );
+    },
+    facebook_login: function(){
+        var next = window.location.href;
+        next += next.indexOf('?') == -1 ? '?facebook_signin=true' : '&facebook_signin=true';
+        link_service('facebook', next, !!'signin');
     }
 });
 

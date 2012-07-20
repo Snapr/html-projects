@@ -4650,10 +4650,10 @@ body.browser-testing .ps-caption-bottom {
   /* Opera 11.10+ */
 
   background-image: linear-gradient(bottom, #507ab8 0%, #507ab8 70%, #4872b1 100%);
-  color: #333333;
+  color: white;
 }
 .facebook-button.ui-btn-down-e a.ui-link-inherit {
-  color: #333333;
+  color: white;
 }
 .snapr-button.ui-btn-up-e {
   background: #ffff00;
