@@ -7,12 +7,14 @@ var nearby_photostream_view = Backbone.View.extend({
     template: _.template( $("#nearby-photostream-template").html() ),
     collection: new photo_collection(),
 
+    defaults: {
+        n: 4,
+        sort:'weighted_score'
+    },
+
     initialize: function () {
         this.render();
-        this.search_options = {
-            n: 4,
-            sort:'weighted_score'
-        };
+        this.search_options = this.defaults;
     },
     events: {
         "click #home-nearby-link": "go_to_feed"
@@ -31,6 +33,7 @@ var nearby_photostream_view = Backbone.View.extend({
 
         var error_callback = function() {
             this_view.fetch_photos();
+            this_view.$el.find('#home-nearby-link .ui-btn-text').text('Popular Images')
         };
 
         geo.get_location( success_callback, error_callback );
@@ -53,11 +56,24 @@ var nearby_photostream_view = Backbone.View.extend({
         this_view.collection.fetch({
             data: this.search_options,
             success: function() {
+                // search for popular images if nothing is found nearby
+                if (this_view.collection.length === 0 && this_view.search_options.nearby) {
+                    this_view.$el.find('#home-nearby-link .ui-btn-text').text('Popular Images');
+                    this_view.search_options = this_view.defaults;
+                    this_view.fetch_photos();
+                    return;
+                }
                 // Check to see if the photo's have changed. If all the ID's are the same don't re-render
                 var photos_changed = this_view.collection.all(function (photo) {
                     return ($.inArray(photo.get('id'), current_photo_ids) === -1);
                 });
                 photos_changed && this_view.render_photos();
+            },
+            error: function () {
+                // if we have no photos already and something goes wrong show 'offline'.
+                if (current_photo_ids.length === 0) {
+                    this_view.$el.find('#home-nearby-link .ui-btn-text').text('Offline');
+                }
             }
         });
     },
