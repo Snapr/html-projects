@@ -91,7 +91,6 @@ var spot_view = page_view.extend({
                 longitude: spot_view.model.get('longitude')
             },
             success: function() {
-                console.log(spot_view.photos);
                 spot_view.render();
             } 
         });
@@ -120,7 +119,6 @@ var spot_view = page_view.extend({
         this.photos = new photo_collection(this.photos.filter(function (model) {
             return spot_view.model.get('info').hero_image === null || model.get('secret') !== spot_view.model.get('info').hero_image.secret;
         }));
-        console.log(spot_view.photos);
         if (this.photos.length > 0) {
             var stream_li = new spot_image_stream({
                 collection: this.photos,
