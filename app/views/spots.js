@@ -18,7 +18,8 @@ var spots_view =  page_view.extend({
 
         this.collection = new spot_collection();
         this.collection.on('all', this.render, this);
-        this.$el.find('.spots-results-header').hide();
+        this.spot_results_header = new spot_results_header_view();
+        this.$el.find('ul.spots').before(this.spot_results_header.el);
     },
 
     post_activate: function(options) {
@@ -61,8 +62,7 @@ var spots_view =  page_view.extend({
     },
 
     render: function() {
-        var spots_list = this.$el.find("ul.spots").empty(),
-            results_header = this.$el.find('.spots-results-header');
+        var spots_list = this.$el.find("ul.spots").empty();
 
         if(this.collection.length){
             //no_results.$el.remove();  // use remove(), hide() keeps it hidden and requires show() later
@@ -75,15 +75,11 @@ var spots_view =  page_view.extend({
                 spots_list.append( li.el );
                 li.render();
             });
-            results_header.show();
+            this.spot_results_header.show();
 
         }
-        else {
-            //no_results.render('Oops.. Nobody here yet.', 'delete').$el.appendTo(this.$el);
-            results_header.hide();
-        }
 
-        results_header.find("em").text(this.collection.length + " results");
+        this.spot_results_header.render(this.collection.length);
         this.$el.removeClass('loading');
         spots_list.listview().listview("refresh");
     },
@@ -171,6 +167,23 @@ var spots_item = Backbone.View.extend({
         this.$el.html( this.template({
             spot: this.model
         }));
+    }
+});
+
+var spot_results_header_view = Backbone.View.extend({
+    template: _.template( $("#spots-result-header").html() ),
+    
+    render: function (results) {
+        this.$el.html( this.template({
+            results: results
+        }));
+        this.$el.find('[data-role="button"]').button();
+    },
+    hide: function () {
+        this.$el.hide();
+    },
+    show: function () {
+        this.$el.show();
     }
 });
 
