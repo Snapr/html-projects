@@ -5,12 +5,13 @@ function(Backbone, page_view, spot_model, side_scroll, photo_collection, users_c
 var spot_view = page_view.extend({
 
     post_initialize: function() {
-        this.photos = new photo_collection();
+        
         this.top_users = new users_collection();
     },
 
     post_activate: function(options) {
         this.model = new spot_model();
+        this.photos = new photo_collection();
 
 
         this.$el.find('.top-users-heading').hide();
@@ -68,8 +69,31 @@ var spot_view = page_view.extend({
                 spot: spot_view.spot_id
             },
             success: function(){
-                spot_view.render();
+                if(spot_view.photos.length === 0) {
+                    spot_view.fetch_nearby_photos();
+                }
+                else {
+                    spot_view.render();
+                }
             }
+        });
+    },
+    fetch_nearby_photos: function () {
+        var spot_view = this;
+        spot_view.photos.data = {};
+        spot_view.photos.fetch({
+            data:{
+                n:6,
+                sort:'weighted_score',
+                nearby: true,
+                radius: 1000,
+                latitude: spot_view.model.get('latitude'),
+                longitude: spot_view.model.get('longitude')
+            },
+            success: function() {
+                console.log(spot_view.photos);
+                spot_view.render();
+            } 
         });
     },
 
@@ -94,8 +118,9 @@ var spot_view = page_view.extend({
 
         // Filter out the photo that is the hero image
         this.photos = new photo_collection(this.photos.filter(function (model) {
-            return spot_view.model.get('info').hero_image && model.get('secret') !== spot_view.model.get('info').hero_image.secret;
+            return spot_view.model.get('info').hero_image === null || model.get('secret') !== spot_view.model.get('info').hero_image.secret;
         }));
+        console.log(spot_view.photos);
         if (this.photos.length > 0) {
             var stream_li = new spot_image_stream({
                 collection: this.photos,
@@ -151,7 +176,6 @@ var spot_image_stream = side_scroll.extend({
         this.details = {
             spot: this.options.spot
         };
-
         
         this.collection.data = {
             spot: this.details.spot,
