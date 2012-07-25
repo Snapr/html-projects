@@ -33,8 +33,8 @@ string_utils.hashtag_links = function( comment ){
     if (comment.length){
         var hashcomment = comment.replace( /[#]+[A-Za-z0-9\-_]+/g,
             function( k ){
-                var keyword = k.replace('#', '');
-                return '<a href="#/feed/?keywords=' + keyword + '">' + k + '</a>';
+                var keyword = '%23' + k.replace('#', '');
+                return '<a href="#/feed/?keywords=' + k + '">' + k + '</a>';
             }
         );
         return hashcomment;
