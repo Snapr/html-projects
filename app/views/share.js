@@ -63,21 +63,21 @@ return page_view.extend({
             img_url = this.model.get("photo_path");
         }
 
-        var saved_description = this.$('#description').val('');
+        var saved_description = this.$('#description').val();
 
         this.$el.find("[data-role='content']").html( this.template({
             img_url: img_url,
             screen_height: window.innerHeight,
             photo: this.model,
             status: local_storage.get( "status" ),
-            share_location: local_storage.get( "share-location" ) !== 'false',
-            facebook_sharing: local_storage.get( "facebook-sharing" ) == 'true',
-            tumblr_sharing: local_storage.get( "tumblr-sharing" ) == 'true',
-            foursquare_sharing: local_storage.get( "foursquare-sharing" ) == 'true',
-            twitter_sharing: local_storage.get( "twitter-sharing" ) == 'true',
-            edit: (local_storage.get( "aviary" )  == "true" || local_storage.get( "camplus_edit" )  == "true" ),
-            camplus: local_storage.get( "camplus" )  == "true",
-            saved_description: saved_description
+            share_location: local_storage.get( "share-location" ),
+            facebook_sharing: local_storage.get( "facebook-sharing" ),
+            tumblr_sharing: local_storage.get( "tumblr-sharing" ),
+            foursquare_sharing: local_storage.get( "foursquare-sharing" ),
+            twitter_sharing: local_storage.get( "twitter-sharing" ),
+            edit: (local_storage.get( "aviary" ) || local_storage.get( "camplus_edit" ) ),
+            camplus: local_storage.get( "camplus" ),
+            saved_description: saved_description || ''
         }) ).trigger("create");
 
         return this;
