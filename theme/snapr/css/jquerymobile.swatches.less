@@ -389,6 +389,32 @@
                  .box-shadow(none);
                  }
            }
+           
+           /* System bar */
+           .ui-btn-up-c.system-bar,
+           .ui-btn-hover-c.system-bar,
+           .ui-btn-down-c.system-bar,
+           .ui-btn-active-c.system-bar   {
+                    .corner-all(@corner-fully-rounded);
+                    display: block;
+                    position: relative;
+                    border: none;
+                    color: white;
+                    text-shadow: @color-shadow-medium-on-dark 0px -1px 0px;
+                    
+            }
+            .ui-btn-up-c.system-bar{
+                background-color: @color-bg-system-main;
+                .linear-gradient(@color-bg-system-main, @color-bg-system-main-tint);
+            }
+            .ui-btn-hover-c.system-bar{
+                background-color: lighten(@color-bg-system-main, 10%);
+                .linear-gradient(darken(@color-bg-system-main, 10%), darken(@color-bg-system-main-tint, 10%));
+            }
+            .ui-btn-down-c.system-bar{
+                background-color: lighten(@color-bg-system-main-tint, 3%);
+                .pressed-gradient(@color-bg-system-main-tint, 3%);
+            }
       }
       .ui-btn{
           text-shadow: 0 1px 1px @color-shadow-medium-on-light;

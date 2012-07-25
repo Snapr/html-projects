@@ -149,6 +149,30 @@
     left: auto!important;
 }
 
+.system-bar{
+    display: block;
+    position: relative;
+    .corner-all(@corner-fully-rounded);
+    color: white;
+    text-shadow: @color-shadow-medium-on-dark 0px -1px 0px;
+    background-color: @color-bg-system-main;
+    .linear-gradient(@color-bg-system-main, @color-bg-system-main-tint);
+    
+    strong{
+        font-size: @txt-size-bar-heading;
+        .ui-bar-font();
+    }
+    .ui-icon-play{
+        position: absolute;
+        left: -29px!important;
+        margin-top: -16px!important;
+    }
+    .ui-btn-inner{
+        padding: 7px 32px;
+        text-align: left;
+    }
+}
+
 /* Bar style tabbed nav like at the top of the popular page */
 .ui-navbar{
     margin: 0 -@padding-page-inset;

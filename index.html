@@ -220,11 +220,16 @@
 
     <div class="myaccount-header page-inset-header ui-body-c">
         <div class="ui-content">
+        
+        
+        
          <a class="username" href="#/feed/?username=<%= username %>">
                 <div class="user-icon-small" style="background-image: url('<%= config.get('avatar_url') %>/<%= user_id %>?size=large&_salt=<%= settings.profile.avatar_type %>');"></div>
                 <%= display_username %>
             </a>
                 <a href="#/logout/" class="logout-button" data-role="button" data-icon="delete" data-iconpos="right">Logout</a>
+                
+               
         </div>
 
     </div>
@@ -2441,6 +2446,15 @@
         </div>
 
     </div>
+    
+     <!-- MARKUP for resume queue btn
+     
+     <a class="x-resume-queue system-bar resume-upload-queue extra-icons" data-role="button" data-iconpos="right" data-icon="refresh">
+                    <span class="ui-icon ui-icon-play"></span>
+                    <strong>Queue Paused</strong>
+                    <span class="small-text">Resume?</span>
+    </a> 
+    -->
 
     <!-- @upload @uploadprogress ITEM - template for upload progress header -->
     <script id="upload-progress-li-template" type="text/template">
