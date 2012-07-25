@@ -102,7 +102,7 @@ function get_query_params(query) {
             if(key == "zoom") {
                 params[key] = parseInt(unescape(value), 10);
             } else {
-                if(_.indexOf(["access_token", "snapr_user"], key) > -1) {
+                if(_.indexOf(["access_token", "snapr_user", "display_username"], key) > -1) {
                     var obj = {};
                     obj[key] = unescape(value);
                     auth.set(obj);
