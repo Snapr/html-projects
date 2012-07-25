@@ -12,6 +12,7 @@ return page_view.extend({
     post_activate: function(options){
         this.$('.image-placeholder img').attr('src', '');
         this.change_page();
+        this.$('#description').val();
 
         this.query = options.query;
         if(this.query.latitude === "0.000000"){ delete this.query.latitude; }
@@ -62,6 +63,8 @@ return page_view.extend({
             img_url = this.model.get("photo_path");
         }
 
+        var saved_description = this.$('#description').val('');
+
         this.$el.find("[data-role='content']").html( this.template({
             img_url: img_url,
             screen_height: window.innerHeight,
@@ -73,7 +76,8 @@ return page_view.extend({
             foursquare_sharing: local_storage.get( "foursquare-sharing" ) == 'true',
             twitter_sharing: local_storage.get( "twitter-sharing" ) == 'true',
             edit: (local_storage.get( "aviary" )  == "true" || local_storage.get( "camplus_edit" )  == "true" ),
-            camplus: local_storage.get( "camplus" )  == "true"
+            camplus: local_storage.get( "camplus" )  == "true",
+            saved_description: saved_description
         }) ).trigger("create");
 
         return this;
