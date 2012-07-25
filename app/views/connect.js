@@ -14,7 +14,11 @@ var connect_page = page_view.extend({
         this.photo_id = this.query.get('photo_id');
         this.shared = this.query.get('shared') ? this.query.get('shared').split(','): [];
         this.to_link = this.query.get('to_link') ? this.query.get('to_link').split(','): [];
-        this.redirect_url = this.query.get('redirect_url') || "#/";  //  = "/"
+        this.redirect_url = this.query.get('redirect_url') || "#/";
+        if(this.redirect_url.indexOf('#') > 0){
+            this.redirect_url = '#' + this.redirect_url.split('#')[1];
+        }
+        this.redirect_url = this.redirect_url.replace('#?', '#/?');
 
         this.render();
 
