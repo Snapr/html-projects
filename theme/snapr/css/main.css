@@ -5430,6 +5430,12 @@ body.browser-testing .ps-caption-bottom {
 .share-photo .image-options .show-upload-settings {
   display: none;
 }
+.share-photo .show-upload-settings .image-controls {
+  position: absolute;
+  bottom: 0;
+  right: 8px;
+  display: none;
+}
 .share-photo.show-image .upload-settings-layer {
   display: none;
 }
@@ -5444,11 +5450,6 @@ body.browser-testing .ps-caption-bottom {
 }
 .share-photo.show-image .show-upload-settings .image-controls {
   display: block;
-}
-.share-photo .show-upload-settings .image-controls {
-  position: absolute;
-  bottom: 0;
-  right: 8px;
 }
 .share-photo .upload-image-layer {
   position: absolute;

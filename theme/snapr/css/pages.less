@@ -896,6 +896,14 @@
     .image-options .show-upload-settings{
         display: none;
     }
+    .show-upload-settings{
+       .image-controls{
+           position: absolute;
+           bottom: 0;
+           right: @padding-page-inset;
+           display: none;
+       }
+    }
     &.show-image{
        .upload-settings-layer{
            display: none;
@@ -913,13 +921,7 @@
            display: block;
         }
     }
-    .show-upload-settings{
-        .image-controls{
-            position: absolute;
-            bottom: 0;
-            right: @padding-page-inset;
-        }
-    }
+   
     .upload-image-layer{
         position: absolute;
         width: 100%;
