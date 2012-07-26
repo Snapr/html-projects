@@ -48,8 +48,13 @@ var nearby_photostream_view = Backbone.View.extend({
     },
     fetch_photos: function () {
 
+
         var this_view = this,
             current_photo_ids = this.collection.pluck('id');
+
+        if(current_photo_ids.length === 0){
+            this.$el.addClass('loading');
+        }
 
         this.collection.data = this.search_options;
         this.collection.fetch({
@@ -64,9 +69,11 @@ var nearby_photostream_view = Backbone.View.extend({
                         return;
                     }else{
                         this_view.$el.addClass('no-images');
+                        this_view.$el.removeClass('loading');
                         return;
                     }
                 }
+                this_view.$el.removeClass('loading');
                 // Check to see if the photo's have changed. If all the ID's are the same don't re-render
                 var photos_changed = this_view.collection.all(function (photo) {
                     return ($.inArray(photo.get('id'), current_photo_ids) === -1);
