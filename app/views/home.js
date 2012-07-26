@@ -28,6 +28,10 @@ return page_view.extend({
         this.upload_count(config.get('upload_count'));
     },
 
+    dialog_closed: function(){
+        this.nearby_photostream.refresh();
+    },
+
     render: function(){
         this.$el
             .find("[data-role='content']")
