@@ -89,7 +89,7 @@ return page_view.extend({
         this.photo_collection.data = this.query;
         this.photo_collection.data.n = this.photo_collection.data.n || config.get('feed_count');
         this.photo_collection.data.detail = 2;
-        this.photo_collection.data.list_style && delete this.photo_collection.data.list_style;
+        if(this.photo_collection.data.list_style){ delete this.photo_collection.data.list_style; }
 
         this.populate_feed();
         this.update_uploads();
@@ -115,10 +115,11 @@ return page_view.extend({
             success: function( collection, response ){
                 if(collection.length){
                     feed_view.feed_list = new feed_list({
-                        el: feed_view.$el.find('#feed-images')[0],
+                        el: feed_view.$('#feed-images')[0],
                         collection: feed_view.photo_collection,
                         list_style: list_style
                     });
+                    feed_view.photo_collection.on('remove', feed_view.photoswipe_init);
 
                     feed_view.feed_list.render( feed_view.photoswipe_init );
                     $.mobile.hidePageLoadingMsg();

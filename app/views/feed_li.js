@@ -292,8 +292,7 @@ var show_all_button = Backbone.View.extend({
 
 var reactions = Backbone.View.extend({
 
-    initialize: function()
-    {
+    initialize: function(){
         _.bindAll( this );
         $(this.options.el).undelegate();
         this.setElement( this.options.el );
@@ -307,11 +306,9 @@ var reactions = Backbone.View.extend({
         this.template = _.template( $('#reaction-li-template').html() );
     },
 
-    render: function()
-    {
+    render: function(){
         this.$el.empty();
-        _.each( this.collection.models, function( reaction )
-        {
+        _.each( this.collection.models, function( reaction ){
             this.$el.append(this.template({
                 reaction: reaction
             }));
@@ -423,20 +420,21 @@ var photo_manage = Backbone.View.extend({
                 'no': 'Cancel',
                 'yes_callback': function(){
                     photo_manage.model['delete']({
-                    success: function( resp ){
-                        if (resp.success){
-                            photo_manage.model.collection.remove( photo_manage.model );
-                        }else{
-                            console.warn("error deleting photo", resp);
+                        success: function( resp ){
+                            if (resp.success){
+                                photo_manage.model.collection.remove( photo_manage.model );
+
+                            }else{
+                                console.warn("error deleting photo", resp);
+                            }
+                            photo_manage.$('.x-image-delete').x_loading(false);
+                        },
+                        error: function( e ){
+                            console.warn("error deleting photo", e);
+                            photo_manage.$('.x-image-delete').x_loading(false);
                         }
-                        photo_manage.$('.x-image-delete').x_loading(false);
-                    },
-                    error: function( e ){
-                        console.warn("error deleting photo", e);
-                        photo_manage.$('.x-image-delete').x_loading(false);
-                    }
-                });
-            },
+                    });
+                },
                 'no_callback': function(){ photo_manage.$('.x-image-delete').x_loading(false); }
             });
         })();
