@@ -4522,6 +4522,9 @@ body.browser-testing .ps-caption-bottom {
   -webkit-animation-iteration-count: infinite;
   -webkit-animation-timing-function: linear;
 }
+.menu-main .menu-stream.thumbs-block.no-images .ui-icon-arrow-r {
+  display: none;
+}
 /*
 * @login - Custom
 */
