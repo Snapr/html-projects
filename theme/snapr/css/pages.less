@@ -143,6 +143,7 @@
                     
                 }
             }
+            
         }
         
         .thumbs-preview-stream{
@@ -152,6 +153,12 @@
             li{
                 display: inline-block;
                
+            }
+        }
+        &.loading{
+            .ui-icon-arrow-r{
+                .spinner('../gfx/small-spinner-dark.png');
+                .spin();
             }
         }
     }

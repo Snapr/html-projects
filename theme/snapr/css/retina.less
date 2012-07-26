@@ -136,9 +136,7 @@
         background-image: url('../gfx/retina/service-full-logos.png');
         .background-size (@gfx-service-logo-sprite-width, @gfx-service-logo-sprite-height);
     }
- 
-    
- 
+  
     .x-validating .ui-icon-validation,
     .extra-icons .ui-icon-spinner,
     .ui-icon-spinner,
@@ -147,7 +145,8 @@
                     .background-size (24px, 24px)!important;
     }
     
-    .x-ajax-loading .ui-icon {
+    .x-ajax-loading .ui-icon,
+    .menu-main .menu-stream.thumbs-block.loading .ui-icon-arrow-r {
                     .spinner('../gfx/retina/small-spinner-dark.png');
                     .background-size (24px, 24px)!important;
     }
@@ -227,6 +226,14 @@
           }
       }
       
- }
-  
+      .menu-main .menu-stream.thumbs-block .ui-icon-arrow-r{
+            background-image: url('../gfx/retina/general-jquerymob-icons.png');
+            .background-size (@gfx-general-icon-sprite-width, @gfx-general-icon-sprite-height);
+
+        }
+      
+      
+      
+  }
+   
  

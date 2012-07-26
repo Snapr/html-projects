@@ -4510,6 +4510,18 @@ body.browser-testing .ps-caption-bottom {
 .menu-main .menu-stream.thumbs-block .thumbs-preview-stream li {
   display: inline-block;
 }
+.menu-main .menu-stream.thumbs-block.loading .ui-icon-arrow-r {
+  display: block;
+  background-image: url('../gfx/small-spinner-dark.png') !important;
+  background-position: center!important;
+  background-repeat: no-repeat !important;
+  -webkit-transform: rotate(0deg) translatez(0);
+  -webkit-transition-duration: 0ms;
+  -webkit-animation-name: loading;
+  -webkit-animation-duration: 1.2s;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+}
 /*
 * @login - Custom
 */
@@ -6977,7 +6989,8 @@ body.browser-testing .ps-caption-bottom {
     -webkit-background-size: 24px 24px !important;
     background-size: 24px 24px !important;
   }
-  .x-ajax-loading .ui-icon {
+  .x-ajax-loading .ui-icon,
+  .menu-main .menu-stream.thumbs-block.loading .ui-icon-arrow-r {
     display: block;
     background-image: url('../gfx/retina/small-spinner-dark.png') !important;
     background-position: center!important;
@@ -7075,5 +7088,12 @@ body.browser-testing .ps-caption-bottom {
     -o-background-size: 69px 24px;
     -webkit-background-size: 69px 24px;
     background-size: 69px 24px;
+  }
+  .menu-main .menu-stream.thumbs-block .ui-icon-arrow-r {
+    background-image: url('../gfx/retina/general-jquerymob-icons.png');
+    -moz-background-size: 774px 180px;
+    -o-background-size: 774px 180px;
+    -webkit-background-size: 774px 180px;
+    background-size: 774px 180px;
   }
 }
