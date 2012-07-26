@@ -128,7 +128,7 @@ function get_query_params(query) {
     config.set('environment', env);
 
     if(params.facebook_signin && auth.get('access_token')){
-        alerts.notification('Logged in as ' + (params.display_username || auth.get('snapr_user')));
+        alerts.notification('Logged in as ' + (auth.get('display_username') || auth.get('snapr_user')));
         query = new Query(query);
         query.remove('facebook_signin');
         if(Backbone.History.started){
