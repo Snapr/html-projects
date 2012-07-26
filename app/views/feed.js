@@ -17,7 +17,7 @@ return page_view.extend({
         });
         config.on('change:paused', function(){
             if(config.get('paused')){
-                feed_view.$el.prepend(paused_el).trigger("create");
+                feed_view.$(".feed-upload-list").prepend(paused_el).trigger("create");
             }else{
                 $('.x-resume-queue').remove();
             }
@@ -223,7 +223,7 @@ return page_view.extend({
                 this.$el.addClass("showing-upload-queue");
             }
 
-            this.$el.find(".feed-upload-list").listview().listview("refresh");
+            this.$(".feed-upload-list").listview().listview("refresh");
         }
     },
 

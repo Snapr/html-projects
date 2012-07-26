@@ -15,7 +15,7 @@ var uploading = page_view.extend({
         });
         config.on('change:paused', function(){
             if(config.get('paused')){
-                view.$el.prepend(paused_el).trigger("create");
+                view.$('.upload-progress-header').prepend(paused_el).trigger("create");
             }else{
                 $('.x-resume-queue').remove();
             }
