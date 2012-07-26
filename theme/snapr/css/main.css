@@ -5913,7 +5913,7 @@ body.browser-testing .ps-caption-bottom {
   display: block;
   position: absolute;
   width: 34px;
-  padding-right: 4px;
+  padding-right: 0;
   height: 34px;
   background: #ffff00;
   background-image: -webkit-gradient(linear, left top, left bottom, from(#ffe400), to(#ffff00));
