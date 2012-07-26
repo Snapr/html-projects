@@ -8,8 +8,7 @@ var offline = Backbone.View.extend({
         this.template = _.template( $("#offline-template").html() );
     },
 
-    render: function(message, icon)
-    {
+    render: function(message, icon){
         this.setElement(
             $( this.template() )
             .trigger("create")

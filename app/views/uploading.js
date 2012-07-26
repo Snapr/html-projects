@@ -1,7 +1,7 @@
 /*global _  define require */
 define(['backbone', 'views/base/page', 'views/upload_progress_li', 'collections/upload_progress',
-    'models/photo', 'views/base/side_scroll', 'collections/photo', 'utils/local_storage', 'utils/alerts', 'native', 'config'],
-function(Backbone, page_view, upload_progress_li, upload_progress, photo_model, side_scroll, photo_collection, local_storage, alerts, native, config){
+    'models/photo', 'views/base/side_scroll', 'collections/photo', 'utils/local_storage', 'utils/alerts', 'native', 'config', 'views/components/paused'],
+function(Backbone, page_view, upload_progress_li, upload_progress, photo_model, side_scroll, photo_collection, local_storage, alerts, native, config, paused_el){
 
 var uploading = page_view.extend({
 
@@ -12,6 +12,13 @@ var uploading = page_view.extend({
         });
         this.$el.on( "pagehide", function(){
             view.watch_uploads(false);
+        });
+        config.on('change:paused', function(){
+            if(config.get('paused')){
+                view.$el.prepend(paused_el).trigger("create");
+            }else{
+                $('.x-resume-queue').remove();
+            }
         });
     },
 

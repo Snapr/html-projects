@@ -1,8 +1,8 @@
 /*global _  define require */
 define(['config', 'views/base/page', 'models/user', 'views/user_header', 'views/feed_header',
-    'collections/photo', 'views/feed_list', 'utils/photoswipe', 'views/upload_progress_li', 'collections/upload_progress',  'auth'],
+    'collections/photo', 'views/feed_list', 'utils/photoswipe', 'views/upload_progress_li', 'collections/upload_progress',  'auth', 'views/components/paused'],
 function(config, page_view, user_model, user_header, feed_header, photo_collection,
-    feed_list, photoswipe, upload_progress_li, upload_progress, auth){
+    feed_list, photoswipe, upload_progress_li, upload_progress, auth, paused_el){
 
 return page_view.extend({
 
@@ -14,6 +14,13 @@ return page_view.extend({
         });
         this.$el.on( "pagehide", function(){
             feed_view.watch_uploads(false);
+        });
+        config.on('change:paused', function(){
+            if(config.get('paused')){
+                feed_view.$el.prepend(paused_el).trigger("create");
+            }else{
+                $('.x-resume-queue').remove();
+            }
         });
     },
 

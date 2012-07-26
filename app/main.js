@@ -47,8 +47,8 @@ require(['routers'], function(routers){
     routers.routers_instance = routers_instance;
 });
 
-require(['config', 'jquery', 'backbone', 'photoswipe', 'auth', 'utils/local_storage', 'native', 'utils/dialog', 'views/components/offline', 'utils/alerts'],
-    function(config, $, Backbone, PhotoSwipe, auth, local_storage, native, dialog, offline_el, alerts) {
+require(['config', 'jquery', 'backbone', 'photoswipe', 'auth', 'utils/local_storage', 'native', 'utils/dialog', 'utils/alerts'],
+    function(config, $, Backbone, PhotoSwipe, auth, local_storage, native, dialog, alerts) {
 
     /* disable jquery-mobile's hash nav so we can replace it with backbone.js
     ***************************/
