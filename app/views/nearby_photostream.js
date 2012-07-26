@@ -14,7 +14,7 @@ var nearby_photostream_view = Backbone.View.extend({
 
     initialize: function () {
         this.render();
-        this.search_options = this.defaults;
+        this.search_options = _.clone(this.defaults);
     },
     events: {
         "click #home-nearby-link": "go_to_feed"
@@ -33,7 +33,7 @@ var nearby_photostream_view = Backbone.View.extend({
 
         var error_callback = function() {
             this_view.fetch_photos();
-            this_view.$el.find('#home-nearby-link .ui-btn-text').text('Popular Images')
+            this_view.$el.find('#home-nearby-link .ui-btn-text').text('Popular Images');
         };
 
         geo.get_location( success_callback, error_callback );
@@ -49,19 +49,23 @@ var nearby_photostream_view = Backbone.View.extend({
     fetch_photos: function () {
 
         var this_view = this,
-            current_photo_ids = this.collection.map(function (photo) {
-                return photo.get('id');
-            });
+            current_photo_ids = this.collection.pluck('id');
 
-        this_view.collection.fetch({
-            data: this.search_options,
+        this.collection.data = this.search_options;
+        this.collection.fetch({
+            no_offline_mode: true,
             success: function() {
                 // search for popular images if nothing is found nearby
-                if (this_view.collection.length === 0 && this_view.search_options.nearby) {
-                    this_view.$el.find('#home-nearby-link .ui-btn-text').text('Popular Images');
-                    this_view.search_options = this_view.defaults;
-                    this_view.fetch_photos();
-                    return;
+                if (this_view.collection.length === 0){
+                    if(this_view.search_options.nearby) {
+                        this_view.$el.find('#home-nearby-link .ui-btn-text').text('Popular Images');
+                        this_view.search_options = _.clone(this_view.defaults);
+                        this_view.fetch_photos();
+                        return;
+                    }else{
+                        this_view.$el.addClass('no-images');
+                        return;
+                    }
                 }
                 // Check to see if the photo's have changed. If all the ID's are the same don't re-render
                 var photos_changed = this_view.collection.all(function (photo) {
@@ -78,8 +82,8 @@ var nearby_photostream_view = Backbone.View.extend({
         });
     },
     render_photos: function () {
-
-        var $stream = this.$el.find('.thumbs-preview-stream').empty();
+        this.$el.removeClass('no-images');
+        var $stream = this.$('.thumbs-preview-stream').empty();
         this.collection.each(function (photo) {
             var stream_item = new nearby_photostream_item_view({
                 model: photo
