@@ -63,15 +63,20 @@ var nearby_photostream_view = Backbone.View.extend({
                 // search for popular images if nothing is found nearby
                 if (this_view.collection.length === 0){
                     if(this_view.search_options.nearby) {
-                        this_view.$el.find('#home-nearby-link .ui-btn-text').text('Popular Images');
                         this_view.search_options = _.clone(this_view.defaults);
                         this_view.fetch_photos();
                         return;
                     }else{
                         this_view.$el.addClass('no-images');
                         this_view.$el.removeClass('loading');
+                        this_view.$('#home-nearby-link .ui-btn-text').text('No images yet');
                         return;
                     }
+                }
+                if(this_view.search_options.nearby) {
+                    this_view.$('#home-nearby-link .ui-btn-text').text('Nearby Images');
+                }else{
+                    this_view.$('#home-nearby-link .ui-btn-text').text('Popular Images');
                 }
                 this_view.$el.removeClass('loading');
                 // Check to see if the photo's have changed. If all the ID's are the same don't re-render
