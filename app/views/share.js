@@ -43,7 +43,7 @@ return page_view.extend({
 
     events: {
         "change input[name='status']": "toggle_status",
-        "change input[name='share_location']": "toggle_sharing",
+        "change input[name='share-location']": "toggle_sharing",
         "change .upload-image-sharing input": "toggle_sharing",
         "vclick .upload-image-sharing .ui-disabled": "share_alert",
         "click #foursquare-venue": "venue_search",
@@ -70,7 +70,7 @@ return page_view.extend({
             screen_height: window.innerHeight,
             photo: this.model,
             status: local_storage.get( "status" ),
-            share_location: local_storage.get( "share-location" ),
+            share_location: local_storage.get( "share-location" ) !== false,
             facebook_sharing: local_storage.get( "facebook-sharing" ),
             tumblr_sharing: local_storage.get( "tumblr-sharing" ),
             foursquare_sharing: local_storage.get( "foursquare-sharing" ),
@@ -158,7 +158,7 @@ return page_view.extend({
 
     get_reverse_geocode: function(){
 
-        if (local_storage.get( "share-location" ) === 'false'){
+        if (local_storage.get( "share-location" ) === false){
             return;
         }
 
@@ -249,7 +249,7 @@ return page_view.extend({
             status = "private";
         }
 
-        local_storage.save( "status", status );
+        local_storage.set( "status", status );
 
         setTimeout( this.render, 10 );
 
@@ -262,9 +262,9 @@ return page_view.extend({
 
     toggle_sharing: function( e ){
         if ($(e.target).attr("checked")){
-            local_storage.save( e.target.id, true );
+            local_storage.set( e.target.id, true );
         }else{
-            local_storage.save( e.target.id, false );
+            local_storage.set( e.target.id, false );
         }
         if (e.target.id == "foursquare-sharing"){
             this.$el.find("#no-foursquare-sharing-location").toggle();
