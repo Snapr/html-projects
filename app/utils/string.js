@@ -67,7 +67,7 @@ string_utils.convert_snapr_date = function(time){
     time = (time || "").replace(/-/g,"/").replace(/ \//g," -").replace(/[TZ]/g," ");
     return new Date(time);
 };
-string_utils.short_timestamp = function( time, relative ){
+string_utils.short_timestamp = function( time, relative, precision ){
     time = (time || "").replace(/-/g,"/").replace(/ \//g," -").replace(/[TZ]/g," ");
     //add 0000 to set to utc for relative times
     if (relative !== false && time.split(' ').length <3){
@@ -89,6 +89,9 @@ string_utils.short_timestamp = function( time, relative ){
         if ( isNaN(day_diff) || day_diff < 0 )//|| day_diff >= 31 )
             return;
         if (day_diff === 0){
+            if( precision == 'day' ){
+                return 'Today';
+            }
             return(
                 diff < 60 && 'just now' ||
                 diff < 3600 && Math.floor( diff / 60 ) + "min" ||

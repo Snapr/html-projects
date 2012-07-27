@@ -40,7 +40,7 @@ var activity_stream = Backbone.View.extend({
         var time_period,
             photo_events;
         if (this.model.has( "min_date" )){
-            time_period = string_utils.short_timestamp( this.model.get( "min_date" ), true );
+            time_period = string_utils.short_timestamp( this.model.get( "min_date" ), !!'relative', 'day' );
             photo_events = summary && (summary.like || summary.comment || summary.comment_on_comment) ? true: false;
         }else{
             time_period = "Latest";
