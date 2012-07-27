@@ -98,6 +98,19 @@ var auth_model = Backbone.Model.extend({
                 $.proxy(funct, this)(e);
             }
         };
+    },
+
+    // fill in blank display_usernames
+    fill_username: function(user){
+        if(user.display_username === ''){
+            if(user.username == auth.get('snapr_user')){
+                return config.get('me_username');
+            }else{
+                return config.get('anon_username');
+            }
+        }else{
+            return user.display_username;
+        }
     }
 });
 
