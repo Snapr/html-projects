@@ -56,7 +56,7 @@ var nearby_photostream_view = Backbone.View.extend({
             this.$el.addClass('loading');
         }
 
-        this.collection.data = this.search_options;
+        this.collection.data = _.clone(this.search_options);
         this.collection.fetch({
             no_offline_mode: true,
             success: function() {
@@ -67,8 +67,7 @@ var nearby_photostream_view = Backbone.View.extend({
                         this_view.fetch_photos();
                         return;
                     }else{
-                        this_view.$el.addClass('no-images');
-                        this_view.$el.removeClass('loading');
+                        this_view.$el.addClass('no-images').removeClass('loading');
                         this_view.$('#home-nearby-link .ui-btn-text').text('No images yet');
                         return;
                     }
@@ -88,6 +87,7 @@ var nearby_photostream_view = Backbone.View.extend({
             error: function () {
                 // if we have no photos already and something goes wrong show 'offline'.
                 if (current_photo_ids.length === 0) {
+                    this_view.$el.addClass('no-images').removeClass('loading');
                     this_view.$el.find('#home-nearby-link .ui-btn-text').text('Offline');
                 }
             }
