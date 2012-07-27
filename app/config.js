@@ -13,6 +13,8 @@ var config_model = Backbone.Model.extend({
 
         // get_user_points: true // request points when getting users form the api
 
+        // autocreate_fb_users: true, // signin with facebook should create users rather than autofill join form
+
         // anon_username: 'anon', // username displayed when no other available
         // me_username: 'me', // username for logged in user when no other available
 
@@ -70,6 +72,8 @@ var config_model = Backbone.Model.extend({
         geolocation_enabled: true,
 
         get_user_points: false,
+
+        autocreate_fb_users: false,
 
         camplus_options: false,  // show camera-plus options in my-account page
 

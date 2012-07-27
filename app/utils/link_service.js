@@ -22,7 +22,8 @@ return function(service, next, signin){
                 redirect: next,
                 display: 'touch',
                 client_id: config.get("client_id"),
-                client_secret: config.get("client_secret")
+                client_secret: config.get("client_secret"),
+                create: config.get('autocreate_fb_users')
             };
         }else{
             params = {
