@@ -13,6 +13,9 @@ var config_model = Backbone.Model.extend({
 
         // get_user_points: true // request points when getting users form the api
 
+        // anon_username: 'anon', // username displayed when no other available
+        // me_username: 'me', // username for logged in user when no other available
+
         //zoom: 15, // for map
         // feed_count: 9, // number of images to show in feed views
         // map_count: 10, // number of images to show on the map
@@ -71,6 +74,9 @@ var config_model = Backbone.Model.extend({
         camplus_options: false,  // show camera-plus options in my-account page
 
         current_view: null,
+
+        anon_username: 'anon',
+        me_username: 'me',
 
         zoom: 15,
         feed_count: 9,

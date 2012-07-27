@@ -1,5 +1,5 @@
 /*global _  define require */
-define(['config', 'backbone'], function(config, Backbone){
+define(['config', 'backbone', 'auth'], function(config, Backbone, auth){
 return Backbone.Model.extend({
 
     initialize: function( init_options ){
@@ -20,12 +20,17 @@ return Backbone.Model.extend({
     },
 
     parse: function( d, xhr ){
+
         if (d.response && d.response.user){
             if (d.response.details){
                 d.response.user.details = d.response.details;
             }
+
+            d.response.user.display_username = auth.fill_username(d.response.user);
+
             return d.response.user;
         }else if (d.user_id){
+            d.display_username = auth.fill_username(d);
             return d;
         }else{
             return {};

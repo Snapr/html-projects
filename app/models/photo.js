@@ -13,17 +13,15 @@ return Backbone.Model.extend({
 
     parse: function( d, xhr ){
         // handle cases where we're parsing response from a direct server request
-        if (d.response && d.response.photos)
-        {
+        if (d.response && d.response.photos){
+            d.response.photos[0].display_username = auth.fill_username(d.response.photos[0]);
             return d.response.photos[0];
         }
         // handle cases where we're parsing a response from a collection
-        else if (d.id)
-        {
+        else if (d.id){
+            d.display_username = auth.fill_username(d);
             return d;
-        }
-        else
-        {
+        }else{
             return {};
         }
     },

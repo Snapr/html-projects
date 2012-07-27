@@ -50,6 +50,9 @@ return  Backbone.Model.extend({
 
     parse: function( d, xhr ){
         if (d.success && d.response){
+            if(d.response.user.display_username === ''){
+                d.response.user.display_username = config.get('me_username');
+            }
             return d.response;
         }else if (d.success){
             // for new signups just return an empty object
