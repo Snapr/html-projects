@@ -78,16 +78,18 @@ string_utils.short_timestamp = function( time, relative, precision ){
     diff = ((now.getTime() - date.getTime()) / 1000),
     day_diff = Math.floor(diff / 86400);
     date = new Date(time.replace(/ [\+-]\d{4}$/,'')); //strip TZ
+    var ap, hours;
     if (date.getHours() <= 12){
-        var hours = date.getHours(),
+        hours = date.getHours();
         ap = 'AM';
     }else{
-        var hours = date.getHours() -12,
+        hours = date.getHours() -12;
         ap = 'PM';
     }
     if (relative !== false){
-        if ( isNaN(day_diff) || day_diff < 0 )//|| day_diff >= 31 )
-            return;
+        if ( isNaN(day_diff) || day_diff < 0 ){
+            return 'Just now';
+        }
         if (day_diff === 0){
             if( precision == 'day' ){
                 return 'Today';
