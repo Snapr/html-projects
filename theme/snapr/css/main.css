@@ -542,6 +542,10 @@
 .extra-icons.ui-icon-delete {
   background-position: 0 -576px;
 }
+.extra-icons .ui-icon-connection,
+.extra-icons.ui-icon-connection {
+  background-position: 0 -832px;
+}
 .extra-icons .ui-icon-play,
 .extra-icons.ui-icon-play {
   background-position: 0 -864px;
