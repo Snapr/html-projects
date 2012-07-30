@@ -2777,6 +2777,103 @@
         </div>
     </script>
 
+    <!-- @tumblr blog PAGE -->
+    <div id="tumblr-posts" data-title="Tumblr blog" data-add-back-btn="true" data-role="page" data-theme="d">
+      <div data-role="header" data-theme="b">
+        <h1>Tumblr blog</h1>
+        <div class="ui-btn-right" data-ajax="false">
+          <a href="#/search/" data-snapr-dialog="true" data-role="button" data-icon="search" data-iconpos="notext"></a>
+          <a href="#/" data-role="button" data-icon="home" data-iconpos="notext"></a>
+        </div>
+      </div>
+      <div data-role="content" data-theme="d" data-ajax="false">
+        <div class="tumblr-body">
+          <ul class="posts-stream"></ul>
+        </div>
+      </div>
+    </div><!-- /page -->
+
+    <script id="tumblr-tmpl-metadata" type="text/template">
+      <% if(model.get('note_count') > 0) {%><p><small><a href="<%=model.get('post_url')%>#notes"><%=model.get('note_count')%> notes</a></small></p><%}%>
+      <%if(model.get('tags')){%>
+        <ul class="tags">
+          <% _.each(model.get('tags'), function(tag) { %>
+            <li><%= tag %></li>
+          <% }); %>
+        </ul>
+      <%}%>
+    </script>
+
+    <script id="tumblr-tmpl-audio" type="text/template">
+      <div id="post-<%= model.get('id') %>" class="post-<%= model.get('type') %> post">
+        <%if(model.get('track_name') || model.get('artist') || model.get('album')) { %>
+          <h4><%= model.get('track_name') %>
+            <% if(model.get('artist')) { %> by <%= model.get('artist') %><% } %>
+            <% if(model.get('album')) { %> from '<%= model.get('album') %>'
+              <% if (model.get('year')) { %> <%= model.get('year') %> <% } %>
+            <% } %>
+          </h4>
+        <% } %>
+        {{:~getTintedAudioPlayer(#view, "#DDDDDD")}}
+        <% if(model.get('plays')) {%><p><%=model.get('plays')%> plays</p><%}%>
+        <% if(model.get('source')){%><%=model.get('source') %><%}%>
+      </div>
+    </script>
+
+    <script id="tumblr-tmpl-video" type="text/template">
+      <div id="post-<%= model.get('id') %>" class="post-<%= model.get('type') %> post">
+        {{:~getVideoEmbed(#view, 500)}}
+        <p><%=model.get('note')%></p>
+      </div>
+    </script>
+
+    <script id="tumblr-tmpl-text" type="text/template">
+      <div id="post-<%= model.get('id') %>" class="post-<%= model.get('type') %> post">
+        <h4><%=model.get('title')%></h4>
+        <p><%=model.get('body')%></p>
+      </div>
+    </script>
+
+    <script id="tumblr-tmpl-quote" type="text/template">
+      <div id="post-<%= model.get('id') %>" class="post-<%= model.get('type') %> post">
+        <h4><%=model.get('text')%></h4>
+        <p><%=model.get('source')%></p>
+      </div>
+    </script>
+
+    <script id="tumblr-tmpl-photo" type="text/template">
+      <div id="post-<%= model.get('id') %>" class="post-<%= model.get('type') %> post">
+        <% if (model.get('photos')) { %>
+          <ul class="photoset">
+            <% _.each(model.get('photos'), function (photo) { %>
+              <li><img src="<%= getPhotoURL(photo, 250) %>" /></li>
+            <% }); %> 
+          </ul>
+        <% } %>
+        <%=model.get('caption')%>
+      </div>
+    </script>
+
+    <script id="tumblr-tmpl-link" type="text/template">
+      <div id="post-<%= model.get('id') %>" class="post-<%= model.get('type') %> post">
+        <h4><%=model.get('title')%></h4>
+        <p><%=model.get('description')%></p>
+      </div>
+    </script>
+
+    <script id="tumblr-tmpl-chat" type="text/template">
+      <div id="post-<%= model.get('id') %>" class="post-<%= model.get('type') %> post">
+        <h4><%=model.get('title')%></h4>
+        <%if (model.get('dialogue')) {%>
+          <ul class="chat">
+            <%_.each(model.get('dialogue'), function(dialogue){%>
+              <li><strong><%=dialogue.label%></strong> <%=dialogue.phrase%></li>
+            <%});%>
+          </ul>
+        <%}%>
+      </div>
+    </script>
+
     <div id="limbo" data-role="page" data-theme="a">
         <div data-role="content" data-theme="a"></div>
     </div>

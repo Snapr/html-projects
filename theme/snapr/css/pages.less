@@ -2236,7 +2236,59 @@
     }
 }
 
+/*
+* @tumblr posts - PAGE
+*/
+#tumblr-posts {
+    blockquote {
+        margin: 8px;
+        font-style:italic;
+        font-size: 0.8em;
+    }
+    ul.posts-stream {
+        overflow:hidden;
+        > li {
+            border-bottom: 1px solid #ccc;
+            float: left;
+            margin: 3px;
+            padding: 6px;
+            .post {
+                width: 100%;
 
+                img {
+                    width: 250px;
+                    margin: 0 auto;
+                }
+
+                p {
+                    text-align: justify;
+                }
+            
+                ul.photoset {
+                    overflow:hidden;
+                    li {
+                        float: left;
+                        margin: 3px;
+                    }
+                }
+            }
+        }
+        > li:last-child {
+            border-bottom: none;
+        }
+    }
+    ul.tags {
+        overflow:hidden;
+        li {
+            float: left;
+            font-size: 10px;
+            padding: 3px 6px;
+            margin: 3px;
+            background: #ccc;
+            .corner-all
+        }
+    }
+}
 
 /*
 * @app - PAGE

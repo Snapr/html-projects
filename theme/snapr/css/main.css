@@ -6761,6 +6761,56 @@ body.browser-testing .ps-caption-bottom {
   margin: 8px;
 }
 /*
+* @tumblr posts - PAGE
+*/
+#tumblr-posts blockquote {
+  margin: 8px;
+  font-style: italic;
+  font-size: 0.8em;
+}
+#tumblr-posts ul.posts-stream {
+  overflow: hidden;
+}
+#tumblr-posts ul.posts-stream > li {
+  border-bottom: 1px solid #ccc;
+  float: left;
+  margin: 3px;
+  padding: 6px;
+}
+#tumblr-posts ul.posts-stream > li .post {
+  width: 100%;
+}
+#tumblr-posts ul.posts-stream > li .post img {
+  width: 250px;
+  margin: 0 auto;
+}
+#tumblr-posts ul.posts-stream > li .post p {
+  text-align: justify;
+}
+#tumblr-posts ul.posts-stream > li .post ul.photoset {
+  overflow: hidden;
+}
+#tumblr-posts ul.posts-stream > li .post ul.photoset li {
+  float: left;
+  margin: 3px;
+}
+#tumblr-posts ul.posts-stream > li:last-child {
+  border-bottom: none;
+}
+#tumblr-posts ul.tags {
+  overflow: hidden;
+}
+#tumblr-posts ul.tags li {
+  float: left;
+  font-size: 10px;
+  padding: 3px 6px;
+  margin: 3px;
+  background: #ccc;
+  -moz-border-radius: 6px;
+  -webkit-border-radius: 6px;
+  border-radius: 6px;
+}
+/*
 * @app - PAGE
 */
 .platform-logo {

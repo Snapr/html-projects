@@ -39,6 +39,7 @@ var pages = [
         extra: {service: "facebook"}
     },
     'linked-services',
+    'tumblr-posts',
     'tumblr-xauth',
     'twitter-xauth',
     'share',
