@@ -76,7 +76,7 @@ var auth_model = Backbone.Model.extend({
         // only save to the app if we're in appmode
         // and the hash doesn't have "access_token" in it
         // (which would cause an infinite loop)
-        if (local_storage.get( "appmode" ) && window.location.hash.indexOf("access_token") < 0){
+        if (local_storage.get( "appmode" )){
             native.pass_data( "snapr://login?snapr_user=" + encodeURI( this.get( "snapr_user" ) ) + "&display_username=" + encodeURI( this.get( "display_username" ) ) + "&access_token=" + encodeURI( this.get( "access_token" ) ) );
         }
     },
