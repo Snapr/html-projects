@@ -7,31 +7,12 @@ return Backbone.View.extend({
 	template: _.template( $("#auth-header-template").html() ),
 
 	initialize: function () {
-		var view = this;
-		if (auth.has("access_token")) {
-			auth.user_settings.fetch({
-				data: {
-					user_object: true,
-					linked_services: true  // get this too bacuse the results are cached for my_account page.
-				},
-				success: function () {
-					view.render();
-				},
-				error: function () {
-					view.render();
-				}
-			});
-		}
-		else {
-			view.render();
-		}
-
-
+		this.render();
 	},
 	render: function () {
 		this.$el.html( this.template( {
-			logged_in: auth.has("access_token"),
-			user_settings: auth.user_settings
+			username: auth.get("snapr_user"),
+			display_username: auth.get("display_username")
         } ));
 
         this.$el.find('[data-role="button"]').button();

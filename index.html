@@ -38,10 +38,10 @@
       <!-- auth header section -->
       <script id="auth-header-template" type="text/template">
         <div class="ui-btn-left join-block">
-          <% if (logged_in) { %>
+          <% if (username) { %>
             <a class="avatar-block" data-role="button" data-shadow="false" data-corners="false" href="#/my-account/">
-              <span class="user-icon-small" style="background-image: url('http://dev.sna.pr/avatars/<%= user_settings.get('user').user_id %>?size=large&amp;_salt=facebook');"></span>
-              <%= user_settings.get('user').display_username %>
+              <span class="user-icon-small" style="background-image: url('http://dev.sna.pr/avatars/<%= username %>?size=large&amp;_salt=facebook');"></span>
+              <%= display_username %>
             </a>
           <% } else { %>
             <a href="#/join/" data-snapr-dialog="true" data-role="button" data-icon="join" data-iconpos="left">Join</a>
@@ -2847,7 +2847,7 @@
           <ul class="photoset">
             <% _.each(model.get('photos'), function (photo) { %>
               <li><img src="<%= getPhotoURL(photo, 250) %>" /></li>
-            <% }); %> 
+            <% }); %>
           </ul>
         <% } %>
         <%=model.get('caption')%>
