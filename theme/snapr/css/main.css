@@ -1339,6 +1339,10 @@ a.ui-link-inherit {
   -webkit-border-radius: 0px !important;
   border-radius: 0px !important;
 }
+/*fouc*/
+.ui-mobile-rendering > * {
+  visibility: hidden;
+}
 /*******************************************************************
 * @theme - SWATCHES - less css version of jQuery Mobile swatches
 *******************************************************************/
