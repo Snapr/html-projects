@@ -17,7 +17,7 @@ return page_view.extend({
         }
 
         // only render the home page the first time we load
-        this.render();
+        this.render(!!'initial');
     },
 
     post_activate: function(options){
@@ -28,11 +28,7 @@ return page_view.extend({
         this.upload_count(config.get('upload_count'));
     },
 
-    dialog_closed: function(){
-        this.nearby_photostream.refresh();
-    },
-
-    render: function(){
+    render: function(initial){
         this.$el
             .find("[data-role='content']")
             .html( this.template( {
@@ -58,6 +54,9 @@ return page_view.extend({
         this.nearby_photostream = new nearby_photostream_view({
            el: this.$el.find('.menu-stream')
         });
+        if(!initial){
+            this.nearby_photostream.refresh();
+        }
 
         return this;
     },
