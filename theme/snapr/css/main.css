@@ -4738,6 +4738,12 @@ body.browser-testing .ps-caption-bottom {
   padding-left: 108px;
   z-index: 0;
 }
+.feed-user-header .ui-bar .username {
+  width: 120px;
+  overflow: hidden;
+  display: block;
+  text-overflow: ellipsis;
+}
 .feed-user-header .ui-bar .ui-btn-right {
   position: absolute;
   right: -4px;
