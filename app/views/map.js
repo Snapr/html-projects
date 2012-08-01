@@ -48,6 +48,7 @@ var map_view = page_view.extend({
 
     post_activate: function(options){
         this.change_page();
+        $.mobile.showPageLoadingMsg();
 
         // sort params into map(display) and photo/spot(api)
 
@@ -246,6 +247,7 @@ var map_view = page_view.extend({
 
         this.thumb_collection.current_query = this.thumb_collection.fetch({
             success: function( collection ){
+                $.mobile.hidePageLoadingMsg();
                 map_view.$el.removeClass('loading');
 
                 var new_thumb_ids = map_view.thumb_collection.pluck("id");
