@@ -12,7 +12,7 @@ geo.get_location = function ( success, error ){
         geo.location_callbacks.push( function(location){
             clearTimeout(timeout);
             success(location);
-        } );
+        });
         geo.location_error_callbacks.push( error );
         if (window.override && window.override( "snapr://get_location" )){
             //do nothing
