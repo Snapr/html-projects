@@ -103,12 +103,13 @@ function get_query_params(query) {
             if(key == "zoom") {
                 params[key] = parseInt(unescape(value), 10);
             } else {
-                if(_.indexOf(["access_token", "snapr_user", "display_username"], key) > -1) {
-                    var obj = {};
-                    obj[key] = unescape(value);
-                    auth.set(obj);
+                if(_.contains(["access_token", "snapr_user"], key)) {
+                    auth.set(key, unescape(value));
                     auth.save_locally();
-                } else if(_.indexOf(["snapr_user_public_group", "snapr_user_public_group_name", "appmode", "demo_mode", "environment", "browser_testing", "aviary", "camplus", "camplus_camera", "camplus_edit", "camplus_lightbox"], kv[0]) > -1) {
+                }else if(key == "display_username") {
+                    auth.set(key, unescape(value).replace('+', ' '));
+                    auth.save_locally();
+                } else if(_.contains(["snapr_user_public_group", "snapr_user_public_group_name", "appmode", "demo_mode", "environment", "browser_testing", "aviary", "camplus", "camplus_camera", "camplus_edit", "camplus_lightbox"], kv[0])) {
                     local_storage.save(key, value);
                 } else {
                     key = unescape(key);
