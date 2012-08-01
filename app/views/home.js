@@ -54,7 +54,7 @@ return page_view.extend({
         this.nearby_photostream = new nearby_photostream_view({
            el: this.$el.find('.menu-stream')
         });
-        if(!initial){
+        if(initial !== true){
             this.nearby_photostream.refresh();
         }
 
