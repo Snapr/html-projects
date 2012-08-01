@@ -4218,16 +4218,7 @@ a.ui-link-inherit {
   background-position: -99px -72px;
 }
 div.ps-carousel-item-loading {
-  display: block;
-  background-image: url('../gfx/spinner.png') !important;
-  background-position: center!important;
-  background-repeat: no-repeat !important;
-  -webkit-transform: rotate(0deg) translatez(0);
-  -webkit-transition-duration: 0ms;
-  -webkit-animation-name: loading;
-  -webkit-animation-duration: 1.2s;
-  -webkit-animation-iteration-count: infinite;
-  -webkit-animation-timing-function: linear;
+  background: url('../gfx/image-load-dark.gif') no-repeat center center;
 }
 /* change the icon to a spinner if a button is loading an ajax event */
 .x-ajax-loading .ui-btn-inner {
@@ -7099,14 +7090,11 @@ body.browser-testing .ps-caption-bottom {
     background-size: 774px 180px;
   }
   div.ps-carousel-item-loading {
-    display: block;
-    background-image: url('../gfx/retina/spinner.png') !important;
-    background-position: center!important;
-    background-repeat: no-repeat !important;
-    -moz-background-size: 56px 56px;
-    -o-background-size: 56px 56px;
-    -webkit-background-size: 56px 56px;
-    background-size: 56px 56px;
+    background: url('../gfx/retina/image-load-dark.gif') no-repeat center center;
+    -moz-background-size: 24px 24px;
+    -o-background-size: 24px 24px;
+    -webkit-background-size: 24px 24px;
+    background-size: 24px 24px;
   }
   .image-streams .image-stream .load-more-inline .ui-icon-refresh {
     background-image: url('../gfx/retina/pull-to-refresh.png');
