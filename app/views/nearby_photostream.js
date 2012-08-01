@@ -23,6 +23,10 @@ var nearby_photostream_view = Backbone.View.extend({
 
         var this_view = this;
 
+        if(!this.collection.length){
+            this.$el.addClass('loading');
+        }
+
         var success_callback = function( location ) {
             this_view.search_options.latitude = location.coords.latitude;
             this_view.search_options.longitude = location.coords.longitude;
