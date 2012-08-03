@@ -25,31 +25,36 @@ var spots_view =  page_view.extend({
     post_activate: function(options) {
 
         var this_view = this,
-            stored_search_options = local_storage.get("spots-search");
+            stored_search_options = local_storage.get("spots-search"),
+            search_options;
 
-        this.search_options = (stored_search_options) ? stored_search_options : this.defaults;
+        search_options = (stored_search_options) ? _.clone(stored_search_options) : _.clone(this.defaults);
 
         var success_callback = function( location ) {
-            this_view.search_options.latitude = this_view.latitude = location.coords.latitude;
-            this_view.search_options.longitude = this_view.longitude = location.coords.longitude;
-            this_view.search_options.nearby = true;
-            this_view.search_options.radius = 50000;
-            this_view.search(this_view.search_options);
+            this_view.latitude = location.coords.latitude;
+            this_view.longitude = location.coords.longitude;
+            if (search_options.nearby) {
+                search_options.latitude = this_view.latitude;
+                search_options.longitude = this_view.longitude;
+                search_options.nearby = true;
+                search_options.radius = 50000;
+            }
+            this_view.search(search_options);
         };
 
         var error_callback = function() {
-            this_view.search(this_view.search_options);
+            this_view.search(search_options);
         };
 
         geo.get_location( success_callback, error_callback );
 
         this.change_page();
 
-        this.search_options.nearby || this.$el.find('#options-location').val('anywhere').selectmenu('refresh'); //ugh dirty
-        this.$el.find('#spot-search').val(this.search_options.spot_name);
-        this.$el.find('#options-category').val(this.search_options.category).selectmenu("refresh");
-        this.$el.find('#options-sort').val(this.search_options.sort).selectmenu("refresh");
-        this.$el.find('#spots-search').attr('class', '').addClass(this.search_options.category || 'all-categories');
+        search_options.nearby || this.$el.find('#options-location').val('anywhere').selectmenu('refresh'); //ugh dirty
+        this.$el.find('#spot-search').val(search_options.spot_name);
+        this.$el.find('#options-category').val(search_options.category).selectmenu("refresh");
+        this.$el.find('#options-sort').val(search_options.sort).selectmenu("refresh");
+        this.$el.find('#spots-search').attr('class', '').addClass(search_options.category || 'all-categories');
 
 
     },
@@ -110,8 +115,6 @@ var spots_view =  page_view.extend({
 
 
         local_storage.set("spots-search", options);
-        this.search_options = options;
-
     },
 
     search_event: function(e) {
@@ -124,7 +127,7 @@ var spots_view =  page_view.extend({
             sort = this.$el.find('#options-sort').val(),
             nearby = this.$el.find('#options-location').val() === 'nearby',
             this_view = this,
-            data = this.defaults;
+            data = _.clone(this.defaults);
 
 
         if (category !== 'all')  {
@@ -134,8 +137,6 @@ var spots_view =  page_view.extend({
         else {
             this.$el.find('#spots-search').addClass('all-categories');
         }
-
-
 
         data.spot_name = keywords;
 
@@ -152,6 +153,7 @@ var spots_view =  page_view.extend({
             data.category = category;
         }
 
+        console.log("Searching: ", data);
         this.search(data);
 
     },
