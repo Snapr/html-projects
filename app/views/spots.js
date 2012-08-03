@@ -153,7 +153,6 @@ var spots_view =  page_view.extend({
             data.category = category;
         }
 
-        console.log("Searching: ", data);
         this.search(data);
 
     },
