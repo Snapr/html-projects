@@ -60,39 +60,29 @@ var spot_view = page_view.extend({
     },
 
     fetch_photos: function () {
-        var spot_view = this;
+        var spot_view = this,
+            data = {
+                n: 6,
+                sort: 'weighted_score'
+            };
+
+        // Spot has more than 1 photos (Hero is the first photo)
+        if (spot_view.model.get('stats').photos_count > 1) {
+            data.spot = spot_view.spot_id;
+        }
+        // No photos, do nearby search
+        else {
+            data.nearby = true;
+            data.radius = 1000;
+            data.latitude = spot_view.model.get('location').latitude;
+            data.longitude = spot_view.model.get('location').longitude;
+        }
 
         spot_view.photos.fetch({
-            data:{
-                n:6,
-                sort:'weighted_score',
-                spot: spot_view.spot_id
-            },
+            data: data,
             success: function(){
-                if(spot_view.photos.length === 0) {
-                    spot_view.fetch_nearby_photos();
-                }
-                else {
-                    spot_view.render();
-                }
-            }
-        });
-    },
-    fetch_nearby_photos: function () {
-        var spot_view = this;
-        spot_view.photos.data = {};
-        spot_view.photos.fetch({
-            data:{
-                n:6,
-                sort:'weighted_score',
-                nearby: true,
-                radius: 1000,
-                latitude: spot_view.model.get('latitude'),
-                longitude: spot_view.model.get('longitude')
-            },
-            success: function() {
                 spot_view.render();
-            } 
+            }
         });
     },
 
