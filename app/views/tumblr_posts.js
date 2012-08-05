@@ -37,6 +37,7 @@ var tumblr_post_view = page_view.extend({
             $stream.append( li.el );
             li.render();
         });
+        // this.$el.find('[data-role="button"]').button();
         $.mobile.hidePageLoadingMsg();
     }
 });
@@ -63,6 +64,16 @@ var tumblr_item_view = Backbone.View.extend({
                     if (images[i].width >= size) src = images[i].url; else break;
                 }
                 return (src === "") ? images[0].url : src;
+            },
+            getVideoEmbed: function(model, size) {
+                // Returns the best embed code from available video sizes based on the specified
+                // "size" parameter. For non-native sizes, returns the next smallest size.
+                var players = model.get('player'),
+                    embed = "";
+                for (var i = 0; i < players.length; i++) {
+                    if (players[i].width <= size) embed = players[i].embed_code; else break;
+                }
+                return (embed === "") ? players[0].embed_code : embed;
             }
         }));
         _.each(this.model.get('data'))
@@ -70,6 +81,7 @@ var tumblr_item_view = Backbone.View.extend({
             model: this.model,
             _:_
         }));
+        this.$el.trigger('create');
     }
 });
 

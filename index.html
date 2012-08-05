@@ -2791,20 +2791,26 @@
       </div>
       <div data-role="content" data-theme="d" data-ajax="false">
         <div class="tumblr-body">
-          <ul class="posts-stream"></ul>
+          <ul class="posts-stream image-item-block"></ul>
         </div>
       </div>
     </div><!-- /page -->
 
     <script id="tumblr-tmpl-metadata" type="text/template">
-      <% if(model.get('note_count') > 0) {%><p><small><a href="<%=model.get('post_url')%>#notes"><%=model.get('note_count')%> notes</a></small></p><%}%>
-      <%if(model.get('tags')){%>
-        <ul class="tags">
-          <% _.each(model.get('tags'), function(tag) { %>
-            <li><%= tag %></li>
-          <% }); %>
-        </ul>
-      <%}%>
+      <div class="image-item-base">
+        <div data-role="controlgroup" data-type="horizontal" class="image-actions">
+          <span class="v-fav-button inline-btn">
+            <div data-role="button" data-icon="action-heart" data-inline="true" data-iconpos="left" class="favorite-button action-icons">&nbsp;</div>
+          </span>
+          <span class="v-comment-button inline-btn">
+            <div data-role="button" data-icon="action-comment" data-inline="true" data-iconpos="left" class="comment-button action-icons" ><% if (model.get('note_count') > 0){ %>&times; <%= model.get('note_count') %><%} else {%> &nbsp;<%}%></div>
+          </span>
+          <span class="v-more-button inline-btn has-palette">
+               <div data-role="button" data-icon="action-more" data-inline="true" data-iconpos="left" class="more-button action-icons" >&nbsp;</div>
+               <div class="v-photo-manage action-palette"></div>
+          </span>
+        </div>
+      </div>
     </script>
 
     <script id="tumblr-tmpl-audio" type="text/template">
@@ -2817,7 +2823,8 @@
             <% } %>
           </h4>
         <% } %>
-        {{:~getTintedAudioPlayer(#view, "#DDDDDD")}}
+        <audio controls preload="none" src="<%= model.get('audio_url') %>"></audio>
+        <% if(model.get('caption')){%><%=model.get('caption')%><%}%>
         <% if(model.get('plays')) {%><p><%=model.get('plays')%> plays</p><%}%>
         <% if(model.get('source')){%><%=model.get('source') %><%}%>
       </div>
@@ -2825,8 +2832,8 @@
 
     <script id="tumblr-tmpl-video" type="text/template">
       <div id="post-<%= model.get('id') %>" class="post-<%= model.get('type') %> post">
-        {{:~getVideoEmbed(#view, 500)}}
-        <p><%=model.get('note')%></p>
+        <%= getVideoEmbed(model, 250) %>
+        <% if(model.get('caption')){%><%=model.get('caption')%><%}%>
       </div>
     </script>
 
