@@ -4402,6 +4402,9 @@ body.browser-testing .ps-caption-bottom {
 .menu-main .menu-btns .ui-btn .ui-icon-main-menu-arrow-r {
   background-position: 0px -700px;
 }
+.menu-main .menu-btns .ui-btn .ui-icon-main-menu-tumblr {
+  background-position: 0px -750px;
+}
 .menu-main .menu-btns li {
   border-top: solid rgba(255, 255, 255, 0.6) 1px;
   border-bottom: solid rgba(0, 0, 0, 0.05) 1px;
