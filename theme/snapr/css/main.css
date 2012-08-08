@@ -690,6 +690,35 @@
 .all-categories .spot-icon {
   background-position: 0px -192px;
 }
+/* med icon */
+.ui-icon.med-spot-icon {
+  background-position: -48px 0px;
+}
+/* if parent class is set */
+.great-outdoors .med-spot-icon.spot-icon {
+  background-position: -48px -24px;
+}
+.shops .med-spot-icon.spot-icon {
+  background-position: -48px -48px;
+}
+.nightlife-spots .med-spot-icon.spot-icon {
+  background-position: -48px -72px;
+}
+.food .med-spot-icon.spot-icon {
+  background-position: -48px -120px;
+}
+.arts-and-entertainment .med-spot-icon.spot-icon {
+  background-position: -48px -144px;
+}
+.all-categories .med-spot-icon.spot-icon {
+  background-position: -48px -192px;
+}
+.beer .med-spot-icon.spot-icon {
+  background-position: -48px -96px;
+}
+.cafe .med-spot-icon.spot-icon {
+  background-position: -48px -168px;
+}
 /* dark icon */
 .ui-icon.dark-spot-icon {
   background-position: -48px 0px;
@@ -6489,6 +6518,40 @@ body.browser-testing .ps-caption-bottom {
 }
 #map-layer #google-map {
   margin: -3px -8px;
+}
+.x-map-venue .x-map-venue-pin {
+  background-image: url('../gfx/map-spot-pin.png');
+  position: absolute;
+  display: block;
+  bottom: 0;
+  left: -18px;
+  width: 36px;
+  height: 28px;
+}
+.x-map-venue .x-map-venue-label {
+  background-image: url('../gfx/map-spot-label.png');
+  position: absolute;
+  display: block;
+  bottom: 23px;
+  left: -70px;
+  width: 139px;
+  height: 47px;
+}
+.x-map-venue .x-map-venue-label .spot-icon {
+  position: absolute;
+  top: 5px;
+  left: 4px;
+}
+.x-map-venue .x-map-venue-label .venue-label-text {
+  color: white;
+  font-weight: bold;
+  text-shadow: #000000 0 -1px 1px;
+  display: block;
+  padding: 9px 26px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  font-size: 13px;
 }
 .photo-map {
   position: relative;
