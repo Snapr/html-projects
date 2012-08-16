@@ -84,7 +84,14 @@ var spots_view =  page_view.extend({
 
         }
 
-        this.spot_results_header.render(this.collection.length);
+        var params = {};
+        _.each(this.search_options, function (v, k) {
+            params['spot_' + k] = v ;
+        });
+        params['show_spots'] = true;
+        params = $.param(params);
+
+        this.spot_results_header.render(this.collection.length, params);
         this.$el.removeClass('loading');
         spots_list.listview().listview("refresh");
     },
@@ -100,6 +107,8 @@ var spots_view =  page_view.extend({
 
         this.timer && clearTimeout(this.timer);
         this.xhr && this.xhr.abort();
+
+        this.search_options = options;
 
         this.timer = setTimeout( function() {
             this_view.timer = null;
@@ -174,9 +183,10 @@ var spots_item = Backbone.View.extend({
 var spot_results_header_view = Backbone.View.extend({
     template: _.template( $("#spots-result-header").html() ),
     
-    render: function (results) {
+    render: function (results, param) {
         this.$el.html( this.template({
-            results: results
+            results: results,
+            param: param
         }));
         this.$el.find('[data-role="button"]').button();
     },

@@ -1802,7 +1802,7 @@
 
          <script id="spots-result-header" type="text/tempalte">
          <% if(results) { %>
-            <a class="spots-results-header ui-bar top-left-arrow" data-role="button" data-theme="e" data-iconpos="right" data-icon="arrow-r">
+            <a class="spots-results-header ui-bar top-left-arrow" data-role="button" data-theme="e" data-iconpos="right" data-icon="arrow-r" href="#/map/?<%=param%>">
                 <em><%= results %> results</em>
                 <span class="small-text">show on map</span>
             </a>
@@ -2165,15 +2165,6 @@
                   <em class="map-description"></em>
                   <span class="image-tag">Show as Feed</span>
                </a>
-               
-               <div class="x-map-venue snaprmappoint" style="position: absolute;top: 150px;left: 150px;z-index: 100;">
-                   <a class="x-map-venue-pin"></a>
-                   <a class="x-map-venue-label">
-                       <span class="ui-icon spot-icon med-spot-icon"></span>
-                        <span class="venue-label-text">Venue name</span>
-                    
-                   </a>
-               </div>
 
             <div id="google-map">
             </div>
@@ -2247,6 +2238,16 @@
     <div class="snaprmappoint">
         <div class="map-current-location"></div>
     </div>
+    </script>
+
+    <script id="spot-template" type="text/template">
+      <div class="x-map-venue snaprmappoint <%=data.category.slug%>">
+        <a class="x-map-venue-pin"></a>
+        <a class="x-map-venue-label" href="#/spot/?spot_id=<%=data.id%>">
+          <span class="ui-icon spot-icon med-spot-icon"></span>
+          <span class="venue-label-text"><%= data.name %></span>         
+        </a>
+      </div>
     </script>
 
     <script id="flag-template" type="text/template">
