@@ -226,12 +226,15 @@ var map_view = page_view.extend({
         });
 
         _.each( this.spot_overlays, function( spot ){
-            spot.setMap(null);
+            if(!overlays || _(overlays).contains(spot.data.id)){
+                spot.setMap(null);
+            }
         });
     },
 
     thumbs_get: function(){
         if (this.map_query.get('show_photos')) {
+
             this.$el.addClass('loading');
 
             var old_thumb_ids = this.thumb_collection.pluck("id");
