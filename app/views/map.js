@@ -88,10 +88,23 @@ var map_view = page_view.extend({
             map_params.show_photos = true;
         }
 
+        // Hacky but good way to figure out the bounds for a circle.
+        // Use the radius of the spot search resuls to set the viewport for our map
+        if (spot_params.latitude && spot_params.longitude && spot_params.radius) {
+            var circle = new google.maps.Circle({
+                map: this.map,
+                center: new google.maps.LatLng(spot_params.latitude, spot_params.longitude),
+                radius: parseInt(spot_params.radius, 10),
+                visible: false
+            });
+            map_params.area = circle.getBounds();
+            circle.setMap(null);
+        }
+
+        // Single mode
         if (photo_params.photo_id) {
             map_query.show_spots = false;
         }
-
         if (spot_params.spot_id) {
             map_query.show_photos = false;
         }
