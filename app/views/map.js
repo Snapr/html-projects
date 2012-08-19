@@ -108,10 +108,12 @@ var map_view = page_view.extend({
 
         // Single mode
         if (photo_params.photo_id) {
-            map_query.show_spots = false;
+            map_params.show_spots = false;
+            map_params.show_photos = true;
         }
         if (spot_params.spot_id) {
-            map_query.show_photos = false;
+            map_params.show_photos = false;
+            map_params.show_spots = true;
         }
 
         // create backbone models to store the params. This lets us bind
@@ -125,6 +127,7 @@ var map_view = page_view.extend({
         this.spot_query = new Backbone.Model(spot_params);
         this.spot_query.on( "change", this.no_results_message_toggle );
         this.spot_query.on( "change", this.spots_get );
+        this.spot_query.on( "change", this.spot_query_save );  // keep in local_storage
 
         this.map_query = new Backbone.Model(map_params);
         this.map_query.on( "change", this.no_results_message_toggle );
@@ -337,7 +340,7 @@ var map_view = page_view.extend({
             
             this.spot_collection.data.area = this.map.getBounds().toUrlValue(4);
             
-            if(this.spot_query.has('photo_id')){
+            if(this.spot_query.has('spot_id')){
                 this.spot_collection.data.n=1;
             }
 
