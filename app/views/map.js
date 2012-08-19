@@ -90,7 +90,7 @@ var map_view = page_view.extend({
 
         // Hacky but good way to figure out the bounds for a circle.
         // Use the radius of the spot search resuls to set the viewport for our map
-        if (spot_params.latitude && spot_params.longitude && spot_params.radius) {
+        if (map_params.show_spots && spot_params.latitude && spot_params.longitude && spot_params.radius) {
             var circle = new google.maps.Circle({
                 map: this.map,
                 center: new google.maps.LatLng(spot_params.latitude, spot_params.longitude),
@@ -99,6 +99,11 @@ var map_view = page_view.extend({
             });
             map_params.area = circle.getBounds();
             circle.setMap(null);
+        }
+        else if (map_params.show_spots) {
+            map_params.lat = 42;
+            map_params.lng = 12;
+            map_params.zoom = 1;
         }
 
         // Single mode
