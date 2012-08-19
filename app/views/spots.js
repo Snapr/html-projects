@@ -89,6 +89,10 @@ var spots_view =  page_view.extend({
             params['spot_' + k] = v ;
         });
         params['show_spots'] = true;
+        if (this.search_options.latitude && this.search_options.longitude) {
+            params['lat'] = this.search_options.latitude;
+            params['lng'] = this.search_options.longitude;
+        }
         params = $.param(params);
 
         this.spot_results_header.render(this.collection.length, params);

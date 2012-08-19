@@ -6527,11 +6527,12 @@ body.browser-testing .ps-caption-bottom {
   left: -18px;
   width: 36px;
   height: 28px;
+  cursor: pointer;
 }
 .x-map-venue .x-map-venue-label {
   background-image: url('../gfx/map-spot-label.png');
   position: absolute;
-  display: block;
+  display: none;
   bottom: 23px;
   left: -70px;
   width: 139px;

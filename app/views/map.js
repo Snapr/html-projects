@@ -41,10 +41,12 @@ var map_view = page_view.extend({
         "click #map-disambituation-cancel": "location_search_toggle_disambiguation",
         "click .x-map-feed": "map_feed",
         "change #map-filter": "filter_update",
+        "change #map-view-photos, #map-view-spots": "layers_update",
         "submit #map-keyword": "keyword_search",
         "blur #map-keyword": "keyword_search",
         "click #map-keyword .ui-input-clear": "keyword_search_clear",
-        "click .map-time-btn": "map_time"
+        "click .map-time-btn": "map_time",
+        "click .x-map-venue-pin" : "open_spot_label"
     },
 
     post_activate: function(options){
@@ -81,6 +83,19 @@ var map_view = page_view.extend({
         );
 
 
+        // if neither are set default to photos
+        if (!map_params.show_photos && !map_params.show_spots) {
+            map_params.show_photos = true;
+        }
+
+        if (photo_params.photo_id) {
+            map_query.show_spots = false;
+        }
+
+        if (spot_params.spot_id) {
+            map_query.show_photos = false;
+        }
+
         // create backbone models to store the params. This lets us bind
         // functions to changes
         this.photo_query = new Backbone.Model(photo_params);
@@ -97,6 +112,7 @@ var map_view = page_view.extend({
         this.map_query.on( "change", this.no_results_message_toggle );
         this.map_query.on( "change", this.thumbs_get );
         this.map_query.on( "change", this.spots_get );
+        this.map_query.on( "change", this.layers_set ) // update the layer toggle in header
         this.map_query.on( "change", this.map_query_save );  // keep in local_storage
 
 
@@ -104,6 +120,7 @@ var map_view = page_view.extend({
         this.photo_query.on( "change", this.filter_set_options );  // update what's selected and enabled
         auth.on( "change", this.filter_set_options );  // update what's enabled
         this.filter_set_options();  // set initial state
+        this.layers_set();
 
 
         // location search
@@ -233,19 +250,19 @@ var map_view = page_view.extend({
     },
 
     thumbs_get: function(){
+
+        var map_view = this,
+            old_thumb_ids = this.thumb_collection.pluck("id");
+
         if (this.map_query.get('show_photos')) {
 
-            this.$el.addClass('loading');
-
-            var old_thumb_ids = this.thumb_collection.pluck("id");
+            this.$el.addClass('loading');    
 
             this.thumb_collection.data = _.clone(this.photo_query.attributes);
             this.thumb_collection.data.area = this.map.getBounds().toUrlValue(4);
             if(this.photo_query.has('photo_id')){
                 this.thumb_collection.data.n=1;
             }
-
-            var map_view = this;
 
             // we are about to look for new thumbs, abort any old requests, they will no longer be needed
             try{ this.thumb_collection.current_query.abort(); }catch(e){}
@@ -283,21 +300,28 @@ var map_view = page_view.extend({
                 }
             });
         }
+        else {
+            map_view.overlays_remove(old_thumb_ids);
+            this.thumb_collection.reset();
+        }
     },
 
     spots_get: function(){
+        
+        var map_view = this,
+            old_spot_ids = this.spot_collection.pluck("id");
+
+
         if (this.map_query.get('show_spots')) {
             this.$el.addClass('loading');
 
-            var old_spot_ids = this.spot_collection.pluck("id");
-
             this.spot_collection.data = _.clone(this.spot_query.attributes);
-            //this.spot_collection.data.area = this.map.getBounds().toUrlValue(4);
+            
+            this.spot_collection.data.area = this.map.getBounds().toUrlValue(4);
+            
             if(this.spot_query.has('photo_id')){
                 this.spot_collection.data.n=1;
             }
-
-            var map_view = this;
 
             // we are about to look for new thumbs, abort any old requests, they will no longer be needed
             try{ this.spot_collection.current_query.abort(); }catch(e){}
@@ -335,6 +359,15 @@ var map_view = page_view.extend({
                 }
             });
         }
+        else {
+            map_view.overlays_remove(old_spot_ids);
+            this.spot_collection.reset()
+        }
+    },
+
+    open_spot_label: function (event) {
+        this.$('a.x-map-venue-label').hide();
+        this.$(event.currentTarget).next('a.x-map-venue-label').show();
     },
 
     no_results_message_toggle: function(show){
@@ -487,6 +520,19 @@ var map_view = page_view.extend({
         }else{
             $("#map-filter").val("all").selectmenu('refresh', true);
         }
+    },
+
+    layers_update: function(e) {
+        var layer = $(e.currentTarget).val(),
+            checked = $(e.currentTarget).attr('checked') === "checked";
+
+        this.map_query.set('show_' + layer, checked);
+    },
+
+
+    layers_set: function (){
+        this.$("#map-view-spots").attr("checked", !!this.map_query.get("show_spots")).checkboxradio("refresh");
+        this.$("#map-view-photos").attr("checked", !!this.map_query.get("show_photos")).checkboxradio("refresh");
     },
 
     keyword_search: function( keywords ){
