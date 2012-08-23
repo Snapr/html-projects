@@ -116,7 +116,7 @@ var dash_view = page_view.extend({
     data_query_link: function( e ){
         var query = $(e.currentTarget).data('query');
         var current = $(e.currentTarget).data('current');
-        Backbone.history.navigate('#/feed/?' + unescape( query ) + '&photo_id=' + current );
+        Backbone.history.navigate('#/feed/?' + unescape( query ) + '&paginate_from=' + current );
     },
 
     remove_stream: function(stream){
