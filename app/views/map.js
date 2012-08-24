@@ -248,11 +248,15 @@ var map_view = page_view.extend({
     },
 
     map_query_save: function(){
-        local_storage.set('map_params', _(this.map_query.attributes).pick(['lat', 'lng', 'zoom']));
+        local_storage.set('map_params', _(this.map_query.attributes).pick(['lat', 'lng', 'zoom', 'show_photos', 'show_spots']));
     },
 
     photo_query_save: function(){
         local_storage.set('map_photo_params', _(this.photo_query.attributes).pick(['date', 'keywords', 'username', 'group']));
+    },
+
+    spot_query_save: function(){
+        local_storage.set('map_spot_params', _(this.spot_query.attributes).pick(['spot_name', 'sort', 'category', 'n']));
     },
 
     overlays_remove: function(overlays){
