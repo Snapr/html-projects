@@ -2243,7 +2243,7 @@
     <script id="spot-template" type="text/template">
       <div class="x-map-venue snaprmappoint <%=data.category.slug%>">
         <a class="x-map-venue-pin"></a>
-        <a class="x-map-venue-label" href="#/spot/?spot_id=<%=data.id%>">
+        <a class="x-map-venue-label" data-ajax="false" href="#/spot/?spot_id=<%=data.id%>">
           <span class="ui-icon spot-icon med-spot-icon"></span>
           <span class="venue-label-text"><%= data.name %></span>         
         </a>
