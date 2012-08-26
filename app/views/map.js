@@ -82,7 +82,6 @@ var map_view = page_view.extend({
             { n:config.get('map_count') }
         );
 
-
         // if neither are set default to photos
         if (!map_params.show_photos && !map_params.show_spots) {
             map_params.show_photos = true;

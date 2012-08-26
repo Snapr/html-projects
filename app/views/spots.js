@@ -84,12 +84,7 @@ var spots_view =  page_view.extend({
 
         }
 
-        var params = {};
-        _.each(this.search_options, function (v, k) {
-            params['spot_' + k] = v ;
-        });
-        params['show_spots'] = true;
-        params = $.param(params);
+        var params = this.build_map_params();
 
         this.spot_results_header.render(this.collection.length, params);
         this.$el.removeClass('loading');
@@ -99,6 +94,32 @@ var spots_view =  page_view.extend({
     reset_collection: function() {
         // this.display_collection = _.clone( this.collection.models );
         //         this.render();
+    },
+
+    build_map_params: function () {
+        var params = {},
+            options = this.search_options;
+
+        _.each(options, function (v, k) {
+            params['spot_' + k] = v ;
+        });
+        params.show_spots = true;
+
+        // handle setting the center of the map
+        // - nearby search
+        if (options.latitude && options.longitude) {
+            params.zoom = 8;
+            params.lat = options.latitude;
+            params.lng = options.longitude;
+        }
+        // - anywhere search
+        else {
+            params.lat = 42;
+            params.lng = 12;
+            params.zoom = 1;
+        }
+
+        return $.param(params);
     },
 
     search: function(options) {
