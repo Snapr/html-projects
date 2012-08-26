@@ -6537,6 +6537,7 @@ body.browser-testing .ps-caption-bottom {
   left: -70px;
   width: 139px;
   height: 47px;
+  z-index: 1;
 }
 .x-map-venue .x-map-venue-label .spot-icon {
   position: absolute;
