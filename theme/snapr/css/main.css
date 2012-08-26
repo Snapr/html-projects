@@ -7066,10 +7066,10 @@ body.browser-testing .ps-caption-bottom {
   }
   .dark-icons .ui-btn .ui-btn-inner .ui-icon {
     background-image: url('../gfx/retina/action-icons-dark.png');
-    -moz-background-size: 40px 520px;
-    -o-background-size: 40px 520px;
-    -webkit-background-size: 40px 520px;
-    background-size: 40px 520px;
+    -moz-background-size: 80px 520px;
+    -o-background-size: 80px 520px;
+    -webkit-background-size: 80px 520px;
+    background-size: 80px 520px;
   }
   .dash-footer .ui-btn-inner .ui-icon {
     background-image: url('../gfx/retina/dash-icons.png');
