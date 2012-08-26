@@ -1,4 +1,4 @@
-/*global _  define require google */
+    /*global _  define require google */
 define(['config', 'backbone', 'views/base/page', 'collections/thumb', 'collections/spot', 'mobiscroll', 'utils/geo', 'utils/map', 'auth', 'utils/local_storage', 'utils/string', 'utils/alerts'],
 function(config, Backbone, page_view, thumb_collection, spot_collection, mobiscroll, geo, map, auth, local_storage, string_utils, alerts){
 
@@ -46,7 +46,7 @@ var map_view = page_view.extend({
         "blur #map-keyword": "keyword_search",
         "click #map-keyword .ui-input-clear": "keyword_search_clear",
         "click .map-time-btn": "map_time",
-        "click .x-map-venue-pin" : "open_spot_label"
+        "click .x-map-venue-pin" : "toggle_spot_label"
     },
 
     post_activate: function(options){
@@ -88,24 +88,6 @@ var map_view = page_view.extend({
             map_params.show_photos = true;
         }
 
-        // Hacky but good way to figure out the bounds for a circle.
-        // Use the radius of the spot search resuls to set the viewport for our map
-        if (map_params.show_spots && spot_params.latitude && spot_params.longitude && spot_params.radius) {
-            var circle = new google.maps.Circle({
-                map: this.map,
-                center: new google.maps.LatLng(spot_params.latitude, spot_params.longitude),
-                radius: parseInt(spot_params.radius, 10),
-                visible: false
-            });
-            map_params.area = circle.getBounds();
-            circle.setMap(null);
-        }
-        else if (map_params.show_spots) {
-            map_params.lat = 42;
-            map_params.lng = 12;
-            map_params.zoom = 1;
-        }
-
         // Single mode
         if (photo_params.photo_id) {
             map_params.show_spots = false;
@@ -142,6 +124,7 @@ var map_view = page_view.extend({
         auth.on( "change", this.filter_set_options );  // update what's enabled
         this.filter_set_options();  // set initial state
         this.layers_set();
+        this.spot_query_save() // save the spot query params
 
 
         // location search
@@ -248,7 +231,7 @@ var map_view = page_view.extend({
     },
 
     map_query_save: function(){
-        local_storage.set('map_params', _(this.map_query.attributes).pick(['lat', 'lng', 'zoom', 'show_photos', 'show_spots']));
+        local_storage.set('map_params', _(this.map_query.attributes).pick(['lat', 'lng', 'zoom']));
     },
 
     photo_query_save: function(){
@@ -390,9 +373,10 @@ var map_view = page_view.extend({
         }
     },
 
-    open_spot_label: function (event) {
+    toggle_spot_label: function (event) {
+        var label = this.$(event.currentTarget).next('a.x-map-venue-label');
         this.$('a.x-map-venue-label').hide();
-        this.$(event.currentTarget).next('a.x-map-venue-label').show();
+        label.show();
     },
 
     no_results_message_toggle: function(show){
