@@ -359,10 +359,10 @@ var map_view = page_view.extend({
 
                     // update time display if in 'just one' mode now we have the
                     // photo and know its date
-                    if(map_view.spot_query.has('photo_id')){ map_view.map_time_update_display(); }
+                    if(map_view.spot_query.has('spot_id')){ map_view.map_time_update_display(); }
                 },
                 error: function( e ){
-                    console.warn( "error getting thumbs", e );
+                    console.warn( "error getting spots", e );
                 }
             });
         }
@@ -428,8 +428,20 @@ var map_view = page_view.extend({
     },
 
     go_to: function(location, zoom){
-        this.map.setZoom(zoom || config.get('zoom'));
-        this.map.panTo( new google.maps.LatLng( location.latitude, location.longitude) );
+        var center = new google.maps.LatLng( location.latitude, location.longitude),
+            old_center = this.map.getCenter(),
+            old_zoom = this.map.getZoom();
+
+        // check to see if we're actually moving
+        // because if we don't the idle event wont fire
+        // so the pageloadmessage wont disappear
+        if (!old_center.equals(center) && !old_zoom == zoom) {
+            this.map.setZoom(zoom || config.get('zoom'));
+            this.map.panTo( center );
+        }
+        else {
+            google.maps.event.trigger(this.map, 'idle');
+        }
     },
 
     current_location_place: function(known_location){
