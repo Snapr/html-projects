@@ -230,7 +230,7 @@ var map_view = page_view.extend({
     },
 
     map_query_save: function(){
-        local_storage.set('map_params', _(this.map_query.attributes).pick(['lat', 'lng', 'zoom']));
+        local_storage.set('map_params', _(this.map_query.attributes).pick(['lat', 'lng', 'zoom', 'show_spots', 'show_photos']));
     },
 
     photo_query_save: function(){
