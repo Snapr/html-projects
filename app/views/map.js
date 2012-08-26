@@ -564,8 +564,10 @@ var map_view = page_view.extend({
         }
         if(keywords === ''){
             this.photo_query.unset('keywords');
+            this.spot_query.unset('spot_name');
         }else{
             this.photo_query.set({keywords: keywords});
+            this.spot_query.set({spot_name: keywords});
         }
 
         return this;
