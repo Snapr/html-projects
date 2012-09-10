@@ -1,9 +1,9 @@
 /*global _  define require */
 define(['config', 'backbone', 'views/base/page', 'views/base/side_scroll',
     'models/dash', 'models/dash_stream', 'collections/user',
-    'views/components/no_results', 'views/people_li', 'utils/geo', 'auth', 'utils/alerts'],
+    'views/components/no_results', 'views/people_li', 'utils/geo', 'auth', 'utils/alerts', 'utils/query'],
     function(config, Backbone, page_view, side_scroll, dash_model, dash_stream_model,
-        user_collection, no_results, people_li, geo, auth, alerts){
+        user_collection, no_results, people_li, geo, auth, alerts, Query){
 
 var dash_view = page_view.extend({
 
@@ -30,16 +30,14 @@ var dash_view = page_view.extend({
     events: {
         "click .x-add-search": "add_search",
         "click .x-add-person": "add_person",
-        "click .x-edit-dash": "edit_dash",
-        "click a[data-query]": "data_query_link"
+        "click .x-edit-dash": "edit_dash"
     },
 
     populate: function(){
         var dash = this,
             options = {
                 data: {
-                    n: config.get('side_scroll_initial'),
-                    detail:0,
+                    n:0,
                     feed:!!auth.get("access_token")
                 },
                 success: function(){
@@ -140,7 +138,8 @@ var dash_stream = side_scroll.extend({
     className: 'image-stream',
 
     events: {
-        "click .remove-stream": "remove_stream"
+        "click .remove-stream": "remove_stream",
+        "click a.ui-bar": "toggle_stream"
     },
 
     template: _.template( $('#dash-stream-template').html() ),
@@ -152,6 +151,31 @@ var dash_stream = side_scroll.extend({
         if (this.model.has("id")){
             this.$el.addClass("user-stream");
             this.$el.attr("data-id", this.model.get("id"));
+        }
+    },
+
+    toggle_stream: function(e) {
+        var this_view = this,
+            btn = this_view.$el.find('[data-role="button"]'),
+            query = new Query(unescape(btn.attr('data-query'))),
+            options = {
+                data: {
+                    n: config.get('side_scroll_initial'),
+                    detail: 0,
+                },
+                success: function () {
+                    this_view.render();
+                    btn.attr('data-icon', (btn.attr('data-icon') === 'arrow-d') ? 'arrow-u' : 'arrow-d').toggleClass('top-left-arrow');
+                    this_view.$el.find('[data-role="button"]').button();
+                    this_view.$el.find('.thumbs-grid').fadeToggle();
+                }
+            };
+        if (!this_view.collection.length) {
+            options.data = $.extend(options.data, query.query);
+            this_view.collection.fetch( options );
+        }
+        else {
+            this_view.$el.find('.thumbs-grid').fadeToggle();
         }
     },
 
