@@ -1,10 +1,10 @@
 /*global _  define require */
-define(['config', 'backbone', 'models/dash_stream'],
-function(config, Backbone,   dash_stream_model){
+define(['config', 'backbone', 'collections/dash_stream'],
+function(config, Backbone, dash_stream){
 
-return Backbone.Collection.extend({
+return Backbone.Model.extend({
 
-    model: dash_stream_model,
+    //model: dash_stream_model,
 
     url: function( method )
     {
@@ -15,7 +15,11 @@ return Backbone.Collection.extend({
     {
         if (d.success && d.response)
         {
-            return d.response.dashboard.streams;
+            return {
+                featured_streams: new dash_stream(d.response.dashboard.featured_streams),
+                streams: new dash_stream(d.response.dashboard.streams)/*,
+                tumblr_feeds: new tumblr_feed_collection(d.response.dashboard.tumblr_feeds)*/
+            };
         }
     },
 
@@ -30,7 +34,7 @@ return Backbone.Collection.extend({
             collection.display = d && d.response && d.response.dashboard && d.response.dashboard.display;
             if (success){ success( collection, d );}
         };
-        return Backbone.Collection.prototype.fetch.call(this, options);
+        return Backbone.Model.prototype.fetch.call(this, options);
     }
 });
 });
