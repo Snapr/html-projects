@@ -1,6 +1,6 @@
 /*global _  define require */
-define(['config', 'backbone', 'collections/dash_stream'],
-function(config, Backbone, dash_stream){
+define(['config', 'backbone', 'collections/dash_stream', 'collections/dash_tumblr_feed'],
+function(config, Backbone, dash_stream_collection, dash_tumblr_feed_collection){
 
 return Backbone.Model.extend({
 
@@ -20,9 +20,9 @@ return Backbone.Model.extend({
         if (d.success && d.response)
         {
             return {
-                featured_streams: new dash_stream(d.response.dashboard.featured_streams, {parse: true}),
-                streams: new dash_stream(d.response.dashboard.streams, {parse: true})/*,
-                tumblr_feeds: new tumblr_feed_collection(d.response.dashboard.tumblr_feeds)*/
+                featured_streams: new dash_stream_collection(d.response.dashboard.featured_streams, {parse: true}),
+                streams: new dash_stream_collection(d.response.dashboard.streams, {parse: true}),
+                tumblr_feeds: new dash_tumblr_feed_collection(d.response.dashboard.tumblr_feeds, {parse: true})
             };
         }
     },

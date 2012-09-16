@@ -10,7 +10,6 @@ return Backbone.Collection.extend({
     },
     
     url: function( method ){
-        // var tumblr_host = user.get('details').linked_services.tumblr_url;
         var tumblr_host = 'matthewbuchanan.name';
         var tumblr_key = 'U41QnbLmjhiKfief3Cd5jZ6fO4ciHwWbrYSCwthlm79rZ0e6aR';
         var type = '';

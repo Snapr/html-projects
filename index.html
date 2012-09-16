@@ -1270,7 +1270,11 @@
            </div>
            <div data-role="content" data-theme="d" data-ajax="false">
                <div class="dash-wrapper">
-                   <ul class="image-streams">
+
+                  <ul class="image-streams featured-streams"></ul>
+                  <ul class="tumblr-streams"></ul>
+
+                   <ul class="image-streams user-streams">
                         <li class="image-stream" id="upload-popular-nearby">
                             <a class="ui-bar top-left-arrow x-details" data-role="button" data-iconpos="right" data-icon="arrow-r" data-theme="e">
                                 <span class="image-details">
@@ -1335,7 +1339,7 @@
        </div><!-- /page -->
         <script id="dash-stream-template" type="text/template">
         <% if(collection.length){%>
-            <a class="ui-bar x-details" data-query="<%= escape($.param(model.get("query"))) %>" data-role="button" data-iconpos="right" data-icon="arrow-r" data-theme="c">
+            <a class="ui-bar x-details open top-left-arrow" data-query="<%= escape($.param(model.get("query"))) %>" data-role="button" data-iconpos="right" data-icon="arrow-r" data-theme="c">
                 <span class="image-details">
                     <span class="ui-icon ui-icon-<%= model.get("display").type %> extra-icons"></span>
                     <em><%= model.get("display").short_title %><% if(model.get("query").radius){ %> (<%= model.get("query").radius/1000 %>km)<% } %></em>
@@ -1348,13 +1352,13 @@
             <div class="thumbs-grid thumbs-grid-med x-scroll-area" style="display:none">
                 <div class="x-scroll-wrapper"><!-- inner div for scroll -->
                     <div class="x-left-pull thumb-med load-more-inline">
-                    <span class="ui-icon ui-icon-refresh"></span>
-                    <span class="ui-btn-text x-msg">Load Newer...</span>
+                        <span class="ui-icon ui-icon-refresh"></span>
+                        <span class="ui-btn-text x-msg">Refresh</span>
                     </div>
                     <div class="x-thumbs"></div>
                     <div class="x-right-pull thumb-med load-more-inline">
                         <span class="ui-icon ui-icon-refresh"></span>
-                        <span class="ui-btn-text x-msg">Load More...</span>
+                        <span class="ui-btn-text x-msg">Load More</span>
 
                     </div>
                 </div>
@@ -1365,7 +1369,7 @@
             </div>
 
         <% }else{ %>
-            <a class="ui-bar" data-query="<%= escape($.param(model.get("query"))) %>" data-role="button" data-theme="c" data-iconpos="right" data-icon="">
+            <a class="ui-bar closed" data-query="<%= escape($.param(model.get("query"))) %>" data-role="button" data-theme="c" data-iconpos="right" data-icon="">
                 <span class="image-details">
                     <span class="ui-icon ui-icon-<%= model.get("display").type %> extra-icons"></span>
                     <em><%= model.get("display").short_title %><% if(model.get("query").radius){ %> (<%= model.get("query").radius/1000 %>km)<% } %></em>
@@ -1382,6 +1386,16 @@
             <% _.each(photos, function(photo) { %><a href="https://s3.amazonaws.com/media-server2.snapr.us/lrg2/<%= photo.get('secret') %>/<%= photo.get('id') %>.jpg" class="x-thumb image-link" rel="external" data-date="<%= photo.get('date') %>" data-id="<%= photo.get('id') %>" data-tag="<%= photo.get('description') %>">
                 <img src="https://s3.amazonaws.com/media-server2.snapr.us/thm2/<%= photo.get('secret') %>/<%= photo.get('id') %>.jpg" <% if(photo.get('description')){ %>alt="<%= photo.get('description') %>"<% } %> class="thumb-image thumb-med">
             </a><% }); %>
+        </script>
+
+        <script id="dash-tumblr-template" type="text/template">
+            <a class="ui-bar x-details open top-left-arrow" data-role="button" data-iconpos="right" data-icon="arrow-r" data-theme="c">
+                <span class="image-details">
+                    <span class="ui-icon extra-icons"></span>
+                    <em><%= model.get("display").short_title %></em>
+                </span>
+            </a>
+            <ul class="tumblr-streams"></ul>
         </script>
 
         <!-- @dashaddperson DIALOG-->
