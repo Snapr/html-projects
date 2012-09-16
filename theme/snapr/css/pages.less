@@ -804,6 +804,31 @@
     }
 }
 
+.tumblr-streams{
+    ul.post-stream {
+        li {
+            overflow: hidden;
+            .post {
+                padding-top: 8px;
+                .caption {
+                    font-style: italic;
+                }
+            }
+            .tumblr-metadata {
+                clear: both;
+            }
+            ul.photoset {
+                float: left;
+                padding-right: 16px;
+                margin-bottom: 0;
+                li {
+                    margin-bottom: 0;
+                }
+            }
+        }
+    }
+}
+
 .dash-edit-done{
     display: none;
     .ui-btn{
@@ -2262,9 +2287,10 @@
             .post {
                 width: 100%;
 
-                img {
-                    width: 250px;
-                    margin: 0 auto;
+                img,
+                audio,
+                video {
+                    width: 100%;
                 }
 
                 p {
@@ -2276,6 +2302,22 @@
                     li {
                         float: left;
                         margin: 3px;
+                    }
+                }
+                div.quote {
+                    border-left: 4px solid #666;
+                    padding-left: 8px;
+                    p.source {
+                        color: #999;
+                    }
+                }
+            }
+            .tumblr-metadata {
+                .meta-details {
+                    em {
+                        font-size: 12px;
+                        font-weight: normal;
+                        color: #ccc;
                     }
                 }
             }

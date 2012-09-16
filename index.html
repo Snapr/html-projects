@@ -1395,7 +1395,7 @@
                     <em><%= model.get("display").short_title %></em>
                 </span>
             </a>
-            <ul class="tumblr-streams"></ul>
+            <ul class="post-stream"></ul>
         </script>
 
         <!-- @dashaddperson DIALOG-->
@@ -2811,25 +2811,25 @@
       </div>
       <div data-role="content" data-theme="d" data-ajax="false">
         <div class="tumblr-body">
+          <a class="ui-bar top-left-arrow x-details" data-role="button" data-iconpos="right" data-icon="arrow-r" data-theme="e">
+              <span class="image-details">
+                  <span class="ui-icon ui-icon-nearby extra-icons"></span>
+                  <em>Snapper scrapbook</em>
+              </span>
+          </a>
           <ul class="posts-stream image-item-block"></ul>
         </div>
       </div>
     </div><!-- /page -->
 
     <script id="tumblr-tmpl-metadata" type="text/template">
-      <div class="image-item-base">
-        <div data-role="controlgroup" data-type="horizontal" class="image-actions">
-          <span class="v-fav-button inline-btn">
-            <div data-role="button" data-icon="action-heart" data-inline="true" data-iconpos="left" class="favorite-button action-icons">&nbsp;</div>
-          </span>
-          <span class="v-comment-button inline-btn">
-            <div data-role="button" data-icon="action-comment" data-inline="true" data-iconpos="left" class="comment-button action-icons" ><% if (model.get('note_count') > 0){ %>&times; <%= model.get('note_count') %><%} else {%> &nbsp;<%}%></div>
-          </span>
-          <span class="v-more-button inline-btn has-palette">
-               <div data-role="button" data-icon="action-more" data-inline="true" data-iconpos="left" class="more-button action-icons" >&nbsp;</div>
-               <div class="v-photo-manage action-palette"></div>
-          </span>
-        </div>
+      <div class="tumblr-metadata">
+        <a class="ui-bar" data-role="button" data-iconpos="right" data-icon="arrow-r" data-theme="f" data-corners="false" data-shadow="false">
+            <span class="meta-details">
+                <span class="ui-icon ui-icon-person extra-icons"></span>
+                <em><%= string_utils.time_ago(model.get('timestamp')*1000) %><% if (model.get('note_count') > 0){ %>, <%= model.get('note_count') %> notes<%}%></em>
+            </span>
+        </a>
       </div>
     </script>
 
@@ -2866,8 +2866,10 @@
 
     <script id="tumblr-tmpl-quote" type="text/template">
       <div id="post-<%= model.get('id') %>" class="post-<%= model.get('type') %> post">
-        <h4><%=model.get('text')%></h4>
-        <p><%=model.get('source')%></p>
+        <div class="quote">
+          <p><%=model.get('text')%></p>
+          <p class="source"><%=model.get('source')%></p>
+        </div>
       </div>
     </script>
 
@@ -2876,11 +2878,11 @@
         <% if (model.get('photos')) { %>
           <ul class="photoset">
             <% _.each(model.get('photos'), function (photo) { %>
-              <li><img src="<%= getPhotoURL(photo, 250) %>" /></li>
+              <li><img src="<%= getPhotoURL(photo, 100) %>" /></li>
             <% }); %>
           </ul>
         <% } %>
-        <%=model.get('caption')%>
+        <p class="caption"><%=model.get('caption')%></p>
       </div>
     </script>
 

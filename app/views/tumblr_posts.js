@@ -18,6 +18,9 @@ var tumblr_post_view = page_view.extend({
         this.collection.bind( "change", _.bind(this.render, this) );
 
         this.collection.fetch({
+            data: {
+                filter:'text'
+            },
             success: function() {
                 this_view.render();
             },
@@ -28,7 +31,7 @@ var tumblr_post_view = page_view.extend({
     },
 
     render: function(){
-        var $stream = this.$el.find( ".posts-stream" );
+        var $stream = this.$el.find( ".posts-stream" ).empty();
 
         this.collection.each(function (post) {
             var li = new tumblr_item_view({

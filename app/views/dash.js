@@ -163,7 +163,7 @@ var dash_view = page_view.extend({
 
 var dash_tumblr_view = Backbone.View.extend({
     tagName: 'li',
-    className: 'tumblr-stream',
+    className: 'post-stream',
     template: _.template( $('#dash-tumblr-template').html() ),
     events: {
         "click a.ui-bar": "toggle_feed"
@@ -175,11 +175,12 @@ var dash_tumblr_view = Backbone.View.extend({
         this.$el.html( this.template({
             model: this.model
         }));
-        var $tumblr_streams = this.$el.find('.tumblr-streams').empty(),
+        var $tumblr_streams = this.$el.find('.post-stream').empty(),
             collection = new tumblr_post_collection(),
             options = {
                 data: {
-                    limit:1
+                    limit:1,
+                    filter:'text'
                 },
                 success: function(){
                     if (collection.length) {

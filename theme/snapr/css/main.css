@@ -5357,6 +5357,26 @@ body.browser-testing .ps-caption-bottom {
 .dash-footer .ui-btn-inner .ui-icon.ui-icon-search {
   background-position: 0 -32px;
 }
+.tumblr-streams ul.post-stream li {
+  overflow: hidden;
+}
+.tumblr-streams ul.post-stream li .post {
+  padding-top: 8px;
+}
+.tumblr-streams ul.post-stream li .post .caption {
+  font-style: italic;
+}
+.tumblr-streams ul.post-stream li .tumblr-metadata {
+  clear: both;
+}
+.tumblr-streams ul.post-stream li ul.photoset {
+  float: left;
+  padding-right: 16px;
+  margin-bottom: 0;
+}
+.tumblr-streams ul.post-stream li ul.photoset li {
+  margin-bottom: 0;
+}
 .dash-edit-done {
   display: none;
 }
@@ -6790,9 +6810,10 @@ body.browser-testing .ps-caption-bottom {
 #tumblr-posts ul.posts-stream > li .post {
   width: 100%;
 }
-#tumblr-posts ul.posts-stream > li .post img {
-  width: 250px;
-  margin: 0 auto;
+#tumblr-posts ul.posts-stream > li .post img,
+#tumblr-posts ul.posts-stream > li .post audio,
+#tumblr-posts ul.posts-stream > li .post video {
+  width: 100%;
 }
 #tumblr-posts ul.posts-stream > li .post p {
   text-align: justify;
@@ -6803,6 +6824,18 @@ body.browser-testing .ps-caption-bottom {
 #tumblr-posts ul.posts-stream > li .post ul.photoset li {
   float: left;
   margin: 3px;
+}
+#tumblr-posts ul.posts-stream > li .post div.quote {
+  border-left: 4px solid #666;
+  padding-left: 8px;
+}
+#tumblr-posts ul.posts-stream > li .post div.quote p.source {
+  color: #999;
+}
+#tumblr-posts ul.posts-stream > li .tumblr-metadata .meta-details em {
+  font-size: 12px;
+  font-weight: normal;
+  color: #999;
 }
 #tumblr-posts ul.posts-stream > li:last-child {
   border-bottom: none;
