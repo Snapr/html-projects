@@ -236,7 +236,7 @@ var uploading_image_stream = side_scroll.extend({
                     latitude: this.details.latitude,
                     longitude: this.details.longitude,
                     radius: 5000,
-                    sort: "favorite_count"
+                    sort: "weighted_score"
                 };
                 break;
             case "recent-nearby":
