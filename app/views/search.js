@@ -49,9 +49,9 @@ return page_view.extend({
 
         switch(type){
             case 'location':
-                if (window.location.hash == "#/map/?location=" + keywords ){
+                if (window.location.hash.indexOf('#/map/') === 0){
                     this.back();
-                    this.back_view && this.back_view.search_location( keywords );
+                    this.previous_view && this.previous_view.location_search(keywords);
                 }else{
                     Backbone.history.navigate( "#/map/?location=" + keywords );
                 }
