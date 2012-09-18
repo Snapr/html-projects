@@ -7,7 +7,7 @@ var paused = Backbone.View.extend({
     render: function(message, icon){
         this.setElement( $('.x-resume-queue').show().remove() );
         $('.x-resume-queue').live('click', function(){
-            native.pass_data('snapr://upload?setting=On');
+            native.pass_data('snapr://upload?start');
             config.set('paused', false);
         });
         return this;
