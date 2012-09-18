@@ -50,7 +50,7 @@ var uploading = page_view.extend({
             // app in the background, we can show progress here.
             this.render();
         }
-        //this.update_uploads();
+        this.update_uploads();
     },
 
     events: {
