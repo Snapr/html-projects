@@ -49,10 +49,11 @@ return page_view.extend({
                             //login
                             auth.set({
                                 "access_token": data.response.access_token,
-                                "snapr_user": data.response.snapr_user
+                                "snapr_user": data.response.snapr_user,
+                                "display_username": data.response.display_username
                             });
                             auth.save_locally();
-                            alerts.notification('Logged in as ' + data.response.snapr_user);
+                            alerts.notification('Logged in as ' + data.response.display_username);
                             Backbone.history.navigate("#/");
                         }else{
                             // sign up
