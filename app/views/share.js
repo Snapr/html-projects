@@ -24,7 +24,7 @@ return page_view.extend({
         }
 
         // make sure the view is empty
-        this.$el.find("[data-role='content']").empty();
+        this.$("[data-role='content']").empty();
 
         // if we are coming from the venue selection screen the model will be passed in
         if (this.use_cached_model){
@@ -63,7 +63,9 @@ return page_view.extend({
             img_url = this.model.get("photo_path");
         }
 
-        var saved_description = this.$('#description').val();
+        var description = this.$('#description').val() || this.query.description || this.model.get("description") || '',
+            location = this.query.location || this.model.get("location").location || '';
+
 
         this.$el.find("[data-role='content']").html( this.template({
             img_url: img_url,
@@ -75,9 +77,10 @@ return page_view.extend({
             tumblr_sharing: local_storage.get( "tumblr-sharing" ),
             foursquare_sharing: local_storage.get( "foursquare-sharing" ),
             twitter_sharing: local_storage.get( "twitter-sharing" ),
-            edit: (local_storage.get( "aviary" ) || local_storage.get( "camplus_edit" ) ),
+            edit: (local_storage.get( "aviary" ) || local_storage.get( "camplus_edit" )),
             camplus: local_storage.get( "camplus" ),
-            saved_description: saved_description || this.query.description || this.model.get("description") || ''
+            saved_description: unescape(description) ,
+            saved_location: unescape(location)
         }) ).trigger("create");
 
         return this;
@@ -119,7 +122,7 @@ return page_view.extend({
                     local_storage.get( "status" ) != "private"){
                     share_photo_view.get_foursquare_venues();
                 }
-                if( !local_storage.get( "foursquare-sharing" )  ){
+                if( !local_storage.get( "foursquare-sharing" ) && !share_photo_view.query.location ){
                     share_photo_view.get_reverse_geocode();
                 }
             },
@@ -156,7 +159,7 @@ return page_view.extend({
             local_storage.get( "status" ) != "private"){
             this.get_foursquare_venues();
         }
-        if(!local_storage.get( "foursquare-sharing" )){
+        if(!local_storage.get( "foursquare-sharing" ) && !this.query.location ){
             this.get_reverse_geocode();
         }
     },
@@ -258,19 +261,16 @@ return page_view.extend({
 
         setTimeout( this.render, 10 );
 
-        if (status == "private" && local_storage.get( "foursquare-sharing" ) == "true"){
+        if (status == "private" && local_storage.get( "foursquare-sharing" )){
             this.get_reverse_geocode();
-        }else if (status == "public" && local_storage.get( "foursquare-sharing" ) == "true"){
+        }else if (status == "public" && local_storage.get( "foursquare-sharing" )){
             this.get_foursquare_venues();
         }
     },
 
     toggle_sharing: function( e ){
-        if ($(e.target).attr("checked")){
-            local_storage.set( e.target.id, true );
-        }else{
-            local_storage.set( e.target.id, false );
-        }
+        local_storage.set( e.target.id, !!$(e.target).attr("checked") );
+
         if (e.target.id == "foursquare-sharing"){
             this.$el.find("#no-foursquare-sharing-location").toggle();
             this.$el.find("#foursquare-sharing-location").toggle();
@@ -376,6 +376,8 @@ return page_view.extend({
         if (location.foursquare_venue_name && location.foursquare_venue_id){
             params.foursquare_venue_name = escape(location.foursquare_venue_name);
             params.foursquare_venue_id = location.foursquare_venue_id;
+        }else if (location.location){
+            params.location = escape(location.location);
         }
         return $.param( params );
 

@@ -2723,10 +2723,14 @@
                                         <% if (photo.attributes.location && photo.attributes.location.location){%>
                                              <%= photo.attributes.location.location %>
                                         <% }else{ %>
-                                            <% if (share_location){ %>
-                                                Getting location&hellip;
+                                            <% if (saved_location){ %>
+                                              <%= saved_location %>
                                             <% }else{ %>
-                                                Share location.
+                                              <% if (share_location){ %>
+                                                  Getting location&hellip;
+                                              <% }else{ %>
+                                                  Share location.
+                                              <% } %>
                                             <% } %>
                                         <% } %>
                                         </span>
