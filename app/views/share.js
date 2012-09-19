@@ -100,11 +100,26 @@ return page_view.extend({
         this.model.fetch({
             success: function( model ){
 
+                var location = {};
+                if (share_photo_view.query.latitude &&
+                    share_photo_view.query.longitude){
+                    location.latitude = share_photo_view.query.latitude;
+                    location.longitude = share_photo_view.query.longitude;
+                }
+                if (share_photo_view.query.foursquare_venue_id && share_photo_view.query.foursquare_venue_name){
+                    location.foursquare_venue_id = share_photo_view.query.foursquare_venue_id;
+                    location.foursquare_venue_name = unescape(share_photo_view.query.foursquare_venue_name);
+                }
+                if(location){
+                    model.set('location', location);
+                }
+
                 if (local_storage.get( "foursquare-sharing" ) &&
                     !model.get( "location" ).foursquare_venue_id &&
                     local_storage.get( "status" ) != "private"){
                     share_photo_view.get_foursquare_venues();
-                }else if( !model.get( "location" ).location ){
+                }
+                if( !local_storage.get( "foursquare-sharing" )  ){
                     share_photo_view.get_reverse_geocode();
                 }
             },
