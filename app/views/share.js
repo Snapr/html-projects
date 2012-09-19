@@ -121,10 +121,10 @@ return page_view.extend({
             this.query.longitude){
             location.latitude = this.query.latitude;
             location.longitude = this.query.longitude;
-            if (this.query.foursquare_venue_id && this.query.foursquare_venue_name){
-                location.foursquare_venue_id = this.query.foursquare_venue_id;
-                location.foursquare_venue_name = unescape(this.query.foursquare_venue_name);
-            }
+        }
+        if (this.query.foursquare_venue_id && this.query.foursquare_venue_name){
+            location.foursquare_venue_id = this.query.foursquare_venue_id;
+            location.foursquare_venue_name = unescape(this.query.foursquare_venue_name);
         }
 
         this.model = new photo_model({
