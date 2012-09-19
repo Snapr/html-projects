@@ -181,7 +181,7 @@ return page_view.extend({
                 success: function( model ){
                     share_photo_view.model.set({
                         location: model.attributes
-                    });
+                    }, {silent:true});
                     share_photo_view.$el.find("#no-foursquare-sharing-location").removeClass("ajax-loading");
                     share_photo_view.$el.find(".location-name").text(share_photo_view.model.get("location").location);
                 }
@@ -218,7 +218,7 @@ return page_view.extend({
                             foursquare_venue_id: collection.first().get( "id" ),
                             foursquare_venue_name: collection.first().get( "name" )
                         });
-                        share_photo_view.model.set({location: location});
+                        share_photo_view.model.set({location: location}, {silent:true});
                         share_photo_view.$el.find("#foursquare-sharing-location").removeClass("ajax-loading");
                         share_photo_view.$el.find(".foursquare-venue-name")
                             .text(share_photo_view.model.get("location").foursquare_venue_name);
