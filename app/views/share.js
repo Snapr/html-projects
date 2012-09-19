@@ -77,7 +77,7 @@ return page_view.extend({
             twitter_sharing: local_storage.get( "twitter-sharing" ),
             edit: (local_storage.get( "aviary" ) || local_storage.get( "camplus_edit" ) ),
             camplus: local_storage.get( "camplus" ),
-            saved_description: saved_description || ''
+            saved_description: saved_description || this.query.description || this.model.get("description") || ''
         }) ).trigger("create");
 
         return this;
@@ -99,7 +99,6 @@ return page_view.extend({
 
         this.model.fetch({
             success: function( model ){
-                share_photo_view.$el.find("#description").val( model.get("description") );
 
                 if (local_storage.get( "foursquare-sharing" ) &&
                     !model.get( "location" ).foursquare_venue_id &&
@@ -128,18 +127,9 @@ return page_view.extend({
             }
         }
 
-        var description;
-        if (this.query.description){
-            description = unescape(this.query.description);
-        }else{
-            description = "";
-        }
-
-
         this.model = new photo_model({
             photo_path: path,
-            location: location,
-            description: description
+            location: location
         });
 
         this.model.bind( "change", this.render );
