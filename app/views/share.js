@@ -136,12 +136,12 @@ return page_view.extend({
 
         this.render();
 
-        if (local_storage.get( "foursquare-sharing") != "false" &&
+        if (local_storage.get( "foursquare-sharing") &&
             !this.model.get("location").foursquare_venue_id &&
             local_storage.get( "status" ) != "private"){
             this.get_foursquare_venues();
         }
-        if(local_storage.get( "foursquare-sharing" ) != "true"){
+        if(!local_storage.get( "foursquare-sharing" )){
             this.get_reverse_geocode();
         }
     },
