@@ -175,7 +175,7 @@ var dash_tumblr_view = Backbone.View.extend({
         this.$el.html( this.template({
             model: this.model
         }));
-        var $tumblr_streams = this.$el.find('.post-stream').empty(),
+        var $tumblr_streams = this.$el.find('.posts-stream').empty(),
             collection = new tumblr_post_collection(),
             options = {
                 data: {
@@ -197,7 +197,13 @@ var dash_tumblr_view = Backbone.View.extend({
             };
         collection.fetch(options);
     },
-    toggle_feed: function () {}
+    toggle_feed: function () {
+        var btn = this.$el.find('[data-role="button"]');
+
+        btn.toggleClass('open').toggleClass('closed')
+        btn.toggleClass('top-left-arrow');
+        this.$el.find('.post-stream').fadeToggle();
+    }
 });
 
 var dash_stream = side_scroll.extend({

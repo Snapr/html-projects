@@ -16,7 +16,7 @@ var tumblr_item_view = Backbone.View.extend({
             model: this.model,
             _:_,
             getPhotoURL: function(model, size) {
-                size = parentWidth;
+                size = size || parentWidth;
                 // Returns the best image URL from available photo sizes based on the specified
                 // "size" parameter. For non-native sizes, returns the next largest size (if available).
                 var images = model.alt_sizes,
@@ -27,7 +27,7 @@ var tumblr_item_view = Backbone.View.extend({
                 return (src === "") ? images[0].url : src;
             },
             getVideoEmbed: function(model, size) {
-                size = parentWidth;
+                size = size || parentWidth;
                 // Returns the best embed code from available video sizes based on the specified
                 // "size" parameter. For non-native sizes, returns the next smallest size.
                 var players = model.get('player'),

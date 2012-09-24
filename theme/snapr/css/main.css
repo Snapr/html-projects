@@ -5357,25 +5357,65 @@ body.browser-testing .ps-caption-bottom {
 .dash-footer .ui-btn-inner .ui-icon.ui-icon-search {
   background-position: 0 -32px;
 }
-.tumblr-streams ul.post-stream li {
+.tumblr-streams blockquote {
+  margin: 8px;
+  font-style: italic;
+  font-size: 0.8em;
+}
+.tumblr-streams ul.posts-stream {
   overflow: hidden;
 }
-.tumblr-streams ul.post-stream li .post {
-  padding-top: 8px;
-}
-.tumblr-streams ul.post-stream li .post .caption {
-  font-style: italic;
-}
-.tumblr-streams ul.post-stream li .tumblr-metadata {
-  clear: both;
-}
-.tumblr-streams ul.post-stream li ul.photoset {
+.tumblr-streams ul.posts-stream > li {
+  border-bottom: 1px solid #ccc;
   float: left;
-  padding-right: 16px;
-  margin-bottom: 0;
+  margin: 3px;
+  padding: 6px;
 }
-.tumblr-streams ul.post-stream li ul.photoset li {
-  margin-bottom: 0;
+.tumblr-streams ul.posts-stream > li .post {
+  width: 100%;
+}
+.tumblr-streams ul.posts-stream > li .post img,
+.tumblr-streams ul.posts-stream > li .post audio,
+.tumblr-streams ul.posts-stream > li .post video {
+  width: 100%;
+}
+.tumblr-streams ul.posts-stream > li .post p {
+  text-align: justify;
+}
+.tumblr-streams ul.posts-stream > li .post ul.photoset {
+  overflow: hidden;
+}
+.tumblr-streams ul.posts-stream > li .post ul.photoset li {
+  float: left;
+  margin: 3px;
+}
+.tumblr-streams ul.posts-stream > li .post div.quote {
+  border-left: 4px solid #666;
+  padding-left: 8px;
+}
+.tumblr-streams ul.posts-stream > li .post div.quote p.source {
+  color: #999;
+}
+.tumblr-streams ul.posts-stream > li .tumblr-metadata .meta-details em {
+  font-size: 12px;
+  font-weight: normal;
+  color: #ccc;
+}
+.tumblr-streams ul.posts-stream > li:last-child {
+  border-bottom: none;
+}
+.tumblr-streams ul.tags {
+  overflow: hidden;
+}
+.tumblr-streams ul.tags li {
+  float: left;
+  font-size: 10px;
+  padding: 3px 6px;
+  margin: 3px;
+  background: #ccc;
+  -moz-border-radius: 6px;
+  -webkit-border-radius: 6px;
+  border-radius: 6px;
 }
 .dash-edit-done {
   display: none;
@@ -6835,7 +6875,7 @@ body.browser-testing .ps-caption-bottom {
 #tumblr-posts ul.posts-stream > li .tumblr-metadata .meta-details em {
   font-size: 12px;
   font-weight: normal;
-  color: #999;
+  color: #ccc;
 }
 #tumblr-posts ul.posts-stream > li:last-child {
   border-bottom: none;

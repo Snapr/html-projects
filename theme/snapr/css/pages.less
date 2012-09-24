@@ -805,26 +805,71 @@
 }
 
 .tumblr-streams{
-    ul.post-stream {
-        li {
-            overflow: hidden;
+    blockquote {
+        margin: 8px;
+        font-style:italic;
+        font-size: 0.8em;
+    }
+    ul.posts-stream {
+        overflow:hidden;
+        > li {
+            border-bottom: 1px solid #ccc;
+            float: left;
+            margin: 3px;
+            padding: 6px;
             .post {
-                padding-top: 8px;
-                .caption {
-                    font-style: italic;
+                width: 100%;
+
+                img,
+                audio,
+                video {
+                    width: 100%;
+                }
+
+                p {
+                    text-align: justify;
+                }
+            
+                ul.photoset {
+                    overflow:hidden;
+                    float:left;
+                    margin-right:16px;
+                    li {
+                        float: left;
+                        margin: 3px;
+                    }
+                }
+                div.quote {
+                    border-left: 4px solid #666;
+                    padding-left: 8px;
+                    p.source {
+                        color: #999;
+                    }
                 }
             }
             .tumblr-metadata {
-                clear: both;
-            }
-            ul.photoset {
-                float: left;
-                padding-right: 16px;
-                margin-bottom: 0;
-                li {
-                    margin-bottom: 0;
+                .meta-details {
+                    em {
+                        font-size: 12px;
+                        font-weight: normal;
+                        color: #ccc;
+                    }
                 }
             }
+        }
+        > li:last-child {
+            border-bottom: none;
+        }
+    }
+    ul.tags {
+        overflow:hidden;
+        li {
+            float: left;
+            font-size: 10px;
+            padding: 3px 6px;
+            margin: 3px;
+            background: #ccc;
+            .corner-all
         }
     }
 }
