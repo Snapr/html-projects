@@ -361,9 +361,6 @@ return page_view.extend({
             if (camplus){
                 native.pass_data( "snapr://camplus/edit/?photo_url=" + img_url + "&" + this.get_photo_edit_params());
             }
-            setTimeout( function(){
-                Backbone.history.navigate( "#/limbo/" );
-            }, 600);
         }else{
             console.error("clicked on camplus edit but not in appmode or no img_url", img_url );
         }
