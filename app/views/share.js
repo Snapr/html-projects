@@ -341,7 +341,6 @@ return page_view.extend({
     },
 
     edit_camplus: function(){
-        $.mobile.showPageLoadingMsg();
         this.query.description = escape(this.$("#description").val());
         window.navigator.hash = "#/share/?" + $.param( this.query );
 
