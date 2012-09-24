@@ -45,12 +45,13 @@ return page_view.extend({
         switch (this.time_period){
             case 'time-today':
                 var today = new Date();
-                this.collection.data.min_date = string_utils.date_to_snapr_format( today );
+                today.setMilliseconds( today.getMilliseconds() - (24*60*60*1000) );
+                this.collection.data.min_date = string_utils.date_to_snapr_format(today, 'UTC');
                 break;
             case 'time-week':
                 var day = new Date();
                 day.setMilliseconds( day.getMilliseconds() - (7*24*60*60*1000) );
-                this.collection.data.min_date = string_utils.date_to_snapr_format( day );
+                this.collection.data.min_date = string_utils.date_to_snapr_format(day, 'UTC');
                 break;
             case 'time-all':
                 if (this.collection.data.min_date){

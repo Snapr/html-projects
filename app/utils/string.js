@@ -60,8 +60,15 @@ string_utils.comment_links = function( comment ){
     return output;
 };
 
-string_utils.date_to_snapr_format = function (d) {
-    return d.getFullYear() + '-' + string_utils.zeroFill(d.getMonth() + 1, 2) + '-' + string_utils.zeroFill(d.getDate(), 2) + ' 00:00:00';
+string_utils.date_to_snapr_format = function (d, utc) {
+    if(utc){
+        utc = 'UTC';
+    }else{
+        utc = '';
+    }
+    var date = d['get'+utc+'FullYear']() + '-' + string_utils.zeroFill(d['get'+utc+'Month']() + 1, 2) + '-' + string_utils.zeroFill(d['get'+utc+'Date'](), 2);
+    var time = string_utils.zeroFill(d['get'+utc+'Hours'](), 2) + ':' + string_utils.zeroFill(d['get'+utc+'Minutes']() + 1, 2) + ':' + string_utils.zeroFill(d['get'+utc+'Seconds'](), 2);
+    return  date + ' ' + time;
 };
 string_utils.convert_snapr_date = function(time){
     time = (time || "").replace(/-/g,"/").replace(/ \//g," -").replace(/[TZ]/g," ");
