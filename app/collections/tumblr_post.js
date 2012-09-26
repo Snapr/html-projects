@@ -9,17 +9,18 @@ return Backbone.Collection.extend({
 
     },
     
-    url: function( method ){
-        var tumblr_host = 'matthewbuchanan.name';
-        var tumblr_key = 'U41QnbLmjhiKfief3Cd5jZ6fO4ciHwWbrYSCwthlm79rZ0e6aR';
-        var type = '';
-
-        return 'http://api.tumblr.com/v2/blog/' + tumblr_host + '/posts' + type + '?api_key=' + tumblr_key;
+    tumblr_url: function( host, key ){
+        host = host || '';
+        key = key || '';
+        return 'http://api.tumblr.com/v2/blog/' + host + '/posts?api_key=' + key;
     },
 
     fetch: function (options) {
         options = options || {};
         options.jsonp = options.jsonp || 'jsonp';
+
+        options.url = this.tumblr_url(options.host, options.key);
+        
         return Backbone.Collection.prototype.fetch.call(this, options);
     },
 

@@ -91,6 +91,7 @@ var dash_view = page_view.extend({
         // Tumblr
 
         _.each( this.model.get('tumblr_feeds').models, function ( item ){
+            console.log('item', item);
             var li = new dash_tumblr_view({
                 model: item
             });
@@ -175,9 +176,13 @@ var dash_tumblr_view = Backbone.View.extend({
         this.$el.html( this.template({
             model: this.model
         }));
-        var $tumblr_streams = this.$el.find('.posts-stream').empty(),
+        var tumblr_host = this.model.get('host'),
+            tumblr_key = this.model.get('key'),
+            $tumblr_streams = this.$el.find('.posts-stream').empty(),
             collection = new tumblr_post_collection(),
             options = {
+                host: tumblr_host,
+                key: tumblr_key,
                 data: {
                     limit:1,
                     filter:'text'
