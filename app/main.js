@@ -226,61 +226,69 @@ require(['config', 'jquery', 'backbone', 'photoswipe', 'auth', 'utils/local_stor
         });
 
         // camera button
-        function launch_camera(){
+        function launch_camera(event, extra_params){
+            extra_params = extra_params || $(this).data('extra_params');
+            console.log(extra_params);
+
             var appmode = local_storage.get( "appmode" );
             var camplus = local_storage.get( "camplus" );
             var camplus_camera = local_storage.get( "camplus_camera" );
 
             if (appmode){
                 if (camplus && camplus_camera){
-                    native.pass_data( "snapr://camplus/camera/" );
+                    native.pass_data( "snapr://camplus/camera/?" + extra_params );
                 }else{
-                    native.pass_data( "snapr://camera" );
-                }
+                    native.pass_data( "snapr://camera/?" + extra_params );
 
-                setTimeout( function(){
-                    Backbone.history.navigate( "#/limbo/" );
-                }, 600);
+                    setTimeout( function(){
+                        Backbone.history.navigate( "#/limbo/" );
+                    }, 600);
+                }
             }else{
-                Backbone.history.navigate( "#/app/" );
+                Backbone.history.navigate( "#/app/?" + extra_params );
             }
         }
         $(".x-launch-camera").live( "click", auth.require_login( launch_camera ));
 
         // photo library button
-        function photo_library(){
+        function photo_library(event, extra_params){
+            extra_params = extra_params || $(this).data('extra_params');
+            console.log(extra_params);
+
             var appmode = local_storage.get( "appmode" );
             var camplus = local_storage.get( "camplus" );
             var camplus_lightbox = local_storage.get( "camplus_lightbox" );
 
             if (appmode){
                 if (camplus && camplus_lightbox){
-                    native.pass_data( "snapr://camplus/lightbox/" );
+                    native.pass_data( "snapr://camplus/lightbox/?" + extra_params );
                 }else{
-                    native.pass_data( "snapr://photo-library" );
-                }
+                    native.pass_data( "snapr://photo-library/?" + extra_params );
 
-                setTimeout( function(){
-                    Backbone.history.navigate( "#/limbo/" );
-                }, 600);
+                    setTimeout( function(){
+                        Backbone.history.navigate( "#/limbo/" );
+                    }, 600);
+                }
             }else{
-                Backbone.history.navigate( "#/upload/" );
+                Backbone.history.navigate( "#/upload/?" + extra_params );
             }
         }
         $(".x-launch-photo-library").live( "click", auth.require_login( photo_library ) );
 
         // camera / photostream actionsheet
         $(".x-launch-camera-options").live( "click", auth.require_login( function(){
+            var extra_params = $(this).data('extra_params');
+            console.log(extra_params);
             if(local_storage.get( "appmode" )){
                 alerts.approve({
                     'title': 'Share Photo',
                     'yes': "Take Picture",
                     'no': "Use Existing",
-                    'yes_callback': launch_camera,
-                    'no_callback': photo_library
+                    'yes_callback': function(){launch_camera(null, extra_params);},
+                    'no_callback': function(){photo_library(null, extra_params);}
                 });
             }else{
-                photo_library();
+                photo_library(extra_params);
             }
         }) );
 

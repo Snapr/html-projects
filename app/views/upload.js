@@ -8,7 +8,7 @@ return page_view.extend({
 
     post_activate: function(){
         // we will redirect to this url on successful upload
-        this.redirect_uri = window.location.origin + window.location.pathname + "#/share/";
+        this.redirect_uri = window.location.origin + window.location.pathname + "#/share/?" + $.param(this.options.query);
 
         this.change_page();
     },

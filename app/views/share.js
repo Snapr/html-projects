@@ -1,7 +1,7 @@
 /*global _  define require */
-define(['config', 'backbone', 'views/base/page', 'models/photo', 'models/geo_location', 'collections/foursquare_venue',
+define(['config', 'backbone', 'views/base/page', 'models/photo', 'models/comp', 'models/geo_location', 'collections/foursquare_venue',
     'utils/geo', 'auth', 'utils/local_storage', 'utils/alerts', 'native', 'utils/dialog', 'utils/string'],
-function(config, Backbone, page_view, photo_model, geo_location, foursquare_venue_collection, geo,
+function(config, Backbone, page_view, photo_model, comp_model, geo_location, foursquare_venue_collection, geo,
     auth, local_storage, alerts, native, dialog, string_utils){
 return page_view.extend({
 
@@ -13,6 +13,11 @@ return page_view.extend({
         this.$('.image-placeholder img').attr('src', '');
         this.change_page();
         this.$('#description').val();
+
+        if(this.options.query.comp_id){
+            this.comp = new comp_model({id: this.options.query.comp_id});
+            this.comp.fetch();
+        }
 
         this.query = options.query;
         if(this.query.latitude === "0.000000"){ delete this.query.latitude; }
@@ -79,8 +84,9 @@ return page_view.extend({
             twitter_sharing: local_storage.get( "twitter-sharing" ),
             edit: (local_storage.get( "aviary" ) || local_storage.get( "camplus_edit" )),
             camplus: local_storage.get( "camplus" ),
-            saved_description: unescape(description) ,
-            saved_location: unescape(location)
+            saved_description: unescape(description),
+            saved_location: unescape(location),
+            comp: this.comp
         }) ).trigger("create");
 
         return this;
@@ -411,6 +417,12 @@ return page_view.extend({
                 foursquare_checkin: ( $("#foursquare-sharing").attr("checked") == "checked" ),
                 tweet: ( $("#twitter-sharing").attr("checked") == "checked" )
             }, {silent: true});
+
+            if(this.options.query.comp_id){
+                this.model.set({
+                    comp_id: this.options.query.comp_id
+                }, {silent: true});
+            }
 
             this.model.save({},{
                 success: function( model, response ){

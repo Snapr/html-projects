@@ -63,13 +63,13 @@
 
                   <li>
                        <!-- Camera Button -->
-                       <a class="x-launch-camera" data-role="button" data-iconpos="left" data-icon="main-menu-camera">Shoot</a>
+                       <a class="x-launch-camera" data-extra_params="comp_id=1" data-role="button" data-iconpos="left" data-icon="main-menu-camera">Shoot</a>
                    </li>
 
                    <li>
                        <!-- Login / Image Library Button -->
                        <% if (logged_in) {%>
-                               <a class="x-launch-photo-library" data-role="button" data-iconpos="left" data-icon="main-menu-camera-lib">Camera Roll</a>
+                               <a class="x-launch-photo-library" data-extra_params="comp_id=1" data-role="button" data-iconpos="left" data-icon="main-menu-camera-lib">Camera Roll</a>
                         <%}else{%>
                              <a href="#/login/" data-snapr-dialog="true" data-role="button" data-iconpos="left" data-icon="main-menu-login">Log In</a>
                        <%}%>
@@ -142,7 +142,7 @@
                      <a href="#/leaderboard/" data-role="button" data-iconpos="left" data-icon="main-menu-leaderboard">Leaderboard</a>
 
                     </li>
-                    
+
                     <li>
                     <!-- Tumblr Button -->
                      <a href="#/tumblr-posts/" data-role="button" data-iconpos="left" data-icon="main-menu-tumblr">Tumblr</a>
@@ -2036,14 +2036,14 @@
                      <li>
                          <p>Snapr is a new service that makes it easy for people to create their own photo sharing apps for different activities, interests, or causes.</p>
                          <p><a class="" href="http://apps.sna.pr">Check out some of the first apps to use Snapr &rarr;</a></p>
-                            
+
                          <p>If an app offers 'Sign in with Snapr' you can view all your photos on Snapr's website and app:</p>
-                     
+
                      </li>
-                     
-                     
-                      
-                     
+
+
+
+
 
                      <li>
                          <a class="iphone-appstore appstore-badge" href="http://itunes.apple.com/app/snapr/id359528116?mt=8">
@@ -2106,7 +2106,7 @@
                    </li>
                </ul>
                <p class="small-text">Does your phone allow browser based uploads?</p>
-               <a data-role="button" data-theme="e" href="#/upload/">Upload via Mobile Web </a>
+               <a data-role="button" data-theme="e" id="app-page-upload-button">Upload via Mobile Web </a>
                </div>
            </div>
        </div>
@@ -2686,7 +2686,9 @@
             <div class="image-options">
                 <div class="upload-settings-layer trans-bg set-full-height">
                     <div class="upload-settings">
+                        <% if(comp){ %>Comp: <%= comp.get('title') %><% } %>
                         <textarea name="description" id="description" placeholder="Add text..." data-theme="d"><%= saved_description %></textarea>
+                        <% if(comp && comp.has('hashtag')){ %><span style="background:yellow; color:black; position:relative; top:-25px; right:-200px;"><%= comp.get('hashtag') %></span><% } %>
 
                         <fieldset data-role="controlgroup" data-type="horizontal" class="upload-image-privacy">
                             <input type="checkbox" name="status" id="status-public" <% if (status != "private"){%> checked="true" <%}%> />
