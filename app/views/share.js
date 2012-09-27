@@ -519,6 +519,10 @@ return page_view.extend({
                     params.status = "private";
                 }
 
+                if(this.options.query.comp_id){
+                    params.comp_id = this.options.query.comp_id;
+                }
+
                 // if share_location is not checked serializeArray will not include it
                 params.share_location = $("#share-location").attr("checked") == "checked";
                 _.extend(params, this.query);
