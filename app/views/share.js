@@ -390,6 +390,10 @@ return page_view.extend({
         if (this.model && this.model.has("secret")){
             var redirect_url = this.redirct_url || config.get('share_redirect');
 
+            if(this.options.query.comp_id){
+                redirect_url += "comp_id=" + this.options.query.comp_id + "&";
+            }
+
             redirect_url += "photo_id=" + this.model.get("id");
 
             if (this.model.get("location") && this.model.get("location").latitude && this.model.get("location").longitude){
@@ -533,30 +537,33 @@ return page_view.extend({
                     params.photo = photo;
                 }
 
-                var ll = "";
+                var extras = "";
                 _.extend(params, auth.attributes);
 
                 if (params.latitude && params.longitude){
-                    ll = "?ll=" + params.latitude + "," + params.longitude;
+                    extras = "?ll=" + params.latitude + "," + params.longitude;
                 }else if (this.model.get( "location" ) &&
                     this.model.get( "location" ).latitude &&
                     this.model.get( "location" ).longitude ){
                     params.latitude = this.model.get( "location" ).latitude;
                     params.longitude = this.model.get( "location" ).longitude;
-                    ll = "?ll=" + params.latitude + "," + params.longitude;
+                    extras = "?ll=" + params.latitude + "," + params.longitude;
                 }else{
-                    ll = "";
+                    extras = "";
                 }
 
                 if (params.foursquare_venue){
-                    ll += "&spot=" + params.foursquare_venue;
+                    extras += "&spot=" + params.foursquare_venue;
                 }
                 if (params.venue_name){
-                    ll += "&venue_name=" + params.venue_name;
+                    extras += "&venue_name=" + params.venue_name;
+                }
+                if (params.comp_id){
+                    extras += "&comp_id=" + params.comp_id;
                 }
 
 
-                Backbone.history.navigate( "#/uploading/" + ll );
+                Backbone.history.navigate( "#/uploading/" + extras );
                 native.pass_data("snapr://upload?" + $.param(params) );
             }
         }

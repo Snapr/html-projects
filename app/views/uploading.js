@@ -1,9 +1,11 @@
 /*global _  define require */
 define(['backbone', 'views/base/page', 'views/upload_progress_li', 'collections/upload_progress',
-    'models/photo', 'views/base/side_scroll', 'collections/photo', 'utils/local_storage', 'utils/alerts', 'native', 'config', 'views/components/paused'],
-function(Backbone, page_view, upload_progress_li, upload_progress, photo_model, side_scroll, photo_collection, local_storage, alerts, native, config, paused_el){
+    'models/photo', 'models/comp', 'views/base/side_scroll', 'collections/photo', 'utils/local_storage', 'utils/alerts', 'native', 'config', 'views/components/paused'],
+function(Backbone, page_view, upload_progress_li, upload_progress, photo_model, comp_model, side_scroll, photo_collection, local_storage, alerts, native, config, paused_el){
 
 var uploading = page_view.extend({
+
+    comp_template: _.template( $('#uploading-stream-comp-template').html() ),
 
     post_initialize: function(){
         var view = this;
@@ -30,6 +32,11 @@ var uploading = page_view.extend({
         this.progress_view = null;
 
         this.query = options.query;
+
+        if(this.query.comp_id){
+            this.comp = new comp_model({id: this.query.comp_id});
+            this.comp.fetch();
+        }
 
         if (this.query.ll){
             var ll = this.query.ll.split(",");
@@ -60,29 +67,40 @@ var uploading = page_view.extend({
     render: function(){
         var $image_stream_container = this.$( ".image-streams" ).empty();
 
-        if (this.foursquare_venue){
-            this.recent_nearby_stream = new uploading_image_stream({
-                stream_type: "spot",
-                foursquare_venue: this.foursquare_venue,
-                venue_name: this.venue_name
-            });
-        }else{
-            if (this.latitude && this.longitude && parseFloat(this.latitude, 10) && parseFloat(this.longitude, 10)){
-                this.recent_nearby_stream = new uploading_image_stream({
-                    stream_type: "recent-nearby",
-                    latitude: this.latitude,
-                    longitude: this.longitude
-                });
-            }
-        }
-
-        if (this.latitude && this.longitude && parseFloat(this.latitude, 10) && parseFloat(this.longitude, 10)){
+        if(this.comp){
             this.popular_nearby_stream = new uploading_image_stream({
                 stream_type: "popular-nearby",
                 latitude: this.latitude,
-                longitude: this.longitude
-                //container: $image_stream_container
+                longitude: this.longitude,
+                comp_id: this.comp.id
             });
+            $image_stream_container.append( this.comp_template(this.comp.attributes) ).trigger('create');
+        }else{
+            if (this.foursquare_venue){
+                this.recent_nearby_stream = new uploading_image_stream({
+                    stream_type: "spot",
+                    foursquare_venue: this.foursquare_venue,
+                    venue_name: this.venue_name
+                });
+            }else{
+                if (this.latitude && this.longitude && parseFloat(this.latitude, 10) && parseFloat(this.longitude, 10)){
+                    this.recent_nearby_stream = new uploading_image_stream({
+                        stream_type: "recent-nearby",
+                        latitude: this.latitude,
+                        longitude: this.longitude
+                    });
+                }
+            }
+
+            if (this.latitude && this.longitude && parseFloat(this.latitude, 10) && parseFloat(this.longitude, 10)){
+                this.popular_nearby_stream = new uploading_image_stream({
+                    stream_type: "popular-nearby",
+                    latitude: this.latitude,
+                    longitude: this.longitude
+                    //container: $image_stream_container
+                });
+            }
+
         }
 
         if (this.recent_nearby_stream){
@@ -90,7 +108,7 @@ var uploading = page_view.extend({
             recent_nearby_stream.collection.fetch({
                 data:{n:6},
                 success: function(){
-                    $image_stream_container.append( recent_nearby_stream.el );
+                    $image_stream_container.prepend( recent_nearby_stream.el );
                     recent_nearby_stream.render();
                     recent_nearby_stream.$el.trigger( "create" );
                 }
@@ -102,7 +120,7 @@ var uploading = page_view.extend({
             popular_nearby_stream.collection.fetch({
                 data:{n:6},
                 success: function(){
-                    $image_stream_container.append( popular_nearby_stream.el );
+                    $image_stream_container.prepend( popular_nearby_stream.el );
                     popular_nearby_stream.render();
                     popular_nearby_stream.$el.trigger( "create" );
                 }
@@ -110,7 +128,7 @@ var uploading = page_view.extend({
         }
 
         if(!this.recent_nearby_stream && !this.popular_nearby_stream){
-            $image_stream_container.append( $("#uploading-stream-placeholder-template").html() ).trigger('create');
+            $image_stream_container.prepend( $("#uploading-stream-placeholder-template").html() ).trigger('create');
         }
 
     },
