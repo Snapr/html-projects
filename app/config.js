@@ -82,6 +82,8 @@ var config_model = Backbone.Model.extend({
         anon_username: 'anon',
         me_username: 'me',
 
+        show_tab_bar: true,
+
         zoom: 15,
         feed_count: 9,
         map_count: 10,

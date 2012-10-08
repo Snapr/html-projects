@@ -17,7 +17,7 @@ Page{
     }
 }
 */
-define(['config', 'backbone', 'utils/history_state', 'views/components/offline'], function(config, Backbone, history_state, offline_el){
+define(['config', 'backbone', 'utils/history_state', 'views/components/offline', 'views/components/tab_bar'], function(config, Backbone, history_state, offline_el, tab_bar){
 
 return Backbone.View.extend({
 
@@ -35,12 +35,20 @@ return Backbone.View.extend({
             page.set_back_text(options);
         });
 
+        if(config.get('show_tab_bar') && this.$el.data('tab-bar')){
+            var this_tab_bar = new tab_bar();
+            this.$el.append(this_tab_bar.$el);
+            this_tab_bar.render();
+        }
+
         this.post_initialize.apply(this, arguments);
         this.activate.apply(this, arguments);
         $(document.body).show();
     },
 
     post_initialize: function(){},
+
+    tab_bar_template: _.template($('#tab-bar-template').html()),
 
     history_ignore_params: false,  // array of url params to ignore when navigating to a view via history
 

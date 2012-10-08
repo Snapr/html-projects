@@ -22,6 +22,25 @@
     </head>
 <body style="display: none;"><!-- initially hidden until jQmobile can load and style everything -->
 
+    <script id="tab-bar-template" type="text/template">
+        <div data-role="footer" data-id="foo1" data-position="fixed" data-ajax="false" data-theme="b" class="snapr-footer tab-bar-icons">
+            <div data-role="navbar" data-iconpos="top">
+                <ul>
+                    <li><a href="#/dash/" data-icon="dash" class="ui-btn-active">Dash</a></li>
+                    <li><a href="#/map/" data-icon="map">Map</a></li>
+                    <li><a class="x-launch-camera-options" data-icon="share">Share</a></li>
+                    <li><a href="#/popular/" data-icon="popular">Discover</a></li>
+                    <% if(username){ %>
+                        <li><a href="#/feed/?username=<%= username %>" data-icon="user">Me</a></li>
+                    <% }else{ %>
+                        <li><a href="#/feed/" data-icon="user">Feed</a></li>
+                    <% } %>
+
+                </ul>
+            </div><!-- /navbar -->
+        </div><!-- /footer -->
+    </script>
+
     <!-- @menu HOME PAGE-->
        <div id="home" data-title="Snapr" data-role="page" data-short-title="Menu" data-theme="d" class="" data-ajax="false">
            <div data-role="header" data-theme="b">
@@ -823,7 +842,7 @@
 
 
     <!-- @popular PAGE -->
-    <div id="popular" data-title="Popular" data-add-back-btn="true" data-role="page" data-theme="d">
+    <div id="popular" data-title="Popular" data-tab-bar="true" data-add-back-btn="true" data-role="page" data-theme="d">
         <div data-role="header" data-theme="b">
             <h1>Popular</h1>
 
@@ -844,21 +863,7 @@
             <div id="popular-thumbs" class="thumbs-grid thumbs-grid-med">
             </div>
         </div>
-        
-        
-        <div data-role="footer" data-id="foo1" data-position="fixed" data-ajax="false" data-theme="b" class="snapr-footer tab-bar-icons">
-            <div data-role="navbar" data-iconpos="top">
-                <ul>
-                    <li><a href="#/dash/" data-icon="dash" class="ui-btn-active ui-state-persist">Dash</a></li>
-                    <li><a href="#/map/" data-icon="map">Map</a></li>
-                    <li><a class="x-launch-camera-options" data-icon="share">Share</a></li>
-                    <li><a href="#/popular/" data-icon="popular">Discover</a></li>
-                    <li><a href="#/feed/?username=rowan" data-icon="user">Me</a></li>
-                    
-                </ul>
-            </div><!-- /navbar -->
-        </div><!-- /footer -->
-        
+
     </div><!-- /page -->
 
     <!-- @thumb @image ITEM -->
@@ -871,7 +876,7 @@
     </script>
 
     <!-- @feed PAGE the main image display view -->
-    <div id="feed" data-role="page" data-title="Feed" data-theme="d" data-add-back-btn="true">
+    <div id="feed" data-role="page" data-tab-bar="true" data-title="Feed" data-theme="d" data-add-back-btn="true">
         <div data-role="header" data-theme="b">
             <div class="ui-grid-b">
                 <div class="ui-block-a">
