@@ -7270,4 +7270,11 @@ body.browser-testing .ui-footer {
     -webkit-background-size: 774px 180px;
     background-size: 774px 180px;
   }
+  .tab-bar-icons .ui-icon {
+    background-image: url('../gfx/retina/tab-bar-icons.png');
+    -moz-background-size: 64px 192px;
+    -o-background-size: 64px 192px;
+    -webkit-background-size: 64px 192px;
+    background-size: 64px 192px;
+  }
 }
