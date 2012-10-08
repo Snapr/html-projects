@@ -3177,6 +3177,7 @@ a.ui-link-inherit {
 }
 .snapr-footer .ui-navbar .ui-btn-inner .ui-btn-text {
   font-size: 12px;
+  text-transform: none;
 }
 .snapr-footer .ui-navbar .ui-btn-inner .ui-icon {
   top: 0;
