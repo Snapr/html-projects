@@ -67,25 +67,41 @@ var pages = [
     'foursquare_venues'
 ];
 
-function _make_route(view, el, extra_data){
-    var route = function(query_string, dialog, extra_data_2){
+function _make_route(view, el, extra_view_data){
+    // returns a function that will do all that's needed to show a page when called
+    // view: js file to require, provices a Backbone.View
+    // el: Selector for view's element
+    // extra_view_data: extra params to load this view with every time
+    var route = function(query_string, dialog, extra_instance_data){
+        // query_string: query string
+        // dialog: (bool) load this page as a dialog (no url change, no effect on history)
+        // extra_instance_data: extra data to load this view this time only
+
+        // get the view
         require([view], function(view) {
+
             var query = get_query_params(query_string),
                 options = _.extend({
                     query: query,
                     dialog: !!dialog
-                }, extra_data || {}, extra_data_2 || {});
+                }, extra_view_data || {}, extra_instance_data || {});
+
+            // don't create a new instance of this view every time
             if(!route.cached_view){
                 options.el = $(el);
+                // new view() initialises AND activates
                 route.cached_view = new view(options);
             }else{
                 route.cached_view.options = options;
                 route.cached_view.activate(options);
             }
+            // store 'current_view' as the one about to be loaded's previous_view
             route.cached_view.previous_view = config.get('current_view');
+            // make this view current
             config.set('current_view', route.cached_view);
         });
     };
+
     return route;
 }
 
@@ -151,28 +167,42 @@ if(hash.length > 1){
 
 var routers = Backbone.Router.extend({
     pages: pages,
+
+    // build our page array into backbone routes
     initialize: function() {
-        _.each(this.pages, _.bind(function(name){
-            var view, extra_data, element;
-            if(_.isObject(name)){
-                view = name.view;
-                extra_data = name.extra;
-                element = name.element;
-                name = name.name;
+        _.each(this.pages, function(options){
+            var name, view, extra_data, element;
+
+            // the page can just be a name or an object specifing more properties
+            if(_.isObject(options)){
+                view = "views/" + options.view;
+                extra_data = options.extra;
+                element = "#" + options.element;
+                name = options.name;
+            }else{
+                // if it's just a name, build the other params
+                view = "views/" + options.replace('-', '_').replace('/', '_');
+                element = "#" + options;
+                name = options;
             }
-            view = "views/" + (view || name.replace('-', '_').replace('/', '_'));
-            element = "#" + (element || name);
+
             var callback = _make_route(view, element, extra_data);
             var regex = new RegExp('^' + name + '\\/\\??(.*?)?$');
+
+            // store url so we can manually look them up (for dialogues)
             this.urls.push({
                 regex:regex,
                 callback: callback
             });
+
+            // create backbone route
             this.route(regex, name, callback);
-        }, this));
+
+        }, this);
 
     },
     urls:[],
+
     routes: {
         "?*query_string": "home",
         "*path": "home"
