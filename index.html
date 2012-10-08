@@ -26,14 +26,14 @@
         <div data-role="footer" data-id="foo1" data-position="fixed" data-ajax="false" data-theme="b" class="snapr-footer tab-bar-icons">
             <div data-role="navbar" data-iconpos="top">
                 <ul>
-                    <li><a href="#/dash/" data-icon="dash" class="ui-btn-active">Dash</a></li>
-                    <li><a href="#/map/" data-icon="map">Map</a></li>
-                    <li><a class="x-launch-camera-options" data-icon="share">Share</a></li>
-                    <li><a href="#/popular/" data-icon="popular">Discover</a></li>
+                    <li><a href="#/dash/" data-icon="dash" class="ui-btn-active"  data-theme="b">Dash</a></li>
+                    <li><a href="#/map/" data-icon="map" data-theme="b">Map</a></li>
+                    <li><a class="x-launch-camera-options" data-icon="share"  data-theme="b">Share</a></li>
+                    <li><a href="#/popular/" data-icon="popular" data-theme="b">Discover</a></li>
                     <% if(username){ %>
-                        <li><a href="#/feed/?username=<%= username %>" data-icon="user">Me</a></li>
+                        <li><a href="#/feed/?username=<%= username %>" data-icon="user" data-theme="b">Me</a></li>
                     <% }else{ %>
-                        <li><a href="#/feed/" data-icon="user">Feed</a></li>
+                        <li><a href="#/feed/" data-icon="user" data-theme="b">Feed</a></li>
                     <% } %>
 
                 </ul>
