@@ -20,6 +20,8 @@ return page_view.extend({
 
     },
 
+    get_override_tab: function(){ return 'feed'; },
+
     back_text: "Menu",
 
     template: _.template( $('#my-account-template').html() ),

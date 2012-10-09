@@ -42,7 +42,7 @@ return Backbone.View.extend({
 
     post_initialize: function(){},
 
-    get_tab: function(){},  // set the tab to this always
+    get_default_tab: function(){},  // set the tab to this always
     get_override_tab: function(){},  // set the tab to this if no other is selected (arriving via url etc)
 
     history_ignore_params: false,  // array of url params to ignore when navigating to a view via history
