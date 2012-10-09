@@ -134,11 +134,6 @@
 /* Vertical Layout of Icons */
 /* Horizontal offsets for theme swatches / hover states */
 /*
-* Extra Icons '../gfx/extra-icons.png'
-*/
-/* Vertical Layout of Icons */
-/* Horizontal offsets for theme swatches / hover states */
-/*
 * Helper Icons '../gfx/helper-icons.png'
 */
 /* Vertical Layout of Icons */
@@ -475,78 +470,56 @@
 .dark-icons .ui-btn .ui-btn-inner.ui-icon-grid {
   background-position: 0px -400px;
 }
-/* @extra-icons */
-.ui-icon.extra-icons,
-.extra-icons .ui-icon {
-  background-image: url('../gfx/extra-icons.png');
+.ui-bar .ui-icon {
+  background-image: url('../gfx/ui-bar-icons.png');
 }
-.extra-icons .ui-icon-heart,
-.extra-icons.ui-icon-heart {
+.ui-bar .ui-icon-open {
   background-position: 0 0px;
 }
-.extra-icons .ui-icon-venue,
-.extra-icons.ui-icon-venue {
+.ui-bar .ui-icon-close {
   background-position: 0 -32px;
 }
-.extra-icons .ui-icon-person,
-.extra-icons.ui-icon-person {
+.ui-bar .ui-icon-arrowR {
   background-position: 0 -64px;
 }
-.extra-icons .ui-icon-search,
-.extra-icons.ui-icon-search {
+.ui-bar .ui-icon-heart {
   background-position: 0 -96px;
 }
-.extra-icons .ui-icon-activity,
-.extra-icons.ui-icon-activity {
+.ui-bar .ui-icon-venue {
   background-position: 0 -128px;
 }
-.extra-icons .ui-icon-location,
-.extra-icons.ui-icon-location {
+.ui-bar .ui-icon-person {
   background-position: 0 -160px;
 }
-.extra-icons .ui-icon-clock,
-.extra-icons.ui-icon-clock {
-  background-position: 0 -384px;
+.ui-bar .ui-icon-search {
+  background-position: 0 -192px;
 }
-.extra-icons .ui-icon-redheart,
-.extra-icons.ui-icon-redheart {
+.ui-bar .ui-icon-activity {
+  background-position: 0 -224px;
+}
+.ui-bar .ui-icon-location {
+  background-position: 0 -256px;
+}
+.ui-bar .ui-icon-clock {
+  background-position: 0 -288px;
+}
+.ui-bar .ui-icon-connection {
+  background-position: 0 -288px;
+}
+.ui-bar .ui-icon-blog {
+  background-position: 0 -288px;
+}
+.ui-bar .ui-icon-comment {
+  background-position: 0 -288px;
+}
+.ui-bar .ui-icon-play {
   background-position: 0 -416px;
 }
-.extra-icons .ui-icon-heart-b,
-.extra-icons.ui-icon-heart-b {
-  background-position: 0 -608px;
+.ui-bar .ui-icon-refresh {
+  background-position: 0 -448px;
 }
-.extra-icons .ui-icon-person-b,
-.extra-icons.ui-icon-person-b {
-  background-position: 0 -640px;
-}
-.extra-icons .ui-icon-search-b,
-.extra-icons.ui-icon-search-b {
-  background-position: 0 -672px;
-}
-.extra-icons .ui-icon-activity-b,
-.extra-icons.ui-icon-activity-b {
-  background-position: 0 -704px;
-}
-.extra-icons .ui-icon-location-b,
-.extra-icons.ui-icon-location-b {
-  background-position: 0 -736px;
-}
-.extra-icons .ui-icon-photoedit,
-.extra-icons.ui-icon-photoedit {
-  background-position: 0 -800px;
-}
-.extra-icons .ui-icon-connection,
-.extra-icons.ui-icon-connection {
-  background-position: 0 -832px;
-}
-.extra-icons .ui-icon-play,
-.extra-icons.ui-icon-play {
-  background-position: 0 -864px;
-}
-.extra-icons .ui-icon-refresh,
-.extra-icons.ui-icon-refresh {
-  background-position: 0 -896px;
+.ui-bar .ui-icon-redheart {
+  background-position: -96px -96px;
 }
 .map-icons.ui-icon,
 .map-icons .ui-icon {
@@ -613,30 +586,6 @@
   background-image: url('../gfx/helper-icons.png');
   width: 96px;
   height: 96px;
-}
-/* @baricons */
-.ui-bar-b .extra-icons .ui-icon-heart,
-.ui-bar-b .extra-icons.ui-icon-heart {
-  background-position: 0 -608px;
-}
-.ui-bar-b .extra-icons .ui-icon-person,
-.ui-bar-b .extra-icons.ui-icon-person {
-  background-position: 0 -640px;
-}
-.ui-bar-b .extra-icons .ui-icon-search,
-.ui-bar-b .extra-icons.ui-icon-search {
-  background-position: 0 -672px;
-}
-.ui-bar-b .extra-icons .ui-icon-activity,
-.ui-bar-b .extra-icons.ui-icon-activity {
-  background-position: 0 -704px;
-}
-.ui-bar-b .extra-icons .ui-icon-location,
-.ui-bar-b .extra-icons.ui-icon-location {
-  background-position: 0 -736px;
-}
-.ui-bar-b .ui-icon-arrow-r {
-  background-position: -99px -36px;
 }
 /* Small Colored Icons For Third Party Services */
 .sharing-icon-small {
@@ -3619,13 +3568,13 @@ a.ui-link-inherit {
   padding-left: 4px;
 }
 .image-streams .image-stream .image-details .ui-icon-search {
-  background-position: 2px -96px;
+  background-position: 2px -192px;
 }
 .image-streams .image-stream .image-details .ui-icon-feed {
-  background-position: 0 -64px;
+  background-position: 0 -160px;
 }
 .image-streams .image-stream .image-details .ui-icon-nearby {
-  background-position: 0 -32px;
+  background-position: 0 -128px;
 }
 .image-streams .image-stream .load-more-inline {
   background-color: #fbfbfb;
@@ -7069,10 +7018,17 @@ body.browser-testing .ui-footer {
   .extra-icons .ui-icon,
   .x-offline .extra-icons .ui-btn-inner .ui-icon {
     background-image: url('../gfx/retina/extra-icons.png');
-    -moz-background-size: 32px 928px;
-    -o-background-size: 32px 928px;
-    -webkit-background-size: 32px 928px;
-    background-size: 32px 928px;
+    -moz-background-size: 160px 480px;
+    -o-background-size: 160px 480px;
+    -webkit-background-size: 160px 480px;
+    background-size: 160px 480px;
+  }
+  .ui-bar .ui-icon {
+    background-image: url('../gfx/retina/ui-bar-icons.png');
+    -moz-background-size: 160px 480px;
+    -o-background-size: 160px 480px;
+    -webkit-background-size: 160px 480px;
+    background-size: 160px 480px;
   }
   .map-icons.ui-icon,
   .map-icons .ui-icon {
@@ -7216,10 +7172,10 @@ body.browser-testing .ui-footer {
   }
   .loading .map-filters .ui-input-search .ui-input-clear .ui-icon-delete {
     background-image: url('../gfx/retina/extra-icons.png') !important;
-    -moz-background-size: 32px 928px !important;
-    -o-background-size: 32px 928px !important;
-    -webkit-background-size: 32px 928px !important;
-    background-size: 32px 928px !important;
+    -moz-background-size: 160px 480px !important;
+    -o-background-size: 160px 480px !important;
+    -webkit-background-size: 160px 480px !important;
+    background-size: 160px 480px !important;
   }
   .ps-toolbar .ps-toolbar-close .ps-toolbar-content {
     background-image: url('../gfx/retina/general-jquerymob-icons.png');

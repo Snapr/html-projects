@@ -64,7 +64,15 @@
     .extra-icons .ui-icon,
     .x-offline .extra-icons .ui-btn-inner .ui-icon {
            background-image: url('../gfx/retina/extra-icons.png');
-           .background-size (@gfx-extra-icon-sprite-width, @gfx-extra-icon-sprite-height);
+           .background-size (@gfxBar-width, @gfxBar-height);
+     }
+     
+     .ui-bar{   
+         .ui-icon{
+             background-image: url('@{gfxRetina}@{gfxBar}');
+             .background-size (@gfxBar-width, @gfxBar-height);
+             
+         }
      }
      
      .map-icons.ui-icon,
@@ -180,7 +188,7 @@
     
     .loading .map-filters .ui-input-search .ui-input-clear .ui-icon-delete {
            background-image: url('../gfx/retina/extra-icons.png')!important;
-           .background-size(@gfx-extra-icon-sprite-width, @gfx-extra-icon-sprite-height)!important;
+           .background-size(@gfxBar-width, @gfxBar-height)!important;
      }
     
     .ps-toolbar{
