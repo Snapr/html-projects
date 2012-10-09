@@ -98,12 +98,14 @@ return page_view.extend({
 
         this.populate_feed();
         this.update_uploads();
- },
+    },
 
     events: {
         "click .x-load-more": "more",
         "change .feed-view-toggle": "feed_view_toggle"
     },
+
+    get_default_tab: function(){ return this.options.query.username == auth.get('snapr_user') && 'feed' || 'discover'; },
 
     photoswipe_init: function(){ $( "#feed-images a.gallery_link", this.el ).photoswipe_init('feed'); },
 

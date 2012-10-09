@@ -228,7 +228,6 @@ require(['config', 'jquery', 'backbone', 'photoswipe', 'auth', 'utils/local_stor
         // camera button
         function launch_camera(event, extra_params){
             extra_params = extra_params || $(this).data('extra_params');
-            console.log(extra_params);
 
             var appmode = local_storage.get( "appmode" );
             var camplus = local_storage.get( "camplus" );
@@ -253,7 +252,6 @@ require(['config', 'jquery', 'backbone', 'photoswipe', 'auth', 'utils/local_stor
         // photo library button
         function photo_library(event, extra_params){
             extra_params = extra_params || $(this).data('extra_params');
-            console.log(extra_params);
 
             var appmode = local_storage.get( "appmode" );
             var camplus = local_storage.get( "camplus" );
@@ -278,7 +276,6 @@ require(['config', 'jquery', 'backbone', 'photoswipe', 'auth', 'utils/local_stor
         // camera / photostream actionsheet
         $(".x-launch-camera-options").live( "click", auth.require_login( function(){
             var extra_params = $(this).data('extra_params');
-            console.log(extra_params);
             if(local_storage.get( "appmode" )){
                 alerts.approve({
                     'title': 'Share Photo',
