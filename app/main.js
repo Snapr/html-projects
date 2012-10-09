@@ -200,6 +200,8 @@ require(['config', 'jquery', 'backbone', 'photoswipe', 'auth', 'utils/local_stor
             class_if_local("camplus_lightbox");
         }
 
+        $("body").toggleClass('tab-bar', !!config.get('show_tab_bar'));
+
 
         /* prevent dragging on some elements in appmode
         ***************************/
