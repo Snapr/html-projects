@@ -36,6 +36,33 @@
 .ui-icon-radio-on {background-position: @gfx-general-icon-sprite-check-x @g-highlight-offset-y;}
 
 
+/* @tabbaricons */
+.tab-bar-icons{
+    .ui-icon{
+        width: @gfx-tab-bar-sprite-grid;
+        height: @gfx-tab-bar-sprite-grid;
+        background-image: url('../gfx/tab-bar-icons.png');    
+    }
+    
+    .ui-icon-dash {     background-position: @tb-offset-x @gfx-tab-bar-sprite-dash-y ;}
+    .ui-icon-map {     background-position: @tb-offset-x @gfx-tab-bar-sprite-map-y ;}
+    .ui-icon-share {     background-position: @tb-offset-x @gfx-tab-bar-sprite-camera-y ;}
+    .ui-icon-spots {     background-position: @tb-offset-x @gfx-tab-bar-sprite-spots-y ;}
+    .ui-icon-popular {     background-position: @tb-offset-x @gfx-tab-bar-sprite-popular-y ;}
+    .ui-icon-user {     background-position:@tb-offset-x @gfx-tab-bar-sprite-user-y ;}
+    
+    .ui-btn-active{
+        .ui-icon-dash {     background-position: @tb-offset-x-hover @gfx-tab-bar-sprite-dash-y;}
+        .ui-icon-map {     background-position: @tb-offset-x-hover @gfx-tab-bar-sprite-map-y ;}
+        .ui-icon-share {     background-position: @tb-offset-x-hover @gfx-tab-bar-sprite-camera-y ;}
+        .ui-icon-spots {     background-position: @tb-offset-x-hover @gfx-tab-bar-sprite-spots-y ;}
+        .ui-icon-popular {     background-position: @tb-offset-x-hover @gfx-tab-bar-sprite-popular-y ;}
+        .ui-icon-user {     background-position:@tb-offset-x-hover @gfx-tab-bar-sprite-user-y ;}
+    }
+    
+}
+
+
 /* @topbaricons */
 .ui-header{
     .ui-btn-up-a{

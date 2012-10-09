@@ -104,6 +104,11 @@
 /* Vertical Layout of Icons */
 /* Horizontal offsets for theme swatches / hover states */
 /*
+* Tab Bar Icon Sprite '../gfx/tab-bar-icons.png'
+*/
+/* Vertical Layout of Icons */
+/* Horizontal offsets for theme swatches / hover states */
+/*
 * General JQuery Mob Icons '../gfx/general-jquerymob-icons'
 */
 /*The jQuery mob sprite has the icons left aligned instead of centered.. */
@@ -235,6 +240,48 @@
 }
 .ui-icon-radio-on {
   background-position: -243px -144px;
+}
+/* @tabbaricons */
+.tab-bar-icons .ui-icon {
+  width: 32px;
+  height: 32px;
+  background-image: url('../gfx/tab-bar-icons.png');
+}
+.tab-bar-icons .ui-icon-dash {
+  background-position: 0px 0px;
+}
+.tab-bar-icons .ui-icon-map {
+  background-position: 0px -96px;
+}
+.tab-bar-icons .ui-icon-share {
+  background-position: 0px -64px;
+}
+.tab-bar-icons .ui-icon-spots {
+  background-position: 0px -128px;
+}
+.tab-bar-icons .ui-icon-popular {
+  background-position: 0px -32px;
+}
+.tab-bar-icons .ui-icon-user {
+  background-position: 0px -160px;
+}
+.tab-bar-icons .ui-btn-active .ui-icon-dash {
+  background-position: -32px 0px;
+}
+.tab-bar-icons .ui-btn-active .ui-icon-map {
+  background-position: -32px -96px;
+}
+.tab-bar-icons .ui-btn-active .ui-icon-share {
+  background-position: -32px -64px;
+}
+.tab-bar-icons .ui-btn-active .ui-icon-spots {
+  background-position: -32px -128px;
+}
+.tab-bar-icons .ui-btn-active .ui-icon-popular {
+  background-position: -32px -32px;
+}
+.tab-bar-icons .ui-btn-active .ui-icon-user {
+  background-position: -32px -160px;
 }
 /* @topbaricons */
 .ui-header .ui-btn-up-a .ui-btn-inner .ui-icon-search {
@@ -716,6 +763,7 @@
   -webkit-animation-iteration-count: infinite;
   -webkit-animation-timing-function: linear;
 }
+/* Some Common Styles */
 /* Browser Defaults, Mobile Specific Hacks, & Basic Styles */
 /*
 * Browser Defaults, Mobile Browser Hacks, Basic Styles
@@ -3077,6 +3125,64 @@ a.ui-link-inherit {
 /*
 * Elements - Non-Jquery Mobile Design Patterns that are shared across multiple pages
 */
+.snapr-footer .ui-navbar {
+  background: #434748;
+  color: #999999;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#434748), to(#26282a));
+  /* Saf4+, Chrome */
+
+  background-image: -webkit-linear-gradient(top, #434748, #26282a);
+  /* Chrome 10+, Saf5.1+ */
+
+  background-image: -moz-linear-gradient(top, #434748, #26282a);
+  /* FF3.6 */
+
+  background-image: -ms-linear-gradient(top, #434748, #26282a);
+  /* IE10 */
+
+  background-image: -o-linear-gradient(top, #434748, #26282a);
+  /* Opera 11.10+ */
+
+  background-image: linear-gradient(top, #434748, #26282a);
+  padding: 3px 0;
+}
+.snapr-footer .ui-navbar .ui-btn {
+  border: none;
+  margin: 0 3px;
+  -moz-border-radius: 3px !important;
+  -webkit-border-radius: 3px !important;
+  border-radius: 3px !important;
+}
+.snapr-footer .ui-navbar .ui-btn.ui-btn-up-b {
+  background: transparent;
+}
+.snapr-footer .ui-navbar .ui-btn.ui-btn-hover-b {
+  background: #484c4d;
+  color: #cccccc;
+}
+.snapr-footer .ui-navbar .ui-btn.ui-btn-down-b,
+.snapr-footer .ui-navbar .ui-btn.ui-btn-active {
+  background: #434748;
+  background-color: #26282a;
+  -moz-box-shadow: inset 0px 2px 4px 2px rgba(0, 0, 0, 0.1) !important;
+  -webkit-box-shadow: inset 0px 2px 4px 2px rgba(0, 0, 0, 0.1) !important;
+  box-shadow: inset 0px 2px 4px 2px rgba(0, 0, 0, 0.1) !important;
+  color: white;
+}
+.snapr-footer .ui-navbar .ui-btn-inner {
+  padding-top: 32px!important;
+  padding-bottom: 4px!important;
+  height: 12px;
+  line-height: 12px;
+}
+.snapr-footer .ui-navbar .ui-btn-inner .ui-btn-text {
+  font-size: 12px;
+  text-transform: none;
+}
+.snapr-footer .ui-navbar .ui-btn-inner .ui-icon {
+  top: 0;
+  margin-left: -16px;
+}
 /* @ui-bar Title Bars that pop up all over the place */
 .ui-bar {
   border: none;
@@ -3319,7 +3425,7 @@ a.ui-link-inherit {
   text-align: left;
 }
 /* Bar style tabbed nav like at the top of the popular page */
-.ui-navbar {
+.ui-content .ui-navbar {
   margin: 0 -8px;
   border: none;
   border-top: solid 1px #ffffff;
@@ -3332,13 +3438,13 @@ a.ui-link-inherit {
   /* Rounding for 3 column bars */
 
 }
-.ui-navbar .ui-btn .ui-btn-text {
+.ui-content .ui-navbar .ui-btn .ui-btn-text {
   font-size: 15px;
   font-family: Helvetica, Arial, sans-serif;
   font-weight: normal;
   text-transform: lowercase;
 }
-.ui-navbar .ui-btn-active .ui-btn-text {
+.ui-content .ui-navbar .ui-btn-active .ui-btn-text {
   position: relative;
   top: -4px;
   text-shadow: rgba(255, 255, 255, 0.8) 0px 1px 0px;
@@ -3349,7 +3455,7 @@ a.ui-link-inherit {
   text-decoration: none;
   font-size: 16px;
 }
-.ui-navbar .ui-btn-active::after {
+.ui-content .ui-navbar .ui-btn-active::after {
   width: 0;
   height: 0;
   display: inline-block;
@@ -3365,19 +3471,19 @@ a.ui-link-inherit {
   top: 37px;
   left: 50%;
 }
-.ui-navbar .ui-btn-inner {
+.ui-content .ui-navbar .ui-btn-inner {
   border-top: none;
   padding-top: 16px!important;
   padding-bottom: 11px!important;
   height: 20px;
   line-height: 20px;
 }
-.ui-navbar .ui-grid-b .ui-block-a .ui-btn {
+.ui-content .ui-navbar .ui-grid-b .ui-block-a .ui-btn {
   -moz-border-radius-topleft: 8px;
   -webkit-border-top-left-radius: 8px;
   border-top-left-radius: 8px;
 }
-.ui-navbar .ui-grid-b .ui-block-c .ui-btn {
+.ui-content .ui-navbar .ui-grid-b .ui-block-c .ui-btn {
   -moz-border-radius-topright: 8px;
   -webkit-border-top-right-radius: 8px;
   border-top-right-radius: 8px;
@@ -4302,6 +4408,10 @@ body.browser-testing .ps-uilayer {
 }
 body.browser-testing .ps-caption-bottom {
   top: 435px!important;
+}
+body.browser-testing .ui-footer {
+  width: 320px!important;
+  overflow: hidden;
 }
 /*
 * Page Specific Styles / Elelments
@@ -7160,5 +7270,12 @@ body.browser-testing .ps-caption-bottom {
     -o-background-size: 774px 180px;
     -webkit-background-size: 774px 180px;
     background-size: 774px 180px;
+  }
+  .tab-bar-icons .ui-icon {
+    background-image: url('../gfx/retina/tab-bar-icons.png');
+    -moz-background-size: 64px 192px;
+    -o-background-size: 64px 192px;
+    -webkit-background-size: 64px 192px;
+    background-size: 64px 192px;
   }
 }

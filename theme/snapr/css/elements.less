@@ -2,6 +2,56 @@
 * Elements - Non-Jquery Mobile Design Patterns that are shared across multiple pages
 */
 
+.snapr-footer{
+    .ui-navbar {
+        .darkGrad();
+        padding: 3px 0;
+        
+        .ui-btn{
+            border: none;
+            margin: 0 3px;
+            .corner-all (3px)!important;
+            
+            &.ui-btn-up-b{
+                background: transparent;
+            }
+            
+            &.ui-btn-hover-b{
+                background: lighten(@color-bg-neutral-dark, 2%);
+                color: @color-txt-light-on-dark;
+            }
+            
+            &.ui-btn-down-b,
+            &.ui-btn-active{
+                background: @color-bg-neutral-dark;
+                background-color: @color-bg-neutral-dark-tint;
+                .box-shadow(inset 0px 2px 4px 2px rgba(0, 0, 0, .1))!important;
+                color: white;
+            }
+        }
+        
+        
+        
+        .ui-btn-inner {
+            padding-top: 32px!important;
+            padding-bottom: 4px!important;
+            height: 12px;
+            line-height: 12px;
+            
+            .ui-btn-text {
+                font-size: 12px;
+                text-transform: none;
+            }
+            
+            .ui-icon {
+                top: 0;
+                margin-left: -@gfx-tab-bar-sprite-grid / 2;
+            }
+        }
+    }
+}
+
+
 
 /* @ui-bar Title Bars that pop up all over the place */
 .ui-bar{
@@ -174,51 +224,54 @@
 }
 
 /* Bar style tabbed nav like at the top of the popular page */
-.ui-navbar{
-    margin: 0 -@padding-page-inset;
-    border: none;
-    border-top: @border-light-on-light;
-    .corner-top (@corner-page-element-rounded);
-    .ui-btn{
-         .ui-btn-text{
-             font-size: @txt-size-base;
-             .button-font-light()
-        }
-    }
-    .ui-btn-active{
-        .ui-btn-text{
-            position: relative;
-            top: -4px;
-            text-shadow: @color-shadow-light-on-light 0px 1px 0px;            
-            .button-font-bold();
-            font-size: @txt-size-username;
-        }
-        &::after{
-            .arrow-up(@arrow-size, @color-bg-neutral-light, 50% , 51px);
-        }
-    }
-    .ui-btn-inner{
-           border-top: none;
-           padding-top: 16px!important;
-           padding-bottom: 11px!important;
-           height: 20px;
-           line-height: 20px
-     }
-    /* Rounding for 3 column bars */
-    .ui-grid-b{
-        .ui-block-a{
-            .ui-btn{
-                .corner-tl (@corner-page-element-rounded)
+.ui-content{
+    .ui-navbar{
+        margin: 0 -@padding-page-inset;
+        border: none;
+        border-top: @border-light-on-light;
+        .corner-top (@corner-page-element-rounded);
+        .ui-btn{
+             .ui-btn-text{
+                 font-size: @txt-size-base;
+                 .button-font-light()
             }
         }
-        .ui-block-c{
-            .ui-btn{
-            .corner-tr (@corner-page-element-rounded);
+        .ui-btn-active{
+            .ui-btn-text{
+                position: relative;
+                top: -4px;
+                text-shadow: @color-shadow-light-on-light 0px 1px 0px;            
+                .button-font-bold();
+                font-size: @txt-size-username;
+            }
+            &::after{
+                .arrow-up(@arrow-size, @color-bg-neutral-light, 50% , 51px);
             }
         }
-    }
+        .ui-btn-inner{
+               border-top: none;
+               padding-top: 16px!important;
+               padding-bottom: 11px!important;
+               height: 20px;
+               line-height: 20px
+         }
+        /* Rounding for 3 column bars */
+        .ui-grid-b{
+            .ui-block-a{
+                .ui-btn{
+                    .corner-tl (@corner-page-element-rounded)
+                }
+            }
+            .ui-block-c{
+                .ui-btn{
+                .corner-tr (@corner-page-element-rounded);
+                }
+            }
+        }
 
+    }
 }
+
 
 .ui-content-inset{
     .ui-bar{
@@ -1131,6 +1184,11 @@ body.browser-testing{
     }
     .ps-caption-bottom{
         top: 435px!important;
+    }
+    
+    .ui-footer{
+        width: 320px!important;
+        overflow: hidden;
     }
 }
 
