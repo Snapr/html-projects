@@ -470,6 +470,22 @@
 .dark-icons .ui-btn .ui-btn-inner.ui-icon-grid {
   background-position: 0px -400px;
 }
+.dark-icons .ui-btn .ui-btn-inner .ui-icon-spots,
+.dark-icons .ui-btn .ui-btn-inner.ui-icon-spots {
+  background-position: 0px -440px;
+}
+.dark-icons .ui-btn .ui-btn-inner .ui-icon-photos,
+.dark-icons .ui-btn .ui-btn-inner.ui-icon-photos {
+  background-position: 0px -480px;
+}
+.dark-icons .ui-btn.ui-btn-active .ui-btn-inner .ui-icon-spots,
+.dark-icons .ui-btn.ui-btn-active .ui-btn-inner.ui-icon-spots {
+  background-position: -40px -440px;
+}
+.dark-icons .ui-btn.ui-btn-active .ui-btn-inner .ui-icon-photos,
+.dark-icons .ui-btn.ui-btn-active .ui-btn-inner.ui-icon-photos {
+  background-position: -40px -480px;
+}
 .ui-bar .ui-icon {
   background-image: url('../gfx/ui-bar-icons.png');
 }
@@ -676,6 +692,35 @@
 .all-categories .category-btn .ui-icon,
 .all-categories .spot-icon {
   background-position: 0px -192px;
+}
+/* med icon */
+.ui-icon.med-spot-icon {
+  background-position: -48px 0px;
+}
+/* if parent class is set */
+.great-outdoors .med-spot-icon.spot-icon {
+  background-position: -48px -24px;
+}
+.shops .med-spot-icon.spot-icon {
+  background-position: -48px -48px;
+}
+.nightlife-spots .med-spot-icon.spot-icon {
+  background-position: -48px -72px;
+}
+.food .med-spot-icon.spot-icon {
+  background-position: -48px -120px;
+}
+.arts-and-entertainment .med-spot-icon.spot-icon {
+  background-position: -48px -144px;
+}
+.all-categories .med-spot-icon.spot-icon {
+  background-position: -48px -192px;
+}
+.beer .med-spot-icon.spot-icon {
+  background-position: -48px -96px;
+}
+.cafe .med-spot-icon.spot-icon {
+  background-position: -48px -168px;
 }
 /* dark icon */
 .ui-icon.dark-spot-icon {
@@ -3182,14 +3227,11 @@ a.ui-link-inherit {
   font-style: normal;
   text-transform: lowercase;
 }
-.ui-bar h4 .extra-icons,
-.ui-bar .ui-btn-inner .extra-icons,
-.ui-bar .ui-bar-inner .extra-icons {
+.ui-bar h4 .ui-icon,
+.ui-bar .ui-btn-inner .ui-icon,
+.ui-bar .ui-bar-inner .ui-icon {
   right: auto;
-  display: block;
-  position: absolute;
-  left: -8px;
-  top: -7px;
+  display: inline-block;
   margin: 0;
   height: 32px;
   width: 32px;
@@ -3985,6 +4027,23 @@ a.ui-link-inherit {
   font-family: Helvetica, Arial, sans-serif;
   text-transform: lowercase;
   text-align: left;
+}
+.header-toggle .ui-btn .ui-btn-inner {
+  padding: 0;
+}
+.header-toggle .ui-btn .ui-btn-text {
+  text-indent: -999px;
+  display: block;
+  width: 44px;
+  height: 30px;
+}
+.header-toggle .ui-btn .ui-btn-text .ui-icon {
+  display: block;
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  top: -4px;
+  left: 2px;
 }
 /* Loader BG placeholder for images */
 .image-loader-bg {
@@ -6529,6 +6588,42 @@ body.browser-testing .ui-footer {
 #map-layer #google-map {
   margin: -3px -8px;
 }
+.x-map-venue .x-map-venue-pin {
+  background-image: url('../gfx/map-spot-pin.png');
+  position: absolute;
+  display: block;
+  bottom: 0;
+  left: -18px;
+  width: 36px;
+  height: 28px;
+  cursor: pointer;
+}
+.x-map-venue .x-map-venue-label {
+  background-image: url('../gfx/map-spot-label.png');
+  position: absolute;
+  display: none;
+  bottom: 23px;
+  left: -70px;
+  width: 139px;
+  height: 47px;
+  z-index: 1;
+}
+.x-map-venue .x-map-venue-label .spot-icon {
+  position: absolute;
+  top: 5px;
+  left: 4px;
+}
+.x-map-venue .x-map-venue-label .venue-label-text {
+  color: white;
+  font-weight: bold;
+  text-shadow: #000000 0 -1px 1px;
+  display: block;
+  padding: 9px 26px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  font-size: 13px;
+}
 .photo-map {
   position: relative;
   overflow: hidden;
@@ -7059,10 +7154,10 @@ body.browser-testing .ui-footer {
   }
   .dark-icons .ui-btn .ui-btn-inner .ui-icon {
     background-image: url('../gfx/retina/action-icons-dark.png');
-    -moz-background-size: 40px 480px;
-    -o-background-size: 40px 480px;
-    -webkit-background-size: 40px 480px;
-    background-size: 40px 480px;
+    -moz-background-size: 80px 520px;
+    -o-background-size: 80px 520px;
+    -webkit-background-size: 80px 520px;
+    background-size: 80px 520px;
   }
   .dash-footer .ui-btn-inner .ui-icon {
     background-image: url('../gfx/retina/dash-icons.png');
