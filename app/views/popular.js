@@ -31,7 +31,7 @@ return page_view.extend({
         "click #popular-timeframe a":"update_list"
     },
 
-    get_default_tab: function(){ return 'discover'; },
+    get_override_tab: function(){ return 'discover'; },
 
     update_list: function( e ){
         $.mobile.showPageLoadingMsg();
