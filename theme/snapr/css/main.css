@@ -6535,8 +6535,8 @@ body.browser-testing .ui-footer {
   /* map thumbs */
 
 }
-.photo-map .ui-bar.top-left-arrow .extra-icons,
-.photo-map .top-no-arrow .extra-icons {
+.photo-map .ui-bar.top-left-arrow .ui-icon,
+.photo-map .top-no-arrow .ui-icon {
   left: -6px;
   top: -8px;
 }
@@ -7014,15 +7014,6 @@ body.browser-testing .ui-footer {
     -webkit-background-size: 100px 100px;
     background-size: 100px 100px;
   }
-  .ui-icon.extra-icons,
-  .extra-icons .ui-icon,
-  .x-offline .extra-icons .ui-btn-inner .ui-icon {
-    background-image: url('../gfx/retina/extra-icons.png');
-    -moz-background-size: 160px 480px;
-    -o-background-size: 160px 480px;
-    -webkit-background-size: 160px 480px;
-    background-size: 160px 480px;
-  }
   .ui-bar .ui-icon {
     background-image: url('../gfx/retina/ui-bar-icons.png');
     -moz-background-size: 160px 480px;
@@ -7139,7 +7130,7 @@ body.browser-testing .ui-footer {
     background-size: 150px 180px;
   }
   .x-validating .ui-icon-validation,
-  .extra-icons .ui-icon-spinner,
+  .ui-icon.ui-icon-spinner,
   .ui-icon-spinner,
   .loading .ui-input-search .ui-input-clear .ui-icon-delete {
     display: block;
@@ -7171,11 +7162,11 @@ body.browser-testing .ui-footer {
     background-repeat: no-repeat !important;
   }
   .loading .map-filters .ui-input-search .ui-input-clear .ui-icon-delete {
-    background-image: url('../gfx/retina/extra-icons.png') !important;
-    -moz-background-size: 160px 480px !important;
-    -o-background-size: 160px 480px !important;
-    -webkit-background-size: 160px 480px !important;
-    background-size: 160px 480px !important;
+    background-image: url('../gfx/retina/map-icons.png') !important;
+    -moz-background-size: 32px 192px !important;
+    -o-background-size: 32px 192px !important;
+    -webkit-background-size: 32px 192px !important;
+    background-size: 32px 192px !important;
   }
   .ps-toolbar .ps-toolbar-close .ps-toolbar-content {
     background-image: url('../gfx/retina/general-jquerymob-icons.png');
