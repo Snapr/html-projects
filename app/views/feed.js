@@ -80,6 +80,8 @@ return page_view.extend({
             });
         }
 
+        this.$el.toggleClass('my-snaps', this.is_my_snaps());
+
         this.$el.removeClass("showing-upload-queue");
         this.$el.find(".feed-upload-list").empty();
 
@@ -105,7 +107,9 @@ return page_view.extend({
         "change .feed-view-toggle": "feed_view_toggle"
     },
 
-    get_default_tab: function(){ return this.options.query.username == auth.get('snapr_user') && 'feed' || 'discover'; },
+    is_my_snaps: function(){ return auth.has("snapr_user") && auth.get("snapr_user") == this.options.query.username; },
+
+    get_default_tab: function(){ return this.is_my_snaps() && 'feed' || 'discover'; },
 
     photoswipe_init: function(){ $( "#feed-images a.gallery_link", this.el ).photoswipe_init('feed'); },
 
@@ -206,7 +210,7 @@ return page_view.extend({
     },
 
     update_uploads: function(model, changes){
-        if (auth.has("snapr_user") && auth.get("snapr_user") == this.query.username){
+        if (this.is_my_snaps()){
 
             var upload_li_template = _.template( $("#feed-upload-progress-li-template").html() );
 
@@ -230,7 +234,7 @@ return page_view.extend({
     upload_complete: function( model, queue_id ){
         this.$(".upload-id-" + model.id).remove();
         // if we are on a feed for the current snapr user
-        if (this.options.query.username == auth.get("snapr_user") && !this.options.query.photo_id){
+        if (this.is_my_snaps() && !this.options.query.photo_id){
             // remove the date restriction if it is present
             if (this.photo_collection.data.max_date){
                 delete this.photo_collection.data.max_date;
