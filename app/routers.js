@@ -65,6 +65,10 @@ var pages = [
         name: 'user/profile',
         element: 'user-profile'
     },
+    {
+        name: 'upload_xhr',
+        element: 'upload'
+    },
     'foursquare_venues'
 ];
 
