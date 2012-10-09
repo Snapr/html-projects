@@ -530,7 +530,7 @@
         .image-time{
             color: @color-txt-light-on-light;
             .ui-icon-clock{
-                background-position: @ei-offset-x - 9px @gfx-extra-icon-sprite-clocksmall-y;
+                background-position: @gfxBar-x - 9px @gfxFeed-time-y;
                 width: 14px;
             }
         }
@@ -540,7 +540,7 @@
                 color: @color-txt-light-on-light;
             }
             .ui-icon-venue{
-                background-position: @ei-offset-x - 10px @gfx-extra-icon-sprite-venuesmall-y;
+                background-position: @gfxBar-x - 10px @gfxFeed-venue-y;
                 width: 10px;
             }
         }
@@ -574,7 +574,7 @@
         .ui-icon-quote{
             display: inline-block;
             height: @txt-size-base;
-            background-position: -6px @gfx-extra-icon-sprite-quote-y - 8;
+            background-position: -6px @gfxFeed-quote-y - 8;
             width: 16px;
         }
         .goto-spot{
@@ -1352,7 +1352,7 @@
              .ui-icon-quote{
                  display: inline-block;
                  height: @txt-size-base;
-                 background-position: -6px @gfx-extra-icon-sprite-quote-y - 8;
+                 background-position: -6px @gfxFeed-quote-y - 8;
 
                  width: 20px;
              }
@@ -2007,7 +2007,7 @@
     overflow:hidden;
     .ui-bar.top-left-arrow,
     .top-no-arrow{
-        .extra-icons {
+        .ui-icon {
             left: -6px;
             top: -8px;
         }
@@ -2080,13 +2080,10 @@
             border: solid yellow 4px;
             font-size: @txt-size-small;
             .box-shadow(0px 4px 6px rgba(0, 0, 0, .3) );
-            .ui-icon-sadface{
+            .ui-icon-noImages{
                 position: absolute;
                 left: 9px;
                 top: 3px;
-                width: @gfx-extra-icon-sprite-grid;
-                height: @gfx-extra-icon-sprite-grid;
-                background-position: @ei-offset-x @gfx-extra-icon-sprite-mapcamera-y;
             }
         }
     }
@@ -2139,7 +2136,7 @@
                     height: 32px;
                 }
                 .ui-icon-delete {
-                    background-position:  @ei-offset-x @gfx-extra-icon-sprite-delete-a-y!important;
+                    background-position:  @gfxBar-x @gfxMap-delete-y!important;
                     top: 1px;
                     right: -5px;
                     left: auto;

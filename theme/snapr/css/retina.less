@@ -59,12 +59,31 @@
         background-image: url('../gfx/retina/shiny-avatar-info.png');
         .background-size (100px, 100px);
     }
-    
-    .ui-icon.extra-icons,
-    .extra-icons .ui-icon,
-    .x-offline .extra-icons .ui-btn-inner .ui-icon {
-           background-image: url('../gfx/retina/extra-icons.png');
-           .background-size (@gfx-extra-icon-sprite-width, @gfx-extra-icon-sprite-height);
+         
+     .ui-bar{   
+         .ui-icon{
+             background-image: url('@{gfxRetina}@{gfxBar}');
+             .background-size (@gfxBar-width, @gfxBar-height);
+             
+         }
+     }
+     
+     .map-icons.ui-icon,
+     .map-icons .ui-icon{
+         background-image: url('@{gfxRetina}@{gfxMap}');
+         .background-size (@gfxMap-width, @gfxMap-height);
+         
+     }
+     .profile-icons.ui-icon,
+     .profile-icons .ui-icon{
+         .background-size (@gfxProfile-width, @gfxProfile-height);
+         background-image: url('@{gfxRetina}@{gfxProfile}');
+     }
+     
+     .feed-icons.ui-icon,
+     .feed-icons .ui-icon{
+         .background-size (@gfxFeed-width, @gfxFeed-height);
+         background-image: url('@{gfxRetina}@{gfxFeed}');
      }
 
     .action-icons,
@@ -138,7 +157,7 @@
     }
   
     .x-validating .ui-icon-validation,
-    .extra-icons .ui-icon-spinner,
+    .ui-icon.ui-icon-spinner,
     .ui-icon-spinner,
     .loading .ui-input-search .ui-input-clear .ui-icon-delete {
                     .spinner('../gfx/retina/small-spinner-light.png');
@@ -161,8 +180,8 @@
     }
     
     .loading .map-filters .ui-input-search .ui-input-clear .ui-icon-delete {
-           background-image: url('../gfx/retina/extra-icons.png')!important;
-           .background-size(@gfx-extra-icon-sprite-width, @gfx-extra-icon-sprite-height)!important;
+           background-image: url('../gfx/retina/map-icons.png')!important;
+           .background-size(@gfxMap-width, @gfxMap-height)!important;
      }
     
     .ps-toolbar{

@@ -187,45 +187,73 @@
     } 
 }
 
-/* @extra-icons */
-.ui-icon.extra-icons,
-.extra-icons .ui-icon{
-    background-image: url('../gfx/extra-icons.png');
-}
-.extra-icons{
-    .ui-icon-heart,&.ui-icon-heart{background-position: @ei-offset-x @gfx-extra-icon-sprite-heart-y;}
-    .ui-icon-venue,&.ui-icon-venue{background-position: @ei-offset-x @gfx-extra-icon-sprite-venue-y;}
-    .ui-icon-person,&.ui-icon-person{background-position: @ei-offset-x @gfx-extra-icon-sprite-person-y;}
-    .ui-icon-search,&.ui-icon-search{background-position: @ei-offset-x @gfx-extra-icon-sprite-search-y;}
-    .ui-icon-activity,&.ui-icon-activity{background-position: @ei-offset-x @gfx-extra-icon-sprite-activity-y;}
-    .ui-icon-location,&.ui-icon-location{background-position: @ei-offset-x @gfx-extra-icon-sprite-location-y;}
-    .ui-icon-quote,&.ui-icon-quote{background-position: @ei-offset-x @gfx-extra-icon-sprite-quote-y;}
-    .ui-icon-clocksmall,&.ui-icon-clocksmall{background-position: @ei-offset-x @gfx-extra-icon-sprite-clocksmall-y;}
-    .ui-icon-venuesmall,&.ui-icon-venuesmall{background-position: @ei-offset-x @gfx-extra-icon-sprite-venuesmall-y;}
-    .ui-icon-feed,&.ui-icon-feed{background-position: @ei-offset-x @gfx-extra-icon-sprite-feed-y;}
-    .ui-icon-favs,&.ui-icon-favs{background-position: @ei-offset-x @gfx-extra-icon-sprite-favs-y;}
-    .ui-icon-link,&.ui-icon-link{background-position: @ei-offset-x @gfx-extra-icon-sprite-link-y;}
-    .ui-icon-clock, &.ui-icon-clock{background-position: @ei-offset-x @gfx-extra-icon-sprite-clock-y;}
-    .ui-icon-redheart, &.ui-icon-redheart{background-position: @ei-offset-x @gfx-extra-icon-sprite-redheart-y;}
-    .ui-icon-map-time, &.ui-icon-map-time{background-position: @ei-offset-x @gfx-extra-icon-sprite-map-time-y;}
-    .ui-icon-person-a, &.ui-icon-person-a{background-position: @ei-offset-x @gfx-extra-icon-sprite-person-a-y;}
-    .ui-icon-search-a, &.ui-icon-search-a{background-position: @ei-offset-x @gfx-extra-icon-sprite-search-a-y;}
-    .ui-icon-arrow-d, &.ui-icon-arrow-d{background-position: @ei-offset-x @gfx-extra-icon-sprite-arrow-d-a-y;}
-    .ui-icon-delete, &.ui-icon-delete{background-position: @ei-offset-x @gfx-extra-icon-sprite-delete-a-y;}
-    .ui-icon-heart-b, &.ui-icon-heart-b{background-position: @ei-offset-x @gfx-extra-icon-sprite-heart-b-y;}
-    .ui-icon-person-b, &.ui-icon-person-b{background-position: @ei-offset-x  @gfx-extra-icon-sprite-person-b-y;}
-    .ui-icon-search-b, &.ui-icon-search-b{background-position: @ei-offset-x @gfx-extra-icon-sprite-search-b-y;}
-    .ui-icon-activity-b, &.ui-icon-activity-b{background-position: @ei-offset-x @gfx-extra-icon-sprite-activity-b-y;}
-    .ui-icon-location-b, &.ui-icon-location-b{background-position: @ei-offset-x @gfx-extra-icon-sprite-location-b-y;}
-    .ui-icon-mapcamera-y, &.ui-icon-mapcamera{background-position: @ei-offset-x @gfx-extra-icon-sprite-mapcamera-y;}
-    .ui-icon-photoedit, &.ui-icon-photoedit{background-position: @ei-offset-x @gfx-extra-icon-sprite-photoedit-y;}
-    .ui-icon-delete, &.ui-icon-delete{background-position: @ei-offset-x @gfx-extra-icon-sprite-delete-a-y;}
-    .ui-icon-connection, &.ui-icon-connection{background-position: @ei-offset-x @gfx-extra-icon-sprite-connection-y;}
-    .ui-icon-play, &.ui-icon-play{background-position: @ei-offset-x @gfx-extra-icon-sprite-play-y;}
-    .ui-icon-refresh, &.ui-icon-refresh{background-position: @ei-offset-x @gfx-extra-icon-sprite-refresh-y;}
+
+
+
+.ui-bar{   
+    
+    .ui-icon{
+        background-image: url('@{gfx}@{gfxBar}');
+    }
+     
+    .ui-icon-open{background-position: @gfxBar-x @gfxBar-open-y;}
+    .ui-icon-close{background-position: @gfxBar-x @gfxBar-close-y;}
+    .ui-icon-arrowR{background-position: @gfxBar-x @gfxBar-arrowR-y;}
+    .ui-icon-heart{background-position: @gfxBar-x @gfxBar-heart-y;}
+    .ui-icon-venue{background-position: @gfxBar-x @gfxBar-venue-y;}
+    .ui-icon-person{background-position: @gfxBar-x @gfxBar-person-y;}
+    .ui-icon-search{background-position: @gfxBar-x @gfxBar-search-y;}
+    .ui-icon-activity{background-position: @gfxBar-x @gfxBar-activity-y;}
+    .ui-icon-location{background-position: @gfxBar-x @gfxBar-location-y;}
+    .ui-icon-clock{background-position: @gfxBar-x @gfxBar-clock-y;}
+    .ui-icon-connection{background-position: @gfxBar-x @gfxBar-clock-y;}
+    .ui-icon-blog{background-position: @gfxBar-x @gfxBar-clock-y;}
+    .ui-icon-comment{background-position: @gfxBar-x @gfxBar-clock-y;}
+    .ui-icon-play{background-position: @gfxBar-x @gfxBar-play-y;}
+    .ui-icon-refresh{background-position: @gfxBar-x @gfxBar-refresh-y;}
+    
+    .ui-icon-redheart{background-position: @gfxBar-x-d @gfxBar-heart-y;}
+    
+    &.ui-bar-a{
+
+    }
 }
 
 
+
+.map-icons.ui-icon,
+.map-icons .ui-icon{
+    background-image: url('@{gfx}@{gfxMap}');
+}
+.map-icons{
+    .ui-icon-mapTime, &.ui-icon-mapTime{background-position: @gfxMap-x @gfxMap-time-y;}
+    .ui-icon-person-a, &.ui-icon-person-a{background-position: @gfxMap-x @gfxMap-person-y;}
+    .ui-icon-search-a, &.ui-icon-search-a{background-position: @gfxMap-x @gfxMap-search-y;}
+    .ui-icon-arrow-d, &.ui-icon-arrow-d{background-position: @gfxMap-x @gfxMap-arrowD-y;}
+    .ui-icon-delete, &.ui-icon-delete{background-position: @gfxMap-x @gfxMap-delete-y;}
+    .ui-icon-noImages, &.ui-icon-noImages{background-position: @gfxMap-x @gfxMap-noImages-y;}
+}
+
+.profile-icons.ui-icon,
+.profile-icons .ui-icon{
+    background-image: url('@{gfx}@{gfxProfile}');
+}
+.profile-icons{
+    .ui-icon-feed,&.ui-icon-feed{background-position: @gfxProfile-x @gfxProfile-feed-y;}
+    .ui-icon-favs,&.ui-icon-favs{background-position: @gfxProfile-x @gfxProfile-favs-y;}
+    .ui-icon-link,&.ui-icon-link{background-position: @gfxProfile-x @gfxProfile-link-y;}
+}
+
+
+.feed-icons.ui-icon,
+.feed-icons .ui-icon{
+    background-image: url('@{gfx}@{gfxFeed}');
+}
+.feed-icons{
+    .ui-icon-quote,&.ui-icon-quote{background-position: @gfxFeed-x @gfxFeed-quote-y;}
+    .ui-icon-clocksmall,&.ui-icon-clocksmall{background-position: @gfxFeed-x @gfxFeed-time-y;}
+    .ui-icon-venuesmall,&.ui-icon-venuesmall{background-position: @gfxFeed-x @gfxFeed-venue-y;}
+}
 
 
 .ui-icon.helper-icons,
@@ -236,17 +264,7 @@
 }
 
 
-/* @baricons */
-.ui-bar-b{
-    .extra-icons{
-        .ui-icon-heart,&.ui-icon-heart{background-position: @ei-offset-x @gfx-extra-icon-sprite-heart-b-y;}
-        .ui-icon-person,&.ui-icon-person{background-position: @ei-offset-x @gfx-extra-icon-sprite-person-b-y;}
-        .ui-icon-search,&.ui-icon-search{background-position: @ei-offset-x @gfx-extra-icon-sprite-search-b-y;}
-        .ui-icon-activity,&.ui-icon-activity{background-position: @ei-offset-x @gfx-extra-icon-sprite-activity-b-y;}
-        .ui-icon-location,&.ui-icon-location{background-position: @ei-offset-x @gfx-extra-icon-sprite-location-b-y;}
-    }
-    .ui-icon-arrow-r{background-position: @gfx-general-icon-sprite-arrow-r-x @g-med-offset-y;}
-}
+
 
 
 /* Small Colored Icons For Third Party Services */
