@@ -192,9 +192,7 @@
     .ui-icon-quote,&.ui-icon-quote{background-position: @ei-offset-x @gfx-extra-icon-sprite-quote-y;}
     .ui-icon-clocksmall,&.ui-icon-clocksmall{background-position: @ei-offset-x @gfx-extra-icon-sprite-clocksmall-y;}
     .ui-icon-venuesmall,&.ui-icon-venuesmall{background-position: @ei-offset-x @gfx-extra-icon-sprite-venuesmall-y;}
-    .ui-icon-feed,&.ui-icon-feed{background-position: @ei-offset-x @gfx-extra-icon-sprite-feed-y;}
-    .ui-icon-favs,&.ui-icon-favs{background-position: @ei-offset-x @gfx-extra-icon-sprite-favs-y;}
-    .ui-icon-link,&.ui-icon-link{background-position: @ei-offset-x @gfx-extra-icon-sprite-link-y;}
+
     .ui-icon-clock, &.ui-icon-clock{background-position: @ei-offset-x @gfx-extra-icon-sprite-clock-y;}
     .ui-icon-redheart, &.ui-icon-redheart{background-position: @ei-offset-x @gfx-extra-icon-sprite-redheart-y;}
 
@@ -214,17 +212,26 @@
 
 .map-icons.ui-icon,
 .map-icons .ui-icon{
-    background-image: url('@{gfx}@{gfxMapUI}');
+    background-image: url('@{gfx}@{gfxMap}');
 }
 .map-icons{
-    .ui-icon-mapTime, &.ui-icon-mapTime{background-position: @gfxMapUI-x @gfxMapUI-time-y;}
-    .ui-icon-person-a, &.ui-icon-person-a{background-position: @gfxMapUI-x @gfxMapUI-person-y;}
-    .ui-icon-search-a, &.ui-icon-search-a{background-position: @gfxMapUI-x @gfxMapUI-search-y;}
-    .ui-icon-arrow-d, &.ui-icon-arrow-d{background-position: @gfxMapUI-x @gfxMapUI-arrowD-y;}
-    .ui-icon-delete, &.ui-icon-delete{background-position: @gfxMapUI-x @gfxMapUI-delete-y;}
-    .ui-icon-noImages, &.ui-icon-noImages{background-position: @gfxMapUI-x @gfxMapUI-noImages-y;}
+    .ui-icon-mapTime, &.ui-icon-mapTime{background-position: @gfxMap-x @gfxMap-time-y;}
+    .ui-icon-person-a, &.ui-icon-person-a{background-position: @gfxMap-x @gfxMap-person-y;}
+    .ui-icon-search-a, &.ui-icon-search-a{background-position: @gfxMap-x @gfxMap-search-y;}
+    .ui-icon-arrow-d, &.ui-icon-arrow-d{background-position: @gfxMap-x @gfxMap-arrowD-y;}
+    .ui-icon-delete, &.ui-icon-delete{background-position: @gfxMap-x @gfxMap-delete-y;}
+    .ui-icon-noImages, &.ui-icon-noImages{background-position: @gfxMap-x @gfxMap-noImages-y;}
 }
 
+.profile-icons.ui-icon,
+.profile-icons .ui-icon{
+    background-image: url('@{gfx}@{gfxProfile}');
+}
+.profile-icons{
+    .ui-icon-feed,&.ui-icon-feed{background-position: @ei-offset-x @gfxProfile-feed-y;}
+    .ui-icon-favs,&.ui-icon-favs{background-position: @ei-offset-x @gfxProfile-favs-y;}
+    .ui-icon-link,&.ui-icon-link{background-position: @ei-offset-x @gfxProfile-link-y;}
+}
 
 
 
