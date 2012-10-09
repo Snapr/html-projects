@@ -1008,12 +1008,12 @@
                 <% if(item.has('location') && item.get('location').location){ %>
                 <span class="image-time-and-location">
                 <a class="goto-map">
-                    <span class="ui-icon extra-icons ui-icon-venue"></span>
+                    <span class="ui-icon feed-icons ui-icon-venue"></span>
                     <%= string_utils.short_timestamp(item.get('date'), true ) %>, <%= string_utils.short_location(item.get('location').location) %> </a>
                 </span>
                 <%}else{%>
                 <span class="image-time">
-                    <span class="ui-icon extra-icons ui-icon-clock"></span>
+                    <span class="ui-icon feed-icons ui-icon-clock"></span>
                     <%= string_utils.short_timestamp(item.get('date'), true ) %>
                 </span>
                 <% }%>
@@ -1041,7 +1041,7 @@
             <div class="image-description">
 
                 <% if (item.get('description')){%>
-                    <span class="ui-icon extra-icons ui-icon-quote"></span>
+                    <span class="ui-icon feed-icons ui-icon-quote"></span>
                 <%}%>
                 <%= string_utils.comment_links( item.get('description') ) %>
 

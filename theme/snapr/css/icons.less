@@ -189,9 +189,7 @@
     .ui-icon-search,&.ui-icon-search{background-position: @ei-offset-x @gfx-extra-icon-sprite-search-y;}
     .ui-icon-activity,&.ui-icon-activity{background-position: @ei-offset-x @gfx-extra-icon-sprite-activity-y;}
     .ui-icon-location,&.ui-icon-location{background-position: @ei-offset-x @gfx-extra-icon-sprite-location-y;}
-    .ui-icon-quote,&.ui-icon-quote{background-position: @ei-offset-x @gfx-extra-icon-sprite-quote-y;}
-    .ui-icon-clocksmall,&.ui-icon-clocksmall{background-position: @ei-offset-x @gfx-extra-icon-sprite-clocksmall-y;}
-    .ui-icon-venuesmall,&.ui-icon-venuesmall{background-position: @ei-offset-x @gfx-extra-icon-sprite-venuesmall-y;}
+   
 
     .ui-icon-clock, &.ui-icon-clock{background-position: @ei-offset-x @gfx-extra-icon-sprite-clock-y;}
     .ui-icon-redheart, &.ui-icon-redheart{background-position: @ei-offset-x @gfx-extra-icon-sprite-redheart-y;}
@@ -228,11 +226,21 @@
     background-image: url('@{gfx}@{gfxProfile}');
 }
 .profile-icons{
-    .ui-icon-feed,&.ui-icon-feed{background-position: @ei-offset-x @gfxProfile-feed-y;}
-    .ui-icon-favs,&.ui-icon-favs{background-position: @ei-offset-x @gfxProfile-favs-y;}
-    .ui-icon-link,&.ui-icon-link{background-position: @ei-offset-x @gfxProfile-link-y;}
+    .ui-icon-feed,&.ui-icon-feed{background-position: @gfxProfile-x @gfxProfile-feed-y;}
+    .ui-icon-favs,&.ui-icon-favs{background-position: @gfxProfile-x @gfxProfile-favs-y;}
+    .ui-icon-link,&.ui-icon-link{background-position: @gfxProfile-x @gfxProfile-link-y;}
 }
 
+
+.feed-icons.ui-icon,
+.feed-icons .ui-icon{
+    background-image: url('@{gfx}@{gfxFeed}');
+}
+.feed-icons{
+    .ui-icon-quote,&.ui-icon-quote{background-position: @gfxFeed-x @gfxFeed-quote-y;}
+    .ui-icon-clocksmall,&.ui-icon-clocksmall{background-position: @gfxFeed-x @gfxFeed-time-y;}
+    .ui-icon-venuesmall,&.ui-icon-venuesmall{background-position: @gfxFeed-x @gfxFeed-venue-y;}
+}
 
 
 .ui-icon.helper-icons,

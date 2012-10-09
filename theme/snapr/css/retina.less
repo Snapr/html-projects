@@ -75,7 +75,14 @@
      }
      .profile-icons.ui-icon,
      .profile-icons .ui-icon{
+         .background-size (@gfxProfile-width, @gfxProfile-height);
          background-image: url('@{gfxRetina}@{gfxProfile}');
+     }
+     
+     .feed-icons.ui-icon,
+     .feed-icons .ui-icon{
+         .background-size (@gfxFeed-width, @gfxFeed-height);
+         background-image: url('@{gfxRetina}@{gfxFeed}');
      }
 
     .action-icons,
