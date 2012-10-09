@@ -20,6 +20,10 @@ return page_view.extend({
         this.change_page();
         $.mobile.showPageLoadingMsg();
     },
+    
+    get_override_tab: function(){ return 'feed'; },
+    
+    
 
     render: function(){
         var $streams = this.$el.find(".activity-streams").empty();

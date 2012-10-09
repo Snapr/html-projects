@@ -64,6 +64,8 @@ var uploading = page_view.extend({
         "click .x-cancel-upload": "cancel_upload"
     },
 
+    get_override_tab: function(){ return 'share'; },
+
     render: function(){
         var $image_stream_container = this.$( ".image-streams" ).empty();
 

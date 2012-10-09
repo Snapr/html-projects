@@ -34,6 +34,8 @@ var dash_view = page_view.extend({
         "click a[data-query]": "data_query_link"
     },
 
+    get_default_tab: function(){ return 'dash'; },
+
     populate: function(){
         var dash = this,
             options = {

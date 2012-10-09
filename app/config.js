@@ -56,6 +56,8 @@ var config_model = Backbone.Model.extend({
     defaults:{
         environment: 'dev',
 
+        initial_view: 'home',
+
         // client must have xAuth permission from 3rd party
         tumblr_xauth: true,
         twitter_xauth: true,
@@ -81,6 +83,8 @@ var config_model = Backbone.Model.extend({
 
         anon_username: 'anon',
         me_username: 'me',
+
+        show_tab_bar: true,
 
         zoom: 15,
         feed_count: 9,

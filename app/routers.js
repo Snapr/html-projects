@@ -2,6 +2,7 @@
 define(['config', 'backbone', 'auth', 'utils/local_storage', 'native', 'utils/alerts', 'utils/query'], function(config, Backbone, auth, local_storage, native, alerts, Query) {
 
 var pages = [
+    'home',
     'about',
     'about-snapr',
     'map',
@@ -192,6 +193,7 @@ var routers = Backbone.Router.extend({
             // store url so we can manually look them up (for dialogues)
             this.urls.push({
                 regex:regex,
+                name: name,
                 callback: callback
             });
 
@@ -204,11 +206,18 @@ var routers = Backbone.Router.extend({
     urls:[],
 
     routes: {
-        "?*query_string": "home",
-        "*path": "home"
+        "?*query_string": "_initial",
+        "*path": "_initial"
     },
 
-    home: _make_route("views/home", "#home")
+    _initial: function(query_string){
+        return _.any(this.urls, function(url) {
+            if (url.name == config.get('initial_view')) {
+                url.callback(query_string);
+                return true;
+            }
+        });
+    }
 
 });
 
