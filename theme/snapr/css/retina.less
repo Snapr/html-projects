@@ -66,6 +66,21 @@
            background-image: url('../gfx/retina/extra-icons.png');
            .background-size (@gfx-extra-icon-sprite-width, @gfx-extra-icon-sprite-height);
      }
+     
+     .map-icons.ui-icon,
+     .map-icons .ui-icon{
+         background-image: url('@{gfxRetina}@{gfxMapUI}');
+         .background-size (@gfxMapUI-width, @gfxMapUI-height);
+         
+     }
+     .map-icons{
+         .ui-icon-mapTime, &.ui-icon-mapTime{background-position: @gfxMapUI-x @gfxMapUI-time-y;}
+         .ui-icon-person-a, &.ui-icon-person-a{background-position: @gfxMapUI-x @gfxMapUI-person-y;}
+         .ui-icon-search-a, &.ui-icon-search-a{background-position: @gfxMapUI-x @gfxMapUI-search-y;}
+         .ui-icon-arrow-d, &.ui-icon-arrow-d{background-position: @gfxMapUI-x @gfxMapUI-arrowD-y;}
+         .ui-icon-delete, &.ui-icon-delete{background-position: @gfxMapUI-x @gfxMapUI-delete-y;}
+         .ui-icon-delete, &.ui-icon-delete{background-position: @gfxMapUI-x @gfxMapUI-delete-y;}
+     }
 
     .action-icons,
     .ui-checkbox,

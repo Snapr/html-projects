@@ -92,7 +92,6 @@
   }
 }
 /* Definititions for GFX Sprites and icon positioning */
-/* Global Icon Sprites Layouts */
 /* 
 * Top Bar Icon Sprite - '../gfx/bar-icons.png'
 */
@@ -537,26 +536,6 @@
 .extra-icons.ui-icon-redheart {
   background-position: 0 -416px;
 }
-.extra-icons .ui-icon-map-time,
-.extra-icons.ui-icon-map-time {
-  background-position: 0 -448px;
-}
-.extra-icons .ui-icon-person-a,
-.extra-icons.ui-icon-person-a {
-  background-position: 0 -480px;
-}
-.extra-icons .ui-icon-search-a,
-.extra-icons.ui-icon-search-a {
-  background-position: 0 -512px;
-}
-.extra-icons .ui-icon-arrow-d,
-.extra-icons.ui-icon-arrow-d {
-  background-position: 0 -544px;
-}
-.extra-icons .ui-icon-delete,
-.extra-icons.ui-icon-delete {
-  background-position: 0 -576px;
-}
 .extra-icons .ui-icon-heart-b,
 .extra-icons.ui-icon-heart-b {
   background-position: 0 -608px;
@@ -577,17 +556,9 @@
 .extra-icons.ui-icon-location-b {
   background-position: 0 -736px;
 }
-.extra-icons .ui-icon-mapcamera-y,
-.extra-icons.ui-icon-mapcamera {
-  background-position: 0 -768px;
-}
 .extra-icons .ui-icon-photoedit,
 .extra-icons.ui-icon-photoedit {
   background-position: 0 -800px;
-}
-.extra-icons .ui-icon-delete,
-.extra-icons.ui-icon-delete {
-  background-position: 0 -576px;
 }
 .extra-icons .ui-icon-connection,
 .extra-icons.ui-icon-connection {
@@ -600,6 +571,34 @@
 .extra-icons .ui-icon-refresh,
 .extra-icons.ui-icon-refresh {
   background-position: 0 -896px;
+}
+.map-icons.ui-icon,
+.map-icons .ui-icon {
+  background-image: url('../gfx/map-ui-icons.png');
+}
+.map-icons .ui-icon-mapTime,
+.map-icons.ui-icon-mapTime {
+  background-position: 0 0px;
+}
+.map-icons .ui-icon-person-a,
+.map-icons.ui-icon-person-a {
+  background-position: 0 -32px;
+}
+.map-icons .ui-icon-search-a,
+.map-icons.ui-icon-search-a {
+  background-position: 0 -64px;
+}
+.map-icons .ui-icon-arrow-d,
+.map-icons.ui-icon-arrow-d {
+  background-position: 0 -96px;
+}
+.map-icons .ui-icon-delete,
+.map-icons.ui-icon-delete {
+  background-position: 0 -128px;
+}
+.map-icons .ui-icon-noImages,
+.map-icons.ui-icon-noImages {
+  background-position: 0 -160px;
 }
 .ui-icon.helper-icons,
 .helper-icons .ui-icon {
@@ -6655,13 +6654,10 @@ body.browser-testing .ui-footer {
   -webkit-box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
 }
-.photo-map #snaprmapalert .imagealert .ui-icon-sadface {
+.photo-map #snaprmapalert .imagealert .ui-icon-noImages {
   position: absolute;
   left: 9px;
   top: 3px;
-  width: 32px;
-  height: 32px;
-  background-position: 0 -768px;
 }
 .photo-map .inline-footer {
   position: absolute;
@@ -6735,7 +6731,7 @@ body.browser-testing .ui-footer {
   height: 32px;
 }
 .photo-map .inline-footer .ui-input-search .ui-input-clear .ui-icon-delete {
-  background-position: 0 -576px !important;
+  background-position: 0 -128px !important;
   top: 1px;
   right: -5px;
   left: auto;
@@ -7069,6 +7065,38 @@ body.browser-testing .ui-footer {
     -o-background-size: 32px 928px;
     -webkit-background-size: 32px 928px;
     background-size: 32px 928px;
+  }
+  .map-icons.ui-icon,
+  .map-icons .ui-icon {
+    background-image: url('../gfx/retina/map-ui-icons.png');
+    -moz-background-size: 32px 192px;
+    -o-background-size: 32px 192px;
+    -webkit-background-size: 32px 192px;
+    background-size: 32px 192px;
+  }
+  .map-icons .ui-icon-mapTime,
+  .map-icons.ui-icon-mapTime {
+    background-position: 0 0px;
+  }
+  .map-icons .ui-icon-person-a,
+  .map-icons.ui-icon-person-a {
+    background-position: 0 -32px;
+  }
+  .map-icons .ui-icon-search-a,
+  .map-icons.ui-icon-search-a {
+    background-position: 0 -64px;
+  }
+  .map-icons .ui-icon-arrow-d,
+  .map-icons.ui-icon-arrow-d {
+    background-position: 0 -96px;
+  }
+  .map-icons .ui-icon-delete,
+  .map-icons.ui-icon-delete {
+    background-position: 0 -128px;
+  }
+  .map-icons .ui-icon-delete,
+  .map-icons.ui-icon-delete {
+    background-position: 0 -128px;
   }
   .action-icons .ui-btn-inner .ui-icon,
   .ui-checkbox .ui-btn-inner .ui-icon,

@@ -197,22 +197,32 @@
     .ui-icon-link,&.ui-icon-link{background-position: @ei-offset-x @gfx-extra-icon-sprite-link-y;}
     .ui-icon-clock, &.ui-icon-clock{background-position: @ei-offset-x @gfx-extra-icon-sprite-clock-y;}
     .ui-icon-redheart, &.ui-icon-redheart{background-position: @ei-offset-x @gfx-extra-icon-sprite-redheart-y;}
-    .ui-icon-map-time, &.ui-icon-map-time{background-position: @ei-offset-x @gfx-extra-icon-sprite-map-time-y;}
-    .ui-icon-person-a, &.ui-icon-person-a{background-position: @ei-offset-x @gfx-extra-icon-sprite-person-a-y;}
-    .ui-icon-search-a, &.ui-icon-search-a{background-position: @ei-offset-x @gfx-extra-icon-sprite-search-a-y;}
-    .ui-icon-arrow-d, &.ui-icon-arrow-d{background-position: @ei-offset-x @gfx-extra-icon-sprite-arrow-d-a-y;}
-    .ui-icon-delete, &.ui-icon-delete{background-position: @ei-offset-x @gfx-extra-icon-sprite-delete-a-y;}
+
     .ui-icon-heart-b, &.ui-icon-heart-b{background-position: @ei-offset-x @gfx-extra-icon-sprite-heart-b-y;}
     .ui-icon-person-b, &.ui-icon-person-b{background-position: @ei-offset-x  @gfx-extra-icon-sprite-person-b-y;}
     .ui-icon-search-b, &.ui-icon-search-b{background-position: @ei-offset-x @gfx-extra-icon-sprite-search-b-y;}
     .ui-icon-activity-b, &.ui-icon-activity-b{background-position: @ei-offset-x @gfx-extra-icon-sprite-activity-b-y;}
     .ui-icon-location-b, &.ui-icon-location-b{background-position: @ei-offset-x @gfx-extra-icon-sprite-location-b-y;}
-    .ui-icon-mapcamera-y, &.ui-icon-mapcamera{background-position: @ei-offset-x @gfx-extra-icon-sprite-mapcamera-y;}
+
     .ui-icon-photoedit, &.ui-icon-photoedit{background-position: @ei-offset-x @gfx-extra-icon-sprite-photoedit-y;}
-    .ui-icon-delete, &.ui-icon-delete{background-position: @ei-offset-x @gfx-extra-icon-sprite-delete-a-y;}
     .ui-icon-connection, &.ui-icon-connection{background-position: @ei-offset-x @gfx-extra-icon-sprite-connection-y;}
     .ui-icon-play, &.ui-icon-play{background-position: @ei-offset-x @gfx-extra-icon-sprite-play-y;}
     .ui-icon-refresh, &.ui-icon-refresh{background-position: @ei-offset-x @gfx-extra-icon-sprite-refresh-y;}
+}
+
+
+
+.map-icons.ui-icon,
+.map-icons .ui-icon{
+    background-image: url('@{gfx}@{gfxMapUI}');
+}
+.map-icons{
+    .ui-icon-mapTime, &.ui-icon-mapTime{background-position: @gfxMapUI-x @gfxMapUI-time-y;}
+    .ui-icon-person-a, &.ui-icon-person-a{background-position: @gfxMapUI-x @gfxMapUI-person-y;}
+    .ui-icon-search-a, &.ui-icon-search-a{background-position: @gfxMapUI-x @gfxMapUI-search-y;}
+    .ui-icon-arrow-d, &.ui-icon-arrow-d{background-position: @gfxMapUI-x @gfxMapUI-arrowD-y;}
+    .ui-icon-delete, &.ui-icon-delete{background-position: @gfxMapUI-x @gfxMapUI-delete-y;}
+    .ui-icon-noImages, &.ui-icon-noImages{background-position: @gfxMapUI-x @gfxMapUI-noImages-y;}
 }
 
 
