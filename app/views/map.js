@@ -1,4 +1,4 @@
-/*global _  define require google */
+    /*global _  define require google */
 define(['config', 'backbone', 'views/base/page', 'collections/thumb', 'collections/spot', 'mobiscroll', 'utils/geo', 'utils/map', 'auth', 'utils/local_storage', 'utils/string', 'utils/alerts'],
 function(config, Backbone, page_view, thumb_collection, spot_collection, mobiscroll, geo, map, auth, local_storage, string_utils, alerts){
 
@@ -25,6 +25,7 @@ var map_view = page_view.extend({
         this.thumb_template = _.template($('#thumb-template').html());
         this.flag_template = _.template($('#flag-template').html());
         this.location_template = _.template($('#location-template').html());
+        this.spot_template = _.template($('#spot-template').html());
 
         this.thumb_collection = new thumb_collection();
         this.spot_collection = new spot_collection();
@@ -40,10 +41,12 @@ var map_view = page_view.extend({
         "click #map-disambituation-cancel": "location_search_toggle_disambiguation",
         "click .x-map-feed": "map_feed",
         "change #map-filter": "filter_update",
+        "change #map-view-photos, #map-view-spots": "layers_update",
         "submit #map-keyword": "keyword_search",
         "blur #map-keyword": "keyword_search",
         "click #map-keyword .ui-input-clear": "keyword_search_clear",
-        "click .map-time-btn": "map_time"
+        "click .map-time-btn": "map_time",
+        "click .x-map-venue-pin" : "toggle_spot_label"
     },
 
     post_activate: function(options){
@@ -59,7 +62,7 @@ var map_view = page_view.extend({
         _.each(options.query, function(v, k){
             if(k.slice(0,5) == 'spot_'){
                 spot_params[k.slice(5)] = v;
-            }else if(_(['lat', 'lng', 'zoom', 'location']).contains(k)){
+            }else if(_(['lat', 'lng', 'zoom', 'location', 'show_spots', 'show_photos']).contains(k)){
                 map_params[k] = v;
             }else{
                 photo_params[k] = v;
@@ -79,6 +82,20 @@ var map_view = page_view.extend({
             { n:config.get('map_count') }
         );
 
+        // if neither are set default to photos
+        if (!map_params.show_photos && !map_params.show_spots) {
+            map_params.show_photos = true;
+        }
+
+        // Single mode
+        if (photo_params.photo_id) {
+            map_params.show_spots = false;
+            map_params.show_photos = true;
+        }
+        if (spot_params.spot_id) {
+            map_params.show_photos = false;
+            map_params.show_spots = true;
+        }
 
         // create backbone models to store the params. This lets us bind
         // functions to changes
@@ -91,11 +108,13 @@ var map_view = page_view.extend({
         this.spot_query = new Backbone.Model(spot_params);
         this.spot_query.on( "change", this.no_results_message_toggle );
         this.spot_query.on( "change", this.spots_get );
+        this.spot_query.on( "change", this.spot_query_save );  // keep in local_storage
 
         this.map_query = new Backbone.Model(map_params);
         this.map_query.on( "change", this.no_results_message_toggle );
         this.map_query.on( "change", this.thumbs_get );
         this.map_query.on( "change", this.spots_get );
+        this.map_query.on( "change", this.layers_set ) // update the layer toggle in header
         this.map_query.on( "change", this.map_query_save );  // keep in local_storage
 
 
@@ -103,6 +122,8 @@ var map_view = page_view.extend({
         this.photo_query.on( "change", this.filter_set_options );  // update what's selected and enabled
         auth.on( "change", this.filter_set_options );  // update what's enabled
         this.filter_set_options();  // set initial state
+        this.layers_set();
+        this.spot_query_save() // save the spot query params
 
 
         // location search
@@ -209,11 +230,15 @@ var map_view = page_view.extend({
     },
 
     map_query_save: function(){
-        local_storage.set('map_params', _(this.map_query.attributes).pick(['lat', 'lng', 'zoom']));
+        local_storage.set('map_params', _(this.map_query.attributes).pick(['lat', 'lng', 'zoom', 'show_spots', 'show_photos']));
     },
 
     photo_query_save: function(){
         local_storage.set('map_photo_params', _(this.photo_query.attributes).pick(['date', 'keywords', 'username', 'group']));
+    },
+
+    spot_query_save: function(){
+        local_storage.set('map_spot_params', _(this.spot_query.attributes).pick(['spot_name', 'sort', 'category', 'n']));
     },
 
     overlays_remove: function(overlays){
@@ -225,61 +250,133 @@ var map_view = page_view.extend({
         });
 
         _.each( this.spot_overlays, function( spot ){
-            spot.setMap(null);
-        });
-    },
-
-    thumbs_get: function(){
-        this.$el.addClass('loading');
-
-        var old_thumb_ids = this.thumb_collection.pluck("id");
-
-        this.thumb_collection.data = _.clone(this.photo_query.attributes);
-        this.thumb_collection.data.area = this.map.getBounds().toUrlValue(4);
-        if(this.photo_query.has('photo_id')){
-            this.thumb_collection.data.n=1;
-        }
-
-        var map_view = this;
-
-        // we are about to look for new thumbs, abort any old requests, they will no longer be needed
-        try{ this.thumb_collection.current_query.abort(); }catch(e){}
-
-        this.thumb_collection.current_query = this.thumb_collection.fetch({
-            success: function( collection ){
-                $.mobile.hidePageLoadingMsg();
-                map_view.$el.removeClass('loading');
-
-                var new_thumb_ids = map_view.thumb_collection.pluck("id");
-
-                map_view.no_results_message_toggle(!new_thumb_ids.length);
-
-                // remove thumbs not in the new set
-                map_view.overlays_remove(_(old_thumb_ids).difference(new_thumb_ids));
-
-                // add thumbs not in the old set
-                _.chain(map_view.thumb_collection.models).sortBy(function(model){ return -model.get('location').latitude; }).each(function( photo ){
-                    var id = photo.get('id');
-                    if(!_(old_thumb_ids).contains(id)){
-                        map_view.thumb_overlays[id] = new map.overlays.Base(
-                            photo.attributes,
-                            map_view.map,
-                            map_view.thumb_template
-                        );
-                    }
-                });
-
-                // update time display if in 'just one' mode now we have the
-                // photo and know its date
-                if(map_view.photo_query.has('photo_id')){ map_view.map_time_update_display(); }
-            },
-            error: function( e ){
-                console.warn( "error getting thumbs", e );
+            if(!overlays || _(overlays).contains(spot.data.id)){
+                spot.setMap(null);
             }
         });
     },
 
-    spots_get: function(){},
+    thumbs_get: function(){
+
+        var map_view = this,
+            old_thumb_ids = this.thumb_collection.pluck("id");
+
+        if (this.map_query.get('show_photos')) {
+
+            this.$el.addClass('loading');    
+
+            this.thumb_collection.data = _.clone(this.photo_query.attributes);
+            this.thumb_collection.data.area = this.map.getBounds().toUrlValue(4);
+            if(this.photo_query.has('photo_id')){
+                this.thumb_collection.data.n=1;
+            }
+
+            // we are about to look for new thumbs, abort any old requests, they will no longer be needed
+            try{ this.thumb_collection.current_query.abort(); }catch(e){}
+
+            this.thumb_collection.current_query = this.thumb_collection.fetch({
+                success: function( collection ){
+                    $.mobile.hidePageLoadingMsg();
+                    map_view.$el.removeClass('loading');
+
+                    var new_thumb_ids = map_view.thumb_collection.pluck("id");
+
+                    map_view.no_results_message_toggle(!new_thumb_ids.length);
+
+                    // remove thumbs not in the new set
+                    map_view.overlays_remove(_(old_thumb_ids).difference(new_thumb_ids));
+
+                    // add thumbs not in the old set
+                    _.chain(map_view.thumb_collection.models).sortBy(function(model){ return -model.get('location').latitude; }).each(function( photo ){
+                        var id = photo.get('id');
+                        if(!_(old_thumb_ids).contains(id)){
+                            map_view.thumb_overlays[id] = new map.overlays.Base(
+                                photo.attributes,
+                                map_view.map,
+                                map_view.thumb_template
+                            );
+                        }
+                    });
+
+                    // update time display if in 'just one' mode now we have the
+                    // photo and know its date
+                    if(map_view.photo_query.has('photo_id')){ map_view.map_time_update_display(); }
+                },
+                error: function( e ){
+                    console.warn( "error getting thumbs", e );
+                }
+            });
+        }
+        else {
+            map_view.overlays_remove(old_thumb_ids);
+            this.thumb_collection.reset();
+        }
+    },
+
+    spots_get: function(){
+        
+        var map_view = this,
+            old_spot_ids = this.spot_collection.pluck("id");
+
+
+        if (this.map_query.get('show_spots')) {
+            this.$el.addClass('loading');
+
+            this.spot_collection.data = _.clone(this.spot_query.attributes);
+            
+            this.spot_collection.data.area = this.map.getBounds().toUrlValue(4);
+            
+            if(this.spot_query.has('spot_id')){
+                this.spot_collection.data.n=1;
+            }
+
+            // we are about to look for new thumbs, abort any old requests, they will no longer be needed
+            try{ this.spot_collection.current_query.abort(); }catch(e){}
+
+            this.spot_collection.current_query = this.spot_collection.fetch({
+                success: function( collection ){
+                    $.mobile.hidePageLoadingMsg();
+                    map_view.$el.removeClass('loading');
+
+                    var new_spot_ids = map_view.spot_collection.pluck("id");
+
+                    map_view.no_results_message_toggle(!new_spot_ids.length);
+
+                    // remove thumbs not in the new set
+                    map_view.overlays_remove(_(old_spot_ids).difference(new_spot_ids));
+
+                    // add thumbs not in the old set
+                    _.chain(map_view.spot_collection.models).sortBy(function(model){ return -model.get('location').latitude; }).each(function( spot ){
+                        var id = spot.get('id');
+                        if(!_(old_spot_ids).contains(id)){
+                            map_view.thumb_overlays[id] = new map.overlays.Base(
+                                spot.attributes,
+                                map_view.map,
+                                map_view.spot_template
+                            );
+                        }
+                    });
+
+                    // update time display if in 'just one' mode now we have the
+                    // photo and know its date
+                    if(map_view.spot_query.has('spot_id')){ map_view.map_time_update_display(); }
+                },
+                error: function( e ){
+                    console.warn( "error getting spots", e );
+                }
+            });
+        }
+        else {
+            map_view.overlays_remove(old_spot_ids);
+            this.spot_collection.reset()
+        }
+    },
+
+    toggle_spot_label: function (event) {
+        var label = this.$(event.currentTarget).next('a.x-map-venue-label');
+        this.$('a.x-map-venue-label').hide();
+        label.show();
+    },
 
     no_results_message_toggle: function(show){
         if(show !== true){ show = false; }
@@ -331,8 +428,20 @@ var map_view = page_view.extend({
     },
 
     go_to: function(location, zoom){
-        this.map.setZoom(zoom || config.get('zoom'));
-        this.map.panTo( new google.maps.LatLng( location.latitude, location.longitude) );
+        var center = new google.maps.LatLng( location.latitude, location.longitude),
+            old_center = this.map.getCenter(),
+            old_zoom = this.map.getZoom();
+
+        // check to see if we're actually moving
+        // because if we don't the idle event wont fire
+        // so the pageloadmessage wont disappear
+        if (!old_center.equals(center) && !old_zoom == zoom) {
+            this.map.setZoom(zoom || config.get('zoom'));
+            this.map.panTo( center );
+        }
+        else {
+            google.maps.event.trigger(this.map, 'idle');
+        }
     },
 
     current_location_place: function(known_location){
@@ -433,6 +542,19 @@ var map_view = page_view.extend({
         }
     },
 
+    layers_update: function(e) {
+        var layer = $(e.currentTarget).val(),
+            checked = $(e.currentTarget).attr('checked') === "checked";
+
+        this.map_query.set('show_' + layer, checked);
+    },
+
+
+    layers_set: function (){
+        this.$("#map-view-spots").attr("checked", !!this.map_query.get("show_spots")).checkboxradio("refresh");
+        this.$("#map-view-photos").attr("checked", !!this.map_query.get("show_photos")).checkboxradio("refresh");
+    },
+
     keyword_search: function( keywords ){
         var input = this.$('#map-keyword').find("input");
         if(!_.isString(keywords)){
@@ -442,8 +564,10 @@ var map_view = page_view.extend({
         }
         if(keywords === ''){
             this.photo_query.unset('keywords');
+            this.spot_query.unset('spot_name');
         }else{
             this.photo_query.set({keywords: keywords});
+            this.spot_query.set({spot_name: keywords});
         }
 
         return this;

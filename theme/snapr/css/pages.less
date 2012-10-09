@@ -1963,6 +1963,45 @@
     }
 }
 
+.x-map-venue{
+    .x-map-venue-pin{
+        background-image: url('../gfx/map-spot-pin.png');
+        position: absolute;
+        display: block;
+        bottom: 0;
+        left: -18px;
+        width: 36px;
+        height: 28px;
+        cursor: pointer;
+    }
+    .x-map-venue-label{
+        background-image: url('../gfx/map-spot-label.png');
+        position: absolute;
+        display: none;
+        bottom: 23px;
+        left: -70px;
+        width: 139px;
+        height: 47px;
+        z-index: 1;
+        .spot-icon{
+            position: absolute;
+            top: 5px;
+            left: 4px;
+        }
+        .venue-label-text{
+            color: white;
+            font-weight: bold;
+            text-shadow: black 0 -1px 1px;
+            display: block;
+            padding: 9px 26px;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+            font-size: 13px;
+        }
+    }
+}
+
 .photo-map{
     position:relative;
     overflow:hidden;
@@ -2023,6 +2062,7 @@
             display: block;
         }
     }
+    
     #snaprmapalert{
         position: absolute;
         top: 50%;

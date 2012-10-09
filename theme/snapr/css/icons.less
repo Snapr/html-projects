@@ -173,6 +173,16 @@
                .ui-icon-email,&.ui-icon-email{background-position: @ad-offset-x @gfx-action-darkicon-sprite-email-y;}
                .ui-icon-feed,&.ui-icon-feed{background-position: @ad-offset-x @gfx-action-darkicon-sprite-feed-y;}
                .ui-icon-grid,&.ui-icon-grid{background-position: @ad-offset-x @gfx-action-darkicon-sprite-grid-y;}
+
+               .ui-icon-spots,&.ui-icon-spots{background-position: @ad-offset-x @gfx-action-darkicon-sprite-spots-y;}
+               .ui-icon-photos,&.ui-icon-photos{background-position: @ad-offset-x @gfx-action-darkicon-sprite-photos-y;}
+
+        }
+        &.ui-btn-active{
+            .ui-btn-inner{
+                   .ui-icon-spots,&.ui-icon-spots{background-position: @ad-offset-x-hover @gfx-action-darkicon-sprite-spots-y;}
+                   .ui-icon-photos,&.ui-icon-photos{background-position: @ad-offset-x-hover @gfx-action-darkicon-sprite-photos-y;}
+            }
         }
     } 
 }
@@ -313,6 +323,19 @@
     .category-btn .ui-icon,
     .spot-icon{background-position: @si-cd-offset-x @gfx-spot-icon-all-categories-y}
 }
+
+/* med icon */
+.ui-icon.med-spot-icon{background-position: @si-e-offset-x @gfx-spot-icon-y;}
+/* if parent class is set */
+.great-outdoors .med-spot-icon.spot-icon{background-position: @si-e-offset-x @gfx-spot-icon-great-outdoors-y}
+.shops .med-spot-icon.spot-icon{background-position: @si-e-offset-x @gfx-spot-icon-shops-y}
+.nightlife-spots .med-spot-icon.spot-icon{background-position: @si-e-offset-x @gfx-spot-icon-nightlife-spots-y}
+.food .med-spot-icon.spot-icon{background-position: @si-e-offset-x @gfx-spot-icon-food-y}
+.arts-and-entertainment .med-spot-icon.spot-icon{background-position: @si-e-offset-x @gfx-spot-icon-arts-and-entertainment-y}
+.all-categories .med-spot-icon.spot-icon{background-position: @si-e-offset-x @gfx-spot-icon-all-categories-y}
+
+.beer .med-spot-icon.spot-icon{background-position: @si-e-offset-x @gfx-spot-icon-beer-y}
+.cafe .med-spot-icon.spot-icon{background-position: @si-e-offset-x @gfx-spot-icon-cafe-y}
 
 
 
