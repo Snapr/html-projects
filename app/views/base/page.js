@@ -17,9 +17,9 @@ Page{
     }
 }
 */
-define(['config', 'backbone', 'utils/history_state', 'views/components/offline', 'views/components/tab_bar'], function(config, Backbone, history_state, offline_el, tab_bar){
+define(['config', 'backbone', 'views/base/view', 'utils/history_state', 'views/components/offline', 'views/components/tab_bar'], function(config, Backbone, view, history_state, offline_el, tab_bar){
 
-return Backbone.View.extend({
+return view.extend({
 
     initialize: function(options){
         _.bindAll( this );
@@ -49,20 +49,6 @@ return Backbone.View.extend({
     get_override_tab: function(){},  // set the tab to this if no other is selected (arriving via url etc)
 
     history_ignore_params: false,  // array of url params to ignore when navigating to a view via history
-
-    load_template: function(name){
-        name = name || this.options.name;
-
-        var view = this;
-        $.ajax({
-            async: false,
-            url: 'templates/' + name + '.html',
-            dataType: 'html',
-            success: function(response) {
-                view.template = _.template(response);
-            }
-        });
-    },
 
     create_page: function(context){
         this.setElement($(this.template(context)));
