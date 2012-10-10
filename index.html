@@ -22,18 +22,6 @@
     </head>
 <body style="display: none;"><!-- initially hidden until jQmobile can load and style everything -->
 
-    <!-- No Results element-->
-    <script id="no-results-template" type="text/template">
-        <p class="imagealert"><span class="ui-icon ui-icon-<%= icon || "sadface" %> extra-icons"></span><%= message || "No results" %></p>
-    </script>
-
-    <!-- offline element-->
-    <script id="offline-template" type="text/template">
-        <div class="x-offline message-overlay message-warning ui-body-c">
-                <a class="x-refresh retry-offline message-body extra-icons" data-role="button" data-icon="connection" data-theme="d"><strong>Connection Error!</strong><span class="small-text"> (click to retry)</span></a>
-        </div>
-    </script>
-
     <!-- paused element-->
     <a class="x-resume-queue system-bar resume-upload-queue extra-icons" data-role="button" data-iconpos="right" data-icon="refresh" style="display:none;">
         <span class="ui-icon ui-icon-play"></span>

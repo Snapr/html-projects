@@ -5,7 +5,7 @@ var offline = Backbone.View.extend({
     tagName: "div",
 
     initialize: function(){
-        this.template = _.template( $("#offline-template").html() );
+        this.load_template('components/offline');
     },
 
     render: function(message, icon){
