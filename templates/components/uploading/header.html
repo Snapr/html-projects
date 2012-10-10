@@ -1,0 +1,81 @@
+<div class="upload-info-block">
+    <a class="upload-image-thumb-gall gallery_link image-link ui-link"
+        <% if(upload_status == 'completed'){ %> href="#/feed/?photo_id=<%= photo_id %>&username=<%= username %>"<% } %>>
+       <div style="background-image: url('<%= thumbnail %>')" class="thumb-image thumb-med css-thumb"></div>
+    </a>
+
+    <div class="upload-info">
+        <p class="upload-image-tag"><% if(description){ %><span class="ui-icon extra-icons ui-icon-quote"></span><%= description %><% } %>&nbsp;</p>
+        <% if ( venue ){ %>
+            <p class="upload-image-venue"><a class="ui-link">@ <%= venue %></a></p>
+        <% } %>
+
+         <div class="progress-bar <%= upload_status %>">
+            <!-- //Active uploads -->
+            <% switch (upload_status) { case 'active': %>
+                <% if (percent_complete == 100){ %>
+                    <span class="upload-message">Finishing</span>
+                    <a class="bar-action">
+                        <span class="ui-icon ui-icon-spinner"></span>
+                    </a>
+                <% }else{ %>
+                    <div class="bar-wrapper">
+                        <div class="bar-bg bar"></div>
+                        <div class="bar-prog bar" style="width:<%= percent_complete %>%"></div>
+                    </div>
+                    <a class="bar-action x-cancel-upload">
+                        <span class="ui-icon ui-icon-delete"></span>
+                    </a>
+                <% } %>
+            <% break; case 'waiting': %>
+                <span class="upload-message">Waiting</span>
+                <a class="bar-action x-cancel-upload">
+                    <span class="ui-icon ui-icon-delete"></span>
+                </a>
+            <% break; case 'canceled': %>
+
+            <% break; case 'queued': %>
+                <span class="upload-message">Queued</span>
+                <a class="bar-action">
+                    <span class="ui-icon ui-icon-refresh"></span>
+                </a>
+            <% break; case 'completed': %>
+                <span class="upload-message">Complete</span>
+                <a class="bar-action">
+                    <span class="ui-icon ui-icon-check"></span>
+                </a>
+            <% break;}%>
+        </div>
+
+        <ul class="upload-shared-to <% if (shared){%>shared<%}%>">
+        <% if (facebook_sharing){ %>
+            <li>
+                <div class="facebook-sharing sharing-icon-small">
+                    <span class="ui-icon"></span>
+                </div>
+            </li>
+        <% } %>
+        <% if (twitter_sharing){ %>
+            <li>
+                <div class="twitter-sharing sharing-icon-small">
+                    <span class="ui-icon"></span>
+                </div>
+            </li>
+        <% } %>
+        <% if (tumblr_sharing){ %>
+            <li>
+                <div class="tumblr-sharing sharing-icon-small">
+                    <span class="ui-icon"></span>
+                </div>
+            </li>
+        <% } %>
+         <% if (foursquare_sharing){ %>
+                <li>
+                    <div class="foursquare-sharing sharing-icon-small">
+                        <span class="ui-icon"></span>
+                    </div>
+                </li>
+            <% } %>
+        </ul>
+    </div>
+</div>

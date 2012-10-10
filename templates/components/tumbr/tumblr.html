@@ -1,0 +1,14 @@
+<div class="image-item-base">
+    <div data-role="controlgroup" data-type="horizontal" class="image-actions">
+        <span class="v-fav-button inline-btn">
+            <div data-role="button" data-icon="action-heart" data-inline="true" data-iconpos="left" class="favorite-button action-icons">&nbsp;</div>
+        </span>
+        <span class="v-comment-button inline-btn">
+            <div data-role="button" data-icon="action-comment" data-inline="true" data-iconpos="left" class="comment-button action-icons" ><% if (model.get('note_count') > 0){ %>&times; <%= model.get('note_count') %><%} else {%> &nbsp;<%}%></div>
+        </span>
+        <span class="v-more-button inline-btn has-palette">
+            <div data-role="button" data-icon="action-more" data-inline="true" data-iconpos="left" class="more-button action-icons" >&nbsp;</div>
+            <div class="v-photo-manage action-palette"></div>
+        </span>
+    </div>
+</div>

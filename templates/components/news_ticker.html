@@ -1,0 +1,16 @@
+<% switch (type){
+    case "follow":%>
+        <em><%= user.display_username %></em> is now following you
+    <%  break;
+    case "favorite":%>
+        <em><%= user.display_username %></em> liked your photo
+    <%  break;
+    case "comment":%>
+        <em><%= user.display_username %></em> commented on your photo
+    <%  break;
+    case "comment-on-comment":%>
+        <em><%= user.display_username %></em> posted a comment
+    <%  break;
+    default: %>
+        No news yet..
+<%}%>

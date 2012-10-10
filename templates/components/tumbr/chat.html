@@ -1,0 +1,10 @@
+<div id="post-<%= model.get('id') %>" class="post-<%= model.get('type') %> post">
+    <h4><%=model.get('title')%></h4>
+    <%if (model.get('dialogue')) {%>
+        <ul class="chat">
+            <%_.each(model.get('dialogue'), function(dialogue){%>
+                <li><strong><%=dialogue.label%></strong> <%=dialogue.phrase%></li>
+            <%});%>
+        </ul>
+    <%}%>
+</div>

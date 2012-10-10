@@ -1,0 +1,11 @@
+<!-- // Write in a bar only if there are photo events in the activity stream -->
+<% if (photo_events){%>
+    <a class="ui-bar top-left-arrow" data-role="button" data-theme="e">
+        <em><%= time_period %></em>
+        <span class="small-text"><%= stream_summary %></span>
+    </a>
+<%}%>
+
+<!-- // Wrap all the items in the stream in a <ul> -->
+<ul <% if (photo_events){%>class="photo-activity"<%}else{%>class="non-photo-activity"<%}%>>
+</ul>

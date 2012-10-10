@@ -1,0 +1,4 @@
+<div id="post-<%= model.get('id') %>" class="post-<%= model.get('type') %> post">
+    <%= getVideoEmbed(model, 250) %>
+    <% if(model.get('caption')){%><%=model.get('caption')%><%}%>
+</div>

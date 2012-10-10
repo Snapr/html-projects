@@ -1,0 +1,10 @@
+<div id="post-<%= model.get('id') %>" class="post-<%= model.get('type') %> post">
+    <% if (model.get('photos')) { %>
+      <ul class="photoset">
+        <% _.each(model.get('photos'), function (photo) { %>
+          <li><img src="<%= getPhotoURL(photo, 250) %>" /></li>
+        <% }); %>
+      </ul>
+    <% } %>
+    <p class="caption"><%=model.get('caption')%></p>
+</div>

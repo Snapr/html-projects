@@ -1,0 +1,123 @@
+<form action="javascript: void(0);">
+    <div class="upload-image-layer set-full-height">
+        <div class="image-placeholder">
+            <% if (img_url){%><img src="<%= img_url %>" /><%}%>
+        </div>
+    </div>
+
+    <div class="image-options">
+        <div class="upload-settings-layer trans-bg set-full-height">
+            <div class="upload-settings">
+                <% if(comp){ %>Comp: <%= comp.get('title') %><% } %>
+                <textarea name="description" id="description" placeholder="Add text..." data-theme="d"><%= saved_description %></textarea>
+                <% if(comp && comp.has('hashtag')){ %><span style="background:yellow; color:black; position:relative; top:-25px; right:-200px;"><%= comp.get('hashtag') %></span><% } %>
+
+                <fieldset data-role="controlgroup" data-type="horizontal" class="upload-image-privacy">
+                    <input type="checkbox" name="status" id="status-public" <% if (status != "private"){%> checked="true" <%}%> />
+                    <label for="status-public" class="privacy-toggle">&nbsp;<span class="ui-icon"></span></label>
+                </fieldset>
+
+                <fieldset data-role="controlgroup" data-type="horizontal" class="upload-image-sharing">
+                    <legend>Share to:</legend>
+
+                    <input type="checkbox" name="tweet" id="twitter-sharing"
+                    <%if (status == "private"){%>disabled="true"<%}%>
+                    <%if (twitter_sharing && status != "private"){%>checked="true"<%}%> />
+                    <label for="twitter-sharing"><span class="ui-icon"></span>Twitter</label>
+
+                    <input type="checkbox" name="facebook_album" id="facebook-sharing"
+                    <%if (status == "private"){%>disabled="true"<%}%>
+                    <%if (facebook_sharing && status != "private"){%>checked="true"<%}%>/>
+                    <label for="facebook-sharing"><span class="ui-icon"></span>Facebook</label>
+
+                    <input type="checkbox" name="tumblr" id="tumblr-sharing"
+                    <%if (status == "private"){%>disabled="true"<%}%>
+                    <%if (tumblr_sharing  && status != "private"){%>checked="true"<%}%> />
+                    <label for="tumblr-sharing"><span class="ui-icon"></span>Tumblr</label>
+
+                    <input type="checkbox" name="foursquare_checkin" id="foursquare-sharing"
+                    <%if (status == "private"){%>disabled="true"<%}%>
+                    <%if (foursquare_sharing && status != "private"){%>checked="true"<%}%> />
+                    <label for="foursquare-sharing"><span class="ui-icon"></span>Foursquare</label>
+
+                </fieldset>
+
+                <hr />
+
+                <fieldset class="upload-image-location">
+
+                    <div id="no-foursquare-sharing-location"
+                        <% if (foursquare_sharing && status != "private"){%> style="display:none;"<%}%>
+                        <% if (photo.attributes.location && !photo.attributes.location.location){%> class="ajax-loading"<%}%>>
+                        <span class="image-location custom-action-icons">
+                            <input type="checkbox" name="share-location" id="share-location" <%if (share_location){ %>checked="true"<% } %> />
+                            <label for="share-location"><span class="ui-icon ui-icon-location share-location-label" ></span>
+                                <span class="location-name">
+                                <% if (photo.attributes.location && photo.attributes.location.location){%>
+                                     <%= photo.attributes.location.location %>
+                                <% }else{ %>
+                                    <% if (saved_location){ %>
+                                      <%= saved_location %>
+                                    <% }else{ %>
+                                      <% if (share_location){ %>
+                                          Getting location&hellip;
+                                      <% }else{ %>
+                                          Share location.
+                                      <% } %>
+                                    <% } %>
+                                <% } %>
+                                </span>
+                            </label>
+                        </span>
+                    </div>
+                    <div id="foursquare-sharing-location"
+                        <%if (!foursquare_sharing || status == "private"){%> style="display:none;"<%}%>
+                        <% if (photo.attributes.location && !photo.attributes.location.foursquare_venue_name){%> class="ajax-loading"<%}%>>
+                        <a data-role="button" id="foursquare-venue" data-icon="arrow-right">
+                            <span class="ui-icon ui-icon-venue"></span>
+                            <span class="foursquare-venue-name">
+                                <% if (photo.attributes.location && photo.attributes.location.foursquare_venue_name){%>
+                                    <%= photo.attributes.location.foursquare_venue_name %>
+                                <%}else{%>
+                                    Getting Venue&hellip;
+                                <%}%>
+                            </span>
+                        </a>
+                    </div>
+                </fieldset>
+
+                <div class="ui-grid-b">
+                    <div class="ui-block-a">
+                        <% if (camplus){ %>
+                        <a data-role="button" data-theme="a" class="x-camplus-edit-photo camplus-icon">Edit with Camera&#43;</a>
+                        <% } %>
+                    </div>
+
+                    <div class="ui-block-b">
+                    <% if (edit){ %>
+                        <a data-role="button" data-theme="d" class="x-edit-photo">Edit</a>
+                    <% } %>
+                    </div>
+
+                    <div class="ui-block-c">
+                        <input type="submit" data-role="button" data-theme="e" class="share" value="Share"/>
+                    </div>
+                </div>
+            </div> <!-- .upload-settings -->
+        </div> <!-- .upload-settings-layer -->
+    </div> <!-- .image-options -->
+</form>
+
+<div class="image-controls ">
+    <a data-role="button" id="show_photo" data-icon="toggle" data-iconpos="right" >
+        Show Photo
+    </a>
+</div>
+
+<div class="show-upload-settings set-full-height">
+    <div class="image-controls">
+        <a data-role="button" id="show_photo_settings" data-icon="toggle-up" data-iconpos="right" >
+            Show Options
+        </a>
+    </div>
+</div>

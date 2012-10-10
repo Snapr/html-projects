@@ -23,849 +23,161 @@
 <body style="display: none;"><!-- initially hidden until jQmobile can load and style everything -->
 
         <script id="dash-thumbs-template" type="text/template">
-            <% _.each(photos, function(photo) { %><a href="https://s3.amazonaws.com/media-server2.snapr.us/lrg2/<%= photo.get('secret') %>/<%= photo.get('id') %>.jpg" class="x-thumb image-link" rel="external" data-date="<%= photo.get('date') %>" data-id="<%= photo.get('id') %>" data-tag="<%= photo.get('description') %>">
-                <img src="https://s3.amazonaws.com/media-server2.snapr.us/thm2/<%= photo.get('secret') %>/<%= photo.get('id') %>.jpg" <% if(photo.get('description')){ %>alt="<%= photo.get('description') %>"<% } %> class="thumb-image thumb-med">
-            </a><% }); %>
+
         </script>
 <script id="dash-tumblr-template" type="text/template">
-            <a href="/#/tumblr-posts/" class="ui-bar x-details open top-left-arrow" data-role="button" data-iconpos="right" data-icon="arrow-r" data-theme="c" data-ajax="false">
-                <span class="image-details">
-                    <span class="ui-icon extra-icons"></span>
-                    <em><%= model.get("display").short_title %></em>
-                </span>
-            </a>
-            <ul class="posts-stream"></ul>
+
         </script>
     <script id="activity-stream-template" type="text/template">
-     <!-- // Write in a bar only if there are photo events in the activity stream -->
-    <% if (photo_events){%>
-        <a class="ui-bar top-left-arrow" data-role="button" data-theme="e">
-            <em><%= time_period %></em>
-            <span class="small-text"><%= stream_summary %></span>
-        </a>
-    <%}%>
-        <!-- // Wrap all the items in the stream in a <ul> -->
-        <ul <% if (photo_events){%>class="photo-activity"<%}else{%>class="non-photo-activity"<%}%>>
-        </ul>
+
     </script>
 
     <script id="activity-stream-item-template" type="text/template">
-    <!-- // Each of these is enclosed in an li -->
-    <% switch (item.get("type"))
-    {
-         <!-- For news around a photo -->
-        case "photo-activity":%>
-            <% if (item.get("comments").length || item.get("comment-on-comments").length) {%>
-            <!-- // List the comments followed by the comments on comments -->
-            <ul class="comments-list " data-role="listview" data-inset="true" data-icon="false" >
-            <% _.each( item.get("comments"), function( comment ){ %>
-                <li data-icon="false" class="comment-item activity-item">
-                    <a href="#/feed/?username=<%= comment.user.username %>">
-
-                        <img src="<%= config.get('avatar_url') %>/<%= comment.user.user_id %>" alt="<%= comment.user.display_username %>" class="user-icon-small ui-li-icon"/>
-
-                        <h3 class="username"><%= comment.user.display_username %></h3> <span class="activity-desc"><%= comment.comment %></span>
-                    </a>
-                </li>
-            <% }); %>
-            <% _.each( item.get("comment-on-comments"), function( comment ){ %>
-                <li data-icon="false" class="comment-item comment-on-comment-item activity-item">
-                    <a href="#/feed/?username=<%= comment.user.username %>">
-                        <img src="<%= config.get('avatar_url') %>/<%= comment.user.user_id %>" alt="<%= comment.user.display_username %>" class="user-icon-small ui-li-icon"/>
-
-                        <h3 class="username"><%= comment.user.display_username %></h3> <span class="activity-desc"><%= comment.comment %></span>
-                    </a>
-                </li>
-            <% }); %>
-            </ul>
-            <%}%>
-
-             <!-- // Now the Likes -->
-             <% if (item.get("favorites").length) {%>
-            <div class="image-likes activity-item">
-                 <!-- the icons are displayed as an inline list -->
-                <ul class="like-icons-list">
-                <% _.each( item.get("favorites"), function( like ){ %>
-                    <li class="like-icon">
-                        <a href="#/feed/?username=<%= like.user.username %>"><img src="<%= config.get('avatar_url') %>/<%= like.user.user_id %>" alt="<%= like.user.display_username %>" class="user-icon-small ui-li-icon"/></a>
-                    </li>
-                <% }); %>
-                </ul>
-                <!--The icons are displayed as an inline list -->
-                <p class="like-names-list">
-                    <% if (likes_list.length == 1)
-                    {%>
-                        <a class="username"  href="#/feed/?username=<%= likes_list[0].user.username%>"><%= likes_list[0].user.display_username %></a> likes this.
-                    <%}
-                    else if (likes_list.length > 1)
-                    {
-                        _.each( likes_list, function( like, index )
-                        {
-                            if (index < likes_list.length - 1)
-
-                            {%><a class="username"  href="#/feed/?username=<%= like.user.username %>"><%= like.user.display_username %></a>, <%}
-                        });%>
-                        &amp; <a class="username"><%= likes_list[likes_list.length - 1].user.display_username%></a> like this.
-                    <%}%>
-                </p>
-            </div>
-            <%}%>
-
-             <!-- // Show the photo -->
-                <a class="image-link" href="#/feed/?photo_id=<%= item.get("photo").id %>&amp;username=<%= item.get("photo").username %>&n=1">
-                    <img src="https://s3.amazonaws.com/media-server<%= item.get("photo").server_id %>.snapr.us/thm2/<%= item.get("photo").secret %>/<%= item.get("photo").id %>.jpg" <% if(item.get('photo').description){ %>alt="<%= item.get('photo').description %>"<% } %> class="thumb-image thumb-med">
-                </a>
-
-        <%  break;
-        case "follow":%>
-
-        <a href="#/feed/?username=<%= item.get("user").username %>" class="">
-            <img src="<%= config.get('avatar_url') %>/<%= item.get("user").username %>" alt="<%= item.get("user").user_id %>" class="user-icon-small ui-li-icon"/>
-            <h3 class="username"><%= item.get("user").display_username %></h3> <span class="activity-desc">is now following you.</span>
-            <% if (!photo_events) { %>
-            <p class="small-text">
-                <%= string_utils.short_timestamp( item.get("date"), true) %>
-            </p>
-            <% } %>
-        </a>
-        <%  break;
-        case "placeholder":%>
-            <div id="no-results">
-                <p class="imagealert"><span class="ui-icon ui-icon-delete extra-icons"></span>No news yet...</p>
-            </div>
-        <% break;
-    }%>
 
     </script>
 
     <script id="news-ticker-template" type="text/template">
-        <% switch (type){
-            case "follow":%>
-                <em><%= user.display_username %></em> is now following you
-            <%  break;
-            case "favorite":%>
-                <em><%= user.display_username %></em> liked your photo
-            <%  break;
-            case "comment":%>
-                <em><%= user.display_username %></em> commented on your photo
-            <%  break;
-            case "comment-on-comment":%>
-                <em><%= user.display_username %></em> posted a comment
-            <%  break;
-            default: %>
-                No news yet..
-        <%}%>
+
     </script>
 
     <script id="cities-stream-template" type="text/template">
-            <a class="ui-bar ui-bar-b top-left-arrow x-details" data-query="<%= escape(feed_param) %>" data-city="<%= details.name %>" data-role="button" data-iconpos="right" data-icon="arrow-r" data-theme="b">
-                <span class="image-details x-details">
-                    <span class="ui-icon ui-icon-redheart extra-icons"></span>
-                    <em><%= details.name %></em>
-                    <span class="image-tag x-tag"><% if(collection.length){ %><%= collection.models[0].get("description") %><% } %></span>
-                    <span class="image-time small-text">
-                        <span class="ui-icon ui-icon-clock extra-icons"></span>
-                        <span class="x-date"><% if(collection.length){ %><%= string_utils.short_timestamp( collection.models[0].get("date") )  %><% } %></span>
-                    </span>
-                </span>
 
-            </a>
-            <div id="upload-popular-nearby-images" class="thumbs-grid thumbs-grid-med x-scroll-area">
-                <div class="x-scroll-wrapper"><!-- inner div for scroll -->
-                <div class="x-left-pull thumb-med load-more-inline">
-                    <span class="ui-icon ui-icon-refresh"></span>
-                    <span class="ui-btn-text x-msg">Refresh</span>
-                </div>
-                <div class="x-thumbs"></div>
-                <div class="x-right-pull thumb-med load-more-inline">
-                    <span class="ui-icon ui-icon-refresh"></span>
-                    <span class="ui-btn-text x-msg">Load More</span>
-
-                </div>
-            </div>
         </script>
         <script id="cities-thumbs-template" type="text/template">
-            <% _.each(photos, function(photo) { %><a href="https://s3.amazonaws.com/media-server2.snapr.us/lrg2/<%= photo.get('secret') %>/<%= photo.get('id') %>.jpg" class="x-thumb image-link" rel="external" data-date="<%= photo.get('date') %>" data-id="<%= photo.get('id') %>" data-tag="<%= photo.get('description') %>">
-                <img src="https://s3.amazonaws.com/media-server2.snapr.us/thm2/<%= photo.get('secret') %>/<%= photo.get('id') %>.jpg" <% if(photo.get('description')){ %>alt="<%= photo.get('description') %>"<% } %> class="thumb-image thumb-med">
-            </a><% }); %>
+
         </script>
 
     <!-- @person ITEM-->
     <script id="people-li-template" type="text/template">
-           <a href="#/feed/?username=<%= user.get('username') %>" data-username="<%= user.get('display_username') %>">
-               <img src="<%= config.get('avatar_url') %>/<%= user.get('user_id') %>" alt="<%= user.get('display_username') %>" class="user-icon-small ui-li-icon"/>
-               <h3 class="username"><%= user.get('display_username') %></h3>
-               <p class="small-text">
-                <% if (user.has('score')) {%><span class="photo-count"><%= user.get('score') %></span> points, <%}%>
-                <span class="photo-count"><%= user.get('photo_count') %></span> photos,
-                <span class="followers"><%= user.get('followers') %></span> followers
-               </p>
-           </a>
-           <% if (!logged_in) {%>
-                    <a data-icon="plus" data-iconpos="right" class="follow follow-btn"></a>
-           <%}else{%>
-               <% if (user.get('username') == auth_username){%>
-                   <a disabled="true" data-icon="check" data-iconpos="right" class="follow-btn"></a>
-               <%}else{%>
-                   <% if (user.get('relationship').you_follow) {%>
-                   <a data-icon="check" data-iconpos="right" class="unfollow follow-btn"></a>
-                   <%}else{%>
-                   <a data-icon="plus" data-iconpos="right" class="follow follow-btn"></a>
-                   <%}%>
-               <%}%>
-           <%}%>
+
        </script>
 
        <!-- @leaderboardPerson ITEM-->
        <script id="leaderboard-li-template" type="text/template">
-              <a href="#/feed/?username=<%= user.get('username') %>" data-username="<%= user.get('username') %>">
-                    <span class="game-rank"><%= rank %></span>
-                  <img src="<%= config.get('avatar_url') %>/<%= user.get('user_id') %>" alt="<%= user.get('username') %>" class="user-icon-small ui-li-icon"/>
-                  <h3 class="username"><%= user.get('display_username') %></h3>
-                  <p class="small-text">
-                    <span class="photo-count"><%= user.get('photo_count') %></span> photos
-                    <% if (user.get('score')) { %>, <span class="points"><%= user.get('score') %></span> points<% } %>
-                  </p>
-              </a>
+
           </script>
 
         <!-- @venue ITEM-->
         <script id="venue-li-template" type="text/template">
-            <a>
-                <img src="<%= icon %>" alt="" class="user-icon-small ui-li-icon"/>
-                <h3 class="venue-name"><%= venue.get('name') %></h3>
-                <p class="small-text"><%= venue.get('location').distance %> m</p>
-            </a>
-            <% if (selected) {%>
-            <a data-icon="check" data-iconpos="right" class="select"></a>
-            <%}%>
+
         </script>
 
          <script id="spots-result-header" type="text/tempalte">
-         <% if(results) { %>
-            <a class="spots-results-header ui-bar top-left-arrow" data-role="button" data-theme="e" data-iconpos="right" data-icon="arrow-r" href="#/map/?<%=param%>">
-                <em><%= results %> results</em>
-                <span class="small-text">show on map</span>
-            </a>
-          <% } else { %>
-            <a class="spots-results-header ui-bar" data-role="button" data-theme="e">
-                <em>No results</em>
-            </a>
-          <% } %>
+
          </script>
 
          <script id="spots-result-item" type="text/template">
-            <a class="spot <%= spot.get('category').slug %>" href="#/spot/?spot_id=<%=spot.get('id')%>">
-                <span class="spot-photo-crop">
-                <% if (spot.get('info').hero_image) { %>
-                    <img src="https://s3.amazonaws.com/media-server2.snapr.us/thm2/<%= spot.get('info').hero_image.secret %>/<%= spot.get('info').hero_image.id %>.jpg" class="thumb-image thumb-med" />
-                <%} else { %>
-                    <div class="no-photo-yet">
-                        no<br />
-						photos<br />
-						yet<br />
-                    </div>
-                <% } %>
-                </span>
 
-                <span class="spot-heading">
-                    <h4 class="spot-name"><%= spot.get('name') %> <span class="ui-icon spot-icon"></span></h4>
-                    <p class="spot-subheading small-text">
-                        <% if (spot.get('location').distance) { %>
-                        <%= string_utils.short_distance( spot.get('location').distance ) %>
-                        <% } %>
-                    </p>
-                </span>
-                <p class="spot-address">
-                    <% if (spot.get('location').address !== "False") { %>
-                        <%= spot.get('location').address %></br>
-                    <% } %>
-                    <% if (spot.get('location').city !== "False") { %>
-                        <%= spot.get('location').city %>
-                    <% } %>
-                </p>
-            </a>
          </script>
 
         <!-- @spot HEADER -->
         <script id="spot-header-template" type="text/template">
-            <a class="ui-bar top-left-arrow <%= spot.get('category').slug %>" data-role="button" data-theme="e" data-iconpos="right" data-icon="arrow-r" data-ajax="false" href="#/feed/?spot=<%= spot.get('id') %>&venue_name=<%= spot.get('name') %>">
-                <span class="ui-icon ui-icon-category spot-icon dark-spot-icon"></span>
-                <em class="spot-name"><%= spot.get('name') %></em>
-                <% if (spot.get('stats').photos_count) { %>
-                    <span class="small-text">(<%= spot.get('stats').photos_count %> photo<% if ((spot.get('stats').photos_count) > 1) { %>s<% } %>)</span>
-                <% } %>
-            </a>
 
-            <div class="spot-header ui-body-c">
-                <div class="spot ui-content">
-                    <a class="spot-photo-crop">
-                    <% if (spot.get('info').hero_image) { %>
-                        <img src="https://s3.amazonaws.com/media-server2.snapr.us/thm2/<%= spot.get('info').hero_image.secret %>/<%= spot.get('info').hero_image.id %>.jpg" class="thumb-image thumb-med" />
-                    <%} else { %>
-                        <div class="no-photo-yet">
-                            no<br />
-							photos<br />
-							yet<br />
-                        </div>
-                    <% } %>
-                    </a>
-                    <div class="spot-venue-details">
-                        <a class="spot-address small-text" href="http://maps.google.com/maps?ll=<%= spot.get('location').latitude %>,<%= spot.get('location').longitude %>&q=<%= spot.get('name') %>">
-                            <% if (spot.get('location').address !== "False") { %>
-                                <%= spot.get('location').address %></br>
-                            <% } %>
-                            <% if(spot.get('location').city !== "False") { %><%= spot.get('location').city %><% } %>
-                            <% if (spot.get('location').distance) { %>
-                                <span class="spot-distance "><%= string_utils.short_distance( spot.get('location').distance ) %> </span>
-                            <% } %><span class="spot-distance ">&rsaquo;</span>
-                        </a>
-                        <% if(spot.get('contact').phone !== "False") { %>
-                            <a  href="tel:<%= spot.get('contact').phone %>" class="spot-phone small-text">
-                                &#9742; <%= spot.get('contact').phone %>
-                            </a>
-                        <% } %>
-                    </div>
-                    <p class="spot-photo-credit small-text">
-                        <% if (spot.get('info').hero_image) { %>
-                        &lsaquo; photo by <a href="#/feed/?username=<%= spot.get('info').hero_image.username %>" class="username"><%= spot.get('info').hero_image.display_username %></a>
-                        <% } %>
-                    </p>
-
-                    <% if (spot.get('foursquare').venue_page) { %>
-                    <a href="<%= spot.get('foursquare').venue_page %>" class="foursquare-btn" data-role="button" data-icon="foursquare-logo" data-iconpos="notext" data-theme="c"></a>
-                    <% } %>
-
-                </div>
-            </div>
         </script>
 
         <!-- @spot stream template -->
         <script id="spot-stream-template" type="text/template">
-        <a class="ui-bar top-left-arrow x-details" data-role="button" data-iconpos="right" data-icon="arrow-r" data-theme="c" href="#/feed/?<%= feed_param %>">
-        <span class="image-details">
-            <span class="ui-icon ui-icon-heart extra-icons"></span>
-            <em>popular</em>
-           <span class="image-tag x-tag"><%= collection.models[0].description %></span>
-           <span class="image-time small-text">
-               <span class="ui-icon ui-icon-clock extra-icons"></span>
-               <span class="x-date"><%= string_utils.short_timestamp( collection.models[0].get("date") )  %></span>
-            </span>
-            </span>
-        </a>
-        <div class="thumbs-grid thumbs-grid-med x-scroll-area">
-            <div class="x-scroll-wrapper"><!-- inner div for scroll -->
-            <div class="x-left-pull thumb-med load-more-inline">
-                <span class="ui-icon ui-icon-refresh"></span>
-                <span class="ui-btn-text x-msg">Refresh</span>
-            </div>
-            <div class="x-thumbs"></div>
-            <div class="x-right-pull thumb-med load-more-inline">
-                <span class="ui-icon ui-icon-refresh"></span>
-                <span class="ui-btn-text x-msg">Load More</span>
 
-            </div>
-        </div>
     </script>
 
     <script id="spot-stream-thumb-template" type="text/template">
-        <% _.each(photos, function(photo) { %><a href="https://s3.amazonaws.com/media-server2.snapr.us/lrg/<%= photo.get('secret') %>/<%= photo.get('id') %>.jpg" class="x-thumb image-link" rel="external" data-date="<%= photo.get('date') %>" data-tag="<%= photo.get('description') %>">
-            <img src="https://s3.amazonaws.com/media-server2.snapr.us/thm2/<%= photo.get('secret') %>/<%= photo.get('id') %>.jpg" <% if(photo.get('description')){ %>alt="<%= photo.get('description') %>"<% } %> class="thumb-image thumb-med">
-        </a><% }); %>
+
     </script>
 
     <!-- @spot TOP USER ITEM -->
     <script id="spot-top-user-item" type="text/template">
-        <li class="top-user-item">
-            <a href="#/feed/?username=<%= user.get('username') %>">
-                <span class="user-icon-med" style="background-image: url('<%= config.get('avatar_url') %>/<%= user.get('user_id') %>?size=large');"></span>
-                <span class="small-username"><%= user.get('display_username') %></span>
-            </a>
-        </li>
+
     </script>
 
     <!-- @map @thumb ITEM -->
     <script id="thumb-template" type="text/template">
-    <div class="snaprmappoint snaprmappoint-thumb">
-        <div class="snaprmapthumb">
-            <span class="snaprthumbbg"></span>
-            <span class="snaprmappin"></span>
-            <a href="#/feed/?photo_id=<%= data.id %>&n=1" class="clickable" data-ajax="false"><img src="https://s3.amazonaws.com/media-server<%= data.server_id %>.snapr.us/thm2/<%= data.secret %>/<%= data.id %>.jpg" <% if(data.description){ %>alt="<%= data.description %>"<% } %> class="snaprmapthumbimage"></a>
-        </div>
-    </div>
+
     </script>
 
     <script id="location-template" type="text/template">
-    <div class="snaprmappoint">
-        <div class="map-current-location"></div>
-    </div>
+
     </script>
 
     <script id="spot-template" type="text/template">
-      <div class="x-map-venue snaprmappoint <%=data.category.slug%>">
-        <a class="x-map-venue-pin"></a>
-        <a class="x-map-venue-label" data-ajax="false" href="#/spot/?spot_id=<%=data.id%>">
-          <span class="ui-icon spot-icon med-spot-icon"></span>
-          <span class="venue-label-text"><%= data.name %></span>
-        </a>
-      </div>
+
     </script>
 
     <script id="flag-template" type="text/template">
-        <div class="snaprmappoint" style="display: block; position: absolute; top: 156px; left: 80px; z-index: 100;">
-            <div class="snaprmapflag">
-                <span class="icon map-flag-icon"></span>
-                <span class="flag-detail inactive">
-                    <a href="" class="flag-link">
-                        <span class="icon spot-icon"></span>
-                        <span class="description-text">Foo</span>
-                    </a>
-                    <span class="base-arrow">
-                    </span>
-                </span>
-            </div>
-        </div>
+
     </script>
 
     <!-- @map @disambiguation ITEM - shows if location search returns multiple results -->
     <script id="map-disambiguation-li-template" type="text/template">
-    <a class="map-link"><%= location.formatted_address %></a>
+
     </script>
 
     <!-- @upload @uploadprogress ITEM - template for upload progress header -->
     <script id="upload-progress-li-template" type="text/template">
-        <div class="upload-info-block">
-            <a class="upload-image-thumb-gall gallery_link image-link ui-link"
-                <% if(upload_status == 'completed'){ %> href="#/feed/?photo_id=<%= photo_id %>&username=<%= username %>"<% } %>>
-               <div style="background-image: url('<%= thumbnail %>')" class="thumb-image thumb-med css-thumb"></div>
-            </a>
 
-            <div class="upload-info">
-                <p class="upload-image-tag"><% if(description){ %><span class="ui-icon extra-icons ui-icon-quote"></span><%= description %><% } %>&nbsp;</p>
-                <% if ( venue ){ %>
-                    <p class="upload-image-venue"><a class="ui-link">@ <%= venue %></a></p>
-                <% } %>
-
-                 <div class="progress-bar <%= upload_status %>">
-                    <!-- //Active uploads -->
-                    <% switch (upload_status) { case 'active': %>
-                        <% if (percent_complete == 100){ %>
-                            <span class="upload-message">Finishing</span>
-                            <a class="bar-action">
-                                <span class="ui-icon ui-icon-spinner"></span>
-                            </a>
-                        <% }else{ %>
-                            <div class="bar-wrapper">
-                                <div class="bar-bg bar"></div>
-                                <div class="bar-prog bar" style="width:<%= percent_complete %>%"></div>
-                            </div>
-                            <a class="bar-action x-cancel-upload">
-                                <span class="ui-icon ui-icon-delete"></span>
-                            </a>
-                        <% } %>
-                    <% break; case 'waiting': %>
-                        <span class="upload-message">Waiting</span>
-                        <a class="bar-action x-cancel-upload">
-                            <span class="ui-icon ui-icon-delete"></span>
-                        </a>
-                    <% break; case 'canceled': %>
-
-                    <% break; case 'queued': %>
-                        <span class="upload-message">Queued</span>
-                        <a class="bar-action">
-                            <span class="ui-icon ui-icon-refresh"></span>
-                        </a>
-                    <% break; case 'completed': %>
-                        <span class="upload-message">Complete</span>
-                        <a class="bar-action">
-                            <span class="ui-icon ui-icon-check"></span>
-                        </a>
-                    <% break;}%>
-                </div>
-
-                <ul class="upload-shared-to <% if (shared){%>shared<%}%>">
-                <% if (facebook_sharing){ %>
-                    <li>
-                        <div class="facebook-sharing sharing-icon-small">
-                            <span class="ui-icon"></span>
-                        </div>
-                    </li>
-                <% } %>
-                <% if (twitter_sharing){ %>
-                    <li>
-                        <div class="twitter-sharing sharing-icon-small">
-                            <span class="ui-icon"></span>
-                        </div>
-                    </li>
-                <% } %>
-                <% if (tumblr_sharing){ %>
-                    <li>
-                        <div class="tumblr-sharing sharing-icon-small">
-                            <span class="ui-icon"></span>
-                        </div>
-                    </li>
-                <% } %>
-                 <% if (foursquare_sharing){ %>
-                        <li>
-                            <div class="foursquare-sharing sharing-icon-small">
-                                <span class="ui-icon"></span>
-                            </div>
-                        </li>
-                    <% } %>
-                </ul>
-            </div>
-        </div>
     </script>
 
     <!-- @upload @uploadprogress ITEM - template for upload progress header in feed -->
     <script id="feed-upload-progress-li-template" type="text/template">
-    <div class="upload-info-block">
-        <a class="upload-image-thumb-gall gallery_link image-link ui-link">
-            <div style="background-image: url('<%= thumbnail %>')" class="thumb-image thumb-small css-thumb"></div>
-        </a>
-        <div class="upload-info">
-            <div class="progress-bar <%= upload_status %>">
-                <!-- //Active uploads -->
-                <% switch (upload_status) { case 'active': %>
-                <% if (percent_complete == 100){ %>
-                <span class="upload-message">Finishing</span>
-                <a class="bar-action">
-                    <span class="ui-icon ui-icon-spinner"></span>
-                </a>
-                <% }else{ %>
-                <div class="bar-wrapper">
-                    <div class="bar-bg bar"></div>
-                    <div class="bar-prog bar" style="width:<%= percent_complete %>%"></div>
-                </div>
-                <a class="bar-action x-cancel-upload">
-                    <span class="ui-icon ui-icon-delete"></span>
-                </a>
-                <% } %>
 
-                <% break; case 'waiting': %>
-                <span class="upload-message">Waiting</span>
-                <a class="bar-action x-cancel-upload">
-                    <span class="ui-icon ui-icon-delete"></span>
-                </a>
-
-                <% break; case 'canceled': %>
-
-                <% break; case 'hold': %>
-
-                <% break; case 'completed': %>
-                <span class="upload-message">Complete</span>
-                <a class="bar-action">
-                    <span class="ui-icon ui-icon-check"></span>
-                </a>
-                <% break;}%>
-            </div>
-        </div>
-    </div>
     </script>
 
     <script id="uploading-stream-template" type="text/template">
-        <a class="ui-bar top-left-arrow x-details" data-role="button" data-iconpos="right" data-icon="arrow-r" data-theme="c" href="#/feed/?<%= feed_param %>">
-        <span class="image-details">
-        <% switch (details.stream_type) { case 'spot': %>
-            <span class="ui-icon ui-icon-activity extra-icons"></span>
-            <em>@ <%= collection.models[0].get("location").foursquare_venue_name %></em>
-        <% break; case 'popular-nearby': %>
-            <span class="ui-icon ui-icon-heart extra-icons"></span>
-            <em>nearby</em>
-        <% break; case 'recent-nearby': %>
-            <span class="ui-icon ui-icon-activity extra-icons"></span>
-            <em>nearby</em>
-        <% break; } %>
-           <span class="image-tag x-tag"><%= collection.models[0].description %></span>
-           <span class="image-time small-text">
-               <span class="ui-icon ui-icon-clock extra-icons"></span>
-               <span class="x-date"><%= string_utils.short_timestamp( collection.models[0].get("date") )  %></span>
-            </span>
-            </span>
-        </a>
-        <div class="thumbs-grid thumbs-grid-med x-scroll-area">
-            <div class="x-scroll-wrapper"><!-- inner div for scroll -->
-            <div class="x-left-pull thumb-med load-more-inline">
-                <span class="ui-icon ui-icon-refresh"></span>
-                <span class="ui-btn-text x-msg">Refresh</span>
-            </div>
-            <div class="x-thumbs"></div>
-            <div class="x-right-pull thumb-med load-more-inline">
-                <span class="ui-icon ui-icon-refresh"></span>
-                <span class="ui-btn-text x-msg">Load More</span>
 
-            </div>
-        </div>
     </script>
 
     <script id="uploading-stream-thumb-template" type="text/template">
-        <% _.each(photos, function(photo) { %><a href="https://s3.amazonaws.com/media-server2.snapr.us/lrg2/<%= photo.get('secret') %>/<%= photo.get('id') %>.jpg" class="x-thumb image-link" rel="external" data-date="<%= photo.get('date') %>" data-tag="<%= photo.get('description') %>">
-            <img src="https://s3.amazonaws.com/media-server2.snapr.us/thm2/<%= photo.get('secret') %>/<%= photo.get('id') %>.jpg" <% if(photo.get('description')){ %>alt="<%= photo.get('description') %>"<% } %> class="thumb-image thumb-med">
-        </a><% }); %>
+
     </script>
     <script id="old-uploading-stream-thumb-template" type="text/template">
-        <a class="image-link" href="#/feed/?photo_id=<%= photo.id %>&amp;username=<%= photo.username %>">
-        <img src="https://s3.amazonaws.com/media-server<%= photo.server_id %>.snapr.us/thm2/<%= photo.secret %>/<%= photo.id %>.jpg" <% if(photo.get('description')){ %>alt="<%= photo.get('description') %>"<% } %> class="thumb-image thumb-med">
-        </a>
+
     </script>
 
     <script id="uploading-stream-comp-template" type="text/template">
-    <li class="image-stream">
-         <a class="ui-bar top-no-arrow" data-role="button" data-theme="c">
-            <span class="image-details">
-                <span class="ui-icon ui-icon-activity extra-icons"></span>
-                <span class="image-tag"><%= title %></span>
-            </span>
-        </a>
-    </li>
+
     </script>
 
     <script id="uploading-stream-placeholder-template" type="text/template">
-    <li class="image-stream">
-         <a class="ui-bar top-no-arrow" data-role="button" data-theme="c">
-            <span class="image-details">
-                <span class="ui-icon ui-icon-activity extra-icons"></span>
-                <span class="image-tag">No Nearby Streams..</span>
-            </span>
-        </a>
-    </li>
+
     </script>
 
     <!-- template for #share-photo -->
     <script id="share-photo-template" type="text/template">
-        <form action="javascript: void(0);">
-            <div class="upload-image-layer set-full-height">
-                <div class="image-placeholder">
-                    <% if (img_url){%><img src="<%= img_url %>" /><%}%>
-                </div>
-            </div>
 
-            <div class="image-options">
-                <div class="upload-settings-layer trans-bg set-full-height">
-                    <div class="upload-settings">
-                        <% if(comp){ %>Comp: <%= comp.get('title') %><% } %>
-                        <textarea name="description" id="description" placeholder="Add text..." data-theme="d"><%= saved_description %></textarea>
-                        <% if(comp && comp.has('hashtag')){ %><span style="background:yellow; color:black; position:relative; top:-25px; right:-200px;"><%= comp.get('hashtag') %></span><% } %>
 
-                        <fieldset data-role="controlgroup" data-type="horizontal" class="upload-image-privacy">
-                            <input type="checkbox" name="status" id="status-public" <% if (status != "private"){%> checked="true" <%}%> />
-                            <label for="status-public" class="privacy-toggle">&nbsp;<span class="ui-icon"></span></label>
-                        </fieldset>
-
-                        <fieldset data-role="controlgroup" data-type="horizontal" class="upload-image-sharing">
-                            <legend>Share to:</legend>
-
-                            <input type="checkbox" name="tweet" id="twitter-sharing"
-                            <%if (status == "private"){%>disabled="true"<%}%>
-                            <%if (twitter_sharing && status != "private"){%>checked="true"<%}%> />
-                            <label for="twitter-sharing"><span class="ui-icon"></span>Twitter</label>
-
-                            <input type="checkbox" name="facebook_album" id="facebook-sharing"
-                            <%if (status == "private"){%>disabled="true"<%}%>
-                            <%if (facebook_sharing && status != "private"){%>checked="true"<%}%>/>
-                            <label for="facebook-sharing"><span class="ui-icon"></span>Facebook</label>
-
-                            <input type="checkbox" name="tumblr" id="tumblr-sharing"
-                            <%if (status == "private"){%>disabled="true"<%}%>
-                            <%if (tumblr_sharing  && status != "private"){%>checked="true"<%}%> />
-                            <label for="tumblr-sharing"><span class="ui-icon"></span>Tumblr</label>
-
-                            <input type="checkbox" name="foursquare_checkin" id="foursquare-sharing"
-                            <%if (status == "private"){%>disabled="true"<%}%>
-                            <%if (foursquare_sharing && status != "private"){%>checked="true"<%}%> />
-                            <label for="foursquare-sharing"><span class="ui-icon"></span>Foursquare</label>
-
-                        </fieldset>
-
-                        <hr />
-
-                        <fieldset class="upload-image-location">
-
-                            <div id="no-foursquare-sharing-location"
-                                <% if (foursquare_sharing && status != "private"){%> style="display:none;"<%}%>
-                                <% if (photo.attributes.location && !photo.attributes.location.location){%> class="ajax-loading"<%}%>>
-                                <span class="image-location custom-action-icons">
-                                    <input type="checkbox" name="share-location" id="share-location" <%if (share_location){ %>checked="true"<% } %> />
-                                    <label for="share-location"><span class="ui-icon ui-icon-location share-location-label" ></span>
-                                        <span class="location-name">
-                                        <% if (photo.attributes.location && photo.attributes.location.location){%>
-                                             <%= photo.attributes.location.location %>
-                                        <% }else{ %>
-                                            <% if (saved_location){ %>
-                                              <%= saved_location %>
-                                            <% }else{ %>
-                                              <% if (share_location){ %>
-                                                  Getting location&hellip;
-                                              <% }else{ %>
-                                                  Share location.
-                                              <% } %>
-                                            <% } %>
-                                        <% } %>
-                                        </span>
-                                    </label>
-                                </span>
-                            </div>
-                            <div id="foursquare-sharing-location"
-                                <%if (!foursquare_sharing || status == "private"){%> style="display:none;"<%}%>
-                                <% if (photo.attributes.location && !photo.attributes.location.foursquare_venue_name){%> class="ajax-loading"<%}%>>
-                                <a data-role="button" id="foursquare-venue" data-icon="arrow-right">
-                                    <span class="ui-icon ui-icon-venue"></span>
-                                    <span class="foursquare-venue-name">
-                                        <% if (photo.attributes.location && photo.attributes.location.foursquare_venue_name){%>
-                                            <%= photo.attributes.location.foursquare_venue_name %>
-                                        <%}else{%>
-                                            Getting Venue&hellip;
-                                        <%}%>
-                                    </span>
-                                </a>
-                            </div>
-                        </fieldset>
-
-                        <div class="ui-grid-b">
-                            <div class="ui-block-a">
-                                <% if (camplus){ %>
-                                <a data-role="button" data-theme="a" class="x-camplus-edit-photo camplus-icon">Edit with Camera&#43;</a>
-                                <% } %>
-                            </div>
-
-                            <div class="ui-block-b">
-                            <% if (edit){ %>
-                                <a data-role="button" data-theme="d" class="x-edit-photo">Edit</a>
-                            <% } %>
-                            </div>
-
-                            <div class="ui-block-c">
-                                <input type="submit" data-role="button" data-theme="e" class="share" value="Share"/>
-                            </div>
-                        </div>
-                    </div> <!-- .upload-settings -->
-                </div> <!-- .upload-settings-layer -->
-            </div> <!-- .image-options -->
-        </form>
-
-        <div class="image-controls ">
-            <a data-role="button" id="show_photo" data-icon="toggle" data-iconpos="right" >
-                Show Photo
-            </a>
-        </div>
-
-        <div class="show-upload-settings set-full-height">
-            <div class="image-controls">
-                <a data-role="button" id="show_photo_settings" data-icon="toggle-up" data-iconpos="right" >
-                    Show Options
-                </a>
-            </div>
-        </div>
     </script>
 
-    <!-- @tumblr blog PAGE -->
-    <div id="tumblr-posts" data-title="Tumblr blog" data-add-back-btn="true" data-role="page" data-theme="d">
-      <div data-role="header" data-theme="b">
-        <h1>Tumblr blog</h1>
-        <div class="ui-btn-right" data-ajax="false">
-          <a href="#/search/" data-snapr-dialog="true" data-role="button" data-icon="search" data-iconpos="notext"></a>
-          <a href="#/" data-role="button" data-icon="home" data-iconpos="notext"></a>
-        </div>
-      </div>
-      <div data-role="content" data-theme="d" data-ajax="false">
-        <div class="tumblr-body">
-          <a class="ui-bar top-left-arrow x-details" data-role="button" data-iconpos="right" data-icon="arrow-r" data-theme="e">
-              <span class="image-details">
-                  <span class="ui-icon ui-icon-nearby extra-icons"></span>
-                  <em>Snapper scrapbook</em>
-              </span>
-          </a>
-          <ul class="posts-stream image-item-block"></ul>
-        </div>
-      </div>
-    </div><!-- /page -->
+
 
     <script id="tumblr-tmpl-metadata" type="text/template">
-      <div class="image-item-base">
-        <div data-role="controlgroup" data-type="horizontal" class="image-actions">
-          <span class="v-fav-button inline-btn">
-            <div data-role="button" data-icon="action-heart" data-inline="true" data-iconpos="left" class="favorite-button action-icons">&nbsp;</div>
-          </span>
-          <span class="v-comment-button inline-btn">
-            <div data-role="button" data-icon="action-comment" data-inline="true" data-iconpos="left" class="comment-button action-icons" ><% if (model.get('note_count') > 0){ %>&times; <%= model.get('note_count') %><%} else {%> &nbsp;<%}%></div>
-          </span>
-          <span class="v-more-button inline-btn has-palette">
-               <div data-role="button" data-icon="action-more" data-inline="true" data-iconpos="left" class="more-button action-icons" >&nbsp;</div>
-               <div class="v-photo-manage action-palette"></div>
-          </span>
-        </div>
-      </div>
+
     </script>
 
     <script id="tumblr-tmpl-audio" type="text/template">
-      <div id="post-<%= model.get('id') %>" class="post-<%= model.get('type') %> post">
-        <%if(model.get('track_name') || model.get('artist') || model.get('album')) { %>
-          <h4><%= model.get('track_name') %>
-            <% if(model.get('artist')) { %> by <%= model.get('artist') %><% } %>
-            <% if(model.get('album')) { %> from '<%= model.get('album') %>'
-              <% if (model.get('year')) { %> <%= model.get('year') %> <% } %>
-            <% } %>
-          </h4>
-        <% } %>
-        <audio controls preload="none" src="<%= model.get('audio_url') %>"></audio>
-        <% if(model.get('caption')){%><%=model.get('caption')%><%}%>
-        <% if(model.get('plays')) {%><p><%=model.get('plays')%> plays</p><%}%>
-        <% if(model.get('source')){%><%=model.get('source') %><%}%>
-      </div>
+
     </script>
 
     <script id="tumblr-tmpl-video" type="text/template">
-      <div id="post-<%= model.get('id') %>" class="post-<%= model.get('type') %> post">
-        <%= getVideoEmbed(model, 250) %>
-        <% if(model.get('caption')){%><%=model.get('caption')%><%}%>
-      </div>
+
     </script>
 
     <script id="tumblr-tmpl-text" type="text/template">
-      <div id="post-<%= model.get('id') %>" class="post-<%= model.get('type') %> post">
-        <h4><%=model.get('title')%></h4>
-        <p><%=model.get('body')%></p>
-      </div>
+
     </script>
 
     <script id="tumblr-tmpl-quote" type="text/template">
-      <div id="post-<%= model.get('id') %>" class="post-<%= model.get('type') %> post">
-        <h4><%=model.get('text')%></h4>
-        <p><%=model.get('source')%></p>
-      </div>
+
     </script>
 
     <script id="tumblr-tmpl-photo" type="text/template">
-      <div id="post-<%= model.get('id') %>" class="post-<%= model.get('type') %> post">
-        <% if (model.get('photos')) { %>
-          <ul class="photoset">
-            <% _.each(model.get('photos'), function (photo) { %>
-              <li><img src="<%= getPhotoURL(photo, 250) %>" /></li>
-            <% }); %>
-          </ul>
-        <% } %>
-        <p class="caption"><%=model.get('caption')%></p>
-      </div>
+
     </script>
 
     <script id="tumblr-tmpl-link" type="text/template">
-      <div id="post-<%= model.get('id') %>" class="post-<%= model.get('type') %> post">
-        <h4><%=model.get('title')%></h4>
-        <p><%=model.get('description')%></p>
-      </div>
+
     </script>
 
     <script id="tumblr-tmpl-chat" type="text/template">
-      <div id="post-<%= model.get('id') %>" class="post-<%= model.get('type') %> post">
-        <h4><%=model.get('title')%></h4>
-        <%if (model.get('dialogue')) {%>
-          <ul class="chat">
-            <%_.each(model.get('dialogue'), function(dialogue){%>
-              <li><strong><%=dialogue.label%></strong> <%=dialogue.phrase%></li>
-            <%});%>
-          </ul>
-        <%}%>
-      </div>
+
     </script>
 
 </body>

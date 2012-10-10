@@ -1,0 +1,7 @@
+<div class="snaprmappoint snaprmappoint-thumb">
+    <div class="snaprmapthumb">
+        <span class="snaprthumbbg"></span>
+        <span class="snaprmappin"></span>
+        <a href="#/feed/?photo_id=<%= data.id %>&n=1" class="clickable" data-ajax="false"><img src="https://s3.amazonaws.com/media-server<%= data.server_id %>.snapr.us/thm2/<%= data.secret %>/<%= data.id %>.jpg" <% if(data.description){ %>alt="<%= data.description %>"<% } %> class="snaprmapthumbimage"></a>
+    </div>
+</div>

@@ -1,0 +1,24 @@
+<a class="ui-bar top-left-arrow x-details" data-role="button" data-iconpos="right" data-icon="arrow-r" data-theme="c" href="#/feed/?<%= feed_param %>">
+<span class="image-details">
+    <span class="ui-icon ui-icon-heart extra-icons"></span>
+    <em>popular</em>
+   <span class="image-tag x-tag"><%= collection.models[0].description %></span>
+   <span class="image-time small-text">
+       <span class="ui-icon ui-icon-clock extra-icons"></span>
+       <span class="x-date"><%= string_utils.short_timestamp( collection.models[0].get("date") )  %></span>
+    </span>
+    </span>
+</a>
+<div class="thumbs-grid thumbs-grid-med x-scroll-area">
+    <div class="x-scroll-wrapper"><!-- inner div for scroll -->
+    <div class="x-left-pull thumb-med load-more-inline">
+        <span class="ui-icon ui-icon-refresh"></span>
+        <span class="ui-btn-text x-msg">Refresh</span>
+    </div>
+    <div class="x-thumbs"></div>
+    <div class="x-right-pull thumb-med load-more-inline">
+        <span class="ui-icon ui-icon-refresh"></span>
+        <span class="ui-btn-text x-msg">Load More</span>
+
+    </div>
+</div>

@@ -1,0 +1,9 @@
+<a href="#/feed/?username=<%= user.get('username') %>" data-username="<%= user.get('username') %>">
+    <span class="game-rank"><%= rank %></span>
+    <img src="<%= config.get('avatar_url') %>/<%= user.get('user_id') %>" alt="<%= user.get('username') %>" class="user-icon-small ui-li-icon"/>
+    <h3 class="username"><%= user.get('display_username') %></h3>
+    <p class="small-text">
+        <span class="photo-count"><%= user.get('photo_count') %></span> photos
+        <% if (user.get('score')) { %>, <span class="points"><%= user.get('score') %></span> points<% } %>
+    </p>
+</a>

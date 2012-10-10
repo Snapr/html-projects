@@ -1,0 +1,30 @@
+<a class="spot <%= spot.get('category').slug %>" href="#/spot/?spot_id=<%=spot.get('id')%>">
+    <span class="spot-photo-crop">
+    <% if (spot.get('info').hero_image) { %>
+        <img src="https://s3.amazonaws.com/media-server2.snapr.us/thm2/<%= spot.get('info').hero_image.secret %>/<%= spot.get('info').hero_image.id %>.jpg" class="thumb-image thumb-med" />
+    <%} else { %>
+        <div class="no-photo-yet">
+            no<br />
+            photos<br />
+            yet<br />
+        </div>
+    <% } %>
+    </span>
+
+    <span class="spot-heading">
+        <h4 class="spot-name"><%= spot.get('name') %> <span class="ui-icon spot-icon"></span></h4>
+        <p class="spot-subheading small-text">
+            <% if (spot.get('location').distance) { %>
+            <%= string_utils.short_distance( spot.get('location').distance ) %>
+            <% } %>
+        </p>
+    </span>
+    <p class="spot-address">
+        <% if (spot.get('location').address !== "False") { %>
+            <%= spot.get('location').address %></br>
+        <% } %>
+        <% if (spot.get('location').city !== "False") { %>
+            <%= spot.get('location').city %>
+        <% } %>
+    </p>
+</a>
