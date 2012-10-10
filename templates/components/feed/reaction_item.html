@@ -1,0 +1,5 @@
+<% if(reaction.get('type') == 'comment'){ %>
+    <li><a href="#/feed/?username=<%= reaction.get('username') %>"><span class="username"><%= reaction.get('display_username') %>:</span> <span class="comment"><%= string_utils.comment_links( reaction.get('comment') ) %></span></a></li>
+<% }else{ %>
+    <li><a href="#/feed/?username=<%= reaction.get('username') %>"><span class="username"><%= reaction.get('display_username') %></span> <span class="like-text">likes this</span></a></li>
+<% } %>

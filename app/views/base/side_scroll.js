@@ -1,14 +1,13 @@
 // Abstract base class side-scroll views
 /*global _  define require */
-define(['backbone', 'utils/photoswipe', 'iscroll', 'utils/string', 'collections/photo', 'config'],
-    function(Backbone, photoswipe, iScroll, string_utils, photo_collection, config){
-return Backbone.View.extend({
+define(['views/base/view', 'utils/photoswipe', 'iscroll', 'utils/string', 'collections/photo', 'config'],
+    function(view, photoswipe, iScroll, string_utils, photo_collection, config){
+return view.extend({
 
     // The following 3 attrs need to be set when extending this view
     // id: 'unique name for this set of side-scrollers'
     // template: _.template( $('#template').html() ),
     // thumbs_template: _.template( $('#thumbs-template').html() ),
-
 
     initialize: function() {
         _.bindAll(this);

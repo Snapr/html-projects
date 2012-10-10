@@ -1,0 +1,85 @@
+<div class="image-item-block<% if (item.get("status") != "public"){%> private<%}%>">
+    <div class="image-item-topbar">
+        <a class="user-icon-link" href="#/feed/?username=<%= item.get('username') %>">
+            <div class="user-icon-small" style="background-image: url('<%= config.get('avatar_url') %>/<%= item.get('user_id') %>/');"></div>
+        </a>
+        <a class="username" href="#/feed/?username=<%= item.get('username') %>"><%= item.get('display_username') %></a>
+
+        <!-- Show Time only if no location -->
+        <% if(item.has('location') && item.get('location').location){ %>
+        <span class="image-time-and-location">
+        <a class="goto-map">
+            <span class="ui-icon extra-icons ui-icon-venue"></span>
+            <%= string_utils.short_timestamp(item.get('date'), true ) %>, <%= string_utils.short_location(item.get('location').location) %> </a>
+        </span>
+        <%}else{%>
+        <span class="image-time">
+            <span class="ui-icon extra-icons ui-icon-clock"></span>
+            <%= string_utils.short_timestamp(item.get('date'), true ) %>
+        </span>
+        <% }%>
+    </div>
+
+    <div class="image-item">
+
+    <% if(item.get('external_video')){ %>
+    <video class="main-image x-feed-image external-vid image-loader-bg" data-vid-width="<%= item.get('external_video').width %>" data-vid-duration="<%= item.get('external_video').duration %>" data-vid-height="<%= item.get('external_video').height %>" poster="https://s3.amazonaws.com/media-server<%= item.get('server_id') %>.snapr.us/lrg/<%= item.get('secret') %>/<%= item.get('id') %>.jpg" style="height:<%= get_photo_height(item.get('width'), item.get('height'), '#feed-images') %>px;" preload="none" controls="true" onclick="if(this.paused){this.play();}else{this.pause();}">
+
+        <source src="<%= item.get('external_video').source %>" />
+    </video>
+    <%}else{%>
+    <a href="https://s3.amazonaws.com/media-server<%= item.get('server_id') %>.snapr.us/lrg2/<%= item.get('secret') %>/<%= item.get('id') %>.jpg" rel="external" class="gallery_link main-image-link image-loader-bg">
+        <img style="height:<%= get_photo_height(item.get('width'), item.get('height'), '#feed-images') %>px;" src="https://s3.amazonaws.com/media-server<%= item.get('server_id') %>.snapr.us/lrg/<%= item.get('secret') %>/<%= item.get('id') %>.jpg" <% if(item.get('description')){ %>alt="<%= item.get('description') %>"<% } %> class="main-image" />
+    </a>
+    <% }%>
+
+        <span class="image-status">
+            <%= item.get('status') %>
+        </span>
+    </div>
+
+    <div class="image-description">
+
+        <% if (item.get('description')){%>
+            <span class="ui-icon extra-icons ui-icon-quote"></span>
+        <%}%>
+        <%= string_utils.comment_links( item.get('description') ) %>
+
+        <% if (item.has('location') && item.get('location').spot_id){%>
+        <a class="goto-spot">
+            @ <%= item.get('location').foursquare_venue_name %>
+        </a>
+        <%}%>
+    </div>
+
+    <div class="image-item-base">
+        <div data-role="controlgroup" data-type="horizontal" class="image-actions">
+            <span class="v-fav-button inline-btn"></span>
+            <span class="v-comment-button inline-btn"></span>
+            <span class="v-more-button inline-btn has-palette">
+                 <div data-role="button" data-icon="action-more" data-inline="true" data-iconpos="left" class="more-button action-icons" >&nbsp;</div>
+                 <div class="v-photo-manage action-palette"></div>
+            </span>
+
+            <span class="v-show-all-button inline-btn"></span>
+        </div>
+
+        <ul data-inset="true" class="reactions-list ">
+        </ul>
+
+        <div class="comment-area">
+            <div>
+                <form action="javascript:void(0);" class="comment-form" accept-charset="utf-8">
+                    <textarea name="comment-<%= item.get('id') %>" placeholder=" " class="photo-comment" />
+                    <div class="ui-grid-b">
+                        <div class="ui-block-a"></div>
+                        <div class="ui-block-b"></div>
+                        <div class="ui-block-c"><input data-theme="e" type="submit" value="Comment" /></div>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>

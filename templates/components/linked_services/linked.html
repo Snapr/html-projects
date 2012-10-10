@@ -1,0 +1,87 @@
+<div data-role="collapsible" data-collapsed="true">
+    <% switch(service.provider) { case 'twitter': %>
+        <h3>
+            <span class="twitter-sharing sharing-icon-small">
+                <span class="ui-icon"></span>
+            </span>
+            <%= service.get('username') %>
+        </h3>
+
+        <fieldset data-role="controlgroup">
+
+            <p>Update my profile details to match Twitter:</p>
+
+            <p>
+                <button data-inline="true" data-theme="c" class="twitter-import-profile">Import Profile</button>
+            </p>
+
+            <div data-role="fieldcontain" class="switch-setting">
+                <span class="setting-label">Show Twitter in my Profile</span>
+                <select name="twitter-link" id="twitter-link" data-role="slider" data-mini="true">
+                    <option value="false">Off</option>
+                    <option value="true" <% if (service.get('show_username')){%>selected<%}%>>On</option>
+                </select>
+            </div>
+
+        </fieldset>
+
+    <% break; case 'foursquare': %>
+        <h3>
+            <span class="foursquare-sharing sharing-icon-small">
+                <span class="ui-icon"></span>
+            </span>
+            <%= service.get('username') %>
+        </h3>
+
+        <div data-role="fieldcontain" class="switch-setting">
+            <span class="setting-label">Show Fsq in my Profile</span>
+            <select name="foursquare-link" id="foursquare-link" data-role="slider" data-mini="true">
+                <option value="false">Off</option>
+                <option value="true" <% if (service.get('show_username')){%>selected<%}%>>On</option>
+            </select>
+        </div>
+
+    <% break; case 'tumblr': %>
+        <h3>
+            <span class="tumblr-sharing sharing-icon-small">
+                <span class="ui-icon"></span>
+            </span>
+            <%= service.get('username') %>
+        </h3>
+
+        <div data-role="fieldcontain" class="switch-setting">
+            <span class="setting-label">Show Tumblr in my Profile</span>
+            <select name="tumblr-link" id="tumblr-link" data-role="slider" data-mini="true">
+                <option value="false">Off</option>
+                <option value="true" <% if (service.get('show_username')){%>selected<%}%>>On</option>
+            </select>
+        </div>
+
+    <% break; case 'facebook': %>
+        <h3>
+            <span class="facebook-sharing sharing-icon-small">
+                <span class="ui-icon"></span>
+            </span>
+            <%= service.get('username') %>
+        </h3>
+
+        <div data-role="fieldcontain" class="switch-setting">
+            <span class="setting-label">Show Facebook in my Profile</span>
+            <select name="facebook-link" id="facebook-link" data-role="slider" data-mini="true">
+                <option value="false">Off</option>
+                <option value="true" <% if (service.get('show_profile_link')){%>selected<%}%>>On</option>
+            </select>
+        </div>
+
+    <% } %>
+    <div class="ui-grid-b">
+        <div class="ui-block-a"></div>
+        <div class="ui-block-b"></div>
+        <div class="ui-block-c">
+            <button data-theme="c" class="unlink">Unlink</button>
+        </div>
+        <!-- <div class="ui-block-c">
+            <button data-theme="e" class="save">Save</button>
+        </div> -->
+    </div>
+</div>

@@ -1,15 +1,14 @@
 /*global _  define require */
-define(['backbone', 'views/components/no_results'], function(Backbone, no_results){
-return Backbone.View.extend({
+define(['views/base/view', 'views/components/no_results'], function(view, no_results){
+return view.extend({
 
     initialize: function(){
         _.bindAll( this );
         this.back = this.options.back;
+        this.load_template('components/thumbnail');
         this.collection.bind( "reset", this.render );
         this.collection.bind( "reset", $.mobile.hidePageLoadingMsg );
     },
-
-    template: _.template( $("#thumb-li-template").html() ),
 
     render: function( callback ){
         this.$el.html( this.template( {

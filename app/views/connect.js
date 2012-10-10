@@ -100,7 +100,7 @@ var connect_li = linked_service.extend({
 
     initialize: function(){
         _.bindAll( this );
-        this.template = _.template( $("#connect-li-template").html() );
+        this.template = this.get_template('components/linked_services/connect');
         this.provider = this.options.provider || null;
         this.status = this.options.status || null;
         this.photo_id = this.options.photo_id || null;

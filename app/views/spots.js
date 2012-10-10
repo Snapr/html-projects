@@ -1,4 +1,4 @@
-/*global _  define require - this has been duplicated from the people.js page.. redefine dependencies etc*/
+/*global _  define require */
 define(['config', 'views/base/page', 'collections/spot', 'views/components/no_results', 'views/people_li', 'utils/geo', 'utils/local_storage'],
     function(config, page_view, spot_collection, no_results, people_li, geo, local_storage){
 var spots_view =  page_view.extend({
@@ -14,7 +14,7 @@ var spots_view =  page_view.extend({
             spot_name: '',
             sort: 'weighted_score',
             full: true
-        }
+        };
 
         this.collection = new spot_collection();
         this.collection.on('all', this.render, this);
@@ -203,7 +203,7 @@ var spots_item = Backbone.View.extend({
 
 var spot_results_header_view = Backbone.View.extend({
     template: _.template( $("#spots-result-header").html() ),
-    
+
     render: function (results, param) {
         this.$el.html( this.template({
             results: results,

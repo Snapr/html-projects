@@ -1,21 +1,23 @@
 /*global _  define require */
 define(['config', 'backbone', 'views/base/page', 'views/base/side_scroll',
-    'models/dash', 'models/dash_stream', 'collections/user',
-    'views/components/no_results', 'views/people_li', 'utils/geo', 'auth', 'utils/alerts'],
+    'models/dash', 'models/dash_stream', 'collections/user', 'collections/dash_tumblr_feed',
+    'collections/tumblr_post', 'views/components/no_results', 'views/people_li', 'views/tumblr_item',
+    'utils/geo', 'auth', 'utils/alerts', 'utils/query'],
     function(config, Backbone, page_view, side_scroll, dash_model, dash_stream_model,
-        user_collection, no_results, people_li, geo, auth, alerts){
+        user_collection, dash_tumblr_feed_collection, tumblr_post_collection, no_results,
+        people_li, tumblr_item_view, geo, auth, alerts, Query){
 
 var dash_view = page_view.extend({
 
     el: $('#dashboard'),
 
     post_initialize: function(){
-        this.collection = new dash_model();
+        this.model = new dash_model();
         // TODO: don't store the collectin on window
-        window.dash = this.collection;
+        window.dash = this.model;
 
-        this.collection.bind( 'remove', this.remove_stream );
-        this.collection.bind( 'add', this.add_stream );
+        //this.model.get('streams').bind( 'remove', this.remove_stream );
+        //this.model.get('streams').bind( 'add', this.add_stream );
     },
 
     post_activate: function(){
@@ -30,8 +32,7 @@ var dash_view = page_view.extend({
     events: {
         "click .x-add-search": "add_search",
         "click .x-add-person": "add_person",
-        "click .x-edit-dash": "edit_dash",
-        "click a[data-query]": "data_query_link"
+        "click .x-edit-dash": "edit_dash"
     },
 
     get_default_tab: function(){ return 'dash'; },
@@ -40,8 +41,7 @@ var dash_view = page_view.extend({
         var dash = this,
             options = {
                 data: {
-                    n: config.get('side_scroll_initial'),
-                    detail:0,
+                    n:0,
                     feed:!!auth.get("access_token")
                 },
                 success: function(){
@@ -61,19 +61,50 @@ var dash_view = page_view.extend({
             options.data.latitude = location.coords.latitude;
             options.data.longitude = location.coords.longitude;
             options.data.nearby = true;
-            dash.collection.fetch( options );
+            dash.model.fetch( options );
         };
 
         var error_callback = function(){
-            dash.collection.fetch( options );
+            dash.model.fetch( options );
         };
         geo.get_location( success_callback, error_callback );
     },
 
     render: function(){
-        this.$el.find('.dash-welcome').toggle(!auth.has("access_token") || this.collection.length < 3);
-        var $streams = this.$el.find('.image-streams').empty();
-        _.each( this.collection.models, function( item ){
+        console.log('dash render', this);
+        this.$el.find('.dash-welcome').toggle(!auth.has("access_token") || this.model.length < 3);
+        var $featured_streams = this.$el.find('.featured-streams').empty(),
+            $tumblr_streams = this.$el.find('.tumblr-streams').empty(),
+            $streams = this.$el.find('.user-streams').empty();
+
+        // Featured streams
+        _.each( this.model.get('featured_streams').models, function( item ){
+            var li = new dash_stream({
+                collection: item.photos,
+                model: item,
+                featured: true,
+                expand: true
+            });
+            $featured_streams.append( li.el );
+            // this must be rendered after it's appended because sizing details
+            // needed by scroller are only available after the element is in the DOM
+            li.render();
+        }, this);
+
+        // Tumblr
+
+        _.each( this.model.get('tumblr_feeds').models, function ( item ){
+            console.log('item', item);
+            var li = new dash_tumblr_view({
+                model: item
+            });
+            $tumblr_streams.append( li.el );
+            li.render();
+        }, this);
+
+        // User streams
+        _.each( this.model.get('streams').models, function( item ){
+            console.log('new stream', item, $streams);
             var li = new dash_stream({
                 collection: item.photos,
                 model: item
@@ -135,6 +166,55 @@ var dash_view = page_view.extend({
 
 });
 
+var dash_tumblr_view = Backbone.View.extend({
+    tagName: 'li',
+    className: 'post-stream',
+    template: _.template( $('#dash-tumblr-template').html() ),
+    events: {
+        "click a.ui-bar": "toggle_feed"
+    },
+    initialize: function ( options ) {
+
+    },
+    render: function () {
+        this.$el.html( this.template({
+            model: this.model
+        }));
+        var tumblr_host = this.model.get('host'),
+            tumblr_key = this.model.get('key'),
+            $tumblr_streams = this.$el.find('.posts-stream').empty(),
+            collection = new tumblr_post_collection(),
+            options = {
+                host: tumblr_host,
+                key: tumblr_key,
+                data: {
+                    limit:1,
+                    filter:'text'
+                },
+                success: function(){
+                    if (collection.length) {
+                        var li = new tumblr_item_view({
+                            model: collection.at(0)
+                        });
+                        $tumblr_streams.append( li.el );
+                        li.render();
+                    }
+                },
+                error: function(){
+                    console.error('Error loading tumblr posts from server');
+                }
+            };
+        collection.fetch(options);
+    },
+    toggle_feed: function () {
+        var btn = this.$el.find('[data-role="button"]');
+
+        btn.toggleClass('open').toggleClass('closed')
+        btn.toggleClass('top-left-arrow');
+        this.$el.find('.post-stream').fadeToggle();
+    }
+});
+
 var dash_stream = side_scroll.extend({
 
     tagName: 'li',
@@ -142,18 +222,60 @@ var dash_stream = side_scroll.extend({
     className: 'image-stream',
 
     events: {
-        "click .remove-stream": "remove_stream"
+        "click .remove-stream": "remove_stream",
+        "click a.ui-bar": "toggle_stream"
     },
-
-    template: _.template( $('#dash-stream-template').html() ),
 
     thumbs_template: _.template( $('#dash-thumbs-template').html() ),
 
     post_initialize: function( options ){
-
-        if (this.model.has("id")){
+        console.log('stream init');
+        this.load_template('components/dash/stream');
+        if (!options.featured){
             this.$el.addClass("user-stream");
             this.$el.attr("data-id", this.model.get("id"));
+        }
+        if (options.expand) {
+            this.toggle_stream();
+        }
+    },
+
+    toggle_stream: function() {
+        var this_view = this,
+            btn = this_view.$el.find('[data-role="button"]'),
+            options = {
+                data: {
+                    n: config.get('side_scroll_initial'),
+                    detail: 0
+                },
+                success: function () {
+                    this_view.render();
+                    btn.attr('data-icon', 'arrow-r');
+                    this_view.$el.find('[data-role="button"]').button();
+                    this_view.$el.find('.thumbs-grid').fadeToggle();
+                }
+            };
+        if (!this_view.collection.length) {
+            var data_query = unescape(btn.attr('data-query'));
+            if (data_query != 'undefined') {
+                var query = new Query(data_query);
+                options.data = $.extend(options.data, query.query);
+            }
+            this_view.collection.fetch( options );
+
+        }
+        else {
+            this_view.$el.find('.thumbs-grid').fadeToggle();
+            if (btn.attr('data-icon') === 'arrow-r') {
+                console.log('remove');
+                btn.removeAttr('data-icon');
+            } else {
+                btn.attr('data-icon', 'arrow-r').button();
+                console.log('adding');
+            }
+            btn.toggleClass('open').toggleClass('closed');
+            btn.toggleClass('top-left-arrow');
+            this_view.$el.find('[data-role="button"]').button();
         }
     },
 
@@ -164,7 +286,8 @@ var dash_stream = side_scroll.extend({
             yes_callback: function(){
                 stream.model['delete']({
                     success: function(){
-                        stream.model.collection.remove(stream.model);
+                        stream.collection.remove(stream.model);
+                        stream.render();
                         console.log(stream.model.collection===stream.collection);
                     }
                 });
@@ -236,7 +359,7 @@ var add_person = page_view.extend({
                 });
             $.mobile.showPageLoadingMsg();
             stream.save({}, {success: function(){
-                dash.add(stream);
+                dash.get('streams').add(stream);
                 $.mobile.hidePageLoadingMsg();
             }});
             this_back_view.$el.removeClass('edit');
@@ -339,7 +462,7 @@ var add_search = page_view.extend({
                 var stream = new dash_stream_model( stream_object );
                 $.mobile.showPageLoadingMsg();
                 stream.save({}, {success: function(){
-                    dash.add(stream);
+                    dash.get('streams').add(stream);
                     $.mobile.hidePageLoadingMsg();
                 }});
                 add_search.previous_view.$el.removeClass('edit');
@@ -356,7 +479,7 @@ var add_search = page_view.extend({
             var stream = new dash_stream_model( stream_object );
             $.mobile.showPageLoadingMsg();
             stream.save({}, {success: function(){
-                dash.add(stream);
+                dash.get('streams').add(stream);
                 $.mobile.hidePageLoadingMsg();
             }});
             this.previous_view.$el.removeClass('edit');

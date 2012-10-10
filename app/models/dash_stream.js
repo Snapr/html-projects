@@ -11,7 +11,7 @@ return Backbone.Model.extend({
         if(data.response && data.response.stream){
             data = data.response.stream;
         }
-        data.id = data.display.id;
+        this.id = data.display.id;
         this.photos = new photo_collection(data.photos);
         this.photos.data = data.query;
         return data;
@@ -21,7 +21,7 @@ return Backbone.Model.extend({
             url: config.get('api_base') + "/user/dashboard/delete/",
             dataType: "jsonp",
             data: _.extend( auth.attributes, {
-                id: this.get("id"),
+                id: this.id,
                 _method: "POST"
             })
         });

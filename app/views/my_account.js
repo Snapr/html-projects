@@ -7,15 +7,12 @@ return page_view.extend({
 
         this.options.back_url = "#/";
 
-        this.$el.find('.account-content').empty();
-
         this.change_page();
 
         if(options.query.username){
             auth.user_settings.cache_bust();
         }
 
-        this.render(!!'initial');
         this.fetch();
 
     },
@@ -24,8 +21,16 @@ return page_view.extend({
 
     back_text: "Menu",
 
-    template: _.template( $('#my-account-template').html() ),
-    initial_template: _.template( $('#my-account-initial-template').html() ),
+    //template: _.template( $('#my-account-template').html() ),
+
+    create_page: function(){
+        this.setElement($(this.template({
+            initial: true,
+            username: auth.get( "snapr_user" ),
+            display_username: auth.get( "display_username" )
+        })));
+        this.$el.appendTo(document.body);
+    },
 
     dialog_closed: function(dialog){
         auth.user_settings.cache_bust();
@@ -50,47 +55,30 @@ return page_view.extend({
         auth.user_settings.fetch( options );
     },
 
-    render: function(initial){
-        var $account_content = this.$el.find('.account-content').empty(),
-            template,
-            data;
+    render: function(){
 
-        // hidden for the moment
-
-        // if (local_storage.get("appmode"))
-        // {
-        //     this.upload_settings = new snapr.views.upload_settings();
-        //     $account_content.prepend( this.upload_settings.render().el );
-        // }
-        if(initial){
-            template = this.initial_template;
-            data={
-                username: auth.get( "snapr_user" ),
-                display_username: auth.get( "display_username" )
+        var data={
+            initial: false,
+            username: auth.user_settings.get( "user" ).username,
+            display_username: auth.user_settings.get( "user" ).display_username,
+            user_id: auth.user_settings.get( "user" ).user_id,
+            settings: auth.user_settings.get( "settings" ),
+            camplus: false
+        };
+        if(config.get('camplus_options')){
+            data.camplus = {
+                camplus_menu: (local_storage.get( "camplus" ) == "true"),
+                camplus_camera: (local_storage.get( "camplus_camera" ) == "true"),
+                camplus_edit: (local_storage.get( "camplus_edit" ) == "true"),
+                camplus_lightbox: (local_storage.get( "camplus_lightbox" ) == "true")
             };
-        }else{
-            template = this.template;
-            data={
-                username: auth.user_settings.get( "user" ).username,
-                display_username: auth.user_settings.get( "user" ).display_username,
-                user_id: auth.user_settings.get( "user" ).user_id,
-                settings: auth.user_settings.get( "settings" ),
-                camplus: false
-            };
-            if(config.get('camplus_options')){
-                data.camplus = {
-                    camplus_menu: (local_storage.get( "camplus" ) == "true"),
-                    camplus_camera: (local_storage.get( "camplus_camera" ) == "true"),
-                    camplus_edit: (local_storage.get( "camplus_edit" ) == "true"),
-                    camplus_lightbox: (local_storage.get( "camplus_lightbox" ) == "true")
-                };
-            }
         }
 
-        $account_content
-            .append( template(data) ).trigger('create');
+        var new_page = $(this.template(data));
 
-        if(initial){ return this; }
+        this.$('.account-content').replaceWith(new_page.find('.account-content'));
+        var $account_content = this.$('.account-content').trigger('create');
+
 
         // set all linked services to false, we will check them off below
 

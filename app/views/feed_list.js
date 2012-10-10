@@ -1,6 +1,6 @@
 /*global _  define require */
-define(['backbone', 'views/feed_li', 'views/components/no_results'], function(Backbone, feed_li, no_results){
-return Backbone.View.extend({
+define(['views/base/view', 'views/feed_li', 'views/components/no_results'], function(view, feed_li, no_results){
+return view.extend({
 
     initialize: function(){
         _.bindAll( this );
@@ -10,8 +10,8 @@ return Backbone.View.extend({
         this.setElement( this.options.el );
 
         this.li_templates = {
-            list: _.template( $("#feed-li-list-template").html() ),
-            grid: _.template( $("#feed-li-grid-template").html() )
+            list: this.get_template('components/feed/list_item'),
+            grid: this.get_template('components/feed/grid_item')
         };
 
         this.list_style = this.options.list_style || 'list';

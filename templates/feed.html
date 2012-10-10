@@ -1,0 +1,40 @@
+<div id="feed" data-role="page" data-tab-bar="true" data-title="Feed" data-theme="d" data-add-back-btn="true">
+    <div data-role="header" data-theme="b">
+        <div class="ui-grid-b">
+            <div class="ui-block-a"></div>
+
+            <div class="ui-block-b " data-ajax="false">
+                <fieldset data-role="controlgroup" data-type="horizontal" class="feed-view-toggle dark-icons">
+                    <input type="radio" name="feed-view-list" id="feed-view-list" value="list" >
+                    <label for="feed-view-list"><span class="ui-icon ui-icon-list-view"></span>List</label>
+                    <input type="radio" name="feed-view-grid" id="feed-view-grid" value="grid">
+                    <label for="feed-view-grid"><span class="ui-icon ui-icon-grid-view"></span>Grid</label>
+                </fieldset>
+            </div>
+        </div>
+
+        <div class="ui-btn-right" data-ajax="false">
+            <a href="#/search/" data-snapr-dialog="true" data-role="button" data-icon="search" data-iconpos="notext"></a>
+            <a href="#/" data-role="button" data-icon="home" data-iconpos="notext"></a>
+        </div>
+    </div>
+
+    <div class="feed-content" data-role="content" data-theme="d" data-ajax="false">
+        <div class="feed-upload-progress upload-progress-header page-inset-header">
+            <ul class="feed-upload-list" data-role="listview">
+            </ul>
+        </div>
+        <div class="main-feed-content">
+            <div class="feed-header"></div>
+
+            <ul id="feed-images" class="gallery"></ul>
+
+            <div class="v-feed-more">
+                <div class="feed-footer inline-footer ui-body-c hide">
+                    <button class="x-load-more ui-btn-right">Load More</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

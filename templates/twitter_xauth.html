@@ -1,0 +1,30 @@
+<div id="twitter-xauth" data-role="dialog" data-overlay-theme="c" data-theme="c" class="special-bg twitter-bg">
+    <div data-role="header" data-theme="c">
+        <h1>Connect</h1>
+        <a class="x-back" data-role="button" data-icon="delete" data-iconpos="notext"></a>
+    </div>
+
+    <div data-role="content" data-ajax="false" data-theme="d">
+        <div class="login-message">
+        </div>
+        <form action="javascript: void(0);" accept-charset="utf-8" id="twitter-dialog" name="twitter-dialog">
+            <ul data-role="listview" data-inset="true" data-theme="d">
+                <li data-role="fieldcontain" class="ui-hide-label">
+                    <label for="username">@username</label>
+                    <input type="text" name="username" placeholder="@username" autocapitalize="off" autocorrect="off" id="twitter-username" >
+                </li>
+                <li data-role="fieldcontain" class="ui-hide-label">
+                    <label for="password">Password</label>
+                    <input type="password" name="password" placeholder="Password" id="twitter-password">
+               </li>
+            </ul>
+            <!-- So pressing enter will still submit form, but so we can also add custom gfx to the other button -->
+            <div class="invisible-submit-button">
+                <input type="submit" name="twitter-dialog" data-theme="e" value="Connect Twitter">
+            </div>
+            <a data-role="button" class="twitter-button logo-button" data-theme="e">
+                Connect <span class="twitter-logo button-logo">Twitter</span>
+            </a>
+        </form>
+   </div>
+</div>

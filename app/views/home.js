@@ -5,7 +5,7 @@ return page_view.extend({
 
     post_initialize: function(options){
 
-        this.template = _.template( $("#home-template").html() );
+        //this.template = _.template( $("#home-template").html() );
 
         auth.bind("change", this.render);
 
@@ -28,14 +28,17 @@ return page_view.extend({
         this.upload_count(config.get('upload_count'));
     },
 
+    create_page: function(context){ /* override to do nothing - handled in render so we have context */ },
+
     render: function(initial){
-        this.$el
-            .find("[data-role='content']")
-            .html( this.template( {
+        this.setElement(
+            $(this.template({
                 logged_in: auth.has("access_token"),
                 username: auth.get("snapr_user")
-            } ))
-            .trigger("create");
+            }))
+        );
+
+        this.$el.appendTo(document.body);
 
         var auth_header = new auth_header_view({
             el: this.$('.auth-header')

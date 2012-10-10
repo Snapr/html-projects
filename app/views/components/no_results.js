@@ -1,11 +1,11 @@
 /*global _  define require */
-define(['backbone'], function(Backbone){
-var no_results = Backbone.View.extend({
+define(['views/base/view'], function(view){
+var no_results = view.extend({
 
     tagName: "div",
 
     initialize: function(){
-        this.template = _.template( $("#no-results-template").html() );
+        this.load_template('components/no_results');
     },
 
     render: function(message, icon){

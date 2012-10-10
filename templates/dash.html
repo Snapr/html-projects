@@ -1,0 +1,74 @@
+<div id="dash" data-title="Dash" data-tab-bar="true" data-add-back-btn="true" data-role="page" data-theme="d">
+    <div data-role="header" data-theme="b">
+        <h1>Dash</h1>
+
+        <div class="ui-btn-right" data-ajax="false">
+            <a class="x-edit-dash" data-role="button" data-icon="settings" data-iconpos="notext"></a>
+            <a href="#/" data-role="button" data-icon="home" data-iconpos="notext"></a>
+        </div>
+
+    </div>
+
+    <div data-role="content" data-theme="d" data-ajax="false">
+        <div class="dash-wrapper">
+            <ul class="image-streams">
+                <li class="image-stream" id="upload-popular-nearby">
+                    <a class="ui-bar top-left-arrow x-details" data-role="button" data-iconpos="right" data-icon="arrow-r" data-theme="e">
+                        <span class="image-details">
+                            <span class="ui-icon ui-icon-nearby extra-icons"></span>
+                            <em>Nearby</em>
+                        </span>
+                    </a>
+                    <div id="upload-popular-nearby-images" class="thumbs-grid thumbs-grid-med x-loading x-scroll-area">
+                        <div class="x-scroll-wrapper"><!-- inner div for scroll -->
+                            <div class="x-left-pull thumb-med load-more-inline">
+                                <span class="ui-icon ui-icon-refresh"></span>
+                                <span class="ui-btn-text x-msg">Refresh</span>
+                            </div>
+                            <div class="x-thumbs"></div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+
+            <div class="helper-content dash-welcome ui-content-inset" style="display:none;">
+               <a class="ui-bar top-no-arrow" data-role="button"  data-theme="c">
+                   <em>Welcome</em>
+                </a>
+                <div class="ui-body-c ui-body">
+                   <div class="ui-icon helper-icons ui-icon-dash">
+                    </div>
+                    <p class="icon-left">
+                       Add your favorite people, or a search for something you want to keep track of.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="dash-footer inline-footer ui-body-c ">
+            <div class="ui-content ui-grid-a">
+                <div class="ui-block-a">
+                    <a class="more x-add-person" data-role="button" data-iconpos="top" data-icon="person">Add a Person</a>
+                </div>
+                <div class="ui-block-b">
+                    <a class="more x-add-search" data-role="button" data-iconpos="top" data-icon="search">Add a Search</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="dash-edit-done inline-footer ui-body-c ">
+            <div class="ui-content ui-grid-b">
+                <div class="ui-block-a">
+                </div>
+
+                <div class="ui-block-b">
+                </div>
+
+                <div class="ui-block-c">
+                    <a data-role="button" data-iconpos="right" data-icon="check" class="x-edit-dash">Done</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

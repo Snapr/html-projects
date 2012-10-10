@@ -1,6 +1,6 @@
 /*global _  define require */
-define(['backbone'], function(Backbone){
-return Backbone.View.extend({
+define(['views/base/view'], function(view){
+return view.extend({
 
     initialize: function(){
         this.query_data = this.options.query_data;
@@ -24,7 +24,7 @@ return Backbone.View.extend({
             this.feed_type = "feed";
         }
 
-        this.template = _.template( $("#feed-header-template").html() );
+        this.load_template('components/feed/header');
         this.render();
     },
 

@@ -1,10 +1,9 @@
 /*global _  define require */
-define(['backbone', 'utils/geo', 'collections/photo'],
-    function(Backbone, geo, photo_collection) {
+define(['backbone', 'views/base/view', 'utils/geo', 'collections/photo'],
+    function(Backbone, view, geo, photo_collection) {
 
-var nearby_photostream_view = Backbone.View.extend({
+var nearby_photostream_view = view.extend({
 
-    template: _.template( $("#nearby-photostream-template").html() ),
     collection: new photo_collection(),
 
     defaults: {
@@ -13,6 +12,7 @@ var nearby_photostream_view = Backbone.View.extend({
     },
 
     initialize: function () {
+        this.load_template('components/nearby_photostream');
         this.render();
         this.search_options = _.clone(this.defaults);
     },
@@ -117,9 +117,9 @@ var nearby_photostream_view = Backbone.View.extend({
 
 });
 
-var nearby_photostream_item_view = Backbone.View.extend({
+var nearby_photostream_item_view = view.extend({
     tagName: 'li',
-    template: _.template( $('#nearby-photstream-item-template').html() ),
+    template: _.template('<img src="https://s3.amazonaws.com/media-server2.snapr.us/thm2/<%= photo.get("secret") %>/<%= photo.get("id") %>.jpg" alt="<%= photo.get("description") %>" class="thumb-image thumb-med">'),
     render: function () {
         this.$el.html( this.template({
             photo: this.model

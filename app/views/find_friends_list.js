@@ -112,7 +112,7 @@ var find_friends = page_view.extend({
 
 var link_button = link_service_view.extend({
     initialize: function(){
-        this.add_service_template = _.template( $('#ff-link-service-template').html() );
+        this.unlinked_service_template = this.get_template('components/linked_services/find_friends_unlinked');
     }
 });
 

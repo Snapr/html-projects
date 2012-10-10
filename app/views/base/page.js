@@ -17,12 +17,15 @@ Page{
     }
 }
 */
-define(['config', 'backbone', 'utils/history_state', 'views/components/offline', 'views/components/tab_bar'], function(config, Backbone, history_state, offline_el, tab_bar){
+define(['config', 'backbone', 'views/base/view', 'utils/history_state', 'views/components/offline', 'views/components/tab_bar'], function(config, Backbone, view, history_state, offline_el, tab_bar){
 
-return Backbone.View.extend({
+return view.extend({
 
     initialize: function(options){
         _.bindAll( this );
+
+        this.load_template();
+        this.create_page();
 
         this.events = _.extend(this.events || {}, {
             "click .x-back": "back",
@@ -46,6 +49,11 @@ return Backbone.View.extend({
     get_override_tab: function(){},  // set the tab to this if no other is selected (arriving via url etc)
 
     history_ignore_params: false,  // array of url params to ignore when navigating to a view via history
+
+    create_page: function(context){
+        this.setElement($(this.template(context)));
+        this.$el.appendTo(document.body);
+    },
 
     activate: function(options){
         options = _.extend(options || {}, this.options);

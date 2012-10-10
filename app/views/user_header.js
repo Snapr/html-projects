@@ -1,13 +1,14 @@
 /*global _  define require */
-define(['backbone', 'auth'], function(Backbone, auth){
-return Backbone.View.extend({
+define(['views/base/view', 'auth'], function(view, auth){
+return view.extend({
 
     initialize: function()
     {
         _.bindAll( this );
         $(this.options.el).undelegate();
         this.setElement( this.options.el );
-        this.template = _.template( $("#user-header-template").html() );
+
+        this.load_template('components/feed/user_header');
 
         this.model.bind( "change:user_id", this.render );
         this.model.bind( "change:relationship", this.render );
