@@ -32,11 +32,13 @@ var pages = [
     {
         name: 'find-friends-twitter',
         view: 'find_friends_list',
+        template: 'find_friends_twitter',
         extra: {service: "twitter"}
     },
     {
         name: 'find-friends-facebook',
         view: 'find_friends_list',
+        template: 'find_friends_facebook',
         extra: {service: "facebook"}
     },
     'linked-services',

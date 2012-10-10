@@ -1,12 +1,13 @@
 /*global _  define require */
-define(['config', 'backbone', 'utils/link_service', 'auth', 'utils/alerts', 'utils/query'], function(config, Backbone, link_service, auth, alerts, Query){
-return Backbone.View.extend({
+define(['config', 'views/base/view', 'utils/link_service', 'auth', 'utils/alerts', 'utils/query'], function(config, view, link_service, auth, alerts, Query){
+return view.extend({
 
     tagName: 'li',
 
     initialize: function(){
-        this.linked_service_template = _.template( $('#linked-service-template').html() );
-        this.add_service_template = _.template( $('#add-linked-service-template').html() );
+
+        this.linked_service_template = this.get_template('components/linked_services/linked');
+        this.unlinked_service_template = this.get_template('components/linked_services/unlinked');
     },
 
     events: {
@@ -36,7 +37,7 @@ return Backbone.View.extend({
             this.$el.html( this.linked_service_template( {service: this.model} ) );
         }else{
             if (this.provider){
-                this.$el.html( this.add_service_template( {provider:this.provider} ) );
+                this.$el.html( this.unlinked_service_template( {provider:this.provider} ) );
             }
         }
 

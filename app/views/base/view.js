@@ -1,17 +1,19 @@
 define(['backbone'], function(Backbone){
     return Backbone.View.extend({
-        load_template: function(name){
-            name = name || this.options.name;
-
-            var view = this;
+        get_template: function(name){
+            var template;
             $.ajax({
                 async: false,
                 url: 'templates/' + name + '.html',
                 dataType: 'html',
                 success: function(response) {
-                    view.template = _.template(response);
+                    template = _.template(response);
                 }
             });
+            return template;
+        },
+        load_template: function(name){
+            this.template = this.get_template( name || this.options.name );
         }
     });
 });
