@@ -4,7 +4,7 @@ define(['backbone'], function(Backbone){
             var template;
             $.ajax({
                 async: false,
-                url: 'templates/' + name + '.html',
+                url: 'app/templates/' + name + '.html',
                 dataType: 'html',
                 success: function(response) {
                     template = _.template(response);
