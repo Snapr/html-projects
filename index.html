@@ -22,22 +22,6 @@
     </head>
 <body style="display: none;"><!-- initially hidden until jQmobile can load and style everything -->
 
-    <!-- template for connecting services -->
-    <!-- vars provider, status -->
-    <!-- wrapped in = <li data-role="fieldcontain"> -->
-    <script id="connect-li-template" type="text/template">
-    <a class="<%= status %>">
-        <span class="<%= provider %>-sharing sharing-icon-small">
-            <span class="ui-icon"></span>
-        </span>
-        <%= provider %>
-        <% switch(status) { case 'ready': %>
-            <span class="connect-status">Sharing <span class="ui-icon ui-icon-spinner"></span></span>
-        <% break; case 'shared': %>
-            <span class="connect-status">Shared<span class="ui-icon ui-icon-check"></span></span>
-        <% }%>
-    </a>
-    </script>
 
     <!-- @thumb @image ITEM -->
     <script id="thumb-li-template" type="text/template">
