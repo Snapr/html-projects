@@ -25,8 +25,9 @@
     }
 
     .ui-header .ui-btn-inner .ui-icon{
-        background-image: url('../gfx/retina/bar-icons.png');
-        .background-size (@gfx-main-icon-sprite-width, @gfx-main-icon-sprite-height);
+        background-image: url('@{gfxRetina}@{gfxTopBar}');
+        
+        .background-size (@gfxTopBar-width, @gfxTopBar-height);
     }
 
     .main-logo{
