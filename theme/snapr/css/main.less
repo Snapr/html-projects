@@ -1,39 +1,51 @@
-/*
-*   - Always compile from this master file
-*   - Compiling individual files will throw errors because they require the
-*    variables, mixins, and sprites to come first.
-*/
+//  MAIN CSS
+//  Always compile from this master file
+//  Compiling individual files may throw errors because they require the
+//  variables, mixins, and sprites to come first.
 
-/* Custom Fonts */
-@import "fonts.less";
 
-/* Define key UI colors and other styles here  */
-@import "variables.less";
+// Custom Fonts
+@import "shared-fonts.less";
 
-/* Some Handy Functions */
-@import "mixins.less";
+// Define key UI colors and other styles here
+@import "shared-variables.less";
 
-/* Definititions for GFX Sprites and icon positioning */
-@import "sprites.less";
-@import "icons.less";
+// Some Handy Functions
+@import "mixins-tools.less";
 
-/* Some Common Styles */
-@import "mixin-styles.less";
+// Definititions for GFX Sprites and icon positioning
+@import "gfx-sprites.less";
+@import "gfx-icons.less";
 
-/* Browser Defaults, Mobile Specific Hacks, & Basic Styles */
-@import "defaults.less";
+// Some Common Styles
+@import "mixins-styles.less";
 
-/* Jquery Mobile Themes Converted to less.css */
-@import "jquerymobile.theme.less";
-@import "jquerymobile.swatches.less";
+// Browser Defaults, Mobile Specific Hacks, & Basic Styles 
+@import "shared-defaults.less";
 
-/* Custom App Elements */
-@import "elements.less";
-@import "pages.less";
+// Jquery Mobile Themes Converted to less.css
+@import "jqMob.less";
+@import "jqMob-swatches.less";
 
-/* GFX styles for screens with high pixel density */
-@import "hdpi.less";
-@import "retina.less";
+// Custom App Elements
+@import "shared-elements.less";
+
+// Custom Page Styles
+@import "pages-app.less";
+@import "pages-dash.less";
+@import "pages-feed.less";
+@import "pages-leaderboard.less";
+@import "pages-map.less";
+@import "pages-menu.less";
+@import "pages-my_account.less";
+@import "pages-share.less";
+@import "pages-spots.less";
+@import "pages-tumblr.less";
+@import "pages-uploading.less";
+
+// GFX styles for screens with high pixel density
+@import "gfx-hdpi.less";
+@import "gfx-retina.less";
 
 
 

@@ -1,0 +1,320 @@
+// SHARE PHOTO
+//---------------------
+
+.share-photo{
+    div[data-role="header"]{
+        z-index: 20;
+    }
+    div[data-role="content"]{
+        z-index: 10;
+    }
+    #description{
+        height: 92px;
+    }
+    .image-options .show-upload-settings{
+        display: none;
+    }
+    .show-upload-settings{
+       .image-controls{
+           position: absolute;
+           bottom: 0;
+           right: @paddingPage;
+           display: none;
+       }
+    }
+    &.show-image{
+       .upload-settings-layer{
+           display: none;
+       }
+       .show-upload-settings{
+           display: block;
+       }
+       .ui-header{
+           display: none;
+       }
+        .image-controls{
+           display: none;
+        }
+        .show-upload-settings .image-controls{
+           display: block;
+        }
+    }
+   
+    .upload-image-layer{
+        position: absolute;
+        width: 100%;
+        top: 0;
+        z-index: 5;
+        overflow:hidden;
+    }
+    .image-placeholder{
+        position: absolute;
+        top: 50%;
+        height: 1024px;
+        margin-top: -512px;
+        line-height: 1024px;
+        text-align: center;
+        max-width: 1024px;
+        img{
+            width: 100%;
+            vertical-align: middle;
+        }
+    }
+    .upload-settings-layer{
+        background-color: rgba(0, 0, 0, .6);
+        position: absolute;
+        width: 100%;
+        top: 0;
+        padding-top: 52px;
+        z-index: 10;
+        .upload-settings{
+            padding: @paddingPage;
+            margin: @paddingPage;
+        }
+    }
+    .upload-image-privacy{
+        position: relative;
+        margin-top: @paddingPage;
+
+        .ui-controlgroup-label {
+            display: none;
+        }
+        .ui-checkbox{
+            position: absolute;
+            right: -6px;
+            top: -4px;
+            width: auto;
+        }
+        .ui-btn{
+            background: none;
+            box-shadow: none;
+            border: none;
+            font-family: @font;
+            font-weight: normal;
+            text-transform: lowercase;
+            height: 32px;
+        }
+        .ui-btn-inner{
+            padding: 0;
+        }
+        .ui-icon{
+            width: @gfxAction-grid;
+            height: @gfxAction-grid;
+            background-image: url('@{gfx}@{gfxAction}');             
+            display: block;
+            position: absolute;
+            top: -8px;
+            right: 0;
+            background-color: transparent;
+        }
+        .ui-btn-text{
+            height: 32px;
+            padding-right: 28px;
+            overflow: hidden;
+            display: block;
+            vertical-align: top;
+            width: auto;
+        }
+        input{
+            visibility: hidden;
+        }
+        label[for="status-public"]{
+               .ui-icon{background-position: @gfxAction-x-hover @gfxAction-close-y;}
+               .ui-btn-text::before{content: "Private";}
+               &.ui-btn-active{
+                   .ui-icon{background-position: @gfxAction-x-hover @gfxAction-tick-y;}
+                   .ui-btn-text::before{content: "Public";}
+               }
+        }
+    }
+    .upload-image-sharing{
+        .ui-checkbox{
+            margin-right: @paddingElement;
+            &.ui-disabled{
+                opacity: .5;
+                pointer-events: initial;
+            }
+        }
+        .ui-btn{
+            .corner-all(@cornerGeneral);
+        }
+        .ui-icon{
+            width: @gfxShare-grid;
+            height: @gfxShare-grid;
+            background-image: url('@{gfx}@{gfxShare}');             
+            
+            display: block;
+        }
+        .ui-btn-text{
+            text-indent: -999px;
+            display: block;
+            height: @gfxShare-grid;
+            width: @gfxShare-grid;
+            overflow: hidden;
+        }
+        .ui-btn-inner{
+            padding: 0;
+        }
+
+        label[for="twitter-sharing"]{
+           .ui-icon{background-position: @gfxService-x @gfxShare-twitter-y;}
+           &.ui-checkbox-on{
+                background-color: @twitterBlue;
+                .box-shadow(inset 0 3px 20px @twitterBlue-tint);
+                .ui-icon{background-position: @gfxService-x-hover @gfxShare-twitter-y;}
+           }
+        }
+        label[for="facebook-sharing"]{
+           .ui-icon{background-position: @gfxService-x @gfxShare-facebook-y;}
+           &.ui-checkbox-on{
+                background-color: @facebookBlue;
+                .box-shadow(inset 0 3px 20px @facebookBlue-tint);
+                .ui-icon{background-position: @gfxService-x-hover @gfxShare-facebook-y;}
+           }
+       }
+       label[for="tumblr-sharing"]{
+           .ui-icon{background-position: @gfxService-x @gfxShare-tumblr-y;}
+           &.ui-checkbox-on{
+                background-color: @tumblrBlue;
+                .box-shadow(inset 0 3px 20px @tumblrBlue-tint);
+                .ui-icon{background-position: @gfxService-x-hover @gfxShare-tumblr-y;}
+           }
+       }
+       label[for="foursquare-sharing"]{
+           .ui-icon{background-position: @gfxService-x @gfxShare-foursquare-y;}
+           &.ui-checkbox-on{
+                background-color: @foursquareBlue;
+                .box-shadow(inset 0 3px 20px @foursquareBlue-tint);
+                .ui-icon{background-position: @gfxService-x-hover @gfxShare-foursquare-y;}
+           }
+       }
+    }
+    .upload-image-location{
+         .location-name,
+            .foursquare-venue-name{
+                height: 40px;
+                white-space: normal;
+                display: inline-block;
+                vertical-align: middle;
+            }
+
+        .ui-btn {
+            margin: @paddingPage 0;
+            font-family: @font-special;
+            font-size: @font-size-btn;
+            font-weight: normal;
+            .ui-icon{
+                top: 0;
+                margin-top: 0;
+                left: 0;
+                width: @gfxAction-grid;
+                height: @gfxAction-grid;
+                background-image: url('@{gfx}@{gfxAction}');                 
+            }
+            &.ui-checkbox-on {
+                .ui-icon-checkbox-on{background-position: @gfxAction-x-hover @gfxAction-tick-y;}
+               &.ui-btn-active{.ui-icon-checkbox-on{background-position: @gfxAction-x-hover @gfxAction-tick-y;}
+               .ui-icon-location{background-position: @gfxAction-x @gfxAction-location-y;}
+                }
+                .ui-icon-location{background-position: @gfxAction-x @gfxAction-location-y;}
+
+            }
+            &.ui-checkbox-off{
+                .ui-btn-text{
+                    opacity: .2;
+                }
+                .ui-icon-checkbox-off{background-position: @gfxAction-x-hover @gfxAction-close-y;}
+               &.ui-btn-active{
+                .ui-icon-checkbox-off{background-position: @gfxAction-x-hover @gfxAction-close-y;}
+                .ui-icon-location{background-position: @gfxAction-x @gfxAction-location-y;}
+               }
+               .ui-icon-location{background-position: @gfxAction-x @gfxAction-location-y;}
+            }
+
+            .ui-icon-arrow-right{background-position: @gfxAction-x @gfxAction-arrow-right-y;}
+            .ui-icon-location{background-position: @gfxAction-x @gfxAction-location-y;}
+            .ui-icon-venue{background-position: @gfxAction-x @gfxAction-venue-y;}
+
+             &.ui-btn-hover-a,
+             &.ui-btn-down-a,
+             &.ui-btn-active-a{
+                .ui-icon-location{background-position: @gfxAction-x-hover @gfxAction-location-y;}
+                .ui-icon-venue{background-position: @gfxAction-x-hover @gfxAction-venue-y;}
+             }
+
+            .ui-icon-checkbox-on,
+            .ui-icon-checkbox-off,
+            .ui-icon-arrow-right{
+                right:0;
+                left: auto;
+            }
+            .ui-btn-inner{
+                padding-top: 0;
+                padding-bottom: 0;
+                 text-align: left;
+                padding-right: 36px;
+                white-space: normal;
+                .ui-btn-text{
+                    white-space: normal;
+                    line-height: @gfxAction-grid;
+                    .ui-icon{
+                        position: absolute;
+                        left: -36px;
+                        top: -11px;
+                    }
+                }
+            }
+
+        }
+    }
+    .image-controls{
+        position:absolute;
+        bottom: 0;
+        right: 8px;
+        z-index: 10;
+        .ui-btn{
+            font-family: @font-special;
+            font-size: @font-size-btn;
+            font-weight: normal;
+            text-transform: lowercase;
+            text-align: right;
+            background: none!important;
+            border: none!important;
+            &.ui-shadow{
+                .box-shadow(none);
+            }
+
+
+        }
+        .ui-btn-inner{
+            padding: 8px 32px 8px 16px;
+            background-color: rgba(0, 0, 0,.8);
+            border-radius: 20px;
+
+        }
+        .ui-icon{
+            top: -1px;
+            margin-top: 0;
+            right: 0;
+            width: @gfxAction-grid;
+            height: @gfxAction-grid;
+            background-image: url('@{gfx}@{gfxAction}'); 
+        }
+        .ui-icon-toggle{background-position: @gfxAction-x @gfxAction-toggle-y;}
+        .ui-icon-toggle-up{background-position: @gfxAction-x @gfxAction-toggle-up-y;}
+
+    }
+}
+
+.camplus-icon{
+    background-image: url('../gfx/camplus.png')!important;
+    background-repeat: no-repeat;
+    background-position: center!important;
+    width: 36px;
+    height: 36px;
+    float: right;
+    .corner-all(@cornerGeneral)!important;
+    span{
+        display: none;
+    }
+}

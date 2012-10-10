@@ -2,6 +2,138 @@
 * Elements - Non-Jquery Mobile Design Patterns that are shared across multiple pages
 */
 
+
+.underline{
+    text-decoration: underline;
+}
+
+.small-text{
+    font-size: @font-size-small;
+    font-family: @font;
+    .username{
+        font-size: @font-size-small;
+    }    
+}
+
+.light-text{
+    color: @grayLightOnLIght;
+    a{
+        color: @grayLightOnLIght!important;
+    }
+}
+
+
+/* Icons and thumbs */
+.user-icon-small,
+.thumb-small{
+    width: @sizeAvatar;
+    height: @sizeAvatar;
+    background-color: @black-tint;
+    background-size: 100% 100%;
+    background-size: cover;
+    background-position: center;
+    .corner-all(2px);
+    display: block;
+}
+
+.user-icon-med{
+    width: @sizeAvatar-med;
+    height: @sizeAvatar-med;
+    background-color: @black-tint;
+    background-size: 100% 100%;
+    background-size: cover;
+    background-position: center;
+    display: block;
+    .corner-all(4px);
+}
+
+.avatar-block{
+    height:  @sizeAvatar ;
+    line-height: @sizeAvatar;
+    padding-left:0;
+    background: none!important;
+    border: none!important;
+    &.ui-btn{
+        .ui-btn-inner{
+            padding: 0;
+            .ui-btn-text{
+                display: block;
+                text-align: left;
+                padding-left: @sizeAvatar + @paddingElement ;
+            }
+        }
+        .user-icon-small{
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+    }
+    
+}
+
+.css-thumb{
+    background-color: @black-tint;
+    background-position: center;
+    background-size: 100% 100%;
+    background-size: cover;
+}
+
+.user-icon-big{
+    width: @sizeAvatar-large;
+    height: @sizeAvatar-large;
+    background-color: @black-tint;
+    background-size: 100% 100%;
+    background-size: cover;
+}
+
+.thumb-med{
+    width: @sizeThumb;
+    height: @sizeThumb;
+}
+
+/* Usernames etc */
+.username,
+h4{
+    font-family: @font-special;
+    font-size: @font-size-username;
+    font-weight: bold;
+    color: @grayDarkOnLIght;
+}
+
+.small-username{
+    font-size: 11px;
+    font-weight: normal;
+    color: @grayMediumOnLIght;
+}
+
+.warning-message{
+    padding: @paddingPage;
+    background-color: @yellow;
+    .corner-all(@cornerGeneral);
+    border-bottom: @borderLightOnDark;
+}
+
+
+.centered-link{
+    text-align: center;
+    margin-top: 60px;
+    font-family: @font-special;
+}
+
+.block-link{
+    line-height: 36px;
+}
+
+
+
+
+
+/* margins on bottom element not having proper effect */
+.margin-clear{
+    margin-bottom: -1px;
+    padding-bottom: 1px;
+}
+
 .snapr-footer{
     .ui-navbar {
         .darkGrad();
@@ -17,14 +149,14 @@
             }
             
             &.ui-btn-hover-b{
-                background: lighten(@color-bg-neutral-dark, 2%);
-                color: @color-txt-light-on-dark;
+                background: lighten(@grayDark, 2%);
+                color: @grayLightOnDark;
             }
             
             &.ui-btn-down-b,
             &.ui-btn-active{
-                background: @color-bg-neutral-dark;
-                background-color: @color-bg-neutral-dark-tint;
+                background: @grayDark;
+                background-color: @grayDark-tint;
                 .box-shadow(inset 0px 2px 4px 2px rgba(0, 0, 0, .1))!important;
                 color: white;
             }
@@ -56,9 +188,9 @@
 /* @ui-bar Title Bars that pop up all over the place */
 .ui-bar{
     border:none;
-    border-top: @border-light-on-light;
-    margin: 0 -@padding-page-inset;
-    padding: 8px @padding-page-inset;
+    border-top: @borderLightOnLight;
+    margin: 0 -@paddingPage;
+    padding: 8px @paddingPage;
     min-height: 19px;
     z-index: 10;
     position: relative;
@@ -67,7 +199,7 @@
     h4,
     .ui-btn-inner,
     .ui-bar-inner{
-        font-size: @txt-size-base;
+        font-size: @font-size;
         .button-font-light();
         margin: 0;
         padding: 0;
@@ -76,7 +208,7 @@
         .ui-btn,
         .ui-btn-hidden,
         .username{
-            font-size: @txt-size-bar-heading;
+            font-size: @font-size-titleBar;
             .ui-bar-font();
         }
         .ui-icon{
@@ -124,7 +256,7 @@
            position: relative;
            display: inline-block;
            padding-left: 20px;
-           color: @color-txt-medium-on-light;
+           color: @grayMediumOnLIght;
            .ui-icon-clock{
                top: -7px!important;
            }
@@ -152,23 +284,23 @@
 
     &.top-no-arrow{
         text-align: left;
-        .corner-top (@corner-page-element-rounded);
-        .corner-bottom (@corner-not-rounded);
+        .corner-top (@cornerPage);
+        .corner-bottom (@cornerNone);
          .ui-btn-text{
                 padding-left: 20px;
         }
     }
     &.top-no-arrow,
     &.top-left-arrow{
-        .corner-top (@corner-page-element-rounded);
-        .corner-bottom (@corner-not-rounded);
+        .corner-top (@cornerPage);
+        .corner-bottom (@cornerNone);
 
     }
     &.bottom-centered-arrow{
         overflow: visible;
         text-align: center;
         .corner-top (0);
-        .corner-bottom (@corner-page-element-rounded);
+        .corner-bottom (@cornerPage);
         .ui-btn-inner{
             border: none;
             .ui-btn-text{
@@ -180,12 +312,12 @@
         position: absolute;
         top: -31px;
         white-space: nowrap;
-        font-size: @txt-size-small;
+        font-size: @font-size-small;
         color: black;
         padding: 6px;
-        line-height: @txt-size-small;
-        min-height: @txt-size-small;
-        .corner-top(@corner-general-rounded);
+        line-height: @font-size-small;
+        min-height: @font-size-small;
+        .corner-top(@cornerGeneral);
     }
     /* Note that the actual arrows get added in the swatches so they get the right colors */
 }
@@ -199,14 +331,14 @@
 .system-bar{
     display: block;
     position: relative;
-    .corner-all(@corner-fully-rounded);
+    .corner-all(@cornerRound);
     color: white;
-    text-shadow: @color-shadow-medium-on-dark 0px -1px 0px;
-    background-color: @color-bg-system-main;
-    .linear-gradient(@color-bg-system-main, @color-bg-system-main-tint);
+    text-shadow: @shadowMediumOnDark 0px -1px 0px;
+    background-color: @blue;
+    .linear-gradient(@blue, @blue-tint);
     
     strong{
-        font-size: @txt-size-bar-heading;
+        font-size: @font-size-titleBar;
         .ui-bar-font();
     }
     .ui-icon-play{
@@ -223,13 +355,13 @@
 /* Bar style tabbed nav like at the top of the popular page */
 .ui-content{
     .ui-navbar{
-        margin: 0 -@padding-page-inset;
+        margin: 0 -@paddingPage;
         border: none;
-        border-top: @border-light-on-light;
-        .corner-top (@corner-page-element-rounded);
+        border-top: @borderLightOnLight;
+        .corner-top (@cornerPage);
         .ui-btn{
              .ui-btn-text{
-                 font-size: @txt-size-base;
+                 font-size: @font-size;
                  .button-font-light()
             }
         }
@@ -237,12 +369,12 @@
             .ui-btn-text{
                 position: relative;
                 top: -4px;
-                text-shadow: @color-shadow-light-on-light 0px 1px 0px;            
+                text-shadow: @shadowLightOnLight 0px 1px 0px;            
                 .button-font-bold();
-                font-size: @txt-size-username;
+                font-size: @font-size-username;
             }
             &::after{
-                .arrow-up(@arrow-size, @color-bg-neutral-light, 50% , 51px);
+                .arrow-up(@arrow-size, @white, 50% , 51px);
             }
         }
         .ui-btn-inner{
@@ -256,12 +388,12 @@
         .ui-grid-b{
             .ui-block-a{
                 .ui-btn{
-                    .corner-tl (@corner-page-element-rounded)
+                    .corner-tl (@cornerPage)
                 }
             }
             .ui-block-c{
                 .ui-btn{
-                .corner-tr (@corner-page-element-rounded);
+                .corner-tr (@cornerPage);
                 }
             }
         }
@@ -278,19 +410,187 @@
 }
 
 
+// Image / Color BG's for dialogs
+// -------------------------
+
+.ui-dialog.special-bg,
+.ui-page.special-bg{
+    background-image: none!important;
+    div[data-role="content"]{
+        background: none;
+    }
+}
+
+.ui-dialog.snapr-bg,
+.ui-page.snapr-bg{
+    background-color: lighten(@snaprYellow, 10%)!important;
+    .box-shadow(inset 0px -2px 100px @snaprYellow-tint);
+}
+
+.ui-dialog.tumblr-bg{
+    background-color: lighten(@tumblrBlue, 10%)!important;
+    .box-shadow(inset 0px -2px 100px @tumblrBlue-tint);
+}
+
+.ui-dialog.twitter-bg{
+    background-color: lighten(@twitterBlue-tint, 20%)!important;
+    .box-shadow(inset 0px -2px 100px @twitterBlue-tint);
+}
+
+.ui-dialog.welcome-bg,
+.ui-page.welcome-bg{
+    background-color: #acebdd!important;
+    background-image: url('../gfx/welcome-image.png')!important;
+    .background-size(320px, 318px)!important;
+    background-repeat: no-repeat!important;
+    background-position: center bottom!important;
+}
+
+//Please leave this as is for the about snapr page
+.ui-dialog.snapr-welcome-bg,
+.ui-page.snapr-welcome-bg{
+    background-color: #acebdd!important;
+    background-image: url('../gfx/welcome-image.png')!important;
+    .background-size(320px, 318px)!important;
+    background-repeat: no-repeat!important;
+    background-position: center bottom!important;
+}
+
+
+// Special Linked Service Buttons
+// -------------------------
+
+.twitter-button.ui-btn-up-e {
+    background: @twitterBlue;
+    .linear-gradient(@twitterBlue, @twitterBlue-tint);
+    color: white;
+    a.ui-link-inherit {
+        color: white;
+    }
+}
+
+.twitter-button.ui-btn-hover-e {
+    border: none;
+    background: lighten(@twitterBlue, 10% );
+    .linear-gradient(lighten(@twitterBlue, 5%), lighten(@twitterBlue-tint, 5%));
+    color: white;
+    a.ui-link-inherit {
+        color: white;
+    }
+}
+
+.twitter-button.ui-btn-down-e {
+    border: none;
+    background: @twitterBlue;
+    .pressed-gradient(@twitterBlue, 3%);
+    color: white;
+    a.ui-link-inherit {
+        color: white;
+    }
+}
+
+.tumblr-button.ui-btn-up-e {
+    background: @tumblrBlue;
+    .linear-gradient(@tumblrBlue, @tumblrBlue-tint);
+    color: white;
+    a.ui-link-inherit {
+        color: white;
+    }
+}
+
+.tumblr-button.ui-btn-hover-e {
+    border: none;
+    background: lighten(@tumblrBlue, 10% );
+    .linear-gradient(lighten(@tumblrBlue, 5%), lighten(@tumblrBlue-tint, 5%));
+    color: white;
+    a.ui-link-inherit {
+        color: white;
+    }
+}
+
+.tumblr-button.ui-btn-down-e {
+    border: none;
+    background: @tumblrBlue;
+    .pressed-gradient(@tumblrBlue, 3%);
+    color: white;
+    a.ui-link-inherit {
+        color: white;
+    }
+}
+
+.facebook-button.ui-btn-up-e {
+    background: @facebookBlue;
+    .linear-gradient(@facebookBlue, @facebookBlue-tint);
+    color: white;
+    a.ui-link-inherit {
+        color: white;
+    }
+}
+
+.facebook-button.ui-btn-hover-e {
+    border: none;
+    background: lighten(@facebookBlue, 10% );
+    .linear-gradient(lighten(@facebookBlue, 5%), lighten(@facebookBlue-tint, 5%));
+    color: white;
+    a.ui-link-inherit {
+        color: white;
+    }
+}
+
+.facebook-button.ui-btn-down-e {
+    border: none;
+    background: @facebookBlue;
+    .pressed-gradient(@facebookBlue, 3%);
+    color: white;
+    a.ui-link-inherit {
+        color: white;
+    }
+}
+
+.snapr-button.ui-btn-up-e {
+    background: @snaprYellow;
+    text-shadow: 0 1px 1px white;
+    .linear-gradient(@snaprYellow, @snaprYellow-tint);
+    color: #333333;
+    a.ui-link-inherit {
+        color: #333333;
+    }
+}
+
+.snapr-button.ui-btn-hover-e {
+    border: none;
+    background: lighten(@snaprYellow, 10% );
+    .linear-gradient(lighten(@snaprYellow, 5%), lighten(@snaprYellow-tint, 5%));
+    color: #333333;
+    a.ui-link-inherit {
+        color: #333333;
+    }
+}
+
+.snapr-button.ui-btn-down-e {
+    border: none;
+    background: @snaprYellow;
+    .pressed-gradient(@snaprYellow, 3%);
+    color: #333333;
+    a.ui-link-inherit {
+        color: #333333;
+    }
+}
+
+
 /* Form Validation like on join page */
 .x-invalid[for]{
-    font-size: @txt-size-small;
+    font-size: @font-size-small;
     line-height: 14px;
-    color: @color-txt-medium-on-light;
+    color: @grayMediumOnLIght;
     padding: 4px;
-    margin: 0 @padding-element-inset @padding-element-inset @padding-element-inset;
+    margin: 0 @paddingElement @paddingElement @paddingElement;
     display: block;
-    background-color: lighten(@color-bg-highlight-main, 20%);
-    .corner-all(@corner-general-less-rounded);
+    background-color: lighten(@yellow, 20%);
+    .corner-all(@cornerLessRound);
     position: relative;
     &::after{
-        .arrow-up(6px, lighten(@color-bg-highlight-main, 20%), 16px, 0)
+        .arrow-up(6px, lighten(@yellow, 20%), 16px, 0)
     }
 }
 .x-invalid .ui-icon-validation{
@@ -301,8 +601,8 @@
 .ui-icon-validation{
     display: none;
     position: absolute;
-    right: @padding-element-inset / 2;
-    top: @padding-element-inset;
+    right: @paddingElement / 2;
+    top: @paddingElement;
 }
 
 
@@ -324,6 +624,72 @@
 }
 
 
+.ui-checkbox{
+    .ui-icon{
+        width: @gfxAction-grid;
+        height: @gfxAction-grid;
+        background-image: url('@{gfx}@{gfxAction}'); 
+    }
+    .ui-checkbox-on {
+           .ui-icon{background-position: @gfxAction-x @gfxAction-tick-y;}
+           &.ui-btn-active{.ui-icon{background-position: @gfxAction-x-hover @gfxAction-tick-y;}
+           }
+    }
+    .ui-checkbox-off{
+           .ui-icon{background-position: @gfxAction-x @gfxAction-close-y;}
+           &.ui-btn-active{.ui-icon{background-position: @gfxAction-x-hover @gfxAction-close-y;}
+           }
+    }
+}
+
+/* The magical dance to center a palette with variable width */
+.has-palette{
+    position: relative;
+    .action-palette{
+        position: absolute;
+        bottom: 100%;
+        left: 20px;
+        width: 0px;
+        .center-palette{
+            display:inline-block;
+            position:relative;
+            left:50%;
+            .inline-palette{
+                position:relative;
+                left:-50%;
+            }
+       }
+    }
+}
+
+
+.inline-palette{
+    .corner-all(10px);
+    padding: 6px;
+    white-space: nowrap;
+    &::after{
+      .arrow-down(@arrow-size, @black-tint, 50%, @arrow-y-shift + 3px);
+    }
+    .ui-controlgroup{
+        margin-bottom: 1px;
+    }
+    .ui-btn{
+        vertical-align: middle;
+        line-height: 22px;
+    }
+    .ui-btn-icon-notext{
+        top:0;
+    }
+    .ui-btn-icon-left .ui-btn-inner {
+        padding-left: 40px;
+        .ui-icon{
+            left: 0;
+        }
+    }
+}
+
+
+
 /*
 * Top user Avatar list
 */
@@ -340,9 +706,9 @@
 */
 .thumbs-grid-med,
 .grid #feed-images{
-    margin: 0 -@padding-page-inset;
-    padding: 0 0 0 @padding-image-grid-inset;
-    min-height: @size-img-thumb;
+    margin: 0 -@paddingPage;
+    padding: 0 0 0 @paddingGrid;
+    min-height: @sizeThumb;
 
     .image-link{
         display: inline-block;
@@ -350,12 +716,12 @@
         margin: 0;
     }
     .thumb-image{
-        width: @size-img-thumb;
-        height: @size-img-thumb;
+        width: @sizeThumb;
+        height: @sizeThumb;
         padding: 0;
         margin: 0;
         display: block;
-        background-color: @color-off-white-tint;
+        background-color: @grayLight;
     }
 }
 
@@ -370,17 +736,17 @@
         position: relative;
         list-style: none;
         padding: 0;
-        margin-bottom: @padding-page-inset ;
+        margin-bottom: @paddingPage ;
         white-space: no-wrap;
         .thumbs-grid{
-            padding-top: @padding-image-grid-inset;
+            padding-top: @paddingGrid;
         }
         .x-thumbs{
             display: inline-block;
-            min-width: @size-img-thumb * 3 + @padding-image-grid-inset * 2;
+            min-width: @sizeThumb * 3 + @paddingGrid * 2;
         }
         .image-link{
-            padding-left: @padding-image-grid-inset;
+            padding-left: @paddingGrid;
         }
         .image-details{
             .ui-icon-search{
@@ -394,7 +760,7 @@
             }
         }
         .load-more-inline{
-            background-color: @color-off-white-tint;
+            background-color: @grayLight;
             display: inline-block;
             vertical-align: top;
             position: relative;
@@ -407,7 +773,7 @@
                 bottom: 12px;
                 position: absolute;
                 width: 101px;
-                color: @color-txt-light-on-light;
+                color: @grayLightOnLIght;
             }
 
             .ui-icon-refresh{
@@ -434,7 +800,7 @@
             }
 
             &.x-left-pull{
-                margin-right:-@padding-image-grid-inset;
+                margin-right:-@paddingGrid;
                  .ui-icon-refresh{
                      background-position: @gfxRefresh-x @gfxRefresh-left-y;
                  }
@@ -481,7 +847,7 @@
             top: 40px;
             width: 109%;
             background-color: rgba(255, 255, 255, .8);
-            min-height: @size-img-thumb;
+            min-height: @sizeThumb;
             margin-left: -8px;
             margin-right: -8px;
             right: 0;
@@ -529,17 +895,17 @@
 /* Upload Progress items */
 
 .upload-progress-header{
-    padding: 0 @padding-page-inset;
+    padding: 0 @paddingPage;
     overflow:hidden;
     .box-shadow(inset 5px -14px 20px rgba(0, 0, 0, 0.2));
 
     .upload-progress-item{
         list-style:none;
-        padding: 0 @padding-page-inset;
-        min-height: @size-small-avatar;
-        margin-bottom: @padding-page-inset;
+        padding: 0 @paddingPage;
+        min-height: @sizeAvatar;
+        margin-bottom: @paddingPage;
         &:first-child{
-            padding-top: @padding-page-inset;
+            padding-top: @paddingPage;
         }
         position: relative;
         .upload-image-thumb-gall{
@@ -549,7 +915,7 @@
         }
         .upload-info-block{
             position: relative;
-            padding-left: @size-small-avatar + @padding-page-inset;
+            padding-left: @sizeAvatar + @paddingPage;
             .upload-info{
                 padding-top: 5px;
             }
@@ -572,7 +938,7 @@
     position: relative;
     padding: 8px 28px 8px 8px;
     height:8px;
-    background-color: lighten(@color-bg-neutral-light-tint, 10%);
+    background-color: lighten(@white-tint, 10%);
     border-radius: 13px;
 
     .bar-wrapper{
@@ -585,7 +951,7 @@
                position: absolute;
                top: 0;
                left: 0;
-               .linear-gradient(@color-bg-highlight-main, @color-bg-highlight-main-tint);
+               .linear-gradient(@yellow, @yellow-tint);
            }
            .bar-bg{
                background-color: #C5C4C4;
@@ -615,7 +981,7 @@
         top: 0px;
         left:8px;
         font-weight: bold;
-        font-size: @txt-size-small;
+        font-size: @font-size-small;
     }
 
     .ui-icon-check{
@@ -639,12 +1005,12 @@
    }
    p{
        margin:8px 24px 8px 0!important;
-       font-family:@txt-font-base;
+       font-family:@font;
    }
 }
 
 .plain-link{
-    font-family: @txt-font-base;
+    font-family: @font;
 }
 
 
@@ -658,7 +1024,7 @@
 
 .ui-input-search{
     &.ui-btn-corner-all{
-        .corner-all(@corner-fully-rounded);
+        .corner-all(@cornerRound);
     }
     &.ui-icon-searchfield::after{
         margin-top: -18px;
@@ -698,8 +1064,8 @@
 */
 .ui-slider-switch{
 
-    .corner-all(@corner-fully-rounded);
-    border: @border-medium-on-light;
+    .corner-all(@cornerRound);
+    border: @borderMediumOnLight;
     background: white;
 
     .ui-slider-label{
@@ -708,7 +1074,7 @@
         text-align: center;
         color: #999;
         font-weight: bold;
-        .corner-all(@corner-fully-rounded);
+        .corner-all(@cornerRound);
         text-shadow: none;
         background: white;
         border: none!important;
@@ -729,17 +1095,17 @@
         border: 1px solid #AAA;
         background: #F6F6F6;
         .box-shadow(0 4px 0 -2px #F1F1F1 inset, 0 2em 2em -2em #AAA inset, 0 0 2px rgba(0,0,0,.5));
-        .corner-all(@corner-fully-rounded);
+        .corner-all(@cornerRound);
     }
 
 }
 .switch-setting{
-    border-bottom: @border-medium-on-light;
+    border-bottom: @borderMediumOnLight;
     margin: 0;
-    padding-bottom: @padding-element-inset;
-    margin-bottom: @padding-element-inset;
+    padding-bottom: @paddingElement;
+    margin-bottom: @paddingElement;
     .setting-label{
-        font-family: @txt-font-special;
+        font-family: @font-special;
         line-height: 36px;
         vertical-align: middle;
     }
@@ -752,12 +1118,12 @@
 
 /* Style for inset header as seen on user feed and upload pages */
 .page-inset-header{
-    margin-left: -@padding-page-inset;
-    margin-right: -@padding-page-inset;
+    margin-left: -@paddingPage;
+    margin-right: -@paddingPage;
     position: relative;
-    background-color: @color-off-white-tint;
-    background-image: @gfx-bg-light-texture;
-    .corner-top (@corner-page-element-rounded);
+    background-color: @grayLight;
+    background-image: @gfxBgLight;
+    .corner-top (@cornerPage);
     .box-shadow(inset 5px 0 20px rgba(0, 0, 0, 0.2));
 }
 
@@ -811,7 +1177,7 @@
 
 .ui-controlgroup-label,
 .ui-select .ui-btn{
-    font-family: @txt-font-special;
+    font-family: @font-special;
     text-transform: lowercase;
     text-align: left;
 }
@@ -845,7 +1211,7 @@
 
 /* Loader BG placeholder for images */
 .image-loader-bg{
-    background-color: @color-off-white-tint;
+    background-color: @grayLight;
     background-image: url('../gfx/image-load.gif');
     background-repeat: no-repeat;
     background-position: center;
@@ -869,7 +1235,7 @@
 /* Offline mode default display */
 .message-overlay{
     position: absolute;
-    padding-top: @size-topbar-height;
+    padding-top: @sizeTopBar;
     margin: 0;
     left: 0;
     top: 0;
@@ -879,7 +1245,7 @@
     border: none;
     z-index: 999;    
     .message-body{
-        margin: @padding-page-inset;
+        margin: @paddingPage;
         display: block;
         padding: 0;
     }
@@ -908,7 +1274,7 @@
         min-height: @gfxHelper-grid;
     }
     .icon-left{
-        padding: @padding-page-inset @padding-page-inset @padding-page-inset * 2 @gfxHelper-grid + @padding-page-inset;
+        padding: @paddingPage @paddingPage @paddingPage * 2 @gfxHelper-grid + @paddingPage;
 
     }
     .helper-icons{
@@ -921,18 +1287,18 @@
 
 /* Footer as part of page content like on dash  */
 .inline-footer{
-    margin: @padding-page-inset -@padding-page-inset 0 -@padding-page-inset;
-    .corner-bottom(@corner-page-element-rounded);
+    margin: @paddingPage -@paddingPage 0 -@paddingPage;
+    .corner-bottom(@cornerPage);
 
     .ui-grid-a{
         .ui-block-a{
             .ui-btn{
-                margin-right: @padding-element-inset / 2;
+                margin-right: @paddingElement / 2;
             }
         }
         .ui-block-b{
             .ui-btn{
-                margin-left: @padding-element-inset / 2;
+                margin-left: @paddingElement / 2;
             }
         }
     }
@@ -946,19 +1312,19 @@
 .ui-header{
     background: none;
     border: none;
-    color: @color-txt-medium-on-dark;
-    text-shadow: @color-shadow-dark-on-dark 0px -1px 1px;
-    height: @size-topbar-height;
+    color: @grayMediumOnDark;
+    text-shadow: @shadowDarkOnDark 0px -1px 1px;
+    height: @sizeTopBar;
     overflow: hidden;
     .ui-title{
         .title-bar-font();
-        line-height: @size-topbar-height;
+        line-height: @sizeTopBar;
         vertical-align: middle;
         margin: 0;
     }
 
     .ui-btn{
-        font-size:@txt-size-small;
+        font-size:@font-size-small;
     }
     .ui-btn-left{
         position: absolute;
@@ -1046,16 +1412,191 @@
         margin: 5px 0 0 -40px;
         left: 50%;
         position: absolute;
-         -moz-box-shadow: 0 1px 0 @color-shadow-light-on-dark;
-         -webkit-box-shadow: 0 1px 0 @color-shadow-light-on-dark;
-         box-shadow: 0 1px 0 @color-shadow-light-on-dark;
+         -moz-box-shadow: 0 1px 0 @shadowLightOnDark;
+         -webkit-box-shadow: 0 1px 0 @shadowLightOnDark;
+         box-shadow: 0 1px 0 @shadowLightOnDark;
         .ui-checkbox label,
         .ui-radio label{
-            font-size: @txt-size-small;
+            font-size: @font-size-small;
             margin: 0;
         }
     }
 }
+
+
+
+.ui-collapsible-set{
+    .ui-collapsible-heading{
+        .ui-btn{
+            margin-top:1px;
+            border-bottom: @borderMediumOnLight;
+            .ui-btn-inner{
+                padding: 16px 40px 16px 16px;
+            }
+            .ui-icon{
+                left: auto;
+                right: 8px;
+            }
+            .ui-icon-plus{background-position: @gfxIcons-arrow-d-x @gfxIcons-y-med;}
+            .ui-icon-minus{background-position: @gfxIcons-arrow-u-x @gfxIcons-y-med;}
+        }
+        .ui-btn-up-c{
+            background-color: @grayLight;
+            background-image:@gfxBgLight;
+        }
+        .ui-btn-hover-c{
+            background-image: none;
+            background-color: lighten(@grayLight, .7%);
+        }
+    }
+    .ui-collapsible-content{
+        .ui-btn{
+            .box-shadow( none);
+            .corner-all(@cornerRound);
+            border: @borderMediumOnLight;
+        }
+      &.ui-body-d{
+          border: none;
+          border-bottom: @borderMediumOnLight;
+      }
+    }
+}
+
+/* Icons for linked services */
+.linked-services{
+    .ui-collapsible-heading{
+        .ui-btn-inner{
+           padding: 16px 40px 16px 16px;
+           .ui-btn-text{
+                padding-left: 28px;
+           }
+       }
+       .sharing-icon-small {
+           position: absolute;
+           top: -3px;
+           left: 0;
+       }
+    }
+    li{
+        margin-bottom: 0;
+    }
+
+
+}
+
+/* making list style icons look the same is a drag..
+ different markup format between collapsible headings and list links */
+
+.add-services,
+.share-icons-list{
+    li.ui-li{
+       margin-bottom: 0;
+       .ui-btn-text{
+          padding: 0;
+          width: auto;
+          .ui-link-inherit{
+             padding: 16px 40px 16px 44px!important;
+             position: relative;
+             overflow: visible;
+          }
+      }
+      .sharing-icon-small {
+          position: absolute;
+          top: 14px;
+          left: 16px;
+      }
+   }
+}
+
+
+
+.avatar-select-block{
+    padding-left: 112px;
+    position: relative;
+    min-height: 100px;
+    padding-top: 8px;
+    .user-profile-icon{
+        position: absolute;
+        left: 0;
+        top: 0;
+        .user-icon-big{
+            .corner-all(@cornerPage);
+        }
+    }
+}
+
+/* @findfriends custom stylz */
+.ff-linking{
+    margin: 12px;
+}
+
+
+
+.top-user-item{
+    width: @sizeAvatar-med;    
+    margin-right: 5px;
+    .small-username{
+        overflow: hidden;
+        text-overflow: ellipsis;
+        text-align: center;
+        margin-top: 4px;
+        display: block;
+    } 
+}
+
+
+.inline-copy{
+    p{
+        margin: 8px;
+    }
+}
+
+
+/*
+* @join PAGE
+*/
+.linked-message{
+    display: none;
+}
+
+
+
+
+#popular-thumbs{
+    margin-top:@paddingGrid;
+}
+
+
+
+/*
+* @connect - DIALOG
+*/
+
+.add-services{
+
+   .shared,
+   .ready{
+     .ui-icon-arrow-r{
+        display: none;
+     }
+   }
+
+    .connect-status{
+        position: absolute;
+        right: @paddingElement;
+        padding-right: @gfxIcons-grid;
+        font-family: @font;
+        text-transform: lowercase;
+        .ui-icon{
+            right: 0;
+        }
+        .ui-icon-check{
+            background-position: @gfxIcons-check-x @gfxIcons-y-highlight;
+        }
+    }
+
+}
+
 
 /*
 * @photoswipe - Custom
@@ -1079,8 +1620,8 @@
             margin-right: 0px;
             background-image: url('@{gfx}@{gfxIcons}');            
             background-position: @gfxIcons-delete-x + 5px @gfxIcons-y-light + 5px;
-            width: @size-topbar-height;
-            height: @size-topbar-height;
+            width: @sizeTopBar;
+            height: @sizeTopBar;
         }
     }
 
@@ -1091,16 +1632,16 @@
     border: none;
     .linear-gradient (#1d1d1d, #000000);
     .ps-caption-content{
-        font-family: @txt-font-base;
-        font-size: @txt-size-base;
-        color: @color-txt-light-on-dark;
+        font-family: @font;
+        font-size: @font-size;
+        color: @grayLightOnDark;
         text-align: left;
         padding: 0 24px 0 32px;
         background-image: url('../gfx/gallery-quote.png');
         background-repeat: no-repeat;
         background-position: 10px 0;
-        margin-top:  @padding-element-inset;
-        margin-bottom:  @padding-element-inset;
+        margin-top:  @paddingElement;
+        margin-bottom:  @paddingElement;
         &::after{
             content: " ";
             width: 36px;
@@ -1156,7 +1697,7 @@ div.ps-carousel-item-loading
 /* default element when a search returns no results */
 #no-results {
     .imagealert {
-        padding: @padding-element-inset;
+        padding: @paddingElement;
         position: relative;
         font-style: italic;
         /* Not going to use icons for now */
@@ -1166,12 +1707,21 @@ div.ps-carousel-item-loading
     }
 }
 
+/* Misc Spinner */
+.ui-icon-spinner{
+    .spinner();
+    .spin();
+}
+
 .ui-loading,
 .loading{
     #no-results{
         display: none;
     }
 }
+
+
+
 
 /*
 * Workspace hacks for browser testing

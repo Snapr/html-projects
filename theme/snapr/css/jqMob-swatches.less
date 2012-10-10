@@ -1,0 +1,964 @@
+// JQUERY MOBILE THEME SWATCHES
+//--------------------------
+
+// A //
+// The Dark (Black as Night) swatch, used for screens with black BGs
+// ------------------------
+
+// Set bgs
+
+.ui-body-a{
+    background: none;
+    background-color: @black;
+}
+
+.ui-dialog.ui-overlay-a{
+    background: none;
+    background-color: @black!important;
+}
+
+.ui-body-d{
+    .ui-body-a[data-role="content"]{
+        background: none;
+        background-color: @black;
+        border-radius: @cornerPage;
+        min-height: 412px;
+    }
+}
+
+// Main Styles
+
+.ui-body-a {
+    color: @grayLightOnDark;
+    text-shadow: none;
+    .ui-header{
+        color: @grayLightOnDark;
+        text-shadow: none;
+    }
+    .image-streams .image-stream .load-more-inline{
+        background-color: darken(@black-tint, 5%);
+    }
+    .thumbs-grid-med .thumb-image,
+    .grid #feed-images .thumb-image,
+    .thumb-image{
+        background-color: darken(@black-tint, 5%); 
+    }
+}
+
+// Button Styles
+
+.ui-btn-active{
+    .button-font-bold();
+    border: none;
+    background: transparent;
+    color: white;
+    cursor: pointer;
+    text-shadow: 0 -1px 1px @shadowLightOnDark;
+}
+
+.ui-btn-up-a {
+    .button-font-bold();
+    border: @borderMediumOnDark;
+    background: none;
+    background-color: @black;
+    color: @grayLightOnDark;
+    text-shadow: @shadowDarkOnDark 0px 1px 1px;
+    font-size: @font-size-btn;
+    text-decoration: none;
+    .box-shadow(inset 0 3px 20px @shadowDarkOnDark);
+    &.ui-shadow{
+        .box-shadow(inset 0 3px 20px @shadowDarkOnDark);
+    }
+    .ui-btn-inner{
+        border:none;
+    }
+    a.ui-link-inherit {
+        color: @grayLightOnDark;
+    }
+    &.ui-corner-left{.corner-left (@cornerRound);}
+    &.ui-corner-right{.corner-right (@cornerRound);}
+    &.ui-btn-corner-all{.corner-all (@cornerRound);}
+}
+
+.ui-btn-hover-a,
+.ui-btn-down-a,
+.ui-btn-active-a {
+    .button-font-bold();
+    border: @borderLightOnDark;
+    background: none;
+    background-color: @black;
+    color: @white;
+    text-shadow: @shadowDarkOnDark 0px 1px 1px;
+    font-size: @font-size-btn;
+    text-decoration: none;
+    .box-shadow(inset 0 3px 20px @shadowDarkOnDark);
+    &.ui-shadow{
+        .box-shadow(inset 0 3px 20px @shadowDarkOnDark);
+    }
+    .ui-btn-inner{
+        border:none;
+    }
+    a.ui-link-inherit {
+        color: @grayLightOnDark;
+    }
+    &.ui-corner-left{.corner-left (@cornerRound);}
+    &.ui-corner-right{.corner-right (@cornerRound);}
+    &.ui-btn-corner-all{.corner-all (@cornerRound);}
+}
+
+// Tweak to A theme buttons for transparent BGs
+
+.trans-bg{
+    .ui-btn-up-a,
+    .ui-input-search,
+    .map-loading {
+        border: none;
+        border-bottom: @borderLightOnDark;
+        background-color: @grayDark-tint;
+        .box-shadow(inset 0 3px 20px @shadowDarkOnDark);
+        &.ui-shadow{
+            .box-shadow(inset 0 3px 20px @shadowDarkOnDark);
+        }
+        .ui-btn-inner{
+            border:none;
+        }
+    }
+    .ui-btn-hover-a,
+    .ui-btn-down-a,
+    .ui-btn-active-a   {
+        border: none;
+        border-bottom: @borderMediumOnDark;
+        background: none;
+        background-color: @grayDark;
+        .box-shadow(inset 0 3px 20px @shadowDarkOnDark);
+        &.ui-shadow{
+            .box-shadow(inset 0 3px 20px @shadowDarkOnDark);
+        }
+        .ui-btn-inner{
+            border:none;
+        }
+    }
+}
+
+
+// B //
+// The Dark (Textured Grey) swatch, used for title bars, dark btns on palletes
+// -----------------------------
+
+.ui-body-b{
+    background: @black;
+    background-image: @gfxBgDark;
+    border: none;
+}
+
+.ui-btn-up-b,
+.ui-btn-up-b[data-rel="back"]::before {
+    border: @borderDarkOnDark;
+    background: @grayDark;
+    .button-font-small();
+    color: @grayMediumOnDark;
+    text-shadow: @shadowMediumOnDark 0px 1px 1px;
+    text-decoration: none;
+    .linear-gradient(@grayDark, @grayDark-tint);
+    .ui-btn-inner{
+        border:none;
+    }
+    a.ui-link-inherit {
+        color: @grayMediumOnDark;
+    }
+    &.ui-shadow{
+        .box-shadow( 0 1px 0 @shadowLightOnDark);
+    }
+    &.ui-btn-active{
+        background: none;
+        .linear-gradient(black, @grayDark-tint);
+    }
+    &.top-left-arrow::after{
+        .arrow-down(@arrow-size, @grayDark-tint, @arrow-offset, 3px);
+    }
+    &.bottom-centered-arrow::after{
+        .arrow-up(@arrow-size, @grayDark, 50%, 3px);
+    }
+}
+
+.ui-btn-hover-b,
+.ui-btn-active-b,
+.ui-btn-hover-b[data-rel="back"]::before,
+.ui-btn-active-b[data-rel="back"]::before{
+    border: @borderDarkOnDark;
+    background: @grayDark;
+    .button-font-small();
+    color: lighten(@grayMediumOnDark, 3%);
+    text-shadow: @shadowMediumOnDark 0px 1px 1px;
+    font-size: @font-size-small;
+    text-decoration: none;
+    .linear-gradient(lighten(@grayDark, 3%), lighten(@grayDark-tint, 3%));
+    .ui-btn-inner{
+        border:none;
+    }
+    a.ui-link-inherit {
+        color: @grayMediumOnDark;
+    }
+    &.ui-shadow{
+        .box-shadow(0 1px 0 @shadowLightOnDark);
+    }
+    &.ui-btn-active{
+        background: none;
+        .linear-gradient(black, @grayDark-tint);
+    }
+    &.top-left-arrow::after{
+        .arrow-down(@arrow-size, lighten(@grayDark-tint, 3%), @arrow-offset, 3px);
+    }
+    &.bottom-centered-arrow::after{
+        .arrow-up(@arrow-size, lighten(@grayDark, 3%), 50%, 3px);
+    }
+}
+
+.ui-btn-down-b,
+.ui-btn-down-b[data-rel="back"]::before{
+    border: @borderDarkOnDark;
+    background: @grayDark;
+    .button-font-small();
+    color: darken(@grayMediumOnDark, 20%);
+    text-shadow: @shadowMediumOnDark 0px 1px 1px;
+    text-decoration: none;
+    .pressed-gradient(@grayDark-tint, 5%);
+    .ui-btn-inner{
+        border:none;
+    }
+    a.ui-link-inherit {
+        color: @grayMediumOnDark;
+    }
+    &.ui-shadow{
+        -moz-box-shadow: 0 1px 0 @shadowLightOnDark;
+        -webkit-box-shadow: 0 1px 0 @shadowLightOnDark;
+        box-shadow: 0 1px 0 @shadowLightOnDark;
+    }
+    &.ui-btn-active{
+        background: none;
+        .linear-gradient(black, @grayDark-tint);
+    }
+    &.top-left-arrow::after{
+        .arrow-down(@arrow-size, @grayDark-tint, @arrow-offset, 3px);
+    }
+    &.bottom-centered-arrow::after{
+        .arrow-up(@arrow-size, @grayDark-tint, 50%, 3px);
+    }
+}
+
+// Tricky CSS iOS style Arrow back buttons - fiddle at your own peril
+// CSS only back buttons based on work by Gregor Adams - http://dream-world.us/2011/11/30/the-best-pure-css3-ios-style-arrow-back-button/
+
+.ui-bar-b{
+    a[data-rel="back"]{
+        display: block;
+        -webkit-border-radius: 5px;
+        position: absolute;
+        left: 16px;
+        z-index: 0;
+        width: auto;
+        padding: 0 10px 0 6px;
+        -webkit-background-size: 30px;
+        height: 30px;
+        .ui-icon{
+            display: none;
+        }
+        .ui-btn-inner{
+            padding-left: 0;
+            padding-right: 0;
+            .ui-btn-text{
+                max-width: 72px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                display: block;
+            }
+        }
+    }
+    a[data-rel="back"]::before {
+        position: absolute;
+        content: ' ';
+        left: -9px;
+        top: 2px;
+        height: 24px;
+        width: 24px;
+        z-index: 1;
+        -webkit-background-size: 24px 24px;
+        background-position: -1px -0.5px;
+        -webkit-transform: rotate(-45deg) skew(-10deg, -10deg);
+        -webkit-border-top-right-radius: 10px;
+        -webkit-border-top-left-radius: 0px;
+        -webkit-border-bottom-right-radius: 0px;
+        -webkit-border-bottom-left-radius: 10px;
+        -webkit-mask-image: -webkit-gradient(linear, left top, right bottom, from(#000000), color-stop(0.4,#000000), color-stop(0.5, transparent), to(transparent));
+        border-top-right-radius: 10px;
+        border-top-left-radius: 0px;
+        border-bottom-right-radius: 0px;
+        border-bottom-left-radius: 10px;
+    }
+}
+
+.ui-bar-b{
+    em{
+        color: white;
+    }
+    .ui-btn-text{
+        .image-tag{
+            color: @grayLightOnDark;
+        }
+        .small-text{
+            color: @grayMediumOnDark;
+        }
+    }
+    &.ui-btn{
+        border: none;
+    }
+}
+
+// C //
+// Standard light BG swatch, has subtle gray bg texture, used mainly for light colored dialog style views
+// -----------------------------
+
+// Set bg for dialog 
+
+.ui-body-c {
+    background: none;
+    background-color: @white-tint;
+    background-image: @gfxBgLight;
+    border: @borderMediumOnLight;
+    color: @grayDarkOnLIght;
+    text-shadow: 0 1px 1px @shadowLightOnLight;      
+}
+.ui-dialog.ui-overlay-c{
+    background: none;
+    background-color: @white-tint!important;
+    background-image: @gfxBgLight!important;
+    border: @borderMediumOnLight;
+    text-shadow: 0 1px 1px @shadowLightOnLight;
+    border:none;
+}
+
+// Main Styles
+
+.ui-body-c {
+    div[data-role="content"]{
+        background-color: @white-tint;
+        background-image: @gfxBgLight;
+        border: none;
+        border-radius: @cornerPage;
+        overflow: visible;
+    }
+    .ui-header{
+        color: @grayMediumOnLIght;
+        text-shadow: @shadowLightOnLight 0px 1px 1px;
+    }
+    .ui-link,
+    .ui-link:visited {
+        color: @grayDarkOnLIght;
+        font-weight: normal;
+    }
+    .ui-input-search{
+        background-color: white;
+        background-image: none;
+    }
+    hr{
+        display: block;
+        position: relative;
+        padding: 0;
+        width: 100%;
+        height: 0;
+        clear: both;
+        border: none;
+        border-bottom: @borderLightOnLight;
+        border-top: @borderMediumOnLight;
+        font-size: 1px;
+        line-height: 0;
+        overflow: visible;
+        background-color: transparent;
+        color: @shadowMediumOnLight;
+    }
+    #no-results{
+        .imagealert {
+            padding: @paddingElement * 2;
+            color: @grayLightOnLIght;
+        }
+    }
+
+    // Grey Btns in body are slightly different 
+    .ui-content{
+        .ui-btn-up-c,
+        .ui-btn-hover-c,
+        .ui-btn-down-c,
+        .ui-btn-active-c   {
+            border: @borderDarkOnLight;
+            &.ui-shadow{
+                .box-shadow(none);
+            }
+        }
+
+        // System bar 
+        .ui-btn-up-c.system-bar,
+        .ui-btn-hover-c.system-bar,
+        .ui-btn-down-c.system-bar,
+        .ui-btn-active-c.system-bar   {
+            .corner-all(@cornerRound);
+            display: block;
+            position: relative;
+            border: none;
+            color: white;
+            text-shadow: @shadowMediumOnDark 0px -1px 0px;
+
+        }
+        .ui-btn-up-c.system-bar{
+            background-color: @blue;
+            .linear-gradient(@blue, @blue-tint);
+        }
+        .ui-btn-hover-c.system-bar{
+            background-color: lighten(@blue, 10%);
+            .linear-gradient(darken(@blue, 10%), darken(@blue-tint, 10%));
+        }
+        .ui-btn-down-c.system-bar{
+            background-color: lighten(@blue-tint, 3%);
+            .pressed-gradient(@blue-tint, 3%);
+        }
+    }
+    .ui-btn{
+        text-shadow: 0 1px 1px @shadowMediumOnLight;
+    }
+
+    .message{
+        .corner-all(@cornerPage);
+        padding: @paddingElement;
+        border: @borderMediumOnLight;
+        font-size: @font-size-small;
+    }
+}
+
+
+// Grey Btns 
+.ui-btn-up-c {
+    border: none;
+    background: @white;
+    .linear-gradient(@white, @white-tint);
+    color: @grayDarkOnLIght;
+    .button-font-bold();
+    a.ui-link-inherit {
+        color: @grayDarkOnLIght;
+    }
+    &.top-left-arrow::after{
+        .arrow-down(@arrow-size, @white-tint, @arrow-offset, 3px);
+    }
+    &.bottom-centered-arrow::after{
+        .arrow-up(@arrow-size, @white-tint, 50%, 3px);
+    }
+}
+
+.ui-btn-hover-c {
+    border: none;
+    background: lighten(@white, 10% );
+    .linear-gradient(lighten(@white, 10%), lighten(@white-tint, 10%));
+    color: @grayDarkOnLIght;
+    .button-font-bold();
+    a.ui-link-inherit {
+        color: @grayDarkOnLIght;
+    }
+    &.top-left-arrow::after{
+        .arrow-down(@arrow-size, lighten(@white-tint, 10%), @arrow-offset, 3px);
+    }
+    &.bottom-centered-arrow::after{
+        .arrow-up(@arrow-size, lighten(@white-tint, 10%), 50%, 3px);
+    }
+}
+
+.ui-btn-down-c {
+    border: none;
+    background: @white;
+    .pressed-gradient(@white, 3%);
+    color: @grayDarkOnLIght;
+    .button-font-bold();
+    a.ui-link-inherit {
+        color: @grayDarkOnLIght;
+    }
+    &.ui-shadow {
+        .box-shadow(0 1px 4px lighten(@shadowLighterOnLight, 20%));
+    }
+
+    &.top-left-arrow::after{
+        .arrow-down(@arrow-size, @white, @arrow-offset, 3px);
+    }
+    &.bottom-centered-arrow::after{
+        .arrow-up(@arrow-size, @white, 50%, 3px);
+    }
+}
+
+// Tweak to C theme buttons for transparent BGs 
+.trans-bg{
+    .ui-btn-up-c {
+        border: none;
+        border-bottom: @borderLightOnLight;
+        background: none;
+        background-color: @white;
+
+        .box-shadow(inset 0 1px 4px @shadowMediumOnLight);
+        &.ui-shadow{
+            .box-shadow(inset 0 1px 4px @shadowMediumOnLight);
+        }
+        .ui-btn-inner{
+            border:none;
+        }
+        .corner-all(@cornerRound);
+        .ui-icon-delete{background-position: @gfxIcons-delete-x @gfxIcons-y-highlight;}
+    }
+    .ui-btn-hover-c,
+    .ui-btn-down-c,
+    .ui-btn-active-c {
+        border: none;
+        border-bottom: @borderLightOnLight;
+        background: none;
+        background-color: darken(@white, 5%);
+
+        .box-shadow(inset 0 1px 4px @shadowMediumOnLight);
+        &.ui-shadow{
+            .box-shadow(inset 0 1px 4px @shadowMediumOnLight);
+        }
+        .ui-btn-inner{
+            border:none;
+        }
+        .corner-all(@cornerRound);
+    }
+}
+
+// List hover effects are going to be a little bit different to normal buttons 
+// and we are going to strip the hell out of them..
+
+.ui-body-c > .ui-listview{
+    background: none;
+    &.ui-shadow{
+        .box-shadow(none);
+    }
+    .corner-all(0);
+
+
+    .ui-li,
+    .ui-li-has-icon{
+        padding: 0;
+    }
+    .ui-btn{
+        border: none!important;
+        background: none;
+        &.ui-li{
+            border-top: @borderMediumOnLight!important;
+            margin-bottom: 0;
+            &:first-child{
+                border-top: none!important;
+            }
+        }
+    }
+    .ui-btn-up-c {
+
+    }
+    .ui-btn-hover-c {
+        background-color: rgba(255,255,255,.8);
+    }
+    .ui-btn-down-c,
+    .ui-btn-active {
+        background-color: transparent;
+        .linear-gradient(rgba(255,255,255, 0), rgba(255,255,255,1));
+    }
+
+    // Put the border back on for people / venues lists because i like it there 
+    &.people-list,
+    &.venue-list,
+    &.map-list{
+        .ui-btn.ui-li:first-child{
+            border-top: @borderMediumOnLight!important;
+        }
+    }
+
+    .ui-btn-inner{
+        .ui-link-inherit{
+            padding-top: @paddingElement * 2px!important;
+            padding-bottom: @paddingElement * 2px!important;
+        }
+    }
+    .ui-li-has-icon{
+        .ui-btn-inner{
+            .ui-link-inherit{
+                padding-top: @paddingElement!important;
+                padding-bottom: @paddingElement + 2px!important;
+            }
+        }
+    }
+
+    .ui-li-icon{
+        left: 0;
+        top: @paddingElement;
+    }
+
+    .ui-li-heading{
+        margin: 0 0 @paddingElement 0;
+        font-weight: normal;
+    }
+    .ui-li-desc{
+        margin: -8px 0 0 0;
+        padding: 0;
+        color: @grayLightOnLIght;
+    }
+    .ui-li,
+    .ui-li-link-alt{
+        border-right: none!important;
+        border-left: none!important;
+    }
+
+    //  Right hand buttons in split lists 
+    .ui-li-link-alt{
+        width: 44px;
+        background: none;
+        .ui-btn {
+            border: none;
+            width: 44px;
+            height: 44px;
+            top: 4px;
+            right: 0;
+            margin-top: 0;
+            background: none;
+            .ui-icon{
+                margin-top: 0;
+                top: 4px;
+                right: 0;
+            }
+            .ui-icon-check{
+                background-position: @gfxIcons-check-x @gfxIcons-y-color;
+            }
+            .ui-icon-plus{
+                background-position: @gfxIcons-plus-x @gfxIcons-y-light;
+            }
+            .ui-icon-tick{
+                background-position: @gfxIcons-check-x @gfxIcons-y-highlight;
+            }
+        }
+    }
+
+    &.venue-list{
+        .ui-icon-arrow-r{
+            display: none;
+        }
+    }
+    .ui-icon-arrow-r {
+        background-position: @gfxIcons-arrow-r-x @gfxIcons-y-med;
+    }
+}
+
+
+
+// D
+// the full white BG swatch used for feed views etc
+// have sneakily included the orange buttons in this guy
+// -------------------
+
+.ui-body-d[data-role="page"]{
+    background: @black;
+    background-image: @gfxBgDark;
+    border-radius: @cornerPage;
+    border-top: @borderLightOnDark;
+    .border-box();
+}
+
+.ui-body-d {
+    background: none;
+    color: @grayMediumOnLIght;
+    div[data-role="content"]{
+        background-color: @white;
+        background-image: none;
+        border-radius: @cornerPage;
+        min-height: 412px;
+    }
+    .ui-link,
+    .ui-link:visited,
+    .ui-link:hover,
+    .ui-link:active {
+        color: @grayDarkOnLIght;
+    }
+    hr{
+        display: block;
+        position: relative;
+        padding: 0;
+        width: 100%;
+        height: 0;
+        clear: both;
+        border: none;
+        border-bottom: @borderLightOnLight;
+        border-top: @borderMediumOnLight;
+        font-size: 1px;
+        line-height: 0;
+        overflow: visible;
+        background-color: transparent;
+        color: @shadowMediumOnLight;
+    }
+
+    .ui-listview{
+        .ui-btn.ui-li{
+            background: none;
+        }
+    }
+}
+
+.ui-bar-d{
+    background: @orange;
+    .linear-gradient(@orange, @orange-tint);
+}
+
+.ui-btn-up-d {
+    border: none;
+    background: @orange;
+    .linear-gradient(@orange, @orange-tint);
+    color: @grayDarkOnLIght;
+    .button-font-bold();
+    a.ui-link-inherit {
+        color: @grayDarkOnLIght;
+    }
+
+    &.top-left-arrow::after{
+        .arrow-down(@arrow-size, @orange-tint, @arrow-offset, 3px);
+    }
+    &.bottom-centered-arrow::after{
+        .arrow-up(@arrow-size, @orange, 50%, 3px);
+    }
+}
+
+.ui-btn-hover-d {
+    border: none;
+    background: lighten(@orange, 10% );
+    .linear-gradient(lighten(@orange, 10%), lighten(@orange-tint, 10%));
+    color: @grayDarkOnLIght;
+    .button-font-bold();
+    a.ui-link-inherit {
+        color: @grayDarkOnLIght;
+    }
+
+    &.top-left-arrow::after{
+        .arrow-down(@arrow-size, lighten(@orange-tint, 10% ), @arrow-offset, 3px);
+    }
+    &.bottom-centered-arrow::after{
+        .arrow-up(@arrow-size, lighten(@orange, 10%), 50%, 3px);
+    }
+}
+
+.ui-btn-down-d {
+    border: none;
+    background: @orange;
+    .pressed-gradient(@orange, 3%);
+    color: @grayDarkOnLIght;
+    .button-font-bold();
+    a.ui-link-inherit {
+        color: @grayDarkOnLIght;
+    }
+    &.ui-shadow {
+        .box-shadow(none);
+    }
+
+    &.top-left-arrow::after{
+        .arrow-down(@arrow-size, @orange, @arrow-offset, 3px);
+    }
+    &.bottom-centered-arrow::after{
+        .arrow-up(@arrow-size, darken(@orange, 3%), 50%, 3px);
+    }
+}
+
+
+.ui-body-d{
+    .ui-listview-inset {
+        background-color: @white;
+
+        li.ui-li{
+            padding: 8px;
+            margin: 0;
+            border: none;
+            background:none;
+            border-top: @borderMediumOnLight;
+
+            &:first-child{
+                border: none;
+            }
+
+            h1,
+            h2,
+            h3,{
+                padding: 8px;
+                .heading-font();
+                color: @grayDarkOnLIght;
+            }
+
+            .ui-link-inherit,
+            p{
+                padding-left: 8px;
+            }
+
+            &.ui-li-has-icon{
+                .ui-link-inherit{
+                    padding-left: @sizeAvatar;
+                }
+            }
+            input[type="text"],
+            input[type="password"],
+            input[type="email"]{
+                width: 100%;
+                border: none;
+                background: transparent;
+                margin: 0;
+                .border-box();
+                .box-shadow(none);
+            }
+            &.has-select{
+                padding: 0;
+
+                .ui-select{
+                    width: 100%;
+                    margin: 0;
+                    .box-shadow(none);
+                    .ui-btn{
+                        .box-shadow(none);
+                        .corner-top(0);
+                        border: none;
+                    }
+                    .ui-btn-inner{
+                        padding-top: 18px;
+                        padding-bottom: 18px;
+                        padding-left: 16px;
+                    }
+                }
+            }
+            .ui-icon-arrow-r {
+                background-position: @gfxIcons-arrow-r-x @gfxIcons-y-med;
+            }
+        }
+    }
+}
+
+
+// E //
+// highlight swatch - all about mad yellow shiz..
+// ----------------
+
+.ui-body-e{
+    &.ui-navbar{
+        background: @yellow;
+        .linear-gradient(@yellow, @yellow-tint);
+        .ui-btn{
+            background: none!important;
+        }
+    }
+}
+
+.ui-bar-e{
+    background: @yellow;
+    .linear-gradient(@yellow, @yellow-tint);
+
+    &.small-top-left-arrow::after{
+        .arrow-down(6px, @yellow-tint, 24px, 0);
+    }
+    a{
+        color: @grayDarkOnLIght;
+    }
+}
+
+
+.ui-body-e {
+    background: none;
+    color: @grayMediumOnLIght;
+    div[data-role="content"]{
+        background-color: @yellow;
+        background-image: none;
+        border-radius: @cornerPage;
+    }
+    .ui-link,
+    .ui-link:visited,
+    .ui-link:hover,
+    .ui-link:active {
+        color: @grayDarkOnLIght;
+        font-weight: normal;
+    }
+    hr{
+        display: block;
+        position: relative;
+        padding: 0;
+        width: 100%;
+        height: 0;
+        clear: both;
+        border: none;
+        border-bottom: @borderLightOnLight;
+        border-top: @borderMediumOnLight;
+        font-size: 1px;
+        line-height: 0;
+        overflow: visible;
+        background-color: transparent;
+        color: @shadowMediumOnLight;
+    }
+
+    .ui-listview{
+        .ui-btn.ui-li{
+            background: none;
+        }
+    }
+}
+
+
+.ui-btn-up-e {
+    border: none;
+    background: @yellow;
+    .linear-gradient(@yellow, @yellow-tint);
+    color: @grayDarkOnLIght;
+    .button-font-bold();
+    text-decoration: none;
+    a.ui-link-inherit {
+        color: @grayDarkOnLIght;
+    }
+    &.top-left-arrow::after{
+        .arrow-down(@arrow-size, @yellow-tint, @arrow-offset, 3px);
+    }
+    &.bottom-centered-arrow::after{
+        .arrow-up(@arrow-size, @yellow, 50%, 3px);
+    }
+}
+
+.ui-btn-hover-e {
+    border: none;
+    background: lighten(@yellow, 10% );
+    .linear-gradient(lighten(@yellow, 10%), lighten(@yellow-tint, 10%));
+    color: @grayDarkOnLIght;
+    .button-font-bold();
+    text-decoration: none;
+    a.ui-link-inherit {
+        color: @grayDarkOnLIght;
+    }
+    &.top-left-arrow::after{
+        .arrow-down(@arrow-size, lighten(@yellow-tint, 10% ), @arrow-offset, 3px);
+    }
+    &.bottom-centered-arrow::after{
+        .arrow-up(@arrow-size, lighten(@yellow, 10%), 50%, 3px);
+    }
+}
+
+.ui-btn-down-e {
+    border: none;
+    background: @yellow;
+    .pressed-gradient(@yellow, 3%);
+    color: @grayDarkOnLIght;
+    .button-font-bold();
+    text-decoration: none;
+    a.ui-link-inherit {
+        color: @grayDarkOnLIght;
+    }
+    &.ui-shadow {
+        .box-shadow(0 1px 4px lighten(@shadowLighterOnLight, 20%));
+    }
+    &.top-left-arrow::after{
+        .arrow-down(@arrow-size, @yellow, @arrow-offset, 3px);
+    }
+    &.bottom-centered-arrow::after{
+        .arrow-up(@arrow-size, darken(@yellow, 3%), 50%, 3px);
+    }
+}
+
+
+
+

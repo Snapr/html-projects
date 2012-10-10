@@ -1,0 +1,190 @@
+// SPOTS PAGE
+// -------------------------
+
+.spots-search-filters{
+    padding-left: 44px;
+    margin-top: @paddingPage;
+    position: relative;
+
+    .ui-btn{
+        .corner-all(@cornerRound);
+    }
+    
+    .ui-select .ui-btn-icon-right .ui-btn-inner {
+        padding-right: 25px;
+    }
+
+    .category-btn{
+        width: 36px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        .ui-select{
+            .ui-btn-inner{
+                width: 18px;
+                height: 18px;
+            }
+            .ui-btn-text{
+                display: none;
+            }
+            .ui-icon{
+                right: auto;
+                left: 6px;
+                top: 6px;
+                margin-top: 0;
+            }
+        }
+    }
+
+   .ui-grid-a{
+        .ui-block-a{
+            .ui-btn{
+                margin-right: @paddingPage / 2;
+
+            }
+        }
+        .ui-block-b{
+            .ui-btn{
+            margin-left: @paddingPage / 2;
+            }
+        }
+    }
+}
+
+.spots-results-header{
+    position: relative;
+    top: -@paddingGrid;
+    .ui-btn-text{
+        padding-left: 0;
+    }
+    
+}
+
+.spot-item{
+    margin-bottom: @paddingElement / 2;
+    padding-bottom: @paddingElement / 2;
+    border-bottom: @borderMediumOnLight;
+    margin-left: 0;
+    margin-right:0;
+    padding-left: @paddingGrid;
+    padding-right: @paddingPage;
+    min-height:@sizeThumb;
+    .spot {
+        min-height: 101px;
+        .spot-heading {
+            .spot-name {
+                margin: 4px 0;
+            }
+        }
+        .spot-subheading{
+            color: @grayMediumOnLIght;
+        }
+        .spot-address {
+            margin-top: 10px;
+            font-family: @font;
+            color: @grayMediumOnLIght;
+        }
+    }
+    &.ui-btn-icon-right .ui-btn-inner .ui-icon.ui-icon-arrow-r{
+        right: -@paddingElement;
+    }
+}
+
+.spot{
+    padding: 0!important;
+    padding-left: @sizeThumb + @paddingElement!important;
+    position: relative;
+    display: block;
+    overflow: visible;
+    .spot-photo-crop{
+        position:  absolute;
+        left: 0;
+        top: 0;
+        img{
+            display: block;
+        }
+        .no-photo-yet{
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 60px;
+            height: 60px;
+            background-color: #EFEFEE;
+            margin: 6px;
+            border-radius: 45px;
+            text-align: center;
+            padding: 15px;
+            color: white;
+            text-shadow: none;
+            font-weight: bold;
+            line-height: 18px;
+            font-size: 14px;
+            font-weight: normal;
+        }
+    }
+
+    .spot-heading{
+       .spot-name{
+            display: inline-block;
+            padding-right: 24px;
+            position: relative;
+            margin-bottom: 0;
+            padding-top: 2px;
+            margin-top: 4px;
+            max-width: 100%;
+            .border-box();
+            .spot-icon{
+                position: absolute;
+                right: 0;
+                top: 0;
+                margin: 0;
+            }
+       }
+    }
+}
+
+
+// SPOT PAGE
+// -------------------------
+
+.spot-header{
+    margin-left: -@paddingPage;
+    margin-right: -@paddingPage;
+    position: relative;
+    background-color: @grayLight;
+    background-image: @gfxBgLight;
+    padding: @paddingGrid;
+    min-height:@sizeThumb;
+    .spot-venue-details{
+        min-height: 64px;
+    }
+    
+    p{
+        padding-top:@paddingElement / 2 ;
+        color: @grayMediumOnLIght;
+    }
+   
+    .spot-phone,
+    .spot-address{
+        padding-top:@paddingElement / 2 ;
+        margin-bottom: @paddingElement;
+        display: block;
+    }
+    .spot-distance {
+        color: @grayLightOnLIght;
+        font-size: @font-size-small;
+    }
+    .foursquare-btn{
+        position: absolute;
+        right: 0;
+        top: 50%;
+        margin-top: -4px;
+        width: 70px;
+        height: 24px;
+        .ui-icon-foursquare-logo{
+            background-image: url('../gfx/foursquare-btn.png');
+            height: 24px;
+            width: 70px;
+        }
+    }
+}

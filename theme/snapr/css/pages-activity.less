@@ -1,0 +1,155 @@
+// ACTIVITY PAGE
+// -------------------------
+
+.activity-streams{
+    .ui-bar.top-left-arrow .ui-btn-text{
+        padding-left: @paddingPage;
+    }
+
+    /* General Styles */
+    .username,
+    .ui-li-desc {
+        display: inline-block;
+        margin-bottom: 0;
+    }
+    .activity-item{
+        border: none;
+        border-top: @borderMediumOnLight;
+        margin-top: @paddingElement;
+        padding-top: 0;
+        .activity-desc{
+            white-space: normal;
+            font-weight: normal;
+            font-size: @font-size;
+            line-height: @font-size;
+            color: @grayMediumOnLIght;
+            font-family:@font;
+        }
+        .small-text{
+            position: relative;
+            top: 1px;
+            color: @grayLightOnLIght;
+        }
+    }
+    .image-link{
+        position: absolute;
+        left: -@paddingGrid;
+        top:0;
+    }
+
+    .activity-item{
+        border: none;
+        border-top: @borderMediumOnLight;
+        margin-top: @paddingElement;
+        padding-top: 0;
+    }
+
+    /* Tweaks for comments */
+    .comments-list{
+        .box-shadow(none);
+        .comment-item.ui-li-has-icon{
+            padding: 0;
+            margin-top: 8px;
+            padding-top: 8px!important;
+            .ui-link-inherit{
+                padding-top: 0!important;
+                padding-bottom: 0!important;
+                padding-left: @sizeAvatar + @paddingGrid!important;
+                min-height: @sizeAvatar;
+            }
+            .ui-li-icon{
+                top:0;
+                left:0;
+            }
+            .ui-li-heading{
+                padding: 0;
+                margin: 0;
+            }
+        }
+    }
+
+    /* Tweaks for likes */
+    .image-likes{
+        min-height: @sizeAvatar;
+        .icons-list,
+        p{
+            display: inline-block;
+            vertical-align: top;
+        }
+        .like-icons-list{
+            margin-top: @paddingPage;
+            margin-bottom: 0;
+
+        }
+        .like-icon{
+            margin-bottom: @paddingGrid;
+            display: inline-block;
+        }
+    }
+
+    /* Tweaks for follow item */
+    .activity-follow-item{
+        position: relative;
+        padding-left: 0;
+        margin-top: 8px;
+        min-height:  @sizeAvatar;
+        display: block;
+        .username,
+        .activity-desc,
+        .small-text{
+            display: inline-block;
+            vertical-align: baseline;
+            margin-bottom: 0;
+        }
+        .ui-link{
+            display: block;
+            padding-left:  @sizeAvatar;
+            padding-top: 8px ;
+            min-height: @sizeAvatar;
+            .border-box();
+        }
+        .ui-li-icon{
+            display: block;
+            position: absolute;
+            left: -@paddingGrid;
+            top: 0;
+        }
+    }
+
+    .photo-activity{
+        .activity-item:first-child{
+            border-top: none;
+            padding-top: 0!important;
+        }
+    }
+
+    .activity-item{
+        &:first{
+            border-top: none;
+            margin-top: 0!important;
+            padding-top: 0!important;
+        }
+    }
+    
+    /* Image Items */
+    .activity-image-item{
+        position: relative;
+        min-height: @sizeThumb;
+        padding-left: @sizeThumb + @paddingGrid;
+        margin-bottom: @paddingPage + @paddingGrid;
+        .activity-item:first{
+            border-top: none;
+            margin-top: 0!important;
+            padding-top: 0!important;
+        }
+    }
+
+    /* If the first item (after the top bar) is a follow item get rid of its top border */
+    .activity-stream:nth-child(2){
+        .activity-follow-item{
+            border-top: none;
+            margin-top: 0!important;
+            padding-top: 0!important;
+        }
+    }
+}

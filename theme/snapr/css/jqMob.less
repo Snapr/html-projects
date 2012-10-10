@@ -1,28 +1,24 @@
-/*
-* jQuery Mobile Framework
-* Copyright (c) jQuery Project
-* Dual licensed under the MIT (MIT-LICENSE.txt) and GPL (GPL-LICENSE.txt) licenses.
-*/
+// jQuery Mobile Framework
+// Copyright (c) jQuery Project
+// Dual licensed under the MIT (MIT-LICENSE.txt) and GPL (GPL-LICENSE.txt) licenses.
+// ----------------------------
 
-/*
-* JQuery Mob - Overwriting some layout aspects of the jquerymobile.structure css
-*   
-*/
-
-/* Round off the corners of the pages */
+// JQuery Mob - Overwriting some layout aspects of the jquerymobile.structure css
+// ---------------------- 
+ 
+// Round off the corners of the pages 
 
 div[data-role="page"],
 div[data-role="dialog"]{
-    .corner-all(@corner-page-element-rounded);
+    .corner-all(@cornerPage);
 }
 
-/*
-* Dialogs - Stripping a lot of the jMob stuff
-*/
+
+// Dialogs - Stripping a lot of the jMob stuff
 
 .ui-dialog .ui-content{
     margin: 0;
-    padding: @padding-page-inset;
+    padding: @paddingPage;
     width: auto;
 }
 
@@ -33,38 +29,38 @@ div[data-role="dialog"]{
 }
 
 .ui-content{
-    padding: 0 @padding-page-inset;
+    padding: 0 @paddingPage;
     .ui-content{
-        padding: @padding-page-inset;
+        padding: @paddingPage;
     }
 }
-.ui-content .ui-listview{margin: 0 -@padding-page-inset;}
-.ui-content .ui-listview-inset{margin: @padding-page-inset 0;}
-.ui-btn{margin: 0; margin-bottom: @padding-element-inset;}
+.ui-content .ui-listview{margin: 0 -@paddingPage;}
+.ui-content .ui-listview-inset{margin: @paddingPage 0;}
+.ui-btn{margin: 0; margin-bottom: @paddingElement;}
 .ui-btn-inner{padding: 9px 9px;}
 
 .ui-field-contain{
-    padding: 0 0 @padding-page-inset 0;
+    padding: 0 0 @paddingPage 0;
 }
 
 input.ui-input-text,
 textarea.ui-input-text {
     background:transparent;
-    border: @border-dark-on-light;
-    font-family:@txt-font-base;
+    border: @borderDarkOnLight;
+    font-family:@font;
     outline: 0;
     line-height: 1.4;
-    background-color: @color-bg-neutral-light;
-    color: @color-txt-medium-on-light;
-    font-size: @txt-size-base;
-    padding: @padding-element-inset;
+    background-color: @white;
+    color: @grayMediumOnLIght;
+    font-size: @font-size;
+    padding: @paddingElement;
     width: 100%;
     .border-box();
 }
 
 .ui-controlgroup,
 fieldset.ui-controlgroup{
-    margin: 0 0 @padding-page-inset 0;
+    margin: 0 0 @paddingPage 0;
 }
 
 .ui-grid-b{
@@ -72,7 +68,7 @@ fieldset.ui-controlgroup{
     .ui-block-b,
     .ui-block-c{
         .ui-btn{
-            margin-left: @padding-element-inset;
+            margin-left: @paddingElement;
         }
     }
 }
@@ -164,46 +160,47 @@ fieldset.ui-controlgroup{
 
 .ui-collapsible-set{
     margin: 0;
-    margin-bottom: @padding-page-inset * 2;
+    margin-bottom: @paddingPage * 2;
     li{
         list-style: none;
     }
 }
 
-/* Some extra paddy things */
+// Some extra paddy things 
+
 .ui-content{
     .inset-page-content{
-        padding: 0 @padding-page-inset;
+        padding: 0 @paddingPage;
         .ui-listview-inset{
-            margin-bottom:  @padding-page-inset * 2 ;
+            margin-bottom:  @paddingPage * 2 ;
         }
     }
 }
 
-/* Less CSS rework of jQuery Mobile Theme */
 
-/* links within "buttons" 
------------------------------------------------------------------------------------------------------------*/
+// links within "buttons" 
+// --------------------------- 
 
 a.ui-link-inherit {
 	text-decoration: none !important;
 }
 
-/* Active class states are defined for individual swatches in swatches.less
------------------------------------------------------------------------------------------------------------*/
+// Active class states are defined for individual swatches in swatches.less
+// --------------------------- 
+
 .ui-btn-active {
 }
 .ui-btn-active a.ui-link-inherit {
 }
 
-/* button inner top highlight
------------------------------------------------------------------------------------------------------------*/
+// button inner top highlight
+// --------------------------- 
 
 .ui-btn-inner {
 }
 
-/* corner rounding classes ** Lessified
------------------------------------------------------------------------------------------------------------*/
+// corner rounding classes ** Lessified
+// --------------------------- 
 
 .ui-corner-tl {.corner-tl();}
 .ui-corner-tr {.corner-tr();}
@@ -218,12 +215,9 @@ a.ui-link-inherit {
 .ui-corner-none {.corner-none();}
 
 
-/* Form field separator
------------------------------------------------------------------------------------------------------------*/
+// Interaction cues
+// --------------------------- 
 
-
-/* Interaction cues
------------------------------------------------------------------------------------------------------------*/
 .ui-disabled {
 	opacity:.9;
 }
@@ -237,20 +231,17 @@ a.ui-link-inherit {
 	zoom: 1;
 }
 
-/* Icons
------------------------------------------------------------------------------------------------------------*/
+// All icon related styles moved to icons.less 
+// --------------------------- 
 
-/* All icon related styles moved to icons.less */
-
-/* loading icon */
 .ui-icon-loading {
 	background: url(images/ajax-loader.gif);
 	background-size: 46px 46px;
 }
 
 
-/* Button corner classes 
------------------------------------------------------------------------------------------------------------*/
+// Button corner classes 
+// --------------------------- 
 
 .ui-btn-corner-tl {.corner-tl();}
 .ui-btn-corner-tr {.corner-tr();}
@@ -265,7 +256,7 @@ a.ui-link-inherit {
 .ui-btn-corner-none {.corner-none();}
 
 
-/* radius clip workaround for cleaning up corner trapping */
+// radius clip workaround for cleaning up corner trapping 
 .ui-corner-tl,
 .ui-corner-tr,
 .ui-corner-bl, 
@@ -287,8 +278,8 @@ a.ui-link-inherit {
   .background-clip-padding()
 }
 
-/* Overlay / modal
------------------------------------------------------------------------------------------------------------*/
+// Overlay / modal
+// --------------------------- 
 
 .ui-overlay {
   background: #666;
@@ -299,7 +290,7 @@ a.ui-link-inherit {
     height: 100%;
 }
 .ui-shadow {
-    .box-shadow(0 1px 4px @color-shadow-btn-on-light);
+    .box-shadow(0 1px 4px @shadowLighterOnLight);
 }
 .ui-bar-a .ui-shadow,
 .ui-bar-b .ui-shadow ,
@@ -309,8 +300,8 @@ a.ui-link-inherit {
     .box-shadow(inset 0 1px 1px rgba(0,0,0,0.2));
 }
 
-/* Focus state - set here for specificity (note: these classes are added by JavaScript)
------------------------------------------------------------------------------------------------------------*/
+// Focus state - set here for specificity (note: these classes are added by JavaScript)
+// --------------------------- 
 
 .ui-btn:focus {
     outline: 0;
@@ -321,22 +312,22 @@ a.ui-link-inherit {
     
 }
 
-/* unset box shadow in browsers that don't do it right
------------------------------------------------------------------------------------------------------------*/
+// unset box shadow in browsers that don't do it right
+// --------------------------- 
 
 .ui-mobile-nosupport-boxshadow * {
 	.box-shadow(none)!important;
 }
 
-/* ...and bring back focus */
+// ...and bring back focus
 .ui-mobile-nosupport-boxshadow .ui-focus,
 .ui-mobile-nosupport-boxshadow .ui-btn:focus {
 	outline-width: 1px;
 	outline-style: dotted;
 }
 
-/* Make up for things where killing corners doesn't yet work 
------------------------------------------------------------------------------------------------------------*/
+// Make up for things where killing corners doesn't yet work 
+// --------------------------- 
 
 *[data-shadow="false"] {
     .box-shadow(none)!important;
@@ -346,7 +337,7 @@ a.ui-link-inherit {
 }
     
 *[data-corners="false"]{
-    .corner-all(@corner-not-rounded)!important;
+    .corner-all(@cornerNone)!important;
     .ui-corner-tl,
     .ui-corner-tr,
     .ui-corner-bl, 
@@ -365,10 +356,10 @@ a.ui-link-inherit {
     .ui-btn-corner-right,
     .ui-btn-corner-left,
     .ui-btn-corner-all{
-        .corner-all(@corner-not-rounded)!important;
+        .corner-all(@cornerNone)!important;
     }
 }
 
-/*fouc*/
+// fouc
 .ui-mobile-rendering > * { visibility: hidden; }
 
