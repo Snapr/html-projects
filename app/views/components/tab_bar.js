@@ -1,12 +1,12 @@
 /*global _  define require */
-define(['backbone', 'auth', 'config'], function(Backbone, auth, config){
-var tab_bar = Backbone.View.extend({
+define(['views/base/view', 'auth', 'config'], function(view, auth, config){
+var tab_bar = view.extend({
 
     tagName: "div",
     active: null,
 
     initialize: function(){
-        this.template = _.template( $('#tab-bar-template').html() );
+        this.load_template('components/tab_bar');
         // auth.on('change', this.render, this);  // this is no longer needed because the bar is rendered every page change
     },
 
