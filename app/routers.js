@@ -47,35 +47,35 @@ var pages = [
     {
         name: 'user/followers',
         view: 'people',
-        element: 'people',
+        template: 'people',
         extra: {follow: "followers"}
     },
     {
         name: 'user/following',
         view: 'people',
-        element: 'people',
+        template: 'people',
         extra: {follow: "following"}
     },
     {
         name: 'user/search',
         view: 'people',
-        element: 'people'
+        template: 'people'
     },
     {
         name: 'user/profile',
-        element: 'user-profile'
+        template: 'user_profile'
     },
     {
         name: 'upload_xhr',
-        element: 'upload'
+        template: 'upload'
     },
     'foursquare_venues'
 ];
 
-function _make_route(view, el, extra_view_data){
+function _make_route(view_name, template, extra_view_data){
     // returns a function that will do all that's needed to show a page when called
-    // view: js file to require, provices a Backbone.View
-    // el: Selector for view's element
+    // view_name: js file to require, provices a Backbone.View
+    // template: template path
     // extra_view_data: extra params to load this view with every time
     var route = function(query_string, dialog, extra_instance_data){
         // query_string: query string
@@ -83,7 +83,7 @@ function _make_route(view, el, extra_view_data){
         // extra_instance_data: extra data to load this view this time only
 
         // get the view
-        require([view], function(view) {
+        require([view_name], function(view) {
 
             var query = get_query_params(query_string),
                 options = _.extend({
@@ -93,7 +93,8 @@ function _make_route(view, el, extra_view_data){
 
             // don't create a new instance of this view every time
             if(!route.cached_view){
-                options.el = $(el);
+                //options.el = $(el);
+                options.name = template;
                 // new view() initialises AND activates
                 route.cached_view = new view(options);
             }else{
@@ -176,22 +177,22 @@ var routers = Backbone.Router.extend({
     // build our page array into backbone routes
     initialize: function() {
         _.each(this.pages, function(options){
-            var name, view, extra_data, element;
+            var name, view, extra_data, template;
 
             // the page can just be a name or an object specifing more properties
             if(_.isObject(options)){
                 view = "views/" + options.view;
                 extra_data = options.extra;
-                element = "#" + options.element;
+                template = options.template;
                 name = options.name;
             }else{
                 // if it's just a name, build the other params
                 view = "views/" + options.replace('-', '_').replace('/', '_');
-                element = "#" + options;
+                template = options.replace('-', '_').replace('/', '_');
                 name = options;
             }
 
-            var callback = _make_route(view, element, extra_data);
+            var callback = _make_route(view, template, extra_data);
             var regex = new RegExp('^' + name + '\\/\\??(.*?)?$');
 
             // store url so we can manually look them up (for dialogues)

@@ -263,7 +263,7 @@ var map_view = page_view.extend({
 
         if (this.map_query.get('show_photos')) {
 
-            this.$el.addClass('loading');    
+            this.$el.addClass('loading');
 
             this.thumb_collection.data = _.clone(this.photo_query.attributes);
             this.thumb_collection.data.area = this.map.getBounds().toUrlValue(4);
@@ -314,7 +314,7 @@ var map_view = page_view.extend({
     },
 
     spots_get: function(){
-        
+
         var map_view = this,
             old_spot_ids = this.spot_collection.pluck("id");
 
@@ -323,9 +323,9 @@ var map_view = page_view.extend({
             this.$el.addClass('loading');
 
             this.spot_collection.data = _.clone(this.spot_query.attributes);
-            
+
             this.spot_collection.data.area = this.map.getBounds().toUrlValue(4);
-            
+
             if(this.spot_query.has('spot_id')){
                 this.spot_collection.data.n=1;
             }

@@ -1,0 +1,56 @@
+<div id="spots" data-title="Spots" data-add-back-btn="true" data-role="page" data-theme="d">
+    <div data-role="header" data-theme="b">
+        <h1>Spots</h1>
+
+        <div class="ui-btn-right" data-ajax="false">
+            <a href="#/search/" data-snapr-dialog="true" data-role="button" data-icon="search" data-iconpos="notext"></a>
+            <a href="#/" data-role="button" data-icon="home" data-iconpos="notext"></a>
+        </div>
+    </div>
+
+    <div data-role="content" data-theme="d" data-ajax="false">
+        <div class="page-inset-header ui-body-c spots-search-header search-header">
+            <div class="ui-content">
+                <form id="spots-search" class="all-categories">
+                    <input type="search" id="spot-search" value="" placeholder="Venue Name&hellip;" />
+
+                    <div class="spots-search-filters">
+                        <span class="category-btn">
+                            <select data-theme="c" name="category" id="options-category" data-native-menu="true">
+                                <option value='all' id='location-anywhere'>Everything</option>
+                                <option value='food' id="category-nearby">Food and Drink</option>
+                                <option value='nightlife-spots' id="category-nightlife-spots">Nightlife Spots</option>
+                                <option value='arts-and-entertainment' id="category-arts-and-entertainment">Arts &amp; Entertainment</option>
+                                <option value='great-outdoors' id="category-great-outdoors">Great Outdoors</option>
+                                <option value='shops' id="category-shops">Shops</option>
+                            </select>
+                        </span>
+
+                        <div class="ui-grid-a">
+                            <div class="ui-block-a">
+                                <select data-theme="c" name="category" id="options-location" data-native-menu="true">
+                                    <option value='nearby' id='location-nearby'>Nearby</option>
+                                    <option value='anywhere' id="location-anywhere">Anywhere</option>
+                                </select>
+                            </div>
+                            <div class="ui-block-b">
+                                <select data-theme="c" name="sort" id="options-sort" data-native-menu="true">
+                                    <option value='weighted_score' id='options-weighted_score'>Hotspots</option>
+                                    <option value='distance' id="options-distance">Nearest First</option>
+                                    <option value='alphabetical' id="options-alphabetical">Alphabetical</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+       </div>
+
+       <div class="spots-results-content">
+           <ul class="spots">
+           </ul>
+       </div>
+
+   </div>
+</div>

@@ -41,19 +41,6 @@
         </div><!-- /footer -->
     </script>
 
-    <!-- @menu HOME PAGE-->
-       <div id="home" data-title="Snapr" data-role="page" data-short-title="Menu" data-theme="d" class="" data-ajax="false">
-           <div data-role="header" data-theme="b">
-              <div class="auth-header"></div>
-
-              <div class="ui-btn-right">
-                 <a href="#/search/" data-snapr-dialog="true" data-role="button" data-icon="search" data-iconpos="notext"></a>
-              </div>
-           </div>
-           <div data-role="content" class="menu-main" data-theme="e">
-           </div><!-- /content -->
-       </div><!-- /page -->
-
       <!-- auth header section -->
       <script id="auth-header-template" type="text/template">
         <div class="ui-btn-left join-block">
@@ -68,114 +55,6 @@
         </div>
       </script>
 
-       <script id="home-template" type="text/template">
-               <ul class="menu-btns">
-                   <li>
-                       <div class="centered-title">
-                       <h4>
-                       Maximum Viable Product</br>
-                      Snapr Sample App
-                       </h4>
-                       <span class="ui-icon ui-icon-big-arrow-d extra-icons"></span>
-                       </div>
-                   </li>
-
-                  <li>
-                       <!-- Camera Button -->
-                       <a class="x-launch-camera" data-extra_params="comp_id=1" data-role="button" data-iconpos="left" data-icon="main-menu-camera">Shoot</a>
-                   </li>
-
-                   <li>
-                       <!-- Login / Image Library Button -->
-                       <% if (logged_in) {%>
-                               <a class="x-launch-photo-library" data-extra_params="comp_id=1" data-role="button" data-iconpos="left" data-icon="main-menu-camera-lib">Camera Roll</a>
-                        <%}else{%>
-                             <a href="#/login/" data-snapr-dialog="true" data-role="button" data-iconpos="left" data-icon="main-menu-login">Log In</a>
-                       <%}%>
-                   </li>
-
-                    <li>
-                       <!-- Dash Button -->
-                       <a href="#/dash/" data-role="button" data-iconpos="left" data-icon="main-menu-dashboard">Dashboard</a>
-                   </li>
-
-                   <li>
-                       <!-- Image Feed Button -->
-                       <% if (logged_in) {%>
-                           <a href="#/feed/?username=<%=username%>" data-role="button" data-iconpos="left" data-icon="main-menu-feed">
-                           My Snaps
-                           </a>
-                           <span class="upload-count">&nbsp;</span>
-                       <%}else{%>
-                           <a href="#/feed/" data-role="button" data-iconpos="left" data-icon="main-menu-feed">Latest</a>
-                       <%}%>
-                   </li>
-
-
-                   <li>
-                       <!-- Popular Button -->
-                        <a href="#/popular/" data-role="button" data-iconpos="left" data-icon="main-menu-popular">Popular</a>
-
-                   </li>
-
-
-                    <li>
-                       <!-- Map Button -->
-                       <a href="#/map/" data-shadow="false" data-role="button" data-iconpos="left" data-icon="main-menu-map">Map</a>
-
-                    </li>
-
-                    <li>
-                    <!-- My Account / Welcome Button -->
-                    <% if(logged_in) { %>
-                        <a href="#/my-account/" data-role="button" data-iconpos="left" data-icon="main-menu-my-account">My Account</a>
-                    <% }else{ %>
-                        <a href="#/welcome/" data-role="button" data-iconpos="left" data-icon="main-menu-join">Welcome</a>
-                    <% } %>
-
-                    </li>
-
-                    <li>
-                    <!-- Cities Button -->
-                     <a href="#/cities/" data-role="button" data-iconpos="left" data-icon="main-menu-cities">Cities</a>
-
-                    </li>
-
-                    <li>
-                    <!-- Spots Button -->
-                    <a href="#/spots/" data-role="button" data-iconpos="left" data-icon="main-menu-spots">Spots</a>
-
-                    </li>
-
-                    <li>
-                       <!-- Activity / About Button -->
-                       <% if(logged_in) { %>
-                           <a href="#/activity/" data-role="button" data-iconpos="left" data-icon="main-menu-activity">Activity</a>
-                       <% }else{ %>
-                           <a href="#/about/" data-role="button" data-iconpos="left" data-icon="main-menu-info">About</a>
-                        <% } %>
-                    </li>
-
-                    <li>
-                    <!-- Leaderboard Button -->
-                     <a href="#/leaderboard/" data-role="button" data-iconpos="left" data-icon="main-menu-leaderboard">Leaderboard</a>
-
-                    </li>
-
-                    <li>
-                    <!-- Tumblr Button -->
-                     <a href="#/tumblr-posts/" data-role="button" data-iconpos="left" data-icon="main-menu-tumblr">Tumblr</a>
-
-                    </li>
-
-
-
-               </ul>
-
-               <div class="menu-stream thumbs-block">
-               </div>
-       </script>
-
        <script id="nearby-photostream-template" type="text/template">
           <div class="thumbs-block-overlay">
              <a id="home-nearby-link" data-iconpos="right" data-icon="arrow-r" data-role="button" class="centered-btn">&nbsp;</a>
@@ -188,26 +67,6 @@
        <script id="nearby-photstream-item-template" type="text/template">
          <img src="https://s3.amazonaws.com/media-server2.snapr.us/thm2/<%= photo.get('secret') %>/<%= photo.get('id') %>.jpg" alt="snapr mob" class="thumb-image thumb-med">
        </script>
-
-    <!-- @myaccount PAGE -->
-    <div id="my-account"  data-tab-bar="true" data-title="My Account" data-role="page" data-short-title="My Account" data-theme="d">
-        <div data-role="header" data-theme="b">
-            <div class="ui-btn-left" data-ajax="false">
-                <a data-role="button" data-rel="back">Menu</a>
-            </div>
-
-            <h1>My Account</h1>
-
-            <div class="ui-btn-right" data-ajax="false">
-                <a href="#/search/" data-snapr-dialog="true" data-role="button" data-icon="search" data-iconpos="notext"></a>
-                <a href="#/" data-role="button" data-icon="home" data-iconpos="notext"></a>
-            </div>
-        </div>
-        <div data-role="content" data-theme="c" data-ajax="false">
-            <div class="account-content">
-            </div>
-        </div>
-    </div>
 
     <!--  Fake template for my-account while loading -->
     <script id="my-account-initial-template" type="text/template">
@@ -249,14 +108,11 @@
     <div class="myaccount-header page-inset-header ui-body-c">
         <div class="ui-content">
 
-
-
          <a class="username" href="#/feed/?username=<%= username %>">
                 <div class="user-icon-small" style="background-image: url('<%= config.get('avatar_url') %>/<%= user_id %>?size=large&_salt=<%= settings.profile.avatar_type %>');"></div>
                 <%= display_username %>
             </a>
                 <a href="#/logout/" class="logout-button" data-role="button" data-icon="delete" data-iconpos="right">Logout</a>
-
 
         </div>
 
@@ -305,8 +161,6 @@
 
                    </div>
 
-
-
                 </fieldset>
 
                 <fieldset data-role="controlgroup">
@@ -331,7 +185,6 @@
                     <label for="my-account-bio">Bio</label>
                     <textarea name="my-account-bio" id="my-account-bio" class="custom"><%= settings.profile.bio || "" %></textarea>
                 </fieldset>
-
 
                  <div class="ui-grid-b">
                         <div class="ui-block-a"></div>
@@ -477,14 +330,8 @@
           </a>
          <div class="linked-services" data-role="collapsible-set" data-theme="c" data-content-theme="d">
 
-
          </div>
          </p><!-- Close Content for Master Collapsible Sett -->
-
-
-
-
-
 
     </div>
     </script>
@@ -504,26 +351,6 @@
     <% } %>
 
     </script>
-
-    <!-- @linked @service PAGE list currently linked services and add new ones -->
-    <div id="linked-services" data-title="Linked Services" data-role="dialog" data-ajax="false">
-        <div data-role="header">
-            <h1>Linked Services</h1>
-            <a class="x-back" data-role="button" data-icon="delete" data-iconpos="notext"></a>
-        </div>
-        <div data-role="content">
-            <div class="services-content">
-                <h2 class="tolink-message"></h2>
-                <h4>Connect</h4>
-                <ul class=" add-services" data-role="listview">
-                </ul>
-                <h4>Linked Services</h4>
-                <div class="linked-services">
-                </div>
-
-            </div>
-        </div>
-    </div>
 
     <!-- @link @service ITEMfor linking a service in #linked-services -->
     <script id="add-linked-service-template" type="text/template">
@@ -620,7 +447,6 @@
                 </select>
             </div>
 
-
         <% break; case 'tumblr': %>
             <h3>
             <span class="tumblr-sharing sharing-icon-small">
@@ -636,14 +462,12 @@
                 </select>
             </div>
 
-
         <% break; case 'facebook': %>
             <h3>
             <span class="facebook-sharing sharing-icon-small">
                 <span class="ui-icon"></span>
             </span>
            <%= service.get('username') %></h3>
-
 
             <div data-role="fieldcontain" class="switch-setting">
                 <span class="setting-label">Show Facebook in my Profile</span>
@@ -670,91 +494,6 @@
         </div>
     </script>
 
-
-     <!-- @findfriends PAGE-->
-    <div id="find-friends"  data-title="Find Friends" data-role="dialog" data-overlay-theme="c" data-theme="c">
-        <div data-role="header" data-theme="c">
-            <h1>Find Friends</h1>
-
-            <a class="x-back" data-ajax="false" data-role="button" data-icon="delete" data-iconpos="notext" data-transition="none"></a>
-        </div>
-        <div data-role="content" data-theme="d" data-ajax="false">
-            <div class="inset-page-content">
-                <ul data-role="listview" data-ajax="false" class="share-icons-list" data-inset="true" data-theme="d">
-                    <li>
-                        <a class="find-friends-link" data-back-here="true" href="#/find-friends-facebook/">
-                            <span class="facebook-sharing sharing-icon-small">
-                                <span class="ui-icon"></span>
-                            </span>
-                            Facebook
-                         </a>
-                    </li>
-                    <li>
-                        <a class="find-friends-link" data-back-here="true" href="#/find-friends-twitter/">
-                            <span class="twitter-sharing sharing-icon-small">
-                                <span class="ui-icon"></span>
-                            </span>
-                            Twitter
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
-     <!-- @findfriendstwitter DIALOG-->
-       <div id="find-friends-twitter" data-title="Find Friends" data-role="dialog" data-overlay-theme="c" data-theme="c">
-           <div data-role="header" data-theme="c">
-               <h1>Twitter Friends</h1>
-               <a class="x-back" data-ajax="false" data-role="button" data-icon="delete" data-iconpos="notext"></a>
-           </div>
-           <div data-role="content" data-theme="c" data-ajax="false">
-               <div class="search-header">
-                   <input type="search" id="people-search-twitter" value="" placeholder="@username&hellip;" autocapitalize="off" autocorrect="off"/>
-               </div>
-
-               <ul class="helper-content">
-                </ul>
-
-               <ul class="people-list " data-role="listview" data-inset="true" >
-               </ul>
-
-           </div>
-       </div>
-
-       <!-- @findfriendsfacebook DIALOG-->
-         <div id="find-friends-facebook" data-title="Find Friends" data-role="dialog" data-overlay-theme="c" data-theme="c">
-             <div data-role="header" data-theme="c">
-                 <h1>Facebook Friends</h1>
-                 <a class="x-back" data-ajax="false" data-role="button" data-icon="delete" data-iconpos="notext"></a>
-             </div>
-             <div data-role="content" data-theme="c" data-ajax="false">
-                 <div class="search-header">
-                     <input type="search" id="people-search-facebook"  value="" placeholder="Search Friends&hellip;" autocorrect="off"/>
-                 </div>
-                  <ul class="helper-content">
-                </ul>
-                 <ul class="people-list " data-role="listview" data-inset="true" >
-                 </ul>
-             </div>
-         </div>
-
-
-    <!-- @connect -->
-    <div id="connect" data-role="page" data-title="Connect" data-ajax="false">
-        <div data-role="header" data-theme="c">
-            <h1>Connect</h1>
-            <a href="#/" data-role="button" data-icon="delete" data-iconpos="notext" class="x-close"></a>
-        </div>
-        <div data-role="content" data-theme="d">
-            <div class="inset-page-content">
-                <p>Please link up for sharing:</p>
-                <ul data-role="listview" data-ajax="false" class="add-services" data-inset="true" data-theme="d">
-                </ul>
-            </div>
-        </div>
-    </div>
-
     <!-- template for connecting services -->
     <!-- vars provider, status -->
     <!-- wrapped in = <li data-role="fieldcontain"> -->
@@ -772,100 +511,6 @@
     </a>
     </script>
 
-
-    <!-- @tumblr xauth (for testing - go to #/tumblr-xauth/) -->
-    <div id="tumblr-xauth" data-role="dialog" data-overlay-theme="a" data-theme="a" class="special-bg tumblr-bg">
-       <div data-role="header" data-theme="a">
-           <h1>Connect</h1>
-           <a class="x-back" data-role="button" data-icon="delete" data-iconpos="notext"></a>
-       </div>
-
-       <div data-role="content" data-ajax="false" data-theme="d">
-           <div class="login-message">
-           </div>
-           <form action="javascript: void(0);" accept-charset="utf-8" id="tumblr-dialog" name="tumblr-dialog">
-                <ul data-role="listview" data-inset="true" data-theme="d">
-                    <li data-role="fieldcontain" class="ui-hide-label">
-                        <label for="username">Tumblr Email</label>
-                        <input type="text" name="username" placeholder="Tumblr Email" autocapitalize="off" autocorrect="off" id="tumblr-username" >
-                    </li>
-                    <li data-role="fieldcontain" class="ui-hide-label">
-                        <label for="password">Password</label>
-                        <input type="password" name="password" placeholder="Password" id="tumblr-password">
-                   </li>
-                </ul>
-
-                <!-- So pressing enter will still submit form, but so we can also add custom gfx to the button -->
-                <div class="invisible-submit-button">
-                    <input type="submit" name="tumblr-dialog" data-theme="e" value="Connect Tumblr">
-                </div>
-                <a data-role="button" class="tumblr-button logo-button" data-theme="e">
-                    Connect <span class="tumblr-logo button-logo">Tumblr</span>
-                </a>
-
-           </form>
-       </div>
-   </div><!-- /page -->
-
-
-    <!-- @twitter xauth (for testing - go to #/twitter-xauth/) -->
-    <div id="twitter-xauth" data-role="dialog" data-overlay-theme="c" data-theme="c" class="special-bg twitter-bg">
-       <div data-role="header" data-theme="c">
-           <h1>Connect</h1>
-           <a class="x-back" data-role="button" data-icon="delete" data-iconpos="notext"></a>
-       </div>
-
-       <div data-role="content" data-ajax="false" data-theme="d">
-           <div class="login-message">
-           </div>
-           <form action="javascript: void(0);" accept-charset="utf-8" id="twitter-dialog" name="twitter-dialog">
-                <ul data-role="listview" data-inset="true" data-theme="d">
-                    <li data-role="fieldcontain" class="ui-hide-label">
-                        <label for="username">@username</label>
-                        <input type="text" name="username" placeholder="@username" autocapitalize="off" autocorrect="off" id="twitter-username" >
-                    </li>
-                    <li data-role="fieldcontain" class="ui-hide-label">
-                        <label for="password">Password</label>
-                        <input type="password" name="password" placeholder="Password" id="twitter-password">
-                   </li>
-                </ul>
-                <!-- So pressing enter will still submit form, but so we can also add custom gfx to the other button -->
-                <div class="invisible-submit-button">
-                    <input type="submit" name="twitter-dialog" data-theme="e" value="Connect Twitter">
-                </div>
-                <a data-role="button" class="twitter-button logo-button" data-theme="e">
-                    Connect <span class="twitter-logo button-logo">Twitter</span>
-                </a>
-           </form>
-       </div>
-   </div><!-- /page -->
-
-
-    <!-- @popular PAGE -->
-    <div id="popular" data-title="Popular" data-tab-bar="true" data-add-back-btn="true" data-role="page" data-theme="d">
-        <div data-role="header" data-theme="b">
-            <h1>Popular</h1>
-
-            <div class="ui-btn-right" data-ajax="false">
-                <a href="#/search/" data-snapr-dialog="true" data-role="button" data-icon="search" data-iconpos="notext"></a>
-                <a href="#/" data-role="button" data-icon="home" data-iconpos="notext"></a>
-            </div>
-
-        </div>
-        <div data-role="content" data-theme="d" data-ajax="false">
-             <div data-role="navbar" data-theme="e" class="ui-body-e">
-                    <ul id="popular-timeframe">
-                        <li><a id="popular-time-today">Today</a></li>
-                        <li><a id="popular-time-week">Week</a></li>
-                        <li><a id="popular-time-all">All</a></li>
-                    </ul>
-                </div>
-            <div id="popular-thumbs" class="thumbs-grid thumbs-grid-med">
-            </div>
-        </div>
-
-    </div><!-- /page -->
-
     <!-- @thumb @image ITEM -->
     <script id="thumb-li-template" type="text/template">
         <% _.each( results, function( item, i ){ %>
@@ -874,44 +519,6 @@
         </a>
         <% }); %>
     </script>
-
-    <!-- @feed PAGE the main image display view -->
-    <div id="feed" data-role="page" data-tab-bar="true" data-title="Feed" data-theme="d" data-add-back-btn="true">
-        <div data-role="header" data-theme="b">
-            <div class="ui-grid-b">
-                <div class="ui-block-a">
-                </div>
-                <div class="ui-block-b " data-ajax="false">
-                    <fieldset data-role="controlgroup" data-type="horizontal" class="feed-view-toggle dark-icons">
-                        <input type="radio" name="feed-view-list" id="feed-view-list" value="list" >
-                        <label for="feed-view-list"><span class="ui-icon ui-icon-list-view"></span>List</label>
-                        <input type="radio" name="feed-view-grid" id="feed-view-grid" value="grid">
-                        <label for="feed-view-grid"><span class="ui-icon ui-icon-grid-view"></span>Grid</label>
-                    </fieldset>
-                </div>
-            </div>
-
-            <div class="ui-btn-right" data-ajax="false">
-                <a href="#/search/" data-snapr-dialog="true" data-role="button" data-icon="search" data-iconpos="notext"></a>
-                <a href="#/" data-role="button" data-icon="home" data-iconpos="notext"></a>
-            </div>
-        </div>
-
-        <div class="feed-content" data-role="content" data-theme="d" data-ajax="false">
-            <div class="feed-upload-progress upload-progress-header page-inset-header">
-                <ul class="feed-upload-list" data-role="listview">
-                </ul>
-            </div>
-            <div class="main-feed-content">
-                <div class="feed-header"></div>
-
-                <ul id="feed-images" class="gallery"></ul>
-
-                <div class="v-feed-more"></div>
-            </div>
-        </div>
-
-    </div><!-- /page -->
 
     <script id="feed-more-button" type="text/template">
         <div class="feed-footer inline-footer ui-body-c">
@@ -998,7 +605,6 @@
        </div>
        </script>
 
-
     <!-- @feed @image ITEM correct one -->
     <script id="feed-li-list-template" type="text/template">
 
@@ -1023,7 +629,6 @@
                 </span>
                 <% }%>
             </div>
-
 
             <div class="image-item">
 
@@ -1068,7 +673,6 @@
 
                     <span class="v-show-all-button inline-btn"></span>
                 </div>
-
 
                 <ul data-inset="true" class="reactions-list ">
                 </ul>
@@ -1164,15 +768,6 @@
         <strong>Queue Paused</strong>
         <span class="small-text">Resume?</span>
     </a>
-
-    <!-- @profile DIALOG-->
-    <div id="user-profile" data-role="dialog" data-overlay-theme="c" data-theme="c" data-ajax="false">
-        <div data-role="header" data-theme="c">
-            <h1>Profile</h1>
-            <a class="x-back" data-role="button" data-icon="delete" data-iconpos="notext"></a>
-        </div>
-        <div data-role="content" class="user-profile"></div>
-    </div>
 
     <script id="user-profile-template" type="text/template">
     <!-- inset block of content w/ icon -->
@@ -1277,82 +872,6 @@
 
     </script>
 
-    <!-- @dashboard PAGE -->
-       <div id="dash" data-title="Dash" data-tab-bar="true" data-add-back-btn="true" data-role="page" data-theme="d">
-           <div data-role="header" data-theme="b">
-               <h1>Dash</h1>
-
-               <div class="ui-btn-right" data-ajax="false">
-                   <a class="x-edit-dash" data-role="button" data-icon="settings" data-iconpos="notext"></a>
-                   <a href="#/" data-role="button" data-icon="home" data-iconpos="notext"></a>
-               </div>
-
-           </div>
-           <div data-role="content" data-theme="d" data-ajax="false">
-               <div class="dash-wrapper">
-                   <ul class="image-streams">
-                        <li class="image-stream" id="upload-popular-nearby">
-                            <a class="ui-bar top-left-arrow x-details" data-role="button" data-iconpos="right" data-icon="arrow-r" data-theme="e">
-                                <span class="image-details">
-                                    <span class="ui-icon ui-icon-nearby extra-icons"></span>
-                                    <em>Nearby</em>
-                                </span>
-                            </a>
-                            <div id="upload-popular-nearby-images" class="thumbs-grid thumbs-grid-med x-loading x-scroll-area">
-                                <div class="x-scroll-wrapper"><!-- inner div for scroll -->
-                                    <div class="x-left-pull thumb-med load-more-inline">
-                                        <span class="ui-icon ui-icon-refresh"></span>
-                                        <span class="ui-btn-text x-msg">Refresh</span>
-                                    </div>
-                                    <div class="x-thumbs"></div>
-                                </div>
-                            </div>
-                        </li>
-                   </ul>
-
-                    <div class="helper-content dash-welcome ui-content-inset" style="display:none;">
-                       <a class="ui-bar top-no-arrow" data-role="button"  data-theme="c">
-                           <em>Welcome</em>
-                        </a>
-                        <div class="ui-body-c ui-body">
-                           <div class="ui-icon helper-icons ui-icon-dash">
-                            </div>
-                            <p class="icon-left">
-                               Add your favorite people, or a search for something you want to keep track of.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-               <div class="dash-footer inline-footer ui-body-c ">
-                   <div class="ui-content ui-grid-a">
-                       <div class="ui-block-a">
-                           <a class="more x-add-person" data-role="button" data-iconpos="top" data-icon="person">Add a Person</a>
-                       </div>
-                       <div class="ui-block-b">
-                           <a class="more x-add-search" data-role="button" data-iconpos="top" data-icon="search">Add a Search</a>
-                       </div>
-                   </div>
-               </div>
-
-               <div class="dash-edit-done inline-footer ui-body-c ">
-                      <div class="ui-content ui-grid-b">
-                          <div class="ui-block-a">
-
-                          </div>
-                          <div class="ui-block-b">
-
-                          </div>
-                          <div class="ui-block-c">
-                              <a data-role="button" data-iconpos="right" data-icon="check" class="x-edit-dash">Done</a>
-                          </div>
-                      </div>
-                  </div>
-
-           </div>
-
-
-       </div><!-- /page -->
         <script id="dash-stream-template" type="text/template">
         <% if(collection.length){%>
             <a class="ui-bar top-left-arrow x-details" data-query="<%= escape($.param(model.get("query"))) %>" data-role="button" data-iconpos="right" data-icon="arrow-r" data-theme="e">
@@ -1403,71 +922,6 @@
                 <img src="https://s3.amazonaws.com/media-server2.snapr.us/thm2/<%= photo.get('secret') %>/<%= photo.get('id') %>.jpg" <% if(photo.get('description')){ %>alt="<%= photo.get('description') %>"<% } %> class="thumb-image thumb-med">
             </a><% }); %>
         </script>
-
-        <!-- @dashaddperson DIALOG-->
-       <div id="dash-add-person" data-role="dialog" data-overlay-theme="c" data-theme="c">
-           <div data-role="header" data-theme="c">
-               <h1>Add Person</h1>
-               <a class="x-back" data-role="button" data-icon="delete" data-iconpos="notext"></a>
-           </div>
-           <div data-role="content" data-theme="c" data-ajax="false">
-               <div class="search-header">
-                   <input type="search" id="people-search" value="" placeholder="Username&hellip;" autocapitalize="off" autocorrect="off"/>
-               </div>
-               <ul class="people-list " data-role="listview" data-inset="true" >
-               </ul>
-           </div>
-       </div>
-
-     <!-- @dashaddsearch DIALOG-->
-     <div id="dash-add-search" data-role="dialog" data-overlay-theme="c" data-theme="c" data-ajax="false">
-         <div data-role="header" data-theme="c">
-             <h1>Add Search</h1>
-             <a class="x-back" data-role="button" data-icon="delete" data-iconpos="notext"></a>
-         </div>
-         <div data-role="content" data-theme="d">
-             <div class="inset-page-content">
-
-                 <form action="javascript: void(0);" accept-charset="utf-8" id="search-form">
-                     <ul data-role="listview" data-inset="true" data-theme="d">
-                         <li data-role="fieldcontain" class="ui-hide-label">
-                             <input type="text" placeholder="Keyword&hellip;" autocapitalize="off" id="dash-search-keywords">
-                        </li>
-                        <li data-role="fieldcontain" class="ui-hide-label has-select">
-                            <select id="dash-search-type" data-theme="c">
-                                 <option value="">Anywhere</option>
-                                 <option value="1000">Nearby (1km)</option>
-                                 <option value="5000">Nearby (5km)</option>
-                                 <option value="20000">Nearby (20km)</option>
-                            </select>
-                        </li>
-                    </ul>
-                    <input type="submit" data-theme="e" value="Search">
-
-                 </form>
-             </div>
-         </div>
-     </div><!-- /page -->
-
-
-       <!-- @activity PAGE -->
-             <div id="activity" data-title="Activity" data-add-back-btn="true" data-role="page" data-theme="d" data-tab-bar="true">
-                 <div data-role="header" data-theme="b">
-                     <h1>Activity</h1>
-
-                      <div class="ui-btn-right" data-ajax="false">
-                          <a href="#/search/" data-snapr-dialog="true" data-role="button" data-icon="search" data-iconpos="notext"></a>
-                         <a href="#/" data-role="button" data-icon="home" data-iconpos="notext"></a>
-                     </div>
-                 </div>
-                 <div data-role="content" data-theme="d" data-ajax="false">
-                     <ul class="activity-streams">
-                     </ul>
-
-                 </div>
-
-
-             </div><!-- /page -->
 
     <script id="activity-stream-template" type="text/template">
      <!-- // Write in a bar only if there are photo events in the activity stream -->
@@ -1590,37 +1044,6 @@
         <%}%>
     </script>
 
-    <!-- @cities PAGE -->
-    <div id="cities" data-title="Cities" data-add-back-btn="true" data-role="page" data-theme="d">
-       <div data-role="header" data-theme="b">
-           <h1>Cities</h1>
-
-           <div class="ui-btn-right" data-ajax="false">
-               <!-- <a class="x-edit-dash" data-role="button" data-icon="settings" data-iconpos="notext"></a> -->
-               <a href="#/" data-role="button" data-icon="home" data-iconpos="notext"></a>
-           </div>
-
-       </div>
-       <div data-role="content" data-theme="a" data-ajax="false">
-           <ul class="image-streams">
-               <!-- Streams get injected here -->
-               <li class="image-stream">
-                <a class="ui-bar ui-bar-b x-details" data-role="button" data-theme="b">
-                    <span class="image-details x-details">
-                        <span class="ui-icon ui-icon-redheart extra-icons"></span>
-                        <em></em>
-                        <span class="image-tag x-tag"></span>
-                        <span class="image-time small-text">
-                            <span class="ui-icon ui-icon-clock extra-icons"></span>
-                            <span class="x-date"></span>
-                        </span>
-                    </span>
-
-                </a>
-           </li>
-           </ul>
-       </div>
-    </div><!-- /page -->
     <script id="cities-stream-template" type="text/template">
             <a class="ui-bar ui-bar-b top-left-arrow x-details" data-query="<%= escape(feed_param) %>" data-city="<%= details.name %>" data-role="button" data-iconpos="right" data-icon="arrow-r" data-theme="b">
                 <span class="image-details x-details">
@@ -1654,21 +1077,6 @@
             </a><% }); %>
         </script>
 
-    <!-- @people PAGE-->
-    <div id="people" data-role="dialog" data-overlay-theme="c" data-theme="c" data-ajax="false" data-add-back-btn="false">
-        <div data-role="header" data-theme="c">
-            <h1>People</h1>
-            <a class="x-back" data-role="button" data-icon="delete" data-iconpos="notext"></a>
-        </div>
-        <div data-role="content" data-theme="c">
-            <div class="search-header">
-                <input type="search" id="people-search" value="" placeholder="Search&hellip;" autocapitalize="off" autocorrect="off"/>
-            </div>
-            <ul class="people-list" data-role="listview" data-inset="true" data-theme="c" data-split-theme="c" data-corners="false" data-shadow="false">
-            </ul>
-        </div>
-    </div>
-
     <!-- @person ITEM-->
     <script id="people-li-template" type="text/template">
            <a href="#/feed/?username=<%= user.get('username') %>" data-username="<%= user.get('display_username') %>">
@@ -1695,21 +1103,6 @@
            <%}%>
        </script>
 
-       <!-- @leaderboard PAGE-->
-       <div id="leaderboard" data-title="Leaderboard" data-role="dialog" data-overlay-theme="c" data-theme="c" data-ajax="false" data-add-back-btn="false">
-           <div data-role="header" data-theme="c">
-               <h1>Leaderboard</h1>
-               <a class="x-back" data-role="button" data-icon="delete" data-iconpos="notext"></a>
-           </div>
-           <div data-role="content" data-theme="c">
-               <div class="info-header">
-                   <p class="message">Each photo you take earns points. Get bonus points for sharing to social networks and if people comment on and like your images.
-               </div>
-               <ul class="people-list leaderboard-list" data-role="listview" data-inset="true" data-theme="c" data-split-theme="c" data-corners="false" data-shadow="false">
-               </ul>
-           </div>
-       </div>
-
        <!-- @leaderboardPerson ITEM-->
        <script id="leaderboard-li-template" type="text/template">
               <a href="#/feed/?username=<%= user.get('username') %>" data-username="<%= user.get('username') %>">
@@ -1723,25 +1116,6 @@
               </a>
           </script>
 
-
-
-       <!-- @venues PAGE-->
-       <div id="foursquare_venues" data-role="dialog" data-overlay-theme="c" data-theme="c" data-ajax="false">
-           <div data-role="header" data-theme="c">
-               <h1>Venues</h1>
-                <a class="x-back" data-role="button" data-icon="delete" data-iconpos="notext"></a>
-           </div>
-           <div data-role="content" data-theme="c">
-               <div class="search-header">
-                    <form class="venue-search">
-                       <input type="search" id="venue-search" value="" placeholder="Search&hellip;" autocapitalize="off" autocorrect="off"/>
-                   </form>
-               </div>
-               <ul class="venue-list " data-role="listview" data-inset="true" >
-               </ul>
-           </div>
-       </div>
-
         <!-- @venue ITEM-->
         <script id="venue-li-template" type="text/template">
             <a>
@@ -1753,72 +1127,6 @@
             <a data-icon="check" data-iconpos="right" class="select"></a>
             <%}%>
         </script>
-
-
-        <!-- @spots PAGE -->
-        <div id="spots" data-title="Spots" data-add-back-btn="true" data-role="page" data-theme="d">
-             <div data-role="header" data-theme="b">
-                 <h1>Spots</h1>
-
-                  <div class="ui-btn-right" data-ajax="false">
-                      <a href="#/search/" data-snapr-dialog="true" data-role="button" data-icon="search" data-iconpos="notext"></a>
-                     <a href="#/" data-role="button" data-icon="home" data-iconpos="notext"></a>
-                 </div>
-             </div>
-             <div data-role="content" data-theme="d" data-ajax="false">
-                 <div class="page-inset-header ui-body-c spots-search-header search-header">
-                     <div class="ui-content">
-                     <form id="spots-search" class="all-categories">
-                         <input type="search" id="spot-search" value="" placeholder="Venue Name&hellip;" />
-
-                         <div class="spots-search-filters">
-                             <span class="category-btn">
-                                 <select data-theme="c" name="category" id="options-category" data-native-menu="true">
-                                     <option value='all' id='location-anywhere'>Everything</option>
-                                     <option value='food' id="category-nearby">Food and Drink</option>
-                                     <option value='nightlife-spots' id="category-nightlife-spots">Nightlife Spots</option>
-                                     <option value='arts-and-entertainment' id="category-arts-and-entertainment">Arts &amp; Entertainment</option>
-
-                                     <option value='great-outdoors' id="category-great-outdoors">Great Outdoors</option>
-                                     <option value='shops' id="category-shops">Shops</option>
-
-                                 </select>
-                             </span>
-
-                             <div class="ui-grid-a">
-                                 <div class="ui-block-a">
-                                     <select data-theme="c" name="category" id="options-location" data-native-menu="true">
-                                         <option value='nearby' id='location-nearby'>Nearby</option>
-                                         <option value='anywhere' id="location-anywhere">Anywhere</option>
-
-                                     </select>
-                                 </div>
-                                 <div class="ui-block-b">
-                                     <select data-theme="c" name="sort" id="options-sort" data-native-menu="true">
-                                         <option value='weighted_score' id='options-weighted_score'>Hotspots</option>
-                                         <option value='distance' id="options-distance">Nearest First</option>
-
-
-                                         <option value='alphabetical' id="options-alphabetical">Alphabetical</option>
-
-                                     </select>
-                                 </div>
-                             </div>
-                         </div>
-
-                     </form>
-                     </div>
-                </div>
-                <div class="spots-results-content">
-
-                    <ul class="spots">
-                    </ul>
-                </div>
-
-            </div>
-
-
-         </div><!-- /page -->
 
          <script id="spots-result-header" type="text/tempalte">
          <% if(results) { %>
@@ -1865,36 +1173,6 @@
                 </p>
             </a>
          </script>
-
-         <!-- @spot PAGE -->
-         <div id="spot" data-title="Spots" data-add-back-btn="true" data-role="page" data-theme="d">
-              <div data-role="header" data-theme="b">
-                  <h1>Spots</h1>
-
-                   <div class="ui-btn-right" data-ajax="false">
-                       <a href="#/search/" data-snapr-dialog="true" data-role="button" data-icon="search" data-iconpos="notext"></a>
-                      <a href="#/" data-role="button" data-icon="home" data-iconpos="notext"></a>
-                  </div>
-              </div>
-              <div data-role="content" data-theme="d" data-ajax="false">
-                  <div class="spot-head">
-                  </div>
-
-                  <div class="spot-body">
-                      <ul class="image-streams">
-                      </ul>
-
-                      <h4 class="top-users-heading" style="display:none;">Top Users</h4>
-                      <ul class="top-users">
-                      </ul>
-
-
-                  </div>
-              </div>
-
-
-          </div><!-- /page -->
-
 
         <!-- @spot HEADER -->
         <script id="spot-header-template" type="text/template">
@@ -1993,265 +1271,6 @@
         </li>
     </script>
 
-
-    <!-- @welcome PAGE-->
-    <div id="welcome" data-role="dialog" data-overlay-theme="c" data-theme="c" class="welcome-bg special-bg">
-        <div data-role="header" data-theme="c">
-            <h1>Welcome</h1>
-            <a href="#" data-ajax="false" data-role="button" data-icon="delete" data-iconpos="notext"></a>
-        </div>
-        <div data-role="content" data-theme="d" data-ajax="false">
-            <div class="inset-page-content wrap-content">
-                    <ul data-role="listview" data-ajax="false" class="" data-inset="true" data-theme="d">
-                        <li>
-                            <h4>Hi!</h4>
-                            <p>Do you already have an account? Or would you like to join up?</p>
-                        </li>
-                    </ul>
-                    <a data-role="button" data-theme="e" href="#/login/">Login</a>
-
-                    <a data-role="button" data-theme="d" href="#/join/">Join Snapr</a>
-
-            </div>
-             <p class="centered-link">
-                    <a href="#/about/">Find Out More &rsaquo;</a></li>
-                </p>
-        </div>
-    </div>
-
-    <!-- @about PAGE-->
-     <div id="about" class="welcome-bg special-bg" data-role="dialog" data-overlay-theme="c" data-theme="c">
-         <div data-role="header" data-theme="c">
-             <h1>Info</h1>
-             <a class="x-back" data-role="button" data-icon="delete" data-iconpos="notext"></a>
-         </div>
-         <div data-role="content" data-theme="d" data-ajax="false">
-             <div class="inset-page-content wrap-content">
-                     <ul data-role="listview" data-ajax="false" class="" data-inset="true" data-theme="d">
-
-                         <li>
-                             <h4>About Your App</h4>
-                             <p>Put info about your app here :)</p>
-                         </li>
-                         </ul>
-
-                         <p class="centered-link">
-                                 <a href="#/about-snapr/">About Snapr &rsaquo;</a></li>
-                             </p>
-
-
-             </div>
-         </div>
-     </div>
-
-     <!-- @aboutsnapr PAGE-->
-     <div id="about-snapr" class="snapr-welcome-bg special-bg" data-role="dialog" data-overlay-theme="c" data-theme="c">
-         <div data-role="header" data-theme="c">
-             <h1>About Snapr</h1>
-             <a class="x-back" data-role="button" data-icon="delete" data-iconpos="notext"></a>
-         </div>
-         <div data-role="content" data-theme="d" data-ajax="false">
-             <div class="inset-page-content wrap-content">
-                 <ul data-role="listview" data-ajax="false" class="" data-inset="true" data-theme="d">
-                     <li>
-                         <p>Snapr is a new service that makes it easy for people to create their own photo sharing apps for different activities, interests, or causes.</p>
-                         <p><a class="" href="http://apps.sna.pr">Check out some of the first apps to use Snapr &rarr;</a></p>
-
-                         <p>If an app offers 'Sign in with Snapr' you can view all your photos on Snapr's website and app:</p>
-
-                     </li>
-
-
-
-
-
-                     <li>
-                         <a class="iphone-appstore appstore-badge" href="http://itunes.apple.com/app/snapr/id359528116?mt=8">
-                             <span class="platform-logo"></span>
-                         </a>
-                     </li>
-                     <li>
-                         <a class="android-marketplace appstore-badge" href="https://play.google.com/store/apps/details?id=pr.sna.snapr">
-                             <span class="platform-logo"></span>
-                         </a>
-                     </li>
-                      <li>
-                            <p>Are you a developer? Find out more about how you can easily create great photo apps at <a href="http://developers.sna.pr">developers.sna.pr.</a></p>
-                        </li>
-                 </ul>
-             </div>
-         </div>
-     </div>
-
-    <!-- @snapr-apps PAGE-->
-    <div id="snapr-apps" class="welcome-bg special-bg" data-role="dialog" data-overlay-theme="c" data-theme="c">
-        <div data-role="header" data-theme="c">
-            <h1>Apps</h1>
-            <a class="x-back" data-role="button" data-icon="delete" data-iconpos="notext"></a>
-        </div>
-        <div data-role="content" data-theme="d" data-ajax="false">
-            <div class="inset-page-content wrap-content">
-                    <ul data-role="listview" data-ajax="false" class="" data-inset="true" data-theme="d">
-                        <li>
-                            <a href="#/about/">Featured Apps TBC</a>
-                          </li>
-                        </ul>
-
-            </div>
-        </div>
-    </div>
-
-    <!-- @app PAGE-->
-   <div id="app" data-role="dialog" data-overlay-theme="c" data-theme="c">
-       <div data-role="header" data-theme="c">
-           <h1>Get the App!</h1>
-           <a class="x-back" data-role="button" data-icon="delete" data-iconpos="notext"></a>
-       </div>
-       <div data-role="content" data-theme="d" data-ajax="false">
-           <div class="inset-page-content">
-               <ul data-role="listview" data-ajax="false" class="" data-inset="true" data-theme="d">
-                   <li class="wrap-content">
-                       <p>For the best experience please download one of our apps:</p>
-                   </li>
-
-                   <li>
-                       <a class="iphone-appstore appstore-badge" href="http://itunes.apple.com/app/snapr/id359528116?mt=8">
-                           <span class="platform-logo"></span>
-                        </a>
-                   </li>
-                   <li>
-                       <a class="android-marketplace appstore-badge" href="market://details?id=pr.sna.snapr&feature=search_result">
-                           <span class="platform-logo"></span>
-                       </a>
-                   </li>
-               </ul>
-               <p class="small-text">Does your phone allow browser based uploads?</p>
-               <a data-role="button" data-theme="e" id="app-page-upload-button">Upload via Mobile Web </a>
-               </div>
-           </div>
-       </div>
-   </div>
-
-
-    <!-- @search DIALOG-->
-    <div id="search" data-role="dialog" data-theme="a" data-ajax="false">
-        <div data-role="header">
-            <h1>Search</h1>
-            <a class="x-back" data-role="button" data-icon="delete" data-iconpos="notext"></a>
-        </div>
-        <div data-role="content" data-theme="d">
-            <div class="inset-page-content">
-                <form action="javascript: void(0);" accept-charset="utf-8" id="search-form">
-                    <ul data-role="listview" data-inset="true" data-theme="d">
-                        <li data-role="fieldcontain" class="ui-hide-label">
-                            <input type="text" placeholder="Keywords&hellip;" autocapitalize="off" id="search-keywords">
-                        </li>
-                        <li data-role="fieldcontain" class="ui-hide-label has-select">
-                            <select id="search-type" data-theme="c">
-                                <option value="tag">Search Tags</option>
-                                <option value="location">Search Locations</option>
-                                <option value="user">Search Users</option>
-                            </select>
-                        </li>
-
-                    </ul>
-
-                    <input type="submit" data-theme="e" value="Search">
-                </form>
-            </div>
-
-        </div>
-    </div><!-- /page -->
-
-    <!-- @map PAGE-->
-    <div id="map" data-role="page" data-title="Map" data-add-back-btn="true" data-theme="d">
-        <div data-role="header" data-theme="b">
-           <!-- No heading if we are showing the spots toggle <h1>Map</h1> -->
-           
-            <div class="ui-grid-b">
-                   <div class="ui-block-a">
-                   </div>
-                   <div class="ui-block-b " data-ajax="false">
-                       <fieldset data-role="controlgroup" data-type="horizontal" class="header-toggle dark-icons">
-                           <input type="checkbox" name="map-view-spots" id="map-view-spots" value="spots" >
-                           <label for="map-view-spots"><span class="ui-icon ui-icon-spots"></span>Spots</label>
-                           <input type="checkbox" name="map-view-photos" id="map-view-photos" value="photos">
-                           <label for="map-view-photos"><span class="ui-icon ui-icon-photos"></span>Photos</label>
-                       </fieldset>
-                   </div>
-               </div>
-           
-            <div class="ui-btn-right" data-ajax="false">
-                <a href="#/search/" data-snapr-dialog="true" data-role="button" data-icon="search" data-iconpos="notext"></a>
-                <a data-role="button" data-icon="location" data-iconpos="notext" class="x-current-location"></a>
-            </div>
-        </div>
-
-        <div id="map-layer" class="photo-map" data-role="content" data-theme="a">
-
-            <a class="x-map-feed ui-bar ui-bar-b top-no-arrow" data-role="button" data-iconpos="right" data-icon="arrow-r" data-theme="b">
-                  <span class="ui-icon ui-icon-location extra-icons"></span>
-                  <em class="map-description"></em>
-                  <span class="image-tag">Show as Feed</span>
-               </a>
-
-            <div id="google-map">
-            </div>
-            <div id="map-disambiguation" data-role="content" data-theme="d" style="">
-                <h4>Did you mean&hellip;</h4>
-                <ul data-role="listview" id="map-disambiguation-list" class=" map-list">
-                </ul>
-                <div class="cancel-btn">
-                <button id="map-disambituation-cancel" data-theme="c">Cancel</button>
-                </div>
-            </div>
-
-            <div id="snaprmapalert" style="display:none;"> <p class="imagealert"><span class="ui-icon ui-icon-sadface extra-icons"></span>No images found in this area</p> </div>
-
-            <div class="v-map-controls inline-footer ui-body-a trans-bg extra-icons">
-               <div class="map-time">
-                   <div class="ui-bar ui-bar-e small-top-left-arrow">
-                       Now
-                   </div>
-
-                   <a class="map-time-btn" data-role="button" data-icon="map-time" data-iconpos="notext">
-                </a>
-                    <div class="map-loading ui-shadow">
-                        <span class="ui-icon ui-icon-spinner"></span>
-                    </div>
-
-                </div>
-                <div class="map-filters">
-                    <div class="ui-grid-a">
-                        <div class="ui-block-a">
-                            <select id="map-filter">
-                                <option value="just-one">Just One</option>
-                                <option value="just-me">Just Me</option>
-                                <option value="following">Following</option>
-                                <option value="all">All</option>
-                            </select>
-
-                            <span class="ui-icon ui-icon-person-a"></span>
-
-                        </div>
-                        <div class="ui-block-b">
-                            <form id="map-keyword" action="javascript:void(0);">
-                                <input type="search" name="map-keyword"  placeholder="#keywords" class="" autocapitalize="off"/>
-                            </form>
-                            <span class="ui-icon ui-icon-search-a"></span>
-
-                        </div>
-
-                </input>
-                    </div>
-                </div>
-
-            </div>
-
-        </div>
-
-    </div><!-- /page -->
-
     <!-- @map @thumb ITEM -->
     <script id="thumb-template" type="text/template">
     <div class="snaprmappoint snaprmappoint-thumb">
@@ -2274,7 +1293,7 @@
         <a class="x-map-venue-pin"></a>
         <a class="x-map-venue-label" data-ajax="false" href="#/spot/?spot_id=<%=data.id%>">
           <span class="ui-icon spot-icon med-spot-icon"></span>
-          <span class="venue-label-text"><%= data.name %></span>         
+          <span class="venue-label-text"><%= data.name %></span>
         </a>
       </div>
     </script>
@@ -2300,227 +1319,6 @@
     <a class="map-link"><%= location.formatted_address %></a>
     </script>
 
-    <!-- @login log in as a snapr user (for testing - go to #/login/) -->
-    <div id="login" data-role="dialog" data-overlay-theme="c" data-theme="c" data-ajax="false" class="snapr-bg special-bg">
-        <div data-role="header" data-theme="c">
-            <h1>Log in</h1>
-            <a class="x-back" data-role="button" data-icon="delete" data-iconpos="notext"></a>
-        </div>
-        <div data-role="content" data-theme="d">
-            <div class="inset-page-content">
-                <p class="login-message warning-message"></p>
-
-
-                <form action="javascript: void(0);" accept-charset="utf-8" id="login-dialog">
-                    <ul data-role="listview" data-inset="true" data-theme="d">
-
-                        <li data-role="fieldcontain" class="ui-hide-label">
-                            <label for="username">Username</label>
-                            <input type="text" name="username"  placeholder="Username" autocapitalize="off" autocorrect="off" id="login-dialog-username">
-                        </li>
-                        <li data-role="fieldcontain" class="ui-hide-label">
-
-                            <label for="password">Password</label><input type="password" name="password" placeholder="Password" id="login-dialog-password">
-                        </li>
-                    </ul>
-                    <div class="invisible-submit-button">
-                    <input type="submit" name="login" data-theme="e" value="Log In with Snapr">
-                    </div>
-                    <a data-role="button" class="snapr-button logo-button" data-theme="e">Login with <span class="snapr-logo button-logo">Snapr</span></a>
-
-
-                </form>
-
-                <p class="block-link"><a href="#/forgot-password/">Forgot Password?</a></p>
-
-
-
-                 <a data-role="button" class="twitter-button logo-button" data-theme="e">Login with <span class="twitter-logo button-logo">Twitter</span></a>
-
-                 <a data-role="button" class="facebook-button logo-button" data-theme="e">Login with <span class="facebook-logo button-logo">Facebook</span></a>
-
-                <p class="centered-link">
-                    <a href="#/about-snapr/">About Snapr</a> &middot; <a href="#/join/">Join Snapr &rsaquo;</a></li>
-                </p>
-
-            </div>
-        </div>
-    </div><!-- /page -->
-
-    <!-- @forgot-password  -->
-     <div id="forgot-password" data-role="dialog" data-overlay-theme="c" data-theme="c" data-ajax="false" class="snapr-bg special-bg">
-         <div data-role="header" data-theme="c">
-             <h1>Forgot Password</h1>
-             <a class="x-back" data-role="button" data-icon="delete" data-iconpos="notext"></a>
-         </div>
-         <div data-role="content" data-theme="d">
-             <div class="inset-page-content">
-                 <form action="javascript: void(0);" accept-charset="utf-8" id="forgot-form">
-                     <ul data-role="listview" data-inset="true" data-theme="d">
-
-                         <li data-role="fieldcontain" class="ui-hide-label">
-                             <label for="username">Username or Email</label>
-                             <input type="text" name="username" placeholder="Username or Email" autocapitalize="off" autocorrect="off">
-                         </li>
-
-                     </ul>
-                    <input type="submit" name="login" data-theme="e" value="Reset Password">
-
-                 </form>
-             </div>
-         </div>
-     </div><!-- /page -->
-
-
-    <!-- @join snapr DIALOG-->
-    <div id="join" data-role="page" data-short-title="Join" data-theme="c" data-ajax="false" class="snapr-bg special-bg">
-        <div data-role="header" data-theme="c">
-            <h1>Join Snapr</h1>
-            <a class="x-back" data-role="button" data-icon="delete" data-iconpos="notext"></a>
-        </div>
-        <div data-role="content" data-theme="d">
-            <div class="inset-page-content">
-
-                <div class="linked-message" style="display:none;">Great, your Twitter account is linked!<br><br>To finish up please enter some more details for your new account on Snapr:</div>
-
-                <form action="javascript: void(0);" accept-charset="utf-8" id="join-dialog" autocomplete="off">
-                    <ul data-role="listview" data-inset="true" data-theme="d">
-                        <li class="ui-hide-label">
-                            <label for="username">Username</label><input type="text" name="username" placeholder="Username" autocapitalize="off" autocomplete="off" autocorrect="off" id="join-dialog-username">
-                            <span class="ui-icon ui-icon-validation"></span>
-                        </li>
-                        <li class="ui-hide-label">
-                            <label for="password">Password</label><input type="password" name="password" placeholder="Password" autocomplete="off" id="join-dialog-password">
-                            <span class="ui-icon ui-icon-validation"></span>
-                        </li>
-                        <li class="ui-hide-label">
-                            <label for="email">Email</label><input type="email" name="email" placeholder="Email Address" autocomplete="off" id="join-dialog-email">
-                            <span class="ui-icon ui-icon-validation"></span>
-                        </li>
-                        <div class="margin-clear"></div>
-                    </ul>
-
-                    <input type="submit" name="login" data-theme="d" value="Join" class="x-join-btn">
-                      <p class="block-link small-text">All users must agree to the <a href="http://sna.pr/terms/" target="_blank" class="underline">Terms of Use</a></p>
-
-                </form>
-
-                <a data-role="button" class="twitter-button logo-button" data-theme="e">Login with <span class="twitter-logo button-logo">Twitter</span></a>
-
-                <a data-role="button" class="facebook-button logo-button" data-theme="e">Login with <span class="facebook-logo button-logo">Facebook</span></a>
-
-            </div>
-        </div>
-
-    </div><!-- /page -->
-
-    <!-- @joinsuccess snapr DIALOG-->
-    <div id="join-success" data-role="page" data-short-title="Welcome" data-theme="c" data-ajax="false" class="welcome-bg special-bg">
-        <div data-role="header" data-theme="c">
-            <h1>Success!</h1>
-            <a href="#/" data-role="button" data-icon="delete" data-iconpos="notext"></a>
-        </div>
-        <div data-role="content" data-theme="d">
-            <div class="inset-page-content">
-                    <ul data-role="listview" data-ajax="false" class="" data-inset="true" data-theme="d">
-                        <li>
-                            <h2>Welcome to Snapr!</h2>
-                            <p>What would you like to do now?</p>
-                        </li>
-
-                         <li>
-                            <a data-back-here="true" href="#/find-friends/">Find your friends</a>
-                        </li>
-                        <li>
-                            <a href="#/about/">Find out more about Snapr</a>
-                        </li>
-                        <li>
-                            <a href="#/menu/">Dive right in!</a>
-                        </li>
-
-                    </ul>
-            </div>
-        </div>
-
-    </div><!-- /page -->
-
-    <!-- @upload form for web-based uploading/testing (go to #/upload/) -->
-    <div id="upload" data-role="page" data-short-title="Upload" data-theme="a" data-ajax="false">
-        <div data-role="header">
-            <h1>Upload</h1>
-            <a href="#/" data-role="button" data-icon="delete" data-iconpos="notext"></a>
-        </div>
-        <div data-role="content" data-theme="d">
-            <div class="inset-page-content">
-                <form id="upload-form" action="javascript:void(0);" method="POST" enctype="multipart/form-data">
-                    <input type="hidden" name="redirect_uri" id="redirect_uri"/>
-                    <input type="hidden" name="device-time" id="device-time"/>
-                    <input type="hidden" name="-set-later-" id="_access_token"/>
-                    <input type="hidden" name="app_group" id="app_group"/>
-                    <input type="hidden" name="privacy" id="privacy" value="queued"/>
-
-                    <ul data-role="listview" data-inset="true" data-theme="d">
-
-                        <li>
-                            <h1>Select a photo to upload:</h1>
-                            <input type="file" name="photo" id="upload-file" />
-                        </li>
-                        <li class="ui-hide-label">
-                            <p>*Images should be in the .jpg format</p>
-                        </li>
-                        <li class="ui-hide-label">
-                          <div style="border:1px #666 solid; weight:12px;"><div id="progress-bar" style="height:12px; background:#BadA55; width:0%;"></div></div>
-                          <div id="upload-status"></div>
-                        </li>
-                    </ul>
-
-
-                    <input disabled="true" type="submit" value="Upload Snap" id="upload-submit" data-theme="e" />
-                </form>
-            </div>
-        </div>
-    </div>
-
-    <!-- no templates for #upload -->
-
-
-    <!-- @uploading PAGE - upload progress view  -->
-    <div id="uploading" data-role="page" data-short-title="Uploading" data-theme="d" data-ajax="false" data-tab-bar="true">
-        <div data-role="header" data-theme="b">
-             <div class="ui-btn-left">
-                    <a class="x-launch-camera" data-role="button" data-icon="camera" data-iconpos="notext"></a>
-
-                </div>
-
-            <h1>Upload</h1>
-
-            <div class="ui-btn-right">
-                <a href="#/search/" data-snapr-dialog="true" data-role="button" data-icon="search" data-iconpos="notext"></a>
-                <a href="#/" data-role="button" data-icon="home" data-iconpos="notext"></a>
-            </div>
-
-        </div>
-        <div data-role="content" data-theme="d">
-            <div class="upload-progress-container upload-progress-header page-inset-header">
-            </div>
-            <a class="offline ui-bar top-no-arrow x-refresh offline-uploading" data-role="button" data-theme="c" style="display:none;">
-                <span class="image-details">
-                    <span class="ui-icon ui-icon-connection extra-icons"></span>
-                    <span class="image-tag"><strong>Offline Mode</strong></span>
-                </span>
-            </a>
-
-            <ul class="image-streams">
-            </ul>
-
-
-        </div>
-
-
-        </div>
-
-    </div>
-
     <!-- @upload @uploadprogress ITEM - template for upload progress header -->
     <script id="upload-progress-li-template" type="text/template">
         <div class="upload-info-block">
@@ -2534,7 +1332,6 @@
                 <% if ( venue ){ %>
                     <p class="upload-image-venue"><a class="ui-link">@ <%= venue %></a></p>
                 <% } %>
-
 
                  <div class="progress-bar <%= upload_status %>">
                     <!-- //Active uploads -->
@@ -2607,7 +1404,6 @@
         </div>
     </script>
 
-
     <!-- @upload @uploadprogress ITEM - template for upload progress header in feed -->
     <script id="feed-upload-progress-li-template" type="text/template">
     <div class="upload-info-block">
@@ -2641,7 +1437,6 @@
 
                 <% break; case 'canceled': %>
 
-
                 <% break; case 'hold': %>
 
                 <% break; case 'completed': %>
@@ -2654,7 +1449,6 @@
         </div>
     </div>
     </script>
-
 
     <script id="uploading-stream-template" type="text/template">
         <a class="ui-bar top-left-arrow x-details" data-role="button" data-iconpos="right" data-icon="arrow-r" data-theme="c" href="#/feed/?<%= feed_param %>">
@@ -2723,16 +1517,6 @@
         </a>
     </li>
     </script>
-
-    <!-- @share-photo sharing setup / caption view -->
-    <div id="share" class="share-photo" data-role="page" data-short-title="Share" data-theme="a" class="no-drag" data-ajax="false">
-        <div data-role="header">
-            <a href="#/" data-role="button" data-icon="delete" data-iconpos="notext"></a>
-            <h1>Share</h1>
-        </div>
-        <div data-role="content" data-theme="a">
-        </div>
-    </div>
 
     <!-- template for #share-photo -->
     <script id="share-photo-template" type="text/template">
@@ -2861,22 +1645,6 @@
         </div>
     </script>
 
-    <!-- @tumblr blog PAGE -->
-    <div id="tumblr-posts" data-title="Tumblr blog" data-add-back-btn="true" data-role="page" data-theme="d">
-      <div data-role="header" data-theme="b">
-        <h1>Tumblr blog</h1>
-        <div class="ui-btn-right" data-ajax="false">
-          <a href="#/search/" data-snapr-dialog="true" data-role="button" data-icon="search" data-iconpos="notext"></a>
-          <a href="#/" data-role="button" data-icon="home" data-iconpos="notext"></a>
-        </div>
-      </div>
-      <div data-role="content" data-theme="d" data-ajax="false">
-        <div class="tumblr-body">
-          <ul class="posts-stream image-item-block"></ul>
-        </div>
-      </div>
-    </div><!-- /page -->
-
     <script id="tumblr-tmpl-metadata" type="text/template">
       <div class="image-item-base">
         <div data-role="controlgroup" data-type="horizontal" class="image-actions">
@@ -2964,10 +1732,6 @@
         <%}%>
       </div>
     </script>
-
-    <div id="limbo" data-role="page" data-theme="a">
-        <div data-role="content" data-theme="a"></div>
-    </div>
 
 </body>
 </html>

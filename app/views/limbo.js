@@ -21,6 +21,10 @@ return page_view.extend({
         "click": "home"
     },
 
+    load_template: function(){
+        this.template = _.template('<div id="limbo" data-role="page" data-theme="a"> <div data-role="content" data-theme="a"></div> </div>');
+    },
+
     home: function(){
         Backbone.history.navigate( "#/", true );
     },
@@ -28,3 +32,4 @@ return page_view.extend({
     offline: function(){}
 });
 });
+
