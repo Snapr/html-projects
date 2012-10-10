@@ -170,9 +170,9 @@ return page_view.extend({
 
     more_button: function( more_photos ){
         if (more_photos){
-            this.$(".v-feed-more").html( $("#feed-more-button").html() ).trigger( "create" );
+            this.$(".v-feed-more").children().show();
         }else{
-            this.$(".v-feed-more").empty().trigger( "create" );
+            this.$(".v-feed-more").children().hide();
         }
     },
 

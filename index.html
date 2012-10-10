@@ -22,22 +22,6 @@
     </head>
 <body style="display: none;"><!-- initially hidden until jQmobile can load and style everything -->
 
-
-    <!-- @thumb @image ITEM -->
-    <script id="thumb-li-template" type="text/template">
-        <% _.each( results, function( item, i ){ %>
-        <a class="image-link" href="#/feed/?photo_id=<%= item.get('id') %>&n=1&username=<%= item.get('username') %>">
-        <img src="https://s3.amazonaws.com/media-server<%= item.get('server_id') %>.snapr.us/thm2/<%= item.get('secret') %>/<%= item.get('id') %>.jpg" <% if(item.get('description')){ %>alt="<%= item.get('description') %>"<% } %> class="thumb-image thumb-med" />
-        </a>
-        <% }); %>
-    </script>
-
-    <script id="feed-more-button" type="text/template">
-        <div class="feed-footer inline-footer ui-body-c">
-            <button class="x-load-more ui-btn-right">Load More</button>
-        </div>
-    </script>
-
     <!-- @feed @titlebar ITEM - title bar for pages such as searches and location feeds -->
        <script id="feed-header-template" type="text/template">
        <div class="ui-bar-e ui-bar top-no-arrow">
