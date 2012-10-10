@@ -21,8 +21,8 @@
         .ui-btn{
             .corner-all(0);
             background: none;
-            background-image: url('../gfx/menu-icons.png');
-            background-position: right @gfx-menu-icon-sprite-arrow-r-y;
+            background-image: url('@{gfx}@{gfxMenu}');
+            background-position: right @gfxMenu-arrow-r-y;
             background-repeat: no-repeat;
             &.ui-btn-hover-e,
             &.ui-btn-active{
@@ -30,13 +30,13 @@
             }
             margin: 0;
             padding: 0;
-            min-height: @gfx-menu-icon-sprite-grid;
+            min-height: @gfxMenu-grid;
             .box-shadow(none);
             
             .ui-btn-inner{
                 padding: 0;
-                line-height: @gfx-menu-icon-sprite-grid;
-                padding-left: @gfx-menu-icon-sprite-grid + @padding-page-inset;
+                line-height: @gfxMenu-grid;
+                padding-left: @gfxMenu-grid + @padding-page-inset;
                 text-align: left;
             }
 
@@ -45,27 +45,27 @@
                 left:  @padding-page-inset;
                 margin-top: 0;
                 background: transparent;
-                background-image: url('../gfx/menu-icons.png');
-                width: @gfx-menu-icon-sprite-grid;
-                height: @gfx-menu-icon-sprite-grid;
+                background-image: url('@{gfx}@{gfxMenu}');
+                width: @gfxMenu-grid;
+                height: @gfxMenu-grid;
                 .box-shadow(none);
             }
-            .ui-icon-main-menu-camera{background-position: @mi-offset-x @gfx-menu-icon-sprite-camera-y;}
-            .ui-icon-main-menu-camera-lib{background-position: @mi-offset-x @gfx-menu-icon-sprite-camera-lib-y;}
-            .ui-icon-main-menu-dashboard{background-position: @mi-offset-x @gfx-menu-icon-sprite-dashboard-y;}
-            .ui-icon-main-menu-feed{background-position: @mi-offset-x @gfx-menu-icon-sprite-feed-y;}
-            .ui-icon-main-menu-popular{background-position: @mi-offset-x @gfx-menu-icon-sprite-popular-y;}
-            .ui-icon-main-menu-map{background-position: @mi-offset-x @gfx-menu-icon-sprite-map-y;}
-            .ui-icon-main-menu-my-account{background-position: @mi-offset-x @gfx-menu-icon-sprite-my-account-y;}
-            .ui-icon-main-menu-cities{background-position: @mi-offset-x @gfx-menu-icon-sprite-cities-y;}
-            .ui-icon-main-menu-spots{background-position: @mi-offset-x @gfx-menu-icon-sprite-spots-y;}
-            .ui-icon-main-menu-info{background-position: @mi-offset-x @gfx-menu-icon-sprite-info-y;}
-            .ui-icon-main-menu-activity{background-position: @mi-offset-x @gfx-menu-icon-sprite-activity-y;}
-            .ui-icon-main-menu-leaderboard{background-position: @mi-offset-x @gfx-menu-icon-sprite-leaderboard-y;}
-            .ui-icon-main-menu-join{background-position: @mi-offset-x @gfx-menu-icon-sprite-join-y;}
-            .ui-icon-main-menu-login{background-position: @mi-offset-x @gfx-menu-icon-sprite-login-y;}
-            .ui-icon-main-menu-arrow-r{background-position: @mi-offset-x @gfx-menu-icon-sprite-arrow-r-y;}
-            .ui-icon-main-menu-tumblr{background-position: @mi-offset-x @gfx-menu-icon-sprite-tumblr-y;}
+            .ui-icon-main-menu-camera{background-position: @gfxMenu-x @gfxMenu-camera-y;}
+            .ui-icon-main-menu-camera-lib{background-position: @gfxMenu-x @gfxMenu-camera-lib-y;}
+            .ui-icon-main-menu-dashboard{background-position: @gfxMenu-x @gfxMenu-dashboard-y;}
+            .ui-icon-main-menu-feed{background-position: @gfxMenu-x @gfxMenu-feed-y;}
+            .ui-icon-main-menu-popular{background-position: @gfxMenu-x @gfxMenu-popular-y;}
+            .ui-icon-main-menu-map{background-position: @gfxMenu-x @gfxMenu-map-y;}
+            .ui-icon-main-menu-my-account{background-position: @gfxMenu-x @gfxMenu-my-account-y;}
+            .ui-icon-main-menu-cities{background-position: @gfxMenu-x @gfxMenu-cities-y;}
+            .ui-icon-main-menu-spots{background-position: @gfxMenu-x @gfxMenu-spots-y;}
+            .ui-icon-main-menu-info{background-position: @gfxMenu-x @gfxMenu-info-y;}
+            .ui-icon-main-menu-activity{background-position: @gfxMenu-x @gfxMenu-activity-y;}
+            .ui-icon-main-menu-leaderboard{background-position: @gfxMenu-x @gfxMenu-leaderboard-y;}
+            .ui-icon-main-menu-join{background-position: @gfxMenu-x @gfxMenu-join-y;}
+            .ui-icon-main-menu-login{background-position: @gfxMenu-x @gfxMenu-login-y;}
+            .ui-icon-main-menu-arrow-r{background-position: @gfxMenu-x @gfxMenu-arrow-r-y;}
+            .ui-icon-main-menu-tumblr{background-position: @gfxMenu-x @gfxMenu-tumblr-y;}
         }
         
         li{

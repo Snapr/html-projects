@@ -92,17 +92,6 @@
   }
 }
 /* Definititions for GFX Sprites and icon positioning */
-/* Horizontal offsets for theme swatches / hover states */
-/*
-* Menu Icon Sprite '../gfx/menu-icons.png'
-*/
-/* Vertical Layout of Icons */
-/* Horizontal offsets for theme swatches / hover states */
-/*
-* Tab Bar Icon Sprite '../gfx/tab-bar-icons.png'
-*/
-/* Vertical Layout of Icons */
-/* Horizontal offsets for theme swatches / hover states */
 /*
 * General JQuery Mob Icons '../gfx/general-jquerymob-icons'
 */
@@ -235,7 +224,7 @@
 .tab-bar-icons .ui-icon {
   width: 32px;
   height: 32px;
-  background-image: url('../gfx/top-bar-icons.png');
+  background-image: url('../gfx/tab-bar-icons.png');
 }
 .tab-bar-icons .ui-icon-dash {
   background-position: 0px 0px;
@@ -7069,19 +7058,13 @@ body.browser-testing .ui-footer {
     -webkit-background-size: 160px 42px;
     background-size: 160px 42px;
   }
-  .menu-main .ui-btn .ui-btn-inner .ui-icon {
-    background-image: url('../gfx/retina/menu-icons.png');
-    -moz-background-size: 50px 750px;
-    -o-background-size: 50px 750px;
-    -webkit-background-size: 50px 750px;
-    background-size: 50px 750px;
-  }
+  .menu-main .menu-btns .ui-btn .ui-icon,
   .menu-main .menu-btns .ui-btn {
     background-image: url('../gfx/retina/menu-icons.png');
-    -moz-background-size: 50px 750px;
-    -o-background-size: 50px 750px;
-    -webkit-background-size: 50px 750px;
-    background-size: 50px 750px;
+    -moz-background-size: 50px 800px;
+    -o-background-size: 50px 800px;
+    -webkit-background-size: 50px 800px;
+    background-size: 50px 800px;
   }
   .menu-main .menu-btns .ui-icon-big-arrow-d {
     background-image: url('../gfx/big-arrow-d.png');

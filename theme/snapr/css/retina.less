@@ -35,27 +35,19 @@
         .background-size (160px, 42px);
     }
 
-    .menu-main .ui-btn .ui-btn-inner .ui-icon{
-        background-image: url('../gfx/retina/menu-icons.png');
-        .background-size (@gfx-menu-icon-sprite-width, @gfx-menu-icon-sprite-height);
+    .menu-main .menu-btns .ui-btn .ui-icon,
+    .menu-main .menu-btns .ui-btn  {
+        background-image: url('@{gfxRetina}@{gfxMenu}');
+        .background-size (@gfxMenu-width, @gfxMenu-height);
     }
      
-    .menu-main .menu-btns{
-        .ui-btn{
-            background-image: url('../gfx/retina/menu-icons.png');
-            .background-size (@gfx-menu-icon-sprite-width, @gfx-menu-icon-sprite-height);
-            
-            
-        }
-        .ui-icon-big-arrow-d{
+   .menu-main .menu-btns {
+    .ui-icon-big-arrow-d{
                 background-image: url('../gfx/big-arrow-d.png');
                 .background-size (40px, 20px);
             } 
     }
      
-
-
-
     .user-info-block .user-icon-left .icon-overlay-info{
         background-image: url('../gfx/retina/shiny-avatar-info.png');
         .background-size (100px, 100px);
@@ -254,14 +246,11 @@
         
         .tab-bar-icons{
             .ui-icon{
-                background-image: url('../gfx/retina/tab-bar-icons.png'); 
-                .background-size (@gfx-tab-bar-sprite-width, @gfx-tab-bar-sprite-height);
+                background-image: url('@{gfxRetina}@{gfxTabBar}');
+                .background-size (@gfxTabBar-width, @gfxTabBar-height);
                    
             }
         }
-      
-      
-      
   }
    
  
