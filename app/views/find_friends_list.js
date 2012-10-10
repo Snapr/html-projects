@@ -8,7 +8,7 @@ function(config, page_view, user_collection, people_li, link_service_view, no_re
 var find_friends = page_view.extend({
 
     post_initialize: function(){
-        this.people_li_template = _.template( $("#people-li-template").html() );
+        this.people_li_template = this.get_template('components/person');
 
         this.collection = new user_collection();
     },

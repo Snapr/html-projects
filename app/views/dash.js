@@ -317,7 +317,7 @@ var add_person = page_view.extend({
     render: function(){
         var people_list = this.$el.find("ul.people-list").empty();
 
-        var people_li_template = _.template( $("#people-li-template").html() );
+        var people_li_template = this.get_template('components/person');
 
         if(this.collection.length){
             no_results.$el.remove();  // use remove(), hide() keeps it hidden and requires show() later
