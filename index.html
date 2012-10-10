@@ -22,33 +22,6 @@
     </head>
 <body style="display: none;"><!-- initially hidden until jQmobile can load and style everything -->
 
-      <!-- auth header section -->
-      <script id="auth-header-template" type="text/template">
-        <div class="ui-btn-left join-block">
-          <% if (username) { %>
-            <a class="avatar-block" data-role="button" data-shadow="false" data-corners="false" href="#/my-account/">
-              <span class="user-icon-small" style="background-image: url('<%= config.get('avatar_url') %>/<%= username %>?size=large&amp;_salt=facebook');"></span>
-              <%= display_username %>
-            </a>
-          <% } else { %>
-            <a href="#/join/" data-snapr-dialog="true" data-role="button" data-icon="join" data-iconpos="left">Join</a>
-          <% } %>
-        </div>
-      </script>
-
-       <script id="nearby-photostream-template" type="text/template">
-          <div class="thumbs-block-overlay">
-             <a id="home-nearby-link" data-iconpos="right" data-icon="arrow-r" data-role="button" class="centered-btn">&nbsp;</a>
-         </div>
-
-         <ul class="thumbs-preview-stream">
-         </ul>
-       </script>
-
-       <script id="nearby-photstream-item-template" type="text/template">
-         <img src="https://s3.amazonaws.com/media-server2.snapr.us/thm2/<%= photo.get('secret') %>/<%= photo.get('id') %>.jpg" alt="snapr mob" class="thumb-image thumb-med">
-       </script>
-
     <!--  Fake template for my-account while loading -->
     <script id="my-account-initial-template" type="text/template">
 

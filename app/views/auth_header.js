@@ -1,12 +1,11 @@
 /*global _  define require */
-define(['backbone', 'auth'],
-    function(Backbone, auth) {
+define(['views/base/view', 'auth'],
+    function(view, auth) {
 
-return Backbone.View.extend({
-
-	template: _.template( $("#auth-header-template").html() ),
+return view.extend({
 
 	initialize: function () {
+        this.load_template('components/auth_header');
 		this.render();
 	},
 	render: function () {
