@@ -57,13 +57,6 @@ return page_view.extend({
 
     render: function(){
 
-        // hidden for the moment
-
-        // if (local_storage.get("appmode"))
-        // {
-        //     this.upload_settings = new snapr.views.upload_settings();
-        //     $account_content.prepend( this.upload_settings.render().el );
-        // }
         var data={
             initial: false,
             username: auth.user_settings.get( "user" ).username,
