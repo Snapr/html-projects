@@ -1,9 +1,9 @@
 /*global _  define require */
-define(['config', 'backbone', 'views/base/page', 'views/base/side_scroll',
+define(['config', 'backbone', 'views/base/view', 'views/base/page', 'views/base/side_scroll',
     'models/dash', 'models/dash_stream', 'collections/user', 'collections/dash_tumblr_feed',
     'collections/tumblr_post', 'views/components/no_results', 'views/people_li', 'views/tumblr_item',
     'utils/geo', 'auth', 'utils/alerts', 'utils/query'],
-    function(config, Backbone, page_view, side_scroll, dash_model, dash_stream_model,
+    function(config, Backbone, view, page_view, side_scroll, dash_model, dash_stream_model,
         user_collection, dash_tumblr_feed_collection, tumblr_post_collection, no_results,
         people_li, tumblr_item_view, geo, auth, alerts, Query){
 
@@ -71,7 +71,6 @@ var dash_view = page_view.extend({
     },
 
     render: function(){
-        console.log('dash render', this);
         this.$el.find('.dash-welcome').toggle(!auth.has("access_token") || this.model.length < 3);
         var $featured_streams = this.$el.find('.featured-streams').empty(),
             $tumblr_streams = this.$el.find('.tumblr-streams').empty(),
@@ -94,7 +93,6 @@ var dash_view = page_view.extend({
         // Tumblr
 
         _.each( this.model.get('tumblr_feeds').models, function ( item ){
-            console.log('item', item);
             var li = new dash_tumblr_view({
                 model: item
             });
@@ -104,7 +102,6 @@ var dash_view = page_view.extend({
 
         // User streams
         _.each( this.model.get('streams').models, function( item ){
-            console.log('new stream', item, $streams);
             var li = new dash_stream({
                 collection: item.photos,
                 model: item
@@ -166,15 +163,14 @@ var dash_view = page_view.extend({
 
 });
 
-var dash_tumblr_view = Backbone.View.extend({
+var dash_tumblr_view = view.extend({
     tagName: 'li',
     className: 'post-stream',
-    template: _.template( $('#dash-tumblr-template').html() ),
     events: {
         "click a.ui-bar": "toggle_feed"
     },
     initialize: function ( options ) {
-
+        this.load_template('components/dash/tumblr');
     },
     render: function () {
         this.$el.html( this.template({
@@ -209,7 +205,7 @@ var dash_tumblr_view = Backbone.View.extend({
     toggle_feed: function () {
         var btn = this.$el.find('[data-role="button"]');
 
-        btn.toggleClass('open').toggleClass('closed')
+        btn.toggleClass('open').toggleClass('closed');
         btn.toggleClass('top-left-arrow');
         this.$el.find('.post-stream').fadeToggle();
     }
@@ -226,11 +222,9 @@ var dash_stream = side_scroll.extend({
         "click a.ui-bar": "toggle_stream"
     },
 
-    thumbs_template: _.template( $('#dash-thumbs-template').html() ),
-
     post_initialize: function( options ){
-        console.log('stream init');
-        this.load_template('components/dash/stream');
+        this.template = this.get_template('components/dash/stream');
+        this.thumbs_template = this.get_template('components/dash/thumb');
         if (!options.featured){
             this.$el.addClass("user-stream");
             this.$el.attr("data-id", this.model.get("id"));
@@ -267,11 +261,9 @@ var dash_stream = side_scroll.extend({
         else {
             this_view.$el.find('.thumbs-grid').fadeToggle();
             if (btn.attr('data-icon') === 'arrow-r') {
-                console.log('remove');
                 btn.removeAttr('data-icon');
             } else {
                 btn.attr('data-icon', 'arrow-r').button();
-                console.log('adding');
             }
             btn.toggleClass('open').toggleClass('closed');
             btn.toggleClass('top-left-arrow');
@@ -288,7 +280,6 @@ var dash_stream = side_scroll.extend({
                     success: function(){
                         stream.collection.remove(stream.model);
                         stream.render();
-                        console.log(stream.model.collection===stream.collection);
                     }
                 });
             }
