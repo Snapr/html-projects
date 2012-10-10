@@ -1,6 +1,6 @@
 /*global _  define require */
-define(['backbone', 'auth', 'models/favorite'], function(Backbone, auth, favorite_model){
-return Backbone.View.extend({
+define(['views/base/view', 'auth', 'models/favorite'], function(view, auth, favorite_model){
+return view.extend({
 
     initialize: function(){
         _.bindAll( this );
@@ -8,7 +8,7 @@ return Backbone.View.extend({
         this.li = this.options.li;
         $(this.options.el).undelegate();
         this.setElement( this.options.el );
-        this.template = _.template( $("#fav-button-template").html() );
+        this.load_template('components/feed/favorite_button');
 
         // update the display when we fav/unfav or comment
         this.model.bind( "change", this.render );

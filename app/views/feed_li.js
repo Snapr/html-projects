@@ -1,8 +1,8 @@
 /*global _  define require */
-define(['config', 'backbone', 'views/components/favorite_button', 'collections/reaction', 'models/comment', 'auth', 'utils/alerts'],
-    function(config, Backbone, favorite_button, reaction_collection, comment_model, auth, alerts){
+define(['config', 'backbone', 'views/base/view', 'views/components/favorite_button', 'collections/reaction', 'models/comment', 'auth', 'utils/alerts'],
+    function(config, Backbone, view, favorite_button, reaction_collection, comment_model, auth, alerts){
 
-var feed_li =  Backbone.View.extend({
+var feed_li =  view.extend({
 
     tagName: "span",
 
@@ -233,13 +233,13 @@ var feed_li =  Backbone.View.extend({
     }
 });
 
-var comment_button = Backbone.View.extend({
+var comment_button = view.extend({
 
     initialize: function(){
         $(this.options.el).undelegate();
         this.setElement( this.options.el );
         this.li = this.options.li;
-        this.template = _.template( $("#comment-button-template").html() );
+        this.load_template('components/feed/comment_button');
         _.bindAll( this );
 
         // update the display when the comment count changes
@@ -260,7 +260,7 @@ var comment_button = Backbone.View.extend({
 
 });
 
-var show_all_button = Backbone.View.extend({
+var show_all_button = view.extend({
 
     initialize: function()
     {
@@ -269,7 +269,7 @@ var show_all_button = Backbone.View.extend({
         this.li = this.options.li;
         $(this.options.el).undelegate();
         this.setElement( this.options.el );
-        this.template = _.template( $("#show-all-button-template").html() );
+        this.load_template('components/feed/show_all_button');
 
         // update the display when we fav/unfav or comment
         this.model.bind( "change", this.render );
@@ -290,7 +290,7 @@ var show_all_button = Backbone.View.extend({
 
 });
 
-var reactions = Backbone.View.extend({
+var reactions = view.extend({
 
     initialize: function(){
         _.bindAll( this );
@@ -303,7 +303,7 @@ var reactions = Backbone.View.extend({
         };
         this.collection.bind( "reset", this.render );
         this.collection.bind( "change", this.render );
-        this.template = _.template( $('#reaction-li-template').html() );
+        this.load_template('components/feed/reaction_item');
     },
 
     render: function(){
@@ -318,14 +318,14 @@ var reactions = Backbone.View.extend({
 
 });
 
-var photo_manage = Backbone.View.extend({
+var photo_manage = view.extend({
 
     initialize: function(){
         _.bindAll( this );
         $(this.options.el).undelegate();
         this.setElement( this.options.el );
         this.parentView = this.options.parentView;
-        this.template = _.template( $("#photo-manage-template").html() );
+        this.load_template('components/feed/manage_photo');
 
         // update the display when we change the photo
         this.model.bind( "change:status", this.render );
