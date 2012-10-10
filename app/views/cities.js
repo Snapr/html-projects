@@ -48,9 +48,9 @@ var cities = {
 var city_stream = side_scroll.extend({
     tagName: 'li',
     className: 'image-stream',
-    template: _.template( $('#cities-stream-template').html() ),
-    thumbs_template: _.template( $('#cities-thumbs-template').html() ),
     initialize: function(options){
+        this.template = this.get_template('components/cities_stream');
+        this.thumbs_template = this.get_template('components/cities_thumb');
         this.details = options.details;
         side_scroll.prototype.initialize.call(this, options);
     }
