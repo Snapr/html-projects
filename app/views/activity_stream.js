@@ -1,6 +1,6 @@
 /*global _  define require */
-define(['backbone', 'utils/string'], function(Backbone, string_utils){
-var activity_stream = Backbone.View.extend({
+define(['views/base/view', 'utils/string'], function(view, string_utils){
+var activity_stream = view.extend({
 
     tagName: "li",
 
@@ -11,8 +11,7 @@ var activity_stream = Backbone.View.extend({
 
         this.group_by = this.options.group_by;
 
-        this.template = _.template( $("#activity-stream-template").html() );
-
+        this.load_template('components/activity_stream');
     },
 
     render: function(){
@@ -80,7 +79,7 @@ var activity_stream = Backbone.View.extend({
 
 });
 
-var activity_stream_item = Backbone.View.extend({
+var activity_stream_item = view.extend({
 
     tagName: "li",
 
@@ -90,7 +89,7 @@ var activity_stream_item = Backbone.View.extend({
         _.bindAll( this );
 
         this.photo_events = this.options.photo_events;
-        this.template = _.template( $("#activity-stream-item-template").html() );
+        this.load_template('components/activity_item');
     },
 
     render: function(){
