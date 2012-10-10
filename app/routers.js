@@ -65,6 +65,7 @@ var pages = [
     },
     {
         name: 'user/profile',
+        view: 'user_profile',
         template: 'user_profile'
     },
     {

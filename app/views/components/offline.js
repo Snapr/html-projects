@@ -1,6 +1,6 @@
 /*global _  define require */
-define(['backbone'], function(Backbone){
-var offline = Backbone.View.extend({
+define(['views/base/view'], function(view){
+var offline = view.extend({
 
     tagName: "div",
 

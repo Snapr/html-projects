@@ -1,11 +1,19 @@
 /*global _  define require */
-define(['backbone', 'native', 'config'], function(Backbone, native, config){
-var paused = Backbone.View.extend({
+define(['views/base/view', 'native', 'config'], function(view, native, config){
+var paused = view.extend({
 
     tagName: "div",
 
+    initialize: function(){
+        this.load_template('components/paused');
+    },
+
+
     render: function(message, icon){
-        this.setElement( $('.x-resume-queue').show().remove() );
+        this.setElement(
+            $( this.template() )
+            .trigger("create")
+        );
         $('.x-resume-queue').live('click', function(){
             native.pass_data('snapr://upload?start');
             config.set('paused', false);

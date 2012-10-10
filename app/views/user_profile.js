@@ -3,8 +3,9 @@ define(['views/base/page', 'models/user'], function(page_view, user_model){
 
 return page_view.extend({
 
-    post_initialize: function(){
-        this.template = _.template( $("#user-profile-template").html() );
+    create_page: function(){
+        this.setElement($(this.template({initial:true})));
+        this.$el.appendTo(document.body);
     },
 
     post_activate: function(options){
@@ -20,9 +21,11 @@ return page_view.extend({
     },
 
     render: function(){
-        this.$el.find( ".user-profile" ).html( this.template({
+        var rendered = $(this.template({
+            initial:false,
             user: this.model
-        }) );
+        }));
+        this.$( ".user-profile" ).replaceWith(rendered.find(".user-profile"));
         this.$el.trigger( "create" );
     }
 });
