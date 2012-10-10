@@ -93,8 +93,8 @@
             left: -3px;
             top: -3px;
             margin: 0;
-            height: @gfx-spot-icon-sprite-grid;
-            width: @gfx-spot-icon-sprite-grid;
+            height: @gfxSpot-grid;
+            width: @gfxSpot-grid;
         }
         .ui-icon-arrow-r {
             right: -10px;
@@ -411,16 +411,16 @@
             }
 
             .ui-icon-refresh{
-                background-image: url('../gfx/pull-to-refresh.png');
+                background-image: url('@{gfx}@{gfxRefresh}');                            
                 background-repeat: no-repeat;
                 position: absolute;
                 display: block;
                 left: 50%;
                 top: 50%;
-                width: @gfx-refresh-sprite-grid;
-                height: @gfx-refresh-sprite-grid;
-                margin-top: -@gfx-refresh-sprite-grid / 2;
-                margin-left: -@gfx-refresh-sprite-grid / 2;
+                width: @gfxRefresh-grid;
+                height: @gfxRefresh-grid;
+                margin-top: -@gfxRefresh-grid / 2;
+                margin-left: -@gfxRefresh-grid / 2;
                 -webkit-transition-property:-webkit-transform;
             	-webkit-transition-duration:250ms;
             	-webkit-transform:rotate(0deg) translateZ(0);
@@ -429,20 +429,20 @@
             &.x-right-pull{
                 margin-right: 9px;
                 .ui-icon-refresh{
-                    background-position: @ri-offset-x @gfx-refresh-sprite-right-y;
+                    background-position: @gfxRefresh-x @gfxRefresh-right-y;
                 }
             }
 
             &.x-left-pull{
                 margin-right:-@padding-image-grid-inset;
                  .ui-icon-refresh{
-                     background-position: @ri-offset-x @gfx-refresh-sprite-left-y;
+                     background-position: @gfxRefresh-x @gfxRefresh-left-y;
                  }
             }
 
             &.x-flipped{
                  .ui-icon-refresh{
-                     background-position: @ri-offset-x @gfx-refresh-sprite-refresh-y;
+                     background-position: @gfxRefresh-x @gfxRefresh-refresh-y;
     	            -webkit-transform:rotate(180deg) translateZ(0);
 	            }
     	    }
@@ -771,7 +771,7 @@
 }
 
 .button-logo{
-    background-image: url('../gfx/service-full-logos.png');
+    background-image: url('@{gfx}@{gfxService}');                                
     height: 36px;
     width: 150px;
     display: inline-block;
@@ -780,25 +780,25 @@
     background-repeat: no-repeat;
     &.twitter-logo{
         width: 100px;
-        background-position: @ls-offset-x @gfx-service-logo-twitter-y;
+        background-position: @gfxService-x @gfxService-y-twitter;
     }
     &.foursquare-logo{
         width: 100px;
-        background-position: @ls-offset-x @gfx-service-logo-foursquare-y;
+        background-position: @gfxService-x @gfxService-y-foursquare;
     }
     &.tumblr-logo{
         width: 102px;
-        background-position: @ls-offset-x @gfx-service-logo-tumblr-y;
+        background-position: @gfxService-x @gfxService-y-tumblr;
         height: 32px;
     }
     &.facebook-logo{
        width: 108px;
-       background-position: @ls-offset-x @gfx-service-logo-facebook-y;
+       background-position: @gfxService-x @gfxService-y-facebook;
        height: 32px;
    }
    &.snapr-logo{
          width: 80px;
-         background-position: @ls-offset-x @gfx-service-logo-snapr-y;
+         background-position: @gfxService-x @gfxService-y-snapr;
          height: 32px;
      }
 }
@@ -905,10 +905,10 @@
 .helper-content{
     .ui-body{
         position: relative;
-        min-height: @gfx-helper-icon-sprite-grid;
+        min-height: @gfxHelper-grid;
     }
     .icon-left{
-        padding: @padding-page-inset @padding-page-inset @padding-page-inset * 2 @gfx-helper-icon-sprite-grid + @padding-page-inset;
+        padding: @padding-page-inset @padding-page-inset @padding-page-inset * 2 @gfxHelper-grid + @padding-page-inset;
 
     }
     .helper-icons{

@@ -626,25 +626,25 @@
                 padding: 0 36px 0 10px;
            }
             .ui-icon{
-                background-position: @as-offset-x @gfx-action-icon-sprite-toggle-y;
+                background-position: @gfxAction-x @gfxAction-toggle-y;
                 right: 0;
             }
             &.ui-btn-down-d,
             &.ui-btn-hover-d,
             &.ui-btn-active-d{
                 .ui-icon{
-                background-position: @as-offset-x-hover @gfx-action-icon-sprite-toggle-y;
+                background-position: @gfxAction-x-hover @gfxAction-toggle-y;
                 }
             }
             &.selected{
             .ui-icon{
-                background-position: @as-offset-x @gfx-action-icon-sprite-toggle-up-y;
+                background-position: @gfxAction-x @gfxAction-toggle-up-y;
             }
             &.ui-btn-down-d,
             &.ui-btn-hover-d,
             &.ui-btn-active-d{
                     .ui-icon{
-                    background-position: @as-offset-x-hover @gfx-action-icon-sprite-toggle-up-y;
+                    background-position: @gfxAction-x-hover @gfxAction-toggle-up-y;
                     }
                 }
             }
@@ -701,18 +701,18 @@
 
 .ui-checkbox{
     .ui-icon{
-        width: @gfx-action-icon-sprite-grid;
-        height: @gfx-action-icon-sprite-grid;
-        background-image: url('../gfx/action-icons-custom.png');
+        width: @gfxAction-grid;
+        height: @gfxAction-grid;
+        background-image: url('@{gfx}@{gfxAction}'); 
     }
     .ui-checkbox-on {
-           .ui-icon{background-position: @as-offset-x @gfx-action-icon-sprite-tick-y;}
-           &.ui-btn-active{.ui-icon{background-position: @as-offset-x-hover @gfx-action-icon-sprite-tick-y;}
+           .ui-icon{background-position: @gfxAction-x @gfxAction-tick-y;}
+           &.ui-btn-active{.ui-icon{background-position: @gfxAction-x-hover @gfxAction-tick-y;}
            }
     }
     .ui-checkbox-off{
-           .ui-icon{background-position: @as-offset-x @gfx-action-icon-sprite-close-y;}
-           &.ui-btn-active{.ui-icon{background-position: @as-offset-x-hover @gfx-action-icon-sprite-close-y;}
+           .ui-icon{background-position: @gfxAction-x @gfxAction-close-y;}
+           &.ui-btn-active{.ui-icon{background-position: @gfxAction-x-hover @gfxAction-close-y;}
            }
     }
 }
@@ -788,16 +788,16 @@
     overflow: hidden;
     .ui-btn-inner{
         .ui-icon{
-            background-image: url('../gfx/dash-icons.png');
+            background-image: url('@{gfx}@{gfxDash}');                 
             width: 64px;
             height: 32px;
             top: 6px;
             margin-left: -32px;
             &.ui-icon-person{
-                background-position: @di-offset-x @gfx-dash-icon-sprite-person-y;
+                background-position: @gfxDash-x @gfxDash-person-y;
             }
             &.ui-icon-search{
-                background-position: @di-offset-x @gfx-dash-icon-sprite-search-y;
+                background-position: @gfxDash-x @gfxDash-search-y;
 
             }
         }
@@ -987,9 +987,9 @@
             padding: 0;
         }
         .ui-icon{
-            width: @gfx-action-icon-sprite-grid;
-            height: @gfx-action-icon-sprite-grid;
-            background-image: url('../gfx/action-icons-custom.png');
+            width: @gfxAction-grid;
+            height: @gfxAction-grid;
+            background-image: url('@{gfx}@{gfxAction}');             
             display: block;
             position: absolute;
             top: -8px;
@@ -1008,10 +1008,10 @@
             visibility: hidden;
         }
         label[for="status-public"]{
-               .ui-icon{background-position: @as-offset-x-hover @gfx-action-icon-sprite-close-y;}
+               .ui-icon{background-position: @gfxAction-x-hover @gfxAction-close-y;}
                .ui-btn-text::before{content: "Private";}
                &.ui-btn-active{
-                   .ui-icon{background-position: @as-offset-x-hover @gfx-action-icon-sprite-tick-y;}
+                   .ui-icon{background-position: @gfxAction-x-hover @gfxAction-tick-y;}
                    .ui-btn-text::before{content: "Public";}
                }
         }
@@ -1028,16 +1028,17 @@
             .corner-all(@corner-general-rounded);
         }
         .ui-icon{
-            width: @gfx-large-sharing-icon-sprite-grid;
-            height: @gfx-large-sharing-icon-sprite-grid;
-            background-image: url('../gfx/share-icons-large.png');
+            width: @gfxShare-grid;
+            height: @gfxShare-grid;
+            background-image: url('@{gfx}@{gfxShare}');             
+            
             display: block;
         }
         .ui-btn-text{
             text-indent: -999px;
             display: block;
-            height: @gfx-large-sharing-icon-sprite-grid;
-            width: @gfx-large-sharing-icon-sprite-grid;
+            height: @gfxShare-grid;
+            width: @gfxShare-grid;
             overflow: hidden;
         }
         .ui-btn-inner{
@@ -1045,35 +1046,35 @@
         }
 
         label[for="twitter-sharing"]{
-           .ui-icon{background-position: @ls-offset-x @gfx-large-sharing-icon-sprite-twitter-y;}
+           .ui-icon{background-position: @gfxService-x @gfxShare-twitter-y;}
            &.ui-checkbox-on{
                 background-color: @color-bg-twitter-main;
                 .box-shadow(inset 0 3px 20px @color-bg-twitter-main-tint);
-                .ui-icon{background-position: @ls-offset-x-hover @gfx-large-sharing-icon-sprite-twitter-y;}
+                .ui-icon{background-position: @gfxService-x-hover @gfxShare-twitter-y;}
            }
         }
         label[for="facebook-sharing"]{
-           .ui-icon{background-position: @ls-offset-x @gfx-large-sharing-icon-sprite-facebook-y;}
+           .ui-icon{background-position: @gfxService-x @gfxShare-facebook-y;}
            &.ui-checkbox-on{
                 background-color: @color-bg-facebook-main;
                 .box-shadow(inset 0 3px 20px @color-bg-facebook-main-tint);
-                .ui-icon{background-position: @ls-offset-x-hover @gfx-large-sharing-icon-sprite-facebook-y;}
+                .ui-icon{background-position: @gfxService-x-hover @gfxShare-facebook-y;}
            }
        }
        label[for="tumblr-sharing"]{
-           .ui-icon{background-position: @ls-offset-x @gfx-large-sharing-icon-sprite-tumblr-y;}
+           .ui-icon{background-position: @gfxService-x @gfxShare-tumblr-y;}
            &.ui-checkbox-on{
                 background-color: @color-bg-tumblr-main;
                 .box-shadow(inset 0 3px 20px @color-bg-tumblr-main-tint);
-                .ui-icon{background-position: @ls-offset-x-hover @gfx-large-sharing-icon-sprite-tumblr-y;}
+                .ui-icon{background-position: @gfxService-x-hover @gfxShare-tumblr-y;}
            }
        }
        label[for="foursquare-sharing"]{
-           .ui-icon{background-position: @ls-offset-x @gfx-large-sharing-icon-sprite-foursquare-y;}
+           .ui-icon{background-position: @gfxService-x @gfxShare-foursquare-y;}
            &.ui-checkbox-on{
                 background-color: @color-bg-foursquare-main;
                 .box-shadow(inset 0 3px 20px @color-bg-foursquare-main-tint);
-                .ui-icon{background-position: @ls-offset-x-hover @gfx-large-sharing-icon-sprite-foursquare-y;}
+                .ui-icon{background-position: @gfxService-x-hover @gfxShare-foursquare-y;}
            }
        }
     }
@@ -1095,39 +1096,39 @@
                 top: 0;
                 margin-top: 0;
                 left: 0;
-                width: @gfx-action-icon-sprite-grid;
-                height: @gfx-action-icon-sprite-grid;
-                background-image: url('../gfx/action-icons-custom.png');
+                width: @gfxAction-grid;
+                height: @gfxAction-grid;
+                background-image: url('@{gfx}@{gfxAction}');                 
             }
             &.ui-checkbox-on {
-                .ui-icon-checkbox-on{background-position: @as-offset-x-hover @gfx-action-icon-sprite-tick-y;}
-               &.ui-btn-active{.ui-icon-checkbox-on{background-position: @as-offset-x-hover @gfx-action-icon-sprite-tick-y;}
-               .ui-icon-location{background-position: @as-offset-x @gfx-action-icon-sprite-location-y;}
+                .ui-icon-checkbox-on{background-position: @gfxAction-x-hover @gfxAction-tick-y;}
+               &.ui-btn-active{.ui-icon-checkbox-on{background-position: @gfxAction-x-hover @gfxAction-tick-y;}
+               .ui-icon-location{background-position: @gfxAction-x @gfxAction-location-y;}
                 }
-                .ui-icon-location{background-position: @as-offset-x @gfx-action-icon-sprite-location-y;}
+                .ui-icon-location{background-position: @gfxAction-x @gfxAction-location-y;}
 
             }
             &.ui-checkbox-off{
                 .ui-btn-text{
                     opacity: .2;
                 }
-                .ui-icon-checkbox-off{background-position: @as-offset-x-hover @gfx-action-icon-sprite-close-y;}
+                .ui-icon-checkbox-off{background-position: @gfxAction-x-hover @gfxAction-close-y;}
                &.ui-btn-active{
-                .ui-icon-checkbox-off{background-position: @as-offset-x-hover @gfx-action-icon-sprite-close-y;}
-                .ui-icon-location{background-position: @as-offset-x @gfx-action-icon-sprite-location-y;}
+                .ui-icon-checkbox-off{background-position: @gfxAction-x-hover @gfxAction-close-y;}
+                .ui-icon-location{background-position: @gfxAction-x @gfxAction-location-y;}
                }
-               .ui-icon-location{background-position: @as-offset-x @gfx-action-icon-sprite-location-y;}
+               .ui-icon-location{background-position: @gfxAction-x @gfxAction-location-y;}
             }
 
-            .ui-icon-arrow-right{background-position: @as-offset-x @gfx-action-icon-sprite-arrow-right-y;}
-            .ui-icon-location{background-position: @as-offset-x @gfx-action-icon-sprite-location-y;}
-            .ui-icon-venue{background-position: @as-offset-x @gfx-action-icon-sprite-venue-y;}
+            .ui-icon-arrow-right{background-position: @gfxAction-x @gfxAction-arrow-right-y;}
+            .ui-icon-location{background-position: @gfxAction-x @gfxAction-location-y;}
+            .ui-icon-venue{background-position: @gfxAction-x @gfxAction-venue-y;}
 
              &.ui-btn-hover-a,
              &.ui-btn-down-a,
              &.ui-btn-active-a{
-                .ui-icon-location{background-position: @as-offset-x-hover @gfx-action-icon-sprite-location-y;}
-                .ui-icon-venue{background-position: @as-offset-x-hover @gfx-action-icon-sprite-venue-y;}
+                .ui-icon-location{background-position: @gfxAction-x-hover @gfxAction-location-y;}
+                .ui-icon-venue{background-position: @gfxAction-x-hover @gfxAction-venue-y;}
              }
 
             .ui-icon-checkbox-on,
@@ -1144,7 +1145,7 @@
                 white-space: normal;
                 .ui-btn-text{
                     white-space: normal;
-                    line-height: @gfx-action-icon-sprite-grid;
+                    line-height: @gfxAction-grid;
                     .ui-icon{
                         position: absolute;
                         left: -36px;
@@ -1184,12 +1185,12 @@
             top: -1px;
             margin-top: 0;
             right: 0;
-            width: @gfx-action-icon-sprite-grid;
-            height: @gfx-action-icon-sprite-grid;
-            background-image: url('../gfx/action-icons-custom.png');
+            width: @gfxAction-grid;
+            height: @gfxAction-grid;
+            background-image: url('@{gfx}@{gfxAction}'); 
         }
-        .ui-icon-toggle{background-position: @as-offset-x @gfx-action-icon-sprite-toggle-y;}
-        .ui-icon-toggle-up{background-position: @as-offset-x @gfx-action-icon-sprite-toggle-up-y;}
+        .ui-icon-toggle{background-position: @gfxAction-x @gfxAction-toggle-y;}
+        .ui-icon-toggle-up{background-position: @gfxAction-x @gfxAction-toggle-up-y;}
 
     }
 }

@@ -135,22 +135,22 @@
 .action-icons{
     .ui-icon{
         background: none;
-        background-image: url('../gfx/action-icons-custom.png');
-        width: @gfx-action-icon-sprite-grid;
-        height: @gfx-action-icon-sprite-grid;
+        background-image: url('@{gfx}@{gfxAction}'); 
+        width: @gfxAction-grid;
+        height: @gfxAction-grid;
     }
 
-    .ui-icon-action-heart{background-position: @as-offset-x @gfx-action-icon-sprite-heart-y}
-    .ui-icon-action-comment{background-position: @as-offset-x @gfx-action-icon-sprite-comment-y}
-    .ui-icon-action-more{background-position: @as-offset-x @gfx-action-icon-sprite-more-y}
+    .ui-icon-action-heart{background-position: @gfxAction-x @gfxAction-heart-y}
+    .ui-icon-action-comment{background-position: @gfxAction-x @gfxAction-comment-y}
+    .ui-icon-action-more{background-position: @gfxAction-x @gfxAction-more-y}
 
     &.selected,
     &.ui-btn-hover-d,
     &.ui-btn-down-d,
     &.ui-btn-active-d{
-        .ui-icon-action-heart{background-position: @as-offset-x-hover @gfx-action-icon-sprite-heart-y}
-        .ui-icon-action-comment{background-position: @as-offset-x-hover @gfx-action-icon-sprite-comment-y}
-        .ui-icon-action-more{background-position: @as-offset-x-hover @gfx-action-icon-sprite-more-y}
+        .ui-icon-action-heart{background-position: @gfxAction-x-hover @gfxAction-heart-y}
+        .ui-icon-action-comment{background-position: @gfxAction-x-hover @gfxAction-comment-y}
+        .ui-icon-action-more{background-position: @gfxAction-x-hover @gfxAction-more-y}
     }
 }
 
@@ -159,30 +159,30 @@
     .ui-btn{
         .ui-btn-inner{
             .ui-icon{
-                   background-image: url('../gfx/action-icons-dark.png');
-                   width: @gfx-action-darkicon-sprite-grid;
-                   height: @gfx-action-darkicon-sprite-grid;
+                   background-image: url('@{gfx}@{gfxDark}'); 
+                   width: @gfxDark-grid;
+                   height: @gfxDark-grid;
                }
-               .ui-icon-settings,&.ui-icon-settings{background-position: @ad-offset-x @gfx-action-darkicon-sprite-settings-y;}
-               .ui-icon-flag,&.ui-icon-flag{background-position: @ad-offset-x @gfx-action-darkicon-sprite-flag-y;}
-               .ui-icon-delete,&.ui-icon-delete{background-position: @ad-offset-x @gfx-action-darkicon-sprite-delete-y;}
-               .ui-icon-download,&.ui-icon-download{background-position: @ad-offset-x @gfx-action-darkicon-sprite-download-y;}
-               .ui-icon-twitter,&.ui-icon-twitter{background-position: @ad-offset-x @gfx-action-darkicon-sprite-twitter-y;}
-               .ui-icon-facebook,&.ui-icon-facebook{background-position: @ad-offset-x @gfx-action-darkicon-sprite-facebook-y;}
-               .ui-icon-tumblr,&.ui-icon-tumblr{background-position: @ad-offset-x @gfx-action-darkicon-sprite-tumblr-y;}
-               .ui-icon-foursquare,&.ui-icon-foursquare{background-position: @ad-offset-x @gfx-action-darkicon-sprite-foursquare-y;}
-               .ui-icon-email,&.ui-icon-email{background-position: @ad-offset-x @gfx-action-darkicon-sprite-email-y;}
-               .ui-icon-feed,&.ui-icon-feed{background-position: @ad-offset-x @gfx-action-darkicon-sprite-feed-y;}
-               .ui-icon-grid,&.ui-icon-grid{background-position: @ad-offset-x @gfx-action-darkicon-sprite-grid-y;}
+               .ui-icon-settings,&.ui-icon-settings{background-position: @gfxDark-x @gfxDark-settings-y;}
+               .ui-icon-flag,&.ui-icon-flag{background-position: @gfxDark-x @gfxDark-flag-y;}
+               .ui-icon-delete,&.ui-icon-delete{background-position: @gfxDark-x @gfxDark-delete-y;}
+               .ui-icon-download,&.ui-icon-download{background-position: @gfxDark-x @gfxDark-download-y;}
+               .ui-icon-twitter,&.ui-icon-twitter{background-position: @gfxDark-x @gfxDark-twitter-y;}
+               .ui-icon-facebook,&.ui-icon-facebook{background-position: @gfxDark-x @gfxDark-facebook-y;}
+               .ui-icon-tumblr,&.ui-icon-tumblr{background-position: @gfxDark-x @gfxDark-tumblr-y;}
+               .ui-icon-foursquare,&.ui-icon-foursquare{background-position: @gfxDark-x @gfxDark-foursquare-y;}
+               .ui-icon-email,&.ui-icon-email{background-position: @gfxDark-x @gfxDark-email-y;}
+               .ui-icon-feed,&.ui-icon-feed{background-position: @gfxDark-x @gfxDark-feed-y;}
+               .ui-icon-grid,&.ui-icon-grid{background-position: @gfxDark-x @gfxDark-grid-y;}
 
-               .ui-icon-spots,&.ui-icon-spots{background-position: @ad-offset-x @gfx-action-darkicon-sprite-spots-y;}
-               .ui-icon-photos,&.ui-icon-photos{background-position: @ad-offset-x @gfx-action-darkicon-sprite-photos-y;}
+               .ui-icon-spots,&.ui-icon-spots{background-position: @gfxDark-x @gfxDark-spots-y;}
+               .ui-icon-photos,&.ui-icon-photos{background-position: @gfxDark-x @gfxDark-photos-y;}
 
         }
         &.ui-btn-active{
             .ui-btn-inner{
-                   .ui-icon-spots,&.ui-icon-spots{background-position: @ad-offset-x-hover @gfx-action-darkicon-sprite-spots-y;}
-                   .ui-icon-photos,&.ui-icon-photos{background-position: @ad-offset-x-hover @gfx-action-darkicon-sprite-photos-y;}
+                   .ui-icon-spots,&.ui-icon-spots{background-position: @gfxDark-x-hover @gfxDark-spots-y;}
+                   .ui-icon-photos,&.ui-icon-photos{background-position: @gfxDark-x-hover @gfxDark-photos-y;}
             }
         }
     } 
@@ -259,9 +259,9 @@
 
 .ui-icon.helper-icons,
 .helper-icons .ui-icon{
-    background-image: url('../gfx/helper-icons.png');
-    width: @gfx-helper-icon-sprite-grid;
-    height: @gfx-helper-icon-sprite-grid;
+    background-image: url('@{gfx}@{gfxHelper}');    
+    width: @gfxHelper-grid;
+    height: @gfxHelper-grid;
 }
 
 
@@ -276,9 +276,9 @@
     height: 22px;
     display: inline-block;
     .ui-icon{
-        background-image: url('../gfx/share-icons-small.png');
-        width: @gfx-small-sharing-icon-sprite-grid;
-        height: @gfx-small-sharing-icon-sprite-grid;
+        background-image: url('@{gfx}@{gfxShareSmall}');                             
+        width: @gfxShareSmall-grid;
+        height: @gfxShareSmall-grid;
         position: relative!important;
         display: block;
         top: 1px!important;
@@ -286,22 +286,22 @@
         margin: 0!important;
     }
     &.twitter-sharing{
-       .ui-icon{background-position: @ss-offset-x @gfx-small-sharing-icon-sprite-twitter-y!important;}
+       .ui-icon{background-position: @gfxShareSmall-x @gfxShareSmall-twitter-y!important;}
        background-color: @color-bg-twitter-main;
         .box-shadow(inset 0 3px 20px @color-bg-twitter-main-tint);
     }
     &.facebook-sharing{
-       .ui-icon{background-position: @ss-offset-x @gfx-small-sharing-icon-sprite-facebook-y!important;}
+       .ui-icon{background-position: @gfxShareSmall-x @gfxShareSmall-facebook-y!important;}
        background-color: @color-bg-facebook-main;
        .box-shadow(inset 0 3px 20px @color-bg-facebook-main-tint);
    }
    &.tumblr-sharing{
-       .ui-icon{background-position: @ss-offset-x @gfx-small-sharing-icon-sprite-tumblr-y!important;}
+       .ui-icon{background-position: @gfxShareSmall-x @gfxShareSmall-tumblr-y!important;}
        background-color: @color-bg-tumblr-main;
        .box-shadow(inset 0 3px 20px @color-bg-tumblr-main-tint);
    }
    &.foursquare-sharing{
-       .ui-icon{background-position: @ss-offset-x @gfx-small-sharing-icon-sprite-foursquare-y!important;}
+       .ui-icon{background-position: @gfxShareSmall-x @gfxShareSmall-foursquare-y!important;}
         background-color: @color-bg-foursquare-main;
         .box-shadow(inset 0 3px 20px @color-bg-foursquare-main-tint);
    }
@@ -312,64 +312,64 @@
 /* default */
 .ui-icon.spot-icon,
 .category-btn .ui-icon{
-    background-position: @si-cd-offset-x @gfx-spot-icon-y;
-    background-image: url('../gfx/spot-icons.png');
-    width: @gfx-spot-icon-sprite-grid;
-    height: @gfx-spot-icon-sprite-grid;
+    background-position: @gfxSpot-x-c @gfxSpot-y;
+    background-image: url('@{gfx}@{gfxSpot}');                                        
+    width: @gfxSpot-grid;
+    height: @gfxSpot-grid;
     }
 /* if parent class is set */
 .great-outdoors{
     .category-btn .ui-icon,
-    .spot-icon{background-position: @si-cd-offset-x @gfx-spot-icon-great-outdoors-y}
+    .spot-icon{background-position: @gfxSpot-x-c @gfxSpot-y-greatOutdoors}
 } 
 .shops {
     .category-btn .ui-icon,
-    .spot-icon{background-position: @si-cd-offset-x @gfx-spot-icon-shops-y}
+    .spot-icon{background-position: @gfxSpot-x-c @gfxSpot-y-shops}
 }
 .nightlife-spots{
     .category-btn .ui-icon, 
-    .spot-icon{background-position: @si-cd-offset-x @gfx-spot-icon-nightlife-spots-y}
+    .spot-icon{background-position: @gfxSpot-x-c @gfxSpot-y-nightlife}
 }
 .food {
     .category-btn .ui-icon,
-    .spot-icon{background-position: @si-cd-offset-x @gfx-spot-icon-food-y}
+    .spot-icon{background-position: @gfxSpot-x-c @gfxSpot-y-food}
 }
 .arts-and-entertainment {
     .category-btn .ui-icon,
-    .spot-icon{background-position: @si-cd-offset-x @gfx-spot-icon-arts-and-entertainment-y}
+    .spot-icon{background-position: @gfxSpot-x-c @gfxSpot-y-arts}
 }
 .all-categories {
     .category-btn .ui-icon,
-    .spot-icon{background-position: @si-cd-offset-x @gfx-spot-icon-all-categories-y}
+    .spot-icon{background-position: @gfxSpot-x-c @gfxSpot-y-all}
 }
 
 /* med icon */
-.ui-icon.med-spot-icon{background-position: @si-e-offset-x @gfx-spot-icon-y;}
+.ui-icon.med-spot-icon{background-position: @gfxSpot-x-e @gfxSpot-y;}
 /* if parent class is set */
-.great-outdoors .med-spot-icon.spot-icon{background-position: @si-e-offset-x @gfx-spot-icon-great-outdoors-y}
-.shops .med-spot-icon.spot-icon{background-position: @si-e-offset-x @gfx-spot-icon-shops-y}
-.nightlife-spots .med-spot-icon.spot-icon{background-position: @si-e-offset-x @gfx-spot-icon-nightlife-spots-y}
-.food .med-spot-icon.spot-icon{background-position: @si-e-offset-x @gfx-spot-icon-food-y}
-.arts-and-entertainment .med-spot-icon.spot-icon{background-position: @si-e-offset-x @gfx-spot-icon-arts-and-entertainment-y}
-.all-categories .med-spot-icon.spot-icon{background-position: @si-e-offset-x @gfx-spot-icon-all-categories-y}
+.great-outdoors .med-spot-icon.spot-icon{background-position: @gfxSpot-x-e @gfxSpot-y-greatOutdoors}
+.shops .med-spot-icon.spot-icon{background-position: @gfxSpot-x-e @gfxSpot-y-shops}
+.nightlife-spots .med-spot-icon.spot-icon{background-position: @gfxSpot-x-e @gfxSpot-y-nightlife}
+.food .med-spot-icon.spot-icon{background-position: @gfxSpot-x-e @gfxSpot-y-food}
+.arts-and-entertainment .med-spot-icon.spot-icon{background-position: @gfxSpot-x-e @gfxSpot-y-arts}
+.all-categories .med-spot-icon.spot-icon{background-position: @gfxSpot-x-e @gfxSpot-y-all}
 
-.beer .med-spot-icon.spot-icon{background-position: @si-e-offset-x @gfx-spot-icon-beer-y}
-.cafe .med-spot-icon.spot-icon{background-position: @si-e-offset-x @gfx-spot-icon-cafe-y}
+.beer .med-spot-icon.spot-icon{background-position: @gfxSpot-x-e @gfxSpot-y-nightlife}
+.cafe .med-spot-icon.spot-icon{background-position: @gfxSpot-x-e @gfxSpot-y-cafe}
 
 
 
 /* dark icon */
-.ui-icon.dark-spot-icon{background-position: @si-e-offset-x @gfx-spot-icon-y;}
+.ui-icon.dark-spot-icon{background-position: @gfxSpot-x-e @gfxSpot-y;}
 /* if parent class is set */
-.great-outdoors .dark-spot-icon.spot-icon{background-position: @si-e-offset-x @gfx-spot-icon-great-outdoors-y}
-.shops .dark-spot-icon.spot-icon{background-position: @si-e-offset-x @gfx-spot-icon-shops-y}
-.nightlife-spots .dark-spot-icon.spot-icon{background-position: @si-e-offset-x @gfx-spot-icon-nightlife-spots-y}
-.food .dark-spot-icon.spot-icon{background-position: @si-e-offset-x @gfx-spot-icon-food-y}
-.arts-and-entertainment .dark-spot-icon.spot-icon{background-position: @si-e-offset-x @gfx-spot-icon-arts-and-entertainment-y}
-.all-categories .dark-spot-icon.spot-icon{background-position: @si-e-offset-x @gfx-spot-icon-all-categories-y}
+.great-outdoors .dark-spot-icon.spot-icon{background-position: @gfxSpot-x-e @gfxSpot-y-greatOutdoors}
+.shops .dark-spot-icon.spot-icon{background-position: @gfxSpot-x-e @gfxSpot-y-shops}
+.nightlife-spots .dark-spot-icon.spot-icon{background-position: @gfxSpot-x-e @gfxSpot-y-nightlife}
+.food .dark-spot-icon.spot-icon{background-position: @gfxSpot-x-e @gfxSpot-y-food}
+.arts-and-entertainment .dark-spot-icon.spot-icon{background-position: @gfxSpot-x-e @gfxSpot-y-arts}
+.all-categories .dark-spot-icon.spot-icon{background-position: @gfxSpot-x-e @gfxSpot-y-all}
 
-.beer .dark-spot-icon.spot-icon{background-position: @si-e-offset-x @gfx-spot-icon-beer-y}
-.cafe .dark-spot-icon.spot-icon{background-position: @si-e-offset-x @gfx-spot-icon-cafe-y}
+.beer .dark-spot-icon.spot-icon{background-position: @gfxSpot-x-e @gfxSpot-y-nightlife}
+.cafe .dark-spot-icon.spot-icon{background-position: @gfxSpot-x-e @gfxSpot-y-cafe}
 
 
 /* Misc Spinner */

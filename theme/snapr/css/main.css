@@ -93,51 +93,6 @@
 }
 /* Definititions for GFX Sprites and icon positioning */
 /*
-* Custom Action Icon Sprite '../gfx/action-icons-custom.png'
-*/
-/* Vertical Layout of Icons */
-/* Horizontal offsets for theme swatches / hover states */
-/*
-* Dark Action Icon Sprite '../gfx/action-icons-dark.png'
-*/
-/* Vertical Layout of Icons */
-/* Horizontal offsets for theme swatches / hover states */
-/*
-* Large Sharing Icon Sprite '../gfx/share-icons-large.png'
-*/
-/* Vertical Layout of Icons */
-/* Horizontal offsets for theme swatches / hover states */
-/*
-* Small Sharing Sprite '../gfx/share-icons-small.png'
-*/
-/* Vertical Layout of Icons */
-/* Horizontal offsets for theme swatches / hover states */
-/*
-* Helper Icons '../gfx/helper-icons.png'
-*/
-/* Vertical Layout of Icons */
-/* Horizontal offsets for theme swatches / hover states */
-/*
-* Dash Icons '../gfx/dash-icons.png'
-*/
-/* Vertical Layout of Icons */
-/* Horizontal offsets for theme swatches / hover states */
-/*
-* Linked services Logos '../gfx/service-full-logos.png'
-*/
-/* Vertical Layout of Icons */
-/* Horizontal offsets for theme swatches / hover states */
-/*
-* Spot Icons '../gfx/dash-icons.png'
-*/
-/* Vertical Layout of Icons */
-/* Horizontal offsets for theme swatches / hover states */
-/*
-* Pull to refresh '../gfx/pull-to-refresh.png'
-*/
-/* Vertical Layout of Icons */
-/* Horizontal offsets for theme swatches / hover states */
-/*
 * Icons - Positioning for icons in the app based on sprites.less
 */
 /* @defaulticons */
@@ -658,7 +613,7 @@
 }
 .nightlife-spots .category-btn .ui-icon,
 .nightlife-spots .spot-icon {
-  background-position: 0px -72px;
+  background-position: 0px -96px;
 }
 .food .category-btn .ui-icon,
 .food .spot-icon {
@@ -684,7 +639,7 @@
   background-position: -48px -48px;
 }
 .nightlife-spots .med-spot-icon.spot-icon {
-  background-position: -48px -72px;
+  background-position: -48px -96px;
 }
 .food .med-spot-icon.spot-icon {
   background-position: -48px -120px;
@@ -713,7 +668,7 @@
   background-position: -48px -48px;
 }
 .nightlife-spots .dark-spot-icon.spot-icon {
-  background-position: -48px -72px;
+  background-position: -48px -96px;
 }
 .food .dark-spot-icon.spot-icon {
   background-position: -48px -120px;
@@ -7234,7 +7189,7 @@ body.browser-testing .ui-footer {
     background-size: 14px 10px;
   }
   .ps-caption-bottom .ps-caption-content::after {
-    background-image: url('../gfx/general-jquerymob-icons.png');
+    background-image: url('../gfx/retina/general-jquerymob-icons.png');
     -moz-background-size: 774px 180px;
     -o-background-size: 774px 180px;
     -webkit-background-size: 774px 180px;
