@@ -3,6 +3,9 @@ define(['backbone'], function(Backbone) {
 var config_model = Backbone.Model.extend({
 
     config: {
+        
+        initial_view: 'dash'
+        
         //environment: 'live',  // defaults to dev
 
         // client must have xAuth permission from 3rd party
