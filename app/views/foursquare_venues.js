@@ -33,7 +33,7 @@ var venues = page_view.extend({
     render: function(){
         var venue_list = this.$("ul.venue-list").empty();
 
-        var venue_li_template = _.template( $("#venue-li-template").html() );
+        var venue_li_template = this.get_template('components/foursquare_venue');
 
         var selected_id = this.selected_id;
         var back_query = this.query.back_query;
