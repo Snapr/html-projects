@@ -22,29 +22,6 @@
     </head>
 <body style="display: none;"><!-- initially hidden until jQmobile can load and style everything -->
 
-    <!-- @feed @titlebar ITEM - title bar for pages such as searches and location feeds -->
-       <script id="feed-header-template" type="text/template">
-       <div class="ui-bar-e ui-bar top-no-arrow">
-        <% if(feed_title){ %>
-            <h4><em><%= feed_title %></em></h4>
-        <% }else{ %>
-            <% switch (feed_type) { case 'spot': %>
-                <h4>@ <em><%= feed_parameter %></em></h4>
-            <% break; case 'location': %>
-                <h4><em>Location Feed</em></h4>
-            <% break; case 'search': %>
-                <h4>Search for <em><%= feed_parameter %></em></h4>
-            <% break; case 'favorites': %>
-                <h4>Favorited by <a href="#/feed/?username=<%= feed_parameter %>"><em><%= feed_parameter %></em></a></h4>
-            <% break; case 'recent': %>
-                <h4><em>Recent Uploads</em></h4>
-            <% break; case 'feed': %>
-                <h4><em>Photos</em></h4>
-            <% break;}%>
-        <% } %>
-       </div>
-       </script>
-
        <!-- @feed @userheader ITEM block at top of user feed  -->
        <script id="user-header-template" type="text/template">
        <div class="feed-user-header page-inset-header">
