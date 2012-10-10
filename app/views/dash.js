@@ -71,6 +71,7 @@ var dash_view = page_view.extend({
     },
 
     render: function(){
+        console.log('dash render', this);
         this.$el.find('.dash-welcome').toggle(!auth.has("access_token") || this.model.length < 3);
         var $featured_streams = this.$el.find('.featured-streams').empty(),
             $tumblr_streams = this.$el.find('.tumblr-streams').empty(),
@@ -103,6 +104,7 @@ var dash_view = page_view.extend({
 
         // User streams
         _.each( this.model.get('streams').models, function( item ){
+            console.log('new stream', item, $streams);
             var li = new dash_stream({
                 collection: item.photos,
                 model: item
@@ -224,11 +226,11 @@ var dash_stream = side_scroll.extend({
         "click a.ui-bar": "toggle_stream"
     },
 
-    template: _.template( $('#dash-stream-template').html() ),
-
     thumbs_template: _.template( $('#dash-thumbs-template').html() ),
 
     post_initialize: function( options ){
+        console.log('stream init');
+        this.load_template('components/dash/stream');
         if (!options.featured){
             this.$el.addClass("user-stream");
             this.$el.attr("data-id", this.model.get("id"));
@@ -244,7 +246,7 @@ var dash_stream = side_scroll.extend({
             options = {
                 data: {
                     n: config.get('side_scroll_initial'),
-                    detail: 0,
+                    detail: 0
                 },
                 success: function () {
                     this_view.render();
@@ -260,7 +262,7 @@ var dash_stream = side_scroll.extend({
                 options.data = $.extend(options.data, query.query);
             }
             this_view.collection.fetch( options );
-            
+
         }
         else {
             this_view.$el.find('.thumbs-grid').fadeToggle();
@@ -271,7 +273,7 @@ var dash_stream = side_scroll.extend({
                 btn.attr('data-icon', 'arrow-r').button();
                 console.log('adding');
             }
-            btn.toggleClass('open').toggleClass('closed')
+            btn.toggleClass('open').toggleClass('closed');
             btn.toggleClass('top-left-arrow');
             this_view.$el.find('[data-role="button"]').button();
         }
