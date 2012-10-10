@@ -1,13 +1,13 @@
 /*global _  define require */
-define(['config', 'backbone', 'auth'], function(config, Backbone, auth){
-return Backbone.View.extend({
+define(['config', 'views/base/view', 'auth'], function(config, view, auth){
+return view.extend({
 
     tagName: "div",
     className: "news-ticker",
 
     initialize: function(){
         _.bindAll( this );
-        this.template = _.template( $("#news-ticker-template").html() );
+        this.load_template('components/news_ticker');
     },
 
     render: function(){
