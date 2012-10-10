@@ -78,38 +78,38 @@
 @gfxTabBar-x-hover:             -1 * @gfxTabBar-grid;
 
 
-/*
-* General JQuery Mob Icons '../gfx/general-jquerymob-icons'
-*/
-@gfx-general-icon-sprite-width: 774px;
-@gfx-general-icon-sprite-height: 180px;
-@gfx-general-icon-sprite-grid: 36px;
-@gfx-general-icon-extra-x-offset: 9px;/*The jQuery mob sprite has the icons left aligned instead of centered.. */
-/* Horizontal Layout of Icons (this one matches the default jQuery mobile horizontal sprite) */
-@gfx-general-icon-sprite-plus-x:            -0 * @gfx-general-icon-sprite-grid + @gfx-general-icon-extra-x-offset; 
-@gfx-general-icon-sprite-minus-x:           -1 * @gfx-general-icon-sprite-grid + @gfx-general-icon-extra-x-offset ;
-@gfx-general-icon-sprite-delete-x:          -2 * @gfx-general-icon-sprite-grid + @gfx-general-icon-extra-x-offset;
-@gfx-general-icon-sprite-arrow-r-x:         -3 * @gfx-general-icon-sprite-grid + @gfx-general-icon-extra-x-offset;
-@gfx-general-icon-sprite-arrow-l-x:         -4 * @gfx-general-icon-sprite-grid + @gfx-general-icon-extra-x-offset; 
-@gfx-general-icon-sprite-arrow-u-x:         -5 * @gfx-general-icon-sprite-grid + @gfx-general-icon-extra-x-offset;
-@gfx-general-icon-sprite-arrow-d-x:         -6 * @gfx-general-icon-sprite-grid + @gfx-general-icon-extra-x-offset;
-@gfx-general-icon-sprite-check-x:           -7 * @gfx-general-icon-sprite-grid + @gfx-general-icon-extra-x-offset;
-@gfx-general-icon-sprite-gear-x:            -8 * @gfx-general-icon-sprite-grid + @gfx-general-icon-extra-x-offset; 
-@gfx-general-icon-sprite-refresh-x:         -9 * @gfx-general-icon-sprite-grid + @gfx-general-icon-extra-x-offset;
-@gfx-general-icon-sprite-forward-x:         -10 * @gfx-general-icon-sprite-grid + @gfx-general-icon-extra-x-offset;
-@gfx-general-icon-sprite-back-x:            -11 * @gfx-general-icon-sprite-grid + @gfx-general-icon-extra-x-offset;
-@gfx-general-icon-sprite-grid-x:            -12 * @gfx-general-icon-sprite-grid + @gfx-general-icon-extra-x-offset; 
-@gfx-general-icon-sprite-star-x:            -13 * @gfx-general-icon-sprite-grid + @gfx-general-icon-extra-x-offset;
-@gfx-general-icon-sprite-alert-x:           -14 * @gfx-general-icon-sprite-grid + @gfx-general-icon-extra-x-offset;
-@gfx-general-icon-sprite-info-x:            -15 * @gfx-general-icon-sprite-grid + @gfx-general-icon-extra-x-offset;
-@gfx-general-icon-sprite-home-x:            -16 * @gfx-general-icon-sprite-grid + @gfx-general-icon-extra-x-offset;
-@gfx-general-icon-sprite-search-x:          -17 * @gfx-general-icon-sprite-grid + @gfx-general-icon-extra-x-offset;
-/* Horizontal offsets for theme swatches / hover states */
-@g-light-offset-y:                          -0 * @gfx-general-icon-sprite-grid;
-@g-med-offset-y:                            -1 * @gfx-general-icon-sprite-grid;
-@g-dark-offset-y:                           -2 * @gfx-general-icon-sprite-grid;
-@g-yellow-offset-y:                         -3 * @gfx-general-icon-sprite-grid;
-@g-highlight-offset-y:                      -4 * @gfx-general-icon-sprite-grid;
+// Icons
+// -------------------------
+@gfxIcons:                     'general-jquerymob-icons.png';
+@gfxIcons-width:                774px;
+@gfxIcons-height:               180px;
+@gfxIcons-grid:                 36px;
+@gfxIcons-offset-x:             9px; //The jQuery mob sprite has the icons left aligned instead of centered..
+
+@gfxIcons-plus-x:               -0 * @gfxIcons-grid + @gfxIcons-offset-x; 
+@gfxIcons-minus-x:              -1 * @gfxIcons-grid + @gfxIcons-offset-x ;
+@gfxIcons-delete-x:             -2 * @gfxIcons-grid + @gfxIcons-offset-x;
+@gfxIcons-arrow-r-x:            -3 * @gfxIcons-grid + @gfxIcons-offset-x;
+@gfxIcons-arrow-l-x:            -4 * @gfxIcons-grid + @gfxIcons-offset-x; 
+@gfxIcons-arrow-u-x:            -5 * @gfxIcons-grid + @gfxIcons-offset-x;
+@gfxIcons-arrow-d-x:            -6 * @gfxIcons-grid + @gfxIcons-offset-x;
+@gfxIcons-check-x:              -7 * @gfxIcons-grid + @gfxIcons-offset-x;
+@gfxIcons-gear-x:               -8 * @gfxIcons-grid + @gfxIcons-offset-x; 
+@gfxIcons-refresh-x:            -9 * @gfxIcons-grid + @gfxIcons-offset-x;
+@gfxIcons-forward-x:            -10 * @gfxIcons-grid + @gfxIcons-offset-x;
+@gfxIcons-back-x:               -11 * @gfxIcons-grid + @gfxIcons-offset-x;
+@gfxIcons-grid-x:               -12 * @gfxIcons-grid + @gfxIcons-offset-x; 
+@gfxIcons-star-x:               -13 * @gfxIcons-grid + @gfxIcons-offset-x;
+@gfxIcons-alert-x:              -14 * @gfxIcons-grid + @gfxIcons-offset-x;
+@gfxIcons-info-x:               -15 * @gfxIcons-grid + @gfxIcons-offset-x;
+@gfxIcons-home-x:               -16 * @gfxIcons-grid + @gfxIcons-offset-x;
+@gfxIcons-search-x:             -17 * @gfxIcons-grid + @gfxIcons-offset-x;
+
+@gfxIcons-y-light:              -0 * @gfxIcons-grid;
+@gfxIcons-y-med:                -1 * @gfxIcons-grid;
+@gfxIcons-y-dark:               -2 * @gfxIcons-grid;
+@gfxIcons-y-color:              -3 * @gfxIcons-grid;
+@gfxIcons-y-highlight:          -4 * @gfxIcons-grid;
 
 
 /*

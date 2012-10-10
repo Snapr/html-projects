@@ -809,7 +809,7 @@
     .ui-btn{
         .corner-all(@corner-fully-rounded);
         .ui-icon-check{
-            background-position: @gfx-general-icon-sprite-check-x @g-highlight-offset-y;
+            background-position: @gfxIcons-check-x @gfxIcons-y-highlight;
         }
     }
 }
@@ -1223,14 +1223,14 @@
     .connect-status{
         position: absolute;
         right: @padding-element-inset;
-        padding-right: @gfx-general-icon-sprite-grid;
+        padding-right: @gfxIcons-grid;
         font-family: @txt-font-base;
         text-transform: lowercase;
         .ui-icon{
             right: 0;
         }
         .ui-icon-check{
-            background-position: @gfx-general-icon-sprite-check-x @g-highlight-offset-y;
+            background-position: @gfxIcons-check-x @gfxIcons-y-highlight;
         }
     }
 
@@ -1439,7 +1439,7 @@
                padding-left: 20px;
            }
            .ui-icon-delete{
-               background-position: @gfx-general-icon-sprite-delete-x @g-med-offset-y;
+               background-position: @gfxIcons-delete-x @gfxIcons-y-med;
            }
        }
     }
@@ -1471,8 +1471,8 @@
                 left: auto;
                 right: 8px;
             }
-            .ui-icon-plus{background-position: @gfx-general-icon-sprite-arrow-d-x @g-med-offset-y;}
-            .ui-icon-minus{background-position: @gfx-general-icon-sprite-arrow-u-x @g-med-offset-y;}
+            .ui-icon-plus{background-position: @gfxIcons-arrow-d-x @gfxIcons-y-med;}
+            .ui-icon-minus{background-position: @gfxIcons-arrow-u-x @gfxIcons-y-med;}
         }
         .ui-btn-up-c{
             background-color: @color-off-white-tint;

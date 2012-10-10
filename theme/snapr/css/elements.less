@@ -295,7 +295,7 @@
 }
 .x-invalid .ui-icon-validation{
        display: block;
-       background-position: @gfx-general-icon-sprite-delete-x @g-highlight-offset-y;
+       background-position: @gfxIcons-delete-x @gfxIcons-y-highlight;
 }
 
 .ui-icon-validation{
@@ -311,7 +311,7 @@
 
    .ui-icon-validation{
        display: block;
-       background-position: @gfx-general-icon-sprite-check-x @g-highlight-offset-y;
+       background-position: @gfxIcons-check-x @gfxIcons-y-highlight;
    }
 }
 
@@ -604,7 +604,7 @@
         background: none;
         .ui-icon-delete{
             width: 32px;
-            background-position: @gfx-general-icon-sprite-delete-x @g-light-offset-y;
+            background-position: @gfxIcons-delete-x @gfxIcons-y-light;
         }
     }
 
@@ -619,7 +619,7 @@
     }
 
     .ui-icon-check{
-        background-position: @gfx-general-icon-sprite-check-x @g-highlight-offset-y;
+        background-position: @gfxIcons-check-x @gfxIcons-y-highlight;
     }
 
 }
@@ -662,7 +662,7 @@
     }
     &.ui-icon-searchfield::after{
         margin-top: -18px;
-        margin-left: -@gfx-general-icon-extra-x-offset;
+        margin-left: -@gfxIcons-offset-x;
     }
     .ui-input-clear {
         position: absolute;
@@ -671,7 +671,7 @@
         background: none;
         border: none!important;
         .ui-icon-delete{
-            background-position: @gfx-general-icon-sprite-delete-x @g-light-offset-y;
+            background-position: @gfxIcons-delete-x @gfxIcons-y-light;
         }
     }
 }
@@ -1077,8 +1077,8 @@
     .ps-toolbar-close{
         .ps-toolbar-content{
             margin-right: 0px;
-            background-image: url('../gfx/general-jquerymob-icons.png');
-            background-position: @gfx-general-icon-sprite-delete-x + 5px @g-light-offset-y + 5px;
+            background-image: url('@{gfx}@{gfxIcons}');            
+            background-position: @gfxIcons-delete-x + 5px @gfxIcons-y-light + 5px;
             width: @size-topbar-height;
             height: @size-topbar-height;
         }
@@ -1110,8 +1110,8 @@
             right: 0;
             top:50%;
             margin-top: -18px;
-            background-image: url('../gfx/general-jquerymob-icons.png');
-            background-position: @gfx-general-icon-sprite-arrow-r-x @g-dark-offset-y;
+            background-image: url('@{gfx}@{gfxIcons}');            
+            background-position: @gfxIcons-arrow-r-x @gfxIcons-y-dark;
         }
     }
 }

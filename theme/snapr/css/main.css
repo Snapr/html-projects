@@ -93,12 +93,6 @@
 }
 /* Definititions for GFX Sprites and icon positioning */
 /*
-* General JQuery Mob Icons '../gfx/general-jquerymob-icons'
-*/
-/*The jQuery mob sprite has the icons left aligned instead of centered.. */
-/* Horizontal Layout of Icons (this one matches the default jQuery mobile horizontal sprite) */
-/* Horizontal offsets for theme swatches / hover states */
-/*
 * Custom Action Icon Sprite '../gfx/action-icons-custom.png'
 */
 /* Vertical Layout of Icons */
@@ -7016,10 +7010,11 @@ body.browser-testing .ui-footer {
 @media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5) {
   
 }
-/* High Resolution (iPhone 4) */
 @media only screen and (-webkit-min-device-pixel-ratio: 2) {
   .ui-icon,
-  .ui-icon-searchfield:after {
+  .ui-checkbox-on .ui-icon,
+  .ui-radio-on .ui-icon,
+  .ui-icon-searchfield::after {
     background-image: url('../gfx/retina/general-jquerymob-icons.png');
     -moz-background-size: 774px 180px;
     -o-background-size: 774px 180px;
@@ -7033,16 +7028,6 @@ body.browser-testing .ui-footer {
     -o-background-size: 96px 96px;
     -webkit-background-size: 96px 96px;
     background-size: 96px 96px;
-  }
-  .ui-icon,
-  .ui-checkbox-on .ui-icon,
-  .ui-radio-on .ui-icon,
-  .ui-icon-searchfield::after {
-    background-image: url('../gfx/retina/general-jquerymob-icons.png');
-    -moz-background-size: 774px 180px;
-    -o-background-size: 774px 180px;
-    -webkit-background-size: 774px 180px;
-    background-size: 774px 180px;
   }
   .ui-header .ui-btn-inner .ui-icon {
     background-image: url('../gfx/retina/top-bar-icons.png');
