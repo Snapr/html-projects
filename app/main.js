@@ -9,7 +9,7 @@ requirejs.config({
     paths: {
         "async": 'libs/require-plugins/async',
 
-        "jquery": "libs/jquery-1.7.1.min",
+        "jquery": "libs/jquery-1.8.2",
         "jquery.mobile": "libs/jquery.mobile-1.2.0/jquery.mobile-1.2.0",
         "json": "libs/json2",
         "cookie": "libs/jq.cookie",

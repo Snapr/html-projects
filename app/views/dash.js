@@ -72,12 +72,26 @@ var dash_view = page_view.extend({
 
     render: function(){
         this.$el.find('.dash-welcome').toggle(!auth.has("access_token") || this.model.length < 3);
-        var $featured_streams = this.$el.find('.featured-streams').empty(),
+        var $competitions = this.$el.find('.competitions').empty(),
+            $featured_streams = this.$el.find('.featured-streams').empty(),
             $tumblr_streams = this.$el.find('.tumblr-streams').empty(),
             $streams = this.$el.find('.user-streams').empty();
 
+        // Competitions
+        _.each( this.model.competitions, function( item ){
+            console.log(item);
+            var li = new competition({
+                data: item,
+                expand: true
+            });
+            $competitions.append( li.el );
+            // this must be rendered after it's appended because sizing details
+            // needed by scroller are only available after the element is in the DOM
+            li.render();
+        }, this);
+
         // Featured streams
-        _.each( this.model.get('featured_streams').models, function( item ){
+        _.each( this.model.featured_streams.models, function( item ){
             var li = new dash_stream({
                 collection: item.photos,
                 model: item,
@@ -92,7 +106,7 @@ var dash_view = page_view.extend({
 
         // Tumblr
 
-        _.each( this.model.get('tumblr_feeds').models, function ( item ){
+        _.each( this.model.tumblr_feeds.models, function ( item ){
             var li = new dash_tumblr_view({
                 model: item
             });
@@ -101,7 +115,7 @@ var dash_view = page_view.extend({
         }, this);
 
         // User streams
-        _.each( this.model.get('streams').models, function( item ){
+        _.each( this.model.streams.models, function( item ){
             var li = new dash_stream({
                 collection: item.photos,
                 model: item
@@ -161,6 +175,27 @@ var dash_view = page_view.extend({
         li.$el.trigger('create');
     }
 
+});
+
+var competition = view.extend({
+    tagName: 'li',
+    className: 'competition',
+    events: {
+        "click a.ui-bar": "toggle"
+    },
+    initialize: function ( options ) {
+        this.load_template('components/dash/competition');
+    },
+    render: function () {
+        this.$el.html( this.template(this.options.data));
+    },
+    toggle: function () {
+        var btn = this.$el.find('[data-role="button"]');
+
+        btn.toggleClass('open').toggleClass('closed');
+        btn.toggleClass('top-left-arrow');
+        this.$el.find('.post-stream').fadeToggle();
+    }
 });
 
 var dash_tumblr_view = view.extend({
