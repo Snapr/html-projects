@@ -8,19 +8,17 @@
 
         <script data-main="app/main" src="app/require.js"></script>
 
-        <link rel="stylesheet" href="app/libs/mobiscroll/mobiscroll-2.0rc2.full.min.css" type="text/css" charset="utf-8">
-        <link rel="stylesheet" href="app/libs/jquery.mobile-1.1.0/jquery.mobile.structure-1.1.0.min.css" type="text/css" charset="utf-8">
-        <link rel="stylesheet" href="app/libs/photoswipe/photoswipe.css" type="text/css" charset="utf-8">
-
+        <!-- You should use a less.css compiler to build your theme dynamically as you work..
+               But if you don't have one you can uncomment the JS compiler version and comment out theme.css -->
         <!--
-        You should use a less.css compiler to build your theme dynamically as you work..
-        But if you don't have one you can uncomment the JS compiler and comment out theme.css
         <link href="css/main.less" rel="stylesheet/less" type="text/css">
-        <script src="app/libs/less.js" type="text/javascript" charset="utf-8"></script> -->
+        <script src="app/libs/less.js" type="text/javascript" charset="utf-8"></script> 
+        -->
         <link rel="stylesheet" href="theme/snapr/css/main.css" type="text/css" charset="utf-8">
 
     </head>
 
-    <body style="display: none;"><!-- initially hidden until jQmobile can load and style everything --></body>
+    <!-- Body is initially hidden to prevent FOUC while things load -->
+    <body style="display: none;"></body>
 
 </html>
