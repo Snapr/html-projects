@@ -161,19 +161,19 @@ var dash_view = page_view.extend({
         var query = $(e.currentTarget).data('query');
         var current = $(e.currentTarget).data('current');
         Backbone.history.navigate('#/feed/?' + unescape( query ) + '&paginate_from=' + current );
-    },
+    }//,
 
-    remove_stream: function(stream){
-        this.$el.find('.image-stream[data-id='+stream.get('id')+']').remove();
-    },
-    add_stream: function(item){
-        var li = new dash_stream({ collection: item.photos, model: item });
-        this.$el.find('.image-streams').append( li.el );
-        // this must be rendered after it's appended because sizing details
-        // needed by scroller are only available after the element is in the DOM
-        li.render();
-        li.$el.trigger('create');
-    }
+    // remove_stream: function(stream){
+    //     this.$el.find('.image-stream[data-id='+stream.get('id')+']').remove();
+    // },
+    // add_stream: function(item){
+    //     var li = new dash_stream({ collection: item.photos, model: item });
+    //     this.$el.find('.image-streams').append( li.el );
+    //     // this must be rendered after it's appended because sizing details
+    //     // needed by scroller are only available after the element is in the DOM
+    //     li.render();
+    //     li.$el.trigger('create');
+    // }
 
 });
 
