@@ -3,16 +3,16 @@ define(['backbone'], function(Backbone) {
 var config_model = Backbone.Model.extend({
 
     config: {
-        
-        initial_view: 'dash'
-        
+
+        initial_view: 'dash',
+
         //environment: 'live',  // defaults to dev
 
         // client must have xAuth permission from 3rd party
         //tumblr_xauth: false,
         //twitter_xauth: false,
 
-        //app_group: 'group-slug',
+        app_group: 'artspot'
 
         // get_user_points: true // request points when getting users form the api
 
