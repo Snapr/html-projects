@@ -27,7 +27,6 @@ return Backbone.Model.extend({
             model.tumblr_feeds = new dash_tumblr_feed_collection(d.response.dashboard.tumblr_feeds, {parse: true});
             if (success){ success( model, d );}
         };
-        console.log(options);
         return Backbone.Model.prototype.fetch.call(this, options);
     }
 });

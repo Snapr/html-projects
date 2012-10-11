@@ -13,9 +13,8 @@ var dash_view = page_view.extend({
 
     post_initialize: function(){
         this.model = new dash_model();
-        // TODO: don't store the collectin on window
-        window.dash = this.model;
 
+        // Jon, why are these commented out?
         //this.model.get('streams').bind( 'remove', this.remove_stream );
         //this.model.get('streams').bind( 'add', this.add_stream );
     },
@@ -24,7 +23,7 @@ var dash_view = page_view.extend({
         this.change_page();
 
         // make sure image streams are emptied
-        this.$el.find('.image-streams').empty();
+        this.$('.image-streams').empty();
 
         this.populate();
     },
@@ -38,6 +37,9 @@ var dash_view = page_view.extend({
     get_default_tab: function(){ return 'dash'; },
 
     populate: function(){
+
+        $.mobile.showPageLoadingMsg();
+
         var dash = this,
             options = {
                 data: {
@@ -55,27 +57,27 @@ var dash_view = page_view.extend({
                 }
             };
 
-        $.mobile.showPageLoadingMsg();
-
-        var success_callback = function( location ){
-            options.data.latitude = location.coords.latitude;
-            options.data.longitude = location.coords.longitude;
-            options.data.nearby = true;
-            dash.model.fetch( options );
-        };
-
-        var error_callback = function(){
-            dash.model.fetch( options );
-        };
-        geo.get_location( success_callback, error_callback );
+        geo.get_location(
+            function( location ){
+                options.data.latitude = location.coords.latitude;
+                options.data.longitude = location.coords.longitude;
+                options.data.nearby = true;
+                dash.model.fetch( options );
+            },
+            function(){
+                console.warn('error getting location, not showing nearby stream');
+                dash.model.fetch( options );
+            }
+        );
     },
 
     render: function(){
-        this.$el.find('.dash-welcome').toggle(!auth.has("access_token") || this.model.length < 3);
-        var $competitions = this.$el.find('.competitions').empty(),
-            $featured_streams = this.$el.find('.featured-streams').empty(),
-            $tumblr_streams = this.$el.find('.tumblr-streams').empty(),
-            $streams = this.$el.find('.user-streams').empty();
+        this.$('.dash-welcome').toggle(!auth.has("access_token") || this.model.length < 3);
+
+        var $competitions = this.$('.competitions').empty(),
+            $featured_streams = this.$('.featured-streams').empty(),
+            $tumblr_streams = this.$('.tumblr-streams').empty(),
+            $streams = this.$('.user-streams').empty();
 
         // Competitions
         _.each( this.model.competitions, function( item ){
@@ -84,11 +86,8 @@ var dash_view = page_view.extend({
                 data: item,
                 expand: true
             });
-            $competitions.append( li.el );
-            // this must be rendered after it's appended because sizing details
-            // needed by scroller are only available after the element is in the DOM
-            li.render();
-        }, this);
+            $competitions.append( li.render().el );
+        });
 
         // Featured streams
         _.each( this.model.featured_streams.models, function( item ){
@@ -99,9 +98,7 @@ var dash_view = page_view.extend({
                 expand: true
             });
             $featured_streams.append( li.el );
-            // this must be rendered after it's appended because sizing details
-            // needed by scroller are only available after the element is in the DOM
-            li.render();
+            li.render();  // render after inserting so DOM metrics are available
         }, this);
 
         // Tumblr
@@ -164,11 +161,11 @@ var dash_view = page_view.extend({
     }//,
 
     // remove_stream: function(stream){
-    //     this.$el.find('.image-stream[data-id='+stream.get('id')+']').remove();
+    //     this.$('.image-stream[data-id='+stream.get('id')+']').remove();
     // },
     // add_stream: function(item){
     //     var li = new dash_stream({ collection: item.photos, model: item });
-    //     this.$el.find('.image-streams').append( li.el );
+    //     this.$('.image-streams').append( li.el );
     //     // this must be rendered after it's appended because sizing details
     //     // needed by scroller are only available after the element is in the DOM
     //     li.render();
@@ -188,13 +185,14 @@ var competition = view.extend({
     },
     render: function () {
         this.$el.html( this.template(this.options.data));
+        return this;
     },
     toggle: function () {
-        var btn = this.$el.find('[data-role="button"]');
+        var btn = this.$('[data-role="button"]');
 
         btn.toggleClass('open').toggleClass('closed');
         btn.toggleClass('top-left-arrow');
-        this.$el.find('.post-stream').fadeToggle();
+        this.$('.post-stream').fadeToggle();
     }
 });
 
@@ -213,7 +211,7 @@ var dash_tumblr_view = view.extend({
         }));
         var tumblr_host = this.model.get('host'),
             tumblr_key = this.model.get('key'),
-            $tumblr_streams = this.$el.find('.posts-stream').empty(),
+            $tumblr_streams = this.$('.posts-stream').empty(),
             collection = new tumblr_post_collection(),
             options = {
                 host: tumblr_host,
@@ -238,11 +236,11 @@ var dash_tumblr_view = view.extend({
         collection.fetch(options);
     },
     toggle_feed: function () {
-        var btn = this.$el.find('[data-role="button"]');
+        var btn = this.$('[data-role="button"]');
 
         btn.toggleClass('open').toggleClass('closed');
         btn.toggleClass('top-left-arrow');
-        this.$el.find('.post-stream').fadeToggle();
+        this.$('.post-stream').fadeToggle();
     }
 });
 
@@ -263,46 +261,6 @@ var dash_stream = side_scroll.extend({
         if (!options.featured){
             this.$el.addClass("user-stream");
             this.$el.attr("data-id", this.model.get("id"));
-        }
-        if (options.expand) {
-            this.toggle_stream();
-        }
-    },
-
-    toggle_stream: function() {
-        var this_view = this,
-            btn = this_view.$el.find('[data-role="button"]'),
-            options = {
-                data: {
-                    n: config.get('side_scroll_initial'),
-                    detail: 0
-                },
-                success: function () {
-                    this_view.render();
-                    btn.attr('data-icon', 'arrow-r');
-                    this_view.$el.find('[data-role="button"]').button();
-                    this_view.$el.find('.thumbs-grid').fadeToggle();
-                }
-            };
-        if (!this_view.collection.length) {
-            var data_query = unescape(btn.attr('data-query'));
-            if (data_query != 'undefined') {
-                var query = new Query(data_query);
-                options.data = $.extend(options.data, query.query);
-            }
-            this_view.collection.fetch( options );
-
-        }
-        else {
-            this_view.$el.find('.thumbs-grid').fadeToggle();
-            if (btn.attr('data-icon') === 'arrow-r') {
-                btn.removeAttr('data-icon');
-            } else {
-                btn.attr('data-icon', 'arrow-r').button();
-            }
-            btn.toggleClass('open').toggleClass('closed');
-            btn.toggleClass('top-left-arrow');
-            this_view.$el.find('[data-role="button"]').button();
         }
     },
 
@@ -339,8 +297,8 @@ var add_person = page_view.extend({
     },
 
     post_activate: function(){
-        this.$el.find("ul.people-list").empty();
-        this.$el.find(".ui-input-text").val('');
+        this.$("ul.people-list").empty();
+        this.$(".ui-input-text").val('');
 
         this.change_page();
     },
@@ -350,7 +308,7 @@ var add_person = page_view.extend({
     },
 
     render: function(){
-        var people_list = this.$el.find("ul.people-list").empty();
+        var people_list = this.$("ul.people-list").empty();
 
         var people_li_template = this.get_template('components/person');
 
@@ -445,7 +403,7 @@ var add_search = page_view.extend({
     },
 
     post_activate: function(){
-        this.$el.find(".ui-input-text").val('');
+        this.$(".ui-input-text").val('');
 
         this.change_page();
 

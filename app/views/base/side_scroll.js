@@ -12,7 +12,7 @@ return view.extend({
     initialize: function() {
         _.bindAll(this);
         this.collection = this.collection || new photo_collection();
-        this.collection.bind('all', this.re_render_thumbs, this);
+        this.collection.bind('all', this.render_thumbs, this);
         this.post_initialize.apply(this, arguments);
     },
 
@@ -22,7 +22,10 @@ return view.extend({
         var feed_data = this.collection.data || {};
         if (feed_data.access_token){ delete feed_data.access_token; }
         if (feed_data.n){ delete feed_data.n; }
-        feed_data.back = "Upload";
+
+        // wtf was this?
+        //feed_data.back = "Upload";
+
         var feed_param = $.param(feed_data);
         $(this.el).html($(this.template({
             collection: this.collection,
@@ -30,10 +33,28 @@ return view.extend({
             details: this.details,
             feed_param: feed_param
         })));
-        this.render_thumbs();
-        this.photoswipe_init();
-        this.scroll_init();
+
+        if(this.options.expand){
+            //this.$('.x-scroll-area').show();
+            this.toggle_stream();
+        }
         return this;
+    },
+
+    toggle_stream: function() {
+        if(!this.collection.length && !this.collection.loaded){
+            this.collection.fetch({
+                data: _.defaults(this.collection.data, {
+                    n: config.get('side_scroll_initial'),
+                    detail: 0
+                }),
+                success: function(collection){
+                    console.log('colection', collection);
+                    collection.loaded = true;
+                }
+            });
+        }
+        this.$('.thumbs-grid').fadeToggle();
     },
     scroll_init: function(){
         var scroll_el = $('.x-scroll-area', this.el),
@@ -154,20 +175,16 @@ return view.extend({
     },
     render_thumbs: function(){
         if(this.collection.length){
+
             var html = this.thumbs_template({
                 photos: this.collection.models
             });
-            $(this.el).find('.x-thumbs').html(html);
-        }
-        return this;
-    },
-    re_render_thumbs: function(){
-        if(this.collection.length){
+            this.$('.x-thumbs').html(html);
 
-            this.render_thumbs();
-
-            // if the scroller is set up, refresh it
-            if(this.scroller){
+            // create or refresh scroller
+            if(! this.scroller){
+                this.scroll_init();
+            }else{
                 var scroller = this.scroller;
                 scroller.options.snap = this.collection.length > 2 ? 'a.x-thumb:not(:last-child), .x-left-pull': 'a.x-thumb, .x-left-pull';
                 setTimeout(function () {
@@ -177,6 +194,7 @@ return view.extend({
                     }
                 }, 0);
             }
+
             this.photoswipe_init();
         }
         return this;
