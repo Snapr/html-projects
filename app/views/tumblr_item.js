@@ -6,6 +6,7 @@ var tumblr_item_view = view.extend({
 
     initialize: function () {
         var type = this.model.get('type');
+        console.log('tumblr item', type);
         this.template = this.get_template('components/tumblr/' + type);
         this.metadata_template = this.get_template('components/tumblr/metadata');
     },
@@ -22,7 +23,11 @@ var tumblr_item_view = view.extend({
                 var images = model.alt_sizes,
                     src = "";
                 for (var i = 0; i < images.length; i++) {
-                    if (images[i].width >= size) src = images[i].url; else break;
+                    if(images[i].width >= size){
+                        src = images[i].url;
+                    }else{
+                        break;
+                    }
                 }
                 return (src === "") ? images[0].url : src;
             },
