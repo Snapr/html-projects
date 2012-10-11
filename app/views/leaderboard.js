@@ -47,12 +47,11 @@ return page_view.extend({
     {
         var people_list = this.$el.find("ul.people-list").empty();
 
-        var leaderboard_li_template = _.template( $("#leaderboard-li-template").html() );
+        var leaderboard_li_template = this.get_template('components/leaderboard_item');
 
         if(this.collection.length){
             no_results.$el.remove();  // use remove(), hide() keeps it hidden and requires show() later
-            _.each( this.collection.models, function( model, index )
-            {
+            _.each( this.collection.models, function( model, index ){
                 var li = new leaderboard_li({
                     template: leaderboard_li_template,
                     model: model,
