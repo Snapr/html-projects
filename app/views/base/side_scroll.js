@@ -49,7 +49,6 @@ return view.extend({
                     detail: 0
                 }),
                 success: function(collection){
-                    console.log('colection', collection);
                     collection.loaded = true;
                 }
             });

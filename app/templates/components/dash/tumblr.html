@@ -1,8 +1,32 @@
 <a href="/#/tumblr-posts/" class="ui-bar x-details open top-left-arrow" data-role="button" data-iconpos="right" data-icon="arrow-r" data-theme="c" data-ajax="false">
     <span class="image-details">
         <span class="ui-icon "></span>
-        <em><%= model.get("display").short_title %></em>
+        <em><%= feed.display.short_title %></em>
     </span>
 </a>
 
-<ul class="posts-stream"></ul>
+<% if(post){ %>
+<ul class="posts-stream">
+
+    <% switch(post.get('type')) { case 'text': %>
+        <li>text</li>
+    <% break; case 'photo': %>
+        <img src="<%= _.where(post.get('photos')[0].alt_sizes, {width:100, height:100})[0].url %>">
+        <p><%= post.get('caption') %></p>
+    <% break; case 'link': %>
+        <li>link</li>
+    <% break; case 'video': %>
+        <li>video</li>
+    <% break; case 'chat': %>
+        <li>chat</li>
+    <% break; case 'quote': %>
+        <li>quote</li>
+    <% break; case 'audio': %>
+        <li>audio</li>
+    <% }%>
+
+    <pre><%= JSON.stringify(post, null, 2) %></pre>
+</ul>
+<% }else{ %>
+loading...
+<% } %>

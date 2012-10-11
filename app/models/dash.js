@@ -1,6 +1,6 @@
 /*global _  define require */
-define(['config', 'backbone', 'collections/dash_stream', 'collections/dash_tumblr_feed'],
-function(config, Backbone, dash_stream_collection, dash_tumblr_feed_collection){
+define(['config', 'backbone', 'collections/dash_stream'],
+function(config, Backbone, dash_stream_collection){
 
 return Backbone.Model.extend({
 
@@ -24,7 +24,7 @@ return Backbone.Model.extend({
             model.competitions = d.response.dashboard.competitions;
             model.featured_streams = new dash_stream_collection(d.response.dashboard.featured_streams, {parse: true});
             model.streams = new dash_stream_collection(d.response.dashboard.streams, {parse: true});
-            model.tumblr_feeds = new dash_tumblr_feed_collection(d.response.dashboard.tumblr_feeds, {parse: true});
+            model.tumblr_feeds = d.response.dashboard.tumblr_feeds;
             if (success){ success( model, d );}
         };
         return Backbone.Model.prototype.fetch.call(this, options);

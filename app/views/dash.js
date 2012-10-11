@@ -1,10 +1,10 @@
 /*global _  define require */
 define(['config', 'backbone', 'views/base/view', 'views/base/page', 'views/base/side_scroll',
-    'models/dash', 'models/dash_stream', 'collections/user', 'collections/dash_tumblr_feed',
-    'collections/tumblr_post', 'views/components/no_results', 'views/people_li', 'views/tumblr_item',
+    'models/dash', 'models/dash_stream', 'collections/user', 'collections/tumblr_post',
+    'views/components/no_results', 'views/people_li', 'views/tumblr_item',
     'utils/geo', 'auth', 'utils/alerts', 'utils/query'],
     function(config, Backbone, view, page_view, side_scroll, dash_model, dash_stream_model,
-        user_collection, dash_tumblr_feed_collection, tumblr_post_collection, no_results,
+        user_collection, tumblr_post_collection, no_results,
         people_li, tumblr_item_view, geo, auth, alerts, Query){
 
 var dash_view = page_view.extend({
@@ -81,7 +81,6 @@ var dash_view = page_view.extend({
 
         // Competitions
         _.each( this.model.competitions, function( item ){
-            console.log(item);
             var li = new competition({
                 data: item,
                 expand: true
@@ -99,17 +98,16 @@ var dash_view = page_view.extend({
             });
             $featured_streams.append( li.el );
             li.render();  // render after inserting so DOM metrics are available
-        }, this);
+        });
 
         // Tumblr
-
-        _.each( this.model.tumblr_feeds.models, function ( item ){
+        _.each( this.model.tumblr_feeds, function ( item ){
             var li = new dash_tumblr_view({
-                model: item
+                feed: item
             });
-            $tumblr_streams.append( li.el );
-            li.render();
-        }, this);
+            console.log(li);
+            $tumblr_streams.append( li.render().el );
+        });
 
         // User streams
         _.each( this.model.streams.models, function( item ){
@@ -117,11 +115,8 @@ var dash_view = page_view.extend({
                 collection: item.photos,
                 model: item
             });
-            $streams.append( li.el );
-            // this must be rendered after it's appended because sizing details
-            // needed by scroller are only available after the element is in the DOM
-            li.render();
-        }, this);
+            $streams.append( li.render().el );
+        });
 
         this.$el.trigger( "create" );
     },
@@ -207,26 +202,28 @@ var dash_tumblr_view = view.extend({
     },
     render: function () {
         this.$el.html( this.template({
-            model: this.model
+            feed: this.options.feed,
+            post: null
         }));
-        var tumblr_host = this.model.get('host'),
-            tumblr_key = this.model.get('key'),
+
+        var this_view = this,
+            feed = this.options.feed,
+
             $tumblr_streams = this.$('.posts-stream').empty(),
             collection = new tumblr_post_collection(),
             options = {
-                host: tumblr_host,
-                key: tumblr_key,
+                host: feed.host,
+                key: feed.key,
                 data: {
                     limit:1,
                     filter:'text'
                 },
                 success: function(){
                     if (collection.length) {
-                        var li = new tumblr_item_view({
-                            model: collection.at(0)
-                        });
-                        $tumblr_streams.append( li.el );
-                        li.render();
+                        this_view.$el.html( this_view.template({
+                            feed: feed,
+                            post: collection.at(0)
+                        })).trigger('create');
                     }
                 },
                 error: function(){
@@ -234,6 +231,7 @@ var dash_tumblr_view = view.extend({
                 }
             };
         collection.fetch(options);
+        return this;
     },
     toggle_feed: function () {
         var btn = this.$('[data-role="button"]');

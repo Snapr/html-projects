@@ -16,7 +16,7 @@ requirejs.config({
         "klass": "libs/klass.min",
         "photoswipe": "libs/photoswipe/code.photoswipe.jquery-3.0.5.min",
         "spin": "libs/spin.min",
-        "underscore": "libs/underscore-min",
+        "underscore": "libs/underscore",
         "backbone": "libs/backbone",
         "iscroll": "libs/iscroll",
         "validate": "libs/jquery.validate.min",
