@@ -212,7 +212,7 @@ return page_view.extend({
     update_uploads: function(model, changes){
         if (this.is_my_snaps()){
 
-            var upload_li_template = _.template( $("#feed-upload-progress-li-template").html() );
+            var upload_li_template = this.get_template('components/feed/upload_progress');
 
             // reverse models - newest last
             _.each(model && [model] || upload_progress.models.slice().reverse(), function( photo ){
