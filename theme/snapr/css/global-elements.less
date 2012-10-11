@@ -267,7 +267,6 @@ h4{
            padding-left: 20px;
            color: @grayMediumOnLIght;
            .ui-icon-clock{
-               top: -7px!important;
            }
        }
        .image-tag{
@@ -297,6 +296,10 @@ h4{
                margin-top: -@gfxBar-grid / 2;
            }
       }
+      
+      
+      
+
 
     &.top-no-arrow{
         text-align: left;
@@ -338,6 +341,25 @@ h4{
     /* Note that the actual arrows get added in the swatches so they get the right colors */
 }
 
+// Abs positioned arrow that often sits to right of bar
+ .x-view-full{
+          position: absolute;
+          top: 0;
+          right: 0;
+          z-index: 20;
+          background: transparent;
+          box-shadow: none;
+          border-left: solid rgba(0, 0, 0, .1) 1px;
+          border-radius: none;
+          height: @barHeight;
+          padding: 0;
+          min-width: @barHeight * 2;
+          .ui-btn-inner{
+              padding: 0;
+              min-height: 32px;
+          }
+      }
+
 .arrow-right{
     position: absolute!important;
     right: 0!important;
@@ -366,6 +388,14 @@ h4{
         padding: 7px 32px;
         text-align: left;
     }
+}
+
+// COMP BANNERS
+// ----------------------------
+
+.competition,
+.tumblr-streams{
+    position: relative;
 }
 
 
@@ -771,6 +801,22 @@ h4{
         padding: 0;
         margin-bottom: @paddingPage ;
         white-space: no-wrap;
+        
+        .ui-bar{
+            .image-tag,
+            .image-time{
+                display: none;
+            }
+
+            &.open{
+                .image-tag,
+                .image-time{
+                    display: inline-block;
+                }
+            }
+        }
+        
+        
         .thumbs-grid{
             padding-top: @paddingGrid;
         }
@@ -781,17 +827,7 @@ h4{
         .image-link{
             padding-left: @paddingGrid;
         }
-        .image-details{
-            .ui-icon-search{
-                background-position: @gfxBar-x + 2px @gfxBar-search-y;
-            }
-            .ui-icon-feed{
-                background-position: @gfxBar-x @gfxBar-person-y;
-            }
-            .ui-icon-nearby{
-                background-position: @gfxBar-x @gfxBar-venue-y;
-            }
-        }
+      
         .load-more-inline{
             background-color: @grayLight;
             display: inline-block;
@@ -874,23 +910,7 @@ h4{
                 }
             }
         }
-        .view-stream{
-            position: absolute;
-            top: 0;
-            right: 0;
-            z-index: 20;
-            background: transparent;
-            box-shadow: none;
-            border-left: solid rgba(0, 0, 0, .1) 1px;
-            border-radius: none;
-            height: @barHeight;
-            padding: 0;
-            min-width: @barHeight * 2;
-            .ui-btn-inner{
-                padding: 0;
-                min-height: 32px;
-            }
-        }
+       
         
         .edit-overlay{
             display: none;
