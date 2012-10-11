@@ -1,6 +1,6 @@
     /*global _  define require google */
-define(['config', 'backbone', 'views/base/page', 'collections/thumb', 'collections/spot', 'mobiscroll', 'utils/geo', 'utils/map', 'auth', 'utils/local_storage', 'utils/string', 'utils/alerts'],
-function(config, Backbone, page_view, thumb_collection, spot_collection, mobiscroll, geo, map, auth, local_storage, string_utils, alerts){
+define(['config', 'backbone', 'views/base/view', 'views/base/page', 'collections/thumb', 'collections/spot', 'mobiscroll', 'utils/geo', 'utils/map', 'auth', 'utils/local_storage', 'utils/string', 'utils/alerts'],
+function(config, Backbone, view, page_view, thumb_collection, spot_collection, mobiscroll, geo, map, auth, local_storage, string_utils, alerts){
 
 var map_view = page_view.extend({
 
@@ -22,10 +22,10 @@ var map_view = page_view.extend({
         this.thumb_overlays = {};
         this.spot_overlays = {};
 
-        this.thumb_template = _.template($('#thumb-template').html());
-        this.flag_template = _.template($('#flag-template').html());
-        this.location_template = _.template($('#location-template').html());
-        this.spot_template = _.template($('#spot-template').html());
+        this.thumb_template = this.get_template('components/map/image');
+        this.flag_template = this.get_template('components/map/flag');
+        this.location_template = this.get_template('components/map/location');
+        this.spot_template = this.get_template('components/map/spot');
 
         this.thumb_collection = new thumb_collection();
         this.spot_collection = new spot_collection();
@@ -650,16 +650,16 @@ var map_view = page_view.extend({
 
 });
 
-var map_disambiguation = Backbone.View.extend({
+var map_disambiguation = view.extend({
 
     tagName: "li",
-    template: _.template($("#map-disambiguation-li-template").html()),
 
     events: {
         "click .map-link": "goto_map"
     },
 
     initialize: function(){
+        this.template = this.get_template('components/map/disambiguation');
         this.location = this.options.result;
         this.parent_view = this.options.parent_view;
     },
