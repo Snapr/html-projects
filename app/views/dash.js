@@ -78,7 +78,7 @@ var dash_view = page_view.extend({
             $streams = this.$el.find('.user-streams').empty();
 
         // Competitions
-        _.each( this.model.get('competitions'), function( item ){
+        _.each( this.model.competitions, function( item ){
             console.log(item);
             var li = new competition({
                 data: item,
@@ -91,7 +91,7 @@ var dash_view = page_view.extend({
         }, this);
 
         // Featured streams
-        _.each( this.model.get('featured_streams').models, function( item ){
+        _.each( this.model.featured_streams.models, function( item ){
             var li = new dash_stream({
                 collection: item.photos,
                 model: item,
@@ -106,7 +106,7 @@ var dash_view = page_view.extend({
 
         // Tumblr
 
-        _.each( this.model.get('tumblr_feeds').models, function ( item ){
+        _.each( this.model.tumblr_feeds.models, function ( item ){
             var li = new dash_tumblr_view({
                 model: item
             });
@@ -115,7 +115,7 @@ var dash_view = page_view.extend({
         }, this);
 
         // User streams
-        _.each( this.model.get('streams').models, function( item ){
+        _.each( this.model.streams.models, function( item ){
             var li = new dash_stream({
                 collection: item.photos,
                 model: item
