@@ -6,7 +6,7 @@ function(config, Backbone, page_view, photo_model, comp_model, geo_location, fou
 return page_view.extend({
 
     post_initialize: function(){
-        this.template = _.template( $("#share-photo-template").html() );
+        this.load_template('components/share');
     },
 
     post_activate: function(options){
