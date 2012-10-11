@@ -1,6 +1,6 @@
 /*global _  define require */
-define(['config', 'views/base/page', 'collections/spot', 'views/components/no_results', 'views/people_li', 'utils/geo', 'utils/local_storage'],
-    function(config, page_view, spot_collection, no_results, people_li, geo, local_storage){
+define(['views/base/view', 'views/base/page', 'collections/spot', 'utils/geo', 'utils/local_storage'],
+    function(view, page_view, spot_collection, geo, local_storage){
 var spots_view =  page_view.extend({
 
     post_initialize: function() {
@@ -184,15 +184,17 @@ var spots_view =  page_view.extend({
         }
 
         this.search(data);
-
-    },
+    }
 
 });
 
-var spots_item = Backbone.View.extend({
+var spots_item = view.extend({
     tagName: 'li',
     className: 'spot-item',
-    template: _.template( $("#spots-result-item").html() ),
+
+    initialize: function () {
+        this.template = this.get_template('components/spots/results_item');
+    },
 
     render: function () {
         this.$el.html( this.template({
@@ -201,8 +203,10 @@ var spots_item = Backbone.View.extend({
     }
 });
 
-var spot_results_header_view = Backbone.View.extend({
-    template: _.template( $("#spots-result-header").html() ),
+var spot_results_header_view = view.extend({
+    initialize: function () {
+        this.template = this.get_template('components/spots/results_header');
+    },
 
     render: function (results, param) {
         this.$el.html( this.template({

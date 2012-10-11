@@ -1,11 +1,11 @@
 /*global _  define require */
-define(['backbone', 'views/base/page', 'models/spot', 'views/base/side_scroll', 'collections/photo', 'collections/user', 'utils/geo', 'native', 'config'],
-function(Backbone, page_view, spot_model, side_scroll, photo_collection, users_collection, geo, native, config){
+define(['views/base/view', 'views/base/page', 'models/spot', 'views/base/side_scroll', 'collections/photo', 'collections/user', 'utils/geo', 'config'],
+function(view, page_view, spot_model, side_scroll, photo_collection, users_collection, geo, config){
 
 var spot_view = page_view.extend({
 
     post_initialize: function() {
-        
+
         this.top_users = new users_collection();
     },
 
@@ -97,10 +97,10 @@ var spot_view = page_view.extend({
             $spot_header = $el.find('.spot-head').empty(),
             $streams = $el.find('.image-streams').empty(),
             $top_users = $el.find('.top-users').empty(),
-            spot_view = this;;
+            spot_view = this;
 
         var header = new spot_header_view({
-            model: this.model,
+            model: this.model
         });
         $spot_header.append( header.el );
         header.render();
@@ -114,7 +114,7 @@ var spot_view = page_view.extend({
                 collection: this.photos,
                 details: {
                     spot: this.spot_id,
-                    stream_type: "spot",
+                    stream_type: "spot"
                 }
             });
 
@@ -134,17 +134,16 @@ var spot_view = page_view.extend({
                 user_li.render();
             });
         }
-        
-        
+
         $.mobile.hidePageLoadingMsg();
         $el.trigger( "create" );
 
-    },
+    }
 });
 
-var spot_header_view = Backbone.View.extend({
+var spot_header_view = view.extend({
     initialize: function () {
-        this.template = _.template( $("#spot-header-template").html() );
+        this.template = this.get_template('components/spots/header');
     },
     render: function () {
         this.$el.html( this.template({
@@ -156,28 +155,31 @@ var spot_header_view = Backbone.View.extend({
 var spot_image_stream = side_scroll.extend({
     tagName: 'li',
     className: 'image-stream',
-    template: _.template( $('#spot-stream-template').html() ),
-    thumbs_template: _.template( $('#spot-stream-thumb-template').html() ),
 
     post_initialize: function(){
+        this.template = this.get_template('components/spots/stream');
+        this.thumbs_template = this.get_template('components/spots/stream_thumb');
 
         this.details = {
             spot: this.options.spot
         };
-        
+
         this.collection.data = {
             spot: this.details.spot,
-            n: config.get('side_scroll_initial') 
+            n: config.get('side_scroll_initial')
         };
 
     }
 });
 
-var spot_user_view = Backbone.View.extend({
+var spot_user_view = view.extend({
     tagName: 'li',
     className: 'top-user-item',
-    template: _.template( $("#spot-top-user-item").html() ),
-    
+
+    initialize: function(){
+        this.template = this.get_template('components/spots/top_user');
+    },
+
     render: function () {
         this.$el.html( this.template({
             user: this.model
