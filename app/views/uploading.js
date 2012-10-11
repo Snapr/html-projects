@@ -5,9 +5,9 @@ function(Backbone, page_view, upload_progress_li, upload_progress, photo_model, 
 
 var uploading = page_view.extend({
 
-    comp_template: _.template( $('#uploading-stream-comp-template').html() ),
-
     post_initialize: function(){
+        this.comp_template = this.get_template('components/uploading/comp');
+
         var view = this;
         this.$el.on( "pageshow", function(){
             view.watch_uploads();
@@ -130,7 +130,7 @@ var uploading = page_view.extend({
         }
 
         if(!this.recent_nearby_stream && !this.popular_nearby_stream){
-            $image_stream_container.prepend( $("#uploading-stream-placeholder-template").html() ).trigger('create');
+            $image_stream_container.prepend( this.get_template('components/uploading/stream_placeholder')() ).trigger('create');
         }
 
     },
@@ -237,10 +237,10 @@ var uploading = page_view.extend({
 var uploading_image_stream = side_scroll.extend({
     tagName: 'li',
     className: 'image-stream',
-    template: _.template( $('#uploading-stream-template').html() ),
-    thumbs_template: _.template( $('#uploading-stream-thumb-template').html() ),
 
     post_initialize: function(){
+        this.template = this.get_template('components/uploading/stream');
+        this.thumbs_template = this.get_template('components/uploading/stream_item');
 
         this.details = {
             stream_type: this.options.stream_type,

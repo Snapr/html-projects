@@ -1,6 +1,6 @@
 /*global _  define require */
-define(['backbone', 'utils/local_storage', 'utils/alerts', 'native', 'models/photo'], function(Backbone, local_storage, alerts, native, photo_model){
-return Backbone.View.extend({
+define(['views/base/view', 'utils/local_storage', 'utils/alerts', 'native', 'models/photo'], function(view, local_storage, alerts, native, photo_model){
+return view.extend({
 
     tagName: "li",
 
@@ -11,7 +11,7 @@ return Backbone.View.extend({
         // an upload porgress li is creted for each upload, don't re-use them by changing the photo attribute
 
         // allow options to override template
-        this.template = this.options.template || _.template( $("#upload-progress-li-template").html() );
+        this.template = this.options.template || this.get_template('components/uploading/header');
 
         this.photo = options.photo;
         this.photo.on('change', this.render);
