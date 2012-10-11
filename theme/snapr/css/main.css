@@ -2898,8 +2898,10 @@ h4 {
   border: none;
   border-top: solid 1px #ffffff;
   margin: 0 -8px;
-  padding: 8px 8px;
-  min-height: 19px;
+  padding: 0 8px;
+  min-height: 32px;
+  line-height: 32px;
+  vertical-align: middle;
   z-index: 10;
   position: relative;
   overflow: visible;
@@ -2918,8 +2920,6 @@ h4 {
   right: auto;
   display: block;
   position: absolute;
-  left: -3px;
-  top: -3px;
   margin: 0;
   height: 24px;
   width: 24px;
@@ -2936,10 +2936,15 @@ h4 {
   margin: 0;
   padding: 0;
   text-transform: lowercase;
+  min-height: 32px;
+  line-height: 32px;
 }
 .ui-bar h4 em,
 .ui-bar .ui-btn-inner em,
 .ui-bar .ui-bar-inner em,
+.ui-bar h4 strong,
+.ui-bar .ui-btn-inner strong,
+.ui-bar .ui-bar-inner strong,
 .ui-bar h4 .ui-btn,
 .ui-bar .ui-btn-inner .ui-btn,
 .ui-bar .ui-bar-inner .ui-btn,
@@ -2998,13 +3003,17 @@ h4 {
   text-overflow: ellipsis;
 }
 .ui-bar .ui-btn-text {
-  padding-left: 20px;
   display: block;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
-  height: 18px;
-  line-height: 18px;
+}
+.ui-bar.ui-btn-icon-left .ui-btn-text {
+  padding-left: 26px;
+}
+.ui-bar.ui-btn-icon-left .ui-icon {
+  left: -5px;
+  margin-top: -16px;
 }
 .ui-bar.top-no-arrow {
   text-align: left;
@@ -3814,6 +3823,23 @@ h4 {
   height: 12px;
   vertical-align: middle;
   margin-left: 10px;
+}
+.image-streams .image-stream .view-stream {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 20;
+  background: transparent;
+  box-shadow: none;
+  border-left: solid rgba(0, 0, 0, 0.1) 1px;
+  border-radius: none;
+  height: 32px;
+  padding: 0;
+  min-width: 64px;
+}
+.image-streams .image-stream .view-stream .ui-btn-inner {
+  padding: 0;
+  min-height: 32px;
 }
 .image-streams .image-stream .edit-overlay {
   display: none;
