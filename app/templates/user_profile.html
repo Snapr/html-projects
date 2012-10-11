@@ -79,7 +79,7 @@
                         <%}%>
                         <% if (user.get("details").profile.website){%>
                         <p class="user-website">
-                            <a href="<%= user.get("details").profile.website %>"><span class="ui-icon ui-icon-link extra-icons"></span><%= user.get("details").profile.website %></a>
+                            <a href="<%= user.get("details").profile.website %>"><span class="ui-icon ui-icon-link profile-icons"></span><%= user.get("details").profile.website %></a>
                         </p>
                         <%}%>
                     <%}else{%>
@@ -95,11 +95,11 @@
             <!-- base btns -->
             <div class="user-buttons">
                 <% if (user.get("details").stats.photo_count){%>
-                <a data-role="button" data-icon="feed" class="extra-icons x-back"><%= user.get("details").stats.photo_count %>
+                <a data-role="button" data-icon="feed" class="profile-icons x-back"><%= user.get("details").stats.photo_count %>
                  Snaps</a>
                 <%}%>
                 <% if (user.get("details").stats.photos_favorited){%>
-                <a href="#/feed/?favorited_by=<%= user.get( "username" ) %>&list_style=grid" data-role="button" data-icon="favs" class="extra-icons"><%= user.get("details").stats.favorite_count %> Favourites</a>
+                <a href="#/feed/?favorited_by=<%= user.get( "username" ) %>&list_style=grid" data-role="button" data-icon="favs" class="profile-icons"><%= user.get("details").stats.favorite_count %> Favourites</a>
                  <%}%>
             </div>
             <hr>

@@ -109,6 +109,9 @@
 .ui-header .ui-btn-up-a .ui-btn-inner .ui-icon-camera {
   background-position: 0px -240px;
 }
+.ui-header .ui-btn-up-a .ui-btn-inner .ui-icon-join {
+  background-position: 0px -320px;
+}
 .ui-header .ui-btn-hover-a .ui-btn-inner .ui-icon-search {
   background-position: -40px 0px;
 }
@@ -129,6 +132,9 @@
 }
 .ui-header .ui-btn-hover-a .ui-btn-inner .ui-icon-camera {
   background-position: -40px -240px;
+}
+.ui-header .ui-btn-hover-a .ui-btn-inner .ui-icon-join {
+  background-position: -40px -320px;
 }
 .ui-header .ui-btn-up-b .ui-btn-inner .ui-icon-search {
   background-position: -80px 0px;
@@ -187,6 +193,21 @@
 .ui-header .ui-btn-up-c .ui-btn-inner .ui-icon-delete {
   background-position: -160px -80px;
 }
+.ui-header .ui-btn-up-c .ui-btn-inner .ui-icon-settings {
+  background-position: -160px -120px;
+}
+.ui-header .ui-btn-up-c .ui-btn-inner .ui-icon-location {
+  background-position: -160px -160px;
+}
+.ui-header .ui-btn-up-c .ui-btn-inner .ui-icon-camroll {
+  background-position: -160px -200px;
+}
+.ui-header .ui-btn-up-c .ui-btn-inner .ui-icon-camera {
+  background-position: -160px -240px;
+}
+.ui-header .ui-btn-up-c .ui-btn-inner .ui-icon-join {
+  background-position: -160px -320px;
+}
 .ui-header .ui-btn-hover-c .ui-btn-inner .ui-icon-search {
   background-position: -200px 0px;
 }
@@ -195,6 +216,21 @@
 }
 .ui-header .ui-btn-hover-c .ui-btn-inner .ui-icon-delete {
   background-position: -200px -80px;
+}
+.ui-header .ui-btn-hover-c .ui-btn-inner .ui-icon-settings {
+  background-position: -200px -120px;
+}
+.ui-header .ui-btn-hover-c .ui-btn-inner .ui-icon-location {
+  background-position: -200px -160px;
+}
+.ui-header .ui-btn-hover-c .ui-btn-inner .ui-icon-camroll {
+  background-position: -200px -200px;
+}
+.ui-header .ui-btn-hover-c .ui-btn-inner .ui-icon-camera {
+  background-position: -200px -240px;
+}
+.ui-header .ui-btn-hover-c .ui-btn-inner .ui-icon-join {
+  background-position: -200px -320px;
 }
 .tab-bar-icons .ui-icon {
   width: 32px;
