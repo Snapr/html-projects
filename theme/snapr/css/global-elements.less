@@ -192,8 +192,10 @@ h4{
     border:none;
     border-top: @borderLightOnLight;
     margin: 0 -@paddingPage;
-    padding: 8px @paddingPage;
-    min-height: 19px;
+    padding: 0 @paddingPage;
+    min-height: @barHeight;
+    line-height: @barHeight;
+    vertical-align: middle;
     z-index: 10;
     position: relative;
     overflow: visible;
@@ -210,8 +212,6 @@ h4{
         right: auto;
         display: block;
         position: absolute;
-        left: -3px;
-        top: -3px;
         margin: 0;
         height: @gfxSpot-grid;
         width: @gfxSpot-grid;
@@ -229,7 +229,10 @@ h4{
         margin: 0;
         padding: 0;
         text-transform: lowercase;
+        min-height: @barHeight;
+        line-height: @barHeight;
         em,
+        strong,
         .ui-btn,
         .ui-btn-hidden,
         .username{
@@ -281,11 +284,18 @@ h4{
        }
 
       .ui-btn-text{
-          padding-left: 20px;
            display: block;
           .border-box();
-          height: 18px;
-          line-height: 18px;
+      }
+      
+      &.ui-btn-icon-left{
+           .ui-btn-text{
+                padding-left: 26px;
+           }
+           .ui-icon{
+               left: -5px;
+               margin-top: -@gfxBar-grid / 2;
+           }
       }
 
     &.top-no-arrow{
@@ -864,6 +874,24 @@ h4{
                 }
             }
         }
+        .view-stream{
+            position: absolute;
+            top: 0;
+            right: 0;
+            z-index: 20;
+            background: transparent;
+            box-shadow: none;
+            border-left: solid rgba(0, 0, 0, .1) 1px;
+            border-radius: none;
+            height: @barHeight;
+            padding: 0;
+            min-width: @barHeight * 2;
+            .ui-btn-inner{
+                padding: 0;
+                min-height: 32px;
+            }
+        }
+        
         .edit-overlay{
             display: none;
             position: absolute;
