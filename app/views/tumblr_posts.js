@@ -31,7 +31,6 @@ var tumblr_post_view = page_view.extend({
     },
 
     render: function(){
-        console.log(this.collection);
         var $stream = this.$el.find( ".posts-stream" ).empty();
 
         this.collection.each(function (post) {

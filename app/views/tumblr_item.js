@@ -6,7 +6,6 @@ var tumblr_item_view = view.extend({
 
     initialize: function () {
         var type = this.model.get('type');
-        console.log('tumblr item', type);
         this.template = this.get_template('components/tumblr/' + type);
         this.metadata_template = this.get_template('components/tumblr/metadata');
     },
