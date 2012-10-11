@@ -1,17 +1,17 @@
 /*global _  define require */
-define(['backbone', 'collections/tumblr_post'], function(Backbone, tumblr_collection){
+define(['views/base/view', 'collections/tumblr_post'], function(view, tumblr_collection){
 
-var tumblr_item_view = Backbone.View.extend({
+var tumblr_item_view = view.extend({
     tagName: 'li',
 
     initialize: function () {
         var type = this.model.get('type');
-        this.template = _.template( $("#tumblr-tmpl-" + type).html() );
-        this.metadata_template = _.template( $("#tumblr-tmpl-metadata").html() );
+        this.template = this.get_template('components/tumblr/' + type);
+        this.metadata_template = this.get_template('components/tumblr/metadata');
     },
-    
+
     render: function () {
-        var parentWidth = this.$el.parent().width(); 
+        var parentWidth = this.$el.parent().width();
         this.$el.html( this.template({
             model: this.model,
             _:_,
