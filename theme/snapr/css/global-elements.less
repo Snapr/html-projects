@@ -23,6 +23,8 @@
 }
 
 
+
+
 /* Icons and thumbs */
 .user-icon-small,
 .thumb-small{
@@ -196,6 +198,29 @@ h4{
     position: relative;
     overflow: visible;
     text-align: left;
+    
+    .ui-icon{
+        right: auto;
+        display: inline-block;
+        margin: 0;
+        height: @gfxBar-grid;
+        width: @gfxBar-grid;
+    }
+    .spot-icon{
+        right: auto;
+        display: block;
+        position: absolute;
+        left: -3px;
+        top: -3px;
+        margin: 0;
+        height: @gfxSpot-grid;
+        width: @gfxSpot-grid;
+    }
+    .ui-icon-arrow-r {
+        right: -10px;
+    }
+    
+    
     h4,
     .ui-btn-inner,
     .ui-bar-inner{
@@ -211,26 +236,7 @@ h4{
             font-size: @font-size-titleBar;
             .ui-bar-font();
         }
-        .ui-icon{
-            right: auto;
-            display: inline-block;
-            margin: 0;
-            height: @gfxBar-grid;
-            width: @gfxBar-grid;
-        }
-        .spot-icon{
-            right: auto;
-            display: block;
-            position: absolute;
-            left: -3px;
-            top: -3px;
-            margin: 0;
-            height: @gfxSpot-grid;
-            width: @gfxSpot-grid;
-        }
-        .ui-icon-arrow-r {
-            right: -10px;
-        }
+        
     }
     .ui-btn{
         background: none;
@@ -349,6 +355,23 @@ h4{
     .ui-btn-inner{
         padding: 7px 32px;
         text-align: left;
+    }
+}
+
+
+// FOLLOW BUTTONS
+// ----------------------------
+
+.x-follow-btn{
+    .ui-btn-inner{
+         position: relative;
+    }
+   
+    .ui-icon{
+        background-image: url('@{gfx}@{gfxIcons}');  
+        position: absolute;
+        right: 0;
+        top: 0;
     }
 }
 
@@ -1756,7 +1779,8 @@ body.browser-testing{
         top: 435px!important;
     }
     
-    .ui-footer{
+    .ui-footer,
+    .ui-footer-fixed{
         width: 320px!important;
         overflow: hidden;
     }

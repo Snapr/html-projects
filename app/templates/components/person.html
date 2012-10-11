@@ -8,15 +8,15 @@
      </p>
  </a>
  <% if (!logged_in) {%>
-          <a data-icon="plus" data-iconpos="right" class="follow follow-btn"></a>
+          <a data-icon="plus" data-iconpos="right" class="follow x-follow-btn"></a>
  <%}else{%>
      <% if (user.get('username') == auth_username){%>
-         <a disabled="true" data-icon="check" data-iconpos="right" class="follow-btn"></a>
+         <a disabled="true" data-icon="check" data-iconpos="right" class="x-follow-btn"></a>
      <%}else{%>
          <% if (user.get('relationship').you_follow) {%>
-         <a data-icon="check" data-iconpos="right" class="unfollow follow-btn"></a>
+         <a data-icon="check" data-iconpos="right" class="unfollow x-follow-btn"></a>
          <%}else{%>
-         <a data-icon="plus" data-iconpos="right" class="follow follow-btn"></a>
+         <a data-icon="plus" data-iconpos="right" class="follow x-follow-btn"></a>
          <%}%>
      <%}%>
  <%}%>
