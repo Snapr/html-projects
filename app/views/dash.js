@@ -43,8 +43,7 @@ var dash_view = page_view.extend({
         var dash = this,
             options = {
                 data: {
-                    n:0,
-                    feed:!!auth.get("access_token")
+                    n:0
                 },
                 success: function(){
                     dash.render();
@@ -61,7 +60,6 @@ var dash_view = page_view.extend({
             function( location ){
                 options.data.latitude = location.coords.latitude;
                 options.data.longitude = location.coords.longitude;
-                options.data.nearby = true;
                 dash.model.fetch( options );
             },
             function(){
