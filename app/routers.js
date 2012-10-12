@@ -73,6 +73,7 @@ var pages = [
         template: 'upload'
     },
     'foursquare_venues',
+    'competitions',
     'competition'
 ];
 
