@@ -89,8 +89,8 @@
 }
 
 .thumb-med{
-    width: @sizeThumb;
-    height: @sizeThumb;
+    width: @thumb-height;
+    height: @thumb-height;
 }
 
 /* Usernames etc */
@@ -111,7 +111,7 @@ h4{
 .warning-message{
     padding: @paddingPage;
     background-color: @yellow;
-    .corner-all(@cornerGeneral);
+    .corner-all(@corners);
     border-bottom: @borderLightOnDark;
 }
 
@@ -193,8 +193,8 @@ h4{
     border-top: @borderLightOnLight;
     margin: 0 -@paddingPage;
     padding: 0 @paddingPage;
-    min-height: @barHeight;
-    line-height: @barHeight;
+    min-height: @bar-height;
+    line-height: @bar-height;
     vertical-align: middle;
     z-index: 10;
     position: relative;
@@ -229,8 +229,8 @@ h4{
         margin: 0;
         padding: 0;
         text-transform: lowercase;
-        min-height: @barHeight;
-        line-height: @barHeight;
+        min-height: @bar-height;
+        line-height: @bar-height;
         em,
         strong,
         .ui-btn,
@@ -303,23 +303,23 @@ h4{
 
     &.top-no-arrow{
         text-align: left;
-        .corner-top (@cornerPage);
-        .corner-bottom (@cornerNone);
+        .corner-top (@cornersPage);
+        .corner-bottom (@cornersNone);
          .ui-btn-text{
                 padding-left: 20px;
         }
     }
     &.top-no-arrow,
     &.top-left-arrow{
-        .corner-top (@cornerPage);
-        .corner-bottom (@cornerNone);
+        .corner-top (@cornersPage);
+        .corner-bottom (@cornersNone);
 
     }
     &.bottom-centered-arrow{
         overflow: visible;
         text-align: center;
         .corner-top (0);
-        .corner-bottom (@cornerPage);
+        .corner-bottom (@cornersPage);
         .ui-btn-inner{
             border: none;
             .ui-btn-text{
@@ -336,7 +336,7 @@ h4{
         padding: 6px;
         line-height: @font-size-small;
         min-height: @font-size-small;
-        .corner-top(@cornerGeneral);
+        .corner-top(@corners);
     }
     /* Note that the actual arrows get added in the swatches so they get the right colors */
 }
@@ -351,9 +351,9 @@ h4{
           box-shadow: none;
           border-left: solid rgba(0, 0, 0, .1) 1px;
           border-radius: none;
-          height: @barHeight;
+          height: @bar-height;
           padding: 0;
-          min-width: @barHeight * 2;
+          min-width: @bar-height * 2;
           .ui-btn-inner{
               padding: 0;
               min-height: 32px;
@@ -369,7 +369,7 @@ h4{
 .system-bar{
     display: block;
     position: relative;
-    .corner-all(@cornerRound);
+    .corner-all(@cornersRound);
     color: white;
     text-shadow: @shadowMediumOnDark 0px -1px 0px;
     background-color: @blue;
@@ -421,7 +421,7 @@ h4{
         margin: 0 -@paddingPage;
         border: none;
         border-top: @borderLightOnLight;
-        .corner-top (@cornerPage);
+        .corner-top (@cornersPage);
         .ui-btn{
              .ui-btn-text{
                  font-size: @font-size;
@@ -451,12 +451,12 @@ h4{
         .ui-grid-b{
             .ui-block-a{
                 .ui-btn{
-                    .corner-tl (@cornerPage)
+                    .corner-tl (@cornersPage)
                 }
             }
             .ui-block-c{
                 .ui-btn{
-                .corner-tr (@cornerPage);
+                .corner-tr (@cornersPage);
                 }
             }
         }
@@ -770,8 +770,8 @@ h4{
 .thumbs-grid-med,
 .grid #feed-images{
     margin: 0 -@paddingPage;
-    padding: 0 0 0 @paddingGrid;
-    min-height: @sizeThumb;
+    padding: 0 0 0 @padding;
+    min-height: @thumb-height;
 
     .image-link{
         display: inline-block;
@@ -779,12 +779,78 @@ h4{
         margin: 0;
     }
     .thumb-image{
-        width: @sizeThumb;
-        height: @sizeThumb;
+        width: @thumb-height;
+        height: @thumb-height;
         padding: 0;
         margin: 0;
         display: block;
         background-color: @grayLight;
+    }
+}
+
+.tumblr-exceprt{
+    min-height: @thumb-height - 1;
+    margin: @padding + 1 -@padding;
+    position: relative;
+    display: block;
+    
+    .tumblr-text{
+        text-align: left;
+        background-color: @grayLighter;
+        padding: @padding * 2;
+        min-height: @thumb-height - 1;
+        .border-box();
+        .corner-all();
+        
+        .crop-content{
+            text-overflow: ellipsis;
+            overflow: hidden;
+            height:62px;
+        }
+        
+        blockquote{
+            margin: @padding;
+            border-left: solid 2px @gray;
+            padding-left: @padding * 2;
+            font-family: @font-serif;
+            font-style: italic;
+            font-size: @font-size-username;
+        }
+        
+        .tumblr-details{
+            position: relative;
+            font-size: @font-size-small;
+            color:  @grayLightOnLIght;
+            line-height: @gfxTumblr-grid;
+            height: @gfxTumblr-grid;
+            padding-right:@gfxTumblr-grid;
+            margin-left: 4px;
+            .border-box();
+            top: @padding;
+            
+            .tumblr-icon{
+                display: block;
+                position: absolute;
+                right: 0;
+                top: 0;
+            }
+        }
+    }
+    
+    &.has-thumb{
+        .tumblr-text{
+            margin-left: @thumb-height + 2px;
+             blockquote{
+                margin-left: 0;
+                border-left: 0;
+             }
+        }
+    }
+    
+    .tumblr-thumb{
+        position: absolute;
+        left: 0;
+        top: 0;
     }
 }
 
@@ -818,14 +884,14 @@ h4{
         
         
         .thumbs-grid{
-            padding-top: @paddingGrid;
+            padding-top: @padding;
         }
         .x-thumbs{
             display: inline-block;
-            min-width: @sizeThumb * 3 + @paddingGrid * 2;
+            min-width: @thumb-height * 3 + @padding * 2;
         }
         .image-link{
-            padding-left: @paddingGrid;
+            padding-left: @padding;
         }
       
         .load-more-inline{
@@ -869,7 +935,7 @@ h4{
             }
 
             &.x-left-pull{
-                margin-right:-@paddingGrid;
+                margin-right:-@padding;
                  .ui-icon-refresh{
                      background-position: @gfxRefresh-x @gfxRefresh-left-y;
                  }
@@ -918,7 +984,7 @@ h4{
             top: 40px;
             width: 109%;
             background-color: rgba(255, 255, 255, .8);
-            min-height: @sizeThumb;
+            min-height: @thumb-height;
             margin-left: -8px;
             margin-right: -8px;
             right: 0;
@@ -1095,7 +1161,7 @@ h4{
 
 .ui-input-search{
     &.ui-btn-corner-all{
-        .corner-all(@cornerRound);
+        .corner-all(@cornersRound);
     }
     &.ui-icon-searchfield::after{
         margin-top: -18px;
@@ -1135,7 +1201,7 @@ h4{
 */
 .ui-slider-switch{
 
-    .corner-all(@cornerRound);
+    .corner-all(@cornersRound);
     border: @borderMediumOnLight;
     background: white;
 
@@ -1145,7 +1211,7 @@ h4{
         text-align: center;
         color: #999;
         font-weight: bold;
-        .corner-all(@cornerRound);
+        .corner-all(@cornersRound);
         text-shadow: none;
         background: white;
         border: none!important;
@@ -1166,7 +1232,7 @@ h4{
         border: 1px solid #AAA;
         background: #F6F6F6;
         .box-shadow(0 4px 0 -2px #F1F1F1 inset, 0 2em 2em -2em #AAA inset, 0 0 2px rgba(0,0,0,.5));
-        .corner-all(@cornerRound);
+        .corner-all(@cornersRound);
     }
 
 }
@@ -1194,7 +1260,7 @@ h4{
     position: relative;
     background-color: @grayLight;
     background-image: @gfxBgLight;
-    .corner-top (@cornerPage);
+    .corner-top (@cornersPage);
     .box-shadow(inset 5px 0 20px rgba(0, 0, 0, 0.2));
 }
 
@@ -1306,7 +1372,7 @@ h4{
 /* Offline mode default display */
 .message-overlay{
     position: absolute;
-    padding-top: @sizeTopBar;
+    padding-top: @topBar-height;
     margin: 0;
     left: 0;
     top: 0;
@@ -1359,7 +1425,7 @@ h4{
 /* Footer as part of page content like on dash  */
 .inline-footer{
     margin: @paddingPage -@paddingPage 0 -@paddingPage;
-    .corner-bottom(@cornerPage);
+    .corner-bottom(@cornersPage);
 
     .ui-grid-a{
         .ui-block-a{
@@ -1385,11 +1451,11 @@ h4{
     border: none;
     color: @grayMediumOnDark;
     text-shadow: @shadowDarkOnDark 0px -1px 1px;
-    height: @sizeTopBar;
+    height: @topBar-height;
     overflow: hidden;
     .ui-title{
         .title-bar-font();
-        line-height: @sizeTopBar;
+        line-height: @topBar-height;
         vertical-align: middle;
         margin: 0;
     }
@@ -1523,7 +1589,7 @@ h4{
     .ui-collapsible-content{
         .ui-btn{
             .box-shadow( none);
-            .corner-all(@cornerRound);
+            .corner-all(@cornersRound);
             border: @borderMediumOnLight;
         }
       &.ui-body-d{
@@ -1591,7 +1657,7 @@ h4{
         left: 0;
         top: 0;
         .user-icon-big{
-            .corner-all(@cornerPage);
+            .corner-all(@cornersPage);
         }
     }
 }
@@ -1634,7 +1700,7 @@ h4{
 
 
 #popular-thumbs{
-    margin-top:@paddingGrid;
+    margin-top:@padding;
 }
 
 
@@ -1691,8 +1757,8 @@ h4{
             margin-right: 0px;
             background-image: url('@{gfx}@{gfxIcons}');            
             background-position: @gfxIcons-delete-x + 5px @gfxIcons-y-light + 5px;
-            width: @sizeTopBar;
-            height: @sizeTopBar;
+            width: @topBar-height;
+            height: @topBar-height;
         }
     }
 

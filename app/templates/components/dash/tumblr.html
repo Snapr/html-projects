@@ -8,13 +8,22 @@
 <a href="/#/tumblr-posts/"  class="x-view-full" data-corners="false" data-role="button" data-icon="arrow-r" data-iconpos="right" data-theme="c"></a>
 
 <% if(post){ %>
-<ul class="posts-stream">
-
+<div class="posts-stream">
+    
     <% switch(post.get('type')) { case 'text': %>
+        <div class="tumblr-exceprt">
         <li>text</li>
+        </div>
     <% break; case 'photo': %>
-        <img src="<%= _.where(post.get('photos')[0].alt_sizes, {width:100, height:100})[0].url %>">
-        <p><%= post.get('caption') %></p>
+        <a class="tumblr-exceprt has-thumb tumblr-photo" href="#/tumblr-posts/">
+            <img class="tumblr-thumb" src="<%= _.where(post.get('photos')[0].alt_sizes, {width:100, height:100})[0].url %>">
+            <div class="tumblr-text">
+                <div class="crop-content">
+                    <blockquote><%= post.get('caption') %></blockquote>
+                </div>
+                <div class="tumblr-details">4 months ago, 10 Notes <span class="ui-icon tumblr-icon ui-icon-tumblr-photo"></span></div>
+            </div>
+        </a>
     <% break; case 'link': %>
         <li>link</li>
     <% break; case 'video': %>
@@ -26,9 +35,10 @@
     <% break; case 'audio': %>
         <li>audio</li>
     <% }%>
+    </div>
 
     <pre><%= JSON.stringify(post, null, 2) %></pre>
-</ul>
+</div>
 <% }else{ %>
 loading...
 <% } %>

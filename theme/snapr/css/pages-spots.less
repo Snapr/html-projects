@@ -7,7 +7,7 @@
     position: relative;
 
     .ui-btn{
-        .corner-all(@cornerRound);
+        .corner-all(@cornersRound);
     }
     
     .ui-select .ui-btn-icon-right .ui-btn-inner {
@@ -53,7 +53,7 @@
 
 .spots-results-header{
     position: relative;
-    top: -@paddingGrid;
+    top: -@padding;
     .ui-btn-text{
         padding-left: 0;
     }
@@ -66,9 +66,9 @@
     border-bottom: @borderMediumOnLight;
     margin-left: 0;
     margin-right:0;
-    padding-left: @paddingGrid;
+    padding-left: @padding;
     padding-right: @paddingPage;
-    min-height:@sizeThumb;
+    min-height:@thumb-height;
     .spot {
         min-height: 101px;
         .spot-heading {
@@ -92,7 +92,7 @@
 
 .spot{
     padding: 0!important;
-    padding-left: @sizeThumb + @paddingElement!important;
+    padding-left: @thumb-height + @paddingElement!important;
     position: relative;
     display: block;
     overflow: visible;
@@ -153,8 +153,8 @@
     position: relative;
     background-color: @grayLight;
     background-image: @gfxBgLight;
-    padding: @paddingGrid;
-    min-height:@sizeThumb;
+    padding: @padding;
+    min-height:@thumb-height;
     .spot-venue-details{
         min-height: 64px;
     }
