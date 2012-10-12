@@ -105,7 +105,6 @@ var dash_view = page_view.extend({
             var li = new dash_tumblr_view({
                 feed: item
             });
-            console.log(li);
             $tumblr_streams.append( li.render().el );
         });
 
