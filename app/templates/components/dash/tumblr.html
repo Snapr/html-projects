@@ -16,11 +16,12 @@
                 <div class="crop-content">
                     <% if(post.get('title')){ %>
                         <blockquote><%= post.get('title') %></blockquote>
+                        <p><%= post.get('body') %></p>
                         <% }else{ %>
                             <blockquote><%= post.get('body') %></blockquote>
                             <% } %>
                         </div>
-                        <div class="tumblr-details"><%= string_utils.time_ago(post.get('date ')) %>, 10 Notes <span class="ui-icon tumblr-icon ui-icon-tumblr-text"></span></div>
+                        <div class="tumblr-details"><%= post.get('date') %> <% if(post.get('note_count')){ %>, <%= post.get('note_count') %> Notes<% } %> <span class="ui-icon tumblr-icon ui-icon-tumblr-text"></span></div>
                     </div>
                     
                     <% break; case 'photo': %>
