@@ -26,6 +26,8 @@ return view.extend({
         // wtf was this?
         //feed_data.back = "Upload";
 
+        this.$el.addClass('closed');
+
         var feed_param = $.param(feed_data);
         $(this.el).html($(this.template({
             collection: this.collection,
@@ -35,7 +37,6 @@ return view.extend({
         })));
 
         if(this.options.expand){
-            //this.$('.x-scroll-area').show();
             this.toggle_stream();
         }
         return this;
@@ -43,6 +44,9 @@ return view.extend({
 
     toggle_stream: function() {
         if(!this.collection.length && !this.collection.loaded){
+
+            var this$el = this.$el.addClass('loading');
+
             this.collection.fetch({
                 data: _.defaults(this.collection.data, {
                     n: config.get('side_scroll_initial'),
@@ -50,11 +54,14 @@ return view.extend({
                 }),
                 success: function(collection){
                     collection.loaded = true;
+                    this$el.removeClass('loading');
                 }
             });
         }
         this.$('.thumbs-grid').fadeToggle();
+        this.$el.toggleClass('open closed');
     },
+
     scroll_init: function(){
         var scroll_el = $('.x-scroll-area', this.el),
             details = $('.x-details', this.el),
