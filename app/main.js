@@ -287,7 +287,7 @@ require(['config', 'jquery', 'backbone', 'photoswipe', 'auth', 'utils/local_stor
                     'no_callback': function(){photo_library(null, extra_params);}
                 });
             }else{
-                photo_library(extra_params);
+                photo_library(null, extra_params);
             }
         }) );
 
