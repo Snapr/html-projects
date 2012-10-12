@@ -30,7 +30,7 @@
 
                     <% break; case 'photo': %>
 
-                    <img class="tumblr-thumb" src="<%= _.where(post.get('photos')[0].alt_sizes, {width:100, height:100})[0].url %>">
+                    <img class="tumblr-thumb" src="<%= (_.where(post.get('photos')[0].alt_sizes, {width:250}) || _.where(post.get('photos')[0].alt_sizes, {height:250}))[0].url %>">
                     <div class="tumblr-exceprt tumblr-photo">
                         <div class="crop-content">
                             <blockquote><%= post.get('caption') %></blockquote>
