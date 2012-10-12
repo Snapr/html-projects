@@ -789,20 +789,60 @@ h4{
 }
 
 .tumblr-exceprt{
-    min-height: 100px;
-    margin: @padding -@padding;
+    min-height: @thumb-height - 1;
+    margin: @padding + 1 -@padding;
     position: relative;
     
     .tumblr-text{
         text-align: left;
-        background-color: #EFEFEE;
+        background-color: @grayLighter;
         padding: @padding * 2;
+        min-height: @thumb-height - 1;
+        .border-box();
         .corner-all();
+        
+        .crop-content{
+            text-overflow: ellipsis;
+            overflow: hidden;
+            height:62px;
+        }
+        
+        blockquote{
+            margin: @padding;
+            border-left: solid 2px @gray;
+            padding-left: @padding * 2;
+            font-family: @font-serif;
+            font-style: italic;
+            font-size: @font-size-username;
+        }
+        
+        .tumblr-details{
+            position: relative;
+            font-size: @font-size-small;
+            color:  @grayLightOnLIght;
+            line-height: @gfxTumblr-grid;
+            height: @gfxTumblr-grid;
+            padding-right:@gfxTumblr-grid;
+            margin-left: 4px;
+            .border-box();
+            top: @padding;
+            
+            .tumblr-icon{
+                display: block;
+                position: absolute;
+                right: 0;
+                top: 0;
+            }
+        }
     }
     
     &.has-thumb{
         .tumblr-text{
-            margin-left: 102px;
+            margin-left: @thumb-height + 2px;
+             blockquote{
+                margin-left: 0;
+                border-left: 0;
+             }
         }
     }
     

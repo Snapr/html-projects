@@ -427,6 +427,32 @@
 .ui-bar .ui-icon-redheart {
   background-position: -96px -96px;
 }
+.ui-icon.tumblr-icon {
+  background-image: url('../gfx/tumblr-post-icons.png');
+  width: 24px;
+  height: 24px;
+}
+.ui-icon.tumblr-icon.ui-icon-tumblr-text {
+  background-position: 0px 0px;
+}
+.ui-icon.tumblr-icon.ui-icon-tumblr-photo {
+  background-position: 0px -24px;
+}
+.ui-icon.tumblr-icon.ui-icon-tumblr-quote {
+  background-position: 0px -48px;
+}
+.ui-icon.tumblr-icon.ui-icon-tumblr-link {
+  background-position: 0px -72px;
+}
+.ui-icon.tumblr-icon.ui-icon-tumblr-video {
+  background-position: 0px -144px;
+}
+.ui-icon.tumblr-icon.ui-icon-tumblr-audio {
+  background-position: 0px -120px;
+}
+.ui-icon.tumblr-icon.ui-icon-tumblr-chat {
+  background-position: 0px -96px;
+}
 .feed-icons.ui-icon,
 .feed-icons .ui-icon {
   background-image: url('../gfx/feed-icons.png');
@@ -3735,19 +3761,59 @@ h4 {
 }
 .tumblr-exceprt {
   min-height: 100px;
-  margin: 4px -4px;
+  margin: 5px -4px;
   position: relative;
 }
 .tumblr-exceprt .tumblr-text {
   text-align: left;
-  background-color: #EFEFEE;
+  background-color: #f7f7f7;
   padding: 8px;
+  min-height: 100px;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
   -moz-border-radius: 6px;
   -webkit-border-radius: 6px;
   border-radius: 6px;
 }
+.tumblr-exceprt .tumblr-text .crop-content {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  height: 62px;
+}
+.tumblr-exceprt .tumblr-text blockquote {
+  margin: 4px;
+  border-left: solid 2px #cbcbcb;
+  padding-left: 8px;
+  font-family: Georgia, 'Times New Roman', sans-serif;
+  font-style: italic;
+  font-size: 16px;
+}
+.tumblr-exceprt .tumblr-text .tumblr-details {
+  position: relative;
+  font-size: 12px;
+  color: #999999;
+  line-height: 24px;
+  height: 24px;
+  padding-right: 24px;
+  margin-left: 4px;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  top: 4px;
+}
+.tumblr-exceprt .tumblr-text .tumblr-details .tumblr-icon {
+  display: block;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
 .tumblr-exceprt.has-thumb .tumblr-text {
-  margin-left: 102px;
+  margin-left: 103px;
+}
+.tumblr-exceprt.has-thumb .tumblr-text blockquote {
+  margin-left: 0;
+  border-left: 0;
 }
 .tumblr-exceprt .tumblr-thumb {
   position: absolute;

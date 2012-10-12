@@ -15,11 +15,13 @@
         <li>text</li>
         </div>
     <% break; case 'photo': %>
-        <div class="tumblr-exceprt has-thumb">
+        <div class="tumblr-exceprt has-thumb tumblr-photo">
             <img class="tumblr-thumb" src="<%= _.where(post.get('photos')[0].alt_sizes, {width:100, height:100})[0].url %>">
             <div class="tumblr-text">
-                <blockquote><%= post.get('caption') %></blockquote>
-                <div class="tumblr-details">4 months ago, 10 Notes</div>
+                <div class="crop-content">
+                    <blockquote><%= post.get('caption') %></blockquote>
+                </div>
+                <div class="tumblr-details">4 months ago, 10 Notes <span class="ui-icon tumblr-icon ui-icon-tumblr-photo"></span></div>
             </div>
         </div>
     <% break; case 'link': %>
