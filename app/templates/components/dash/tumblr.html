@@ -8,37 +8,46 @@
 <a href="/#/tumblr-posts/"  class="x-view-full" data-corners="false" data-role="button" data-icon="arrow-r" data-iconpos="right" data-theme="c"></a>
 
 <% if(post){ %>
-<div class="posts-stream">
-    
-    <% switch(post.get('type')) { case 'text': %>
-        <div class="tumblr-exceprt">
-        <li>text</li>
-        </div>
-    <% break; case 'photo': %>
-        <a class="tumblr-exceprt has-thumb tumblr-photo" href="#/tumblr-posts/">
-            <img class="tumblr-thumb" src="<%= _.where(post.get('photos')[0].alt_sizes, {width:100, height:100})[0].url %>">
-            <div class="tumblr-text">
-                <div class="crop-content">
-                    <blockquote><%= post.get('caption') %></blockquote>
-                </div>
-                <div class="tumblr-details">4 months ago, 10 Notes <span class="ui-icon tumblr-icon ui-icon-tumblr-photo"></span></div>
-            </div>
-        </a>
-    <% break; case 'link': %>
-        <li>link</li>
-    <% break; case 'video': %>
-        <li>video</li>
-    <% break; case 'chat': %>
-        <li>chat</li>
-    <% break; case 'quote': %>
-        <li>quote</li>
-    <% break; case 'audio': %>
-        <li>audio</li>
-    <% }%>
-    </div>
+    <div class="posts-stream">
+        <a class="tumblr-item" href="#/tumblr_posts/?host=<%= feed.host %>">
 
-    <pre><%= JSON.stringify(post, null, 2) %></pre>
-</div>
-<% }else{ %>
-loading...
-<% } %>
+            <% switch(post.get('type')) { case 'text': %>
+                <div class="tumblr-exceprt tumblr-text">
+                <div class="crop-content">
+                    <% if(title){ %>
+                        <blockquote><%= post.get('title') %></blockquote>
+                        <% }else{ %>
+                            <blockquote><%= post.get('body') %></blockquote>
+                            <% } %>
+                        </div>
+                        <div class="tumblr-details"><%= string_utils.time_ago(post.get('date ')) %>, 10 Notes <span class="ui-icon tumblr-icon ui-icon-tumblr-text"></span></div>
+                    </div>
+                    
+                    <% break; case 'photo': %>
+                    <img class="tumblr-thumb" src="<%= _.where(post.get('photos')[0].alt_sizes, {width:100, height:100})[0].url %>">
+                    <div class="tumblr-exceprt tumblr-photo">
+                        <div class="crop-content">
+                            <blockquote><%= post.get('caption') %></blockquote>
+                        </div>
+                        <div class="tumblr-details">4 months ago, 10 Notes <span class="ui-icon tumblr-icon ui-icon-tumblr-photo"></span></div>
+                    </div>
+
+                    <% break; case 'link': %>
+                    <li>link</li>
+                    <% break; case 'video': %>
+                    <li>video</li>
+                    <% break; case 'chat': %>
+                    <li>chat</li>
+                    <% break; case 'quote': %>
+                    <li>quote</li>
+                    <% break; case 'audio': %>
+                    <li>audio</li>
+                    <% }%>
+                </a>
+            </div>
+
+            <pre><%= JSON.stringify(post, null, 2) %></pre>
+        </div>
+        <% }else{ %>
+            loading...
+            <% } %>

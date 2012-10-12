@@ -788,13 +788,13 @@ h4{
     }
 }
 
-.tumblr-exceprt{
+.tumblr-item{
     min-height: @thumb-height - 1;
     margin: @padding + 1 -@padding;
     position: relative;
     display: block;
     
-    .tumblr-text{
+    .tumblr-exceprt{
         text-align: left;
         background-color: @grayLighter;
         padding: @padding * 2;
@@ -817,6 +817,8 @@ h4{
             font-size: @font-size-username;
         }
         
+       
+        
         .tumblr-details{
             position: relative;
             font-size: @font-size-small;
@@ -835,17 +837,18 @@ h4{
                 top: 0;
             }
         }
+        
+         &.tumblr-photo{
+                margin-left: @thumb-height + 2px;
+                 blockquote{
+                    margin-left: 0;
+                    border-left: 0;
+                 }
+
+            }
     }
     
-    &.has-thumb{
-        .tumblr-text{
-            margin-left: @thumb-height + 2px;
-             blockquote{
-                margin-left: 0;
-                border-left: 0;
-             }
-        }
-    }
+    
     
     .tumblr-thumb{
         position: absolute;
