@@ -226,7 +226,7 @@ var dash_tumblr_view = view.extend({
                             post: collection.at(0)
                         })).trigger('create');
                     }
-                    this.$el.removeClass('loading');
+                    this_view.$el.removeClass('loading');
                 },
                 error: function(){
                     console.error('Error loading tumblr posts from server');

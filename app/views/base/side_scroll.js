@@ -202,6 +202,8 @@ return view.extend({
             }
 
             this.photoswipe_init();
+        }else{
+            this.$el.addClass('no-photos');
         }
         return this;
     },
