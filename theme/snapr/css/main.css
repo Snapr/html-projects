@@ -3833,6 +3833,8 @@ h4 {
   position: absolute;
   left: 0;
   top: 0;
+  width: 101px;
+  height: 101px;
 }
 /* Horizontally scrolling image stream components */
 .image-streams {

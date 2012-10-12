@@ -100,12 +100,27 @@
                                     </div>
 
                                     <% break; case 'audio': %>
-                                    <li>audio</li>
+                                     <div class="tumblr-exceprt tumblr-audio">
+                                            <div class="crop-content">
+                                                <blockquote>
+                                                    <%= post.get('track_name') %>
+                                                    <% if(post.get('artist')){ %>
+                                                    <small>(<%= post.get('artist') %>)</small>
+                                                    <% } %>
+                                                </blockquote>
+                                                 <% if(post.get('caption')){ %>
+                                                        <p>&mdash; <%= post.get('caption') %></p>
+
+                                                        <% } %>
+
+                                            </div>
+                                            <div class="tumblr-details"><%= string_utils.time_ago(post.get('date')) %> <% if(post.get('note_count')){ %>, <%= post.get('note_count') %> Notes<% } %> <span class="ui-icon tumblr-icon ui-icon-tumblr-audio"></span>
+                                            </div>
+                                        </div>
                                     <% }%>
                                 </a>
                             </div>
 
-                            <pre><%= JSON.stringify(post, null, 2) %></pre>
                         </div>
                         <% }else{ %>
                             <a class="tumblr-item">
