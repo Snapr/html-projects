@@ -72,7 +72,8 @@ var pages = [
         name: 'upload_xhr',
         template: 'upload'
     },
-    'foursquare_venues'
+    'foursquare_venues',
+    'competition'
 ];
 
 function _make_route(view_name, template, extra_view_data){

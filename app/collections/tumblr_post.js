@@ -10,8 +10,8 @@ return Backbone.Collection.extend({
     },
 
     tumblr_url: function( host, key ){
-        host = host || 'snaprtest.tumblr.com';
-        key = key || '0i9zD5xabR9QlY0BWhFV2XiRr1wI329fPlH4S5kPuvuBWkRQUb';
+        host = host || config.get('dafault_tumblr_host');
+        key = key || config.get('tumblr_key');
         return 'http://api.tumblr.com/v2/blog/' + host + '/posts?api_key=' + key;
     },
 
@@ -26,6 +26,7 @@ return Backbone.Collection.extend({
 
     parse: function( d, xhr ){
         if (d.response && d.response.posts){
+            this.blog_title = d.response.blog.title;
             return d.response.posts;
         } else{
             return [];
