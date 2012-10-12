@@ -1,4 +1,4 @@
- <div id="spot" data-title="Comps" data-add-back-btn="true" data-role="page" data-theme="d">
+ <div id="comp" data-title="Comps" data-add-back-btn="true" data-role="page" data-theme="d">
     <div data-role="header" data-theme="b">
         <h1>Comps</h1>
 
@@ -8,11 +8,35 @@
         </div>
     </div>
     <div data-role="content" data-theme="d" data-ajax="false">
-        <%= initial %>
         <% if(!initial){ %>
             <h1><%= title %></h1>
             <img class="banner" src="<%= banner.mobile %>">
-            <pre><%= JSON.stringify(data, null, 2) %></pre>
+
+            <h2>Awards</h2>
+            <ul>
+                <% _.each(awards, function(award){ %>
+                    <li>
+                        <h3><%= award.title %></h3><img src="<%= award.images.thm %>">
+                    </li>
+                <% }) %>
+            </ul>
+            <hr>
+
+            <% if(status == 'open'){ %>
+                <h2>Enter Now</h2>
+                <% if(closing_date){ %>
+                    <p>Submissions close <%= string_utils.short_timestamp(closing_date) %></p>
+                <% } %>
+
+                <a class="x-launch-camera-options" data-extra_params="comp=<%= id %>">Enter Now</a>
+
+                <hr>
+            <% } %>
+
+            <h2>More info</h2>
+            <p><%= long_description %></p>
+            <hr>
+
         <% } %>
     </div>
 </div>

@@ -50,8 +50,8 @@ return view.extend({
 
     history_ignore_params: false,  // array of url params to ignore when navigating to a view via history
 
-    create_page: function(context){
-        this.setElement($(this.template(context)));
+    create_page: function(){
+        this.setElement($(this.template({initial: true})));
         this.$el.appendTo(document.body);
     },
 
