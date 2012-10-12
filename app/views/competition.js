@@ -1,8 +1,8 @@
 /*global _  define require */
-define(['views/base/view', 'views/base/page', 'models/spot', 'views/base/side_scroll', 'collections/photo', 'collections/user', 'utils/geo', 'config'],
-function(view, page_view, spot_model, side_scroll, photo_collection, users_collection, geo, config){
+define(['views/base/page', 'models/comp'],
+function(page_view, comp ){
 
-var spot_view = page_view.extend({
+var comp_view = page_view.extend({
 
     post_initialize: function() {
     },
@@ -11,51 +11,32 @@ var spot_view = page_view.extend({
         this.change_page();
 
         $.mobile.showPageLoadingMsg();
-        this.render();
+
+        this.model = new comp({id:this.options.query.id});
+        this.model.fetch({
+            data:{detail:2},
+            success: this.render
+        });
     },
 
     events: {
     },
 
     render: function() {
+        var new_el = $(this.template(
+            _.extend(
+                { initial: false },
+                this.model.attributes
+            )
+        ));
 
-        var new_el = $(this.template({
-            initial:false,
-            "status": "open",
-            "closing_date": "2014-09-27 04:00:00",
-            "title": "Test Competition",
-            "short_description": "short",
-            "hashtag": "#hashtag",
-            "banner": {
-                "mobile": "http://media-server2.snapr.us/comps/comps/100.jpeg",
-                "main": "",
-                "thumb": ""
-            },
-            "id": 1,
-            "slug": "test-comp",
-            data:{
-                "status": "open",
-                "closing_date": "2014-09-27 04:00:00",
-                "title": "Test Competition",
-                "short_description": "short",
-                "hashtag": "#hashtag",
-                "banner": {
-                    "mobile": "http://media-server2.snapr.us/comps/comps/100.jpeg",
-                    "main": "",
-                    "thumb": ""
-                },
-                "id": 1,
-                "slug": "test-comp"
-            }
-        }));
-
-        this.$el.empty().append(new_el.children()).trigger( "create" );
+        this.$('[data-role=content]').empty().append(new_el.find('[data-role=content]').children()).trigger( "create" );
 
         $.mobile.hidePageLoadingMsg();
 
     }
 });
 
-return spot_view;
+return comp_view;
 
 });
