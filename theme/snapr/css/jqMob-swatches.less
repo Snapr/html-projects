@@ -21,7 +21,7 @@
     .ui-body-a[data-role="content"]{
         background: none;
         background-color: @black;
-        border-radius: @cornerPage;
+        border-radius: @cornersPage;
         min-height: 412px;
     }
 }
@@ -75,9 +75,9 @@
     a.ui-link-inherit {
         color: @grayLightOnDark;
     }
-    &.ui-corner-left{.corner-left (@cornerRound);}
-    &.ui-corner-right{.corner-right (@cornerRound);}
-    &.ui-btn-corner-all{.corner-all (@cornerRound);}
+    &.ui-corner-left{.corner-left (@cornersRound);}
+    &.ui-corner-right{.corner-right (@cornersRound);}
+    &.ui-btn-corner-all{.corner-all (@cornersRound);}
 }
 
 .ui-btn-hover-a,
@@ -101,9 +101,9 @@
     a.ui-link-inherit {
         color: @grayLightOnDark;
     }
-    &.ui-corner-left{.corner-left (@cornerRound);}
-    &.ui-corner-right{.corner-right (@cornerRound);}
-    &.ui-btn-corner-all{.corner-all (@cornerRound);}
+    &.ui-corner-left{.corner-left (@cornersRound);}
+    &.ui-corner-right{.corner-right (@cornersRound);}
+    &.ui-btn-corner-all{.corner-all (@cornersRound);}
 }
 
 // Tweak to A theme buttons for transparent BGs
@@ -344,7 +344,7 @@
         background-color: @white-tint;
         background-image: @gfxBgLight;
         border: none;
-        border-radius: @cornerPage;
+        border-radius: @cornersPage;
         overflow: visible;
     }
     .ui-header{
@@ -400,7 +400,7 @@
         .ui-btn-hover-c.system-bar,
         .ui-btn-down-c.system-bar,
         .ui-btn-active-c.system-bar   {
-            .corner-all(@cornerRound);
+            .corner-all(@cornersRound);
             display: block;
             position: relative;
             border: none;
@@ -426,7 +426,7 @@
     }
 
     .message{
-        .corner-all(@cornerPage);
+        .corner-all(@cornersPage);
         padding: @paddingElement;
         border: @borderMediumOnLight;
         font-size: @font-size-small;
@@ -505,7 +505,7 @@
         .ui-btn-inner{
             border:none;
         }
-        .corner-all(@cornerRound);
+        .corner-all(@cornersRound);
         .ui-icon-delete{background-position: @gfxIcons-delete-x @gfxIcons-y-highlight;}
     }
     .ui-btn-hover-c,
@@ -523,7 +523,7 @@
         .ui-btn-inner{
             border:none;
         }
-        .corner-all(@cornerRound);
+        .corner-all(@cornersRound);
     }
 }
 
@@ -658,7 +658,7 @@
 .ui-body-d[data-role="page"]{
     background: @black;
     background-image: @gfxBgDark;
-    border-radius: @cornerPage;
+    border-radius: @cornersPage;
     border-top: @borderLightOnDark;
     .border-box();
 }
@@ -669,7 +669,7 @@
     div[data-role="content"]{
         background-color: @white;
         background-image: none;
-        border-radius: @cornerPage;
+        border-radius: @cornersPage;
         min-height: 412px;
     }
     .ui-link,
@@ -868,7 +868,7 @@
     div[data-role="content"]{
         background-color: @yellow;
         background-image: none;
-        border-radius: @cornerPage;
+        border-radius: @cornersPage;
     }
     .ui-link,
     .ui-link:visited,

@@ -3733,6 +3733,27 @@ h4 {
   display: block;
   background-color: #fbfbfb;
 }
+.tumblr-exceprt {
+  min-height: 100px;
+  margin: 4px -4px;
+  position: relative;
+}
+.tumblr-exceprt .tumblr-text {
+  text-align: left;
+  background-color: #EFEFEE;
+  padding: 8px;
+  -moz-border-radius: 6px;
+  -webkit-border-radius: 6px;
+  border-radius: 6px;
+}
+.tumblr-exceprt.has-thumb .tumblr-text {
+  margin-left: 102px;
+}
+.tumblr-exceprt .tumblr-thumb {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
 /* Horizontally scrolling image stream components */
 .image-streams {
   list-style: none;

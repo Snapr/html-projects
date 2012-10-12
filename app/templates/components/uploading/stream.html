@@ -1,19 +1,19 @@
 <a class="ui-bar top-left-arrow x-details" data-role="button" data-iconpos="right" data-icon="arrow-r" data-theme="c" href="#/feed/?<%= feed_param %>">
     <span class="image-details">
         <% switch (details.stream_type) { case 'spot': %>
-            <span class="ui-icon ui-icon-activity extra-icons"></span>
+            <span class="ui-icon ui-icon-activity "></span>
             <em>@ <%= collection.models[0].get("location").foursquare_venue_name %></em>
         <% break; case 'popular-nearby': %>
-            <span class="ui-icon ui-icon-heart extra-icons"></span>
+            <span class="ui-icon ui-icon-heart "></span>
             <em>nearby</em>
         <% break; case 'recent-nearby': %>
-            <span class="ui-icon ui-icon-activity extra-icons"></span>
+            <span class="ui-icon ui-icon-activity "></span>
             <em>nearby</em>
         <% break; } %>
        <span class="image-tag x-tag"><%= collection.models[0].description %></span>
 
        <span class="image-time small-text">
-           <span class="ui-icon ui-icon-clock extra-icons"></span>
+           <span class="ui-icon ui-icon-clock "></span>
            <span class="x-date"><%= string_utils.short_timestamp( collection.models[0].get("date") )  %></span>
         </span>
     </span>

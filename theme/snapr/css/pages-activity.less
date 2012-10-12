@@ -33,7 +33,7 @@
     }
     .image-link{
         position: absolute;
-        left: -@paddingGrid;
+        left: -@padding;
         top:0;
     }
 
@@ -54,7 +54,7 @@
             .ui-link-inherit{
                 padding-top: 0!important;
                 padding-bottom: 0!important;
-                padding-left: @sizeAvatar + @paddingGrid!important;
+                padding-left: @sizeAvatar + @padding!important;
                 min-height: @sizeAvatar;
             }
             .ui-li-icon{
@@ -82,7 +82,7 @@
 
         }
         .like-icon{
-            margin-bottom: @paddingGrid;
+            margin-bottom: @padding;
             display: inline-block;
         }
     }
@@ -111,7 +111,7 @@
         .ui-li-icon{
             display: block;
             position: absolute;
-            left: -@paddingGrid;
+            left: -@padding;
             top: 0;
         }
     }
@@ -134,9 +134,9 @@
     /* Image Items */
     .activity-image-item{
         position: relative;
-        min-height: @sizeThumb;
-        padding-left: @sizeThumb + @paddingGrid;
-        margin-bottom: @paddingPage + @paddingGrid;
+        min-height: @thumb-height;
+        padding-left: @thumb-height + @padding;
+        margin-bottom: @paddingPage + @padding;
         .activity-item:first{
             border-top: none;
             margin-top: 0!important;

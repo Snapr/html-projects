@@ -10,7 +10,7 @@
 
 div[data-role="page"],
 div[data-role="dialog"]{
-    .corner-all(@cornerPage);
+    .corner-all(@cornersPage);
 }
 
 
@@ -337,7 +337,7 @@ a.ui-link-inherit {
 }
     
 *[data-corners="false"]{
-    .corner-all(@cornerNone)!important;
+    .corner-all(@cornersNone)!important;
     .ui-corner-tl,
     .ui-corner-tr,
     .ui-corner-bl, 
@@ -356,7 +356,7 @@ a.ui-link-inherit {
     .ui-btn-corner-right,
     .ui-btn-corner-left,
     .ui-btn-corner-all{
-        .corner-all(@cornerNone)!important;
+        .corner-all(@cornersNone)!important;
     }
 }
 

@@ -43,7 +43,7 @@
         height: @sizeAvatar-large;
         .user-profile-icon,
         .user-icon-big{
-            .corner-tl (@cornerPage);
+            .corner-tl (@cornersPage);
             overflow:hidden;
         }
         .user-icon-big{
@@ -54,7 +54,7 @@
            width: @sizeAvatar-large;
            height: @sizeAvatar-large;
            display: block;
-           .corner-tl (@cornerPage);
+           .corner-tl (@cornersPage);
            overflow:hidden;
            position: absolute;
            top: 0;
@@ -146,7 +146,7 @@
                 overflow:hidden;
             }
             .icon-overlay-info{
-               .corner-tl (@cornerPage);
+               .corner-tl (@cornersPage);
             }
         }
         .ui-bar{
@@ -347,7 +347,7 @@
 
     .ui-btn{
         .corner-top(0);
-        .corner-bottom(@cornerPage);
+        .corner-bottom(@cornersPage);
         margin-bottom: 0;
         border: none;
     }
@@ -364,7 +364,7 @@
     }
     .user-info-block .user-icon-left .user-icon-big{
         background-color: @white;
-        .corner-all(@cornerPage);
+        .corner-all(@cornersPage);
     }
     .user-stats{
         min-height: @sizeAvatar-large;
@@ -412,7 +412,7 @@
         .ui-btn{
             display: inline-block;
             margin-right: @paddingElement;
-            .corner-all(@cornerRound);
+            .corner-all(@cornersRound);
         }
         .ui-btn-icon-left {
              .ui-btn-inner {
