@@ -3763,6 +3763,7 @@ h4 {
   min-height: 100px;
   margin: 5px -4px;
   position: relative;
+  display: block;
 }
 .tumblr-exceprt .tumblr-text {
   text-align: left;
