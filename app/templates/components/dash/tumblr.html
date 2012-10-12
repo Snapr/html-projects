@@ -14,7 +14,7 @@
             <% switch(post.get('type')) { case 'text': %>
                 <div class="tumblr-exceprt tumblr-text">
                 <div class="crop-content">
-                    <% if(title){ %>
+                    <% if(post.get('title')){ %>
                         <blockquote><%= post.get('title') %></blockquote>
                         <% }else{ %>
                             <blockquote><%= post.get('body') %></blockquote>
