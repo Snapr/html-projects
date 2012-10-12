@@ -173,21 +173,20 @@ var competition = view.extend({
     tagName: 'li',
     className: 'competition',
     events: {
-        "click a.ui-bar": "toggle"
+        "click .x-details": "toggle"
     },
     initialize: function ( options ) {
         this.load_template('components/dash/competition');
     },
-    render: function () {
+    render: function(){
+        this.$el.addClass('closed');
         this.$el.html( this.template(this.options.data));
         return this;
     },
-    toggle: function () {
-        var btn = this.$('[data-role="button"]');
-
-        btn.toggleClass('open').toggleClass('closed');
-        btn.toggleClass('top-left-arrow');
-        this.$('.post-stream').fadeToggle();
+    toggle: function(){
+        this.$el.toggleClass('open closed');
+        this.$el.toggleClass('top-left-arrow');
+        this.$('.banner').fadeToggle();
     }
 });
 
@@ -195,12 +194,14 @@ var dash_tumblr_view = view.extend({
     tagName: 'li',
     className: 'post-stream',
     events: {
-        "click a.ui-bar": "toggle_feed"
+        "click .x-details": "toggle"
     },
     initialize: function ( options ) {
         this.load_template('components/dash/tumblr');
     },
     render: function () {
+
+        this.$el.addClass('open loading');
         this.$el.html( this.template({
             feed: this.options.feed,
             post: null
@@ -225,6 +226,7 @@ var dash_tumblr_view = view.extend({
                             post: collection.at(0)
                         })).trigger('create');
                     }
+                    this_view.$el.removeClass('loading');
                 },
                 error: function(){
                     console.error('Error loading tumblr posts from server');
@@ -233,12 +235,10 @@ var dash_tumblr_view = view.extend({
         collection.fetch(options);
         return this;
     },
-    toggle_feed: function () {
-        var btn = this.$('[data-role="button"]');
-
-        btn.toggleClass('open').toggleClass('closed');
-        btn.toggleClass('top-left-arrow');
-        this.$('.post-stream').fadeToggle();
+    toggle: function () {
+        this.$el.toggleClass('open closed');
+        this.$el.toggleClass('top-left-arrow');
+        this.$('.posts-stream').fadeToggle();
     }
 });
 
@@ -250,7 +250,8 @@ var dash_stream = side_scroll.extend({
 
     events: {
         "click .remove-stream": "remove_stream",
-        "click a.ui-bar": "toggle_stream"
+        "click .x-details": "toggle_stream",
+        "click .x-view-full": "goto_feed"
     },
 
     post_initialize: function( options ){
@@ -275,6 +276,14 @@ var dash_stream = side_scroll.extend({
                 });
             }
         });
+    },
+
+    goto_feed: function(e){
+        var button = $(e.currentTarget),
+            query = button.data('query'),
+            current = button.data('current');
+
+        Backbone.history.navigate('#/feed/?' + unescape( query ));
     }
 });
 
