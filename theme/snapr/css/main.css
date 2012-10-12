@@ -3790,6 +3790,17 @@ h4 {
   font-style: italic;
   font-size: 16px;
 }
+.tumblr-item .tumblr-exceprt blockquote small {
+  display: inline-block;
+  color: #666666;
+}
+.tumblr-item .tumblr-exceprt p {
+  margin: 6px 4px 4px 4px;
+  color: #666666;
+  font-family: Georgia, 'Times New Roman', sans-serif;
+  font-style: italic;
+  font-size: 12px;
+}
 .tumblr-item .tumblr-exceprt .tumblr-details {
   position: relative;
   font-size: 12px;
@@ -3809,10 +3820,12 @@ h4 {
   right: 0;
   top: 0;
 }
-.tumblr-item .tumblr-exceprt.tumblr-photo {
+.tumblr-item .tumblr-exceprt.tumblr-photo,
+.tumblr-item .tumblr-exceprt.tumblr-video {
   margin-left: 103px;
 }
-.tumblr-item .tumblr-exceprt.tumblr-photo blockquote {
+.tumblr-item .tumblr-exceprt.tumblr-photo blockquote,
+.tumblr-item .tumblr-exceprt.tumblr-video blockquote {
   margin-left: 0;
   border-left: 0;
 }

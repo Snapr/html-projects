@@ -815,8 +815,18 @@ h4{
             font-family: @font-serif;
             font-style: italic;
             font-size: @font-size-username;
+            small{
+                display: inline-block;
+                color: @grayMediumOnLIght;
+            }
         }
-        
+        p{
+            margin: @padding * 1.5 @padding @padding @padding;
+            color: @grayMediumOnLIght;
+            font-family: @font-serif;
+            font-style: italic;
+            font-size: @font-size-small;
+        }
        
         
         .tumblr-details{
@@ -838,7 +848,8 @@ h4{
             }
         }
         
-         &.tumblr-photo{
+         &.tumblr-photo,
+         &.tumblr-video{
                 margin-left: @thumb-height + 2px;
                  blockquote{
                     margin-left: 0;
