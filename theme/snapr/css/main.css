@@ -6167,6 +6167,152 @@ body.browser-testing .ui-footer-fixed {
 .account-content .ui-bar .ui-btn-text {
   padding-left: 8px;
 }
+.activity-streams {
+  /* General Styles */
+
+  /* Tweaks for comments */
+
+  /* Tweaks for likes */
+
+  /* Tweaks for follow item */
+
+  /* Image Items */
+
+  /* If the first item (after the top bar) is a follow item get rid of its top border */
+
+}
+.activity-streams .ui-bar.top-left-arrow .ui-btn-text {
+  padding-left: 8px;
+}
+.activity-streams .username,
+.activity-streams .ui-li-desc {
+  display: inline-block;
+  margin-bottom: 0;
+}
+.activity-streams .activity-item {
+  border: none;
+  border-top: solid 1px #e4e4e4;
+  margin-top: 8px;
+  padding-top: 0;
+}
+.activity-streams .activity-item .activity-desc {
+  white-space: normal;
+  font-weight: normal;
+  font-size: 15px;
+  line-height: 15px;
+  color: #666666;
+  font-family: Helvetica, Arial, sans-serif;
+}
+.activity-streams .activity-item .small-text {
+  position: relative;
+  top: 1px;
+  color: #999999;
+}
+.activity-streams .image-link {
+  position: absolute;
+  left: -4px;
+  top: 0;
+}
+.activity-streams .activity-item {
+  border: none;
+  border-top: solid 1px #e4e4e4;
+  margin-top: 8px;
+  padding-top: 0;
+}
+.activity-streams .comments-list {
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+.activity-streams .comments-list .comment-item.ui-li-has-icon {
+  padding: 0;
+  margin-top: 8px;
+  padding-top: 8px!important;
+}
+.activity-streams .comments-list .comment-item.ui-li-has-icon .ui-link-inherit {
+  padding-top: 0!important;
+  padding-bottom: 0!important;
+  padding-left: 38px !important;
+  min-height: 34px;
+}
+.activity-streams .comments-list .comment-item.ui-li-has-icon .ui-li-icon {
+  top: 0;
+  left: 0;
+}
+.activity-streams .comments-list .comment-item.ui-li-has-icon .ui-li-heading {
+  padding: 0;
+  margin: 0;
+}
+.activity-streams .image-likes {
+  min-height: 34px;
+}
+.activity-streams .image-likes .icons-list,
+.activity-streams .image-likes p {
+  display: inline-block;
+  vertical-align: top;
+}
+.activity-streams .image-likes .like-icons-list {
+  margin-top: 8px;
+  margin-bottom: 0;
+}
+.activity-streams .image-likes .like-icon {
+  margin-bottom: 4px;
+  display: inline-block;
+}
+.activity-streams .activity-follow-item {
+  position: relative;
+  padding-left: 0;
+  margin-top: 8px;
+  min-height: 34px;
+  display: block;
+}
+.activity-streams .activity-follow-item .username,
+.activity-streams .activity-follow-item .activity-desc,
+.activity-streams .activity-follow-item .small-text {
+  display: inline-block;
+  vertical-align: baseline;
+  margin-bottom: 0;
+}
+.activity-streams .activity-follow-item .ui-link {
+  display: block;
+  padding-left: 34px;
+  padding-top: 8px ;
+  min-height: 34px;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.activity-streams .activity-follow-item .ui-li-icon {
+  display: block;
+  position: absolute;
+  left: -4px;
+  top: 0;
+}
+.activity-streams .photo-activity .activity-item:first-child {
+  border-top: none;
+  padding-top: 0!important;
+}
+.activity-streams .activity-item:first {
+  border-top: none;
+  margin-top: 0!important;
+  padding-top: 0!important;
+}
+.activity-streams .activity-image-item {
+  position: relative;
+  min-height: 101px;
+  padding-left: 105px;
+  margin-bottom: 12px;
+}
+.activity-streams .activity-image-item .activity-item:first {
+  border-top: none;
+  margin-top: 0!important;
+  padding-top: 0!important;
+}
+.activity-streams .activity-stream:nth-child(2) .activity-follow-item {
+  border-top: none;
+  margin-top: 0!important;
+  padding-top: 0!important;
+}
 .share-photo div[data-role="header"] {
   z-index: 20;
 }
