@@ -250,9 +250,21 @@ var dash_stream = side_scroll.extend({
         "click .x-view-full": "goto_feed"
     },
 
+    get_title: function(){
+        var title = this.model.get("display").short_title;
+        if(this.model.get("query").username){
+            title = title.replace(this.model.get("query").username, '<span class="at">@</span>' + this.model.get("query").username);
+        }
+        if(this.model.get("query").keywords){
+            title = title.replace(this.model.get("query").keywords, '<span class="hash">#</span>' + this.model.get("query").keywords);
+        }
+        if(this.model.get("query").radius){
+            title = title +  ' (' + this.model.get("query").radius/1000 +'km)';
+        }
+        return title;
+    },
+
     post_initialize: function( options ){
-        this.template = this.get_template('components/dash/stream');
-        this.thumbs_template = this.get_template('components/dash/thumb');
         if (!options.featured){
             this.$el.addClass("user-stream");
             this.$el.attr("data-id", this.model.get("id"));
