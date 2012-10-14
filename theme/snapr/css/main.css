@@ -2903,6 +2903,9 @@ h4 {
   margin-bottom: -1px;
   padding-bottom: 1px;
 }
+.snapr-footer {
+  background-color: #000000;
+}
 .snapr-footer .ui-navbar {
   background: #434748;
   color: #999999;
@@ -2922,11 +2925,17 @@ h4 {
   /* Opera 11.10+ */
 
   background-image: linear-gradient(top, #434748, #26282a);
+  -moz-border-radius-bottomleft: 8px;
+  -webkit-border-bottom-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+  -moz-border-radius-bottomright: 8px;
+  -webkit-border-bottom-right-radius: 8px;
+  border-bottom-right-radius: 8px;
   padding: 3px 0;
 }
 .snapr-footer .ui-navbar .ui-btn {
   border: none;
-  margin: 0 3px;
+  margin: 0 3px!important;
   -moz-border-radius: 3px !important;
   -webkit-border-radius: 3px !important;
   border-radius: 3px !important;
@@ -2946,6 +2955,17 @@ h4 {
   -webkit-box-shadow: inset 0px 2px 4px 2px rgba(0, 0, 0, 0.1) !important;
   box-shadow: inset 0px 2px 4px 2px rgba(0, 0, 0, 0.1) !important;
   color: white;
+  text-shadow: rgba(0, 0, 0, 0.5) 0px 1px 1px;
+}
+.snapr-footer .ui-navbar li:first-child .ui-btn {
+  -moz-border-radius-bottomleft: 8px !important;
+  -webkit-border-bottom-left-radius: 8px !important;
+  border-bottom-left-radius: 8px !important;
+}
+.snapr-footer .ui-navbar li:last-child .ui-btn {
+  -moz-border-radius-bottomright: 8px !important;
+  -webkit-border-bottom-right-radius: 8px !important;
+  border-bottom-right-radius: 8px !important;
 }
 .snapr-footer .ui-navbar .ui-btn-inner {
   padding-top: 32px!important;
@@ -2956,6 +2976,7 @@ h4 {
 .snapr-footer .ui-navbar .ui-btn-inner .ui-btn-text {
   font-size: 12px;
   text-transform: none;
+  text-shadow: rgba(0, 0, 0, 0.5) 0px -1px 1px;
 }
 .snapr-footer .ui-navbar .ui-btn-inner .ui-icon {
   top: 0;

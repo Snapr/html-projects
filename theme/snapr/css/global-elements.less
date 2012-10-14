@@ -168,13 +168,15 @@ h4{
 }
 
 .snapr-footer{
+    background-color: @black;
     .ui-navbar {
         .darkGrad();
+        .corner-bottom(@cornersPage);
         padding: 3px 0;
         
         .ui-btn{
             border: none;
-            margin: 0 3px;
+            margin: 0 3px!important;
             .corner-all (3px)!important;
             
             &.ui-btn-up-b{
@@ -192,9 +194,19 @@ h4{
                 background-color: @grayDark-tint;
                 .box-shadow(inset 0px 2px 4px 2px rgba(0, 0, 0, .1))!important;
                 color: white;
+                text-shadow: @shadowMediumOnDark 0px 1px 1px;
+                
             }
         }
         
+        // Match rounded corners of full palette
+        li:first-child .ui-btn{
+            .corner-bl(@cornersPage)!important;
+        }
+        
+        li:last-child .ui-btn{
+            .corner-br(@cornersPage)!important;
+        }
         
         
         .ui-btn-inner {
@@ -206,6 +218,8 @@ h4{
             .ui-btn-text {
                 font-size: 12px;
                 text-transform: none;
+                text-shadow: @shadowMediumOnDark 0px -1px 1px;
+                
             }
             
             .ui-icon {
