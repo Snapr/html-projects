@@ -2765,6 +2765,9 @@ a.ui-link-inherit {
   -webkit-border-bottom-right-radius: 0 !important;
   border-bottom-right-radius: 0 !important;
 }
+*[data-tab-bar="true"] div[data-role="header"] *[data-icon="home"] {
+  display: none;
+}
 *[data-tab-bar="true"] .inline-footer {
   -moz-border-radius-bottomleft: 0 !important;
   -webkit-border-bottom-left-radius: 0 !important;
@@ -2780,6 +2783,12 @@ a.ui-link-inherit {
   -moz-border-radius-bottomright: 0 !important;
   -webkit-border-bottom-right-radius: 0 !important;
   border-bottom-right-radius: 0 !important;
+}
+.x-my-snaps-only {
+  display: none!important;
+}
+.my-snaps .x-my-snaps-only {
+  display: inline-block !important;
 }
 .underline {
   text-decoration: underline;

@@ -10,6 +10,13 @@
     div[data-role="content"]{
         .corner-bottom(0)!important;
     }
+    
+    //Hide home menu button on pages where the is a tab bar
+    div[data-role="header"]{
+        *[data-icon="home"]{
+            display: none;
+        }
+    }
 
     .inline-footer{
         .corner-bottom(0)!important;
@@ -20,6 +27,11 @@
         }
     }
 }
+
+
+// Feed content to show for 'my snaps' feed
+.x-my-snaps-only{display: none!important;}
+.my-snaps .x-my-snaps-only{display: inline-block!important;}
 
 
 .underline{
