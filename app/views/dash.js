@@ -14,9 +14,8 @@ var dash_view = page_view.extend({
     post_initialize: function(){
         this.model = new dash_model();
 
-        // Jon, why are these commented out?
-        //this.model.get('streams').bind( 'remove', this.remove_stream );
-        //this.model.get('streams').bind( 'add', this.add_stream );
+        this.model.streams.bind( 'remove', this.remove_stream );
+        this.model.streams.bind( 'add', this.add_stream );
     },
 
     post_activate: function(){
@@ -150,19 +149,19 @@ var dash_view = page_view.extend({
         var query = $(e.currentTarget).data('query');
         var current = $(e.currentTarget).data('current');
         Backbone.history.navigate('#/feed/?' + unescape( query ) + '&paginate_from=' + current );
-    }//,
+    },
 
-    // remove_stream: function(stream){
-    //     this.$('.image-stream[data-id='+stream.get('id')+']').remove();
-    // },
-    // add_stream: function(item){
-    //     var li = new dash_stream({ collection: item.photos, model: item });
-    //     this.$('.image-streams').append( li.el );
-    //     // this must be rendered after it's appended because sizing details
-    //     // needed by scroller are only available after the element is in the DOM
-    //     li.render();
-    //     li.$el.trigger('create');
-    // }
+    remove_stream: function(stream){
+        this.$('.image-stream[data-id='+stream.get('id')+']').remove();
+    },
+    add_stream: function(item){
+        var li = new dash_stream({ collection: item.photos, model: item });
+        this.$('.image-streams').append( li.el );
+        // this must be rendered after it's appended because sizing details
+        // needed by scroller are only available after the element is in the DOM
+        li.render();
+        li.$el.trigger('create');
+    }
 
 });
 
@@ -268,7 +267,7 @@ var dash_stream = side_scroll.extend({
                 stream.model['delete']({
                     success: function(){
                         stream.collection.remove(stream.model);
-                        stream.render();
+                        stream.$el.remove();
                     }
                 });
             }
@@ -349,7 +348,7 @@ var add_person = page_view.extend({
                 });
             $.mobile.showPageLoadingMsg();
             stream.save({}, {success: function(){
-                dash.get('streams').add(stream);
+                this_back_view.model.streams.add(stream);
                 $.mobile.hidePageLoadingMsg();
             }});
             this_back_view.$el.removeClass('edit');
@@ -462,10 +461,11 @@ var add_search = page_view.extend({
             };
             geo.get_location( success_callback, error_callback );
         }else{
-            var stream = new dash_stream_model( stream_object );
+            var stream = new dash_stream_model( stream_object ),
+                dash = this.previous_view;
             $.mobile.showPageLoadingMsg();
             stream.save({}, {success: function(){
-                dash.get('streams').add(stream);
+                dash.model.streams.add(stream);
                 $.mobile.hidePageLoadingMsg();
             }});
             this.previous_view.$el.removeClass('edit');
