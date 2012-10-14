@@ -1,6 +1,6 @@
 <a class="ui-bar x-details" data-role="button" data-iconpos="left" data-icon="open" data-theme="<% if(typeof(theme) == "undefined"){ print("c") }else{ print(theme) } %>">
     <span class="image-details">
-        <strong><%= model.get("display").short_title %><% if(model.get("query").radius){ %> (<%= model.get("query").radius/1000 %>km)<% } %></strong>
+        <strong><%= title %></strong>
         <span class="image-tag x-tag"></span>
         <span class="image-time small-text">
             <span class="ui-icon ui-icon-clock "></span><span class="x-date"></span>

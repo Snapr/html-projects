@@ -20,6 +20,10 @@ return view.extend({
 
     post_initialize: function(){},
 
+    get_title: function(){
+        return this.model.get("display").short_title;
+    },
+
     render: function(){
         var feed_data = this.collection.data || {};
         if (feed_data.access_token){ delete feed_data.access_token; }
@@ -32,6 +36,7 @@ return view.extend({
 
         var feed_param = $.param(feed_data);
         $(this.el).html($(this.template({
+            title: this.get_title(),
             photos: this.collection.models,
             model: this.model,
             details: this.details,
@@ -185,6 +190,7 @@ return view.extend({
         if(this.collection.length){
 
             var rendered = $(this.template({
+                title: '',
                 photos: this.collection.models,
                 model: this.model,
                 details: this.details,
