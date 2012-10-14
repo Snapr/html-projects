@@ -13,7 +13,7 @@ define(['backbone'], function(Backbone){
             return template;
         },
         load_template: function(name){
-            this.template = this.get_template( name || this.options.name );
+            this.template = this.get_template( name || this.tempate_name || this.options.name );
         }
     });
 });

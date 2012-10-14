@@ -63,11 +63,7 @@ var pages = [
         view: 'people',
         template: 'people'
     },
-    {
-        name: 'user/profile',
-        view: 'user_profile',
-        template: 'user_profile'
-    },
+    'user/profile',
     {
         name: 'upload_xhr',
         template: 'upload'

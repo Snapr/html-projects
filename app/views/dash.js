@@ -286,6 +286,8 @@ var dash_stream = side_scroll.extend({
 
 var add_person = page_view.extend({
 
+    tempate_name: 'components/dash/add_person',
+
     post_initialize: function(){
         var dialog = this;
         this.$el.live( "pageshow", function( e, ui ){
@@ -398,6 +400,8 @@ var add_person = page_view.extend({
 
 var add_search = page_view.extend({
 
+    tempate_name: 'components/dash/add_search',
+
     post_initialize: function(){
         var dialog = this;
         this.$el.live( "pageshow", function( e, ui ){
@@ -410,12 +414,6 @@ var add_search = page_view.extend({
         this.$(".ui-input-text").val('');
 
         this.change_page();
-
-        var dialog = this;
-        this.$el.live( "pageshow", function( e, ui ){
-            dialog.$('#dash-search-keywords').focus();
-        });
-
     },
 
     events: {
