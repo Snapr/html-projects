@@ -381,6 +381,8 @@
 .ui-bar.ui-icon,
 .ui-bar-icons.ui-icon {
   background-image: url('../gfx/ui-bar-icons.png');
+  width: 32px;
+  height: 32px;
 }
 .ui-bar .ui-icon-open,
 .ui-bar-icons .ui-icon-open,
@@ -3259,6 +3261,14 @@ h4 {
 .tumblr-streams {
   position: relative;
 }
+.competition {
+  position: relative;
+}
+.competition .banner {
+  margin: 0 -8px;
+  background-color: #f7f7f7;
+  min-height: 100px;
+}
 .x-follow-btn .ui-btn-inner {
   position: relative;
 }
@@ -4336,6 +4346,9 @@ h4 {
 .x-view-full .ui-btn-inner {
   padding: 0;
   min-height: 32px;
+}
+.x-view-full .ui-btn-inner .ui-icon {
+  margin-top: -16px;
 }
 /* Upload Progress items */
 .upload-progress-header {
