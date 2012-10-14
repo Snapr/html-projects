@@ -1492,17 +1492,23 @@ h4{
 
 .retry-offline{
     display: block;
-    padding-left: 24px;
-    padding-right: 24px;
-     .ui-btn-inner{
-        padding-left: 32px;
-        padding-right: 32px;
-        text-align: left;
-    }    
+       
     .ui-icon-connection{
-        position: absolute;
-        left: 0;
-        top: 0; 
+       
+        background-position: @gfxBar-x-d @gfxBar-connection-y;
+    }
+    &.ui-btn-icon-left{
+         .ui-btn-text{
+            padding-left: 32px;
+            padding-right: 32px;
+            text-align: left;
+        }
+        .ui-icon{
+            position: absolute;
+            top: 0; 
+            left: 0px;
+            margin-top: -2px;
+        }
     }
 }
 
