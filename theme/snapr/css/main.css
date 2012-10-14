@@ -2748,6 +2748,39 @@ a.ui-link-inherit {
 /*
 * Elements - Non-Jquery Mobile Design Patterns that are shared across multiple pages
 */
+*[data-tab-bar="true"] {
+  padding-bottom: 54px;
+  -moz-border-radius-bottomleft: 0 !important;
+  -webkit-border-bottom-left-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+  -moz-border-radius-bottomright: 0 !important;
+  -webkit-border-bottom-right-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+}
+*[data-tab-bar="true"] div[data-role="content"] {
+  -moz-border-radius-bottomleft: 0 !important;
+  -webkit-border-bottom-left-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+  -moz-border-radius-bottomright: 0 !important;
+  -webkit-border-bottom-right-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+}
+*[data-tab-bar="true"] .inline-footer {
+  -moz-border-radius-bottomleft: 0 !important;
+  -webkit-border-bottom-left-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+  -moz-border-radius-bottomright: 0 !important;
+  -webkit-border-bottom-right-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+}
+*[data-tab-bar="true"] .inline-footer.feed-footer .ui-btn {
+  -moz-border-radius-bottomleft: 0 !important;
+  -webkit-border-bottom-left-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+  -moz-border-radius-bottomright: 0 !important;
+  -webkit-border-bottom-right-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+}
 .underline {
   text-decoration: underline;
 }
@@ -6090,6 +6123,9 @@ body.browser-testing .ui-footer-fixed {
 }
 .menu-main .menu-stream.thumbs-block.no-images .ui-icon-arrow-r {
   display: none;
+}
+#my-account div[data-role="content"] {
+  overflow: hidden;
 }
 .account-content .myaccount-header {
   min-height: 60px;

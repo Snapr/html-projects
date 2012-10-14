@@ -2,6 +2,25 @@
 * Elements - Non-Jquery Mobile Design Patterns that are shared across multiple pages
 */
 
+// Add base padding to pages with tab bars and square off rounded corners for content
+
+*[data-tab-bar="true"]{
+    padding-bottom: @tabBar-height;
+    .corner-bottom(0)!important;
+    div[data-role="content"]{
+        .corner-bottom(0)!important;
+    }
+
+    .inline-footer{
+        .corner-bottom(0)!important;
+        &.feed-footer{
+            .ui-btn{
+                .corner-bottom(0)!important;
+            }
+        }
+    }
+}
+
 
 .underline{
     text-decoration: underline;
