@@ -1,4 +1,4 @@
-<a class="ui-bar x-details" data-role="button" data-iconpos="left" data-icon="open" data-theme="<% if(typeof(theme) == "undefined"){ print("c") }else{ print(theme) } %>">
+<a class="ui-bar top-left-arrow x-details" data-role="button" data-iconpos="left" data-icon="open" data-theme="<% if(typeof(theme) == "undefined"){ print("c") }else{ print(theme) } %>">
     <span class="image-details">
         <strong><%= title %></strong>
         <span class="image-tag x-tag"></span>
@@ -7,7 +7,7 @@
         </span>
     </span>
 </a>
-<a class="x-view-full" data-query="<%= escape($.param(model.get("query"))) %>" data-corners="false" data-role="button" data-icon="arrow-r" data-iconpos="right" data-theme="c"></a>
+<a class="x-view-full ui-bar-icons" data-query="<%= escape($.param(model.get("query"))) %>" data-corners="false" data-role="button" data-icon="arrow-r" data-iconpos="right" data-theme="c"></a>
 <div class="thumbs-grid thumbs-grid-med x-scroll-area" style="display:none">
     <div class="x-scroll-wrapper"><!-- inner div for scroll -->
         <div class="x-left-pull thumb-med load-more-inline">

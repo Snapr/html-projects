@@ -376,136 +376,329 @@
 .dark-icons .ui-btn.ui-btn-active .ui-btn-inner.ui-icon-photos {
   background-position: -40px -480px;
 }
-.ui-bar .ui-icon {
+.ui-bar .ui-icon,
+.ui-bar-icons .ui-icon,
+.ui-bar.ui-icon,
+.ui-bar-icons.ui-icon {
   background-image: url('../gfx/ui-bar-icons.png');
 }
-.ui-bar .ui-icon-open {
+.ui-bar .ui-icon-open,
+.ui-bar-icons .ui-icon-open,
+.ui-bar.ui-icon-open,
+.ui-bar-icons.ui-icon-open {
   background-position: 0 0px;
 }
-.ui-bar .ui-icon-close {
+.ui-bar .ui-icon-closed,
+.ui-bar-icons .ui-icon-closed,
+.ui-bar.ui-icon-closed,
+.ui-bar-icons.ui-icon-closed {
   background-position: 0 -32px;
 }
-.ui-bar .ui-icon-arrow-r {
+.ui-bar .ui-icon-arrow-r,
+.ui-bar-icons .ui-icon-arrow-r,
+.ui-bar.ui-icon-arrow-r,
+.ui-bar-icons.ui-icon-arrow-r {
   background-position: 0 -64px;
 }
-.ui-bar .ui-icon-heart {
+.ui-bar .ui-icon-heart,
+.ui-bar-icons .ui-icon-heart,
+.ui-bar.ui-icon-heart,
+.ui-bar-icons.ui-icon-heart {
   background-position: 0 -96px;
 }
-.ui-bar .ui-icon-venue {
+.ui-bar .ui-icon-venue,
+.ui-bar-icons .ui-icon-venue,
+.ui-bar.ui-icon-venue,
+.ui-bar-icons.ui-icon-venue {
   background-position: 0 -128px;
 }
-.ui-bar .ui-icon-person {
+.ui-bar .ui-icon-person,
+.ui-bar-icons .ui-icon-person,
+.ui-bar.ui-icon-person,
+.ui-bar-icons.ui-icon-person {
   background-position: 0 -160px;
 }
-.ui-bar .ui-icon-search {
+.ui-bar .ui-icon-search,
+.ui-bar-icons .ui-icon-search,
+.ui-bar.ui-icon-search,
+.ui-bar-icons.ui-icon-search {
   background-position: 0 -192px;
 }
-.ui-bar .ui-icon-activity {
+.ui-bar .ui-icon-activity,
+.ui-bar-icons .ui-icon-activity,
+.ui-bar.ui-icon-activity,
+.ui-bar-icons.ui-icon-activity {
   background-position: 0 -224px;
 }
-.ui-bar .ui-icon-location {
+.ui-bar .ui-icon-location,
+.ui-bar-icons .ui-icon-location,
+.ui-bar.ui-icon-location,
+.ui-bar-icons.ui-icon-location {
   background-position: 0 -256px;
 }
-.ui-bar .ui-icon-clock {
+.ui-bar .ui-icon-clock,
+.ui-bar-icons .ui-icon-clock,
+.ui-bar.ui-icon-clock,
+.ui-bar-icons.ui-icon-clock {
   background-position: 0 -288px;
 }
-.ui-bar .ui-icon-connection {
+.ui-bar .ui-icon-connection,
+.ui-bar-icons .ui-icon-connection,
+.ui-bar.ui-icon-connection,
+.ui-bar-icons.ui-icon-connection {
   background-position: 0 -320px;
 }
-.ui-bar .ui-icon-blog {
+.ui-bar .ui-icon-blog,
+.ui-bar-icons .ui-icon-blog,
+.ui-bar.ui-icon-blog,
+.ui-bar-icons.ui-icon-blog {
   background-position: 0 -352px;
 }
-.ui-bar .ui-icon-comment {
+.ui-bar .ui-icon-comment,
+.ui-bar-icons .ui-icon-comment,
+.ui-bar.ui-icon-comment,
+.ui-bar-icons.ui-icon-comment {
   background-position: 0 -384px;
 }
-.ui-bar .ui-icon-play {
+.ui-icon-play.ui-bar.ui-icon-play,
+.ui-icon-play.ui-bar-icons.ui-icon-play {
   background-position: 0 -416px;
 }
-.ui-bar .ui-icon-refresh {
+.ui-bar .ui-icon-refresh,
+.ui-bar-icons .ui-icon-refresh,
+.ui-bar.ui-icon-refresh,
+.ui-bar-icons.ui-icon-refresh {
   background-position: 0 -448px;
 }
-.ui-bar .ui-icon-redheart {
+.ui-bar .ui-icon-redheart,
+.ui-bar-icons .ui-icon-redheart,
+.ui-bar.ui-icon-redheart,
+.ui-bar-icons.ui-icon-redheart {
   background-position: -96px -96px;
 }
 .ui-bar.ui-btn-up-e .ui-icon-open,
+.ui-bar-icons.ui-btn-up-e .ui-icon-open,
 .ui-bar.ui-btn-hover-e .ui-icon-open,
-.ui-bar.ui-btn-down-e .ui-icon-open {
+.ui-bar-icons.ui-btn-hover-e .ui-icon-open,
+.ui-bar.ui-btn-down-e .ui-icon-open,
+.ui-bar-icons.ui-btn-down-e .ui-icon-open,
+.ui-bar.ui-btn-up-e.ui-icon-open,
+.ui-bar-icons.ui-btn-up-e.ui-icon-open,
+.ui-bar.ui-btn-hover-e.ui-icon-open,
+.ui-bar-icons.ui-btn-hover-e.ui-icon-open,
+.ui-bar.ui-btn-down-e.ui-icon-open,
+.ui-bar-icons.ui-btn-down-e.ui-icon-open {
   background-position: -128px 0px;
 }
-.ui-bar.ui-btn-up-e .ui-icon-close,
-.ui-bar.ui-btn-hover-e .ui-icon-close,
-.ui-bar.ui-btn-down-e .ui-icon-close {
+.ui-bar.ui-btn-up-e .ui-icon-closed,
+.ui-bar-icons.ui-btn-up-e .ui-icon-closed,
+.ui-bar.ui-btn-hover-e .ui-icon-closed,
+.ui-bar-icons.ui-btn-hover-e .ui-icon-closed,
+.ui-bar.ui-btn-down-e .ui-icon-closed,
+.ui-bar-icons.ui-btn-down-e .ui-icon-closed,
+.ui-bar.ui-btn-up-e.ui-icon-closed,
+.ui-bar-icons.ui-btn-up-e.ui-icon-closed,
+.ui-bar.ui-btn-hover-e.ui-icon-closed,
+.ui-bar-icons.ui-btn-hover-e.ui-icon-closed,
+.ui-bar.ui-btn-down-e.ui-icon-closed,
+.ui-bar-icons.ui-btn-down-e.ui-icon-closed {
   background-position: -128px -32px;
 }
 .ui-bar.ui-btn-up-e .ui-icon-arrow-r,
+.ui-bar-icons.ui-btn-up-e .ui-icon-arrow-r,
 .ui-bar.ui-btn-hover-e .ui-icon-arrow-r,
-.ui-bar.ui-btn-down-e .ui-icon-arrow-r {
+.ui-bar-icons.ui-btn-hover-e .ui-icon-arrow-r,
+.ui-bar.ui-btn-down-e .ui-icon-arrow-r,
+.ui-bar-icons.ui-btn-down-e .ui-icon-arrow-r,
+.ui-bar.ui-btn-up-e.ui-icon-arrow-r,
+.ui-bar-icons.ui-btn-up-e.ui-icon-arrow-r,
+.ui-bar.ui-btn-hover-e.ui-icon-arrow-r,
+.ui-bar-icons.ui-btn-hover-e.ui-icon-arrow-r,
+.ui-bar.ui-btn-down-e.ui-icon-arrow-r,
+.ui-bar-icons.ui-btn-down-e.ui-icon-arrow-r {
   background-position: -128px -64px;
 }
 .ui-bar.ui-btn-up-e .ui-icon-heart,
+.ui-bar-icons.ui-btn-up-e .ui-icon-heart,
 .ui-bar.ui-btn-hover-e .ui-icon-heart,
-.ui-bar.ui-btn-down-e .ui-icon-heart {
+.ui-bar-icons.ui-btn-hover-e .ui-icon-heart,
+.ui-bar.ui-btn-down-e .ui-icon-heart,
+.ui-bar-icons.ui-btn-down-e .ui-icon-heart,
+.ui-bar.ui-btn-up-e.ui-icon-heart,
+.ui-bar-icons.ui-btn-up-e.ui-icon-heart,
+.ui-bar.ui-btn-hover-e.ui-icon-heart,
+.ui-bar-icons.ui-btn-hover-e.ui-icon-heart,
+.ui-bar.ui-btn-down-e.ui-icon-heart,
+.ui-bar-icons.ui-btn-down-e.ui-icon-heart {
   background-position: -128px -96px;
 }
 .ui-bar.ui-btn-up-e .ui-icon-venue,
+.ui-bar-icons.ui-btn-up-e .ui-icon-venue,
 .ui-bar.ui-btn-hover-e .ui-icon-venue,
-.ui-bar.ui-btn-down-e .ui-icon-venue {
+.ui-bar-icons.ui-btn-hover-e .ui-icon-venue,
+.ui-bar.ui-btn-down-e .ui-icon-venue,
+.ui-bar-icons.ui-btn-down-e .ui-icon-venue,
+.ui-bar.ui-btn-up-e.ui-icon-venue,
+.ui-bar-icons.ui-btn-up-e.ui-icon-venue,
+.ui-bar.ui-btn-hover-e.ui-icon-venue,
+.ui-bar-icons.ui-btn-hover-e.ui-icon-venue,
+.ui-bar.ui-btn-down-e.ui-icon-venue,
+.ui-bar-icons.ui-btn-down-e.ui-icon-venue {
   background-position: -128px -128px;
 }
 .ui-bar.ui-btn-up-e .ui-icon-person,
+.ui-bar-icons.ui-btn-up-e .ui-icon-person,
 .ui-bar.ui-btn-hover-e .ui-icon-person,
-.ui-bar.ui-btn-down-e .ui-icon-person {
+.ui-bar-icons.ui-btn-hover-e .ui-icon-person,
+.ui-bar.ui-btn-down-e .ui-icon-person,
+.ui-bar-icons.ui-btn-down-e .ui-icon-person,
+.ui-bar.ui-btn-up-e.ui-icon-person,
+.ui-bar-icons.ui-btn-up-e.ui-icon-person,
+.ui-bar.ui-btn-hover-e.ui-icon-person,
+.ui-bar-icons.ui-btn-hover-e.ui-icon-person,
+.ui-bar.ui-btn-down-e.ui-icon-person,
+.ui-bar-icons.ui-btn-down-e.ui-icon-person {
   background-position: -128px -160px;
 }
 .ui-bar.ui-btn-up-e .ui-icon-search,
+.ui-bar-icons.ui-btn-up-e .ui-icon-search,
 .ui-bar.ui-btn-hover-e .ui-icon-search,
-.ui-bar.ui-btn-down-e .ui-icon-search {
+.ui-bar-icons.ui-btn-hover-e .ui-icon-search,
+.ui-bar.ui-btn-down-e .ui-icon-search,
+.ui-bar-icons.ui-btn-down-e .ui-icon-search,
+.ui-bar.ui-btn-up-e.ui-icon-search,
+.ui-bar-icons.ui-btn-up-e.ui-icon-search,
+.ui-bar.ui-btn-hover-e.ui-icon-search,
+.ui-bar-icons.ui-btn-hover-e.ui-icon-search,
+.ui-bar.ui-btn-down-e.ui-icon-search,
+.ui-bar-icons.ui-btn-down-e.ui-icon-search {
   background-position: -128px -192px;
 }
 .ui-bar.ui-btn-up-e .ui-icon-activity,
+.ui-bar-icons.ui-btn-up-e .ui-icon-activity,
 .ui-bar.ui-btn-hover-e .ui-icon-activity,
-.ui-bar.ui-btn-down-e .ui-icon-activity {
+.ui-bar-icons.ui-btn-hover-e .ui-icon-activity,
+.ui-bar.ui-btn-down-e .ui-icon-activity,
+.ui-bar-icons.ui-btn-down-e .ui-icon-activity,
+.ui-bar.ui-btn-up-e.ui-icon-activity,
+.ui-bar-icons.ui-btn-up-e.ui-icon-activity,
+.ui-bar.ui-btn-hover-e.ui-icon-activity,
+.ui-bar-icons.ui-btn-hover-e.ui-icon-activity,
+.ui-bar.ui-btn-down-e.ui-icon-activity,
+.ui-bar-icons.ui-btn-down-e.ui-icon-activity {
   background-position: -128px -224px;
 }
 .ui-bar.ui-btn-up-e .ui-icon-location,
+.ui-bar-icons.ui-btn-up-e .ui-icon-location,
 .ui-bar.ui-btn-hover-e .ui-icon-location,
-.ui-bar.ui-btn-down-e .ui-icon-location {
+.ui-bar-icons.ui-btn-hover-e .ui-icon-location,
+.ui-bar.ui-btn-down-e .ui-icon-location,
+.ui-bar-icons.ui-btn-down-e .ui-icon-location,
+.ui-bar.ui-btn-up-e.ui-icon-location,
+.ui-bar-icons.ui-btn-up-e.ui-icon-location,
+.ui-bar.ui-btn-hover-e.ui-icon-location,
+.ui-bar-icons.ui-btn-hover-e.ui-icon-location,
+.ui-bar.ui-btn-down-e.ui-icon-location,
+.ui-bar-icons.ui-btn-down-e.ui-icon-location {
   background-position: -128px -256px;
 }
 .ui-bar.ui-btn-up-e .ui-icon-clock,
+.ui-bar-icons.ui-btn-up-e .ui-icon-clock,
 .ui-bar.ui-btn-hover-e .ui-icon-clock,
-.ui-bar.ui-btn-down-e .ui-icon-clock {
+.ui-bar-icons.ui-btn-hover-e .ui-icon-clock,
+.ui-bar.ui-btn-down-e .ui-icon-clock,
+.ui-bar-icons.ui-btn-down-e .ui-icon-clock,
+.ui-bar.ui-btn-up-e.ui-icon-clock,
+.ui-bar-icons.ui-btn-up-e.ui-icon-clock,
+.ui-bar.ui-btn-hover-e.ui-icon-clock,
+.ui-bar-icons.ui-btn-hover-e.ui-icon-clock,
+.ui-bar.ui-btn-down-e.ui-icon-clock,
+.ui-bar-icons.ui-btn-down-e.ui-icon-clock {
   background-position: -128px -288px;
 }
 .ui-bar.ui-btn-up-e .ui-icon-connection,
+.ui-bar-icons.ui-btn-up-e .ui-icon-connection,
 .ui-bar.ui-btn-hover-e .ui-icon-connection,
-.ui-bar.ui-btn-down-e .ui-icon-connection {
+.ui-bar-icons.ui-btn-hover-e .ui-icon-connection,
+.ui-bar.ui-btn-down-e .ui-icon-connection,
+.ui-bar-icons.ui-btn-down-e .ui-icon-connection,
+.ui-bar.ui-btn-up-e.ui-icon-connection,
+.ui-bar-icons.ui-btn-up-e.ui-icon-connection,
+.ui-bar.ui-btn-hover-e.ui-icon-connection,
+.ui-bar-icons.ui-btn-hover-e.ui-icon-connection,
+.ui-bar.ui-btn-down-e.ui-icon-connection,
+.ui-bar-icons.ui-btn-down-e.ui-icon-connection {
   background-position: -128px -320px;
 }
 .ui-bar.ui-btn-up-e .ui-icon-blog,
+.ui-bar-icons.ui-btn-up-e .ui-icon-blog,
 .ui-bar.ui-btn-hover-e .ui-icon-blog,
-.ui-bar.ui-btn-down-e .ui-icon-blog {
+.ui-bar-icons.ui-btn-hover-e .ui-icon-blog,
+.ui-bar.ui-btn-down-e .ui-icon-blog,
+.ui-bar-icons.ui-btn-down-e .ui-icon-blog,
+.ui-bar.ui-btn-up-e.ui-icon-blog,
+.ui-bar-icons.ui-btn-up-e.ui-icon-blog,
+.ui-bar.ui-btn-hover-e.ui-icon-blog,
+.ui-bar-icons.ui-btn-hover-e.ui-icon-blog,
+.ui-bar.ui-btn-down-e.ui-icon-blog,
+.ui-bar-icons.ui-btn-down-e.ui-icon-blog {
   background-position: -128px -352px;
 }
 .ui-bar.ui-btn-up-e .ui-icon-comment,
+.ui-bar-icons.ui-btn-up-e .ui-icon-comment,
 .ui-bar.ui-btn-hover-e .ui-icon-comment,
-.ui-bar.ui-btn-down-e .ui-icon-comment {
+.ui-bar-icons.ui-btn-hover-e .ui-icon-comment,
+.ui-bar.ui-btn-down-e .ui-icon-comment,
+.ui-bar-icons.ui-btn-down-e .ui-icon-comment,
+.ui-bar.ui-btn-up-e.ui-icon-comment,
+.ui-bar-icons.ui-btn-up-e.ui-icon-comment,
+.ui-bar.ui-btn-hover-e.ui-icon-comment,
+.ui-bar-icons.ui-btn-hover-e.ui-icon-comment,
+.ui-bar.ui-btn-down-e.ui-icon-comment,
+.ui-bar-icons.ui-btn-down-e.ui-icon-comment {
   background-position: -128px -384px;
 }
 .ui-bar.ui-btn-up-e .ui-icon-play,
+.ui-bar-icons.ui-btn-up-e .ui-icon-play,
 .ui-bar.ui-btn-hover-e .ui-icon-play,
-.ui-bar.ui-btn-down-e .ui-icon-play {
+.ui-bar-icons.ui-btn-hover-e .ui-icon-play,
+.ui-bar.ui-btn-down-e .ui-icon-play,
+.ui-bar-icons.ui-btn-down-e .ui-icon-play,
+.ui-bar.ui-btn-up-e.ui-icon-play,
+.ui-bar-icons.ui-btn-up-e.ui-icon-play,
+.ui-bar.ui-btn-hover-e.ui-icon-play,
+.ui-bar-icons.ui-btn-hover-e.ui-icon-play,
+.ui-bar.ui-btn-down-e.ui-icon-play,
+.ui-bar-icons.ui-btn-down-e.ui-icon-play {
   background-position: -128px -416px;
 }
 .ui-bar.ui-btn-up-e .ui-icon-refresh,
+.ui-bar-icons.ui-btn-up-e .ui-icon-refresh,
 .ui-bar.ui-btn-hover-e .ui-icon-refresh,
-.ui-bar.ui-btn-down-e .ui-icon-refresh {
+.ui-bar-icons.ui-btn-hover-e .ui-icon-refresh,
+.ui-bar.ui-btn-down-e .ui-icon-refresh,
+.ui-bar-icons.ui-btn-down-e .ui-icon-refresh,
+.ui-bar.ui-btn-up-e.ui-icon-refresh,
+.ui-bar-icons.ui-btn-up-e.ui-icon-refresh,
+.ui-bar.ui-btn-hover-e.ui-icon-refresh,
+.ui-bar-icons.ui-btn-hover-e.ui-icon-refresh,
+.ui-bar.ui-btn-down-e.ui-icon-refresh,
+.ui-bar-icons.ui-btn-down-e.ui-icon-refresh {
   background-position: -128px -448px;
 }
 .ui-bar.ui-btn-up-e .ui-icon-redheart,
+.ui-bar-icons.ui-btn-up-e .ui-icon-redheart,
 .ui-bar.ui-btn-hover-e .ui-icon-redheart,
-.ui-bar.ui-btn-down-e .ui-icon-redheart {
-  background-position: -128px -96px;
+.ui-bar-icons.ui-btn-hover-e .ui-icon-redheart,
+.ui-bar.ui-btn-down-e .ui-icon-redheart,
+.ui-bar-icons.ui-btn-down-e .ui-icon-redheart,
+.ui-bar.ui-btn-up-e.ui-icon-redheart,
+.ui-bar-icons.ui-btn-up-e.ui-icon-redheart,
+.ui-bar.ui-btn-hover-e.ui-icon-redheart,
+.ui-bar-icons.ui-btn-hover-e.ui-icon-redheart,
+.ui-bar.ui-btn-down-e.ui-icon-redheart,
+.ui-bar-icons.ui-btn-down-e.ui-icon-redheart {
+  background-position: -96px -96px;
 }
 .ui-icon.tumblr-icon {
   background-image: url('../gfx/tumblr-post-icons.png');
@@ -3062,260 +3255,6 @@ h4 {
   top: 0;
   margin-left: -16px;
 }
-/* @ui-bar Title Bars that pop up all over the place */
-.ui-bar {
-  border: none;
-  border-top: solid 1px #ffffff;
-  margin: 0 -8px;
-  padding: 0 8px;
-  min-height: 32px;
-  line-height: 32px;
-  vertical-align: middle;
-  z-index: 10;
-  position: relative;
-  overflow: visible;
-  text-align: left;
-  /* Note that the actual arrows get added in the swatches so they get the right colors */
-
-}
-.ui-bar .ui-icon {
-  right: auto;
-  display: inline-block;
-  margin: 0;
-  height: 32px;
-  width: 32px;
-}
-.ui-bar .spot-icon {
-  right: auto;
-  display: block;
-  position: absolute;
-  margin: 0;
-  height: 24px;
-  width: 24px;
-}
-.ui-bar .ui-icon-arrow-r {
-  right: -10px;
-}
-.ui-bar h4,
-.ui-bar .ui-btn-inner,
-.ui-bar .ui-bar-inner {
-  font-size: 15px;
-  font-family: Helvetica, Arial, sans-serif;
-  font-weight: normal;
-  margin: 0;
-  padding: 0;
-  text-transform: lowercase;
-  min-height: 32px;
-  line-height: 32px;
-}
-.ui-bar h4 em,
-.ui-bar .ui-btn-inner em,
-.ui-bar .ui-bar-inner em,
-.ui-bar h4 strong,
-.ui-bar .ui-btn-inner strong,
-.ui-bar .ui-bar-inner strong,
-.ui-bar h4 .ui-btn,
-.ui-bar .ui-btn-inner .ui-btn,
-.ui-bar .ui-bar-inner .ui-btn,
-.ui-bar h4 .ui-btn-hidden,
-.ui-bar .ui-btn-inner .ui-btn-hidden,
-.ui-bar .ui-bar-inner .ui-btn-hidden,
-.ui-bar h4 .username,
-.ui-bar .ui-btn-inner .username,
-.ui-bar .ui-bar-inner .username {
-  font-size: 16px;
-  font-family: Helvetica, Arial, sans-serif;
-  font-weight: bold;
-  font-style: normal;
-  text-transform: lowercase;
-}
-.ui-bar .ui-btn {
-  background: none;
-  line-height: 32px;
-}
-.ui-bar .ui-btn-icon-right {
-  position: absolute;
-  right: 4px;
-  top: 0px;
-}
-.ui-bar .ui-btn-icon-right .ui-btn-inner {
-  padding-right: 32px;
-}
-.ui-bar .image-details {
-  display: block;
-  margin-right: 20px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-}
-.ui-bar .image-time {
-  position: relative;
-  display: inline-block;
-  padding-left: 20px;
-  color: #666666;
-}
-.ui-bar .image-tag {
-  max-width: 50%;
-  display: inline-block;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-.ui-bar .spot-name {
-  max-width: 70%;
-  display: inline-block;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-.ui-bar .ui-btn-text {
-  display: block;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-}
-.ui-bar.ui-btn-icon-left .ui-btn-text {
-  padding-left: 26px;
-}
-.ui-bar.ui-btn-icon-left .ui-icon {
-  left: -5px;
-  margin-top: -16px;
-}
-.ui-bar.top-no-arrow {
-  text-align: left;
-  -moz-border-radius-topleft: 8px;
-  -webkit-border-top-left-radius: 8px;
-  border-top-left-radius: 8px;
-  -moz-border-radius-topright: 8px;
-  -webkit-border-top-right-radius: 8px;
-  border-top-right-radius: 8px;
-  -moz-border-radius-bottomleft: 0px;
-  -webkit-border-bottom-left-radius: 0px;
-  border-bottom-left-radius: 0px;
-  -moz-border-radius-bottomright: 0px;
-  -webkit-border-bottom-right-radius: 0px;
-  border-bottom-right-radius: 0px;
-}
-.ui-bar.top-no-arrow .ui-btn-text {
-  padding-left: 20px;
-}
-.ui-bar.top-no-arrow,
-.ui-bar.top-left-arrow {
-  -moz-border-radius-topleft: 8px;
-  -webkit-border-top-left-radius: 8px;
-  border-top-left-radius: 8px;
-  -moz-border-radius-topright: 8px;
-  -webkit-border-top-right-radius: 8px;
-  border-top-right-radius: 8px;
-  -moz-border-radius-bottomleft: 0px;
-  -webkit-border-bottom-left-radius: 0px;
-  border-bottom-left-radius: 0px;
-  -moz-border-radius-bottomright: 0px;
-  -webkit-border-bottom-right-radius: 0px;
-  border-bottom-right-radius: 0px;
-}
-.ui-bar.bottom-centered-arrow {
-  overflow: visible;
-  text-align: center;
-  -moz-border-radius-topleft: 0;
-  -webkit-border-top-left-radius: 0;
-  border-top-left-radius: 0;
-  -moz-border-radius-topright: 0;
-  -webkit-border-top-right-radius: 0;
-  border-top-right-radius: 0;
-  -moz-border-radius-bottomleft: 8px;
-  -webkit-border-bottom-left-radius: 8px;
-  border-bottom-left-radius: 8px;
-  -moz-border-radius-bottomright: 8px;
-  -webkit-border-bottom-right-radius: 8px;
-  border-bottom-right-radius: 8px;
-}
-.ui-bar.bottom-centered-arrow .ui-btn-inner {
-  border: none;
-}
-.ui-bar.bottom-centered-arrow .ui-btn-inner .ui-btn-text {
-  padding-left: 0;
-}
-.ui-bar.small-top-left-arrow {
-  position: absolute;
-  top: -31px;
-  white-space: nowrap;
-  font-size: 12px;
-  color: black;
-  padding: 6px;
-  line-height: 12px;
-  min-height: 12px;
-  -moz-border-radius-topleft: 6px;
-  -webkit-border-top-left-radius: 6px;
-  border-top-left-radius: 6px;
-  -moz-border-radius-topright: 6px;
-  -webkit-border-top-right-radius: 6px;
-  border-top-right-radius: 6px;
-}
-.x-view-full {
-  position: absolute;
-  top: 0;
-  right: 0;
-  z-index: 20;
-  background: transparent;
-  box-shadow: none;
-  border-left: solid rgba(0, 0, 0, 0.1) 1px;
-  border-radius: none;
-  height: 32px;
-  padding: 0;
-  min-width: 64px;
-}
-.x-view-full .ui-btn-inner {
-  padding: 0;
-  min-height: 32px;
-}
-.arrow-right {
-  position: absolute!important;
-  right: 0!important;
-  left: auto!important;
-}
-.system-bar {
-  display: block;
-  position: relative;
-  -moz-border-radius: 20px;
-  -webkit-border-radius: 20px;
-  border-radius: 20px;
-  color: white;
-  text-shadow: rgba(0, 0, 0, 0.5) 0px -1px 0px;
-  background-color: #4185f4;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#4185f4), to(#194fdc));
-  /* Saf4+, Chrome */
-
-  background-image: -webkit-linear-gradient(top, #4185f4, #194fdc);
-  /* Chrome 10+, Saf5.1+ */
-
-  background-image: -moz-linear-gradient(top, #4185f4, #194fdc);
-  /* FF3.6 */
-
-  background-image: -ms-linear-gradient(top, #4185f4, #194fdc);
-  /* IE10 */
-
-  background-image: -o-linear-gradient(top, #4185f4, #194fdc);
-  /* Opera 11.10+ */
-
-  background-image: linear-gradient(top, #4185f4, #194fdc);
-}
-.system-bar strong {
-  font-size: 16px;
-  font-family: Helvetica, Arial, sans-serif;
-  font-weight: bold;
-  font-style: normal;
-  text-transform: lowercase;
-}
-.system-bar .ui-icon-play {
-  position: absolute;
-  left: -29px !important;
-  margin-top: -16px !important;
-}
-.system-bar .ui-btn-inner {
-  padding: 7px 32px;
-  text-align: left;
-}
 .competition,
 .tumblr-streams {
   position: relative;
@@ -3979,6 +3918,258 @@ h4 {
   width: 101px;
   height: 101px;
 }
+/* @ui-bar Title Bars that pop up all over the place */
+.ui-bar {
+  border: none;
+  border-top: solid 1px #ffffff;
+  margin: 0 -8px;
+  padding: 0 8px;
+  min-height: 32px;
+  line-height: 32px;
+  vertical-align: middle;
+  z-index: 10;
+  position: relative;
+  overflow: visible;
+  text-align: left;
+  /* Note that the actual arrows get added in the swatches so they get the right colors */
+
+}
+.ui-bar .ui-icon {
+  right: auto;
+  display: inline-block;
+  margin: 0;
+  height: 32px;
+  width: 32px;
+}
+.ui-bar .spot-icon {
+  right: auto;
+  display: block;
+  position: absolute;
+  margin: 0;
+  height: 24px;
+  width: 24px;
+}
+.ui-bar .ui-icon-arrow-r {
+  right: -10px;
+}
+.ui-bar h4,
+.ui-bar .ui-btn-inner,
+.ui-bar .ui-bar-inner {
+  font-size: 15px;
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight: normal;
+  margin: 0;
+  padding: 0;
+  text-transform: lowercase;
+  min-height: 32px;
+  line-height: 32px;
+}
+.ui-bar h4 em,
+.ui-bar .ui-btn-inner em,
+.ui-bar .ui-bar-inner em,
+.ui-bar h4 strong,
+.ui-bar .ui-btn-inner strong,
+.ui-bar .ui-bar-inner strong,
+.ui-bar h4 .ui-btn,
+.ui-bar .ui-btn-inner .ui-btn,
+.ui-bar .ui-bar-inner .ui-btn,
+.ui-bar h4 .ui-btn-hidden,
+.ui-bar .ui-btn-inner .ui-btn-hidden,
+.ui-bar .ui-bar-inner .ui-btn-hidden,
+.ui-bar h4 .username,
+.ui-bar .ui-btn-inner .username,
+.ui-bar .ui-bar-inner .username {
+  font-size: 16px;
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight: bold;
+  font-style: normal;
+  text-transform: lowercase;
+}
+.ui-bar .ui-btn {
+  background: none;
+  line-height: 32px;
+}
+.ui-bar .ui-btn-icon-right {
+  position: absolute;
+  right: 4px;
+  top: 0px;
+}
+.ui-bar .ui-btn-icon-right .ui-btn-inner {
+  padding-right: 32px;
+}
+.ui-bar .image-details {
+  display: block;
+  margin-right: 20px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.ui-bar .image-time {
+  position: relative;
+  display: inline-block;
+  padding-left: 20px;
+  color: #666666;
+}
+.ui-bar .image-tag {
+  max-width: 50%;
+  display: inline-block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.ui-bar .spot-name {
+  max-width: 70%;
+  display: inline-block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.ui-bar .ui-btn-text {
+  display: block;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.ui-bar.ui-btn-icon-left .ui-btn-text {
+  padding-left: 26px;
+}
+.ui-bar.ui-btn-icon-left .ui-icon {
+  left: -5px;
+  margin-top: -16px;
+}
+.ui-bar.top-no-arrow {
+  text-align: left;
+  -moz-border-radius-topleft: 8px;
+  -webkit-border-top-left-radius: 8px;
+  border-top-left-radius: 8px;
+  -moz-border-radius-topright: 8px;
+  -webkit-border-top-right-radius: 8px;
+  border-top-right-radius: 8px;
+  -moz-border-radius-bottomleft: 0px;
+  -webkit-border-bottom-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+  -moz-border-radius-bottomright: 0px;
+  -webkit-border-bottom-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+}
+.ui-bar.top-no-arrow .ui-btn-text {
+  padding-left: 20px;
+}
+.ui-bar.top-no-arrow,
+.ui-bar.top-left-arrow {
+  -moz-border-radius-topleft: 8px;
+  -webkit-border-top-left-radius: 8px;
+  border-top-left-radius: 8px;
+  -moz-border-radius-topright: 8px;
+  -webkit-border-top-right-radius: 8px;
+  border-top-right-radius: 8px;
+  -moz-border-radius-bottomleft: 0px;
+  -webkit-border-bottom-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+  -moz-border-radius-bottomright: 0px;
+  -webkit-border-bottom-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+}
+.ui-bar.bottom-centered-arrow {
+  overflow: visible;
+  text-align: center;
+  -moz-border-radius-topleft: 0;
+  -webkit-border-top-left-radius: 0;
+  border-top-left-radius: 0;
+  -moz-border-radius-topright: 0;
+  -webkit-border-top-right-radius: 0;
+  border-top-right-radius: 0;
+  -moz-border-radius-bottomleft: 8px;
+  -webkit-border-bottom-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+  -moz-border-radius-bottomright: 8px;
+  -webkit-border-bottom-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+.ui-bar.bottom-centered-arrow .ui-btn-inner {
+  border: none;
+}
+.ui-bar.bottom-centered-arrow .ui-btn-inner .ui-btn-text {
+  padding-left: 0;
+}
+.ui-bar.small-top-left-arrow {
+  position: absolute;
+  top: -31px;
+  white-space: nowrap;
+  font-size: 12px;
+  color: black;
+  padding: 6px;
+  line-height: 12px;
+  min-height: 12px;
+  -moz-border-radius-topleft: 6px;
+  -webkit-border-top-left-radius: 6px;
+  border-top-left-radius: 6px;
+  -moz-border-radius-topright: 6px;
+  -webkit-border-top-right-radius: 6px;
+  border-top-right-radius: 6px;
+}
+.open .ui-bar .image-tag,
+.open .ui-bar .image-time {
+  display: inline-block;
+}
+.closed .ui-bar {
+  -moz-border-radius: 6px;
+  -webkit-border-radius: 6px;
+  border-radius: 6px;
+}
+.closed .ui-bar .ui-icon-open {
+  background-position: 0 -32px;
+}
+.closed .ui-bar:after {
+  display: none;
+}
+.arrow-right {
+  position: absolute!important;
+  right: 0!important;
+  left: auto!important;
+}
+.system-bar {
+  display: block;
+  position: relative;
+  -moz-border-radius: 20px;
+  -webkit-border-radius: 20px;
+  border-radius: 20px;
+  color: white;
+  text-shadow: rgba(0, 0, 0, 0.5) 0px -1px 0px;
+  background-color: #4185f4;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#4185f4), to(#194fdc));
+  /* Saf4+, Chrome */
+
+  background-image: -webkit-linear-gradient(top, #4185f4, #194fdc);
+  /* Chrome 10+, Saf5.1+ */
+
+  background-image: -moz-linear-gradient(top, #4185f4, #194fdc);
+  /* FF3.6 */
+
+  background-image: -ms-linear-gradient(top, #4185f4, #194fdc);
+  /* IE10 */
+
+  background-image: -o-linear-gradient(top, #4185f4, #194fdc);
+  /* Opera 11.10+ */
+
+  background-image: linear-gradient(top, #4185f4, #194fdc);
+}
+.system-bar strong {
+  font-size: 16px;
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight: bold;
+  font-style: normal;
+  text-transform: lowercase;
+}
+.system-bar .ui-icon-play {
+  position: absolute;
+  left: -29px !important;
+  margin-top: -16px !important;
+}
+.system-bar .ui-btn-inner {
+  padding: 7px 32px;
+  text-align: left;
+}
 /* Horizontally scrolling image stream components */
 .image-streams {
   list-style: none;
@@ -3996,9 +4187,8 @@ h4 {
 .image-streams .image-stream .ui-bar .image-time {
   display: none;
 }
-.image-streams .image-stream .ui-bar.open .image-tag,
-.image-streams .image-stream .ui-bar.open .image-time {
-  display: inline-block;
+.image-streams .image-stream .ui-bar .image-details {
+  margin-right: 57px;
 }
 .image-streams .image-stream .thumbs-grid {
   padding-top: 4px;
@@ -4129,6 +4319,23 @@ h4 {
 .x-right-pull,
 .x-left-pull {
   display: inline;
+}
+.x-view-full {
+  position: absolute;
+  top: 0;
+  right: -8px;
+  z-index: 20;
+  background: transparent;
+  box-shadow: none;
+  border-left: solid rgba(0, 0, 0, 0.1) 1px;
+  border-radius: none;
+  height: 32px;
+  padding: 0;
+  min-width: 64px;
+}
+.x-view-full .ui-btn-inner {
+  padding: 0;
+  min-height: 32px;
 }
 /* Upload Progress items */
 .upload-progress-header {

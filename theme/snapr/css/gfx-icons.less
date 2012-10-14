@@ -198,26 +198,28 @@
 
 // UI BAR ICONS 
 //-----------------
-.ui-bar{   
-    .ui-icon{
+.ui-bar,
+.ui-bar-icons{   
+    .ui-icon,
+    &.ui-icon{
         background-image: url('@{gfx}@{gfxBar}');
     }     
-    .ui-icon-open{background-position: @gfxBar-x @gfxBar-open-y;}
-    .ui-icon-close{background-position: @gfxBar-x @gfxBar-close-y;}
-    .ui-icon-arrow-r{background-position: @gfxBar-x @gfxBar-arrowR-y;}
-    .ui-icon-heart{background-position: @gfxBar-x @gfxBar-heart-y;}
-    .ui-icon-venue{background-position: @gfxBar-x @gfxBar-venue-y;}
-    .ui-icon-person{background-position: @gfxBar-x @gfxBar-person-y;}
-    .ui-icon-search{background-position: @gfxBar-x @gfxBar-search-y;}
-    .ui-icon-activity{background-position: @gfxBar-x @gfxBar-activity-y;}
-    .ui-icon-location{background-position: @gfxBar-x @gfxBar-location-y;}
-    .ui-icon-clock{background-position: @gfxBar-x @gfxBar-clock-y;}
-    .ui-icon-connection{background-position: @gfxBar-x @gfxBar-connection-y;}
-    .ui-icon-blog{background-position: @gfxBar-x @gfxBar-blog-y;}
-    .ui-icon-comment{background-position: @gfxBar-x @gfxBar-comment-y;}
-    .ui-icon-play{background-position: @gfxBar-x @gfxBar-play-y;}
-    .ui-icon-refresh{background-position: @gfxBar-x @gfxBar-refresh-y;}
-    .ui-icon-redheart{background-position: @gfxBar-x-d @gfxBar-heart-y;}  
+    .ui-icon-open,&.ui-icon-open{background-position: @gfxBar-x @gfxBar-open-y;}
+    .ui-icon-closed,&.ui-icon-closed{background-position: @gfxBar-x @gfxBar-closed-y;}
+    .ui-icon-arrow-r,&.ui-icon-arrow-r{background-position: @gfxBar-x @gfxBar-arrowR-y;}
+    .ui-icon-heart,&.ui-icon-heart{background-position: @gfxBar-x @gfxBar-heart-y;}
+    .ui-icon-venue,&.ui-icon-venue{background-position: @gfxBar-x @gfxBar-venue-y;}
+    .ui-icon-person,&.ui-icon-person{background-position: @gfxBar-x @gfxBar-person-y;}
+    .ui-icon-search,&.ui-icon-search{background-position: @gfxBar-x @gfxBar-search-y;}
+    .ui-icon-activity,&.ui-icon-activity{background-position: @gfxBar-x @gfxBar-activity-y;}
+    .ui-icon-location,&.ui-icon-location{background-position: @gfxBar-x @gfxBar-location-y;}
+    .ui-icon-clock,&.ui-icon-clock{background-position: @gfxBar-x @gfxBar-clock-y;}
+    .ui-icon-connection,&.ui-icon-connection{background-position: @gfxBar-x @gfxBar-connection-y;}
+    .ui-icon-blog,&.ui-icon-blog{background-position: @gfxBar-x @gfxBar-blog-y;}
+    .ui-icon-comment,&.ui-icon-comment{background-position: @gfxBar-x @gfxBar-comment-y;}
+    .ui-icon-play&.ui-icon-play{background-position: @gfxBar-x @gfxBar-play-y;}
+    .ui-icon-refresh,&.ui-icon-refresh{background-position: @gfxBar-x @gfxBar-refresh-y;}
+    .ui-icon-redheart,&.ui-icon-redheart{background-position: @gfxBar-x-d @gfxBar-heart-y;}  
     
       
     &.ui-bar-a{
@@ -226,22 +228,22 @@
     &.ui-btn-up-e,
     &.ui-btn-hover-e,
     &.ui-btn-down-e{
-        .ui-icon-open{background-position: @gfxBar-x-e @gfxBar-open-y;}
-        .ui-icon-close{background-position: @gfxBar-x-e @gfxBar-close-y;}
-        .ui-icon-arrow-r{background-position: @gfxBar-x-e @gfxBar-arrowR-y;}
-        .ui-icon-heart{background-position: @gfxBar-x-e @gfxBar-heart-y;}
-        .ui-icon-venue{background-position: @gfxBar-x-e @gfxBar-venue-y;}
-        .ui-icon-person{background-position: @gfxBar-x-e @gfxBar-person-y;}
-        .ui-icon-search{background-position: @gfxBar-x-e @gfxBar-search-y;}
-        .ui-icon-activity{background-position: @gfxBar-x-e @gfxBar-activity-y;}
-        .ui-icon-location{background-position: @gfxBar-x-e @gfxBar-location-y;}
-        .ui-icon-clock{background-position: @gfxBar-x-e @gfxBar-clock-y;}
-        .ui-icon-connection{background-position: @gfxBar-x-e @gfxBar-connection-y;}
-        .ui-icon-blog{background-position: @gfxBar-x-e @gfxBar-blog-y;}
-        .ui-icon-comment{background-position: @gfxBar-x-e @gfxBar-comment-y;}
-        .ui-icon-play{background-position: @gfxBar-x-e @gfxBar-play-y;}
-        .ui-icon-refresh{background-position: @gfxBar-x-e @gfxBar-refresh-y;}
-        .ui-icon-redheart{background-position: @gfxBar-x-e @gfxBar-heart-y;}
+        .ui-icon-open,&.ui-icon-open{background-position: @gfxBar-x-e @gfxBar-open-y;}
+           .ui-icon-closed,&.ui-icon-closed{background-position: @gfxBar-x-e @gfxBar-closed-y;}
+           .ui-icon-arrow-r,&.ui-icon-arrow-r{background-position: @gfxBar-x-e @gfxBar-arrowR-y;}
+           .ui-icon-heart,&.ui-icon-heart{background-position: @gfxBar-x-e @gfxBar-heart-y;}
+           .ui-icon-venue,&.ui-icon-venue{background-position: @gfxBar-x-e @gfxBar-venue-y;}
+           .ui-icon-person,&.ui-icon-person{background-position: @gfxBar-x-e @gfxBar-person-y;}
+           .ui-icon-search,&.ui-icon-search{background-position: @gfxBar-x-e @gfxBar-search-y;}
+           .ui-icon-activity,&.ui-icon-activity{background-position: @gfxBar-x-e @gfxBar-activity-y;}
+           .ui-icon-location,&.ui-icon-location{background-position: @gfxBar-x-e @gfxBar-location-y;}
+           .ui-icon-clock,&.ui-icon-clock{background-position: @gfxBar-x-e @gfxBar-clock-y;}
+           .ui-icon-connection,&.ui-icon-connection{background-position: @gfxBar-x-e @gfxBar-connection-y;}
+           .ui-icon-blog,&.ui-icon-blog{background-position: @gfxBar-x-e @gfxBar-blog-y;}
+           .ui-icon-comment,&.ui-icon-comment{background-position: @gfxBar-x-e @gfxBar-comment-y;}
+           .ui-icon-play,&.ui-icon-play{background-position: @gfxBar-x-e @gfxBar-play-y;}
+           .ui-icon-refresh,&.ui-icon-refresh{background-position: @gfxBar-x-e @gfxBar-refresh-y;}
+           .ui-icon-redheart,&.ui-icon-redheart{background-position: @gfxBar-x-d @gfxBar-heart-y;}
     }
     
 }

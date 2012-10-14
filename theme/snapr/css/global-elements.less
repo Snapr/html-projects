@@ -232,208 +232,6 @@ h4{
 
 
 
-/* @ui-bar Title Bars that pop up all over the place */
-.ui-bar{
-    border:none;
-    border-top: @borderLightOnLight;
-    margin: 0 -@paddingPage;
-    padding: 0 @paddingPage;
-    min-height: @bar-height;
-    line-height: @bar-height;
-    vertical-align: middle;
-    z-index: 10;
-    position: relative;
-    overflow: visible;
-    text-align: left;
-    
-    .ui-icon{
-        right: auto;
-        display: inline-block;
-        margin: 0;
-        height: @gfxBar-grid;
-        width: @gfxBar-grid;
-    }
-    .spot-icon{
-        right: auto;
-        display: block;
-        position: absolute;
-        margin: 0;
-        height: @gfxSpot-grid;
-        width: @gfxSpot-grid;
-    }
-    .ui-icon-arrow-r {
-        right: -10px;
-    }
-    
-    
-    h4,
-    .ui-btn-inner,
-    .ui-bar-inner{
-        font-size: @font-size;
-        .button-font-light();
-        margin: 0;
-        padding: 0;
-        text-transform: lowercase;
-        min-height: @bar-height;
-        line-height: @bar-height;
-        em,
-        strong,
-        .ui-btn,
-        .ui-btn-hidden,
-        .username{
-            font-size: @font-size-titleBar;
-            .ui-bar-font();
-        }
-        
-    }
-    .ui-btn{
-        background: none;
-        line-height: 32px;
-    }
-
-    .ui-btn-icon-right{
-        position: absolute;
-        right: 4px;
-        top: 0px;
-        .ui-btn-inner{
-            padding-right: 32px;
-        }
-    }
-    .image-details{
-           display: block;
-           margin-right: 20px;
-           overflow: hidden;
-           text-overflow: ellipsis;
-           .border-box();
-     }
-     .image-time{
-           position: relative;
-           display: inline-block;
-           padding-left: 20px;
-           color: @grayMediumOnLIght;
-           .ui-icon-clock{
-           }
-       }
-       .image-tag{
-           max-width: 50%;
-           display: inline-block;
-           overflow: hidden;
-           text-overflow: ellipsis;
-       }
-       .spot-name{
-           max-width: 70%;
-           display: inline-block;
-           overflow: hidden;
-           text-overflow: ellipsis;
-       }
-
-      .ui-btn-text{
-           display: block;
-          .border-box();
-      }
-      
-      &.ui-btn-icon-left{
-           .ui-btn-text{
-                padding-left: 26px;
-           }
-           .ui-icon{
-               left: -5px;
-               margin-top: -@gfxBar-grid / 2;
-           }
-      }
-      
-      
-      
-
-
-    &.top-no-arrow{
-        text-align: left;
-        .corner-top (@cornersPage);
-        .corner-bottom (@cornersNone);
-         .ui-btn-text{
-                padding-left: 20px;
-        }
-    }
-    &.top-no-arrow,
-    &.top-left-arrow{
-        .corner-top (@cornersPage);
-        .corner-bottom (@cornersNone);
-
-    }
-    &.bottom-centered-arrow{
-        overflow: visible;
-        text-align: center;
-        .corner-top (0);
-        .corner-bottom (@cornersPage);
-        .ui-btn-inner{
-            border: none;
-            .ui-btn-text{
-                padding-left: 0;
-            }
-        }
-    }
-    &.small-top-left-arrow{
-        position: absolute;
-        top: -31px;
-        white-space: nowrap;
-        font-size: @font-size-small;
-        color: black;
-        padding: 6px;
-        line-height: @font-size-small;
-        min-height: @font-size-small;
-        .corner-top(@corners);
-    }
-    /* Note that the actual arrows get added in the swatches so they get the right colors */
-}
-
-// Abs positioned arrow that often sits to right of bar
- .x-view-full{
-          position: absolute;
-          top: 0;
-          right: 0;
-          z-index: 20;
-          background: transparent;
-          box-shadow: none;
-          border-left: solid rgba(0, 0, 0, .1) 1px;
-          border-radius: none;
-          height: @bar-height;
-          padding: 0;
-          min-width: @bar-height * 2;
-          .ui-btn-inner{
-              padding: 0;
-              min-height: 32px;
-          }
-      }
-
-.arrow-right{
-    position: absolute!important;
-    right: 0!important;
-    left: auto!important;
-}
-
-.system-bar{
-    display: block;
-    position: relative;
-    .corner-all(@cornersRound);
-    color: white;
-    text-shadow: @shadowMediumOnDark 0px -1px 0px;
-    background-color: @blue;
-    .linear-gradient(@blue, @blue-tint);
-    
-    strong{
-        font-size: @font-size-titleBar;
-        .ui-bar-font();
-    }
-    .ui-icon-play{
-        position: absolute;
-        left: -29px!important;
-        margin-top: -16px!important;
-    }
-    .ui-btn-inner{
-        padding: 7px 32px;
-        text-align: left;
-    }
-}
 
 // COMP BANNERS
 // ----------------------------
@@ -916,6 +714,216 @@ h4{
 }
 
 
+
+/* @ui-bar Title Bars that pop up all over the place */
+.ui-bar{
+    border:none;
+    border-top: @borderLightOnLight;
+    margin: 0 -@paddingPage;
+    padding: 0 @paddingPage;
+    min-height: @bar-height;
+    line-height: @bar-height;
+    vertical-align: middle;
+    z-index: 10;
+    position: relative;
+    overflow: visible;
+    text-align: left;
+    
+    .ui-icon{
+        right: auto;
+        display: inline-block;
+        margin: 0;
+        height: @gfxBar-grid;
+        width: @gfxBar-grid;
+    }
+    .spot-icon{
+        right: auto;
+        display: block;
+        position: absolute;
+        margin: 0;
+        height: @gfxSpot-grid;
+        width: @gfxSpot-grid;
+    }
+    .ui-icon-arrow-r {
+        right: -10px;
+    }
+    
+    
+    h4,
+    .ui-btn-inner,
+    .ui-bar-inner{
+        font-size: @font-size;
+        .button-font-light();
+        margin: 0;
+        padding: 0;
+        text-transform: lowercase;
+        min-height: @bar-height;
+        line-height: @bar-height;
+        em,
+        strong,
+        .ui-btn,
+        .ui-btn-hidden,
+        .username{
+            font-size: @font-size-titleBar;
+            .ui-bar-font();
+        }
+        
+    }
+    .ui-btn{
+        background: none;
+        line-height: 32px;
+    }
+
+    .ui-btn-icon-right{
+        position: absolute;
+        right: 4px;
+        top: 0px;
+        .ui-btn-inner{
+            padding-right: 32px;
+        }
+    }
+    .image-details{
+           display: block;
+           margin-right: 20px;
+           overflow: hidden;
+           text-overflow: ellipsis;
+           .border-box();
+     }
+     .image-time{
+           position: relative;
+           display: inline-block;
+           padding-left: 20px;
+           color: @grayMediumOnLIght;
+           .ui-icon-clock{
+           }
+       }
+       .image-tag{
+           max-width: 50%;
+           display: inline-block;
+           overflow: hidden;
+           text-overflow: ellipsis;
+       }
+       .spot-name{
+           max-width: 70%;
+           display: inline-block;
+           overflow: hidden;
+           text-overflow: ellipsis;
+       }
+
+      .ui-btn-text{
+           display: block;
+          .border-box();
+      }
+      
+      &.ui-btn-icon-left{
+           .ui-btn-text{
+                padding-left: 26px;
+           }
+           .ui-icon{
+               left: -5px;
+               margin-top: -@gfxBar-grid / 2;
+           }
+      }
+      
+      
+      
+
+
+    &.top-no-arrow{
+        text-align: left;
+        .corner-top (@cornersPage);
+        .corner-bottom (@cornersNone);
+         .ui-btn-text{
+                padding-left: 20px;
+        }
+    }
+    &.top-no-arrow,
+    &.top-left-arrow{
+        .corner-top (@cornersPage);
+        .corner-bottom (@cornersNone);
+
+    }
+    &.bottom-centered-arrow{
+        overflow: visible;
+        text-align: center;
+        .corner-top (0);
+        .corner-bottom (@cornersPage);
+        .ui-btn-inner{
+            border: none;
+            .ui-btn-text{
+                padding-left: 0;
+            }
+        }
+    }
+    &.small-top-left-arrow{
+        position: absolute;
+        top: -31px;
+        white-space: nowrap;
+        font-size: @font-size-small;
+        color: black;
+        padding: 6px;
+        line-height: @font-size-small;
+        min-height: @font-size-small;
+        .corner-top(@corners);
+    }
+    /* Note that the actual arrows get added in the swatches so they get the right colors */
+}
+
+.open{
+    .ui-bar{
+        .image-tag,
+        .image-time{
+            display: inline-block;
+        }
+    }
+}
+
+.closed{
+    .ui-bar{
+        .corner-all(@corners);
+        .ui-icon-open{
+            background-position: @gfxBar-x @gfxBar-closed-y;
+        }
+        
+        &:after{
+            display: none;
+        }
+    }
+}
+
+
+
+.arrow-right{
+    position: absolute!important;
+    right: 0!important;
+    left: auto!important;
+}
+
+.system-bar{
+    display: block;
+    position: relative;
+    .corner-all(@cornersRound);
+    color: white;
+    text-shadow: @shadowMediumOnDark 0px -1px 0px;
+    background-color: @blue;
+    .linear-gradient(@blue, @blue-tint);
+    
+    strong{
+        font-size: @font-size-titleBar;
+        .ui-bar-font();
+    }
+    .ui-icon-play{
+        position: absolute;
+        left: -29px!important;
+        margin-top: -16px!important;
+    }
+    .ui-btn-inner{
+        padding: 7px 32px;
+        text-align: left;
+    }
+}
+
+
 /* Horizontally scrolling image stream components */
 .image-streams{
     list-style: none;
@@ -928,22 +936,19 @@ h4{
         padding: 0;
         margin-bottom: @paddingPage ;
         white-space: no-wrap;
-        
+
         .ui-bar{
             .image-tag,
             .image-time{
                 display: none;
             }
-
-            &.open{
-                .image-tag,
-                .image-time{
-                    display: inline-block;
-                }
+            .image-details{
+                margin-right: 57px;
             }
         }
+       
         
-        
+
         .thumbs-grid{
             padding-top: @padding;
         }
@@ -954,7 +959,7 @@ h4{
         .image-link{
             padding-left: @padding;
         }
-      
+
         .load-more-inline{
             background-color: @grayLight;
             display: inline-block;
@@ -984,8 +989,8 @@ h4{
                 margin-top: -@gfxRefresh-grid / 2;
                 margin-left: -@gfxRefresh-grid / 2;
                 -webkit-transition-property:-webkit-transform;
-            	-webkit-transition-duration:250ms;
-            	-webkit-transform:rotate(0deg) translateZ(0);
+                -webkit-transition-duration:250ms;
+                -webkit-transform:rotate(0deg) translateZ(0);
             }
 
             &.x-right-pull{
@@ -997,22 +1002,22 @@ h4{
 
             &.x-left-pull{
                 margin-right:-@padding;
-                 .ui-icon-refresh{
-                     background-position: @gfxRefresh-x @gfxRefresh-left-y;
-                 }
+                .ui-icon-refresh{
+                    background-position: @gfxRefresh-x @gfxRefresh-left-y;
+                }
             }
 
             &.x-flipped{
-                 .ui-icon-refresh{
-                     background-position: @gfxRefresh-x @gfxRefresh-refresh-y;
-    	            -webkit-transform:rotate(180deg) translateZ(0);
-	            }
-    	    }
+                .ui-icon-refresh{
+                    background-position: @gfxRefresh-x @gfxRefresh-refresh-y;
+                    -webkit-transform:rotate(180deg) translateZ(0);
+                }
+            }
         }
 
         .x-loading {
             .load-more-inline{
-                 .ui-icon-refresh{
+                .ui-icon-refresh{
                     background-image: url('../gfx/spinner.png');
                     background-position: center;
                     .spin();
@@ -1029,7 +1034,7 @@ h4{
                     background-color:rgba(0,0,0,.12);
                     padding: 36px 0;
                     width: 84px;
-                   .corner-all(44px);
+                    .corner-all(44px);
                     color: white;
                     height: 12px;
                     vertical-align: middle;
@@ -1037,8 +1042,8 @@ h4{
                 }
             }
         }
-       
-        
+
+
         .edit-overlay{
             display: none;
             position: absolute;
@@ -1070,7 +1075,9 @@ h4{
                 }
             }
 
-         }
+        }
+
+       
 
     }
 }
@@ -1088,6 +1095,27 @@ h4{
 }
 .x-right-pull, .x-left-pull{
     display:inline;
+}
+
+
+ // Abs positioned arrow that often sits to right of bar
+.x-view-full{
+    position: absolute;
+    top: 0;
+    right: -@padding * 2;
+    z-index: 20;
+    background: transparent;
+    box-shadow: none;
+    border-left: solid rgba(0, 0, 0, .1) 1px;
+    border-radius: none;
+    height: @bar-height;
+    padding: 0;
+    min-width: @bar-height * 2;
+    .ui-btn-inner{
+        padding: 0;
+        min-height: 32px;
+    }
+    
 }
 
 /* Upload Progress items */
