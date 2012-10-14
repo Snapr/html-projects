@@ -30,6 +30,8 @@ var tumblr_post_view = page_view.extend({
             }
         });
     },
+    
+    get_default_tab: function(){ return 'dash'; },
 
     render: function(){
         var $stream = this.$( ".posts-stream" ).empty();

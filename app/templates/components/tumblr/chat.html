@@ -1,4 +1,5 @@
 <div id="post-<%= model.get('id') %>" class="post-<%= model.get('type') %> post">
+   <div class="tumblr-body"> 
     <h4><%=model.get('title')%></h4>
     <%if (model.get('dialogue')) {%>
         <ul class="chat">
@@ -7,4 +8,5 @@
             <%});%>
         </ul>
     <%}%>
+    </div>
 </div>

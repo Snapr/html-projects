@@ -385,7 +385,7 @@
 .ui-bar .ui-icon-close {
   background-position: 0 -32px;
 }
-.ui-bar .ui-icon-arrowR {
+.ui-bar .ui-icon-arrow-r {
   background-position: 0 -64px;
 }
 .ui-bar .ui-icon-heart {
@@ -410,13 +410,13 @@
   background-position: 0 -288px;
 }
 .ui-bar .ui-icon-connection {
-  background-position: 0 -288px;
+  background-position: 0 -320px;
 }
 .ui-bar .ui-icon-blog {
-  background-position: 0 -288px;
+  background-position: 0 -352px;
 }
 .ui-bar .ui-icon-comment {
-  background-position: 0 -288px;
+  background-position: 0 -384px;
 }
 .ui-bar .ui-icon-play {
   background-position: 0 -416px;
@@ -427,10 +427,90 @@
 .ui-bar .ui-icon-redheart {
   background-position: -96px -96px;
 }
+.ui-bar.ui-btn-up-e .ui-icon-open,
+.ui-bar.ui-btn-hover-e .ui-icon-open,
+.ui-bar.ui-btn-down-e .ui-icon-open {
+  background-position: -128px 0px;
+}
+.ui-bar.ui-btn-up-e .ui-icon-close,
+.ui-bar.ui-btn-hover-e .ui-icon-close,
+.ui-bar.ui-btn-down-e .ui-icon-close {
+  background-position: -128px -32px;
+}
+.ui-bar.ui-btn-up-e .ui-icon-arrow-r,
+.ui-bar.ui-btn-hover-e .ui-icon-arrow-r,
+.ui-bar.ui-btn-down-e .ui-icon-arrow-r {
+  background-position: -128px -64px;
+}
+.ui-bar.ui-btn-up-e .ui-icon-heart,
+.ui-bar.ui-btn-hover-e .ui-icon-heart,
+.ui-bar.ui-btn-down-e .ui-icon-heart {
+  background-position: -128px -96px;
+}
+.ui-bar.ui-btn-up-e .ui-icon-venue,
+.ui-bar.ui-btn-hover-e .ui-icon-venue,
+.ui-bar.ui-btn-down-e .ui-icon-venue {
+  background-position: -128px -128px;
+}
+.ui-bar.ui-btn-up-e .ui-icon-person,
+.ui-bar.ui-btn-hover-e .ui-icon-person,
+.ui-bar.ui-btn-down-e .ui-icon-person {
+  background-position: -128px -160px;
+}
+.ui-bar.ui-btn-up-e .ui-icon-search,
+.ui-bar.ui-btn-hover-e .ui-icon-search,
+.ui-bar.ui-btn-down-e .ui-icon-search {
+  background-position: -128px -192px;
+}
+.ui-bar.ui-btn-up-e .ui-icon-activity,
+.ui-bar.ui-btn-hover-e .ui-icon-activity,
+.ui-bar.ui-btn-down-e .ui-icon-activity {
+  background-position: -128px -224px;
+}
+.ui-bar.ui-btn-up-e .ui-icon-location,
+.ui-bar.ui-btn-hover-e .ui-icon-location,
+.ui-bar.ui-btn-down-e .ui-icon-location {
+  background-position: -128px -256px;
+}
+.ui-bar.ui-btn-up-e .ui-icon-clock,
+.ui-bar.ui-btn-hover-e .ui-icon-clock,
+.ui-bar.ui-btn-down-e .ui-icon-clock {
+  background-position: -128px -288px;
+}
+.ui-bar.ui-btn-up-e .ui-icon-connection,
+.ui-bar.ui-btn-hover-e .ui-icon-connection,
+.ui-bar.ui-btn-down-e .ui-icon-connection {
+  background-position: -128px -320px;
+}
+.ui-bar.ui-btn-up-e .ui-icon-blog,
+.ui-bar.ui-btn-hover-e .ui-icon-blog,
+.ui-bar.ui-btn-down-e .ui-icon-blog {
+  background-position: -128px -352px;
+}
+.ui-bar.ui-btn-up-e .ui-icon-comment,
+.ui-bar.ui-btn-hover-e .ui-icon-comment,
+.ui-bar.ui-btn-down-e .ui-icon-comment {
+  background-position: -128px -384px;
+}
+.ui-bar.ui-btn-up-e .ui-icon-play,
+.ui-bar.ui-btn-hover-e .ui-icon-play,
+.ui-bar.ui-btn-down-e .ui-icon-play {
+  background-position: -128px -416px;
+}
+.ui-bar.ui-btn-up-e .ui-icon-refresh,
+.ui-bar.ui-btn-hover-e .ui-icon-refresh,
+.ui-bar.ui-btn-down-e .ui-icon-refresh {
+  background-position: -128px -448px;
+}
+.ui-bar.ui-btn-up-e .ui-icon-redheart,
+.ui-bar.ui-btn-hover-e .ui-icon-redheart,
+.ui-bar.ui-btn-down-e .ui-icon-redheart {
+  background-position: -128px -96px;
+}
 .ui-icon.tumblr-icon {
   background-image: url('../gfx/tumblr-post-icons.png');
-  width: 24px;
-  height: 24px;
+  width: 24px !important;
+  height: 24px !important;
 }
 .ui-icon.tumblr-icon.ui-icon-tumblr-text {
   background-position: 0px 0px;
@@ -6851,40 +6931,74 @@ body.browser-testing .ui-footer-fixed {
   font-style: italic;
   font-size: 0.8em;
 }
-#tumblr-posts ul.posts-stream {
+#tumblr-posts .posts-stream {
   overflow: hidden;
+  margin: 0 -8px;
 }
-#tumblr-posts ul.posts-stream > li {
+#tumblr-posts .posts-stream > li {
   border-bottom: 1px solid #ccc;
-  float: left;
-  margin: 3px;
-  padding: 6px;
+  margin: 0px;
+  padding: 4px;
 }
-#tumblr-posts ul.posts-stream > li .post {
+#tumblr-posts .posts-stream > li .post {
   width: 100%;
 }
-#tumblr-posts ul.posts-stream > li .post img {
-  width: 250px;
+#tumblr-posts .posts-stream > li .post img,
+#tumblr-posts .posts-stream > li .post video {
+  width: 100%;
   margin: 0 auto;
+  max-width: 512px;
+  margin: 0 0 8px 0;
 }
-#tumblr-posts ul.posts-stream > li .post p {
+#tumblr-posts .posts-stream > li .post audio {
+  margin: 0 0 8px 0;
+}
+#tumblr-posts .posts-stream > li .post p {
   text-align: justify;
 }
-#tumblr-posts ul.posts-stream > li .post ul.photoset {
+#tumblr-posts .posts-stream > li .post .tumblr-body {
+  margin: 4px;
+}
+#tumblr-posts .posts-stream > li .post ul.photoset {
   overflow: hidden;
+  margin: 0;
 }
-#tumblr-posts ul.posts-stream > li .post ul.photoset li {
-  float: left;
-  margin: 3px;
+#tumblr-posts .posts-stream > li .post ul.photoset li {
+  margin: 0;
 }
-#tumblr-posts ul.posts-stream > li:last-child {
+#tumblr-posts .posts-stream > li .tumblr-metadata {
+  margin: 8px 0 8px 4px;
+}
+#tumblr-posts .posts-stream > li .tumblr-metadata .ui-bar {
+  height: 24px;
+  min-height: 24px;
+}
+#tumblr-posts .posts-stream > li .tumblr-metadata .ui-bar .ui-btn-text {
+  position: relative;
+  font-size: 12px;
+  color: #999999;
+  line-height: 24px;
+  height: 24px;
+  padding-right: 24px;
+  padding-left: 28px;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+#tumblr-posts .posts-stream > li .tumblr-metadata .ui-bar .tumblr-icon {
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  margin-top: 0;
+}
+#tumblr-posts .posts-stream > li:last-child {
   border-bottom: none;
 }
 #tumblr-posts ul.tags {
   overflow: hidden;
 }
 #tumblr-posts ul.tags li {
-  float: left;
   font-size: 10px;
   padding: 3px 6px;
   margin: 3px;
