@@ -13,6 +13,8 @@ return view.extend({
         _.bindAll(this);
         this.collection = this.collection || new photo_collection();
         this.collection.bind('all', this.render_thumbs, this);
+        this.load_template('components/stream');
+
         this.post_initialize.apply(this, arguments);
     },
 
@@ -23,14 +25,14 @@ return view.extend({
         if (feed_data.access_token){ delete feed_data.access_token; }
         if (feed_data.n){ delete feed_data.n; }
 
-        // wtf was this?
+        // what was this? I'm going to comment it out because it looks like abad idea - Jake
         //feed_data.back = "Upload";
 
         this.$el.addClass('closed');
 
         var feed_param = $.param(feed_data);
         $(this.el).html($(this.template({
-            collection: this.collection,
+            photos: this.collection.models,
             model: this.model,
             details: this.details,
             feed_param: feed_param
@@ -182,10 +184,14 @@ return view.extend({
     render_thumbs: function(){
         if(this.collection.length){
 
-            var html = this.thumbs_template({
-                photos: this.collection.models
-            });
-            this.$('.x-thumbs').html(html);
+            var rendered = $(this.template({
+                photos: this.collection.models,
+                model: this.model,
+                details: this.details,
+                feed_param: ''
+            }));
+
+            this.$('.x-thumbs').empty().append(rendered.find('.x-thumbs').children());
 
             // create or refresh scroller
             if(! this.scroller){

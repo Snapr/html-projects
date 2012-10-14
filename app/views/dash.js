@@ -251,8 +251,6 @@ var dash_stream = side_scroll.extend({
     },
 
     post_initialize: function( options ){
-        this.template = this.get_template('components/dash/stream');
-        this.thumbs_template = this.get_template('components/dash/thumb');
         if (!options.featured){
             this.$el.addClass("user-stream");
             this.$el.attr("data-id", this.model.get("id"));

@@ -1,4 +1,4 @@
-<a class="ui-bar x-details" data-role="button" data-iconpos="left" data-icon="open" data-theme="c">
+<a class="ui-bar x-details" data-role="button" data-iconpos="left" data-icon="open" data-theme="<% if(typeof(theme) == "undefined"){ print("c") }else{ print(theme) } %>">
     <span class="image-details">
         <strong><%= model.get("display").short_title %><% if(model.get("query").radius){ %> (<%= model.get("query").radius/1000 %>km)<% } %></strong>
         <span class="image-tag x-tag"></span>
@@ -14,7 +14,13 @@
             <span class="ui-icon ui-icon-refresh"></span>
             <span class="ui-btn-text x-msg">Refresh</span>
         </div>
-        <div class="x-thumbs"></div>
+        <div class="x-thumbs">
+            <% _.each(photos, function(photo) { %>
+                <a href="https://s3.amazonaws.com/media-server2.snapr.us/lrg2/<%= photo.get('secret') %>/<%= photo.get('id') %>.jpg" class="x-thumb image-link" rel="external" data-date="<%= photo.get('date') %>" data-id="<%= photo.get('id') %>" data-tag="<%= photo.get('description') %>">
+                    <img src="https://s3.amazonaws.com/media-server2.snapr.us/thm2/<%= photo.get('secret') %>/<%= photo.get('id') %>.jpg" <% if(photo.get('description')){ %>alt="<%= photo.get('description') %>"<% } %> class="thumb-image thumb-med">
+                </a>
+            <% }); %>
+        </div>
         <div class="x-right-pull thumb-med load-more-inline">
             <span class="ui-icon ui-icon-refresh"></span>
             <span class="ui-btn-text x-msg">Load More</span>
