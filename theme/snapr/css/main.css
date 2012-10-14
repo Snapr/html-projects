@@ -2802,7 +2802,7 @@ a.ui-link-inherit {
 .thumb-small {
   width: 34px;
   height: 34px;
-  background-color: #1e2122;
+  background-color: #d7d7d5;
   background-size: 100% 100%;
   background-size: cover;
   background-position: center;
@@ -2814,7 +2814,7 @@ a.ui-link-inherit {
 .user-icon-med {
   width: 50px;
   height: 50px;
-  background-color: #1e2122;
+  background-color: #d7d7d5;
   background-size: 100% 100%;
   background-size: cover;
   background-position: center;
@@ -2844,7 +2844,7 @@ a.ui-link-inherit {
   top: 0;
 }
 .css-thumb {
-  background-color: #1e2122;
+  background-color: #d7d7d5;
   background-position: center;
   background-size: 100% 100%;
   background-size: cover;
@@ -2852,7 +2852,7 @@ a.ui-link-inherit {
 .user-icon-big {
   width: 100px;
   height: 100px;
-  background-color: #1e2122;
+  background-color: #d7d7d5;
   background-size: 100% 100%;
   background-size: cover;
 }
