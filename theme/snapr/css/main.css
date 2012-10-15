@@ -2947,7 +2947,7 @@ a.ui-link-inherit {
   -webkit-border-bottom-right-radius: 0 !important;
   border-bottom-right-radius: 0 !important;
 }
-*[data-tab-bar="true"] div[data-role="header"] *[data-icon="home"] {
+*[data-tab-bar="true"] div[data-role="header"] *[data-icon="home"], *[data-tab-bar="true"] div[data-role="header"] *[data-icon="camera"] {
   display: none;
 }
 *[data-tab-bar="true"] .inline-footer {
@@ -5330,10 +5330,10 @@ body.browser-testing .ui-footer, body.browser-testing .ui-footer-fixed {
   margin-bottom: 0px;
 }
 .feed-user-header .ui-bar .ui-btn-right .ui-btn .ui-btn-inner {
-  height: 36px;
+  height: 32px;
 }
 .feed-user-header .ui-bar .ui-btn-right .ui-btn .ui-btn-inner .ui-btn-text {
-  line-height: 34px;
+  line-height: 32px;
 }
 .feed-user-header .ui-bar .ui-btn-right .ui-btn .ui-btn-inner .ui-icon {
   width: 36px;

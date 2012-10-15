@@ -11,9 +11,10 @@
         .corner-bottom(0)!important;
     }
 
-    //Hide home menu button on pages where the is a tab bar
+    //Hide home menu and camera button on pages where the is a tab bar
     div[data-role="header"]{
-        *[data-icon="home"]{
+        *[data-icon="home"],
+        *[data-icon="camera"]{
             display: none;
         }
     }
