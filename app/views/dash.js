@@ -33,7 +33,7 @@ var dash_view = page_view.extend({
         "click .x-edit-dash": "edit_dash"
     },
 
-    get_default_tab: function(){ return 'dash'; },
+    get_override_tab: function(){ return 'dash'; },
 
     populate: function(){
 

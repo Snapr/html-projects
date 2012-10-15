@@ -181,6 +181,23 @@
     left: @x-pos;
 }
 
+.arrow-left(@width, @color, @x-pos, @y-shift){
+    width: 0;
+    height: 0;
+    display: inline-block;
+    content: "&darr;";
+    text-indent: -99999px;
+    vertical-align: top;
+    margin-top: 0;
+    margin-left: -@width;
+    border-top: @width solid transparent;
+    border-bottom: @width solid transparent;
+    border-right: @width solid @color;
+    position: absolute;
+    bottom: -@width + @y-shift;
+    left: @x-pos;
+}
+
 .spinner(@file: '../gfx/small-spinner-light.png'){
     display: block;
     background-image: url(@file)!important;
