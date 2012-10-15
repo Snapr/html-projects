@@ -49,7 +49,7 @@ return view.extend({
 
             // if there are already photos in the collection
             if(this.collection.length){
-                this.init_or_refresh_scroll();
+                this.scroll_init();
                 this.photoswipe_init();
             }
         }
@@ -57,6 +57,21 @@ return view.extend({
     },
 
     toggle_stream: function() {
+        if(this.$el.hasClass('closed')){
+            this.open();
+        }else{
+            this.close();
+        }
+    },
+
+    close: function(){
+        this.$('.thumbs-grid').fadeToggle();
+        this.$el.toggleClass('open closed');
+    },
+
+    open: function(){
+        this.$('.thumbs-grid').fadeToggle();
+        this.$el.toggleClass('open closed');
         if(!this.collection.length && !this.collection.loaded){
 
             var this$el = this.$el.addClass('loading');
@@ -71,24 +86,28 @@ return view.extend({
                     this$el.removeClass('loading');
                 }
             });
-        }
-        this.$('.thumbs-grid').fadeToggle();
-        this.$el.toggleClass('open closed');
-    },
-
-    close: function(){
-        if(this.$el.hasClass('open')){
-            this.toggle_stream();
-        }
-    },
-
-    open: function(){
-        if(this.$el.hasClass('closed')){
-            this.toggle_stream();
+        }else{
+            this.scroll_init();
         }
     },
 
     scroll_init: function(){
+
+
+        // if already init, refresh
+        if(this.scroller){
+            var scroller = this.scroller;
+            scroller.options.snap = this.collection.length > 2 ? 'a.x-thumb:not(:last-child), .x-left-pull': 'a.x-thumb, .x-left-pull';
+            setTimeout(function () {
+                scroller.refresh();
+                if(scroller.currPageX === 0){
+                    scroller.scrollToPage(1, 1, 0);
+                }
+            }, 0);
+
+            return this;
+        }
+
         var scroll_el = $('.x-scroll-area', this.el),
             details = $('.x-details', this.el),
             pull_distance = -0,
@@ -206,21 +225,6 @@ return view.extend({
         return this;
     },
 
-    init_or_refresh_scroll: function(){
-        if(! this.scroller){
-            this.scroll_init();
-        }else{
-            var scroller = this.scroller;
-            scroller.options.snap = this.collection.length > 2 ? 'a.x-thumb:not(:last-child), .x-left-pull': 'a.x-thumb, .x-left-pull';
-            setTimeout(function () {
-                scroller.refresh();
-                if(scroller.currPageX === 0){
-                    scroller.scrollToPage(1, 1, 0);
-                }
-            }, 0);
-        }
-    },
-
     render_thumbs: function(){
         if(this.collection.length){
 
@@ -237,7 +241,7 @@ return view.extend({
             this.$el.addClass('no-photos');
         }
 
-        this.init_or_refresh_scroll();
+        this.scroll_init();
 
         return this;
     },
