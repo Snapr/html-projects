@@ -1,7 +1,7 @@
-// Abstract base class side-scroll views
+// Base class side-scroll views
 /*global _ define */
-define(['views/base/view', 'utils/photoswipe', 'iscroll', 'utils/string', 'collections/photo', 'config'],
-    function(view, photoswipe, iScroll, string_utils, photo_collection, config){
+define(['backbone', 'views/base/view', 'utils/photoswipe', 'iscroll', 'utils/string', 'collections/photo', 'config'],
+    function(Backbone, view, photoswipe, iScroll, string_utils, photo_collection, config){
 return view.extend({
 
     tagName: 'li',
@@ -189,7 +189,7 @@ return view.extend({
             });
             this.scroller.scrollToPage(1, 1, 0);
         }catch(err){
-
+            console.log(err);
         }
         return this;
     },
@@ -208,6 +208,7 @@ return view.extend({
             }, 0);
         }
     },
+
     render_thumbs: function(){
         if(this.collection.length){
 
@@ -219,14 +220,16 @@ return view.extend({
 
             this.$('.x-thumbs').empty().append(rendered.find('.x-thumbs').children());
 
-            this.init_or_refresh_scroll();
-
             this.photoswipe_init();
         }else{
             this.$el.addClass('no-photos');
         }
+
+        this.init_or_refresh_scroll();
+
         return this;
     },
+
     photoswipe_init: function(){
         var id = this.cid;
         $( "a.x-thumb", this.el ).photoswipe_init(id);

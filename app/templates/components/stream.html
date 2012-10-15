@@ -20,6 +20,9 @@
                     <img src="https://s3.amazonaws.com/media-server2.snapr.us/thm2/<%= photo.get('secret') %>/<%= photo.get('id') %>.jpg" <% if(photo.get('description')){ %>alt="<%= photo.get('description') %>"<% } %> class="thumb-image thumb-med">
                 </a>
             <% }); %>
+            <% if(!photos.length){ %>
+                <a class="x-thumb"><!-- we need something to scroll to even when there are no photos --></a>
+            <% } %>
         </div>
         <div class="x-right-pull thumb-med load-more-inline">
             <span class="ui-icon ui-icon-refresh"></span>
