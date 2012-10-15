@@ -449,7 +449,7 @@ var add_search = page_view.extend({
                 var stream = new dash_stream_model( stream_object );
                 $.mobile.showPageLoadingMsg();
                 stream.save({}, {success: function(){
-                    dash.get('streams').add(stream);
+                    add_search.previous_view.model.streams.add(stream);
                     $.mobile.hidePageLoadingMsg();
                 }});
                 add_search.previous_view.$el.removeClass('edit');
