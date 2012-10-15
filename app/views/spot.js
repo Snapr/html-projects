@@ -29,6 +29,9 @@ var spot_view = page_view.extend({
 
     events: {
     },
+    
+    get_override_tab: function(){ return 'spots'; },
+    
 
     fetch_spot: function () {
         var spot_view = this,

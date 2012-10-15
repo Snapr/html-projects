@@ -115,6 +115,12 @@
 .ui-header .ui-btn-up-a .ui-btn-inner .ui-icon-join {
   background-position: 0px -320px;
 }
+.ui-header .ui-btn-up-a .ui-btn-inner .ui-icon-info {
+  background-position: 0px -360px;
+}
+.ui-header .ui-btn-up-a .ui-btn-inner .ui-icon-map {
+  background-position: 0px -400px;
+}
 .ui-header .ui-btn-hover-a .ui-btn-inner .ui-icon-search {
   background-position: -40px 0px;
 }
@@ -138,6 +144,12 @@
 }
 .ui-header .ui-btn-hover-a .ui-btn-inner .ui-icon-join {
   background-position: -40px -320px;
+}
+.ui-header .ui-btn-hover-a .ui-btn-inner .ui-icon-info {
+  background-position: -40px -360px;
+}
+.ui-header .ui-btn-hover-a .ui-btn-inner .ui-icon-map {
+  background-position: -40px -400px;
 }
 .ui-header .ui-btn-up-b .ui-btn-inner .ui-icon-search {
   background-position: -80px 0px;
@@ -163,6 +175,12 @@
 .ui-header .ui-btn-up-b .ui-btn-inner .ui-icon-join {
   background-position: -80px -320px;
 }
+.ui-header .ui-btn-up-b .ui-btn-inner .ui-icon-info {
+  background-position: -80px -360px;
+}
+.ui-header .ui-btn-up-b .ui-btn-inner .ui-icon-map {
+  background-position: -80px -400px;
+}
 .ui-header .ui-btn-hover-b .ui-btn-inner .ui-icon-search {
   background-position: -120px 0px;
 }
@@ -186,6 +204,12 @@
 }
 .ui-header .ui-btn-hover-b .ui-btn-inner .ui-icon-join {
   background-position: -120px -320px;
+}
+.ui-header .ui-btn-hover-b .ui-btn-inner .ui-icon-info {
+  background-position: -120px -360px;
+}
+.ui-header .ui-btn-hover-b .ui-btn-inner .ui-icon-map {
+  background-position: -120px -400px;
 }
 .ui-header .ui-btn-up-c .ui-btn-inner .ui-icon-search {
   background-position: -160px 0px;
@@ -211,6 +235,12 @@
 .ui-header .ui-btn-up-c .ui-btn-inner .ui-icon-join {
   background-position: -160px -320px;
 }
+.ui-header .ui-btn-up-c .ui-btn-inner .ui-icon-info {
+  background-position: -160px -360px;
+}
+.ui-header .ui-btn-up-c .ui-btn-inner .ui-icon-map {
+  background-position: -160px -400px;
+}
 .ui-header .ui-btn-hover-c .ui-btn-inner .ui-icon-search {
   background-position: -200px 0px;
 }
@@ -234,6 +264,12 @@
 }
 .ui-header .ui-btn-hover-c .ui-btn-inner .ui-icon-join {
   background-position: -200px -320px;
+}
+.ui-header .ui-btn-hover-c .ui-btn-inner .ui-icon-info {
+  background-position: -200px -360px;
+}
+.ui-header .ui-btn-hover-c .ui-btn-inner .ui-icon-map {
+  background-position: -200px -400px;
 }
 .tab-bar-icons .ui-icon {
   width: 32px;
