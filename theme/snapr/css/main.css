@@ -1002,6 +1002,9 @@ input.ui-input-text, textarea.ui-input-text {
 .ui-btn-icon-left .ui-btn-inner .ui-icon, .ui-btn-icon-right .ui-btn-inner .ui-icon {
   margin-top: -18px;
 }
+.ui-bar.ui-btn-icon-left .ui-btn-inner .ui-icon, .ui-bar.ui-btn-icon-right .ui-btn-inner .ui-icon {
+  margin-top: -16px;
+}
 .ui-btn-icon-right .ui-btn-inner .ui-icon {
   right: 0;
 }
@@ -3850,7 +3853,7 @@ a.ui-link-inherit {
   width: 24px;
 }
 .ui-bar .ui-icon-arrow-r {
-  right: -10px;
+  right: -8px !important;
 }
 .ui-bar h4, .ui-bar .ui-btn-inner, .ui-bar .ui-bar-inner {
   font-size: 15px;
@@ -3935,6 +3938,13 @@ a.ui-link-inherit {
 .ui-bar.ui-btn-icon-left .ui-icon {
   left: -5px;
   margin-top: -16px;
+}
+.ui-bar.ui-spot-icon-left .ui-btn-inner .ui-btn-text {
+  padding-left: 20px;
+}
+.ui-bar.ui-spot-icon-left .ui-btn-inner .spot-icon {
+  left: -4px;
+  margin-top: -12px;
 }
 .ui-bar.top-no-arrow {
   text-align: left;
@@ -5752,9 +5762,8 @@ body.browser-testing .ui-footer, body.browser-testing .ui-footer-fixed {
   /* map thumbs */
 
 }
-.photo-map .ui-bar.top-left-arrow .ui-icon, .photo-map .top-no-arrow .ui-icon {
-  left: -6px;
-  top: -8px;
+.photo-map .ui-bar.top-left-arrow .ui-icon-location, .photo-map .top-no-arrow .ui-icon-location {
+  left: -8px;
 }
 .photo-map .snaprmappoint {
   width: 1px;
