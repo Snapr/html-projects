@@ -74,7 +74,8 @@ var uploading = page_view.extend({
                 stream_type: "popular-nearby",
                 latitude: this.latitude,
                 longitude: this.longitude,
-                comp_id: this.comp.id
+                comp_id: this.comp.id,
+                expand: true
             });
             $image_stream_container.append( this.comp_template(this.comp.attributes) ).trigger('create');
         }else{
@@ -82,14 +83,16 @@ var uploading = page_view.extend({
                 this.recent_nearby_stream = new uploading_image_stream({
                     stream_type: "spot",
                     foursquare_venue: this.foursquare_venue,
-                    venue_name: this.venue_name
+                    venue_name: this.venue_name,
+                    expand: true
                 });
             }else{
                 if (this.latitude && this.longitude && parseFloat(this.latitude, 10) && parseFloat(this.longitude, 10)){
                     this.recent_nearby_stream = new uploading_image_stream({
                         stream_type: "recent-nearby",
                         latitude: this.latitude,
-                        longitude: this.longitude
+                        longitude: this.longitude,
+                    expand: true
                     });
                 }
             }
@@ -98,7 +101,8 @@ var uploading = page_view.extend({
                 this.popular_nearby_stream = new uploading_image_stream({
                     stream_type: "popular-nearby",
                     latitude: this.latitude,
-                    longitude: this.longitude
+                    longitude: this.longitude,
+                    expand: true
                     //container: $image_stream_container
                 });
             }
@@ -239,9 +243,6 @@ var uploading_image_stream = side_scroll.extend({
     className: 'image-stream',
 
     post_initialize: function(){
-        this.template = this.get_template('components/uploading/stream');
-        this.thumbs_template = this.get_template('components/uploading/stream_item');
-
         this.details = {
             stream_type: this.options.stream_type,
             latitude: this.options.latitude,

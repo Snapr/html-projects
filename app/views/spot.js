@@ -110,12 +110,10 @@ var spot_view = page_view.extend({
             return spot_view.model.get('info').hero_image === null || model.get('secret') !== spot_view.model.get('info').hero_image.secret;
         }));
         if (this.photos.length > 0) {
-            var stream_li = new spot_image_stream({
+            var stream_li = new side_scroll({
                 collection: this.photos,
-                details: {
-                    spot: this.spot_id,
-                    stream_type: "spot"
-                }
+                title: this.model.get('name'),
+                expand: true
             });
 
             $streams.append( stream_li.el );
@@ -153,22 +151,17 @@ var spot_header_view = view.extend({
 });
 
 var spot_image_stream = side_scroll.extend({
-    tagName: 'li',
-    className: 'image-stream',
 
     post_initialize: function(){
-        this.template = this.get_template('components/spots/stream');
-        this.thumbs_template = this.get_template('components/spots/stream_thumb');
-
-        this.details = {
-            spot: this.options.spot
-        };
 
         this.collection.data = {
             spot: this.details.spot,
             n: config.get('side_scroll_initial')
         };
 
+    },
+    get_title: function(){
+        return this.details.spot;
     }
 });
 

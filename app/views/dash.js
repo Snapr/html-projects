@@ -244,11 +244,9 @@ var dash_stream = side_scroll.extend({
 
     className: 'image-stream',
 
-    events: {
-        "click .remove-stream": "remove_stream",
-        "click .x-details": "toggle_stream",
-        "click .x-view-full": "goto_feed"
-    },
+    events: _.extend({
+        "click .remove-stream": "remove_stream"
+    }, side_scroll.prototype.events),
 
     get_title: function(){
         var title = this.model.get("display").short_title;
@@ -284,14 +282,6 @@ var dash_stream = side_scroll.extend({
                 });
             }
         });
-    },
-
-    goto_feed: function(e){
-        var button = $(e.currentTarget),
-            query = button.data('query'),
-            current = button.data('current');
-
-        Backbone.history.navigate('#/feed/?' + unescape( query ));
     }
 });
 
