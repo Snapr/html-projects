@@ -6,11 +6,27 @@
             <li><a class="x-launch-camera-options" data-icon="share"  data-theme="b" data-name="share">Share</a></li>
             <li><a href="#/popular/" data-icon="popular" data-theme="b" data-name="discover">Discover</a></li>
             <% if(username){ %>
-                <li><a href="#/feed/?username=<%= username %>" data-icon="user" data-theme="b" data-name="feed">Me</a></li>
+                <li>
+                    <a href="#/feed/?username=<%= username %>" data-icon="user" data-theme="b" data-name="feed">Me</a>
+                
+                </li>
             <% }else{ %>
                 <li><a href="#/login/" data-icon="user" data-theme="b" data-name="feed">Login</a></li>
             <% } %>
 
         </ul>
     </div><!-- /navbar -->
+    
+    <% if(username){ %>
+    <a class="ui-bar ui-bar-e small-top-right-arrow x-tab-bar-extra" href="#/activity/">
+        <span class="activity-count icon-left x-activity-likes"><span class="ui-icon ui-icon-heart"></span>x 1</span>
+        <span class="activity-count icon-left x-activity-comments"><span class="ui-icon ui-icon-comment"></span>x 4</span>
+        
+    </a>
+    <% }else{ %>
+        <a class="ui-bar ui-bar-e small-top-right-arrow x-tab-bar-extra" href="#/welcome/">
+        Info
+        </a>
+    
+    <% } %>
 </div><!-- /footer -->

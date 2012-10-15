@@ -460,224 +460,224 @@
 .ui-bar-icons.ui-icon-redheart {
   background-position: -96px -96px;
 }
-.ui-bar.ui-btn-up-e .ui-icon-open,
-.ui-bar-icons.ui-btn-up-e .ui-icon-open,
+.ui-bar.ui-bar-e.ui-btn-up-e .ui-icon-open,
+.ui-bar-icons.ui-bar-e.ui-btn-up-e .ui-icon-open,
 .ui-bar.ui-btn-hover-e .ui-icon-open,
 .ui-bar-icons.ui-btn-hover-e .ui-icon-open,
 .ui-bar.ui-btn-down-e .ui-icon-open,
 .ui-bar-icons.ui-btn-down-e .ui-icon-open,
-.ui-bar.ui-btn-up-e.ui-icon-open,
-.ui-bar-icons.ui-btn-up-e.ui-icon-open,
+.ui-bar.ui-bar-e.ui-btn-up-e.ui-icon-open,
+.ui-bar-icons.ui-bar-e.ui-btn-up-e.ui-icon-open,
 .ui-bar.ui-btn-hover-e.ui-icon-open,
 .ui-bar-icons.ui-btn-hover-e.ui-icon-open,
 .ui-bar.ui-btn-down-e.ui-icon-open,
 .ui-bar-icons.ui-btn-down-e.ui-icon-open {
   background-position: -128px 0px;
 }
-.ui-bar.ui-btn-up-e .ui-icon-closed,
-.ui-bar-icons.ui-btn-up-e .ui-icon-closed,
+.ui-bar.ui-bar-e.ui-btn-up-e .ui-icon-closed,
+.ui-bar-icons.ui-bar-e.ui-btn-up-e .ui-icon-closed,
 .ui-bar.ui-btn-hover-e .ui-icon-closed,
 .ui-bar-icons.ui-btn-hover-e .ui-icon-closed,
 .ui-bar.ui-btn-down-e .ui-icon-closed,
 .ui-bar-icons.ui-btn-down-e .ui-icon-closed,
-.ui-bar.ui-btn-up-e.ui-icon-closed,
-.ui-bar-icons.ui-btn-up-e.ui-icon-closed,
+.ui-bar.ui-bar-e.ui-btn-up-e.ui-icon-closed,
+.ui-bar-icons.ui-bar-e.ui-btn-up-e.ui-icon-closed,
 .ui-bar.ui-btn-hover-e.ui-icon-closed,
 .ui-bar-icons.ui-btn-hover-e.ui-icon-closed,
 .ui-bar.ui-btn-down-e.ui-icon-closed,
 .ui-bar-icons.ui-btn-down-e.ui-icon-closed {
   background-position: -128px -32px;
 }
-.ui-bar.ui-btn-up-e .ui-icon-arrow-r,
-.ui-bar-icons.ui-btn-up-e .ui-icon-arrow-r,
+.ui-bar.ui-bar-e.ui-btn-up-e .ui-icon-arrow-r,
+.ui-bar-icons.ui-bar-e.ui-btn-up-e .ui-icon-arrow-r,
 .ui-bar.ui-btn-hover-e .ui-icon-arrow-r,
 .ui-bar-icons.ui-btn-hover-e .ui-icon-arrow-r,
 .ui-bar.ui-btn-down-e .ui-icon-arrow-r,
 .ui-bar-icons.ui-btn-down-e .ui-icon-arrow-r,
-.ui-bar.ui-btn-up-e.ui-icon-arrow-r,
-.ui-bar-icons.ui-btn-up-e.ui-icon-arrow-r,
+.ui-bar.ui-bar-e.ui-btn-up-e.ui-icon-arrow-r,
+.ui-bar-icons.ui-bar-e.ui-btn-up-e.ui-icon-arrow-r,
 .ui-bar.ui-btn-hover-e.ui-icon-arrow-r,
 .ui-bar-icons.ui-btn-hover-e.ui-icon-arrow-r,
 .ui-bar.ui-btn-down-e.ui-icon-arrow-r,
 .ui-bar-icons.ui-btn-down-e.ui-icon-arrow-r {
   background-position: -128px -64px;
 }
-.ui-bar.ui-btn-up-e .ui-icon-heart,
-.ui-bar-icons.ui-btn-up-e .ui-icon-heart,
+.ui-bar.ui-bar-e.ui-btn-up-e .ui-icon-heart,
+.ui-bar-icons.ui-bar-e.ui-btn-up-e .ui-icon-heart,
 .ui-bar.ui-btn-hover-e .ui-icon-heart,
 .ui-bar-icons.ui-btn-hover-e .ui-icon-heart,
 .ui-bar.ui-btn-down-e .ui-icon-heart,
 .ui-bar-icons.ui-btn-down-e .ui-icon-heart,
-.ui-bar.ui-btn-up-e.ui-icon-heart,
-.ui-bar-icons.ui-btn-up-e.ui-icon-heart,
+.ui-bar.ui-bar-e.ui-btn-up-e.ui-icon-heart,
+.ui-bar-icons.ui-bar-e.ui-btn-up-e.ui-icon-heart,
 .ui-bar.ui-btn-hover-e.ui-icon-heart,
 .ui-bar-icons.ui-btn-hover-e.ui-icon-heart,
 .ui-bar.ui-btn-down-e.ui-icon-heart,
 .ui-bar-icons.ui-btn-down-e.ui-icon-heart {
   background-position: -128px -96px;
 }
-.ui-bar.ui-btn-up-e .ui-icon-venue,
-.ui-bar-icons.ui-btn-up-e .ui-icon-venue,
+.ui-bar.ui-bar-e.ui-btn-up-e .ui-icon-venue,
+.ui-bar-icons.ui-bar-e.ui-btn-up-e .ui-icon-venue,
 .ui-bar.ui-btn-hover-e .ui-icon-venue,
 .ui-bar-icons.ui-btn-hover-e .ui-icon-venue,
 .ui-bar.ui-btn-down-e .ui-icon-venue,
 .ui-bar-icons.ui-btn-down-e .ui-icon-venue,
-.ui-bar.ui-btn-up-e.ui-icon-venue,
-.ui-bar-icons.ui-btn-up-e.ui-icon-venue,
+.ui-bar.ui-bar-e.ui-btn-up-e.ui-icon-venue,
+.ui-bar-icons.ui-bar-e.ui-btn-up-e.ui-icon-venue,
 .ui-bar.ui-btn-hover-e.ui-icon-venue,
 .ui-bar-icons.ui-btn-hover-e.ui-icon-venue,
 .ui-bar.ui-btn-down-e.ui-icon-venue,
 .ui-bar-icons.ui-btn-down-e.ui-icon-venue {
   background-position: -128px -128px;
 }
-.ui-bar.ui-btn-up-e .ui-icon-person,
-.ui-bar-icons.ui-btn-up-e .ui-icon-person,
+.ui-bar.ui-bar-e.ui-btn-up-e .ui-icon-person,
+.ui-bar-icons.ui-bar-e.ui-btn-up-e .ui-icon-person,
 .ui-bar.ui-btn-hover-e .ui-icon-person,
 .ui-bar-icons.ui-btn-hover-e .ui-icon-person,
 .ui-bar.ui-btn-down-e .ui-icon-person,
 .ui-bar-icons.ui-btn-down-e .ui-icon-person,
-.ui-bar.ui-btn-up-e.ui-icon-person,
-.ui-bar-icons.ui-btn-up-e.ui-icon-person,
+.ui-bar.ui-bar-e.ui-btn-up-e.ui-icon-person,
+.ui-bar-icons.ui-bar-e.ui-btn-up-e.ui-icon-person,
 .ui-bar.ui-btn-hover-e.ui-icon-person,
 .ui-bar-icons.ui-btn-hover-e.ui-icon-person,
 .ui-bar.ui-btn-down-e.ui-icon-person,
 .ui-bar-icons.ui-btn-down-e.ui-icon-person {
   background-position: -128px -160px;
 }
-.ui-bar.ui-btn-up-e .ui-icon-search,
-.ui-bar-icons.ui-btn-up-e .ui-icon-search,
+.ui-bar.ui-bar-e.ui-btn-up-e .ui-icon-search,
+.ui-bar-icons.ui-bar-e.ui-btn-up-e .ui-icon-search,
 .ui-bar.ui-btn-hover-e .ui-icon-search,
 .ui-bar-icons.ui-btn-hover-e .ui-icon-search,
 .ui-bar.ui-btn-down-e .ui-icon-search,
 .ui-bar-icons.ui-btn-down-e .ui-icon-search,
-.ui-bar.ui-btn-up-e.ui-icon-search,
-.ui-bar-icons.ui-btn-up-e.ui-icon-search,
+.ui-bar.ui-bar-e.ui-btn-up-e.ui-icon-search,
+.ui-bar-icons.ui-bar-e.ui-btn-up-e.ui-icon-search,
 .ui-bar.ui-btn-hover-e.ui-icon-search,
 .ui-bar-icons.ui-btn-hover-e.ui-icon-search,
 .ui-bar.ui-btn-down-e.ui-icon-search,
 .ui-bar-icons.ui-btn-down-e.ui-icon-search {
   background-position: -128px -192px;
 }
-.ui-bar.ui-btn-up-e .ui-icon-activity,
-.ui-bar-icons.ui-btn-up-e .ui-icon-activity,
+.ui-bar.ui-bar-e.ui-btn-up-e .ui-icon-activity,
+.ui-bar-icons.ui-bar-e.ui-btn-up-e .ui-icon-activity,
 .ui-bar.ui-btn-hover-e .ui-icon-activity,
 .ui-bar-icons.ui-btn-hover-e .ui-icon-activity,
 .ui-bar.ui-btn-down-e .ui-icon-activity,
 .ui-bar-icons.ui-btn-down-e .ui-icon-activity,
-.ui-bar.ui-btn-up-e.ui-icon-activity,
-.ui-bar-icons.ui-btn-up-e.ui-icon-activity,
+.ui-bar.ui-bar-e.ui-btn-up-e.ui-icon-activity,
+.ui-bar-icons.ui-bar-e.ui-btn-up-e.ui-icon-activity,
 .ui-bar.ui-btn-hover-e.ui-icon-activity,
 .ui-bar-icons.ui-btn-hover-e.ui-icon-activity,
 .ui-bar.ui-btn-down-e.ui-icon-activity,
 .ui-bar-icons.ui-btn-down-e.ui-icon-activity {
   background-position: -128px -224px;
 }
-.ui-bar.ui-btn-up-e .ui-icon-location,
-.ui-bar-icons.ui-btn-up-e .ui-icon-location,
+.ui-bar.ui-bar-e.ui-btn-up-e .ui-icon-location,
+.ui-bar-icons.ui-bar-e.ui-btn-up-e .ui-icon-location,
 .ui-bar.ui-btn-hover-e .ui-icon-location,
 .ui-bar-icons.ui-btn-hover-e .ui-icon-location,
 .ui-bar.ui-btn-down-e .ui-icon-location,
 .ui-bar-icons.ui-btn-down-e .ui-icon-location,
-.ui-bar.ui-btn-up-e.ui-icon-location,
-.ui-bar-icons.ui-btn-up-e.ui-icon-location,
+.ui-bar.ui-bar-e.ui-btn-up-e.ui-icon-location,
+.ui-bar-icons.ui-bar-e.ui-btn-up-e.ui-icon-location,
 .ui-bar.ui-btn-hover-e.ui-icon-location,
 .ui-bar-icons.ui-btn-hover-e.ui-icon-location,
 .ui-bar.ui-btn-down-e.ui-icon-location,
 .ui-bar-icons.ui-btn-down-e.ui-icon-location {
   background-position: -128px -256px;
 }
-.ui-bar.ui-btn-up-e .ui-icon-clock,
-.ui-bar-icons.ui-btn-up-e .ui-icon-clock,
+.ui-bar.ui-bar-e.ui-btn-up-e .ui-icon-clock,
+.ui-bar-icons.ui-bar-e.ui-btn-up-e .ui-icon-clock,
 .ui-bar.ui-btn-hover-e .ui-icon-clock,
 .ui-bar-icons.ui-btn-hover-e .ui-icon-clock,
 .ui-bar.ui-btn-down-e .ui-icon-clock,
 .ui-bar-icons.ui-btn-down-e .ui-icon-clock,
-.ui-bar.ui-btn-up-e.ui-icon-clock,
-.ui-bar-icons.ui-btn-up-e.ui-icon-clock,
+.ui-bar.ui-bar-e.ui-btn-up-e.ui-icon-clock,
+.ui-bar-icons.ui-bar-e.ui-btn-up-e.ui-icon-clock,
 .ui-bar.ui-btn-hover-e.ui-icon-clock,
 .ui-bar-icons.ui-btn-hover-e.ui-icon-clock,
 .ui-bar.ui-btn-down-e.ui-icon-clock,
 .ui-bar-icons.ui-btn-down-e.ui-icon-clock {
   background-position: -128px -288px;
 }
-.ui-bar.ui-btn-up-e .ui-icon-connection,
-.ui-bar-icons.ui-btn-up-e .ui-icon-connection,
+.ui-bar.ui-bar-e.ui-btn-up-e .ui-icon-connection,
+.ui-bar-icons.ui-bar-e.ui-btn-up-e .ui-icon-connection,
 .ui-bar.ui-btn-hover-e .ui-icon-connection,
 .ui-bar-icons.ui-btn-hover-e .ui-icon-connection,
 .ui-bar.ui-btn-down-e .ui-icon-connection,
 .ui-bar-icons.ui-btn-down-e .ui-icon-connection,
-.ui-bar.ui-btn-up-e.ui-icon-connection,
-.ui-bar-icons.ui-btn-up-e.ui-icon-connection,
+.ui-bar.ui-bar-e.ui-btn-up-e.ui-icon-connection,
+.ui-bar-icons.ui-bar-e.ui-btn-up-e.ui-icon-connection,
 .ui-bar.ui-btn-hover-e.ui-icon-connection,
 .ui-bar-icons.ui-btn-hover-e.ui-icon-connection,
 .ui-bar.ui-btn-down-e.ui-icon-connection,
 .ui-bar-icons.ui-btn-down-e.ui-icon-connection {
   background-position: -128px -320px;
 }
-.ui-bar.ui-btn-up-e .ui-icon-blog,
-.ui-bar-icons.ui-btn-up-e .ui-icon-blog,
+.ui-bar.ui-bar-e.ui-btn-up-e .ui-icon-blog,
+.ui-bar-icons.ui-bar-e.ui-btn-up-e .ui-icon-blog,
 .ui-bar.ui-btn-hover-e .ui-icon-blog,
 .ui-bar-icons.ui-btn-hover-e .ui-icon-blog,
 .ui-bar.ui-btn-down-e .ui-icon-blog,
 .ui-bar-icons.ui-btn-down-e .ui-icon-blog,
-.ui-bar.ui-btn-up-e.ui-icon-blog,
-.ui-bar-icons.ui-btn-up-e.ui-icon-blog,
+.ui-bar.ui-bar-e.ui-btn-up-e.ui-icon-blog,
+.ui-bar-icons.ui-bar-e.ui-btn-up-e.ui-icon-blog,
 .ui-bar.ui-btn-hover-e.ui-icon-blog,
 .ui-bar-icons.ui-btn-hover-e.ui-icon-blog,
 .ui-bar.ui-btn-down-e.ui-icon-blog,
 .ui-bar-icons.ui-btn-down-e.ui-icon-blog {
   background-position: -128px -352px;
 }
-.ui-bar.ui-btn-up-e .ui-icon-comment,
-.ui-bar-icons.ui-btn-up-e .ui-icon-comment,
+.ui-bar.ui-bar-e.ui-btn-up-e .ui-icon-comment,
+.ui-bar-icons.ui-bar-e.ui-btn-up-e .ui-icon-comment,
 .ui-bar.ui-btn-hover-e .ui-icon-comment,
 .ui-bar-icons.ui-btn-hover-e .ui-icon-comment,
 .ui-bar.ui-btn-down-e .ui-icon-comment,
 .ui-bar-icons.ui-btn-down-e .ui-icon-comment,
-.ui-bar.ui-btn-up-e.ui-icon-comment,
-.ui-bar-icons.ui-btn-up-e.ui-icon-comment,
+.ui-bar.ui-bar-e.ui-btn-up-e.ui-icon-comment,
+.ui-bar-icons.ui-bar-e.ui-btn-up-e.ui-icon-comment,
 .ui-bar.ui-btn-hover-e.ui-icon-comment,
 .ui-bar-icons.ui-btn-hover-e.ui-icon-comment,
 .ui-bar.ui-btn-down-e.ui-icon-comment,
 .ui-bar-icons.ui-btn-down-e.ui-icon-comment {
   background-position: -128px -384px;
 }
-.ui-bar.ui-btn-up-e .ui-icon-play,
-.ui-bar-icons.ui-btn-up-e .ui-icon-play,
+.ui-bar.ui-bar-e.ui-btn-up-e .ui-icon-play,
+.ui-bar-icons.ui-bar-e.ui-btn-up-e .ui-icon-play,
 .ui-bar.ui-btn-hover-e .ui-icon-play,
 .ui-bar-icons.ui-btn-hover-e .ui-icon-play,
 .ui-bar.ui-btn-down-e .ui-icon-play,
 .ui-bar-icons.ui-btn-down-e .ui-icon-play,
-.ui-bar.ui-btn-up-e.ui-icon-play,
-.ui-bar-icons.ui-btn-up-e.ui-icon-play,
+.ui-bar.ui-bar-e.ui-btn-up-e.ui-icon-play,
+.ui-bar-icons.ui-bar-e.ui-btn-up-e.ui-icon-play,
 .ui-bar.ui-btn-hover-e.ui-icon-play,
 .ui-bar-icons.ui-btn-hover-e.ui-icon-play,
 .ui-bar.ui-btn-down-e.ui-icon-play,
 .ui-bar-icons.ui-btn-down-e.ui-icon-play {
   background-position: -128px -416px;
 }
-.ui-bar.ui-btn-up-e .ui-icon-refresh,
-.ui-bar-icons.ui-btn-up-e .ui-icon-refresh,
+.ui-bar.ui-bar-e.ui-btn-up-e .ui-icon-refresh,
+.ui-bar-icons.ui-bar-e.ui-btn-up-e .ui-icon-refresh,
 .ui-bar.ui-btn-hover-e .ui-icon-refresh,
 .ui-bar-icons.ui-btn-hover-e .ui-icon-refresh,
 .ui-bar.ui-btn-down-e .ui-icon-refresh,
 .ui-bar-icons.ui-btn-down-e .ui-icon-refresh,
-.ui-bar.ui-btn-up-e.ui-icon-refresh,
-.ui-bar-icons.ui-btn-up-e.ui-icon-refresh,
+.ui-bar.ui-bar-e.ui-btn-up-e.ui-icon-refresh,
+.ui-bar-icons.ui-bar-e.ui-btn-up-e.ui-icon-refresh,
 .ui-bar.ui-btn-hover-e.ui-icon-refresh,
 .ui-bar-icons.ui-btn-hover-e.ui-icon-refresh,
 .ui-bar.ui-btn-down-e.ui-icon-refresh,
 .ui-bar-icons.ui-btn-down-e.ui-icon-refresh {
   background-position: -128px -448px;
 }
-.ui-bar.ui-btn-up-e .ui-icon-redheart,
-.ui-bar-icons.ui-btn-up-e .ui-icon-redheart,
+.ui-bar.ui-bar-e.ui-btn-up-e .ui-icon-redheart,
+.ui-bar-icons.ui-bar-e.ui-btn-up-e .ui-icon-redheart,
 .ui-bar.ui-btn-hover-e .ui-icon-redheart,
 .ui-bar-icons.ui-btn-hover-e .ui-icon-redheart,
 .ui-bar.ui-btn-down-e .ui-icon-redheart,
 .ui-bar-icons.ui-btn-down-e .ui-icon-redheart,
-.ui-bar.ui-btn-up-e.ui-icon-redheart,
-.ui-bar-icons.ui-btn-up-e.ui-icon-redheart,
+.ui-bar.ui-bar-e.ui-btn-up-e.ui-icon-redheart,
+.ui-bar-icons.ui-bar-e.ui-btn-up-e.ui-icon-redheart,
 .ui-bar.ui-btn-hover-e.ui-icon-redheart,
 .ui-bar-icons.ui-btn-hover-e.ui-icon-redheart,
 .ui-bar.ui-btn-down-e.ui-icon-redheart,
@@ -2698,6 +2698,22 @@ a.ui-link-inherit {
   bottom: -6px;
   left: 24px;
 }
+.ui-bar-e.small-top-right-arrow::after {
+  width: 0;
+  height: 0;
+  display: inline-block;
+  content: "&darr;";
+  text-indent: -99999px;
+  vertical-align: top;
+  margin-top: 0;
+  margin-left: -8px;
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  border-right: 8px solid #ffe400;
+  position: absolute;
+  bottom: -8px;
+  left: 100%;
+}
 .ui-bar-e a {
   color: #474747;
 }
@@ -3112,6 +3128,7 @@ a.ui-link-inherit {
   -webkit-border-bottom-right-radius: 8px;
   border-bottom-right-radius: 8px;
   padding: 3px 0;
+  border-top: solid rgba(255, 255, 255, 0.3) 1px;
 }
 .snapr-footer .ui-navbar .ui-btn {
   border: none;
@@ -3160,6 +3177,55 @@ a.ui-link-inherit {
 .snapr-footer .ui-navbar .ui-btn-inner .ui-icon {
   top: 0;
   margin-left: -16px;
+}
+.snapr-footer .x-tab-bar-extra {
+  font-weight: bold;
+  line-height: 12px;
+  min-height: 12px;
+  position: absolute;
+  top: -29px;
+  right: 0;
+  margin: 0;
+  white-space: nowrap;
+  color: black;
+  padding: 8px;
+  -moz-border-radius-topleft: 6px;
+  -webkit-border-top-left-radius: 6px;
+  border-top-left-radius: 6px;
+  -moz-border-radius-topright: 6px;
+  -webkit-border-top-right-radius: 6px;
+  border-top-right-radius: 6px;
+  -moz-border-radius-bottomleft: 0;
+  -webkit-border-bottom-left-radius: 0;
+  border-bottom-left-radius: 0;
+  -moz-border-radius-bottomright: 0;
+  -webkit-border-bottom-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.snapr-footer .x-tab-bar-extra .ui-btn-inner {
+  line-height: 12px;
+  min-height: 12px;
+  overflow: visible;
+}
+.snapr-footer .x-tab-bar-extra .ui-btn-inner .ui-btn-text {
+  font-weight: bold;
+  line-height: 12px;
+  min-height: 12px;
+  font-size: 12px;
+  color: #474747;
+  text-shadow: rgba(255, 255, 255, 0.8);
+}
+.snapr-footer .x-tab-bar-extra .ui-btn-inner .activity-count {
+  position: relative;
+}
+.snapr-footer .x-tab-bar-extra .ui-btn-inner .activity-count.icon-left {
+  padding-left: 24px;
+  padding-right: 4px;
+}
+.snapr-footer .x-tab-bar-extra .ui-btn-inner .activity-count.icon-left .ui-icon {
+  position: absolute;
+  left: -6px;
+  top: -8px;
 }
 .competition, .tumblr-streams {
   position: relative;
@@ -4606,7 +4672,7 @@ over rides theme swatch styles for general blue / white style switch
   position: absolute;
   top: 0;
   left: 0px;
-  margin-top: -2px;
+  margin-top: 0!important;
 }
 /* Content shown to new users */
 .helper-content .ui-body {
@@ -5071,7 +5137,6 @@ body.browser-testing .ps-caption-bottom {
 }
 body.browser-testing .ui-footer, body.browser-testing .ui-footer-fixed {
   width: 320px!important;
-  overflow: hidden;
 }
 .platform-logo {
   background-repeat: no-repeat;

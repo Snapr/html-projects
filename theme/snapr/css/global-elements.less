@@ -174,6 +174,7 @@ h4{
         .darkGrad();
         .corner-bottom(@cornersPage);
         padding: 3px 0;
+        border-top: solid rgba(255,255,255,.3) 1px;
 
         .ui-btn{
             border: none;
@@ -228,6 +229,50 @@ h4{
                 margin-left: -@gfxTabBar-grid / 2;
             }
         }
+    }
+    
+    .x-tab-bar-extra{
+        font-weight: bold;
+         line-height: @font-size-small;
+            min-height: @font-size-small;
+        position: absolute;
+        top: -29px;
+        right:0;
+        margin:0;
+        white-space: nowrap;
+        color: black;
+        padding: 8px;
+        
+        .corner-top(@corners);
+        .corner-bottom(0);
+        
+        .ui-btn-inner{
+            line-height: @font-size-small;
+            min-height: @font-size-small;
+            overflow: visible;
+            .ui-btn-text{
+                font-weight: bold;
+                line-height: @font-size-small;
+                min-height: @font-size-small;
+                font-size: @font-size-small;
+                color: @grayDarkOnLIght;
+                text-shadow: @shadowLightOnLight;
+            }
+            
+            .activity-count{
+                position: relative;
+                &.icon-left{
+                    padding-left: 24px;
+                    padding-right: @padding;
+                    .ui-icon{
+                        position: absolute;
+                        left: -6px;
+                        top: -8px;
+                    }
+                }
+            }
+        }
+        
     }
 }
 
@@ -887,6 +932,8 @@ h4{
         min-height: @font-size-small;
         .corner-top(@corners);
     }
+    
+   
     /* Note that the actual arrows get added in the swatches so they get the right colors */
 }
 
@@ -1525,7 +1572,7 @@ over rides theme swatch styles for general blue / white style switch
             position: absolute;
             top: 0; 
             left: 0px;
-            margin-top: -2px;
+            margin-top: 0!important;
         }
     }
 }
@@ -2022,7 +2069,6 @@ body.browser-testing{
     .ui-footer,
     .ui-footer-fixed{
         width: 320px!important;
-        overflow: hidden;
     }
 }
 
