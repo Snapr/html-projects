@@ -1,11 +1,11 @@
 <a class="ui-bar x-details top-left-arrow" data-role="button" data-iconpos="left" data-icon="open" data-theme="c" data-ajax="false">
 <span class="image-details">
-        <em><%= title %></em>
+        <em><%= data.title %></em>
     </span>
 </a>
 
-<a class="x-view-full ui-bar-icons" href="#/competition/?id=<%= id %>"  data-corners="false" data-role="button" data-icon="arrow-r" data-iconpos="right" data-theme="c"></a>
+<a class="x-view-full ui-bar-icons" href="#/competition/?id=<%= data.id %>"  data-corners="false" data-role="button" data-icon="arrow-r" data-iconpos="right" data-theme="c"></a>
 
-<div class="banner">
-    <img class="banner-image" src="<%= banner.mobile %>">
+<div class="banner" <% if(!expand){ %>style="display:none;"<% } %>>
+    <img class="banner-image" src="<%= data.banner.mobile %>">
 </div>

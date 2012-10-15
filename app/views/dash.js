@@ -175,8 +175,8 @@ var competition = view.extend({
         this.load_template('components/dash/competition');
     },
     render: function(){
-        this.$el.addClass('closed');
-        this.$el.html( this.template(this.options.data));
+        this.$el.addClass( this.options.expand ? 'open' : 'closed' );
+        this.$el.html( this.template(this.options) );
         return this;
     },
     toggle: function(){
