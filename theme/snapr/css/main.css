@@ -5299,7 +5299,7 @@ body.browser-testing .ui-footer-fixed {
   display: block;
 }
 #dash.edit .dash-wrapper {
-  margin-top: 86px;
+  margin-top: 94px;
 }
 #dash.edit .dash-footer {
   position: absolute;
@@ -5319,10 +5319,14 @@ body.browser-testing .ui-footer-fixed {
   -webkit-border-bottom-right-radius: 0;
   border-bottom-right-radius: 0;
 }
-#dash.edit .image-stream {
+#dash.edit .image-stream,
+#dash.edit .tumblr-streams,
+#dash.edit .competitions {
   display: none;
 }
-#dash.edit .image-stream.user-stream {
+#dash.edit .image-stream.user-stream,
+#dash.edit .tumblr-streams.user-stream,
+#dash.edit .competitions.user-stream {
   display: block;
 }
 #dash.edit .ui-header .ui-btn-up-a .ui-btn-inner .ui-icon-settings {
