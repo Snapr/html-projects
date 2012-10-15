@@ -10,7 +10,7 @@
     div[data-role="content"]{
         .corner-bottom(0)!important;
     }
-    
+
     //Hide home menu button on pages where the is a tab bar
     div[data-role="header"]{
         *[data-icon="home"]{
@@ -101,7 +101,7 @@
             top: 0;
         }
     }
-    
+
 }
 
 .css-thumb{
@@ -173,21 +173,21 @@ h4{
         .darkGrad();
         .corner-bottom(@cornersPage);
         padding: 3px 0;
-        
+
         .ui-btn{
             border: none;
             margin: 0 3px!important;
             .corner-all (3px)!important;
-            
+
             &.ui-btn-up-b{
                 background: transparent;
             }
-            
+
             &.ui-btn-hover-b{
                 background: lighten(@grayDark, 2%);
                 color: @grayLightOnDark;
             }
-            
+
             &.ui-btn-down-b,
             &.ui-btn-active{
                 background: @grayDark;
@@ -195,33 +195,33 @@ h4{
                 .box-shadow(inset 0px 2px 4px 2px rgba(0, 0, 0, .1))!important;
                 color: white;
                 text-shadow: @shadowMediumOnDark 0px 1px 1px;
-                
+
             }
         }
-        
+
         // Match rounded corners of full palette
         li:first-child .ui-btn{
             .corner-bl(@cornersPage)!important;
         }
-        
+
         li:last-child .ui-btn{
             .corner-br(@cornersPage)!important;
         }
-        
-        
+
+
         .ui-btn-inner {
             padding-top: 32px!important;
             padding-bottom: 4px!important;
             height: 12px;
             line-height: 12px;
-            
+
             .ui-btn-text {
                 font-size: 12px;
                 text-transform: none;
                 text-shadow: @shadowMediumOnDark 0px -1px 1px;
-                
+
             }
-            
+
             .ui-icon {
                 top: 0;
                 margin-left: -@gfxTabBar-grid / 2;
@@ -256,9 +256,9 @@ h4{
 
 .x-follow-btn{
     .ui-btn-inner{
-         position: relative;
+        position: relative;
     }
-   
+
     .ui-icon{
         background-image: url('@{gfx}@{gfxIcons}');  
         position: absolute;
@@ -275,9 +275,9 @@ h4{
         border-top: @borderLightOnLight;
         .corner-top (@cornersPage);
         .ui-btn{
-             .ui-btn-text{
-                 font-size: @font-size;
-                 .button-font-light()
+            .ui-btn-text{
+                font-size: @font-size;
+                .button-font-light()
             }
         }
         .ui-btn-active{
@@ -293,12 +293,12 @@ h4{
             }
         }
         .ui-btn-inner{
-               border-top: none;
-               padding-top: 16px!important;
-               padding-bottom: 11px!important;
-               height: 20px;
-               line-height: 20px
-         }
+            border-top: none;
+            padding-top: 16px!important;
+            padding-bottom: 11px!important;
+            height: 20px;
+            line-height: 20px
+        }
         /* Rounding for 3 column bars */
         .ui-grid-b{
             .ui-block-a{
@@ -308,7 +308,7 @@ h4{
             }
             .ui-block-c{
                 .ui-btn{
-                .corner-tr (@cornersPage);
+                    .corner-tr (@cornersPage);
                 }
             }
         }
@@ -509,8 +509,8 @@ h4{
     }
 }
 .x-invalid .ui-icon-validation{
-       display: block;
-       background-position: @gfxIcons-delete-x @gfxIcons-y-highlight;
+    display: block;
+    background-position: @gfxIcons-delete-x @gfxIcons-y-highlight;
 }
 
 .ui-icon-validation{
@@ -524,18 +524,18 @@ h4{
 .x-valid{
     overflow: hidden; /* if the spinning element overlaps other form elements can cause flicker */
 
-   .ui-icon-validation{
-       display: block;
-       background-position: @gfxIcons-check-x @gfxIcons-y-highlight;
-   }
+    .ui-icon-validation{
+        display: block;
+        background-position: @gfxIcons-check-x @gfxIcons-y-highlight;
+    }
 }
 
 .x-validating{
     overflow: hidden; /* if the spinning element overlaps other form elements can cause flicker */
-   .ui-icon-validation{
-       .spinner();
-       .spin();
-   }
+    .ui-icon-validation{
+        .spinner();
+        .spin();
+    }
 }
 
 
@@ -546,15 +546,15 @@ h4{
         background-image: url('@{gfx}@{gfxAction}'); 
     }
     .ui-checkbox-on {
-           .ui-icon{background-position: @gfxAction-x @gfxAction-tick-y;}
-           &.ui-btn-active{.ui-icon{background-position: @gfxAction-x-hover @gfxAction-tick-y;}
-           }
+        .ui-icon{background-position: @gfxAction-x @gfxAction-tick-y;}
+        &.ui-btn-active{.ui-icon{background-position: @gfxAction-x-hover @gfxAction-tick-y;}
     }
-    .ui-checkbox-off{
-           .ui-icon{background-position: @gfxAction-x @gfxAction-close-y;}
-           &.ui-btn-active{.ui-icon{background-position: @gfxAction-x-hover @gfxAction-close-y;}
-           }
-    }
+}
+.ui-checkbox-off{
+    .ui-icon{background-position: @gfxAction-x @gfxAction-close-y;}
+    &.ui-btn-active{.ui-icon{background-position: @gfxAction-x-hover @gfxAction-close-y;}
+}
+}
 }
 
 /* The magical dance to center a palette with variable width */
@@ -573,7 +573,7 @@ h4{
                 position:relative;
                 left:-50%;
             }
-       }
+        }
     }
 }
 
@@ -583,7 +583,7 @@ h4{
     padding: 6px;
     white-space: nowrap;
     &::after{
-      .arrow-down(@arrow-size, @black-tint, 50%, @arrow-y-shift + 3px);
+        .arrow-down(@arrow-size, @black-tint, 50%, @arrow-y-shift + 3px);
     }
     .ui-controlgroup{
         margin-bottom: 1px;
@@ -610,7 +610,7 @@ h4{
 */
 
 .top-users{
-   .top-user-item{
+    .top-user-item{
         display: inline-block;
     } 
 }
@@ -645,7 +645,7 @@ h4{
     margin: @padding + 1 -@padding;
     position: relative;
     display: block;
-    
+
     .tumblr-exceprt{
         text-align: left;
         background-color: @grayLighter;
@@ -653,13 +653,13 @@ h4{
         min-height: @thumb-height - 1;
         .border-box();
         .corner-all();
-        
+
         .crop-content{
             text-overflow: ellipsis;
             overflow: hidden;
             height:62px;
         }
-        
+
         blockquote{
             margin: @padding;
             border-left: solid 2px @gray;
@@ -679,8 +679,8 @@ h4{
             font-style: italic;
             font-size: @font-size-small;
         }
-       
-        
+
+
         .tumblr-details{
             position: relative;
             font-size: @font-size-small;
@@ -691,7 +691,7 @@ h4{
             margin-left: 4px;
             .border-box();
             top: @padding;
-            
+
             .tumblr-icon{
                 display: block;
                 position: absolute;
@@ -699,20 +699,20 @@ h4{
                 top: 0;
             }
         }
-        
-         &.tumblr-photo,
-         &.tumblr-video{
-                margin-left: @thumb-height + 2px;
-                 blockquote{
-                    margin-left: 0;
-                    border-left: 0;
-                 }
 
+        &.tumblr-photo,
+        &.tumblr-video{
+            margin-left: @thumb-height + 2px;
+            blockquote{
+                margin-left: 0;
+                border-left: 0;
             }
+
+        }
     }
-    
-    
-    
+
+
+
     .tumblr-thumb{
         position: absolute;
         left: 0;
@@ -737,7 +737,7 @@ h4{
     position: relative;
     overflow: visible;
     text-align: left;
-    
+
     .ui-icon{
         right: auto;
         display: inline-block;
@@ -756,8 +756,8 @@ h4{
     .ui-icon-arrow-r {
         right: -10px;
     }
-    
-    
+
+
     h4,
     .ui-btn-inner,
     .ui-bar-inner{
@@ -776,7 +776,7 @@ h4{
             font-size: @font-size-titleBar;
             .ui-bar-font();
         }
-        
+
     }
     .ui-btn{
         background: none;
@@ -792,58 +792,58 @@ h4{
         }
     }
     .image-details{
-           display: block;
-           margin-right: 20px;
-           overflow: hidden;
-           text-overflow: ellipsis;
-           .border-box();
-     }
-     .image-time{
-           position: relative;
-           display: inline-block;
-           padding-left: 20px;
-           color: @grayMediumOnLIght;
-           .ui-icon-clock{
-           }
-       }
-       .image-tag{
-           max-width: 50%;
-           display: inline-block;
-           overflow: hidden;
-           text-overflow: ellipsis;
-       }
-       .spot-name{
-           max-width: 70%;
-           display: inline-block;
-           overflow: hidden;
-           text-overflow: ellipsis;
-       }
+        display: block;
+        margin-right: 20px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        .border-box();
+    }
+    .image-time{
+        position: relative;
+        display: inline-block;
+        padding-left: 20px;
+        color: @grayMediumOnLIght;
+        .ui-icon-clock{
+        }
+    }
+    .image-tag{
+        max-width: 50%;
+        display: inline-block;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .spot-name{
+        max-width: 70%;
+        display: inline-block;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
 
-      .ui-btn-text{
-           display: block;
-          .border-box();
-      }
-      
-      &.ui-btn-icon-left{
-           .ui-btn-text{
-                padding-left: 26px;
-           }
-           .ui-icon{
-               left: -5px;
-               margin-top: -@gfxBar-grid / 2;
-           }
-      }
-      
-      
-      
+    .ui-btn-text{
+        display: block;
+        .border-box();
+    }
+
+    &.ui-btn-icon-left{
+        .ui-btn-text{
+            padding-left: 26px;
+        }
+        .ui-icon{
+            left: -5px;
+            margin-top: -@gfxBar-grid / 2;
+        }
+    }
+
+
+
 
 
     &.top-no-arrow{
         text-align: left;
         .corner-top (@cornersPage);
         .corner-bottom (@cornersNone);
-         .ui-btn-text{
-                padding-left: 20px;
+        .ui-btn-text{
+            padding-left: 20px;
         }
     }
     &.top-no-arrow,
@@ -893,7 +893,7 @@ h4{
         .ui-icon-open{
             background-position: @gfxBar-x @gfxBar-closed-y;
         }
-        
+
         &:after{
             display: none;
         }
@@ -916,7 +916,7 @@ h4{
     text-shadow: @shadowMediumOnDark 0px -1px 0px;
     background-color: @blue;
     .linear-gradient(@blue, @blue-tint);
-    
+
     strong{
         font-size: @font-size-titleBar;
         .ui-bar-font();
@@ -946,6 +946,8 @@ h4{
         margin-bottom: @paddingPage ;
         white-space: no-wrap;
 
+
+
         .ui-bar{
             .image-tag,
             .image-time{
@@ -955,8 +957,8 @@ h4{
                 margin-right: 57px;
             }
         }
-       
-        
+
+
 
         .thumbs-grid{
             padding-top: @padding;
@@ -1056,7 +1058,7 @@ h4{
         .edit-overlay{
             display: none;
             position: absolute;
-            top: 40px;
+            top: 37px;
             width: 109%;
             background-color: rgba(255, 255, 255, .8);
             min-height: @thumb-height;
@@ -1071,43 +1073,47 @@ h4{
                 margin-top: -18px;
             }
             /* Styles for remove btn on streams with no images */
-            &.over-bar{
-                top: 2px;
-                width: auto;
-                min-height: 0;
-                z-index: 10;
+        }
+
+        &.closed{
+            .edit-overlay{
+                top: 0px;
+                height: @bar-height;
+                min-height: @bar-height;
+                z-index: 30;
+                background-color: rgba(255, 255, 255, .2);
                 .remove-stream{
-                    margin-top: 4px;
+                    margin-top: -14px;
                     .ui-btn-inner{
                         padding: 4px 32px 4px 16px;
                     }
                 }
             }
-
         }
 
-       
-
     }
+
+
+
 }
 .edit{
-       .image-stream.user-stream{
-            .edit-overlay{
-                   display: block;
-            }
+    .image-stream.user-stream{
+        .edit-overlay{
+            display: block;
         }
     }
+}
 
 .x-scroll-wrapper {
-  white-space: nowrap;
-  display:inline-block;
+    white-space: nowrap;
+    display:inline-block;
 }
 .x-right-pull, .x-left-pull{
     display:inline;
 }
 
 
- // Abs positioned arrow that often sits to right of bar
+// Abs positioned arrow that often sits to right of bar
 .x-view-full{
     position: absolute;
     top: 0;
@@ -1127,8 +1133,8 @@ h4{
             margin-top: -@gfxBar-grid / 2;
         }
     }
-    
-    
+
+
 }
 
 /* Upload Progress items */
@@ -1164,7 +1170,7 @@ h4{
                 text-overflow: ellipsis;
                 white-space: nowrap;
                 overflow: hidden;
-             }
+            }
 
         }
     }
@@ -1183,21 +1189,21 @@ h4{
     .bar-wrapper{
         position: relative;
         .bar{
-               height: 8px;
-               .corner-all(4px);
-           }
-           .bar-prog{
-               position: absolute;
-               top: 0;
-               left: 0;
-               .linear-gradient(@yellow, @yellow-tint);
-           }
-           .bar-bg{
-               background-color: #C5C4C4;
-               -moz-box-shadow: inset 0 0 9px 2px #AFAEAE;
-               -webkit-box-shadow: inset 0 0 9px 2px #AFAEAE;
-               box-shadow: inset 0 0 9px 2px #AFAEAE;
-           }
+            height: 8px;
+            .corner-all(4px);
+        }
+        .bar-prog{
+            position: absolute;
+            top: 0;
+            left: 0;
+            .linear-gradient(@yellow, @yellow-tint);
+        }
+        .bar-bg{
+            background-color: #C5C4C4;
+            -moz-box-shadow: inset 0 0 9px 2px #AFAEAE;
+            -webkit-box-shadow: inset 0 0 9px 2px #AFAEAE;
+            box-shadow: inset 0 0 9px 2px #AFAEAE;
+        }
     }
     .bar-action{
         position: absolute;
@@ -1232,20 +1238,20 @@ h4{
 
 .wrap-content{
     h1,
-   h4,
-   p,
-   a{
-       white-space: normal!important;
-   }
-   h1,
-   h4{
-       margin-left:8px!important;
+    h4,
+    p,
+    a{
+        white-space: normal!important;
+    }
+    h1,
+    h4{
+        margin-left:8px!important;
 
-   }
-   p{
-       margin:8px 24px 8px 0!important;
-       font-family:@font;
-   }
+    }
+    p{
+        margin:8px 24px 8px 0!important;
+        font-family:@font;
+    }
 }
 
 .plain-link{
@@ -1284,14 +1290,14 @@ h4{
 .loading{
     .search-header{
         .ui-input-search{
-               .ui-input-clear {
-                   display:block;
-                   .ui-icon-delete{
-                       .spinner();
-                       .spin();
-                   }
-               }
-           }
+            .ui-input-clear {
+                display:block;
+                .ui-icon-delete{
+                    .spinner();
+                    .spin();
+                }
+            }
+        }
     }
 
 }
@@ -1299,7 +1305,7 @@ h4{
 
 
 /* @switch
-    over rides theme swatch styles for general blue / white style switch
+over rides theme swatch styles for general blue / white style switch
 */
 .ui-slider-switch{
 
@@ -1397,15 +1403,15 @@ h4{
         height: 32px;
     }
     &.facebook-logo{
-       width: 108px;
-       background-position: @gfxService-x @gfxService-y-facebook;
-       height: 32px;
-   }
-   &.snapr-logo{
-         width: 80px;
-         background-position: @gfxService-x @gfxService-y-snapr;
-         height: 32px;
-     }
+        width: 108px;
+        background-position: @gfxService-x @gfxService-y-facebook;
+        height: 32px;
+    }
+    &.snapr-logo{
+        width: 80px;
+        background-position: @gfxService-x @gfxService-y-snapr;
+        height: 32px;
+    }
 }
 
 .invisible-submit-button{
@@ -1426,25 +1432,25 @@ h4{
 .header-toggle{
     .ui-btn{
         .ui-btn-inner{
-                padding: 0;
-            }
-            .ui-btn-text{
-                text-indent: -999px;
+            padding: 0;
+        }
+        .ui-btn-text{
+            text-indent: -999px;
+            display: block;
+            width: 44px;
+            height: 30px;
+            .ui-icon{
                 display: block;
-                width: 44px;
-                height: 30px;
-                .ui-icon{
-                    display: block;
-                    width: 40px;
-                    height: 40px;
-                    position: absolute;
-                    top: -4px;
-                    left: 2px;
-                }
-                
-            }    
+                width: 40px;
+                height: 40px;
+                position: absolute;
+                top: -4px;
+                left: 2px;
+            }
+
+        }    
     }
-    
+
 }
 
 
@@ -1492,13 +1498,13 @@ h4{
 
 .retry-offline{
     display: block;
-       
+
     .ui-icon-connection{
-       
+
         background-position: @gfxBar-x-d @gfxBar-connection-y;
     }
     &.ui-btn-icon-left{
-         .ui-btn-text{
+        .ui-btn-text{
             padding-left: 32px;
             padding-right: 32px;
             text-align: left;
@@ -1657,9 +1663,9 @@ h4{
         margin: 5px 0 0 -40px;
         left: 50%;
         position: absolute;
-         -moz-box-shadow: 0 1px 0 @shadowLightOnDark;
-         -webkit-box-shadow: 0 1px 0 @shadowLightOnDark;
-         box-shadow: 0 1px 0 @shadowLightOnDark;
+        -moz-box-shadow: 0 1px 0 @shadowLightOnDark;
+        -webkit-box-shadow: 0 1px 0 @shadowLightOnDark;
+        box-shadow: 0 1px 0 @shadowLightOnDark;
         .ui-checkbox label,
         .ui-radio label{
             font-size: @font-size-small;
@@ -1700,10 +1706,10 @@ h4{
             .corner-all(@cornersRound);
             border: @borderMediumOnLight;
         }
-      &.ui-body-d{
-          border: none;
-          border-bottom: @borderMediumOnLight;
-      }
+        &.ui-body-d{
+            border: none;
+            border-bottom: @borderMediumOnLight;
+        }
     }
 }
 
@@ -1711,16 +1717,16 @@ h4{
 .linked-services{
     .ui-collapsible-heading{
         .ui-btn-inner{
-           padding: 16px 40px 16px 16px;
-           .ui-btn-text{
+            padding: 16px 40px 16px 16px;
+            .ui-btn-text{
                 padding-left: 28px;
-           }
-       }
-       .sharing-icon-small {
-           position: absolute;
-           top: -3px;
-           left: 0;
-       }
+            }
+        }
+        .sharing-icon-small {
+            position: absolute;
+            top: -3px;
+            left: 0;
+        }
     }
     li{
         margin-bottom: 0;
@@ -1730,27 +1736,27 @@ h4{
 }
 
 /* making list style icons look the same is a drag..
- different markup format between collapsible headings and list links */
+different markup format between collapsible headings and list links */
 
 .add-services,
 .share-icons-list{
     li.ui-li{
-       margin-bottom: 0;
-       .ui-btn-text{
-          padding: 0;
-          width: auto;
-          .ui-link-inherit{
-             padding: 16px 40px 16px 44px!important;
-             position: relative;
-             overflow: visible;
-          }
-      }
-      .sharing-icon-small {
-          position: absolute;
-          top: 14px;
-          left: 16px;
-      }
-   }
+        margin-bottom: 0;
+        .ui-btn-text{
+            padding: 0;
+            width: auto;
+            .ui-link-inherit{
+                padding: 16px 40px 16px 44px!important;
+                position: relative;
+                overflow: visible;
+            }
+        }
+        .sharing-icon-small {
+            position: absolute;
+            top: 14px;
+            left: 16px;
+        }
+    }
 }
 
 
@@ -1819,12 +1825,12 @@ h4{
 
 .add-services{
 
-   .shared,
-   .ready{
-     .ui-icon-arrow-r{
-        display: none;
-     }
-   }
+    .shared,
+    .ready{
+        .ui-icon-arrow-r{
+            display: none;
+        }
+    }
 
     .connect-status{
         position: absolute;
@@ -1934,7 +1940,7 @@ div.ps-carousel-item-loading
     .x-ajax-loading{
         .ui-icon{
             opacity: .4;
-            }
+        }
     }
 }
 
@@ -2000,7 +2006,7 @@ body.browser-testing{
     .ps-caption-bottom{
         top: 435px!important;
     }
-    
+
     .ui-footer,
     .ui-footer-fixed{
         width: 320px!important;

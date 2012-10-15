@@ -4290,7 +4290,7 @@ h4 {
 .image-streams .image-stream .edit-overlay {
   display: none;
   position: absolute;
-  top: 40px;
+  top: 37px;
   width: 109%;
   background-color: rgba(255, 255, 255, 0.8);
   min-height: 101px;
@@ -4307,16 +4307,17 @@ h4 {
   top: 50%;
   margin-top: -18px;
 }
-.image-streams .image-stream .edit-overlay.over-bar {
-  top: 2px;
-  width: auto;
-  min-height: 0;
-  z-index: 10;
+.image-streams .image-stream.closed .edit-overlay {
+  top: 0px;
+  height: 32px;
+  min-height: 32px;
+  z-index: 30;
+  background-color: rgba(255, 255, 255, 0.2);
 }
-.image-streams .image-stream .edit-overlay.over-bar .remove-stream {
-  margin-top: 4px;
+.image-streams .image-stream.closed .edit-overlay .remove-stream {
+  margin-top: -14px;
 }
-.image-streams .image-stream .edit-overlay.over-bar .remove-stream .ui-btn-inner {
+.image-streams .image-stream.closed .edit-overlay .remove-stream .ui-btn-inner {
   padding: 4px 32px 4px 16px;
 }
 .edit .image-stream.user-stream .edit-overlay {
@@ -4515,7 +4516,7 @@ h4 {
   -webkit-animation-timing-function: linear;
 }
 /* @switch
-    over rides theme swatch styles for general blue / white style switch
+over rides theme swatch styles for general blue / white style switch
 */
 .ui-slider-switch {
   -moz-border-radius: 20px;
@@ -4921,7 +4922,7 @@ h4 {
   margin-bottom: 0;
 }
 /* making list style icons look the same is a drag..
- different markup format between collapsible headings and list links */
+different markup format between collapsible headings and list links */
 .add-services li.ui-li,
 .share-icons-list li.ui-li {
   margin-bottom: 0;
