@@ -4258,6 +4258,7 @@ h4 {
   background-position: 0 -112px;
   -webkit-transform: rotate(180deg) translateZ(0);
 }
+.image-streams .image-stream.loading .load-more-inline .ui-icon-refresh,
 .image-streams .image-stream .x-loading .load-more-inline .ui-icon-refresh {
   background-image: url('../gfx/spinner.png');
   background-position: center;
@@ -5253,7 +5254,8 @@ body.browser-testing .ui-footer-fixed {
 }
 .dash-wrapper {
   min-height: 316px;
-  oveflow: hidden;
+  top: -8px;
+  position: relative;
 }
 .dash-footer {
   height: 86px;
