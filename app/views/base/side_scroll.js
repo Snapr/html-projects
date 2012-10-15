@@ -76,6 +76,18 @@ return view.extend({
         this.$el.toggleClass('open closed');
     },
 
+    close: function(){
+        if(this.$el.hasClass('open')){
+            this.toggle_stream();
+        }
+    },
+
+    open: function(){
+        if(this.$el.hasClass('closed')){
+            this.toggle_stream();
+        }
+    },
+
     scroll_init: function(){
         var scroll_el = $('.x-scroll-area', this.el),
             details = $('.x-details', this.el),
