@@ -104,8 +104,6 @@ return page_view.extend({
             location: {}
         });
 
-        this.model.bind( "change", this.render );
-
         this.model.fetch({
             success: function( model ){
 
@@ -131,6 +129,8 @@ return page_view.extend({
                 if( !local_storage.get( "foursquare-sharing" ) && !share_photo_view.query.location ){
                     share_photo_view.get_reverse_geocode();
                 }
+
+                share_photo_view.render();
             },
             error: function(){
                 console.error( "photo fetch error" );
