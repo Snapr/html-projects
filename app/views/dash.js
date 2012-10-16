@@ -355,6 +355,7 @@ var add_person = page_view.extend({
             }});
             this_back_view.$el.removeClass('edit');
             this_back();
+            $.mobile.showPageLoadingMsg();
         });
 
         people_list.listview().listview("refresh");
@@ -438,6 +439,7 @@ var add_search = page_view.extend({
             }
         };
 
+
         if (nearby){
             var add_search = this;
             stream_object.query.radius = nearby;
@@ -447,13 +449,14 @@ var add_search = page_view.extend({
                 stream_object.query.longitude = position.coords.longitude;
 
                 var stream = new dash_stream_model( stream_object );
-                $.mobile.showPageLoadingMsg();
                 stream.save({}, {success: function(){
                     add_search.previous_view.model.streams.add(stream);
                     $.mobile.hidePageLoadingMsg();
                 }});
                 add_search.previous_view.$el.removeClass('edit');
                 add_search.back();
+
+                $.mobile.showPageLoadingMsg();
             };
             var error_callback = function( error ){
                 console.warn( "error getting geolocation", error );
@@ -465,13 +468,14 @@ var add_search = page_view.extend({
         }else{
             var stream = new dash_stream_model( stream_object ),
                 dash = this.previous_view;
-            $.mobile.showPageLoadingMsg();
             stream.save({}, {success: function(){
                 dash.model.streams.add(stream);
                 $.mobile.hidePageLoadingMsg();
             }});
             this.previous_view.$el.removeClass('edit');
             this.back();
+
+            $.mobile.showPageLoadingMsg();
         }
 
     }
