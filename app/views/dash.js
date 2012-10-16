@@ -1,11 +1,46 @@
 /*global _  define require */
-define(['config', 'backbone', 'views/base/view', 'views/base/page', 'views/base/side_scroll',
-    'models/dash', 'models/dash_stream', 'collections/user', 'collections/tumblr_post',
-    'views/components/no_results', 'views/people_li', 'views/tumblr_item',
-    'utils/geo', 'auth', 'utils/alerts', 'utils/query'],
-    function(config, Backbone, view, page_view, side_scroll, dash_model, dash_stream_model,
-        user_collection, tumblr_post_collection, no_results,
-        people_li, tumblr_item_view, geo, auth, alerts, Query){
+define([
+        'config',
+        'backbone',
+        'auth',
+
+        'views/base/view',
+        'views/base/page',
+        'views/base/side_scroll',
+        'views/people_li',
+        'views/components/no_results',
+
+        'models/dash',
+        'models/dash_stream',
+
+        'collections/user',
+        'collections/tumblr_post',
+
+        'utils/geo',
+        'utils/alerts',
+        'utils/query'
+    ],
+    function(
+        config,
+        Backbone,
+        auth,
+
+        view,
+        page_view,
+        side_scroll,
+        people_li,
+        no_results,
+
+        dash_model,
+        dash_stream_model,
+
+        user_collection,
+        tumblr_post_collection,
+
+        geo,
+        alerts,
+        Query
+    ){
 
 var dash_view = page_view.extend({
 
