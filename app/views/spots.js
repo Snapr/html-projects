@@ -43,6 +43,7 @@ var spots_view =  page_view.extend({
         };
 
         var error_callback = function() {
+            this.$('.x-location-needed').attr('disabled', true);
             this_view.search(search_options);
         };
 
@@ -65,9 +66,9 @@ var spots_view =  page_view.extend({
         "click .ui-input-clear": "search_event",
         "submit form": "search_event"
     },
-    
+
     get_override_tab: function(){ return 'spots'; },
-    
+
 
     render: function() {
         var spots_list = this.$el.find("ul.spots").empty();
