@@ -257,7 +257,7 @@ var dash_stream = side_scroll.extend({
             title = title.replace(this.model.get("query").keywords, '<span class="hash">#</span>' + this.model.get("query").keywords);
         }
         if(this.model.get("query").radius){
-            title = title +  ' (' + this.model.get("query").radius/1000 +'km)';
+            title = title +  ' <span class="radius">(' + this.model.get("query").radius/1000 +'km)</span>';
         }
         return title;
     },
