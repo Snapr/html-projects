@@ -3009,6 +3009,7 @@ a.ui-link-inherit {
   -moz-border-radius-bottomright: 0 !important;
   -webkit-border-bottom-right-radius: 0 !important;
   border-bottom-right-radius: 0 !important;
+  padding-bottom: 40px;
 }
 *[data-tab-bar="true"] .inline-footer.feed-footer .ui-btn {
   -moz-border-radius-bottomleft: 0 !important;
