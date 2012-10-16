@@ -117,7 +117,7 @@ return page_view.extend({
                     location.foursquare_venue_id = share_photo_view.query.foursquare_venue_id;
                     location.foursquare_venue_name = unescape(share_photo_view.query.foursquare_venue_name);
                 }
-                if(location){
+                if(location && location.latitude){
                     model.set('location', location);
                 }
 
