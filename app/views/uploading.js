@@ -70,40 +70,41 @@ var uploading = page_view.extend({
         var $image_stream_container = this.$( ".image-streams" ).empty();
 
         if(this.comp){
-            this.popular_nearby_stream = new uploading_image_stream({
-                stream_type: "popular-nearby",
+            this.popular_nearby_stream = new side_scroll({
                 latitude: this.latitude,
                 longitude: this.longitude,
                 comp_id: this.comp.id,
-                expand: true
+                sort: 'weighted_score',
+                expand: true,
+                title: 'popular entries'
             });
             $image_stream_container.append( this.comp_template(this.comp.attributes) ).trigger('create');
         }else{
             if (this.foursquare_venue){
-                this.recent_nearby_stream = new uploading_image_stream({
-                    stream_type: "spot",
+                this.recent_nearby_stream = new side_scroll({
                     foursquare_venue: this.foursquare_venue,
                     venue_name: this.venue_name,
-                    expand: true
+                    expand: true,
+                    title: '@ ' + this.venue_name
                 });
             }else{
                 if (this.latitude && this.longitude && parseFloat(this.latitude, 10) && parseFloat(this.longitude, 10)){
-                    this.recent_nearby_stream = new uploading_image_stream({
-                        stream_type: "recent-nearby",
+                    this.recent_nearby_stream = new side_scroll({
                         latitude: this.latitude,
                         longitude: this.longitude,
-                    expand: true
+                        expand: true,
+                        title: 'nearby'
                     });
                 }
             }
 
             if (this.latitude && this.longitude && parseFloat(this.latitude, 10) && parseFloat(this.longitude, 10)){
-                this.popular_nearby_stream = new uploading_image_stream({
-                    stream_type: "popular-nearby",
+                this.popular_nearby_stream = new side_scroll({
                     latitude: this.latitude,
                     longitude: this.longitude,
-                    expand: true
-                    //container: $image_stream_container
+                    sort: 'weighted_score',
+                    expand: true,
+                    title: 'popular nearby'
                 });
             }
 
@@ -235,46 +236,6 @@ var uploading = page_view.extend({
             this.progress_view.queued(true);
         }
         this.$('.offline').show();
-    }
-});
-
-var uploading_image_stream = side_scroll.extend({
-    tagName: 'li',
-    className: 'image-stream',
-
-    post_initialize: function(){
-        this.details = {
-            stream_type: this.options.stream_type,
-            latitude: this.options.latitude,
-            longitude: this.options.longitude,
-            foursquare_venue: this.options.foursquare_venue,
-            venue_name: this.options.venue_name
-        };
-
-        switch (this.details.stream_type){
-            case "popular-nearby":
-                this.collection.data = {
-                    latitude: this.details.latitude,
-                    longitude: this.details.longitude,
-                    radius: 5000,
-                    sort: "weighted_score"
-                };
-                break;
-            case "recent-nearby":
-                this.collection.data = {
-                    latitude: this.details.latitude,
-                    longitude: this.details.longitude,
-                    radius: 5000
-                };
-                break;
-            case "spot":
-                this.collection.data = {
-                    foursquare_venue: this.details.foursquare_venue
-                };
-                break;
-        }
-        this.collection.data.n = config.get('side_scroll_initial');
-
     }
 });
 
