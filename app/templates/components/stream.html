@@ -21,7 +21,11 @@
                 </a>
             <% }); %>
             <% if(!photos.length){ %>
-                <a class="x-thumb"><!-- we need something to scroll to even when there are no photos --></a>
+                <a class="x-no-photos x-thumb thumb-med load-more-inline">
+                <!-- we need something to scroll to even when there are no photos -->
+                <span class="ui-btn-text x-msg">No Photos</span>
+                
+                </a>
             <% } %>
         </div>
         <div class="x-right-pull thumb-med load-more-inline">
