@@ -4121,7 +4121,7 @@ a.ui-link-inherit {
   color: #666666;
 }
 .ui-bar .image-tag {
-  max-width: 50%;
+  max-width: 35%;
   display: inline-block;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -4296,11 +4296,14 @@ a.ui-link-inherit {
   margin-bottom: 8px;
   white-space: no-wrap;
 }
-.image-streams .image-stream .ui-bar .image-tag, .image-streams .image-stream .ui-bar .image-time {
-  display: none;
-}
 .image-streams .image-stream .ui-bar .image-details {
   margin-right: 57px;
+}
+.image-streams .image-stream.closed .ui-bar .image-tag,
+.image-streams .image-stream.no-photos .ui-bar .image-tag,
+.image-streams .image-stream.closed .ui-bar .image-time,
+.image-streams .image-stream.no-photos .ui-bar .image-time {
+  display: none;
 }
 .image-streams .image-stream .thumbs-grid {
   padding-top: 4px;
@@ -7360,6 +7363,13 @@ body.browser-testing .ui-footer, body.browser-testing .ui-footer-fixed {
     -webkit-background-size: 774px 180px;
     background-size: 774px 180px;
   }
+  .tab-bar-icons .ui-icon {
+    background-image: url('../gfx/retina/tab-bar-icons.png');
+    -moz-background-size: 64px 192px;
+    -o-background-size: 64px 192px;
+    -webkit-background-size: 64px 192px;
+    background-size: 64px 192px;
+  }
   .ui-icon.helper-icons, .helper-icons .ui-icon {
     background-image: url('../gfx/retina/helper-icons.png');
     -moz-background-size: 96px 96px;
@@ -7402,6 +7412,9 @@ body.browser-testing .ui-footer, body.browser-testing .ui-footer-fixed {
     -webkit-background-size: 100px 100px;
     background-size: 100px 100px;
   }
+  .ui-bar.ui-icon,
+  .ui-bar-icons.ui-icon,
+  .ui-bar-icons .ui-icon,
   .ui-bar .ui-icon {
     background-image: url('../gfx/retina/ui-bar-icons.png');
     -moz-background-size: 160px 512px;
@@ -7590,7 +7603,7 @@ body.browser-testing .ui-footer, body.browser-testing .ui-footer-fixed {
     -webkit-background-size: 56px 168px;
     background-size: 56px 168px;
   }
-  .image-streams .image-stream .x-loading .load-more-inline .ui-icon-refresh {
+  .image-streams .image-stream .x-loading .load-more-inline .ui-icon-refresh, .image-streams .image-stream.loading .load-more-inline .ui-icon-refresh {
     background-image: url('../gfx/retina/spinner.png') !important;
     -moz-background-size: 56px 56px;
     -o-background-size: 56px 56px;
@@ -7631,12 +7644,5 @@ body.browser-testing .ui-footer, body.browser-testing .ui-footer-fixed {
     -o-background-size: 774px 180px;
     -webkit-background-size: 774px 180px;
     background-size: 774px 180px;
-  }
-  .tab-bar-icons .ui-icon {
-    background-image: url('../gfx/retina/tab-bar-icons.png');
-    -moz-background-size: 64px 192px;
-    -o-background-size: 64px 192px;
-    -webkit-background-size: 64px 192px;
-    background-size: 64px 192px;
   }
 }

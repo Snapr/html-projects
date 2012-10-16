@@ -866,7 +866,7 @@ h4{
         }
     }
     .image-tag{
-        max-width: 50%;
+        max-width: 35%;
         display: inline-block;
         overflow: hidden;
         text-overflow: ellipsis;
@@ -1019,12 +1019,19 @@ h4{
         white-space: no-wrap;
 
         .ui-bar{
-            .image-tag,
-            .image-time{
-                display: none;
-            }
+    
             .image-details{
                 margin-right: 57px;
+            }
+        }
+        
+        &.closed,
+        &.no-photos{
+            .ui-bar{
+                .image-tag,
+                .image-time{
+                    display: none;
+                }
             }
         }
 
