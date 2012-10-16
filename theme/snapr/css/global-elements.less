@@ -20,9 +20,7 @@
     }
 
     .inline-footer{
-        .corner-bottom(0)!important;
-        padding-bottom: 40px;
-        
+        .corner-bottom(0)!important;        
         &.feed-footer{
             .ui-btn{
                 .corner-bottom(0)!important;
@@ -35,6 +33,7 @@
 // Feed content to show for 'my snaps' feed
 .x-my-snaps-only{display: none!important;}
 .my-snaps .x-my-snaps-only{display: inline-block!important;}
+.my-snaps .x-not-on-my-snaps{display: none!important;}
 
 
 .underline{
@@ -176,7 +175,7 @@ h4{
         .darkGrad();
         .corner-bottom(@cornersPage);
         padding: 3px 0;
-        border-top: solid rgba(255,255,255,.3) 1px;
+        border-top: solid lighten(@grayDark, 20%) 1px;
 
         .ui-btn{
             border: none;
@@ -235,8 +234,8 @@ h4{
     
     .x-tab-bar-extra{
         font-weight: bold;
-         line-height: @font-size-small;
-            min-height: @font-size-small;
+        line-height: @font-size-small;
+        min-height: @font-size-small;
         position: absolute;
         top: -29px;
         right:0;
@@ -244,6 +243,7 @@ h4{
         white-space: nowrap;
         color: black;
         padding: 8px;
+        .box-shadow(none);
         
         .corner-top(@corners);
         .corner-bottom(0);
