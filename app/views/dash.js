@@ -51,15 +51,20 @@ var dash_view = page_view.extend({
 
         this.model.streams.bind( 'remove', this.remove_stream );
         this.model.streams.bind( 'add', this.add_stream );
+        //this.model.streams.bind( 'all', function(a,b,c){console.log(a,b,c);} );
+
+        this.rendered = false;
     },
 
     post_activate: function(){
         this.change_page();
 
-        // make sure image streams are emptied
-        this.$('.image-streams').empty();
+        if(this.rendered){
+            this.background_update();
+        }else{
+            this.populate();
+        }
 
-        this.populate();
     },
 
     events: {
@@ -74,19 +79,37 @@ var dash_view = page_view.extend({
 
         $.mobile.showPageLoadingMsg();
 
+        var dash = this;
+        this.fetch(function(){
+            dash.render();
+        });
+    },
+
+    background_update: function(){
+
+        this.$el.addClass('background-loading');
+
+        var dash = this;
+        this.fetch(function(){
+            console.log(dash, this);
+            dash.render();
+        });
+    },
+
+    fetch: function(success){
+
         var dash = this,
             options = {
                 data: {
                     n:0
                 },
-                success: function(){
-                    dash.render();
-                },
+                success: success,
                 error: function(){
                     console.error('Error loading dash from server');
                 },
                 complete: function(){
                     $.mobile.hidePageLoadingMsg();
+                    dash.$el.removeClass('background-loading');
                 }
             };
 
@@ -150,6 +173,9 @@ var dash_view = page_view.extend({
         });
 
         this.$el.trigger( "create" );
+
+        this.rendered = true;
+        return this;
     },
 
     add_search: function(){
