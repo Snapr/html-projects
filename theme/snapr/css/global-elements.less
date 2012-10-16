@@ -295,6 +295,9 @@ h4{
         margin: 0 -@padding * 2;
         background-color: @grayLighter;
         min-height: 100px;
+        .banner-image{
+            display: block;
+        }
     }
 }
 
@@ -689,7 +692,9 @@ h4{
 }
 
 .tumblr-item{
-    min-height: @thumb-height - 1;
+    min-height: @thumb-height;
+   height: @thumb-height;
+   overflow: hidden;
     margin: @padding + 1 -@padding;
     position: relative;
     display: block;
@@ -698,7 +703,7 @@ h4{
         text-align: left;
         background-color: @grayLighter;
         padding: @padding * 2;
-        min-height: @thumb-height - 1;
+        min-height: @thumb-height;
         .border-box();
         .corner-all();
 
@@ -1021,6 +1026,7 @@ h4{
 
         .thumbs-grid{
             padding-top: @padding;
+            height: @thumb-height;
         }
         .x-thumbs{
             display: inline-block;

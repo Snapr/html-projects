@@ -3363,6 +3363,9 @@ a.ui-link-inherit {
   background-color: #f7f7f7;
   min-height: 100px;
 }
+.competition .banner .banner-image {
+  display: block;
+}
 .x-follow-btn .ui-btn-inner {
   position: relative;
 }
@@ -3938,7 +3941,9 @@ a.ui-link-inherit {
   background-color: #fbfbfb;
 }
 .tumblr-item {
-  min-height: 100px;
+  min-height: 101px;
+  height: 101px;
+  overflow: hidden;
   margin: 5px -4px;
   position: relative;
   display: block;
@@ -3947,7 +3952,7 @@ a.ui-link-inherit {
   text-align: left;
   background-color: #f7f7f7;
   padding: 8px;
-  min-height: 100px;
+  min-height: 101px;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
@@ -4289,6 +4294,7 @@ a.ui-link-inherit {
 }
 .image-streams .image-stream .thumbs-grid {
   padding-top: 4px;
+  height: 101px;
 }
 .image-streams .image-stream .x-thumbs {
   display: inline-block;
