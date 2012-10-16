@@ -4285,6 +4285,24 @@ a.ui-link-inherit {
   vertical-align: middle;
   margin-left: 10px;
 }
+.image-streams .image-stream .x-no-photos {
+  display: none;
+}
+.image-streams .image-stream .x-no-photos .x-msg {
+  background-color: rgba(0, 0, 0, 0.12);
+  padding: 36px 0;
+  width: 84px;
+  -moz-border-radius: 44px;
+  -webkit-border-radius: 44px;
+  border-radius: 44px;
+  color: white;
+  height: 12px;
+  vertical-align: middle;
+  margin-left: 10px;
+}
+.image-streams .image-stream.no-photos .x-no-photos {
+  display: block;
+}
 .image-streams .image-stream .edit-overlay {
   display: none;
   position: absolute;
