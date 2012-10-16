@@ -3097,7 +3097,6 @@ a.ui-link-inherit {
   -moz-border-radius-bottomright: 0 !important;
   -webkit-border-bottom-right-radius: 0 !important;
   border-bottom-right-radius: 0 !important;
-  padding-bottom: 40px;
 }
 *[data-tab-bar="true"] .inline-footer.feed-footer .ui-btn {
   -moz-border-radius-bottomleft: 0 !important;
@@ -3112,6 +3111,9 @@ a.ui-link-inherit {
 }
 .my-snaps .x-my-snaps-only {
   display: inline-block !important;
+}
+.my-snaps .x-not-on-my-snaps {
+  display: none!important;
 }
 .underline {
   text-decoration: underline;
@@ -3253,7 +3255,7 @@ a.ui-link-inherit {
   -webkit-border-bottom-right-radius: 8px;
   border-bottom-right-radius: 8px;
   padding: 3px 0;
-  border-top: solid rgba(255, 255, 255, 0.3) 1px;
+  border-top: solid #747b7d 1px;
 }
 .snapr-footer .ui-navbar .ui-btn {
   border: none;
@@ -3314,6 +3316,9 @@ a.ui-link-inherit {
   white-space: nowrap;
   color: black;
   padding: 8px;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
   -moz-border-radius-topleft: 6px;
   -webkit-border-top-left-radius: 6px;
   border-top-left-radius: 6px;
