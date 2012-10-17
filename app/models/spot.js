@@ -20,7 +20,7 @@ return  Backbone.Model.extend({
 
     // try removing this, the api should be updated to cope without it
     sync: function(method, model, options){
-        options.data = {spot_id: model.id};
+        options.data = _.extend(options.data, {spot_id: model.id});
         return Backbone.sync.call(this, method, model, options);
     }
 

@@ -10,7 +10,7 @@ var spot_view = page_view.extend({
     },
 
     post_activate: function(options) {
-        this.model = new spot_model();
+        this.model = new spot_model({id: options.query.spot_id});
         this.photos = new photo_collection();
 
 
@@ -37,7 +37,6 @@ var spot_view = page_view.extend({
         var spot_view = this,
             options = {
                 data: {
-                    spot_id: spot_view.spot_id,
                     full: true
                 },
                 success: function() {
