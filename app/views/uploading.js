@@ -55,7 +55,7 @@ var uploading = page_view.extend({
         }else{
             // no photo_id = in appmode the photo is probably being uploaded by the native
             // app in the background, we can show progress here.
-            this.render();
+            this.render_streams();
         }
         this.update_uploads();
     },
@@ -66,78 +66,89 @@ var uploading = page_view.extend({
 
     get_override_tab: function(){ return 'share'; },
 
-    render: function(){
+    render_streams: function(){
         var $image_stream_container = this.$( ".image-streams" ).empty();
 
+
         if(this.comp){
-            this.popular_nearby_stream = new side_scroll({
-                latitude: this.latitude,
-                longitude: this.longitude,
-                comp_id: this.comp.id,
-                sort: 'weighted_score',
-                expand: true,
-                title: 'popular entries'
-            });
-            $image_stream_container.append( this.comp_template(this.comp.attributes) ).trigger('create');
+            this.insert_comp_streams();
         }else{
+            var location_available = this.latitude && this.longitude && parseFloat(this.latitude, 10) && parseFloat(this.longitude, 10);
+
             if (this.foursquare_venue){
-                this.recent_nearby_stream = new side_scroll({
-                    foursquare_venue: this.foursquare_venue,
-                    venue_name: this.venue_name,
-                    expand: true,
-                    title: '@ ' + this.venue_name
-                });
-            }else{
-                if (this.latitude && this.longitude && parseFloat(this.latitude, 10) && parseFloat(this.longitude, 10)){
-                    this.recent_nearby_stream = new side_scroll({
-                        latitude: this.latitude,
-                        longitude: this.longitude,
-                        expand: true,
-                        title: 'nearby'
-                    });
-                }
+                this.insert_venue_streams();
+            }else if(location_available){
+                this.insert_location_streams();
             }
 
-            if (this.latitude && this.longitude && parseFloat(this.latitude, 10) && parseFloat(this.longitude, 10)){
-                this.popular_nearby_stream = new side_scroll({
-                    latitude: this.latitude,
-                    longitude: this.longitude,
-                    sort: 'weighted_score',
-                    expand: true,
-                    title: 'popular nearby'
-                });
+            if(location_available){
+                this.insert_popular_nearby_stream();
             }
-
         }
 
-        if (this.recent_nearby_stream){
-            var recent_nearby_stream = this.recent_nearby_stream;
-            recent_nearby_stream.collection.fetch({
-                data:{n:6},
-                success: function(){
-                    $image_stream_container.prepend( recent_nearby_stream.el );
-                    recent_nearby_stream.render();
-                    recent_nearby_stream.$el.trigger( "create" );
-                }
-            });
-        }
+        $image_stream_container.trigger('create');
 
-        if (this.popular_nearby_stream){
-            var popular_nearby_stream = this.popular_nearby_stream;
-            popular_nearby_stream.collection.fetch({
-                data:{n:6},
-                success: function(){
-                    $image_stream_container.prepend( popular_nearby_stream.el );
-                    popular_nearby_stream.render();
-                    popular_nearby_stream.$el.trigger( "create" );
-                }
-            });
-        }
+    },
 
-        if(!this.recent_nearby_stream && !this.popular_nearby_stream){
-            $image_stream_container.prepend( this.get_template('components/uploading/stream_placeholder')() ).trigger('create');
-        }
+    insert_comp_streams: function(){
+        var $image_stream_container = this.$( ".image-streams" );
 
+        var comp_stream = new side_scroll({
+            latitude: this.latitude,
+            longitude: this.longitude,
+            comp_id: this.comp.id,
+            sort: 'weighted_score',
+            expand: true,
+            title: 'popular entries'
+        });
+
+        $image_stream_container.append( comp_stream.el );
+        comp_stream.render();
+
+        $image_stream_container.append( this.comp_template(this.comp.attributes) );
+    },
+
+
+    insert_venue_streams: function(){
+        var $image_stream_container = this.$( ".image-streams" );
+
+        var venue_stream = new side_scroll({
+            foursquare_venue: this.foursquare_venue,
+            venue_name: this.venue_name,
+            expand: true,
+            title: '@ ' + this.venue_name
+        });
+
+        $image_stream_container.append( venue_stream.el );
+        venue_stream.render();
+    },
+
+    insert_location_streams: function(){
+        var $image_stream_container = this.$( ".image-streams" );
+
+        var location_stream = new side_scroll({
+            latitude: this.latitude,
+            longitude: this.longitude,
+            expand: true,
+            title: 'nearby'
+        });
+
+        $image_stream_container.append( location_stream.el );
+        location_stream.render();
+    },
+
+    insert_popular_nearby_stream: function(){
+        var $image_stream_container = this.$( ".image-streams" );
+
+        var popular_stream = new side_scroll({
+            latitude: this.latitude,
+            longitude: this.longitude,
+            sort: 'weighted_score',
+            title: 'popular nearby'
+        });
+
+        $image_stream_container.append( popular_stream.el );
+        popular_stream.render();
     },
 
     cancel_upload: function(){
@@ -211,7 +222,7 @@ var uploading = page_view.extend({
                     uploading_view.venue_name = photo.get('location').foursquare_venue_name;
                 }
 
-                uploading_view.render();
+                uploading_view.render_streams();
             }
         });
     },
