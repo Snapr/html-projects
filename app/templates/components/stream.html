@@ -1,4 +1,4 @@
-<a class="ui-bar top-left-arrow x-details" data-role="button" data-iconpos="left" data-icon="open" data-theme="<% if(typeof(theme) == "undefined"){ print("c") }else{ print(theme) } %>">
+<a class="ui-bar top-left-arrow x-details" data-role="button" data-iconpos="left" data-icon="open" data-theme="<% if(!obj.theme){ print("c") }else{ print(theme) } %>">
     <span class="image-details">
         <strong><%= title %></strong>
         <span class="image-tag x-tag"></span>
