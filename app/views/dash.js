@@ -89,10 +89,73 @@ var dash_view = page_view.extend({
 
         this.$el.addClass('background-loading');
 
-        var dash = this;
+        var dash = this,
+            current = {
+                streams: _.keys(this.model.streams._byId),
+                featured_streams: _.keys(this.model.featured_streams._byId),
+                competitions: _(this.model.competitions).pluck('id'),
+                tumblr_feeds: _.chain(this.model.tumblr_feeds).pluck('display').pluck('id').value()
+            };
+
         this.fetch(function(){
-            console.log(dash, this);
-            dash.render();
+
+            //remove competitions
+            _.each(current.competitions, function(comp){
+                if(!_.contains(_(dash.model.competitions).pluck('id'), comp)){
+                    dash.$('.competitions [data-id='+comp+']').remove();
+                }
+            });
+
+            //add competitions
+            _.each(dash.model.competitions, function(comp){
+                if(!_.contains(current.competitions, comp.id)){
+                    dash.add_comp(comp);
+                }
+            });
+
+            //remove tumblr feeds
+            _.each(current.tumblr_feeds, function(feed){
+                if(!_.contains(_.chain(dash.model.tumblr_feeds).pluck('display').pluck('id').value(), feed)){
+                    dash.$('.tumblr-streams [data-id='+feed+']').remove();
+                }
+            });
+
+            //add tumblr feeds
+            _.each(dash.model.tumblr_feeds, function(feed){
+                if(!_.contains(current.tumblr_feeds, feed.display.id)){
+                    dash.add_tumblr(feed);
+                }
+            });
+
+            //remove streams
+            _.each(current.streams, function(stream){
+                if(!dash.model.streams._byId[stream]){
+                    dash.remove_stream(stream);
+                }
+            });
+
+            //add streams
+            dash.model.streams.each(function(stream){
+                if(!_.contains(current.streams, ''+stream.id)){
+                    dash.add_stream(stream);
+                }
+            });
+
+            //remove featured_streams
+            _.each(current.featured_streams, function(stream){
+                if(!dash.model.featured_streams._byId[stream]){
+                    dash.$('.featured-streams [data-id='+stream+']').remove();
+                }
+            });
+
+            //add featured_streams
+            dash.model.featured_streams.each(function(stream){
+                if(!_.contains(current.featured_streams, ''+stream.id)){
+                    dash.add_featured_stream(stream);
+                }
+            });
+
+            dash.$el.trigger( "create" );
         });
     },
 
@@ -129,48 +192,12 @@ var dash_view = page_view.extend({
     render: function(){
         this.$('.dash-welcome').toggle(!auth.has("access_token") || this.model.length < 3);
 
-        var $competitions = this.$('.competitions').empty(),
-            $featured_streams = this.$('.featured-streams').empty(),
-            $tumblr_streams = this.$('.tumblr-streams').empty(),
-            $streams = this.$('.user-streams').empty();
+        this.$('.user-streams').empty();
 
-        // Competitions
-        _.each( this.model.competitions, function( item ){
-            var li = new competition({
-                data: item,
-                expand: true
-            });
-            $competitions.append( li.render().el );
-        });
-
-        // Featured streams
-        _.each( this.model.featured_streams.models, function( item ){
-            var li = new dash_stream({
-                collection: item.photos,
-                model: item,
-                featured: true,
-                expand: true
-            });
-            $featured_streams.append( li.el );
-            li.render();  // render after inserting so DOM metrics are available
-        });
-
-        // Tumblr
-        _.each( this.model.tumblr_feeds, function ( item ){
-            var li = new dash_tumblr_view({
-                feed: item
-            });
-            $tumblr_streams.append( li.render().el );
-        });
-
-        // User streams
-        _.each( this.model.streams.models, function( item ){
-            var li = new dash_stream({
-                collection: item.photos,
-                model: item
-            });
-            $streams.append( li.render().el );
-        });
+        _.each( this.model.competitions, this.add_comp);
+        _.each( this.model.featured_streams.models, this.add_featured_stream);
+        _.each( this.model.tumblr_feeds, this.add_tumblr);
+        _.each( this.model.streams.models, this.add_stream);
 
         this.$el.trigger( "create" );
 
@@ -213,15 +240,40 @@ var dash_view = page_view.extend({
     },
 
     remove_stream: function(stream){
-        this.$('.image-stream[data-id='+stream.get('id')+']').remove();
+        if(stream.get){
+            stream = stream.get('id');
+        }
+        this.$('.user-streams [data-id='+stream+']').remove();
     },
-    add_stream: function(item){
-        var li = new dash_stream({ collection: item.photos, model: item });
-        this.$('.image-streams').append( li.el );
-        // this must be rendered after it's appended because sizing details
-        // needed by scroller are only available after the element is in the DOM
-        li.render();
-        li.$el.trigger('create');
+    add_stream: function( item ){
+        var li = new dash_stream({
+            collection: item.photos,
+            model: item
+        });
+        this.$('.user-streams').append( li.render().el ).trigger('create');
+    },
+    add_comp: function(item){
+            var li = new competition({
+            data: item,
+            expand: true
+        });
+        this.$('.competitions').append( li.render().el );
+    },
+    add_tumblr: function(item){
+        var li = new dash_tumblr_view({
+            feed: item
+        });
+        this.$('.tumblr-streams').append( li.render().el );
+    },
+    add_featured_stream: function( item ){
+        var li = new dash_stream({
+            collection: item.photos,
+            model: item,
+            featured: true,
+            expand: true
+        });
+        this.$('.featured-streams').append( li.el );
+        li.render();  // render after inserting so DOM metrics are available
     }
 
 });
@@ -238,6 +290,7 @@ var competition = view.extend({
     render: function(){
         this.$el.addClass( this.options.expand ? 'open' : 'closed' );
         this.$el.html( this.template(this.options) );
+        this.$el.attr('data-id', this.options.data.id);
         return this;
     },
     toggle: function(){
@@ -282,6 +335,7 @@ var dash_tumblr_view = view.extend({
                             feed: feed,
                             post: collection.at(0)
                         })).trigger('create');
+                        this_view.$el.attr('data-id', feed.display.id);
                     }
                     this_view.$el.removeClass('loading');
                 },
@@ -328,6 +382,7 @@ var dash_stream = side_scroll.extend({
             this.$el.addClass("user-stream");
             this.$el.attr("data-id", this.model.get("id"));
         }
+        this.$el.attr('data-id', this.model.id);
     },
 
     remove_stream: function(){
