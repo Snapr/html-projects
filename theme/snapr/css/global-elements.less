@@ -848,6 +848,8 @@ h4{
         display: block;
         margin-right: 20px;
         overflow: hidden;
+        line-height: @bar-height;
+        height: @bar-height;
         text-overflow: ellipsis;
         .border-box();
     }
@@ -862,12 +864,24 @@ h4{
         display: inline-block;
         padding-left: 20px;
         color: @grayMediumOnLIght;
+        line-height: @bar-height;
+        height: @bar-height;
         .ui-icon-clock{
+            position: absolute;
+            left: -6px!important;
+            top: 0!important;
+            margin-top: 0!important;
         }
+    }
+    .x-date{
+        display: inline-block;
+        line-height: @bar-height;
+        height: @bar-height;
+        width: auto;
     }
     .image-tag{
         max-width: 35%;
-        display: inline-block;
+        display: none;
         overflow: hidden;
         text-overflow: ellipsis;
     }
@@ -952,7 +966,6 @@ h4{
 
 .open{
     .ui-bar{
-        .image-tag,
         .image-time{
             display: inline-block;
         }
@@ -1104,6 +1117,12 @@ h4{
             }
         }
 
+         &.loading{
+             .ui-bar .image-time{
+                display: none;
+             }
+         }
+        
         &.loading,
         .x-loading {
             .load-more-inline{

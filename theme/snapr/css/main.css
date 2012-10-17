@@ -4104,6 +4104,8 @@ a.ui-link-inherit {
   display: block;
   margin-right: 20px;
   overflow: hidden;
+  line-height: 32px;
+  height: 32px;
   text-overflow: ellipsis;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -4119,10 +4121,24 @@ a.ui-link-inherit {
   display: inline-block;
   padding-left: 20px;
   color: #666666;
+  line-height: 32px;
+  height: 32px;
+}
+.ui-bar .image-time .ui-icon-clock {
+  position: absolute;
+  left: -6px !important;
+  top: 0!important;
+  margin-top: 0!important;
+}
+.ui-bar .x-date {
+  display: inline-block;
+  line-height: 32px;
+  height: 32px;
+  width: auto;
 }
 .ui-bar .image-tag {
   max-width: 35%;
-  display: inline-block;
+  display: none;
   overflow: hidden;
   text-overflow: ellipsis;
 }
@@ -4222,7 +4238,7 @@ a.ui-link-inherit {
   -webkit-border-top-right-radius: 6px;
   border-top-right-radius: 6px;
 }
-.open .ui-bar .image-tag, .open .ui-bar .image-time {
+.open .ui-bar .image-time {
   display: inline-block;
 }
 .closed .ui-bar {
@@ -4363,6 +4379,9 @@ a.ui-link-inherit {
 .image-streams .image-stream .load-more-inline.x-flipped .ui-icon-refresh {
   background-position: 0 -112px;
   -webkit-transform: rotate(180deg) translatez(0);
+}
+.image-streams .image-stream.loading .ui-bar .image-time {
+  display: none;
 }
 .image-streams .image-stream.loading .load-more-inline .ui-icon-refresh, .image-streams .image-stream .x-loading .load-more-inline .ui-icon-refresh {
   background-image: url('../gfx/spinner.png');
