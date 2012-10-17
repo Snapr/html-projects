@@ -9,7 +9,6 @@ var spot_view = page_view.extend({
         this.top_users.on('all', this.render_top_users);
 
         this.photos = new photo_collection();
-        this.photos.on('all', this.render_photos);
     },
 
     post_activate: function(options) {
@@ -24,7 +23,6 @@ var spot_view = page_view.extend({
         this.spot_id = options.query.spot_id || 0;
         this.change_page();
         this.fetch_spot();
-
     },
 
     get_override_tab: function(){ return 'spots'; },
@@ -36,8 +34,7 @@ var spot_view = page_view.extend({
                     full: true
                 },
                 success: function() {
-                    spot_view.replace_from_template({spot:spot_view.model}, ['.spot-head', '.ui-btn-right']);
-                    spot_view.$el.trigger('create');
+                    spot_view.render();
                     spot_view.fetch_photos();
                     spot_view.fetch_users();
                 },
@@ -60,48 +57,70 @@ var spot_view = page_view.extend({
         geo.get_location( success_callback, error_callback );
     },
 
-    fetch_photos: function () {
-        var spot_view = this,
-            data = {
-                n: 6,
-                sort: 'weighted_score'
-            };
+    render: function(){
+        this.replace_from_template({spot:this.model}, ['.spot-head', '.ui-btn-right']);
+        this.$el.trigger('create');
 
-        // Spot has more than 1 photos (Hero is the first photo)
-        if (spot_view.model.get('stats').photos_count > 1) {
-            data.spot = spot_view.spot_id;
-            spot_view.photos.title = "popular";
-        }
-        // No photos, do nearby search
-        else {
-            data.nearby = true;
-            data.radius = 1000;
-            data.latitude = spot_view.model.get('location').latitude;
-            data.longitude = spot_view.model.get('location').longitude;
-            spot_view.photos.title = "popular nearby";
-        }
-
-        spot_view.photos.fetch({data: data});
+        this.render_popular_nearby();
     },
 
-    render_photos: function(){
-        var spot_view = this;
-        var title = this.photos.title;
-        this.photos = new photo_collection(this.photos.filter(function (model) {
-            return spot_view.model.get('info').hero_image === null || model.get('secret') !== spot_view.model.get('info').hero_image.secret;
-        }));
-        if (this.photos.length > 0) {
-            var stream_li = new side_scroll({
-                collection: this.photos,
-                title: title,
-                expand: true
-            });
+    render_popular_nearby: function(){
+        var data = {
+            n: 6,
+            sort: 'weighted_score',
+            nearby: true,
+            radius: 1000,
+            latitude: this.model.get('location').latitude,
+            longitude: this.model.get('location').longitude
+        };
 
-            var el = this.$('.image-streams');
-            el.append( stream_li.el );
-            stream_li.render();
-            el.trigger('create');
+        var stream_li = new side_scroll({
+            collection: new photo_collection([], {data: data}),
+            title: "popular nearby"
+        });
+
+        var el = this.$('.image-streams');
+        el.append( stream_li.el );
+        stream_li.render();
+        el.trigger('create');
+    },
+
+    fetch_photos: function () {
+        var spot_view = this;
+        // Spot has more than 1 photos (Hero is the first photo)
+        if (this.model.get('stats').photos_count > 1) {
+            this.photos.fetch({
+                data: {
+                    n: 6,
+                    sort: 'weighted_score',
+                    spot: this.spot_id
+                },
+                success: function(){
+
+                    // filter hero image
+                    if(spot_view.model.get('info').hero_image !== null){
+                        var hero_id = spot_view.model.get('info').hero_image.id;
+                        spot_view.photos = new photo_collection(spot_view.photos.filter(function (model) {
+                            return model.get('id') !== hero_id;
+                        }));
+                    }
+
+                    if (spot_view.photos.length > 0) {
+                        var stream_li = new side_scroll({
+                            collection: spot_view.photos,
+                            title: "popular",
+                            expand: true
+                        });
+
+                        var el = spot_view.$('.image-streams');
+                        el.prepend( stream_li.el );
+                        stream_li.render();
+                        el.trigger('create');
+                    }
+                }
+            });
         }
+
     },
 
     fetch_users: function () {
