@@ -3,7 +3,7 @@
         <h1>Spots</h1>
 
         <div class="ui-btn-right" data-ajax="false">
-            <a href="#/map/?id=<%= obj.spot && spot.id %>" data-role="button" data-icon="map" data-iconpos="notext"></a>
+            <% if(obj.spot){ %><a href="#/map/?id=<%= spot.id %>&lat=<%= spot.get('location').latitude %>&lon=<%= spot.get('location').longitude %>&z=15" data-role="button" data-icon="map" data-iconpos="notext"></a><% } %>
 
             <a href="#/home/" data-role="button" data-icon="home" data-iconpos="notext"></a>
         </div>
