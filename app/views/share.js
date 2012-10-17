@@ -31,18 +31,12 @@ return page_view.extend({
         // make sure the view is empty
         this.$("[data-role='content']").empty();
 
-        // if we are coming from the venue selection screen the model will be passed in
-        if (this.use_cached_model){
-            this.render();
-            this.use_cached_model = false;
+        if (this.query.photo_path){
+            this.get_photo_from_path( this.query.photo_path + "?ts=" + new Date().getTime() );
+        }else if(this.query.photo_id || this.query.photo){
+            this.get_photo_from_server( this.query.photo_id || this.query.photo );
         }else{
-            if (this.query.photo_path){
-                this.get_photo_from_path( this.query.photo_path + "?ts=" + new Date().getTime() );
-            }else if(this.query.photo_id || this.query.photo){
-                this.get_photo_from_server( this.query.photo_id || this.query.photo );
-            }else{
-                console.error( "no path or photo_id" );
-            }
+            console.error( "no path or photo_id" );
         }
     },
 
@@ -578,6 +572,10 @@ return page_view.extend({
             this.$(".location-name").text('Offline');
             this.$(".foursquare-venue-name").text('Offline');
         }
+    },
+
+    dialog_closed: function(){
+        this.render();
     }
 
 });

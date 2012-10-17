@@ -86,7 +86,10 @@ function _make_route(view_name, template, extra_view_data){
         // get the view
         require([view_name], function(view) {
 
-            console.group(view_name);
+            if(config.get('current_view')){
+                console.groupEnd(config.get('current_view').name);
+            }
+            console.group(template);
 
             var query = get_query_params(query_string),
                 options = _.extend({
@@ -108,8 +111,6 @@ function _make_route(view_name, template, extra_view_data){
             route.cached_view.previous_view = config.get('current_view');
             // make this view current
             config.set('current_view', route.cached_view);
-
-            console.groupEnd(view_name);
         });
     };
 

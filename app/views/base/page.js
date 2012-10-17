@@ -172,6 +172,10 @@ return view.extend({
                     transition: this.get_transition(),
                     reverse: true
                 });
+
+                console.groupEnd(this.options.name);
+                console.group(this.previous_view.options.name);
+
                 config.set('current_view', this.previous_view);
                 this.previous_view.dialog_closed(this);
             }else{
