@@ -170,6 +170,8 @@ var spots_view =  page_view.extend({
             this.$el.find('#spots-search').addClass('all-categories');
         }
 
+        this.$el.find('#spots-search').addClass('distance-'+nearby);
+
         data.spot_name = keywords;
 
         data.sort = sort;
