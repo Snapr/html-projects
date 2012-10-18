@@ -20,6 +20,7 @@ return view.extend({
         this.collection.bind('all', this.render_thumbs, this);
         this.load_template('components/stream');
         this.title = options.title;
+        this.initial_title = options.initial_title;
 
         this.no_photos = options.no_photos;
         this.fetch_attempts = 0;
@@ -38,18 +39,23 @@ return view.extend({
         return this.title;
     },
 
+    set_title: function(title){
+        title = title || this.get_title();
+        this.$('.title').text(title);
+    },
+
     render: function(){
         var feed_data = this.collection.data || {};
         if (feed_data.access_token){ delete feed_data.access_token; }
         if (feed_data.n){ delete feed_data.n; }
 
-        // what was this? I'm going to comment it out because it looks like abad idea - Jake
+        // what was this? I'm going to comment it out because it looks like a bad idea - Jake
         //feed_data.back = "Upload";
 
         this.$el.addClass('closed');
 
         $(this.el).html($(this.template({
-            title: this.get_title(),
+            title: this.initial_title === undefined && this.get_title() || this.initial_title,  // title initially blank if there's a no-photos callback
             query: this.collection.data,
             photos: this.collection.models
         })));
@@ -102,11 +108,10 @@ return view.extend({
                 if(!collection.length && this_view.fetch_attempts < 5 && this_view.no_photos){
                     if(this_view.no_photos()){
                         this_view.fetch_attempts += 1;
-                        // update title if it's changed
-                        this_view.$('.title').text(this_view.title);
                         return;
                     }
                 }
+                this_view.set_title();
                 collection.loaded = true;
                 this_view.$el.removeClass('loading');
 

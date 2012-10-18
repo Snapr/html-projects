@@ -72,6 +72,7 @@ var spot_view = page_view.extend({
                 },
                 exclude: this.model.get('info').hero_image && [this.model.get('info').hero_image.id]
             }),
+            initial_title: '', // initially blank until we know if it shoule be 'popular' or 'nearby'
             title: "popular",
             expand: true,
             no_photos: function(){
