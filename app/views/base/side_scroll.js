@@ -41,7 +41,7 @@ return view.extend({
 
     set_title: function(title){
         title = title || this.get_title();
-        this.$('.title').text(title);
+        this.$('.title').html(title);
     },
 
     render: function(){
