@@ -7676,6 +7676,13 @@ body.browser-testing .ui-footer, body.browser-testing .ui-footer-fixed {
     -webkit-background-size: 72px 216px;
     background-size: 72px 216px;
   }
+  .ui-icon.distance-icon, .distance-btn .ui-icon {
+    background-image: url('../gfx/retina/distance-icons.png');
+    -moz-background-size: 24px 96px;
+    -o-background-size: 24px 96px;
+    -webkit-background-size: 24px 96px;
+    background-size: 24px 96px;
+  }
   .spot-header .foursquare-btn .ui-icon-foursquare-logo {
     background-image: url('../gfx/retina/foursquare-btn.png');
     -moz-background-size: 69px 24px;
