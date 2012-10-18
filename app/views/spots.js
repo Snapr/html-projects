@@ -33,9 +33,9 @@ var spots_view =  page_view.extend({
         var success_callback = function( location ) {
             this_view.latitude = location.coords.latitude;
             this_view.longitude = location.coords.longitude;
+            search_options.latitude = this_view.latitude;
+            search_options.longitude = this_view.longitude;
             if (search_options.nearby) {
-                search_options.latitude = this_view.latitude;
-                search_options.longitude = this_view.longitude;
                 search_options.nearby = true;
                 search_options.radius = 50000;
             }
