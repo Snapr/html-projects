@@ -137,13 +137,21 @@ var map_view = page_view.extend({
         if(this.spot_query.id){
             this.spot = new spot_model(_.clone(this.spot_query.attributes));
             var map_view = this;
-            this.spot.fetch({success: function(spot){
-                map_view.map_query.set({
-                    lat: spot.get('location').latitude,
-                    lng: spot.get('location').longitude
-                }, {silent:true});
+
+            // if lat lng supplied, get straight to it
+            if(options.query.lat && options.query.lng){
                 map_view.map_update_or_create();
-            }});
+                this.spot.fetch();
+            }else{
+                this.spot.fetch({success: function(spot){
+                    map_view.map_query.set({
+                        lat: spot.get('location').latitude,
+                        lng: spot.get('location').longitude,
+                        z: 15
+                    }, {silent:true});
+                    map_view.map_update_or_create();
+                }});
+            }
 
         // if center is available from query or local_storage
         }else if (this.map_query.get( "lat" ) && this.map_query.get( "lng" )){
@@ -447,12 +455,12 @@ var map_view = page_view.extend({
         // check to see if we're actually moving
         // because if we don't the idle event wont fire
         // so the pageloadmessage wont disappear
-        if (!old_center.equals(center) && !old_zoom == zoom) {
-            this.map.setZoom(zoom || config.get('zoom'));
-            this.map.panTo( center );
+        if (old_center.equals(center) && old_zoom == zoom) {
+            google.maps.event.trigger(this.map, 'idle');
         }
         else {
-            google.maps.event.trigger(this.map, 'idle');
+            this.map.setZoom(zoom || config.get('zoom'));
+            this.map.panTo( center );
         }
     },
 
