@@ -1,4 +1,4 @@
-    /*global _  define require google */
+/*global _  define require google */
 define(['config', 'backbone', 'views/base/view', 'views/base/page', 'collections/thumb', 'collections/spot', 'models/spot', 'mobiscroll', 'utils/geo', 'utils/map', 'auth', 'utils/local_storage', 'utils/string', 'utils/alerts'],
 function(config, Backbone, view, page_view, thumb_collection, spot_collection, spot_model, mobiscroll, geo, map, auth, local_storage, string_utils, alerts){
 
@@ -92,7 +92,7 @@ var map_view = page_view.extend({
             map_params.show_spots = false;
             map_params.show_photos = true;
         }
-        if (spot_params.spot_id) {
+        if (spot_params.id) {
             map_params.show_photos = false;
             map_params.show_spots = true;
         }
@@ -370,7 +370,7 @@ var map_view = page_view.extend({
                         var id = spot.get('id');
                         if(!_(old_spot_ids).contains(id)){
                             map_view.thumb_overlays[id] = new map.overlays.Base(
-                                spot.attributes,
+                                _.extend({active: spot.id == map_view.spot_query.get('id')}, spot.attributes),
                                 map_view.map,
                                 map_view.spot_template
                             );
