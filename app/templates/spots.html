@@ -15,29 +15,36 @@
                     <input type="search" id="spot-search" value="" placeholder="Venue Name&hellip;" />
 
                     <div class="spots-search-filters">
-                        <span class="category-btn">
-                            <select data-theme="c" name="category" id="options-category" data-native-menu="true">
-                                <option value='all' id='location-anywhere'>Everything</option>
-                                <option value='food' id="category-nearby">Food and Drink</option>
-                                <option value='nightlife-spots' id="category-nightlife-spots">Nightlife Spots</option>
-                                <option value='arts-and-entertainment' id="category-arts-and-entertainment">Arts &amp; Entertainment</option>
-                                <option value='great-outdoors' id="category-great-outdoors">Great Outdoors</option>
-                                <option value='shops' id="category-shops">Shops</option>
-                            </select>
+                        <span class="distance-btn ">
+                            
+                             <select data-theme="c" name="location" id="options-location" data-native-menu="true">
+                                    <option value='anywhere' id="location-anywhere">&#8734;</option>
+                                    <option value='nearby' id='location-walking' class="x-location-needed">1000m</option>
+                                    <option value='nearby' id='location-driving' class="x-location-needed">10000m</option>
+                                    <option value='nearby' id='location-travelling' class="x-location-needed">50000m</option>
+                                    
+                                    
+                                </select>                            
                         </span>
 
                         <div class="ui-grid-a">
-                            <div class="ui-block-a">
-                                <select data-theme="c" name="category" id="options-location" data-native-menu="true">
-                                    <option value='nearby' id='location-nearby' class="x-location-needed">Nearby</option>
-                                    <option value='anywhere' id="location-anywhere">Anywhere</option>
-                                </select>
+                            <div class="ui-block-a ">
+                                
+                                
+                                 <select data-theme="c" name="sort" id="options-sort" data-native-menu="true">
+                                        <option value='weighted_score' id='options-weighted_score'>Popular</option>
+                                        <option value='distance' class="x-location-needed" id="options-distance">Nearest</option>
+                                    </select>
+                               
                             </div>
-                            <div class="ui-block-b">
-                                <select data-theme="c" name="sort" id="options-sort" data-native-menu="true">
-                                    <option value='weighted_score' id='options-weighted_score'>Hotspots</option>
-                                    <option value='distance' class="x-location-needed" id="options-distance">Nearest First</option>
-                                    <option value='alphabetical' id="options-alphabetical">Alphabetical</option>
+                            <div class="ui-block-b category-btn">
+                                <select data-theme="c" name="category" id="options-category" data-native-menu="true">
+                                    <option value='all' id='location-anywhere'>All</option>
+                                    <option value='food' id="category-nearby">Food</option>
+                                    <option value='nightlife-spots' id="category-nightlife-spots">Nightlife</option>
+                                    <option value='arts-and-entertainment' id="category-arts-and-entertainment">Arts</option>
+                                    <option value='great-outdoors' id="category-great-outdoors">Outdoors</option>
+                                    <option value='shops' id="category-shops">Shopping</option>
                                 </select>
                             </div>
                         </div>

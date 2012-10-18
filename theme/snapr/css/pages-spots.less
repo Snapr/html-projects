@@ -2,7 +2,7 @@
 // -------------------------
 
 .spots-search-filters{
-    padding-left: 44px;
+    padding-right: 44px;
     margin-top: @paddingPage;
     position: relative;
 
@@ -13,25 +13,35 @@
     .ui-select .ui-btn-icon-right .ui-btn-inner {
         padding-right: 25px;
     }
-
+    
     .category-btn{
+        .ui-btn-inner {
+            padding-right: 32px;
+            padding-left: 10px;
+            .ui-icon{
+                left: auto;
+                right: @padding * 2;
+                margin-top: -@gfxSpot-grid / 2;
+            }
+        }
+    
+    }
+
+    .distance-btn{
         width: 36px;
         position: absolute;
+        right: 0;
         top: 0;
-        left: 0;
         .ui-select{
             .ui-btn-inner{
                 width: 18px;
                 height: 18px;
             }
             .ui-btn-text{
-                display: none;
+                font-size: @font-size-small;
             }
             .ui-icon{
-                right: auto;
-                left: 6px;
-                top: 6px;
-                margin-top: 0;
+                display: none;
             }
         }
     }

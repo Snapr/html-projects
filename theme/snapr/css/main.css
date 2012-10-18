@@ -7073,7 +7073,7 @@ body.browser-testing .ui-footer, body.browser-testing .ui-footer-fixed {
   display: none;
 }
 .spots-search-filters {
-  padding-left: 44px;
+  padding-right: 44px;
   margin-top: 8px;
   position: relative;
 }
@@ -7085,24 +7085,30 @@ body.browser-testing .ui-footer, body.browser-testing .ui-footer-fixed {
 .spots-search-filters .ui-select .ui-btn-icon-right .ui-btn-inner {
   padding-right: 25px;
 }
-.spots-search-filters .category-btn {
+.spots-search-filters .category-btn .ui-btn-inner {
+  padding-right: 32px;
+  padding-left: 10px;
+}
+.spots-search-filters .category-btn .ui-btn-inner .ui-icon {
+  left: auto;
+  right: 8px;
+  margin-top: -12px;
+}
+.spots-search-filters .distance-btn {
   width: 36px;
   position: absolute;
+  right: 0;
   top: 0;
-  left: 0;
 }
-.spots-search-filters .category-btn .ui-select .ui-btn-inner {
+.spots-search-filters .distance-btn .ui-select .ui-btn-inner {
   width: 18px;
   height: 18px;
 }
-.spots-search-filters .category-btn .ui-select .ui-btn-text {
-  display: none;
+.spots-search-filters .distance-btn .ui-select .ui-btn-text {
+  font-size: 12px;
 }
-.spots-search-filters .category-btn .ui-select .ui-icon {
-  right: auto;
-  left: 6px;
-  top: 6px;
-  margin-top: 0;
+.spots-search-filters .distance-btn .ui-select .ui-icon {
+  display: none;
 }
 .spots-search-filters .ui-grid-a .ui-block-a .ui-btn {
   margin-right: 4px;
