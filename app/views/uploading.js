@@ -94,10 +94,10 @@ var uploading = page_view.extend({
         var $image_stream_container = this.$( ".image-streams" );
 
         var comp_stream = new side_scroll({
-            latitude: this.latitude,
-            longitude: this.longitude,
-            comp_id: this.comp.id,
-            sort: 'weighted_score',
+            data: {
+                comp_id: this.comp.id,
+                sort: 'weighted_score'
+            },
             expand: true,
             title: 'popular entries'
         });
@@ -113,8 +113,9 @@ var uploading = page_view.extend({
         var $image_stream_container = this.$( ".image-streams" );
 
         var venue_stream = new side_scroll({
-            foursquare_venue: this.foursquare_venue,
-            venue_name: this.venue_name,
+            collection: new photo_collection([], {data: {
+                foursquare_venue: this.foursquare_venue
+            }}),
             expand: true,
             title: '@ ' + this.venue_name
         });
@@ -127,8 +128,11 @@ var uploading = page_view.extend({
         var $image_stream_container = this.$( ".image-streams" );
 
         var location_stream = new side_scroll({
-            latitude: this.latitude,
-            longitude: this.longitude,
+            data: {
+                latitude: this.latitude,
+                longitude: this.longitude,
+                radius: config.get('nearby_radius')
+            },
             expand: true,
             title: 'nearby'
         });
@@ -141,8 +145,12 @@ var uploading = page_view.extend({
         var $image_stream_container = this.$( ".image-streams" );
 
         var popular_stream = new side_scroll({
-            latitude: this.latitude,
-            longitude: this.longitude,
+            data: {
+                sort: 'weighted_score',
+                latitude: this.latitude,
+                longitude: this.longitude,
+                radius: config.get('nearby_radius')
+            },
             sort: 'weighted_score',
             title: 'popular nearby'
         });

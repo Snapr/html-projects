@@ -69,13 +69,13 @@ var spot_view = page_view.extend({
             n: 6,
             sort: 'weighted_score',
             nearby: true,
-            radius: 1000,
+            radius: config.get('nearby_radius'),
             latitude: this.model.get('location').latitude,
             longitude: this.model.get('location').longitude
         };
 
         var stream_li = new side_scroll({
-            collection: new photo_collection([], {data: data}),
+            data: data,
             title: "popular nearby"
         });
 

@@ -9,7 +9,14 @@ return view.extend({
 
     initialize: function(options) {
         _.bindAll(this);
-        this.collection = this.collection || new photo_collection();
+        if(!options.collection){
+            if(options.data){
+                this.collection = new photo_collection([], {data: options.data});
+            }else{
+                this.collection = new photo_collection();
+            }
+        }
+
         this.collection.bind('all', this.render_thumbs, this);
         this.load_template('components/stream');
         this.title = options.title;
