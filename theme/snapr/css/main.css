@@ -984,6 +984,24 @@
 .cafe .dark-spot-icon.spot-icon {
   background-position: -48px -168px;
 }
+.ui-icon.distance-icon, .distance-btn .ui-icon {
+  background-position: 0px 0px;
+  background-image: url('../gfx/distance-icons.png');
+  width: 24px;
+  height: 24px;
+}
+.distance-anywhere .distance-btn .ui-icon, .distance-anywhere .distance-icon {
+  background-position: 0px 0px;
+}
+.distance-1 .distance-btn .ui-icon, .distance-1 .distance-icon {
+  background-position: 0px -24px;
+}
+.distance-10 .distance-btn .ui-icon, .distance-10 .distance-icon {
+  background-position: 0px -48px;
+}
+.distance-50 .distance-btn .ui-icon, .distance-50 .distance-icon {
+  background-position: 0px -72px;
+}
 html {
   -webkit-user-select: none;
   -webkit-text-size-adjust: none;
@@ -7105,10 +7123,13 @@ body.browser-testing .ui-footer, body.browser-testing .ui-footer-fixed {
   height: 18px;
 }
 .spots-search-filters .distance-btn .ui-select .ui-btn-text {
-  font-size: 12px;
+  display: none;
 }
 .spots-search-filters .distance-btn .ui-select .ui-icon {
-  display: none;
+  right: auto;
+  left: 5px;
+  top: 50%;
+  margin-top: -12px;
 }
 .spots-search-filters .ui-grid-a .ui-block-a .ui-btn {
   margin-right: 4px;

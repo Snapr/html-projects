@@ -422,8 +422,35 @@
 .cafe .dark-spot-icon.spot-icon{background-position: @gfxSpot-x-e @gfxSpot-y-cafe}
 
 
+// DISTANCE ICONS
+//-----------------
 
 
+.ui-icon.distance-icon,
+.distance-btn .ui-icon{
+    background-position: @gfxDistance-x @gfxDistance-y;
+    background-image: url('@{gfx}@{gfxDistance}');                                        
+    width: @gfxDistance-grid;
+    height: @gfxDistance-grid;
+    }
 
+// if parent class is set
+.distance-anywhere{
+    .distance-btn .ui-icon,
+    .distance-icon{background-position: @gfxDistance-x @gfxDistance-y-infinite}
+}
 
+.distance-1{
+    .distance-btn .ui-icon,
+    .distance-icon{background-position: @gfxDistance-x @gfxDistance-y-1}
+}
 
+.distance-10{
+    .distance-btn .ui-icon,
+    .distance-icon{background-position: @gfxDistance-x @gfxDistance-y-10}
+}
+
+.distance-50{
+    .distance-btn .ui-icon,
+    .distance-icon{background-position: @gfxDistance-x @gfxDistance-y-50}
+}
