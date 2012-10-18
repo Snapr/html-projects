@@ -388,14 +388,13 @@ var map_view = page_view.extend({
         }
         else {
             map_view.overlays_remove(old_spot_ids);
-            this.spot_collection.reset()
+            this.spot_collection.reset();
         }
     },
 
     toggle_spot_label: function (event) {
-        var label = this.$(event.currentTarget).next('a.x-map-venue-label');
-        this.$('a.x-map-venue-label').hide();
-        label.show();
+        this.$('.x-map-venue.active').removeClass('active');
+        this.$(event.currentTarget).parent().addClass('active');
     },
 
     no_results_message_toggle: function(show){

@@ -45,6 +45,7 @@
         cursor: pointer;
     }
     .x-map-venue-label{
+        display: none;
         background-image: url('../gfx/map-spot-label.png');
         position: absolute;
         bottom: 23px;
@@ -67,6 +68,12 @@
             overflow: hidden;
             white-space: nowrap;
             font-size: 13px;
+        }
+    }
+    &.active{
+        z-index: 1;
+        .x-map-venue-label{
+            display: block;
         }
     }
 }
