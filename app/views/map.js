@@ -393,8 +393,13 @@ var map_view = page_view.extend({
     },
 
     toggle_spot_label: function (event) {
-        this.$('.x-map-venue.active').removeClass('active');
-        this.$(event.currentTarget).parent().addClass('active');
+        var pin = this.$(event.currentTarget).parent();
+        if(pin.hasClass('active')){
+            pin.removeClass('active');
+        }else{
+            this.$('.x-map-venue.active').removeClass('active');
+            pin.addClass('active');
+        }
     },
 
     no_results_message_toggle: function(show){
