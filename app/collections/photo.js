@@ -7,6 +7,12 @@ return Backbone.Collection.extend({
 
     data: {},
 
+    initialize: function(models, options){
+        if(options.data){
+            this.data = options.data;
+        }
+    },
+
     url: function( method )
     {
         return config.get('api_base') + '/search/';
