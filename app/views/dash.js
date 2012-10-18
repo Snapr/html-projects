@@ -107,11 +107,9 @@ var dash_view = page_view.extend({
             });
 
             //add competitions
-            _.each(dash.model.competitions, function(comp){
-                if(!_.contains(current.competitions, comp.id)){
-                    dash.add_comp(comp);
-                }
-            });
+            dash.add_comps(_.reject(dash.model.competitions, function(comp){
+                return _.contains(current.competitions, comp.id);
+            }));
 
             //remove tumblr feeds
             _.each(current.tumblr_feeds, function(feed){
@@ -121,11 +119,9 @@ var dash_view = page_view.extend({
             });
 
             //add tumblr feeds
-            _.each(dash.model.tumblr_feeds, function(feed){
-                if(!_.contains(current.tumblr_feeds, feed.display.id)){
-                    dash.add_tumblr(feed);
-                }
-            });
+            dash.add_tumblrs(_.reject(dash.model.tumblr_feeds, function(feed){
+                return _.contains(current.tumblr_feeds, feed.display.id);
+            }));
 
             //remove streams
             _.each(current.streams, function(stream){
@@ -135,11 +131,9 @@ var dash_view = page_view.extend({
             });
 
             //add streams
-            dash.model.streams.each(function(stream){
-                if(!_.contains(current.streams, ''+stream.id)){
-                    dash.add_stream(stream);
-                }
-            });
+            dash.add_streams(_.reject(dash.model.streams.models, function(stream){
+                return _.contains(current.streams, ''+stream.id);
+            }));
 
             //remove featured_streams
             _.each(current.featured_streams, function(stream){
@@ -149,11 +143,9 @@ var dash_view = page_view.extend({
             });
 
             //add featured_streams
-            dash.model.featured_streams.each(function(stream){
-                if(!_.contains(current.featured_streams, ''+stream.id)){
-                    dash.add_featured_stream(stream);
-                }
-            });
+            dash.add_featured_streams(_.reject(dash.model.featured_streams.models, function(stream){
+                return _.contains(current.featured_streams, ''+stream.id);
+            }));
 
             dash.$el.trigger( "create" );
         });
@@ -194,10 +186,10 @@ var dash_view = page_view.extend({
 
         this.$('.user-streams').empty();
 
-        _.each( this.model.competitions, this.add_comp);
-        _.each( this.model.featured_streams.models, this.add_featured_stream);
-        _.each( this.model.tumblr_feeds, this.add_tumblr);
-        _.each( this.model.streams.models, this.add_stream);
+        this.add_comps(this.model.competitions);
+        this.add_featured_streams(this.model.featured_streams.models);
+        this.add_tumblrs(this.model.tumblr_feeds);
+        this.add_streams(this.model.streams.models);
 
         this.$el.trigger( "create" );
 
@@ -245,35 +237,64 @@ var dash_view = page_view.extend({
         }
         this.$('.user-streams [data-id='+stream+']').remove();
     },
-    add_stream: function( item ){
-        var li = new dash_stream({
-            collection: item.photos,
-            model: item
-        });
-        this.$('.user-streams').append( li.render().el ).trigger('create');
+    add_stream: function(item){
+        this.add_streams([item]);
     },
-    add_comp: function(item){
+
+    add_streams: function(items){
+        if(this.options.show && !_.contains(this.options.show, 'user-streams')){ return; }
+
+        var container = this.$('.user-streams');
+
+        _.each(items, function(item){
+            var li = new dash_stream({
+                collection: item.photos,
+                model: item
+            });
+            container.append( li.render().el );
+        });
+        container.trigger('create');
+    },
+    add_comps: function(items){
+        if(this.options.show && !_.contains(this.options.show, 'comps')){ return; }
+
+        var container = this.$('.competitions');
+
+        _.each(items, function(item){
             var li = new competition({
-            data: item,
-            expand: true
+                data: item,
+                expand: true
+            });
+            container.append( li.render().el );
         });
-        this.$('.competitions').append( li.render().el );
     },
-    add_tumblr: function(item){
-        var li = new dash_tumblr_view({
-            feed: item
+    add_tumblrs: function(items){
+        if(this.options.show && !_.contains(this.options.show, 'tumblr')){ return; }
+
+        var container = this.$('.tumblr-streams');
+
+        _.each(items, function(item){
+            var li = new dash_tumblr_view({
+                feed: item
+            });
+            container.append( li.render().el );
         });
-        this.$('.tumblr-streams').append( li.render().el );
     },
-    add_featured_stream: function( item ){
-        var li = new dash_stream({
-            collection: item.photos,
-            model: item,
-            featured: true,
-            expand: true
+    add_featured_streams: function(items){
+        if(this.options.show && !_.contains(this.options.show, 'featured-streams')){ return; }
+
+        var container = this.$('.featured-streams');
+
+        _.each(items, function(item){
+            var li = new dash_stream({
+                collection: item.photos,
+                model: item,
+                featured: true,
+                expand: true
+            });
+            container.append( li.el );
+            li.render();  // render after inserting so DOM metrics are available
         });
-        this.$('.featured-streams').append( li.el );
-        li.render();  // render after inserting so DOM metrics are available
     }
 
 });
