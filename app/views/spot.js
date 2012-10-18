@@ -75,7 +75,11 @@ var spot_view = page_view.extend({
             title: "popular",
             expand: true,
             no_photos: function(){
+
                 this.title = 'nearby';
+
+                // remove this callback, not useful more than once
+                this.no_photos = false;
 
                 this.collection.data.latitude = this_view.model.get('location').latitude;
                 this.collection.data.longitude = this_view.model.get('location').longitude;

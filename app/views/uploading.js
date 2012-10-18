@@ -80,10 +80,6 @@ var uploading = page_view.extend({
             }else if(location_available){
                 this.insert_location_streams();
             }
-
-            if(location_available){
-                this.insert_popular_nearby_stream();
-            }
         }
 
         $image_stream_container.trigger('create');
@@ -134,29 +130,18 @@ var uploading = page_view.extend({
                 radius: config.get('nearby_radius')
             },
             expand: true,
-            title: 'nearby'
+            title: 'nearby',
+            no_photos: function(){
+
+                this.collection.data.radius = this.collection.data.radius + config.get('nearby_radius');
+                this.fetch();
+
+                return true;
+            }
         });
 
         $image_stream_container.append( location_stream.el );
         location_stream.render();
-    },
-
-    insert_popular_nearby_stream: function(){
-        var $image_stream_container = this.$( ".image-streams" );
-
-        var popular_stream = new side_scroll({
-            data: {
-                sort: 'weighted_score',
-                latitude: this.latitude,
-                longitude: this.longitude,
-                radius: config.get('nearby_radius')
-            },
-            sort: 'weighted_score',
-            title: 'popular nearby'
-        });
-
-        $image_stream_container.append( popular_stream.el );
-        popular_stream.render();
     },
 
     cancel_upload: function(){
