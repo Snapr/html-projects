@@ -109,6 +109,11 @@ return view.extend({
                 }
                 collection.loaded = true;
                 this_view.$el.removeClass('loading');
+
+                if(!this_view.collection.length){
+                    this_view.$el.addClass('no-photos');
+                    this_view.scroll_init();
+                }
             }
         });
     },
@@ -259,11 +264,10 @@ return view.extend({
             this.$('.x-thumbs').empty().append(rendered.find('.x-thumbs').children());
 
             this.photoswipe_init();
-        }else{
-            this.$el.addClass('no-photos');
-        }
 
-        this.scroll_init();
+            this.scroll_init();
+
+        }
 
         return this;
     },
