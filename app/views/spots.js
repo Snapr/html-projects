@@ -56,8 +56,6 @@ var spots_view =  page_view.extend({
         this.$el.find('#options-category').val(search_options.category).selectmenu("refresh");
         this.$el.find('#options-sort').val(search_options.sort).selectmenu("refresh");
         this.$el.find('#spots-search').attr('class', '').addClass(search_options.category || 'all-categories');
-
-
     },
 
     events: {
@@ -159,7 +157,7 @@ var spots_view =  page_view.extend({
         var keywords = this.$el.find('#spot-search').val(),
             category = this.$el.find('#options-category').val(),
             sort = this.$el.find('#options-sort').val(),
-            nearby = this.$el.find('#options-location').val() === 'nearby',
+            nearby = this.$el.find('#options-location').val(),
             this_view = this,
             data = _.clone(this.defaults);
 
@@ -176,11 +174,11 @@ var spots_view =  page_view.extend({
 
         data.sort = sort;
 
-        if (this.latitude && this.longitude && nearby) {
-            data.latitude = this.latitude;
-            data.longitude = this.longitude;
-            data.nearby = true;
-            data.radius = 50000;
+        data.latitude = this.latitude;
+        data.longitude = this.longitude;
+
+        if (this.latitude && this.longitude && nearby !== 'anywhere') {
+            data.radius = nearby;
         }
 
         if (category !== 'all') {
