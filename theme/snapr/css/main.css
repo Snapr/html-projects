@@ -1047,6 +1047,9 @@ html {
 input[type="search"]::-webkit-search-cancel-button {
   -webkit-appearance: none;
 }
+.hide {
+  display: none;
+}
 .main-image {
   -webkit-touch-callout: default;
 }

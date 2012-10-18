@@ -9,19 +9,19 @@
                 <li>
                     <a href="#/feed/?username=<%= username %>" data-icon="user" data-theme="b" data-name="feed">Me</a>
                 </li>
-                <% }else{ %>
-                    <li><a href="#/welcome/" data-icon="user" data-theme="b" data-name="feed">Login</a></li>
-                    <% } %>
-
-                </ul>
-            </div><!-- /navbar -->
-
-            <% if(username){ %>
-                <a class="ui-bar ui-bar-e small-top-right-arrow tab-bar-extra x-my-snaps-only" href="#/activity/" data-role="button" data-theme="e">
-                    <!-- <span class="activity-count icon-left x-activity-likes"><span class="ui-icon ui-icon-heart"></span>x 1</span>
-                                        <span class="activity-count icon-left x-activity-comments"><span class="ui-icon ui-icon-comment"></span>x 4</span> -->
-
-                    <span class="activity-count icon-left x-activity-activity"><span class="ui-icon ui-icon-activity"></span>Activity</span>
-                </a>
+            <% }else{ %>
+                <li><a href="#/welcome/" data-icon="user" data-theme="b" data-name="feed">Login</a></li>
             <% } %>
-        </div><!-- /footer -->
+
+        </ul>
+    </div><!-- /navbar -->
+
+    <% if(username){ %>
+        <a class="ui-bar ui-bar-e small-top-right-arrow tab-bar-extra hide x-activity" href="#/activity/" data-role="button" data-theme="e">
+            <!-- <span class="activity-count icon-left"><span class="ui-icon ui-icon-heart"></span>x 1</span>
+            <span class="activity-count icon-left"><span class="ui-icon ui-icon-comment"></span>x 4</span> -->
+
+            <span class="activity-count icon-left"><span class="ui-icon ui-icon-activity"></span>Activity</span>
+        </a>
+    <% } %>
+</div><!-- /footer -->
