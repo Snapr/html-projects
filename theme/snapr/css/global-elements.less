@@ -20,7 +20,7 @@
     }
 
     .inline-footer{
-        .corner-bottom(0)!important;        
+        .corner-bottom(0)!important;
         &.feed-footer{
             .ui-btn{
                 .corner-bottom(0)!important;
@@ -45,7 +45,7 @@
     font-family: @font;
     .username{
         font-size: @font-size-small;
-    }    
+    }
 }
 
 .light-text{
@@ -231,8 +231,8 @@ h4{
             }
         }
     }
-    
-    .x-tab-bar-extra{
+
+    .tab-bar-extra{
         font-weight: bold;
         line-height: @font-size-small;
         min-height: @font-size-small;
@@ -244,10 +244,10 @@ h4{
         color: black;
         padding: 8px;
         .box-shadow(none);
-        
+
         .corner-top(@corners);
         .corner-bottom(0);
-        
+
         .ui-btn-inner{
             line-height: @font-size-small;
             min-height: @font-size-small;
@@ -260,7 +260,7 @@ h4{
                 color: @grayDarkOnLIght;
                 text-shadow: @shadowLightOnLight;
             }
-            
+
             .activity-count{
                 position: relative;
                 &.icon-left{
@@ -274,7 +274,7 @@ h4{
                 }
             }
         }
-        
+
     }
 }
 
@@ -311,7 +311,7 @@ h4{
     }
 
     .ui-icon{
-        background-image: url('@{gfx}@{gfxIcons}');  
+        background-image: url('@{gfx}@{gfxIcons}');
         position: absolute;
         right: 0;
         top: 0;
@@ -335,7 +335,7 @@ h4{
             .ui-btn-text{
                 position: relative;
                 top: -4px;
-                text-shadow: @shadowLightOnLight 0px 1px 0px;            
+                text-shadow: @shadowLightOnLight 0px 1px 0px;
                 .button-font-bold();
                 font-size: @font-size-username;
             }
@@ -594,7 +594,7 @@ h4{
     .ui-icon{
         width: @gfxAction-grid;
         height: @gfxAction-grid;
-        background-image: url('@{gfx}@{gfxAction}'); 
+        background-image: url('@{gfx}@{gfxAction}');
     }
     .ui-checkbox-on {
         .ui-icon{background-position: @gfxAction-x @gfxAction-tick-y;}
@@ -663,7 +663,7 @@ h4{
 .top-users{
     .top-user-item{
         display: inline-block;
-    } 
+    }
 }
 
 
@@ -858,7 +858,7 @@ h4{
         font-size: @font-size-small;
         color: @grayMediumOnLIght;
     }
-    
+
     .image-time{
         position: relative;
         display: inline-block;
@@ -959,8 +959,8 @@ h4{
         min-height: @font-size-small;
         .corner-top(@corners);
     }
-    
-   
+
+
     /* Note that the actual arrows get added in the swatches so they get the right colors */
 }
 
@@ -1032,12 +1032,12 @@ h4{
         white-space: no-wrap;
 
         .ui-bar{
-    
+
             .image-details{
                 margin-right: 57px;
             }
         }
-        
+
         &.closed,
         &.no-photos{
             .ui-bar{
@@ -1080,7 +1080,7 @@ h4{
             }
 
             .ui-icon-refresh{
-                background-image: url('@{gfx}@{gfxRefresh}');                            
+                background-image: url('@{gfx}@{gfxRefresh}');
                 background-repeat: no-repeat;
                 position: absolute;
                 display: block;
@@ -1122,7 +1122,7 @@ h4{
                 display: none;
              }
          }
-        
+
         &.loading,
         .x-loading {
             .load-more-inline{
@@ -1151,8 +1151,8 @@ h4{
                 }
             }
         }
-        
-      
+
+
         .x-no-photos{
             display: none;
              .x-msg{
@@ -1165,12 +1165,12 @@ h4{
                     vertical-align: middle;
                     margin-left: 10px;
                 }
-        }            
-     
+        }
+
          &.no-photos{
             .x-no-photos{
                 display: block;
-            } 
+            }
          }
 
 
@@ -1221,7 +1221,7 @@ h4{
             display: block;
         }
     }
-  
+
 }
 
 .x-scroll-wrapper {
@@ -1502,7 +1502,7 @@ over rides theme swatch styles for general blue / white style switch
 }
 
 .button-logo{
-    background-image: url('@{gfx}@{gfxService}');                                
+    background-image: url('@{gfx}@{gfxService}');
     height: 36px;
     width: 150px;
     display: inline-block;
@@ -1568,7 +1568,7 @@ over rides theme swatch styles for general blue / white style switch
                 left: 2px;
             }
 
-        }    
+        }
     }
 
 }
@@ -1608,7 +1608,7 @@ over rides theme swatch styles for general blue / white style switch
     width: 100%;
     background: none;
     border: none;
-    z-index: 999;    
+    z-index: 999;
     .message-body{
         margin: @paddingPage;
         display: block;
@@ -1631,7 +1631,7 @@ over rides theme swatch styles for general blue / white style switch
         }
         .ui-icon{
             position: absolute;
-            top: 0; 
+            top: 0;
             left: 0px;
             margin-top: 0!important;
         }
@@ -1764,7 +1764,7 @@ over rides theme swatch styles for general blue / white style switch
             .ui-icon{
                 position: absolute;
             }
-        } 
+        }
     }
     /* Shuffle the close button to the right */
     .ui-btn[data-icon="delete"]{
@@ -1904,7 +1904,7 @@ different markup format between collapsible headings and list links */
 
 
 .top-user-item{
-    width: @sizeAvatar-med;    
+    width: @sizeAvatar-med;
     margin-right: 5px;
     .small-username{
         overflow: hidden;
@@ -1912,7 +1912,7 @@ different markup format between collapsible headings and list links */
         text-align: center;
         margin-top: 4px;
         display: block;
-    } 
+    }
 }
 
 
@@ -1989,7 +1989,7 @@ different markup format between collapsible headings and list links */
     .ps-toolbar-close{
         .ps-toolbar-content{
             margin-right: 0px;
-            background-image: url('@{gfx}@{gfxIcons}');            
+            background-image: url('@{gfx}@{gfxIcons}');
             background-position: @gfxIcons-delete-x + 5px @gfxIcons-y-light + 5px;
             width: @topBar-height;
             height: @topBar-height;
@@ -2022,7 +2022,7 @@ different markup format between collapsible headings and list links */
             right: 0;
             top:50%;
             margin-top: -18px;
-            background-image: url('@{gfx}@{gfxIcons}');            
+            background-image: url('@{gfx}@{gfxIcons}');
             background-position: @gfxIcons-arrow-r-x @gfxIcons-y-dark;
         }
     }
@@ -2030,7 +2030,7 @@ different markup format between collapsible headings and list links */
 
 div.ps-carousel-item-loading
 {
-    background: url('../gfx/image-load-dark.gif') no-repeat center center; 	
+    background: url('../gfx/image-load-dark.gif') no-repeat center center;
 }
 
 /* change the icon to a spinner if a button is loading an ajax event */

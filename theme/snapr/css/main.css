@@ -3429,7 +3429,7 @@ h4 {
   top: 0;
   margin-left: -16px;
 }
-.snapr-footer .x-tab-bar-extra {
+.snapr-footer .tab-bar-extra {
   font-weight: bold;
   line-height: 12px;
   min-height: 12px;
@@ -3456,12 +3456,12 @@ h4 {
   -webkit-border-bottom-right-radius: 0;
   border-bottom-right-radius: 0;
 }
-.snapr-footer .x-tab-bar-extra .ui-btn-inner {
+.snapr-footer .tab-bar-extra .ui-btn-inner {
   line-height: 12px;
   min-height: 12px;
   overflow: visible;
 }
-.snapr-footer .x-tab-bar-extra .ui-btn-inner .ui-btn-text {
+.snapr-footer .tab-bar-extra .ui-btn-inner .ui-btn-text {
   font-weight: bold;
   line-height: 12px;
   min-height: 12px;
@@ -3469,14 +3469,14 @@ h4 {
   color: #474747;
   text-shadow: rgba(255, 255, 255, 0.8);
 }
-.snapr-footer .x-tab-bar-extra .ui-btn-inner .activity-count {
+.snapr-footer .tab-bar-extra .ui-btn-inner .activity-count {
   position: relative;
 }
-.snapr-footer .x-tab-bar-extra .ui-btn-inner .activity-count.icon-left {
+.snapr-footer .tab-bar-extra .ui-btn-inner .activity-count.icon-left {
   padding-left: 24px;
   padding-right: 4px;
 }
-.snapr-footer .x-tab-bar-extra .ui-btn-inner .activity-count.icon-left .ui-icon {
+.snapr-footer .tab-bar-extra .ui-btn-inner .activity-count.icon-left .ui-icon {
   position: absolute;
   left: -6px;
   top: -8px;
