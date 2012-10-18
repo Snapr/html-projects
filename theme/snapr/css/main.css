@@ -6139,48 +6139,6 @@ body.browser-testing .ui-footer-fixed {
 #map-layer #google-map {
   margin: -3px -8px;
 }
-.x-map-venue .x-map-venue-pin {
-  background-image: url('../gfx/map-spot-pin.png');
-  position: absolute;
-  display: block;
-  bottom: 0;
-  left: -18px;
-  width: 36px;
-  height: 28px;
-  cursor: pointer;
-}
-.x-map-venue .x-map-venue-label {
-  display: none;
-  background-image: url('../gfx/map-spot-label.png');
-  position: absolute;
-  bottom: 23px;
-  left: -70px;
-  width: 139px;
-  height: 47px;
-  z-index: 1;
-}
-.x-map-venue .x-map-venue-label .spot-icon {
-  position: absolute;
-  top: 5px;
-  left: 4px;
-}
-.x-map-venue .x-map-venue-label .venue-label-text {
-  color: white;
-  font-weight: bold;
-  text-shadow: #000000 0 -1px 1px;
-  display: block;
-  padding: 9px 26px;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  white-space: nowrap;
-  font-size: 13px;
-}
-.x-map-venue.active {
-  z-index: 1;
-}
-.x-map-venue.active .x-map-venue-label {
-  display: block;
-}
 .photo-map {
   position: relative;
   overflow: hidden;
@@ -6196,6 +6154,49 @@ body.browser-testing .ui-footer-fixed {
   height: 1px;
   overflow: visible;
   position: absolute;
+  z-index: 1;
+}
+.photo-map .x-map-venue .x-map-venue-pin {
+  background-image: url('../gfx/map-spot-pin.png');
+  position: absolute;
+  display: block;
+  bottom: 0;
+  left: -18px;
+  width: 36px;
+  height: 28px;
+  cursor: pointer;
+}
+.photo-map .x-map-venue .x-map-venue-label {
+  display: none;
+  background-image: url('../gfx/map-spot-label.png');
+  position: absolute;
+  bottom: 23px;
+  left: -70px;
+  width: 139px;
+  height: 47px;
+  z-index: 1;
+}
+.photo-map .x-map-venue .x-map-venue-label .spot-icon {
+  position: absolute;
+  top: 5px;
+  left: 4px;
+}
+.photo-map .x-map-venue .x-map-venue-label .venue-label-text {
+  color: white;
+  font-weight: bold;
+  text-shadow: #000000 0 -1px 1px;
+  display: block;
+  padding: 9px 26px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  font-size: 13px;
+}
+.photo-map .x-map-venue.active {
+  z-index: 2;
+}
+.photo-map .x-map-venue.active .x-map-venue-label {
+  display: block;
 }
 .photo-map .map-current-location {
   position: absolute;
