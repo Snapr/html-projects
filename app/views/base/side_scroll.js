@@ -21,6 +21,9 @@ return view.extend({
         this.load_template('components/stream');
         this.title = options.title;
 
+        this.no_photos = options.no_photos;
+        this.fetch_attempts = 0;
+
         this.post_initialize.apply(this, arguments);
     },
 
@@ -80,22 +83,34 @@ return view.extend({
         this.$('.thumbs-grid').fadeToggle();
         this.$el.toggleClass('open closed');
         if(!this.collection.length && !this.collection.loaded){
-
-            var this$el = this.$el.addClass('loading');
-
-            this.collection.fetch({
-                data: _.defaults(this.collection.data, {
-                    n: config.get('side_scroll_initial'),
-                    detail: 0
-                }),
-                success: function(collection){
-                    collection.loaded = true;
-                    this$el.removeClass('loading');
-                }
-            });
+            this.fetch();
         }else{
             this.scroll_init();
         }
+    },
+
+    fetch: function(){
+        var this_view = this;
+        this.$el.addClass('loading');
+
+        this.collection.fetch({
+            data: _.defaults(this.collection.data, {
+                n: config.get('side_scroll_initial'),
+                detail: 0
+            }),
+            success: function(collection){
+                if(!collection.length && this_view.fetch_attempts < 5 && this_view.no_photos){
+                    if(this_view.no_photos()){
+                        this_view.fetch_attempts += 1;
+                        // update title if it's changed
+                        this_view.$('.title').text(this_view.title);
+                        return;
+                    }
+                }
+                collection.loaded = true;
+                this_view.$el.removeClass('loading');
+            }
+        });
     },
 
     scroll_init: function(){

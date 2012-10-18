@@ -60,32 +60,10 @@ var spot_view = page_view.extend({
     render: function(){
         this.replace_from_template({spot:this.model}, ['.spot-head', '.ui-btn-right']);
         this.$el.trigger('create');
-
-        this.render_popular_nearby();
-    },
-
-    render_popular_nearby: function(){
-        var stream_li = new side_scroll({
-            collection: new photo_collection([], {
-                data: {
-                    sort: 'weighted_score',
-                    nearby: true,
-                    radius: config.get('nearby_radius'),
-                    latitude: this.model.get('location').latitude,
-                    longitude: this.model.get('location').longitude
-                },
-                exclude: this.model.get('info').hero_image && [this.model.get('info').hero_image.id]
-            }),
-            title: "popular nearby"
-        });
-
-        var el = this.$('.image-streams');
-        el.append( stream_li.el );
-        stream_li.render();
-        el.trigger('create');
     },
 
     fetch_photos: function () {
+        var this_view = this;
         var stream_li = new side_scroll({
             collection: new photo_collection([], {
                 data: {
@@ -95,7 +73,19 @@ var spot_view = page_view.extend({
                 exclude: this.model.get('info').hero_image && [this.model.get('info').hero_image.id]
             }),
             title: "popular",
-            expand: true
+            expand: true,
+            no_photos: function(){
+                this.title = 'nearby';
+
+                this.collection.data.latitude = this_view.model.get('location').latitude;
+                this.collection.data.longitude = this_view.model.get('location').longitude;
+                this.collection.data.radius = config.get('nearby_radius');
+                delete this.collection.data.spot;
+
+                this.fetch();
+
+                return true;
+            }
         });
 
         var el = this.$('.image-streams');
