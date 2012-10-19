@@ -1,5 +1,5 @@
 <div class="tumblr-metadata">
-    <a class="ui-bar" data-role="button" data-iconpos="right" data-icon="arrow-r" data-theme="f" data-corners="false" data-shadow="false">
+    <a href="<%= model.get('post_url') %>" class="ui-bar" data-role="button" data-iconpos="right" data-icon="arrow-r" data-theme="f" data-corners="false" data-shadow="false">
     <span class="ui-icon ui-icon-tumblr-<%= model.get('type') %> tumblr-icon"></span>
     <%= string_utils.time_ago(model.get('timestamp')*1000) %><% if (model.get('note_count') > 0){ %>, <%= model.get('note_count') %> notes<%}%>
     </a>
