@@ -221,11 +221,19 @@ var map_view = page_view.extend({
             mapTypeId: google.maps.MapTypeId.ROADMAP,
             // hide local business markers
             styles: [{
-                featureType: "poi.business",
-                stylers: [
-                    { visibility: "off" }
-                ]
-            }]
+                    featureType: "poi.business",
+                    stylers: [
+                        { visibility: "off" }
+                    ]
+                },
+                {
+                    featureType: "poi",
+                    elementType: "labels",
+                    stylers: [
+                      { "visibility": "off" }
+                    ]
+                }
+            ]
         };
 
         this.map = new google.maps.Map(document.getElementById("google-map"), map_settings);
