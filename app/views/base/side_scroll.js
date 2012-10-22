@@ -5,7 +5,7 @@ define(['backbone', 'views/base/view', 'utils/photoswipe', 'iscroll', 'utils/str
 return view.extend({
 
     tagName: 'li',
-    className: 'image-stream',
+    className: 'x-image-stream s-image-stream',
 
     initialize: function(options) {
         _.bindAll(this);
@@ -41,7 +41,7 @@ return view.extend({
 
     set_title: function(title){
         title = title || this.get_title();
-        this.$('.title').html(title);
+        this.$('.x-title').html(title);
     },
 
     render: function(){
@@ -52,7 +52,7 @@ return view.extend({
         // what was this? I'm going to comment it out because it looks like a bad idea - Jake
         //feed_data.back = "Upload";
 
-        this.$el.addClass('closed');
+        this.$el.addClass('x-closed');
 
         $(this.el).html($(this.template({
             title: this.initial_title === undefined && this.get_title() || this.initial_title,  // title initially blank if there's a no-photos callback
@@ -73,7 +73,7 @@ return view.extend({
     },
 
     toggle_stream: function() {
-        if(this.$el.hasClass('closed')){
+        if(this.$el.hasClass('x-closed')){
             this.open();
         }else{
             this.close();
@@ -81,13 +81,13 @@ return view.extend({
     },
 
     close: function(){
-        this.$('.thumbs-grid').fadeToggle();
-        this.$el.toggleClass('open closed');
+        this.$('.x-scroll-area').fadeToggle();
+        this.$el.toggleClass('x-open x-closed');
     },
 
     open: function(){
-        this.$('.thumbs-grid').fadeToggle();
-        this.$el.toggleClass('open closed');
+        this.$('.x-scroll-area').fadeToggle();
+        this.$el.toggleClass('x-open x-closed');
         if(!this.collection.length && !this.collection.loaded){
             this.fetch();
         }else{
@@ -97,7 +97,7 @@ return view.extend({
 
     fetch: function(){
         var this_view = this;
-        this.$el.addClass('loading');
+        this.$el.addClass('x-loading');
 
         this.collection.fetch({
             data: _.defaults(this.collection.data, {
@@ -113,10 +113,10 @@ return view.extend({
                 }
                 this_view.set_title();
                 collection.loaded = true;
-                this_view.$el.removeClass('loading');
+                this_view.$el.removeClass('x-loading');
 
                 if(!this_view.collection.length){
-                    this_view.$el.addClass('no-photos');
+                    this_view.$el.addClass('x-no-photos');
                     this_view.scroll_init();
                 }
             }
@@ -163,7 +163,7 @@ return view.extend({
             if(!scroll_el.is('.x-no-more')){
                 if(scroller.x < (scroller.maxScrollX - pull_distance)){
                     right_pull_el.addClass('x-flipped');
-                    if(!scroll_el.is('.loading')){
+                    if(!scroll_el.is('.x-loading')){
                         right_pull_msg.text('release');
                     }
                 }else{
