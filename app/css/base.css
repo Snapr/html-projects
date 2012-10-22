@@ -136,6 +136,7 @@ div[data-role="content"] .s-inset-header {
 }
 #feed-images {
   padding-left: 0;
+  margin-top: 8px;
 }
 .s-image-item-block .s-image-item-topbar {
   height: 35px;
