@@ -8,7 +8,7 @@
 
         <div class="ui-btn-right" data-ajax="false">
             <a href="#/search/" data-snapr-dialog="true" data-role="button" data-icon="search" data-iconpos="notext"></a>
-            <a href="#/" data-role="button" data-icon="home" data-iconpos="notext"></a>
+            <a href="#/home/" data-role="button" data-icon="home" data-iconpos="notext"></a>
         </div>
     </div>
     <div data-role="content" data-theme="c" data-ajax="false">
@@ -19,9 +19,9 @@
                 <div class="ui-content">
                     <a class="username" href="#/feed/?username=<%= username %>">
                         <% if(initial){ %>
-                            <div class="user-icon-small"></div>
+                            <div class="s-avatar"></div>
                         <% }else{ %>
-                            <div class="user-icon-small" style="background-image: url('<%= config.get('avatar_url') %>/<%= user_id %>?size=large&_salt=<%= settings.profile.avatar_type %>');"></div>
+                            <div class="s-avatar" style="background-image: url('<%= config.get('avatar_url') %>/<%= user_id %>?size=large&_salt=<%= settings.profile.avatar_type %>');"></div>
                         <% } %>
                         <%= display_username %>
                     </a>
@@ -30,7 +30,7 @@
             </div>
 
             <div class="myaccount-quicklinks">
-                <a class="ui-bar top-no-arrow" data-role="button" data-theme="e" >
+                <a class="ui-bar top-no-arrow" data-role="button" data-theme="b" >
                     <em>Quick Links</em>
                 </a>
                 <ul data-role="listview">
@@ -42,7 +42,7 @@
 
 
             <div class="myaccount-settings">
-                <a class="ui-bar top-no-arrow" data-role="button" data-theme="e" >
+                <a class="ui-bar top-no-arrow" data-role="button" data-theme="b" >
                     <em>Settings</em>
                 </a>
                 <% if(!initial){ %>
@@ -224,7 +224,7 @@
 
                     </div><!-- End of Nested Collapsible Set -->
 
-                    <a class="ui-bar top-no-arrow connect-heading" data-role="button" data-theme="e" >
+                    <a class="ui-bar top-no-arrow connect-heading" data-role="button" data-theme="b" >
                         <em>Connect</em>
                     </a>
 
@@ -232,7 +232,7 @@
                         <!-- dynamic -->
                     </ul>
 
-                    <a class="ui-bar top-no-arrow linked-heading" data-role="button" data-theme="e" >
+                    <a class="ui-bar top-no-arrow linked-heading" data-role="button" data-theme="b" >
                         <em>Linked Services</em>
                     </a>
                     <div class="linked-services" data-role="collapsible-set" data-theme="c" data-content-theme="d">
@@ -241,7 +241,24 @@
 
                 <% } %>
             </div>
+            
+             <div class="myaccount-info">
+                    <a class="ui-bar top-no-arrow" data-role="button" data-theme="b" >
+                        <em>Info</em>
+                    </a>
+                    <ul data-role="listview">
+                        <li>
+                            <a data-back-here="true" href="#/about/">About Us</a>
+                        </li>
+                         <li>
+                                <a data-back-here="true" href="#/about-snapr/">About Snapr</a>
+                        </li>
+                    </ul>
+                </div>
 
         </div>
+        
+        
     </div>
+    
 </div>

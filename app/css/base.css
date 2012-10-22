@@ -1,0 +1,67 @@
+@import "../libs/jquery.mobile-1.2.0/jquery.mobile.structure-1.2.0.css";
+
+@import "../app/libs/mobiscroll/mobiscroll-2.0rc2.full.min.css";
+
+@import "../app/libs/photoswipe/photoswipe.css";
+.clearfix {
+  *zoom: 1;
+}
+.clearfix:before,
+.clearfix:after {
+  display: table;
+  content: "";
+  line-height: 0;
+}
+.clearfix:after {
+  clear: both;
+}
+.hide-text {
+  font: 0/0 a;
+  color: transparent;
+  text-shadow: none;
+  background-color: transparent;
+  border: 0;
+}
+div[data-role="header"] {
+  min-height: 40px;
+}
+div[data-role="header"] .ui-btn-center {
+  position: absolute;
+  top: 4px;
+  width: 100%;
+  text-align: center;
+}
+div[data-role="header"] .ui-btn-center .ui-btn,
+div[data-role="header"] .ui-btn-center .ui-controlgroup {
+  margin: 0;
+}
+div[data-role="header"] .ui-btn-right,
+div[data-role="header"] .ui-btn-left {
+  white-space: nowrap;
+}
+div[data-role="header"] .ui-btn-right .ui-btn,
+div[data-role="header"] .ui-btn-left .ui-btn {
+  display: inline-block;
+  margin: 0;
+  top: 4px;
+}
+.s-avatar,
+.s-avatar-med {
+  width: 34px;
+  height: 34px;
+  background-color: #f7f7f7;
+  background-size: 100% 100%;
+  background-size: cover;
+  background-position: center;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  display: block;
+}
+.s-avatar-med {
+  width: 50px;
+  height: 50px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+}

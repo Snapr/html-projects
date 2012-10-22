@@ -26,10 +26,10 @@
 
 
 /* Icons and thumbs */
-.user-icon-small,
+.s-avatar,
 .thumb-small{
-    width: @sizeAvatar;
-    height: @sizeAvatar;
+    width: @avatarSize;
+    height: @avatarSize;
     background-color: @black-tint;
     background-size: 100% 100%;
     background-size: cover;
@@ -38,9 +38,9 @@
     display: block;
 }
 
-.user-icon-med{
-    width: @sizeAvatar-med;
-    height: @sizeAvatar-med;
+.s-avatar-med{
+    width: @avatarSizeMed;
+    height: @avatarSizeMed;
     background-color: @black-tint;
     background-size: 100% 100%;
     background-size: cover;
@@ -50,8 +50,8 @@
 }
 
 .avatar-block{
-    height:  @sizeAvatar ;
-    line-height: @sizeAvatar;
+    height:  @avatarSize ;
+    line-height: @avatarSize;
     padding-left:0;
     background: none!important;
     border: none!important;
@@ -61,10 +61,10 @@
             .ui-btn-text{
                 display: block;
                 text-align: left;
-                padding-left: @sizeAvatar + @paddingElement ;
+                padding-left: @avatarSize + @paddingElement ;
             }
         }
-        .user-icon-small{
+        .s-avatar{
             position: absolute;
             left: 0;
             top: 0;
@@ -81,16 +81,16 @@
 }
 
 .user-icon-big{
-    width: @sizeAvatar-large;
-    height: @sizeAvatar-large;
+    width: @avatarSizeLarge;
+    height: @avatarSizeLarge;
     background-color: @black-tint;
     background-size: 100% 100%;
     background-size: cover;
 }
 
 .thumb-med{
-    width: @sizeThumb;
-    height: @sizeThumb;
+    width: @thumbSize;
+    height: @thumbSize;
 }
 
 /* Usernames etc */
@@ -731,7 +731,7 @@ h4{
 .grid #feed-images{
     margin: 0 -@paddingPage;
     padding: 0 0 0 @paddingGrid;
-    min-height: @sizeThumb;
+    min-height: @thumbSize;
 
     .image-link{
         display: inline-block;
@@ -739,8 +739,8 @@ h4{
         margin: 0;
     }
     .thumb-image{
-        width: @sizeThumb;
-        height: @sizeThumb;
+        width: @thumbSize;
+        height: @thumbSize;
         padding: 0;
         margin: 0;
         display: block;
@@ -766,7 +766,7 @@ h4{
         }
         .x-thumbs{
             display: inline-block;
-            min-width: @sizeThumb * 3 + @paddingGrid * 2;
+            min-width: @thumbSize * 3 + @paddingGrid * 2;
         }
         .image-link{
             padding-left: @paddingGrid;
@@ -870,7 +870,7 @@ h4{
             top: 40px;
             width: 109%;
             background-color: rgba(255, 255, 255, .8);
-            min-height: @sizeThumb;
+            min-height: @thumbSize;
             margin-left: -8px;
             margin-right: -8px;
             right: 0;
@@ -925,7 +925,7 @@ h4{
     .upload-progress-item{
         list-style:none;
         padding: 0 @paddingPage;
-        min-height: @sizeAvatar;
+        min-height: @avatarSize;
         margin-bottom: @paddingPage;
         &:first-child{
             padding-top: @paddingPage;
@@ -938,7 +938,7 @@ h4{
         }
         .upload-info-block{
             position: relative;
-            padding-left: @sizeAvatar + @paddingPage;
+            padding-left: @avatarSize + @paddingPage;
             .upload-info{
                 padding-top: 5px;
             }
@@ -1258,7 +1258,7 @@ h4{
 /* Offline mode default display */
 .message-overlay{
     position: absolute;
-    padding-top: @sizeTopBar;
+    padding-top: @topBarHeight;
     margin: 0;
     left: 0;
     top: 0;
@@ -1337,11 +1337,11 @@ h4{
     border: none;
     color: @grayMediumOnDark;
     text-shadow: @shadowDarkOnDark 0px -1px 1px;
-    height: @sizeTopBar;
+    height: @topBarHeight;
     overflow: hidden;
     .ui-title{
         .title-bar-font();
-        line-height: @sizeTopBar;
+        line-height: @topBarHeight;
         vertical-align: middle;
         margin: 0;
     }
@@ -1556,7 +1556,7 @@ h4{
 
 
 .top-user-item{
-    width: @sizeAvatar-med;    
+    width: @avatarSizeMed;    
     margin-right: 5px;
     .small-username{
         overflow: hidden;
@@ -1643,8 +1643,8 @@ h4{
             margin-right: 0px;
             background-image: url('@{gfx}@{gfxIcons}');            
             background-position: @gfxIcons-delete-x + 5px @gfxIcons-y-light + 5px;
-            width: @sizeTopBar;
-            height: @sizeTopBar;
+            width: @topBarHeight;
+            height: @topBarHeight;
         }
     }
 

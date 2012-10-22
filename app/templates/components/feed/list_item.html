@@ -1,7 +1,7 @@
 <div class="image-item-block<% if (item.get("status") != "public"){%> private<%}%>">
     <div class="image-item-topbar">
         <a class="user-icon-link" href="#/feed/?username=<%= item.get('username') %>">
-            <div class="user-icon-small" style="background-image: url('<%= config.get('avatar_url') %>/<%= item.get('user_id') %>/');"></div>
+            <div class="s-avatar" style="background-image: url('<%= config.get('avatar_url') %>/<%= item.get('user_id') %>/');"></div>
         </a>
         <a class="username" href="#/feed/?username=<%= item.get('username') %>"><%= item.get('display_username') %></a>
 

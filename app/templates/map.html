@@ -1,19 +1,15 @@
 <div id="map" data-role="page" data-title="Map" data-add-back-btn="true" data-theme="d">
     <div data-role="header" data-theme="b">
-       <!-- No heading if we are showing the spots toggle <h1>Map</h1> -->
 
-        <div class="ui-grid-b">
-                <div class="ui-block-a">
-                </div>
-                <div class="ui-block-b " data-ajax="false">
-                    <fieldset data-role="controlgroup" data-type="horizontal" class="header-toggle dark-icons">
-                        <input type="checkbox" name="map-view-spots" id="map-view-spots" value="spots" >
-                        <label for="map-view-spots"><span class="ui-icon ui-icon-spots"></span>Spots</label>
-                        <input type="checkbox" name="map-view-photos" id="map-view-photos" value="photos">
-                        <label for="map-view-photos"><span class="ui-icon ui-icon-photos"></span>Photos</label>
-                    </fieldset>
-                </div>
-            </div>
+      
+        <div class="ui-btn-center " data-ajax="false">
+            <fieldset data-role="controlgroup" data-type="horizontal" class="header-toggle dark-icons">
+                <input type="checkbox" name="map-view-spots" id="map-view-spots" value="spots" >
+                <label for="map-view-spots"><span class="ui-icon ui-icon-spots"></span>Spots</label>
+                <input type="checkbox" name="map-view-photos" id="map-view-photos" value="photos">
+                <label for="map-view-photos"><span class="ui-icon ui-icon-photos"></span>Photos</label>
+            </fieldset>
+        </div>
 
         <div class="ui-btn-right" data-ajax="false">
             <a href="#/search/" data-snapr-dialog="true" data-role="button" data-icon="search" data-iconpos="notext"></a>

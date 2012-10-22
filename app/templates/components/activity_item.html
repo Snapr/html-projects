@@ -9,7 +9,7 @@
             <% _.each( item.get("comments"), function( comment ){ %>
                 <li data-icon="false" class="comment-item activity-item">
                     <a href="#/feed/?username=<%= comment.user.username %>">
-                        <img src="<%= config.get('avatar_url') %>/<%= comment.user.user_id %>" alt="<%= comment.user.display_username %>" class="user-icon-small ui-li-icon"/>
+                        <img src="<%= config.get('avatar_url') %>/<%= comment.user.user_id %>" alt="<%= comment.user.display_username %>" class="s-avatar ui-li-icon"/>
 
                         <h3 class="username"><%= comment.user.display_username %></h3> <span class="activity-desc"><%= comment.comment %></span>
                     </a>
@@ -18,7 +18,7 @@
             <% _.each( item.get("comment-on-comments"), function( comment ){ %>
                 <li data-icon="false" class="comment-item comment-on-comment-item activity-item">
                     <a href="#/feed/?username=<%= comment.user.username %>">
-                        <img src="<%= config.get('avatar_url') %>/<%= comment.user.user_id %>" alt="<%= comment.user.display_username %>" class="user-icon-small ui-li-icon"/>
+                        <img src="<%= config.get('avatar_url') %>/<%= comment.user.user_id %>" alt="<%= comment.user.display_username %>" class="s-avatar ui-li-icon"/>
 
                         <h3 class="username"><%= comment.user.display_username %></h3> <span class="activity-desc"><%= comment.comment %></span>
                     </a>
@@ -34,7 +34,7 @@
                 <ul class="like-icons-list">
                 <% _.each( item.get("favorites"), function( like ){ %>
                     <li class="like-icon">
-                        <a href="#/feed/?username=<%= like.user.username %>"><img src="<%= config.get('avatar_url') %>/<%= like.user.user_id %>" alt="<%= like.user.display_username %>" class="user-icon-small ui-li-icon"/></a>
+                        <a href="#/feed/?username=<%= like.user.username %>"><img src="<%= config.get('avatar_url') %>/<%= like.user.user_id %>" alt="<%= like.user.display_username %>" class="s-avatar ui-li-icon"/></a>
                     </li>
                 <% }); %>
                 </ul>
@@ -67,7 +67,7 @@
     case "follow":%>
 
         <a href="#/feed/?username=<%= item.get("user").username %>" class="">
-            <img src="<%= config.get('avatar_url') %>/<%= item.get("user").username %>" alt="<%= item.get("user").user_id %>" class="user-icon-small ui-li-icon"/>
+            <img src="<%= config.get('avatar_url') %>/<%= item.get("user").username %>" alt="<%= item.get("user").user_id %>" class="s-avatar ui-li-icon"/>
             <h3 class="username"><%= item.get("user").display_username %></h3> <span class="activity-desc">is now following you.</span>
             <% if (!photo_events) { %>
                 <p class="small-text">

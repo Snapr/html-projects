@@ -1,5 +1,5 @@
 <a href="#/feed/?username=<%= user.get('username') %>" data-username="<%= user.get('display_username') %>">
-     <img src="<%= config.get('avatar_url') %>/<%= user.get('user_id') %>" alt="<%= user.get('display_username') %>" class="user-icon-small ui-li-icon"/>
+     <img src="<%= config.get('avatar_url') %>/<%= user.get('user_id') %>" alt="<%= user.get('display_username') %>" class="s-avatar ui-li-icon"/>
      <h3 class="username"><%= user.get('display_username') %></h3>
      <p class="small-text">
       <% if (user.has('score')) {%><span class="photo-count"><%= user.get('score') %></span> points, <%}%>

@@ -34,16 +34,16 @@
 }
 
 .user-info-block{
-    padding-left: @sizeAvatar-large;
+    padding-left: @avatarSizeLarge;
     .user-icon-left{
         position:absolute;
         top: 0;
         left: 0;
-        width: @sizeAvatar-large;
-        height: @sizeAvatar-large;
+        width: @avatarSizeLarge;
+        height: @avatarSizeLarge;
         .user-profile-icon,
         .user-icon-big{
-            .corner-tl (@cornerPage);
+            .corner-tl (@cornersPage);
             overflow:hidden;
         }
         .user-icon-big{
@@ -51,10 +51,10 @@
         }
          .icon-overlay-info{
            background-image: url('../gfx/shiny-avatar-info.png');
-           width: @sizeAvatar-large;
-           height: @sizeAvatar-large;
+           width: @avatarSizeLarge;
+           height: @avatarSizeLarge;
            display: block;
-           .corner-tl (@cornerPage);
+           .corner-tl (@cornersPage);
            overflow:hidden;
            position: absolute;
            top: 0;
@@ -64,22 +64,27 @@
     }
 }
 
+
+
 .feed-user-header{
     height: 100px;
     overflow: hidden;
+    background-color: @grayDark;
+    color: @offWhite;
     &::after{
-        .arrow-up(@arrow-size, @white, @sizeAvatar-large / 2, @sizeAvatar-large + @arrow-y-shift);
+        .arrow-up(@arrow-size, @white, @avatarSizeLarge / 2, @avatarSizeLarge + @arrow-y-shift);
     }
     .ui-bar{
         margin-left: 0;
         margin-right: 0;
-        padding-left: @sizeAvatar-large + @paddingPage;
+        padding-left: @avatarSizeLarge + @paddingPage;
         z-index: 0;
         .username{
             width: 120px;
             overflow: hidden;
             display: block;
             text-overflow: ellipsis;
+            color: @offWhite;
         }
         .ui-btn-right{
 
@@ -88,13 +93,21 @@
             top: 0px;
             .ui-btn {
                 margin-bottom: 0px;
+                border: none;
                 .ui-btn-inner{
-                    height: 36px;
+                    height: @bar-height;
                     .ui-btn-text{
-                        line-height: 34px;
+                        line-height: @bar-height;
+                        color: @offWhite
                     }
                     .ui-icon{
                         width: 36px;
+                    }
+                    .ui-icon-check{
+                         background-position: @gfxIcons-check-x @gfxIcons-y-light;
+                    }
+                    .ui-icon-plus{
+                         background-position: @gfxIcons-plus-x @gfxIcons-y-light;
                     }
                 }
             }
@@ -103,12 +116,14 @@
     }
     .user-stats{
          text-align: center;
-         color: @grayMediumOnLIght ;
+         color: @offWhite ;
          text-transform: lowercase;
          font-size: @font-size-small;
          .ui-link{
             display: block;
             min-height: 64px;
+            color: @offWhite ;
+            
          }
         .big-number{
             display: block;
@@ -127,8 +142,8 @@
                 margin-left: -1px;
         }
         .ui-block-b{
-            border-left: @borderMediumOnLight;
-            border-right: @borderMediumOnLight;
+            border-left: @borderDarkOnDark;
+            border-right: @borderDarkOnDark;
         }
         .ui-block-c{
              margin-right: -1px;
@@ -146,7 +161,7 @@
                 overflow:hidden;
             }
             .icon-overlay-info{
-               .corner-tl (@cornerPage);
+               .corner-tl (@cornersPage);
             }
         }
         .ui-bar{
@@ -159,25 +174,25 @@
 
 .image-item-block{
     .image-item-topbar{
-        height:  @sizeAvatar + 1px;//haxy to account for mysterious icon overhang
+        height:  @avatarSize + 1px;//haxy to account for mysterious icon overhang
         margin-bottom: @paddingPage;
         vertical-align: middle;
         font-size: @font-size-small;
         color: @grayLightOnLIght;
-        line-height:  @sizeAvatar;
+        line-height:  @avatarSize;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
         .user-icon-link{
             vertical-align: middle;
-            height: @sizeAvatar;
+            height: @avatarSize;
             display: inline-block;
-            width: @sizeAvatar;
+            width: @avatarSize;
         }
         .ui-link,
         span{
-            height:@sizeAvatar;
-            line-height:@sizeAvatar;
+            height:@avatarSize;
+            line-height:@avatarSize;
             vertical-align: middle;
             display: inline-block;
         }
@@ -267,6 +282,9 @@
             }
             .ui-btn-text{
                 line-height: 40px;
+                text-transform: lowercase;
+                text-shadow: none;
+                
             }
         }
 
@@ -320,12 +338,18 @@
             .ui-icon-arrow-r{
                 display: none;
             }
+            .username{
+                text-transform: none;
+                text-shadow: none;
+            }
             .comment,
             .like-text{
                 white-space: normal;
                 font-weight: normal;
                 font-family: @font;
                 color: @grayMediumOnLIght;
+                text-transform: none;
+                text-shadow: none;
             }
         }
 
@@ -347,7 +371,7 @@
 
     .ui-btn{
         .corner-top(0);
-        .corner-bottom(@cornerPage);
+        .corner-bottom(@cornersPage);
         margin-bottom: 0;
         border: none;
     }
@@ -359,15 +383,15 @@
 
 .user-profile{
     .user-info-block{
-        padding-left: @sizeAvatar-large + @paddingElement;
+        padding-left: @avatarSizeLarge + @paddingElement;
         position: relative;
     }
     .user-info-block .user-icon-left .user-icon-big{
         background-color: @white;
-        .corner-all(@cornerPage);
+        .corner-all(@cornersPage);
     }
     .user-stats{
-        min-height: @sizeAvatar-large;
+        min-height: @avatarSizeLarge;
     }
     .real-name{
         line-height: @font-size-username;
@@ -412,7 +436,7 @@
         .ui-btn{
             display: inline-block;
             margin-right: @paddingElement;
-            .corner-all(@cornerRound);
+            .corner-all(@cornersRound);
         }
         .ui-btn-icon-left {
              .ui-btn-inner {

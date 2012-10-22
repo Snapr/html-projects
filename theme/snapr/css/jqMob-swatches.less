@@ -21,19 +21,22 @@
     .ui-body-a[data-role="content"]{
         background: none;
         background-color: @black;
-        border-radius: @cornerPage;
+        border-radius: @cornersPage;
         min-height: 412px;
     }
 }
 
 // Main Styles
 
-.ui-body-a {
-    color: @grayLightOnDark;
+.ui-body-a,
+.ui-bar-a {
+    color: @offWhite;
     text-shadow: none;
-    .ui-header{
-        color: @grayLightOnDark;
-        text-shadow: none;
+    .ui-header,
+    .ui-title{
+        color: @offWhite;
+        text-shadow:0 -1px 1px #000;
+        
     }
     .image-streams .image-stream .load-more-inline{
         background-color: darken(@black-tint, 5%);
@@ -75,9 +78,9 @@
     a.ui-link-inherit {
         color: @grayLightOnDark;
     }
-    &.ui-corner-left{.corner-left (@cornerRound);}
-    &.ui-corner-right{.corner-right (@cornerRound);}
-    &.ui-btn-corner-all{.corner-all (@cornerRound);}
+    &.ui-corner-left{.corner-left (@cornersRound);}
+    &.ui-corner-right{.corner-right (@cornersRound);}
+    &.ui-btn-corner-all{.corner-all (@cornersRound);}
 }
 
 .ui-btn-hover-a,
@@ -101,9 +104,9 @@
     a.ui-link-inherit {
         color: @grayLightOnDark;
     }
-    &.ui-corner-left{.corner-left (@cornerRound);}
-    &.ui-corner-right{.corner-right (@cornerRound);}
-    &.ui-btn-corner-all{.corner-all (@cornerRound);}
+    &.ui-corner-left{.corner-left (@cornersRound);}
+    &.ui-corner-right{.corner-right (@cornersRound);}
+    &.ui-btn-corner-all{.corner-all (@cornersRound);}
 }
 
 // Tweak to A theme buttons for transparent BGs
@@ -151,13 +154,34 @@
     border: none;
 }
 
+.ui-bar-b{
+    background: @grayDark;
+    color: @offWhite;
+    .linear-gradient(@grayDark, @grayDark-tint);
+
+    &.small-top-left-arrow::after{
+        .arrow-down(6px, @grayDark, 24px, 0);
+    }
+    &.small-top-right-arrow::after{
+        .arrow-left(8px, @grayDark, 100%, 0);
+    }
+    a{
+        color: @offWhite;
+    }
+    .ui-title{
+        color: @offWhite;
+    }
+    
+  
+}
+
 .ui-btn-up-b,
 .ui-btn-up-b[data-rel="back"]::before {
     border: @borderDarkOnDark;
     background: @grayDark;
     .button-font-small();
-    color: @grayMediumOnDark;
-    text-shadow: @shadowMediumOnDark 0px 1px 1px;
+    color: @offWhite;
+    text-shadow: @shadowDarkOnDark 0px -1px 1px;
     text-decoration: none;
     .linear-gradient(@grayDark, @grayDark-tint);
     .ui-btn-inner{
@@ -188,8 +212,8 @@
     border: @borderDarkOnDark;
     background: @grayDark;
     .button-font-small();
-    color: lighten(@grayMediumOnDark, 3%);
-    text-shadow: @shadowMediumOnDark 0px 1px 1px;
+    color: lighten(@offWhite, 3%);
+    text-shadow: @shadowDarkOnDark 0px -1px 1px;
     font-size: @font-size-small;
     text-decoration: none;
     .linear-gradient(lighten(@grayDark, 3%), lighten(@grayDark-tint, 3%));
@@ -219,8 +243,8 @@
     border: @borderDarkOnDark;
     background: @grayDark;
     .button-font-small();
-    color: darken(@grayMediumOnDark, 20%);
-    text-shadow: @shadowMediumOnDark 0px 1px 1px;
+    color: darken(@offWhite, 3%);
+    text-shadow: @shadowDarkOnDark 0px -1px 1px;
     text-decoration: none;
     .pressed-gradient(@grayDark-tint, 5%);
     .ui-btn-inner{
@@ -309,9 +333,7 @@
             color: @grayMediumOnDark;
         }
     }
-    &.ui-btn{
-        border: none;
-    }
+    
 }
 
 // C //
@@ -344,7 +366,7 @@
         background-color: @white-tint;
         background-image: @gfxBgLight;
         border: none;
-        border-radius: @cornerPage;
+        border-radius: @cornersPage;
         overflow: visible;
     }
     .ui-header{
@@ -400,7 +422,7 @@
         .ui-btn-hover-c.system-bar,
         .ui-btn-down-c.system-bar,
         .ui-btn-active-c.system-bar   {
-            .corner-all(@cornerRound);
+            .corner-all(@cornersRound);
             display: block;
             position: relative;
             border: none;
@@ -426,7 +448,7 @@
     }
 
     .message{
-        .corner-all(@cornerPage);
+        .corner-all(@cornersPage);
         padding: @paddingElement;
         border: @borderMediumOnLight;
         font-size: @font-size-small;
@@ -505,7 +527,7 @@
         .ui-btn-inner{
             border:none;
         }
-        .corner-all(@cornerRound);
+        .corner-all(@cornersRound);
         .ui-icon-delete{background-position: @gfxIcons-delete-x @gfxIcons-y-highlight;}
     }
     .ui-btn-hover-c,
@@ -523,7 +545,7 @@
         .ui-btn-inner{
             border:none;
         }
-        .corner-all(@cornerRound);
+        .corner-all(@cornersRound);
     }
 }
 
@@ -578,6 +600,8 @@
         .ui-link-inherit{
             padding-top: @paddingElement * 2px!important;
             padding-bottom: @paddingElement * 2px!important;
+            .button-font-light();
+            
         }
     }
     .ui-li-has-icon{
@@ -658,7 +682,7 @@
 .ui-body-d[data-role="page"]{
     background: @black;
     background-image: @gfxBgDark;
-    border-radius: @cornerPage;
+    border-radius: @cornersPage;
     border-top: @borderLightOnDark;
     .border-box();
 }
@@ -669,7 +693,7 @@
     div[data-role="content"]{
         background-color: @white;
         background-image: none;
-        border-radius: @cornerPage;
+        border-radius: @cornersPage;
         min-height: 412px;
     }
     .ui-link,
@@ -698,6 +722,8 @@
     .ui-listview{
         .ui-btn.ui-li{
             background: none;
+            .button-font-light();
+            font-size: @font-size-btn;
         }
     }
 }
@@ -711,7 +737,8 @@
     border: none;
     background: @orange;
     .linear-gradient(@orange, @orange-tint);
-    color: @grayDarkOnLIght;
+    color: @offWhite;
+    text-shadow: @shadowDarkOnDark 0px -1px 1px;
     .button-font-bold();
     a.ui-link-inherit {
         color: @grayDarkOnLIght;
@@ -729,7 +756,8 @@
     border: none;
     background: lighten(@orange, 10% );
     .linear-gradient(lighten(@orange, 10%), lighten(@orange-tint, 10%));
-    color: @grayDarkOnLIght;
+    color: @offWhite;
+    text-shadow: @shadowDarkOnDark 0px -1px 1px;
     .button-font-bold();
     a.ui-link-inherit {
         color: @grayDarkOnLIght;
@@ -747,7 +775,8 @@
     border: none;
     background: @orange;
     .pressed-gradient(@orange, 3%);
-    color: @grayDarkOnLIght;
+    color: @offWhite;
+    text-shadow: @shadowDarkOnDark 0px -1px 1px;
     .button-font-bold();
     a.ui-link-inherit {
         color: @grayDarkOnLIght;
@@ -791,11 +820,12 @@
             .ui-link-inherit,
             p{
                 padding-left: 8px;
+                .button-font-light();
             }
 
             &.ui-li-has-icon{
                 .ui-link-inherit{
-                    padding-left: @sizeAvatar;
+                    padding-left: @avatarSize;
                 }
             }
             input[type="text"],
@@ -841,8 +871,8 @@
 
 .ui-body-e{
     &.ui-navbar{
-        background: @yellow;
-        .linear-gradient(@yellow, @yellow-tint);
+        background: @green;
+        .linear-gradient(@green, @green-tint);
         .ui-btn{
             background: none!important;
         }
@@ -850,14 +880,38 @@
 }
 
 .ui-bar-e{
-    background: @yellow;
-    .linear-gradient(@yellow, @yellow-tint);
+    background: @green;
+    .linear-gradient(@green, @green-tint);
 
     &.small-top-left-arrow::after{
-        .arrow-down(6px, @yellow-tint, 24px, 0);
+        .arrow-down(6px, @green-tint, 24px, 0);
+    }
+    &.small-top-right-arrow::after{
+        .arrow-left(8px, @green-tint, 100%, 0);
     }
     a{
-        color: @grayDarkOnLIght;
+        color: @offWhite;
+    }
+    
+    //POP red for little activity tab
+    &.tab-bar-extra,
+    &.small-top-left-arrow{
+        background: @red;
+        color: @grayDark-tint;
+        text-shadow: none;
+        .linear-gradient(@red, @red-tint);
+
+        &.small-top-left-arrow::after{
+            .arrow-down(6px, @red-tint, 24px, 0);
+        }
+        &.small-top-right-arrow::after{
+            .arrow-left(8px, @red-tint, 100%, 0);
+        }
+        a{
+            color: @grayDark;
+            text-shadow: none;
+        }
+        
     }
 }
 
@@ -866,9 +920,9 @@
     background: none;
     color: @grayMediumOnLIght;
     div[data-role="content"]{
-        background-color: @yellow;
+        background-color: @green;
         background-image: none;
-        border-radius: @cornerPage;
+        border-radius: @cornersPage;
     }
     .ui-link,
     .ui-link:visited,
@@ -904,45 +958,49 @@
 
 .ui-btn-up-e {
     border: none;
-    background: @yellow;
-    .linear-gradient(@yellow, @yellow-tint);
-    color: @grayDarkOnLIght;
+    background: @green;
+    .linear-gradient(@green, @green-tint);
+    color: @offWhite;
+    text-shadow: @shadowDarkOnDark 0px -1px 1px;
+    
     .button-font-bold();
     text-decoration: none;
     a.ui-link-inherit {
         color: @grayDarkOnLIght;
     }
     &.top-left-arrow::after{
-        .arrow-down(@arrow-size, @yellow-tint, @arrow-offset, 3px);
+        .arrow-down(@arrow-size, @green-tint, @arrow-offset, 3px);
     }
     &.bottom-centered-arrow::after{
-        .arrow-up(@arrow-size, @yellow, 50%, 3px);
+        .arrow-up(@arrow-size, @green, 50%, 3px);
     }
 }
 
 .ui-btn-hover-e {
     border: none;
-    background: lighten(@yellow, 10% );
-    .linear-gradient(lighten(@yellow, 10%), lighten(@yellow-tint, 10%));
-    color: @grayDarkOnLIght;
+    background: lighten(@green, 10% );
+    .linear-gradient(lighten(@green, 10%), lighten(@green-tint, 10%));
+    color: @offWhite;
+    text-shadow: @shadowDarkOnDark 0px -1px 1px;
     .button-font-bold();
     text-decoration: none;
     a.ui-link-inherit {
         color: @grayDarkOnLIght;
     }
     &.top-left-arrow::after{
-        .arrow-down(@arrow-size, lighten(@yellow-tint, 10% ), @arrow-offset, 3px);
+        .arrow-down(@arrow-size, lighten(@green-tint, 10% ), @arrow-offset, 3px);
     }
     &.bottom-centered-arrow::after{
-        .arrow-up(@arrow-size, lighten(@yellow, 10%), 50%, 3px);
+        .arrow-up(@arrow-size, lighten(@green, 10%), 50%, 3px);
     }
 }
 
 .ui-btn-down-e {
     border: none;
-    background: @yellow;
-    .pressed-gradient(@yellow, 3%);
-    color: @grayDarkOnLIght;
+    background: @green;
+    .pressed-gradient(@green, 3%);
+    color: @offWhite;
+    text-shadow: @shadowDarkOnDark 0px -1px 1px;
     .button-font-bold();
     text-decoration: none;
     a.ui-link-inherit {
@@ -952,10 +1010,10 @@
         .box-shadow(0 1px 4px lighten(@shadowLighterOnLight, 20%));
     }
     &.top-left-arrow::after{
-        .arrow-down(@arrow-size, @yellow, @arrow-offset, 3px);
+        .arrow-down(@arrow-size, @green, @arrow-offset, 3px);
     }
     &.bottom-centered-arrow::after{
-        .arrow-up(@arrow-size, darken(@yellow, 3%), 50%, 3px);
+        .arrow-up(@arrow-size, darken(@green, 3%), 50%, 3px);
     }
 }
 

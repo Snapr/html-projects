@@ -1,7 +1,7 @@
 <div class="ui-btn-left join-block">
     <% if (username) { %>
         <a class="avatar-block" data-role="button" data-shadow="false" data-corners="false" href="#/my-account/">
-            <span class="user-icon-small" style="background-image: url('<%= config.get('avatar_url') %>/<%= username %>?size=large&amp;_salt=facebook');"></span>
+            <span class="s-avatar" style="background-image: url('<%= config.get('avatar_url') %>/<%= username %>?size=large&amp;_salt=facebook');"></span>
             <%= display_username %>
         </a>
     <% } else { %>

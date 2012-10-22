@@ -5,13 +5,13 @@
     .game-rank{
         display: block;
         position: absolute;
-        width: @sizeAvatar;
+        width: @avatarSize;
         padding-right: 0;
-        height: @sizeAvatar;
-        background: @yellow;
-        .linear-gradient(@yellow-tint, @yellow);
+        height: @avatarSize;
+        background: @green;
+        .linear-gradient(@green-tint, @green);
         text-align: center;
-        line-height: @sizeAvatar;
+        line-height: @avatarSize;
         left: 0;
         top: @paddingElement;
         .corner-tl(@cornerLessRound);
@@ -19,10 +19,10 @@
     }
     .ui-li-has-icon .ui-btn-inner a.ui-link-inherit, 
     .ui-li-static.ui-li-has-icon{
-        padding-left: @sizeAvatar * 2 + @paddingElement!important;
+        padding-left: @avatarSize * 2 + @paddingElement!important;
     }
     .ui-li-icon{
-        left: @sizeAvatar!important;
+        left: @avatarSize!important;
         .corner-tl(0);
         .corner-bl(0);
     }

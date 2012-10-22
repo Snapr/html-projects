@@ -33,53 +33,15 @@
     }
 }
 
-.x-map-venue{
-    .x-map-venue-pin{
-        background-image: url('../gfx/map-spot-pin.png');
-        position: absolute;
-        display: block;
-        bottom: 0;
-        left: -18px;
-        width: 36px;
-        height: 28px;
-        cursor: pointer;
-    }
-    .x-map-venue-label{
-        background-image: url('../gfx/map-spot-label.png');
-        position: absolute;
-        display: none;
-        bottom: 23px;
-        left: -70px;
-        width: 139px;
-        height: 47px;
-        z-index: 1;
-        .spot-icon{
-            position: absolute;
-            top: 5px;
-            left: 4px;
-        }
-        .venue-label-text{
-            color: white;
-            font-weight: bold;
-            text-shadow: black 0 -1px 1px;
-            display: block;
-            padding: 9px 26px;
-            text-overflow: ellipsis;
-            overflow: hidden;
-            white-space: nowrap;
-            font-size: 13px;
-        }
-    }
-}
+
 
 .photo-map{
     position:relative;
     overflow:hidden;
     .ui-bar.top-left-arrow,
     .top-no-arrow{
-        .ui-icon {
-            left: -6px;
-            top: -8px;
+        .ui-icon-location{
+            left: -@padding * 2;
         }
     }
     /* map thumbs */
@@ -88,6 +50,51 @@
         height: 1px;
         overflow: visible;
         position:absolute;
+        z-index: 1;
+    }
+    .x-map-venue{
+        .x-map-venue-pin{
+            background-image: url('../gfx/map-spot-pin.png');
+            position: absolute;
+            display: block;
+            bottom: 0;
+            left: -18px;
+            width: 36px;
+            height: 28px;
+            cursor: pointer;
+        }
+        .x-map-venue-label{
+            display: none;
+            background-image: url('../gfx/map-spot-label.png');
+            position: absolute;
+            bottom: 23px;
+            left: -70px;
+            width: 139px;
+            height: 47px;
+            z-index: 1;
+            .spot-icon{
+                position: absolute;
+                top: 5px;
+                left: 4px;
+            }
+            .venue-label-text{
+                color: white;
+                font-weight: bold;
+                text-shadow: black 0 -1px 1px;
+                display: block;
+                padding: 9px 26px;
+                text-overflow: ellipsis;
+                overflow: hidden;
+                white-space: nowrap;
+                font-size: 13px;
+            }
+        }
+        &.active{
+            z-index: 2;
+            .x-map-venue-label{
+                display: block;
+            }
+        }
     }
 
     .map-current-location{
@@ -132,7 +139,7 @@
             display: block;
         }
     }
-    
+
     #snaprmapalert{
         position: absolute;
         top: 50%;
@@ -145,9 +152,9 @@
             padding: 6px;
             padding-left: 48px;
             position: relative;
-            color: #FF8400;
-            .corner-all(@cornerPage);
-            border: solid yellow 4px;
+            color: @grayDark;
+            .corner-all(@cornersPage);
+            border: solid @red 4px;
             font-size: @font-size-small;
             .box-shadow(0px 4px 6px rgba(0, 0, 0, .3) );
             .ui-icon-noImages{
@@ -186,7 +193,7 @@
             height: 16px;
             overflow: hidden;
             input{
-                font-family: @font-special;
+                font-family: @font;
                 color: @grayLightOnDark;
                 text-shadow: @shadowDarkOnDark 0px 1px 1px;
             }
@@ -329,7 +336,7 @@
 
 .jqm{
     .dwo{
-        background-color: @black-trans;
+        background-color: @blackTrans;
     }
     /* Place it at bottom left */
     /*.dw{
@@ -351,7 +358,7 @@
 }
 
 
-// Maps Icons 
+// Maps Icons
 //-----------------
 .map-icons.ui-icon,
 .map-icons .ui-icon{

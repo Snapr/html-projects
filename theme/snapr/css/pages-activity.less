@@ -54,8 +54,8 @@
             .ui-link-inherit{
                 padding-top: 0!important;
                 padding-bottom: 0!important;
-                padding-left: @sizeAvatar + @paddingGrid!important;
-                min-height: @sizeAvatar;
+                padding-left: @avatarSize + @paddingGrid!important;
+                min-height: @avatarSize;
             }
             .ui-li-icon{
                 top:0;
@@ -70,7 +70,7 @@
 
     /* Tweaks for likes */
     .image-likes{
-        min-height: @sizeAvatar;
+        min-height: @avatarSize;
         .icons-list,
         p{
             display: inline-block;
@@ -92,7 +92,7 @@
         position: relative;
         padding-left: 0;
         margin-top: 8px;
-        min-height:  @sizeAvatar;
+        min-height:  @avatarSize;
         display: block;
         .username,
         .activity-desc,
@@ -103,9 +103,9 @@
         }
         .ui-link{
             display: block;
-            padding-left:  @sizeAvatar;
+            padding-left:  @avatarSize;
             padding-top: 8px ;
-            min-height: @sizeAvatar;
+            min-height: @avatarSize;
             .border-box();
         }
         .ui-li-icon{
@@ -134,8 +134,8 @@
     /* Image Items */
     .activity-image-item{
         position: relative;
-        min-height: @sizeThumb;
-        padding-left: @sizeThumb + @paddingGrid;
+        min-height: @thumbSize;
+        padding-left: @thumbSize + @paddingGrid;
         margin-bottom: @paddingPage + @paddingGrid;
         .activity-item:first{
             border-top: none;

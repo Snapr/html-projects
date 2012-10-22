@@ -1,0 +1,60 @@
+//
+// COMPONENTS - Bare Bones of Snapr Specific Components
+// --------------------------------------------------
+
+
+// Headers
+// -------------------------
+
+
+div[data-role="header"]{
+    min-height: @topBarHeight; // So Topbar doesn't collapse without heading
+
+    // Add Centered Button Option 
+    .ui-btn-center{
+        position: absolute;
+        top: @padding;
+        width: 100%;
+        text-align: center;
+    }
+
+    // Line Up Multiple buttons 
+    .ui-btn-center{
+        .ui-btn,
+        .ui-controlgroup{
+             margin: 0;
+         }
+    }
+    
+    .ui-btn-right,
+    .ui-btn-left{
+        white-space: nowrap;
+        .ui-btn{
+             display: inline-block;
+             margin: 0;
+             top: @padding;
+         }
+    }
+}
+
+
+// Avatars
+// -------------------------
+
+.s-avatar,
+.s-avatar-med{
+    width: @avatarSize;
+    height: @avatarSize;
+    background-color: @grayLighter;
+    background-size: 100% 100%;
+    background-size: cover;
+    background-position: center;
+    .border-radius(2px);
+    display: block;
+}
+
+.s-avatar-med{
+    width: @avatarSizeMed;
+    height: @avatarSizeMed;
+    .border-radius(4px);
+}
