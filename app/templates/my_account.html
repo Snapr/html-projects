@@ -15,13 +15,13 @@
         <div class="account-content">
 
 
-            <div class="myaccount-header s-inset-header ui-body-c">
+            <div class="myaccount-header page-inset-header ui-body-c">
                 <div class="ui-content">
                     <a class="username" href="#/feed/?username=<%= username %>">
                         <% if(initial){ %>
-                            <div class="s-avatar"></div>
+                            <div class="user-icon-small"></div>
                         <% }else{ %>
-                            <div class="s-avatar" style="background-image: url('<%= config.get('avatar_url') %>/<%= user_id %>?size=large&_salt=<%= settings.profile.avatar_type %>');"></div>
+                            <div class="user-icon-small" style="background-image: url('<%= config.get('avatar_url') %>/<%= user_id %>?size=large&_salt=<%= settings.profile.avatar_type %>');"></div>
                         <% } %>
                         <%= display_username %>
                     </a>
@@ -30,7 +30,7 @@
             </div>
 
             <div class="myaccount-quicklinks">
-                <a class="ui-bar top-no-arrow" data-role="button" data-theme="b" >
+                <a class="ui-bar top-no-arrow" data-role="button" data-theme="e" >
                     <em>Quick Links</em>
                 </a>
                 <ul data-role="listview">
@@ -42,7 +42,7 @@
 
 
             <div class="myaccount-settings">
-                <a class="ui-bar top-no-arrow" data-role="button" data-theme="b" >
+                <a class="ui-bar top-no-arrow" data-role="button" data-theme="e" >
                     <em>Settings</em>
                 </a>
                 <% if(!initial){ %>
@@ -53,7 +53,7 @@
 
                             <fieldset data-role="controlgroup" class="my-account-avatar">
                                <div class="avatar-select-block">
-                                    <span class="s-profile-icon">
+                                    <span class="user-profile-icon">
                                         <div class="user-icon-big" style="background-image: url('<%= config.get('avatar_url') %>/<%= user_id %>?size=large&_salt=<%= settings.profile.avatar_type %>');"></div>
                                     </span>
 
@@ -224,7 +224,7 @@
 
                     </div><!-- End of Nested Collapsible Set -->
 
-                    <a class="ui-bar top-no-arrow connect-heading" data-role="button" data-theme="b" >
+                    <a class="ui-bar top-no-arrow connect-heading" data-role="button" data-theme="e" >
                         <em>Connect</em>
                     </a>
 
@@ -232,7 +232,7 @@
                         <!-- dynamic -->
                     </ul>
 
-                    <a class="ui-bar top-no-arrow linked-heading" data-role="button" data-theme="b" >
+                    <a class="ui-bar top-no-arrow linked-heading" data-role="button" data-theme="e" >
                         <em>Linked Services</em>
                     </a>
                     <div class="linked-services" data-role="collapsible-set" data-theme="c" data-content-theme="d">
@@ -243,7 +243,7 @@
             </div>
             
              <div class="myaccount-info">
-                    <a class="ui-bar top-no-arrow" data-role="button" data-theme="b" >
+                    <a class="ui-bar top-no-arrow" data-role="button" data-theme="e" >
                         <em>Info</em>
                     </a>
                     <ul data-role="listview">

@@ -1,4 +1,6 @@
 <div id="post-<%= model.get('id') %>" class="post-<%= model.get('type') %> post">
-    <%= getVideoEmbed(model, 250) %>
+    <%= getVideoEmbed(model, 312) %>
+    <div class="tumblr-body"> 
     <% if(model.get('caption')){%><%=model.get('caption')%><%}%>
+    </div>
 </div>

@@ -16,6 +16,16 @@ var pages = [
     'limbo',
     'feed',
     'dash',
+    {
+        name: 'zombie-home',
+        view: 'dash',
+        extra: {show: ['comps', 'tumblr']}
+    },
+    {
+        name: 'feeds',
+        view: 'dash',
+        extra: {show: ['user-streams', 'featured-streams']}
+    },
     'leaderboard',
     'activity',
     'popular',
@@ -49,30 +59,25 @@ var pages = [
     {
         name: 'user/followers',
         view: 'people',
-        template: 'people',
         extra: {follow: "followers"}
     },
     {
         name: 'user/following',
         view: 'people',
-        template: 'people',
         extra: {follow: "following"}
     },
     {
         name: 'user/search',
-        view: 'people',
-        template: 'people'
+        view: 'people'
     },
-    {
-        name: 'user/profile',
-        view: 'user_profile',
-        template: 'user_profile'
-    },
+    'user/profile',
     {
         name: 'upload_xhr',
         template: 'upload'
     },
-    'foursquare_venues'
+    'foursquare_venues',
+    'competitions',
+    'competition'
 ];
 
 function _make_route(view_name, template, extra_view_data){
@@ -87,6 +92,11 @@ function _make_route(view_name, template, extra_view_data){
 
         // get the view
         require([view_name], function(view) {
+
+            if(config.get('current_view')){
+                console.groupEnd(config.get('current_view').name);
+            }
+            console.group(template);
 
             var query = get_query_params(query_string),
                 options = _.extend({
@@ -179,34 +189,42 @@ var routers = Backbone.Router.extend({
 
     // build our page array into backbone routes
     initialize: function() {
-        _.each(this.pages, function(options){
-            var name, view, extra_data, template;
+        _.each(this.pages, function(orig_options){
+            var options;
 
             // the page can just be a name or an object specifing more properties
-            if(_.isObject(options)){
-                view = "views/" + options.view;
-                extra_data = options.extra;
-                template = options.template;
-                name = options.name;
+            if(_.isObject(orig_options)){
+                options = orig_options;
             }else{
-                // if it's just a name, build the other params
-                view = "views/" + options.replace('-', '_').replace('/', '_');
-                template = options.replace('-', '_').replace('/', '_');
-                name = options;
+                options = {name: orig_options};
             }
 
-            var callback = _make_route(view, template, extra_data);
-            var regex = new RegExp('^' + name + '\\/\\??(.*?)?$');
+            if(!options.view){
+                options.view = options.name.replace('-', '_').replace('/', '_');
+            }
+
+            if(!options.template){
+                options.template = options.view;
+            }
+
+            options.view = 'views/' + options.view;
+
+            if(!options.extra){
+                options.extra = {};
+            }
+
+            var callback = _make_route(options.view, options.template, options.extra);
+            var regex = new RegExp('^' + options.name + '\\/\\??(.*?)?$');
 
             // store url so we can manually look them up (for dialogues)
             this.urls.push({
                 regex:regex,
-                name: name,
+                name: options.name,
                 callback: callback
             });
 
             // create backbone route
-            this.route(regex, name, callback);
+            this.route(regex, options.name, callback);
 
         }, this);
 

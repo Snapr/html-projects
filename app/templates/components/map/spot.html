@@ -1,4 +1,4 @@
-<div class="x-map-venue snaprmappoint <%=data.category.slug%>">
+<div class="x-map-venue snaprmappoint <%=data.category.slug%> <% if(data.active){ %>active<% } %>">
     <a class="x-map-venue-pin"></a>
     <a class="x-map-venue-label" data-ajax="false" href="#/spot/?spot_id=<%=data.id%>">
       <span class="ui-icon spot-icon spot-icon-b"></span>

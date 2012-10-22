@@ -45,17 +45,6 @@ var cities = {
     }
 };
 
-var city_stream = side_scroll.extend({
-    tagName: 'li',
-    className: 'image-stream',
-    initialize: function(options){
-        this.template = this.get_template('components/cities_stream');
-        this.thumbs_template = this.get_template('components/cities_thumb');
-        this.details = options.details;
-        side_scroll.prototype.initialize.call(this, options);
-    }
-});
-
 return page_view.extend({
 
     el: $('#cities'),
@@ -94,30 +83,16 @@ return page_view.extend({
                 area: details.area,
                 n: config.get('side_scroll_initial')
             };
-            var li = new city_stream({
+            var li = new side_scroll({
                 collection: photos,
-                details: {
-                    name: details.name,
-                    area: details.area,
-                    id: id
-                }
+                title: details.name
             });
-            photos.fetch({
-                data:{
-                    n:6,
-                    sort:'weighted_score',
-                    detail:0
-                },
-                success: function(){
-                    if(photos.length){
-                        empty_once();
-                        streams.append( li.el );
-                        li.render();
-                        $el.trigger( "create" );
-                    }
-                    $.mobile.hidePageLoadingMsg();
-                }
-            });
+
+            streams.append( li.el );
+            li.render();
+            $el.trigger( "create" );
+
+            $.mobile.hidePageLoadingMsg();
         }, this);
 
     }

@@ -50,8 +50,8 @@ return view.extend({
 
     history_ignore_params: false,  // array of url params to ignore when navigating to a view via history
 
-    create_page: function(context){
-        this.setElement($(this.template(context)));
+    create_page: function(){
+        this.setElement($(this.template({initial: true})));
         this.$el.appendTo(document.body);
     },
 
@@ -172,6 +172,10 @@ return view.extend({
                     transition: this.get_transition(),
                     reverse: true
                 });
+
+                console.groupEnd(this.options.name);
+                console.group(this.previous_view.options.name);
+
                 config.set('current_view', this.previous_view);
                 this.previous_view.dialog_closed(this);
             }else{

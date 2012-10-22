@@ -18,6 +18,7 @@ var tumblr_post_view = page_view.extend({
         this.collection.bind( "change", _.bind(this.render, this) );
 
         this.collection.fetch({
+            host: options.query.host,
             data: {
                 filter:'text'
             },
@@ -29,9 +30,13 @@ var tumblr_post_view = page_view.extend({
             }
         });
     },
+    
+    get_default_tab: function(){ return 'dash'; },
 
     render: function(){
-        var $stream = this.$el.find( ".posts-stream" ).empty();
+        var $stream = this.$( ".posts-stream" ).empty();
+
+        this.$('.x-blog-title').text(this.collection.blog_title);
 
         this.collection.each(function (post) {
             var li = new tumblr_item_view({
@@ -40,6 +45,7 @@ var tumblr_post_view = page_view.extend({
             $stream.append( li.el );
             li.render();
         });
+
         // this.$el.find('[data-role="button"]').button();
         $.mobile.hidePageLoadingMsg();
     }

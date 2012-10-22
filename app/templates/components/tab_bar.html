@@ -2,15 +2,26 @@
     <div data-role="navbar" data-iconpos="top">
         <ul>
             <li><a href="#/dash/" data-icon="dash" data-theme="b" data-name="dash">Dash</a></li>
-            <li><a href="#/map/" data-icon="map" data-theme="b" data-name="map">Map</a></li>
+            <li><a href="#/spots/" data-icon="spots" data-theme="b" data-name="spots">Spots</a></li>
             <li><a class="x-launch-camera-options" data-icon="share"  data-theme="b" data-name="share">Share</a></li>
             <li><a href="#/popular/" data-icon="popular" data-theme="b" data-name="discover">Discover</a></li>
             <% if(username){ %>
-                <li><a href="#/feed/?username=<%= username %>" data-icon="user" data-theme="b" data-name="feed">Me</a></li>
+                <li>
+                    <a href="#/feed/?username=<%= username %>" data-icon="user" data-theme="b" data-name="feed">Me</a>
+                </li>
             <% }else{ %>
-                <li><a href="#/feed/" data-icon="user" data-theme="b" data-name="feed">Feed</a></li>
+                <li><a href="#/welcome/" data-icon="user" data-theme="b" data-name="feed">Login</a></li>
             <% } %>
 
         </ul>
     </div><!-- /navbar -->
+
+    <% if(username){ %>
+        <a class="ui-bar ui-bar-e small-top-right-arrow tab-bar-extra hide x-activity" href="#/activity/" data-role="button" data-theme="e">
+            <!-- <span class="activity-count icon-left"><span class="ui-icon ui-icon-heart"></span>x 1</span>
+            <span class="activity-count icon-left"><span class="ui-icon ui-icon-comment"></span>x 4</span> -->
+
+            <span class="activity-count icon-left"><span class="ui-icon ui-icon-activity"></span>Activity</span>
+        </a>
+    <% } %>
 </div><!-- /footer -->

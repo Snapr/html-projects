@@ -1,0 +1,41 @@
+<a class="ui-bar top-left-arrow x-details" data-role="button" data-iconpos="left" data-icon="open" data-theme="<% if(!obj.theme){ print("c") }else{ print(theme) } %>">
+    <span class="image-details">
+        <strong class="title"><%= title %></strong>
+        <span class="image-tag x-tag"></span>
+        <span class="image-time small-text">
+            <span class="ui-icon ui-icon-clock "></span><span class="x-date"></span>
+        </span>
+    </span>
+</a>
+<a class="x-view-full ui-bar-icons" data-query="<%= escape($.param(query || {})) %>" data-corners="false" data-role="button" data-icon="arrow-r" data-iconpos="right" data-theme="c"></a>
+<div class="thumbs-grid thumbs-grid-med x-scroll-area" style="display:none">
+    <div class="x-scroll-wrapper"><!-- inner div for scroll -->
+        <div class="x-left-pull thumb-med load-more-inline">
+            <span class="ui-icon ui-icon-refresh"></span>
+            <span class="ui-btn-text x-msg">Loading...</span>
+        </div>
+        <div class="x-thumbs">
+            <% _.each(photos, function(photo) { %>
+                <a href="https://s3.amazonaws.com/media-server2.snapr.us/lrg2/<%= photo.get('secret') %>/<%= photo.get('id') %>.jpg" class="x-thumb image-link" rel="external" data-date="<%= photo.get('date') %>" data-id="<%= photo.get('id') %>" data-tag="<%= photo.get('description') %>">
+                    <img src="https://s3.amazonaws.com/media-server2.snapr.us/thm2/<%= photo.get('secret') %>/<%= photo.get('id') %>.jpg" <% if(photo.get('description')){ %>alt="<%= photo.get('description') %>"<% } %> class="thumb-image thumb-med">
+                </a>
+            <% }); %>
+            <% if(!photos.length){ %>
+                <a class="x-no-photos x-thumb thumb-med load-more-inline">
+                <!-- we need something to scroll to even when there are no photos -->
+                <span class="ui-btn-text x-msg">No Photos</span>
+
+                </a>
+            <% } %>
+        </div>
+        <div class="x-right-pull thumb-med load-more-inline">
+            <span class="ui-icon ui-icon-refresh"></span>
+            <span class="ui-btn-text x-msg">Load More</span>
+
+        </div>
+    </div>
+</div>
+
+<div class="edit-overlay trans-bg">
+    <a class="remove-stream" data-role="button" data-icon="delete" data-iconpos="right" data-theme="c">Remove</a>
+</div>

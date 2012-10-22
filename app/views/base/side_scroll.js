@@ -1,41 +1,145 @@
-// Abstract base class side-scroll views
-/*global _  define require */
-define(['views/base/view', 'utils/photoswipe', 'iscroll', 'utils/string', 'collections/photo', 'config'],
-    function(view, photoswipe, iScroll, string_utils, photo_collection, config){
+// Base class side-scroll views
+/*global _ define */
+define(['backbone', 'views/base/view', 'utils/photoswipe', 'iscroll', 'utils/string', 'collections/photo', 'config'],
+    function(Backbone, view, photoswipe, iScroll, string_utils, photo_collection, config){
 return view.extend({
 
-    // The following 3 attrs need to be set when extending this view
-    // id: 'unique name for this set of side-scrollers'
-    // template: _.template( $('#template').html() ),
-    // thumbs_template: _.template( $('#thumbs-template').html() ),
+    tagName: 'li',
+    className: 'image-stream',
 
-    initialize: function() {
+    initialize: function(options) {
         _.bindAll(this);
-        this.collection = this.collection || new photo_collection();
-        this.collection.bind('all', this.re_render_thumbs, this);
+        if(!options.collection){
+            if(options.data){
+                this.collection = new photo_collection([], {data: options.data});
+            }else{
+                this.collection = new photo_collection();
+            }
+        }
+
+        this.collection.bind('all', this.render_thumbs, this);
+        this.load_template('components/stream');
+        this.title = options.title;
+        this.initial_title = options.initial_title;
+
+        this.no_photos = options.no_photos;
+        this.fetch_attempts = 0;
+
         this.post_initialize.apply(this, arguments);
     },
 
     post_initialize: function(){},
 
+    events:{
+        "click .x-details": "toggle_stream",
+        "click .x-view-full": "goto_feed"
+    },
+
+    get_title: function(){
+        return this.title;
+    },
+
+    set_title: function(title){
+        title = title || this.get_title();
+        this.$('.title').html(title);
+    },
+
     render: function(){
         var feed_data = this.collection.data || {};
         if (feed_data.access_token){ delete feed_data.access_token; }
         if (feed_data.n){ delete feed_data.n; }
-        feed_data.back = "Upload";
-        var feed_param = $.param(feed_data);
+
+        // what was this? I'm going to comment it out because it looks like a bad idea - Jake
+        //feed_data.back = "Upload";
+
+        this.$el.addClass('closed');
+
         $(this.el).html($(this.template({
-            collection: this.collection,
-            model: this.model,
-            details: this.details,
-            feed_param: feed_param
+            title: this.initial_title === undefined && this.get_title() || this.initial_title,  // title initially blank if there's a no-photos callback
+            query: this.collection.data,
+            photos: this.collection.models
         })));
-        this.render_thumbs();
-        this.photoswipe_init();
-        this.scroll_init();
+
+        if(this.options.expand){
+            this.toggle_stream();
+
+            // if there are already photos in the collection
+            if(this.collection.length){
+                this.scroll_init();
+                this.photoswipe_init();
+            }
+        }
         return this;
     },
+
+    toggle_stream: function() {
+        if(this.$el.hasClass('closed')){
+            this.open();
+        }else{
+            this.close();
+        }
+    },
+
+    close: function(){
+        this.$('.thumbs-grid').fadeToggle();
+        this.$el.toggleClass('open closed');
+    },
+
+    open: function(){
+        this.$('.thumbs-grid').fadeToggle();
+        this.$el.toggleClass('open closed');
+        if(!this.collection.length && !this.collection.loaded){
+            this.fetch();
+        }else{
+            this.scroll_init();
+        }
+    },
+
+    fetch: function(){
+        var this_view = this;
+        this.$el.addClass('loading');
+
+        this.collection.fetch({
+            data: _.defaults(this.collection.data, {
+                n: config.get('side_scroll_initial'),
+                detail: 0
+            }),
+            success: function(collection){
+                if(!collection.length && this_view.fetch_attempts < 5 && this_view.no_photos){
+                    if(this_view.no_photos()){
+                        this_view.fetch_attempts += 1;
+                        return;
+                    }
+                }
+                this_view.set_title();
+                collection.loaded = true;
+                this_view.$el.removeClass('loading');
+
+                if(!this_view.collection.length){
+                    this_view.$el.addClass('no-photos');
+                    this_view.scroll_init();
+                }
+            }
+        });
+    },
+
     scroll_init: function(){
+
+
+        // if already init, refresh
+        if(this.scroller){
+            var scroller = this.scroller;
+            scroller.options.snap = this.collection.length > 2 ? 'a.x-thumb:not(:last-child), .x-left-pull': 'a.x-thumb, .x-left-pull';
+            setTimeout(function () {
+                scroller.refresh();
+                if(scroller.currPageX === 0){
+                    scroller.scrollToPage(1, 1, 0);
+                }
+            }, 0);
+
+            return this;
+        }
+
         var scroll_el = $('.x-scroll-area', this.el),
             details = $('.x-details', this.el),
             pull_distance = -0,
@@ -148,42 +252,42 @@ return view.extend({
             });
             this.scroller.scrollToPage(1, 1, 0);
         }catch(err){
-
+            console.log(err);
         }
         return this;
     },
+
     render_thumbs: function(){
         if(this.collection.length){
-            var html = this.thumbs_template({
-                photos: this.collection.models
-            });
-            $(this.el).find('.x-thumbs').html(html);
-        }
-        return this;
-    },
-    re_render_thumbs: function(){
-        if(this.collection.length){
 
-            this.render_thumbs();
+            var rendered = $(this.template({
+                title: '',
+                photos: this.collection.models,
+                query: this.collection.data
+            }));
 
-            // if the scroller is set up, refresh it
-            if(this.scroller){
-                var scroller = this.scroller;
-                scroller.options.snap = this.collection.length > 2 ? 'a.x-thumb:not(:last-child), .x-left-pull': 'a.x-thumb, .x-left-pull';
-                setTimeout(function () {
-                    scroller.refresh();
-                    if(scroller.currPageX === 0){
-                        scroller.scrollToPage(1, 1, 0);
-                    }
-                }, 0);
-            }
+            this.$('.x-thumbs').empty().append(rendered.find('.x-thumbs').children());
+
             this.photoswipe_init();
+
+            this.scroll_init();
+
         }
+
         return this;
     },
+
     photoswipe_init: function(){
-        var id = this.id + this.cid;
+        var id = this.cid;
         $( "a.x-thumb", this.el ).photoswipe_init(id);
+    },
+
+    goto_feed: function(e){
+        var button = $(e.currentTarget),
+            query = button.data('query'),
+            current = button.data('current');
+
+        Backbone.history.navigate('#/feed/?' + unescape( query ));
     }
 });
 });

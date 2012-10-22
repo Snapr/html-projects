@@ -2,23 +2,36 @@
 // -------------------------
 
 .spots-search-filters{
-    padding-left: 44px;
+    padding-right: 44px;
     margin-top: @paddingPage;
     position: relative;
 
     .ui-btn{
-        .corner-all(@cornerRound);
+        .corner-all(@cornersRound);
     }
     
     .ui-select .ui-btn-icon-right .ui-btn-inner {
         padding-right: 25px;
     }
-
+    
     .category-btn{
+        .ui-btn-inner {
+            padding-right: 32px;
+            padding-left: 10px;
+            .ui-icon{
+                left: auto;
+                right: @padding * 2;
+                margin-top: -@gfxSpot-grid / 2;
+            }
+        }
+    
+    }
+
+    .distance-btn{
         width: 36px;
         position: absolute;
+        right: 0;
         top: 0;
-        left: 0;
         .ui-select{
             .ui-btn-inner{
                 width: 18px;
@@ -29,9 +42,9 @@
             }
             .ui-icon{
                 right: auto;
-                left: 6px;
-                top: 6px;
-                margin-top: 0;
+                left: 5px;
+                top: 50%;
+                margin-top: -@gfxDistance-grid / 2;
             }
         }
     }
@@ -53,7 +66,7 @@
 
 .spots-results-header{
     position: relative;
-    top: -@paddingGrid;
+    top: -@padding;
     .ui-btn-text{
         padding-left: 0;
     }
@@ -66,9 +79,9 @@
     border-bottom: @borderMediumOnLight;
     margin-left: 0;
     margin-right:0;
-    padding-left: @paddingGrid;
+    padding-left: @padding;
     padding-right: @paddingPage;
-    min-height:@sizeThumb;
+    min-height:@thumb-height;
     .spot {
         min-height: 101px;
         .spot-heading {
@@ -92,7 +105,7 @@
 
 .spot{
     padding: 0!important;
-    padding-left: @sizeThumb + @paddingElement!important;
+    padding-left: @thumb-height + @paddingElement!important;
     position: relative;
     display: block;
     overflow: visible;
@@ -153,8 +166,8 @@
     position: relative;
     background-color: @grayLight;
     background-image: @gfxBgLight;
-    padding: @paddingGrid;
-    min-height:@sizeThumb;
+    padding: @padding;
+    min-height:@thumb-height;
     .spot-venue-details{
         min-height: 64px;
     }

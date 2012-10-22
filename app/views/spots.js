@@ -33,9 +33,9 @@ var spots_view =  page_view.extend({
         var success_callback = function( location ) {
             this_view.latitude = location.coords.latitude;
             this_view.longitude = location.coords.longitude;
+            search_options.latitude = this_view.latitude;
+            search_options.longitude = this_view.longitude;
             if (search_options.nearby) {
-                search_options.latitude = this_view.latitude;
-                search_options.longitude = this_view.longitude;
                 search_options.nearby = true;
                 search_options.radius = 50000;
             }
@@ -43,6 +43,7 @@ var spots_view =  page_view.extend({
         };
 
         var error_callback = function() {
+            this.$('.x-location-needed').attr('disabled', true);
             this_view.search(search_options);
         };
 
@@ -55,8 +56,6 @@ var spots_view =  page_view.extend({
         this.$el.find('#options-category').val(search_options.category).selectmenu("refresh");
         this.$el.find('#options-sort').val(search_options.sort).selectmenu("refresh");
         this.$el.find('#spots-search').attr('class', '').addClass(search_options.category || 'all-categories');
-
-
     },
 
     events: {
@@ -65,6 +64,9 @@ var spots_view =  page_view.extend({
         "click .ui-input-clear": "search_event",
         "submit form": "search_event"
     },
+
+    get_override_tab: function(){ return 'spots'; },
+
 
     render: function() {
         var spots_list = this.$el.find("ul.spots").empty();
@@ -155,7 +157,7 @@ var spots_view =  page_view.extend({
         var keywords = this.$el.find('#spot-search').val(),
             category = this.$el.find('#options-category').val(),
             sort = this.$el.find('#options-sort').val(),
-            nearby = this.$el.find('#options-location').val() === 'nearby',
+            nearby = this.$el.find('#options-location').val(),
             this_view = this,
             data = _.clone(this.defaults);
 
@@ -168,15 +170,17 @@ var spots_view =  page_view.extend({
             this.$el.find('#spots-search').addClass('all-categories');
         }
 
+        this.$el.find('#spots-search').addClass('distance-'+nearby);
+
         data.spot_name = keywords;
 
         data.sort = sort;
 
-        if (this.latitude && this.longitude && nearby) {
-            data.latitude = this.latitude;
-            data.longitude = this.longitude;
-            data.nearby = true;
-            data.radius = 50000;
+        data.latitude = this.latitude;
+        data.longitude = this.longitude;
+
+        if (this.latitude && this.longitude && nearby !== 'anywhere') {
+            data.radius = nearby;
         }
 
         if (category !== 'all') {

@@ -14,6 +14,7 @@ return page_view.extend({
         });
         this.$el.on( "pagehide", function(){
             feed_view.watch_uploads(false);
+            feed_view.$('.x-activity').hide();
         });
         config.on('change:paused', function(){
             if(config.get('paused')){
@@ -81,6 +82,7 @@ return page_view.extend({
         }
 
         this.$el.toggleClass('my-snaps', this.is_my_snaps());
+        this.$('.x-activity').toggle(this.is_my_snaps());
 
         this.$el.removeClass("showing-upload-queue");
         this.$el.find(".feed-upload-list").empty();

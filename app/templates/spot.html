@@ -11,8 +11,8 @@
     <div data-role="content" data-theme="d" data-ajax="false">
         <div class="spot-head">
             <% if(obj.spot){ %>
-                <a class="ui-bar top-left-arrow <%= spot.get('category').slug %> ui-spot-icon-left" data-role="button" data-theme="b" data-iconpos="right" data-icon="arrow-r" data-ajax="false" href="#/feed/?spot=<%= spot.get('id') %>&venue_name=<%= spot.get('name') %>">
-                    <span class="ui-icon ui-icon-category spot-icon spot-icon-b"></span>
+                <a class="ui-bar top-left-arrow <%= spot.get('category').slug %> ui-spot-icon-left" data-role="button" data-theme="e" data-iconpos="right" data-icon="arrow-r" data-ajax="false" href="#/feed/?spot=<%= spot.get('id') %>&venue_name=<%= spot.get('name') %>">
+                    <span class="ui-icon ui-icon-category spot-icon dark-spot-icon"></span>
                     <em class="spot-name"><%= spot.get('name') %></em>
                     <% if (spot.get('stats').photos_count) { %>
                         <span class="small-text">(<%= spot.get('stats').photos_count %> photo<% if ((spot.get('stats').photos_count) > 1) { %>s<% } %>)</span>
@@ -74,7 +74,7 @@
                         <% top_users.each(function(user){ %>
                             <li class="top-user-item">
                                 <a href="#/feed/?username=<%= user.get('username') %>">
-                                    <span class="s-avatar-med" style="background-image: url('<%= config.get('avatar_url') %>/<%= user.get('user_id') %>?size=large');"></span>
+                                    <span class="user-icon-med" style="background-image: url('<%= config.get('avatar_url') %>/<%= user.get('user_id') %>?size=large');"></span>
                                     <span class="small-username"><%= user.get('display_username') %></span>
                                 </a>
                             </li>

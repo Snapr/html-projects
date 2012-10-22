@@ -49,6 +49,10 @@
             .ui-icon-camroll{ background-position: @gfxTopBar-x-a @gfxTopBar-camroll-icon-y;}
             .ui-icon-camera{ background-position: @gfxTopBar-x-a @gfxTopBar-camera-icon-y;}
             .ui-icon-join{ background-position: @gfxTopBar-x-a @gfxTopBar-join-icon-y;}
+            .ui-icon-info{ background-position: @gfxTopBar-x-a @gfxTopBar-info-icon-y;}
+            .ui-icon-map{ background-position: @gfxTopBar-x-a @gfxTopBar-map-icon-y;}
+            
+            
         }
     }
     .ui-btn-hover-a{
@@ -61,6 +65,8 @@
             .ui-icon-camroll{ background-position: @gfxTopBar-x-a-hover @gfxTopBar-camroll-icon-y;}
             .ui-icon-camera{ background-position: @gfxTopBar-x-a-hover @gfxTopBar-camera-icon-y;}
             .ui-icon-join{ background-position: @gfxTopBar-x-a-hover @gfxTopBar-join-icon-y;}
+                .ui-icon-info{ background-position: @gfxTopBar-x-a-hover @gfxTopBar-info-icon-y;}
+                .ui-icon-map{ background-position: @gfxTopBar-x-a-hover @gfxTopBar-map-icon-y;}
         }
     }    
     .ui-btn-up-b{
@@ -73,6 +79,8 @@
             .ui-icon-camroll{ background-position: @gfxTopBar-x-b @gfxTopBar-camroll-icon-y;}
             .ui-icon-camera{ background-position: @gfxTopBar-x-b @gfxTopBar-camera-icon-y;}
             .ui-icon-join{ background-position: @gfxTopBar-x-b @gfxTopBar-join-icon-y;}
+                .ui-icon-info{ background-position: @gfxTopBar-x-b @gfxTopBar-info-icon-y;}
+                .ui-icon-map{ background-position: @gfxTopBar-x-b @gfxTopBar-map-icon-y;}
         }
     }
     .ui-btn-hover-b{
@@ -85,6 +93,8 @@
             .ui-icon-camroll{ background-position: @gfxTopBar-x-b-hover @gfxTopBar-camroll-icon-y;}
             .ui-icon-camera{ background-position: @gfxTopBar-x-b-hover @gfxTopBar-camera-icon-y;}
             .ui-icon-join{ background-position: @gfxTopBar-x-b-hover @gfxTopBar-join-icon-y;}
+                .ui-icon-info{ background-position: @gfxTopBar-x-b-hover @gfxTopBar-info-icon-y;}
+                .ui-icon-map{ background-position: @gfxTopBar-x-b-hover @gfxTopBar-map-icon-y;}
         }
     }
     .ui-btn-up-c{
@@ -97,6 +107,8 @@
             .ui-icon-camroll{ background-position: @gfxTopBar-x-c @gfxTopBar-camroll-icon-y;}
             .ui-icon-camera{ background-position: @gfxTopBar-x-c @gfxTopBar-camera-icon-y;}
             .ui-icon-join{ background-position: @gfxTopBar-x-c @gfxTopBar-join-icon-y;}
+                .ui-icon-info{ background-position: @gfxTopBar-x-c @gfxTopBar-info-icon-y;}
+                .ui-icon-map{ background-position: @gfxTopBar-x-c @gfxTopBar-map-icon-y;}
         }
     }
     .ui-btn-hover-c{
@@ -109,6 +121,8 @@
             .ui-icon-camroll{ background-position: @gfxTopBar-x-c-hover @gfxTopBar-camroll-icon-y;}
             .ui-icon-camera{ background-position: @gfxTopBar-x-c-hover @gfxTopBar-camera-icon-y;}
             .ui-icon-join{ background-position: @gfxTopBar-x-c-hover @gfxTopBar-join-icon-y;}
+                .ui-icon-info{ background-position: @gfxTopBar-x-c-hover @gfxTopBar-info-icon-y;}
+                .ui-icon-map{ background-position: @gfxTopBar-x-c-hover @gfxTopBar-map-icon-y;}
         }
     }
 }
@@ -198,28 +212,81 @@
 
 // UI BAR ICONS 
 //-----------------
-.ui-bar{   
-    .ui-icon{
+.ui-bar,
+.ui-bar-icons{   
+    .ui-icon,
+    &.ui-icon{
         background-image: url('@{gfx}@{gfxBar}');
+        width: @gfxBar-grid;
+        height: @gfxBar-grid;
+        
     }     
-    .ui-icon-open{background-position: @gfxBar-x @gfxBar-open-y;}
-    .ui-icon-close{background-position: @gfxBar-x @gfxBar-close-y;}
-    .ui-icon-arrowR{background-position: @gfxBar-x @gfxBar-arrowR-y;}
-    .ui-icon-heart{background-position: @gfxBar-x @gfxBar-heart-y;}
-    .ui-icon-venue{background-position: @gfxBar-x @gfxBar-venue-y;}
-    .ui-icon-person{background-position: @gfxBar-x @gfxBar-person-y;}
-    .ui-icon-search{background-position: @gfxBar-x @gfxBar-search-y;}
-    .ui-icon-activity{background-position: @gfxBar-x @gfxBar-activity-y;}
-    .ui-icon-location{background-position: @gfxBar-x @gfxBar-location-y;}
-    .ui-icon-clock{background-position: @gfxBar-x @gfxBar-clock-y;}
-    .ui-icon-connection{background-position: @gfxBar-x @gfxBar-clock-y;}
-    .ui-icon-blog{background-position: @gfxBar-x @gfxBar-clock-y;}
-    .ui-icon-comment{background-position: @gfxBar-x @gfxBar-clock-y;}
-    .ui-icon-play{background-position: @gfxBar-x @gfxBar-play-y;}
-    .ui-icon-refresh{background-position: @gfxBar-x @gfxBar-refresh-y;}
-    .ui-icon-redheart{background-position: @gfxBar-x-d @gfxBar-heart-y;}    
+    .ui-icon-open,&.ui-icon-open{background-position: @gfxBar-x @gfxBar-open-y;}
+    .ui-icon-closed,&.ui-icon-closed{background-position: @gfxBar-x @gfxBar-closed-y;}
+    .ui-icon-arrow-r,&.ui-icon-arrow-r{background-position: @gfxBar-x @gfxBar-arrowR-y;}
+    .ui-icon-heart,&.ui-icon-heart{background-position: @gfxBar-x @gfxBar-heart-y;}
+    .ui-icon-venue,&.ui-icon-venue{background-position: @gfxBar-x @gfxBar-venue-y;}
+    .ui-icon-person,&.ui-icon-person{background-position: @gfxBar-x @gfxBar-person-y;}
+    .ui-icon-search,&.ui-icon-search{background-position: @gfxBar-x @gfxBar-search-y;}
+    .ui-icon-activity,&.ui-icon-activity{background-position: @gfxBar-x @gfxBar-activity-y;}
+    .ui-icon-location,&.ui-icon-location{background-position: @gfxBar-x @gfxBar-location-y;}
+    .ui-icon-clock,&.ui-icon-clock{background-position: @gfxBar-x @gfxBar-clock-y;}
+    .ui-icon-connection,&.ui-icon-connection{background-position: @gfxBar-x @gfxBar-connection-y;}
+    .ui-icon-blog,&.ui-icon-blog{background-position: @gfxBar-x @gfxBar-blog-y;}
+    .ui-icon-comment,&.ui-icon-comment{background-position: @gfxBar-x @gfxBar-comment-y;}
+    .ui-icon-play&.ui-icon-play{background-position: @gfxBar-x @gfxBar-play-y;}
+    .ui-icon-refresh,&.ui-icon-refresh{background-position: @gfxBar-x @gfxBar-refresh-y;}
+    .ui-icon-redheart,&.ui-icon-redheart{background-position: @gfxBar-x-d @gfxBar-heart-y;}  
+    .ui-icon-info,&.ui-icon-info{background-position: @gfxBar-x @gfxBar-info-y;}
+    
+      
     &.ui-bar-a{
     }
+    
+    &.ui-bar-e,
+    &.ui-btn-up-e,
+    &.ui-btn-hover-e,
+    &.ui-btn-down-e{
+        .ui-icon-open,&.ui-icon-open{background-position: @gfxBar-x-e @gfxBar-open-y;}
+           .ui-icon-closed,&.ui-icon-closed{background-position: @gfxBar-x-e @gfxBar-closed-y;}
+           .ui-icon-arrow-r,&.ui-icon-arrow-r{background-position: @gfxBar-x-e @gfxBar-arrowR-y;}
+           .ui-icon-heart,&.ui-icon-heart{background-position: @gfxBar-x-e @gfxBar-heart-y;}
+           .ui-icon-venue,&.ui-icon-venue{background-position: @gfxBar-x-e @gfxBar-venue-y;}
+           .ui-icon-person,&.ui-icon-person{background-position: @gfxBar-x-e @gfxBar-person-y;}
+           .ui-icon-search,&.ui-icon-search{background-position: @gfxBar-x-e @gfxBar-search-y;}
+           .ui-icon-activity,&.ui-icon-activity{background-position: @gfxBar-x-e @gfxBar-activity-y;}
+           .ui-icon-location,&.ui-icon-location{background-position: @gfxBar-x-e @gfxBar-location-y;}
+           .ui-icon-clock,&.ui-icon-clock{background-position: @gfxBar-x-e @gfxBar-clock-y;}
+           .ui-icon-connection,&.ui-icon-connection{background-position: @gfxBar-x-e @gfxBar-connection-y;}
+           .ui-icon-blog,&.ui-icon-blog{background-position: @gfxBar-x-e @gfxBar-blog-y;}
+           .ui-icon-comment,&.ui-icon-comment{background-position: @gfxBar-x-e @gfxBar-comment-y;}
+           .ui-icon-play,&.ui-icon-play{background-position: @gfxBar-x-e @gfxBar-play-y;}
+           .ui-icon-refresh,&.ui-icon-refresh{background-position: @gfxBar-x-e @gfxBar-refresh-y;}
+           .ui-icon-redheart,&.ui-icon-redheart{background-position: @gfxBar-x-d @gfxBar-heart-y;}
+           .ui-icon-info,&.ui-icon-info{background-position: @gfxBar-x-e @gfxBar-info-y;}
+           
+    }
+    
+}
+
+// TUMBLR ICONS 
+//-----------------
+.ui-icon.tumblr-icon{   
+    
+    background-image: url('@{gfx}@{gfxTumblr}');
+    width: @gfxTumblr-grid!important;
+    height: @gfxTumblr-grid!important;
+
+
+    &.ui-icon-tumblr-text{background-position: @gfxTumblr-x @gfxTumblr-text-y;}
+    &.ui-icon-tumblr-photo{background-position: @gfxTumblr-x @gfxTumblr-photo-y;}
+    &.ui-icon-tumblr-quote{background-position: @gfxTumblr-x @gfxTumblr-quote-y;}
+    &.ui-icon-tumblr-link{background-position: @gfxTumblr-x @gfxTumblr-link-y;}
+    &.ui-icon-tumblr-video{background-position: @gfxTumblr-x @gfxTumblr-video-y;}
+    &.ui-icon-tumblr-audio{background-position: @gfxTumblr-x @gfxTumblr-audio-y;}
+    &.ui-icon-tumblr-chat{background-position: @gfxTumblr-x @gfxTumblr-chat-y;}
+
+  
 }
 
 
@@ -355,8 +422,35 @@
 .cafe .dark-spot-icon.spot-icon{background-position: @gfxSpot-x-e @gfxSpot-y-cafe}
 
 
+// DISTANCE ICONS
+//-----------------
 
 
+.ui-icon.distance-icon,
+.distance-btn .ui-icon{
+    background-position: @gfxDistance-x @gfxDistance-y;
+    background-image: url('@{gfx}@{gfxDistance}');                                        
+    width: @gfxDistance-grid;
+    height: @gfxDistance-grid;
+    }
 
+// if parent class is set
+.distance-anywhere{
+    .distance-btn .ui-icon,
+    .distance-icon{background-position: @gfxDistance-x @gfxDistance-y-infinite}
+}
 
+.distance-1000{
+    .distance-btn .ui-icon,
+    .distance-icon{background-position: @gfxDistance-x @gfxDistance-y-1000}
+}
 
+.distance-10000{
+    .distance-btn .ui-icon,
+    .distance-icon{background-position: @gfxDistance-x @gfxDistance-y-10000}
+}
+
+.distance-50000{
+    .distance-btn .ui-icon,
+    .distance-icon{background-position: @gfxDistance-x @gfxDistance-y-50000}
+}

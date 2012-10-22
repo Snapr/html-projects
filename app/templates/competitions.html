@@ -1,0 +1,31 @@
+ <div id="comp" data-title="Comps" data-add-back-btn="true" data-role="page" data-theme="d">
+    <div data-role="header" data-theme="b">
+        <h1>Comps</h1>
+
+        <div class="ui-btn-right" data-ajax="false">
+            <a href="#/search/" data-snapr-dialog="true" data-role="button" data-icon="search" data-iconpos="notext"></a>
+            <a href="#/home/" data-role="button" data-icon="home" data-iconpos="notext"></a>
+        </div>
+    </div>
+    <div data-role="content" data-theme="d" data-ajax="false">
+        <% if(!initial){ %>
+            <% _.each(comps, function(comp){ %>
+                <h1><a href="#/competition/?id=<%= comp.get('id') %>"><%= comp.get('title') %></a></h1>
+                <img class="banner" src="<%= comp.get('banner').mobile %>">
+
+                <% if(comp.get('status') == 'open'){ %>
+                    <h2>Enter Now</h2>
+                    <% if(comp.get('closing_date')){ %>
+                        <p>Submissions close <%= string_utils.short_timestamp(comp.get('closing_date')) %></p>
+                    <% } %>
+
+                    <a class="x-launch-camera-options" data-extra_params="comp_id=<%= comp.get('id') %>">Enter Now</a>
+
+                    <hr>
+                <% } %>
+
+            <% }) %>
+
+        <% } %>
+    </div>
+</div>

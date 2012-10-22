@@ -1,6 +1,6 @@
-    /*global _  define require google */
-define(['config', 'backbone', 'views/base/view', 'views/base/page', 'collections/thumb', 'collections/spot', 'mobiscroll', 'utils/geo', 'utils/map', 'auth', 'utils/local_storage', 'utils/string', 'utils/alerts'],
-function(config, Backbone, view, page_view, thumb_collection, spot_collection, mobiscroll, geo, map, auth, local_storage, string_utils, alerts){
+/*global _  define require google */
+define(['config', 'backbone', 'views/base/view', 'views/base/page', 'collections/thumb', 'collections/spot', 'models/spot', 'mobiscroll', 'utils/geo', 'utils/map', 'auth', 'utils/local_storage', 'utils/string', 'utils/alerts'],
+function(config, Backbone, view, page_view, thumb_collection, spot_collection, spot_model, mobiscroll, geo, map, auth, local_storage, string_utils, alerts){
 
 var map_view = page_view.extend({
 
@@ -92,7 +92,7 @@ var map_view = page_view.extend({
             map_params.show_spots = false;
             map_params.show_photos = true;
         }
-        if (spot_params.spot_id) {
+        if (spot_params.id) {
             map_params.show_photos = false;
             map_params.show_spots = true;
         }
@@ -114,7 +114,7 @@ var map_view = page_view.extend({
         this.map_query.on( "change", this.no_results_message_toggle );
         this.map_query.on( "change", this.thumbs_get );
         this.map_query.on( "change", this.spots_get );
-        this.map_query.on( "change", this.layers_set ) // update the layer toggle in header
+        this.map_query.on( "change", this.layers_set ); // update the layer toggle in header
         this.map_query.on( "change", this.map_query_save );  // keep in local_storage
 
 
@@ -123,7 +123,7 @@ var map_view = page_view.extend({
         auth.on( "change", this.filter_set_options );  // update what's enabled
         this.filter_set_options();  // set initial state
         this.layers_set();
-        this.spot_query_save() // save the spot query params
+        this.spot_query_save(); // save the spot query params
 
 
         // location search
@@ -133,10 +133,30 @@ var map_view = page_view.extend({
             return this;
         }
 
+        // if we are going directly to a spot
+        if(this.spot_query.id){
+            this.spot = new spot_model(_.clone(this.spot_query.attributes));
+            var map_view = this;
+
+            // if lat lng supplied, get straight to it
+            if(options.query.lat && options.query.lng){
+                map_view.map_update_or_create();
+                this.spot.fetch();
+            }else{
+                this.spot.fetch({success: function(spot){
+                    map_view.map_query.set({
+                        lat: spot.get('location').latitude,
+                        lng: spot.get('location').longitude,
+                        z: 15
+                    }, {silent:true});
+                    map_view.map_update_or_create();
+                }});
+            }
 
         // if center is available from query or local_storage
-        if (this.map_query.get( "lat" ) && this.map_query.get( "lng" )){
+        }else if (this.map_query.get( "lat" ) && this.map_query.get( "lng" )){
             this.map_update_or_create();
+
         }else{
             var map_view = this;
             geo.get_location(
@@ -201,11 +221,19 @@ var map_view = page_view.extend({
             mapTypeId: google.maps.MapTypeId.ROADMAP,
             // hide local business markers
             styles: [{
-                featureType: "poi.business",
-                stylers: [
-                    { visibility: "off" }
-                ]
-            }]
+                    featureType: "poi.business",
+                    stylers: [
+                        { visibility: "off" }
+                    ]
+                },
+                {
+                    featureType: "poi",
+                    elementType: "labels",
+                    stylers: [
+                      { "visibility": "off" }
+                    ]
+                }
+            ]
         };
 
         this.map = new google.maps.Map(document.getElementById("google-map"), map_settings);
@@ -350,7 +378,7 @@ var map_view = page_view.extend({
                         var id = spot.get('id');
                         if(!_(old_spot_ids).contains(id)){
                             map_view.thumb_overlays[id] = new map.overlays.Base(
-                                spot.attributes,
+                                _.extend({active: spot.id == map_view.spot_query.get('id')}, spot.attributes),
                                 map_view.map,
                                 map_view.spot_template
                             );
@@ -368,14 +396,18 @@ var map_view = page_view.extend({
         }
         else {
             map_view.overlays_remove(old_spot_ids);
-            this.spot_collection.reset()
+            this.spot_collection.reset();
         }
     },
 
     toggle_spot_label: function (event) {
-        var label = this.$(event.currentTarget).next('a.x-map-venue-label');
-        this.$('a.x-map-venue-label').hide();
-        label.show();
+        var pin = this.$(event.currentTarget).parent();
+        if(pin.hasClass('active')){
+            pin.removeClass('active');
+        }else{
+            this.$('.x-map-venue.active').removeClass('active');
+            pin.addClass('active');
+        }
     },
 
     no_results_message_toggle: function(show){
@@ -435,12 +467,12 @@ var map_view = page_view.extend({
         // check to see if we're actually moving
         // because if we don't the idle event wont fire
         // so the pageloadmessage wont disappear
-        if (!old_center.equals(center) && !old_zoom == zoom) {
-            this.map.setZoom(zoom || config.get('zoom'));
-            this.map.panTo( center );
+        if (old_center.equals(center) && old_zoom == zoom) {
+            google.maps.event.trigger(this.map, 'idle');
         }
         else {
-            google.maps.event.trigger(this.map, 'idle');
+            this.map.setZoom(zoom || config.get('zoom'));
+            this.map.panTo( center );
         }
     },
 

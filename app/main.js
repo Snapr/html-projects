@@ -16,7 +16,7 @@ requirejs.config({
         "klass": "libs/klass.min",
         "photoswipe": "libs/photoswipe/code.photoswipe.jquery-3.0.5.min",
         "spin": "libs/spin.min",
-        "underscore": "libs/underscore-min",
+        "underscore": "libs/underscore",
         "backbone": "libs/backbone",
         "iscroll": "libs/iscroll",
         "validate": "libs/jquery.validate.min",
@@ -287,7 +287,7 @@ require(['config', 'jquery', 'backbone', 'photoswipe', 'auth', 'utils/local_stor
                     'no_callback': function(){photo_library(null, extra_params);}
                 });
             }else{
-                photo_library(extra_params);
+                photo_library(null, extra_params);
             }
         }) );
 
