@@ -5797,7 +5797,7 @@ div.ps-carousel-item-loading {
 /*
 * Workspace hacks for browser testing
 */
-body.browser-testing {
+body.x-browser-testing {
   width: 320px!important;
   margin: 0 auto 0 0!important;
   /* this was 20px but some things are set to window height, meaning they were going 20px off the bottom
@@ -5811,23 +5811,23 @@ body.browser-testing {
   /* hack for photoswipe plugin */
 
 }
-body.browser-testing .ui-loader {
+body.x-browser-testing .ui-loader {
   position: absolute;
 }
-body.browser-testing .ps-caption,
-body.browser-testing .ps-toolbar,
-body.browser-testing .ps-uilayer,
-body.browser-testing .ps-carousel,
-body.browser-testing .ps-document-overlay {
+body.x-browser-testing .ps-caption,
+body.x-browser-testing .ps-toolbar,
+body.x-browser-testing .ps-uilayer,
+body.x-browser-testing .ps-carousel,
+body.x-browser-testing .ps-document-overlay {
   width: 320px!important;
 }
-body.browser-testing .ps-carousel, body.browser-testing .ps-uilayer {
+body.x-browser-testing .ps-carousel, body.x-browser-testing .ps-uilayer {
   height: 480px!important;
 }
-body.browser-testing .ps-caption-bottom {
+body.x-browser-testing .ps-caption-bottom {
   top: 435px!important;
 }
-body.browser-testing .ui-footer, body.browser-testing .ui-footer-fixed {
+body.x-browser-testing .ui-footer, body.x-browser-testing .ui-footer-fixed {
   width: 320px!important;
 }
 .platform-logo {
@@ -7921,7 +7921,7 @@ body.browser-testing .ui-footer, body.browser-testing .ui-footer-fixed {
 }
 /* Android HDPI - Pixel ratio of 1.5. Background-size is 1/1.5 = 66.67% (of a 150px image) */
 @media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5) {
-  
+
 }
 @media only screen and (-webkit-min-device-pixel-ratio: 2) {
   .ui-icon,

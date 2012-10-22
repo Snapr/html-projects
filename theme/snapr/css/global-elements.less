@@ -12,7 +12,7 @@
     font-family: @font;
     .username{
         font-size: @font-size-small;
-    }    
+    }
 }
 
 .light-text{
@@ -70,7 +70,7 @@
             top: 0;
         }
     }
-    
+
 }
 
 .css-thumb{
@@ -140,21 +140,21 @@ h4{
     .ui-navbar {
         .darkGrad();
         padding: 3px 0;
-        
+
         .ui-btn{
             border: none;
             margin: 0 3px;
             .corner-all (3px)!important;
-            
+
             &.ui-btn-up-b{
                 background: transparent;
             }
-            
+
             &.ui-btn-hover-b{
                 background: lighten(@grayDark, 2%);
                 color: @grayLightOnDark;
             }
-            
+
             &.ui-btn-down-b,
             &.ui-btn-active{
                 background: @grayDark;
@@ -163,20 +163,20 @@ h4{
                 color: white;
             }
         }
-        
-        
-        
+
+
+
         .ui-btn-inner {
             padding-top: 32px!important;
             padding-bottom: 4px!important;
             height: 12px;
             line-height: 12px;
-            
+
             .ui-btn-text {
                 font-size: 12px;
                 text-transform: none;
             }
-            
+
             .ui-icon {
                 top: 0;
                 margin-left: -@gfxTabBar-grid / 2;
@@ -198,7 +198,7 @@ h4{
     position: relative;
     overflow: visible;
     text-align: left;
-    
+
     .ui-icon{
         right: auto;
         display: inline-block;
@@ -219,8 +219,8 @@ h4{
     .ui-icon-arrow-r {
         right: -10px;
     }
-    
-    
+
+
     h4,
     .ui-btn-inner,
     .ui-bar-inner{
@@ -236,7 +236,7 @@ h4{
             font-size: @font-size-titleBar;
             .ui-bar-font();
         }
-        
+
     }
     .ui-btn{
         background: none;
@@ -342,7 +342,7 @@ h4{
     text-shadow: @shadowMediumOnDark 0px -1px 0px;
     background-color: @blue;
     .linear-gradient(@blue, @blue-tint);
-    
+
     strong{
         font-size: @font-size-titleBar;
         .ui-bar-font();
@@ -366,9 +366,9 @@ h4{
     .ui-btn-inner{
          position: relative;
     }
-   
+
     .ui-icon{
-        background-image: url('@{gfx}@{gfxIcons}');  
+        background-image: url('@{gfx}@{gfxIcons}');
         position: absolute;
         right: 0;
         top: 0;
@@ -392,7 +392,7 @@ h4{
             .ui-btn-text{
                 position: relative;
                 top: -4px;
-                text-shadow: @shadowLightOnLight 0px 1px 0px;            
+                text-shadow: @shadowLightOnLight 0px 1px 0px;
                 .button-font-bold();
                 font-size: @font-size-username;
             }
@@ -651,7 +651,7 @@ h4{
     .ui-icon{
         width: @gfxAction-grid;
         height: @gfxAction-grid;
-        background-image: url('@{gfx}@{gfxAction}'); 
+        background-image: url('@{gfx}@{gfxAction}');
     }
     .ui-checkbox-on {
            .ui-icon{background-position: @gfxAction-x @gfxAction-tick-y;}
@@ -720,7 +720,7 @@ h4{
 .top-users{
    .top-user-item{
         display: inline-block;
-    } 
+    }
 }
 
 
@@ -800,7 +800,7 @@ h4{
             }
 
             .ui-icon-refresh{
-                background-image: url('@{gfx}@{gfxRefresh}');                            
+                background-image: url('@{gfx}@{gfxRefresh}');
                 background-repeat: no-repeat;
                 position: absolute;
                 display: block;
@@ -1160,7 +1160,7 @@ h4{
 }
 
 .button-logo{
-    background-image: url('@{gfx}@{gfxService}');                                
+    background-image: url('@{gfx}@{gfxService}');
     height: 36px;
     width: 150px;
     display: inline-block;
@@ -1225,10 +1225,10 @@ h4{
                     top: -4px;
                     left: 2px;
                 }
-                
-            }    
+
+            }
     }
-    
+
 }
 
 
@@ -1266,7 +1266,7 @@ h4{
     width: 100%;
     background: none;
     border: none;
-    z-index: 999;    
+    z-index: 999;
     .message-body{
         margin: @paddingPage;
         display: block;
@@ -1282,11 +1282,11 @@ h4{
         padding-left: 32px;
         padding-right: 32px;
         text-align: left;
-    }    
+    }
     .ui-icon-connection{
         position: absolute;
         left: 0;
-        top: 0; 
+        top: 0;
     }
 }
 
@@ -1416,7 +1416,7 @@ h4{
             .ui-icon{
                 position: absolute;
             }
-        } 
+        }
     }
     /* Shuffle the close button to the right */
     .ui-btn[data-icon="delete"]{
@@ -1556,7 +1556,7 @@ h4{
 
 
 .top-user-item{
-    width: @avatarSizeMed;    
+    width: @avatarSizeMed;
     margin-right: 5px;
     .small-username{
         overflow: hidden;
@@ -1564,7 +1564,7 @@ h4{
         text-align: center;
         margin-top: 4px;
         display: block;
-    } 
+    }
 }
 
 
@@ -1641,7 +1641,7 @@ h4{
     .ps-toolbar-close{
         .ps-toolbar-content{
             margin-right: 0px;
-            background-image: url('@{gfx}@{gfxIcons}');            
+            background-image: url('@{gfx}@{gfxIcons}');
             background-position: @gfxIcons-delete-x + 5px @gfxIcons-y-light + 5px;
             width: @topBarHeight;
             height: @topBarHeight;
@@ -1674,7 +1674,7 @@ h4{
             right: 0;
             top:50%;
             margin-top: -18px;
-            background-image: url('@{gfx}@{gfxIcons}');            
+            background-image: url('@{gfx}@{gfxIcons}');
             background-position: @gfxIcons-arrow-r-x @gfxIcons-y-dark;
         }
     }
@@ -1682,7 +1682,7 @@ h4{
 
 div.ps-carousel-item-loading
 {
-    background: url('../gfx/image-load-dark.gif') no-repeat center center; 	
+    background: url('../gfx/image-load-dark.gif') no-repeat center center;
 }
 
 /* change the icon to a spinner if a button is loading an ajax event */
@@ -1750,7 +1750,7 @@ div.ps-carousel-item-loading
 * Workspace hacks for browser testing
 */
 
-body.browser-testing{
+body.x-browser-testing{
     width: 320px!important;
     margin: 0 auto 0 0!important;
     /* this was 20px but some things are set to window height, meaning they were going 20px off the bottom
@@ -1778,7 +1778,7 @@ body.browser-testing{
     .ps-caption-bottom{
         top: 435px!important;
     }
-    
+
     .ui-footer,
     .ui-footer-fixed{
         width: 320px!important;

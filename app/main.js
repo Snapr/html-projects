@@ -182,14 +182,14 @@ require(['config', 'jquery', 'backbone', 'photoswipe', 'auth', 'utils/local_stor
         ***************************/
         var appmode = local_storage.get("appmode");
         if (appmode){
-            $("body").addClass( "appmode-true" ).addClass("appmode-" + appmode );
+            $("body").addClass( "x-appmode-true" ).addClass("x-appmode-" + appmode );
         }else{
-            $("body").addClass( "appmode-false" );
+            $("body").addClass( "x-appmode-false" );
         }
 
         function class_if_local(param){
             // add dash-serperated class to body if localstorage param is true
-            $("body").toggleClass( param.replace('_', '-'), !!local_storage.get( param ) );
+            $("body").toggleClass( 'x-' + param.replace('_', '-'), !!local_storage.get( param ) );
         }
 
         class_if_local("browser_testing");
@@ -200,17 +200,18 @@ require(['config', 'jquery', 'backbone', 'photoswipe', 'auth', 'utils/local_stor
             class_if_local("camplus_lightbox");
         }
 
-        $("body").toggleClass('tab-bar', !!config.get('show_tab_bar'));
+        $("body").toggleClass('x-tab-bar', !!config.get('show_tab_bar'));
 
 
         /* prevent dragging on some elements in appmode
+        TODO: make this more efficiet
         ***************************/
         function preventScroll(e){
             e.preventDefault();
         }
         if (appmode){
             $(document).bind('pagechange', function(){
-                $('.no-drag').unbind('touchmove', preventScroll).bind('touchmove', preventScroll);
+                $('.x-no-drag').unbind('touchmove', preventScroll).bind('touchmove', preventScroll);
             });
         }
 
