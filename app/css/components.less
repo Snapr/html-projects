@@ -45,7 +45,7 @@ div[data-role="content"]{
     padding: @padding * 2;
     
     .s-inset-header{
-        margin: 0 -@padding * 2;
+        margin: -@padding * 2 -@padding * 2 0 -@padding * 2;
         background-color: @grayLighter;
     }
 }
@@ -250,6 +250,13 @@ div[data-role="content"]{
 .s-image-item-block.private{
     .image-status{
         display:inherit;
+    }
+}
+
+
+.ui-content {
+    .feed-upload-list{
+        margin: 0;
     }
 }
 

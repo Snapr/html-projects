@@ -49,7 +49,7 @@ div[data-role="content"] {
   padding: 8px;
 }
 div[data-role="content"] .s-inset-header {
-  margin: 0 -8px;
+  margin: -8px -8px 0 -8px;
   background-color: #f7f7f7;
 }
 .s-avatar,
@@ -236,4 +236,7 @@ div[data-role="content"] .s-inset-header {
 }
 .s-image-item-block.private .image-status {
   display: inherit;
+}
+.ui-content .feed-upload-list {
+  margin: 0;
 }
