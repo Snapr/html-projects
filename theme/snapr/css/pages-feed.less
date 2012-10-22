@@ -33,7 +33,7 @@
     }
 }
 
-.user-info-block{
+.s-header-stats{
     padding-left: @avatarSizeLarge;
     .user-icon-left{
         position:absolute;
@@ -41,7 +41,7 @@
         left: 0;
         width: @avatarSizeLarge;
         height: @avatarSizeLarge;
-        .user-profile-icon,
+        .s-profile-icon,
         .user-icon-big{
             .corner-tl (@cornersPage);
             overflow:hidden;
@@ -49,7 +49,7 @@
         .user-icon-big{
             background-color: @white-tint;
         }
-         .icon-overlay-info{
+         .s-icon-overlay{
            background-image: url('../gfx/shiny-avatar-info.png');
            width: @avatarSizeLarge;
            height: @avatarSizeLarge;
@@ -66,7 +66,7 @@
 
 
 
-.feed-user-header{
+.s-feed-header{
     height: 100px;
     overflow: hidden;
     background-color: @grayDark;
@@ -125,7 +125,7 @@
             color: @offWhite ;
             
          }
-        .big-number{
+        .s-hero-number{
             display: block;
             font-size: @font-size-numberBig;
             font-family: @font-special;
@@ -155,12 +155,12 @@
 .showing-upload-queue{
     .feed-header{
         .user-icon-left{
-            .user-profile-icon,
+            .s-profile-icon,
             .user-icon-big{
                 .corner-tl (0);
                 overflow:hidden;
             }
-            .icon-overlay-info{
+            .s-icon-overlay{
                .corner-tl (@cornersPage);
             }
         }
@@ -172,8 +172,8 @@
 
 
 
-.image-item-block{
-    .image-item-topbar{
+.s-image-item-block{
+    .s-image-item-topbar{
         height:  @avatarSize + 1px;//haxy to account for mysterious icon overhang
         margin-bottom: @paddingPage;
         vertical-align: middle;
@@ -196,14 +196,14 @@
             vertical-align: middle;
             display: inline-block;
         }
-        .image-time{
+        .s-image-time{
             color: @grayLightOnLIght;
             .ui-icon-clock{
                 background-position: @gfxBar-x - 9px @gfxFeed-time-y;
                 width: 14px;
             }
         }
-        .image-time-and-location{
+        .s-image-time-and-location{
             color: @grayLightOnLIght;
             .ui-link{
                 color: @grayLightOnLIght;
@@ -226,7 +226,7 @@
             padding: 0px 3px;
             right: 0;
             height: 14px;
-            .corner-top(4px);
+            .border-top-radius(4px);
             opacity: .5;
             display: none;
         }
@@ -361,7 +361,7 @@
         }
     }
 }
-.image-item-block.private{
+.s-image-item-block.private{
     .image-status{
         display:inherit;
     }
@@ -370,7 +370,7 @@
 .feed-footer{
 
     .ui-btn{
-        .corner-top(0);
+        .border-top-radius(0);
         .corner-bottom(@cornersPage);
         margin-bottom: 0;
         border: none;
@@ -382,11 +382,11 @@
 //------------------
 
 .user-profile{
-    .user-info-block{
+    .s-header-stats{
         padding-left: @avatarSizeLarge + @paddingElement;
         position: relative;
     }
-    .user-info-block .user-icon-left .user-icon-big{
+    .s-header-stats .user-icon-left .user-icon-big{
         background-color: @white;
         .corner-all(@cornersPage);
     }

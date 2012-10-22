@@ -258,7 +258,7 @@ h4{
            text-overflow: ellipsis;
            .border-box();
      }
-     .image-time{
+     .s-image-time{
            position: relative;
            display: inline-block;
            padding-left: 20px;
@@ -323,7 +323,7 @@ h4{
         padding: 6px;
         line-height: @font-size-small;
         min-height: @font-size-small;
-        .corner-top(@cornerGeneral);
+        .border-top-radius(@cornerGeneral);
     }
     /* Note that the actual arrows get added in the swatches so they get the right colors */
 }
@@ -1140,7 +1140,7 @@ h4{
 
 
 /* Style for inset header as seen on user feed and upload pages */
-.page-inset-header{
+.s-inset-header{
     margin-left: -@paddingPage;
     margin-right: -@paddingPage;
     position: relative;
@@ -1538,7 +1538,7 @@ h4{
     position: relative;
     min-height: 100px;
     padding-top: 8px;
-    .user-profile-icon{
+    .s-profile-icon{
         position: absolute;
         left: 0;
         top: 0;
@@ -1651,7 +1651,7 @@ h4{
 }
 
 .ps-caption-bottom{
-    .corner-top();
+    .border-top-radius();
     border: none;
     .linear-gradient (#1d1d1d, #000000);
     .ps-caption-content{

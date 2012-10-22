@@ -1,8 +1,8 @@
 @import "../libs/jquery.mobile-1.2.0/jquery.mobile.structure-1.2.0.css";
 
-@import "../app/libs/mobiscroll/mobiscroll-2.0rc2.full.min.css";
+@import "../libs/mobiscroll/mobiscroll-2.0rc2.full.min.css";
 
-@import "../app/libs/photoswipe/photoswipe.css";
+@import "../libs/photoswipe/photoswipe.css";
 .clearfix {
   *zoom: 1;
 }
@@ -45,8 +45,16 @@ div[data-role="header"] .ui-btn-left .ui-btn {
   margin: 0;
   top: 4px;
 }
+div[data-role="content"] {
+  padding: 8px;
+}
+div[data-role="content"] .s-inset-header {
+  margin: 0 -8px;
+  background-color: #f7f7f7;
+}
 .s-avatar,
-.s-avatar-med {
+.s-avatar-med,
+.s-avatar-large {
   width: 34px;
   height: 34px;
   background-color: #f7f7f7;
@@ -64,4 +72,168 @@ div[data-role="header"] .ui-btn-left .ui-btn {
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;
+}
+.s-avatar-large {
+  width: 100px;
+  height: 100px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+}
+.s-feed-header {
+  position: relative;
+}
+.s-feed-header .s-icon-left {
+  padding-left: 100px;
+  height: 100px;
+}
+.s-feed-header .s-profile-icon,
+.s-feed-header .s-icon-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100px;
+  height: 100px;
+}
+.s-feed-header .s-profile-icon {
+  background-color: #fbfbfb;
+}
+.s-feed-header .s-username {
+  position: relative;
+  padding-left: 8px;
+  margin: 0;
+  height: 36px;
+  line-height: 36px;
+  vertical-align: middle;
+  top: 0;
+}
+.s-feed-header .s-username .s-follow-btn {
+  position: absolute;
+  right: 0;
+  top: 0;
+  display: block;
+  width: 100%;
+}
+.s-feed-header .s-username .s-follow-btn .ui-btn {
+  position: absolute;
+  right: 0;
+  top: 0;
+  margin: 0;
+  width: 100%;
+  text-align: right;
+}
+.s-feed-header .s-username .s-follow-btn .ui-btn .ui-btn-inner {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+.s-feed-header .s-header-stats {
+  height: 64px;
+  text-align: center;
+}
+.s-feed-header .s-header-stats .s-hero-number {
+  padding-top: 16px;
+  display: block;
+}
+#feed-images {
+  padding-left: 0;
+}
+.s-image-item-block .s-image-item-topbar {
+  height: 35px;
+  margin-bottom: 8px;
+  vertical-align: middle;
+  line-height: 34px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.s-image-item-block .s-image-item-topbar .user-icon-link {
+  vertical-align: middle;
+  height: 34px;
+  display: inline-block;
+  width: 34px;
+}
+.s-image-item-block .s-image-item-topbar .ui-link,
+.s-image-item-block .s-image-item-topbar span {
+  height: 34px;
+  line-height: 34px;
+  vertical-align: middle;
+  display: inline-block;
+}
+.s-image-item-block .image-item {
+  position: relative;
+}
+.s-image-item-block .image-item .image-status {
+  position: absolute;
+  top: -14px;
+  background-color: #e5592f;
+  color: white;
+  font-size: 11px;
+  font-weight: bold;
+  padding: 0px 3px;
+  right: 0;
+  height: 14px;
+  -webkit-border-top-right-radius: 4px;
+  -moz-border-radius-topright: 4px;
+  border-top-right-radius: 4px;
+  -webkit-border-top-left-radius: 4px;
+  -moz-border-radius-topleft: 4px;
+  border-top-left-radius: 4px;
+  opacity: .5;
+  display: none;
+}
+.s-image-item-block .main-image-link {
+  display: block;
+}
+.s-image-item-block .main-image {
+  width: 100%;
+}
+.s-image-item-block .image-description {
+  margin-top: 8px;
+  margin-bottom: -8px;
+}
+.s-image-item-block .image-item-base {
+  position: relative;
+}
+.s-image-item-block .image-actions .reactions-button {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+.s-image-item-block .reactions-list {
+  display: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+.s-image-item-block .reactions-list li.ui-li {
+  border: none!important;
+  padding: 0;
+}
+.s-image-item-block .reactions-list li.ui-li .ui-link-inherit {
+  padding: 0 0 8px 0 !important;
+  display: inline-block;
+  white-space: normal;
+}
+.s-image-item-block .reactions-list li.ui-li .ui-icon-arrow-r {
+  display: none;
+}
+.s-image-item-block .reactions-list li.ui-li .username {
+  text-transform: none;
+  text-shadow: none;
+}
+.s-image-item-block .reactions-list li.ui-li .comment,
+.s-image-item-block .reactions-list li.ui-li .like-text {
+  white-space: normal;
+  font-weight: normal;
+  text-transform: none;
+  text-shadow: none;
+}
+.s-image-item-block .comment-area {
+  display: none;
+}
+.s-image-item-block .comment-area .photo-comment {
+  min-height: 75px;
+}
+.s-image-item-block.private .image-status {
+  display: inherit;
 }

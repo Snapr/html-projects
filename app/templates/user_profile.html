@@ -3,11 +3,11 @@
         <h1>Profile</h1>
         <a class="x-back" data-role="button" data-icon="delete" data-iconpos="notext"></a>
     </div>
-    <div data-role="content" class="user-profile">
+    <div data-role="content" class="user-profile ui-content" data-theme="c">
         <% if(!initial){ %>
-            <div class="user-info-block">
+            <div class="s-header-stats">
                 <div class="user-icon-left">
-                    <a class="user-profile-icon x-back">
+                    <a class="s-profile-icon x-back">
                         <div class="user-icon-big" style="background-image: url('<%= config.get('avatar_url') %>/<%= user.get( "user_id" ) %>?size=large');"></div>
 
                     </a>

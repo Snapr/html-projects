@@ -1,20 +1,30 @@
-<div id="tumblr-posts" data-title="Tumblr blog" data-add-back-btn="true" data-role="page" data-theme="d">
+<div id="tumblr-posts" data-tab-bar="true" data-title="Tumblr blog" data-add-back-btn="true" data-role="page" data-theme="d">
     <div data-role="header" data-theme="b">
-        <h1>Tumblr blog</h1>
+        <h1>News</h1>
         <div class="ui-btn-right" data-ajax="false">
             <a href="#/search/" data-snapr-dialog="true" data-role="button" data-icon="search" data-iconpos="notext"></a>
-            <a href="#/" data-role="button" data-icon="home" data-iconpos="notext"></a>
+            <a href="#/home/" data-role="button" data-icon="home" data-iconpos="notext"></a>
         </div>
     </div>
     <div data-role="content" data-theme="d" data-ajax="false">
         <div class="tumblr-body">
-            <a class="ui-bar top-left-arrow x-details" data-role="button" data-iconpos="right" data-icon="arrow-r" data-theme="e">
+            <a class="ui-bar top-left-arrow x-details" data-role="button" data-iconpos="left" data-icon="blog" data-theme="b">
                 <span class="image-details">
-                    <span class="ui-icon ui-icon-nearby "></span>
-                    <em>Snapper scrapbook</em>
+                    <em class="x-blog-title"><!-- dynamic --></em>
                 </span>
             </a>
-          <ul class="posts-stream image-item-block"></ul>
+          <ul class="posts-stream s-image-item-block"></ul>
         </div>
+        
+        <div class="tumblr-metadata tumblr-footer">
+            <a href="http://zombiegram.tumblr.com/" class="ui-bar" data-role="button" data-iconpos="right" data-icon="arrow-r" data-theme="f" data-corners="false" data-shadow="false">
+                <span class="tumblr-credit">View on <span class="hide">Tumblr</span></span>
+            </a>
+        </div>
+        
+        
+            
+       
+        
     </div>
 </div>

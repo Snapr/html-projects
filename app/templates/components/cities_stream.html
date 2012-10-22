@@ -3,7 +3,7 @@
         <span class="ui-icon ui-icon-redheart "></span>
         <em><%= details.name %></em>
         <span class="image-tag x-tag"><% if(collection.length){ %><%= collection.models[0].get("description") %><% } %></span>
-        <span class="image-time small-text">
+        <span class="s-image-time small-text">
             <span class="ui-icon ui-icon-clock "></span>
             <span class="x-date"><% if(collection.length){ %><%= string_utils.short_timestamp( collection.models[0].get("date") )  %><% } %></span>
         </span>

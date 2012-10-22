@@ -4,7 +4,7 @@
             <span class="ui-icon ui-icon-<%= model.get("display").type %> "></span>
             <em><%= model.get("display").short_title %><% if(model.get("query").radius){ %> (<%= model.get("query").radius/1000 %>km)<% } %></em>
             <span class="image-tag x-tag"><%= collection.models[0].get('description') %></span>
-            <span class="image-time small-text">
+            <span class="s-image-time small-text">
                 <span class="ui-icon ui-icon-clock "></span><span class="x-date"><%= string_utils.short_timestamp( collection.models[0].get('date') )  %></span>
             </span>
         </span>

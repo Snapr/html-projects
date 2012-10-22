@@ -1,5 +1,5 @@
-<div class="image-item-block<% if (item.get("status") != "public"){%> private<%}%>">
-    <div class="image-item-topbar">
+<div class="s-image-item-block<% if (item.get("status") != "public"){%> private<%}%>">
+    <div class="s-image-item-topbar">
         <a class="user-icon-link" href="#/feed/?username=<%= item.get('username') %>">
             <div class="s-avatar" style="background-image: url('<%= config.get('avatar_url') %>/<%= item.get('user_id') %>/');"></div>
         </a>
@@ -7,13 +7,13 @@
 
         <!-- Show Time only if no location -->
         <% if(item.has('location') && item.get('location').location){ %>
-        <span class="image-time-and-location">
+        <span class="s-image-time-and-location">
         <a class="goto-map">
             <span class="ui-icon feed-icons ui-icon-venue"></span>
             <%= string_utils.short_timestamp(item.get('date'), true ) %>, <%= string_utils.short_location(item.get('location').location) %> </a>
         </span>
         <%}else{%>
-        <span class="image-time">
+        <span class="s-image-time">
             <span class="ui-icon feed-icons ui-icon-clock"></span>
             <%= string_utils.short_timestamp(item.get('date'), true ) %>
         </span>

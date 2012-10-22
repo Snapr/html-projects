@@ -3,7 +3,7 @@
 // --------------------------------------------------
 
 
-// Headers
+// HEADERS
 // -------------------------
 
 
@@ -37,12 +37,28 @@ div[data-role="header"]{
     }
 }
 
+// CONTENT
+// -------------------------
 
-// Avatars
+
+div[data-role="content"]{
+    padding: @padding * 2;
+    
+    .s-inset-header{
+        margin: 0 -@padding * 2;
+        background-color: @grayLighter;
+    }
+}
+
+
+
+
+// AVATARS
 // -------------------------
 
 .s-avatar,
-.s-avatar-med{
+.s-avatar-med,
+.s-avatar-large{
     width: @avatarSize;
     height: @avatarSize;
     background-color: @grayLighter;
@@ -58,3 +74,183 @@ div[data-role="header"]{
     height: @avatarSizeMed;
     .border-radius(4px);
 }
+
+.s-avatar-large{
+    width: @avatarSizeLarge;
+    height: @avatarSizeLarge;
+    .border-radius(4px);
+}
+
+
+
+
+
+// FEED
+// -------------------------
+
+
+.s-feed-header{
+    position: relative;
+    .s-icon-left{
+        padding-left: @avatarSizeLarge;
+        height: @avatarSizeLarge;
+    }
+    .s-profile-icon,
+    .s-icon-overlay{
+        position:absolute;
+        top: 0;
+        left: 0;
+        width: @avatarSizeLarge;
+        height: @avatarSizeLarge;
+    }
+    .s-profile-icon{
+        background-color: @grayLight;
+    }
+    .s-username{
+        position: relative;
+        padding-left: @padding * 2;
+        margin: 0;
+        height: @barHeight;
+        line-height: @barHeight;
+        vertical-align: middle;
+        top: 0;
+        .s-follow-btn{
+            position: absolute;
+            right: 0;
+            top:0;
+            display: block;
+            width: 100%;
+            .ui-btn{
+                position: absolute;
+                right: 0;
+                top: 0;
+                margin: 0;
+                width: 100%;
+                text-align: right;
+                
+                .ui-btn-inner{
+                    padding-top: 0;
+                    padding-bottom: 0;
+                }
+            }
+        }
+    }
+    .s-header-stats{
+        height: @avatarSizeLarge - @barHeight ;
+        text-align: center;
+        .s-hero-number{
+            padding-top: @padding * 4;
+            display: block;
+        }
+    }
+}
+
+#feed-images{
+    padding-left: 0;
+}
+
+.s-image-item-block{
+    .s-image-item-topbar{
+        height:  @avatarSize + 1px;//haxy to account for mysterious icon overhang
+        margin-bottom: @padding * 2;
+        vertical-align: middle;
+        line-height:  @avatarSize;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        .user-icon-link{
+            vertical-align: middle;
+            height: @avatarSize;
+            display: inline-block;
+            width: @avatarSize;
+        }
+        .ui-link,
+        span{
+            height:@avatarSize;
+            line-height:@avatarSize;
+            vertical-align: middle;
+            display: inline-block;
+        }      
+    }
+    .image-item{
+        position: relative;
+        .image-status{
+            position: absolute;
+            top: -14px;
+            background-color: #e5592f;
+            color: white;
+            font-size: 11px;
+            font-weight: bold;
+            padding: 0px 3px;
+            right: 0;
+            height: 14px;
+            .border-top-radius(4px);
+            opacity: .5;
+            display: none;
+        }
+    }
+    .main-image-link{
+        display: block;
+    }
+    .main-image{
+        width: 100%;
+    }
+    .image-description{
+        margin-top: @padding * 2;
+        margin-bottom: -@padding * 2;
+    }
+    .image-item-base{
+        position: relative;
+    }
+    .image-actions{
+        // reactions btn off to the right
+        .reactions-button{
+           position: absolute;
+           right: 0;
+           top: 0;
+        }
+
+    }
+
+    .reactions-list{
+        display: none;
+        .box-shadow(none);
+        li.ui-li{
+            border: none!important;
+            padding:0;
+             .ui-link-inherit{
+                    padding: 0 0 @paddingElement 0!important;
+                    display: inline-block;
+                    white-space: normal;
+                }
+            .ui-icon-arrow-r{
+                display: none;
+            }
+            .username{
+                text-transform: none;
+                text-shadow: none;
+            }
+            .comment,
+            .like-text{
+                white-space: normal;
+                font-weight: normal;
+                text-transform: none;
+                text-shadow: none;
+            }
+        }
+
+    }
+    .comment-area{
+        display: none;
+        .photo-comment{
+            min-height: 75px;
+        }
+    }
+}
+.s-image-item-block.private{
+    .image-status{
+        display:inherit;
+    }
+}
+
+
