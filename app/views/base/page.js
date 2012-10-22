@@ -30,7 +30,7 @@ return view.extend({
         this.events = _.extend(this.events || {}, {
             "click .x-back": "back",
             "click a[data-rel=back]": "back",
-            "click a[data-back-here]": "add_back_url"
+            "click a.x-back-here": "add_back_url"
         });
 
         var page = this;
