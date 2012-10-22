@@ -5,7 +5,7 @@
     case "photo-activity":%>
         <% if (item.get("comments").length || item.get("comment-on-comments").length) {%>
         <!-- // List the comments followed by the comments on comments -->
-        <ul class="comments-list " data-role="listview" data-inset="true" data-icon="false" >
+        <ul class="comments-list activity-image-item" data-role="listview" data-inset="true" data-icon="false" >
             <% _.each( item.get("comments"), function( comment ){ %>
                 <li data-icon="false" class="comment-item activity-item">
                     <a href="#/feed/?username=<%= comment.user.username %>">
@@ -66,7 +66,7 @@
     <%  break;
     case "follow":%>
 
-        <a href="#/feed/?username=<%= item.get("user").username %>" class="">
+        <a href="#/feed/?username=<%= item.get("user").username %>" class="activity-follow-item">
             <img src="<%= config.get('avatar_url') %>/<%= item.get("user").username %>" alt="<%= item.get("user").user_id %>" class="s-avatar ui-li-icon"/>
             <h3 class="username"><%= item.get("user").display_username %></h3> <span class="activity-desc">is now following you.</span>
             <% if (!photo_events) { %>

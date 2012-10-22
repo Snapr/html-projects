@@ -101,14 +101,6 @@ var activity_stream_item = view.extend({
             likes_list: this.model.get("favorites")
         }));
 
-        switch (this.model.get("type")){
-            case "photo-activity":
-                this.$el.addClass("activity-image-item");
-                break;
-            case "follow":
-                this.$el.addClass("activity-follow-item");
-                break;
-        }
         return this;
     }
 
