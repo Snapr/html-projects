@@ -60,9 +60,9 @@ var activity_stream = view.extend({
                     photo_events: photo_events
                 });
                 if (photo_events){
-                    this.$el.find("ul.photo-activity").append( stream_item.render().el );
+                    this.$(".x-photo-activity").append( stream_item.render().el );
                 }else{
-                    this.$el.find("ul.non-photo-activity").append( stream_item.render().el );
+                    this.$(".x-non-photo-activity").append( stream_item.render().el );
                 }
 
             }, this);
@@ -71,7 +71,7 @@ var activity_stream = view.extend({
                 model: this.model
             });
 
-            this.$el.find("ul").append( stream_item.render().el );
+            this.$("x-activity").append( stream_item.render().el );
         }
 
         return this;

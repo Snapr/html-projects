@@ -13,20 +13,20 @@ return page_view.extend({
     },
 
     post_activate: function(){
-        this.$el.find(".activity-streams").empty();
+        this.$(".x-activity-streams").empty();
 
         this.collection.fetch();
 
         this.change_page();
         $.mobile.showPageLoadingMsg();
     },
-    
+
     get_override_tab: function(){ return 'feed'; },
-    
-    
+
+
 
     render: function(){
-        var $streams = this.$el.find(".activity-streams").empty();
+        var $streams = this.$(".x-activity-streams").empty();
 
         var events = this.collection.filter( function( s ){
             return s.has("events") && s.get("events").length > 0;

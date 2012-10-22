@@ -15,12 +15,12 @@ return view.extend({
     },
 
     events: {
-        "click .favorite-button": "favorite"
+        "click .x-favorite-button": "favorite"
     },
 
     favorite: function(){
         var fav_btn = this;
-        fav_btn.$('.favorite-button').x_loading();
+        fav_btn.$('.x-favorite-button').x_loading();
 
         var is_fav = this.model.get('favorite');
         var fav_count = parseInt( this.model.get('favorite_count'), 10 );
@@ -42,36 +42,33 @@ return view.extend({
                 var options = {
                     success: function( s ){
                         // success is not passed through so we check for error
-                        if (!s.get('error'))
-                        {
+                        if (!s.get('error')){
                             fav_btn.render();
                         }
-                        fav_btn.$('.favorite-button').x_loading(false);
+                        fav_btn.$('.x-favorite-button').x_loading(false);
                     },
                     error: function(e){
                         console.log('fav error',e);
-                        fav_btn.$('.favorite-button').x_loading(false);
+                        fav_btn.$('.x-favorite-button').x_loading(false);
                     }
                 };
                 fav.destroy( options );
             }else{
                 // save a new fav (empty object is important)
                 var options = {
-                    success: function(s)
-                    {
-                        if (s.get('success'))
-                        {
+                    success: function(s){
+                        if (s.get('success')){
                             fav_btn.model.set({
                                 favorite: true,
                                 favorite_count: fav_count + 1
                             });
                             fav_btn.render();
                         }
-                        fav_btn.$('.favorite-button').x_loading(false);
+                        fav_btn.$('.x-favorite-button').x_loading(false);
                     },
                     error: function(e){
                         console.log('fav error',e);
-                        fav_btn.$('.favorite-button').x_loading(false);
+                        fav_btn.$('.x-favorite-button').x_loading(false);
                     }
                 };
                 fav.save( {}, options );
