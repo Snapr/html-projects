@@ -12,12 +12,12 @@
         <div class="s-inline-header ui-body-c spots-search-header search-header">
             <div class="ui-content">
                 <form id="spots-search" class="all-categories">
-                    <input type="search" id="spot-search" value="" placeholder="Venue Name&hellip;" />
+                    <input type="search" id="spot-search" class="x-search-field" value="" placeholder="Venue Name&hellip;" />
 
                     <div class="spots-search-filters">
                         <span class="distance-btn">
 
-                             <select data-theme="c" name="location" id="options-location" data-native-menu="true">
+                             <select data-theme="c" name="location" id="options-location" class="x-location" data-native-menu="true">
                                 <option value='anywhere' id="location-anywhere">&#8734;</option>
                                 <option value='1000' id='location-walking' class="x-location-needed">1k</option>
                                 <option value='10000' id='location-driving' class="x-location-needed">10k</option>
@@ -27,14 +27,14 @@
 
                         <div class="ui-grid-a">
                             <div class="ui-block-a">
-                                <select data-theme="c" name="sort" id="options-sort" data-native-menu="true">
+                                <select data-theme="c" name="sort" id="options-sort" class="x-sort" data-native-menu="true">
                                     <option value='weighted_score' id='options-weighted_score'>Popular</option>
                                     <option value='distance' class="x-location-needed" id="options-distance">Nearest</option>
                                 </select>
 
                             </div>
                             <div class="ui-block-b category-btn">
-                                <select data-theme="c" name="category" id="options-category" data-native-menu="true">
+                                <select data-theme="c" name="category" id="options-category" class="x-category" data-native-menu="true">
                                     <option value='all' id='location-anywhere'>All</option>
                                     <option value='food' id="category-nearby">Food</option>
                                     <option value='nightlife-spots' id="category-nightlife-spots">Nightlife</option>
@@ -51,7 +51,7 @@
        </div>
 
        <div class="spots-results-content">
-           <ul class="spots">
+           <ul class="spots x-spots-list">
            </ul>
        </div>
 

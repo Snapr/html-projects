@@ -6,7 +6,7 @@ var spots_view =  page_view.extend({
     post_initialize: function() {
         var dialog = this;
         this.$el.live( "pageshow", function(){
-            dialog.$('#venue-search').focus();
+            dialog.$('.x-search-field').focus();
         });
 
         this.defaults = {
@@ -19,7 +19,7 @@ var spots_view =  page_view.extend({
         this.collection = new spot_collection();
         this.collection.on('all', this.render, this);
         this.spot_results_header = new spot_results_header_view();
-        this.$('ul.spots').before(this.spot_results_header.el);
+        this.$('.x-spots-list').before(this.spot_results_header.el);
     },
 
     post_activate: function(options) {
@@ -51,11 +51,11 @@ var spots_view =  page_view.extend({
 
         this.change_page();
 
-        search_options.nearby || this.$('#options-location').val('anywhere').selectmenu('refresh'); //ugh dirty
-        this.$('#spot-search').val(search_options.spot_name);
-        this.$('#options-category').val(search_options.category).selectmenu("refresh");
-        this.$('#options-sort').val(search_options.sort).selectmenu("refresh");
-        this.$('#spots-search').attr('class', '').addClass(search_options.category || 'all-categories');
+        search_options.nearby || this.$('.x-location').val('anywhere').selectmenu('refresh'); //ugh dirty
+        this.$('.x-search-field').val(search_options.spot_name);
+        this.$('.x-category').val(search_options.category).selectmenu("refresh");
+        this.$('.x-sort').val(search_options.sort).selectmenu("refresh");
+        this.$('form').attr('class', '').addClass(search_options.category || 'all-categories');
     },
 
     events: {
@@ -69,7 +69,7 @@ var spots_view =  page_view.extend({
 
 
     render: function() {
-        var spots_list = this.$("ul.spots").empty();
+        var spots_list = this.$(".x-spots-list").empty();
 
         if(this.collection.length){
             //no_results.$el.remove();  // use remove(), hide() keeps it hidden and requires show() later
@@ -89,7 +89,7 @@ var spots_view =  page_view.extend({
         var params = this.build_map_params();
 
         this.spot_results_header.render(this.collection.length, params);
-        this.$el.removeClass('loading');
+        this.$el.removeClass('.x-loading');
         spots_list.listview().listview("refresh");
     },
 
@@ -135,12 +135,12 @@ var spots_view =  page_view.extend({
 
         this.timer = setTimeout( function() {
             this_view.timer = null;
-            this_view.$el.addClass('loading');
+            this_view.$el.addClass('.x-loading');
             this_view.xhr = this_view.collection.fetch({
                 data: options,
                 success: function () {
                     this_view.xhr = null;
-                    this_view.$el.removeClass('loading');
+                    this_view.$el.removeClass('.x-loading');
                 }
             });
         }, 300 );
@@ -152,25 +152,25 @@ var spots_view =  page_view.extend({
     search_event: function(e) {
 
         e.preventDefault();
-        this.$('#spots-search').attr('class', '');
+        this.$('form').attr('class', '');
 
-        var keywords = this.$('#spot-search').val(),
-            category = this.$('#options-category').val(),
-            sort = this.$('#options-sort').val(),
-            nearby = this.$('#options-location').val(),
+        var keywords = this.$('.x-search-field').val(),
+            category = this.$('.x-category').val(),
+            sort = this.$('.x-sort').val(),
+            nearby = this.$('.x-location').val(),
             this_view = this,
             data = _.clone(this.defaults);
 
 
         if (category !== 'all')  {
             data.category = category;
-            this.$('#spots-search').addClass(category);
+            this.$('form').addClass('x-' + category);
         }
         else {
-            this.$('#spots-search').addClass('all-categories');
+            this.$('form').addClass('x-all-categories');
         }
 
-        this.$('#spots-search').addClass('distance-'+nearby);
+        this.$('form').addClass('distance-'+nearby);
 
         data.spot_name = keywords;
 
