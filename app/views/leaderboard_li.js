@@ -23,8 +23,8 @@ return Backbone.View.extend({
     },
 
     refresh: function(){
-        this.$(".photo-count").text( this.model.get("photo_count") );
-    },
+        this.$(".x-photo-count").text( this.model.get("photo_count") );
+    }
 
 });
 });
