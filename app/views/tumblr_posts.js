@@ -13,7 +13,7 @@ var tumblr_post_view = page_view.extend({
         this.change_page();
         $.mobile.showPageLoadingMsg();
 
-        this.$( ".posts-stream" ).empty();
+        this.$( ".x-posts" ).empty();
 
         this.collection.bind( "change", _.bind(this.render, this) );
 
@@ -34,7 +34,7 @@ var tumblr_post_view = page_view.extend({
     get_default_tab: function(){ return 'dash'; },
 
     render: function(){
-        var $stream = this.$( ".posts-stream" ).empty();
+        var $stream = this.$( ".x-posts" ).empty();
 
         this.$('.x-blog-title').text(this.collection.blog_title);
 
