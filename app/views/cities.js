@@ -70,7 +70,7 @@ return page_view.extend({
         $.mobile.showPageLoadingMsg();
 
         var $el = this.$el,
-            streams = this.$('.x-image-streams');
+            streams = this.$el.find('.s-image-streams');
 
         var empty_once = function(){
             empty_once = $.noop;

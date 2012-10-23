@@ -11,7 +11,7 @@
     <div data-role="content" data-theme="d" data-ajax="false">
         <div class="spot-head">
             <% if(obj.spot){ %>
-                <a class="ui-bar top-left-arrow <%= spot.get('category').slug %> ui-spot-icon-left" data-role="button" data-theme="e" data-iconpos="right" data-icon="arrow-r" data-ajax="false" href="#/feed/?spot=<%= spot.get('id') %>&venue_name=<%= spot.get('name') %>">
+                <a class="ui-bar s-arrow-d-left <%= spot.get('category').slug %> ui-spot-icon-left" data-role="button" data-theme="e" data-iconpos="right" data-icon="arrow-r" data-ajax="false" href="#/feed/?spot=<%= spot.get('id') %>&venue_name=<%= spot.get('name') %>">
                     <span class="ui-icon ui-icon-category spot-icon dark-spot-icon"></span>
                     <em class="spot-name"><%= spot.get('name') %></em>
                     <% if (spot.get('stats').photos_count) { %>
@@ -23,7 +23,7 @@
                     <div class="spot ui-content">
                         <a class="spot-photo-crop">
                             <% if (spot.get('info').hero_image) { %>
-                                <img src="https://s3.amazonaws.com/media-server2.snapr.us/thm2/<%= spot.get('info').hero_image.secret %>/<%= spot.get('info').hero_image.id %>.jpg" class="thumb-image thumb-med" />
+                                <img src="https://s3.amazonaws.com/media-server2.snapr.us/thm2/<%= spot.get('info').hero_image.secret %>/<%= spot.get('info').hero_image.id %>.jpg" class="s-thumb-image thumb-med" />
                             <%} else { %>
                                 <div class="no-photo-yet">
                                     no<br />
@@ -63,7 +63,7 @@
         </div>
 
         <div class="spot-body">
-            <ul class="image-streams">
+            <ul class="s-image-streams">
                 <!-- dynamic -->
             </ul>
 

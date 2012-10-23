@@ -37,7 +37,7 @@ return view.extend({
             }, this);
 
             if(this.list_style == 'list'){
-                this.$("img").each(function()
+                this.$el.find("img").each(function()
                 {
                     var $img = $(this);
                     $img.load(function(){
@@ -54,7 +54,7 @@ return view.extend({
         this.$el.trigger("create");
 
         // what's this for?
-        this.$el.removeClass('thumbs-grid-med');
+        this.$el.removeClass('s-thumbs-grid-med');
 
 
         if (scrollY){

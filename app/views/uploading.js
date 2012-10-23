@@ -67,7 +67,7 @@ var uploading = page_view.extend({
     get_override_tab: function(){ return 'share'; },
 
     render_streams: function(){
-        var $image_stream_container = this.$( ".image-streams" ).empty();
+        var $image_stream_container = this.$( ".s-image-streams" ).empty();
 
 
         if(this.comp){
@@ -87,7 +87,7 @@ var uploading = page_view.extend({
     },
 
     insert_comp_streams: function(){
-        var $image_stream_container = this.$( ".image-streams" );
+        var $image_stream_container = this.$( ".s-image-streams" );
 
         var comp_stream = new side_scroll({
             data: {
@@ -106,7 +106,7 @@ var uploading = page_view.extend({
 
 
     insert_venue_streams: function(){
-        var $image_stream_container = this.$( ".image-streams" );
+        var $image_stream_container = this.$( ".s-image-streams" );
 
         var venue_stream = new side_scroll({
             collection: new photo_collection([], {data: {
@@ -121,7 +121,7 @@ var uploading = page_view.extend({
     },
 
     insert_location_streams: function(){
-        var $image_stream_container = this.$( ".image-streams" );
+        var $image_stream_container = this.$( ".s-image-streams" );
 
         var location_stream = new side_scroll({
             data: {
@@ -229,9 +229,9 @@ var uploading = page_view.extend({
 
     upload_count: function( count ){
         if (count){
-            this.$el.addClass("x-showing-upload-queue");
+            this.$el.addClass("showing-upload-queue");
         }else{
-            this.$el.removeClass("x-showing-upload-queue");
+            this.$el.removeClass("showing-upload-queue");
         }
     },
 

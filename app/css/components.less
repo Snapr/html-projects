@@ -51,6 +51,18 @@ div[data-role="content"]{
 }
 
 
+// Set page element to full height if you need fullscreen elements 
+.s-full-height{
+    min-height: 400px;
+    .box-sizing(border-box);
+    position:absolute;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+}
+
+
 // TAB BAR
 // -------------------------
 
@@ -107,6 +119,216 @@ div[data-role="content"]{
         display: block;
     }
 }
+
+.s-thumbs-grid-med,
+.x-grid #feed-images{
+    margin: 0 -@padding * 2;
+    padding: 0 @padding 0 @padding;
+    min-height: @thumbSize;
+
+    .s-image-link{
+        display: inline-block;
+        padding: 0;
+        margin: 0;
+    }
+    .s-thumb-image{
+        width: @thumbSize;
+        height: @thumbSize;
+        padding: 0;
+        margin: 0;
+        display: block;
+        background-color: @grayLight;
+    }
+}
+
+
+// BAR
+// -------------------------
+
+.ui-bar{
+    margin-left: -@padding * 2;
+    margin-right: -@padding * 2;
+    
+    .ui-btn,
+    &.ui-btn{
+        .ui-btn-inner{
+            padding-top: 0;
+            padding-bottom: 0;
+            height: @barHeight;
+            line-height: @barHeight;
+        }
+    }
+    
+    // Split Bars with Button on right
+    .ui-controlgroup-controls{
+        width: 100%;
+    }
+    .s-bar-left{
+        width: 80%;
+        box-sizing: border-box;
+        margin: 0;
+        border-right: none;
+        .ui-btn-inner{
+            text-align: left;
+            padding-right: 0;
+        }
+    }
+    .s-bar-right{
+        width: 20%;
+        box-sizing: border-box;
+        margin: 0;
+    }
+}
+
+
+// STREAMS
+// -------------------------
+
+/* Horizontally scrolling image stream components */
+.s-image-streams{
+    .x-stream{
+        position: relative;
+        margin-bottom: @padding * 2 ;
+        white-space: no-wrap;
+        .x-thumbs{
+            display: inline-block;
+            min-width: @thumbSize * 3 + @padding * 2;
+        }
+        .s-image-link{
+            padding-left: @paddingGrid;
+        }
+        .s-load-more-inline{
+            background-color: @grayLight;
+            width: @thumbSize;
+            height: @thumbSize;
+            display: inline-block;
+            vertical-align: top;
+            position: relative;
+            .ui-btn-text{
+                display: inline-block;
+                text-align: center;
+                font-size: 11px;
+                font-weight: bold;
+                text-transform: lowercase;
+                bottom: 12px;
+                position: absolute;
+                width: 101px;
+                color: @gray;
+            }
+            .ui-icon-refresh{
+                background-image: url('@{gfx}@{gfxRefresh}');
+                background-repeat: no-repeat;
+                position: absolute;
+                display: block;
+                left: 50%;
+                top: 50%;
+                width: @gfxRefresh-grid;
+                height: @gfxRefresh-grid;
+                margin-top: -@gfxRefresh-grid / 2;
+                margin-left: -@gfxRefresh-grid / 2;
+                -webkit-transition-property:-webkit-transform;
+            	-webkit-transition-duration:250ms;
+            	-webkit-transform:rotate(0deg) translateZ(0);
+            }
+            &.x-right-pull{
+                margin-right: 9px;
+                .ui-icon-refresh{
+                    background-position: @gfxRefresh-x @gfxRefresh-right-y;
+                }
+            }
+            &.x-left-pull{
+                margin-right:-@padding;
+                 .ui-icon-refresh{
+                     background-position: @gfxRefresh-x @gfxRefresh-left-y;
+                 }
+            }
+            &.x-flipped{
+                 .ui-icon-refresh{
+                     background-position: @gfxRefresh-x @gfxRefresh-refresh-y;
+    	            -webkit-transform:rotate(180deg) translateZ(0);
+	            }
+    	    }
+        }
+        .x-loading {
+            .s-load-more-inline{
+                 .ui-icon-refresh{
+                    background-image: url('gfx/spinner.png');
+                    background-position: center;
+                    .spin();
+                }
+            }
+        }
+        .x-no-more{
+            .x-right-pull{
+                .ui-icon-refresh{
+                    display: none;
+                }
+                //turns 'the end' into big full stop..
+                .x-msg{
+                    background-color:rgba(0,0,0,.12);
+                    padding: 36px 0;
+                    width: 84px;
+                   .border-radius(44px);
+                    color: white;
+                    height: 12px;
+                    vertical-align: middle;
+                    margin-left: 10px;
+                }
+            }
+        }
+        .edit-overlay{
+            display: none;
+            position: absolute;
+            top: 40px;
+            width: 109%;
+            background-color: rgba(255, 255, 255, .8);
+            min-height: @thumbSize;
+            margin-left: -8px;
+            margin-right: -8px;
+            right: 0;
+            .remove-stream{
+                display: inline-block;
+                position: absolute;
+                right: 8px;
+                top: 50%;
+                margin-top: -18px;
+            }
+            // Styles for remove btn on streams with no images
+            &.over-bar{
+                top: 2px;
+                width: auto;
+                min-height: 0;
+                z-index: 10;
+                .remove-stream{
+                    margin-top: 4px;
+                    .ui-btn-inner{
+                        padding: 4px 32px 4px 16px;
+                    }
+                }
+            }
+
+         }
+
+    }
+}
+.edit{
+       .x-stream.user-stream{
+            .edit-overlay{
+                   display: block;
+            }
+        }
+    }
+
+.x-scroll-wrapper {
+  white-space: nowrap;
+  display:inline-block;
+}
+.x-right-pull, .x-left-pull{
+    display:inline;
+}
+
+
+
 
 
 // FEED
@@ -208,7 +430,7 @@ div[data-role="content"]{
         }
     }
     
-    .s-main-image-link{
+    .s-main-s-image-link{
         display: block;
     }
     .s-main-image{
@@ -292,7 +514,13 @@ div[data-role="content"]{
 }
 
 
+// GALLERIES - tweaks to photoswipe
+// -------------------------
 
+div.ps-carousel-item-loading
+{
+    background: url('gfx/image-load-dark.gif') no-repeat center center;
+}
 
 
 
@@ -399,6 +627,7 @@ div[data-role="content"]{
             width: 139px;
             height: 47px;
             z-index: 1;
+            text-decoration: none;
             .s-venue-label-text{
                 color: white;
                 font-weight: bold;
@@ -519,4 +748,11 @@ div[data-role="content"]{
     .dwo{background-color: @blackTrans;}
     .dwbc{.dwbw{.dwb{margin: 8px;}}}
 }
+
+
+
+
+
+
+
 

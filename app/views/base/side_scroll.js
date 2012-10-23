@@ -4,8 +4,8 @@ define(['backbone', 'views/base/view', 'utils/photoswipe', 'iscroll', 'utils/str
     function(Backbone, view, photoswipe, iScroll, string_utils, photo_collection, config){
 return view.extend({
 
-    tagName: 'li',
-    className: 'x-image-stream s-image-stream',
+    tagName: 'article',
+    className: 'x-stream',
 
     initialize: function(options) {
         _.bindAll(this);

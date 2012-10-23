@@ -297,7 +297,7 @@ h4{
         }
     }
     &.top-no-arrow,
-    &.top-left-arrow{
+    &.s-arrow-d-left{
         .corner-top (@cornerPage);
         .corner-bottom (@cornerNone);
 
@@ -314,7 +314,7 @@ h4{
             }
         }
     }
-    &.small-top-left-arrow{
+    &.small-s-arrow-d-left{
         position: absolute;
         top: -31px;
         white-space: nowrap;
@@ -727,48 +727,29 @@ h4{
 /*
 * Image Views - Custom
 */
-.thumbs-grid-med,
-.x-grid #feed-images{
-    margin: 0 -@paddingPage;
-    padding: 0 0 0 @paddingGrid;
-    min-height: @thumbSize;
 
-    .image-link{
-        display: inline-block;
-        padding: 0;
-        margin: 0;
-    }
-    .thumb-image{
-        width: @thumbSize;
-        height: @thumbSize;
-        padding: 0;
-        margin: 0;
-        display: block;
-        background-color: @grayLight;
-    }
-}
 
 
 /* Horizontally scrolling image stream components */
-.image-streams{
+.s-image-streams{
     list-style: none;
     padding: 0;
     margin: 0;
 
-    .image-stream{
+    .x-stream{
         position: relative;
         list-style: none;
         padding: 0;
         margin-bottom: @paddingPage ;
         white-space: no-wrap;
-        .thumbs-grid{
+        .s-thumbs-grid{
             padding-top: @paddingGrid;
         }
         .x-thumbs{
             display: inline-block;
             min-width: @thumbSize * 3 + @paddingGrid * 2;
         }
-        .image-link{
+        .s-image-link{
             padding-left: @paddingGrid;
         }
         .image-details{
@@ -782,7 +763,7 @@ h4{
                 background-position: @gfxBar-x @gfxBar-venue-y;
             }
         }
-        .load-more-inline{
+        .s-load-more-inline{
             background-color: @grayLight;
             display: inline-block;
             vertical-align: top;
@@ -838,7 +819,7 @@ h4{
         }
 
         .x-loading {
-            .load-more-inline{
+            .s-load-more-inline{
                  .ui-icon-refresh{
                     background-image: url('../gfx/spinner.png');
                     background-position: center;
@@ -900,7 +881,7 @@ h4{
     }
 }
 .edit{
-       .image-stream.user-stream{
+       .x-stream.user-stream{
             .edit-overlay{
                    display: block;
             }
@@ -1234,16 +1215,7 @@ h4{
 
 
 
-/* This will fill out the main page element to full height if you need fullscreen elements */
-.set-full-height{
-    min-height: 400px;
-    .box-sizing(border-box);
-    position:absolute;
-    top:0;
-    bottom:0;
-    left:0;
-    right:0;
-}
+
 
 
 /* Offline mode default display */
@@ -1671,10 +1643,7 @@ h4{
     }
 }
 
-div.ps-carousel-item-loading
-{
-    background: url('../gfx/image-load-dark.gif') no-repeat center center;
-}
+
 
 /* change the icon to a spinner if a button is loading an ajax event */
 .x-ajax-loading{

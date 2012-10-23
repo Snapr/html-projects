@@ -36,15 +36,15 @@
     .ui-title{
         color: @offWhite;
         text-shadow:0 -1px 1px #000;
-
+        
     }
-    .image-streams .image-stream .load-more-inline{
+    .s-image-streams .x-stream .s-load-more-inline{
         background-color: darken(@black-tint, 5%);
     }
-    .thumbs-grid-med .thumb-image,
-    .x-grid #feed-images .thumb-image,
-    .thumb-image{
-        background-color: darken(@black-tint, 5%);
+    .s-thumbs-grid-med .s-thumb-image,
+    .grid #feed-images .s-thumb-image,
+    .s-thumb-image{
+        background-color: darken(@black-tint, 5%); 
     }
 }
 
@@ -159,7 +159,7 @@
     color: @offWhite;
     .linear-gradient(@grayDark, @grayDark-tint);
 
-    &.small-top-left-arrow::after{
+    &.small-s-arrow-d-left::after{
         .arrow-down(6px, @grayDark, 24px, 0);
     }
     &.small-top-right-arrow::after{
@@ -171,8 +171,8 @@
     .ui-title{
         color: @offWhite;
     }
-
-
+    
+  
 }
 
 .ui-btn-up-b,
@@ -197,7 +197,7 @@
         background: none;
         .linear-gradient(black, @grayDark-tint);
     }
-    &.top-left-arrow::after{
+    &.s-arrow-d-left::after{
         .arrow-down(@arrow-size, @grayDark-tint, @arrow-offset, 3px);
     }
     &.bottom-centered-arrow::after{
@@ -230,7 +230,7 @@
         background: none;
         .linear-gradient(black, @grayDark-tint);
     }
-    &.top-left-arrow::after{
+    &.s-arrow-d-left::after{
         .arrow-down(@arrow-size, lighten(@grayDark-tint, 3%), @arrow-offset, 3px);
     }
     &.bottom-centered-arrow::after{
@@ -262,7 +262,7 @@
         background: none;
         .linear-gradient(black, @grayDark-tint);
     }
-    &.top-left-arrow::after{
+    &.s-arrow-d-left::after{
         .arrow-down(@arrow-size, @grayDark-tint, @arrow-offset, 3px);
     }
     &.bottom-centered-arrow::after{
@@ -333,14 +333,14 @@
             color: @grayMediumOnDark;
         }
     }
-
+    
 }
 
 // C //
 // Standard light BG swatch, has subtle gray bg texture, used mainly for light colored dialog style views
 // -----------------------------
 
-// Set bg for dialog
+// Set bg for dialog 
 
 .ui-body-c {
     background: none;
@@ -348,7 +348,7 @@
     background-image: @gfxBgLight;
     border: @borderMediumOnLight;
     color: @grayDarkOnLIght;
-    text-shadow: 0 1px 1px @shadowLightOnLight;
+    text-shadow: 0 1px 1px @shadowLightOnLight;      
 }
 .ui-dialog.ui-overlay-c{
     background: none;
@@ -405,7 +405,7 @@
         }
     }
 
-    // Grey Btns in body are slightly different
+    // Grey Btns in body are slightly different 
     .ui-content{
         .ui-btn-up-c,
         .ui-btn-hover-c,
@@ -417,7 +417,7 @@
             }
         }
 
-        // System bar
+        // System bar 
         .ui-btn-up-c.system-bar,
         .ui-btn-hover-c.system-bar,
         .ui-btn-down-c.system-bar,
@@ -456,7 +456,7 @@
 }
 
 
-// Grey Btns
+// Grey Btns 
 .ui-btn-up-c {
     border: none;
     background: @white;
@@ -466,7 +466,7 @@
     a.ui-link-inherit {
         color: @grayDarkOnLIght;
     }
-    &.top-left-arrow::after{
+    &.s-arrow-d-left::after{
         .arrow-down(@arrow-size, @white-tint, @arrow-offset, 3px);
     }
     &.bottom-centered-arrow::after{
@@ -483,7 +483,7 @@
     a.ui-link-inherit {
         color: @grayDarkOnLIght;
     }
-    &.top-left-arrow::after{
+    &.s-arrow-d-left::after{
         .arrow-down(@arrow-size, lighten(@white-tint, 10%), @arrow-offset, 3px);
     }
     &.bottom-centered-arrow::after{
@@ -504,7 +504,7 @@
         .box-shadow(0 1px 4px lighten(@shadowLighterOnLight, 20%));
     }
 
-    &.top-left-arrow::after{
+    &.s-arrow-d-left::after{
         .arrow-down(@arrow-size, @white, @arrow-offset, 3px);
     }
     &.bottom-centered-arrow::after{
@@ -512,7 +512,7 @@
     }
 }
 
-// Tweak to C theme buttons for transparent BGs
+// Tweak to C theme buttons for transparent BGs 
 .trans-bg{
     .ui-btn-up-c {
         border: none;
@@ -549,7 +549,7 @@
     }
 }
 
-// List hover effects are going to be a little bit different to normal buttons
+// List hover effects are going to be a little bit different to normal buttons 
 // and we are going to strip the hell out of them..
 
 .ui-body-c > .ui-listview{
@@ -587,7 +587,7 @@
         .linear-gradient(rgba(255,255,255, 0), rgba(255,255,255,1));
     }
 
-    // Put the border back on for people / venues lists because i like it there
+    // Put the border back on for people / venues lists because i like it there 
     &.people-list,
     &.venue-list,
     &.map-list{
@@ -601,7 +601,7 @@
             padding-top: @paddingElement * 2px!important;
             padding-bottom: @paddingElement * 2px!important;
             .button-font-light();
-
+            
         }
     }
     .ui-li-has-icon{
@@ -633,7 +633,7 @@
         border-left: none!important;
     }
 
-    //  Right hand buttons in split lists
+    //  Right hand buttons in split lists 
     .ui-li-link-alt{
         width: 44px;
         background: none;
@@ -744,7 +744,7 @@
         color: @grayDarkOnLIght;
     }
 
-    &.top-left-arrow::after{
+    &.s-arrow-d-left::after{
         .arrow-down(@arrow-size, @orange-tint, @arrow-offset, 3px);
     }
     &.bottom-centered-arrow::after{
@@ -763,7 +763,7 @@
         color: @grayDarkOnLIght;
     }
 
-    &.top-left-arrow::after{
+    &.s-arrow-d-left::after{
         .arrow-down(@arrow-size, lighten(@orange-tint, 10% ), @arrow-offset, 3px);
     }
     &.bottom-centered-arrow::after{
@@ -785,7 +785,7 @@
         .box-shadow(none);
     }
 
-    &.top-left-arrow::after{
+    &.s-arrow-d-left::after{
         .arrow-down(@arrow-size, @orange, @arrow-offset, 3px);
     }
     &.bottom-centered-arrow::after{
@@ -883,7 +883,7 @@
     background: @green;
     .linear-gradient(@green, @green-tint);
 
-    &.small-top-left-arrow::after{
+    &.small-s-arrow-d-left::after{
         .arrow-down(6px, @green-tint, 24px, 0);
     }
     &.small-top-right-arrow::after{
@@ -895,16 +895,16 @@
     a{
         color: @offWhite;
     }
-
+    
     //POP red for little activity tab
     &.tab-bar-extra,
-    &.small-top-left-arrow{
+    &.small-s-arrow-d-left{
         background: @red;
         color: @grayDark-tint;
         text-shadow: none;
         .linear-gradient(@red, @red-tint);
 
-        &.small-top-left-arrow::after{
+        &.small-s-arrow-d-left::after{
             .arrow-down(6px, @red-tint, 24px, 0);
         }
         &.small-top-right-arrow::after{
@@ -914,7 +914,7 @@
             color: @grayDark;
             text-shadow: none;
         }
-
+        
     }
 }
 
@@ -965,13 +965,13 @@
     .linear-gradient(@green, @green-tint);
     color: @offWhite;
     text-shadow: @shadowDarkOnDark 0px -1px 1px;
-
+    
     .button-font-bold();
     text-decoration: none;
     a.ui-link-inherit {
         color: @grayDarkOnLIght;
     }
-    &.top-left-arrow::after{
+    &.s-arrow-d-left::after{
         .arrow-down(@arrow-size, @green-tint, @arrow-offset, 3px);
     }
     &.bottom-centered-arrow::after{
@@ -990,7 +990,7 @@
     a.ui-link-inherit {
         color: @grayDarkOnLIght;
     }
-    &.top-left-arrow::after{
+    &.s-arrow-d-left::after{
         .arrow-down(@arrow-size, lighten(@green-tint, 10% ), @arrow-offset, 3px);
     }
     &.bottom-centered-arrow::after{
@@ -1012,7 +1012,7 @@
     &.ui-shadow {
         .box-shadow(0 1px 4px lighten(@shadowLighterOnLight, 20%));
     }
-    &.top-left-arrow::after{
+    &.s-arrow-d-left::after{
         .arrow-down(@arrow-size, @green, @arrow-offset, 3px);
     }
     &.bottom-centered-arrow::after{

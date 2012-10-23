@@ -37,16 +37,16 @@ var nearby_photostream_view = view.extend({
 
         var error_callback = function() {
             this_view.fetch_photos();
-            this_view.$('#home-nearby-link .ui-btn-text').text('Popular Images');
+            this_view.$el.find('#home-nearby-link .ui-btn-text').text('Popular Images');
         };
 
         geo.get_location( success_callback, error_callback );
     },
     render: function () {
         this.$el.html(this.template({}));
-        this.$('.thumbs-preview-stream').empty();
+        this.$el.find('.thumbs-preview-stream').empty();
         this.collection.reset();
-        this.$('[data-role="button"]').button();
+        this.$el.find('[data-role="button"]').button();
 
         return this;
     },
@@ -92,7 +92,7 @@ var nearby_photostream_view = view.extend({
                 // if we have no photos already and something goes wrong show 'offline'.
                 if (current_photo_ids.length === 0) {
                     this_view.$el.addClass('no-images').removeClass('loading');
-                    this_view.$('#home-nearby-link .ui-btn-text').text('Offline');
+                    this_view.$el.find('#home-nearby-link .ui-btn-text').text('Offline');
                 }
             }
         });
@@ -119,7 +119,7 @@ var nearby_photostream_view = view.extend({
 
 var nearby_photostream_item_view = view.extend({
     tagName: 'li',
-    template: _.template('<img src="https://s3.amazonaws.com/media-server2.snapr.us/thm2/<%= photo.get("secret") %>/<%= photo.get("id") %>.jpg" alt="<%= photo.get("description") %>" class="thumb-image thumb-med">'),
+    template: _.template('<img src="https://s3.amazonaws.com/media-server2.snapr.us/thm2/<%= photo.get("secret") %>/<%= photo.get("id") %>.jpg" alt="<%= photo.get("description") %>" class="s-thumb-image thumb-med">'),
     render: function () {
         this.$el.html( this.template({
             photo: this.model

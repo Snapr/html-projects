@@ -1,12 +1,12 @@
 <form action="javascript: void(0);">
-    <div class="upload-image-layer set-full-height">
+    <div class="upload-image-layer s-full-height">
         <div class="image-placeholder">
             <% if (img_url){%><img src="<%= img_url %>" /><%}%>
         </div>
     </div>
 
     <div class="image-options">
-        <div class="upload-settings-layer trans-bg set-full-height">
+        <div class="upload-settings-layer trans-bg s-full-height">
             <div class="upload-settings">
                 <% if(comp){ %>Comp: <%= comp.get('title') %><% } %>
                 <textarea name="description" id="description" placeholder="Add text..." data-theme="d"><%= saved_description %></textarea>
@@ -114,7 +114,7 @@
     </a>
 </div>
 
-<div class="show-upload-settings set-full-height">
+<div class="show-upload-settings s-full-height">
     <div class="image-controls">
         <a data-role="button" id="show_photo_settings" data-icon="toggle-up" data-iconpos="right" >
             Show Options

@@ -300,7 +300,7 @@ var dash_view = page_view.extend({
 });
 
 var competition = view.extend({
-    tagName: 'li',
+    tagName: 'article',
     className: 'competition',
     events: {
         "click .x-details": "toggle"
@@ -316,13 +316,13 @@ var competition = view.extend({
     },
     toggle: function(){
         this.$el.toggleClass('open closed');
-        this.$el.toggleClass('top-left-arrow');
+        this.$el.toggleClass('s-arrow-d-left');
         this.$('.banner').fadeToggle();
     }
 });
 
 var dash_tumblr_view = view.extend({
-    tagName: 'li',
+    tagName: 'article',
     className: 'post-stream',
     events: {
         "click .x-details": "toggle"
@@ -369,16 +369,16 @@ var dash_tumblr_view = view.extend({
     },
     toggle: function () {
         this.$el.toggleClass('open closed');
-        this.$el.toggleClass('top-left-arrow');
+        this.$el.toggleClass('s-arrow-d-left');
         this.$('.posts-stream').fadeToggle();
     }
 });
 
 var dash_stream = side_scroll.extend({
 
-    tagName: 'li',
+    tagName: 'article',
 
-    className: 'image-stream',
+    className: 'x-stream',
 
     events: _.extend({
         "click .remove-stream": "remove_stream"

@@ -1,3 +1,4 @@
+
 //
 // Mixins your know and love from Bootstrap - http://twitter.github.com/bootstrap/
 // --------------------------------------------------
@@ -437,4 +438,31 @@
   margin-top: (@navbarHeight - @elementHeight) / 2;
 }
 
+
+
+
+// SNAPR UTILITY MIXINS
+// --------------------------------------------------
+
+
+.spinner(@file: 'gfx/small-spinner-light.png'){
+    display: block;
+    background-image: url(@file)!important;
+    background-position: center!important;
+    background-repeat: no-repeat!important;
+}
+
+.spin(){
+    -webkit-transform:rotate(0deg) translateZ(0);
+    -webkit-transition-duration:0ms;
+    -webkit-animation-name:loading;
+    -webkit-animation-duration:1.2s;
+    -webkit-animation-iteration-count:infinite;
+    -webkit-animation-timing-function:linear;
+}
+
+@-webkit-keyframes loading {
+    from { -webkit-transform:rotate(0deg) translateZ(0); }
+    to { -webkit-transform:rotate(360deg) translateZ(0); }
+}
 

@@ -17,7 +17,7 @@ var spot_view = page_view.extend({
         $.mobile.showPageLoadingMsg();
 
         this.$('.spot-head').empty();
-        this.$('.image-streams').empty();
+        this.$('.s-image-streams').empty();
         this.$('.top-users').empty();
 
         this.spot_id = options.query.spot_id || 0;
@@ -93,7 +93,7 @@ var spot_view = page_view.extend({
             }
         });
 
-        var el = this.$('.image-streams');
+        var el = this.$('.s-image-streams');
         el.append( stream_li.el );
         stream_li.render();
         el.trigger('create');

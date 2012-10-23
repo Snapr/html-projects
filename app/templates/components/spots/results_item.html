@@ -1,7 +1,7 @@
 <a class="spot <%= spot.get('category').slug %>" href="#/spot/?spot_id=<%=spot.get('id')%>">
     <span class="spot-photo-crop">
     <% if (spot.get('info').hero_image) { %>
-        <img src="https://s3.amazonaws.com/media-server2.snapr.us/thm2/<%= spot.get('info').hero_image.secret %>/<%= spot.get('info').hero_image.id %>.jpg" class="thumb-image thumb-med" />
+        <img src="https://s3.amazonaws.com/media-server2.snapr.us/thm2/<%= spot.get('info').hero_image.secret %>/<%= spot.get('info').hero_image.id %>.jpg" class="s-thumb-image thumb-med" />
     <%} else { %>
         <div class="no-photo-yet">
             no<br />
