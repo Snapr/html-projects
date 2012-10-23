@@ -9,7 +9,7 @@
         </div>
     </div>
     <div data-role="content" data-theme="d" data-ajax="false">
-        <div class="spot-head">
+        <div class="spot-head x-header">
             <% if(obj.spot){ %>
                 <a class="ui-bar s-arrow-d-left <%= spot.get('category').slug %> ui-spot-icon-left" data-role="button" data-theme="e" data-iconpos="right" data-icon="arrow-r" data-ajax="false" href="#/feed/?spot=<%= spot.get('id') %>&venue_name=<%= spot.get('name') %>">
                     <span class="ui-icon ui-icon-category spot-icon dark-spot-icon"></span>
@@ -63,11 +63,11 @@
         </div>
 
         <div class="spot-body">
-            <ul class="s-image-streams">
+            <ul class="s-image-streams x-image-streams">
                 <!-- dynamic -->
             </ul>
 
-            <div class="top-users">
+            <div class="top-users x-top-users">
                 <% if(obj.top_users){ %>
                     <h4 class="top-users-heading">Top Users</h4>
                     <ul>

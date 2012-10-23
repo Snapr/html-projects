@@ -16,9 +16,9 @@ var spot_view = page_view.extend({
 
         $.mobile.showPageLoadingMsg();
 
-        this.$('.spot-head').empty();
-        this.$('.s-image-streams').empty();
-        this.$('.top-users').empty();
+        this.$('.x-header').empty();
+        this.$('.x-image-streams').empty();
+        this.$('.x-top-users').empty();
 
         this.spot_id = options.query.spot_id || 0;
         this.change_page();
@@ -58,7 +58,7 @@ var spot_view = page_view.extend({
     },
 
     render: function(){
-        this.replace_from_template({spot:this.model}, ['.spot-head', '.ui-btn-right']);
+        this.replace_from_template({spot:this.model}, ['.x-header', '.ui-btn-right']);
         this.$el.trigger('create');
     },
 
@@ -93,7 +93,7 @@ var spot_view = page_view.extend({
             }
         });
 
-        var el = this.$('.s-image-streams');
+        var el = this.$('.x-image-streams');
         el.append( stream_li.el );
         stream_li.render();
         el.trigger('create');
@@ -107,8 +107,8 @@ var spot_view = page_view.extend({
     render_top_users: function(){
         // Don't show if only 1 user as this is the hero
         if(this.top_users.length > 1){
-            this.replace_from_template({top_users: this.top_users}, [".top-users"]);
-            this.$(".top-users").trigger('create');
+            this.replace_from_template({top_users: this.top_users}, [".x-top-users"]);
+            this.$(".x-top-users").trigger('create');
         }
     }
 });
