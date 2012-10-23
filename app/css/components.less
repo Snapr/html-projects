@@ -337,7 +337,94 @@ div[data-role="content"]{
 // TUMBLR
 // -------------------------
 
+.tumblr-item{
+    min-height: @thumbSize;
+   height: @thumbSize;
+   overflow: hidden;
+    margin: @padding + 1 -@padding;
+    position: relative;
+    display: block;
+    .tumblr-exceprt{
+        text-align: left;
+        background-color: @grayLighter;
+        padding: @padding * 2;
+        min-height: @thumbSize;
+        .box-sizing(border-box);
+        .border-radius(@corners);
+        .crop-content{
+            text-overflow: ellipsis;
+            overflow: hidden;
+            height:62px;
+        }
+        blockquote{
+            margin: @padding;
+            border-left: solid 2px @gray;
+            padding-left: @padding * 2;
+            font-family: @font-serif;
+            font-style: italic;
+            font-size: @font-size-username;
+            small{
+                display: inline-block;
+                color: @gray;
+            }
+        }
+        p{
+            margin: @padding * 1.5 @padding @padding @padding;
+            color: @gray;
+            font-family: @font-serif;
+            font-style: italic;
+            font-size: @font-size-small;
+        }
+        .tumblr-details{
+            position: relative;
+            font-size: @font-size-small;
+            color:  @gray;
+            line-height: @gfxTumblr-grid;
+            height: @gfxTumblr-grid;
+            padding-right:@gfxTumblr-grid;
+            margin-left: 4px;
+            .box-sizing(border-box);
+            top: @padding;
+            .tumblr-icon{
+                display: block;
+                position: absolute;
+                right: 0;
+                top: 0;
+            }
+        }
+        &.tumblr-photo,
+        &.tumblr-video{
+            margin-left: @thumbSize + 2px;
+            blockquote{
+                margin-left: 0;
+                border-left: 0;
+            }
 
+        }
+    }
+    .tumblr-thumb{
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: @thumbSize;
+        height: @thumbSize;
+    }
+}
+
+
+.tumblr-credit{
+    margin: 12px 0;
+    font-size: @font-size-small;
+    height: @font-size-small;
+    line-height: @font-size-small;
+    padding-bottom: @gfxTumblrLogo-height ;
+    color: @gray;
+    background-image: url('@{gfx}@{gfxTumblrLogo}');
+    width: @gfxTumblrLogo-width;
+    background-repeat: no-repeat;
+    background-position: center bottom;
+    display: block;
+}
 
 // FEED
 // -------------------------
