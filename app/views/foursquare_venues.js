@@ -4,7 +4,7 @@ var venues = page_view.extend({
 
     post_activate: function(options){
         if(!options.retry){
-            this.$('.venue-search input').val('');
+            this.$('.x-search-input').val('');
         }
 
         this.model = options.model;
@@ -12,8 +12,8 @@ var venues = page_view.extend({
 
         this.query = options.query;
 
-        this.$("ul.venue-list").empty();
-        this.$el.addClass('loading');
+        this.$(".x-venue-list").empty();
+        this.$el.addClass('x-loading');
 
         this.collection = new foursquare_venue_collection({
             ll: options.query.ll
@@ -26,12 +26,12 @@ var venues = page_view.extend({
     },
 
     events: {
-        "submit form.venue-search": "search",
+        "submit form": "search",
         "click .ui-input-clear": "search"
     },
 
     render: function(){
-        var venue_list = this.$("ul.venue-list").empty();
+        var venue_list = this.$(".x-venue-list").empty();
 
         var venue_li_template = this.get_template('components/foursquare_venue');
 
@@ -54,7 +54,7 @@ var venues = page_view.extend({
         }, this);
 
         venue_list.listview().listview("refresh");
-        this.$el.removeClass('loading');
+        this.$el.removeClass('x-loading');
     },
 
     search: function(e){
@@ -63,7 +63,7 @@ var venues = page_view.extend({
         }
         var venues_view = this;
 
-        var input = this.$('#venue-search').blur();
+        var input = this.$('.x-search-input').blur();
         var keywords = input.val().toLowerCase();
 
         var doSearch;
@@ -75,10 +75,10 @@ var venues = page_view.extend({
             // set up a new timeout function
             this.timer = window.setTimeout( function() {
                 venues_view.timer = null;
-                venues_view.$el.addClass('loading');
+                venues_view.$el.addClass('x-loading');
                 venues_view.collection.data.query = keywords;
                 venues_view.collection.fetch({complete:function(){
-                    venues_view.$el.removeClass('loading');
+                    venues_view.$el.removeClass('x-loading');
                 }});
             }, 300 );
         }else{

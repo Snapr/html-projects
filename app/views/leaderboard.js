@@ -18,7 +18,7 @@ return page_view.extend({
         this.undelegateEvents();
         this.delegateEvents();
 
-        this.$("ul.people-list").empty();
+        this.$(".x-people-list").empty();
 
         this.collection = new user_collection();
 
@@ -27,7 +27,7 @@ return page_view.extend({
         this.change_page();
 
         var this_view = this;
-        this_view.$el.addClass('loading');
+        this_view.$el.addClass('x-loading');
         this.collection.fetch({
             data:{
                 sort: "score",
@@ -35,7 +35,7 @@ return page_view.extend({
             },
             url: config.get('api_base') + '/user/search/',
             success: function(){
-                this_view.$el.removeClass('loading');
+                this_view.$el.removeClass('x-loading');
             }
         });
 
@@ -45,7 +45,7 @@ return page_view.extend({
 
     render: function()
     {
-        var people_list = this.$("ul.people-list").empty();
+        var people_list = this.$(".x-people-list").empty();
 
         var leaderboard_li_template = this.get_template('components/leaderboard_item');
 

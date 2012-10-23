@@ -45,7 +45,7 @@ return page_view.extend({
         });
 
         if(auth.has("access_token")){
-            var ticker_instance = new ticker({el:this.$('.news-ticker')}).render().tick();
+            var ticker_instance = new ticker({el:this.$('.x-news-ticker')}).render().tick();
             this.$el.on('pagehide', function(event, ui){
                 ticker_instance.stop();
             });
@@ -55,7 +55,7 @@ return page_view.extend({
         }
 
         this.nearby_photostream = new nearby_photostream_view({
-           el: this.$('.menu-stream')
+           el: this.$('.x-menu-stream')
         });
         if(initial !== true){
             this.nearby_photostream.refresh();
@@ -65,7 +65,7 @@ return page_view.extend({
     },
 
     upload_count: function( count ){
-        this.$(".upload-count").toggle(!!count).text( count || "0" );
+        this.$(".x-upload-count").toggle(!!count).text( count || "0" );
     }
 
 });
