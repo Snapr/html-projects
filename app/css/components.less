@@ -302,7 +302,7 @@ div[data-role="content"]{
 #map{
     div[data-role="content"]{
         padding-top: 0;
-        padding-bottom: 8px;
+        padding-bottom: @padding * 2;
         .box-sizing(border-box);
     }
     &.loading{
@@ -327,7 +327,7 @@ div[data-role="content"]{
 
 #map-layer{
     #google-map{
-        margin: -3px -8px;
+        margin: -3px -@padding * 2;
     }
 }
 
@@ -343,6 +343,42 @@ div[data-role="content"]{
         position:absolute;
         z-index: 1;
     }
+    
+    .s-map-thumb {
+           position: absolute;
+           bottom: -3px;
+           left: -38px;
+           width: 78px;
+           height: 120px;
+           z-index: 100;
+           .s-map-thumbimage {
+               position: absolute;
+               top: 8px;
+               left: 9px;
+               width: 60px;
+               height: 60px;
+           }
+           .s-map-pin{
+               position: absolute;
+               top:83px;
+               left: 32px;
+               background-image: url('gfx/map-pin.png');
+               width:28px;
+               height: 35px;
+               display: block;
+           }
+           .s-thumb-bg {
+               position: absolute;
+               top: 0;
+               left: 0;
+               background-image: url('gfx/map-thumb-bg.png');
+               width:78px;
+               height: 88px;
+               display: block;
+           }
+       }
+    
+    
     .x-map-venue{
         .x-map-venue-pin{
             background-image: url('gfx/map-spot-pin.png');
@@ -373,6 +409,7 @@ div[data-role="content"]{
                 overflow: hidden;
                 white-space: nowrap;
                 font-size: 13px;
+                text-decoration: none;
             }
         }
         &.active{
@@ -392,39 +429,7 @@ div[data-role="content"]{
       z-index: 100;
       background-image: url('gfx/map-current-location-marker.png');
     }
-    .s-map-thumb {
-        position: absolute;
-        bottom: -3px;
-        left: -38px;
-        width: 78px;
-        height: 120px;
-        z-index: 100;
-        .s-map-thumbimage {
-            position: absolute;
-            top: 8px;
-            left: 9px;
-            width: 60px;
-            height: 60px;
-        }
-        .s-map-pin{
-            position: absolute;
-            top:83px;
-            left: 32px;
-            background-image: url('gfx/map-pin.png');
-            width:28px;
-            height: 35px;
-            display: block;
-        }
-        .s-thumb-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            background-image: url('gfx/map-thumb-bg.png');
-            width:78px;
-            height: 88px;
-            display: block;
-        }
-    }
+   
 
     #s-map-alert{
         position: absolute;
