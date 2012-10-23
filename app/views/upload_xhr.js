@@ -13,12 +13,12 @@ return page_view.extend({
     },
 
     events: {
-        "change #upload-file": "enable_upload_submit",
-        "submit #upload-form": "upload"
+        "change .x-file": "enable_upload_submit",
+        "submit form": "upload"
     },
 
     enable_upload_submit: function( e ){
-        $("#upload-form input[type='submit']").button( $(e.target).val() ? "enable": "disable" );
+        this.$("form input[type='submit']").button( $(e.target).val() ? "enable": "disable" );
     },
 
     build_data: function(){
@@ -44,11 +44,11 @@ return page_view.extend({
     },
 
     update_progress: function(percent){
-        this.$('#progress-bar').css({'width': percent + '%'});
+        this.$('.x-progress-bar').css({'width': percent + '%'});
     },
 
     update_status: function(status){
-        this.$('#upload-status').text(status);
+        this.$('.x-upload-status').text(status);
     },
 
     upload: function(){
@@ -58,9 +58,9 @@ return page_view.extend({
 
         var data = this.build_data(),
             this_view = this,
-            file = $('#upload-file')[0].files[0],
+            file = $('.x-file')[0].files[0],
             xhr = new XMLHttpRequest();
-        
+
         xhr.upload.onprogress = function(rpe) {
             var percent = Math.ceil(rpe.loaded*100 / rpe.total);
             this_view.update_progress(percent);
@@ -77,13 +77,13 @@ return page_view.extend({
         xhr.onerror = function(a){
             this_view.update_status('error');
         };
-        
+
         xhr.open('post', config.get('base_url') + "/api/upload/", true);
         xhr.setRequestHeader("Cache-Control", "no-cache");
         xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest");
         xhr.setRequestHeader("X-File-Name", file.name);
         xhr.setRequestHeader("X-File-Size", file.size);
-        
+
         var f = new FormData();
         f.append('photo', file);
         $.each(data, function(k,v){
