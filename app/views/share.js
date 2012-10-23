@@ -10,9 +10,9 @@ return page_view.extend({
     },
 
     post_activate: function(options){
-        this.$('.image-placeholder img').attr('src', '');
+        this.$('.x-image-placeholder').attr('src', '');
         this.change_page();
-        this.$('#description').val();
+        this.$('.x-description').val();
 
         if(this.options.query.comp_id){
             this.comp = new comp_model({id: this.options.query.comp_id});
@@ -41,12 +41,12 @@ return page_view.extend({
     },
 
     events: {
-        "change input[name='status']": "toggle_status",
-        "change input[name='share-location']": "toggle_sharing",
-        "change .upload-image-sharing input": "toggle_sharing",
-        "vclick .upload-image-sharing .ui-disabled": "share_alert",
-        "click #foursquare-venue": "venue_search",
-        "click .image-controls": "toggle_photo",
+        "change .x-status": "toggle_status",
+        "change .x-share-location": "toggle_sharing",
+        "change .x-image-sharing input": "toggle_sharing",
+        "vclick .x-image-sharing .ui-disabled": "share_alert",
+        "click .x-foursquare-venue": "venue_search",
+        "click .x-image-controls": "toggle_photo",
         "click .x-edit-photo": "edit",
         "click .x-camplus-edit-photo": "edit_camplus",
         "submit form": "share"
@@ -62,7 +62,7 @@ return page_view.extend({
             img_url = this.model.get("photo_path");
         }
 
-        var description = this.$('#description').val() || this.query.description || this.model.get("description") || '',
+        var description = this.$('.x-description').val() || this.query.description || this.model.get("description") || '',
             location = this.query.location || this.model.get("location").location || '';
 
 
@@ -182,8 +182,8 @@ return page_view.extend({
                     share_photo_view.model.set({
                         location: model.attributes
                     }, {silent:true});
-                    share_photo_view.$("#no-foursquare-sharing-location").removeClass("x-ajax-loading");
-                    share_photo_view.$(".location-name").text(share_photo_view.model.get("location").location);
+                    share_photo_view.$(".x-no-foursquare-sharing-location").removeClass("x-ajax-loading");
+                    share_photo_view.$(".x-location-name").text(share_photo_view.model.get("location").location);
                 }
             });
         };
@@ -219,12 +219,12 @@ return page_view.extend({
                             foursquare_venue_name: collection.first().get( "name" )
                         });
                         share_photo_view.model.set({location: location}, {silent:true});
-                        share_photo_view.$("#foursquare-sharing-location").removeClass("x-ajax-loading");
-                        share_photo_view.$(".foursquare-venue-name")
+                        share_photo_view.$(".x-foursquare-sharing-location").removeClass("x-ajax-loading");
+                        share_photo_view.$(".x-foursquare-venue-name")
                             .text(share_photo_view.model.get("location").foursquare_venue_name);
                     }else{
-                        share_photo_view.$("#foursquare-sharing-location").removeClass("x-ajax-loading");
-                        share_photo_view.$(".foursquare-venue-name").text( "No venues nearby." );
+                        share_photo_view.$(".x-foursquare-sharing-location").removeClass("x-ajax-loading");
+                        share_photo_view.$(".x-foursquare-venue-name").text( "No venues nearby." );
                     }
                 }
             });
@@ -272,8 +272,8 @@ return page_view.extend({
         local_storage.set( e.target.id, !!$(e.target).attr("checked") );
 
         if (e.target.id == "foursquare-sharing"){
-            this.$("#no-foursquare-sharing-location").toggle();
-            this.$("#foursquare-sharing-location").toggle();
+            this.$(".x-no-foursquare-sharing-location").toggle();
+            this.$(".x-foursquare-sharing-location").toggle();
             if ($(e.target).attr("checked")){
                 this.get_foursquare_venues();
             }else{
@@ -341,7 +341,7 @@ return page_view.extend({
     },
 
     edit_camplus: function(){
-        this.query.description = escape(this.$("#description").val());
+        this.query.description = escape(this.$(".x-description").val());
         window.navigator.hash = "#/share/?" + $.param( this.query );
 
         var appmode = local_storage.get( "appmode" );
@@ -367,7 +367,7 @@ return page_view.extend({
 
     get_photo_edit_params: function(){
         var params = {};
-        params.description = escape(this.$("#description").val());
+        params.description = escape(this.$(".x-description").val());
         var location = this.model.get("location") || {};
         if (location.foursquare_venue_name && location.foursquare_venue_id){
             params.foursquare_venue_name = escape(location.foursquare_venue_name);
@@ -407,7 +407,7 @@ return page_view.extend({
             }
 
             this.model.set({
-                description: this.$("#description").val(),
+                description: this.$(".x-description").val(),
                 status: this.$("[name='status']").is(":checked") ? "public": "private",
                 share_location: ( $("#share-location").attr("checked") == "checked" ),
                 facebook_album: ( $("#facebook-sharing").attr("checked") == "checked" ),
@@ -569,8 +569,8 @@ return page_view.extend({
 
     offline: function(offline_mode){
         if(offline_mode){
-            this.$(".location-name").text('Offline');
-            this.$(".foursquare-venue-name").text('Offline');
+            this.$(".x-location-name").text('Offline');
+            this.$(".x-foursquare-venue-name").text('Offline');
         }
     },
 

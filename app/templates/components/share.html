@@ -1,7 +1,7 @@
 <form action="javascript: void(0);">
     <div class="upload-image-layer s-full-height">
         <div class="image-placeholder">
-            <% if (img_url){%><img src="<%= img_url %>" /><%}%>
+            <% if (img_url){%><img class="x-image-placeholder" src="<%= img_url %>" /><%}%>
         </div>
     </div>
 
@@ -9,15 +9,15 @@
         <div class="upload-settings-layer trans-bg s-full-height">
             <div class="upload-settings">
                 <% if(comp){ %>Comp: <%= comp.get('title') %><% } %>
-                <textarea name="description" id="description" placeholder="Add text..." data-theme="d"><%= saved_description %></textarea>
+                <textarea name="description" id="description" class="x-description" placeholder="Add text..." data-theme="d"><%= saved_description %></textarea>
                 <% if(comp && comp.has('hashtag')){ %><span style="background:yellow; color:black; position:relative; top:-25px; right:-200px;"><%= comp.get('hashtag') %></span><% } %>
 
                 <fieldset data-role="controlgroup" data-type="horizontal" class="upload-image-privacy">
-                    <input type="checkbox" name="status" id="status-public" <% if (status != "private"){%> checked="true" <%}%> />
+                    <input type="checkbox" name="status" id="status-public" class="x-status" <% if (status != "private"){%> checked="true" <%}%> />
                     <label for="status-public" class="privacy-toggle">&nbsp;<span class="ui-icon"></span></label>
                 </fieldset>
 
-                <fieldset data-role="controlgroup" data-type="horizontal" class="upload-image-sharing">
+                <fieldset data-role="controlgroup" data-type="horizontal" class="x-image-sharing upload-image-sharing">
                     <legend>Share to:</legend>
 
                     <input type="checkbox" name="tweet" id="twitter-sharing"
@@ -48,11 +48,11 @@
 
                     <div id="no-foursquare-sharing-location"
                         <% if (foursquare_sharing && status != "private"){%> style="display:none;"<%}%>
-                        <% if (photo.attributes.location && !photo.attributes.location.location){%> class="ajax-loading"<%}%>>
+                         class="<% if (photo.attributes.location && !photo.attributes.location.location){%>x-ajax-loading <%}%>x-no-foursquare-sharing-location">
                         <span class="image-location custom-action-icons">
-                            <input type="checkbox" name="share-location" id="share-location" <%if (share_location){ %>checked="true"<% } %> />
+                            <input type="checkbox" name="share-location" class="x-share-location" id="share-location" <%if (share_location){ %>checked="true"<% } %> />
                             <label for="share-location"><span class="ui-icon ui-icon-location share-location-label" ></span>
-                                <span class="location-name">
+                                <span class="x-location-name location-name">
                                 <% if (photo.attributes.location && photo.attributes.location.location){%>
                                      <%= photo.attributes.location.location %>
                                 <% }else{ %>
@@ -72,8 +72,8 @@
                     </div>
                     <div id="foursquare-sharing-location"
                         <%if (!foursquare_sharing || status == "private"){%> style="display:none;"<%}%>
-                        <% if (photo.attributes.location && !photo.attributes.location.foursquare_venue_name){%> class="ajax-loading"<%}%>>
-                        <a data-role="button" id="foursquare-venue" data-icon="arrow-right">
+                        class="<% if (photo.attributes.location && !photo.attributes.location.foursquare_venue_name){%>x-ajax-loading<%}%> x-foursquare-sharing-location">
+                        <a data-role="button" id="foursquare-venue" class="x-foursquare-venue" data-icon="arrow-right">
                             <span class="ui-icon ui-icon-venue"></span>
                             <span class="foursquare-venue-name">
                                 <% if (photo.attributes.location && photo.attributes.location.foursquare_venue_name){%>
@@ -108,7 +108,7 @@
     </div> <!-- .image-options -->
 </form>
 
-<div class="image-controls ">
+<div class="image-controls x-image-controls">
     <a data-role="button" id="show_photo" data-icon="toggle" data-iconpos="right" >
         Show Photo
     </a>
