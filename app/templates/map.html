@@ -1,11 +1,11 @@
 <div id="map" data-role="page" data-title="Map" data-add-back-btn="true" data-theme="d">
-   
+
     <div data-role="header" data-theme="b">
         <div class="ui-btn-center " data-ajax="false">
             <fieldset data-role="controlgroup" data-type="horizontal" class="header-toggle dark-icons">
-                <input type="checkbox" name="map-view-spots" id="map-view-spots" value="spots" >
+                <input type="checkbox" name="map-view-spots" id="map-view-spots" class="x-show-spots" value="spots" >
                 <label for="map-view-spots"><span class="ui-icon ui-icon-spots"></span>Spots</label>
-                <input type="checkbox" name="map-view-photos" id="map-view-photos" value="photos">
+                <input type="checkbox" name="map-view-photos" id="map-view-photos" class="x-show-photos" value="photos">
                 <label for="map-view-photos"><span class="ui-icon ui-icon-photos"></span>Photos</label>
             </fieldset>
         </div>
@@ -21,21 +21,21 @@
         <a class="x-map-feed ui-bar ui-bar-b top-no-arrow" data-role="button" data-iconpos="right" data-icon="arrow-r" data-theme="b" data-mini="true">
             <span class="ui-icon ui-icon-location"></span>
             <span>Show as Feed</span>
-            
+
         </a>
 
-        <div id="google-map"></div>
+        <div id="google-map" class="x-map"></div>
 
-        <div id="x-map-disambiguation" data-role="content" data-theme="d" style="">
+        <div class="x-disambiguation" data-role="content" data-theme="d" style="">
             <h4>Did you mean&hellip;</h4>
-            <ul data-role="listview" id="x-map-disambiguation-list" class=" map-list">
+            <ul data-role="listview" class="x-disambiguation-list map-list">
             </ul>
             <div class="cancel-btn">
-                <button id="map-disambituation-cancel" data-theme="c">Cancel</button>
+                <button id="map-disambituation-cancel" class="x-disambituation-cancel" data-theme="c">Cancel</button>
             </div>
         </div>
 
-        <div id="snaprmapalert" style="display:none;">
+        <div id="snaprmapalert" class="x-map-alert" style="display:none;">
             <p class="s-map-image-alert">
                 <span class="ui-icon ui-icon-no-images map-icons"></span>
                 No images found in this area
@@ -43,21 +43,21 @@
         </div>
 
         <div class="s-map-controls ui-body-a trans-bg map-icons">
-           <div class="s-map-time">
+           <div class="s-map-time x-time">
                <div class="s-map-time-label ui-bar ui-bar-e small-s-arrow-d-left">
                    Now
                </div>
-               <a class="s-map-time-btn" data-role="button" data-icon="mapTime" data-iconpos="notext">
+               <a class="s-map-time-btn x-time-btn" data-role="button" data-icon="mapTime" data-iconpos="notext">
             </a>
                 <div class="s-map-loading ui-shadow">
                     <span class="ui-icon ui-icon-spinner"></span>
                 </div>
             </div>
-            
+
             <div class="s-map-filters">
                 <div class="ui-grid-a">
                     <div class="ui-block-a">
-                        <select id="map-filter">
+                        <select id="map-filter" class="x-filter">
                             <option value="just-one">Just One</option>
                             <option value="just-me">Just Me</option>
                             <option value="following">Following</option>
@@ -67,7 +67,7 @@
                     </div>
 
                     <div class="ui-block-b">
-                        <form id="map-keyword" action="javascript:void(0);">
+                        <form id="map-keyword" class="x-search" action="javascript:void(0);">
                             <input type="search" name="map-keyword"  placeholder="#keywords" class="" autocapitalize="off"/>
                         </form>
                         <span class="ui-icon ui-icon-search-a"></span>

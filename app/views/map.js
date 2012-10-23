@@ -11,7 +11,7 @@ var map_view = page_view.extend({
         this.$el.on('pageshow', function (e) {
             map_view.hidden=false;
             // hack to set google map height
-            $("#google-map").css("height", (window.innerHeight - 85) + "px");
+            $(".x-map").css("height", (window.innerHeight - 85) + "px");
         });
 
         this.$el.on('pagehide', function (e) {
@@ -38,15 +38,15 @@ var map_view = page_view.extend({
 
     events: {
         "click .x-current-location": "current_location_go_to",
-        "click #map-disambituation-cancel": "location_search_toggle_disambiguation",
+        "click .x-disambituation-cancel": "location_search_toggle_disambiguation",
         "click .x-map-feed": "map_feed",
-        "change #map-filter": "filter_update",
-        "change #map-view-photos, #map-view-spots": "layers_update",
-        "submit #map-keyword": "keyword_search",
-        "blur #map-keyword": "keyword_search",
-        "click #map-keyword .ui-input-clear": "keyword_search_clear",
-        "click .s-map-time-btn": "map_time",
-        "click .x-map-venue-pin" : "toggle_spot_label"
+        "change .x-filter": "filter_update",
+        "change .x-show-photos, .x-show-spots": "layers_update",
+        "submit .x-search": "keyword_search",
+        "blur .x-search": "keyword_search",
+        "click .x-search .ui-input-clear": "keyword_search_clear",
+        "click .x-time-btn": "map_time",
+        "click .x-venue-pin" : "toggle_spot_label"
     },
 
     post_activate: function(options){
@@ -194,7 +194,6 @@ var map_view = page_view.extend({
         // update map...
 
         if(this.map){
-            console.log('update map', this.map_query);
             // trigger a resize event so gmap doesn't think it has 0 width and height after being hidden in iphone
             google.maps.event.trigger(this.map, "resize");
             if(this.map_query.get('area')){  // area is used by location search to specify viewport
@@ -211,7 +210,6 @@ var map_view = page_view.extend({
         // or
 
         // create map...
-        console.log('create map');
 
         var map_settings = {
             zoom: this.map_query.get( "zoom" ),
@@ -236,7 +234,7 @@ var map_view = page_view.extend({
             ]
         };
 
-        this.map = new google.maps.Map(document.getElementById("google-map"), map_settings);
+        this.map = new google.maps.Map($('.x-map')[0], map_settings);
 
         // update thumbs when map moves
         var map_view = this;
@@ -291,7 +289,7 @@ var map_view = page_view.extend({
 
         if (this.map_query.get('show_photos')) {
 
-            this.$el.addClass('loading');
+            this.$el.addClass('x-loading');
 
             this.thumb_collection.data = _.clone(this.photo_query.attributes);
             this.thumb_collection.data.area = this.map.getBounds().toUrlValue(4);
@@ -305,7 +303,7 @@ var map_view = page_view.extend({
             this.thumb_collection.current_query = this.thumb_collection.fetch({
                 success: function( collection ){
                     $.mobile.hidePageLoadingMsg();
-                    map_view.$el.removeClass('loading');
+                    map_view.$el.removeClass('x-loading');
 
                     var new_thumb_ids = map_view.thumb_collection.pluck("id");
 
@@ -348,7 +346,7 @@ var map_view = page_view.extend({
 
 
         if (this.map_query.get('show_spots')) {
-            this.$el.addClass('loading');
+            this.$el.addClass('x-loading');
 
             this.spot_collection.data = _.clone(this.spot_query.attributes);
 
@@ -364,7 +362,7 @@ var map_view = page_view.extend({
             this.spot_collection.current_query = this.spot_collection.fetch({
                 success: function( collection ){
                     $.mobile.hidePageLoadingMsg();
-                    map_view.$el.removeClass('loading');
+                    map_view.$el.removeClass('x-loading');
 
                     var new_spot_ids = map_view.spot_collection.pluck("id");
 
@@ -403,16 +401,16 @@ var map_view = page_view.extend({
     toggle_spot_label: function (event) {
         var pin = this.$(event.currentTarget).parent();
         if(pin.hasClass('active')){
-            pin.removeClass('active');
+            pin.removeClass('x-active');
         }else{
-            this.$('.x-map-venue.active').removeClass('active');
-            pin.addClass('active');
+            this.$('.x-venue.x-active').removeClass('x-active');
+            pin.addClass('x-active');
         }
     },
 
     no_results_message_toggle: function(show){
         if(show !== true){ show = false; }
-        this.$("#s-map-alert").toggle(!!show);
+        this.$(".x-map-alert").toggle(!!show);
     },
 
     location_search: function( search_query ){
@@ -424,7 +422,7 @@ var map_view = page_view.extend({
             if (status == google.maps.GeocoderStatus.OK){
                 //if there is more than one result, show list
                 if (results.length > 1){
-                    var dis_list = $("#x-map-disambiguation-list").empty();
+                    var dis_list = $(".x-disambiguation-list").empty();
                     _.each( results, function( result ){
                         var li = new map_disambiguation({
                             result: result,
@@ -456,7 +454,7 @@ var map_view = page_view.extend({
 
     location_search_toggle_disambiguation: function(show){
         if(show !== true){ show = false; }
-        this.$("#x-map-disambiguation").toggle(show);
+        this.$(".x-disambiguation").toggle(show);
     },
 
     go_to: function(location, zoom){
@@ -559,18 +557,18 @@ var map_view = page_view.extend({
     },
 
     filter_set_options: function(){
-        this.$("#map-filter option[value='just-me']").attr("disabled", !auth.has("snapr_user"));
-        this.$("#map-filter option[value='following']").attr("disabled", !auth.has("snapr_user"));
-        this.$("#map-filter option[value='just-one']").attr("disabled", !this.photo_query.has("photo_id"));
+        this.$(".x-filter option[value='just-me']").attr("disabled", !auth.has("snapr_user"));
+        this.$(".x-filter option[value='following']").attr("disabled", !auth.has("snapr_user"));
+        this.$(".x-filter option[value='just-one']").attr("disabled", !this.photo_query.has("photo_id"));
 
         if (this.photo_query.has( "photo_id" )){
-            $("#map-filter").val("just-one").selectmenu('refresh', true);
+            this.$(".x-filter").val("just-one").selectmenu('refresh', true);
         }else if (!this.photo_query.has( "username" ) && this.photo_query.get( "group" ) == "following"){
-            $("#map-filter").val("following").selectmenu('refresh', true);
+            this.$(".x-filter").val("following").selectmenu('refresh', true);
         }else if (this.photo_query.get( "username" ) == "." && !this.photo_query.has( "group" )){
-            $("#map-filter").val("just-me").selectmenu('refresh', true);
+            this.$(".x-filter").val("just-me").selectmenu('refresh', true);
         }else{
-            $("#map-filter").val("all").selectmenu('refresh', true);
+            this.$(".x-filter").val("all").selectmenu('refresh', true);
         }
     },
 
@@ -583,12 +581,12 @@ var map_view = page_view.extend({
 
 
     layers_set: function (){
-        this.$("#map-view-spots").attr("checked", !!this.map_query.get("show_spots")).checkboxradio("refresh");
-        this.$("#map-view-photos").attr("checked", !!this.map_query.get("show_photos")).checkboxradio("refresh");
+        this.$(".x-show-spots").attr("checked", !!this.map_query.get("show_spots")).checkboxradio("refresh");
+        this.$(".x-show-photos").attr("checked", !!this.map_query.get("show_photos")).checkboxradio("refresh");
     },
 
     keyword_search: function( keywords ){
-        var input = this.$('#map-keyword').find("input");
+        var input = this.$('.x-search').find("input");
         if(!_.isString(keywords)){
             keywords = input.val();
         }else{
@@ -606,7 +604,7 @@ var map_view = page_view.extend({
     },
 
     keyword_search_clear: function(){
-        this.$('#map-keyword').find("input").val("");
+        this.$('.x-search').find("input").val("");
         this.photo_query.unset( "keywords" );
 
         return this;
@@ -615,7 +613,7 @@ var map_view = page_view.extend({
     map_time_render: function(){
 
         var map_view = this;
-        this.$(".s-map-time-btn").scroller({
+        this.$(".x-time-btn").scroller({
             'cancelText': 'Set to Now',
             'headerText': false ,
             'preset': 'datetime',
@@ -657,11 +655,11 @@ var map_view = page_view.extend({
         }
 
         if (time){
-            this.$(".s-map-time-btn").scroller('setDate', string_utils.convert_snapr_date(time));
-            this.$(".s-map-time").find(".ui-bar").text( string_utils.short_timestamp( time, true) || "Now" );
+            this.$(".x-time-btn").scroller('setDate', string_utils.convert_snapr_date(time));
+            this.$(".x-time").find(".ui-bar").text( string_utils.short_timestamp( time, true) || "Now" );
         }else{
-            this.$(".s-map-time-btn").scroller('setDate', new Date());
-            this.$(".s-map-time").find(".ui-bar").text( "Now" );
+            this.$(".x-time-btn").scroller('setDate', new Date());
+            this.$(".x-time").find(".ui-bar").text( "Now" );
         }
 
         return this;
@@ -676,7 +674,7 @@ var map_view = page_view.extend({
     },
 
     map_time: function(){
-        this.$(".s-map-time-btn").scroller('show');
+        this.$(".x-time-btn").scroller('show');
         return this;
     }
 
@@ -687,7 +685,7 @@ var map_disambiguation = view.extend({
     tagName: "li",
 
     events: {
-        "click .map-link": "goto_map"
+        "click .x-map-link": "goto_map"
     },
 
     initialize: function(){
