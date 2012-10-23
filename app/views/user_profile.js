@@ -10,7 +10,7 @@ return page_view.extend({
 
     post_activate: function(options){
 
-        this.$( ".user-profile" ).empty();
+        this.$( ".x-user-profile" ).empty();
 
         this.model = new user_model( {username: options.query.username} );
         this.model.bind( "change", _.bind(this.render, this) );
@@ -25,7 +25,7 @@ return page_view.extend({
             initial:false,
             user: this.model
         }));
-        this.$( ".user-profile" ).replaceWith(rendered.find(".user-profile"));
+        this.$( ".x-user-profile" ).replaceWith(rendered.find(".x-user-profile"));
         this.$el.trigger( "create" );
     }
 });
