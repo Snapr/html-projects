@@ -8,10 +8,10 @@ return page_view.extend({
         this.$el.on( "pagebeforeshow", function( e, obj ){
             if (obj && obj.prevPage && obj.prevPage.length){
                 if ($(obj.prevPage[0]).attr("id") == "map"){
-                    $(e.currentTarget).find("#search-type").val("location").selectmenu("refresh");
+                    $(e.currentTarget).find(".x-search-type").val("location").selectmenu("refresh");
                 }
             }else{
-                    $(e.currentTarget).find("#search-type").val("tags").selectmenu("refresh");
+                    $(e.currentTarget).find(".x-search-type").val("tags").selectmenu("refresh");
             }
         });
 
@@ -19,14 +19,14 @@ return page_view.extend({
     },
 
     events: {
-        "change #search-keywords": "update_placeholder",
-        "change #search-type": "update_placeholder",
-        "submit #search-form": "search"
+        "change .x-search-field": "update_placeholder",
+        "change .x-search-type": "update_placeholder",
+        "submit form": "search"
     },
 
     update_placeholder: function(){
-        var keywords = $("#search-keywords");
-        var type = $("#search-type").val();
+        var keywords = $(".x-search-field");
+        var type = $(".x-search-type").val();
 
         if (keywords.val().length === 0){
             switch(type){
@@ -44,8 +44,8 @@ return page_view.extend({
     },
 
     search: function(){
-        var keywords = $("#search-keywords").val();
-        var type = $("#search-type").val();
+        var keywords = $(".x-search-field").val();
+        var type = $(".x-search-type").val();
 
         switch(type){
             case 'location':
