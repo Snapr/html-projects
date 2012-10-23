@@ -13,7 +13,7 @@ return page_view.extend({
 
         this.list_view = new thumbnail({
             collection: this.collection,
-            el: $('#popular-thumbs'),
+            el: $('.x-thumbs'),
             back: "Popular"
         });
 
@@ -28,7 +28,7 @@ return page_view.extend({
     },
 
     events: {
-        "click #popular-timeframe a":"update_list"
+        "click .x-timeframe a":"update_list"
     },
 
     get_override_tab: function(){ return 'discover'; },
@@ -68,12 +68,12 @@ return page_view.extend({
 
     update_time_buttons: function(){
         var id_map = {
-            'time-today': "#popular-time-today",
-            'time-week': "#popular-time-week",
-            'time-all': "#popular-time-all"
+            'time-today': ".x-time-today",
+            'time-week': ".x-time-week",
+            'time-all': ".x-time-all"
         };
 
-        this.$( "#popular-timeframe a" ).removeClass( "ui-btn-active" );
+        this.$( ".x-timeframe a" ).removeClass( "ui-btn-active" );
         this.$( id_map[this.time_period] ).addClass( "ui-btn-active" );
     }
 });
