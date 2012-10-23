@@ -52,6 +52,11 @@ div[data-role="content"] .s-inset-header {
   margin: -8px -8px 0 -8px;
   background-color: #f7f7f7;
 }
+.s-tabbar-activity {
+  position: absolute;
+  top: -30px;
+  right: 0;
+}
 .s-avatar,
 .s-avatar-med,
 .s-avatar-large {
@@ -240,4 +245,13 @@ div[data-role="content"] .s-inset-header {
 }
 .ui-content .feed-upload-list {
   margin: 0;
+}
+.s-my-snaps-only {
+  display: none!important;
+}
+.x-my-snaps .s-my-snaps-only {
+  display: inline-block !important;
+}
+.x-my-snaps .x-not-on-my-snaps {
+  display: none!important;
 }

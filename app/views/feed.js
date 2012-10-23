@@ -81,7 +81,7 @@ return page_view.extend({
             });
         }
 
-        this.$el.toggleClass('my-snaps', this.is_my_snaps());
+        this.$el.toggleClass('x-my-snaps', this.is_my_snaps());
         this.$('.x-activity').toggle(this.is_my_snaps());
 
         this.$el.removeClass("showing-upload-queue");

@@ -3569,13 +3569,13 @@ a.ui-link-inherit {
   -webkit-border-bottom-right-radius: 0 !important;
   border-bottom-right-radius: 0 !important;
 }
-.x-my-snaps-only {
+.s-my-snaps-only {
   display: none!important;
 }
-.my-snaps .x-my-snaps-only {
+.x-my-snaps .s-my-snaps-only {
   display: inline-block !important;
 }
-.my-snaps .x-not-on-my-snaps {
+.x-my-snaps .x-not-on-my-snaps {
   display: none!important;
 }
 .underline {
