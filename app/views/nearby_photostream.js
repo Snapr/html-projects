@@ -17,14 +17,14 @@ var nearby_photostream_view = view.extend({
         this.search_options = _.clone(this.defaults);
     },
     events: {
-        "click #home-nearby-link": "go_to_feed"
+        "click .x-nearby-link": "go_to_feed"
     },
     refresh: function () {
 
         var this_view = this;
 
         if(!this.collection.length){
-            this.$el.addClass('loading');
+            this.$el.addClass('x-loading');
         }
 
         var success_callback = function( location ) {
@@ -37,14 +37,14 @@ var nearby_photostream_view = view.extend({
 
         var error_callback = function() {
             this_view.fetch_photos();
-            this_view.$el.find('#home-nearby-link .ui-btn-text').text('Popular Images');
+            this_view.$el.find('.x-nearby-link .ui-btn-text').text('Popular Images');
         };
 
         geo.get_location( success_callback, error_callback );
     },
     render: function () {
         this.$el.html(this.template({}));
-        this.$el.find('.thumbs-preview-stream').empty();
+        this.$el.find('.x-thumbs').empty();
         this.collection.reset();
         this.$el.find('[data-role="button"]').button();
 
@@ -57,7 +57,7 @@ var nearby_photostream_view = view.extend({
             current_photo_ids = this.collection.pluck('id');
 
         if(current_photo_ids.length === 0){
-            this.$el.addClass('loading');
+            this.$el.addClass('x-loading');
         }
 
         this.collection.data = _.clone(this.search_options);
@@ -71,17 +71,17 @@ var nearby_photostream_view = view.extend({
                         this_view.fetch_photos();
                         return;
                     }else{
-                        this_view.$el.addClass('no-images').removeClass('loading');
-                        this_view.$('#home-nearby-link .ui-btn-text').text('No images yet');
+                        this_view.$el.addClass('x-no-images').removeClass('x-loading');
+                        this_view.$('.x-nearby-link .ui-btn-text').text('No images yet');
                         return;
                     }
                 }
                 if(this_view.search_options.nearby) {
-                    this_view.$('#home-nearby-link .ui-btn-text').text('Nearby Images');
+                    this_view.$('.x-nearby-link .ui-btn-text').text('Nearby Images');
                 }else{
-                    this_view.$('#home-nearby-link .ui-btn-text').text('Popular Images');
+                    this_view.$('.x-nearby-link .ui-btn-text').text('Popular Images');
                 }
-                this_view.$el.removeClass('loading');
+                this_view.$el.removeClass('x-loading');
                 // Check to see if the photo's have changed. If all the ID's are the same don't re-render
                 var photos_changed = this_view.collection.all(function (photo) {
                     return ($.inArray(photo.get('id'), current_photo_ids) === -1);
@@ -91,15 +91,15 @@ var nearby_photostream_view = view.extend({
             error: function () {
                 // if we have no photos already and something goes wrong show 'offline'.
                 if (current_photo_ids.length === 0) {
-                    this_view.$el.addClass('no-images').removeClass('loading');
-                    this_view.$el.find('#home-nearby-link .ui-btn-text').text('Offline');
+                    this_view.$el.addClass('x-no-images').removeClass('x-loading');
+                    this_view.$el.find('.x-nearby-link .ui-btn-text').text('Offline');
                 }
             }
         });
     },
     render_photos: function () {
-        this.$el.removeClass('no-images');
-        var $stream = this.$('.thumbs-preview-stream').empty();
+        this.$el.removeClass('x-no-images');
+        var $stream = this.$('.x-thumbs').empty();
         this.collection.each(function (photo) {
             var stream_item = new nearby_photostream_item_view({
                 model: photo
