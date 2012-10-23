@@ -182,7 +182,7 @@ return page_view.extend({
                     share_photo_view.model.set({
                         location: model.attributes
                     }, {silent:true});
-                    share_photo_view.$("#no-foursquare-sharing-location").removeClass("ajax-loading");
+                    share_photo_view.$("#no-foursquare-sharing-location").removeClass("x-ajax-loading");
                     share_photo_view.$(".location-name").text(share_photo_view.model.get("location").location);
                 }
             });
@@ -219,11 +219,11 @@ return page_view.extend({
                             foursquare_venue_name: collection.first().get( "name" )
                         });
                         share_photo_view.model.set({location: location}, {silent:true});
-                        share_photo_view.$("#foursquare-sharing-location").removeClass("ajax-loading");
+                        share_photo_view.$("#foursquare-sharing-location").removeClass("x-ajax-loading");
                         share_photo_view.$(".foursquare-venue-name")
                             .text(share_photo_view.model.get("location").foursquare_venue_name);
                     }else{
-                        share_photo_view.$("#foursquare-sharing-location").removeClass("ajax-loading");
+                        share_photo_view.$("#foursquare-sharing-location").removeClass("x-ajax-loading");
                         share_photo_view.$(".foursquare-venue-name").text( "No venues nearby." );
                     }
                 }
@@ -564,7 +564,7 @@ return page_view.extend({
     },
 
     toggle_photo: function( e ){
-        this.$el.toggleClass("show-image");
+        this.$el.toggleClass("x-show-image");
     },
 
     offline: function(offline_mode){
