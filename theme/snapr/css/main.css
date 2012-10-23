@@ -1321,7 +1321,7 @@ input[type="search"]::-webkit-search-cancel-button {
 .hide {
   display: none;
 }
-.main-image {
+.s-main-image {
   -webkit-touch-callout: default;
 }
 .image-caption, user-details {
@@ -6215,23 +6215,23 @@ body.x-browser-testing .ui-footer, body.x-browser-testing .ui-footer-fixed {
   opacity: .5;
   display: none;
 }
-.s-image-item-block .main-image-link {
+.s-image-item-block .s-main-image-link {
   display: block;
 }
-.s-image-item-block .main-image {
+.s-image-item-block .s-main-image {
   width: 100%;
 }
-.s-image-item-block .image-description {
+.s-image-item-block .s-image-description {
   margin-top: 8px;
   margin-bottom: -8px;
 }
-.s-image-item-block .image-description .ui-icon-quote {
+.s-image-item-block .s-image-description .ui-icon-quote {
   display: inline-block;
   height: 15px;
   background-position: -6px -8px;
   width: 16px;
 }
-.s-image-item-block .image-description .goto-spot {
+.s-image-item-block .s-image-description .goto-spot {
   color: #999999;
 }
 .s-image-item-block .image-item-base {

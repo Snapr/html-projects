@@ -190,13 +190,13 @@ div[data-role="content"] .s-inset-header {
   opacity: .5;
   display: none;
 }
-.s-image-item-block .main-image-link {
+.s-image-item-block .s-main-image-link {
   display: block;
 }
-.s-image-item-block .main-image {
+.s-image-item-block .s-main-image {
   width: 100%;
 }
-.s-image-item-block .image-description {
+.s-image-item-block .s-image-description {
   margin-top: 8px;
   margin-bottom: -8px;
 }
