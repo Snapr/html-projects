@@ -30,7 +30,7 @@ return view.extend({
     render: function(){
         // check that the progress hasn't already reached 100%
         if (!this.$(".finishing").length){
-            this.$el.addClass("upload-id-" + this.photo.id);
+            this.$el.addClass("x-upload-id-" + this.photo.id);
             this.$el.html(
                 this.template({
                     upload_status: this.is_queued ? 'waiting' : this.photo.get('upload_status').toLowerCase(),

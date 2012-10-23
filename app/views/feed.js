@@ -9,7 +9,7 @@ return page_view.extend({
     post_initialize: function(){
         var feed_view = this;
         this.$el.on( "pageshow", function(){
-            feed_view.$( ".feed-view-toggle input[type='radio']" ).checkboxradio( "refresh" );
+            feed_view.$( ".x-feed-view-toggle input[type='radio']" ).checkboxradio( "refresh" );
             feed_view.watch_uploads();
         });
         this.$el.on( "pagehide", function(){
@@ -18,7 +18,7 @@ return page_view.extend({
         });
         config.on('change:paused', function(){
             if(config.get('paused')){
-                feed_view.$(".feed-upload-list").prepend(paused_el).trigger("create");
+                feed_view.$(".x-feed-upload-list").prepend(paused_el).trigger("create");
             }else{
                 $('.x-resume-queue').remove();
             }
@@ -51,15 +51,15 @@ return page_view.extend({
 
         var list_style = this.query.list_style || 'list';
 
-        var toggle_container = this.$( ".feed-view-toggle" );
+        var toggle_container = this.$( ".x-feed-view-toggle" );
         toggle_container.find( "input[type='radio']" ).attr( "checked", false );
 
         if (list_style == 'grid'){
             this.$(".feed-content").addClass("grid");
-            toggle_container.find("#feed-view-grid").attr( "checked", true );
+            toggle_container.find(".x-grid").attr( "checked", true );
         }else{
             this.$(".feed-content").removeClass("grid");
-            toggle_container.find("#feed-view-list").attr( "checked", true );
+            toggle_container.find(".x-list").attr( "checked", true );
         }
 
 
@@ -72,23 +72,23 @@ return page_view.extend({
             this.feed_header = new user_header({
                 username: this.query.username,
                 model: user,
-                el: this.$(".feed-header").empty()[0]
+                el: this.$(".x-feed-header").empty()[0]
             });
         }else{
             this.feed_header = new feed_header({
                 query_data: this.query,
-                el: this.$(".feed-header").empty()[0]
+                el: this.$(".x-feed-header").empty()[0]
             });
         }
 
         this.$el.toggleClass('x-my-snaps', this.is_my_snaps());
         this.$('.x-activity').toggle(this.is_my_snaps());
 
-        this.$el.removeClass("showing-upload-queue");
-        this.$(".feed-upload-list").empty();
+        this.$el.removeClass("x-showing-upload-queue");
+        this.$(".x-feed-upload-list").empty();
 
-        this.$(".feed-upload-list").empty();
-        this.$('#feed-images').empty();
+        this.$(".x-feed-upload-list").empty();
+        this.$('.x-feed-images').empty();
 
         this.change_page();
 
@@ -106,18 +106,18 @@ return page_view.extend({
 
     events: {
         "click .x-load-more": "more",
-        "change .feed-view-toggle": "feed_view_toggle"
+        "change .x-feed-view-toggle": "feed_view_toggle"
     },
 
     is_my_snaps: function(){ return auth.has("snapr_user") && auth.get("snapr_user") == this.options.query.username; },
 
     get_default_tab: function(){ return this.is_my_snaps() && 'feed' || 'discover'; },
 
-    photoswipe_init: function(){ $( "#feed-images a.gallery_link", this.el ).photoswipe_init('feed'); },
+    photoswipe_init: function(){ $( ".x-gallery-link", this.el ).photoswipe_init('feed'); },
 
     populate_feed: function( additional_data ){
 
-        var list_style = this.$("#feed-view-grid").is(":checked") && 'grid' || 'list';
+        var list_style = this.$(".x-feed-view-toggle .x-grid").is(":checked") && 'grid' || 'list';
 
         if (this.feed_list){
             this.feed_list.list_style = list_style;
@@ -128,7 +128,7 @@ return page_view.extend({
             success: function( collection, response ){
                 if(collection.length){
                     feed_view.feed_list = new feed_list({
-                        el: feed_view.$('#feed-images')[0],
+                        el: feed_view.$('.x-feed-images')[0],
                         collection: feed_view.photo_collection,
                         list_style: list_style
                     });
@@ -136,7 +136,7 @@ return page_view.extend({
 
                     feed_view.feed_list.render( feed_view.photoswipe_init );
                     $.mobile.hidePageLoadingMsg();
-                    feed_view.$( ".v-feed-more" ).show();
+                    feed_view.$( ".x-feed-more" ).show();
                     feed_view.more_button(
                         !feed_view.photo_collection.data.n || (
                             response.response &&
@@ -145,7 +145,7 @@ return page_view.extend({
                         );
                 }else{
                     feed_view.feed_list = new feed_list({
-                        el: feed_view.$('#feed-images')[0],
+                        el: feed_view.$('.x-feed-images')[0],
                         collection: feed_view.photo_collection,
                         list_style: list_style
                     });
@@ -172,9 +172,9 @@ return page_view.extend({
 
     more_button: function( more_photos ){
         if (more_photos){
-            this.$(".v-feed-more").children().show();
+            this.$(".x-feed-more").children().show();
         }else{
-            this.$(".v-feed-more").children().hide();
+            this.$(".x-feed-more").children().hide();
         }
     },
 
@@ -191,12 +191,12 @@ return page_view.extend({
         var input_target = $('#' + e.target.id);
         var list_style = input_target.val();
 
-        var container = input_target.closest( ".feed-view-toggle" );
+        var container = input_target.closest( ".x-feed-view-toggle" );
         container.find( "input[type='radio']" ).attr( "checked", false );
         input_target.attr( "checked", true );
         container.find( "input[type='radio']" ).checkboxradio( "refresh" );
 
-        this.$(".feed-content").toggleClass("grid", list_style != "list").trigger("refresh");
+        this.$(".x-feed-content").toggleClass("x-grid", list_style != "list").trigger("refresh");
         this.feed_list.list_style = list_style;
         this.feed_list.render( this.photoswipe_init );
     },
@@ -222,19 +222,19 @@ return page_view.extend({
                     template: upload_li_template,
                     photo: photo
                 });
-                this.$(".feed-upload-list").prepend( li.render().el );
+                this.$(".x-feed-upload-list").prepend( li.render().el );
             }, this);
 
             if (upload_progress.models.length){
-                this.$el.addClass("showing-upload-queue");
+                this.$el.addClass("x-showing-upload-queue");
             }
 
-            this.$(".feed-upload-list").listview().listview("refresh");
+            this.$(".x-feed-upload-list").listview().listview("refresh");
         }
     },
 
     upload_complete: function( model, queue_id ){
-        this.$(".upload-id-" + model.id).remove();
+        this.$(".x-upload-id-" + model.id).remove();
         // if we are on a feed for the current snapr user
         if (this.is_my_snaps() && !this.options.query.photo_id){
             // remove the date restriction if it is present
