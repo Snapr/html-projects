@@ -32,8 +32,8 @@ return Backbone.View.extend({
         if (following){
             follow_button
                 .attr("data-icon", "check")
-                .removeClass("follow")
-                .addClass("unfollow");
+                .removeClass("x-follow")
+                .addClass("x-unfollow");
 
             follow_button.find("span.ui-icon")
                     .removeClass("ui-icon-plus")
@@ -41,8 +41,8 @@ return Backbone.View.extend({
         }else{
             follow_button
                 .attr("data-icon", "plus")
-                .removeClass("unfollow")
-                .addClass("follow");
+                .removeClass("x-unfollow")
+                .addClass("x-follow");
 
             follow_button.find("span.ui-icon")
                     .removeClass("ui-icon-check")

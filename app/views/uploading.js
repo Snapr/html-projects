@@ -229,9 +229,9 @@ var uploading = page_view.extend({
 
     upload_count: function( count ){
         if (count){
-            this.$el.addClass("showing-upload-queue");
+            this.$el.addClass("x-showing-upload-queue");
         }else{
-            this.$el.removeClass("showing-upload-queue");
+            this.$el.removeClass("x-showing-upload-queue");
         }
     },
 
