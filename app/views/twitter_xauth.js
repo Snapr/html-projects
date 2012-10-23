@@ -10,9 +10,9 @@ return page_view.extend({
             this.signin = !!options.query.signin;
 
             if (options.query.message){
-                this.$(".login-message").text(options.query.message);
+                this.$(".x-login-message").text(options.query.message);
             }else{
-                this.$(".login-message").text("");
+                this.$(".x-login-message").text("");
             }
         }else{
             delete this.redirect;
@@ -23,8 +23,8 @@ return page_view.extend({
     },
 
     events: {
-        "submit #twitter-dialog":"link_twitter",
-        "click .twitter-button":"link_twitter"
+        "submit form":"link_twitter",
+        "click .x-twitter-button":"link_twitter"
     },
 
     link_twitter: function(){
@@ -43,8 +43,8 @@ return page_view.extend({
                 },
                 success: function( data ){
                     if(data.success){
-                        $('#twitter-username').val("");
-                        $('#twitter-password').val("");
+                        $('.x-username').val("");
+                        $('.x-password').val("");
                         if(data.response.access_token){
                             //login
                             auth.set({
@@ -77,8 +77,8 @@ return page_view.extend({
                 },
                 success: function( data ){
                     if(data.success){
-                        $('#twitter-username').val("");
-                        $('#twitter-password').val("");
+                        $('.x-username').val("");
+                        $('.x-password').val("");
                         if(xauth_view.redirect){
                             var redirect = (xauth_view.redirect.indexOf("?") > -1) ?
                                 xauth_view.redirect + "&":
@@ -102,8 +102,8 @@ return page_view.extend({
             type: 'GET',
             dataType: 'jsonp',
             data:{
-                username: $('#twitter-username').val(),
-                password: $('#twitter-password').val()
+                username: $('.x-username').val(),
+                password: $('.x-password').val()
             },
             error: function( data ){
                 console.error('ajax error!');

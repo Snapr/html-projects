@@ -10,17 +10,17 @@ return page_view.extend({
         }
 
         if (this.message){
-            this.$(".login-message").text(this.message);
+            this.$(".x-login-message").text(this.message);
         }else{
-            this.$(".login-message").text("");
+            this.$(".x-login-message").text("");
         }
 
         this.change_page();
     },
 
     events: {
-        "submit #tumblr-dialog":"link_tumblr",
-        "click .tumblr-button":"link_tumblr"
+        "submit form":"link_tumblr",
+        "click .x-tumblr-button":"link_tumblr"
     },
 
     link_tumblr: function(){
@@ -33,15 +33,15 @@ return page_view.extend({
             type: 'GET',
             dataType: 'jsonp',
             data:{
-                username: $('#tumblr-username').val(),
-                password: $('#tumblr-password').val(),
+                username: $('.x-username').val(),
+                password: $('.x-password').val(),
                 access_token: auth.get("access_token"),
                 _method: "POST"
             },
             success: function( data ){
                 if(data.success){
-                    $('#tumblr-username').val("");
-                    $('#tumblr-password').val("");
+                    $('.x-username').val("");
+                    $('.x-password').val("");
                     if(this_view.redirect){
                         var redirect = (this_view.redirect.indexOf("?") > -1) ?
                             this_view.redirect + "&username=" + data.response.username :
