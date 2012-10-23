@@ -12,7 +12,7 @@
         </div>
     </div>
     <div data-role="content" data-theme="c" data-ajax="false">
-        <div class="account-content">
+        <div class="account-content x-content">
 
 
             <div class="myaccount-header page-inset-header ui-body-c">
@@ -48,10 +48,10 @@
                 <% if(!initial){ %>
                     <div data-role="collapsible-set" data-theme="c" data-content-theme="d">
 
-                        <div data-role="collapsible" data-collapsed="true" class="my-account-profile">
+                        <div data-role="collapsible" data-collapsed="true" class="x-profile my-account-profile">
                             <h3>Profile</h3>
 
-                            <fieldset data-role="controlgroup" class="my-account-avatar">
+                            <fieldset data-role="controlgroup" class="x-avatar my-account-avatar">
                                <div class="avatar-select-block">
                                     <span class="user-profile-icon">
                                         <div class="user-icon-big" style="background-image: url('<%= config.get('avatar_url') %>/<%= user_id %>?size=large&_salt=<%= settings.profile.avatar_type %>');"></div>
@@ -69,41 +69,41 @@
                                         <% if (settings.profile.avatar_type == 'gravatar'){ %> checked="true" <% } %> />
                                         <label for="my-account-avatar-gravatar">Gravatar</label><br>
 
-                                        <a class="my-account-set-up-gravatar" href="http://en.gravatar.com/">&rarr; Set up Gravatar</a>
+                                        <a class="x-set-up-gravitar my-account-set-up-gravatar" href="http://en.gravatar.com/">&rarr; Set up Gravatar</a>
                                </div>
                             </fieldset>
 
                             <fieldset data-role="controlgroup">
                                 <label for="my-account-name">Your Name</label>
-                                <input type="text" name="my-account-name" id="my-account-name" class="custom" autocorrect="off"
+                                <input type="text" name="my-account-name" id="my-account-name" class="x-name custom" autocorrect="off"
                                 value="<%= settings.profile.name %>" />
                             </fieldset>
 
                             <fieldset data-role="controlgroup">
                                 <label for="my-account-location">Location</label>
-                                <input type="text" name="my-account-location" id="my-account-location" class="custom" autocorrect="off"
+                                <input type="text" name="my-account-location" id="my-account-location" class="x-location custom" autocorrect="off"
                                 value="<%= settings.profile.location || "" %>" />
                             </fieldset>
 
                             <fieldset data-role="controlgroup">
                                 <label for="my-account-website">Website</label>
-                                <input type="text" name="my-account-website" id="my-account-website" class="custom" autocapitalize="off" autocorrect="off"
+                                <input type="text" name="my-account-website" id="my-account-website" class="x-website custom" autocapitalize="off" autocorrect="off"
                                 value="<%= settings.profile.website || "" %>" />
                             </fieldset>
 
                             <fieldset data-role="controlgroup">
                                 <label for="my-account-bio">Bio</label>
-                                <textarea name="my-account-bio" id="my-account-bio" class="custom"><%= settings.profile.bio || "" %></textarea>
+                                <textarea name="my-account-bio" id="my-account-bio" class="x-bio custom"><%= settings.profile.bio || "" %></textarea>
                             </fieldset>
 
                              <div class="ui-grid-b">
                                 <div class="ui-block-a"></div>
                                 <div class="ui-block-b"></div>
-                                <div class="ui-block-c"><button data-theme="e" class="save">Save</button></div>
+                                <div class="ui-block-c"><button data-theme="e" class="save x-save">Save</button></div>
                             </div>
                         </div>
 
-                        <div data-role="collapsible" data-collapsed="true" class="my-account-notifications">
+                        <div data-role="collapsible" data-collapsed="true" class="x-notifications my-account-notifications">
                             <h3>Notifications</h3>
                             <fieldset data-role="controlgroup ui-body-c">
                                 <div data-role="fieldcontain" class="switch-setting">
@@ -152,39 +152,39 @@
                                     <div class="ui-block-a"></div>
                                     <div class="ui-block-b"></div>
                                     <div class="ui-block-c">
-                                        <button data-theme="e" class="save">Save</button>
+                                        <button data-theme="e" class="save x-save">Save</button>
                                     </div>
                             </div> -->
                         </div>
 
-                        <div data-role="collapsible" data-collapsed="true" class="my-account-account">
+                        <div data-role="collapsible" data-collapsed="true" class="x-account my-account-account">
                             <h3>Account</h3>
                             <fieldset data-role="controlgroup">
                                 <label for="my-account-email">Email</label>
-                                <input type="text" name="my-account-email" id="my-account-email" class="custom"
+                                <input type="text" name="my-account-email" id="my-account-email" class="x-email custom"
                                 value="<%= settings.email %>" />
                             </fieldset>
                             <fieldset data-role="controlgroup">
                                 <label for="my-account-password">New Password</label>
-                                <input type="password" name="my-account-password" id="my-account-password" class="custom"
+                                <input type="password" name="my-account-password" id="my-account-password" class="x-password custom"
                                 value="" />
                             </fieldset>
                             <fieldset data-role="controlgroup">
                                 <label for="my-account-password-verify">Verify</label>
-                                <input type="password" name="my-account-password-verify" id="my-account-password-verify" class="custom"
+                                <input type="password" name="my-account-password-verify" id="my-account-password-verify" class="x-password-varify custom"
                                 value="" />
                             </fieldset>
                             <div class="ui-grid-b">
                                 <div class="ui-block-a"></div>
                                 <div class="ui-block-b"></div>
                                 <div class="ui-block-c">
-                                    <button data-theme="e" class="save">Save</button>
+                                    <button data-theme="e" class="save x-save">Save</button>
                                 </div>
                             </div>
                         </div>
 
                         <% if (camplus && camplus.camplus_menu){ %>
-                        <div data-role="collapsible" data-collapsed="true" class="my-account-camplus">
+                        <div data-role="collapsible" data-collapsed="true" class="x-camplus my-account-camplus">
                             <h3>Camera+</h3>
                             <fieldset data-role="controlgroup ui-body-c">
                                 <div data-role="fieldcontain" class="switch-setting">
@@ -216,7 +216,7 @@
                             <div class="ui-grid-b">
                                 <div class="ui-block-a"></div>
                                 <div class="ui-block-b"></div>
-                                <div class="ui-block-c"><button data-theme="e" class="save">Save</button></div>
+                                <div class="ui-block-c"><button data-theme="e" class="save x-save">Save</button></div>
                             </div>
                         </div>
                         <!-- End camplus -->
@@ -224,18 +224,18 @@
 
                     </div><!-- End of Nested Collapsible Set -->
 
-                    <a class="ui-bar top-no-arrow connect-heading" data-role="button" data-theme="e" >
+                    <a class="ui-bar top-no-arrow connect-heading x-connect-heading" data-role="button" data-theme="e" >
                         <em>Connect</em>
                     </a>
 
-                    <ul class=" add-services" data-role="listview">
+                    <ul class="x-add-services add-services" data-role="listview">
                         <!-- dynamic -->
                     </ul>
 
-                    <a class="ui-bar top-no-arrow linked-heading" data-role="button" data-theme="e" >
+                    <a class="ui-bar top-no-arrow linked-heading x-linked-heading" data-role="button" data-theme="e" >
                         <em>Linked Services</em>
                     </a>
-                    <div class="linked-services" data-role="collapsible-set" data-theme="c" data-content-theme="d">
+                    <div class="linked-services x-linked-services" data-role="collapsible-set" data-theme="c" data-content-theme="d">
                         <!-- dynamic -->
                     </div>
 

@@ -21,8 +21,6 @@ return page_view.extend({
 
     back_text: "Menu",
 
-    //template: _.template( $('#my-account-template').html() ),
-
     create_page: function(){
         this.setElement($(this.template({
             initial: true,
@@ -76,8 +74,7 @@ return page_view.extend({
 
         var new_page = $(this.template(data));
 
-        this.$('.account-content').replaceWith(new_page.find('.account-content'));
-        var $account_content = this.$('.account-content').trigger('create');
+        var $account_content = this.$('.x-content').replaceWith(new_page.find('.x-content')).trigger('create');
 
 
         // set all linked services to false, we will check them off below
@@ -97,7 +94,7 @@ return page_view.extend({
             // keep track of linked services
             linked_services_list[service.provider] = true;
 
-            $account_content.find('.linked-services').append( v.render().el ).trigger('create');
+            $account_content.find('.x-linked-services').append( v.render().el ).trigger('create');
         });
 
         // for all services that are not yet linked, add
@@ -105,36 +102,36 @@ return page_view.extend({
             if (!val){
                 var v = new linked_service();
                 v.provider = provider;
-                $account_content.find('.add-services').append( v.render().el ).trigger('create');
+                $account_content.find('.x-add-services').append( v.render().el ).trigger('create');
             }
         });
 
-        $account_content.find('.add-services').listview().listview("refresh");
+        $account_content.find('.x-add-services').listview().listview("refresh");
 
         var hide_connect_heading = _.filter(linked_services_list, function(val){return !val;}).length ? false: true;
         var hide_linked_heading = _.filter(linked_services_list, function(val){return val;}).length ? false: true;
         if (hide_connect_heading){
-            this.$(".connect-heading").hide();
+            this.$(".x-connect-heading").hide();
         }
         if (hide_linked_heading){
-            this.$(".linked-heading").hide();
+            this.$(".x-linked-heading").hide();
         }
 
         return this;
     },
 
     events: {
-        "change .my-account-avatar input[type=radio]": "set_avatar",
-        "click .my-account-set-up-gravatar": "set_up_gravatar",
-        "click .my-account-notifications .save": "save_notifications",
-        "change .my-account-notifications .ui-slider-switch": "save_notifications",
-        "click .my-account-account .save": "save_account",
-        "click .my-account-camplus .save": "save_camplus",
-        "click .my-account-profile .save": "save_profile"
+        "change .x-avatar input[type=radio]": "set_avatar",
+        "click .x-set-up-gravatar": "set_up_gravatar",
+        "click .x-notifications .x-save": "save_notifications",
+        "change .x-notifications .ui-slider-switch": "save_notifications",
+        "click .x-account .x-save": "save_account",
+        "click .x-camplus .x-save": "save_camplus",
+        "click .x-profile .x-save": "save_profile"
     },
 
     set_avatar: function(e){
-        var avatar_type = this.$('.my-account-avatar input[type=radio]:checked').val();
+        var avatar_type = this.$('.x-avatar input[type=radio]:checked').val();
         console.debug(avatar_type);
     },
 
@@ -194,10 +191,10 @@ return page_view.extend({
             param = {};
 
         _.each(['name', 'location', 'website', 'bio'], function(item){
-            param[item] = section.find("#my-account-"+item).val();
+            param[item] = section.find(".x-"+item).val();
         });
 
-        param.avatar_type = section.find('[name=my-account-avatar]:checked').val();
+        param.avatar_type = section.find('.x-avatar :checked').val();
         var current_avatar = auth.user_settings.get('avatar_type') || auth.user_settings.get('settings').profile.avatar_type;
         var avatar_changed = param.avatar_type !== current_avatar;
 
@@ -214,12 +211,12 @@ return page_view.extend({
     save_account: function( e ){
         var param = {};
 
-        var email = this.$("#my-account-email").val();
-        var password = this.$("#my-account-password").val();
-        var password_verify = this.$("#my-account-password-verify").val();
+        var email = this.$(".x-email").val();
+        var password = this.$(".x-password").val();
+        var password_verify = this.$(".x-password-verify").val();
 
-        this.$("#my-account-password").val("");
-        this.$("#my-account-password-verify").val("");
+        this.$(".x-password").val("");
+        this.$(".x-password-verify").val("");
 
         if (!email){
             alerts.notification("No email", "Please provide an email address", $.noop);
