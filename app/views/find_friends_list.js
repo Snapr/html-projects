@@ -31,7 +31,7 @@ var find_friends = page_view.extend({
     },
 
     dialog_closed: function(){
-        this.$el.find("ul.people-list").empty();
+        this.$("ul.people-list").empty();
         this.search();
     },
 

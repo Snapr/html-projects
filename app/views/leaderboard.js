@@ -18,7 +18,7 @@ return page_view.extend({
         this.undelegateEvents();
         this.delegateEvents();
 
-        this.$el.find("ul.people-list").empty();
+        this.$("ul.people-list").empty();
 
         this.collection = new user_collection();
 
@@ -45,7 +45,7 @@ return page_view.extend({
 
     render: function()
     {
-        var people_list = this.$el.find("ul.people-list").empty();
+        var people_list = this.$("ul.people-list").empty();
 
         var leaderboard_li_template = this.get_template('components/leaderboard_item');
 

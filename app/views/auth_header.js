@@ -14,7 +14,7 @@ return view.extend({
 			display_username: auth.get("display_username")
         } ));
 
-        this.$el.find('[data-role="button"]').button();
+        this.$('[data-role="button"]').button();
 
         return this;
 	}

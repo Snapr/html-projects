@@ -81,30 +81,30 @@ var feed_li =  view.extend({
 
         this.fav_button = new favorite_button({
             model: this.model,
-            el: this.$el.find(".v-fav-button")[0],
+            el: this.$(".v-fav-button")[0],
             li: this
         }).render();
 
         this.comment_button = new comment_button({
             model: this.model,
-            el: this.$el.find(".v-comment-button")[0],
+            el: this.$(".v-comment-button")[0],
             li: this
         }).render();
 
         this.show_all = new show_all_button({
             model: this.model,
-            el: this.$el.find(".v-show-all-button")[0],
+            el: this.$(".v-show-all-button")[0],
             li: this
         }).render();
 
         this.reactions = new reactions({
             id: this.model.id,
-            el: this.$el.find('.reactions-list')[0]
+            el: this.$('.reactions-list')[0]
         });
 
         this.manage = new photo_manage({
             model: this.model,
-            el: this.$el.find('.v-photo-manage')[0],
+            el: this.$('.v-photo-manage')[0],
             parentView: this
         });
 
@@ -122,36 +122,36 @@ var feed_li =  view.extend({
 
     toggle_comment_form: function()
     {
-        this.$el.find('.comment-button').toggleClass('selected');
-        this.$el.find('.comment-area').toggle();
+        this.$('.comment-button').toggleClass('selected');
+        this.$('.comment-area').toggle();
     },
 
     show_comment_form: function()
     {
-        this.$el.find('.comment-button').addClass('selected');
-        this.$el.find('.comment-area').show();
+        this.$('.comment-button').addClass('selected');
+        this.$('.comment-area').show();
     },
 
     hide_comment_form: function()
     {
-        this.$el.find('.comment-button').removeClass('selected');
-        this.$el.find('.comment-area').hide();
+        this.$('.comment-button').removeClass('selected');
+        this.$('.comment-area').hide();
     },
 
     toggle_reactions: function(){
-        this.$el.find('.reactions-button').toggleClass('selected');
+        this.$('.reactions-button').toggleClass('selected');
 
-        if (this.$el.find('.reactions-list:visible').length){
-            this.$el.find('.reactions-button .ui-btn-text').text('show');
-            this.$el.find('.reactions-list').hide();
+        if (this.$('.reactions-list:visible').length){
+            this.$('.reactions-button .ui-btn-text').text('show');
+            this.$('.reactions-list').hide();
             this.hide_comment_form();
         }
         else{
-            this.$el.find('.reactions-button .ui-btn-text').text('hide');
+            this.$('.reactions-button .ui-btn-text').text('hide');
             this.$('.reactions-button').x_loading();
             this.load_reactions();
-            this.$el.find('.reactions-list').show();
-            if (this.$el.find('.reactions-list li').length){
+            this.$('.reactions-list').show();
+            if (this.$('.reactions-list li').length){
                 this.show_comment_form();
             }
         }
@@ -159,10 +159,10 @@ var feed_li =  view.extend({
 
     toggle_photo_manage: function()
     {
-        this.$el.find('.more-button').toggleClass('selected');
-        if (this.$el.find('.v-photo-manage .inline-palette:visible').length)
+        this.$('.more-button').toggleClass('selected');
+        if (this.$('.v-photo-manage .inline-palette:visible').length)
         {
-            this.$el.find('.v-photo-manage').empty();
+            this.$('.v-photo-manage').empty();
         }
         else
         {
@@ -172,8 +172,8 @@ var feed_li =  view.extend({
 
     show_reactions: function()
     {
-        this.$el.find('.reactions-button').addClass('selected');
-        this.$el.find('.reactions-list').show();
+        this.$('.reactions-button').addClass('selected');
+        this.$('.reactions-list').show();
     },
 
     goto_map: function()
@@ -188,7 +188,7 @@ var feed_li =  view.extend({
 
     comment: function( e )
     {
-        var commentText = this.$el.find('textarea').val();
+        var commentText = this.$('textarea').val();
         var comment = new comment_model();
         comment.data = {
             photo_id: this.model.get('id'),
@@ -209,7 +209,7 @@ var feed_li =  view.extend({
                     feed_li.model.set({
                         comments: comment_count
                     });
-                    feed_li.$el.find('textarea').val('');
+                    feed_li.$('textarea').val('');
                     feed_li.show_reactions();
                     feed_li.load_reactions();
                     feed_li.$('.comment-form .ui-btn').x_loading(false);
@@ -247,7 +247,7 @@ var comment_button = view.extend({
     },
 
     render: function(){
-        var selected = this.$el.find( ".selected" ).length > 0;
+        var selected = this.$( ".selected" ).length > 0;
         this.$el.html( this.template({
             count: parseInt( this.model.get( "comments" ), 10 ),
             selected: selected
@@ -277,7 +277,7 @@ var show_all_button = view.extend({
 
     render: function()
     {
-        var selected = this.$el.find(".selected").length > 0;
+        var selected = this.$(".selected").length > 0;
         this.$el.html( this.template({
             reactions: parseInt( this.model.get("favorite_count"), 10) + parseInt( this.model.get("comments"), 10),
             selected: selected

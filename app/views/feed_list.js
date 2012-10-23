@@ -37,7 +37,7 @@ return view.extend({
             }, this);
 
             if(this.list_style == 'list'){
-                this.$el.find("img").each(function()
+                this.$("img").each(function()
                 {
                     var $img = $(this);
                     $img.load(function(){

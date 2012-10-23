@@ -114,10 +114,10 @@ return page_view.extend({
         var hide_connect_heading = _.filter(linked_services_list, function(val){return !val;}).length ? false: true;
         var hide_linked_heading = _.filter(linked_services_list, function(val){return val;}).length ? false: true;
         if (hide_connect_heading){
-            this.$el.find(".connect-heading").hide();
+            this.$(".connect-heading").hide();
         }
         if (hide_linked_heading){
-            this.$el.find(".linked-heading").hide();
+            this.$(".linked-heading").hide();
         }
 
         return this;
@@ -214,12 +214,12 @@ return page_view.extend({
     save_account: function( e ){
         var param = {};
 
-        var email = this.$el.find("#my-account-email").val();
-        var password = this.$el.find("#my-account-password").val();
-        var password_verify = this.$el.find("#my-account-password-verify").val();
+        var email = this.$("#my-account-email").val();
+        var password = this.$("#my-account-password").val();
+        var password_verify = this.$("#my-account-password-verify").val();
 
-        this.$el.find("#my-account-password").val("");
-        this.$el.find("#my-account-password-verify").val("");
+        this.$("#my-account-password").val("");
+        this.$("#my-account-password-verify").val("");
 
         if (!email){
             alerts.notification("No email", "Please provide an email address", $.noop);

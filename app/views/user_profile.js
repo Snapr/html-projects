@@ -10,7 +10,7 @@ return page_view.extend({
 
     post_activate: function(options){
 
-        this.$el.find( ".user-profile" ).empty();
+        this.$( ".user-profile" ).empty();
 
         this.model = new user_model( {username: options.query.username} );
         this.model.bind( "change", _.bind(this.render, this) );

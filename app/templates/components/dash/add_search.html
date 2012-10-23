@@ -1,4 +1,4 @@
-<div id="dash-add-search" data-role="dialog" data-overlay-theme="c" data-theme="c" data-ajax="false">
+<div id="dash-add-search" data-overlay-theme="c" data-theme="c" data-ajax="false">
     <div data-role="header" data-theme="c">
         <h1>Add Search</h1>
         <a class="x-back" data-role="button" data-icon="delete" data-iconpos="notext"></a>
@@ -9,10 +9,10 @@
             <form action="javascript: void(0);" accept-charset="utf-8" id="search-form">
                 <ul data-role="listview" data-inset="true" data-theme="d">
                     <li data-role="fieldcontain" class="ui-hide-label">
-                        <input type="text" placeholder="Keyword&hellip;" autocapitalize="off" id="dash-search-keywords">
+                        <input type="text" placeholder="Keyword&hellip;" autocapitalize="off" class="x-search-field" id="dash-search-keywords">
                     </li>
                     <li data-role="fieldcontain" class="ui-hide-label has-select">
-                        <select id="dash-search-type" data-theme="c">
+                        <select id="dash-search-type" class="x-search-type" data-theme="c">
                             <option value="">Anywhere</option>
                             <option value="1000">Nearby (1km)</option>
                             <option value="5000">Nearby (5km)</option>
