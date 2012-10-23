@@ -1912,7 +1912,7 @@ a.ui-link-inherit {
   -webkit-border-radius: 20px;
   border-radius: 20px;
 }
-.trans-bg .ui-btn-up-a, .trans-bg .ui-input-search, .trans-bg .map-loading {
+.trans-bg .ui-btn-up-a, .trans-bg .ui-input-search, .trans-bg .s-map-loading {
   border: none;
   border-bottom: solid 1px rgba(255, 255, 255, 0.4);
   background-color: #282727;
@@ -1920,12 +1920,12 @@ a.ui-link-inherit {
   -webkit-box-shadow: inset 0 3px 20px #000000;
   box-shadow: inset 0 3px 20px #000000;
 }
-.trans-bg .ui-btn-up-a.ui-shadow, .trans-bg .ui-input-search.ui-shadow, .trans-bg .map-loading.ui-shadow {
+.trans-bg .ui-btn-up-a.ui-shadow, .trans-bg .ui-input-search.ui-shadow, .trans-bg .s-map-loading.ui-shadow {
   -moz-box-shadow: inset 0 3px 20px #000000;
   -webkit-box-shadow: inset 0 3px 20px #000000;
   box-shadow: inset 0 3px 20px #000000;
 }
-.trans-bg .ui-btn-up-a .ui-btn-inner, .trans-bg .ui-input-search .ui-btn-inner, .trans-bg .map-loading .ui-btn-inner {
+.trans-bg .ui-btn-up-a .ui-btn-inner, .trans-bg .ui-input-search .ui-btn-inner, .trans-bg .s-map-loading .ui-btn-inner {
   border: none;
 }
 .trans-bg .ui-btn-hover-a, .trans-bg .ui-btn-down-a, .trans-bg .ui-btn-active-a {
@@ -2399,7 +2399,7 @@ a.ui-link-inherit {
   background-color: transparent;
   color: rgba(200, 200, 200, 0.3);
 }
-.ui-body-c #no-results .imagealert {
+.ui-body-c #x-no-results .s-map-image-alert {
   padding: 16px;
   color: #999999;
 }
@@ -3553,7 +3553,7 @@ a.ui-link-inherit {
 *[data-tab-bar="true"] div[data-role="header"] *[data-icon="home"], *[data-tab-bar="true"] div[data-role="header"] *[data-icon="camera"] {
   display: none;
 }
-*[data-tab-bar="true"] .inline-footer {
+*[data-tab-bar="true"] .s-inline-footer {
   -moz-border-radius-bottomleft: 0 !important;
   -webkit-border-bottom-left-radius: 0 !important;
   border-bottom-left-radius: 0 !important;
@@ -3561,7 +3561,7 @@ a.ui-link-inherit {
   -webkit-border-bottom-right-radius: 0 !important;
   border-bottom-right-radius: 0 !important;
 }
-*[data-tab-bar="true"] .inline-footer.feed-footer .ui-btn {
+*[data-tab-bar="true"] .s-inline-footer.feed-footer .ui-btn {
   -moz-border-radius-bottomleft: 0 !important;
   -webkit-border-bottom-left-radius: 0 !important;
   border-bottom-left-radius: 0 !important;
@@ -5374,7 +5374,7 @@ over rides theme swatch styles for general blue / white style switch
   display: block;
 }
 /* Footer as part of page content like on dash  */
-.inline-footer {
+.s-inline-footer {
   margin: 8px -8px 0 -8px;
   -moz-border-radius-bottomleft: 8px;
   -webkit-border-bottom-left-radius: 8px;
@@ -5383,10 +5383,10 @@ over rides theme swatch styles for general blue / white style switch
   -webkit-border-bottom-right-radius: 8px;
   border-bottom-right-radius: 8px;
 }
-.inline-footer .ui-grid-a .ui-block-a .ui-btn {
+.s-inline-footer .ui-grid-a .ui-block-a .ui-btn {
   margin-right: 4px;
 }
-.inline-footer .ui-grid-a .ui-block-b .ui-btn {
+.s-inline-footer .ui-grid-a .ui-block-b .ui-btn {
   margin-left: 4px;
 }
 /*
@@ -5768,14 +5768,14 @@ div.ps-carousel-item-loading {
   opacity: .4;
 }
 /* default element when a search returns no results */
-#no-results .imagealert {
+#x-no-results .s-map-image-alert {
   padding: 8px;
   position: relative;
   font-style: italic;
   /* Not going to use icons for now */
 
 }
-#no-results .imagealert .ui-icon {
+#x-no-results .s-map-image-alert .ui-icon {
   display: none;
 }
 /* Misc Spinner */
@@ -5791,7 +5791,7 @@ div.ps-carousel-item-loading {
   -webkit-animation-iteration-count: infinite;
   -webkit-animation-timing-function: linear;
 }
-.ui-loading #no-results, .loading #no-results {
+.ui-loading #x-no-results, .loading #x-no-results {
   display: none;
 }
 /*
@@ -6478,10 +6478,10 @@ body.x-browser-testing .ui-footer, body.x-browser-testing .ui-footer-fixed {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
-#map.loading .map-time .map-time-btn {
+#map.loading .s-map-time .s-map-time-btn {
   display: none;
 }
-#map.loading .map-loading {
+#map.loading .s-map-loading {
   width: 32px;
   height: 32px;
   overflow: hidden;
@@ -6489,7 +6489,7 @@ body.x-browser-testing .ui-footer, body.x-browser-testing .ui-footer-fixed {
   -webkit-border-radius: 16px;
   border-radius: 16px;
 }
-#map.loading .map-loading .ui-icon {
+#map.loading .s-map-loading .ui-icon {
   opacity: .7;
   width: 32px;
   height: 32px;
@@ -6497,23 +6497,23 @@ body.x-browser-testing .ui-footer, body.x-browser-testing .ui-footer-fixed {
 #map-layer #google-map {
   margin: -3px -8px;
 }
-.photo-map {
+.s-photo-map {
   position: relative;
   overflow: hidden;
   /* map thumbs */
 
 }
-.photo-map .ui-bar.top-left-arrow .ui-icon-location, .photo-map .top-no-arrow .ui-icon-location {
+.s-photo-map .ui-bar.top-left-arrow .ui-icon-location, .s-photo-map .top-no-arrow .ui-icon-location {
   left: -8px;
 }
-.photo-map .snaprmappoint {
+.s-photo-map .s-map-point {
   width: 1px;
   height: 1px;
   overflow: visible;
   position: absolute;
   z-index: 1;
 }
-.photo-map .x-map-venue .x-map-venue-pin {
+.s-photo-map .x-map-venue .x-map-venue-pin {
   background-image: url('../gfx/map-spot-pin.png');
   position: absolute;
   display: block;
@@ -6523,7 +6523,7 @@ body.x-browser-testing .ui-footer, body.x-browser-testing .ui-footer-fixed {
   height: 28px;
   cursor: pointer;
 }
-.photo-map .x-map-venue .x-map-venue-label {
+.s-photo-map .x-map-venue .x-map-venue-label {
   display: none;
   background-image: url('../gfx/map-spot-label.png');
   position: absolute;
@@ -6533,12 +6533,12 @@ body.x-browser-testing .ui-footer, body.x-browser-testing .ui-footer-fixed {
   height: 47px;
   z-index: 1;
 }
-.photo-map .x-map-venue .x-map-venue-label .spot-icon {
+.s-photo-map .x-map-venue .x-map-venue-label .spot-icon {
   position: absolute;
   top: 5px;
   left: 4px;
 }
-.photo-map .x-map-venue .x-map-venue-label .venue-label-text {
+.s-photo-map .x-map-venue .x-map-venue-label .s-venue-label-text {
   color: white;
   font-weight: bold;
   text-shadow: #000000 0 -1px 1px;
@@ -6549,13 +6549,13 @@ body.x-browser-testing .ui-footer, body.x-browser-testing .ui-footer-fixed {
   white-space: nowrap;
   font-size: 13px;
 }
-.photo-map .x-map-venue.active {
+.s-photo-map .x-map-venue.active {
   z-index: 2;
 }
-.photo-map .x-map-venue.active .x-map-venue-label {
+.s-photo-map .x-map-venue.active .x-map-venue-label {
   display: block;
 }
-.photo-map .map-current-location {
+.s-photo-map .s-map-current-location {
   position: absolute;
   top: -9px;
   left: -9px;
@@ -6564,7 +6564,7 @@ body.x-browser-testing .ui-footer, body.x-browser-testing .ui-footer-fixed {
   z-index: 100;
   background-image: url(../gfx/map-current-location-marker.png);
 }
-.photo-map .snaprmapthumb {
+.s-photo-map .s-map-thumb {
   position: absolute;
   bottom: -3px;
   left: -38px;
@@ -6572,14 +6572,14 @@ body.x-browser-testing .ui-footer, body.x-browser-testing .ui-footer-fixed {
   height: 120px;
   z-index: 100;
 }
-.photo-map .snaprmapthumb .snaprmapthumbimage {
+.s-photo-map .s-map-thumb .s-map-thumbimage {
   position: absolute;
   top: 8px;
   left: 9px;
   width: 60px;
   height: 60px;
 }
-.photo-map .snaprmapthumb .snaprmappin {
+.s-photo-map .s-map-thumb .s-map-pin {
   position: absolute;
   top: 83px;
   left: 32px;
@@ -6588,7 +6588,7 @@ body.x-browser-testing .ui-footer, body.x-browser-testing .ui-footer-fixed {
   height: 35px;
   display: block;
 }
-.photo-map .snaprmapthumb .snaprthumbbg {
+.s-photo-map .s-map-thumb .s-thumb-bg {
   position: absolute;
   top: 0;
   left: 0;
@@ -6597,7 +6597,7 @@ body.x-browser-testing .ui-footer, body.x-browser-testing .ui-footer-fixed {
   height: 88px;
   display: block;
 }
-.photo-map #snaprmapalert {
+.s-photo-map #s-map-alert {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -6605,7 +6605,7 @@ body.x-browser-testing .ui-footer, body.x-browser-testing .ui-footer-fixed {
   margin-left: -80px;
   margin-top: -30px;
 }
-.photo-map #snaprmapalert .imagealert {
+.s-photo-map #s-map-alert .s-map-image-alert {
   background-color: white;
   padding: 6px;
   padding-left: 48px;
@@ -6620,12 +6620,12 @@ body.x-browser-testing .ui-footer, body.x-browser-testing .ui-footer-fixed {
   -webkit-box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
 }
-.photo-map #snaprmapalert .imagealert .ui-icon-noImages {
+.s-photo-map #s-map-alert .s-map-image-alert .ui-icon-no-images {
   position: absolute;
   left: 9px;
   top: 3px;
 }
-.photo-map .inline-footer {
+.s-photo-map .s-inline-footer {
   position: absolute;
   bottom: 0;
   width: 100%;
@@ -6637,7 +6637,7 @@ body.x-browser-testing .ui-footer, body.x-browser-testing .ui-footer-fixed {
   -webkit-border-bottom-right-radius: 8px;
   border-bottom-right-radius: 8px;
 }
-.photo-map .inline-footer.ui-body-a {
+.s-photo-map .s-inline-footer.ui-body-a {
   border: none;
   background: rgba(0, 0, 0, 0.8);
   background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, rgba(0, 0, 0, 0)), color-stop(0.5, rgba(0, 0, 0, 0)), color-stop(0.5, rgba(255, 255, 255, 0.1)), color-stop(1, rgba(255, 255, 255, 0.2)));
@@ -6657,10 +6657,10 @@ body.x-browser-testing .ui-footer, body.x-browser-testing .ui-footer-fixed {
 
   background-image: linear-gradient(bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 50%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.2) 100%);
 }
-.photo-map .inline-footer .ui-block-a, .photo-map .inline-footer .ui-block-b {
+.s-photo-map .s-inline-footer .ui-block-a, .s-photo-map .s-inline-footer .ui-block-b {
   position: relative;
 }
-.photo-map .inline-footer .ui-block-a .ui-icon, .photo-map .inline-footer .ui-block-b .ui-icon {
+.s-photo-map .s-inline-footer .ui-block-a .ui-icon, .s-photo-map .s-inline-footer .ui-block-b .ui-icon {
   width: 32px;
   height: 32px;
   position: absolute;
@@ -6668,21 +6668,21 @@ body.x-browser-testing .ui-footer, body.x-browser-testing .ui-footer-fixed {
   left: 2px;
   margin-top: 0;
 }
-.photo-map .inline-footer .ui-input-search {
+.s-photo-map .s-inline-footer .ui-input-search {
   padding: 8px 24px 8px 28px;
   height: 16px;
   overflow: hidden;
 }
-.photo-map .inline-footer .ui-input-search input {
+.s-photo-map .s-inline-footer .ui-input-search input {
   font-family: Helvetica, Arial, sans-serif;
   color: #cccccc;
   text-shadow: #000000 0px 1px 1px;
 }
-.photo-map .inline-footer .ui-input-search .ui-input-text {
+.s-photo-map .s-inline-footer .ui-input-search .ui-input-text {
   padding: 0;
   font-size: 14px;
 }
-.photo-map .inline-footer .ui-input-search .ui-input-clear {
+.s-photo-map .s-inline-footer .ui-input-search .ui-input-clear {
   background: none;
   box-shadow: none;
   margin: 0;
@@ -6690,63 +6690,63 @@ body.x-browser-testing .ui-footer, body.x-browser-testing .ui-footer-fixed {
   right: 0;
   border-radius: 0;
 }
-.photo-map .inline-footer .ui-input-search .ui-input-clear .ui-btn-inner {
+.s-photo-map .s-inline-footer .ui-input-search .ui-input-clear .ui-btn-inner {
   width: 32px;
   height: 32px;
 }
-.photo-map .inline-footer .ui-input-search .ui-input-clear .ui-icon-delete {
+.s-photo-map .s-inline-footer .ui-input-search .ui-input-clear .ui-icon-delete {
   background-position: 0 -128px !important;
   top: 1px;
   right: -5px;
   left: auto;
 }
-.photo-map .inline-footer .ui-select, .photo-map .inline-footer .ui-input-text {
+.s-photo-map .s-inline-footer .ui-select, .s-photo-map .s-inline-footer .ui-input-text {
   display: block;
   vertical-align: middle;
   margin-bottom: 0;
 }
-.photo-map .inline-footer .ui-select .ui-btn, .photo-map .inline-footer .ui-input-text .ui-btn {
+.s-photo-map .s-inline-footer .ui-select .ui-btn, .s-photo-map .s-inline-footer .ui-input-text .ui-btn {
   margin-bottom: 0;
 }
-.photo-map .inline-footer .ui-select .ui-icon, .photo-map .inline-footer .ui-input-text .ui-icon {
+.s-photo-map .s-inline-footer .ui-select .ui-icon, .s-photo-map .s-inline-footer .ui-input-text .ui-icon {
   width: 32px;
   height: 32px;
   top: 1px;
   margin-top: 0;
 }
-.photo-map .inline-footer .ui-select .ui-icon-arrow-d, .photo-map .inline-footer .ui-input-text .ui-icon-arrow-d {
+.s-photo-map .s-inline-footer .ui-select .ui-icon-arrow-d, .s-photo-map .s-inline-footer .ui-input-text .ui-icon-arrow-d {
   right: 2px;
   left: auto;
 }
-.photo-map .inline-footer .ui-select .ui-btn-inner, .photo-map .inline-footer .ui-input-text .ui-btn-inner {
+.s-photo-map .s-inline-footer .ui-select .ui-btn-inner, .s-photo-map .s-inline-footer .ui-input-text .ui-btn-inner {
   font-size: 14px;
   padding: 8px 31px;
 }
-.photo-map .inline-footer .map-time {
+.s-photo-map .s-inline-footer .s-map-time {
   position: absolute;
   left: 8px;
   top: 6px;
 }
-.photo-map .inline-footer .map-time .ui-bar {
+.s-photo-map .s-inline-footer .s-map-time .ui-bar {
   padding-left: 10px;
   padding-right: 10px;
 }
-.photo-map .inline-footer .map-time .map-time-btn {
+.s-photo-map .s-inline-footer .s-map-time .s-map-time-btn {
   background: none;
   box-shadow: none;
   border: none;
   top: 0;
   margin-bottom: 0;
 }
-.photo-map .inline-footer .map-time .map-time-btn .ui-icon {
+.s-photo-map .s-inline-footer .s-map-time .s-map-time-btn .ui-icon {
   width: 32px;
   height: 32px;
 }
-.photo-map .inline-footer .map-filters {
+.s-photo-map .s-inline-footer .s-map-filters {
   margin: 6px;
   margin-left: 48px;
 }
-.photo-map #map-disambiguation {
+.s-photo-map #x-map-disambiguation {
   position: absolute;
   display: none;
   top: 8px;
@@ -6755,22 +6755,22 @@ body.x-browser-testing .ui-footer, body.x-browser-testing .ui-footer-fixed {
   min-height: 0px;
   overflow: visible;
 }
-.photo-map #map-disambiguation h4 {
+.s-photo-map #x-map-disambiguation h4 {
   margin-top: 8px;
 }
-.photo-map #map-disambiguation .ui-listview {
+.s-photo-map #x-map-disambiguation .ui-listview {
   margin-top: 0;
   margin-bottom: 0;
 }
-.photo-map #map-disambiguation .cancel-btn .ui-btn {
+.s-photo-map #x-map-disambiguation .cancel-btn .ui-btn {
   margin-bottom: 0;
   margin-top: 8px;
 }
-.photo-map #map-disambiguation .map-link {
+.s-photo-map #x-map-disambiguation .map-link {
   max-width: 200px;
   width: 200px;
 }
-.photo-map #map-disambiguation::after {
+.s-photo-map #x-map-disambiguation::after {
   width: 0;
   height: 0;
   display: inline-block;
@@ -6786,10 +6786,10 @@ body.x-browser-testing .ui-footer, body.x-browser-testing .ui-footer-fixed {
   top: -9px;
   left: 186px;
 }
-.photo-map #no-results {
+.s-photo-map #x-no-results {
   width: 70%;
 }
-.photo-map #no-results .imagealert {
+.s-photo-map #x-no-results .s-map-image-alert {
   background-color: #ffffff;
   padding: 6px;
   padding-left: 48px;
@@ -6804,7 +6804,7 @@ body.x-browser-testing .ui-footer, body.x-browser-testing .ui-footer-fixed {
   -webkit-box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
 }
-.photo-map #no-results .imagealert .ui-icon {
+.s-photo-map #x-no-results .s-map-image-alert .ui-icon {
   position: absolute;
   left: 9px;
   top: 3px;
@@ -6853,7 +6853,7 @@ body.x-browser-testing .ui-footer, body.x-browser-testing .ui-footer-fixed {
 .map-icons .ui-icon-delete, .map-icons.ui-icon-delete {
   background-position: 0 -128px;
 }
-.map-icons .ui-icon-noImages, .map-icons.ui-icon-noImages {
+.map-icons .ui-icon-no-images, .map-icons.ui-icon-no-images {
   background-position: 0 -160px;
 }
 .profile-icons.ui-icon, .profile-icons .ui-icon {
@@ -8061,14 +8061,14 @@ body.x-browser-testing .ui-footer, body.x-browser-testing .ui-footer-fixed {
     -webkit-background-size: 21px 84px;
     background-size: 21px 84px;
   }
-  .photo-map .snaprmapthumb .snaprmappin {
+  .s-photo-map .s-map-thumb .s-map-pin {
     background-image: url('../gfx/retina/map-pin.png');
     -moz-background-size: 28px 35px;
     -o-background-size: 28px 35px;
     -webkit-background-size: 28px 35px;
     background-size: 28px 35px;
   }
-  .photo-map .snaprmapthumb .snaprthumbbg {
+  .s-photo-map .s-map-thumb .s-thumb-bg {
     background-image: url('../gfx/retina/map-thumb-bg.png');
     -moz-background-size: 78px 88px;
     -o-background-size: 78px 88px;
@@ -8132,7 +8132,7 @@ body.x-browser-testing .ui-footer, body.x-browser-testing .ui-footer-fixed {
     background-position: center!important;
     background-repeat: no-repeat !important;
   }
-  .loading .map-filters .ui-input-search .ui-input-clear .ui-icon-delete {
+  .loading .s-map-filters .ui-input-search .ui-input-clear .ui-icon-delete {
     background-image: url('../gfx/retina/map-icons.png') !important;
     -moz-background-size: 32px 192px !important;
     -o-background-size: 32px 192px !important;

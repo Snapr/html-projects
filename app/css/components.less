@@ -290,3 +290,228 @@ div[data-role="content"]{
 .x-my-snaps .x-not-on-my-snaps {
   display: none!important;
 }
+
+
+
+
+
+
+// MAP PAGE
+//------------------
+
+#map{
+    div[data-role="content"]{
+        padding-top: 0;
+        padding-bottom: 8px;
+        .box-sizing(border-box);
+    }
+    &.loading{
+        .s-map-time{
+            .s-map-time-btn{
+                display: none;
+            }
+        }
+        .s-map-loading{
+            width: 32px;
+            height:32px;
+            overflow: hidden;
+            .border-radius(16px);
+            .ui-icon{
+                opacity: .7;
+                width: 32px;
+                height:32px;
+            }
+        }
+    }
+}
+
+#map-layer{
+    #google-map{
+        margin: -3px -8px;
+    }
+}
+
+.s-photo-map{
+    position:relative;
+    overflow:hidden;
+
+    // Map Thumbs
+    .s-map-point {
+        width: 1px;
+        height: 1px;
+        overflow: visible;
+        position:absolute;
+        z-index: 1;
+    }
+    .x-map-venue{
+        .x-map-venue-pin{
+            background-image: url('gfx/map-spot-pin.png');
+            position: absolute;
+            display: block;
+            bottom: 0;
+            left: -18px;
+            width: 36px;
+            height: 28px;
+            cursor: pointer;
+        }
+        .x-map-venue-label{
+            display: none;
+            background-image: url('gfx/map-spot-label.png');
+            position: absolute;
+            bottom: 23px;
+            left: -70px;
+            width: 139px;
+            height: 47px;
+            z-index: 1;
+            .s-venue-label-text{
+                color: white;
+                font-weight: bold;
+                text-shadow: black 0 -1px 1px;
+                display: block;
+                padding: 9px 26px;
+                text-overflow: ellipsis;
+                overflow: hidden;
+                white-space: nowrap;
+                font-size: 13px;
+            }
+        }
+        &.active{
+            z-index: 2;
+            .x-map-venue-label{
+                display: block;
+            }
+        }
+    }
+
+    .s-map-current-location{
+      position: absolute;
+      top: -9px;
+      left: -9px;
+      width: 17px;
+      height: 17px;
+      z-index: 100;
+      background-image: url('gfx/map-current-location-marker.png');
+    }
+    .s-map-thumb {
+        position: absolute;
+        bottom: -3px;
+        left: -38px;
+        width: 78px;
+        height: 120px;
+        z-index: 100;
+        .s-map-thumbimage {
+            position: absolute;
+            top: 8px;
+            left: 9px;
+            width: 60px;
+            height: 60px;
+        }
+        .s-map-pin{
+            position: absolute;
+            top:83px;
+            left: 32px;
+            background-image: url('gfx/map-pin.png');
+            width:28px;
+            height: 35px;
+            display: block;
+        }
+        .s-thumb-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-image: url('gfx/map-thumb-bg.png');
+            width:78px;
+            height: 88px;
+            display: block;
+        }
+    }
+
+    #s-map-alert{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 160px;
+        margin-left: -80px;
+        margin-top: -30px;
+        .s-map-image-alert{
+            background-color: white;
+            padding: 6px;
+            padding-left: 48px;
+            position: relative;
+            color: @grayDark;
+            .border-radius(8px);
+            border: solid #ffcc00 4px;
+            font-size: 12px;
+            .box-shadow(0px 4px 6px rgba(0, 0, 0, .3) );
+            .ui-icon-no-images{
+                position: absolute;
+                left: 9px;
+                top: 3px;
+            }
+        }
+    }
+    .s-map-controls{
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        margin: 0 -8px;
+        .ui-select,
+        .ui-input-text{
+            display: block;
+            vertical-align: middle;
+            margin-bottom: 0;
+        }
+        .s-map-time{
+            position: absolute;
+            left: 8px;
+            top: 6px;
+            .s-map-time-label{
+                position: absolute;
+                top: -32px;
+                left: 0;
+                white-space: nowrap;
+            }
+          
+        }
+        .s-map-filters{
+            margin: 6px;
+            margin-left: 48px;
+        }
+    }
+    #x-map-disambiguation{
+        position: absolute;
+        display: none;
+        top: @padding * 2;
+        right: @padding * 2;
+        z-index: 100;
+        min-height: 0px;
+        overflow: visible;
+    }
+
+    #x-no-results {
+        width:70%;
+        .s-map-image-alert {
+            background-color: #ffffff;
+            padding: 6px;
+            padding-left: 48px;
+            position: relative;
+            color: #ff8400;
+            -moz-border-radius: 8px;
+            -webkit-border-radius: 8px;
+            border-radius: 8px;
+            border: solid #ffff00 4px;
+            font-size: 12px;
+            -moz-box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+            -webkit-box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+        }
+    }
+
+}
+
+//a tweak for the mobiscroll time picker css
+.jqm{
+    .dwo{background-color: @blackTrans;}
+    .dwbc{.dwbw{.dwb{margin: 8px;}}}
+}
+

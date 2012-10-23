@@ -10,7 +10,7 @@
 
 div[data-role="page"],
 div[data-role="dialog"]{
-    .corner-all(@cornersPage);
+    .border-radius(@cornersPage);
 }
 
 
@@ -55,7 +55,7 @@ textarea.ui-input-text {
     font-size: @font-size;
     padding: @paddingElement;
     width: 100%;
-    .border-box();
+    .box-sizing(border-box);
 }
 
 .ui-controlgroup,
@@ -222,7 +222,7 @@ a.ui-link-inherit {
 .ui-corner-right {.corner-right();}
 .ui-corner-left {.corner-left();}
 .ui-corner-all,
-.ui-btn-corner-all {.corner-all();}
+.ui-btn-corner-all {.border-radius();}
 .ui-corner-none {.corner-none();}
 
 
@@ -263,7 +263,7 @@ a.ui-link-inherit {
 .ui-btn-corner-right {.corner-right();}
 .ui-btn-corner-left {.corner-left();}
 .ui-btn-corner-all,
-.ui-btn-corner-all {.corner-all();}
+.ui-btn-corner-all {.border-radius();}
 .ui-btn-corner-none {.corner-none();}
 
 
@@ -348,7 +348,7 @@ a.ui-link-inherit {
 }
     
 *[data-corners="false"]{
-    .corner-all(@cornersNone)!important;
+    .border-radius(@cornersNone)!important;
     .ui-corner-tl,
     .ui-corner-tr,
     .ui-corner-bl, 
@@ -367,7 +367,7 @@ a.ui-link-inherit {
     .ui-btn-corner-right,
     .ui-btn-corner-left,
     .ui-btn-corner-all{
-        .corner-all(@cornersNone)!important;
+        .border-radius(@cornersNone)!important;
     }
 }
 

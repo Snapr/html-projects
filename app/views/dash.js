@@ -87,7 +87,7 @@ var dash_view = page_view.extend({
 
     background_update: function(){
 
-        this.$el.addClass('x-background-loading');
+        this.$el.addClass('background-loading');
 
         var dash = this,
             current = {
@@ -102,7 +102,7 @@ var dash_view = page_view.extend({
             //remove competitions
             _.each(current.competitions, function(comp){
                 if(!_.contains(_(dash.model.competitions).pluck('id'), comp)){
-                    dash.$('.x-competitions [data-id='+comp+']').remove();
+                    dash.$('.competitions [data-id='+comp+']').remove();
                 }
             });
 
@@ -114,7 +114,7 @@ var dash_view = page_view.extend({
             //remove tumblr feeds
             _.each(current.tumblr_feeds, function(feed){
                 if(!_.contains(_.chain(dash.model.tumblr_feeds).pluck('display').pluck('id').value(), feed)){
-                    dash.$('.x-tumblr-streams [data-id='+feed+']').remove();
+                    dash.$('.tumblr-streams [data-id='+feed+']').remove();
                 }
             });
 
@@ -138,7 +138,7 @@ var dash_view = page_view.extend({
             //remove featured_streams
             _.each(current.featured_streams, function(stream){
                 if(!dash.model.featured_streams._byId[stream]){
-                    dash.$('.x-featured-streams [data-id='+stream+']').remove();
+                    dash.$('.featured-streams [data-id='+stream+']').remove();
                 }
             });
 
@@ -164,7 +164,7 @@ var dash_view = page_view.extend({
                 },
                 complete: function(){
                     $.mobile.hidePageLoadingMsg();
-                    dash.$el.removeClass('x-background-loading');
+                    dash.$el.removeClass('background-loading');
                 }
             };
 
@@ -182,9 +182,9 @@ var dash_view = page_view.extend({
     },
 
     render: function(){
-        this.$('.x-dash-welcome').toggle(!auth.has("access_token") || this.model.length < 3);
+        this.$('.dash-welcome').toggle(!auth.has("access_token") || this.model.length < 3);
 
-        this.$('.x-user-streams').empty();
+        this.$('.user-streams').empty();
 
         this.add_comps(this.model.competitions);
         this.add_featured_streams(this.model.featured_streams.models);
@@ -201,7 +201,7 @@ var dash_view = page_view.extend({
         var dash_view = this;
         auth.require_login( function(){
             var add = new add_search({
-                el: $("x-add-search")[0],
+                el: $("#dash-add-search")[0],
                 dialog: true
             });
             add.previous_view = config.get('current_view');
@@ -213,7 +213,7 @@ var dash_view = page_view.extend({
         var dash_view = this;
         auth.require_login( function(){
             var add = new add_person({
-                el: $("x-add-person")[0],
+                el: $("#dash-add-person")[0],
                 dialog: true
             });
             add.previous_view = config.get('current_view');
@@ -235,7 +235,7 @@ var dash_view = page_view.extend({
         if(stream.get){
             stream = stream.get('id');
         }
-        this.$('.x-user-streams [data-id='+stream+']').remove();
+        this.$('.user-streams [data-id='+stream+']').remove();
     },
     add_stream: function(item){
         this.add_streams([item]);
@@ -244,7 +244,7 @@ var dash_view = page_view.extend({
     add_streams: function(items){
         if(this.options.show && !_.contains(this.options.show, 'user-streams')){ return; }
 
-        var container = this.$('.x-user-streams');
+        var container = this.$('.user-streams');
 
         _.each(items, function(item){
             var li = new dash_stream({
@@ -258,7 +258,7 @@ var dash_view = page_view.extend({
     add_comps: function(items){
         if(this.options.show && !_.contains(this.options.show, 'comps')){ return; }
 
-        var container = this.$('.x-competitions');
+        var container = this.$('.competitions');
 
         _.each(items, function(item){
             var li = new competition({
@@ -271,7 +271,7 @@ var dash_view = page_view.extend({
     add_tumblrs: function(items){
         if(this.options.show && !_.contains(this.options.show, 'tumblr')){ return; }
 
-        var container = this.$('.x-tumblr-streams');
+        var container = this.$('.tumblr-streams');
 
         _.each(items, function(item){
             var li = new dash_tumblr_view({
@@ -283,7 +283,7 @@ var dash_view = page_view.extend({
     add_featured_streams: function(items){
         if(this.options.show && !_.contains(this.options.show, 'featured-streams')){ return; }
 
-        var container = this.$('.x-featured-streams');
+        var container = this.$('.featured-streams');
 
         _.each(items, function(item){
             var li = new dash_stream({
@@ -309,15 +309,15 @@ var competition = view.extend({
         this.load_template('components/dash/competition');
     },
     render: function(){
-        this.$el.addClass( this.options.expand ? 'x-open' : 'x-closed' );
+        this.$el.addClass( this.options.expand ? 'open' : 'closed' );
         this.$el.html( this.template(this.options) );
         this.$el.attr('data-id', this.options.data.id);
         return this;
     },
     toggle: function(){
-        this.$el.toggleClass('x-open x-closed');
-        this.$el.toggleClass('x-top-left-arrow');
-        this.$('.x-banner').fadeToggle();
+        this.$el.toggleClass('open closed');
+        this.$el.toggleClass('top-left-arrow');
+        this.$('.banner').fadeToggle();
     }
 });
 
@@ -332,7 +332,7 @@ var dash_tumblr_view = view.extend({
     },
     render: function () {
 
-        this.$el.addClass('x-open x-loading');
+        this.$el.addClass('open loading');
         this.$el.html( this.template({
             feed: this.options.feed,
             post: null
@@ -341,7 +341,7 @@ var dash_tumblr_view = view.extend({
         var this_view = this,
             feed = this.options.feed,
 
-            $tumblr_streams = this.$('.x-posts-stream').empty(),
+            $tumblr_streams = this.$('.posts-stream').empty(),
             collection = new tumblr_post_collection(),
             options = {
                 host: feed.host,
@@ -368,9 +368,9 @@ var dash_tumblr_view = view.extend({
         return this;
     },
     toggle: function () {
-        this.$el.toggleClass('x-open x-closed');
-        this.$el.toggleClass('x-top-left-arrow');
-        this.$('.x-posts-stream').fadeToggle();
+        this.$el.toggleClass('open closed');
+        this.$el.toggleClass('top-left-arrow');
+        this.$('.posts-stream').fadeToggle();
     }
 });
 
@@ -381,7 +381,7 @@ var dash_stream = side_scroll.extend({
     className: 'image-stream',
 
     events: _.extend({
-        "click .x-remove-stream": "remove_stream"
+        "click .remove-stream": "remove_stream"
     }, side_scroll.prototype.events),
 
     get_title: function(){
@@ -400,7 +400,7 @@ var dash_stream = side_scroll.extend({
 
     post_initialize: function( options ){
         if (!options.featured){
-            this.$el.addClass("x-user-stream");
+            this.$el.addClass("user-stream");
             this.$el.attr("data-id", this.model.get("id"));
         }
         this.$el.attr('data-id', this.model.id);
@@ -429,7 +429,7 @@ var add_person = page_view.extend({
     post_initialize: function(){
         var dialog = this;
         this.$el.live( "pageshow", function( e, ui ){
-            dialog.$('.x-search-field').focus();
+            dialog.$('#people-search').focus();
         });
 
         this.collection = new user_collection();
@@ -441,18 +441,18 @@ var add_person = page_view.extend({
     },
 
     post_activate: function(){
-        this.$(".x-people-list").empty();
-        this.$(".x-search-field").val('');
+        this.$("ul.people-list").empty();
+        this.$(".ui-input-text").val('');
 
         this.change_page();
     },
 
     events: {
-        "keyup .x-search-field": "search"
+        "keyup input": "search"
     },
 
     render: function(){
-        var people_list = this.$(".x-people-list").empty();
+        var people_list = this.$("ul.people-list").empty();
 
         var people_li_template = this.get_template('components/person');
 
@@ -513,7 +513,7 @@ var add_person = page_view.extend({
 
             this.timer = setTimeout( function() {
                 this_view.timer = null;
-                this_view.$el.addClass('x-loading');
+                this_view.$el.addClass('loading');
                 this_view.xhr = this_view.collection.fetch({
                     data:{
                         username:keywords,
@@ -523,13 +523,13 @@ var add_person = page_view.extend({
                     url: config.get('api_base') + '/user/search/',
                     success: function(){
                         this_view.xhr = null;
-                        this_view.$el.removeClass('x-loading');
+                        this_view.$el.removeClass('loading');
                     }
                 });
             }, 300 );
 
         }else{
-            if(this_view.collection.length){  // stops the list showing no-results on initial searches
+            if(this_view.collection.length){  // stops the list showing x-no-results on initial searches
                 this_view.collection.reset();
             }
         }
@@ -544,7 +544,7 @@ var add_search = page_view.extend({
     post_initialize: function(){
         var dialog = this;
         this.$el.live( "pageshow", function( e, ui ){
-            dialog.$('x-search-field').focus();
+            dialog.$('#dash-search-keywords').focus();
         });
 
     },
@@ -556,13 +556,13 @@ var add_search = page_view.extend({
     },
 
     events: {
-        "submit form": "search",
+        "submit #search-form": "search",
         "click .x-back": "back"
     },
 
     search: function(){
-        var keywords = $("x-search-field").val();
-        var nearby = $("x-search-type").val();
+        var keywords = $("#dash-search-keywords").val();
+        var nearby = $("#dash-search-type").val();
 
         var stream_object = {
             query: {
@@ -590,7 +590,7 @@ var add_search = page_view.extend({
                     add_search.previous_view.model.streams.add(stream);
                     $.mobile.hidePageLoadingMsg();
                 }});
-                add_search.previous_view.$el.removeClass('x-edit');
+                add_search.previous_view.$el.removeClass('edit');
                 add_search.back();
 
                 $.mobile.showPageLoadingMsg();
@@ -609,7 +609,7 @@ var add_search = page_view.extend({
                 dash.model.streams.add(stream);
                 $.mobile.hidePageLoadingMsg();
             }});
-            this.previous_view.$el.removeClass('x-edit');
+            this.previous_view.$el.removeClass('edit');
             this.back();
 
             $.mobile.showPageLoadingMsg();

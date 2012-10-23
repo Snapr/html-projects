@@ -45,7 +45,7 @@ var map_view = page_view.extend({
         "submit #map-keyword": "keyword_search",
         "blur #map-keyword": "keyword_search",
         "click #map-keyword .ui-input-clear": "keyword_search_clear",
-        "click .map-time-btn": "map_time",
+        "click .s-map-time-btn": "map_time",
         "click .x-map-venue-pin" : "toggle_spot_label"
     },
 
@@ -412,7 +412,7 @@ var map_view = page_view.extend({
 
     no_results_message_toggle: function(show){
         if(show !== true){ show = false; }
-        this.$("#snaprmapalert").toggle(!!show);
+        this.$("#s-map-alert").toggle(!!show);
     },
 
     location_search: function( search_query ){
@@ -424,7 +424,7 @@ var map_view = page_view.extend({
             if (status == google.maps.GeocoderStatus.OK){
                 //if there is more than one result, show list
                 if (results.length > 1){
-                    var dis_list = $("#map-disambiguation-list").empty();
+                    var dis_list = $("#x-map-disambiguation-list").empty();
                     _.each( results, function( result ){
                         var li = new map_disambiguation({
                             result: result,
@@ -456,7 +456,7 @@ var map_view = page_view.extend({
 
     location_search_toggle_disambiguation: function(show){
         if(show !== true){ show = false; }
-        this.$("#map-disambiguation").toggle(show);
+        this.$("#x-map-disambiguation").toggle(show);
     },
 
     go_to: function(location, zoom){
@@ -615,7 +615,7 @@ var map_view = page_view.extend({
     map_time_render: function(){
 
         var map_view = this;
-        this.$(".map-time-btn").scroller({
+        this.$(".s-map-time-btn").scroller({
             'cancelText': 'Set to Now',
             'headerText': false ,
             'preset': 'datetime',
@@ -657,11 +657,11 @@ var map_view = page_view.extend({
         }
 
         if (time){
-            this.$(".map-time-btn").scroller('setDate', string_utils.convert_snapr_date(time));
-            this.$(".map-time").find(".ui-bar").text( string_utils.short_timestamp( time, true) || "Now" );
+            this.$(".s-map-time-btn").scroller('setDate', string_utils.convert_snapr_date(time));
+            this.$(".s-map-time").find(".ui-bar").text( string_utils.short_timestamp( time, true) || "Now" );
         }else{
-            this.$(".map-time-btn").scroller('setDate', new Date());
-            this.$(".map-time").find(".ui-bar").text( "Now" );
+            this.$(".s-map-time-btn").scroller('setDate', new Date());
+            this.$(".s-map-time").find(".ui-bar").text( "Now" );
         }
 
         return this;
@@ -676,7 +676,7 @@ var map_view = page_view.extend({
     },
 
     map_time: function(){
-        this.$(".map-time-btn").scroller('show');
+        this.$(".s-map-time-btn").scroller('show');
         return this;
     }
 

@@ -34,7 +34,7 @@
     background-size: 100% 100%;
     background-size: cover;
     background-position: center;
-    .corner-all(2px);
+    .border-radius(2px);
     display: block;
 }
 
@@ -46,7 +46,7 @@
     background-size: cover;
     background-position: center;
     display: block;
-    .corner-all(4px);
+    .border-radius(4px);
 }
 
 .avatar-block{
@@ -111,7 +111,7 @@ h4{
 .warning-message{
     padding: @paddingPage;
     background-color: @yellow;
-    .corner-all(@cornerGeneral);
+    .border-radius(@cornerGeneral);
     border-bottom: @borderLightOnDark;
 }
 
@@ -256,7 +256,7 @@ h4{
            margin-right: 20px;
            overflow: hidden;
            text-overflow: ellipsis;
-           .border-box();
+           .box-sizing(border-box);
      }
      .s-image-time{
            position: relative;
@@ -283,7 +283,7 @@ h4{
       .ui-btn-text{
           padding-left: 20px;
            display: block;
-          .border-box();
+          .box-sizing(border-box);
           height: 18px;
           line-height: 18px;
       }
@@ -337,7 +337,7 @@ h4{
 .system-bar{
     display: block;
     position: relative;
-    .corner-all(@cornerRound);
+    .border-radius(@cornerRound);
     color: white;
     text-shadow: @shadowMediumOnDark 0px -1px 0px;
     background-color: @blue;
@@ -610,7 +610,7 @@ h4{
     margin: 0 @paddingElement @paddingElement @paddingElement;
     display: block;
     background-color: lighten(@yellow, 20%);
-    .corner-all(@cornerLessRound);
+    .border-radius(@cornerLessRound);
     position: relative;
     &::after{
         .arrow-up(6px, lighten(@yellow, 20%), 16px, 0)
@@ -687,7 +687,7 @@ h4{
 
 
 .inline-palette{
-    .corner-all(10px);
+    .border-radius(10px);
     padding: 6px;
     white-space: nowrap;
     &::after{
@@ -856,7 +856,7 @@ h4{
                     background-color:rgba(0,0,0,.12);
                     padding: 36px 0;
                     width: 84px;
-                   .corner-all(44px);
+                   .border-radius(44px);
                     color: white;
                     height: 12px;
                     vertical-align: middle;
@@ -968,7 +968,7 @@ h4{
         position: relative;
         .bar{
                height: 8px;
-               .corner-all(4px);
+               .border-radius(4px);
            }
            .bar-prog{
                position: absolute;
@@ -1047,7 +1047,7 @@ h4{
 
 .ui-input-search{
     &.ui-btn-corner-all{
-        .corner-all(@cornerRound);
+        .border-radius(@cornerRound);
     }
     &.ui-icon-searchfield::after{
         margin-top: -18px;
@@ -1087,7 +1087,7 @@ h4{
 */
 .ui-slider-switch{
 
-    .corner-all(@cornerRound);
+    .border-radius(@cornerRound);
     border: @borderMediumOnLight;
     background: white;
 
@@ -1097,7 +1097,7 @@ h4{
         text-align: center;
         color: #999;
         font-weight: bold;
-        .corner-all(@cornerRound);
+        .border-radius(@cornerRound);
         text-shadow: none;
         background: white;
         border: none!important;
@@ -1118,7 +1118,7 @@ h4{
         border: 1px solid #AAA;
         background: #F6F6F6;
         .box-shadow(0 4px 0 -2px #F1F1F1 inset, 0 2em 2em -2em #AAA inset, 0 0 2px rgba(0,0,0,.5));
-        .corner-all(@cornerRound);
+        .border-radius(@cornerRound);
     }
 
 }
@@ -1237,7 +1237,7 @@ h4{
 /* This will fill out the main page element to full height if you need fullscreen elements */
 .set-full-height{
     min-height: 400px;
-    .border-box();
+    .box-sizing(border-box);
     position:absolute;
     top:0;
     bottom:0;
@@ -1300,7 +1300,7 @@ h4{
 }
 
 /* Footer as part of page content like on dash  */
-.inline-footer{
+.s-inline-footer{
     margin: @paddingPage -@paddingPage 0 -@paddingPage;
     .corner-bottom(@cornerPage);
 
@@ -1466,7 +1466,7 @@ h4{
     .ui-collapsible-content{
         .ui-btn{
             .box-shadow( none);
-            .corner-all(@cornerRound);
+            .border-radius(@cornerRound);
             border: @borderMediumOnLight;
         }
       &.ui-body-d{
@@ -1534,7 +1534,7 @@ h4{
         left: 0;
         top: 0;
         .user-icon-big{
-            .corner-all(@cornerPage);
+            .border-radius(@cornerPage);
         }
     }
 }
@@ -1709,8 +1709,8 @@ div.ps-carousel-item-loading
 
 
 /* default element when a search returns no results */
-#no-results {
-    .imagealert {
+#x-no-results {
+    .s-map-image-alert {
         padding: @paddingElement;
         position: relative;
         font-style: italic;
@@ -1729,7 +1729,7 @@ div.ps-carousel-item-loading
 
 .ui-loading,
 .loading{
-    #no-results{
+    #x-no-results{
         display: none;
     }
 }

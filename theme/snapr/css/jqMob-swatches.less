@@ -114,7 +114,7 @@
 .trans-bg{
     .ui-btn-up-a,
     .ui-input-search,
-    .map-loading {
+    .s-map-loading {
         border: none;
         border-bottom: @borderLightOnDark;
         background-color: @grayDark-tint;
@@ -398,8 +398,8 @@
         background-color: transparent;
         color: @shadowMediumOnLight;
     }
-    #no-results{
-        .imagealert {
+    #x-no-results{
+        .s-map-image-alert {
             padding: @paddingElement * 2;
             color: @grayLightOnLIght;
         }
@@ -422,7 +422,7 @@
         .ui-btn-hover-c.system-bar,
         .ui-btn-down-c.system-bar,
         .ui-btn-active-c.system-bar   {
-            .corner-all(@cornersRound);
+            .border-radius(@cornersRound);
             display: block;
             position: relative;
             border: none;
@@ -448,7 +448,7 @@
     }
 
     .message{
-        .corner-all(@cornersPage);
+        .border-radius(@cornersPage);
         padding: @paddingElement;
         border: @borderMediumOnLight;
         font-size: @font-size-small;
@@ -527,7 +527,7 @@
         .ui-btn-inner{
             border:none;
         }
-        .corner-all(@cornersRound);
+        .border-radius(@cornersRound);
         .ui-icon-delete{background-position: @gfxIcons-delete-x @gfxIcons-y-highlight;}
     }
     .ui-btn-hover-c,
@@ -545,7 +545,7 @@
         .ui-btn-inner{
             border:none;
         }
-        .corner-all(@cornersRound);
+        .border-radius(@cornersRound);
     }
 }
 
@@ -557,7 +557,7 @@
     &.ui-shadow{
         .box-shadow(none);
     }
-    .corner-all(0);
+    .border-radius(0);
 
 
     .ui-li,
@@ -684,7 +684,7 @@
     background-image: @gfxBgDark;
     border-radius: @cornersPage;
     border-top: @borderLightOnDark;
-    .border-box();
+    .box-sizing(border-box);
 }
 
 .ui-body-d {
@@ -835,7 +835,7 @@
                 border: none;
                 background: transparent;
                 margin: 0;
-                .border-box();
+                .box-sizing(border-box);
                 .box-shadow(none);
             }
             &.has-select{
