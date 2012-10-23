@@ -17,7 +17,7 @@ var uploading = page_view.extend({
         });
         config.on('change:paused', function(){
             if(config.get('paused')){
-                view.$('.upload-progress-header').prepend(paused_el).trigger("create");
+                view.$('.x-progress-header').prepend(paused_el).trigger("create");
             }else{
                 $('.x-resume-queue').remove();
             }
@@ -46,7 +46,7 @@ var uploading = page_view.extend({
         this.foursquare_venue = this.query.spot;
         this.venue_name = this.query.venue_name;
 
-        this.progress_el = this.$( ".upload-progress-container" ).empty();
+        this.progress_el = this.$( ".x-progress-header" ).empty();
 
         if (this.query.photo_id){
             // web flow - photo is uploaded then user is sent here
@@ -67,7 +67,7 @@ var uploading = page_view.extend({
     get_override_tab: function(){ return 'share'; },
 
     render_streams: function(){
-        var $image_stream_container = this.$( ".s-image-streams" ).empty();
+        var $image_stream_container = this.$( ".x-image-streams" ).empty();
 
 
         if(this.comp){
@@ -87,7 +87,7 @@ var uploading = page_view.extend({
     },
 
     insert_comp_streams: function(){
-        var $image_stream_container = this.$( ".s-image-streams" );
+        var $image_stream_container = this.$( ".x-image-streams" );
 
         var comp_stream = new side_scroll({
             data: {
@@ -106,7 +106,7 @@ var uploading = page_view.extend({
 
 
     insert_venue_streams: function(){
-        var $image_stream_container = this.$( ".s-image-streams" );
+        var $image_stream_container = this.$( ".x-image-streams" );
 
         var venue_stream = new side_scroll({
             collection: new photo_collection([], {data: {
@@ -121,7 +121,7 @@ var uploading = page_view.extend({
     },
 
     insert_location_streams: function(){
-        var $image_stream_container = this.$( ".s-image-streams" );
+        var $image_stream_container = this.$( ".x-image-streams" );
 
         var location_stream = new side_scroll({
             data: {
@@ -229,9 +229,9 @@ var uploading = page_view.extend({
 
     upload_count: function( count ){
         if (count){
-            this.$el.addClass("showing-upload-queue");
+            this.$el.addClass(".x-showing-upload-queue");
         }else{
-            this.$el.removeClass("showing-upload-queue");
+            this.$el.removeClass(".x-showing-upload-queue");
         }
     },
 
@@ -239,7 +239,7 @@ var uploading = page_view.extend({
         if (this.progress_view){
             this.progress_view.queued(true);
         }
-        this.$('.offline').show();
+        this.$('.x-offline').show();
     }
 });
 
