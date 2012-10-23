@@ -5303,13 +5303,13 @@ over rides theme swatch styles for general blue / white style switch
   left: 2px;
 }
 /* Loader BG placeholder for images */
-.image-loader-bg {
+.s-image-loader-bg {
   background-color: #fbfbfb;
   background-image: url('../gfx/image-load.gif');
   background-repeat: no-repeat;
   background-position: center;
 }
-.image-loader-bg img {
+.s-image-loader-bg img {
   display: block;
 }
 /* This will fill out the main page element to full height if you need fullscreen elements */
@@ -8188,7 +8188,7 @@ body.x-browser-testing .ui-footer, body.x-browser-testing .ui-footer-fixed {
     -webkit-background-size: 38px 38px !important;
     background-size: 38px 38px !important;
   }
-  .image-loader-bg {
+  .s-image-loader-bg {
     background-image: url('../gfx/retina/image-load.gif');
     -moz-background-size: 24px 24px;
     -o-background-size: 24px 24px;

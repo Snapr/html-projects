@@ -85,6 +85,15 @@ div[data-role="content"] .s-inset-header {
   -moz-border-radius: 4px;
   border-radius: 4px;
 }
+.s-image-loader-bg {
+  background-color: #fbfbfb;
+  background-image: url('gfx/image-load.gif');
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.s-image-loader-bg img {
+  display: block;
+}
 .s-feed-header {
   position: relative;
 }
@@ -139,42 +148,36 @@ div[data-role="content"] .s-inset-header {
   padding-top: 16px;
   display: block;
 }
-#feed-images {
-  padding-left: 0;
-  margin-top: 8px;
+.s-image-item-block {
+  margin: 8px 0 24px 0;
 }
 .s-image-item-block .s-image-item-topbar {
   height: 35px;
   margin-bottom: 8px;
-  vertical-align: middle;
-  line-height: 34px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
-.s-image-item-block .s-image-item-topbar .user-icon-link {
-  vertical-align: middle;
-  height: 34px;
-  display: inline-block;
-  width: 34px;
-}
-.s-image-item-block .s-image-item-topbar .ui-link,
-.s-image-item-block .s-image-item-topbar span {
+.s-image-item-block .s-image-item-topbar .s-avatar,
+.s-image-item-block .s-image-item-topbar .s-username,
+.s-image-item-block .s-image-item-topbar .s-image-time-and-location,
+.s-image-item-block .s-image-item-topbar .s-image-time {
   height: 34px;
   line-height: 34px;
   vertical-align: middle;
   display: inline-block;
 }
-.s-image-item-block .image-item {
+.s-image-item-block .s-image-item {
   position: relative;
 }
-.s-image-item-block .image-item .image-status {
+.s-image-item-block .s-image-item .s-image-status {
   position: absolute;
   top: -14px;
   background-color: #e5592f;
   color: white;
   font-size: 11px;
   font-weight: bold;
+  text-shadow: none;
   padding: 0px 3px;
   right: 0;
   height: 14px;
@@ -240,7 +243,7 @@ div[data-role="content"] .s-inset-header {
 .s-image-item-block .comment-area .photo-comment {
   min-height: 75px;
 }
-.s-image-item-block.private .image-status {
+.s-image-item-block.private .s-image-status {
   display: inherit;
 }
 .ui-content .feed-upload-list {

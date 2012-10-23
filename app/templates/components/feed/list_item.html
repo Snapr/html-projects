@@ -1,17 +1,16 @@
 <div class="s-image-item-block<% if (item.get("status") != "public"){%> private<%}%>">
     <div class="s-image-item-topbar">
-        <a class="user-icon-link" href="#/feed/?username=<%= item.get('username') %>">
-            <div class="s-avatar" style="background-image: url('<%= config.get('avatar_url') %>/<%= item.get('user_id') %>/');"></div>
+        <a class="s-avatar" style="background-image: url('<%= config.get('avatar_url') %>/<%= item.get('user_id') %>/');" href="#/feed/?username=<%= item.get('username') %>">
         </a>
-        <a class="username" href="#/feed/?username=<%= item.get('username') %>"><%= item.get('display_username') %></a>
+        <a class="s-username" href="#/feed/?username=<%= item.get('username') %>"><%= item.get('display_username') %></a>
 
         <!-- Show Time only if no location -->
         <% if(item.has('location') && item.get('location').location){ %>
-        <span class="s-image-time-and-location">
-        <a class="goto-map">
+        <a class="goto-map s-image-time-and-location">
             <span class="ui-icon feed-icons ui-icon-venue"></span>
-            <%= string_utils.short_timestamp(item.get('date'), true ) %>, <%= string_utils.short_location(item.get('location').location) %> </a>
-        </span>
+            <%= string_utils.short_timestamp(item.get('date'), true ) %>, <%= string_utils.short_location(item.get('location').location) %> 
+        </a>
+     
         <%}else{%>
         <span class="s-image-time">
             <span class="ui-icon feed-icons ui-icon-clock"></span>
@@ -20,20 +19,24 @@
         <% }%>
     </div>
 
-    <div class="image-item">
+    <div class="s-image-item">
 
     <% if(item.get('external_video')){ %>
-    <video class="main-image x-feed-image external-vid image-loader-bg" data-vid-width="<%= item.get('external_video').width %>" data-vid-duration="<%= item.get('external_video').duration %>" data-vid-height="<%= item.get('external_video').height %>" poster="https://s3.amazonaws.com/media-server<%= item.get('server_id') %>.snapr.us/lrg/<%= item.get('secret') %>/<%= item.get('id') %>.jpg" style="height:<%= get_photo_height(item.get('width'), item.get('height'), '#feed-images') %>px;" preload="none" controls="true" onclick="if(this.paused){this.play();}else{this.pause();}">
+    
+    <video class="main-image x-feed-image s-external-vid s-image-loader-bg" data-vid-width="<%= item.get('external_video').width %>" data-vid-duration="<%= item.get('external_video').duration %>" data-vid-height="<%= item.get('external_video').height %>" poster="https://s3.amazonaws.com/media-server<%= item.get('server_id') %>.snapr.us/lrg/<%= item.get('secret') %>/<%= item.get('id') %>.jpg" style="height:<%= get_photo_height(item.get('width'), item.get('height'), '#feed-images') %>px;" preload="none" controls="true" onclick="if(this.paused){this.play();}else{this.pause();}">
 
         <source src="<%= item.get('external_video').source %>" />
     </video>
+    
     <%}else{%>
-    <a href="https://s3.amazonaws.com/media-server<%= item.get('server_id') %>.snapr.us/lrg2/<%= item.get('secret') %>/<%= item.get('id') %>.jpg" rel="external" class="gallery_link main-image-link image-loader-bg">
+    
+    <a href="https://s3.amazonaws.com/media-server<%= item.get('server_id') %>.snapr.us/lrg2/<%= item.get('secret') %>/<%= item.get('id') %>.jpg" rel="external" class="gallery_link main-image-link s-image-loader-bg">
         <img style="height:<%= get_photo_height(item.get('width'), item.get('height'), '#feed-images') %>px;" src="https://s3.amazonaws.com/media-server<%= item.get('server_id') %>.snapr.us/lrg/<%= item.get('secret') %>/<%= item.get('id') %>.jpg" <% if(item.get('description')){ %>alt="<%= item.get('description') %>"<% } %> class="main-image" />
     </a>
+    
     <% }%>
 
-        <span class="image-status">
+        <span class="s-image-status">
             <%= item.get('status') %>
         </span>
     </div>

@@ -4,7 +4,7 @@ define(['config', 'backbone', 'views/base/view', 'views/components/favorite_butt
 
 var feed_li =  view.extend({
 
-    tagName: "span",
+    tagName: "article",
 
     className: "feed-li",
 
