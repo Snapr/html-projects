@@ -71,7 +71,7 @@ return Backbone.View.extend({
 
     unfollow: function(){
         var user = this.model,
-            button = this.$('.unfollow');
+            button = this.$('.x-unfollow');
         button.x_loading();
         auth.require_login( function(){
             user.unfollow(function(){

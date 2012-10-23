@@ -18,8 +18,8 @@ return page_view.extend({
         this.undelegateEvents();
         this.delegateEvents();
 
-        this.$("ul.people-list").empty();
-        this.$el.addClass('loading');
+        this.$(".x-people-list").empty();
+        this.$el.addClass('x-loading');
 
         // a simple array of people which will be filtered and displayed
         this.display_collection = [];
@@ -33,20 +33,20 @@ return page_view.extend({
         switch (options.follow){
             case "following":
                 this.$("h1").text("Following");
-                this.$("#people-search").val('').attr("placeholder", "Search users " + options.query.username + " is following\u2026" );
+                this.$(".x-search-field").val('').attr("placeholder", "Search users " + options.query.username + " is following\u2026" );
                 this.collection.get_following( options.query.username );
                 break;
             case "followers":
                 this.$("h1").text("Followers");
-                this.$("#people-search").val('').attr("placeholder", "Search " + options.query.username + "'s followers\u2026" );
+                this.$(".x-search-field").val('').attr("placeholder", "Search " + options.query.username + "'s followers\u2026" );
                 this.collection.get_followers( options.query.username );
                 break;
             default:
                 this.$("h1").text("Search");
-                this.$("#people-search").val(options.query.username).attr("placeholder", "Search users\u2026" );
+                this.$(".x-search-field").val(options.query.username).attr("placeholder", "Search users\u2026" );
 
                 var this_view = this;
-                this_view.$el.addClass('loading');
+                this_view.$el.addClass('x-loading');
                 this.collection.fetch({
                     data:{
                         username:options.query.username,
@@ -56,7 +56,7 @@ return page_view.extend({
                     },
                     url: config.get('api_base') + '/user/search/',
                     success: function(){
-                        this_view.$el.removeClass('loading');
+                        this_view.$el.removeClass('x-loading');
                     }
                 });
                 break;
@@ -70,7 +70,7 @@ return page_view.extend({
     },
 
     render: function(){
-        var people_list = this.$("ul.people-list").empty();
+        var people_list = this.$(".x-people-list").empty();
 
         var people_li_template = this.get_template('components/person');
 
@@ -90,7 +90,7 @@ return page_view.extend({
             no_results.render('Oops.. Nobody here yet.', 'delete').$el.appendTo(this.$el);
         }
 
-        this.$el.removeClass('loading');
+        this.$el.removeClass('x-loading');
         people_list.listview().listview("refresh");
     },
 
@@ -131,13 +131,13 @@ return page_view.extend({
 
             this.timer = setTimeout( function() {
                 this_view.timer = null;
-                this_view.$el.addClass('loading');
+                this_view.$el.addClass('x-loading');
                 this_view.xhr = this_view.collection.fetch({
                     data: data,
                     url: config.get('api_base') + '/user/search/',
                     success: function(){
                         this_view.xhr = null;
-                        this_view.$el.removeClass('loading');
+                        this_view.$el.removeClass('x-loading');
                     }
                 });
             }, 300 );
