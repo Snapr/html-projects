@@ -35,9 +35,9 @@ var comp_view = page_view.extend({
 
         this.$('[data-role=content]').empty().append(new_el.find('[data-role=content]').children()).trigger( "create" );
 
-        award_stream = this.$('.award-stream');
+        //award_stream = this.$('.award-stream');
 
-        image_streams = image_streams = this.$('.image-streams');
+        image_streams = this.$('.x-image-streams');
 
         _.each(this.model.get('streams'), function (stream) {
             var li = new side_scroll({
@@ -50,8 +50,6 @@ var comp_view = page_view.extend({
         });
 
         image_streams.trigger('create');
-
-        // 
 
         // _.each(this.model.get('awards'), function (award) {
         //     var li = new award_stream({

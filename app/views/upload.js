@@ -3,7 +3,7 @@ define(['config', 'views/base/page', 'auth', 'utils/string'], function(config, p
 return page_view.extend({
 
     post_initialize: function(){
-        this.$el.find("form").attr( "action", config.get('base_url') + "/api/upload/" );
+        this.$("form").attr( "action", config.get('base_url') + "/api/upload/" );
     },
 
     post_activate: function(){

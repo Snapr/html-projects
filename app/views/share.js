@@ -66,7 +66,7 @@ return page_view.extend({
             location = this.query.location || this.model.get("location").location || '';
 
 
-        this.$el.find("[data-role='content']").html( this.template({
+        this.$("[data-role='content']").html( this.template({
             img_url: img_url,
             screen_height: window.innerHeight,
             photo: this.model,
@@ -182,8 +182,8 @@ return page_view.extend({
                     share_photo_view.model.set({
                         location: model.attributes
                     }, {silent:true});
-                    share_photo_view.$el.find("#no-foursquare-sharing-location").removeClass("ajax-loading");
-                    share_photo_view.$el.find(".location-name").text(share_photo_view.model.get("location").location);
+                    share_photo_view.$("#no-foursquare-sharing-location").removeClass("ajax-loading");
+                    share_photo_view.$(".location-name").text(share_photo_view.model.get("location").location);
                 }
             });
         };
@@ -219,12 +219,12 @@ return page_view.extend({
                             foursquare_venue_name: collection.first().get( "name" )
                         });
                         share_photo_view.model.set({location: location}, {silent:true});
-                        share_photo_view.$el.find("#foursquare-sharing-location").removeClass("ajax-loading");
-                        share_photo_view.$el.find(".foursquare-venue-name")
+                        share_photo_view.$("#foursquare-sharing-location").removeClass("ajax-loading");
+                        share_photo_view.$(".foursquare-venue-name")
                             .text(share_photo_view.model.get("location").foursquare_venue_name);
                     }else{
-                        share_photo_view.$el.find("#foursquare-sharing-location").removeClass("ajax-loading");
-                        share_photo_view.$el.find(".foursquare-venue-name").text( "No venues nearby." );
+                        share_photo_view.$("#foursquare-sharing-location").removeClass("ajax-loading");
+                        share_photo_view.$(".foursquare-venue-name").text( "No venues nearby." );
                     }
                 }
             });
@@ -272,8 +272,8 @@ return page_view.extend({
         local_storage.set( e.target.id, !!$(e.target).attr("checked") );
 
         if (e.target.id == "foursquare-sharing"){
-            this.$el.find("#no-foursquare-sharing-location").toggle();
-            this.$el.find("#foursquare-sharing-location").toggle();
+            this.$("#no-foursquare-sharing-location").toggle();
+            this.$("#foursquare-sharing-location").toggle();
             if ($(e.target).attr("checked")){
                 this.get_foursquare_venues();
             }else{
@@ -367,7 +367,7 @@ return page_view.extend({
 
     get_photo_edit_params: function(){
         var params = {};
-        params.description = escape(this.$el.find("#description").val());
+        params.description = escape(this.$("#description").val());
         var location = this.model.get("location") || {};
         if (location.foursquare_venue_name && location.foursquare_venue_id){
             params.foursquare_venue_name = escape(location.foursquare_venue_name);
@@ -407,8 +407,8 @@ return page_view.extend({
             }
 
             this.model.set({
-                description: this.$el.find("#description").val(),
-                status: this.$el.find("[name='status']").is(":checked") ? "public": "private",
+                description: this.$("#description").val(),
+                status: this.$("[name='status']").is(":checked") ? "public": "private",
                 share_location: ( $("#share-location").attr("checked") == "checked" ),
                 facebook_album: ( $("#facebook-sharing").attr("checked") == "checked" ),
                 tumblr: ( $("#tumblr-sharing").attr("checked") == "checked" ),
@@ -493,7 +493,7 @@ return page_view.extend({
                             string_utils.zeroFill(d.getMinutes(), 2 ) + ':' +
                             string_utils.zeroFill(d.getSeconds(), 2 )
                     };
-                _.each( this.$el.find("form").serializeArray(), function( o ){
+                _.each( this.$("form").serializeArray(), function( o ){
                     if (["tumblr", "facebook_album", "tweet", "foursquare_checkin"].indexOf( o.name ) > -1){
                         if (o.name == "foursquare_checkin" && o.value == "on"){
                             if (this.model.get( "location" ).foursquare_venue_id){

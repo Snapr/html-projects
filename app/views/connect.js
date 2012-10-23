@@ -121,7 +121,7 @@ var connect_li = linked_service.extend({
     },
 
     events: {
-        "submit .tumblr-login": "link_service",
+        "submit form": "link_service",
         "click": "link_service"
     },
 

@@ -10,9 +10,9 @@ return page_view.extend({
             this.signin = !!options.query.signin;
 
             if (options.query.message){
-                this.$el.find(".login-message").text(options.query.message);
+                this.$(".login-message").text(options.query.message);
             }else{
-                this.$el.find(".login-message").text("");
+                this.$(".login-message").text("");
             }
         }else{
             delete this.redirect;

@@ -51,14 +51,14 @@ return page_view.extend({
 
         var list_style = this.query.list_style || 'list';
 
-        var toggle_container = this.$el.find( ".feed-view-toggle" );
+        var toggle_container = this.$( ".feed-view-toggle" );
         toggle_container.find( "input[type='radio']" ).attr( "checked", false );
 
         if (list_style == 'grid'){
-            this.$el.find(".feed-content").addClass("grid");
+            this.$(".feed-content").addClass("grid");
             toggle_container.find("#feed-view-grid").attr( "checked", true );
         }else{
-            this.$el.find(".feed-content").removeClass("grid");
+            this.$(".feed-content").removeClass("grid");
             toggle_container.find("#feed-view-list").attr( "checked", true );
         }
 
@@ -72,12 +72,12 @@ return page_view.extend({
             this.feed_header = new user_header({
                 username: this.query.username,
                 model: user,
-                el: this.$el.find(".feed-header").empty()[0]
+                el: this.$(".feed-header").empty()[0]
             });
         }else{
             this.feed_header = new feed_header({
                 query_data: this.query,
-                el: this.$el.find(".feed-header").empty()[0]
+                el: this.$(".feed-header").empty()[0]
             });
         }
 
@@ -85,10 +85,10 @@ return page_view.extend({
         this.$('.x-activity').toggle(this.is_my_snaps());
 
         this.$el.removeClass("showing-upload-queue");
-        this.$el.find(".feed-upload-list").empty();
+        this.$(".feed-upload-list").empty();
 
-        this.$el.find(".feed-upload-list").empty();
-        this.$el.find('#feed-images').empty();
+        this.$(".feed-upload-list").empty();
+        this.$('#feed-images').empty();
 
         this.change_page();
 
@@ -117,7 +117,7 @@ return page_view.extend({
 
     populate_feed: function( additional_data ){
 
-        var list_style = this.$el.find("#feed-view-grid").is(":checked") && 'grid' || 'list';
+        var list_style = this.$("#feed-view-grid").is(":checked") && 'grid' || 'list';
 
         if (this.feed_list){
             this.feed_list.list_style = list_style;
@@ -145,7 +145,7 @@ return page_view.extend({
                         );
                 }else{
                     feed_view.feed_list = new feed_list({
-                        el: feed_view.$el.find('#feed-images')[0],
+                        el: feed_view.$('#feed-images')[0],
                         collection: feed_view.photo_collection,
                         list_style: list_style
                     });
@@ -196,7 +196,7 @@ return page_view.extend({
         input_target.attr( "checked", true );
         container.find( "input[type='radio']" ).checkboxradio( "refresh" );
 
-        this.$el.find(".feed-content").toggleClass("grid", list_style != "list").trigger("refresh");
+        this.$(".feed-content").toggleClass("grid", list_style != "list").trigger("refresh");
         this.feed_list.list_style = list_style;
         this.feed_list.render( this.photoswipe_init );
     },
@@ -222,7 +222,7 @@ return page_view.extend({
                     template: upload_li_template,
                     photo: photo
                 });
-                this.$el.find(".feed-upload-list").prepend( li.render().el );
+                this.$(".feed-upload-list").prepend( li.render().el );
             }, this);
 
             if (upload_progress.models.length){

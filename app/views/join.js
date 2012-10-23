@@ -93,7 +93,7 @@ var join_dialog = page_view.extend({
         "submit #join-dialog": "join",
         "click .twitter-button": 'twitter_login',
         "click .facebook-button": 'facebook_login'
-        
+
     },
 
     join: function(){
@@ -101,9 +101,9 @@ var join_dialog = page_view.extend({
         $('.x-join-btn').x_loading();
         var new_user = new user_settings();
         new_user.data = {
-           username: this.$el.find("#join-dialog-username").val(),
-           password: this.$el.find("#join-dialog-password").val(),
-           email: this.$el.find("#join-dialog-email").val(),
+           username: this.$("#join-dialog-username").val(),
+           password: this.$("#join-dialog-password").val(),
+           email: this.$("#join-dialog-email").val(),
            client_id: config.get('client_id')
         };
 
@@ -118,9 +118,9 @@ var join_dialog = page_view.extend({
             success: function()
             {
                 // empty all the forms
-                join_snapr_view.$el.find("#join-dialog-username").val('');
-                join_snapr_view.$el.find("#join-dialog-password").val('');
-                join_snapr_view.$el.find("#join-dialog-email").val('');
+                join_snapr_view.$("#join-dialog-username").val('');
+                join_snapr_view.$("#join-dialog-password").val('');
+                join_snapr_view.$("#join-dialog-email").val('');
                 // go back to home screen
                 Backbone.history.navigate('#/join-success/');
             },

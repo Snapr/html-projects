@@ -87,7 +87,7 @@ return view.extend({
                     alerts.notification('Error', "Sorry, we had trouble saving your settings." );
                     linked_service.my_account.initialize();
                 }
-                //linked_service.$el.find("[data-role='collapsible']").trigger('collapse');
+                //linked_service.$("[data-role='collapsible']").trigger('collapse');
             },
             error: function(){
                 alerts.notification('Error', "Sorry, we had trouble saving your settings." );
@@ -97,7 +97,7 @@ return view.extend({
 
         if(this.model.provider == 'facebook'){
             this.model.set({
-                gallery_name: this.$el.find("#facebook-gallery-name").val()
+                gallery_name: this.$("#facebook-gallery-name").val()
             });
         }
 
@@ -130,63 +130,63 @@ return view.extend({
 
     twitter_link: function(){
         this.model.set({
-            show_username: this.$el.find("#twitter-link").val()
+            show_username: this.$("#twitter-link").val()
         });
         this.save_changes();
     },
 
     twitter_tweet: function(){
         this.model.set({
-            allow_tweets: this.$el.find('#twitter-tweet').val()
+            allow_tweets: this.$('#twitter-tweet').val()
         });
         this.save_changes();
     },
 
     foursquare_link: function(){
         this.model.set({
-            show_username: this.$el.find("#foursquare-link").val()
+            show_username: this.$("#foursquare-link").val()
         });
         this.save_changes();
     },
 
     foursquare_checkin: function(){
         this.model.set({
-            allow_checkin: this.$el.find('#foursquare-checkin').val()
+            allow_checkin: this.$('#foursquare-checkin').val()
         });
         this.save_changes();
     },
 
     facebook_link: function(){
         this.model.set({
-            show_profile_link: this.$el.find('#facebook-link').val()
+            show_profile_link: this.$('#facebook-link').val()
         });
         this.save_changes();
     },
 
     facebook_newsfeed: function(){
         this.model.set({
-            allow_newsfeed_posts: this.$el.find('#facebook-newsfeed').val()
+            allow_newsfeed_posts: this.$('#facebook-newsfeed').val()
         });
         this.save_changes();
     },
 
     facebook_gallery: function(){
         this.model.set({
-            allow_gallery_posts: this.$el.find('#facebook-gallery').val()
+            allow_gallery_posts: this.$('#facebook-gallery').val()
         });
         this.save_changes();
     },
 
     tumblr_link: function(){
         this.model.set({
-            show_username: this.$el.find('#tumblr-link').val()
+            show_username: this.$('#tumblr-link').val()
         });
         this.save_changes();
     },
 
     tumblr_post: function(){
         this.model.set({
-            allow_posts: this.$el.find('#tumblr-post').val()
+            allow_posts: this.$('#tumblr-post').val()
         });
         this.save_changes();
     }

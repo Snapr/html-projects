@@ -10,9 +10,9 @@ return page_view.extend({
         }
 
         if (this.message){
-            this.$el.find(".login-message").text(this.message);
+            this.$(".login-message").text(this.message);
         }else{
-            this.$el.find(".login-message").text("");
+            this.$(".login-message").text("");
         }
 
         this.change_page();
