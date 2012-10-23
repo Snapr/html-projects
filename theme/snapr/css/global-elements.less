@@ -6,9 +6,9 @@
 
 *[data-tab-bar="true"]{
     padding-bottom: @tabBar-height;
-    .corner-bottom(0)!important;
+    .border-bottom-radius(0)!important;
     div[data-role="content"]{
-        .corner-bottom(0)!important;
+        .border-bottom-radius(0)!important;
     }
 
     //Hide home menu and camera button on pages where the is a tab bar
@@ -20,10 +20,10 @@
     }
 
     .inline-footer{
-        .corner-bottom(0)!important;
+        .border-bottom-radius(0)!important;
         &.feed-footer{
             .ui-btn{
-                .corner-bottom(0)!important;
+                .border-bottom-radius(0)!important;
             }
         }
     }
@@ -193,7 +193,7 @@ h4{
     background-color: @black;
     .ui-navbar {
         .darkGrad();
-        .corner-bottom(@cornersPage);
+        .border-bottom-radius(@cornersPage);
         padding: 3px 0;
         border-top: solid lighten(@grayDark, 20%) 1px;
 
@@ -268,8 +268,8 @@ h4{
         padding: 8px;
         .box-shadow(none);
 
-        .corner-top(@corners);
-        .corner-bottom(0);
+        .border-top-radius(@corners);
+        .border-bottom-radius(0);
 
         .ui-btn-inner{
             line-height: @font-size-small;
@@ -354,7 +354,7 @@ h4{
         margin: 0 -@paddingPage;
         border: none;
         border-top: @borderLightOnLight;
-        .corner-top (@cornersPage);
+        .border-top-radius (@cornersPage);
         .ui-btn{
             .ui-btn-text{
                 font-size: @font-size;
@@ -968,23 +968,23 @@ h4{
 
     &.top-no-arrow{
         text-align: left;
-        .corner-top (@cornersPage);
-        .corner-bottom (@cornersNone);
+        .border-top-radius (@cornersPage);
+        .border-bottom-radius (@cornersNone);
         .ui-btn-text{
             padding-left: 20px;
         }
     }
     &.top-no-arrow,
     &.top-left-arrow{
-        .corner-top (@cornersPage);
-        .corner-bottom (@cornersNone);
+        .border-top-radius (@cornersPage);
+        .border-bottom-radius (@cornersNone);
 
     }
     &.bottom-centered-arrow{
         overflow: visible;
         text-align: center;
-        .corner-top (0);
-        .corner-bottom (@cornersPage);
+        .border-top-radius (0);
+        .border-bottom-radius (@cornersPage);
         .ui-btn-inner{
             border: none;
             .ui-btn-text{
@@ -1001,7 +1001,7 @@ h4{
         padding: 6px;
         line-height: @font-size-small;
         min-height: @font-size-small;
-        .corner-top(@corners);
+        .border-top-radius(@corners);
     }
 
 
@@ -1537,7 +1537,7 @@ over rides theme swatch styles for general blue / white style switch
     margin-right: -@paddingPage;
     position: relative;
     background-color: @grayLight;
-    .corner-top (@cornersPage);
+    .border-top-radius (@cornersPage);
     .box-shadow(inset 5px 0 20px rgba(0, 0, 0, 0.2));
     a{
         color: @grayDark;  
@@ -1711,7 +1711,7 @@ over rides theme swatch styles for general blue / white style switch
 /* Footer as part of page content like on dash  */
 .inline-footer{
     margin: @paddingPage -@paddingPage 0 -@paddingPage;
-    .corner-bottom(@cornersPage);
+    .border-bottom-radius(@cornersPage);
 
     .ui-grid-a{
         .ui-block-a{
@@ -2036,7 +2036,7 @@ different markup format between collapsible headings and list links */
         .linear-gradient (#000000, #1d1d1d);
     }
     &.ps-toolbar-top{
-        .corner-bottom();
+        .border-bottom-radius();
     }
     .ps-toolbar-previous,
     .ps-toolbar-next{
@@ -2055,7 +2055,7 @@ different markup format between collapsible headings and list links */
 }
 
 .ps-caption-bottom{
-    .corner-top();
+    .border-top-radius();
     border: none;
     .linear-gradient (#1d1d1d, #000000);
     .ps-caption-content{

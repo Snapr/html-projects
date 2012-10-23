@@ -5219,7 +5219,7 @@ over rides theme swatch styles for general blue / white style switch
   font-family: Helvetica, Arial, sans-serif !important;
 }
 /* Style for inset header as seen on user feed and upload pages */
-.s-inset-header {
+.s-inline-header {
   margin-left: -8px;
   margin-right: -8px;
   position: relative;
@@ -5234,7 +5234,7 @@ over rides theme swatch styles for general blue / white style switch
   -webkit-box-shadow: inset 5px 0 20px rgba(0, 0, 0, 0.2);
   box-shadow: inset 5px 0 20px rgba(0, 0, 0, 0.2);
 }
-.s-inset-header a {
+.s-inline-header a {
   color: #343434;
 }
 /* Custom images in buttons */

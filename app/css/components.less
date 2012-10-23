@@ -42,12 +42,15 @@ div[data-role="header"]{
 
 
 div[data-role="content"]{
-    padding: @padding * 2;
+    position: relative;
+    padding: 0 @padding * 2;
     
-    .s-inset-header{
-        margin: -@padding * 2 -@padding * 2 0 -@padding * 2;
+    .s-inline-footer,
+    .s-inline-header{
+        margin: 0 -@padding * 2;
         background-color: @grayLighter;
     }
+    
 }
 
 
@@ -332,6 +335,52 @@ div[data-role="content"]{
 // DASH
 // -------------------------
 
+.dash-wrapper{
+    min-height: 316px;
+}
+
+.dash-edit-done{
+    display: none;
+}
+
+#dash.edit{
+    // Show the btn to exit edit mode
+    .dash-edit-done{
+        display: block;
+    }
+    // Shuffle the app people buttons to the top
+    .dash-wrapper{
+       margin-top: 94px;
+    }
+    .dash-footer{
+        position: absolute;
+        top: 0;
+        width: 100%;
+        margin-top: 0;
+        .border-top-radius (8px);
+        .border-bottom-radius(0);
+    }
+    // Hide the default streams that are unremovable
+   .x-stream,
+   .tumblr-streams,
+   .competitions{
+      display: none;
+      &.user-stream{
+        display: block;
+      }
+   }
+}
+
+// Hide the follow btns on dash lists
+#dash-add-person{
+    .people-list{
+        .x-follow-btn{
+            display: none;
+        }
+
+    }
+}
+
 
 
 // TUMBLR
@@ -425,6 +474,20 @@ div[data-role="content"]{
     background-position: center bottom;
     display: block;
 }
+
+.ui-icon.tumblr-icon{   
+    background-image: url('@{gfx}@{gfxTumblr}');
+    width: @gfxTumblr-grid!important;
+    height: @gfxTumblr-grid!important;
+    &.ui-icon-tumblr-text{background-position: @gfxTumblr-x @gfxTumblr-text-y;}
+    &.ui-icon-tumblr-photo{background-position: @gfxTumblr-x @gfxTumblr-photo-y;}
+    &.ui-icon-tumblr-quote{background-position: @gfxTumblr-x @gfxTumblr-quote-y;}
+    &.ui-icon-tumblr-link{background-position: @gfxTumblr-x @gfxTumblr-link-y;}
+    &.ui-icon-tumblr-video{background-position: @gfxTumblr-x @gfxTumblr-video-y;}
+    &.ui-icon-tumblr-audio{background-position: @gfxTumblr-x @gfxTumblr-audio-y;}
+    &.ui-icon-tumblr-chat{background-position: @gfxTumblr-x @gfxTumblr-chat-y;}
+}
+
 
 // FEED
 // -------------------------
