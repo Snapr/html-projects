@@ -644,7 +644,6 @@ var favorite_button = view.extend({
 
         return this;
     }
-
 });
 
 var comment_button = view.extend({
