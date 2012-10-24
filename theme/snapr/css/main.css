@@ -6231,7 +6231,7 @@ body.x-browser-testing .ui-footer, body.x-browser-testing .ui-footer-fixed {
 .s-image-item-block .s-image-description .goto-spot {
   color: #999999;
 }
-.s-image-item-block .image-item-base {
+.s-image-item-block .s-image-item-base {
   position: relative;
 }
 .s-image-item-block .image-actions {

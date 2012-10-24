@@ -133,13 +133,13 @@ div[data-role="content"] .s-inline-footer {
 .s-thumbs-grid-med,
 .x-grid .x-feed-images {
   margin: 0 -8px;
-  padding: 4px 0 4px 4px;
+  padding: 4px 0 2px 2px;
   min-height: 101px;
 }
 .s-thumbs-grid-med .s-feed-item,
 .x-grid .x-feed-images .s-feed-item {
   display: inline-block;
-  margin-right: 4px;
+  margin: 0 2px;
 }
 .s-thumbs-grid-med .s-image-link,
 .x-grid .x-feed-images .s-image-link {
@@ -158,6 +158,10 @@ div[data-role="content"] .s-inline-footer {
 }
 .ui-bar {
   margin: 0 -8px;
+  font-size: 12px;
+}
+.ui-bar strong {
+  font-size: 16px;
 }
 .ui-bar .ui-btn .ui-btn-inner,
 .ui-bar.ui-btn .ui-btn-inner {
@@ -165,6 +169,14 @@ div[data-role="content"] .s-inline-footer {
   padding-bottom: 0;
   height: 36px;
   line-height: 36px;
+}
+.ui-bar .ui-btn .ui-btn-text,
+.ui-bar.ui-btn .ui-btn-text {
+  font-size: 12px;
+}
+.ui-bar .ui-btn .ui-btn-text strong,
+.ui-bar.ui-btn .ui-btn-text strong {
+  font-size: 16px;
 }
 .ui-bar .ui-controlgroup-controls {
   width: 100%;
@@ -609,15 +621,17 @@ div[data-role="content"] .s-inline-footer {
 .s-image-item-block .s-main-s-image-link {
   display: block;
 }
-.s-image-item-block .s-main-image {
+.s-image-item-block .s-main-s-image-link .s-main-image {
   width: 100%;
 }
 .s-image-item-block .s-image-description {
   margin-top: 8px;
   margin-bottom: -8px;
 }
-.s-image-item-block .image-item-base {
+.s-image-item-block .s-image-item-base {
   position: relative;
+  margin-top: 8px;
+  margin-bottom: -8px;
 }
 .s-image-item-block .reactions-list {
   display: none;
@@ -657,9 +671,9 @@ div[data-role="content"] .s-inline-footer {
 .s-image-item-block.private .s-image-status {
   display: inherit;
 }
-/* The magical dance to center a palette with variable width */
 .has-palette {
   position: relative;
+  display: inline-block;
 }
 .has-palette .action-palette {
   position: absolute;
@@ -670,6 +684,7 @@ div[data-role="content"] .s-inline-footer {
 .has-palette .action-palette .center-palette {
   display: inline-block;
   position: relative;
+  width: 200px;
   left: 50%;
 }
 .has-palette .action-palette .center-palette .inline-palette {

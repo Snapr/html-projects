@@ -1,19 +1,19 @@
-<div class="ui-bar-e ui-bar top-no-arrow">
+<div class="ui-bar-e ui-bar">
     <% if(feed_title){ %>
-        <h4><em><%= feed_title %></em></h4>
+        <strong><%= feed_title %></strong>
     <% }else{ %>
         <% switch (feed_type) { case 'spot': %>
-            <h4>@ <em><%= feed_parameter %></em></h4>
+            @ <strong><%= feed_parameter %></strong>
         <% break; case 'location': %>
-            <h4><em>Location Feed</em></h4>
+            <strong>Location Feed</strong>
         <% break; case 'search': %>
-            <h4>Search for <em><%= feed_parameter %></em></h4>
+            Search for <strong><%= feed_parameter %></strong>
         <% break; case 'favorites': %>
-            <h4>Favorited by <a href="#/feed/?username=<%= feed_parameter %>"><em><%= feed_parameter %></em></a></h4>
+            Favorited by <a href="#/feed/?username=<%= feed_parameter %>"><strong><%= feed_parameter %></strong></a>
         <% break; case 'recent': %>
-            <h4><em>Recent Uploads</em></h4>
+            <strong>Recent Uploads</strong>
         <% break; case 'feed': %>
-            <h4><em>Photos</em></h4>
+            <strong>Photos</strong>
         <% break;}%>
     <% } %>
 </div>

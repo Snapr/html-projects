@@ -44,14 +44,15 @@ div[data-role="header"]{
 // -------------------------
 
 
+
 div[data-role="content"]{
     position: relative;
     padding: 0 @padding * 2;
     
     .ui-content{
         padding: @padding * 2;
-    }
-    
+    }  
+      
     .s-inline-header{
         margin: 0 -@padding * 2;
         background-color: @grayLighter;
@@ -157,12 +158,12 @@ div[data-role="content"]{
 .s-thumbs-grid-med,
 .x-grid .x-feed-images{
     margin: 0 -@padding * 2;
-    padding: @padding 0 @padding @padding;
+    padding: @padding 0 @padding / 2 @padding / 2;
     min-height: @thumbSize;
 
     .s-feed-item{
         display: inline-block;
-        margin-right: @padding;
+        margin: 0 @padding / 2;
     }
 
     .s-image-link{
@@ -186,6 +187,11 @@ div[data-role="content"]{
 
 .ui-bar{
     margin: 0 -@padding * 2;
+    font-size: @fontSizeSmall;
+    
+    strong{
+        font-size: @fontSizeUsername;
+    }
     
     .ui-btn,
     &.ui-btn{
@@ -194,6 +200,12 @@ div[data-role="content"]{
             padding-bottom: 0;
             height: @barHeight;
             line-height: @barHeight;
+        }
+        .ui-btn-text{
+            font-size: @fontSizeSmall;
+             strong{
+               font-size: @fontSizeUsername;
+           }
         }
     }
     
@@ -669,19 +681,20 @@ div[data-role="content"]{
             display: none;
         }
     }
-    
     .s-main-s-image-link{
         display: block;
-    }
-    .s-main-image{
-        width: 100%;
+        .s-main-image{
+            width: 100%;
+        }
     }
     .s-image-description{
         margin-top: @padding * 2;
         margin-bottom: -@padding * 2;
     }
-    .image-item-base{
+    .s-image-item-base{
         position: relative;
+        margin-top: @padding * 2;
+        margin-bottom: -@padding * 2;
     }
 
 
@@ -727,9 +740,10 @@ div[data-role="content"]{
     }
 }
 
-/* The magical dance to center a palette with variable width */
+//Prefer to swap these palettes for jMob popups
 .has-palette{
     position: relative;
+    display: inline-block;
     .action-palette{
         position: absolute;
         bottom: 100%;
@@ -738,6 +752,7 @@ div[data-role="content"]{
         .center-palette{
             display:inline-block;
             position:relative;
+            width: 200px;
             left:50%;
             .inline-palette{
                 position:relative;
