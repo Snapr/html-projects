@@ -78,6 +78,13 @@ div[data-role="content"] .s-inline-header {
   top: -30px;
   right: 0;
 }
+*[data-tab-bar="true"] {
+  padding-bottom: 56px;
+}
+*[data-tab-bar="true"] div[data-role="header"] *[data-icon="home"],
+*[data-tab-bar="true"] div[data-role="header"] *[data-icon="camera"] {
+  display: none;
+}
 .s-avatar,
 .s-avatar-med,
 .s-avatar-large {
@@ -163,6 +170,7 @@ div[data-role="content"] .s-inline-header {
   width: 20%;
   box-sizing: border-box;
   margin: 0;
+  padding-right: 0;
 }
 /* Horizontally scrolling image stream components */
 .s-image-streams .x-stream {
@@ -336,6 +344,9 @@ div[data-role="content"] .s-inline-header {
 #dash-add-person .people-list .x-follow-btn {
   display: none;
 }
+.tumblr-streams {
+  position: relative;
+}
 .tumblr-item {
   min-height: 101px;
   height: 101px;
@@ -453,6 +464,26 @@ div[data-role="content"] .s-inline-header {
 }
 .ui-icon.tumblr-icon.ui-icon-tumblr-chat {
   background-position: 0px -96px;
+}
+.competition {
+  position: relative;
+}
+.competition .banner {
+  margin: 0 -8px;
+  background-color: #f7f7f7;
+  min-height: 100px;
+}
+.competition .banner .banner-image {
+  display: block;
+}
+.competition .info {
+  background-color: #fbfbfb;
+  margin: 8px 0;
+  padding: 8px;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  border-radius: 8px;
+  font-size: 12px;
 }
 .s-feed-header {
   position: relative;

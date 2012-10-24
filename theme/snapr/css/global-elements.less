@@ -67,7 +67,7 @@
     background-size: 100% 100%;
     background-size: cover;
     background-position: center;
-    .corner-all(2px);
+    .border-radius(2px);
     display: block;
 }
 
@@ -79,7 +79,7 @@
     background-size: cover;
     background-position: center;
     display: block;
-    .corner-all(4px);
+    .border-radius(4px);
 }
 
 .avatar-block{
@@ -150,7 +150,7 @@ h4{
 .warning-message{
     padding: @paddingPage;
     background-color: @snaprYellow;
-    .corner-all(@corners);
+    .border-radius(@corners);
     border-bottom: @borderLightOnDark;
 }
 
@@ -326,7 +326,7 @@ h4{
         background-color: @grayLight;
         margin: @padding * 2 0;
         padding: @padding * 2;
-        .corner-all(@corners);
+        .border-radius(@corners);
         font-size: @font-size-small;
     }
 }
@@ -581,7 +581,7 @@ h4{
     margin: 0 @paddingElement @paddingElement @paddingElement;
     display: block;
     background-color: lighten(@green, 20%);
-    .corner-all(@cornerLessRound);
+    .border-radius(@cornerLessRound);
     position: relative;
     &::after{
         .arrow-up(6px, lighten(@green, 20%), 16px, 0)
@@ -658,7 +658,7 @@ h4{
 
 
 .inline-palette{
-    .corner-all(10px);
+    .border-radius(10px);
     padding: 6px;
     white-space: nowrap;
     &::after{
@@ -733,7 +733,7 @@ h4{
         padding: @padding * 2;
         min-height: @thumbSize;
         .box-sizing(border-box);
-        .corner-all();
+        .border-radius();
 
         .crop-content{
             text-overflow: ellipsis;
@@ -1018,7 +1018,7 @@ h4{
 
 .closed{
     .ui-bar{
-        .corner-all(@corners);
+        .border-radius(@corners);
         .ui-icon-open{
             background-position: @gfxBar-x-c @gfxBar-closed-y;
         }
@@ -1040,7 +1040,7 @@ h4{
 .system-bar{
     display: block;
     position: relative;
-    .corner-all(@cornersRound);
+    .border-radius(@cornersRound);
     color: white;
     text-shadow: @shadowMediumOnDark 0px -1px 0px;
     background-color: @blue;
@@ -1187,7 +1187,7 @@ h4{
                     background-color:rgba(0,0,0,.12);
                     padding: 36px 0;
                     width: 84px;
-                    .corner-all(44px);
+                    .border-radius(44px);
                     color: white;
                     height: 12px;
                     vertical-align: middle;
@@ -1203,7 +1203,7 @@ h4{
                     background-color:rgba(0,0,0,.12);
                     padding: 36px 0;
                     width: 84px;
-                    .corner-all(44px);
+                    .border-radius(44px);
                     color: white;
                     height: 12px;
                     vertical-align: middle;
@@ -1354,7 +1354,7 @@ h4{
         position: relative;
         .bar{
             height: 8px;
-            .corner-all(4px);
+            .border-radius(4px);
         }
         .bar-prog{
             position: absolute;
@@ -1434,7 +1434,7 @@ h4{
 
 .ui-input-search{
     &.ui-btn-corner-all{
-        .corner-all(@cornersRound);
+        .border-radius(@cornersRound);
     }
     &.ui-icon-searchfield::after{
         margin-top: -18px;
@@ -1474,7 +1474,7 @@ over rides theme swatch styles for general blue / white style switch
 */
 .ui-slider-switch{
 
-    .corner-all(@cornersRound);
+    .border-radius(@cornersRound);
     border: @borderMediumOnLight;
     background: white;
 
@@ -1486,7 +1486,7 @@ over rides theme swatch styles for general blue / white style switch
         text-align: center;
         color: #999;
         font-weight: bold;
-        .corner-all(@cornersRound);
+        .border-radius(@cornersRound);
         text-shadow: none;
         background: white;
         border: none!important;
@@ -1508,7 +1508,7 @@ over rides theme swatch styles for general blue / white style switch
         border: 1px solid #AAA;
         background: #F6F6F6;
         .box-shadow(0 4px 0 -2px #F1F1F1 inset, 0 2em 2em -2em #AAA inset, 0 0 2px rgba(0,0,0,.5));
-        .corner-all(@cornersRound);
+        .border-radius(@cornersRound);
     }
 
 }
@@ -1878,7 +1878,7 @@ over rides theme swatch styles for general blue / white style switch
     .ui-collapsible-content{
         .ui-btn{
             .box-shadow( none);
-            .corner-all(@cornersRound);
+            .border-radius(@cornersRound);
             border: @borderMediumOnLight;
             
         }
@@ -1947,7 +1947,7 @@ different markup format between collapsible headings and list links */
         left: 0;
         top: 0;
         .user-icon-big{
-            .corner-all(@cornersPage);
+            .border-radius(@cornersPage);
         }
     }
 }

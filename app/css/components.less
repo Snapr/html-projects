@@ -76,6 +76,24 @@ div[data-role="content"]{
     right: 0;
 }
 
+// Add base padding to pages with tab bars and square off rounded corners for content
+
+*[data-tab-bar="true"]{
+    padding-bottom: @tabBarHeight;
+
+    div[data-role="content"]{
+    }
+
+    //Hide home menu and camera button on pages where the is a tab bar
+    div[data-role="header"]{
+        *[data-icon="home"],
+        *[data-icon="camera"]{
+            display: none;
+        }
+    }
+
+   
+}
 
 
 
@@ -179,6 +197,7 @@ div[data-role="content"]{
         width: 20%;
         box-sizing: border-box;
         margin: 0;
+        padding-right: 0;
     }
 }
 
@@ -386,6 +405,11 @@ div[data-role="content"]{
 // TUMBLR
 // -------------------------
 
+
+.tumblr-streams{
+    position: relative;
+}
+
 .tumblr-item{
     min-height: @thumbSize;
    height: @thumbSize;
@@ -487,6 +511,31 @@ div[data-role="content"]{
     &.ui-icon-tumblr-audio{background-position: @gfxTumblr-x @gfxTumblr-audio-y;}
     &.ui-icon-tumblr-chat{background-position: @gfxTumblr-x @gfxTumblr-chat-y;}
 }
+
+
+// COMPS
+// ----------------------------
+
+
+.competition{
+    position: relative;
+    .banner{
+        margin: 0 -@padding * 2;
+        background-color: @grayLighter;
+        min-height: 100px;
+        .banner-image{
+            display: block;
+        }
+    }
+    .info{
+        background-color: @grayLight;
+        margin: @padding * 2 0;
+        padding: @padding * 2;
+        .border-radius(@corners);
+        font-size: @font-size-small;
+    }
+}
+
 
 
 // FEED
