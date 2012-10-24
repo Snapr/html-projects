@@ -95,23 +95,17 @@ var feed_view =  page_view.extend({
             toggle_container.find(".x-list").attr( "checked", true );
         }
 
-
         if (this.query.username){
-            var this_view = this;
-            var user = new user_model( {username: this.query.username} );
-            user.on('change', function(){
-                this_view.title = user.get('display_username');
-            });
-            this.feed_header = new user_header({
-                username: this.query.username,
-                model: user,
-                el: this.$(".x-feed-header").empty()[0]
-            });
+            this.user = new user_model( {username: this.query.username} );
+            var feed = this;
+            var render_user_header = function(){
+                feed.render_header({user: feed.user});
+            };
+            this.user.bind( "change:relationship", render_user_header );
+            this.user.bind( "change:user_id", render_user_header );
+            this.user.fetch();
         }else{
-            this.feed_header = new feed_header({
-                query_data: this.query,
-                el: this.$(".x-feed-header").empty()[0]
-            });
+            this.render_header({feed_query: this.query});
         }
 
         this.$el.toggleClass('x-my-snaps', this.is_my_snaps());
@@ -139,7 +133,9 @@ var feed_view =  page_view.extend({
 
     events: {
         "click .x-load-more": "more",
-        "change .x-feed-view-toggle": "feed_view_toggle"
+        "change .x-feed-view-toggle": "feed_view_toggle",
+        "click .x-follow": "follow_user",
+        "click .x-unfollow": "unfollow_user"
     },
 
     is_my_snaps: function(){ return auth.has("snapr_user") && auth.get("snapr_user") == this.options.query.username; },
@@ -147,6 +143,10 @@ var feed_view =  page_view.extend({
     get_default_tab: function(){ return this.is_my_snaps() && 'feed' || 'discover'; },
 
     photoswipe_init: function(){ $( ".x-gallery-link", this.el ).photoswipe_init('feed'); },
+
+    render_header: function(context){
+        this.replace_from_template(context, ['.x-feed-header']).trigger('create');
+    },
 
     populate_feed: function( additional_data ){
 
@@ -277,6 +277,28 @@ var feed_view =  page_view.extend({
             // refresh the feed content
             this.populate_feed();
         }
+    },
+
+    follow_user: function(){
+        console.log('follow');
+        var feed = this;
+        feed.$('.x-follow').x_loading();
+        auth.require_login( function(){
+            feed.user.follow(function(){
+                feed.$('.x-follow').x_loading(false);
+            });
+        })();
+    },
+
+    unfollow_user: function(){
+        console.log('unfollow');
+        var feed = this;
+        feed.$('.x-unfollow').x_loading();
+        auth.require_login( function(){
+            feed.user.unfollow(function(){
+                feed.$('.x-unfollow').x_loading(false);
+            });
+        })();
     }
 });
 
@@ -399,7 +421,7 @@ var feed_li =  view.extend({
             success: function(){
                 photo.$('.x-reactions-button').x_loading(false);
                 photo.show_comment_form();
-                photo.replace_from_template({item:photo.model, auth:auth, reactions:photo.reaction_collection.models}, ['.x-reactions-list']).trigger('create');
+                photo.replace_from_template({item:photo.model, reactions:photo.reaction_collection.models}, ['.x-reactions-list']).trigger('create');
             }
         });
     },
@@ -423,8 +445,7 @@ var feed_li =  view.extend({
         this.$el.html(this.template( {
             item: this.model,
             city: city,
-            back: this.back,
-            auth: auth
+            back: this.back
         } ));
 
         // this.model.bind( "change:favorite", this.reactions.fetch );
@@ -439,7 +460,7 @@ var feed_li =  view.extend({
     },
 
     render_actions: function(){
-        this.replace_from_template({item: this.model, auth:auth}, ['.x-image-actions']).trigger('create');
+        this.replace_from_template({item: this.model}, ['.x-image-actions']).trigger('create');
     },
 
     toggle_comment_form: function(){
@@ -687,100 +708,6 @@ var feed_li =  view.extend({
         })();
     }
 
-});
-
-var feed_header = view.extend({
-
-    initialize: function(){
-        this.query_data = this.options.query_data;
-
-        this.feed_type = null;
-        this.feed_parameter = null;
-        this.feed_title = this.query_data.feed_title;
-
-        if (this.query_data.keywords){
-            this.feed_type = "search";
-            this.feed_parameter = this.query_data.keywords;
-        }else if (this.query_data.area){
-            this.feed_type = "location";
-        }else if (this.query_data.favorited_by){
-            this.feed_type = "favorites";
-            this.feed_parameter = this.query_data.favorited_by;
-        }else if (this.query_data.spot && this.query_data.venue_name){
-            this.feed_type = "spot";
-            this.feed_parameter = this.query_data.venue_name;
-        }else{
-            this.feed_type = "feed";
-        }
-
-        this.load_template('components/feed/header');
-        this.render();
-    },
-
-    render: function(){
-
-        this.$el.html( this.template( {
-            feed_title: this.feed_title,
-            feed_type: this.feed_type,
-            feed_parameter: this.feed_parameter
-        } ));
-
-        return this;
-    }
-});
-
-var user_header = view.extend({
-
-    initialize: function(){
-        _.bindAll( this );
-        $(this.options.el).undelegate();
-        this.setElement( this.options.el );
-
-        this.load_template('components/feed/user_header');
-
-        this.model.bind( "change:user_id", this.render );
-        this.model.bind( "change:relationship", this.render );
-
-        this.model.fetch({
-            error: function(e){
-                console.log( "error fetching user in user_header", e );
-            }
-        });
-    },
-
-    render: function(){
-        this.$el.html( this.template({
-            user: this.model,
-            auth_username: auth.get( "snapr_user" ),
-            logged_in: auth.has( "access_token" )
-        }) ).trigger("create");
-        return this;
-    },
-
-    events: {
-        "click .follow": "follow",
-        "click .unfollow": "unfollow"
-    },
-
-    follow: function(){
-        var user_header_view = this;
-        user_header_view.$('.follow').x_loading();
-        auth.require_login( function(){
-            user_header_view.model.follow(function(){
-                user_header_view.$('.follow').x_loading(false);
-            });
-        })();
-    },
-
-    unfollow: function(){
-        var user_header_view = this;
-        user_header_view.$('.unfollow').x_loading();
-        auth.require_login( function(){
-            user_header_view.model.unfollow(function(){
-                user_header_view.$('.unfollow').x_loading(false);
-            });
-        })();
-    }
 });
 
 return feed_view;

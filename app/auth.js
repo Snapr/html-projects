@@ -89,7 +89,7 @@ var auth_model = Backbone.Model.extend({
     // decorator function
     require_login: function (funct) {
         return function (e) {
-            if(!auth.has('access_token')) {
+            if(!window.auth.has('access_token')) {
                 if(e) {
                     e.preventDefault();
                 }
@@ -103,7 +103,7 @@ var auth_model = Backbone.Model.extend({
     // fill in blank display_usernames
     fill_username: function(user){
         if(user.display_username === ''){
-            if(user.username == auth.get('snapr_user')){
+            if(user.username == window.auth.get('snapr_user')){
                 return config.get('me_username');
             }else{
                 return config.get('anon_username');
@@ -114,8 +114,8 @@ var auth_model = Backbone.Model.extend({
     }
 });
 
-var auth = new auth_model();
-auth.get_locally();
+window.auth = new auth_model();
+window.auth.get_locally();
 
-return auth;
+return window.auth;
 });
