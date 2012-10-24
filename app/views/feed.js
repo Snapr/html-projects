@@ -355,13 +355,16 @@ var feed_li =  view.extend({
     className: "feed-li",
 
     events: {
-        // "click .reactions-button": "load_reactions",
-        "click .reactions-button": "toggle_reactions",
+        "click .x-reactions-button": "toggle_reactions",
         "click .comment-button": "toggle_comment_form",
         "click .more-button": "toggle_photo_manage",
         "click .goto-map": "goto_map",
         "click .goto-spot": "goto_spot",
-        "submit .comment-form": "comment"
+        "submit .comment-form": "comment",
+        "click .x-favorite": "favorite",
+        "click .x-privacy": "toggle_status",
+        "click .x-flag": "flag",
+        "click .x-delete": "delete"
     },
 
     initialize: function(){
@@ -384,14 +387,19 @@ var feed_li =  view.extend({
             this.map_url = null;
             this.spot_url = null;
         }
+        this.reaction_collection = new reaction_collection();
+        this.reaction_collection.data = {
+            photo_id: this.model.get('id')
+        };
     },
 
     load_reactions: function(){
-        var li_view = this;
-        this.reactions.collection.fetch({
+        var photo = this;
+        photo.reaction_collection.fetch({
             success: function(){
-                li_view.$('.reactions-button').x_loading(false);
-                li_view.show_comment_form();
+                photo.$('.x-reactions-button').x_loading(false);
+                photo.show_comment_form();
+                photo.replace_from_template({item:photo.model, auth:auth, reactions:photo.reaction_collection.models}, ['.x-reactions-list']).trigger('create');
             }
         });
     },
@@ -412,44 +420,17 @@ var feed_li =  view.extend({
             city = "";
         }
 
+        console.log(this);
+
         this.$el.html(this.template( {
             item: this.model,
             city: city,
-            back: this.back
+            back: this.back,
+            auth: auth
         } ));
-
-        this.fav_button = new favorite_button({
-            model: this.model,
-            el: this.$(".v-fav-button")[0],
-            li: this
-        }).render();
-
-        this.comment_button = new comment_button({
-            model: this.model,
-            el: this.$(".v-comment-button")[0],
-            li: this
-        }).render();
-
-        this.show_all = new show_all_button({
-            model: this.model,
-            el: this.$(".v-show-all-button")[0],
-            li: this
-        }).render();
-
-        this.reactions = new reactions({
-            id: this.model.id,
-            el: this.$('.reactions-list')[0]
-        });
-
-        this.manage = new photo_manage({
-            model: this.model,
-            el: this.$('.v-photo-manage')[0],
-            parentView: this
-        });
 
         // this.model.bind( "change:favorite", this.reactions.fetch );
         this.model.bind( "change:comments", this.load_reactions );
-
 
         this.$el.trigger('create');
         // delegateEvents makes the event bindings in this view work
@@ -457,6 +438,10 @@ var feed_li =  view.extend({
         this.delegateEvents();
 
         return this;
+    },
+
+    render_actions: function(){
+        this.replace_from_template({item: this.model, auth:auth}, ['.x-image-actions']).trigger('create');
     },
 
     toggle_comment_form: function(){
@@ -475,36 +460,31 @@ var feed_li =  view.extend({
     },
 
     toggle_reactions: function(){
-        this.$('.reactions-button').toggleClass('selected');
+        this.$('.x-reactions-button').toggleClass('selected');
 
-        if (this.$('.reactions-list:visible').length){
-            this.$('.reactions-button .ui-btn-text').text('show');
-            this.$('.reactions-list').hide();
+        if (this.$('.x-reactions-list:visible').length){
+            this.$('.x-reactions-button .ui-btn-text').text('show');
+            this.$('.x-reactions-list').hide();
             this.hide_comment_form();
         }
         else{
-            this.$('.reactions-button .ui-btn-text').text('hide');
-            this.$('.reactions-button').x_loading();
+            this.$('.x-reactions-button .ui-btn-text').text('hide');
+            this.$('.x-reactions-button').x_loading();
             this.load_reactions();
-            this.$('.reactions-list').show();
-            if (this.$('.reactions-list li').length){
+            this.$('.x-reactions-list').show();
+            if (this.$('.x-reactions-list li').length){
                 this.show_comment_form();
             }
         }
     },
 
     toggle_photo_manage: function(){
-        this.$('.more-button').toggleClass('selected');
-        if (this.$('.v-photo-manage .inline-palette:visible').length){
-            this.$('.v-photo-manage').empty();
-        }
-        else{
-            this.manage.render();
-        }
+        this.$('.x-more-button').toggleClass('selected');
+        this.$('.x-more-actions').toggle();
     },
 
     show_reactions: function(){
-        this.$('.reactions-button').addClass('selected');
+        this.$('.x-reactions-button').addClass('selected');
         this.$('.reactions-list').show();
     },
 
@@ -536,6 +516,7 @@ var feed_li =  view.extend({
                     feed_li.model.set({
                         comments: comment_count
                     });
+                    feed_li.render_actions();
                     feed_li.$('textarea').val('');
                     feed_li.show_reactions();
                     feed_li.load_reactions();
@@ -555,30 +536,11 @@ var feed_li =  view.extend({
             // without it, the options object will not be used
             comment.save( {}, options );
         } )();
-    }
-});
-
-var favorite_button = view.extend({
-
-    initialize: function(){
-        _.bindAll( this );
-
-        this.li = this.options.li;
-        $(this.options.el).undelegate();
-        this.setElement( this.options.el );
-        this.load_template('components/feed/favorite_button');
-
-        // update the display when we fav/unfav or comment
-        this.model.bind( "change", this.render );
-    },
-
-    events: {
-        "click .x-favorite-button": "favorite"
     },
 
     favorite: function(){
-        var fav_btn = this;
-        fav_btn.$('.x-favorite-button').x_loading();
+        var photo = this;
+        photo.$('.x-favorite').x_loading();
 
         var is_fav = this.model.get('favorite');
         var fav_count = parseInt( this.model.get('favorite_count'), 10 );
@@ -586,12 +548,12 @@ var favorite_button = view.extend({
 
         auth.require_login( function(){
             var fav = new favorite_model({
-                id: fav_btn.model.get('id')
+                id: photo.model.get('id')
             });
 
             if (is_fav){
 
-                fav_btn.model.set({
+                photo.model.set({
                     favorite: false,
                     favorite_count: fav_count - 1
                 });
@@ -601,13 +563,13 @@ var favorite_button = view.extend({
                     success: function( s ){
                         // success is not passed through so we check for error
                         if (!s.get('error')){
-                            fav_btn.render();
+                            photo.render_actions();
                         }
-                        fav_btn.$('.x-favorite-button').x_loading(false);
+                        photo.$('.x-favorite').x_loading(false);
                     },
                     error: function(e){
                         console.log('fav error',e);
-                        fav_btn.$('.x-favorite-button').x_loading(false);
+                        photo.$('.x-favorite').x_loading(false);
                     }
                 };
                 fav.destroy( options );
@@ -616,17 +578,17 @@ var favorite_button = view.extend({
                 var options = {
                     success: function(s){
                         if (s.get('success')){
-                            fav_btn.model.set({
+                            photo.model.set({
                                 favorite: true,
                                 favorite_count: fav_count + 1
                             });
-                            fav_btn.render();
+                            photo.replace_from_template({item: photo.model}, ['.x-image-actions']).trigger('create');
                         }
-                        fav_btn.$('.x-favorite-button').x_loading(false);
+                        photo.$('.x-favorite').x_loading(false);
                     },
                     error: function(e){
                         console.log('fav error',e);
-                        fav_btn.$('.x-favorite-button').x_loading(false);
+                        photo.$('.x-favorite').x_loading(false);
                     }
                 };
                 fav.save( {}, options );
@@ -634,134 +596,12 @@ var favorite_button = view.extend({
         })();
     },
 
-    render: function(){
-        this.$el.html( this.template({
-            favorite: this.model.get("favorite"),
-            count: parseInt( this.model.get("favorite_count"), 10)
-        }));
-
-        this.li.$el.trigger("create");
-
-        return this;
-    }
-});
-
-var comment_button = view.extend({
-
-    initialize: function(){
-        $(this.options.el).undelegate();
-        this.setElement( this.options.el );
-        this.li = this.options.li;
-        this.load_template('components/feed/comment_button');
-        _.bindAll( this );
-
-        // update the display when the comment count changes
-        this.model.bind( "change:comments", this.render );
-    },
-
-    render: function(){
-        var selected = this.$( ".selected" ).length > 0;
-        this.$el.html( this.template({
-            count: parseInt( this.model.get( "comments" ), 10 ),
-            selected: selected
-        }));
-
-        $(this.li.el).trigger("create");
-
-        return this;
-    }
-});
-
-var show_all_button = view.extend({
-
-    initialize: function(){
-        _.bindAll( this );
-
-        this.li = this.options.li;
-        $(this.options.el).undelegate();
-        this.setElement( this.options.el );
-        this.load_template('components/feed/show_all_button');
-
-        // update the display when we fav/unfav or comment
-        this.model.bind( "change", this.render );
-    },
-
-    render: function(){
-        var selected = this.$(".selected").length > 0;
-        this.$el.html( this.template({
-            reactions: parseInt( this.model.get("favorite_count"), 10) + parseInt( this.model.get("comments"), 10),
-            selected: selected
-        }));
-
-        this.li.$el.trigger("create");
-
-        return this;
-    }
-});
-
-var reactions = view.extend({
-
-    initialize: function(){
-        _.bindAll( this );
-        $(this.options.el).undelegate();
-        this.setElement( this.options.el );
-
-        this.collection = new reaction_collection();
-        this.collection.data = {
-            photo_id: this.id
-        };
-        this.collection.bind( "reset", this.render );
-        this.collection.bind( "change", this.render );
-        this.load_template('components/feed/reaction_item');
-    },
-
-    render: function(){
-        this.$el.empty();
-        _.each( this.collection.models, function( reaction ){
-            this.$el.append(this.template({
-                reaction: reaction
-            }));
-        }, this);
-        this.$el.trigger('create').listview().listview('refresh');
-    }
-});
-
-var photo_manage = view.extend({
-
-    initialize: function(){
-        _.bindAll( this );
-        $(this.options.el).undelegate();
-        this.setElement( this.options.el );
-        this.parentView = this.options.parentView;
-        this.load_template('components/feed/manage_photo');
-
-        // update the display when we change the photo
-        this.model.bind( "change:status", this.render );
-        this.model.bind( "change:flagged", this.render );
-    },
-
-    events: {
-        "click .x-image-privacy": "toggle_status",
-        "click .x-image-flag": "flag",
-        "click .x-image-delete": "delete"
-    },
-
-    render: function(){
-        this.$el.html( this.template({
-            status: this.model.get("status"),
-            flagged: this.model.get("flagged"),
-            mine: this.model.get("username") == auth.get("snapr_user")
-        })).trigger("create");
-
-        return this;
-    },
-
     toggle_status: function(){
-        var photo_manage = this,
+        var photo = this,
             current_status = this.model.get('status'),
             status;
 
-        photo_manage.$('.x-image-privacy').x_loading();
+        photo.$('.x-image-privacy').x_loading();
 
         if (current_status == "public"){
             status = "private";
@@ -771,82 +611,84 @@ var photo_manage = view.extend({
         }
 
         if (status){
-            photo_manage.model.change_status( status, {
+            photo.model.change_status( status, {
                 success: function( resp ){
                     if (resp.success){
-                        photo_manage.model.set({status: status});
+                        photo.model.set({status: status});
+                        photo.render_actions();
                     }else{
                         console.warn("error changing status", resp);
                     }
-                    photo_manage.$('.x-image-privacy').x_loading(false);
+                    photo.$('.x-image-privacy').x_loading(false);
                 },
                 error: function( e ){
                     console.warn("error changing status", e);
-                    photo_manage.$('.x-image-privacy').x_loading(false);
+                    photo.$('.x-image-privacy').x_loading(false);
                 }
             });
         }
     },
 
     flag: function(){
-        var photo_manage = this;
-        photo_manage.$('.x-image-flag').x_loading();
+        var photo = this;
+        photo.$('.x-image-flag').x_loading();
         auth.require_login( function(){
             alerts.approve({
                 'title': 'Flag this image as innapropriate?',
                 'yes': 'Flag',
                 'no': 'Cancel',
                 'yes_callback': function(){
-                    photo_manage.model.flag({
+                    photo.model.flag({
                         success: function( resp ){
                             if (resp.success){
-                                photo_manage.model.set({flagged: true});
+                                photo.model.set({flagged: true});
+                                photo.render_actions();
                                 alerts.notification("Flagged", "Thanks, a moderator will review this image shortly");
                             }else{
                                 console.warn("error flagging photo", resp);
                             }
-                            photo_manage.$('.x-image-flag').x_loading(false);
+                            photo.$('.x-image-flag').x_loading(false);
                         },
                         error: function( e ){
                             console.warn("error flagging photo", e);
-                            photo_manage.$('.x-image-flag').x_loading(false);
+                            photo.$('.x-image-flag').x_loading(false);
                         }
                     });
                 },
-                'no_callback': function(){ photo_manage.$('.x-image-flag').x_loading(false); }
+                'no_callback': function(){ photo.$('.x-image-flag').x_loading(false); }
             });
         })();
     },
 
     'delete': function(){
-        var photo_manage = this;
-        photo_manage.$('.x-image-delete').x_loading();
+        var photo = this;
+        photo.$('.x-image-delete').x_loading();
         auth.require_login( function(){
             alerts.approve({
                 'title': 'Are you sure you want to delete this photo?',
                 'yes': 'Delete',
                 'no': 'Cancel',
                 'yes_callback': function(){
-                    photo_manage.model['delete']({
+                    photo.model['delete']({
                         success: function( resp ){
                             if (resp.success){
-                                photo_manage.model.collection.remove( photo_manage.model );
-
+                                photo.model.collection.remove( photo.model );
                             }else{
                                 console.warn("error deleting photo", resp);
                             }
-                            photo_manage.$('.x-image-delete').x_loading(false);
+                            photo.$('.x-image-delete').x_loading(false);
                         },
                         error: function( e ){
                             console.warn("error deleting photo", e);
-                            photo_manage.$('.x-image-delete').x_loading(false);
+                            photo.$('.x-image-delete').x_loading(false);
                         }
                     });
                 },
-                'no_callback': function(){ photo_manage.$('.x-image-delete').x_loading(false); }
+                'no_callback': function(){ photo.$('.x-image-delete').x_loading(false); }
             });
         })();
     }
+
 });
 
 var feed_header = view.extend({
