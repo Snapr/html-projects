@@ -5112,10 +5112,10 @@ h4 {
   font-family: Helvetica, Arial, sans-serif;
 }
 /* @search fields at top of pages like people / venues */
-.search-header {
+.s-search-header {
   overflow: visible;
 }
-.search-header input {
+.s-search-header input {
   overflow: visible;
 }
 .ui-input-search.ui-btn-corner-all {
@@ -5137,10 +5137,10 @@ h4 {
 .ui-input-search .ui-input-clear .ui-icon-delete {
   background-position: -63px 0px;
 }
-.loading .search-header .ui-input-search .ui-input-clear {
+.loading .s-search-header .ui-input-search .ui-input-clear {
   display: block;
 }
-.loading .search-header .ui-input-search .ui-input-clear .ui-icon-delete {
+.loading .s-search-header .ui-input-search .ui-input-clear .ui-icon-delete {
   display: block;
   background-image: url('../gfx/small-spinner-light.png') !important;
   background-position: center!important;
@@ -7612,51 +7612,51 @@ body.x-browser-testing .ui-footer, body.x-browser-testing .ui-footer-fixed {
 .camplus-icon span {
   display: none;
 }
-.spots-search-filters {
+.s-spots-search-filters {
   padding-right: 44px;
   margin-top: 8px;
   position: relative;
 }
-.spots-search-filters .ui-btn {
+.s-spots-search-filters .ui-btn {
   -moz-border-radius: 20px;
   -webkit-border-radius: 20px;
   border-radius: 20px;
 }
-.spots-search-filters .ui-select .ui-btn-icon-right .ui-btn-inner {
+.s-spots-search-filters .ui-select .ui-btn-icon-right .ui-btn-inner {
   padding-right: 25px;
 }
-.spots-search-filters .category-btn .ui-btn-inner {
+.s-spots-search-filters .category-btn .ui-btn-inner {
   padding-right: 32px;
   padding-left: 10px;
 }
-.spots-search-filters .category-btn .ui-btn-inner .ui-icon {
+.s-spots-search-filters .category-btn .ui-btn-inner .ui-icon {
   left: auto;
   right: 8px;
   margin-top: -12px;
 }
-.spots-search-filters .distance-btn {
+.s-spots-search-filters .distance-btn {
   width: 36px;
   position: absolute;
   right: 0;
   top: 0;
 }
-.spots-search-filters .distance-btn .ui-select .ui-btn-inner {
+.s-spots-search-filters .distance-btn .ui-select .ui-btn-inner {
   width: 18px;
   height: 18px;
 }
-.spots-search-filters .distance-btn .ui-select .ui-btn-text {
+.s-spots-search-filters .distance-btn .ui-select .ui-btn-text {
   display: none;
 }
-.spots-search-filters .distance-btn .ui-select .ui-icon {
+.s-spots-search-filters .distance-btn .ui-select .ui-icon {
   right: auto;
   left: 5px;
   top: 50%;
   margin-top: -12px;
 }
-.spots-search-filters .ui-grid-a .ui-block-a .ui-btn {
+.s-spots-search-filters .ui-grid-a .ui-block-a .ui-btn {
   margin-right: 4px;
 }
-.spots-search-filters .ui-grid-a .ui-block-b .ui-btn {
+.s-spots-search-filters .ui-grid-a .ui-block-b .ui-btn {
   margin-left: 4px;
 }
 .spots-results-header {
@@ -7700,15 +7700,15 @@ body.x-browser-testing .ui-footer, body.x-browser-testing .ui-footer-fixed {
   display: block;
   overflow: visible;
 }
-.spot .spot-photo-crop {
+.spot .s-spot-photo-crop {
   position: absolute;
   left: 0;
   top: 0;
 }
-.spot .spot-photo-crop img {
+.spot .s-spot-photo-crop img {
   display: block;
 }
-.spot .spot-photo-crop .no-photo-yet {
+.spot .s-spot-photo-crop .s-no-photo-yet {
   position: absolute;
   left: 0;
   top: 0;

@@ -1,10 +1,10 @@
 <% if(results) { %>
-    <a class="spots-results-header ui-bar s-arrow-d-left" data-role="button" data-theme="e" data-iconpos="right" data-icon="arrow-r" href="#/map/?<%=param%>">
-        <em><%= results %> results</em>
-        <span class="small-text">show on map</span>
+    <a class="spots-results-header ui-bar" data-role="button" data-theme="e" data-iconpos="right" data-icon="arrow-r" href="#/map/?<%=param%>">
+        <strong><%= results %> results</strong>
+        show on map
     </a>
 <% } else { %>
     <a class="spots-results-header ui-bar" data-role="button" data-theme="e">
-        <em>No results</em>
+        <strong>No results</strong>
     </a>
 <% } %>
