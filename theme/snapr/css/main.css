@@ -3666,7 +3666,7 @@ h4 {
   font-weight: bold;
   color: #474747;
 }
-.small-username {
+.s-small-username {
   font-size: 11px;
   font-weight: normal;
   color: #666666;
@@ -4401,7 +4401,7 @@ h4 {
 /*
 * Top user Avatar list
 */
-.top-users .top-user-item {
+.s-top-users .s-top-user-item {
   display: inline-block;
 }
 /*
@@ -5603,11 +5603,11 @@ different markup format between collapsible headings and list links */
 .ff-linking {
   margin: 12px;
 }
-.top-user-item {
+.s-top-user-item {
   width: 50px;
   margin-right: 5px;
 }
-.top-user-item .small-username {
+.s-top-user-item .s-small-username {
   overflow: hidden;
   text-overflow: ellipsis;
   text-align: center;
@@ -7685,7 +7685,7 @@ body.x-browser-testing .ui-footer, body.x-browser-testing .ui-footer-fixed {
 .spot-item .spot .spot-subheading {
   color: #666666;
 }
-.spot-item .spot .spot-address {
+.spot-item .spot .s-spot-address {
   margin-top: 10px;
   font-family: Helvetica, Arial, sans-serif;
   color: #666666;
@@ -7744,7 +7744,7 @@ body.x-browser-testing .ui-footer, body.x-browser-testing .ui-footer-fixed {
   top: 0;
   margin: 0;
 }
-.spot-header {
+.s-spot-header {
   margin-left: -8px;
   margin-right: -8px;
   position: relative;
@@ -7753,23 +7753,23 @@ body.x-browser-testing .ui-footer, body.x-browser-testing .ui-footer-fixed {
   padding: 4px;
   min-height: 101px;
 }
-.spot-header .spot-venue-details {
+.s-spot-header .spot-venue-details {
   min-height: 64px;
 }
-.spot-header p {
+.s-spot-header p {
   padding-top: 4px;
   color: #666666;
 }
-.spot-header .spot-phone, .spot-header .spot-address {
+.s-spot-header .s-spot-phone, .s-spot-header .s-spot-address {
   padding-top: 4px;
   margin-bottom: 8px;
   display: block;
 }
-.spot-header .spot-distance {
+.s-spot-header .s-spot-distance {
   color: #999999;
   font-size: 12px;
 }
-.spot-header .foursquare-btn {
+.s-spot-header .s-foursquare-btn {
   position: absolute;
   right: 0;
   top: 50%;
@@ -7777,8 +7777,8 @@ body.x-browser-testing .ui-footer, body.x-browser-testing .ui-footer-fixed {
   width: 70px;
   height: 24px;
 }
-.spot-header .foursquare-btn .ui-icon-foursquare-logo {
-  background-image: url('../gfx/foursquare-btn.png');
+.s-spot-header .s-foursquare-btn .ui-icon-foursquare-logo {
+  background-image: url('../gfx/s-foursquare-btn.png');
   height: 24px;
   width: 70px;
 }
@@ -8206,8 +8206,8 @@ body.x-browser-testing .ui-footer, body.x-browser-testing .ui-footer-fixed {
     -webkit-background-size: 24px 96px;
     background-size: 24px 96px;
   }
-  .spot-header .foursquare-btn .ui-icon-foursquare-logo {
-    background-image: url('../gfx/retina/foursquare-btn.png');
+  .s-spot-header .s-foursquare-btn .ui-icon-foursquare-logo {
+    background-image: url('../gfx/retina/s-foursquare-btn.png');
     -moz-background-size: 69px 24px;
     -o-background-size: 69px 24px;
     -webkit-background-size: 69px 24px;

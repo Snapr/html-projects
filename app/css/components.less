@@ -6,7 +6,7 @@
 
 
 
-// HEADERS
+// @HEADERS
 // -------------------------
 
 
@@ -40,9 +40,8 @@ div[data-role="header"]{
     }
 }
 
-// CONTENT
+// @CONTENT
 // -------------------------
-
 
 
 div[data-role="content"]{
@@ -82,7 +81,7 @@ div[data-role="content"]{
 }
 
 
-// TAB BAR
+// @TABBAR
 // -------------------------
 
 
@@ -114,7 +113,7 @@ div[data-role="content"]{
 
 
 
-// AVATARS
+// @AVATARS
 // -------------------------
 
 .s-avatar,
@@ -140,6 +139,14 @@ div[data-role="content"]{
     width: @avatarSizeLarge;
     height: @avatarSizeLarge;
     .border-radius(4px);
+}
+
+
+// @USERNAMES
+// -------------------------
+
+.s-small-username{
+   font-size: @fontSizeSmall; 
 }
 
 
@@ -1134,7 +1141,7 @@ div.ps-carousel-item-loading
 
 
 
-// SPOTS
+// @SPOTS
 // -------------------------
 
 .s-spots-search-filters{
@@ -1191,6 +1198,66 @@ div.ps-carousel-item-loading
             line-height: 18px;
             font-size: 14px;
             font: @font;
+        }
+    }
+}
+
+
+// @SPOT PAGE
+// -------------------------
+
+.s-spot-header{
+    margin-left: -@padding * 2;
+    margin-right: -@padding * 2;
+    position: relative;
+    background-color: @grayLighter;
+    padding: @padding;
+    min-height:@thumbSize;
+    .spot-venue-details{
+        min-height: 64px;
+    }
+    p{
+        padding-top:@padding;
+        margin: 0;
+    }   
+    .s-spot-phone,
+    .s-spot-address{
+        padding-top:@padding ;
+        margin-bottom: @padding * 2;
+        display: block;
+    }
+    .s-spot-distance {
+        font-size: @fontSizeSmall;
+    }
+    .s-foursquare-btn{
+        position: absolute;
+        right: 0;
+        top: 50%;
+        margin-top: -4px;
+        width: 70px;
+        height: 24px;
+        .ui-icon-foursquare-logo{
+            background-image: url('@{gfx}@{gfxFoursquareBtn}');
+            height: @gfxFoursquareBtn-height;
+            width: @gfxFoursquareBtn-width;
+        }
+    }
+}
+
+.s-top-users{
+    ul{
+        padding-left: 0;
+    }
+    .s-top-user-item{
+        width: @avatarSizeMed;
+        display: inline-block;
+        margin-right: 5px;
+        .s-small-username{
+            overflow: hidden;
+            text-overflow: ellipsis;
+            text-align: center;
+            margin-top: 4px;
+            display: block;
         }
     }
 }
