@@ -216,6 +216,13 @@ require(['config', 'jquery', 'backbone', 'photoswipe', 'auth', 'utils/local_stor
         }
 
 
+        /* handle resize
+        ***************************/
+        $(window).resize(function() {
+            config.get('current_view').trigger('resize', window.innerWidth, window.innerHeight);
+        });
+
+
         /* global live click hadlers
         ***************************/
 

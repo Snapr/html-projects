@@ -75,6 +75,7 @@ var spot_view = page_view.extend({
             initial_title: '', // initially blank until we know if it shoule be 'popular' or 'nearby'
             title: "popular",
             expand: true,
+            parent_view: this,
             no_photos: function(){
 
                 this.title = 'nearby';

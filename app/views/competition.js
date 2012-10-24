@@ -22,7 +22,8 @@ var comp_view = page_view.extend({
     },
 
     render: function() {
-        var new_el,
+        var view = this,
+            new_el,
             image_streams,
             award_stream;
 
@@ -43,7 +44,8 @@ var comp_view = page_view.extend({
             var li = new side_scroll({
                 data: stream,
                 initial_title: 'Popular',
-                expand: true
+                expand: true,
+                parent_view: view
             });
             image_streams.append( li.el );
             li.render();

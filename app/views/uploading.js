@@ -95,7 +95,8 @@ var uploading = page_view.extend({
                 sort: 'weighted_score'
             },
             expand: true,
-            title: 'popular entries'
+            title: 'popular entries',
+            parent_view: this
         });
 
         $image_stream_container.append( comp_stream.el );
@@ -113,7 +114,8 @@ var uploading = page_view.extend({
                 foursquare_venue: this.foursquare_venue
             }}),
             expand: true,
-            title: '@ ' + this.venue_name
+            title: '@ ' + this.venue_name,
+            parent_view: this
         });
 
         $image_stream_container.append( venue_stream.el );
@@ -131,6 +133,7 @@ var uploading = page_view.extend({
             },
             expand: true,
             title: 'nearby',
+            parent_view: this,
             no_photos: function(){
 
                 this.collection.data.radius = this.collection.data.radius + config.get('nearby_radius');

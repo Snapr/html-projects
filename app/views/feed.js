@@ -582,7 +582,7 @@ var feed_li =  view.extend({
                                 favorite: true,
                                 favorite_count: fav_count + 1
                             });
-                            photo.replace_from_template({item: photo.model}, ['.x-image-actions']).trigger('create');
+                            photo.render_actions();
                         }
                         photo.$('.x-favorite').x_loading(false);
                     },

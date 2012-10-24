@@ -51,7 +51,6 @@ var dash_view = page_view.extend({
 
         this.model.streams.bind( 'remove', this.remove_stream );
         this.model.streams.bind( 'add', this.add_stream );
-        //this.model.streams.bind( 'all', function(a,b,c){console.log(a,b,c);} );
 
         this.rendered = false;
     },
@@ -244,12 +243,14 @@ var dash_view = page_view.extend({
     add_streams: function(items){
         if(this.options.show && !_.contains(this.options.show, 'user-streams')){ return; }
 
-        var container = this.$('.user-streams');
+        var container = this.$('.user-streams'),
+            parent_view = this;
 
         _.each(items, function(item){
             var li = new dash_stream({
                 collection: item.photos,
-                model: item
+                model: item,
+                parent_view: parent_view
             });
             container.append( li.render().el );
         });
@@ -283,14 +284,16 @@ var dash_view = page_view.extend({
     add_featured_streams: function(items){
         if(this.options.show && !_.contains(this.options.show, 'featured-streams')){ return; }
 
-        var container = this.$('.featured-streams');
+        var container = this.$('.featured-streams'),
+            parent_view = this;
 
         _.each(items, function(item){
             var li = new dash_stream({
                 collection: item.photos,
                 model: item,
                 featured: true,
-                expand: true
+                expand: true,
+                parent_view: parent_view
             });
             container.append( li.el );
             li.render();  // render after inserting so DOM metrics are available

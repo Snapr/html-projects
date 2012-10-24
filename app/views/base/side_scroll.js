@@ -25,6 +25,11 @@ return view.extend({
         this.no_photos = options.no_photos;
         this.fetch_attempts = 0;
 
+        if(options.parent_view){
+            this.parent_view = options.parent_view;
+            this.parent_view.on('resize', this.scroll_init);
+        }
+
         this.post_initialize.apply(this, arguments);
     },
 
@@ -125,6 +130,7 @@ return view.extend({
 
     scroll_init: function(){
 
+        this.$('.x-thumbs').css('min-width', window.innerWidth + "px");
 
         // if already init, refresh
         if(this.scroller){
