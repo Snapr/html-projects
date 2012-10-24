@@ -4,9 +4,9 @@
             <div class="s-avatar-large" style="background-image: url('<%= config.get('avatar_url') %>/<%= user.get('user_id') %>?size=large');"></div>
             <div class="s-icon-overlay"></div>
         </a>
-        <h4 class="s-username">
-            <%= user.get('display_username') %>
-            <span class="s-follow-btn x-follow-btn ui-btn-right">
+        
+            
+            <span class="s-follow-btn x-follow-btn ui-btn-right ui-bar">
                 <% if (!logged_in) {%>
                 <button data-inline="true" data-icon="plus" data-iconpos="right" data-corners="false" data-shadow="false" class="follow" data-theme="e">Follow</button>
                 <%}else{%>
@@ -21,6 +21,9 @@
                 <%}%>
                 <%}%>
             </span>
+            
+        <h4 class="s-username">    
+            <%= user.get('display_username') %>
         </h4>
         <div class="ui-grid-b s-header-stats">
             <div class="ui-block-a">

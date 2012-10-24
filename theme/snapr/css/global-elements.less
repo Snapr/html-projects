@@ -21,7 +21,7 @@
 
     .inline-footer{
         .border-bottom-radius(0)!important;
-        &.feed-footer{
+        &.s-feed-footer{
             .ui-btn{
                 .border-bottom-radius(0)!important;
             }
@@ -41,10 +41,10 @@
 }
 
 .small-text{
-    font-size: @font-size-small;
+    font-size: @fontSizeSmall;
     font-family: @font;
     .username{
-        font-size: @font-size-small;
+        font-size: @fontSizeSmall;
     }
 }
 
@@ -121,22 +121,19 @@
     background-size: cover;
 }
 
-.thumb-med{
-    width: @thumbSize;
-    height: @thumbSize;
-}
+
 
 /* Usernames etc */
 h4{
     font-family: @font-special;
-    font-size: @font-size-username;
+    font-size: @fontSizeUsername;
     font-weight: normal!important;
     color: @grayDarkOnLIght;
 }
 
 .username{
     font-family: @font;
-    font-size: @font-size-username;
+    font-size: @fontSizeUsername;
     font-weight: bold;
     color: @grayDarkOnLIght;
 }
@@ -257,8 +254,8 @@ h4{
     .tab-bar-extra{
         display: none;
         font-weight: bold;
-        line-height: @font-size-small;
-        min-height: @font-size-small;
+        line-height: @fontSizeSmall;
+        min-height: @fontSizeSmall;
         position: absolute;
         top: -29px;
         right:0;
@@ -272,14 +269,14 @@ h4{
         .border-bottom-radius(0);
 
         .ui-btn-inner{
-            line-height: @font-size-small;
-            min-height: @font-size-small;
+            line-height: @fontSizeSmall;
+            min-height: @fontSizeSmall;
             overflow: visible;
             .ui-btn-text{
                 font-weight: bold;
-                line-height: @font-size-small;
-                min-height: @font-size-small;
-                font-size: @font-size-small;
+                line-height: @fontSizeSmall;
+                min-height: @fontSizeSmall;
+                font-size: @fontSizeSmall;
                 color: @grayDark-tint;
                 text-shadow: @shadowLightOnLight;
             }
@@ -327,7 +324,7 @@ h4{
         margin: @padding * 2 0;
         padding: @padding * 2;
         .border-radius(@corners);
-        font-size: @font-size-small;
+        font-size: @fontSizeSmall;
     }
 }
 
@@ -357,7 +354,7 @@ h4{
         .border-top-radius (@cornersPage);
         .ui-btn{
             .ui-btn-text{
-                font-size: @font-size;
+                font-size: @fontSize;
                 .button-font-light()
             }
         }
@@ -367,7 +364,7 @@ h4{
                 top: -4px;
                 text-shadow: @shadowLightOnLight 0px 1px 0px;
                 .button-font-bold();
-                font-size: @font-size-username;
+                font-size: @fontSizeUsername;
             }
             &::after{
                 .arrow-up(@arrow-size, @white, 50% , 51px);
@@ -574,7 +571,7 @@ h4{
 
 /* Form Validation like on join page */
 .x-invalid[for]{
-    font-size: @font-size-small;
+    font-size: @fontSizeSmall;
     line-height: 14px;
     color: @grayMediumOnLIght;
     padding: 4px;
@@ -745,9 +742,9 @@ h4{
             margin: @padding;
             border-left: solid 2px @gray;
             padding-left: @padding * 2;
-            font-family: @font-serif;
+            font-family: @fontSerif;
             font-style: italic;
-            font-size: @font-size-username;
+            font-size: @fontSizeUsername;
             small{
                 display: inline-block;
                 color: @grayMediumOnLIght;
@@ -756,15 +753,15 @@ h4{
         p{
             margin: @padding * 1.5 @padding @padding @padding;
             color: @grayMediumOnLIght;
-            font-family: @font-serif;
+            font-family: @fontSerif;
             font-style: italic;
-            font-size: @font-size-small;
+            font-size: @fontSizeSmall;
         }
 
 
         .tumblr-details{
             position: relative;
-            font-size: @font-size-small;
+            font-size: @fontSizeSmall;
             color:  @grayLightOnLIght;
             line-height: @gfxTumblr-grid;
             height: @gfxTumblr-grid;
@@ -806,9 +803,9 @@ h4{
 
 .tumblr-credit{
     margin: 12px 0;
-    font-size: @font-size-small;
-    height: @font-size-small;
-    line-height: @font-size-small;
+    font-size: @fontSizeSmall;
+    height: @fontSizeSmall;
+    line-height: @fontSizeSmall;
     padding-bottom: @gfxTumblrLogo-height ;
     color: @grayLightOnLIght;
     background-image: url('@{gfx}@{gfxTumblrLogo}');
@@ -858,7 +855,7 @@ h4{
     h4,
     .ui-btn-inner,
     .ui-bar-inner{
-        font-size: @font-size;
+        font-size: @fontSize;
         .button-font-light();
         margin: 0;
         padding: 0;
@@ -870,7 +867,7 @@ h4{
         .ui-btn,
         .ui-btn-hidden,
         .username{
-            font-size: @font-size-titleBar;
+            font-size: @fontSize-titleBar;
             .ui-bar-font();
         }
 
@@ -899,7 +896,7 @@ h4{
     }
     .radius{
         font-weight: normal;
-        font-size: @font-size-small;
+        font-size: @fontSizeSmall;
         color: @grayMediumOnLIght;
     }
 
@@ -996,11 +993,11 @@ h4{
         position: absolute;
         top: -31px;
         white-space: nowrap;
-        font-size: @font-size-small;
+        font-size: @fontSizeSmall;
         color: black;
         padding: 6px;
-        line-height: @font-size-small;
-        min-height: @font-size-small;
+        line-height: @fontSizeSmall;
+        min-height: @fontSizeSmall;
         .border-top-radius(@corners);
     }
 
@@ -1047,7 +1044,7 @@ h4{
     .linear-gradient(@blue, @blue-tint);
 
     strong{
-        font-size: @font-size-titleBar;
+        font-size: @fontSize-titleBar;
         .ui-bar-font();
     }
     .ui-icon-play{
@@ -1390,7 +1387,7 @@ h4{
         top: 0px;
         left:8px;
         font-weight: bold;
-        font-size: @font-size-small;
+        font-size: @fontSizeSmall;
     }
 
     .ui-icon-check{
@@ -1747,7 +1744,7 @@ over rides theme swatch styles for general blue / white style switch
     }
 
     .ui-btn{
-        font-size:@font-size-small;
+        font-size:@fontSizeSmall;
     }
     .ui-btn-left{
         position: absolute;
@@ -1840,7 +1837,7 @@ over rides theme swatch styles for general blue / white style switch
         box-shadow: 0 1px 0 @shadowLightOnDark;
         .ui-checkbox label,
         .ui-radio label{
-            font-size: @font-size-small;
+            font-size: @fontSizeSmall;
             margin: 0;
         }
     }
@@ -2060,7 +2057,7 @@ different markup format between collapsible headings and list links */
     .linear-gradient (#1d1d1d, #000000);
     .ps-caption-content{
         font-family: @font;
-        font-size: @font-size;
+        font-size: @fontSize;
         color: @grayLightOnDark;
         text-align: left;
         padding: 0 24px 0 32px;

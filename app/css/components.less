@@ -3,6 +3,9 @@
 // --------------------------------------------------
 
 
+
+
+
 // HEADERS
 // -------------------------
 
@@ -45,10 +48,20 @@ div[data-role="content"]{
     position: relative;
     padding: 0 @padding * 2;
     
-    .s-inline-footer,
+    .ui-content{
+        padding: @padding * 2;
+    }
+    
     .s-inline-header{
         margin: 0 -@padding * 2;
         background-color: @grayLighter;
+        padding: 0 @padding * 2;
+    }
+    
+    .s-inline-footer{
+        margin: 0 -@padding * 2;
+        background-color: @grayLighter;
+        padding: @padding * 2;
     }
     
 }
@@ -142,10 +155,15 @@ div[data-role="content"]{
 }
 
 .s-thumbs-grid-med,
-.x-grid #feed-images{
+.x-grid .x-feed-images{
     margin: 0 -@padding * 2;
-    padding: 0 @padding 0 @padding;
+    padding: @padding 0 @padding @padding;
     min-height: @thumbSize;
+
+    .s-feed-item{
+        display: inline-block;
+        margin-right: @padding;
+    }
 
     .s-image-link{
         display: inline-block;
@@ -197,7 +215,9 @@ div[data-role="content"]{
         width: 20%;
         box-sizing: border-box;
         margin: 0;
-        padding-right: 0;
+        .ui-btn-inner{
+            padding-right: 0;
+        }
     }
 }
 
@@ -433,9 +453,9 @@ div[data-role="content"]{
             margin: @padding;
             border-left: solid 2px @gray;
             padding-left: @padding * 2;
-            font-family: @font-serif;
+            font-family: @fontSerif;
             font-style: italic;
-            font-size: @font-size-username;
+            font-size: @fontSizeUsername;
             small{
                 display: inline-block;
                 color: @gray;
@@ -444,13 +464,13 @@ div[data-role="content"]{
         p{
             margin: @padding * 1.5 @padding @padding @padding;
             color: @gray;
-            font-family: @font-serif;
+            font-family: @fontSerif;
             font-style: italic;
-            font-size: @font-size-small;
+            font-size: @fontSizeSmall;
         }
         .tumblr-details{
             position: relative;
-            font-size: @font-size-small;
+            font-size: @fontSizeSmall;
             color:  @gray;
             line-height: @gfxTumblr-grid;
             height: @gfxTumblr-grid;
@@ -487,9 +507,9 @@ div[data-role="content"]{
 
 .tumblr-credit{
     margin: 12px 0;
-    font-size: @font-size-small;
-    height: @font-size-small;
-    line-height: @font-size-small;
+    font-size: @fontSizeSmall;
+    height: @fontSizeSmall;
+    line-height: @fontSizeSmall;
     padding-bottom: @gfxTumblrLogo-height ;
     color: @gray;
     background-image: url('@{gfx}@{gfxTumblrLogo}');
@@ -532,7 +552,7 @@ div[data-role="content"]{
         margin: @padding * 2 0;
         padding: @padding * 2;
         .border-radius(@corners);
-        font-size: @font-size-small;
+        font-size: @fontSizeSmall;
     }
 }
 
@@ -558,8 +578,34 @@ div[data-role="content"]{
     }
     .s-profile-icon{
         background-color: @grayLight;
+        z-index: 3;
     }
+    
+    .s-follow-btn{
+        z-index: 1;
+        position: absolute;
+        right: 0;
+        top:0;
+        display: block;
+        width: 100%;
+        height: @barHeight;
+        .ui-btn{
+            position: absolute;
+            right: 0;
+            top: 0;
+            margin: 0;
+            width: 100%;
+            text-align: right;
+            
+            .ui-btn-inner{
+                padding-top: 0;
+                padding-bottom: 0;
+            }
+        }
+    }
+    
     .s-username{
+        z-index: 2;
         position: relative;
         padding-left: @padding * 2;
         margin: 0;
@@ -567,33 +613,16 @@ div[data-role="content"]{
         line-height: @barHeight;
         vertical-align: middle;
         top: 0;
-        .s-follow-btn{
-            position: absolute;
-            right: 0;
-            top:0;
-            display: block;
-            width: 100%;
-            .ui-btn{
-                position: absolute;
-                right: 0;
-                top: 0;
-                margin: 0;
-                width: 100%;
-                text-align: right;
-                
-                .ui-btn-inner{
-                    padding-top: 0;
-                    padding-bottom: 0;
-                }
-            }
-        }
+        
     }
     .s-header-stats{
         height: @avatarSizeLarge - @barHeight ;
         text-align: center;
+        font-size: @fontSizeSmall;
         .s-hero-number{
-            padding-top: @padding * 4;
+            padding-top: @padding * 3;
             display: block;
+            font-size: 20px;
         }
     }
 }
@@ -616,7 +645,11 @@ div[data-role="content"]{
             line-height:@avatarSize;
             vertical-align: middle;
             display: inline-block;
-        }      
+            font-size: @fontSizeSmall;
+        } 
+        .s-username{
+            font-size: @fontSizeUsername;
+        }    
     }
     .s-image-item{
         position: relative;
@@ -715,11 +748,9 @@ div[data-role="content"]{
 }
 
 
-// removing the annoying negative margins temporarily
-.ui-content {
-    .x-feed-upload-list{
-        margin: 0;
-    }
+// Show this via script.. otherwise it causes layout pain for other things
+.s-upload-progress-header {
+    display: none;
 }
 
 .s-my-snaps-only {
@@ -1055,7 +1086,62 @@ div.ps-carousel-item-loading
 
 
 
+// MISC
+// -------------------------
+
+a{
+    text-decoration: none;
+}
 
 
+.hide{
+    display: none;
+}
+
+
+.ui-disabled {
+    filter: Alpha(Opacity=100)!important;
+    opacity: 1!important;
+}
+
+
+// BROWSER TESTING
+// -------------------------
+
+
+body.x-browser-testing{
+    width: 320px!important;
+    margin: 0 auto 0 0!important;
+    /* this was 20px but some things are set to window height, meaning they were going 20px off the bottom
+    margin: 20px auto 0 20px!important; */
+    display: block;
+    position: relative;
+    height: 100%!important;
+
+    /* so loader relates to container rather than being fixed */
+    .ui-loader{
+        position: absolute;
+    }
+    /* hack for photoswipe plugin */
+    .ps-caption,
+    .ps-toolbar,
+    .ps-uilayer,
+    .ps-carousel,
+    .ps-document-overlay{
+        width: 320px!important;
+    }
+    .ps-carousel,
+    .ps-uilayer{
+        height: 480px!important;
+    }
+    .ps-caption-bottom{
+        top: 435px!important;
+    }
+
+    .ui-footer,
+    .ui-footer-fixed{
+        width: 320px!important;
+    }
+}
 
 

@@ -352,7 +352,7 @@ var feed_li =  view.extend({
 
     tagName: "article",
 
-    className: "feed-li",
+    className: "s-feed-item",
 
     events: {
         "click .x-reactions-button": "toggle_reactions",

@@ -57,10 +57,18 @@ div[data-role="content"] {
   position: relative;
   padding: 0 8px;
 }
-div[data-role="content"] .s-inline-footer,
+div[data-role="content"] .ui-content {
+  padding: 8px;
+}
 div[data-role="content"] .s-inline-header {
   margin: 0 -8px;
   background-color: #f7f7f7;
+  padding: 0 8px;
+}
+div[data-role="content"] .s-inline-footer {
+  margin: 0 -8px;
+  background-color: #f7f7f7;
+  padding: 8px;
 }
 .s-full-height {
   min-height: 400px;
@@ -123,19 +131,24 @@ div[data-role="content"] .s-inline-header {
   display: block;
 }
 .s-thumbs-grid-med,
-.x-grid #feed-images {
+.x-grid .x-feed-images {
   margin: 0 -8px;
-  padding: 0 4px 0 4px;
+  padding: 4px 0 4px 4px;
   min-height: 101px;
 }
+.s-thumbs-grid-med .s-feed-item,
+.x-grid .x-feed-images .s-feed-item {
+  display: inline-block;
+  margin-right: 4px;
+}
 .s-thumbs-grid-med .s-image-link,
-.x-grid #feed-images .s-image-link {
+.x-grid .x-feed-images .s-image-link {
   display: inline-block;
   padding: 0;
   margin: 0;
 }
 .s-thumbs-grid-med .s-thumb-image,
-.x-grid #feed-images .s-thumb-image {
+.x-grid .x-feed-images .s-thumb-image {
   width: 101px;
   height: 101px;
   padding: 0;
@@ -170,6 +183,8 @@ div[data-role="content"] .s-inline-header {
   width: 20%;
   box-sizing: border-box;
   margin: 0;
+}
+.ui-bar .s-bar-right .ui-btn-inner {
   padding-right: 0;
 }
 /* Horizontally scrolling image stream components */
@@ -502,8 +517,31 @@ div[data-role="content"] .s-inline-header {
 }
 .s-feed-header .s-profile-icon {
   background-color: #fbfbfb;
+  z-index: 3;
+}
+.s-feed-header .s-follow-btn {
+  z-index: 1;
+  position: absolute;
+  right: 0;
+  top: 0;
+  display: block;
+  width: 100%;
+  height: 36px;
+}
+.s-feed-header .s-follow-btn .ui-btn {
+  position: absolute;
+  right: 0;
+  top: 0;
+  margin: 0;
+  width: 100%;
+  text-align: right;
+}
+.s-feed-header .s-follow-btn .ui-btn .ui-btn-inner {
+  padding-top: 0;
+  padding-bottom: 0;
 }
 .s-feed-header .s-username {
+  z-index: 2;
   position: relative;
   padding-left: 8px;
   margin: 0;
@@ -512,32 +550,15 @@ div[data-role="content"] .s-inline-header {
   vertical-align: middle;
   top: 0;
 }
-.s-feed-header .s-username .s-follow-btn {
-  position: absolute;
-  right: 0;
-  top: 0;
-  display: block;
-  width: 100%;
-}
-.s-feed-header .s-username .s-follow-btn .ui-btn {
-  position: absolute;
-  right: 0;
-  top: 0;
-  margin: 0;
-  width: 100%;
-  text-align: right;
-}
-.s-feed-header .s-username .s-follow-btn .ui-btn .ui-btn-inner {
-  padding-top: 0;
-  padding-bottom: 0;
-}
 .s-feed-header .s-header-stats {
   height: 64px;
   text-align: center;
+  font-size: 12px;
 }
 .s-feed-header .s-header-stats .s-hero-number {
-  padding-top: 16px;
+  padding-top: 12px;
   display: block;
+  font-size: 20px;
 }
 .s-image-item-block {
   margin: 8px 0 24px 0;
@@ -557,6 +578,10 @@ div[data-role="content"] .s-inline-header {
   line-height: 34px;
   vertical-align: middle;
   display: inline-block;
+  font-size: 12px;
+}
+.s-image-item-block .s-image-item-topbar .s-username {
+  font-size: 16px;
 }
 .s-image-item-block .s-image-item {
   position: relative;
@@ -651,8 +676,8 @@ div[data-role="content"] .s-inline-header {
   position: relative;
   left: -50%;
 }
-.ui-content .x-feed-upload-list {
-  margin: 0;
+.s-upload-progress-header {
+  display: none;
 }
 .s-my-snaps-only {
   display: none!important;
@@ -945,4 +970,49 @@ div.ps-carousel-item-loading {
 }
 .jqm .dwbc .dwbw .dwb {
   margin: 8px;
+}
+a {
+  text-decoration: none;
+}
+.hide {
+  display: none;
+}
+.ui-disabled {
+  filter: alpha(opacity=100) !important;
+  opacity: 1!important;
+}
+body.x-browser-testing {
+  width: 320px!important;
+  margin: 0 auto 0 0!important;
+  /* this was 20px but some things are set to window height, meaning they were going 20px off the bottom
+    margin: 20px auto 0 20px!important; */
+
+  display: block;
+  position: relative;
+  height: 100%!important;
+  /* so loader relates to container rather than being fixed */
+
+  /* hack for photoswipe plugin */
+
+}
+body.x-browser-testing .ui-loader {
+  position: absolute;
+}
+body.x-browser-testing .ps-caption,
+body.x-browser-testing .ps-toolbar,
+body.x-browser-testing .ps-uilayer,
+body.x-browser-testing .ps-carousel,
+body.x-browser-testing .ps-document-overlay {
+  width: 320px!important;
+}
+body.x-browser-testing .ps-carousel,
+body.x-browser-testing .ps-uilayer {
+  height: 480px!important;
+}
+body.x-browser-testing .ps-caption-bottom {
+  top: 435px!important;
+}
+body.x-browser-testing .ui-footer,
+body.x-browser-testing .ui-footer-fixed {
+  width: 320px!important;
 }

@@ -119,7 +119,7 @@ var nearby_photostream_view = view.extend({
 
 var nearby_photostream_item_view = view.extend({
     tagName: 'li',
-    template: _.template('<img src="https://s3.amazonaws.com/media-server2.snapr.us/thm2/<%= photo.get("secret") %>/<%= photo.get("id") %>.jpg" alt="<%= photo.get("description") %>" class="s-thumb-image thumb-med">'),
+    template: _.template('<img src="https://s3.amazonaws.com/media-server2.snapr.us/thm2/<%= photo.get("secret") %>/<%= photo.get("id") %>.jpg" alt="<%= photo.get("description") %>" class="s-thumb-image">'),
     render: function () {
         this.$el.html( this.template({
             photo: this.model

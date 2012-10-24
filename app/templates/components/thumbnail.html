@@ -1,5 +1,5 @@
 <% _.each( results, function( item, i ){ %>
     <a class="s-image-link" href="#/feed/?photo_id=<%= item.get('id') %>&n=1&username=<%= item.get('username') %>">
-    <img src="https://s3.amazonaws.com/media-server<%= item.get('server_id') %>.snapr.us/thm2/<%= item.get('secret') %>/<%= item.get('id') %>.jpg" <% if(item.get('description')){ %>alt="<%= item.get('description') %>"<% } %> class="s-thumb-image thumb-med" />
+    <img src="https://s3.amazonaws.com/media-server<%= item.get('server_id') %>.snapr.us/thm2/<%= item.get('secret') %>/<%= item.get('id') %>.jpg" <% if(item.get('description')){ %>alt="<%= item.get('description') %>"<% } %> class="s-thumb-image" />
     </a>
 <% }); %>

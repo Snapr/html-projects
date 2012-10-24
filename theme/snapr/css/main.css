@@ -3652,10 +3652,7 @@ a.ui-link-inherit {
   background-size: 100% 100%;
   background-size: cover;
 }
-.thumb-med {
-  width: 101px;
-  height: 101px;
-}
+
 /* Usernames etc */
 h4 {
   font-family: refrigerator_deluxe_heavyRg, Helvetica, Arial, sans-serif;
