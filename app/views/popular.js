@@ -39,7 +39,7 @@ return page_view.extend({
         var click = !!(e && e.currentTarget);
         if (click){
             this.time_period = e.currentTarget.id.replace( 'popular-', '' );
-            local_storage.save( "popular-time", this.time_period );
+            local_storage.set( "popular-time", this.time_period );
         }else{
             this.time_period = local_storage.get( "popular-time" ) || 'time-all';
         }

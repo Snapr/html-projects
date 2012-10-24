@@ -254,7 +254,7 @@ return page_view.extend({
             var key = $(select).attr("name");
             var value = ($(select).val() == "true") ? true: false;
             param[key] = value;
-            local_storage.save( key, value );
+            local_storage.set( key, value );
         });
 
         if (local_storage.get("appmode") == "iphone"){

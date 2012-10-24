@@ -420,8 +420,6 @@ var feed_li =  view.extend({
             city = "";
         }
 
-        console.log(this);
-
         this.$el.html(this.template( {
             item: this.model,
             city: city,

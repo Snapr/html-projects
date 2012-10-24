@@ -145,7 +145,7 @@ function get_query_params(query) {
                     auth.set(key, unescape(value).replace('+', ' '));
                     auth.save_locally();
                 } else if(_.contains(["snapr_user_public_group", "snapr_user_public_group_name", "appmode", "demo_mode", "environment", "browser_testing", "aviary", "camplus", "camplus_camera", "camplus_edit", "camplus_lightbox"], kv[0])) {
-                    local_storage.save(key, value);
+                    local_storage.set(key, value);
                 } else {
                     key = unescape(key);
                     if(key in params) {
