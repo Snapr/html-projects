@@ -1,10 +1,10 @@
-<div class="upload-info-block">
-    <a class="upload-image-thumb-gall gallery_link s-image-link ui-link"
+<div class="s-upload-info-block">
+    <a class="s-upload-image-thumb-gall x-gallery-link s-image-link ui-link"
         <% if(upload_status == 'completed'){ %> href="#/feed/?photo_id=<%= photo_id %>&username=<%= username %>"<% } %>>
        <div style="background-image: url('<%= thumbnail %>')" class="s-thumb-image thumb-med css-thumb"></div>
     </a>
 
-    <div class="upload-info">
+    <div class="s-upload-info">
         <p class="upload-image-tag"><% if(description){ %><span class="ui-icon feed-icons ui-icon-quote"></span><%= description %><% } %>&nbsp;</p>
         <% if ( venue ){ %>
             <p class="upload-image-venue"><a class="ui-link">@ <%= venue %></a></p>

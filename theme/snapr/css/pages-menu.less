@@ -27,12 +27,12 @@
             .ui-btn-inner{
                 padding: 0;
                 line-height: @gfxMenu-grid;
-                padding-left: @gfxMenu-grid + @paddingPage;
+                padding-left: @gfxMenu-grid + @padding * 2;
                 text-align: left;
             }
             .ui-icon{
                 top: 0;
-                left:  @paddingPage;
+                left:  @padding * 2;
                 margin-top: 0;
                 background: transparent;
                 background-image: url('@{gfx}@{gfxMenu}');
@@ -104,7 +104,7 @@
     }
     .menu-stream.thumbs-block{
         position: relative;
-        margin-bottom: -@paddingPage;
+        margin-bottom: -@padding * 2;
         background-color: black;
         .thumbs-block-overlay{
             position: absolute;

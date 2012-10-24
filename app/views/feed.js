@@ -88,10 +88,10 @@ var feed_view =  page_view.extend({
         toggle_container.find( "input[type='radio']" ).attr( "checked", false );
 
         if (list_style == 'grid'){
-            this.$(".feed-content").addClass("x-grid");
+            this.$(".x-feed-content").addClass("x-grid");
             toggle_container.find(".x-grid").attr( "checked", true );
         }else{
-            this.$(".feed-content").removeClass("x-grid");
+            this.$(".x-feed-content").removeClass("x-grid");
             toggle_container.find(".x-list").attr( "checked", true );
         }
 

@@ -344,7 +344,7 @@
 
 .ui-body-c {
     background: none;
-    background-color: @white-tint;
+    background-color: @grayLighter;
     background-image: @gfxBgLight;
     border: @borderMediumOnLight;
     color: @grayDarkOnLIght;
@@ -352,7 +352,7 @@
 }
 .ui-dialog.ui-overlay-c{
     background: none;
-    background-color: @white-tint!important;
+    background-color: @grayLighter!important;
     background-image: @gfxBgLight!important;
     border: @borderMediumOnLight;
     text-shadow: 0 1px 1px @shadowLightOnLight;
@@ -363,7 +363,7 @@
 
 .ui-body-c {
     div[data-role="content"]{
-        background-color: @white-tint;
+        background-color: @grayLighter;
         background-image: @gfxBgLight;
         border: none;
         border-radius: @cornersPage;
@@ -460,34 +460,34 @@
 .ui-btn-up-c {
     border: none;
     background: @white;
-    .linear-gradient(@white, @white-tint);
+    .linear-gradient(@white, @grayLighter);
     color: @grayDarkOnLIght;
     .button-font-bold();
     a.ui-link-inherit {
         color: @grayDarkOnLIght;
     }
     &.s-arrow-d-left::after{
-        .arrow-down(@arrow-size, @white-tint, @arrow-offset, 3px);
+        .arrow-down(@arrow-size, @grayLighter, @arrow-offset, 3px);
     }
     &.bottom-centered-arrow::after{
-        .arrow-up(@arrow-size, @white-tint, 50%, 3px);
+        .arrow-up(@arrow-size, @grayLighter, 50%, 3px);
     }
 }
 
 .ui-btn-hover-c {
     border: none;
     background: lighten(@white, 10% );
-    .linear-gradient(lighten(@white, 10%), lighten(@white-tint, 10%));
+    .linear-gradient(lighten(@white, 10%), lighten(@grayLighter, 10%));
     color: @grayDarkOnLIght;
     .button-font-bold();
     a.ui-link-inherit {
         color: @grayDarkOnLIght;
     }
     &.s-arrow-d-left::after{
-        .arrow-down(@arrow-size, lighten(@white-tint, 10%), @arrow-offset, 3px);
+        .arrow-down(@arrow-size, lighten(@grayLighter, 10%), @arrow-offset, 3px);
     }
     &.bottom-centered-arrow::after{
-        .arrow-up(@arrow-size, lighten(@white-tint, 10%), 50%, 3px);
+        .arrow-up(@arrow-size, lighten(@grayLighter, 10%), 50%, 3px);
     }
 }
 

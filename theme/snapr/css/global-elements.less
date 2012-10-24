@@ -33,7 +33,7 @@
 // Feed content to show for 'my snaps' feed
 .x-my-snaps-only{display: none!important;}
 .my-snaps .x-my-snaps-only{display: inline-block!important;}
-.my-snaps .x-not-on-my-snaps{display: none!important;}
+.my-snaps .s-not-on-my-snaps{display: none!important;}
 
 
 .underline{
@@ -61,9 +61,9 @@
 /* Icons and thumbs */
 .user-icon-small,
 .thumb-small{
-    width: @sizeAvatar;
-    height: @sizeAvatar;
-    background-color: @white-tint;
+    width: @avatarSize;
+    height: @avatarSize;
+    background-color: @grayLighter;
     background-size: 100% 100%;
     background-size: cover;
     background-position: center;
@@ -72,9 +72,9 @@
 }
 
 .user-icon-med{
-    width: @sizeAvatar-med;
-    height: @sizeAvatar-med;
-    background-color: @white-tint;
+    width: @avatarSize-med;
+    height: @avatarSize-med;
+    background-color: @grayLighter;
     background-size: 100% 100%;
     background-size: cover;
     background-position: center;
@@ -83,8 +83,8 @@
 }
 
 .avatar-block{
-    height:  @sizeAvatar ;
-    line-height: @sizeAvatar;
+    height:  @avatarSize ;
+    line-height: @avatarSize;
     padding-left:0;
     background: none!important;
     border: none!important;
@@ -94,7 +94,7 @@
             .ui-btn-text{
                 display: block;
                 text-align: left;
-                padding-left: @sizeAvatar + @paddingElement ;
+                padding-left: @avatarSize + @paddingElement ;
             }
         }
         .user-icon-small{
@@ -107,16 +107,16 @@
 }
 
 .css-thumb{
-    background-color: @white-tint;
+    background-color: @grayLighter;
     background-position: center;
     background-size: 100% 100%;
     background-size: cover;
 }
 
 .user-icon-big{
-    width: @sizeAvatar-large;
-    height: @sizeAvatar-large;
-    background-color: @white-tint;
+    width: @avatarSize-large;
+    height: @avatarSize-large;
+    background-color: @grayLighter;
     background-size: 100% 100%;
     background-size: cover;
 }
@@ -148,7 +148,7 @@ h4{
 }
 
 .warning-message{
-    padding: @paddingPage;
+    padding: @padding * 2;
     background-color: @snaprYellow;
     .border-radius(@corners);
     border-bottom: @borderLightOnDark;
@@ -351,7 +351,7 @@ h4{
 /* Bar style tabbed nav like at the top of the popular page */
 .ui-content{
     .ui-navbar{
-        margin: 0 -@paddingPage;
+        margin: 0 -@padding * 2;
         border: none;
         border-top: @borderLightOnLight;
         .border-top-radius (@cornersPage);
@@ -700,7 +700,7 @@ h4{
 */
 .thumbs-grid-med,
 .grid #feed-images{
-    margin: 0 -@paddingPage;
+    margin: 0 -@padding * 2;
     padding: 0 0 0 @padding;
     min-height: @thumbSize;
 
@@ -825,8 +825,8 @@ h4{
 .ui-bar{
     border:none;
     border-top: @borderLightOnLight;
-    margin: 0 -@paddingPage;
-    padding: 0 @paddingPage;
+    margin: 0 -@padding * 2;
+    padding: 0 @padding * 2;
     min-height: @bar-height;
     line-height: @bar-height;
     vertical-align: middle;
@@ -1072,7 +1072,7 @@ h4{
         position: relative;
         list-style: none;
         padding: 0;
-        margin-bottom: @paddingPage ;
+        margin-bottom: @padding * 2 ;
         white-space: no-wrap;
 
         .ui-bar{
@@ -1303,29 +1303,29 @@ h4{
 
 /* Upload Progress items */
 
-.upload-progress-header{
-    padding: 0 @paddingPage;
+.s-upload-progress-header{
+    padding: 0 @padding * 2;
     overflow:hidden;
     .box-shadow(inset 5px -14px 20px rgba(0, 0, 0, 0.2));
 
-    .upload-progress-item{
+    .s-upload-progress-item{
         list-style:none;
-        padding: 0 @paddingPage;
-        min-height: @sizeAvatar;
-        margin-bottom: @paddingPage;
+        padding: 0 @padding * 2;
+        min-height: @avatarSize;
+        margin-bottom: @padding * 2;
         &:first-child{
-            padding-top: @paddingPage;
+            padding-top: @padding * 2;
         }
         position: relative;
-        .upload-image-thumb-gall{
+        .s-upload-image-thumb-gall{
             position: absolute;
             left:0;
             top: 0;
         }
-        .upload-info-block{
+        .s-upload-info-block{
             position: relative;
-            padding-left: @sizeAvatar + @paddingPage;
-            .upload-info{
+            padding-left: @avatarSize + @padding * 2;
+            .s-upload-info{
                 padding-top: 5px;
             }
             p{
@@ -1347,7 +1347,7 @@ h4{
     position: relative;
     padding: 8px 28px 8px 8px;
     height:8px;
-    background-color: lighten(@white-tint, 10%);
+    background-color: lighten(@grayLighter, 10%);
     border-radius: 13px;
 
     .bar-wrapper{
@@ -1533,8 +1533,8 @@ over rides theme swatch styles for general blue / white style switch
 
 /* Style for inset header as seen on user feed and upload pages */
 .page-inset-header{
-    margin-left: -@paddingPage;
-    margin-right: -@paddingPage;
+    margin-left: -@padding * 2;
+    margin-right: -@padding * 2;
     position: relative;
     background-color: @grayLight;
     .border-top-radius (@cornersPage);
@@ -1662,7 +1662,7 @@ over rides theme swatch styles for general blue / white style switch
     border: none;
     z-index: 999;
     .message-body{
-        margin: @paddingPage;
+        margin: @padding * 2;
         display: block;
         padding: 0;
     }
@@ -1697,7 +1697,7 @@ over rides theme swatch styles for general blue / white style switch
         min-height: @gfxHelper-grid;
     }
     .icon-left{
-        padding: @paddingPage @paddingPage @paddingPage * 2 @gfxHelper-grid + @paddingPage;
+        padding: @padding * 2 @padding * 2 @padding * 2 * 2 @gfxHelper-grid + @padding * 2;
 
     }
     .helper-icons{
@@ -1710,7 +1710,7 @@ over rides theme swatch styles for general blue / white style switch
 
 /* Footer as part of page content like on dash  */
 .inline-footer{
-    margin: @paddingPage -@paddingPage 0 -@paddingPage;
+    margin: @padding * 2 -@padding * 2 0 -@padding * 2;
     .border-bottom-radius(@cornersPage);
 
     .ui-grid-a{
@@ -1960,7 +1960,7 @@ different markup format between collapsible headings and list links */
 
 
 .top-user-item{
-    width: @sizeAvatar-med;
+    width: @avatarSize-med;
     margin-right: 5px;
     .small-username{
         overflow: hidden;

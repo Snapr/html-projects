@@ -3,7 +3,7 @@
 
 .spots-search-filters{
     padding-right: 44px;
-    margin-top: @paddingPage;
+    margin-top: @padding * 2;
     position: relative;
 
     .ui-btn{
@@ -52,13 +52,13 @@
    .ui-grid-a{
         .ui-block-a{
             .ui-btn{
-                margin-right: @paddingPage / 2;
+                margin-right: @padding * 2 / 2;
 
             }
         }
         .ui-block-b{
             .ui-btn{
-            margin-left: @paddingPage / 2;
+            margin-left: @padding * 2 / 2;
             }
         }
     }
@@ -80,7 +80,7 @@
     margin-left: 0;
     margin-right:0;
     padding-left: @padding;
-    padding-right: @paddingPage;
+    padding-right: @padding * 2;
     min-height:@thumbSize;
     .spot {
         min-height: 101px;
@@ -161,8 +161,8 @@
 // -------------------------
 
 .spot-header{
-    margin-left: -@paddingPage;
-    margin-right: -@paddingPage;
+    margin-left: -@padding * 2;
+    margin-right: -@padding * 2;
     position: relative;
     background-color: @grayLight;
     background-image: @gfxBgLight;

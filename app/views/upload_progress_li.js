@@ -4,7 +4,7 @@ return view.extend({
 
     tagName: "li",
 
-    className: "upload-progress-item",
+    className: "s-upload-progress-item",
 
     initialize: function(options){
         _.bindAll(this);

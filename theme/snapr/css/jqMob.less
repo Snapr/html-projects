@@ -18,7 +18,7 @@ div[data-role="dialog"]{
 
 .ui-dialog .ui-content{
     margin: 0;
-    padding: @paddingPage;
+    padding: @padding * 2;
     width: auto;
 }
 
@@ -29,18 +29,18 @@ div[data-role="dialog"]{
 }
 
 .ui-content{
-    padding: 0 @paddingPage;
+    padding: 0 @padding * 2;
     .ui-content{
-        padding: @paddingPage;
+        padding: @padding * 2;
     }
 }
-.ui-content .ui-listview{margin: 0 -@paddingPage;}
-.ui-content .ui-listview-inset{margin: @paddingPage 0;}
+.ui-content .ui-listview{margin: 0 -@padding * 2;}
+.ui-content .ui-listview-inset{margin: @padding * 2 0;}
 .ui-btn{margin: 0; margin-bottom: @paddingElement;}
 .ui-btn-inner{padding: 9px 9px;}
 
 .ui-field-contain{
-    padding: 0 0 @paddingPage 0;
+    padding: 0 0 @padding * 2 0;
 }
 
 input.ui-input-text,
@@ -60,7 +60,7 @@ textarea.ui-input-text {
 
 .ui-controlgroup,
 fieldset.ui-controlgroup{
-    margin: 0 0 @paddingPage 0;
+    margin: 0 0 @padding * 2 0;
 }
 
 .ui-grid-b{
@@ -171,7 +171,7 @@ fieldset.ui-controlgroup{
 
 .ui-collapsible-set{
     margin: 0;
-    margin-bottom: @paddingPage * 2;
+    margin-bottom: @padding * 2 * 2;
     li{
         list-style: none;
     }
@@ -181,9 +181,9 @@ fieldset.ui-controlgroup{
 
 .ui-content{
     .inset-page-content{
-        padding: 0 @paddingPage;
+        padding: 0 @padding * 2;
         .ui-listview-inset{
-            margin-bottom:  @paddingPage * 2 ;
+            margin-bottom:  @padding * 2 * 2 ;
         }
     }
 }

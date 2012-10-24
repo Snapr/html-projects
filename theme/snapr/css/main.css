@@ -3575,7 +3575,7 @@ a.ui-link-inherit {
 .x-my-snaps .s-my-snaps-only {
   display: inline-block !important;
 }
-.x-my-snaps .x-not-on-my-snaps {
+.x-my-snaps .s-not-on-my-snaps {
   display: none!important;
 }
 .underline {
@@ -4992,36 +4992,36 @@ h4 {
   margin-top: -16px;
 }
 /* Upload Progress items */
-.upload-progress-header {
+.s-upload-progress-header {
   padding: 0 8px;
   overflow: hidden;
   -moz-box-shadow: inset 5px -14px 20px rgba(0, 0, 0, 0.2);
   -webkit-box-shadow: inset 5px -14px 20px rgba(0, 0, 0, 0.2);
   box-shadow: inset 5px -14px 20px rgba(0, 0, 0, 0.2);
 }
-.upload-progress-header .upload-progress-item {
+.s-upload-progress-header .s-upload-progress-item {
   list-style: none;
   padding: 0 8px;
   min-height: 34px;
   margin-bottom: 8px;
   position: relative;
 }
-.upload-progress-header .upload-progress-item:first-child {
+.s-upload-progress-header .s-upload-progress-item:first-child {
   padding-top: 8px;
 }
-.upload-progress-header .upload-progress-item .upload-image-thumb-gall {
+.s-upload-progress-header .s-upload-progress-item .s-upload-image-thumb-gall {
   position: absolute;
   left: 0;
   top: 0;
 }
-.upload-progress-header .upload-progress-item .upload-info-block {
+.s-upload-progress-header .s-upload-progress-item .s-upload-info-block {
   position: relative;
   padding-left: 42px;
 }
-.upload-progress-header .upload-progress-item .upload-info-block .upload-info {
+.s-upload-progress-header .s-upload-progress-item .s-upload-info-block .s-upload-info {
   padding-top: 5px;
 }
-.upload-progress-header .upload-progress-item .upload-info-block p {
+.s-upload-progress-header .s-upload-progress-item .s-upload-info-block p {
   margin-top: 0;
   margin-bottom: 2px;
   text-overflow: ellipsis;
@@ -7868,44 +7868,44 @@ body.x-browser-testing .ui-footer, body.x-browser-testing .ui-footer-fixed {
 #uploading .s-image-streams {
   margin-top: -8px;
 }
-#uploading .upload-progress-header {
+#uploading .s-upload-progress-header {
   height: 125px;
 }
-#uploading .upload-progress-item {
+#uploading .s-upload-progress-item {
   padding: 0;
 }
-#uploading .upload-progress-item .upload-image-thumb-gall {
+#uploading .s-upload-progress-item .s-upload-image-thumb-gall {
   position: absolute;
   left: 0;
   top: 8px;
 }
-#uploading .upload-progress-item .progress-bar {
+#uploading .s-upload-progress-item .progress-bar {
   margin: 8px 0;
 }
-#uploading .upload-progress-item .upload-info-block {
+#uploading .s-upload-progress-item .s-upload-info-block {
   padding-left: 109px;
 }
-#uploading .upload-progress-item .upload-info-block p {
+#uploading .s-upload-progress-item .s-upload-info-block p {
   margin-top: 0;
   margin-bottom: 2px;
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
 }
-#uploading .upload-progress-item .upload-info-block .ui-icon-quote {
+#uploading .s-upload-progress-item .s-upload-info-block .ui-icon-quote {
   display: inline-block;
   height: 15px;
   background-position: -6px -8px;
   width: 20px;
 }
-#uploading .upload-progress-item .upload-info-block .upload-image-venue a {
+#uploading .s-upload-progress-item .s-upload-info-block .upload-image-venue a {
   color: #999999;
 }
-#uploading .upload-progress-item .upload-info-block .upload-shared-to {
+#uploading .s-upload-progress-item .s-upload-info-block .upload-shared-to {
   margin: 8px 0 0 0;
   padding: 0;
 }
-#uploading .upload-progress-item .upload-info-block .upload-shared-to li {
+#uploading .s-upload-progress-item .s-upload-info-block .upload-shared-to li {
   list-style: none;
   display: inline-block;
   width: 20px;

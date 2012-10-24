@@ -56,15 +56,14 @@
     </div>
 
     <div class="image-item-base">
-        <div data-role="controlgroup" data-type="horizontal" class="image-actions x-image-actions">
-            <span class="inline-btn">
-                <div data-role="button" data-icon="action-heart" data-inline="true" data-iconpos="left" class="x-favorite favorite-button action-icons <% if (item.get('favorite')){ %> selected <% }%>" ><% if (item.get('favorite_count') > 0){ %>&times; <%= item.get('favorite_count') %><%} else {%> &nbsp;<%}%></div>
-            </span>
-            <span class="inline-btn">
-                <div data-role="button" data-icon="action-comment" data-inline="true" data-iconpos="left" class="comment-button action-icons"><% if (item.get('comments') > 0){ %>&times; <%= item.get('comments') %><%} else {%> &nbsp;<%}%></div>
-            </span>
+        <div data-role="controlgroup" data-type="horizontal" class="image-actions x-image-actions" data-theme="z">
+                <a data-role="button" data-theme="z" data-icon="like" data-iconpos="left" class="x-favorite action-icons <% if (item.get('favorite')){ %> selected <% }%>" ><span class="s-hide-text">Likes </span><% if (item.get('favorite_count') > 0){ %>&times; <%= item.get('favorite_count') %><%} else {%> &nbsp;<%}%></a>
+   
+                <a data-role="button" data-icon="action-comment" data-inline="true" data-iconpos="left" class="comment-button action-icons" data-theme="z"><span class="s-hide-text">Comments </span><% if (item.get('comments') > 0){ %>&times; <%= item.get('comments') %><%} else {%> &nbsp;<%}%></a>
+          
             <span class="x-more-button inline-btn has-palette">
-                <div data-role="button" data-icon="action-more" data-inline="true" data-iconpos="left" class="more-button action-icons" >&nbsp;</div>
+                <div data-role="button" data-icon="action-more" data-inline="true" data-iconpos="left" class="more-button action-icons" data-theme="z">&nbsp;</div>
+                
                 <div class="x-more-actions action-palette hide">
                     <div class="center-palette">
                         <div class="inline-palette ui-body-b" data-theme="b">
@@ -87,11 +86,9 @@
                  </div>
             </span>
 
-            <span class="v-show-all-button inline-btn">
                 <% if (parseInt(item.get("favorite_count")) + parseInt(item.get("comments")) > 0){ %>
-                    <div data-role="button" data-icon="action-show-all" data-inline="true" data-iconpos="right" class="x-reactions-button reactions-button action-icons">Show</div>
+                    <a data-theme="z" data-role="button" data-icon="action-show-all" data-iconpos="right" class="x-reactions-button reactions-button action-icons">Show</a>
                 <% } %>
-            </span>
         </div>
 
         <ul data-inset="true" class="x-reactions-list reactions-list">
