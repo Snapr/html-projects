@@ -51,10 +51,13 @@ var spots_view =  page_view.extend({
 
         this.change_page();
 
-        search_options.nearby || this.$('.x-location').val('anywhere').selectmenu('refresh'); //ugh dirty
+        // reset values
+        if(!search_options.nearby){
+            this.$('select.x-location').val('anywhere').selectmenu('refresh');
+        }
         this.$('.x-search-field').val(search_options.spot_name);
-        this.$('.x-category').val(search_options.category).selectmenu("refresh");
-        this.$('.x-sort').val(search_options.sort).selectmenu("refresh");
+        this.$('select.x-category').val(search_options.category).selectmenu("refresh");
+        this.$('select.x-sort').val(search_options.sort).selectmenu("refresh");
         this.$('form').attr('class', '').addClass(search_options.category || 'all-categories');
     },
 
