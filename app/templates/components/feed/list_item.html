@@ -8,9 +8,9 @@
         <% if(item.has('location') && item.get('location').location){ %>
         <a class="goto-map s-image-time-and-location">
             <span class="ui-icon feed-icons ui-icon-venue"></span>
-            <%= string_utils.short_timestamp(item.get('date'), true ) %>, <%= string_utils.short_location(item.get('location').location) %> 
+            <%= string_utils.short_timestamp(item.get('date'), true ) %>, <%= string_utils.short_location(item.get('location').location) %>
         </a>
-     
+
         <%}else{%>
         <span class="s-image-time">
             <span class="ui-icon feed-icons ui-icon-clock"></span>
@@ -22,18 +22,18 @@
     <div class="s-image-item">
 
     <% if(item.get('external_video')){ %>
-    
+
     <video class="s-main-image x-feed-image s-image-loader-bg" data-vid-width="<%= item.get('external_video').width %>" data-vid-duration="<%= item.get('external_video').duration %>" data-vid-height="<%= item.get('external_video').height %>" poster="https://s3.amazonaws.com/media-server<%= item.get('server_id') %>.snapr.us/lrg/<%= item.get('secret') %>/<%= item.get('id') %>.jpg" style="height:<%= get_photo_height(item.get('width'), item.get('height'), '#feed-images') %>px;" preload="none" controls="true" onclick="if(this.paused){this.play();}else{this.pause();}">
 
         <source src="<%= item.get('external_video').source %>" />
     </video>
-    
+
     <%}else{%>
-    
+
     <a href="https://s3.amazonaws.com/media-server<%= item.get('server_id') %>.snapr.us/lrg2/<%= item.get('secret') %>/<%= item.get('id') %>.jpg" rel="external" class="x-gallery-link s-main-s-image-link s-image-loader-bg">
         <img style="height:<%= get_photo_height(item.get('width'), item.get('height'), '#feed-images') %>px;" src="https://s3.amazonaws.com/media-server<%= item.get('server_id') %>.snapr.us/lrg/<%= item.get('secret') %>/<%= item.get('id') %>.jpg" <% if(item.get('description')){ %>alt="<%= item.get('description') %>"<% } %> class="s-main-image" />
     </a>
-    
+
     <% }%>
 
         <span class="s-image-status">
@@ -56,8 +56,10 @@
     </div>
 
     <div class="image-item-base">
-        <div data-role="controlgroup" data-type="horizontal" class="image-actions">
-            <span class="v-fav-button inline-btn"></span>
+        <div data-role="controlgroup" data-type="horizontal" class="image-actions x-image-actions">
+            <span class="inline-btn">
+                <div data-role="button" data-icon="action-heart" data-inline="true" data-iconpos="left" class="x-favorite favorite-button action-icons <% if (item.get('favorite')){ %> selected <% }%>" ><% if (item.get('favorite_count') > 0){ %>&times; <%= item.get('favorite_count') %><%} else {%> &nbsp;<%}%></div>
+            </span>
             <span class="v-comment-button inline-btn"></span>
             <span class="v-more-button inline-btn has-palette">
                  <div data-role="button" data-icon="action-more" data-inline="true" data-iconpos="left" class="more-button action-icons" >&nbsp;</div>

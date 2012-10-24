@@ -26,9 +26,12 @@ define(['backbone'], function(Backbone){
 
             var html = $(template(context));
 
+            var last;
             _.each(selectors, function(selector){
-                el.find(selector).empty().append(html.find(selector).children());
+                last = el.find(selector).empty().append(html.find(selector).children());
             });
+
+            return last;
         }
     });
 });
