@@ -53,10 +53,10 @@ require(['config', 'jquery', 'backbone', 'photoswipe', 'auth', 'utils/local_stor
     /* disable jquery-mobile's hash nav so we can replace it with backbone.js
     ***************************/
     $(document).bind("mobileinit", function(){
-        $.mobile.ignoreContentEnabled = true;
         $.mobile.ajaxEnabled = false;
         $.mobile.pushStateEnabled = false;
         $.mobile.hashListeningEnabled = false;
+        $.mobile.linkBindingEnabled = false;
         $.mobile.defaultPageTransition = 'none';
         $.mobile.buttonMarkup.hoverDelay = 0;
     });
@@ -225,6 +225,12 @@ require(['config', 'jquery', 'backbone', 'photoswipe', 'auth', 'utils/local_stor
 
         /* global live click hadlers
         ***************************/
+
+        // because $.mobile.hashListeningEnabled is false we have to listen manually
+        $('[data-rel=popup]').live('vclick', function(e){
+            e.preventDefault();
+            $.mobile.popup.handleLink($(e.currentTarget));
+        });
 
         // make photoswipe basebar click
         $('.ps-caption').live('vclick', function(){
