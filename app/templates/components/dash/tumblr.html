@@ -37,7 +37,7 @@
 
                     <div class="tumblr-exceprt tumblr-photo">
                         <div class="crop-content">
-                            <blockquote><%= post.get('caption') %></blockquote>
+                            <blockquote><%= post.get('caption').replace(/\n/g, '<br>' ) %></blockquote>
                         </div>
                         <div class="tumblr-details"><%= string_utils.time_ago(post.get('date')) %> <% if(post.get('note_count')){ %>, <%= post.get('note_count') %> Notes<% } %> <span class="ui-icon tumblr-icon ui-icon-tumblr-photo"></span>
                         </div>
@@ -50,11 +50,11 @@
                             <% if(post.get('title')){ %>
                                 <blockquote>
                                     <%= post.get('title') %> &rarr;
-                                    <small><%= post.get('description') %></small>
+                                    <small><%= post.get('description').replace(/\n/g, '<br>' ) %></small>
                                 </blockquote>
                             <% }else{ %>
                                 <%= post.get('url') %> &rarr;
-                                <small><%= post.get('description') %></small>
+                                <small><%= post.get('description').replace(/\n/g, '<br>' ) %></small>
                             <% } %>
                         </div>
                         <div class="tumblr-details"><%= string_utils.time_ago(post.get('date')) %> <% if(post.get('note_count')){ %>, <%= post.get('note_count') %> Notes<% } %> <span class="ui-icon tumblr-icon ui-icon-tumblr-link"></span>
@@ -66,7 +66,7 @@
                     <div class="tumblr-thumb" style="background-size: cover; background-image:url(<%= post.get('thumbnail_url') %>)"></div>
                         <div class="tumblr-exceprt tumblr-video">
                             <div class="crop-content">
-                                <blockquote><%= post.get('caption') %></blockquote>
+                                <blockquote><%= post.get('caption').replace(/\n/g, '<br>' ) %></blockquote>
                             </div>
                             <div class="tumblr-details"><%= string_utils.time_ago(post.get('date')) %> <% if(post.get('note_count')){ %>, <%= post.get('note_count') %> Notes<% } %> <span class="ui-icon tumblr-icon ui-icon-tumblr-video"></span>
                             </div>
@@ -92,7 +92,7 @@
                     <div class="tumblr-exceprt tumblr-quote">
                         <div class="crop-content">
                             <blockquote>
-                                <%= post.get('text') %>
+                                <%= post.get('text').replace(/\n/g, '<br>' ) %>
                             </blockquote>
                             <% if(post.get('source')){ %>
                                 <p>&mdash; <%= post.get('source') %></p>
@@ -113,7 +113,7 @@
                                 <% } %>
                             </blockquote>
                             <% if(post.get('caption')){ %>
-                                <p>&mdash; <%= post.get('caption') %></p>
+                                <p>&mdash; <%= post.get('caption').replace(/\n/g, '<br>' ) %></p>
 
                              <% } %>
 
