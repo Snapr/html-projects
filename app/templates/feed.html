@@ -54,7 +54,7 @@
                                 <span class="s-follow-btn ui-btn-right ui-bar">
                                     <% if (!auth.has( "access_token" )) {%>
                                         <button data-inline="true" data-icon="plus" data-iconpos="right" data-corners="false" data-shadow="false" class="x-follow" data-theme="e">Follow</button>
-                                    <%}else if (user.get('username') == auth.get("snapr_user")){%>
+                                    <%}else if (user.get('username').toLowerCase() == auth.get("snapr_user").toLowerCase()){%>
                                         <button data-inline="true" disabled="true" data-icon="check" data-iconpos="right" data-corners="false" data-shadow="false" class="thats-me" data-theme="e">That&apos;s Me</button>
                                     <%}else if (user.get('relationship').you_follow) {%>
                                         <button data-inline="true" data-icon="check" data-iconpos="right" data-corners="false" data-shadow="false" class="x-unfollow" data-theme="e">Following</button>
