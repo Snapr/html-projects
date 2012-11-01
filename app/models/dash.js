@@ -35,6 +35,9 @@ return Backbone.Model.extend({
             if (success){ success( model, d );}
         };
         return Backbone.Model.prototype.fetch.call(this, options);
-    }
+    },
+
+    // we don't atctally want to set any of the data as attributes
+    parse: function(){return {};}
 });
 });
