@@ -48,14 +48,19 @@ var dash_view = page_view.extend({
         this.model = new dash_model();
 
         this.model.streams.bind( 'remove', this.remove_stream );
+        this.model.featured_streams.bind( 'remove', this.remove_featured_stream );
         this.model.streams.bind( 'add', this.add_stream );
+        this.model.featured_streams.bind( 'add', this.add_featured_stream );
 
         this.rendered = false;
 
         var dash = this;
         auth.on('logout', function(){
-            dash.model.streams.each(function(stream){
-                dash.remove_stream(stream.id);
+            _.each(_.clone(dash.model.streams.models), function(stream){
+                dash.model.streams.remove(stream);
+            });
+            _.each(_.clone(dash.model.featured_streams.models), function(stream){
+                dash.model.featured_streams.remove(stream);
             });
         });
     },
@@ -162,7 +167,8 @@ var dash_view = page_view.extend({
         var dash = this,
             options = {
                 data: {
-                    n:0
+                    n:0,
+                    access_token: auth.get('access_token')
                 },
                 success: success,
                 error: function(){
@@ -238,10 +244,17 @@ var dash_view = page_view.extend({
     },
 
     remove_stream: function(stream){
-        if(stream.get){
-            stream = stream.get('id');
+        if(stream.id){
+            stream = stream.id;
         }
         this.$('.user-streams [data-id='+stream+']').remove();
+    },
+
+    remove_featured_stream: function(stream){
+        if(stream.id){
+            stream = stream.id;
+        }
+        this.$('.featured-streams [data-id='+stream+']').remove();
     },
     add_stream: function(item){
         this.add_streams([item]);
@@ -291,6 +304,9 @@ var dash_view = page_view.extend({
             container.append( dash.tumblr_views[item.display.id].render().el );
         });
     },
+    add_featured_stream: function(item){
+        this.add_featured_streams([item]);
+    },
     add_featured_streams: function(items){
         if(this.options.show && !_.contains(this.options.show, 'featured-streams')){ return; }
 
@@ -298,6 +314,7 @@ var dash_view = page_view.extend({
             parent_view = this;
 
         _.each(items, function(item){
+            if(item.get('display').view && item.get('display').view != parent_view.options.name){ return; }
             var li = new dash_stream({
                 collection: item.photos,
                 model: item,
