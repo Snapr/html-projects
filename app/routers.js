@@ -80,9 +80,9 @@ var pages = [
     'competition'
 ];
 
-function _make_route(view_name, template, extra_view_data){
+function _make_route(file_name, name, template, extra_view_data){
     // returns a function that will do all that's needed to show a page when called
-    // view_name: js file to require, provices a Backbone.View
+    // file_name: js file to require, provices a Backbone.View
     // template: template path
     // extra_view_data: extra params to load this view with every time
     var route = function(query_string, dialog, extra_instance_data){
@@ -91,7 +91,7 @@ function _make_route(view_name, template, extra_view_data){
         // extra_instance_data: extra data to load this view this time only
 
         // get the view
-        require([view_name], function(view) {
+        require([file_name], function(view) {
 
             if(config.get('current_view')){
                 console.groupEnd(config.get('current_view').name);
@@ -101,13 +101,13 @@ function _make_route(view_name, template, extra_view_data){
             var query = get_query_params(query_string),
                 options = _.extend({
                     query: query,
+                    name: name,
+                    template: template,
                     dialog: !!dialog
                 }, extra_view_data || {}, extra_instance_data || {});
 
             // don't create a new instance of this view every time
             if(!route.cached_view){
-                //options.el = $(el);
-                options.name = template;
                 // new view() initialises AND activates
                 route.cached_view = new view(options);
             }else{
@@ -213,7 +213,7 @@ var routers = Backbone.Router.extend({
                 options.extra = {};
             }
 
-            var callback = _make_route(options.view, options.template, options.extra);
+            var callback = _make_route(options.view, options.name, options.template, options.extra);
             var regex = new RegExp('^' + options.name + '\\/\\??(.*?)?$');
 
             // store url so we can manually look them up (for dialogues)
