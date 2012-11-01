@@ -101,6 +101,7 @@ function _make_route(file_name, name, template, extra_view_data){
         require([file_name], function(view) {
 
             if(config.get('current_view')){
+                config.get('current_view').trigger('deactivate');
                 console.groupEnd(config.get('current_view').name);
             }
             console.group(template);

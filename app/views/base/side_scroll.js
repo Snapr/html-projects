@@ -142,7 +142,9 @@ return view.extend({
             scroller.options.snap = this.collection.length > 2 ? 'a.x-thumb:not(:last-child), .x-left-pull': 'a.x-thumb, .x-left-pull';
             setTimeout(function () {
                 scroller.refresh();
-                if(scroller.currPageX === 0){
+                // decide if we need to scroll the 'load more' element off based
+                // on the height (thumbs are square)
+                if(-scroller.scrollerH < scroller.x){
                     scroller.scrollToPage(1, 1, 0);
                 }
             }, 0);

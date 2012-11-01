@@ -38,6 +38,8 @@ return view.extend({
             page.set_back_text(options);
         });
 
+        this.trigger('initialize');
+
         this.post_initialize.apply(this, arguments);
         this.activate.apply(this, arguments);
         $(document.body).show();
@@ -96,6 +98,8 @@ return view.extend({
                 history_state.set('active_tab', tab_bar.active);
             }
         }
+
+        this.trigger('activate');
 
         this.post_activate.call(this, options);
     },
