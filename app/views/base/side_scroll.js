@@ -17,7 +17,7 @@ return view.extend({
             }
         }
 
-        this.collection.bind('all', this.render_thumbs, this);
+        //this.collection.bind('all', this.render_thumbs, this);
         this.load_template('components/stream');
         this.title = options.title;
         this.initial_title = options.initial_title;
@@ -114,6 +114,7 @@ return view.extend({
                 detail: 0
             }),
             success: function(collection){
+                this_view.render_thumbs();
                 if(!collection.length && this_view.fetch_attempts < 5 && this_view.no_photos){
                     if(this_view.no_photos()){
                         this_view.fetch_attempts += 1;
@@ -136,10 +137,12 @@ return view.extend({
 
         this.$('.x-thumbs').css('min-width', window.innerWidth + "px");
 
+        var snap = this.collection.length > 2 ? 'a.x-thumb:not(:last-child), .x-left-pull': 'a.x-thumb, .x-left-pull';
+
         // if already init, refresh
         if(this.scroller){
             var scroller = this.scroller;
-            scroller.options.snap = this.collection.length > 2 ? 'a.x-thumb:not(:last-child), .x-left-pull': 'a.x-thumb, .x-left-pull';
+            scroller.options.snap = snap;
             setTimeout(function () {
                 scroller.refresh();
                 // decide if we need to scroll the 'load more' element off based
@@ -185,11 +188,12 @@ return view.extend({
             }
         }
         try{
-            var collection = this.collection;
+            var collection = this.collection,
+                view = this;
             this.scroller = new iScroll(scroll_el[0], {
                 vScroll: false,
                 hScrollbar: false,
-                snap: collection.length > 2 ? 'a.x-thumb:not(:last-child), .x-left-pull': 'a.x-thumb, .x-left-pull',
+                snap: snap,
                 momentum: false,
                 onScrollEnd: function(){
 
@@ -223,6 +227,7 @@ return view.extend({
                         collection.fetch_newer({
                             data: {n: config.get('side_scroll_more')},
                             success: function(){
+                                view.render_thumbs();
                                 if(scroller.currPageX === 0){
                                     scroller.scrollToPage(1);
                                 }
@@ -237,16 +242,14 @@ return view.extend({
                         var options  = {
                             data: {n: config.get('side_scroll_more')},
                             success: function(collection, response){
+                                view.render_thumbs();
+                                if(scroller.currPageX === scroller.pagesX.length){
+                                    scroller.scrollToPage(scroller.pagesX.length - 1);
+                                }
+
                                 if (response.response.photos.length){
-                                    if(scroller.currPageX === scroller.pagesX.length){
-                                        scroller.scrollToPage(scroller.pagesX.length - 1);
-                                    }
                                     right_pull_msg.text('Load More');
                                 }else{
-                                    if(scroller.currPageX === scroller.pagesX.length){
-                                        scroller.scrollToPage(scroller.pagesX.length - 1);
-                                    }
-
                                     scroll_el.addClass('x-no-more');
                                     right_pull_msg.text('The End');
                                 }
