@@ -46,6 +46,7 @@ var auth_model = Backbone.Model.extend({
                         options.error( auth.attributes );
                     }
                 }
+                auth.trigger('logout');
             },
             error: function(){
                 if (typeof options.error == "function"){

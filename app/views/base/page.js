@@ -196,6 +196,17 @@ return view.extend({
         }else{
             $('.x-offline').remove();
         }
+    },
+
+    uncache: function(){
+        var this_view = this;
+        require(['routers'], function(routers){
+            _.any(routers.routers_instance.urls, function(url, i) {
+                if (url.callback.cached_view == this_view) {
+                    url.callback.cached_view = null;
+                }
+            });
+        });
     }
 });
 });

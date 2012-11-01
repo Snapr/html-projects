@@ -55,13 +55,9 @@ var dash_view = page_view.extend({
         this.rendered = false;
 
         var dash = this;
-        auth.on('logout', function(){
-            _.each(_.clone(dash.model.streams.models), function(stream){
-                dash.model.streams.remove(stream);
-            });
-            _.each(_.clone(dash.model.featured_streams.models), function(stream){
-                dash.model.featured_streams.remove(stream);
-            });
+        auth.on('logout login', function(){
+            // commit suicide on logout/in to force full reload
+            dash.uncache();
         });
     },
 
