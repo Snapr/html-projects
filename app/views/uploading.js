@@ -96,7 +96,8 @@ var uploading = page_view.extend({
             },
             expand: true,
             title: 'popular entries',
-            parent_view: this
+            parent_view: this,
+            use_gallery: false
         });
 
         $image_stream_container.append( comp_stream.el );
@@ -115,6 +116,7 @@ var uploading = page_view.extend({
             }}),
             expand: true,
             title: '@ ' + this.venue_name,
+            use_gallery: false,
             parent_view: this
         });
 
@@ -134,6 +136,7 @@ var uploading = page_view.extend({
             expand: true,
             title: 'nearby',
             parent_view: this,
+            use_gallery: false,
             no_photos: function(){
 
                 this.collection.data.radius = this.collection.data.radius + config.get('nearby_radius');
