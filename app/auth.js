@@ -84,6 +84,7 @@ var auth_model = Backbone.Model.extend({
     logout: function(){
         this.clear();
         local_storage['delete']( "auth" );
+        this.trigger('logout');
     },
 
     // decorator function

@@ -53,6 +53,13 @@ var dash_view = page_view.extend({
         this.model.streams.bind( 'add', this.add_stream );
 
         this.rendered = false;
+
+        var dash = this;
+        auth.on('logout', function(){
+            dash.model.streams.each(function(stream){
+                dash.remove_stream(stream.id);
+            });
+        });
     },
 
     post_activate: function(){
