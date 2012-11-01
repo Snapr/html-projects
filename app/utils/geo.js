@@ -1,35 +1,45 @@
 /*global _  define require */
 define(['utils/local_storage', 'native', 'config'], function(local_storage, native, config){
 var geo = {};
-geo.location_callbacks = [],
-geo.location_error_callbacks = [],
+geo.location_callbacks = [];
+geo.location_error_callbacks = [];
+geo.cached_location = undefined;
 
-geo.get_location = function ( success, error ){
+geo.get_location = function ( success, error, no_cache ){
+
+    if(no_cache || !geo.cached_location || geo.cached_location.timestamp + config.get('geolocation_cache_life') < new Date()){
+        geo.update_location(success, error);
+    }else{
+        success(geo.cached_location);
+    }
+
+};
+
+geo.update_location = function (success, error){
     // if in appmode, ask the app for location, otherwise try html5 geolocation
     if (local_storage.get( "appmode" )){
-        var timeout = setTimeout(function(){geo.location_error('timeout');},  config.get('timeout'));
+        var timeout = setTimeout(function(){
+            geo.location_error('timeout');
+            timeout = undefined;
+        },  config.get('timeout'));
 
         geo.location_callbacks.push( function(location){
             clearTimeout(timeout);
+
+            geo.cached_location = _.extend(
+                {timestamp: new Date()},
+                location
+            );
             success(location);
-        });
-        geo.location_error_callbacks.push( error );
-        if (window.override && window.override( "snapr://get_location" )){
-            //do nothing
-        }else{
-            if (local_storage.get( "appmode" ) == "android"){
-                // android locks up the UI for like 30 seconds whenever it tries to lookup the location, so we are caching the curr location, and only getting the
-                // new location is if the cached value is greater than 5 minutes old. TODO: this should really be done android-side
-                var cached_location = geo.get_cached_geolocation();
-                if (cached_location !== null){
-                    success( cached_location );
-                }else{
-                    native.pass_data( "snapr://get_location" );
-                }
-            }else{
-                native.pass_data( "snapr://get_location" );
-            }
-        }
+        } );
+        geo.location_error_callbacks.push( function(problem){
+            clearTimeout(timeout);
+
+            error(problem);
+        } );
+
+        native.pass_data( "snapr://get_location" );
+
     }else{
         if (navigator.geolocation){
             navigator.geolocation.getCurrentPosition( success, error );
@@ -39,37 +49,8 @@ geo.get_location = function ( success, error ){
     }
 };
 
-/* only used for android */
-geo.get_cached_geolocation = function(){
-    if (local_storage.supported){
-        var now = new Date().getTime();
-        if (local_storage.get('curr_geolocation') !== undefined &&
-            now < local_storage.get('geolocation_cache_expires'))
-        {
-            return JSON.parse(local_storage.get('curr_geolocation'));
-        }else{
-            return null;
-        }
-    }else{
-        return null;
-    }
-};
-
-/* only used for android */
-geo.set_cached_geolocation = function( location ){
-    var geolocation_cache_time = 1000*60*5; //5 minutes in milliseconds
-    if (local_storage.supported){
-        var now = new Date().getTime();
-        if (local_storage.get('geolocation_cache_expires') === undefined ||
-            local_storage.get('geolocation_cache_expires') < now)
-        {
-            local_storage.set('geolocation_cache_expires', now + geolocation_cache_time);
-            local_storage.set('curr_geolocation', JSON.stringify( location ));
-        }
-    }
-};
-
 geo.set_location = function( latitude, longitude ){
+    geo.location_error_callbacks = [];
     while (geo.location_callbacks.length){
         geo.location_callbacks.pop()({
             coords: {
@@ -80,6 +61,7 @@ geo.set_location = function( latitude, longitude ){
     }
 };
 geo.location_error = function( error ){
+    geo.location_callbacks = [];
     while (geo.location_error_callbacks.length){
         geo.location_error_callbacks.pop()( error );
     }
