@@ -167,7 +167,7 @@ var uploading = page_view.extend({
             });
 
         }else{
-            Backbone.history.navigate( "#/" );
+            Backbone.history.navigate( "#" );
         }
 
     },

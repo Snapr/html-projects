@@ -40,7 +40,7 @@ return page_view.extend({
                 $(".x-username").val('');
                 $(".x-password").val('');
                 if (login_view.previous_view.welcome_view){
-                    Backbone.history.navigate( "#/", true );
+                    Backbone.history.navigate( "#", true );
                 }else{
                     login_view.back();
                 }
