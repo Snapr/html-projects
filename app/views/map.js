@@ -37,16 +37,16 @@ var map_view = page_view.extend({
     history_ignore_params: ['zoom', 'lat', 'lng', 'photo_id', 'location'],
 
     events: {
-        "click .x-current-location": "current_location_go_to",
-        "click .x-disambituation-cancel": "location_search_toggle_disambiguation",
-        "click .x-map-feed": "map_feed",
+        "vclick .x-current-location": "current_location_go_to",
+        "vclick .x-disambituation-cancel": "location_search_toggle_disambiguation",
+        "vclick .x-map-feed": "map_feed",
         "change .x-filter": "filter_update",
         "change .x-show-photos, .x-show-spots": "layers_update",
         "submit .x-search": "keyword_search",
         "blur .x-search": "keyword_search",
-        "click .x-search .ui-input-clear": "keyword_search_clear",
-        "click .x-time-btn": "map_time",
-        "click .x-venue-pin" : "toggle_spot_label"
+        "vclick .x-search .ui-input-clear": "keyword_search_clear",
+        "vclick .x-time-btn": "map_time",
+        "vclick .x-venue-pin" : "toggle_spot_label"
     },
 
     post_activate: function(options){
