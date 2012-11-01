@@ -115,10 +115,12 @@ var dash_view = page_view.extend({
                 return _.contains(current.competitions, comp.id);
             }));
 
-            //remove tumblr feeds
+            //remove OR UPDATE tumblr feeds
             _.each(current.tumblr_feeds, function(feed){
                 if(!_.contains(_.chain(dash.model.tumblr_feeds).pluck('display').pluck('id').value(), feed)){
                     dash.$('.tumblr-streams [data-id='+feed+']').remove();
+                }else{
+                    dash.tumblr_views[feed].update();
                 }
             });
 
@@ -275,16 +277,18 @@ var dash_view = page_view.extend({
             container.append( li.render().el );
         });
     },
+    tumblr_views: {},
     add_tumblrs: function(items){
         if(this.options.show && !_.contains(this.options.show, 'tumblr')){ return; }
 
-        var container = this.$('.tumblr-streams');
+        var dash = this,
+            container = this.$('.tumblr-streams');
 
         _.each(items, function(item){
-            var li = new dash_tumblr_view({
+            dash.tumblr_views[item.display.id] = new dash_tumblr_view({
                 feed: item
             });
-            container.append( li.render().el );
+            container.append( dash.tumblr_views[item.display.id].render().el );
         });
     },
     add_featured_streams: function(items){
