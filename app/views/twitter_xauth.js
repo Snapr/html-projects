@@ -54,7 +54,7 @@ return page_view.extend({
                             });
                             auth.save_locally();
                             alerts.notification('Logged in as ' + data.response.display_username);
-                            Backbone.history.navigate("#");
+                            Backbone.history.navigate("#", true);
                         }else{
                             // sign up
                             Backbone.history.navigate( "#/join/?linked=true&twitter_name="+data.response.username+"&twitter_token="+escape(data.response.twitter_token) );
