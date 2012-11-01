@@ -492,7 +492,7 @@ var map_view = page_view.extend({
         if(known_location){
             callback(known_location);
         }else{
-            geo.get_location(callback);
+            geo.get_location(callback, function(){}, !!'no_cache');
         }
     },
 
@@ -513,7 +513,8 @@ var map_view = page_view.extend({
                     if (error.message){
                         alerts.notification('Error', error.message );
                     }
-                }
+                },
+                !!'no_cache'
             );
         }else{
             console.warn("map not initialized");
