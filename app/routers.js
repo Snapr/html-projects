@@ -90,6 +90,13 @@ function _make_route(file_name, name, template, extra_view_data){
         // dialog: (bool) load this page as a dialog (no url change, no effect on history)
         // extra_instance_data: extra data to load this view this time only
 
+        if(query_string && query_string.toLowerCase().indexOf('new_user=true') !== -1 && !local_storage.get("welcome_shown")){
+            //Backbone.history.navigate( "#", true );  // go here first so that back is not new_user
+            Backbone.history.navigate( "#/welcome/" );
+
+            return;
+        }
+
         // get the view
         require([file_name], function(view) {
 
