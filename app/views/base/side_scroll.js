@@ -27,8 +27,9 @@ return view.extend({
 
         if(options.parent_view){
             this.parent_view = options.parent_view;
-            this.parent_view.on('resize', this.scroll_init);
+            this.parent_view.on('activate', this.scroll_init);
         }
+        $(window).on('orientationchange', this.scroll_init);
 
         this.post_initialize.apply(this, arguments);
     },
