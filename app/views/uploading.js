@@ -182,7 +182,14 @@ var uploading = page_view.extend({
         if(this.progress_view){ return; }
 
         // our photo must be the last one in the queue
-        var photo = upload_progress.at(upload_progress.length-1);
+        var photo,
+            local_id = this.query.local_id;
+        upload_progress.any(function(upload){
+            if(upload.get('local_id') == local_id){
+                photo = upload;
+                return true;
+            }
+        });
 
         // if there's no photo yet we probably haven't recieved an upload_progress call
         // native code, when we do this function will get called again

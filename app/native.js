@@ -1,5 +1,5 @@
 /*global define */
-define(['config', 'collections/upload_progress'], function(config, upload_progress){
+define(['config', 'collections/upload_progress'], function(config, upload_progress_collection){
     //export
 
     // we can't to this here because geo relises on pass_data - circ.dep.
@@ -35,7 +35,7 @@ define(['config', 'collections/upload_progress'], function(config, upload_progre
         }
 
         // jam these in backwards so when the first add or change even is fired it's that of the latest upload
-        upload_progress.update(data.uploads.slice().reverse());
+        upload_progress_collection.update(data.uploads.slice().reverse());
 
         if (data.uploads.length){
             run_if_function(config.get('current_view').upload_progress)(data);
@@ -49,13 +49,13 @@ define(['config', 'collections/upload_progress'], function(config, upload_progre
     };
 
     window.upload_completed = function(queue_id, snapr_id){
-        var model = upload_progress.get(queue_id);
+        var model = upload_progress_collection.get(queue_id);
         if(model){
             model.set({
                 id: snapr_id,
                 queue_id: queue_id
             }).trigger('complete', model, queue_id);
-            upload_progress.remove(model);
+            upload_progress_collection.remove(model);
         }else{
             console.warn('tried to set '+queue_id+'s id to '+snapr_id+' but it doesnt exist');
         }
@@ -64,14 +64,14 @@ define(['config', 'collections/upload_progress'], function(config, upload_progre
     };
 
     window.upload_cancelled = function( id ){
-        upload_progress.remove(id);
+        upload_progress_collection.remove(id);
 
         run_if_function(config.get('current_view').upload_cancelled)(id);
     };
 
     window.upload_failed = function(id, error){
         //upload_progress.remove(id);
-        upload_progress.trigger('error', id, error);
+        upload_progress_collection.trigger('error', id, error);
 
         run_if_function(config.get('current_view').upload_failed)(id, error);
     };
