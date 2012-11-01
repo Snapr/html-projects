@@ -86,7 +86,7 @@ var dash_view = page_view.extend({
 
     background_update: function(){
 
-        this.$el.addClass('background-loading');
+        this.$el.addClass('x-background-loading');
 
         var dash = this,
             current = {
@@ -163,7 +163,7 @@ var dash_view = page_view.extend({
                 },
                 complete: function(){
                     $.mobile.hidePageLoadingMsg();
-                    dash.$el.removeClass('background-loading');
+                    dash.$el.removeClass('x-background-loading');
                 }
             };
 
