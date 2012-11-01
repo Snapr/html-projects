@@ -39,20 +39,25 @@ return view.extend({
                     spot_id: this.photo.get('location').spot_id,
                     shared: this.photo.get('shared'),
                     facebook_sharing: (
+                        this.photo.get('facebook_album') ||
+                        this.photo.get('facebook_newsfeed') ||
                         this.photo.get('shared') && this.photo.get('shared').facebook_album ||
                         this.photo.get('shared') && this.photo.get('shared').facebook_newsfeed ||
                         this.photo.get('sharing') && this.photo.get('sharing').facebook_album ||
                         this.photo.get('sharing') && this.photo.get('sharing').facebook_newsfeed
                     ),
                     twitter_sharing: (
+                        this.photo.get('tweet') ||
                         this.photo.get('shared') && this.photo.get('shared').tweeted ||
                         this.photo.get('sharing') && this.photo.get('sharing').tweeted
                         ),
                     foursquare_sharing: (
+                        this.photo.get('foursquare_checkin') ||
                         this.photo.get('shared') && this.photo.get('shared').foursquare_checkin ||
                         this.photo.get('sharing') && this.photo.get('sharing').foursquare_checkin
                     ),
                     tumblr_sharing: (
+                        this.photo.get('tumblr') ||
                         this.photo.get('shared') && this.photo.get('shared').tumblr ||
                         this.photo.get('sharing') && this.photo.get('sharing').tumblr
                     ),

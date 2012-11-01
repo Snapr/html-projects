@@ -26,7 +26,7 @@ return page_view.extend({
     },
 
     home: function(){
-        Backbone.history.navigate( "#/", true );
+        Backbone.history.navigate( "#", true );
     },
 
     offline: function(){}
