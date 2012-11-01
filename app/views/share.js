@@ -558,6 +558,7 @@ return page_view.extend({
 
                 var now = new Date();
                 params.local_id = ''+now.getMonth()+now.getDay()+now.getHours()+now.getMinutes()+now.getSeconds();
+                extras += "&local_id=" + params.local_id;
 
 
                 Backbone.history.navigate( "#/uploading/" + extras );
