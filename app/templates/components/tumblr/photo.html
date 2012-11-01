@@ -2,7 +2,7 @@
     <% if (model.get('photos')) { %>
       <ul class="photoset">
         <% _.each(model.get('photos'), function (photo) { %>
-          <li><img src="<%= getPhotoURL(photo, 250) %>" /></li>
+          <li><img src="<%= getPhotoURL(photo, 500) %>" /></li>
         <% }); %>
       </ul>
     <% } %>
