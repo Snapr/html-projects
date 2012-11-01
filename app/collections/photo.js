@@ -54,7 +54,7 @@ return Backbone.Collection.extend({
     fetch_newer: function( options ){
         var data = options.data || {};
         if (this.models.length){
-            data.min_date = this.models[0].get('date');
+            data.paginate_to = this.models[0].get('id');
         }
         _.extend( options, {
             add: true,
