@@ -12,6 +12,7 @@ var tumblr_post_view = page_view.extend({
 
         this.change_page();
         $.mobile.showPageLoadingMsg();
+        this.$el.addClass('x-loading');
 
         this.$( ".x-posts" ).empty();
 
@@ -34,6 +35,8 @@ var tumblr_post_view = page_view.extend({
     get_default_tab: function(){ return 'dash'; },
 
     render: function(){
+        this.replace_from_template({host: this.options.query.host}, ['.x-footer']);
+
         var $stream = this.$( ".x-posts" ).empty();
 
         this.$('.x-blog-title').text(this.collection.blog_title);
@@ -48,6 +51,8 @@ var tumblr_post_view = page_view.extend({
 
         // this.$('[data-role="button"]').button();
         $.mobile.hidePageLoadingMsg();
+        this.$el.removeClass('x-loading');
+
     }
 });
 

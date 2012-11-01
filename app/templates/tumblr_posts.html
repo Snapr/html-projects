@@ -15,5 +15,14 @@
             </a>
           <ul class="posts-stream x-posts image-item-block"></ul>
         </div>
+
+        <div class="tumblr-metadata tumblr-footer x-footer">
+            <% if(obj.host){ %>
+                <a href="http://<%= host %>/" class="ui-bar" data-role="button" data-iconpos="right" data-icon="arrow-r" data-theme="f" data-corners="false" data-shadow="false">
+                    <span class="tumblr-credit">View on <span class="hide">Tumblr</span></span>
+                </a>
+            <% } %>
+        </div>
+
     </div>
 </div>
