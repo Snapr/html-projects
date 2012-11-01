@@ -6,7 +6,7 @@
         <% }); %>
       </ul>
     <% } %>
-    <div class="tumblr-body"> 
-    <p class="caption"><%=model.get('caption')%></p>
+    <div class="tumblr-body">
+    <p class="caption"><%=model.get('caption').replace(/\n/g, '<br>' )%></p>
     </div>
 </div>
