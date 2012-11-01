@@ -127,6 +127,11 @@ div[data-role="content"] .s-inline-footer {
 .s-small-username {
   font-size: 12px;
 }
+.s-invisible-submit-button {
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
 .s-image-loader-bg {
   background-color: #fbfbfb;
   background-image: url('gfx/image-load.gif');
