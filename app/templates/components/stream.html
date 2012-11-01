@@ -24,8 +24,8 @@
         </div>
         <div class="x-thumbs" style="min-width:<%= window.innerWidth %>px">
             <% _.each(photos, function(photo) { %>
-                <a href="https://s3.amazonaws.com/media-server2.snapr.us/lrg2/<%= photo.get('secret') %>/<%= photo.get('id') %>.jpg" class="x-thumb s-image-link" rel="external" data-date="<%= photo.get('date') %>" data-id="<%= photo.get('id') %>" data-tag="<%= photo.get('description') %>">
-                    <img src="https://s3.amazonaws.com/media-server2.snapr.us/thm2/<%= photo.get('secret') %>/<%= photo.get('id') %>.jpg" <% if(photo.get('description')){ %>alt="<%= photo.get('description') %>"<% } %> class="s-thumb-image"
+                <a href="<% if(use_gallery){ %>https://s3.amazonaws.com/media-server2.snapr.us/lrg2/<%= photo.get('secret') %>/<%= photo.get('id') %>.jpg<% }else{ %>#/feed/?photo_id=<%= photo.get('id') %>&username=<%= photo.get('username') %>&n=1<% } %>" class="x-thumb s-image-link" rel="external" data-date="<%= photo.get('date') %>" data-id="<%= photo.get('id') %>" data-tag="<%= photo.get('description') %>">
+                    <img src="https://s3.amazonaws.com/media-server2.snapr.us/thm2/<%= photo.get('secret') %>/<%= photo.get('id') %>.jpg" <% if(photo.get('description')){ %>alt="<%= photo.get('description') %>"<% } %> class="s-thumb-image">
                 </a>
             <% }); %>
             <% if(!photos.length){ %>

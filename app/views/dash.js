@@ -44,8 +44,6 @@ define([
 
 var dash_view = page_view.extend({
 
-    el: $('#dashboard'),
-
     post_initialize: function(){
         this.model = new dash_model();
 
@@ -257,7 +255,8 @@ var dash_view = page_view.extend({
             var li = new dash_stream({
                 collection: item.photos,
                 model: item,
-                parent_view: parent_view
+                parent_view: parent_view,
+                use_gallery: false
             });
             container.append( li.render().el );
         });
@@ -300,7 +299,8 @@ var dash_view = page_view.extend({
                 model: item,
                 featured: true,
                 expand: true,
-                parent_view: parent_view
+                parent_view: parent_view,
+                use_gallery: false
             });
             container.append( li.el );
             li.render();  // render after inserting so DOM metrics are available

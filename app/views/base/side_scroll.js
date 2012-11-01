@@ -22,6 +22,8 @@ return view.extend({
         this.title = options.title;
         this.initial_title = options.initial_title;
 
+        this.use_gallery = options.use_gallery !== false;
+
         this.no_photos = options.no_photos;
         this.fetch_attempts = 0;
 
@@ -62,6 +64,7 @@ return view.extend({
 
         $(this.el).html($(this.template({
             title: this.initial_title === undefined && this.get_title() || this.initial_title,  // title initially blank if there's a no-photos callback
+            use_gallery: this.use_gallery,
             query: this.collection.data,
             photos: this.collection.models
         })));
@@ -269,6 +272,7 @@ return view.extend({
 
             var rendered = $(this.template({
                 title: '',
+                use_gallery: this.use_gallery,
                 photos: this.collection.models,
                 query: this.collection.data
             }));
@@ -285,8 +289,10 @@ return view.extend({
     },
 
     photoswipe_init: function(){
-        var id = this.cid;
-        $( "a.x-thumb", this.el ).photoswipe_init(id);
+        if(this.use_gallery){
+            var id = this.cid;
+            $( "a.x-thumb", this.el ).photoswipe_init(id);
+        }
     },
 
     goto_feed: function(e){
