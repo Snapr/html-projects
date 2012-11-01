@@ -345,42 +345,45 @@ var dash_tumblr_view = view.extend({
         this.$el.addClass('open loading');
         this.$el.html( this.template({
             feed: this.options.feed,
-            post: null
+            posts: []
         }));
 
-        var this_view = this,
-            feed = this.options.feed,
-
-            $tumblr_streams = this.$('.posts-stream').empty(),
-            collection = new tumblr_post_collection(),
-            options = {
-                host: feed.host,
-                key: feed.key,
-                data: {
-                    limit:1,
-                    filter:'text'
-                },
-                success: function(){
-                    if (collection.length) {
-                        this_view.$el.html( this_view.template({
-                            feed: feed,
-                            post: collection.at(0)
-                        })).trigger('create');
-                        this_view.$el.attr('data-id', feed.display.id);
-                    }
-                    this_view.$el.removeClass('loading');
-                },
-                error: function(){
-                    console.error('Error loading tumblr posts from server');
-                }
-            };
-        collection.fetch(options);
+        this.update();
         return this;
     },
-    toggle: function () {
+    toggle: function() {
         this.$el.toggleClass('open closed');
-        this.$el.toggleClass('s-arrow-d-left');
+        this.$el.toggleClass('top-left-arrow');
         this.$('.posts-stream').fadeToggle();
+    },
+    update: function(){
+        var this_view = this,
+        feed = this.options.feed,
+
+        collection = new tumblr_post_collection(),
+        options = {
+            host: feed.host,
+            key: feed.key,
+            data: {
+                limit:config.get('dash_tumblr_posts'),
+                filter:'text'
+            },
+            success: function(){
+                this_view.$('.posts-stream').empty();
+                if (collection.length) {
+                    this_view.$el.html( this_view.template({
+                        feed: feed,
+                        posts: collection.models
+                    })).trigger('create');
+                    this_view.$el.attr('data-id', feed.display.id);
+                }
+                this_view.$el.removeClass('loading');
+            },
+            error: function(){
+                console.error('Error loading tumblr posts from server');
+            }
+        };
+        collection.fetch(options);
     }
 });
 
