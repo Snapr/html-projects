@@ -556,6 +556,9 @@ return page_view.extend({
                     extras += "&comp_id=" + params.comp_id;
                 }
 
+                var now = new Date();
+                params.local_id = ''+now.getMonth()+now.getDay()+now.getHours()+now.getMinutes()+now.getSeconds();
+
 
                 Backbone.history.navigate( "#/uploading/" + extras );
                 native.pass_data("snapr://upload?" + $.param(params) );
