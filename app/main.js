@@ -286,13 +286,19 @@ require(['config', 'jquery', 'backbone', 'photoswipe', 'auth', 'utils/local_stor
         $(".x-launch-camera-options").live( "click", auth.require_login( function(){
             var extra_params = $(this).data('extra_params');
             if(local_storage.get( "appmode" )){
-                alerts.approve({
+                var actionID = alerts.tapped_action.counter++;
+                alerts.tapped_action.alerts[actionID] = {
+                    '1': function(){launch_camera(null, extra_params);},
+                    '2': function(){photo_library(null, extra_params);}
+                };
+
+                native.pass_data('snapr://action?' + $.param({
                     'title': 'Share Photo',
-                    'yes': "Take Picture",
-                    'no': "Use Existing",
-                    'yes_callback': function(){launch_camera(null, extra_params);},
-                    'no_callback': function(){photo_library(null, extra_params);}
-                });
+                    'otherButton1': "Take Picture",
+                    'otherButton2': "Use Existing",
+                    'cancelButton': 'cancel',
+                    'actionID': actionID
+                }));
             }else{
                 photo_library(null, extra_params);
             }
