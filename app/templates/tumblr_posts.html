@@ -10,10 +10,114 @@
         <div class="tumblr-body">
             <a class="ui-bar s-arrow-d-left x-details" data-role="button" data-iconpos="left" data-icon="blog" data-theme="e">
                 <span class="image-details">
-                    <em class="x-blog-title"><!-- dynamic --></em>
+                    <em class="x-blog-title"><span><%= obj.title || 'Blog' /* must be wrapped */ %></span></em>
                 </span>
             </a>
-          <ul class="posts-stream x-posts image-item-block"></ul>
+
+            <ul class="posts-stream x-posts image-item-block">
+
+                <% _.each(obj.posts || [], function(post){ %>
+                    <li>
+
+                        <% switch(post.get('type')) { case 'text': %>
+
+                            <div id="post-<%= post.get('id') %>" class="post-<%= post.get('type') %> post">
+                                <div class="tumblr-body">
+                                <h4><%=post.get('title')%></h4>
+                                <p><%=post.get('body').replace(/\n/g, '<br>' )%></p>
+                                </div>
+                            </div>
+
+                        <% break; case 'photo': %>
+
+                            <div id="post-<%= post.get('id') %>" class="post-<%= post.get('type') %> post">
+                                <% if (post.get('photos')) { %>
+                                    <ul class="photoset">
+                                        <% _.each(post.get('photos'), function (photo) { %>
+                                            <li><img src="<%= getPhotoURL(photo, 500) %>" /></li>
+                                        <% }); %>
+                                    </ul>
+                                <% } %>
+                                <div class="tumblr-body">
+                                <p class="caption"><%=post.get('caption').replace(/\n/g, '<br>' )%></p>
+                                </div>
+                            </div>
+
+                        <% break; case 'link': %>
+
+                            <div id="post-<%= post.get('id') %>" class="post-<%= post.get('type') %> post">
+                                <div class="tumblr-body">
+                                <h4><%=post.get('title')%></h4>
+                                <p><%=post.get('description').replace(/\n/g, '<br>' )%></p>
+                                </div>
+                            </div>
+
+                        <% break; case 'video': %>
+
+                            <div id="post-<%= post.get('id') %>" class="post-<%= post.get('type') %> post">
+                                <%= getVideoEmbed(post, 312) %>
+                                <div class="tumblr-body">
+                                <% if(post.get('caption')){%><%=post.get('caption').replace(/\n/g, '<br>' )%><%}%>
+                                </div>
+                            </div>
+
+                        <% break; case 'chat': %>
+
+                           <div id="post-<%= post.get('id') %>" class="post-<%= post.get('type') %> post">
+                               <div class="tumblr-body">
+                                <h4><%=post.get('title')%></h4>
+                                <%if (post.get('dialogue')) {%>
+                                    <ul class="chat">
+                                        <%_.each(post.get('dialogue'), function(dialogue){%>
+                                            <li><strong><%=dialogue.label%></strong> <%=dialogue.phrase%></li>
+                                        <%});%>
+                                    </ul>
+                                <%}%>
+                                </div>
+                            </div>
+
+                        <% break; case 'quote': %>
+
+                            <div id="post-<%= post.get('id') %>" class="post-<%= post.get('type') %> post">
+                                <div class="tumblr-body">
+                                <h4><%=post.get('text')%></h4>
+                                <p><%=post.get('source')%></p>
+                                </div>
+                            </div>
+
+                        <% break; case 'audio': %>
+
+                            <div id="post-<%= post.get('id') %>" class="post-<%= post.get('type') %> post">
+
+                                <div class="tumblr-body">
+                                    <audio controls preload="none" src="<%= post.get('audio_url') %>"></audio>
+
+                                    <%if(post.get('track_name') || post.get('artist') || post.get('album')) { %>
+                                        <h4><%= post.get('track_name') %>
+                                            <% if(post.get('artist')) { %> by <%= post.get('artist') %><% } %>
+                                            <% if(post.get('album')) { %> from '<%= post.get('album') %>'
+                                                <% if (post.get('year')) { %> <%= post.get('year') %> <% } %>
+                                            <% } %>
+                                        </h4>
+                                    <% } %>
+
+                                <% if(post.get('caption')){%><%=post.get('caption').replace(/\n/g, '<br>' )%><%}%>
+                                <% if(post.get('plays')) {%><p><%=post.get('plays')%> plays</p><%}%>
+                                <% if(post.get('source')){%><%=post.get('source') %><%}%>
+                                </div>
+                            </div>
+
+                        <% }%>
+                        <div class="tumblr-metadata">
+                            <a href="<%= post.get('post_url') %>" class="ui-bar" data-role="button" data-iconpos="right" data-icon="arrow-r" data-theme="f" data-corners="false" data-shadow="false">
+                            <span class="ui-icon ui-icon-tumblr-<%= post.get('type') %> tumblr-icon"></span>
+                            <%= string_utils.time_ago(post.get('timestamp')*1000) %><% if (post.get('note_count') > 0){ %>, <%= post.get('note_count') %> notes<%}%>
+                            </a>
+                        </div>
+                    </ul>
+
+                <% })%>
+            </ul>
         </div>
 
         <div class="tumblr-metadata tumblr-footer x-footer">
