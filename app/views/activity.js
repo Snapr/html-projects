@@ -113,56 +113,8 @@ var activity_stream = view.extend({
         this.$el.html( this.template({
             time_period: time_period,
             stream_summary: stream_summary,
-            photo_events: photo_events
-        }));
-
-
-        if (this.model.has( "events" )){
-            this.model.get( "events" ).each( function( item ){
-                var stream_item = new activity_stream_item({
-                    model: item,
-                    photo_events: photo_events
-                });
-                if (photo_events){
-                    this.$(".x-photo-activity").append( stream_item.render().el );
-                }else{
-                    this.$(".x-non-photo-activity").append( stream_item.render().el );
-                }
-
-            }, this);
-        }else{
-            var stream_item = new activity_stream_item({
-                model: this.model
-            });
-
-            this.$("x-activity").append( stream_item.render().el );
-        }
-
-        return this;
-    }
-
-});
-
-var activity_stream_item = view.extend({
-
-    tagName: "li",
-
-    className: "activity-item",
-
-    initialize: function(){
-        _.bindAll( this );
-
-        this.photo_events = this.options.photo_events;
-        this.load_template('components/activity_item');
-    },
-
-    render: function(){
-        var likes_list = _.map( this.model.get("favorites"), function(f){ return f.user.username; });
-
-        this.$el.html( this.template({
-            item: this.model,
-            photo_events: this.photo_events,
-            likes_list: this.model.get("favorites")
+            photo_events: photo_events,
+            events: this.model.get( "events" ) || []
         }));
 
         return this;
