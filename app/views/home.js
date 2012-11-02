@@ -31,10 +31,6 @@ return page_view.extend({
 
         this.$el.appendTo(document.body);
 
-        var auth_header = new auth_header_view({
-            el: this.$('.auth-header')
-        });
-
         if(auth.has("access_token")){
             var ticker_instance = new ticker({el:this.$('.x-news-ticker')}).render().tick();
             this.$el.on('pagehide', function(event, ui){

@@ -3,7 +3,16 @@
     <div data-role="header" data-theme="b">
 
         <div class="auth-header">
-            <!-- dynamic -->
+            <div class="ui-btn-left join-block">
+                <% if (auth.has('access_token')) { %>
+                    <a class="avatar-block" data-role="button" data-shadow="false" data-corners="false" href="#/my-account/">
+                        <span class="s-avatar" style="background-image: url('<%= config.get('avatar_url') %>/<%= auth.get('snapr_user') %>?size=large&amp;_salt=facebook');"></span>
+                        <%= auth.get('display_username') %>
+                    </a>
+                <% } else { %>
+                    <a href="#/join/" data-snapr-dialog="true" data-role="button" data-icon="join" data-iconpos="left" data-theme="b">Join</a>
+                <% } %>
+            </div>
         </div>
 
         <div class="ui-btn-right">
