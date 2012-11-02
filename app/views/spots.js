@@ -18,8 +18,6 @@ var spots_view =  page_view.extend({
 
         this.collection = new spot_collection();
         this.collection.on('all', this.render, this);
-        this.spot_results_header = new spot_results_header_view();
-        this.$('.x-spots-list').before(this.spot_results_header.el);
     },
 
     post_activate: function(options) {
@@ -72,33 +70,20 @@ var spots_view =  page_view.extend({
 
 
     render: function() {
-        var spots_list = this.$(".x-spots-list").empty();
+        var spots_list = this.$(".x-spots-list, .x-header").empty();
 
-        if(this.collection.length){
-            //no_results.$el.remove();  // use remove(), hide() keeps it hidden and requires show() later
-            _.each( this.collection.models, function( model ) {
-                var li = new spots_item({
-                    model: model,
-                    parentView: this
-                });
+        this.replace_from_template(
+            {
+                spots: this.collection,
+                params: this.build_map_params()
+            }, [
+                '.x-spots-list',
+                '.x-header'
+            ]
+        ).find('[data-role="button"]').button();
 
-                spots_list.append( li.el );
-                li.render();
-            });
-            this.spot_results_header.show();
-
-        }
-
-        var params = this.build_map_params();
-
-        this.spot_results_header.render(this.collection.length, params);
         this.$el.removeClass('.x-loading');
         spots_list.listview().listview("refresh");
-    },
-
-    reset_collection: function() {
-        // this.display_collection = _.clone( this.collection.models );
-        //         this.render();
     },
 
     build_map_params: function () {
@@ -193,41 +178,6 @@ var spots_view =  page_view.extend({
         this.search(data);
     }
 
-});
-
-var spots_item = view.extend({
-    tagName: 'li',
-    className: 'spot-item',
-
-    initialize: function () {
-        this.template = this.get_template('components/spots/results_item');
-    },
-
-    render: function () {
-        this.$el.html( this.template({
-            spot: this.model
-        }));
-    }
-});
-
-var spot_results_header_view = view.extend({
-    initialize: function () {
-        this.template = this.get_template('components/spots/results_header');
-    },
-
-    render: function (results, param) {
-        this.$el.html( this.template({
-            results: results,
-            param: param
-        }));
-        this.$('[data-role="button"]').button();
-    },
-    hide: function () {
-        this.$el.hide();
-    },
-    show: function () {
-        this.$el.show();
-    }
 });
 
 return spots_view;
