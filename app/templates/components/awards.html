@@ -2,17 +2,13 @@
     <div class="x-scroll-wrapper"><!-- inner div for scroll -->
         <div class="x-thumbs">
             <% _.each(awards, function(award) { %>
-                <a href="" class="x-thumb image-link" rel="external" data-date="" data-id="" data-tag="">
-                    <img src="<%= award.images.thm %>" class="thumb-image thumb-med">
-                </a>
+                <div class="x-thumb">
+                    <a href="" class="image-link" rel="external" data-date="" data-id="" data-tag="">
+                        <img src="<%= award.images.thm %>" class="thumb-image thumb-med">
+                    </a>
+                    <div class="ribbon ribbon-<%= award.id %>">&nbsp;</div>
+                </div>
             <% }); %>
-            <% if(!awards.length){ %>
-                <a class="x-no-photos x-thumb thumb-med load-more-inline">
-                <!-- we need something to scroll to even when there are no awards -->
-                <span class="ui-btn-text x-msg">No Awards</span>
-
-                </a>
-            <% } %>
         </div>
     </div>
 </div>

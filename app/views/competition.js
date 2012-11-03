@@ -58,16 +58,6 @@ var comp_view = page_view.extend({
 
         image_streams.trigger('create');
 
-        // 
-
-        // _.each(this.model.get('awards'), function (award) {
-        //     var li = new award_stream({
-        //         model: award
-        //     });
-        //     container.append( li.render().el );
-        // });
-        // container.trigger('create');
-
         $.mobile.hidePageLoadingMsg();
         this.rendered = true;
         return this;

@@ -30,12 +30,11 @@ return side_scroll.extend({
 
     render: function(){
 
-        $(this.el).html($(this.template({
-            awards: this.collection
-        })));
-
-        // if there are already photos in the collection
+        // if there are already awards in the collection
         if(this.collection.length){
+            $(this.el).html($(this.template({
+                awards: this.collection
+            })));
             this.scroll_init();
             this.photoswipe_init();
         }

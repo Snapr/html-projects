@@ -7604,9 +7604,19 @@ body.browser-testing .ui-footer-fixed {
   margin: 0;
 }
 .competition .awards-stream .award-stream .x-thumb {
+  position: relative;
+  display: inline-block;
+}
+.competition .awards-stream .award-stream .x-thumb .image-link {
   overflow: hidden;
   border: solid 1px #e4e4e4;
   border-radius: 6px;
+}
+.competition .awards-stream .award-stream .x-thumb .ribbon {
+  position: absolute;
+  bottom: -10px;
+  right: -5px;
+  z-index: 99;
 }
 .competition .ui-li-desc {
   white-space: normal;
