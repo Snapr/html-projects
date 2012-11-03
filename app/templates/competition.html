@@ -17,7 +17,7 @@
                 <img class="banner-image" src="<%= banner.mobile %>">
             </div>
 
-            <ul class="award-stream"></ul>
+            <ul class="awards-stream"></ul>
 
             <% if(status == 'open'){ %>
                 <a class="ui-bar x-details x-launch-camera-options" data-role="button" data-icon="arrow-r" data-iconpos="right" data-theme="c" data-ajax="false" data-extra_params="comp_id=<%= id %>">
@@ -33,7 +33,7 @@
 
                 <br>
 
-                <a data-role="button" data-theme="e">submit a photo</a>
+                <a data-role="button" data-theme="e" class="x-launch-camera-options" data-extra_params="comp_id=<%= id %>">submit a photo</a>
 
             <% } else { %>
                 <a class="ui-bar x-details x-launch-camera-options" data-role="button" data-icon="arrow-r" data-iconpos="right" data-theme="c" data-ajax="false" data-extra_params="comp_id=<%= id %>">
