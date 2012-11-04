@@ -63,17 +63,17 @@
 
             <a data-role="button" data-theme="z" data-icon="action-more" data-iconpos="left" class="action-icons" data-inline="true" href="#actions-<%= item.cid %>" data-rel="popup">More</a>
 
-            <div data-role="popup"  data-theme="z" id="actions-<%= item.cid %>">
-                <div data-role="controlgroup" data-type="horizontal" class="dark-icons">
+            <div data-role="popup"  data-theme="b" id="actions-<%= item.cid %>">
+                <div data-type="horizontal" data-role="controlgroup"  class="dark-icons">
                     <% if (item.get("username") == auth.get("snapr_user")) {%>
-                        <a class="x-privacy" data-role="button" data-icon="settings" data-inline="true" data-iconpos="left">
+                        <a class="x-privacy" data-role="button" data-icon="settings"  data-iconpos="left" data-theme="b" data-inline="true">
                             <%= item.get('status') %>
                         </a>
-                        <a class="x-delete" data-role="button" data-icon="delete" data-inline="true" data-iconpos="notext">
+                        <a class="x-delete" data-role="button" data-icon="delete"  data-iconpos="notext" data-theme="b" data-inline="true">
                            delete
                        </a>
                     <%} else {%>
-                        <a class="x-flag" data-role="button" data-icon="flag" data-inline="true" data-iconpos="notext">
+                        <a class="x-flag" data-role="button" data-icon="flag" data-iconpos="notext" data-theme="b" data-inline="true">
                             <% if (item.get('flagged')){%> flagged <% }else{ %> flag <% } %>
                         </a>
                     <%}%>
