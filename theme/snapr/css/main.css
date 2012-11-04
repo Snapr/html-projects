@@ -3930,25 +3930,25 @@ h4 {
   margin-left: 0px;
   margin-right: 0px;
 }
-.ui-dialog.special-bg, .ui-page.special-bg {
+.ui-dialog.s-special-bg, .ui-page.s-special-bg {
   background-image: none!important;
 }
-.ui-dialog.special-bg div[data-role="content"], .ui-page.special-bg div[data-role="content"] {
+.ui-dialog.s-special-bg div[data-role="content"], .ui-page.s-special-bg div[data-role="content"] {
   background: none;
 }
-.ui-dialog.snapr-bg, .ui-page.snapr-bg {
+.ui-dialog.s-snapr-bg, .ui-page.s-snapr-bg {
   background-color: #ffff33 !important;
   -moz-box-shadow: inset 0px -2px 100px #ffe400;
   -webkit-box-shadow: inset 0px -2px 100px #ffe400;
   box-shadow: inset 0px -2px 100px #ffe400;
 }
-.ui-dialog.tumblr-bg {
+.ui-dialog.s-tumblr-bg {
   background-color: #7e8b9e !important;
   -moz-box-shadow: inset 0px -2px 100px #464d58;
   -webkit-box-shadow: inset 0px -2px 100px #464d58;
   box-shadow: inset 0px -2px 100px #464d58;
 }
-.ui-dialog.twitter-bg {
+.ui-dialog.s-twitter-bg {
   background-color: #a2d2e1 !important;
   -moz-box-shadow: inset 0px -2px 100px #55acc8;
   -webkit-box-shadow: inset 0px -2px 100px #55acc8;
@@ -3962,7 +3962,7 @@ h4 {
   -webkit-background-size: 320px 480px !important;
   background-size: 320px 480px !important;
 }
-.ui-dialog.snapr-welcome-bg, .ui-page.snapr-welcome-bg {
+.ui-dialog.s-snapr-welcome-bg, .ui-page.s-snapr-welcome-bg {
   background-color: #acebdd!important;
   background-image: url('../gfx/welcome-image.png') !important;
   -moz-background-size: 320px 318px !important;
@@ -3972,7 +3972,7 @@ h4 {
   background-repeat: no-repeat !important;
   background-position: center bottom!important;
 }
-.twitter-button.ui-btn-up-e {
+.s-twitter-button.ui-btn-up-e {
   background: #9ed5e8;
   background-image: -webkit-gradient(linear, left top, left bottom, from(#9ed5e8), to(#55acc8));
   /* Saf4+, Chrome */
@@ -3992,10 +3992,10 @@ h4 {
   background-image: linear-gradient(top, #9ed5e8, #55acc8);
   color: white;
 }
-.twitter-button.ui-btn-up-e a.ui-link-inherit {
+.s-twitter-button.ui-btn-up-e a.ui-link-inherit {
   color: white;
 }
-.twitter-button.ui-btn-hover-e {
+.s-twitter-button.ui-btn-hover-e {
   border: none;
   background: #c7e7f2;
   background-image: -webkit-gradient(linear, left top, left bottom, from(#b3deed), to(#68b5ce));
@@ -4016,10 +4016,10 @@ h4 {
   background-image: linear-gradient(top, #b3deed, #68b5ce);
   color: white;
 }
-.twitter-button.ui-btn-hover-e a.ui-link-inherit {
+.s-twitter-button.ui-btn-hover-e a.ui-link-inherit {
   color: white;
 }
-.twitter-button.ui-btn-down-e {
+.s-twitter-button.ui-btn-down-e {
   border: none;
   background: #9ed5e8;
   background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, #9ed5e8), color-stop(0.7, #9ed5e8), color-stop(1, #89cce3));
@@ -4040,10 +4040,10 @@ h4 {
   background-image: linear-gradient(bottom, #9ed5e8 0%, #9ed5e8 70%, #92d0e5 100%);
   color: white;
 }
-.twitter-button.ui-btn-down-e a.ui-link-inherit {
+.s-twitter-button.ui-btn-down-e a.ui-link-inherit {
   color: white;
 }
-.tumblr-button.ui-btn-up-e {
+.s-tumblr-button.ui-btn-up-e {
   background: #647185;
   background-image: -webkit-gradient(linear, left top, left bottom, from(#647185), to(#464d58));
   /* Saf4+, Chrome */
@@ -4063,10 +4063,10 @@ h4 {
   background-image: linear-gradient(top, #647185, #464d58);
   color: white;
 }
-.tumblr-button.ui-btn-up-e a.ui-link-inherit {
+.s-tumblr-button.ui-btn-up-e a.ui-link-inherit {
   color: white;
 }
-.tumblr-button.ui-btn-hover-e {
+.s-tumblr-button.ui-btn-hover-e {
   border: none;
   background: #7e8b9e;
   background-image: -webkit-gradient(linear, left top, left bottom, from(#6f7d93), to(#515966));
@@ -4087,10 +4087,10 @@ h4 {
   background-image: linear-gradient(top, #6f7d93, #515966);
   color: white;
 }
-.tumblr-button.ui-btn-hover-e a.ui-link-inherit {
+.s-tumblr-button.ui-btn-hover-e a.ui-link-inherit {
   color: white;
 }
-.tumblr-button.ui-btn-down-e {
+.s-tumblr-button.ui-btn-down-e {
   border: none;
   background: #647185;
   background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, #647185), color-stop(0.7, #647185), color-stop(1, #596576));
@@ -4111,10 +4111,10 @@ h4 {
   background-image: linear-gradient(bottom, #647185 0%, #647185 70%, #5d6a7c 100%);
   color: white;
 }
-.tumblr-button.ui-btn-down-e a.ui-link-inherit {
+.s-tumblr-button.ui-btn-down-e a.ui-link-inherit {
   color: white;
 }
-.facebook-button.ui-btn-up-e {
+.s-facebook-button.ui-btn-up-e {
   background: #5e81b4;
   background-image: -webkit-gradient(linear, left top, left bottom, from(#5e81b4), to(#5676a4));
   /* Saf4+, Chrome */
@@ -4134,10 +4134,10 @@ h4 {
   background-image: linear-gradient(top, #5e81b4, #5676a4);
   color: white;
 }
-.facebook-button.ui-btn-up-e a.ui-link-inherit {
+.s-facebook-button.ui-btn-up-e a.ui-link-inherit {
   color: white;
 }
-.facebook-button.ui-btn-hover-e {
+.s-facebook-button.ui-btn-hover-e {
   border: none;
   background: #819cc4;
   background-image: -webkit-gradient(linear, left top, left bottom, from(#6f8fbc), to(#6583ae));
@@ -4158,10 +4158,10 @@ h4 {
   background-image: linear-gradient(top, #6f8fbc, #6583ae);
   color: white;
 }
-.facebook-button.ui-btn-hover-e a.ui-link-inherit {
+.s-facebook-button.ui-btn-hover-e a.ui-link-inherit {
   color: white;
 }
-.facebook-button.ui-btn-down-e {
+.s-facebook-button.ui-btn-down-e {
   border: none;
   background: #5e81b4;
   background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, #5e81b4), color-stop(0.7, #5e81b4), color-stop(1, #4f74aa));
@@ -4182,10 +4182,10 @@ h4 {
   background-image: linear-gradient(bottom, #5e81b4 0%, #5e81b4 70%, #5479af 100%);
   color: white;
 }
-.facebook-button.ui-btn-down-e a.ui-link-inherit {
+.s-facebook-button.ui-btn-down-e a.ui-link-inherit {
   color: white;
 }
-.snapr-button.ui-btn-up-e {
+.s-snapr-button.ui-btn-up-e {
   background: #ffff00;
   text-shadow: 0 1px 1px white;
   background-image: -webkit-gradient(linear, left top, left bottom, from(#ffff00), to(#ffe400));
@@ -4206,10 +4206,10 @@ h4 {
   background-image: linear-gradient(top, #ffff00, #ffe400);
   color: #333333;
 }
-.snapr-button.ui-btn-up-e a.ui-link-inherit {
+.s-snapr-button.ui-btn-up-e a.ui-link-inherit {
   color: #333333;
 }
-.snapr-button.ui-btn-hover-e {
+.s-snapr-button.ui-btn-hover-e {
   border: none;
   background: #ffff33;
   background-image: -webkit-gradient(linear, left top, left bottom, from(#ffff1a), to(#ffe71a));
@@ -4230,10 +4230,10 @@ h4 {
   background-image: linear-gradient(top, #ffff1a, #ffe71a);
   color: #333333;
 }
-.snapr-button.ui-btn-hover-e a.ui-link-inherit {
+.s-snapr-button.ui-btn-hover-e a.ui-link-inherit {
   color: #333333;
 }
-.snapr-button.ui-btn-down-e {
+.s-snapr-button.ui-btn-down-e {
   border: none;
   background: #ffff00;
   background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, #ffff00), color-stop(0.7, #ffff00), color-stop(1, #e5e600));
@@ -4254,7 +4254,7 @@ h4 {
   background-image: linear-gradient(bottom, #ffff00 0%, #ffff00 70%, #f0f000 100%);
   color: #333333;
 }
-.snapr-button.ui-btn-down-e a.ui-link-inherit {
+.s-snapr-button.ui-btn-down-e a.ui-link-inherit {
   color: #333333;
 }
 /* Form Validation like on join page */

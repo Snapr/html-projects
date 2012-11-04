@@ -1377,6 +1377,131 @@ div.ps-carousel-item-loading {
   margin-top: 4px;
   display: block;
 }
+.ui-dialog.s-special-bg,
+.ui-page.s-special-bg {
+  background-image: none!important;
+}
+.ui-dialog.s-special-bg div[data-role="content"],
+.ui-page.s-special-bg div[data-role="content"] {
+  background: none;
+}
+.ui-dialog.s-snapr-bg,
+.ui-page.s-snapr-bg {
+  background-color: #ffff33 !important;
+  -webkit-box-shadow: inset 0px -2px 100px #ffe400;
+  -moz-box-shadow: inset 0px -2px 100px #ffe400;
+  box-shadow: inset 0px -2px 100px #ffe400;
+}
+.ui-dialog.s-tumblr-bg {
+  background-color: #718199 !important;
+  -webkit-box-shadow: inset 0px -2px 100px #2c3c54;
+  -moz-box-shadow: inset 0px -2px 100px #2c3c54;
+  box-shadow: inset 0px -2px 100px #2c3c54;
+}
+.ui-dialog.s-twitter-bg {
+  background-color: #7ac5de !important;
+  -webkit-box-shadow: inset 0px -2px 100px #309dc2;
+  -moz-box-shadow: inset 0px -2px 100px #309dc2;
+  box-shadow: inset 0px -2px 100px #309dc2;
+}
+.ui-dialog.s-snapr-welcome-bg,
+.ui-page.s-snapr-welcome-bg {
+  background-color: #acebdd!important;
+  background-image: url('gfx/welcome-image.png') !important;
+  -webkit-background-size: 320px 318px !important;
+  -moz-background-size: 320px 318px !important;
+  -o-background-size: 320px 318px !important;
+  background-size: 320px 318px !important;
+  background-repeat: no-repeat !important;
+  background-position: center bottom!important;
+}
+.s-twitter-button.ui-btn-up-e {
+  background: #68d9ff;
+  color: white;
+  text-shadow: none;
+}
+.s-twitter-button.ui-btn-up-e a.ui-link-inherit {
+  color: white;
+}
+.s-twitter-button.ui-btn-hover-e {
+  background: #9be6ff;
+  color: white;
+  text-shadow: none;
+}
+.s-twitter-button.ui-btn-hover-e a.ui-link-inherit {
+  color: white;
+}
+.s-twitter-button.ui-btn-down-e {
+  background: #68d9ff;
+  color: white;
+}
+.s-twitter-button.ui-btn-down-e a.ui-link-inherit {
+  color: white;
+}
+.s-tumblr-button.ui-btn-up-e {
+  background: #5a687d;
+  color: white;
+}
+.s-tumblr-button.ui-btn-up-e a.ui-link-inherit {
+  color: white;
+}
+.s-tumblr-button.ui-btn-hover-e {
+  background: #718199;
+  color: white;
+}
+.s-tumblr-button.ui-btn-hover-e a.ui-link-inherit {
+  color: white;
+}
+.s-tumblr-button.ui-btn-down-e {
+  background: #5a687d;
+  color: white;
+}
+.s-tumblr-button.ui-btn-down-e a.ui-link-inherit {
+  color: white;
+}
+.s-facebook-button.ui-btn-up-e {
+  background: #507ab8;
+  color: white;
+}
+.s-facebook-button.ui-btn-up-e a.ui-link-inherit {
+  color: white;
+}
+.s-facebook-button.ui-btn-hover-e {
+  background: #7496c7;
+  color: white;
+}
+.s-facebook-button.ui-btn-hover-e a.ui-link-inherit {
+  color: white;
+}
+.s-facebook-button.ui-btn-down-e {
+  background: #507ab8;
+  color: white;
+}
+.s-facebook-button.ui-btn-down-e a.ui-link-inherit {
+  color: white;
+}
+.s-snapr-button.ui-btn-up-e {
+  background: #ffff00;
+  text-shadow: 0 1px 1px white;
+  color: #333333;
+}
+.s-snapr-button.ui-btn-up-e a.ui-link-inherit {
+  color: #333333;
+}
+.s-snapr-button.ui-btn-hover-e {
+  background: #ffff33;
+  color: #333333;
+}
+.s-snapr-button.ui-btn-hover-e a.ui-link-inherit {
+  color: #333333;
+}
+.s-snapr-button.ui-btn-down-e {
+  background: #ffff00;
+  color: #333333;
+}
+.s-snapr-button.ui-btn-down-e a.ui-link-inherit {
+  color: #333333;
+}
 a {
   text-decoration: none;
 }

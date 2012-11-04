@@ -80,7 +80,7 @@ var join_dialog = page_view.extend({
         this.change_page();
 
         this.$('.linked-message').toggle(!!(this.options.query && this.options.query.linked));
-        this.$('.twitter-button').toggle(!(this.options.query && this.options.query.twitter_name));
+        this.$('.x-twitter-button').toggle(!(this.options.query && this.options.query.twitter_name));
 
         if(this.options.query && this.options.query.twitter_name){
             $('x-username').val(this.options.query.twitter_name).valid();
@@ -91,7 +91,7 @@ var join_dialog = page_view.extend({
 
     events: {
         "submit form": "join",
-        "click .x-twitter-button": 'twitter_login',
+        "click .x-s-twitter-button": 'twitter_login',
         "click .x-facebook-button": 'facebook_login'
 
     },

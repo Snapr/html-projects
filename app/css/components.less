@@ -1552,6 +1552,146 @@ div.ps-carousel-item-loading
 }
 
 
+// @DIALOG BGS
+// -------------------------
+
+.ui-dialog.s-special-bg,
+.ui-page.s-special-bg{
+    background-image: none!important;
+    div[data-role="content"]{
+        background: none;
+    }
+}
+
+.ui-dialog.s-snapr-bg,
+.ui-page.s-snapr-bg{
+    background-color: lighten(@snaprYellow, 10%)!important;
+    .box-shadow(inset 0px -2px 100px @snaprYellow-tint);
+}
+
+.ui-dialog.s-tumblr-bg{
+    background-color: lighten(@tumblrBlue, 10%)!important;
+    .box-shadow(inset 0px -2px 100px @tumblrBlue-tint);
+}
+
+.ui-dialog.s-twitter-bg{
+    background-color: lighten(@twitterBlue-tint, 20%)!important;
+    .box-shadow(inset 0px -2px 100px @twitterBlue-tint);
+}
+
+//Please leave this as is for the about snapr page
+.ui-dialog.s-snapr-welcome-bg,
+.ui-page.s-snapr-welcome-bg{
+    background-color: #acebdd!important;
+    background-image: url('gfx/welcome-image.png')!important;
+    .background-size(320px 318px)!important;
+    background-repeat: no-repeat!important;
+    background-position: center bottom!important;
+}
+
+
+// @BUTTONS
+// -------------------------
+
+.s-twitter-button.ui-btn-up-e {
+    background: @twitterBlue;
+    color: white;
+    text-shadow: none;
+    a.ui-link-inherit {
+        color: white;
+    }
+}
+
+.s-twitter-button.ui-btn-hover-e {
+    background: lighten(@twitterBlue, 10% );
+    color: white;
+    text-shadow: none;
+    a.ui-link-inherit {
+        color: white;
+    }
+}
+
+.s-twitter-button.ui-btn-down-e {
+    background: @twitterBlue;
+    color: white;
+    a.ui-link-inherit {
+        color: white;
+    }
+}
+
+.s-tumblr-button.ui-btn-up-e {
+    background: @tumblrBlue;
+    color: white;
+    a.ui-link-inherit {
+        color: white;
+    }
+}
+
+.s-tumblr-button.ui-btn-hover-e {
+    background: lighten(@tumblrBlue, 10% );
+    color: white;
+    a.ui-link-inherit {
+        color: white;
+    }
+}
+
+.s-tumblr-button.ui-btn-down-e {
+    background: @tumblrBlue;
+    color: white;
+    a.ui-link-inherit {
+        color: white;
+    }
+}
+
+.s-facebook-button.ui-btn-up-e {
+    background: @facebookBlue;
+    color: white;
+    a.ui-link-inherit {
+        color: white;
+    }
+}
+
+.s-facebook-button.ui-btn-hover-e {
+    background: lighten(@facebookBlue, 10% );
+    color: white;
+    a.ui-link-inherit {
+        color: white;
+    }
+}
+
+.s-facebook-button.ui-btn-down-e {
+    background: @facebookBlue;
+    color: white;
+    a.ui-link-inherit {
+        color: white;
+    }
+}
+
+.s-snapr-button.ui-btn-up-e {
+    background: @snaprYellow;
+    text-shadow: 0 1px 1px white;
+    color: #333333;
+    a.ui-link-inherit {
+        color: #333333;
+    }
+}
+
+.s-snapr-button.ui-btn-hover-e {
+    background: lighten(@snaprYellow, 10% );
+    color: #333333;
+    a.ui-link-inherit {
+        color: #333333;
+    }
+}
+
+.s-snapr-button.ui-btn-down-e {
+    background: @snaprYellow;
+    color: #333333;
+    a.ui-link-inherit {
+        color: #333333;
+    }
+}
+
 
 
 // MISC

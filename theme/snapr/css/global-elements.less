@@ -406,26 +406,26 @@ h4{
 // Image / Color BG's for dialogs
 // -------------------------
 
-.ui-dialog.special-bg,
-.ui-page.special-bg{
+.ui-dialog.s-special-bg,
+.ui-page.s-special-bg{
     background-image: none!important;
     div[data-role="content"]{
         background: none;
     }
 }
 
-.ui-dialog.snapr-bg,
-.ui-page.snapr-bg{
+.ui-dialog.s-snapr-bg,
+.ui-page.s-snapr-bg{
     background-color: lighten(@snaprYellow, 10%)!important;
     .box-shadow(inset 0px -2px 100px @snaprYellow-tint);
 }
 
-.ui-dialog.tumblr-bg{
+.ui-dialog.s-tumblr-bg{
     background-color: lighten(@tumblrBlue, 10%)!important;
     .box-shadow(inset 0px -2px 100px @tumblrBlue-tint);
 }
 
-.ui-dialog.twitter-bg{
+.ui-dialog.s-twitter-bg{
     background-color: lighten(@twitterBlue-tint, 20%)!important;
     .box-shadow(inset 0px -2px 100px @twitterBlue-tint);
 }
@@ -438,8 +438,8 @@ h4{
 }
 
 //Please leave this as is for the about snapr page
-.ui-dialog.snapr-welcome-bg,
-.ui-page.snapr-welcome-bg{
+.ui-dialog.s-snapr-welcome-bg,
+.ui-page.s-snapr-welcome-bg{
     background-color: #acebdd!important;
     background-image: url('../gfx/welcome-image.png')!important;
     .background-size(320px, 318px)!important;
@@ -451,7 +451,7 @@ h4{
 // Special Linked Service Buttons
 // -------------------------
 
-.twitter-button.ui-btn-up-e {
+.s-twitter-button.ui-btn-up-e {
     background: @twitterBlue;
     .linear-gradient(@twitterBlue, @twitterBlue-tint);
     color: white;
@@ -460,7 +460,7 @@ h4{
     }
 }
 
-.twitter-button.ui-btn-hover-e {
+.s-twitter-button.ui-btn-hover-e {
     border: none;
     background: lighten(@twitterBlue, 10% );
     .linear-gradient(lighten(@twitterBlue, 5%), lighten(@twitterBlue-tint, 5%));
@@ -470,7 +470,7 @@ h4{
     }
 }
 
-.twitter-button.ui-btn-down-e {
+.s-twitter-button.ui-btn-down-e {
     border: none;
     background: @twitterBlue;
     .pressed-gradient(@twitterBlue, 3%);
@@ -480,7 +480,7 @@ h4{
     }
 }
 
-.tumblr-button.ui-btn-up-e {
+.s-tumblr-button.ui-btn-up-e {
     background: @tumblrBlue;
     .linear-gradient(@tumblrBlue, @tumblrBlue-tint);
     color: white;
@@ -489,7 +489,7 @@ h4{
     }
 }
 
-.tumblr-button.ui-btn-hover-e {
+.s-tumblr-button.ui-btn-hover-e {
     border: none;
     background: lighten(@tumblrBlue, 10% );
     .linear-gradient(lighten(@tumblrBlue, 5%), lighten(@tumblrBlue-tint, 5%));
@@ -499,7 +499,7 @@ h4{
     }
 }
 
-.tumblr-button.ui-btn-down-e {
+.s-tumblr-button.ui-btn-down-e {
     border: none;
     background: @tumblrBlue;
     .pressed-gradient(@tumblrBlue, 3%);
@@ -509,7 +509,7 @@ h4{
     }
 }
 
-.facebook-button.ui-btn-up-e {
+.s-facebook-button.ui-btn-up-e {
     background: @facebookBlue;
     .linear-gradient(@facebookBlue, @facebookBlue-tint);
     color: white;
@@ -518,7 +518,7 @@ h4{
     }
 }
 
-.facebook-button.ui-btn-hover-e {
+.s-facebook-button.ui-btn-hover-e {
     border: none;
     background: lighten(@facebookBlue, 10% );
     .linear-gradient(lighten(@facebookBlue, 5%), lighten(@facebookBlue-tint, 5%));
@@ -528,7 +528,7 @@ h4{
     }
 }
 
-.facebook-button.ui-btn-down-e {
+.s-facebook-button.ui-btn-down-e {
     border: none;
     background: @facebookBlue;
     .pressed-gradient(@facebookBlue, 3%);
@@ -538,7 +538,7 @@ h4{
     }
 }
 
-.snapr-button.ui-btn-up-e {
+.s-snapr-button.ui-btn-up-e {
     background: @snaprYellow;
     text-shadow: 0 1px 1px white;
     .linear-gradient(@snaprYellow, @snaprYellow-tint);
@@ -548,7 +548,7 @@ h4{
     }
 }
 
-.snapr-button.ui-btn-hover-e {
+.s-snapr-button.ui-btn-hover-e {
     border: none;
     background: lighten(@snaprYellow, 10% );
     .linear-gradient(lighten(@snaprYellow, 5%), lighten(@snaprYellow-tint, 5%));
@@ -558,7 +558,7 @@ h4{
     }
 }
 
-.snapr-button.ui-btn-down-e {
+.s-snapr-button.ui-btn-down-e {
     border: none;
     background: @snaprYellow;
     .pressed-gradient(@snaprYellow, 3%);
