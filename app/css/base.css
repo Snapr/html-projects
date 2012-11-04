@@ -809,41 +809,17 @@ div[data-role="content"] .s-inline-footer {
   height: 40px;
   background: none;
 }
-.share-photo div[data-role="content"] {
+.s-share-photo div[data-role="content"] {
   position: static;
 }
-.share-photo .image-options .show-upload-settings {
-  display: none;
-}
-.share-photo .show-upload-settings .image-controls {
-  position: absolute;
-  bottom: 0;
-  right: 8px;
-  display: none;
-}
-.share-photo.x-show-image .upload-settings-layer {
-  display: none;
-}
-.share-photo.x-show-image .show-upload-settings {
-  display: block;
-}
-.share-photo.x-show-image .ui-header {
-  display: none;
-}
-.share-photo.x-show-image .image-controls {
-  display: none;
-}
-.share-photo.x-show-image .show-upload-settings .image-controls {
-  display: block;
-}
-.share-photo .upload-image-layer {
+.s-share-photo .s-image-bg-layer {
   position: absolute;
   width: 100%;
   top: 0;
   z-index: 5;
   overflow: hidden;
 }
-.share-photo .image-placeholder {
+.s-share-photo .s-image-bg-layer .s-image-placeholder {
   position: absolute;
   top: 50%;
   height: 1024px;
@@ -852,27 +828,39 @@ div[data-role="content"] .s-inline-footer {
   text-align: center;
   max-width: 1024px;
 }
-.share-photo .image-placeholder img {
+.s-share-photo .s-image-bg-layer .s-image-placeholder img {
   width: 100%;
   vertical-align: middle;
 }
-.share-photo .upload-settings-layer {
+.s-share-photo .s-share-settings-layer {
   background-color: rgba(0, 0, 0, 0.6);
   position: absolute;
-  width: 100%;
   top: 0;
-  padding-top: 52px;
   z-index: 10;
+  width: 100%;
+  padding-top: 40px;
 }
-.share-photo .upload-settings-layer .upload-settings {
+.s-share-photo .s-share-settings-layer .s-share-settings {
   padding: 8px;
   margin: 8px;
 }
-.share-photo .image-controls {
+.s-share-photo .s-image-toggle {
   position: absolute;
   bottom: 0;
   right: 8px;
   z-index: 10;
+}
+.s-share-photo .s-show-share-settings {
+  display: none;
+}
+.s-share-photo.x-show-image .s-share-settings-layer {
+  display: none;
+}
+.s-share-photo.x-show-image .ui-header {
+  display: none;
+}
+.s-share-photo.x-show-image .s-show-share-settings {
+  display: block;
 }
 div.ps-carousel-item-loading {
   background: url('gfx/image-load-dark.gif') no-repeat center center;

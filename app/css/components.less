@@ -917,84 +917,62 @@ div[data-role="content"]{
 // @SHARE
 // -------------------------
 
-
-
-.share-photo{
-    
+.s-share-photo{
     div[data-role="content"]{
-        position: static; // not sure why it needs this ??
+        position: static; // not sure why it needs this but without it layer collapses to zero height
     }
- 
-    .image-options .show-upload-settings{
-        display: none;
-    }
-    .show-upload-settings{
-       .image-controls{
-           position: absolute;
-           bottom: 0;
-           right: @padding * 2;
-           display: none;
-       }
-    }
-    &.x-show-image{
-       .upload-settings-layer{
-           display: none;
-       }
-       .show-upload-settings{
-           display: block;
-       }
-       .ui-header{
-           display: none;
-       }
-        .image-controls{
-           display: none;
-        }
-        .show-upload-settings .image-controls{
-           display: block;
-        }
-    }
-   
-    .upload-image-layer{
+    .s-image-bg-layer{
         position: absolute;
         width: 100%;
         top: 0;
         z-index: 5;
         overflow:hidden;
+        .s-image-placeholder{
+               position: absolute;
+               top: 50%;
+               height: 1024px;
+               margin-top: -512px;
+               line-height: 1024px;
+               text-align: center;
+               max-width: 1024px;
+               img{
+                   width: 100%;
+                   vertical-align: middle;
+               }
+           }
     }
-    .image-placeholder{
-        position: absolute;
-        top: 50%;
-        height: 1024px;
-        margin-top: -512px;
-        line-height: 1024px;
-        text-align: center;
-        max-width: 1024px;
-        img{
-            width: 100%;
-            vertical-align: middle;
-        }
-    }
-    .upload-settings-layer{
+    .s-share-settings-layer{
         background-color: rgba(0, 0, 0, .6);
         position: absolute;
-        width: 100%;
         top: 0;
-        padding-top: 52px;
         z-index: 10;
-        .upload-settings{
+        width: 100%;
+        padding-top: @topBarHeight;
+        .s-share-settings{
             padding: @padding * 2;
             margin: @padding * 2;
         }
     }
- 
-
-    .image-controls{
-        position:absolute;
+    .s-image-toggle{
+        position: absolute;
         bottom: 0;
-        right: 8px;
-        z-index: 10;
-      
+        right: @padding * 2;
+         z-index: 10;
     }
+    .s-show-share-settings{
+        display: none;
+    }
+    &.x-show-image{
+        .s-share-settings-layer{
+            display: none;
+        }
+        .ui-header{
+            display: none;
+        }
+        .s-show-share-settings{
+            display: block;
+        }
+    }   
 }
 
 

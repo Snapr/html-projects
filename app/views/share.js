@@ -10,7 +10,7 @@ return page_view.extend({
     },
 
     post_activate: function(options){
-        this.$('.x-image-placeholder').attr('src', '');
+        this.$('.x-s-image-placeholder').attr('src', '');
         this.change_page();
         this.$('.x-description').val();
 
@@ -182,7 +182,7 @@ return page_view.extend({
                     share_photo_view.model.set({
                         location: model.attributes
                     }, {silent:true});
-                    share_photo_view.$(".x-no-foursquare-sharing-location").removeClass("x-ajax-loading");
+                    share_photo_view.$(".x-no-foursquare-venue").removeClass("x-ajax-loading");
                     share_photo_view.$(".x-location-name").text(share_photo_view.model.get("location").location);
                 }
             });
@@ -219,11 +219,11 @@ return page_view.extend({
                             foursquare_venue_name: collection.first().get( "name" )
                         });
                         share_photo_view.model.set({location: location}, {silent:true});
-                        share_photo_view.$(".x-foursquare-sharing-location").removeClass("x-ajax-loading");
+                        share_photo_view.$(".x-foursquare-venue").removeClass("x-ajax-loading");
                         share_photo_view.$(".x-foursquare-venue-name")
                             .text(share_photo_view.model.get("location").foursquare_venue_name);
                     }else{
-                        share_photo_view.$(".x-foursquare-sharing-location").removeClass("x-ajax-loading");
+                        share_photo_view.$(".x-foursquare-venue").removeClass("x-ajax-loading");
                         share_photo_view.$(".x-foursquare-venue-name").text( "No venues nearby." );
                     }
                 }
@@ -272,8 +272,8 @@ return page_view.extend({
         local_storage.set( e.target.id, !!$(e.target).attr("checked") );
 
         if (e.target.id == "foursquare-sharing"){
-            this.$(".x-no-foursquare-sharing-location").toggle();
-            this.$(".x-foursquare-sharing-location").toggle();
+            this.$(".x-no-foursquare-venue").toggle();
+            this.$(".x-foursquare-venue").toggle();
             if ($(e.target).attr("checked")){
                 this.get_foursquare_venues();
             }else{
