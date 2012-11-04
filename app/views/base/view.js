@@ -20,22 +20,16 @@ define(['backbone'], function(Backbone){
         replace_from_template: function(context, selectors, template, el){
             // replace children of `selector` in `el` (defaults to this.$el)
             // with children of `selector` in rendered `template` (defaults to this.template)
-            console.group('replace_from_template');
 
             template = template || this.template;
             el = el || this.$el;
 
             var html = $(template(context));
-            console.log('html', html);
 
             var last;
             _.each(selectors, function(selector){
-                console.log('replace', el.find(selector).children());
-                console.log('with', html.find(selector).children());
-                last = el.find(selector).empty().append(html.find(selector).children());
+                last = el.find(selector).html(html.find(selector).html());
             });
-
-            console.groupEnd('replace_from_template');
 
             return last;
         }

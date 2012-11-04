@@ -5,10 +5,6 @@ function(config, Backbone, page_view, photo_model, comp_model, geo_location, fou
     auth, local_storage, alerts, native, dialog, string_utils){
 return page_view.extend({
 
-    post_initialize: function(){
-        this.load_template('components/share');
-    },
-
     post_activate: function(options){
         this.$('.x-s-image-placeholder').attr('src', '');
         this.change_page();
@@ -29,7 +25,7 @@ return page_view.extend({
         }
 
         // make sure the view is empty
-        this.$("[data-role='content']").empty();
+        this.$(".x-content").empty();
 
         if (this.query.photo_path){
             this.get_photo_from_path( this.query.photo_path + "?ts=" + new Date().getTime() );
@@ -65,8 +61,7 @@ return page_view.extend({
         var description = this.$('.x-description').val() || this.query.description || this.model.get("description") || '',
             location = this.query.location || this.model.get("location").location || '';
 
-
-        this.$("[data-role='content']").html( this.template({
+        this.replace_from_template({
             img_url: img_url,
             screen_height: window.innerHeight,
             photo: this.model,
@@ -81,7 +76,7 @@ return page_view.extend({
             saved_description: unescape(description),
             saved_location: unescape(location),
             comp: this.comp
-        }) ).trigger("create");
+        }, ['.x-content']).trigger("create");
 
         return this;
     },
