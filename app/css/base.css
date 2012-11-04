@@ -141,6 +141,14 @@ div[data-role="content"] .s-inline-footer {
 .s-image-loader-bg img {
   display: block;
 }
+.s-css-thumb {
+  background-color: #f7f7f7;
+  background-position: center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
 .s-thumb-image {
   width: 101px;
   height: 101px;
@@ -723,7 +731,7 @@ div[data-role="content"] .s-inline-footer {
   position: relative;
   left: -50%;
 }
-.s-upload-progress-header {
+#feed .s-upload-progress-header {
   display: none;
 }
 .s-my-snaps-only {
@@ -735,12 +743,48 @@ div[data-role="content"] .s-inline-footer {
 .x-my-snaps .s-not-on-my-snaps {
   display: none!important;
 }
+#uploading .s-upload-progress-item {
+  padding: 0;
+}
+#uploading .s-upload-progress-item .s-upload-image-thumb-gall {
+  position: absolute;
+  left: 0;
+  top: 8px;
+}
+#uploading .s-upload-progress-item .s-progress-bar {
+  margin: 8px 0;
+}
+#uploading .s-upload-progress-item .s-upload-info-block {
+  padding-left: 109px;
+}
+#uploading .s-upload-progress-item .s-upload-info-block p {
+  margin-top: 0;
+  margin-bottom: 2px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+#uploading .s-upload-progress-item .s-upload-info-block .s-upload-shared-to {
+  margin: 4px 0 0 0;
+  padding: 0;
+}
+#uploading .s-upload-progress-item .s-upload-info-block .s-upload-shared-to li {
+  list-style: none;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin-right: 2px;
+}
+#uploading .s-offline-uploading {
+  position: relative;
+  top: -8px;
+}
+#uploading .s-offline-uploading .ui-btn-inner {
+  overflow: visible;
+}
 .s-upload-progress-header {
   padding: 0 8px;
   overflow: hidden;
-  -webkit-box-shadow: inset 5px -14px 20px rgba(0, 0, 0, 0.2);
-  -moz-box-shadow: inset 5px -14px 20px rgba(0, 0, 0, 0.2);
-  box-shadow: inset 5px -14px 20px rgba(0, 0, 0, 0.2);
 }
 .s-upload-progress-header .s-upload-progress-item {
   list-style: none;
@@ -748,6 +792,7 @@ div[data-role="content"] .s-inline-footer {
   min-height: 34px;
   margin-bottom: 8px;
   position: relative;
+  overflow: visible;
 }
 .s-upload-progress-header .s-upload-progress-item:first-child {
   padding-top: 8px;
@@ -771,43 +816,112 @@ div[data-role="content"] .s-inline-footer {
   white-space: nowrap;
   overflow: hidden;
 }
-/* progress bars */
-.progress-bar {
+.s-progress-bar {
   position: relative;
   padding: 8px 28px 8px 8px;
   height: 8px;
   background-color: #ffffff;
   border-radius: 13px;
 }
-.progress-bar .bar-wrapper {
+.s-progress-bar .s-bar-wrapper {
   position: relative;
 }
-.progress-bar .bar-wrapper .bar {
+.s-progress-bar .s-bar-wrapper .s-bar {
   height: 8px;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;
 }
-.progress-bar .bar-wrapper .bar-prog {
+.s-progress-bar .s-bar-wrapper .s-bar-prog {
   position: absolute;
   top: 0;
   left: 0;
   background-color: #ffff00;
 }
-.progress-bar .bar-wrapper .bar-bg {
+.s-progress-bar .s-bar-wrapper .s-bar-bg {
   background-color: #C5C4C4;
-  -moz-box-shadow: inset 0 0 9px 2px #AFAEAE;
-  -webkit-box-shadow: inset 0 0 9px 2px #AFAEAE;
-  box-shadow: inset 0 0 9px 2px #AFAEAE;
+  -webkit-box-shadow: inset 0 0 9px 2px #afaeae;
+  -moz-box-shadow: inset 0 0 9px 2px #afaeae;
+  box-shadow: inset 0 0 9px 2px #afaeae;
 }
-.progress-bar .bar-action {
+.s-progress-bar .s-upload-message {
   position: absolute;
-  right: -9px;
-  top: -6px;
+  line-height: 24px;
+  vertical-align: middle;
+  top: 0px;
+  left: 8px;
+  font-weight: bold;
+  font-size: 12px;
+}
+.s-progress-bar .s-bar-action {
+  position: absolute;
+  right: -12px;
+  top: -8px;
   margin: 0;
   width: 40px;
   height: 40px;
   background: none;
+}
+.s-progress-bar .s-bar-action .ui-icon {
+  display: block;
+  top: 50%;
+  position: absolute;
+  margin-top: -9px;
+}
+.s-share-icon-small {
+  background-color: #ffffff;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  width: 22px;
+  height: 22px;
+  display: inline-block;
+}
+.s-share-icon-small .ui-icon {
+  background-image: url('gfx/share-icons-small.png');
+  width: 21px;
+  height: 21px;
+  position: relative!important;
+  display: block;
+  top: 1px!important;
+  left: 1px!important;
+  margin: 0!important;
+}
+.s-share-icon-small.s-twitter-sharing {
+  background-color: #68d9ff;
+  -webkit-box-shadow: inset 0 3px 20px #309dc2;
+  -moz-box-shadow: inset 0 3px 20px #309dc2;
+  box-shadow: inset 0 3px 20px #309dc2;
+}
+.s-share-icon-small.s-twitter-sharing .ui-icon {
+  background-position: 0 0px !important;
+}
+.s-share-icon-small.s-twitter-sharing {
+  background-color: #507ab8;
+  -webkit-box-shadow: inset 0 3px 20px #2e5998;
+  -moz-box-shadow: inset 0 3px 20px #2e5998;
+  box-shadow: inset 0 3px 20px #2e5998;
+}
+.s-share-icon-small.s-twitter-sharing .ui-icon {
+  background-position: 0 -21px !important;
+}
+.s-share-icon-small.s-tumblr-sharing {
+  background-color: #5a687d;
+  -webkit-box-shadow: inset 0 3px 20px #2c3c54;
+  -moz-box-shadow: inset 0 3px 20px #2c3c54;
+  box-shadow: inset 0 3px 20px #2c3c54;
+}
+.s-share-icon-small.s-tumblr-sharing .ui-icon {
+  background-position: 0 -42px !important;
+}
+.s-share-icon-small.s-foursquare-sharing {
+  background-color: #34a0ce;
+  -webkit-box-shadow: inset 0 3px 20px #29708e;
+  -moz-box-shadow: inset 0 3px 20px #29708e;
+  box-shadow: inset 0 3px 20px #29708e;
+}
+.s-share-icon-small.s-foursquare-sharing .ui-icon {
+  background-position: 0 -63px !important;
 }
 .s-share-photo div[data-role="content"] {
   position: static;

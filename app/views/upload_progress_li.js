@@ -2,7 +2,7 @@
 define(['views/base/view', 'utils/local_storage', 'utils/alerts', 'native', 'models/photo'], function(view, local_storage, alerts, native, photo_model){
 return view.extend({
 
-    tagName: "li",
+    tagName: "div",
 
     className: "s-upload-progress-item",
 
