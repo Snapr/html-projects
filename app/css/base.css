@@ -517,10 +517,54 @@ div[data-role="content"] .s-inline-footer {
   width: 101px;
   height: 101px;
 }
-.tumblr-credit {
+#tumblr-posts blockquote {
+  margin: 8px;
+  font-style: italic;
+}
+#tumblr-posts .s-tumblr-stream {
+  overflow: hidden;
+  margin: 0 -8px;
+}
+#tumblr-posts .s-tumblr-stream .s-tumblr-post-item {
+  border-bottom: 1px solid #fbfbfb;
+  margin: 0px;
+  padding: 4px;
+}
+#tumblr-posts .s-tumblr-stream .s-tumblr-post-item .s-tumblr-post {
+  width: 100%;
+}
+#tumblr-posts .s-tumblr-stream .s-tumblr-post-item .s-tumblr-post img,
+#tumblr-posts .s-tumblr-stream .s-tumblr-post-item .s-tumblr-post video {
+  width: 100%;
+  margin: 0 auto;
+  max-width: 512px;
+  margin: 0 0 8px 0;
+}
+#tumblr-posts .s-tumblr-stream .s-tumblr-post-item .s-tumblr-post audio {
+  margin: 0 0 8px 0;
+}
+#tumblr-posts .s-tumblr-stream .s-tumblr-post-item .s-tumblr-post .s-tumblr-body {
+  margin: 4px;
+}
+#tumblr-posts .s-tumblr-stream .s-tumblr-post-item .s-tumblr-post .s-photo-set {
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+#tumblr-posts .s-tumblr-stream .s-tumblr-post-item .s-tumblr-post .s-photo-set li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+#tumblr-posts .s-tumblr-stream > article:last-child {
+  border-bottom: none;
+}
+.s-tumblr-credit {
   margin: 12px 0;
   font-size: 12px;
   height: 12px;
+  text-align: left;
   line-height: 12px;
   padding-bottom: 25px;
   color: #666666;

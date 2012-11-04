@@ -23,18 +23,18 @@ div[data-role="header"]{
     .ui-btn-center{
         .ui-btn,
         .ui-controlgroup{
-             margin: 0;
-         }
+            margin: 0;
+        }
     }
-    
+
     .ui-btn-right,
     .ui-btn-left{
         white-space: nowrap;
         .ui-btn{
-             display: inline-block;
-             margin: 0;
-             top: @padding;
-         }
+            display: inline-block;
+            margin: 0;
+            top: @padding;
+        }
     }
 }
 
@@ -46,7 +46,7 @@ div[data-role="content"]{
     position: relative;
     overflow: visible;
     padding: 0 @padding * 2;
-    
+
     .ui-content{
         padding: @padding * 2;
     }
@@ -61,7 +61,7 @@ div[data-role="content"]{
         background-color: @grayLighter;
         padding: 0 @padding * 2;
     }
-    
+
     .s-inline-footer{
         margin: 0 -@padding * 2;
         background-color: @grayLighter;
@@ -117,7 +117,7 @@ div[data-role="content"]{
         }
     }
 
-   
+
 }
 
 
@@ -156,7 +156,7 @@ div[data-role="content"]{
 // -------------------------
 
 .s-small-username{
-   font-size: @fontSizeSmall; 
+    font-size: @fontSizeSmall; 
 }
 
 
@@ -234,7 +234,7 @@ div[data-role="content"]{
         padding: 0;
         margin: 0;
     }
-    
+
 }
 
 
@@ -244,11 +244,11 @@ div[data-role="content"]{
 .ui-bar{
     margin: 0 -@padding * 2;
     font-size: @fontSizeSmall;
-    
+
     strong{
         font-size: @fontSizeUsername;
     }
-    
+
     .ui-btn,
     &.ui-btn{
         .ui-btn-inner{
@@ -260,12 +260,12 @@ div[data-role="content"]{
         }
         .ui-btn-text{
             font-size: @fontSizeSmall;
-             strong{
-               font-size: @fontSizeUsername;
-           }
+            strong{
+                font-size: @fontSizeUsername;
+            }
         }
     }
-    
+
     // Split Bars with Button on right
     .ui-controlgroup-controls{
         width: 100%;
@@ -337,8 +337,8 @@ div[data-role="content"]{
                 margin-top: -@gfxRefresh-grid / 2;
                 margin-left: -@gfxRefresh-grid / 2;
                 -webkit-transition-property:-webkit-transform;
-            	-webkit-transition-duration:250ms;
-            	-webkit-transform:rotate(0deg) translateZ(0);
+                -webkit-transition-duration:250ms;
+                -webkit-transform:rotate(0deg) translateZ(0);
             }
             &.x-right-pull{
                 margin-right: 9px;
@@ -348,20 +348,20 @@ div[data-role="content"]{
             }
             &.x-left-pull{
                 margin-right:-@padding;
-                 .ui-icon-refresh{
-                     background-position: @gfxRefresh-x @gfxRefresh-left-y;
-                 }
+                .ui-icon-refresh{
+                    background-position: @gfxRefresh-x @gfxRefresh-left-y;
+                }
             }
             &.x-flipped{
-                 .ui-icon-refresh{
-                     background-position: @gfxRefresh-x @gfxRefresh-refresh-y;
-    	            -webkit-transform:rotate(180deg) translateZ(0);
-	            }
-    	    }
+                .ui-icon-refresh{
+                    background-position: @gfxRefresh-x @gfxRefresh-refresh-y;
+                    -webkit-transform:rotate(180deg) translateZ(0);
+                }
+            }
         }
         .x-loading {
             .s-load-more-inline{
-                 .ui-icon-refresh{
+                .ui-icon-refresh{
                     background-image: url('gfx/spinner.png');
                     background-position: center;
                     .spin();
@@ -378,7 +378,7 @@ div[data-role="content"]{
                     background-color:rgba(0,0,0,.12);
                     padding: 36px 0;
                     width: 84px;
-                   .border-radius(44px);
+                    .border-radius(44px);
                     color: white;
                     height: 12px;
                     vertical-align: middle;
@@ -417,21 +417,21 @@ div[data-role="content"]{
                 }
             }
 
-         }
+        }
 
     }
 }
 .edit{
-       .x-stream.user-stream{
-            .edit-overlay{
-                   display: block;
-            }
+    .x-stream.user-stream{
+        .edit-overlay{
+            display: block;
         }
     }
+}
 
 .x-scroll-wrapper {
-  white-space: nowrap;
-  display:inline-block;
+    white-space: nowrap;
+    display:inline-block;
 }
 .x-right-pull, .x-left-pull{
     display:inline;
@@ -450,7 +450,7 @@ div[data-role="content"]{
 }
 
 .ui-input-search{
- 
+
 }
 
 .x-loading{
@@ -486,7 +486,7 @@ div[data-role="content"]{
     }
     // Shuffle the app people buttons to the top
     .dash-wrapper{
-       margin-top: 120px;
+        margin-top: 120px;
     }
     .dash-footer{
         position: absolute;
@@ -498,14 +498,14 @@ div[data-role="content"]{
         .box-sizing(border-box);
     }
     // Hide the default streams that are unremovable
-   .x-stream,
-   .tumblr-streams,
-   .competitions{
-      display: none;
-      &.user-stream{
-        display: block;
-      }
-   }
+    .x-stream,
+    .tumblr-streams,
+    .competitions{
+        display: none;
+        &.user-stream{
+            display: block;
+        }
+    }
 }
 
 // Hide the follow btns on dash lists
@@ -530,8 +530,8 @@ div[data-role="content"]{
 
 .tumblr-item{
     min-height: @thumbSize;
-   height: @thumbSize;
-   overflow: hidden;
+    height: @thumbSize;
+    overflow: hidden;
     margin: @padding + 1 -@padding;
     position: relative;
     display: block;
@@ -602,11 +602,66 @@ div[data-role="content"]{
     }
 }
 
+// @TUMBLR POSTS
+// -------------------------
 
-.tumblr-credit{
+#tumblr-posts {
+    blockquote {
+        margin: @padding * 2;
+        font-style:italic;
+    }
+    .s-tumblr-stream {
+        overflow:hidden;
+        margin: 0 -@padding * 2;
+        .s-tumblr-post-item {
+            border-bottom: 1px solid @grayLight;
+            margin: 0px;
+            padding: @padding;
+            .s-tumblr-post {
+                width: 100%;
+                img,
+                video {
+                    width: 100%;
+                    margin: 0 auto;
+                    max-width: 512px;
+                    margin: 0 0 @padding * 2 0;
+                    
+                }
+                audio {
+                    margin: 0 0 @padding * 2 0;
+                }
+             
+                .s-tumblr-body{
+                    margin: @padding;
+                }
+                .s-photo-set {
+                    overflow:hidden;
+                    margin: 0;
+                    padding: 0;
+                    list-style: none;
+                    li{
+                        margin: 0;
+                        padding: 0;
+                        list-style: none;
+                    }
+                    
+                }
+            }
+            
+           
+        }
+        > article:last-child {
+            border-bottom: none;
+        } 
+    }
+}
+
+
+.s-tumblr-credit{
     margin: 12px 0;
     font-size: @fontSizeSmall;
     height: @fontSizeSmall;
+    text-align: left;
     line-height: @fontSizeSmall;
     padding-bottom: @gfxTumblrLogo-height ;
     color: @gray;
@@ -678,7 +733,7 @@ div[data-role="content"]{
         background-color: @grayLight;
         z-index: 3;
     }
-    
+
     .s-follow-btn{
         z-index: 1;
         position: absolute;
@@ -694,14 +749,14 @@ div[data-role="content"]{
             margin: 0;
             width: 100%;
             text-align: right;
-            
+
             .ui-btn-inner{
                 padding-top: 0;
                 padding-bottom: 0;
             }
         }
     }
-    
+
     .s-username{
         z-index: 2;
         position: relative;
@@ -711,7 +766,7 @@ div[data-role="content"]{
         line-height: @barHeight;
         vertical-align: middle;
         top: 0;
-        
+
     }
     .s-header-stats{
         height: @avatarSizeLarge - @barHeight ;
@@ -790,11 +845,11 @@ div[data-role="content"]{
         li.ui-li{
             border: none!important;
             padding:0;
-             .ui-link-inherit{
-                    padding: 0 0 @paddingElement 0!important;
-                    display: inline-block;
-                    white-space: normal;
-                }
+            .ui-link-inherit{
+                padding: 0 0 @paddingElement 0!important;
+                display: inline-block;
+                white-space: normal;
+            }
             .ui-icon-arrow-r{
                 display: none;
             }
@@ -858,13 +913,13 @@ div[data-role="content"]{
 
 
 .s-my-snaps-only {
-  display: none!important;
+    display: none!important;
 }
 .x-my-snaps .s-my-snaps-only {
-  display: inline-block !important;
+    display: inline-block !important;
 }
 .x-my-snaps .s-not-on-my-snaps {
-  display: none!important;
+    display: none!important;
 }
 
 
@@ -875,10 +930,8 @@ div[data-role="content"]{
 #uploading{
     .s-upload-progress-header{
         min-height: @thumbSize + @padding * 4;
-        
+
     }
-    
-    
     .s-upload-progress-item{
         padding: 0;
         .s-upload-image-thumb-gall{
@@ -893,11 +946,11 @@ div[data-role="content"]{
             padding-left: @thumbSize + @padding * 2;
             p{
                 margin-top: 0;
-               margin-bottom: 2px;
-               text-overflow: ellipsis;
-               white-space: nowrap;
-               overflow: hidden;
-             }
+                margin-bottom: 2px;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                overflow: hidden;
+            }
             .s-upload-shared-to{
                 margin: @padding 0 0 0 ;
                 padding: 0;
@@ -927,7 +980,7 @@ div[data-role="content"]{
 .s-upload-progress-header{
     padding: 0 @padding * 2;
     overflow:hidden;
-    
+
 
     .s-upload-progress-item{
         list-style:none;
@@ -949,7 +1002,7 @@ div[data-role="content"]{
             padding-left: @avatarSize + @padding * 2;
             .s-upload-info{
                 padding-top: 5px;
-                
+
             }
             p{
                 margin-top: 0;
@@ -999,7 +1052,7 @@ div[data-role="content"]{
         font-weight: bold;
         font-size: @fontSizeSmall;
     }
-    
+
     .s-bar-action{
         position: absolute;
         right: -12px;
@@ -1038,25 +1091,25 @@ div[data-role="content"]{
         margin: 0!important;
     }
     &.s-twitter-sharing{
-       .ui-icon{background-position: @gfxShareSmall-x @gfxShareSmall-twitter-y!important;}
-       background-color: @twitterBlue;
+        .ui-icon{background-position: @gfxShareSmall-x @gfxShareSmall-twitter-y!important;}
+        background-color: @twitterBlue;
         .box-shadow(inset 0 3px 20px @twitterBlue-tint);
     }
     &.s-twitter-sharing{
-       .ui-icon{background-position: @gfxShareSmall-x @gfxShareSmall-facebook-y!important;}
-       background-color: @facebookBlue;
-       .box-shadow(inset 0 3px 20px @facebookBlue-tint);
-   }
-   &.s-tumblr-sharing{
-       .ui-icon{background-position: @gfxShareSmall-x @gfxShareSmall-tumblr-y!important;}
-       background-color: @tumblrBlue;
-       .box-shadow(inset 0 3px 20px @tumblrBlue-tint);
-   }
-   &.s-foursquare-sharing{
-       .ui-icon{background-position: @gfxShareSmall-x @gfxShareSmall-foursquare-y!important;}
+        .ui-icon{background-position: @gfxShareSmall-x @gfxShareSmall-facebook-y!important;}
+        background-color: @facebookBlue;
+        .box-shadow(inset 0 3px 20px @facebookBlue-tint);
+    }
+    &.s-tumblr-sharing{
+        .ui-icon{background-position: @gfxShareSmall-x @gfxShareSmall-tumblr-y!important;}
+        background-color: @tumblrBlue;
+        .box-shadow(inset 0 3px 20px @tumblrBlue-tint);
+    }
+    &.s-foursquare-sharing{
+        .ui-icon{background-position: @gfxShareSmall-x @gfxShareSmall-foursquare-y!important;}
         background-color: @foursquareBlue;
         .box-shadow(inset 0 3px 20px @foursquareBlue-tint);
-   }
+    }
 }
 
 
@@ -1074,18 +1127,18 @@ div[data-role="content"]{
         z-index: 5;
         overflow:hidden;
         .s-image-placeholder{
-               position: absolute;
-               top: 50%;
-               height: 1024px;
-               margin-top: -512px;
-               line-height: 1024px;
-               text-align: center;
-               max-width: 1024px;
-               img{
-                   width: 100%;
-                   vertical-align: middle;
-               }
-           }
+            position: absolute;
+            top: 50%;
+            height: 1024px;
+            margin-top: -512px;
+            line-height: 1024px;
+            text-align: center;
+            max-width: 1024px;
+            img{
+                width: 100%;
+                vertical-align: middle;
+            }
+        }
     }
     .s-share-settings-layer{
         background-color: rgba(0, 0, 0, .6);
@@ -1103,7 +1156,7 @@ div[data-role="content"]{
         position: absolute;
         bottom: 0;
         right: @padding * 2;
-         z-index: 10;
+        z-index: 10;
     }
     .s-show-share-settings{
         display: none;
@@ -1181,42 +1234,42 @@ div.ps-carousel-item-loading
         position:absolute;
         z-index: 1;
     }
-    
+
     .s-map-thumb {
-           position: absolute;
-           bottom: -3px;
-           left: -38px;
-           width: 78px;
-           height: 120px;
-           z-index: 100;
-           .s-map-thumbimage {
-               position: absolute;
-               top: 8px;
-               left: 9px;
-               width: 60px;
-               height: 60px;
-           }
-           .s-map-pin{
-               position: absolute;
-               top:83px;
-               left: 32px;
-               background-image: url('gfx/map-pin.png');
-               width:28px;
-               height: 35px;
-               display: block;
-           }
-           .s-thumb-bg {
-               position: absolute;
-               top: 0;
-               left: 0;
-               background-image: url('gfx/map-thumb-bg.png');
-               width:78px;
-               height: 88px;
-               display: block;
-           }
-       }
-    
-    
+        position: absolute;
+        bottom: -3px;
+        left: -38px;
+        width: 78px;
+        height: 120px;
+        z-index: 100;
+        .s-map-thumbimage {
+            position: absolute;
+            top: 8px;
+            left: 9px;
+            width: 60px;
+            height: 60px;
+        }
+        .s-map-pin{
+            position: absolute;
+            top:83px;
+            left: 32px;
+            background-image: url('gfx/map-pin.png');
+            width:28px;
+            height: 35px;
+            display: block;
+        }
+        .s-thumb-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-image: url('gfx/map-thumb-bg.png');
+            width:78px;
+            height: 88px;
+            display: block;
+        }
+    }
+
+
     .x-map-venue{
         .x-map-venue-pin{
             background-image: url('gfx/map-spot-pin.png');
@@ -1260,15 +1313,15 @@ div.ps-carousel-item-loading
     }
 
     .s-map-current-location{
-      position: absolute;
-      top: -9px;
-      left: -9px;
-      width: 17px;
-      height: 17px;
-      z-index: 100;
-      background-image: url('gfx/map-current-location-marker.png');
+        position: absolute;
+        top: -9px;
+        left: -9px;
+        width: 17px;
+        height: 17px;
+        z-index: 100;
+        background-image: url('gfx/map-current-location-marker.png');
     }
-   
+
 
     #s-map-alert{
         position: absolute;
@@ -1367,7 +1420,7 @@ div.ps-carousel-item-loading
     padding-right: 44px;
     margin-top: @padding * 2;
     position: relative;
-    
+
     .distance-btn{
         width: 36px;
         position: absolute;
@@ -1381,7 +1434,7 @@ div.ps-carousel-item-loading
             .ui-btn-text{
                 display: none;
             }
-    
+
         }
     }
 }

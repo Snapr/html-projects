@@ -4502,7 +4502,7 @@ h4 {
   width: 101px;
   height: 101px;
 }
-.tumblr-credit {
+.s-tumblr-credit {
   margin: 12px 0;
   font-size: 12px;
   height: 12px;
@@ -7811,24 +7811,24 @@ body.x-browser-testing .ui-footer, body.x-browser-testing .ui-footer-fixed {
 #tumblr-posts .posts-stream > li .post p {
   text-align: justify;
 }
-#tumblr-posts .posts-stream > li .post .tumblr-body {
+#tumblr-posts .posts-stream > li .post .s-tumblr-body {
   margin: 4px;
 }
-#tumblr-posts .posts-stream > li .post ul.photoset {
+#tumblr-posts .posts-stream > li .post ul.s-photo-set {
   overflow: hidden;
   margin: 0;
 }
-#tumblr-posts .posts-stream > li .post ul.photoset li {
+#tumblr-posts .posts-stream > li .post ul.s-photo-set li {
   margin: 0;
 }
-#tumblr-posts .posts-stream > li .tumblr-metadata {
+#tumblr-posts .posts-stream > li .s-tumblr-metadata {
   margin: 8px 0 8px 4px;
 }
-#tumblr-posts .posts-stream > li .tumblr-metadata .ui-bar {
+#tumblr-posts .posts-stream > li .s-tumblr-metadata .ui-bar {
   height: 24px;
   min-height: 24px;
 }
-#tumblr-posts .posts-stream > li .tumblr-metadata .ui-bar .ui-btn-text {
+#tumblr-posts .posts-stream > li .s-tumblr-metadata .ui-bar .ui-btn-text {
   position: relative;
   font-size: 12px;
   color: #999999;
@@ -7840,7 +7840,7 @@ body.x-browser-testing .ui-footer, body.x-browser-testing .ui-footer-fixed {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
-#tumblr-posts .posts-stream > li .tumblr-metadata .ui-bar .tumblr-icon {
+#tumblr-posts .posts-stream > li .s-tumblr-metadata .ui-bar .tumblr-icon {
   display: block;
   position: absolute;
   left: 0;
@@ -8227,7 +8227,7 @@ body.x-browser-testing .ui-footer, body.x-browser-testing .ui-footer-fixed {
     -webkit-background-size: 48px 168px;
     background-size: 48px 168px;
   }
-  .tumblr-credit {
+  .s-tumblr-credit {
     background-image: url('../gfx/retina/tumblr-logo.png');
     -moz-background-size: 115px 25px;
     -o-background-size: 115px 25px;
