@@ -486,7 +486,7 @@ div[data-role="content"]{
     }
     // Shuffle the app people buttons to the top
     .dash-wrapper{
-       margin-top: 94px;
+       margin-top: 120px;
     }
     .dash-footer{
         position: absolute;
@@ -495,6 +495,7 @@ div[data-role="content"]{
         margin-top: 0;
         .border-top-radius (8px);
         .border-bottom-radius(0);
+        .box-sizing(border-box);
     }
     // Hide the default streams that are unremovable
    .x-stream,
@@ -872,6 +873,12 @@ div[data-role="content"]{
 
 
 #uploading{
+    .s-upload-progress-header{
+        min-height: @thumbSize + @padding * 4;
+        
+    }
+    
+    
     .s-upload-progress-item{
         padding: 0;
         .s-upload-image-thumb-gall{
@@ -920,6 +927,7 @@ div[data-role="content"]{
 .s-upload-progress-header{
     padding: 0 @padding * 2;
     overflow:hidden;
+    
 
     .s-upload-progress-item{
         list-style:none;
