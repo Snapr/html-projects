@@ -46,7 +46,7 @@ return page_view.extend({
         "change .x-image-sharing input": "toggle_sharing",
         "vclick .x-image-sharing .ui-disabled": "share_alert",
         "click .x-foursquare-venue": "venue_search",
-        "click .x-image-controls": "toggle_photo",
+        "click .x-image-toggle": "toggle_photo",
         "click .x-edit-photo": "edit",
         "click .x-camplus-edit-photo": "edit_camplus",
         "submit form": "share"

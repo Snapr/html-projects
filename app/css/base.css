@@ -809,6 +809,71 @@ div[data-role="content"] .s-inline-footer {
   height: 40px;
   background: none;
 }
+.share-photo div[data-role="content"] {
+  position: static;
+}
+.share-photo .image-options .show-upload-settings {
+  display: none;
+}
+.share-photo .show-upload-settings .image-controls {
+  position: absolute;
+  bottom: 0;
+  right: 8px;
+  display: none;
+}
+.share-photo.x-show-image .upload-settings-layer {
+  display: none;
+}
+.share-photo.x-show-image .show-upload-settings {
+  display: block;
+}
+.share-photo.x-show-image .ui-header {
+  display: none;
+}
+.share-photo.x-show-image .image-controls {
+  display: none;
+}
+.share-photo.x-show-image .show-upload-settings .image-controls {
+  display: block;
+}
+.share-photo .upload-image-layer {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  z-index: 5;
+  overflow: hidden;
+}
+.share-photo .image-placeholder {
+  position: absolute;
+  top: 50%;
+  height: 1024px;
+  margin-top: -512px;
+  line-height: 1024px;
+  text-align: center;
+  max-width: 1024px;
+}
+.share-photo .image-placeholder img {
+  width: 100%;
+  vertical-align: middle;
+}
+.share-photo .upload-settings-layer {
+  background-color: rgba(0, 0, 0, 0.6);
+  position: absolute;
+  width: 100%;
+  top: 0;
+  padding-top: 52px;
+  z-index: 10;
+}
+.share-photo .upload-settings-layer .upload-settings {
+  padding: 8px;
+  margin: 8px;
+}
+.share-photo .image-controls {
+  position: absolute;
+  bottom: 0;
+  right: 8px;
+  z-index: 10;
+}
 div.ps-carousel-item-loading {
   background: url('gfx/image-load-dark.gif') no-repeat center center;
 }

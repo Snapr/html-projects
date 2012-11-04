@@ -1,4 +1,4 @@
-<form action="javascript: void(0);">
+<form action="javascript: void(0);" class="s-full-height">
     <div class="upload-image-layer s-full-height">
         <div class="image-placeholder">
             <% if (img_url){%><img class="x-image-placeholder" src="<%= img_url %>" /><%}%>
@@ -108,14 +108,14 @@
     </div> <!-- .image-options -->
 </form>
 
-<div class="image-controls x-image-controls">
-    <a data-role="button" id="show_photo" data-icon="toggle" data-iconpos="right" >
+<div class="image-controls x-image-toggle">
+    <a class="" data-role="button" id="show_photo" data-icon="toggle" data-iconpos="right" >
         Show Photo
     </a>
 </div>
 
 <div class="show-upload-settings s-full-height">
-    <div class="image-controls">
+    <div class="image-controls x-image-toggle">
         <a data-role="button" id="show_photo_settings" data-icon="toggle-up" data-iconpos="right" >
             Show Options
         </a>

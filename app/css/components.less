@@ -914,6 +914,91 @@ div[data-role="content"]{
 }
 
 
+// @SHARE
+// -------------------------
+
+
+
+.share-photo{
+    
+    div[data-role="content"]{
+        position: static; // not sure why it needs this ??
+    }
+ 
+    .image-options .show-upload-settings{
+        display: none;
+    }
+    .show-upload-settings{
+       .image-controls{
+           position: absolute;
+           bottom: 0;
+           right: @padding * 2;
+           display: none;
+       }
+    }
+    &.x-show-image{
+       .upload-settings-layer{
+           display: none;
+       }
+       .show-upload-settings{
+           display: block;
+       }
+       .ui-header{
+           display: none;
+       }
+        .image-controls{
+           display: none;
+        }
+        .show-upload-settings .image-controls{
+           display: block;
+        }
+    }
+   
+    .upload-image-layer{
+        position: absolute;
+        width: 100%;
+        top: 0;
+        z-index: 5;
+        overflow:hidden;
+    }
+    .image-placeholder{
+        position: absolute;
+        top: 50%;
+        height: 1024px;
+        margin-top: -512px;
+        line-height: 1024px;
+        text-align: center;
+        max-width: 1024px;
+        img{
+            width: 100%;
+            vertical-align: middle;
+        }
+    }
+    .upload-settings-layer{
+        background-color: rgba(0, 0, 0, .6);
+        position: absolute;
+        width: 100%;
+        top: 0;
+        padding-top: 52px;
+        z-index: 10;
+        .upload-settings{
+            padding: @padding * 2;
+            margin: @padding * 2;
+        }
+    }
+ 
+
+    .image-controls{
+        position:absolute;
+        bottom: 0;
+        right: 8px;
+        z-index: 10;
+      
+    }
+}
+
+
+
 
 // GALLERIES - tweaks to photoswipe
 // -------------------------
