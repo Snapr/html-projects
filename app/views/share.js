@@ -267,8 +267,8 @@ return page_view.extend({
         local_storage.set( e.target.id, !!$(e.target).attr("checked") );
 
         if (e.target.id == "foursquare-sharing"){
-            this.$(".x-no-foursquare-venue").toggle();
-            this.$(".x-foursquare-venue").toggle();
+            console.log(this.$(".x-no-foursquare-venue").toggle());
+            console.log(this.$(".x-foursquare-venue").toggle());
             if ($(e.target).attr("checked")){
                 this.get_foursquare_venues();
             }else{

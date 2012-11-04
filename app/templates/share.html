@@ -89,9 +89,9 @@
                                     <div id="foursquare-venue"
                                         <%if (!foursquare_sharing || status == "private"){%> style="display:none;"<%}%>
                                         class="<% if (photo.attributes.location && !photo.attributes.location.foursquare_venue_name){%>x-ajax-loading<%}%> x-foursquare-venue">
-                                        <a data-role="button" id="foursquare-venue" class="x-foursquare-venue" data-icon="arrow-right">
+                                        <a data-role="button" id="foursquare-venue" data-icon="arrow-right">
                                             <span class="ui-icon"></span>
-                                            <span class="s-foursquare-venue-name">
+                                            <span class="s-foursquare-venue-name x-foursquare-venue-name">
                                                 <% if (photo.attributes.location && photo.attributes.location.foursquare_venue_name){%>
                                                     <%= photo.attributes.location.foursquare_venue_name %>
                                                 <%}else{%>
