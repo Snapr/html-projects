@@ -72,9 +72,7 @@ return page_view.extend({
             };
         }
 
-        var new_page = $(this.template(data));
-
-        var $account_content = this.$('.x-content').replaceWith(new_page.find('.x-content')).trigger('create');
+        var $account_content = this.replace_from_template(data, ['.x-content']).trigger('create');
 
 
         // set all linked services to false, we will check them off below
