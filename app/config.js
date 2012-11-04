@@ -12,7 +12,7 @@ var config_model = Backbone.Model.extend({
         //tumblr_xauth: false,
         //twitter_xauth: false,
 
-        //app_group: 'artspot'
+        app_group: 'zombiegram'
 
         // get_user_points: true // request points when getting users form the api
 

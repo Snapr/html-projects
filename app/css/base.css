@@ -55,6 +55,7 @@ div[data-role="header"] .ui-btn-left .ui-btn {
 }
 div[data-role="content"] {
   position: relative;
+  overflow: visible;
   padding: 0 8px;
 }
 div[data-role="content"] .ui-content {
@@ -140,6 +141,17 @@ div[data-role="content"] .s-inline-footer {
   width: 0;
   height: 0;
   overflow: hidden;
+}
+.ui-li-has-icon .ui-btn-inner a.ui-link-inherit,
+.ui-li-static.ui-li-has-icon {
+  min-height: 34px;
+  padding-left: 50px;
+}
+.ui-listview .ui-li-icon {
+  max-height: 34px;
+  max-width: 34px;
+  left: 10px;
+  top: 24px;
 }
 .s-image-loader-bg {
   background-color: #fbfbfb;

@@ -44,6 +44,7 @@ div[data-role="header"]{
 
 div[data-role="content"]{
     position: relative;
+    overflow: visible;
     padding: 0 @padding * 2;
     
     .ui-content{
@@ -168,6 +169,23 @@ div[data-role="content"]{
     width: 0;
     height: 0;
     overflow: hidden;
+}
+
+
+// @LISTVIEWS
+// -------------------------
+
+.ui-li-has-icon .ui-btn-inner a.ui-link-inherit, 
+.ui-li-static.ui-li-has-icon {
+    min-height: @avatarSize;
+    padding-left: @avatarSize + @padding * 4;
+}
+
+.ui-listview .ui-li-icon {
+    max-height:  @avatarSize;
+    max-width:  @avatarSize;
+    left: 10px;
+    top: 24px;
 }
 
 
