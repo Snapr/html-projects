@@ -83,6 +83,18 @@ div[data-role="content"] .s-inline-footer {
 .ui-content .s-inset-page-content .ui-listview-inset {
   margin-bottom: 16px;
 }
+.s-wrap-content h1,
+.s-wrap-content h2,
+.s-wrap-content h3,
+.s-wrap-content h4,
+.s-wrap-content p,
+.s-wrap-content a {
+  white-space: normal!important;
+}
+.s-wrap-content p {
+  margin: 8px 32px 8px 0 !important;
+  text-transform: none!important;
+}
 .s-full-height {
   min-height: 400px;
   -webkit-box-sizing: border-box;
