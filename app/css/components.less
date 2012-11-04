@@ -182,6 +182,12 @@ div[data-role="content"]{
     overflow: hidden;
 }
 
+.ui-hide-label{
+    label{
+        display: none;
+    }
+}
+
 
 // @LISTVIEWS
 // -------------------------
@@ -450,7 +456,7 @@ div[data-role="content"]{
 
 
 
-// SEARCH
+// @SEARCH
 // -------------------------
 
 .s-search-header{
@@ -479,7 +485,7 @@ div[data-role="content"]{
 }
 
 
-// DASH
+// @DASH
 // -------------------------
 
 .dash-wrapper{
@@ -531,7 +537,7 @@ div[data-role="content"]{
 
 
 
-// TUMBLR
+// @TUMBLR
 // -------------------------
 
 
@@ -697,7 +703,7 @@ div[data-role="content"]{
 }
 
 
-// COMPS
+// @COMPS
 // ----------------------------
 
 
@@ -722,7 +728,7 @@ div[data-role="content"]{
 
 
 
-// FEED
+// @FEED
 // -------------------------
 
 
@@ -1106,7 +1112,7 @@ div[data-role="content"]{
         background-color: @twitterBlue;
         .box-shadow(inset 0 3px 20px @twitterBlue-tint);
     }
-    &.s-twitter-sharing{
+    &.s-facebook-sharing{
         .ui-icon{background-position: @gfxShareSmall-x @gfxShareSmall-facebook-y!important;}
         background-color: @facebookBlue;
         .box-shadow(inset 0 3px 20px @facebookBlue-tint);

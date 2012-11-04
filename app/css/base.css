@@ -154,6 +154,9 @@ div[data-role="content"] .s-inline-footer {
   height: 0;
   overflow: hidden;
 }
+.ui-hide-label label {
+  display: none;
+}
 .ui-li-has-icon .ui-btn-inner a.ui-link-inherit,
 .ui-li-static.ui-li-has-icon {
   min-height: 34px;
@@ -979,13 +982,13 @@ div[data-role="content"] .s-inline-footer {
 .s-share-icon-small.s-twitter-sharing .ui-icon {
   background-position: 0 0px !important;
 }
-.s-share-icon-small.s-twitter-sharing {
+.s-share-icon-small.s-facebook-sharing {
   background-color: #507ab8;
   -webkit-box-shadow: inset 0 3px 20px #2e5998;
   -moz-box-shadow: inset 0 3px 20px #2e5998;
   box-shadow: inset 0 3px 20px #2e5998;
 }
-.s-share-icon-small.s-twitter-sharing .ui-icon {
+.s-share-icon-small.s-facebook-sharing .ui-icon {
   background-position: 0 -21px !important;
 }
 .s-share-icon-small.s-tumblr-sharing {
