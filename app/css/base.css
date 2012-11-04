@@ -63,6 +63,9 @@ div[data-role="content"] .ui-content {
 div[data-role="content"] .ui-listview {
   margin: 0 -8px;
 }
+div[data-role="content"] .ui-listview-inset {
+  margin: 0;
+}
 div[data-role="content"] .s-inline-header {
   margin: 0 -8px;
   background-color: #f7f7f7;
@@ -72,6 +75,12 @@ div[data-role="content"] .s-inline-footer {
   margin: 0 -8px;
   background-color: #f7f7f7;
   padding: 8px;
+}
+.ui-content .s-inset-page-content {
+  padding: 16px 8px;
+}
+.ui-content .s-inset-page-content .ui-listview-inset {
+  margin-bottom: 16px;
 }
 .s-full-height {
   min-height: 400px;

@@ -1526,10 +1526,10 @@ input.ui-input-text, textarea.ui-input-text {
 .ui-collapsible-set li {
   list-style: none;
 }
-.ui-content .inset-page-content {
+.ui-content .s-inset-page-content {
   padding: 0 8px;
 }
-.ui-content .inset-page-content .ui-listview-inset {
+.ui-content .s-inset-page-content .ui-listview-inset {
   margin-bottom: 16px;
 }
 a.ui-link-inherit {

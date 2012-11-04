@@ -4,8 +4,6 @@
 
 
 
-
-
 // @HEADERS
 // -------------------------
 
@@ -54,6 +52,9 @@ div[data-role="content"]{
     .ui-listview{
         margin: 0 -@padding * 2;
     }
+    .ui-listview-inset {
+        margin: 0;
+    }
     .s-inline-header{
         margin: 0 -@padding * 2;
         background-color: @grayLighter;
@@ -65,7 +66,15 @@ div[data-role="content"]{
         background-color: @grayLighter;
         padding: @padding * 2;
     }
-    
+}
+
+.ui-content{
+    .s-inset-page-content{
+        padding: @padding * 4 @padding * 2;
+        .ui-listview-inset{
+            margin-bottom:  @padding * 2 * 2 ;
+        }
+    }
 }
 
 
@@ -884,7 +893,6 @@ div[data-role="content"]{
             overflow: visible;
         }
     }
-
 }
 
 
