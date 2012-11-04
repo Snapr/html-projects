@@ -5,7 +5,7 @@ define(['config', 'backbone', 'views/base/page', 'jquery', 'validate', 'models/u
 var join_dialog = page_view.extend({
 
     post_initialize: function(){
-        this.validator = this.$("from").validate({
+        this.validator = this.$("form").validate({
             //debug: true,
 
             errorClass: "x-invalid",
