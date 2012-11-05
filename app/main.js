@@ -3,6 +3,9 @@
 if(!window.theme){
     alert('you must include your theme config.js file before app/require.js');
 }
+window.theme_templates = '../../theme/'+window.theme+'/templates/';
+window.theme_views = '../../theme/'+window.theme+'/views/';
+
 require(['config'], function(config){
     // requiring config initalizes it
     window.config = config;  // export for templates

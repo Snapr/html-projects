@@ -1,4 +1,6 @@
-var theme = {
+/*global _ $ define theme_templates theme_views */
+define(function(){
+return {
     config: {
         environment: 'dev',  // from theme.environments below
 
@@ -53,7 +55,11 @@ var theme = {
     },
 
     pages: [
-        'home',
+        {
+            name: 'home',
+            view: theme_views + 'test',
+            template: theme_templates + 'test'
+        },
         'about',
         'about-snapr',
         'map',
@@ -126,3 +132,4 @@ var theme = {
         'competition'
     ]
 };
+});
