@@ -1,85 +1,6 @@
 /*global _  define require */
 define(['config', 'backbone', 'auth', 'utils/local_storage', 'native', 'utils/alerts', 'utils/query'], function(config, Backbone, auth, local_storage, native, alerts, Query) {
 
-var pages = [
-    'home',
-    'about',
-    'about-snapr',
-    'map',
-    'app',
-    'login',
-    'logout',
-    'upload',
-    'uploading',
-    'connect',
-    'cities',
-    'limbo',
-    'feed',
-    'dash',
-    {
-        name: 'zombie-home',
-        view: 'dash',
-        extra: {show: ['comps', 'tumblr']}
-    },
-    {
-        name: 'feeds',
-        view: 'dash',
-        extra: {show: ['user-streams', 'featured-streams']}
-    },
-    'leaderboard',
-    'activity',
-    'popular',
-    'search',
-    'spots',
-    'spot',
-    'welcome',
-    'snapr-apps',
-    'forgot-password',
-    'join',
-    'join-success',
-    'my-account',
-    'find-friends',
-    {
-        name: 'find-friends-twitter',
-        view: 'find_friends_list',
-        template: 'find_friends_twitter',
-        extra: {service: "twitter"}
-    },
-    {
-        name: 'find-friends-facebook',
-        view: 'find_friends_list',
-        template: 'find_friends_facebook',
-        extra: {service: "facebook"}
-    },
-    'linked-services',
-    'tumblr-posts',
-    'tumblr-xauth',
-    'twitter-xauth',
-    'share',
-    {
-        name: 'user/followers',
-        view: 'people',
-        extra: {follow: "followers"}
-    },
-    {
-        name: 'user/following',
-        view: 'people',
-        extra: {follow: "following"}
-    },
-    {
-        name: 'user/search',
-        view: 'people'
-    },
-    'user/profile',
-    {
-        name: 'upload_xhr',
-        template: 'upload'
-    },
-    'foursquare_venues',
-    'competitions',
-    'competition'
-];
-
 function _make_route(file_name, name, template, extra_view_data){
     // returns a function that will do all that's needed to show a page when called
     // file_name: js file to require, provices a Backbone.View
@@ -193,7 +114,7 @@ if(hash.length > 1){
 }
 
 var routers = Backbone.Router.extend({
-    pages: pages,
+    pages: window.theme.pages,
 
     // build our page array into backbone routes
     initialize: function() {

@@ -1,5 +1,8 @@
 /*global _  requirejs require urlError */
 
+if(!window.theme){
+    alert('you must include your theme config.js file before app/require.js');
+}
 require(['config'], function(config){
     // requiring config initalizes it
     window.config = config;  // export for templates

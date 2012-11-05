@@ -1,6 +1,6 @@
 /*global _  define require */
-define(['backbone', 'views/base/page', 'views/components/activity_ticker', 'views/auth_header', 'views/nearby_photostream', 'auth', 'utils/local_storage', 'config', 'utils/alerts'],
-    function(Backbone, page_view, ticker, auth_header_view, nearby_photostream_view, auth, local_storage, config, alerts){
+define(['backbone', 'views/base/page', 'views/components/activity_ticker', 'views/nearby_photostream', 'auth', 'utils/local_storage', 'config', 'utils/alerts'],
+    function(Backbone, page_view, ticker, nearby_photostream_view, auth, local_storage, config, alerts){
 return page_view.extend({
 
     post_initialize: function(options){
