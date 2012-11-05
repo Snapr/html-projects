@@ -2,7 +2,7 @@
 <% if (photo_events){%>
     <a class="ui-bar s-arrow-d-left" data-role="button" data-theme="e">
         <em><%= time_period %></em>
-        <span class="small-text"><%= stream_summary %></span>
+        <span class="s-small-text"><%= stream_summary %></span>
     </a>
 <%}%>
 
@@ -82,7 +82,7 @@
                         <img src="<%= config.get('avatar_url') %>/<%= event.get("user").username %>" alt="<%= event.get("user").user_id %>" class="s-avatar ui-li-icon"/>
                         <h3 class="username"><%= event.get("user").display_username %></h3> <span class="activity-desc">is now following you.</span>
                         <% if (!photo_events) { %>
-                            <p class="small-text">
+                            <p class="s-small-text">
                                 <%= string_utils.short_timestamp( event.get("date"), true) %>
                             </p>
                         <% } %>

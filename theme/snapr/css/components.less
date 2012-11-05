@@ -3,84 +3,52 @@
 // --------------------------------------------------
 
 
-// Add base padding to pages with tab bars and square off rounded corners for content
 
-*[data-tab-bar="true"]{
-    padding-bottom: @tabBarHeight;
+// @HEADERS
+// -------------------------
 
-    .border-bottom-radius(none);
-
-    div[data-role="content"]{
-        .border-bottom-radius(none);
-    }
-    .inline-footer{
-        .border-bottom-radius(none);
-        &.s-feed-footer{
-            .ui-btn{
-                .border-bottom-radius(none);
-            }
-        }
-    }
+div[data-role="header"]{
+    min-height: @topBarHeight; // So Topbar doesn't collapse without heading
 }
 
-.underline{
-    text-decoration: underline;
+// @CONTENT
+// -------------------------
+
+
+.s-username{
+    .username-font();
+    color: @grayDarker;
 }
 
-.small-text{
+.s-small-username{
+    .username-font();
+    font-size: @fontSizeSmall;
+    color: @grayDark;
+}
+
+.s-small-text{
     font-size: @fontSizeSmall;
     font-family: @font;
-    .username{
+    .s-username{
         font-size: @fontSizeSmall;
     }
 }
 
-.light-text{
+.s-light-text{
     color: @gray;
     a{
         color: @gray!important;
     }
 }
 
-// Usernames etc to special font
-h4{
-    font-family: @font-special;
-    font-size: @fontSizeUsername;
-    font-weight: normal!important;
-    color: @grayDarker;
-}
 
-.username{
-    font-family: @font;
-    font-size: @fontSizeUsername;
-    font-weight: bold;
-    color: @grayDarker;
-}
-
-.s-small-username{
-    font-size: 11px;
-    font-weight: normal;
-    color: @grayDark;
-}
-
-.warning-message{
-    padding: @padding * 2;
-    background-color: @snaprYellow;
-    .border-radius(@corners);
-    border-bottom: @borderGray;
-}
-
-
-.centered-link{
+.s-centered-link{
     text-align: center;
     margin-top: 60px;
-    font-family: @font-special;
-    text-transform: uppercase;
-    color: @white!important;
-    text-shadow:0 -1px 1px #000;
+    font-family: @fontSpecial;
+    text-shadow:0 1px 1px @shadowWhite;
     a{
-        color: @white!important;
-        text-shadow:0 -1px 1px #000;
+        text-shadow:0 1px 1px @shadowWhite;
     }
 }
 
@@ -94,16 +62,40 @@ h4{
     }
 }
 
-/* margins on bottom element not having proper effect */
-.margin-clear{
-    margin-bottom: -1px;
-    padding-bottom: 1px;
+
+.s-warning-message{
+    padding: @padding * 2;
+    background-color: @snaprYellow;
+    .border-radius(@corners);
+    border-bottom: @borderGray;
 }
 
 
 
-// Snapr Tab Bar
-.snapr-footer{
+// @TABBAR
+// -------------------------
+
+// Make sure Corners at bottom of pages aren't rounded when tab bar is present
+
+*[data-tab-bar="true"]{
+    padding-bottom: @tabBarHeight;
+    .border-bottom-radius(0);
+    div[data-role="content"]{
+        .border-bottom-radius(0);
+    }
+    .s-inline-footer{
+        .border-bottom-radius(0);
+        &.s-feed-footer{
+            .ui-btn{
+                .border-bottom-radius(0);
+            }
+        }
+    }
+}
+
+
+// Custom Fiddles for Tab Bar
+.s-tab-bar{
     background-color: @black;
     .ui-navbar {
         .darkGrad();
@@ -115,16 +107,13 @@ h4{
             border: none;
             margin: 0 3px!important;
             .border-radius (3px)!important;
-
             &.ui-btn-up-b{
                 background: transparent;
             }
-
             &.ui-btn-hover-b{
                 background: lighten(@grayDarkBg, 2%);
                 color: @grayLight;
             }
-
             &.ui-btn-down-b,
             &.ui-btn-active{
                 background: @grayDarkBg;
@@ -132,20 +121,15 @@ h4{
                 .box-shadow(inset 0px 2px 4px 2px rgba(0, 0, 0, .1))!important;
                 color: white;
                 text-shadow: @shadowDarker 0px 1px 1px;
-
             }
         }
-
         // Match rounded corners of full palette
         li:first-child .ui-btn{
             .border-bottom-left-radius(@cornersPage)!important;
         }
-
         li:last-child .ui-btn{
             .border-bottom-right-radius(@cornersPage)!important;
         }
-
-
         .ui-btn-inner {
             padding-top: 32px!important;
             padding-bottom: 4px!important;
@@ -153,24 +137,20 @@ h4{
             line-height: 12px;
             padding-left: 1px;
             padding-right: 1px;
-
             .ui-btn-text {
                 font-size: 12px;
                 text-transform: none;
                 text-shadow: @shadowDarker 0px -1px 1px;
-
             }
-
             .ui-icon {
                 top: 0;
                 margin-left: -@gfxTabBar-grid / 2;
             }
         }
     }
-
-    .tab-bar-extra{
+    .s-tabbar-activity{
         display: none;
-        font-weight: bold;
+        .button-font-small();
         line-height: @fontSizeSmall;
         min-height: @fontSizeSmall;
         position: absolute;
@@ -178,13 +158,10 @@ h4{
         right:0;
         margin:0;
         white-space: nowrap;
-        color: black;
         padding: 8px;
         .box-shadow(none);
-
         .border-top-radius(@corners);
         .border-bottom-radius(0);
-
         .ui-btn-inner{
             line-height: @fontSizeSmall;
             min-height: @fontSizeSmall;
@@ -197,8 +174,7 @@ h4{
                 color: @grayDarkBgTint;
                 text-shadow: @shadowWhite;
             }
-
-            .activity-count{
+            .s-activity-count{
                 position: relative;
                 &.icon-left{
                     padding-left: 24px;
@@ -211,7 +187,6 @@ h4{
                 }
             }
         }
-
     }
 }
 
@@ -818,7 +793,7 @@ over rides theme swatch styles for general blue / white style switch
     background: none;
     border: none;
     color: @gray;
-    text-shadow: @shadowDarkOnDark 0px -1px 1px;
+    text-shadow: @shadowBlack 0px -1px 1px;
     height: @topBarHeight;
     overflow: hidden;
     .ui-title{
@@ -1187,6 +1162,8 @@ div.ps-carousel-item-loading
         display: none;
     }
 }
+
+
 
 
 

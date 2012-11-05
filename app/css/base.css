@@ -1523,9 +1523,17 @@ a {
 .hide {
   display: none;
 }
+.s-underline {
+  text-decoration: underline;
+}
 .ui-disabled {
   filter: alpha(opacity=100) !important;
   opacity: 1!important;
+}
+/* margins on bottom element not having proper effect */
+.s-margin-clear {
+  margin-bottom: -1px;
+  padding-bottom: 1px;
 }
 body.x-browser-testing {
   width: 320px!important;

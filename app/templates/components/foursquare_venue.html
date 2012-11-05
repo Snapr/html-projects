@@ -1,7 +1,7 @@
 <a>
     <img src="<%= icon %>" alt="" class="s-avatar ui-li-icon"/>
     <h3 class="venue-name"><%= venue.get('name') %></h3>
-    <p class="small-text"><%= venue.get('location').distance %> m</p>
+    <p class="s-small-text"><%= venue.get('location').distance %> m</p>
 </a>
 <% if (selected) {%>
     <a data-icon="check" data-iconpos="right" class="select"></a>

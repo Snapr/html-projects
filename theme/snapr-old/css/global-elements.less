@@ -35,12 +35,11 @@
 .my-snaps .x-my-snaps-only{display: inline-block!important;}
 .my-snaps .s-not-on-my-snaps{display: none!important;}
 
-
-.underline{
+.s-underline{
     text-decoration: underline;
 }
 
-.small-text{
+.s-small-text{
     font-size: @fontSizeSmall;
     font-family: @font;
     .username{
@@ -48,7 +47,7 @@
     }
 }
 
-.light-text{
+.s-light-text{
     color: @grayLightOnLight;
     a{
         color: @grayLightOnLight!important;
@@ -125,7 +124,7 @@
 
 /* Usernames etc */
 h4{
-    font-family: @font-special;
+    font-family: @fontSpecial;
     font-size: @fontSizeUsername;
     font-weight: normal!important;
     color: @grayDarkOnLight;
@@ -144,7 +143,7 @@ h4{
     color: @grayMediumOnLight;
 }
 
-.warning-message{
+.s-warning-message{
     padding: @padding * 2;
     background-color: @snaprYellow;
     .border-radius(@corners);
@@ -152,10 +151,10 @@ h4{
 }
 
 
-.centered-link{
+.s-centered-link{
     text-align: center;
     margin-top: 60px;
-    font-family: @font-special;
+    font-family: @fontSpecial;
     text-transform: uppercase;
     color: @white!important;
     text-shadow:0 -1px 1px #000;
@@ -181,12 +180,12 @@ h4{
 
 
 /* margins on bottom element not having proper effect */
-.margin-clear{
+.s-margin-clear{
     margin-bottom: -1px;
     padding-bottom: 1px;
 }
 
-.snapr-footer{
+.s-tab-bar{
     background-color: @black;
     .ui-navbar {
         .darkGrad();
@@ -281,7 +280,7 @@ h4{
                 text-shadow: @shadowLightOnLight;
             }
 
-            .activity-count{
+            .s-activity-count{
                 position: relative;
                 &.icon-left{
                     padding-left: 24px;
@@ -867,7 +866,7 @@ h4{
         .ui-btn,
         .ui-btn-hidden,
         .username{
-            font-size: @fontSize-titleBar;
+            font-size: @fontSizePageTitle;
             .ui-bar-font();
         }
 
@@ -1044,7 +1043,7 @@ h4{
     .linear-gradient(@blue, @blue-tint);
 
     strong{
-        font-size: @fontSize-titleBar;
+        font-size: @fontSizePageTitle;
         .ui-bar-font();
     }
     .ui-icon-play{
@@ -1728,7 +1727,7 @@ over rides theme swatch styles for general blue / white style switch
     background: none;
     border: none;
     color: @grayMediumOnDark;
-    text-shadow: @shadowDarkOnDark 0px -1px 1px;
+    text-shadow: @shadowBlack 0px -1px 1px;
     height: @topBarHeight;
     overflow: hidden;
     .ui-title{

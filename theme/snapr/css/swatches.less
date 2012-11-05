@@ -65,12 +65,12 @@
     background: none;
     background-color: @black;
     color: @grayLight;
-    text-shadow: @shadowDarkOnDark 0px 1px 1px;
-    font-size: @fontSize-btn;
+    text-shadow: @shadowBlack 0px 1px 1px;
+    font-size: @fontSizeBtn;
     text-decoration: none;
-    .box-shadow(inset 0 3px 20px @shadowDarkOnDark);
+    .box-shadow(inset 0 3px 20px @shadowBlack);
     &.ui-shadow{
-        .box-shadow(inset 0 3px 20px @shadowDarkOnDark);
+        .box-shadow(inset 0 3px 20px @shadowBlack);
     }
     .ui-btn-inner{
         border:none;
@@ -91,12 +91,12 @@
     background: none;
     background-color: @black;
     color: @white;
-    text-shadow: @shadowDarkOnDark 0px 1px 1px;
-    font-size: @fontSize-btn;
+    text-shadow: @shadowBlack 0px 1px 1px;
+    font-size: @fontSizeBtn;
     text-decoration: none;
-    .box-shadow(inset 0 3px 20px @shadowDarkOnDark);
+    .box-shadow(inset 0 3px 20px @shadowBlack);
     &.ui-shadow{
-        .box-shadow(inset 0 3px 20px @shadowDarkOnDark);
+        .box-shadow(inset 0 3px 20px @shadowBlack);
     }
     .ui-btn-inner{
         border:none;
@@ -118,9 +118,9 @@
         border: none;
         border-bottom: @borderGray;
         background-color: @grayDarkBgTint;
-        .box-shadow(inset 0 3px 20px @shadowDarkOnDark);
+        .box-shadow(inset 0 3px 20px @shadowBlack);
         &.ui-shadow{
-            .box-shadow(inset 0 3px 20px @shadowDarkOnDark);
+            .box-shadow(inset 0 3px 20px @shadowBlack);
         }
         .ui-btn-inner{
             border:none;
@@ -133,9 +133,9 @@
         border-bottom: @borderGrayDark;
         background: none;
         background-color: @grayDarkBg;
-        .box-shadow(inset 0 3px 20px @shadowDarkOnDark);
+        .box-shadow(inset 0 3px 20px @shadowBlack);
         &.ui-shadow{
-            .box-shadow(inset 0 3px 20px @shadowDarkOnDark);
+            .box-shadow(inset 0 3px 20px @shadowBlack);
         }
         .ui-btn-inner{
             border:none;
@@ -177,7 +177,7 @@
     background: @grayDarkBg;
     .button-font-small();
     color: @gray;
-    text-shadow: @shadowDarkOnDark 0px -1px 1px;
+    text-shadow: @shadowBlack 0px -1px 1px;
     text-decoration: none;
     .linear-gradient(@grayDarkBg, @grayDarkBgTint);
     .ui-btn-inner{
@@ -209,7 +209,7 @@
     background: @grayDarkBg;
     .button-font-small();
     color: lighten(@gray, 3%);
-    text-shadow: @shadowDarkOnDark 0px -1px 1px;
+    text-shadow: @shadowBlack 0px -1px 1px;
     font-size: @fontSizeSmall;
     text-decoration: none;
     .linear-gradient(lighten(@grayDarkBg, 3%), lighten(@grayDarkBgTint, 3%));
@@ -240,7 +240,7 @@
     background: @grayDarkBg;
     .button-font-small();
     color: darken(@gray, 3%);
-    text-shadow: @shadowDarkOnDark 0px -1px 1px;
+    text-shadow: @shadowBlack 0px -1px 1px;
     text-decoration: none;
     .pressed-gradient(@grayDarkBgTint, 5%);
     .ui-btn-inner{
@@ -325,7 +325,7 @@
         .image-tag{
             color: @grayLight;
         }
-        .small-text{
+        .s-small-text{
             color: @gray;
         }
     }
@@ -718,7 +718,7 @@
         .ui-btn.ui-li{
             background: none;
             .button-font-light();
-            font-size: @fontSize-btn;
+            font-size: @fontSizeBtn;
         }
     }
 }
@@ -733,7 +733,7 @@
     background: @orange;
     .linear-gradient(@orange, @orangeTint);
     color: @white;
-    text-shadow: @shadowDarkOnDark 0px -1px 1px;
+    text-shadow: @shadowBlack 0px -1px 1px;
     .button-font-bold();
     a.ui-link-inherit {
         color: @grayDarker;
@@ -752,7 +752,7 @@
     background: lighten(@orange, 10% );
     .linear-gradient(lighten(@orange, 10%), lighten(@orangeTint, 10%));
     color: @white;
-    text-shadow: @shadowDarkOnDark 0px -1px 1px;
+    text-shadow: @shadowBlack 0px -1px 1px;
     .button-font-bold();
     a.ui-link-inherit {
         color: @grayDarker;
@@ -771,7 +771,7 @@
     background: @orange;
     .pressed-gradient(@orange, 3%);
     color: @white;
-    text-shadow: @shadowDarkOnDark 0px -1px 1px;
+    text-shadow: @shadowBlack 0px -1px 1px;
     .button-font-bold();
     a.ui-link-inherit {
         color: @grayDarker;
@@ -931,7 +931,7 @@
     background: lighten(@yellow, 10% );
     .linear-gradient(lighten(@yellow, 10%), lighten(@yellowTint, 10%));
     color: @white;
-    text-shadow: @shadowDarkOnDark 0px -1px 1px;
+    text-shadow: @shadowBlack 0px -1px 1px;
     .button-font-bold();
     text-decoration: none;
     a.ui-link-inherit {
@@ -944,7 +944,7 @@
     background: @yellow;
     .pressed-gradient(@yellow, 3%);
     color: @white;
-    text-shadow: @shadowDarkOnDark 0px -1px 1px;
+    text-shadow: @shadowBlack 0px -1px 1px;
     .button-font-bold();
     text-decoration: none;
     a.ui-link-inherit {

@@ -34,7 +34,7 @@
                             <% } %>
                         </a>
                         <div class="spot-venue-details">
-                            <a class="s-spot-address small-text" href="http://maps.google.com/maps?ll=<%= spot.get('location').latitude %>,<%= spot.get('location').longitude %>&q=<%= spot.get('name') %>">
+                            <a class="s-spot-address s-small-text" href="http://maps.google.com/maps?ll=<%= spot.get('location').latitude %>,<%= spot.get('location').longitude %>&q=<%= spot.get('name') %>">
                                 <% if (spot.get('location').address !== "False") { %>
                                     <%= spot.get('location').address %></br>
                                 <% } %>
@@ -44,12 +44,12 @@
                                 <% } %><span class="s-spot-distance ">&rsaquo;</span>
                             </a>
                             <% if(spot.get('contact').phone !== "False") { %>
-                                <a  href="tel:<%= spot.get('contact').phone %>" class="s-spot-phone small-text">
+                                <a  href="tel:<%= spot.get('contact').phone %>" class="s-spot-phone s-small-text">
                                     &#9742; <%= spot.get('contact').phone %>
                                 </a>
                             <% } %>
                         </div>
-                        <p class="spot-photo-credit small-text">
+                        <p class="spot-photo-credit s-small-text">
                             <% if (spot.get('info').hero_image) { %>
                             &lsaquo; photo by <a href="#/feed/?username=<%= spot.get('info').hero_image.username %>" class="username"><%= spot.get('info').hero_image.display_username %></a>
                             <% } %>
