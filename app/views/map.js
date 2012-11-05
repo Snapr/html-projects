@@ -40,7 +40,7 @@ var map_view = page_view.extend({
         "vclick .x-current-location": "current_location_go_to",
         "vclick .x-disambituation-cancel": "location_search_toggle_disambiguation",
         "vclick .x-map-feed": "map_feed",
-        "change .x-filter": "filter_update",
+        "change select.x-filter": "filter_update",
         "change .x-show-photos, .x-show-spots": "layers_update",
         "submit .x-search": "keyword_search",
         "blur .x-search": "keyword_search",
@@ -558,18 +558,18 @@ var map_view = page_view.extend({
     },
 
     filter_set_options: function(){
-        this.$(".x-filter option[value='just-me']").attr("disabled", !auth.has("snapr_user"));
-        this.$(".x-filter option[value='following']").attr("disabled", !auth.has("snapr_user"));
-        this.$(".x-filter option[value='just-one']").attr("disabled", !this.photo_query.has("photo_id"));
+        this.$("select.x-filter option[value='just-me']").attr("disabled", !auth.has("snapr_user"));
+        this.$("select.x-filter option[value='following']").attr("disabled", !auth.has("snapr_user"));
+        this.$("select.x-filter option[value='just-one']").attr("disabled", !this.photo_query.has("photo_id"));
 
         if (this.photo_query.has( "photo_id" )){
-            this.$(".x-filter").val("just-one").selectmenu('refresh', true);
+            this.$("select.x-filter").val("just-one").selectmenu('refresh', true);
         }else if (!this.photo_query.has( "username" ) && this.photo_query.get( "group" ) == "following"){
-            this.$(".x-filter").val("following").selectmenu('refresh', true);
+            this.$("select.x-filter").val("following").selectmenu('refresh', true);
         }else if (this.photo_query.get( "username" ) == "." && !this.photo_query.has( "group" )){
-            this.$(".x-filter").val("just-me").selectmenu('refresh', true);
+            this.$("select.x-filter").val("just-me").selectmenu('refresh', true);
         }else{
-            this.$(".x-filter").val("all").selectmenu('refresh', true);
+            this.$("select.x-filter").val("all").selectmenu('refresh', true);
         }
     },
 
