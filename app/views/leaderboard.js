@@ -1,6 +1,6 @@
 /*global _  define require */
-define(['config', 'views/base/page', 'collections/user', 'views/components/no_results', 'views/leaderboard_li'],
-    function(config, page_view, user_collection, no_results, leaderboard_li){
+define(['config', 'views/base/page', 'collections/user', 'views/components/no_results'],
+    function(config, page_view, user_collection, no_results){
 return page_view.extend({
 
     post_initialize: function(){
@@ -14,8 +14,6 @@ return page_view.extend({
     post_activate: function(options){
         // because of the above fix (undeligate on pagehide) we must make sure
         // subsequent activations of the same view deligate events again.
-        // TODO: do this more cleanly
-        this.undelegateEvents();
         this.delegateEvents();
 
         this.$(".x-people-list").empty();
@@ -31,7 +29,7 @@ return page_view.extend({
         this.collection.fetch({
             data:{
                 sort: "score",
-                n:20
+                n:2
             },
             url: config.get('api_base') + '/user/search/',
             success: function(){
@@ -43,30 +41,18 @@ return page_view.extend({
 
     },
 
-    render: function()
-    {
+    render: function(){
         var people_list = this.$(".x-people-list").empty();
 
-        var leaderboard_li_template = this.get_template('components/leaderboard_item');
 
         if(this.collection.length){
+            this.replace_from_template({users: this.collection.models}, ['.x-people-list'])
+                .listview().listview("refresh");
             no_results.$el.remove();  // use remove(), hide() keeps it hidden and requires show() later
-            _.each( this.collection.models, function( model, index ){
-                var li = new leaderboard_li({
-                    template: leaderboard_li_template,
-                    model: model,
-                    parentView: this,
-                    rank: index+1
-                });
-
-                people_list.append( li.render().el );
-
-            });
         }else{
             no_results.render('Oops.. Nobody here yet.', 'delete').$el.appendTo(this.$el);
         }
 
-        people_list.listview().listview("refresh");
         $.mobile.hidePageLoadingMsg();
     },
 
