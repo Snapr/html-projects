@@ -36,10 +36,10 @@ var join_dialog = page_view.extend({
                     alphanum_: true,
                     snapr_username: {
                         beforeSend: function(){
-                            $('x-username').parent().addClass('x-validating').removeClass('x-valid x-invalid');
+                            $('.x-username').parent().addClass('x-validating').removeClass('x-valid x-invalid');
                         },
                         complete: function(){
-                            $('x-username').parent().removeClass('x-validating');
+                            $('.x-username').parent().removeClass('x-validating');
                         }
                     }
                 },
@@ -83,9 +83,9 @@ var join_dialog = page_view.extend({
         this.$('.x-twitter-button').toggle(!(this.options.query && this.options.query.twitter_name));
 
         if(this.options.query && this.options.query.twitter_name){
-            $('x-username').val(this.options.query.twitter_name).valid();
+            $('.x-username').val(this.options.query.twitter_name).valid();
         }else{
-            $('x-username').val("");
+            $('.x-username').val("");
         }
     },
 
@@ -101,9 +101,9 @@ var join_dialog = page_view.extend({
         $('.x-join-btn').x_loading();
         var new_user = new user_settings();
         new_user.data = {
-           username: this.$("x-username").val(),
-           password: this.$("x-password").val(),
-           email: this.$("x-email").val(),
+           username: this.$(".x-username").val(),
+           password: this.$(".x-password").val(),
+           email: this.$(".x-email").val(),
            client_id: config.get('client_id')
         };
 
@@ -118,9 +118,9 @@ var join_dialog = page_view.extend({
             success: function()
             {
                 // empty all the forms
-                join_snapr_view.$("x-username").val('');
-                join_snapr_view.$("x-password").val('');
-                join_snapr_view.$("x-email").val('');
+                join_snapr_view.$(".x-username").val('');
+                join_snapr_view.$(".x-password").val('');
+                join_snapr_view.$(".x-email").val('');
                 // go back to home screen
                 Backbone.history.navigate('#/join-success/');
             },
