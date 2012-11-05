@@ -3,6 +3,15 @@
 // --------------------------------------------------
 
 
+// BROWSER DEFAULTS
+// -------------------------
+
+strong{
+    font-weight: normal;
+    font-size: @fontSizeUsername;
+    font-family: @fontSpecial;
+}
+
 
 // @HEADERS
 // -------------------------
@@ -185,6 +194,8 @@ div[data-role="header"]{
 .ui-bar{
     margin: 0 -@padding * 2;
     
+   .border-bottom-radius(0);
+    
     .ui-btn,
     &.ui-btn{
         .ui-btn-inner{
@@ -206,8 +217,13 @@ div[data-role="header"]{
     }
     .s-bar-right{
         border-left: solid rgba(0,0,0,.1) 1px;
+        .border-top-right-radius(@corners)!important;
         .ui-btn-inner{
         }
+    }
+    
+    &.ui-controlgroup-horizontal{
+        .box-shadow(0 1px 4px @shadowDark);
     }
 }
 
@@ -351,8 +367,30 @@ div[data-role="header"]{
 // -------------------------
 
 
-// @LOGO-BUTTONS
+// @BUTTONS
 // -------------------------
+
+.ui-btn-inner {
+    padding: @padding @padding * 2;
+    
+    .ui-btn-text{
+        // Extra Icons display Inline
+        .ui-icon{
+            display: inline-block;
+            margin-top: 0!important;
+            top: (@barHeight - @gfxBar-grid) / 2 ;            
+            &.spot-icon{
+                top: -1px;
+            }
+            &.ui-icon-clock{
+                width: 17px;
+                left: -4px;
+                top: -1px;
+            }
+        }
+        
+    }
+}
 
 .s-logo-button{
     .ui-btn-text{
