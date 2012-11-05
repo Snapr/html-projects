@@ -100,6 +100,45 @@
 @fontSizeBtnSmall:     @fontSizeSmall;
 @fontSize-numberBig:    24px;
 
+// Defining fonts with mixins makes it easier to manage other attributes
+.button-font-bold(){
+    font-family: @fontButtons;
+    font-weight: normal;
+    text-transform: none;
+    -webkit-font-smoothing: antialiased;
+    text-decoration: none;
+}
+.button-font-small(){
+    font-family: @font;
+    font-weight: bold;
+    font-size: @fontSizeSmall;
+}
+.button-font-light(){
+    font-family: @font;
+    font-weight: normal;
+    text-transform: lowercase;
+}
+.heading-font(){
+    font-family: @fontSpecial;
+    font-weight: bold;
+}
+.title-bar-font(){
+    font-family: @fontSpecial;
+    font-weight: normal;
+    text-transform: lowercase;
+    font-size: @fontSizeHeading;
+}
+.ui-bar-font(){
+    font-family: @fontSpecial;
+    font-weight: bold;
+    font-style: normal;
+    text-transform: lowercase;
+}
+.username-font(){
+    font-family: @fontSpecial;
+    font-weight: normal;    
+}
+
 
 
 // Corners

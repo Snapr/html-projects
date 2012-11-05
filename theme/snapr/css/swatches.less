@@ -394,13 +394,7 @@
         background-color: transparent;
         color: @shadowGray;
     }
-    #x-no-results{
-        .s-map-image-alert {
-            padding: @paddingElement * 2;
-            color: @gray;
-        }
-    }
-
+ 
     // Grey Btns in body are slightly different 
     .ui-content{
         .ui-btn-up-c,
@@ -412,101 +406,60 @@
                 .box-shadow(none);
             }
         }
-
-        // System bar 
-        .ui-btn-up-c.system-bar,
-        .ui-btn-hover-c.system-bar,
-        .ui-btn-down-c.system-bar,
-        .ui-btn-active-c.system-bar   {
-            .border-radius(@cornersRound);
-            display: block;
-            position: relative;
-            border: none;
-            color: white;
-            text-shadow: @shadowDarker 0px -1px 0px;
-
-        }
-        .ui-btn-up-c.system-bar{
-            background-color: @blue;
-            .linear-gradient(@blue, @blueTint);
-        }
-        .ui-btn-hover-c.system-bar{
-            background-color: lighten(@blue, 10%);
-            .linear-gradient(darken(@blue, 10%), darken(@blueTint, 10%));
-        }
-        .ui-btn-down-c.system-bar{
-            background-color: lighten(@blueTint, 3%);
-            .pressed-gradient(@blueTint, 3%);
-        }
-    }
-    .ui-btn{
-        text-shadow: 0 1px 1px @shadowGray;
-    }
-
-    .message{
-        .border-radius(@cornersPage);
-        padding: @paddingElement;
-        border: @borderGrayLighter;
-        font-size: @fontSizeSmall;
     }
 }
 
 
-// Grey Btns 
-.ui-btn-up-c {
-    border: none;
+// @C-BARS
+.ui-bar-c{
     background: @white;
     .linear-gradient(@white, @grayLighter);
-    color: @grayDarker;
-    .button-font-bold();
-    a.ui-link-inherit {
+    a{
         color: @grayDarker;
-    }
-    &.s-arrow-d-left::after{
-        .arrow-down(@arrow-size, @grayLighter, @arrow-offset, 3px);
-    }
-    &.bottom-centered-arrow::after{
-        .arrow-up(@arrow-size, @grayLighter, 50%, 3px);
     }
 }
 
-.ui-btn-hover-c {
+// @C-BUTTONS
+.ui-btn-up-c,
+.ui-btn-hover-c,
+.ui-btn-down-c{
     border: none;
-    background: lighten(@white, 10% );
-    .linear-gradient(lighten(@white, 10%), lighten(@grayLighter, 10%));
-    color: @grayDarker;
     .button-font-bold();
-    a.ui-link-inherit {
-        color: @grayDarker;
-    }
-    &.s-arrow-d-left::after{
-        .arrow-down(@arrow-size, lighten(@grayLighter, 10%), @arrow-offset, 3px);
-    }
-    &.bottom-centered-arrow::after{
-        .arrow-up(@arrow-size, lighten(@grayLighter, 10%), 50%, 3px);
-    }
-}
-
-.ui-btn-down-c {
-    border: none;
-    background: @white;
-    .pressed-gradient(@white, 3%);
     color: @grayDarker;
-    .button-font-bold();
+    text-shadow: @white 0px 1px 1px;
+     text-decoration: none;
     a.ui-link-inherit {
         color: @grayDarker;
     }
     &.ui-shadow {
         .box-shadow(0 1px 4px lighten(@shadowDark, 20%));
     }
+}
+.ui-btn-up-c {
+    background: @white;    
+    .linear-gradient(@white, @grayLighter);
+}
+.ui-btn-hover-c {
+    background: lighten(@blue, 10% );
+    .linear-gradient(lighten(@white, 10%), lighten(@grayLighter, 10%));
+}
+.ui-btn-down-c {
+    background: @white;
+    .pressed-gradient(@white, 3%);
+}
 
-    &.s-arrow-d-left::after{
-        .arrow-down(@arrow-size, @white, @arrow-offset, 3px);
-    }
-    &.bottom-centered-arrow::after{
-        .arrow-up(@arrow-size, @white, 50%, 3px);
+
+// @C-NAVBAR
+.ui-body-c{
+    &.ui-navbar{
+        background: @white;
+        .linear-gradient(@white, @grayLighter);
+        .ui-btn{
+            background: none!important;
+        }
     }
 }
+
 
 // Tweak to C theme buttons for transparent BGs 
 .trans-bg{
@@ -515,7 +468,6 @@
         border-bottom: @borderWhite;
         background: none;
         background-color: @white;
-
         .box-shadow(inset 0 1px 4px @shadowGray);
         &.ui-shadow{
             .box-shadow(inset 0 1px 4px @shadowGray);
@@ -544,6 +496,8 @@
         .border-radius(@cornersRound);
     }
 }
+
+
 
 // List hover effects are going to be a little bit different to normal buttons 
 // and we are going to strip the hell out of them..
@@ -670,10 +624,11 @@
 
 
 
-// D
-// the full white BG swatch used for feed views etc
+// @D
+// A white BG swatch with unstyled buttons. Used for most content pages.
 // -------------------
 
+// This darkcolor becomes the BG for the header
 .ui-body-d[data-role="page"]{
     background: @black;
     background-image: @gfxBgDark;
@@ -723,70 +678,7 @@
     }
 }
 
-.ui-bar-d{
-    background: @orange;
-    .linear-gradient(@orange, @orangeTint);
-}
 
-.ui-btn-up-d {
-    border: none;
-    background: @orange;
-    .linear-gradient(@orange, @orangeTint);
-    color: @white;
-    text-shadow: @shadowBlack 0px -1px 1px;
-    .button-font-bold();
-    a.ui-link-inherit {
-        color: @grayDarker;
-    }
-
-    &.s-arrow-d-left::after{
-        .arrow-down(@arrow-size, @orangeTint, @arrow-offset, 3px);
-    }
-    &.bottom-centered-arrow::after{
-        .arrow-up(@arrow-size, @orange, 50%, 3px);
-    }
-}
-
-.ui-btn-hover-d {
-    border: none;
-    background: lighten(@orange, 10% );
-    .linear-gradient(lighten(@orange, 10%), lighten(@orangeTint, 10%));
-    color: @white;
-    text-shadow: @shadowBlack 0px -1px 1px;
-    .button-font-bold();
-    a.ui-link-inherit {
-        color: @grayDarker;
-    }
-
-    &.s-arrow-d-left::after{
-        .arrow-down(@arrow-size, lighten(@orangeTint, 10% ), @arrow-offset, 3px);
-    }
-    &.bottom-centered-arrow::after{
-        .arrow-up(@arrow-size, lighten(@orange, 10%), 50%, 3px);
-    }
-}
-
-.ui-btn-down-d {
-    border: none;
-    background: @orange;
-    .pressed-gradient(@orange, 3%);
-    color: @white;
-    text-shadow: @shadowBlack 0px -1px 1px;
-    .button-font-bold();
-    a.ui-link-inherit {
-        color: @grayDarker;
-    }
-    &.ui-shadow {
-        .box-shadow(none);
-    }
-
-    &.s-arrow-d-left::after{
-        .arrow-down(@arrow-size, @orange, @arrow-offset, 3px);
-    }
-    &.bottom-centered-arrow::after{
-        .arrow-up(@arrow-size, darken(@orange, 3%), 50%, 3px);
-    }
-}
 
 
 .ui-body-d{
@@ -860,50 +752,12 @@
 }
 
 
-// E //
-// highlight swatch - all about mad yellow shiz..
-// ----------------
+// @E
+// YELLOW HIGHLIGHT SWATCH
+// ------------------------
 
 
-.ui-body-e {
-    background: none;
-    color: @grayDark;
-    div[data-role="content"]{
-        background-color: @yellow;
-        background-image: none;
-        border-radius: @cornersPage;
-    }
-    .ui-link,
-    .ui-link:visited,
-    .ui-link:hover,
-    .ui-link:active {
-        color: @grayDarker;
-        font-weight: normal;
-    }
-    hr{
-        display: block;
-        position: relative;
-        padding: 0;
-        width: 100%;
-        height: 0;
-        clear: both;
-        border: none;
-        border-bottom: @borderWhite;
-        border-top: @borderGrayLighter;
-        font-size: 1px;
-        line-height: 0;
-        overflow: visible;
-        background-color: transparent;
-        color: @shadowGray;
-    }
-
-    .ui-listview{
-        .ui-btn.ui-li{
-            background: none;
-        }
-    }
-}
-
+// @E-BARS
 .ui-bar-e{
     background: @yellow;
     .linear-gradient(@yellow, @yellowTint);
@@ -912,41 +766,15 @@
     }
 }
 
-
-.ui-btn-up-e {
+// @E-BUTTONS
+.ui-btn-up-e,
+.ui-btn-hover-e,
+.ui-btn-down-e{
     border: none;
-    background: @yellow;
-    .linear-gradient(@yellow, @yellowTint);
+    .button-font-bold();
     color: @grayDarker;
-    text-shadow: @white 0px -1px 1px;
-    .button-font-bold();
-    text-decoration: none;
-    a.ui-link-inherit {
-        color: @grayDarker;
-    }
-}
-
-.ui-btn-hover-e {
-    border: none;
-    background: lighten(@yellow, 10% );
-    .linear-gradient(lighten(@yellow, 10%), lighten(@yellowTint, 10%));
-    color: @white;
-    text-shadow: @shadowBlack 0px -1px 1px;
-    .button-font-bold();
-    text-decoration: none;
-    a.ui-link-inherit {
-        color: @grayDarker;
-    }
-}
-
-.ui-btn-down-e {
-    border: none;
-    background: @yellow;
-    .pressed-gradient(@yellow, 3%);
-    color: @white;
-    text-shadow: @shadowBlack 0px -1px 1px;
-    .button-font-bold();
-    text-decoration: none;
+    text-shadow: @white 0px 1px 1px;
+     text-decoration: none;
     a.ui-link-inherit {
         color: @grayDarker;
     }
@@ -954,13 +782,140 @@
         .box-shadow(0 1px 4px lighten(@shadowDark, 20%));
     }
 }
+.ui-btn-up-e {
+    background: @yellow;    
+    .linear-gradient(@yellow, @yellowTint);
+}
+.ui-btn-hover-e {
+    background: lighten(@yellow, 10% );
+    .linear-gradient(lighten(@yellow, 10%), lighten(@yellowTint, 10%));
+}
+.ui-btn-down-e {
+    background: @yellow;
+    .pressed-gradient(@yellow, 3%);
+}
 
 
-// Set BG on element instead of btn for navbar
+// @E-NAVBAR
 .ui-body-e{
     &.ui-navbar{
         background: @yellow;
         .linear-gradient(@yellow, @yellowTint);
+        .ui-btn{
+            background: none!important;
+        }
+    }
+}
+
+
+
+
+// @F
+// BLUE HIGHLIGHT SWATCH
+// ------------------------
+
+
+// @F-BARS
+.ui-bar-f{
+    background: @blue;
+    .linear-gradient(@blue, @blueTint);
+    a{
+        color: @grayDarker;
+    }
+}
+
+// @F-BUTTONS
+.ui-btn-up-f,
+.ui-btn-hover-f,
+.ui-btn-down-f{
+    border: none;
+    .button-font-bold();
+    color: @white;
+    text-shadow: @grayDark 0px -1px 1px;
+     text-decoration: none;
+    a.ui-link-inherit {
+        color: @white;
+    }
+    &.ui-shadow {
+        .box-shadow(0 1px 4px lighten(@shadowDark, 20%));
+    }
+}
+.ui-btn-up-f {
+    background: @blue;    
+    .linear-gradient(@blue, @blueTint);
+}
+.ui-btn-hover-f {
+    background: lighten(@blue, 10% );
+    .linear-gradient(lighten(@blue, 10%), lighten(@blueTint, 10%));
+}
+.ui-btn-down-f {
+    background: @blue;
+    .pressed-gradient(@blue, 3%);
+}
+
+
+// @F-NAVBAR
+.ui-body-f{
+    &.ui-navbar{
+        background: @blue;
+        .linear-gradient(@blue, @blueTint);
+        .ui-btn{
+            background: none!important;
+        }
+    }
+}
+
+
+
+// @G
+// ORANGE HIGHLIGHT SWATCH
+// ------------------------
+
+
+// @G-BARS
+.ui-bar-g{
+    background: @orange;
+    .linear-gradient(@orange, @orangeTint);
+    a{
+        color: @grayDarker;
+    }
+}
+
+// @G-BUTTONS
+.ui-btn-up-g,
+.ui-btn-hover-g,
+.ui-btn-down-g{
+    border: none;
+    .button-font-bold();
+    color: @grayDarker;
+    text-shadow: @white 0px 1px 1px;
+     text-decoration: none;
+    a.ui-link-inherit {
+        color: @grayDarker;
+    }
+    &.ui-shadow {
+        .box-shadow(0 1px 4px lighten(@shadowDark, 20%));
+    }
+}
+.ui-btn-up-g {
+    background: @orange;    
+    .linear-gradient(@orange, @orangeTint);
+}
+.ui-btn-hover-g {
+    background: lighten(@orange, 10% );
+    .linear-gradient(lighten(@orange, 10%), lighten(@orangeTint, 10%));
+}
+.ui-btn-down-g {
+    background: @orange;
+    .pressed-gradient(@orange, 3%);
+}
+
+
+// @G-NAVBAR
+.ui-body-g{
+    &.ui-navbar{
+        background: @orange;
+        .linear-gradient(@orange, @orangeTint);
         .ui-btn{
             background: none!important;
         }
