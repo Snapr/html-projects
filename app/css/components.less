@@ -2,11 +2,8 @@
 // COMPONENTS - Bare Bones of Snapr Specific Components
 // --------------------------------------------------
 
-
-
 // @HEADERS
 // -------------------------
-
 
 div[data-role="header"]{
     min-height: @topBarHeight; // So Topbar doesn't collapse without heading
@@ -76,6 +73,28 @@ div[data-role="content"]{
             margin-bottom:  @padding * 2 * 2 ;
         }
     }
+}
+
+a,
+a:link,
+a:visited,
+a:hover,
+a:active{
+    text-decoration: none;
+    color: @grayDark;
+}
+
+.s-underline{
+    text-decoration: underline;
+}
+
+.s-vertical-margins{
+    display: block;
+    margin: @padding * 4 0;
+}
+
+.s-small-username{
+    font-size: @fontSizeSmall;
 }
 
 .s-wrap-content{
@@ -169,14 +188,6 @@ div[data-role="content"]{
 }
 
 
-// @USERNAMES
-// -------------------------
-
-.s-small-username{
-    font-size: @fontSizeSmall;
-}
-
-
 // @FORMS
 // -------------------------
 
@@ -193,6 +204,43 @@ div[data-role="content"]{
         display: none;
     }
 }
+
+// @JOIN
+// -------------------------
+
+.s-validate{
+    .x-invalid[for]{
+        font-size: @fontSizeSmall;
+        line-height: 14px;
+        color: @grayDark;
+        padding: 4px;
+        margin: 0 @paddingElement @paddingElement @paddingElement;
+        display: block;
+        background-color: lighten(@gray, 20%);
+        .border-radius(4px);
+        position: relative;
+    }
+    .ui-icon-check{
+        display: none;
+        position: absolute;
+        right: @paddingElement / 2;
+        top: @paddingElement;
+    }
+    .x-valid{
+        overflow: hidden; // if the spinning element overlaps other form elements can cause flicker */
+        .ui-icon-check{
+            display: block;
+        }
+    }
+    .x-validating{
+        overflow: hidden; // if the spinning element overlaps other form elements can cause flicker */
+        .ui-icon-check{
+            .spinner();
+            .spin();
+        }
+    }
+}
+
 
 
 // @LISTVIEWS
@@ -266,7 +314,7 @@ div[data-role="content"]{
 }
 
 
-// IMAGES
+// @IMAGES
 // -------------------------
 
 
@@ -315,7 +363,7 @@ div[data-role="content"]{
 }
 
 
-// BAR
+// @BAR
 // -------------------------
 
 .ui-bar{
@@ -368,10 +416,9 @@ div[data-role="content"]{
 }
 
 
-// STREAMS
+// @STREAMS
 // -------------------------
 
-/* Horizontally scrolling image stream components */
 .s-image-streams{
     .x-stream{
         position: relative;
@@ -1834,28 +1881,12 @@ div.ps-carousel-item-loading
 // MISC
 // -------------------------
 
-a,
-a:link,
-a:visited,
-a:hover,
-a:active{
-    text-decoration: none;
-    color: @grayDark;
-}
 
 
 .hide{
     display: none;
 }
 
-.s-underline{
-    text-decoration: underline;
-}
-
-.s-vertical-margins{
-    display: block;
-    margin: @padding * 4 0;
-}
 
 
 .ui-disabled {

@@ -3074,34 +3074,352 @@ div[data-role="header"] {
   left: -6px;
   top: -8px;
 }
-.competition,
-.tumblr-streams {
-  position: relative;
+.ui-bar .ui-btn .ui-btn-inner,
+.ui-bar.ui-btn .ui-btn-inner {
+  height: 36px;
+  line-height: 36px;
 }
-.competition {
-  position: relative;
-}
-.competition .banner {
-  margin: 0 -8px;
-  background-color: #f7f7f7;
-  min-height: 100px;
-}
-.competition .banner .banner-image {
-  display: block;
-}
-.competition .info {
-  background-color: #fbfbfb;
-  margin: 8px 0;
-  padding: 8px;
-  -webkit-border-radius: 6px;
-  -moz-border-radius: 6px;
-  border-radius: 6px;
+.ui-bar .ui-btn .ui-btn-text,
+.ui-bar.ui-btn .ui-btn-text {
   font-size: 12px;
+}
+.ui-bar .ui-btn .ui-btn-text strong,
+.ui-bar.ui-btn .ui-btn-text strong {
+  font-size: 16px;
+}
+.ui-bar .s-bar-left {
+  border-right: none;
+}
+.s-validate .x-invalid[for] {
+  font-size: 12px;
+  color: #666666;
+  padding: 4px;
+  background-color: #ffff66;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+}
+.s-validate .x-invalid[for]::after {
+  width: 0;
+  height: 0;
+  display: inline-block;
+  content: "&uarr;";
+  text-indent: -99999px;
+  vertical-align: top;
+  margin-top: 0;
+  margin-left: -6px;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-bottom: 6px solid #ffff66;
+  position: absolute;
+  top: -6px;
+  left: 16px;
+}
+.s-validate .x-invalid .ui-icon-check {
+  display: block;
+  background-position: -63px -144px;
+}
+.s-validate .x-valid {
+  overflow: hidden;
+}
+.s-validate .x-valid .ui-icon-check {
+  display: block;
+  background-position: -243px -144px;
+}
+.s-validate .x-validating {
+  overflow: hidden;
+}
+.s-validate .x-validating .ui-icon-check {
+  background-image: url('gfx/small-spinner-light.png') !important;
+  display: block;
+  background-image: url('../gfx/small-spinner-light.png') !important;
+  background-position: center!important;
+  background-repeat: no-repeat !important;
+  -webkit-transform: rotate(0deg) translateZ(0);
+  -webkit-transition-duration: 0ms;
+  -webkit-animation-name: loading;
+  -webkit-animation-duration: 1.2s;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+}
+.ui-dialog.welcome-bg,
+.ui-page.welcome-bg {
+  background-color: #acebdd!important;
+  background-image: url('../../../app/css/gfx/welcome-image.png') !important;
+  -moz-background-size: 320px 318px !important;
+  -o-background-size: 320px 318px !important;
+  -webkit-background-size: 320px 318px !important;
+  background-size: 320px 318px !important;
+  background-repeat: no-repeat !important;
+  background-position: center bottom!important;
 }
 .s-logo-button .ui-btn-text {
   font-family: Helvetica, Arial, sans-serif;
   font-weight: normal;
   text-transform: lowercase;
+}
+.s-twitter-button.ui-btn-up-e,
+.s-twitter-button.ui-btn-hover-e,
+.s-twitter-button.ui-btn-down-e {
+  border: none;
+  background: #68d9ff;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#68d9ff), to(#309dc2));
+  /* Saf4+, Chrome */
+
+  background-image: -webkit-linear-gradient(top, #68d9ff, #309dc2);
+  /* Chrome 10+, Saf5.1+ */
+
+  background-image: -moz-linear-gradient(top, #68d9ff, #309dc2);
+  /* FF3.6 */
+
+  background-image: -ms-linear-gradient(top, #68d9ff, #309dc2);
+  /* IE10 */
+
+  background-image: -o-linear-gradient(top, #68d9ff, #309dc2);
+  /* Opera 11.10+ */
+
+  background-image: linear-gradient(top, #68d9ff, #309dc2);
+  color: white;
+}
+.s-twitter-button.ui-btn-up-e a.ui-link-inherit,
+.s-twitter-button.ui-btn-hover-e a.ui-link-inherit,
+.s-twitter-button.ui-btn-down-e a.ui-link-inherit {
+  color: white;
+}
+.s-twitter-button.ui-btn-hover-e {
+  background: #9be6ff;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#82dfff), to(#3daacf));
+  /* Saf4+, Chrome */
+
+  background-image: -webkit-linear-gradient(top, #82dfff, #3daacf);
+  /* Chrome 10+, Saf5.1+ */
+
+  background-image: -moz-linear-gradient(top, #82dfff, #3daacf);
+  /* FF3.6 */
+
+  background-image: -ms-linear-gradient(top, #82dfff, #3daacf);
+  /* IE10 */
+
+  background-image: -o-linear-gradient(top, #82dfff, #3daacf);
+  /* Opera 11.10+ */
+
+  background-image: linear-gradient(top, #82dfff, #3daacf);
+}
+.s-twitter-button.ui-btn-down-e {
+  background: #68d9ff;
+  background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, #68d9ff), color-stop(0.7, #68d9ff), color-stop(1, #4ed3ff));
+  /* Saf4+, Chrome */
+
+  background-image: -webkit-linear-gradient(bottom, #68d9ff 0%, #68d9ff 70%, #59d5ff 100%);
+  /* Chrome 10+, Saf5.1+ */
+
+  background-image: -moz-linear-gradient(bottom, #68d9ff 0%, #68d9ff 70%, #59d5ff 100%);
+  /* FF3.6 */
+
+  background-image: -ms-linear-gradient(bottom, #68d9ff 0%, #68d9ff 70%, #59d5ff 100%);
+  /* IE10 */
+
+  background-image: -o-linear-gradient(bottom, #68d9ff 0%, #68d9ff 70%, #59d5ff 100%);
+  /* Opera 11.10+ */
+
+  background-image: linear-gradient(bottom, #68d9ff 0%, #68d9ff 70%, #59d5ff 100%);
+}
+.s-tumblr-button.ui-btn-up-e,
+.s-tumblr-button.ui-btn-hover-e,
+.s-tumblr-button.ui-btn-down-e {
+  border: none;
+  background: #5a687d;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#5a687d), to(#2c3c54));
+  /* Saf4+, Chrome */
+
+  background-image: -webkit-linear-gradient(top, #5a687d, #2c3c54);
+  /* Chrome 10+, Saf5.1+ */
+
+  background-image: -moz-linear-gradient(top, #5a687d, #2c3c54);
+  /* FF3.6 */
+
+  background-image: -ms-linear-gradient(top, #5a687d, #2c3c54);
+  /* IE10 */
+
+  background-image: -o-linear-gradient(top, #5a687d, #2c3c54);
+  /* Opera 11.10+ */
+
+  background-image: linear-gradient(top, #5a687d, #2c3c54);
+  color: white;
+}
+.s-tumblr-button.ui-btn-up-e a.ui-link-inherit,
+.s-tumblr-button.ui-btn-hover-e a.ui-link-inherit,
+.s-tumblr-button.ui-btn-down-e a.ui-link-inherit {
+  color: white;
+}
+.s-tumblr-button.ui-btn-hover-e {
+  background: #718199;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#65748c), to(#354865));
+  /* Saf4+, Chrome */
+
+  background-image: -webkit-linear-gradient(top, #65748c, #354865);
+  /* Chrome 10+, Saf5.1+ */
+
+  background-image: -moz-linear-gradient(top, #65748c, #354865);
+  /* FF3.6 */
+
+  background-image: -ms-linear-gradient(top, #65748c, #354865);
+  /* IE10 */
+
+  background-image: -o-linear-gradient(top, #65748c, #354865);
+  /* Opera 11.10+ */
+
+  background-image: linear-gradient(top, #65748c, #354865);
+}
+.s-tumblr-button.ui-btn-down-e {
+  background: #5a687d;
+  background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, #5a687d), color-stop(0.7, #5a687d), color-stop(1, #4f5c6e));
+  /* Saf4+, Chrome */
+
+  background-image: -webkit-linear-gradient(bottom, #5a687d 0%, #5a687d 70%, #546174 100%);
+  /* Chrome 10+, Saf5.1+ */
+
+  background-image: -moz-linear-gradient(bottom, #5a687d 0%, #5a687d 70%, #546174 100%);
+  /* FF3.6 */
+
+  background-image: -ms-linear-gradient(bottom, #5a687d 0%, #5a687d 70%, #546174 100%);
+  /* IE10 */
+
+  background-image: -o-linear-gradient(bottom, #5a687d 0%, #5a687d 70%, #546174 100%);
+  /* Opera 11.10+ */
+
+  background-image: linear-gradient(bottom, #5a687d 0%, #5a687d 70%, #546174 100%);
+}
+.s-facebook-button.ui-btn-up-e,
+.s-facebook-button.ui-btn-hover-e,
+.s-facebook-button.ui-btn-down-e {
+  background: #507ab8;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#507ab8), to(#2e5998));
+  /* Saf4+, Chrome */
+
+  background-image: -webkit-linear-gradient(top, #507ab8, #2e5998);
+  /* Chrome 10+, Saf5.1+ */
+
+  background-image: -moz-linear-gradient(top, #507ab8, #2e5998);
+  /* FF3.6 */
+
+  background-image: -ms-linear-gradient(top, #507ab8, #2e5998);
+  /* IE10 */
+
+  background-image: -o-linear-gradient(top, #507ab8, #2e5998);
+  /* Opera 11.10+ */
+
+  background-image: linear-gradient(top, #507ab8, #2e5998);
+  color: white;
+}
+.s-facebook-button.ui-btn-up-e a.ui-link-inherit,
+.s-facebook-button.ui-btn-hover-e a.ui-link-inherit,
+.s-facebook-button.ui-btn-down-e a.ui-link-inherit {
+  color: white;
+}
+.s-facebook-button.ui-btn-hover-e {
+  background: #7496c7;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#6288bf), to(#3464ac));
+  /* Saf4+, Chrome */
+
+  background-image: -webkit-linear-gradient(top, #6288bf, #3464ac);
+  /* Chrome 10+, Saf5.1+ */
+
+  background-image: -moz-linear-gradient(top, #6288bf, #3464ac);
+  /* FF3.6 */
+
+  background-image: -ms-linear-gradient(top, #6288bf, #3464ac);
+  /* IE10 */
+
+  background-image: -o-linear-gradient(top, #6288bf, #3464ac);
+  /* Opera 11.10+ */
+
+  background-image: linear-gradient(top, #6288bf, #3464ac);
+}
+.s-facebook-button.ui-btn-down-e {
+  background: #507ab8;
+  background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, #507ab8), color-stop(0.7, #507ab8), color-stop(1, #456eaa));
+  /* Saf4+, Chrome */
+
+  background-image: -webkit-linear-gradient(bottom, #507ab8 0%, #507ab8 70%, #4872b1 100%);
+  /* Chrome 10+, Saf5.1+ */
+
+  background-image: -moz-linear-gradient(bottom, #507ab8 0%, #507ab8 70%, #4872b1 100%);
+  /* FF3.6 */
+
+  background-image: -ms-linear-gradient(bottom, #507ab8 0%, #507ab8 70%, #4872b1 100%);
+  /* IE10 */
+
+  background-image: -o-linear-gradient(bottom, #507ab8 0%, #507ab8 70%, #4872b1 100%);
+  /* Opera 11.10+ */
+
+  background-image: linear-gradient(bottom, #507ab8 0%, #507ab8 70%, #4872b1 100%);
+}
+.s-snapr-button.ui-btn-up-e,
+.s-snapr-button.ui-btn-hover-e,
+.s-snapr-button.ui-btn-down-e {
+  background: #ffff00;
+  text-shadow: 0 1px 1px white;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#ffff00), to(#ffe400));
+  /* Saf4+, Chrome */
+
+  background-image: -webkit-linear-gradient(top, #ffff00, #ffe400);
+  /* Chrome 10+, Saf5.1+ */
+
+  background-image: -moz-linear-gradient(top, #ffff00, #ffe400);
+  /* FF3.6 */
+
+  background-image: -ms-linear-gradient(top, #ffff00, #ffe400);
+  /* IE10 */
+
+  background-image: -o-linear-gradient(top, #ffff00, #ffe400);
+  /* Opera 11.10+ */
+
+  background-image: linear-gradient(top, #ffff00, #ffe400);
+  color: #333333;
+}
+.s-snapr-button.ui-btn-up-e a.ui-link-inherit,
+.s-snapr-button.ui-btn-hover-e a.ui-link-inherit,
+.s-snapr-button.ui-btn-down-e a.ui-link-inherit {
+  color: #333333;
+}
+.s-snapr-button.ui-btn-hover-e {
+  background: #ffff33;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#ffff1a), to(#ffe71a));
+  /* Saf4+, Chrome */
+
+  background-image: -webkit-linear-gradient(top, #ffff1a, #ffe71a);
+  /* Chrome 10+, Saf5.1+ */
+
+  background-image: -moz-linear-gradient(top, #ffff1a, #ffe71a);
+  /* FF3.6 */
+
+  background-image: -ms-linear-gradient(top, #ffff1a, #ffe71a);
+  /* IE10 */
+
+  background-image: -o-linear-gradient(top, #ffff1a, #ffe71a);
+  /* Opera 11.10+ */
+
+  background-image: linear-gradient(top, #ffff1a, #ffe71a);
+}
+.s-snapr-button.ui-btn-down-e {
+  background: #ffff00;
+  background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, #ffff00), color-stop(0.7, #ffff00), color-stop(1, #e5e600));
+  /* Saf4+, Chrome */
+
+  background-image: -webkit-linear-gradient(bottom, #ffff00 0%, #ffff00 70%, #f0f000 100%);
+  /* Chrome 10+, Saf5.1+ */
+
+  background-image: -moz-linear-gradient(bottom, #ffff00 0%, #ffff00 70%, #f0f000 100%);
+  /* FF3.6 */
+
+  background-image: -ms-linear-gradient(bottom, #ffff00 0%, #ffff00 70%, #f0f000 100%);
+  /* IE10 */
+
+  background-image: -o-linear-gradient(bottom, #ffff00 0%, #ffff00 70%, #f0f000 100%);
+  /* Opera 11.10+ */
+
+  background-image: linear-gradient(bottom, #ffff00 0%, #ffff00 70%, #f0f000 100%);
 }
 .ui-content .ui-navbar {
   margin: 0 -8px;
@@ -3168,373 +3486,6 @@ div[data-role="header"] {
   -moz-border-radius-topright: 8px;
   border-top-right-radius: 8px;
 }
-.ui-content-inset .ui-bar {
-  margin-left: 0px;
-  margin-right: 0px;
-}
-.ui-dialog.welcome-bg,
-.ui-page.welcome-bg {
-  background-color: #acebdd!important;
-  background-image: url('../../../app/css/gfx/welcome-image.png') !important;
-  -moz-background-size: 320px 318px !important;
-  -o-background-size: 320px 318px !important;
-  -webkit-background-size: 320px 318px !important;
-  background-size: 320px 318px !important;
-  background-repeat: no-repeat !important;
-  background-position: center bottom!important;
-}
-.s-twitter-button.ui-btn-up-e {
-  background: #68d9ff;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#68d9ff), to(#309dc2));
-  /* Saf4+, Chrome */
-
-  background-image: -webkit-linear-gradient(top, #68d9ff, #309dc2);
-  /* Chrome 10+, Saf5.1+ */
-
-  background-image: -moz-linear-gradient(top, #68d9ff, #309dc2);
-  /* FF3.6 */
-
-  background-image: -ms-linear-gradient(top, #68d9ff, #309dc2);
-  /* IE10 */
-
-  background-image: -o-linear-gradient(top, #68d9ff, #309dc2);
-  /* Opera 11.10+ */
-
-  background-image: linear-gradient(top, #68d9ff, #309dc2);
-  color: white;
-}
-.s-twitter-button.ui-btn-up-e a.ui-link-inherit {
-  color: white;
-}
-.s-twitter-button.ui-btn-hover-e {
-  border: none;
-  background: #9be6ff;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#82dfff), to(#3daacf));
-  /* Saf4+, Chrome */
-
-  background-image: -webkit-linear-gradient(top, #82dfff, #3daacf);
-  /* Chrome 10+, Saf5.1+ */
-
-  background-image: -moz-linear-gradient(top, #82dfff, #3daacf);
-  /* FF3.6 */
-
-  background-image: -ms-linear-gradient(top, #82dfff, #3daacf);
-  /* IE10 */
-
-  background-image: -o-linear-gradient(top, #82dfff, #3daacf);
-  /* Opera 11.10+ */
-
-  background-image: linear-gradient(top, #82dfff, #3daacf);
-  color: white;
-}
-.s-twitter-button.ui-btn-hover-e a.ui-link-inherit {
-  color: white;
-}
-.s-twitter-button.ui-btn-down-e {
-  border: none;
-  background: #68d9ff;
-  background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, #68d9ff), color-stop(0.7, #68d9ff), color-stop(1, #4ed3ff));
-  /* Saf4+, Chrome */
-
-  background-image: -webkit-linear-gradient(bottom, #68d9ff 0%, #68d9ff 70%, #59d5ff 100%);
-  /* Chrome 10+, Saf5.1+ */
-
-  background-image: -moz-linear-gradient(bottom, #68d9ff 0%, #68d9ff 70%, #59d5ff 100%);
-  /* FF3.6 */
-
-  background-image: -ms-linear-gradient(bottom, #68d9ff 0%, #68d9ff 70%, #59d5ff 100%);
-  /* IE10 */
-
-  background-image: -o-linear-gradient(bottom, #68d9ff 0%, #68d9ff 70%, #59d5ff 100%);
-  /* Opera 11.10+ */
-
-  background-image: linear-gradient(bottom, #68d9ff 0%, #68d9ff 70%, #59d5ff 100%);
-  color: white;
-}
-.s-twitter-button.ui-btn-down-e a.ui-link-inherit {
-  color: white;
-}
-.s-tumblr-button.ui-btn-up-e {
-  background: #5a687d;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#5a687d), to(#2c3c54));
-  /* Saf4+, Chrome */
-
-  background-image: -webkit-linear-gradient(top, #5a687d, #2c3c54);
-  /* Chrome 10+, Saf5.1+ */
-
-  background-image: -moz-linear-gradient(top, #5a687d, #2c3c54);
-  /* FF3.6 */
-
-  background-image: -ms-linear-gradient(top, #5a687d, #2c3c54);
-  /* IE10 */
-
-  background-image: -o-linear-gradient(top, #5a687d, #2c3c54);
-  /* Opera 11.10+ */
-
-  background-image: linear-gradient(top, #5a687d, #2c3c54);
-  color: white;
-}
-.s-tumblr-button.ui-btn-up-e a.ui-link-inherit {
-  color: white;
-}
-.s-tumblr-button.ui-btn-hover-e {
-  border: none;
-  background: #718199;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#65748c), to(#354865));
-  /* Saf4+, Chrome */
-
-  background-image: -webkit-linear-gradient(top, #65748c, #354865);
-  /* Chrome 10+, Saf5.1+ */
-
-  background-image: -moz-linear-gradient(top, #65748c, #354865);
-  /* FF3.6 */
-
-  background-image: -ms-linear-gradient(top, #65748c, #354865);
-  /* IE10 */
-
-  background-image: -o-linear-gradient(top, #65748c, #354865);
-  /* Opera 11.10+ */
-
-  background-image: linear-gradient(top, #65748c, #354865);
-  color: white;
-}
-.s-tumblr-button.ui-btn-hover-e a.ui-link-inherit {
-  color: white;
-}
-.s-tumblr-button.ui-btn-down-e {
-  border: none;
-  background: #5a687d;
-  background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, #5a687d), color-stop(0.7, #5a687d), color-stop(1, #4f5c6e));
-  /* Saf4+, Chrome */
-
-  background-image: -webkit-linear-gradient(bottom, #5a687d 0%, #5a687d 70%, #546174 100%);
-  /* Chrome 10+, Saf5.1+ */
-
-  background-image: -moz-linear-gradient(bottom, #5a687d 0%, #5a687d 70%, #546174 100%);
-  /* FF3.6 */
-
-  background-image: -ms-linear-gradient(bottom, #5a687d 0%, #5a687d 70%, #546174 100%);
-  /* IE10 */
-
-  background-image: -o-linear-gradient(bottom, #5a687d 0%, #5a687d 70%, #546174 100%);
-  /* Opera 11.10+ */
-
-  background-image: linear-gradient(bottom, #5a687d 0%, #5a687d 70%, #546174 100%);
-  color: white;
-}
-.s-tumblr-button.ui-btn-down-e a.ui-link-inherit {
-  color: white;
-}
-.s-facebook-button.ui-btn-up-e {
-  background: #507ab8;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#507ab8), to(#2e5998));
-  /* Saf4+, Chrome */
-
-  background-image: -webkit-linear-gradient(top, #507ab8, #2e5998);
-  /* Chrome 10+, Saf5.1+ */
-
-  background-image: -moz-linear-gradient(top, #507ab8, #2e5998);
-  /* FF3.6 */
-
-  background-image: -ms-linear-gradient(top, #507ab8, #2e5998);
-  /* IE10 */
-
-  background-image: -o-linear-gradient(top, #507ab8, #2e5998);
-  /* Opera 11.10+ */
-
-  background-image: linear-gradient(top, #507ab8, #2e5998);
-  color: white;
-}
-.s-facebook-button.ui-btn-up-e a.ui-link-inherit {
-  color: white;
-}
-.s-facebook-button.ui-btn-hover-e {
-  border: none;
-  background: #7496c7;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#6288bf), to(#3464ac));
-  /* Saf4+, Chrome */
-
-  background-image: -webkit-linear-gradient(top, #6288bf, #3464ac);
-  /* Chrome 10+, Saf5.1+ */
-
-  background-image: -moz-linear-gradient(top, #6288bf, #3464ac);
-  /* FF3.6 */
-
-  background-image: -ms-linear-gradient(top, #6288bf, #3464ac);
-  /* IE10 */
-
-  background-image: -o-linear-gradient(top, #6288bf, #3464ac);
-  /* Opera 11.10+ */
-
-  background-image: linear-gradient(top, #6288bf, #3464ac);
-  color: white;
-}
-.s-facebook-button.ui-btn-hover-e a.ui-link-inherit {
-  color: white;
-}
-.s-facebook-button.ui-btn-down-e {
-  border: none;
-  background: #507ab8;
-  background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, #507ab8), color-stop(0.7, #507ab8), color-stop(1, #456eaa));
-  /* Saf4+, Chrome */
-
-  background-image: -webkit-linear-gradient(bottom, #507ab8 0%, #507ab8 70%, #4872b1 100%);
-  /* Chrome 10+, Saf5.1+ */
-
-  background-image: -moz-linear-gradient(bottom, #507ab8 0%, #507ab8 70%, #4872b1 100%);
-  /* FF3.6 */
-
-  background-image: -ms-linear-gradient(bottom, #507ab8 0%, #507ab8 70%, #4872b1 100%);
-  /* IE10 */
-
-  background-image: -o-linear-gradient(bottom, #507ab8 0%, #507ab8 70%, #4872b1 100%);
-  /* Opera 11.10+ */
-
-  background-image: linear-gradient(bottom, #507ab8 0%, #507ab8 70%, #4872b1 100%);
-  color: white;
-}
-.s-facebook-button.ui-btn-down-e a.ui-link-inherit {
-  color: white;
-}
-.s-snapr-button.ui-btn-up-e {
-  background: #ffff00;
-  text-shadow: 0 1px 1px white;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#ffff00), to(#ffe400));
-  /* Saf4+, Chrome */
-
-  background-image: -webkit-linear-gradient(top, #ffff00, #ffe400);
-  /* Chrome 10+, Saf5.1+ */
-
-  background-image: -moz-linear-gradient(top, #ffff00, #ffe400);
-  /* FF3.6 */
-
-  background-image: -ms-linear-gradient(top, #ffff00, #ffe400);
-  /* IE10 */
-
-  background-image: -o-linear-gradient(top, #ffff00, #ffe400);
-  /* Opera 11.10+ */
-
-  background-image: linear-gradient(top, #ffff00, #ffe400);
-  color: #333333;
-}
-.s-snapr-button.ui-btn-up-e a.ui-link-inherit {
-  color: #333333;
-}
-.s-snapr-button.ui-btn-hover-e {
-  border: none;
-  background: #ffff33;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#ffff1a), to(#ffe71a));
-  /* Saf4+, Chrome */
-
-  background-image: -webkit-linear-gradient(top, #ffff1a, #ffe71a);
-  /* Chrome 10+, Saf5.1+ */
-
-  background-image: -moz-linear-gradient(top, #ffff1a, #ffe71a);
-  /* FF3.6 */
-
-  background-image: -ms-linear-gradient(top, #ffff1a, #ffe71a);
-  /* IE10 */
-
-  background-image: -o-linear-gradient(top, #ffff1a, #ffe71a);
-  /* Opera 11.10+ */
-
-  background-image: linear-gradient(top, #ffff1a, #ffe71a);
-  color: #333333;
-}
-.s-snapr-button.ui-btn-hover-e a.ui-link-inherit {
-  color: #333333;
-}
-.s-snapr-button.ui-btn-down-e {
-  border: none;
-  background: #ffff00;
-  background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, #ffff00), color-stop(0.7, #ffff00), color-stop(1, #e5e600));
-  /* Saf4+, Chrome */
-
-  background-image: -webkit-linear-gradient(bottom, #ffff00 0%, #ffff00 70%, #f0f000 100%);
-  /* Chrome 10+, Saf5.1+ */
-
-  background-image: -moz-linear-gradient(bottom, #ffff00 0%, #ffff00 70%, #f0f000 100%);
-  /* FF3.6 */
-
-  background-image: -ms-linear-gradient(bottom, #ffff00 0%, #ffff00 70%, #f0f000 100%);
-  /* IE10 */
-
-  background-image: -o-linear-gradient(bottom, #ffff00 0%, #ffff00 70%, #f0f000 100%);
-  /* Opera 11.10+ */
-
-  background-image: linear-gradient(bottom, #ffff00 0%, #ffff00 70%, #f0f000 100%);
-  color: #333333;
-}
-.s-snapr-button.ui-btn-down-e a.ui-link-inherit {
-  color: #333333;
-}
-/* Form Validation like on join page */
-.x-invalid[for] {
-  font-size: 12px;
-  line-height: 14px;
-  color: #666666;
-  padding: 4px;
-  margin: 0 8px 8px 8px;
-  display: block;
-  background-color: #ffff66;
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  border-radius: 4px;
-  position: relative;
-}
-.x-invalid[for]::after {
-  width: 0;
-  height: 0;
-  display: inline-block;
-  content: "&uarr;";
-  text-indent: -99999px;
-  vertical-align: top;
-  margin-top: 0;
-  margin-left: -6px;
-  border-left: 6px solid transparent;
-  border-right: 6px solid transparent;
-  border-bottom: 6px solid #ffff66;
-  position: absolute;
-  top: -6px;
-  left: 16px;
-}
-.x-invalid .ui-icon-validation {
-  display: block;
-  background-position: -63px -144px;
-}
-.ui-icon-validation {
-  display: none;
-  position: absolute;
-  right: 4px;
-  top: 8px;
-}
-.x-valid {
-  overflow: hidden;
-  /* if the spinning element overlaps other form elements can cause flicker */
-
-}
-.x-valid .ui-icon-validation {
-  display: block;
-  background-position: -243px -144px;
-}
-.x-validating {
-  overflow: hidden;
-  /* if the spinning element overlaps other form elements can cause flicker */
-
-}
-.x-validating .ui-icon-validation {
-  background-image: url('gfx/small-spinner-light.png') !important;
-  display: block;
-  background-image: url('../gfx/small-spinner-light.png') !important;
-  background-position: center!important;
-  background-repeat: no-repeat !important;
-  -webkit-transform: rotate(0deg) translateZ(0);
-  -webkit-transition-duration: 0ms;
-  -webkit-animation-name: loading;
-  -webkit-animation-duration: 1.2s;
-  -webkit-animation-iteration-count: infinite;
-  -webkit-animation-timing-function: linear;
-}
 .ui-checkbox .ui-icon {
   width: 40px;
   height: 40px;
@@ -3551,9 +3502,6 @@ div[data-role="header"] {
 }
 .ui-checkbox .ui-checkbox-off.ui-btn-active .ui-icon {
   background-position: -40px -240px;
-}
-.s-top-users .s-top-user-item {
-  display: inline-block;
 }
 .tumblr-item {
   min-height: 101px;
@@ -4373,7 +4321,7 @@ div.ps-carousel-item-loading {
     -webkit-background-size: 150px 180px;
     background-size: 150px 180px;
   }
-  .x-validating .ui-icon-validation,
+  .x-validating .ui-icon-check,
   .ui-icon.ui-icon-spinner,
   .ui-icon-spinner,
   .loading .ui-input-search .ui-input-clear .ui-icon-delete {

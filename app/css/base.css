@@ -84,6 +84,24 @@ div[data-role="content"] .s-inline-footer {
 .ui-content .s-inset-page-content .ui-listview-inset {
   margin-bottom: 16px;
 }
+a,
+a:link,
+a:visited,
+a:hover,
+a:active {
+  text-decoration: none;
+  color: #434748;
+}
+.s-underline {
+  text-decoration: underline;
+}
+.s-vertical-margins {
+  display: block;
+  margin: 16px 0;
+}
+.s-small-username {
+  font-size: 12px;
+}
 .s-wrap-content h1,
 .s-wrap-content h2,
 .s-wrap-content h3,
@@ -156,9 +174,6 @@ div[data-role="content"] .s-inline-footer {
   -moz-border-radius: 4px;
   border-radius: 4px;
 }
-.s-small-username {
-  font-size: 12px;
-}
 .s-invisible-submit-button {
   width: 0;
   height: 0;
@@ -166,6 +181,46 @@ div[data-role="content"] .s-inline-footer {
 }
 .ui-hide-label label {
   display: none;
+}
+.s-validate .x-invalid[for] {
+  font-size: 12px;
+  line-height: 14px;
+  color: #434748;
+  padding: 4px;
+  margin: 0 8px 8px 8px;
+  display: block;
+  background-color: #999999;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  position: relative;
+}
+.s-validate .ui-icon-check {
+  display: none;
+  position: absolute;
+  right: 4px;
+  top: 8px;
+}
+.s-validate .x-valid {
+  overflow: hidden;
+}
+.s-validate .x-valid .ui-icon-check {
+  display: block;
+}
+.s-validate .x-validating {
+  overflow: hidden;
+}
+.s-validate .x-validating .ui-icon-check {
+  display: block;
+  background-image: url('gfx/small-spinner-light.png') !important;
+  background-position: center!important;
+  background-repeat: no-repeat !important;
+  -webkit-transform: rotate(0deg) translateZ(0);
+  -webkit-transition-duration: 0ms;
+  -webkit-animation-name: loading;
+  -webkit-animation-duration: 1.2s;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
 }
 .ui-li-has-icon .ui-btn-inner a.ui-link-inherit,
 .ui-li-static.ui-li-has-icon {
@@ -325,7 +380,6 @@ div[data-role="content"] .s-inline-footer {
 .ui-bar .s-bar-right .ui-btn-inner {
   padding-right: 0;
 }
-/* Horizontally scrolling image stream components */
 .s-image-streams .x-stream {
   position: relative;
   margin-bottom: 8px;
@@ -1634,23 +1688,8 @@ div.ps-carousel-item-loading {
   background-position: 0 -144px;
   height: 32px;
 }
-a,
-a:link,
-a:visited,
-a:hover,
-a:active {
-  text-decoration: none;
-  color: #434748;
-}
 .hide {
   display: none;
-}
-.s-underline {
-  text-decoration: underline;
-}
-.s-vertical-margins {
-  display: block;
-  margin: 16px 0;
 }
 .ui-disabled {
   filter: alpha(opacity=100) !important;

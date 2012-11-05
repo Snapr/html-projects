@@ -4287,11 +4287,11 @@ h4 {
   top: -6px;
   left: 16px;
 }
-.x-invalid .ui-icon-validation {
+.x-invalid .ui-icon-check {
   display: block;
   background-position: -63px -144px;
 }
-.ui-icon-validation {
+.ui-icon-check {
   display: none;
   position: absolute;
   right: 4px;
@@ -4302,7 +4302,7 @@ h4 {
   /* if the spinning element overlaps other form elements can cause flicker */
 
 }
-.x-valid .ui-icon-validation {
+.x-valid .ui-icon-check {
   display: block;
   background-position: -243px -144px;
 }
@@ -4311,7 +4311,7 @@ h4 {
   /* if the spinning element overlaps other form elements can cause flicker */
 
 }
-.x-validating .ui-icon-validation {
+.x-validating .ui-icon-check {
   display: block;
   background-image: url('../gfx/small-spinner-light.png') !important;
   background-position: center!important;
@@ -8100,7 +8100,7 @@ body.x-browser-testing .ui-footer, body.x-browser-testing .ui-footer-fixed {
     -webkit-background-size: 150px 180px;
     background-size: 150px 180px;
   }
-  .x-validating .ui-icon-validation,
+  .x-validating .ui-icon-check,
   .ui-icon.ui-icon-spinner,
   .ui-icon-spinner,
   .loading .ui-input-search .ui-input-clear .ui-icon-delete {
