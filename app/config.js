@@ -1,5 +1,5 @@
-/*global _ define */
-define(['backbone'], function(Backbone) {
+/*global _ $ define */
+define(['backbone', '../theme/'+window.theme+'/config'], function(Backbone, theme_config) {
 var config_model = Backbone.Model.extend({
     defaults:{
         environment: 'dev',
@@ -49,13 +49,13 @@ var config_model = Backbone.Model.extend({
     },
     initialize: function(){
         var update_env = _.bind(function(){
-            this.set(window.theme.environments[this.get('environment')]);
+            this.set(theme_config.environments[this.get('environment')]);
             this.set('api_base', this.get('base_url') + "/api");
             this.set('avatar_url', this.get('base_url') + "/avatars");
             this.set('access_token_url', this.get('base_url') + "/ext/oauth/access_token/");
         }, this);
         this.bind('change:environment', update_env);
-        this.set(_.extend(this.defaults, window.theme.config));
+        this.set(_.extend(this.defaults, theme_config.config));
         update_env();
     }
 });

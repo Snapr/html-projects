@@ -1,5 +1,5 @@
 /*global _  define require */
-define(['config', 'backbone', 'auth', 'utils/local_storage', 'native', 'utils/alerts', 'utils/query'], function(config, Backbone, auth, local_storage, native, alerts, Query) {
+define(['config', 'backbone', 'auth', 'utils/local_storage', 'native', 'utils/alerts', 'utils/query', '../theme/'+window.theme+'/config'], function(config, Backbone, auth, local_storage, native, alerts, Query, theme_config) {
 
 function _make_route(file_name, name, template, extra_view_data){
     // returns a function that will do all that's needed to show a page when called
@@ -114,7 +114,7 @@ if(hash.length > 1){
 }
 
 var routers = Backbone.Router.extend({
-    pages: window.theme.pages,
+    pages: theme_config.pages,
 
     // build our page array into backbone routes
     initialize: function() {
