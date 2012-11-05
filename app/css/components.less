@@ -1380,7 +1380,7 @@ div.ps-carousel-item-loading
             padding: 6px;
             padding-left: 48px;
             position: relative;
-            color: @grayDarkBg;
+            color: @grayDark;
             .border-radius(8px);
             border: solid #ffcc00 4px;
             font-size: 12px;
@@ -1621,48 +1621,23 @@ div.ps-carousel-item-loading
 // @BUTTONS
 // -------------------------
 
-.s-twitter-button.ui-btn-up-e {
+.s-twitter-button.ui-btn-up-e,
+.s-twitter-button.ui-btn-hover-e,
+.s-twitter-button.ui-btn-down-e {
     background: @twitterBlue;
     color: white;
-    text-shadow: none;
+    text-shadow: 0 -1px 1px @gray;
     a.ui-link-inherit {
         color: white;
     }
 }
 
 .s-twitter-button.ui-btn-hover-e {
-    background: lighten(@twitterBlue, 10% );
-    color: white;
-    text-shadow: none;
-    a.ui-link-inherit {
-        color: white;
-    }
+    background: lighten(@twitterBlue, 10% ); 
 }
 
-.s-twitter-button.ui-btn-down-e {
-    background: @twitterBlue;
-    color: white;
-    a.ui-link-inherit {
-        color: white;
-    }
-}
-
-.s-tumblr-button.ui-btn-up-e {
-    background: @tumblrBlue;
-    color: white;
-    a.ui-link-inherit {
-        color: white;
-    }
-}
-
-.s-tumblr-button.ui-btn-hover-e {
-    background: lighten(@tumblrBlue, 10% );
-    color: white;
-    a.ui-link-inherit {
-        color: white;
-    }
-}
-
+.s-tumblr-button.ui-btn-up-e,
+.s-tumblr-button.ui-btn-hover-e,
 .s-tumblr-button.ui-btn-down-e {
     background: @tumblrBlue;
     color: white;
@@ -1670,10 +1645,17 @@ div.ps-carousel-item-loading
         color: white;
     }
 }
+.s-tumblr-button.ui-btn-hover-e {
+    background: lighten(@tumblrBlue, 10% );
+}
 
-.s-facebook-button.ui-btn-up-e {
+
+.s-facebook-button.ui-btn-up-e,
+.s-facebook-button.ui-btn-hover-e,
+.s-facebook-button.ui-btn-down-e{
     background: @facebookBlue;
     color: white;
+    text-shadow: 0 -1px 1px @grayDark;
     a.ui-link-inherit {
         color: white;
     }
@@ -1681,18 +1663,6 @@ div.ps-carousel-item-loading
 
 .s-facebook-button.ui-btn-hover-e {
     background: lighten(@facebookBlue, 10% );
-    color: white;
-    a.ui-link-inherit {
-        color: white;
-    }
-}
-
-.s-facebook-button.ui-btn-down-e {
-    background: @facebookBlue;
-    color: white;
-    a.ui-link-inherit {
-        color: white;
-    }
 }
 
 .s-snapr-button.ui-btn-up-e {
@@ -1717,6 +1687,51 @@ div.ps-carousel-item-loading
     color: #333333;
     a.ui-link-inherit {
         color: #333333;
+    }
+}
+
+
+
+// @LOGO-BUTTONS
+// -------------------------
+
+.s-logo-button{
+    .ui-btn-inner{
+        padding-top: 1px;
+        padding-bottom: 1px;
+        line-height: 36px;
+    }
+}
+.s-button-logo{
+    background-image: url('@{gfx}@{gfxService}');
+    height: 36px;
+    width: 150px;
+    display: inline-block;
+    overflow: hidden;
+    text-indent: -300px;
+    background-repeat: no-repeat;
+    &.s-twitter-logo{
+        width: 100px;
+        background-position: @gfxService-x @gfxService-y-twitter;
+    }
+    &.s-foursquare-logo{
+        width: 100px;
+        background-position: @gfxService-x @gfxService-y-foursquare;
+    }
+    &.s-tumblr-logo{
+        width: 102px;
+        background-position: @gfxService-x @gfxService-y-tumblr;
+        height: 32px;
+    }
+    &.s-facebook-logo{
+        width: 108px;
+        background-position: @gfxService-x @gfxService-y-facebook;
+        height: 32px;
+    }
+    &.s-snapr-logo{
+        width: 80px;
+        background-position: @gfxService-x @gfxService-y-snapr;
+        height: 32px;
     }
 }
 

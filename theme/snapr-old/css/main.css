@@ -5235,12 +5235,12 @@ over rides theme swatch styles for general blue / white style switch
   color: #343434;
 }
 /* Custom images in buttons */
-.logo-button .ui-btn-inner {
+.s-logo-button .ui-btn-inner {
   padding-top: 1px;
   padding-bottom: 1px;
   line-height: 36px;
 }
-.button-logo {
+.s-button-logo {
   background-image: url('../gfx/service-full-logos.png');
   height: 36px;
   width: 150px;
@@ -5249,25 +5249,25 @@ over rides theme swatch styles for general blue / white style switch
   text-indent: -300px;
   background-repeat: no-repeat;
 }
-.button-logo.twitter-logo {
+.s-button-logo.s-twitter-logo {
   width: 100px;
   background-position: 0 0px;
 }
-.button-logo.foursquare-logo {
+.s-button-logo.foursquare-logo {
   width: 100px;
   background-position: 0 -72px;
 }
-.button-logo.tumblr-logo {
+.s-button-logo.s-tumblr-logo {
   width: 102px;
   background-position: 0 -36px;
   height: 32px;
 }
-.button-logo.facebook-logo {
+.s-button-logo.s-facebook-logo {
   width: 108px;
   background-position: 0 -108px;
   height: 32px;
 }
-.button-logo.snapr-logo {
+.s-button-logo.s-snapr-logo {
   width: 80px;
   background-position: 0 -144px;
   height: 32px;
@@ -8093,7 +8093,7 @@ body.x-browser-testing .ui-footer, body.x-browser-testing .ui-footer-fixed {
     -webkit-background-size: 200px 60px;
     background-size: 200px 60px;
   }
-  .button-logo {
+  .s-button-logo {
     background-image: url('../gfx/retina/service-full-logos.png');
     -moz-background-size: 150px 180px;
     -o-background-size: 150px 180px;
