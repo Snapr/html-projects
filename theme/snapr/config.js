@@ -55,11 +55,7 @@ return {
     },
 
     pages: [
-        {
-            name: 'home',
-            view: theme_views + 'test',
-            template: theme_templates + 'test'
-        },
+        'home',
         'about',
         'about-snapr',
         'map',
