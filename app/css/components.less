@@ -83,10 +83,15 @@ div[data-role="content"]{
         white-space: normal!important;
         line-height: 140%;
     }
+    h1,h2,h3,h4{
+        margin:@padding * 2 @padding * 8 @padding * 2 0!important;
+        padding-left: @padding *2;
+    }
 
     p{
         margin:@padding * 2 @padding * 8 @padding * 2 0!important;
         text-transform: none!important;
+        padding-left: @padding *2;
     }
 }
 
@@ -1829,8 +1834,13 @@ div.ps-carousel-item-loading
 // MISC
 // -------------------------
 
-a{
+a,
+a:link,
+a:visited,
+a:hover,
+a:active{
     text-decoration: none;
+    color: @grayDark;
 }
 
 

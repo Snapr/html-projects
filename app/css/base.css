@@ -93,9 +93,17 @@ div[data-role="content"] .s-inline-footer {
   white-space: normal!important;
   line-height: 140%;
 }
+.s-wrap-content h1,
+.s-wrap-content h2,
+.s-wrap-content h3,
+.s-wrap-content h4 {
+  margin: 8px 32px 8px 0 !important;
+  padding-left: 8px;
+}
 .s-wrap-content p {
   margin: 8px 32px 8px 0 !important;
   text-transform: none!important;
+  padding-left: 8px;
 }
 .s-full-height {
   min-height: 400px;
@@ -1626,8 +1634,13 @@ div.ps-carousel-item-loading {
   background-position: 0 -144px;
   height: 32px;
 }
-a {
+a,
+a:link,
+a:visited,
+a:hover,
+a:active {
   text-decoration: none;
+  color: #434748;
 }
 .hide {
   display: none;
