@@ -25,7 +25,7 @@ function _make_route(file_name, name, template, extra_view_data){
                 config.get('current_view').trigger('deactivate');
                 console.groupEnd(config.get('current_view').name);
             }
-            console.group(template);
+            console.group(name);
 
             var query = get_query_params(query_string),
                 options = _.extend({
