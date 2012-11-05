@@ -11,7 +11,7 @@
 div[data-role="header"]{
     min-height: @topBarHeight; // So Topbar doesn't collapse without heading
 
-    // Add Centered Button Option 
+    // Add Centered Button Option
     .ui-btn-center{
         position: absolute;
         top: @padding;
@@ -19,7 +19,7 @@ div[data-role="header"]{
         text-align: center;
     }
 
-    // Line Up Multiple buttons 
+    // Line Up Multiple buttons
     .ui-btn-center{
         .ui-btn,
         .ui-controlgroup{
@@ -82,7 +82,7 @@ div[data-role="content"]{
     h1,h2,h3,h4,p,a{
         white-space: normal!important;
     }
-  
+
     p{
         margin:@padding * 2 @padding * 8 @padding * 2 0!important;
         text-transform: none!important;
@@ -90,7 +90,7 @@ div[data-role="content"]{
 }
 
 
-// Set page element to full height if you need fullscreen elements 
+// Set page element to full height if you need fullscreen elements
 .s-full-height{
     min-height: 400px;
     .box-sizing(border-box);
@@ -167,7 +167,7 @@ div[data-role="content"]{
 // -------------------------
 
 .s-small-username{
-    font-size: @fontSizeSmall; 
+    font-size: @fontSizeSmall;
 }
 
 
@@ -192,7 +192,7 @@ div[data-role="content"]{
 // @LISTVIEWS
 // -------------------------
 
-.ui-li-has-icon .ui-btn-inner a.ui-link-inherit, 
+.ui-li-has-icon .ui-btn-inner a.ui-link-inherit,
 .ui-li-static.ui-li-has-icon {
     min-height: @avatarSize;
     padding-left: @avatarSize + @padding * 4;
@@ -642,12 +642,12 @@ div[data-role="content"]{
                     margin: 0 auto;
                     max-width: 512px;
                     margin: 0 0 @padding * 2 0;
-                    
+
                 }
                 audio {
                     margin: 0 0 @padding * 2 0;
                 }
-             
+
                 .s-tumblr-body{
                     margin: @padding;
                 }
@@ -661,15 +661,15 @@ div[data-role="content"]{
                         padding: 0;
                         list-style: none;
                     }
-                    
+
                 }
             }
-            
-           
+
+
         }
         > article:last-child {
             border-bottom: none;
-        } 
+        }
     }
 }
 
@@ -689,7 +689,7 @@ div[data-role="content"]{
     display: block;
 }
 
-.ui-icon.tumblr-icon{   
+.ui-icon.tumblr-icon{
     background-image: url('@{gfx}@{gfxTumblr}');
     width: @gfxTumblr-grid!important;
     height: @gfxTumblr-grid!important;
@@ -816,10 +816,10 @@ div[data-role="content"]{
             vertical-align: middle;
             display: inline-block;
             font-size: @fontSizeSmall;
-        } 
+        }
         .s-username{
             font-size: @fontSizeUsername;
-        }    
+        }
     }
     .s-image-item{
         position: relative;
@@ -925,7 +925,7 @@ div[data-role="content"]{
 #feed{
     .s-upload-progress-header {
         display: none;
-    } 
+    }
 }
 
 
@@ -1098,7 +1098,7 @@ div[data-role="content"]{
     height: 22px;
     display: inline-block;
     .ui-icon{
-        background-image: url('@{gfx}@{gfxShareSmall}');                             
+        background-image: url('@{gfx}@{gfxShareSmall}');
         width: @gfxShareSmall-grid;
         height: @gfxShareSmall-grid;
         position: relative!important;
@@ -1188,7 +1188,7 @@ div[data-role="content"]{
         .s-show-share-settings{
             display: block;
         }
-    }   
+    }
 }
 
 
@@ -1391,7 +1391,7 @@ div.ps-carousel-item-loading
             margin-left: 48px;
         }
     }
-    #x-map-disambiguation{
+    .s-disambiguation{
         position: absolute;
         display: none;
         top: @padding * 2;
@@ -1508,7 +1508,7 @@ div.ps-carousel-item-loading
     p{
         padding-top:@padding;
         margin: 0;
-    }   
+    }
     .s-spot-phone,
     .s-spot-address{
         padding-top:@padding ;
