@@ -1497,13 +1497,15 @@ div.ps-carousel-item-loading {
   -webkit-box-shadow: inset 0px -2px 100px #ffe400;
   box-shadow: inset 0px -2px 100px #ffe400;
 }
-.ui-dialog.s-tumblr-bg {
+.ui-dialog.s-tumblr-bg,
+.ui-page.s-tumblr-bg {
   background-color: #718199 !important;
   -moz-box-shadow: inset 0px -2px 100px #2c3c54;
   -webkit-box-shadow: inset 0px -2px 100px #2c3c54;
   box-shadow: inset 0px -2px 100px #2c3c54;
 }
-.ui-dialog.s-twitter-bg {
+.ui-dialog.s-twitter-bg,
+.ui-page.s-twitter-bg {
   background-color: #7ac5de !important;
   -moz-box-shadow: inset 0px -2px 100px #309dc2;
   -webkit-box-shadow: inset 0px -2px 100px #309dc2;
@@ -1540,6 +1542,7 @@ div.ps-carousel-item-loading {
 .s-tumblr-button.ui-btn-down-e {
   background: #5a687d;
   color: white;
+  text-shadow: 0 -1px 1px #434748;
 }
 .s-tumblr-button.ui-btn-up-e a.ui-link-inherit,
 .s-tumblr-button.ui-btn-hover-e a.ui-link-inherit,

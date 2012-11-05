@@ -1683,12 +1683,14 @@ div.ps-carousel-item-loading
     .box-shadow(inset 0px -2px 100px @snaprYellowTint);
 }
 
-.ui-dialog.s-tumblr-bg{
+.ui-dialog.s-tumblr-bg,
+.ui-page.s-tumblr-bg{
     background-color: lighten(@tumblrBlue, 10%)!important;
     .box-shadow(inset 0px -2px 100px @tumblrBlueTint);
 }
 
-.ui-dialog.s-twitter-bg{
+.ui-dialog.s-twitter-bg,
+.ui-page.s-twitter-bg{
     background-color: lighten(@twitterBlueTint, 20%)!important;
     .box-shadow(inset 0px -2px 100px @twitterBlueTint);
 }
@@ -1727,6 +1729,7 @@ div.ps-carousel-item-loading
 .s-tumblr-button.ui-btn-down-e {
     background: @tumblrBlue;
     color: white;
+    text-shadow: 0 -1px 1px @grayDark;
     a.ui-link-inherit {
         color: white;
     }
