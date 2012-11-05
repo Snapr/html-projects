@@ -56,12 +56,12 @@
     background: transparent;
     color: white;
     cursor: pointer;
-    text-shadow: 0 -1px 1px @shadowLightOnDark;
+    text-shadow: 0 -1px 1px @shadowLighter;
 }
 
 .ui-btn-up-a {
     .button-font-bold();
-    border: @borderMediumOnDark;
+    border: @borderGrayDark;
     background: none;
     background-color: @black;
     color: @grayLight;
@@ -87,7 +87,7 @@
 .ui-btn-down-a,
 .ui-btn-active-a {
     .button-font-bold();
-    border: @borderLightOnDark;
+    border: @borderGray;
     background: none;
     background-color: @black;
     color: @white;
@@ -116,7 +116,7 @@
     .ui-input-search,
     .s-map-loading {
         border: none;
-        border-bottom: @borderLightOnDark;
+        border-bottom: @borderGray;
         background-color: @grayDarkBgTint;
         .box-shadow(inset 0 3px 20px @shadowDarkOnDark);
         &.ui-shadow{
@@ -130,7 +130,7 @@
     .ui-btn-down-a,
     .ui-btn-active-a   {
         border: none;
-        border-bottom: @borderMediumOnDark;
+        border-bottom: @borderGrayDark;
         background: none;
         background-color: @grayDarkBg;
         .box-shadow(inset 0 3px 20px @shadowDarkOnDark);
@@ -173,7 +173,7 @@
 
 .ui-btn-up-b,
 .ui-btn-up-b[data-rel="back"]::before {
-    border: @borderDarkOnDark;
+    border: @borderBlack;
     background: @grayDarkBg;
     .button-font-small();
     color: @gray;
@@ -187,7 +187,7 @@
         color: @gray;
     }
     &.ui-shadow{
-        .box-shadow( 0 1px 0 @shadowLightOnDark);
+        .box-shadow( 0 1px 0 @shadowLighter);
     }
     &.ui-btn-active{
         background: none;
@@ -205,7 +205,7 @@
 .ui-btn-active-b,
 .ui-btn-hover-b[data-rel="back"]::before,
 .ui-btn-active-b[data-rel="back"]::before{
-    border: @borderDarkOnDark;
+    border: @borderBlack;
     background: @grayDarkBg;
     .button-font-small();
     color: lighten(@gray, 3%);
@@ -220,7 +220,7 @@
         color: @gray;
     }
     &.ui-shadow{
-        .box-shadow(0 1px 0 @shadowLightOnDark);
+        .box-shadow(0 1px 0 @shadowLighter);
     }
     &.ui-btn-active{
         background: none;
@@ -236,7 +236,7 @@
 
 .ui-btn-down-b,
 .ui-btn-down-b[data-rel="back"]::before{
-    border: @borderDarkOnDark;
+    border: @borderBlack;
     background: @grayDarkBg;
     .button-font-small();
     color: darken(@gray, 3%);
@@ -250,9 +250,9 @@
         color: @gray;
     }
     &.ui-shadow{
-        -moz-box-shadow: 0 1px 0 @shadowLightOnDark;
-        -webkit-box-shadow: 0 1px 0 @shadowLightOnDark;
-        box-shadow: 0 1px 0 @shadowLightOnDark;
+        -moz-box-shadow: 0 1px 0 @shadowLighter;
+        -webkit-box-shadow: 0 1px 0 @shadowLighter;
+        box-shadow: 0 1px 0 @shadowLighter;
     }
     &.ui-btn-active{
         background: none;
@@ -342,16 +342,16 @@
     background: none;
     background-color: @grayLighter;
     background-image: @gfxBgLight;
-    border: @borderMediumOnLight;
+    border: @borderGrayLighter;
     color: @grayDarker;
-    text-shadow: 0 1px 1px @shadowLightOnLight;      
+    text-shadow: 0 1px 1px @shadowWhite;      
 }
 .ui-dialog.ui-overlay-c{
     background: none;
     background-color: @grayLighter!important;
     background-image: @gfxBgLight!important;
-    border: @borderMediumOnLight;
-    text-shadow: 0 1px 1px @shadowLightOnLight;
+    border: @borderGrayLighter;
+    text-shadow: 0 1px 1px @shadowWhite;
     border:none;
 }
 
@@ -367,7 +367,7 @@
     }
     .ui-header{
         color: @grayDark;
-        text-shadow: @shadowLightOnLight 0px 1px 1px;
+        text-shadow: @shadowWhite 0px 1px 1px;
     }
     .ui-link,
     .ui-link:visited {
@@ -386,13 +386,13 @@
         height: 0;
         clear: both;
         border: none;
-        border-bottom: @borderLightOnLight;
-        border-top: @borderMediumOnLight;
+        border-bottom: @borderWhite;
+        border-top: @borderGrayLighter;
         font-size: 1px;
         line-height: 0;
         overflow: visible;
         background-color: transparent;
-        color: @shadowMediumOnLight;
+        color: @shadowGray;
     }
     #x-no-results{
         .s-map-image-alert {
@@ -407,7 +407,7 @@
         .ui-btn-hover-c,
         .ui-btn-down-c,
         .ui-btn-active-c   {
-            border: @borderDarkOnLight;
+            border: @borderGrayLight;
             &.ui-shadow{
                 .box-shadow(none);
             }
@@ -423,7 +423,7 @@
             position: relative;
             border: none;
             color: white;
-            text-shadow: @shadowMediumOnDark 0px -1px 0px;
+            text-shadow: @shadowDarker 0px -1px 0px;
 
         }
         .ui-btn-up-c.system-bar{
@@ -440,13 +440,13 @@
         }
     }
     .ui-btn{
-        text-shadow: 0 1px 1px @shadowMediumOnLight;
+        text-shadow: 0 1px 1px @shadowGray;
     }
 
     .message{
         .border-radius(@cornersPage);
         padding: @paddingElement;
-        border: @borderMediumOnLight;
+        border: @borderGrayLighter;
         font-size: @fontSizeSmall;
     }
 }
@@ -497,7 +497,7 @@
         color: @grayDarker;
     }
     &.ui-shadow {
-        .box-shadow(0 1px 4px lighten(@shadowLighterOnLight, 20%));
+        .box-shadow(0 1px 4px lighten(@shadowDark, 20%));
     }
 
     &.s-arrow-d-left::after{
@@ -512,13 +512,13 @@
 .trans-bg{
     .ui-btn-up-c {
         border: none;
-        border-bottom: @borderLightOnLight;
+        border-bottom: @borderWhite;
         background: none;
         background-color: @white;
 
-        .box-shadow(inset 0 1px 4px @shadowMediumOnLight);
+        .box-shadow(inset 0 1px 4px @shadowGray);
         &.ui-shadow{
-            .box-shadow(inset 0 1px 4px @shadowMediumOnLight);
+            .box-shadow(inset 0 1px 4px @shadowGray);
         }
         .ui-btn-inner{
             border:none;
@@ -530,13 +530,13 @@
     .ui-btn-down-c,
     .ui-btn-active-c {
         border: none;
-        border-bottom: @borderLightOnLight;
+        border-bottom: @borderWhite;
         background: none;
         background-color: darken(@white, 5%);
 
-        .box-shadow(inset 0 1px 4px @shadowMediumOnLight);
+        .box-shadow(inset 0 1px 4px @shadowGray);
         &.ui-shadow{
-            .box-shadow(inset 0 1px 4px @shadowMediumOnLight);
+            .box-shadow(inset 0 1px 4px @shadowGray);
         }
         .ui-btn-inner{
             border:none;
@@ -564,7 +564,7 @@
         border: none!important;
         background: none;
         &.ui-li{
-            border-top: @borderMediumOnLight!important;
+            border-top: @borderGrayLighter!important;
             margin-bottom: 0;
             &:first-child{
                 border-top: none!important;
@@ -588,7 +588,7 @@
     &.venue-list,
     &.map-list{
         .ui-btn.ui-li:first-child{
-            border-top: @borderMediumOnLight!important;
+            border-top: @borderGrayLighter!important;
         }
     }
 
@@ -678,7 +678,7 @@
     background: @black;
     background-image: @gfxBgDark;
     border-radius: @cornersPage;
-    border-top: @borderLightOnDark;
+    border-top: @borderGray;
     .box-sizing(border-box);
 }
 
@@ -705,13 +705,13 @@
         height: 0;
         clear: both;
         border: none;
-        border-bottom: @borderLightOnLight;
-        border-top: @borderMediumOnLight;
+        border-bottom: @borderWhite;
+        border-top: @borderGrayLighter;
         font-size: 1px;
         line-height: 0;
         overflow: visible;
         background-color: transparent;
-        color: @shadowMediumOnLight;
+        color: @shadowGray;
     }
 
     .ui-listview{
@@ -798,7 +798,7 @@
             margin: 0;
             border: none;
             background:none;
-            border-top: @borderMediumOnLight;
+            border-top: @borderGrayLighter;
 
             &:first-child{
                 border: none;
@@ -888,13 +888,13 @@
         height: 0;
         clear: both;
         border: none;
-        border-bottom: @borderLightOnLight;
-        border-top: @borderMediumOnLight;
+        border-bottom: @borderWhite;
+        border-top: @borderGrayLighter;
         font-size: 1px;
         line-height: 0;
         overflow: visible;
         background-color: transparent;
-        color: @shadowMediumOnLight;
+        color: @shadowGray;
     }
 
     .ui-listview{
@@ -951,7 +951,7 @@
         color: @grayDarker;
     }
     &.ui-shadow {
-        .box-shadow(0 1px 4px lighten(@shadowLighterOnLight, 20%));
+        .box-shadow(0 1px 4px lighten(@shadowDark, 20%));
     }
 }
 

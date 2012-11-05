@@ -67,7 +67,7 @@ h4{
     padding: @padding * 2;
     background-color: @snaprYellow;
     .border-radius(@corners);
-    border-bottom: @borderLightOnDark;
+    border-bottom: @borderGray;
 }
 
 
@@ -131,7 +131,7 @@ h4{
                 background-color: @grayDarkBgTint;
                 .box-shadow(inset 0px 2px 4px 2px rgba(0, 0, 0, .1))!important;
                 color: white;
-                text-shadow: @shadowMediumOnDark 0px 1px 1px;
+                text-shadow: @shadowDarker 0px 1px 1px;
 
             }
         }
@@ -157,7 +157,7 @@ h4{
             .ui-btn-text {
                 font-size: 12px;
                 text-transform: none;
-                text-shadow: @shadowMediumOnDark 0px -1px 1px;
+                text-shadow: @shadowDarker 0px -1px 1px;
 
             }
 
@@ -195,7 +195,7 @@ h4{
                 min-height: @fontSizeSmall;
                 font-size: @fontSizeSmall;
                 color: @grayDarkBgTint;
-                text-shadow: @shadowLightOnLight;
+                text-shadow: @shadowWhite;
             }
 
             .activity-count{
@@ -254,7 +254,7 @@ h4{
     .ui-navbar{
         margin: 0 -@padding * 2;
         border: none;
-        border-top: @borderLightOnLight;
+        border-top: @borderWhite;
         .border-top-radius (@cornersPage);
         .ui-btn{
             .ui-btn-text{
@@ -266,7 +266,7 @@ h4{
             .ui-btn-text{
                 position: relative;
                 top: -4px;
-                text-shadow: @shadowLightOnLight 0px 1px 0px;
+                text-shadow: @shadowWhite 0px 1px 0px;
                 .button-font-bold();
                 font-size: @fontSizeUsername;
             }
@@ -607,7 +607,7 @@ over rides theme swatch styles for general blue / white style switch
 .ui-slider-switch{
 
     .border-radius(@cornersRound);
-    border: @borderMediumOnLight;
+    border: @borderGrayLighter;
     background: white;
 
     .ui-slider-label{
@@ -645,7 +645,7 @@ over rides theme swatch styles for general blue / white style switch
 
 }
 .switch-setting{
-    border-bottom: @borderMediumOnLight;
+    border-bottom: @borderGrayLighter;
     margin: 0;
     padding-bottom: @paddingElement;
     margin-bottom: @paddingElement;
@@ -917,9 +917,9 @@ over rides theme swatch styles for general blue / white style switch
         margin: 5px 0 0 -40px;
         left: 50%;
         position: absolute;
-        -moz-box-shadow: 0 1px 0 @shadowLightOnDark;
-        -webkit-box-shadow: 0 1px 0 @shadowLightOnDark;
-        box-shadow: 0 1px 0 @shadowLightOnDark;
+        -moz-box-shadow: 0 1px 0 @shadowLighter;
+        -webkit-box-shadow: 0 1px 0 @shadowLighter;
+        box-shadow: 0 1px 0 @shadowLighter;
         .ui-checkbox label,
         .ui-radio label{
             font-size: @fontSizeSmall;
@@ -934,7 +934,7 @@ over rides theme swatch styles for general blue / white style switch
     .ui-collapsible-heading{
         .ui-btn{
             margin-top:1px;
-            border-bottom: @borderMediumOnLight;
+            border-bottom: @borderGrayLighter;
             .ui-btn-inner{
                 padding: 16px 40px 16px 16px;
             }
@@ -961,12 +961,12 @@ over rides theme swatch styles for general blue / white style switch
         .ui-btn{
             .box-shadow( none);
             .border-radius(@cornersRound);
-            border: @borderMediumOnLight;
+            border: @borderGrayLighter;
             
         }
         &.ui-body-d{
             border: none;
-            border-bottom: @borderMediumOnLight;
+            border-bottom: @borderGrayLighter;
         }
     }
 }
