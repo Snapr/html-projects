@@ -871,8 +871,8 @@
 
 .ui-body-e{
     &.ui-navbar{
-        background: @green;
-        .linear-gradient(@green, @green-tint);
+        background: @yellow;
+        .linear-gradient(@yellow, @yellow-tint);
         .ui-btn{
             background: none!important;
         }
@@ -880,14 +880,14 @@
 }
 
 .ui-bar-e{
-    background: @green;
-    .linear-gradient(@green, @green-tint);
+    background: @yellow;
+    .linear-gradient(@yellow, @yellow-tint);
 
     &.small-s-arrow-d-left::after{
-        .arrow-down(6px, @green-tint, 24px, 0);
+        .arrow-down(6px, @yellow-tint, 24px, 0);
     }
     &.small-top-right-arrow::after{
-        .arrow-left(8px, @green-tint, 100%, 0);
+        .arrow-left(8px, @yellow-tint, 100%, 0);
     }
     &.small-top-right-arrow::after{
         .arrow-left(8px, @yellow-tint, 100%, 0);
@@ -923,7 +923,7 @@
     background: none;
     color: @grayMediumOnLight;
     div[data-role="content"]{
-        background-color: @green;
+        background-color: @yellow;
         background-image: none;
         border-radius: @cornersPage;
     }
@@ -961,8 +961,8 @@
 
 .ui-btn-up-e {
     border: none;
-    background: @green;
-    .linear-gradient(@green, @green-tint);
+    background: @yellow;
+    .linear-gradient(@yellow, @yellow-tint);
     color: @white;
     text-shadow: @shadowDarkOnDark 0px -1px 1px;
     
@@ -972,17 +972,17 @@
         color: @grayDarkOnLight;
     }
     &.s-arrow-d-left::after{
-        .arrow-down(@arrow-size, @green-tint, @arrow-offset, 3px);
+        .arrow-down(@arrow-size, @yellow-tint, @arrow-offset, 3px);
     }
     &.bottom-centered-arrow::after{
-        .arrow-up(@arrow-size, @green, 50%, 3px);
+        .arrow-up(@arrow-size, @yellow, 50%, 3px);
     }
 }
 
 .ui-btn-hover-e {
     border: none;
-    background: lighten(@green, 10% );
-    .linear-gradient(lighten(@green, 10%), lighten(@green-tint, 10%));
+    background: lighten(@yellow, 10% );
+    .linear-gradient(lighten(@yellow, 10%), lighten(@yellow-tint, 10%));
     color: @white;
     text-shadow: @shadowDarkOnDark 0px -1px 1px;
     .button-font-bold();
@@ -991,17 +991,17 @@
         color: @grayDarkOnLight;
     }
     &.s-arrow-d-left::after{
-        .arrow-down(@arrow-size, lighten(@green-tint, 10% ), @arrow-offset, 3px);
+        .arrow-down(@arrow-size, lighten(@yellow-tint, 10% ), @arrow-offset, 3px);
     }
     &.bottom-centered-arrow::after{
-        .arrow-up(@arrow-size, lighten(@green, 10%), 50%, 3px);
+        .arrow-up(@arrow-size, lighten(@yellow, 10%), 50%, 3px);
     }
 }
 
 .ui-btn-down-e {
     border: none;
-    background: @green;
-    .pressed-gradient(@green, 3%);
+    background: @yellow;
+    .pressed-gradient(@yellow, 3%);
     color: @white;
     text-shadow: @shadowDarkOnDark 0px -1px 1px;
     .button-font-bold();
@@ -1013,10 +1013,10 @@
         .box-shadow(0 1px 4px lighten(@shadowLighterOnLight, 20%));
     }
     &.s-arrow-d-left::after{
-        .arrow-down(@arrow-size, @green, @arrow-offset, 3px);
+        .arrow-down(@arrow-size, @yellow, @arrow-offset, 3px);
     }
     &.bottom-centered-arrow::after{
-        .arrow-up(@arrow-size, darken(@green, 3%), 50%, 3px);
+        .arrow-up(@arrow-size, darken(@yellow, 3%), 50%, 3px);
     }
 }
 

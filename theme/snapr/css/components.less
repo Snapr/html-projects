@@ -36,9 +36,9 @@
 }
 
 .light-text{
-    color: @grayLightOnLight;
+    color: @gray;
     a{
-        color: @grayLightOnLight!important;
+        color: @gray!important;
     }
 }
 
@@ -47,20 +47,20 @@ h4{
     font-family: @font-special;
     font-size: @fontSizeUsername;
     font-weight: normal!important;
-    color: @grayDarkOnLight;
+    color: @grayDarker;
 }
 
 .username{
     font-family: @font;
     font-size: @fontSizeUsername;
     font-weight: bold;
-    color: @grayDarkOnLight;
+    color: @grayDarker;
 }
 
 .s-small-username{
     font-size: 11px;
     font-weight: normal;
-    color: @grayMediumOnLight;
+    color: @grayDark;
 }
 
 .warning-message{
@@ -109,7 +109,7 @@ h4{
         .darkGrad();
         .border-bottom-radius(@cornersPage);
         padding: 3px 0;
-        border-top: solid lighten(@grayDark, 20%) 1px;
+        border-top: solid lighten(@grayDarkBg, 20%) 1px;
 
         .ui-btn{
             border: none;
@@ -121,14 +121,14 @@ h4{
             }
 
             &.ui-btn-hover-b{
-                background: lighten(@grayDark, 2%);
-                color: @grayLightOnDark;
+                background: lighten(@grayDarkBg, 2%);
+                color: @grayLight;
             }
 
             &.ui-btn-down-b,
             &.ui-btn-active{
-                background: @grayDark;
-                background-color: @grayDark-tint;
+                background: @grayDarkBg;
+                background-color: @grayDarkBgTint;
                 .box-shadow(inset 0px 2px 4px 2px rgba(0, 0, 0, .1))!important;
                 color: white;
                 text-shadow: @shadowMediumOnDark 0px 1px 1px;
@@ -194,7 +194,7 @@ h4{
                 line-height: @fontSizeSmall;
                 min-height: @fontSizeSmall;
                 font-size: @fontSizeSmall;
-                color: @grayDark-tint;
+                color: @grayDarkBgTint;
                 text-shadow: @shadowLightOnLight;
             }
 
@@ -235,7 +235,7 @@ h4{
         }
     }
     .info{
-        background-color: @grayLight;
+        background-color: @grayLightBg;
         margin: @padding * 2 0;
         padding: @padding * 2;
         .border-radius(@corners);
@@ -244,21 +244,7 @@ h4{
 }
 
 
-// FOLLOW BUTTONS
-// ----------------------------
 
-.x-follow-btn{
-    .ui-btn-inner{
-        position: relative;
-    }
-
-    .ui-icon{
-        background-image: url('@{gfx}@{gfxIcons}');
-        position: absolute;
-        right: 0;
-        top: 0;
-    }
-}
 
 
 // NAV BARS
@@ -337,7 +323,7 @@ h4{
 
 .s-twitter-button.ui-btn-up-e {
     background: @twitterBlue;
-    .linear-gradient(@twitterBlue, @twitterBlue-tint);
+    .linear-gradient(@twitterBlue, @twitterBlueTint);
     color: white;
     a.ui-link-inherit {
         color: white;
@@ -347,7 +333,7 @@ h4{
 .s-twitter-button.ui-btn-hover-e {
     border: none;
     background: lighten(@twitterBlue, 10% );
-    .linear-gradient(lighten(@twitterBlue, 5%), lighten(@twitterBlue-tint, 5%));
+    .linear-gradient(lighten(@twitterBlue, 5%), lighten(@twitterBlueTint, 5%));
     color: white;
     a.ui-link-inherit {
         color: white;
@@ -366,7 +352,7 @@ h4{
 
 .s-tumblr-button.ui-btn-up-e {
     background: @tumblrBlue;
-    .linear-gradient(@tumblrBlue, @tumblrBlue-tint);
+    .linear-gradient(@tumblrBlue, @tumblrBlueTint);
     color: white;
     a.ui-link-inherit {
         color: white;
@@ -376,7 +362,7 @@ h4{
 .s-tumblr-button.ui-btn-hover-e {
     border: none;
     background: lighten(@tumblrBlue, 10% );
-    .linear-gradient(lighten(@tumblrBlue, 5%), lighten(@tumblrBlue-tint, 5%));
+    .linear-gradient(lighten(@tumblrBlue, 5%), lighten(@tumblrBlueTint, 5%));
     color: white;
     a.ui-link-inherit {
         color: white;
@@ -395,7 +381,7 @@ h4{
 
 .s-facebook-button.ui-btn-up-e {
     background: @facebookBlue;
-    .linear-gradient(@facebookBlue, @facebookBlue-tint);
+    .linear-gradient(@facebookBlue, @facebookBlueTint);
     color: white;
     a.ui-link-inherit {
         color: white;
@@ -405,7 +391,7 @@ h4{
 .s-facebook-button.ui-btn-hover-e {
     border: none;
     background: lighten(@facebookBlue, 10% );
-    .linear-gradient(lighten(@facebookBlue, 5%), lighten(@facebookBlue-tint, 5%));
+    .linear-gradient(lighten(@facebookBlue, 5%), lighten(@facebookBlueTint, 5%));
     color: white;
     a.ui-link-inherit {
         color: white;
@@ -425,7 +411,7 @@ h4{
 .s-snapr-button.ui-btn-up-e {
     background: @snaprYellow;
     text-shadow: 0 1px 1px white;
-    .linear-gradient(@snaprYellow, @snaprYellow-tint);
+    .linear-gradient(@snaprYellow, @snaprYellowTint);
     color: #333333;
     a.ui-link-inherit {
         color: #333333;
@@ -435,7 +421,7 @@ h4{
 .s-snapr-button.ui-btn-hover-e {
     border: none;
     background: lighten(@snaprYellow, 10% );
-    .linear-gradient(lighten(@snaprYellow, 5%), lighten(@snaprYellow-tint, 5%));
+    .linear-gradient(lighten(@snaprYellow, 5%), lighten(@snaprYellowTint, 5%));
     color: #333333;
     a.ui-link-inherit {
         color: #333333;
@@ -459,15 +445,15 @@ h4{
 .x-invalid[for]{
     font-size: @fontSizeSmall;
     line-height: 14px;
-    color: @grayMediumOnLight;
+    color: @grayDark;
     padding: 4px;
     margin: 0 @paddingElement @paddingElement @paddingElement;
     display: block;
-    background-color: lighten(@green, 20%);
+    background-color: lighten(@yellow, 20%);
     .border-radius(@cornersLessRound);
     position: relative;
     &::after{
-        .arrow-up(6px, lighten(@green, 20%), 16px, 0)
+        .arrow-up(6px, lighten(@yellow, 20%), 16px, 0)
     }
 }
 .x-invalid .ui-icon-validation{
@@ -567,12 +553,12 @@ h4{
             font-size: @fontSizeUsername;
             small{
                 display: inline-block;
-                color: @grayMediumOnLight;
+                color: @grayDark;
             }
         }
         p{
             margin: @padding * 1.5 @padding @padding @padding;
-            color: @grayMediumOnLight;
+            color: @grayDark;
             font-family: @fontSerif;
             font-style: italic;
             font-size: @fontSizeSmall;
@@ -580,7 +566,7 @@ h4{
         .tumblr-details{
             position: relative;
             font-size: @fontSizeSmall;
-            color:  @grayLightOnLight;
+            color:  @gray;
             line-height: @gfxTumblr-grid;
             height: @gfxTumblr-grid;
             padding-right:@gfxTumblr-grid;
@@ -682,11 +668,11 @@ over rides theme swatch styles for general blue / white style switch
     margin-left: -@padding * 2;
     margin-right: -@padding * 2;
     position: relative;
-    background-color: @grayLight;
+    background-color: @grayLightBg;
     .border-top-radius (@cornersPage);
     .box-shadow(inset 5px 0 20px rgba(0, 0, 0, 0.2));
     a{
-        color: @grayDark;  
+        color: @grayDarkBg;  
     }
 }
 
@@ -831,7 +817,7 @@ over rides theme swatch styles for general blue / white style switch
 .ui-header{
     background: none;
     border: none;
-    color: @grayMediumOnDark;
+    color: @gray;
     text-shadow: @shadowDarkOnDark 0px -1px 1px;
     height: @topBarHeight;
     overflow: hidden;
@@ -960,13 +946,13 @@ over rides theme swatch styles for general blue / white style switch
             .ui-icon-minus{background-position: @gfxIcons-arrow-u-x @gfxIcons-y-med;}
         }
         .ui-btn-up-c{
-            background-color: @grayLight;
+            background-color: @grayLightBg;
             background-image:@gfxBgLight;
             .button-font-light();
         }
         .ui-btn-hover-c{
             background-image: none;
-            background-color: lighten(@grayLight, .7%);
+            background-color: lighten(@grayLightBg, .7%);
             .button-font-light();
             
         }
@@ -1115,7 +1101,7 @@ different markup format between collapsible headings and list links */
     .ps-caption-content{
         font-family: @font;
         font-size: @fontSize;
-        color: @grayLightOnDark;
+        color: @grayLight;
         text-align: left;
         padding: 0 24px 0 32px;
         background-image: url('../gfx/gallery-quote.png');

@@ -39,12 +39,12 @@
         
     }
     .s-image-streams .x-stream .s-load-more-inline{
-        background-color: darken(@black-tint, 5%);
+        background-color: darken(@blackTint, 5%);
     }
     .s-thumbs-grid-med .s-thumb-image,
     .grid #feed-images .s-thumb-image,
     .s-thumb-image{
-        background-color: darken(@black-tint, 5%); 
+        background-color: darken(@blackTint, 5%); 
     }
 }
 
@@ -64,7 +64,7 @@
     border: @borderMediumOnDark;
     background: none;
     background-color: @black;
-    color: @grayLightOnDark;
+    color: @grayLight;
     text-shadow: @shadowDarkOnDark 0px 1px 1px;
     font-size: @fontSize-btn;
     text-decoration: none;
@@ -76,7 +76,7 @@
         border:none;
     }
     a.ui-link-inherit {
-        color: @grayLightOnDark;
+        color: @grayLight;
     }
     &.ui-corner-left{.border-left-radius (@cornersRound);}
     &.ui-corner-right{.border-right-radius (@cornersRound);}
@@ -102,7 +102,7 @@
         border:none;
     }
     a.ui-link-inherit {
-        color: @grayLightOnDark;
+        color: @grayLight;
     }
     &.ui-corner-left{.border-left-radius (@cornersRound);}
     &.ui-corner-right{.border-right-radius (@cornersRound);}
@@ -117,7 +117,7 @@
     .s-map-loading {
         border: none;
         border-bottom: @borderLightOnDark;
-        background-color: @grayDark-tint;
+        background-color: @grayDarkBgTint;
         .box-shadow(inset 0 3px 20px @shadowDarkOnDark);
         &.ui-shadow{
             .box-shadow(inset 0 3px 20px @shadowDarkOnDark);
@@ -132,7 +132,7 @@
         border: none;
         border-bottom: @borderMediumOnDark;
         background: none;
-        background-color: @grayDark;
+        background-color: @grayDarkBg;
         .box-shadow(inset 0 3px 20px @shadowDarkOnDark);
         &.ui-shadow{
             .box-shadow(inset 0 3px 20px @shadowDarkOnDark);
@@ -155,53 +155,49 @@
 }
 
 .ui-bar-b{
-    background: @grayDark;
+    background: @grayDarkBg;
     color: @white;
-    .linear-gradient(@grayDark, @grayDark-tint);
+    .linear-gradient(@grayDarkBg, @grayDarkBgTint);
 
-    &.small-s-arrow-d-left::after{
-        .arrow-down(6px, @grayDark, 24px, 0);
-    }
+   
     &.small-top-right-arrow::after{
-        .arrow-left(8px, @grayDark, 100%, 0);
+        .arrow-left(8px, @grayDarkBg, 100%, 0);
     }
     a{
-        color: @white;
+        color: @gray;
     }
     .ui-title{
-        color: @white;
+        color: @gray;
     }
-    
-  
 }
 
 .ui-btn-up-b,
 .ui-btn-up-b[data-rel="back"]::before {
     border: @borderDarkOnDark;
-    background: @grayDark;
+    background: @grayDarkBg;
     .button-font-small();
-    color: @white;
+    color: @gray;
     text-shadow: @shadowDarkOnDark 0px -1px 1px;
     text-decoration: none;
-    .linear-gradient(@grayDark, @grayDark-tint);
+    .linear-gradient(@grayDarkBg, @grayDarkBgTint);
     .ui-btn-inner{
         border:none;
     }
     a.ui-link-inherit {
-        color: @grayMediumOnDark;
+        color: @gray;
     }
     &.ui-shadow{
         .box-shadow( 0 1px 0 @shadowLightOnDark);
     }
     &.ui-btn-active{
         background: none;
-        .linear-gradient(black, @grayDark-tint);
+        .linear-gradient(black, @grayDarkBgTint);
     }
     &.s-arrow-d-left::after{
-        .arrow-down(@arrow-size, @grayDark-tint, @arrow-offset, 3px);
+        .arrow-down(@arrow-size, @grayDarkBgTint, @arrow-offset, 3px);
     }
     &.bottom-centered-arrow::after{
-        .arrow-up(@arrow-size, @grayDark, 50%, 3px);
+        .arrow-up(@arrow-size, @grayDarkBg, 50%, 3px);
     }
 }
 
@@ -210,48 +206,48 @@
 .ui-btn-hover-b[data-rel="back"]::before,
 .ui-btn-active-b[data-rel="back"]::before{
     border: @borderDarkOnDark;
-    background: @grayDark;
+    background: @grayDarkBg;
     .button-font-small();
-    color: lighten(@white, 3%);
+    color: lighten(@gray, 3%);
     text-shadow: @shadowDarkOnDark 0px -1px 1px;
     font-size: @fontSizeSmall;
     text-decoration: none;
-    .linear-gradient(lighten(@grayDark, 3%), lighten(@grayDark-tint, 3%));
+    .linear-gradient(lighten(@grayDarkBg, 3%), lighten(@grayDarkBgTint, 3%));
     .ui-btn-inner{
         border:none;
     }
     a.ui-link-inherit {
-        color: @grayMediumOnDark;
+        color: @gray;
     }
     &.ui-shadow{
         .box-shadow(0 1px 0 @shadowLightOnDark);
     }
     &.ui-btn-active{
         background: none;
-        .linear-gradient(black, @grayDark-tint);
+        .linear-gradient(black, @grayDarkBgTint);
     }
     &.s-arrow-d-left::after{
-        .arrow-down(@arrow-size, lighten(@grayDark-tint, 3%), @arrow-offset, 3px);
+        .arrow-down(@arrow-size, lighten(@grayDarkBgTint, 3%), @arrow-offset, 3px);
     }
     &.bottom-centered-arrow::after{
-        .arrow-up(@arrow-size, lighten(@grayDark, 3%), 50%, 3px);
+        .arrow-up(@arrow-size, lighten(@grayDarkBg, 3%), 50%, 3px);
     }
 }
 
 .ui-btn-down-b,
 .ui-btn-down-b[data-rel="back"]::before{
     border: @borderDarkOnDark;
-    background: @grayDark;
+    background: @grayDarkBg;
     .button-font-small();
-    color: darken(@white, 3%);
+    color: darken(@gray, 3%);
     text-shadow: @shadowDarkOnDark 0px -1px 1px;
     text-decoration: none;
-    .pressed-gradient(@grayDark-tint, 5%);
+    .pressed-gradient(@grayDarkBgTint, 5%);
     .ui-btn-inner{
         border:none;
     }
     a.ui-link-inherit {
-        color: @grayMediumOnDark;
+        color: @gray;
     }
     &.ui-shadow{
         -moz-box-shadow: 0 1px 0 @shadowLightOnDark;
@@ -260,13 +256,13 @@
     }
     &.ui-btn-active{
         background: none;
-        .linear-gradient(black, @grayDark-tint);
+        .linear-gradient(black, @grayDarkBgTint);
     }
     &.s-arrow-d-left::after{
-        .arrow-down(@arrow-size, @grayDark-tint, @arrow-offset, 3px);
+        .arrow-down(@arrow-size, @grayDarkBgTint, @arrow-offset, 3px);
     }
     &.bottom-centered-arrow::after{
-        .arrow-up(@arrow-size, @grayDark-tint, 50%, 3px);
+        .arrow-up(@arrow-size, @grayDarkBgTint, 50%, 3px);
     }
 }
 
@@ -327,10 +323,10 @@
     }
     .ui-btn-text{
         .image-tag{
-            color: @grayLightOnDark;
+            color: @grayLight;
         }
         .small-text{
-            color: @grayMediumOnDark;
+            color: @gray;
         }
     }
     
@@ -347,7 +343,7 @@
     background-color: @grayLighter;
     background-image: @gfxBgLight;
     border: @borderMediumOnLight;
-    color: @grayDarkOnLight;
+    color: @grayDarker;
     text-shadow: 0 1px 1px @shadowLightOnLight;      
 }
 .ui-dialog.ui-overlay-c{
@@ -370,12 +366,12 @@
         overflow: visible;
     }
     .ui-header{
-        color: @grayMediumOnLight;
+        color: @grayDark;
         text-shadow: @shadowLightOnLight 0px 1px 1px;
     }
     .ui-link,
     .ui-link:visited {
-        color: @grayDarkOnLight;
+        color: @grayDarker;
         font-weight: normal;
     }
     .ui-input-search{
@@ -401,7 +397,7 @@
     #x-no-results{
         .s-map-image-alert {
             padding: @paddingElement * 2;
-            color: @grayLightOnLight;
+            color: @gray;
         }
     }
 
@@ -432,15 +428,15 @@
         }
         .ui-btn-up-c.system-bar{
             background-color: @blue;
-            .linear-gradient(@blue, @blue-tint);
+            .linear-gradient(@blue, @blueTint);
         }
         .ui-btn-hover-c.system-bar{
             background-color: lighten(@blue, 10%);
-            .linear-gradient(darken(@blue, 10%), darken(@blue-tint, 10%));
+            .linear-gradient(darken(@blue, 10%), darken(@blueTint, 10%));
         }
         .ui-btn-down-c.system-bar{
-            background-color: lighten(@blue-tint, 3%);
-            .pressed-gradient(@blue-tint, 3%);
+            background-color: lighten(@blueTint, 3%);
+            .pressed-gradient(@blueTint, 3%);
         }
     }
     .ui-btn{
@@ -461,10 +457,10 @@
     border: none;
     background: @white;
     .linear-gradient(@white, @grayLighter);
-    color: @grayDarkOnLight;
+    color: @grayDarker;
     .button-font-bold();
     a.ui-link-inherit {
-        color: @grayDarkOnLight;
+        color: @grayDarker;
     }
     &.s-arrow-d-left::after{
         .arrow-down(@arrow-size, @grayLighter, @arrow-offset, 3px);
@@ -478,10 +474,10 @@
     border: none;
     background: lighten(@white, 10% );
     .linear-gradient(lighten(@white, 10%), lighten(@grayLighter, 10%));
-    color: @grayDarkOnLight;
+    color: @grayDarker;
     .button-font-bold();
     a.ui-link-inherit {
-        color: @grayDarkOnLight;
+        color: @grayDarker;
     }
     &.s-arrow-d-left::after{
         .arrow-down(@arrow-size, lighten(@grayLighter, 10%), @arrow-offset, 3px);
@@ -495,10 +491,10 @@
     border: none;
     background: @white;
     .pressed-gradient(@white, 3%);
-    color: @grayDarkOnLight;
+    color: @grayDarker;
     .button-font-bold();
     a.ui-link-inherit {
-        color: @grayDarkOnLight;
+        color: @grayDarker;
     }
     &.ui-shadow {
         .box-shadow(0 1px 4px lighten(@shadowLighterOnLight, 20%));
@@ -625,7 +621,7 @@
     .ui-li-desc{
         margin: -8px 0 0 0;
         padding: 0;
-        color: @grayLightOnLight;
+        color: @gray;
     }
     .ui-li,
     .ui-li-link-alt{
@@ -676,7 +672,6 @@
 
 // D
 // the full white BG swatch used for feed views etc
-// have sneakily included the orange buttons in this guy
 // -------------------
 
 .ui-body-d[data-role="page"]{
@@ -689,7 +684,7 @@
 
 .ui-body-d {
     background: none;
-    color: @grayMediumOnLight;
+    color: @grayDark;
     div[data-role="content"]{
         background-color: @white;
         background-image: none;
@@ -700,7 +695,7 @@
     .ui-link:visited,
     .ui-link:hover,
     .ui-link:active {
-        color: @grayDarkOnLight;
+        color: @grayDarker;
     }
     hr{
         display: block;
@@ -730,22 +725,22 @@
 
 .ui-bar-d{
     background: @orange;
-    .linear-gradient(@orange, @orange-tint);
+    .linear-gradient(@orange, @orangeTint);
 }
 
 .ui-btn-up-d {
     border: none;
     background: @orange;
-    .linear-gradient(@orange, @orange-tint);
+    .linear-gradient(@orange, @orangeTint);
     color: @white;
     text-shadow: @shadowDarkOnDark 0px -1px 1px;
     .button-font-bold();
     a.ui-link-inherit {
-        color: @grayDarkOnLight;
+        color: @grayDarker;
     }
 
     &.s-arrow-d-left::after{
-        .arrow-down(@arrow-size, @orange-tint, @arrow-offset, 3px);
+        .arrow-down(@arrow-size, @orangeTint, @arrow-offset, 3px);
     }
     &.bottom-centered-arrow::after{
         .arrow-up(@arrow-size, @orange, 50%, 3px);
@@ -755,16 +750,16 @@
 .ui-btn-hover-d {
     border: none;
     background: lighten(@orange, 10% );
-    .linear-gradient(lighten(@orange, 10%), lighten(@orange-tint, 10%));
+    .linear-gradient(lighten(@orange, 10%), lighten(@orangeTint, 10%));
     color: @white;
     text-shadow: @shadowDarkOnDark 0px -1px 1px;
     .button-font-bold();
     a.ui-link-inherit {
-        color: @grayDarkOnLight;
+        color: @grayDarker;
     }
 
     &.s-arrow-d-left::after{
-        .arrow-down(@arrow-size, lighten(@orange-tint, 10% ), @arrow-offset, 3px);
+        .arrow-down(@arrow-size, lighten(@orangeTint, 10% ), @arrow-offset, 3px);
     }
     &.bottom-centered-arrow::after{
         .arrow-up(@arrow-size, lighten(@orange, 10%), 50%, 3px);
@@ -779,7 +774,7 @@
     text-shadow: @shadowDarkOnDark 0px -1px 1px;
     .button-font-bold();
     a.ui-link-inherit {
-        color: @grayDarkOnLight;
+        color: @grayDarker;
     }
     &.ui-shadow {
         .box-shadow(none);
@@ -814,7 +809,7 @@
             h3,{
                 padding: 8px;
                 .heading-font();
-                color: @grayDarkOnLight;
+                color: @grayDarker;
             }
 
             .ui-link-inherit,
@@ -869,61 +864,12 @@
 // highlight swatch - all about mad yellow shiz..
 // ----------------
 
-.ui-body-e{
-    &.ui-navbar{
-        background: @green;
-        .linear-gradient(@green, @green-tint);
-        .ui-btn{
-            background: none!important;
-        }
-    }
-}
-
-.ui-bar-e{
-    background: @green;
-    .linear-gradient(@green, @green-tint);
-
-    &.small-s-arrow-d-left::after{
-        .arrow-down(6px, @green-tint, 24px, 0);
-    }
-    &.small-top-right-arrow::after{
-        .arrow-left(8px, @green-tint, 100%, 0);
-    }
-    &.small-top-right-arrow::after{
-        .arrow-left(8px, @yellow-tint, 100%, 0);
-    }
-    a{
-        color: @white;
-    }
-    
-    //POP red for little activity tab
-    &.tab-bar-extra,
-    &.small-s-arrow-d-left{
-        background: @red;
-        color: @grayDark-tint;
-        text-shadow: none;
-        .linear-gradient(@red, @red-tint);
-
-        &.small-s-arrow-d-left::after{
-            .arrow-down(6px, @red-tint, 24px, 0);
-        }
-        &.small-top-right-arrow::after{
-            .arrow-left(8px, @red-tint, 100%, 0);
-        }
-        a{
-            color: @grayDark;
-            text-shadow: none;
-        }
-        
-    }
-}
-
 
 .ui-body-e {
     background: none;
-    color: @grayMediumOnLight;
+    color: @grayDark;
     div[data-role="content"]{
-        background-color: @green;
+        background-color: @yellow;
         background-image: none;
         border-radius: @cornersPage;
     }
@@ -931,7 +877,7 @@
     .ui-link:visited,
     .ui-link:hover,
     .ui-link:active {
-        color: @grayDarkOnLight;
+        color: @grayDarker;
         font-weight: normal;
     }
     hr{
@@ -958,65 +904,66 @@
     }
 }
 
+.ui-bar-e{
+    background: @yellow;
+    .linear-gradient(@yellow, @yellowTint);
+    a{
+        color: @grayDarker;
+    }
+}
+
 
 .ui-btn-up-e {
     border: none;
-    background: @green;
-    .linear-gradient(@green, @green-tint);
-    color: @white;
-    text-shadow: @shadowDarkOnDark 0px -1px 1px;
-    
+    background: @yellow;
+    .linear-gradient(@yellow, @yellowTint);
+    color: @grayDarker;
+    text-shadow: @white 0px -1px 1px;
     .button-font-bold();
     text-decoration: none;
     a.ui-link-inherit {
-        color: @grayDarkOnLight;
-    }
-    &.s-arrow-d-left::after{
-        .arrow-down(@arrow-size, @green-tint, @arrow-offset, 3px);
-    }
-    &.bottom-centered-arrow::after{
-        .arrow-up(@arrow-size, @green, 50%, 3px);
+        color: @grayDarker;
     }
 }
 
 .ui-btn-hover-e {
     border: none;
-    background: lighten(@green, 10% );
-    .linear-gradient(lighten(@green, 10%), lighten(@green-tint, 10%));
+    background: lighten(@yellow, 10% );
+    .linear-gradient(lighten(@yellow, 10%), lighten(@yellowTint, 10%));
     color: @white;
     text-shadow: @shadowDarkOnDark 0px -1px 1px;
     .button-font-bold();
     text-decoration: none;
     a.ui-link-inherit {
-        color: @grayDarkOnLight;
-    }
-    &.s-arrow-d-left::after{
-        .arrow-down(@arrow-size, lighten(@green-tint, 10% ), @arrow-offset, 3px);
-    }
-    &.bottom-centered-arrow::after{
-        .arrow-up(@arrow-size, lighten(@green, 10%), 50%, 3px);
+        color: @grayDarker;
     }
 }
 
 .ui-btn-down-e {
     border: none;
-    background: @green;
-    .pressed-gradient(@green, 3%);
+    background: @yellow;
+    .pressed-gradient(@yellow, 3%);
     color: @white;
     text-shadow: @shadowDarkOnDark 0px -1px 1px;
     .button-font-bold();
     text-decoration: none;
     a.ui-link-inherit {
-        color: @grayDarkOnLight;
+        color: @grayDarker;
     }
     &.ui-shadow {
         .box-shadow(0 1px 4px lighten(@shadowLighterOnLight, 20%));
     }
-    &.s-arrow-d-left::after{
-        .arrow-down(@arrow-size, @green, @arrow-offset, 3px);
-    }
-    &.bottom-centered-arrow::after{
-        .arrow-up(@arrow-size, darken(@green, 3%), 50%, 3px);
+}
+
+
+// Set BG on element instead of btn for navbar
+.ui-body-e{
+    &.ui-navbar{
+        background: @yellow;
+        .linear-gradient(@yellow, @yellowTint);
+        .ui-btn{
+            background: none!important;
+        }
     }
 }
 
