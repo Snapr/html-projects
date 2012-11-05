@@ -190,7 +190,7 @@ var dash_view = page_view.extend({
     },
 
     render: function(){
-        this.$('.dash-welcome').toggle(!auth.has("access_token") || this.model.length < 3);
+        this.$('.x-dash-welcome').toggle(!auth.has("access_token") || this.model.length < 3);
 
         this.$('.user-streams').empty();
 

@@ -3074,6 +3074,9 @@ div[data-role="header"] {
   left: -6px;
   top: -8px;
 }
+.ui-bar {
+  margin: 0 -8px;
+}
 .ui-bar .ui-btn .ui-btn-inner,
 .ui-bar.ui-btn .ui-btn-inner {
   height: 36px;
@@ -3089,6 +3092,9 @@ div[data-role="header"] {
 }
 .ui-bar .s-bar-left {
   border-right: none;
+}
+.ui-bar .s-bar-right {
+  border-left: solid rgba(0, 0, 0, 0.1) 1px;
 }
 .s-validate .x-invalid[for] {
   font-size: 12px;

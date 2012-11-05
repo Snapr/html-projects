@@ -183,6 +183,7 @@ div[data-role="header"]{
 // -------------------------
 
 .ui-bar{
+    margin: 0 -@padding * 2;
     
     .ui-btn,
     &.ui-btn{
@@ -204,6 +205,7 @@ div[data-role="header"]{
         }
     }
     .s-bar-right{
+        border-left: solid rgba(0,0,0,.1) 1px;
         .ui-btn-inner{
         }
     }
@@ -260,7 +262,6 @@ div[data-role="header"]{
             background-position: @gfxIcons-check-x @gfxIcons-y-highlight;
         }
     }
-
     .x-validating{
         overflow: hidden; // if the spinning element overlaps other form elements can cause flicker */
         .ui-icon-check{
