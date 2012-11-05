@@ -3138,17 +3138,17 @@ a.ui-link-inherit {
   -webkit-box-shadow: none;
   box-shadow: none;
 }
-.ui-body-d .ui-listview-inset li.ui-li.has-select {
+.ui-body-d .ui-listview-inset li.ui-li.s-has-select {
   padding: 0;
 }
-.ui-body-d .ui-listview-inset li.ui-li.has-select .ui-select {
+.ui-body-d .ui-listview-inset li.ui-li.s-has-select .ui-select {
   width: 100%;
   margin: 0;
   -moz-box-shadow: none;
   -webkit-box-shadow: none;
   box-shadow: none;
 }
-.ui-body-d .ui-listview-inset li.ui-li.has-select .ui-select .ui-btn {
+.ui-body-d .ui-listview-inset li.ui-li.s-has-select .ui-select .ui-btn {
   -moz-box-shadow: none;
   -webkit-box-shadow: none;
   box-shadow: none;
@@ -3160,7 +3160,7 @@ a.ui-link-inherit {
   border-top-right-radius: 0;
   border: none;
 }
-.ui-body-d .ui-listview-inset li.ui-li.has-select .ui-select .ui-btn-inner {
+.ui-body-d .ui-listview-inset li.ui-li.s-has-select .ui-select .ui-btn-inner {
   padding-top: 18px;
   padding-bottom: 18px;
   padding-left: 16px;
@@ -3691,12 +3691,12 @@ h4 {
   color: #f1eee0 !important;
   text-shadow: 0 -1px 1px #000000;
 }
-.block-link {
+.s-vertical-margins {
   line-height: 36px;
   color: #f1eee0 !important;
   text-shadow: 0 -1px 1px #000000;
 }
-.block-link a {
+.s-vertical-margins a {
   color: #f1eee0 !important;
   text-shadow: 0 -1px 1px #000000;
 }
@@ -5827,23 +5827,23 @@ body.x-browser-testing .ps-caption-bottom {
 body.x-browser-testing .ui-footer, body.x-browser-testing .ui-footer-fixed {
   width: 320px!important;
 }
-.platform-logo {
+.s-platform-logo {
   background-repeat: no-repeat;
   display: block;
   width: 200px;
   height: 60px;
 }
-.iphone-appstore .platform-logo {
+.s-iOS-appstore .s-platform-logo {
   background-repeat: no-repeat;
-  background-image: url('../gfx/iphone-appstore.png');
+  background-image: url('../gfx/s-iOS-appstore.png');
 }
-.apps-links {
+.s-apps-links {
   margin: 24px 8px;
 }
-.apps-links li {
+.s-apps-links li {
   margin-bottom: 8px;
 }
-.apps-links .appstore-badge {
+.s-apps-links .s-appstore-badge {
   background-color: #000000;
   background-color: rgba(0, 0, 0, 0.9);
   -webkit-border-radius: 12px;
@@ -5853,27 +5853,27 @@ body.x-browser-testing .ui-footer, body.x-browser-testing .ui-footer-fixed {
   display: block;
   position: relative;
 }
-.apps-links .appstore-badge.iphone-appstore {
+.s-apps-links .s-appstore-badge.s-iOS-appstore {
   background-color: #76797c;
 }
-.apps-links .appstore-badge .platform-logo {
+.s-apps-links .s-appstore-badge .s-platform-logo {
   background-repeat: no-repeat;
   display: block;
   width: 288px;
   height: 93px;
 }
-.apps-links .appstore-badge .coming-soon {
+.s-apps-links .s-appstore-badge .s-coming-soon {
   text-shadow: none;
   color: #B9B9B9;
   position: absolute;
   top: 64px;
   left: 90px;
 }
-.iphone-appstore .platform-logo {
+.s-iOS-appstore .s-platform-logo {
   background-repeat: no-repeat;
-  background-image: url('../gfx/iphone-appstore.png');
+  background-image: url('../gfx/s-iOS-appstore.png');
 }
-.android-marketplace .platform-logo {
+.s-android-marketplace .s-platform-logo {
   background-repeat: no-repeat;
   background-image: url('../gfx/android-logo.png');
 }
@@ -8079,14 +8079,14 @@ body.x-browser-testing .ui-footer, body.x-browser-testing .ui-footer-fixed {
     -webkit-background-size: 56px 56px;
     background-size: 56px 56px;
   }
-  .iphone-appstore .platform-logo {
-    background-image: url('../gfx/retina/iphone-appstore.png');
+  .s-iOS-appstore .s-platform-logo {
+    background-image: url('../gfx/retina/s-iOS-appstore.png');
     -moz-background-size: 200px 60px;
     -o-background-size: 200px 60px;
     -webkit-background-size: 200px 60px;
     background-size: 200px 60px;
   }
-  .android-marketplace .platform-logo {
+  .s-android-marketplace .s-platform-logo {
     background-image: url('../gfx/retina/android-logo.png');
     -moz-background-size: 200px 60px;
     -o-background-size: 200px 60px;

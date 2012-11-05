@@ -81,6 +81,7 @@ div[data-role="content"]{
 .s-wrap-content{
     h1,h2,h3,h4,p,a{
         white-space: normal!important;
+        line-height: 140%;
     }
 
     p{
@@ -205,13 +206,67 @@ div[data-role="content"]{
     top: 24px;
 }
 
+.s-inset-page-content{
+    .ui-listview-inset {
+        background-color: @white;
+
+        li.ui-li{
+            padding: @padding * 2;
+            margin: 0;
+            border: none;
+            background:none;
+            border-top: solid 1px @grayLight;
+            &:first-child{
+                border: none;
+            }
+            .ui-link-inherit,
+            p{
+                padding-left: @padding * 2;
+            }
+            &.ui-li-has-icon{
+                .ui-link-inherit{
+                    padding-left: @avatarSize;
+                }
+            }
+            input[type="text"],
+            input[type="password"],
+            input[type="email"]{
+                width: 100%;
+                border: none;
+                background: transparent;
+                margin: 0;
+                .box-sizing(border-box);
+                .box-shadow(none);
+            }
+            &.s-has-select{
+                padding: 0;
+                .ui-select{
+                    width: 100%;
+                    margin: 0;
+                    .box-shadow(none);
+                    .ui-btn{
+                        .box-shadow(none);
+                        .border-top-radius(0);
+                        border: none;
+                    }
+                    .ui-btn-inner{
+                        padding-top: 18px;
+                        padding-bottom: 18px;
+                        padding-left: @padding * 4;
+                    }
+                }
+            }
+        }
+    }
+}
+
 
 // IMAGES
 // -------------------------
 
 
 .s-image-loader-bg{
-    background-color: @grayLightBg;
+    background-color: @grayLight;
     background-image: url('gfx/image-load.gif');
     background-repeat: no-repeat;
     background-position: center;
@@ -232,7 +287,7 @@ div[data-role="content"]{
     padding: 0;
     margin: 0;
     display: block;
-    background-color: @grayLightBg;
+    background-color: @grayLight;
 }
 
 .s-thumbs-grid-med,
@@ -325,7 +380,7 @@ div[data-role="content"]{
             padding-left: @paddingGrid;
         }
         .s-load-more-inline{
-            background-color: @grayLightBg;
+            background-color: @grayLight;
             width: @thumbSize;
             height: @thumbSize;
             display: inline-block;
@@ -531,7 +586,6 @@ div[data-role="content"]{
         .x-follow-btn{
             display: none;
         }
-
     }
 }
 
@@ -631,7 +685,7 @@ div[data-role="content"]{
         overflow:hidden;
         margin: 0 -@padding * 2;
         .s-tumblr-post-item {
-            border-bottom: 1px solid @grayLightBg;
+            border-bottom: 1px solid @grayLight;
             margin: 0px;
             padding: @padding;
             .s-tumblr-post {
@@ -661,18 +715,14 @@ div[data-role="content"]{
                         padding: 0;
                         list-style: none;
                     }
-
                 }
             }
-
-
         }
         > article:last-child {
             border-bottom: none;
         }
     }
 }
-
 
 .s-tumblr-credit{
     margin: 12px 0;
@@ -718,7 +768,7 @@ div[data-role="content"]{
         }
     }
     .info{
-        background-color: @grayLightBg;
+        background-color: @grayLight;
         margin: @padding * 2 0;
         padding: @padding * 2;
         .border-radius(@corners);
@@ -747,7 +797,7 @@ div[data-role="content"]{
         height: @avatarSizeLarge;
     }
     .s-profile-icon{
-        background-color: @grayLightBg;
+        background-color: @grayLight;
         z-index: 3;
     }
 
@@ -1221,6 +1271,42 @@ div[data-role="content"]{
 }
 
 
+// APP PAGE
+// -------------------------
+
+.s-app-link{
+    margin: @padding * 2 * 3 @padding * 2;
+
+    .s-appstore-badge{
+        display: block;
+        position: relative;
+        
+        .s-platform-logo{
+            background-repeat: no-repeat;
+            display: block;
+            width: 200px;
+            height: 60px;
+        }
+        .s-coming-soon{
+            text-shadow: none;
+            color: #B9B9B9;
+            position: absolute;
+            top: 64px;
+            left: 90px;
+        }
+    }
+}
+
+.s-iOS-appstore .s-platform-logo{
+    background-repeat: no-repeat;
+    background-image: url('gfx/iphone-appstore.png');
+}
+
+.s-android-marketplace .s-platform-logo{
+    background-repeat: no-repeat;
+    background-image: url('gfx/android-logo.png');
+}
+
 
 // @GALLERIES
 // -------------------------
@@ -1504,7 +1590,7 @@ div.ps-carousel-item-loading
             top: 0;
             width: 60px;
             height: 60px;
-            background-color: @grayLightBg;
+            background-color: @grayLight;
             margin: 6px;
             border-radius: 45px;
             text-align: center;
@@ -1751,6 +1837,11 @@ a{
 
 .s-underline{
     text-decoration: underline;
+}
+
+.s-vertical-margins{
+    display: block;
+    margin: @padding * 4 0;
 }
 
 
