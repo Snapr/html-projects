@@ -1,4 +1,4 @@
-
+/* MASTER MIXINS */
 //
 // Mixins your know and love from Bootstrap - http://twitter.github.com/bootstrap/
 // --------------------------------------------------
@@ -164,13 +164,22 @@
   .border-bottom-left-radius(@radius);
 }
 
-// Drop shadows
-.box-shadow(@shadowA, @shadowB:X, ...){
-  // Multiple shadow solution from http://toekneestuck.com/blog/2012/05/15/less-css-arguments-variable/
-  @props: ~`"@{arguments}".replace(/[\[\]]|\,\sX/g, '')`;
-  -webkit-box-shadow: @props;
-     -moz-box-shadow: @props;
-          box-shadow: @props;
+// Box shadows ** edited from bootstrap because was failing to compile with 0 / none
+.box-shadow(@a) {
+    -moz-box-shadow: @a;
+    -webkit-box-shadow: @a;
+    box-shadow: @a;
+}
+.box-shadow(@a, @b) {
+    -moz-box-shadow: @a, @b;
+    -webkit-box-shadow: @a, @b;
+    box-shadow: @a, @b;
+}
+
+.box-shadow(@a, @b, @c) {
+    -moz-box-shadow: @a, @b, @c;
+    -webkit-box-shadow: @a, @b, @c;
+    box-shadow: @a, @b, @c;
 }
 
 // Transitions

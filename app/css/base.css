@@ -3,6 +3,7 @@
 @import "../libs/mobiscroll/mobiscroll-2.0rc2.full.min.css";
 
 @import "../libs/photoswipe/photoswipe.css";
+/* MASTER MIXINS */
 .clearfix {
   *zoom: 1;
 }
@@ -758,8 +759,8 @@ div[data-role="content"] .s-inline-footer {
 }
 .s-image-item-block .reactions-list {
   display: none;
-  -webkit-box-shadow: none;
   -moz-box-shadow: none;
+  -webkit-box-shadow: none;
   box-shadow: none;
 }
 .s-image-item-block .reactions-list li.ui-li {
@@ -926,8 +927,8 @@ div[data-role="content"] .s-inline-footer {
 }
 .s-progress-bar .s-bar-wrapper .s-bar-bg {
   background-color: #C5C4C4;
-  -webkit-box-shadow: inset 0 0 9px 2px #afaeae;
   -moz-box-shadow: inset 0 0 9px 2px #afaeae;
+  -webkit-box-shadow: inset 0 0 9px 2px #afaeae;
   box-shadow: inset 0 0 9px 2px #afaeae;
 }
 .s-progress-bar .s-upload-message {
@@ -975,8 +976,8 @@ div[data-role="content"] .s-inline-footer {
 }
 .s-share-icon-small.s-twitter-sharing {
   background-color: #68d9ff;
-  -webkit-box-shadow: inset 0 3px 20px #309dc2;
   -moz-box-shadow: inset 0 3px 20px #309dc2;
+  -webkit-box-shadow: inset 0 3px 20px #309dc2;
   box-shadow: inset 0 3px 20px #309dc2;
 }
 .s-share-icon-small.s-twitter-sharing .ui-icon {
@@ -984,8 +985,8 @@ div[data-role="content"] .s-inline-footer {
 }
 .s-share-icon-small.s-facebook-sharing {
   background-color: #507ab8;
-  -webkit-box-shadow: inset 0 3px 20px #2e5998;
   -moz-box-shadow: inset 0 3px 20px #2e5998;
+  -webkit-box-shadow: inset 0 3px 20px #2e5998;
   box-shadow: inset 0 3px 20px #2e5998;
 }
 .s-share-icon-small.s-facebook-sharing .ui-icon {
@@ -993,8 +994,8 @@ div[data-role="content"] .s-inline-footer {
 }
 .s-share-icon-small.s-tumblr-sharing {
   background-color: #5a687d;
-  -webkit-box-shadow: inset 0 3px 20px #2c3c54;
   -moz-box-shadow: inset 0 3px 20px #2c3c54;
+  -webkit-box-shadow: inset 0 3px 20px #2c3c54;
   box-shadow: inset 0 3px 20px #2c3c54;
 }
 .s-share-icon-small.s-tumblr-sharing .ui-icon {
@@ -1002,8 +1003,8 @@ div[data-role="content"] .s-inline-footer {
 }
 .s-share-icon-small.s-foursquare-sharing {
   background-color: #34a0ce;
-  -webkit-box-shadow: inset 0 3px 20px #29708e;
   -moz-box-shadow: inset 0 3px 20px #29708e;
+  -webkit-box-shadow: inset 0 3px 20px #29708e;
   box-shadow: inset 0 3px 20px #29708e;
 }
 .s-share-icon-small.s-foursquare-sharing .ui-icon {
@@ -1061,6 +1062,20 @@ div[data-role="content"] .s-inline-footer {
 }
 .s-share-photo.x-show-image .s-show-share-settings {
   display: block;
+}
+.add-services .shared .ui-icon-arrow-r,
+.add-services .ready .ui-icon-arrow-r {
+  display: none;
+}
+.add-services .connect-status {
+  position: absolute;
+  right: 4px;
+  padding-right: 40px;
+  font-family: Helvetica, Arial, sans-serif;
+  text-transform: lowercase;
+}
+.add-services .connect-status .ui-icon {
+  right: 0;
 }
 div.ps-carousel-item-loading {
   background: url('gfx/image-load-dark.gif') no-repeat center center;
@@ -1202,8 +1217,8 @@ div.ps-carousel-item-loading {
   border-radius: 8px;
   border: solid #ffcc00 4px;
   font-size: 12px;
-  -webkit-box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
   -moz-box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
 }
 .s-photo-map #s-map-alert .s-map-image-alert .ui-icon-no-images {
@@ -1388,20 +1403,20 @@ div.ps-carousel-item-loading {
 .ui-dialog.s-snapr-bg,
 .ui-page.s-snapr-bg {
   background-color: #ffff33 !important;
-  -webkit-box-shadow: inset 0px -2px 100px #ffe400;
   -moz-box-shadow: inset 0px -2px 100px #ffe400;
+  -webkit-box-shadow: inset 0px -2px 100px #ffe400;
   box-shadow: inset 0px -2px 100px #ffe400;
 }
 .ui-dialog.s-tumblr-bg {
   background-color: #718199 !important;
-  -webkit-box-shadow: inset 0px -2px 100px #2c3c54;
   -moz-box-shadow: inset 0px -2px 100px #2c3c54;
+  -webkit-box-shadow: inset 0px -2px 100px #2c3c54;
   box-shadow: inset 0px -2px 100px #2c3c54;
 }
 .ui-dialog.s-twitter-bg {
   background-color: #7ac5de !important;
-  -webkit-box-shadow: inset 0px -2px 100px #309dc2;
   -moz-box-shadow: inset 0px -2px 100px #309dc2;
+  -webkit-box-shadow: inset 0px -2px 100px #309dc2;
   box-shadow: inset 0px -2px 100px #309dc2;
 }
 .ui-dialog.s-snapr-welcome-bg,

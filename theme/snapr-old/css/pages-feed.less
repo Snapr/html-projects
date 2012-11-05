@@ -1,0 +1,456 @@
+// FEED
+// -------------------------
+
+#feed-images{
+    min-height: 324px!important;
+}
+.feed-header{
+    margin-bottom: @padding * 2;
+}
+
+.load-more{
+    display: none;
+}
+.feed-view-toggle{
+    .ui-btn-inner{
+        padding: 0;
+    }
+    .ui-btn-text{
+        text-indent: -999px;
+        display: block;
+        width: 44px;
+        height: 30px;
+        .ui-icon{
+            display: block;
+            width: 32px;
+            height: 28px;
+            position: absolute;
+            top: 1px;
+            left: 3px;
+        }
+        .ui-icon-list-view{background-position: @gfxDark-x @gfxDark-feed-y - 5px;}
+        .ui-icon-grid-view{background-position: @gfxDark-x - 2px @gfxDark-grid-y - 6px;}
+    }
+}
+
+.s-header-stats{
+    padding-left: @avatarSizeLarge;
+    .user-icon-left{
+        position:absolute;
+        top: 0;
+        left: 0;
+        width: @avatarSizeLarge;
+        height: @avatarSizeLarge;
+        .s-profile-icon,
+        .user-icon-big{
+            .border-top-left-radius (@cornersPage);
+            overflow:hidden;
+        }
+        .user-icon-big{
+            background-color: @grayLighter;
+        }
+         .s-icon-overlay{
+           background-image: url('../gfx/shiny-avatar-info.png');
+           width: @avatarSizeLarge;
+           height: @avatarSizeLarge;
+           display: block;
+           .border-top-left-radius (@cornersPage);
+           overflow:hidden;
+           position: absolute;
+           top: 0;
+           left: 0;
+           border-top: solid @shadowMediumOnLight 1px;
+        }
+    }
+}
+
+
+
+.s-feed-header{
+    height: 100px;
+    overflow: hidden;
+    background-color: @grayDark;
+    color: @white;
+    &::after{
+        .arrow-up(@arrow-size, @white, @avatarSizeLarge / 2, @avatarSizeLarge + @arrow-y-shift);
+    }
+    .ui-bar{
+        margin-left: 0;
+        margin-right: 0;
+        padding-left: @avatarSizeLarge + @padding * 2;
+        z-index: 0;
+        .username{
+            width: 120px;
+            overflow: hidden;
+            display: block;
+            text-overflow: ellipsis;
+            color: @white;
+        }
+        .ui-btn-right{
+
+            position: absolute;
+            right: -4px;
+            top: 0px;
+            .ui-btn {
+                margin-bottom: 0px;
+                border: none;
+                .ui-btn-inner{
+                    height: @bar-height;
+                    .ui-btn-text{
+                        line-height: @bar-height;
+                        color: @white
+                    }
+                    .ui-icon{
+                        width: 36px;
+                    }
+                    .ui-icon-check{
+                         background-position: @gfxIcons-check-x @gfxIcons-y-light;
+                    }
+                    .ui-icon-plus{
+                         background-position: @gfxIcons-plus-x @gfxIcons-y-light;
+                    }
+                }
+            }
+
+        }
+    }
+    .user-stats{
+         text-align: center;
+         color: @white ;
+         text-transform: lowercase;
+         font-size: @fontSizeSmall;
+         .ui-link{
+            display: block;
+            min-height: 64px;
+            color: @white ;
+            
+         }
+        .s-hero-number{
+            display: block;
+            font-size: @fontSize-numberBig;
+            font-family: @font-special;
+            padding: 10px 0 0 0;
+            height: 30px;
+            line-height:@fontSize-numberBig + 4px ;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+    }
+    .ui-grid-b{
+        .ui-block-a{
+                margin-left: -1px;
+        }
+        .ui-block-b{
+            border-left: @borderDarkOnDark;
+            border-right: @borderDarkOnDark;
+        }
+        .ui-block-c{
+             margin-right: -1px;
+        }
+    }
+}
+
+// Nix the rounded top edges when the upload queue shows above 
+.showing-upload-queue{
+    .feed-header{
+        .user-icon-left{
+            .s-profile-icon,
+            .user-icon-big{
+                .border-top-left-radius (0);
+                overflow:hidden;
+            }
+            .s-icon-overlay{
+               .border-top-left-radius (@cornersPage);
+            }
+        }
+        .ui-bar{
+           .border-top-right-radius(0);
+        }
+    }
+}
+
+
+
+.s-image-item-block{
+    .s-image-item-topbar{
+        height:  @avatarSize + 1px;//haxy to account for mysterious icon overhang
+        margin-bottom: @padding * 2;
+        vertical-align: middle;
+        font-size: @fontSizeSmall;
+        color: @grayLightOnLight;
+        line-height:  @avatarSize;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        .user-icon-link{
+            vertical-align: middle;
+            height: @avatarSize;
+            display: inline-block;
+            width: @avatarSize;
+        }
+        .ui-link,
+        span{
+            height:@avatarSize;
+            line-height:@avatarSize;
+            vertical-align: middle;
+            display: inline-block;
+        }
+        .s-image-time{
+            color: @grayLightOnLight;
+            .ui-icon-clock{
+                background-position: @gfxBar-x - 9px @gfxFeed-time-y;
+                width: 14px;
+            }
+        }
+        .s-image-time-and-location{
+            color: @grayLightOnLight;
+            .ui-link{
+                color: @grayLightOnLight;
+            }
+            .ui-icon-venue{
+                background-position: @gfxBar-x - 10px @gfxFeed-venue-y;
+                width: 10px;
+            }
+        }
+    }
+    .image-item{
+        position: relative;
+        .image-status{
+            position: absolute;
+            top: -14px;
+            background-color: #e5592f;
+            color: white;
+            font-size: 11px;
+            font-weight: bold;
+            padding: 0px 3px;
+            right: 0;
+            height: 14px;
+            .border-top-radius(4px);
+            opacity: .5;
+            display: none;
+        }
+    }
+    .s-main-s-image-link{
+        display: block;
+    }
+    .s-main-image{
+        width: 100%;
+    }
+    .s-image-description{
+        margin-top: @padding * 2;
+        margin-bottom: -@padding * 2;
+        .ui-icon-quote{
+            display: inline-block;
+            height: @fontSize;
+            background-position: -6px @gfxFeed-quote-y - 8;
+            width: 16px;
+        }
+        .goto-spot{
+            color: @grayLightOnLight;
+        }
+    }
+    .s-image-item-base{
+        position: relative;
+    }
+    .image-actions{
+        margin-top: 8px;
+        margin-bottom: 8px;
+        .inline-btn{
+            display: inline-block;
+        }
+        .ui-btn-up-d,
+        .ui-btn-hover-d,
+        .ui-btn-down-d,
+        .ui-btn-active-d,{
+            background: none;
+            border: none;
+            font-size: @fontSizeSmall;
+            font-family: @font;
+            font-weight: bold;
+            color: @grayMediumOnLight;
+            margin-right: 4px;
+            .ui-btn-inner{
+                padding: 0 0 0 36px;
+            }
+            .ui-icon{
+                width: 40px;
+                height: 40px;
+                margin-top: -20px;
+                margin-left: -10px;
+                .border-radius(0);
+            }
+            .ui-btn-text{
+                line-height: 40px;
+                text-transform: lowercase;
+                text-shadow: none;
+                
+            }
+        }
+
+        // reactions btn off to the right
+        .reactions-button{
+           position: absolute;
+           right: 0;
+           top: 0;
+           margin-right: -6px;
+           .ui-btn-inner{
+                padding: 0 36px 0 10px;
+           }
+            .ui-icon{
+                background-position: @gfxAction-x @gfxAction-toggle-y;
+                right: 0;
+            }
+            &.ui-btn-down-d,
+            &.ui-btn-hover-d,
+            &.ui-btn-active-d{
+                .ui-icon{
+                background-position: @gfxAction-x-hover @gfxAction-toggle-y;
+                }
+            }
+            &.selected{
+            .ui-icon{
+                background-position: @gfxAction-x @gfxAction-toggle-up-y;
+            }
+            &.ui-btn-down-d,
+            &.ui-btn-hover-d,
+            &.ui-btn-active-d{
+                    .ui-icon{
+                    background-position: @gfxAction-x-hover @gfxAction-toggle-up-y;
+                    }
+                }
+            }
+        }
+
+    }
+
+    .reactions-list{
+        display: none;
+        .box-shadow(none);
+        li.ui-li{
+            border: none!important;
+            padding:0;
+             .ui-link-inherit{
+                    padding: 0 0 @paddingElement 0!important;
+                    display: inline-block;
+                    white-space: normal;
+                }
+            .ui-icon-arrow-r{
+                display: none;
+            }
+            .username{
+                text-transform: none;
+                text-shadow: none;
+            }
+            .comment,
+            .like-text{
+                white-space: normal;
+                font-weight: normal;
+                font-family: @font;
+                color: @grayMediumOnLight;
+                text-transform: none;
+                text-shadow: none;
+            }
+        }
+
+    }
+    .comment-area{
+        display: none;
+        .photo-comment{
+            min-height: 75px;
+        }
+    }
+}
+.s-image-item-block.private{
+    .image-status{
+        display:inherit;
+    }
+}
+
+.feed-footer{
+
+    .ui-btn{
+        .border-top-radius(0);
+        .border-bottom-radius(@cornersPage);
+        margin-bottom: 0;
+        border: none;
+    }
+}
+
+
+// Profile
+//------------------
+
+.user-profile{
+    .s-header-stats{
+        padding-left: @avatarSizeLarge + @paddingElement;
+        position: relative;
+    }
+    .s-header-stats .user-icon-left .user-icon-big{
+        background-color: @white;
+        .border-radius(@cornersPage);
+    }
+    .user-stats{
+        min-height: @avatarSizeLarge;
+    }
+    .real-name{
+        line-height: @fontSizeUsername;
+        .s-twitter-sharing{
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+    }
+    .user-website{
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        .ui-icon-link{
+            display: inline-block;
+            vertical-align: middle;
+            width: 24px;
+            left: -8px;
+            position: relative;
+        }
+    }
+    .user-linked-services{
+        li {
+            margin-bottom: 2px;
+            a{
+                display: block;
+                min-height: 24px;
+                .s-share-icon-small{
+                    vertical-align: middle;
+                    margin-right: 4px;
+                }
+                .ui-icon{
+
+                }
+            }
+        }
+    }
+    .user-hometown{
+        font-style: italic;
+    }
+    .user-buttons{
+        .ui-btn{
+            display: inline-block;
+            margin-right: @paddingElement;
+            .border-radius(@cornersRound);
+        }
+        .ui-btn-icon-left {
+             .ui-btn-inner {
+                padding-left: 36px;
+                padding-right: 18px;
+            }
+            .ui-icon{
+                width: 32px;
+                left: 4px;
+                top: 20px;
+            }
+        }
+    }
+    .user-buttons{
+        white-space: nowrap;
+    }
+}
