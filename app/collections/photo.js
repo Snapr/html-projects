@@ -79,6 +79,20 @@ return Backbone.Collection.extend({
         return this.filter( function( model ){
             return model.get("id") == id;
         })[0];
+    },
+
+
+    // needed so that when fetching newer photos they go to the start
+    comparator: function( photo_a, photo_b ){
+        switch(this.data.sort){
+            case 'weighted_score':
+                return photo_a.get( "weighted_score" ) > photo_b.get( "weighted_score" ) && -1 || 1;
+            case 'score':
+                return photo_a.get( "score" ) > photo_b.get( "score" ) && -1 || 1;
+            default:
+                return photo_a.get( "date" ) > photo_b.get( "date" ) && -1 || 1;
+        }
     }
+
 });
 });
