@@ -69,7 +69,7 @@
            <ul class="spots x-spots-list" data-theme="z">
                 <% if(obj.spots && spots.length){ %>
                     <% spots.each(function(spot){ %>
-                        <li>
+                        <li class="s-spot-list-item">
                             <a class="s-spot-item <%= spot.get('category').slug %>" href="#/spot/?spot_id=<%=spot.get('id')%>" data-theme="z">
                                 <span class="s-spot-photo-crop">
                                 <% if (spot.get('info').hero_image) { %>
