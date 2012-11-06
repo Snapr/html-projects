@@ -146,6 +146,11 @@ div[data-role="header"]{
                  padding: 0;
          } 
     }
+    &.s-account-header{
+        .ui-content{
+                 padding: @padding * 2 0;
+         }
+    }
    
 }
 
@@ -213,7 +218,6 @@ div[data-role="dialog"]{
     &.s-dash-footer .ui-content{
         padding: 0;
     }
-    
     .ui-grid-a{
         .ui-block-a{
             .ui-btn{
@@ -234,9 +238,7 @@ div[data-role="dialog"]{
 
 .ui-bar{
     margin: 0 -@padding * 2;
-    
-   .border-bottom-radius(0);
-    
+   .border-bottom-radius(0);    
     .ui-btn,
     &.ui-btn{
         .ui-btn-inner{
@@ -263,7 +265,6 @@ div[data-role="dialog"]{
             }
         }
     }
-    
     .s-bar-left{
         border-right: none;
         .ui-btn-inner{
@@ -274,8 +275,7 @@ div[data-role="dialog"]{
         .border-top-right-radius(@corners)!important;
         .ui-btn-inner{
         }
-    }
-    
+    }  
     &.ui-controlgroup-horizontal{
         .box-shadow(0 1px 4px @shadowDark);
     }
@@ -594,7 +594,6 @@ div[data-role="dialog"]{
         .border-top-radius(@corners);
         .border-bottom-radius(0);
     
-        
         .ui-btn-inner{
             line-height: @fontSizeSmall;
             min-height: @fontSizeSmall;
@@ -628,46 +627,7 @@ div[data-role="dialog"]{
 // -------------------------
 
 
-.ui-collapsible-set{
-    .ui-collapsible-heading{
-        .ui-btn{
-            margin-top:1px;
-            border-bottom: @borderGrayLighter;
-            .ui-btn-inner{
-                padding: 16px 40px 16px 16px;
-            }
-            .ui-icon{
-                left: auto;
-                right: 8px;
-            }
-            .ui-icon-plus{background-position: @gfxIcons-arrow-d-x @gfxIcons-y-med;}
-            .ui-icon-minus{background-position: @gfxIcons-arrow-u-x @gfxIcons-y-med;}
-        }
-        .ui-btn-up-c{
-            background-color: @grayLightBg;
-            background-image:@gfxBgLight;
-            .button-font-light();
-        }
-        .ui-btn-hover-c{
-            background-image: none;
-            background-color: lighten(@grayLightBg, .7%);
-            .button-font-light();
-            
-        }
-    }
-    .ui-collapsible-content{
-        .ui-btn{
-            .box-shadow( none);
-            .border-radius(@cornersRound);
-            border: @borderGrayLighter;
-            
-        }
-        &.ui-body-d{
-            border: none;
-            border-bottom: @borderGrayLighter;
-        }
-    }
-}
+
 
 
 // @FORMS
@@ -1100,8 +1060,8 @@ textarea.ui-input-text {
     }
 }
 
-.account-content{
-    .myaccount-header{
+.s-account-content{
+    .s-account-header{
         min-height: 60px;
         .box-shadow(inset 0px -11px 33px rgba(0, 0, 0, 0.2));
         .ui-btn,
@@ -1137,6 +1097,76 @@ textarea.ui-input-text {
             padding-left: 8px;
         }
     }
+    
+    .ui-listview{
+        li.ui-btn{
+             margin-top:1px;
+                border-bottom: @borderGrayLighter;
+                .ui-btn-inner{
+                    padding: 0px 40px 0px 0px;
+                }
+                .ui-icon{
+                    left: auto;
+                    right: 8px;
+                }
+                .ui-icon-arrow-r{background-position: @gfxIcons-arrow-r-x @gfxIcons-y-med;}
+        }
+        li.ui-btn-up-c{
+            background-color: @grayLightBg!important;
+            background-image:@gfxBgLight!important;
+            .button-font-light();
+        }
+        li.ui-btn-hover-c{
+            background-image: none!important;
+            background-color: lighten(@grayLightBg, .7%)!important;
+            .button-font-light();
+        }
+    }
+    
+    .ui-collapsible-set{
+        margin-left: -8px;
+        margin-right: -8px;
+
+        .ui-collapsible-heading{
+            .ui-btn{
+                margin-top:1px;
+                border-bottom: @borderGrayLighter;
+                .ui-btn-inner{
+                    padding: 16px 40px 16px 16px;
+                }
+                .ui-icon{
+                    left: auto;
+                    right: 8px;
+                }
+                .ui-icon-plus{background-position: @gfxIcons-arrow-d-x @gfxIcons-y-med;}
+                .ui-icon-minus{background-position: @gfxIcons-arrow-u-x @gfxIcons-y-med;}
+            }
+            .ui-btn-up-c{
+                background-color: @grayLightBg;
+                background-image:@gfxBgLight;
+                .button-font-light();
+            }
+            .ui-btn-hover-c{
+                background-image: none;
+                background-color: lighten(@grayLightBg, .7%);
+                .button-font-light();
+
+            }
+        }
+        .ui-collapsible-content{
+            .ui-btn{
+                .box-shadow( none);
+                .border-radius(@cornersRound);
+                border: @borderGrayLighter;
+
+            }
+            &.ui-body-d{
+                border: none;
+                border-bottom: @borderGrayLighter;
+            }
+        }
+    }
+    
 }
 
 

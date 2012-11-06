@@ -3099,6 +3099,9 @@ div[data-role="header"] .ui-controlgroup .ui-radio label {
 .s-inline-header.s-search-header .ui-content {
   padding: 0;
 }
+.s-inline-header.s-account-header .ui-content {
+  padding: 8px 0;
+}
 div[data-role="page"],
 div[data-role="dialog"] {
   -webkit-border-radius: 8px;
@@ -3780,50 +3783,6 @@ div[data-role="dialog"] {
   left: -6px;
   top: -8px;
 }
-.ui-collapsible-set .ui-collapsible-heading .ui-btn {
-  margin-top: 1px;
-  border-bottom: solid 1px #e4e4e4;
-}
-.ui-collapsible-set .ui-collapsible-heading .ui-btn .ui-btn-inner {
-  padding: 16px 40px 16px 16px;
-}
-.ui-collapsible-set .ui-collapsible-heading .ui-btn .ui-icon {
-  left: auto;
-  right: 8px;
-}
-.ui-collapsible-set .ui-collapsible-heading .ui-btn .ui-icon-plus {
-  background-position: -207px -36px;
-}
-.ui-collapsible-set .ui-collapsible-heading .ui-btn .ui-icon-minus {
-  background-position: -171px -36px;
-}
-.ui-collapsible-set .ui-collapsible-heading .ui-btn-up-c {
-  background-color: #fbfbfb;
-  background-image: url('../gfx/bg-texture-light.gif');
-  font-family: Helvetica, Arial, sans-serif;
-  font-weight: normal;
-  text-transform: lowercase;
-}
-.ui-collapsible-set .ui-collapsible-heading .ui-btn-hover-c {
-  background-image: none;
-  background-color: #fdfdfd;
-  font-family: Helvetica, Arial, sans-serif;
-  font-weight: normal;
-  text-transform: lowercase;
-}
-.ui-collapsible-set .ui-collapsible-content .ui-btn {
-  -moz-box-shadow: none;
-  -webkit-box-shadow: none;
-  box-shadow: none;
-  -webkit-border-radius: 20px;
-  -moz-border-radius: 20px;
-  border-radius: 20px;
-  border: solid 1px #e4e4e4;
-}
-.ui-collapsible-set .ui-collapsible-content.ui-body-d {
-  border: none;
-  border-bottom: solid 1px #e4e4e4;
-}
 .ui-controlgroup-label,
 .ui-select .ui-btn {
   font-family: Helvetica, Arial, sans-serif;
@@ -4206,18 +4165,18 @@ textarea.ui-input-text {
 #my-account div[data-role="content"] {
   overflow: hidden;
 }
-.account-content .myaccount-header {
+.s-account-content .s-account-header {
   min-height: 60px;
   -moz-box-shadow: inset 0px -11px 33px rgba(0, 0, 0, 0.2);
   -webkit-box-shadow: inset 0px -11px 33px rgba(0, 0, 0, 0.2);
   box-shadow: inset 0px -11px 33px rgba(0, 0, 0, 0.2);
 }
-.account-content .myaccount-header .ui-btn,
-.account-content .myaccount-header .s-avatar {
+.s-account-content .s-account-header .ui-btn,
+.s-account-content .s-account-header .s-avatar {
   vertical-align: middle;
   display: inline-block;
 }
-.account-content .myaccount-header .logout-button {
+.s-account-content .s-account-header .logout-button {
   position: absolute;
   right: 4px;
   top: 4px;
@@ -4225,26 +4184,102 @@ textarea.ui-input-text {
   -moz-border-radius: 20px;
   border-radius: 20px;
 }
-.account-content .myaccount-header .logout-button .ui-btn-inner {
+.s-account-content .s-account-header .logout-button .ui-btn-inner {
   padding-left: 20px;
 }
-.account-content .myaccount-header .logout-button .ui-icon-delete {
+.s-account-content .s-account-header .logout-button .ui-icon-delete {
   background-position: -63px -36px;
 }
-.account-content .myaccount-quicklinks {
+.s-account-content .myaccount-quicklinks {
   margin-top: -10px;
 }
-.account-content .ui-collapsible-set {
+.s-account-content .ui-collapsible-set {
   margin-bottom: -2px;
 }
-.account-content .ui-bar {
+.s-account-content .ui-bar {
   -moz-box-shadow: 0 -1px 3px rgba(0, 0, 0, 0.05);
   -webkit-box-shadow: 0 -1px 3px rgba(0, 0, 0, 0.05);
   box-shadow: 0 -1px 3px rgba(0, 0, 0, 0.05);
   border-bottom: solid 1px #cccccc;
 }
-.account-content .ui-bar .ui-btn-text {
+.s-account-content .ui-bar .ui-btn-text {
   padding-left: 8px;
+}
+.s-account-content .ui-listview li.ui-btn {
+  margin-top: 1px;
+  border-bottom: solid 1px #e4e4e4;
+}
+.s-account-content .ui-listview li.ui-btn .ui-btn-inner {
+  padding: 0px 40px 0px 0px;
+}
+.s-account-content .ui-listview li.ui-btn .ui-icon {
+  left: auto;
+  right: 8px;
+}
+.s-account-content .ui-listview li.ui-btn .ui-icon-arrow-r {
+  background-position: -99px -36px;
+}
+.s-account-content .ui-listview li.ui-btn-up-c {
+  background-color: #fbfbfb !important;
+  background-image: url('../gfx/bg-texture-light.gif') !important;
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight: normal;
+  text-transform: lowercase;
+}
+.s-account-content .ui-listview li.ui-btn-hover-c {
+  background-image: none!important;
+  background-color: #fdfdfd !important;
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight: normal;
+  text-transform: lowercase;
+}
+.s-account-content .ui-collapsible-set {
+  margin-left: -8px;
+  margin-right: -8px;
+}
+.s-account-content .ui-collapsible-set .ui-collapsible-heading .ui-btn {
+  margin-top: 1px;
+  border-bottom: solid 1px #e4e4e4;
+}
+.s-account-content .ui-collapsible-set .ui-collapsible-heading .ui-btn .ui-btn-inner {
+  padding: 16px 40px 16px 16px;
+}
+.s-account-content .ui-collapsible-set .ui-collapsible-heading .ui-btn .ui-icon {
+  left: auto;
+  right: 8px;
+}
+.s-account-content .ui-collapsible-set .ui-collapsible-heading .ui-btn .ui-icon-plus {
+  background-position: -207px -36px;
+}
+.s-account-content .ui-collapsible-set .ui-collapsible-heading .ui-btn .ui-icon-minus {
+  background-position: -171px -36px;
+}
+.s-account-content .ui-collapsible-set .ui-collapsible-heading .ui-btn-up-c {
+  background-color: #fbfbfb;
+  background-image: url('../gfx/bg-texture-light.gif');
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight: normal;
+  text-transform: lowercase;
+}
+.s-account-content .ui-collapsible-set .ui-collapsible-heading .ui-btn-hover-c {
+  background-image: none;
+  background-color: #fdfdfd;
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight: normal;
+  text-transform: lowercase;
+}
+.s-account-content .ui-collapsible-set .ui-collapsible-content .ui-btn {
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  border-radius: 20px;
+  border: solid 1px #e4e4e4;
+}
+.s-account-content .ui-collapsible-set .ui-collapsible-content.ui-body-d {
+  border: none;
+  border-bottom: solid 1px #e4e4e4;
 }
 .s-linked-services .ui-collapsible-heading .ui-btn-inner {
   padding: 16px 40px 16px 16px;

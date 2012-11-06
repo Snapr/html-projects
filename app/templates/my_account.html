@@ -12,16 +12,16 @@
         </div>
     </div>
     <div data-role="content" data-theme="c" data-ajax="false">
-        <div class="account-content x-content">
+        <div class="s-account-content x-content">
 
 
-            <div class="myaccount-header page-inset-header ui-body-c">
+            <div class="s-account-header s-inline-header ui-body-c">
                 <div class="ui-content">
                     <a class="username" href="#/feed/?username=<%= username %>">
                         <% if(initial){ %>
-                            <div class="user-icon-small"></div>
+                            <div class="s-avatar"></div>
                         <% }else{ %>
-                            <div class="user-icon-small" style="background-image: url('<%= config.get('avatar_url') %>/<%= user_id %>?size=large&_salt=<%= settings.profile.avatar_type %>');"></div>
+                            <div class="s-avatar" style="background-image: url('<%= config.get('avatar_url') %>/<%= user_id %>?size=large&_salt=<%= settings.profile.avatar_type %>');"></div>
                         <% } %>
                         <%= display_username %>
                     </a>
