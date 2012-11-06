@@ -1439,7 +1439,7 @@ div.ps-carousel-item-loading {
   z-index: 100;
   background-image: url('gfx/map-current-location-marker.png');
 }
-.s-photo-map #s-map-alert {
+.s-photo-map .s-map-alert {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -1447,7 +1447,7 @@ div.ps-carousel-item-loading {
   margin-left: -80px;
   margin-top: -30px;
 }
-.s-photo-map #s-map-alert .s-alert-text {
+.s-photo-map .s-map-alert .s-alert-text {
   background-color: white;
   padding: 6px;
   padding-left: 48px;
@@ -1462,7 +1462,7 @@ div.ps-carousel-item-loading {
   -webkit-box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
 }
-.s-photo-map #s-map-alert .s-alert-text .ui-icon-no-images {
+.s-photo-map .s-map-alert .s-alert-text .ui-icon-no-images {
   position: absolute;
   left: 9px;
   top: 3px;
