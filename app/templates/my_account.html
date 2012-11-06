@@ -106,40 +106,40 @@
                         <div data-role="collapsible" data-collapsed="true" class="x-notifications my-account-notifications">
                             <h3>Notifications</h3>
                             <fieldset data-role="controlgroup ui-body-c">
-                                <div data-role="fieldcontain" class="switch-setting">
-                                    <span class="setting-label">Follows</span>
+                                <div data-role="fieldcontain" class="s-switch-setting">
+                                    <span class="s-setting-label">Follows</span>
                                     <select  name="notify_when_added_to_group" id="my-account-notify-follow" data-role="slider" data-mini="true">
                                         <option value="false">Off</option>
                                         <option value="true" <% if (settings.profile.notify_when_added_to_group){%>selected<%}%>>On</option>
                                     </select>
                                 </div>
 
-                                <div data-role="fieldcontain" class="switch-setting">
-                                    <span class="setting-label">Likes</span>
+                                <div data-role="fieldcontain" class="s-switch-setting">
+                                    <span class="s-setting-label">Likes</span>
                                     <select name="notify_when_image_favorited" id="my-account-notify-favorite" data-role="slider" data-mini="true">
                                         <option value="false">Off</option>
                                         <option value="true" <% if (settings.profile.notify_when_image_favorited){%>selected<%}%>>On</option>
                                     </select>
                                 </div>
 
-                                <div data-role="fieldcontain" class="switch-setting">
-                                    <span class="setting-label">Comments</span>
+                                <div data-role="fieldcontain" class="s-switch-setting">
+                                    <span class="s-setting-label">Comments</span>
                                     <select name="notify_when_comment_added" id="my-account-notify-comment" data-role="slider" data-mini="true">
                                         <option value="false">Off</option>
                                         <option value="true" <% if (settings.profile.notify_when_comment_added){%>selected<%}%>>On</option>
                                     </select>
                                 </div>
 
-                                <div data-role="fieldcontain" class="switch-setting">
-                                    <span class="setting-label">Comments on Comments</span>
+                                <div data-role="fieldcontain" class="s-switch-setting">
+                                    <span class="s-setting-label">Comments on Comments</span>
                                     <select name="notify_after_comment" id="my-account-notify-comment-after" data-role="slider" data-mini="true">
                                         <option value="false">Off</option>
                                         <option value="true" <% if (settings.profile.notify_after_comment){%>selected<%}%>>On</option>
                                     </select>
                                 </div>
 
-                                <div data-role="fieldcontain" class="switch-setting">
-                                    <span class="setting-label">News Updates</span>
+                                <div data-role="fieldcontain" class="s-switch-setting">
+                                    <span class="s-setting-label">News Updates</span>
                                     <select  name="subscribe_to_email_newsletter" id="my-account-notify-snapr" data-role="slider" data-mini="true">
                                         <option value="false">Off</option>
                                         <option value="true" <% if (settings.profile.subscribe_to_email_newsletter){%>selected<%}%>>On</option>
@@ -187,24 +187,24 @@
                         <div data-role="collapsible" data-collapsed="true" class="x-camplus my-account-camplus">
                             <h3>Camera+</h3>
                             <fieldset data-role="controlgroup ui-body-c">
-                                <div data-role="fieldcontain" class="switch-setting">
-                                    <span class="setting-label">Use Camera</span>
+                                <div data-role="fieldcontain" class="s-switch-setting">
+                                    <span class="s-setting-label">Use Camera</span>
                                     <select  name="camplus_camera" id="camplus-use-camera" data-role="slider" data-mini="true">
                                         <option value="false">Off</option>
                                         <option value="true" <% if (camplus.camplus_camera){%>selected<%}%>>On</option>
                                     </select>
                                 </div>
 
-                                <div data-role="fieldcontain" class="switch-setting">
-                                    <span class="setting-label">Edit With Camera+</span>
+                                <div data-role="fieldcontain" class="s-switch-setting">
+                                    <span class="s-setting-label">Edit With Camera+</span>
                                     <select name="camplus_edit" id="camplus-edit" data-role="slider" data-mini="true">
                                         <option value="false">Off</option>
                                         <option value="true" <% if (camplus.camplus_edit){%>selected<%}%>>On</option>
                                     </select>
                                 </div>
 
-                                <div data-role="fieldcontain" class="switch-setting">
-                                    <span class="setting-label">Use Lightbox</span>
+                                <div data-role="fieldcontain" class="s-switch-setting">
+                                    <span class="s-setting-label">Use Lightbox</span>
                                     <select name="camplus_lightbox" id="camplus-lightbox" data-role="slider" data-mini="true">
                                         <option value="false">Off</option>
                                         <option value="true" <% if (camplus.camplus_lightbox){%>selected<%}%>>On</option>

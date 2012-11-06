@@ -1447,7 +1447,7 @@ div.ps-carousel-item-loading {
   margin-left: -80px;
   margin-top: -30px;
 }
-.s-photo-map #s-map-alert .s-map-image-alert {
+.s-photo-map #s-map-alert .s-alert-text {
   background-color: white;
   padding: 6px;
   padding-left: 48px;
@@ -1462,7 +1462,7 @@ div.ps-carousel-item-loading {
   -webkit-box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
 }
-.s-photo-map #s-map-alert .s-map-image-alert .ui-icon-no-images {
+.s-photo-map #s-map-alert .s-alert-text .ui-icon-no-images {
   position: absolute;
   left: 9px;
   top: 3px;
@@ -1506,7 +1506,7 @@ div.ps-carousel-item-loading {
 .s-photo-map #x-no-results {
   width: 70%;
 }
-.s-photo-map #x-no-results .s-map-image-alert {
+.s-photo-map #x-no-results .s-alert-text {
   background-color: #ffffff;
   padding: 6px;
   padding-left: 48px;

@@ -46,6 +46,28 @@ div[data-role="header"]{
     }
     .ui-btn-center{
         top: 6px;
+        .header-toggle{
+            .ui-btn{
+                .ui-btn-inner{
+                    padding: 0;
+                }
+                .ui-btn-text{
+                    text-indent: -999px;
+                    display: block;
+                    width: 44px;
+                    height: 30px;
+                    .ui-icon{
+                        display: block;
+                        width: 40px;
+                        height: 40px;
+                        position: absolute;
+                        top: -4px;
+                        left: 2px;
+                    }
+
+                }
+            }
+        }   
     }
     
     // The main Icon Only Buttons */
@@ -358,7 +380,6 @@ div[data-role="header"]{
 // @BUTTONS
 // -------------------------
 
-
 .s-logo-button{
     .ui-btn-text{
         .button-font-light();
@@ -447,6 +468,60 @@ div[data-role="header"]{
 }
 
 
+// @SWITCH // Blue iOS style toggles 
+// -----------------------
+
+.ui-slider-switch{
+    .border-radius(@cornersRound);
+    border: @borderGrayLighter;
+    background: white;
+    .ui-slider-label{
+        font-size: 15px;
+        text-transform: uppercase;
+        font-family: @font;
+        text-align: center;
+        color: #999;
+        font-weight: bold;
+        .border-radius(@cornersRound);
+        text-shadow: none;
+        background: white;
+        border: none!important;
+        .box-shadow(inset 0 1px 1px rgba(0, 0, 0, 0.2));
+        &.ui-btn-active{
+            color: white;
+            text-shadow: rgba(0, 0, 0, .5) 0px -1px 1px;
+            background: #007FEA;
+            text-shadow: 0 -1px 0px #093B5C;
+            .box-shadow(0 4px 5px -2px rgba(0,0,0,0.3) inset);
+            font-family: @font;
+            
+        }
+    }
+    .ui-slider-handle{
+        border: 1px solid #AAA;
+        background: #F6F6F6;
+        .box-shadow(0 4px 0 -2px #F1F1F1 inset, 0 2em 2em -2em #AAA inset, 0 0 2px rgba(0,0,0,.5));
+        .border-radius(@cornersRound);
+    }
+}
+.s-switch-setting{
+    border-bottom: @borderGrayLighter;
+    margin: 0;
+    padding-bottom: @paddingElement;
+    margin-bottom: @paddingElement;
+    .s-setting-label{
+        font-family: @font!important;
+        line-height: 36px;
+        vertical-align: middle;
+    }
+    .ui-slider-switch{
+        float: right;
+        margin-right: 0;
+        font-family: @font!important;
+    }
+}
+
+
 // NAV BARS
 // -----------------------
 
@@ -471,6 +546,7 @@ div[data-role="header"]{
                 text-shadow: @shadowWhite 0px 1px 0px;
                 .button-font-bold();
                 font-size: @fontSizeUsername;
+                text-transform: lowercase;
             }
             &::after{
                 .arrow-up(@arrow-size, @white, 50% , 51px);
@@ -501,13 +577,6 @@ div[data-role="header"]{
 }
 
 
-
-
-
-
-
-
-
 // @CHECKBOX
 // -------------------------
 
@@ -530,10 +599,50 @@ div[data-role="header"]{
 }
 
 
-
 // @LISTVIEWS
 // -------------------------
 
+
+.ui-collapsible-set{
+    .ui-collapsible-heading{
+        .ui-btn{
+            margin-top:1px;
+            border-bottom: @borderGrayLighter;
+            .ui-btn-inner{
+                padding: 16px 40px 16px 16px;
+            }
+            .ui-icon{
+                left: auto;
+                right: 8px;
+            }
+            .ui-icon-plus{background-position: @gfxIcons-arrow-d-x @gfxIcons-y-med;}
+            .ui-icon-minus{background-position: @gfxIcons-arrow-u-x @gfxIcons-y-med;}
+        }
+        .ui-btn-up-c{
+            background-color: @grayLightBg;
+            background-image:@gfxBgLight;
+            .button-font-light();
+        }
+        .ui-btn-hover-c{
+            background-image: none;
+            background-color: lighten(@grayLightBg, .7%);
+            .button-font-light();
+            
+        }
+    }
+    .ui-collapsible-content{
+        .ui-btn{
+            .box-shadow( none);
+            .border-radius(@cornersRound);
+            border: @borderGrayLighter;
+            
+        }
+        &.ui-body-d{
+            border: none;
+            border-bottom: @borderGrayLighter;
+        }
+    }
+}
 
 
 // @IMAGES
@@ -614,22 +723,7 @@ div[data-role="header"]{
 
 
 .s-feed-view-toggle{
-    .ui-btn-inner{
-        padding: 0;
-    }
     .ui-btn-text{
-        text-indent: -999px;
-        display: block;
-        width: 44px;
-        height: 30px;
-        .ui-icon{
-            display: block;
-            width: 32px;
-            height: 28px;
-            position: absolute;
-            top: 1px;
-            left: 3px;
-        }
         .ui-icon-list-view{background-position: @gfxDark-x @gfxDark-feed-y - 5px;}
         .ui-icon-grid-view{background-position: @gfxDark-x - 2px @gfxDark-grid-y - 6px;}
     }
@@ -1008,66 +1102,7 @@ div[data-role="header"]{
 
 
 
-/* @switch
-over rides theme swatch styles for general blue / white style switch
-*/
-.ui-slider-switch{
 
-    .border-radius(@cornersRound);
-    border: @borderGrayLighter;
-    background: white;
-
-    .ui-slider-label{
-        font-size: 15px;
-        text-transform: uppercase;
-        font-family: @font;
-        
-        text-align: center;
-        color: #999;
-        font-weight: bold;
-        .border-radius(@cornersRound);
-        text-shadow: none;
-        background: white;
-        border: none!important;
-        .box-shadow(inset 0 1px 1px rgba(0, 0, 0, 0.2));
-
-
-        &.ui-btn-active{
-            color: white;
-            text-shadow: rgba(0, 0, 0, .5) 0px -1px 1px;
-            background: #007FEA;
-            text-shadow: 0 -1px 0px #093B5C;
-            .box-shadow(0 4px 5px -2px rgba(0,0,0,0.3) inset);
-            font-family: @font;
-            
-        }
-    }
-
-    .ui-slider-handle{
-        border: 1px solid #AAA;
-        background: #F6F6F6;
-        .box-shadow(0 4px 0 -2px #F1F1F1 inset, 0 2em 2em -2em #AAA inset, 0 0 2px rgba(0,0,0,.5));
-        .border-radius(@cornersRound);
-    }
-
-}
-.switch-setting{
-    border-bottom: @borderGrayLighter;
-    margin: 0;
-    padding-bottom: @paddingElement;
-    margin-bottom: @paddingElement;
-    .setting-label{
-        font-family: @font!important;
-        line-height: 36px;
-        vertical-align: middle;
-    }
-    .ui-slider-switch{
-        float: right;
-        margin-right: 0;
-        font-family: @font!important;
-        
-    }
-}
 
 
 /* Style for inset header as seen on user feed and upload pages */
@@ -1181,46 +1216,6 @@ over rides theme swatch styles for general blue / white style switch
 
 
 
-.ui-collapsible-set{
-    .ui-collapsible-heading{
-        .ui-btn{
-            margin-top:1px;
-            border-bottom: @borderGrayLighter;
-            .ui-btn-inner{
-                padding: 16px 40px 16px 16px;
-            }
-            .ui-icon{
-                left: auto;
-                right: 8px;
-            }
-            .ui-icon-plus{background-position: @gfxIcons-arrow-d-x @gfxIcons-y-med;}
-            .ui-icon-minus{background-position: @gfxIcons-arrow-u-x @gfxIcons-y-med;}
-        }
-        .ui-btn-up-c{
-            background-color: @grayLightBg;
-            background-image:@gfxBgLight;
-            .button-font-light();
-        }
-        .ui-btn-hover-c{
-            background-image: none;
-            background-color: lighten(@grayLightBg, .7%);
-            .button-font-light();
-            
-        }
-    }
-    .ui-collapsible-content{
-        .ui-btn{
-            .box-shadow( none);
-            .border-radius(@cornersRound);
-            border: @borderGrayLighter;
-            
-        }
-        &.ui-body-d{
-            border: none;
-            border-bottom: @borderGrayLighter;
-        }
-    }
-}
 
 /* Icons for linked services */
 .linked-services{
@@ -1380,7 +1375,12 @@ div.ps-carousel-item-loading
     background: url('../gfx/image-load-dark.gif') no-repeat center center;
 }
 
-/* change the icon to a spinner if a button is loading an ajax event */
+
+
+// @SPINNERS
+// ------------------------
+
+// change the icon to a spinner if a button is loading an ajax event */
 .x-ajax-loading{
     .ui-btn-inner{
         overflow: hidden;
@@ -1391,8 +1391,7 @@ div.ps-carousel-item-loading
     }
 }
 
-
-/* light version of spinner action btns on white & dark bg buttons */
+// light version of spinner action btns on white & dark bg buttons */
 .ui-body-c .ui-listview,
 .image-actions,
 .dark-icons{
@@ -1403,7 +1402,7 @@ div.ps-carousel-item-loading
     }
 }
 
-
+// For spinners on dark BG just fade it down a bit */
 .dark-icons{
     .x-ajax-loading{
         .ui-icon{
@@ -1412,21 +1411,7 @@ div.ps-carousel-item-loading
     }
 }
 
-
-/* default element when a search returns no results */
-#no-results {
-    .imagealert {
-        padding: @paddingElement;
-        position: relative;
-        font-style: italic;
-        /* Not going to use icons for now */
-        .ui-icon {
-            display:none;
-        }
-    }
-}
-
-/* Misc Spinner */
+// Misc Spinner */
 .ui-icon-spinner{
     .spinner();
     .spin();
@@ -1438,6 +1423,22 @@ div.ps-carousel-item-loading
         display: none;
     }
 }
+
+
+// default element when a search returns no results */
+#x-no-results {
+    .s-alert-text {
+        padding: @paddingElement;
+        position: relative;
+        font-style: italic;
+        /* Not going to use icons for now */
+        .ui-icon {
+            display:none;
+        }
+    }
+}
+
+
 
 
 
