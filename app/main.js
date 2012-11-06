@@ -232,12 +232,13 @@ require(['config', 'jquery', 'backbone', 'photoswipe', 'auth', 'utils/local_stor
         });
 
         // make photoswipe basebar click
-        $('.ps-caption').live('vclick', function(){
+        $('.ps-caption').live('vclick', function(e){
             var ps = PhotoSwipe.activeInstances[0].instance,
                 src = ps.cache.images[ps.currentIndex].src,
                 id = src.match(/\/(\w{2,6})\.jpg$/)[1];
             ps.hide();
             Backbone.history.navigate('#/feed/?n=1&photo_id=' + id );
+            e.preventDefault();
         });
 
         // camera button
