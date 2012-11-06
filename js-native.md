@@ -124,7 +124,7 @@ Called to cancel an upload (active or queued).
 
 * **Base**: upload
 * **Params**:
-    * **cancel**: The unique ID of the upload
+    * **cancel**: The local_id of the upload
 
 Example:
 
@@ -149,7 +149,29 @@ Example:
 
 As a photo is uploaded call the `upload_progress` javascript function to update the progress display.
 
-# TODO
+Call the function with either a Javascript object or JSON text in the following format
+
+    {
+        "uploads": [
+            {
+                "upload_status": "active",
+                "percent_complete": 27,
+                "local_id": "92135044",
+                "thumbnail": "file:///this/that/92135044.jpg",
+
+                any other parameters that were passed with the snapr://upload call
+
+            }
+        ]
+    }
+
+Valid statuses:
+
+* waiting
+* active
+* completed
+* canceled
+
 
 
 
