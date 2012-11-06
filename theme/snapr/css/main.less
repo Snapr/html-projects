@@ -1,9 +1,9 @@
 //
-// COMPONENTS - Specific to this theme */
+// SNAPR THEME
 // --------------------------------------------------
 
 
-// BROWSER DEFAULTS
+// @DEFAULTS
 // -------------------------
 
 strong{
@@ -46,7 +46,7 @@ div[data-role="header"]{
     }
     .ui-btn-center{
         top: 6px;
-        .header-toggle{
+        .s-header-toggle{
             .ui-btn{
                 .ui-btn-inner{
                     padding: 0;
@@ -91,6 +91,8 @@ div[data-role="header"]{
             .box-shadow(none);
         }
     }
+    
+    // Tweaks for user icon thing in header
     .join-block .ui-btn-icon-left{
         width: auto;
         .ui-btn-inner {
@@ -129,10 +131,27 @@ div[data-role="header"]{
     
 }
 
+.s-inline-header{
+    margin-left: -@padding * 2;
+    margin-right: -@padding * 2;
+    position: relative;
+    background-color: @grayLightBg;
+    .border-top-radius (@cornersPage);
+    .box-shadow(inset 5px 0 20px rgba(0, 0, 0, 0.2));
+    a{
+        color: @grayDarkBg;  
+    }
+}
 
 
 // @CONTENT
 // -------------------------
+
+
+div[data-role="page"],
+div[data-role="dialog"]{
+    .border-radius(@cornersPage);
+}
 
 .s-username{
     .username-font();
@@ -170,7 +189,6 @@ div[data-role="header"]{
     }
 }
 
-
 .s-warning-message{
     padding: @padding * 2;
     background-color: @snaprYellow;
@@ -179,120 +197,26 @@ div[data-role="header"]{
 }
 
 
-
-// @TABBAR
+// @FOOTER
 // -------------------------
 
-// Make sure Corners at bottom of pages aren't rounded when tab bar is present
+.s-inline-footer{
+    margin: @padding * 2 -@padding * 2 0 -@padding * 2;
+    .border-bottom-radius(@cornersPage);
 
-*[data-tab-bar="true"]{
-    padding-bottom: @tabBarHeight;
-    .border-bottom-radius(0);
-    div[data-role="content"]{
-        .border-bottom-radius(0);
+    &.s-dash-footer .ui-content{
+        padding: 0;
     }
-    .s-inline-footer{
-        .border-bottom-radius(0);
-        &.s-feed-footer{
+    
+    .ui-grid-a{
+        .ui-block-a{
             .ui-btn{
-                .border-bottom-radius(0);
+                margin-right: @paddingElement / 2;
             }
         }
-    }
-}
-
-
-// Custom Fiddles for Tab Bar
-.s-tab-bar{
-    background-color: @black;
-    .ui-navbar {
-        .darkGrad();
-        .border-bottom-radius(@cornersPage);
-        padding: 3px 0;
-        border-top: solid lighten(@grayDarkBg, 20%) 1px;
-
-        .ui-btn{
-            border: none;
-            margin: 0 3px!important;
-            .border-radius (3px)!important;
-            &.ui-btn-up-b{
-                background: transparent;
-            }
-            &.ui-btn-hover-b{
-                background: lighten(@grayDarkBg, 2%);
-                color: @grayLight;
-            }
-            &.ui-btn-down-b,
-            &.ui-btn-active{
-                background: @grayDarkBg;
-                background-color: @grayDarkBgTint;
-                .box-shadow(inset 0px 2px 4px 2px rgba(0, 0, 0, .1))!important;
-                color: white;
-                text-shadow: @shadowDarker 0px 1px 1px;
-            }
-        }
-        // Match rounded corners of full palette
-        li:first-child .ui-btn{
-            .border-bottom-left-radius(@cornersPage)!important;
-        }
-        li:last-child .ui-btn{
-            .border-bottom-right-radius(@cornersPage)!important;
-        }
-        .ui-btn-inner {
-            padding-top: 32px!important;
-            padding-bottom: 4px!important;
-            height: 12px;
-            line-height: 12px;
-            padding-left: 1px;
-            padding-right: 1px;
-            .ui-btn-text {
-                font-size: 12px;
-                text-transform: none;
-                text-shadow: @shadowDarker 0px -1px 1px;
-            }
-            .ui-icon {
-                top: 0;
-                margin-left: -@gfxTabBar-grid / 2;
-            }
-        }
-    }
-    .s-tabbar-activity{
-        display: none;
-        .button-font-small();
-        line-height: @fontSizeSmall;
-        min-height: @fontSizeSmall;
-        position: absolute;
-        top: -29px;
-        right:0;
-        margin:0;
-        white-space: nowrap;
-        padding: 8px;
-        .box-shadow(none);
-        .border-top-radius(@corners);
-        .border-bottom-radius(0);
-        .ui-btn-inner{
-            line-height: @fontSizeSmall;
-            min-height: @fontSizeSmall;
-            overflow: visible;
-            .ui-btn-text{
-                font-weight: bold;
-                line-height: @fontSizeSmall;
-                min-height: @fontSizeSmall;
-                font-size: @fontSizeSmall;
-                color: @grayDarkBgTint;
-                text-shadow: @shadowWhite;
-            }
-            .s-activity-count{
-                position: relative;
-                &.icon-left{
-                    padding-left: 24px;
-                    padding-right: @padding;
-                    .ui-icon{
-                        position: absolute;
-                        left: -6px;
-                        top: -8px;
-                    }
-                }
+        .ui-block-b{
+            .ui-btn{
+                margin-left: @paddingElement / 2;
             }
         }
     }
@@ -352,33 +276,9 @@ div[data-role="header"]{
 }
 
 
-// @SEARCH
-// -------------------------
-
-.ui-input-search{
-    &.ui-btn-corner-all{
-        .border-radius(@cornersRound);
-    }
-    &.ui-icon-searchfield::after{
-        margin-top: -18px;
-        margin-left: -@gfxIcons-offset-x;
-    }
-    .ui-input-clear {
-        position: absolute;
-        right: -5px;
-        margin-top: -17px;
-        background: none;
-        border: none!important;
-        .ui-icon-delete{
-            background-position: @gfxIcons-delete-x @gfxIcons-y-light;
-        }
-    }
-}
-
-
-
 // @BUTTONS
 // -------------------------
+
 
 .s-logo-button{
     .ui-btn-text{
@@ -468,7 +368,29 @@ div[data-role="header"]{
 }
 
 
-// @SWITCH // Blue iOS style toggles 
+// @CHECKBOX
+// -------------------------
+
+.ui-checkbox{
+    .ui-icon{
+        width: @gfxAction-grid;
+        height: @gfxAction-grid;
+        background-image: url('@{gfx}@{gfxAction}');
+    }
+    .ui-checkbox-on {
+        .ui-icon{background-position: @gfxAction-x @gfxAction-tick-y;}
+        &.ui-btn-active{.ui-icon{background-position: @gfxAction-x-hover @gfxAction-tick-y;}
+    }
+}
+.ui-checkbox-off{
+    .ui-icon{background-position: @gfxAction-x @gfxAction-close-y;}
+    &.ui-btn-active{.ui-icon{background-position: @gfxAction-x-hover @gfxAction-close-y;}
+    }
+    }
+}
+
+
+// @SWITCH 
 // -----------------------
 
 .ui-slider-switch{
@@ -521,8 +443,7 @@ div[data-role="header"]{
     }
 }
 
-
-// NAV BARS
+// @NAV BARS
 // -----------------------
 
 .ui-content{
@@ -577,24 +498,122 @@ div[data-role="header"]{
 }
 
 
-// @CHECKBOX
+// @TABBAR
 // -------------------------
 
-.ui-checkbox{
-    .ui-icon{
-        width: @gfxAction-grid;
-        height: @gfxAction-grid;
-        background-image: url('@{gfx}@{gfxAction}');
+// Make sure Corners at bottom of pages aren't rounded when tab bar is present
+*[data-tab-bar="true"]{
+    padding-bottom: @tabBarHeight;
+    .border-bottom-radius(0);
+    div[data-role="content"]{
+        .border-bottom-radius(0);
     }
-    .ui-checkbox-on {
-        .ui-icon{background-position: @gfxAction-x @gfxAction-tick-y;}
-        &.ui-btn-active{.ui-icon{background-position: @gfxAction-x-hover @gfxAction-tick-y;}
+    .s-inline-footer{
+        .border-bottom-radius(0);
+        &.s-feed-footer{
+            .ui-btn{
+                .border-bottom-radius(0);
+            }
+        }
     }
 }
-.ui-checkbox-off{
-    .ui-icon{background-position: @gfxAction-x @gfxAction-close-y;}
-    &.ui-btn-active{.ui-icon{background-position: @gfxAction-x-hover @gfxAction-close-y;}
+
+
+// Custom Fiddles for Tab Bar
+.s-tab-bar{
+    background-color: @black;
+    .ui-navbar {
+        .darkGrad();
+        .border-bottom-radius(@cornersPage);
+        padding: 3px 0;
+        border-top: solid lighten(@grayDarkBg, 20%) 1px;
+
+        .ui-btn{
+            border: none;
+            margin: 0 3px!important;
+            .border-radius (3px)!important;
+            &.ui-btn-up-b{
+                background: transparent;
+            }
+            &.ui-btn-hover-b{
+                background: lighten(@grayDarkBg, 2%);
+                color: @grayLight;
+            }
+            &.ui-btn-down-b,
+            &.ui-btn-active{
+                background: @grayDarkBg;
+                background-color: @grayDarkBgTint;
+                .box-shadow(inset 0px 2px 4px 2px rgba(0, 0, 0, .1))!important;
+                color: white;
+                text-shadow: @shadowDarker 0px 1px 1px;
+            }
+        }
+        // Match rounded corners of full palette
+        li:first-child .ui-btn{
+            .border-bottom-left-radius(@cornersPage)!important;
+        }
+        li:last-child .ui-btn{
+            .border-bottom-right-radius(@cornersPage)!important;
+        }
+        .ui-btn-inner {
+            padding-top: 32px!important;
+            padding-bottom: 4px!important;
+            height: 12px;
+            line-height: 12px;
+            padding-left: 1px;
+            padding-right: 1px;
+            .ui-btn-text {
+                font-size: 12px;
+                text-transform: none;
+                text-shadow: @shadowDarker 0px -1px 1px;
+            }
+            .ui-icon {
+                top: 0;
+                margin-left: -@gfxTabBar-grid / 2;
+            }
+        }
     }
+    .s-tabbar-activity{
+        display: none;        
+        .button-font-small();
+        line-height: @fontSizeSmall;
+        min-height: @fontSizeSmall;
+        position: absolute;
+        top: -29px;
+        right:0;
+        margin:0;
+        white-space: nowrap;
+        padding: 8px;
+        .box-shadow(none);
+        .border-top-radius(@corners);
+        .border-bottom-radius(0);
+    
+        
+        .ui-btn-inner{
+            line-height: @fontSizeSmall;
+            min-height: @fontSizeSmall;
+            overflow: visible;
+            .ui-btn-text{
+                font-weight: bold;
+                line-height: @fontSizeSmall;
+                min-height: @fontSizeSmall;
+                font-size: @fontSizeSmall;
+                color: @grayDarkBgTint;
+                text-shadow: @shadowWhite;
+            }
+            .s-activity-count{
+                position: relative;
+                &.icon-left{
+                    padding-left: 24px;
+                    padding-right: @padding;
+                    .ui-icon{
+                        position: absolute;
+                        left: -6px;
+                        top: -8px;
+                    }
+                }
+            }
+        }
     }
 }
 
@@ -640,6 +659,56 @@ div[data-role="header"]{
         &.ui-body-d{
             border: none;
             border-bottom: @borderGrayLighter;
+        }
+    }
+}
+
+
+// @FORMS
+// -------------------------
+
+.ui-controlgroup-label,
+.ui-select .ui-btn{
+    font-family: @font;
+    text-transform: lowercase;
+    text-align: left;
+}
+
+input.ui-input-text,
+textarea.ui-input-text {
+    background:transparent;
+    border: @borderGrayLight;
+    font-family:@font;
+    outline: 0;
+    line-height: 1.4;
+    background-color: @white;
+    color: @grayDark;
+    font-size: @fontSize;
+    padding: @paddingElement;
+    width: 100%;
+    .box-sizing(border-box);
+}
+
+
+// @SEARCH
+// -------------------------
+
+.ui-input-search{
+    &.ui-btn-corner-all{
+        .border-radius(@cornersRound);
+    }
+    &.ui-icon-searchfield::after{
+        margin-top: -18px;
+        margin-left: -@gfxIcons-offset-x;
+    }
+    .ui-input-clear {
+        position: absolute;
+        right: -5px;
+        margin-top: -17px;
+        background: none;
+        border: none!important;
+        .ui-icon-delete{
+            background-position: @gfxIcons-delete-x @gfxIcons-y-light;
         }
     }
 }
@@ -724,11 +793,41 @@ div[data-role="header"]{
 
 .s-feed-view-toggle{
     .ui-btn-text{
-        .ui-icon-list-view{background-position: @gfxDark-x @gfxDark-feed-y - 5px;}
-        .ui-icon-grid-view{background-position: @gfxDark-x - 2px @gfxDark-grid-y - 6px;}
+        .ui-icon-list-view{background-position: @gfxDark-x @gfxDark-feed-y ;}
+        .ui-icon-grid-view{background-position: @gfxDark-x - 2px @gfxDark-grid-y - 1px;}
     }
 }
 
+
+// @DASH
+// -------------------------
+
+
+.s-dash-wrapper{
+    min-height: 316px;
+    position: relative;
+}
+
+.s-dash-footer{
+    height: 86px;
+    overflow: hidden;
+    .ui-btn-inner{
+        .ui-icon{
+            background-image: url('@{gfx}@{gfxDash}');                 
+            width: 64px;
+            height: 32px;
+            top: 6px;
+            margin-left: -32px;
+            &.ui-icon-person{
+                background-position: @gfxDash-x @gfxDash-person-y;
+            }
+            &.ui-icon-search{
+                background-position: @gfxDash-x @gfxDash-search-y;
+
+            }
+        }
+    }
+}
 
 
 // @UPLOADING
@@ -984,13 +1083,155 @@ div[data-role="header"]{
 }
 
 
+// @MYACCOUNT
+// -------------------------
+
+
+// Icons for linked services */
+.s-linked-services{
+    .ui-collapsible-heading{
+        .ui-btn-inner{
+            padding: 16px 40px 16px 16px;
+            .ui-btn-text{
+                padding-left: 28px;
+            }
+        }
+        .s-share-icon-small {
+            position: absolute;
+            top: -3px;
+            left: 0;
+        }
+    }
+    li{
+        margin-bottom: 0;
+    }
+
+
+}
+
+// making list style icons look the same is a drag..
+// different markup format between collapsible headings and list links */
+.add-services,
+.share-icons-list{
+    li.ui-li{
+        margin-bottom: 0;
+        .ui-btn-text{
+            padding: 0;
+            width: auto;
+            .ui-link-inherit{
+                padding: 16px 40px 16px 44px!important;
+                position: relative;
+                overflow: visible;
+            }
+        }
+        .s-share-icon-small {
+            position: absolute;
+            top: 14px;
+            left: 16px;
+        }
+    }
+}
+
+
+.s-avatar-select-block{
+    padding-left: 112px;
+    position: relative;
+    min-height: 100px;
+    padding-top: 8px;
+    .s-user-profile-icon{
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+}
+
+
 // @CONNECT
 // -------------------------
 
 
+.add-services{
+    .connect-status{
+        right: @paddingElement;
+        padding-right: @gfxIcons-grid;
+        font-family: @font;
+        text-transform: lowercase;
+        .ui-icon-check{
+            background-position: @gfxIcons-check-x @gfxIcons-y-highlight;
+        }
+    }
+}
+
+
+// @FINDFRIENDS
+// -------------------------
+
+.ff-linking{
+    margin: 12px;
+}
+
 
 // @GALLERIES
 // -------------------------
+
+.ps-toolbar{
+    &.ps-toolbar-top{
+        border: none;
+        .linear-gradient (#000000, #1d1d1d);
+    }
+    &.ps-toolbar-top{
+        .border-bottom-radius(@corners);
+    }
+    .ps-toolbar-previous,
+    .ps-toolbar-next{
+        display: none;
+    }
+    .ps-toolbar-close{
+        .ps-toolbar-content{
+            margin-right: 0px;
+            background-image: url('@{gfx}@{gfxIcons}');
+            background-position: @gfxIcons-delete-x + 5px @gfxIcons-y-light + 5px;
+            width: @topBarHeight;
+            height: @topBarHeight;
+        }
+    }
+
+}
+
+.ps-caption-bottom{
+    .border-top-radius(@corners);
+    border: none;
+    .linear-gradient (#1d1d1d, #000000);
+    .ps-caption-content{
+        font-family: @font;
+        font-size: @fontSize;
+        color: @grayLight;
+        text-align: left;
+        padding: 0 24px 0 32px;
+        background-image: url('../gfx/gallery-quote.png');
+        background-repeat: no-repeat;
+        background-position: 10px 14px;
+        padding-top: 14px;
+        padding-bottom: 16px;
+        &::after{
+            content: " ";
+            width: 36px;
+            height: 36px;
+            display: block;
+            position: absolute;
+            right: 0;
+            top:50%;
+            margin-top: -18px;
+            background-image: url('@{gfx}@{gfxIcons}');
+            background-position: @gfxIcons-arrow-r-x @gfxIcons-y-dark;
+        }
+    }
+}
+
+div.ps-carousel-item-loading
+{
+    background: url('../gfx/image-load-dark.gif') no-repeat center center;
+}
 
 
 
@@ -1101,80 +1342,10 @@ div[data-role="header"]{
 }
 
 
+// @HELP
+// ------------------------
 
-
-
-
-/* Style for inset header as seen on user feed and upload pages */
-.page-inset-header{
-    margin-left: -@padding * 2;
-    margin-right: -@padding * 2;
-    position: relative;
-    background-color: @grayLightBg;
-    .border-top-radius (@cornersPage);
-    .box-shadow(inset 5px 0 20px rgba(0, 0, 0, 0.2));
-    a{
-        color: @grayDarkBg;  
-    }
-}
-
-
-
-
-
-
-.ui-controlgroup-label,
-.ui-select .ui-btn{
-    font-family: @font;
-    text-transform: lowercase;
-    text-align: left;
-}
-
-
-
-/* Offline mode default display */
-.message-overlay{
-    position: absolute;
-    padding-top: @topBarHeight;
-    margin: 0;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    width: 100%;
-    background: none;
-    border: none;
-    z-index: 999;
-    .message-body{
-        margin: @padding * 2;
-        display: block;
-        padding: 0;
-    }
-}
-
-.retry-offline{
-    display: block;
-
-    .ui-icon-connection{
-
-        background-position: @gfxBar-x-d @gfxBar-connection-y;
-    }
-    &.ui-btn-icon-left{
-        .ui-btn-text{
-            padding-left: 32px;
-            padding-right: 32px;
-            text-align: left;
-        }
-        .ui-icon{
-            position: absolute;
-            top: 0;
-            left: 0px;
-            margin-top: 0!important;
-        }
-    }
-}
-
-/* Content shown to new users */
-.helper-content{
+.s-helper-content{
     .ui-body{
         position: relative;
         min-height: @gfxHelper-grid;
@@ -1191,194 +1362,41 @@ div[data-role="header"]{
     }
 }
 
-/* Footer as part of page content like on dash  */
-.inline-footer{
-    margin: @padding * 2 -@padding * 2 0 -@padding * 2;
-    .border-bottom-radius(@cornersPage);
-
-    .ui-grid-a{
-        .ui-block-a{
-            .ui-btn{
-                margin-right: @paddingElement / 2;
-            }
-        }
-        .ui-block-b{
-            .ui-btn{
-                margin-left: @paddingElement / 2;
-            }
-        }
-    }
-}
-
-
-
-
-
-
-
-
-/* Icons for linked services */
-.linked-services{
-    .ui-collapsible-heading{
-        .ui-btn-inner{
-            padding: 16px 40px 16px 16px;
-            .ui-btn-text{
-                padding-left: 28px;
-            }
-        }
-        .s-share-icon-small {
-            position: absolute;
-            top: -3px;
-            left: 0;
-        }
-    }
-    li{
-        margin-bottom: 0;
-    }
-
-
-}
-
-
-/* making list style icons look the same is a drag..
-different markup format between collapsible headings and list links */
-
-.add-services,
-.share-icons-list{
-    li.ui-li{
-        margin-bottom: 0;
-        .ui-btn-text{
-            padding: 0;
-            width: auto;
-            .ui-link-inherit{
-                padding: 16px 40px 16px 44px!important;
-                position: relative;
-                overflow: visible;
-            }
-        }
-        .s-share-icon-small {
-            position: absolute;
-            top: 14px;
-            left: 16px;
-        }
-    }
-}
-
-
-.avatar-select-block{
-    padding-left: 112px;
-    position: relative;
-    min-height: 100px;
-    padding-top: 8px;
-    .user-profile-icon{
-        position: absolute;
-        left: 0;
-        top: 0;
-        .user-icon-big{
-            .border-radius(@cornersPage);
-        }
-    }
-}
-
-/* @findfriends custom stylz */
-.ff-linking{
-    margin: 12px;
-}
-
-
-/*
-* @join PAGE
-*/
-.linked-message{
-    display: none;
-}
-
-/*
-* @connect - DIALOG
-*/
-
-.add-services{
-    .connect-status{
-        right: @paddingElement;
-        padding-right: @gfxIcons-grid;
-        font-family: @font;
-        text-transform: lowercase;
-        .ui-icon-check{
-            background-position: @gfxIcons-check-x @gfxIcons-y-highlight;
-        }
-    }
-}
-
-
-
-/*
-* @photoswipe - Custom
-*   css hacks to tweak the photoswipe gallery
-*/
-
-.ps-toolbar{
-    &.ps-toolbar-top{
-        border: none;
-        .linear-gradient (#000000, #1d1d1d);
-    }
-    &.ps-toolbar-top{
-        .border-bottom-radius(@corners);
-    }
-    .ps-toolbar-previous,
-    .ps-toolbar-next{
-        display: none;
-    }
-    .ps-toolbar-close{
-        .ps-toolbar-content{
-            margin-right: 0px;
-            background-image: url('@{gfx}@{gfxIcons}');
-            background-position: @gfxIcons-delete-x + 5px @gfxIcons-y-light + 5px;
-            width: @topBarHeight;
-            height: @topBarHeight;
-        }
-    }
-
-}
-
-.ps-caption-bottom{
-    .border-top-radius(@corners);
-    border: none;
-    .linear-gradient (#1d1d1d, #000000);
-    .ps-caption-content{
-        font-family: @font;
-        font-size: @fontSize;
-        color: @grayLight;
-        text-align: left;
-        padding: 0 24px 0 32px;
-        background-image: url('../gfx/gallery-quote.png');
-        background-repeat: no-repeat;
-        background-position: 10px 14px;
-        padding-top: 14px;
-        padding-bottom: 16px;
-        &::after{
-            content: " ";
-            width: 36px;
-            height: 36px;
-            display: block;
-            position: absolute;
-            right: 0;
-            top:50%;
-            margin-top: -18px;
-            background-image: url('@{gfx}@{gfxIcons}');
-            background-position: @gfxIcons-arrow-r-x @gfxIcons-y-dark;
-        }
-    }
-}
-
-div.ps-carousel-item-loading
-{
-    background: url('../gfx/image-load-dark.gif') no-repeat center center;
-}
-
 
 
 // @SPINNERS
 // ------------------------
+
+
+.ui-loader{
+    margin-left: -40px;
+    margin-top: -40px;
+    padding: 16px;
+    width: 56px;
+    height: 56px;
+    border: none;
+    opacity: 1;
+    background-color: rgba(0,0,0,.8)!important;
+    .box-shadow(none);
+    .ui-icon-loading {
+        background-color: transparent;
+        background-image: url('../gfx/spinner.png');
+        width: 56px;
+        height: 56px;
+        background-size: 56px 56px;
+        background-position: center;
+        -webkit-transform:rotate(0deg) translateZ(0);
+        -webkit-transition-duration:0ms;
+        -webkit-animation-name:loading;
+        -webkit-animation-duration:1.2s;
+        -webkit-animation-iteration-count:infinite;
+        -webkit-animation-timing-function:linear;
+    }
+    h1{
+        display: none;
+    }
+}
+
 
 // change the icon to a spinner if a button is loading an ajax event */
 .x-ajax-loading{
@@ -1425,19 +1443,62 @@ div.ps-carousel-item-loading
 }
 
 
-// default element when a search returns no results */
+// @NORESULTS
+// ------------------------
+
 #x-no-results {
     .s-alert-text {
         padding: @paddingElement;
         position: relative;
         font-style: italic;
-        /* Not going to use icons for now */
+        // Not going to use icons for now 
         .ui-icon {
             display:none;
         }
     }
 }
 
+
+// @OFFLINE
+// ------------------------
+
+.s-message-overlay{
+    position: absolute;
+    padding-top: @topBarHeight;
+    margin: 0;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    background: none;
+    border: none;
+    z-index: 999;
+    .message-body{
+        margin: @padding * 2;
+        display: block;
+        padding: 0;
+    }
+}
+
+.s-retry-offline{
+    display: block;
+    .ui-icon-connection{
+        background-position: @gfxBar-x-d @gfxBar-connection-y;
+    }
+    &.ui-btn-icon-left{
+        .ui-btn-text{
+            padding-left: 32px;
+            padding-right: 32px;
+            text-align: left;
+        }
+        .ui-icon{
+            position: absolute;
+            top: 0;
+            left: 0px;
+            margin-top: 0!important;
+        }
+    }
+}
 
 
 

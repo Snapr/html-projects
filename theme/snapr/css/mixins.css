@@ -1,5 +1,0 @@
-/* keep the corners 45 degrees otherwise they look crap
-   apply these to elements using the ::after psuedo class..
-*/
-@-webkit-keyframes loading{from{ -webkit-transform:rotate(0deg) translatez(0)}to{-webkit-transform:rotate(360deg) translatez(0)}}
-/* This beautiful CSS-File has been crafted with LESS (lesscss.org) and compiled by simpLESS (wearekiss.com/simpless) */

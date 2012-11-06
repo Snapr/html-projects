@@ -5282,16 +5282,16 @@ over rides theme swatch styles for general blue / white style switch
   text-transform: lowercase;
   text-align: left;
 }
-.header-toggle .ui-btn .ui-btn-inner {
+.s-header-toggle .ui-btn .ui-btn-inner {
   padding: 0;
 }
-.header-toggle .ui-btn .ui-btn-text {
+.s-header-toggle .ui-btn .ui-btn-text {
   text-indent: -999px;
   display: block;
   width: 44px;
   height: 30px;
 }
-.header-toggle .ui-btn .ui-btn-text .ui-icon {
+.s-header-toggle .ui-btn .ui-btn-text .ui-icon {
   display: block;
   width: 40px;
   height: 40px;
@@ -5322,7 +5322,7 @@ over rides theme swatch styles for general blue / white style switch
   right: 0;
 }
 /* Offline mode default display */
-.message-overlay {
+.s-message-overlay {
   position: absolute;
   padding-top: 46px;
   margin: 0;
@@ -5334,37 +5334,37 @@ over rides theme swatch styles for general blue / white style switch
   border: none;
   z-index: 999;
 }
-.message-overlay .message-body {
+.s-message-overlay .message-body {
   margin: 8px;
   display: block;
   padding: 0;
 }
-.retry-offline {
+s-retry-offline {
   display: block;
 }
-.retry-offline .ui-icon-connection {
+s-retry-offline .ui-icon-connection {
   background-position: -96px -320px;
 }
-.retry-offline.ui-btn-icon-left .ui-btn-text {
+s-retry-offline.ui-btn-icon-left .ui-btn-text {
   padding-left: 32px;
   padding-right: 32px;
   text-align: left;
 }
-.retry-offline.ui-btn-icon-left .ui-icon {
+s-retry-offline.ui-btn-icon-left .ui-icon {
   position: absolute;
   top: 0;
   left: 0px;
   margin-top: 0!important;
 }
 /* Content shown to new users */
-.helper-content .ui-body {
+.s-helper-content .ui-body {
   position: relative;
   min-height: 96px;
 }
-.helper-content .icon-left {
+.s-helper-content .icon-left {
   padding: 8px 8px 16px 104px;
 }
-.helper-content .helper-icons {
+.s-helper-content .helper-icons {
   position: absolute;
   top: 0;
   left: 0;
@@ -5550,18 +5550,18 @@ over rides theme swatch styles for general blue / white style switch
   border-bottom: solid 1px #e4e4e4;
 }
 /* Icons for linked services */
-.linked-services .ui-collapsible-heading .ui-btn-inner {
+.s-linked-services .ui-collapsible-heading .ui-btn-inner {
   padding: 16px 40px 16px 16px;
 }
-.linked-services .ui-collapsible-heading .ui-btn-inner .ui-btn-text {
+.s-linked-services .ui-collapsible-heading .ui-btn-inner .ui-btn-text {
   padding-left: 28px;
 }
-.linked-services .ui-collapsible-heading .s-share-icon-small {
+.s-linked-services .ui-collapsible-heading .s-share-icon-small {
   position: absolute;
   top: -3px;
   left: 0;
 }
-.linked-services li {
+.s-linked-services li {
   margin-bottom: 0;
 }
 /* making list style icons look the same is a drag..
@@ -5583,18 +5583,18 @@ different markup format between collapsible headings and list links */
   top: 14px;
   left: 16px;
 }
-.avatar-select-block {
+.s-avatar-select-block {
   padding-left: 112px;
   position: relative;
   min-height: 100px;
   padding-top: 8px;
 }
-.avatar-select-block .s-profile-icon {
+.s-avatar-select-block .s-profile-icon {
   position: absolute;
   left: 0;
   top: 0;
 }
-.avatar-select-block .s-profile-icon .user-icon-big {
+.s-avatar-select-block .s-profile-icon .user-icon-big {
   -moz-border-radius: 8px;
   -webkit-border-radius: 8px;
   border-radius: 8px;
@@ -5882,39 +5882,39 @@ body.x-browser-testing .ui-footer, body.x-browser-testing .ui-footer-fixed {
   /*padding-bottom: 0;*/
 
 }
-.dash-wrapper {
+.s-dash-wrapper {
   min-height: 316px;
   position: relative;
 }
-.dash-wrapper ul {
+.s-dash-wrapper ul {
   margin: 0;
 }
-.dash-footer {
+.s-dash-footer {
   height: 86px;
   overflow: hidden;
 }
-.dash-footer .ui-btn-inner .ui-icon {
+.s-dash-footer .ui-btn-inner .ui-icon {
   background-image: url('../gfx/dash-icons.png');
   width: 64px;
   height: 32px;
   top: 6px;
   margin-left: -32px;
 }
-.dash-footer .ui-btn-inner .ui-icon.ui-icon-person {
+.s-dash-footer .ui-btn-inner .ui-icon.ui-icon-person {
   background-position: 0 0px;
 }
-.dash-footer .ui-btn-inner .ui-icon.ui-icon-search {
+.s-dash-footer .ui-btn-inner .ui-icon.ui-icon-search {
   background-position: 0 -32px;
 }
-.dash-edit-done {
+.s-dash-edit-done {
   display: none;
 }
-.dash-edit-done .ui-btn {
+.s-dash-edit-done .ui-btn {
   -moz-border-radius: 20px;
   -webkit-border-radius: 20px;
   border-radius: 20px;
 }
-.dash-edit-done .ui-btn .ui-icon-check {
+.s-dash-edit-done .ui-btn .ui-icon-check {
   background-position: -243px -144px;
 }
 #dash.edit {
@@ -5927,13 +5927,13 @@ body.x-browser-testing .ui-footer, body.x-browser-testing .ui-footer-fixed {
   /* Tick state for button while in edit mode */
 
 }
-#dash.edit .dash-edit-done {
+#dash.edit .s-dash-edit-done {
   display: block;
 }
-#dash.edit .dash-wrapper {
+#dash.edit .s-dash-wrapper {
   margin-top: 94px;
 }
-#dash.edit .dash-footer {
+#dash.edit .s-dash-footer {
   position: absolute;
   top: 0;
   width: 100%;
@@ -8037,7 +8037,7 @@ body.x-browser-testing .ui-footer, body.x-browser-testing .ui-footer-fixed {
     -webkit-background-size: 80px 520px;
     background-size: 80px 520px;
   }
-  .dash-footer .ui-btn-inner .ui-icon {
+  .s-dash-footer .ui-btn-inner .ui-icon {
     background-image: url('../gfx/retina/dash-icons.png');
     -moz-background-size: 64px 64px;
     -o-background-size: 64px 64px;

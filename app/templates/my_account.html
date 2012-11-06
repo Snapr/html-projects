@@ -31,7 +31,7 @@
 
             <div class="myaccount-quicklinks">
                 <a class="ui-bar top-no-arrow" data-role="button" data-theme="e" >
-                    <em>Quick Links</em>
+                    <strong>Quick Links</strong>
                 </a>
                 <ul data-role="listview">
                     <li>
@@ -43,7 +43,7 @@
 
             <div class="myaccount-settings">
                 <a class="ui-bar top-no-arrow" data-role="button" data-theme="e" >
-                    <em>Settings</em>
+                    <strong>Settings</strong>
                 </a>
                 <% if(!initial){ %>
                     <div data-role="collapsible-set" data-theme="c" data-content-theme="d">
@@ -52,9 +52,9 @@
                             <h3>Profile</h3>
 
                             <fieldset data-role="controlgroup" class="x-avatar my-account-avatar">
-                               <div class="avatar-select-block">
-                                    <span class="user-profile-icon">
-                                        <div class="user-icon-big" style="background-image: url('<%= config.get('avatar_url') %>/<%= user_id %>?size=large&_salt=<%= settings.profile.avatar_type %>');"></div>
+                               <div class="s-avatar-select-block">
+                                    <span class="s-user-profile-icon">
+                                        <div class="s-avatar-large" style="background-image: url('<%= config.get('avatar_url') %>/<%= user_id %>?size=large&_salt=<%= settings.profile.avatar_type %>');"></div>
                                     </span>
 
                                     <input type="radio" name="my-account-avatar" id="my-account-avatar-twitter" value="twitter" data-role="none"
@@ -148,13 +148,6 @@
 
                             </fieldset>
 
-                            <!-- <div class="ui-grid-b">
-                                    <div class="ui-block-a"></div>
-                                    <div class="ui-block-b"></div>
-                                    <div class="ui-block-c">
-                                        <button data-theme="e" class="save x-save">Save</button>
-                                    </div>
-                            </div> -->
                         </div>
 
                         <div data-role="collapsible" data-collapsed="true" class="x-account my-account-account">
@@ -225,7 +218,7 @@
                     </div><!-- End of Nested Collapsible Set -->
 
                     <a class="ui-bar top-no-arrow connect-heading x-connect-heading" data-role="button" data-theme="e" >
-                        <em>Connect</em>
+                        <strong>Connect</strong>
                     </a>
 
                     <ul class="x-add-services add-services" data-role="listview">
@@ -233,9 +226,9 @@
                     </ul>
 
                     <a class="ui-bar top-no-arrow linked-heading x-linked-heading" data-role="button" data-theme="e" >
-                        <em>Linked Services</em>
+                        <strong>Linked Services</strong>
                     </a>
-                    <div class="linked-services x-linked-services" data-role="collapsible-set" data-theme="c" data-content-theme="d">
+                    <div class="s-linked-services x-linked-services" data-role="collapsible-set" data-theme="c" data-content-theme="d">
                         <!-- dynamic -->
                     </div>
 
@@ -244,7 +237,7 @@
 
              <div class="myaccount-info">
                     <a class="ui-bar top-no-arrow" data-role="button" data-theme="e" >
-                        <em>Info</em>
+                        <strong>Info</strong>
                     </a>
                     <ul data-role="listview">
                         <li>
