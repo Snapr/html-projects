@@ -4203,6 +4203,49 @@ textarea.ui-input-text {
 .camplus-icon span {
   display: none;
 }
+#my-account div[data-role="content"] {
+  overflow: hidden;
+}
+.account-content .myaccount-header {
+  min-height: 60px;
+  -moz-box-shadow: inset 0px -11px 33px rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: inset 0px -11px 33px rgba(0, 0, 0, 0.2);
+  box-shadow: inset 0px -11px 33px rgba(0, 0, 0, 0.2);
+}
+.account-content .myaccount-header .ui-btn,
+.account-content .myaccount-header .s-avatar {
+  vertical-align: middle;
+  display: inline-block;
+}
+.account-content .myaccount-header .logout-button {
+  position: absolute;
+  right: 4px;
+  top: 4px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  border-radius: 20px;
+}
+.account-content .myaccount-header .logout-button .ui-btn-inner {
+  padding-left: 20px;
+}
+.account-content .myaccount-header .logout-button .ui-icon-delete {
+  background-position: -63px -36px;
+}
+.account-content .myaccount-quicklinks {
+  margin-top: -10px;
+}
+.account-content .ui-collapsible-set {
+  margin-bottom: -2px;
+}
+.account-content .ui-bar {
+  -moz-box-shadow: 0 -1px 3px rgba(0, 0, 0, 0.05);
+  -webkit-box-shadow: 0 -1px 3px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 -1px 3px rgba(0, 0, 0, 0.05);
+  border-bottom: solid 1px #cccccc;
+}
+.account-content .ui-bar .ui-btn-text {
+  padding-left: 8px;
+}
 .s-linked-services .ui-collapsible-heading .ui-btn-inner {
   padding: 16px 40px 16px 16px;
 }
