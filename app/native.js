@@ -1,4 +1,4 @@
-/*global define */
+/*global define _ */
 define(['config', 'collections/upload_progress'], function(config, upload_progress_collection){
     //export
 
@@ -26,11 +26,9 @@ define(['config', 'collections/upload_progress'], function(config, upload_progre
         }
     }
 
-    window.upload_progress = function( data, datatype ){
-        // data may be passed as an object or a string as specified via the data_type param
-        // defualts to JSON object, if 'json_string' it will be a text string that needs to be parsed..
-        // dont foget to convert it before you do anything with it..
-        if (datatype == 'json_text'){
+    window.upload_progress = function( data ){
+        // data may be passed as an object or a string
+        if (_.isString(data)){
             data = JSON.parse(data);
         }
 
