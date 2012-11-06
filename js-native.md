@@ -382,11 +382,6 @@ If there is no saved access token the app can show a new user welcome screen.
 
 When loading up the site add new_user=true to the existing query string.
 
-
 Linking Services
-
-upload_count
-
-upload_completed
 
 index.html#/connect/?photo_id=V36&to_link=twitter,foursquare,facebook,tumblr&redirect_url=index.html
