@@ -1912,7 +1912,7 @@ a.ui-link-inherit {
   -webkit-border-radius: 20px;
   border-radius: 20px;
 }
-.trans-bg .ui-btn-up-a, .trans-bg .ui-input-search, .trans-bg .s-map-loading {
+.s-trans-bg .ui-btn-up-a, .s-trans-bg .ui-input-search, .s-trans-bg .s-map-loading {
   border: none;
   border-bottom: solid 1px rgba(255, 255, 255, 0.4);
   background-color: #282727;
@@ -1920,15 +1920,15 @@ a.ui-link-inherit {
   -webkit-box-shadow: inset 0 3px 20px #000000;
   box-shadow: inset 0 3px 20px #000000;
 }
-.trans-bg .ui-btn-up-a.ui-shadow, .trans-bg .ui-input-search.ui-shadow, .trans-bg .s-map-loading.ui-shadow {
+.s-trans-bg .ui-btn-up-a.ui-shadow, .s-trans-bg .ui-input-search.ui-shadow, .s-trans-bg .s-map-loading.ui-shadow {
   -moz-box-shadow: inset 0 3px 20px #000000;
   -webkit-box-shadow: inset 0 3px 20px #000000;
   box-shadow: inset 0 3px 20px #000000;
 }
-.trans-bg .ui-btn-up-a .ui-btn-inner, .trans-bg .ui-input-search .ui-btn-inner, .trans-bg .s-map-loading .ui-btn-inner {
+.s-trans-bg .ui-btn-up-a .ui-btn-inner, .s-trans-bg .ui-input-search .ui-btn-inner, .s-trans-bg .s-map-loading .ui-btn-inner {
   border: none;
 }
-.trans-bg .ui-btn-hover-a, .trans-bg .ui-btn-down-a, .trans-bg .ui-btn-active-a {
+.s-trans-bg .ui-btn-hover-a, .s-trans-bg .ui-btn-down-a, .s-trans-bg .ui-btn-active-a {
   border: none;
   border-bottom: solid 1px rgba(255, 255, 255, 0.1);
   background: none;
@@ -1937,12 +1937,12 @@ a.ui-link-inherit {
   -webkit-box-shadow: inset 0 3px 20px #000000;
   box-shadow: inset 0 3px 20px #000000;
 }
-.trans-bg .ui-btn-hover-a.ui-shadow, .trans-bg .ui-btn-down-a.ui-shadow, .trans-bg .ui-btn-active-a.ui-shadow {
+.s-trans-bg .ui-btn-hover-a.ui-shadow, .s-trans-bg .ui-btn-down-a.ui-shadow, .s-trans-bg .ui-btn-active-a.ui-shadow {
   -moz-box-shadow: inset 0 3px 20px #000000;
   -webkit-box-shadow: inset 0 3px 20px #000000;
   box-shadow: inset 0 3px 20px #000000;
 }
-.trans-bg .ui-btn-hover-a .ui-btn-inner, .trans-bg .ui-btn-down-a .ui-btn-inner, .trans-bg .ui-btn-active-a .ui-btn-inner {
+.s-trans-bg .ui-btn-hover-a .ui-btn-inner, .s-trans-bg .ui-btn-down-a .ui-btn-inner, .s-trans-bg .ui-btn-active-a .ui-btn-inner {
   border: none;
 }
 .ui-body-b {
@@ -2686,7 +2686,7 @@ a.ui-link-inherit {
   top: -11px;
   left: 50%;
 }
-.trans-bg .ui-btn-up-c {
+.s-trans-bg .ui-btn-up-c {
   border: none;
   border-bottom: solid 1px rgba(255, 255, 255, 0.5);
   background: none;
@@ -2698,18 +2698,18 @@ a.ui-link-inherit {
   -webkit-border-radius: 20px;
   border-radius: 20px;
 }
-.trans-bg .ui-btn-up-c.ui-shadow {
+.s-trans-bg .ui-btn-up-c.ui-shadow {
   -moz-box-shadow: inset 0 1px 4px rgba(200, 200, 200, 0.3);
   -webkit-box-shadow: inset 0 1px 4px rgba(200, 200, 200, 0.3);
   box-shadow: inset 0 1px 4px rgba(200, 200, 200, 0.3);
 }
-.trans-bg .ui-btn-up-c .ui-btn-inner {
+.s-trans-bg .ui-btn-up-c .ui-btn-inner {
   border: none;
 }
-.trans-bg .ui-btn-up-c .ui-icon-delete {
+.s-trans-bg .ui-btn-up-c .ui-icon-delete {
   background-position: -63px -144px;
 }
-.trans-bg .ui-btn-hover-c, .trans-bg .ui-btn-down-c, .trans-bg .ui-btn-active-c {
+.s-trans-bg .ui-btn-hover-c, .s-trans-bg .ui-btn-down-c, .s-trans-bg .ui-btn-active-c {
   border: none;
   border-bottom: solid 1px rgba(255, 255, 255, 0.5);
   background: none;
@@ -2721,12 +2721,12 @@ a.ui-link-inherit {
   -webkit-border-radius: 20px;
   border-radius: 20px;
 }
-.trans-bg .ui-btn-hover-c.ui-shadow, .trans-bg .ui-btn-down-c.ui-shadow, .trans-bg .ui-btn-active-c.ui-shadow {
+.s-trans-bg .ui-btn-hover-c.ui-shadow, .s-trans-bg .ui-btn-down-c.ui-shadow, .s-trans-bg .ui-btn-active-c.ui-shadow {
   -moz-box-shadow: inset 0 1px 4px rgba(200, 200, 200, 0.3);
   -webkit-box-shadow: inset 0 1px 4px rgba(200, 200, 200, 0.3);
   box-shadow: inset 0 1px 4px rgba(200, 200, 200, 0.3);
 }
-.trans-bg .ui-btn-hover-c .ui-btn-inner, .trans-bg .ui-btn-down-c .ui-btn-inner, .trans-bg .ui-btn-active-c .ui-btn-inner {
+.s-trans-bg .ui-btn-hover-c .ui-btn-inner, .s-trans-bg .ui-btn-down-c .ui-btn-inner, .s-trans-bg .ui-btn-active-c .ui-btn-inner {
   border: none;
 }
 .ui-body-c > .ui-listview {
@@ -7401,80 +7401,80 @@ body.x-browser-testing .ui-footer, body.x-browser-testing .ui-footer-fixed {
 .share-photo .s-upload-image-privacy label[for="image-status"].ui-btn-active .ui-btn-text::before {
   content: "Public";
 }
-.share-photo .upload-image-sharing .ui-checkbox {
+.share-photo .s-upload-image-sharing .ui-checkbox {
   margin-right: 8px;
 }
-.share-photo .upload-image-sharing .ui-checkbox.ui-disabled {
+.share-photo .s-upload-image-sharing .ui-checkbox.ui-disabled {
   opacity: .5;
   pointer-events: initial;
 }
-.share-photo .upload-image-sharing .ui-btn {
+.share-photo .s-upload-image-sharing .ui-btn {
   -moz-border-radius: 6px;
   -webkit-border-radius: 6px;
   border-radius: 6px;
 }
-.share-photo .upload-image-sharing .ui-icon {
+.share-photo .s-upload-image-sharing .ui-icon {
   width: 42px;
   height: 42px;
   background-image: url('../gfx/share-icons-large.png');
   display: block;
 }
-.share-photo .upload-image-sharing .ui-btn-text {
+.share-photo .s-upload-image-sharing .ui-btn-text {
   text-indent: -999px;
   display: block;
   height: 42px;
   width: 42px;
   overflow: hidden;
 }
-.share-photo .upload-image-sharing .ui-btn-inner {
+.share-photo .s-upload-image-sharing .ui-btn-inner {
   padding: 0;
 }
-.share-photo .upload-image-sharing label[for="twitter-sharing"] .ui-icon {
+.share-photo .s-upload-image-sharing label[for="twitter-sharing"] .ui-icon {
   background-position: 0 0px;
 }
-.share-photo .upload-image-sharing label[for="twitter-sharing"].ui-checkbox-on {
+.share-photo .s-upload-image-sharing label[for="twitter-sharing"].ui-checkbox-on {
   background-color: #9ed5e8;
   -moz-box-shadow: inset 0 3px 20px #55acc8;
   -webkit-box-shadow: inset 0 3px 20px #55acc8;
   box-shadow: inset 0 3px 20px #55acc8;
 }
-.share-photo .upload-image-sharing label[for="twitter-sharing"].ui-checkbox-on .ui-icon {
+.share-photo .s-upload-image-sharing label[for="twitter-sharing"].ui-checkbox-on .ui-icon {
   background-position: -42px 0px;
 }
-.share-photo .upload-image-sharing label[for="facebook-sharing"] .ui-icon {
+.share-photo .s-upload-image-sharing label[for="facebook-sharing"] .ui-icon {
   background-position: 0 -42px;
 }
-.share-photo .upload-image-sharing label[for="facebook-sharing"].ui-checkbox-on {
+.share-photo .s-upload-image-sharing label[for="facebook-sharing"].ui-checkbox-on {
   background-color: #5e81b4;
   -moz-box-shadow: inset 0 3px 20px #5676a4;
   -webkit-box-shadow: inset 0 3px 20px #5676a4;
   box-shadow: inset 0 3px 20px #5676a4;
 }
-.share-photo .upload-image-sharing label[for="facebook-sharing"].ui-checkbox-on .ui-icon {
+.share-photo .s-upload-image-sharing label[for="facebook-sharing"].ui-checkbox-on .ui-icon {
   background-position: -42px -42px;
 }
-.share-photo .upload-image-sharing label[for="tumblr-sharing"] .ui-icon {
+.share-photo .s-upload-image-sharing label[for="tumblr-sharing"] .ui-icon {
   background-position: 0 -84px;
 }
-.share-photo .upload-image-sharing label[for="tumblr-sharing"].ui-checkbox-on {
+.share-photo .s-upload-image-sharing label[for="tumblr-sharing"].ui-checkbox-on {
   background-color: #647185;
   -moz-box-shadow: inset 0 3px 20px #464d58;
   -webkit-box-shadow: inset 0 3px 20px #464d58;
   box-shadow: inset 0 3px 20px #464d58;
 }
-.share-photo .upload-image-sharing label[for="tumblr-sharing"].ui-checkbox-on .ui-icon {
+.share-photo .s-upload-image-sharing label[for="tumblr-sharing"].ui-checkbox-on .ui-icon {
   background-position: -42px -84px;
 }
-.share-photo .upload-image-sharing label[for="foursquare-sharing"] .ui-icon {
+.share-photo .s-upload-image-sharing label[for="foursquare-sharing"] .ui-icon {
   background-position: 0 -126px;
 }
-.share-photo .upload-image-sharing label[for="foursquare-sharing"].ui-checkbox-on {
+.share-photo .s-upload-image-sharing label[for="foursquare-sharing"].ui-checkbox-on {
   background-color: #5b8ca8;
   -moz-box-shadow: inset 0 3px 20px #5787a0;
   -webkit-box-shadow: inset 0 3px 20px #5787a0;
   box-shadow: inset 0 3px 20px #5787a0;
 }
-.share-photo .upload-image-sharing label[for="foursquare-sharing"].ui-checkbox-on .ui-icon {
+.share-photo .s-upload-image-sharing label[for="foursquare-sharing"].ui-checkbox-on .ui-icon {
   background-position: -42px -126px;
 }
 .share-photo .s-upload-image-location .location-name, .share-photo .s-upload-image-location .foursquare-venue-name {
@@ -8044,7 +8044,7 @@ body.x-browser-testing .ui-footer, body.x-browser-testing .ui-footer-fixed {
     -webkit-background-size: 64px 64px;
     background-size: 64px 64px;
   }
-  .share-photo .upload-image-sharing .ui-btn-inner .ui-icon {
+  .share-photo .s-upload-image-sharing .ui-btn-inner .ui-icon {
     background-image: url('../gfx/retina/share-icons-large.png');
     -moz-background-size: 84px 168px;
     -o-background-size: 84px 168px;

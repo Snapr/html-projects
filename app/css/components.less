@@ -468,7 +468,14 @@ a:active{
             font-size: @fontSizeSmall;
             strong{
                 font-size: @fontSizeUsername;
-            }
+            }            
+           // Extra Icons display Inline
+           .ui-icon{
+               display: inline-block;
+               position: relative;
+               vertical-align: middle;
+               margin-top: 0!important;
+           }
         }
     }
 
@@ -1325,6 +1332,7 @@ a:active{
     }
     
     div[data-role="content"]{
+        z-index: 10;
         position: static; // not sure why it needs this but without it layer collapses to zero height
     }
     .s-image-bg-layer{
@@ -1380,6 +1388,11 @@ a:active{
         }
     }
 }
+
+
+
+
+
 
 // @CONNECT
 // -------------------------
@@ -1850,17 +1863,6 @@ div.ps-carousel-item-loading
 .ui-btn-inner {
     padding-left:@padding * 2;
     padding-right:@padding * 2;
-    
-    .ui-btn-text{
-        // Extra Icons display Inline
-        .ui-icon{
-            display: inline-block;
-            position: relative;
-            vertical-align: middle;
-            margin-top: 0!important;
-            
-        }
-    }
 }
 
 .s-twitter-button.ui-btn-up-e,

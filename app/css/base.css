@@ -437,6 +437,13 @@ a:active {
 .ui-bar.ui-btn .ui-btn-text strong {
   font-size: 16px;
 }
+.ui-bar .ui-btn .ui-btn-text .ui-icon,
+.ui-bar.ui-btn .ui-btn-text .ui-icon {
+  display: inline-block;
+  position: relative;
+  vertical-align: middle;
+  margin-top: 0!important;
+}
 .ui-bar .ui-controlgroup-controls {
   width: 100%;
 }
@@ -1216,6 +1223,7 @@ a:active {
   z-index: 20;
 }
 .s-share-photo div[data-role="content"] {
+  z-index: 10;
   position: static;
 }
 .s-share-photo .s-image-bg-layer {
@@ -1668,12 +1676,6 @@ div.ps-carousel-item-loading {
 .ui-btn-inner {
   padding-left: 8px;
   padding-right: 8px;
-}
-.ui-btn-inner .ui-btn-text .ui-icon {
-  display: inline-block;
-  position: relative;
-  vertical-align: middle;
-  margin-top: 0!important;
 }
 .s-twitter-button.ui-btn-up-e,
 .s-twitter-button.ui-btn-hover-e,
