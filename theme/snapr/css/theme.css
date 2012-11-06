@@ -4420,8 +4420,6 @@ div.ps-carousel-item-loading {
   margin-bottom: 4px;
   padding-bottom: 4px;
   border-bottom: solid 1px #e4e4e4;
-  margin-left: 0;
-  margin-right: 0;
   padding-left: 4px;
   padding-right: 8px;
   min-height: 101px;
@@ -4429,10 +4427,10 @@ div.ps-carousel-item-loading {
 .s-spot-list-item .s-spot-item {
   min-height: 101px;
 }
-.s-spot-list-item .s-spot-item .spot-heading .spot-name {
+.s-spot-list-item .s-spot-item .s-spot-heading .s-spot-name {
   margin: 4px 0;
 }
-.s-spot-list-item .s-spot-item .spot-subheading {
+.s-spot-list-item .s-spot-item .s-spot-subheading {
   color: #666666;
 }
 .s-spot-list-item .s-spot-item .s-spot-address {
@@ -4476,7 +4474,7 @@ div.ps-carousel-item-loading {
   font-size: 14px;
   font-weight: normal;
 }
-.s-spot-item .spot-heading .spot-name {
+.s-spot-item .s-spot-heading .s-spot-name {
   display: inline-block;
   padding-right: 24px;
   position: relative;
@@ -4488,19 +4486,15 @@ div.ps-carousel-item-loading {
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
-.s-spot-item .spot-heading .spot-name .spot-icon {
+.s-spot-item .s-spot-heading .s-spot-name .spot-icon {
   position: absolute;
   right: 0;
   top: 0;
   margin: 0;
 }
 .s-spot-header {
-  margin-left: -8px;
-  margin-right: -8px;
-  position: relative;
   background-color: #cccccc;
   background-image: url('../gfx/bg-texture-light.gif');
-  padding: 4px;
   min-height: 101px;
 }
 .s-spot-header .spot-venue-details {

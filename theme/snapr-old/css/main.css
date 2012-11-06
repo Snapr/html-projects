@@ -4636,7 +4636,7 @@ h4 {
   overflow: hidden;
   text-overflow: ellipsis;
 }
-.ui-bar .spot-name {
+.ui-bar .s-spot-name {
   max-width: 70%;
   display: inline-block;
   overflow: hidden;
@@ -7679,10 +7679,10 @@ body.x-browser-testing .ui-footer, body.x-browser-testing .ui-footer-fixed {
 .spot-item .spot {
   min-height: 101px;
 }
-.spot-item .spot .spot-heading .spot-name {
+.spot-item .spot .s-spot-heading .s-spot-name {
   margin: 4px 0;
 }
-.spot-item .spot .spot-subheading {
+.spot-item .spot .s-spot-subheading {
   color: #666666;
 }
 .spot-item .spot .s-spot-address {
@@ -7726,7 +7726,7 @@ body.x-browser-testing .ui-footer, body.x-browser-testing .ui-footer-fixed {
   font-size: 14px;
   font-weight: normal;
 }
-.spot .spot-heading .spot-name {
+.spot .s-spot-heading .s-spot-name {
   display: inline-block;
   padding-right: 24px;
   position: relative;
@@ -7738,7 +7738,7 @@ body.x-browser-testing .ui-footer, body.x-browser-testing .ui-footer-fixed {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
-.spot .spot-heading .spot-name .spot-icon {
+.spot .s-spot-heading .s-spot-name .spot-icon {
   position: absolute;
   right: 0;
   top: 0;

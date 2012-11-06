@@ -1324,26 +1324,24 @@ div.ps-carousel-item-loading
     .ui-btn-text{
         padding-left: 0;
     }
-    
 }
 
 .s-spot-list-item{
     margin-bottom: @paddingElement / 2;
     padding-bottom: @paddingElement / 2;
     border-bottom: @borderGrayLighter;
-    margin-left: 0;
-    margin-right:0;
     padding-left: @padding;
     padding-right: @padding * 2;
     min-height:@thumbSize;
+    
     .s-spot-item {
-        min-height: 101px;
-        .spot-heading {
-            .spot-name {
+        min-height: @thumbSize;
+        .s-spot-heading {
+            .s-spot-name {
                 margin: 4px 0;
             }
         }
-        .spot-subheading{
+        .s-spot-subheading{
             color: @grayDark;
         }
         .s-spot-address {
@@ -1389,9 +1387,8 @@ div.ps-carousel-item-loading
             font-weight: normal;
         }
     }
-
-    .spot-heading{
-       .spot-name{
+    .s-spot-heading{
+       .s-spot-name{
             display: inline-block;
             padding-right: 24px;
             position: relative;
@@ -1415,22 +1412,16 @@ div.ps-carousel-item-loading
 // -------------------------
 
 .s-spot-header{
-    margin-left: -@padding * 2;
-    margin-right: -@padding * 2;
-    position: relative;
     background-color: @grayLight;
     background-image: @gfxBgLight;
-    padding: @padding;
     min-height:@thumbSize;
     .spot-venue-details{
         min-height: 64px;
     }
-    
     p{
         padding-top:@paddingElement / 2 ;
         color: @grayDark;
     }
-   
     .s-spot-phone,
     .s-spot-address{
         padding-top:@paddingElement / 2 ;
@@ -1441,7 +1432,6 @@ div.ps-carousel-item-loading
         color: @grayDark;
         font-size: @fontSizeSmall;
     }
-   
 }
 
 
