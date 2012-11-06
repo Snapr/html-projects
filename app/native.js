@@ -34,7 +34,7 @@ define(['config', 'collections/upload_progress'], function(config, upload_progre
             data = JSON.parse(data);
         }
 
-        // jam these in backwards so when the first add or change even is fired it's that of the latest upload
+        // jam these in backwards so when the first add or change event that is fired it's for the latest upload
         upload_progress_collection.update(data.uploads.slice().reverse());
 
         if (data.uploads.length){
