@@ -1,5 +1,5 @@
 //
-// COMPONENTS - Specific to this theme
+// COMPONENTS - Specific to this theme */
 // --------------------------------------------------
 
 
@@ -18,7 +18,96 @@ strong{
 
 div[data-role="header"]{
     min-height: @topBarHeight; // So Topbar doesn't collapse without heading
+    
+    background: none;
+    border: none;
+    color: @gray;
+    text-shadow: @shadowBlack 0px -1px 1px;
+    height: @topBarHeight;
+    overflow: hidden;
+    .ui-title{
+        .title-bar-font();
+        line-height: @topBarHeight;
+        vertical-align: middle;
+        margin: 0;
+    }
+    .ui-btn{
+        font-size:@fontSizeSmall;
+    }
+    .ui-btn-left{
+        position: absolute;
+        left: 6px;
+        top: 6px;
+    }
+    .ui-btn-right {
+        position: absolute;
+        right: 6px;
+        top: 6px;
+    }
+    .ui-btn-center{
+        top: 6px;
+    }
+    
+    // The main Icon Only Buttons */
+    .ui-btn-left .ui-btn-icon-notext,
+    .ui-btn-right .ui-btn-icon-notext,
+    .join-block .ui-btn-icon-left{
+        border: none;
+        background: none;
+        width: @gfxTopBar-grid;
+        height: @gfxTopBar-grid;
+        top: -4px;
+        .ui-btn-inner {
+            padding: 0;
+            .ui-icon{
+                position: absolute;
+                left: 0;
+                top: 0;
+            }
+        }
+        &.ui-shadow{
+            .box-shadow(none);
+        }
+    }
+    .join-block .ui-btn-icon-left{
+        width: auto;
+        .ui-btn-inner {
+            padding: 0;
+            height: @gfxTopBar-grid;
+            .ui-btn-text{
+                padding-left: @gfxTopBar-grid;
+                line-height: @gfxTopBar-grid;
+            }
+            .ui-icon{
+                position: absolute;
+            }
+        }
+    }
+    // Shuffle the close button to the right */
+    .ui-btn[data-icon="delete"]{
+        right: 6px;
+        top: 6px;
+        left: auto;
+    }
+    // Some fiddly stuff for back btns */
+    .ui-btn[data-rel="back"]{
+        .ui-icon{
+            display: none;
+        }
+    }
+    .ui-controlgroup{
+        display: inline-block;
+        .box-shadow(0 1px 0 @shadowLighter);
+        .ui-checkbox label,
+        .ui-radio label{
+            font-size: @fontSizeSmall;
+            margin: 0;
+        }
+    }
+    
 }
+
+
 
 // @CONTENT
 // -------------------------
@@ -241,6 +330,206 @@ div[data-role="header"]{
 }
 
 
+// @SEARCH
+// -------------------------
+
+.ui-input-search{
+    &.ui-btn-corner-all{
+        .border-radius(@cornersRound);
+    }
+    &.ui-icon-searchfield::after{
+        margin-top: -18px;
+        margin-left: -@gfxIcons-offset-x;
+    }
+    .ui-input-clear {
+        position: absolute;
+        right: -5px;
+        margin-top: -17px;
+        background: none;
+        border: none!important;
+        .ui-icon-delete{
+            background-position: @gfxIcons-delete-x @gfxIcons-y-light;
+        }
+    }
+}
+
+
+
+// @BUTTONS
+// -------------------------
+
+
+.s-logo-button{
+    .ui-btn-text{
+        .button-font-light();
+    }
+}
+
+.s-twitter-button.ui-btn-up-e,
+.s-twitter-button.ui-btn-hover-e,
+.s-twitter-button.ui-btn-down-e {
+    border: none;
+    background: @twitterBlue;
+    .linear-gradient(@twitterBlue, @twitterBlueTint);
+    color: white;
+    a.ui-link-inherit {
+        color: white;
+    }
+}
+.s-twitter-button.ui-btn-hover-e {
+    background: lighten(@twitterBlue, 10% );
+    .linear-gradient(lighten(@twitterBlue, 5%), lighten(@twitterBlueTint, 5%)); 
+}
+.s-twitter-button.ui-btn-down-e {
+    background: @twitterBlue;
+    .pressed-gradient(@twitterBlue, 3%);
+}
+
+
+.s-tumblr-button.ui-btn-up-e,
+.s-tumblr-button.ui-btn-hover-e,
+.s-tumblr-button.ui-btn-down-e {
+    border: none;
+    background: @tumblrBlue;
+    .linear-gradient(@tumblrBlue, @tumblrBlueTint);
+    color: white;
+    a.ui-link-inherit {
+        color: white;
+    }
+}
+.s-tumblr-button.ui-btn-hover-e {
+    background: lighten(@tumblrBlue, 10% );
+    .linear-gradient(lighten(@tumblrBlue, 5%), lighten(@tumblrBlueTint, 5%));
+}
+.s-tumblr-button.ui-btn-down-e {
+    background: @tumblrBlue;
+    .pressed-gradient(@tumblrBlue, 3%);
+}
+
+.s-facebook-button.ui-btn-up-e,
+.s-facebook-button.ui-btn-hover-e,
+.s-facebook-button.ui-btn-down-e, {
+    background: @facebookBlue;
+    .linear-gradient(@facebookBlue, @facebookBlueTint);
+    color: white;
+    a.ui-link-inherit {
+        color: white;
+    }
+}
+.s-facebook-button.ui-btn-hover-e {
+    background: lighten(@facebookBlue, 10% );
+    .linear-gradient(lighten(@facebookBlue, 5%), lighten(@facebookBlueTint, 5%));
+}
+.s-facebook-button.ui-btn-down-e {
+    background: @facebookBlue;
+    .pressed-gradient(@facebookBlue, 3%);
+}
+
+
+.s-snapr-button.ui-btn-up-e,
+.s-snapr-button.ui-btn-hover-e,
+.s-snapr-button.ui-btn-down-e {
+    background: @snaprYellow;
+    text-shadow: 0 1px 1px white;
+    .linear-gradient(@snaprYellow, @snaprYellowTint);
+    color: #333333;
+    a.ui-link-inherit {
+        color: #333333;
+    }
+}
+.s-snapr-button.ui-btn-hover-e {
+    background: lighten(@snaprYellow, 10% );
+    .linear-gradient(lighten(@snaprYellow, 5%), lighten(@snaprYellowTint, 5%));
+}
+.s-snapr-button.ui-btn-down-e {
+    background: @snaprYellow;
+    .pressed-gradient(@snaprYellow, 3%);
+}
+
+
+// NAV BARS
+// -----------------------
+
+.ui-content{
+    .ui-navbar{
+        margin: 0 -@padding * 2;
+        border: none;
+        width: auto;
+        max-width: none;
+        border-top: @borderWhite;
+        .border-top-radius (@cornersPage);
+        .ui-btn{
+            .ui-btn-text{
+                font-size: @fontSize;
+                .button-font-light()
+            }
+        }
+        .ui-btn-active{
+            .ui-btn-text{
+                position: relative;
+                top: -4px;
+                text-shadow: @shadowWhite 0px 1px 0px;
+                .button-font-bold();
+                font-size: @fontSizeUsername;
+            }
+            &::after{
+                .arrow-up(@arrow-size, @white, 50% , 51px);
+            }
+        }
+        .ui-btn-inner{
+            border-top: none;
+            padding-top: 16px!important;
+            padding-bottom: 11px!important;
+            height: 20px;
+            line-height: 20px
+        }
+        /* Rounding for 3 column bars */
+        .ui-grid-b{
+            .ui-block-a{
+                .ui-btn{
+                    .border-top-left-radius (@cornersPage)
+                }
+            }
+            .ui-block-c{
+                .ui-btn{
+                    .border-top-right-radius (@cornersPage);
+                }
+            }
+        }
+
+    }
+}
+
+
+
+
+
+
+
+
+
+// @CHECKBOX
+// -------------------------
+
+.ui-checkbox{
+    .ui-icon{
+        width: @gfxAction-grid;
+        height: @gfxAction-grid;
+        background-image: url('@{gfx}@{gfxAction}');
+    }
+    .ui-checkbox-on {
+        .ui-icon{background-position: @gfxAction-x @gfxAction-tick-y;}
+        &.ui-btn-active{.ui-icon{background-position: @gfxAction-x-hover @gfxAction-tick-y;}
+    }
+}
+.ui-checkbox-off{
+    .ui-icon{background-position: @gfxAction-x @gfxAction-close-y;}
+    &.ui-btn-active{.ui-icon{background-position: @gfxAction-x-hover @gfxAction-close-y;}
+    }
+    }
+}
+
+
 
 // @LISTVIEWS
 // -------------------------
@@ -322,6 +611,29 @@ div[data-role="header"]{
 
 // @FEED
 // -------------------------
+
+
+.s-feed-view-toggle{
+    .ui-btn-inner{
+        padding: 0;
+    }
+    .ui-btn-text{
+        text-indent: -999px;
+        display: block;
+        width: 44px;
+        height: 30px;
+        .ui-icon{
+            display: block;
+            width: 32px;
+            height: 28px;
+            position: absolute;
+            top: 1px;
+            left: 3px;
+        }
+        .ui-icon-list-view{background-position: @gfxDark-x @gfxDark-feed-y - 5px;}
+        .ui-icon-grid-view{background-position: @gfxDark-x - 2px @gfxDark-grid-y - 6px;}
+    }
+}
 
 
 
@@ -613,179 +925,6 @@ div[data-role="header"]{
 // -------------------------
 
 
-// @BUTTONS
-// -------------------------
-
-
-.s-logo-button{
-    .ui-btn-text{
-        .button-font-light();
-    }
-}
-
-.s-twitter-button.ui-btn-up-e,
-.s-twitter-button.ui-btn-hover-e,
-.s-twitter-button.ui-btn-down-e {
-    border: none;
-    background: @twitterBlue;
-    .linear-gradient(@twitterBlue, @twitterBlueTint);
-    color: white;
-    a.ui-link-inherit {
-        color: white;
-    }
-}
-.s-twitter-button.ui-btn-hover-e {
-    background: lighten(@twitterBlue, 10% );
-    .linear-gradient(lighten(@twitterBlue, 5%), lighten(@twitterBlueTint, 5%)); 
-}
-.s-twitter-button.ui-btn-down-e {
-    background: @twitterBlue;
-    .pressed-gradient(@twitterBlue, 3%);
-}
-
-
-.s-tumblr-button.ui-btn-up-e,
-.s-tumblr-button.ui-btn-hover-e,
-.s-tumblr-button.ui-btn-down-e {
-    border: none;
-    background: @tumblrBlue;
-    .linear-gradient(@tumblrBlue, @tumblrBlueTint);
-    color: white;
-    a.ui-link-inherit {
-        color: white;
-    }
-}
-.s-tumblr-button.ui-btn-hover-e {
-    background: lighten(@tumblrBlue, 10% );
-    .linear-gradient(lighten(@tumblrBlue, 5%), lighten(@tumblrBlueTint, 5%));
-}
-.s-tumblr-button.ui-btn-down-e {
-    background: @tumblrBlue;
-    .pressed-gradient(@tumblrBlue, 3%);
-}
-
-.s-facebook-button.ui-btn-up-e,
-.s-facebook-button.ui-btn-hover-e,
-.s-facebook-button.ui-btn-down-e, {
-    background: @facebookBlue;
-    .linear-gradient(@facebookBlue, @facebookBlueTint);
-    color: white;
-    a.ui-link-inherit {
-        color: white;
-    }
-}
-.s-facebook-button.ui-btn-hover-e {
-    background: lighten(@facebookBlue, 10% );
-    .linear-gradient(lighten(@facebookBlue, 5%), lighten(@facebookBlueTint, 5%));
-}
-.s-facebook-button.ui-btn-down-e {
-    background: @facebookBlue;
-    .pressed-gradient(@facebookBlue, 3%);
-}
-
-
-.s-snapr-button.ui-btn-up-e,
-.s-snapr-button.ui-btn-hover-e,
-.s-snapr-button.ui-btn-down-e {
-    background: @snaprYellow;
-    text-shadow: 0 1px 1px white;
-    .linear-gradient(@snaprYellow, @snaprYellowTint);
-    color: #333333;
-    a.ui-link-inherit {
-        color: #333333;
-    }
-}
-.s-snapr-button.ui-btn-hover-e {
-    background: lighten(@snaprYellow, 10% );
-    .linear-gradient(lighten(@snaprYellow, 5%), lighten(@snaprYellowTint, 5%));
-}
-.s-snapr-button.ui-btn-down-e {
-    background: @snaprYellow;
-    .pressed-gradient(@snaprYellow, 3%);
-}
-
-
-// NAV BARS
-// -----------------------
-
-.ui-content{
-    .ui-navbar{
-        margin: 0 -@padding * 2;
-        border: none;
-        width: auto;
-        max-width: none;
-        border-top: @borderWhite;
-        .border-top-radius (@cornersPage);
-        .ui-btn{
-            .ui-btn-text{
-                font-size: @fontSize;
-                .button-font-light()
-            }
-        }
-        .ui-btn-active{
-            .ui-btn-text{
-                position: relative;
-                top: -4px;
-                text-shadow: @shadowWhite 0px 1px 0px;
-                .button-font-bold();
-                font-size: @fontSizeUsername;
-            }
-            &::after{
-                .arrow-up(@arrow-size, @white, 50% , 51px);
-            }
-        }
-        .ui-btn-inner{
-            border-top: none;
-            padding-top: 16px!important;
-            padding-bottom: 11px!important;
-            height: 20px;
-            line-height: 20px
-        }
-        /* Rounding for 3 column bars */
-        .ui-grid-b{
-            .ui-block-a{
-                .ui-btn{
-                    .border-top-left-radius (@cornersPage)
-                }
-            }
-            .ui-block-c{
-                .ui-btn{
-                    .border-top-right-radius (@cornersPage);
-                }
-            }
-        }
-
-    }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-.ui-checkbox{
-    .ui-icon{
-        width: @gfxAction-grid;
-        height: @gfxAction-grid;
-        background-image: url('@{gfx}@{gfxAction}');
-    }
-    .ui-checkbox-on {
-        .ui-icon{background-position: @gfxAction-x @gfxAction-tick-y;}
-        &.ui-btn-active{.ui-icon{background-position: @gfxAction-x-hover @gfxAction-tick-y;}
-    }
-}
-.ui-checkbox-off{
-    .ui-icon{background-position: @gfxAction-x @gfxAction-close-y;}
-    &.ui-btn-active{.ui-icon{background-position: @gfxAction-x-hover @gfxAction-close-y;}
-}
-}
-}
 
 
 // TUMBLR
@@ -1038,124 +1177,7 @@ over rides theme swatch styles for general blue / white style switch
 
 
 
-/*
-* Headers - Custom
-*   Header bars in the snapr project are all transparent.. BG comes from layer below
-*/
 
-.ui-header{
-    background: none;
-    border: none;
-    color: @gray;
-    text-shadow: @shadowBlack 0px -1px 1px;
-    height: @topBarHeight;
-    overflow: hidden;
-    .ui-title{
-        .title-bar-font();
-        line-height: @topBarHeight;
-        vertical-align: middle;
-        margin: 0;
-    }
-
-    .ui-btn{
-        font-size:@fontSizeSmall;
-    }
-    .ui-btn-left{
-        position: absolute;
-        left: 6px;
-        top: 6px;
-    }
-    .ui-btn-right {
-        position: absolute;
-        right: 6px;
-        top: 6px;
-    }
-    .ui-btn-center{
-        .ui-btn{
-            position: absolute;
-            left: 50%;
-            margin-top: 7px;
-            margin-left: -50px;
-        }
-    }
-    .ui-btn-inner{
-        padding-top: 8px;
-        padding-bottom: 8px;
-        border: none;
-        .ui-icon{
-            width: 40px;
-            height: 40px;
-            background: transparent;
-            background-image: url('@{gfx}@{gfxTopBar}');
-            margin: 0;
-            position: relative;
-            top: -1px;
-            &.ui-icon-shadow{
-                box-shadow: none;
-            }
-        }
-    }
-    /* The main Icon Only Buttons */
-    .ui-btn-icon-notext,
-    .join-block .ui-btn-icon-left{
-        border: none;
-        background: none;
-        width: @gfxTopBar-grid;
-        height: @gfxTopBar-grid;
-        top: -4px;
-        .ui-btn-inner {
-            padding: 0;
-            .ui-icon{
-                position: absolute;
-                left: 0;
-                top: 0;
-            }
-        }
-        &.ui-shadow{
-            .box-shadow(none);
-        }
-    }
-    .join-block .ui-btn-icon-left{
-        width: auto;
-        .ui-btn-inner {
-            padding: 0;
-            height: @gfxTopBar-grid;
-            .ui-btn-text{
-                padding-left: @gfxTopBar-grid;
-                line-height: @gfxTopBar-grid;
-            }
-            .ui-icon{
-                position: absolute;
-            }
-        }
-    }
-    /* Shuffle the close button to the right */
-    .ui-btn[data-icon="delete"]{
-        right: 6px;
-        top: 6px;
-        left: auto;
-    }
-    /* Some fiddly stuff for back btns */
-    .ui-btn[data-rel="back"]{
-        .ui-icon{
-            display: none;
-        }
-    }
-    .ui-controlgroup{
-        display: inline-block;
-        margin: 5px 0 0 -40px;
-        left: 50%;
-        position: absolute;
-        -moz-box-shadow: 0 1px 0 @shadowLighter;
-        -webkit-box-shadow: 0 1px 0 @shadowLighter;
-        box-shadow: 0 1px 0 @shadowLighter;
-        .ui-checkbox label,
-        .ui-radio label{
-            font-size: @fontSizeSmall;
-            margin: 0;
-        }
-    }
-}
 
 
 

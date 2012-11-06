@@ -318,31 +318,31 @@
   width: 40px;
   height: 40px;
 }
-.action-icons .ui-icon-action-heart {
+.action-icons .ui-icon-heart {
   background-position: 0px 0px;
 }
-.action-icons .ui-icon-action-comment {
+.action-icons .ui-icon-comment {
   background-position: 0px -40px;
 }
-.action-icons .ui-icon-action-more {
+.action-icons .ui-icon-more {
   background-position: 0px -120px;
 }
-.action-icons.selected .ui-icon-action-heart,
-.action-icons.ui-btn-hover-d .ui-icon-action-heart,
-.action-icons.ui-btn-down-d .ui-icon-action-heart,
-.action-icons.ui-btn-active-d .ui-icon-action-heart {
+.action-icons.selected .ui-icon-heart,
+.action-icons.ui-btn-hover-d .ui-icon-heart,
+.action-icons.ui-btn-down-d .ui-icon-heart,
+.action-icons.ui-btn-active-d .ui-icon-heart {
   background-position: -40px 0px;
 }
-.action-icons.selected .ui-icon-action-comment,
-.action-icons.ui-btn-hover-d .ui-icon-action-comment,
-.action-icons.ui-btn-down-d .ui-icon-action-comment,
-.action-icons.ui-btn-active-d .ui-icon-action-comment {
+.action-icons.selected .ui-icon-comment,
+.action-icons.ui-btn-hover-d .ui-icon-comment,
+.action-icons.ui-btn-down-d .ui-icon-comment,
+.action-icons.ui-btn-active-d .ui-icon-comment {
   background-position: -40px -40px;
 }
-.action-icons.selected .ui-icon-action-more,
-.action-icons.ui-btn-hover-d .ui-icon-action-more,
-.action-icons.ui-btn-down-d .ui-icon-action-more,
-.action-icons.ui-btn-active-d .ui-icon-action-more {
+.action-icons.selected .ui-icon-more,
+.action-icons.ui-btn-hover-d .ui-icon-more,
+.action-icons.ui-btn-down-d .ui-icon-more,
+.action-icons.ui-btn-active-d .ui-icon-more {
   background-position: -40px -120px;
 }
 .dark-icons .ui-btn .ui-btn-inner .ui-icon {
@@ -5987,16 +5987,16 @@ body.x-browser-testing .ui-footer, body.x-browser-testing .ui-footer-fixed {
 .load-more {
   display: none;
 }
-.feed-view-toggle .ui-btn-inner {
+.s-feed-view-toggle .ui-btn-inner {
   padding: 0;
 }
-.feed-view-toggle .ui-btn-text {
+.s-feed-view-toggle .ui-btn-text {
   text-indent: -999px;
   display: block;
   width: 44px;
   height: 30px;
 }
-.feed-view-toggle .ui-btn-text .ui-icon {
+.s-feed-view-toggle .ui-btn-text .ui-icon {
   display: block;
   width: 32px;
   height: 28px;
@@ -6004,10 +6004,10 @@ body.x-browser-testing .ui-footer, body.x-browser-testing .ui-footer-fixed {
   top: 1px;
   left: 3px;
 }
-.feed-view-toggle .ui-btn-text .ui-icon-list-view {
+.s-feed-view-toggle .ui-btn-text .ui-icon-list-view {
   background-position: 0px -365px;
 }
-.feed-view-toggle .ui-btn-text .ui-icon-grid-view {
+.s-feed-view-toggle .ui-btn-text .ui-icon-grid-view {
   background-position: -2px -406px;
 }
 .s-header-stats {

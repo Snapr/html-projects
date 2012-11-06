@@ -39,12 +39,18 @@
 // TOP BAR ICONS
 //-----------------
 .ui-header{
+    .ui-icon{
+          width: @gfxTopBar-grid;
+          height: @gfxTopBar-grid;
+          background-image: url('@{gfx}@{gfxTopBar}');
+      }
+    
     .ui-btn-up-a{
         .ui-btn-inner{
             .ui-icon-search     {   background-position: @gfxTopBar-x-a @gfxTopBar-search-icon-y;}
             .ui-icon-home       {   background-position: @gfxTopBar-x-a @gfxTopBar-home-icon-y;}
             .ui-icon-delete     {   background-position: @gfxTopBar-x-a @gfxTopBar-close-icon-y;}
-            .ui-icon-settings   {   background-position: @gfxTopBar-x-a @gfxTopBar-settings-icon-y;}
+            .ui-icon-gear       {   background-position: @gfxTopBar-x-a @gfxTopBar-settings-icon-y;}
             .ui-icon-location   {   background-position: @gfxTopBar-x-a @gfxTopBar-location-icon-y;}
             .ui-icon-camroll    {   background-position: @gfxTopBar-x-a @gfxTopBar-camroll-icon-y;}
             .ui-icon-camera     {   background-position: @gfxTopBar-x-a @gfxTopBar-camera-icon-y;}
@@ -58,7 +64,7 @@
             .ui-icon-search     {   background-position: @gfxTopBar-x-a-hover @gfxTopBar-search-icon-y;}
             .ui-icon-home       {   background-position: @gfxTopBar-x-a-hover @gfxTopBar-home-icon-y;}
             .ui-icon-delete     {   background-position: @gfxTopBar-x-a-hover @gfxTopBar-close-icon-y;}
-            .ui-icon-settings   {   background-position: @gfxTopBar-x-a-hover @gfxTopBar-settings-icon-y;}
+            .ui-icon-gear   {   background-position: @gfxTopBar-x-a-hover @gfxTopBar-settings-icon-y;}
             .ui-icon-location   {   background-position: @gfxTopBar-x-a-hover @gfxTopBar-location-icon-y;}
             .ui-icon-camroll    {   background-position: @gfxTopBar-x-a-hover @gfxTopBar-camroll-icon-y;}
             .ui-icon-camera     {   background-position: @gfxTopBar-x-a-hover @gfxTopBar-camera-icon-y;}
@@ -72,7 +78,7 @@
             .ui-icon-search{background-position: @gfxTopBar-x-b @gfxTopBar-search-icon-y;}
             .ui-icon-home{ background-position: @gfxTopBar-x-b @gfxTopBar-home-icon-y;}
             .ui-icon-delete{ background-position: @gfxTopBar-x-b @gfxTopBar-close-icon-y;}
-            .ui-icon-settings{ background-position: @gfxTopBar-x-b @gfxTopBar-settings-icon-y;}
+            .ui-icon-gear{ background-position: @gfxTopBar-x-b @gfxTopBar-settings-icon-y;}
             .ui-icon-location{ background-position: @gfxTopBar-x-b @gfxTopBar-location-icon-y;}
             .ui-icon-camroll{ background-position: @gfxTopBar-x-b @gfxTopBar-camroll-icon-y;}
             .ui-icon-camera{ background-position: @gfxTopBar-x-b @gfxTopBar-camera-icon-y;}
@@ -86,7 +92,7 @@
             .ui-icon-search{background-position: @gfxTopBar-x-b-hover @gfxTopBar-search-icon-y;}
             .ui-icon-home{ background-position: @gfxTopBar-x-b-hover @gfxTopBar-home-icon-y;}
             .ui-icon-delete{ background-position: @gfxTopBar-x-b-hover @gfxTopBar-close-icon-y;}
-            .ui-icon-settings{ background-position: @gfxTopBar-x-b-hover @gfxTopBar-settings-icon-y;}
+            .ui-icon-gear{ background-position: @gfxTopBar-x-b-hover @gfxTopBar-settings-icon-y;}
             .ui-icon-location{ background-position: @gfxTopBar-x-b-hover @gfxTopBar-location-icon-y;}
             .ui-icon-camroll{ background-position: @gfxTopBar-x-b-hover @gfxTopBar-camroll-icon-y;}
             .ui-icon-camera{ background-position: @gfxTopBar-x-b-hover @gfxTopBar-camera-icon-y;}
@@ -100,7 +106,7 @@
             .ui-icon-search{background-position: @gfxTopBar-x-c @gfxTopBar-search-icon-y;}
             .ui-icon-home{ background-position: @gfxTopBar-x-c @gfxTopBar-home-icon-y;}
             .ui-icon-delete{ background-position: @gfxTopBar-x-c @gfxTopBar-close-icon-y;}
-            .ui-icon-settings{ background-position: @gfxTopBar-x-c @gfxTopBar-settings-icon-y;}
+            .ui-icon-gear{ background-position: @gfxTopBar-x-c @gfxTopBar-settings-icon-y;}
             .ui-icon-location{ background-position: @gfxTopBar-x-c @gfxTopBar-location-icon-y;}
             .ui-icon-camroll{ background-position: @gfxTopBar-x-c @gfxTopBar-camroll-icon-y;}
             .ui-icon-camera{ background-position: @gfxTopBar-x-c @gfxTopBar-camera-icon-y;}
@@ -114,7 +120,7 @@
             .ui-icon-search{background-position: @gfxTopBar-x-c-hover @gfxTopBar-search-icon-y;}
             .ui-icon-home{ background-position: @gfxTopBar-x-c-hover @gfxTopBar-home-icon-y;}
             .ui-icon-delete{ background-position: @gfxTopBar-x-c-hover @gfxTopBar-close-icon-y;}
-            .ui-icon-settings{ background-position: @gfxTopBar-x-c-hover @gfxTopBar-settings-icon-y;}
+            .ui-icon-gear{ background-position: @gfxTopBar-x-c-hover @gfxTopBar-settings-icon-y;}
             .ui-icon-location{ background-position: @gfxTopBar-x-c-hover @gfxTopBar-location-icon-y;}
             .ui-icon-camroll{ background-position: @gfxTopBar-x-c-hover @gfxTopBar-camroll-icon-y;}
             .ui-icon-camera{ background-position: @gfxTopBar-x-c-hover @gfxTopBar-camera-icon-y;}
@@ -160,16 +166,34 @@
         width: @gfxAction-grid;
         height: @gfxAction-grid;
     }
-    .ui-icon-action-heart{background-position: @gfxAction-x @gfxAction-heart-y}
-    .ui-icon-action-comment{background-position: @gfxAction-x @gfxAction-comment-y}
-    .ui-icon-action-more{background-position: @gfxAction-x @gfxAction-more-y}
+    .ui-icon-heart      {   background-position: @gfxAction-x @gfxAction-heart-y}
+    .ui-icon-comment    {   background-position: @gfxAction-x @gfxAction-comment-y}
+    .ui-icon-share      {   background-position: @gfxAction-x @gfxAction-share-y}
+    .ui-icon-more       {   background-position: @gfxAction-x @gfxAction-more-y}
+    .ui-icon-arrow-d    {   background-position: @gfxAction-x @gfxAction-toggle-y}
+    .ui-icon-arrow-u    {   background-position: @gfxAction-x @gfxAction-toggle-up-y}
+    .ui-icon-delete     {   background-position: @gfxAction-x @gfxAction-close-y}
+    .ui-icon-check      {   background-position: @gfxAction-x @gfxAction-tick-y}
+    .ui-icon-arrow-r    {   background-position: @gfxAction-x @gfxAction-more-y}
+    .ui-icon-venue-r    {   background-position: @gfxAction-x @gfxAction-venue-y}
+    .ui-icon-location-r {   background-position: @gfxAction-x @gfxAction-location-y}
     &.selected,
-    &.ui-btn-hover-d,
-    &.ui-btn-down-d,
-    &.ui-btn-active-d{
-        .ui-icon-action-heart{background-position: @gfxAction-x-hover @gfxAction-heart-y}
-        .ui-icon-action-comment{background-position: @gfxAction-x-hover @gfxAction-comment-y}
-        .ui-icon-action-more{background-position: @gfxAction-x-hover @gfxAction-more-y}
+    &.ui-btn-hover-a, &.ui-btn-down-a, &.ui-btn-active-a,
+    &.ui-btn-hover-b, &.ui-btn-down-b, &.ui-btn-active-b,
+    &.ui-btn-hover-c, &.ui-btn-down-c, &.ui-btn-active-c,
+    &.ui-btn-hover-d, &.ui-btn-down-d, &.ui-btn-active-d,
+    &.ui-btn-hover-e, &.ui-btn-down-e, &.ui-btn-active-e{
+        .ui-icon-heart      {   background-position: @gfxAction-x-hover @gfxAction-heart-y}
+        .ui-icon-comment    {   background-position: @gfxAction-x-hover @gfxAction-comment-y}
+        .ui-icon-share      {   background-position: @gfxAction-x-hover @gfxAction-share-y}
+        .ui-icon-more       {   background-position: @gfxAction-x-hover @gfxAction-more-y}
+        .ui-icon-arrow-d    {   background-position: @gfxAction-x-hover @gfxAction-toggle-y}
+        .ui-icon-arrow-u    {   background-position: @gfxAction-x-hover @gfxAction-toggle-up-y}
+        .ui-icon-delete     {   background-position: @gfxAction-x-hover @gfxAction-close-y}
+        .ui-icon-check      {   background-position: @gfxAction-x-hover @gfxAction-tick-y}
+        .ui-icon-arrow-r    {   background-position: @gfxAction-x-hover @gfxAction-more-y}
+        .ui-icon-venue-r    {   background-position: @gfxAction-x-hover @gfxAction-venue-y}
+        .ui-icon-location-r {   background-position: @gfxAction-x-hover @gfxAction-location-y}
     }
 }
 
@@ -184,7 +208,7 @@
                    width: @gfxDark-grid;
                    height: @gfxDark-grid;
                }
-               .ui-icon-settings,&.ui-icon-settings{background-position: @gfxDark-x @gfxDark-settings-y;}
+               .ui-icon-gear,&.ui-icon-gear{background-position: @gfxDark-x @gfxDark-settings-y;}
                .ui-icon-flag,&.ui-icon-flag{background-position: @gfxDark-x @gfxDark-flag-y;}
                .ui-icon-delete,&.ui-icon-delete{background-position: @gfxDark-x @gfxDark-delete-y;}
                .ui-icon-download,&.ui-icon-download{background-position: @gfxDark-x @gfxDark-download-y;}

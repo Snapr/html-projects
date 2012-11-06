@@ -114,7 +114,7 @@
 .ui-header .ui-btn-up-a .ui-btn-inner .ui-icon-delete {
   background-position: 0px -80px;
 }
-.ui-header .ui-btn-up-a .ui-btn-inner .ui-icon-settings {
+.ui-header .ui-btn-up-a .ui-btn-inner .ui-icon-gear {
   background-position: 0px -120px;
 }
 .ui-header .ui-btn-up-a .ui-btn-inner .ui-icon-location {
@@ -144,7 +144,7 @@
 .ui-header .ui-btn-hover-a .ui-btn-inner .ui-icon-delete {
   background-position: -40px -80px;
 }
-.ui-header .ui-btn-hover-a .ui-btn-inner .ui-icon-settings {
+.ui-header .ui-btn-hover-a .ui-btn-inner .ui-icon-gear {
   background-position: -40px -120px;
 }
 .ui-header .ui-btn-hover-a .ui-btn-inner .ui-icon-location {
@@ -174,7 +174,7 @@
 .ui-header .ui-btn-up-b .ui-btn-inner .ui-icon-delete {
   background-position: -80px -80px;
 }
-.ui-header .ui-btn-up-b .ui-btn-inner .ui-icon-settings {
+.ui-header .ui-btn-up-b .ui-btn-inner .ui-icon-gear {
   background-position: -80px -120px;
 }
 .ui-header .ui-btn-up-b .ui-btn-inner .ui-icon-location {
@@ -204,7 +204,7 @@
 .ui-header .ui-btn-hover-b .ui-btn-inner .ui-icon-delete {
   background-position: -120px -80px;
 }
-.ui-header .ui-btn-hover-b .ui-btn-inner .ui-icon-settings {
+.ui-header .ui-btn-hover-b .ui-btn-inner .ui-icon-gear {
   background-position: -120px -120px;
 }
 .ui-header .ui-btn-hover-b .ui-btn-inner .ui-icon-location {
@@ -234,7 +234,7 @@
 .ui-header .ui-btn-up-c .ui-btn-inner .ui-icon-delete {
   background-position: -160px -80px;
 }
-.ui-header .ui-btn-up-c .ui-btn-inner .ui-icon-settings {
+.ui-header .ui-btn-up-c .ui-btn-inner .ui-icon-gear {
   background-position: -160px -120px;
 }
 .ui-header .ui-btn-up-c .ui-btn-inner .ui-icon-location {
@@ -264,7 +264,7 @@
 .ui-header .ui-btn-hover-c .ui-btn-inner .ui-icon-delete {
   background-position: -200px -80px;
 }
-.ui-header .ui-btn-hover-c .ui-btn-inner .ui-icon-settings {
+.ui-header .ui-btn-hover-c .ui-btn-inner .ui-icon-gear {
   background-position: -200px -120px;
 }
 .ui-header .ui-btn-hover-c .ui-btn-inner .ui-icon-location {
@@ -332,31 +332,31 @@
   width: 40px;
   height: 40px;
 }
-.action-icons .ui-icon-action-heart {
+.action-icons .ui-icon-heart {
   background-position: 0px 0px;
 }
-.action-icons .ui-icon-action-comment {
+.action-icons .ui-icon-comment {
   background-position: 0px -40px;
 }
-.action-icons .ui-icon-action-more {
+.action-icons .ui-icon-more {
   background-position: 0px -120px;
 }
-.action-icons.selected .ui-icon-action-heart,
-.action-icons.ui-btn-hover-d .ui-icon-action-heart,
-.action-icons.ui-btn-down-d .ui-icon-action-heart,
-.action-icons.ui-btn-active-d .ui-icon-action-heart {
+.action-icons.selected .ui-icon-heart,
+.action-icons.ui-btn-hover-d .ui-icon-heart,
+.action-icons.ui-btn-down-d .ui-icon-heart,
+.action-icons.ui-btn-active-d .ui-icon-heart {
   background-position: -40px 0px;
 }
-.action-icons.selected .ui-icon-action-comment,
-.action-icons.ui-btn-hover-d .ui-icon-action-comment,
-.action-icons.ui-btn-down-d .ui-icon-action-comment,
-.action-icons.ui-btn-active-d .ui-icon-action-comment {
+.action-icons.selected .ui-icon-comment,
+.action-icons.ui-btn-hover-d .ui-icon-comment,
+.action-icons.ui-btn-down-d .ui-icon-comment,
+.action-icons.ui-btn-active-d .ui-icon-comment {
   background-position: -40px -40px;
 }
-.action-icons.selected .ui-icon-action-more,
-.action-icons.ui-btn-hover-d .ui-icon-action-more,
-.action-icons.ui-btn-down-d .ui-icon-action-more,
-.action-icons.ui-btn-active-d .ui-icon-action-more {
+.action-icons.selected .ui-icon-more,
+.action-icons.ui-btn-hover-d .ui-icon-more,
+.action-icons.ui-btn-down-d .ui-icon-more,
+.action-icons.ui-btn-active-d .ui-icon-more {
   background-position: -40px -120px;
 }
 .dark-icons .ui-btn .ui-btn-inner .ui-icon {
@@ -364,8 +364,8 @@
   width: 40px;
   height: 40px;
 }
-.dark-icons .ui-btn .ui-btn-inner .ui-icon-settings,
-.dark-icons .ui-btn .ui-btn-inner.ui-icon-settings {
+.dark-icons .ui-btn .ui-btn-inner .ui-icon-gear,
+.dark-icons .ui-btn .ui-btn-inner.ui-icon-gear {
   background-position: 0px 0px;
 }
 .dark-icons .ui-btn .ui-btn-inner .ui-icon-flag,
