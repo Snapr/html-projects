@@ -2,9 +2,9 @@
 
 ## JS → Native
 
-To pass data to the native code JS will create an iframe and request `snapr://` url with it. Watch for any requests for `snapr://` urls and take apropriate action. You can't respond to these requests because JS can't read from the iframe and it is quickly destrioed.
+To pass data to the native code JS will create an iframe and request `snapr://` url with it. Watch for any requests for `snapr://` urls and take appropriate action. You can't respond to these requests because JS can't read from the iframe and it is quickly destroyed.
 
-Urls will be in the format `snapr:\\base?param=value&param2=value` or `snapr:\\base\?param=value&param2=value`, note the `\` before the `?` may or may not be present.
+Urls will be in the format `snapr://base?param=value&param2=value` or `snapr://base/?param=value&param2=value`, note the `/` before the `?` may or may not be present.
 
 
 
@@ -13,7 +13,7 @@ Urls will be in the format `snapr:\\base?param=value&param2=value` or `snapr:\\b
 
 ### JS → Native
 
-Called on login so native code can use credentials for upload and store to reload the html without requireing the user to login again.
+Called on login so native code can use credentials for upload and store to reload the html without requiring the user to login again.
 
 * **Base**: login
 * **Params**
@@ -27,7 +27,7 @@ Example:
 
 ### Native → JS
 
-Load any view with the following parameters:
+Load into any view with the following parameters to display it and auto login:
 
 * **snapr_user**: Username for unique identification and api calls
 * **display_username**: Username for display
@@ -42,7 +42,7 @@ Example:
 
 ## Logout
 
-Called on logout so native code can forget any storred credentials.
+Called on logout so native code can forget any stored credentials.
 
 * **Base**: logout
 * **Params**: None
@@ -58,7 +58,7 @@ Example:
 
 ### JS → Native
 
-Called to request geolocation from native code. The JS storres locations for a set amount of time so this call is not used too often.
+Called to request geolocation from native code. The JS stores locations for a set amount of time so this call is not used too often.
 
 * **Base**: get_location
 * **Params**: None
@@ -76,7 +76,7 @@ Example:
     set_location(-37.32567, 175.8765)
 
 
-If there is a problem determining the location call the javascript funciton `location_error` with an error message string.
+If there is a problem determining the location call the javascript function `location_error` with an error message string.
 
 Example:
 
@@ -89,7 +89,7 @@ Example:
 
 ### Start
 
-Called on login so native code can use credentials for upload and store to reload the html without requireing the user to login again.
+Called to initiate an upload. You should pass any params on to the upload API, and also include them in the upload_progress() JSON.
 
 * **Base**: upload
 * **Params**
@@ -149,7 +149,9 @@ Example:
 
 As a photo is uploaded call the `upload_progress` javascript function to update the progress display.
 
-Call the function with either a Javascript object or JSON text in the following format
+Call the function with either a Javascript object or JSON text in the following format.
+
+Any time there is a change to the queue status you should call upload_progress() at least once - for example if a new upload is added, but there is no connection, call upload_progress() so we can update the queue to show the stalled item.
 
     {
         "uploads": [
