@@ -1212,6 +1212,9 @@ a:active {
 .s-share-icon-small.s-foursquare-sharing .ui-icon {
   background-position: 0 -63px !important;
 }
+.s-share-photo div[data-role="header"] {
+  z-index: 20;
+}
 .s-share-photo div[data-role="content"] {
   position: static;
 }
@@ -1663,7 +1666,8 @@ div.ps-carousel-item-loading {
   background-position: center bottom!important;
 }
 .ui-btn-inner {
-  padding: 4px 8px;
+  padding-left: 8px;
+  padding-right: 8px;
 }
 .ui-btn-inner .ui-btn-text .ui-icon {
   display: inline-block;

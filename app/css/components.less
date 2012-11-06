@@ -1320,6 +1320,10 @@ a:active{
 // -------------------------
 
 .s-share-photo{
+    div[data-role="header"]{
+        z-index: 20;
+    }
+    
     div[data-role="content"]{
         position: static; // not sure why it needs this but without it layer collapses to zero height
     }
@@ -1844,7 +1848,8 @@ div.ps-carousel-item-loading
 
 
 .ui-btn-inner {
-    padding: @padding @padding * 2;
+    padding-left:@padding * 2;
+    padding-right:@padding * 2;
     
     .ui-btn-text{
         // Extra Icons display Inline

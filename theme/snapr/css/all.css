@@ -3109,7 +3109,8 @@ div[data-role="header"] {
   background-position: center bottom!important;
 }
 .ui-btn-inner {
-  padding: 4px 8px;
+  padding-left: 8px;
+  padding-right: 8px;
 }
 .ui-btn-inner .ui-btn-text .ui-icon {
   display: inline-block;
