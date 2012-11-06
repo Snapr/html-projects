@@ -176,6 +176,50 @@ Valid statuses:
 
 
 
+## Upload complete
+
+When an upload competes call the javascript function `upload_completed` with it's `local_id` and the `snapr_id` returned from the server.
+
+Example:
+
+    upload_completed('92135044', 'LOG');
+
+
+
+
+## Upload count
+
+Whenever an upload is added to the queue or one competes call the javascript function `upload_count` with the current length of the queue.
+
+Example:
+
+    upload_count(3);
+
+
+
+## Upload failed
+
+When an upload fails call the javascript function `upload_failed` with it's `local_id` and an error message.
+
+Example:
+
+    upload_failed('92135044', 'Duplicate upload');
+
+
+
+
+## Upload canceled
+
+When an upload is canceled call the javascript function `upload_canceled` with it's `local_id`.
+
+Example:
+
+    upload_canceled('92135044');
+
+
+
+
+
 ## Alerts
 
 Native replacements for javascript `alert()` and `confirm()`
