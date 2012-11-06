@@ -39,7 +39,7 @@ return page_view.extend({
             success: function( response ){
                 $(".x-username").val('');
                 $(".x-password").val('');
-                if (login_view.previous_view && login_view.previous_view.welcome_view){
+                if (login_view.previous_view && login_view.previous_view.options.name in {welcome:1, 'forgot-password':1}){
                     Backbone.history.navigate( "#", true );
                 }else{
                     login_view.back();
