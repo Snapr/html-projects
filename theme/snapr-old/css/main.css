@@ -6013,23 +6013,23 @@ body.x-browser-testing .ui-footer, body.x-browser-testing .ui-footer-fixed {
 .s-header-stats {
   padding-left: 100px;
 }
-.s-header-stats .user-icon-left {
+.s-header-stats .s-user-icon-left {
   position: absolute;
   top: 0;
   left: 0;
   width: 100px;
   height: 100px;
 }
-.s-header-stats .user-icon-left .s-profile-icon, .s-header-stats .user-icon-left .user-icon-big {
+.s-header-stats .s-user-icon-left .s-profile-icon, .s-header-stats .s-user-icon-left .user-icon-big {
   -moz-border-radius-topleft: 8px;
   -webkit-border-top-left-radius: 8px;
   border-top-left-radius: 8px;
   overflow: hidden;
 }
-.s-header-stats .user-icon-left .user-icon-big {
+.s-header-stats .s-user-icon-left .user-icon-big {
   background-color: #d7d7d5;
 }
-.s-header-stats .user-icon-left .s-icon-overlay {
+.s-header-stats .s-user-icon-left .s-icon-overlay {
   background-image: url('../gfx/shiny-avatar-info.png');
   width: 100px;
   height: 100px;
@@ -6134,13 +6134,13 @@ body.x-browser-testing .ui-footer, body.x-browser-testing .ui-footer-fixed {
 .s-feed-header .ui-grid-b .ui-block-c {
   margin-right: -1px;
 }
-.showing-upload-queue .feed-header .user-icon-left .s-profile-icon, .showing-upload-queue .feed-header .user-icon-left .user-icon-big {
+.showing-upload-queue .feed-header .s-user-icon-left .s-profile-icon, .showing-upload-queue .feed-header .s-user-icon-left .user-icon-big {
   -moz-border-radius-topleft: 0;
   -webkit-border-top-left-radius: 0;
   border-top-left-radius: 0;
   overflow: hidden;
 }
-.showing-upload-queue .feed-header .user-icon-left .s-icon-overlay {
+.showing-upload-queue .feed-header .s-user-icon-left .s-icon-overlay {
   -moz-border-radius-topleft: 8px;
   -webkit-border-top-left-radius: 8px;
   border-top-left-radius: 8px;
@@ -6360,7 +6360,7 @@ body.x-browser-testing .ui-footer, body.x-browser-testing .ui-footer-fixed {
   padding-left: 108px;
   position: relative;
 }
-.user-profile .s-header-stats .user-icon-left .user-icon-big {
+.user-profile .s-header-stats .s-user-icon-left .user-icon-big {
   background-color: #ffffff;
   -moz-border-radius: 8px;
   -webkit-border-radius: 8px;
@@ -7973,7 +7973,7 @@ body.x-browser-testing .ui-footer, body.x-browser-testing .ui-footer-fixed {
     -webkit-background-size: 40px 20px;
     background-size: 40px 20px;
   }
-  .s-header-stats .user-icon-left .s-icon-overlay {
+  .s-header-stats .s-user-icon-left .s-icon-overlay {
     background-image: url('../gfx/retina/shiny-avatar-info.png');
     -moz-background-size: 100px 100px;
     -o-background-size: 100px 100px;

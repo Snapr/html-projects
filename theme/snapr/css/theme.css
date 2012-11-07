@@ -3826,6 +3826,77 @@ textarea.ui-input-text {
 .s-feed-view-toggle .ui-btn-text .ui-icon-grid-view {
   background-position: -2px -401px;
 }
+.s-user-profile .s-profile-details {
+  position: relative;
+  margin-top: 8px;
+}
+.s-user-profile .s-profile-details .s-user-icon-left {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+.s-user-profile .s-profile-details .s-user-icon-left .s-profile-icon {
+  background-color: #ffffff;
+}
+.s-user-profile .s-profile-details .s-details {
+  padding-left: 108px;
+  position: relative;
+  min-height: 100px;
+}
+.s-user-profile .s-profile-details .s-details .real-name {
+  line-height: 16px;
+  font-size: 16px;
+}
+.s-user-profile .s-profile-details .s-details .real-name .s-facebook-sharing {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+.s-user-profile .s-profile-details .s-details .user-website {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.s-user-profile .s-profile-details .s-details .user-website .ui-icon-link {
+  display: inline-block;
+  vertical-align: middle;
+  width: 24px;
+  left: -8px;
+  position: relative;
+}
+.s-user-profile .s-profile-details .s-details .user-linked-services li {
+  margin-bottom: 2px;
+}
+.s-user-profile .s-profile-details .s-details .user-linked-services li a {
+  display: block;
+  min-height: 24px;
+}
+.s-user-profile .s-profile-details .s-details .user-linked-services li a .s-share-icon-small {
+  vertical-align: middle;
+  margin-right: 4px;
+}
+.s-user-profile .s-profile-details .s-details .user-hometown {
+  font-style: italic;
+}
+.s-user-profile .user-buttons {
+  white-space: nowrap;
+}
+.s-user-profile .user-buttons .ui-btn {
+  display: inline-block;
+  margin-right: 8px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  border-radius: 20px;
+}
+.s-user-profile .user-buttons .ui-btn-icon-left .ui-btn-inner {
+  padding-left: 36px;
+  padding-right: 18px;
+}
+.s-user-profile .user-buttons .ui-btn-icon-left .ui-icon {
+  width: 32px;
+  left: 4px;
+  top: 20px;
+}
 .s-dash-wrapper {
   min-height: 316px;
   position: relative;
@@ -5082,7 +5153,7 @@ div.ps-carousel-item-loading {
     -webkit-background-size: 40px 20px;
     background-size: 40px 20px;
   }
-  .s-header-stats .user-icon-left .s-icon-overlay {
+  .s-header-stats .s-user-icon-left .s-icon-overlay {
     background-image: url('../gfx/retina/shiny-avatar-info.png');
     -moz-background-size: 100px 100px;
     -o-background-size: 100px 100px;

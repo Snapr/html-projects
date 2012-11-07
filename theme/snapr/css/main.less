@@ -768,6 +768,92 @@ textarea.ui-input-text {
 }
 
 
+
+
+// @PROFILE
+// -------------------------
+
+
+.s-user-profile{
+    .s-profile-details{
+        position: relative;
+        margin-top: @padding * 2;
+        .s-user-icon-left{
+            position: absolute;
+            left: 0;
+            top: 0;
+            .s-profile-icon{
+                background-color: @white;
+            }
+        }    
+        .s-details{
+            padding-left: @avatarSizeLarge + @paddingElement;
+            position: relative;
+            min-height: @avatarSizeLarge;
+            .real-name{
+                line-height: @fontSizeUsername;
+                font-size:  @fontSizeUsername;
+                .s-facebook-sharing{
+                    position: absolute;
+                    right: 0;
+                    top: 0;
+                }
+            }
+            .user-website{
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                .ui-icon-link{
+                    display: inline-block;
+                    vertical-align: middle;
+                    width: 24px;
+                    left: -8px;
+                    position: relative;
+                }
+            }
+            .user-linked-services{
+                li {
+                    margin-bottom: 2px;
+                    a{
+                        display: block;
+                        min-height: 24px;
+                        .s-share-icon-small{
+                            vertical-align: middle;
+                            margin-right: 4px;
+                        }
+                        .ui-icon{
+
+                        }
+                    }
+                }
+            }
+            .user-hometown{
+                font-style: italic;
+            }
+        }
+    }
+    .user-buttons{
+        white-space: nowrap;
+        .ui-btn{
+            display: inline-block;
+            margin-right: @paddingElement;
+            .border-radius(@cornersRound);
+        }
+        .ui-btn-icon-left {
+            .ui-btn-inner {
+                padding-left: 36px;
+                padding-right: 18px;
+            }
+            .ui-icon{
+                width: 32px;
+                left: 4px;
+                top: 20px;
+            }
+        }
+    }
+}
+
+
 // @DASH
 // -------------------------
 

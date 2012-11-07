@@ -35,7 +35,7 @@
 
 .s-header-stats{
     padding-left: @avatarSizeLarge;
-    .user-icon-left{
+    .s-user-icon-left{
         position:absolute;
         top: 0;
         left: 0;
@@ -154,7 +154,7 @@
 // Nix the rounded top edges when the upload queue shows above 
 .showing-upload-queue{
     .feed-header{
-        .user-icon-left{
+        .s-user-icon-left{
             .s-profile-icon,
             .user-icon-big{
                 .border-top-left-radius (0);
@@ -381,12 +381,12 @@
 // Profile
 //------------------
 
-.user-profile{
+.s-user-profile{
     .s-header-stats{
         padding-left: @avatarSizeLarge + @paddingElement;
         position: relative;
     }
-    .s-header-stats .user-icon-left .user-icon-big{
+    .s-header-stats .s-user-icon-left .user-icon-big{
         background-color: @white;
         .border-radius(@cornersPage);
     }
