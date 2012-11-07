@@ -449,8 +449,6 @@ a:active{
 
 .ui-bar{
     margin: 0 -@padding * 2;
-    font-size: @fontSizeSmall;
-
     strong{
         font-size: @fontSizeUsername;
     }
@@ -1477,6 +1475,11 @@ div.ps-carousel-item-loading
         padding-bottom: @padding * 2;
         .box-sizing(border-box);
     }
+    
+    .s-map-loading{
+        display: none;
+    }
+    
     &.loading{
         .s-map-time{
             .s-map-time-btn{
@@ -1487,12 +1490,6 @@ div.ps-carousel-item-loading
             width: 32px;
             height:32px;
             overflow: hidden;
-            .border-radius(16px);
-            .ui-icon{
-                opacity: .7;
-                width: 32px;
-                height:32px;
-            }
         }
     }
 }

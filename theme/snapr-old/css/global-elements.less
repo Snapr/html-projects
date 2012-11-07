@@ -204,7 +204,7 @@ h4{
 
             &.ui-btn-hover-b{
                 background: lighten(@grayDark, 2%);
-                color: @grayLightOnDark;
+                color: @grayDark;
             }
 
             &.ui-btn-down-b,
@@ -577,7 +577,7 @@ h4{
     margin: 0 @paddingElement @paddingElement @paddingElement;
     display: block;
     background-color: lighten(@yellow, 20%);
-    .border-radius(@cornersLessRound);
+    .border-radius(@cornersSmall);
     position: relative;
     &::after{
         .arrow-up(6px, lighten(@yellow, 20%), 16px, 0)
@@ -2041,7 +2041,7 @@ different markup format between collapsible headings and list links */
     .ps-caption-content{
         font-family: @font;
         font-size: @fontSize;
-        color: @grayLightOnDark;
+        color: @grayDark;
         text-align: left;
         padding: 0 24px 0 32px;
         background-image: url('../gfx/gallery-quote.png');

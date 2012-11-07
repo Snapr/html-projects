@@ -338,7 +338,7 @@
 
 .s-share-icon-small{
     background-color: lighten(@grayLighter, 10%);
-    .border-radius(@cornersLessRound);
+    .border-radius(@cornersSmall);
     width: 22px;
     height: 22px;
     display: inline-block;
@@ -471,3 +471,30 @@
     .distance-btn .ui-icon,
     .distance-icon{background-position: @gfxDistance-x @gfxDistance-y-50000}
 }
+
+
+// Maps Icons
+//-----------------
+.map-icons.ui-icon,
+.map-icons .ui-icon{
+    background-image: url('@{gfx}@{gfxMap}');
+}
+.map-icons{
+    .ui-icon-mapTime, &.ui-icon-mapTime{background-position: @gfxMap-x @gfxMap-time-y;}
+    .ui-icon-person-a, &.ui-icon-person-a{background-position: @gfxMap-x @gfxMap-person-y;}
+    .ui-icon-search-a, &.ui-icon-search-a{background-position: @gfxMap-x @gfxMap-search-y;}
+    .ui-icon-arrow-d, &.ui-icon-arrow-d{background-position: @gfxMap-x @gfxMap-arrowD-y;}
+    .ui-icon-delete, &.ui-icon-delete{background-position: @gfxMap-x @gfxMap-delete-y;}
+    .ui-icon-no-images, &.ui-icon-no-images{background-position: @gfxMap-x @gfxMap-noImages-y;}
+}
+
+.profile-icons.ui-icon,
+.profile-icons .ui-icon{
+    background-image: url('@{gfx}@{gfxProfile}');
+}
+.profile-icons{
+    .ui-icon-feed,&.ui-icon-feed{background-position: @gfxProfile-x @gfxProfile-feed-y;}
+    .ui-icon-favs,&.ui-icon-favs{background-position: @gfxProfile-x @gfxProfile-favs-y;}
+    .ui-icon-link,&.ui-icon-link{background-position: @gfxProfile-x @gfxProfile-link-y;}
+}
+

@@ -416,7 +416,6 @@ a:active {
 }
 .ui-bar {
   margin: 0 -8px;
-  font-size: 12px;
 }
 .ui-bar strong {
   font-size: 16px;
@@ -1328,6 +1327,9 @@ div.ps-carousel-item-loading {
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
+#map .s-map-loading {
+  display: none;
+}
 #map.loading .s-map-time .s-map-time-btn {
   display: none;
 }
@@ -1335,14 +1337,6 @@ div.ps-carousel-item-loading {
   width: 32px;
   height: 32px;
   overflow: hidden;
-  -webkit-border-radius: 16px;
-  -moz-border-radius: 16px;
-  border-radius: 16px;
-}
-#map.loading .s-map-loading .ui-icon {
-  opacity: .7;
-  width: 32px;
-  height: 32px;
 }
 #map-layer #google-map {
   margin: -3px -8px;

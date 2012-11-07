@@ -59,7 +59,10 @@
     text-shadow: 0 -1px 1px @shadowLighter;
 }
 
-.ui-btn-up-a {
+.ui-btn-up-a,
+.ui-btn-hover-a,
+.ui-btn-down-a,
+.ui-btn-active-a{
     .button-font-bold();
     border: @borderGrayDark;
     background: none;
@@ -86,27 +89,8 @@
 .ui-btn-hover-a,
 .ui-btn-down-a,
 .ui-btn-active-a {
-    .button-font-bold();
     border: @borderGray;
-    background: none;
-    background-color: @black;
     color: @white;
-    text-shadow: @shadowBlack 0px 1px 1px;
-    font-size: @fontSizeBtn;
-    text-decoration: none;
-    .box-shadow(inset 0 3px 20px @shadowBlack);
-    &.ui-shadow{
-        .box-shadow(inset 0 3px 20px @shadowBlack);
-    }
-    .ui-btn-inner{
-        border:none;
-    }
-    a.ui-link-inherit {
-        color: @grayLight;
-    }
-    &.ui-corner-left{.border-left-radius (@cornersRound);}
-    &.ui-corner-right{.border-right-radius (@cornersRound);}
-    &.ui-btn-corner-all{.border-radius (@cornersRound);}
 }
 
 // Tweak to A theme buttons for transparent BGs
@@ -172,17 +156,19 @@
 }
 
 .ui-btn-up-b,
-.ui-btn-up-b[data-rel="back"]::before {
+.ui-btn-up-b[data-rel="back"]::before,
+.ui-btn-hover-b,
+.ui-btn-hover-b[data-rel="back"]::before,
+.ui-btn-down-b,
+.ui-btn-down-b[data-rel="back"]::before,
+.ui-btn-active-b,
+.ui-btn-active-b[data-rel="back"]::before {
     border: @borderBlack;
     background: @grayDarkBg;
-    .button-font-small();
     color: @gray;
     text-shadow: @shadowBlack 0px -1px 1px;
     text-decoration: none;
     .linear-gradient(@grayDarkBg, @grayDarkBgTint);
-    .ui-btn-inner{
-        border:none;
-    }
     a.ui-link-inherit {
         color: @gray;
     }
@@ -193,42 +179,18 @@
         background: none;
         .linear-gradient(black, @grayDarkBgTint);
     }
-    &.s-arrow-d-left::after{
-        .arrow-down(@arrow-size, @grayDarkBgTint, @arrow-offset, 3px);
-    }
     &.bottom-centered-arrow::after{
         .arrow-up(@arrow-size, @grayDarkBg, 50%, 3px);
     }
 }
 
 .ui-btn-hover-b,
-.ui-btn-active-b,
 .ui-btn-hover-b[data-rel="back"]::before,
+.ui-btn-active-b,
 .ui-btn-active-b[data-rel="back"]::before{
-    border: @borderBlack;
-    background: @grayDarkBg;
-    .button-font-small();
     color: lighten(@gray, 3%);
-    text-shadow: @shadowBlack 0px -1px 1px;
-    font-size: @fontSizeSmall;
-    text-decoration: none;
     .linear-gradient(lighten(@grayDarkBg, 3%), lighten(@grayDarkBgTint, 3%));
-    .ui-btn-inner{
-        border:none;
-    }
-    a.ui-link-inherit {
-        color: @gray;
-    }
-    &.ui-shadow{
-        .box-shadow(0 1px 0 @shadowLighter);
-    }
-    &.ui-btn-active{
-        background: none;
-        .linear-gradient(black, @grayDarkBgTint);
-    }
-    &.s-arrow-d-left::after{
-        .arrow-down(@arrow-size, lighten(@grayDarkBgTint, 3%), @arrow-offset, 3px);
-    }
+   
     &.bottom-centered-arrow::after{
         .arrow-up(@arrow-size, lighten(@grayDarkBg, 3%), 50%, 3px);
     }
@@ -236,30 +198,12 @@
 
 .ui-btn-down-b,
 .ui-btn-down-b[data-rel="back"]::before{
-    border: @borderBlack;
-    background: @grayDarkBg;
-    .button-font-small();
     color: darken(@gray, 3%);
-    text-shadow: @shadowBlack 0px -1px 1px;
-    text-decoration: none;
     .pressed-gradient(@grayDarkBgTint, 5%);
-    .ui-btn-inner{
-        border:none;
-    }
-    a.ui-link-inherit {
-        color: @gray;
-    }
-    &.ui-shadow{
-        -moz-box-shadow: 0 1px 0 @shadowLighter;
-        -webkit-box-shadow: 0 1px 0 @shadowLighter;
-        box-shadow: 0 1px 0 @shadowLighter;
-    }
+
     &.ui-btn-active{
         background: none;
         .linear-gradient(black, @grayDarkBgTint);
-    }
-    &.s-arrow-d-left::after{
-        .arrow-down(@arrow-size, @grayDarkBgTint, @arrow-offset, 3px);
     }
     &.bottom-centered-arrow::after{
         .arrow-up(@arrow-size, @grayDarkBgTint, 50%, 3px);
@@ -688,6 +632,8 @@ div[data-role="header"].ui-bar-b{
 // @E-BARS
 .ui-bar-e{
     background: @yellow;
+    color: @grayDarker;
+    text-shadow: @white 0px 1px 1px;
     .linear-gradient(@yellow, @yellowTint);
     a{
         color: @grayDarker;
