@@ -102,9 +102,9 @@
         border: none;
         border-bottom: @borderGray;
         background-color: @grayDarkBgTint;
-        .box-shadow(inset 0 3px 20px @shadowBlack);
+        color: @grayLight;
         &.ui-shadow{
-            .box-shadow(inset 0 3px 20px @shadowBlack);
+            .box-shadow(inset 0 3px 20px @shadowDarker);
         }
         .ui-btn-inner{
             border:none;
@@ -115,11 +115,11 @@
     .ui-btn-active-a   {
         border: none;
         border-bottom: @borderGrayDark;
+        color: @white;
         background: none;
         background-color: @grayDarkBg;
-        .box-shadow(inset 0 3px 20px @shadowBlack);
         &.ui-shadow{
-            .box-shadow(inset 0 3px 20px @shadowBlack);
+            .box-shadow(inset 0 3px 20px @shadowDarker);
         }
         .ui-btn-inner{
             border:none;
@@ -562,6 +562,16 @@ div[data-role="header"].ui-bar-b{
     }
 }
 
+// @C-HEADER
+.ui-bar-c[data-role="header"]{
+    .ui-btn-up-c,
+    .ui-btn-hover-c,
+    .ui-btn-down-c{
+        background: none!important;
+        border: none!important;
+        .box-shadow(none)!important;
+    }
+}
 
 
 // @D
