@@ -3828,6 +3828,64 @@ textarea.ui-input-text {
 .s-dash-footer .ui-btn-inner .ui-icon.ui-icon-search {
   background-position: 0 -32px;
 }
+#uploading .s-upload-progress-header {
+  height: 125px;
+}
+#uploading .s-upload-progress-item .s-upload-info-block {
+  padding-left: 109px;
+}
+#uploading .s-upload-progress-item .s-upload-info-block .ui-icon-quote {
+  display: inline-block;
+  height: 15px;
+  background-position: -6px -8px;
+  width: 20px;
+}
+#uploading .s-upload-progress-item .s-upload-info-block .upload-image-venue a {
+  color: #999999;
+}
+#uploading .s-offline-uploading {
+  position: relative;
+  top: -8px;
+}
+#uploading .s-offline-uploading .ui-btn-inner {
+  overflow: visible;
+}
+.s-progress-bar {
+  background-color: #e6e6e6;
+}
+.s-progress-bar .s-bar-wrapper .s-bar-prog {
+  background-color: #ffff00;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#ffff00), to(#ffe400));
+  /* Saf4+, Chrome */
+
+  background-image: -webkit-linear-gradient(top, #ffff00, #ffe400);
+  /* Chrome 10+, Saf5.1+ */
+
+  background-image: -moz-linear-gradient(top, #ffff00, #ffe400);
+  /* FF3.6 */
+
+  background-image: -ms-linear-gradient(top, #ffff00, #ffe400);
+  /* IE10 */
+
+  background-image: -o-linear-gradient(top, #ffff00, #ffe400);
+  /* Opera 11.10+ */
+
+  background-image: linear-gradient(top, #ffff00, #ffe400);
+}
+.s-progress-bar .s-bar-wrapper .s-bar-bg {
+  background-color: #C5C4C4;
+  -moz-box-shadow: inset 0 0 9px 2px #afaeae;
+  -webkit-box-shadow: inset 0 0 9px 2px #afaeae;
+  box-shadow: inset 0 0 9px 2px #afaeae;
+}
+.s-progress-bar .s-upload-message {
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight: bold;
+  font-size: 12px;
+}
+.s-progress-bar .s-bar-action .ui-icon-check {
+  background-position: -243px -144px;
+}
 .s-share-photo #description {
   height: 92px;
 }

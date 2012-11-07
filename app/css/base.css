@@ -1161,7 +1161,8 @@ a:active {
   display: block;
   top: 50%;
   position: absolute;
-  margin-top: -9px;
+  margin-top: -18px;
+  right: 7px;
 }
 .s-share-icon-small {
   background-color: #ffffff;

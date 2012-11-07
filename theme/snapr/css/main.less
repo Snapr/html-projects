@@ -803,15 +803,71 @@ textarea.ui-input-text {
 // -------------------------
 
 
+#uploading{
+    .s-upload-progress-header{
+        height: @thumbSize + @padding * 6;
+    }
+    .s-upload-progress-item{
+       
+        .s-upload-info-block{
+            padding-left: @thumbSize + @padding * 2;
+             .ui-icon-quote{
+                 display: inline-block;
+                 height: @fontSize;
+                 background-position: -6px @gfxFeed-quote-y - 8;
+                 width: 20px;
+             }
+            .upload-image-venue{
+               a{
+                   color: @gray;
+               }
+            }
+            
+           
+        }
+    }
+    .s-offline-uploading{
+        position: relative;
+        top: -8px;
+        .ui-btn-inner{
+            overflow: visible;
+        }
+    }
+
+}
 
 
 // UPLOAD QUEUE
 // -------------------------
 
 
+
+
 // @PROGRESSBAR
 //-----------------
 
+.s-progress-bar{
+    background-color: lighten(@grayLight, 10%);
+    .s-bar-wrapper{
+        .s-bar-prog{
+            background-color: @yellow;
+            .linear-gradient(@yellow, @yellowTint);
+        }
+        .s-bar-bg{
+            background-color: #C5C4C4;
+            .box-shadow(inset 0 0 9px 2px #AFAEAE);
+        }
+    }
+    .s-upload-message{
+        .button-font-small();
+    }
+
+    .s-bar-action{
+         .ui-icon-check {
+                background-position: @gfxIcons-check-x @gfxIcons-y-highlight;
+        }
+    }
+}
 
 
 // @SHARE
