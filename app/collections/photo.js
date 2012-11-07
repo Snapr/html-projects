@@ -45,6 +45,7 @@ return Backbone.Collection.extend({
     },
 
     fetch: function(options) {
+        options = options || {};
         options.data = _.defaults(options.data || {}, this.defaults);
         if(this.exclude && options.data && options.data.n){
             options.data.n += this.exclude.length;
