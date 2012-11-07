@@ -1419,10 +1419,10 @@ div.ps-carousel-item-loading {
   font-size: 13px;
   text-decoration: none;
 }
-.s-photo-map .s-map-venue.active {
+.s-photo-map .s-map-venue.x-active {
   z-index: 2;
 }
-.s-photo-map .s-map-venue.active .x-map-venue-label {
+.s-photo-map .s-map-venue.x-active .s-venue-label {
   display: block;
 }
 .s-photo-map .s-map-current-location {

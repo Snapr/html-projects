@@ -400,7 +400,7 @@ var map_view = page_view.extend({
 
     toggle_spot_label: function (event) {
         var pin = this.$(event.currentTarget).parent();
-        if(pin.hasClass('active')){
+        if(pin.hasClass('x-active')){
             pin.removeClass('x-active');
         }else{
             this.$('.x-venue.x-active').removeClass('x-active');
