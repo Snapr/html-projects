@@ -38,6 +38,8 @@ var config_model = Backbone.Model.extend({
 
         show_tab_bar: true,
 
+        sort_order: 'date_utc',
+
         zoom: 15,
         feed_count: 9,
         map_count: 10,

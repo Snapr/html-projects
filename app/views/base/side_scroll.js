@@ -143,6 +143,8 @@ return view.extend({
         if(this.scroller){
             var scroller = this.scroller;
             scroller.options.snap = snap;
+
+            // why is this 0 timeout needed?
             setTimeout(function () {
                 scroller.refresh();
                 // decide if we need to scroll the 'load more' element off based
@@ -155,35 +157,25 @@ return view.extend({
             return this;
         }
 
-        var scroll_el = $('.x-scroll-area', this.el),
-            details = $('.x-details', this.el),
+        var scroll_el = this.$('.x-scroll-area'),
+            details = this.$('.x-details'),
             pull_distance = -0,
-            left_pull_el = $('.x-left-pull', this.el),
-            right_pull_el = $('.x-right-pull', this.el),
-            left_pull_msg = $('.x-msg', left_pull_el),
-            right_pull_msg = $('.x-msg', right_pull_el);
+            left_pull_el = this.$('.x-left-pull'),
+            right_pull_el = this.$('.x-right-pull');
 
         function flip_pulls(scroller){
             if(scroll_el.is('.x-loading')){ return; }
 
             if(scroller.x > pull_distance){
                 left_pull_el.addClass('x-flipped');
-                if(!scroll_el.is('.x-loading')){
-                    left_pull_msg.text('release');
-                }
             }else{
                 left_pull_el.removeClass('x-flipped');
-                left_pull_msg.text('Load Newer');
             }
             if(!scroll_el.is('.x-no-more')){
                 if(scroller.x < (scroller.maxScrollX - pull_distance)){
                     right_pull_el.addClass('x-flipped');
-                    if(!scroll_el.is('.x-loading')){
-                        right_pull_msg.text('release');
-                    }
                 }else{
                     right_pull_el.removeClass('x-flipped');
-                    right_pull_msg.text('Load More');
                 }
             }
         }
@@ -222,38 +214,34 @@ return view.extend({
                     var scroller;
                     if(left_pull_el.is('.x-flipped') && !scroll_el.is('.x-loading')){
                         scroll_el.addClass('x-loading');
-                        left_pull_msg.text('Loading...');
                         scroller = this;
-                        collection.fetch_newer({
-                            data: {n: config.get('side_scroll_more')},
+                        collection.fetch({
+                            data: {n: Math.min(collection.length, 20)},
                             success: function(){
+                                scroll_el.removeClass('x-loading');
+                                left_pull_el.removeClass('x-flipped');
                                 view.render_thumbs();
                                 if(scroller.currPageX === 0){
                                     scroller.scrollToPage(1);
                                 }
-                                scroll_el.removeClass('x-loading');
-                                left_pull_msg.text('Load More');
                             }
                         });
                     }else if(right_pull_el.is('.x-flipped') && !scroll_el.is('.x-loading') && !scroll_el.is('.x-no-more')){
                         scroll_el.addClass('x-loading');
-                        right_pull_msg.text('Loading');
                         scroller = this;
                         var options  = {
                             data: {n: config.get('side_scroll_more')},
                             success: function(collection, response){
+                                scroll_el.removeClass('x-loading');
+                                right_pull_el.removeClass('x-flipped');
                                 view.render_thumbs();
                                 if(scroller.currPageX === scroller.pagesX.length){
                                     scroller.scrollToPage(scroller.pagesX.length - 1);
                                 }
 
-                                if (response.response.photos.length){
-                                    right_pull_msg.text('Load More');
-                                }else{
+                                if (!response.response.photos.length){
                                     scroll_el.addClass('x-no-more');
-                                    right_pull_msg.text('The End');
                                 }
-                                scroll_el.removeClass('x-loading');
                             }
                         };
                         collection.fetch_older(options);
