@@ -623,7 +623,7 @@ var map_view = page_view.extend({
             'theme': 'jqm',
             'jqmBody': 'b',
             'jqmSet': 'e',
-            'jqmCancel': 'd',
+            'jqmCancel': 'g',
             'dateFormat': 'yy-mm-dd',
             'dateOrder': 'ddMyy',
             'endYear': new Date().getFullYear(),

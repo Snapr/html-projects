@@ -1,6 +1,6 @@
-<div class="x-venue s-map-point <%=data.category.slug%> <% if(data.active){ %>active<% } %>">
-    <a class="x-venue-pin"></a>
-    <a class="x-venue-label" data-ajax="false" href="#/spot/?spot_id=<%=data.id%>">
+<div class="x-venue s-map-venue s-map-point <%=data.category.slug%> <% if(data.active){ %>active<% } %>">
+    <a class="x-venue-pin s-venue-pin"></a>
+    <a class="x-venue-label s-venue-label" data-ajax="false" href="#/spot/?spot_id=<%=data.id%>">
       <span class="ui-icon spot-icon spot-icon-b"></span>
       <span class="s-venue-label-text"><%= data.name %></span>
     </a>

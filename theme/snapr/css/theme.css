@@ -1783,6 +1783,15 @@ a.ui-link-inherit {
 .s-trans-bg .ui-btn-active-a .ui-btn-inner {
   border: none;
 }
+.ui-bar-a[data-role="header"] .ui-btn-up-a,
+.ui-bar-a[data-role="header"] .ui-btn-hover-a,
+.ui-bar-a[data-role="header"] .ui-btn-down-a {
+  background: none!important;
+  border: none!important;
+  -moz-box-shadow: none !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+}
 .ui-body-b {
   background: #000000;
   background-image: url('../gfx/bg-texture-dark.gif');
@@ -1953,6 +1962,12 @@ a.ui-link-inherit {
 
   background-image: linear-gradient(top, #4a4f50, #2d3032);
 }
+.ui-btn-hover-b .ui-btn-text,
+.ui-btn-hover-b[data-rel="back"]::before .ui-btn-text,
+.ui-btn-active-b .ui-btn-text,
+.ui-btn-active-b[data-rel="back"]::before .ui-btn-text {
+  color: #a1a1a1;
+}
 .ui-btn-hover-b.bottom-centered-arrow::after,
 .ui-btn-hover-b[data-rel="back"]::before.bottom-centered-arrow::after,
 .ui-btn-active-b.bottom-centered-arrow::after,
@@ -1991,6 +2006,10 @@ a.ui-link-inherit {
   /* Opera 11.10+ */
 
   background-image: linear-gradient(bottom, #26282a 0%, #26282a 70%, #1a1b1d 100%);
+}
+.ui-btn-down-b .ui-btn-text,
+.ui-btn-down-b[data-rel="back"]::before .ui-btn-text {
+  color: #a1a1a1;
 }
 .ui-btn-down-b.ui-btn-active,
 .ui-btn-down-b[data-rel="back"]::before.ui-btn-active {
@@ -4503,6 +4522,47 @@ div.ps-carousel-item-loading {
   left: 2px;
   margin-top: 0;
 }
+.s-photo-map .s-map-controls .s-map-time {
+  position: absolute;
+  left: 8px;
+  top: 6px;
+}
+.s-photo-map .s-map-controls .s-map-time .s-map-time-label {
+  padding-left: 10px;
+  padding-right: 10px;
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight: bold;
+  font-size: 12px;
+  top: -30px;
+}
+.s-photo-map .s-map-controls .s-map-time .s-map-time-btn {
+  background: none;
+  box-shadow: none;
+  border: none;
+  top: 0;
+  margin-bottom: 0;
+  -webkit-border-top-right-radius: 4px;
+  -moz-border-radius-topright: 4px;
+  border-top-right-radius: 4px;
+  -webkit-border-top-left-radius: 4px;
+  -moz-border-radius-topleft: 4px;
+  border-top-left-radius: 4px;
+}
+.s-photo-map .s-map-controls .s-map-time .s-map-time-btn .ui-icon {
+  width: 32px;
+  height: 32px;
+}
+.s-photo-map .s-map-controls .s-map-loading {
+  position: absolute;
+  top: -2px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  border-radius: 20px;
+}
+.s-photo-map .s-map-controls .s-map-filters {
+  margin: 6px;
+  margin-left: 48px;
+}
 .s-photo-map .s-map-controls .ui-input-search {
   padding: 8px 24px 8px 28px;
   height: 33px;
@@ -4563,47 +4623,6 @@ div.ps-carousel-item-loading {
   font-size: 14px;
   padding: 8px 31px;
 }
-.s-photo-map .s-map-controls .s-map-time {
-  position: absolute;
-  left: 8px;
-  top: 6px;
-}
-.s-photo-map .s-map-controls .s-map-time .s-map-time-label {
-  padding-left: 10px;
-  padding-right: 10px;
-  font-family: Helvetica, Arial, sans-serif;
-  font-weight: bold;
-  font-size: 12px;
-  top: -30px;
-}
-.s-photo-map .s-map-controls .s-map-time .s-map-time-btn {
-  background: none;
-  box-shadow: none;
-  border: none;
-  top: 0;
-  margin-bottom: 0;
-  -webkit-border-top-right-radius: 4px;
-  -moz-border-radius-topright: 4px;
-  border-top-right-radius: 4px;
-  -webkit-border-top-left-radius: 4px;
-  -moz-border-radius-topleft: 4px;
-  border-top-left-radius: 4px;
-}
-.s-photo-map .s-map-controls .s-map-time .s-map-time-btn .ui-icon {
-  width: 32px;
-  height: 32px;
-}
-.s-photo-map .s-map-controls .s-map-loading {
-  position: absolute;
-  top: -2px;
-  -webkit-border-radius: 20px;
-  -moz-border-radius: 20px;
-  border-radius: 20px;
-}
-.s-photo-map .s-map-controls .s-map-filters {
-  margin: 6px;
-  margin-left: 48px;
-}
 .s-photo-map #x-map-disambiguation {
   position: absolute;
   display: none;
@@ -4643,55 +4662,6 @@ div.ps-carousel-item-loading {
   position: absolute;
   top: -9px;
   left: 186px;
-}
-.s-photo-map #x-no-results {
-  width: 70%;
-}
-.s-photo-map #x-no-results .s-alert-text {
-  background-color: #ffffff;
-  padding: 6px;
-  padding-left: 48px;
-  position: relative;
-  color: #ff8400;
-  -moz-border-radius: 8px;
-  -webkit-border-radius: 8px;
-  border-radius: 8px;
-  border: solid #ffff00 4px;
-  font-size: 12px;
-  -moz-box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
-  -webkit-box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
-}
-.s-photo-map #x-no-results .s-alert-text .ui-icon {
-  position: absolute;
-  left: 9px;
-  top: 3px;
-  /*
-                width: 32px;
-                height: 32px;*/
-
-}
-/* a tweak for the mobiscroll time picker css */
-.jqm {
-  /* Place it at bottom left */
-
-  /*.dw{
-            bottom: 50px!important;
-            top: auto!important;
-            left: 8px!important;
-            ::after{
-                .arrow-down(8px, black, 16px, 2px);
-            }
-        }*/
-
-  /*Margins for btns */
-
-}
-.jqm .dwo {
-  background-color: rgba(0, 0, 0, 0.6);
-}
-.jqm .dwbc .dwbw .dwb {
-  margin: 8px;
 }
 .s-spots-search-filters {
   padding-right: 44px;

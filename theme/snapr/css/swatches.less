@@ -128,7 +128,19 @@
 }
 
 
-// B //
+// @A-HEADER
+.ui-bar-a[data-role="header"]{
+    .ui-btn-up-a,
+    .ui-btn-hover-a,
+    .ui-btn-down-a{
+        background: none!important;
+        border: none!important;
+        .box-shadow(none)!important;
+    }
+}
+
+
+// @B //
 // The Dark (Textured Grey) swatch, used for title bars, dark btns on palletes
 // -----------------------------
 
@@ -189,6 +201,9 @@
 .ui-btn-active-b,
 .ui-btn-active-b[data-rel="back"]::before{
     color: lighten(@gray, 3%);
+    .ui-btn-text{
+        color: lighten(@gray, 3%);
+    }
     .linear-gradient(lighten(@grayDarkBg, 3%), lighten(@grayDarkBgTint, 3%));
    
     &.bottom-centered-arrow::after{
@@ -200,7 +215,9 @@
 .ui-btn-down-b[data-rel="back"]::before{
     color: darken(@gray, 3%);
     .pressed-gradient(@grayDarkBgTint, 5%);
-
+    .ui-btn-text{
+        color: lighten(@gray, 3%);
+    }
     &.ui-btn-active{
         background: none;
         .linear-gradient(black, @grayDarkBgTint);

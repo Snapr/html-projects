@@ -1425,7 +1425,6 @@ div.ps-carousel-item-loading
 .s-photo-map{
     position:relative;
     overflow:hidden;
-  
     .ui-bar{
         .ui-icon-location{
             width: 18px;
@@ -1436,15 +1435,15 @@ div.ps-carousel-item-loading
             
         }
     }
-  
+    
+    
+    
     .s-map-controls{
         position: absolute;
         bottom: 0;
         width: 100%;
         margin: 0 -8px;
         .border-bottom-radius(8px);
-
-
         &.ui-body-a{
             border: none;
             background: rgba(0, 0, 0, .8);
@@ -1461,6 +1460,38 @@ div.ps-carousel-item-loading
                 left: 2px;
                 margin-top: 0;
             }
+        }
+        .s-map-time{
+            position: absolute;
+            left: 8px;
+            top: 6px;
+            .s-map-time-label{
+                padding-left: 10px;
+                padding-right: 10px;
+                .button-font-small();
+                top: -30px;
+            }
+            .s-map-time-btn{
+                background: none;
+                box-shadow: none;
+                border: none;
+                top: 0;
+                margin-bottom: 0;
+                .border-top-radius(@cornersSmall);
+                .ui-icon{
+                    width: 32px;
+                    height: 32px;
+                }
+            }
+        }
+        .s-map-loading{
+            position: absolute;
+            top: -2px;
+            .border-radius(@cornersRound);
+        }
+        .s-map-filters{
+            margin: 6px;
+            margin-left: 48px;
         }
         .ui-input-search{
             padding: 8px 24px 8px 28px;
@@ -1520,41 +1551,7 @@ div.ps-carousel-item-loading
             }
 
         }
-        .s-map-time{
-            position: absolute;
-            left: 8px;
-            top: 6px;
-            .s-map-time-label{
-                padding-left: 10px;
-                padding-right: 10px;
-                .button-font-small();
-                top: -30px;
-            }
-            .s-map-time-btn{
-                background: none;
-                box-shadow: none;
-                border: none;
-                top: 0;
-                margin-bottom: 0;
-                .border-top-radius(@cornersSmall);
-                .ui-icon{
-                    width: 32px;
-                    height: 32px;
-                }
-            }
-        }
         
-        .s-map-loading{
-            position: absolute;
-            top: -2px;
-            .border-radius(@cornersRound);
-        }
-
-
-        .s-map-filters{
-            margin: 6px;
-            margin-left: 48px;
-        }
     }
     #x-map-disambiguation{
         position: absolute;
@@ -1585,61 +1582,9 @@ div.ps-carousel-item-loading
             .arrow-up(@arrow-size, @white, 186px ,@arrow-y-shift + 2px);
         }
     }
-
-    #x-no-results {
-        width:70%;
-
-        .s-alert-text {
-            background-color: #ffffff;
-            padding: 6px;
-            padding-left: 48px;
-            position: relative;
-            color: #ff8400;
-            -moz-border-radius: 8px;
-            -webkit-border-radius: 8px;
-            border-radius: 8px;
-            border: solid #ffff00 4px;
-            font-size: 12px;
-            -moz-box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
-            -webkit-box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
-            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
-
-            .ui-icon {
-                position: absolute;
-                left: 9px;
-                top: 3px;/*
-                width: 32px;
-                height: 32px;*/
-            }
-        }
-    }
-
 }
 
-/* a tweak for the mobiscroll time picker css */
 
-.jqm{
-    .dwo{
-        background-color: @blackTrans;
-    }
-    /* Place it at bottom left */
-    /*.dw{
-            bottom: 50px!important;
-            top: auto!important;
-            left: 8px!important;
-            ::after{
-                .arrow-down(8px, black, 16px, 2px);
-            }
-        }*/
-    /*Margins for btns */
-    .dwbc{
-        .dwbw{
-            .dwb{
-                margin: 8px;
-            }
-        }
-    }
-}
 
 
 

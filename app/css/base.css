@@ -1386,7 +1386,7 @@ div.ps-carousel-item-loading {
   height: 88px;
   display: block;
 }
-.s-photo-map .x-map-venue .x-map-venue-pin {
+.s-photo-map .s-map-venue .s-venue-pin {
   background-image: url('gfx/map-spot-pin.png');
   position: absolute;
   display: block;
@@ -1396,7 +1396,7 @@ div.ps-carousel-item-loading {
   height: 28px;
   cursor: pointer;
 }
-.s-photo-map .x-map-venue .x-map-venue-label {
+.s-photo-map .s-map-venue .s-venue-label {
   display: none;
   background-image: url('gfx/map-spot-label.png');
   position: absolute;
@@ -1407,7 +1407,7 @@ div.ps-carousel-item-loading {
   z-index: 1;
   text-decoration: none;
 }
-.s-photo-map .x-map-venue .x-map-venue-label .s-venue-label-text {
+.s-photo-map .s-map-venue .s-venue-label .s-venue-label-text {
   color: white;
   font-weight: bold;
   text-shadow: #000000 0 -1px 1px;
@@ -1419,10 +1419,10 @@ div.ps-carousel-item-loading {
   font-size: 13px;
   text-decoration: none;
 }
-.s-photo-map .x-map-venue.active {
+.s-photo-map .s-map-venue.active {
   z-index: 2;
 }
-.s-photo-map .x-map-venue.active .x-map-venue-label {
+.s-photo-map .s-map-venue.active .x-map-venue-label {
   display: block;
 }
 .s-photo-map .s-map-current-location {
@@ -1447,11 +1447,11 @@ div.ps-carousel-item-loading {
   padding: 6px;
   padding-left: 48px;
   position: relative;
-  color: #434748;
+  color: #f19d3c;
   -webkit-border-radius: 8px;
   -moz-border-radius: 8px;
   border-radius: 8px;
-  border: solid #ffcc00 4px;
+  border: solid #ffff00 4px;
   font-size: 12px;
   -moz-box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
   -webkit-box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
@@ -1497,24 +1497,6 @@ div.ps-carousel-item-loading {
   z-index: 100;
   min-height: 0px;
   overflow: visible;
-}
-.s-photo-map #x-no-results {
-  width: 70%;
-}
-.s-photo-map #x-no-results .s-alert-text {
-  background-color: #ffffff;
-  padding: 6px;
-  padding-left: 48px;
-  position: relative;
-  color: #ff8400;
-  -moz-border-radius: 8px;
-  -webkit-border-radius: 8px;
-  border-radius: 8px;
-  border: solid #ffff00 4px;
-  font-size: 12px;
-  -moz-box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
-  -webkit-box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
 }
 .jqm .dwo {
   background-color: rgba(0, 0, 0, 0.6);
