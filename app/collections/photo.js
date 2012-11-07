@@ -5,13 +5,13 @@ return Backbone.Collection.extend({
 
     model: photo_model,
 
-    data: {},
+    defaults: {
+        sort: config.get('sort_order')
+    },
 
     initialize: function(models, options){
         if(options){
-            if(options.data){
-                this.data = options.data;
-            }
+            this.data = _.defaults(options.data || {}, this.defaults);
             this.exclude = options.exclude;
         }
     },
@@ -45,6 +45,7 @@ return Backbone.Collection.extend({
     },
 
     fetch: function(options) {
+        options.data = _.defaults(options.data || {}, this.defaults);
         if(this.exclude && options.data && options.data.n){
             options.data.n += this.exclude.length;
         }
@@ -52,9 +53,9 @@ return Backbone.Collection.extend({
     },
 
     fetch_newer: function( options ){
-        var data = options.data || {};
+        var data = _.defaults(options.data || {}, this.defaults);
         if (this.models.length){
-            data.paginate_to = this.models[0].get('id');
+            options.data.paginate_to = this.models[0].get('id');
         }
         _.extend( options, {
             add: true,
@@ -64,7 +65,7 @@ return Backbone.Collection.extend({
     },
 
     fetch_older: function( options ){
-        var data = options.data || {};
+        var data = _.defaults(options.data || {}, this.defaults);
         if (this.models.length){
             data.paginate_from = this.models[this.length-1].get('id');
         }
@@ -89,7 +90,8 @@ return Backbone.Collection.extend({
                 return photo_a.get( "weighted_score" ) > photo_b.get( "weighted_score" ) && -1 || 1;
             case 'score':
                 return photo_a.get( "score" ) > photo_b.get( "score" ) && -1 || 1;
-            default:
+            case 'date':
+            case 'date_utc':
                 return photo_a.get( "date" ) > photo_b.get( "date" ) && -1 || 1;
         }
     }
