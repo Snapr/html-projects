@@ -43,8 +43,8 @@ return page_view.extend({
                 },
                 success: function( data ){
                     if(data.success){
-                        $('.x-username').val("");
-                        $('.x-password').val("");
+                        xauth_view.$('.x-username').val("");
+                        xauth_view.$('.x-password').val("");
                         if(data.response.access_token){
                             //login
                             auth.set({
@@ -77,8 +77,8 @@ return page_view.extend({
                 },
                 success: function( data ){
                     if(data.success){
-                        $('.x-username').val("");
-                        $('.x-password').val("");
+                        xauth_view.$('.x-username').val("");
+                        xauth_view.$('.x-password').val("");
                         if(xauth_view.redirect){
                             var redirect = (xauth_view.redirect.indexOf("?") > -1) ?
                                 xauth_view.redirect + "&":
@@ -102,8 +102,8 @@ return page_view.extend({
             type: 'GET',
             dataType: 'jsonp',
             data:{
-                username: $('.x-username').val(),
-                password: $('.x-password').val()
+                username: xauth_view.$('.x-username').val(),
+                password: xauth_view.$('.x-password').val()
             },
             error: function( data ){
                 console.error('ajax error!');
