@@ -27,13 +27,13 @@
 
                                 <% if(comp && comp.has('hashtag')){ %><span class="s-comp-hashtag"><%= comp.get('hashtag') %></span><% } %>
 
-                               
-                                
+
+
                                 <fieldset data-role="controlgroup" data-type="horizontal" class="s-upload-image-privacy">
-                                    <input type="checkbox" name="status" id="image-status" <% if (status != "private"){%> checked="true" <%}%> />
-                                    <label for="image-status" class="x-status">&nbsp;<span class="ui-icon"></span></label>
+                                    <input type="checkbox" class="x-status" name="status" id="image-status" <% if (status != "private"){%> checked="true" <%}%> />
+                                    <label for="image-status">&nbsp;<span class="ui-icon"></span></label>
                                 </fieldset>
-                                
+
 
                                 <fieldset data-role="controlgroup" data-type="horizontal" class="x-image-sharing s-upload-image-sharing">
                                     <legend>Share to:</legend>
@@ -135,6 +135,6 @@
             <% } %>
         </div>
 
-       
+
     </div>
 </div>
