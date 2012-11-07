@@ -58,7 +58,7 @@ return page_view.extend({
 
         var data = this.build_data(),
             this_view = this,
-            file = $('.x-file')[0].files[0],
+            file = this.$('.x-file')[0].files[0],
             xhr = new XMLHttpRequest();
 
         xhr.upload.onprogress = function(rpe) {
