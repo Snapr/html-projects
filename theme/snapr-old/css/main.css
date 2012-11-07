@@ -6865,11 +6865,11 @@ body.x-browser-testing .ui-footer, body.x-browser-testing .ui-footer-fixed {
 .profile-icons .ui-icon-link, .profile-icons.ui-icon-link {
   background-position: 0 -64px;
 }
-.menu-main {
+.s-menu-main {
   padding: 0;
   text-transform: lowercase;
 }
-.menu-main .menu-btns {
+.s-menu-main .s-menu-btns {
   margin-bottom: 0;
   background: #5edba4 !important;
   -moz-box-shadow: inset 0 -2px 100px #285534;
@@ -6882,7 +6882,7 @@ body.x-browser-testing .ui-footer, body.x-browser-testing .ui-footer-fixed {
   -webkit-border-top-right-radius: 8px;
   border-top-right-radius: 8px;
 }
-.menu-main .menu-btns .ui-btn {
+.s-menu-main .s-menu-btns .ui-btn {
   -moz-border-radius: 0;
   -webkit-border-radius: 0;
   border-radius: 0;
@@ -6897,16 +6897,16 @@ body.x-browser-testing .ui-footer, body.x-browser-testing .ui-footer-fixed {
   -webkit-box-shadow: none;
   box-shadow: none;
 }
-.menu-main .menu-btns .ui-btn.ui-btn-hover-e, .menu-main .menu-btns .ui-btn.ui-btn-active {
+.s-menu-main .s-menu-btns .ui-btn.ui-btn-hover-e, .s-menu-main .s-menu-btns .ui-btn.ui-btn-active {
   background-color: rgba(255, 255, 255, 0.2);
 }
-.menu-main .menu-btns .ui-btn .ui-btn-inner {
+.s-menu-main .s-menu-btns .ui-btn .ui-btn-inner {
   padding: 0;
   line-height: 50px;
   padding-left: 58px;
   text-align: left;
 }
-.menu-main .menu-btns .ui-btn .ui-icon {
+.s-menu-main .s-menu-btns .ui-btn .ui-icon {
   top: 0;
   left: 8px;
   margin-top: 0;
@@ -6918,60 +6918,60 @@ body.x-browser-testing .ui-footer, body.x-browser-testing .ui-footer-fixed {
   -webkit-box-shadow: none;
   box-shadow: none;
 }
-.menu-main .menu-btns .ui-btn .ui-icon-main-menu-camera {
+.s-menu-main .s-menu-btns .ui-btn .ui-icon-main-menu-camera {
   background-position: 0px 0px;
 }
-.menu-main .menu-btns .ui-btn .ui-icon-main-menu-camera-lib {
+.s-menu-main .s-menu-btns .ui-btn .ui-icon-main-menu-camera-lib {
   background-position: 0px -50px;
 }
-.menu-main .menu-btns .ui-btn .ui-icon-main-menu-dashboard {
+.s-menu-main .s-menu-btns .ui-btn .ui-icon-main-menu-dashboard {
   background-position: 0px -100px;
 }
-.menu-main .menu-btns .ui-btn .ui-icon-main-menu-feed {
+.s-menu-main .s-menu-btns .ui-btn .ui-icon-main-menu-feed {
   background-position: 0px -150px;
 }
-.menu-main .menu-btns .ui-btn .ui-icon-main-menu-popular {
+.s-menu-main .s-menu-btns .ui-btn .ui-icon-main-menu-popular {
   background-position: 0px -200px;
 }
-.menu-main .menu-btns .ui-btn .ui-icon-main-menu-map {
+.s-menu-main .s-menu-btns .ui-btn .ui-icon-main-menu-map {
   background-position: 0px -250px;
 }
-.menu-main .menu-btns .ui-btn .ui-icon-main-menu-my-account {
+.s-menu-main .s-menu-btns .ui-btn .ui-icon-main-menu-my-account {
   background-position: 0px -300px;
 }
-.menu-main .menu-btns .ui-btn .ui-icon-main-menu-cities {
+.s-menu-main .s-menu-btns .ui-btn .ui-icon-main-menu-cities {
   background-position: 0px -350px;
 }
-.menu-main .menu-btns .ui-btn .ui-icon-main-menu-spots {
+.s-menu-main .s-menu-btns .ui-btn .ui-icon-main-menu-spots {
   background-position: 0px -400px;
 }
-.menu-main .menu-btns .ui-btn .ui-icon-main-menu-info {
+.s-menu-main .s-menu-btns .ui-btn .ui-icon-main-menu-info {
   background-position: 0px -450px;
 }
-.menu-main .menu-btns .ui-btn .ui-icon-main-menu-activity {
+.s-menu-main .s-menu-btns .ui-btn .ui-icon-main-menu-activity {
   background-position: 0px -500px;
 }
-.menu-main .menu-btns .ui-btn .ui-icon-main-menu-leaderboard {
+.s-menu-main .s-menu-btns .ui-btn .ui-icon-main-menu-leaderboard {
   background-position: 0px -550px;
 }
-.menu-main .menu-btns .ui-btn .ui-icon-main-menu-join {
+.s-menu-main .s-menu-btns .ui-btn .ui-icon-main-menu-join {
   background-position: 0px -600px;
 }
-.menu-main .menu-btns .ui-btn .ui-icon-main-menu-login {
+.s-menu-main .s-menu-btns .ui-btn .ui-icon-main-menu-login {
   background-position: 0px -650px;
 }
-.menu-main .menu-btns .ui-btn .ui-icon-main-menu-arrow-r {
+.s-menu-main .s-menu-btns .ui-btn .ui-icon-main-menu-arrow-r {
   background-position: 0px -700px;
 }
-.menu-main .menu-btns .ui-btn .ui-icon-main-menu-tumblr {
+.s-menu-main .s-menu-btns .ui-btn .ui-icon-main-menu-tumblr {
   background-position: 0px -750px;
 }
-.menu-main .menu-btns li {
+.s-menu-main .s-menu-btns li {
   border-top: solid rgba(255, 255, 255, 0.6) 1px;
   border-bottom: solid rgba(0, 0, 0, 0.05) 1px;
   margin-bottom: 0;
 }
-.menu-main .menu-btns li:first-child {
+.s-menu-main .s-menu-btns li:first-child {
   -moz-border-radius-topleft: 8px;
   -webkit-border-top-left-radius: 8px;
   border-top-left-radius: 8px;
@@ -6979,7 +6979,7 @@ body.x-browser-testing .ui-footer, body.x-browser-testing .ui-footer-fixed {
   -webkit-border-top-right-radius: 8px;
   border-top-right-radius: 8px;
 }
-.menu-main .menu-btns li:first-child .ui-btn {
+.s-menu-main .s-menu-btns li:first-child .ui-btn {
   -moz-border-radius-topleft: 8px;
   -webkit-border-top-left-radius: 8px;
   border-top-left-radius: 8px;
@@ -6987,18 +6987,18 @@ body.x-browser-testing .ui-footer, body.x-browser-testing .ui-footer-fixed {
   -webkit-border-top-right-radius: 8px;
   border-top-right-radius: 8px;
 }
-.menu-main .menu-btns .centered-title {
+.s-menu-main .s-menu-btns .centered-title {
   text-align: center;
   padding: 24px;
 }
-.menu-main .menu-btns .ui-icon-big-arrow-d {
+.s-menu-main .s-menu-btns .ui-icon-big-arrow-d {
   background-image: url('../gfx/big-arrow-d.png');
   background-repeat: no-repeat;
   background-position: center;
   height: 20px;
   width: 100%;
 }
-.menu-main .upload-count {
+.s-menu-main .s-upload-count {
   background-color: #4185f4;
   background-image: -webkit-gradient(linear, left top, left bottom, from(#4185f4), to(#194fdc));
   /* Saf4+, Chrome */
@@ -7038,12 +7038,12 @@ body.x-browser-testing .ui-footer, body.x-browser-testing .ui-footer-fixed {
   text-transform: none;
   vertical-align: middle;
 }
-.menu-main .menu-stream.thumbs-block {
+.s-menu-main .menu-stream.thumbs-block {
   position: relative;
   margin-bottom: -8px;
   background-color: black;
 }
-.menu-main .menu-stream.thumbs-block .thumbs-block-overlay {
+.s-menu-main .menu-stream.thumbs-block .s-thumbs-block-overlay {
   position: absolute;
   width: 100%;
   top: 0;
@@ -7051,7 +7051,7 @@ body.x-browser-testing .ui-footer, body.x-browser-testing .ui-footer-fixed {
   height: 101px;
   background: rgba(0, 0, 0, 0.6);
 }
-.menu-main .menu-stream.thumbs-block .thumbs-block-overlay .centered-btn {
+.s-menu-main .menu-stream.thumbs-block .s-thumbs-block-overlay .s-centered-btn {
   display: inline-block;
   width: 160px;
   position: absolute;
@@ -7061,19 +7061,19 @@ body.x-browser-testing .ui-footer, body.x-browser-testing .ui-footer-fixed {
   margin-top: -18px;
   border-radius: 20px;
 }
-.menu-main .menu-stream.thumbs-block .thumbs-block-overlay .centered-btn .ui-btn-inner {
+.s-menu-main .menu-stream.thumbs-block .s-thumbs-block-overlay .s-centered-btn .ui-btn-inner {
   padding-right: 20px;
   padding-left: 10px;
 }
-.menu-main .menu-stream.thumbs-block .thumbs-preview-stream {
+.s-menu-main .menu-stream.thumbs-block .s-thumbs-preview-stream {
   white-space: nowrap;
   height: 101px;
   overflow: hidden;
 }
-.menu-main .menu-stream.thumbs-block .thumbs-preview-stream li {
+.s-menu-main .menu-stream.thumbs-block .s-thumbs-preview-stream li {
   display: inline-block;
 }
-.menu-main .menu-stream.thumbs-block.loading .ui-icon-arrow-r {
+.s-menu-main .menu-stream.thumbs-block.loading .ui-icon-arrow-r {
   display: block;
   background-image: url('../gfx/small-spinner-dark.png') !important;
   background-position: center!important;
@@ -7085,7 +7085,7 @@ body.x-browser-testing .ui-footer, body.x-browser-testing .ui-footer-fixed {
   -webkit-animation-iteration-count: infinite;
   -webkit-animation-timing-function: linear;
 }
-.menu-main .menu-stream.thumbs-block.no-images .ui-icon-arrow-r {
+.s-menu-main .menu-stream.thumbs-block.no-images .ui-icon-arrow-r {
   display: none;
 }
 #my-account div[data-role="content"] {
@@ -7959,14 +7959,14 @@ body.x-browser-testing .ui-footer, body.x-browser-testing .ui-footer-fixed {
     -webkit-background-size: 160px 42px;
     background-size: 160px 42px;
   }
-  .menu-main .menu-btns .ui-btn .ui-icon, .menu-main .menu-btns .ui-btn {
+  .s-menu-main .s-menu-btns .ui-btn .ui-icon, .s-menu-main .s-menu-btns .ui-btn {
     background-image: url('../gfx/retina/menu-icons.png');
     -moz-background-size: 50px 800px;
     -o-background-size: 50px 800px;
     -webkit-background-size: 50px 800px;
     background-size: 50px 800px;
   }
-  .menu-main .menu-btns .ui-icon-big-arrow-d {
+  .s-menu-main .s-menu-btns .ui-icon-big-arrow-d {
     background-image: url('../gfx/big-arrow-d.png');
     -moz-background-size: 40px 20px;
     -o-background-size: 40px 20px;
@@ -8113,7 +8113,7 @@ body.x-browser-testing .ui-footer, body.x-browser-testing .ui-footer-fixed {
     -webkit-background-size: 24px 24px !important;
     background-size: 24px 24px !important;
   }
-  .x-ajax-loading .ui-icon, .menu-main .menu-stream.thumbs-block.loading .ui-icon-arrow-r {
+  .x-ajax-loading .ui-icon, .s-menu-main .menu-stream.thumbs-block.loading .ui-icon-arrow-r {
     display: block;
     background-image: url('../gfx/retina/small-spinner-dark.png') !important;
     background-position: center!important;
@@ -8213,7 +8213,7 @@ body.x-browser-testing .ui-footer, body.x-browser-testing .ui-footer-fixed {
     -webkit-background-size: 69px 24px;
     background-size: 69px 24px;
   }
-  .menu-main .menu-stream.thumbs-block .ui-icon-arrow-r {
+  .s-menu-main .menu-stream.thumbs-block .ui-icon-arrow-r {
     background-image: url('../gfx/retina/general-jquerymob-icons.png');
     -moz-background-size: 774px 180px;
     -o-background-size: 774px 180px;

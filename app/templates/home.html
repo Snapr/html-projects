@@ -3,7 +3,7 @@
     <div data-role="header" data-theme="b">
 
         <div class="auth-header">
-            <div class="ui-btn-left join-block">
+            <div class="ui-btn-left">
                 <% if (auth.has('access_token')) { %>
                     <a class="avatar-block" data-role="button" data-shadow="false" data-corners="false" href="#/my-account/">
                         <span class="s-avatar" style="background-image: url('<%= config.get('avatar_url') %>/<%= auth.get('snapr_user') %>?size=large&amp;_salt=facebook');"></span>
@@ -21,8 +21,8 @@
 
     </div>
 
-    <div data-role="content" class="menu-main" data-theme="e">
-            <ul class="menu-btns">
+    <div data-role="content" class="s-menu-main" data-theme="e">
+            <ul class="s-menu-btns">
                    <li>
                        <div class="centered-title">
                        <h4>
@@ -58,7 +58,7 @@
                            <a href="#/feed/?username=<%=username%>" data-role="button" data-iconpos="left" data-icon="main-menu-feed">
                            My Snaps
                            </a>
-                           <span class="upload-count x-upload-count">&nbsp;</span>
+                           <span class="s-upload-count x-upload-count">&nbsp;</span>
                        <%}else{%>
                            <a href="#/feed/" data-role="button" data-iconpos="left" data-icon="main-menu-feed">Latest</a>
                        <%}%>
@@ -125,7 +125,7 @@
 
                </ul>
 
-               <div class="menu-stream x-menu-stream thumbs-block">
+               <div class="s-menu-stream x-menu-stream s-thumbs-block">
                </div>
     </div><!-- /content -->
 </div>

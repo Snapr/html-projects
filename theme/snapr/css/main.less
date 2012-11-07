@@ -737,6 +737,196 @@ textarea.ui-input-text {
 }
 
 
+
+
+// @HOME
+// -------------------------
+
+.auth-header{
+    .avatar-block{
+        height:  @avatarSize ;
+        line-height: @avatarSize;
+        padding-left:0;
+        background: none!important;
+        border: none!important;
+        top: 0!important;
+        &.ui-btn{
+            .ui-btn-inner{
+                padding: 0;
+                .ui-btn-text{
+                    display: block;
+                    text-align: left;
+                    padding-left: @avatarSize + @paddingElement ;
+                }
+            }
+            .s-avatar{
+                position: absolute;
+                left: 0;
+                top: 0;
+                background-color: @grayDarker;
+            }
+        }
+
+    }
+}
+
+
+
+.s-menu-main{
+    padding: 0;
+    text-transform: lowercase;
+    .s-menu-btns{
+        margin-bottom: 0;
+        background: lighten(@yellow, 10%)!important;
+        .box-shadow(inset 0 -2px 100px @yellowTint);
+        .border-top-radius(@cornersPage);
+        margin-left: -@padding * 2;
+        margin-right: -@padding * 2;
+        .ui-btn{
+            .border-radius(0);
+            background: none;
+            background-image: url('@{gfx}@{gfxMenu}');
+            background-position: right @gfxMenu-arrow-r-y;
+            background-repeat: no-repeat;
+            &.ui-btn-hover-e,
+            &.ui-btn-active{
+                background-color: rgba(255,255,255,.2);
+            }
+            margin: 0;
+            padding: 0;
+            min-height: @gfxMenu-grid;
+            .box-shadow(none);
+            .ui-btn-inner{
+                padding: 0;
+                line-height: @gfxMenu-grid;
+                padding-left: @gfxMenu-grid + @padding * 2;
+                text-align: left;
+            }
+            .ui-icon{
+                top: 0;
+                left:  @padding * 2;
+                margin-top: 0;
+                background: transparent;
+                background-image: url('@{gfx}@{gfxMenu}');
+                width: @gfxMenu-grid;
+                height: @gfxMenu-grid;
+                .box-shadow(none);
+            }
+            .ui-icon-main-menu-camera{background-position: @gfxMenu-x @gfxMenu-camera-y;}
+            .ui-icon-main-menu-camera-lib{background-position: @gfxMenu-x @gfxMenu-camera-lib-y;}
+            .ui-icon-main-menu-dashboard{background-position: @gfxMenu-x @gfxMenu-dashboard-y;}
+            .ui-icon-main-menu-feed{background-position: @gfxMenu-x @gfxMenu-feed-y;}
+            .ui-icon-main-menu-popular{background-position: @gfxMenu-x @gfxMenu-popular-y;}
+            .ui-icon-main-menu-map{background-position: @gfxMenu-x @gfxMenu-map-y;}
+            .ui-icon-main-menu-my-account{background-position: @gfxMenu-x @gfxMenu-my-account-y;}
+            .ui-icon-main-menu-cities{background-position: @gfxMenu-x @gfxMenu-cities-y;}
+            .ui-icon-main-menu-spots{background-position: @gfxMenu-x @gfxMenu-spots-y;}
+            .ui-icon-main-menu-info{background-position: @gfxMenu-x @gfxMenu-info-y;}
+            .ui-icon-main-menu-activity{background-position: @gfxMenu-x @gfxMenu-activity-y;}
+            .ui-icon-main-menu-leaderboard{background-position: @gfxMenu-x @gfxMenu-leaderboard-y;}
+            .ui-icon-main-menu-join{background-position: @gfxMenu-x @gfxMenu-join-y;}
+            .ui-icon-main-menu-login{background-position: @gfxMenu-x @gfxMenu-login-y;}
+            .ui-icon-main-menu-arrow-r{background-position: @gfxMenu-x @gfxMenu-arrow-r-y;}
+            .ui-icon-main-menu-tumblr{background-position: @gfxMenu-x @gfxMenu-tumblr-y;}
+        }
+        li{
+            border-top: solid rgba(255,255,255, .6) 1px;
+            border-bottom: solid rgba(0,0,0,.05) 1px;
+            margin-bottom: 0;
+        }
+        li:first-child{
+            .border-top-radius(@cornersPage);
+            .ui-btn{
+                .border-top-radius(@cornersPage);
+            }
+        }
+        .centered-title{
+            text-align: center;
+            padding: 24px;
+        }
+        .ui-icon-big-arrow-d{
+            background-image: url('../gfx/big-arrow-d.png');
+            background-repeat: no-repeat;
+            background-position: center;
+            height: 20px;
+            width: 100%;
+        }
+    }
+    .s-upload-count{
+        background-color: @blue;
+        .linear-gradient(@blue, @blueTint);
+        display: none;
+        position: absolute;
+        top: 20%;
+        right: 16%;
+        min-height: 13px;
+        min-width: 13px;
+        padding:  2px 3px 4px 3px;
+        .border-radius(20px);
+        color: white;
+        text-shadow: @shadowDarker 0px -1px 0px;
+        font-weight: bold;
+        .box-shadow(rgba(0, 0, 0, 0.15) 0px 2px 2px 0px);
+        font-size: 13px;
+        line-height: 13px;
+        text-align: center;
+        text-transform: none;
+        vertical-align: middle;
+    }
+    .s-menu-stream.s-thumbs-block{
+        position: relative;
+        margin-bottom: -@padding * 2;
+        background-color: black;
+        margin-left: -@padding * 2;
+        margin-right: -@padding * 2;
+        .s-thumbs-block-overlay{
+            position: absolute;
+            width: 100%;
+            top: 0;
+            left: 0;
+            height: @thumbSize;
+            background: @blackTrans;
+            .s-centered-btn{
+                display: inline-block;
+                width: 160px;
+                position: absolute;
+                left: 50%;
+                margin-left: -80px;
+                top: 50%;
+                margin-top: -18px;
+                border-radius: @cornersRound;
+                .ui-btn-inner{
+                    padding-right: 20px;
+                    padding-left: 10px;
+                    
+                }
+            }
+        }        
+        .s-thumbs-preview-stream{
+            white-space: nowrap;
+            height: @thumbSize;
+            overflow: hidden;
+            li{
+                display: inline-block;
+               
+            }
+        }
+        &.x-ajax-loading{
+            .ui-icon-arrow-r{
+                .spinner('../gfx/small-spinner-dark.png');
+                .spin();
+            }
+        }
+        &.no-images{
+           .ui-icon-arrow-r{
+                display: none;
+            } 
+        }
+    }
+}
+
+
+
 // @TUMBLR
 // -------------------------
 
