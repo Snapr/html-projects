@@ -187,6 +187,11 @@ return view.extend({
                 hScrollbar: false,
                 snap: snap,
                 momentum: false,
+                onBeforeScrollStart: function(e){
+                    if(!('ontouchstart' in window)){
+                        e.preventDefault();
+                    }
+                },
                 onScrollEnd: function(){
 
                     // Set active thumb
