@@ -8,7 +8,7 @@
 
 <!-- // Wrap all the events in the stream in a <ul> -->
 <ul class="<% if (photo_events){%>x-photo-activity photo-activity<%}else{%>non-photo-activity x-non-photo-activity<%}%> x-activity">
-    <% events.each(function(event){ %>
+    <% _.each(events, function(event){ %>
         <li>
             <% switch (event.get("type"))
             {
