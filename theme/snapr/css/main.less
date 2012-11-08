@@ -517,17 +517,19 @@ div[data-role="dialog"]{
 // -------------------------
 
 // Make sure Corners at bottom of pages aren't rounded when tab bar is present
-*[data-tab-bar="true"]{
-    padding-bottom: @tabBarHeight;
-    .border-bottom-radius(0);
-    div[data-role="content"]{
+.x-tab-bar{
+    *[data-tab-bar="true"]{
+        padding-bottom: @tabBarHeight;
         .border-bottom-radius(0);
-    }
-    .s-inline-footer{
-        .border-bottom-radius(0);
-        &.s-feed-footer{
-            .ui-btn{
-                .border-bottom-radius(0);
+        div[data-role="content"]{
+            .border-bottom-radius(0);
+        }
+        .s-inline-footer{
+            .border-bottom-radius(0);
+            &.s-feed-footer{
+                .ui-btn{
+                    .border-bottom-radius(0);
+                }
             }
         }
     }
@@ -2541,19 +2543,7 @@ div.ps-carousel-item-loading
 }
 
 
-// @NORESULTS
-// ------------------------
 
-
-.s-alert-text {
-    padding: @paddingElement;
-    position: relative;
-    font-style: italic;
-    // Not going to use icons for now 
-    .ui-icon {
-        display:none;
-    }
-}
 
 
 

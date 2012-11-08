@@ -233,22 +233,23 @@ a:active{
 }
 
 // Add base padding to pages with tab bars and square off rounded corners for content
+.x-tab-bar{
+    *[data-tab-bar="true"]{
+        padding-bottom: @tabBarHeight;
 
-*[data-tab-bar="true"]{
-    padding-bottom: @tabBarHeight;
-
-    div[data-role="content"]{
-    }
-
-    //Hide home menu and camera button on pages where the is a tab bar
-    div[data-role="header"]{
-        *[data-icon="home"],
-        *[data-icon="camera"]{
-            display: none;
+        div[data-role="content"]{
         }
-    }
+
+        //Hide home menu and camera button on pages where the is a tab bar
+        div[data-role="header"]{
+            *[data-icon="home"],
+            *[data-icon="camera"]{
+                display: none;
+            }
+        }
 
 
+    }    
 }
 
 

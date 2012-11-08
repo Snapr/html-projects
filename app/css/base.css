@@ -225,11 +225,11 @@ a:active {
   top: -30px;
   right: 0;
 }
-*[data-tab-bar="true"] {
+.x-tab-bar *[data-tab-bar="true"] {
   padding-bottom: 56px;
 }
-*[data-tab-bar="true"] div[data-role="header"] *[data-icon="home"],
-*[data-tab-bar="true"] div[data-role="header"] *[data-icon="camera"] {
+.x-tab-bar *[data-tab-bar="true"] div[data-role="header"] *[data-icon="home"],
+.x-tab-bar *[data-tab-bar="true"] div[data-role="header"] *[data-icon="camera"] {
   display: none;
 }
 .s-avatar,
