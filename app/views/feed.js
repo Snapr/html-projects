@@ -460,7 +460,8 @@ var feed_li =  view.extend({
     },
 
     render_actions: function(){
-        this.replace_from_template({item: this.model}, ['.x-image-actions']).trigger('create');
+        this.replace_from_template({item: this.model}, ['.x-image-actions']);
+        this.$el.trigger('create');
     },
 
     toggle_comment_form: function(){
