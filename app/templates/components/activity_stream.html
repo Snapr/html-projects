@@ -15,7 +15,7 @@
             </div>
         </li>
     <% } %>
-    <% _.each(events, function(event){ %>
+    <% _.each(events && events.models, function(event){ %>
         <li>
             <% switch (event.get("type"))
             {
