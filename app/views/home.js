@@ -5,10 +5,9 @@ return page_view.extend({
 
     post_initialize: function(options){
 
-        auth.bind("change", this.render);
+        auth.on('login logout', this.render);
 
-        // only render the home page the first time we load
-        this.render(!!'initial');
+        this.render();
     },
 
     post_activate: function(options){
@@ -19,17 +18,15 @@ return page_view.extend({
         this.upload_count(config.get('upload_count'));
     },
 
-    create_page: function(context){ /* override to do nothing - handled in render so we have context */ },
+    render: function(){
 
-    render: function(initial){
-        this.setElement(
-            $(this.template({
+        this.replace_from_template(
+            {
                 logged_in: auth.has("access_token"),
                 username: auth.get("snapr_user")
-            }))
+            },
+            ['[data-role="header"]', '[data-role="content"]']
         );
-
-        this.$el.appendTo(document.body);
 
         if(auth.has("access_token")){
             var ticker_instance = new ticker({el:this.$('.x-news-ticker')}).render().tick();
@@ -44,9 +41,9 @@ return page_view.extend({
         this.nearby_photostream = new nearby_photostream_view({
            el: this.$('.x-menu-stream')
         });
-        if(initial !== true){
-            this.nearby_photostream.refresh();
-        }
+        this.nearby_photostream.refresh();
+
+        this.$el.trigger('create');
 
         return this;
     },

@@ -40,7 +40,7 @@
 
                    <li>
                        <!-- Login / Image Library Button -->
-                       <% if (logged_in) {%>
+                       <% if (auth.has('access_token')) {%>
                                <a class="x-launch-photo-library" data-extra_params="comp_id=1" data-role="button" data-iconpos="left" data-icon="main-menu-camera-lib">Camera Roll</a>
                         <%}else{%>
                              <a href="#/login/" data-snapr-dialog="true" data-role="button" data-iconpos="left" data-icon="main-menu-login">Log In</a>
@@ -54,8 +54,8 @@
 
                    <li>
                        <!-- Image Feed Button -->
-                       <% if (logged_in) {%>
-                           <a href="#/feed/?username=<%=username%>" data-role="button" data-iconpos="left" data-icon="main-menu-feed">
+                       <% if (auth.has('access_token')) {%>
+                           <a href="#/feed/?username=<%= auth.get('snapr_user') %>" data-role="button" data-iconpos="left" data-icon="main-menu-feed">
                            My Snaps
                            </a>
                            <span class="s-upload-count x-upload-count">&nbsp;</span>
@@ -80,7 +80,7 @@
 
                     <li>
                     <!-- My Account / Welcome Button -->
-                    <% if(logged_in) { %>
+                    <% if(auth.has('access_token')) { %>
                         <a href="#/my-account/" data-role="button" data-iconpos="left" data-icon="main-menu-my-account">My Account</a>
                     <% }else{ %>
                         <a href="#/welcome/" data-role="button" data-iconpos="left" data-icon="main-menu-join">Welcome</a>
@@ -102,7 +102,7 @@
 
                     <li>
                        <!-- Activity / About Button -->
-                       <% if(logged_in) { %>
+                       <% if(auth.has('access_token')) { %>
                            <a href="#/activity/" data-role="button" data-iconpos="left" data-icon="main-menu-activity">Activity</a>
                        <% }else{ %>
                            <a href="#/about/" data-role="button" data-iconpos="left" data-icon="main-menu-info">About</a>

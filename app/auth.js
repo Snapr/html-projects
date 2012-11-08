@@ -40,13 +40,13 @@ var auth_model = Backbone.Model.extend({
                     if (typeof options.success == "function"){
                         options.success();
                     }
+                    auth.trigger('login');
                 }else{
                     delete auth.data;
                     if (typeof options.error == "function"){
                         options.error( auth.attributes );
                     }
                 }
-                auth.trigger('logout');
             },
             error: function(){
                 if (typeof options.error == "function"){
