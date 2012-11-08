@@ -1382,7 +1382,7 @@ textarea.ui-input-text {
 }
 
 
-// UPLOAD QUEUE
+// @UPLOAD QUEUE
 // -------------------------
 
 
@@ -1653,6 +1653,166 @@ textarea.ui-input-text {
 }
 
 
+// @X
+
+// @ACTIVITY
+// -------------------------
+
+.activity-streams{
+    margin-bottom: 0;
+    .ui-bar.s-arrow-d-left .ui-btn-text{
+        padding-left: @padding * 2;
+    }
+
+    /* General Styles */
+    .username,
+    .ui-li-desc {
+        display: inline-block;
+        margin-bottom: 0;
+    }
+    .activity-item{
+        border: none;
+        border-top: @borderGrayLighter;
+        margin-top: @paddingElement;
+        padding-top: 0;
+        .activity-desc{
+            white-space: normal;
+            font-weight: normal;
+            font-size: @fontSize;
+            line-height: @fontSize;
+            color: @gray;
+            font-family:@font;
+        }
+        .s-small-text{
+            position: relative;
+            top: 1px;
+            color: @gray;
+        }
+    }
+    .s-image-link{
+        position: absolute;
+        left: -@paddingGrid;
+        top:0;
+    }
+
+    .activity-item{
+        border: none;
+        border-top: @borderGrayLighter;
+        margin-top: @paddingElement;
+        padding-top: 0;
+    }
+
+    /* Tweaks for comments */
+    .comments-list{
+        .box-shadow(none);
+        .comment-item.ui-li-has-icon{
+            padding: 0;
+            margin-top: 8px;
+            padding-top: 8px!important;
+            .ui-link-inherit{
+                padding-top: 0!important;
+                padding-bottom: 0!important;
+                padding-left: @avatarSize + @paddingGrid!important;
+                min-height: @avatarSize;
+            }
+            .ui-li-icon{
+                top:0;
+                left:0;
+            }
+            .ui-li-heading{
+                padding: 0;
+                margin: 0;
+            }
+        }
+    }
+
+    /* Tweaks for likes */
+    .image-likes{
+        min-height: @avatarSize;
+        .icons-list,
+        p{
+            display: inline-block;
+            vertical-align: top;
+        }
+        .like-icons-list{
+            margin-top: @padding * 2;
+            margin-bottom: 0;
+
+        }
+        .like-icon{
+            margin-bottom: @paddingGrid;
+            display: inline-block;
+        }
+    }
+
+    /* Tweaks for follow item */
+    .activity-follow-item{
+        position: relative;
+        padding-left: 0;
+        margin-top: 8px;
+        min-height:  @avatarSize;
+        display: block;
+        .username,
+        .activity-desc,
+        .s-small-text{
+            display: inline-block;
+            vertical-align: baseline;
+            margin-bottom: 0;
+        }
+        .ui-link{
+            display: block;
+            padding-left:  @avatarSize;
+            padding-top: 8px ;
+            min-height: @avatarSize;
+            .box-sizing(border-box);
+        }
+        .ui-li-icon{
+            display: block;
+            position: absolute;
+            left: -@paddingGrid;
+            top: 0;
+        }
+    }
+
+    .photo-activity{
+        .activity-item:first-child{
+            border-top: none;
+            padding-top: 0!important;
+        }
+    }
+
+    .activity-item{
+        &:first{
+            border-top: none;
+            margin-top: 0!important;
+            padding-top: 0!important;
+        }
+    }
+    
+    /* Image Items */
+    .activity-image-item{
+        position: relative;
+        min-height: @thumbSize;
+        padding-left: @thumbSize + @paddingGrid;
+        margin-bottom: @padding * 2 + @paddingGrid;
+        .activity-item:first{
+            border-top: none;
+            margin-top: 0!important;
+            padding-top: 0!important;
+        }
+    }
+
+    /* If the first item (after the top bar) is a follow item get rid of its top border */
+    .activity-stream:nth-child(2){
+        .activity-follow-item{
+            border-top: none;
+            margin-top: 0!important;
+            padding-top: 0!important;
+        }
+    }
+}
+
+
 // @MYACCOUNT
 // -------------------------
 
@@ -1674,7 +1834,7 @@ textarea.ui-input-text {
            vertical-align: middle;
            display: inline-block;
        }
-       .logout-button{
+       .s-logout-button{
            position: absolute;
            right: 4px;
            top: 4px;
@@ -1687,7 +1847,7 @@ textarea.ui-input-text {
            }
        }
     }
-    .myaccount-quicklinks{
+    .s-myaccount-quicklinks{
         margin-top: -@cornersPage - 2px;
     }
     .ui-collapsible-set {
@@ -1799,7 +1959,7 @@ textarea.ui-input-text {
 
 // making list style icons look the same is a drag..
 // different markup format between collapsible headings and list links */
-.add-services,
+.s-add-services,
 .share-icons-list{
     li.ui-li{
         margin-bottom: 0;
@@ -1838,8 +1998,8 @@ textarea.ui-input-text {
 // -------------------------
 
 
-.add-services{
-    .connect-status{
+.s-add-services{
+    .s-connect-status{
         right: @paddingElement;
         padding-right: @gfxIcons-grid;
         font-family: @font;
@@ -1980,9 +2140,6 @@ div.ps-carousel-item-loading
             
         }
     }
-    
-    
-    
     .s-map-controls{
         position: absolute;
         bottom: 0;
@@ -2098,6 +2255,7 @@ div.ps-carousel-item-loading
         }
         
     }
+    // @X
     #x-map-disambiguation{
         position: absolute;
         display: none;
@@ -2146,7 +2304,7 @@ div.ps-carousel-item-loading
     .ui-select .ui-btn-icon-right .ui-btn-inner {
         padding-right: 25px;
     }
-    .category-btn{
+    .s-category-btn{
         .ui-btn-inner {
             padding-right: 32px;
             padding-left: 10px;
@@ -2157,7 +2315,7 @@ div.ps-carousel-item-loading
             }
         }
     }
-    .distance-btn{
+    .s-distance-btn{
         width: 36px;
         position: absolute;
         right: 0;
@@ -2193,7 +2351,7 @@ div.ps-carousel-item-loading
     }
 }
 
-.spots-results-header{
+.s-spots-results-header{
     position: relative;
     top: -@padding;
     .ui-btn-text{
@@ -2309,7 +2467,7 @@ div.ps-carousel-item-loading
     }
 }
 
-
+// @X
 
 // TUMBLR
 // ------------------------
@@ -2334,7 +2492,6 @@ div.ps-carousel-item-loading
             overflow: hidden;
             height:62px;
         }
-
         blockquote{
             margin: @padding;
             border-left: solid 2px @gray;
@@ -2401,7 +2558,6 @@ div.ps-carousel-item-loading
     }
     .icon-left{
         padding: @padding * 2 @padding * 2 @padding * 2 * 2 @gfxHelper-grid + @padding * 2;
-
     }
     .helper-icons{
         position: absolute;
@@ -2415,7 +2571,6 @@ div.ps-carousel-item-loading
 
 // @SPINNERS
 // ------------------------
-
 
 .ui-loader{
     margin-left: -40px;

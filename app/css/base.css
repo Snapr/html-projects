@@ -1283,18 +1283,18 @@ a:active {
 .s-share-photo.x-show-image .s-show-share-settings {
   display: block;
 }
-.add-services .shared .ui-icon-arrow-r,
-.add-services .ready .ui-icon-arrow-r {
+.s-add-services .shared .ui-icon-arrow-r,
+.s-add-services .ready .ui-icon-arrow-r {
   display: none;
 }
-.add-services .connect-status {
+.s-add-services .s-connect-status {
   position: absolute;
   right: 4px;
   padding-right: 40px;
   font-family: Helvetica, Arial, sans-serif;
   text-transform: lowercase;
 }
-.add-services .connect-status .ui-icon {
+.s-add-services .s-connect-status .ui-icon {
   right: 0;
 }
 .s-app-link {
@@ -1518,17 +1518,17 @@ div.ps-carousel-item-loading {
   margin-top: 8px;
   position: relative;
 }
-.s-spots-search-filters .distance-btn {
+.s-spots-search-filters .s-distance-btn {
   width: 36px;
   position: absolute;
   right: 0;
   top: 0;
 }
-.s-spots-search-filters .distance-btn .ui-select .ui-btn-inner {
+.s-spots-search-filters .s-distance-btn .ui-select .ui-btn-inner {
   width: 18px;
   height: 18px;
 }
-.s-spots-search-filters .distance-btn .ui-select .ui-btn-text {
+.s-spots-search-filters .s-distance-btn .ui-select .ui-btn-text {
   display: none;
 }
 .s-spot-item {

@@ -942,33 +942,33 @@
   background-position: 0 -63px !important;
 }
 .ui-icon.spot-icon,
-.category-btn .ui-icon {
+.s-category-btn .ui-icon {
   background-position: 0px 0px;
   background-image: url('../gfx/spot-icons.png');
   width: 24px;
   height: 24px;
 }
-.great-outdoors .category-btn .ui-icon,
+.great-outdoors .s-category-btn .ui-icon,
 .great-outdoors .spot-icon {
   background-position: 0px -24px;
 }
-.shops .category-btn .ui-icon,
+.shops .s-category-btn .ui-icon,
 .shops .spot-icon {
   background-position: 0px -48px;
 }
-.nightlife-spots .category-btn .ui-icon,
+.nightlife-spots .s-category-btn .ui-icon,
 .nightlife-spots .spot-icon {
   background-position: 0px -96px;
 }
-.food .category-btn .ui-icon,
+.food .s-category-btn .ui-icon,
 .food .spot-icon {
   background-position: 0px -120px;
 }
-.arts-and-entertainment .category-btn .ui-icon,
+.arts-and-entertainment .s-category-btn .ui-icon,
 .arts-and-entertainment .spot-icon {
   background-position: 0px -144px;
 }
-.all-categories .category-btn .ui-icon,
+.all-categories .s-category-btn .ui-icon,
 .all-categories .spot-icon {
   background-position: 0px -192px;
 }
@@ -1027,25 +1027,25 @@
   background-position: -48px -168px;
 }
 .ui-icon.distance-icon,
-.distance-btn .ui-icon {
+.s-distance-btn .ui-icon {
   background-position: 0px 0px;
   background-image: url('../gfx/distance-icons.png');
   width: 24px;
   height: 24px;
 }
-.distance-anywhere .distance-btn .ui-icon,
+.distance-anywhere .s-distance-btn .ui-icon,
 .distance-anywhere .distance-icon {
   background-position: 0px 0px;
 }
-.distance-1000 .distance-btn .ui-icon,
+.distance-1000 .s-distance-btn .ui-icon,
 .distance-1000 .distance-icon {
   background-position: 0px -24px;
 }
-.distance-10000 .distance-btn .ui-icon,
+.distance-10000 .s-distance-btn .ui-icon,
 .distance-10000 .distance-icon {
   background-position: 0px -48px;
 }
-.distance-50000 .distance-btn .ui-icon,
+.distance-50000 .s-distance-btn .ui-icon,
 .distance-50000 .distance-icon {
   background-position: 0px -72px;
 }

@@ -1212,28 +1212,28 @@
 .s-share-icon-small.s-foursquare-sharing .ui-icon {
   background-position: 0 -63px !important;
 }
-.ui-icon.spot-icon, .category-btn .ui-icon {
+.ui-icon.spot-icon, .s-category-btn .ui-icon {
   background-position: 0px 0px;
   background-image: url('../gfx/spot-icons.png');
   width: 24px;
   height: 24px;
 }
-.great-outdoors .category-btn .ui-icon, .great-outdoors .spot-icon {
+.great-outdoors .s-category-btn .ui-icon, .great-outdoors .spot-icon {
   background-position: 0px -24px;
 }
-.shops .category-btn .ui-icon, .shops .spot-icon {
+.shops .s-category-btn .ui-icon, .shops .spot-icon {
   background-position: 0px -48px;
 }
-.nightlife-spots .category-btn .ui-icon, .nightlife-spots .spot-icon {
+.nightlife-spots .s-category-btn .ui-icon, .nightlife-spots .spot-icon {
   background-position: 0px -96px;
 }
-.food .category-btn .ui-icon, .food .spot-icon {
+.food .s-category-btn .ui-icon, .food .spot-icon {
   background-position: 0px -120px;
 }
-.arts-and-entertainment .category-btn .ui-icon, .arts-and-entertainment .spot-icon {
+.arts-and-entertainment .s-category-btn .ui-icon, .arts-and-entertainment .spot-icon {
   background-position: 0px -144px;
 }
-.all-categories .category-btn .ui-icon, .all-categories .spot-icon {
+.all-categories .s-category-btn .ui-icon, .all-categories .spot-icon {
   background-position: 0px -192px;
 }
 .ui-icon.spot-icon-b {
@@ -5632,17 +5632,17 @@ different markup format between collapsible headings and list links */
 .add-services .shared .ui-icon-arrow-r, .add-services .ready .ui-icon-arrow-r {
   display: none;
 }
-.add-services .connect-status {
+.add-services .s-connect-status {
   position: absolute;
   right: 8px;
   padding-right: 36px;
   font-family: Helvetica, Arial, sans-serif;
   text-transform: lowercase;
 }
-.add-services .connect-status .ui-icon {
+.add-services .s-connect-status .ui-icon {
   right: 0;
 }
-.add-services .connect-status .ui-icon-check {
+.add-services .s-connect-status .ui-icon-check {
   background-position: -243px -144px;
 }
 /*
@@ -7116,7 +7116,7 @@ body.x-browser-testing .ui-footer, body.x-browser-testing .ui-footer-fixed {
 .s-account-content .s-account-header .logout-button .ui-icon-delete {
   background-position: -63px -36px;
 }
-.s-account-content .myaccount-quicklinks {
+.s-account-content .s-myaccount-quicklinks {
   margin-top: -10px;
 }
 .s-account-content .ui-collapsible-set {
@@ -7625,11 +7625,11 @@ body.x-browser-testing .ui-footer, body.x-browser-testing .ui-footer-fixed {
 .s-spots-search-filters .ui-select .ui-btn-icon-right .ui-btn-inner {
   padding-right: 25px;
 }
-.s-spots-search-filters .category-btn .ui-btn-inner {
+.s-spots-search-filters .s-category-btn .ui-btn-inner {
   padding-right: 32px;
   padding-left: 10px;
 }
-.s-spots-search-filters .category-btn .ui-btn-inner .ui-icon {
+.s-spots-search-filters .s-category-btn .ui-btn-inner .ui-icon {
   left: auto;
   right: 8px;
   margin-top: -12px;
@@ -7659,11 +7659,11 @@ body.x-browser-testing .ui-footer, body.x-browser-testing .ui-footer-fixed {
 .s-spots-search-filters .ui-grid-a .ui-block-b .ui-btn {
   margin-left: 4px;
 }
-.spots-results-header {
+.s-spots-results-header {
   position: relative;
   top: -4px;
 }
-.spots-results-header .ui-btn-text {
+.s-spots-results-header .ui-btn-text {
   padding-left: 0;
 }
 .spot-item {
@@ -8192,7 +8192,7 @@ body.x-browser-testing .ui-footer, body.x-browser-testing .ui-footer-fixed {
     -webkit-background-size: 24px 24px;
     background-size: 24px 24px;
   }
-  .ui-icon.spot-icon, .category-btn .ui-icon {
+  .ui-icon.spot-icon, .s-category-btn .ui-icon {
     background-image: url('../gfx/retina/spot-icons.png');
     -moz-background-size: 72px 216px;
     -o-background-size: 72px 216px;

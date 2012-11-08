@@ -15,7 +15,7 @@
                     <input type="search" id="spot-search" class="x-search-field" value="" placeholder="Venue Name&hellip;" />
 
                     <div class="s-spots-search-filters">
-                        <span class="distance-btn">
+                        <span class="s-distance-btn">
 
                             <select data-theme="c" name="location" id="options-location" class="x-location" data-native-menu="true">
                                 <option value='anywhere' id="location-anywhere">&#8734;</option>
@@ -33,7 +33,7 @@
                                 </select>
 
                             </div>
-                            <div class="ui-block-b category-btn">
+                            <div class="ui-block-b s-category-btn">
                                 <select data-theme="c" name="category" id="options-category" class="x-category" data-native-menu="true">
                                     <option value='all' id='location-anywhere'>All</option>
                                     <option value='food' id="category-nearby">Food</option>
@@ -54,12 +54,12 @@
             <div class="x-header">
                 <% if(obj.spots){ %>
                     <% if(spots.length){ %>
-                        <a class="spots-results-header ui-bar" data-role="button" data-theme="e" data-iconpos="right" data-icon="arrow-r" href="#/map/?<%=params %>">
+                        <a class="s-spots-results-header ui-bar" data-role="button" data-theme="e" data-iconpos="right" data-icon="arrow-r" href="#/map/?<%=params %>">
                             <strong><%= spots.length %> results</strong>
                             show on map
                         </a>
                     <% } else { %>
-                        <a class="spots-results-header ui-bar" data-role="button" data-theme="e">
+                        <a class="s-spots-results-header ui-bar" data-role="button" data-theme="e">
                             <strong>No results</strong>
                         </a>
                     <% } %>
