@@ -3820,6 +3820,114 @@ textarea.ui-input-text {
 .ui-input-search .ui-input-clear .ui-icon-delete {
   background-position: -63px 0px;
 }
+/* Horizontally scrolling image stream components */
+.s-image-streams .x-stream {
+  margin-bottom: 8px;
+}
+.s-image-streams .x-stream .x-thumbs {
+  min-width: 311px;
+}
+.s-image-streams .x-stream .s-image-link {
+  padding-left: 4px;
+}
+.s-image-streams .x-stream .s-load-more-inline {
+  background-color: #f7f7f7;
+}
+.s-image-streams .x-stream .s-load-more-inline .ui-btn-text {
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight: bold;
+  font-size: 12px;
+  bottom: 8px;
+  width: 101px;
+  color: #999999;
+}
+.s-image-streams .x-stream .s-load-more-inline .ui-icon-refresh {
+  background-image: url('../gfx/pull-to-refresh.png');
+  width: 56px;
+  height: 56px;
+  margin-top: -28px;
+  margin-left: -28px;
+  -webkit-transition-property: -webkit-transform;
+  -webkit-transition-duration: 250ms;
+  -webkit-transform: rotate(0deg) translateZ(0);
+}
+.s-image-streams .x-stream .s-load-more-inline.x-right-pull {
+  margin-right: 9px;
+}
+.s-image-streams .x-stream .s-load-more-inline.x-right-pull .ui-icon-refresh {
+  background-position: 0 -56px;
+}
+.s-image-streams .x-stream .s-load-more-inline.x-left-pull {
+  margin-right: -4px;
+}
+.s-image-streams .x-stream .s-load-more-inline.x-left-pull .ui-icon-refresh {
+  background-position: 0 0px;
+}
+.s-image-streams .x-stream .s-load-more-inline.x-flipped .ui-icon-refresh {
+  background-position: 0 -112px;
+  -webkit-transform: rotate(180deg) translateZ(0);
+}
+.s-image-streams .x-stream.x-loading .s-load-more-inline .ui-icon-refresh {
+  background-image: url('../gfx/spinner.png');
+  background-position: center;
+}
+.s-image-streams .x-stream.x-no-more .x-right-pull .ui-icon-refresh {
+  display: none;
+}
+.s-image-streams .x-stream.x-no-more .x-right-pull .x-msg {
+  background-color: rgba(0, 0, 0, 0.12);
+  padding: 36px 0;
+  width: 84px;
+  -webkit-border-radius: 44px;
+  -moz-border-radius: 44px;
+  border-radius: 44px;
+  color: white;
+  height: 12px;
+  vertical-align: middle;
+  margin-left: 10px;
+}
+.s-image-streams .x-stream .x-no-photos-alert {
+  display: none;
+}
+.s-image-streams .x-stream .x-no-photos-alert .x-msg {
+  background-color: rgba(0, 0, 0, 0.12);
+  padding: 36px 0;
+  width: 84px;
+  -webkit-border-radius: 44px;
+  -moz-border-radius: 44px;
+  border-radius: 44px;
+  color: white;
+  height: 12px;
+  vertical-align: middle;
+  margin-left: 10px;
+}
+.s-image-streams .x-stream.x-no-photos .x-no-photos-alert {
+  display: block;
+}
+.s-image-streams .x-stream .edit-overlay {
+  top: 37px;
+  width: 109%;
+  background-color: rgba(255, 255, 255, 0.8);
+  min-height: 101px;
+}
+.s-image-streams .x-stream .edit-overlay .remove-stream {
+  right: 8px;
+  top: 50%;
+  margin-top: -18px;
+}
+.s-image-streams .x-stream.x-closed .edit-overlay {
+  top: 0px;
+  height: 36px;
+  min-height: 36px;
+  z-index: 30;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+.s-image-streams .x-stream.x-closed .edit-overlay .remove-stream {
+  margin-top: -14px;
+}
+.s-image-streams .x-stream.x-closed .edit-overlay .remove-stream .ui-btn-inner {
+  padding: 4px 32px 4px 16px;
+}
 .s-validate .x-invalid[for] {
   font-size: 12px;
   color: #666666;

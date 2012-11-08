@@ -533,7 +533,15 @@ a:active {
   background-position: 0 -112px;
   -webkit-transform: rotate(180deg) translateZ(0);
 }
-.s-image-streams .x-stream .x-loading .s-load-more-inline .ui-icon-refresh {
+.s-image-streams .x-stream.x-closed .ui-bar .image-tag,
+.s-image-streams .x-stream.x-loading .ui-bar .image-tag,
+.s-image-streams .x-stream.x-no-photos .ui-bar .image-tag,
+.s-image-streams .x-stream.x-closed .ui-bar .image-time,
+.s-image-streams .x-stream.x-loading .ui-bar .image-time,
+.s-image-streams .x-stream.x-no-photos .ui-bar .image-time {
+  display: none;
+}
+.s-image-streams .x-stream.x-loading .s-load-more-inline .ui-icon-refresh {
   background-image: url('gfx/spinner.png');
   background-position: center;
   -webkit-transform: rotate(0deg) translateZ(0);
@@ -543,10 +551,10 @@ a:active {
   -webkit-animation-iteration-count: infinite;
   -webkit-animation-timing-function: linear;
 }
-.s-image-streams .x-stream .x-no-more .x-right-pull .ui-icon-refresh {
+.s-image-streams .x-stream.x-no-more .x-right-pull .ui-icon-refresh {
   display: none;
 }
-.s-image-streams .x-stream .x-no-more .x-right-pull .x-msg {
+.s-image-streams .x-stream.x-no-more .x-right-pull .x-msg {
   background-color: rgba(0, 0, 0, 0.12);
   padding: 36px 0;
   width: 84px;
@@ -557,6 +565,24 @@ a:active {
   height: 12px;
   vertical-align: middle;
   margin-left: 10px;
+}
+.s-image-streams .x-stream .x-no-photos {
+  display: none;
+}
+.s-image-streams .x-stream .x-no-photos .x-msg {
+  background-color: rgba(0, 0, 0, 0.12);
+  padding: 36px 0;
+  width: 84px;
+  -webkit-border-radius: 44px;
+  -moz-border-radius: 44px;
+  border-radius: 44px;
+  color: white;
+  height: 12px;
+  vertical-align: middle;
+  margin-left: 10px;
+}
+.s-image-streams .x-stream.x-no-photos .x-no-photos-alert {
+  display: block;
 }
 .s-image-streams .x-stream .edit-overlay {
   display: none;
@@ -576,16 +602,17 @@ a:active {
   top: 50%;
   margin-top: -18px;
 }
-.s-image-streams .x-stream .edit-overlay.over-bar {
-  top: 2px;
-  width: auto;
-  min-height: 0;
-  z-index: 10;
+.s-image-streams .x-stream .edit-overlay.x-closed .edit-overlay {
+  top: 0px;
+  height: 36px;
+  min-height: 36px;
+  z-index: 30;
+  background-color: rgba(255, 255, 255, 0.2);
 }
-.s-image-streams .x-stream .edit-overlay.over-bar .remove-stream {
-  margin-top: 4px;
+.s-image-streams .x-stream .edit-overlay.x-closed .edit-overlay .remove-stream {
+  margin-top: -14px;
 }
-.s-image-streams .x-stream .edit-overlay.over-bar .remove-stream .ui-btn-inner {
+.s-image-streams .x-stream .edit-overlay.x-closed .edit-overlay .remove-stream .ui-btn-inner {
   padding: 4px 32px 4px 16px;
 }
 .edit .x-stream.user-stream .edit-overlay {

@@ -583,7 +583,17 @@ a:active{
                 }
             }
         }
-        .x-loading {
+        &.x-closed,
+        &.x-loading,
+        &.x-no-photos{
+            .ui-bar{
+                .image-tag,
+                .image-time{
+                    display: none;
+                }
+            }
+        }
+        &.x-loading {
             .s-load-more-inline{
                 .ui-icon-refresh{
                     background-image: url('gfx/spinner.png');
@@ -592,7 +602,7 @@ a:active{
                 }
             }
         }
-        .x-no-more{
+        &.x-no-more{
             .x-right-pull{
                 .ui-icon-refresh{
                     display: none;
@@ -610,6 +620,27 @@ a:active{
                 }
             }
         }
+        .x-no-photos{
+            display: none;
+             .x-msg{
+                    background-color:rgba(0,0,0,.12);
+                    padding: 36px 0;
+                    width: 84px;
+                    .border-radius(44px);
+                    color: white;
+                    height: 12px;
+                    vertical-align: middle;
+                    margin-left: 10px;
+                }
+        }
+
+         &.x-no-photos{
+            .x-no-photos-alert{
+                display: block;
+            }
+         }
+        
+        
         .edit-overlay{
             display: none;
             position: absolute;
@@ -628,15 +659,20 @@ a:active{
                 margin-top: -18px;
             }
             // Styles for remove btn on streams with no images
-            &.over-bar{
-                top: 2px;
-                width: auto;
-                min-height: 0;
-                z-index: 10;
-                .remove-stream{
-                    margin-top: 4px;
-                    .ui-btn-inner{
-                        padding: 4px 32px 4px 16px;
+           
+            
+            &.x-closed{
+                .edit-overlay{
+                    top: 0px;
+                    height: @barHeight;
+                    min-height: @barHeight;
+                    z-index: 30;
+                    background-color: rgba(255, 255, 255, .2);
+                    .remove-stream{
+                        margin-top: -14px;
+                        .ui-btn-inner{
+                            padding: 4px 32px 4px 16px;
+                        }
                     }
                 }
             }
