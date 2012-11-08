@@ -844,62 +844,61 @@ a:active {
   border-radius: 8px;
   font-size: 12px;
 }
-.s-feed-header {
+.s-feed-header.s-inline-header {
   position: relative;
-}
-.s-feed-header .s-icon-left {
   padding-left: 100px;
   height: 100px;
+  padding-left: 0!important;
+  padding-right: 0!important;
 }
-.s-feed-header .s-profile-icon,
-.s-feed-header .s-icon-overlay {
+.s-feed-header.s-inline-header .s-user-icon-left {
   position: absolute;
+  z-index: 3;
+  top: 0;
+  left: 0;
+}
+.s-feed-header.s-inline-header .s-user-icon-left .s-avatar-large,
+.s-feed-header.s-inline-header .s-user-icon-left .s-icon-overlay {
+  position: absolute;
+  display: block;
   top: 0;
   left: 0;
   width: 100px;
   height: 100px;
+  overflow: hidden;
 }
-.s-feed-header .s-profile-icon {
+.s-feed-header.s-inline-header .s-user-icon-left .s-avatar-large {
   background-color: #fbfbfb;
-  z-index: 3;
 }
-.s-feed-header .s-follow-btn {
+.s-feed-header.s-inline-header .s-follow-btn {
   z-index: 1;
-  position: absolute;
-  right: 0;
-  top: 0;
   display: block;
   width: 100%;
   height: 36px;
 }
-.s-feed-header .s-follow-btn .ui-btn {
-  position: absolute;
-  right: 0;
-  top: 0;
-  margin: 0;
-  width: 100%;
-  text-align: right;
-}
-.s-feed-header .s-follow-btn .ui-btn .ui-btn-inner {
+.s-feed-header.s-inline-header .s-follow-btn .ui-btn-inner {
   padding-top: 0;
   padding-bottom: 0;
+  text-align: right;
 }
-.s-feed-header .s-username {
+.s-feed-header.s-inline-header .s-username {
   z-index: 2;
-  position: relative;
-  padding-left: 8px;
+  position: absolute;
   margin: 0;
   height: 36px;
   line-height: 36px;
   vertical-align: middle;
   top: 0;
+  display: inline-block;
+  left: 108px;
 }
-.s-feed-header .s-header-stats {
+.s-feed-header.s-inline-header .s-header-stats {
   height: 64px;
+  padding-left: 100px;
   text-align: center;
   font-size: 12px;
 }
-.s-feed-header .s-header-stats .s-hero-number {
+.s-feed-header.s-inline-header .s-header-stats .s-hero-number {
   padding-top: 12px;
   display: block;
   font-size: 20px;

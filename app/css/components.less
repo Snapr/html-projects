@@ -920,61 +920,57 @@ a:active{
 // -------------------------
 
 
-.s-feed-header{
+.s-feed-header.s-inline-header{
     position: relative;
-    .s-icon-left{
-        padding-left: @avatarSizeLarge;
-        height: @avatarSizeLarge;
-    }
-    .s-profile-icon,
-    .s-icon-overlay{
+    padding-left: @avatarSizeLarge;
+    height: @avatarSizeLarge;
+    padding-left: 0!important;
+    padding-right: 0!important;
+    .s-user-icon-left{
         position:absolute;
+        z-index: 3;
         top: 0;
         left: 0;
-        width: @avatarSizeLarge;
-        height: @avatarSizeLarge;
+        .s-avatar-large,
+        .s-icon-overlay{
+            position:absolute;
+            display: block;
+            top: 0;
+            left: 0;
+            width: @avatarSizeLarge;
+            height: @avatarSizeLarge;
+            overflow:hidden;           
+        }
+        .s-avatar-large{
+            background-color: @grayLight;
+            
+        } 
     }
-    .s-profile-icon{
-        background-color: @grayLight;
-        z-index: 3;
-    }
-
     .s-follow-btn{
         z-index: 1;
-        position: absolute;
-        right: 0;
-        top:0;
         display: block;
         width: 100%;
         height: @barHeight;
-        .ui-btn{
-            position: absolute;
-            right: 0;
-            top: 0;
-            margin: 0;
-            width: 100%;
-            text-align: right;
-
-            .ui-btn-inner{
-                padding-top: 0;
-                padding-bottom: 0;
-            }
+        .ui-btn-inner{
+            padding-top: 0;
+            padding-bottom: 0;
+            text-align: right; 
         }
     }
-
     .s-username{
         z-index: 2;
-        position: relative;
-        padding-left: @padding * 2;
+        position: absolute;
         margin: 0;
         height: @barHeight;
         line-height: @barHeight;
         vertical-align: middle;
         top: 0;
-
+        display: inline-block;
+        left: @avatarSizeLarge + @padding * 2;
     }
     .s-header-stats{
         height: @avatarSizeLarge - @barHeight ;
+        padding-left: @avatarSizeLarge;
         text-align: center;
         font-size: @fontSizeSmall;
         .s-hero-number{

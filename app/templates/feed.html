@@ -44,28 +44,33 @@
                     </div>
                 <% }else if(obj.user){ %>
                     <div class="s-feed-header s-inline-header">
-                        <div class="s-icon-left">
+                        <div class="s-user-icon-left">
                             <a class="s-profile-icon" data-snapr-dialog="true" href="#/user/profile/?username=<%= user.get('username') %>">
                                 <div class="s-avatar-large" style="background-image: url('<%= config.get('avatar_url') %>/<%= user.get('user_id') %>?size=large');"></div>
                                 <div class="s-icon-overlay"></div>
                             </a>
+                        </div>
 
 
-                                <span class="s-follow-btn ui-btn-right ui-bar">
-                                    <% if (!auth.has( "access_token" )) {%>
-                                        <button data-inline="true" data-icon="plus" data-iconpos="right" data-corners="false" data-shadow="false" class="x-follow" data-theme="e">Follow</button>
-                                    <%}else if (user.get('username').toLowerCase() == auth.get("snapr_user").toLowerCase()){%>
-                                        <button data-inline="true" disabled="true" data-icon="check" data-iconpos="right" data-corners="false" data-shadow="false" class="thats-me" data-theme="e">That&apos;s Me</button>
-                                    <%}else if (user.get('relationship').you_follow) {%>
-                                        <button data-inline="true" data-icon="check" data-iconpos="right" data-corners="false" data-shadow="false" class="x-unfollow" data-theme="e">Following</button>
-                                    <%}else{%>
-                                        <button data-inline="true" data-icon="plus" data-iconpos="right" data-corners="false" data-shadow="false" class="x-follow" data-theme="e">Follow</button>
-                                    <%}%>
-                                </span>
-
-                            <h4 class="s-username">
+                       
+                            
+                            
+                        <% if (!auth.has( "access_token" )) {%>
+                            <a data-inline="true" data-icon="plus" data-iconpos="right"  data-shadow="false" class="x-follow s-follow-btn ui-bar" data-theme="e" data-role="button">Follow</a>
+                        <%}else if (user.get('username').toLowerCase() == auth.get("snapr_user").toLowerCase()){%>
+                            <a data-inline="true" disabled="true" data-icon="check" data-iconpos="right" data-shadow="false" class="thats-me s-follow-btn ui-bar" data-theme="e" data-role="button">That&apos;s Me</a>
+                        <%}else if (user.get('relationship').you_follow) {%>
+                            <a data-inline="true" data-icon="check" data-iconpos="right"  data-shadow="false" class="x-unfollow s-follow-btn ui-bar" data-theme="e" data-role="button">Following</a>
+                        <%}else{%>
+                            <a data-inline="true" data-icon="plus" data-iconpos="right" data-shadow="false" class="x-follow s-follow-btn ui-bar" data-theme="e" data-role="button">Follow</a>
+                        <%}%>
+                      
+                        
+                         <h4 class="s-username">
                                 <%= user.get('display_username') %>
-                            </h4>
+                        </h4>
+
+                           
                             <div class="ui-grid-b s-header-stats">
                                 <div class="ui-block-a">
                                     <a href="#/feed/?username=<%= user.get('username') %>">

@@ -151,6 +151,11 @@ div[data-role="header"]{
                  padding: @padding * 2 0;
          }
     }
+    
+    .ui-bar{
+        margin-left: 0;
+        margin-right: 0;
+    }
    
 }
 
@@ -238,6 +243,7 @@ div[data-role="dialog"]{
 
 .ui-bar{
     margin: 0 -@padding * 2;
+    .border-top-radius(@cornersPage); 
    .border-bottom-radius(0);  
    .button-font-light();
    
@@ -770,8 +776,6 @@ textarea.ui-input-text {
     }
 }
 
-
-
 .s-menu-main{
     padding: 0;
     text-transform: lowercase;
@@ -958,6 +962,323 @@ textarea.ui-input-text {
 }
 
 
+#feed-images{
+    min-height: 324px!important;
+}
+
+
+.s-feed-header.s-inline-header{
+    margin-bottom: @padding * 2;
+    padding-left: @avatarSizeLarge;
+    height: @avatarSizeLarge;
+    
+    
+    .s-user-icon-left{
+        width: @avatarSizeLarge;
+        height: @avatarSizeLarge;
+        .s-profile-icon,
+        .s-avatar-large{
+            .border-radius(0);
+            .border-top-left-radius (@cornersPage);
+            overflow:hidden;
+        }
+        .s-avatar-large{
+            background-color: @grayLight;
+        }
+         .s-icon-overlay{
+           background-image: url('../gfx/shiny-avatar-info.png');
+           width: @avatarSizeLarge;
+           height: @avatarSizeLarge;
+           .border-top-left-radius (@cornersPage);
+           border-top: solid @white 1px;
+        }
+    }
+    
+    .s-follow-btn{
+        height: @barHeight;
+        //Overwrite bar icons with standard set
+        .ui-icon{
+            background-image: url('@{gfx}@{gfxIcons}');
+            width: @gfxIcons-grid;
+        	height: @gfxIcons-grid; 
+        }
+    }
+    
+    .s-header-stats{
+         text-align: center;
+         text-transform: lowercase;
+         font-size: @fontSizeSmall;
+         .ui-link{
+            display: block;
+            min-height: 64px;
+         }
+        .s-hero-number{
+            display: block;
+            font-size: @fontSize-numberBig;
+            font-family: @fontSpecial;
+            padding: 10px 0 0 0;
+            height: 30px;
+            line-height:@fontSize-numberBig + 4px ;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        &.ui-grid-b{
+            .ui-block-a{
+                    margin-left: -1px;
+            }
+            .ui-block-b{
+                border-left: @borderGrayLighter;
+                border-right: @borderGrayLighter;
+            }
+            .ui-block-c{
+                 margin-right: -1px;
+            }
+        }
+    }   
+    
+    &::after{
+        .arrow-up(@arrow-size, @white, @avatarSizeLarge / 2, @avatarSizeLarge + @arrow-y-shift);
+        z-index: 10;
+    } 
+}
+
+
+
+
+
+// Nix the rounded top edges when the upload queue shows above 
+.showing-upload-queue{
+    .feed-header{
+        .s-user-icon-left{
+            .s-profile-icon,
+            .user-icon-big{
+                .border-top-left-radius (0);
+                overflow:hidden;
+            }
+            .s-icon-overlay{
+               .border-top-left-radius (@cornersPage);
+            }
+        }
+        .ui-bar{
+           .border-top-right-radius(0);
+        }
+    }
+}
+
+
+
+.s-image-item-block{
+    .s-image-item-topbar{
+        height:  @avatarSize + 1px;//haxy to account for mysterious icon overhang
+        margin-bottom: @padding * 2;
+        vertical-align: middle;
+        font-size: @fontSizeSmall;
+        color: @grayLight;
+        line-height:  @avatarSize;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        .user-icon-link{
+            vertical-align: middle;
+            height: @avatarSize;
+            display: inline-block;
+            width: @avatarSize;
+        }
+        .ui-link,
+        span{
+            height:@avatarSize;
+            line-height:@avatarSize;
+            vertical-align: middle;
+            display: inline-block;
+        }
+        .s-image-time{
+            color: @grayLight;
+            .ui-icon-clock{
+                background-position: @gfxBar-x - 9px @gfxFeed-time-y;
+                width: 14px;
+            }
+        }
+        .s-image-time-and-location{
+            color: @grayLight;
+            .ui-link{
+                color: @grayLight;
+            }
+            .ui-icon-venue{
+                background-position: @gfxBar-x - 10px @gfxFeed-venue-y;
+                width: 10px;
+            }
+        }
+    }
+    .image-item{
+        position: relative;
+        .image-status{
+            position: absolute;
+            top: -14px;
+            background-color: #e5592f;
+            color: white;
+            font-size: 11px;
+            font-weight: bold;
+            padding: 0px 3px;
+            right: 0;
+            height: 14px;
+            .border-top-radius(4px);
+            opacity: .5;
+            display: none;
+        }
+    }
+    .s-main-s-image-link{
+        display: block;
+    }
+    .s-main-image{
+        width: 100%;
+    }
+    .s-image-description{
+        margin-top: @padding * 2;
+        margin-bottom: -@padding * 2;
+        .ui-icon-quote{
+            display: inline-block;
+            height: @fontSize;
+            background-position: -6px @gfxFeed-quote-y - 8;
+            width: 16px;
+        }
+        .goto-spot{
+            color: @grayLight;
+        }
+    }
+    .s-image-item-base{
+        position: relative;
+        .s-hide-text{
+            display: none;
+        }
+    }
+    .image-actions{
+        margin-top: 8px;
+        margin-bottom: 8px;
+        .inline-btn{
+            display: inline-block;
+        }
+        .ui-btn-up-d,
+        .ui-btn-hover-d,
+        .ui-btn-down-d,
+        .ui-btn-active-d,{
+            background: none;
+            border: none;
+            font-size: @fontSizeSmall;
+            font-family: @font;
+            font-weight: bold;
+            color: @gray;
+            margin-right: 4px;
+            .ui-btn-inner{
+                padding: 0 0 0 36px;
+            }
+            .ui-icon{
+                width: 40px;
+                height: 40px;
+                margin-top: -20px;
+                margin-left: -10px;
+                .border-radius(0);
+            }
+            .ui-btn-text{
+                line-height: 40px;
+                text-transform: lowercase;
+                text-shadow: none;
+                
+            }
+        }
+
+        // reactions btn off to the right
+        .reactions-button{
+           position: absolute;
+           right: 0;
+           top: 0;
+           margin-right: -6px;
+           .ui-btn-inner{
+                padding: 0 36px 0 10px;
+           }
+            .ui-icon{
+                background-position: @gfxAction-x @gfxAction-toggle-y;
+                right: 0;
+            }
+            &.ui-btn-down-d,
+            &.ui-btn-hover-d,
+            &.ui-btn-active-d{
+                .ui-icon{
+                background-position: @gfxAction-x-hover @gfxAction-toggle-y;
+                }
+            }
+            &.selected{
+            .ui-icon{
+                background-position: @gfxAction-x @gfxAction-toggle-up-y;
+            }
+            &.ui-btn-down-d,
+            &.ui-btn-hover-d,
+            &.ui-btn-active-d{
+                    .ui-icon{
+                    background-position: @gfxAction-x-hover @gfxAction-toggle-up-y;
+                    }
+                }
+            }
+        }
+
+    }
+
+    .reactions-list{
+        display: none;
+        .box-shadow(none);
+        li.ui-li{
+            border: none!important;
+            padding:0;
+             .ui-link-inherit{
+                    padding: 0 0 @paddingElement 0!important;
+                    display: inline-block;
+                    white-space: normal;
+                }
+            .ui-icon-arrow-r{
+                display: none;
+            }
+            .username{
+                text-transform: none;
+                text-shadow: none;
+            }
+            .comment,
+            .like-text{
+                white-space: normal;
+                font-weight: normal;
+                font-family: @font;
+                color: @grayDark;
+                text-transform: none;
+                text-shadow: none;
+            }
+        }
+
+    }
+    .comment-area{
+        display: none;
+        .photo-comment{
+            min-height: 75px;
+        }
+    }
+}
+.s-image-item-block.private{
+    .image-status{
+        display:inherit;
+    }
+}
+
+.s-feed-footer{
+
+    .ui-btn{
+        .border-top-radius(0);
+        .border-bottom-radius(@cornersPage);
+        margin-bottom: 0;
+        border: none;
+    }
+}
+
+.load-more{
+    display: none;
+}
 
 
 // @PROFILE

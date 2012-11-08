@@ -57,11 +57,11 @@
 
     <div class="s-image-item-base">
         <div data-role="controlgroup" data-type="horizontal" class="image-actions x-image-actions" data-theme="z">
-            <a data-role="button" data-theme="z" data-icon="like" data-iconpos="left" class="x-favorite action-icons <% if (item.get('favorite')){ %> selected <% }%>" ><span class="s-hide-text">Likes </span><% if (item.get('favorite_count') > 0){ %>&times; <%= item.get('favorite_count') %><%} else {%> &nbsp;<%}%></a>
+            <a data-role="button" data-theme="z" data-icon="heart" data-iconpos="left" class="x-favorite action-icons <% if (item.get('favorite')){ %> selected <% }%>" ><span class="s-hide-text">Likes </span><% if (item.get('favorite_count') > 0){ %>&times; <%= item.get('favorite_count') %><%} else {%> &nbsp;<%}%></a>
 
-            <a data-role="button" data-icon="action-comment" data-inline="true" data-iconpos="left" class="comment-button action-icons" data-theme="z"><span class="s-hide-text">Comments </span><% if (item.get('comments') > 0){ %>&times; <%= item.get('comments') %><%} else {%> &nbsp;<%}%></a>
+            <a data-role="button" data-icon="comment" data-inline="true" data-iconpos="left" class="comment-button action-icons" data-theme="z"><span class="s-hide-text">Comments </span><% if (item.get('comments') > 0){ %>&times; <%= item.get('comments') %><%} else {%> &nbsp;<%}%></a>
 
-            <a data-role="button" data-theme="z" data-icon="action-more" data-iconpos="left" class="action-icons" data-inline="true" href="#actions-<%= item.cid %>" data-rel="popup">More</a>
+            <a data-role="button" data-theme="z" data-icon="more" data-iconpos="left" class="action-icons" data-inline="true" href="#actions-<%= item.cid %>" data-rel="popup"><span class="s-hide-text">More</span>&nbsp;</a>
 
             <div data-role="popup"  data-theme="b" id="actions-<%= item.cid %>">
                 <div data-type="horizontal" data-role="controlgroup"  class="dark-icons">
@@ -81,7 +81,7 @@
             </div>
 
             <% if (parseInt(item.get("favorite_count")) + parseInt(item.get("comments")) > 0){ %>
-                <a data-theme="z" data-role="button" data-icon="action-show-all" data-iconpos="right" class="x-reactions-button reactions-button action-icons">Show</a>
+                <a data-theme="z" data-role="button" data-icon="arrow-d" data-iconpos="right" class="x-reactions-button reactions-button action-icons">Show</a>
             <% } %>
         </div>
 

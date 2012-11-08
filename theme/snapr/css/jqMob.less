@@ -55,10 +55,6 @@ fieldset.ui-controlgroup{
     } 
 }
 
-.ui-btn-icon-right .ui-btn-inner .ui-icon {
-    right: 0;
-}
-
 .ui-btn-icon-left{
     .ui-btn-inner {
         padding-left: @padding * 8;
@@ -66,6 +62,15 @@ fieldset.ui-controlgroup{
             left: 2px;
         }
     }
+} 
+
+.ui-btn-icon-right{
+    .ui-btn-inner {
+        padding-right: @padding * 8;
+        .ui-icon{
+            right: 2px;
+        }
+    } 
 } 
 
 .ui-btn-icon-notext{
