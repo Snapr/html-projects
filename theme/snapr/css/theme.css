@@ -3695,8 +3695,9 @@ div[data-role="dialog"] {
   font-size: 12px;
   line-height: 12px;
   min-height: 12px;
+  height: 12px;
   position: absolute;
-  top: -29px;
+  top: -28px;
   right: 0;
   margin: 0;
   white-space: nowrap;
@@ -3720,6 +3721,7 @@ div[data-role="dialog"] {
 .s-tab-bar .s-tabbar-activity .ui-btn-inner {
   line-height: 12px;
   min-height: 12px;
+  padding: 0;
   overflow: visible;
 }
 .s-tab-bar .s-tabbar-activity .ui-btn-inner .ui-btn-text {
@@ -4124,6 +4126,9 @@ textarea.ui-input-text {
   -moz-border-radius-topleft: 8px;
   border-top-left-radius: 8px;
   border-top: solid #ffffff 1px;
+}
+.s-feed-header.s-inline-header .s-username {
+  font-size: 16px;
 }
 .s-feed-header.s-inline-header .s-follow-btn {
   height: 36px;

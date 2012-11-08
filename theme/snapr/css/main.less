@@ -593,8 +593,9 @@ div[data-role="dialog"]{
         .button-font-small();
         line-height: @fontSizeSmall;
         min-height: @fontSizeSmall;
+        height: 12px;
         position: absolute;
-        top: -29px;
+        top: -28px;
         right:0;
         margin:0;
         white-space: nowrap;
@@ -606,6 +607,7 @@ div[data-role="dialog"]{
         .ui-btn-inner{
             line-height: @fontSizeSmall;
             min-height: @fontSizeSmall;
+            padding: 0;
             overflow: visible;
             .ui-btn-text{
                 font-weight: bold;
@@ -994,6 +996,10 @@ textarea.ui-input-text {
         }
     }
     
+    .s-username{
+        font-size: @fontSizeUsername;
+    }
+    
     .s-follow-btn{
         height: @barHeight;
         //Overwrite bar icons with standard set
@@ -1022,7 +1028,6 @@ textarea.ui-input-text {
             overflow: hidden;
             text-overflow: ellipsis;
         }
-        
         &.ui-grid-b{
             .ui-block-a{
                     margin-left: -1px;
@@ -1035,8 +1040,7 @@ textarea.ui-input-text {
                  margin-right: -1px;
             }
         }
-    }   
-    
+    }     
     &::after{
         .arrow-up(@arrow-size, @white, @avatarSizeLarge / 2, @avatarSizeLarge + @arrow-y-shift);
         z-index: 10;
