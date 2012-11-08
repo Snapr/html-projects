@@ -1666,6 +1666,8 @@ a.ui-link-inherit {
   text-transform: none;
   -webkit-font-smoothing: antialiased;
   text-decoration: none;
+  text-transform: lowercase;
+  font-size: 15px;
   border: none;
   background: transparent;
   color: white;
@@ -1680,12 +1682,13 @@ a.ui-link-inherit {
   font-weight: normal;
   text-transform: none;
   -webkit-font-smoothing: antialiased;
+  text-transform: lowercase;
   border: solid 1px rgba(255, 255, 255, 0.1);
   background: none;
   background-color: #000000;
   color: #cccccc;
   text-shadow: #000000 0px 1px 1px;
-  font-size: 16px;
+  font-size: 15px;
   text-decoration: none;
   -moz-box-shadow: inset 0 3px 20px #000000;
   -webkit-box-shadow: inset 0 3px 20px #000000;
@@ -2211,6 +2214,8 @@ div[data-role="header"].ui-bar-b a[data-rel="back"]::before {
   font-weight: normal;
   text-transform: none;
   -webkit-font-smoothing: antialiased;
+  text-transform: lowercase;
+  font-size: 15px;
   color: #474747;
   text-shadow: #ffffff 0px 1px 1px;
   text-decoration: none;
@@ -2526,7 +2531,7 @@ div[data-role="header"].ui-bar-b a[data-rel="back"]::before {
   font-family: Helvetica, Arial, sans-serif;
   font-weight: normal;
   text-transform: lowercase;
-  font-size: 16px;
+  font-size: 15px;
 }
 .ui-bar-e {
   background: #ffff00;
@@ -2560,6 +2565,8 @@ div[data-role="header"].ui-bar-b a[data-rel="back"]::before {
   font-weight: normal;
   text-transform: none;
   -webkit-font-smoothing: antialiased;
+  text-transform: lowercase;
+  font-size: 15px;
   color: #474747;
   text-shadow: #ffffff 0px 1px 1px;
   text-decoration: none;
@@ -2685,6 +2692,8 @@ div[data-role="header"].ui-bar-b a[data-rel="back"]::before {
   font-weight: normal;
   text-transform: none;
   -webkit-font-smoothing: antialiased;
+  text-transform: lowercase;
+  font-size: 15px;
   color: #ffffff;
   text-shadow: #666666 0px -1px 1px;
   text-decoration: none;
@@ -2810,6 +2819,8 @@ div[data-role="header"].ui-bar-b a[data-rel="back"]::before {
   font-weight: normal;
   text-transform: none;
   -webkit-font-smoothing: antialiased;
+  text-transform: lowercase;
+  font-size: 15px;
   color: #474747;
   text-shadow: #ffffff 0px 1px 1px;
   text-decoration: none;
@@ -2938,6 +2949,34 @@ div[data-role="header"] .ui-btn-left {
   left: 6px;
   top: 6px;
 }
+div[data-role="header"] .ui-btn-icon-left .ui-btn-inner .ui-icon,
+div[data-role="header"] .ui-btn-icon-right .ui-btn-inner .ui-icon {
+  margin-top: -20px;
+}
+div[data-role="header"] .ui-btn-left .ui-btn-icon-notext,
+div[data-role="header"] .ui-btn-right .ui-btn-icon-notext {
+  border: none;
+  background: none;
+  width: 40px;
+  height: 40px;
+  top: -4px;
+}
+div[data-role="header"] .ui-btn-left .ui-btn-icon-notext .ui-btn-inner,
+div[data-role="header"] .ui-btn-right .ui-btn-icon-notext .ui-btn-inner {
+  padding: 0;
+}
+div[data-role="header"] .ui-btn-left .ui-btn-icon-notext .ui-btn-inner .ui-icon,
+div[data-role="header"] .ui-btn-right .ui-btn-icon-notext .ui-btn-inner .ui-icon {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+div[data-role="header"] .ui-btn-left .ui-btn-icon-notext.ui-shadow,
+div[data-role="header"] .ui-btn-right .ui-btn-icon-notext.ui-shadow {
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
 div[data-role="header"] .ui-btn-right {
   position: absolute;
   right: 6px;
@@ -2962,48 +3001,6 @@ div[data-role="header"] .ui-btn-center .s-header-toggle .ui-btn .ui-btn-text .ui
   position: absolute;
   top: -4px;
   left: 2px;
-}
-div[data-role="header"] .ui-btn-left .ui-btn-icon-notext,
-div[data-role="header"] .ui-btn-right .ui-btn-icon-notext,
-div[data-role="header"] .join-block .ui-btn-icon-left {
-  border: none;
-  background: none;
-  width: 40px;
-  height: 40px;
-  top: -4px;
-}
-div[data-role="header"] .ui-btn-left .ui-btn-icon-notext .ui-btn-inner,
-div[data-role="header"] .ui-btn-right .ui-btn-icon-notext .ui-btn-inner,
-div[data-role="header"] .join-block .ui-btn-icon-left .ui-btn-inner {
-  padding: 0;
-}
-div[data-role="header"] .ui-btn-left .ui-btn-icon-notext .ui-btn-inner .ui-icon,
-div[data-role="header"] .ui-btn-right .ui-btn-icon-notext .ui-btn-inner .ui-icon,
-div[data-role="header"] .join-block .ui-btn-icon-left .ui-btn-inner .ui-icon {
-  position: absolute;
-  left: 0;
-  top: 0;
-}
-div[data-role="header"] .ui-btn-left .ui-btn-icon-notext.ui-shadow,
-div[data-role="header"] .ui-btn-right .ui-btn-icon-notext.ui-shadow,
-div[data-role="header"] .join-block .ui-btn-icon-left.ui-shadow {
-  -moz-box-shadow: none;
-  -webkit-box-shadow: none;
-  box-shadow: none;
-}
-div[data-role="header"] .join-block .ui-btn-icon-left {
-  width: auto;
-}
-div[data-role="header"] .join-block .ui-btn-icon-left .ui-btn-inner {
-  padding: 0;
-  height: 40px;
-}
-div[data-role="header"] .join-block .ui-btn-icon-left .ui-btn-inner .ui-btn-text {
-  padding-left: 40px;
-  line-height: 40px;
-}
-div[data-role="header"] .join-block .ui-btn-icon-left .ui-btn-inner .ui-icon {
-  position: absolute;
 }
 div[data-role="header"] .ui-btn[data-icon="delete"] {
   right: 6px;
@@ -3553,6 +3550,7 @@ div[data-role="dialog"] {
   text-transform: none;
   -webkit-font-smoothing: antialiased;
   text-decoration: none;
+  font-size: 15px;
   font-size: 16px;
   text-transform: lowercase;
 }
@@ -3837,23 +3835,24 @@ textarea.ui-input-text {
   -webkit-animation-iteration-count: infinite;
   -webkit-animation-timing-function: linear;
 }
-.auth-header .avatar-block {
+.auth-header .ui-btn {
   height: 34px;
   line-height: 34px;
   padding-left: 0;
   background: none!important;
   border: none!important;
   top: 0!important;
+  box-shadow: none!important;
 }
-.auth-header .avatar-block.ui-btn .ui-btn-inner {
+.auth-header .ui-btn .ui-btn-inner {
   padding: 0;
 }
-.auth-header .avatar-block.ui-btn .ui-btn-inner .ui-btn-text {
+.auth-header .ui-btn .ui-btn-inner .ui-btn-text {
   display: block;
   text-align: left;
   padding-left: 42px;
 }
-.auth-header .avatar-block.ui-btn .s-avatar {
+.auth-header .ui-btn.avatar-block .s-avatar {
   position: absolute;
   left: 0;
   top: 0;
@@ -4296,68 +4295,53 @@ textarea.ui-input-text {
 .s-image-item-block .image-actions .inline-btn {
   display: inline-block;
 }
-.s-image-item-block .image-actions .ui-btn-up-d,
-.s-image-item-block .image-actions .ui-btn-hover-d,
-.s-image-item-block .image-actions .ui-btn-down-d,
-.s-image-item-block .image-actions .ui-btn-active-d {
-  background: none;
-  border: none;
-  font-size: 12px;
-  font-family: Helvetica, Arial, sans-serif;
-  font-weight: bold;
-  color: #999999;
+.s-image-item-block .image-actions .ui-btn.action-icons {
+  color: #666666;
   margin-right: 4px;
 }
-.s-image-item-block .image-actions .ui-btn-up-d .ui-btn-inner,
-.s-image-item-block .image-actions .ui-btn-hover-d .ui-btn-inner,
-.s-image-item-block .image-actions .ui-btn-down-d .ui-btn-inner,
-.s-image-item-block .image-actions .ui-btn-active-d .ui-btn-inner {
+.s-image-item-block .image-actions .ui-btn.action-icons .ui-btn-inner {
   padding: 0 0 0 36px;
 }
-.s-image-item-block .image-actions .ui-btn-up-d .ui-icon,
-.s-image-item-block .image-actions .ui-btn-hover-d .ui-icon,
-.s-image-item-block .image-actions .ui-btn-down-d .ui-icon,
-.s-image-item-block .image-actions .ui-btn-active-d .ui-icon {
+.s-image-item-block .image-actions .ui-btn.action-icons .ui-icon {
   width: 40px;
   height: 40px;
   margin-top: -20px;
-  margin-left: -10px;
   -moz-border-radius: 0;
   -webkit-border-radius: 0;
   border-radius: 0;
 }
-.s-image-item-block .image-actions .ui-btn-up-d .ui-btn-text,
-.s-image-item-block .image-actions .ui-btn-hover-d .ui-btn-text,
-.s-image-item-block .image-actions .ui-btn-down-d .ui-btn-text,
-.s-image-item-block .image-actions .ui-btn-active-d .ui-btn-text {
+.s-image-item-block .image-actions .ui-btn.action-icons .ui-btn-text {
   line-height: 40px;
   text-transform: lowercase;
   text-shadow: none;
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight: bold;
+  font-size: 12px;
 }
-.s-image-item-block .image-actions .reactions-button {
+.s-image-item-block .image-actions .ui-btn.action-icons.reactions-button {
   position: absolute;
   right: 0;
   top: 0;
   margin-right: -6px;
 }
-.s-image-item-block .image-actions .reactions-button .ui-btn-inner {
+.s-image-item-block .image-actions .ui-btn.action-icons.reactions-button .ui-btn-inner {
   padding: 0 36px 0 10px;
 }
-.s-image-item-block .image-actions .reactions-button .ui-icon {
+.s-image-item-block .image-actions .ui-btn.action-icons.reactions-button .ui-icon {
   background-position: 0px -160px;
   right: 0;
 }
-.s-image-item-block .image-actions .reactions-button.ui-btn-down-d .ui-icon,
-.s-image-item-block .image-actions .reactions-button.ui-btn-hover-d .ui-icon,
-.s-image-item-block .image-actions .reactions-button.ui-btn-active-d .ui-icon {
+.s-image-item-block .image-actions .ui-btn.action-icons.reactions-button.ui-btn-down-d .ui-icon,
+.s-image-item-block .image-actions .ui-btn.action-icons.reactions-button.ui-btn-hover-d .ui-icon,
+.s-image-item-block .image-actions .ui-btn.action-icons.reactions-button.ui-btn-active-d .ui-icon {
   background-position: -40px -160px;
 }
-.s-image-item-block .image-actions .reactions-button.selected .ui-icon {
+.s-image-item-block .image-actions .ui-btn.action-icons.reactions-button.selected .ui-icon {
   background-position: 0px -200px;
 }
-.s-image-item-block .image-actions .reactions-button.selected.ui-btn-down-d .ui-icon,
-.s-image-item-block .image-actions .reactions-button.selected.ui-btn-hover-d .ui-icon,
-.s-image-item-block .image-actions .reactions-button.selected.ui-btn-active-d .ui-icon {
+.s-image-item-block .image-actions .ui-btn.action-icons.reactions-button.selected.ui-btn-down-d .ui-icon,
+.s-image-item-block .image-actions .ui-btn.action-icons.reactions-button.selected.ui-btn-hover-d .ui-icon,
+.s-image-item-block .image-actions .ui-btn.action-icons.reactions-button.selected.ui-btn-active-d .ui-icon {
   background-position: -40px -200px;
 }
 .s-image-item-block .reactions-list {
@@ -4719,7 +4703,7 @@ textarea.ui-input-text {
 .s-share-photo .s-upload-image-location .ui-btn {
   margin: 8px 0;
   font-family: 'MuseoSansRounded700', Helvetica, Arial, sans-serif;
-  font-size: 16px;
+  font-size: 15px;
   font-weight: normal;
 }
 .s-share-photo .s-upload-image-location .ui-btn .ui-icon {

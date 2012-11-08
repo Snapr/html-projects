@@ -96,7 +96,7 @@
 @fontSizeUsername:      16px;
 @fontSizeHeading:       @fontSizeUsername;
 @fontSizePageTitle:     @fontSizeUsername;
-@fontSizeBtn:          @fontSizeUsername;
+@fontSizeBtn:          @fontSize;
 @fontSizeBtnSmall:     @fontSizeSmall;
 @fontSize-numberBig:    24px;
 
@@ -108,6 +108,8 @@
     text-transform: none;
     -webkit-font-smoothing: antialiased;
     text-decoration: none;
+    text-transform: lowercase;
+    font-size: @fontSizeBtn;
 }
 .button-font-small(){
     font-family: @font;

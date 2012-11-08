@@ -39,6 +39,33 @@ div[data-role="header"]{
         left: 6px;
         top: 6px;
     }
+    .ui-btn-icon-left .ui-btn-inner .ui-icon, 
+    .ui-btn-icon-right .ui-btn-inner .ui-icon {
+        margin-top: -@gfxTopBar-grid / 2;
+    }
+    
+    // The main Icon Only Buttons */
+    .ui-btn-left .ui-btn-icon-notext,
+    .ui-btn-right .ui-btn-icon-notext{
+        border: none;
+        background: none;
+        width: @gfxTopBar-grid;
+        height: @gfxTopBar-grid;
+        top: -4px;
+        .ui-btn-inner {
+            padding: 0;
+            .ui-icon{
+                position: absolute;
+                left: 0;
+                top: 0;
+            }
+        }
+        &.ui-shadow{
+            .box-shadow(none);
+        }
+    }
+
+    
     .ui-btn-right {
         position: absolute;
         right: 6px;
@@ -58,8 +85,8 @@ div[data-role="header"]{
                     height: 30px;
                     .ui-icon{
                         display: block;
-                        width: 40px;
-                        height: 40px;
+                        width: @gfxTopBar-grid;
+                        height: @gfxTopBar-grid;
                         position: absolute;
                         top: -4px;
                         left: 2px;
@@ -70,43 +97,8 @@ div[data-role="header"]{
         }   
     }
     
-    // The main Icon Only Buttons */
-    .ui-btn-left .ui-btn-icon-notext,
-    .ui-btn-right .ui-btn-icon-notext,
-    .join-block .ui-btn-icon-left{
-        border: none;
-        background: none;
-        width: @gfxTopBar-grid;
-        height: @gfxTopBar-grid;
-        top: -4px;
-        .ui-btn-inner {
-            padding: 0;
-            .ui-icon{
-                position: absolute;
-                left: 0;
-                top: 0;
-            }
-        }
-        &.ui-shadow{
-            .box-shadow(none);
-        }
-    }
+  
     
-    // Tweaks for user icon thing in header
-    .join-block .ui-btn-icon-left{
-        width: auto;
-        .ui-btn-inner {
-            padding: 0;
-            height: @gfxTopBar-grid;
-            .ui-btn-text{
-                padding-left: @gfxTopBar-grid;
-                line-height: @gfxTopBar-grid;
-            }
-            .ui-icon{
-                position: absolute;
-            }
-        }
-    }
     // Shuffle the close button to the right */
     .ui-btn[data-icon="delete"]{
         right: 6px;
@@ -128,7 +120,6 @@ div[data-role="header"]{
             margin: 0;
         }
     }
-    
 }
 
 .s-inline-header{
@@ -753,31 +744,34 @@ textarea.ui-input-text {
 // -------------------------
 
 .auth-header{
-    .avatar-block{
+    .ui-btn{
         height:  @avatarSize ;
         line-height: @avatarSize;
         padding-left:0;
         background: none!important;
         border: none!important;
         top: 0!important;
-        &.ui-btn{
-            .ui-btn-inner{
-                padding: 0;
-                .ui-btn-text{
-                    display: block;
-                    text-align: left;
-                    padding-left: @avatarSize + @paddingElement ;
-                }
-            }
-            .s-avatar{
-                position: absolute;
-                left: 0;
-                top: 0;
-                background-color: @grayDarker;
-            }
-        }
-
+        box-shadow: none!important;
+        .ui-btn-inner{
+               padding: 0;
+               .ui-btn-text{
+                   display: block;
+                   text-align: left;
+                   padding-left: @avatarSize + @paddingElement ;
+               }
+           }
+        &.avatar-block{
+               
+               .s-avatar{
+                   position: absolute;
+                   left: 0;
+                   top: 0;
+                   background-color: @grayDarker;
+               }
+           }
     }
+  
+
 }
 
 .s-menu-main{
@@ -1152,72 +1146,65 @@ textarea.ui-input-text {
         }
     }
     .image-actions{
-        margin-top: 8px;
-        margin-bottom: 8px;
+        margin-top: @padding * 2;
+        margin-bottom: @padding * 2;
         .inline-btn{
             display: inline-block;
         }
-        .ui-btn-up-d,
-        .ui-btn-hover-d,
-        .ui-btn-down-d,
-        .ui-btn-active-d,{
-            background: none;
-            border: none;
-            font-size: @fontSizeSmall;
-            font-family: @font;
-            font-weight: bold;
-            color: @gray;
+        .ui-btn.action-icons{
+            color: @grayDark;
             margin-right: 4px;
             .ui-btn-inner{
                 padding: 0 0 0 36px;
             }
+            
             .ui-icon{
-                width: 40px;
-                height: 40px;
-                margin-top: -20px;
-                margin-left: -10px;
+                width: @gfxAction-grid;
+                height: @gfxAction-grid;
+                margin-top: -@gfxAction-grid / 2;
                 .border-radius(0);
             }
             .ui-btn-text{
                 line-height: 40px;
                 text-transform: lowercase;
                 text-shadow: none;
-                
+                .button-font-small();
             }
-        }
-
-        // reactions btn off to the right
-        .reactions-button{
-           position: absolute;
-           right: 0;
-           top: 0;
-           margin-right: -6px;
-           .ui-btn-inner{
-                padding: 0 36px 0 10px;
-           }
-            .ui-icon{
-                background-position: @gfxAction-x @gfxAction-toggle-y;
-                right: 0;
-            }
-            &.ui-btn-down-d,
-            &.ui-btn-hover-d,
-            &.ui-btn-active-d{
+            
+            // reactions btn off to the right
+            &.reactions-button{
+               position: absolute;
+               right: 0;
+               top: 0;
+               margin-right: -6px;
+               .ui-btn-inner{
+                    padding: 0 36px 0 10px;
+               }
                 .ui-icon{
-                background-position: @gfxAction-x-hover @gfxAction-toggle-y;
+                    background-position: @gfxAction-x @gfxAction-toggle-y;
+                    right: 0;
                 }
-            }
-            &.selected{
-            .ui-icon{
-                background-position: @gfxAction-x @gfxAction-toggle-up-y;
-            }
-            &.ui-btn-down-d,
-            &.ui-btn-hover-d,
-            &.ui-btn-active-d{
+                &.ui-btn-down-d,
+                &.ui-btn-hover-d,
+                &.ui-btn-active-d{
                     .ui-icon{
-                    background-position: @gfxAction-x-hover @gfxAction-toggle-up-y;
+                    background-position: @gfxAction-x-hover @gfxAction-toggle-y;
+                    }
+                }
+                &.selected{
+                .ui-icon{
+                    background-position: @gfxAction-x @gfxAction-toggle-up-y;
+                }
+                &.ui-btn-down-d,
+                &.ui-btn-hover-d,
+                &.ui-btn-active-d{
+                        .ui-icon{
+                        background-position: @gfxAction-x-hover @gfxAction-toggle-up-y;
+                        }
                     }
                 }
             }
+        
         }
 
     }
