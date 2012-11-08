@@ -187,11 +187,12 @@ return view.extend({
                 hScrollbar: false,
                 snap: snap,
                 momentum: false,
-                onBeforeScrollStart: function(e){
-                    if(!('ontouchstart' in window)){
-                        e.preventDefault();
-                    }
-                },
+                // this allows you to the whole view up and down from the scrollers, but it;s not great on many devices.
+                // onBeforeScrollStart: function(e){
+                //     if(!('ontouchstart' in window)){
+                //         e.preventDefault();
+                //     }
+                // },
                 onScrollEnd: function(){
 
                     // Set active thumb
