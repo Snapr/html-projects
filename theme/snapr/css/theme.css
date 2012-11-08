@@ -5645,12 +5645,12 @@ div.ps-carousel-item-loading {
 .loading #no-results {
   display: none;
 }
-#x-no-results .s-alert-text {
+.s-alert-text {
   padding: 8px;
   position: relative;
   font-style: italic;
 }
-#x-no-results .s-alert-text .ui-icon {
+.s-alert-text .ui-icon {
   display: none;
 }
 .s-message-overlay {

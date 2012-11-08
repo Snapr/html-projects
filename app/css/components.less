@@ -208,6 +208,20 @@ a:active{
 }
 
 
+// @NORESULTS
+// ------------------------
+
+.s-alert-text {
+    padding: @paddingElement;
+    position: relative;
+    font-style: italic;
+    // Not going to use icons for now 
+    .ui-icon {
+        display:none;
+    }
+}
+
+
 // @TABBAR
 // -------------------------
 
@@ -1614,8 +1628,10 @@ div.ps-carousel-item-loading
             .border-radius(8px);
             border: solid #ffff00 4px;
             font-size: 12px;
+            font-style: normal;
             .box-shadow(0px 4px 6px rgba(0, 0, 0, .3) );
             .ui-icon-no-images{
+                display: block;
                 position: absolute;
                 left: 9px;
                 top: 3px;
