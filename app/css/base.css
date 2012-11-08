@@ -130,7 +130,6 @@ div[data-role="header"] .ui-btn-left .ui-btn {
 }
 div[data-role="content"] {
   position: relative;
-  overflow: visible;
   padding: 0 8px;
 }
 div[data-role="content"] .ui-content {
