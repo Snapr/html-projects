@@ -7,7 +7,7 @@
         <div class="info-header">
             <p class="message">Each photo you take earns points. Get bonus points for sharing to social networks and if people comment on and like your images.
         </div>
-        <ul class="x-people-list people-list leaderboard-list" data-role="listview" data-inset="true" data-theme="c" data-split-theme="c" data-corners="false" data-shadow="false">
+        <ul class="x-people-list s-people-list leaderboard-list" data-role="listview" data-inset="true" data-theme="c" data-split-theme="c" data-corners="false" data-shadow="false">
             <% _.each(obj.users || [], function(user, rank){ %>
                 <li>
                     <a href="#/feed/?username=<%= user.get('username') %>" data-username="<%= user.get('username') %>">

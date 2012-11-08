@@ -471,7 +471,7 @@ var add_person = page_view.extend({
     },
 
     post_activate: function(){
-        this.$("ul.people-list").empty();
+        this.$(".x-people-list").empty();
         this.$(".ui-input-text").val('');
 
         this.change_page();
@@ -482,7 +482,7 @@ var add_person = page_view.extend({
     },
 
     render: function(){
-        var people_list = this.$("ul.people-list").empty();
+        var people_list = this.$(".x-people-list").empty();
 
         var people_li_template = this.get_template('components/person');
 
@@ -543,7 +543,7 @@ var add_person = page_view.extend({
 
             this.timer = setTimeout( function() {
                 this_view.timer = null;
-                this_view.$el.addClass('loading');
+                this_view.$el.addClass('x-loading');
                 this_view.xhr = this_view.collection.fetch({
                     data:{
                         username:keywords,
@@ -553,7 +553,7 @@ var add_person = page_view.extend({
                     url: config.get('api_base') + '/user/search/',
                     success: function(){
                         this_view.xhr = null;
-                        this_view.$el.removeClass('loading');
+                        this_view.$el.removeClass('x-loading');
                     }
                 });
             }, 300 );

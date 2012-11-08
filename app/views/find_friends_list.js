@@ -85,7 +85,7 @@ var find_friends = page_view.extend({
                 data:data,
                 url: config.get('api_base') + '/linked_services/' + this_view.service + '/find_friends/',
                 success: function(collection, response){
-                    var people_list = this_view.$(".people-list").empty();
+                    var people_list = this_view.$(".x-people-list").empty();
                     var helper_content = this_view.$(".x-helper-content").empty();
                     this_view.xhr = null;
                     this_view.$el.removeClass('x-loading');

@@ -2442,7 +2442,7 @@ div[data-role="header"].ui-bar-b a[data-rel="back"]::before {
 
   background-image: linear-gradient(top, rgba(255, 255, 255, 0), #ffffff);
 }
-.ui-body-c > .ui-listview.people-list .ui-btn.ui-li:first-child,
+.ui-body-c > .ui-listview.s-people-list .ui-btn.ui-li:first-child,
 .ui-body-c > .ui-listview.venue-list .ui-btn.ui-li:first-child,
 .ui-body-c > .ui-listview.map-list .ui-btn.ui-li:first-child {
   border-top: solid 1px #e4e4e4 !important;
@@ -3928,6 +3928,9 @@ textarea.ui-input-text {
 .s-image-streams .x-stream.x-closed .edit-overlay .remove-stream .ui-btn-inner {
   padding: 4px 32px 4px 16px;
 }
+.s-people-list .s-alert-text {
+  padding: 16px 8px !important;
+}
 .s-validate .x-invalid[for] {
   font-size: 12px;
   color: #666666;
@@ -4614,6 +4617,9 @@ textarea.ui-input-text {
 }
 .s-dash-footer .ui-btn-inner .ui-icon.ui-icon-search {
   background-position: 0 -32px;
+}
+#dash.edit .s-dash-wrapper {
+  margin-top: 85px;
 }
 #uploading .s-upload-progress-header {
   height: 125px;
