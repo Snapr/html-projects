@@ -964,17 +964,12 @@ textarea.ui-input-text {
 }
 
 
-#feed-images{
-    min-height: 324px!important;
-}
-
+// @FEED HEADER
 
 .s-feed-header.s-inline-header{
     margin-bottom: @padding * 2;
     padding-left: @avatarSizeLarge;
     height: @avatarSizeLarge;
-    
-    
     .s-user-icon-left{
         width: @avatarSizeLarge;
         height: @avatarSizeLarge;
@@ -995,11 +990,9 @@ textarea.ui-input-text {
            border-top: solid @white 1px;
         }
     }
-    
     .s-username{
         font-size: @fontSizeUsername;
     }
-    
     .s-follow-btn{
         height: @barHeight;
         //Overwrite bar icons with standard set
@@ -1009,7 +1002,6 @@ textarea.ui-input-text {
         	height: @gfxIcons-grid; 
         }
     }
-    
     .s-header-stats{
          text-align: center;
          text-transform: lowercase;
@@ -1047,21 +1039,17 @@ textarea.ui-input-text {
     } 
 }
 
-
-
-
-
 // Nix the rounded top edges when the upload queue shows above 
-.showing-upload-queue{
-    .feed-header{
+.x-showing-upload-queue{
+    .s-feed-header.s-inline-header{
         .s-user-icon-left{
             .s-profile-icon,
-            .user-icon-big{
+             .s-avatar-large{
                 .border-top-left-radius (0);
                 overflow:hidden;
             }
             .s-icon-overlay{
-               .border-top-left-radius (@cornersPage);
+               .border-top-left-radius (0);
             }
         }
         .ui-bar{
@@ -1071,6 +1059,11 @@ textarea.ui-input-text {
 }
 
 
+// @FEED IMAGES
+
+#feed-images{
+    min-height: 324px!important;
+}
 
 .s-image-item-block{
     .s-image-item-topbar{

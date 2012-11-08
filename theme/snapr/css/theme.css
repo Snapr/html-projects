@@ -4093,9 +4093,6 @@ textarea.ui-input-text {
 .s-feed-view-toggle .ui-btn-text .ui-icon-grid-view {
   background-position: -2px -401px;
 }
-#feed-images {
-  min-height: 324px!important;
-}
 .s-feed-header.s-inline-header {
   margin-bottom: 8px;
   padding-left: 100px;
@@ -4184,22 +4181,25 @@ textarea.ui-input-text {
   left: 50px;
   z-index: 10;
 }
-.showing-upload-queue .feed-header .s-user-icon-left .s-profile-icon,
-.showing-upload-queue .feed-header .s-user-icon-left .user-icon-big {
+.x-showing-upload-queue .s-feed-header.s-inline-header .s-user-icon-left .s-profile-icon,
+.x-showing-upload-queue .s-feed-header.s-inline-header .s-user-icon-left .s-avatar-large {
   -webkit-border-top-left-radius: 0;
   -moz-border-radius-topleft: 0;
   border-top-left-radius: 0;
   overflow: hidden;
 }
-.showing-upload-queue .feed-header .s-user-icon-left .s-icon-overlay {
-  -webkit-border-top-left-radius: 8px;
-  -moz-border-radius-topleft: 8px;
-  border-top-left-radius: 8px;
+.x-showing-upload-queue .s-feed-header.s-inline-header .s-user-icon-left .s-icon-overlay {
+  -webkit-border-top-left-radius: 0;
+  -moz-border-radius-topleft: 0;
+  border-top-left-radius: 0;
 }
-.showing-upload-queue .feed-header .ui-bar {
+.x-showing-upload-queue .s-feed-header.s-inline-header .ui-bar {
   -webkit-border-top-right-radius: 0;
   -moz-border-radius-topright: 0;
   border-top-right-radius: 0;
+}
+#feed-images {
+  min-height: 324px!important;
 }
 .s-image-item-block .s-image-item-topbar {
   height: 35px;
