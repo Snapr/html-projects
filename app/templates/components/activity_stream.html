@@ -8,6 +8,13 @@
 
 <!-- // Wrap all the events in the stream in a <ul> -->
 <ul class="<% if (photo_events){%>x-photo-activity photo-activity<%}else{%>non-photo-activity x-non-photo-activity<%}%> x-activity">
+    <% if(!events.length){ %>
+        <li>
+            <div>
+                <p class="s-alert-text"><span class="ui-icon ui-icon-delete "></span>No news yet...</p>
+            </div>
+        </li>
+    <% } %>
     <% _.each(events, function(event){ %>
         <li>
             <% switch (event.get("type"))
@@ -87,13 +94,6 @@
                             </p>
                         <% } %>
                     </a>
-
-                <%  break;
-                case "placeholder":%>
-
-                    <div id="x-no-results">
-                        <p class="s-alert-text"><span class="ui-icon ui-icon-delete "></span>No news yet...</p>
-                    </div>
 
             <% }%>
         </li>
