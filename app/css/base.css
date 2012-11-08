@@ -957,10 +957,10 @@ a:active {
   opacity: .5;
   display: none;
 }
-.s-image-item-block .s-main-s-image-link {
+.s-image-item-block .s-main-image-link {
   display: block;
 }
-.s-image-item-block .s-main-s-image-link .s-main-image {
+.s-image-item-block .s-main-image-link .s-main-image {
   width: 100%;
 }
 .s-image-item-block .s-image-description {
@@ -972,39 +972,39 @@ a:active {
   margin-top: 8px;
   margin-bottom: -8px;
 }
-.s-image-item-block .reactions-list {
+.s-image-item-block .s-reactions-list {
   display: none;
   -moz-box-shadow: none;
   -webkit-box-shadow: none;
   box-shadow: none;
 }
-.s-image-item-block .reactions-list li.ui-li {
+.s-image-item-block .s-reactions-list li.ui-li {
   border: none!important;
   padding: 0;
 }
-.s-image-item-block .reactions-list li.ui-li .ui-link-inherit {
+.s-image-item-block .s-reactions-list li.ui-li .ui-link-inherit {
   padding: 0 0 8px 0 !important;
   display: inline-block;
   white-space: normal;
 }
-.s-image-item-block .reactions-list li.ui-li .ui-icon-arrow-r {
+.s-image-item-block .s-reactions-list li.ui-li .ui-icon-arrow-r {
   display: none;
 }
-.s-image-item-block .reactions-list li.ui-li .username {
+.s-image-item-block .s-reactions-list li.ui-li .username {
   text-transform: none;
   text-shadow: none;
 }
-.s-image-item-block .reactions-list li.ui-li .comment,
-.s-image-item-block .reactions-list li.ui-li .like-text {
+.s-image-item-block .s-reactions-list li.ui-li .comment,
+.s-image-item-block .s-reactions-list li.ui-li .like-text {
   white-space: normal;
   font-weight: normal;
   text-transform: none;
   text-shadow: none;
 }
-.s-image-item-block .comment-area {
+.s-image-item-block .s-comment-area {
   display: none;
 }
-.s-image-item-block .comment-area .photo-comment {
+.s-image-item-block .s-comment-area .s-photo-comment {
   min-height: 75px;
 }
 .s-image-item-block.private .s-image-status {

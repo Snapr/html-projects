@@ -381,7 +381,7 @@ var feed_li =  view.extend({
         "click .comment-button": "toggle_comment_form",
         "click .more-button": "toggle_photo_manage",
         "click .goto-map": "goto_map",
-        "click .goto-spot": "goto_spot",
+        "click .x-goto-spot": "goto_spot",
         "submit .comment-form": "comment",
         "click .x-favorite": "favorite",
         "click .x-privacy": "toggle_status",
@@ -466,17 +466,17 @@ var feed_li =  view.extend({
 
     toggle_comment_form: function(){
         this.$('.comment-button').toggleClass('selected');
-        this.$('.comment-area').toggle();
+        this.$('.s-comment-area').toggle();
     },
 
     show_comment_form: function(){
         this.$('.comment-button').addClass('selected');
-        this.$('.comment-area').show();
+        this.$('.s-comment-area').show();
     },
 
     hide_comment_form: function(){
         this.$('.comment-button').removeClass('selected');
-        this.$('.comment-area').hide();
+        this.$('.s-comment-area').hide();
     },
 
     toggle_reactions: function(){
@@ -505,7 +505,7 @@ var feed_li =  view.extend({
 
     show_reactions: function(){
         this.$('.x-reactions-button').addClass('selected');
-        this.$('.reactions-list').show();
+        this.$('.x-reactions-list').show();
     },
 
     goto_map: function(){

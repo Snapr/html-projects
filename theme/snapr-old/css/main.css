@@ -6212,7 +6212,7 @@ body.x-browser-testing .ui-footer, body.x-browser-testing .ui-footer-fixed {
   opacity: .5;
   display: none;
 }
-.s-image-item-block .s-main-s-image-link {
+.s-image-item-block .s-main-image-link {
   display: block;
 }
 .s-image-item-block .s-main-image {
@@ -6228,7 +6228,7 @@ body.x-browser-testing .ui-footer, body.x-browser-testing .ui-footer-fixed {
   background-position: -6px -8px;
   width: 16px;
 }
-.s-image-item-block .s-image-description .goto-spot {
+.s-image-item-block .s-image-description .x-goto-spot {
   color: #999999;
 }
 .s-image-item-block .s-image-item-base {
@@ -6238,7 +6238,7 @@ body.x-browser-testing .ui-footer, body.x-browser-testing .ui-footer-fixed {
   margin-top: 8px;
   margin-bottom: 8px;
 }
-.s-image-item-block .image-actions .inline-btn {
+.s-image-item-block .image-actions .s-inline-btn {
   display: inline-block;
 }
 .s-image-item-block .image-actions .ui-btn-up-d,
@@ -6331,10 +6331,10 @@ body.x-browser-testing .ui-footer, body.x-browser-testing .ui-footer-fixed {
   text-transform: none;
   text-shadow: none;
 }
-.s-image-item-block .comment-area {
+.s-image-item-block .s-comment-area {
   display: none;
 }
-.s-image-item-block .comment-area .photo-comment {
+.s-image-item-block .s-comment-area .s-photo-comment {
   min-height: 75px;
 }
 .s-image-item-block.private .image-status {

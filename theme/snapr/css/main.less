@@ -17,8 +17,7 @@ strong{
 // -------------------------
 
 div[data-role="header"]{
-    min-height: @topBarHeight; // So Topbar doesn't collapse without heading
-    
+    min-height: @topBarHeight; // So Topbar doesn't collapse without heading 
     background: none;
     border: none;
     color: @gray;
@@ -64,7 +63,6 @@ div[data-role="header"]{
             .box-shadow(none);
         }
     }
-
     
     .ui-btn-right {
         position: absolute;
@@ -96,8 +94,6 @@ div[data-role="header"]{
             }
         }   
     }
-    
-  
     
     // Shuffle the close button to the right */
     .ui-btn[data-icon="delete"]{
@@ -142,12 +138,10 @@ div[data-role="header"]{
                  padding: @padding * 2 0;
          }
     }
-    
     .ui-bar{
         margin-left: 0;
         margin-right: 0;
     }
-   
 }
 
 
@@ -237,7 +231,6 @@ div[data-role="dialog"]{
     .border-top-radius(@cornersPage); 
    .border-bottom-radius(0);  
    .button-font-light();
-   
      
     .ui-btn,
     &.ui-btn{
@@ -284,7 +277,6 @@ div[data-role="dialog"]{
 
 // @BUTTONS
 // -------------------------
-
 
 .s-logo-button{
     .ui-btn-text{
@@ -385,13 +377,11 @@ div[data-role="dialog"]{
     }
     .ui-checkbox-on {
         .ui-icon{background-position: @gfxAction-x @gfxAction-tick-y;}
-        &.ui-btn-active{.ui-icon{background-position: @gfxAction-x-hover @gfxAction-tick-y;}
+        &.ui-btn-active .ui-icon{background-position: @gfxAction-x-hover @gfxAction-tick-y;}
     }
-}
-.ui-checkbox-off{
-    .ui-icon{background-position: @gfxAction-x @gfxAction-close-y;}
-    &.ui-btn-active{.ui-icon{background-position: @gfxAction-x-hover @gfxAction-close-y;}
-    }
+    .ui-checkbox-off{
+        .ui-icon{background-position: @gfxAction-x @gfxAction-close-y;}
+        &.ui-btn-active .ui-icon{background-position: @gfxAction-x-hover @gfxAction-close-y;}
     }
 }
 
@@ -745,7 +735,7 @@ textarea.ui-input-text {
 
 .auth-header{
     .ui-btn{
-        height:  @avatarSize ;
+        height:  @avatarSize;
         line-height: @avatarSize;
         padding-left:0;
         background: none!important;
@@ -753,25 +743,22 @@ textarea.ui-input-text {
         top: 0!important;
         box-shadow: none!important;
         .ui-btn-inner{
-               padding: 0;
-               .ui-btn-text{
-                   display: block;
-                   text-align: left;
-                   padding-left: @avatarSize + @paddingElement ;
-               }
-           }
+            padding: 0;
+            .ui-btn-text{
+                display: block;
+                text-align: left;
+                padding-left: @avatarSize + @paddingElement ;
+            }
+        }
         &.avatar-block{
-               
-               .s-avatar{
-                   position: absolute;
-                   left: 0;
-                   top: 0;
-                   background-color: @grayDarker;
-               }
-           }
+            .s-avatar{
+                position: absolute;
+                left: 0;
+                top: 0;
+                background-color: @grayDarker;
+            }
+        }
     }
-  
-
 }
 
 .s-menu-main{
@@ -960,7 +947,7 @@ textarea.ui-input-text {
 }
 
 
-// @FEED HEADER
+// @FEEDUSER 
 
 .s-feed-header.s-inline-header{
     margin-bottom: @padding * 2;
@@ -999,7 +986,6 @@ textarea.ui-input-text {
         }
     }
     .s-header-stats{
-         text-align: center;
          text-transform: lowercase;
          font-size: @fontSizeSmall;
          .ui-link{
@@ -1057,6 +1043,7 @@ textarea.ui-input-text {
 
 // @FEED IMAGES
 
+// @X
 #feed-images{
     min-height: 324px!important;
 }
@@ -1086,16 +1073,16 @@ textarea.ui-input-text {
             display: inline-block;
         }
         .s-image-time{
-            color: @grayLight;
+            color: @gray;
             .ui-icon-clock{
                 background-position: @gfxBar-x - 9px @gfxFeed-time-y;
                 width: 14px;
             }
         }
         .s-image-time-and-location{
-            color: @grayLight;
+            color: @gray;
             .ui-link{
-                color: @grayLight;
+                color: @gray;
             }
             .ui-icon-venue{
                 background-position: @gfxBar-x - 10px @gfxFeed-venue-y;
@@ -1103,28 +1090,12 @@ textarea.ui-input-text {
             }
         }
     }
-    .image-item{
+    .s-image-item{
         position: relative;
-        .image-status{
-            position: absolute;
-            top: -14px;
+        .s-image-status{
             background-color: #e5592f;
             color: white;
-            font-size: 11px;
-            font-weight: bold;
-            padding: 0px 3px;
-            right: 0;
-            height: 14px;
-            .border-top-radius(4px);
-            opacity: .5;
-            display: none;
         }
-    }
-    .s-main-s-image-link{
-        display: block;
-    }
-    .s-main-image{
-        width: 100%;
     }
     .s-image-description{
         margin-top: @padding * 2;
@@ -1135,29 +1106,27 @@ textarea.ui-input-text {
             background-position: -6px @gfxFeed-quote-y - 8;
             width: 16px;
         }
-        .goto-spot{
-            color: @grayLight;
+        .x-goto-spot{
+            color: @gray;
         }
     }
     .s-image-item-base{
-        position: relative;
         .s-hide-text{
             display: none;
         }
     }
-    .image-actions{
+    .s-image-actions{
         margin-top: @padding * 2;
         margin-bottom: @padding * 2;
-        .inline-btn{
+        .s-inline-btn{
             display: inline-block;
         }
         .ui-btn.action-icons{
             color: @grayDark;
-            margin-right: 4px;
+            margin-right: @padding;
             .ui-btn-inner{
-                padding: 0 0 0 36px;
+                padding: 0 0 0 @gfxAction-grid - @padding;
             }
-            
             .ui-icon{
                 width: @gfxAction-grid;
                 height: @gfxAction-grid;
@@ -1165,14 +1134,14 @@ textarea.ui-input-text {
                 .border-radius(0);
             }
             .ui-btn-text{
-                line-height: 40px;
+                line-height: @gfxAction-grid;
                 text-transform: lowercase;
                 text-shadow: none;
                 .button-font-small();
             }
             
             // reactions btn off to the right
-            &.reactions-button{
+            &.s-reactions-button{
                position: absolute;
                right: 0;
                top: 0;
@@ -1192,14 +1161,14 @@ textarea.ui-input-text {
                     }
                 }
                 &.selected{
-                .ui-icon{
-                    background-position: @gfxAction-x @gfxAction-toggle-up-y;
-                }
-                &.ui-btn-down-d,
-                &.ui-btn-hover-d,
-                &.ui-btn-active-d{
+                    .ui-icon{
+                        background-position: @gfxAction-x @gfxAction-toggle-up-y;
+                    }
+                    &.ui-btn-down-d,
+                    &.ui-btn-hover-d,
+                    &.ui-btn-active-d{
                         .ui-icon{
-                        background-position: @gfxAction-x-hover @gfxAction-toggle-up-y;
+                            background-position: @gfxAction-x-hover @gfxAction-toggle-up-y;
                         }
                     }
                 }
@@ -1208,8 +1177,7 @@ textarea.ui-input-text {
         }
 
     }
-
-    .reactions-list{
+    .s-reactions-list{
         display: none;
         .box-shadow(none);
         li.ui-li{
@@ -1223,12 +1191,8 @@ textarea.ui-input-text {
             .ui-icon-arrow-r{
                 display: none;
             }
-            .username{
-                text-transform: none;
-                text-shadow: none;
-            }
-            .comment,
-            .like-text{
+            .s-comment,
+            .s-like-text{
                 white-space: normal;
                 font-weight: normal;
                 font-family: @font;
@@ -1237,11 +1201,10 @@ textarea.ui-input-text {
                 text-shadow: none;
             }
         }
-
     }
-    .comment-area{
+    .s-comment-area{
         display: none;
-        .photo-comment{
+        .s-photo-comment{
             min-height: 75px;
         }
     }
@@ -1253,12 +1216,13 @@ textarea.ui-input-text {
 }
 
 .s-feed-footer{
-
+    padding: 0!important;
     .ui-btn{
         .border-top-radius(0);
         .border-bottom-radius(@cornersPage);
         margin-bottom: 0;
         border: none;
+        display: block;
     }
 }
 
@@ -1269,7 +1233,6 @@ textarea.ui-input-text {
 
 // @PROFILE
 // -------------------------
-
 
 .s-user-profile{
     .s-profile-details{
@@ -1353,7 +1316,6 @@ textarea.ui-input-text {
 
 // @DASH
 // -------------------------
-
 
 .s-dash-wrapper{
     min-height: 316px;
@@ -2498,7 +2460,7 @@ div.ps-carousel-item-loading
 
 // light version of spinner action btns on white & dark bg buttons */
 .ui-body-c .ui-listview,
-.image-actions,
+.s-image-actions,
 .dark-icons{
     .x-ajax-loading{
         .ui-btn-inner > .ui-icon{

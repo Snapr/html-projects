@@ -30,7 +30,7 @@
 
     <%}else{%>
 
-    <a href="https://s3.amazonaws.com/media-server<%= item.get('server_id') %>.snapr.us/lrg2/<%= item.get('secret') %>/<%= item.get('id') %>.jpg" rel="external" class="x-gallery-link s-main-s-image-link s-image-loader-bg">
+    <a href="https://s3.amazonaws.com/media-server<%= item.get('server_id') %>.snapr.us/lrg2/<%= item.get('secret') %>/<%= item.get('id') %>.jpg" rel="external" class="x-gallery-link s-main-image-link s-image-loader-bg">
         <img style="height:<%= get_photo_height(item.get('width'), item.get('height'), '#feed-images') %>px;" src="https://s3.amazonaws.com/media-server<%= item.get('server_id') %>.snapr.us/lrg/<%= item.get('secret') %>/<%= item.get('id') %>.jpg" <% if(item.get('description')){ %>alt="<%= item.get('description') %>"<% } %> class="s-main-image" />
     </a>
 
@@ -49,14 +49,14 @@
         <%= string_utils.comment_links( item.get('description') ) %>
 
         <% if (item.has('location') && item.get('location').spot_id){%>
-        <a class="goto-spot">
+        <a class="x-goto-spot">
             @ <%= item.get('location').foursquare_venue_name %>
         </a>
         <%}%>
     </div>
 
     <div class="s-image-item-base">
-        <div data-role="controlgroup" data-type="horizontal" class="image-actions x-image-actions" data-theme="z">
+        <div data-role="controlgroup" data-type="horizontal" class="s-image-actions x-image-actions" data-theme="z">
             <a data-role="button" data-theme="z" data-icon="heart" data-iconpos="left" class="x-favorite action-icons <% if (item.get('favorite')){ %> selected <% }%>" ><span class="s-hide-text">Likes </span><% if (item.get('favorite_count') > 0){ %>&times; <%= item.get('favorite_count') %><%} else {%> &nbsp;<%}%></a>
 
             <a data-role="button" data-icon="comment" data-inline="true" data-iconpos="left" class="comment-button action-icons" data-theme="z"><span class="s-hide-text">Comments </span><% if (item.get('comments') > 0){ %>&times; <%= item.get('comments') %><%} else {%> &nbsp;<%}%></a>
@@ -81,24 +81,24 @@
             </div>
 
             <% if (parseInt(item.get("favorite_count")) + parseInt(item.get("comments")) > 0){ %>
-                <a data-theme="z" data-role="button" data-icon="arrow-d" data-iconpos="right" class="x-reactions-button reactions-button action-icons">Show</a>
+                <a data-theme="z" data-role="button" data-icon="arrow-d" data-iconpos="right" class="x-reactions-button s-reactions-button action-icons">Show</a>
             <% } %>
         </div>
 
-        <ul data-inset="true" class="x-reactions-list reactions-list">
+        <ul data-inset="true" class="x-reactions-list s-reactions-list">
             <% _.each(obj.reactions || [], function(reaction){ %>
                 <% if(reaction.get('type') == 'comment'){ %>
-                    <li><a href="#/feed/?username=<%= reaction.get('username') %>"><span class="username"><%= reaction.get('display_username') %>:</span> <span class="comment"><%= string_utils.comment_links( reaction.get('comment') ) %></span></a></li>
+                    <li><a href="#/feed/?username=<%= reaction.get('username') %>"><span class="s-username"><%= reaction.get('display_username') %>:</span> <span class="s-comment"><%= string_utils.comment_links( reaction.get('comment') ) %></span></a></li>
                 <% }else{ %>
-                    <li><a href="#/feed/?username=<%= reaction.get('username') %>"><span class="username"><%= reaction.get('display_username') %></span> <span class="like-text">likes this</span></a></li>
+                    <li><a href="#/feed/?username=<%= reaction.get('username') %>"><span class="s-username"><%= reaction.get('display_username') %></span> <span class="s-like-text">likes this</span></a></li>
                 <% } %>
             <% }) %>
         </ul>
 
-        <div class="comment-area">
+        <div class="s-comment-area">
             <div>
                 <form action="javascript:void(0);" class="comment-form" accept-charset="utf-8">
-                    <textarea name="comment-<%= item.get('id') %>" placeholder=" " class="photo-comment" />
+                    <textarea name="comment-<%= item.get('id') %>" placeholder=" " class="s-photo-comment" />
                     <div class="ui-grid-b">
                         <div class="ui-block-a"></div>
                         <div class="ui-block-b"></div>
