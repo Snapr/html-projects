@@ -516,8 +516,16 @@ var add_person = page_view.extend({
                     }
                 });
             $.mobile.showPageLoadingMsg();
-            stream.save({}, {success: function(){
-                this_back_view.model.streams.add(stream);
+            stream.save({}, {success: function(model, r){
+                if(r.error){
+                    if(r.error.type == 'duplicate'){
+                        alerts.notification('You already have this user on your dashboard');
+                    }else{
+                        alerts.notification(r.error.message);
+                    }
+                }else{
+                    this_back_view.model.streams.add(stream);
+                }
                 $.mobile.hidePageLoadingMsg();
             }});
             this_back_view.$el.removeClass('edit');
@@ -616,8 +624,16 @@ var add_search = page_view.extend({
                 stream_object.query.longitude = position.coords.longitude;
 
                 var stream = new dash_stream_model( stream_object );
-                stream.save({}, {success: function(){
-                    add_search.previous_view.model.streams.add(stream);
+                stream.save({}, {success: function(model, r){
+                    if(r.error){
+                        if(r.error.type == 'duplicate'){
+                            alerts.notification('You already have this search on your dashboard');
+                        }else{
+                            alerts.notification(r.error.message);
+                        }
+                    }else{
+                        add_search.previous_view.model.streams.add(stream);
+                    }
                     $.mobile.hidePageLoadingMsg();
                 }});
                 add_search.previous_view.$el.removeClass('edit');
@@ -635,8 +651,16 @@ var add_search = page_view.extend({
         }else{
             var stream = new dash_stream_model( stream_object ),
                 dash = this.previous_view;
-            stream.save({}, {success: function(){
-                dash.model.streams.add(stream);
+            stream.save({}, {success: function(model, r){
+                if(r.error){
+                    if(r.error.type == 'duplicate'){
+                        alerts.notification('You already have this search on your dashboard');
+                    }else{
+                        alerts.notification(r.error.message);
+                    }
+                }else{
+                    dash.model.streams.add(stream);
+                }
                 $.mobile.hidePageLoadingMsg();
             }});
             this.previous_view.$el.removeClass('edit');
