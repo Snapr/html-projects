@@ -3168,6 +3168,10 @@ div[data-role="dialog"] {
   font-family: Helvetica, Arial, sans-serif;
   font-weight: normal;
   text-transform: lowercase;
+  height: 36px;
+  line-height: 36px;
+  padding-top: 0;
+  padding-bottom: 0;
 }
 .ui-bar .ui-btn .ui-btn-inner,
 .ui-bar.ui-btn .ui-btn-inner {
