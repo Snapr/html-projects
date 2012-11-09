@@ -9,7 +9,7 @@ return {
         initial_view: 'home',  // "home page"
         show_tab_bar: false,
 
-        app_group: 'zombiegram',
+        app_group: 'artspot',
 
         // client must have xAuth permission from 3rd party
         tumblr_xauth: true,
