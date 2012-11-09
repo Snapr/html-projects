@@ -1,7 +1,7 @@
 // ACTIVITY PAGE
 // -------------------------
 
-.activity-streams{
+.s-activity-streams{
     .ui-bar.s-arrow-d-left .ui-btn-text{
         padding-left: @padding * 2;
     }
@@ -12,12 +12,12 @@
         display: inline-block;
         margin-bottom: 0;
     }
-    .activity-item{
+    .s-activity-item{
         border: none;
         border-top: @borderMediumOnLight;
         margin-top: @paddingElement;
         padding-top: 0;
-        .activity-desc{
+        .s-activity-desc{
             white-space: normal;
             font-weight: normal;
             font-size: @fontSize;
@@ -37,7 +37,7 @@
         top:0;
     }
 
-    .activity-item{
+    .s-activity-item{
         border: none;
         border-top: @borderMediumOnLight;
         margin-top: @paddingElement;
@@ -45,9 +45,9 @@
     }
 
     /* Tweaks for comments */
-    .comments-list{
+    .s-comments-list{
         .box-shadow(none);
-        .comment-item.ui-li-has-icon{
+        .s-comment-item.ui-li-has-icon{
             padding: 0;
             margin-top: 8px;
             padding-top: 8px!important;
@@ -69,33 +69,33 @@
     }
 
     /* Tweaks for likes */
-    .image-likes{
+    .s-image-likes{
         min-height: @avatarSize;
-        .icons-list,
+        .s-icons-list,
         p{
             display: inline-block;
             vertical-align: top;
         }
-        .like-icons-list{
+        .s-like-icons-list{
             margin-top: @padding * 2;
             margin-bottom: 0;
 
         }
-        .like-icon{
+        .s-like-icon{
             margin-bottom: @paddingGrid;
             display: inline-block;
         }
     }
 
     /* Tweaks for follow item */
-    .activity-follow-item{
+    .s-activity-follow-item{
         position: relative;
         padding-left: 0;
         margin-top: 8px;
         min-height:  @avatarSize;
         display: block;
         .username,
-        .activity-desc,
+        .s-activity-desc,
         .s-small-text{
             display: inline-block;
             vertical-align: baseline;
@@ -116,14 +116,14 @@
         }
     }
 
-    .photo-activity{
-        .activity-item:first-child{
+    .s-photo-activity{
+        .s-activity-item:first-child{
             border-top: none;
             padding-top: 0!important;
         }
     }
 
-    .activity-item{
+    .s-activity-item{
         &:first{
             border-top: none;
             margin-top: 0!important;
@@ -132,12 +132,12 @@
     }
     
     /* Image Items */
-    .activity-image-item{
+    .s-activity-image-item{
         position: relative;
         min-height: @thumbSize;
         padding-left: @thumbSize + @paddingGrid;
         margin-bottom: @padding * 2 + @paddingGrid;
-        .activity-item:first{
+        .s-activity-item:first{
             border-top: none;
             margin-top: 0!important;
             padding-top: 0!important;
@@ -146,7 +146,7 @@
 
     /* If the first item (after the top bar) is a follow item get rid of its top border */
     .activity-stream:nth-child(2){
-        .activity-follow-item{
+        .s-activity-follow-item{
             border-top: none;
             margin-top: 0!important;
             padding-top: 0!important;

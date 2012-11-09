@@ -9,7 +9,7 @@
 <%}%>
 
 <!-- // Wrap all the events in the stream in a <ul> -->
-<ul class="<% if (photo_events){%>x-photo-activity photo-activity<%}else{%>non-photo-activity x-non-photo-activity<%}%> x-activity">
+<ul class="<% if (photo_events){%>x-photo-activity s-photo-activity<%}else{%>non-photo-activity x-non-photo-activity<%}%> x-activity">
     <% if(!events.length){ %>
         <li>
             <div>
@@ -23,25 +23,25 @@
             {
                 <!-- For news around a photo -->
                 case "photo-activity":%>
-                <li class="activity-item activity-image-item">
+                <li class="s-activity-item s-activity-image-item">
                     <% if (event.get("comments").length || event.get("comment-on-comments").length) {%>
                     <!-- // List the comments followed by the comments on comments -->
-                    <ul class="comments-list" data-role="listview" data-inset="true" data-icon="false" >
+                    <ul class="s-comments-list" data-role="listview" data-inset="true" data-icon="false" >
                         <% _.each( event.get("comments"), function( comment ){ %>
-                            <li data-icon="false" class="comment-item activity-item">
+                            <li data-icon="false" class="s-comment-item s-activity-item">
                                 <a href="#/feed/?username=<%= comment.user.username %>">
                                     <img src="<%= config.get('avatar_url') %>/<%= comment.user.user_id %>" alt="<%= comment.user.display_username %>" class="s-avatar ui-li-icon"/>
 
-                                    <h3 class="username"><%= comment.user.display_username %></h3> <span class="activity-desc"><%= comment.comment %></span>
+                                    <h3 class="s-username"><%= comment.user.display_username %></h3> <span class="s-activity-desc"><%= comment.comment %></span>
                                 </a>
                             </li>
                         <% }); %>
                         <% _.each( event.get("comment-on-comments"), function( comment ){ %>
-                            <li data-icon="false" class="comment-item comment-on-comment-item activity-item">
+                            <li data-icon="false" class="s-comment-item comment-on-s-comment-item s-activity-item">
                                 <a href="#/feed/?username=<%= comment.user.username %>">
                                     <img src="<%= config.get('avatar_url') %>/<%= comment.user.user_id %>" alt="<%= comment.user.display_username %>" class="s-avatar ui-li-icon"/>
 
-                                    <h3 class="username"><%= comment.user.display_username %></h3> <span class="activity-desc"><%= comment.comment %></span>
+                                    <h3 class="s-username"><%= comment.user.display_username %></h3> <span class="s-activity-desc"><%= comment.comment %></span>
                                 </a>
                             </li>
                         <% }); %>
@@ -50,11 +50,11 @@
 
                     <!-- // Now the Likes -->
                     <% if (event.get("favorites").length) {%>
-                        <div class="image-likes activity-item">
+                        <div class="s-image-likes s-activity-item">
                              <!-- the icons are displayed as an inline list -->
-                            <ul class="like-icons-list">
+                            <ul class="s-like-icons-list">
                             <% _.each( event.get("favorites"), function( like ){ %>
-                                <li class="like-icon">
+                                <li class="s-like-icon">
                                     <a href="#/feed/?username=<%= like.user.username %>"><img src="<%= config.get('avatar_url') %>/<%= like.user.user_id %>" alt="<%= like.user.display_username %>" class="s-avatar ui-li-icon"/></a>
                                 </li>
                             <% }); %>
@@ -64,7 +64,7 @@
                                 <% var likes_list = event.get("favorites") %>
                                 <% if (likes_list.length == 1)
                                 {%>
-                                    <a class="username"  href="#/feed/?username=<%= likes_list[0].user.username%>"><%= likes_list[0].user.display_username %></a> likes this.
+                                    <a class="s-username"  href="#/feed/?username=<%= likes_list[0].user.username%>"><%= likes_list[0].user.display_username %></a> likes this.
                                 <%}
                                 else if (likes_list.length > 1)
                                 {
@@ -72,9 +72,9 @@
                                     {
                                         if (index < likes_list.length - 1)
 
-                                        {%><a class="username"  href="#/feed/?username=<%= like.user.username %>"><%= like.user.display_username %></a>, <%}
+                                        {%><a class="s-username"  href="#/feed/?username=<%= like.user.username %>"><%= like.user.display_username %></a>, <%}
                                     });%>
-                                    &amp; <a class="username"><%= likes_list[likes_list.length - 1].user.display_username%></a> like this.
+                                    &amp; <a class="s-username"><%= likes_list[likes_list.length - 1].user.display_username%></a> like this.
                                 <%}%>
                             </p>
                         </div>
@@ -87,10 +87,10 @@
                 </li>
                 <%  break;
                 case "follow":%>
-                <li class="activity-item activity-follow-item">
-                    <a href="#/feed/?username=<%= event.get("user").username %>" class="activity-follow-item">
+                <li class="s-activity-item s-activity-follow-item">
+                    <a href="#/feed/?username=<%= event.get("user").username %>" class="s-activity-follow-item">
                         <img src="<%= config.get('avatar_url') %>/<%= event.get("user").username %>" alt="<%= event.get("user").user_id %>" class="s-avatar ui-li-icon"/>
-                        <h3 class="username"><%= event.get("user").display_username %></h3> <span class="activity-desc">is now following you.</span>
+                        <h3 class="s-username"><%= event.get("user").display_username %></h3> <span class="s-activity-desc">is now following you.</span>
                         <% if (!photo_events) { %>
                             <p class="s-small-text">
                                 <%= string_utils.short_timestamp( event.get("date"), true) %>

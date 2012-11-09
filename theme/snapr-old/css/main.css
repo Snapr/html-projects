@@ -7158,7 +7158,7 @@ body.x-browser-testing .ui-footer, body.x-browser-testing .ui-footer-fixed {
   margin-top: 8px;
   padding-top: 0;
 }
-.activity-streams .activity-item .activity-desc {
+.activity-streams .activity-item .s-activity-desc {
   white-space: normal;
   font-weight: normal;
   font-size: 15px;
@@ -7182,58 +7182,58 @@ body.x-browser-testing .ui-footer, body.x-browser-testing .ui-footer-fixed {
   margin-top: 8px;
   padding-top: 0;
 }
-.activity-streams .comments-list {
+.activity-streams .s-comments-list {
   -moz-box-shadow: none;
   -webkit-box-shadow: none;
   box-shadow: none;
 }
-.activity-streams .comments-list .comment-item.ui-li-has-icon {
+.activity-streams .s-comments-list .s-comment-item.ui-li-has-icon {
   padding: 0;
   margin-top: 8px;
   padding-top: 8px!important;
 }
-.activity-streams .comments-list .comment-item.ui-li-has-icon .ui-link-inherit {
+.activity-streams .s-comments-list .s-comment-item.ui-li-has-icon .ui-link-inherit {
   padding-top: 0!important;
   padding-bottom: 0!important;
   padding-left: 38px !important;
   min-height: 34px;
 }
-.activity-streams .comments-list .comment-item.ui-li-has-icon .ui-li-icon {
+.activity-streams .s-comments-list .s-comment-item.ui-li-has-icon .ui-li-icon {
   top: 0;
   left: 0;
 }
-.activity-streams .comments-list .comment-item.ui-li-has-icon .ui-li-heading {
+.activity-streams .s-comments-list .s-comment-item.ui-li-has-icon .ui-li-heading {
   padding: 0;
   margin: 0;
 }
-.activity-streams .image-likes {
+.activity-streams .s-image-likes {
   min-height: 34px;
 }
-.activity-streams .image-likes .icons-list, .activity-streams .image-likes p {
+.activity-streams .s-image-likes .icons-list, .activity-streams .s-image-likes p {
   display: inline-block;
   vertical-align: top;
 }
-.activity-streams .image-likes .like-icons-list {
+.activity-streams .s-image-likes .s-like-icons-list {
   margin-top: 8px;
   margin-bottom: 0;
 }
-.activity-streams .image-likes .like-icon {
+.activity-streams .s-image-likes .s-like-icon {
   margin-bottom: 4px;
   display: inline-block;
 }
-.activity-streams .activity-follow-item {
+.activity-streams .s-activity-follow-item {
   position: relative;
   padding-left: 0;
   margin-top: 8px;
   min-height: 34px;
   display: block;
 }
-.activity-streams .activity-follow-item .username, .activity-streams .activity-follow-item .activity-desc, .activity-streams .activity-follow-item .s-small-text {
+.activity-streams .s-activity-follow-item .username, .activity-streams .s-activity-follow-item .s-activity-desc, .activity-streams .s-activity-follow-item .s-small-text {
   display: inline-block;
   vertical-align: baseline;
   margin-bottom: 0;
 }
-.activity-streams .activity-follow-item .ui-link {
+.activity-streams .s-activity-follow-item .ui-link {
   display: block;
   padding-left: 34px;
   padding-top: 8px ;
@@ -7242,13 +7242,13 @@ body.x-browser-testing .ui-footer, body.x-browser-testing .ui-footer-fixed {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
-.activity-streams .activity-follow-item .ui-li-icon {
+.activity-streams .s-activity-follow-item .ui-li-icon {
   display: block;
   position: absolute;
   left: -4px;
   top: 0;
 }
-.activity-streams .photo-activity .activity-item:first-child {
+.activity-streams .s-photo-activity .activity-item:first-child {
   border-top: none;
   padding-top: 0!important;
 }
@@ -7257,18 +7257,18 @@ body.x-browser-testing .ui-footer, body.x-browser-testing .ui-footer-fixed {
   margin-top: 0!important;
   padding-top: 0!important;
 }
-.activity-streams .activity-image-item {
+.activity-streams .s-activity-image-item {
   position: relative;
   min-height: 101px;
   padding-left: 105px;
   margin-bottom: 12px;
 }
-.activity-streams .activity-image-item .activity-item:first {
+.activity-streams .s-activity-image-item .activity-item:first {
   border-top: none;
   margin-top: 0!important;
   padding-top: 0!important;
 }
-.activity-streams .activity-stream:nth-child(2) .activity-follow-item {
+.activity-streams .activity-stream:nth-child(2) .s-activity-follow-item {
   border-top: none;
   margin-top: 0!important;
   padding-top: 0!important;

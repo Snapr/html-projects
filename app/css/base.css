@@ -215,6 +215,8 @@ a:active {
   padding: 8px;
   position: relative;
   font-style: italic;
+  font-size: 12px;
+  color: #666666;
 }
 .s-alert-text .ui-icon {
   display: none;
@@ -1314,36 +1316,24 @@ a:active {
 .s-share-photo.x-show-image .s-show-share-settings {
   display: block;
 }
-.activity-streams {
+.s-activity-streams {
   margin-bottom: 0;
-  /* General Styles */
-
-  /* Tweaks for comments */
-
-  /* Tweaks for likes */
-
-  /* Tweaks for follow item */
-
-  /* Image Items */
-
-  /* If the first item (after the top bar) is a follow item get rid of its top border */
-
 }
-.activity-streams .ui-bar.s-arrow-d-left .ui-btn-text {
+.s-activity-streams .ui-bar.s-arrow-d-left .ui-btn-text {
   padding-left: 8px;
 }
-.activity-streams .username,
-.activity-streams .ui-li-desc {
+.s-activity-streams .s-username,
+.s-activity-streams .ui-li-desc {
   display: inline-block;
   margin-bottom: 0;
 }
-.activity-streams .activity-item {
+.s-activity-streams .s-activity-item {
   border: none;
   border-top: solid 1px #f7f7f7;
   margin-top: 4px;
   padding-top: 0;
 }
-.activity-streams .activity-item .activity-desc {
+.s-activity-streams .s-activity-item .s-activity-desc {
   white-space: normal;
   font-weight: normal;
   font-size: 15px;
@@ -1351,77 +1341,77 @@ a:active {
   color: #666666;
   font-family: Helvetica, Arial, sans-serif;
 }
-.activity-streams .activity-item .s-small-text {
+.s-activity-streams .s-activity-item .s-small-text {
   position: relative;
   top: 1px;
   color: #666666;
 }
-.activity-streams .s-image-link {
+.s-activity-streams .s-image-link {
   position: absolute;
   left: -4px;
   top: 0;
 }
-.activity-streams .activity-item {
+.s-activity-streams .s-activity-item {
   border: none;
   border-top: solid 1px #f7f7f7;
   margin-top: 8px;
   padding-top: 0;
 }
-.activity-streams .comments-list {
+.s-activity-streams .s-comments-list {
   -moz-box-shadow: none;
   -webkit-box-shadow: none;
   box-shadow: none;
 }
-.activity-streams .comments-list .comment-item.ui-li-has-icon {
+.s-activity-streams .s-comments-list .s-comment-item.ui-li-has-icon {
   padding: 0;
   margin-top: 8px;
   padding-top: 8px!important;
 }
-.activity-streams .comments-list .comment-item.ui-li-has-icon .ui-link-inherit {
+.s-activity-streams .s-comments-list .s-comment-item.ui-li-has-icon .ui-link-inherit {
   padding-top: 0!important;
   padding-bottom: 0!important;
   padding-left: 38px !important;
   min-height: 34px;
 }
-.activity-streams .comments-list .comment-item.ui-li-has-icon .ui-li-icon {
+.s-activity-streams .s-comments-list .s-comment-item.ui-li-has-icon .ui-li-icon {
   top: 0;
   left: 0;
 }
-.activity-streams .comments-list .comment-item.ui-li-has-icon .ui-li-heading {
+.s-activity-streams .s-comments-list .s-comment-item.ui-li-has-icon .ui-li-heading {
   padding: 0;
   margin: 0;
 }
-.activity-streams .image-likes {
+.s-activity-streams .s-image-likes {
   min-height: 34px;
 }
-.activity-streams .image-likes .icons-list,
-.activity-streams .image-likes p {
+.s-activity-streams .s-image-likes .s-icons-list,
+.s-activity-streams .s-image-likes p {
   display: inline-block;
   vertical-align: top;
 }
-.activity-streams .image-likes .like-icons-list {
+.s-activity-streams .s-image-likes .s-like-icons-list {
   margin-top: 8px;
   margin-bottom: 0;
 }
-.activity-streams .image-likes .like-icon {
+.s-activity-streams .s-image-likes .s-like-icon {
   margin-bottom: 4px;
   display: inline-block;
 }
-.activity-streams .activity-follow-item {
+.s-activity-streams .s-activity-follow-item {
   position: relative;
   padding-left: 0;
   margin-top: 8px;
   min-height: 34px;
   display: block;
 }
-.activity-streams .activity-follow-item .username,
-.activity-streams .activity-follow-item .activity-desc,
-.activity-streams .activity-follow-item .s-small-text {
+.s-activity-streams .s-activity-follow-item .s-username,
+.s-activity-streams .s-activity-follow-item .s-activity-desc,
+.s-activity-streams .s-activity-follow-item .s-small-text {
   display: inline-block;
   vertical-align: baseline;
   margin-bottom: 0;
 }
-.activity-streams .activity-follow-item .ui-link {
+.s-activity-streams .s-activity-follow-item .ui-link {
   display: block;
   padding-left: 34px;
   padding-top: 8px ;
@@ -1430,33 +1420,33 @@ a:active {
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
-.activity-streams .activity-follow-item .ui-li-icon {
+.s-activity-streams .s-activity-follow-item .ui-li-icon {
   display: block;
   position: absolute;
   left: -4px;
   top: 0;
 }
-.activity-streams .photo-activity .activity-item:first-child {
+.s-activity-streams .s-photo-activity .s-activity-item:first-child {
   border-top: none;
   padding-top: 0!important;
 }
-.activity-streams .activity-item:first {
+.s-activity-streams .s-activity-item:first {
   border-top: none;
   margin-top: 0!important;
   padding-top: 0!important;
 }
-.activity-streams .activity-image-item {
+.s-activity-streams .s-activity-image-item {
   position: relative;
   min-height: 101px;
   padding-left: 105px;
   margin-bottom: 12px;
 }
-.activity-streams .activity-image-item .activity-item:first {
+.s-activity-streams .s-activity-image-item .s-activity-item:first {
   border-top: none;
   margin-top: 0!important;
   padding-top: 0!important;
 }
-.activity-streams .activity-stream:nth-child(2) .activity-follow-item {
+.s-activity-streams .s-activity-stream:nth-child(2) .s-activity-follow-item {
   border-top: none;
   margin-top: 0!important;
   padding-top: 0!important;
@@ -1671,6 +1661,9 @@ div.ps-carousel-item-loading {
   top: -32px;
   left: 0;
   white-space: nowrap;
+  line-height: 12px;
+  height: 12px;
+  padding: 6px 8px;
 }
 .s-photo-map .s-map-controls .s-map-filters {
   margin: 6px;

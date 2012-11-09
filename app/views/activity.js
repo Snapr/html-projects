@@ -68,7 +68,7 @@ var activity_stream = view.extend({
 
     tagName: "li",
 
-    className: "activity-stream",
+    className: "x-activity-stream",
 
     initialize: function(){
         _.bindAll( this );

@@ -4946,6 +4946,92 @@ textarea.ui-input-text {
 .camplus-icon span {
   display: none;
 }
+.s-activity-streams {
+  margin-bottom: 0;
+}
+.s-activity-streams .ui-bar.s-arrow-d-left .ui-btn-text {
+  padding-left: 8px;
+}
+.s-activity-streams .s-activity-item {
+  border-top: solid 1px #f7f7f7;
+  margin-top: 4px;
+}
+.s-activity-streams .s-activity-item .s-activity-desc {
+  font-size: 15px;
+  line-height: 15px;
+  color: #999999;
+  font-family: Helvetica, Arial, sans-serif;
+}
+.s-activity-streams .s-activity-item .s-small-text {
+  color: #999999;
+}
+.s-activity-streams .s-image-link {
+  left: -4px;
+}
+.s-activity-streams .s-activity-item {
+  border-top: solid 1px #f7f7f7;
+  margin-top: 8px;
+}
+.s-activity-streams .s-comments-list .s-comment-item.ui-li-has-icon {
+  margin-top: 8px;
+  padding-top: 8px !important;
+}
+.s-activity-streams .s-comments-list .s-comment-item.ui-li-has-icon .ui-link-inherit {
+  padding-left: 38px !important;
+  min-height: 34px;
+}
+.s-activity-streams .s-image-likes {
+  min-height: 34px;
+}
+.s-activity-streams .s-image-likes .s-like-icons-list {
+  margin-top: 8px;
+}
+.s-activity-streams .s-image-likes .s-like-icon {
+  margin-bottom: 4px;
+}
+.s-activity-streams .s-activity-follow-item {
+  margin-top: 8px;
+  min-height: 34px;
+  margin-bottom: 0;
+}
+.s-activity-streams .s-activity-follow-item .ui-link {
+  padding-left: 34px;
+  padding-top: 8px;
+  min-height: 34px;
+}
+.s-activity-streams .s-activity-follow-item .ui-li-icon {
+  left: -4px;
+}
+.s-activity-streams .s-activity-image-item {
+  min-height: 101px;
+  padding-left: 105px;
+  margin-bottom: 12px;
+}
+.s-activity-streams .s-photo-activity .s-activity-item:first-child {
+  border-top: none;
+  padding-top: 0!important;
+}
+.s-activity-streams .s-activity-item:first {
+  border-top: none;
+  margin-top: 0!important;
+  padding-top: 0!important;
+}
+.s-activity-streams .s-activity-image-item {
+  position: relative;
+  min-height: 101px;
+  padding-left: 105px;
+  margin-bottom: 12px;
+}
+.s-activity-streams .s-activity-image-item .s-activity-item:first {
+  border-top: none;
+  margin-top: 0!important;
+  padding-top: 0!important;
+}
+.s-activity-streams .s-activity-stream:nth-child(2) .s-activity-follow-item {
+  border-top: none;
+  margin-top: 0!important;
+  padding-top: 0!important;
+}
 #my-account div[data-role="content"] {
   overflow: hidden;
 }
