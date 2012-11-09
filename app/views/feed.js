@@ -421,7 +421,7 @@ var feed_li =  view.extend({
             success: function(){
                 photo.$('.x-reactions-button').x_loading(false);
                 photo.show_comment_form();
-                photo.replace_from_template({item:photo.model, reactions:photo.reaction_collection.models.reverse()}, ['.x-reactions-list']).trigger('create');
+                photo.replace_from_template({item:photo.model, reactions:photo.reaction_collection.models}, ['.x-reactions-list']).trigger('create');
             }
         });
     },
