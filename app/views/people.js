@@ -87,7 +87,7 @@ return page_view.extend({
 
             });
         }else{
-            no_results.render('Oops.. Nobody here yet.', 'delete').$el.appendTo(this.$el);
+            no_results.render('Oops.. Nobody here yet.', 'delete').$el.insertBefore(people_list);
         }
 
         this.$el.removeClass('x-loading');
