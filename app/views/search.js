@@ -44,12 +44,13 @@ return page_view.extend({
         }
     },
 
-    search: function(){
-        console.log('search');
+    search: function(e){
+        if(e && e.preventDefault){
+            e.preventDefault();
+        }
+
         var keywords = this.$(".x-search-field").val();
         var type = this.$("select.x-search-type").val();
-
-        console.log(keywords, type);
 
         switch(type){
             case 'location':
