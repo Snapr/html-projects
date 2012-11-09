@@ -14,7 +14,6 @@ var spot_view = page_view.extend({
     post_activate: function(options) {
         this.model = new spot_model({id: options.query.spot_id});
 
-        $.mobile.showPageLoadingMsg();
 
         this.$('.x-header').empty();
         this.$('.x-image-streams').empty();
@@ -22,6 +21,8 @@ var spot_view = page_view.extend({
 
         this.spot_id = options.query.spot_id || 0;
         this.change_page();
+
+        $.mobile.showPageLoadingMsg();
         this.fetch_spot();
     },
 
@@ -60,6 +61,7 @@ var spot_view = page_view.extend({
     render: function(){
         this.replace_from_template({spot:this.model}, ['.x-header', '.ui-btn-right']);
         this.$el.trigger('create');
+        $.mobile.hidePageLoadingMsg();
     },
 
     fetch_photos: function () {
