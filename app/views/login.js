@@ -25,8 +25,8 @@ return page_view.extend({
     },
 
     log_in: function(){
-        var username = $(".x-username").val();
-        var password = $(".x-password").val();
+        var username = this.$(".x-username").val();
+        var password = this.$(".x-password").val();
 
         if(username === "" || password === ""){
             alerts.notification('Error', 'You must enter your usename and password');
@@ -37,8 +37,8 @@ return page_view.extend({
         var login_view = this;
         var options = {
             success: function( response ){
-                $(".x-username").val('');
-                $(".x-password").val('');
+                login_view.$(".x-username").val('');
+                login_view.$(".x-password").val('');
                 if (login_view.previous_view && login_view.previous_view.options.name in {welcome:1, 'forgot-password':1}){
                     Backbone.history.navigate( "#", true );
                 }else{

@@ -497,7 +497,7 @@ var add_person = page_view.extend({
                 people_list.append( li.render().el );
             });
         }else{
-            no_results.render('Oops.. Nobody here yet.', 'delete').$el.appendTo(people_list);
+            no_results.render('Oops.. Nobody here yet.', 'delete').$el.insertBefore(people_list);
         }
 
         var this_back = this.back;

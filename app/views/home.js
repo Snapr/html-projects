@@ -1,5 +1,5 @@
 /*global _  define require */
-define(['backbone', 'views/base/page', 'views/components/activity_ticker', 'views/nearby_photostream', 'auth', 'utils/local_storage', 'config', 'utils/alerts'],
+define(['backbone', 'views/base/page', 'views/components/activity_ticker', 'views/components/nearby_photostream', 'auth', 'utils/local_storage', 'config', 'utils/alerts'],
     function(Backbone, page_view, ticker, nearby_photostream_view, auth, local_storage, config, alerts){
 return page_view.extend({
 

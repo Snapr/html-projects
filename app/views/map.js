@@ -443,11 +443,7 @@ var map_view = page_view.extend({
                     map_view.map_update_or_create();
                 }
             }else{
-                var again = confirm("Sorry, your search returned no results. Would you like to search again?");
-
-                if(again) {
-                    Backbone.history.navigate("/search");
-                }
+                alerts.notification("Sorry, your search returned no results.");
             }
         });
     },

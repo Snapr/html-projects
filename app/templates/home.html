@@ -35,13 +35,13 @@
 
                   <li>
                        <!-- Camera Button -->
-                       <a class="x-launch-camera" data-extra_params="comp_id=1" data-role="button" data-iconpos="left" data-icon="main-menu-camera">Shoot</a>
+                       <a class="x-launch-camera" data-role="button" data-iconpos="left" data-icon="main-menu-camera">Shoot</a>
                    </li>
 
                    <li>
                        <!-- Login / Image Library Button -->
                        <% if (auth.has('access_token')) {%>
-                               <a class="x-launch-photo-library" data-extra_params="comp_id=1" data-role="button" data-iconpos="left" data-icon="main-menu-camera-lib">Camera Roll</a>
+                               <a class="x-launch-photo-library" data-role="button" data-iconpos="left" data-icon="main-menu-camera-lib">Camera Roll</a>
                         <%}else{%>
                              <a href="#/login/" data-snapr-dialog="true" data-role="button" data-iconpos="left" data-icon="main-menu-login">Log In</a>
                        <%}%>

@@ -64,12 +64,12 @@
                 <% break; case 'video': %>
 
                     <div class="tumblr-thumb" style="background-size: cover; background-image:url(<%= post.get('thumbnail_url') %>)"></div>
-                        <div class="tumblr-exceprt tumblr-video">
-                            <div class="crop-content">
-                                <blockquote><%= post.get('caption').replace(/\n/g, '<br>' ) %></blockquote>
-                            </div>
-                            <div class="tumblr-details"><%= string_utils.time_ago(post.get('date')) %> <% if(post.get('note_count')){ %>, <%= post.get('note_count') %> Notes<% } %> <span class="ui-icon tumblr-icon ui-icon-tumblr-video"></span>
-                            </div>
+
+                    <div class="tumblr-exceprt tumblr-video">
+                        <div class="crop-content">
+                            <blockquote><%= post.get('caption').replace(/\n/g, '<br>' ) %></blockquote>
+                        </div>
+                        <div class="tumblr-details"><%= string_utils.time_ago(post.get('date')) %> <% if(post.get('note_count')){ %>, <%= post.get('note_count') %> Notes<% } %> <span class="ui-icon tumblr-icon ui-icon-tumblr-video"></span>
                         </div>
                     </div>
 
