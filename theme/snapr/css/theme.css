@@ -3928,8 +3928,12 @@ textarea.ui-input-text {
 .s-image-streams .x-stream.x-closed .edit-overlay .remove-stream .ui-btn-inner {
   padding: 4px 32px 4px 16px;
 }
+#people .s-alert-text,
 .s-people-list .s-alert-text {
   padding: 16px 8px !important;
+  font-size: 12px;
+  font-style: italic;
+  color: #999999;
 }
 .s-validate .x-invalid[for] {
   font-size: 12px;

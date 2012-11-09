@@ -632,6 +632,11 @@ a:active {
 .s-search-header input {
   overflow: visible;
 }
+.ui-input-search .ui-input-clear {
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
 .x-loading .s-search-header .ui-input-search .ui-input-clear {
   display: block;
 }
