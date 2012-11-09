@@ -189,9 +189,11 @@ return page_view.extend({
         }else{
             // get reverse geocode location from current position
             geo.get_location( function( location ){
+                share_photo_view.no_location(false);
                 geocode( location.coords.latitude, location.coords.longitude );
             },
             function( e ){
+                share_photo_view.no_location(true);
                 console.error( "get reverse geocode: geocode error model doesn't have lat lon", e );
             });
         }
@@ -231,6 +233,7 @@ return page_view.extend({
         }else{
             // get venues based on current location (not photo)
             geo.get_location( function( location ){
+                share_photo_view.no_location(false);
                 var photo_location = share_photo_view.model.get('location');
                 photo_location.latitude = location.coords.latitude;
                 photo_location.longitude = location.coords.longitude;
@@ -238,6 +241,7 @@ return page_view.extend({
                 get_venues( location.coords.latitude, location.coords.longitude );
             },
             function( e ){
+                share_photo_view.no_location(true);
                 console.error( "get foursquare venue geocode error", e );
             });
         }
@@ -267,8 +271,8 @@ return page_view.extend({
         local_storage.set( e.target.id, !!$(e.target).attr("checked") );
 
         if (e.target.id == "foursquare-sharing"){
-            console.log(this.$(".x-no-foursquare-venue").toggle());
-            console.log(this.$(".x-foursquare-venue").toggle());
+            this.$(".x-no-foursquare-venue").toggle();
+            this.$(".x-foursquare-venue").toggle();
             if ($(e.target).attr("checked")){
                 this.get_foursquare_venues();
             }else{
@@ -278,6 +282,12 @@ return page_view.extend({
         if (e.target.id == "share-location" && $(e.target).attr("checked")){
             this.get_reverse_geocode();
         }
+    },
+
+    no_location: function(really){
+        this.$(".x-no-foursquare-venue").toggle(!really && !local_storage.get( "foursquare-sharing" ));
+        this.$(".x-foursquare-venue").toggle(!really && local_storage.get( "foursquare-sharing" ));
+        this.$('.x-no-location').toggle(really);
     },
 
     venue_search: function(){
@@ -299,11 +309,13 @@ return page_view.extend({
             var share_photo_view = this;
 
             geo.get_location( function( location ){
+                share_photo_view.no_location(false);
                 var ll = location.coords.latitude + "," + location.coords.longitude;
 
                 go_to_venues( ll, false, share_photo_view.query, share_photo_view.model );
             },
             function( e ){
+                share_photo_view.no_location(true);
                 console.error( "venue search geocode error", e );
             });
         }
