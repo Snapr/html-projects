@@ -379,7 +379,7 @@ var feed_li =  view.extend({
     events: {
         "click .x-reactions-button": "toggle_reactions",
         "click .comment-button": "toggle_comment_form",
-        "click .more-button": "toggle_photo_manage",
+        "click .x-more-button": "toggle_photo_manage",
         "click .goto-map": "goto_map",
         "click .x-goto-spot": "goto_spot",
         "submit .comment-form": "comment",
