@@ -42,6 +42,7 @@ return page_view.extend({
         "change .x-image-sharing input": "toggle_sharing",
         "vclick .x-image-sharing .ui-disabled": "share_alert",
         "click .x-foursquare-venue": "venue_search",
+        "click .x-no-location": "location_alert",
         "click .x-image-toggle": "toggle_photo",
         "click .x-edit-photo": "edit",
         "click .x-camplus-edit-photo": "edit_camplus",
@@ -242,6 +243,8 @@ return page_view.extend({
             },
             function( e ){
                 share_photo_view.no_location(true);
+                share_photo_view.location_alert();
+                share_photo_view.$('#foursquare-sharing').attr('checked', false).checkboxradio("refresh");
                 console.error( "get foursquare venue geocode error", e );
             });
         }
@@ -271,12 +274,16 @@ return page_view.extend({
         local_storage.set( e.target.id, !!$(e.target).attr("checked") );
 
         if (e.target.id == "foursquare-sharing"){
-            this.$(".x-no-foursquare-venue").toggle();
-            this.$(".x-foursquare-venue").toggle();
             if ($(e.target).attr("checked")){
                 this.get_foursquare_venues();
+                this.$(".x-no-foursquare-venue").hide();
+                this.$(".x-foursquare-venue").show();
+                this.$(".x-no-location").hide();
             }else{
                 this.get_reverse_geocode();
+                this.$(".x-no-foursquare-venue").show();
+                this.$(".x-foursquare-venue").hide();
+                this.$(".x-no-location").hide();
             }
         }
         if (e.target.id == "share-location" && $(e.target).attr("checked")){
@@ -288,6 +295,10 @@ return page_view.extend({
         this.$(".x-no-foursquare-venue").toggle(!really && !local_storage.get( "foursquare-sharing" ));
         this.$(".x-foursquare-venue").toggle(!really && local_storage.get( "foursquare-sharing" ));
         this.$('.x-no-location').toggle(really);
+    },
+
+    location_alert: function(){
+        alerts.notification('Please enable location services for this app to use these features.');
     },
 
     venue_search: function(){
