@@ -80,7 +80,7 @@ If there is a problem determining the location call the javascript function `loc
 
 Example:
 
-    location_error("User dissalowed location")
+    location_error("User denied Geolocation")
 
 
 
