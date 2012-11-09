@@ -371,7 +371,7 @@ var dash_tumblr_view = view.extend({
     toggle: function() {
         this.$el.toggleClass('open closed');
         this.$el.toggleClass('top-left-arrow');
-        this.$('.posts-stream').fadeToggle();
+        this.$('.x-posts').fadeToggle();
     },
     update: function(){
         var this_view = this,
@@ -386,7 +386,7 @@ var dash_tumblr_view = view.extend({
                 filter:'text'
             },
             success: function(){
-                this_view.$('.posts-stream').empty();
+                this_view.$('.x-posts').empty();
                 if (collection.length) {
                     this_view.$el.html( this_view.template({
                         feed: feed,
