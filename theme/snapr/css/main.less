@@ -282,21 +282,16 @@ div[data-role="dialog"]{
 
 .closed{
     .ui-bar{
-
        .border-bottom-radius(@cornersPage);  
-
-
         .s-bar-left{
                 .border-right-radius(0);
                 .ui-btn-inner{
             }
         }
         .s-bar-right{
-           
             .border-top-right-radius(@corners)!important;
             .border-bottom-right-radius(@corners)!important;
         }  
-
     }
 }
 
@@ -2385,7 +2380,7 @@ div.ps-carousel-item-loading
         position: absolute;
         top: -2px;
     }
-    &.loading{
+    &.x-loading{
         .s-map-loading{
             width: 32px;
             height:32px;
@@ -2400,7 +2395,7 @@ div.ps-carousel-item-loading
 }
 
 #map-layer #google-map {
-    margin: 0 -@padding * 2 -3px -@padding * 2;
+    margin: 0 -@padding * 2 -@padding * 2 - 7px -@padding * 2;
 }
 
 .s-photo-map{
@@ -2408,17 +2403,15 @@ div.ps-carousel-item-loading
     overflow:hidden;
     .ui-bar{
         .ui-icon-location{
-            width: 18px;
-            top: -1px!important;
-            left: -5px;
-            background-position: -36px -256px;
-            background-position: @gfxBar-x-a - 4px @gfxBar-location-y;
-            
+            width: 20px;
+            top: 0px!important;
+            left: -2px;
+            background-position: @gfxBar-x-a - 4px @gfxBar-location-y;            
         }
     }
     .s-map-controls{
         position: absolute;
-        bottom: 0;
+        bottom: -7px;
         width: 100%;
         margin: 0 -8px;
         .border-bottom-radius(8px);
@@ -2453,7 +2446,7 @@ div.ps-carousel-item-loading
                 background: none;
                 box-shadow: none;
                 border: none;
-                top: 0;
+                top: -2px;
                 margin-bottom: 0;
                 .border-top-radius(@cornersSmall);
                 .ui-icon{
@@ -2468,8 +2461,7 @@ div.ps-carousel-item-loading
             .border-radius(@cornersRound);
         }
         .s-map-filters{
-            margin: 6px;
-            margin-left: 48px;
+            margin: 6px 6px 7px 42px
         }
         .ui-input-search{
             padding: 8px 24px 8px 28px;
@@ -2916,6 +2908,7 @@ div.ps-carousel-item-loading
 }
 
 .ui-loading,
+.x-loading,
 .loading{
     #no-results{
         display: none;

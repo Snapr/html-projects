@@ -5503,33 +5503,32 @@ div.ps-carousel-item-loading {
   position: absolute;
   top: -2px;
 }
-#map.loading .s-map-loading {
+#map.x-loading .s-map-loading {
   width: 32px;
   height: 32px;
   overflow: hidden;
 }
-#map.loading .s-map-loading .ui-icon {
+#map.x-loading .s-map-loading .ui-icon {
   opacity: .7;
   width: 32px;
   height: 32px;
 }
 #map-layer #google-map {
-  margin: 0 -8px -3px -8px;
+  margin: 0 -8px -15px -8px;
 }
 .s-photo-map {
   position: relative;
   overflow: hidden;
 }
 .s-photo-map .ui-bar .ui-icon-location {
-  width: 18px;
-  top: -1px !important;
-  left: -5px;
-  background-position: -36px -256px;
+  width: 20px;
+  top: 0px!important;
+  left: -2px;
   background-position: -4px -256px;
 }
 .s-photo-map .s-map-controls {
   position: absolute;
-  bottom: 0;
+  bottom: -7px;
   width: 100%;
   margin: 0 -8px;
   -webkit-border-bottom-right-radius: 8px;
@@ -5589,7 +5588,7 @@ div.ps-carousel-item-loading {
   background: none;
   box-shadow: none;
   border: none;
-  top: 0;
+  top: -2px;
   margin-bottom: 0;
   -webkit-border-top-right-radius: 4px;
   -moz-border-radius-topright: 4px;
@@ -5610,8 +5609,7 @@ div.ps-carousel-item-loading {
   border-radius: 20px;
 }
 .s-photo-map .s-map-controls .s-map-filters {
-  margin: 6px;
-  margin-left: 48px;
+  margin: 6px 6px 7px 42px;
 }
 .s-photo-map .s-map-controls .ui-input-search {
   padding: 8px 24px 8px 28px;
@@ -6028,6 +6026,7 @@ div.ps-carousel-item-loading {
   -webkit-animation-timing-function: linear;
 }
 .ui-loading #no-results,
+.x-loading #no-results,
 .loading #no-results {
   display: none;
 }

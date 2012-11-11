@@ -1507,13 +1507,14 @@ div.ps-carousel-item-loading {
 #map .s-map-loading {
   display: none;
 }
-#map.loading .s-map-time .s-map-time-btn {
+#map.x-loading .s-map-time .s-map-time-btn {
   display: none;
 }
-#map.loading .s-map-loading {
+#map.x-loading .s-map-loading {
   width: 32px;
   height: 32px;
   overflow: hidden;
+  display: block;
 }
 #map-layer #google-map {
   margin: -3px -8px;
@@ -1582,6 +1583,11 @@ div.ps-carousel-item-loading {
   height: 47px;
   z-index: 1;
   text-decoration: none;
+}
+.s-photo-map .s-map-venue .s-venue-label .spot-icon {
+  position: absolute;
+  top: 5px;
+  left: 3px;
 }
 .s-photo-map .s-map-venue .s-venue-label .s-venue-label-text {
   color: white;
