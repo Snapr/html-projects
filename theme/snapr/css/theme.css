@@ -4693,6 +4693,54 @@ textarea.ui-input-text {
 .s-image-item-block.private .image-status {
   display: inherit;
 }
+.s-has-palette .s-action-palette {
+  left: 22px;
+}
+.s-has-palette .s-action-palette .s-center-palette .s-inline-palette {
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  padding: 6px;
+}
+.s-has-palette .s-action-palette .s-center-palette .s-inline-palette::after {
+  width: 0;
+  height: 0;
+  display: inline-block;
+  content: "&darr;";
+  text-indent: -99999px;
+  vertical-align: top;
+  margin-top: 0;
+  margin-left: -14px;
+  border-left: 14px solid transparent;
+  border-right: 14px solid transparent;
+  border-top: 14px solid #1e2122;
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+}
+.s-has-palette .s-action-palette .s-center-palette .s-inline-palette .ui-btn-icon-left .ui-btn-inner {
+  padding-left: 38px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  line-height: 38px;
+  height: 40px;
+  padding-right: 12px;
+}
+.s-has-palette .s-action-palette .s-center-palette .s-inline-palette .ui-btn-icon-notext .ui-btn-inner {
+  padding: 2px;
+  width: 40px;
+  height: 40px;
+}
+.s-has-palette .s-action-palette .s-center-palette .s-inline-palette .ui-btn-icon-notext .ui-icon {
+  margin-top: -20px;
+  left: 50%;
+  margin-left: -20px;
+}
+.s-has-palette .s-action-palette .s-center-palette .s-inline-palette .ui-btn-text {
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight: bold;
+  font-size: 12px;
+}
 .s-feed-footer {
   padding: 0!important;
 }

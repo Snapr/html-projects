@@ -378,7 +378,7 @@ var feed_li =  view.extend({
 
     events: {
         "click .x-reactions-button": "toggle_reactions",
-        "click .comment-button": "toggle_comment_form",
+        "click .x-comment": "toggle_comment_form",
         "click .x-more-button": "toggle_photo_manage",
         "click .goto-map": "goto_map",
         "click .x-goto-spot": "goto_spot",
@@ -465,17 +465,17 @@ var feed_li =  view.extend({
     },
 
     toggle_comment_form: function(){
-        this.$('.comment-button').toggleClass('selected');
+        this.$('.x-comment').toggleClass('selected');
         this.$('.s-comment-area').toggle();
     },
 
     show_comment_form: function(){
-        this.$('.comment-button').addClass('selected');
+        this.$('.x-comment').addClass('selected');
         this.$('.s-comment-area').show();
     },
 
     hide_comment_form: function(){
-        this.$('.comment-button').removeClass('selected');
+        this.$('.x-comment').removeClass('selected');
         this.$('.s-comment-area').hide();
     },
 

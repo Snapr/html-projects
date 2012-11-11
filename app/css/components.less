@@ -1137,27 +1137,48 @@ a:active{
     }
 }
 
-//Prefer to swap these palettes for jMob popups
-.has-palette{
+.s-has-palette{
     position: relative;
     display: inline-block;
-    .action-palette{
+    float: left;
+    .s-action-palette{
         position: absolute;
         bottom: 100%;
         left: 20px;
         width: 0px;
-        .center-palette{
+        .s-center-palette{
             display:inline-block;
             position:relative;
-            width: 200px;
             left:50%;
-            .inline-palette{
+            .s-inline-palette{
                 position:relative;
                 left:-50%;
+                .border-radius(@corners + 2);
+                padding: 6px;
+                white-space: nowrap;
+                .ui-controlgroup{
+                    margin-bottom: 1px;
+                }
+                .ui-btn{
+                    vertical-align: middle;
+                    line-height: 22px;
+                }
+                .ui-btn-icon-notext{
+                    top:0;
+                }
+                .ui-btn-icon-left .ui-btn-inner {
+                    padding-left: 40px;
+                    .ui-icon{
+                        left: 0;
+                    }
+                }
+
             }
         }
     }
 }
+
+
 
 
 // Show this via script.. otherwise it causes layout pain for other things
