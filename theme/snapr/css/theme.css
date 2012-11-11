@@ -1840,7 +1840,7 @@ a.ui-link-inherit {
 }
 .ui-bar-b {
   background: #434748;
-  color: #ffffff;
+  color: #999999;
   background-image: -webkit-gradient(linear, left top, left bottom, from(#434748), to(#26282a));
   /* Saf4+, Chrome */
 
@@ -1917,7 +1917,15 @@ a.ui-link-inherit {
 .ui-btn-down-b a.ui-link-inherit,
 .ui-btn-down-b[data-rel="back"]::before a.ui-link-inherit,
 .ui-btn-active-b a.ui-link-inherit,
-.ui-btn-active-b[data-rel="back"]::before a.ui-link-inherit {
+.ui-btn-active-b[data-rel="back"]::before a.ui-link-inherit,
+.ui-btn-up-b .ui-btn-text,
+.ui-btn-up-b[data-rel="back"]::before .ui-btn-text,
+.ui-btn-hover-b .ui-btn-text,
+.ui-btn-hover-b[data-rel="back"]::before .ui-btn-text,
+.ui-btn-down-b .ui-btn-text,
+.ui-btn-down-b[data-rel="back"]::before .ui-btn-text,
+.ui-btn-active-b .ui-btn-text,
+.ui-btn-active-b[data-rel="back"]::before .ui-btn-text {
   color: #999999;
 }
 .ui-btn-up-b.ui-shadow,
@@ -2255,7 +2263,10 @@ div[data-role="header"].ui-bar-b a[data-rel="back"]::before {
 }
 .ui-btn-up-c a.ui-link-inherit,
 .ui-btn-hover-c a.ui-link-inherit,
-.ui-btn-down-c a.ui-link-inherit {
+.ui-btn-down-c a.ui-link-inherit,
+.ui-btn-up-c .ui-btn-text,
+.ui-btn-hover-c .ui-btn-text,
+.ui-btn-down-c .ui-btn-text {
   color: #474747;
 }
 .ui-btn-up-c.ui-shadow,
@@ -2535,7 +2546,7 @@ div[data-role="header"].ui-bar-b a[data-rel="back"]::before {
   background-color: #ffffff;
   background-image: none;
   border-radius: 8px;
-  min-height: 412px;
+  min-height: 512px;
 }
 .ui-body-d .ui-link,
 .ui-body-d .ui-link:visited,
@@ -2606,7 +2617,10 @@ div[data-role="header"].ui-bar-b a[data-rel="back"]::before {
 }
 .ui-btn-up-e a.ui-link-inherit,
 .ui-btn-hover-e a.ui-link-inherit,
-.ui-btn-down-e a.ui-link-inherit {
+.ui-btn-down-e a.ui-link-inherit,
+.ui-btn-up-e .ui-btn-text,
+.ui-btn-hover-e .ui-btn-text,
+.ui-btn-down-e .ui-btn-text {
   color: #474747;
 }
 .ui-btn-up-e.ui-shadow,
@@ -2733,7 +2747,10 @@ div[data-role="header"].ui-bar-b a[data-rel="back"]::before {
 }
 .ui-btn-up-f a.ui-link-inherit,
 .ui-btn-hover-f a.ui-link-inherit,
-.ui-btn-down-f a.ui-link-inherit {
+.ui-btn-down-f a.ui-link-inherit,
+.ui-btn-up-f .ui-btn-text,
+.ui-btn-hover-f .ui-btn-text,
+.ui-btn-down-f .ui-btn-text {
   color: #ffffff;
 }
 .ui-btn-up-f.ui-shadow,
@@ -2860,7 +2877,10 @@ div[data-role="header"].ui-bar-b a[data-rel="back"]::before {
 }
 .ui-btn-up-g a.ui-link-inherit,
 .ui-btn-hover-g a.ui-link-inherit,
-.ui-btn-down-g a.ui-link-inherit {
+.ui-btn-down-g a.ui-link-inherit,
+.ui-btn-up-g .ui-btn-text,
+.ui-btn-hover-g .ui-btn-text,
+.ui-btn-down-g .ui-btn-text {
   color: #474747;
 }
 .ui-btn-up-g.ui-shadow,
@@ -3215,6 +3235,30 @@ div[data-role="dialog"] {
   -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
   -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+}
+.closed .ui-bar {
+  -webkit-border-bottom-right-radius: 8px;
+  -moz-border-radius-bottomright: 8px;
+  border-bottom-right-radius: 8px;
+  -webkit-border-bottom-left-radius: 8px;
+  -moz-border-radius-bottomleft: 8px;
+  border-bottom-left-radius: 8px;
+}
+.closed .ui-bar .s-bar-left {
+  -webkit-border-top-right-radius: 0;
+  -moz-border-radius-topright: 0;
+  border-top-right-radius: 0;
+  -webkit-border-bottom-right-radius: 0;
+  -moz-border-radius-bottomright: 0;
+  border-bottom-right-radius: 0;
+}
+.closed .ui-bar .s-bar-right {
+  -webkit-border-top-right-radius: 6px !important;
+  -moz-border-radius-topright: 6px !important;
+  border-top-right-radius: 6px !important;
+  -webkit-border-bottom-right-radius: 6px !important;
+  -moz-border-radius-bottomright: 6px !important;
+  border-bottom-right-radius: 6px !important;
 }
 .s-logo-button .ui-btn-text {
   font-family: Helvetica, Arial, sans-serif;
@@ -4245,6 +4289,75 @@ textarea.ui-input-text {
 #tumblr-posts blockquote {
   margin: 8px;
   font-style: italic;
+}
+#tumblr-posts .s-tumblr-stream {
+  overflow: hidden;
+  margin: 0 -8px;
+}
+#tumblr-posts .s-tumblr-stream .s-tumblr-post-item {
+  border-bottom: 1px solid #cccccc;
+  margin: 0px;
+  padding: 4px;
+}
+#tumblr-posts .s-tumblr-stream .s-tumblr-post-item .s-tumblr-post {
+  width: 100%;
+}
+#tumblr-posts .s-tumblr-stream .s-tumblr-post-item .s-tumblr-post img,
+#tumblr-posts .s-tumblr-stream .s-tumblr-post-item .s-tumblr-post video {
+  width: 100%;
+  margin: 0 auto;
+  max-width: 512px;
+  margin: 0 0 8px 0;
+}
+#tumblr-posts .s-tumblr-stream .s-tumblr-post-item .s-tumblr-post audio {
+  margin: 0 0 8px 0;
+}
+#tumblr-posts .s-tumblr-stream .s-tumblr-post-item .s-tumblr-post .s-tumblr-body {
+  margin: 4px;
+}
+#tumblr-posts .s-tumblr-stream .s-tumblr-post-item .s-tumblr-post .s-photo-set {
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+#tumblr-posts .s-tumblr-stream .s-tumblr-post-item .s-tumblr-post .s-photo-set li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+#tumblr-posts .s-tumblr-stream .s-tumblr-post-item .s-tumblr-metadata {
+  margin: 8px 0 8px 4px;
+}
+#tumblr-posts .s-tumblr-stream .s-tumblr-post-item .s-tumblr-metadata .ui-bar {
+  height: 24px;
+  min-height: 24px;
+}
+#tumblr-posts .s-tumblr-stream .s-tumblr-post-item .s-tumblr-metadata .ui-bar .ui-btn-text {
+  position: relative;
+  font-size: 12px;
+  color: #cccccc;
+  line-height: 24px;
+  height: 24px;
+  padding-right: 24px;
+  padding-left: 28px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+#tumblr-posts .s-tumblr-stream .s-tumblr-post-item .s-tumblr-metadata .ui-bar .tumblr-icon {
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  margin-top: 0;
+}
+#tumblr-posts .s-tumblr-stream > article:last-child {
+  border-bottom: none;
+}
+#tumblr-posts blockquote {
+  margin: 8px;
+  font-style: italic;
   font-size: 0.8em;
 }
 #tumblr-posts .s-tumblr-stream {
@@ -4675,7 +4788,7 @@ textarea.ui-input-text {
   top: 20px;
 }
 .s-dash-wrapper {
-  min-height: 316px;
+  min-height: 360px;
   position: relative;
 }
 .s-dash-footer {

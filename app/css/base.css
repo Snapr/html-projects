@@ -655,7 +655,7 @@ a:active {
   -webkit-animation-timing-function: linear;
 }
 .s-dash-wrapper {
-  min-height: 316px;
+  min-height: 340px;
 }
 .s-dash-edit-done {
   display: none;
@@ -875,6 +875,7 @@ a:active {
 }
 .competition .banner .banner-image {
   display: block;
+  width: 100%;
 }
 .competition .info {
   background-color: #fbfbfb;
