@@ -2219,22 +2219,22 @@ div[data-role="header"].ui-bar-b a[data-rel="back"]::before {
 }
 .ui-bar-c {
   background: #ffffff;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#f7f7f7));
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#d7d7d5));
   /* Saf4+, Chrome */
 
-  background-image: -webkit-linear-gradient(top, #ffffff, #f7f7f7);
+  background-image: -webkit-linear-gradient(top, #ffffff, #d7d7d5);
   /* Chrome 10+, Saf5.1+ */
 
-  background-image: -moz-linear-gradient(top, #ffffff, #f7f7f7);
+  background-image: -moz-linear-gradient(top, #ffffff, #d7d7d5);
   /* FF3.6 */
 
-  background-image: -ms-linear-gradient(top, #ffffff, #f7f7f7);
+  background-image: -ms-linear-gradient(top, #ffffff, #d7d7d5);
   /* IE10 */
 
-  background-image: -o-linear-gradient(top, #ffffff, #f7f7f7);
+  background-image: -o-linear-gradient(top, #ffffff, #d7d7d5);
   /* Opera 11.10+ */
 
-  background-image: linear-gradient(top, #ffffff, #f7f7f7);
+  background-image: linear-gradient(top, #ffffff, #d7d7d5);
 }
 .ui-bar-c a {
   color: #474747;
@@ -2270,41 +2270,41 @@ div[data-role="header"].ui-bar-b a[data-rel="back"]::before {
 }
 .ui-btn-up-c {
   background: #ffffff;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#f7f7f7));
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#d7d7d5));
   /* Saf4+, Chrome */
 
-  background-image: -webkit-linear-gradient(top, #ffffff, #f7f7f7);
+  background-image: -webkit-linear-gradient(top, #ffffff, #d7d7d5);
   /* Chrome 10+, Saf5.1+ */
 
-  background-image: -moz-linear-gradient(top, #ffffff, #f7f7f7);
+  background-image: -moz-linear-gradient(top, #ffffff, #d7d7d5);
   /* FF3.6 */
 
-  background-image: -ms-linear-gradient(top, #ffffff, #f7f7f7);
+  background-image: -ms-linear-gradient(top, #ffffff, #d7d7d5);
   /* IE10 */
 
-  background-image: -o-linear-gradient(top, #ffffff, #f7f7f7);
+  background-image: -o-linear-gradient(top, #ffffff, #d7d7d5);
   /* Opera 11.10+ */
 
-  background-image: linear-gradient(top, #ffffff, #f7f7f7);
+  background-image: linear-gradient(top, #ffffff, #d7d7d5);
 }
 .ui-btn-hover-c {
   background: #71a4f7;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#ffffff));
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#f0f0ef));
   /* Saf4+, Chrome */
 
-  background-image: -webkit-linear-gradient(top, #ffffff, #ffffff);
+  background-image: -webkit-linear-gradient(top, #ffffff, #f0f0ef);
   /* Chrome 10+, Saf5.1+ */
 
-  background-image: -moz-linear-gradient(top, #ffffff, #ffffff);
+  background-image: -moz-linear-gradient(top, #ffffff, #f0f0ef);
   /* FF3.6 */
 
-  background-image: -ms-linear-gradient(top, #ffffff, #ffffff);
+  background-image: -ms-linear-gradient(top, #ffffff, #f0f0ef);
   /* IE10 */
 
-  background-image: -o-linear-gradient(top, #ffffff, #ffffff);
+  background-image: -o-linear-gradient(top, #ffffff, #f0f0ef);
   /* Opera 11.10+ */
 
-  background-image: linear-gradient(top, #ffffff, #ffffff);
+  background-image: linear-gradient(top, #ffffff, #f0f0ef);
 }
 .ui-btn-down-c {
   background: #ffffff;
@@ -2327,22 +2327,22 @@ div[data-role="header"].ui-bar-b a[data-rel="back"]::before {
 }
 .ui-body-c.ui-navbar {
   background: #ffffff;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#f7f7f7));
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#d7d7d5));
   /* Saf4+, Chrome */
 
-  background-image: -webkit-linear-gradient(top, #ffffff, #f7f7f7);
+  background-image: -webkit-linear-gradient(top, #ffffff, #d7d7d5);
   /* Chrome 10+, Saf5.1+ */
 
-  background-image: -moz-linear-gradient(top, #ffffff, #f7f7f7);
+  background-image: -moz-linear-gradient(top, #ffffff, #d7d7d5);
   /* FF3.6 */
 
-  background-image: -ms-linear-gradient(top, #ffffff, #f7f7f7);
+  background-image: -ms-linear-gradient(top, #ffffff, #d7d7d5);
   /* IE10 */
 
-  background-image: -o-linear-gradient(top, #ffffff, #f7f7f7);
+  background-image: -o-linear-gradient(top, #ffffff, #d7d7d5);
   /* Opera 11.10+ */
 
-  background-image: linear-gradient(top, #ffffff, #f7f7f7);
+  background-image: linear-gradient(top, #ffffff, #d7d7d5);
 }
 .ui-body-c.ui-navbar .ui-btn {
   background: none!important;
