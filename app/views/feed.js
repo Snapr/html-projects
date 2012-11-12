@@ -49,8 +49,8 @@ var feed_view =  page_view.extend({
             feed_view.watch_uploads(false);
             feed_view.$('.x-activity').hide();
         });
-        config.on('change:paused', function(){
-            if(config.get('paused')){
+        config.on('change:upload_paused', function(){
+            if(config.get('upload_paused')){
                 feed_view.$(".x-feed-upload-list").prepend(paused_el).trigger("create");
             }else{
                 $('.x-resume-queue').remove();

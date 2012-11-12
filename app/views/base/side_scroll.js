@@ -222,7 +222,8 @@ return view.extend({
                         scroll_el.addClass('x-loading');
                         scroller = this;
                         collection.fetch({
-                            data: {n: Math.min(collection.length, 20)},
+                            // collection.length || side_scroll_initial means that if length is 0, default will be used
+                            data: {n: Math.min(collection.length || config.get('side_scroll_initial'), 20)},
                             success: function(){
                                 scroll_el.removeClass('x-loading');
                                 left_pull_el.removeClass('x-flipped');
