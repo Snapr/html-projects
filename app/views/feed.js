@@ -49,13 +49,7 @@ var feed_view =  page_view.extend({
             feed_view.watch_uploads(false);
             feed_view.$('.x-activity').hide();
         });
-        config.on('change:upload_paused', function(){
-            if(config.get('upload_paused')){
-                feed_view.$(".x-feed-upload-list").prepend(paused_el).trigger("create");
-            }else{
-                $('.x-resume-queue').remove();
-            }
-        });
+        config.on('change:upload_paused', this.toggle_paused);
     },
 
     post_activate: function(options){
@@ -129,6 +123,7 @@ var feed_view =  page_view.extend({
 
         this.populate_feed();
         this.update_uploads();
+        this.toggle_paused();
     },
 
     events: {
@@ -276,6 +271,14 @@ var feed_view =  page_view.extend({
             }
             // refresh the feed content
             this.populate_feed();
+        }
+    },
+
+    toggle_paused: function(){
+        if(config.get('upload_paused')){
+            this.$(".x-feed-upload-list").prepend(paused_el).trigger("create");
+        }else{
+            $('.x-resume-queue').remove();
         }
     },
 
