@@ -3282,7 +3282,10 @@ div[data-role="dialog"] {
 }
 .s-twitter-button.ui-btn-up-e a.ui-link-inherit,
 .s-twitter-button.ui-btn-hover-e a.ui-link-inherit,
-.s-twitter-button.ui-btn-down-e a.ui-link-inherit {
+.s-twitter-button.ui-btn-down-e a.ui-link-inherit,
+.s-twitter-button.ui-btn-up-e .ui-btn-text,
+.s-twitter-button.ui-btn-hover-e .ui-btn-text,
+.s-twitter-button.ui-btn-down-e .ui-btn-text {
   color: white;
 }
 .s-twitter-button.ui-btn-hover-e {
@@ -3348,7 +3351,10 @@ div[data-role="dialog"] {
 }
 .s-tumblr-button.ui-btn-up-e a.ui-link-inherit,
 .s-tumblr-button.ui-btn-hover-e a.ui-link-inherit,
-.s-tumblr-button.ui-btn-down-e a.ui-link-inherit {
+.s-tumblr-button.ui-btn-down-e a.ui-link-inherit,
+.s-tumblr-button.ui-btn-up-e .ui-btn-text,
+.s-tumblr-button.ui-btn-hover-e .ui-btn-text,
+.s-tumblr-button.ui-btn-down-e .ui-btn-text {
   color: white;
 }
 .s-tumblr-button.ui-btn-hover-e {
@@ -3413,7 +3419,10 @@ div[data-role="dialog"] {
 }
 .s-facebook-button.ui-btn-up-e a.ui-link-inherit,
 .s-facebook-button.ui-btn-hover-e a.ui-link-inherit,
-.s-facebook-button.ui-btn-down-e a.ui-link-inherit {
+.s-facebook-button.ui-btn-down-e a.ui-link-inherit,
+.s-facebook-button.ui-btn-up-e .ui-btn-text,
+.s-facebook-button.ui-btn-hover-e .ui-btn-text,
+.s-facebook-button.ui-btn-down-e .ui-btn-text {
   color: white;
 }
 .s-facebook-button.ui-btn-hover-e {
@@ -3479,7 +3488,10 @@ div[data-role="dialog"] {
 }
 .s-snapr-button.ui-btn-up-e a.ui-link-inherit,
 .s-snapr-button.ui-btn-hover-e a.ui-link-inherit,
-.s-snapr-button.ui-btn-down-e a.ui-link-inherit {
+.s-snapr-button.ui-btn-down-e a.ui-link-inherit,
+.s-snapr-button.ui-btn-up-e .ui-btn-text,
+.s-snapr-button.ui-btn-hover-e .ui-btn-text,
+.s-snapr-button.ui-btn-down-e .ui-btn-text {
   color: #333333;
 }
 .s-snapr-button.ui-btn-hover-e {
