@@ -1693,7 +1693,7 @@ div.ps-carousel-item-loading {
   left: 0;
   white-space: nowrap;
   line-height: 12px;
-  height: 12px;
+  height: 24px;
   padding: 6px 8px;
 }
 .s-photo-map .s-map-controls .s-map-filters {

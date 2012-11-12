@@ -604,7 +604,7 @@ div[data-role="dialog"]{
         .button-font-small();
         line-height: @fontSizeSmall;
         min-height: @fontSizeSmall;
-        height: 12px;
+        height: 28px;
         position: absolute;
         top: -28px;
         right:0;
@@ -809,10 +809,10 @@ textarea.ui-input-text {
             }
          }
         .edit-overlay{
-            top: 37px;
+            top: 40px;
             width: 109%;
             background-color: rgba(255, 255, 255, .8);
-            min-height: @thumbSize;
+            min-height: @thumbSize + 4px;
             .remove-stream{
                 right: 8px;
                 top: 50%;
@@ -1286,6 +1286,7 @@ textarea.ui-input-text {
     .s-user-icon-left{
         width: @avatarSizeLarge;
         height: @avatarSizeLarge;
+        
         .s-profile-icon,
         .s-avatar-large{
             .border-radius(0);
@@ -1313,6 +1314,7 @@ textarea.ui-input-text {
             background-image: url('@{gfx}@{gfxIcons}');
             width: @gfxIcons-grid;
         	height: @gfxIcons-grid; 
+        	margin-top: -@gfxIcons-grid / 2;
         }
     }
     .s-header-stats{
@@ -1922,8 +1924,8 @@ textarea.ui-input-text {
        }
     }
     .s-upload-image-location{
-         .location-name,
-            .foursquare-venue-name{
+         .s-location-name,
+            .s-foursquare-venue-name{
                 height: 40px;
                 white-space: normal;
                 display: inline-block;
