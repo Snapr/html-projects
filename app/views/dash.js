@@ -599,8 +599,8 @@ var add_search = page_view.extend({
     },
 
     search: function(){
-        var keywords = $("#dash-search-keywords").val();
-        var nearby = $("#dash-search-type").val();
+        var keywords = this.$("input.x-search-field").val();
+        var nearby = this.$("select.x-search-distance").val();
 
         var stream_object = {
             query: {
