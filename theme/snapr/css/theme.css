@@ -3147,6 +3147,9 @@ div[data-role="dialog"] {
   -moz-border-radius-bottomleft: 8px;
   border-bottom-left-radius: 8px;
 }
+.s-inline-footer .ui-btn {
+  margin: 0;
+}
 .s-inline-footer.s-dash-footer .ui-content {
   padding: 0;
 }
@@ -4848,7 +4851,6 @@ textarea.ui-input-text {
   position: relative;
 }
 .s-dash-footer {
-  height: 86px;
   overflow: hidden;
 }
 .s-dash-footer .ui-btn-inner .ui-icon {
@@ -4865,7 +4867,19 @@ textarea.ui-input-text {
   background-position: 0 -32px;
 }
 #dash.edit .s-dash-wrapper {
-  margin-top: 85px;
+  margin-top: 88px;
+  z-index: 3;
+}
+#dash.edit .s-dash-footer {
+  padding-bottom: 12px;
+}
+.s-dash-edit-done .x-edit-dash {
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  border-radius: 20px;
+}
+.s-dash-edit-done .x-edit-dash .ui-icon-check {
+  background-position: -243px -144px;
 }
 #uploading .s-upload-progress-header {
   height: 125px;
@@ -5340,6 +5354,9 @@ textarea.ui-input-text {
   font-family: Helvetica, Arial, sans-serif;
   font-weight: normal;
   text-transform: lowercase;
+}
+.s-account-content .ui-listview li.ui-li-last {
+  border-bottom: none;
 }
 .s-account-content .ui-collapsible-set {
   margin-left: -8px;

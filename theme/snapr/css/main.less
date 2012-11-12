@@ -206,6 +206,10 @@ div[data-role="dialog"]{
     margin: @padding * 2 -@padding * 2 0 -@padding * 2;
     .border-bottom-radius(@cornersPage);
 
+    .ui-btn{
+        margin: 0;
+    }
+
     &.s-dash-footer .ui-content{
         padding: 0;
     }
@@ -1704,7 +1708,6 @@ textarea.ui-input-text {
 }
 
 .s-dash-footer{
-    height: 86px;
     overflow: hidden;
     .ui-btn-inner{
         .ui-icon{
@@ -1724,8 +1727,24 @@ textarea.ui-input-text {
     }
 }
 
-#dash.edit .s-dash-wrapper {
-    margin-top: 85px;
+#dash.edit{
+    .s-dash-wrapper {
+        margin-top: 88px;
+        z-index: 3;
+    }
+    .s-dash-footer{
+        padding-bottom: @padding * 3;
+    }
+    
+} 
+
+.s-dash-edit-done{
+    .x-edit-dash{
+        .border-radius(@cornersRound);
+        .ui-icon-check{
+            background-position: @gfxIcons-check-x @gfxIcons-y-highlight;
+        }
+    }
 }
 
 
@@ -2215,6 +2234,9 @@ textarea.ui-input-text {
             background-image: none!important;
             background-color: lighten(@grayLightBg, .7%)!important;
             .button-font-light();
+        }
+        li.ui-li-last{
+            border-bottom: none;
         }
     }
     
