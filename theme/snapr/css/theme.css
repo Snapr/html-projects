@@ -1200,8 +1200,8 @@
 .s-category-btn .ui-icon {
   background-position: 0px 0px;
   background-image: url('../gfx/spot-icons.png');
-  width: 24px;
-  height: 24px;
+  width: 24px !important;
+  height: 24px !important;
 }
 .great-outdoors .s-category-btn .ui-icon,
 .great-outdoors .spot-icon {
@@ -1378,8 +1378,8 @@ fieldset.ui-controlgroup {
 .ui-bar.ui-btn-icon-left .ui-btn-inner .ui-icon,
 .ui-bar.ui-btn-icon-right .ui-btn-inner .ui-icon {
   width: 32px;
-  height: 32px;
-  margin-top: -16px;
+  height: 30px;
+  margin-top: -18px;
 }
 .ui-btn-icon-left .ui-btn-inner {
   padding-left: 32px;
@@ -3188,6 +3188,9 @@ div[data-role="dialog"] {
   padding-top: 0;
   padding-bottom: 0;
   border-top: solid 1px #ffffff;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
 .ui-bar .ui-btn .ui-btn-inner,
 .ui-bar.ui-btn .ui-btn-inner {
