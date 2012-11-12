@@ -1377,6 +1377,8 @@ fieldset.ui-controlgroup {
 .ui-bar .ui-btn-icon-right .ui-btn-inner .ui-icon,
 .ui-bar.ui-btn-icon-left .ui-btn-inner .ui-icon,
 .ui-bar.ui-btn-icon-right .ui-btn-inner .ui-icon {
+  width: 32px;
+  height: 32px;
   margin-top: -16px;
 }
 .ui-btn-icon-left .ui-btn-inner {
@@ -2153,7 +2155,7 @@ div[data-role="header"].ui-bar-b a[data-rel="back"]::before {
 .ui-bar-b em {
   color: white;
 }
-.ui-bar-b .ui-btn-text .image-tag {
+.ui-bar-b .ui-btn-text .s-image-tag {
   color: #cccccc;
 }
 .ui-bar-b .ui-btn-text .s-small-text {
@@ -2622,13 +2624,6 @@ div[data-role="header"].ui-bar-b a[data-rel="back"]::before {
 .ui-btn-hover-e .ui-btn-text,
 .ui-btn-down-e .ui-btn-text {
   color: #474747;
-}
-.ui-btn-up-e.ui-shadow,
-.ui-btn-hover-e.ui-shadow,
-.ui-btn-down-e.ui-shadow {
-  -moz-box-shadow: 0 1px 4px rgba(51, 51, 51, 0.3);
-  -webkit-box-shadow: 0 1px 4px rgba(51, 51, 51, 0.3);
-  box-shadow: 0 1px 4px rgba(51, 51, 51, 0.3);
 }
 .ui-btn-up-e {
   background: #ffff00;
@@ -3192,6 +3187,7 @@ div[data-role="dialog"] {
   line-height: 36px;
   padding-top: 0;
   padding-bottom: 0;
+  border-top: solid 1px #ffffff;
 }
 .ui-bar .ui-btn .ui-btn-inner,
 .ui-bar.ui-btn .ui-btn-inner {
@@ -3236,7 +3232,7 @@ div[data-role="dialog"] {
   -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
 }
-.closed .ui-bar {
+.x-closed .ui-bar {
   -webkit-border-bottom-right-radius: 8px;
   -moz-border-radius-bottomright: 8px;
   border-bottom-right-radius: 8px;
@@ -3244,7 +3240,7 @@ div[data-role="dialog"] {
   -moz-border-radius-bottomleft: 8px;
   border-bottom-left-radius: 8px;
 }
-.closed .ui-bar .s-bar-left {
+.x-closed .ui-bar .s-bar-left {
   -webkit-border-top-right-radius: 0;
   -moz-border-radius-topright: 0;
   border-top-right-radius: 0;
@@ -3252,13 +3248,16 @@ div[data-role="dialog"] {
   -moz-border-radius-bottomright: 0;
   border-bottom-right-radius: 0;
 }
-.closed .ui-bar .s-bar-right {
+.x-closed .ui-bar .s-bar-right {
   -webkit-border-top-right-radius: 6px !important;
   -moz-border-radius-topright: 6px !important;
   border-top-right-radius: 6px !important;
   -webkit-border-bottom-right-radius: 6px !important;
   -moz-border-radius-bottomright: 6px !important;
   border-bottom-right-radius: 6px !important;
+}
+.x-closed .ui-bar .ui-icon-open {
+  background-position: 0 -32px;
 }
 .s-logo-button .ui-btn-text {
   font-family: Helvetica, Arial, sans-serif;

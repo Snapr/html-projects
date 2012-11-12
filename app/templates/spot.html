@@ -13,7 +13,7 @@
         <div class="x-header">
             <% if(obj.spot){ %>
                 <a class="ui-bar <%= spot.get('category').slug %> " data-role="button" data-theme="e" data-iconpos="right" data-icon="arrow-r" data-ajax="false" href="#/feed/?spot=<%= spot.get('id') %>&venue_name=<%= spot.get('name') %>">
-                    <span class="ui-icon ui-icon-category spot-icon"></span>
+                    <span class="ui-icon ui-icon-category spot-icon dark-spot-icon"></span>
                     <strong class="s-spot-name"><%= spot.get('name') %></strong>
                     <span class="s-small-text"><% if (spot.get('stats').photos_count) { %>
                         (<%= spot.get('stats').photos_count %> photo<% if ((spot.get('stats').photos_count) > 1) { %>s<% } %>)

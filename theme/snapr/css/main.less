@@ -236,7 +236,7 @@ div[data-role="dialog"]{
     line-height: @barHeight;
     padding-top:0;
     padding-bottom: 0; 
-     
+    border-top: @borderWhite;
     .ui-btn,
     &.ui-btn{
         .ui-btn-inner{
@@ -280,7 +280,7 @@ div[data-role="dialog"]{
 }
 
 
-.closed{
+.x-closed{
     .ui-bar{
        .border-bottom-radius(@cornersPage);  
         .s-bar-left{
@@ -291,7 +291,12 @@ div[data-role="dialog"]{
         .s-bar-right{
             .border-top-right-radius(@corners)!important;
             .border-bottom-right-radius(@corners)!important;
-        }  
+        } 
+        
+        .ui-icon-open{
+            background-position: @gfxBar-x @gfxBar-closed-y;
+        } 
+    
     }
 }
 

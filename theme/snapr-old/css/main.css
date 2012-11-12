@@ -2342,7 +2342,7 @@ a.ui-link-inherit {
 .ui-bar-b em {
   color: white;
 }
-.ui-bar-b .ui-btn-text .image-tag {
+.ui-bar-b .ui-btn-text .s-image-tag {
   color: #cccccc;
 }
 .ui-bar-b .ui-btn-text .s-small-text {
@@ -4594,7 +4594,7 @@ h4 {
 .ui-bar .ui-btn-icon-right .ui-btn-inner {
   padding-right: 32px;
 }
-.ui-bar .image-details {
+.ui-bar .s-image-details {
   display: block;
   margin-right: 20px;
   overflow: hidden;
@@ -4630,7 +4630,7 @@ h4 {
   height: 32px;
   width: auto;
 }
-.ui-bar .image-tag {
+.ui-bar .s-image-tag {
   max-width: 35%;
   display: none;
   overflow: hidden;
@@ -4807,11 +4807,11 @@ h4 {
   margin-bottom: 8px;
   white-space: no-wrap;
 }
-.s-image-streams .x-stream .ui-bar .image-details {
+.s-image-streams .x-stream .ui-bar .s-image-details {
   margin-right: 57px;
 }
-.s-image-streams .x-stream.closed .ui-bar .image-tag,
-.s-image-streams .x-stream.no-photos .ui-bar .image-tag,
+.s-image-streams .x-stream.closed .ui-bar .s-image-tag,
+.s-image-streams .x-stream.no-photos .ui-bar .s-image-tag,
 .s-image-streams .x-stream.closed .ui-bar .s-image-time,
 .s-image-streams .x-stream.no-photos .ui-bar .s-image-time {
   display: none;
