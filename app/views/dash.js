@@ -199,6 +199,8 @@ var dash_view = page_view.extend({
         this.add_tumblrs(this.model.tumblr_feeds);
         this.add_streams(this.model.streams.models);
 
+        this.$('.x-add-buttons').show();
+
         this.$el.trigger( "create" );
 
         this.rendered = true;
