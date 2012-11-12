@@ -24,6 +24,9 @@ var tab_bar = view.extend({
             this.set_active(this.active);
         }
 
+        var count = config.get('upload_count');
+        this.$('.x-upload-count').toggle(!!count).text(count);
+
         return this;
     },
 

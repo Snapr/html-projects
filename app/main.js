@@ -222,6 +222,14 @@ require(['config', 'jquery', 'backbone', 'photoswipe', 'auth', 'utils/local_stor
         }
 
 
+        /* global upload_count
+        **********************/
+        config.on('change:upload_count', function(){
+            var count = config.get('upload_count');
+            $('.x-upload-count').toggle(!!count).text(count);
+        });
+
+
         /* global live click hadlers
         ***************************/
 

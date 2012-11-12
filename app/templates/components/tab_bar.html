@@ -7,6 +7,7 @@
             <li><a href="#/popular/" data-icon="popular" data-theme="b" data-name="discover">Discover</a></li>
             <% if(username){ %>
                 <li>
+                    <span class="x-upload-count hide"></span>
                     <a href="#/feed/?username=<%= username %>" data-icon="user" data-theme="b" data-name="feed">Me</a>
                 </li>
             <% }else{ %>
