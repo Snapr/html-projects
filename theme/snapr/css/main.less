@@ -1024,55 +1024,60 @@ textarea.ui-input-text {
         text-transform: none;
         vertical-align: middle;
     }
-    .s-menu-stream.s-thumbs-block{
-        position: relative;
-        margin-bottom: -@padding * 2;
-        background-color: black;
-        margin-left: -@padding * 2;
-        margin-right: -@padding * 2;
-        .s-thumbs-block-overlay{
+    
+}
+
+.s-menu-stream{
+    position: relative;
+    margin-bottom: -@padding * 2;
+    background-color: black;
+    margin-left: -@padding * 2;
+    margin-right: -@padding * 2;
+    .s-thumbs-block-overlay{
+        position: absolute;
+        width: 100%;
+        top: 0;
+        left: 0;
+        height: @thumbSize;
+        background: @blackTrans;
+        .s-centered-btn{
+            display: inline-block;
+            width: 160px;
             position: absolute;
-            width: 100%;
-            top: 0;
-            left: 0;
-            height: @thumbSize;
-            background: @blackTrans;
-            .s-centered-btn{
-                display: inline-block;
-                width: 160px;
-                position: absolute;
-                left: 50%;
-                margin-left: -80px;
-                top: 50%;
-                margin-top: -18px;
-                border-radius: @cornersRound;
-                .ui-btn-inner{
-                    padding-right: 20px;
-                    padding-left: 10px;
-                    
-                }
-            }
-        }        
-        .s-thumbs-preview-stream{
-            white-space: nowrap;
-            height: @thumbSize;
-            overflow: hidden;
-            li{
-                display: inline-block;
-               
+            left: 50%;
+            margin-left: -80px;
+            top: 50%;
+            margin-top: -18px;
+            border-radius: @cornersRound;
+            .ui-btn-inner{
+                padding-right: 20px;
+                padding-left: 10px;
+                
             }
         }
-        &.x-ajax-loading{
-            .ui-icon-arrow-r{
-                .spinner('../gfx/small-spinner-dark.png');
-                .spin();
-            }
+    }        
+    .s-thumbs-preview-stream{
+        white-space: nowrap;
+        height: @thumbSize;
+        overflow: hidden;
+        li{
+            display: inline-block;
+           
         }
-        &.no-images{
-           .ui-icon-arrow-r{
-                display: none;
-            } 
+        .s-thumb-image{
+            background: @black;
         }
+    }
+    &.x-loading{
+        .ui-icon-arrow-r{
+            .spinner('../gfx/small-spinner-dark.png');
+            .spin();
+        }
+    }
+    &.no-images{
+       .ui-icon-arrow-r{
+            display: none;
+        } 
     }
 }
 

@@ -4234,14 +4234,14 @@ textarea.ui-input-text {
   text-transform: none;
   vertical-align: middle;
 }
-.s-menu-main .s-menu-stream.s-thumbs-block {
+.s-menu-stream {
   position: relative;
   margin-bottom: -8px;
   background-color: black;
   margin-left: -8px;
   margin-right: -8px;
 }
-.s-menu-main .s-menu-stream.s-thumbs-block .s-thumbs-block-overlay {
+.s-menu-stream .s-thumbs-block-overlay {
   position: absolute;
   width: 100%;
   top: 0;
@@ -4249,7 +4249,7 @@ textarea.ui-input-text {
   height: 101px;
   background: rgba(0, 0, 0, 0.6);
 }
-.s-menu-main .s-menu-stream.s-thumbs-block .s-thumbs-block-overlay .s-centered-btn {
+.s-menu-stream .s-thumbs-block-overlay .s-centered-btn {
   display: inline-block;
   width: 160px;
   position: absolute;
@@ -4259,19 +4259,22 @@ textarea.ui-input-text {
   margin-top: -18px;
   border-radius: 20px;
 }
-.s-menu-main .s-menu-stream.s-thumbs-block .s-thumbs-block-overlay .s-centered-btn .ui-btn-inner {
+.s-menu-stream .s-thumbs-block-overlay .s-centered-btn .ui-btn-inner {
   padding-right: 20px;
   padding-left: 10px;
 }
-.s-menu-main .s-menu-stream.s-thumbs-block .s-thumbs-preview-stream {
+.s-menu-stream .s-thumbs-preview-stream {
   white-space: nowrap;
   height: 101px;
   overflow: hidden;
 }
-.s-menu-main .s-menu-stream.s-thumbs-block .s-thumbs-preview-stream li {
+.s-menu-stream .s-thumbs-preview-stream li {
   display: inline-block;
 }
-.s-menu-main .s-menu-stream.s-thumbs-block.x-ajax-loading .ui-icon-arrow-r {
+.s-menu-stream .s-thumbs-preview-stream .s-thumb-image {
+  background: #000000;
+}
+.s-menu-stream.x-loading .ui-icon-arrow-r {
   display: block;
   background-image: url('../gfx/small-spinner-dark.png') !important;
   background-position: center!important;
@@ -4283,7 +4286,7 @@ textarea.ui-input-text {
   -webkit-animation-iteration-count: infinite;
   -webkit-animation-timing-function: linear;
 }
-.s-menu-main .s-menu-stream.s-thumbs-block.no-images .ui-icon-arrow-r {
+.s-menu-stream.no-images .ui-icon-arrow-r {
   display: none;
 }
 #tumblr-posts blockquote {
