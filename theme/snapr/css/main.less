@@ -634,7 +634,7 @@ div[data-role="dialog"]{
                 min-height: @fontSizeSmall;
                 font-size: @fontSizeSmall;
                 color: @grayDarkBgTint;
-                text-shadow: @shadowWhite;
+                text-shadow: @shadowWhite 0px 1px 1px;
             }
             .s-activity-count{
                 position: relative;
@@ -650,6 +650,13 @@ div[data-role="dialog"]{
             }
         }
     }
+}
+
+.s-count-item{
+    background-color: @blue;
+    .linear-gradient(@blue, @blueTint);
+    color: @white;
+    text-shadow: @shadowDarker 0px -1px 1px;
 }
 
 
@@ -817,10 +824,10 @@ textarea.ui-input-text {
             }
          }
         .edit-overlay{
-            top: 40px;
+            top: @barHeight;
             width: 109%;
             background-color: rgba(255, 255, 255, .8);
-            min-height: @thumbSize + 4px;
+            min-height: @thumbSize + @padding * 2;
             .remove-stream{
                 right: 8px;
                 top: 50%;

@@ -233,6 +233,29 @@ a:active {
 .x-tab-bar *[data-tab-bar="true"] div[data-role="header"] *[data-icon="camera"] {
   display: none;
 }
+.s-tab-bar ul li {
+  position: relative;
+}
+.s-tab-bar ul li .s-count-item {
+  position: absolute;
+  top: 12%;
+  right: 12%;
+  z-index: 10;
+}
+.s-count-item {
+  background-color: #4185f4;
+  color: #ffffff;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  border-radius: 20px;
+  padding: 2px;
+  font-size: 11px;
+  height: 11px;
+  min-width: 11px;
+  text-align: center;
+  line-height: 11px;
+  vertical-align: middle;
+}
 .s-avatar,
 .s-avatar-med,
 .s-avatar-large {

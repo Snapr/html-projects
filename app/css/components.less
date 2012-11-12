@@ -253,6 +253,30 @@ a:active{
     }
 }
 
+.s-tab-bar{
+    ul li{
+        position: relative;
+        .s-count-item{
+            position: absolute;
+            top: 12%;
+            right: 12%;
+            z-index: 10;
+        }
+    }
+}
+
+.s-count-item{
+    background-color: @blue;
+    color: @white;
+    .border-radius(20px);
+    padding: 2px;
+    font-size: 11px;
+    height: 11px;
+    min-width: 11px;
+    text-align: center;
+    line-height: 11px;
+    vertical-align: middle;
+}
 
 
 
