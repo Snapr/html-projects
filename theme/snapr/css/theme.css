@@ -3173,8 +3173,8 @@ div[data-role="dialog"] {
   font-family: Helvetica, Arial, sans-serif;
   font-weight: normal;
   text-transform: lowercase;
-  height: 36px;
-  line-height: 36px;
+  height: 32px;
+  line-height: 32px;
   padding-top: 0;
   padding-bottom: 0;
   border-top: solid 1px #ffffff;
@@ -3184,8 +3184,8 @@ div[data-role="dialog"] {
 }
 .ui-bar .ui-btn .ui-btn-inner,
 .ui-bar.ui-btn .ui-btn-inner {
-  height: 36px;
-  line-height: 36px;
+  height: 32px;
+  line-height: 32px;
 }
 .ui-bar .ui-btn .ui-btn-text,
 .ui-bar.ui-btn .ui-btn-text {
@@ -3199,7 +3199,7 @@ div[data-role="dialog"] {
 .ui-bar.ui-btn .ui-btn-text .ui-icon {
   display: inline-block;
   margin-top: 0!important;
-  top: 2px;
+  top: 0px;
 }
 .ui-bar .ui-btn .ui-btn-text .ui-icon.spot-icon,
 .ui-bar.ui-btn .ui-btn-text .ui-icon.spot-icon {
@@ -3969,8 +3969,8 @@ textarea.ui-input-text {
 }
 .s-image-streams .x-stream.x-closed .edit-overlay {
   top: 0px;
-  height: 36px;
-  min-height: 36px;
+  height: 32px;
+  min-height: 32px;
   z-index: 30;
   background-color: rgba(255, 255, 255, 0.2);
 }
@@ -4472,7 +4472,7 @@ textarea.ui-input-text {
   font-size: 16px;
 }
 .s-feed-header.s-inline-header .s-follow-btn {
-  height: 36px;
+  height: 32px;
 }
 .s-feed-header.s-inline-header .s-follow-btn .ui-icon {
   background-image: url('../gfx/general-jquerymob-icons.png');

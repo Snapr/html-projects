@@ -1148,8 +1148,12 @@ a:active {
   overflow: visible;
 }
 .s-upload-progress-header {
-  padding: 0 8px;
+  padding: 0 8px !important;
+  margin-bottom: 0!important;
   overflow: hidden;
+}
+.s-upload-progress-header .x-feed-upload-list {
+  margin-bottom: 0;
 }
 .s-upload-progress-header .s-upload-progress-item {
   list-style: none;
