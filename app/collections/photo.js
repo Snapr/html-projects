@@ -86,14 +86,16 @@ return Backbone.Collection.extend({
 
     // needed so that when fetching newer photos they go to the start
     comparator: function( photo_a, photo_b ){
-        switch(this.data.sort){
-            case 'weighted_score':
-                return photo_a.get( "weighted_score" ) > photo_b.get( "weighted_score" ) && -1 || 1;
-            case 'score':
-                return photo_a.get( "score" ) > photo_b.get( "score" ) && -1 || 1;
-            case 'date':
-            case 'date_utc':
-                return photo_a.get( "date" ) > photo_b.get( "date" ) && -1 || 1;
+        if(this.data){
+            switch(this.data.sort){
+                case 'weighted_score':
+                    return photo_a.get( "weighted_score" ) > photo_b.get( "weighted_score" ) && -1 || 1;
+                case 'score':
+                    return photo_a.get( "score" ) > photo_b.get( "score" ) && -1 || 1;
+                case 'date':
+                case 'date_utc':
+                    return photo_a.get( "date" ) > photo_b.get( "date" ) && -1 || 1;
+            }
         }
     }
 
