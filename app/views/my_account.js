@@ -225,7 +225,10 @@ return page_view.extend({
             }
         }
         if (password){
-            if (!password_verify){
+            if (password.length < 6){
+                alerts.notification("Password too short", "Passwords must be at least six characters long.", $.noop);
+                return;
+            }else if (!password_verify){
                 alerts.notification("No verification password", "Please enter your password again", $.noop);
                 return;
             }else if (password != password_verify){
