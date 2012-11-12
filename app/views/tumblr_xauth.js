@@ -33,15 +33,15 @@ return page_view.extend({
             type: 'GET',
             dataType: 'jsonp',
             data:{
-                username: $('.x-username').val(),
-                password: $('.x-password').val(),
+                username: this_view.$('.x-username').val(),
+                password: this_view.$('.x-password').val(),
                 access_token: auth.get("access_token"),
                 _method: "POST"
             },
             success: function( data ){
                 if(data.success){
-                    $('.x-username').val("");
-                    $('.x-password').val("");
+                    this_view.$('.x-username').val("");
+                    this_view.$('.x-password').val("");
                     if(this_view.redirect){
                         var redirect = (this_view.redirect.indexOf("?") > -1) ?
                             this_view.redirect + "&username=" + data.response.username :
