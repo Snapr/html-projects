@@ -1085,9 +1085,6 @@ a:active {
 .s-has-palette .s-action-palette .s-center-palette .s-inline-palette .ui-btn-icon-left .ui-btn-inner .ui-icon {
   left: 0;
 }
-#feed .s-upload-progress-header {
-  display: none;
-}
 .s-my-snaps-only {
   display: none!important;
 }

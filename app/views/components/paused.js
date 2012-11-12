@@ -16,7 +16,7 @@ var paused = view.extend({
         );
         $('.x-resume-queue').live('click', function(){
             native_bridge.pass_data('snapr://upload?start');
-            config.set('paused', false);
+            config.set('upload_paused', false);
         });
         return this;
     }

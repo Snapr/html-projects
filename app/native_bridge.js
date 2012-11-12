@@ -76,7 +76,7 @@ define(['config', 'collections/upload_progress'], function(config, upload_progre
 
     window.queue_settings = function(upload_mode, paused) {
         config.set('upload_mode', upload_mode);
-        config.set('paused', paused);
+        config.set('upload_paused', paused);
 
         run_if_function(config.get('current_view').queue_settings)(upload_mode, paused);
     };
