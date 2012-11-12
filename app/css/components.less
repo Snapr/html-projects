@@ -743,7 +743,15 @@ a:active{
 
 .s-dash-wrapper{
     min-height: 340px;
+    .s-competitions,
+    .s-tumblr-streams{
+        margin-bottom: 0;
+        .x-post-stream{
+            margin-bottom: @padding * 2;
+        }
+    }
 }
+
 
 .s-dash-edit-done{
     display: none;
@@ -769,8 +777,8 @@ a:active{
     }
     // Hide the default streams that are unremovable
     .x-stream,
-    .tumblr-streams,
-    .competitions{
+    .s-tumblr-streams,
+    .s-competitions{
         display: none;
         &.user-stream{
             display: block;
@@ -793,7 +801,7 @@ a:active{
 // -------------------------
 
 
-.tumblr-streams{
+.s-tumblr-streams{
     position: relative;
 }
 

@@ -660,6 +660,14 @@ a:active {
 .s-dash-wrapper {
   min-height: 340px;
 }
+.s-dash-wrapper .s-competitions,
+.s-dash-wrapper .s-tumblr-streams {
+  margin-bottom: 0;
+}
+.s-dash-wrapper .s-competitions .x-post-stream,
+.s-dash-wrapper .s-tumblr-streams .x-post-stream {
+  margin-bottom: 8px;
+}
 .s-dash-edit-done {
   display: none;
 }
@@ -691,19 +699,19 @@ a:active {
   box-sizing: border-box;
 }
 #dash.edit .x-stream,
-#dash.edit .tumblr-streams,
-#dash.edit .competitions {
+#dash.edit .s-tumblr-streams,
+#dash.edit .s-competitions {
   display: none;
 }
 #dash.edit .x-stream.user-stream,
-#dash.edit .tumblr-streams.user-stream,
-#dash.edit .competitions.user-stream {
+#dash.edit .s-tumblr-streams.user-stream,
+#dash.edit .s-competitions.user-stream {
   display: block;
 }
 #dash-add-person .s-people-list .x-follow-btn {
   display: none;
 }
-.tumblr-streams {
+.s-tumblr-streams {
   position: relative;
 }
 .tumblr-item {

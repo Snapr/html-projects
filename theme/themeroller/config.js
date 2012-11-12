@@ -122,7 +122,7 @@ var theme = {
             template: 'upload'
         },
         'foursquare_venues',
-        'competitions',
+        's-competitions',
         'competition'
     ]
 };

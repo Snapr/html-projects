@@ -119,7 +119,7 @@ var dash_view = page_view.extend({
             //remove OR UPDATE tumblr feeds
             _.each(current.tumblr_feeds, function(feed){
                 if(!_.contains(_.chain(dash.model.tumblr_feeds).pluck('display').pluck('id').value(), feed)){
-                    dash.$('.tumblr-streams [data-id='+feed+']').remove();
+                    dash.$('.s-tumblr-streams [data-id='+feed+']').remove();
                 }else{
                     dash.tumblr_views[feed].update();
                 }
@@ -291,7 +291,7 @@ var dash_view = page_view.extend({
         if(this.options.show && !_.contains(this.options.show, 'tumblr')){ return; }
 
         var dash = this,
-            container = this.$('.tumblr-streams');
+            container = this.$('.s-tumblr-streams');
 
         _.each(items, function(item){
             dash.tumblr_views[item.display.id] = new dash_tumblr_view({
@@ -350,7 +350,7 @@ var competition = view.extend({
 
 var dash_tumblr_view = view.extend({
     tagName: 'article',
-    className: 'post-stream',
+    className: 'x-post-stream',
     events: {
         "click .x-details": "toggle"
     },

@@ -3839,7 +3839,7 @@ h4 {
   left: -6px;
   top: -8px;
 }
-.competition, .tumblr-streams {
+.competition, .s-tumblr-streams {
   position: relative;
 }
 .competition {
@@ -5951,10 +5951,10 @@ body.x-browser-testing .ui-footer, body.x-browser-testing .ui-footer-fixed {
   -webkit-border-bottom-right-radius: 0;
   border-bottom-right-radius: 0;
 }
-#dash.edit .image-stream, #dash.edit .tumblr-streams, #dash.edit .competitions {
+#dash.edit .image-stream, #dash.edit .s-tumblr-streams, #dash.edit .competitions {
   display: none;
 }
-#dash.edit .image-stream.user-stream, #dash.edit .tumblr-streams.user-stream, #dash.edit .competitions.user-stream {
+#dash.edit .image-stream.user-stream, #dash.edit .s-tumblr-streams.user-stream, #dash.edit .competitions.user-stream {
   display: block;
 }
 #dash.edit .ui-header .ui-btn-up-a .ui-btn-inner .ui-icon-settings {
