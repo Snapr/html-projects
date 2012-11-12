@@ -1,5 +1,5 @@
 /*global _  define require */
-define(['utils/local_storage', 'native_bridge', 'config'], function(local_storage, native, config){
+define(['utils/local_storage', 'native_bridge', 'config'], function(local_storage, native_bridge, config){
 var geo = {};
 geo.location_callbacks = [];
 geo.location_error_callbacks = [];
