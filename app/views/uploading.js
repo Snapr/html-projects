@@ -69,6 +69,11 @@ var uploading = page_view.extend({
     render_streams: function(){
         var $image_stream_container = this.$( ".x-image-streams" ).empty();
 
+        // not in offline mode
+        if(config.get('offline')){
+            this.offline(true);
+            return;
+        }
 
         if(this.comp){
             this.insert_comp_streams();
@@ -181,7 +186,6 @@ var uploading = page_view.extend({
     },
 
     update_uploads: function(model, changes){
-        this.$('.offline').hide();
         if(this.progress_view){ return; }
 
         // our photo must be the last one in the queue
