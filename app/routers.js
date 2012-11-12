@@ -1,5 +1,5 @@
 /*global _  define require */
-define(['config', 'backbone', 'auth', 'utils/local_storage', 'native', 'utils/alerts', 'utils/query', '../theme/'+window.theme+'/config'], function(config, Backbone, auth, local_storage, native, alerts, Query, theme_config) {
+define(['config', 'backbone', 'auth', 'utils/local_storage', 'native_bridge', 'utils/alerts', 'utils/query', '../theme/'+window.theme+'/config'], function(config, Backbone, auth, local_storage, native_bridge, alerts, Query, theme_config) {
 
 function _make_route(file_name, name, template, extra_view_data){
     // returns a function that will do all that's needed to show a page when called

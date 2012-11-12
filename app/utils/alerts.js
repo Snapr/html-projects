@@ -1,5 +1,5 @@
 /*global _  define require */
-define(['utils/local_storage', 'native'], function(local_storage, native){
+define(['utils/local_storage', 'native_bridge'], function(local_storage, native_bridge){
 var alerts = {};
 alerts.notification = function (title, text, callback) {
     var context = this;
@@ -12,7 +12,7 @@ alerts.notification = function (title, text, callback) {
         if(text) {
             par.message = text;
         }
-        native.pass_data("snapr://alert?" + $.param(par));
+        native_bridge.pass_data("snapr://alert?" + $.param(par));
     } else {
         if(text) {
             title = title + ': ' + text;
@@ -53,7 +53,7 @@ alerts.approve = function (options) {
 
     if(local_storage.get("appmode") == 'iphone') {
         var actionID = alerts.tapped_action.add(options.yes_callback, options.no_callback);
-        native.pass_data('snapr://action?' + $.param({
+        native_bridge.pass_data('snapr://action?' + $.param({
             'title': options.title,
             'destructiveButton': options.yes,
             'cancelButton': options.no,

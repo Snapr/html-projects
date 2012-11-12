@@ -1,7 +1,7 @@
 /*global _  define require */
 define(['backbone', 'views/base/page', 'views/upload_progress_li', 'collections/upload_progress',
-    'models/photo', 'models/comp', 'views/base/side_scroll', 'collections/photo', 'utils/local_storage', 'utils/alerts', 'native', 'config', 'views/components/paused'],
-function(Backbone, page_view, upload_progress_li, upload_progress, photo_model, comp_model, side_scroll, photo_collection, local_storage, alerts, native, config, paused_el){
+    'models/photo', 'models/comp', 'views/base/side_scroll', 'collections/photo', 'utils/local_storage', 'utils/alerts', 'native_bridge', 'config', 'views/components/paused'],
+function(Backbone, page_view, upload_progress_li, upload_progress, photo_model, comp_model, side_scroll, photo_collection, local_storage, alerts, native_bridge, config, paused_el){
 
 var uploading = page_view.extend({
 
@@ -53,7 +53,7 @@ var uploading = page_view.extend({
             // so the id and photo on the server are available
             this.upload_complete(this.query.photo_id);
         }else{
-            // no photo_id = in appmode the photo is probably being uploaded by the native
+            // no photo_id = in appmode the photo is probably being uploaded by the native_bridge
             // app in the background, we can show progress here.
             this.render_streams();
         }
@@ -159,7 +159,7 @@ var uploading = page_view.extend({
                 "title": "Cancel this upload?",
                 "yes_callback": function(){
                     if (appmode){
-                        native.pass_data("snapr://upload?cancel=" + current_upload.id);
+                        native_bridge.pass_data("snapr://upload?cancel=" + current_upload.id);
                     }else{
                         Backbone.history.navigate( "#/upload/" );
                     }

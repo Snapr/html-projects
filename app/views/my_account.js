@@ -1,6 +1,6 @@
 /*global _  define require */
-define(['views/base/page', 'views/linked_service', 'auth', 'utils/local_storage', 'utils/alerts', 'native', 'config'],
-function(page_view, linked_service, auth, local_storage, alerts, native, config){
+define(['views/base/page', 'views/linked_service', 'auth', 'utils/local_storage', 'utils/alerts', 'native_bridge', 'config'],
+function(page_view, linked_service, auth, local_storage, alerts, native_bridge, config){
 return page_view.extend({
 
     post_activate:function(options){
@@ -256,7 +256,7 @@ return page_view.extend({
         });
 
         if (local_storage.get("appmode") == "iphone"){
-            native.pass_data( "snapr://camplus/settings/?" + $.param( param ) );
+            native_bridge.pass_data( "snapr://camplus/settings/?" + $.param( param ) );
         }else{
             console.log( "snapr://camplus/settings/?" + $.param( param ) );
         }

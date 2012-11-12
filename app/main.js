@@ -53,8 +53,8 @@ require(['routers'], function(routers){
     routers.routers_instance = routers_instance;
 });
 
-require(['config', 'jquery', 'backbone', 'photoswipe', 'auth', 'utils/local_storage', 'native', 'utils/dialog', 'utils/alerts'],
-    function(config, $, Backbone, PhotoSwipe, auth, local_storage, native, dialog, alerts) {
+require(['config', 'jquery', 'backbone', 'photoswipe', 'auth', 'utils/local_storage', 'native_bridge', 'utils/dialog', 'utils/alerts'],
+    function(config, $, Backbone, PhotoSwipe, auth, local_storage, native_bridge, dialog, alerts) {
 
     /* disable jquery-mobile's hash nav so we can replace it with backbone.js
     ***************************/
@@ -251,9 +251,9 @@ require(['config', 'jquery', 'backbone', 'photoswipe', 'auth', 'utils/local_stor
 
             if (appmode){
                 if (camplus && camplus_camera){
-                    native.pass_data( "snapr://camplus/camera/?" + extra_params );
+                    native_bridge.pass_data( "snapr://camplus/camera/?" + extra_params );
                 }else{
-                    native.pass_data( "snapr://camera/?" + extra_params );
+                    native_bridge.pass_data( "snapr://camera/?" + extra_params );
 
                     setTimeout( function(){
                         Backbone.history.navigate( "#/limbo/" );
@@ -275,9 +275,9 @@ require(['config', 'jquery', 'backbone', 'photoswipe', 'auth', 'utils/local_stor
 
             if (appmode){
                 if (camplus && camplus_lightbox){
-                    native.pass_data( "snapr://camplus/lightbox/?" + extra_params );
+                    native_bridge.pass_data( "snapr://camplus/lightbox/?" + extra_params );
                 }else{
-                    native.pass_data( "snapr://photo-library/?" + extra_params );
+                    native_bridge.pass_data( "snapr://photo-library/?" + extra_params );
 
                     setTimeout( function(){
                         Backbone.history.navigate( "#/limbo/" );
@@ -299,7 +299,7 @@ require(['config', 'jquery', 'backbone', 'photoswipe', 'auth', 'utils/local_stor
                     '2': function(){photo_library(null, extra_params);}
                 };
 
-                native.pass_data('snapr://action?' + $.param({
+                native_bridge.pass_data('snapr://action?' + $.param({
                     'title': 'Share Photo',
                     'otherButton1': "Take Picture",
                     'otherButton2': "Use Existing",

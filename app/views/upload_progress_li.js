@@ -1,5 +1,5 @@
 /*global _  define require */
-define(['views/base/view', 'utils/local_storage', 'utils/alerts', 'native', 'models/photo'], function(view, local_storage, alerts, native, photo_model){
+define(['views/base/view', 'utils/local_storage', 'utils/alerts', 'native_bridge', 'models/photo'], function(view, local_storage, alerts, native_bridge, photo_model){
 return view.extend({
 
     tagName: "div",
@@ -104,7 +104,7 @@ return view.extend({
             "title": "Cancel this upload?",
             "yes_callback": function(){
                 if (local_storage.get( "appmode" )){
-                    native.pass_data( "snapr://upload?cancel=" + id );
+                    native_bridge.pass_data( "snapr://upload?cancel=" + id );
                 }
                 li_view.remove();
             }

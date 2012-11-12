@@ -1,5 +1,5 @@
 /*global _  define require */
-define(['config', 'backbone', 'jquery', 'utils/local_storage', 'native', 'models/user_settings'], function(config, Backbone, $, local_storage, native, user_settings) {
+define(['config', 'backbone', 'jquery', 'utils/local_storage', 'native_bridge', 'models/user_settings'], function(config, Backbone, $, local_storage, native_bridge, user_settings) {
 
 var auth_model = Backbone.Model.extend({
 
@@ -78,7 +78,7 @@ var auth_model = Backbone.Model.extend({
         // and the hash doesn't have "access_token" in it
         // (which would cause an infinite loop)
         if (local_storage.get( "appmode" )){
-            native.pass_data( "snapr://login?snapr_user=" + encodeURI( this.get( "snapr_user" ) ) + "&display_username=" + encodeURI( this.get( "display_username" ) ) + "&access_token=" + encodeURI( this.get( "access_token" ) ) );
+            native_bridge.pass_data( "snapr://login?snapr_user=" + encodeURI( this.get( "snapr_user" ) ) + "&display_username=" + encodeURI( this.get( "display_username" ) ) + "&access_token=" + encodeURI( this.get( "access_token" ) ) );
         }
     },
 

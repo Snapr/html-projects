@@ -1,5 +1,5 @@
 /*global _  define require */
-define(['utils/local_storage', 'native', 'config'], function(local_storage, native, config){
+define(['utils/local_storage', 'native_bridge', 'config'], function(local_storage, native, config){
 var geo = {};
 geo.location_callbacks = [];
 geo.location_error_callbacks = [];
@@ -38,7 +38,7 @@ geo.update_location = function (success, error){
             error(problem);
         } );
 
-        native.pass_data( "snapr://get_location" );
+        native_bridge.pass_data( "snapr://get_location" );
 
     }else{
         if (navigator.geolocation){

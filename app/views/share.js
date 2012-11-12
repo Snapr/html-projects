@@ -1,8 +1,8 @@
 /*global _  define require */
 define(['config', 'backbone', 'views/base/page', 'models/photo', 'models/comp', 'models/geo_location', 'collections/foursquare_venue',
-    'utils/geo', 'auth', 'utils/local_storage', 'utils/alerts', 'native', 'utils/dialog', 'utils/string'],
+    'utils/geo', 'auth', 'utils/local_storage', 'utils/alerts', 'native_bridge', 'utils/dialog', 'utils/string'],
 function(config, Backbone, page_view, photo_model, comp_model, geo_location, foursquare_venue_collection, geo,
-    auth, local_storage, alerts, native, dialog, string_utils){
+    auth, local_storage, alerts, native_bridge, dialog, string_utils){
 return page_view.extend({
 
     post_activate: function(options){
@@ -42,7 +42,6 @@ return page_view.extend({
         "change .x-image-sharing input": "toggle_sharing",
         "vclick .x-image-sharing .ui-disabled": "share_alert",
         "click .x-foursquare-venue": "venue_search",
-        "click .x-no-location": "location_alert",
         "click .x-image-toggle": "toggle_photo",
         "click .x-edit-photo": "edit",
         "click .x-camplus-edit-photo": "edit_camplus",
@@ -190,11 +189,9 @@ return page_view.extend({
         }else{
             // get reverse geocode location from current position
             geo.get_location( function( location ){
-                share_photo_view.no_location(false);
                 geocode( location.coords.latitude, location.coords.longitude );
             },
             function( e ){
-                share_photo_view.no_location(true);
                 console.error( "get reverse geocode: geocode error model doesn't have lat lon", e );
             });
         }
@@ -234,7 +231,6 @@ return page_view.extend({
         }else{
             // get venues based on current location (not photo)
             geo.get_location( function( location ){
-                share_photo_view.no_location(false);
                 var photo_location = share_photo_view.model.get('location');
                 photo_location.latitude = location.coords.latitude;
                 photo_location.longitude = location.coords.longitude;
@@ -242,9 +238,6 @@ return page_view.extend({
                 get_venues( location.coords.latitude, location.coords.longitude );
             },
             function( e ){
-                share_photo_view.no_location(true);
-                share_photo_view.location_alert();
-                share_photo_view.$('#foursquare-sharing').attr('checked', false).checkboxradio("refresh");
                 console.error( "get foursquare venue geocode error", e );
             });
         }
@@ -274,31 +267,17 @@ return page_view.extend({
         local_storage.set( e.target.id, !!$(e.target).attr("checked") );
 
         if (e.target.id == "foursquare-sharing"){
+            console.log(this.$(".x-no-foursquare-venue").toggle());
+            console.log(this.$(".x-foursquare-venue").toggle());
             if ($(e.target).attr("checked")){
                 this.get_foursquare_venues();
-                this.$(".x-no-foursquare-venue").hide();
-                this.$(".x-foursquare-venue").show();
-                this.$(".x-no-location").hide();
             }else{
                 this.get_reverse_geocode();
-                this.$(".x-no-foursquare-venue").show();
-                this.$(".x-foursquare-venue").hide();
-                this.$(".x-no-location").hide();
             }
         }
         if (e.target.id == "share-location" && $(e.target).attr("checked")){
             this.get_reverse_geocode();
         }
-    },
-
-    no_location: function(really){
-        this.$(".x-no-foursquare-venue").toggle(!really && !local_storage.get( "foursquare-sharing" ));
-        this.$(".x-foursquare-venue").toggle(!really && local_storage.get( "foursquare-sharing" ));
-        this.$('.x-no-location').toggle(really);
-    },
-
-    location_alert: function(){
-        alerts.notification('Please enable location services for this app to use these features.');
     },
 
     venue_search: function(){
@@ -320,13 +299,11 @@ return page_view.extend({
             var share_photo_view = this;
 
             geo.get_location( function( location ){
-                share_photo_view.no_location(false);
                 var ll = location.coords.latitude + "," + location.coords.longitude;
 
                 go_to_venues( ll, false, share_photo_view.query, share_photo_view.model );
             },
             function( e ){
-                share_photo_view.no_location(true);
                 console.error( "venue search geocode error", e );
             });
         }
@@ -348,7 +325,7 @@ return page_view.extend({
         }
 
         if (appmode && img_url){
-            native.pass_data("snapr://aviary/edit/?photo_url=" + img_url + "&" + this.get_photo_edit_params());
+            native_bridge.pass_data("snapr://aviary/edit/?photo_url=" + img_url + "&" + this.get_photo_edit_params());
 
             setTimeout( function(){
                 Backbone.history.navigate( "#/limbo/" );
@@ -376,7 +353,7 @@ return page_view.extend({
 
         if (appmode && img_url){
             if (camplus){
-                native.pass_data( "snapr://camplus/edit/?photo_url=" + img_url + "&" + this.get_photo_edit_params());
+                native_bridge.pass_data( "snapr://camplus/edit/?photo_url=" + img_url + "&" + this.get_photo_edit_params());
             }
         }else{
             console.error("clicked on camplus edit but not in appmode or no img_url", img_url );
@@ -580,7 +557,7 @@ return page_view.extend({
 
 
                 Backbone.history.navigate( "#/uploading/" + extras );
-                native.pass_data("snapr://upload?" + $.param(params) );
+                native_bridge.pass_data("snapr://upload?" + $.param(params) );
             }
         }
     },

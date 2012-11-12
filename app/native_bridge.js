@@ -9,8 +9,8 @@ define(['config', 'collections/upload_progress'], function(config, upload_progre
     // we can't to this here because alerts relises on pass_data - circ.dep.
     // window.tapped_action = alerts.tapped_action;
 
-    var native = {};
-    native.pass_data = function( url ){
+    var native_bridge = {};
+    native_bridge.pass_data = function( url ){
         var iframe = document.createElement("IFRAME");
         iframe.setAttribute("src", url);
         document.documentElement.appendChild(iframe);
@@ -81,5 +81,5 @@ define(['config', 'collections/upload_progress'], function(config, upload_progre
         run_if_function(config.get('current_view').queue_settings)(upload_mode, paused);
     };
 
-    return native;
+    return native_bridge;
 });
