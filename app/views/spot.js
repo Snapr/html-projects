@@ -105,7 +105,7 @@ var spot_view = page_view.extend({
     },
 
     fetch_users: function () {
-        this.top_users.get_top_users(spot_view.spot_id);
+        this.top_users.get_top_users(this.spot_id);
     },
 
     render_top_users: function(){
