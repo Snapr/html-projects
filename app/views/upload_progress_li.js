@@ -102,6 +102,7 @@ return view.extend({
         var li_view = this;
         alerts.approve({
             "title": "Cancel this upload?",
+            'no': 'No',
             "yes_callback": function(){
                 if (local_storage.get( "appmode" )){
                     native_bridge.pass_data( "snapr://upload?cancel=" + id );
