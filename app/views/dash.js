@@ -92,6 +92,9 @@ var dash_view = page_view.extend({
 
     background_update: function(){
 
+        if(this.background_updating){ return; }
+        this.background_updating = true;
+
         this.$el.addClass('x-background-loading');
 
         var dash = this,
@@ -173,6 +176,7 @@ var dash_view = page_view.extend({
                 complete: function(){
                     $.mobile.hidePageLoadingMsg();
                     dash.$el.removeClass('x-background-loading');
+                    dash.background_updating = false;
                 }
             };
 
