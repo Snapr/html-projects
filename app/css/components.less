@@ -585,12 +585,18 @@ a:active{
                 }
             }
         }
+        .ui-bar{
+            .s-image-tag{
+                display: none;
+            }
+        }
+       
         &.x-closed,
         &.x-loading,
         &.x-no-photos{
             .ui-bar{
-                .image-tag,
-                .image-time{
+                .s-image-tag,
+                .s-image-time{
                     display: none;
                 }
             }
@@ -1863,7 +1869,7 @@ div.ps-carousel-item-loading
                 left: 0;
                 white-space: nowrap;
                 line-height: @fontSizeSmall;
-                height: @fontSizeSmall;
+                height:24px;
                 padding: 6px @padding * 2;
             }
         }
@@ -1981,7 +1987,7 @@ div.ps-carousel-item-loading
         position: absolute;
         right: 0;
         top: 50%;
-        margin-top: -4px;
+        margin-top: -12px;
         width: 70px;
         height: 24px;
         .ui-icon-foursquare-logo{

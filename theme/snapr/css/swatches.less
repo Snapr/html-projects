@@ -165,6 +165,7 @@
     .ui-title{
         color: @gray;
     }
+    border-top: none!important;
 }
 
 .ui-btn-up-b,
@@ -275,20 +276,6 @@ div[data-role="header"].ui-bar-b{
     }
 }
 
-.ui-bar-b{
-    em{
-        color: white;
-    }
-    .ui-btn-text{
-        .image-tag{
-            color: @grayLight;
-        }
-        .s-small-text{
-            color: @gray;
-        }
-    }
-    
-}
 
 // C //
 // Standard light BG swatch, has subtle gray bg texture, used mainly for light colored dialog style views
@@ -682,9 +669,7 @@ div[data-role="header"].ui-bar-b{
     .ui-btn-text {
         color: @grayDarker;
     }
-    &.ui-shadow {
-        .box-shadow(0 1px 4px lighten(@shadowDark, 20%));
-    }
+    
 }
 .ui-btn-up-e {
     background: @yellow;    

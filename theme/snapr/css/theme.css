@@ -1200,8 +1200,8 @@
 .s-category-btn .ui-icon {
   background-position: 0px 0px;
   background-image: url('../gfx/spot-icons.png');
-  width: 24px;
-  height: 24px;
+  width: 24px !important;
+  height: 24px !important;
 }
 .great-outdoors .s-category-btn .ui-icon,
 .great-outdoors .spot-icon {
@@ -1857,6 +1857,7 @@ a.ui-link-inherit {
   /* Opera 11.10+ */
 
   background-image: linear-gradient(top, #434748, #26282a);
+  border-top: none!important;
 }
 .ui-bar-b.small-top-right-arrow::after {
   width: 0;
@@ -2149,15 +2150,6 @@ div[data-role="header"].ui-bar-b a[data-rel="back"]::before {
   -moz-border-radius-bottomleft: 10px;
   border-bottom-left-radius: 10px;
   -webkit-mask-image: -webkit-gradient(linear, left top, right bottom, from(#000000), color-stop(0.4, #000000), color-stop(0.5, transparent), to(transparent));
-}
-.ui-bar-b em {
-  color: white;
-}
-.ui-bar-b .ui-btn-text .image-tag {
-  color: #cccccc;
-}
-.ui-bar-b .ui-btn-text .s-small-text {
-  color: #999999;
 }
 .ui-body-c {
   background: none;
@@ -2622,13 +2614,6 @@ div[data-role="header"].ui-bar-b a[data-rel="back"]::before {
 .ui-btn-hover-e .ui-btn-text,
 .ui-btn-down-e .ui-btn-text {
   color: #474747;
-}
-.ui-btn-up-e.ui-shadow,
-.ui-btn-hover-e.ui-shadow,
-.ui-btn-down-e.ui-shadow {
-  -moz-box-shadow: 0 1px 4px rgba(51, 51, 51, 0.3);
-  -webkit-box-shadow: 0 1px 4px rgba(51, 51, 51, 0.3);
-  box-shadow: 0 1px 4px rgba(51, 51, 51, 0.3);
 }
 .ui-btn-up-e {
   background: #ffff00;
@@ -3192,6 +3177,10 @@ div[data-role="dialog"] {
   line-height: 36px;
   padding-top: 0;
   padding-bottom: 0;
+  border-top: solid 1px #ffffff;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
 .ui-bar .ui-btn .ui-btn-inner,
 .ui-bar.ui-btn .ui-btn-inner {
@@ -3236,7 +3225,7 @@ div[data-role="dialog"] {
   -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
 }
-.closed .ui-bar {
+.x-closed .ui-bar {
   -webkit-border-bottom-right-radius: 8px;
   -moz-border-radius-bottomright: 8px;
   border-bottom-right-radius: 8px;
@@ -3244,7 +3233,7 @@ div[data-role="dialog"] {
   -moz-border-radius-bottomleft: 8px;
   border-bottom-left-radius: 8px;
 }
-.closed .ui-bar .s-bar-left {
+.x-closed .ui-bar .s-bar-left {
   -webkit-border-top-right-radius: 0;
   -moz-border-radius-topright: 0;
   border-top-right-radius: 0;
@@ -3252,13 +3241,16 @@ div[data-role="dialog"] {
   -moz-border-radius-bottomright: 0;
   border-bottom-right-radius: 0;
 }
-.closed .ui-bar .s-bar-right {
+.x-closed .ui-bar .s-bar-right {
   -webkit-border-top-right-radius: 6px !important;
   -moz-border-radius-topright: 6px !important;
   border-top-right-radius: 6px !important;
   -webkit-border-bottom-right-radius: 6px !important;
   -moz-border-radius-bottomright: 6px !important;
   border-bottom-right-radius: 6px !important;
+}
+.x-closed .ui-bar .ui-icon-open {
+  background-position: 0 -32px;
 }
 .s-logo-button .ui-btn-text {
   font-family: Helvetica, Arial, sans-serif;
@@ -3778,7 +3770,7 @@ div[data-role="dialog"] {
   font-size: 12px;
   line-height: 12px;
   min-height: 12px;
-  height: 12px;
+  height: 28px;
   position: absolute;
   top: -28px;
   right: 0;
@@ -3953,10 +3945,10 @@ textarea.ui-input-text {
   display: block;
 }
 .s-image-streams .x-stream .edit-overlay {
-  top: 37px;
+  top: 40px;
   width: 109%;
   background-color: rgba(255, 255, 255, 0.8);
-  min-height: 101px;
+  min-height: 105px;
 }
 .s-image-streams .x-stream .edit-overlay .remove-stream {
   right: 8px;
@@ -4474,6 +4466,7 @@ textarea.ui-input-text {
   background-image: url('../gfx/general-jquerymob-icons.png');
   width: 36px;
   height: 36px;
+  margin-top: -18px;
 }
 .s-feed-header.s-inline-header .s-header-stats {
   text-transform: lowercase;
@@ -5060,8 +5053,8 @@ textarea.ui-input-text {
 .s-share-photo .s-upload-image-sharing label[for="foursquare-sharing"].ui-checkbox-on .ui-icon {
   background-position: -42px -126px;
 }
-.s-share-photo .s-upload-image-location .location-name,
-.s-share-photo .s-upload-image-location .foursquare-venue-name {
+.s-share-photo .s-upload-image-location .s-location-name,
+.s-share-photo .s-upload-image-location .s-foursquare-venue-name {
   height: 40px;
   white-space: normal;
   display: inline-block;

@@ -535,12 +535,15 @@ a:active {
   background-position: 0 -112px;
   -webkit-transform: rotate(180deg) translateZ(0);
 }
-.s-image-streams .x-stream.x-closed .ui-bar .image-tag,
-.s-image-streams .x-stream.x-loading .ui-bar .image-tag,
-.s-image-streams .x-stream.x-no-photos .ui-bar .image-tag,
-.s-image-streams .x-stream.x-closed .ui-bar .image-time,
-.s-image-streams .x-stream.x-loading .ui-bar .image-time,
-.s-image-streams .x-stream.x-no-photos .ui-bar .image-time {
+.s-image-streams .x-stream .ui-bar .s-image-tag {
+  display: none;
+}
+.s-image-streams .x-stream.x-closed .ui-bar .s-image-tag,
+.s-image-streams .x-stream.x-loading .ui-bar .s-image-tag,
+.s-image-streams .x-stream.x-no-photos .ui-bar .s-image-tag,
+.s-image-streams .x-stream.x-closed .ui-bar .s-image-time,
+.s-image-streams .x-stream.x-loading .ui-bar .s-image-time,
+.s-image-streams .x-stream.x-no-photos .ui-bar .s-image-time {
   display: none;
 }
 .s-image-streams .x-stream.x-loading .s-load-more-inline .ui-icon-refresh {
@@ -1687,7 +1690,7 @@ div.ps-carousel-item-loading {
   left: 0;
   white-space: nowrap;
   line-height: 12px;
-  height: 12px;
+  height: 24px;
   padding: 6px 8px;
 }
 .s-photo-map .s-map-controls .s-map-filters {
@@ -1791,7 +1794,7 @@ div.ps-carousel-item-loading {
   position: absolute;
   right: 0;
   top: 50%;
-  margin-top: -4px;
+  margin-top: -12px;
   width: 70px;
   height: 24px;
 }
