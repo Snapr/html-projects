@@ -684,17 +684,16 @@ var map_disambiguation = view.extend({
     tagName: "li",
 
     events: {
-        "click .x-map-link": "goto_map"
+        "click": "goto_map"
     },
 
     initialize: function(){
-        this.template = this.get_template('components/map/disambiguation');
         this.location = this.options.result;
         this.parent_view = this.options.parent_view;
     },
 
     render: function(){
-        this.$el.html( this.template( {location: this.location} ) );
+        this.$el.html( '<a class="map-link">' + this.location.formatted_address + '</a>' );
         return this;
     },
 
