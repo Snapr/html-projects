@@ -55,12 +55,24 @@ return page_view.extend({
 
     render: function(){
 
+        var linked_services_list = {
+            foursquare:false,
+            facebook:false,
+            tumblr:false,
+            twitter:false
+        };
+
+        _.each( auth.user_settings.get('linked_services'), function( service, index ){
+            linked_services_list[service.provider] = true;
+        });
+
         var data={
             initial: false,
             username: auth.user_settings.get( "user" ).username,
             display_username: auth.user_settings.get( "user" ).display_username,
             user_id: auth.user_settings.get( "user" ).user_id,
             settings: auth.user_settings.get( "settings" ),
+            linked_services: linked_services_list,
             camplus: false
         };
         if(config.get('camplus_options')){
@@ -75,22 +87,10 @@ return page_view.extend({
         var $account_content = this.replace_from_template(data, ['.x-content']).trigger('create');
 
 
-        // set all linked services to false, we will check them off below
-
-        var linked_services_list = {
-            foursquare:false,
-            facebook:false,
-            tumblr:false,
-            twitter:false
-        };
-
         var my_account = this;
         _.each( auth.user_settings.get('linked_services'), function( service, index ){
             var v = new linked_service({model: service});
             v.my_account = my_account;
-
-            // keep track of linked services
-            linked_services_list[service.provider] = true;
 
             $account_content.find('.x-linked-services').append( v.render().el ).trigger('create');
         });
