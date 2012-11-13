@@ -2962,6 +2962,11 @@ strong {
   font-size: 16px;
   font-family: 'MuseoSansRounded700', Helvetica, Arial, sans-serif;
 }
+h4 {
+  font-family: 'MuseoSansRounded700', Helvetica, Arial, sans-serif;
+  font-weight: normal;
+  font-size: 16px;
+}
 div[data-role="header"] {
   min-height: 46px;
   background: none;
@@ -3210,6 +3215,7 @@ div[data-role="dialog"] {
 .ui-bar .ui-btn .ui-btn-text .ui-icon.spot-icon,
 .ui-bar.ui-btn .ui-btn-text .ui-icon.spot-icon {
   top: -1px;
+  right: 0;
 }
 .ui-bar .ui-btn .ui-btn-text .ui-icon.ui-icon-clock,
 .ui-bar.ui-btn .ui-btn-text .ui-icon.ui-icon-clock {
@@ -6002,7 +6008,7 @@ div.ps-carousel-item-loading {
 .s-spot-header {
   background-color: #cccccc;
   background-image: url('../gfx/bg-texture-light.gif');
-  min-height: 101px;
+  min-height: 109px;
 }
 .s-spot-header .spot-venue-details {
   min-height: 64px;
@@ -6020,6 +6026,9 @@ div.ps-carousel-item-loading {
 .s-spot-header .s-spot-distance {
   color: #666666;
   font-size: 12px;
+}
+.s-spot-body {
+  margin-top: -8px;
 }
 .s-helper-content .ui-body {
   position: relative;

@@ -13,6 +13,12 @@ strong{
 }
 
 
+h4{
+    .heading-font();
+}
+
+
+
 // @HEADERS
 // -------------------------
 
@@ -259,6 +265,7 @@ div[data-role="dialog"]{
                 top: (@barHeight - @gfxBar-grid) / 2 ;            
                 &.spot-icon{
                     top: -1px;
+                    right: 0;
                 }
                 &.ui-icon-clock{
                     width: 17px;
@@ -2829,7 +2836,7 @@ div.ps-carousel-item-loading
 .s-spot-header{
     background-color: @grayLight;
     background-image: @gfxBgLight;
-    min-height:@thumbSize;
+    min-height:@thumbSize + @padding * 2;
     .spot-venue-details{
         min-height: 64px;
     }
@@ -2847,6 +2854,10 @@ div.ps-carousel-item-loading
         color: @grayDark;
         font-size: @fontSizeSmall;
     }
+}
+
+.s-spot-body{
+    margin-top: -@padding * 2;
 }
 
 
