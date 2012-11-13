@@ -1,0 +1,174 @@
+// Font Mixins 
+// -------------------------
+ 
+
+
+
+// Gradient Mixins 
+// -------------------------
+
+.dark-grad(){
+    background: @grayDarkBg;
+    color: @gray;
+}
+
+
+
+.linear-gradient (@start, @end) {
+	background-image: -webkit-gradient(linear, left top, left bottom, from(@start), to(@end)); /* Saf4+, Chrome */
+	background-image: -webkit-linear-gradient(top, @start, @end); /* Chrome 10+, Saf5.1+ */
+	background-image:	-moz-linear-gradient(top, @start, @end); /* FF3.6 */
+	background-image:	 -ms-linear-gradient(top, @start, @end); /* IE10 */
+	background-image:	  -o-linear-gradient(top, @start, @end); /* Opera 11.10+ */
+	background-image:		 linear-gradient(top, @start, @end);
+}
+
+.pressed-gradient (@color, @darken) {
+	background-image: -webkit-gradient(linear,left bottom,left top, color-stop(0, @color), color-stop(0.7, @color),color-stop(1, darken(@color, 5%))); /* Saf4+, Chrome */
+	background-image: -webkit-linear-gradient(bottom, @color 0%, @color 70%, darken(@color, @darken) 100%); /* Chrome 10+, Saf5.1+ */
+	background-image:	-moz-linear-gradient(bottom, @color 0%, @color 70%, darken(@color, @darken) 100%); /* FF3.6 */
+	background-image:	 -ms-linear-gradient(bottom, @color 0%, @color 70%, darken(@color, @darken) 100%); /* IE10 */
+	background-image:	  -o-linear-gradient(bottom, @color 0%, @color 70%, darken(@color, @darken) 100%); /* Opera 11.10+ */
+	background-image:		 linear-gradient(bottom, @color 0%, @color 70%, darken(@color, @darken) 100%);
+
+}
+
+.shiny-gradient (@start, @start-mid, @end-mid, @end) {
+	background-image: -webkit-gradient(linear,left bottom,left top, color-stop(0, @start),color-stop(0.5, @start-mid), color-stop(0.5, @end-mid),color-stop(1, @end)); /* Saf4+, Chrome */
+	background-image: -webkit-linear-gradient( bottom, @start 0%, @start-mid 50%, @end-mid 50%, @end 100% ); /* Chrome 10+, Saf5.1+ */
+	background-image:	-moz-linear-gradient( bottom, @start 0%, @start-mid 50%, @end-mid 50%, @end 100% ); /* FF3.6 */
+	background-image:	 -ms-linear-gradient( bottom, @start 0%, @start-mid 50%, @end-mid 50%, @end 100% ); /* IE10 */
+	background-image:	  -o-linear-gradient( bottom, @start 0%, @start-mid 50%, @end-mid 50%, @end 100% ); /* Opera 11.10+ */
+	background-image:		 linear-gradient( bottom, @start 0%, @start-mid 50%, @end-mid 50%, @end 100% );
+}
+
+.shiny-gradient-45 (@start, @start-mid, @end-mid, @end) {
+	background-image: -webkit-gradient(linear,left bottom, right top, color-stop(0, @start),color-stop(0.5, @start-mid), color-stop(0.5, @end-mid),color-stop(1, @end)); /* Saf4+, Chrome */
+	background-image: -webkit-linear-gradient( left bottom, @start 0%, @start-mid 50%, @end-mid 50%, @end 100% ); /* Chrome 10+, Saf5.1+ */
+	background-image:	-moz-linear-gradient( left bottom, @start 0%, @start-mid 50%, @end-mid 50%, @end 100% ); /* FF3.6 */
+	background-image:	 -ms-linear-gradient( left bottom, @start 0%, @start-mid 50%, @end-mid 50%, @end 100% ); /* IE10 */
+	background-image:	  -o-linear-gradient( left bottom, @start 0%, @start-mid 50%, @end-mid 50%, @end 100% ); /* Opera 11.10+ */
+	background-image:		 linear-gradient( left bottom, @start 0%, @start-mid 50%, @end-mid 50%, @end 100% );
+}
+
+
+
+.border-radius(0) {
+	-moz-border-radius: 0;
+	-webkit-border-radius: 0;
+	border-radius: 0;
+}
+
+.background-size (@size-x, @size-y) {
+	-moz-background-size: @arguments;
+	-o-background-size: @arguments;
+	-webkit-background-size: @arguments;
+	background-size: @arguments;
+}
+
+.background-clip(padding) {
+	-webkit-background-clip: padding-box;
+	-moz-background-clip: padding;
+	background-clip: padding-box;
+}
+
+.box-shadow(@a) {
+    -moz-box-shadow: @a;
+    -webkit-box-shadow: @a;
+    box-shadow: @a;
+}
+.box-shadow(@a, @b) {
+    -moz-box-shadow: @a, @b;
+    -webkit-box-shadow: @a, @b;
+    box-shadow: @a, @b;
+}
+
+.box-shadow(@a, @b, @c) {
+    -moz-box-shadow: @a, @b, @c;
+    -webkit-box-shadow: @a, @b, @c;
+    box-shadow: @a, @b, @c;
+}
+
+.border-box(@setting: border-box) {
+    -moz-box-sizing: @setting;
+    -webkit-box-sizing: @setting;
+    box-sizing: @setting;
+}
+
+
+/* keep the corners 45 degrees otherwise they look crap
+   apply these to elements using the ::after psuedo class..
+*/
+.arrow-up(@height, @color, @x-pos, @y-shift){
+    width: 0;
+    height: 0;
+    display: inline-block;
+    content: "&uarr;";
+    text-indent: -99999px;
+    vertical-align: top;
+    margin-top: 0;
+    margin-left: -@height;
+    border-left: @height solid transparent;
+    border-right: @height solid transparent;
+    border-bottom: @height solid @color;
+    position: absolute;
+    top: -@height + @y-shift;
+    left: @x-pos;
+}
+
+.arrow-down(@height, @color, @x-pos, @y-shift){
+    width: 0;
+    height: 0;
+    display: inline-block;
+    content: "&darr;";
+    text-indent: -99999px;
+    vertical-align: top;
+    margin-top: 0;
+    margin-left: -@height;
+    border-left: @height solid transparent;
+    border-right: @height solid transparent;
+    border-top: @height solid @color;
+    position: absolute;
+    bottom: -@height + @y-shift;
+    left: @x-pos;
+}
+
+.arrow-left(@width, @color, @x-pos, @y-shift){
+    width: 0;
+    height: 0;
+    display: inline-block;
+    content: "&darr;";
+    text-indent: -99999px;
+    vertical-align: top;
+    margin-top: 0;
+    margin-left: -@width;
+    border-top: @width solid transparent;
+    border-bottom: @width solid transparent;
+    border-right: @width solid @color;
+    position: absolute;
+    bottom: -@width + @y-shift;
+    left: @x-pos;
+}
+
+.spinner(@file: '../gfx/small-spinner-light.png'){
+    display: block;
+    background-image: url(@file)!important;
+    background-position: center!important;
+    background-repeat: no-repeat!important;
+}
+
+.spin(){
+    -webkit-transform:rotate(0deg) translateZ(0);
+    -webkit-transition-duration:0ms;
+    -webkit-animation-name:loading;
+    -webkit-animation-duration:1.2s;
+    -webkit-animation-iteration-count:infinite;
+    -webkit-animation-timing-function:linear;
+}
+
+@-webkit-keyframes loading {
+    from { -webkit-transform:rotate(0deg) translateZ(0); }
+    to { -webkit-transform:rotate(360deg) translateZ(0); }
+}
+
+
