@@ -555,12 +555,13 @@ div[data-role="dialog"]{
 
 // Custom Fiddles for Tab Bar
 .s-tab-bar{
-    background-color: @black;
+    background: @black!important;
     .ui-navbar {
-        .dark-grad();
-        .border-bottom-radius(@cornersPage);
+        background: @grayDarkBgTint;
+        .linear-gradient(@grayDarkBg, @grayDarkBgTint);
         padding: 3px 0;
         border-top: solid lighten(@grayDarkBg, 20%) 1px;
+        .border-bottom-radius(@cornersPage);
 
         .ui-btn{
             border: none;
@@ -597,9 +598,8 @@ div[data-role="dialog"]{
             padding-left: 1px;
             padding-right: 1px;
             .ui-btn-text {
-                font-size: 12px;
-                text-transform: none;
-                text-shadow: @shadowDarker 0px -1px 1px;
+                .button-font-small();
+                text-shadow: @shadowBlack 0px -1px 1px;
             }
             .ui-icon {
                 top: 0;

@@ -555,9 +555,9 @@ div[data-role="dialog"]{
 
 // Custom Fiddles for Tab Bar
 .s-tab-bar{
-    background-color: @black;
+    background: @black!important;
+    .border-bottom-radius(0);
     .ui-navbar {
-        .dark-grad();
         .border-bottom-radius(@cornersPage);
         padding: 3px 0;
         border-top: solid lighten(@grayDarkBg, 20%) 1px;
