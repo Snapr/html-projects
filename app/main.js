@@ -65,6 +65,45 @@ require(['config', 'jquery', 'backbone', 'photoswipe', 'auth', 'utils/local_stor
         $.mobile.linkBindingEnabled = false;
         $.mobile.defaultPageTransition = 'none';
         $.mobile.buttonMarkup.hoverDelay = 0;
+        $.mobile.defaultTransitionHandler = function( name, reverse, $to, $from ) {
+
+            // define TransitionHandler that simply shows $to and hides $from
+            // while doing other nessacary things like setting height and scroll
+            // the main way this differs from jQm defaults is that it's got
+            // absolutely nothing trasisition-related, they are nothing but trouble
+
+            var deferred = new $.Deferred(),
+                active  = $.mobile.urlHistory.getActive(),
+                toScroll = active.lastScroll || $.mobile.defaultHomeScroll,
+                screenHeight = $.mobile.getScreenHeight(),
+                toggleViewportClass = function() {
+                    $.mobile.pageContainer.toggleClass( "ui-mobile-viewport-transitioning viewport-" + name );
+                };
+
+            toggleViewportClass();
+
+                $to.css( "z-index", -10 );  // Prevent flickering in phonegap container: see comments at #4024 regarding iOS
+
+                    $to.addClass( $.mobile.activePageClass );
+                    $.mobile.focusPage( $to );
+                    $to.height( screenHeight + toScroll );
+                    $.event.special.scrollstart.enabled = false;
+                    window.scrollTo( 0, toScroll );
+                    setTimeout( function() {
+                        $.event.special.scrollstart.enabled = true;
+                    }, 150 );
+
+                $to.css( "z-index", "" );
+
+                if($from){
+                    $from.removeClass( $.mobile.activePageClass );
+                }
+
+            toggleViewportClass();
+
+            deferred.resolve( name, reverse, $to, $from, true );
+            return deferred.promise();
+        };
     });
     // now we can load jQmobile
     require(['jquery.mobile'], function(){
