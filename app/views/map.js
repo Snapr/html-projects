@@ -45,7 +45,7 @@ var map_view = page_view.extend({
         "submit .x-search": "keyword_search",
         "blur .x-search": "keyword_search",
         "vclick .x-search .ui-input-clear": "keyword_search_clear",
-        "vclick .x-time-btn": "map_time",
+        "click .x-time-btn": "map_time",
         "vclick .x-venue-pin" : "toggle_spot_label"
     },
 
