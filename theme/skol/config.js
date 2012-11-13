@@ -58,12 +58,18 @@ return {
     },
 
     pages: [
-        'home',
+        {
+            name: 'home',
+            template: theme_templates + 'home'
+        },
         'about',
         'about-snapr',
         'map',
         'app',
-        'login',
+        {
+            name: 'login',
+            template: theme_templates + 'login'
+        },
         'logout',
         'upload',
         'uploading',
@@ -81,13 +87,28 @@ return {
         'activity',
         'popular',
         'search',
-        'spots',
-        'spot',
-        'welcome',
+        {
+            name: 'spots',
+            template: theme_templates + 'spots'
+        },
+        {
+            name: 'spot',
+            template: theme_templates + 'spot'
+        },
+        {
+            name: 'welcome',
+            template: theme_templates + 'welcome'
+        },
         'snapr-apps',
         'forgot-password',
-        'join',
-        'join-success',
+        {
+            name: 'join',
+            template: theme_templates + 'join'
+        },
+        {
+            name: 'join-success',
+            template: theme_templates + 'success'
+        },
         'my-account',
         'find-friends',
         {
@@ -106,7 +127,10 @@ return {
         'tumblr-posts',
         'tumblr-xauth',
         'twitter-xauth',
-        'share',
+        {
+            name: 'share',
+            template: theme_templates + 'share'
+        },
         {
             name: 'user/followers',
             view: 'people',

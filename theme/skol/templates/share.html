@@ -1,0 +1,148 @@
+<div id="share" class="s-share-photo" data-role="page" data-short-title="Share" data-theme="a" class="x-no-drag" data-ajax="false">
+    <div data-role="header">
+        <a href="#/" data-role="button" data-icon="delete" data-iconpos="notext"></a>
+        <h1>Skol Share</h1>
+    </div>
+    <div data-role="content" data-theme="a">
+        <div class="x-content">
+            <% if(obj.photo){ %>
+                <form action="javascript: void(0);" >
+
+                    <div class="s-image-bg-layer s-full-height s-trans-bg">
+                        <div class="s-image-placeholder">
+                            <% if (img_url){%><img class="x-s-image-placeholder" src="<%= img_url %>" /><%}%>
+                        </div>
+
+                        <div class="s-image-toggle x-image-toggle s-show-share-settings action-icons">
+                            <a data-role="button" data-icon="arrow-u" data-iconpos="right" >
+                                Show Options
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="s-share-settings-layer s-full-height s-trans-bg">
+                        <div class="s-share-settings">
+                                <% if(comp){ %>Comp: <%= comp.get('title') %><% } %>
+                                <textarea name="description" id="description" class="x-description" placeholder="Add text..." data-theme="d"><%= saved_description %></textarea>
+
+                                <% if(comp && comp.has('hashtag')){ %><span class="s-comp-hashtag"><%= comp.get('hashtag') %></span><% } %>
+
+
+
+                                <fieldset data-role="controlgroup" data-type="horizontal" class="s-upload-image-privacy">
+                                    <input type="checkbox" class="x-status" name="status" id="image-status" <% if (status != "private"){%> checked="true" <%}%> />
+                                    <label for="image-status">&nbsp;<span class="ui-icon"></span></label>
+                                </fieldset>
+
+
+                                <fieldset data-role="controlgroup" data-type="horizontal" class="x-image-sharing s-upload-image-sharing">
+                                    <legend>Share to:</legend>
+
+                                    <input type="checkbox" name="tweet" id="twitter-sharing"
+                                    <%if (status == "private"){%>disabled="true"<%}%>
+                                    <%if (twitter_sharing && status != "private"){%>checked="true"<%}%> />
+                                    <label for="twitter-sharing"><span class="ui-icon"></span>Twitter</label>
+
+                                    <input type="checkbox" name="facebook_album" id="facebook-sharing"
+                                    <%if (status == "private"){%>disabled="true"<%}%>
+                                    <%if (facebook_sharing && status != "private"){%>checked="true"<%}%>/>
+                                    <label for="facebook-sharing"><span class="ui-icon"></span>Facebook</label>
+
+                                    <input type="checkbox" name="tumblr" id="tumblr-sharing"
+                                    <%if (status == "private"){%>disabled="true"<%}%>
+                                    <%if (tumblr_sharing  && status != "private"){%>checked="true"<%}%> />
+                                    <label for="tumblr-sharing"><span class="ui-icon"></span>Tumblr</label>
+
+                                    <input type="checkbox" name="foursquare_checkin" id="foursquare-sharing"
+                                    <%if (status == "private"){%>disabled="true"<%}%>
+                                    <%if (foursquare_sharing && status != "private"){%>checked="true"<%}%> />
+                                    <label for="foursquare-sharing"><span class="ui-icon"></span>Foursquare</label>
+
+                                </fieldset>
+
+                                <hr />
+
+                                <fieldset class="s-upload-image-location action-icons">
+
+                                    <div id="no-foursquare-venue"
+                                        <% if (foursquare_sharing && status != "private"){%> style="display:none;"<%}%>
+                                         class="<% if (photo.attributes.location && !photo.attributes.location.location){%>x-ajax-loading <%}%>x-no-foursquare-venue">
+
+                                        <span class="s-image-location">
+                                            <input type="checkbox" name="share-location" class="x-share-location" id="share-location" <%if (share_location){ %>checked="true"<% } %> />
+                                            <label for="share-location" class="ui-shadow"><span class="ui-icon ui-icon-location share-location-label" ></span>
+                                                <span class="x-location-name s-location-name">
+                                                <% if (photo.attributes.location && photo.attributes.location.location){%>
+                                                     <%= photo.attributes.location.location %>
+                                                <% }else{ %>
+                                                    <% if (saved_location){ %>
+                                                      <%= saved_location %>
+                                                    <% }else{ %>
+                                                      <% if (share_location){ %>
+                                                          Getting location&hellip;
+                                                      <% }else{ %>
+                                                          Share location.
+                                                      <% } %>
+                                                    <% } %>
+                                                <% } %>
+                                                </span>
+                                            </label>
+                                        </span>
+                                    </div>
+                                    <div id="foursquare-venue"
+                                        <%if (!foursquare_sharing || status == "private"){%> style="display:none;"<%}%>
+                                        class="<% if (photo.attributes.location && !photo.attributes.location.foursquare_venue_name){%>x-ajax-loading<%}%> x-foursquare-venue">
+                                        <a data-role="button" id="foursquare-venue" data-icon="arrow-right">
+                                            <span class="ui-icon ui-icon-venue"></span>
+                                            <span class="s-foursquare-venue-name x-foursquare-venue-name">
+                                                <% if (photo.attributes.location && photo.attributes.location.foursquare_venue_name){%>
+                                                    <%= photo.attributes.location.foursquare_venue_name %>
+                                                <%}else{%>
+                                                    Getting Venue&hellip;
+                                                <%}%>
+                                            </span>
+                                        </a>
+                                    </div>
+                                    <div class="x-no-location hide">
+                                        <a data-role="button" data-icon="arrow-right">
+                                            <span class="ui-icon ui-icon-location"></span>
+                                            <span>
+                                                Location Disabled
+                                            </span>
+                                        </a>
+                                    </div>
+                                </fieldset>
+
+                                <div class="ui-grid-b">
+                                    <div class="ui-block-a">
+                                        <% if (camplus){ %>
+                                        <a data-role="button" data-theme="a" class="x-camplus-edit-photo camplus-icon">Edit with Camera&#43;</a>
+                                        <% } %>
+                                    </div>
+
+                                    <div class="ui-block-b">
+                                    <% if (edit){ %>
+                                        <a data-role="button" data-theme="d" class="x-edit-photo">Edit</a>
+                                    <% } %>
+                                    </div>
+
+                                    <div class="ui-block-c">
+                                        <input type="submit" data-role="button" data-theme="e" class="share" value="Share"/>
+                                    </div>
+                                </div>
+                            </div>
+
+                        <div class="s-image-toggle x-image-toggle action-icons">
+                            <a class="" data-role="button" data-icon="arrow-d" data-iconpos="right" >
+                                Show Photo
+                            </a>
+                        </div>
+
+                    </div>
+                </form>
+            <% } %>
+        </div>
+
+
+    </div>
+</div>

@@ -1,0 +1,110 @@
+<div id="spots" data-title="Spots" data-tab-bar="true" data-add-back-btn="true" data-role="page" data-theme="d">
+    <div data-role="header" data-theme="b">
+        <h1>Skol Spots</h1>
+
+        <div class="ui-btn-right" data-ajax="false">
+            <a href="#/map/" data-role="button" data-icon="map" data-iconpos="notext"></a>
+            <a href="#/home/" data-role="button" data-icon="home" data-iconpos="notext"></a>
+        </div>
+    </div>
+
+    <div data-role="content" data-theme="d" data-ajax="false">
+        <div class="s-inline-header ui-body-c s-search-header">
+            <div class="ui-content">
+                <form id="spots-search" class="all-categories">
+                    <input type="search" id="spot-search" class="x-search-field" value="" placeholder="Venue Name&hellip;" />
+
+                    <div class="s-spots-search-filters">
+                        <span class="s-distance-btn">
+
+                            <select data-theme="c" name="location" id="options-location" class="x-location" data-native-menu="true">
+                                <option value='anywhere' id="location-anywhere">&#8734;</option>
+                                <option value='1000' id='location-walking' class="x-location-needed">1k</option>
+                                <option value='10000' id='location-driving' class="x-location-needed">10k</option>
+                                <option value='50000' id='location-travelling' class="x-location-needed">50k</option>
+                            </select>
+                        </span>
+
+                        <div class="ui-grid-a">
+                            <div class="ui-block-a">
+                                <select data-theme="c" name="sort" id="options-sort" class="x-sort" data-native-menu="true">
+                                    <option value='weighted_score' id='options-weighted_score'>Popular</option>
+                                    <option value='distance' class="x-location-needed" id="options-distance">Nearest</option>
+                                </select>
+
+                            </div>
+                            <div class="ui-block-b s-category-btn">
+                                <select data-theme="c" name="category" id="options-category" class="x-category" data-native-menu="true">
+                                    <option value='all' id='location-anywhere'>All</option>
+                                    <option value='food' id="category-nearby">Food</option>
+                                    <option value='nightlife-spots' id="category-nightlife-spots">Nightlife</option>
+                                    <option value='arts-and-entertainment' id="category-arts-and-entertainment">Arts</option>
+                                    <option value='great-outdoors' id="category-great-outdoors">Outdoors</option>
+                                    <option value='shops' id="category-shops">Shopping</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+
+        <div class="spots-results-content">
+            <div class="x-header">
+                <% if(obj.spots){ %>
+                    <% if(spots.length){ %>
+                        <a class="s-spots-results-header ui-bar" data-role="button" data-theme="e" data-iconpos="right" data-icon="arrow-r" href="#/map/?<%=params %>">
+                            <strong><%= spots.length %> results</strong>
+                            show on map
+                        </a>
+                    <% } else { %>
+                        <a class="s-spots-results-header ui-bar" data-role="button" data-theme="e">
+                            <strong>No results</strong>
+                        </a>
+                    <% } %>
+                <% } %>
+            </div>
+
+           <ul class="spots x-spots-list" data-theme="z">
+                <% if(obj.spots && spots.length){ %>
+                    <% spots.each(function(spot){ %>
+                        <li class="s-spot-list-item">
+                            <a class="s-spot-item <%= spot.get('category').slug %>" href="#/spot/?spot_id=<%=spot.get('id')%>" data-theme="z">
+                                <span class="s-spot-photo-crop">
+                                <% if (spot.get('info').hero_image) { %>
+                                    <img src="https://s3.amazonaws.com/media-server2.snapr.us/thm2/<%= spot.get('info').hero_image.secret %>/<%= spot.get('info').hero_image.id %>.jpg" class="s-thumb-image" />
+                                <%} else { %>
+                                    <div class="s-no-photo-yet">
+                                        no<br />
+                                        photos<br />
+                                        yet<br />
+                                    </div>
+                                <% } %>
+                                </span>
+
+                                <span class="s-spot-heading">
+                                    <h4 class="s-spot-name"><%= spot.get('name') %> <span class="ui-icon spot-icon"></span></h4>
+                                    <p class="s-spot-subheading s-small-text">
+                                        <% if (spot.get('location').distance) { %>
+                                        <%= string_utils.short_distance( spot.get('location').distance ) %>
+                                        <% } %>
+                                    </p>
+                                </span>
+                                <p class="s-spot-address">
+                                    <% if (spot.get('location').address !== "False") { %>
+                                        <%= spot.get('location').address %></br>
+                                    <% } %>
+                                    <% if (spot.get('location').city !== "False") { %>
+                                        <%= spot.get('location').city %>
+                                    <% } %>
+                                </p>
+                            </a>
+                        </li>
+                    <% }) %>
+                <% } %>
+           </ul>
+       </div>
+
+   </div>
+</div>
