@@ -1198,88 +1198,88 @@
 }
 .ui-icon.spot-icon,
 .s-category-btn .ui-icon {
-  background-position: 0px 0px;
+  background-position: -2px 0px;
   background-image: url('../gfx/spot-icons.png');
-  width: 24px !important;
+  width: 20px !important;
   height: 24px !important;
 }
 .great-outdoors .s-category-btn .ui-icon,
 .great-outdoors .spot-icon {
-  background-position: 0px -24px;
+  background-position: -2px -24px;
 }
 .shops .s-category-btn .ui-icon,
 .shops .spot-icon {
-  background-position: 0px -48px;
+  background-position: -2px -48px;
 }
 .nightlife-spots .s-category-btn .ui-icon,
 .nightlife-spots .spot-icon {
-  background-position: 0px -96px;
+  background-position: -2px -96px;
 }
 .food .s-category-btn .ui-icon,
 .food .spot-icon {
-  background-position: 0px -120px;
+  background-position: -2px -120px;
 }
 .arts-and-entertainment .s-category-btn .ui-icon,
 .arts-and-entertainment .spot-icon {
-  background-position: 0px -144px;
+  background-position: -2px -144px;
 }
 .all-categories .s-category-btn .ui-icon,
 .all-categories .spot-icon {
-  background-position: 0px -192px;
+  background-position: -2px -192px;
 }
 .ui-icon.spot-icon-b {
-  background-position: -48px 0px;
+  background-position: -50px 0px;
 }
 .great-outdoors .spot-icon-b.spot-icon {
-  background-position: -48px -24px;
+  background-position: -50px -24px;
 }
 .shops .spot-icon-b.spot-icon {
-  background-position: -48px -48px;
+  background-position: -50px -48px;
 }
 .nightlife-spots .spot-icon-b.spot-icon {
-  background-position: -48px -96px;
+  background-position: -50px -96px;
 }
 .food .spot-icon-b.spot-icon {
-  background-position: -48px -120px;
+  background-position: -50px -120px;
 }
 .arts-and-entertainment .spot-icon-b.spot-icon {
-  background-position: -48px -144px;
+  background-position: -50px -144px;
 }
 .all-categories .spot-icon-b.spot-icon {
-  background-position: -48px -192px;
+  background-position: -50px -192px;
 }
 .beer .spot-icon-b.spot-icon {
-  background-position: -48px -96px;
+  background-position: -50px -96px;
 }
 .cafe .spot-icon-b.spot-icon {
-  background-position: -48px -168px;
+  background-position: -50px -168px;
 }
 .ui-icon.dark-spot-icon {
-  background-position: -48px 0px;
+  background-position: -50px 0px;
 }
 .great-outdoors .dark-spot-icon.spot-icon {
-  background-position: -48px -24px;
+  background-position: -50px -24px;
 }
 .shops .dark-spot-icon.spot-icon {
-  background-position: -48px -48px;
+  background-position: -50px -48px;
 }
 .nightlife-spots .dark-spot-icon.spot-icon {
-  background-position: -48px -96px;
+  background-position: -50px -96px;
 }
 .food .dark-spot-icon.spot-icon {
-  background-position: -48px -120px;
+  background-position: -50px -120px;
 }
 .arts-and-entertainment .dark-spot-icon.spot-icon {
-  background-position: -48px -144px;
+  background-position: -50px -144px;
 }
 .all-categories .dark-spot-icon.spot-icon {
-  background-position: -48px -192px;
+  background-position: -50px -192px;
 }
 .beer .dark-spot-icon.spot-icon {
-  background-position: -48px -96px;
+  background-position: -50px -96px;
 }
 .cafe .dark-spot-icon.spot-icon {
-  background-position: -48px -168px;
+  background-position: -50px -168px;
 }
 .ui-icon.distance-icon,
 .s-distance-btn .ui-icon {
@@ -3179,8 +3179,8 @@ div[data-role="dialog"] {
   font-family: Helvetica, Arial, sans-serif;
   font-weight: normal;
   text-transform: lowercase;
-  height: 32px;
-  line-height: 32px;
+  height: 36px;
+  line-height: 36px;
   padding-top: 0;
   padding-bottom: 0;
   border-top: solid 1px #ffffff;
@@ -3190,8 +3190,8 @@ div[data-role="dialog"] {
 }
 .ui-bar .ui-btn .ui-btn-inner,
 .ui-bar.ui-btn .ui-btn-inner {
-  height: 32px;
-  line-height: 32px;
+  height: 36px;
+  line-height: 36px;
 }
 .ui-bar .ui-btn .ui-btn-text,
 .ui-bar.ui-btn .ui-btn-text {
@@ -3205,7 +3205,7 @@ div[data-role="dialog"] {
 .ui-bar.ui-btn .ui-btn-text .ui-icon {
   display: inline-block;
   margin-top: 0!important;
-  top: 0px;
+  top: 2px;
 }
 .ui-bar .ui-btn .ui-btn-text .ui-icon.spot-icon,
 .ui-bar.ui-btn .ui-btn-text .ui-icon.spot-icon {
@@ -4000,7 +4000,7 @@ textarea.ui-input-text {
   display: block;
 }
 .s-image-streams .x-stream .edit-overlay {
-  top: 32px;
+  top: 36px;
   width: 109%;
   background-color: rgba(255, 255, 255, 0.8);
   min-height: 109px;
@@ -4012,8 +4012,8 @@ textarea.ui-input-text {
 }
 .s-image-streams .x-stream.x-closed .edit-overlay {
   top: 0px;
-  height: 32px;
-  min-height: 32px;
+  height: 36px;
+  min-height: 36px;
   z-index: 30;
   background-color: rgba(255, 255, 255, 0.2);
 }
@@ -4454,7 +4454,7 @@ textarea.ui-input-text {
   text-shadow: #ffffff 0px 1px 1px;
 }
 .s-feed-header.s-inline-header .s-follow-btn {
-  height: 32px;
+  height: 36px;
 }
 .s-feed-header.s-inline-header .s-follow-btn .ui-icon {
   background-image: url('../gfx/general-jquerymob-icons.png');
@@ -5932,6 +5932,10 @@ div.ps-carousel-item-loading {
 }
 .s-spot-list-item .s-spot-item .s-spot-heading .s-spot-name {
   margin: 4px 0;
+  font-family: 'MuseoSansRounded700', Helvetica, Arial, sans-serif;
+  font-weight: normal;
+  font-size: 16px;
+  text-transform: none;
 }
 .s-spot-list-item .s-spot-item .s-spot-subheading {
   color: #666666;

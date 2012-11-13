@@ -347,6 +347,7 @@
 @gfxSpot-width:             72px;
 @gfxSpot-height:            216px;
 @gfxSpot-grid:              24px;
+@gfxSpot-x-shift:           -2px;
 
 @gfxSpot-y:                 -0 * @gfxSpot-grid; 
 @gfxSpot-y-greatOutdoors:   -1 * @gfxSpot-grid; 
@@ -358,9 +359,9 @@
 @gfxSpot-y-cafe:            -7 * @gfxSpot-grid; 
 @gfxSpot-y-all:             -8 * @gfxSpot-grid; 
 
-@gfxSpot-x-c:               -0 * @gfxSpot-grid;
-@gfxSpot-x-a:               -1 * @gfxSpot-grid;
-@gfxSpot-x-e:               -2 * @gfxSpot-grid;
+@gfxSpot-x-c:               -0 * @gfxSpot-grid + @gfxSpot-x-shift;
+@gfxSpot-x-a:               -1 * @gfxSpot-grid + @gfxSpot-x-shift;
+@gfxSpot-x-e:               -2 * @gfxSpot-grid + @gfxSpot-x-shift;
 
 
 // DISTANCE ICONS
