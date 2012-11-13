@@ -9,7 +9,7 @@ return {
         // initial_view: 'dash',  // "home page"
         show_tab_bar: false,
 
-        app_group: 'skol',
+        app_group: 'skol-night-solver',
 
         // client must have xAuth permission from 3rd party
         tumblr_xauth: true,
@@ -42,13 +42,13 @@ return {
     environments: {
         dev: {
             base_url: "http://dev.sna.pr",
-            client_id: "76e5be0eec71b28fb4380b0ac42201cf",
-            client_secret: "d293011a0a17dfc8aa191455af4ab7ba"
+            client_id: "57f3738e7b2a91307d93374f9ce56704",
+            client_secret: "88720baa153b65e3ef394aa1a191b8c4"
         },
         live: {
             base_url: "https://sna.pr",
-            client_id: "76e5be0eec71b28fb4380b0ac42201cf",
-            client_secret: "d293011a0a17dfc8aa191455af4ab7ba"
+            client_id: "ffdde1f702c98a7df05ac446359737d3",
+            client_secret: "b93808a52ac7f89c22c18fcd8e0aa1a6"
         },
         local: {
             base_url: "http://localhost:8000",
