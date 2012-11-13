@@ -502,7 +502,7 @@ div[data-role="dialog"]{
                 text-transform: lowercase;
             }
             &::after{
-                .arrow-up(@arrow-size, @white, 50% , 51px);
+                .arrow-up(@arrowSize, @white, 50% , 51px);
             }
         }
         .ui-btn-inner{
@@ -557,7 +557,7 @@ div[data-role="dialog"]{
 .s-tab-bar{
     background-color: @black;
     .ui-navbar {
-        .darkGrad();
+        .dark-grad();
         .border-bottom-radius(@cornersPage);
         padding: 3px 0;
         border-top: solid lighten(@grayDarkBg, 20%) 1px;
@@ -1365,7 +1365,7 @@ textarea.ui-input-text {
         }
     }     
     &::after{
-        .arrow-up(@arrow-size, @white, @avatarSizeLarge / 2, @avatarSizeLarge + @arrow-y-shift);
+        .arrow-up(@arrowSize, @white, @avatarSizeLarge / 2, @avatarSizeLarge + @arrowYShift);
         z-index: 10;
     } 
 }
@@ -1574,7 +1574,7 @@ textarea.ui-input-text {
                 .border-radius(10px);
                 padding: 6px;
                 &::after{
-                    .arrow-down(@arrow-size, @blackTint, 50%, @arrow-y-shift + 3px);
+                    .arrow-down(@arrowSize, @blackTint, 50%, @arrowYShift + 3px);
                 }
                 .ui-btn-icon-left .ui-btn-inner {
                     padding-left: @gfxDark-grid - 2px;
@@ -2641,7 +2641,7 @@ div.ps-carousel-item-loading
             width: 200px;
         }
         &::after{
-            .arrow-up(@arrow-size, @white, 186px ,@arrow-y-shift + 2px);
+            .arrow-up(@arrowSize, @white, 186px ,@arrowYShift + 2px);
         }
     }
 }
