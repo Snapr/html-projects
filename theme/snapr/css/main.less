@@ -1687,14 +1687,14 @@ textarea.ui-input-text {
 // @TUMBLR DASH
 // ------------------------
 
-.tumblr-item{
+.s-tumblr-item{
     min-height: @thumbSize;
    height: @thumbSize;
    overflow: hidden;
     margin: @padding + 1 -@padding;
     position: relative;
     display: block;
-    .tumblr-exceprt{
+    .s-tumblr-exceprt{
         text-align: left;
         background-color: @grayLighter;
         padding: @padding * 2;
@@ -1702,7 +1702,7 @@ textarea.ui-input-text {
         .box-sizing(border-box);
         .border-radius(@corners);
 
-        .crop-content{
+        .s-crop-content{
             text-overflow: ellipsis;
             overflow: hidden;
             height:62px;
@@ -1714,10 +1714,13 @@ textarea.ui-input-text {
             font-family: @fontSerif;
             font-style: italic;
             font-size: @fontSizeUsername;
-            small{
+            .s-small-text{
                 display: inline-block;
                 color: @grayDark;
                 margin-top: @padding;
+                font-size: @fontSize;
+                font-family: @fontSerif;
+                font-style: italic;
             }
         }
         p{
@@ -1727,7 +1730,7 @@ textarea.ui-input-text {
             font-style: italic;
             font-size: @fontSizeSmall;
         }
-        .tumblr-details{
+        .s-tumblr-details{
             position: relative;
             font-size: @fontSizeSmall;
             color:  @gray;
@@ -1744,8 +1747,8 @@ textarea.ui-input-text {
                 top: 0;
             }
         }
-        &.tumblr-photo,
-        &.tumblr-video{
+        &.s-tumblr-photo,
+        &.s-tumblr-video{
             margin-left: @thumbSize + 2px;
             blockquote{
                 margin-left: 0;
@@ -1754,7 +1757,7 @@ textarea.ui-input-text {
 
         }
     }
-    .tumblr-thumb{
+    .s-tumblr-thumb{
         position: absolute;
         left: 0;
         top: 0;

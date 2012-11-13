@@ -4841,7 +4841,7 @@ textarea.ui-input-text {
 .s-dash-edit-done .x-edit-dash .ui-icon-check {
   background-position: -243px -144px;
 }
-.tumblr-item {
+.s-tumblr-item {
   min-height: 101px;
   height: 101px;
   overflow: hidden;
@@ -4849,7 +4849,7 @@ textarea.ui-input-text {
   position: relative;
   display: block;
 }
-.tumblr-item .tumblr-exceprt {
+.s-tumblr-item .s-tumblr-exceprt {
   text-align: left;
   background-color: #f7f7f7;
   padding: 8px;
@@ -4861,12 +4861,12 @@ textarea.ui-input-text {
   -moz-border-radius: 6px;
   border-radius: 6px;
 }
-.tumblr-item .tumblr-exceprt .crop-content {
+.s-tumblr-item .s-tumblr-exceprt .s-crop-content {
   text-overflow: ellipsis;
   overflow: hidden;
   height: 62px;
 }
-.tumblr-item .tumblr-exceprt blockquote {
+.s-tumblr-item .s-tumblr-exceprt blockquote {
   margin: 4px;
   border-left: solid 2px #999999;
   padding-left: 8px;
@@ -4874,19 +4874,22 @@ textarea.ui-input-text {
   font-style: italic;
   font-size: 16px;
 }
-.tumblr-item .tumblr-exceprt blockquote small {
+.s-tumblr-item .s-tumblr-exceprt blockquote .s-small-text {
   display: inline-block;
   color: #666666;
   margin-top: 4px;
+  font-size: 15px;
+  font-family: Georgia, 'Times New Roman', Times, sans-serif;
+  font-style: italic;
 }
-.tumblr-item .tumblr-exceprt p {
+.s-tumblr-item .s-tumblr-exceprt p {
   margin: 6px 4px 4px 4px;
   color: #666666;
   font-family: Georgia, 'Times New Roman', Times, sans-serif;
   font-style: italic;
   font-size: 12px;
 }
-.tumblr-item .tumblr-exceprt .tumblr-details {
+.s-tumblr-item .s-tumblr-exceprt .s-tumblr-details {
   position: relative;
   font-size: 12px;
   color: #999999;
@@ -4899,22 +4902,22 @@ textarea.ui-input-text {
   box-sizing: border-box;
   top: 4px;
 }
-.tumblr-item .tumblr-exceprt .tumblr-details .tumblr-icon {
+.s-tumblr-item .s-tumblr-exceprt .s-tumblr-details .tumblr-icon {
   display: block;
   position: absolute;
   right: 0;
   top: 0;
 }
-.tumblr-item .tumblr-exceprt.tumblr-photo,
-.tumblr-item .tumblr-exceprt.tumblr-video {
+.s-tumblr-item .s-tumblr-exceprt.s-tumblr-photo,
+.s-tumblr-item .s-tumblr-exceprt.s-tumblr-video {
   margin-left: 103px;
 }
-.tumblr-item .tumblr-exceprt.tumblr-photo blockquote,
-.tumblr-item .tumblr-exceprt.tumblr-video blockquote {
+.s-tumblr-item .s-tumblr-exceprt.s-tumblr-photo blockquote,
+.s-tumblr-item .s-tumblr-exceprt.s-tumblr-video blockquote {
   margin-left: 0;
   border-left: 0;
 }
-.tumblr-item .tumblr-thumb {
+.s-tumblr-item .s-tumblr-thumb {
   position: absolute;
   left: 0;
   top: 0;

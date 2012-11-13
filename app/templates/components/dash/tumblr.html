@@ -12,41 +12,41 @@
     <div class="s-tumblr-stream x-posts">
         <% _.each(posts, function(post){ %>
 
-            <a class="tumblr-item" href="#/tumblr-posts/?host=<%= feed.host %>" data-ajax="false">
+            <a class="s-tumblr-item" href="#/tumblr-posts/?host=<%= feed.host %>" data-ajax="false">
 
                 <% switch(post.get('type')) { case 'text': %>
 
-                    <div class="tumblr-exceprt tumblr-text">
-                        <div class="crop-content">
+                    <div class="s-tumblr-exceprt s-tumblr-text">
+                        <div class="s-crop-content">
                             <% if(post.get('title')){ %>
                                 <blockquote>
                                     <%= post.get('title') %>
-                                    <small><%= post.get('body') %></small>
+                                    <span class="s-small-text"><%= post.get('body') %></span>
                                 </blockquote>
                             <% }else{ %>
                                     <blockquote><%= post.get('body') %></blockquote>
                             <% } %>
                         </div>
-                        <div class="tumblr-details"><%= string_utils.time_ago(post.get('date')) %> <% if(post.get('note_count')){ %>, <%= post.get('note_count') %> Notes<% } %> <span class="ui-icon tumblr-icon ui-icon-tumblr-text"></span>
+                        <div class="s-tumblr-details"><%= string_utils.time_ago(post.get('date')) %> <% if(post.get('note_count')){ %>, <%= post.get('note_count') %> Notes<% } %> <span class="ui-icon tumblr-icon ui-icon-tumblr-text"></span>
                         </div>
                     </div>
 
                 <% break; case 'photo': %>
 
-                    <div class="tumblr-thumb" style="background-size: cover; background-image:url(<%= (_.where(post.get('photos')[0].alt_sizes, {width:250}) || _.where(post.get('photos')[0].alt_sizes, {height:250}))[0].url %>)"></div>
+                    <div class="s-tumblr-thumb" style="background-size: cover; background-image:url(<%= (_.where(post.get('photos')[0].alt_sizes, {width:250}) || _.where(post.get('photos')[0].alt_sizes, {height:250}))[0].url %>)"></div>
 
-                    <div class="tumblr-exceprt tumblr-photo">
-                        <div class="crop-content">
+                    <div class="s-tumblr-exceprt s-tumblr-photo">
+                        <div class="s-crop-content">
                             <blockquote><%= post.get('caption').replace(/\n/g, '<br>' ) %></blockquote>
                         </div>
-                        <div class="tumblr-details"><%= string_utils.time_ago(post.get('date')) %> <% if(post.get('note_count')){ %>, <%= post.get('note_count') %> Notes<% } %> <span class="ui-icon tumblr-icon ui-icon-tumblr-photo"></span>
+                        <div class="s-tumblr-details"><%= string_utils.time_ago(post.get('date')) %> <% if(post.get('note_count')){ %>, <%= post.get('note_count') %> Notes<% } %> <span class="ui-icon tumblr-icon ui-icon-tumblr-photo"></span>
                         </div>
                     </div>
 
                 <% break; case 'link': %>
 
-                    <div class="tumblr-exceprt tumblr-link">
-                        <div class="crop-content">
+                    <div class="s-tumblr-exceprt s-tumblr-link">
+                        <div class="s-crop-content">
                             <% if(post.get('title')){ %>
                                 <blockquote>
                                     <%= post.get('title') %> &rarr;
@@ -54,43 +54,49 @@
                                 </blockquote>
                             <% }else{ %>
                                 <%= post.get('url') %> &rarr;
-                                <small><%= post.get('description').replace(/\n/g, '<br>' ) %></small>
+                                <span class="s-small-text"><%= post.get('description').replace(/\n/g, '<br>' ) %></span>
                             <% } %>
                         </div>
-                        <div class="tumblr-details"><%= string_utils.time_ago(post.get('date')) %> <% if(post.get('note_count')){ %>, <%= post.get('note_count') %> Notes<% } %> <span class="ui-icon tumblr-icon ui-icon-tumblr-link"></span>
+                        <div class="s-tumblr-details"><%= string_utils.time_ago(post.get('date')) %> <% if(post.get('note_count')){ %>, <%= post.get('note_count') %> Notes<% } %> <span class="ui-icon tumblr-icon ui-icon-tumblr-link"></span>
                         </div>
                     </div>
 
                 <% break; case 'video': %>
 
-                    <div class="tumblr-thumb" style="background-size: cover; background-image:url(<%= post.get('thumbnail_url') %>)"></div>
+                    <div class="s-tumblr-thumb" style="background-size: cover; background-image:url(<%= post.get('thumbnail_url') %>)"></div>
 
-                    <div class="tumblr-exceprt tumblr-video">
-                        <div class="crop-content">
+                    <div class="s-tumblr-exceprt s-tumblr-video">
+                        <div class="s-crop-content">
                             <blockquote><%= post.get('caption').replace(/\n/g, '<br>' ) %></blockquote>
                         </div>
-                        <div class="tumblr-details"><%= string_utils.time_ago(post.get('date')) %> <% if(post.get('note_count')){ %>, <%= post.get('note_count') %> Notes<% } %> <span class="ui-icon tumblr-icon ui-icon-tumblr-video"></span>
+                        <div class="s-tumblr-details"><%= string_utils.time_ago(post.get('date')) %> <% if(post.get('note_count')){ %>, <%= post.get('note_count') %> Notes<% } %> <span class="ui-icon tumblr-icon ui-icon-tumblr-video"></span>
                         </div>
                     </div>
 
                 <% break; case 'chat': %>
 
-                    <div class="tumblr-exceprt tumblr-chat">
-                        <div class="crop-content">
+                    <div class="s-tumblr-exceprt s-tumblr-chat">
+                        <div class="s-crop-content">
                             <blockquote>
-                                <%= post.get('title') %>
-                                <small><%= post.get('body') %></small>
+                                <%= post.get('title') %><br>
+                                <%if (post.get('dialogue')) {%>
+                                    <span class="s-small-text">
+                                        <%_.each(post.get('dialogue'), function(dialogue){%>
+                                            <em class="s-tumblr-chat-label"><%=dialogue.label%></em> <%=dialogue.phrase%><br>
+                                        <%});%>
+                                    </span>
+                                <%}%>
                             </blockquote>
 
                         </div>
-                        <div class="tumblr-details"><%= string_utils.time_ago(post.get('date')) %> <% if(post.get('note_count')){ %>, <%= post.get('note_count') %> Notes<% } %> <span class="ui-icon tumblr-icon ui-icon-tumblr-chat"></span>
+                        <div class="s-tumblr-details"><%= string_utils.time_ago(post.get('date')) %> <% if(post.get('note_count')){ %>, <%= post.get('note_count') %> Notes<% } %> <span class="ui-icon tumblr-icon ui-icon-tumblr-chat"></span>
                         </div>
                     </div>
 
                 <% break; case 'quote': %>
 
-                    <div class="tumblr-exceprt tumblr-quote">
-                        <div class="crop-content">
+                    <div class="s-tumblr-exceprt s-tumblr-quote">
+                        <div class="s-crop-content">
                             <blockquote>
                                 <%= post.get('text').replace(/\n/g, '<br>' ) %>
                             </blockquote>
@@ -98,18 +104,18 @@
                                 <p>&mdash; <%= post.get('source') %></p>
                             <% } %>
                         </div>
-                        <div class="tumblr-details"><%= string_utils.time_ago(post.get('date')) %> <% if(post.get('note_count')){ %>, <%= post.get('note_count') %> Notes<% } %> <span class="ui-icon tumblr-icon ui-icon-tumblr-quote"></span>
+                        <div class="s-tumblr-details"><%= string_utils.time_ago(post.get('date')) %> <% if(post.get('note_count')){ %>, <%= post.get('note_count') %> Notes<% } %> <span class="ui-icon tumblr-icon ui-icon-tumblr-quote"></span>
                         </div>
                     </div>
 
                 <% break; case 'audio': %>
 
-                    <div class="tumblr-exceprt tumblr-audio">
-                        <div class="crop-content">
+                    <div class="s-tumblr-exceprt s-tumblr-audio">
+                        <div class="s-crop-content">
                             <blockquote>
                                 <%= post.get('track_name') %>
                                 <% if(post.get('artist')){ %>
-                                <small>(<%= post.get('artist') %>)</small>
+                                <span class="s-small-text">(<%= post.get('artist') %>)</span>
                                 <% } %>
                             </blockquote>
                             <% if(post.get('caption')){ %>
@@ -118,7 +124,7 @@
                              <% } %>
 
                         </div>
-                        <div class="tumblr-details"><%= string_utils.time_ago(post.get('date')) %> <% if(post.get('note_count')){ %>, <%= post.get('note_count') %> Notes<% } %> <span class="ui-icon tumblr-icon ui-icon-tumblr-audio"></span>
+                        <div class="s-tumblr-details"><%= string_utils.time_ago(post.get('date')) %> <% if(post.get('note_count')){ %>, <%= post.get('note_count') %> Notes<% } %> <span class="ui-icon tumblr-icon ui-icon-tumblr-audio"></span>
                         </div>
                     </div>
 
@@ -128,8 +134,8 @@
         <% })%>
     </div>
 <% }else{ %>
-    <a class="tumblr-item">
-        <div class="tumblr-exceprt tumblr-loading">
+    <a class="s-tumblr-item">
+        <div class="s-tumblr-exceprt tumblr-loading">
         </div>
     </a>
 
