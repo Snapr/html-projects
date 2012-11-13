@@ -643,7 +643,7 @@ a:active {
 .s-image-streams .x-stream .edit-overlay.x-closed .edit-overlay .remove-stream .ui-btn-inner {
   padding: 4px 32px 4px 16px;
 }
-.edit .x-stream.user-stream .edit-overlay {
+.x-edit .x-stream.user-stream .edit-overlay {
   display: block;
 }
 .x-scroll-wrapper {
@@ -694,13 +694,13 @@ a:active {
 .s-dash-edit-done {
   display: none;
 }
-#dash.edit .s-dash-edit-done {
+#dash.x-edit .s-dash-edit-done {
   display: block;
 }
-#dash.edit .s-dash-wrapper {
+#dash.x-edit .s-dash-wrapper {
   margin-top: 120px;
 }
-#dash.edit .s-dash-footer {
+#dash.x-edit .s-dash-footer {
   position: absolute;
   top: 0;
   width: 100%;
@@ -721,14 +721,14 @@ a:active {
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
-#dash.edit .x-stream,
-#dash.edit .s-tumblr-streams,
-#dash.edit .s-competitions {
+#dash.x-edit .x-stream,
+#dash.x-edit .s-tumblr-streams,
+#dash.x-edit .s-competitions {
   display: none;
 }
-#dash.edit .x-stream.user-stream,
-#dash.edit .s-tumblr-streams.user-stream,
-#dash.edit .s-competitions.user-stream {
+#dash.x-edit .x-stream.user-stream,
+#dash.x-edit .s-tumblr-streams.user-stream,
+#dash.x-edit .s-competitions.user-stream {
   display: block;
 }
 #dash-add-person .s-people-list .x-follow-btn {

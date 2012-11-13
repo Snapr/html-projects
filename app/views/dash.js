@@ -236,7 +236,7 @@ var dash_view = page_view.extend({
     },
 
     edit_dash: function(){
-        this.$el.toggleClass('edit');
+        this.$el.toggleClass('x-edit');
     },
 
     data_query_link: function( e ){
@@ -365,7 +365,7 @@ var dash_tumblr_view = view.extend({
     },
     render: function () {
 
-        this.$el.addClass('open loading');
+        this.$el.addClass('x-open x-loading');
         this.$el.html( this.template({
             feed: this.options.feed,
             posts: []
@@ -533,7 +533,7 @@ var add_person = page_view.extend({
                 }
                 $.mobile.hidePageLoadingMsg();
             }});
-            this_back_view.$el.removeClass('edit');
+            this_back_view.$el.removeClass('x-edit');
             this_back();
             $.mobile.showPageLoadingMsg();
         });
@@ -641,7 +641,7 @@ var add_search = page_view.extend({
                     }
                     $.mobile.hidePageLoadingMsg();
                 }});
-                add_search.previous_view.$el.removeClass('edit');
+                add_search.previous_view.$el.removeClass('x-edit');
                 add_search.back();
 
                 $.mobile.showPageLoadingMsg();
@@ -668,7 +668,7 @@ var add_search = page_view.extend({
                 }
                 $.mobile.hidePageLoadingMsg();
             }});
-            this.previous_view.$el.removeClass('edit');
+            this.previous_view.$el.removeClass('x-edit');
             this.back();
 
             $.mobile.showPageLoadingMsg();
