@@ -3081,7 +3081,7 @@ div[data-role="header"] .ui-controlgroup .ui-radio label {
   color: #434748;
 }
 .s-inline-header.s-search-header .ui-content {
-  padding: 0;
+  padding: 0 0 8px 0;
 }
 .s-inline-header.s-account-header .ui-content {
   padding: 8px 0;
@@ -5854,7 +5854,7 @@ div.ps-carousel-item-loading {
   border-bottom: 14px solid #ffffff;
   position: absolute;
   top: -9px;
-  left: 186px;
+  left: 160px;
 }
 .s-spots-search-filters {
   padding-right: 44px;
@@ -5867,7 +5867,14 @@ div.ps-carousel-item-loading {
   border-radius: 20px;
 }
 .s-spots-search-filters .ui-select .ui-btn-icon-right .ui-btn-inner {
-  padding-right: 25px;
+  padding: 8px 25px 8px 10px;
+  font-family: 'MuseoSansRounded700', Helvetica, Arial, sans-serif;
+  font-weight: normal;
+  text-transform: none;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  text-transform: lowercase;
+  font-size: 15px;
 }
 .s-spots-search-filters .s-category-btn .ui-btn-inner {
   padding-right: 32px;
@@ -5899,9 +5906,11 @@ div.ps-carousel-item-loading {
 }
 .s-spots-search-filters .ui-grid-a .ui-block-a .ui-btn {
   margin-right: 4px;
+  margin-left: 0;
 }
 .s-spots-search-filters .ui-grid-a .ui-block-b .ui-btn {
   margin-left: 4px;
+  margin-right: 0;
 }
 .s-spots-results-header {
   position: relative;
