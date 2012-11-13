@@ -91,6 +91,7 @@ var map_view = page_view.extend({
         if (photo_params.photo_id) {
             map_params.show_spots = false;
             map_params.show_photos = true;
+            delete photo_params.username;
         }
         if (spot_params.id) {
             map_params.show_photos = false;
@@ -124,6 +125,7 @@ var map_view = page_view.extend({
         //this.filter_set_options();  // set initial state
         this.layers_set();
         this.spot_query_save(); // save the spot query params
+        this.photo_query_save(); // save the spot query params
 
 
         // location search
