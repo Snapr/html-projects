@@ -441,7 +441,7 @@ a:active{
 
 .s-image-loader-bg{
     background-color: @grayLight;
-    background-image: url('gfx/image-load.gif');
+    background-image: url('@{gfx}@{gfxImageLoad}');
     background-repeat: no-repeat;
     background-position: center;
     img{
@@ -628,7 +628,7 @@ a:active{
         &.x-loading {
             .s-load-more-inline{
                 .ui-icon-refresh{
-                    background-image: url('gfx/spinner.png');
+                    background-image: url('@{gfx}@{gfxSpinner}');
                     background-position: center;
                     .spin();
                 }
@@ -1697,12 +1697,12 @@ a:active{
 
 .s-iOS-appstore .s-platform-logo{
     background-repeat: no-repeat;
-    background-image: url('gfx/iphone-appstore.png');
+    background-image: url('@{gfx}@{gfxAppStore}');
 }
 
 .s-android-marketplace .s-platform-logo{
     background-repeat: no-repeat;
-    background-image: url('gfx/android-logo.png');
+    background-image: url('@{gfx}@{gfxGooglePlay}');
 }
 
 
@@ -1711,11 +1711,9 @@ a:active{
 
 div.ps-carousel-item-loading
 {
-    background: url('gfx/image-load-dark.gif') no-repeat center center;
+    background: url('@{gfx}@{gfxImageLoadDark}') no-repeat center center;
 }
 
-
-// @X - thumb pins etc..
 
 // @MAP
 //------------------
@@ -1783,7 +1781,7 @@ div.ps-carousel-item-loading
             position: absolute;
             top:83px;
             left: 32px;
-            background-image: url('gfx/map-pin.png');
+            background-image: url('@{gfx}@{gfxMapPin}');
             width:28px;
             height: 35px;
             display: block;
@@ -1792,17 +1790,16 @@ div.ps-carousel-item-loading
             position: absolute;
             top: 0;
             left: 0;
-            background-image: url('gfx/map-thumb-bg.png');
+            background-image: url('@{gfx}@{gfxMapThumb}');
             width:78px;
             height: 88px;
             display: block;
         }
     }
 
-
     .s-map-venue{
         .s-venue-pin{
-            background-image: url('gfx/map-spot-pin.png');
+            background-image: url('@{gfx}@{gfxMapSpotPin}');
             position: absolute;
             display: block;
             bottom: 0;
@@ -1813,7 +1810,7 @@ div.ps-carousel-item-loading
         }
         .s-venue-label{
             display: none;
-            background-image: url('gfx/map-spot-label.png');
+            background-image: url('@{gfx}@{gfxMapSpotLabel}');
             position: absolute;
             bottom: 23px;
             left: -70px;
@@ -1854,7 +1851,7 @@ div.ps-carousel-item-loading
         width: 17px;
         height: 17px;
         z-index: 100;
-        background-image: url('gfx/map-current-location-marker.png');
+        background-image: url('@{gfx}@{gfxMapCurrentLoc}');
     }
 
 
@@ -2283,5 +2280,203 @@ body.x-browser-testing{
         width: 320px!important;
     }
 }
+
+
+// @1.5X RES GFX
+//---------------------
+
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5) {
+    .s-image-loader-bg{
+        background-image: url('@{gfxHDPI}@{gfxImageLoad}');
+        .background-size(@gfxImageLoad-width @gfxImageLoad-height);
+        
+    }
+    .s-image-streams{
+        .x-stream{      
+            .s-load-more-inline{
+                .ui-icon-refresh{
+                    background-image: url('@{gfxHDPI}@{gfxRefresh}');
+                    .background-size(@gfxRefresh-width @gfxRefresh-height);
+                    
+                }
+            }
+            &.x-loading {
+                .s-load-more-inline{
+                    .ui-icon-refresh{
+                        background-image: url('@{gfxHDPI}@{gfxSpinner}');
+                        .background-size(@gfxSpinner-width @gfxRefresh-height);
+                    }
+                }
+            }
+        }
+    }
+    .s-tumblr-credit{
+        background-image: url('@{gfxHDPI}@{gfxTumblrLogo}');
+        .background-size(@gfxTumblrLogo-width @gfxTumblrLogo-height);
+        
+    }
+    .ui-icon.tumblr-icon{
+        background-image: url('@{gfxHDPI}@{gfxTumblr}');
+        .background-size(@gfxTumblr-width @gfxTumblr-height);        
+    }
+    .s-share-icon-small{
+        .ui-icon{
+            background-image: url('@{gfxHDPI}@{gfxShareSmall}');
+            .background-size(@gfxShareSmall-width @gfxShareSmall-height);        
+        }
+    }
+    .s-iOS-appstore .s-platform-logo{
+        background-image: url('@{gfxHDPI}@{gfxAppStore}');
+        .background-size(@gfxAppStore-width @gfxAppStore-height);  
+    }
+    .s-android-marketplace .s-platform-logo{
+        background-image: url('@{gfxHDPI}@{gfxGooglePlay}');
+        .background-size(@gfxGooglePlay-width @gfxGooglePlay-height);        
+    }
+    div.ps-carousel-item-loading
+    {
+        background: url('@{gfxHDPI}@{gfxImageLoadDark}') no-repeat center center;
+        .background-size(@gfxImageLoadDark-width @gfxImageLoadDark-height);        
+        
+    }
+    .s-photo-map{
+        .s-map-thumb {
+            .s-map-pin{
+                background-image: url('@{gfxHDPI}@{gfxMapPin}');
+                .background-size(@gfxMapPin-width @gfxMapPin-height);        
+            }
+            .s-thumb-bg {
+                background-image: url('@{gfxHDPI}@{gfxMapThumb}');
+                .background-size(@gfxMapThumb-width @gfxMapThumb-height);        
+            }
+        }
+        .s-map-venue{
+            .s-venue-pin{
+                background-image: url('@{gfxHDPI}@{gfxMapSpotPin}');
+                .background-size(@gfxMapSpotPin-width @gfxMapSpotPin-height);        
+            }
+            .s-venue-label{
+                background-image: url('@{gfxHDPI}@{gfxMapSpotLabel}');
+                .background-size(@gfxMapSpotLabel-width @gfxMapSpotLabel-height);        
+            }   
+        }
+        .s-map-current-location{
+            background-image: url('@{gfxHDPI}@{gfxMapCurrentLoc}');
+            .background-size(@gfxMapCurrentLoc-width @gfxMapCurrentLoc-height);        
+        }    
+    }
+    .s-spot-header{
+        .s-foursquare-btn{
+            .ui-icon-foursquare-logo{
+                background-image: url('@{gfxHDPI}@{gfxFoursquareBtn}');
+                .background-size(@gfxFoursquareBtn-width @gfxFoursquareBtn-height);        
+            }
+        }
+    }
+    .s-button-logo{
+        background-image: url('@{gfxHDPI}@{gfxService}');
+        .background-size(@gfxService-width @gfxService-height);        
+    }
+}
+
+
+
+// @2X RES GFX
+//---------------------
+
+@media only screen and (-webkit-min-device-pixel-ratio: 2) {
+    .s-image-loader-bg{
+        background-image: url('@{gfxRetina}@{gfxImageLoad}');
+        .background-size(@gfxImageLoad-width @gfxImageLoad-height);
+        
+    }
+    .s-image-streams{
+        .x-stream{      
+            .s-load-more-inline{
+                .ui-icon-refresh{
+                    background-image: url('@{gfxRetina}@{gfxRefresh}');
+                    .background-size(@gfxRefresh-width @gfxRefresh-height);
+                    
+                }
+            }
+            &.x-loading {
+                .s-load-more-inline{
+                    .ui-icon-refresh{
+                        background-image: url('@{gfxRetina}@{gfxSpinner}');
+                        .background-size(@gfxSpinner-width @gfxRefresh-height);
+                    }
+                }
+            }
+        }
+    }
+    .s-tumblr-credit{
+        background-image: url('@{gfxRetina}@{gfxTumblrLogo}');
+        .background-size(@gfxTumblrLogo-width @gfxTumblrLogo-height);
+        
+    }
+    .ui-icon.tumblr-icon{
+        background-image: url('@{gfxRetina}@{gfxTumblr}');
+        .background-size(@gfxTumblr-width @gfxTumblr-height);        
+    }
+    .s-share-icon-small{
+        .ui-icon{
+            background-image: url('@{gfxRetina}@{gfxShareSmall}');
+            .background-size(@gfxShareSmall-width @gfxShareSmall-height);        
+        }
+    }
+    .s-iOS-appstore .s-platform-logo{
+        background-image: url('@{gfxRetina}@{gfxAppStore}');
+        .background-size(@gfxAppStore-width @gfxAppStore-height);  
+    }
+    .s-android-marketplace .s-platform-logo{
+        background-image: url('@{gfxRetina}@{gfxGooglePlay}');
+        .background-size(@gfxGooglePlay-width @gfxGooglePlay-height);        
+    }
+    div.ps-carousel-item-loading
+    {
+        background: url('@{gfxRetina}@{gfxImageLoadDark}') no-repeat center center;
+        .background-size(@gfxImageLoadDark-width @gfxImageLoadDark-height);        
+        
+    }
+    .s-photo-map{
+        .s-map-thumb {
+            .s-map-pin{
+                background-image: url('@{gfxRetina}@{gfxMapPin}');
+                .background-size(@gfxMapPin-width @gfxMapPin-height);        
+            }
+            .s-thumb-bg {
+                background-image: url('@{gfxRetina}@{gfxMapThumb}');
+                .background-size(@gfxMapThumb-width @gfxMapThumb-height);        
+            }
+        }
+        .s-map-venue{
+            .s-venue-pin{
+                background-image: url('@{gfxRetina}@{gfxMapSpotPin}');
+                .background-size(@gfxMapSpotPin-width @gfxMapSpotPin-height);        
+            }
+            .s-venue-label{
+                background-image: url('@{gfxRetina}@{gfxMapSpotLabel}');
+                .background-size(@gfxMapSpotLabel-width @gfxMapSpotLabel-height);        
+            }   
+        }
+        .s-map-current-location{
+            background-image: url('@{gfxRetina}@{gfxMapCurrentLoc}');
+            .background-size(@gfxMapCurrentLoc-width @gfxMapCurrentLoc-height);        
+        }    
+    }
+    .s-spot-header{
+        .s-foursquare-btn{
+            .ui-icon-foursquare-logo{
+                background-image: url('@{gfxRetina}@{gfxFoursquareBtn}');
+                .background-size(@gfxFoursquareBtn-width @gfxFoursquareBtn-height);        
+            }
+        }
+    }
+    .s-button-logo{
+        background-image: url('@{gfxRetina}@{gfxService}');
+        .background-size(@gfxService-width @gfxService-height);        
+    }
+}
+
 
 

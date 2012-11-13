@@ -2051,3 +2051,231 @@ body.x-browser-testing .ui-footer,
 body.x-browser-testing .ui-footer-fixed {
   width: 320px!important;
 }
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5) {
+  .s-image-loader-bg {
+    background-image: url('gfx/hdpi/image-load.gif');
+    -webkit-background-size: 24px 24px;
+    -moz-background-size: 24px 24px;
+    -o-background-size: 24px 24px;
+    background-size: 24px 24px;
+  }
+  .s-image-streams .x-stream .s-load-more-inline .ui-icon-refresh {
+    background-image: url('gfx/hdpi/pull-to-refresh.png');
+    -webkit-background-size: 56px 168px;
+    -moz-background-size: 56px 168px;
+    -o-background-size: 56px 168px;
+    background-size: 56px 168px;
+  }
+  .s-image-streams .x-stream.x-loading .s-load-more-inline .ui-icon-refresh {
+    background-image: url('gfx/hdpi/spinner.png');
+    -webkit-background-size: 56px 168px;
+    -moz-background-size: 56px 168px;
+    -o-background-size: 56px 168px;
+    background-size: 56px 168px;
+  }
+  .s-tumblr-credit {
+    background-image: url('gfx/hdpi/tumblr-logo.png');
+    -webkit-background-size: 115px 25px;
+    -moz-background-size: 115px 25px;
+    -o-background-size: 115px 25px;
+    background-size: 115px 25px;
+  }
+  .ui-icon.tumblr-icon {
+    background-image: url('gfx/hdpi/tumblr-post-icons.png');
+    -webkit-background-size: 48px 168px;
+    -moz-background-size: 48px 168px;
+    -o-background-size: 48px 168px;
+    background-size: 48px 168px;
+  }
+  .s-share-icon-small .ui-icon {
+    background-image: url('gfx/hdpi/share-icons-small.png');
+    -webkit-background-size: 21px 84px;
+    -moz-background-size: 21px 84px;
+    -o-background-size: 21px 84px;
+    background-size: 21px 84px;
+  }
+  .s-iOS-appstore .s-platform-logo {
+    background-image: url('gfx/hdpi/iphone-appstore.png');
+    -webkit-background-size: 200px 60px;
+    -moz-background-size: 200px 60px;
+    -o-background-size: 200px 60px;
+    background-size: 200px 60px;
+  }
+  .s-android-marketplace .s-platform-logo {
+    background-image: url('gfx/hdpi/android-logo.png');
+    -webkit-background-size: 200px 60px;
+    -moz-background-size: 200px 60px;
+    -o-background-size: 200px 60px;
+    background-size: 200px 60px;
+  }
+  div.ps-carousel-item-loading {
+    background: url('gfx/hdpi/image-load-dark.gif') no-repeat center center;
+    -webkit-background-size: 24px 24px;
+    -moz-background-size: 24px 24px;
+    -o-background-size: 24px 24px;
+    background-size: 24px 24px;
+  }
+  .s-photo-map .s-map-thumb .s-map-pin {
+    background-image: url('gfx/hdpi/map-pin.png');
+    -webkit-background-size: 28px 35px;
+    -moz-background-size: 28px 35px;
+    -o-background-size: 28px 35px;
+    background-size: 28px 35px;
+  }
+  .s-photo-map .s-map-thumb .s-thumb-bg {
+    background-image: url('gfx/hdpi/map-thumb-bg.png');
+    -webkit-background-size: 78px 88px;
+    -moz-background-size: 78px 88px;
+    -o-background-size: 78px 88px;
+    background-size: 78px 88px;
+  }
+  .s-photo-map .s-map-venue .s-venue-pin {
+    background-image: url('gfx/hdpi/map-spot-pin.png');
+    -webkit-background-size: 36px 28px;
+    -moz-background-size: 36px 28px;
+    -o-background-size: 36px 28px;
+    background-size: 36px 28px;
+  }
+  .s-photo-map .s-map-venue .s-venue-label {
+    background-image: url('gfx/hdpi/map-spot-label.png');
+    -webkit-background-size: 139px 47px;
+    -moz-background-size: 139px 47px;
+    -o-background-size: 139px 47px;
+    background-size: 139px 47px;
+  }
+  .s-photo-map .s-map-current-location {
+    background-image: url('gfx/hdpi/map-current-location-marker.png');
+    -webkit-background-size: 17px 17px;
+    -moz-background-size: 17px 17px;
+    -o-background-size: 17px 17px;
+    background-size: 17px 17px;
+  }
+  .s-spot-header .s-foursquare-btn .ui-icon-foursquare-logo {
+    background-image: url('gfx/hdpi/foursquare-btn.png');
+    -webkit-background-size: 69px 24px;
+    -moz-background-size: 69px 24px;
+    -o-background-size: 69px 24px;
+    background-size: 69px 24px;
+  }
+  .s-button-logo {
+    background-image: url('gfx/hdpi/service-full-logos.png');
+    -webkit-background-size: 150px 180px;
+    -moz-background-size: 150px 180px;
+    -o-background-size: 150px 180px;
+    background-size: 150px 180px;
+  }
+}
+@media only screen and (-webkit-min-device-pixel-ratio: 2) {
+  .s-image-loader-bg {
+    background-image: url('gfx/retina/image-load.gif');
+    -webkit-background-size: 24px 24px;
+    -moz-background-size: 24px 24px;
+    -o-background-size: 24px 24px;
+    background-size: 24px 24px;
+  }
+  .s-image-streams .x-stream .s-load-more-inline .ui-icon-refresh {
+    background-image: url('gfx/retina/pull-to-refresh.png');
+    -webkit-background-size: 56px 168px;
+    -moz-background-size: 56px 168px;
+    -o-background-size: 56px 168px;
+    background-size: 56px 168px;
+  }
+  .s-image-streams .x-stream.x-loading .s-load-more-inline .ui-icon-refresh {
+    background-image: url('gfx/retina/spinner.png');
+    -webkit-background-size: 56px 168px;
+    -moz-background-size: 56px 168px;
+    -o-background-size: 56px 168px;
+    background-size: 56px 168px;
+  }
+  .s-tumblr-credit {
+    background-image: url('gfx/retina/tumblr-logo.png');
+    -webkit-background-size: 115px 25px;
+    -moz-background-size: 115px 25px;
+    -o-background-size: 115px 25px;
+    background-size: 115px 25px;
+  }
+  .ui-icon.tumblr-icon {
+    background-image: url('gfx/retina/tumblr-post-icons.png');
+    -webkit-background-size: 48px 168px;
+    -moz-background-size: 48px 168px;
+    -o-background-size: 48px 168px;
+    background-size: 48px 168px;
+  }
+  .s-share-icon-small .ui-icon {
+    background-image: url('gfx/retina/share-icons-small.png');
+    -webkit-background-size: 21px 84px;
+    -moz-background-size: 21px 84px;
+    -o-background-size: 21px 84px;
+    background-size: 21px 84px;
+  }
+  .s-iOS-appstore .s-platform-logo {
+    background-image: url('gfx/retina/iphone-appstore.png');
+    -webkit-background-size: 200px 60px;
+    -moz-background-size: 200px 60px;
+    -o-background-size: 200px 60px;
+    background-size: 200px 60px;
+  }
+  .s-android-marketplace .s-platform-logo {
+    background-image: url('gfx/retina/android-logo.png');
+    -webkit-background-size: 200px 60px;
+    -moz-background-size: 200px 60px;
+    -o-background-size: 200px 60px;
+    background-size: 200px 60px;
+  }
+  div.ps-carousel-item-loading {
+    background: url('gfx/retina/image-load-dark.gif') no-repeat center center;
+    -webkit-background-size: 24px 24px;
+    -moz-background-size: 24px 24px;
+    -o-background-size: 24px 24px;
+    background-size: 24px 24px;
+  }
+  .s-photo-map .s-map-thumb .s-map-pin {
+    background-image: url('gfx/retina/map-pin.png');
+    -webkit-background-size: 28px 35px;
+    -moz-background-size: 28px 35px;
+    -o-background-size: 28px 35px;
+    background-size: 28px 35px;
+  }
+  .s-photo-map .s-map-thumb .s-thumb-bg {
+    background-image: url('gfx/retina/map-thumb-bg.png');
+    -webkit-background-size: 78px 88px;
+    -moz-background-size: 78px 88px;
+    -o-background-size: 78px 88px;
+    background-size: 78px 88px;
+  }
+  .s-photo-map .s-map-venue .s-venue-pin {
+    background-image: url('gfx/retina/map-spot-pin.png');
+    -webkit-background-size: 36px 28px;
+    -moz-background-size: 36px 28px;
+    -o-background-size: 36px 28px;
+    background-size: 36px 28px;
+  }
+  .s-photo-map .s-map-venue .s-venue-label {
+    background-image: url('gfx/retina/map-spot-label.png');
+    -webkit-background-size: 139px 47px;
+    -moz-background-size: 139px 47px;
+    -o-background-size: 139px 47px;
+    background-size: 139px 47px;
+  }
+  .s-photo-map .s-map-current-location {
+    background-image: url('gfx/retina/map-current-location-marker.png');
+    -webkit-background-size: 17px 17px;
+    -moz-background-size: 17px 17px;
+    -o-background-size: 17px 17px;
+    background-size: 17px 17px;
+  }
+  .s-spot-header .s-foursquare-btn .ui-icon-foursquare-logo {
+    background-image: url('gfx/retina/foursquare-btn.png');
+    -webkit-background-size: 69px 24px;
+    -moz-background-size: 69px 24px;
+    -o-background-size: 69px 24px;
+    background-size: 69px 24px;
+  }
+  .s-button-logo {
+    background-image: url('gfx/retina/service-full-logos.png');
+    -webkit-background-size: 150px 180px;
+    -moz-background-size: 150px 180px;
+    -o-background-size: 150px 180px;
+    background-size: 150px 180px;
+  }
+}
