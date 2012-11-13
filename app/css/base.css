@@ -2278,4 +2278,16 @@ body.x-browser-testing .ui-footer-fixed {
     -o-background-size: 150px 180px;
     background-size: 150px 180px;
   }
+  .s-validate .x-validating .ui-icon-check {
+    display: block;
+    background-image: url('gfx/retina/small-spinner-light.png') !important;
+    background-position: center!important;
+    background-repeat: no-repeat !important;
+  }
+  .x-loading .s-search-header .ui-input-search .ui-input-clear .ui-icon-delete {
+    display: block;
+    background-image: url('gfx/retina/small-spinner-light.png') !important;
+    background-position: center!important;
+    background-repeat: no-repeat !important;
+  }
 }

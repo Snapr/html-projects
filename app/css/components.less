@@ -2377,6 +2377,25 @@ body.x-browser-testing{
         background-image: url('@{gfxHDPI}@{gfxService}');
         .background-size(@gfxService-width @gfxService-height);        
     }
+    
+    .s-validate{
+          .x-validating{
+              .ui-icon-check{
+                  .spinner('@{gfxHDPI}@{gfxSpinnerSmall}');
+              }
+          }
+      }
+      .x-loading{
+          .s-search-header{
+              .ui-input-search{
+                  .ui-input-clear {
+                      .ui-icon-delete{
+                          .spinner('@{gfxHDPI}@{gfxSpinnerSmall}');
+                      }
+                  }
+              }
+          }
+      }
 }
 
 
@@ -2476,6 +2495,26 @@ body.x-browser-testing{
         background-image: url('@{gfxRetina}@{gfxService}');
         .background-size(@gfxService-width @gfxService-height);        
     }
+
+    .s-validate{
+        .x-validating{
+            .ui-icon-check{
+                .spinner('@{gfxRetina}@{gfxSpinnerSmall}');
+            }
+        }
+    }
+    .x-loading{
+        .s-search-header{
+            .ui-input-search{
+                .ui-input-clear {
+                    .ui-icon-delete{
+                        .spinner('@{gfxRetina}@{gfxSpinnerSmall}');
+                    }
+                }
+            }
+        }
+    }
+    
 }
 
 
