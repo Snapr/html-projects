@@ -311,7 +311,7 @@ require(['config', 'jquery', 'backbone', 'photoswipe', 'auth', 'utils/local_stor
                     'title': 'Share Photo',
                     'otherButton1': "Take Picture",
                     'otherButton2': "Use Existing",
-                    'cancelButton': 'cancel',
+                    'cancelButton': 'Cancel',
                     'actionID': actionID
                 }));
             }else{
