@@ -1742,8 +1742,9 @@ div.ps-carousel-item-loading {
   top: 8px;
   right: 8px;
   z-index: 100;
-  min-height: 0px;
+  min-height: 0px!important;
   overflow: visible;
+  width: 220px;
 }
 .jqm .dwo {
   background-color: rgba(0, 0, 0, 0.6);

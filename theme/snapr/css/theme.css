@@ -2824,6 +2824,9 @@ div[data-role="header"].ui-bar-b a[data-rel="back"]::before {
 .ui-body-f.ui-navbar .ui-btn {
   background: none!important;
 }
+.ui-body-g {
+  color: #666666;
+}
 .ui-bar-g {
   background: #ffcc00;
   background-image: -webkit-gradient(linear, left top, left bottom, from(#ffcc00), to(#ff8400));
@@ -5803,7 +5806,7 @@ div.ps-carousel-item-loading {
   font-size: 14px;
   padding: 8px 31px;
 }
-.s-photo-map #x-map-disambiguation {
+.s-photo-map .s-disambiguation {
   position: absolute;
   display: none;
   top: 8px;
@@ -5812,22 +5815,32 @@ div.ps-carousel-item-loading {
   min-height: 0px;
   overflow: visible;
 }
-.s-photo-map #x-map-disambiguation h4 {
+.s-photo-map .s-disambiguation h4 {
   margin-top: 8px;
+  font-family: 'MuseoSansRounded700', Helvetica, Arial, sans-serif;
+  font-weight: normal;
+  font-size: 16px;
 }
-.s-photo-map #x-map-disambiguation .ui-listview {
+.s-photo-map .s-disambiguation .ui-listview {
   margin-top: 0;
   margin-bottom: 0;
 }
-.s-photo-map #x-map-disambiguation .cancel-btn .ui-btn {
+.s-photo-map .s-disambiguation .ui-listview li {
+  border-top: solid 1px #e4e4e4;
+  margin-left: 8px;
+  margin-right: 8px;
+}
+.s-photo-map .s-disambiguation .cancel-btn .ui-btn {
   margin-bottom: 0;
   margin-top: 8px;
 }
-.s-photo-map #x-map-disambiguation .map-link {
+.s-photo-map .s-disambiguation .map-link {
   max-width: 200px;
-  width: 200px;
+  width: 168px;
+  font-size: 15px;
+  padding: 12px 0px 12px 0px !important;
 }
-.s-photo-map #x-map-disambiguation::after {
+.s-photo-map .s-disambiguation::after {
   width: 0;
   height: 0;
   display: inline-block;

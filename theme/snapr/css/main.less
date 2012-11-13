@@ -2626,8 +2626,8 @@ div.ps-carousel-item-loading
         }
         
     }
-    // @X
-    #x-map-disambiguation{
+   
+    .s-disambiguation{
         position: absolute;
         display: none;
         top: @padding * 2;
@@ -2637,10 +2637,16 @@ div.ps-carousel-item-loading
         overflow: visible;
         h4{
             margin-top: @paddingElement;
+            .heading-font();
         }
         .ui-listview {
             margin-top: 0;
             margin-bottom: 0;
+            li{
+                border-top: @borderGrayLighter;
+                margin-left: @padding * 2;
+                margin-right: @padding * 2;
+            }
         }
         .cancel-btn{
             .ui-btn {
@@ -2650,7 +2656,9 @@ div.ps-carousel-item-loading
         }
         .map-link{
             max-width: 200px;
-            width: 200px;
+            width: 168px;
+            font-size: @fontSize;
+            padding: 12px 0px 12px 0px!important
         }
         &::after{
             .arrow-up(@arrowSize, @white, 186px ,@arrowYShift + 2px);
