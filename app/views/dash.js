@@ -342,13 +342,13 @@ var competition = view.extend({
         this.load_template('components/dash/competition');
     },
     render: function(){
-        this.$el.addClass( this.options.expand ? 'open' : 'closed' );
+        this.$el.addClass( this.options.expand ? 'x-open' : 'x-closed' );
         this.$el.html( this.template(this.options) );
         this.$el.attr('data-id', this.options.data.id);
         return this;
     },
     toggle: function(){
-        this.$el.toggleClass('open closed');
+        this.$el.toggleClass('x-open x-closed');
         this.$el.toggleClass('s-arrow-d-left');
         this.$('.banner').fadeToggle();
     }
@@ -375,8 +375,7 @@ var dash_tumblr_view = view.extend({
         return this;
     },
     toggle: function() {
-        this.$el.toggleClass('open closed');
-        this.$el.toggleClass('top-left-arrow');
+        this.$el.toggleClass('x-open x-closed');
         this.$('.x-posts').fadeToggle();
     },
     update: function(){

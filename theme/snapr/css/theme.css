@@ -4494,6 +4494,7 @@ textarea.ui-input-text {
 }
 .s-feed-header.s-inline-header .s-username {
   font-size: 16px;
+  text-shadow: #ffffff 0px 1px 1px;
 }
 .s-feed-header.s-inline-header .s-follow-btn {
   height: 32px;
@@ -5734,8 +5735,8 @@ div.ps-carousel-item-loading {
 }
 .s-photo-map .s-map-controls .ui-input-search .ui-input-clear .ui-icon-delete {
   background-position: 0 -128px !important;
-  top: 1px;
-  right: 6px;
+  top: 0px;
+  right: -7px;
   left: auto;
 }
 .s-photo-map .s-map-controls .ui-select,

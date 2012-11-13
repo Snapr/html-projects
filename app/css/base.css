@@ -1708,6 +1708,9 @@ div.ps-carousel-item-loading {
   width: 100%;
   margin: 0 -8px;
 }
+.s-photo-map .s-map-controls .ui-input-search {
+  position: relative;
+}
 .s-photo-map .s-map-controls .ui-select,
 .s-photo-map .s-map-controls .ui-input-text {
   display: block;
