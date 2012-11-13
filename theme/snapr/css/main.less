@@ -557,7 +557,8 @@ div[data-role="dialog"]{
 .s-tab-bar{
     background-color: @black;
     .ui-navbar {
-        .dark-grad();
+        background: @grayDarkBgTint;
+        .linear-gradient(@grayDarkBg, @grayDarkBgTint);
         .border-bottom-radius(@cornersPage);
         padding: 3px 0;
         border-top: solid lighten(@grayDarkBg, 20%) 1px;
