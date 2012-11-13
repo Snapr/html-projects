@@ -439,7 +439,7 @@ var map_view = page_view.extend({
                 }else{
                     map_view.location_search_toggle_disambiguation(false);
                     map_view.map_query.set({
-                        area: results[ 0 ].geometry.bounds,
+                        area: results[ 0 ].geometry.viewport,
                         location: null
                     }, {silent:true});
                     map_view.map_update_or_create();
