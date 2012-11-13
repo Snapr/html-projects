@@ -22,8 +22,8 @@
 
                             <div id="post-<%= post.get('id') %>" class="s-post-<%= post.get('type') %> s-tumblr-post">
                                 <div class="s-tumblr-body">
-                                <h4><%=post.get('title')%></h4>
-                                <p><%=post.get('body').replace(/\n/g, '<br>' )%></p>
+                                <h4 class="s-tumblr-post-title"><%=post.get('title')%></h4>
+                                <p class="s-tumblr-post-body"><%=post.get('body').replace(/\n/g, '<br>' )%></p>
                                 </div>
                             </div>
 
@@ -38,7 +38,7 @@
                                     </ul>
                                 <% } %>
                                 <div class="s-tumblr-body">
-                                <p class="caption"><%=post.get('caption').replace(/\n/g, '<br>' )%></p>
+                                <p class="s-tumblr-image-caption"><%=post.get('caption').replace(/\n/g, '<br>' )%></p>
                                 </div>
                             </div>
 
@@ -46,7 +46,14 @@
 
                             <div id="post-<%= post.get('id') %>" class="s-post-<%= post.get('type') %> s-tumblr-post">
                                 <div class="s-tumblr-body">
-                                <h4><%=post.get('title')%></h4>
+                                
+                                <h4>
+                                    <% if(post.get('title') != ""){%>
+                                    <a href="<%=post.get('url')%>"><%=post.get('title')%> <span class="s-tumblr-extra">&rarr;</span></a>
+                                    <% } else {%>
+                                    <a href="<%=post.get('url')%>"><%=post.get('url')%> <span class="s-tumblr-extra">&rarr;</span></a>
+                                    <% } %>
+                                    </h4>
                                 <p><%=post.get('description').replace(/\n/g, '<br>' )%></p>
                                 </div>
                             </div>
@@ -54,7 +61,7 @@
                         <% break; case 'video': %>
 
                             <div id="post-<%= post.get('id') %>" class="s-post-<%= post.get('type') %> s-tumblr-post">
-                                <%= getVideoEmbed(post, 312) %>
+                                <%= getVideoEmbed(post) %>
                                 <div class="s-tumblr-body">
                                 <% if(post.get('caption')){%><%=post.get('caption').replace(/\n/g, '<br>' )%><%}%>
                                 </div>
@@ -64,11 +71,11 @@
 
                            <div id="post-<%= post.get('id') %>" class="s-post-<%= post.get('type') %> s-tumblr-post">
                                <div class="s-tumblr-body">
-                                <h4><%=post.get('title')%></h4>
+                                <h4 class="s-tumblr-chat-title"><%=post.get('title')%></h4>
                                 <%if (post.get('dialogue')) {%>
                                     <ul class="chat">
                                         <%_.each(post.get('dialogue'), function(dialogue){%>
-                                            <li><strong><%=dialogue.label%></strong> <%=dialogue.phrase%></li>
+                                            <li><strong class="s-tumblr-chat-label"><%=dialogue.label%></strong> <%=dialogue.phrase%></li>
                                         <%});%>
                                     </ul>
                                 <%}%>
@@ -79,8 +86,10 @@
 
                             <div id="post-<%= post.get('id') %>" class="s-post-<%= post.get('type') %> s-tumblr-post">
                                 <div class="s-tumblr-body">
-                                <h4><%=post.get('text')%></h4>
-                                <p><%=post.get('source')%></p>
+                                <blockquote class="s-tumblr-quote"><%=post.get('text')%></blockquote>
+                                <%if (post.get('source')) {%>
+                                <p class="s-tumblr-source"><span class="s-tumblr-extra"> &mdash; </span><%=post.get('source')%></p>
+                                <%}%>
                                 </div>
                             </div>
 
@@ -90,18 +99,16 @@
 
                                 <div class="s-tumblr-body">
                                     <audio controls preload="none" src="<%= post.get('audio_url') %>"></audio>
-
+                                    <p>
                                     <%if(post.get('track_name') || post.get('artist') || post.get('album')) { %>
-                                        <h4><%= post.get('track_name') %>
-                                            <% if(post.get('artist')) { %> by <%= post.get('artist') %><% } %>
-                                            <% if(post.get('album')) { %> from '<%= post.get('album') %>'
-                                                <% if (post.get('year')) { %> <%= post.get('year') %> <% } %>
-                                            <% } %>
-                                        </h4>
+                                        <% if(post.get('artist')) { %><strong><%= post.get('track_name') %></strong><% } %>                                    
+                                        <% if(post.get('artist')) { %> by <em class="s-tumblr-artist-name"><%= post.get('artist') %></em><% } %>
+                                        <% if(post.get('album')) { %> from <em class="s-tumblr-album-name"><%= post.get('album') %></em> <% } %>
                                     <% } %>
+                                    </p>
 
-                                <% if(post.get('caption')){%><%=post.get('caption').replace(/\n/g, '<br>' )%><%}%>
-                                <% if(post.get('plays')) {%><p><%=post.get('plays')%> plays</p><%}%>
+                                <% if(post.get('caption')){%>
+                                    <blockquote class="s-tumblr-track-note"><%=post.get('caption').replace(/\n/g, '<br>' )%></blockquote><%}%>
                                 <% if(post.get('source')){%><%=post.get('source') %><%}%>
                                 </div>
                             </div>
@@ -119,7 +126,7 @@
             </section>
         </div>
 
-        <div class="s-tumblr-metadata x-footer">
+        <div class="x-tumblr-footer s-tumblr-footer">
             <% if(obj.host){ %>
                 <a href="http://<%= host %>/" data-role="button" data-iconpos="right" data-icon="arrow-r" data-theme="z" data-corners="false" data-shadow="false">
                     <span class="s-tumblr-credit">View on <span class="hide">Tumblr</span></span>

@@ -1151,16 +1151,10 @@ textarea.ui-input-text {
             .s-tumblr-metadata{
                 margin: @padding * 2 0 @padding * 2 @padding;
                 .ui-bar{
-                    height: @gfxTumblr-grid;
-                    min-height: @gfxTumblr-grid;
-                    
-                    
                     .ui-btn-text{
                         position: relative;
                         font-size: @fontSizeSmall;
                         color:  @grayLight;
-                        line-height: @gfxTumblr-grid;
-                        height: @gfxTumblr-grid;
                         padding-right:@gfxTumblr-grid;
                         padding-left: @gfxTumblr-grid + @padding;
                         .box-sizing(border-box);
@@ -1177,98 +1171,12 @@ textarea.ui-input-text {
                 }
             }
         }
-        > article:last-child {
-            border-bottom: none;
-        }
+      
     }
 }
 
 
 
-// @TUMBLR POSTS
-// -------------------------
-
-// TUMBLR PAGE
-// -------------------------
-
-#tumblr-posts {
-    blockquote {
-        margin: @padding * 2;
-        font-style:italic;
-        font-size: 0.8em;
-    }
-    .s-tumblr-stream {
-        overflow:hidden;
-        margin: 0 -@padding * 2;
-        
-        > li {
-            border-bottom: @borderGrayLight;
-            margin: 0px;
-            padding: @padding;
-            .post {
-                width: 100%;
-                img,
-                video {
-                    width: 100%;
-                    margin: 0 auto;
-                    max-width: 512px;
-                    margin: 0 0 @padding * 2 0;
-                }
-                
-                audio {
-                    margin: 0 0 @padding * 2 0;
-                }
-
-                p {
-                    text-align: justify;
-                }
-                
-                .s-tumblr-body{
-                    margin: @padding;
-                }
-            
-                ul.s-photo-set {
-                    overflow:hidden;
-                    margin: 0;
-                    li{
-                        margin: 0;
-                    }
-                }
-            }
-            
-            .s-tumblr-metadata{
-                margin: @padding * 2 0 @padding * 2 @padding;
-                .ui-bar{
-                    height: @gfxTumblr-grid;
-                    min-height: @gfxTumblr-grid;
-                    .ui-btn-text{
-                        position: relative;
-                        font-size: @fontSizeSmall;
-                        color:  @grayLight;
-                        line-height: @gfxTumblr-grid;
-                        height: @gfxTumblr-grid;
-                        padding-right:@gfxTumblr-grid;
-                        padding-left: @gfxTumblr-grid + @padding;
-                        .box-sizing(border-box);
-                    }
-                    .tumblr-icon{
-                        display: block;
-                        position: absolute;
-                        left: 0;
-                        top: 0;
-                        margin-top: 0;
-                    }
-                    .ui-icon-arrow-r{
-                    }
-                }   
-            }
-        }
-        > li:last-child {
-            border-bottom: none;
-        }
-    }
- 
-}
 
 
 // @COMPS

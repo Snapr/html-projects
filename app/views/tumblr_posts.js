@@ -68,7 +68,7 @@ var tumblr_post_view = page_view.extend({
                 }
                 return (embed === "") ? players[0].embed_code : embed;
             }
-        }, ['.x-posts', '.x-footer', '.x-blog-title']);
+        }, ['.x-posts', '.x-tumblr-footer', '.x-blog-title']);
 
         this.$el.trigger('create');
 

@@ -844,6 +844,7 @@ a:active {
 }
 #tumblr-posts .s-tumblr-stream .s-tumblr-post-item .s-tumblr-post .s-tumblr-body {
   margin: 4px;
+  line-height: 140%;
 }
 #tumblr-posts .s-tumblr-stream .s-tumblr-post-item .s-tumblr-post .s-photo-set {
   overflow: hidden;
@@ -856,8 +857,8 @@ a:active {
   padding: 0;
   list-style: none;
 }
-#tumblr-posts .s-tumblr-stream > article:last-child {
-  border-bottom: none;
+#tumblr-posts .s-tumblr-footer {
+  margin: 0 -8px;
 }
 .s-tumblr-credit {
   margin: 12px 0;
@@ -2163,6 +2164,18 @@ body.x-browser-testing .ui-footer-fixed {
     -moz-background-size: 150px 180px;
     -o-background-size: 150px 180px;
     background-size: 150px 180px;
+  }
+  .s-validate .x-validating .ui-icon-check {
+    display: block;
+    background-image: url('gfx/hdpi/small-spinner-light.png') !important;
+    background-position: center!important;
+    background-repeat: no-repeat !important;
+  }
+  .x-loading .s-search-header .ui-input-search .ui-input-clear .ui-icon-delete {
+    display: block;
+    background-image: url('gfx/hdpi/small-spinner-light.png') !important;
+    background-position: center!important;
+    background-repeat: no-repeat !important;
   }
 }
 @media only screen and (-webkit-min-device-pixel-ratio: 2) {
