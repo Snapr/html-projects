@@ -6226,16 +6226,14 @@ div.ps-carousel-item-loading {
 }
 .s-retry-offline {
   display: block;
-  -webkit-border-radius: 6px;
-  -moz-border-radius: 6px;
-  border-radius: 6px;
+  -webkit-border-radius: 8px !important;
+  -moz-border-radius: 8px !important;
+  border-radius: 8px !important;
 }
 .s-retry-offline .ui-icon-connection {
   background-position: -96px -320px;
 }
 .s-retry-offline.ui-btn-icon-left .ui-btn-text {
-  padding-left: 32px;
-  padding-right: 32px;
   text-align: left;
 }
 .s-retry-offline.ui-btn-icon-left .ui-icon {
