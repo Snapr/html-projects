@@ -254,9 +254,7 @@ var feed_view =  page_view.extend({
                 this.$(".x-feed-upload-list").append( li.render().el );
             }, this);
 
-            if (upload_progress.models.length){
-                this.$el.addClass("x-showing-upload-queue");
-            }
+            this.$el.toggleClass("x-showing-upload-queue", !!upload_progress.models.length);
 
             this.$(".x-feed-upload-list").listview().listview("refresh");
         }
