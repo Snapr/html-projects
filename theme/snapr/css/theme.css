@@ -5555,10 +5555,14 @@ textarea.ui-input-text {
   top: 0;
 }
 .s-add-services .s-connect-status {
-  right: 8px;
+  right: -30px;
+  top: 20px;
   padding-right: 36px;
-  font-family: Helvetica, Arial, sans-serif;
   text-transform: lowercase;
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight: bold;
+  font-size: 12px;
+  color: #666666;
 }
 .s-add-services .s-connect-status .ui-icon-check {
   background-position: -243px -144px;

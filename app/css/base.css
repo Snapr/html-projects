@@ -1521,6 +1521,8 @@ a:active {
   text-transform: lowercase;
 }
 .s-add-services .s-connect-status .ui-icon {
+  top: 50%;
+  position: absolute;
   right: 0;
 }
 .s-app-link {
