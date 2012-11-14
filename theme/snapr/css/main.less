@@ -250,6 +250,7 @@ div[data-role="dialog"]{
     .box-sizing(border-box);
     .ui-btn,
     &.ui-btn{
+        .border-bottom-radius(0);
         .ui-btn-inner{
             height: @barHeight;
             line-height: @barHeight;
@@ -275,19 +276,24 @@ div[data-role="dialog"]{
             }
         }
     }
-    .s-bar-left{
-        border-right: none;
-        .ui-btn-inner{
-        }
-    }
-    .s-bar-right{
-        border-left: solid rgba(0,0,0,.1) 1px;
-        .border-top-right-radius(@corners)!important;
-        .ui-btn-inner{
-        }
-    }  
+      
     &.ui-controlgroup-horizontal{
         .box-shadow(0 1px 4px @shadowDark);
+        border: none;
+        
+        .s-bar-left{
+            border-top: @borderWhite;            
+            border-right: none;
+            .ui-btn-inner{
+            }
+        }
+        .s-bar-right{
+            border-top: @borderWhite;
+            border-left: solid rgba(0,0,0,.1) 1px;
+            .border-top-right-radius(@cornersPage)!important;
+            .ui-btn-inner{
+            }
+        }
     }
 }
 
@@ -1813,6 +1819,10 @@ textarea.ui-input-text {
 
 }
 
+.s-upload-extra{
+    margin-top: -@padding * 2;
+}
+
 
 // @UPLOAD QUEUE
 // -------------------------
@@ -1842,6 +1852,9 @@ textarea.ui-input-text {
     .s-bar-action{
          .ui-icon-check {
                 background-position: @gfxIcons-check-x @gfxIcons-y-highlight;
+        }
+         .ui-icon-delete {
+                background-position: @gfxIcons-delete-x @gfxIcons-y-light;
         }
     }
 }
