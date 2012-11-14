@@ -18,6 +18,10 @@ define(['config', 'collections/upload_progress'], function(config, upload_progre
         iframe = null;
     };
 
+    window.back = function(){
+        config.get('current_view').back();
+    };
+
     function run_if_function(thing){
         if($.isFunction(thing)){
             return thing;
