@@ -144,10 +144,10 @@ var spots_view =  page_view.extend({
         e.preventDefault();
         this.$('form').attr('class', '');
 
-        var keywords = this.$('.x-search-field').val(),
-            category = this.$('.x-category').val(),
+        var keywords = this.$('input.x-search-field').val(),
+            category = this.$('select.x-category').val(),
             sort = this.$('.x-sort').val(),
-            nearby = this.$('.x-location').val(),
+            nearby = this.$('select.x-location').val(),
             this_view = this,
             data = _.clone(this.defaults);
 
