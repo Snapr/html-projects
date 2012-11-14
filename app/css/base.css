@@ -1194,6 +1194,13 @@ a:active {
   left: 0;
   top: 0;
 }
+.s-upload-progress-header .s-upload-progress-item .s-upload-image-thumb-gall .s-thumb-image {
+  width: 34px;
+  height: 34px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+}
 .s-upload-progress-header .s-upload-progress-item .s-upload-info-block {
   position: relative;
   padding-left: 42px;

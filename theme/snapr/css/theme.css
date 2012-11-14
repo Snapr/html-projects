@@ -765,8 +765,10 @@
 .ui-bar-icons.ui-icon-comment {
   background-position: 0 -384px;
 }
-.ui-icon-play.ui-bar.ui-icon-play,
-.ui-icon-play.ui-bar-icons.ui-icon-play {
+.ui-bar .ui-icon-play,
+.ui-bar-icons .ui-icon-play,
+.ui-bar.ui-icon-play,
+.ui-bar-icons.ui-icon-play {
   background-position: 0 -416px;
 }
 .ui-bar .ui-icon-refresh,
@@ -1092,6 +1094,42 @@
 .ui-bar.ui-btn-down-e.ui-icon-info,
 .ui-bar-icons.ui-btn-down-e.ui-icon-info {
   background-position: -128px -480px;
+}
+.ui-bar.ui-bar-f .ui-icon-play,
+.ui-bar-icons.ui-bar-f .ui-icon-play,
+.ui-bar.ui-btn-up-f .ui-icon-play,
+.ui-bar-icons.ui-btn-up-f .ui-icon-play,
+.ui-bar.ui-btn-hover-f .ui-icon-play,
+.ui-bar-icons.ui-btn-hover-f .ui-icon-play,
+.ui-bar.ui-btn-down-f .ui-icon-play,
+.ui-bar-icons.ui-btn-down-f .ui-icon-play,
+.ui-bar.ui-bar-f.ui-icon-play,
+.ui-bar-icons.ui-bar-f.ui-icon-play,
+.ui-bar.ui-btn-up-f.ui-icon-play,
+.ui-bar-icons.ui-btn-up-f.ui-icon-play,
+.ui-bar.ui-btn-hover-f.ui-icon-play,
+.ui-bar-icons.ui-btn-hover-f.ui-icon-play,
+.ui-bar.ui-btn-down-f.ui-icon-play,
+.ui-bar-icons.ui-btn-down-f.ui-icon-play {
+  background-position: -96px -416px;
+}
+.ui-bar.ui-bar-f .ui-icon-refresh,
+.ui-bar-icons.ui-bar-f .ui-icon-refresh,
+.ui-bar.ui-btn-up-f .ui-icon-refresh,
+.ui-bar-icons.ui-btn-up-f .ui-icon-refresh,
+.ui-bar.ui-btn-hover-f .ui-icon-refresh,
+.ui-bar-icons.ui-btn-hover-f .ui-icon-refresh,
+.ui-bar.ui-btn-down-f .ui-icon-refresh,
+.ui-bar-icons.ui-btn-down-f .ui-icon-refresh,
+.ui-bar.ui-bar-f.ui-icon-refresh,
+.ui-bar-icons.ui-bar-f.ui-icon-refresh,
+.ui-bar.ui-btn-up-f.ui-icon-refresh,
+.ui-bar-icons.ui-btn-up-f.ui-icon-refresh,
+.ui-bar.ui-btn-hover-f.ui-icon-refresh,
+.ui-bar-icons.ui-btn-hover-f.ui-icon-refresh,
+.ui-bar.ui-btn-down-f.ui-icon-refresh,
+.ui-bar-icons.ui-btn-down-f.ui-icon-refresh {
+  background-position: -96px -448px;
 }
 .ui-icon.tumblr-icon {
   background-image: url('../gfx/tumblr-post-icons.png');
@@ -5003,6 +5041,17 @@ textarea.ui-input-text {
 }
 .s-upload-extra {
   margin-top: -8px;
+}
+.s-upload-progress-header .s-resume-upload-queue {
+  border-top: none;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  border-radius: 20px;
+  margin: 8px!important;
+}
+.s-upload-progress-header .s-resume-upload-queue .ui-icon-play {
+  top: -1px !important;
+  width: 24px;
 }
 .s-progress-bar {
   background-color: #e6e6e6;
