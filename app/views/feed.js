@@ -246,12 +246,12 @@ var feed_view =  page_view.extend({
             var upload_li_template = this.get_template('components/feed/upload_progress');
 
             // reverse models - newest last
-            _.each(model && [model] || upload_progress.models.slice().reverse(), function( photo ){
+            _.each(model && [model] || upload_progress.models, function( photo ){
                 var li =  new upload_progress_li({
                     template: upload_li_template,
                     photo: photo
                 });
-                this.$(".x-feed-upload-list").prepend( li.render().el );
+                this.$(".x-feed-upload-list").append( li.render().el );
             }, this);
 
             if (upload_progress.models.length){
