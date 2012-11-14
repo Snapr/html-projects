@@ -1166,7 +1166,6 @@ a:active {
 }
 #uploading .s-offline-uploading {
   position: relative;
-  top: -8px;
 }
 #uploading .s-offline-uploading .ui-btn-inner {
   overflow: visible;

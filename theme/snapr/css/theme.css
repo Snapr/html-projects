@@ -4994,10 +4994,12 @@ textarea.ui-input-text {
 }
 #uploading .s-offline-uploading {
   position: relative;
-  top: -8px;
 }
 #uploading .s-offline-uploading .ui-btn-inner {
   overflow: visible;
+}
+#uploading .s-offline-uploading .ui-btn-inner .ui-icon {
+  top: -2px;
 }
 .s-upload-extra {
   margin-top: -8px;
@@ -5267,8 +5269,8 @@ textarea.ui-input-text {
 }
 .s-share-photo .s-upload-image-location .ui-btn .ui-btn-inner .ui-btn-text .ui-icon {
   position: absolute;
-  left: -36px;
-  top: -11px;
+  left: -34px;
+  top: -10px;
 }
 .s-share-photo .s-image-toggle .ui-btn {
   text-transform: lowercase;
