@@ -146,7 +146,7 @@ var spots_view =  page_view.extend({
 
         var keywords = this.$('input.x-search-field').val(),
             category = this.$('select.x-category').val(),
-            sort = this.$('.x-sort').val(),
+            sort = this.$('select.x-sort').val(),
             nearby = this.$('select.x-location').val(),
             this_view = this,
             data = _.clone(this.defaults);
