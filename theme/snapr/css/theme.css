@@ -4036,9 +4036,10 @@ textarea.ui-input-text {
   background-position: 0 -112px;
   -webkit-transform: rotate(180deg) translateZ(0);
 }
+.s-image-streams .x-stream .x-loading .s-load-more-inline .ui-icon-refresh,
 .s-image-streams .x-stream.x-loading .s-load-more-inline .ui-icon-refresh {
   background-image: url('../gfx/spinner.png');
-  background-position: center;
+  background-position: center!important;
 }
 .s-image-streams .x-stream.x-no-more .x-right-pull .ui-icon-refresh {
   display: none;
@@ -6390,6 +6391,7 @@ div.ps-carousel-item-loading {
     -o-background-size: 56px 168px;
     background-size: 56px 168px;
   }
+  .s-image-streams .x-stream .x-loading .s-load-more-inline .ui-icon-refresh,
   .s-image-streams .x-stream.x-loading .s-load-more-inline .ui-icon-refresh {
     background-image: url('../gfx/hdpi/spinner.png');
     -webkit-background-size: 56px 56px;
@@ -6687,6 +6689,7 @@ div.ps-carousel-item-loading {
     -o-background-size: 56px 168px;
     background-size: 56px 168px;
   }
+  .s-image-streams .x-stream .x-loading .s-load-more-inline .ui-icon-refresh,
   .s-image-streams .x-stream.x-loading .s-load-more-inline .ui-icon-refresh {
     background-image: url('../gfx/retina/spinner.png');
     -webkit-background-size: 56px 56px;

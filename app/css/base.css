@@ -569,9 +569,10 @@ a:active {
 .s-image-streams .x-stream.x-no-photos .ui-bar .s-image-time {
   display: none;
 }
-.s-image-streams .x-stream.x-loading .s-load-more-inline .ui-icon-refresh {
+.s-image-streams .x-stream.x-loading .s-load-more-inline .ui-icon-refresh,
+.s-image-streams .x-stream .x-loading .s-load-more-inline .ui-icon-refresh {
   background-image: url('gfx/spinner.png');
-  background-position: center;
+  background-position: center!important;
   -webkit-transform: rotate(0deg) translateZ(0);
   -webkit-transition-duration: 0ms;
   -webkit-animation-name: loading;
@@ -2076,6 +2077,7 @@ body.x-browser-testing .ui-footer-fixed {
     -o-background-size: 56px 168px;
     background-size: 56px 168px;
   }
+  .s-image-streams .x-stream .x-loading .s-load-more-inline .ui-icon-refresh,
   .s-image-streams .x-stream.x-loading .s-load-more-inline .ui-icon-refresh {
     background-image: url('gfx/hdpi/spinner.png');
     -webkit-background-size: 56px 168px;
@@ -2202,6 +2204,7 @@ body.x-browser-testing .ui-footer-fixed {
     -o-background-size: 56px 168px;
     background-size: 56px 168px;
   }
+  .s-image-streams .x-stream .x-loading .s-load-more-inline .ui-icon-refresh,
   .s-image-streams .x-stream.x-loading .s-load-more-inline .ui-icon-refresh {
     background-image: url('gfx/retina/spinner.png');
     -webkit-background-size: 56px 168px;

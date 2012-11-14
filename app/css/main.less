@@ -627,11 +627,12 @@ a:active{
                 }
             }
         }
-        &.x-loading {
+        &.x-loading,
+        .x-loading {
             .s-load-more-inline{
                 .ui-icon-refresh{
                     background-image: url('@{gfx}@{gfxSpinner}');
-                    background-position: center;
+                    background-position: center!important;
                     .spin();
                 }
             }
@@ -2308,6 +2309,7 @@ body.x-browser-testing{
                     
                 }
             }
+            .x-loading,
             &.x-loading {
                 .s-load-more-inline{
                     .ui-icon-refresh{
@@ -2426,6 +2428,7 @@ body.x-browser-testing{
                     
                 }
             }
+            .x-loading,
             &.x-loading {
                 .s-load-more-inline{
                     .ui-icon-refresh{
