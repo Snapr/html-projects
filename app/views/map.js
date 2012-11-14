@@ -364,7 +364,7 @@ var map_view = page_view.extend({
 
             this.spot_collection.data.area = this.map.getBounds().toUrlValue(4);
 
-            if(this.spot_query.has('spot_id')){
+            if(this.spot_query.has('id')){
                 this.spot_collection.data.n=1;
             }
 
@@ -388,7 +388,7 @@ var map_view = page_view.extend({
                         var id = spot.get('id');
                         if(!_(old_spot_ids).contains(id)){
                             map_view.thumb_overlays[id] = new map.overlays.Base(
-                                _.extend({active: spot.id == map_view.spot_query.get('id')}, spot.attributes),
+                                _.extend({active: id == map_view.spot_query.get('id')}, spot.attributes),
                                 map_view.map,
                                 map_view.spot_template
                             );
