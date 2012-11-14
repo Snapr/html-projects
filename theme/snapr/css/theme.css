@@ -4608,7 +4608,7 @@ textarea.ui-input-text {
   border-top-right-radius: 0;
 }
 #feed-images {
-  min-height: 324px!important;
+  min-height: 414px!important;
 }
 .s-image-item-block .s-image-item-topbar {
   height: 35px;
@@ -4909,7 +4909,7 @@ textarea.ui-input-text {
   top: 20px;
 }
 .s-dash-wrapper {
-  min-height: 360px;
+  min-height: 418px;
   position: relative;
 }
 .s-dash-footer {
