@@ -42,7 +42,8 @@ var config_model = Backbone.Model.extend({
 
         zoom: 15,
         feed_count: 9,
-        map_count: 10,
+        map_thumb_count: 10,
+        map_spot_count: 10,
         dash_tumblr_posts: 3,
         side_scroll_initial: 6,
         side_scroll_more: 10,

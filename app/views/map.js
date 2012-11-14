@@ -79,7 +79,12 @@ var map_view = page_view.extend({
         // photo_params may have been saved in local_storage
         photo_params = _.defaults( photo_params,
             local_storage.get('map_photo_params') || {},
-            { n:config.get('map_count') }
+            { n:config.get('map_thumb_count') }
+        );
+
+        // photo_params may have been saved in local_storage
+        spot_params = _.defaults( spot_params,
+            { n:config.get('map_spot_count') }
         );
 
         // if neither are set default to photos
