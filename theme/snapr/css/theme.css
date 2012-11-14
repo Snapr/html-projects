@@ -5952,7 +5952,7 @@ div.ps-carousel-item-loading {
   left: 160px;
 }
 .s-spots-search-filters {
-  padding-right: 44px;
+  padding-right: 48px;
   margin-top: 8px;
   position: relative;
 }
@@ -5962,7 +5962,7 @@ div.ps-carousel-item-loading {
   border-radius: 20px;
 }
 .s-spots-search-filters .ui-select .ui-btn-icon-right .ui-btn-inner {
-  padding: 8px 25px 8px 10px;
+  padding: 10px 25px 10px 10px;
   font-family: 'MuseoSansRounded700', Helvetica, Arial, sans-serif;
   font-weight: normal;
   text-transform: none;
@@ -5981,7 +5981,7 @@ div.ps-carousel-item-loading {
   margin-top: -12px;
 }
 .s-spots-search-filters .s-distance-btn {
-  width: 36px;
+  width: 40px;
   position: absolute;
   right: 0;
   top: 0;
@@ -5995,7 +5995,7 @@ div.ps-carousel-item-loading {
 }
 .s-spots-search-filters .s-distance-btn .ui-select .ui-icon {
   right: auto;
-  left: 5px;
+  left: 7px;
   top: 50%;
   margin-top: -12px;
 }
