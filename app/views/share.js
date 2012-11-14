@@ -177,8 +177,10 @@ return page_view.extend({
                     share_photo_view.model.set({
                         location: model.attributes
                     }, {silent:true});
-                    share_photo_view.$(".x-no-foursquare-venue").removeClass("x-ajax-loading");
                     share_photo_view.$(".x-location-name").text(share_photo_view.model.get("location").location);
+                },
+                complete: function(){
+                    share_photo_view.$(".x-no-foursquare-venue").removeClass("x-ajax-loading");
                 }
             });
         };
@@ -188,12 +190,15 @@ return page_view.extend({
             geocode( this.model.get("location").latitude, this.model.get("location").longitude);
         }else{
             // get reverse geocode location from current position
-            geo.get_location( function( location ){
-                geocode( location.coords.latitude, location.coords.longitude );
-            },
-            function( e ){
-                console.error( "get reverse geocode: geocode error model doesn't have lat lon", e );
-            });
+            geo.get_location(
+                function( location ){
+                    geocode( location.coords.latitude, location.coords.longitude );
+                },
+                function( e ){
+                    share_photo_view.$(".x-no-foursquare-venue").removeClass("x-ajax-loading");
+                    console.error( "get reverse geocode: geocode error model doesn't have lat lon", e );
+                }
+            );
         }
     },
 
@@ -214,13 +219,14 @@ return page_view.extend({
                             foursquare_venue_name: collection.first().get( "name" )
                         });
                         share_photo_view.model.set({location: location}, {silent:true});
-                        share_photo_view.$(".x-foursquare-venue").removeClass("x-ajax-loading");
                         share_photo_view.$(".x-foursquare-venue-name")
                             .text(share_photo_view.model.get("location").foursquare_venue_name);
                     }else{
-                        share_photo_view.$(".x-foursquare-venue").removeClass("x-ajax-loading");
                         share_photo_view.$(".x-foursquare-venue-name").text( "No venues nearby." );
                     }
+                },
+                complete: function(){
+                    share_photo_view.$(".x-no-foursquare-venue").removeClass("x-ajax-loading");
                 }
             });
         };
@@ -238,6 +244,7 @@ return page_view.extend({
                 get_venues( location.coords.latitude, location.coords.longitude );
             },
             function( e ){
+                share_photo_view.$(".x-no-foursquare-venue").removeClass("x-ajax-loading");
                 console.error( "get foursquare venue geocode error", e );
             });
         }
