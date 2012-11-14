@@ -594,6 +594,7 @@ div[data-role="dialog"]{
                 .box-shadow(inset 0px 2px 4px 2px rgba(0, 0, 0, .1))!important;
                 color: white;
                 text-shadow: @shadowDarker 0px 1px 1px;
+                text-transform: none;
             }
         }
         // Match rounded corners of full palette
@@ -3011,11 +3012,17 @@ div.ps-carousel-item-loading
     background: none;
     border: none;
     z-index: 999;
-    .message-body{
+    .s-message-body{
         margin: @padding * 2;
         display: block;
         padding: 0;
     }
+}
+
+.s-message-inline{
+    .s-message-body{
+        margin: @padding * 2;
+    } 
 }
 
 .s-retry-offline{
@@ -3031,7 +3038,7 @@ div.ps-carousel-item-loading
         .ui-icon{
             position: absolute;
             top: 0;
-            left: 0px;
+            left: 2px;
             margin-top: 0!important;
         }
     }

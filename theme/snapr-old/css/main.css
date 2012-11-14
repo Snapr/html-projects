@@ -5334,7 +5334,7 @@ over rides theme swatch styles for general blue / white style switch
   border: none;
   z-index: 999;
 }
-.s-message-overlay .message-body {
+.s-message-overlay .s-message-body {
   margin: 8px;
   display: block;
   padding: 0;

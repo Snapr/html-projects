@@ -3840,6 +3840,7 @@ div[data-role="dialog"] {
   box-shadow: inset 0px 2px 4px 2px rgba(0, 0, 0, 0.1) !important;
   color: white;
   text-shadow: rgba(0, 0, 0, 0.5) 0px 1px 1px;
+  text-transform: none;
 }
 .s-tab-bar .ui-navbar li:first-child .ui-btn {
   -webkit-border-bottom-left-radius: 8px !important;
@@ -6219,10 +6220,13 @@ div.ps-carousel-item-loading {
   border: none;
   z-index: 999;
 }
-.s-message-overlay .message-body {
+.s-message-overlay .s-message-body {
   margin: 8px;
   display: block;
   padding: 0;
+}
+.s-message-inline .s-message-body {
+  margin: 8px;
 }
 .s-retry-offline {
   display: block;
@@ -6239,7 +6243,7 @@ div.ps-carousel-item-loading {
 .s-retry-offline.ui-btn-icon-left .ui-icon {
   position: absolute;
   top: 0;
-  left: 0px;
+  left: 2px;
   margin-top: 0!important;
 }
 /* Android HDPI - Pixel ratio of 1.5. Background-size is 1/1.5 = 66.67% (of a 150px image) */
