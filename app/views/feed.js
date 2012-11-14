@@ -307,7 +307,7 @@ var feed_view =  page_view.extend({
     offline: function(offline_mode){
         $('.x-offline').remove();
         if(offline_mode){
-            this.$('[data-role=content]').prepend($(this.offline_template())).trigger("create");
+            this.$('.x-feed-images').prepend($(this.offline_template())).trigger("create");
         }
     }
 });
