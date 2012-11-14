@@ -424,6 +424,7 @@ var map_view = page_view.extend({
             if (status == google.maps.GeocoderStatus.OK){
                 //if there is more than one result, show list
                 if (results.length > 1){
+                    map_view.map_update_or_create();
                     var dis_list = $(".x-disambiguation-list").empty();
                     _.each( results, function( result ){
                         var li = new map_disambiguation({
@@ -438,11 +439,8 @@ var map_view = page_view.extend({
                     dis_list.listview().listview("refresh");
                 }else{
                     map_view.location_search_toggle_disambiguation(false);
-                    map_view.map_query.set({
-                        area: results[ 0 ].geometry.viewport,
-                        location: null
-                    }, {silent:true});
                     map_view.map_update_or_create();
+                    map_view.map.fitBounds(results[ 0 ].geometry.viewport);
                 }
             }else{
                 alerts.notification("Sorry, your search returned no results.");
@@ -698,8 +696,7 @@ var map_disambiguation = view.extend({
     },
 
     goto_map: function(){
-        this.parent_view.map_query.set('area', this.location.geometry.viewport);
-        this.parent_view.map_update_or_create();
+        this.parent_view.map.fitBounds(this.location.geometry.viewport);
         this.parent_view.location_search_toggle_disambiguation(false);
     }
 });
