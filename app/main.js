@@ -82,7 +82,6 @@ require(['config', 'jquery', 'backbone', 'photoswipe', 'auth', 'utils/local_stor
 
             toggleViewportClass();
 
-                $to.height( screenHeight + toScroll );
                 $to.addClass( $.mobile.activePageClass );
                 $.mobile.focusPage( $to );
                 $.event.special.scrollstart.enabled = false;
