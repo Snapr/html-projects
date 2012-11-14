@@ -50,6 +50,7 @@ var feed_view =  page_view.extend({
             feed_view.$('.x-activity').hide();
         });
         config.on('change:upload_paused', this.toggle_paused);
+        this.offline_template = this.get_template('components/feed/offline');
     },
 
     post_activate: function(options){
@@ -302,6 +303,14 @@ var feed_view =  page_view.extend({
                 feed.$('.x-unfollow').x_loading(false);
             });
         })();
+    },
+
+    offline: function(offline_mode){
+        if(offline_mode){
+            this.$('[data-role=content]').prepend($(this.offline_template())).trigger("create");
+        }else{
+            $('.x-offline').remove();
+        }
     }
 });
 
