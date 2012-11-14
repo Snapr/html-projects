@@ -82,13 +82,17 @@ require(['config', 'jquery', 'backbone', 'photoswipe', 'auth', 'utils/local_stor
 
             toggleViewportClass();
 
-                $to.addClass( $.mobile.activePageClass );
-                $.mobile.focusPage( $to );
-                $.event.special.scrollstart.enabled = false;
-                window.scrollTo( 0, toScroll );
-                setTimeout( function() {
-                    $.event.special.scrollstart.enabled = true;
-                }, 150 );
+                $to.css( "z-index", -10 );  // Prevent flickering in phonegap container: see comments at #4024 regarding iOS
+
+                    $to.addClass( $.mobile.activePageClass );
+                    $.mobile.focusPage( $to );
+                    $.event.special.scrollstart.enabled = false;
+                    window.scrollTo( 0, toScroll );
+                    setTimeout( function() {
+                        $.event.special.scrollstart.enabled = true;
+                    }, 150 );
+
+                $to.css( "z-index", "" );
 
                 if($from){
                     $from.removeClass( $.mobile.activePageClass );
