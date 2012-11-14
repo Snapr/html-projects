@@ -127,7 +127,7 @@ var map_view = page_view.extend({
         // map filter <select>
         this.photo_query.on( "change", this.filter_set_options );  // update what's selected and enabled
         auth.on( "change", this.filter_set_options );  // update what's enabled
-        //this.filter_set_options();  // set initial state
+        this.filter_set_options();  // set initial state
         this.layers_set();
         this.spot_query_save(); // save the spot query params
         this.photo_query_save(); // save the spot query params
