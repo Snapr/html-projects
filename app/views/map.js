@@ -328,7 +328,12 @@ var map_view = page_view.extend({
 
                     // update time display if in 'just one' mode now we have the
                     // photo and know its date
-                    if(map_view.photo_query.has('photo_id')){ map_view.map_time_update_display(); }
+                    if (map_view.photo_query.has("photo_id")){
+                        var photo = map_view.thumb_collection.get_photo_by_id( map_view.photo_query.get( "photo_id" ) );
+                        if (photo){
+                            map_view.photo_query.set('date', photo.get( "date" ));
+                        }
+                    }
                 },
                 error: function( e ){
                     console.warn( "error getting thumbs", e );
@@ -384,10 +389,6 @@ var map_view = page_view.extend({
                             );
                         }
                     });
-
-                    // update time display if in 'just one' mode now we have the
-                    // photo and know its date
-                    if(map_view.spot_query.has('spot_id')){ map_view.map_time_update_display(); }
                 },
                 error: function( e ){
                     console.warn( "error getting spots", e );
@@ -641,15 +642,7 @@ var map_view = page_view.extend({
     },
 
     map_time_update_display: function(){
-        var time;
-        if (this.photo_query.has("photo_id")){
-            var photo = this.thumb_collection.get_photo_by_id( this.photo_query.get( "photo_id" ) );
-            if (photo){
-                time = photo.get( "date" );
-            }
-        }else{
-            time = this.photo_query.get('date');
-        }
+        var time = this.photo_query.get('date');
 
         if (time){
             this.$(".x-time-btn").scroller('setDate', string_utils.convert_snapr_date(time));
