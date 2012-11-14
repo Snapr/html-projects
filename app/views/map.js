@@ -444,6 +444,7 @@ var map_view = page_view.extend({
                     map_view.map.fitBounds(results[ 0 ].geometry.viewport);
                 }
             }else{
+                map_view.map_update_or_create();
                 alerts.notification("Sorry, your search returned no results.");
             }
         });
