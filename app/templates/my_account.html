@@ -1,8 +1,8 @@
 <div id="my-account"  data-tab-bar="true" data-title="My Account" data-role="page" data-short-title="My Account" data-theme="d">
     <div data-role="header" data-theme="b" data-ajax="false">
-
+      
             <a data-role="button" data-rel="back">Home</a>
-
+       
 
         <h1>My Account</h1>
 
@@ -57,23 +57,19 @@
                                         <div class="s-avatar-large" style="background-image: url('<%= config.get('avatar_url') %>/<%= user_id %>?size=large&_salt=<%= settings.profile.avatar_type %>');"></div>
                                     </span>
 
-                                    <% if(linked_services.twitter){ %>
-                                        <input type="radio" name="my-account-avatar" id="my-account-avatar-twitter" value="twitter" data-role="none"
+                                    <input type="radio" name="my-account-avatar" id="my-account-avatar-twitter" value="twitter" data-role="none"
                                         <% if (settings.profile.avatar_type == 'twitter'){ %> checked="true" <% } %> />
                                         <label for="my-account-avatar-twitter">Twitter</label><br>
-                                    <% } %>
 
-                                    <% if(linked_services.facebook){ %>
                                         <input type="radio" name="my-account-avatar" id="my-account-avatar-facebook" value="facebook" data-role="none"
                                         <% if (settings.profile.avatar_type == 'facebook'){ %> checked="true" <% } %> />
                                         <label for="my-account-avatar-facebook">Facebook</label><br>
-                                    <% } %>
 
-                                    <input type="radio" name="my-account-avatar" id="my-account-avatar-gravatar" value="gravatar"   data-role="none"
-                                    <% if (settings.profile.avatar_type == 'gravatar'){ %> checked="true" <% } %> />
-                                    <label for="my-account-avatar-gravatar">Gravatar</label><br>
+                                        <input type="radio" name="my-account-avatar" id="my-account-avatar-gravatar" value="gravatar"   data-role="none"
+                                        <% if (settings.profile.avatar_type == 'gravatar'){ %> checked="true" <% } %> />
+                                        <label for="my-account-avatar-gravatar">Gravatar</label><br>
 
-                                    <a class="my-account-set-up-gravatar" href="http://en.gravatar.com/">&rarr; Set up Gravatar</a>
+                                        <a class="x-set-up-gravitar my-account-set-up-gravatar" href="http://en.gravatar.com/">&rarr; Set up Gravatar</a>
                                </div>
                             </fieldset>
 
@@ -103,7 +99,7 @@
                              <div class="ui-grid-b">
                                 <div class="ui-block-a"></div>
                                 <div class="ui-block-b"></div>
-                                <div class="ui-block-c"><button data-theme="e" class="save x-save">Save</button></div>
+                                <div class="ui-block-c"><button data-theme="h" class="save x-save">Save</button></div>
                             </div>
                         </div>
 
@@ -168,14 +164,14 @@
                             </fieldset>
                             <fieldset data-role="controlgroup">
                                 <label for="my-account-password-verify">Verify</label>
-                                <input type="password" name="my-account-password-verify" id="my-account-password-verify" class="x-password-verify custom"
+                                <input type="password" name="my-account-password-verify" id="my-account-password-verify" class="x-password-varify custom"
                                 value="" />
                             </fieldset>
                             <div class="ui-grid-b">
                                 <div class="ui-block-a"></div>
                                 <div class="ui-block-b"></div>
                                 <div class="ui-block-c">
-                                    <button data-theme="e" class="save x-save">Save</button>
+                                    <button data-theme="h" class="save x-save">Save</button>
                                 </div>
                             </div>
                         </div>
@@ -213,7 +209,7 @@
                             <div class="ui-grid-b">
                                 <div class="ui-block-a"></div>
                                 <div class="ui-block-b"></div>
-                                <div class="ui-block-c"><button data-theme="e" class="save x-save">Save</button></div>
+                                <div class="ui-block-c"><button data-theme="h" class="save x-save">Save</button></div>
                             </div>
                         </div>
                         <!-- End camplus -->

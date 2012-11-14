@@ -640,13 +640,14 @@ div[data-role="header"].ui-bar-b{
 
 
 
-// @E
+// @E & @H // BOTH BUTTONS AND BARS USE SAME COLOR IN SNAPR
 // YELLOW HIGHLIGHT SWATCH
 // ------------------------
 
 
 // @E-BARS
-.ui-bar-e{
+.ui-bar-e,
+.ui-bar-h{
     background: @yellow;
     color: @grayDarker;
     text-shadow: @white 0px 1px 1px;
@@ -659,7 +660,10 @@ div[data-role="header"].ui-bar-b{
 // @E-BUTTONS
 .ui-btn-up-e,
 .ui-btn-hover-e,
-.ui-btn-down-e{
+.ui-btn-down-e,
+.ui-btn-up-h,
+.ui-btn-hover-h,
+.ui-btn-down-h{
     border: none;
     .button-font-bold();
     color: @grayDarker;
@@ -671,22 +675,26 @@ div[data-role="header"].ui-bar-b{
     }
     
 }
-.ui-btn-up-e {
+.ui-btn-up-e,
+.ui-btn-up-h {
     background: @yellow;    
     .linear-gradient(@yellow, @yellowTint);
 }
-.ui-btn-hover-e {
+.ui-btn-hover-e,
+.ui-btn-hover-h {
     background: lighten(@yellow, 10% );
     .linear-gradient(lighten(@yellow, 10%), lighten(@yellowTint, 10%));
 }
-.ui-btn-down-e {
+.ui-btn-down-e,
+.ui-btn-down-h {
     background: @yellow;
     .pressed-gradient(@yellow, 3%);
 }
 
 
 // @E-NAVBAR
-.ui-body-e{
+.ui-body-e,
+.ui-body-h{
     &.ui-navbar{
         background: @yellow;
         .linear-gradient(@yellow, @yellowTint);
