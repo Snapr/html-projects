@@ -12,11 +12,10 @@ strong{
     font-family: @fontSpecial;
 }
 
-
-h4{
+h4,
+h4.ui-li-heading{
     .heading-font();
 }
-
 
 
 // @HEADERS
@@ -48,7 +47,6 @@ div[data-role="header"]{
     .ui-btn-icon-right .ui-btn-inner .ui-icon {
         margin-top: -@gfxTopBar-grid / 2;
     }
-    
     // The main Icon Only Buttons */
     .ui-btn-left .ui-btn-icon-notext,
     .ui-btn-right .ui-btn-icon-notext{
@@ -69,7 +67,6 @@ div[data-role="header"]{
             .box-shadow(none);
         }
     }
-    
     .ui-btn-right {
         position: absolute;
         right: 6px;
@@ -95,12 +92,10 @@ div[data-role="header"]{
                         top: -4px;
                         left: 2px;
                     }
-
                 }
             }
         }   
     }
-    
     // Shuffle the close button to the right */
     .ui-btn[data-icon="delete"]{
         right: 6px;
@@ -211,11 +206,9 @@ div[data-role="dialog"]{
 .s-inline-footer{
     margin: @padding * 2 -@padding * 2 0 -@padding * 2;
     .border-bottom-radius(@cornersPage);
-
     .ui-btn{
         margin: 0;
     }
-
     &.s-dash-footer .ui-content{
         padding: 0;
     }
@@ -275,12 +268,10 @@ div[data-role="dialog"]{
                 }
             }
         }
-    }
-      
+    }   
     &.ui-controlgroup-horizontal{
         .box-shadow(0 1px 4px @shadowDark);
         border: none;
-        
         .s-bar-left{
             border-top: @borderWhite;            
             border-right: none;
@@ -310,11 +301,9 @@ div[data-role="dialog"]{
             .border-top-right-radius(@corners)!important;
             .border-bottom-right-radius(@corners)!important;
         } 
-        
         .ui-icon-open{
             background-position: @gfxBar-x @gfxBar-closed-y;
-        } 
-    
+        }     
     }
 }
 
@@ -1031,7 +1020,7 @@ textarea.ui-input-text {
             padding: 24px;
         }
         .ui-icon-big-arrow-d{
-            background-image: url('../gfx/big-arrow-d.png');
+            background-image: url('@{gfx}@{@gfxMenuArrow}');
             background-repeat: no-repeat;
             background-position: center;
             height: 20px;
@@ -1105,7 +1094,7 @@ textarea.ui-input-text {
     }
     &.x-loading{
         .ui-icon-arrow-r{
-            .spinner('../gfx/small-spinner-dark.png');
+            .spinner('@{gfx}@{gfxSpinnerSmallDark}');
             .spin();
         }
     }
@@ -1251,7 +1240,7 @@ textarea.ui-input-text {
             background-color: @grayLight;
         }
          .s-icon-overlay{
-           background-image: url('../gfx/shiny-avatar-info.png');
+           background-image: url('@{gfx}@{gfxIconOverlay}');
            width: @avatarSizeLarge;
            height: @avatarSizeLarge;
            .border-top-left-radius (@cornersPage);
@@ -1331,7 +1320,7 @@ textarea.ui-input-text {
 
 // @FEED IMAGES
 
-// @X
+
 #feed-images{
     min-height: 324px!important;
 }
@@ -2469,7 +2458,7 @@ textarea.ui-input-text {
         color: @grayLight;
         text-align: left;
         padding: 0 24px 0 32px;
-        background-image: url('../gfx/gallery-quote.png');
+        background-image: url('@{gfx}@{gfxGallQuote}');
         background-repeat: no-repeat;
         background-position: 10px 14px;
         padding-top: 14px;
@@ -2489,9 +2478,8 @@ textarea.ui-input-text {
     }
 }
 
-div.ps-carousel-item-loading
-{
-    background: url('../gfx/image-load-dark.gif') no-repeat center center;
+div.ps-carousel-item-loading{
+    background: url('@{gfx}@{gfxImageLoadDark}') no-repeat center center;
 }
 
 
@@ -2930,7 +2918,7 @@ div.ps-carousel-item-loading
     .box-shadow(none);
     .ui-icon-loading {
         background-color: transparent;
-        background-image: url('../gfx/spinner.png');
+        background-image: url('@{gfx}@{gfxSpinner}');
         width: 56px;
         height: 56px;
         background-size: 56px 56px;
@@ -2954,7 +2942,7 @@ div.ps-carousel-item-loading
         overflow: hidden;
     }
     .ui-btn-inner > .ui-icon{
-        .spinner('../gfx/small-spinner-dark.png');
+        .spinner('@{gfx}@{gfxSpinnerSmallDark}');
         .spin();
     }
 }

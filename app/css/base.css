@@ -1194,7 +1194,7 @@ a:active {
   left: 0;
   top: 0;
 }
-.s-upload-progress-header .s-upload-progress-item .s-upload-image-thumb-gall .s-thumb-image {
+.s-upload-progress-header .s-upload-progress-item .s-upload-image-thumb-gall .s-thumb-small {
   width: 34px;
   height: 34px;
   -webkit-border-radius: 2px;
