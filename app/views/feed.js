@@ -54,6 +54,7 @@ var feed_view =  page_view.extend({
     },
 
     post_activate: function(options){
+        this.$('.x-feed-header').empty();
         this.more_button(false);
 
         this.photo_collection = new photo_collection();
