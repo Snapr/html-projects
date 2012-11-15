@@ -128,6 +128,9 @@ div[data-role="header"] .ui-btn-left .ui-btn {
   margin: 0;
   top: 4px;
 }
+.x-appmode-android div[data-role="header"].ui-bar-b a[data-rel="back"] {
+  display: none;
+}
 div[data-role="content"] {
   position: relative;
   padding: 0 8px;

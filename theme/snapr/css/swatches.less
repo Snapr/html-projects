@@ -198,10 +198,13 @@
     }
 }
 
+.ui-btn-up-b[data-rel="back"]::before{
+    .linear-gradient-45 ( @grayDarkBg, @grayDarkBgTint);
+}
+
+
 .ui-btn-hover-b,
-.ui-btn-hover-b[data-rel="back"]::before,
-.ui-btn-active-b,
-.ui-btn-active-b[data-rel="back"]::before{
+.ui-btn-active-b{
     color: lighten(@gray, 3%);
     .ui-btn-text{
         color: lighten(@gray, 3%);
@@ -213,8 +216,13 @@
     }
 }
 
-.ui-btn-down-b,
-.ui-btn-down-b[data-rel="back"]::before{
+.ui-btn-hover-b[data-rel="back"]::before,
+.ui-btn-active-b[data-rel="back"]::before{
+    .linear-gradient-45(lighten(@grayDarkBg, 3%), lighten(@grayDarkBgTint, 3%));
+    
+}
+
+.ui-btn-down-b{
     color: darken(@gray, 3%);
     .pressed-gradient(@grayDarkBgTint, 5%);
     .ui-btn-text{
@@ -229,6 +237,10 @@
     }
 }
 
+.ui-btn-down-b[data-rel="back"]::before{
+    .pressed-gradient(@grayDarkBgTint, 5%);
+}
+
 // Tricky CSS iOS style Arrow back buttons - fiddle at your own peril
 // CSS only back buttons based on work by Gregor Adams - http://dream-world.us/2011/11/30/the-best-pure-css3-ios-style-arrow-back-button/
 
@@ -238,7 +250,7 @@ div[data-role="header"].ui-bar-b{
         .border-radius(5px);
         position: absolute;
         left: 16px;
-        z-index: 2;
+        z-index: 3;
         width: auto;
         padding: 0 10px 0 6px;
         height: 30px;
@@ -258,23 +270,37 @@ div[data-role="header"].ui-bar-b{
     }
     a[data-rel="back"]::before {
         position: absolute;
+        display: block;
         content: ' ';
         left: -9px;
-        top: 2px;
+        top: 3px;
         height: 24px;
         width: 24px;
-        z-index: 3;
+        z-index: 1;
         .background-size(24px 24px);
         background-position: -1px -0.5px;
-        -webkit-transform: rotate(-45deg) skew(-10deg, -10deg);
+
+         -moz-transform : rotateZ(-45deg) skewY(-10deg) skewX(-10deg);
+        -o-transform : rotateZ(-45deg) skewY(-10deg) skewX(-10deg);
+        -webkit-transform : rotateZ(-45deg) skewY(-10deg) skewX(-10deg);
+        transform : rotateZ(-45deg) skewY(-10deg) skewX(-10deg);
+
+        border-right: none;
+        border-bottom: none;
+        box-shadow: none;
         .border-top-right-radius(10px);
         .border-top-left-radius(0px);
         .border-bottom-right-radius(0px);
         .border-bottom-left-radius(10px);
-        -webkit-mask-image: -webkit-gradient(linear, left top, right bottom, from(#000000), color-stop(0.4,#000000), color-stop(0.5, transparent), to(transparent));
+        
+        
+        -webkit-mask-image: -webkit-gradient(linear, left top, right bottom, from(#000000), color-stop(0.4, #000000), color-stop(0.5, transparent), to(transparent));
+                        
        
     }
 }
+
+
 
 
 // C //

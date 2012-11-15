@@ -114,6 +114,16 @@ div[data-role="header"]{
     }
 }
 
+// Hide the iOS style back button for android users
+.x-appmode-android{
+    div[data-role="header"].ui-bar-b{
+        a[data-rel="back"]{
+            display: none;
+        }
+    } 
+}
+
+
 // @CONTENT
 // -------------------------
 
