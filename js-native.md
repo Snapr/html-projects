@@ -372,6 +372,19 @@ Example:
 
 
 
+## Back
+
+Native → JS
+
+Go back. This has some extra functionality a browser back-button does not. Eg: if in a dialog, this closes the dialog.
+
+Example:
+
+    back();
+
+
+
+
 ## TODO
 
 When first loading up the webview add appmode=true to the existing query string.
