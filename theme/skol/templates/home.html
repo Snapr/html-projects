@@ -10,7 +10,7 @@
                         <%= auth.get('display_username') %>
                     </a>
                 <% } else { %>
-                    <a href="#/join/" data-snapr-dialog="true" data-role="button" data-icon="join" data-iconpos="left" data-theme="b">Join</a>
+                    <a href="#/login/" data-snapr-dialog="true" data-role="button" data-icon="join" data-iconpos="left" data-theme="b">Join</a>
                 <% } %>
             </div>
         </div>
@@ -25,9 +25,8 @@
             <ul class="s-menu-btns">
                    <li>
                        <div class="centered-title">
-                       <h4>Skol
-                       Maximum Viable Product</br>
-                      Snapr Sample App
+                       <h4>Skol</br>
+                       App Wireframe
                        </h4>
                        <span class="ui-icon ui-icon-big-arrow-d "></span>
                        </div>
@@ -35,64 +34,20 @@
 
                   <li>
                        <!-- Camera Button -->
-                       <a class="x-launch-camera" data-role="button" data-iconpos="left" data-icon="main-menu-camera">Shoot</a>
+                       <a class="x-launch-camera-options" data-role="button" data-iconpos="left" data-icon="main-menu-camera">Shoot</a>
                    </li>
 
-                   <li>
-                       <!-- Login / Image Library Button -->
-                       <% if (auth.has('access_token')) {%>
-                               <a class="x-launch-photo-library" data-role="button" data-iconpos="left" data-icon="main-menu-camera-lib">Camera Roll</a>
-                        <%}else{%>
-                             <a href="#/login/" data-snapr-dialog="true" data-role="button" data-iconpos="left" data-icon="main-menu-login">Log In</a>
-                       <%}%>
-                   </li>
+            
 
-                    <li>
-                       <!-- Dash Button -->
-                       <a href="#/dash/" data-role="button" data-iconpos="left" data-icon="main-menu-dashboard">Dashboard</a>
-                   </li>
-
+                 
                    <li>
                        <!-- Image Feed Button -->
-                       <% if (auth.has('access_token')) {%>
-                           <a href="#/feed/?username=<%= auth.get('snapr_user') %>" data-role="button" data-iconpos="left" data-icon="main-menu-feed">
-                           My Snaps
+                           <a href="#/feed/?min_rating=1" data-role="button" data-iconpos="left" data-icon="main-menu-feed">
+                           Featured Pics
                            </a>
-                           <span class="s-upload-count x-upload-count">&nbsp;</span>
-                       <%}else{%>
-                           <a href="#/feed/" data-role="button" data-iconpos="left" data-icon="main-menu-feed">Latest</a>
-                       <%}%>
+                           
                    </li>
 
-
-                   <li>
-                       <!-- Popular Button -->
-                        <a href="#/popular/" data-role="button" data-iconpos="left" data-icon="main-menu-popular">Popular</a>
-
-                   </li>
-
-
-                    <li>
-                       <!-- Map Button -->
-                       <a href="#/map/" data-shadow="false" data-role="button" data-iconpos="left" data-icon="main-menu-map">Map</a>
-
-                    </li>
-
-                    <li>
-                    <!-- My Account / Welcome Button -->
-                    <% if(auth.has('access_token')) { %>
-                        <a href="#/my-account/" data-role="button" data-iconpos="left" data-icon="main-menu-my-account">My Account</a>
-                    <% }else{ %>
-                        <a href="#/welcome/" data-role="button" data-iconpos="left" data-icon="main-menu-join">Welcome</a>
-                    <% } %>
-
-                    </li>
-
-                    <li>
-                    <!-- Cities Button -->
-                     <a href="#/cities/" data-role="button" data-iconpos="left" data-icon="main-menu-cities">Cities</a>
-
-                    </li>
 
                     <li>
                     <!-- Spots Button -->
@@ -100,27 +55,7 @@
 
                     </li>
 
-                    <li>
-                       <!-- Activity / About Button -->
-                       <% if(auth.has('access_token')) { %>
-                           <a href="#/activity/" data-role="button" data-iconpos="left" data-icon="main-menu-activity">Activity</a>
-                       <% }else{ %>
-                           <a href="#/about/" data-role="button" data-iconpos="left" data-icon="main-menu-info">About</a>
-                        <% } %>
-                    </li>
-
-                    <li>
-                    <!-- Leaderboard Button -->
-                     <a href="#/leaderboard/" data-role="button" data-iconpos="left" data-icon="main-menu-leaderboard">Leaderboard</a>
-
-                    </li>
-
-                    <li>
-                    <!-- Tumblr Button -->
-                     <a href="#/tumblr-posts/" data-role="button" data-iconpos="left" data-icon="main-menu-tumblr">Tumblr</a>
-
-                    </li>
-
+                   
 
 
                </ul>

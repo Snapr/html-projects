@@ -1,0 +1,196 @@
+//  SNAPR THEME VARIABLES
+// -----------------------------
+
+
+// Colors
+// ------------------------
+@snaprYellow:           #ffff00; 
+@snaprYellowTint:       #ffe400;
+
+@yellow:                @snaprYellow; 
+@yellowTint:            @snaprYellowTint; 
+@orange:                #ffcc00; 
+@orangeTint:            #ff8400;
+@blue:                  #4185f4; 
+@blueTint:              #194fdc;
+@green:                 green;
+@greenTint:             darken(green,10%);
+@red:                   green;
+@redTint:               darken(red,10%);
+
+
+// Grayscale
+// -------------------------
+
+@white:                 #fff;
+@whiteTint:             #d7d7d5;
+
+@grayLightBg:           #fbfbfb;
+@grayLightBgTint:       #d3d3d3;
+
+@grayLighter:           #f7f7f7;
+@grayLight:             #ccc;
+@gray:                  #999;
+@grayDark:              #666;
+@grayDarker:            #474747;
+
+@grayDarkBgTint:        #26282a;
+@grayDarkBg:            #434748;
+
+@blackTrans:            rgba(0, 0, 0, .6);
+@blackTint:             #1e2122;
+@black:                 #000;
+
+
+// Other Colors
+// -------------------------
+@twitterBlue:           #68d9ff; 
+@twitterBlueTint:       #309dc2;
+@facebookBlue:          #507ab8; 
+@facebookBlueTint:      #2e5998;
+@tumblrBlue:            #5a687d; 
+@tumblrBlueTint:        #2c3c54;
+@foursquareBlue:        #34a0ce; 
+@foursquareBlueTint:    #29708e;
+
+
+// BG Textures
+// -------------------------
+
+@gfxBgLight:            url('../gfx/bg-texture-light.gif');
+@gfxBgDark:             url('../gfx/bg-texture-dark.gif');
+
+
+// Borders
+// -------------------------
+
+@borderWhite:           solid 1px @white;
+@borderGrayLighter:     solid 1px #e4e4e4;
+@borderGrayLight:       solid 1px @grayLight;
+@borderGray:            solid 1px rgba(255,255,255,.4);
+@borderGrayDark:        solid 1px rgba(255,255,255,.1);
+@borderBlack:           solid 1px @black;
+
+
+// Shadows
+// -------------------------
+
+@shadowWhite:           rgba(255,255,255,.8);
+@shadowLighter:         rgba(255,255,255,.2);
+@shadowGray:            rgba(200,200,200,.3);
+@shadowDark:            rgba(0,0,0,.3);
+@shadowDarker:          rgba(0,0,0,.5);
+@shadowBlack:           #000;
+
+
+// Fonts
+// -------------------------
+
+@font:                  Helvetica, Arial, sans-serif;
+@fontSpecial:          'MuseoSansRounded700', Helvetica, Arial, sans-serif; 
+@fontButtons:          @fontSpecial;
+@fontSerif:             Georgia,'Times New Roman', Times, sans-serif; 
+
+@fontSize:              15px;
+@fontSizeSmall:         12px;
+@fontSizeUsername:      16px;
+@fontSizeHeading:       @fontSizeUsername;
+@fontSizePageTitle:     @fontSizeUsername;
+@fontSizeBtn:          @fontSize;
+@fontSizeBtnSmall:     @fontSizeSmall;
+@fontSize-numberBig:    24px;
+
+// Defining font defaults with mixins makes it easier to manage extra attributes
+
+.button-font-bold(){
+    font-family: @fontButtons;
+    font-weight: normal;
+    text-transform: none;
+    -webkit-font-smoothing: antialiased;
+    text-decoration: none;
+    text-transform: lowercase;
+    font-size: @fontSizeBtn;
+}
+.button-font-small(){
+    font-family: @font;
+    font-weight: bold;
+    font-size: @fontSizeSmall;
+}
+.button-font-light(){
+    font-family: @font;
+    font-weight: normal;
+    text-transform: lowercase;
+}
+.heading-font(){
+    font-family: @fontSpecial;
+    font-weight: normal;
+    font-size: @fontSizeHeading;
+}
+.title-bar-font(){
+    font-family: @fontSpecial;
+    font-weight: normal;
+    text-transform: lowercase;
+    font-size: @fontSizeHeading;
+}
+.ui-bar-font(){
+    font-family: @fontSpecial;
+    font-weight: bold;
+    font-style: normal;
+    text-transform: lowercase;
+}
+.username-font(){
+    font-family: @fontSpecial;
+    font-weight: normal;    
+    font-size: @fontSizeUsername;
+    text-transform: none;
+}
+
+
+
+// Corners
+// -------------------------
+
+@corners:                6px;
+@cornersRound:           20px;
+@cornersPage:            8px;
+@cornersGeneral:         6px; 
+@cornersSmall:           4px; 
+@cornersNone:            0px; 
+
+
+// Padding
+// -------------------------
+
+@padding:               4px;
+@paddingElement:        @padding * 2;
+@paddingFeed:           @padding * 2;
+@paddingGrid:           4px;
+
+@inlineBlock:             2px;
+
+// Arrows
+// -------------------------
+
+@arrowSize:            14px;
+@arrowOffset:          36px;
+@arrowYShift:         3px;
+
+
+// Sizes
+// -------------------------
+
+@thumbSize:             101px;
+
+@barHeight:             36px;
+
+@topBarHeight:          46px;
+@topBarBtnHeight:       44px;
+
+@tabBarHeight:          56px;
+
+@avatarSize:            34px;
+@avatarSizeMed:         50px;
+@avatarSizeLarge:       100px;
+
+
+
