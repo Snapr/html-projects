@@ -292,7 +292,9 @@ var map_view = page_view.extend({
             }
         });
 
+        var the_one = this.spot_query.get('id');
         _.each( this.spot_overlays, function( spot ){
+            if(spot.id == the_one){ return; }
             if(!overlays || _(overlays).contains(spot.data.id)){
                 spot.setMap(null);
             }
