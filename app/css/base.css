@@ -355,7 +355,7 @@ a:active {
   margin: 0;
   border: none;
   background: none;
-  border-top: solid 1px #fbfbfb;
+  border-top: solid 1px #e4e4e4;
 }
 .s-inset-page-content .ui-listview-inset li.ui-li:first-child {
   border: none;
