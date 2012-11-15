@@ -4,7 +4,7 @@ return {
     config: {
         environment: 'dev',  // from theme.environments below
 
-        sort_order: 'date_added',  // defaults to date_utc the photo was taken. (rating, favorite_count, comment_count, date_local, date_added, date_utc, score, weighted_score)
+        sort_order: 'date_utc',  // defaults to date_utc the photo was taken. (rating, favorite_count, comment_count, date_local, date_added, date_utc, score, weighted_score)
 
         initial_view: 'dash',  // "home page"
         show_tab_bar: true,
