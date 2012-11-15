@@ -16,7 +16,6 @@ var config_model = Backbone.Model.extend({
         timeout: 20000,
         offline_timeout: 5000,
 
-        upload_count: 0,
         upload_mode: "On",
         upload_paused: false,
         geolocation_enabled: true,

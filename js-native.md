@@ -189,15 +189,6 @@ Example:
 
 
 
-## Upload count
-
-Whenever an upload is added to the queue or one competes call the javascript function `upload_count` with the current length of the queue.
-
-Example:
-
-    upload_count(3);
-
-
 
 ## Upload failed
 

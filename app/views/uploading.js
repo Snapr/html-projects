@@ -22,6 +22,7 @@ var uploading = page_view.extend({
                 $('.x-resume-queue').remove();
             }
         });
+        upload_progress.on('all', this.upload_count());
     },
 
     post_activate: function(options){
@@ -244,8 +245,8 @@ var uploading = page_view.extend({
         }
     },
 
-    upload_count: function( count ){
-        if (count){
+    upload_count: function(){
+        if (upload_progress.length){
             this.$el.addClass(".x-showing-upload-queue");
         }else{
             this.$el.removeClass(".x-showing-upload-queue");

@@ -1,6 +1,6 @@
 /*global _  define require */
-define(['backbone', 'views/base/page', 'views/components/activity_ticker', 'views/components/nearby_photostream', 'auth', 'utils/local_storage', 'config', 'utils/alerts'],
-    function(Backbone, page_view, ticker, nearby_photostream_view, auth, local_storage, config, alerts){
+define(['backbone', 'views/base/page', 'views/components/activity_ticker', 'views/components/nearby_photostream', 'auth', 'utils/local_storage', 'config', 'utils/alerts', 'collections/upload_progress'],
+    function(Backbone, page_view, ticker, nearby_photostream_view, auth, local_storage, config, alerts, upload_progress_collection){
 return page_view.extend({
 
     post_initialize: function(options){
@@ -13,7 +13,8 @@ return page_view.extend({
         this.render_nearby_photostream();
         this.render_ticker();
 
-        this.upload_count(config.get('upload_count'));
+        upload_progress_collection.on('all', this.upload_count());
+        this.upload_count();
     },
 
     render: function(){
@@ -51,7 +52,8 @@ return page_view.extend({
         return this;
     },
 
-    upload_count: function( count ){
+    upload_count: function(){
+        var count = upload_progress_collection.length;
         this.$(".x-upload-count").toggle(!!count).text( count || "0" );
     }
 

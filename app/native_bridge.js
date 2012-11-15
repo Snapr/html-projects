@@ -45,13 +45,13 @@ define(['config', 'collections/upload_progress'], function(config, upload_progre
     };
 
     window.upload_count = function( count ){
-        config.set('upload_count', count);
+        // config.set('upload_count', count);
 
-        if (count === 0){
-            window.upload_progress({uploads:[]});
-        }
+        // if (count === 0){
+        //     window.upload_progress({uploads:[]});
+        // }
 
-        run_if_function(config.get('current_view').upload_count)(count);
+        // run_if_function(config.get('current_view').upload_count)(count);
     };
 
     window.upload_completed = function(queue_id, snapr_id){

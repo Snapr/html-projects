@@ -53,8 +53,8 @@ require(['routers'], function(routers){
     routers.routers_instance = routers_instance;
 });
 
-require(['config', 'jquery', 'backbone', 'photoswipe', 'auth', 'utils/local_storage', 'native_bridge', 'utils/dialog', 'utils/alerts'],
-    function(config, $, Backbone, PhotoSwipe, auth, local_storage, native_bridge, dialog, alerts) {
+require(['config', 'jquery', 'backbone', 'photoswipe', 'auth', 'utils/local_storage', 'native_bridge', 'utils/dialog', 'utils/alerts', 'collections/upload_progress'],
+    function(config, $, Backbone, PhotoSwipe, auth, local_storage, native_bridge, dialog, alerts, upload_progress_collection) {
 
     /* disable jquery-mobile's hash nav so we can replace it with backbone.js
     ***************************/
@@ -265,8 +265,8 @@ require(['config', 'jquery', 'backbone', 'photoswipe', 'auth', 'utils/local_stor
 
         /* global upload_count
         **********************/
-        config.on('change:upload_count', function(){
-            var count = config.get('upload_count');
+        upload_progress_collection.on('all', function(){
+            var count = upload_progress_collection.length;
             $('.x-upload-count').toggle(!!count).text(count);
         });
 
