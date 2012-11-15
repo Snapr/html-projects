@@ -6495,10 +6495,10 @@ div.ps-carousel-item-loading {
   }
   .ps-caption-bottom .ps-caption-content {
     background-image: url('../gfx/hdpi/gallery-quote.png');
-    -webkit-background-size: 36px 36px;
-    -moz-background-size: 36px 36px;
-    -o-background-size: 36px 36px;
-    background-size: 36px 36px;
+    -webkit-background-size: 14px 10px;
+    -moz-background-size: 14px 10px;
+    -o-background-size: 14px 10px;
+    background-size: 14px 10px;
   }
   .ps-caption-bottom .ps-caption-content::after {
     background-image: url('../gfx/hdpi/general-jquerymob-icons.png');
@@ -6566,301 +6566,301 @@ div.ps-carousel-item-loading {
     background-size: 24px 24px;
   }
 }
-@media only screen and (-webkit-min-device-pixel-ratio: 2) {
-  .ui-icon,
-  .ui-icon-searchfield:after {
-    background-image: url('../gfx/retina/general-jquerymob-icons.png');
-    -webkit-background-size: 774px 180px;
-    -moz-background-size: 774px 180px;
-    -o-background-size: 774px 180px;
-    background-size: 774px 180px;
-  }
-  .ui-header .ui-icon {
-    background-image: url('../gfx/retina/top-bar-icons.png');
-    -webkit-background-size: 240px 560px;
-    -moz-background-size: 240px 560px;
-    -o-background-size: 240px 560px;
-    background-size: 240px 560px;
-  }
-  .tab-bar-icons .ui-icon {
-    background-image: url('../gfx/retina/tab-bar-icons.png');
-    -webkit-background-size: 64px 192px;
-    -moz-background-size: 64px 192px;
-    -o-background-size: 64px 192px;
-    background-size: 64px 192px;
-  }
-  .action-icons .ui-icon {
-    background-image: url('../gfx/retina/action-icons-custom.png');
-    -webkit-background-size: 80px 440px;
-    -moz-background-size: 80px 440px;
-    -o-background-size: 80px 440px;
-    background-size: 80px 440px;
-  }
-  .dark-icons .ui-btn .ui-btn-inner .ui-icon {
-    background-image: url('../gfx/retina/action-icons-dark.png');
-    -webkit-background-size: 80px 520px;
-    -moz-background-size: 80px 520px;
-    -o-background-size: 80px 520px;
-    background-size: 80px 520px;
-  }
-  .ui-bar .ui-icon,
-  .ui-bar-icons .ui-icon,
-  .ui-bar.ui-icon,
-  .ui-bar-icons.ui-icon {
-    background-image: url('../gfx/retina/ui-bar-icons.png');
-    -webkit-background-size: 160px 512px;
-    -moz-background-size: 160px 512px;
-    -o-background-size: 160px 512px;
-    background-size: 160px 512px;
-  }
-  .ui-icon.tumblr-icon {
-    background-image: url('../gfx/retina/tumblr-post-icons.png');
-    -webkit-background-size: 48px 168px;
-    -moz-background-size: 48px 168px;
-    -o-background-size: 48px 168px;
-    background-size: 48px 168px;
-  }
-  .feed-icons.ui-icon,
-  .feed-icons .ui-icon {
-    background-image: url('../gfx/retina/feed-icons.png');
-    -webkit-background-size: 32px 96px;
-    -moz-background-size: 32px 96px;
-    -o-background-size: 32px 96px;
-    background-size: 32px 96px;
-  }
-  .ui-icon.helper-icons,
-  .helper-icons .ui-icon {
-    background-image: url('../gfx/retina/helper-icons.png');
-    -webkit-background-size: 96px 96px;
-    -moz-background-size: 96px 96px;
-    -o-background-size: 96px 96px;
-    background-size: 96px 96px;
-  }
-  .s-share-icon-small .ui-icon {
-    background-image: url('../gfx/retina/share-icons-small.png');
-    -webkit-background-size: 21px 84px;
-    -moz-background-size: 21px 84px;
-    -o-background-size: 21px 84px;
-    background-size: 21px 84px;
-  }
-  .ui-icon.spot-icon,
-  .s-category-btn .ui-icon {
-    background-image: url('../gfx/retina/spot-icons.png');
-    -webkit-background-size: 72px 216px;
-    -moz-background-size: 72px 216px;
-    -o-background-size: 72px 216px;
-    background-size: 72px 216px;
-  }
-  .ui-icon.distance-icon,
-  .s-distance-btn .ui-icon {
-    background-image: url('../gfx/retina/distance-icons.png');
-    -webkit-background-size: 24px 96px;
-    -moz-background-size: 24px 96px;
-    -o-background-size: 24px 96px;
-    background-size: 24px 96px;
-  }
-  .map-icons.ui-icon,
-  .map-icons .ui-icon {
-    background-image: url('../gfx/retina/map-icons.png');
-    -webkit-background-size: 32px 192px;
-    -moz-background-size: 32px 192px;
-    -o-background-size: 32px 192px;
-    background-size: 32px 192px;
-  }
-  .profile-icons.ui-icon,
-  .profile-icons .ui-icon {
-    background-image: url('../gfx/retina/profile-icons.png');
-    -webkit-background-size: 32px 96px;
-    -moz-background-size: 32px 96px;
-    -o-background-size: 32px 96px;
-    background-size: 32px 96px;
-  }
-  .ui-checkbox .ui-icon {
-    background-image: url('../gfx/retina/action-icons-custom.png');
-    -webkit-background-size: 80px 440px;
-    -moz-background-size: 80px 440px;
-    -o-background-size: 80px 440px;
-    background-size: 80px 440px;
-  }
-  .s-image-streams .x-stream .s-load-more-inline .ui-icon-refresh {
-    background-image: url('../gfx/retina/pull-to-refresh.png');
-    -webkit-background-size: 56px 168px;
-    -moz-background-size: 56px 168px;
-    -o-background-size: 56px 168px;
-    background-size: 56px 168px;
-  }
-  .s-image-streams .x-stream .x-loading .s-load-more-inline .ui-icon-refresh,
-  .s-image-streams .x-stream.x-loading .s-load-more-inline .ui-icon-refresh {
-    background-image: url('../gfx/retina/spinner.png');
-    -webkit-background-size: 56px 56px;
-    -moz-background-size: 56px 56px;
-    -o-background-size: 56px 56px;
-    background-size: 56px 56px;
-  }
-  .s-validate .x-validating .ui-icon-check {
-    display: block;
-    background-image: url('../gfx/retina/small-spinner-light.png') !important;
-    background-position: center!important;
-    background-repeat: no-repeat !important;
-    -webkit-background-size: 24px 24px !important;
-    -moz-background-size: 24px 24px !important;
-    -o-background-size: 24px 24px !important;
-    background-size: 24px 24px !important;
-    -webkit-background-size: 24px 24px;
-    -moz-background-size: 24px 24px;
-    -o-background-size: 24px 24px;
-    background-size: 24px 24px;
-  }
-  .s-menu-main .s-menu-btns .ui-btn {
-    background-image: url('../gfx/retina/menu-icons.png');
-    -webkit-background-size: 50px 800px;
-    -moz-background-size: 50px 800px;
-    -o-background-size: 50px 800px;
-    background-size: 50px 800px;
-  }
-  .s-menu-main .s-menu-btns .ui-btn .ui-icon {
-    background-image: url('../gfx/retina/menu-icons.png');
-    -webkit-background-size: 50px 800px;
-    -moz-background-size: 50px 800px;
-    -o-background-size: 50px 800px;
-    background-size: 50px 800px;
-  }
-  .s-menu-main .s-menu-btns .ui-icon-big-arrow-d {
-    background-image: url('../gfx/retina/@{@gfxMenuArrow}');
-    -webkit-background-size: 40px 20px;
-    -moz-background-size: 40px 20px;
-    -o-background-size: 40px 20px;
-    background-size: 40px 20px;
-  }
-  .s-menu-stream.x-loading .ui-icon-arrow-r {
-    display: block;
-    background-image: url('../gfx/retina/small-spinner-dark.png') !important;
-    background-position: center!important;
-    background-repeat: no-repeat !important;
-    -webkit-background-size: 24px 24px !important;
-    -moz-background-size: 24px 24px !important;
-    -o-background-size: 24px 24px !important;
-    background-size: 24px 24px !important;
-  }
-  .s-feed-header.s-inline-header .s-user-icon-left .s-icon-overlay {
-    background-image: url('../gfx/retina/shiny-avatar-info.png');
-    -webkit-background-size: 100px 100px;
-    -moz-background-size: 100px 100px;
-    -o-background-size: 100px 100px;
-    background-size: 100px 100px;
-  }
-  .s-feed-header.s-inline-header .s-follow-btn .ui-icon {
-    background-image: url('../gfx/retina/general-jquerymob-icons.png');
-    -webkit-background-size: 774px 180px;
-    -moz-background-size: 774px 180px;
-    -o-background-size: 774px 180px;
-    background-size: 774px 180px;
-  }
-  .s-dash-footer .ui-btn-inner .ui-icon {
-    background-image: url('../gfx/retina/dash-icons.png');
-    -webkit-background-size: 64px 64px;
-    -moz-background-size: 64px 64px;
-    -o-background-size: 64px 64px;
-    background-size: 64px 64px;
-  }
-  .s-share-photo .s-upload-image-privacy .ui-icon {
-    background-image: url('../gfx/retina/action-icons-custom.png');
-    -webkit-background-size: 80px 440px;
-    -moz-background-size: 80px 440px;
-    -o-background-size: 80px 440px;
-    background-size: 80px 440px;
-  }
-  .s-share-photo .s-upload-image-sharing .ui-icon {
-    background-image: url('../gfx/retina/share-icons-large.png');
-    -webkit-background-size: 84px 168px;
-    -moz-background-size: 84px 168px;
-    -o-background-size: 84px 168px;
-    background-size: 84px 168px;
-  }
-  .s-share-photo .s-upload-image-location .ui-btn .ui-icon {
-    background-image: url('../gfx/retina/action-icons-custom.png');
-    -webkit-background-size: 80px 440px;
-    -moz-background-size: 80px 440px;
-    -o-background-size: 80px 440px;
-    background-size: 80px 440px;
-  }
-  .ps-toolbar .ps-toolbar-close .ps-toolbar-content {
-    background-image: url('../gfx/retina/general-jquerymob-icons.png');
-    -webkit-background-size: 774px 180px;
-    -moz-background-size: 774px 180px;
-    -o-background-size: 774px 180px;
-    background-size: 774px 180px;
-  }
-  .ps-caption-bottom .ps-caption-content {
-    background-image: url('../gfx/retina/gallery-quote.png');
-    -webkit-background-size: 36px 36px;
-    -moz-background-size: 36px 36px;
-    -o-background-size: 36px 36px;
-    background-size: 36px 36px;
-  }
-  .ps-caption-bottom .ps-caption-content::after {
-    background-image: url('../gfx/retina/general-jquerymob-icons.png');
-    -webkit-background-size: 774px 180px;
-    -moz-background-size: 774px 180px;
-    -o-background-size: 774px 180px;
-    background-size: 774px 180px;
-  }
-  div.ps-carousel-item-loading {
-    background: url('../gfx/retina/spinner.png') no-repeat center center;
-    -webkit-background-size: 56px 56px;
-    -moz-background-size: 56px 56px;
-    -o-background-size: 56px 56px;
-    background-size: 56px 56px;
-  }
-  .ui-loader .ui-icon-loading {
-    background-image: url('../gfx/retina/spinner.png');
-    -webkit-background-size: 56px 56px;
-    -moz-background-size: 56px 56px;
-    -o-background-size: 56px 56px;
-    background-size: 56px 56px;
-  }
-  .x-ajax-loading .ui-btn-inner > .ui-icon {
-    display: block;
-    background-image: url('../gfx/retina/small-spinner-dark.png') !important;
-    background-position: center!important;
-    background-repeat: no-repeat !important;
-    -webkit-background-size: 24px 24px !important;
-    -moz-background-size: 24px 24px !important;
-    -o-background-size: 24px 24px !important;
-    background-size: 24px 24px !important;
-    -webkit-background-size: 24px 24px;
-    -moz-background-size: 24px 24px;
-    -o-background-size: 24px 24px;
-    background-size: 24px 24px;
-  }
-  .ui-body-c .ui-listview .x-ajax-loading .ui-btn-inner > .ui-icon,
-  .s-image-actions .x-ajax-loading .ui-btn-inner > .ui-icon,
-  .dark-icons .x-ajax-loading .ui-btn-inner > .ui-icon {
-    display: block;
-    background-image: url('../gfx/retina/small-spinner-light.png') !important;
-    background-position: center!important;
-    background-repeat: no-repeat !important;
-    -webkit-background-size: 24px 24px !important;
-    -moz-background-size: 24px 24px !important;
-    -o-background-size: 24px 24px !important;
-    background-size: 24px 24px !important;
-    -webkit-background-size: 24px 24px;
-    -moz-background-size: 24px 24px;
-    -o-background-size: 24px 24px;
-    background-size: 24px 24px;
-  }
-  .ui-icon-spinner {
-    display: block;
-    background-image: url('../gfx/retina/small-spinner-light.png') !important;
-    background-position: center!important;
-    background-repeat: no-repeat !important;
-    -webkit-background-size: 24px 24px !important;
-    -moz-background-size: 24px 24px !important;
-    -o-background-size: 24px 24px !important;
-    background-size: 24px 24px !important;
-    -webkit-background-size: 24px 24px;
-    -moz-background-size: 24px 24px;
-    -o-background-size: 24px 24px;
-    background-size: 24px 24px;
-  }
+/*@media only screen and (-webkit-min-device-pixel-ratio: 2) {
+*/.ui-icon,
+.ui-icon-searchfield:after {
+  background-image: url('../gfx/retina/general-jquerymob-icons.png');
+  -webkit-background-size: 774px 180px;
+  -moz-background-size: 774px 180px;
+  -o-background-size: 774px 180px;
+  background-size: 774px 180px;
 }
+.ui-header .ui-icon {
+  background-image: url('../gfx/retina/top-bar-icons.png');
+  -webkit-background-size: 240px 560px;
+  -moz-background-size: 240px 560px;
+  -o-background-size: 240px 560px;
+  background-size: 240px 560px;
+}
+.tab-bar-icons .ui-icon {
+  background-image: url('../gfx/retina/tab-bar-icons.png');
+  -webkit-background-size: 64px 192px;
+  -moz-background-size: 64px 192px;
+  -o-background-size: 64px 192px;
+  background-size: 64px 192px;
+}
+.action-icons .ui-icon {
+  background-image: url('../gfx/retina/action-icons-custom.png');
+  -webkit-background-size: 80px 440px;
+  -moz-background-size: 80px 440px;
+  -o-background-size: 80px 440px;
+  background-size: 80px 440px;
+}
+.dark-icons .ui-btn .ui-btn-inner .ui-icon {
+  background-image: url('../gfx/retina/action-icons-dark.png');
+  -webkit-background-size: 80px 520px;
+  -moz-background-size: 80px 520px;
+  -o-background-size: 80px 520px;
+  background-size: 80px 520px;
+}
+.ui-bar .ui-icon,
+.ui-bar-icons .ui-icon,
+.ui-bar.ui-icon,
+.ui-bar-icons.ui-icon {
+  background-image: url('../gfx/retina/ui-bar-icons.png');
+  -webkit-background-size: 160px 512px;
+  -moz-background-size: 160px 512px;
+  -o-background-size: 160px 512px;
+  background-size: 160px 512px;
+}
+.ui-icon.tumblr-icon {
+  background-image: url('../gfx/retina/tumblr-post-icons.png');
+  -webkit-background-size: 48px 168px;
+  -moz-background-size: 48px 168px;
+  -o-background-size: 48px 168px;
+  background-size: 48px 168px;
+}
+.feed-icons.ui-icon,
+.feed-icons .ui-icon {
+  background-image: url('../gfx/retina/feed-icons.png');
+  -webkit-background-size: 32px 96px;
+  -moz-background-size: 32px 96px;
+  -o-background-size: 32px 96px;
+  background-size: 32px 96px;
+}
+.ui-icon.helper-icons,
+.helper-icons .ui-icon {
+  background-image: url('../gfx/retina/helper-icons.png');
+  -webkit-background-size: 96px 96px;
+  -moz-background-size: 96px 96px;
+  -o-background-size: 96px 96px;
+  background-size: 96px 96px;
+}
+.s-share-icon-small .ui-icon {
+  background-image: url('../gfx/retina/share-icons-small.png');
+  -webkit-background-size: 21px 84px;
+  -moz-background-size: 21px 84px;
+  -o-background-size: 21px 84px;
+  background-size: 21px 84px;
+}
+.ui-icon.spot-icon,
+.s-category-btn .ui-icon {
+  background-image: url('../gfx/retina/spot-icons.png');
+  -webkit-background-size: 72px 216px;
+  -moz-background-size: 72px 216px;
+  -o-background-size: 72px 216px;
+  background-size: 72px 216px;
+}
+.ui-icon.distance-icon,
+.s-distance-btn .ui-icon {
+  background-image: url('../gfx/retina/distance-icons.png');
+  -webkit-background-size: 24px 96px;
+  -moz-background-size: 24px 96px;
+  -o-background-size: 24px 96px;
+  background-size: 24px 96px;
+}
+.map-icons.ui-icon,
+.map-icons .ui-icon {
+  background-image: url('../gfx/retina/map-icons.png');
+  -webkit-background-size: 32px 192px;
+  -moz-background-size: 32px 192px;
+  -o-background-size: 32px 192px;
+  background-size: 32px 192px;
+}
+.profile-icons.ui-icon,
+.profile-icons .ui-icon {
+  background-image: url('../gfx/retina/profile-icons.png');
+  -webkit-background-size: 32px 96px;
+  -moz-background-size: 32px 96px;
+  -o-background-size: 32px 96px;
+  background-size: 32px 96px;
+}
+.ui-checkbox .ui-icon {
+  background-image: url('../gfx/retina/action-icons-custom.png');
+  -webkit-background-size: 80px 440px;
+  -moz-background-size: 80px 440px;
+  -o-background-size: 80px 440px;
+  background-size: 80px 440px;
+}
+.s-image-streams .x-stream .s-load-more-inline .ui-icon-refresh {
+  background-image: url('../gfx/retina/pull-to-refresh.png');
+  -webkit-background-size: 56px 168px;
+  -moz-background-size: 56px 168px;
+  -o-background-size: 56px 168px;
+  background-size: 56px 168px;
+}
+.s-image-streams .x-stream .x-loading .s-load-more-inline .ui-icon-refresh,
+.s-image-streams .x-stream.x-loading .s-load-more-inline .ui-icon-refresh {
+  background-image: url('../gfx/retina/spinner.png');
+  -webkit-background-size: 56px 56px;
+  -moz-background-size: 56px 56px;
+  -o-background-size: 56px 56px;
+  background-size: 56px 56px;
+}
+.s-validate .x-validating .ui-icon-check {
+  display: block;
+  background-image: url('../gfx/retina/small-spinner-light.png') !important;
+  background-position: center!important;
+  background-repeat: no-repeat !important;
+  -webkit-background-size: 24px 24px !important;
+  -moz-background-size: 24px 24px !important;
+  -o-background-size: 24px 24px !important;
+  background-size: 24px 24px !important;
+  -webkit-background-size: 24px 24px;
+  -moz-background-size: 24px 24px;
+  -o-background-size: 24px 24px;
+  background-size: 24px 24px;
+}
+.s-menu-main .s-menu-btns .ui-btn {
+  background-image: url('../gfx/retina/menu-icons.png');
+  -webkit-background-size: 50px 800px;
+  -moz-background-size: 50px 800px;
+  -o-background-size: 50px 800px;
+  background-size: 50px 800px;
+}
+.s-menu-main .s-menu-btns .ui-btn .ui-icon {
+  background-image: url('../gfx/retina/menu-icons.png');
+  -webkit-background-size: 50px 800px;
+  -moz-background-size: 50px 800px;
+  -o-background-size: 50px 800px;
+  background-size: 50px 800px;
+}
+.s-menu-main .s-menu-btns .ui-icon-big-arrow-d {
+  background-image: url('../gfx/retina/@{@gfxMenuArrow}');
+  -webkit-background-size: 40px 20px;
+  -moz-background-size: 40px 20px;
+  -o-background-size: 40px 20px;
+  background-size: 40px 20px;
+}
+.s-menu-stream.x-loading .ui-icon-arrow-r {
+  display: block;
+  background-image: url('../gfx/retina/small-spinner-dark.png') !important;
+  background-position: center!important;
+  background-repeat: no-repeat !important;
+  -webkit-background-size: 24px 24px !important;
+  -moz-background-size: 24px 24px !important;
+  -o-background-size: 24px 24px !important;
+  background-size: 24px 24px !important;
+}
+.s-feed-header.s-inline-header .s-user-icon-left .s-icon-overlay {
+  background-image: url('../gfx/retina/shiny-avatar-info.png');
+  -webkit-background-size: 100px 100px;
+  -moz-background-size: 100px 100px;
+  -o-background-size: 100px 100px;
+  background-size: 100px 100px;
+}
+.s-feed-header.s-inline-header .s-follow-btn .ui-icon {
+  background-image: url('../gfx/retina/general-jquerymob-icons.png');
+  -webkit-background-size: 774px 180px;
+  -moz-background-size: 774px 180px;
+  -o-background-size: 774px 180px;
+  background-size: 774px 180px;
+}
+.s-dash-footer .ui-btn-inner .ui-icon {
+  background-image: url('../gfx/retina/dash-icons.png');
+  -webkit-background-size: 64px 64px;
+  -moz-background-size: 64px 64px;
+  -o-background-size: 64px 64px;
+  background-size: 64px 64px;
+}
+.s-share-photo .s-upload-image-privacy .ui-icon {
+  background-image: url('../gfx/retina/action-icons-custom.png');
+  -webkit-background-size: 80px 440px;
+  -moz-background-size: 80px 440px;
+  -o-background-size: 80px 440px;
+  background-size: 80px 440px;
+}
+.s-share-photo .s-upload-image-sharing .ui-icon {
+  background-image: url('../gfx/retina/share-icons-large.png');
+  -webkit-background-size: 84px 168px;
+  -moz-background-size: 84px 168px;
+  -o-background-size: 84px 168px;
+  background-size: 84px 168px;
+}
+.s-share-photo .s-upload-image-location .ui-btn .ui-icon {
+  background-image: url('../gfx/retina/action-icons-custom.png');
+  -webkit-background-size: 80px 440px;
+  -moz-background-size: 80px 440px;
+  -o-background-size: 80px 440px;
+  background-size: 80px 440px;
+}
+.ps-toolbar .ps-toolbar-close .ps-toolbar-content {
+  background-image: url('../gfx/retina/general-jquerymob-icons.png');
+  -webkit-background-size: 774px 180px;
+  -moz-background-size: 774px 180px;
+  -o-background-size: 774px 180px;
+  background-size: 774px 180px;
+}
+.ps-caption-bottom .ps-caption-content {
+  background-image: url('../gfx/retina/gallery-quote.png');
+  -webkit-background-size: 14px 10px;
+  -moz-background-size: 14px 10px;
+  -o-background-size: 14px 10px;
+  background-size: 14px 10px;
+}
+.ps-caption-bottom .ps-caption-content::after {
+  background-image: url('../gfx/retina/general-jquerymob-icons.png');
+  -webkit-background-size: 774px 180px;
+  -moz-background-size: 774px 180px;
+  -o-background-size: 774px 180px;
+  background-size: 774px 180px;
+}
+div.ps-carousel-item-loading {
+  background: url('../gfx/image-load-dark.gif') no-repeat center center;
+  -webkit-background-size: 24px 24px;
+  -moz-background-size: 24px 24px;
+  -o-background-size: 24px 24px;
+  background-size: 24px 24px;
+}
+.ui-loader .ui-icon-loading {
+  background-image: url('../gfx/retina/spinner.png');
+  -webkit-background-size: 56px 56px;
+  -moz-background-size: 56px 56px;
+  -o-background-size: 56px 56px;
+  background-size: 56px 56px;
+}
+.x-ajax-loading .ui-btn-inner > .ui-icon {
+  display: block;
+  background-image: url('../gfx/retina/small-spinner-dark.png') !important;
+  background-position: center!important;
+  background-repeat: no-repeat !important;
+  -webkit-background-size: 24px 24px !important;
+  -moz-background-size: 24px 24px !important;
+  -o-background-size: 24px 24px !important;
+  background-size: 24px 24px !important;
+  -webkit-background-size: 24px 24px;
+  -moz-background-size: 24px 24px;
+  -o-background-size: 24px 24px;
+  background-size: 24px 24px;
+}
+.ui-body-c .ui-listview .x-ajax-loading .ui-btn-inner > .ui-icon,
+.s-image-actions .x-ajax-loading .ui-btn-inner > .ui-icon,
+.dark-icons .x-ajax-loading .ui-btn-inner > .ui-icon {
+  display: block;
+  background-image: url('../gfx/retina/small-spinner-light.png') !important;
+  background-position: center!important;
+  background-repeat: no-repeat !important;
+  -webkit-background-size: 24px 24px !important;
+  -moz-background-size: 24px 24px !important;
+  -o-background-size: 24px 24px !important;
+  background-size: 24px 24px !important;
+  -webkit-background-size: 24px 24px;
+  -moz-background-size: 24px 24px;
+  -o-background-size: 24px 24px;
+  background-size: 24px 24px;
+}
+.ui-icon-spinner {
+  display: block;
+  background-image: url('../gfx/retina/small-spinner-light.png') !important;
+  background-position: center!important;
+  background-repeat: no-repeat !important;
+  -webkit-background-size: 24px 24px !important;
+  -moz-background-size: 24px 24px !important;
+  -o-background-size: 24px 24px !important;
+  background-size: 24px 24px !important;
+  -webkit-background-size: 24px 24px;
+  -moz-background-size: 24px 24px;
+  -o-background-size: 24px 24px;
+  background-size: 24px 24px;
+}
+/*}*/
