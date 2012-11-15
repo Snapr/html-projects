@@ -4925,7 +4925,7 @@ h4 {
 .s-image-streams .image-stream.no-photos .x-no-photos {
   display: block;
 }
-.s-image-streams .image-stream .edit-overlay {
+.s-image-streams .image-stream .s-edit-overlay {
   display: none;
   position: absolute;
   top: 37px;
@@ -4938,27 +4938,27 @@ h4 {
   /* Styles for remove btn on streams with no images */
 
 }
-.s-image-streams .image-stream .edit-overlay .remove-stream {
+.s-image-streams .image-stream .s-edit-overlay .x-remove-stream {
   display: inline-block;
   position: absolute;
   right: 8px;
   top: 50%;
   margin-top: -18px;
 }
-.s-image-streams .image-stream.closed .edit-overlay {
+.s-image-streams .image-stream.closed .s-edit-overlay {
   top: 0px;
   height: 32px;
   min-height: 32px;
   z-index: 30;
   background-color: rgba(255, 255, 255, 0.2);
 }
-.s-image-streams .image-stream.closed .edit-overlay .remove-stream {
+.s-image-streams .image-stream.closed .s-edit-overlay .x-remove-stream {
   margin-top: -14px;
 }
-.s-image-streams .image-stream.closed .edit-overlay .remove-stream .ui-btn-inner {
+.s-image-streams .image-stream.closed .s-edit-overlay .x-remove-stream .ui-btn-inner {
   padding: 4px 32px 4px 16px;
 }
-.edit .image-stream.user-stream .edit-overlay {
+.edit .image-stream.user-stream .s-edit-overlay {
   display: block;
 }
 .x-scroll-wrapper {

@@ -617,7 +617,7 @@ a:active {
 .s-image-streams .x-stream.x-no-photos .x-no-photos-alert {
   display: block;
 }
-.s-image-streams .x-stream .edit-overlay {
+.s-image-streams .x-stream .s-edit-overlay {
   display: none;
   position: absolute;
   top: 40px;
@@ -628,27 +628,27 @@ a:active {
   margin-right: -8px;
   right: 0;
 }
-.s-image-streams .x-stream .edit-overlay .remove-stream {
+.s-image-streams .x-stream .s-edit-overlay .x-remove-stream {
   display: inline-block;
   position: absolute;
   right: 8px;
   top: 50%;
   margin-top: -18px;
 }
-.s-image-streams .x-stream .edit-overlay.x-closed .edit-overlay {
+.s-image-streams .x-stream .s-edit-overlay.x-closed .s-edit-overlay {
   top: 0px;
   height: 36px;
   min-height: 36px;
   z-index: 30;
   background-color: rgba(255, 255, 255, 0.2);
 }
-.s-image-streams .x-stream .edit-overlay.x-closed .edit-overlay .remove-stream {
+.s-image-streams .x-stream .s-edit-overlay.x-closed .s-edit-overlay .x-remove-stream {
   margin-top: -14px;
 }
-.s-image-streams .x-stream .edit-overlay.x-closed .edit-overlay .remove-stream .ui-btn-inner {
+.s-image-streams .x-stream .s-edit-overlay.x-closed .s-edit-overlay .x-remove-stream .ui-btn-inner {
   padding: 4px 32px 4px 16px;
 }
-.x-edit .x-stream.user-stream .edit-overlay {
+.x-edit .x-stream.user-stream .s-edit-overlay {
   display: block;
 }
 .x-scroll-wrapper {

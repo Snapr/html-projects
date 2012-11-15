@@ -676,7 +676,7 @@ a:active{
          }
 
 
-        .edit-overlay{
+        .s-edit-overlay{
             display: none;
             position: absolute;
             top: 40px;
@@ -686,7 +686,7 @@ a:active{
             margin-left: -8px;
             margin-right: -8px;
             right: 0;
-            .remove-stream{
+            .x-remove-stream{
                 display: inline-block;
                 position: absolute;
                 right: 8px;
@@ -697,13 +697,13 @@ a:active{
 
 
             &.x-closed{
-                .edit-overlay{
+                .s-edit-overlay{
                     top: 0px;
                     height: @barHeight;
                     min-height: @barHeight;
                     z-index: 30;
                     background-color: rgba(255, 255, 255, .2);
-                    .remove-stream{
+                    .x-remove-stream{
                         margin-top: -14px;
                         .ui-btn-inner{
                             padding: 4px 32px 4px 16px;
@@ -718,7 +718,7 @@ a:active{
 }
 .x-edit{
     .x-stream.user-stream{
-        .edit-overlay{
+        .s-edit-overlay{
             display: block;
         }
     }

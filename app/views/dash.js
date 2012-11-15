@@ -416,7 +416,7 @@ var dash_stream = side_scroll.extend({
     className: 'x-stream',
 
     events: _.extend({
-        "click .remove-stream": "remove_stream"
+        "click .x-remove-stream": "remove_stream"
     }, side_scroll.prototype.events),
 
     get_title: function(){
