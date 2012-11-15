@@ -141,9 +141,10 @@ var map_view = page_view.extend({
         }
 
         // if we are going directly to a spot
+        var map_view = this;
         if(this.spot_query.id){
+            this.overlays_remove();
             this.spot = new spot_model(_.clone(this.spot_query.attributes));
-            var map_view = this;
 
             // if lat lng supplied, get straight to it
             if(options.query.lat && options.query.lng){
@@ -165,7 +166,6 @@ var map_view = page_view.extend({
             this.map_update_or_create();
 
         }else{
-            var map_view = this;
             geo.get_location(
                 // success
                 function( location ){
