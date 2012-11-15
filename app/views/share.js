@@ -226,7 +226,7 @@ return page_view.extend({
                     }
                 },
                 complete: function(){
-                    share_photo_view.$(".x-no-foursquare-venue").removeClass("x-ajax-loading");
+                    share_photo_view.$(".x-foursquare-venue").removeClass("x-ajax-loading");
                 }
             });
         };
