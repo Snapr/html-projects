@@ -325,6 +325,10 @@ a:active {
   background-image: url('gfx/small-spinner-light.png') !important;
   background-position: center!important;
   background-repeat: no-repeat !important;
+  -webkit-background-size: 24px 24px !important;
+  -moz-background-size: 24px 24px !important;
+  -o-background-size: 24px 24px !important;
+  background-size: 24px 24px !important;
   -webkit-transform: rotate(0deg) translateZ(0);
   -webkit-transition-duration: 0ms;
   -webkit-animation-name: loading;
@@ -674,6 +678,10 @@ a:active {
   background-image: url('gfx/small-spinner-light.png') !important;
   background-position: center!important;
   background-repeat: no-repeat !important;
+  -webkit-background-size: 24px 24px !important;
+  -moz-background-size: 24px 24px !important;
+  -o-background-size: 24px 24px !important;
+  background-size: 24px 24px !important;
   -webkit-transform: rotate(0deg) translateZ(0);
   -webkit-transition-duration: 0ms;
   -webkit-animation-name: loading;
@@ -2181,12 +2189,20 @@ body.x-browser-testing .ui-footer-fixed {
     background-image: url('gfx/hdpi/small-spinner-light.png') !important;
     background-position: center!important;
     background-repeat: no-repeat !important;
+    -webkit-background-size: 24px 24px !important;
+    -moz-background-size: 24px 24px !important;
+    -o-background-size: 24px 24px !important;
+    background-size: 24px 24px !important;
   }
   .x-loading .s-search-header .ui-input-search .ui-input-clear .ui-icon-delete {
     display: block;
     background-image: url('gfx/hdpi/small-spinner-light.png') !important;
     background-position: center!important;
     background-repeat: no-repeat !important;
+    -webkit-background-size: 24px 24px !important;
+    -moz-background-size: 24px 24px !important;
+    -o-background-size: 24px 24px !important;
+    background-size: 24px 24px !important;
   }
 }
 @media only screen and (-webkit-min-device-pixel-ratio: 2) {
@@ -2308,11 +2324,19 @@ body.x-browser-testing .ui-footer-fixed {
     background-image: url('gfx/retina/small-spinner-light.png') !important;
     background-position: center!important;
     background-repeat: no-repeat !important;
+    -webkit-background-size: 24px 24px !important;
+    -moz-background-size: 24px 24px !important;
+    -o-background-size: 24px 24px !important;
+    background-size: 24px 24px !important;
   }
   .x-loading .s-search-header .ui-input-search .ui-input-clear .ui-icon-delete {
     display: block;
     background-image: url('gfx/retina/small-spinner-light.png') !important;
     background-position: center!important;
     background-repeat: no-repeat !important;
+    -webkit-background-size: 24px 24px !important;
+    -moz-background-size: 24px 24px !important;
+    -o-background-size: 24px 24px !important;
+    background-size: 24px 24px !important;
   }
 }
