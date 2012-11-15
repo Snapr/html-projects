@@ -151,7 +151,7 @@ As a photo is uploaded call the `upload_progress` javascript function to update 
 
 Call the function with either a Javascript object or JSON text in the following format.
 
-Any time there is a change to the queue status you should call upload_progress() at least once - for example if a new upload is added, but there is no connection, call upload_progress() so we can update the queue to show the stalled item.
+Any time there is a change to the queue status you should call upload_progress() at least once - for example if a new upload is added, but there is no connection, call upload_progress() so we can update the queue to show the stalled item. You should also be sure upload_progress() is called at least once on any completion event that changes the status of the queue - including an image being removed from the queue due to completion.
 
     {
         "uploads": [
@@ -367,7 +367,9 @@ Example:
 
 Native → JS
 
-Go back. This has some extra functionality a browser back-button does not. Eg: if in a dialog, this closes the dialog.
+For the Android back button.
+
+Use this to go back instead of history - it handles closing dialogs, and sticky situations where back would mistakenly lead you to a web based OAuth flow.
 
 Example:
 
