@@ -126,6 +126,8 @@ var feed_view =  page_view.extend({
         this.populate_feed();
         this.update_uploads();
         this.toggle_paused();
+
+        this.$( ".x-feed-view-toggle input[type='radio']" ).checkboxradio( "refresh" );
     },
 
     events: {
