@@ -481,7 +481,6 @@ a:active{
     margin: 0 -@padding * 2;
     padding: @padding 0 @padding / 2 @padding / 2;
     min-height: @thumbSize;
-
     .s-feed-item{
         display: inline-block;
         margin: 0 @padding / 2;
@@ -494,6 +493,26 @@ a:active{
     }
 
 }
+
+// Fullscreen grid for larger phones like the s3
+
+@media only screen and (min-device-width : 719px) and (max-device-width : 721px) and (-webkit-min-device-pixel-ratio : 2) and (orientation : portrait) { 
+    .s-thumbs-grid-med,
+    .x-grid .x-feed-images{
+        .s-thumb-image{
+            width: @thumbSize + 14px;
+            height: @thumbSize + 14px;
+            
+        }
+    }  
+    .s-thumbs-grid-med{
+        padding: @padding 0 @padding / 2 @padding / 2 + 2px;
+    }
+    .x-grid .x-feed-images{
+        padding: @padding 0 @padding / 2 @padding / 2 ;
+    }
+}
+
 
 
 // @BAR
@@ -2113,7 +2132,7 @@ div.ps-carousel-item-loading
 .ui-page.s-snapr-welcome-bg{
     background-color: #acebdd!important;
     background-image: url('gfx/welcome-image.png')!important;
-    .background-size(320px 318px)!important;
+    .background-size(100% auto)!important;
     background-repeat: no-repeat!important;
     background-position: center bottom!important;
 }

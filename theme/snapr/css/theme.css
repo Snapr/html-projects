@@ -5787,10 +5787,10 @@ div.ps-carousel-item-loading {
 .ui-page.welcome-bg {
   background-color: #acebdd!important;
   background-image: url('../../../app/css/gfx/welcome-image.png') !important;
-  -moz-background-size: 320px 318px !important;
-  -o-background-size: 320px 318px !important;
-  -webkit-background-size: 320px 318px !important;
-  background-size: 320px 318px !important;
+  -moz-background-size: 100% auto !important;
+  -o-background-size: 100% auto !important;
+  -webkit-background-size: 100% auto !important;
+  background-size: 100% auto !important;
   background-repeat: no-repeat !important;
   background-position: center bottom!important;
 }

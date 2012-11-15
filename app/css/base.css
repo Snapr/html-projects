@@ -453,6 +453,19 @@ a:active {
   padding: 0;
   margin: 0;
 }
+@media only screen and (min-device-width: 719px) and (max-device-width: 721px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
+  .s-thumbs-grid-med .s-thumb-image,
+  .x-grid .x-feed-images .s-thumb-image {
+    width: 115px;
+    height: 115px;
+  }
+  .s-thumbs-grid-med {
+    padding: 4px 0 2px 4px;
+  }
+  .x-grid .x-feed-images {
+    padding: 4px 0 2px 2px;
+  }
+}
 .ui-bar {
   margin: 0 -8px;
 }
@@ -1936,10 +1949,10 @@ div.ps-carousel-item-loading {
 .ui-page.s-snapr-welcome-bg {
   background-color: #acebdd!important;
   background-image: url('gfx/welcome-image.png') !important;
-  -webkit-background-size: 320px 318px !important;
-  -moz-background-size: 320px 318px !important;
-  -o-background-size: 320px 318px !important;
-  background-size: 320px 318px !important;
+  -webkit-background-size: 100% auto !important;
+  -moz-background-size: 100% auto !important;
+  -o-background-size: 100% auto !important;
+  background-size: 100% auto !important;
   background-repeat: no-repeat !important;
   background-position: center bottom!important;
 }
