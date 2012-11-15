@@ -547,171 +547,180 @@ a:active{
 // @STREAMS
 // -------------------------
 
-.s-image-streams{
-    .x-stream{
+.x-stream{
+    position: relative;
+    margin-bottom: @padding * 2 ;
+    white-space: no-wrap;
+    .x-thumbs{
+        display: inline-block;
+        min-width: @thumbSize * 3 + @padding * 2;
+    }
+    .s-image-link{
+        padding-left: @paddingGrid;
+    }
+    .s-load-more-inline{
+        background-color: @grayLight;
+        width: @thumbSize;
+        height: @thumbSize;
+        display: inline-block;
+        vertical-align: top;
         position: relative;
-        margin-bottom: @padding * 2 ;
-        white-space: no-wrap;
-        .x-thumbs{
+        .ui-btn-text{
             display: inline-block;
-            min-width: @thumbSize * 3 + @padding * 2;
+            text-align: center;
+            font-size: 11px;
+            font-weight: bold;
+            text-transform: lowercase;
+            bottom: 12px;
+            position: absolute;
+            width: 101px;
+            color: @gray;
         }
-        .s-image-link{
-            padding-left: @paddingGrid;
+        .ui-icon-refresh{
+            background-image: url('@{gfx}@{gfxRefresh}');
+            background-repeat: no-repeat;
+            position: absolute;
+            display: block;
+            left: 50%;
+            top: 50%;
+            width: @gfxRefresh-grid;
+            height: @gfxRefresh-grid;
+            margin-top: -@gfxRefresh-grid / 2;
+            margin-left: -@gfxRefresh-grid / 2;
+            -webkit-transition-property:-webkit-transform;
+            -webkit-transition-duration:250ms;
+            -webkit-transform:rotate(0deg) translateZ(0);
         }
-        .s-load-more-inline{
-            background-color: @grayLight;
-            width: @thumbSize;
-            height: @thumbSize;
-            display: inline-block;
-            vertical-align: top;
-            position: relative;
-            .ui-btn-text{
-                display: inline-block;
-                text-align: center;
-                font-size: 11px;
-                font-weight: bold;
-                text-transform: lowercase;
-                bottom: 12px;
-                position: absolute;
-                width: 101px;
-                color: @gray;
-            }
+        &.x-right-pull{
+            margin-right: 9px;
             .ui-icon-refresh{
-                background-image: url('@{gfx}@{gfxRefresh}');
-                background-repeat: no-repeat;
-                position: absolute;
-                display: block;
-                left: 50%;
-                top: 50%;
-                width: @gfxRefresh-grid;
-                height: @gfxRefresh-grid;
-                margin-top: -@gfxRefresh-grid / 2;
-                margin-left: -@gfxRefresh-grid / 2;
-                -webkit-transition-property:-webkit-transform;
-                -webkit-transition-duration:250ms;
-                -webkit-transform:rotate(0deg) translateZ(0);
-            }
-            &.x-right-pull{
-                margin-right: 9px;
-                .ui-icon-refresh{
-                    background-position: @gfxRefresh-x @gfxRefresh-right-y;
-                }
-            }
-            &.x-left-pull{
-                margin-right:-@padding;
-                .ui-icon-refresh{
-                    background-position: @gfxRefresh-x @gfxRefresh-left-y;
-                }
-            }
-            &.x-flipped{
-                .ui-icon-refresh{
-                    background-position: @gfxRefresh-x @gfxRefresh-refresh-y;
-                    -webkit-transform:rotate(180deg) translateZ(0);
-                }
+                background-position: @gfxRefresh-x @gfxRefresh-right-y;
             }
         }
+        &.x-left-pull{
+            margin-right:-@padding;
+            .ui-icon-refresh{
+                background-position: @gfxRefresh-x @gfxRefresh-left-y;
+            }
+        }
+        &.x-flipped{
+            .ui-icon-refresh{
+                background-position: @gfxRefresh-x @gfxRefresh-refresh-y;
+                -webkit-transform:rotate(180deg) translateZ(0);
+            }
+        }
+    }
+    .ui-bar{
+        .s-image-tag{
+            display: none;
+        }
+    }
+
+    .s-load-more-inline{
+        .x-release, .x-loading, .x-no-more{ display: none; }
+    }
+
+    &.x-closed,
+    &.x-loading,
+    &.x-no-photos{
         .ui-bar{
-            .s-image-tag{
+            .s-image-tag,
+            .s-image-time{
                 display: none;
             }
         }
-
-        &.x-closed,
-        &.x-loading,
-        &.x-no-photos{
-            .ui-bar{
-                .s-image-tag,
-                .s-image-time{
-                    display: none;
-                }
+    }
+    &.x-loading,
+    .x-loading {
+        .s-load-more-inline{
+            .ui-icon-refresh{
+                background-image: url('@{gfx}@{gfxSpinner}');
+                background-position: center!important;
+                .spin();
             }
+            .x-load-more, .x-release{ display: none; }
+            .x-loading{ display: inherit; }
         }
-        &.x-loading,
-        .x-loading {
-            .s-load-more-inline{
-                .ui-icon-refresh{
-                    background-image: url('@{gfx}@{gfxSpinner}');
-                    background-position: center!important;
-                    .spin();
-                }
+    }
+    .x-no-more{
+        .s-load-more-inline.x-right-pull{
+            .ui-icon-refresh{
+                display: none;
             }
+            //turns 'the end' into big full stop..
+            .x-no-more{
+                display: inherit;
+                background-color:rgba(0,0,0,.12);
+                padding: 36px 0;
+                width: 84px;
+                .border-radius(44px);
+                color: white;
+                height: 12px;
+                vertical-align: middle;
+                margin-left: 10px;
+            }
+            .x-load-more{ display: none; }
         }
+    }
+    .x-flipped{
+        .x-release{ display: inherit; }
+        .x-load-more{ display: none; }
+    }
+    .x-no-photos{
+        display: none;
         .x-no-more{
-            .x-right-pull{
-                .ui-icon-refresh{
-                    display: none;
-                }
-                //turns 'the end' into big full stop..
-                .x-msg{
-                    background-color:rgba(0,0,0,.12);
-                    padding: 36px 0;
-                    width: 84px;
-                    .border-radius(44px);
-                    color: white;
-                    height: 12px;
-                    vertical-align: middle;
-                    margin-left: 10px;
-                }
+                background-color:rgba(0,0,0,.12);
+                padding: 36px 0;
+                width: 84px;
+                .border-radius(44px);
+                color: white;
+                height: 12px;
+                vertical-align: middle;
+                margin-left: 10px;
             }
+    }
+
+     &.x-no-photos{
+        .x-no-photos-alert{
+            display: block;
         }
-        .x-no-photos{
-            display: none;
-             .x-msg{
-                    background-color:rgba(0,0,0,.12);
-                    padding: 36px 0;
-                    width: 84px;
-                    .border-radius(44px);
-                    color: white;
-                    height: 12px;
-                    vertical-align: middle;
-                    margin-left: 10px;
-                }
-        }
-
-         &.x-no-photos{
-            .x-no-photos-alert{
-                display: block;
-            }
-         }
+     }
 
 
-        .s-edit-overlay{
-            display: none;
+    .s-edit-overlay{
+        display: none;
+        position: absolute;
+        top: 40px;
+        width: 109%;
+        background-color: rgba(255, 255, 255, .8);
+        min-height: @thumbSize;
+        margin-left: -8px;
+        margin-right: -8px;
+        right: 0;
+        .x-remove-stream{
+            display: inline-block;
             position: absolute;
-            top: 40px;
-            width: 109%;
-            background-color: rgba(255, 255, 255, .8);
-            min-height: @thumbSize;
-            margin-left: -8px;
-            margin-right: -8px;
-            right: 0;
-            .x-remove-stream{
-                display: inline-block;
-                position: absolute;
-                right: 8px;
-                top: 50%;
-                margin-top: -18px;
-            }
-            // Styles for remove btn on streams with no images
+            right: 8px;
+            top: 50%;
+            margin-top: -18px;
+        }
+        // Styles for remove btn on streams with no images
 
 
-            &.x-closed{
-                .s-edit-overlay{
-                    top: 0px;
-                    height: @barHeight;
-                    min-height: @barHeight;
-                    z-index: 30;
-                    background-color: rgba(255, 255, 255, .2);
-                    .x-remove-stream{
-                        margin-top: -14px;
-                        .ui-btn-inner{
-                            padding: 4px 32px 4px 16px;
-                        }
+        &.x-closed{
+            .s-edit-overlay{
+                top: 0px;
+                height: @barHeight;
+                min-height: @barHeight;
+                z-index: 30;
+                background-color: rgba(255, 255, 255, .2);
+                .x-remove-stream{
+                    margin-top: -14px;
+                    .ui-btn-inner{
+                        padding: 4px 32px 4px 16px;
                     }
                 }
             }
-
         }
 
     }
@@ -952,7 +961,7 @@ a:active{
                 }
             }
         }
-    
+
     }
     .s-tumblr-footer {
         margin: 0 -@padding * 2;
@@ -1330,8 +1339,8 @@ a:active{
 
         }
     }
-    
-    
+
+
 }
 
 
@@ -2296,15 +2305,15 @@ body.x-browser-testing{
     .s-image-loader-bg{
         background-image: url('@{gfxHDPI}@{gfxImageLoad}');
         .background-size(@gfxImageLoad-width @gfxImageLoad-height);
-        
+
     }
     .s-image-streams{
-        .x-stream{      
+        .x-stream{
             .s-load-more-inline{
                 .ui-icon-refresh{
                     background-image: url('@{gfxHDPI}@{gfxRefresh}');
                     .background-size(@gfxRefresh-width @gfxRefresh-height);
-                    
+
                 }
             }
             .x-loading,
@@ -2321,71 +2330,71 @@ body.x-browser-testing{
     .s-tumblr-credit{
         background-image: url('@{gfxHDPI}@{gfxTumblrLogo}');
         .background-size(@gfxTumblrLogo-width @gfxTumblrLogo-height);
-        
+
     }
     .ui-icon.tumblr-icon{
         background-image: url('@{gfxHDPI}@{gfxTumblr}');
-        .background-size(@gfxTumblr-width @gfxTumblr-height);        
+        .background-size(@gfxTumblr-width @gfxTumblr-height);
     }
     .s-share-icon-small{
         .ui-icon{
             background-image: url('@{gfxHDPI}@{gfxShareSmall}');
-            .background-size(@gfxShareSmall-width @gfxShareSmall-height);        
+            .background-size(@gfxShareSmall-width @gfxShareSmall-height);
         }
     }
     .s-iOS-appstore .s-platform-logo{
         background-image: url('@{gfxHDPI}@{gfxAppStore}');
-        .background-size(@gfxAppStore-width @gfxAppStore-height);  
+        .background-size(@gfxAppStore-width @gfxAppStore-height);
     }
     .s-android-marketplace .s-platform-logo{
         background-image: url('@{gfxHDPI}@{gfxGooglePlay}');
-        .background-size(@gfxGooglePlay-width @gfxGooglePlay-height);        
+        .background-size(@gfxGooglePlay-width @gfxGooglePlay-height);
     }
     div.ps-carousel-item-loading
     {
         background: url('@{gfxHDPI}@{gfxImageLoadDark}') no-repeat center center;
-        .background-size(@gfxImageLoadDark-width @gfxImageLoadDark-height);        
-        
+        .background-size(@gfxImageLoadDark-width @gfxImageLoadDark-height);
+
     }
     .s-photo-map{
         .s-map-thumb {
             .s-map-pin{
                 background-image: url('@{gfxHDPI}@{gfxMapPin}');
-                .background-size(@gfxMapPin-width @gfxMapPin-height);        
+                .background-size(@gfxMapPin-width @gfxMapPin-height);
             }
             .s-thumb-bg {
                 background-image: url('@{gfxHDPI}@{gfxMapThumb}');
-                .background-size(@gfxMapThumb-width @gfxMapThumb-height);        
+                .background-size(@gfxMapThumb-width @gfxMapThumb-height);
             }
         }
         .s-map-venue{
             .s-venue-pin{
                 background-image: url('@{gfxHDPI}@{gfxMapSpotPin}');
-                .background-size(@gfxMapSpotPin-width @gfxMapSpotPin-height);        
+                .background-size(@gfxMapSpotPin-width @gfxMapSpotPin-height);
             }
             .s-venue-label{
                 background-image: url('@{gfxHDPI}@{gfxMapSpotLabel}');
-                .background-size(@gfxMapSpotLabel-width @gfxMapSpotLabel-height);        
-            }   
+                .background-size(@gfxMapSpotLabel-width @gfxMapSpotLabel-height);
+            }
         }
         .s-map-current-location{
             background-image: url('@{gfxHDPI}@{gfxMapCurrentLoc}');
-            .background-size(@gfxMapCurrentLoc-width @gfxMapCurrentLoc-height);        
-        }    
+            .background-size(@gfxMapCurrentLoc-width @gfxMapCurrentLoc-height);
+        }
     }
     .s-spot-header{
         .s-foursquare-btn{
             .ui-icon-foursquare-logo{
                 background-image: url('@{gfxHDPI}@{gfxFoursquareBtn}');
-                .background-size(@gfxFoursquareBtn-width @gfxFoursquareBtn-height);        
+                .background-size(@gfxFoursquareBtn-width @gfxFoursquareBtn-height);
             }
         }
     }
     .s-button-logo{
         background-image: url('@{gfxHDPI}@{gfxService}');
-        .background-size(@gfxService-width @gfxService-height);        
+        .background-size(@gfxService-width @gfxService-height);
     }
-    
+
     .s-validate{
           .x-validating{
               .ui-icon-check{
@@ -2415,15 +2424,15 @@ body.x-browser-testing{
     .s-image-loader-bg{
         background-image: url('@{gfxRetina}@{gfxImageLoad}');
         .background-size(@gfxImageLoad-width @gfxImageLoad-height);
-        
+
     }
     .s-image-streams{
-        .x-stream{      
+        .x-stream{
             .s-load-more-inline{
                 .ui-icon-refresh{
                     background-image: url('@{gfxRetina}@{gfxRefresh}');
                     .background-size(@gfxRefresh-width @gfxRefresh-height);
-                    
+
                 }
             }
             .x-loading,
@@ -2440,69 +2449,69 @@ body.x-browser-testing{
     .s-tumblr-credit{
         background-image: url('@{gfxRetina}@{gfxTumblrLogo}');
         .background-size(@gfxTumblrLogo-width @gfxTumblrLogo-height);
-        
+
     }
     .ui-icon.tumblr-icon{
         background-image: url('@{gfxRetina}@{gfxTumblr}');
-        .background-size(@gfxTumblr-width @gfxTumblr-height);        
+        .background-size(@gfxTumblr-width @gfxTumblr-height);
     }
     .s-share-icon-small{
         .ui-icon{
             background-image: url('@{gfxRetina}@{gfxShareSmall}');
-            .background-size(@gfxShareSmall-width @gfxShareSmall-height);        
+            .background-size(@gfxShareSmall-width @gfxShareSmall-height);
         }
     }
     .s-iOS-appstore .s-platform-logo{
         background-image: url('@{gfxRetina}@{gfxAppStore}');
-        .background-size(@gfxAppStore-width @gfxAppStore-height);  
+        .background-size(@gfxAppStore-width @gfxAppStore-height);
     }
     .s-android-marketplace .s-platform-logo{
         background-image: url('@{gfxRetina}@{gfxGooglePlay}');
-        .background-size(@gfxGooglePlay-width @gfxGooglePlay-height);        
+        .background-size(@gfxGooglePlay-width @gfxGooglePlay-height);
     }
     div.ps-carousel-item-loading
     {
         background: url('@{gfxRetina}@{gfxImageLoadDark}') no-repeat center center;
-        .background-size(@gfxImageLoadDark-width @gfxImageLoadDark-height);        
-        
+        .background-size(@gfxImageLoadDark-width @gfxImageLoadDark-height);
+
     }
     .s-photo-map{
         .s-map-thumb {
             .s-map-pin{
                 background-image: url('@{gfxRetina}@{gfxMapPin}');
-                .background-size(@gfxMapPin-width @gfxMapPin-height);        
+                .background-size(@gfxMapPin-width @gfxMapPin-height);
             }
             .s-thumb-bg {
                 background-image: url('@{gfxRetina}@{gfxMapThumb}');
-                .background-size(@gfxMapThumb-width @gfxMapThumb-height);        
+                .background-size(@gfxMapThumb-width @gfxMapThumb-height);
             }
         }
         .s-map-venue{
             .s-venue-pin{
                 background-image: url('@{gfxRetina}@{gfxMapSpotPin}');
-                .background-size(@gfxMapSpotPin-width @gfxMapSpotPin-height);        
+                .background-size(@gfxMapSpotPin-width @gfxMapSpotPin-height);
             }
             .s-venue-label{
                 background-image: url('@{gfxRetina}@{gfxMapSpotLabel}');
-                .background-size(@gfxMapSpotLabel-width @gfxMapSpotLabel-height);        
-            }   
+                .background-size(@gfxMapSpotLabel-width @gfxMapSpotLabel-height);
+            }
         }
         .s-map-current-location{
             background-image: url('@{gfxRetina}@{gfxMapCurrentLoc}');
-            .background-size(@gfxMapCurrentLoc-width @gfxMapCurrentLoc-height);        
-        }    
+            .background-size(@gfxMapCurrentLoc-width @gfxMapCurrentLoc-height);
+        }
     }
     .s-spot-header{
         .s-foursquare-btn{
             .ui-icon-foursquare-logo{
                 background-image: url('@{gfxRetina}@{gfxFoursquareBtn}');
-                .background-size(@gfxFoursquareBtn-width @gfxFoursquareBtn-height);        
+                .background-size(@gfxFoursquareBtn-width @gfxFoursquareBtn-height);
             }
         }
     }
     .s-button-logo{
         background-image: url('@{gfxRetina}@{gfxService}');
-        .background-size(@gfxService-width @gfxService-height);        
+        .background-size(@gfxService-width @gfxService-height);
     }
 
     .s-validate{
@@ -2523,7 +2532,7 @@ body.x-browser-testing{
             }
         }
     }
-    
+
 }
 
 

@@ -500,19 +500,19 @@ a:active {
 .ui-bar .s-bar-right .ui-btn-inner {
   padding-right: 0;
 }
-.s-image-streams .x-stream {
+.x-stream {
   position: relative;
   margin-bottom: 8px;
   white-space: no-wrap;
 }
-.s-image-streams .x-stream .x-thumbs {
+.x-stream .x-thumbs {
   display: inline-block;
   min-width: 311px;
 }
-.s-image-streams .x-stream .s-image-link {
+.x-stream .s-image-link {
   padding-left: 4px;
 }
-.s-image-streams .x-stream .s-load-more-inline {
+.x-stream .s-load-more-inline {
   background-color: #fbfbfb;
   width: 101px;
   height: 101px;
@@ -520,7 +520,7 @@ a:active {
   vertical-align: top;
   position: relative;
 }
-.s-image-streams .x-stream .s-load-more-inline .ui-btn-text {
+.x-stream .s-load-more-inline .ui-btn-text {
   display: inline-block;
   text-align: center;
   font-size: 11px;
@@ -531,7 +531,7 @@ a:active {
   width: 101px;
   color: #666666;
 }
-.s-image-streams .x-stream .s-load-more-inline .ui-icon-refresh {
+.x-stream .s-load-more-inline .ui-icon-refresh {
   background-image: url('gfx/pull-to-refresh.png');
   background-repeat: no-repeat;
   position: absolute;
@@ -546,35 +546,40 @@ a:active {
   -webkit-transition-duration: 250ms;
   -webkit-transform: rotate(0deg) translateZ(0);
 }
-.s-image-streams .x-stream .s-load-more-inline.x-right-pull {
+.x-stream .s-load-more-inline.x-right-pull {
   margin-right: 9px;
 }
-.s-image-streams .x-stream .s-load-more-inline.x-right-pull .ui-icon-refresh {
+.x-stream .s-load-more-inline.x-right-pull .ui-icon-refresh {
   background-position: 0 -56px;
 }
-.s-image-streams .x-stream .s-load-more-inline.x-left-pull {
+.x-stream .s-load-more-inline.x-left-pull {
   margin-right: -4px;
 }
-.s-image-streams .x-stream .s-load-more-inline.x-left-pull .ui-icon-refresh {
+.x-stream .s-load-more-inline.x-left-pull .ui-icon-refresh {
   background-position: 0 0px;
 }
-.s-image-streams .x-stream .s-load-more-inline.x-flipped .ui-icon-refresh {
+.x-stream .s-load-more-inline.x-flipped .ui-icon-refresh {
   background-position: 0 -112px;
   -webkit-transform: rotate(180deg) translateZ(0);
 }
-.s-image-streams .x-stream .ui-bar .s-image-tag {
+.x-stream .ui-bar .s-image-tag {
   display: none;
 }
-.s-image-streams .x-stream.x-closed .ui-bar .s-image-tag,
-.s-image-streams .x-stream.x-loading .ui-bar .s-image-tag,
-.s-image-streams .x-stream.x-no-photos .ui-bar .s-image-tag,
-.s-image-streams .x-stream.x-closed .ui-bar .s-image-time,
-.s-image-streams .x-stream.x-loading .ui-bar .s-image-time,
-.s-image-streams .x-stream.x-no-photos .ui-bar .s-image-time {
+.x-stream .s-load-more-inline .x-release,
+.x-stream .s-load-more-inline .x-loading,
+.x-stream .s-load-more-inline .x-no-more {
   display: none;
 }
-.s-image-streams .x-stream.x-loading .s-load-more-inline .ui-icon-refresh,
-.s-image-streams .x-stream .x-loading .s-load-more-inline .ui-icon-refresh {
+.x-stream.x-closed .ui-bar .s-image-tag,
+.x-stream.x-loading .ui-bar .s-image-tag,
+.x-stream.x-no-photos .ui-bar .s-image-tag,
+.x-stream.x-closed .ui-bar .s-image-time,
+.x-stream.x-loading .ui-bar .s-image-time,
+.x-stream.x-no-photos .ui-bar .s-image-time {
+  display: none;
+}
+.x-stream.x-loading .s-load-more-inline .ui-icon-refresh,
+.x-stream .x-loading .s-load-more-inline .ui-icon-refresh {
   background-image: url('gfx/spinner.png');
   background-position: center!important;
   -webkit-transform: rotate(0deg) translateZ(0);
@@ -584,10 +589,21 @@ a:active {
   -webkit-animation-iteration-count: infinite;
   -webkit-animation-timing-function: linear;
 }
-.s-image-streams .x-stream .x-no-more .x-right-pull .ui-icon-refresh {
+.x-stream.x-loading .s-load-more-inline .x-load-more,
+.x-stream .x-loading .s-load-more-inline .x-load-more,
+.x-stream.x-loading .s-load-more-inline .x-release,
+.x-stream .x-loading .s-load-more-inline .x-release {
   display: none;
 }
-.s-image-streams .x-stream .x-no-more .x-right-pull .x-msg {
+.x-stream.x-loading .s-load-more-inline .x-loading,
+.x-stream .x-loading .s-load-more-inline .x-loading {
+  display: inherit;
+}
+.x-stream .x-no-more .s-load-more-inline.x-right-pull .ui-icon-refresh {
+  display: none;
+}
+.x-stream .x-no-more .s-load-more-inline.x-right-pull .x-no-more {
+  display: inherit;
   background-color: rgba(0, 0, 0, 0.12);
   padding: 36px 0;
   width: 84px;
@@ -599,10 +615,19 @@ a:active {
   vertical-align: middle;
   margin-left: 10px;
 }
-.s-image-streams .x-stream .x-no-photos {
+.x-stream .x-no-more .s-load-more-inline.x-right-pull .x-load-more {
   display: none;
 }
-.s-image-streams .x-stream .x-no-photos .x-msg {
+.x-stream .x-flipped .x-release {
+  display: inherit;
+}
+.x-stream .x-flipped .x-load-more {
+  display: none;
+}
+.x-stream .x-no-photos {
+  display: none;
+}
+.x-stream .x-no-photos .x-no-more {
   background-color: rgba(0, 0, 0, 0.12);
   padding: 36px 0;
   width: 84px;
@@ -614,10 +639,10 @@ a:active {
   vertical-align: middle;
   margin-left: 10px;
 }
-.s-image-streams .x-stream.x-no-photos .x-no-photos-alert {
+.x-stream.x-no-photos .x-no-photos-alert {
   display: block;
 }
-.s-image-streams .x-stream .s-edit-overlay {
+.x-stream .s-edit-overlay {
   display: none;
   position: absolute;
   top: 40px;
@@ -628,24 +653,24 @@ a:active {
   margin-right: -8px;
   right: 0;
 }
-.s-image-streams .x-stream .s-edit-overlay .x-remove-stream {
+.x-stream .s-edit-overlay .x-remove-stream {
   display: inline-block;
   position: absolute;
   right: 8px;
   top: 50%;
   margin-top: -18px;
 }
-.s-image-streams .x-stream .s-edit-overlay.x-closed .s-edit-overlay {
+.x-stream .s-edit-overlay.x-closed .s-edit-overlay {
   top: 0px;
   height: 36px;
   min-height: 36px;
   z-index: 30;
   background-color: rgba(255, 255, 255, 0.2);
 }
-.s-image-streams .x-stream .s-edit-overlay.x-closed .s-edit-overlay .x-remove-stream {
+.x-stream .s-edit-overlay.x-closed .s-edit-overlay .x-remove-stream {
   margin-top: -14px;
 }
-.s-image-streams .x-stream .s-edit-overlay.x-closed .s-edit-overlay .x-remove-stream .ui-btn-inner {
+.x-stream .s-edit-overlay.x-closed .s-edit-overlay .x-remove-stream .ui-btn-inner {
   padding: 4px 32px 4px 16px;
 }
 .x-edit .x-stream.user-stream .s-edit-overlay {

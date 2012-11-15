@@ -20,7 +20,9 @@
     <div class="x-scroll-wrapper"><!-- inner div for scroll -->
         <div class="x-left-pull s-load-more-inline">
             <span class="ui-icon ui-icon-refresh"></span>
-            <span class="ui-btn-text x-msg">Loading...</span>
+            <span class="ui-btn-text x-load-more">Refresh</span>
+            <span class="ui-btn-text x-release">Release</span>
+            <span class="ui-btn-text x-loading">Loading...</span>
         </div>
         <div class="x-thumbs" style="min-width:<%= window.innerWidth %>px">
             <% _.each(photos, function(photo) { %>
@@ -38,7 +40,10 @@
         </div>
         <div class="x-right-pull s-load-more-inline">
             <span class="ui-icon ui-icon-refresh"></span>
-            <span class="ui-btn-text x-msg">Load More</span>
+            <span class="ui-btn-text x-load-more">Load More</span>
+            <span class="ui-btn-text x-release">release</span>
+            <span class="ui-btn-text x-loading">loading</span>
+            <span class="ui-btn-text x-no-more">no more</span>
 
         </div>
     </div>
