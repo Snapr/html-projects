@@ -4375,7 +4375,7 @@ textarea.ui-input-text {
   padding: 24px;
 }
 .s-menu-main .s-menu-btns .ui-icon-big-arrow-d {
-  background-image: url('../gfx/@{@gfxMenuArrow}');
+  background-image: url('../gfx/big-arrow-d.png');
   background-repeat: no-repeat;
   background-position: center;
   height: 20px;
@@ -6493,7 +6493,7 @@ div.ps-carousel-item-loading {
     background-size: 50px 800px;
   }
   .s-menu-main .s-menu-btns .ui-icon-big-arrow-d {
-    background-image: url('../gfx/hdpi/@{@gfxMenuArrow}');
+    background-image: url('../gfx/hdpi/big-arrow-d.png');
     -webkit-background-size: 40px 20px;
     -moz-background-size: 40px 20px;
     -o-background-size: 40px 20px;
@@ -6791,7 +6791,7 @@ div.ps-carousel-item-loading {
     background-size: 50px 800px;
   }
   .s-menu-main .s-menu-btns .ui-icon-big-arrow-d {
-    background-image: url('../gfx/retina/@{@gfxMenuArrow}');
+    background-image: url('../gfx/retina/big-arrow-d.png');
     -webkit-background-size: 40px 20px;
     -moz-background-size: 40px 20px;
     -o-background-size: 40px 20px;
