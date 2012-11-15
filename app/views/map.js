@@ -146,10 +146,19 @@ var map_view = page_view.extend({
             this.overlays_remove();
             this.spot = new spot_model(_.clone(this.spot_query.attributes));
 
+            var show_spot = function(spot){
+                map_view.thumb_overlays[spot.id] = new map.overlays.Base(
+                    _.extend({active: true}, spot.attributes),
+                    map_view.map,
+                    map_view.spot_template
+                );
+                $.mobile.hidePageLoadingMsg();
+            };
+
             // if lat lng supplied, get straight to it
             if(options.query.lat && options.query.lng){
                 map_view.map_update_or_create();
-                this.spot.fetch();
+                this.spot.fetch({success: show_spot});
             }else{
                 this.spot.fetch({success: function(spot){
                     map_view.map_query.set({
@@ -158,6 +167,7 @@ var map_view = page_view.extend({
                         z: 15
                     }, {silent:true});
                     map_view.map_update_or_create();
+                    show_spot(spot);
                 }});
             }
 
@@ -364,10 +374,6 @@ var map_view = page_view.extend({
 
             this.spot_collection.data.area = this.map.getBounds().toUrlValue(4);
 
-            if(this.spot_query.has('id')){
-                this.spot_collection.data.n=1;
-            }
-
             // we are about to look for new thumbs, abort any old requests, they will no longer be needed
             try{ this.spot_collection.current_query.abort(); }catch(e){}
 
@@ -388,7 +394,7 @@ var map_view = page_view.extend({
                         var id = spot.get('id');
                         if(!_(old_spot_ids).contains(id)){
                             map_view.thumb_overlays[id] = new map.overlays.Base(
-                                _.extend({active: id == map_view.spot_query.get('id')}, spot.attributes),
+                                spot.attributes,
                                 map_view.map,
                                 map_view.spot_template
                             );
