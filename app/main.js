@@ -67,41 +67,118 @@ require(['config', 'jquery', 'backbone', 'photoswipe', 'auth', 'utils/local_stor
         $.mobile.buttonMarkup.hoverDelay = 0;
         $.mobile.defaultTransitionHandler = function( name, reverse, $to, $from ) {
 
-            // define TransitionHandler that simply shows $to and hides $from
-            // while doing other nessacary things like setting height and scroll
-            // the main way this differs from jQm defaults is that it's got
-            // absolutely nothing trasisition-related, they are nothing but trouble
-
-            var deferred = new $.Deferred(),
+            var sequential = true,
+                deferred = new $.Deferred(),
+                reverseClass = reverse ? " reverse" : "",
                 active  = $.mobile.urlHistory.getActive(),
                 toScroll = active.lastScroll || $.mobile.defaultHomeScroll,
                 screenHeight = $.mobile.getScreenHeight(),
-                toggleViewportClass = function() {
+                maxTransitionOverride = $.mobile.maxTransitionWidth !== false && $( window ).width() > $.mobile.maxTransitionWidth,
+                none = !$.support.cssTransitions || maxTransitionOverride || !name || name === "none",
+                toggleViewportClass = function(){
                     $.mobile.pageContainer.toggleClass( "ui-mobile-viewport-transitioning viewport-" + name );
+                },
+                scrollPage = function(){
+                    // By using scrollTo instead of silentScroll, we can keep things better in order
+                    // Just to be precautios, disable scrollstart listening like silentScroll would
+                    $.event.special.scrollstart.enabled = false;
+
+                    window.scrollTo( 0, toScroll );
+
+                    // reenable scrollstart listening like silentScroll would
+                    setTimeout(function() {
+                        $.event.special.scrollstart.enabled = true;
+                    }, 150 );
+                },
+                cleanFrom = function(){
+                    $from
+                        .removeClass( $.mobile.activePageClass + " out in reverse " + name )
+                        .height( "" );
+                },
+                startOut = function(){
+                    // if it's not sequential, call the doneOut transition to start the TO page animating in simultaneously
+                    if( !sequential ){
+                        doneOut();
+                    }
+                    else {
+                        $from.animationComplete( doneOut );
+                    }
+
+                    // Set the from page's height and start it transitioning out
+                    // Note: setting an explicit height helps eliminate tiling in the transitions
+                    $from
+                        .height( screenHeight + $(window ).scrollTop() )
+                        .addClass( name + " out" + reverseClass );
+                },
+
+                doneOut = function() {
+
+                    if ( $from && sequential ) {
+                        cleanFrom();
+                    }
+
+                    startIn();
+                },
+
+                startIn = function(){
+
+                    $to.addClass( $.mobile.activePageClass );
+
+                    // Send focus to page as it is now display: block
+                    $.mobile.focusPage( $to );
+
+                    // Set to page height
+                    $to.height( screenHeight + toScroll );
+
+                    scrollPage();
+
+                    if( !none ){
+                        $to.animationComplete( doneIn );
+                    }
+
+                    $to.addClass( name + " in" + reverseClass );
+
+                    if( none ){
+                        doneIn();
+                    }
+
+                },
+
+                doneIn = function() {
+
+                    if ( !sequential ) {
+
+                        if( $from ){
+                            cleanFrom();
+                        }
+                    }
+
+                    $to
+                        .removeClass( "out in reverse " + name )
+                        .height( "" );
+
+                    toggleViewportClass();
+
+                    // In some browsers (iOS5), 3D transitions block the ability to scroll to the desired location during transition
+                    // This ensures we jump to that spot after the fact, if we aren't there already.
+                    if( $( window ).scrollTop() !== toScroll ){
+                        scrollPage();
+                    }
+
+                    deferred.resolve( name, reverse, $to, $from, true );
                 };
 
             toggleViewportClass();
 
-                $to.css( "z-index", -10 );  // Prevent flickering in phonegap container: see comments at #4024 regarding iOS
+            if ( $from && !none ) {
+                startOut();
+            }
+            else {
+                doneOut();
+            }
 
-                    $to.addClass( $.mobile.activePageClass );
-                    $.mobile.focusPage( $to );
-                    $.event.special.scrollstart.enabled = false;
-                    window.scrollTo( 0, toScroll );
-                    setTimeout( function() {
-                        $.event.special.scrollstart.enabled = true;
-                    }, 150 );
-
-                $to.css( "z-index", "" );
-
-                if($from){
-                    $from.removeClass( $.mobile.activePageClass );
-                }
-
-            toggleViewportClass();
-
-            deferred.resolve( name, reverse, $to, $from, true );
             return deferred.promise();
+
         };
     });
     // now we can load jQmobile
