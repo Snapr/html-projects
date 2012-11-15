@@ -6134,6 +6134,10 @@ div.ps-carousel-item-loading {
   position: relative;
   min-height: 96px;
 }
+.s-helper-content .ui-bar {
+  margin-left: 0;
+  margin-right: 0;
+}
 .s-helper-content .icon-left {
   padding: 8px 8px 16px 104px;
 }
