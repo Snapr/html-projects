@@ -248,10 +248,10 @@ a:active {
   -webkit-border-radius: 20px;
   -moz-border-radius: 20px;
   border-radius: 20px;
-  padding: 2px;
-  font-size: 11px;
-  height: 11px;
-  min-width: 11px;
+  padding: 2px 2px 2px 2px;
+  font-size: 12px;
+  height: 12px;
+  min-width: 12px;
   text-align: center;
   line-height: 11px;
   vertical-align: middle;

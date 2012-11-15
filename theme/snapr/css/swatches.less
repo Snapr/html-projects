@@ -533,7 +533,8 @@ div[data-role="header"].ui-bar-b{
     .ui-li-link-alt{
         width: 44px;
         background: none;
-        .ui-btn {
+        .ui-btn,
+        &.ui-btn {
             border: none;
             width: 44px;
             height: 44px;
@@ -541,9 +542,12 @@ div[data-role="header"].ui-bar-b{
             right: 0;
             margin-top: 0;
             background: none;
+            .ui-btn-inner{
+                padding-right: 0;
+            }
             .ui-icon{
                 margin-top: 0;
-                top: 4px;
+                top: 2px;
                 right: 0;
             }
             .ui-icon-check{
