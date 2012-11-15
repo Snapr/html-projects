@@ -47,6 +47,10 @@ define(['config', 'collections/upload_progress'], function(config, upload_progre
     window.upload_count = function( count ){
         config.set('upload_count', count);
 
+        if (count === 0){
+            window.upload_progress({uploads:[]});
+        }
+
         run_if_function(config.get('current_view').upload_count)(count);
     };
 
