@@ -4041,10 +4041,10 @@ textarea.ui-input-text {
   background-image: url('../gfx/spinner.png');
   background-position: center!important;
 }
-.s-image-streams .x-stream.x-no-more .x-right-pull .ui-icon-refresh {
+.s-image-streams .x-stream .x-no-more .x-right-pull .ui-icon-refresh {
   display: none;
 }
-.s-image-streams .x-stream.x-no-more .x-right-pull .x-msg {
+.s-image-streams .x-stream .x-no-more .x-right-pull .x-msg {
   background-color: rgba(0, 0, 0, 0.12);
   padding: 36px 0;
   width: 84px;
