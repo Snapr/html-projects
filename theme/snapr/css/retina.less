@@ -1,8 +1,8 @@
 // @2X RES GFX
 //---------------------
 
-/*@media only screen and (-webkit-min-device-pixel-ratio: 2) {
-*/    .ui-icon,
+@media only screen and (-webkit-min-device-pixel-ratio: 2) {
+    .ui-icon,
     .ui-icon-searchfield:after{
         background-image: url('@{gfxRetina}@{gfxIcons}');  
         .background-size(@gfxIcons-width @gfxIcons-height);
@@ -204,7 +204,7 @@
         }
     }
     div.ps-carousel-item-loading{
-         background: url('@{gfx}@{gfxImageLoadDark}') no-repeat center center;
+         background: url('@{gfxRetina}@{gfxImageLoadDark}') no-repeat center center;
         .background-size(@gfxImageLoadDark-width @gfxImageLoadDark-height);                                            
     }
     .ui-loader{
@@ -233,6 +233,6 @@
         .spinner('@{gfxRetina}@{gfxSpinnerSmall}');
         .background-size(@gfxSpinnerSmall-width @gfxSpinnerSmall-height);                                            
     }
-/*}*/
+}
 
 
