@@ -91,7 +91,7 @@ var join_dialog = page_view.extend({
 
     events: {
         "submit form": "join",
-        "click .x-s-twitter-button": 'twitter_login',
+        "click .x-twitter-button": 'twitter_login',
         "click .x-facebook-button": 'facebook_login'
 
     },
