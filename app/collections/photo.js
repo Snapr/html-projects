@@ -14,6 +14,9 @@ return Backbone.Collection.extend({
             this.data = _.defaults(options.data || {}, this.defaults);
             this.exclude = options.exclude;
         }
+        if(config.has('min_photo_rating')){
+            this.defaults.min_rating = config.get('min_photo_rating');
+        }
     },
 
     url: function( method ){

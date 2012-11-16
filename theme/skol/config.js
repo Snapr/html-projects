@@ -11,6 +11,8 @@ return {
 
         app_group: 'skol-night-solver',
 
+        min_photo_rating: 1,
+
         // client must have xAuth permission from 3rd party
         tumblr_xauth: true,
         twitter_xauth: true,
