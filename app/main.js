@@ -300,9 +300,9 @@ require(['config', 'jquery', 'backbone', 'photoswipe', 'auth', 'utils/local_stor
 
             if (appmode){
                 if (camplus && camplus_camera){
-                    native_bridge.pass_data( "snapr://camplus/camera/?" + extra_params );
+                    native_bridge.pass_data( "snapr://camplus/camera?" + extra_params );
                 }else{
-                    native_bridge.pass_data( "snapr://camera/?" + extra_params );
+                    native_bridge.pass_data( "snapr://camera?" + extra_params );
 
                     setTimeout( function(){
                         Backbone.history.navigate( "#/limbo/" );
@@ -324,9 +324,9 @@ require(['config', 'jquery', 'backbone', 'photoswipe', 'auth', 'utils/local_stor
 
             if (appmode){
                 if (camplus && camplus_lightbox){
-                    native_bridge.pass_data( "snapr://camplus/lightbox/?" + extra_params );
+                    native_bridge.pass_data( "snapr://camplus/lightbox?" + extra_params );
                 }else{
-                    native_bridge.pass_data( "snapr://photo-library/?" + extra_params );
+                    native_bridge.pass_data( "snapr://photo-library?" + extra_params );
 
                     setTimeout( function(){
                         Backbone.history.navigate( "#/limbo/" );
