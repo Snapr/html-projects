@@ -1037,6 +1037,12 @@
 .distance-50000 .distance-icon {
   background-position: 0px -72px;
 }
+.ui.icon.competition-ribbon {
+  background-position: 0 0;
+  background-image: url('../gfx/comp-ribbon.png');
+  width: 47px;
+  height: 53px;
+}
 html {
   -webkit-user-select: none;
   -webkit-text-size-adjust: none;
@@ -7923,6 +7929,13 @@ body.browser-testing .ui-footer-fixed {
     -o-background-size: 24px 96px;
     -webkit-background-size: 24px 96px;
     background-size: 24px 96px;
+  }
+  .ui.icon.competition-ribbon {
+    background-image: url('../gfx/retina/comp-ribbon.png');
+    -moz-background-size: 47px 53px;
+    -o-background-size: 47px 53px;
+    -webkit-background-size: 47px 53px;
+    background-size: 47px 53px;
   }
   .spot-header .foursquare-btn .ui-icon-foursquare-logo {
     background-image: url('../gfx/retina/foursquare-btn.png');
