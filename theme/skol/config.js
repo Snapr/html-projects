@@ -109,7 +109,7 @@ return {
         },
         {
             name: 'join-success',
-            template: theme_templates + 'success'
+            template: theme_templates + 'join_success'
         },
         'my-account',
         'find-friends',
