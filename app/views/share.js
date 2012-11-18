@@ -486,37 +486,42 @@ return page_view.extend({
             });
         }else{
             if (local_storage.get("appmode")){
-                var d = new Date(),
-                    params = {
-                        'device_time': d.getFullYear() + '-' +
-                            string_utils.zeroFill(d.getMonth() + 1, 2) + '-' +
-                            string_utils.zeroFill(d.getDate(), 2 ) + ' ' +
-                            string_utils.zeroFill(d.getHours(), 2 ) + ':' +
-                            string_utils.zeroFill(d.getMinutes(), 2 ) + ':' +
-                            string_utils.zeroFill(d.getSeconds(), 2 )
-                    };
+                var params = {},
+                    d = new Date(),
+                    device_time =d.getFullYear() + '-' +
+                        string_utils.zeroFill(d.getMonth() + 1, 2) + '-' +
+                        string_utils.zeroFill(d.getDate(), 2 ) + ' ' +
+                        string_utils.zeroFill(d.getHours(), 2 ) + ':' +
+                        string_utils.zeroFill(d.getMinutes(), 2 ) + ':' +
+                        string_utils.zeroFill(d.getSeconds(), 2 );
+
                 _.each( this.$("form").serializeArray(), function( o ){
-                    if (["tumblr", "facebook_album", "tweet", "foursquare_checkin"].indexOf( o.name ) > -1){
+                    if (_.contains(["tumblr", "facebook_album", "tweet", "foursquare_checkin"], o.name)){
                         if (o.name == "foursquare_checkin" && o.value == "on"){
                             if (this.model.get( "location" ).foursquare_venue_id){
                                 params.foursquare_venue = this.model.get( "location" ).foursquare_venue_id;
                                 params.venue_name = this.model.get( "location" ).foursquare_venue_name;
                             }
-                            params.foursquare_checkin = (o.value == "on");
-                        }else{
-                            params[o.name] = (o.value == "on");
+                        params[o.name] = (o.value == "on");
                         }
                     }else if(o.name == "status" && o.value == "on"){
-                        params[o.name] = "public";
+                        params.status = "public";
                     }else{
-                        params[o.name] = escape( o.value );
+                        params.status = escape( o.value );
                     }
 
                 }, this);
 
+                params.device_time = device_time;
+                params.local_id = ''+d.getMonth()+d.getDay()+d.getHours()+d.getMinutes()+d.getSeconds();
+
                 // default to private if not set above
                 if( !params.status){
                     params.status = "private";
+                }
+
+                if(config.get('app_group')){
+                    params.app_group = config.get('app_group');
                 }
 
                 if(this.options.query.comp_id){
@@ -557,9 +562,6 @@ return page_view.extend({
                 if (params.comp_id){
                     extras += "&comp_id=" + params.comp_id;
                 }
-
-                var now = new Date();
-                params.local_id = ''+now.getMonth()+now.getDay()+now.getHours()+now.getMinutes()+now.getSeconds();
                 extras += "&local_id=" + params.local_id;
 
 
