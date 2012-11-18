@@ -507,7 +507,7 @@ return page_view.extend({
                     }else if(o.name == "status" && o.value == "on"){
                         params.status = "public";
                     }else{
-                        params.status = escape( o.value );
+                        params[o.name] = escape( o.value );
                     }
 
                 }, this);
