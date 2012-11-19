@@ -35,7 +35,7 @@ return view.extend({
                 this.template({
                     upload_status: this.is_queued ? 'waiting' : this.photo.get('upload_status').toLowerCase(),
                     description: unescape( this.photo.get('description') ),
-                    venue: this.photo.get('venue_name') || this.venue_name || this.photo.get('location'),
+                    venue: this.photo.get('venue_name') || this.venue_name || (this.photo.get('location') && this.photo.get('location').foursquare_venue_name),
                     shared: this.photo.get('shared'),
                     facebook_sharing: (
                         this.photo.get('facebook_album') ||
