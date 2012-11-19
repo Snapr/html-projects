@@ -150,7 +150,7 @@ Example:
 
 The API may return an error when attempting an upload.
 
-* 500 response code - Something has gone very wrong, this has been logged and should be fixed on the server.
+* 500 response code - Something has gone very wrong, this has been logged and should be fixed on the server. Pause the queue and display generic error message. "upload failed due to server error".
 * An error response with code `authentication.authentication_required` - Valid authentication was not provided, invalidate current token and prompt user to log in.
 * An error response with code `validation.duplicate_upload` - This file has been uploaded before, tell the user.
 * An error response with code `validation.corrupt_file` - This file is not a valid JPEG, try to convert or recreate it, tell the user.
