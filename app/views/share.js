@@ -69,7 +69,7 @@ return page_view.extend({
             share_location: local_storage.get( "share-location" ) !== false,
             facebook_sharing: local_storage.get( "facebook-sharing" ),
             tumblr_sharing: local_storage.get( "tumblr-sharing" ),
-            foursquare_sharing: local_storage.get( "foursquare-sharing" ),
+            foursquare_sharing: local_storage.get( "foursquare-sharing" ) && config.get('geolocation_enabled'),
             twitter_sharing: local_storage.get( "twitter-sharing" ),
             edit: (local_storage.get( "aviary" ) || local_storage.get( "camplus_edit" )),
             camplus: local_storage.get( "camplus" ),
@@ -83,6 +83,15 @@ return page_view.extend({
 
     share_alert: function(e){
         alerts.notification( "Share", "Please set the image to Public before sharing to other services", $.noop );
+    },
+
+    check_geolocation: function(){
+        if(config.get('geolocation_enabled')){
+            return true;
+        }else{
+            alerts.notification( "Location", "Please enable location services for this app to use these features", $.noop );
+            return false;
+        }
     },
 
     get_photo_from_server: function( id ){
@@ -274,16 +283,24 @@ return page_view.extend({
         local_storage.set( e.target.id, !!$(e.target).attr("checked") );
 
         if (e.target.id == "foursquare-sharing"){
-            console.log(this.$(".x-no-foursquare-venue").toggle());
-            console.log(this.$(".x-foursquare-venue").toggle());
-            if ($(e.target).attr("checked")){
-                this.get_foursquare_venues();
+            if(this.check_geolocation()){
+                this.$(".x-no-foursquare-venue").toggle();
+                this.$(".x-foursquare-venue").toggle();
+                if ($(e.target).attr("checked")){
+                    this.get_foursquare_venues();
+                }else{
+                    this.get_reverse_geocode();
+                }
             }else{
-                this.get_reverse_geocode();
+                $(e.target).attr("checked", false);
             }
         }
         if (e.target.id == "share-location" && $(e.target).attr("checked")){
-            this.get_reverse_geocode();
+            if(this.check_geolocation()){
+                this.get_reverse_geocode();
+            }else{
+                $(e.target).attr("checked", false);
+            }
         }
     },
 
