@@ -151,9 +151,42 @@ Example:
 The API may return an error when attempting an upload.
 
 * 500 response code - Something has gone very wrong, this has been logged and should be fixed on the server. Pause the queue and display generic error message. "upload failed due to server error".
-* An error response with code `authentication.authentication_required` - Valid authentication was not provided, invalidate current token and prompt user to log in.
-* An error response with code `validation.duplicate_upload` - This file has been uploaded before, tell the user.
-* An error response with code `validation.corrupt_file` - This file is not a valid JPEG, try to convert or recreate it, tell the user.
+* An error response with type `authentication.authentication_required` - Valid authentication was not provided, invalidate current token and prompt user to log in.
+* An error response with type `validation.duplicate_upload` - This file has been uploaded before, tell the user.
+* An error response with type `validation.corrupt_file` - This file is not a valid JPEG, try to convert or recreate it, tell the user.
+
+#### Sharing errors
+
+The upload may succeed but return errors for sharing to services that the user does not have linked. In this case you need to redirect to the connect view so they can link them.
+
+    {
+        "date": <date>,
+        "response": {
+            "photo": <photo object>,
+            "facebook": {
+                "success": false,
+                "error": {
+                    "message": "No Facebook Account Linked.",
+                    "type": "linked_service.facebook.no_account"
+                }
+            },
+            "<service>": {
+                "success": false,
+                "error": {
+                    "message": "No <service> Account Linked.",
+                    "type": "linked_service.<service>.no_account"
+                }
+            },
+            ...
+        },
+        "success": true
+    }
+
+Currently this is handled by directing the app to `#/connect/?to_link=facebook,<service>,...&photo_id=<photo_id>&redirect_url=<current_app_url>`
+
+New implimentations should use the `upload_sharing_failed(photo_id, service_list)` callback.
+
+    upload_shareing_failed('MAD', ['facebook', '<service>', ...]);
 
 
 ### Cancel
