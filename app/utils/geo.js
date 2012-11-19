@@ -7,6 +7,12 @@ geo.cached_location = undefined;
 
 geo.get_location = function ( success, error, no_cache ){
 
+    if(!config.get('geolocation_enabled')){
+        error('Geolocation disabled');
+        geo.update_location(function(){config.set('geolocation_enabled', true);}, $.noop);
+        return;
+    }
+
     if(no_cache || !geo.cached_location || geo.cached_location.timestamp + config.get('geolocation_cache_life') < new Date()){
         geo.update_location(success, error);
     }else{
@@ -34,6 +40,8 @@ geo.update_location = function (success, error){
         } );
         geo.location_error_callbacks.push( function(problem){
             clearTimeout(timeout);
+
+            config.set('geolocation_enabled', false);
 
             error(problem);
         } );
