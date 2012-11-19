@@ -11,12 +11,25 @@ function _make_route(file_name, name, template, extra_view_data){
         // dialog: (bool) load this page as a dialog (no url change, no effect on history)
         // extra_instance_data: extra data to load this view this time only
 
-        if(query_string && query_string.toLowerCase().indexOf('new_user=true') !== -1 && !local_storage.get("welcome_shown")){
-            //Backbone.history.navigate( "#", true );  // go here first so that back is not new_user
+        var query = get_query_params(query_string);
+
+        if(query.new_user && !local_storage.get("welcome_shown")){
             Backbone.history.navigate( "#/welcome/" );
 
             return;
         }
+
+        if(query.facebook_signin && auth.get('access_token')){
+            alerts.notification('Logged in as ' + (auth.get('display_username') || auth.get('snapr_user')));
+            var query_obj = new Query(query);
+            query_obj.remove('facebook_signin');
+            window.location.hash = "#/?" + query_obj.toString();
+
+            return;
+        }
+
+        var env = local_storage.get('environment');
+        config.set('environment', env);
 
         // get the view
         require([file_name], function(view) {
@@ -27,8 +40,7 @@ function _make_route(file_name, name, template, extra_view_data){
             }
             console.group(name);
 
-            var query = get_query_params(query_string),
-                options = _.extend({
+            var options = _.extend({
                     query: query,
                     name: name,
                     template: template,
@@ -88,20 +100,6 @@ function get_query_params(query) {
                 }
             }
         });
-    }
-
-    var env = local_storage.get('environment');
-    config.set('environment', env);
-
-    if(params.facebook_signin && auth.get('access_token')){
-        alerts.notification('Logged in as ' + (auth.get('display_username') || auth.get('snapr_user')));
-        query = new Query(query);
-        query.remove('facebook_signin');
-        if(Backbone.History.started){
-            Backbone.history.navigate( "#/?" + query.toString(), true );  // strip login params
-        }else{
-            window.location.hash = "#/?" + query.toString();
-        }
     }
 
     return params;
