@@ -80,7 +80,7 @@ var dash_view = page_view.extend({
 
     get_override_tab: function(){ return 'dash'; },
 
-    populate: function(){
+    populate: _.once(function(){
 
         $.mobile.showPageLoadingMsg();
 
@@ -88,7 +88,7 @@ var dash_view = page_view.extend({
         this.fetch(function(){
             dash.render();
         });
-    },
+    }),
 
     background_update: function(){
 
