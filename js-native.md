@@ -103,7 +103,7 @@ Example:
 
         file:///path/index.html#/my-account/?username=<Full Name>
 
-Passing on the extra parameters is important. It is nessacary because the API is designed to redirect to a URL after linking and provide some details for the resource at that URL to use. The API does not know, nor should it, whether the resource will make use of those details itself or pass them on in a redirect so they are provided unencoded. This is more clear in a case where we don't pass the second redirect URL around:
+Passing on the extra parameters is important. It is neccesary because the API is designed to redirect to a URL after linking and provide some details for the resource at that URL to use. The API does not know, nor should it, whether the resource will make use of those details itself or pass them on in a redirect so they are provided unencoded. This is more clear in a case where we don't pass the second redirect URL around:
 
     http://sna.pr/api/linked_services/<service>/oauth/?redirect=http%3A%2Fexample.com%2F
 
@@ -186,7 +186,7 @@ Currently this is handled by directing the app to `#/connect/?to_link=facebook,<
 
 New implimentations should use the `upload_sharing_failed(photo_id, service_list)` callback.
 
-    upload_shareing_failed('MAD', ['facebook', '<service>', ...]);
+    upload_sharing_failed('MAD', ['facebook', '<service>', ...]);
 
 
 ### Cancel

@@ -89,7 +89,7 @@ define(['config', 'collections/upload_progress'], function(config, upload_progre
         run_if_function(config.get('current_view').queue_settings)(upload_mode, paused);
     };
 
-    window.upload_shareing_failed = function(photo_id, services){
+    window.upload_sharing_failed  = function(photo_id, services){
         window.location.hash = "#/connect/?to_link=" + services.join(',') + "&photo_id=" + photo_id + "&redirect_url=" + escape(window.location.hash);
     }
 
