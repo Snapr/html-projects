@@ -140,7 +140,7 @@ require(['config', 'jquery', 'backbone', 'photoswipe', 'auth', 'utils/local_stor
                 $.ajaxSetup({timeout:config.get('offline_timeout')});
                 config.get('current_view').offline(true);
                 $.mobile.hidePageLoadingMsg();
-            }else if(config.get('offline') && (status == 'success' || status == 'notmodified')){
+            }else if(!this.template_loader && config.get('offline') && (status == 'success' || status == 'notmodified')){
                 config.set('offline', false);
                 $.ajaxSetup({timeout:config.get('timeout')});
                 config.get('current_view').offline(false);

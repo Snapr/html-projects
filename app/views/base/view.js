@@ -5,6 +5,7 @@ define(['backbone'], function(Backbone){
         get_template: function(name){
             var template;
             $.ajax({
+                template_loader: true,  // so any callbacks can know this is the template loader
                 async: false,
                 url: 'app/templates/' + name + '.html',
                 dataType: 'html',
