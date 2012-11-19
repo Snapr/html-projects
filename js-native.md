@@ -83,6 +83,34 @@ Example:
     location_error("User denied Geolocation")
 
 
+## Linking services
+
+1. Linking URL is requested and requested in webview:
+
+        http://sna.pr/api/linked_services/<service>/oauth/?redirect=snapr%3A%2F%2Fredirect%3Fredirect_url%3Dfile%253A%2F%2F%2Fpath%2Findex.html%2523%2Fmy-account%2F%253F&display=touch&access_token=<token>
+
+2. Snapr API redirects webview to the 3rd party, authentication is performed
+
+3. 3rd party redirects webview back to snapr API:
+
+        http://sna.pr/api/linked_services/<service>/oauth/?code=<authorised code>
+
+4. Snapr API links the account, gets details and redirects webview to a snapr://redirect URL, with some extra params:
+
+        snapr://redirect?redirect_url=file%3A///path/index.html%23/my-account/%3F&username=<Full Name>
+
+5. Native code redirects JS app to the given URL, **passing on any extra params**:
+
+        file:///path/index.html#/my-account/?username=<Full Name>
+
+Passing on the extra parameters is important. It is nessacary because the API is designed to redirect to a URL after linking and provide some details for the resource at that URL to use. The API does not know, nor should it, whether the resource will make use of those details itself or pass them on in a redirect so they are provided unencoded. This is more clear in a case where we don't pass the second redirect URL around:
+
+    http://sna.pr/api/linked_services/<service>/oauth/?redirect=http%3A%2Fexample.com%2F
+
+In this case, after linking you will be redirected to `http://example.com/?username=FullName`. example.com will handle the username param. In the case of a mobile application the base redirect URL also contains a second, encoded, redirect URL to be used by the native code but the API doesn't care, it's not the API's job to figure out what's going to happen to the URL later.
+
+
+
 
 
 ## Uploads
