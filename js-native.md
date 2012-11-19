@@ -146,6 +146,16 @@ Example:
     snapr://upload?device_time=2012-11-06 14:28:35&description=testing&status=public&tumblr=true&share_location=true&longitude=-122.406500&latitude=37.785833&photo=file%3A%2F%2F%2Fthis%2Fthat%2Fpreview-image.jpg&access_token=s3cRetHaShc0De&snapr_user=myusername&display_username=User%20Name&local_id=102142835
 
 
+### Errors
+
+The API may return an error when attempting an upload.
+
+* 500 response code - Something has gone very wrong, this has been logged and should be fixed on the server.
+* An error response with code `authentication.authentication_required` - Valid authentication was not provided, invalidate current token and prompt user to log in.
+* An error response with code `validation.duplicate_upload` - This file has been uploaded before, tell the user.
+* An error response with code `validation.corrupt_file` - This file is not a valid JPEG, try to convert or recreate it, tell the user.
+
+
 ### Cancel
 
 Called to cancel an upload (active or queued).
