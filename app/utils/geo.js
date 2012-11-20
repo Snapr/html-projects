@@ -13,10 +13,14 @@ geo.get_location = function ( success, error, no_cache ){
         return;
     }
 
-    if(no_cache || !geo.cached_location || geo.cached_location.timestamp + config.get('geolocation_cache_life') < new Date()){
-        geo.update_location(success, error);
+    if(!no_cache && geo.cached_location && geo.cached_location.timestamp + config.get('geolocation_cache_life') > new Date()){
+        if(geo.cached_location.location){
+            success(geo.cached_location);
+        }else{
+            error('no cached location');
+        }
     }else{
-        success(geo.cached_location);
+        geo.update_location(success, error);
     }
 
 };
@@ -40,6 +44,8 @@ geo.update_location = function (success, error){
         } );
         geo.location_error_callbacks.push( function(problem){
             clearTimeout(timeout);
+
+            geo.cached_location = {timestamp: new Date()};
 
             config.set('geolocation_enabled', false);
 
