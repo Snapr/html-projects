@@ -86,7 +86,8 @@ Example:
 ## Linking services
 
 1. The Linking URL is launched via a webview URL that contains an encoded redirect URL to be displayed after linking:
- http://sna.pr/api/linked_services/<service>/oauth/?redirect=snapr%3A%2F%2Fredirect%3Fredirect_url%3Dfile%253A%2F%2F%2Fpath%2Findex.html%2523%2Fmy-account%2F%253F&display=touch&access_token=<token>
+
+        http://sna.pr/api/linked_services/<service>/oauth/?redirect=snapr%3A%2F%2Fredirect%3Fredirect_url%3Dfile%253A%2F%2F%2Fpath%2Findex.html%2523%2Fmy-account%2F%253F&display=touch&access_token=<token>
 
 2. Snapr API redirects webview to the 3rd party, authentication is performed
 
@@ -96,18 +97,25 @@ Example:
 
 4. Snapr API links the account.
 
-5. Because the webview may not accept a local address as a redirect (i.e. `file://`) the webview is directed to a snapr://redirect URL, with some extra params:
+5. Because the webview may not accept a local address as a redirect (i.e. `file://`) the webview is directed to a `snapr://redirect URL`, with some extra params:
 
         snapr://redirect?redirect_url=file%3A///path/index.html%23/my-account/%3F&username=<Full Name>
 
-5. The Native code catches the `snapr://` URL and redirects JS app to the given address. 
- * The native code must be sure that it correctly decodes the `redirect_url`,
- * It must also take any new parameters that have been sent back and append them to the query string of the original `redirect-url`
+5. The Native code catches the `snapr://` URL and redirects JS app to the given address.
+    *   The native code must be sure that it correctly decodes the `redirect_url`,
+    *   It must also take any extra parameters that have been sent back and append them to the original `redirect_url`
 
-        file:///path/index.html#/my-account/?username=<Full Name>
+    file:///path/index.html#/my-account/?username=<Full Name>
 
+### Signin with Facebook flow
 
+    http://sna.pr/api/linked_services/facebook/signin/?redirect=snapr://redirect?redirect_url=file%3A///path/index.html%23/login/%3Ffacebook_signin%3Dtrue&display=touch&client_id=<client_id>&client_secret=<client_secret>&create=false
 
+    http://sna.pr/api/linked_services/facebook/signin/?code=<code>
+
+    snapr://redirect?redirect_url=file%3A///path/index.html%23/login/%3Ffacebook_signin%3Dtrue&access_token=<access_token>&display_username=<display_username>&snapr_user=<username>
+
+    file:///path/index.html#/login/?facebook_signin=true&display_username=<display_username>&access_token=<access_token>&snapr_user=<username>
 
 
 
