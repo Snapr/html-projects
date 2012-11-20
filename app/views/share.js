@@ -48,7 +48,7 @@ return page_view.extend({
         "submit form": "share"
     },
 
-    render: function(){
+    render: function(callback){
         var img_url;
         if (this.model.get("secret")){
             img_url = "http://media-server2.snapr.us/lrg/" +
@@ -77,6 +77,10 @@ return page_view.extend({
             saved_location: unescape(location),
             comp: this.comp
         }, ['.x-content']).trigger("create");
+
+        if(_.isFunction(callback)){
+            callback();
+        }
 
         return this;
     },
@@ -270,13 +274,20 @@ return page_view.extend({
 
         local_storage.set( "status", status );
 
-        setTimeout( this.render, 10 );
+        var share_view = this;
 
-        if (status == "private" && local_storage.get( "foursquare-sharing" )){
-            this.get_reverse_geocode();
-        }else if (status == "public" && local_storage.get( "foursquare-sharing" )){
-            this.get_foursquare_venues();
-        }
+        // I don't know what this timeout is for, maybe local storage takes a while to actually set.
+        setTimeout( function(){
+            share_view.render(function(){
+                if (!local_storage.get( "foursquare-sharing" )){
+                    share_view.get_reverse_geocode();
+                }else if (status == "public" && local_storage.get( "foursquare-sharing" )){
+                    share_view.get_foursquare_venues();
+                }else{
+                    share_view.$(".x-no-foursquare-venue, .x-foursquare-venue").removeClass("x-ajax-loading");
+                }
+            });
+        }, 10 );
     },
 
     toggle_sharing: function( e ){
