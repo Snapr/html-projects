@@ -241,13 +241,6 @@ var uploading = page_view.extend({
         });
     },
 
-    upload_cancelled: function( queue_id ){
-        if (this.progress_el){
-            this.progress_el.remove();
-            delete this.progress_el;
-        }
-    },
-
     upload_count: function(){
         if (upload_progress.length){
             this.$el.addClass(".x-showing-upload-queue");
