@@ -150,10 +150,27 @@ Example:
 
 The API may return an error when attempting an upload.
 
-* 500 response code - Something has gone very wrong, this has been logged and should be fixed on the server. Pause the queue and display generic error message. "upload failed due to server error".
-* An error response with type `authentication.authentication_required` - Valid authentication was not provided, invalidate current token and prompt user to log in.
-* An error response with type `validation.duplicate_upload` - This file has been uploaded before, tell the user.
-* An error response with type `validation.corrupt_file` - This file is not a valid JPEG, try to convert or recreate it, tell the user.
+* 500 response code - Something has gone wrong, it may be temporary, or a bigger problem. Pause the queue and display a generic alert. "Upload Error: Server Error". The user can then choose to un-pause the queue and try again, or cancel their upload if it continues to fail.
+
+* An error response with type `authentication.authentication_required`, i.e:
+
+`{
+    "success": false,
+    "date": TIMESTAMP,
+    "error": {
+        "type": "authentication.authentication_required",
+        "message": "ERROR MESSAGE"
+    }
+}`
+
+- Valid authentication was not provided. Display an alert "Upload Error: Invalid login details", invalidate current token, call the logout function, and direct the user to the root level page.
+
+
+* An error response with type `validation.duplicate_upload` - This file has been uploaded before, display an alert "Upload Error: This image has been uploaded before". Cancel the upload and remove it from the queue.
+
+* An error response with type `validation.corrupt_file` - This file is not a valid JPEG. Display an alert "Upload Error: Invalid File". Cancel the upload and remove it from the queue.
+
+
 
 #### Sharing errors
 
@@ -184,7 +201,7 @@ The upload may succeed but return errors for sharing to services that the user d
 
 Currently this is handled by directing the app to `#/connect/?to_link=facebook,<service>,...&photo_id=<photo_id>&redirect_url=<current_app_url>`
 
-New implimentations should use the `upload_sharing_failed(photo_id, service_list)` callback.
+New implementations should use the `upload_sharing_failed(photo_id, service_list)` callback.
 
     upload_sharing_failed('MAD', ['facebook', '<service>', ...]);
 
