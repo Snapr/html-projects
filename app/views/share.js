@@ -208,8 +208,9 @@ return page_view.extend({
                     geocode( location.coords.latitude, location.coords.longitude );
                 },
                 function( e ){
+                    share_photo_view.$(".x-location-name").text('location disabled');
                     share_photo_view.$(".x-no-foursquare-venue").removeClass("x-ajax-loading");
-                    console.error( "get reverse geocode: geocode error model doesn't have lat lon", e );
+                    console.error( "get reverse geocode", e );
                 }
             );
         }
@@ -257,6 +258,7 @@ return page_view.extend({
                 get_venues( location.coords.latitude, location.coords.longitude );
             },
             function( e ){
+                share_photo_view.$(".x-foursquare-venue-name").text('location disabled');
                 share_photo_view.$(".x-no-foursquare-venue").removeClass("x-ajax-loading");
                 console.error( "get foursquare venue geocode error", e );
             });
