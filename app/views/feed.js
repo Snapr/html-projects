@@ -257,7 +257,7 @@ var feed_view =  page_view.extend({
                 this.$(".x-feed-upload-list").append( li.render().el );
             }, this);
 
-            this.$el.toggleClass("x-showing-upload-queue", !!upload_progress.models.length);
+            this.$el.toggleClass("x-showing-upload-queue", !!upload_progress.length);
 
             this.$(".x-feed-upload-list").listview().listview("refresh");
         }
@@ -265,6 +265,9 @@ var feed_view =  page_view.extend({
 
     upload_complete: function( model, queue_id ){
         this.$(".x-upload-id-" + model.id).remove();
+
+        this.$el.toggleClass("x-showing-upload-queue", !!upload_progress.length);
+
         // if we are on a feed for the current snapr user
         if (this.is_my_snaps() && !this.options.query.photo_id){
             // remove the date restriction if it is present
