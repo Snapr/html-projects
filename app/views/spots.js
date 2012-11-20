@@ -29,6 +29,7 @@ var spots_view =  page_view.extend({
         search_options = (stored_search_options) ? _.clone(stored_search_options) : _.clone(this.defaults);
 
         var success_callback = function( location ) {
+            this.$('.x-location-needed').attr('disabled', false);
             this_view.latitude = location.coords.latitude;
             this_view.longitude = location.coords.longitude;
             search_options.latitude = this_view.latitude;
