@@ -209,6 +209,7 @@ return page_view.extend({
                 },
                 function( e ){
                     share_photo_view.$(".x-location-name").text('location disabled');
+                    share_photo_view.$('.x-share-location').attr('checked', false).checkboxradio("refresh");
                     share_photo_view.$(".x-no-foursquare-venue").removeClass("x-ajax-loading");
                     console.error( "get reverse geocode", e );
                 }
@@ -259,6 +260,7 @@ return page_view.extend({
             },
             function( e ){
                 share_photo_view.$(".x-foursquare-venue-name").text('location disabled');
+                share_photo_view.$('.x-share-location').attr('checked', false).checkboxradio("refresh");
                 share_photo_view.$(".x-no-foursquare-venue").removeClass("x-ajax-loading");
                 console.error( "get foursquare venue geocode error", e );
             });
