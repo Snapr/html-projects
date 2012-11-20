@@ -118,6 +118,14 @@ Example:
     file:///path/index.html#/login/?facebook_signin=true&display_username=<display_username>&access_token=<access_token>&snapr_user=<username>
 
 
+### Errors
+
+    Errors will be sent back just as success is but instead of extra params like `username` you'll see params like `error`. Redirect to the supplied url with the extra params as normal.
+
+### Close button on webview
+
+If the users presses close on the webview you need to find the `redirect` form the original webview request and redirect the JS to it with `error=Linking%20Closed`. The original will be in the format `snapr://redirect?redirect_url=file%3A///path/index.html%23/login/%3Fparam%3Dvalue` from this you need to extract and decode `redirect_url`
+
 
 ## Uploads
 
