@@ -11,6 +11,7 @@ define(['config', 'collections/upload_progress'], function(config, upload_progre
 
     var native_bridge = {};
     native_bridge.pass_data = function( url ){
+        console.log("pass_data", url);
         var iframe = document.createElement("IFRAME");
         iframe.setAttribute("src", url);
         document.documentElement.appendChild(iframe);

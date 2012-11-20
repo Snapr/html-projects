@@ -292,16 +292,20 @@ require(['config', 'jquery', 'backbone', 'photoswipe', 'auth', 'utils/local_stor
 
         // camera button
         function launch_camera(event, extra_params){
+            console.log('launch_camera', event, extra_params);
             extra_params = extra_params || $(this).data('extra_params');
 
             var appmode = local_storage.get( "appmode" );
             var camplus = local_storage.get( "camplus" );
             var camplus_camera = local_storage.get( "camplus_camera" );
 
+            console.log("appmode", appmode);
+
             if (appmode){
                 if (camplus && camplus_camera){
                     native_bridge.pass_data( "snapr://camplus/camera?" + extra_params );
                 }else{
+                    console.log("native_bridge.pass_data camera");
                     native_bridge.pass_data( "snapr://camera?" + extra_params );
 
                     setTimeout( function(){
@@ -316,6 +320,7 @@ require(['config', 'jquery', 'backbone', 'photoswipe', 'auth', 'utils/local_stor
 
         // photo library button
         function photo_library(event, extra_params){
+            console.log('photo_library', event, extra_params);
             extra_params = extra_params || $(this).data('extra_params');
 
             var appmode = local_storage.get( "appmode" );
@@ -344,8 +349,8 @@ require(['config', 'jquery', 'backbone', 'photoswipe', 'auth', 'utils/local_stor
             if(local_storage.get( "appmode" )){
                 var actionID = alerts.tapped_action.counter++;
                 alerts.tapped_action.alerts[actionID] = {
-                    '1': function(){launch_camera(null, extra_params);},
-                    '2': function(){photo_library(null, extra_params);}
+                    '1': function(){console.log('x-launch-camera-options 1');launch_camera(null, extra_params);},
+                    '2': function(){console.log('x-launch-camera-options 2'); photo_library(null, extra_params);}
                 };
 
                 native_bridge.pass_data('snapr://action?' + $.param({
