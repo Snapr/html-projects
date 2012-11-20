@@ -105,9 +105,13 @@ return view.extend({
                 if (local_storage.get( "appmode" )){
                     native_bridge.pass_data( "snapr://upload?cancel=" + id );
                 }
-                li_view.remove();
+                li_view.canceled_upload();
             }
         });
+    },
+
+    canceled_upload: function(){
+        this.remove();
     }
 
 });

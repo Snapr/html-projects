@@ -208,6 +208,9 @@ var uploading = page_view.extend({
             venue_name: this.venue_name,
             update_on_complete: true
         });
+        this.progress_view.canceled_upload = function(){
+            this.photo.set('upload_status', 'canceled');
+        };
         this.progress_el.html( this.progress_view.render().el );
     },
 
