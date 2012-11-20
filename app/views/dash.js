@@ -59,6 +59,8 @@ var dash_view = page_view.extend({
             // commit suicide on logout/in to force full reload
             dash.uncache();
         });
+
+        this.populate =  _.once(this.populate);
     },
 
     post_activate: function(){
@@ -80,7 +82,7 @@ var dash_view = page_view.extend({
 
     get_override_tab: function(){ return 'dash'; },
 
-    populate: _.once(function(){
+    populate:function(){
 
         $.mobile.showPageLoadingMsg();
 
@@ -88,7 +90,7 @@ var dash_view = page_view.extend({
         this.fetch(function(){
             dash.render();
         });
-    }),
+    },
 
     background_update: function(){
 
