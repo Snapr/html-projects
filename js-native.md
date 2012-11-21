@@ -386,7 +386,7 @@ You should also be sure `upload_progress()` is called at least once on any compl
 
 Format for JSON data:
 
-   `{
+   {
        "uploads": [
            {
                "upload_status": "active",
@@ -398,7 +398,7 @@ Format for JSON data:
 
            }
        ]
-   }`
+   }
 
 Valid statuses:
 
@@ -492,7 +492,7 @@ In order to avoid the need to expose OAuth client and secret data for those serv
     *   The native code must be sure that it correctly decodes the `redirect_url`,
     *   It must also take any extra parameters that have been sent back and append them to the original `redirect_url`
 
-    file:///path/index.html#/my-account/?username=<Full Name>
+    `file:///path/index.html#/my-account/?username=<Full Name>`
 
 
 ### 13.2 Sign-in with Facebook 
@@ -506,7 +506,7 @@ Signing in with Facebook is similar to Linking services.
 
 3. 3rd party redirects webview back to snapr API:
 
-    http://sna.pr/api/linked_services/facebook/signin/?code=<code>
+ `http://sna.pr/api/linked_services/facebook/signin/?code=<code>`
 
 4. Because the webview may not accept a local address as a redirect (i.e. `file://`) the webview is directed to a `snapr://redirect URL`, with some extra params:
       `snapr://redirect?redirect_url=file%3A///path/index.html%23/login/%3Ffacebook_signin%3Dtrue&access_token=<access_token>&display_username=<display_username>&snapr_user=<username>`
@@ -514,7 +514,7 @@ Signing in with Facebook is similar to Linking services.
 5. The Native code catches the `snapr://` URL and redirects JS app to the given address.
     *   The native code must be sure that it correctly decodes the `redirect_url`,
     *   It must also take any extra parameters that have been sent back and append them to the original `redirect_url`
-    file:///path/index.html#/login/?facebook_signin=true&display_username=<display_username>&access_token=<access_token>&snapr_user=<username>
+        `file:///path/index.html#/login/?facebook_signin=true&display_username=<display_username>&access_token=<access_token>&snapr_user=<username>`
 
 
 ### 13.3 Errors during OAuth Flow
@@ -600,7 +600,7 @@ All buttons are optional but either `cancelButton`, `destructiveButton` or `othe
 
 Example:
 
-    snapr://action?title=Are%20you%20sure&destructiveButton=Yes&cancelButton=No&actionID=36
+     `snapr://action?title=Are%20you%20sure&destructiveButton=Yes&cancelButton=No&actionID=36`
 
 #### Native → JS
 
@@ -620,7 +620,7 @@ Use this to go back instead of history - it handles closing dialogs, and sticky 
 
 Example:
 
-back();
+    back();
 
 
 
