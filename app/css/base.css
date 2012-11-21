@@ -25,10 +25,10 @@
 }
 @-webkit-keyframes loading {
   from {
-    -webkit-transform: rotate(0deg) translateZ(0);
+    -webkit-transform: rotate(0deg) translatez(0);
   }
   to {
-    -webkit-transform: rotate(360deg) translateZ(0);
+    -webkit-transform: rotate(360deg) translatez(0);
   }
 }
 html {
@@ -332,7 +332,7 @@ a:active {
   -moz-background-size: 24px 24px !important;
   -o-background-size: 24px 24px !important;
   background-size: 24px 24px !important;
-  -webkit-transform: rotate(0deg) translateZ(0);
+  -webkit-transform: rotate(0deg) translatez(0);
   -webkit-transition-duration: 0ms;
   -webkit-animation-name: loading;
   -webkit-animation-duration: 1.2s;
@@ -560,7 +560,7 @@ a:active {
   margin-left: -28px;
   -webkit-transition-property: -webkit-transform;
   -webkit-transition-duration: 250ms;
-  -webkit-transform: rotate(0deg) translateZ(0);
+  -webkit-transform: rotate(0deg) translatez(0);
 }
 .x-stream .s-load-more-inline.x-right-pull {
   margin-right: 9px;
@@ -576,7 +576,7 @@ a:active {
 }
 .x-stream .s-load-more-inline.x-flipped .ui-icon-refresh {
   background-position: 0 -112px;
-  -webkit-transform: rotate(180deg) translateZ(0);
+  -webkit-transform: rotate(180deg) translatez(0);
 }
 .x-stream .ui-bar .s-image-tag {
   display: none;
@@ -598,7 +598,7 @@ a:active {
 .x-stream .x-loading .s-load-more-inline .ui-icon-refresh {
   background-image: url('gfx/spinner.png');
   background-position: center!important;
-  -webkit-transform: rotate(0deg) translateZ(0);
+  -webkit-transform: rotate(0deg) translatez(0);
   -webkit-transition-duration: 0ms;
   -webkit-animation-name: loading;
   -webkit-animation-duration: 1.2s;
@@ -723,7 +723,7 @@ a:active {
   -moz-background-size: 24px 24px !important;
   -o-background-size: 24px 24px !important;
   background-size: 24px 24px !important;
-  -webkit-transform: rotate(0deg) translateZ(0);
+  -webkit-transform: rotate(0deg) translatez(0);
   -webkit-transition-duration: 0ms;
   -webkit-animation-name: loading;
   -webkit-animation-duration: 1.2s;
@@ -950,19 +950,19 @@ a:active {
 .ui-icon.tumblr-icon.ui-icon-tumblr-chat {
   background-position: 0px -96px;
 }
-.competition {
+.s-competition {
   position: relative;
 }
-.competition .banner {
+.s-competition .banner {
   margin: 0 -8px;
   background-color: #f7f7f7;
   min-height: 100px;
 }
-.competition .banner .banner-image {
+.s-competition .banner .banner-image {
   display: block;
   width: 100%;
 }
-.competition .info {
+.s-competition .info {
   background-color: #fbfbfb;
   margin: 8px 0;
   padding: 8px;
@@ -970,6 +970,28 @@ a:active {
   -moz-border-radius: 8px;
   border-radius: 8px;
   font-size: 12px;
+}
+.s-competition .s-award-stream {
+  margin: 4px 0;
+}
+.s-competition .s-award-stream .award-stream {
+  margin: 0;
+}
+.s-competition .s-award-stream .award-stream .x-thumb {
+  position: relative;
+  display: inline-block;
+}
+.s-competition .s-award-stream .award-stream .x-thumb .image-link {
+  overflow: hidden;
+}
+.s-competition .s-award-stream .award-stream .x-thumb .ribbon {
+  position: absolute;
+  bottom: -10px;
+  right: -5px;
+  z-index: 99;
+}
+.s-competition .ui-li-desc {
+  white-space: normal;
 }
 .s-feed-header.s-inline-header {
   position: relative;
@@ -1312,6 +1334,7 @@ a:active {
   background: none;
 }
 .s-progress-bar .s-bar-action .ui-icon {
+  display: block;
   display: block;
   top: 50%;
   position: absolute;
