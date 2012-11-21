@@ -25,11 +25,19 @@
 }
 @-webkit-keyframes loading {
   from {
-    -webkit-transform: rotate(0deg) translatez(0);
+    -webkit-transform: rotate(0deg) translateZ(0);
   }
   to {
-    -webkit-transform: rotate(360deg) translatez(0);
+    -webkit-transform: rotate(360deg) translateZ(0);
   }
+}
+.loader {
+  display: none;
+  height: 2px;
+  background: url("http://www.changethethought.com/wp-content/tumblr_le00g4hwgx1qzt4vjo1_500.gif");
+}
+.x-bg-loading .loader {
+  display: block;
 }
 html {
   -webkit-user-select: none;
@@ -332,7 +340,7 @@ a:active {
   -moz-background-size: 24px 24px !important;
   -o-background-size: 24px 24px !important;
   background-size: 24px 24px !important;
-  -webkit-transform: rotate(0deg) translatez(0);
+  -webkit-transform: rotate(0deg) translateZ(0);
   -webkit-transition-duration: 0ms;
   -webkit-animation-name: loading;
   -webkit-animation-duration: 1.2s;
@@ -560,7 +568,7 @@ a:active {
   margin-left: -28px;
   -webkit-transition-property: -webkit-transform;
   -webkit-transition-duration: 250ms;
-  -webkit-transform: rotate(0deg) translatez(0);
+  -webkit-transform: rotate(0deg) translateZ(0);
 }
 .x-stream .s-load-more-inline.x-right-pull {
   margin-right: 9px;
@@ -576,7 +584,7 @@ a:active {
 }
 .x-stream .s-load-more-inline.x-flipped .ui-icon-refresh {
   background-position: 0 -112px;
-  -webkit-transform: rotate(180deg) translatez(0);
+  -webkit-transform: rotate(180deg) translateZ(0);
 }
 .x-stream .ui-bar .s-image-tag {
   display: none;
@@ -598,7 +606,7 @@ a:active {
 .x-stream .x-loading .s-load-more-inline .ui-icon-refresh {
   background-image: url('gfx/spinner.png');
   background-position: center!important;
-  -webkit-transform: rotate(0deg) translatez(0);
+  -webkit-transform: rotate(0deg) translateZ(0);
   -webkit-transition-duration: 0ms;
   -webkit-animation-name: loading;
   -webkit-animation-duration: 1.2s;
@@ -723,7 +731,7 @@ a:active {
   -moz-background-size: 24px 24px !important;
   -o-background-size: 24px 24px !important;
   background-size: 24px 24px !important;
-  -webkit-transform: rotate(0deg) translatez(0);
+  -webkit-transform: rotate(0deg) translateZ(0);
   -webkit-transition-duration: 0ms;
   -webkit-animation-name: loading;
   -webkit-animation-duration: 1.2s;
@@ -1334,7 +1342,6 @@ a:active {
   background: none;
 }
 .s-progress-bar .s-bar-action .ui-icon {
-  display: block;
   display: block;
   top: 50%;
   position: absolute;
