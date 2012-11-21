@@ -17,15 +17,15 @@
                 <img class="banner-image" src="<%= banner.mobile %>">
             </div>
 
-            <ul class="award-stream"></ul>
+            <ul class="s-awards-stream x-awards-stream"></ul>
 
             <% if(status == 'open'){ %>
                 <a class="ui-bar x-details x-launch-camera-options" data-role="button" data-icon="arrow-r" data-iconpos="right" data-theme="c" data-ajax="false" data-extra_params="comp_id=<%= id %>">
-                    <span class="comp-details">
+                    <span class="s-comp-details">
                         <em>Enter now!</em>
                         <span class="s-small-text">
                             <% if(closing_date){ %>
-                                Submissions close <%= string_utils.short_timestamp(closing_date) %>
+                                Submissions close <%= string_utils.short_timestamp(closing_date, false) %>
                             <% } %>
                         </span>
                     </span>
@@ -33,7 +33,7 @@
 
                 <br>
 
-                <a data-role="button" data-theme="h">submit a photo</a>
+                <a data-role="button" data-theme="e" class="x-launch-camera-options" data-extra_params="comp_id=<%= id %>">submit a photo</a>
 
             <% } else { %>
                 <a class="ui-bar x-details x-launch-camera-options" data-role="button" data-icon="arrow-r" data-iconpos="right" data-theme="c" data-ajax="false" data-extra_params="comp_id=<%= id %>">
@@ -53,7 +53,7 @@
             </ul>
             
 
-            <ul class="s-image-streams"></ul>
+            <ul class="x-image-streams s-image-streams"></ul>
 
             <div class="comp-footer s-inline-footer ui-body-c ">
                 <div class="ui-content">
