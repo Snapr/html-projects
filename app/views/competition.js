@@ -1,11 +1,13 @@
 /*global _  define require */
-define(['views/base/page', 'models/comp', 'views/base/side_scroll'],
-function(page_view, comp, side_scroll ){
+define(['views/base/page', 'models/comp', 'views/base/side_scroll', 'views/base/award_scroll'],
+function(page_view, comp, side_scroll, award_scroll ){
 
 var comp_view = page_view.extend({
 
     post_initialize: function() {
         $.mobile.showPageLoadingMsg();
+
+        this.rendered = false;
 
         this.model = new comp({id:this.options.query.id});
         this.model.fetch({
@@ -22,8 +24,7 @@ var comp_view = page_view.extend({
     },
 
     render: function() {
-        var view = this,
-            new_el,
+        var new_el,
             image_streams,
             award_stream;
 
@@ -36,16 +37,20 @@ var comp_view = page_view.extend({
 
         this.$('[data-role=content]').empty().append(new_el.find('[data-role=content]').children()).trigger( "create" );
 
-        //award_stream = this.$('.award-stream');
+        award_scroll = new award_scroll({
+            collection: this.model.get('awards')
+        });
+        
+        this.$('.x-award-stream').append(award_scroll.el);
+        award_scroll.render();
 
-        image_streams = this.$('.x-s-image-streams');
+        image_streams = this.$('.x-image-streams');
 
         _.each(this.model.get('streams'), function (stream) {
             var li = new side_scroll({
                 data: stream,
                 initial_title: 'Popular',
-                expand: true,
-                parent_view: view
+                expand: true
             });
             image_streams.append( li.el );
             li.render();
@@ -53,16 +58,9 @@ var comp_view = page_view.extend({
 
         image_streams.trigger('create');
 
-        // _.each(this.model.get('awards'), function (award) {
-        //     var li = new award_stream({
-        //         model: award
-        //     });
-        //     container.append( li.render().el );
-        // });
-        // container.trigger('create');
-
         $.mobile.hidePageLoadingMsg();
-
+        this.rendered = true;
+        return this;
     }
 });
 
@@ -72,19 +70,7 @@ var award_stream = side_scroll.extend({
 
     className: 'award-stream',
 
-    // get_title: function(){
-    //     var title = this.model.get("display").short_title;
-    //     if(this.model.get("query").username){
-    //         title = title.replace(this.model.get("query").username, '<span class="at">@</span>' + this.model.get("query").username);
-    //     }
-    //     if(this.model.get("query").keywords){
-    //         title = title.replace(this.model.get("query").keywords, '<span class="hash">#</span>' + this.model.get("query").keywords);
-    //     }
-    //     if(this.model.get("query").radius){
-    //         title = title +  ' <span class="radius">(' + this.model.get("query").radius/1000 +'km)</span>';
-    //     }
-    //     return title;
-    // },
+    
 
     post_initialize: function( options ){
         this.$el.attr('data-id', this.model.id);

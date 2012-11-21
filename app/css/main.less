@@ -1030,7 +1030,7 @@ a:active{
 // ----------------------------
 
 
-.competition{
+.s-competition{
     position: relative;
     .banner{
         margin: 0 -@padding * 2;
@@ -1047,6 +1047,31 @@ a:active{
         padding: @padding * 2;
         .border-radius(@corners);
         font-size: @fontSizeSmall;
+    }
+    .s-award-stream {
+        margin: 4px 0;
+        .award-stream {
+            margin: 0;
+            .x-thumb {
+                
+                position: relative;
+                display: inline-block;
+
+                .image-link {
+                    overflow: hidden;
+                }
+            
+                .ribbon {
+                    position: absolute;
+                    bottom: -10px;
+                    right: -5px;
+                    z-index: 99;
+                }
+            }
+        }
+    }
+    .ui-li-desc {
+        white-space: normal;
     }
 }
 
