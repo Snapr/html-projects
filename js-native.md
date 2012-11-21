@@ -1,8 +1,6 @@
 # Javascript / Native Code interface
--------------------------
 
 ## Contents
--------------------------
 
 01. JS → Native Overview
 02. Native → JS Overview
@@ -48,8 +46,6 @@
 
 
 ## 1. JS → Native Overview
--------------------------
-
 
 To pass data to the native code from the HTML we create an iframe and send it a request for a `snapr://` URL. 
 
@@ -60,15 +56,15 @@ URLs will be in the format `snapr://base?param=value&param2=value`
 
 
 ## 2. Native → JS Overview
--------------------------
 
 The Native code can call JS functions within the app, and occasionally also passes in data via the Query string when loading views.
 
 
+
 ## 3. Startup
--------------------------
 
 When the native code first loads the webview it passes settings via the query string such as stored user login details and appmode / device platform.
+
 
 ### 3.1 App Mode
 
@@ -77,6 +73,7 @@ Append `appmode=true` to the query string when loading the SnaprKit HTML within 
 For platform specific behaviors instead of `true` send `iphone` or `android`, i.e.:
 
     `appmode=iphone`
+
 
 ### 3.2 New Users 
 
@@ -96,7 +93,6 @@ If no param is sent the app will default to live servers.
 
 
 ## 4. Login
--------------------------
 
 #### JS → Native
 
@@ -126,7 +122,6 @@ Example:
 
 
 ## 5. Logout
--------------------------
 
 Called by the JS on logout to clear the user credentials stored by the native code.
 
@@ -140,7 +135,6 @@ Example:
 
 
 ## 6. Geolocation
--------------------------
 
 #### JS → Native
 
@@ -171,7 +165,6 @@ Example:
 
 
 ## 7. Camera
--------------------------
 
 Called to launch native camera from the HTML.
 
@@ -188,7 +181,6 @@ Example:
 
 
 ## 8. Camera Library
--------------------------
 
 Called to launch device image library from the HTML.
 
@@ -202,19 +194,19 @@ Example:
 `snapr://photo-library?comp_id=5`
 
 
-## 9. Share
--------------------------
 
+## 9. Share
 
 JAKE todo
 
 -Document params the share screen can accept such as location, description, etc
 
 
+
 ## 10. Upload
--------------------------
 
 Uploads are handled via the native code so that background uploading can be utilized, and the upload queue can be maintained after quitting and restarting the app.
+
 
 ### 10.1 Start
 
@@ -292,7 +284,7 @@ The API may return an error while attempting an upload.
 
 ### 10.3 Sharing errors
 
-    The upload may succeed but return errors for sharing to services that the user does not have linked. In this case you need to redirect to the connect view so they can link them.
+The upload may succeed but return errors for sharing to services that the user does not have linked. In this case you need to redirect to the connect view so they can link them.
 
     {
         "date": <date>,
@@ -317,10 +309,10 @@ The API may return an error while attempting an upload.
         "success": true
     }
     
-    Currently this is handled by directing the app to:
-     `#/connect/?to_link=facebook,<service>,...&photo_id=<photo_id>&redirect_url=<current_app_url>`
+Currently this is handled by directing the app to:
+        `#/connect/?to_link=facebook,<service>,...&photo_id=<photo_id>&redirect_url=<current_app_url>`
      
-       The services currently supported by Snapr are `facebook`, `twitter`, `tumblr`, `foursquare`, and `appdotnet`.
+The services currently supported by Snapr are `facebook`, `twitter`, `tumblr`, `foursquare`, and `appdotnet`.
 
 In future implementations should use a new `upload_sharing_failed(photo_id, service_list)` function as opposed to navigating the webview (both options a re currently supported).
 
@@ -329,7 +321,6 @@ In future implementations should use a new `upload_sharing_failed(photo_id, serv
 
 
 ## 11. Upload Queue
--------------------------
 
 The upload queue manages the progress of uploads for the app.
 
@@ -468,14 +459,12 @@ To completely clear the current Queue:
 
 
 ## 12. External URLs
--------------------------
 
 Any links from within the HTML that link to external addresses, i.e. `http://something` as opposed to `#/feed/` will be opened in a separate modal webview.
 
 
 
 ## 13. Third Party OAuth Flow
--------------------------
 
 The SnaprKit module loads all requests for external URLs in a separate modal webview.
 
@@ -530,20 +519,19 @@ Signing in with Facebook is similar to Linking services.
 
 ### 13.3 Errors during OAuth Flow
 
-    Errors will return the `redirect_url` in a similar fashion to success, but instead of extra params like `username` you'll see params like `error`. Redirect to the supplied url with the extra params as normal.
+Errors will return the `redirect_url` in a similar fashion to success, but instead of extra params like `username` you'll see params like `error`. Redirect to the supplied url with the extra params as normal.
 
 
 ### 13.4 Webview Closed
 
-    If the user presses close on the webview you need to find the `redirect` form the original webview request and redirect the JS to it with `error=Linking%20Closed`. 
+If the user presses close on the webview you need to find the `redirect` form the original webview request and redirect the JS to it with `error=Linking%20Closed`. 
 
-    The original will be in the format: `snapr://redirect?redirect_url=file%3A///path/index.html%23/login/%3Fparam%3Dvalue` from this you need to extract and decode `redirect_url`
+The original will be in the format: `snapr://redirect?redirect_url=file%3A///path/index.html%23/login/%3Fparam%3Dvalue` from this you need to extract and decode `redirect_url`
 
 
 
 
 ## 14 Alerts
--------------------------
 
 Native replacements for javascript `alert()` and `confirm()`
 
@@ -594,7 +582,6 @@ Example:
 
 
 ## 15. Actionsheets
--------------------------
 
 
 #### JS → Native
@@ -638,7 +625,6 @@ back();
 
 
 ## 17. Camera+
--------------------------
 
 SnaprKit has built in options for integrating with the Camera+ iOS app APIs. 
 
@@ -676,7 +662,6 @@ Pass back any extra supplied parameters such as `foursquare_venue` via the query
 
 
 ## 18. Aviary 
--------------------------
 
 SnaprKit has options for integrating with the Aviary SDK if its has been included with the build. 
 
