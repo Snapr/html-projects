@@ -54,13 +54,13 @@ return Backbone.View.extend({
     },
 
     events: {
-        "click .follow": "follow",
-        "click .unfollow": "unfollow"
+        "click .x-follow": "follow",
+        "click .x-unfollow": "unfollow"
     },
 
     follow: function(){
         var user = this.model,
-            button = this.$('.follow');
+            button = this.$('.x-follow');
         button.x_loading();
         auth.require_login( function(){
             user.follow(function(){
