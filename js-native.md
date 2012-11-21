@@ -1,19 +1,22 @@
 # Javascript - Native Code interface
 
-## JS → Native
-
-To pass data to the native code JS will create an iframe and request `snapr://` url with it. Watch for any requests for `snapr://` urls and take appropriate action. You can't respond to these requests because JS can't read from the iframe and it is quickly destroyed.
-
-Urls will be in the format `snapr://base?param=value&param2=value` or `snapr://base/?param=value&param2=value`, note the `/` before the `?` may or may not be present.
+## JS → Native Overview
+-------------------------
 
 
+To pass data to the native code from the HTML we create an iframe and send it a request for a `snapr://`. 
+
+Watch for any requests for `snapr://` urls and take appropriate action. 
+
+Urls will be in the format `snapr://base?param=value&param2=value` 
 
 
 ## Login
+-------------------------
 
-### JS → Native
+#### JS → Native
 
-Called on login so native code can use credentials for upload and store to reload the html without requiring the user to login again.
+Called on login so the native code can use the credentials for upload and store user details to be saved if the app quits.
 
 * **Base**: login
 * **Params**
@@ -23,11 +26,11 @@ Called on login so native code can use credentials for upload and store to reloa
 
 Example:
 
-    snapr://login?snapr_user=myusername&display_username=User%20Name&access_token=s3cRetHaShc0De
+`snapr://login?snapr_user=myusername&display_username=User%20Name&access_token=s3cRetHaShc0De`
 
-### Native → JS
+#### Native → JS
 
-Load into any view with the following parameters to display it and auto login:
+To load any view (and log in) using stored login credentials append these parameters to the query string when first displaying the webview:
 
 * **snapr_user**: Username for unique identification and api calls
 * **display_username**: Username for display
@@ -41,8 +44,9 @@ Example:
 
 
 ## Logout
+-------------------------
 
-Called on logout so native code can forget any stored credentials.
+Called by the JS on logout to clear the user credentials stored by the native code.
 
 * **Base**: logout
 * **Params**: None
@@ -55,10 +59,11 @@ Example:
 
 
 ## Geolocation
+-------------------------
 
-### JS → Native
+#### JS → Native
 
-Called to request geolocation from native code. The JS stores locations for a set amount of time so this call is not used too often.
+Called to request users current location from native code. The JS caches location data for ~5min so as not to call this repeatedly.
 
 * **Base**: get_location
 * **Params**: None
@@ -67,7 +72,7 @@ Example:
 
     snapr://get_location
 
-### Native → JS
+#### Native → JS
 
 When the location has been determined call the javascript function `set_location` with parameters `latitude` and `longitude` in `+/-DDD.DDDDDD` format.
 
@@ -83,63 +88,91 @@ Example:
     location_error("User denied Geolocation")
 
 
-## Linking services
+## Third Party OAuth Flow
+-------------------------
+
+The SnaprKit module loads all requests for external URLs in a separate modal webview.
+
+In order to avoid the need to expose OAuth client and secret data for those services we access them via proxy URLs on the Snapr server that also handle linking / signin / account creation and a number of error cases.
+
+
+### Linking Services
 
 1. The Linking URL is launched via a webview URL that contains an encoded redirect URL to be displayed after linking:
 
-        http://sna.pr/api/linked_services/<service>/oauth/?redirect=snapr%3A%2F%2Fredirect%3Fredirect_url%3Dfile%253A%2F%2F%2Fpath%2Findex.html%2523%2Fmy-account%2F%253F&display=touch&access_token=<token>
+ `http://sna.pr/api/linked_services/<service>/oauth/?redirect=snapr%3A%2F%2Fredirect%3Fredirect_url%3Dfile%253A%2F%2F%2Fpath%2Findex.html%2523%2Fmy-account%2F%253F&display=touch&access_token=<token>`
 
 2. Snapr API redirects webview to the 3rd party, authentication is performed
 
 3. 3rd party redirects webview back to snapr API:
 
-        http://sna.pr/api/linked_services/<service>/oauth/?code=<authorised code>
+ `http://sna.pr/api/linked_services/<service>/oauth/?code=<authorized code>`
 
 4. Snapr API links the account.
 
 5. Because the webview may not accept a local address as a redirect (i.e. `file://`) the webview is directed to a `snapr://redirect URL`, with some extra params:
+                             `snapr://redirect?redirect_url=file%3A///path/index.html%23/my-account/%3F&username=<Full Name>`
 
-        snapr://redirect?redirect_url=file%3A///path/index.html%23/my-account/%3F&username=<Full Name>
-
-5. The Native code catches the `snapr://` URL and redirects JS app to the given address.
+5. The Native code catches the `snapr://` URL and redirects the JS app to the given address.
     *   The native code must be sure that it correctly decodes the `redirect_url`,
     *   It must also take any extra parameters that have been sent back and append them to the original `redirect_url`
 
     file:///path/index.html#/my-account/?username=<Full Name>
 
+
 ### Signin with Facebook flow
 
-    http://sna.pr/api/linked_services/facebook/signin/?redirect=snapr://redirect?redirect_url=file%3A///path/index.html%23/login/%3Ffacebook_signin%3Dtrue&display=touch&client_id=<client_id>&client_secret=<client_secret>&create=false
+Signing in with Facebook is similar to Linking services.
+
+1. The Linking URL is launched via a webview URL that contains an encoded redirect URL to be displayed after linking:
+    `http://sna.pr/api/linked_services/facebook/signin/?redirect=snapr://redirect?redirect_url=file%3A///path/index.html%23/login/%3Ffacebook_signin%3Dtrue&display=touch&client_id=<client_id>&client_secret=<client_secret>&create=false`
+    
+2. Snapr API redirects webview to the 3rd party, authentication is performed
+
+3. 3rd party redirects webview back to snapr API:
 
     http://sna.pr/api/linked_services/facebook/signin/?code=<code>
 
-    snapr://redirect?redirect_url=file%3A///path/index.html%23/login/%3Ffacebook_signin%3Dtrue&access_token=<access_token>&display_username=<display_username>&snapr_user=<username>
+4. Because the webview may not accept a local address as a redirect (i.e. `file://`) the webview is directed to a `snapr://redirect URL`, with some extra params:
+      `snapr://redirect?redirect_url=file%3A///path/index.html%23/login/%3Ffacebook_signin%3Dtrue&access_token=<access_token>&display_username=<display_username>&snapr_user=<username>`
 
+5. The Native code catches the `snapr://` URL and redirects JS app to the given address.
+    *   The native code must be sure that it correctly decodes the `redirect_url`,
+    *   It must also take any extra parameters that have been sent back and append them to the original `redirect_url`
     file:///path/index.html#/login/?facebook_signin=true&display_username=<display_username>&access_token=<access_token>&snapr_user=<username>
 
 
-### Errors
+### Errors during OAuth Flow
 
-    Errors will be sent back just as success is but instead of extra params like `username` you'll see params like `error`. Redirect to the supplied url with the extra params as normal.
-
-### Close button on webview
-
-If the users presses close on the webview you need to find the `redirect` form the original webview request and redirect the JS to it with `error=Linking%20Closed`. The original will be in the format `snapr://redirect?redirect_url=file%3A///path/index.html%23/login/%3Fparam%3Dvalue` from this you need to extract and decode `redirect_url`
+    Errors will return the `redirect_url` in a similar fashion to success, but instead of extra params like `username` you'll see params like `error`. Redirect to the supplied url with the extra params as normal.
 
 
-## Uploads
+### Close button on Webview
+
+    If the user presses close on the webview you need to find the `redirect` form the original webview request and redirect the JS to it with `error=Linking%20Closed`. 
+    
+    The original will be in the format: `snapr://redirect?redirect_url=file%3A///path/index.html%23/login/%3Fparam%3Dvalue` from this you need to extract and decode `redirect_url`
+
+
+
+## Upload
+-------------------------
+
+Uploads are handled via the native code so that background uploading can be utilized, and the upload queue can be maintained after quitting and restarting the app.
 
 ### Start
 
-Called to initiate an upload. You should pass any params on to the upload API, and also include them in the upload_progress() JSON.
+Called to initiate an upload. 
 
-* **Base**: upload
-* **Params**
-    * **local_id**: A unique id that is used to identify this upload in the queue
-    * **snapr_user**: Username for unique identification and api calls
-    * **display_username**: Username for display, may contain spaces
-    * **photo**: the photo_path that the share page was loaded with
-    * **any other params the share page was loaded with***: You may choose to load #/share with extra params, these will be returned here
+You should pass any params on to the upload API, and also include them in the upload_progress() JSON for the queue.
+
+- **Base**: upload
+- **Params**
+    - **local_id**: A unique id that is used to identify this upload in the queue
+    - **snapr_user**: Username for unique identification and api calls
+    - **display_username**: Username for display, may contain spaces
+    - **photo**: the photo_path that the share page was loaded with
+    - **any other params the share page was loaded with***: You may choose to load #/share with extra params such as location, these will be returned here
 
     * **snapr api params**: The following params can be passed to the snapr api with the upload, any extra params not documented here should also be sent with the upload.
         * latitude
@@ -162,13 +195,17 @@ Example:
 
 ### Errors
 
-The API may return an error when attempting an upload.
+The API may return an error while attempting an upload.
 
-* 500 response code - Something has gone wrong, it may be temporary, or a bigger problem. Pause the queue and display a generic alert. "Upload Error: Server Error". The user can then choose to un-pause the queue and try again, or cancel their upload if it continues to fail.
+* 500 response code - Something has gone wrong, it may be temporary, or a bigger problem. Pause the queue and display a generic alert:
+
+ "Upload Error: Server Error" 
+ 
+ The user can then choose to un-pause the queue and try again, or cancel their upload if it continues to fail.
 
 * An error response with type `authentication.authentication_required`, i.e:
 
-`{
+ `{
     "success": false,
     "date": TIMESTAMP,
     "error": {
@@ -177,18 +214,30 @@ The API may return an error when attempting an upload.
     }
 }`
 
-- Valid authentication was not provided. Display an alert "Upload Error: Invalid login details", invalidate current token, call the logout function, and direct the user to the root level page.
+ Valid authentication was not provided. Display an alert:
+
+ "Upload Error: Invalid login details"
+ 
+ Invalidate current token, call the logout function, and direct the user to the root level HTML page.
 
 
-* An error response with type `validation.duplicate_upload` - This file has been uploaded before, display an alert "Upload Error: This image has been uploaded before". Cancel the upload and remove it from the queue.
+* An error response with type `validation.duplicate_upload` - This file has been uploaded before, display an alert: 
 
-* An error response with type `validation.corrupt_file` - This file is not a valid JPEG. Display an alert "Upload Error: Invalid File". Cancel the upload and remove it from the queue.
+    "Upload Error: This image has been uploaded before"
+    
+ Cancel the upload and remove it from the queue.
+
+* An error response with type `validation.corrupt_file` - This file is not a valid JPEG. Display an alert 
+
+ "Upload Error: Invalid File"
+ 
+ Cancel the upload and remove it from the queue.
 
 
 
-#### Sharing errors
+### Sharing errors
 
-The upload may succeed but return errors for sharing to services that the user does not have linked. In this case you need to redirect to the connect view so they can link them.
+    The upload may succeed but return errors for sharing to services that the user does not have linked. In this case you need to redirect to the connect view so they can link them.
 
     {
         "date": <date>,
@@ -212,62 +261,90 @@ The upload may succeed but return errors for sharing to services that the user d
         },
         "success": true
     }
+    
+    Currently this is handled by directing the app to:
+     `#/connect/?to_link=facebook,<service>,...&photo_id=<photo_id>&redirect_url=<current_app_url>`
+     
+       The services currently supported by Snapr are `facebook`, `twitter`, `tumblr`, `foursquare`, and `appdotnet`.
 
-Currently this is handled by directing the app to `#/connect/?to_link=facebook,<service>,...&photo_id=<photo_id>&redirect_url=<current_app_url>`
+In future implementations should use a new `upload_sharing_failed(photo_id, service_list)` function as opposed to navigating the webview (both options a re currently supported).
 
-New implementations should use the `upload_sharing_failed(photo_id, service_list)` callback.
-
-    upload_sharing_failed('MAD', ['facebook', '<service>', ...]);
-
-
-### Cancel
-
-Called to cancel an upload (active or queued).
-
-* **Base**: upload
-* **Params**:
-    * **cancel**: The local_id of the upload
-
-Example:
-
-    snapr://upload?cancel=102142835
-
-
-### Resume
-
-Called to resume uploading after the queue is paused.
-
-* **Base**: upload
-* **Params**: start
-
-Example:
-
-    snapr://upload?start
+   `upload_sharing_failed('MAD', ['facebook', '<service>', ...]);`
 
 
 
+## Upload Queue
+-------------------------
 
-## Upload progress
+The upload queue manages the progress of uploads for the app.
+
+### Upload Mode
+
+The queue can be set to upload when in Wi-Fi connections only: 
+
+    snapr://upload?setting=Wi-Fi Only
+    snapr://upload?setting=On
+    snapr://upload?setting=Stopped
+
+These options are set by the user. Not all apps will use them, the queue should default to being `On`.
+
+### Upload Connection Errors
+
+If the queue encounters server errors (such as a 500 error), or connection issues it may automatically become `paused`.
+
+If the queue becomes paused the native code should update the JS with its status:
+
+    queue_settings('upload_mode' , paused);
+    
+    i.e. queue_settings('On' , true);
+
+The app should automatically attempt to un-pause the queue if it is relaunched after quit or if the user switches back from another app. 
+
+Don't forget to call `queue_settings('On' , false)` when you unpause the queue.
+
+### Upload Connection Errors
+
+The user can also attempt to un-pause the queue. Should the queue fail again after this it should automatically return to being paused.
+
+The URLs to pause / unpause the queue manually are:
+
+    'snapr://upload?start'
+    'snapr://upload?stop'
+
+
+### Connection Timeout
+
+During upload the queue should attempt to recover from temporary interruptions to the connection (without pausing). 
+
+Note that once the upload has reached 100% complete there is sometimes a delay before the upload API returns success, you should not automatically restart the upload after that point.
+
+
+
+
+
+### Upload progress
 
 As a photo is uploaded call the `upload_progress` javascript function to update the progress display.
 
 Call the function with either a Javascript object or JSON text in the following format.
 
-Any time there is a change to the queue status you should call upload_progress() at least once - for example if a new upload is added, but there is no connection, call upload_progress() so we can update the queue to show the stalled item. You should also be sure upload_progress() is called at least once on any completion event that changes the status of the queue - including an image being removed from the queue due to completion.
+Any time there is a change to the queue status you should call `upload_progress()` at least once - for example if a new upload is added, but there is no connection, call `upload_progress()` so we can update the queue to show the stalled item. 
 
-    {
-        "uploads": [
-            {
-                "upload_status": "active",
-                "percent_complete": 27,
-                "local_id": "92135044",
-                "thumbnail": "file:///this/that/92135044.jpg",
+You should also be sure `upload_progress()` is called at least once on any completion event that changes the status of the queue - including an image being removed from the queue due to completion.
 
-                any other parameters that were passed with the snapr://upload call
+   {
+       "uploads": [
+           {
+               "upload_status": "active",
+               "percent_complete": 27,
+               "local_id": "92135044",
+               "thumbnail": "file:///this/that/92135044.jpg",
 
-            }
-        ]
-    }
+               any other parameters that were passed with the snapr://upload call
+
+           }
+       ]
+   }
 
 Valid statuses:
 
@@ -278,7 +355,55 @@ Valid statuses:
 
 
 
+### Cancel Upload
 
+#### JS → Native
+
+Called to cancel an upload (active or queued).
+
+* **Base**: upload
+* **Params**:
+    * **cancel**: The local_id of the upload
+
+Example:
+
+    snapr://upload?cancel=102142835
+    
+#### Native → JS
+
+When an upload is canceled call the javascript function `upload_canceled` with it's `local_id`.
+
+    Example:
+
+        upload_canceled('102142835');
+
+
+### Resume Queue
+
+#### JS → Native
+
+Called to resume the upload queue after it has been paused.
+
+* **Base**: upload
+* **Params**: start
+
+Example:
+
+    snapr://upload?start
+    
+
+### Clear Queue
+
+To completely clear the current Queue:
+
+    snapr://upload?clear
+    
+
+
+
+#### Native → JS
+
+TODO: Document function to unpause the queue
 
 ## Upload complete
 
@@ -287,9 +412,6 @@ When an upload competes call the javascript function `upload_completed` with it'
 Example:
 
     upload_completed('92135044', 'LOG');
-
-
-
 
 
 ## Upload failed
@@ -301,21 +423,14 @@ Example:
     upload_failed('92135044', 'Duplicate upload');
 
 
-
-
 ## Upload canceled
-
-When an upload is canceled call the javascript function `upload_canceled` with it's `local_id`.
-
-Example:
-
-    upload_canceled('92135044');
 
 
 
 
 
 ## Alerts
+-------------------------
 
 Native replacements for javascript `alert()` and `confirm()`
 
@@ -335,7 +450,7 @@ Example:
     snapr://alert?title=Warning&otherButton1=OK&alertID=0&message=Something%20is%20not%20right
 
 
-### Full Alert functionality (there are currently none of these)
+### Full Alert functionality
 
 #### JS → Native
 
@@ -395,7 +510,64 @@ Example:
 
 
 
-## Editing
+
+
+## Camera
+-------------------------
+
+Called to launch native camera from the HTML.
+
+* **Base**
+* camera
+
+* **Params**
+* Any params passed should be used to load the #/share/ view once the photo is ready.
+
+Example:
+
+snapr://camera?comp_id=5
+
+
+
+## Camera Library
+-------------------------
+
+Called to launch device image library from the HTML.
+
+* **Base**
+* photo-library
+* **Params**
+* Any params passed should be used to load the #/share/ view once the photo is ready.
+
+Example:
+
+snapr://photo-library?comp_id=5
+
+
+
+## Back
+
+### Native → JS
+
+For the Android back button.
+
+Use this to go back instead of history - it handles closing dialogs, and sticky situations where back would mistakenly lead you to a web based OAuth flow.
+
+Example:
+
+back();
+
+
+
+
+
+
+
+## Camera+
+-------------------------
+
+SnaprKit has built in options for integrating with the Camera+ iOS app APIs. 
+
 
 ### camera+ settings
 
@@ -408,8 +580,7 @@ When the user saves settings related to camera+ this callback url will notify na
     * **camplus_lightbox**: bool
 
 Example:
-
-    snapr://camplus/settings?camplus_camera=true&camplus_edit=true&camplus_lightbox=true
+    `snapr://camplus/settings?camplus_camera=true&camplus_edit=true&camplus_lightbox=true`
 
 ### camera+ edit
 
@@ -425,11 +596,19 @@ When the user taps the edit with camera+ button
 
 Example:
 
-    snapr://camplus/edit?photo_url=file%3A%2F%2F%2Fthis%2Fthat%2Fpreview-image.jpg&description=testing&location=New%20York
+`snapr://camplus/edit?photo_url=file%3A%2F%2F%2Fthis%2Fthat%2Fpreview-image.jpg&description=testing&location=New%20York`
+
+Pass back any extra supplied parameters such as `foursquare_venue` via the query string when returning to the webview.
+
+
+## Aviary 
+-------------------------
+
+SnaprKit has built in options for integrating with Aviary SDK if its has been included with the build. 
 
 ### Aviary edit
 
-When the user taps the edit with aviary button
+When the user taps the edit with aviary button:
 
 * **Base**: aviary/edit
 * **Params**
@@ -440,44 +619,9 @@ When the user taps the edit with aviary button
     * **location**: pass back after editing so location name is retained
 
 Example:
+     `snapr://aviary/edit?photo_url=file%3A%2F%2F%2Fthis%2Fthat%2Fpreview-image.jpg&description=testing&location=New%20York`
 
-    snapr://aviary/edit?photo_url=file%3A%2F%2F%2Fthis%2Fthat%2Fpreview-image.jpg&description=testing&location=New%20York
-
-
-
-
-## Shooting
-
-Called to launch native camera, photo library or similar. All have the same params.
-
-* **Base**
-    * camera
-    * photo-library
-    * camplus/camera
-    * camplus/lightbox
-* **Params**
-    * Any params passed should be used to load the #/share/ view once the photo is ready.
-
-Example:
-
-    snapr://camera?comp_id=5
-
-
-
-
-## Back
-
-Native → JS
-
-For the Android back button.
-
-Use this to go back instead of history - it handles closing dialogs, and sticky situations where back would mistakenly lead you to a web based OAuth flow.
-
-Example:
-
-    back();
-
-
+Pass back any extra supplied parameters such as `foursquare_venue` via the query string when returning to the webview.
 
 
 ## TODO
@@ -492,6 +636,7 @@ If there is no saved access token the app can show a new user welcome screen.
 
 When loading up the site add new_user=true to the existing query string.
 
-Linking Services
 
-index.html#/connect/?photo_id=V36&to_link=twitter,foursquare,facebook,tumblr&redirect_url=index.html
+## External URLs
+
+## Share
