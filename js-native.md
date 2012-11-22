@@ -2,23 +2,23 @@
 
 ## Contents
 
-01. JS → Native Overview
-02. Native → JS Overview
-03. Startup
+01. [JS → Native Overview](#1)
+02. [Native → JS Overview](#2)
+03. [Startup](#3)
  * 3.1. Appmode
- * 3.2. New Users 
- * 3.3. Development Server 
-04. Login
-05. Logout
-06. Geolocation
-07. Camera
-08. Camera Library
-09. Share
-10. Uploads
+ * 3.2. New Users
+ * 3.3. Development Server
+04. [Login](#4)
+05. [Logout](#5)
+06. [Geolocation](#6)
+07. [Camera](#7)
+08. [Camera Library](#8)
+09. [Share](#9)
+10. [Uploads](#10)
  * 10.1 Start
  * 10.2 Errors
  * 10.3 Sharing errors
-11. Upload Queue
+11. [Upload Queue](#11)
  * 11.1 Upload Queue Mode
  * 11.2 Upload Connection Errors
  * 11.3 Pausing and Un-Pausing the Queue
@@ -28,39 +28,42 @@
  * 11.7 Upload failed
  * 11.8 Cancel Upload
  * 11.9 Clear Queue
-12. External URLs
-13. Third Party OAuth Flow
+12. [External URLs](#12)
+13. [Third Party OAuth Flow](#13)
  * 13.1 Linking Services
  * 13.2 Signin with Facebook flow
  * 13.3 Errors during OAuth Flow
  * 13.4 Webview Closed
-14. Alerts
+14. [Alerts](#14)
  * 14.1 Simple Alert
  * 14.2 Simple Alert
-15. Actionsheets
-16. Android Back Button
-17. Camera+
+15. [Actionsheets](#15)
+16. [Android Back Button](#16)
+17. [Camera+](#17)
  * 17.1 Camera+ settings
  * 17.2 Camera+ edit
-18 Aviary
+18. [Aviary](#18)
 
 
+<a id="1"></a>
 ## 1. JS → Native Overview
 
-To pass data to the native code from the HTML we create an iframe and send it a request for a `snapr://` URL. 
+To pass data to the native code from the HTML we create an iframe and send it a request for a `snapr://` URL.
 
-Watch for any requests for `snapr://` URLs and take appropriate action. 
+Watch for any requests for `snapr://` URLs and take appropriate action.
 
-URLs will be in the format `snapr://base?param=value&param2=value` 
+URLs will be in the format `snapr://base?param=value&param2=value`
 
 
 
+<a id="2"></a>
 ## 2. Native → JS Overview
 
 The Native code can call JS functions within the app, and occasionally also passes in data via the Query string when loading views.
 
 
 
+<a id="3"></a>
 ## 3. Startup
 
 When the native code first loads the webview it passes settings via the query string such as stored user login details and appmode / device platform.
@@ -75,16 +78,16 @@ For platform specific behaviors instead of `true` send `iphone` or `android`, i.
     `appmode=iphone`
 
 
-### 3.2 New Users 
+### 3.2 New Users
 
 If there is no saved access token the app can show a new user welcome screen.
 
 When loading up the webview add `new_user=true` to the existing query string.
 
 
-### 3.3 Development Server 
+### 3.3 Development Server
 
-Send `environment=X` in order to run the app against different Snapr servers. 
+Send `environment=X` in order to run the app against different Snapr servers.
 
 All apps should accept `environment=dev` and `environment=live`, and apps may have any number of custom environment setups in their `config.js`
 
@@ -92,6 +95,7 @@ If no param is sent the app will default to live servers.
 
 
 
+<a id="4"></a>
 ## 4. Login
 
 #### JS → Native
@@ -121,6 +125,7 @@ Example:
 
 
 
+<a id="5"></a>
 ## 5. Logout
 
 Called by the JS on logout to clear the user credentials stored by the native code.
@@ -134,6 +139,7 @@ Example:
 
 
 
+<a id="6"></a>
 ## 6. Geolocation
 
 #### JS → Native
@@ -164,15 +170,14 @@ Example:
 
 
 
+<a id="7"></a>
 ## 7. Camera
 
 Called to launch native camera from the HTML.
 
-* **Base**
-* camera
+* **Base**: camera
 
-* **Params**
-* Any params passed should be used to load the #/share/ view once the photo is ready.
+* **Params**: Any params passed should be used to load the #/share/ view once the photo is ready.
 
 Example:
 
@@ -180,29 +185,37 @@ Example:
 
 
 
+<a id="8"></a>
 ## 8. Camera Library
 
 Called to launch device image library from the HTML.
 
-* **Base**
-* photo-library
-* **Params**
-* Any params passed should be used to load the #/share/ view once the photo is ready.
+* **Base**: photo-library
+* **Params**: Any params passed should be used to load the #/share/ view once the photo is ready.
 
 Example:
 
 `snapr://photo-library?comp_id=5`
 
 
-
+<a id="9"></a>
 ## 9. Share
 
-JAKE todo
+Once the user has selected a photo redirect to `#/share/` with and params the camera / photo library was launched with
 
--Document params the share screen can accept such as location, description, etc
+* **comp_id**: When the photo is for a competition this may be passed with `snapr://camera` etc
+* **latitude**: Used to perform reverse geolocation and look up Foursquare Venues
+* **longitude**
+* **redirect_url**: Specifies where the user should be directed when they press the share button
+* **photo_path/photo_id**: Path to the image file for display and identification
+* **description**: Description text, pass this back after editing to maintain the user's entry
+* **location**: Location text, pass this back after editing to maintain the user's entry
+* **foursquare_venue_id**:  Pass this back after editing to maintain the user's entry
+* **foursquare_venue_name**:  Pass this back after editing to maintain the user's entry
 
 
 
+<a id="10"></a>
 ## 10. Upload
 
 Uploads are handled via the native code so that background uploading can be utilized, and the upload queue can be maintained after quitting and restarting the app.
@@ -210,7 +223,7 @@ Uploads are handled via the native code so that background uploading can be util
 
 ### 10.1 Start
 
-Called to initiate an upload. 
+Called to initiate an upload.
 
 You should pass any params on to the upload API, and also include them in the upload_progress() JSON for the queue.
 
@@ -247,38 +260,38 @@ The API may return an error while attempting an upload.
 
 * 500 response code - Something has gone wrong, it may be temporary, or a bigger problem. Pause the queue and display a generic alert:
 
- "Upload Error: Server Error" 
- 
+ "Upload Error: Server Error"
+
  The user can then choose to un-pause the queue and try again, or cancel their upload if it continues to fail.
 
 * An error response with type `authentication.authentication_required`, i.e:
 
- `{
-    "success": false,
-    "date": TIMESTAMP,
-    "error": {
-        "type": "authentication.authentication_required",
-        "message": "ERROR MESSAGE"
-    }
-}`
+        {
+            "success": false,
+            "date": <timestamp>,
+            "error": {
+                "type": "authentication.authentication_required",
+                "message": <error_message>
+            }
+        }
 
  Valid authentication was not provided. Display an alert:
 
  "Upload Error: Invalid login details"
- 
+
  Invalidate current token, call the logout function, and direct the user to the root level HTML page.
 
 
-* An error response with type `validation.duplicate_upload` - This file has been uploaded before, display an alert: 
+* An error response with type `validation.duplicate_upload` - This file has been uploaded before, display an alert:
 
     "Upload Error: This image has been uploaded before"
-    
+
  Cancel the upload and remove it from the queue.
 
-* An error response with type `validation.corrupt_file` - This file is not a valid JPEG. Display an alert 
+* An error response with type `validation.corrupt_file` - This file is not a valid JPEG. Display an alert
 
  "Upload Error: Invalid File"
- 
+
  Cancel the upload and remove it from the queue.
 
 
@@ -308,18 +321,19 @@ The upload may succeed but return errors for sharing to services that the user d
         },
         "success": true
     }
-    
+
 Currently this is handled by directing the app to:
         `#/connect/?to_link=facebook,<service>,...&photo_id=<photo_id>&redirect_url=<current_app_url>`
-     
+
 The services currently supported by Snapr are `facebook`, `twitter`, `tumblr`, `foursquare`, and `appdotnet`.
 
-In future implementations should use a new `upload_sharing_failed(photo_id, service_list)` function as opposed to navigating the webview (both options a re currently supported).
+All new implementations should use the new `upload_sharing_failed(photo_id, service_list)` function as opposed to navigating the webview (both options a re currently supported).
 
    `upload_sharing_failed('MAD', ['facebook', '<service>', ...]);`
 
 
 
+<a id="11"></a>
 ## 11. Upload Queue
 
 The upload queue manages the progress of uploads for the app.
@@ -327,7 +341,7 @@ The upload queue manages the progress of uploads for the app.
 
 ### 11.1 Upload Queue Mode
 
-The queue can be set to be active when in Wi-Fi connections only: 
+The queue can be set to be active when in Wi-Fi connections only:
 
     snapr://upload?setting=Wi-Fi Only
     snapr://upload?setting=On
@@ -347,11 +361,11 @@ If the queue encounters server errors (such as a 500 error), or connection issue
 
 If the queue becomes paused the native code should update the JS with its status:
 
-    queue_settings('Upload Mode' , paused:boolean);
-    
-    i.e. queue_settings('On' , true);
+    queue_settings('<setting>' , <paused:boolean>);
 
-The app should automatically attempt to un-pause the queue if it is relaunched after quit or if the user switches back from another app. 
+i.e. `queue_settings('On' , true);`
+
+The app should automatically attempt to un-pause the queue if it is relaunched after quit or if the user switches back from another app.
 
 Don't forget to call `queue_settings('<setting>' , false)` if you un-pause the queue.
 
@@ -361,15 +375,15 @@ The user can also attempt to un-pause the queue. Should the queue fail again aft
 
 The URLs to pause / un pause the queue from the JS are:
 
-    'snapr://upload?start'
-    'snapr://upload?stop'
+    snapr://upload?start
+    snapr://upload?stop
 
 Don't forget to call `queue_settings('<setting>' , true)` if you re-pause the queue.
 
 
 ### 11.4 Connection Timeout
 
-During upload the queue should attempt to recover from temporary interruptions to the connection (without pausing). 
+During upload the queue should attempt to recover from temporary interruptions to the connection (without pausing).
 
 Note that once the upload has reached 100% complete there is sometimes a delay before the upload API returns success, you should not automatically restart the upload after that point.
 
@@ -380,25 +394,25 @@ As a photo is uploaded call the `upload_progress()` JS function to update the pr
 
 Call the function with either a Javascript object or JSON text.
 
-Any time there is a change to the queue status you should call `upload_progress()` at least once - for example if a new upload is added, but there is no connection, call `upload_progress()` so we can update the queue to show the stalled item. 
+Any time there is a change to the queue status you should call `upload_progress()` at least once - for example if a new upload is added, but there is no connection, call `upload_progress()` so we can update the queue to show the stalled item.
 
 You should also be sure `upload_progress()` is called at least once on any completion event that changes the status of the queue - including an image being removed from the queue due to completion, or the queue being paused / un paused.
 
 Format for JSON data:
 
-   {
-       "uploads": [
-           {
-               "upload_status": "active",
-               "percent_complete": 27,
-               "local_id": "92135044",
-               "thumbnail": "file:///this/that/92135044.jpg",
+    {
+        "uploads": [
+            {
+                "upload_status": "active",
+                "percent_complete": 27,
+                "local_id": "92135044",
+                "thumbnail": "file:///this/that/92135044.jpg",
 
-               any other parameters that were passed with the snapr://upload call
+                any other parameters that were passed with the snapr://upload call
 
-           }
-       ]
-   }
+            }
+        ]
+    }
 
 Valid statuses:
 
@@ -439,31 +453,33 @@ Called to cancel an upload (active or queued).
 Example:
 
     snapr://upload?cancel=102142835
-    
+
 #### Native → JS
 
 When an upload is canceled call the javascript function `upload_canceled` with it's `local_id`.
 
-    Example:
+Example:
 
-        upload_canceled('102142835');
-        
+    upload_canceled('102142835');
+
 
 ### 11.9 Clear Queue
 
 To completely clear the current Queue:
 
     snapr://upload?clear
-    
 
 
 
+
+<a id="12"></a>
 ## 12. External URLs
 
 Any links from within the HTML that link to external addresses, i.e. `http://something` as opposed to `#/feed/` will be opened in a separate modal webview.
 
 
 
+<a id="13"></a>
 ## 13. Third Party OAuth Flow
 
 The SnaprKit module loads all requests for external URLs in a separate modal webview.
@@ -495,7 +511,7 @@ In order to avoid the need to expose OAuth client and secret data for those serv
     `file:///path/index.html#/my-account/?username=<Full Name>`
 
 
-### 13.2 Sign-in with Facebook 
+### 13.2 Sign-in with Facebook
 
 Signing in with Facebook is similar to Linking services.
 
@@ -524,13 +540,14 @@ Errors will return the `redirect_url` in a similar fashion to success, but inste
 
 ### 13.4 Webview Closed
 
-If the user presses close on the webview you need to find the `redirect` form the original webview request and redirect the JS to it with `error=Linking%20Closed`. 
+If the user presses close on the webview you need to find the `redirect` form the original webview request and redirect the JS to it with `error=Linking%20Closed`.
 
 The original will be in the format: `snapr://redirect?redirect_url=file%3A///path/index.html%23/login/%3Fparam%3Dvalue` from this you need to extract and decode `redirect_url`
 
 
 
 
+<a id="14"></a>
 ## 14 Alerts
 
 Native replacements for javascript `alert()` and `confirm()`
@@ -581,6 +598,7 @@ Example:
 
 
 
+<a id="15"></a>
 ## 15. Actionsheets
 
 
@@ -612,6 +630,7 @@ Example:
 
 
 
+<a id="16"></a>
 ## 16. Android Back Button
 
 ### Native → JS
@@ -624,9 +643,10 @@ Example:
 
 
 
+<a id="17"></a>
 ## 17. Camera+
 
-SnaprKit has built in options for integrating with the Camera+ iOS app APIs. 
+SnaprKit has built in options for integrating with the Camera+ iOS app APIs.
 
 
 ### 17.1 Camera+ settings
@@ -661,9 +681,10 @@ Example:
 Pass back any extra supplied parameters such as `foursquare_venue` via the query string when returning to the webview.
 
 
-## 18. Aviary 
+<a id="18"></a>
+## 18. Aviary
 
-SnaprKit has options for integrating with the Aviary SDK if its has been included with the build. 
+SnaprKit has options for integrating with the Aviary SDK if its has been included with the build.
 
 ### Aviary edit
 
