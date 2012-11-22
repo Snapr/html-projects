@@ -9,10 +9,6 @@ return page_view.extend({
 
         this.change_page();
 
-        if(options.query.username){
-            auth.user_settings.cache_bust();
-        }
-
         this.fetch();
 
     },
@@ -31,7 +27,6 @@ return page_view.extend({
     },
 
     dialog_closed: function(dialog){
-        auth.user_settings.cache_bust();
         this.fetch();
     },
 
@@ -198,7 +193,6 @@ return page_view.extend({
 
         this.save_settings( param, function(){
             if(avatar_changed){
-                auth.user_settings.cache_bust();
                 my_account.fetch();
             }else{
                 alerts.notification('Thanks', 'Your settings have been saved');

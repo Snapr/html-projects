@@ -1,18 +1,8 @@
 /*global _  define require */
 define(['config', 'backbone', 'models/linked_service'], function(config, Backbone, linked_service){
 
-var user_settings_cache;
 
 return  Backbone.Model.extend({
-
-    initialize: function(){
-        this.bind('change', this.cache_bust);
-    },
-
-    cache_bust: function(a,b){
-        user_settings_cache = false;
-    },
-
     urlRoot: function(){
         return config.get('api_base') + '/user/';
     },
@@ -36,13 +26,8 @@ return  Backbone.Model.extend({
     sync: function(method, model, options) {
         if(method == 'read'){
             var success = options.success;
-            if(user_settings_cache){
-                options.success(user_settings_cache);
-                return;
-            }
             options.success = function(data, status, xhr){
                 success(data, status, xhr);
-                user_settings_cache = data;
             };
         }
         Backbone.sync.call(this, method, model, options);
