@@ -199,7 +199,7 @@ return view.extend({
             if(show){
                 this.$el.append(bg_loader);
             }else{
-                bg_loader.remove();
+                $(bg_loader).remove();
             }
         }
 
