@@ -39,15 +39,13 @@
 .x-bg-loading .loader {
   display: block;
 }
-.x-bg-loading .ui-loader {
-  display: block;
+.s-bg-loader {
+  position: fixed;
+  background: #C0FFEE;
   bottom: 10px;
   left: 10px;
   top: auto;
   margin: 0;
-}
-.x-bg-loading.x-has-tabbar .ui-loader {
-  display: none;
 }
 html {
   -webkit-user-select: none;

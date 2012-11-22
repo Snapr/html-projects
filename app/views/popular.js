@@ -10,7 +10,10 @@ return page_view.extend({
             sort:"weighted_score",
             n:20
         };
-        this.collection.bind( "reset", function(){$(document.body).removeClass('x-bg-loading');} );
+        var view = this;
+        this.collection.bind( "reset", function(){
+            view.show_bg_loader();
+        } );
 
         this.list_view = new thumbnail({
             collection: this.collection,
@@ -35,7 +38,7 @@ return page_view.extend({
     get_override_tab: function(){ return 'discover'; },
 
     update_list: function( e ){
-        $(document.body).addClass('x-bg-loading');
+        this.show_bg_loader();
 
         var click = !!(e && e.currentTarget);
         if (click){

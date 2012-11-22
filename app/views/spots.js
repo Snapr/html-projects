@@ -47,7 +47,7 @@ var spots_view =  page_view.extend({
         geo.get_location( success_callback, error_callback );
 
         this.change_page();
-        $(document.body).addClass('x-bg-loading');
+        this.show_bg_loader();
 
         // reset values
         if(!search_options.nearby){
@@ -129,7 +129,7 @@ var spots_view =  page_view.extend({
                 success: function () {
                     this_view.xhr = null;
                     this_view.$el.removeClass('x-loading');
-                    $(document.body).removeClass('x-bg-loading');
+                    this_view.show_bg_loader(false);
                 }
             });
         }, 300 );
