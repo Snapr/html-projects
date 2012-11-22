@@ -31,17 +31,17 @@ return page_view.extend({
     },
 
     fetch: function(){
-        $.mobile.showPageLoadingMsg();
-        var my_account_view = this;
+        this.show_bg_loader();
+        var this_view = this;
         var options = {
             data: {linked_services: true, user_object: true},
             success: function(){
-                $.mobile.hidePageLoadingMsg();
+                this_view.show_bg_loader(false);
                 auth.user_settings.linked_services_setup();
-                my_account_view.render();
+                this_view.render();
             },
             error: function(){
-                console.log( 'error' , my_account_view );
+                console.log( 'error' , this_view );
             }
         };
         auth.user_settings.data = {};
@@ -134,7 +134,7 @@ return page_view.extend({
 
     save_settings: function( param, callback, spin ){
         if(spin){
-            $.mobile.showPageLoadingMsg();
+            this.show_bg_loader();
         }
         // prevent backbone from thinking this is a new user
         auth.user_settings.id = true;
@@ -144,13 +144,12 @@ return page_view.extend({
         auth.user_settings.save({},{
             data: param,
             success: function( model, xhr ){
-                $.mobile.hidePageLoadingMsg();
+                my_account.show_bg_loader(false);
                 if (xhr.success){
                     if($.isFunction(callback)){
                         callback( model, xhr );
                     }
                 }else{
-                    $.mobile.hidePageLoadingMsg();
                     console.warn( "error saving notifications", xhr );
                     alerts.notification('Error',  "Sorry, we had trouble saving your settings." );
                     my_account.initialize();
