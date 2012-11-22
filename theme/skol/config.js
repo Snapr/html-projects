@@ -62,7 +62,8 @@ return {
     pages: [
         {
             name: 'home',
-            template: theme_templates + 'home'
+            template: theme_templates + 'home',
+            view: theme_views + 'home'
         },
         'about',
         'about-snapr',

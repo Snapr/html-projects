@@ -3072,6 +3072,29 @@ div[data-role="header"].ui-bar-b a[data-rel="back"]::before {
 .ui-body-g.ui-navbar .ui-btn {
   background: none!important;
 }
+.s-menu-main {
+  position: relative;
+}
+.s-menu-stream {
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+.s-home-bg {
+  height: 100%;
+}
+.s-home-bg div {
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-size: 100% 100%;
+  background-size: cover;
+  background-position: center;
+}
 strong {
   font-weight: normal;
   font-size: 16px;
@@ -4420,65 +4443,6 @@ textarea.ui-input-text {
   text-align: center;
   text-transform: none;
   vertical-align: middle;
-}
-.s-menu-stream {
-  position: relative;
-  margin-bottom: -8px;
-  background-color: black;
-  margin-left: -8px;
-  margin-right: -8px;
-}
-.s-menu-stream .s-thumbs-block-overlay {
-  position: absolute;
-  width: 100%;
-  top: 0;
-  left: 0;
-  height: 101px;
-  background: rgba(0, 0, 0, 0.6);
-}
-.s-menu-stream .s-thumbs-block-overlay .s-centered-btn {
-  display: inline-block;
-  width: 160px;
-  position: absolute;
-  left: 50%;
-  margin-left: -80px;
-  top: 50%;
-  margin-top: -18px;
-  border-radius: 20px;
-}
-.s-menu-stream .s-thumbs-block-overlay .s-centered-btn .ui-btn-inner {
-  padding-right: 20px;
-  padding-left: 10px;
-}
-.s-menu-stream .s-thumbs-preview-stream {
-  white-space: nowrap;
-  height: 101px;
-  overflow: hidden;
-}
-.s-menu-stream .s-thumbs-preview-stream li {
-  display: inline-block;
-}
-.s-menu-stream .s-thumbs-preview-stream .s-thumb-image {
-  background: #000000;
-}
-.s-menu-stream.x-loading .ui-icon-arrow-r {
-  display: block;
-  background-image: url('../gfx/small-spinner-dark.png') !important;
-  background-position: center!important;
-  background-repeat: no-repeat !important;
-  -webkit-background-size: 24px 24px !important;
-  -moz-background-size: 24px 24px !important;
-  -o-background-size: 24px 24px !important;
-  background-size: 24px 24px !important;
-  -webkit-transform: rotate(0deg) translateZ(0);
-  -webkit-transition-duration: 0ms;
-  -webkit-animation-name: loading;
-  -webkit-animation-duration: 1.2s;
-  -webkit-animation-iteration-count: infinite;
-  -webkit-animation-timing-function: linear;
-}
-.s-menu-stream.no-images .ui-icon-arrow-r {
-  display: none;
 }
 #tumblr-posts blockquote {
   margin: 8px;
