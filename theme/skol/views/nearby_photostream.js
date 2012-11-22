@@ -24,7 +24,9 @@ var nearby_photostream_view = nearby_photostream_base.extend({
         });
 
         _.bindAll(this);
-        setInterval(this.change, 1000);
+        if(this.collection.length > 1){
+            setInterval(this.change, 1000);
+        }
     },
     change: function(){
         var current = this.$('.s-home-bg:visible'),
