@@ -10,6 +10,7 @@ return page_view.extend({
             sort:"weighted_score",
             n:20
         };
+        this.collection.bind( "reset", function(){$(document.body).removeClass('x-bg-loading');} );
 
         this.list_view = new thumbnail({
             collection: this.collection,
@@ -21,8 +22,8 @@ return page_view.extend({
     },
 
     post_activate: function(){
-        this.collection.reset();
-        this.list_view.$el.empty();
+        // this.collection.reset();
+        // this.list_view.$el.empty();
         this.change_page();
         this.update_list();
     },
@@ -34,7 +35,7 @@ return page_view.extend({
     get_override_tab: function(){ return 'discover'; },
 
     update_list: function( e ){
-        $.mobile.showPageLoadingMsg();
+        $(document.body).addClass('x-bg-loading');
 
         var click = !!(e && e.currentTarget);
         if (click){
