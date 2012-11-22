@@ -4,6 +4,11 @@ define(['views/base/view', 'views/components/nearby_photostream'],
 
 var nearby_photostream_view = nearby_photostream_base.extend({
 
+    defaults: {
+        n: 10,
+        sort:'weighted_score'
+    },
+
     render: function () {
         this.collection.reset();
         return this;
@@ -17,25 +22,25 @@ var nearby_photostream_view = nearby_photostream_base.extend({
 
             this_view.$el.append( stream_item.el );
             // only show the first one
-            if(i>0){
-                stream_item.$el.hide();
+            if(i === 0){
+                stream_item.$el.addClass('fade-in');
             }
             stream_item.render();
         });
 
         _.bindAll(this);
         if(this.collection.length > 1){
-            setInterval(this.change, 1000);
+            setInterval(this.change, 2000);
         }
     },
     change: function(){
-        var current = this.$('.s-home-bg:visible'),
+        var current = this.$('.s-home-bg.fade-in'),
             next = current.next();
         if(!next.length){
             next = current.prevAll().eq(0);
         }
-        next.fadeIn();
-        current.fadeOut();
+        next.addClass('fade-in');
+        current.removeClass('fade-in');
     }
 
 });
