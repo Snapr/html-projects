@@ -12,7 +12,7 @@ return page_view.extend({
         };
         var view = this;
         this.collection.bind( "reset", function(){
-            view.show_bg_loader();
+            view.show_bg_loader(false);
         } );
 
         this.list_view = new thumbnail({

@@ -60,6 +60,8 @@ return view.extend({
     activate: function(options){
         options = _.extend(options || {}, this.options);
 
+        this.show_bg_loader(false);
+
         try{
             this.options.back_url = options.query.back_url;
         }catch(e){}
@@ -192,7 +194,7 @@ return view.extend({
 
     show_bg_loader: function(show){
         show = show !== false;  // false hides ANYTHING else shows
-        $(document.body).toggleClass('x-bg-loading');
+        $(document.body).toggleClass('x-bg-loading', show);
         if(!config.get('show_tab_bar') || !this.$el.data('tab-bar')){
             if(show){
                 this.$el.append(bg_loader);

@@ -41,6 +41,7 @@ return page_view.extend({
                 this_view.render();
             },
             error: function(){
+                this_view.show_bg_loader(false);
                 console.log( 'error' , this_view );
             }
         };
@@ -82,10 +83,10 @@ return page_view.extend({
         var $account_content = this.replace_from_template(data, ['.x-content']).trigger('create');
 
 
-        var my_account = this;
+        var this_view = this;
         _.each( auth.user_settings.get('linked_services'), function( service, index ){
             var v = new linked_service({model: service});
-            v.my_account = my_account;
+            v.my_account = this_view;
 
             $account_content.find('.x-linked-services').append( v.render().el ).trigger('create');
         });
@@ -139,12 +140,12 @@ return page_view.extend({
         // prevent backbone from thinking this is a new user
         auth.user_settings.id = true;
         auth.user_settings.set(param);
-        var my_account = this;
+        var this_view = this;
 
         auth.user_settings.save({},{
             data: param,
             success: function( model, xhr ){
-                my_account.show_bg_loader(false);
+                this_view.show_bg_loader(false);
                 if (xhr.success){
                     if($.isFunction(callback)){
                         callback( model, xhr );
@@ -152,13 +153,14 @@ return page_view.extend({
                 }else{
                     console.warn( "error saving notifications", xhr );
                     alerts.notification('Error',  "Sorry, we had trouble saving your settings." );
-                    my_account.initialize();
+                    this_view.initialize();
                 }
             },
             error: function( e ){
+                this_view.show_bg_loader(false);
                 console.warn( "error saving notifications", e );
                 alerts.notification('Error',  "Sorry, we had trouble saving your settings." );
-                my_account.initialize();
+                this_view.initialize();
             }
         });
     },
@@ -179,7 +181,7 @@ return page_view.extend({
     save_profile: function( e ){
         var section = $(e.currentTarget).closest("[data-role='collapsible']");
 
-        var my_account = this,
+        var this_view = this,
             param = {};
 
         _.each(['name', 'location', 'website', 'bio'], function(item){
