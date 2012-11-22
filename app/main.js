@@ -306,7 +306,14 @@ require(['config', 'jquery', 'backbone', 'photoswipe', 'auth', 'utils/local_stor
                     native_bridge.pass_data( "snapr://camplus/camera?" + extra_params );
                 }else{
                     console.log("native_bridge.pass_data camera");
-                    native_bridge.pass_data( "snapr://camera?" + extra_params );
+                    
+                    /**
+                   *   This is to work around an issue where calling via action sheet causes
+                   *   the camera url not to be picked up on android
+                   */
+                    setTimeout( function () {
+                        native_bridge.pass_data( "snapr://camera?" + extra_params );
+                    }, 0);
 
                     setTimeout( function(){
                         Backbone.history.navigate( "#/limbo/" );
@@ -331,7 +338,14 @@ require(['config', 'jquery', 'backbone', 'photoswipe', 'auth', 'utils/local_stor
                 if (camplus && camplus_lightbox){
                     native_bridge.pass_data( "snapr://camplus/lightbox?" + extra_params );
                 }else{
-                    native_bridge.pass_data( "snapr://photo-library?" + extra_params );
+                    
+                    /**
+                   *   This is to work around an issue where calling via action sheet causes
+                   *   the photo-library url not to be picked up on android
+                   */
+                    setTimeout( function () {
+                        native_bridge.pass_data( "snapr://photo-library?" + extra_params );
+                    }, 0);
 
                     setTimeout( function(){
                         Backbone.history.navigate( "#/limbo/" );
