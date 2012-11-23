@@ -2,6 +2,27 @@
 define([], function(){
     // 1337
     var translation = {
+        // home
+        'Camera Roll': 'C4m3ra R01l',
+        'Dashboard': 'D45hb0ard',
+        'My Snaps': 'My 5n4p5',
+        'Popular': 'P0pu14r',
+        'Map': 'M4p',
+        'Cities': 'Ci7i35',
+        'Spots': '5p075',
+        'Activity': '4c7ivity',
+        'Leaderboard': '134derb0ard',
+        'Tumblr': '7umb1r',
+        'Join': 'J0in',
+        'Log In': '10g In',
+        'Latest': '14735t',
+        'Welcome': 'W31c0me',
+        'About': '4b0u7',
+        'Shoot': '5h0o7',
+        'Nearby Images': 'N34rby Image5',
+        'Popular Images': 'Popular Image5',
+        'No images yet': 'No Image5',
+
         // Share
         'Skol Share': '5h4r3',
         'Add text...': '4dd t3Xt',
@@ -58,12 +79,12 @@ define([], function(){
     };
     var leet = function(text){
         return text
-            .replace('a', '4').replace('A', '4')
-            .replace('e', '3').replace('E', '3')
-            .replace('s', '5').replace('S', '5')
-            .replace('t', '7').replace('T', '7')
-            .replace('o', '0').replace('O', '0')
-            .replace('l', '1').replace('L', '1');
+            .replace(/'a'/gi, '4')
+            .replace(/'e'/gi, '3')
+            .replace(/'s'/gi, '5')
+            .replace(/'t'/gi, '7')
+            .replace(/'o'/gi, '0')
+            .replace(/'l'/gi, '1');
     };
     return function(text){
         if (text in translation){

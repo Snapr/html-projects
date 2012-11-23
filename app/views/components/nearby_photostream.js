@@ -1,4 +1,4 @@
-/*global _  define require */
+/*global _  define require T */
 define(['backbone', 'views/base/view', 'utils/geo', 'collections/photo'],
     function(Backbone, view, geo, photo_collection) {
 
@@ -37,7 +37,7 @@ var nearby_photostream_view = view.extend({
 
         var error_callback = function() {
             this_view.fetch_photos();
-            this_view.$el.find('.x-nearby-link .ui-btn-text').text('Popular Images');
+            this_view.$el.find('.x-nearby-link .ui-btn-text').text(T('Popular Images'));
         };
 
         geo.get_location( success_callback, error_callback );
@@ -72,14 +72,14 @@ var nearby_photostream_view = view.extend({
                         return;
                     }else{
                         this_view.$el.addClass('x-no-images').removeClass('x-loading');
-                        this_view.$('.x-nearby-link .ui-btn-text').text('No images yet');
+                        this_view.$('.x-nearby-link .ui-btn-text').text(T('No images yet'));
                         return;
                     }
                 }
                 if(this_view.search_options.nearby) {
-                    this_view.$('.x-nearby-link .ui-btn-text').text('Nearby Images');
+                    this_view.$('.x-nearby-link .ui-btn-text').text(T('Nearby Images'));
                 }else{
-                    this_view.$('.x-nearby-link .ui-btn-text').text('Popular Images');
+                    this_view.$('.x-nearby-link .ui-btn-text').text(T('Popular Images'));
                 }
                 this_view.$el.removeClass('x-loading');
                 // Check to see if the photo's have changed. If all the ID's are the same don't re-render
