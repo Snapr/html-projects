@@ -1,13 +1,13 @@
 <div id="app" data-role="page" data-overlay-theme="c" data-theme="c">
     <div data-role="header" data-theme="c">
-        <h1>Get the App!</h1>
+        <h1><%= T('Get the App!') %></h1>
         <a class="x-back" data-role="button" data-icon="delete" data-iconpos="notext"></a>
     </div>
     <div data-role="content" data-theme="d" data-ajax="false">
         <div class="s-inset-page-content">
             <ul data-role="listview" data-ajax="false" class="" data-inset="true" data-theme="d">
                 <li class="s-wrap-content">
-                    <p>For the best experience please download one of our apps:</p>
+                    <p><%= T('For the best experience please download one of our apps') %>:</p>
                 </li>
 
                  <li class="s-app-link">
@@ -21,8 +21,8 @@
                         </a>
                     </li>
             </ul>
-            <p class="s-small-text">Does your phone allow browser based uploads?</p>
-            <a data-role="button" data-theme="h" class="x-web-upload">Upload via Mobile Web </a>
+            <p class="s-small-text"><%= T('Does your phone allow browser based uploads?') %></p>
+            <a data-role="button" data-theme="h" class="x-web-upload"><%= T('Upload via Mobile Web') %> </a>
             </div>
         </div>
     </div>

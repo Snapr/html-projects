@@ -34,6 +34,13 @@ define([], function(){
         'Login with': '10gin wi7h',
         'Forgot Password?': 'F0rgo7 P45sword?',
 
+
+        //app
+        'Get the App!': 'G37 the 4pp!',
+        'For the best experience please download one of our apps': 'F0r 7h3 be5t experience p1e4se download one of our apps',
+        'Does your phone allow browser based uploads?': 'D035 your phone 41low browser based uploads?',
+        'Upload via Mobile Web': 'Up104d via Mobil3 Web',
+
         // Share
         'Skol Share': '5h4r3',
         'Add text...': '4dd t3Xt',
