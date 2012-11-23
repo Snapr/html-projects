@@ -28,34 +28,22 @@
                                 <% if(comp && comp.has('hashtag')){ %><span class="s-comp-hashtag"><%= comp.get('hashtag') %></span><% } %>
 
 
-
-                                <fieldset data-role="controlgroup" data-type="horizontal" class="s-upload-image-privacy">
-                                    <input type="checkbox" class="x-status" name="status" id="image-status" <% if (status != "private"){%> checked="true" <%}%> />
-                                    <label for="image-status">&nbsp;<span class="ui-icon"></span></label>
-                                </fieldset>
-
-
                                 <fieldset data-role="controlgroup" data-type="horizontal" class="x-image-sharing s-upload-image-sharing">
                                     <legend>Share to:</legend>
 
-                                    <input type="checkbox" name="tweet" id="twitter-sharing"
-                                    <%if (status == "private"){%>disabled="true"<%}%>
-                                    <%if (twitter_sharing && status != "private"){%>checked="true"<%}%> />
+                                    <input type="checkbox" name="skol-sharing" id="skol-sharing" <% if(local_storage.get( "skol-sharing" )){ %>checked="true"<%}%> />
+                                    <label for="skol-sharing"><span class="ui-icon"></span>Skol</label>
+
+                                    <input type="checkbox" name="tweet" id="twitter-sharing" <%if (twitter_sharing){%>checked="true"<%}%> />
                                     <label for="twitter-sharing"><span class="ui-icon"></span>Twitter</label>
 
-                                    <input type="checkbox" name="facebook_album" id="facebook-sharing"
-                                    <%if (status == "private"){%>disabled="true"<%}%>
-                                    <%if (facebook_sharing && status != "private"){%>checked="true"<%}%>/>
+                                    <input type="checkbox" name="facebook_album" id="facebook-sharing" <%if (facebook_sharing){%>checked="true"<%}%>/>
                                     <label for="facebook-sharing"><span class="ui-icon"></span>Facebook</label>
 
-                                    <input type="checkbox" name="tumblr" id="tumblr-sharing"
-                                    <%if (status == "private"){%>disabled="true"<%}%>
-                                    <%if (tumblr_sharing  && status != "private"){%>checked="true"<%}%> />
+                                    <input type="checkbox" name="tumblr" id="tumblr-sharing" <%if (tumblr_sharing ){%>checked="true"<%}%> />
                                     <label for="tumblr-sharing"><span class="ui-icon"></span>Tumblr</label>
 
-                                    <input type="checkbox" name="foursquare_checkin" id="foursquare-sharing"
-                                    <%if (status == "private"){%>disabled="true"<%}%>
-                                    <%if (foursquare_sharing && status != "private"){%>checked="true"<%}%> />
+                                    <input type="checkbox" name="foursquare_checkin" id="foursquare-sharing" <%if (foursquare_sharing){%>checked="true"<%}%> />
                                     <label for="foursquare-sharing"><span class="ui-icon"></span>Foursquare</label>
 
                                 </fieldset>
@@ -65,7 +53,7 @@
                                 <fieldset class="s-upload-image-location action-icons">
 
                                     <div id="no-foursquare-venue"
-                                        <% if (foursquare_sharing && status != "private"){%> style="display:none;"<%}%>
+                                        <% if (foursquare_sharing){%> style="display:none;"<%}%>
                                          class="<% if (photo.attributes.location && !photo.attributes.location.location){%>x-ajax-loading <%}%>x-no-foursquare-venue">
 
                                         <span class="s-image-location">

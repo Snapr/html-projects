@@ -3072,6 +3072,18 @@ div[data-role="header"].ui-bar-b a[data-rel="back"]::before {
 .ui-body-g.ui-navbar .ui-btn {
   background: none!important;
 }
+.s-share-photo .s-upload-image-sharing label[for="skol-sharing"] .ui-icon {
+  background-position: 0 20px;
+}
+.s-share-photo .s-upload-image-sharing label[for="skol-sharing"].ui-checkbox-on {
+  background-color: #68d9ff;
+  -moz-box-shadow: inset 0 3px 20px #309dc2;
+  -webkit-box-shadow: inset 0 3px 20px #309dc2;
+  box-shadow: inset 0 3px 20px #309dc2;
+}
+.s-share-photo .s-upload-image-sharing label[for="skol-sharing"].ui-checkbox-on .ui-icon {
+  background-position: -42px 20px;
+}
 .s-menu-main {
   position: relative;
 }

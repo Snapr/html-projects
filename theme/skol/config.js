@@ -132,7 +132,8 @@ return {
         'twitter-xauth',
         {
             name: 'share',
-            template: theme_templates + 'share'
+            template: theme_templates + 'share',
+            view: theme_views + 'share'
         },
         {
             name: 'user/followers',
