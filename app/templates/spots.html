@@ -1,6 +1,6 @@
-<div id="spots" data-title="Spots" data-tab-bar="true" data-add-back-btn="true" data-role="page" data-theme="d">
+<div id="spots" data-title="<%= T('Spots') %>" data-tab-bar="true" data-add-back-btn="true" data-role="page" data-theme="d">
     <div data-role="header" data-theme="b">
-        <h1>Spots</h1>
+        <h1><%= T('Spots') %></h1>
 
         <div class="ui-btn-right" data-ajax="false">
             <a href="#/map/" data-role="button" data-icon="map" data-iconpos="notext"></a>
@@ -12,7 +12,7 @@
         <div class="s-inline-header ui-body-c s-search-header">
             <div class="ui-content">
                 <form id="spots-search" class="all-categories">
-                    <input type="search" id="spot-search" class="x-search-field" value="" placeholder="Venue Name&hellip;" />
+                    <input type="search" id="spot-search" class="x-search-field" value="" placeholder="<%= T('Venue Name') %>&hellip;" />
 
                     <div class="s-spots-search-filters">
                         <span class="s-distance-btn">
@@ -28,19 +28,19 @@
                         <div class="ui-grid-a">
                             <div class="ui-block-a">
                                 <select data-theme="c" name="sort" id="options-sort" class="x-sort" data-native-menu="true">
-                                    <option value='weighted_score' id='options-weighted_score'>Popular</option>
-                                    <option value='distance' class="x-location-needed" id="options-distance">Nearest</option>
+                                    <option value='weighted_score' id='options-weighted_score'><%= T('Popular') %></option>
+                                    <option value='distance' class="x-location-needed" id="options-distance"><%= T('Nearest') %></option>
                                 </select>
 
                             </div>
                             <div class="ui-block-b s-category-btn">
                                 <select data-theme="c" name="category" id="options-category" class="x-category" data-native-menu="true">
-                                    <option value='all' id='location-anywhere'>All</option>
-                                    <option value='food' id="category-nearby">Food</option>
-                                    <option value='nightlife-spots' id="category-nightlife-spots">Nightlife</option>
-                                    <option value='arts-and-entertainment' id="category-arts-and-entertainment">Arts</option>
-                                    <option value='great-outdoors' id="category-great-outdoors">Outdoors</option>
-                                    <option value='shops' id="category-shops">Shopping</option>
+                                    <option value='all' id='location-anywhere'><%= T('All') %></option>
+                                    <option value='food' id="category-nearby"><%= T('Food') %></option>
+                                    <option value='nightlife-spots' id="category-nightlife-spots"><%= T('Nightlife') %></option>
+                                    <option value='arts-and-entertainment' id="category-arts-and-entertainment"><%= T('Arts') %></option>
+                                    <option value='great-outdoors' id="category-great-outdoors"><%= T('Outdoors') %></option>
+                                    <option value='shops' id="category-shops"><%= T('Shopping') %></option>
                                 </select>
                             </div>
                         </div>
@@ -55,12 +55,12 @@
                 <% if(obj.spots){ %>
                     <% if(spots.length){ %>
                         <a class="s-spots-results-header ui-bar" data-role="button" data-theme="e" data-iconpos="right" data-icon="arrow-r" href="#/map/?<%=params %>">
-                            <strong><%= spots.length %> results</strong>
-                            show on map
+                            <strong><%= spots.length %> <%= T('results') %></strong>
+                            <%= T('show on map') %>
                         </a>
                     <% } else { %>
                         <a class="s-spots-results-header ui-bar" data-role="button" data-theme="e">
-                            <strong>No results</strong>
+                            <strong><%= T('No results') %></strong>
                         </a>
                     <% } %>
                 <% } %>
@@ -75,11 +75,7 @@
                                 <% if (spot.get('info').hero_image) { %>
                                     <img src="https://s3.amazonaws.com/media-server2.snapr.us/thm2/<%= spot.get('info').hero_image.secret %>/<%= spot.get('info').hero_image.id %>.jpg" class="s-thumb-image" />
                                 <%} else { %>
-                                    <div class="s-no-photo-yet">
-                                        no<br />
-                                        photos<br />
-                                        yet<br />
-                                    </div>
+                                    <div class="s-no-photo-yet" style="white-space: normal;"><%= T('no photos yet') %></div>
                                 <% } %>
                                 </span>
 

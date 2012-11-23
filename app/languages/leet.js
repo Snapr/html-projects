@@ -46,6 +46,21 @@ define([], function(){
         'Upload via Mobile Web': 'Up104d via Mobil3 Web',
 
 
+        //spots
+        'Venue Name': 'V3nue N4me',
+        'Nearest': 'N34re57',
+        'All': '41l',
+        'Food': 'F0od',
+        'Nightlife': 'Nigh71if3',
+        'Arts': '4r75',
+        'Outdoors': '0u7d0or5',
+        'Shopping': '5h0pping',
+        'results': 'r35u17s',
+        'show on map': '5h0w on m4p',
+        'no photos yet': 'n0 pho7o5 y3t',
+        'photo by': 'ph07o by',
+
+
         //dahs
         'Dash': 'D45h',
         'Add your favorite people, or a search for something you want to keep track of.': '4dd y0ur f4vori73 peop1e, or a 5earch for something you want to keep track of.',
