@@ -4,6 +4,8 @@ return {
     config: {
         environment: 'dev',  // from theme.environments below
 
+        language: 'leet',
+
         // sort_order: 'date_added',  // defaults to date_utc the photo was taken. (rating, favorite_count, comment_count, date_local, date_added, date_utc, score, weighted_score)
 
         // initial_view: 'dash',  // "home page"
