@@ -4,6 +4,8 @@ var config_model = Backbone.Model.extend({
     defaults:{
         environment: 'dev',
 
+        language: 'english',
+
         initial_view: 'home',
 
         // client must have xAuth permission from 3rd party

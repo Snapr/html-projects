@@ -188,9 +188,8 @@ return original_share.extend({
                 }
                 extras += "&local_id=" + params.local_id;
 
-                console.log(params);
-                //Backbone.history.navigate( "#/uploading/" + extras );
-                //native_bridge.pass_data("snapr://upload?" + $.param(params) );
+                Backbone.history.navigate( "#/uploading/" + extras );
+                native_bridge.pass_data("snapr://upload?" + $.param(params) );
             }
         }
     },
