@@ -67,6 +67,27 @@ define([], function(){
 
         //feed
         'More': 'M0r3',
+        'List': '1i57',
+        'Grid': 'Grid',
+        'Load More': '104d Mor3',
+        'Feed': 'F3ed',
+        "That's Me": "Th47'5 M3",
+        'Photos': 'Ph07o5',
+        'Followers': 'F01low3r5',
+        'Following': 'F01lowing',
+        'Show': '5h0w',
+        'Comment': 'C0mm3n7',
+        'likes this': '1ik35 7his',
+        'Loading': '104ding',
+        'Back': 'B4ck',
+        'hide': 'hid3',
+        'show': '5h0w',
+        'Are you sure you want to delete this photo?': '4r3 y0u 5ure you w4n7 to de1ete this photo?',
+        'Delete': 'D31e7e',
+        'Cancel': 'C4nc31',
+        'Follow': 'F01low',
+        'Flag this image as innapropriate?': 'F14g 7hi5 imag3 as innapr0priate?',
+        'Flag': 'F14g',
 
 
         //dahs
