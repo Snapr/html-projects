@@ -1,6 +1,6 @@
- <div id="comp" data-title="Comps" data-add-back-btn="true" data-role="page" data-theme="d">
+ <div id="comp" data-title="<%= T('Comps') %>" data-add-back-btn="true" data-role="page" data-theme="d">
     <div data-role="header" data-theme="b">
-        <h1>Comps</h1>
+        <h1><%= T('Comps') %></h1>
 
         <div class="ui-btn-right" data-ajax="false">
             <a href="#/search/" data-snapr-dialog="true" data-role="button" data-icon="search" data-iconpos="notext"></a>
@@ -25,7 +25,7 @@
                         <em>Enter now!</em>
                         <span class="s-small-text">
                             <% if(closing_date){ %>
-                                Submissions close <%= string_utils.short_timestamp(closing_date, false) %>
+                                <%= T('Submissions close') %> <%= string_utils.short_timestamp(closing_date, false) %>
                             <% } %>
                         </span>
                     </span>
@@ -33,25 +33,25 @@
 
                 <br>
 
-                <a class="x-launch-camera-options" data-role="button" data-theme="h">submit a photo</a>
+                <a class="x-launch-camera-options" data-role="button" data-theme="h"><%= T('submit a photo') %></a>
 
             <% } else { %>
                 <a class="ui-bar x-details x-launch-camera-options" data-role="button" data-icon="arrow-r" data-iconpos="right" data-theme="c" data-ajax="false" data-extra_params="comp_id=<%= id %>">
                     <span class="comp-details">
-                        <em>Comp closed!</em>
-                        <span class="s-small-text">Check out the winning shots.</span>
+                        <em><%= T('Comp closed!') %></em>
+                        <span class="s-small-text"><%= T('Check out the winning shots.') %></span>
                     </span>
                 </a>
             <% } %>
 
-            
+
             <ul data-role="listview" data-ajax="false" data-theme="d">
                 <li>
                     <h4>More info:</h4>
                     <p><%= long_description %></p>
                 </li>
             </ul>
-            
+
 
             <ul class="x-image-streams s-image-streams"></ul>
 

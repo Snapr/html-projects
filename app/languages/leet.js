@@ -61,6 +61,17 @@ define([], function(){
         'photo by': 'ph07o by',
 
 
+        //search
+        "Keywords": "K3yw0rd5",
+        "Tags": "74g5",
+        "Locations": "10c47ion5",
+        "Users": "U53rs",
+        "Place Name": "P14c3 Name",
+        "People": "P30p1e",
+        "photos": "ph07o5",
+        "followers": "f01low3r5",
+
+
         //popular
         'Today': '70d4y',
         'Week': 'W3ek',
@@ -164,12 +175,17 @@ define([], function(){
             .replace('o', '0').replace('O', '0')
             .replace('l', '1').replace('L', '1');
     };
+    window.TT = {};
     return function(text){
         if (text in translation){
             return translation[text];
         }else{
-            console.warn("        '"+text+"': '"+leet(text)+"',");
-            return text.toUpperCase();
+            if(!(text in window.TT)){
+                window.TT[text] = leet(text);
+            }
+
+            console.warn(text, "not translated");
+            return text.toUpperCase() + '!';
         }
      };
 });

@@ -1,9 +1,9 @@
 <div class="ff-linking">
     <% switch(provider) { case 'twitter': %>
-        <p class="s-small-text s-light-text">Please connect your account:</p>
-        <a data-role="button" class="link-service s-twitter-button s-logo-button x-link" data-theme="e">Link <span class="s-twitter-logo s-button-logo">Twitter</span></a>
+        <p class="s-small-text s-light-text"><%= T('Please connect your account') %>:</p>
+        <a data-role="button" class="link-service s-twitter-button s-logo-button x-link" data-theme="e"><%= T('Link') %> <span class="s-twitter-logo s-button-logo">Twitter</span></a>
     <% break; case 'facebook': %>
-        <p class="s-small-text s-light-text">Please connect your account:</p>
-        <a data-role="button" class="link-service s-facebook-button s-logo-button x-link" data-theme="e">Link <span class="s-facebook-logo s-button-logo">Facebook</span></a>
+        <p class="s-small-text s-light-text"><%= T('Please connect your account') %>:</p>
+        <a data-role="button" class="link-service s-facebook-button s-logo-button x-link" data-theme="e"><%= T('Link') %> <span class="s-facebook-logo s-button-logo">Facebook</span></a>
     <% break; } %>
 </div>

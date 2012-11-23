@@ -2,9 +2,9 @@
      <img src="<%= config.get('avatar_url') %>/<%= user.get('user_id') %>" alt="<%= user.get('display_username') %>" class="s-avatar ui-li-icon"/>
      <h3 class="username"><%= user.get('display_username') %></h3>
      <p class="s-small-text">
-      <% if (user.has('score')) {%><span class="photo-count"><%= user.get('score') %></span> points, <%}%>
-      <span class="photo-count"><%= user.get('photo_count') %></span> photos,
-      <span class="followers"><%= user.get('followers') %></span> followers
+      <% if (user.has('score')) {%><span class="photo-count"><%= user.get('score') %></span> <%= T('points') %>, <%}%>
+      <span class="photo-count"><%= user.get('photo_count') %></span> <%= T('photos') %>,
+      <span class="followers"><%= user.get('followers') %></span> <%= T('followers') %>
      </p>
  </a>
  <% if (!logged_in) {%>

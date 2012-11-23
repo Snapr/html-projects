@@ -1,4 +1,4 @@
-/*global _  define require */
+/*global _  define require T*/
 define(['backbone', 'views/base/page', 'utils/dialog'], function(Backbone, page_view, dialog){
 return page_view.extend({
 
@@ -32,13 +32,13 @@ return page_view.extend({
         if (keywords.val().length === 0){
             switch(type){
                 case 'location':
-                    keywords.attr( "placeholder", "Place Name…" );
+                    keywords.attr( "placeholder", T("Place Name")+"…" );
                     break;
                 case 'tag':
-                    keywords.attr( "placeholder", "Keywords…" );
+                    keywords.attr( "placeholder", T("Keywords")+"…" );
                     break;
                 case 'user':
-                    keywords.attr( "placeholder", "Username…" );
+                    keywords.attr( "placeholder", T("Username")+"…" );
                     break;
             }
         }

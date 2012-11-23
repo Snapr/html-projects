@@ -4,8 +4,8 @@
     </span>
     <%= provider %>
     <% switch(status) { case 'ready': %>
-        <span class="s-connect-status">Sharing <span class="ui-icon ui-icon-spinner"></span></span>
+        <span class="s-connect-status"><%= T('Sharing') %> <span class="ui-icon ui-icon-spinner"></span></span>
     <% break; case 'shared': %>
-        <span class="s-connect-status">Shared<span class="ui-icon ui-icon-check"></span></span>
+        <span class="s-connect-status"><%= T('Shared') %><span class="ui-icon ui-icon-check"></span></span>
     <% }%>
 </a>

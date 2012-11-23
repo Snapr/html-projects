@@ -1,4 +1,4 @@
-/*global _  define require */
+/*global _  define require T */
 define(
     [
         'backbone',
