@@ -1,6 +1,6 @@
 <div id="login" data-overlay-theme="c" data-role="page" data-theme="c" data-ajax="false" class="s-snapr-bg s-special-bg">
     <div data-role="header" data-theme="c">
-        <h1>Log in</h1>
+        <h1><%= T('Log in') %></h1>
         <a class="x-back" data-role="button" data-icon="delete" data-iconpos="notext"></a>
     </div>
     <div data-role="content" data-theme="d">
@@ -11,28 +11,28 @@
                 <ul data-role="listview" data-inset="true" data-theme="d">
 
                     <li data-role="fieldcontain" class="ui-hide-label">
-                        <label for="username">Username</label>
-                        <input type="text" name="username"  placeholder="Username" autocapitalize="off" autocorrect="off" id="login-dialog-username" class="x-username">
+                        <label for="username"><%= T('Username') %></label>
+                        <input type="text" name="username"  placeholder="<%= T('Username') %>" autocapitalize="off" autocorrect="off" id="login-dialog-username" class="x-username">
                     </li>
                     <li data-role="fieldcontain" class="ui-hide-label">
 
-                        <label for="password">Password</label><input type="password" name="password" placeholder="Password" id="login-dialog-password" class="x-password">
+                        <label for="password"><%= T('Password') %></label><input type="password" name="password" placeholder="<%= T('Password') %>" id="login-dialog-password" class="x-password">
                     </li>
                 </ul>
                 <div class="s-invisible-submit-button">
                 <input type="submit" name="login" data-theme="e" value="Log In with Snapr">
                 </div>
-                <a data-role="button" class="x-snapr-button s-snapr-button s-logo-button" data-theme="e">Login with <span class="s-snapr-logo s-button-logo">Snapr</span></a>
+                <a data-role="button" class="x-snapr-button s-snapr-button s-logo-button" data-theme="e"><%= T('Login with') %> <span class="s-snapr-logo s-button-logo">Snapr</span></a>
             </form>
 
-            <p class="s-vertical-margins"><a href="#/forgot-password/">Forgot Password?</a></p>
+            <p class="s-vertical-margins"><a href="#/forgot-password/"><%= T('Forgot Password?') %></a></p>
 
-            <a data-role="button" class="x-twitter-button s-twitter-button s-logo-button" data-theme="e">Login with <span class="s-twitter-logo s-button-logo">Twitter</span></a>
+            <a data-role="button" class="x-twitter-button s-twitter-button s-logo-button" data-theme="e"><%= T('Login with') %> <span class="s-twitter-logo s-button-logo">Twitter</span></a>
 
-            <a data-role="button" class="x-facebook-button s-facebook-button s-logo-button" data-theme="e">Login with <span class="s-facebook-logo s-button-logo">Facebook</span></a>
+            <a data-role="button" class="x-facebook-button s-facebook-button s-logo-button" data-theme="e"><%= T('Login with') %> <span class="s-facebook-logo s-button-logo">Facebook</span></a>
 
             <p class="s-centered-link">
-                <a href="#/about-snapr/">About Snapr</a> &middot; <a href="#/join/">Join Snapr &rsaquo;</a></li>
+                <a href="#/about-snapr/"><%= T('About') %> Snapr</a> &middot; <a href="#/join/"><%= T('Join') %> Snapr &rsaquo;</a></li>
             </p>
 
         </div>

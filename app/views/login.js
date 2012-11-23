@@ -29,7 +29,7 @@ return page_view.extend({
         var password = this.$(".x-password").val();
 
         if(username === "" || password === ""){
-            alerts.notification('Error', 'You must enter your usename and password');
+            alerts.notification('Error', T('You must enter your usename and password'));
             return;
         }
         $.mobile.showPageLoadingMsg();
@@ -48,9 +48,9 @@ return page_view.extend({
             error: function( error ){
                 console.warn("error", error);
                 if (error && error.error && error.error == "invalid_grant"){
-                    alerts.notification('Error',  "Oops.. Your login or password was incorrect." );
+                    alerts.notification('Error',  T("Oops.. Your login or password was incorrect.") );
                 }else{
-                    alerts.notification('Error',  "Sorry, we had trouble logging in. Please try again." );
+                    alerts.notification('Error',  T("Sorry, we had trouble logging in. Please try again.") );
                 }
                 $.mobile.hidePageLoadingMsg();
             }

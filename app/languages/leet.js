@@ -23,6 +23,17 @@ define([], function(){
         'Popular Images': 'Popular Image5',
         'No images yet': 'No Image5',
 
+
+        //login
+        'You must enter your usename and password':"You must enter your usename and passwor",
+        "Oops.. Your login or password was incorrect.":"ops.. Your login or password was incorr",
+        "Sorry, we had trouble logging in. Please try again.":"orry, we had trouble logging in. Please try again",
+        'Log in': '10g in',
+        'Username': 'U53rn4me',
+        'Password': 'P45sw0rd',
+        'Login with': '10gin wi7h',
+        'Forgot Password?': 'F0rgo7 P45sword?',
+
         // Share
         'Skol Share': '5h4r3',
         'Add text...': '4dd t3Xt',
@@ -79,18 +90,18 @@ define([], function(){
     };
     var leet = function(text){
         return text
-            .replace(/'a'/gi, '4')
-            .replace(/'e'/gi, '3')
-            .replace(/'s'/gi, '5')
-            .replace(/'t'/gi, '7')
-            .replace(/'o'/gi, '0')
-            .replace(/'l'/gi, '1');
+            .replace('a', '4').replace('A', '4')
+            .replace('e', '3').replace('E', '3')
+            .replace('s', '5').replace('S', '5')
+            .replace('t', '7').replace('T', '7')
+            .replace('o', '0').replace('O', '0')
+            .replace('l', '1').replace('L', '1');
     };
     return function(text){
         if (text in translation){
             return translation[text];
         }else{
-            console.warn("'"+text+"': '"+leet(text)+"',");
+            console.warn("        '"+text+"': '"+leet(text)+"',");
             return text.toUpperCase();
         }
      };
