@@ -61,6 +61,14 @@ define([], function(){
         'photo by': 'ph07o by',
 
 
+        //popular
+        'Today': '70d4y',
+        'Week': 'W3ek',
+
+        //feed
+        'More': 'M0r3',
+
+
         //dahs
         'Dash': 'D45h',
         'Add your favorite people, or a search for something you want to keep track of.': '4dd y0ur f4vori73 peop1e, or a 5earch for something you want to keep track of.',
