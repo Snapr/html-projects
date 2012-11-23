@@ -3,6 +3,7 @@ define([], function(){
     // 1337
     var translation = {
         // home
+        'Menu': 'M3nu',
         'Camera Roll': 'C4m3ra R01l',
         'Dashboard': 'D45hb0ard',
         'My Snaps': 'My 5n4p5',
@@ -22,6 +23,9 @@ define([], function(){
         'Nearby Images': 'N34rby Image5',
         'Popular Images': 'Popular Image5',
         'No images yet': 'No Image5',
+        'Discover': 'Di5c0v3r',
+        'Me': 'M3',
+        'Login': '10gin',
 
 
         //login
@@ -40,6 +44,18 @@ define([], function(){
         'For the best experience please download one of our apps': 'F0r 7h3 be5t experience p1e4se download one of our apps',
         'Does your phone allow browser based uploads?': 'D035 your phone 41low browser based uploads?',
         'Upload via Mobile Web': 'Up104d via Mobil3 Web',
+
+
+        //dahs
+        'Dash': 'D45h',
+        'Add your favorite people, or a search for something you want to keep track of.': '4dd y0ur f4vori73 peop1e, or a 5earch for something you want to keep track of.',
+        'Add a Person': '4dd 4 P3r50n',
+        'Add a Search': '4dd 4 53arch',
+        'Keyword': 'K3yw0rd',
+        'Anywhere': '4nywh3re',
+        'Nearby': 'N34rby',
+        'Search': '534rch',
+
 
         // Share
         'Skol Share': '5h4r3',
