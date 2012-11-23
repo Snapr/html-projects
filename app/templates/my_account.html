@@ -1,10 +1,10 @@
 <div id="my-account"  data-tab-bar="true" data-title="My Account" data-role="page" data-short-title="My Account" data-theme="d">
     <div data-role="header" data-theme="b" data-ajax="false">
-      
-            <a data-role="button" data-rel="back">Home</a>
-       
 
-        <h1>My Account</h1>
+            <a data-role="button" data-rel="back"><%= T('Home') %></a>
+
+
+        <h1><%= T('My Account') %></h1>
 
         <div class="ui-btn-right" data-ajax="false">
             <a href="#/search/" data-snapr-dialog="true" data-role="button" data-icon="search" data-iconpos="notext"></a>
@@ -25,17 +25,17 @@
                         <% } %>
                         <%= display_username %>
                     </a>
-                    <a href="#/logout/" class="s-logout-button" data-role="button" data-icon="delete" data-iconpos="right">Logout</a>
+                    <a href="#/logout/" class="s-logout-button" data-role="button" data-icon="delete" data-iconpos="right"><%= T('Logout') %></a>
                 </div>
             </div>
 
             <div class="s-myaccount-quicklinks">
                 <a class="ui-bar top-no-arrow" data-role="button" data-theme="e" >
-                    <strong>Quick Links</strong>
+                    <strong><%= T('Quick Links') %></strong>
                 </a>
                 <ul data-role="listview">
                     <li>
-                        <a class="x-back-here" href="#/find-friends/">Find Friends</a>
+                        <a class="x-back-here" href="#/find-friends/"><%= T('Find Friends') %></a>
                     </li>
                 </ul>
             </div>
@@ -43,13 +43,13 @@
 
             <div class="myaccount-settings">
                 <a class="ui-bar top-no-arrow" data-role="button" data-theme="e" >
-                    <strong>Settings</strong>
+                    <strong><%= T('Settings') %></strong>
                 </a>
                 <% if(!initial){ %>
                     <div data-role="collapsible-set" data-theme="c" data-content-theme="d">
 
                         <div data-role="collapsible" data-collapsed="true" class="x-profile my-account-profile">
-                            <h3>Profile</h3>
+                            <h3><%= T('Profile') %></h3>
 
                             <fieldset data-role="controlgroup" class="x-avatar my-account-avatar">
                                <div class="s-avatar-select-block">
@@ -69,30 +69,30 @@
                                         <% if (settings.profile.avatar_type == 'gravatar'){ %> checked="true" <% } %> />
                                         <label for="my-account-avatar-gravatar">Gravatar</label><br>
 
-                                        <a class="x-set-up-gravitar my-account-set-up-gravatar" href="http://en.gravatar.com/">&rarr; Set up Gravatar</a>
+                                        <a class="x-set-up-gravitar my-account-set-up-gravatar" href="http://en.gravatar.com/">&rarr; <%= T('Set up') %> Gravatar</a>
                                </div>
                             </fieldset>
 
                             <fieldset data-role="controlgroup">
-                                <label for="my-account-name">Your Name</label>
+                                <label for="my-account-name"><%= T('Your Name') %></label>
                                 <input type="text" name="my-account-name" id="my-account-name" class="x-name custom" autocorrect="off"
                                 value="<%= settings.profile.name %>" />
                             </fieldset>
 
                             <fieldset data-role="controlgroup">
-                                <label for="my-account-location">Location</label>
+                                <label for="my-account-location"><%= T('Location') %></label>
                                 <input type="text" name="my-account-location" id="my-account-location" class="x-location custom" autocorrect="off"
                                 value="<%= settings.profile.location || "" %>" />
                             </fieldset>
 
                             <fieldset data-role="controlgroup">
-                                <label for="my-account-website">Website</label>
+                                <label for="my-account-website"><%= T('Website') %></label>
                                 <input type="text" name="my-account-website" id="my-account-website" class="x-website custom" autocapitalize="off" autocorrect="off"
                                 value="<%= settings.profile.website || "" %>" />
                             </fieldset>
 
                             <fieldset data-role="controlgroup">
-                                <label for="my-account-bio">Bio</label>
+                                <label for="my-account-bio"><%= T('Bio') %></label>
                                 <textarea name="my-account-bio" id="my-account-bio" class="x-bio custom"><%= settings.profile.bio || "" %></textarea>
                             </fieldset>
 
@@ -104,45 +104,45 @@
                         </div>
 
                         <div data-role="collapsible" data-collapsed="true" class="x-notifications my-account-notifications">
-                            <h3>Notifications</h3>
+                            <h3><%= T('Notifications') %></h3>
                             <fieldset data-role="controlgroup ui-body-c">
                                 <div data-role="fieldcontain" class="s-switch-setting">
-                                    <span class="s-setting-label">Follows</span>
+                                    <span class="s-setting-label"><%= T('Follows') %></span>
                                     <select  name="notify_when_added_to_group" id="my-account-notify-follow" data-role="slider" data-mini="true">
-                                        <option value="false">Off</option>
-                                        <option value="true" <% if (settings.profile.notify_when_added_to_group){%>selected<%}%>>On</option>
+                                        <option value="false"><%= T('Off') %></option>
+                                        <option value="true" <% if (settings.profile.notify_when_added_to_group){%>selected<%}%>><%= T('On') %></option>
                                     </select>
                                 </div>
 
                                 <div data-role="fieldcontain" class="s-switch-setting">
-                                    <span class="s-setting-label">Likes</span>
+                                    <span class="s-setting-label"><%= T('Likes') %></span>
                                     <select name="notify_when_image_favorited" id="my-account-notify-favorite" data-role="slider" data-mini="true">
-                                        <option value="false">Off</option>
-                                        <option value="true" <% if (settings.profile.notify_when_image_favorited){%>selected<%}%>>On</option>
+                                        <option value="false"><%= T('Off') %></option>
+                                        <option value="true" <% if (settings.profile.notify_when_image_favorited){%>selected<%}%>><%= T('On') %></option>
                                     </select>
                                 </div>
 
                                 <div data-role="fieldcontain" class="s-switch-setting">
-                                    <span class="s-setting-label">Comments</span>
+                                    <span class="s-setting-label"><%= T('Comments') %></span>
                                     <select name="notify_when_comment_added" id="my-account-notify-comment" data-role="slider" data-mini="true">
-                                        <option value="false">Off</option>
-                                        <option value="true" <% if (settings.profile.notify_when_comment_added){%>selected<%}%>>On</option>
+                                        <option value="false"><%= T('Off') %></option>
+                                        <option value="true" <% if (settings.profile.notify_when_comment_added){%>selected<%}%>><%= T('On') %></option>
                                     </select>
                                 </div>
 
                                 <div data-role="fieldcontain" class="s-switch-setting">
-                                    <span class="s-setting-label">Comments on Comments</span>
+                                    <span class="s-setting-label"><%= T('Comments on Comments') %></span>
                                     <select name="notify_after_comment" id="my-account-notify-comment-after" data-role="slider" data-mini="true">
-                                        <option value="false">Off</option>
-                                        <option value="true" <% if (settings.profile.notify_after_comment){%>selected<%}%>>On</option>
+                                        <option value="false"><%= T('Off') %></option>
+                                        <option value="true" <% if (settings.profile.notify_after_comment){%>selected<%}%>><%= T('On') %></option>
                                     </select>
                                 </div>
 
                                 <div data-role="fieldcontain" class="s-switch-setting">
-                                    <span class="s-setting-label">News Updates</span>
+                                    <span class="s-setting-label"><%= T('News Updates') %></span>
                                     <select  name="subscribe_to_email_newsletter" id="my-account-notify-snapr" data-role="slider" data-mini="true">
-                                        <option value="false">Off</option>
-                                        <option value="true" <% if (settings.profile.subscribe_to_email_newsletter){%>selected<%}%>>On</option>
+                                        <option value="false"><%= T('Off') %></option>
+                                        <option value="true" <% if (settings.profile.subscribe_to_email_newsletter){%>selected<%}%>><%= T('On') %></option>
                                     </select>
                                 </div>
 
@@ -151,19 +151,19 @@
                         </div>
 
                         <div data-role="collapsible" data-collapsed="true" class="x-account my-account-account">
-                            <h3>Account</h3>
+                            <h3><%= T('Account') %></h3>
                             <fieldset data-role="controlgroup">
-                                <label for="my-account-email">Email</label>
+                                <label for="my-account-email"><%= T('Email') %></label>
                                 <input type="text" name="my-account-email" id="my-account-email" class="x-email custom"
                                 value="<%= settings.email %>" />
                             </fieldset>
                             <fieldset data-role="controlgroup">
-                                <label for="my-account-password">New Password</label>
+                                <label for="my-account-password"><%= T('New Password') %></label>
                                 <input type="password" name="my-account-password" id="my-account-password" class="x-password custom"
                                 value="" />
                             </fieldset>
                             <fieldset data-role="controlgroup">
-                                <label for="my-account-password-verify">Verify</label>
+                                <label for="my-account-password-verify"><%= T('Verify') %></label>
                                 <input type="password" name="my-account-password-verify" id="my-account-password-verify" class="x-password-varify custom"
                                 value="" />
                             </fieldset>
@@ -171,7 +171,7 @@
                                 <div class="ui-block-a"></div>
                                 <div class="ui-block-b"></div>
                                 <div class="ui-block-c">
-                                    <button data-theme="h" class="save x-save">Save</button>
+                                    <button data-theme="h" class="save x-save"><%= T('Save') %></button>
                                 </div>
                             </div>
                         </div>
@@ -181,26 +181,26 @@
                             <h3>Camera+</h3>
                             <fieldset data-role="controlgroup ui-body-c">
                                 <div data-role="fieldcontain" class="s-switch-setting">
-                                    <span class="s-setting-label">Use Camera</span>
+                                    <span class="s-setting-label"><%= T('Use Camera') %></span>
                                     <select  name="camplus_camera" id="camplus-use-camera" data-role="slider" data-mini="true">
-                                        <option value="false">Off</option>
-                                        <option value="true" <% if (camplus.camplus_camera){%>selected<%}%>>On</option>
+                                        <option value="false"><%= T('Off') %></option>
+                                        <option value="true" <% if (camplus.camplus_camera){%>selected<%}%>><%= T('On') %></option>
                                     </select>
                                 </div>
 
                                 <div data-role="fieldcontain" class="s-switch-setting">
-                                    <span class="s-setting-label">Edit With Camera+</span>
+                                    <span class="s-setting-label"><%= T('Edit With') %> Camera+</span>
                                     <select name="camplus_edit" id="camplus-edit" data-role="slider" data-mini="true">
-                                        <option value="false">Off</option>
-                                        <option value="true" <% if (camplus.camplus_edit){%>selected<%}%>>On</option>
+                                        <option value="false"><%= T('Off') %></option>
+                                        <option value="true" <% if (camplus.camplus_edit){%>selected<%}%>><%= T('On') %></option>
                                     </select>
                                 </div>
 
                                 <div data-role="fieldcontain" class="s-switch-setting">
-                                    <span class="s-setting-label">Use Lightbox</span>
+                                    <span class="s-setting-label"><%= T('Use Lightbox') %></span>
                                     <select name="camplus_lightbox" id="camplus-lightbox" data-role="slider" data-mini="true">
-                                        <option value="false">Off</option>
-                                        <option value="true" <% if (camplus.camplus_lightbox){%>selected<%}%>>On</option>
+                                        <option value="false"><%= T('Off') %></option>
+                                        <option value="true" <% if (camplus.camplus_lightbox){%>selected<%}%>><%= T('On') %></option>
                                     </select>
                                 </div>
 
@@ -218,7 +218,7 @@
                     </div><!-- End of Nested Collapsible Set -->
 
                     <a class="ui-bar top-no-arrow connect-heading x-connect-heading" data-role="button" data-theme="e" >
-                        <strong>Connect</strong>
+                        <strong><%= T('Connect') %></strong>
                     </a>
 
                     <ul class="x-add-services s-add-services" data-role="listview">
@@ -226,7 +226,7 @@
                     </ul>
 
                     <a class="ui-bar top-no-arrow linked-heading x-linked-heading" data-role="button" data-theme="e" >
-                        <strong>Linked Services</strong>
+                        <strong><%= T('Linked Services') %></strong>
                     </a>
                     <div class="s-linked-services x-linked-services" data-role="collapsible-set" data-theme="c" data-content-theme="d">
                         <!-- dynamic -->
@@ -237,14 +237,14 @@
 
              <div class="myaccount-info">
                     <a class="ui-bar top-no-arrow" data-role="button" data-theme="e" >
-                        <strong>Info</strong>
+                        <strong><%= T('Info') %></strong>
                     </a>
                     <ul data-role="listview">
                         <li>
-                            <a class="x-back-here" href="#/about/">About Us</a>
+                            <a class="x-back-here" href="#/about/"><%= T('About Us') %></a>
                         </li>
                          <li>
-                                <a class="x-back-here" href="#/about-snapr/">About Snapr</a>
+                                <a class="x-back-here" href="#/about-snapr/"><%= T('About Snapr') %></a>
                         </li>
                     </ul>
                 </div>
