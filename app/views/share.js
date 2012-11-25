@@ -534,8 +534,8 @@ return page_view.extend({
                                 params.foursquare_venue = this.model.get( "location" ).foursquare_venue_id;
                                 params.venue_name = this.model.get( "location" ).foursquare_venue_name;
                             }
-                        params[o.name] = (o.value == "on");
                         }
+                        params[o.name] = (o.value == "on");
                     }else if(o.name == "status" && o.value == "on"){
                         params.status = "public";
                     }else{
