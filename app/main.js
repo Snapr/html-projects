@@ -293,20 +293,19 @@ require(['config', 'jquery', 'backbone', 'photoswipe', 'auth', 'utils/local_stor
         // camera button
         function launch_camera(event, extra_params){
             console.log('launch_camera', event, extra_params);
-            extra_params = extra_params || $(this).data('extra_params');
+            extra_params = extra_params || $(this).data('extra_params') || "";
+            extra_params = 'back_url=' + escape(window.location.hash) + '&' + extra_params;
 
             var appmode = local_storage.get( "appmode" );
             var camplus = local_storage.get( "camplus" );
             var camplus_camera = local_storage.get( "camplus_camera" );
-
-            console.log("appmode", appmode);
 
             if (appmode){
                 if (camplus && camplus_camera){
                     native_bridge.pass_data( "snapr://camplus/camera?" + extra_params );
                 }else{
                     console.log("native_bridge.pass_data camera");
-                    
+
                     /**
                    *   This is to work around an issue where calling via action sheet causes
                    *   the camera url not to be picked up on android
@@ -328,7 +327,8 @@ require(['config', 'jquery', 'backbone', 'photoswipe', 'auth', 'utils/local_stor
         // photo library button
         function photo_library(event, extra_params){
             console.log('photo_library', event, extra_params);
-            extra_params = extra_params || $(this).data('extra_params');
+            extra_params = extra_params || $(this).data('extra_params') || "";
+            extra_params = 'back_url=' + escape(window.location.hash) + '&' + extra_params;
 
             var appmode = local_storage.get( "appmode" );
             var camplus = local_storage.get( "camplus" );
@@ -338,7 +338,7 @@ require(['config', 'jquery', 'backbone', 'photoswipe', 'auth', 'utils/local_stor
                 if (camplus && camplus_lightbox){
                     native_bridge.pass_data( "snapr://camplus/lightbox?" + extra_params );
                 }else{
-                    
+
                     /**
                    *   This is to work around an issue where calling via action sheet causes
                    *   the photo-library url not to be picked up on android
