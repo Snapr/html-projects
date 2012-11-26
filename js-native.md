@@ -201,7 +201,15 @@ Example:
 <a id="9"></a>
 ## 9. Share
 
-Once the user has selected a photo redirect to `#/share/` with and params the camera / photo library was launched with
+Once the user has selected or taken a photo redirect to `#/share/`.
+
+You must include either a `photo_path` for the local image file, or a `photo_id` for an image that has already been uploaded to Snapr (owned by the current logged in user).
+
+For new / existing images you should include the `latitude` and `longitude` of the location where the image was **originally taken** (if available) so this can be used for client side reverse geocoding, and Foursquare venue search.
+
+You should also pass any extra params that were sent when the camera / photo library was initially called by the HTML. 
+
+Here is a list of the currently accepted params:
 
 * **comp_id**: When the photo is for a competition this may be passed with `snapr://camera` etc
 * **latitude**: Used to perform reverse geolocation and look up Foursquare Venues
