@@ -741,6 +741,9 @@ a:active {
 .s-dash-wrapper .s-tumblr-streams .x-post-stream {
   margin-bottom: 8px;
 }
+.s-dash-wrapper .s-helper-content {
+  margin-bottom: 8px;
+}
 .s-dash-edit-done {
   display: none;
 }
