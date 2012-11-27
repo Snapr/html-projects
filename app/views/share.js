@@ -46,13 +46,14 @@ return page_view.extend({
         "click .x-edit-photo": "edit",
         "click .x-camplus-edit-photo": "edit_camplus",
         "submit form": "share",
-        "keypress .x-description": 'log',
+        "keypress .x-description": 'log_key',
         "blur .x-description": 'log',
         "focus .x-description": 'log',
         "click .x-description": 'log'
     },
 
-    log: function(e){console.log(e.type);},
+    log: function(e){console.log(e.type,this.$('.x-description').val() );},
+    log_key: function(e){console.log(e.type, e.keyCode, this.$('.x-description').val());},
 
     render: function(callback){
         var img_url;
