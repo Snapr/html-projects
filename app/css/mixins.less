@@ -484,3 +484,17 @@
     mask-image: @image;
 }
 
+
+.diagonal-stripes(@color:rgba(255, 255, 255, .15), @size:20px){
+	    
+    .background-size(@size @size);
+    	
+    background-image: -webkit-gradient(linear, left top, right bottom, color-stop(.25, @color), color-stop(.25, transparent), color-stop(.5, transparent), color-stop(.5, @color), color-stop(.75, @color), color-stop(.75, transparent), to(transparent));  
+    background-image: -webkit-linear-gradient(135deg, @color 25%, transparent 25%, transparent 50%, @color 50%, @color 75%, transparent 75%, transparent);    
+    background-image: -moz-linear-gradient(135deg, @color 25%, transparent 25%, transparent 50%, @color 50%, @color 75%, transparent 75%, transparent);
+    background-image: -ms-linear-gradient(135deg, @color 25%, transparent 25%, transparent 50%, @color 50%, @color 75%, transparent 75%, transparent);
+    background-image: -o-linear-gradient(135deg, @color 25%, transparent 25%, transparent 50%, @color 50%, @color 75%, transparent 75%, transparent);   
+    background-image: linear-gradient(135deg, @color 25%, transparent 25%, transparent 50%, @color 50%, @color 75%, transparent 75%, transparent);
+}
+
+

@@ -27,10 +27,10 @@
 }
 @-webkit-keyframes loading {
   from {
-    -webkit-transform: rotate(0deg) translatez(0);
+    -webkit-transform: rotate(0deg) translateZ(0);
   }
   to {
-    -webkit-transform: rotate(360deg) translatez(0);
+    -webkit-transform: rotate(360deg) translateZ(0);
   }
 }
 /* keep the corners 45 degrees otherwise they look crap
@@ -38,10 +38,10 @@
 */
 @-webkit-keyframes loading {
   from {
-    -webkit-transform: rotate(0deg) translatez(0);
+    -webkit-transform: rotate(0deg) translateZ(0);
   }
   to {
-    -webkit-transform: rotate(360deg) translatez(0);
+    -webkit-transform: rotate(360deg) translateZ(0);
   }
 }
 .ui-icon,
@@ -1203,18 +1203,12 @@
   -moz-box-shadow: inset 0 3px 20px #309dc2;
   -webkit-box-shadow: inset 0 3px 20px #309dc2;
   box-shadow: inset 0 3px 20px #309dc2;
-  -moz-box-shadow: inset 0 3px 20px #309dc2;
-  -webkit-box-shadow: inset 0 3px 20px #309dc2;
-  box-shadow: inset 0 3px 20px #309dc2;
 }
 .s-share-icon-small.s-twitter-sharing .ui-icon {
   background-position: 0 0px !important;
 }
 .s-share-icon-small.s-facebook-sharing {
   background-color: #507ab8;
-  -moz-box-shadow: inset 0 3px 20px #2e5998;
-  -webkit-box-shadow: inset 0 3px 20px #2e5998;
-  box-shadow: inset 0 3px 20px #2e5998;
   -moz-box-shadow: inset 0 3px 20px #2e5998;
   -webkit-box-shadow: inset 0 3px 20px #2e5998;
   box-shadow: inset 0 3px 20px #2e5998;
@@ -1227,18 +1221,12 @@
   -moz-box-shadow: inset 0 3px 20px #2c3c54;
   -webkit-box-shadow: inset 0 3px 20px #2c3c54;
   box-shadow: inset 0 3px 20px #2c3c54;
-  -moz-box-shadow: inset 0 3px 20px #2c3c54;
-  -webkit-box-shadow: inset 0 3px 20px #2c3c54;
-  box-shadow: inset 0 3px 20px #2c3c54;
 }
 .s-share-icon-small.s-tumblr-sharing .ui-icon {
   background-position: 0 -42px !important;
 }
 .s-share-icon-small.s-foursquare-sharing {
   background-color: #34a0ce;
-  -moz-box-shadow: inset 0 3px 20px #29708e;
-  -webkit-box-shadow: inset 0 3px 20px #29708e;
-  box-shadow: inset 0 3px 20px #29708e;
   -moz-box-shadow: inset 0 3px 20px #29708e;
   -webkit-box-shadow: inset 0 3px 20px #29708e;
   box-shadow: inset 0 3px 20px #29708e;
@@ -1536,9 +1524,6 @@ a.ui-link-inherit {
   border-radius: 6px;
 }
 .ui-corner-none {
-  -webkit-border-radius: 0;
-  -moz-border-radius: 0;
-  border-radius: 0;
   -moz-border-radius: 0;
   -webkit-border-radius: 0;
   border-radius: 0;
@@ -1641,7 +1626,6 @@ a.ui-link-inherit {
 .ui-btn-corner-left,
 .ui-btn-corner-all {
   -webkit-background-clip: padding;
-  -moz-background-clip: padding;
   background-clip: padding;
   -webkit-background-clip: padding-box;
   -moz-background-clip: padding;
@@ -1659,14 +1643,8 @@ a.ui-link-inherit {
   -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
   -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
-  -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
-  -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
 }
 .ui-shadow-inset {
-  -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.2);
-  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.2);
-  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.2);
   -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.2);
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.2);
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.2);
@@ -1675,9 +1653,6 @@ a.ui-link-inherit {
   outline: 0;
 }
 .ui-mobile-nosupport-boxshadow * {
-  -moz-box-shadow: none !important;
-  -webkit-box-shadow: none !important;
-  box-shadow: none !important;
   -moz-box-shadow: none !important;
   -webkit-box-shadow: none !important;
   box-shadow: none !important;
@@ -1691,14 +1666,8 @@ a.ui-link-inherit {
   -moz-box-shadow: none;
   -webkit-box-shadow: none;
   box-shadow: none;
-  -moz-box-shadow: none;
-  -webkit-box-shadow: none;
-  box-shadow: none;
 }
 *[data-shadow="false"] .ui-shadow {
-  -moz-box-shadow: none;
-  -webkit-box-shadow: none;
-  box-shadow: none;
   -moz-box-shadow: none;
   -webkit-box-shadow: none;
   box-shadow: none;
@@ -1793,9 +1762,7 @@ a.ui-link-inherit {
   font-weight: normal;
   text-transform: none;
   -webkit-font-smoothing: antialiased;
-  text-decoration: none;
   text-transform: lowercase;
-  font-size: 15px;
   border: solid 1px rgba(255, 255, 255, 0.1);
   background: none;
   background-color: #000000;
@@ -1806,17 +1773,11 @@ a.ui-link-inherit {
   -moz-box-shadow: inset 0 3px 20px #000000;
   -webkit-box-shadow: inset 0 3px 20px #000000;
   box-shadow: inset 0 3px 20px #000000;
-  -moz-box-shadow: inset 0 3px 20px #000000;
-  -webkit-box-shadow: inset 0 3px 20px #000000;
-  box-shadow: inset 0 3px 20px #000000;
 }
 .ui-btn-up-a.ui-shadow,
 .ui-btn-hover-a.ui-shadow,
 .ui-btn-down-a.ui-shadow,
 .ui-btn-active-a.ui-shadow {
-  -moz-box-shadow: inset 0 3px 20px #000000;
-  -webkit-box-shadow: inset 0 3px 20px #000000;
-  box-shadow: inset 0 3px 20px #000000;
   -moz-box-shadow: inset 0 3px 20px #000000;
   -webkit-box-shadow: inset 0 3px 20px #000000;
   box-shadow: inset 0 3px 20px #000000;
@@ -1883,9 +1844,6 @@ a.ui-link-inherit {
   -moz-box-shadow: inset 0 3px 20px rgba(0, 0, 0, 0.5);
   -webkit-box-shadow: inset 0 3px 20px rgba(0, 0, 0, 0.5);
   box-shadow: inset 0 3px 20px rgba(0, 0, 0, 0.5);
-  -moz-box-shadow: inset 0 3px 20px rgba(0, 0, 0, 0.5);
-  -webkit-box-shadow: inset 0 3px 20px rgba(0, 0, 0, 0.5);
-  box-shadow: inset 0 3px 20px rgba(0, 0, 0, 0.5);
 }
 .s-trans-bg .ui-btn-up-a .ui-btn-inner,
 .s-trans-bg .ui-input-search .ui-btn-inner,
@@ -1907,9 +1865,6 @@ a.ui-link-inherit {
   -moz-box-shadow: inset 0 3px 20px rgba(0, 0, 0, 0.5);
   -webkit-box-shadow: inset 0 3px 20px rgba(0, 0, 0, 0.5);
   box-shadow: inset 0 3px 20px rgba(0, 0, 0, 0.5);
-  -moz-box-shadow: inset 0 3px 20px rgba(0, 0, 0, 0.5);
-  -webkit-box-shadow: inset 0 3px 20px rgba(0, 0, 0, 0.5);
-  box-shadow: inset 0 3px 20px rgba(0, 0, 0, 0.5);
 }
 .s-trans-bg .ui-btn-hover-a .ui-btn-inner,
 .s-trans-bg .ui-btn-down-a .ui-btn-inner,
@@ -1921,9 +1876,6 @@ a.ui-link-inherit {
 .ui-bar-a[data-role="header"] .ui-btn-down-a {
   background: none!important;
   border: none!important;
-  -moz-box-shadow: none !important;
-  -webkit-box-shadow: none !important;
-  box-shadow: none !important;
   -moz-box-shadow: none !important;
   -webkit-box-shadow: none !important;
   box-shadow: none !important;
@@ -2032,9 +1984,6 @@ a.ui-link-inherit {
 .ui-btn-down-b[data-rel="back"]::before.ui-shadow,
 .ui-btn-active-b.ui-shadow,
 .ui-btn-active-b[data-rel="back"]::before.ui-shadow {
-  -moz-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2);
-  -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2);
-  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2);
   -moz-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2);
   -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2);
   box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2);
@@ -2280,10 +2229,10 @@ div[data-role="header"].ui-bar-b a[data-rel="back"]::before {
   -o-background-size: 24px 24px;
   background-size: 24px 24px;
   background-position: -1px -0.5px;
-  -moz-transform: rotatez(-45deg) skewy(-10deg) skewx(-10deg);
-  -o-transform: rotatez(-45deg) skewy(-10deg) skewx(-10deg);
-  -webkit-transform: rotatez(-45deg) skewy(-10deg) skewx(-10deg);
-  transform: rotatez(-45deg) skewy(-10deg) skewx(-10deg);
+  -moz-transform: rotateZ(-45deg) skewY(-10deg) skewX(-10deg);
+  -o-transform: rotateZ(-45deg) skewY(-10deg) skewX(-10deg);
+  -webkit-transform: rotateZ(-45deg) skewY(-10deg) skewX(-10deg);
+  transform: rotateZ(-45deg) skewY(-10deg) skewX(-10deg);
   border-right: none;
   border-bottom: none;
   box-shadow: none;
@@ -2366,9 +2315,6 @@ div[data-role="header"].ui-bar-b a[data-rel="back"]::before {
   -moz-box-shadow: none;
   -webkit-box-shadow: none;
   box-shadow: none;
-  -moz-box-shadow: none;
-  -webkit-box-shadow: none;
-  box-shadow: none;
 }
 .ui-bar-c {
   background: #ffffff;
@@ -2400,7 +2346,6 @@ div[data-role="header"].ui-bar-b a[data-rel="back"]::before {
   font-weight: normal;
   text-transform: none;
   -webkit-font-smoothing: antialiased;
-  text-decoration: none;
   text-transform: lowercase;
   font-size: 15px;
   color: #474747;
@@ -2418,9 +2363,6 @@ div[data-role="header"].ui-bar-b a[data-rel="back"]::before {
 .ui-btn-up-c.ui-shadow,
 .ui-btn-hover-c.ui-shadow,
 .ui-btn-down-c.ui-shadow {
-  -moz-box-shadow: 0 1px 4px rgba(51, 51, 51, 0.3);
-  -webkit-box-shadow: 0 1px 4px rgba(51, 51, 51, 0.3);
-  box-shadow: 0 1px 4px rgba(51, 51, 51, 0.3);
   -moz-box-shadow: 0 1px 4px rgba(51, 51, 51, 0.3);
   -webkit-box-shadow: 0 1px 4px rgba(51, 51, 51, 0.3);
   box-shadow: 0 1px 4px rgba(51, 51, 51, 0.3);
@@ -2512,17 +2454,11 @@ div[data-role="header"].ui-bar-b a[data-rel="back"]::before {
   -moz-box-shadow: inset 0 1px 4px rgba(200, 200, 200, 0.3);
   -webkit-box-shadow: inset 0 1px 4px rgba(200, 200, 200, 0.3);
   box-shadow: inset 0 1px 4px rgba(200, 200, 200, 0.3);
-  -moz-box-shadow: inset 0 1px 4px rgba(200, 200, 200, 0.3);
-  -webkit-box-shadow: inset 0 1px 4px rgba(200, 200, 200, 0.3);
-  box-shadow: inset 0 1px 4px rgba(200, 200, 200, 0.3);
   -webkit-border-radius: 20px;
   -moz-border-radius: 20px;
   border-radius: 20px;
 }
 .s-trans-bg .ui-btn-up-c.ui-shadow {
-  -moz-box-shadow: inset 0 1px 4px rgba(200, 200, 200, 0.3);
-  -webkit-box-shadow: inset 0 1px 4px rgba(200, 200, 200, 0.3);
-  box-shadow: inset 0 1px 4px rgba(200, 200, 200, 0.3);
   -moz-box-shadow: inset 0 1px 4px rgba(200, 200, 200, 0.3);
   -webkit-box-shadow: inset 0 1px 4px rgba(200, 200, 200, 0.3);
   box-shadow: inset 0 1px 4px rgba(200, 200, 200, 0.3);
@@ -2543,9 +2479,6 @@ div[data-role="header"].ui-bar-b a[data-rel="back"]::before {
   -moz-box-shadow: inset 0 1px 4px rgba(200, 200, 200, 0.3);
   -webkit-box-shadow: inset 0 1px 4px rgba(200, 200, 200, 0.3);
   box-shadow: inset 0 1px 4px rgba(200, 200, 200, 0.3);
-  -moz-box-shadow: inset 0 1px 4px rgba(200, 200, 200, 0.3);
-  -webkit-box-shadow: inset 0 1px 4px rgba(200, 200, 200, 0.3);
-  box-shadow: inset 0 1px 4px rgba(200, 200, 200, 0.3);
   -webkit-border-radius: 20px;
   -moz-border-radius: 20px;
   border-radius: 20px;
@@ -2553,9 +2486,6 @@ div[data-role="header"].ui-bar-b a[data-rel="back"]::before {
 .s-trans-bg .ui-btn-hover-c.ui-shadow,
 .s-trans-bg .ui-btn-down-c.ui-shadow,
 .s-trans-bg .ui-btn-active-c.ui-shadow {
-  -moz-box-shadow: inset 0 1px 4px rgba(200, 200, 200, 0.3);
-  -webkit-box-shadow: inset 0 1px 4px rgba(200, 200, 200, 0.3);
-  box-shadow: inset 0 1px 4px rgba(200, 200, 200, 0.3);
   -moz-box-shadow: inset 0 1px 4px rgba(200, 200, 200, 0.3);
   -webkit-box-shadow: inset 0 1px 4px rgba(200, 200, 200, 0.3);
   box-shadow: inset 0 1px 4px rgba(200, 200, 200, 0.3);
@@ -2567,17 +2497,11 @@ div[data-role="header"].ui-bar-b a[data-rel="back"]::before {
 }
 .ui-body-c > .ui-listview {
   background: none;
-  -webkit-border-radius: 0;
-  -moz-border-radius: 0;
-  border-radius: 0;
   -moz-border-radius: 0;
   -webkit-border-radius: 0;
   border-radius: 0;
 }
 .ui-body-c > .ui-listview.ui-shadow {
-  -moz-box-shadow: none;
-  -webkit-box-shadow: none;
-  box-shadow: none;
   -moz-box-shadow: none;
   -webkit-box-shadow: none;
   box-shadow: none;
@@ -2704,9 +2628,6 @@ div[data-role="header"].ui-bar-b a[data-rel="back"]::before {
   -moz-box-shadow: none !important;
   -webkit-box-shadow: none !important;
   box-shadow: none !important;
-  -moz-box-shadow: none !important;
-  -webkit-box-shadow: none !important;
-  box-shadow: none !important;
 }
 .ui-body-d[data-role="page"] {
   background: #000000;
@@ -2793,7 +2714,6 @@ div[data-role="header"].ui-bar-b a[data-rel="back"]::before {
   font-weight: normal;
   text-transform: none;
   -webkit-font-smoothing: antialiased;
-  text-decoration: none;
   text-transform: lowercase;
   font-size: 15px;
   color: #474747;
@@ -2928,7 +2848,6 @@ div[data-role="header"].ui-bar-b a[data-rel="back"]::before {
   font-weight: normal;
   text-transform: none;
   -webkit-font-smoothing: antialiased;
-  text-decoration: none;
   text-transform: lowercase;
   font-size: 15px;
   color: #ffffff;
@@ -2946,9 +2865,6 @@ div[data-role="header"].ui-bar-b a[data-rel="back"]::before {
 .ui-btn-up-f.ui-shadow,
 .ui-btn-hover-f.ui-shadow,
 .ui-btn-down-f.ui-shadow {
-  -moz-box-shadow: 0 1px 4px rgba(51, 51, 51, 0.3);
-  -webkit-box-shadow: 0 1px 4px rgba(51, 51, 51, 0.3);
-  box-shadow: 0 1px 4px rgba(51, 51, 51, 0.3);
   -moz-box-shadow: 0 1px 4px rgba(51, 51, 51, 0.3);
   -webkit-box-shadow: 0 1px 4px rgba(51, 51, 51, 0.3);
   box-shadow: 0 1px 4px rgba(51, 51, 51, 0.3);
@@ -3065,7 +2981,6 @@ div[data-role="header"].ui-bar-b a[data-rel="back"]::before {
   font-weight: normal;
   text-transform: none;
   -webkit-font-smoothing: antialiased;
-  text-decoration: none;
   text-transform: lowercase;
   font-size: 15px;
   color: #474747;
@@ -3083,9 +2998,6 @@ div[data-role="header"].ui-bar-b a[data-rel="back"]::before {
 .ui-btn-up-g.ui-shadow,
 .ui-btn-hover-g.ui-shadow,
 .ui-btn-down-g.ui-shadow {
-  -moz-box-shadow: 0 1px 4px rgba(51, 51, 51, 0.3);
-  -webkit-box-shadow: 0 1px 4px rgba(51, 51, 51, 0.3);
-  box-shadow: 0 1px 4px rgba(51, 51, 51, 0.3);
   -moz-box-shadow: 0 1px 4px rgba(51, 51, 51, 0.3);
   -webkit-box-shadow: 0 1px 4px rgba(51, 51, 51, 0.3);
   box-shadow: 0 1px 4px rgba(51, 51, 51, 0.3);
@@ -3235,9 +3147,6 @@ div[data-role="header"] .ui-btn-right .ui-btn-icon-notext.ui-shadow {
   -moz-box-shadow: none;
   -webkit-box-shadow: none;
   box-shadow: none;
-  -moz-box-shadow: none;
-  -webkit-box-shadow: none;
-  box-shadow: none;
 }
 div[data-role="header"] .ui-btn-right {
   position: absolute;
@@ -3277,9 +3186,6 @@ div[data-role="header"] .ui-controlgroup {
   -moz-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2);
   -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2);
   box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2);
-  -moz-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2);
-  -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2);
-  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2);
 }
 div[data-role="header"] .ui-controlgroup .ui-checkbox label,
 div[data-role="header"] .ui-controlgroup .ui-radio label {
@@ -3297,9 +3203,6 @@ div[data-role="header"] .ui-controlgroup .ui-radio label {
   -webkit-border-top-left-radius: 8px;
   -moz-border-radius-topleft: 8px;
   border-top-left-radius: 8px;
-  -moz-box-shadow: inset 5px 0 20px rgba(0, 0, 0, 0.2);
-  -webkit-box-shadow: inset 5px 0 20px rgba(0, 0, 0, 0.2);
-  box-shadow: inset 5px 0 20px rgba(0, 0, 0, 0.2);
   -moz-box-shadow: inset 5px 0 20px rgba(0, 0, 0, 0.2);
   -webkit-box-shadow: inset 5px 0 20px rgba(0, 0, 0, 0.2);
   box-shadow: inset 5px 0 20px rgba(0, 0, 0, 0.2);
@@ -3458,9 +3361,6 @@ div[data-role="dialog"] {
   -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
   -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
-  -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
-  -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
   border: none;
 }
 .ui-bar.ui-controlgroup-horizontal .s-bar-left {
@@ -3500,6 +3400,44 @@ div[data-role="dialog"] {
 }
 .x-closed .ui-bar .ui-icon-open {
   background-position: 0 -32px;
+}
+.s-bg-load-bar {
+  height: 4px;
+  background: #ffff00;
+  overflow: hidden;
+}
+.s-bg-load-bar .s-load-bar-animate {
+  display: block;
+  width: 100%;
+  height: 4px;
+  -webkit-background-size: 40px 40px;
+  -moz-background-size: 40px 40px;
+  -o-background-size: 40px 40px;
+  background-size: 40px 40px;
+  background-image: -webkit-gradient(linear, left top, right bottom, color-stop(0.25, #ffe400), color-stop(0.25, transparent), color-stop(0.5, transparent), color-stop(0.5, #ffe400), color-stop(0.75, #ffe400), color-stop(0.75, transparent), to(transparent));
+  background-image: -webkit-linear-gradient(135deg, #ffe400 25%, transparent 25%, transparent 50%, #ffe400 50%, #ffe400 75%, transparent 75%, transparent);
+  background-image: -moz-linear-gradient(135deg, #ffe400 25%, transparent 25%, transparent 50%, #ffe400 50%, #ffe400 75%, transparent 75%, transparent);
+  background-image: -ms-linear-gradient(135deg, #ffe400 25%, transparent 25%, transparent 50%, #ffe400 50%, #ffe400 75%, transparent 75%, transparent);
+  background-image: -o-linear-gradient(135deg, #ffe400 25%, transparent 25%, transparent 50%, #ffe400 50%, #ffe400 75%, transparent 75%, transparent);
+  background-image: linear-gradient(135deg, #ffe400 25%, transparent 25%, transparent 50%, #ffe400 50%, #ffe400 75%, transparent 75%, transparent);
+  -webkit-animation: animate-bar 0.5s linear infinite;
+  -moz-animation: animate-bar 0.5s linear infinite;
+}
+@-webkit-keyframes animate-bar {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 40px 0;
+  }
+}
+@-moz-keyframes animate-bar {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 40px 0;
+  }
 }
 .s-logo-button .ui-btn-text {
   font-family: Helvetica, Arial, sans-serif;
@@ -3821,9 +3759,6 @@ div[data-role="dialog"] {
   -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.2);
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.2);
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.2);
-  -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.2);
-  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.2);
-  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.2);
 }
 .ui-slider-switch .ui-slider-label.ui-btn-active {
   color: white;
@@ -3833,17 +3768,11 @@ div[data-role="dialog"] {
   -moz-box-shadow: 0 4px 5px -2px rgba(0, 0, 0, 0.3) inset;
   -webkit-box-shadow: 0 4px 5px -2px rgba(0, 0, 0, 0.3) inset;
   box-shadow: 0 4px 5px -2px rgba(0, 0, 0, 0.3) inset;
-  -moz-box-shadow: 0 4px 5px -2px rgba(0, 0, 0, 0.3) inset;
-  -webkit-box-shadow: 0 4px 5px -2px rgba(0, 0, 0, 0.3) inset;
-  box-shadow: 0 4px 5px -2px rgba(0, 0, 0, 0.3) inset;
   font-family: Helvetica, Arial, sans-serif;
 }
 .ui-slider-switch .ui-slider-handle {
   border: 1px solid #AAA;
   background: #F6F6F6;
-  -moz-box-shadow: 0 4px 0 -2px #f1f1f1 inset, 0 2em 2em -2em #aaaaaa inset, 0 0 2px rgba(0, 0, 0, 0.5);
-  -webkit-box-shadow: 0 4px 0 -2px #f1f1f1 inset, 0 2em 2em -2em #aaaaaa inset, 0 0 2px rgba(0, 0, 0, 0.5);
-  box-shadow: 0 4px 0 -2px #f1f1f1 inset, 0 2em 2em -2em #aaaaaa inset, 0 0 2px rgba(0, 0, 0, 0.5);
   -moz-box-shadow: 0 4px 0 -2px #f1f1f1 inset, 0 2em 2em -2em #aaaaaa inset, 0 0 2px rgba(0, 0, 0, 0.5);
   -webkit-box-shadow: 0 4px 0 -2px #f1f1f1 inset, 0 2em 2em -2em #aaaaaa inset, 0 0 2px rgba(0, 0, 0, 0.5);
   box-shadow: 0 4px 0 -2px #f1f1f1 inset, 0 2em 2em -2em #aaaaaa inset, 0 0 2px rgba(0, 0, 0, 0.5);
@@ -3897,7 +3826,6 @@ div[data-role="dialog"] {
   text-transform: none;
   -webkit-font-smoothing: antialiased;
   text-decoration: none;
-  text-transform: lowercase;
   font-size: 15px;
   font-size: 16px;
   text-transform: lowercase;
@@ -4019,9 +3947,6 @@ div[data-role="dialog"] {
   -moz-box-shadow: inset 0px 2px 4px 2px rgba(0, 0, 0, 0.1) !important;
   -webkit-box-shadow: inset 0px 2px 4px 2px rgba(0, 0, 0, 0.1) !important;
   box-shadow: inset 0px 2px 4px 2px rgba(0, 0, 0, 0.1) !important;
-  -moz-box-shadow: inset 0px 2px 4px 2px rgba(0, 0, 0, 0.1) !important;
-  -webkit-box-shadow: inset 0px 2px 4px 2px rgba(0, 0, 0, 0.1) !important;
-  box-shadow: inset 0px 2px 4px 2px rgba(0, 0, 0, 0.1) !important;
   color: white;
   text-shadow: rgba(0, 0, 0, 0.5) 0px 1px 1px;
   text-transform: none;
@@ -4068,9 +3993,6 @@ div[data-role="dialog"] {
   margin: 0;
   white-space: nowrap;
   padding: 8px;
-  -moz-box-shadow: none;
-  -webkit-box-shadow: none;
-  box-shadow: none;
   -moz-box-shadow: none;
   -webkit-box-shadow: none;
   box-shadow: none;
@@ -4204,7 +4126,7 @@ textarea.ui-input-text {
   margin-left: -28px;
   -webkit-transition-property: -webkit-transform;
   -webkit-transition-duration: 250ms;
-  -webkit-transform: rotate(0deg) translatez(0);
+  -webkit-transform: rotate(0deg) translateZ(0);
 }
 .s-image-streams .x-stream .s-load-more-inline.x-right-pull {
   margin-right: 9px;
@@ -4220,7 +4142,7 @@ textarea.ui-input-text {
 }
 .s-image-streams .x-stream .s-load-more-inline.x-flipped .ui-icon-refresh {
   background-position: 0 -112px;
-  -webkit-transform: rotate(180deg) translatez(0);
+  -webkit-transform: rotate(180deg) translateZ(0);
 }
 .s-image-streams .x-stream .x-loading .s-load-more-inline .ui-icon-refresh,
 .s-image-streams .x-stream.x-loading .s-load-more-inline .ui-icon-refresh {
@@ -4331,14 +4253,7 @@ textarea.ui-input-text {
   overflow: hidden;
 }
 .s-validate .x-validating .ui-icon-check {
-  display: block;
   background-image: url('gfx/small-spinner-light.png') !important;
-  background-position: center!important;
-  background-repeat: no-repeat !important;
-  -webkit-background-size: 24px 24px !important;
-  -moz-background-size: 24px 24px !important;
-  -o-background-size: 24px 24px !important;
-  background-size: 24px 24px !important;
   display: block;
   background-image: url('../gfx/small-spinner-light.png') !important;
   background-position: center!important;
@@ -4347,13 +4262,7 @@ textarea.ui-input-text {
   -moz-background-size: 24px 24px !important;
   -o-background-size: 24px 24px !important;
   background-size: 24px 24px !important;
-  -webkit-transform: rotate(0deg) translatez(0);
-  -webkit-transition-duration: 0ms;
-  -webkit-animation-name: loading;
-  -webkit-animation-duration: 1.2s;
-  -webkit-animation-iteration-count: infinite;
-  -webkit-animation-timing-function: linear;
-  -webkit-transform: rotate(0deg) translatez(0);
+  -webkit-transform: rotate(0deg) translateZ(0);
   -webkit-transition-duration: 0ms;
   -webkit-animation-name: loading;
   -webkit-animation-duration: 1.2s;
@@ -4393,9 +4302,6 @@ textarea.ui-input-text {
   -moz-box-shadow: inset 0 -2px 100px #ffe400;
   -webkit-box-shadow: inset 0 -2px 100px #ffe400;
   box-shadow: inset 0 -2px 100px #ffe400;
-  -moz-box-shadow: inset 0 -2px 100px #ffe400;
-  -webkit-box-shadow: inset 0 -2px 100px #ffe400;
-  box-shadow: inset 0 -2px 100px #ffe400;
   -webkit-border-top-right-radius: 8px;
   -moz-border-radius-topright: 8px;
   border-top-right-radius: 8px;
@@ -4406,9 +4312,6 @@ textarea.ui-input-text {
   margin-right: -8px;
 }
 .s-menu-main .s-menu-btns .ui-btn {
-  -webkit-border-radius: 0;
-  -moz-border-radius: 0;
-  border-radius: 0;
   -moz-border-radius: 0;
   -webkit-border-radius: 0;
   border-radius: 0;
@@ -4419,9 +4322,6 @@ textarea.ui-input-text {
   margin: 0;
   padding: 0;
   min-height: 50px;
-  -moz-box-shadow: none;
-  -webkit-box-shadow: none;
-  box-shadow: none;
   -moz-box-shadow: none;
   -webkit-box-shadow: none;
   box-shadow: none;
@@ -4444,9 +4344,6 @@ textarea.ui-input-text {
   background-image: url('../gfx/menu-icons.png');
   width: 50px;
   height: 50px;
-  -moz-box-shadow: none;
-  -webkit-box-shadow: none;
-  box-shadow: none;
   -moz-box-shadow: none;
   -webkit-box-shadow: none;
   box-shadow: none;
@@ -4565,9 +4462,6 @@ textarea.ui-input-text {
   -moz-box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 2px 0px;
   -webkit-box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 2px 0px;
   box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 2px 0px;
-  -moz-box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 2px 0px;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 2px 0px;
-  box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 2px 0px;
   font-size: 13px;
   line-height: 13px;
   text-align: center;
@@ -4623,21 +4517,7 @@ textarea.ui-input-text {
   -moz-background-size: 24px 24px !important;
   -o-background-size: 24px 24px !important;
   background-size: 24px 24px !important;
-  display: block;
-  background-image: url('../gfx/small-spinner-dark.png') !important;
-  background-position: center!important;
-  background-repeat: no-repeat !important;
-  -webkit-background-size: 24px 24px !important;
-  -moz-background-size: 24px 24px !important;
-  -o-background-size: 24px 24px !important;
-  background-size: 24px 24px !important;
-  -webkit-transform: rotate(0deg) translatez(0);
-  -webkit-transition-duration: 0ms;
-  -webkit-animation-name: loading;
-  -webkit-animation-duration: 1.2s;
-  -webkit-animation-iteration-count: infinite;
-  -webkit-animation-timing-function: linear;
-  -webkit-transform: rotate(0deg) translatez(0);
+  -webkit-transform: rotate(0deg) translateZ(0);
   -webkit-transition-duration: 0ms;
   -webkit-animation-name: loading;
   -webkit-animation-duration: 1.2s;
@@ -4745,9 +4625,6 @@ textarea.ui-input-text {
 }
 .s-feed-header.s-inline-header .s-user-icon-left .s-profile-icon,
 .s-feed-header.s-inline-header .s-user-icon-left .s-avatar-large {
-  -webkit-border-radius: 0;
-  -moz-border-radius: 0;
-  border-radius: 0;
   -moz-border-radius: 0;
   -webkit-border-radius: 0;
   border-radius: 0;
@@ -4928,9 +4805,6 @@ textarea.ui-input-text {
   width: 40px;
   height: 40px;
   margin-top: -20px;
-  -webkit-border-radius: 0;
-  -moz-border-radius: 0;
-  border-radius: 0;
   -moz-border-radius: 0;
   -webkit-border-radius: 0;
   border-radius: 0;
@@ -4971,9 +4845,6 @@ textarea.ui-input-text {
 }
 .s-image-item-block .s-reactions-list {
   display: none;
-  -moz-box-shadow: none;
-  -webkit-box-shadow: none;
-  box-shadow: none;
   -moz-box-shadow: none;
   -webkit-box-shadow: none;
   box-shadow: none;
@@ -5333,9 +5204,6 @@ textarea.ui-input-text {
   -moz-box-shadow: inset 0 0 9px 2px #afaeae;
   -webkit-box-shadow: inset 0 0 9px 2px #afaeae;
   box-shadow: inset 0 0 9px 2px #afaeae;
-  -moz-box-shadow: inset 0 0 9px 2px #afaeae;
-  -webkit-box-shadow: inset 0 0 9px 2px #afaeae;
-  box-shadow: inset 0 0 9px 2px #afaeae;
 }
 .s-progress-bar .s-upload-message {
   font-family: Helvetica, Arial, sans-serif;
@@ -5448,9 +5316,6 @@ textarea.ui-input-text {
   -moz-box-shadow: inset 0 3px 20px #309dc2;
   -webkit-box-shadow: inset 0 3px 20px #309dc2;
   box-shadow: inset 0 3px 20px #309dc2;
-  -moz-box-shadow: inset 0 3px 20px #309dc2;
-  -webkit-box-shadow: inset 0 3px 20px #309dc2;
-  box-shadow: inset 0 3px 20px #309dc2;
 }
 .s-share-photo .s-upload-image-sharing label[for="twitter-sharing"].ui-checkbox-on .ui-icon {
   background-position: -42px 0px;
@@ -5460,9 +5325,6 @@ textarea.ui-input-text {
 }
 .s-share-photo .s-upload-image-sharing label[for="facebook-sharing"].ui-checkbox-on {
   background-color: #507ab8;
-  -moz-box-shadow: inset 0 3px 20px #2e5998;
-  -webkit-box-shadow: inset 0 3px 20px #2e5998;
-  box-shadow: inset 0 3px 20px #2e5998;
   -moz-box-shadow: inset 0 3px 20px #2e5998;
   -webkit-box-shadow: inset 0 3px 20px #2e5998;
   box-shadow: inset 0 3px 20px #2e5998;
@@ -5478,9 +5340,6 @@ textarea.ui-input-text {
   -moz-box-shadow: inset 0 3px 20px #2c3c54;
   -webkit-box-shadow: inset 0 3px 20px #2c3c54;
   box-shadow: inset 0 3px 20px #2c3c54;
-  -moz-box-shadow: inset 0 3px 20px #2c3c54;
-  -webkit-box-shadow: inset 0 3px 20px #2c3c54;
-  box-shadow: inset 0 3px 20px #2c3c54;
 }
 .s-share-photo .s-upload-image-sharing label[for="tumblr-sharing"].ui-checkbox-on .ui-icon {
   background-position: -42px -84px;
@@ -5490,9 +5349,6 @@ textarea.ui-input-text {
 }
 .s-share-photo .s-upload-image-sharing label[for="foursquare-sharing"].ui-checkbox-on {
   background-color: #34a0ce;
-  -moz-box-shadow: inset 0 3px 20px #29708e;
-  -webkit-box-shadow: inset 0 3px 20px #29708e;
-  box-shadow: inset 0 3px 20px #29708e;
   -moz-box-shadow: inset 0 3px 20px #29708e;
   -webkit-box-shadow: inset 0 3px 20px #29708e;
   box-shadow: inset 0 3px 20px #29708e;
@@ -5596,9 +5452,6 @@ textarea.ui-input-text {
   border: none!important;
 }
 .s-share-photo .s-image-toggle .ui-btn.ui-shadow {
-  -moz-box-shadow: none;
-  -webkit-box-shadow: none;
-  box-shadow: none;
   -moz-box-shadow: none;
   -webkit-box-shadow: none;
   box-shadow: none;
@@ -5716,13 +5569,9 @@ textarea.ui-input-text {
   -moz-box-shadow: inset 0px -11px 33px rgba(0, 0, 0, 0.2);
   -webkit-box-shadow: inset 0px -11px 33px rgba(0, 0, 0, 0.2);
   box-shadow: inset 0px -11px 33px rgba(0, 0, 0, 0.2);
-  -moz-box-shadow: inset 0px -11px 33px rgba(0, 0, 0, 0.2);
-  -webkit-box-shadow: inset 0px -11px 33px rgba(0, 0, 0, 0.2);
-  box-shadow: inset 0px -11px 33px rgba(0, 0, 0, 0.2);
 }
 .s-account-content .s-account-header .ui-btn,
 .s-account-content .s-account-header .s-avatar {
-  display: inline-block;
   vertical-align: middle;
   display: inline-block;
 }
@@ -5747,9 +5596,6 @@ textarea.ui-input-text {
   margin-bottom: -2px;
 }
 .s-account-content .ui-bar {
-  -moz-box-shadow: 0 -1px 3px rgba(0, 0, 0, 0.05);
-  -webkit-box-shadow: 0 -1px 3px rgba(0, 0, 0, 0.05);
-  box-shadow: 0 -1px 3px rgba(0, 0, 0, 0.05);
   -moz-box-shadow: 0 -1px 3px rgba(0, 0, 0, 0.05);
   -webkit-box-shadow: 0 -1px 3px rgba(0, 0, 0, 0.05);
   box-shadow: 0 -1px 3px rgba(0, 0, 0, 0.05);
@@ -5828,9 +5674,6 @@ textarea.ui-input-text {
   -moz-box-shadow: none;
   -webkit-box-shadow: none;
   box-shadow: none;
-  -moz-box-shadow: none;
-  -webkit-box-shadow: none;
-  box-shadow: none;
   -webkit-border-radius: 20px;
   -moz-border-radius: 20px;
   border-radius: 20px;
@@ -5890,7 +5733,6 @@ textarea.ui-input-text {
   right: -30px;
   top: 20px;
   padding-right: 36px;
-  font-family: Helvetica, Arial, sans-serif;
   text-transform: lowercase;
   font-family: Helvetica, Arial, sans-serif;
   font-weight: bold;
@@ -6430,9 +6272,6 @@ div.ps-carousel-item-loading {
   -moz-box-shadow: none;
   -webkit-box-shadow: none;
   box-shadow: none;
-  -moz-box-shadow: none;
-  -webkit-box-shadow: none;
-  box-shadow: none;
 }
 .ui-loader .ui-icon-loading {
   background-color: transparent;
@@ -6441,7 +6280,7 @@ div.ps-carousel-item-loading {
   height: 56px;
   background-size: 56px 56px;
   background-position: center;
-  -webkit-transform: rotate(0deg) translatez(0);
+  -webkit-transform: rotate(0deg) translateZ(0);
   -webkit-transition-duration: 0ms;
   -webkit-animation-name: loading;
   -webkit-animation-duration: 1.2s;
@@ -6463,21 +6302,7 @@ div.ps-carousel-item-loading {
   -moz-background-size: 24px 24px !important;
   -o-background-size: 24px 24px !important;
   background-size: 24px 24px !important;
-  display: block;
-  background-image: url('../gfx/small-spinner-dark.png') !important;
-  background-position: center!important;
-  background-repeat: no-repeat !important;
-  -webkit-background-size: 24px 24px !important;
-  -moz-background-size: 24px 24px !important;
-  -o-background-size: 24px 24px !important;
-  background-size: 24px 24px !important;
-  -webkit-transform: rotate(0deg) translatez(0);
-  -webkit-transition-duration: 0ms;
-  -webkit-animation-name: loading;
-  -webkit-animation-duration: 1.2s;
-  -webkit-animation-iteration-count: infinite;
-  -webkit-animation-timing-function: linear;
-  -webkit-transform: rotate(0deg) translatez(0);
+  -webkit-transform: rotate(0deg) translateZ(0);
   -webkit-transition-duration: 0ms;
   -webkit-animation-name: loading;
   -webkit-animation-duration: 1.2s;
@@ -6487,14 +6312,7 @@ div.ps-carousel-item-loading {
 .ui-body-c .ui-listview .x-ajax-loading .ui-btn-inner > .ui-icon,
 .s-image-actions .x-ajax-loading .ui-btn-inner > .ui-icon,
 .dark-icons .x-ajax-loading .ui-btn-inner > .ui-icon {
-  display: block;
   background-image: url('gfx/small-spinner-light.png') !important;
-  background-position: center!important;
-  background-repeat: no-repeat !important;
-  -webkit-background-size: 24px 24px !important;
-  -moz-background-size: 24px 24px !important;
-  -o-background-size: 24px 24px !important;
-  background-size: 24px 24px !important;
   display: block;
   background-image: url('../gfx/small-spinner-light.png') !important;
   background-position: center!important;
@@ -6508,14 +6326,7 @@ div.ps-carousel-item-loading {
   opacity: .4;
 }
 .ui-icon-spinner {
-  display: block;
   background-image: url('gfx/small-spinner-light.png') !important;
-  background-position: center!important;
-  background-repeat: no-repeat !important;
-  -webkit-background-size: 24px 24px !important;
-  -moz-background-size: 24px 24px !important;
-  -o-background-size: 24px 24px !important;
-  background-size: 24px 24px !important;
   display: block;
   background-image: url('../gfx/small-spinner-light.png') !important;
   background-position: center!important;
@@ -6524,13 +6335,7 @@ div.ps-carousel-item-loading {
   -moz-background-size: 24px 24px !important;
   -o-background-size: 24px 24px !important;
   background-size: 24px 24px !important;
-  -webkit-transform: rotate(0deg) translatez(0);
-  -webkit-transition-duration: 0ms;
-  -webkit-animation-name: loading;
-  -webkit-animation-duration: 1.2s;
-  -webkit-animation-iteration-count: infinite;
-  -webkit-animation-timing-function: linear;
-  -webkit-transform: rotate(0deg) translatez(0);
+  -webkit-transform: rotate(0deg) translateZ(0);
   -webkit-transition-duration: 0ms;
   -webkit-animation-name: loading;
   -webkit-animation-duration: 1.2s;
@@ -6720,14 +6525,6 @@ div.ps-carousel-item-loading {
     -moz-background-size: 24px 24px !important;
     -o-background-size: 24px 24px !important;
     background-size: 24px 24px !important;
-    display: block;
-    background-image: url('../gfx/hdpi/small-spinner-light.png') !important;
-    background-position: center!important;
-    background-repeat: no-repeat !important;
-    -webkit-background-size: 24px 24px !important;
-    -moz-background-size: 24px 24px !important;
-    -o-background-size: 24px 24px !important;
-    background-size: 24px 24px !important;
     -webkit-background-size: 24px 24px;
     -moz-background-size: 24px 24px;
     -o-background-size: 24px 24px;
@@ -6755,14 +6552,6 @@ div.ps-carousel-item-loading {
     background-size: 40px 20px;
   }
   .s-menu-stream.x-loading .ui-icon-arrow-r {
-    display: block;
-    background-image: url('../gfx/hdpi/small-spinner-dark.png') !important;
-    background-position: center!important;
-    background-repeat: no-repeat !important;
-    -webkit-background-size: 24px 24px !important;
-    -moz-background-size: 24px 24px !important;
-    -o-background-size: 24px 24px !important;
-    background-size: 24px 24px !important;
     display: block;
     background-image: url('../gfx/hdpi/small-spinner-dark.png') !important;
     background-position: center!important;
@@ -6858,14 +6647,6 @@ div.ps-carousel-item-loading {
     -moz-background-size: 24px 24px !important;
     -o-background-size: 24px 24px !important;
     background-size: 24px 24px !important;
-    display: block;
-    background-image: url('../gfx/hdpi/small-spinner-dark.png') !important;
-    background-position: center!important;
-    background-repeat: no-repeat !important;
-    -webkit-background-size: 24px 24px !important;
-    -moz-background-size: 24px 24px !important;
-    -o-background-size: 24px 24px !important;
-    background-size: 24px 24px !important;
     -webkit-background-size: 24px 24px;
     -moz-background-size: 24px 24px;
     -o-background-size: 24px 24px;
@@ -6882,28 +6663,12 @@ div.ps-carousel-item-loading {
     -moz-background-size: 24px 24px !important;
     -o-background-size: 24px 24px !important;
     background-size: 24px 24px !important;
-    display: block;
-    background-image: url('../gfx/hdpi/small-spinner-light.png') !important;
-    background-position: center!important;
-    background-repeat: no-repeat !important;
-    -webkit-background-size: 24px 24px !important;
-    -moz-background-size: 24px 24px !important;
-    -o-background-size: 24px 24px !important;
-    background-size: 24px 24px !important;
     -webkit-background-size: 24px 24px;
     -moz-background-size: 24px 24px;
     -o-background-size: 24px 24px;
     background-size: 24px 24px;
   }
   .ui-icon-spinner {
-    display: block;
-    background-image: url('../gfx/hdpi/small-spinner-light.png') !important;
-    background-position: center!important;
-    background-repeat: no-repeat !important;
-    -webkit-background-size: 24px 24px !important;
-    -moz-background-size: 24px 24px !important;
-    -o-background-size: 24px 24px !important;
-    background-size: 24px 24px !important;
     display: block;
     background-image: url('../gfx/hdpi/small-spinner-light.png') !important;
     background-position: center!important;
@@ -7065,14 +6830,6 @@ div.ps-carousel-item-loading {
     -moz-background-size: 24px 24px !important;
     -o-background-size: 24px 24px !important;
     background-size: 24px 24px !important;
-    display: block;
-    background-image: url('../gfx/retina/small-spinner-light.png') !important;
-    background-position: center!important;
-    background-repeat: no-repeat !important;
-    -webkit-background-size: 24px 24px !important;
-    -moz-background-size: 24px 24px !important;
-    -o-background-size: 24px 24px !important;
-    background-size: 24px 24px !important;
     -webkit-background-size: 24px 24px;
     -moz-background-size: 24px 24px;
     -o-background-size: 24px 24px;
@@ -7100,14 +6857,6 @@ div.ps-carousel-item-loading {
     background-size: 40px 20px;
   }
   .s-menu-stream.x-loading .ui-icon-arrow-r {
-    display: block;
-    background-image: url('../gfx/retina/small-spinner-dark.png') !important;
-    background-position: center!important;
-    background-repeat: no-repeat !important;
-    -webkit-background-size: 24px 24px !important;
-    -moz-background-size: 24px 24px !important;
-    -o-background-size: 24px 24px !important;
-    background-size: 24px 24px !important;
     display: block;
     background-image: url('../gfx/retina/small-spinner-dark.png') !important;
     background-position: center!important;
@@ -7203,14 +6952,6 @@ div.ps-carousel-item-loading {
     -moz-background-size: 24px 24px !important;
     -o-background-size: 24px 24px !important;
     background-size: 24px 24px !important;
-    display: block;
-    background-image: url('../gfx/retina/small-spinner-dark.png') !important;
-    background-position: center!important;
-    background-repeat: no-repeat !important;
-    -webkit-background-size: 24px 24px !important;
-    -moz-background-size: 24px 24px !important;
-    -o-background-size: 24px 24px !important;
-    background-size: 24px 24px !important;
     -webkit-background-size: 24px 24px;
     -moz-background-size: 24px 24px;
     -o-background-size: 24px 24px;
@@ -7227,28 +6968,12 @@ div.ps-carousel-item-loading {
     -moz-background-size: 24px 24px !important;
     -o-background-size: 24px 24px !important;
     background-size: 24px 24px !important;
-    display: block;
-    background-image: url('../gfx/retina/small-spinner-light.png') !important;
-    background-position: center!important;
-    background-repeat: no-repeat !important;
-    -webkit-background-size: 24px 24px !important;
-    -moz-background-size: 24px 24px !important;
-    -o-background-size: 24px 24px !important;
-    background-size: 24px 24px !important;
     -webkit-background-size: 24px 24px;
     -moz-background-size: 24px 24px;
     -o-background-size: 24px 24px;
     background-size: 24px 24px;
   }
   .ui-icon-spinner {
-    display: block;
-    background-image: url('../gfx/retina/small-spinner-light.png') !important;
-    background-position: center!important;
-    background-repeat: no-repeat !important;
-    -webkit-background-size: 24px 24px !important;
-    -moz-background-size: 24px 24px !important;
-    -o-background-size: 24px 24px !important;
-    background-size: 24px 24px !important;
     display: block;
     background-image: url('../gfx/retina/small-spinner-light.png') !important;
     background-position: center!important;

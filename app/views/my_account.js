@@ -9,10 +9,6 @@ return page_view.extend({
 
         this.change_page();
 
-        if(options.query.username){
-            auth.user_settings.cache_bust();
-        }
-
         this.fetch();
 
     },
@@ -31,22 +27,22 @@ return page_view.extend({
     },
 
     dialog_closed: function(dialog){
-        auth.user_settings.cache_bust();
         this.fetch();
     },
 
     fetch: function(){
-        $.mobile.showPageLoadingMsg();
-        var my_account_view = this;
+        this.show_bg_loader();
+        var this_view = this;
         var options = {
             data: {linked_services: true, user_object: true},
             success: function(){
-                $.mobile.hidePageLoadingMsg();
+                this_view.show_bg_loader(false);
                 auth.user_settings.linked_services_setup();
-                my_account_view.render();
+                this_view.render();
             },
             error: function(){
-                console.log( 'error' , my_account_view );
+                this_view.show_bg_loader(false);
+                console.log( 'error' , this_view );
             }
         };
         auth.user_settings.data = {};
@@ -87,10 +83,10 @@ return page_view.extend({
         var $account_content = this.replace_from_template(data, ['.x-content']).trigger('create');
 
 
-        var my_account = this;
+        var this_view = this;
         _.each( auth.user_settings.get('linked_services'), function( service, index ){
             var v = new linked_service({model: service});
-            v.my_account = my_account;
+            v.my_account = this_view;
 
             $account_content.find('.x-linked-services').append( v.render().el ).trigger('create');
         });
@@ -139,32 +135,32 @@ return page_view.extend({
 
     save_settings: function( param, callback, spin ){
         if(spin){
-            $.mobile.showPageLoadingMsg();
+            this.show_bg_loader();
         }
         // prevent backbone from thinking this is a new user
         auth.user_settings.id = true;
         auth.user_settings.set(param);
-        var my_account = this;
+        var this_view = this;
 
         auth.user_settings.save({},{
             data: param,
             success: function( model, xhr ){
-                $.mobile.hidePageLoadingMsg();
+                this_view.show_bg_loader(false);
                 if (xhr.success){
                     if($.isFunction(callback)){
                         callback( model, xhr );
                     }
                 }else{
-                    $.mobile.hidePageLoadingMsg();
                     console.warn( "error saving notifications", xhr );
                     alerts.notification('Error',  "Sorry, we had trouble saving your settings." );
-                    my_account.initialize();
+                    this_view.initialize();
                 }
             },
             error: function( e ){
+                this_view.show_bg_loader(false);
                 console.warn( "error saving notifications", e );
                 alerts.notification('Error',  "Sorry, we had trouble saving your settings." );
-                my_account.initialize();
+                this_view.initialize();
             }
         });
     },
@@ -185,7 +181,7 @@ return page_view.extend({
     save_profile: function( e ){
         var section = $(e.currentTarget).closest("[data-role='collapsible']");
 
-        var my_account = this,
+        var this_view = this,
             param = {};
 
         _.each(['name', 'location', 'website', 'bio'], function(item){
@@ -198,7 +194,6 @@ return page_view.extend({
 
         this.save_settings( param, function(){
             if(avatar_changed){
-                auth.user_settings.cache_bust();
                 my_account.fetch();
             }else{
                 alerts.notification('Thanks', 'Your settings have been saved');

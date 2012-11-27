@@ -6,7 +6,6 @@ var auth_model = Backbone.Model.extend({
     initialize: function(){
         _.bindAll(this);
         this.user_settings = new user_settings();
-        this.on('change', this.user_settings.cache_bust);
         this.user_settings.on('change', this.save_display_username);
     },
 

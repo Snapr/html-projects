@@ -23,10 +23,6 @@ var find_friends = page_view.extend({
 
         this.service = this.options.service;
 
-        if (options.query.username){
-            auth.user_settings.cache_bust();
-        }
-
         this.search();
     },
 

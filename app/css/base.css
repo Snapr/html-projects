@@ -259,6 +259,22 @@ a:active {
   line-height: 11px;
   vertical-align: middle;
 }
+.s-bg-load-bar {
+  display: none;
+  height: 4px;
+  background: #ffff00;
+}
+.x-bg-loading .s-bg-load-bar {
+  display: block;
+}
+.s-bg-loader {
+  position: fixed;
+  background: #C0FFEE;
+  bottom: 10px;
+  left: 10px;
+  top: auto;
+  margin: 0;
+}
 .s-avatar,
 .s-avatar-med,
 .s-avatar-large {

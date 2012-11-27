@@ -38,7 +38,6 @@ var connect_page = page_view.extend({
             }else if(provider == this.linked){
                 // is a service username is suppllied
                 if (this.query.get('username')){
-                    auth.user_settings.cache_bust();
                     status = 'ready';
                     this.share(this.linked);
                 // no service username = something went wrong

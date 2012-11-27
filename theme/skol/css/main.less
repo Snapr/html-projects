@@ -2,6 +2,63 @@
 // SNAPR THEME
 // --------------------------------------------------
 
+.s-share-photo .s-upload-image-sharing label[for="skol-sharing"] .ui-icon {
+  background-position: 0 20px;
+}
+.s-share-photo .s-upload-image-sharing label[for="skol-sharing"].ui-checkbox-on {
+  background-color: #68d9ff;
+  -moz-box-shadow: inset 0 3px 20px #309dc2;
+  -webkit-box-shadow: inset 0 3px 20px #309dc2;
+  box-shadow: inset 0 3px 20px #309dc2;
+}
+.s-share-photo .s-upload-image-sharing label[for="skol-sharing"].ui-checkbox-on .ui-icon {
+  background-position: -42px 20px;
+}
+
+.s-menu-main{
+    position: relative;
+}
+.s-menu-stream{
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+.s-home-bg{
+    height:100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    div{
+        height: 100%;
+        background-size: 100% 100%;
+        background-size: cover;
+        background-position: center;
+    }
+    opacity : 0;
+    -moz-transition-property : opacity;
+    -webkit-transition-property : opacity;
+    -o-transition-property : opacity;
+    transition-property : opacity;
+    -moz-transition-duration : 0.7s;
+    -webkit-transition-duration : 0.7s;
+    -o-transition-duration : 0.7s;
+    transition-duration : 0.7s;
+    &.fade-in{
+        opacity : 1;
+        -moz-transition-property : opacity;
+        -webkit-transition-property : opacity;
+        -o-transition-property : opacity;
+        transition-property : opacity;
+        -moz-transition-duration : 0.3s;
+        -webkit-transition-duration : 0.3s;
+        -o-transition-duration : 0.3s;
+        transition-duration : 0.3s;
+    }
+}
+
 
 // @DEFAULTS
 // -------------------------
@@ -22,7 +79,7 @@ h4.ui-li-heading{
 // -------------------------
 
 div[data-role="header"]{
-    min-height: @topBarHeight; // So Topbar doesn't collapse without heading 
+    min-height: @topBarHeight; // So Topbar doesn't collapse without heading
     background: none;
     border: none;
     color: @gray;
@@ -43,7 +100,7 @@ div[data-role="header"]{
         left: 6px;
         top: 6px;
     }
-    .ui-btn-icon-left .ui-btn-inner .ui-icon, 
+    .ui-btn-icon-left .ui-btn-inner .ui-icon,
     .ui-btn-icon-right .ui-btn-inner .ui-icon {
         margin-top: -@gfxTopBar-grid / 2;
     }
@@ -94,7 +151,7 @@ div[data-role="header"]{
                     }
                 }
             }
-        }   
+        }
     }
     // Shuffle the close button to the right */
     .ui-btn[data-icon="delete"]{
@@ -127,12 +184,12 @@ div[data-role="header"]{
     .border-top-radius (@cornersPage);
     .box-shadow(inset 5px 0 20px rgba(0, 0, 0, 0.2));
     a{
-        color: @grayDarkBg;  
+        color: @grayDarkBg;
     }
     &.s-search-header{
         .ui-content{
                  padding: 0 0 @padding * 2 0;
-         } 
+         }
     }
     &.s-account-header{
         .ui-content{
@@ -232,13 +289,13 @@ div[data-role="dialog"]{
 
 .ui-bar{
     margin: 0 -@padding * 2;
-    .border-top-radius(@cornersPage); 
-   .border-bottom-radius(0);  
+    .border-top-radius(@cornersPage);
+   .border-bottom-radius(0);
    .button-font-light();
     height: @barHeight;
     line-height: @barHeight;
     padding-top:0;
-    padding-bottom: 0; 
+    padding-bottom: 0;
     border-top: @borderWhite;
     .box-sizing(border-box);
     .ui-btn,
@@ -256,7 +313,7 @@ div[data-role="dialog"]{
             .ui-icon{
                 display: inline-block;
                 margin-top: 0!important;
-                top: (@barHeight - @gfxBar-grid) / 2 ;            
+                top: (@barHeight - @gfxBar-grid) / 2 ;
                 &.spot-icon{
                     top: -1px;
                     right: 0;
@@ -268,12 +325,12 @@ div[data-role="dialog"]{
                 }
             }
         }
-    }   
+    }
     &.ui-controlgroup-horizontal{
         .box-shadow(0 1px 4px @shadowDark);
         border: none;
         .s-bar-left{
-            border-top: @borderWhite;            
+            border-top: @borderWhite;
             border-right: none;
             .ui-btn-inner{
             }
@@ -291,7 +348,7 @@ div[data-role="dialog"]{
 
 .x-closed{
     .ui-bar{
-       .border-bottom-radius(@cornersPage);  
+       .border-bottom-radius(@cornersPage);
         .s-bar-left{
                 .border-right-radius(0);
                 .ui-btn-inner{
@@ -300,10 +357,10 @@ div[data-role="dialog"]{
         .s-bar-right{
             .border-top-right-radius(@corners)!important;
             .border-bottom-right-radius(@corners)!important;
-        } 
+        }
         .ui-icon-open{
             background-position: @gfxBar-x @gfxBar-closed-y;
-        }     
+        }
     }
 }
 
@@ -332,7 +389,7 @@ div[data-role="dialog"]{
 }
 .s-twitter-button.ui-btn-hover-e {
     background: lighten(@twitterBlue, 10% );
-    .linear-gradient(lighten(@twitterBlue, 5%), lighten(@twitterBlueTint, 5%)); 
+    .linear-gradient(lighten(@twitterBlue, 5%), lighten(@twitterBlueTint, 5%));
 }
 .s-twitter-button.ui-btn-down-e {
     background: @twitterBlue;
@@ -424,7 +481,7 @@ div[data-role="dialog"]{
 }
 
 
-// @SWITCH 
+// @SWITCH
 // -----------------------
 
 .ui-slider-switch{
@@ -450,7 +507,7 @@ div[data-role="dialog"]{
             text-shadow: 0 -1px 0px #093B5C;
             .box-shadow(0 4px 5px -2px rgba(0,0,0,0.3) inset);
             font-family: @font;
-            
+
         }
     }
     .ui-slider-handle{
@@ -611,7 +668,7 @@ div[data-role="dialog"]{
         }
     }
     .s-tabbar-activity{
-        display: none;        
+        display: none;
         .button-font-small();
         line-height: @fontSizeSmall;
         min-height: @fontSizeSmall;
@@ -625,7 +682,7 @@ div[data-role="dialog"]{
         .box-shadow(none);
         .border-top-radius(@corners);
         .border-bottom-radius(0);
-    
+
         .ui-btn-inner{
             line-height: @fontSizeSmall;
             min-height: @fontSizeSmall;
@@ -733,7 +790,7 @@ textarea.ui-input-text {
 .s-image-streams{
     .x-stream{
         margin-bottom: @padding * 2 ;
-       
+
         .x-thumbs{
             min-width: @thumbSize * 3 + @padding * 2;
         }
@@ -1049,63 +1106,8 @@ textarea.ui-input-text {
         text-transform: none;
         vertical-align: middle;
     }
-    
-}
 
-.s-menu-stream{
-    position: relative;
-    margin-bottom: -@padding * 2;
-    background-color: black;
-    margin-left: -@padding * 2;
-    margin-right: -@padding * 2;
-    .s-thumbs-block-overlay{
-        position: absolute;
-        width: 100%;
-        top: 0;
-        left: 0;
-        height: @thumbSize;
-        background: @blackTrans;
-        .s-centered-btn{
-            display: inline-block;
-            width: 160px;
-            position: absolute;
-            left: 50%;
-            margin-left: -80px;
-            top: 50%;
-            margin-top: -18px;
-            border-radius: @cornersRound;
-            .ui-btn-inner{
-                padding-right: 20px;
-                padding-left: 10px;
-                
-            }
-        }
-    }        
-    .s-thumbs-preview-stream{
-        white-space: nowrap;
-        height: @thumbSize;
-        overflow: hidden;
-        li{
-            display: inline-block;
-           
-        }
-        .s-thumb-image{
-            background: @black;
-        }
-    }
-    &.x-loading{
-        .ui-icon-arrow-r{
-            .spinner('@{gfx}@{gfxSpinnerSmallDark}');
-            .spin();
-        }
-    }
-    &.no-images{
-       .ui-icon-arrow-r{
-            display: none;
-        } 
-    }
 }
-
 
 
 // @TUMBLR
@@ -1142,14 +1144,14 @@ textarea.ui-input-text {
                     h4{
                         .heading-font();
                     }
-                    
+
                      blockquote{
                             margin: @padding;
                             border-left: solid 2px @gray;
                             padding-left: @padding * 2;
                             font-family: @fontSerif;
                             font-style: italic;
-                        }                    
+                        }
                 }
                 .s-photo-set {
                     overflow:hidden;
@@ -1186,7 +1188,7 @@ textarea.ui-input-text {
                 }
             }
         }
-      
+
     }
     .s-tumblr-footer{
         .ui-icon-arrow-r{
@@ -1221,7 +1223,7 @@ textarea.ui-input-text {
 }
 
 
-// @FEEDUSER 
+// @FEEDUSER
 
 .s-feed-header.s-inline-header{
     margin-bottom: @padding * 2;
@@ -1230,7 +1232,7 @@ textarea.ui-input-text {
     .s-user-icon-left{
         width: @avatarSizeLarge;
         height: @avatarSizeLarge;
-        
+
         .s-profile-icon,
         .s-avatar-large{
             .border-radius(0);
@@ -1251,7 +1253,7 @@ textarea.ui-input-text {
     .s-username{
         font-size: @fontSizeUsername;
         text-shadow: @white 0px 1px 1px;
-        
+
     }
     .s-follow-btn{
         height: @barHeight;
@@ -1259,7 +1261,7 @@ textarea.ui-input-text {
         .ui-icon{
             background-image: url('@{gfx}@{gfxIcons}');
             width: @gfxIcons-grid;
-        	height: @gfxIcons-grid; 
+        	height: @gfxIcons-grid;
         	margin-top: -@gfxIcons-grid / 2;
         }
     }
@@ -1292,14 +1294,14 @@ textarea.ui-input-text {
                  margin-right: -1px;
             }
         }
-    }     
+    }
     &::after{
         .arrow-up(@arrowSize, @white, @avatarSizeLarge / 2, @avatarSizeLarge + @arrowYShift);
         z-index: 10;
-    } 
+    }
 }
 
-// Nix the rounded top edges when the upload queue shows above 
+// Nix the rounded top edges when the upload queue shows above
 .x-showing-upload-queue{
     .s-feed-header.s-inline-header{
         .s-user-icon-left{
@@ -1417,7 +1419,7 @@ textarea.ui-input-text {
                 text-shadow: none;
                 .button-font-small();
             }
-            
+
             // reactions btn off to the right
             &.s-reactions-button{
                position: absolute;
@@ -1451,7 +1453,7 @@ textarea.ui-input-text {
                     }
                 }
             }
-        
+
         }
 
     }
@@ -1517,7 +1519,7 @@ textarea.ui-input-text {
                     .ui-btn-inner{
                        padding: 2px;
                        width: @gfxDark-grid;
-                       height: @gfxDark-grid; 
+                       height: @gfxDark-grid;
                     }
                     .ui-icon{
                         margin-top: -@gfxDark-grid / 2;
@@ -1566,7 +1568,7 @@ textarea.ui-input-text {
             .s-profile-icon{
                 background-color: @white;
             }
-        }    
+        }
         .s-details{
             padding-left: @avatarSizeLarge + @paddingElement;
             position: relative;
@@ -1649,7 +1651,7 @@ textarea.ui-input-text {
     overflow: hidden;
     .ui-btn-inner{
         .ui-icon{
-            background-image: url('@{gfx}@{gfxDash}');                 
+            background-image: url('@{gfx}@{gfxDash}');
             width: 64px;
             height: 32px;
             top: 6px;
@@ -1673,8 +1675,8 @@ textarea.ui-input-text {
     .s-dash-footer{
         padding-bottom: @padding * 3;
     }
-    
-} 
+
+}
 
 .s-dash-edit-done{
     .x-edit-dash{
@@ -1782,7 +1784,7 @@ textarea.ui-input-text {
         height: @thumbSize + @padding * 6;
     }
     .s-upload-progress-item{
-       
+
         .s-upload-info-block{
             padding-left: @thumbSize + @padding * 2;
              .ui-icon-quote{
@@ -1796,8 +1798,8 @@ textarea.ui-input-text {
                    color: @gray;
                }
             }
-            
-           
+
+
         }
     }
     .s-offline-uploading{
@@ -1861,8 +1863,8 @@ textarea.ui-input-text {
                 background-position: @gfxIcons-delete-x @gfxIcons-y-light;
         }
     }
-    
-   
+
+
 }
 
 
@@ -1873,7 +1875,7 @@ textarea.ui-input-text {
     #description{
         height: 92px;
     }
-   
+
     .s-upload-image-privacy{
         position: relative;
         margin-top: @padding * 2;
@@ -1905,7 +1907,7 @@ textarea.ui-input-text {
         .ui-icon{
             width: @gfxAction-grid;
             height: @gfxAction-grid;
-            background-image: url('@{gfx}@{gfxAction}');             
+            background-image: url('@{gfx}@{gfxAction}');
             display: block;
             position: absolute;
             top: -8px;
@@ -1946,7 +1948,7 @@ textarea.ui-input-text {
         .ui-icon{
             width: @gfxShare-grid;
             height: @gfxShare-grid;
-            background-image: url('@{gfx}@{gfxShare}');             
+            background-image: url('@{gfx}@{gfxShare}');
             display: block!important;
         }
         .ui-btn-text{
@@ -2013,7 +2015,7 @@ textarea.ui-input-text {
                 left: 0;
                 width: @gfxAction-grid;
                 height: @gfxAction-grid;
-                background-image: url('@{gfx}@{gfxAction}');                 
+                background-image: url('@{gfx}@{gfxAction}');
             }
             &.ui-checkbox-on {
                 .ui-icon-checkbox-on{background-position: @gfxAction-x-hover @gfxAction-tick-y;}
@@ -2170,7 +2172,7 @@ textarea.ui-input-text {
         padding-left: @thumbSize + @paddingGrid;
         margin-bottom: @padding * 2 + @paddingGrid;
     }
-    
+
     .s-photo-activity{
         .s-activity-item:first-child{
             border-top: none;
@@ -2185,7 +2187,7 @@ textarea.ui-input-text {
             padding-top: 0!important;
         }
     }
-    
+
     .s-activity-image-item{
         position: relative;
         min-height: @thumbSize;
@@ -2217,7 +2219,7 @@ textarea.ui-input-text {
 #my-account{
     div[data-role="content"]{
         overflow: hidden;
-        
+
     }
 }
 
@@ -2258,7 +2260,7 @@ textarea.ui-input-text {
             padding-left: 8px;
         }
     }
-    
+
     .ui-listview{
         li.ui-btn{
              margin-top:1px;
@@ -2286,7 +2288,7 @@ textarea.ui-input-text {
             border-bottom: none;
         }
     }
-    
+
     .ui-collapsible-set{
         margin-left: -8px;
         margin-right: -8px;
@@ -2330,7 +2332,7 @@ textarea.ui-input-text {
             }
         }
     }
-    
+
 }
 
 
@@ -2506,7 +2508,7 @@ div.ps-carousel-item-loading{
         padding-top: 0;
         padding-bottom: @padding * 2;
         .box-sizing(border-box);
-    }    
+    }
     .s-map-loading{
         position: absolute;
         top: -2px;
@@ -2537,7 +2539,7 @@ div.ps-carousel-item-loading{
             width: 20px;
             top: 0px!important;
             left: -2px;
-            background-position: @gfxBar-x-a - 4px @gfxBar-location-y;            
+            background-position: @gfxBar-x-a - 4px @gfxBar-location-y;
         }
     }
     .s-map-controls{
@@ -2652,9 +2654,9 @@ div.ps-carousel-item-loading{
             }
 
         }
-        
+
     }
-   
+
     .s-disambiguation{
         position: absolute;
         display: none;
@@ -2775,7 +2777,7 @@ div.ps-carousel-item-loading{
     padding-left: @padding;
     padding-right: @padding * 2;
     min-height:@thumbSize;
-    
+
     .s-spot-item {
         min-height: @thumbSize;
         .s-spot-heading {
@@ -2851,7 +2853,7 @@ div.ps-carousel-item-loading{
 }
 
 
-// @SPOT 
+// @SPOT
 // -------------------------
 
 .s-spot-header{
@@ -3015,7 +3017,7 @@ div.ps-carousel-item-loading{
 .s-message-inline{
     .s-message-body{
         margin: @padding * 2;
-    } 
+    }
 }
 
 .s-retry-offline{

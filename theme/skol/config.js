@@ -4,6 +4,8 @@ return {
     config: {
         environment: 'dev',  // from theme.environments below
 
+        language: 'leet',
+
         // sort_order: 'date_added',  // defaults to date_utc the photo was taken. (rating, favorite_count, comment_count, date_local, date_added, date_utc, score, weighted_score)
 
         // initial_view: 'dash',  // "home page"
@@ -62,7 +64,8 @@ return {
     pages: [
         {
             name: 'home',
-            template: theme_templates + 'home'
+            template: theme_templates + 'home',
+            view: theme_views + 'home'
         },
         'about',
         'about-snapr',
@@ -131,7 +134,8 @@ return {
         'twitter-xauth',
         {
             name: 'share',
-            template: theme_templates + 'share'
+            template: theme_templates + 'share',
+            view: theme_views + 'share'
         },
         {
             name: 'user/followers',

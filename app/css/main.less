@@ -121,7 +121,7 @@ div[data-role="header"]{
         a[data-rel="back"]{
             display: none;
         }
-    } 
+    }
 }
 
 
@@ -288,7 +288,27 @@ a:active{
     min-width: 12px;
     text-align: center;
     line-height: 11px;
-    vertical-align: middle;        
+    vertical-align: middle;
+}
+
+.s-bg-load-bar{
+    display: none;
+    height:4px;
+    background: @yellow;
+}
+
+
+.x-bg-loading .s-bg-load-bar{
+    display:block;
+}
+
+.s-bg-loader{
+    position: fixed;
+    background: #C0FFEE;
+    bottom: 10px;
+    left: 10px;
+    top:auto;
+    margin:0;
 }
 
 
@@ -497,15 +517,15 @@ a:active{
 
 // Fullscreen grid for larger phones like the s3
 
-@media only screen and (min-device-width : 719px) and (max-device-width : 721px) and (-webkit-min-device-pixel-ratio : 2) and (orientation : portrait) { 
+@media only screen and (min-device-width : 719px) and (max-device-width : 721px) and (-webkit-min-device-pixel-ratio : 2) and (orientation : portrait) {
     .s-thumbs-grid-med,
     .x-grid .x-feed-images{
         .s-thumb-image{
             width: @thumbSize + 14px;
             height: @thumbSize + 14px;
-            
+
         }
-    }  
+    }
     .s-thumbs-grid-med{
         padding: @padding 0 @padding / 2 @padding / 2 + 2px;
     }
@@ -1058,14 +1078,14 @@ a:active{
         .award-stream {
             margin: 0;
             .x-thumb {
-                
+
                 position: relative;
                 display: inline-block;
 
                 .image-link {
                     overflow: hidden;
                 }
-            
+
                 .ribbon {
                     position: absolute;
                     bottom: -10px;

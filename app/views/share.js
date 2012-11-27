@@ -82,7 +82,8 @@ return page_view.extend({
             camplus: local_storage.get( "camplus" ),
             saved_description: unescape(description),
             saved_location: unescape(location),
-            comp: this.comp
+            comp: this.comp,
+            local_storage: local_storage
         }, ['.x-content']).trigger("create");
 
         if(_.isFunction(callback)){
@@ -130,12 +131,12 @@ return page_view.extend({
                     model.set('location', location);
                 }
 
-                if (local_storage.get( "foursquare-sharing" ) &&
+                if (this.venue_or_geocode() == 'venue' &&
                     !model.get( "location" ).foursquare_venue_id &&
                     local_storage.get( "status" ) != "private"){
                     share_photo_view.get_foursquare_venues();
                 }
-                if( !local_storage.get( "foursquare-sharing" ) && !share_photo_view.query.location ){
+                if( this.venue_or_geocode() == 'grocode' && !share_photo_view.query.location ){
                     share_photo_view.get_reverse_geocode();
                 }
 
@@ -169,14 +170,19 @@ return page_view.extend({
 
         this.render();
 
-        if (local_storage.get( "foursquare-sharing") &&
+        if (this.venue_or_geocode() == 'venue' &&
             !this.model.get("location").foursquare_venue_id &&
             local_storage.get( "status" ) != "private"){
             this.get_foursquare_venues();
         }
-        if(!local_storage.get( "foursquare-sharing" ) && !this.query.location ){
+        if(this.venue_or_geocode() == 'geocode' && !this.query.location ){
             this.get_reverse_geocode();
         }
+    },
+
+    venue_or_geocode: function(){
+        // some apps may override this
+        return local_storage.get( "foursquare-sharing") ? 'venue' : 'geocode';
     },
 
     get_reverse_geocode: function(){
@@ -290,9 +296,9 @@ return page_view.extend({
         // I don't know what this timeout is for, maybe local storage takes a while to actually set.
         setTimeout( function(){
             share_view.render(function(){
-                if (!local_storage.get( "foursquare-sharing" )){
+                if (this.venue_or_geocode() == 'geocode'){
                     share_view.get_reverse_geocode();
-                }else if (status == "public" && local_storage.get( "foursquare-sharing" )){
+                }else if (status == "public" && this.venue_or_geocode() == 'venue'){
                     share_view.get_foursquare_venues();
                 }else{
                     share_view.$(".x-no-foursquare-venue, .x-foursquare-venue").removeClass("x-ajax-loading");

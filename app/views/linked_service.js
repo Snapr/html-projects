@@ -65,7 +65,6 @@ return view.extend({
         var options = {
             success: function(){
                 var parent = config.get('current_view');
-                auth.user_settings.cache_bust();
                 parent.fetch();
             },
             error: function(){

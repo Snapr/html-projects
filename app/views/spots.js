@@ -24,9 +24,7 @@ var spots_view =  page_view.extend({
 
         var this_view = this,
             stored_search_options = local_storage.get("spots-search"),
-            search_options;
-
-        search_options = (stored_search_options) ? _.clone(stored_search_options) : _.clone(this.defaults);
+            search_options = (stored_search_options) ? _.clone(stored_search_options) : _.clone(this.defaults);
 
         var success_callback = function( location ) {
             this.$('.x-location-needed').attr('disabled', false);
@@ -49,7 +47,7 @@ var spots_view =  page_view.extend({
         geo.get_location( success_callback, error_callback );
 
         this.change_page();
-        $.mobile.showPageLoadingMsg();
+        this.show_bg_loader();
 
         // reset values
         if(!search_options.nearby){
@@ -131,7 +129,7 @@ var spots_view =  page_view.extend({
                 success: function () {
                     this_view.xhr = null;
                     this_view.$el.removeClass('x-loading');
-                    $.mobile.hidePageLoadingMsg();
+                    this_view.show_bg_loader(false);
                 }
             });
         }, 300 );

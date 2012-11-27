@@ -17,7 +17,7 @@ Page{
     }
 }
 */
-define(['config', 'backbone', 'views/base/view', 'utils/history_state', 'views/components/offline', 'views/components/tab_bar'], function(config, Backbone, view, history_state, offline_el, tab_bar){
+define(['config', 'backbone', 'views/base/view', 'utils/history_state', 'views/components/offline', 'views/components/bg_loader', 'views/components/tab_bar'], function(config, Backbone, view, history_state, offline_el, bg_loader, tab_bar){
 
 return view.extend({
 
@@ -59,6 +59,8 @@ return view.extend({
 
     activate: function(options){
         options = _.extend(options || {}, this.options);
+
+        this.show_bg_loader(false);
 
         try{
             this.options.back_url = options.query.back_url;
@@ -188,6 +190,19 @@ return view.extend({
         }else{
             history.go(-1);
         }
+    },
+
+    show_bg_loader: function(show){
+        show = show !== false;  // false hides ANYTHING else shows
+        $(document.body).toggleClass('x-bg-loading', show);
+        if(!config.get('show_tab_bar') || !this.$el.data('tab-bar')){
+            if(show){
+                this.$el.append(bg_loader);
+            }else{
+                $(bg_loader).remove();
+            }
+        }
+
     },
 
     offline: function(offline_mode){
