@@ -6,15 +6,23 @@ geo.location_error_callbacks = [];
 geo.cached_location = undefined;
 
 geo.get_location = function ( success, error, no_cache ){
+    console.log('get_location');
+    console.log('geolocation enabled:', config.get('geolocation_enabled'));
 
     if(!config.get('geolocation_enabled')){
         error('Geolocation disabled');
-        geo.update_location(function(){config.set('geolocation_enabled', true);}, $.noop);
         return;
     }
 
-    if(!no_cache && geo.cached_location && geo.cached_location.timestamp + config.get('geolocation_cache_life') > new Date()){
-        if(geo.cached_location.location){
+    console.log('cached value allowed:', !no_cache);
+    console.log('cached value exists:', !!geo.cached_location);
+    console.log('cached value timestamp:', geo.cached_location && geo.cached_location.timestamp.getTime());
+    console.log('cached value valid until:', geo.cached_location && geo.cached_location.timestamp.getTime() + config.get('geolocation_cache_life'));
+    console.log('now:', new Date());
+    console.log('cached value still valid:', geo.cached_location && geo.cached_location.timestamp.getTime() + config.get('geolocation_cache_life') > new Date().getTime());
+    console.log('cached value is error:', geo.cached_location && !geo.cached_location.coords);
+    if(!no_cache && geo.cached_location && geo.cached_location.timestamp.getTime() + config.get('geolocation_cache_life') > new Date().getTime()){
+        if(geo.cached_location.coords){
             success(geo.cached_location);
         }else{
             error('no cached location');
@@ -46,8 +54,6 @@ geo.update_location = function (success, error){
             clearTimeout(timeout);
 
             geo.cached_location = {timestamp: new Date()};
-
-            config.set('geolocation_enabled', false);
 
             error(problem);
         } );
