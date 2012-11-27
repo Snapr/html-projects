@@ -45,8 +45,14 @@ return page_view.extend({
         "click .x-image-toggle": "toggle_photo",
         "click .x-edit-photo": "edit",
         "click .x-camplus-edit-photo": "edit_camplus",
-        "submit form": "share"
+        "submit form": "share",
+        "keypress .x-description": 'log',
+        "blur .x-description": 'log',
+        "focus .x-description": 'log',
+        "click .x-description": 'log'
     },
+
+    log: function(e){console.log(e.type);},
 
     render: function(callback){
         var img_url;
