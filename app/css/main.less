@@ -7,24 +7,6 @@
 // BROWSER DEFAULTS
 // -------------------------
 
-.loader{
-    display: none;
-    height:2px;
-    background: url("http://www.changethethought.com/wp-content/tumblr_le00g4hwgx1qzt4vjo1_500.gif");
-}
-.x-bg-loading .loader{
-    display:block;
-}
-
-.s-bg-loader{
-    position: fixed;
-    background: #C0FFEE;
-    bottom: 10px;
-    left: 10px;
-    top:auto;
-    margin:0;
-}
-
 html {
     -webkit-user-select: none;
     -webkit-text-size-adjust: none;
@@ -306,6 +288,24 @@ a:active{
     text-align: center;
     line-height: 11px;
     vertical-align: middle;
+}
+
+.s-bg-load-bar{
+    display: none;
+    height:2px;
+    background: @yellow;
+}
+.x-bg-loading .s-bg-load-bar{
+    display:block;
+}
+
+.s-bg-loader{
+    position: fixed;
+    background: #C0FFEE;
+    bottom: 10px;
+    left: 10px;
+    top:auto;
+    margin:0;
 }
 
 
