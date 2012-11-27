@@ -260,9 +260,39 @@ a:active {
   vertical-align: middle;
 }
 .s-bg-load-bar {
-  display: none;
-  height: 2px;
+  display: block!important;
+  height: 10px;
   background: #ffff00;
+  -webkit-background-size: 10px 10px;
+  -moz-background-size: 10px 10px;
+  -o-background-size: 10px 10px;
+  background-size: 10px 10px;
+  background-color: #cccc00;
+  background-image: -moz-linear-gradient(left, #ffff00, #cccc00);
+  background-image: -webkit-gradient(linear, 0 0, 100% 0, from(#ffff00), to(#cccc00));
+  background-image: -webkit-linear-gradient(left, #ffff00, #cccc00);
+  background-image: -o-linear-gradient(left, #ffff00, #cccc00);
+  background-image: linear-gradient(to right, #ffff00, #cccc00);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff00', endColorstr='#ffcccc00', GradientType=1);
+  -webkit-animation: animate-bar 1s linear infinite;
+  -moz-animation: animate-bar 1s linear infinite;
+}
+@-webkit-keyframes animate-bar {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 10px 0;
+  }
+}
+@-moz-keyframes animate-bar {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 10px 0;
+  }
 }
 .x-bg-loading .s-bg-load-bar {
   display: block;

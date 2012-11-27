@@ -291,10 +291,25 @@ a:active{
 }
 
 .s-bg-load-bar{
-    display: none;
-    height:2px;
+    display: block!important;
+    height:10px;
     background: @yellow;
+    .background-size(10px 10px);
+    #gradient > .horizontal(@yellow, darken(@yellow, 10%));
+    -webkit-animation: animate-bar 1s linear infinite;
+    -moz-animation: animate-bar 1s linear infinite;
 }
+
+@-webkit-keyframes animate-bar { 
+	0% {background-position: 0 0;} 
+	100% {background-position: 10px 0;}
+}
+
+@-moz-keyframes animate-bar {
+	0% {background-position: 0 0;} 
+	100% {background-position: 10px 0;}
+}
+
 .x-bg-loading .s-bg-load-bar{
     display:block;
 }
