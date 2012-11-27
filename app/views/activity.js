@@ -96,7 +96,7 @@ var activity_stream = view.extend({
             }
 
             if (summary[type]){
-                stream_summary += summary[ type ] + " " + type + string_utils.plural( summary[ type ] ) + " " ;
+                stream_summary += summary[ type ] + " " + T(type + string_utils.plural( summary[ type ] )) + " " ;
             }
         });
 

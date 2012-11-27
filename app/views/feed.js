@@ -1,4 +1,4 @@
-/*global _  define require */
+/*global _  define require T */
 define(
     [
         'backbone',
@@ -63,19 +63,19 @@ var feed_view =  page_view.extend({
         this.query = this.options.query || {};
 
         if (this.query.photo_id){
-            this.title = "Back";
+            this.title = T("Back");
         }else if (this.query.username){
-            this.title = 'Feed';
+            this.title = T('Feed');
         }else if (this.query.keywords){
             this.title = this.feed_parameter;
         }else if (this.query.area){
-            this.title = "Location";
+            this.title = T("Location");
         }else if (this.query.favorited_by){
-            this.title = "Favorites";
+            this.title = T("Favorites");
         }else if (this.query.spot && this.query.venue_name){
-            this.title = "Spot";
+            this.title = T("Spot");
         }else{
-            this.title = "Feed";
+            this.title = T("Feed");
         }
 
         var list_style = this.query.list_style || 'list';
@@ -196,7 +196,7 @@ var feed_view =  page_view.extend({
             this.photo_collection.data = $.extend(this.photo_collection.data, additional_data);
         }
 
-        $.mobile.loadingMessage = "Loading";
+        $.mobile.loadingMessage = T("Loading");
         $.mobile.showPageLoadingMsg();
 
         this.photo_collection.fetch( options );
@@ -333,7 +333,7 @@ var feed_list = view.extend({
 
         this.list_style = this.options.list_style || 'list';
 
-        this.back = this.options.back || "Back";
+        this.back = this.options.back || T("Back");
 
         this.list_content = [];
 
@@ -362,7 +362,7 @@ var feed_list = view.extend({
                 });
             }
         }else{
-            no_results.render('No Photos', 'delete').$el.appendTo(this.$el);
+            no_results.render(T('No Photos'), 'delete').$el.appendTo(this.$el);
         }
 
         // create jquery mobile markup, set to listview and refresh
@@ -498,12 +498,12 @@ var feed_li =  view.extend({
         this.$('.x-reactions-button').toggleClass('selected');
 
         if (this.$('.x-reactions-list:visible').length){
-            this.$('.x-reactions-button .ui-btn-text').text('show');
+            this.$('.x-reactions-button .ui-btn-text').text(T('show'));
             this.$('.x-reactions-list').hide();
             this.hide_comment_form();
         }
         else{
-            this.$('.x-reactions-button .ui-btn-text').text('hide');
+            this.$('.x-reactions-button .ui-btn-text').text(T('hide'));
             this.$('.x-reactions-button').x_loading();
             this.load_reactions();
             this.$('.x-reactions-list').show();
@@ -669,16 +669,16 @@ var feed_li =  view.extend({
         photo.$('.x-image-flag').x_loading();
         auth.require_login( function(){
             alerts.approve({
-                'title': 'Flag this image as innapropriate?',
-                'yes': 'Flag',
-                'no': 'Cancel',
+                'title': T('Flag this image as innapropriate?'),
+                'yes': T('Flag'),
+                'no': T('Cancel'),
                 'yes_callback': function(){
                     photo.model.flag({
                         success: function( resp ){
                             if (resp.success){
                                 photo.model.set({flagged: true});
                                 photo.render_actions();
-                                alerts.notification("Flagged", "Thanks, a moderator will review this image shortly");
+                                alerts.notification(T("Flagged"), T("Thanks, a moderator will review this image shortly"));
                             }else{
                                 console.warn("error flagging photo", resp);
                             }
@@ -700,9 +700,9 @@ var feed_li =  view.extend({
         photo.$('.x-image-delete').x_loading();
         auth.require_login( function(){
             alerts.approve({
-                'title': 'Are you sure you want to delete this photo?',
-                'yes': 'Delete',
-                'no': 'Cancel',
+                'title': T('Are you sure you want to delete this photo?'),
+                'yes': T('Delete'),
+                'no': T('Cancel'),
                 'yes_callback': function(){
                     photo.model['delete']({
                         success: function( resp ){

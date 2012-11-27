@@ -1,4 +1,4 @@
-/*global _  define require */
+/*global _  define require T */
 define(['config', 'views/base/page', 'collections/user', 'views/components/no_results', 'views/people_li'],
     function(config, page_view, user_collection, no_results, people_li){
 return page_view.extend({
@@ -32,18 +32,18 @@ return page_view.extend({
 
         switch (options.follow){
             case "following":
-                this.$("h1").text("Following");
-                this.$(".x-search-field").val('').attr("placeholder", "Search users " + options.query.username + " is following\u2026" );
+                this.$("h1").text(T("Following"));
+                this.$(".x-search-field").val('').attr("placeholder", T("Search users")+" " + options.query.username + " "+T("is following")+"\u2026" );
                 this.collection.get_following( options.query.username );
                 break;
             case "followers":
-                this.$("h1").text("Followers");
-                this.$(".x-search-field").val('').attr("placeholder", "Search " + options.query.username + "'s followers\u2026" );
+                this.$("h1").text(T("Followers"));
+                this.$(".x-search-field").val('').attr("placeholder", T("Search")+" " + options.query.username + "'s "+T("followers")+"\u2026" );
                 this.collection.get_followers( options.query.username );
                 break;
             default:
-                this.$("h1").text("Search");
-                this.$(".x-search-field").val(options.query.username).attr("placeholder", "Search users\u2026" );
+                this.$("h1").text(T("Search"));
+                this.$(".x-search-field").val(options.query.username).attr("placeholder", T("Search users")+"\u2026" );
 
                 var this_view = this;
                 this_view.$el.addClass('x-loading');
@@ -87,7 +87,7 @@ return page_view.extend({
 
             });
         }else{
-            no_results.render('Oops.. Nobody here yet.', 'delete').$el.insertBefore(people_list);
+            no_results.render(T('Oops.. Nobody here yet.'), 'delete').$el.insertBefore(people_list);
         }
 
         this.$el.removeClass('x-loading');

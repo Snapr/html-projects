@@ -1,7 +1,7 @@
-<div id="popular" data-title="Popular" data-tab-bar="true" data-add-back-btn="true" data-role="page" data-theme="d">
+<div id="popular" data-title="<%= T('Popular') %>" data-tab-bar="true" data-add-back-btn="true" data-role="page" data-theme="d">
     <div data-role="header" data-theme="b">
 
-        <h1>Popular</h1>
+        <h1><%= T('Popular') %></h1>
 
         <div class="ui-btn-right" data-ajax="false">
             <a href="#/search/" data-snapr-dialog="true" data-role="button" data-icon="search" data-iconpos="notext"></a>
@@ -13,9 +13,9 @@
 
         <div data-role="navbar" data-theme="e" class="ui-body-e">
             <ul id="popular-timeframe" class="x-timeframe">
-                <li><a id="popular-time-today" class="x-time-today">Today</a></li>
-                <li><a id="popular-time-week" class="x-time-week">Week</a></li>
-                <li><a id="popular-time-all" class="x-time-all">All</a></li>
+                <li><a id="popular-time-today" class="x-time-today"><%= T('Today') %></a></li>
+                <li><a id="popular-time-week" class="x-time-week"><%= T('Week') %></a></li>
+                <li><a id="popular-time-all" class="x-time-all"><%= T('All') %></a></li>
             </ul>
         </div>
 

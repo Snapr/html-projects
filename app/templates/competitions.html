@@ -1,6 +1,6 @@
- <div id="comp" data-title="Comps" data-add-back-btn="true" data-role="page" data-theme="d">
+ <div id="comp" data-title="<%= T('Comps') %>" data-add-back-btn="true" data-role="page" data-theme="d">
     <div data-role="header" data-theme="b">
-        <h1>Comps</h1>
+        <h1><%= T('Comps') %></h1>
 
         <div class="ui-btn-right" data-ajax="false">
             <a href="#/search/" data-snapr-dialog="true" data-role="button" data-icon="search" data-iconpos="notext"></a>
@@ -14,12 +14,12 @@
                 <img class="banner" src="<%= comp.get('banner').mobile %>">
 
                 <% if(comp.get('status') == 'open'){ %>
-                    <h2>Enter Now</h2>
+                    <h2><%= T('Enter Now') %></h2>
                     <% if(comp.get('closing_date')){ %>
-                        <p>Submissions close <%= string_utils.short_timestamp(comp.get('closing_date')) %></p>
+                        <p><%= T('Submissions close') %> <%= string_utils.short_timestamp(comp.get('closing_date')) %></p>
                     <% } %>
 
-                    <a class="x-launch-camera-options" data-extra_params="comp_id=<%= comp.get('id') %>">Enter Now</a>
+                    <a class="x-launch-camera-options" data-extra_params="comp_id=<%= comp.get('id') %>"><%= T('Enter Now') %></a>
 
                     <hr>
                 <% } %>

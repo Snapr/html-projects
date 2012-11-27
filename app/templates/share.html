@@ -1,13 +1,12 @@
-<div id="share" class="s-share-photo" data-role="page" data-short-title="Share" data-theme="a" class="x-no-drag" data-ajax="false">
+<div id="share" class="s-share-photo" data-role="page" data-short-title="<%= T('Share') %>" data-theme="a" class="x-no-drag" data-ajax="false">
     <div data-role="header">
         <a href="#/" data-role="button" data-icon="delete" data-iconpos="notext"></a>
-        <h1>Share</h1>
+        <h1><%= T('Share') %></h1>
     </div>
     <div data-role="content" data-theme="a">
         <div class="x-content">
             <% if(obj.photo){ %>
                 <form action="javascript: void(0);" >
-
 
                     <div class="s-image-bg-layer s-full-height s-trans-bg">
                         <div class="s-image-placeholder">
@@ -16,7 +15,7 @@
 
                         <div class="s-image-toggle x-image-toggle s-show-share-settings action-icons">
                             <a data-role="button" data-icon="arrow-u" data-iconpos="right" >
-                                Show Options
+                                <%= T('Show Options') %>
                             </a>
                         </div>
                     </div>
@@ -27,7 +26,7 @@
                     <div class="s-full-height s-trans-bg s-share-settings-bg-layer">
                         <div class="s-image-toggle x-image-toggle action-icons">
                             <a class="" data-role="button" data-icon="arrow-d" data-iconpos="right" >
-                                Show Photo
+                                <%= T('Show Photo') %>
                             </a>
                         </div>
                     </div>
@@ -35,7 +34,7 @@
                     <div class="s-share-settings-layer s-trans-bg">
                         <div class="s-share-settings">
                                 <% if(comp){ %>Comp: <%= comp.get('title') %><% } %>
-                                <textarea name="description" id="description" class="x-description" placeholder="Add text..." data-theme="d"><%= saved_description %></textarea>
+                                <textarea name="description" id="description" class="x-description" placeholder="<%= T('Add text') %>..." data-theme="d"><%= saved_description %></textarea>
 
                                 <% if(comp && comp.has('hashtag')){ %><span class="s-comp-hashtag"><%= comp.get('hashtag') %></span><% } %>
 
@@ -48,7 +47,7 @@
 
 
                                 <fieldset data-role="controlgroup" data-type="horizontal" class="x-image-sharing s-upload-image-sharing">
-                                    <legend>Share to:</legend>
+                                    <legend><%= T('Share to') %>:</legend>
 
                                     <input type="checkbox" name="tweet" id="twitter-sharing"
                                     <%if (status == "private"){%>disabled="true"<%}%>
@@ -91,9 +90,9 @@
                                                       <%= saved_location %>
                                                     <% }else{ %>
                                                       <% if (share_location){ %>
-                                                          Getting location&hellip;
+                                                          <%= T('Getting location') %>&hellip;
                                                       <% }else{ %>
-                                                          Share location.
+                                                          <%= T('Share location') %>.
                                                       <% } %>
                                                     <% } %>
                                                 <% } %>
@@ -110,7 +109,7 @@
                                                 <% if (photo.attributes.location && photo.attributes.location.foursquare_venue_name){%>
                                                     <%= photo.attributes.location.foursquare_venue_name %>
                                                 <%}else{%>
-                                                    Getting Venue&hellip;
+                                                    <%= T('Getting Venue') %>&hellip;
                                                 <%}%>
                                             </span>
                                         </a>
@@ -119,7 +118,7 @@
                                         <a data-role="button" data-icon="arrow-right">
                                             <span class="ui-icon ui-icon-location"></span>
                                             <span>
-                                                Location Disabled
+                                                <%= T('Location Disabled') %>
                                             </span>
                                         </a>
                                     </div>
@@ -128,13 +127,13 @@
                                 <div class="ui-grid-b">
                                     <div class="ui-block-a">
                                         <% if (camplus){ %>
-                                        <a data-role="button" data-theme="a" class="x-camplus-edit-photo camplus-icon">Edit with Camera&#43;</a>
+                                        <a data-role="button" data-theme="a" class="x-camplus-edit-photo camplus-icon"><%= T('Edit with') %> Camera&#43;</a>
                                         <% } %>
                                     </div>
 
                                     <div class="ui-block-b">
                                     <% if (edit){ %>
-                                        <a data-role="button" data-theme="g" class="x-edit-photo">Edit</a>
+                                        <a data-role="button" data-theme="g" class="x-edit-photo"><%= T('Edit') %></a>
                                     <% } %>
                                     </div>
 

@@ -1,6 +1,6 @@
 // abstract base class for both twitter and facebook
 
-/*global _  define require */
+/*global _  define require T */
 define(['config', 'views/base/page', 'collections/user', 'views/people_li', 'views/linked_service', 'views/components/no_results',
     'utils/link_service', 'auth'],
 function(config, page_view, user_collection, people_li, link_service_view, no_results, link_service, auth){
@@ -50,7 +50,7 @@ var find_friends = page_view.extend({
                 people_list.append( li.render().el );
             });
         }else{
-            no_results.render('Oops.. Nobody here yet.', 'delete').$el.insertBefore(people_list);
+            no_results.render('T(Oops.. Nobody here yet).', 'delete').$el.insertBefore(people_list);
         }
 
         people_list.listview().listview("refresh");

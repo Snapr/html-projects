@@ -1,16 +1,16 @@
 <% switch (type){
     case "follow":%>
-        <em><%= user.display_username %></em> is now following you
+        <em><%= user.display_username %></em> <%= T('is now following you') %>
     <%  break;
     case "favorite":%>
-        <em><%= user.display_username %></em> liked your photo
+        <em><%= user.display_username %></em> <%= T('liked your photo') %>
     <%  break;
     case "comment":%>
-        <em><%= user.display_username %></em> commented on your photo
+        <em><%= user.display_username %></em> <%= T('commented on your photo') %>
     <%  break;
     case "comment-on-comment":%>
-        <em><%= user.display_username %></em> posted a comment
+        <em><%= user.display_username %></em> <%= T('posted a comment') %>
     <%  break;
     default: %>
-        No news yet..
+        <%= T('No news yet') %>..
 <%}%>

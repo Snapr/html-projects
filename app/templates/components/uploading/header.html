@@ -14,7 +14,7 @@
             <!-- //Active uploads -->
             <% switch (upload_status) { case 'active': %>
                 <% if (percent_complete == 100){ %>
-                    <span class="s-upload-message">Finishing</span>
+                    <span class="s-upload-message"><%= T('Finishing') %></span>
                     <a class="s-bar-action">
                         <span class="ui-icon ui-icon-spinner"></span>
                     </a>
@@ -28,20 +28,20 @@
                     </a>
                 <% } %>
             <% break; case 'waiting': %>
-                <span class="s-upload-message">Waiting</span>
+                <span class="s-upload-message"><%= T('Waiting') %></span>
                 <a class="s-bar-action x-cancel-upload">
                     <span class="ui-icon ui-icon-delete"></span>
                 </a>
             <% break; case 'canceled': %>
-                <span class="s-upload-message">Canceled</span>
+                <span class="s-upload-message"><%= T('Canceled') %></span>
 
             <% break; case 'queued': %>
-                <span class="s-upload-message">Queued</span>
+                <span class="s-upload-message"><%= T('Queued') %></span>
                 <a class="s-bar-action">
                     <span class="ui-icon ui-icon-refresh"></span>
                 </a>
             <% break; case 'completed': %>
-                <span class="s-upload-message">Complete</span>
+                <span class="s-upload-message"><%= T('Complete') %></span>
                 <a class="s-bar-action">
                     <span class="ui-icon ui-icon-check"></span>
                 </a>

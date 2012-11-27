@@ -1,5 +1,5 @@
 // Base class side-scroll views
-/*global _ define */
+/*global _ define T */
 define(['backbone', 'views/base/side_scroll', 'config'],
     function(Backbone, side_scroll, config){
 return side_scroll.extend({
@@ -73,21 +73,21 @@ return side_scroll.extend({
             if(scroller.x > pull_distance){
                 left_pull_el.addClass('x-flipped');
                 if(!scroll_el.is('.x-loading')){
-                    left_pull_msg.text('release');
+                    left_pull_msg.text(T('release'));
                 }
             }else{
                 left_pull_el.removeClass('x-flipped');
-                left_pull_msg.text('Load Newer');
+                left_pull_msg.text(T('Load Newer'));
             }
             if(!scroll_el.is('.x-no-more')){
                 if(scroller.x < (scroller.maxScrollX - pull_distance)){
                     right_pull_el.addClass('x-flipped');
                     if(!scroll_el.is('.loading')){
-                        right_pull_msg.text('release');
+                        right_pull_msg.text(T('release'));
                     }
                 }else{
                     right_pull_el.removeClass('x-flipped');
-                    right_pull_msg.text('Load More');
+                    right_pull_msg.text(T('Load More'));
                 }
             }
         }
@@ -125,7 +125,7 @@ return side_scroll.extend({
                     var scroller;
                     if(left_pull_el.is('.x-flipped') && !scroll_el.is('.x-loading')){
                         scroll_el.addClass('x-loading');
-                        left_pull_msg.text('Loading...');
+                        left_pull_msg.text(T('Loading'));
                         scroller = this;
                         collection.fetch_newer({
                             data: {n: config.get('side_scroll_more')},
@@ -134,12 +134,12 @@ return side_scroll.extend({
                                     scroller.scrollToPage(1);
                                 }
                                 scroll_el.removeClass('x-loading');
-                                left_pull_msg.text('Load More');
+                                left_pull_msg.text(T('Load More'));
                             }
                         });
                     }else if(right_pull_el.is('.x-flipped') && !scroll_el.is('.x-loading') && !scroll_el.is('.x-no-more')){
                         scroll_el.addClass('x-loading');
-                        right_pull_msg.text('Loading');
+                        right_pull_msg.text(T('Loading'));
                         scroller = this;
                         var options  = {
                             data: {n: config.get('side_scroll_more')},
@@ -148,14 +148,14 @@ return side_scroll.extend({
                                     if(scroller.currPageX === scroller.pagesX.length){
                                         scroller.scrollToPage(scroller.pagesX.length - 1);
                                     }
-                                    right_pull_msg.text('Load More');
+                                    right_pull_msg.text(T('Load More'));
                                 }else{
                                     if(scroller.currPageX === scroller.pagesX.length){
                                         scroller.scrollToPage(scroller.pagesX.length - 1);
                                     }
 
                                     scroll_el.addClass('x-no-more');
-                                    right_pull_msg.text('The End');
+                                    right_pull_msg.text(T('The End'));
                                 }
                                 scroll_el.removeClass('x-loading');
                             }

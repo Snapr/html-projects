@@ -1,6 +1,6 @@
-<div id="tumblr-posts" data-tab-bar="true" data-title="Tumblr blog" data-add-back-btn="true" data-role="page" data-theme="d">
+<div id="tumblr-posts" data-tab-bar="true" data-title="Tumblr <%= T('blog') %>" data-add-back-btn="true" data-role="page" data-theme="d">
     <div data-role="header" data-theme="b">
-        <h1>News</h1>
+        <h1><%= T('News') %></h1>
         <div class="ui-btn-right" data-ajax="false">
             <a href="#/search/" data-snapr-dialog="true" data-role="button" data-icon="search" data-iconpos="notext"></a>
             <a href="#/home/" data-role="button" data-icon="home" data-iconpos="notext"></a>
@@ -46,7 +46,7 @@
 
                             <div id="post-<%= post.get('id') %>" class="s-post-<%= post.get('type') %> s-tumblr-post">
                                 <div class="s-tumblr-body">
-                                
+
                                 <h4>
                                     <% if(post.get('title') != ""){%>
                                     <a href="<%=post.get('url')%>"><%=post.get('title')%> <span class="s-tumblr-extra">&rarr;</span></a>
@@ -101,7 +101,7 @@
                                     <audio controls preload="none" src="<%= post.get('audio_url') %>"></audio>
                                     <p>
                                     <%if(post.get('track_name') || post.get('artist') || post.get('album')) { %>
-                                        <% if(post.get('artist')) { %><strong><%= post.get('track_name') %></strong><% } %>                                    
+                                        <% if(post.get('artist')) { %><strong><%= post.get('track_name') %></strong><% } %>
                                         <% if(post.get('artist')) { %> by <em class="s-tumblr-artist-name"><%= post.get('artist') %></em><% } %>
                                         <% if(post.get('album')) { %> from <em class="s-tumblr-album-name"><%= post.get('album') %></em> <% } %>
                                     <% } %>
@@ -129,7 +129,7 @@
         <div class="x-tumblr-footer s-tumblr-footer">
             <% if(obj.host){ %>
                 <a href="http://<%= host %>/" data-role="button" data-iconpos="right" data-icon="arrow-r" data-theme="z" data-corners="false" data-shadow="false">
-                    <span class="s-tumblr-credit">View on <span class="hide">Tumblr</span></span>
+                    <span class="s-tumblr-credit"><%= T('View on') %> <span class="hide">Tumblr</span></span>
                 </a>
             <% } %>
         </div>
