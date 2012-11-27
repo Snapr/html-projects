@@ -1,0 +1,404 @@
+// ICON SPRITES
+//--------------------------
+
+// PATHS
+// -------------------------
+@gfx:                           '../gfx/';
+@gfxRetina:                     '../gfx/retina/';
+@gfxHDPI:                       '../gfx/hdpi/';
+
+
+// TOPBAR
+// -------------------------
+@gfxTopBar:                     'top-bar-icons.png';
+@gfxTopBar-width:               240px;
+@gfxTopBar-height:              560px;
+@gfxTopBar-grid:                40px;
+
+@gfxTopBar-search-icon-y:       -0 * @gfxTopBar-grid; 
+@gfxTopBar-home-icon-y:         -1 * @gfxTopBar-grid;
+@gfxTopBar-close-icon-y:        -2 * @gfxTopBar-grid;
+@gfxTopBar-settings-icon-y:     -3 * @gfxTopBar-grid;
+@gfxTopBar-location-icon-y:     -4 * @gfxTopBar-grid;
+@gfxTopBar-camroll-icon-y:      -5 * @gfxTopBar-grid;
+@gfxTopBar-camera-icon-y:       -6 * @gfxTopBar-grid;
+@gfxTopBar-tick-icon-y:         -7 * @gfxTopBar-grid;
+@gfxTopBar-join-icon-y:         -8 * @gfxTopBar-grid;
+@gfxTopBar-info-icon-y:         -9 * @gfxTopBar-grid;
+@gfxTopBar-map-icon-y:         -10 * @gfxTopBar-grid;
+
+
+@gfxTopBar-x-a:                 -0 * @gfxTopBar-grid;
+@gfxTopBar-x-a-hover:           -1 * @gfxTopBar-grid;
+@gfxTopBar-x-b:                 -2 * @gfxTopBar-grid;
+@gfxTopBar-x-b-hover:           -3 * @gfxTopBar-grid;
+@gfxTopBar-x-c:                 -4 * @gfxTopBar-grid;
+@gfxTopBar-x-c-hover:           -5 * @gfxTopBar-grid;
+
+
+// MENU
+// -------------------------
+@gfxMenu:                       'menu-icons.png';
+@gfxMenu-width:                 50px;
+@gfxMenu-height:                800px;
+@gfxMenu-grid:                  50px;
+
+@gfxMenu-camera-y:              -0 * @gfxMenu-grid; 
+@gfxMenu-camera-lib-y:          -1 * @gfxMenu-grid;
+@gfxMenu-dashboard-y:           -2 * @gfxMenu-grid;
+@gfxMenu-feed-y:                -3 * @gfxMenu-grid;
+@gfxMenu-popular-y:             -4 * @gfxMenu-grid;
+@gfxMenu-map-y:                 -5 * @gfxMenu-grid;
+@gfxMenu-my-account-y:          -6 * @gfxMenu-grid;
+@gfxMenu-cities-y:              -7 * @gfxMenu-grid;
+@gfxMenu-spots-y:               -8 * @gfxMenu-grid;
+@gfxMenu-info-y:                -9 * @gfxMenu-grid;
+@gfxMenu-activity-y:            -10 * @gfxMenu-grid;
+@gfxMenu-leaderboard-y:         -11 * @gfxMenu-grid;
+@gfxMenu-join-y:                -12 * @gfxMenu-grid;
+@gfxMenu-login-y:               -13 * @gfxMenu-grid;
+@gfxMenu-arrow-r-y:             -14 * @gfxMenu-grid;
+@gfxMenu-tumblr-y:              -15 * @gfxMenu-grid;
+
+@gfxMenu-x:                     -0 * @gfxMenu-grid;
+
+
+// TAB BAR
+// -------------------------
+@gfxTabBar:                     'tab-bar-icons.png';
+@gfxTabBar-width:               64px;
+@gfxTabBar-height:              192px;
+@gfxTabBar-grid:                32px;
+
+@gfxTabBar-dash-y:              -0 * @gfxTabBar-grid; 
+@gfxTabBar-popular-y:           -1 * @gfxTabBar-grid;
+@gfxTabBar-camera-y:            -2 * @gfxTabBar-grid;
+@gfxTabBar-map-y:               -3 * @gfxTabBar-grid;
+@gfxTabBar-spots-y:             -4 * @gfxTabBar-grid;
+@gfxTabBar-user-y:              -5 * @gfxTabBar-grid;
+
+@gfxTabBar-x:                   -0 * @gfxTabBar-grid;
+@gfxTabBar-x-hover:             -1 * @gfxTabBar-grid;
+
+
+// GENERAL ICONS
+// -------------------------
+@gfxIcons:                     'general-jquerymob-icons.png';
+@gfxIcons-width:                774px;
+@gfxIcons-height:               180px;
+@gfxIcons-grid:                 36px;
+@gfxIcons-offset-x:             9px; //The jQuery mob sprite has the icons left aligned instead of centered..
+
+@gfxIcons-plus-x:               -0 * @gfxIcons-grid + @gfxIcons-offset-x; 
+@gfxIcons-minus-x:              -1 * @gfxIcons-grid + @gfxIcons-offset-x ;
+@gfxIcons-delete-x:             -2 * @gfxIcons-grid + @gfxIcons-offset-x;
+@gfxIcons-arrow-r-x:            -3 * @gfxIcons-grid + @gfxIcons-offset-x;
+@gfxIcons-arrow-l-x:            -4 * @gfxIcons-grid + @gfxIcons-offset-x; 
+@gfxIcons-arrow-u-x:            -5 * @gfxIcons-grid + @gfxIcons-offset-x;
+@gfxIcons-arrow-d-x:            -6 * @gfxIcons-grid + @gfxIcons-offset-x;
+@gfxIcons-check-x:              -7 * @gfxIcons-grid + @gfxIcons-offset-x;
+@gfxIcons-gear-x:               -8 * @gfxIcons-grid + @gfxIcons-offset-x; 
+@gfxIcons-refresh-x:            -9 * @gfxIcons-grid + @gfxIcons-offset-x;
+@gfxIcons-forward-x:            -10 * @gfxIcons-grid + @gfxIcons-offset-x;
+@gfxIcons-back-x:               -11 * @gfxIcons-grid + @gfxIcons-offset-x;
+@gfxIcons-grid-x:               -12 * @gfxIcons-grid + @gfxIcons-offset-x; 
+@gfxIcons-star-x:               -13 * @gfxIcons-grid + @gfxIcons-offset-x;
+@gfxIcons-alert-x:              -14 * @gfxIcons-grid + @gfxIcons-offset-x;
+@gfxIcons-info-x:               -15 * @gfxIcons-grid + @gfxIcons-offset-x;
+@gfxIcons-home-x:               -16 * @gfxIcons-grid + @gfxIcons-offset-x;
+@gfxIcons-search-x:             -17 * @gfxIcons-grid + @gfxIcons-offset-x;
+
+@gfxIcons-y-light:              -0 * @gfxIcons-grid;
+@gfxIcons-y-med:                -1 * @gfxIcons-grid;
+@gfxIcons-y-dark:               -2 * @gfxIcons-grid;
+@gfxIcons-y-color:              -3 * @gfxIcons-grid;
+@gfxIcons-y-highlight:          -4 * @gfxIcons-grid;
+
+
+// ACTION ICONS
+// -------------------------
+@gfxAction:                     'action-icons-custom.png';
+@gfxAction-width: 80px;
+@gfxAction-height: 440px;
+@gfxAction-grid: 40px;
+
+@gfxAction-heart-y:             -0 * @gfxAction-grid; 
+@gfxAction-comment-y:           -1 * @gfxAction-grid;
+@gfxAction-share-y:             -2 * @gfxAction-grid;
+@gfxAction-more-y:              -3 * @gfxAction-grid;
+@gfxAction-toggle-y:            -4 * @gfxAction-grid;
+@gfxAction-toggle-up-y:         -5 * @gfxAction-grid;
+@gfxAction-close-y:             -6 * @gfxAction-grid;
+@gfxAction-tick-y:              -7 * @gfxAction-grid;
+@gfxAction-arrow-right-y:       -8 * @gfxAction-grid;
+@gfxAction-venue-y:             -9 * @gfxAction-grid;
+@gfxAction-location-y:          -10 * @gfxAction-grid;
+
+@gfxAction-x:                   -0 * @gfxAction-grid;
+@gfxAction-x-hover:             -1 * @gfxAction-grid;
+
+
+
+// DARK ACTION ICONS
+// -------------------------
+@gfxDark:                       'action-icons-dark.png';
+@gfxDark-width:                 80px;
+@gfxDark-height:                520px;
+@gfxDark-grid:                  40px;
+
+@gfxDark-settings-y:            -0 * @gfxDark-grid; 
+@gfxDark-flag-y:                -1 * @gfxDark-grid;
+@gfxDark-delete-y:              -2 * @gfxDark-grid;
+@gfxDark-download-y:            -3 * @gfxDark-grid;
+@gfxDark-twitter-y:             -4 * @gfxDark-grid;
+@gfxDark-facebook-y:            -5 * @gfxDark-grid;
+@gfxDark-tumblr-y:              -6 * @gfxDark-grid;
+@gfxDark-foursquare-y:          -7 * @gfxDark-grid;
+@gfxDark-email-y:               -8 * @gfxDark-grid;
+@gfxDark-feed-y:                -9 * @gfxDark-grid;
+@gfxDark-grid-y:                -10 * @gfxDark-grid;
+@gfxDark-spots-y:               -11 * @gfxDark-grid;
+@gfxDark-photos-y:              -12 * @gfxDark-grid;
+
+@gfxDark-x:                     -0 * @gfxDark-grid;
+@gfxDark-x-hover:               -1 * @gfxDark-grid;
+
+
+// SHARE ICONS
+// -------------------------
+@gfxShare:                      'share-icons-large.png';
+@gfxShare-width:                84px;
+@gfxShare-height:               168px;
+@gfxShare-grid:                 42px;
+
+@gfxShare-twitter-y:            -0 * @gfxShare-grid; 
+@gfxShare-facebook-y:           -1 * @gfxShare-grid;
+@gfxShare-tumblr-y:             -2 * @gfxShare-grid;
+@gfxShare-foursquare-y:         -3 * @gfxShare-grid;
+
+@gfxService-x:                    -0 * @gfxShare-grid;
+@gfxService-x-hover:              -1 * @gfxShare-grid;
+
+
+// SHARE ICONS SMALL
+// -------------------------
+@gfxShareSmall:                 'share-icons-small.png';
+@gfxShareSmall-width:           21px;
+@gfxShareSmall-height:          84px;
+@gfxShareSmall-grid:            21px;
+
+@gfxShareSmall-twitter-y:       -0 * @gfxShareSmall-grid; 
+@gfxShareSmall-facebook-y:      -1 * @gfxShareSmall-grid;
+@gfxShareSmall-tumblr-y:        -2 * @gfxShareSmall-grid;
+@gfxShareSmall-foursquare-y:    -3 * @gfxShareSmall-grid;
+
+@gfxShareSmall-x:               0;
+
+
+// UI BAR ICONS
+// -------------------------
+@gfxBar:                'ui-bar-icons.png';
+@gfxBar-width:          160px;
+@gfxBar-height:         512px;
+@gfxBar-grid:           32px;
+
+
+@gfxBar-open-y:         -0 * @gfxBar-grid; 
+@gfxBar-closed-y:        -1 * @gfxBar-grid; 
+@gfxBar-arrowR-y:       -2 * @gfxBar-grid; 
+@gfxBar-heart-y:        -3 * @gfxBar-grid; 
+@gfxBar-venue-y:        -4 * @gfxBar-grid; 
+@gfxBar-person-y:       -5 * @gfxBar-grid;
+@gfxBar-search-y:       -6 * @gfxBar-grid;
+@gfxBar-activity-y:     -7 * @gfxBar-grid;
+@gfxBar-location-y:     -8 * @gfxBar-grid; 
+@gfxBar-clock-y:        -9 * @gfxBar-grid;
+@gfxBar-connection-y:   -10 * @gfxBar-grid;
+@gfxBar-blog-y:         -11 * @gfxBar-grid;
+@gfxBar-comment-y:      -12 * @gfxBar-grid;
+@gfxBar-play-y:         -13 * @gfxBar-grid;
+@gfxBar-refresh-y:      -14 * @gfxBar-grid;
+@gfxBar-info-y:         -15 * @gfxBar-grid;
+
+
+@gfxBar-x-a:            -0 * @gfxBar-grid;
+@gfxBar-x-b:            -1 * @gfxBar-grid;
+@gfxBar-x-c:            -2 * @gfxBar-grid;
+@gfxBar-x-d:            -3 * @gfxBar-grid;
+@gfxBar-x-e:            -4 * @gfxBar-grid;
+
+@gfxBar-x:              0;
+
+
+// PROFILE
+// -------------------------
+
+@gfxProfile:            'profile-icons.png';
+@gfxProfile-width:      32px;
+@gfxProfile-height:     96px;
+@gfxProfile-grid:       32px;
+
+@gfxProfile-feed-y:     -0 * @gfxProfile-grid;
+@gfxProfile-favs-y:     -1 * @gfxProfile-grid;
+@gfxProfile-link-y:     -2 * @gfxProfile-grid;
+
+@gfxProfile-x: 0;
+
+
+// MAP
+// -------------------------
+
+@gfxMap:                'map-icons.png';
+@gfxMap-width:          32px;
+@gfxMap-height:         192px;
+@gfxMap-grid:           32px;
+
+@gfxMap-time-y:         -0 * @gfxMap-grid;
+@gfxMap-person-y:       -1 * @gfxMap-grid;
+@gfxMap-search-y:       -2 * @gfxMap-grid;
+@gfxMap-arrowD-y:       -3 * @gfxMap-grid;
+@gfxMap-delete-y:       -4 * @gfxMap-grid;
+@gfxMap-noImages-y:     -5 * @gfxMap-grid;
+
+@gfxMap-x:              0;
+
+
+// FEED
+// -------------------------
+
+@gfxFeed:              'feed-icons.png';
+@gfxFeed-width:         32px;
+@gfxFeed-height:        96px;
+@gfxFeed-grid:          32px;
+
+@gfxFeed-quote-y:       -0 * @gfxFeed-grid;
+@gfxFeed-time-y:        -1 * @gfxFeed-grid;
+@gfxFeed-venue-y:       -2 * @gfxFeed-grid;
+
+@gfxFeed-x:             0;
+
+
+// TUMBLR
+// -------------------------
+
+@gfxTumblr:             'tumblr-post-icons.png';
+@gfxTumblr-width:        48px;
+@gfxTumblr-height:       168px;
+@gfxTumblr-grid:         24px;
+
+@gfxTumblr-text-y:      -0 * @gfxTumblr-grid;
+@gfxTumblr-photo-y:     -1 * @gfxTumblr-grid;
+@gfxTumblr-quote-y:     -2 * @gfxTumblr-grid;
+@gfxTumblr-link-y:      -3 * @gfxTumblr-grid;
+@gfxTumblr-chat-y:      -4 * @gfxTumblr-grid;
+@gfxTumblr-audio-y:     -5 * @gfxTumblr-grid;
+@gfxTumblr-video-y:     -6 * @gfxTumblr-grid;
+
+@gfxTumblr-x:           -0 * @gfxTumblr-grid;
+@gfxTumblr-x-hover:     -1 * @gfxTumblr-grid;
+
+
+
+
+// HELPER ICONS
+// -------------------------
+@gfxHelper:                'helper-icons.png';
+@gfxHelper-width:           96px;
+@gfxHelper-height:          96px;
+@gfxHelper-grid:            96px;
+
+@gfxHelper-dash-y:         -0 * @gfxHelper-grid; 
+
+@gfxHelper-x: 0;
+
+
+// DASH ICONS
+// -------------------------
+@gfxDash:                   'dash-icons.png';
+@gfxDash-width:             64px;
+@gfxDash-height:            64px;
+@gfxDash-grid:              32px;
+
+@gfxDash-person-y:         -0 * @gfxDash-grid; 
+@gfxDash-search-y:         -1 * @gfxDash-grid; 
+
+@gfxDash-x:                 0;
+
+
+// LINKED SERVICES
+// -------------------------
+@gfxService:                'service-full-logos.png';
+@gfxService-width:          150px;
+@gfxService-height:         180px;
+@gfxService-grid:           36px;
+
+@gfxService-y-twitter:      -0 * @gfxService-grid; 
+@gfxService-y-tumblr:       -1 * @gfxService-grid; 
+@gfxService-y-foursquare:   -2 * @gfxService-grid; 
+@gfxService-y-facebook:     -3 * @gfxService-grid; 
+@gfxService-y-snapr:        -4 * @gfxService-grid; 
+
+@gfxService-x:               0;
+
+
+// SPOT ICONS
+// -------------------------
+@gfxSpot:                   'spot-icons.png';
+@gfxSpot-width:             72px;
+@gfxSpot-height:            216px;
+@gfxSpot-grid:              24px;
+
+@gfxSpot-y:                 -0 * @gfxSpot-grid; 
+@gfxSpot-y-greatOutdoors:   -1 * @gfxSpot-grid; 
+@gfxSpot-y-shops:           -2 * @gfxSpot-grid; 
+@gfxSpot-y-nightlife:       -3 * @gfxSpot-grid; 
+@gfxSpot-y-nightlife:       -4 * @gfxSpot-grid; 
+@gfxSpot-y-food:            -5 * @gfxSpot-grid; 
+@gfxSpot-y-arts:            -6 * @gfxSpot-grid; 
+@gfxSpot-y-cafe:            -7 * @gfxSpot-grid; 
+@gfxSpot-y-all:             -8 * @gfxSpot-grid; 
+
+@gfxSpot-x-c:               -0 * @gfxSpot-grid;
+@gfxSpot-x-a:               -1 * @gfxSpot-grid;
+@gfxSpot-x-e:               -2 * @gfxSpot-grid;
+
+
+// DISTANCE ICONS
+// -------------------------
+@gfxDistance:               'distance-icons.png';
+@gfxDistance-width:         24px;
+@gfxDistance-height:        96px;
+@gfxDistance-grid:          24px;
+
+@gfxDistance-y:             -0 * @gfxDistance-grid; 
+@gfxDistance-y-infinite:    -0 * @gfxDistance-grid; 
+@gfxDistance-y-1000:        -1 * @gfxDistance-grid; 
+@gfxDistance-y-10000:       -2 * @gfxDistance-grid; 
+@gfxDistance-y-50000:       -3 * @gfxDistance-grid; 
+ 
+
+@gfxDistance-x:              -0 * @gfxDistance-grid;
+
+
+
+// REFRESH
+// -------------------------
+@gfxRefresh:                'pull-to-refresh.png';
+@gfxRefresh-width:          56px;
+@gfxRefresh-height:         168px;
+@gfxRefresh-grid:           56px;
+
+@gfxRefresh-left-y:         -0 * @gfxRefresh-grid; 
+@gfxRefresh-right-y:        -1 * @gfxRefresh-grid; 
+@gfxRefresh-refresh-y:      -2 * @gfxRefresh-grid; 
+
+@gfxRefresh-x: 0;
+
+
+// COMP RIBBON
+// -------------------------
+@gfxCompRibbon:				'comp-ribbon.png';
+@gfxCompRibbon-width:		47px;
+@gfxCompRibbon-height:		53px;
+@gfxCompRibbon-x:			0;
+@gfxCompRibbon-y:			0;

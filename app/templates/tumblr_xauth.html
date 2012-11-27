@@ -1,32 +1,34 @@
-<div id="tumblr-xauth" data-role="dialog" data-overlay-theme="a" data-theme="a" class="special-bg tumblr-bg">
+<div id="tumblr-xauth" data-role="page" data-overlay-theme="a" data-theme="a" class="s-special-bg s-tumblr-bg">
     <div data-role="header" data-theme="a">
         <h1>Connect</h1>
         <a class="x-back" data-role="button" data-icon="delete" data-iconpos="notext"></a>
     </div>
 
     <div data-role="content" data-ajax="false" data-theme="d">
-        <div class="login-message">
+         <div class="s-inset-page-content">
+        <div class="login-message x-login-message">
         </div>
         <form action="javascript: void(0);" accept-charset="utf-8" id="tumblr-dialog" name="tumblr-dialog">
             <ul data-role="listview" data-inset="true" data-theme="d">
                 <li data-role="fieldcontain" class="ui-hide-label">
                     <label for="username">Tumblr Email</label>
-                    <input type="text" name="username" placeholder="Tumblr Email" autocapitalize="off" autocorrect="off" id="tumblr-username" >
+                    <input type="text" name="username" placeholder="Tumblr Email" autocapitalize="off" autocorrect="off" class="x-username" id="tumblr-username" >
                 </li>
                 <li data-role="fieldcontain" class="ui-hide-label">
                     <label for="password">Password</label>
-                    <input type="password" name="password" placeholder="Password" id="tumblr-password">
+                    <input type="password" name="password" placeholder="Password" class="x-password" id="tumblr-password">
                </li>
             </ul>
 
             <!-- So pressing enter will still submit form, but so we can also add custom gfx to the button -->
-            <div class="invisible-submit-button">
+            <div class="s-invisible-submit-button">
                 <input type="submit" name="tumblr-dialog" data-theme="e" value="Connect Tumblr">
             </div>
-            <a data-role="button" class="tumblr-button logo-button" data-theme="e">
-                Connect <span class="tumblr-logo button-logo">Tumblr</span>
+            <a data-role="button" class="x-tumblr-button s-tumblr-button s-logo-button" data-theme="e">
+                Connect <span class="s-tumblr-logo s-button-logo">Tumblr</span>
             </a>
 
         </form>
+    </div>
     </div>
 </div>

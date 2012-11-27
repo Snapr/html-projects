@@ -5,6 +5,7 @@ define(['backbone'], function(Backbone){
         get_template: function(name){
             var template;
             $.ajax({
+                template_loader: true,  // so any callbacks can know this is the template loader
                 async: false,
                 url: 'app/templates/' + name + '.html',
                 dataType: 'html',
@@ -15,7 +16,7 @@ define(['backbone'], function(Backbone){
             return template;
         },
         load_template: function(name){
-            this.template = this.get_template( name || this.tempate_name || this.options.name );
+            this.template = this.get_template( name || this.tempate_name || this.options.template );
         },
         replace_from_template: function(context, selectors, template, el){
             // replace children of `selector` in `el` (defaults to this.$el)
@@ -26,9 +27,12 @@ define(['backbone'], function(Backbone){
 
             var html = $(template(context));
 
+            var last;
             _.each(selectors, function(selector){
-                el.find(selector).empty().append(html.find(selector).children());
+                last = el.find(selector).html(html.find(selector).html());
             });
+
+            return last;
         }
     });
 });

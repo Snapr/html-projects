@@ -14,14 +14,15 @@ var spot_view = page_view.extend({
     post_activate: function(options) {
         this.model = new spot_model({id: options.query.spot_id});
 
-        $.mobile.showPageLoadingMsg();
 
-        this.$('.spot-head').empty();
-        this.$('.image-streams').empty();
-        this.$('.top-users').empty();
+        this.$('.x-header').empty();
+        this.$('.x-image-streams').empty();
+        this.$('.x-top-users').empty();
 
         this.spot_id = options.query.spot_id || 0;
         this.change_page();
+
+        $.mobile.showPageLoadingMsg();
         this.fetch_spot();
     },
 
@@ -58,8 +59,9 @@ var spot_view = page_view.extend({
     },
 
     render: function(){
-        this.replace_from_template({spot:this.model}, ['.spot-head', '.ui-btn-right']);
+        this.replace_from_template({spot:this.model}, ['.x-header', '.ui-btn-right']);
         this.$el.trigger('create');
+        $.mobile.hidePageLoadingMsg();
     },
 
     fetch_photos: function () {
@@ -75,6 +77,8 @@ var spot_view = page_view.extend({
             initial_title: '', // initially blank until we know if it shoule be 'popular' or 'nearby'
             title: "popular",
             expand: true,
+            parent_view: this,
+            use_gallery: false,
             no_photos: function(){
 
                 this.title = 'nearby';
@@ -93,7 +97,7 @@ var spot_view = page_view.extend({
             }
         });
 
-        var el = this.$('.image-streams');
+        var el = this.$('.x-image-streams');
         el.append( stream_li.el );
         stream_li.render();
         el.trigger('create');
@@ -101,14 +105,14 @@ var spot_view = page_view.extend({
     },
 
     fetch_users: function () {
-        this.top_users.get_top_users(spot_view.spot_id);
+        this.top_users.get_top_users(this.spot_id);
     },
 
     render_top_users: function(){
         // Don't show if only 1 user as this is the hero
         if(this.top_users.length > 1){
-            this.replace_from_template({top_users: this.top_users}, [".top-users"]);
-            this.$(".top-users").trigger('create');
+            this.replace_from_template({top_users: this.top_users}, [".x-top-users"]);
+            this.$(".x-top-users").trigger('create');
         }
     }
 });

@@ -1,61 +1,6 @@
-/*global _ define */
-define(['backbone'], function(Backbone) {
+/*global _ $ define */
+define(['backbone', '../theme/'+window.theme+'/config'], function(Backbone, theme_config) {
 var config_model = Backbone.Model.extend({
-
-    config: {
-
-        initial_view: 'dash',
-
-        //environment: 'live',  // defaults to dev
-
-        // client must have xAuth permission from 3rd party
-        //tumblr_xauth: false,
-        //twitter_xauth: false,
-
-        app_group: 'artspot'
-
-        // get_user_points: true // request points when getting users form the api
-
-        // autocreate_fb_users: true, // signin with facebook should create users rather than autofill join form
-
-        // anon_username: 'anon', // username displayed when no other available
-        // me_username: 'me', // username for logged in user when no other available
-
-        //zoom: 15, // for map
-        // feed_count: 9, // number of images to show in feed views
-        // map_count: 10, // number of images to show on the map
-        // side_scroll_initial: 6, // numbers of images to show in side-scrollers initially
-        // side_scroll_more: 10, // number of extra images to load into side-scrollers when "load more" is activated
-        // activity_count: 25,  // how many items to load in activity page
-        // share_redirect: "#/uploading/?"  // set to hash url to redirect after successful upload/share.
-    },
-    environments: {
-        'dev': {
-            'base_url': "http://dev.sna.pr",
-            'client_id': "76e5be0eec71b28fb4380b0ac42201cf",
-            'client_secret': "d293011a0a17dfc8aa191455af4ab7ba"
-        },
-        'live': {
-            'base_url': "https://sna.pr",
-            'client_id':'76e5be0eec71b28fb4380b0ac42201cf',
-            'client_secret':'d293011a0a17dfc8aa191455af4ab7ba'
-        },
-        'local': {
-            'base_url': "http://localhost:8000",
-            'client_id': "client",
-            'client_secret': "secret"
-        }
-    },
-
-
-
-////////////////////////////////////////////////////////////////////////////////
-//                                                                            //
-//  Defaults and other functions below.                                       //
-//  Do all your editing above - config will override defaults so add settings //
-//  from below to config above if you want to change them                     //
-//                                                                            //
-////////////////////////////////////////////////////////////////////////////////
     defaults:{
         environment: 'dev',
 
@@ -71,10 +16,10 @@ var config_model = Backbone.Model.extend({
         timeout: 20000,
         offline_timeout: 5000,
 
-        upload_count: 0,
         upload_mode: "On",
         upload_paused: false,
         geolocation_enabled: true,
+        geolocation_cache_life: 1000*60*5,
 
         get_user_points: false,
 
@@ -92,9 +37,14 @@ var config_model = Backbone.Model.extend({
 
         show_tab_bar: true,
 
+        sort_order: 'date_utc',
+
+        //min_photo_rating: ,  not defind if non needed
         zoom: 15,
         feed_count: 9,
-        map_count: 10,
+        map_thumb_count: 10,
+        map_spot_count: 10,
+        dash_tumblr_posts: 3,
         side_scroll_initial: 6,
         side_scroll_more: 10,
         activity_count: 25,
@@ -103,13 +53,13 @@ var config_model = Backbone.Model.extend({
     },
     initialize: function(){
         var update_env = _.bind(function(){
-            this.set(this.environments[this.get('environment')]);
+            this.set(theme_config.environments[this.get('environment')]);
             this.set('api_base', this.get('base_url') + "/api");
             this.set('avatar_url', this.get('base_url') + "/avatars");
             this.set('access_token_url', this.get('base_url') + "/ext/oauth/access_token/");
         }, this);
         this.bind('change:environment', update_env);
-        this.set(_.extend(this.defaults, this.config));
+        this.set(_.extend(this.defaults, theme_config.config));
         update_env();
     }
 });

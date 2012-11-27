@@ -1,5 +1,11 @@
 /*global _  requirejs require urlError */
 
+if(!window.theme){
+    alert('you must include your theme config.js file before app/require.js');
+}
+window.theme_templates = '../../theme/'+window.theme+'/templates/';
+window.theme_views = '../../theme/'+window.theme+'/views/';
+
 require(['config'], function(config){
     // requiring config initalizes it
     window.config = config;  // export for templates
@@ -10,7 +16,7 @@ requirejs.config({
         "async": 'libs/require-plugins/async',
 
         "jquery": "libs/jquery-1.8.2",
-        "jquery.mobile": "libs/jquery.mobile-1.1.0/jquery.mobile-1.1.0",
+        "jquery.mobile": "libs/jquery.mobile-1.2.0/jquery.mobile-1.2.0",
         "json": "libs/json2",
         "cookie": "libs/jq.cookie",
         "klass": "libs/klass.min",
@@ -47,18 +53,59 @@ require(['routers'], function(routers){
     routers.routers_instance = routers_instance;
 });
 
-require(['config', 'jquery', 'backbone', 'photoswipe', 'auth', 'utils/local_storage', 'native', 'utils/dialog', 'utils/alerts'],
-    function(config, $, Backbone, PhotoSwipe, auth, local_storage, native, dialog, alerts) {
+require(['config', 'jquery', 'backbone', 'photoswipe', 'auth', 'utils/local_storage', 'native_bridge', 'utils/dialog', 'utils/alerts', 'collections/upload_progress'],
+    function(config, $, Backbone, PhotoSwipe, auth, local_storage, native_bridge, dialog, alerts, upload_progress_collection) {
 
     /* disable jquery-mobile's hash nav so we can replace it with backbone.js
     ***************************/
     $(document).bind("mobileinit", function(){
-        $.mobile.ignoreContentEnabled = true;
         $.mobile.ajaxEnabled = false;
         $.mobile.pushStateEnabled = false;
         $.mobile.hashListeningEnabled = false;
+        $.mobile.linkBindingEnabled = false;
         $.mobile.defaultPageTransition = 'none';
         $.mobile.buttonMarkup.hoverDelay = 0;
+        $.mobile.defaultTransitionHandler = function(name, reverse, $to, $from) {
+            // this is a cut-down version of jQm 1.1's defaultTransitionHandler,
+            // 1.2 introduced some errors for us
+            var deffered = new $.Deferred(),
+            reverseClass = reverse ? " reverse" : "",
+            toScroll = $.mobile.urlHistory.getActive().lastScroll || $.mobile.defaultHomeScroll,
+            screenHeight = $.mobile.getScreenHeight();
+            var toggleViewportClass = function() {
+                $.mobile.pageContainer.toggleClass("ui-mobile-viewport-transitioning viewport-none");
+            },
+            scrollPage = function() {
+                // By using scrollTo instead of silentScroll, we can keep things better in order
+                // Just to be precautios, disable scrollstart listening like silentScroll would
+                $.event.special.scrollstart.enabled = !1;
+                window.scrollTo(0, toScroll);
+                // reenable scrollstart listening like silentScroll would
+                setTimeout(function() {
+                    $.event.special.scrollstart.enabled = !0;
+                }, 150);
+            };
+            toggleViewportClass();
+            if($from){
+                $from.removeClass($.mobile.activePageClass + " out in reverse none").height("");
+            }
+            $to.addClass($.mobile.activePageClass);
+            // Send focus to page as it is now display: block($to);
+            $.mobile.focusPage($to);
+            // Set to page height
+            $to.height(screenHeight + toScroll);
+            scrollPage();
+            $to.addClass("none in" + reverseClass);
+            $to.removeClass("out in reverse none").height("");
+            toggleViewportClass();
+            // In some browsers (iOS5), 3D transitions block the ability to scroll to the desired location during transition
+            // This ensures we jump to that spot after the fact, if we aren't there already.
+            if($(window).scrollTop() !== toScroll){
+                scrollPage();
+            }
+            deffered.resolve(name, reverse, $to, $from, true);
+            return deffered.promise();
+        };
     });
     // now we can load jQmobile
     require(['jquery.mobile'], function(){
@@ -93,7 +140,7 @@ require(['config', 'jquery', 'backbone', 'photoswipe', 'auth', 'utils/local_stor
                 $.ajaxSetup({timeout:config.get('offline_timeout')});
                 config.get('current_view').offline(true);
                 $.mobile.hidePageLoadingMsg();
-            }else if(config.get('offline') && (status == 'success' || status == 'notmodified')){
+            }else if(!this.template_loader && config.get('offline') && (status == 'success' || status == 'notmodified')){
                 config.set('offline', false);
                 $.ajaxSetup({timeout:config.get('timeout')});
                 config.get('current_view').offline(false);
@@ -182,14 +229,14 @@ require(['config', 'jquery', 'backbone', 'photoswipe', 'auth', 'utils/local_stor
         ***************************/
         var appmode = local_storage.get("appmode");
         if (appmode){
-            $("body").addClass( "appmode-true" ).addClass("appmode-" + appmode );
+            $("body").addClass( "x-appmode-true" ).addClass("x-appmode-" + appmode );
         }else{
-            $("body").addClass( "appmode-false" );
+            $("body").addClass( "x-appmode-false" );
         }
 
         function class_if_local(param){
             // add dash-serperated class to body if localstorage param is true
-            $("body").toggleClass( param.replace('_', '-'), !!local_storage.get( param ) );
+            $("body").toggleClass( 'x-' + param.replace('_', '-'), !!local_storage.get( param ) );
         }
 
         class_if_local("browser_testing");
@@ -200,36 +247,54 @@ require(['config', 'jquery', 'backbone', 'photoswipe', 'auth', 'utils/local_stor
             class_if_local("camplus_lightbox");
         }
 
-        $("body").toggleClass('tab-bar', !!config.get('show_tab_bar'));
+        $("body").toggleClass('x-tab-bar', !!config.get('show_tab_bar'));
 
 
         /* prevent dragging on some elements in appmode
+        TODO: make this more efficiet
         ***************************/
         function preventScroll(e){
             e.preventDefault();
         }
         if (appmode){
             $(document).bind('pagechange', function(){
-                $('.no-drag').unbind('touchmove', preventScroll).bind('touchmove', preventScroll);
+                $('.x-no-drag').unbind('touchmove', preventScroll).bind('touchmove', preventScroll);
             });
         }
+
+
+        /* global upload_count
+        **********************/
+        upload_progress_collection.on('all', function(){
+            var count = upload_progress_collection.length;
+            $('.x-upload-count').toggle(!!count).text(count);
+        });
 
 
         /* global live click hadlers
         ***************************/
 
+        // because $.mobile.hashListeningEnabled is false we have to listen manually
+        $('[data-rel=popup]').live('vclick', function(e){
+            e.preventDefault();
+            $.mobile.popup.handleLink($(e.currentTarget));
+        });
+
         // make photoswipe basebar click
-        $('.ps-caption').live('vclick', function(){
+        $('.ps-caption').live('vclick', function(e){
             var ps = PhotoSwipe.activeInstances[0].instance,
                 src = ps.cache.images[ps.currentIndex].src,
                 id = src.match(/\/(\w{2,6})\.jpg$/)[1];
             ps.hide();
             Backbone.history.navigate('#/feed/?n=1&photo_id=' + id );
+            e.preventDefault();
         });
 
         // camera button
         function launch_camera(event, extra_params){
-            extra_params = extra_params || $(this).data('extra_params');
+            console.log('launch_camera', event, extra_params);
+            extra_params = extra_params || $(this).data('extra_params') || "";
+            extra_params = 'back_url=' + escape(window.location.hash) + '&' + extra_params;
 
             var appmode = local_storage.get( "appmode" );
             var camplus = local_storage.get( "camplus" );
@@ -237,9 +302,17 @@ require(['config', 'jquery', 'backbone', 'photoswipe', 'auth', 'utils/local_stor
 
             if (appmode){
                 if (camplus && camplus_camera){
-                    native.pass_data( "snapr://camplus/camera/?" + extra_params );
+                    native_bridge.pass_data( "snapr://camplus/camera?" + extra_params );
                 }else{
-                    native.pass_data( "snapr://camera/?" + extra_params );
+                    console.log("native_bridge.pass_data camera");
+
+                    /**
+                   *   This is to work around an issue where calling via action sheet causes
+                   *   the camera url not to be picked up on android
+                   */
+                    setTimeout( function () {
+                        native_bridge.pass_data( "snapr://camera?" + extra_params );
+                    }, 0);
 
                     setTimeout( function(){
                         Backbone.history.navigate( "#/limbo/" );
@@ -253,7 +326,9 @@ require(['config', 'jquery', 'backbone', 'photoswipe', 'auth', 'utils/local_stor
 
         // photo library button
         function photo_library(event, extra_params){
-            extra_params = extra_params || $(this).data('extra_params');
+            console.log('photo_library', event, extra_params);
+            extra_params = extra_params || $(this).data('extra_params') || "";
+            extra_params = 'back_url=' + escape(window.location.hash) + '&' + extra_params;
 
             var appmode = local_storage.get( "appmode" );
             var camplus = local_storage.get( "camplus" );
@@ -261,9 +336,16 @@ require(['config', 'jquery', 'backbone', 'photoswipe', 'auth', 'utils/local_stor
 
             if (appmode){
                 if (camplus && camplus_lightbox){
-                    native.pass_data( "snapr://camplus/lightbox/?" + extra_params );
+                    native_bridge.pass_data( "snapr://camplus/lightbox?" + extra_params );
                 }else{
-                    native.pass_data( "snapr://photo-library/?" + extra_params );
+
+                    /**
+                   *   This is to work around an issue where calling via action sheet causes
+                   *   the photo-library url not to be picked up on android
+                   */
+                    setTimeout( function () {
+                        native_bridge.pass_data( "snapr://photo-library?" + extra_params );
+                    }, 0);
 
                     setTimeout( function(){
                         Backbone.history.navigate( "#/limbo/" );
@@ -279,13 +361,19 @@ require(['config', 'jquery', 'backbone', 'photoswipe', 'auth', 'utils/local_stor
         $(".x-launch-camera-options").live( "click", auth.require_login( function(){
             var extra_params = $(this).data('extra_params');
             if(local_storage.get( "appmode" )){
-                alerts.approve({
+                var actionID = alerts.tapped_action.counter++;
+                alerts.tapped_action.alerts[actionID] = {
+                    '1': function(){console.log('x-launch-camera-options 1');launch_camera(null, extra_params);},
+                    '2': function(){console.log('x-launch-camera-options 2'); photo_library(null, extra_params);}
+                };
+
+                native_bridge.pass_data('snapr://action?' + $.param({
                     'title': 'Share Photo',
-                    'yes': "Take Picture",
-                    'no': "Use Existing",
-                    'yes_callback': function(){launch_camera(null, extra_params);},
-                    'no_callback': function(){photo_library(null, extra_params);}
-                });
+                    'otherButton1': "Take Picture",
+                    'otherButton2': "Use Existing",
+                    'cancelButton': 'Cancel',
+                    'actionID': actionID
+                }));
             }else{
                 photo_library(null, extra_params);
             }

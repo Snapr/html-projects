@@ -30,7 +30,7 @@ define(['async!http://maps.googleapis.com/maps/api/js?sensor=true'], function(){
         // We'll add this overlay to the overlayImage pane.
         var panes = this.getPanes(),
             float_pane = $(panes.floatPane),
-            others = float_pane.find('.snaprmappoint-thumb');
+            others = float_pane.find('.s-map-point-thumb');
 
         if(!others.length){
             float_pane.append(this.div_);

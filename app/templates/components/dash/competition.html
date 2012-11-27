@@ -1,10 +1,13 @@
-<a class="ui-bar x-details top-left-arrow" data-role="button" data-iconpos="left" data-icon="open" data-theme="c" data-ajax="false">
-<span class="image-details">
-        <em><%= data.title %></em>
-    </span>
-</a>
+<div data-role="controlgroup" data-type="horizontal" class="ui-bar">
 
-<a class="x-view-full ui-bar-icons" href="#/competition/?id=<%= data.id %>"  data-corners="false" data-role="button" data-icon="arrow-r" data-iconpos="right" data-theme="c"></a>
+    <a class="ui-bar x-details s-arrow-d-left s-bar-left" data-role="button" data-iconpos="left" data-icon="open" data-theme="c" data-ajax="false">
+        <strong>
+        <%= data.title %>
+        </strong>
+    </a>
+
+    <a class="x-view-full ui-bar-icons s-bar-right" href="#/competition/?id=<%= data.id %>"  data-corners="false" data-role="button" data-icon="arrow-r" data-iconpos="right" data-theme="c"></a>
+</div>
 
 <div class="banner" <% if(!expand){ %>style="display:none;"<% } %>>
     <a href="#/competition/?id=<%= data.id %>"><img class="banner-image" src="<%= data.banner.mobile %>"></a>

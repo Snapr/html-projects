@@ -15,8 +15,8 @@ var find_friends = page_view.extend({
 
     post_activate: function(options){
 
-        this.$("ul.people-list").empty();
-        this.$(".helper-content").empty();
+        this.$(".x-people-list").empty();
+        this.$(".x-helper-content").empty();
         $.mobile.hidePageLoadingMsg();
 
         this.change_page();
@@ -31,17 +31,17 @@ var find_friends = page_view.extend({
     },
 
     dialog_closed: function(){
-        this.$el.find("ul.people-list").empty();
+        this.$(".x-people-list").empty();
         this.search();
     },
 
     events: {
         "keyup input": "search",
-        "vclick .ui-input-clear": "search"
+        "vclick .x-input-clear": "search"
     },
 
     render: function(){
-        var people_list = this.$("ul.people-list");
+        var people_list = this.$(".x-people-list");
         var this_view = this;
 
         if(this.collection.length){
@@ -54,7 +54,7 @@ var find_friends = page_view.extend({
                 people_list.append( li.render().el );
             });
         }else{
-            no_results.render('Oops.. Nobody here yet.', 'delete').$el.appendTo(people_list);
+            no_results.render('Oops.. Nobody here yet.', 'delete').$el.insertBefore(people_list);
         }
 
         people_list.listview().listview("refresh");
@@ -80,15 +80,15 @@ var find_friends = page_view.extend({
         }
 
         this.timer = setTimeout( function() {
-            this_view.$el.addClass('loading');
+            this_view.$el.addClass('x-loading');
             this_view.collection.fetch({
                 data:data,
                 url: config.get('api_base') + '/linked_services/' + this_view.service + '/find_friends/',
                 success: function(collection, response){
-                    var people_list = this_view.$(".people-list").empty();
-                    var helper_content = this_view.$(".helper-content").empty();
+                    var people_list = this_view.$(".x-people-list").empty();
+                    var helper_content = this_view.$(".x-helper-content").empty();
                     this_view.xhr = null;
-                    this_view.$el.removeClass('loading');
+                    this_view.$el.removeClass('x-loading');
 
                     if(response.error){
                         var button = new link_button();

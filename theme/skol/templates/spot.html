@@ -1,0 +1,89 @@
+ <div id="spot" data-title="Spots" data-tab-bar="true" data-add-back-btn="true" data-role="page" data-theme="d">
+    <div data-role="header" data-theme="b">
+        <h1>Skol Spots</h1>
+
+        <div class="ui-btn-right" data-ajax="false">
+            <% if(obj.spot){ %><a href="#/map/?spot_id=<%= spot.id %>&lat=<%= spot.get('location').latitude %>&lon=<%= spot.get('location').longitude %>&z=15" data-role="button" data-icon="map" data-iconpos="notext"></a><% } %>
+
+            <a href="#/home/" data-role="button" data-icon="home" data-iconpos="notext"></a>
+        </div>
+    </div>
+
+    <div data-role="content" data-theme="d" data-ajax="false">
+        <div class="x-header">
+            <% if(obj.spot){ %>
+                <a class="ui-bar <%= spot.get('category').slug %> " data-role="button" data-theme="e" data-iconpos="right" data-icon="arrow-r" data-ajax="false" href="#/feed/?spot=<%= spot.get('id') %>&venue_name=<%= spot.get('name') %>">
+                    <span class="ui-icon ui-icon-category spot-icon dark-spot-icon"></span>
+                    <strong class="s-spot-name"><%= spot.get('name') %></strong>
+                    <span class="s-small-text"><% if (spot.get('stats').photos_count) { %>
+                        (<%= spot.get('stats').photos_count %> photo<% if ((spot.get('stats').photos_count) > 1) { %>s<% } %>)
+                    <% } %></span>
+                </a>
+
+                <div class="s-spot-header ui-body-c">
+                    <div class="s-spot-item ui-content">
+                        <a class="s-spot-photo-crop">
+                            <% if (spot.get('info').hero_image) { %>
+                                <img src="https://s3.amazonaws.com/media-server2.snapr.us/thm2/<%= spot.get('info').hero_image.secret %>/<%= spot.get('info').hero_image.id %>.jpg" class="s-thumb-image" />
+                            <%} else { %>
+                                <div class="s-no-photo-yet">
+                                    no<br />
+                                    photos<br />
+                                    yet<br />
+                                </div>
+                            <% } %>
+                        </a>
+                        <div class="spot-venue-details">
+                            <a class="s-spot-address s-small-text" href="http://maps.google.com/maps?ll=<%= spot.get('location').latitude %>,<%= spot.get('location').longitude %>&q=<%= spot.get('name') %>">
+                                <% if (spot.get('location').address !== "False") { %>
+                                    <%= spot.get('location').address %></br>
+                                <% } %>
+                                <% if(spot.get('location').city !== "False") { %><%= spot.get('location').city %><% } %>
+                                <% if (spot.get('location').distance) { %>
+                                    <span class="s-spot-distance "><%= string_utils.short_distance( spot.get('location').distance ) %> </span>
+                                <% } %><span class="s-spot-distance ">&rsaquo;</span>
+                            </a>
+                            <% if(spot.get('contact').phone !== "False") { %>
+                                <a  href="tel:<%= spot.get('contact').phone %>" class="s-spot-phone s-small-text">
+                                    &#9742; <%= spot.get('contact').phone %>
+                                </a>
+                            <% } %>
+                        </div>
+                        <p class="spot-photo-credit s-small-text">
+                            <% if (spot.get('info').hero_image) { %>
+                            &lsaquo; photo by <a href="#/feed/?username=<%= spot.get('info').hero_image.username %>" class="username"><%= spot.get('info').hero_image.display_username %></a>
+                            <% } %>
+                        </p>
+
+                        <% if (spot.get('foursquare').venue_page) { %>
+                        <a href="<%= spot.get('foursquare').venue_page %>" class="s-foursquare-btn" data-role="button" data-icon="foursquare-logo" data-iconpos="notext" data-theme="c"></a>
+                        <% } %>
+                    </div>
+                </div>
+            <% } %>
+        </div>
+
+        <div class="s-spot-body">
+            <section class="s-image-streams x-image-streams">
+                <!-- dynamic -->
+            </section>
+
+            <div class="s-top-users x-top-users">
+                <% if(obj.top_users){ %>
+                    <h4>Top Users</h4>
+                    <ul>
+                        <% top_users.each(function(user){ %>
+                            <li class="s-top-user-item">
+                                <a href="#/feed/?username=<%= user.get('username') %>">
+                                    <span class="s-avatar-med" style="background-image: url('<%= config.get('avatar_url') %>/<%= user.get('user_id') %>?size=large');"></span>
+                                    <span class="s-small-username"><%= user.get('display_username') %></span>
+                                </a>
+                            </li>
+                        <% }) %>
+                    </ul>
+                <% } %>
+            </div>
+
+        </div>
+     </div>
+</div>

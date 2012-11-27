@@ -22,11 +22,11 @@ return page_view.extend({
     },
 
     load_template: function(){
-        this.template = _.template('<div id="limbo" data-role="page" data-theme="a"> <div data-role="content" data-theme="a"></div> </div>');
+        this.template = _.template('<div data-role="page" data-theme="a"><div data-role="content"></div></div>');
     },
 
     home: function(){
-        Backbone.history.navigate( "#/", true );
+        Backbone.history.navigate( "#", true );
     },
 
     offline: function(){}

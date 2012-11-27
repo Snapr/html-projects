@@ -9,24 +9,24 @@ return page_view.extend({
         }
 
         if (this.message){
-            this.$el.find(".login-message").show().text(this.message);
+            this.$(".x-login-message").show().text(this.message);
         }else{
-            this.$el.find(".login-message").hide().text("");
+            this.$(".x-login-message").hide().text("");
         }
 
         this.change_page();
     },
 
     events: {
-        "submit #login-dialog":"log_in",
-        "click .snapr-button": "log_in",
-        "click .twitter-button": 'twitter_login',
-        "click .facebook-button": 'facebook_login'
+        "submit form":"log_in",
+        "click .x-snapr-button": "log_in",
+        "click .x-twitter-button": 'twitter_login',
+        "click .x-facebook-button": 'facebook_login'
     },
 
     log_in: function(){
-        var username = $("#login-dialog-username").val();
-        var password = $("#login-dialog-password").val();
+        var username = this.$(".x-username").val();
+        var password = this.$(".x-password").val();
 
         if(username === "" || password === ""){
             alerts.notification('Error', 'You must enter your usename and password');
@@ -37,10 +37,10 @@ return page_view.extend({
         var login_view = this;
         var options = {
             success: function( response ){
-                $("#login-dialog-username").val('');
-                $("#login-dialog-password").val('');
-                if (login_view.previous_view.welcome_view){
-                    Backbone.history.navigate( "#/", true );
+                login_view.$(".x-username").val('');
+                login_view.$(".x-password").val('');
+                if (login_view.previous_view && login_view.previous_view.options.name in {welcome:1, 'forgot-password':1}){
+                    Backbone.history.navigate( "#", true );
                 }else{
                     login_view.back();
                 }

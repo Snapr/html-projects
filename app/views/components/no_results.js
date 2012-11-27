@@ -10,7 +10,7 @@ var no_results = view.extend({
 
     render: function(message, icon){
         this.$el
-            .attr('id', 'no-results')
+            .attr('id', 'x-no-results')
             .html( this.template({
                 message: message,
                 icon: icon

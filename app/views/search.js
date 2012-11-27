@@ -8,10 +8,10 @@ return page_view.extend({
         this.$el.on( "pagebeforeshow", function( e, obj ){
             if (obj && obj.prevPage && obj.prevPage.length){
                 if ($(obj.prevPage[0]).attr("id") == "map"){
-                    $(e.currentTarget).find("#search-type").val("location").selectmenu("refresh");
+                    $(e.currentTarget).find("select.x-search-type").val("location").selectmenu("refresh");
                 }
             }else{
-                    $(e.currentTarget).find("#search-type").val("tags").selectmenu("refresh");
+                    $(e.currentTarget).find("select.x-search-type").val("tags").selectmenu("refresh");
             }
         });
 
@@ -19,14 +19,15 @@ return page_view.extend({
     },
 
     events: {
-        "change #search-keywords": "update_placeholder",
-        "change #search-type": "update_placeholder",
-        "submit #search-form": "search"
+        "change .x-search-field": "update_placeholder",
+        "change select.x-search-type": "update_placeholder",
+        "submit form": "search"
     },
 
     update_placeholder: function(){
-        var keywords = $("#search-keywords");
-        var type = $("#search-type").val();
+        console.log('test');
+        var keywords = this.$(".x-search-field");
+        var type = this.$("select.x-search-type").val();
 
         if (keywords.val().length === 0){
             switch(type){
@@ -43,9 +44,13 @@ return page_view.extend({
         }
     },
 
-    search: function(){
-        var keywords = $("#search-keywords").val();
-        var type = $("#search-type").val();
+    search: function(e){
+        if(e && e.preventDefault){
+            e.preventDefault();
+        }
+
+        var keywords = this.$(".x-search-field").val();
+        var type = this.$("select.x-search-type").val();
 
         switch(type){
             case 'location':
@@ -53,14 +58,14 @@ return page_view.extend({
                     this.back();
                     this.previous_view && this.previous_view.location_search(keywords);
                 }else{
-                    Backbone.history.navigate( "#/map/?location=" + keywords );
+                    window.location.hash = "#/map/?location=" + keywords;
                 }
                 break;
             case 'tag':
                 if (window.location.hash == "#/feed/?keywords=" + keywords + "&list_style=grid" ){
                     this.back();
                 }else{
-                    Backbone.history.navigate( "#/feed/?keywords=" + keywords + "&list_style=grid" );
+                    window.location.hash = "#/feed/?keywords=" + keywords + "&list_style=grid";
                 }
                 break;
             case 'user':

@@ -1,7 +1,7 @@
 /*global _  define require */
 define(['backbone', 'views/base/page', 'views/upload_progress_li', 'collections/upload_progress',
-    'models/photo', 'models/comp', 'views/base/side_scroll', 'collections/photo', 'utils/local_storage', 'utils/alerts', 'native', 'config', 'views/components/paused'],
-function(Backbone, page_view, upload_progress_li, upload_progress, photo_model, comp_model, side_scroll, photo_collection, local_storage, alerts, native, config, paused_el){
+    'models/photo', 'models/comp', 'views/base/side_scroll', 'collections/photo', 'utils/local_storage', 'utils/alerts', 'native_bridge', 'config', 'views/components/paused'],
+function(Backbone, page_view, upload_progress_li, upload_progress, photo_model, comp_model, side_scroll, photo_collection, local_storage, alerts, native_bridge, config, paused_el){
 
 var uploading = page_view.extend({
 
@@ -17,11 +17,12 @@ var uploading = page_view.extend({
         });
         config.on('change:paused', function(){
             if(config.get('paused')){
-                view.$('.upload-progress-header').prepend(paused_el).trigger("create");
+                view.$('.x-progress-header').prepend(paused_el).trigger("create");
             }else{
                 $('.x-resume-queue').remove();
             }
         });
+        upload_progress.on('all', this.upload_count());
     },
 
     post_activate: function(options){
@@ -46,14 +47,14 @@ var uploading = page_view.extend({
         this.foursquare_venue = this.query.spot;
         this.venue_name = this.query.venue_name;
 
-        this.progress_el = this.$( ".upload-progress-container" ).empty();
+        this.progress_el = this.$( ".x-progress-header" ).empty();
 
         if (this.query.photo_id){
             // web flow - photo is uploaded then user is sent here
             // so the id and photo on the server are available
             this.upload_complete(this.query.photo_id);
         }else{
-            // no photo_id = in appmode the photo is probably being uploaded by the native
+            // no photo_id = in appmode the photo is probably being uploaded by the native_bridge
             // app in the background, we can show progress here.
             this.render_streams();
         }
@@ -67,8 +68,13 @@ var uploading = page_view.extend({
     get_override_tab: function(){ return 'share'; },
 
     render_streams: function(){
-        var $image_stream_container = this.$( ".image-streams" ).empty();
+        var $image_stream_container = this.$( ".x-image-streams" ).empty();
 
+        // not in offline mode
+        if(config.get('offline')){
+            this.offline(true);
+            return;
+        }
 
         if(this.comp){
             this.insert_comp_streams();
@@ -87,7 +93,7 @@ var uploading = page_view.extend({
     },
 
     insert_comp_streams: function(){
-        var $image_stream_container = this.$( ".image-streams" );
+        var $image_stream_container = this.$( ".x-image-streams" );
 
         var comp_stream = new side_scroll({
             data: {
@@ -95,7 +101,9 @@ var uploading = page_view.extend({
                 sort: 'weighted_score'
             },
             expand: true,
-            title: 'popular entries'
+            title: 'popular entries',
+            parent_view: this,
+            use_gallery: false
         });
 
         $image_stream_container.append( comp_stream.el );
@@ -106,14 +114,16 @@ var uploading = page_view.extend({
 
 
     insert_venue_streams: function(){
-        var $image_stream_container = this.$( ".image-streams" );
+        var $image_stream_container = this.$( ".x-image-streams" );
 
         var venue_stream = new side_scroll({
             collection: new photo_collection([], {data: {
                 foursquare_venue: this.foursquare_venue
             }}),
             expand: true,
-            title: '@ ' + this.venue_name
+            title: '@ ' + this.venue_name,
+            use_gallery: false,
+            parent_view: this
         });
 
         $image_stream_container.append( venue_stream.el );
@@ -121,7 +131,7 @@ var uploading = page_view.extend({
     },
 
     insert_location_streams: function(){
-        var $image_stream_container = this.$( ".image-streams" );
+        var $image_stream_container = this.$( ".x-image-streams" );
 
         var location_stream = new side_scroll({
             data: {
@@ -131,6 +141,8 @@ var uploading = page_view.extend({
             },
             expand: true,
             title: 'nearby',
+            parent_view: this,
+            use_gallery: false,
             no_photos: function(){
 
                 this.collection.data.radius = this.collection.data.radius + config.get('nearby_radius');
@@ -153,7 +165,7 @@ var uploading = page_view.extend({
                 "title": "Cancel this upload?",
                 "yes_callback": function(){
                     if (appmode){
-                        native.pass_data("snapr://upload?cancel=" + current_upload.id);
+                        native_bridge.pass_data("snapr://upload?cancel=" + current_upload.id);
                     }else{
                         Backbone.history.navigate( "#/upload/" );
                     }
@@ -161,7 +173,7 @@ var uploading = page_view.extend({
             });
 
         }else{
-            Backbone.history.navigate( "#/" );
+            Backbone.history.navigate( "#" );
         }
 
     },
@@ -175,11 +187,17 @@ var uploading = page_view.extend({
     },
 
     update_uploads: function(model, changes){
-        this.$('.offline').hide();
         if(this.progress_view){ return; }
 
         // our photo must be the last one in the queue
-        var photo = upload_progress.at(upload_progress.length-1);
+        var photo,
+            local_id = this.query.local_id;
+        upload_progress.any(function(upload){
+            if(upload.get('local_id') == local_id){
+                photo = upload;
+                return true;
+            }
+        });
 
         // if there's no photo yet we probably haven't recieved an upload_progress call
         // native code, when we do this function will get called again
@@ -190,6 +208,9 @@ var uploading = page_view.extend({
             venue_name: this.venue_name,
             update_on_complete: true
         });
+        this.progress_view.canceled_upload = function(){
+            this.photo.set('upload_status', 'canceled');
+        };
         this.progress_el.html( this.progress_view.render().el );
     },
 
@@ -220,18 +241,11 @@ var uploading = page_view.extend({
         });
     },
 
-    upload_cancelled: function( queue_id ){
-        if (this.progress_el){
-            this.progress_el.remove();
-            delete this.progress_el;
-        }
-    },
-
-    upload_count: function( count ){
-        if (count){
-            this.$el.addClass("showing-upload-queue");
+    upload_count: function(){
+        if (upload_progress.length){
+            this.$el.addClass(".x-showing-upload-queue");
         }else{
-            this.$el.removeClass("showing-upload-queue");
+            this.$el.removeClass(".x-showing-upload-queue");
         }
     },
 
@@ -239,7 +253,7 @@ var uploading = page_view.extend({
         if (this.progress_view){
             this.progress_view.queued(true);
         }
-        this.$('.offline').show();
+        this.$('.x-offline').show();
     }
 });
 

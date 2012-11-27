@@ -26,14 +26,14 @@ return Backbone.View.extend({
         // unfortunately jquery mobile doesn't like refreshing inividual listview items
         // when the listview has already been created so we need to change things manually
 
-        var follow_button = this.$el.find(".x-follow-btn");
+        var follow_button = this.$(".x-follow, .x-unfollow");
         var following = this.model.get("relationship").you_follow;
 
         if (following){
             follow_button
                 .attr("data-icon", "check")
-                .removeClass("follow")
-                .addClass("unfollow");
+                .removeClass("x-follow")
+                .addClass("x-unfollow");
 
             follow_button.find("span.ui-icon")
                     .removeClass("ui-icon-plus")
@@ -41,26 +41,26 @@ return Backbone.View.extend({
         }else{
             follow_button
                 .attr("data-icon", "plus")
-                .removeClass("unfollow")
-                .addClass("follow");
+                .removeClass("x-unfollow")
+                .addClass("x-follow");
 
             follow_button.find("span.ui-icon")
                     .removeClass("ui-icon-check")
                     .addClass("ui-icon-plus");
         }
 
-        this.$el.find(".followers").text( this.model.get("followers") );
-        this.$el.find(".photo-count").text( this.model.get("photo_count") );
+        this.$(".followers").text( this.model.get("followers") );
+        this.$(".photo-count").text( this.model.get("photo_count") );
     },
 
     events: {
-        "click .follow": "follow",
-        "click .unfollow": "unfollow"
+        "click .x-follow": "follow",
+        "click .x-unfollow": "unfollow"
     },
 
     follow: function(){
         var user = this.model,
-            button = this.$('.follow');
+            button = this.$('.x-follow');
         button.x_loading();
         auth.require_login( function(){
             user.follow(function(){
@@ -71,7 +71,7 @@ return Backbone.View.extend({
 
     unfollow: function(){
         var user = this.model,
-            button = this.$('.unfollow');
+            button = this.$('.x-unfollow');
         button.x_loading();
         auth.require_login( function(){
             user.unfollow(function(){

@@ -1,0 +1,48 @@
+// MY ACCOUNT PAGE
+// -------------------------
+
+#my-account{
+    div[data-role="content"]{
+        overflow: hidden;
+        
+    }
+}
+
+.s-account-content{
+    .s-account-header{
+        min-height: 60px;
+        .box-shadow(inset 0px -11px 33px rgba(0, 0, 0, 0.2));
+        .ui-btn,
+       .s-avatar{
+           display: inline-block;
+           vertical-align: middle;
+           display: inline-block;
+       }
+       .s-logout-button{
+           position: absolute;
+           right: 4px;
+           top: 4px;
+           .border-radius(@cornersRound);
+           .ui-btn-inner{
+               padding-left: 20px;
+           }
+           .ui-icon-delete{
+               background-position: @gfxIcons-delete-x @gfxIcons-y-med;
+           }
+       }
+    }
+    .s-myaccount-quicklinks{
+        margin-top: -@cornersPage - 2px;
+    }
+    .ui-collapsible-set {
+        margin-bottom: -2px;
+    }
+
+    .ui-bar{
+        .box-shadow(0 -1px 3px rgba(0,0,0,.05));
+        border-bottom: @borderMediumOnLight;
+        .ui-btn-text {
+            padding-left: 8px;
+        }
+    }
+}

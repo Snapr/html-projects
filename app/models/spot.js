@@ -6,6 +6,13 @@ return  Backbone.Model.extend({
         return config.get('api_base') + '/spots/';
     },
 
+    fetch: function(options){
+        if(options.data && options.data.min_photo_rating === undefined && config.has('min_photo_rating')){
+            options.data.min_photo_rating = config.get('min_photo_rating');
+        }
+        return Backbone.Model.prototype.fetch.call(this, options);
+    },
+
     parse: function( d, xhr ) {
         if (d.success && d.response && d.response.spots) {
             return d.response.spots[0];

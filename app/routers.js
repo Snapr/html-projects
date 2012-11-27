@@ -1,88 +1,9 @@
 /*global _  define require */
-define(['config', 'backbone', 'auth', 'utils/local_storage', 'native', 'utils/alerts', 'utils/query'], function(config, Backbone, auth, local_storage, native, alerts, Query) {
+define(['config', 'backbone', 'auth', 'utils/local_storage', 'native_bridge', 'utils/alerts', 'utils/query', '../theme/'+window.theme+'/config'], function(config, Backbone, auth, local_storage, native_bridge, alerts, Query, theme_config) {
 
-var pages = [
-    'home',
-    'about',
-    'about-snapr',
-    'map',
-    'app',
-    'login',
-    'logout',
-    'upload',
-    'uploading',
-    'connect',
-    'cities',
-    'limbo',
-    'feed',
-    'dash',
-    {
-        name: 'zombie-home',
-        view: 'dash',
-        extra: {show: ['comps', 'tumblr']}
-    },
-    {
-        name: 'feeds',
-        view: 'dash',
-        extra: {show: ['user-streams', 'featured-streams']}
-    },
-    'leaderboard',
-    'activity',
-    'popular',
-    'search',
-    'spots',
-    'spot',
-    'welcome',
-    'snapr-apps',
-    'forgot-password',
-    'join',
-    'join-success',
-    'my-account',
-    'find-friends',
-    {
-        name: 'find-friends-twitter',
-        view: 'find_friends_list',
-        template: 'find_friends_twitter',
-        extra: {service: "twitter"}
-    },
-    {
-        name: 'find-friends-facebook',
-        view: 'find_friends_list',
-        template: 'find_friends_facebook',
-        extra: {service: "facebook"}
-    },
-    'linked-services',
-    'tumblr-posts',
-    'tumblr-xauth',
-    'twitter-xauth',
-    'share',
-    {
-        name: 'user/followers',
-        view: 'people',
-        extra: {follow: "followers"}
-    },
-    {
-        name: 'user/following',
-        view: 'people',
-        extra: {follow: "following"}
-    },
-    {
-        name: 'user/search',
-        view: 'people'
-    },
-    'user/profile',
-    {
-        name: 'upload_xhr',
-        template: 'upload'
-    },
-    'foursquare_venues',
-    'competitions',
-    'competition'
-];
-
-function _make_route(view_name, template, extra_view_data){
+function _make_route(file_name, name, template, extra_view_data){
     // returns a function that will do all that's needed to show a page when called
-    // view_name: js file to require, provices a Backbone.View
+    // file_name: js file to require, provices a Backbone.View
     // template: template path
     // extra_view_data: extra params to load this view with every time
     var route = function(query_string, dialog, extra_instance_data){
@@ -90,24 +11,44 @@ function _make_route(view_name, template, extra_view_data){
         // dialog: (bool) load this page as a dialog (no url change, no effect on history)
         // extra_instance_data: extra data to load this view this time only
 
+        var query = get_query_params(query_string);
+
+        if(query.new_user && !local_storage.get("welcome_shown")){
+            Backbone.history.navigate( "#/welcome/" );
+
+            return;
+        }
+
+        if(query.facebook_signin && auth.get('access_token')){
+            alerts.notification('Logged in as ' + (auth.get('display_username') || auth.get('snapr_user')));
+            var query_obj = new Query(query);
+            query_obj.remove('facebook_signin');
+            window.location.hash = "#/?" + query_obj.toString();
+
+            return;
+        }
+
+        var env = local_storage.get('environment');
+        config.set('environment', env);
+
         // get the view
-        require([view_name], function(view) {
+        require([file_name], function(view) {
 
             if(config.get('current_view')){
+                config.get('current_view').trigger('deactivate');
                 console.groupEnd(config.get('current_view').name);
             }
-            console.group(template);
+            console.group(name);
 
-            var query = get_query_params(query_string),
-                options = _.extend({
+            var options = _.extend({
                     query: query,
+                    name: name,
+                    template: template,
                     dialog: !!dialog
                 }, extra_view_data || {}, extra_instance_data || {});
 
             // don't create a new instance of this view every time
             if(!route.cached_view){
-                //options.el = $(el);
-                options.name = template;
                 // new view() initialises AND activates
                 route.cached_view = new view(options);
             }else{
@@ -145,7 +86,7 @@ function get_query_params(query) {
                     auth.set(key, unescape(value).replace('+', ' '));
                     auth.save_locally();
                 } else if(_.contains(["snapr_user_public_group", "snapr_user_public_group_name", "appmode", "demo_mode", "environment", "browser_testing", "aviary", "camplus", "camplus_camera", "camplus_edit", "camplus_lightbox"], kv[0])) {
-                    local_storage.save(key, value);
+                    local_storage.set(key, value);
                 } else {
                     key = unescape(key);
                     if(key in params) {
@@ -161,20 +102,6 @@ function get_query_params(query) {
         });
     }
 
-    var env = local_storage.get('environment');
-    config.set('environment', env);
-
-    if(params.facebook_signin && auth.get('access_token')){
-        alerts.notification('Logged in as ' + (auth.get('display_username') || auth.get('snapr_user')));
-        query = new Query(query);
-        query.remove('facebook_signin');
-        if(Backbone.History.started){
-            Backbone.history.navigate( "#/?" + query.toString(), true );  // strip login params
-        }else{
-            window.location.hash = "#/?" + query.toString();
-        }
-    }
-
     return params;
 }
 
@@ -185,7 +112,7 @@ if(hash.length > 1){
 }
 
 var routers = Backbone.Router.extend({
-    pages: pages,
+    pages: theme_config.pages,
 
     // build our page array into backbone routes
     initialize: function() {
@@ -213,7 +140,7 @@ var routers = Backbone.Router.extend({
                 options.extra = {};
             }
 
-            var callback = _make_route(options.view, options.template, options.extra);
+            var callback = _make_route(options.view, options.name, options.template, options.extra);
             var regex = new RegExp('^' + options.name + '\\/\\??(.*?)?$');
 
             // store url so we can manually look them up (for dialogues)

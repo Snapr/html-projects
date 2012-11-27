@@ -3,7 +3,7 @@ define(['config', 'views/base/view', 'auth'], function(config, view, auth){
 return view.extend({
 
     tagName: "div",
-    className: "news-ticker",
+    className: "x-news-ticker",
 
     initialize: function(){
         _.bindAll( this );

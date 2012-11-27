@@ -5,7 +5,7 @@ define(['config', 'backbone', 'views/base/page', 'jquery', 'validate', 'models/u
 var join_dialog = page_view.extend({
 
     post_initialize: function(){
-        this.validator = $("#join-dialog").validate({
+        this.validator = this.$("form").validate({
             //debug: true,
 
             errorClass: "x-invalid",
@@ -36,10 +36,10 @@ var join_dialog = page_view.extend({
                     alphanum_: true,
                     snapr_username: {
                         beforeSend: function(){
-                            $('#join-dialog-username').parent().addClass('x-validating').removeClass('x-valid x-invalid');
+                            $('.x-username').parent().addClass('x-validating').removeClass('x-valid x-invalid');
                         },
                         complete: function(){
-                            $('#join-dialog-username').parent().removeClass('x-validating');
+                            $('.x-username').parent().removeClass('x-validating');
                         }
                     }
                 },
@@ -80,20 +80,20 @@ var join_dialog = page_view.extend({
         this.change_page();
 
         this.$('.linked-message').toggle(!!(this.options.query && this.options.query.linked));
-        this.$('.twitter-button').toggle(!(this.options.query && this.options.query.twitter_name));
+        this.$('.x-twitter-button').toggle(!(this.options.query && this.options.query.twitter_name));
 
         if(this.options.query && this.options.query.twitter_name){
-            $('#join-dialog-username').val(this.options.query.twitter_name).valid();
+            $('.x-username').val(this.options.query.twitter_name).valid();
         }else{
-            $('#join-dialog-username').val("");
+            $('.x-username').val("");
         }
     },
 
     events: {
-        "submit #join-dialog": "join",
-        "click .twitter-button": 'twitter_login',
-        "click .facebook-button": 'facebook_login'
-        
+        "submit form": "join",
+        "click .x-twitter-button": 'twitter_login',
+        "click .x-facebook-button": 'facebook_login'
+
     },
 
     join: function(){
@@ -101,9 +101,9 @@ var join_dialog = page_view.extend({
         $('.x-join-btn').x_loading();
         var new_user = new user_settings();
         new_user.data = {
-           username: this.$el.find("#join-dialog-username").val(),
-           password: this.$el.find("#join-dialog-password").val(),
-           email: this.$el.find("#join-dialog-email").val(),
+           username: this.$(".x-username").val(),
+           password: this.$(".x-password").val(),
+           email: this.$(".x-email").val(),
            client_id: config.get('client_id')
         };
 
@@ -118,9 +118,9 @@ var join_dialog = page_view.extend({
             success: function()
             {
                 // empty all the forms
-                join_snapr_view.$el.find("#join-dialog-username").val('');
-                join_snapr_view.$el.find("#join-dialog-password").val('');
-                join_snapr_view.$el.find("#join-dialog-email").val('');
+                join_snapr_view.$(".x-username").val('');
+                join_snapr_view.$(".x-password").val('');
+                join_snapr_view.$(".x-email").val('');
                 // go back to home screen
                 Backbone.history.navigate('#/join-success/');
             },

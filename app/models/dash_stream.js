@@ -11,7 +11,9 @@ return Backbone.Model.extend({
         if(data.response && data.response.stream){
             data = data.response.stream;
         }
-        this.id = data.display.id;
+        if(data.display){
+            this.id = data.display.id;
+        }
         this.photos = new photo_collection(data.photos);
         this.photos.data = data.query;
         return data;

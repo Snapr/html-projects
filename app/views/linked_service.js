@@ -11,25 +11,25 @@ return view.extend({
     },
 
     events: {
-        "click .link-service" : "link_service",
-        "click .unlink": "unlink_service",
-        "click .save": "save_changes",
+        "click .x-link" : "link_service",
+        "click .x-unlink": "unlink_service",
+        "click .x-save": "save_changes",
 
-        "submit .tumblr-form": "link_service",
+        "submit .x-tumblr-form": "link_service",
 
-        "click .twitter-import-profile": "twitter_import_profile",
-        "change #twitter-link": "twitter_link",
-        "change #twitter-tweet": "twitter_tweet",
+        "click .x-twitter-import-profile": "twitter_import_profile",
+        "change .x-twitter-link": "twitter_link",
+        "change .x-twitter-tweet": "twitter_tweet",
 
-        "change #foursquare-link": "foursquare_link",
-        "change #foursquare-checkin": "foursquare_checkin",
+        "change .x-foursquare-link": "foursquare_link",
+        "change .x-foursquare-checkin": "foursquare_checkin",
 
-        "change #facebook-link": "facebook_link",
-        "change #facebook-newsfeed": "facebook_newsfeed",
-        "change #facebook-gallery": "facebook_gallery",
+        "change .x-facebook-link": "facebook_link",
+        "change .x-facebook-newsfeed": "facebook_newsfeed",
+        "change .x-facebook-gallery": "facebook_gallery",
 
-        "change #tumblr-link": "tumblr_link",
-        "change #tumblr-post": "tumblr_post"
+        "change .x-tumblr-link": "tumblr_link",
+        "change .x-tumblr-post": "tumblr_post"
     },
 
     render: function(){
@@ -87,7 +87,7 @@ return view.extend({
                     alerts.notification('Error', "Sorry, we had trouble saving your settings." );
                     linked_service.my_account.initialize();
                 }
-                //linked_service.$el.find("[data-role='collapsible']").trigger('collapse');
+                //linked_service.$("[data-role='collapsible']").trigger('collapse');
             },
             error: function(){
                 alerts.notification('Error', "Sorry, we had trouble saving your settings." );
@@ -97,7 +97,7 @@ return view.extend({
 
         if(this.model.provider == 'facebook'){
             this.model.set({
-                gallery_name: this.$el.find("#facebook-gallery-name").val()
+                gallery_name: this.$(".x-facebook-gallery-name").val()
             });
         }
 
@@ -130,63 +130,63 @@ return view.extend({
 
     twitter_link: function(){
         this.model.set({
-            show_username: this.$el.find("#twitter-link").val()
+            show_username: this.$(".x-twitter-link").val()
         });
         this.save_changes();
     },
 
     twitter_tweet: function(){
         this.model.set({
-            allow_tweets: this.$el.find('#twitter-tweet').val()
+            allow_tweets: this.$('.x-twitter-tweet').val()
         });
         this.save_changes();
     },
 
     foursquare_link: function(){
         this.model.set({
-            show_username: this.$el.find("#foursquare-link").val()
+            show_username: this.$(".x-foursquare-link").val()
         });
         this.save_changes();
     },
 
     foursquare_checkin: function(){
         this.model.set({
-            allow_checkin: this.$el.find('#foursquare-checkin').val()
+            allow_checkin: this.$('.x-foursquare-checkin').val()
         });
         this.save_changes();
     },
 
     facebook_link: function(){
         this.model.set({
-            show_profile_link: this.$el.find('#facebook-link').val()
+            show_profile_link: this.$('.x-facebook-link').val()
         });
         this.save_changes();
     },
 
     facebook_newsfeed: function(){
         this.model.set({
-            allow_newsfeed_posts: this.$el.find('#facebook-newsfeed').val()
+            allow_newsfeed_posts: this.$('.x-facebook-newsfeed').val()
         });
         this.save_changes();
     },
 
     facebook_gallery: function(){
         this.model.set({
-            allow_gallery_posts: this.$el.find('#facebook-gallery').val()
+            allow_gallery_posts: this.$('.x-facebook-gallery').val()
         });
         this.save_changes();
     },
 
     tumblr_link: function(){
         this.model.set({
-            show_username: this.$el.find('#tumblr-link').val()
+            show_username: this.$('.x-tumblr-link').val()
         });
         this.save_changes();
     },
 
     tumblr_post: function(){
         this.model.set({
-            allow_posts: this.$el.find('#tumblr-post').val()
+            allow_posts: this.$('.x-tumblr-post').val()
         });
         this.save_changes();
     }

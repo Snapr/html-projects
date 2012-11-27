@@ -3,11 +3,11 @@ define(['config', 'views/base/page', 'utils/alerts'], function(config, page_view
 return page_view.extend({
 
     events: {
-        "submit #forgot-form":"forgot"
+        "submit form":"forgot"
     },
 
     forgot: function(){
-        var username = this.$("#forgot-form input[name=username]").val();
+        var username = this.$("form input[name=username]").val();
 
         var data = {_method: 'POST'};
         // maybe this should be detected api-side
@@ -25,7 +25,7 @@ return page_view.extend({
             success: function(response){
                     console.debug(response);
                 if(response.success){
-                    forgot_view.$("#forgot-form input[name=username]").val('');
+                    forgot_view.$("form input[name=username]").val('');
                     alerts.notification("success", 'A password reset link has been emailed to you.');
                 }else{
                     alerts.notification('Error', 'Sorry, we had trouble with that. ' + response.error.message);

@@ -1,4 +1,4 @@
-<div id="leaderboard" data-title="Leaderboard" data-role="dialog" data-overlay-theme="c" data-theme="c" data-ajax="false" data-add-back-btn="false">
+<div id="leaderboard" data-role="page" data-title="Leaderboard" data-overlay-theme="c" data-theme="c" data-ajax="false" data-add-back-btn="false">
     <div data-role="header" data-theme="c">
         <h1>Leaderboard</h1>
         <a class="x-back" data-role="button" data-icon="delete" data-iconpos="notext"></a>
@@ -7,8 +7,20 @@
         <div class="info-header">
             <p class="message">Each photo you take earns points. Get bonus points for sharing to social networks and if people comment on and like your images.
         </div>
-        <ul class="people-list leaderboard-list" data-role="listview" data-inset="true" data-theme="c" data-split-theme="c" data-corners="false" data-shadow="false">
-            <!-- dynamic -->
+        <ul class="x-people-list s-people-list leaderboard-list" data-role="listview" data-inset="true" data-theme="c" data-split-theme="c" data-corners="false" data-shadow="false">
+            <% _.each(obj.users || [], function(user, rank){ %>
+                <li>
+                    <a href="#/feed/?username=<%= user.get('username') %>" data-username="<%= user.get('username') %>">
+                        <span class="game-rank"><%= rank+1 %></span>
+                        <img src="<%= config.get('avatar_url') %>/<%= user.get('user_id') %>" alt="<%= user.get('username') %>" class="s-avatar ui-li-icon"/>
+                        <h3 class="username"><%= user.get('display_username') %></h3>
+                        <p class="small-text">
+                            <span class="x-photo-count photo-count"><%= user.get('photo_count') %></span> photos
+                            <% if (user.get('score')) { %>, <span class="points"><%= user.get('score') %></span> points<% } %>
+                        </p>
+                    </a>
+                </li>
+            <% }) %>
         </ul>
     </div>
 </div>

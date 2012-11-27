@@ -1,11 +1,11 @@
 <a class="<%= status %>">
-    <span class="<%= provider %>-sharing sharing-icon-small">
+    <span class="s-<%= provider %>-sharing s-share-icon-small">
         <span class="ui-icon"></span>
     </span>
     <%= provider %>
     <% switch(status) { case 'ready': %>
-        <span class="connect-status">Sharing <span class="ui-icon ui-icon-spinner"></span></span>
+        <span class="s-connect-status">Sharing <span class="ui-icon ui-icon-spinner"></span></span>
     <% break; case 'shared': %>
-        <span class="connect-status">Shared<span class="ui-icon ui-icon-check"></span></span>
+        <span class="s-connect-status">Shared<span class="ui-icon ui-icon-check"></span></span>
     <% }%>
 </a>

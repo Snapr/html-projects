@@ -1,5 +1,5 @@
 /*global _  define require */
-define(['config', 'backbone', 'jquery', 'utils/local_storage', 'native', 'models/user_settings'], function(config, Backbone, $, local_storage, native, user_settings) {
+define(['config', 'backbone', 'jquery', 'utils/local_storage', 'native_bridge', 'models/user_settings'], function(config, Backbone, $, local_storage, native_bridge, user_settings) {
 
 var auth_model = Backbone.Model.extend({
 
@@ -40,6 +40,7 @@ var auth_model = Backbone.Model.extend({
                     if (typeof options.success == "function"){
                         options.success();
                     }
+                    auth.trigger('login');
                 }else{
                     delete auth.data;
                     if (typeof options.error == "function"){
@@ -77,19 +78,20 @@ var auth_model = Backbone.Model.extend({
         // and the hash doesn't have "access_token" in it
         // (which would cause an infinite loop)
         if (local_storage.get( "appmode" )){
-            native.pass_data( "snapr://login?snapr_user=" + encodeURI( this.get( "snapr_user" ) ) + "&display_username=" + encodeURI( this.get( "display_username" ) ) + "&access_token=" + encodeURI( this.get( "access_token" ) ) );
+            native_bridge.pass_data( "snapr://login?snapr_user=" + encodeURI( this.get( "snapr_user" ) ) + "&display_username=" + encodeURI( this.get( "display_username" ) ) + "&access_token=" + encodeURI( this.get( "access_token" ) ) );
         }
     },
 
     logout: function(){
         this.clear();
         local_storage['delete']( "auth" );
+        this.trigger('logout');
     },
 
     // decorator function
     require_login: function (funct) {
         return function (e) {
-            if(!auth.has('access_token')) {
+            if(!window.auth.has('access_token')) {
                 if(e) {
                     e.preventDefault();
                 }
@@ -103,7 +105,7 @@ var auth_model = Backbone.Model.extend({
     // fill in blank display_usernames
     fill_username: function(user){
         if(user.display_username === ''){
-            if(user.username == auth.get('snapr_user')){
+            if(user.username == window.auth.get('snapr_user')){
                 return config.get('me_username');
             }else{
                 return config.get('anon_username');
@@ -114,8 +116,8 @@ var auth_model = Backbone.Model.extend({
     }
 });
 
-var auth = new auth_model();
-auth.get_locally();
+window.auth = new auth_model();
+window.auth.get_locally();
 
-return auth;
+return window.auth;
 });

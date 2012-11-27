@@ -1,51 +1,33 @@
 /*global _  define require */
-define(['backbone', 'views/base/page', 'views/components/activity_ticker', 'views/auth_header', 'views/nearby_photostream', 'auth', 'utils/local_storage', 'config', 'utils/alerts'],
-    function(Backbone, page_view, ticker, auth_header_view, nearby_photostream_view, auth, local_storage, config, alerts){
+define(['backbone', 'views/base/page', 'views/components/activity_ticker', 'views/components/nearby_photostream', 'auth', 'utils/local_storage', 'config', 'utils/alerts', 'collections/upload_progress'],
+    function(Backbone, page_view, ticker, nearby_photostream_view, auth, local_storage, config, alerts, upload_progress_collection){
 return page_view.extend({
 
     post_initialize: function(options){
-
-        //this.template = _.template( $("#home-template").html() );
-
-        auth.bind("change", this.render);
-
-        if(options.query.new_user){
-            if (!local_storage.get("welcome_shown")){
-                Backbone.history.navigate( "#", true );  // go here first so that back is not new_user
-                Backbone.history.navigate( "#/welcome/" );
-            }
-        }
-
-        // only render the home page the first time we load
-        this.render(!!'initial');
+        auth.on('login logout', this.render);
     },
 
     post_activate: function(options){
         $.mobile.changePage( "#home", {changeHash: false} );  // must be false or jQm will change the url from x/y/z/#/ to x/y/z/#/x/y/z
 
-        this.nearby_photostream.refresh();
+        this.render_nearby_photostream();
+        this.render_ticker();
 
-        this.upload_count(config.get('upload_count'));
+        upload_progress_collection.on('all', this.upload_count());
+        this.upload_count();
     },
 
-    create_page: function(context){ /* override to do nothing - handled in render so we have context */ },
+    render: function(){
 
-    render: function(initial){
-        this.setElement(
-            $(this.template({
-                logged_in: auth.has("access_token"),
-                username: auth.get("snapr_user")
-            }))
-        );
+        this.replace_from_template({}, ['[data-role="header"]', '[data-role="content"]']);
+        this.render_ticker();
 
-        this.$el.appendTo(document.body);
+        return this;
+    },
 
-        var auth_header = new auth_header_view({
-            el: this.$('.auth-header')
-        });
-
+    render_ticker: function(){
         if(auth.has("access_token")){
-            var ticker_instance = new ticker({el:this.$('.news-ticker')}).render().tick();
+            var ticker_instance = new ticker({el:this.$('.x-news-ticker')}).render().tick();
             this.$el.on('pagehide', function(event, ui){
                 ticker_instance.stop();
             });
@@ -53,19 +35,26 @@ return page_view.extend({
                 ticker_instance.tick();
             });
         }
-
-        this.nearby_photostream = new nearby_photostream_view({
-           el: this.$el.find('.menu-stream')
-        });
-        if(initial !== true){
-            this.nearby_photostream.refresh();
-        }
+        this.$el.trigger('create');
 
         return this;
     },
 
-    upload_count: function( count ){
-        this.$(".upload-count").toggle(!!count).text( count || "0" );
+    render_nearby_photostream: function(){
+
+        this.nearby_photostream = new nearby_photostream_view({
+           el: this.$('.x-menu-stream')
+        });
+        this.nearby_photostream.refresh();
+
+        this.$el.trigger('create');
+
+        return this;
+    },
+
+    upload_count: function(){
+        var count = upload_progress_collection.length;
+        this.$(".x-upload-count").toggle(!!count).text( count || "0" );
     }
 
 });

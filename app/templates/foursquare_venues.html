@@ -1,16 +1,27 @@
-<div id="foursquare_venues" data-role="dialog" data-overlay-theme="c" data-theme="c" data-ajax="false">
+<div id="foursquare_venues" data-role="page" data-overlay-theme="c" data-theme="c" data-ajax="false">
     <div data-role="header" data-theme="c">
        <h1>Venues</h1>
         <a class="x-back" data-role="button" data-icon="delete" data-iconpos="notext"></a>
     </div>
     <div data-role="content" data-theme="c">
-        <div class="search-header">
+        <div class="s-search-header">
             <form class="venue-search">
-               <input type="search" id="venue-search" value="" placeholder="Search&hellip;" autocapitalize="off" autocorrect="off"/>
+               <input type="search" id="venue-search" value="" class="x-search-input" placeholder="Search&hellip;" autocapitalize="off" autocorrect="off"/>
             </form>
         </div>
-        <ul class="venue-list " data-role="listview" data-inset="true" >
-            <!-- dynamic -->
+        <ul class="venue-list x-venue-list" data-role="listview" data-inset="true" >
+            <% _.each(obj.venues || [], function(venue){ %>
+                <li>
+                    <a class="x-venue" data-id="<%= venue.id %>" data-name="<%= venue.get('name') %>">
+                        <img src="<%= venue.get_icon() %>" alt="" class="s-avatar ui-li-icon"/>
+                        <h3 class="venue-name"><%= venue.get('name') %></h3>
+                        <p class="s-small-text"><%= venue.get('location').distance %> m</p>
+                    </a>
+                    <% if (venue.id == selected_id) {%>
+                        <a data-icon="check" data-iconpos="right" class="select"></a>
+                    <%}%>
+                </li>
+            <% }) %>
         </ul>
     </div>
 </div>

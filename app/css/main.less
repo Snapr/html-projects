@@ -1,0 +1,2604 @@
+//
+// COMPONENTS - Bare Bones of Snapr Specific Components
+// --------------------------------------------------
+
+
+
+// BROWSER DEFAULTS
+// -------------------------
+
+html {
+    -webkit-user-select: none;
+    -webkit-text-size-adjust: none;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-touch-callout: none;
+    -webkit-font-smoothing: antialiased;
+}
+
+input[type="search"]::-webkit-search-cancel-button {-webkit-appearance: none;}
+
+
+.hide{ display:none; }
+
+.s-main-image{
+    -webkit-touch-callout: default;
+}
+
+.image-caption,user-details {
+    -webkit-user-select: text;
+}
+
+input:focus {
+    outline: none;
+}
+
+textarea{
+    resize:none;
+    min-height: 60px;
+    overflow: hidden;
+}
+
+body {
+   	font-size: @fontSize;
+   	font-family: @font;
+   	background-color: @black;
+}
+
+a{
+    text-decoration: none;
+}
+
+h1,h2,h3,h4,h5,
+p,ul,li,hr,textarea,input,section, .ui-select{
+    font-weight: normal;
+    margin: 0;
+    margin-bottom: @padding * 2;
+}
+
+
+
+ul,
+ul li{
+    list-style: none;
+    padding: 0;
+}
+
+hr{
+    display: block;
+    position: relative;
+    padding: 0;
+    width: 100%;
+    height: 0;
+    clear: both;
+    border: none;
+    border-bottom: @grayLight;
+    border-top: @grayLighter;
+    font-size: 1px;
+    line-height: 0;
+    overflow: visible;
+    background-color: transparent;
+    color: @grayLight;
+}
+
+
+
+// @HEADERS
+// -------------------------
+
+div[data-role="header"]{
+    min-height: @topBarHeight; // So Topbar doesn't collapse without heading
+
+    // Add Centered Button Option
+    .ui-btn-center{
+        position: absolute;
+        top: @padding;
+        width: 100%;
+        text-align: center;
+    }
+
+    // Line Up Multiple buttons
+    .ui-btn-center{
+        .ui-btn,
+        .ui-controlgroup{
+            margin: 0;
+        }
+    }
+
+    .ui-btn-right,
+    .ui-btn-left{
+        white-space: nowrap;
+        .ui-btn{
+            display: inline-block;
+            margin: 0;
+            top: @padding;
+        }
+    }
+}
+
+// Hide the iOS style back button for android users
+.x-appmode-android{
+    div[data-role="header"].ui-bar-b{
+        a[data-rel="back"]{
+            display: none;
+        }
+    } 
+}
+
+
+// @CONTENT
+// -------------------------
+
+
+div[data-role="content"]{
+    position: relative;
+    padding: 0 @padding * 2;
+
+    .ui-content{
+        padding: @padding * 2;
+    }
+    .ui-listview{
+        margin: 0 -@padding * 2;
+        .ui-bar{
+            margin-right: 0;
+            margin-left: 0;
+        }
+    }
+    .ui-listview-inset {
+        margin: 0;
+    }
+    .s-inline-header{
+        margin: 0 -@padding * 2;
+        background-color: @grayLighter;
+        padding: 0 @padding * 2;
+    }
+
+    .s-inline-footer{
+        margin: 0 -@padding * 2;
+        background-color: @grayLighter;
+        padding: @padding * 2;
+    }
+}
+
+.ui-content{
+    .s-inset-page-content{
+        padding: @padding * 4 @padding * 2;
+        .ui-listview-inset{
+            margin-bottom:  @padding * 2 * 2 ;
+        }
+    }
+}
+
+a,
+a:link,
+a:visited,
+a:hover,
+a:active{
+    text-decoration: none;
+    color: @grayDark;
+}
+
+.s-underline{
+    text-decoration: underline;
+}
+
+.s-vertical-margins{
+    display: block;
+    margin: @padding * 4 0;
+}
+
+.s-small-username{
+    font-size: @fontSizeSmall;
+}
+
+.s-wrap-content{
+    h1,h2,h3,h4,p,a{
+        white-space: normal!important;
+        line-height: 140%;
+    }
+    h1,h2,h3,h4{
+        margin:@padding * 2 @padding * 8 @padding * 2 0!important;
+        padding-left: @padding *2;
+    }
+
+    p{
+        margin:@padding * 2 @padding * 8 @padding * 2 0!important;
+        text-transform: none!important;
+        padding-left: @padding *2;
+    }
+}
+
+
+// Set page element to full height if you need fullscreen elements
+.s-full-height{
+    min-height: 400px;
+    .box-sizing(border-box);
+    position:absolute;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+}
+
+
+// @NORESULTS
+// ------------------------
+
+.s-alert-text {
+    padding: @paddingElement;
+    position: relative;
+    font-style: italic;
+    font-size: @fontSizeSmall;
+    color: @gray;
+    // Not going to use icons for now
+    .ui-icon {
+        display:none;
+    }
+}
+
+
+// @TABBAR
+// -------------------------
+
+
+.s-tabbar-activity{
+    position: absolute;
+    top: -30px;
+    right: 0;
+}
+
+// Add base padding to pages with tab bars and square off rounded corners for content
+.x-tab-bar{
+    *[data-tab-bar="true"]{
+        padding-bottom: @tabBarHeight;
+
+        div[data-role="content"]{
+        }
+
+        //Hide home menu and camera button on pages where the is a tab bar
+        div[data-role="header"]{
+            *[data-icon="home"],
+            *[data-icon="camera"]{
+                display: none;
+            }
+        }
+
+
+    }
+}
+
+.s-tab-bar{
+    ul li{
+        position: relative;
+        .s-count-item{
+            position: absolute;
+            top: 12%;
+            right: 12%;
+            z-index: 10;
+        }
+    }
+}
+
+.s-count-item{
+    background-color: @blue;
+    color: @white;
+    .border-radius(20px);
+    padding: 2px 2px 2px 2px;
+    font-size: 12px;
+    height: 12px;
+    min-width: 12px;
+    text-align: center;
+    line-height: 11px;
+    vertical-align: middle;        
+}
+
+
+
+// @AVATARS
+// -------------------------
+
+.s-avatar,
+.s-avatar-med,
+.s-avatar-large{
+    width: @avatarSize;
+    height: @avatarSize;
+    background-color: @grayLighter;
+    background-size: 100% 100%;
+    background-size: cover;
+    background-position: center;
+    .border-radius(2px);
+    display: block;
+}
+
+.s-avatar-med{
+    width: @avatarSizeMed;
+    height: @avatarSizeMed;
+    .border-radius(4px);
+}
+
+.s-avatar-large{
+    width: @avatarSizeLarge;
+    height: @avatarSizeLarge;
+    .border-radius(4px);
+}
+
+
+// @FORMS
+// -------------------------
+
+// Hides the button version of the submit buttons so pressing enter to submit will work,
+// but we still have ability to control look of button
+.s-invisible-submit-button{
+    width: 0;
+    height: 0;
+    overflow: hidden;
+}
+
+.ui-hide-label{
+    label{
+        display: none;
+    }
+}
+
+// @JOIN
+// -------------------------
+
+.s-validate{
+    .x-invalid[for]{
+        font-size: @fontSizeSmall;
+        line-height: 14px;
+        color: @grayDark;
+        padding: 4px;
+        margin: 0 @paddingElement @paddingElement @paddingElement;
+        display: block;
+        background-color: lighten(@gray, 20%);
+        .border-radius(4px);
+        position: relative;
+    }
+    .ui-icon-check{
+        display: none;
+        position: absolute;
+        right: @paddingElement / 2;
+        top: @paddingElement;
+    }
+    .x-valid{
+        overflow: hidden; // if the spinning element overlaps other form elements can cause flicker */
+        .ui-icon-check{
+            display: block;
+        }
+    }
+    .x-validating{
+        overflow: hidden; // if the spinning element overlaps other form elements can cause flicker */
+        .ui-icon-check{
+            .spinner();
+            .spin();
+        }
+    }
+}
+
+
+
+// @LISTVIEWS
+// -------------------------
+
+.ui-li-has-icon .ui-btn-inner a.ui-link-inherit,
+.ui-li-static.ui-li-has-icon {
+    min-height: @avatarSize;
+    padding-left: @avatarSize + @padding * 4;
+}
+
+.ui-listview .ui-li-icon {
+    max-height:  @avatarSize;
+    max-width:  @avatarSize;
+    left: 10px;
+    top: 24px;
+}
+
+.s-inset-page-content{
+    .ui-listview-inset {
+        background-color: @white;
+
+        li.ui-li{
+            padding: @padding * 2;
+            margin: 0;
+            border: none;
+            background:none;
+            border-top: solid 1px #e4e4e4;
+            &:first-child{
+                border: none;
+            }
+            .ui-link-inherit,
+            p{
+                padding-left: @padding * 2;
+            }
+            &.ui-li-has-icon{
+                .ui-link-inherit{
+                    padding-left: @avatarSize;
+                }
+            }
+            input[type="text"],
+            input[type="password"],
+            input[type="email"]{
+                width: 100%;
+                border: none;
+                background: transparent;
+                margin: 0;
+                .box-sizing(border-box);
+                .box-shadow(none);
+            }
+            &.s-has-select{
+                padding: 0;
+                .ui-select{
+                    width: 100%;
+                    margin: 0;
+                    .box-shadow(none);
+                    .ui-btn{
+                        .box-shadow(none);
+                        .border-top-radius(0);
+                        border: none;
+                    }
+                    .ui-btn-inner{
+                        padding-top: 18px;
+                        padding-bottom: 18px;
+                        padding-left: @padding * 4;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+// @IMAGES
+// -------------------------
+
+
+.s-image-loader-bg{
+    background-color: @grayLight;
+    background-image: url('@{gfx}@{gfxImageLoad}');
+    background-repeat: no-repeat;
+    background-position: center;
+    img{
+        display: block;
+    }
+}
+
+.s-css-thumb{
+    background-color: @grayLighter;
+    background-position: center;
+    .background-size(cover);
+}
+
+.s-thumb-image{
+    width: @thumbSize;
+    height: @thumbSize;
+    padding: 0;
+    margin: 0;
+    display: block;
+    background-color: @grayLight;
+}
+
+.s-thumbs-grid-med,
+.x-grid .x-feed-images{
+    margin: 0 -@padding * 2;
+    padding: @padding 0 @padding / 2 @padding / 2;
+    min-height: @thumbSize;
+    .s-feed-item{
+        display: inline-block;
+        margin: 0 @padding / 2;
+    }
+
+    .s-image-link{
+        display: inline-block;
+        padding: 0;
+        margin: 0;
+    }
+
+}
+
+// Fullscreen grid for larger phones like the s3
+
+@media only screen and (min-device-width : 719px) and (max-device-width : 721px) and (-webkit-min-device-pixel-ratio : 2) and (orientation : portrait) { 
+    .s-thumbs-grid-med,
+    .x-grid .x-feed-images{
+        .s-thumb-image{
+            width: @thumbSize + 14px;
+            height: @thumbSize + 14px;
+            
+        }
+    }  
+    .s-thumbs-grid-med{
+        padding: @padding 0 @padding / 2 @padding / 2 + 2px;
+    }
+    .x-grid .x-feed-images{
+        padding: @padding 0 @padding / 2 @padding / 2 ;
+    }
+}
+
+
+
+// @BAR
+// -------------------------
+
+.ui-bar{
+    margin: 0 -@padding * 2;
+    strong{
+        font-size: @fontSizeUsername;
+    }
+
+    .ui-btn,
+    &.ui-btn{
+        .ui-btn-inner{
+            padding-top: 0;
+            padding-bottom: 0;
+            height: @barHeight;
+            line-height: @barHeight;
+            text-align: left;
+        }
+        .ui-btn-text{
+            font-size: @fontSizeSmall;
+            strong{
+                font-size: @fontSizeUsername;
+            }
+           // Extra Icons display Inline
+           .ui-icon{
+               display: inline-block;
+               position: relative;
+               vertical-align: middle;
+               margin-top: 0!important;
+           }
+        }
+    }
+
+    // Split Bars with Button on right
+    .ui-controlgroup-controls{
+        width: 100%;
+    }
+    .s-bar-left{
+        width: 80%;
+        box-sizing: border-box;
+        margin: 0;
+        border-right: none;
+        .ui-btn-inner{
+            text-align: left;
+            padding-right: 0;
+        }
+    }
+    .s-bar-right{
+        width: 20%;
+        box-sizing: border-box;
+        margin: 0;
+        .ui-btn-inner{
+            padding-right: 0;
+        }
+    }
+}
+
+
+// @STREAMS
+// -------------------------
+
+.x-stream{
+    position: relative;
+    margin-bottom: @padding * 2 ;
+    white-space: no-wrap;
+    .x-thumbs{
+        display: inline-block;
+        min-width: @thumbSize * 3 + @padding * 2;
+    }
+    .s-image-link{
+        padding-left: @paddingGrid;
+    }
+    .s-load-more-inline{
+        background-color: @grayLight;
+        width: @thumbSize;
+        height: @thumbSize;
+        display: inline-block;
+        vertical-align: top;
+        position: relative;
+        .ui-btn-text{
+            display: inline-block;
+            text-align: center;
+            font-size: 11px;
+            font-weight: bold;
+            text-transform: lowercase;
+            bottom: 12px;
+            position: absolute;
+            width: 101px;
+            color: @gray;
+        }
+        .ui-icon-refresh{
+            background-image: url('@{gfx}@{gfxRefresh}');
+            background-repeat: no-repeat;
+            position: absolute;
+            display: block;
+            left: 50%;
+            top: 50%;
+            width: @gfxRefresh-grid;
+            height: @gfxRefresh-grid;
+            margin-top: -@gfxRefresh-grid / 2;
+            margin-left: -@gfxRefresh-grid / 2;
+            -webkit-transition-property:-webkit-transform;
+            -webkit-transition-duration:250ms;
+            -webkit-transform:rotate(0deg) translateZ(0);
+        }
+        &.x-right-pull{
+            margin-right: 9px;
+            .ui-icon-refresh{
+                background-position: @gfxRefresh-x @gfxRefresh-right-y;
+            }
+        }
+        &.x-left-pull{
+            margin-right:-@padding;
+            .ui-icon-refresh{
+                background-position: @gfxRefresh-x @gfxRefresh-left-y;
+            }
+        }
+        &.x-flipped{
+            .ui-icon-refresh{
+                background-position: @gfxRefresh-x @gfxRefresh-refresh-y;
+                -webkit-transform:rotate(180deg) translateZ(0);
+            }
+        }
+    }
+    .ui-bar{
+        .s-image-tag{
+            display: none;
+        }
+    }
+
+    .s-load-more-inline{
+        .x-release, .x-loading, .x-no-more{ display: none; }
+    }
+
+    &.x-closed,
+    &.x-loading,
+    &.x-no-photos{
+        .ui-bar{
+            .s-image-tag,
+            .s-image-time{
+                display: none;
+            }
+        }
+    }
+    &.x-loading,
+    .x-loading {
+        .s-load-more-inline{
+            .ui-icon-refresh{
+                background-image: url('@{gfx}@{gfxSpinner}');
+                background-position: center!important;
+                .spin();
+            }
+            .x-load-more, .x-release{ display: none; }
+            .x-loading{ display: inherit; }
+        }
+    }
+    .x-no-more{
+        .s-load-more-inline.x-right-pull{
+            .ui-icon-refresh{
+                display: none;
+            }
+            //turns 'the end' into big full stop..
+            .x-no-more{
+                display: inherit;
+                background-color:rgba(0,0,0,.12);
+                padding: 36px 0;
+                width: 84px;
+                .border-radius(44px);
+                color: white;
+                height: 12px;
+                vertical-align: middle;
+                margin-left: 10px;
+            }
+            .x-load-more{ display: none; }
+        }
+    }
+    .x-flipped{
+        .x-release{ display: inherit; }
+        .x-load-more{ display: none; }
+    }
+    .x-no-photos{
+        display: none;
+        .x-no-more{
+                background-color:rgba(0,0,0,.12);
+                padding: 36px 0;
+                width: 84px;
+                .border-radius(44px);
+                color: white;
+                height: 12px;
+                vertical-align: middle;
+                margin-left: 10px;
+            }
+    }
+
+     &.x-no-photos{
+        .x-no-photos-alert{
+            display: block;
+        }
+     }
+
+
+    .s-edit-overlay{
+        display: none;
+        position: absolute;
+        top: 40px;
+        width: 109%;
+        background-color: rgba(255, 255, 255, .8);
+        min-height: @thumbSize;
+        margin-left: -8px;
+        margin-right: -8px;
+        right: 0;
+        .x-remove-stream{
+            display: inline-block;
+            position: absolute;
+            right: 8px;
+            top: 50%;
+            margin-top: -18px;
+        }
+        // Styles for remove btn on streams with no images
+
+
+        &.x-closed{
+            .s-edit-overlay{
+                top: 0px;
+                height: @barHeight;
+                min-height: @barHeight;
+                z-index: 30;
+                background-color: rgba(255, 255, 255, .2);
+                .x-remove-stream{
+                    margin-top: -14px;
+                    .ui-btn-inner{
+                        padding: 4px 32px 4px 16px;
+                    }
+                }
+            }
+        }
+
+    }
+}
+.x-edit{
+    .x-stream.user-stream{
+        .s-edit-overlay{
+            display: block;
+        }
+    }
+}
+
+.x-scroll-wrapper {
+    white-space: nowrap;
+    display:inline-block;
+}
+.x-right-pull, .x-left-pull{
+    display:inline;
+}
+
+
+
+// @SEARCH
+// -------------------------
+
+.s-search-header{
+    overflow: visible;
+    input{
+        overflow: visible;
+    }
+}
+
+.ui-input-search{
+    .ui-input-clear{
+        .box-shadow(none);
+    }
+}
+
+.x-loading{
+    .s-search-header{
+        .ui-input-search{
+            .ui-input-clear {
+                display:block;
+                .ui-icon-delete{
+                    .spinner();
+                    .spin();
+                }
+            }
+        }
+    }
+}
+
+
+// @DASH
+// -------------------------
+
+.s-dash-wrapper{
+    min-height: 340px;
+    .s-competitions,
+    .s-tumblr-streams{
+        margin-bottom: 0;
+        .x-post-stream{
+            margin-bottom: @padding * 2;
+        }
+    }
+    .s-helper-content{
+        margin-bottom: @padding * 2;
+    }
+}
+
+
+.s-dash-edit-done{
+    display: none;
+}
+
+#dash.x-edit{
+    // Show the btn to exit edit mode
+    .s-dash-edit-done{
+        display: block;
+    }
+    // Shuffle the app people buttons to the top
+    .s-dash-wrapper{
+        margin-top: 120px;
+    }
+    .s-dash-footer{
+        position: absolute;
+        top: 0;
+        width: 100%;
+        margin-top: 0;
+        .border-top-radius (8px);
+        .border-bottom-radius(0);
+        .box-sizing(border-box);
+    }
+    // Hide the default streams that are unremovable
+    .x-stream,
+    .s-tumblr-streams,
+    .s-competitions{
+        display: none;
+        &.user-stream{
+            display: block;
+        }
+    }
+}
+
+// Hide the follow btns on dash lists
+#dash-add-person{
+    .s-people-list{
+        .x-follow-btn{
+            display: none;
+        }
+    }
+}
+
+
+
+
+// @TUMBLR DASH
+// -------------------------
+
+
+.s-tumblr-streams{
+    position: relative;
+}
+
+.s-tumblr-item{
+    min-height: @thumbSize;
+    height: @thumbSize;
+    overflow: hidden;
+    margin: @padding + 1 -@padding;
+    position: relative;
+    display: block;
+    .s-tumblr-exceprt{
+        text-align: left;
+        background-color: @grayLighter;
+        padding: @padding * 2;
+        min-height: @thumbSize;
+        .box-sizing(border-box);
+        .border-radius(@corners);
+        .s-crop-content{
+            text-overflow: ellipsis;
+            overflow: hidden;
+            height:62px;
+        }
+        blockquote{
+            margin: @padding;
+            border-left: solid 2px @gray;
+            padding-left: @padding * 2;
+            font-family: @fontSerif;
+            font-style: italic;
+            font-size: @fontSizeUsername;
+            small{
+                display: inline-block;
+                color: @gray;
+            }
+        }
+        p{
+            margin: @padding * 1.5 @padding @padding @padding;
+            color: @gray;
+            font-family: @fontSerif;
+            font-style: italic;
+            font-size: @fontSizeSmall;
+        }
+        .s-tumblr-details{
+            position: relative;
+            font-size: @fontSizeSmall;
+            color:  @gray;
+            line-height: @gfxTumblr-grid;
+            height: @gfxTumblr-grid;
+            padding-right:@gfxTumblr-grid;
+            margin-left: 4px;
+            .box-sizing(border-box);
+            top: @padding;
+            .tumblr-icon{
+                display: block;
+                position: absolute;
+                right: 0;
+                top: 0;
+            }
+        }
+        &.s-tumblr-photo,
+        &.s-tumblr-video{
+            margin-left: @thumbSize + 2px;
+            blockquote{
+                margin-left: 0;
+                border-left: 0;
+            }
+
+        }
+    }
+    .s-tumblr-thumb{
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: @thumbSize;
+        height: @thumbSize;
+    }
+}
+
+// @TUMBLR POSTS
+// -------------------------
+
+#tumblr-posts {
+    blockquote {
+        margin: @padding * 2;
+        font-style:italic;
+    }
+    .s-tumblr-stream {
+        overflow:hidden;
+        margin: 0 -@padding * 2;
+        .s-tumblr-post-item {
+            border-bottom: 1px solid @grayLight;
+            margin: 0px;
+            padding: @padding;
+            .s-tumblr-post {
+                width: 100%;
+                img,
+                video {
+                    width: 100%;
+                    margin: 0 auto;
+                    max-width: 512px;
+                    margin: 0 0 @padding * 2 0;
+
+                }
+                audio {
+                    margin: 0 0 @padding * 2 0;
+                }
+
+                .s-tumblr-body{
+                    margin: @padding;
+                    line-height: 140%;
+                }
+                .s-photo-set {
+                    overflow:hidden;
+                    margin: 0;
+                    padding: 0;
+                    list-style: none;
+                    li{
+                        margin: 0;
+                        padding: 0;
+                        list-style: none;
+                    }
+                }
+            }
+        }
+
+    }
+    .s-tumblr-footer {
+        margin: 0 -@padding * 2;
+    }
+}
+
+.s-tumblr-credit{
+    margin: 12px 0;
+    font-size: @fontSizeSmall;
+    height: @fontSizeSmall;
+    text-align: left;
+    line-height: @fontSizeSmall;
+    padding-bottom: @gfxTumblrLogo-height ;
+    color: @gray;
+    background-image: url('@{gfx}@{gfxTumblrLogo}');
+    width: @gfxTumblrLogo-width;
+    background-repeat: no-repeat;
+    background-position: center bottom;
+    display: block;
+}
+
+.ui-icon.tumblr-icon{
+    background-image: url('@{gfx}@{gfxTumblr}');
+    width: @gfxTumblr-grid!important;
+    height: @gfxTumblr-grid!important;
+    &.ui-icon-tumblr-text{background-position: @gfxTumblr-x @gfxTumblr-text-y;}
+    &.ui-icon-tumblr-photo{background-position: @gfxTumblr-x @gfxTumblr-photo-y;}
+    &.ui-icon-tumblr-quote{background-position: @gfxTumblr-x @gfxTumblr-quote-y;}
+    &.ui-icon-tumblr-link{background-position: @gfxTumblr-x @gfxTumblr-link-y;}
+    &.ui-icon-tumblr-video{background-position: @gfxTumblr-x @gfxTumblr-video-y;}
+    &.ui-icon-tumblr-audio{background-position: @gfxTumblr-x @gfxTumblr-audio-y;}
+    &.ui-icon-tumblr-chat{background-position: @gfxTumblr-x @gfxTumblr-chat-y;}
+}
+
+
+// @COMPS
+// ----------------------------
+
+
+.s-competition{
+    position: relative;
+    .banner{
+        margin: 0 -@padding * 2;
+        background-color: @grayLighter;
+        min-height: 100px;
+        .banner-image{
+            display: block;
+            width: 100%;
+        }
+    }
+    .info{
+        background-color: @grayLight;
+        margin: @padding * 2 0;
+        padding: @padding * 2;
+        .border-radius(@corners);
+        font-size: @fontSizeSmall;
+    }
+    .s-award-stream {
+        margin: 4px 0;
+        .award-stream {
+            margin: 0;
+            .x-thumb {
+                
+                position: relative;
+                display: inline-block;
+
+                .image-link {
+                    overflow: hidden;
+                }
+            
+                .ribbon {
+                    position: absolute;
+                    bottom: -10px;
+                    right: -5px;
+                    z-index: 99;
+                }
+            }
+        }
+    }
+    .ui-li-desc {
+        white-space: normal;
+    }
+}
+
+
+
+// @FEED
+// -------------------------
+
+
+.s-feed-header.s-inline-header{
+    position: relative;
+    padding-left: @avatarSizeLarge;
+    height: @avatarSizeLarge;
+    padding-left: 0!important;
+    padding-right: 0!important;
+    .s-user-icon-left{
+        position:absolute;
+        z-index: 3;
+        top: 0;
+        left: 0;
+        .s-avatar-large,
+        .s-icon-overlay{
+            position:absolute;
+            display: block;
+            top: 0;
+            left: 0;
+            width: @avatarSizeLarge;
+            height: @avatarSizeLarge;
+            overflow:hidden;
+        }
+        .s-avatar-large{
+            background-color: @grayLight;
+
+        }
+    }
+    .s-follow-btn{
+        z-index: 1;
+        display: block;
+        width: 100%;
+        height: @barHeight;
+        .ui-btn-inner{
+            padding-top: 0;
+            padding-bottom: 0;
+            text-align: right;
+        }
+    }
+    .s-username{
+        z-index: 2;
+        position: absolute;
+        margin: 0;
+        height: @barHeight;
+        line-height: @barHeight;
+        vertical-align: middle;
+        top: 0;
+        display: inline-block;
+        left: @avatarSizeLarge + @padding * 2;
+    }
+    .s-header-stats{
+        height: @avatarSizeLarge - @barHeight ;
+        padding-left: @avatarSizeLarge;
+        text-align: center;
+        font-size: @fontSizeSmall;
+        .s-hero-number{
+            padding-top: @padding * 3;
+            display: block;
+            font-size: 20px;
+        }
+    }
+}
+
+
+
+.s-image-item-block{
+    margin: @padding * 2 0 @padding * 6 0;
+    .s-image-item-topbar{
+        height:  @avatarSize + 1px;//haxy to account for mysterious icon overhang
+        margin-bottom: @padding * 2;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        .s-avatar,
+        .s-username,
+        .s-image-time-and-location,
+        .s-image-time{
+            height:@avatarSize;
+            line-height:@avatarSize;
+            vertical-align: middle;
+            display: inline-block;
+            font-size: @fontSizeSmall;
+        }
+        .s-username{
+            font-size: @fontSizeUsername;
+        }
+    }
+    .s-image-item{
+        position: relative;
+        .s-image-status{
+            position: absolute;
+            top: -14px;
+            background-color: #e5592f;
+            color: white;
+            font-size: 11px;
+            font-weight: bold;
+            text-shadow: none;
+            padding: 0px 3px;
+            right: 0;
+            height: 14px;
+            .border-top-radius(4px);
+            opacity: .5;
+            display: none;
+        }
+    }
+    .s-main-image-link{
+        display: block;
+        .s-main-image{
+            width: 100%;
+        }
+    }
+    .s-image-description{
+        margin-top: @padding * 2;
+        margin-bottom: -@padding * 2;
+    }
+    .s-image-item-base{
+        position: relative;
+        margin-top: @padding * 2;
+        margin-bottom: -@padding * 2;
+    }
+    .s-reactions-list{
+        display: none;
+        .box-shadow(none);
+        li.ui-li{
+            border: none!important;
+            padding:0;
+            .ui-link-inherit{
+                padding: 0 0 @paddingElement 0!important;
+                display: inline-block;
+                white-space: normal;
+            }
+            .ui-icon-arrow-r{
+                display: none;
+            }
+            .username{
+                text-transform: none;
+                text-shadow: none;
+            }
+            .comment,
+            .like-text{
+                white-space: normal;
+                font-weight: normal;
+                text-transform: none;
+                text-shadow: none;
+            }
+        }
+
+    }
+    .s-comment-area{
+        display: none;
+        .s-photo-comment{
+            min-height: 75px;
+        }
+    }
+}
+
+.s-image-item-block.private{
+    .s-image-status{
+        display:inherit;
+    }
+}
+
+.s-has-palette{
+    position: relative;
+    display: inline-block;
+    float: left;
+    .s-action-palette{
+        position: absolute;
+        bottom: 100%;
+        left: 20px;
+        width: 0px;
+        .s-center-palette{
+            display:inline-block;
+            position:relative;
+            left:50%;
+            .s-inline-palette{
+                position:relative;
+                left:-50%;
+                .border-radius(@corners + 2);
+                padding: 6px;
+                white-space: nowrap;
+                .ui-controlgroup{
+                    margin-bottom: 1px;
+                }
+                .ui-btn{
+                    vertical-align: middle;
+                    line-height: 22px;
+                }
+                .ui-btn-icon-notext{
+                    top:0;
+                }
+                .ui-btn-icon-left .ui-btn-inner {
+                    padding-left: 40px;
+                    .ui-icon{
+                        left: 0;
+                    }
+                }
+
+            }
+        }
+    }
+}
+
+.s-my-snaps-only {
+    display: none!important;
+}
+.x-my-snaps .s-my-snaps-only {
+    display: inline-block !important;
+}
+.x-my-snaps .s-not-on-my-snaps {
+    display: none!important;
+}
+
+
+
+
+
+// @UPLOADING
+// -------------------------
+
+
+#uploading{
+    .s-upload-progress-header{
+        min-height: @thumbSize + @padding * 4;
+
+    }
+    .s-upload-progress-item{
+        padding: 0;
+        .s-upload-image-thumb-gall{
+            position: absolute;
+            left:0;
+            top: @padding * 2;
+        }
+        .s-progress-bar{
+            margin: 8px 0;
+        }
+        .s-upload-info-block{
+            padding-left: @thumbSize + @padding * 2;
+            p{
+                margin-top: 0;
+                margin-bottom: 2px;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                overflow: hidden;
+            }
+            .s-upload-shared-to{
+                margin: @padding 0 0 0 ;
+                padding: 0;
+                li{
+                    list-style: none;
+                    display: inline-block;
+                    width: 20px;
+                    height: 20px;
+                    margin-right: 2px;
+                }
+            }
+        }
+    }
+    .s-offline-uploading{
+        position: relative;
+        .ui-btn-inner{
+            overflow: visible;
+        }
+    }
+}
+
+
+// @QUEUE
+// -------------------------
+
+.s-upload-progress-header{
+    padding: 0 @padding * 2!important;
+    margin-bottom: 0!important;
+     overflow:hidden;
+    .x-feed-upload-list{
+         margin-bottom: 0;
+    }
+    .s-upload-progress-item{
+        list-style:none;
+        padding: 0 @padding * 2;
+        min-height: @avatarSize;
+        margin-bottom: @padding * 2;
+        position: relative;
+        overflow: visible;
+        &:first-child{
+            padding-top: @padding * 2;
+        }
+        .s-upload-image-thumb-gall{
+            position: absolute;
+            left:0;
+            top: 0;
+            .s-thumb-small{
+                width: 34px;
+                height: 34px;
+                .border-radius(2px);
+            }
+        }
+        .s-upload-info-block{
+            position: relative;
+            padding-left: @avatarSize + @padding * 2;
+            .s-upload-info{
+                padding-top: 5px;
+
+            }
+            p{
+                margin-top: 0;
+                margin-bottom: 2px;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                overflow: hidden;
+            }
+
+        }
+    }
+
+
+}
+
+
+// @PROGRESSBAR
+//-----------------
+
+.s-progress-bar{
+    position: relative;
+    padding: 8px 28px 8px 8px;
+    height:8px;
+    background-color: lighten(@grayLighter, 20%);
+    border-radius: 13px;
+    .s-bar-wrapper{
+        position: relative;
+        .s-bar{
+            height: 8px;
+            .border-radius(4px);
+        }
+        .s-bar-prog{
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: @yellow;
+        }
+        .s-bar-bg{
+            background-color: #C5C4C4;
+            .box-shadow(inset 0 0 9px 2px #AFAEAE);
+        }
+    }
+    .s-upload-message{
+        position: absolute;
+        line-height: 24px;
+        vertical-align: middle;
+        top: 0px;
+        left:8px;
+        font-weight: bold;
+        font-size: @fontSizeSmall;
+    }
+
+    .s-bar-action{
+        position: absolute;
+        right: -12px;
+        top: -8px;
+        margin: 0;
+        width: 40px;
+        height: 40px;
+        background: none;
+        .ui-icon{
+            display: block;
+            display: block;
+            top: 50%;
+            position: absolute;
+            margin-top: -18px;
+            right: 7px;
+        }
+    }
+}
+
+// @SHAREICONS
+//-----------------
+
+.s-share-icon-small{
+    background-color: lighten(@grayLighter, 10%);
+    .border-radius(4px);
+    width: 22px;
+    height: 22px;
+    display: inline-block;
+    .ui-icon{
+        background-image: url('@{gfx}@{gfxShareSmall}');
+        width: @gfxShareSmall-grid;
+        height: @gfxShareSmall-grid;
+        position: relative!important;
+        display: block;
+        top: 1px!important;
+        left: 1px!important;
+        margin: 0!important;
+    }
+    &.s-twitter-sharing{
+        .ui-icon{background-position: @gfxShareSmall-x @gfxShareSmall-twitter-y!important;}
+        background-color: @twitterBlue;
+        .box-shadow(inset 0 3px 20px @twitterBlueTint);
+    }
+    &.s-facebook-sharing{
+        .ui-icon{background-position: @gfxShareSmall-x @gfxShareSmall-facebook-y!important;}
+        background-color: @facebookBlue;
+        .box-shadow(inset 0 3px 20px @facebookBlueTint);
+    }
+    &.s-tumblr-sharing{
+        .ui-icon{background-position: @gfxShareSmall-x @gfxShareSmall-tumblr-y!important;}
+        background-color: @tumblrBlue;
+        .box-shadow(inset 0 3px 20px @tumblrBlueTint);
+    }
+    &.s-foursquare-sharing{
+        .ui-icon{background-position: @gfxShareSmall-x @gfxShareSmall-foursquare-y!important;}
+        background-color: @foursquareBlue;
+        .box-shadow(inset 0 3px 20px @foursquareBlueTint);
+    }
+}
+
+
+// @SHARE
+// -------------------------
+
+.s-share-photo{
+    div[data-role="header"]{
+        z-index: 20;
+    }
+
+    div[data-role="content"]{
+        z-index: 10;
+        position: static; // not sure why it needs this but without it layer collapses to zero height
+    }
+    .s-image-bg-layer{
+        position: absolute;
+        width: 100%;
+        top: 0;
+        z-index: 0;
+        overflow:hidden;
+        .s-image-placeholder{
+            position: absolute;
+            top: 50%;
+            height: 1024px;
+            margin-top: -512px;
+            line-height: 1024px;
+            text-align: center;
+            max-width: 1024px;
+            img{
+                width: 100%;
+                vertical-align: middle;
+            }
+        }
+    }
+    .s-share-settings-layer{
+        position: static;
+        width: 100%;
+        .s-share-settings{
+            padding: @padding * 4 @padding * 2;
+        }
+        .ui-input-text{
+            position: relative;
+        }
+    }
+    
+    .s-share-settings-bg-layer{
+        background-color: rgba(0, 0, 0, .6);
+        z-index: 0;
+        top: 0;
+        width: 100%;
+        padding-top: @topBarHeight;
+    }
+    
+    .s-image-toggle{
+        position: absolute;
+        bottom: 0;
+        right: @padding * 2;
+        z-index: 10;
+    }
+    .s-show-share-settings{
+        display: none;
+    }
+    &.x-show-image{
+        .ui-header,
+        .s-share-settings-layer,
+        .s-share-settings-bg-layer{
+            display: none;
+        }
+        .s-show-share-settings{
+            display: block;
+        }
+    }
+}
+
+
+// @ACTIVITY
+// -------------------------
+
+
+.s-activity-streams{
+    margin-bottom: 0;
+    .ui-bar.s-arrow-d-left .ui-btn-text{
+        padding-left: @padding * 2;
+    }
+
+    .s-username,
+    .ui-li-desc {
+        display: inline-block;
+        margin-bottom: 0;
+    }
+    .s-activity-item{
+        border: none;
+        border-top: solid 1px @grayLighter;
+        margin-top: @padding;
+        padding-top: 0;
+        .s-activity-desc{
+            white-space: normal;
+            font-weight: normal;
+            font-size: @fontSize;
+            line-height: @fontSize;
+            color: @gray;
+            font-family:@font;
+        }
+        .s-small-text{
+            position: relative;
+            top: 1px;
+            color: @gray;
+        }
+    }
+    .s-image-link{
+        position: absolute;
+        left: -@paddingGrid;
+        top:0;
+    }
+
+    .s-activity-item{
+        border: none;
+        border-top: solid 1px @grayLighter;
+        margin-top: @paddingElement;
+        padding-top: 0;
+    }
+    .s-comments-list{
+        .box-shadow(none);
+        .s-comment-item.ui-li-has-icon{
+            padding: 0;
+            margin-top: 8px;
+            padding-top: 8px!important;
+            .ui-link-inherit{
+                padding-top: 0!important;
+                padding-bottom: 0!important;
+                padding-left: @avatarSize + @paddingGrid!important;
+                min-height: @avatarSize;
+            }
+            .ui-li-icon{
+                top:0;
+                left:0;
+            }
+            .ui-li-heading{
+                padding: 0;
+                margin: 0;
+            }
+        }
+    }
+
+    .s-image-likes{
+        min-height: @avatarSize;
+        .s-icons-list,
+        p{
+            display: inline-block;
+            vertical-align: top;
+        }
+        .s-like-icons-list{
+            margin-top: @padding * 2;
+            margin-bottom: 0;
+        }
+        .s-like-icon{
+            margin-bottom: @paddingGrid;
+            display: inline-block;
+        }
+    }
+
+    .s-activity-follow-item{
+        position: relative;
+        padding-left: 0;
+        margin-top: 8px;
+        min-height:  @avatarSize;
+        display: block;
+        .s-username,
+        .s-activity-desc,
+        .s-small-text{
+            display: inline-block;
+            vertical-align: baseline;
+            margin-bottom: 0;
+        }
+        .ui-link{
+            display: block;
+            padding-left:  @avatarSize;
+            padding-top: 8px ;
+            min-height: @avatarSize;
+            .box-sizing(border-box);
+        }
+        .ui-li-icon{
+            display: block;
+            position: absolute;
+            left: -@paddingGrid;
+            top: 0;
+        }
+    }
+
+    .s-photo-activity{
+        .s-activity-item:first-child{
+            border-top: none;
+            padding-top: 0!important;
+        }
+    }
+
+    .s-activity-item{
+        &:first{
+            border-top: none;
+            margin-top: 0!important;
+            padding-top: 0!important;
+        }
+    }
+
+    .s-activity-image-item{
+        position: relative;
+        min-height: @thumbSize;
+        padding-left: @thumbSize + @paddingGrid;
+        margin-bottom: @padding * 2 + @paddingGrid;
+        .s-activity-item:first{
+            border-top: none;
+            margin-top: 0!important;
+            padding-top: 0!important;
+        }
+    }
+
+    // If the first item (after the top bar) is a follow item get rid of its top border */
+    .s-activity-stream:nth-child(2){
+        .s-activity-follow-item{
+            border-top: none;
+            margin-top: 0!important;
+            padding-top: 0!important;
+        }
+    }
+}
+
+
+
+// @CONNECT
+// -------------------------
+
+.s-add-services{
+    .shared,
+    .ready{
+        .ui-icon-arrow-r{
+            display: none;
+        }
+    }
+    .s-connect-status{
+        position: absolute;
+        right: @padding;
+        padding-right: 40px;
+        font-family: @font;
+        text-transform: lowercase;
+        .ui-icon{
+            top: 50%;
+            position: absolute;
+            right: 0;
+        }
+    }
+}
+
+
+// APP PAGE
+// -------------------------
+
+.s-app-link{
+    margin: @padding * 2 * 3 @padding * 2;
+    .s-appstore-badge{
+        display: block;
+        position: relative;
+        .s-platform-logo{
+            background-repeat: no-repeat;
+            display: block;
+            width: 200px;
+            height: 60px;
+        }
+        .s-coming-soon{
+            text-shadow: none;
+            color: #B9B9B9;
+            position: absolute;
+            top: 64px;
+            left: 90px;
+        }
+    }
+}
+
+.s-iOS-appstore .s-platform-logo{
+    background-repeat: no-repeat;
+    background-image: url('@{gfx}@{gfxAppStore}');
+}
+
+.s-android-marketplace .s-platform-logo{
+    background-repeat: no-repeat;
+    background-image: url('@{gfx}@{gfxGooglePlay}');
+}
+
+
+// @GALLERIES
+// -------------------------
+
+div.ps-carousel-item-loading
+{
+    background: url('@{gfx}@{gfxImageLoadDark}') no-repeat center center;
+}
+
+
+// @MAP
+//------------------
+
+#map{
+    div[data-role="content"]{
+        padding-top: 0;
+        padding-bottom: @padding * 2;
+        .box-sizing(border-box);
+    }
+
+    .s-map-loading{
+        display: none;
+    }
+
+    &.x-loading{
+        .s-map-time{
+            .s-map-time-btn{
+                display: none;
+            }
+        }
+        .s-map-loading{
+            width: 32px;
+            height:32px;
+            overflow: hidden;
+            display: block;
+        }
+    }
+}
+
+#map-layer{
+    #google-map{
+        margin: -3px -@padding * 2;
+    }
+}
+
+.s-photo-map{
+    position:relative;
+    overflow:hidden;
+
+    // Map Thumbs
+    .s-map-point {
+        width: 1px;
+        height: 1px;
+        overflow: visible;
+        position:absolute;
+        z-index: 1;
+    }
+
+    .s-map-thumb {
+        position: absolute;
+        bottom: -3px;
+        left: -38px;
+        width: 78px;
+        height: 120px;
+        z-index: 100;
+        .s-map-thumbimage {
+            position: absolute;
+            top: 8px;
+            left: 9px;
+            width: 60px;
+            height: 60px;
+        }
+        .s-map-pin{
+            position: absolute;
+            top:83px;
+            left: 32px;
+            background-image: url('@{gfx}@{gfxMapPin}');
+            width:28px;
+            height: 35px;
+            display: block;
+        }
+        .s-thumb-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-image: url('@{gfx}@{gfxMapThumb}');
+            width:78px;
+            height: 88px;
+            display: block;
+        }
+    }
+
+    .s-map-venue{
+        .s-venue-pin{
+            background-image: url('@{gfx}@{gfxMapSpotPin}');
+            position: absolute;
+            display: block;
+            bottom: 0;
+            left: -18px;
+            width: 36px;
+            height: 28px;
+            cursor: pointer;
+        }
+        .s-venue-label{
+            display: none;
+            background-image: url('@{gfx}@{gfxMapSpotLabel}');
+            position: absolute;
+            bottom: 23px;
+            left: -70px;
+            width: 139px;
+            height: 47px;
+            z-index: 1;
+            text-decoration: none;
+            .spot-icon{
+                position: absolute;
+                top: 5px;
+                left: 5px;
+            }
+            .s-venue-label-text{
+                color: white;
+                font-weight: bold;
+                text-shadow: black 0 -1px 1px;
+                display: block;
+                padding: 9px 27px;
+                text-overflow: ellipsis;
+                overflow: hidden;
+                white-space: nowrap;
+                font-size: 13px;
+                text-decoration: none;
+            }
+        }
+        &.x-active{
+            z-index: 2;
+            .s-venue-label{
+                display: block;
+            }
+        }
+    }
+
+    .s-map-current-location{
+        position: absolute;
+        top: -9px;
+        left: -9px;
+        width: 17px;
+        height: 17px;
+        z-index: 100;
+        background-image: url('@{gfx}@{gfxMapCurrentLoc}');
+    }
+
+
+    .s-map-alert{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 160px;
+        margin-left: -80px;
+        margin-top: -30px;
+        .s-alert-text{
+            background-color: white;
+            padding: 6px;
+            padding-left: 48px;
+            position: relative;
+            color: #f19d3c;
+            .border-radius(8px);
+            border: solid #ffff00 4px;
+            font-size: 12px;
+            font-style: normal;
+            .box-shadow(0px 4px 6px rgba(0, 0, 0, .3) );
+            .ui-icon-no-images{
+                display: block;
+                position: absolute;
+                left: 9px;
+                top: 3px;
+            }
+        }
+    }
+    .s-map-controls{
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        margin: 0 -8px;
+        .ui-input-search{
+            position: relative;
+        }
+        .ui-select,
+        .ui-input-text{
+            display: block;
+            vertical-align: middle;
+            margin-bottom: 0;
+        }
+        .s-map-time{
+            position: absolute;
+            left: 8px;
+            top: 6px;
+            .s-map-time-label{
+                position: absolute;
+                top: -32px;
+                left: 0;
+                white-space: nowrap;
+                line-height: @fontSizeSmall;
+                height:24px;
+                padding: 6px @padding * 2;
+            }
+        }
+        .s-map-filters{
+            margin: 6px;
+            margin-left: 48px;
+        }
+    }
+    .s-disambiguation{
+        position: absolute;
+        display: none;
+        top: @padding * 2;
+        right: @padding * 2;
+        z-index: 100;
+        min-height: 0px!important;
+        overflow: visible;
+        width: 220px;
+    }
+}
+
+//a tweak for the mobiscroll time picker css
+.jqm{
+    .dwo{background-color: @blackTrans;}
+    .dwbc{.dwbw{.dwb{margin: 8px;}}}
+}
+
+
+// @SPOTS
+// -------------------------
+
+.s-spots-search-filters{
+    padding-right: 48px;
+    margin-top: @padding * 2;
+    position: relative;
+
+    .s-distance-btn{
+        width: 40px;
+        position: absolute;
+        right: 0;
+        top: 0;
+        .ui-select{
+            .ui-btn-inner{
+                width: 18px;
+                height: 18px;
+            }
+            .ui-btn-text{
+                display: none;
+            }
+        }
+    }
+}
+
+.s-spot-item{
+    padding-left: @thumbSize + @padding * 2!important;
+    min-height: @thumbSize;
+    .box-sizing(border-box);
+    position: relative;
+    display: block;
+    overflow: visible;
+    .s-spot-photo-crop{
+        position:  absolute;
+        left: 0;
+        top: 0;
+        img{
+            display: block;
+        }
+        .s-no-photo-yet{
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 60px;
+            height: 60px;
+            background-color: @grayLight;
+            margin: 6px;
+            border-radius: 45px;
+            text-align: center;
+            padding: 15px;
+            color: white;
+            text-shadow: none;
+            font-weight: bold;
+            line-height: 18px;
+            font-size: 14px;
+            font: @font;
+        }
+    }
+}
+
+
+// @SPOT PAGE
+// -------------------------
+
+.s-spot-header{
+    margin-left: -@padding * 2;
+    margin-right: -@padding * 2;
+    position: relative;
+    background-color: @grayLighter;
+    padding: @padding;
+    min-height:@thumbSize;
+    .spot-venue-details{
+        min-height: 64px;
+    }
+    p{
+        padding-top:@padding;
+        margin: 0;
+    }
+    .s-spot-phone,
+    .s-spot-address{
+        padding-top:@padding ;
+        margin-bottom: @padding * 2;
+        display: block;
+    }
+    .s-spot-distance {
+        font-size: @fontSizeSmall;
+    }
+    .s-foursquare-btn{
+        position: absolute;
+        right: 0;
+        top: 50%;
+        margin-top: -12px;
+        width: 70px;
+        height: 24px;
+        .ui-icon-foursquare-logo{
+            background-image: url('@{gfx}@{gfxFoursquareBtn}');
+            height: @gfxFoursquareBtn-height;
+            width: @gfxFoursquareBtn-width;
+        }
+    }
+}
+
+.s-top-users{
+    ul{
+        padding-left: 0;
+    }
+    .s-top-user-item{
+        width: @avatarSizeMed;
+        display: inline-block;
+        margin-right: 5px;
+        .s-small-username{
+            overflow: hidden;
+            text-overflow: ellipsis;
+            text-align: center;
+            margin-top: 4px;
+            display: block;
+        }
+    }
+}
+
+
+// @DIALOG BGS
+// -------------------------
+
+.ui-dialog.s-special-bg,
+.ui-page.s-special-bg{
+    background-image: none!important;
+    div[data-role="content"]{
+        background: none;
+    }
+}
+
+.ui-dialog.s-snapr-bg,
+.ui-page.s-snapr-bg{
+    background-color: lighten(@snaprYellow, 10%)!important;
+    .box-shadow(inset 0px -2px 100px @snaprYellowTint);
+}
+
+.ui-dialog.s-tumblr-bg,
+.ui-page.s-tumblr-bg{
+    background-color: lighten(@tumblrBlue, 10%)!important;
+    .box-shadow(inset 0px -2px 100px @tumblrBlueTint);
+}
+
+.ui-dialog.s-twitter-bg,
+.ui-page.s-twitter-bg{
+    background-color: lighten(@twitterBlueTint, 20%)!important;
+    .box-shadow(inset 0px -2px 100px @twitterBlueTint);
+}
+
+//Please leave this as is for the about snapr page
+.ui-dialog.s-snapr-welcome-bg,
+.ui-page.s-snapr-welcome-bg{
+    background-color: #acebdd!important;
+    background-image: url('gfx/welcome-image.png')!important;
+    .background-size(100% auto)!important;
+    background-repeat: no-repeat!important;
+    background-position: center bottom!important;
+}
+
+
+// @BUTTONS
+// -------------------------
+
+
+.ui-btn-inner {
+    padding-left:@padding * 2;
+    padding-right:@padding * 2;
+}
+
+.s-twitter-button.ui-btn-up-e,
+.s-twitter-button.ui-btn-hover-e,
+.s-twitter-button.ui-btn-down-e {
+    background: @twitterBlue;
+    color: white;
+    text-shadow: 0 -1px 1px @gray;
+    a.ui-link-inherit {
+        color: white;
+    }
+}
+
+.s-twitter-button.ui-btn-hover-e {
+    background: lighten(@twitterBlue, 10% );
+}
+
+.s-tumblr-button.ui-btn-up-e,
+.s-tumblr-button.ui-btn-hover-e,
+.s-tumblr-button.ui-btn-down-e {
+    background: @tumblrBlue;
+    color: white;
+    text-shadow: 0 -1px 1px @grayDark;
+    a.ui-link-inherit {
+        color: white;
+    }
+}
+.s-tumblr-button.ui-btn-hover-e {
+    background: lighten(@tumblrBlue, 10% );
+}
+
+
+.s-facebook-button.ui-btn-up-e,
+.s-facebook-button.ui-btn-hover-e,
+.s-facebook-button.ui-btn-down-e{
+    background: @facebookBlue;
+    color: white;
+    text-shadow: 0 -1px 1px @grayDark;
+    a.ui-link-inherit {
+        color: white;
+    }
+}
+
+.s-facebook-button.ui-btn-hover-e {
+    background: lighten(@facebookBlue, 10% );
+}
+
+.s-snapr-button.ui-btn-up-e {
+    background: @snaprYellow;
+    text-shadow: 0 1px 1px white;
+    color: #333333;
+    a.ui-link-inherit {
+        color: #333333;
+    }
+}
+
+.s-snapr-button.ui-btn-hover-e {
+    background: lighten(@snaprYellow, 10% );
+    color: #333333;
+    a.ui-link-inherit {
+        color: #333333;
+    }
+}
+
+.s-snapr-button.ui-btn-down-e {
+    background: @snaprYellow;
+    color: #333333;
+    a.ui-link-inherit {
+        color: #333333;
+    }
+}
+
+
+
+// @LOGO-BUTTONS
+// -------------------------
+
+.s-logo-button{
+    .ui-btn-inner{
+        padding-top: 1px;
+        padding-bottom: 1px;
+        line-height: 36px;
+    }
+}
+.s-button-logo{
+    background-image: url('@{gfx}@{gfxService}');
+    height: 36px;
+    width: 150px;
+    display: inline-block;
+    overflow: hidden;
+    text-indent: -300px;
+    background-repeat: no-repeat;
+    &.s-twitter-logo{
+        width: 100px;
+        background-position: @gfxService-x @gfxService-y-twitter;
+    }
+    &.s-foursquare-logo{
+        width: 100px;
+        background-position: @gfxService-x @gfxService-y-foursquare;
+    }
+    &.s-tumblr-logo{
+        width: 102px;
+        background-position: @gfxService-x @gfxService-y-tumblr;
+        height: 32px;
+    }
+    &.s-facebook-logo{
+        width: 108px;
+        background-position: @gfxService-x @gfxService-y-facebook;
+        height: 32px;
+    }
+    &.s-snapr-logo{
+        width: 80px;
+        background-position: @gfxService-x @gfxService-y-snapr;
+        height: 32px;
+    }
+}
+
+
+
+// MISC
+// -------------------------
+
+
+
+.hide{
+    display: none;
+}
+
+
+
+.ui-disabled {
+    filter: Alpha(Opacity=100);
+    opacity: 1;
+}
+
+/* margins on bottom element not having proper effect */
+.s-margin-clear{
+    margin-bottom: -1px;
+    padding-bottom: 1px;
+}
+
+
+// BROWSER TESTING
+// -------------------------
+
+
+body.x-browser-testing{
+    width: 320px!important;
+    margin: 0 auto 0 0!important;
+    /* this was 20px but some things are set to window height, meaning they were going 20px off the bottom
+    margin: 20px auto 0 20px!important; */
+    display: block;
+    position: relative;
+    height: 100%!important;
+
+    /* so loader relates to container rather than being fixed */
+    .ui-loader{
+        position: absolute;
+    }
+    /* hack for photoswipe plugin */
+    .ps-caption,
+    .ps-toolbar,
+    .ps-uilayer,
+    .ps-carousel,
+    .ps-document-overlay{
+        width: 320px!important;
+    }
+    .ps-carousel,
+    .ps-uilayer{
+        height: 480px!important;
+    }
+    .ps-caption-bottom{
+        top: 435px!important;
+    }
+
+    .ui-footer,
+    .ui-footer-fixed{
+        width: 320px!important;
+    }
+}
+
+
+// @1.5X RES GFX
+//---------------------
+
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5) {
+    .s-image-loader-bg{
+        background-image: url('@{gfxHDPI}@{gfxImageLoad}');
+        .background-size(@gfxImageLoad-width @gfxImageLoad-height);
+
+    }
+    .s-image-streams{
+        .x-stream{
+            .s-load-more-inline{
+                .ui-icon-refresh{
+                    background-image: url('@{gfxHDPI}@{gfxRefresh}');
+                    .background-size(@gfxRefresh-width @gfxRefresh-height);
+
+                }
+            }
+            .x-loading,
+            &.x-loading {
+                .s-load-more-inline{
+                    .ui-icon-refresh{
+                        background-image: url('@{gfxHDPI}@{gfxSpinner}');
+                        .background-size(@gfxSpinner-width @gfxRefresh-height);
+                    }
+                }
+            }
+        }
+    }
+    .s-tumblr-credit{
+        background-image: url('@{gfxHDPI}@{gfxTumblrLogo}');
+        .background-size(@gfxTumblrLogo-width @gfxTumblrLogo-height);
+
+    }
+    .ui-icon.tumblr-icon{
+        background-image: url('@{gfxHDPI}@{gfxTumblr}');
+        .background-size(@gfxTumblr-width @gfxTumblr-height);
+    }
+    .s-share-icon-small{
+        .ui-icon{
+            background-image: url('@{gfxHDPI}@{gfxShareSmall}');
+            .background-size(@gfxShareSmall-width @gfxShareSmall-height);
+        }
+    }
+    .s-iOS-appstore .s-platform-logo{
+        background-image: url('@{gfxHDPI}@{gfxAppStore}');
+        .background-size(@gfxAppStore-width @gfxAppStore-height);
+    }
+    .s-android-marketplace .s-platform-logo{
+        background-image: url('@{gfxHDPI}@{gfxGooglePlay}');
+        .background-size(@gfxGooglePlay-width @gfxGooglePlay-height);
+    }
+    div.ps-carousel-item-loading
+    {
+        background: url('@{gfxHDPI}@{gfxImageLoadDark}') no-repeat center center;
+        .background-size(@gfxImageLoadDark-width @gfxImageLoadDark-height);
+
+    }
+    .s-photo-map{
+        .s-map-thumb {
+            .s-map-pin{
+                background-image: url('@{gfxHDPI}@{gfxMapPin}');
+                .background-size(@gfxMapPin-width @gfxMapPin-height);
+            }
+            .s-thumb-bg {
+                background-image: url('@{gfxHDPI}@{gfxMapThumb}');
+                .background-size(@gfxMapThumb-width @gfxMapThumb-height);
+            }
+        }
+        .s-map-venue{
+            .s-venue-pin{
+                background-image: url('@{gfxHDPI}@{gfxMapSpotPin}');
+                .background-size(@gfxMapSpotPin-width @gfxMapSpotPin-height);
+            }
+            .s-venue-label{
+                background-image: url('@{gfxHDPI}@{gfxMapSpotLabel}');
+                .background-size(@gfxMapSpotLabel-width @gfxMapSpotLabel-height);
+            }
+        }
+        .s-map-current-location{
+            background-image: url('@{gfxHDPI}@{gfxMapCurrentLoc}');
+            .background-size(@gfxMapCurrentLoc-width @gfxMapCurrentLoc-height);
+        }
+    }
+    .s-spot-header{
+        .s-foursquare-btn{
+            .ui-icon-foursquare-logo{
+                background-image: url('@{gfxHDPI}@{gfxFoursquareBtn}');
+                .background-size(@gfxFoursquareBtn-width @gfxFoursquareBtn-height);
+            }
+        }
+    }
+    .s-button-logo{
+        background-image: url('@{gfxHDPI}@{gfxService}');
+        .background-size(@gfxService-width @gfxService-height);
+    }
+
+    .s-validate{
+          .x-validating{
+              .ui-icon-check{
+                  .spinner('@{gfxHDPI}@{gfxSpinnerSmall}');
+              }
+          }
+      }
+      .x-loading{
+          .s-search-header{
+              .ui-input-search{
+                  .ui-input-clear {
+                      .ui-icon-delete{
+                          .spinner('@{gfxHDPI}@{gfxSpinnerSmall}');
+                      }
+                  }
+              }
+          }
+      }
+}
+
+
+
+// @2X RES GFX
+//---------------------
+
+@media only screen and (-webkit-min-device-pixel-ratio: 2) {
+    .s-image-loader-bg{
+        background-image: url('@{gfxRetina}@{gfxImageLoad}');
+        .background-size(@gfxImageLoad-width @gfxImageLoad-height);
+
+    }
+    .s-image-streams{
+        .x-stream{
+            .s-load-more-inline{
+                .ui-icon-refresh{
+                    background-image: url('@{gfxRetina}@{gfxRefresh}');
+                    .background-size(@gfxRefresh-width @gfxRefresh-height);
+
+                }
+            }
+            .x-loading,
+            &.x-loading {
+                .s-load-more-inline{
+                    .ui-icon-refresh{
+                        background-image: url('@{gfxRetina}@{gfxSpinner}');
+                        .background-size(@gfxSpinner-width @gfxRefresh-height);
+                    }
+                }
+            }
+        }
+    }
+    .s-tumblr-credit{
+        background-image: url('@{gfxRetina}@{gfxTumblrLogo}');
+        .background-size(@gfxTumblrLogo-width @gfxTumblrLogo-height);
+
+    }
+    .ui-icon.tumblr-icon{
+        background-image: url('@{gfxRetina}@{gfxTumblr}');
+        .background-size(@gfxTumblr-width @gfxTumblr-height);
+    }
+    .s-share-icon-small{
+        .ui-icon{
+            background-image: url('@{gfxRetina}@{gfxShareSmall}');
+            .background-size(@gfxShareSmall-width @gfxShareSmall-height);
+        }
+    }
+    .s-iOS-appstore .s-platform-logo{
+        background-image: url('@{gfxRetina}@{gfxAppStore}');
+        .background-size(@gfxAppStore-width @gfxAppStore-height);
+    }
+    .s-android-marketplace .s-platform-logo{
+        background-image: url('@{gfxRetina}@{gfxGooglePlay}');
+        .background-size(@gfxGooglePlay-width @gfxGooglePlay-height);
+    }
+    div.ps-carousel-item-loading
+    {
+        background: url('@{gfxRetina}@{gfxImageLoadDark}') no-repeat center center;
+        .background-size(@gfxImageLoadDark-width @gfxImageLoadDark-height);
+
+    }
+    .s-photo-map{
+        .s-map-thumb {
+            .s-map-pin{
+                background-image: url('@{gfxRetina}@{gfxMapPin}');
+                .background-size(@gfxMapPin-width @gfxMapPin-height);
+            }
+            .s-thumb-bg {
+                background-image: url('@{gfxRetina}@{gfxMapThumb}');
+                .background-size(@gfxMapThumb-width @gfxMapThumb-height);
+            }
+        }
+        .s-map-venue{
+            .s-venue-pin{
+                background-image: url('@{gfxRetina}@{gfxMapSpotPin}');
+                .background-size(@gfxMapSpotPin-width @gfxMapSpotPin-height);
+            }
+            .s-venue-label{
+                background-image: url('@{gfxRetina}@{gfxMapSpotLabel}');
+                .background-size(@gfxMapSpotLabel-width @gfxMapSpotLabel-height);
+            }
+        }
+        .s-map-current-location{
+            background-image: url('@{gfxRetina}@{gfxMapCurrentLoc}');
+            .background-size(@gfxMapCurrentLoc-width @gfxMapCurrentLoc-height);
+        }
+    }
+    .s-spot-header{
+        .s-foursquare-btn{
+            .ui-icon-foursquare-logo{
+                background-image: url('@{gfxRetina}@{gfxFoursquareBtn}');
+                .background-size(@gfxFoursquareBtn-width @gfxFoursquareBtn-height);
+            }
+        }
+    }
+    .s-button-logo{
+        background-image: url('@{gfxRetina}@{gfxService}');
+        .background-size(@gfxService-width @gfxService-height);
+    }
+
+    .s-validate{
+        .x-validating{
+            .ui-icon-check{
+                .spinner('@{gfxRetina}@{gfxSpinnerSmall}');
+            }
+        }
+    }
+    .x-loading{
+        .s-search-header{
+            .ui-input-search{
+                .ui-input-clear {
+                    .ui-icon-delete{
+                        .spinner('@{gfxRetina}@{gfxSpinnerSmall}');
+                    }
+                }
+            }
+        }
+    }
+
+}
+
+
+

@@ -1,31 +1,60 @@
 /*global _  define require */
-define(['config', 'views/base/page', 'models/user', 'views/user_header', 'views/feed_header',
-    'collections/photo', 'views/feed_list', 'utils/photoswipe', 'views/upload_progress_li', 'collections/upload_progress',  'auth', 'views/components/paused'],
-function(config, page_view, user_model, user_header, feed_header, photo_collection,
-    feed_list, photoswipe, upload_progress_li, upload_progress, auth, paused_el){
+define(
+    [
+        'backbone',
+        'config',
+        'auth',
+        'utils/photoswipe',
+        'utils/alerts',
+        'views/base/view',
+        'views/base/page',
+        'views/components/no_results',
+        'views/components/paused',
+        'views/upload_progress_li',
+        'collections/upload_progress',
+        'collections/photo',
+        'collections/reaction',
+        'models/user',
+        'models/comment',
+        'models/favorite'
+    ],
+    function(
+        Backbone,
+        config,
+        auth,
+        photoswipe,
+        alerts,
+        view,
+        page_view,
+        no_results,
+        paused_el,
+        upload_progress_li,
+        upload_progress,
+        photo_collection,
+        reaction_collection,
+        user_model,
+        comment_model,
+        favorite_model
+    ){
 
-return page_view.extend({
+var feed_view =  page_view.extend({
 
     post_initialize: function(){
         var feed_view = this;
         this.$el.on( "pageshow", function(){
-            feed_view.$( ".feed-view-toggle input[type='radio']" ).checkboxradio( "refresh" );
+            feed_view.$( ".x-feed-view-toggle input[type='radio']" ).checkboxradio( "refresh" );
             feed_view.watch_uploads();
         });
         this.$el.on( "pagehide", function(){
             feed_view.watch_uploads(false);
             feed_view.$('.x-activity').hide();
         });
-        config.on('change:paused', function(){
-            if(config.get('paused')){
-                feed_view.$(".feed-upload-list").prepend(paused_el).trigger("create");
-            }else{
-                $('.x-resume-queue').remove();
-            }
-        });
+        config.on('change:upload_paused', this.toggle_paused);
+        this.offline_template = this.get_template('components/feed/offline');
     },
 
     post_activate: function(options){
+        this.$('.x-feed-header').empty();
         this.more_button(false);
 
         this.photo_collection = new photo_collection();
@@ -51,44 +80,38 @@ return page_view.extend({
 
         var list_style = this.query.list_style || 'list';
 
-        var toggle_container = this.$el.find( ".feed-view-toggle" );
+        var toggle_container = this.$( ".x-feed-view-toggle" );
         toggle_container.find( "input[type='radio']" ).attr( "checked", false );
 
         if (list_style == 'grid'){
-            this.$el.find(".feed-content").addClass("grid");
-            toggle_container.find("#feed-view-grid").attr( "checked", true );
+            this.$(".x-feed-content").addClass("x-grid");
+            toggle_container.find(".x-grid").attr( "checked", true );
         }else{
-            this.$el.find(".feed-content").removeClass("grid");
-            toggle_container.find("#feed-view-list").attr( "checked", true );
+            this.$(".x-feed-content").removeClass("x-grid");
+            toggle_container.find(".x-list").attr( "checked", true );
         }
-
 
         if (this.query.username){
-            var this_view = this;
-            var user = new user_model( {username: this.query.username} );
-            user.on('change', function(){
-                this_view.title = user.get('display_username');
-            });
-            this.feed_header = new user_header({
-                username: this.query.username,
-                model: user,
-                el: this.$el.find(".feed-header").empty()[0]
-            });
+            this.user = new user_model( {username: this.query.username} );
+            var feed = this;
+            var render_user_header = function(){
+                feed.render_header({user: feed.user});
+            };
+            this.user.bind( "change:relationship", render_user_header );
+            this.user.bind( "change:user_id", render_user_header );
+            this.user.fetch();
         }else{
-            this.feed_header = new feed_header({
-                query_data: this.query,
-                el: this.$el.find(".feed-header").empty()[0]
-            });
+            this.render_header({feed_query: this.query});
         }
 
-        this.$el.toggleClass('my-snaps', this.is_my_snaps());
+        this.$el.toggleClass('x-my-snaps', this.is_my_snaps());
         this.$('.x-activity').toggle(this.is_my_snaps());
 
-        this.$el.removeClass("showing-upload-queue");
-        this.$el.find(".feed-upload-list").empty();
+        this.$el.removeClass("x-showing-upload-queue");
+        this.$(".x-feed-upload-list").empty();
 
-        this.$el.find(".feed-upload-list").empty();
-        this.$el.find('#feed-images').empty();
+        this.$(".x-feed-upload-list").empty();
+        this.$('.x-feed-images').empty();
 
         this.change_page();
 
@@ -102,22 +125,31 @@ return page_view.extend({
 
         this.populate_feed();
         this.update_uploads();
+        this.toggle_paused();
+
+        this.$( ".x-feed-view-toggle input[type='radio']" ).checkboxradio( "refresh" );
     },
 
     events: {
         "click .x-load-more": "more",
-        "change .feed-view-toggle": "feed_view_toggle"
+        "change .x-feed-view-toggle": "feed_view_toggle",
+        "click .x-follow": "follow_user",
+        "click .x-unfollow": "unfollow_user"
     },
 
     is_my_snaps: function(){ return auth.has("snapr_user") && auth.get("snapr_user") == this.options.query.username; },
 
     get_default_tab: function(){ return this.is_my_snaps() && 'feed' || 'discover'; },
 
-    photoswipe_init: function(){ $( "#feed-images a.gallery_link", this.el ).photoswipe_init('feed'); },
+    photoswipe_init: function(){ $( ".x-gallery-link", this.el ).photoswipe_init('feed'); },
+
+    render_header: function(context){
+        this.replace_from_template(context, ['.x-feed-header']).trigger('create');
+    },
 
     populate_feed: function( additional_data ){
 
-        var list_style = this.$el.find("#feed-view-grid").is(":checked") && 'grid' || 'list';
+        var list_style = this.$(".x-feed-view-toggle .x-grid").is(":checked") && 'grid' || 'list';
 
         if (this.feed_list){
             this.feed_list.list_style = list_style;
@@ -128,7 +160,7 @@ return page_view.extend({
             success: function( collection, response ){
                 if(collection.length){
                     feed_view.feed_list = new feed_list({
-                        el: feed_view.$('#feed-images')[0],
+                        el: feed_view.$('.x-feed-images')[0],
                         collection: feed_view.photo_collection,
                         list_style: list_style
                     });
@@ -136,7 +168,7 @@ return page_view.extend({
 
                     feed_view.feed_list.render( feed_view.photoswipe_init );
                     $.mobile.hidePageLoadingMsg();
-                    feed_view.$( ".v-feed-more" ).show();
+                    feed_view.$( ".x-feed-more" ).show();
                     feed_view.more_button(
                         !feed_view.photo_collection.data.n || (
                             response.response &&
@@ -145,7 +177,7 @@ return page_view.extend({
                         );
                 }else{
                     feed_view.feed_list = new feed_list({
-                        el: feed_view.$el.find('#feed-images')[0],
+                        el: feed_view.$('.x-feed-images')[0],
                         collection: feed_view.photo_collection,
                         list_style: list_style
                     });
@@ -172,9 +204,9 @@ return page_view.extend({
 
     more_button: function( more_photos ){
         if (more_photos){
-            this.$(".v-feed-more").children().show();
+            this.$(".x-feed-more").children().show();
         }else{
-            this.$(".v-feed-more").children().hide();
+            this.$(".x-feed-more").children().hide();
         }
     },
 
@@ -191,12 +223,12 @@ return page_view.extend({
         var input_target = $('#' + e.target.id);
         var list_style = input_target.val();
 
-        var container = input_target.closest( ".feed-view-toggle" );
+        var container = input_target.closest( ".x-feed-view-toggle" );
         container.find( "input[type='radio']" ).attr( "checked", false );
         input_target.attr( "checked", true );
         container.find( "input[type='radio']" ).checkboxradio( "refresh" );
 
-        this.$el.find(".feed-content").toggleClass("grid", list_style != "list").trigger("refresh");
+        this.$(".x-feed-content").toggleClass("x-grid", list_style != "list").trigger("refresh");
         this.feed_list.list_style = list_style;
         this.feed_list.render( this.photoswipe_init );
     },
@@ -217,24 +249,25 @@ return page_view.extend({
             var upload_li_template = this.get_template('components/feed/upload_progress');
 
             // reverse models - newest last
-            _.each(model && [model] || upload_progress.models.slice().reverse(), function( photo ){
+            _.each(model && [model] || upload_progress.models, function( photo ){
                 var li =  new upload_progress_li({
                     template: upload_li_template,
                     photo: photo
                 });
-                this.$el.find(".feed-upload-list").prepend( li.render().el );
+                this.$(".x-feed-upload-list").append( li.render().el );
             }, this);
 
-            if (upload_progress.models.length){
-                this.$el.addClass("showing-upload-queue");
-            }
+            this.$el.toggleClass("x-showing-upload-queue", !!upload_progress.length);
 
-            this.$(".feed-upload-list").listview().listview("refresh");
+            this.$(".x-feed-upload-list").listview().listview("refresh");
         }
     },
 
     upload_complete: function( model, queue_id ){
-        this.$(".upload-id-" + model.id).remove();
+        this.$(".x-upload-id-" + model.id).remove();
+
+        this.$el.toggleClass("x-showing-upload-queue", !!upload_progress.length);
+
         // if we are on a feed for the current snapr user
         if (this.is_my_snaps() && !this.options.query.photo_id){
             // remove the date restriction if it is present
@@ -244,8 +277,454 @@ return page_view.extend({
             // refresh the feed content
             this.populate_feed();
         }
+    },
+
+    toggle_paused: function(){
+        if(config.get('upload_paused')){
+            this.$(".x-feed-upload-list").prepend(paused_el).trigger("create");
+        }else{
+            $('.x-resume-queue').remove();
+        }
+    },
+
+    follow_user: function(){
+        console.log('follow');
+        var feed = this;
+        feed.$('.x-follow').x_loading();
+        auth.require_login( function(){
+            feed.user.follow(function(){
+                feed.$('.x-follow').x_loading(false);
+            });
+        })();
+    },
+
+    unfollow_user: function(){
+        console.log('unfollow');
+        var feed = this;
+        feed.$('.x-unfollow').x_loading();
+        auth.require_login( function(){
+            feed.user.unfollow(function(){
+                feed.$('.x-unfollow').x_loading(false);
+            });
+        })();
+    },
+
+    offline: function(offline_mode){
+        $('.x-offline').remove();
+        if(offline_mode){
+            this.$('.x-feed-images').prepend($(this.offline_template())).trigger("create");
+        }
+    }
+});
+
+var feed_list = view.extend({
+
+    initialize: function(){
+        _.bindAll( this );
+
+        this.collection.bind( "remove", this.render );
+
+        this.setElement( this.options.el );
+
+        this.li_templates = {
+            list: this.get_template('components/feed/list_item'),
+            grid: this.get_template('components/feed/grid_item')
+        };
+
+        this.list_style = this.options.list_style || 'list';
+
+        this.back = this.options.back || "Back";
+
+        this.list_content = [];
+
+    },
+
+    render: function( callback ){
+        var scrollY = window.scrollY;
+        this.$el.empty();
+
+        if(this.collection.length){
+            _.each( this.collection.models, function( item ){
+                var li = new feed_li({
+                    model: item,
+                    template: this.li_templates[ this.list_style ],
+                    back: this.back
+                });
+                this.$el.append( li.render().el );
+            }, this);
+
+            if(this.list_style == 'list'){
+                this.$("img").each(function(){
+                    var $img = $(this);
+                    $img.load(function(){
+                        $(this).css("height","auto");
+                    });
+                });
+            }
+        }else{
+            no_results.render('No Photos', 'delete').$el.appendTo(this.$el);
+        }
+
+        // create jquery mobile markup, set to listview and refresh
+
+        this.$el.trigger("create");
+
+        // what's this for?
+        this.$el.removeClass('thumbs-grid-med');
+
+
+        if (scrollY){
+            window.scrollTo(0, scrollY);
+        }
+
+        if (callback && typeof callback == 'function'){
+            callback();
+        }
+
+        return this;
+    }
+});
+
+var feed_li =  view.extend({
+
+    tagName: "article",
+
+    className: "s-feed-item",
+
+    events: {
+        "click .x-reactions-button": "toggle_reactions",
+        "click .x-comment": "toggle_comment_form",
+        "click .x-more-button": "toggle_photo_manage",
+        "click .goto-map": "goto_map",
+        "click .x-goto-spot": "goto_spot",
+        "submit .comment-form": "comment",
+        "click .x-favorite": "favorite",
+        "click .x-privacy": "toggle_status",
+        "click .x-flag": "flag",
+        "click .x-delete": "delete"
+    },
+
+    initialize: function(){
+        _.bindAll( this );
+
+        this.model.bind( "change:status", this.render );
+
+        this.template = this.options.template;
+        if (this.model.has('location')){
+            this.map_url =
+                '#/map/?zoom=' + config.get('zoom') +
+                '&lat=' + this.model.get('location').latitude +
+                '&lng=' + this.model.get('location').longitude +
+                '&photo_id=' + this.model.get('id');
+
+            this.spot_url =
+                '#/feed/?spot=' + this.model.get('location').spot_id +
+                "&venue_name=" + this.model.get('location').foursquare_venue_name;
+        }else{
+            this.map_url = null;
+            this.spot_url = null;
+        }
+        this.reaction_collection = new reaction_collection();
+        this.reaction_collection.data = {
+            photo_id: this.model.get('id')
+        };
+    },
+
+    load_reactions: function(){
+        var photo = this;
+        photo.reaction_collection.fetch({
+            success: function(){
+                photo.$('.x-reactions-button').x_loading(false);
+                photo.show_comment_form();
+                photo.replace_from_template({item:photo.model, reactions:photo.reaction_collection.models}, ['.x-reactions-list']).trigger('create');
+            }
+        });
+    },
+
+    render: function(){
+        var location = this.model.has("location") && this.model.get("location").location,
+            city;
+
+        if (location){
+            if (location.split(",").length > 1){
+                city = location.split(",")[location.split(",").length - 2].replace(/.[0-9]/g, "");
+            }
+            else{
+                city = location.split(",")[0].replace(/.[0-9]/g, "");
+            }
+        }
+        else{
+            city = "";
+        }
+
+        this.$el.html(this.template( {
+            item: this.model,
+            city: city,
+            back: this.back
+        } ));
+
+        // this.model.bind( "change:favorite", this.reactions.fetch );
+        this.model.bind( "change:comments", this.load_reactions );
+
+        this.$el.trigger('create');
+        // delegateEvents makes the event bindings in this view work
+        // even though it is a subview of feed_list (very important)
+        this.delegateEvents();
+
+        return this;
+    },
+
+    render_actions: function(){
+        this.replace_from_template({item: this.model}, ['.x-image-actions']);
+        this.$el.trigger('create');
+    },
+
+    toggle_comment_form: function(){
+        this.$('.x-comment').toggleClass('selected');
+        this.$('.s-comment-area').toggle();
+    },
+
+    show_comment_form: function(){
+        this.$('.x-comment').addClass('selected');
+        this.$('.s-comment-area').show();
+    },
+
+    hide_comment_form: function(){
+        this.$('.x-comment').removeClass('selected');
+        this.$('.s-comment-area').hide();
+    },
+
+    toggle_reactions: function(){
+        this.$('.x-reactions-button').toggleClass('selected');
+
+        if (this.$('.x-reactions-list:visible').length){
+            this.$('.x-reactions-button .ui-btn-text').text('show');
+            this.$('.x-reactions-list').hide();
+            this.hide_comment_form();
+        }
+        else{
+            this.$('.x-reactions-button .ui-btn-text').text('hide');
+            this.$('.x-reactions-button').x_loading();
+            this.load_reactions();
+            this.$('.x-reactions-list').show();
+            if (this.$('.x-reactions-list li').length){
+                this.show_comment_form();
+            }
+        }
+    },
+
+    toggle_photo_manage: function(){
+        this.$('.x-more-button').toggleClass('selected');
+        this.$('.x-more-actions').toggle();
+    },
+
+    show_reactions: function(){
+        this.$('.x-reactions-button').addClass('selected');
+        this.$('.x-reactions-list').show();
+    },
+
+    goto_map: function(){
+        Backbone.history.navigate( this.map_url );
+    },
+
+    goto_spot: function(){
+        Backbone.history.navigate( this.spot_url );
+    },
+
+    comment: function( e ){
+        var commentText = this.$('textarea').val();
+        var comment = new comment_model();
+        comment.data = {
+            photo_id: this.model.get('id'),
+            comment: commentText
+        };
+        // make a copies of 'this' to pass to functions in the options object
+        var feed_li = this;
+
+        feed_li.$('.comment-form .ui-btn').x_loading();
+
+        var options = {
+            success: function( s ){
+                $.mobile.hidePageLoadingMsg();
+                if (s.get('success')){
+                    var comment_count = parseInt( feed_li.model.get('comments'), 10 ) + 1;
+                    feed_li.model.set({
+                        comments: comment_count
+                    });
+                    feed_li.render_actions();
+                    feed_li.$('textarea').val('');
+                    feed_li.show_reactions();
+                    feed_li.load_reactions();
+                    feed_li.$('.comment-form .ui-btn').x_loading(false);
+                }
+            },
+            error: function( error ){
+                $.mobile.hidePageLoadingMsg();
+                console.log('error', error);
+                feed_li.$('.comment-form .ui-btn').x_loading(false);
+            }
+        };
+
+        auth.require_login( function(){
+            $.mobile.showPageLoadingMsg();
+            // the empty object in this save call is important,
+            // without it, the options object will not be used
+            comment.save( {}, options );
+        } )();
+    },
+
+    favorite: function(){
+        var photo = this;
+        photo.$('.x-favorite').x_loading();
+
+        var is_fav = this.model.get('favorite');
+        var fav_count = parseInt( this.model.get('favorite_count'), 10 );
+
+
+        auth.require_login( function(){
+            var fav = new favorite_model({
+                id: photo.model.get('id')
+            });
+
+            if (is_fav){
+
+                photo.model.set({
+                    favorite: false,
+                    favorite_count: fav_count - 1
+                });
+
+                // already saved as a fav so we will remove it
+                var options = {
+                    success: function( s ){
+                        // success is not passed through so we check for error
+                        if (!s.get('error')){
+                            photo.render_actions();
+                        }
+                        photo.$('.x-favorite').x_loading(false);
+                    },
+                    error: function(e){
+                        console.log('fav error',e);
+                        photo.$('.x-favorite').x_loading(false);
+                    }
+                };
+                fav.destroy( options );
+            }else{
+                // save a new fav (empty object is important)
+                var options = {
+                    success: function(s){
+                        if (s.get('success')){
+                            photo.model.set({
+                                favorite: true,
+                                favorite_count: fav_count + 1
+                            });
+                            photo.render_actions();
+                        }
+                        photo.$('.x-favorite').x_loading(false);
+                    },
+                    error: function(e){
+                        console.log('fav error',e);
+                        photo.$('.x-favorite').x_loading(false);
+                    }
+                };
+                fav.save( {}, options );
+            }
+        })();
+    },
+
+    toggle_status: function(){
+        var photo = this,
+            current_status = this.model.get('status'),
+            status;
+
+        photo.$('.x-image-privacy').x_loading();
+
+        if (current_status == "public"){
+            status = "private";
+        }
+        else if (current_status == "private"){
+            status = "public";
+        }
+
+        if (status){
+            photo.model.change_status( status, {
+                success: function( resp ){
+                    if (resp.success){
+                        photo.model.set({status: status});
+                        photo.render_actions();
+                    }else{
+                        console.warn("error changing status", resp);
+                    }
+                    photo.$('.x-image-privacy').x_loading(false);
+                },
+                error: function( e ){
+                    console.warn("error changing status", e);
+                    photo.$('.x-image-privacy').x_loading(false);
+                }
+            });
+        }
+    },
+
+    flag: function(){
+        var photo = this;
+        photo.$('.x-image-flag').x_loading();
+        auth.require_login( function(){
+            alerts.approve({
+                'title': 'Flag this image as innapropriate?',
+                'yes': 'Flag',
+                'no': 'Cancel',
+                'yes_callback': function(){
+                    photo.model.flag({
+                        success: function( resp ){
+                            if (resp.success){
+                                photo.model.set({flagged: true});
+                                photo.render_actions();
+                                alerts.notification("Flagged", "Thanks, a moderator will review this image shortly");
+                            }else{
+                                console.warn("error flagging photo", resp);
+                            }
+                            photo.$('.x-image-flag').x_loading(false);
+                        },
+                        error: function( e ){
+                            console.warn("error flagging photo", e);
+                            photo.$('.x-image-flag').x_loading(false);
+                        }
+                    });
+                },
+                'no_callback': function(){ photo.$('.x-image-flag').x_loading(false); }
+            });
+        })();
+    },
+
+    'delete': function(){
+        var photo = this;
+        photo.$('.x-image-delete').x_loading();
+        auth.require_login( function(){
+            alerts.approve({
+                'title': 'Are you sure you want to delete this photo?',
+                'yes': 'Delete',
+                'no': 'Cancel',
+                'yes_callback': function(){
+                    photo.model['delete']({
+                        success: function( resp ){
+                            if (resp.success){
+                                photo.model.collection.remove( photo.model );
+                            }else{
+                                console.warn("error deleting photo", resp);
+                            }
+                            photo.$('.x-image-delete').x_loading(false);
+                        },
+                        error: function( e ){
+                            console.warn("error deleting photo", e);
+                            photo.$('.x-image-delete').x_loading(false);
+                        }
+                    });
+                },
+                'no_callback': function(){ photo.$('.x-image-delete').x_loading(false); }
+            });
+        })();
     }
 
 });
 
+return feed_view;
 });

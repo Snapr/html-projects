@@ -3,30 +3,30 @@
         <h1>Dash</h1>
 
         <div class="ui-btn-right" data-ajax="false">
-            <a class="x-edit-dash" data-role="button" data-icon="settings" data-iconpos="notext"></a>
+            <a class="x-edit-dash" data-role="button" data-icon="gear" data-iconpos="notext"></a>
             <a href="#/home/" data-role="button" data-icon="home" data-iconpos="notext"></a>
         </div>
 
     </div>
 
     <div data-role="content" data-theme="d" data-ajax="false">
-        <div class="dash-wrapper">
+        <div class="s-dash-wrapper">
 
-            <ul class="competitions"></ul>
+            <section class="x-competitions s-competitions"></section>
 
-            <ul class="tumblr-streams"></ul>
+            <section class="x-tumblr-streams s-tumblr-streams"></section>
 
-            <ul class="image-streams featured-streams"></ul>
+            <section class="s-image-streams x-featured-streams"></section>
 
 
 
-            <ul class="image-streams user-streams">
-                
-            </ul>
+            <section class="s-image-streams x-user-streams">
 
-            <div class="helper-content dash-welcome ui-content-inset" style="display:none;">
-               <a class="ui-bar top-no-arrow" data-role="button"  data-theme="c">
-                   <em>Welcome</em>
+            </section>
+
+            <div class="s-helper-content x-dash-welcome ui-content-inset" style="display:none;">
+               <a class="ui-bar" data-role="button"  data-theme="c">
+                   <strong>Welcome</strong>
                 </a>
                 <div class="ui-body-c ui-body">
                    <div class="ui-icon helper-icons ui-icon-dash">
@@ -38,7 +38,7 @@
             </div>
         </div>
 
-        <div class="dash-footer inline-footer ui-body-c ">
+        <div class="s-dash-footer s-inline-footer ui-body-c x-add-buttons hide">
             <div class="ui-content ui-grid-a">
                 <div class="ui-block-a">
                     <a class="more x-add-person" data-role="button" data-iconpos="top" data-icon="person">Add a Person</a>
@@ -49,7 +49,7 @@
             </div>
         </div>
 
-        <div class="dash-edit-done inline-footer ui-body-c ">
+        <div class="s-dash-edit-done s-inline-footer ui-body-c ">
             <div class="ui-content ui-grid-b">
                 <div class="ui-block-a">
                 </div>

@@ -3,7 +3,16 @@
     <div data-role="header" data-theme="b">
 
         <div class="auth-header">
-            <!-- dynamic -->
+            <div class="ui-btn-left">
+                <% if (auth.has('access_token')) { %>
+                    <a class="avatar-block" data-role="button" data-shadow="false" data-corners="false" href="#/my-account/">
+                        <span class="s-avatar" style="background-image: url('<%= config.get('avatar_url') %>/<%= auth.get('snapr_user') %>?size=large&amp;_salt=facebook');"></span>
+                        <%= auth.get('display_username') %>
+                    </a>
+                <% } else { %>
+                    <a href="#/join/" data-snapr-dialog="true" data-role="button" data-icon="join" data-iconpos="left" data-theme="b">Join</a>
+                <% } %>
+            </div>
         </div>
 
         <div class="ui-btn-right">
@@ -12,8 +21,8 @@
 
     </div>
 
-    <div data-role="content" class="menu-main" data-theme="e">
-            <ul class="menu-btns">
+    <div data-role="content" class="s-menu-main" data-theme="e">
+            <ul class="s-menu-btns">
                    <li>
                        <div class="centered-title">
                        <h4>
@@ -26,13 +35,13 @@
 
                   <li>
                        <!-- Camera Button -->
-                       <a class="x-launch-camera" data-extra_params="comp_id=1" data-role="button" data-iconpos="left" data-icon="main-menu-camera">Shoot</a>
+                       <a class="x-launch-camera" data-role="button" data-iconpos="left" data-icon="main-menu-camera">Shoot</a>
                    </li>
 
                    <li>
                        <!-- Login / Image Library Button -->
-                       <% if (logged_in) {%>
-                               <a class="x-launch-photo-library" data-extra_params="comp_id=1" data-role="button" data-iconpos="left" data-icon="main-menu-camera-lib">Camera Roll</a>
+                       <% if (auth.has('access_token')) {%>
+                               <a class="x-launch-photo-library" data-role="button" data-iconpos="left" data-icon="main-menu-camera-lib">Camera Roll</a>
                         <%}else{%>
                              <a href="#/login/" data-snapr-dialog="true" data-role="button" data-iconpos="left" data-icon="main-menu-login">Log In</a>
                        <%}%>
@@ -45,11 +54,11 @@
 
                    <li>
                        <!-- Image Feed Button -->
-                       <% if (logged_in) {%>
-                           <a href="#/feed/?username=<%=username%>" data-role="button" data-iconpos="left" data-icon="main-menu-feed">
+                       <% if (auth.has('access_token')) {%>
+                           <a href="#/feed/?username=<%= auth.get('snapr_user') %>" data-role="button" data-iconpos="left" data-icon="main-menu-feed">
                            My Snaps
                            </a>
-                           <span class="upload-count">&nbsp;</span>
+                           <span class="s-upload-count x-upload-count">&nbsp;</span>
                        <%}else{%>
                            <a href="#/feed/" data-role="button" data-iconpos="left" data-icon="main-menu-feed">Latest</a>
                        <%}%>
@@ -71,7 +80,7 @@
 
                     <li>
                     <!-- My Account / Welcome Button -->
-                    <% if(logged_in) { %>
+                    <% if(auth.has('access_token')) { %>
                         <a href="#/my-account/" data-role="button" data-iconpos="left" data-icon="main-menu-my-account">My Account</a>
                     <% }else{ %>
                         <a href="#/welcome/" data-role="button" data-iconpos="left" data-icon="main-menu-join">Welcome</a>
@@ -93,7 +102,7 @@
 
                     <li>
                        <!-- Activity / About Button -->
-                       <% if(logged_in) { %>
+                       <% if(auth.has('access_token')) { %>
                            <a href="#/activity/" data-role="button" data-iconpos="left" data-icon="main-menu-activity">Activity</a>
                        <% }else{ %>
                            <a href="#/about/" data-role="button" data-iconpos="left" data-icon="main-menu-info">About</a>
@@ -116,7 +125,7 @@
 
                </ul>
 
-               <div class="menu-stream thumbs-block">
+               <div class="s-menu-stream x-menu-stream">
                </div>
     </div><!-- /content -->
 </div>

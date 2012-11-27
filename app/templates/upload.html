@@ -3,32 +3,32 @@
         <h1>Upload</h1>
         <a href="#/" data-role="button" data-icon="delete" data-iconpos="notext"></a>
     </div>
-    <div data-role="content" data-theme="d">
-        <div class="inset-page-content">
+    <div data-role="content" data-theme="a">
+        <div class="s-inset-page-content">
             <form id="upload-form" action="javascript:void(0);" method="POST" enctype="multipart/form-data">
-                <input type="hidden" name="redirect_uri" id="redirect_uri"/>
-                <input type="hidden" name="device-time" id="device-time"/>
-                <input type="hidden" name="-set-later-" id="_access_token"/>
-                <input type="hidden" name="app_group" id="app_group"/>
-                <input type="hidden" name="privacy" id="privacy" value="queued"/>
+                <input type="hidden" name="redirect_uri" class="x-redirect-uri" id="redirect_uri"/>
+                <input type="hidden" name="device-time" class="x-device-time" id="device-time"/>
+                <input type="hidden" name="-set-later-" class="x-access-token" id="_access_token"/>
+                <input type="hidden" name="app_group" class="x-app-group" id="app_group"/>
+                <input type="hidden" name="privacy" class="x-privacy" id="privacy" value="queued"/>
 
                 <ul data-role="listview" data-inset="true" data-theme="d">
 
                     <li>
                         <h1>Select a photo to upload:</h1>
-                        <input type="file" name="photo" id="upload-file" />
+                        <input type="file" name="photo" id="upload-file" class="x-file" />
                     </li>
                     <li class="ui-hide-label">
                         <p>*Images should be in the .jpg format</p>
                     </li>
                     <li class="ui-hide-label">
-                        <div style="border:1px #666 solid; weight:12px;"><div id="progress-bar" style="height:12px; background:#BadA55; width:0%;"></div></div>
-                        <div id="upload-status"></div>
+                        <div style="border:1px #666 solid; weight:12px;"><div id="progress-bar" class="x-progress-bar" style="height:12px; background:#BadA55; width:0%;"></div></div>
+                        <div id="upload-status" class="x-upload-status"></div>
                     </li>
                 </ul>
 
 
-                <input disabled="true" type="submit" value="Upload Snap" id="upload-submit" data-theme="e" />
+                <input disabled="true" type="submit" value="Upload Snap" id="upload-submit" data-theme="h" />
             </form>
         </div>
     </div>

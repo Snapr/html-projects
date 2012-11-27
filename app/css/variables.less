@@ -1,0 +1,235 @@
+//  SNAPR BASE VARIABLES - A few things to make the base styles easier to manage
+// --------------------------------------
+
+
+// Colors
+// ------------------------
+@yellow:                #ffff00; 
+@orange:                #ffcc00; 
+@blue:                  #4185f4; 
+
+
+// Other Colors
+// -------------------------
+@snaprYellow:           #ffff00; 
+@snaprYellowTint:      #ffe400;
+@twitterBlue:           #68d9ff; 
+@twitterBlueTint:      #309dc2;
+@facebookBlue:          #507ab8; 
+@facebookBlueTint:     #2e5998;
+@tumblrBlue:            #5a687d; 
+@tumblrBlueTint:       #2c3c54;
+@foursquareBlue:        #34a0ce; 
+@foursquareBlueTint:   #29708e;
+
+
+// Grays
+// -------------------------
+@black:                 #000;
+@blackTrans:           rgba(0, 0, 0, .6);
+@grayDark:              #434748;
+@gray:                  #666;
+@grayLight:             #fbfbfb;
+@grayLighter:           #f7f7f7;
+@white:                 #fff;
+
+
+// Padding
+// -------------------------
+
+@padding:               4px;
+@paddingElement:        @padding * 2;
+@paddingFeed:           @padding * 2;
+@paddingGrid:           4px;
+
+
+// Sizes
+// -------------------------
+
+@thumbSize:             101px;
+
+@avatarSize:            34px;
+@avatarSizeMed:        50px;
+@avatarSizeLarge:      100px;
+
+@barHeight:             36px;
+
+@topBarHeight:          40px;
+@topBarBtnHeight:       44px;
+
+@tabBarHeight:          56px;
+
+@corners:               8px;
+
+
+
+// Fonts
+// -------------------------
+
+@font:                  Helvetica, Arial, sans-serif;
+@fontSerif:            Georgia,'Times New Roman', Times, sans-serif; 
+
+@fontSize:             15px;
+@fontSizeSmall:         12px;
+@fontSizeUsername:      16px;
+
+
+// GFX
+// -------------------------
+
+@gfx:                   'gfx/';
+@gfxRetina:             'gfx/retina/';
+@gfxHDPI:               'gfx/hdpi/';
+
+
+
+// SPRITES
+// -------------------------
+
+// SHARE ICONS
+// -------------------------
+@gfxShare:                      'share-icons-large.png';
+@gfxShare-width:                84px;
+@gfxShare-height:               168px;
+@gfxShare-grid:                 42px;
+
+@gfxShare-twitter-y:            -0 * @gfxShare-grid; 
+@gfxShare-facebook-y:           -1 * @gfxShare-grid;
+@gfxShare-tumblr-y:             -2 * @gfxShare-grid;
+@gfxShare-foursquare-y:         -3 * @gfxShare-grid;
+
+@gfxService-x:                    -0 * @gfxShare-grid;
+@gfxService-x-hover:              -1 * @gfxShare-grid;
+
+
+// SHARE ICONS SMALL
+// -------------------------
+@gfxShareSmall:                 'share-icons-small.png';
+@gfxShareSmall-width:           21px;
+@gfxShareSmall-height:          84px;
+@gfxShareSmall-grid:            21px;
+
+@gfxShareSmall-twitter-y:       -0 * @gfxShareSmall-grid; 
+@gfxShareSmall-facebook-y:      -1 * @gfxShareSmall-grid;
+@gfxShareSmall-tumblr-y:        -2 * @gfxShareSmall-grid;
+@gfxShareSmall-foursquare-y:    -3 * @gfxShareSmall-grid;
+
+@gfxShareSmall-x:               0;
+
+
+// LINKED SERVICES
+// -------------------------
+@gfxService:                'service-full-logos.png';
+@gfxService-width:          150px;
+@gfxService-height:         180px;
+@gfxService-grid:           36px;
+
+@gfxService-y-twitter:      -0 * @gfxService-grid; 
+@gfxService-y-tumblr:       -1 * @gfxService-grid; 
+@gfxService-y-foursquare:   -2 * @gfxService-grid; 
+@gfxService-y-facebook:     -3 * @gfxService-grid; 
+@gfxService-y-snapr:        -4 * @gfxService-grid; 
+
+@gfxService-x:               0;
+
+
+// TUMBLR
+// -------------------------
+
+@gfxTumblr:             'tumblr-post-icons.png';
+@gfxTumblr-width:        48px;
+@gfxTumblr-height:       168px;
+@gfxTumblr-grid:         24px;
+
+@gfxTumblr-text-y:      -0 * @gfxTumblr-grid;
+@gfxTumblr-photo-y:     -1 * @gfxTumblr-grid;
+@gfxTumblr-quote-y:     -2 * @gfxTumblr-grid;
+@gfxTumblr-link-y:      -3 * @gfxTumblr-grid;
+@gfxTumblr-chat-y:      -4 * @gfxTumblr-grid;
+@gfxTumblr-audio-y:     -5 * @gfxTumblr-grid;
+@gfxTumblr-video-y:     -6 * @gfxTumblr-grid;
+
+@gfxTumblr-x:           -0 * @gfxTumblr-grid;
+@gfxTumblr-x-hover:     -1 * @gfxTumblr-grid;
+
+
+@gfxTumblrLogo:             'tumblr-logo.png';
+@gfxTumblrLogo-width:        115px;
+@gfxTumblrLogo-height:       25px;
+
+
+
+
+
+
+// REFRESH
+// -------------------------
+@gfxRefresh:                'pull-to-refresh.png';
+@gfxRefresh-width:          56px;
+@gfxRefresh-height:         168px;
+@gfxRefresh-grid:           56px;
+
+@gfxRefresh-left-y:         -0 * @gfxRefresh-grid; 
+@gfxRefresh-right-y:        -1 * @gfxRefresh-grid; 
+@gfxRefresh-refresh-y:      -2 * @gfxRefresh-grid; 
+
+@gfxRefresh-x: 0;
+
+
+// MAP
+// -------------------------
+
+@gfxMapPin:                 'map-pin.png';
+@gfxMapPin-width:           28px;
+@gfxMapPin-height:          35px;
+
+@gfxMapThumb:               'map-thumb-bg.png';
+@gfxMapThumb-width:          78px;
+@gfxMapThumb-height:         88px;
+
+@gfxMapSpotPin:             'map-spot-pin.png';
+@gfxMapSpotPin-width:       36px;
+@gfxMapSpotPin-height:      28px;
+
+@gfxMapSpotLabel:            'map-spot-label.png';
+@gfxMapSpotLabel-width:      139px;
+@gfxMapSpotLabel-height:     47px;
+
+@gfxMapCurrentLoc:            'map-current-location-marker.png';
+@gfxMapCurrentLoc-width:      17px;
+@gfxMapCurrentLoc-height:     17px;
+
+
+// MORE
+// -------------------------
+
+
+@gfxImageLoad:              'image-load.gif';
+@gfxImageLoad-width:        24px;
+@gfxImageLoad-height:       24px;
+
+@gfxImageLoadDark:          'image-load-dark.gif';
+@gfxImageLoadDark-width:    24px;
+@gfxImageLoadDark-height:   24px;
+
+@gfxSpinner:                'spinner.png';
+@gfxSpinner-width:          56px;
+@gfxSpinner-height:         56px;
+
+@gfxSpinnerSmall:           'small-spinner-light.png';
+@gfxSpinnerSmall-width:     24px;
+@gfxSpinnerSmall-height:    24px;
+
+@gfxAppStore:               'iphone-appstore.png';
+@gfxAppStore-width:         200px;
+@gfxAppStore-height:        60px;
+
+@gfxGooglePlay:             'android-logo.png';
+@gfxGooglePlay-width:        200px;
+@gfxGooglePlay-height:       60px;
+
+
+@gfxFoursquareBtn:          'foursquare-btn.png';
+@gfxFoursquareBtn-width:    69px;
+@gfxFoursquareBtn-height:   24px;
+

@@ -4,9 +4,9 @@
             <% _.each(awards, function(award) { %>
                 <div class="x-thumb">
                     <a href="" class="image-link" rel="external" data-date="" data-id="" data-tag="">
-                        <img src="<%= award.images.thm %>" class="thumb-image thumb-med">
+                        <img src="<%= award.images.thm %>" class="s-thumb-image s-thumb-med">
                     </a>
-                    <div class="ribbon ribbon-<%= award.id %>">&nbsp;</div>
+                    <div class="competition-ribbon"><%= string_utils.ordinal(award.id) %></div>
                 </div>
             <% }); %>
         </div>

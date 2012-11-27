@@ -69,8 +69,9 @@ return page_view.extend({
     render: function(){
         $.mobile.showPageLoadingMsg();
 
-        var $el = this.$el,
-            streams = this.$el.find('.image-streams');
+        var view = this,
+            $el = this.$el,
+            streams = this.$el.find('.s-image-streams');
 
         var empty_once = function(){
             empty_once = $.noop;
@@ -85,7 +86,8 @@ return page_view.extend({
             };
             var li = new side_scroll({
                 collection: photos,
-                title: details.name
+                title: details.name,
+                parent_view: view
             });
 
             streams.append( li.el );

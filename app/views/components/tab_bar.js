@@ -1,5 +1,5 @@
 /*global _  define require */
-define(['views/base/view', 'auth', 'config'], function(view, auth, config){
+define(['views/base/view', 'auth', 'config', 'collections/upload_progress'], function(view, auth, config, upload_progress_collection){
 var tab_bar = view.extend({
 
     tagName: "div",
@@ -23,6 +23,9 @@ var tab_bar = view.extend({
         if(this.active){
             this.set_active(this.active);
         }
+
+        var count = upload_progress_collection.length;
+        this.$('.x-upload-count').toggle(!!count).text(count);
 
         return this;
     },

@@ -1,18 +1,14 @@
 /*global _  define require */
 define(['config', 'backbone', 'views/base/page', 'models/photo', 'models/comp', 'models/geo_location', 'collections/foursquare_venue',
-    'utils/geo', 'auth', 'utils/local_storage', 'utils/alerts', 'native', 'utils/dialog', 'utils/string'],
+    'utils/geo', 'auth', 'utils/local_storage', 'utils/alerts', 'native_bridge', 'utils/dialog', 'utils/string'],
 function(config, Backbone, page_view, photo_model, comp_model, geo_location, foursquare_venue_collection, geo,
-    auth, local_storage, alerts, native, dialog, string_utils){
+    auth, local_storage, alerts, native_bridge, dialog, string_utils){
 return page_view.extend({
 
-    post_initialize: function(){
-        this.load_template('components/share');
-    },
-
     post_activate: function(options){
-        this.$('.image-placeholder img').attr('src', '');
+        this.$('.x-s-image-placeholder').attr('src', '');
         this.change_page();
-        this.$('#description').val();
+        this.$('.x-description').val();
 
         if(this.options.query.comp_id){
             this.comp = new comp_model({id: this.options.query.comp_id});
@@ -29,7 +25,7 @@ return page_view.extend({
         }
 
         // make sure the view is empty
-        this.$("[data-role='content']").empty();
+        this.$(".x-content").empty();
 
         if (this.query.photo_path){
             this.get_photo_from_path( this.query.photo_path + "?ts=" + new Date().getTime() );
@@ -41,18 +37,25 @@ return page_view.extend({
     },
 
     events: {
-        "change input[name='status']": "toggle_status",
-        "change input[name='share-location']": "toggle_sharing",
-        "change .upload-image-sharing input": "toggle_sharing",
-        "vclick .upload-image-sharing .ui-disabled": "share_alert",
-        "click #foursquare-venue": "venue_search",
-        "click .image-controls": "toggle_photo",
+        "change .x-status": "toggle_status",
+        "change .x-share-location": "toggle_sharing",
+        "change .x-image-sharing input": "toggle_sharing",
+        "vclick .x-image-sharing .ui-disabled": "share_alert",
+        "click .x-foursquare-venue": "venue_search",
+        "click .x-image-toggle": "toggle_photo",
         "click .x-edit-photo": "edit",
         "click .x-camplus-edit-photo": "edit_camplus",
-        "submit form": "share"
+        "submit form": "share",
+        "keypress .x-description": 'log_key',
+        "blur .x-description": 'log',
+        "focus .x-description": 'log',
+        "click .x-description": 'log'
     },
 
-    render: function(){
+    log: function(e){console.log(e.type,this.$('.x-description').val() );},
+    log_key: function(e){console.log(e.type, e.keyCode, this.$('.x-description').val());},
+
+    render: function(callback){
         var img_url;
         if (this.model.get("secret")){
             img_url = "http://media-server2.snapr.us/lrg/" +
@@ -62,11 +65,10 @@ return page_view.extend({
             img_url = this.model.get("photo_path");
         }
 
-        var description = this.$('#description').val() || this.query.description || this.model.get("description") || '',
+        var description = this.$('.x-description').val() || this.query.description || this.model.get("description") || '',
             location = this.query.location || this.model.get("location").location || '';
 
-
-        this.$el.find("[data-role='content']").html( this.template({
+        this.replace_from_template({
             img_url: img_url,
             screen_height: window.innerHeight,
             photo: this.model,
@@ -74,20 +76,33 @@ return page_view.extend({
             share_location: local_storage.get( "share-location" ) !== false,
             facebook_sharing: local_storage.get( "facebook-sharing" ),
             tumblr_sharing: local_storage.get( "tumblr-sharing" ),
-            foursquare_sharing: local_storage.get( "foursquare-sharing" ),
+            foursquare_sharing: local_storage.get( "foursquare-sharing" ) && config.get('geolocation_enabled'),
             twitter_sharing: local_storage.get( "twitter-sharing" ),
             edit: (local_storage.get( "aviary" ) || local_storage.get( "camplus_edit" )),
             camplus: local_storage.get( "camplus" ),
             saved_description: unescape(description),
             saved_location: unescape(location),
             comp: this.comp
-        }) ).trigger("create");
+        }, ['.x-content']).trigger("create");
+
+        if(_.isFunction(callback)){
+            callback();
+        }
 
         return this;
     },
 
     share_alert: function(e){
         alerts.notification( "Share", "Please set the image to Public before sharing to other services", $.noop );
+    },
+
+    check_geolocation: function(){
+        if(config.get('geolocation_enabled')){
+            return true;
+        }else{
+            alerts.notification( "Location", "Please enable location services for this app to use these features", $.noop );
+            return false;
+        }
     },
 
     get_photo_from_server: function( id ){
@@ -182,8 +197,10 @@ return page_view.extend({
                     share_photo_view.model.set({
                         location: model.attributes
                     }, {silent:true});
-                    share_photo_view.$el.find("#no-foursquare-sharing-location").removeClass("ajax-loading");
-                    share_photo_view.$el.find(".location-name").text(share_photo_view.model.get("location").location);
+                    share_photo_view.$(".x-location-name").text(share_photo_view.model.get("location").location);
+                },
+                complete: function(){
+                    share_photo_view.$(".x-no-foursquare-venue").removeClass("x-ajax-loading");
                 }
             });
         };
@@ -193,12 +210,17 @@ return page_view.extend({
             geocode( this.model.get("location").latitude, this.model.get("location").longitude);
         }else{
             // get reverse geocode location from current position
-            geo.get_location( function( location ){
-                geocode( location.coords.latitude, location.coords.longitude );
-            },
-            function( e ){
-                console.error( "get reverse geocode: geocode error model doesn't have lat lon", e );
-            });
+            geo.get_location(
+                function( location ){
+                    geocode( location.coords.latitude, location.coords.longitude );
+                },
+                function( e ){
+                    share_photo_view.$(".x-location-name").text('location disabled');
+                    share_photo_view.$('.x-share-location').attr('checked', false).checkboxradio("refresh");
+                    share_photo_view.$(".x-no-foursquare-venue").removeClass("x-ajax-loading");
+                    console.error( "get reverse geocode", e );
+                }
+            );
         }
     },
 
@@ -219,13 +241,14 @@ return page_view.extend({
                             foursquare_venue_name: collection.first().get( "name" )
                         });
                         share_photo_view.model.set({location: location}, {silent:true});
-                        share_photo_view.$el.find("#foursquare-sharing-location").removeClass("ajax-loading");
-                        share_photo_view.$el.find(".foursquare-venue-name")
+                        share_photo_view.$(".x-foursquare-venue-name")
                             .text(share_photo_view.model.get("location").foursquare_venue_name);
                     }else{
-                        share_photo_view.$el.find("#foursquare-sharing-location").removeClass("ajax-loading");
-                        share_photo_view.$el.find(".foursquare-venue-name").text( "No venues nearby." );
+                        share_photo_view.$(".x-foursquare-venue-name").text( "No venues nearby." );
                     }
+                },
+                complete: function(){
+                    share_photo_view.$(".x-foursquare-venue").removeClass("x-ajax-loading");
                 }
             });
         };
@@ -243,6 +266,9 @@ return page_view.extend({
                 get_venues( location.coords.latitude, location.coords.longitude );
             },
             function( e ){
+                share_photo_view.$(".x-foursquare-venue-name").text('location disabled');
+                share_photo_view.$('.x-share-location').attr('checked', false).checkboxradio("refresh");
+                share_photo_view.$(".x-no-foursquare-venue").removeClass("x-ajax-loading");
                 console.error( "get foursquare venue geocode error", e );
             });
         }
@@ -259,29 +285,44 @@ return page_view.extend({
 
         local_storage.set( "status", status );
 
-        setTimeout( this.render, 10 );
+        var share_view = this;
 
-        if (status == "private" && local_storage.get( "foursquare-sharing" )){
-            this.get_reverse_geocode();
-        }else if (status == "public" && local_storage.get( "foursquare-sharing" )){
-            this.get_foursquare_venues();
-        }
+        // I don't know what this timeout is for, maybe local storage takes a while to actually set.
+        setTimeout( function(){
+            share_view.render(function(){
+                if (!local_storage.get( "foursquare-sharing" )){
+                    share_view.get_reverse_geocode();
+                }else if (status == "public" && local_storage.get( "foursquare-sharing" )){
+                    share_view.get_foursquare_venues();
+                }else{
+                    share_view.$(".x-no-foursquare-venue, .x-foursquare-venue").removeClass("x-ajax-loading");
+                }
+            });
+        }, 10 );
     },
 
     toggle_sharing: function( e ){
         local_storage.set( e.target.id, !!$(e.target).attr("checked") );
 
         if (e.target.id == "foursquare-sharing"){
-            this.$el.find("#no-foursquare-sharing-location").toggle();
-            this.$el.find("#foursquare-sharing-location").toggle();
-            if ($(e.target).attr("checked")){
-                this.get_foursquare_venues();
+            if(this.check_geolocation()){
+                this.$(".x-no-foursquare-venue").toggle();
+                this.$(".x-foursquare-venue").toggle();
+                if ($(e.target).attr("checked")){
+                    this.get_foursquare_venues();
+                }else{
+                    this.get_reverse_geocode();
+                }
             }else{
-                this.get_reverse_geocode();
+                $(e.target).attr("checked", false);
             }
         }
         if (e.target.id == "share-location" && $(e.target).attr("checked")){
-            this.get_reverse_geocode();
+            if(this.check_geolocation()){
+                this.get_reverse_geocode();
+            }else{
+                $(e.target).attr("checked", false);
+            }
         }
     },
 
@@ -330,7 +371,7 @@ return page_view.extend({
         }
 
         if (appmode && img_url){
-            native.pass_data("snapr://aviary/edit/?photo_url=" + img_url + "&" + this.get_photo_edit_params());
+            native_bridge.pass_data("snapr://aviary/edit/?photo_url=" + img_url + "&" + this.get_photo_edit_params());
 
             setTimeout( function(){
                 Backbone.history.navigate( "#/limbo/" );
@@ -341,7 +382,7 @@ return page_view.extend({
     },
 
     edit_camplus: function(){
-        this.query.description = escape(this.$("#description").val());
+        this.query.description = escape(this.$(".x-description").val());
         window.navigator.hash = "#/share/?" + $.param( this.query );
 
         var appmode = local_storage.get( "appmode" );
@@ -358,7 +399,7 @@ return page_view.extend({
 
         if (appmode && img_url){
             if (camplus){
-                native.pass_data( "snapr://camplus/edit/?photo_url=" + img_url + "&" + this.get_photo_edit_params());
+                native_bridge.pass_data( "snapr://camplus/edit/?photo_url=" + img_url + "&" + this.get_photo_edit_params());
             }
         }else{
             console.error("clicked on camplus edit but not in appmode or no img_url", img_url );
@@ -367,7 +408,7 @@ return page_view.extend({
 
     get_photo_edit_params: function(){
         var params = {};
-        params.description = escape(this.$el.find("#description").val());
+        params.description = escape(this.$(".x-description").val());
         var location = this.model.get("location") || {};
         if (location.foursquare_venue_name && location.foursquare_venue_id){
             params.foursquare_venue_name = escape(location.foursquare_venue_name);
@@ -407,8 +448,8 @@ return page_view.extend({
             }
 
             this.model.set({
-                description: this.$el.find("#description").val(),
-                status: this.$el.find("[name='status']").is(":checked") ? "public": "private",
+                description: this.$(".x-description").val(),
+                status: this.$("[name='status']").is(":checked") ? "public": "private",
                 share_location: ( $("#share-location").attr("checked") == "checked" ),
                 facebook_album: ( $("#facebook-sharing").attr("checked") == "checked" ),
                 tumblr: ( $("#tumblr-sharing").attr("checked") == "checked" ),
@@ -484,37 +525,42 @@ return page_view.extend({
             });
         }else{
             if (local_storage.get("appmode")){
-                var d = new Date(),
-                    params = {
-                        'device_time': d.getFullYear() + '-' +
-                            string_utils.zeroFill(d.getMonth() + 1, 2) + '-' +
-                            string_utils.zeroFill(d.getDate(), 2 ) + ' ' +
-                            string_utils.zeroFill(d.getHours(), 2 ) + ':' +
-                            string_utils.zeroFill(d.getMinutes(), 2 ) + ':' +
-                            string_utils.zeroFill(d.getSeconds(), 2 )
-                    };
-                _.each( this.$el.find("form").serializeArray(), function( o ){
-                    if (["tumblr", "facebook_album", "tweet", "foursquare_checkin"].indexOf( o.name ) > -1){
+                var params = {},
+                    d = new Date(),
+                    device_time =d.getFullYear() + '-' +
+                        string_utils.zeroFill(d.getMonth() + 1, 2) + '-' +
+                        string_utils.zeroFill(d.getDate(), 2 ) + ' ' +
+                        string_utils.zeroFill(d.getHours(), 2 ) + ':' +
+                        string_utils.zeroFill(d.getMinutes(), 2 ) + ':' +
+                        string_utils.zeroFill(d.getSeconds(), 2 );
+
+                _.each( this.$("form").serializeArray(), function( o ){
+                    if (_.contains(["tumblr", "facebook_album", "tweet", "foursquare_checkin"], o.name)){
                         if (o.name == "foursquare_checkin" && o.value == "on"){
                             if (this.model.get( "location" ).foursquare_venue_id){
                                 params.foursquare_venue = this.model.get( "location" ).foursquare_venue_id;
                                 params.venue_name = this.model.get( "location" ).foursquare_venue_name;
                             }
-                            params.foursquare_checkin = (o.value == "on");
-                        }else{
-                            params[o.name] = (o.value == "on");
                         }
+                        params[o.name] = (o.value == "on");
                     }else if(o.name == "status" && o.value == "on"){
-                        params[o.name] = "public";
+                        params.status = "public";
                     }else{
                         params[o.name] = escape( o.value );
                     }
 
                 }, this);
 
+                params.device_time = device_time;
+                params.local_id = ''+d.getMonth()+d.getDay()+d.getHours()+d.getMinutes()+d.getSeconds();
+
                 // default to private if not set above
                 if( !params.status){
                     params.status = "private";
+                }
+
+                if(config.get('app_group')){
+                    params.app_group = config.get('app_group');
                 }
 
                 if(this.options.query.comp_id){
@@ -555,22 +601,23 @@ return page_view.extend({
                 if (params.comp_id){
                     extras += "&comp_id=" + params.comp_id;
                 }
+                extras += "&local_id=" + params.local_id;
 
 
                 Backbone.history.navigate( "#/uploading/" + extras );
-                native.pass_data("snapr://upload?" + $.param(params) );
+                native_bridge.pass_data("snapr://upload?" + $.param(params) );
             }
         }
     },
 
     toggle_photo: function( e ){
-        this.$el.toggleClass("show-image");
+        this.$el.toggleClass("x-show-image");
     },
 
     offline: function(offline_mode){
         if(offline_mode){
-            this.$(".location-name").text('Offline');
-            this.$(".foursquare-venue-name").text('Offline');
+            this.$(".x-location-name").text('Offline');
+            this.$(".x-foursquare-venue-name").text('Offline');
         }
     },
 

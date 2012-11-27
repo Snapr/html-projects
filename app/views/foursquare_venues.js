@@ -4,7 +4,7 @@ var venues = page_view.extend({
 
     post_activate: function(options){
         if(!options.retry){
-            this.$('.venue-search input').val('');
+            this.$('.x-search-input').val('');
         }
 
         this.model = options.model;
@@ -12,8 +12,8 @@ var venues = page_view.extend({
 
         this.query = options.query;
 
-        this.$("ul.venue-list").empty();
-        this.$el.addClass('loading');
+        this.$(".x-venue-list").empty();
+        this.$el.addClass('x-loading');
 
         this.collection = new foursquare_venue_collection({
             ll: options.query.ll
@@ -26,35 +26,21 @@ var venues = page_view.extend({
     },
 
     events: {
-        "submit form.venue-search": "search",
-        "click .ui-input-clear": "search"
+        "submit form": "search",
+        "click .ui-input-clear": "search",
+        'click .x-venue': 'select_venue'
     },
 
     render: function(){
-        var venue_list = this.$("ul.venue-list").empty();
+        var venue_list = this.$(".x-venue-list").empty();
 
-        var venue_li_template = this.get_template('components/foursquare_venue');
-
-        var selected_id = this.selected_id;
-        var back_query = this.query.back_query;
-        var photo_model = this.model;
-        var this_view = this;
-        _.each( this.collection.models, function( model ){
-            var li = new venue_li({
-                template: venue_li_template,
-                model: model,
-                photo_model: photo_model,
-                selected_id: selected_id
-            });
-
-            li.parent_view = this_view;
-
-            venue_list.append( li.render().el );
-
-        }, this);
+        this.replace_from_template({
+            selected_id: this.selected_id,
+            venues: this.collection.models
+        }, ['.x-venue-list']);
 
         venue_list.listview().listview("refresh");
-        this.$el.removeClass('loading');
+        this.$el.removeClass('x-loading');
     },
 
     search: function(e){
@@ -63,7 +49,7 @@ var venues = page_view.extend({
         }
         var venues_view = this;
 
-        var input = this.$('#venue-search').blur();
+        var input = this.$('.x-search-input').blur();
         var keywords = input.val().toLowerCase();
 
         var doSearch;
@@ -75,10 +61,10 @@ var venues = page_view.extend({
             // set up a new timeout function
             this.timer = window.setTimeout( function() {
                 venues_view.timer = null;
-                venues_view.$el.addClass('loading');
+                venues_view.$el.addClass('x-loading');
                 venues_view.collection.data.query = keywords;
                 venues_view.collection.fetch({complete:function(){
-                    venues_view.$el.removeClass('loading');
+                    venues_view.$el.removeClass('x-loading');
                 }});
             }, 300 );
         }else{
@@ -89,59 +75,22 @@ var venues = page_view.extend({
         }
         return false;
 
-    }
-});
-
-var venue_li = Backbone.View.extend({
-
-    initialize: function(){
-        _.bindAll( this );
-
-        this.template = this.options.template;
-
-        this.selected_id = this.options.selected_id;
-
-        this.photo_model = this.options.photo_model;
-
-        this.back_query = this.options.back_query;
-
-        this.back_view = this.options.back_view;
     },
 
-    tagName: 'li',
-
-    events: {
-        "click a": "select_venue"
-    },
-
-    render: function(){
-        var icon = this.model.get( "categories" ).length &&
-            this.model.get( "categories" )[0].icon ||
-            'http://foursquare.com/img/categories/none_64.png';
-        var selected = (this.model.get( "id" ) == this.selected_id);
-
-        this.$el.html( this.template({
-            venue: this.model,
-            icon: icon,
-            selected: selected
-        }) );
-
-        return this;
-    },
-
-    select_venue: function(){
+    select_venue: function(e){
+        var button = $(e.currentTarget);
         var venue = {
-            foursquare_venue_id: this.model.get("id"),
-            foursquare_venue_name: this.model.get("name")
+            foursquare_venue_id: button.data("id"),
+            foursquare_venue_name: button.data("name")
         };
 
-        var location = _.extend({}, this.parent_view.model.get( "location" ), venue );
+        var location = _.extend({}, this.model.get( "location" ), venue );
 
-        this.parent_view.model.set({
+        this.model.set({
             'location': location
         });
 
-        this.parent_view.back();
+        this.back();
     }
 });
 

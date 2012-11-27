@@ -1,41 +1,37 @@
-<div id="my-account"  data-tab-bar="true" data-title="My Account" data-role="page" data-short-title="My Account" data-theme="d">
-    <div data-role="header" data-theme="b">
-        <div class="ui-btn-left" data-ajax="false">
-            <a data-role="button" data-rel="back">Menu</a>
-        </div>
-
+<div id="my-account"  data-tab-bar="true" data-title="My Account" data-role="page" data-short-title="My Account" data-theme="d data-back="false">
+    <div data-role="header" data-theme="b" data-ajax="false">
+      
         <h1>My Account</h1>
 
         <div class="ui-btn-right" data-ajax="false">
-            <a href="#/search/" data-snapr-dialog="true" data-role="button" data-icon="search" data-iconpos="notext"></a>
             <a href="#/home/" data-role="button" data-icon="home" data-iconpos="notext"></a>
         </div>
     </div>
     <div data-role="content" data-theme="c" data-ajax="false">
-        <div class="account-content">
+        <div class="s-account-content x-content">
 
 
-            <div class="myaccount-header page-inset-header ui-body-c">
+            <div class="s-account-header s-inline-header ui-body-c">
                 <div class="ui-content">
                     <a class="username" href="#/feed/?username=<%= username %>">
                         <% if(initial){ %>
-                            <div class="user-icon-small"></div>
+                            <div class="s-avatar"></div>
                         <% }else{ %>
-                            <div class="user-icon-small" style="background-image: url('<%= config.get('avatar_url') %>/<%= user_id %>?size=large&_salt=<%= settings.profile.avatar_type %>');"></div>
+                            <div class="s-avatar" style="background-image: url('<%= config.get('avatar_url') %>/<%= user_id %>?size=large&_salt=<%= settings.profile.avatar_type %>');"></div>
                         <% } %>
                         <%= display_username %>
                     </a>
-                    <a href="#/logout/" class="logout-button" data-role="button" data-icon="delete" data-iconpos="right">Logout</a>
+                    <a href="#/logout/" class="s-logout-button" data-role="button" data-icon="delete" data-iconpos="right">Logout</a>
                 </div>
             </div>
 
-            <div class="myaccount-quicklinks">
+            <div class="s-myaccount-quicklinks">
                 <a class="ui-bar top-no-arrow" data-role="button" data-theme="e" >
-                    <em>Quick Links</em>
+                    <strong>Quick Links</strong>
                 </a>
                 <ul data-role="listview">
                     <li>
-                        <a data-back-here="true" href="#/find-friends/">Find Friends</a>
+                        <a class="x-back-here" href="#/find-friends/">Find Friends</a>
                     </li>
                 </ul>
             </div>
@@ -43,18 +39,18 @@
 
             <div class="myaccount-settings">
                 <a class="ui-bar top-no-arrow" data-role="button" data-theme="e" >
-                    <em>Settings</em>
+                    <strong>Settings</strong>
                 </a>
                 <% if(!initial){ %>
                     <div data-role="collapsible-set" data-theme="c" data-content-theme="d">
 
-                        <div data-role="collapsible" data-collapsed="true" class="my-account-profile">
+                        <div data-role="collapsible" data-collapsed="true" class="x-profile my-account-profile">
                             <h3>Profile</h3>
 
-                            <fieldset data-role="controlgroup" class="my-account-avatar">
-                               <div class="avatar-select-block">
-                                    <span class="user-profile-icon">
-                                        <div class="user-icon-big" style="background-image: url('<%= config.get('avatar_url') %>/<%= user_id %>?size=large&_salt=<%= settings.profile.avatar_type %>');"></div>
+                            <fieldset data-role="controlgroup" class="x-avatar my-account-avatar">
+                               <div class="s-avatar-select-block">
+                                    <span class="s-user-profile-icon">
+                                        <div class="s-avatar-large" style="background-image: url('<%= config.get('avatar_url') %>/<%= user_id %>?size=large&_salt=<%= settings.profile.avatar_type %>');"></div>
                                     </span>
 
                                     <input type="radio" name="my-account-avatar" id="my-account-avatar-twitter" value="twitter" data-role="none"
@@ -69,77 +65,77 @@
                                         <% if (settings.profile.avatar_type == 'gravatar'){ %> checked="true" <% } %> />
                                         <label for="my-account-avatar-gravatar">Gravatar</label><br>
 
-                                        <a class="my-account-set-up-gravatar" href="http://en.gravatar.com/">&rarr; Set up Gravatar</a>
+                                        <a class="x-set-up-gravitar my-account-set-up-gravatar" href="http://en.gravatar.com/">&rarr; Set up Gravatar</a>
                                </div>
                             </fieldset>
 
                             <fieldset data-role="controlgroup">
                                 <label for="my-account-name">Your Name</label>
-                                <input type="text" name="my-account-name" id="my-account-name" class="custom" autocorrect="off"
+                                <input type="text" name="my-account-name" id="my-account-name" class="x-name custom" autocorrect="off"
                                 value="<%= settings.profile.name %>" />
                             </fieldset>
 
                             <fieldset data-role="controlgroup">
                                 <label for="my-account-location">Location</label>
-                                <input type="text" name="my-account-location" id="my-account-location" class="custom" autocorrect="off"
+                                <input type="text" name="my-account-location" id="my-account-location" class="x-location custom" autocorrect="off"
                                 value="<%= settings.profile.location || "" %>" />
                             </fieldset>
 
                             <fieldset data-role="controlgroup">
                                 <label for="my-account-website">Website</label>
-                                <input type="text" name="my-account-website" id="my-account-website" class="custom" autocapitalize="off" autocorrect="off"
+                                <input type="text" name="my-account-website" id="my-account-website" class="x-website custom" autocapitalize="off" autocorrect="off"
                                 value="<%= settings.profile.website || "" %>" />
                             </fieldset>
 
                             <fieldset data-role="controlgroup">
                                 <label for="my-account-bio">Bio</label>
-                                <textarea name="my-account-bio" id="my-account-bio" class="custom"><%= settings.profile.bio || "" %></textarea>
+                                <textarea name="my-account-bio" id="my-account-bio" class="x-bio custom"><%= settings.profile.bio || "" %></textarea>
                             </fieldset>
 
                              <div class="ui-grid-b">
                                 <div class="ui-block-a"></div>
                                 <div class="ui-block-b"></div>
-                                <div class="ui-block-c"><button data-theme="e" class="save">Save</button></div>
+                                <div class="ui-block-c"><button data-theme="h" class="save x-save">Save</button></div>
                             </div>
                         </div>
 
-                        <div data-role="collapsible" data-collapsed="true" class="my-account-notifications">
+                        <div data-role="collapsible" data-collapsed="true" class="x-notifications my-account-notifications">
                             <h3>Notifications</h3>
                             <fieldset data-role="controlgroup ui-body-c">
-                                <div data-role="fieldcontain" class="switch-setting">
-                                    <span class="setting-label">Follows</span>
+                                <div data-role="fieldcontain" class="s-switch-setting">
+                                    <span class="s-setting-label">Follows</span>
                                     <select  name="notify_when_added_to_group" id="my-account-notify-follow" data-role="slider" data-mini="true">
                                         <option value="false">Off</option>
                                         <option value="true" <% if (settings.profile.notify_when_added_to_group){%>selected<%}%>>On</option>
                                     </select>
                                 </div>
 
-                                <div data-role="fieldcontain" class="switch-setting">
-                                    <span class="setting-label">Likes</span>
+                                <div data-role="fieldcontain" class="s-switch-setting">
+                                    <span class="s-setting-label">Likes</span>
                                     <select name="notify_when_image_favorited" id="my-account-notify-favorite" data-role="slider" data-mini="true">
                                         <option value="false">Off</option>
                                         <option value="true" <% if (settings.profile.notify_when_image_favorited){%>selected<%}%>>On</option>
                                     </select>
                                 </div>
 
-                                <div data-role="fieldcontain" class="switch-setting">
-                                    <span class="setting-label">Comments</span>
+                                <div data-role="fieldcontain" class="s-switch-setting">
+                                    <span class="s-setting-label">Comments</span>
                                     <select name="notify_when_comment_added" id="my-account-notify-comment" data-role="slider" data-mini="true">
                                         <option value="false">Off</option>
                                         <option value="true" <% if (settings.profile.notify_when_comment_added){%>selected<%}%>>On</option>
                                     </select>
                                 </div>
 
-                                <div data-role="fieldcontain" class="switch-setting">
-                                    <span class="setting-label">Comments on Comments</span>
+                                <div data-role="fieldcontain" class="s-switch-setting">
+                                    <span class="s-setting-label">Comments on Comments</span>
                                     <select name="notify_after_comment" id="my-account-notify-comment-after" data-role="slider" data-mini="true">
                                         <option value="false">Off</option>
                                         <option value="true" <% if (settings.profile.notify_after_comment){%>selected<%}%>>On</option>
                                     </select>
                                 </div>
 
-                                <div data-role="fieldcontain" class="switch-setting">
-                                    <span class="setting-label">News Updates</span>
+                                <div data-role="fieldcontain" class="s-switch-setting">
+                                    <span class="s-setting-label">News Updates</span>
                                     <select  name="subscribe_to_email_newsletter" id="my-account-notify-snapr" data-role="slider" data-mini="true">
                                         <option value="false">Off</option>
                                         <option value="true" <% if (settings.profile.subscribe_to_email_newsletter){%>selected<%}%>>On</option>
@@ -148,63 +144,56 @@
 
                             </fieldset>
 
-                            <!-- <div class="ui-grid-b">
-                                    <div class="ui-block-a"></div>
-                                    <div class="ui-block-b"></div>
-                                    <div class="ui-block-c">
-                                        <button data-theme="e" class="save">Save</button>
-                                    </div>
-                            </div> -->
                         </div>
 
-                        <div data-role="collapsible" data-collapsed="true" class="my-account-account">
+                        <div data-role="collapsible" data-collapsed="true" class="x-account my-account-account">
                             <h3>Account</h3>
                             <fieldset data-role="controlgroup">
                                 <label for="my-account-email">Email</label>
-                                <input type="text" name="my-account-email" id="my-account-email" class="custom"
+                                <input type="text" name="my-account-email" id="my-account-email" class="x-email custom"
                                 value="<%= settings.email %>" />
                             </fieldset>
                             <fieldset data-role="controlgroup">
                                 <label for="my-account-password">New Password</label>
-                                <input type="password" name="my-account-password" id="my-account-password" class="custom"
+                                <input type="password" name="my-account-password" id="my-account-password" class="x-password custom"
                                 value="" />
                             </fieldset>
                             <fieldset data-role="controlgroup">
                                 <label for="my-account-password-verify">Verify</label>
-                                <input type="password" name="my-account-password-verify" id="my-account-password-verify" class="custom"
+                                <input type="password" name="my-account-password-verify" id="my-account-password-verify" class="x-password-varify custom"
                                 value="" />
                             </fieldset>
                             <div class="ui-grid-b">
                                 <div class="ui-block-a"></div>
                                 <div class="ui-block-b"></div>
                                 <div class="ui-block-c">
-                                    <button data-theme="e" class="save">Save</button>
+                                    <button data-theme="h" class="save x-save">Save</button>
                                 </div>
                             </div>
                         </div>
 
                         <% if (camplus && camplus.camplus_menu){ %>
-                        <div data-role="collapsible" data-collapsed="true" class="my-account-camplus">
+                        <div data-role="collapsible" data-collapsed="true" class="x-camplus my-account-camplus">
                             <h3>Camera+</h3>
                             <fieldset data-role="controlgroup ui-body-c">
-                                <div data-role="fieldcontain" class="switch-setting">
-                                    <span class="setting-label">Use Camera</span>
+                                <div data-role="fieldcontain" class="s-switch-setting">
+                                    <span class="s-setting-label">Use Camera</span>
                                     <select  name="camplus_camera" id="camplus-use-camera" data-role="slider" data-mini="true">
                                         <option value="false">Off</option>
                                         <option value="true" <% if (camplus.camplus_camera){%>selected<%}%>>On</option>
                                     </select>
                                 </div>
 
-                                <div data-role="fieldcontain" class="switch-setting">
-                                    <span class="setting-label">Edit With Camera+</span>
+                                <div data-role="fieldcontain" class="s-switch-setting">
+                                    <span class="s-setting-label">Edit With Camera+</span>
                                     <select name="camplus_edit" id="camplus-edit" data-role="slider" data-mini="true">
                                         <option value="false">Off</option>
                                         <option value="true" <% if (camplus.camplus_edit){%>selected<%}%>>On</option>
                                     </select>
                                 </div>
 
-                                <div data-role="fieldcontain" class="switch-setting">
-                                    <span class="setting-label">Use Lightbox</span>
+                                <div data-role="fieldcontain" class="s-switch-setting">
+                                    <span class="s-setting-label">Use Lightbox</span>
                                     <select name="camplus_lightbox" id="camplus-lightbox" data-role="slider" data-mini="true">
                                         <option value="false">Off</option>
                                         <option value="true" <% if (camplus.camplus_lightbox){%>selected<%}%>>On</option>
@@ -216,7 +205,7 @@
                             <div class="ui-grid-b">
                                 <div class="ui-block-a"></div>
                                 <div class="ui-block-b"></div>
-                                <div class="ui-block-c"><button data-theme="e" class="save">Save</button></div>
+                                <div class="ui-block-c"><button data-theme="h" class="save x-save">Save</button></div>
                             </div>
                         </div>
                         <!-- End camplus -->
@@ -224,41 +213,41 @@
 
                     </div><!-- End of Nested Collapsible Set -->
 
-                    <a class="ui-bar top-no-arrow connect-heading" data-role="button" data-theme="e" >
-                        <em>Connect</em>
+                    <a class="ui-bar top-no-arrow connect-heading x-connect-heading" data-role="button" data-theme="e" >
+                        <strong>Connect</strong>
                     </a>
 
-                    <ul class=" add-services" data-role="listview">
+                    <ul class="x-add-services s-add-services" data-role="listview">
                         <!-- dynamic -->
                     </ul>
 
-                    <a class="ui-bar top-no-arrow linked-heading" data-role="button" data-theme="e" >
-                        <em>Linked Services</em>
+                    <a class="ui-bar top-no-arrow linked-heading x-linked-heading" data-role="button" data-theme="e" >
+                        <strong>Linked Services</strong>
                     </a>
-                    <div class="linked-services" data-role="collapsible-set" data-theme="c" data-content-theme="d">
+                    <div class="s-linked-services x-linked-services" data-role="collapsible-set" data-theme="c" data-content-theme="d">
                         <!-- dynamic -->
                     </div>
 
                 <% } %>
             </div>
-            
+
              <div class="myaccount-info">
                     <a class="ui-bar top-no-arrow" data-role="button" data-theme="e" >
-                        <em>Info</em>
+                        <strong>Info</strong>
                     </a>
                     <ul data-role="listview">
                         <li>
-                            <a data-back-here="true" href="#/about/">About Us</a>
+                            <a class="x-back-here" href="#/about/">About Us</a>
                         </li>
                          <li>
-                                <a data-back-here="true" href="#/about-snapr/">About Snapr</a>
+                                <a class="x-back-here" href="#/about-snapr/">About Snapr</a>
                         </li>
                     </ul>
                 </div>
 
         </div>
-        
-        
+
+
     </div>
-    
+
 </div>

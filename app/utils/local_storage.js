@@ -47,10 +47,6 @@ local_storage.set = function( key, value ){
         }
     }
 };
-local_storage.save = function( key, value ){
-    console.warn('local_storage.save should be local_storage.set');
-    local_storage.set(key, value);
-};
 
 return local_storage;
 });

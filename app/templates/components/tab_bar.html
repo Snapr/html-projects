@@ -1,4 +1,4 @@
-<div data-role="footer" data-position="fixed" data-ajax="false" data-tap-toggle="false" data-theme="b" class="snapr-footer tab-bar-icons">
+<div data-role="footer" data-position="fixed" data-ajax="false" data-tap-toggle="false" data-theme="b" class="s-tab-bar tab-bar-icons">
     <div data-role="navbar" data-iconpos="top">
         <ul>
             <li><a href="#/dash/" data-icon="dash" data-theme="b" data-name="dash">Dash</a></li>
@@ -8,6 +8,8 @@
             <% if(username){ %>
                 <li>
                     <a href="#/feed/?username=<%= username %>" data-icon="user" data-theme="b" data-name="feed">Me</a>
+                    <span class="x-upload-count hide s-count-item"></span>
+                    
                 </li>
             <% }else{ %>
                 <li><a href="#/welcome/" data-icon="user" data-theme="b" data-name="feed">Login</a></li>
@@ -17,11 +19,11 @@
     </div><!-- /navbar -->
 
     <% if(username){ %>
-        <a class="ui-bar ui-bar-e small-top-right-arrow tab-bar-extra hide x-activity" href="#/activity/" data-role="button" data-theme="e">
-            <!-- <span class="activity-count icon-left"><span class="ui-icon ui-icon-heart"></span>x 1</span>
-            <span class="activity-count icon-left"><span class="ui-icon ui-icon-comment"></span>x 4</span> -->
+        <a class="x-activity s-tabbar-activity s-my-snaps-only ui-bar" href="#/activity/" data-role="button" data-mini="true" data-theme="e">
+            <!-- <span class="s-activity-count icon-left"><span class="ui-icon ui-icon-heart"></span>x 1</span>
+            <span class="s-activity-count icon-left"><span class="ui-icon ui-icon-comment"></span>x 4</span> -->
 
-            <span class="activity-count icon-left"><span class="ui-icon ui-icon-activity"></span>Activity</span>
+            <span class="s-activity-count icon-left"><span class="ui-icon ui-icon-activity"></span>Activity</span>
         </a>
     <% } %>
 </div><!-- /footer -->

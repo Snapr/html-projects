@@ -44,16 +44,23 @@ define([
 
 var dash_view = page_view.extend({
 
-    el: $('#dashboard'),
-
     post_initialize: function(){
         this.model = new dash_model();
 
         this.model.streams.bind( 'remove', this.remove_stream );
+        this.model.featured_streams.bind( 'remove', this.remove_featured_stream );
         this.model.streams.bind( 'add', this.add_stream );
-        //this.model.streams.bind( 'all', function(a,b,c){console.log(a,b,c);} );
+        this.model.featured_streams.bind( 'add', this.add_featured_stream );
 
         this.rendered = false;
+
+        var dash = this;
+        auth.on('logout login', function(){
+            // commit suicide on logout/in to force full reload
+            dash.uncache();
+        });
+
+        this.populate =  _.once(this.populate);
     },
 
     post_activate: function(){
@@ -75,7 +82,7 @@ var dash_view = page_view.extend({
 
     get_override_tab: function(){ return 'dash'; },
 
-    populate: function(){
+    populate:function(){
 
         $.mobile.showPageLoadingMsg();
 
@@ -87,7 +94,10 @@ var dash_view = page_view.extend({
 
     background_update: function(){
 
-        this.$el.addClass('background-loading');
+        if(this.background_updating){ return; }
+        this.background_updating = true;
+
+        this.$el.addClass('x-background-loading');
 
         var dash = this,
             current = {
@@ -102,7 +112,7 @@ var dash_view = page_view.extend({
             //remove competitions
             _.each(current.competitions, function(comp){
                 if(!_.contains(_(dash.model.competitions).pluck('id'), comp)){
-                    dash.$('.competitions [data-id='+comp+']').remove();
+                    dash.$('.x-competitions [data-id='+comp+']').remove();
                 }
             });
 
@@ -111,10 +121,12 @@ var dash_view = page_view.extend({
                 return _.contains(current.competitions, comp.id);
             }));
 
-            //remove tumblr feeds
+            //remove OR UPDATE tumblr feeds
             _.each(current.tumblr_feeds, function(feed){
                 if(!_.contains(_.chain(dash.model.tumblr_feeds).pluck('display').pluck('id').value(), feed)){
-                    dash.$('.tumblr-streams [data-id='+feed+']').remove();
+                    dash.$('.x-tumblr-streams [data-id='+feed+']').remove();
+                }else{
+                    dash.tumblr_views[feed].update();
                 }
             });
 
@@ -138,7 +150,7 @@ var dash_view = page_view.extend({
             //remove featured_streams
             _.each(current.featured_streams, function(stream){
                 if(!dash.model.featured_streams._byId[stream]){
-                    dash.$('.featured-streams [data-id='+stream+']').remove();
+                    dash.$('.x-featured-streams [data-id='+stream+']').remove();
                 }
             });
 
@@ -156,7 +168,8 @@ var dash_view = page_view.extend({
         var dash = this,
             options = {
                 data: {
-                    n:0
+                    n:0,
+                    access_token: auth.get('access_token')
                 },
                 success: success,
                 error: function(){
@@ -164,7 +177,8 @@ var dash_view = page_view.extend({
                 },
                 complete: function(){
                     $.mobile.hidePageLoadingMsg();
-                    dash.$el.removeClass('background-loading');
+                    dash.$el.removeClass('x-background-loading');
+                    dash.background_updating = false;
                 }
             };
 
@@ -182,14 +196,16 @@ var dash_view = page_view.extend({
     },
 
     render: function(){
-        this.$('.dash-welcome').toggle(!auth.has("access_token") || this.model.length < 3);
+        this.$('.x-dash-welcome').toggle(!auth.has("access_token") || this.model.length < 3);
 
-        this.$('.user-streams').empty();
+        this.$('.x-user-streams').empty();
 
         this.add_comps(this.model.competitions);
         this.add_featured_streams(this.model.featured_streams.models);
         this.add_tumblrs(this.model.tumblr_feeds);
         this.add_streams(this.model.streams.models);
+
+        this.$('.x-add-buttons').show();
 
         this.$el.trigger( "create" );
 
@@ -222,7 +238,7 @@ var dash_view = page_view.extend({
     },
 
     edit_dash: function(){
-        this.$el.toggleClass('edit');
+        this.$el.toggleClass('x-edit');
     },
 
     data_query_link: function( e ){
@@ -232,10 +248,17 @@ var dash_view = page_view.extend({
     },
 
     remove_stream: function(stream){
-        if(stream.get){
-            stream = stream.get('id');
+        if(stream.id){
+            stream = stream.id;
         }
-        this.$('.user-streams [data-id='+stream+']').remove();
+        this.$('.x-user-streams [data-id='+stream+']').remove();
+    },
+
+    remove_featured_stream: function(stream){
+        if(stream.id){
+            stream = stream.id;
+        }
+        this.$('.x-featured-streams [data-id='+stream+']').remove();
     },
     add_stream: function(item){
         this.add_streams([item]);
@@ -244,12 +267,15 @@ var dash_view = page_view.extend({
     add_streams: function(items){
         if(this.options.show && !_.contains(this.options.show, 'user-streams')){ return; }
 
-        var container = this.$('.user-streams');
+        var container = this.$('.x-user-streams'),
+            parent_view = this;
 
         _.each(items, function(item){
             var li = new dash_stream({
                 collection: item.photos,
-                model: item
+                model: item,
+                parent_view: parent_view,
+                use_gallery: false
             });
             container.append( li.render().el );
         });
@@ -258,7 +284,7 @@ var dash_view = page_view.extend({
     add_comps: function(items){
         if(this.options.show && !_.contains(this.options.show, 'comps')){ return; }
 
-        var container = this.$('.competitions');
+        var container = this.$('.x-competitions');
 
         _.each(items, function(item){
             var li = new competition({
@@ -268,29 +294,38 @@ var dash_view = page_view.extend({
             container.append( li.render().el );
         });
     },
+    tumblr_views: {},
     add_tumblrs: function(items){
         if(this.options.show && !_.contains(this.options.show, 'tumblr')){ return; }
 
-        var container = this.$('.tumblr-streams');
+        var dash = this,
+            container = this.$('.x-tumblr-streams');
 
         _.each(items, function(item){
-            var li = new dash_tumblr_view({
+            dash.tumblr_views[item.display.id] = new dash_tumblr_view({
                 feed: item
             });
-            container.append( li.render().el );
+            container.append( dash.tumblr_views[item.display.id].render().el );
         });
+    },
+    add_featured_stream: function(item){
+        this.add_featured_streams([item]);
     },
     add_featured_streams: function(items){
         if(this.options.show && !_.contains(this.options.show, 'featured-streams')){ return; }
 
-        var container = this.$('.featured-streams');
+        var container = this.$('.x-featured-streams'),
+            parent_view = this;
 
         _.each(items, function(item){
+            if(item.get('display').view && item.get('display').view != parent_view.options.name){ return; }
             var li = new dash_stream({
                 collection: item.photos,
                 model: item,
                 featured: true,
-                expand: true
+                expand: true,
+                parent_view: parent_view,
+                use_gallery: false
             });
             container.append( li.el );
             li.render();  // render after inserting so DOM metrics are available
@@ -300,7 +335,7 @@ var dash_view = page_view.extend({
 });
 
 var competition = view.extend({
-    tagName: 'li',
+    tagName: 'article',
     className: 'competition',
     events: {
         "click .x-details": "toggle"
@@ -309,21 +344,21 @@ var competition = view.extend({
         this.load_template('components/dash/competition');
     },
     render: function(){
-        this.$el.addClass( this.options.expand ? 'open' : 'closed' );
+        this.$el.addClass( this.options.expand ? 'x-open' : 'x-closed' );
         this.$el.html( this.template(this.options) );
         this.$el.attr('data-id', this.options.data.id);
         return this;
     },
     toggle: function(){
-        this.$el.toggleClass('open closed');
-        this.$el.toggleClass('top-left-arrow');
+        this.$el.toggleClass('x-open x-closed');
+        this.$el.toggleClass('s-arrow-d-left');
         this.$('.banner').fadeToggle();
     }
 });
 
 var dash_tumblr_view = view.extend({
-    tagName: 'li',
-    className: 'post-stream',
+    tagName: 'article',
+    className: 'x-post-stream',
     events: {
         "click .x-details": "toggle"
     },
@@ -332,56 +367,58 @@ var dash_tumblr_view = view.extend({
     },
     render: function () {
 
-        this.$el.addClass('open loading');
+        this.$el.addClass('x-open x-loading');
         this.$el.html( this.template({
             feed: this.options.feed,
-            post: null
+            posts: []
         }));
 
-        var this_view = this,
-            feed = this.options.feed,
-
-            $tumblr_streams = this.$('.posts-stream').empty(),
-            collection = new tumblr_post_collection(),
-            options = {
-                host: feed.host,
-                key: feed.key,
-                data: {
-                    limit:1,
-                    filter:'text'
-                },
-                success: function(){
-                    if (collection.length) {
-                        this_view.$el.html( this_view.template({
-                            feed: feed,
-                            post: collection.at(0)
-                        })).trigger('create');
-                        this_view.$el.attr('data-id', feed.display.id);
-                    }
-                    this_view.$el.removeClass('loading');
-                },
-                error: function(){
-                    console.error('Error loading tumblr posts from server');
-                }
-            };
-        collection.fetch(options);
+        this.update();
         return this;
     },
-    toggle: function () {
-        this.$el.toggleClass('open closed');
-        this.$el.toggleClass('top-left-arrow');
-        this.$('.posts-stream').fadeToggle();
+    toggle: function() {
+        this.$el.toggleClass('x-open x-closed');
+        this.$('.x-posts').fadeToggle();
+    },
+    update: function(){
+        var this_view = this,
+        feed = this.options.feed,
+
+        collection = new tumblr_post_collection(),
+        options = {
+            host: feed.host,
+            key: feed.key,
+            data: {
+                limit:config.get('dash_tumblr_posts'),
+                filter:'text'
+            },
+            success: function(){
+                this_view.$('.x-posts').empty();
+                if (collection.length) {
+                    this_view.$el.html( this_view.template({
+                        feed: feed,
+                        posts: collection.models
+                    })).trigger('create');
+                    this_view.$el.attr('data-id', feed.display.id);
+                }
+                this_view.$el.removeClass('loading');
+            },
+            error: function(){
+                console.error('Error loading tumblr posts from server');
+            }
+        };
+        collection.fetch(options);
     }
 });
 
 var dash_stream = side_scroll.extend({
 
-    tagName: 'li',
+    tagName: 'article',
 
-    className: 'image-stream',
+    className: 'x-stream',
 
     events: _.extend({
-        "click .remove-stream": "remove_stream"
+        "click .x-remove-stream": "remove_stream"
     }, side_scroll.prototype.events),
 
     get_title: function(){
@@ -441,7 +478,7 @@ var add_person = page_view.extend({
     },
 
     post_activate: function(){
-        this.$("ul.people-list").empty();
+        this.$(".x-people-list").empty();
         this.$(".ui-input-text").val('');
 
         this.change_page();
@@ -452,7 +489,7 @@ var add_person = page_view.extend({
     },
 
     render: function(){
-        var people_list = this.$("ul.people-list").empty();
+        var people_list = this.$(".x-people-list").empty();
 
         var people_li_template = this.get_template('components/person');
 
@@ -467,7 +504,7 @@ var add_person = page_view.extend({
                 people_list.append( li.render().el );
             });
         }else{
-            no_results.render('Oops.. Nobody here yet.', 'delete').$el.appendTo(people_list);
+            no_results.render('Oops.. Nobody here yet.', 'delete').$el.insertBefore(people_list);
         }
 
         var this_back = this.back;
@@ -486,11 +523,19 @@ var add_person = page_view.extend({
                     }
                 });
             $.mobile.showPageLoadingMsg();
-            stream.save({}, {success: function(){
-                this_back_view.model.streams.add(stream);
+            stream.save({}, {success: function(model, r){
+                if(r.error){
+                    if(r.error.type == 'duplicate'){
+                        alerts.notification('You already have this user on your dashboard');
+                    }else{
+                        alerts.notification(r.error.message);
+                    }
+                }else{
+                    this_back_view.model.streams.add(stream);
+                }
                 $.mobile.hidePageLoadingMsg();
             }});
-            this_back_view.$el.removeClass('edit');
+            this_back_view.$el.removeClass('x-edit');
             this_back();
             $.mobile.showPageLoadingMsg();
         });
@@ -513,7 +558,7 @@ var add_person = page_view.extend({
 
             this.timer = setTimeout( function() {
                 this_view.timer = null;
-                this_view.$el.addClass('loading');
+                this_view.$el.addClass('x-loading');
                 this_view.xhr = this_view.collection.fetch({
                     data:{
                         username:keywords,
@@ -523,13 +568,13 @@ var add_person = page_view.extend({
                     url: config.get('api_base') + '/user/search/',
                     success: function(){
                         this_view.xhr = null;
-                        this_view.$el.removeClass('loading');
+                        this_view.$el.removeClass('x-loading');
                     }
                 });
             }, 300 );
 
         }else{
-            if(this_view.collection.length){  // stops the list showing no-results on initial searches
+            if(this_view.collection.length){  // stops the list showing x-no-results on initial searches
                 this_view.collection.reset();
             }
         }
@@ -561,8 +606,8 @@ var add_search = page_view.extend({
     },
 
     search: function(){
-        var keywords = $("#dash-search-keywords").val();
-        var nearby = $("#dash-search-type").val();
+        var keywords = this.$("input.x-search-field").val();
+        var nearby = this.$("select.x-search-distance").val();
 
         var stream_object = {
             query: {
@@ -586,11 +631,19 @@ var add_search = page_view.extend({
                 stream_object.query.longitude = position.coords.longitude;
 
                 var stream = new dash_stream_model( stream_object );
-                stream.save({}, {success: function(){
-                    add_search.previous_view.model.streams.add(stream);
+                stream.save({}, {success: function(model, r){
+                    if(r.error){
+                        if(r.error.type == 'duplicate'){
+                            alerts.notification('You already have this search on your dashboard');
+                        }else{
+                            alerts.notification(r.error.message);
+                        }
+                    }else{
+                        add_search.previous_view.model.streams.add(stream);
+                    }
                     $.mobile.hidePageLoadingMsg();
                 }});
-                add_search.previous_view.$el.removeClass('edit');
+                add_search.previous_view.$el.removeClass('x-edit');
                 add_search.back();
 
                 $.mobile.showPageLoadingMsg();
@@ -605,11 +658,19 @@ var add_search = page_view.extend({
         }else{
             var stream = new dash_stream_model( stream_object ),
                 dash = this.previous_view;
-            stream.save({}, {success: function(){
-                dash.model.streams.add(stream);
+            stream.save({}, {success: function(model, r){
+                if(r.error){
+                    if(r.error.type == 'duplicate'){
+                        alerts.notification('You already have this search on your dashboard');
+                    }else{
+                        alerts.notification(r.error.message);
+                    }
+                }else{
+                    dash.model.streams.add(stream);
+                }
                 $.mobile.hidePageLoadingMsg();
             }});
-            this.previous_view.$el.removeClass('edit');
+            this.previous_view.$el.removeClass('x-edit');
             this.back();
 
             $.mobile.showPageLoadingMsg();

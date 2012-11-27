@@ -1,44 +1,47 @@
-<div class="image-item-block<% if (item.get("status") != "public"){%> private<%}%>">
-    <div class="image-item-topbar">
-        <a class="user-icon-link" href="#/feed/?username=<%= item.get('username') %>">
-            <div class="user-icon-small" style="background-image: url('<%= config.get('avatar_url') %>/<%= item.get('user_id') %>/');"></div>
+<div class="s-image-item-block<% if (item.get("status") != "public"){%> private<%}%>">
+    <div class="s-image-item-topbar">
+        <a class="s-avatar" style="background-image: url('<%= config.get('avatar_url') %>/<%= item.get('user_id') %>/');" href="#/feed/?username=<%= item.get('username') %>">
         </a>
-        <a class="username" href="#/feed/?username=<%= item.get('username') %>"><%= item.get('display_username') %></a>
+        <a class="s-username" href="#/feed/?username=<%= item.get('username') %>"><%= item.get('display_username') %></a>
 
         <!-- Show Time only if no location -->
         <% if(item.has('location') && item.get('location').location){ %>
-        <span class="image-time-and-location">
-        <a class="goto-map">
+        <a class="goto-map s-image-time-and-location">
             <span class="ui-icon feed-icons ui-icon-venue"></span>
-            <%= string_utils.short_timestamp(item.get('date'), true ) %>, <%= string_utils.short_location(item.get('location').location) %> </a>
-        </span>
+            <%= string_utils.short_timestamp(item.get('date'), true ) %>, <%= string_utils.short_location(item.get('location').location) %>
+        </a>
+
         <%}else{%>
-        <span class="image-time">
+        <span class="s-image-time">
             <span class="ui-icon feed-icons ui-icon-clock"></span>
             <%= string_utils.short_timestamp(item.get('date'), true ) %>
         </span>
         <% }%>
     </div>
 
-    <div class="image-item">
+    <div class="s-image-item">
 
     <% if(item.get('external_video')){ %>
-    <video class="main-image x-feed-image external-vid image-loader-bg" data-vid-width="<%= item.get('external_video').width %>" data-vid-duration="<%= item.get('external_video').duration %>" data-vid-height="<%= item.get('external_video').height %>" poster="https://s3.amazonaws.com/media-server<%= item.get('server_id') %>.snapr.us/lrg/<%= item.get('secret') %>/<%= item.get('id') %>.jpg" style="height:<%= get_photo_height(item.get('width'), item.get('height'), '#feed-images') %>px;" preload="none" controls="true" onclick="if(this.paused){this.play();}else{this.pause();}">
+
+    <video class="s-main-image x-feed-image s-image-loader-bg" data-vid-width="<%= item.get('external_video').width %>" data-vid-duration="<%= item.get('external_video').duration %>" data-vid-height="<%= item.get('external_video').height %>" poster="https://s3.amazonaws.com/media-server<%= item.get('server_id') %>.snapr.us/lrg/<%= item.get('secret') %>/<%= item.get('id') %>.jpg" style="height:<%= get_photo_height(item.get('width'), item.get('height'), '#feed-images') %>px;" preload="none" controls="true" onclick="if(this.paused){this.play();}else{this.pause();}">
 
         <source src="<%= item.get('external_video').source %>" />
     </video>
+
     <%}else{%>
-    <a href="https://s3.amazonaws.com/media-server<%= item.get('server_id') %>.snapr.us/lrg2/<%= item.get('secret') %>/<%= item.get('id') %>.jpg" rel="external" class="gallery_link main-image-link image-loader-bg">
-        <img style="height:<%= get_photo_height(item.get('width'), item.get('height'), '#feed-images') %>px;" src="https://s3.amazonaws.com/media-server<%= item.get('server_id') %>.snapr.us/lrg/<%= item.get('secret') %>/<%= item.get('id') %>.jpg" <% if(item.get('description')){ %>alt="<%= item.get('description') %>"<% } %> class="main-image" />
+
+    <a href="https://s3.amazonaws.com/media-server<%= item.get('server_id') %>.snapr.us/lrg2/<%= item.get('secret') %>/<%= item.get('id') %>.jpg" rel="external" class="x-gallery-link s-main-image-link s-image-loader-bg">
+        <img style="height:<%= get_photo_height(item.get('width'), item.get('height'), '#feed-images') %>px;" src="https://s3.amazonaws.com/media-server<%= item.get('server_id') %>.snapr.us/lrg/<%= item.get('secret') %>/<%= item.get('id') %>.jpg" <% if(item.get('description')){ %>alt="<%= item.get('description') %>"<% } %> class="s-main-image" />
     </a>
+
     <% }%>
 
-        <span class="image-status">
+        <span class="s-image-status">
             <%= item.get('status') %>
         </span>
     </div>
 
-    <div class="image-description">
+    <div class="s-image-description">
 
         <% if (item.get('description')){%>
             <span class="ui-icon feed-icons ui-icon-quote"></span>
@@ -46,35 +49,66 @@
         <%= string_utils.comment_links( item.get('description') ) %>
 
         <% if (item.has('location') && item.get('location').spot_id){%>
-        <a class="goto-spot">
+        <a class="x-goto-spot">
             @ <%= item.get('location').foursquare_venue_name %>
         </a>
         <%}%>
     </div>
 
-    <div class="image-item-base">
-        <div data-role="controlgroup" data-type="horizontal" class="image-actions">
-            <span class="v-fav-button inline-btn"></span>
-            <span class="v-comment-button inline-btn"></span>
-            <span class="v-more-button inline-btn has-palette">
-                 <div data-role="button" data-icon="action-more" data-inline="true" data-iconpos="left" class="more-button action-icons" >&nbsp;</div>
-                 <div class="v-photo-manage action-palette"></div>
+    <div class="s-image-item-base">
+        <div data-role="controlgroup" data-type="horizontal" class="s-image-actions x-image-actions" data-theme="z">
+            <a data-role="button" data-theme="z" data-icon="heart" data-iconpos="left" class="x-favorite action-icons <% if (item.get('favorite')){ %> selected <% }%>" ><span class="s-hide-text">Likes </span><% if (item.get('favorite_count') > 0){ %>&times; <%= item.get('favorite_count') %><%} else {%> &nbsp;<%}%></a>
+
+            <a data-role="button" data-icon="comment" data-inline="true" data-iconpos="left" class="x-comment action-icons" data-theme="z"><span class="s-hide-text">Comments </span><% if (item.get('comments') > 0){ %>&times; <%= item.get('comments') %><%} else {%> &nbsp;<%}%></a>
+
+            <span class="s-has-palette">
+                <a data-role="button" class="x-more-button action-icons" data-theme="z" data-icon="more" data-iconpos="left" data-inline="true"><span class="s-hide-text">More</span>&nbsp;</a>
+
+                <div class="x-more-actions s-more-actions s-action-palette hide">
+                    <div class="s-center-palette">
+                        <div class="s-inline-palette ui-body-b" data-theme="b">
+                            <div data-type="horizontal" data-role="controlgroup"  class="dark-icons">
+                                <% if (item.get("username") == auth.get("snapr_user")) {%>
+                                    <a class="x-privacy" data-role="button" data-icon="settings"  data-iconpos="left" data-theme="b" data-inline="true">
+                                        <%= item.get('status') %>
+                                    </a>
+                                    <a class="x-delete" data-role="button" data-icon="delete"  data-iconpos="notext" data-theme="b" data-inline="true">
+                                       delete
+                                   </a>
+                                <%} else {%>
+                                    <a class="x-flag" data-role="button" data-icon="flag" data-iconpos="notext" data-theme="b" data-inline="true">
+                                        <% if (item.get('flagged')){%> flagged <% }else{ %> flag <% } %>
+                                    </a>
+                                <%}%>
+                           </div>
+                       </div>
+                    </div>
+                </div>
             </span>
 
-            <span class="v-show-all-button inline-btn"></span>
+            <% if (parseInt(item.get("favorite_count")) + parseInt(item.get("comments")) > 0){ %>
+                <a data-theme="z" data-role="button" data-icon="arrow-d" data-iconpos="right" class="x-reactions-button s-reactions-button action-icons">Show</a>
+            <% } %>
         </div>
 
-        <ul data-inset="true" class="reactions-list ">
+        <ul data-inset="true" class="x-reactions-list s-reactions-list">
+            <% _.each(obj.reactions || [], function(reaction){ %>
+                <% if(reaction.get('type') == 'comment'){ %>
+                    <li><a href="#/feed/?username=<%= reaction.get('username') %>"><span class="s-username"><%= reaction.get('display_username') %>:</span> <span class="s-comment"><%= string_utils.comment_links( reaction.get('comment') ) %></span></a></li>
+                <% }else{ %>
+                    <li><a href="#/feed/?username=<%= reaction.get('username') %>"><span class="s-username"><%= reaction.get('display_username') %></span> <span class="s-like-text">likes this</span></a></li>
+                <% } %>
+            <% }) %>
         </ul>
 
-        <div class="comment-area">
+        <div class="s-comment-area">
             <div>
                 <form action="javascript:void(0);" class="comment-form" accept-charset="utf-8">
-                    <textarea name="comment-<%= item.get('id') %>" placeholder=" " class="photo-comment" />
+                    <textarea name="comment-<%= item.get('id') %>" placeholder=" " class="s-photo-comment" />
                     <div class="ui-grid-b">
                         <div class="ui-block-a"></div>
                         <div class="ui-block-b"></div>
-                        <div class="ui-block-c"><input data-theme="e" type="submit" value="Comment" /></div>
+                        <div class="ui-block-c"><input data-theme="h" type="submit" value="Comment" /></div>
 
                     </div>
                 </form>

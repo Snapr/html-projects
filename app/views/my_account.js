@@ -1,6 +1,6 @@
 /*global _  define require */
-define(['views/base/page', 'views/linked_service', 'auth', 'utils/local_storage', 'utils/alerts', 'native', 'config'],
-function(page_view, linked_service, auth, local_storage, alerts, native, config){
+define(['views/base/page', 'views/linked_service', 'auth', 'utils/local_storage', 'utils/alerts', 'native_bridge', 'config'],
+function(page_view, linked_service, auth, local_storage, alerts, native_bridge, config){
 return page_view.extend({
 
     post_activate:function(options){
@@ -20,8 +20,6 @@ return page_view.extend({
     get_override_tab: function(){ return 'feed'; },
 
     back_text: "Menu",
-
-    //template: _.template( $('#my-account-template').html() ),
 
     create_page: function(){
         this.setElement($(this.template({
@@ -57,12 +55,24 @@ return page_view.extend({
 
     render: function(){
 
+        var linked_services_list = {
+            foursquare:false,
+            facebook:false,
+            tumblr:false,
+            twitter:false
+        };
+
+        _.each( auth.user_settings.get('linked_services'), function( service, index ){
+            linked_services_list[service.provider] = true;
+        });
+
         var data={
             initial: false,
             username: auth.user_settings.get( "user" ).username,
             display_username: auth.user_settings.get( "user" ).display_username,
             user_id: auth.user_settings.get( "user" ).user_id,
             settings: auth.user_settings.get( "settings" ),
+            linked_services: linked_services_list,
             camplus: false
         };
         if(config.get('camplus_options')){
@@ -74,30 +84,15 @@ return page_view.extend({
             };
         }
 
-        var new_page = $(this.template(data));
+        var $account_content = this.replace_from_template(data, ['.x-content']).trigger('create');
 
-        this.$('.account-content').replaceWith(new_page.find('.account-content'));
-        var $account_content = this.$('.account-content').trigger('create');
-
-
-        // set all linked services to false, we will check them off below
-
-        var linked_services_list = {
-            foursquare:false,
-            facebook:false,
-            tumblr:false,
-            twitter:false
-        };
 
         var my_account = this;
         _.each( auth.user_settings.get('linked_services'), function( service, index ){
             var v = new linked_service({model: service});
             v.my_account = my_account;
 
-            // keep track of linked services
-            linked_services_list[service.provider] = true;
-
-            $account_content.find('.linked-services').append( v.render().el ).trigger('create');
+            $account_content.find('.x-linked-services').append( v.render().el ).trigger('create');
         });
 
         // for all services that are not yet linked, add
@@ -105,36 +100,36 @@ return page_view.extend({
             if (!val){
                 var v = new linked_service();
                 v.provider = provider;
-                $account_content.find('.add-services').append( v.render().el ).trigger('create');
+                $account_content.find('.x-add-services').append( v.render().el ).trigger('create');
             }
         });
 
-        $account_content.find('.add-services').listview().listview("refresh");
+        $account_content.find('.x-add-services').listview().listview("refresh");
 
         var hide_connect_heading = _.filter(linked_services_list, function(val){return !val;}).length ? false: true;
         var hide_linked_heading = _.filter(linked_services_list, function(val){return val;}).length ? false: true;
         if (hide_connect_heading){
-            this.$el.find(".connect-heading").hide();
+            this.$(".x-connect-heading").hide();
         }
         if (hide_linked_heading){
-            this.$el.find(".linked-heading").hide();
+            this.$(".x-linked-heading").hide();
         }
 
         return this;
     },
 
     events: {
-        "change .my-account-avatar input[type=radio]": "set_avatar",
-        "click .my-account-set-up-gravatar": "set_up_gravatar",
-        "click .my-account-notifications .save": "save_notifications",
-        "change .my-account-notifications .ui-slider-switch": "save_notifications",
-        "click .my-account-account .save": "save_account",
-        "click .my-account-camplus .save": "save_camplus",
-        "click .my-account-profile .save": "save_profile"
+        "change .x-avatar input[type=radio]": "set_avatar",
+        "click .x-set-up-gravatar": "set_up_gravatar",
+        "click .x-notifications .x-save": "save_notifications",
+        "change .x-notifications .ui-slider-switch": "save_notifications",
+        "click .x-account .x-save": "save_account",
+        "click .x-camplus .x-save": "save_camplus",
+        "click .x-profile .x-save": "save_profile"
     },
 
     set_avatar: function(e){
-        var avatar_type = this.$('.my-account-avatar input[type=radio]:checked').val();
+        var avatar_type = this.$('.x-avatar input[type=radio]:checked').val();
         console.debug(avatar_type);
     },
 
@@ -194,10 +189,10 @@ return page_view.extend({
             param = {};
 
         _.each(['name', 'location', 'website', 'bio'], function(item){
-            param[item] = section.find("#my-account-"+item).val();
+            param[item] = section.find(".x-"+item).val();
         });
 
-        param.avatar_type = section.find('[name=my-account-avatar]:checked').val();
+        param.avatar_type = section.find('.x-avatar :checked').val();
         var current_avatar = auth.user_settings.get('avatar_type') || auth.user_settings.get('settings').profile.avatar_type;
         var avatar_changed = param.avatar_type !== current_avatar;
 
@@ -214,12 +209,12 @@ return page_view.extend({
     save_account: function( e ){
         var param = {};
 
-        var email = this.$el.find("#my-account-email").val();
-        var password = this.$el.find("#my-account-password").val();
-        var password_verify = this.$el.find("#my-account-password-verify").val();
+        var email = this.$(".x-email").val();
+        var password = this.$(".x-password").val();
+        var password_verify = this.$(".x-password-verify").val();
 
-        this.$el.find("#my-account-password").val("");
-        this.$el.find("#my-account-password-verify").val("");
+        this.$(".x-password").val("");
+        this.$(".x-password-verify").val("");
 
         if (!email){
             alerts.notification("No email", "Please provide an email address", $.noop);
@@ -230,7 +225,10 @@ return page_view.extend({
             }
         }
         if (password){
-            if (!password_verify){
+            if (password.length < 6){
+                alerts.notification("Password too short", "Passwords must be at least six characters long.", $.noop);
+                return;
+            }else if (!password_verify){
                 alerts.notification("No verification password", "Please enter your password again", $.noop);
                 return;
             }else if (password != password_verify){
@@ -257,11 +255,11 @@ return page_view.extend({
             var key = $(select).attr("name");
             var value = ($(select).val() == "true") ? true: false;
             param[key] = value;
-            local_storage.save( key, value );
+            local_storage.set( key, value );
         });
 
         if (local_storage.get("appmode") == "iphone"){
-            native.pass_data( "snapr://camplus/settings/?" + $.param( param ) );
+            native_bridge.pass_data( "snapr://camplus/settings/?" + $.param( param ) );
         }else{
             console.log( "snapr://camplus/settings/?" + $.param( param ) );
         }

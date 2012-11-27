@@ -11,7 +11,7 @@ var map_view = page_view.extend({
         this.$el.on('pageshow', function (e) {
             map_view.hidden=false;
             // hack to set google map height
-            $("#google-map").css("height", (window.innerHeight - 85) + "px");
+            $(".x-map").css("height", (window.innerHeight - 85) + "px");
         });
 
         this.$el.on('pagehide', function (e) {
@@ -37,16 +37,16 @@ var map_view = page_view.extend({
     history_ignore_params: ['zoom', 'lat', 'lng', 'photo_id', 'location'],
 
     events: {
-        "click .x-current-location": "current_location_go_to",
-        "click #map-disambituation-cancel": "location_search_toggle_disambiguation",
-        "click .x-map-feed": "map_feed",
-        "change #map-filter": "filter_update",
-        "change #map-view-photos, #map-view-spots": "layers_update",
-        "submit #map-keyword": "keyword_search",
-        "blur #map-keyword": "keyword_search",
-        "click #map-keyword .ui-input-clear": "keyword_search_clear",
-        "click .map-time-btn": "map_time",
-        "click .x-map-venue-pin" : "toggle_spot_label"
+        "vclick .x-current-location": "current_location_go_to",
+        "vclick .x-disambituation-cancel": "location_search_toggle_disambiguation",
+        "vclick .x-map-feed": "map_feed",
+        "change select.x-filter": "filter_update",
+        "change .x-show-photos, .x-show-spots": "layers_update",
+        "submit .x-search": "keyword_search",
+        "blur .x-search": "keyword_search",
+        "vclick .x-search .ui-input-clear": "keyword_search_clear",
+        "click .x-time-btn": "map_time",
+        "vclick .x-venue-pin" : "toggle_spot_label"
     },
 
     post_activate: function(options){
@@ -79,7 +79,12 @@ var map_view = page_view.extend({
         // photo_params may have been saved in local_storage
         photo_params = _.defaults( photo_params,
             local_storage.get('map_photo_params') || {},
-            { n:config.get('map_count') }
+            { n:config.get('map_thumb_count') }
+        );
+
+        // photo_params may have been saved in local_storage
+        spot_params = _.defaults( spot_params,
+            { n:config.get('map_spot_count') }
         );
 
         // if neither are set default to photos
@@ -91,6 +96,7 @@ var map_view = page_view.extend({
         if (photo_params.photo_id) {
             map_params.show_spots = false;
             map_params.show_photos = true;
+            delete photo_params.username;
         }
         if (spot_params.id) {
             map_params.show_photos = false;
@@ -124,6 +130,7 @@ var map_view = page_view.extend({
         this.filter_set_options();  // set initial state
         this.layers_set();
         this.spot_query_save(); // save the spot query params
+        this.photo_query_save(); // save the spot query params
 
 
         // location search
@@ -134,14 +141,24 @@ var map_view = page_view.extend({
         }
 
         // if we are going directly to a spot
+        var map_view = this;
         if(this.spot_query.id){
+            this.overlays_remove();
             this.spot = new spot_model(_.clone(this.spot_query.attributes));
-            var map_view = this;
+
+            var show_spot = function(spot){
+                map_view.thumb_overlays[spot.id] = new map.overlays.Base(
+                    _.extend({active: true}, spot.attributes),
+                    map_view.map,
+                    map_view.spot_template
+                );
+                $.mobile.hidePageLoadingMsg();
+            };
 
             // if lat lng supplied, get straight to it
             if(options.query.lat && options.query.lng){
                 map_view.map_update_or_create();
-                this.spot.fetch();
+                this.spot.fetch({success: show_spot});
             }else{
                 this.spot.fetch({success: function(spot){
                     map_view.map_query.set({
@@ -150,6 +167,7 @@ var map_view = page_view.extend({
                         z: 15
                     }, {silent:true});
                     map_view.map_update_or_create();
+                    show_spot(spot);
                 }});
             }
 
@@ -158,7 +176,6 @@ var map_view = page_view.extend({
             this.map_update_or_create();
 
         }else{
-            var map_view = this;
             geo.get_location(
                 // success
                 function( location ){
@@ -194,7 +211,6 @@ var map_view = page_view.extend({
         // update map...
 
         if(this.map){
-            console.log('update map', this.map_query);
             // trigger a resize event so gmap doesn't think it has 0 width and height after being hidden in iphone
             google.maps.event.trigger(this.map, "resize");
             if(this.map_query.get('area')){  // area is used by location search to specify viewport
@@ -211,7 +227,6 @@ var map_view = page_view.extend({
         // or
 
         // create map...
-        console.log('create map');
 
         var map_settings = {
             zoom: this.map_query.get( "zoom" ),
@@ -236,7 +251,7 @@ var map_view = page_view.extend({
             ]
         };
 
-        this.map = new google.maps.Map(document.getElementById("google-map"), map_settings);
+        this.map = new google.maps.Map($('.x-map')[0], map_settings);
 
         // update thumbs when map moves
         var map_view = this;
@@ -277,7 +292,9 @@ var map_view = page_view.extend({
             }
         });
 
+        var the_one = this.spot_query.get('id');
         _.each( this.spot_overlays, function( spot ){
+            if(spot.id == the_one){ return; }
             if(!overlays || _(overlays).contains(spot.data.id)){
                 spot.setMap(null);
             }
@@ -291,7 +308,7 @@ var map_view = page_view.extend({
 
         if (this.map_query.get('show_photos')) {
 
-            this.$el.addClass('loading');
+            this.$el.addClass('x-loading');
 
             this.thumb_collection.data = _.clone(this.photo_query.attributes);
             this.thumb_collection.data.area = this.map.getBounds().toUrlValue(4);
@@ -305,7 +322,7 @@ var map_view = page_view.extend({
             this.thumb_collection.current_query = this.thumb_collection.fetch({
                 success: function( collection ){
                     $.mobile.hidePageLoadingMsg();
-                    map_view.$el.removeClass('loading');
+                    map_view.$el.removeClass('x-loading');
 
                     var new_thumb_ids = map_view.thumb_collection.pluck("id");
 
@@ -328,7 +345,12 @@ var map_view = page_view.extend({
 
                     // update time display if in 'just one' mode now we have the
                     // photo and know its date
-                    if(map_view.photo_query.has('photo_id')){ map_view.map_time_update_display(); }
+                    if (map_view.photo_query.has("photo_id")){
+                        var photo = map_view.thumb_collection.get_photo_by_id( map_view.photo_query.get( "photo_id" ) );
+                        if (photo){
+                            map_view.photo_query.set('date', photo.get( "date" ));
+                        }
+                    }
                 },
                 error: function( e ){
                     console.warn( "error getting thumbs", e );
@@ -348,15 +370,11 @@ var map_view = page_view.extend({
 
 
         if (this.map_query.get('show_spots')) {
-            this.$el.addClass('loading');
+            this.$el.addClass('x-loading');
 
             this.spot_collection.data = _.clone(this.spot_query.attributes);
 
             this.spot_collection.data.area = this.map.getBounds().toUrlValue(4);
-
-            if(this.spot_query.has('spot_id')){
-                this.spot_collection.data.n=1;
-            }
 
             // we are about to look for new thumbs, abort any old requests, they will no longer be needed
             try{ this.spot_collection.current_query.abort(); }catch(e){}
@@ -364,7 +382,7 @@ var map_view = page_view.extend({
             this.spot_collection.current_query = this.spot_collection.fetch({
                 success: function( collection ){
                     $.mobile.hidePageLoadingMsg();
-                    map_view.$el.removeClass('loading');
+                    map_view.$el.removeClass('x-loading');
 
                     var new_spot_ids = map_view.spot_collection.pluck("id");
 
@@ -378,16 +396,12 @@ var map_view = page_view.extend({
                         var id = spot.get('id');
                         if(!_(old_spot_ids).contains(id)){
                             map_view.thumb_overlays[id] = new map.overlays.Base(
-                                _.extend({active: spot.id == map_view.spot_query.get('id')}, spot.attributes),
+                                spot.attributes,
                                 map_view.map,
                                 map_view.spot_template
                             );
                         }
                     });
-
-                    // update time display if in 'just one' mode now we have the
-                    // photo and know its date
-                    if(map_view.spot_query.has('spot_id')){ map_view.map_time_update_display(); }
                 },
                 error: function( e ){
                     console.warn( "error getting spots", e );
@@ -402,17 +416,17 @@ var map_view = page_view.extend({
 
     toggle_spot_label: function (event) {
         var pin = this.$(event.currentTarget).parent();
-        if(pin.hasClass('active')){
-            pin.removeClass('active');
+        if(pin.hasClass('x-active')){
+            pin.removeClass('x-active');
         }else{
-            this.$('.x-map-venue.active').removeClass('active');
-            pin.addClass('active');
+            this.$('.x-venue.x-active').removeClass('x-active');
+            pin.addClass('x-active');
         }
     },
 
     no_results_message_toggle: function(show){
         if(show !== true){ show = false; }
-        this.$("#snaprmapalert").toggle(!!show);
+        this.$(".x-map-alert").toggle(!!show);
     },
 
     location_search: function( search_query ){
@@ -424,7 +438,8 @@ var map_view = page_view.extend({
             if (status == google.maps.GeocoderStatus.OK){
                 //if there is more than one result, show list
                 if (results.length > 1){
-                    var dis_list = $("#map-disambiguation-list").empty();
+                    map_view.map_update_or_create();
+                    var dis_list = $(".x-disambiguation-list").empty();
                     _.each( results, function( result ){
                         var li = new map_disambiguation({
                             result: result,
@@ -438,25 +453,19 @@ var map_view = page_view.extend({
                     dis_list.listview().listview("refresh");
                 }else{
                     map_view.location_search_toggle_disambiguation(false);
-                    map_view.map_query.set({
-                        area: results[ 0 ].geometry.bounds,
-                        location: null
-                    }, {silent:true});
                     map_view.map_update_or_create();
+                    map_view.map.fitBounds(results[ 0 ].geometry.viewport);
                 }
             }else{
-                var again = confirm("Sorry, your search returned no results. Would you like to search again?");
-
-                if(again) {
-                    Backbone.history.navigate("/search");
-                }
+                map_view.map_update_or_create();
+                alerts.notification("Sorry, your search returned no results.");
             }
         });
     },
 
     location_search_toggle_disambiguation: function(show){
         if(show !== true){ show = false; }
-        this.$("#map-disambiguation").toggle(show);
+        this.$(".x-disambiguation").toggle(show);
     },
 
     go_to: function(location, zoom){
@@ -494,7 +503,7 @@ var map_view = page_view.extend({
         if(known_location){
             callback(known_location);
         }else{
-            geo.get_location(callback);
+            geo.get_location(callback, function(){}, !!'no_cache');
         }
     },
 
@@ -515,7 +524,8 @@ var map_view = page_view.extend({
                     if (error.message){
                         alerts.notification('Error', error.message );
                     }
-                }
+                },
+                !!'no_cache'
             );
         }else{
             console.warn("map not initialized");
@@ -559,18 +569,18 @@ var map_view = page_view.extend({
     },
 
     filter_set_options: function(){
-        this.$("#map-filter option[value='just-me']").attr("disabled", !auth.has("snapr_user"));
-        this.$("#map-filter option[value='following']").attr("disabled", !auth.has("snapr_user"));
-        this.$("#map-filter option[value='just-one']").attr("disabled", !this.photo_query.has("photo_id"));
+        this.$("select.x-filter option[value='just-me']").attr("disabled", !auth.has("snapr_user"));
+        this.$("select.x-filter option[value='following']").attr("disabled", !auth.has("snapr_user"));
+        this.$("select.x-filter option[value='just-one']").attr("disabled", !this.photo_query.has("photo_id"));
 
         if (this.photo_query.has( "photo_id" )){
-            $("#map-filter").val("just-one").selectmenu('refresh', true);
+            this.$("select.x-filter").val("just-one").selectmenu('refresh', true);
         }else if (!this.photo_query.has( "username" ) && this.photo_query.get( "group" ) == "following"){
-            $("#map-filter").val("following").selectmenu('refresh', true);
+            this.$("select.x-filter").val("following").selectmenu('refresh', true);
         }else if (this.photo_query.get( "username" ) == "." && !this.photo_query.has( "group" )){
-            $("#map-filter").val("just-me").selectmenu('refresh', true);
+            this.$("select.x-filter").val("just-me").selectmenu('refresh', true);
         }else{
-            $("#map-filter").val("all").selectmenu('refresh', true);
+            this.$("select.x-filter").val("all").selectmenu('refresh', true);
         }
     },
 
@@ -583,12 +593,12 @@ var map_view = page_view.extend({
 
 
     layers_set: function (){
-        this.$("#map-view-spots").attr("checked", !!this.map_query.get("show_spots")).checkboxradio("refresh");
-        this.$("#map-view-photos").attr("checked", !!this.map_query.get("show_photos")).checkboxradio("refresh");
+        this.$(".x-show-spots").attr("checked", !!this.map_query.get("show_spots")).checkboxradio("refresh");
+        this.$(".x-show-photos").attr("checked", !!this.map_query.get("show_photos")).checkboxradio("refresh");
     },
 
     keyword_search: function( keywords ){
-        var input = this.$('#map-keyword').find("input");
+        var input = this.$('.x-search').find("input");
         if(!_.isString(keywords)){
             keywords = input.val();
         }else{
@@ -606,7 +616,7 @@ var map_view = page_view.extend({
     },
 
     keyword_search_clear: function(){
-        this.$('#map-keyword').find("input").val("");
+        this.$('.x-search').find("input").val("");
         this.photo_query.unset( "keywords" );
 
         return this;
@@ -615,7 +625,7 @@ var map_view = page_view.extend({
     map_time_render: function(){
 
         var map_view = this;
-        this.$(".map-time-btn").scroller({
+        this.$(".x-time-btn").scroller({
             'cancelText': 'Set to Now',
             'headerText': false ,
             'preset': 'datetime',
@@ -624,7 +634,7 @@ var map_view = page_view.extend({
             'theme': 'jqm',
             'jqmBody': 'b',
             'jqmSet': 'e',
-            'jqmCancel': 'd',
+            'jqmCancel': 'g',
             'dateFormat': 'yy-mm-dd',
             'dateOrder': 'ddMyy',
             'endYear': new Date().getFullYear(),
@@ -646,22 +656,14 @@ var map_view = page_view.extend({
     },
 
     map_time_update_display: function(){
-        var time;
-        if (this.photo_query.has("photo_id")){
-            var photo = this.thumb_collection.get_photo_by_id( this.photo_query.get( "photo_id" ) );
-            if (photo){
-                time = photo.get( "date" );
-            }
-        }else{
-            time = this.photo_query.get('date');
-        }
+        var time = this.photo_query.get('date');
 
         if (time){
-            this.$(".map-time-btn").scroller('setDate', string_utils.convert_snapr_date(time));
-            this.$(".map-time").find(".ui-bar").text( string_utils.short_timestamp( time, true) || "Now" );
+            this.$(".x-time-btn").scroller('setDate', string_utils.convert_snapr_date(time));
+            this.$(".x-time").find(".ui-bar").text( string_utils.short_timestamp( time, true) || "Now" );
         }else{
-            this.$(".map-time-btn").scroller('setDate', new Date());
-            this.$(".map-time").find(".ui-bar").text( "Now" );
+            this.$(".x-time-btn").scroller('setDate', new Date());
+            this.$(".x-time").find(".ui-bar").text( "Now" );
         }
 
         return this;
@@ -676,7 +678,7 @@ var map_view = page_view.extend({
     },
 
     map_time: function(){
-        this.$(".map-time-btn").scroller('show');
+        this.$(".x-time-btn").scroller('show');
         return this;
     }
 
@@ -687,23 +689,21 @@ var map_disambiguation = view.extend({
     tagName: "li",
 
     events: {
-        "click .map-link": "goto_map"
+        "click": "goto_map"
     },
 
     initialize: function(){
-        this.template = this.get_template('components/map/disambiguation');
         this.location = this.options.result;
         this.parent_view = this.options.parent_view;
     },
 
     render: function(){
-        this.$el.html( this.template( {location: this.location} ) );
+        this.$el.html( '<a class="map-link">' + this.location.formatted_address + '</a>' );
         return this;
     },
 
     goto_map: function(){
-        this.parent_view.map_query.set('area', this.location.geometry.viewport);
-        this.parent_view.map_update_or_create();
+        this.parent_view.map.fitBounds(this.location.geometry.viewport);
         this.parent_view.location_search_toggle_disambiguation(false);
     }
 });

@@ -75,6 +75,9 @@ string_utils.convert_snapr_date = function(time){
     return new Date(time);
 };
 string_utils.short_timestamp = function( time, relative, precision ){
+
+    if(!time){ return ''; }
+
     time = (time || "").replace(/-/g,"/").replace(/ \//g," -").replace(/[TZ]/g," ");
     //add 0000 to set to utc for relative times
     if (relative !== false && time.split(' ').length <3){
@@ -131,10 +134,10 @@ string_utils.time_ago = function (timestamp){
     var date = new Date(timestamp),
         diff = (((new Date()).getTime() - date.getTime()) / 1000),
         day_diff = Math.floor(diff / 86400);
-            
+
     if ( isNaN(day_diff) || day_diff < 0 )
         return '';
-            
+
     return day_diff == 0 && (
             diff < 60 && "just now" ||
             diff < 120 && "1 minute ago" ||

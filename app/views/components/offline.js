@@ -8,7 +8,7 @@ var offline = view.extend({
         this.load_template('components/offline');
     },
 
-    render: function(message, icon){
+    render: function(template){
         this.setElement(
             $( this.template() )
             .trigger("create")

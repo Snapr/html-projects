@@ -11,7 +11,9 @@ if(history.state === undefined){
 }
 
 history_state.replace = function(data) {
-    window.history.replaceState(data, document.title, window.location);
+    if(window.history.replaceState){
+        window.history.replaceState(data, document.title, window.location);
+    }
 };
 
 history_state.get_state = function() {

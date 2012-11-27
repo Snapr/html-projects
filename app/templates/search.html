@@ -1,26 +1,25 @@
-<div id="search" data-role="dialog" data-theme="a" data-ajax="false">
+<div id="search" data-role="page" data-theme="a" data-ajax="false">
     <div data-role="header">
         <h1>Search</h1>
         <a class="x-back" data-role="button" data-icon="delete" data-iconpos="notext"></a>
     </div>
-    <div data-role="content" data-theme="d">
-        <div class="inset-page-content">
-            <form action="javascript: void(0);" accept-charset="utf-8" id="search-form">
+    <div data-role="content">
+        <div class="s-inset-page-content">
+            <form accept-charset="utf-8">
                 <ul data-role="listview" data-inset="true" data-theme="d">
                     <li data-role="fieldcontain" class="ui-hide-label">
-                        <input type="text" placeholder="Keywords&hellip;" autocapitalize="off" id="search-keywords">
+                        <input type="text" placeholder="Keywords&hellip;" autocapitalize="off" autocorrect="off" class="x-search-field" id="search-keywords">
                     </li>
-                    <li data-role="fieldcontain" class="ui-hide-label has-select">
-                        <select id="search-type" data-theme="c">
+                    <li data-role="fieldcontain" class="ui-hide-label s-has-select">
+                        <select id="search-type" class="x-search-type" data-theme="c">
                             <option value="tag">Search Tags</option>
                             <option value="location">Search Locations</option>
                             <option value="user">Search Users</option>
                         </select>
                     </li>
-
                 </ul>
 
-                <input type="submit" data-theme="e" value="Search">
+                <input type="submit" data-theme="h" value="Search">
             </form>
         </div>
 

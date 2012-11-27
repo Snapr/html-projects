@@ -1,10 +1,10 @@
 /*global _  define require */
-define(['views/base/view', 'utils/local_storage', 'utils/alerts', 'native', 'models/photo'], function(view, local_storage, alerts, native, photo_model){
+define(['views/base/view', 'utils/local_storage', 'utils/alerts', 'native_bridge', 'models/photo'], function(view, local_storage, alerts, native_bridge, photo_model){
 return view.extend({
 
-    tagName: "li",
+    tagName: "div",
 
-    className: "upload-progress-item",
+    className: "s-upload-progress-item",
 
     initialize: function(options){
         _.bindAll(this);
@@ -30,35 +30,38 @@ return view.extend({
     render: function(){
         // check that the progress hasn't already reached 100%
         if (!this.$(".finishing").length){
-            this.$el.addClass("upload-id-" + this.photo.id);
+            this.$el.addClass("x-upload-id-" + this.photo.id);
             this.$el.html(
                 this.template({
                     upload_status: this.is_queued ? 'waiting' : this.photo.get('upload_status').toLowerCase(),
                     description: unescape( this.photo.get('description') ),
-                    venue: this.photo.get('location').foursquare_venue_name || this.venue_name || this.photo.get('location').location,
-                    spot_id: this.photo.get('location').spot_id,
+                    venue: this.photo.get('venue_name') || this.venue_name || (this.photo.get('location') && this.photo.get('location').foursquare_venue_name),
                     shared: this.photo.get('shared'),
                     facebook_sharing: (
+                        this.photo.get('facebook_album') ||
+                        this.photo.get('facebook_newsfeed') ||
                         this.photo.get('shared') && this.photo.get('shared').facebook_album ||
                         this.photo.get('shared') && this.photo.get('shared').facebook_newsfeed ||
                         this.photo.get('sharing') && this.photo.get('sharing').facebook_album ||
                         this.photo.get('sharing') && this.photo.get('sharing').facebook_newsfeed
                     ),
                     twitter_sharing: (
+                        this.photo.get('tweet') ||
                         this.photo.get('shared') && this.photo.get('shared').tweeted ||
                         this.photo.get('sharing') && this.photo.get('sharing').tweeted
                         ),
                     foursquare_sharing: (
+                        this.photo.get('foursquare_checkin') ||
                         this.photo.get('shared') && this.photo.get('shared').foursquare_checkin ||
                         this.photo.get('sharing') && this.photo.get('sharing').foursquare_checkin
                     ),
                     tumblr_sharing: (
+                        this.photo.get('tumblr') ||
                         this.photo.get('shared') && this.photo.get('shared').tumblr ||
                         this.photo.get('sharing') && this.photo.get('sharing').tumblr
                     ),
                     thumbnail: this.photo.get('thumbnail'),
                     percent_complete: this.photo.get('percent_complete'),
-                    message: this.message,
                     photo_id: this.photo.get('id'),
                     username: this.photo.get('username')
                 })
@@ -97,13 +100,18 @@ return view.extend({
         var li_view = this;
         alerts.approve({
             "title": "Cancel this upload?",
+            'no': 'No',
             "yes_callback": function(){
                 if (local_storage.get( "appmode" )){
-                    native.pass_data( "snapr://upload?cancel=" + id );
+                    native_bridge.pass_data( "snapr://upload?cancel=" + id );
                 }
-                li_view.remove();
+                li_view.canceled_upload();
             }
         });
+    },
+
+    canceled_upload: function(){
+        this.remove();
     }
 
 });

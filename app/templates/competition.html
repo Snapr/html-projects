@@ -6,10 +6,10 @@
             <a href="#/search/" data-snapr-dialog="true" data-role="button" data-icon="search" data-iconpos="notext"></a>
         </div>
     </div>
-    <div data-role="content" data-theme="d" data-ajax="false" class="competition">
+    <div data-role="content" data-theme="d" data-ajax="false" class="s-competition">
         <% if(!initial){ %>
-            <a class="ui-bar x-details top-left-arrow" data-role="button" data-iconpos="left" data-icon="open" data-theme="e" data-ajax="false">
-            <span class="image-details">
+            <a class="ui-bar x-details" data-role="button" data-iconpos="left" data-icon="open" data-theme="e" data-ajax="false">
+            <span class="s-image-details">
                     <em><%= title %></em>
                 </span>
             </a>
@@ -17,13 +17,13 @@
                 <img class="banner-image" src="<%= banner.mobile %>">
             </div>
 
-            <ul class="awards-stream"></ul>
+            <ul class="x-award-stream s-award-stream"></ul>
 
             <% if(status == 'open'){ %>
                 <a class="ui-bar x-details x-launch-camera-options" data-role="button" data-icon="arrow-r" data-iconpos="right" data-theme="c" data-ajax="false" data-extra_params="comp_id=<%= id %>">
                     <span class="comp-details">
                         <em>Enter now!</em>
-                        <span class="small-text">
+                        <span class="s-small-text">
                             <% if(closing_date){ %>
                                 Submissions close <%= string_utils.short_timestamp(closing_date, false) %>
                             <% } %>
@@ -33,13 +33,13 @@
 
                 <br>
 
-                <a data-role="button" data-theme="e" class="x-launch-camera-options" data-extra_params="comp_id=<%= id %>">submit a photo</a>
+                <a class="x-launch-camera-options" data-role="button" data-theme="h">submit a photo</a>
 
             <% } else { %>
                 <a class="ui-bar x-details x-launch-camera-options" data-role="button" data-icon="arrow-r" data-iconpos="right" data-theme="c" data-ajax="false" data-extra_params="comp_id=<%= id %>">
                     <span class="comp-details">
                         <em>Comp closed!</em>
-                        <span class="small-text">Check out the winning shots.</span>
+                        <span class="s-small-text">Check out the winning shots.</span>
                     </span>
                 </a>
             <% } %>
@@ -53,9 +53,9 @@
             </ul>
             
 
-            <ul class="image-streams"></ul>
+            <ul class="x-image-streams s-image-streams"></ul>
 
-            <div class="comp-footer inline-footer ui-body-c ">
+            <div class="comp-footer s-inline-footer ui-body-c ">
                 <div class="ui-content">
                     <a data-role="button" data-theme="c">previous competitions</a>
                 </div>

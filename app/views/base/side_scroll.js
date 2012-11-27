@@ -4,8 +4,8 @@ define(['backbone', 'views/base/view', 'utils/photoswipe', 'iscroll', 'utils/str
     function(Backbone, view, photoswipe, iScroll, string_utils, photo_collection, config){
 return view.extend({
 
-    tagName: 'li',
-    className: 'image-stream',
+    tagName: 'article',
+    className: 'x-stream',
 
     initialize: function(options) {
         _.bindAll(this);
@@ -17,13 +17,21 @@ return view.extend({
             }
         }
 
-        this.collection.bind('all', this.render_thumbs, this);
+        //this.collection.bind('all', this.render_thumbs, this);
         this.load_template('components/stream');
         this.title = options.title;
         this.initial_title = options.initial_title;
 
+        this.use_gallery = options.use_gallery !== false;
+
         this.no_photos = options.no_photos;
         this.fetch_attempts = 0;
+
+        if(options.parent_view){
+            this.parent_view = options.parent_view;
+            this.parent_view.on('activate', this.scroll_init);
+        }
+        $(window).on('orientationchange', this.scroll_init);
 
         this.post_initialize.apply(this, arguments);
     },
@@ -41,7 +49,7 @@ return view.extend({
 
     set_title: function(title){
         title = title || this.get_title();
-        this.$('.title').html(title);
+        this.$('.x-title').html(title);
     },
 
     render: function(){
@@ -52,10 +60,11 @@ return view.extend({
         // what was this? I'm going to comment it out because it looks like a bad idea - Jake
         //feed_data.back = "Upload";
 
-        this.$el.addClass('closed');
+        this.$el.addClass('x-closed');
 
         $(this.el).html($(this.template({
             title: this.initial_title === undefined && this.get_title() || this.initial_title,  // title initially blank if there's a no-photos callback
+            use_gallery: this.use_gallery,
             query: this.collection.data,
             photos: this.collection.models
         })));
@@ -73,7 +82,7 @@ return view.extend({
     },
 
     toggle_stream: function() {
-        if(this.$el.hasClass('closed')){
+        if(this.$el.hasClass('x-closed')){
             this.open();
         }else{
             this.close();
@@ -81,13 +90,13 @@ return view.extend({
     },
 
     close: function(){
-        this.$('.thumbs-grid').fadeToggle();
-        this.$el.toggleClass('open closed');
+        this.$('.x-scroll-area').fadeToggle();
+        this.$el.toggleClass('x-open x-closed');
     },
 
     open: function(){
-        this.$('.thumbs-grid').fadeToggle();
-        this.$el.toggleClass('open closed');
+        this.$('.x-scroll-area').fadeToggle();
+        this.$el.toggleClass('x-open x-closed');
         if(!this.collection.length && !this.collection.loaded){
             this.fetch();
         }else{
@@ -97,7 +106,7 @@ return view.extend({
 
     fetch: function(){
         var this_view = this;
-        this.$el.addClass('loading');
+        this.$el.addClass('x-loading');
 
         this.collection.fetch({
             data: _.defaults(this.collection.data, {
@@ -105,6 +114,7 @@ return view.extend({
                 detail: 0
             }),
             success: function(collection){
+                this_view.render_thumbs();
                 if(!collection.length && this_view.fetch_attempts < 5 && this_view.no_photos){
                     if(this_view.no_photos()){
                         this_view.fetch_attempts += 1;
@@ -113,10 +123,10 @@ return view.extend({
                 }
                 this_view.set_title();
                 collection.loaded = true;
-                this_view.$el.removeClass('loading');
+                this_view.$el.removeClass('x-loading');
 
                 if(!this_view.collection.length){
-                    this_view.$el.addClass('no-photos');
+                    this_view.$el.addClass('x-no-photos');
                     this_view.scroll_init();
                 }
             }
@@ -125,14 +135,21 @@ return view.extend({
 
     scroll_init: function(){
 
+        this.$('.x-thumbs').css('min-width', window.innerWidth + "px");
+
+        var snap = this.collection.length > 2 ? 'a.x-thumb:not(:last-child), .x-left-pull': 'a.x-thumb, .x-left-pull';
 
         // if already init, refresh
         if(this.scroller){
             var scroller = this.scroller;
-            scroller.options.snap = this.collection.length > 2 ? 'a.x-thumb:not(:last-child), .x-left-pull': 'a.x-thumb, .x-left-pull';
+            scroller.options.snap = snap;
+
+            // why is this 0 timeout needed?
             setTimeout(function () {
                 scroller.refresh();
-                if(scroller.currPageX === 0){
+                // decide if we need to scroll the 'load more' element off based
+                // on the height (thumbs are square)
+                if(-scroller.scrollerH < scroller.x){
                     scroller.scrollToPage(1, 1, 0);
                 }
             }, 0);
@@ -140,45 +157,42 @@ return view.extend({
             return this;
         }
 
-        var scroll_el = $('.x-scroll-area', this.el),
-            details = $('.x-details', this.el),
+        var scroll_el = this.$('.x-scroll-area'),
+            details = this.$('.x-details'),
             pull_distance = -0,
-            left_pull_el = $('.x-left-pull', this.el),
-            right_pull_el = $('.x-right-pull', this.el),
-            left_pull_msg = $('.x-msg', left_pull_el),
-            right_pull_msg = $('.x-msg', right_pull_el);
+            left_pull_el = this.$('.x-left-pull'),
+            right_pull_el = this.$('.x-right-pull');
 
         function flip_pulls(scroller){
             if(scroll_el.is('.x-loading')){ return; }
 
             if(scroller.x > pull_distance){
                 left_pull_el.addClass('x-flipped');
-                if(!scroll_el.is('.x-loading')){
-                    left_pull_msg.text('release');
-                }
             }else{
                 left_pull_el.removeClass('x-flipped');
-                left_pull_msg.text('Load Newer');
             }
             if(!scroll_el.is('.x-no-more')){
                 if(scroller.x < (scroller.maxScrollX - pull_distance)){
                     right_pull_el.addClass('x-flipped');
-                    if(!scroll_el.is('.loading')){
-                        right_pull_msg.text('release');
-                    }
                 }else{
                     right_pull_el.removeClass('x-flipped');
-                    right_pull_msg.text('Load More');
                 }
             }
         }
         try{
-            var collection = this.collection;
+            var collection = this.collection,
+                view = this;
             this.scroller = new iScroll(scroll_el[0], {
                 vScroll: false,
                 hScrollbar: false,
-                snap: collection.length > 2 ? 'a.x-thumb:not(:last-child), .x-left-pull': 'a.x-thumb, .x-left-pull',
+                snap: snap,
                 momentum: false,
+                // this allows you to the whole view up and down from the scrollers, but it;s not great on many devices.
+                // onBeforeScrollStart: function(e){
+                //     if(!('ontouchstart' in window)){
+                //         e.preventDefault();
+                //     }
+                // },
                 onScrollEnd: function(){
 
                     // Set active thumb
@@ -206,39 +220,35 @@ return view.extend({
                     var scroller;
                     if(left_pull_el.is('.x-flipped') && !scroll_el.is('.x-loading')){
                         scroll_el.addClass('x-loading');
-                        left_pull_msg.text('Loading...');
                         scroller = this;
-                        collection.fetch_newer({
-                            data: {n: config.get('side_scroll_more')},
+                        collection.fetch({
+                            // collection.length || side_scroll_initial means that if length is 0, default will be used
+                            data: {n: Math.min(collection.length || config.get('side_scroll_initial'), 20)},
                             success: function(){
+                                scroll_el.removeClass('x-loading');
+                                left_pull_el.removeClass('x-flipped');
+                                view.render_thumbs();
                                 if(scroller.currPageX === 0){
                                     scroller.scrollToPage(1);
                                 }
-                                scroll_el.removeClass('x-loading');
-                                left_pull_msg.text('Load More');
                             }
                         });
                     }else if(right_pull_el.is('.x-flipped') && !scroll_el.is('.x-loading') && !scroll_el.is('.x-no-more')){
                         scroll_el.addClass('x-loading');
-                        right_pull_msg.text('Loading');
                         scroller = this;
                         var options  = {
                             data: {n: config.get('side_scroll_more')},
                             success: function(collection, response){
-                                if (response.response.photos.length){
-                                    if(scroller.currPageX === scroller.pagesX.length){
-                                        scroller.scrollToPage(scroller.pagesX.length - 1);
-                                    }
-                                    right_pull_msg.text('Load More');
-                                }else{
-                                    if(scroller.currPageX === scroller.pagesX.length){
-                                        scroller.scrollToPage(scroller.pagesX.length - 1);
-                                    }
-
-                                    scroll_el.addClass('x-no-more');
-                                    right_pull_msg.text('The End');
-                                }
                                 scroll_el.removeClass('x-loading');
+                                right_pull_el.removeClass('x-flipped');
+                                view.render_thumbs();
+                                if(scroller.currPageX === scroller.pagesX.length){
+                                    scroller.scrollToPage(scroller.pagesX.length - 1);
+                                }
+
+                                if (!response.response.photos.length){
+                                    scroll_el.addClass('x-no-more');
+                                }
                             }
                         };
                         collection.fetch_older(options);
@@ -262,6 +272,7 @@ return view.extend({
 
             var rendered = $(this.template({
                 title: '',
+                use_gallery: this.use_gallery,
                 photos: this.collection.models,
                 query: this.collection.data
             }));
@@ -278,8 +289,10 @@ return view.extend({
     },
 
     photoswipe_init: function(){
-        var id = this.cid;
-        $( "a.x-thumb", this.el ).photoswipe_init(id);
+        if(this.use_gallery){
+            var id = this.cid;
+            $( "a.x-thumb", this.el ).photoswipe_init(id);
+        }
     },
 
     goto_feed: function(e){

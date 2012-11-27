@@ -1,0 +1,29 @@
+// LEADERBOARD PAGE
+// -------------------------
+
+.leaderboard-list{
+    .game-rank{
+        display: block;
+        position: absolute;
+        width: @avatarSize;
+        padding-right: 0;
+        height: @avatarSize;
+        background: @yellow;
+        .linear-gradient(@yellow-tint, @yellow);
+        text-align: center;
+        line-height: @avatarSize;
+        left: 0;
+        top: @paddingElement;
+        .border-top-left-radius(@cornersSmall);
+        .border-bottom-left-radius(@cornersSmall);
+    }
+    .ui-li-has-icon .ui-btn-inner a.ui-link-inherit, 
+    .ui-li-static.ui-li-has-icon{
+        padding-left: @avatarSize * 2 + @paddingElement!important;
+    }
+    .ui-li-icon{
+        left: @avatarSize!important;
+        .border-top-left-radius(0);
+        .border-bottom-left-radius(0);
+    }
+}

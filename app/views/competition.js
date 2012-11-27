@@ -41,10 +41,10 @@ var comp_view = page_view.extend({
             collection: this.model.get('awards')
         });
         
-        this.$('.awards-stream').append(award_scroll.el);
+        this.$('.x-award-stream').append(award_scroll.el);
         award_scroll.render();
 
-        image_streams = this.$('.image-streams');
+        image_streams = this.$('.x-image-streams');
 
         _.each(this.model.get('streams'), function (stream) {
             var li = new side_scroll({

@@ -30,13 +30,15 @@ return view.extend({
         this.events = _.extend(this.events || {}, {
             "click .x-back": "back",
             "click a[data-rel=back]": "back",
-            "click a[data-back-here]": "add_back_url"
+            "click a.x-back-here": "add_back_url"
         });
 
         var page = this;
         this.$el.one( "pageshow", function(){
             page.set_back_text(options);
         });
+
+        this.trigger('initialize');
 
         this.post_initialize.apply(this, arguments);
         this.activate.apply(this, arguments);
@@ -96,6 +98,8 @@ return view.extend({
                 history_state.set('active_tab', tab_bar.active);
             }
         }
+
+        this.trigger('activate');
 
         this.post_activate.call(this, options);
     },
@@ -192,6 +196,17 @@ return view.extend({
         }else{
             $('.x-offline').remove();
         }
+    },
+
+    uncache: function(){
+        var this_view = this;
+        require(['routers'], function(routers){
+            _.any(routers.routers_instance.urls, function(url, i) {
+                if (url.callback.cached_view == this_view) {
+                    url.callback.cached_view = null;
+                }
+            });
+        });
     }
 });
 });

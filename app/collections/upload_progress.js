@@ -10,6 +10,7 @@ define(['config', 'backbone'], function(config, Backbone){
             var ids = [];
 
             _(col_in).each(function(mod_in){
+                mod_in.id = mod_in.id || mod_in.local_id;
                 if (that.get(mod_in.id)){
                     that.get(mod_in.id).set(mod_in);
                 } else {

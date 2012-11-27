@@ -24,6 +24,12 @@ return  Backbone.Model.extend({
         {
             return [];
         }
+    },
+
+    get_icon: function(){
+        return this.get( "categories" ).length &&
+            this.get( "categories" )[0].icon ||
+            'http://foursquare.com/img/categories/none_64.png';
     }
 
 });

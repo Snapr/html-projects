@@ -1,24 +1,24 @@
-<div id="user-profile" data-role="dialog" data-overlay-theme="c" data-theme="c" data-ajax="false">
+<div id="s-user-profile" data-role="page" data-overlay-theme="c" data-theme="c" data-ajax="false">
     <div data-role="header" data-theme="c">
         <h1>Profile</h1>
         <a class="x-back" data-role="button" data-icon="delete" data-iconpos="notext"></a>
     </div>
-    <div data-role="content" class="user-profile ui-content" data-theme="c">
-        <% if(!initial){ %>
-            <div class="user-info-block">
-                <div class="user-icon-left">
-                    <a class="user-profile-icon x-back">
-                        <div class="user-icon-big" style="background-image: url('<%= config.get('avatar_url') %>/<%= user.get( "user_id" ) %>?size=large');"></div>
+    <div data-role="content" class="x-user-profile s-user-profile ui-content" data-theme="c">
+        <% if(!initial){ /* initialy render empty */ %>
+            <div class="s-profile-details">
+                <div class="s-user-icon-left">
+                    <a class="s-profile-icon x-back">
+                        <div class="s-avatar-large" style="background-image: url('<%= config.get('avatar_url') %>/<%= user.get( "user_id" ) %>?size=large');"></div>
 
                     </a>
                 </div>
 
-                <div class="user-stats">
+                <div class="s-details">
 
                     <h1 class="real-name">
                     <% if (user.get("details").linked_services.facebook_mobile_url) {%>
                         <a class="username" href="<%= user.get("details").linked_services.facebook_mobile_url %>">
-                        <%= user.get("details").linked_services.facebook_name %></a><span class="facebook-sharing sharing-icon-small"><span class="ui-icon"></span></span>
+                        <%= user.get("details").linked_services.facebook_name %></a><span class="s-facebook-sharing s-share-icon-small"><span class="ui-icon"></span></span>
                     <%}else{%>
                         <span class="username">
                         <% if (user.get("details").profile.name) {%>
@@ -39,7 +39,7 @@
                         <% if (user.get("details").linked_services.twitter_username) {%>
                         <li>
                             <a href="http://twitter.com/<%= user.get("details").linked_services.twitter_username %>">
-                            <span class="twitter-sharing sharing-icon-small"><span class="ui-icon"></span></span>@<%= user.get("details").linked_services.twitter_username %>
+                            <span class="s-twitter-sharing s-share-icon-small"><span class="ui-icon"></span></span>@<%= user.get("details").linked_services.twitter_username %>
                             </a>
                         </li>
                         <%}%>
@@ -48,7 +48,7 @@
                         <% if (user.get("details").linked_services.tumblr_username) {%>
                         <li>
                             <a href="http://<%= user.get("details").linked_services.tumblr_username %>.tumblr.com/">
-                            <span class="tumblr-sharing sharing-icon-small"><span class="ui-icon"></span></span>@<%= user.get("details").linked_services.tumblr_username %>
+                            <span class="s-tumblr-sharing s-share-icon-small"><span class="ui-icon"></span></span>@<%= user.get("details").linked_services.tumblr_username %>
                             </a>
                         </li>
                         <%}%>
@@ -56,7 +56,7 @@
                      <% if (user.get("details").linked_services.foursquare_username) {%>
                      <li>
                          <a href="<%= user.get("details").linked_services.foursquare_url %>">
-                         <span class="foursquare-sharing sharing-icon-small"><span class="ui-icon"></span></span>@<%= user.get("details").linked_services.foursquare_username %>
+                         <span class="s-foursquare-sharing s-share-icon-small"><span class="ui-icon"></span></span>@<%= user.get("details").linked_services.foursquare_username %>
                          </a>
                      </li>
                      <%}%>
