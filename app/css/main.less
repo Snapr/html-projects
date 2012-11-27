@@ -17,6 +17,7 @@ html {
 
 input[type="search"]::-webkit-search-cancel-button {-webkit-appearance: none;}
 
+
 .hide{ display:none; }
 
 .s-main-image{
@@ -1511,7 +1512,7 @@ a:active{
         position: absolute;
         width: 100%;
         top: 0;
-        z-index: 5;
+        z-index: 0;
         overflow:hidden;
         .s-image-placeholder{
             position: absolute;
@@ -1528,17 +1529,24 @@ a:active{
         }
     }
     .s-share-settings-layer{
-        background-color: rgba(0, 0, 0, .6);
-        position: absolute;
-        top: 0;
-        z-index: 10;
+        position: static;
         width: 100%;
-        padding-top: @topBarHeight;
         .s-share-settings{
-            padding: @padding * 2;
-            margin: @padding * 2;
+            padding: @padding * 4 @padding * 2;
+        }
+        .ui-input-text{
+            position: relative;
         }
     }
+    
+    .s-share-settings-bg-layer{
+        background-color: rgba(0, 0, 0, .6);
+        z-index: 0;
+        top: 0;
+        width: 100%;
+        padding-top: @topBarHeight;
+    }
+    
     .s-image-toggle{
         position: absolute;
         bottom: 0;
@@ -1549,10 +1557,9 @@ a:active{
         display: none;
     }
     &.x-show-image{
-        .s-share-settings-layer{
-            display: none;
-        }
-        .ui-header{
+        .ui-header,
+        .s-share-settings-layer,
+        .s-share-settings-bg-layer{
             display: none;
         }
         .s-show-share-settings{
