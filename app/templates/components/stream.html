@@ -20,9 +20,9 @@
     <div class="x-scroll-wrapper"><!-- inner div for scroll -->
         <div class="x-left-pull s-load-more-inline">
             <span class="ui-icon ui-icon-refresh"></span>
-            <span class="ui-btn-text x-load-more">Refresh</span>
-            <span class="ui-btn-text x-release">Release</span>
-            <span class="ui-btn-text x-loading">Loading...</span>
+            <span class="ui-btn-text x-load-more"><%= T('Refresh') %></span>
+            <span class="ui-btn-text x-release"><%= T('Release') %></span>
+            <span class="ui-btn-text x-loading"><%= T('Loading') %>...</span>
         </div>
         <div class="x-thumbs" style="min-width:<%= window.innerWidth %>px">
             <% _.each(photos, function(photo) { %>
@@ -33,17 +33,17 @@
             <% if(!photos.length){ %>
                 <a class="x-no-photos-alert x-thumb s-load-more-inline">
                 <!-- we need something to scroll to even when there are no photos -->
-                <span class="ui-btn-text x-msg">No Photos</span>
+                <span class="ui-btn-text x-msg"><%= T('No Photos') %></span>
 
                 </a>
             <% } %>
         </div>
         <div class="x-right-pull s-load-more-inline">
             <span class="ui-icon ui-icon-refresh"></span>
-            <span class="ui-btn-text x-load-more">Load More</span>
-            <span class="ui-btn-text x-release">Release</span>
-            <span class="ui-btn-text x-loading">Loading</span>
-            <span class="ui-btn-text x-no-more">The End</span>
+            <span class="ui-btn-text x-load-more"><%= T('Load More') %></span>
+            <span class="ui-btn-text x-release"><%= T('Release') %></span>
+            <span class="ui-btn-text x-loading"><%= T('Loading') %></span>
+            <span class="ui-btn-text x-no-more"><%= T('The End') %></span>
 
         </div>
     </div>

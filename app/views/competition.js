@@ -1,4 +1,4 @@
-/*global _  define require */
+/*global _  define require T */
 define(['views/base/page', 'models/comp', 'views/base/side_scroll', 'views/base/award_scroll'],
 function(page_view, comp, side_scroll, award_scroll ){
 
@@ -40,7 +40,7 @@ var comp_view = page_view.extend({
         award_scroll = new award_scroll({
             collection: this.model.get('awards')
         });
-        
+
         this.$('.x-award-stream').append(award_scroll.el);
         award_scroll.render();
 
@@ -49,7 +49,7 @@ var comp_view = page_view.extend({
         _.each(this.model.get('streams'), function (stream) {
             var li = new side_scroll({
                 data: stream,
-                initial_title: 'Popular',
+                initial_title: T('Popular'),
                 expand: true
             });
             image_streams.append( li.el );
@@ -70,7 +70,7 @@ var award_stream = side_scroll.extend({
 
     className: 'award-stream',
 
-    
+
 
     post_initialize: function( options ){
         this.$el.attr('data-id', this.model.id);

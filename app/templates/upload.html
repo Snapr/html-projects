@@ -1,6 +1,6 @@
-<div id="upload" data-role="page" data-short-title="Upload" data-theme="a" data-ajax="false">
+<div id="upload" data-role="page" data-short-title="<%= T('Upload') %>" data-theme="a" data-ajax="false">
     <div data-role="header">
-        <h1>Upload</h1>
+        <h1><%= T('Upload') %></h1>
         <a href="#/" data-role="button" data-icon="delete" data-iconpos="notext"></a>
     </div>
     <div data-role="content" data-theme="a">
@@ -15,11 +15,11 @@
                 <ul data-role="listview" data-inset="true" data-theme="d">
 
                     <li>
-                        <h1>Select a photo to upload:</h1>
+                        <h1><%= T('Select a photo to upload') %>:</h1>
                         <input type="file" name="photo" id="upload-file" class="x-file" />
                     </li>
                     <li class="ui-hide-label">
-                        <p>*Images should be in the .jpg format</p>
+                        <p>*<%= T('Images should be in .jpg format') %></p>
                     </li>
                     <li class="ui-hide-label">
                         <div style="border:1px #666 solid; weight:12px;"><div id="progress-bar" class="x-progress-bar" style="height:12px; background:#BadA55; width:0%;"></div></div>
@@ -28,7 +28,7 @@
                 </ul>
 
 
-                <input disabled="true" type="submit" value="Upload Snap" id="upload-submit" data-theme="h" />
+                <input disabled="true" type="submit" value="<%= T('Upload Snap') %>" id="upload-submit" data-theme="h" />
             </form>
         </div>
     </div>

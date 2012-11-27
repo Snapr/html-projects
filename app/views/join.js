@@ -54,20 +54,20 @@ var join_dialog = page_view.extend({
             },
             messages: {
                 username:{
-                    required: "Please choose a username",
-                    minlength: "Username must be more than 2 letters",
-                    maxlength: "Username must be less than 16 letters",
-                    alphanum_: "Username must contain only letters, numbers and underscore",
-                    snapr_username: "Sorry, this username is not available"
+                    required: T("Please choose a username"),
+                    minlength: T("Username must be more than 2 letters"),
+                    maxlength: T("Username must be less than 16 letters"),
+                    alphanum_: T("Username must contain only letters, numbers and underscore"),
+                    snapr_username: T("Sorry, this username is not available")
                     //snapr_username: (params['snapr_username'] && window.twitter_token) ? "Unfortunately someone on Snapr already has your Twitter name! Please enter a new username" : "Sorry, this username is not available"
                 },
                 password:{
-                    required: "Please choose a password",
-                    minlength: "Your password must be at least 6 characters"
+                    required: T("Please choose a password"),
+                    minlength: T("Your password must be at least 6 characters")
                 },
                 email:{
-                    required: "We need your email address to contact you",
-                    email: "Your email address must be in the correct format"
+                    required: T("We need your email address to contact you"),
+                    email: T("Your email address must be in the correct format")
                 }
             }
         });

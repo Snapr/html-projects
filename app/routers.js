@@ -1,4 +1,4 @@
-/*global _  define require */
+/*global _  define require T */
 define(['config', 'backbone', 'auth', 'utils/local_storage', 'native_bridge', 'utils/alerts', 'utils/query', '../theme/'+window.theme+'/config'], function(config, Backbone, auth, local_storage, native_bridge, alerts, Query, theme_config) {
 
 function _make_route(file_name, name, template, extra_view_data){
@@ -20,7 +20,7 @@ function _make_route(file_name, name, template, extra_view_data){
         }
 
         if(query.facebook_signin && auth.get('access_token')){
-            alerts.notification('Logged in as ' + (auth.get('display_username') || auth.get('snapr_user')));
+            alerts.notification(T('Logged in as')+' ' + (auth.get('display_username') || auth.get('snapr_user')));
             var query_obj = new Query(query);
             query_obj.remove('facebook_signin');
             window.location.hash = "#/?" + query_obj.toString();

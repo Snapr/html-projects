@@ -1,4 +1,4 @@
-/*global _  define require */
+/*global _  define require T */
 define(['views/base/view', 'views/components/no_results'], function(view, no_results){
 return view.extend({
 
@@ -16,7 +16,7 @@ return view.extend({
             back: this.back
         }) );
         if(!this.collection.length){
-            no_results.render('No photos yet...', 'delete').$el.appendTo(this.$el);
+            no_results.render(T('No photos yet')+'...', 'delete').$el.appendTo(this.$el);
         }
 
         return this;

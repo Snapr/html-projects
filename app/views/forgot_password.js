@@ -1,4 +1,4 @@
-/*global _  define require */
+/*global _  define require T */
 define(['config', 'views/base/page', 'utils/alerts'], function(config, page_view, alerts){
 return page_view.extend({
 
@@ -26,13 +26,13 @@ return page_view.extend({
                     console.debug(response);
                 if(response.success){
                     forgot_view.$("form input[name=username]").val('');
-                    alerts.notification("success", 'A password reset link has been emailed to you.');
+                    alerts.notification("success", T('A password reset link has been emailed to you.'));
                 }else{
-                    alerts.notification('Error', 'Sorry, we had trouble with that. ' + response.error.message);
+                    alerts.notification('Error', T('Sorry, we had trouble with that.') + response.error.message);
                 }
             },
             error: function(){
-                alerts.notification('Error', "Sorry, we had trouble with that. Please try again." );
+                alerts.notification('Error', "Sorry, we had trouble with that."+" "+T("Please try again.") );
             }
         });
     }

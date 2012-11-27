@@ -1,4 +1,4 @@
-/*global _  define require */
+/*global _  define require T*/
 define(['utils/local_storage', 'native_bridge'], function(local_storage, native_bridge){
 var alerts = {};
 alerts.notification = function (title, text, callback) {
@@ -6,7 +6,7 @@ alerts.notification = function (title, text, callback) {
     if(local_storage.get("appmode") == "iphone") {
         var par = {
             "title": title,
-            "otherButton1": "OK",
+            "otherButton1": T("OK"),
             "alertID": 0
         };
         if(text) {
@@ -44,9 +44,9 @@ window.tapped_action = alerts.tapped_action;
 alerts.approve = function (options) {
     var context = this;
     options = _.extend({
-        'title': 'Are you sure?',
-        'yes': 'Yes',
-        'no': 'Cancel',
+        'title': T('Are you sure?'),
+        'yes': T('Yes'),
+        'no': T('Cancel'),
         'yes_callback': $.noop,
         'no_callback': $.noop
     }, options);

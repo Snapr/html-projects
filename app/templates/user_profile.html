@@ -1,6 +1,6 @@
 <div id="s-user-profile" data-role="page" data-overlay-theme="c" data-theme="c" data-ajax="false">
     <div data-role="header" data-theme="c">
-        <h1>Profile</h1>
+        <h1><%= T('Profile') %></h1>
         <a class="x-back" data-role="button" data-icon="delete" data-iconpos="notext"></a>
     </div>
     <div data-role="content" class="x-user-profile s-user-profile ui-content" data-theme="c">
@@ -96,10 +96,10 @@
             <div class="user-buttons">
                 <% if (user.get("details").stats.photo_count){%>
                 <a data-role="button" data-icon="feed" class="profile-icons x-back"><%= user.get("details").stats.photo_count %>
-                 Snaps</a>
+                 <%= T('Snaps') %></a>
                 <%}%>
                 <% if (user.get("details").stats.photos_favorited){%>
-                <a href="#/feed/?favorited_by=<%= user.get( "username" ) %>&list_style=grid" data-role="button" data-icon="favs" class="profile-icons"><%= user.get("details").stats.favorite_count %> Favourites</a>
+                <a href="#/feed/?favorited_by=<%= user.get( "username" ) %>&list_style=grid" data-role="button" data-icon="favs" class="profile-icons"><%= user.get("details").stats.favorite_count %> <%= T('Favourites') %></a>
                  <%}%>
             </div>
             <hr>
