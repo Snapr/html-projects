@@ -302,7 +302,9 @@ require(['config', 'jquery', 'backbone', 'auth', 'utils/local_storage', 'native_
         function launch_camera(event, extra_params){
             console.log('launch_camera', event, extra_params);
             extra_params = extra_params || $(this).data('extra_params') || "";
-            extra_params = 'back_url=' + escape(window.location.hash) + '&' + extra_params;
+            if(window.location.hash){
+                extra_params = 'back_url=' + escape(window.location.hash) + '&' + extra_params;
+            }
 
             var appmode = local_storage.get( "appmode" );
             var camplus = local_storage.get( "camplus" );
@@ -332,7 +334,9 @@ require(['config', 'jquery', 'backbone', 'auth', 'utils/local_storage', 'native_
         function photo_library(event, extra_params){
             console.log('photo_library', event, extra_params);
             extra_params = extra_params || $(this).data('extra_params') || "";
-            extra_params = 'back_url=' + escape(window.location.hash) + '&' + extra_params;
+            if(window.location.hash){
+                extra_params = 'back_url=' + escape(window.location.hash) + '&' + extra_params;
+            }
 
             var appmode = local_storage.get( "appmode" );
             var camplus = local_storage.get( "camplus" );
@@ -360,7 +364,7 @@ require(['config', 'jquery', 'backbone', 'auth', 'utils/local_storage', 'native_
 
         // camera / photostream actionsheet
         $(".x-launch-camera-options").live( "click", auth.require_login( function(){
-            var extra_params = $(this).data('extra_params');
+            var extra_params = $(this).data('extra_params') || "";
             if(local_storage.get( "appmode" )){
                 var actionID = alerts.tapped_action.counter++;
                 alerts.tapped_action.alerts[actionID] = {
