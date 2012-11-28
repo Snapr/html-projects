@@ -4276,7 +4276,9 @@ textarea.ui-input-text {
   background: none!important;
   border: none!important;
   top: 0!important;
-  box-shadow: none!important;
+  -moz-box-shadow: none !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
 }
 .auth-header .ui-btn .ui-btn-inner {
   padding: 0;
@@ -5237,6 +5239,8 @@ textarea.ui-input-text {
 }
 .s-share-photo .s-upload-image-privacy .ui-btn {
   background: none;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
   box-shadow: none;
   border: none;
   font-family: Helvetica, Arial, sans-serif;
@@ -5940,6 +5944,8 @@ div.ps-carousel-item-loading {
 }
 .s-photo-map .s-map-controls .s-map-time .s-map-time-btn {
   background: none;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
   box-shadow: none;
   border: none;
   top: -2px;
@@ -5982,6 +5988,8 @@ div.ps-carousel-item-loading {
 }
 .s-photo-map .s-map-controls .ui-input-search .ui-input-clear {
   background: none;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
   box-shadow: none;
   margin: 0;
   top: 0;
