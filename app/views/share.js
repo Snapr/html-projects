@@ -131,12 +131,12 @@ return page_view.extend({
                     model.set('location', location);
                 }
 
-                if (this.venue_or_geocode() == 'venue' &&
+                if (share_photo_view.venue_or_geocode() == 'venue' &&
                     !model.get( "location" ).foursquare_venue_id &&
                     local_storage.get( "status" ) != "private"){
                     share_photo_view.get_foursquare_venues();
                 }
-                if( this.venue_or_geocode() == 'grocode' && !share_photo_view.query.location ){
+                if( share_photo_view.venue_or_geocode() == 'grocode' && !share_photo_view.query.location ){
                     share_photo_view.get_reverse_geocode();
                 }
 
