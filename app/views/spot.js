@@ -91,6 +91,8 @@ var spot_view = page_view.extend({
                 this.collection.data.radius = config.get('nearby_radius');
                 delete this.collection.data.spot;
 
+                this.render().$el.trigger('create');
+
                 this.fetch();
 
                 return true;
