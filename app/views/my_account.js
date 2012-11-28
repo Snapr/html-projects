@@ -227,7 +227,7 @@ return page_view.extend({
                 alerts.notification("No verification password", T("Please enter your password again"), $.noop);
                 return;
             }else if (password != password_verify){
-                alerts.notification("Passwords don't match", <%= T('"Please enter your password again"') %>, $.noop);
+                alerts.notification("Passwords don't match", T("Please enter your password again"), $.noop);
                 return;
             }else{
                 param.password = password;
