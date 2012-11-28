@@ -39,6 +39,8 @@ var config_model = Backbone.Model.extend({
 
         show_tab_bar: true,
 
+        photoswipe: true,
+
         sort_order: 'date_utc',
 
         //min_photo_rating: ,  not defind if non needed

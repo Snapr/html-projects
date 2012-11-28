@@ -57,8 +57,8 @@ require(['routers'], function(routers){
     routers.routers_instance = routers_instance;
 });
 
-require(['config', 'jquery', 'backbone', 'photoswipe', 'auth', 'utils/local_storage', 'native_bridge', 'utils/dialog', 'utils/alerts', 'collections/upload_progress'],
-    function(config, $, Backbone, PhotoSwipe, auth, local_storage, native_bridge, dialog, alerts, upload_progress_collection) {
+require(['config', 'jquery', 'backbone', 'auth', 'utils/local_storage', 'native_bridge', 'utils/dialog', 'utils/alerts', 'collections/upload_progress'],
+    function(config, $, Backbone, auth, local_storage, native_bridge, dialog, alerts, upload_progress_collection) {
 
     /* disable jquery-mobile's hash nav so we can replace it with backbone.js
     ***************************/
@@ -284,15 +284,19 @@ require(['config', 'jquery', 'backbone', 'photoswipe', 'auth', 'utils/local_stor
             $.mobile.popup.handleLink($(e.currentTarget));
         });
 
-        // make photoswipe basebar click
-        $('.ps-caption').live('vclick', function(e){
-            var ps = PhotoSwipe.activeInstances[0].instance,
-                src = ps.cache.images[ps.currentIndex].src,
-                id = src.match(/\/(\w{2,6})\.jpg$/)[1];
-            ps.hide();
-            Backbone.history.navigate('#/feed/?n=1&photo_id=' + id );
-            e.preventDefault();
-        });
+        if(config.get('photoswipe') && local_storage.get("appmode") != 'android'){
+            require(['photoswipe'], function(PhotoSwipe) {
+                // make photoswipe basebar click
+                $('.ps-caption').live('vclick', function(e){
+                    var ps = PhotoSwipe.activeInstances[0].instance,
+                        src = ps.cache.images[ps.currentIndex].src,
+                        id = src.match(/\/(\w{2,6})\.jpg$/)[1];
+                    ps.hide();
+                    Backbone.history.navigate('#/feed/?n=1&photo_id=' + id );
+                    e.preventDefault();
+                });
+            });
+        }
 
         // camera button
         function launch_camera(event, extra_params){
@@ -308,12 +312,8 @@ require(['config', 'jquery', 'backbone', 'photoswipe', 'auth', 'utils/local_stor
                 if (camplus && camplus_camera){
                     native_bridge.pass_data( "snapr://camplus/camera?" + extra_params );
                 }else{
-                    console.log("native_bridge.pass_data camera");
-
-                    /**
-                   *   This is to work around an issue where calling via action sheet causes
-                   *   the camera url not to be picked up on android
-                   */
+                    // This is to work around an issue where calling via action
+                    // sheet causes the camera url not to be picked up on android
                     setTimeout( function () {
                         native_bridge.pass_data( "snapr://camera?" + extra_params );
                     }, 0);
@@ -342,11 +342,8 @@ require(['config', 'jquery', 'backbone', 'photoswipe', 'auth', 'utils/local_stor
                 if (camplus && camplus_lightbox){
                     native_bridge.pass_data( "snapr://camplus/lightbox?" + extra_params );
                 }else{
-
-                    /**
-                   *   This is to work around an issue where calling via action sheet causes
-                   *   the photo-library url not to be picked up on android
-                   */
+                    //  This is to work around an issue where calling via action sheet
+                    //  causes the photo-library url not to be picked up on android
                     setTimeout( function () {
                         native_bridge.pass_data( "snapr://photo-library?" + extra_params );
                     }, 0);

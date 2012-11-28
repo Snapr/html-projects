@@ -47,6 +47,7 @@ define([], function(){
         "Email": "3m4i1",
         "Facebook Friends": "F4c3b0ok Friend5",
         "Favorites": "F4v0ri735",
+        "Favorited by": "F4v0ri73d by",
         "Feed": "F3ed",
         "Find Friends": "Find Fri3nd5",
         "Find out more about Snapr": "Find 0u7 mor3 4bout 5napr",
