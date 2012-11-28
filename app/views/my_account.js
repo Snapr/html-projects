@@ -258,10 +258,6 @@ return page_view.extend({
         }else{
             console.log( "snapr://camplus/settings/?" + $.param( param ) );
         }
-    },
-
-    queue_settings: function( upload_mode, paused ){
-        this.render();
     }
 
 });
