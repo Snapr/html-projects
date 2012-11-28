@@ -4153,31 +4153,45 @@ textarea.ui-input-text {
   display: none;
 }
 .s-image-streams .x-stream .x-no-more .x-right-pull .x-msg {
+  display: inherit;
   background-color: rgba(0, 0, 0, 0.12);
-  padding: 36px 0;
+  padding: 0;
   width: 84px;
   -webkit-border-radius: 44px;
   -moz-border-radius: 44px;
   border-radius: 44px;
   color: white;
-  height: 12px;
+  height: 84px;
   vertical-align: middle;
-  margin-left: 10px;
+  line-height: 84px;
+  top: 50%;
+  left: 50%;
+  margin-left: -42px;
+  margin-top: -42px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .s-image-streams .x-stream .x-no-photos-alert {
   display: none;
 }
 .s-image-streams .x-stream .x-no-photos-alert .x-msg {
+  display: inherit;
   background-color: rgba(0, 0, 0, 0.12);
-  padding: 36px 0;
+  padding: 0;
   width: 84px;
   -webkit-border-radius: 44px;
   -moz-border-radius: 44px;
   border-radius: 44px;
   color: white;
-  height: 12px;
+  height: 84px;
   vertical-align: middle;
-  margin-left: 10px;
+  line-height: 84px;
+  top: 50%;
+  left: 50%;
+  margin-left: -42px;
+  margin-top: -42px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .s-image-streams .x-stream.x-no-photos .x-no-photos-alert {
   display: block;

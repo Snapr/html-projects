@@ -822,14 +822,21 @@ textarea.ui-input-text {
                 }
                 // turns 'the end' into big full stop.. */
                 .x-msg{
-                    background-color:rgba(0,0,0,.12);
-                    padding: 36px 0;
-                    width: 84px;
-                    .border-radius(44px);
-                    color: white;
-                    height: 12px;
-                    vertical-align: middle;
-                    margin-left: 10px;
+                     display: inherit;
+                        background-color:rgba(0,0,0,.12);
+                        padding: 0;
+                        width: 84px;
+                        .border-radius(44px);
+                        color: white;
+                        height: 84px;
+                        vertical-align: middle;
+                        line-height: 84px;
+                        top: 50%;
+                        left: 50%;
+                        margin-left: -42px;
+                        margin-top: -42px;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
                 }
             }
         }
@@ -837,14 +844,21 @@ textarea.ui-input-text {
         .x-no-photos-alert{
             display: none;
              .x-msg{
+                    display: inherit;
                     background-color:rgba(0,0,0,.12);
-                    padding: 36px 0;
+                    padding: 0;
                     width: 84px;
                     .border-radius(44px);
                     color: white;
-                    height: 12px;
+                    height: 84px;
                     vertical-align: middle;
-                    margin-left: 10px;
+                    line-height: 84px;
+                    top: 50%;
+                    left: 50%;
+                    margin-left: -42px;
+                    margin-top: -42px;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
                 }
         }
 

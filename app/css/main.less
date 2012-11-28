@@ -520,10 +520,10 @@ a:active{
 @media only screen and (min-device-width : 719px) and (max-device-width : 721px) and (-webkit-min-device-pixel-ratio : 2) and (orientation : portrait) {
     .s-thumbs-grid-med,
     .x-grid .x-feed-images{
-        .s-thumb-image{
-            width: @thumbSize + 14px;
-            height: @thumbSize + 14px;
-
+        .s-thumb-image,
+        .s-load-more-inline{
+            width: @thumbSize + 14px!important;
+            height: @thumbSize + 14px!important;
         }
     }
     .s-thumbs-grid-med{
@@ -702,15 +702,21 @@ a:active{
             }
             //turns 'the end' into big full stop..
             .x-no-more{
-                display: inherit;
-                background-color:rgba(0,0,0,.12);
-                padding: 36px 0;
-                width: 84px;
-                .border-radius(44px);
-                color: white;
-                height: 12px;
-                vertical-align: middle;
-                margin-left: 10px;
+                 display: inherit;
+                    background-color:rgba(0,0,0,.12);
+                    padding: 0;
+                    width: 84px;
+                    .border-radius(44px);
+                    color: white;
+                    height: 84px;
+                    vertical-align: middle;
+                    line-height: 84px;
+                    top: 50%;
+                    left: 50%;
+                    margin-left: -42px;
+                    margin-top: -42px;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
             }
             .x-load-more{ display: none; }
         }
@@ -722,14 +728,21 @@ a:active{
     .x-no-photos{
         display: none;
         .x-no-more{
+                display: inherit;
                 background-color:rgba(0,0,0,.12);
-                padding: 36px 0;
+                padding: 0;
                 width: 84px;
                 .border-radius(44px);
                 color: white;
-                height: 12px;
+                height: 84px;
                 vertical-align: middle;
-                margin-left: 10px;
+                line-height: 84px;
+                top: 50%;
+                left: 50%;
+                margin-left: -42px;
+                margin-top: -42px;
+                overflow: hidden;
+                text-overflow: ellipsis;
             }
     }
 

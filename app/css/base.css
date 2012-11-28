@@ -471,9 +471,11 @@ a:active {
 }
 @media only screen and (min-device-width: 719px) and (max-device-width: 721px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
   .s-thumbs-grid-med .s-thumb-image,
-  .x-grid .x-feed-images .s-thumb-image {
-    width: 115px;
-    height: 115px;
+  .x-grid .x-feed-images .s-thumb-image,
+  .s-thumbs-grid-med .s-load-more-inline,
+  .x-grid .x-feed-images .s-load-more-inline {
+    width: 115px !important;
+    height: 115px !important;
   }
   .s-thumbs-grid-med {
     padding: 4px 0 2px 4px;
@@ -640,15 +642,21 @@ a:active {
 .x-stream .x-no-more .s-load-more-inline.x-right-pull .x-no-more {
   display: inherit;
   background-color: rgba(0, 0, 0, 0.12);
-  padding: 36px 0;
+  padding: 0;
   width: 84px;
   -webkit-border-radius: 44px;
   -moz-border-radius: 44px;
   border-radius: 44px;
   color: white;
-  height: 12px;
+  height: 84px;
   vertical-align: middle;
-  margin-left: 10px;
+  line-height: 84px;
+  top: 50%;
+  left: 50%;
+  margin-left: -42px;
+  margin-top: -42px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .x-stream .x-no-more .s-load-more-inline.x-right-pull .x-load-more {
   display: none;
@@ -663,16 +671,23 @@ a:active {
   display: none;
 }
 .x-stream .x-no-photos .x-no-more {
+  display: inherit;
   background-color: rgba(0, 0, 0, 0.12);
-  padding: 36px 0;
+  padding: 0;
   width: 84px;
   -webkit-border-radius: 44px;
   -moz-border-radius: 44px;
   border-radius: 44px;
   color: white;
-  height: 12px;
+  height: 84px;
   vertical-align: middle;
-  margin-left: 10px;
+  line-height: 84px;
+  top: 50%;
+  left: 50%;
+  margin-left: -42px;
+  margin-top: -42px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .x-stream.x-no-photos .x-no-photos-alert {
   display: block;
