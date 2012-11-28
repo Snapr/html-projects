@@ -61,7 +61,7 @@ return page_view.extend({
                         }
                     }else{
                         console.error(data);
-                        alerts.notification('Oops!', 'Your Twitter login details were incorrect.');
+                        alerts.notification(T('Oops!'), T('Your Twitter login details were incorrect.'));
                     }
                 },
                 complete: function(){
@@ -88,7 +88,7 @@ return page_view.extend({
                             xauth_view.back();
                         }
                     }else{
-                        alerts.notification('Oops!', 'Your Twitter login details were incorrect.');
+                        alerts.notification(T('Oops!'), T('Your Twitter login details were incorrect.'));
                         console.warn(data);
                     }
                 },

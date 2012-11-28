@@ -50,7 +50,7 @@ return page_view.extend({
                 .listview().listview("refresh");
             no_results.$el.remove();  // use remove(), hide() keeps it hidden and requires show() later
         }else{
-            no_results.render('Oops.. Nobody here yet.', 'delete').$el.appendTo(this.$el);
+            no_results.render(T('Oops.. Nobody here yet.'), 'delete').$el.appendTo(this.$el);
         }
 
         $.mobile.hidePageLoadingMsg();

@@ -1,7 +1,7 @@
 <div id="share" class="s-share-photo" data-role="page" data-short-title="Share" data-theme="a" class="x-no-drag" data-ajax="false">
     <div data-role="header">
         <a href="#/" data-role="button" data-icon="delete" data-iconpos="notext"></a>
-        <h1><%= T('Skol Share') %></h1>
+        <h1>Skol Share</h1>
     </div>
     <div data-role="content" data-theme="a">
         <div class="x-content">
@@ -23,7 +23,7 @@
                     <div class="s-share-settings-layer s-full-height s-trans-bg">
                         <div class="s-share-settings">
                                 <% if(comp){ %>Comp: <%= comp.get('title') %><% } %>
-                                <textarea name="description" id="description" class="x-description" placeholder="<%= T('Add text...') %>" data-theme="d"><%= saved_description %></textarea>
+                                <textarea name="description" id="description" class="x-description" placeholder="<%= T('Add text') %>..." data-theme="d"><%= saved_description %></textarea>
 
                                 <% if(comp && comp.has('hashtag')){ %><span class="s-comp-hashtag"><%= comp.get('hashtag') %></span><% } %>
 

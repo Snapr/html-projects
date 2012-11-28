@@ -68,7 +68,7 @@ return view.extend({
                 parent.fetch();
             },
             error: function(){
-                alerts.notification('Error', 'Sorry, we had trouble unlinking your account');
+                alerts.notification('Error', T('Sorry, we had trouble unlinking your account'));
             }
         };
 
@@ -83,13 +83,13 @@ return view.extend({
         var options = {
             success: function(model, response){
                 if(!response.success){
-                    alerts.notification('Error', "Sorry, we had trouble saving your settings." );
+                    alerts.notification('Error', T("Sorry, we had trouble saving your settings.") );
                     linked_service.my_account.initialize();
                 }
                 //linked_service.$("[data-role='collapsible']").trigger('collapse');
             },
             error: function(){
-                alerts.notification('Error', "Sorry, we had trouble saving your settings." );
+                alerts.notification('Error', T("Sorry, we had trouble saving your settings.") );
                 linked_service.my_account.initialize();
             }
         };
@@ -119,7 +119,7 @@ return view.extend({
             },
             dataType: 'jsonp',
             success: function(response){
-                alerts.notification('Success', "Profile imported.");
+                alerts.notification(T('Success'), T("Profile imported."));
             },
             error: function(e){
                 console.error( 'import profile error', e );

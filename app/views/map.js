@@ -458,7 +458,7 @@ var map_view = page_view.extend({
                 }
             }else{
                 map_view.map_update_or_create();
-                alerts.notification("Sorry, your search returned no results.");
+                alerts.notification(T("Sorry, your search returned no results."));
             }
         });
     },
@@ -626,10 +626,10 @@ var map_view = page_view.extend({
 
         var map_view = this;
         this.$(".x-time-btn").scroller({
-            'cancelText': 'Set to Now',
+            'cancelText': T('Set to Now'),
             'headerText': false ,
             'preset': 'datetime',
-            'setText': 'Set Time',
+            'setText': T('Set Time'),
             'showLabel': false ,
             'theme': 'jqm',
             'jqmBody': 'b',

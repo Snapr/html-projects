@@ -52,7 +52,7 @@ return page_view.extend({
                     }
 
                 }else{
-                    alerts.notification('Oops!', 'Your Tumblr login details were incorrect.');
+                    alerts.notification(T('Oops!'), T('Your Tumblr login details were incorrect.'));
                     console.warn(data);
                 }
             },

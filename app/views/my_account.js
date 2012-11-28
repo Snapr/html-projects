@@ -152,14 +152,14 @@ return page_view.extend({
                     }
                 }else{
                     console.warn( "error saving notifications", xhr );
-                    alerts.notification('Error',  "Sorry, we had trouble saving your settings." );
+                    alerts.notification('Error',  T("Sorry, we had trouble saving your settings.") );
                     this_view.initialize();
                 }
             },
             error: function( e ){
                 this_view.show_bg_loader(false);
                 console.warn( "error saving notifications", e );
-                alerts.notification('Error',  "Sorry, we had trouble saving your settings." );
+                alerts.notification('Error',  T("Sorry, we had trouble saving your settings." ));
                 this_view.initialize();
             }
         });
@@ -196,7 +196,7 @@ return page_view.extend({
             if(avatar_changed){
                 my_account.fetch();
             }else{
-                alerts.notification('Thanks', 'Your settings have been saved');
+                alerts.notification('Thanks', T('Your settings have been saved'));
             }
         });
     },
@@ -212,7 +212,7 @@ return page_view.extend({
         this.$(".x-password-verify").val("");
 
         if (!email){
-            alerts.notification("No email", "Please provide an email address", $.noop);
+            alerts.notification("No email", T("Please provide an email address"), $.noop);
             return;
         }else{
             if (email != auth.user_settings.get("settings") && auth.user_settings.get("settings").email){
@@ -221,13 +221,13 @@ return page_view.extend({
         }
         if (password){
             if (password.length < 6){
-                alerts.notification("Password too short", "Passwords must be at least six characters long.", $.noop);
+                alerts.notification("Password too short", T("Passwords must be at least six characters long."), $.noop);
                 return;
             }else if (!password_verify){
-                alerts.notification("No verification password", "Please enter your password again", $.noop);
+                alerts.notification("No verification password", T("Please enter your password again"), $.noop);
                 return;
             }else if (password != password_verify){
-                alerts.notification("Passwords don't match", "Please enter your password again", $.noop);
+                alerts.notification("Passwords don't match", <%= T('"Please enter your password again"') %>, $.noop);
                 return;
             }else{
                 param.password = password;
@@ -236,7 +236,7 @@ return page_view.extend({
 
         if (!_.isEmpty( param )){
             this.save_settings( param, function(){
-                alerts.notification('Thanks', 'Your settings have been saved');
+                alerts.notification('Thanks', T('Your settings have been saved'));
             });
         }
     },

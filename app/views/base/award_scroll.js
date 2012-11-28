@@ -73,7 +73,7 @@ return side_scroll.extend({
             if(scroller.x > pull_distance){
                 left_pull_el.addClass('x-flipped');
                 if(!scroll_el.is('.x-loading')){
-                    left_pull_msg.text(T('release'));
+                    left_pull_msg.text(T('Release'));
                 }
             }else{
                 left_pull_el.removeClass('x-flipped');
@@ -83,7 +83,7 @@ return side_scroll.extend({
                 if(scroller.x < (scroller.maxScrollX - pull_distance)){
                     right_pull_el.addClass('x-flipped');
                     if(!scroll_el.is('.loading')){
-                        right_pull_msg.text(T('release'));
+                        right_pull_msg.text(T('Release'));
                     }
                 }else{
                     right_pull_el.removeClass('x-flipped');

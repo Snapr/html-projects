@@ -94,14 +94,14 @@ return page_view.extend({
     },
 
     share_alert: function(e){
-        alerts.notification( "Share", "Please set the image to Public before sharing to other services", $.noop );
+        alerts.notification( T("Share"), T("Please set the image to Public before sharing to other services"), $.noop );
     },
 
     check_geolocation: function(){
         if(config.get('geolocation_enabled')){
             return true;
         }else{
-            alerts.notification( "Location", "Please enable location services for this app to use these features", $.noop );
+            alerts.notification( T("Location"), T("Please enable location services for this app to use these features"), $.noop );
             return false;
         }
     },
@@ -250,7 +250,7 @@ return page_view.extend({
                         share_photo_view.$(".x-foursquare-venue-name")
                             .text(share_photo_view.model.get("location").foursquare_venue_name);
                     }else{
-                        share_photo_view.$(".x-foursquare-venue-name").text( "No venues nearby." );
+                        share_photo_view.$(".x-foursquare-venue-name").text( T("No venues nearby.") );
                     }
                 },
                 complete: function(){
