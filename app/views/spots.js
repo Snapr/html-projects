@@ -40,7 +40,7 @@ var spots_view =  page_view.extend({
         };
 
         var error_callback = function() {
-            this.$('.x-location-needed').attr('disabled', true);
+            this_view.$('.x-location-needed').attr('disabled', true);
             this_view.search(search_options);
         };
 
