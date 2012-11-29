@@ -925,36 +925,77 @@ textarea.ui-input-text {
 // @HOME
 // -------------------------
 
-.auth-header{
-    .ui-btn{
-        height:  @avatarSize;
-        line-height: @avatarSize;
-        padding-left:0;
-        background: none!important;
-        border: none!important;
-        top: 0!important;
-        .box-shadow(none)!important;
-        .ui-btn-inner{
-            padding: 0;
-            .ui-btn-text{
-                display: block;
-                text-align: left;
-                padding-left: @avatarSize + @paddingElement ;
-            }
+#home{
+    div[data-role="header"]{
+        z-index: 10;
+    }
+
+    .s-menu-main{
+        position: absolute;
+        z-index: 5;
+
+        .sk-menu-bg{
+            background-image: url('../gfx/menu-overlay.png');
+            .background-size(40px 100%);
         }
-        &.avatar-block{
-            .s-avatar{
+
+        .s-menu-btns{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            overflow: visible;
+            width:1px;
+            height:1px;
+
+            .sk-logo-top{
+                width:@gfxIBeatsLogo-width;
+                height: @gfxIBeatsLogo-height;
                 position: absolute;
-                left: 0;
-                top: 0;
-                background-color: @grayDarker;
+                left: -@gfxIBeatsLogo-width / 2 ;
+                top: -210px;
+                .ui-btn-icon-notext{
+                    width:@gfxIBeatsLogo-width;
+                    height: @gfxIBeatsLogo-height;
+                }
+                .ui-icon-skol-ibeats-logo{
+                    background-image: url('@{gfx}@{gfxIBeatsLogo}');
+                    width:@gfxIBeatsLogo-width;
+                    height: @gfxIBeatsLogo-height;
+                    background-position: 0 0;
+                }
             }
+
+            .sk-centered-button{
+                width:@gfxCameraBtn-grid;
+                height: @gfxCameraBtn-grid;
+                position: absolute;
+                left: -@gfxCameraBtn-grid / 2 ;
+                top: -@gfxCameraBtn-grid / 2;
+                .ui-btn-icon-notext{
+                    width:@gfxCameraBtn-grid;
+                    height: @gfxCameraBtn-grid;
+                }
+                .ui-icon-main-menu-camera{
+                    background-image: url('@{gfx}@{gfxCameraBtn}');
+                    width:@gfxCameraBtn-grid;
+                    height: @gfxCameraBtn-grid;
+                    background-position: 0 0;
+                }
+            }
+            
+            .sk-bottom-buttons{
+                position: absolute;
+                top: 100px;
+                width: 200px;
+                left: -100px;
+                text-align: center;
+                .ui-btn{
+                    margin-bottom: @padding * 4;
+                }
+            }
+
         }
     }
-}
-
-.s-menu-main{
-
 
 }
 
