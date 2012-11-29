@@ -136,7 +136,7 @@ var feed_view =  page_view.extend({
         "change .x-feed-view-toggle": "feed_view_toggle",
         "click .x-follow": "follow_user",
         "click .x-unfollow": "unfollow_user",
-        "click .x-username": "show_user"
+        "click .x-user-link": "show_user"
     },
 
     is_my_snaps: function(){ return auth.has("snapr_user") && auth.get("snapr_user") == this.options.query.username; },
