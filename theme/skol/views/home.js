@@ -1,6 +1,5 @@
 /*global _  define require */
-define(['views/home', './nearby_photostream'],
-    function(base_home, nearby_photostream_view){
+define(['views/home', './nearby_photostream'], function(base_home, nearby_photostream_view){
 return base_home.extend({
 
     render_nearby_photostream: function(){

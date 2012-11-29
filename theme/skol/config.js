@@ -81,7 +81,11 @@ return {
         'connect',
         'cities',
         'limbo',
-        'feed',
+        {
+            name: 'feed',
+            template: 'feed',
+            view: theme_views + 'feed'
+        },
         'dash',
         {
             name: 'feeds',

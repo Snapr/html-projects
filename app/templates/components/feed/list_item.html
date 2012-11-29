@@ -2,7 +2,7 @@
     <div class="s-image-item-topbar">
         <a class="s-avatar" style="background-image: url('<%= config.get('avatar_url') %>/<%= item.get('user_id') %>/');" href="#/feed/?username=<%= item.get('username') %>">
         </a>
-        <a class="s-username" href="#/feed/?username=<%= item.get('username') %>"><%= item.get('display_username') %></a>
+        <a class="s-username x-username" data-username="<%= item.get('username') %>"><%= item.get('display_username') %></a>
 
         <!-- Show Time only if no location -->
         <% if(item.has('location') && item.get('location').location){ %>

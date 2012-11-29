@@ -135,7 +135,8 @@ var feed_view =  page_view.extend({
         "click .x-load-more": "more",
         "change .x-feed-view-toggle": "feed_view_toggle",
         "click .x-follow": "follow_user",
-        "click .x-unfollow": "unfollow_user"
+        "click .x-unfollow": "unfollow_user",
+        "click .x-username": "show_user"
     },
 
     is_my_snaps: function(){ return auth.has("snapr_user") && auth.get("snapr_user") == this.options.query.username; },
@@ -315,6 +316,10 @@ var feed_view =  page_view.extend({
         if(offline_mode){
             this.$('.x-feed-images').prepend($(this.offline_template())).trigger("create");
         }
+    },
+
+    show_user: function(e){
+        window.location.hash = "#/feed/?username=" + $(e.currentTarget).data('username');
     }
 });
 
