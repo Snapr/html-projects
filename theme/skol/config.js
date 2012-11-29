@@ -83,7 +83,7 @@ return {
         'limbo',
         {
             name: 'feed',
-            template: 'feed',
+            template: theme_templates + 'feed',
             view: theme_views + 'feed'
         },
         'dash',
