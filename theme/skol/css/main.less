@@ -135,7 +135,7 @@ div[data-role="header"]{
     }
     &.s-search-header{
         .ui-content{
-                 padding: 0 0 @padding * 2 0;
+                 padding: 0 0 @padding 0;
          } 
     }
     &.s-account-header{
@@ -268,8 +268,12 @@ a:active{
         }
         .ui-btn-text{
             font-size: @fontSize;
+            font-style: italic;
             strong{
                 font-size: @fontSizeUsername;
+                text-transform: uppercase;
+                font-style: normal;
+                
             }
             .ui-icon{
                 display: inline-block;
@@ -2152,15 +2156,16 @@ div.ps-carousel-item-loading{
 // -------------------------
 
 .s-spots-search-filters{
-    padding-right: 48px;
+    padding-right: 51px;
     margin-top: @padding * 2;
     position: relative;
     .ui-btn{
         .border-radius(@cornersRound);
     }
     .ui-select .ui-btn-icon-right .ui-btn-inner {
-        padding: 10px 25px 10px 10px;
+        padding: 10px 25px 7px 10px;
         .button-font-bold();
+        font-size: @fontSizeSmall;
     }
     .s-category-btn{
         .ui-btn-inner {
@@ -2174,21 +2179,22 @@ div.ps-carousel-item-loading{
         }
     }
     .s-distance-btn{
-        width: 40px;
+        width: 46px;
         position: absolute;
         right: 0;
         top: 0;
         .ui-select{
             .ui-btn-inner{
-                width: 18px;
-                height: 18px;
+                width: 34px;
+                height: 34px;
+                padding: 0;
             }
             .ui-btn-text{
                 display: none;
             }
             .ui-icon{
                 right: auto;
-                left: 7px;
+                left: 5px;
                 top: 50%;
                 margin-top: -@gfxDistance-grid / 2;
             }
@@ -2197,13 +2203,13 @@ div.ps-carousel-item-loading{
    .ui-grid-a{
         .ui-block-a{
             .ui-btn{
-                margin-right: @padding * 2 / 2;
+                margin-right: @padding / 2;
                 margin-left: 0;
             }
         }
         .ui-block-b{
             .ui-btn{
-            margin-left: @padding * 2 / 2;
+            margin-left: @padding / 2;
             margin-right: 0;
             }
         }
@@ -2215,6 +2221,8 @@ div.ps-carousel-item-loading{
 
 .spots-results-content{
     background-color: @grayDark;
+    .box-shadow(@itemShadow);
+    .border-radius(@corners);
 }
 
 .s-spot-list-item{
@@ -2248,7 +2256,7 @@ div.ps-carousel-item-loading{
         }
     }
     &.ui-btn-icon-right .ui-btn-inner .ui-icon.ui-icon-arrow-r{
-        right: -@paddingElement;
+        display: none;
     }
 }
 
@@ -2293,6 +2301,7 @@ div.ps-carousel-item-loading{
             padding-top: 2px;
             margin-top: 4px;
             max-width: 100%;
+            text-shadow: @black 0 1px 1px;
             .box-sizing(border-box);
             .spot-icon{
                 position: absolute;
