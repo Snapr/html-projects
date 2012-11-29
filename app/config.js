@@ -45,6 +45,7 @@ var config_model = Backbone.Model.extend({
 
         privacy_controls: true,
         moderation_controls: true,
+        follow_controls: true,
 
         //min_photo_rating: ,  not defind if non needed
         zoom: 15,
