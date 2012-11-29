@@ -1,0 +1,40 @@
+<div id="join" data-role="page" data-short-title="Join" data-theme="c" data-ajax="false" class="s-snapr-bg s-special-bg">
+    <div data-role="header" data-theme="c">
+        <h1>Skol Join Snapr</h1>
+        <a class="x-back" data-role="button" data-icon="delete" data-iconpos="notext"></a>
+    </div>
+    <div data-role="content" data-theme="d">
+        <div class="s-inset-page-content">
+
+            <div class="linked-message" style="display:none;">Great, your Twitter account is linked!<br><br>To finish up please enter some more details for your new account on Snapr:</div>
+
+            <form action="javascript: void(0);" accept-charset="utf-8" id="join-dialog" autocomplete="off" class="s-validate">
+                <ul data-role="listview" data-inset="true" data-theme="d">
+                    <li class="ui-hide-label">
+                        <label for="username">Username</label><input type="text" name="username" placeholder="Username" autocapitalize="off" autocomplete="off" autocorrect="off" id="join-dialog-username" class="x-username">
+                        <span class="ui-icon ui-icon-check"></span>
+                    </li>
+                    <li class="ui-hide-label">
+                        <label for="password">Password</label><input type="password" name="password" placeholder="Password" autocomplete="off" id="join-dialog-password" class="x-password">
+                        <span class="ui-icon ui-icon-check"></span>
+                    </li>
+                    <li class="ui-hide-label">
+                        <label for="email">Email</label><input type="email" name="email" placeholder="Email Address" autocomplete="off" id="join-dialog-email" class="x-email">
+                        <span class="ui-icon ui-icon-check"></span>
+                    </li>
+                    <div class="s-margin-clear"></div>
+                </ul>
+
+                <input type="submit" name="login" data-theme="g" value="Join" class="x-join-btn">
+                  <p class="s-vertical-margins s-small-text">All users must agree to the <a href="http://sna.pr/terms/" target="_blank" class="s-underline">Terms of Use</a></p>
+
+            </form>
+
+            <a data-role="button" class="x-twitter-button s-twitter-button s-logo-button" data-theme="e">Login with <span class="s-twitter-logo s-button-logo">Twitter</span></a>
+
+            <a data-role="button" class="x-facebook-button s-facebook-button s-logo-button" data-theme="e">Login with <span class="s-facebook-logo s-button-logo">Facebook</span></a>
+
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,38 @@
+<div id="login" data-overlay-theme="c" data-role="page" data-theme="c" data-ajax="false" class="s-snapr-bg s-special-bg">
+    <div data-role="header" data-theme="c">
+        <h1>Skol Log in</h1>
+        <a class="x-back" data-role="button" data-icon="delete" data-iconpos="notext"></a>
+    </div>
+    <div data-role="content" data-theme="d">
+        <div class="s-inset-page-content">
+            <p class="x-login-message login-message s-warning-message"></p>
+
+            <form action="javascript: void(0);" accept-charset="utf-8" id="login-dialog">
+                <ul data-role="listview" data-inset="true" data-theme="d">
+
+                    <li data-role="fieldcontain" class="ui-hide-label">
+                        <label for="username">Username</label>
+                        <input type="text" name="username"  placeholder="Username" autocapitalize="off" autocorrect="off" id="login-dialog-username" class="x-username">
+                    </li>
+                    <li data-role="fieldcontain" class="ui-hide-label">
+
+                        <label for="password">Password</label><input type="password" name="password" placeholder="Password" id="login-dialog-password" class="x-password">
+                    </li>
+                </ul>
+                <div class="s-invisible-submit-button">
+                <input type="submit" name="login" data-theme="e" value="Log In with Snapr">
+                </div>
+                <a data-role="button" class="x-snapr-button" data-theme="e">Custom Login</a>
+            </form>
+
+            <p class="s-vertical-margins"><a href="#/forgot-password/">Forgot Password?</a></p>
+
+            <a data-role="button" class="x-facebook-button s-facebook-button s-logo-button" data-theme="e">Login with <span class="s-facebook-logo s-button-logo">Facebook</span></a>
+
+            <p class="s-centered-link">
+                <a href="#/about/">About </a> &middot; <a href="#/join/">Join Up &rsaquo;</a></li>
+            </p>
+
+        </div>
+    </div>
+</div>

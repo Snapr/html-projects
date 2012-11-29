@@ -1386,15 +1386,6 @@
 .profile-icons.ui-icon-link {
   background-position: 0 -64px;
 }
-.competition-ribbon {
-  background-position: 0 0;
-  background-image: url('../gfx/comp-ribbon.png');
-  width: 44px;
-  height: 53px;
-  position: absolute;
-  bottom: -5px;
-  right: -5px;
-}
 .ui-controlgroup,
 fieldset.ui-controlgroup {
   margin: 0 0 8px 0;
@@ -3081,6 +3072,61 @@ div[data-role="header"].ui-bar-b a[data-rel="back"]::before {
 .ui-body-g.ui-navbar .ui-btn {
   background: none!important;
 }
+.s-share-photo .s-upload-image-sharing label[for="skol-sharing"] .ui-icon {
+  background-position: 0 20px;
+}
+.s-share-photo .s-upload-image-sharing label[for="skol-sharing"].ui-checkbox-on {
+  background-color: #68d9ff;
+  -moz-box-shadow: inset 0 3px 20px #309dc2;
+  -webkit-box-shadow: inset 0 3px 20px #309dc2;
+  box-shadow: inset 0 3px 20px #309dc2;
+}
+.s-share-photo .s-upload-image-sharing label[for="skol-sharing"].ui-checkbox-on .ui-icon {
+  background-position: -42px 20px;
+}
+.s-menu-main {
+  position: relative;
+}
+.s-menu-stream {
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+.s-home-bg {
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  opacity: 0;
+  -moz-transition-property: opacity;
+  -webkit-transition-property: opacity;
+  -o-transition-property: opacity;
+  transition-property: opacity;
+  -moz-transition-duration: 0.7s;
+  -webkit-transition-duration: 0.7s;
+  -o-transition-duration: 0.7s;
+  transition-duration: 0.7s;
+}
+.s-home-bg div {
+  height: 100%;
+  background-size: 100% 100%;
+  background-size: cover;
+  background-position: center;
+}
+.s-home-bg.fade-in {
+  opacity: 1;
+  -moz-transition-property: opacity;
+  -webkit-transition-property: opacity;
+  -o-transition-property: opacity;
+  transition-property: opacity;
+  -moz-transition-duration: 0.3s;
+  -webkit-transition-duration: 0.3s;
+  -o-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+}
 strong {
   font-weight: normal;
   font-size: 16px;
@@ -3400,44 +3446,6 @@ div[data-role="dialog"] {
 }
 .x-closed .ui-bar .ui-icon-open {
   background-position: 0 -32px;
-}
-.s-bg-load-bar {
-  height: 4px;
-  background: #ffff00;
-  overflow: hidden;
-}
-.s-bg-load-bar .s-load-bar-animate {
-  display: block;
-  width: 100%;
-  height: 4px;
-  -webkit-background-size: 40px 40px;
-  -moz-background-size: 40px 40px;
-  -o-background-size: 40px 40px;
-  background-size: 40px 40px;
-  background-image: -webkit-gradient(linear, left top, right bottom, color-stop(0.25, #ffe400), color-stop(0.25, transparent), color-stop(0.5, transparent), color-stop(0.5, #ffe400), color-stop(0.75, #ffe400), color-stop(0.75, transparent), to(transparent));
-  background-image: -webkit-linear-gradient(135deg, #ffe400 25%, transparent 25%, transparent 50%, #ffe400 50%, #ffe400 75%, transparent 75%, transparent);
-  background-image: -moz-linear-gradient(135deg, #ffe400 25%, transparent 25%, transparent 50%, #ffe400 50%, #ffe400 75%, transparent 75%, transparent);
-  background-image: -ms-linear-gradient(135deg, #ffe400 25%, transparent 25%, transparent 50%, #ffe400 50%, #ffe400 75%, transparent 75%, transparent);
-  background-image: -o-linear-gradient(135deg, #ffe400 25%, transparent 25%, transparent 50%, #ffe400 50%, #ffe400 75%, transparent 75%, transparent);
-  background-image: linear-gradient(135deg, #ffe400 25%, transparent 25%, transparent 50%, #ffe400 50%, #ffe400 75%, transparent 75%, transparent);
-  -webkit-animation: animate-bar 0.5s linear infinite;
-  -moz-animation: animate-bar 0.5s linear infinite;
-}
-@-webkit-keyframes animate-bar {
-  0% {
-    background-position: 0 0;
-  }
-  100% {
-    background-position: 40px 0;
-  }
-}
-@-moz-keyframes animate-bar {
-  0% {
-    background-position: 0 0;
-  }
-  100% {
-    background-position: 40px 0;
-  }
 }
 .s-logo-button .ui-btn-text {
   font-family: Helvetica, Arial, sans-serif;
@@ -4153,45 +4161,31 @@ textarea.ui-input-text {
   display: none;
 }
 .s-image-streams .x-stream .x-no-more .x-right-pull .x-msg {
-  display: inherit;
   background-color: rgba(0, 0, 0, 0.12);
-  padding: 0;
+  padding: 36px 0;
   width: 84px;
   -webkit-border-radius: 44px;
   -moz-border-radius: 44px;
   border-radius: 44px;
   color: white;
-  height: 84px;
+  height: 12px;
   vertical-align: middle;
-  line-height: 84px;
-  top: 50%;
-  left: 50%;
-  margin-left: -42px;
-  margin-top: -42px;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  margin-left: 10px;
 }
 .s-image-streams .x-stream .x-no-photos-alert {
   display: none;
 }
 .s-image-streams .x-stream .x-no-photos-alert .x-msg {
-  display: inherit;
   background-color: rgba(0, 0, 0, 0.12);
-  padding: 0;
+  padding: 36px 0;
   width: 84px;
   -webkit-border-radius: 44px;
   -moz-border-radius: 44px;
   border-radius: 44px;
   color: white;
-  height: 84px;
+  height: 12px;
   vertical-align: middle;
-  line-height: 84px;
-  top: 50%;
-  left: 50%;
-  margin-left: -42px;
-  margin-top: -42px;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  margin-left: 10px;
 }
 .s-image-streams .x-stream.x-no-photos .x-no-photos-alert {
   display: block;
@@ -4290,9 +4284,7 @@ textarea.ui-input-text {
   background: none!important;
   border: none!important;
   top: 0!important;
-  -moz-box-shadow: none !important;
-  -webkit-box-shadow: none !important;
-  box-shadow: none !important;
+  box-shadow: none!important;
 }
 .auth-header .ui-btn .ui-btn-inner {
   padding: 0;
@@ -4484,65 +4476,6 @@ textarea.ui-input-text {
   text-transform: none;
   vertical-align: middle;
 }
-.s-menu-stream {
-  position: relative;
-  margin-bottom: -8px;
-  background-color: black;
-  margin-left: -8px;
-  margin-right: -8px;
-}
-.s-menu-stream .s-thumbs-block-overlay {
-  position: absolute;
-  width: 100%;
-  top: 0;
-  left: 0;
-  height: 101px;
-  background: rgba(0, 0, 0, 0.6);
-}
-.s-menu-stream .s-thumbs-block-overlay .s-centered-btn {
-  display: inline-block;
-  width: 160px;
-  position: absolute;
-  left: 50%;
-  margin-left: -80px;
-  top: 50%;
-  margin-top: -18px;
-  border-radius: 20px;
-}
-.s-menu-stream .s-thumbs-block-overlay .s-centered-btn .ui-btn-inner {
-  padding-right: 20px;
-  padding-left: 10px;
-}
-.s-menu-stream .s-thumbs-preview-stream {
-  white-space: nowrap;
-  height: 101px;
-  overflow: hidden;
-}
-.s-menu-stream .s-thumbs-preview-stream li {
-  display: inline-block;
-}
-.s-menu-stream .s-thumbs-preview-stream .s-thumb-image {
-  background: #000000;
-}
-.s-menu-stream.x-loading .ui-icon-arrow-r {
-  display: block;
-  background-image: url('../gfx/small-spinner-dark.png') !important;
-  background-position: center!important;
-  background-repeat: no-repeat !important;
-  -webkit-background-size: 24px 24px !important;
-  -moz-background-size: 24px 24px !important;
-  -o-background-size: 24px 24px !important;
-  background-size: 24px 24px !important;
-  -webkit-transform: rotate(0deg) translateZ(0);
-  -webkit-transition-duration: 0ms;
-  -webkit-animation-name: loading;
-  -webkit-animation-duration: 1.2s;
-  -webkit-animation-iteration-count: infinite;
-  -webkit-animation-timing-function: linear;
-}
-.s-menu-stream.no-images .ui-icon-arrow-r {
-  display: none;
-}
 #tumblr-posts blockquote {
   margin: 8px;
   font-style: italic;
@@ -4618,11 +4551,6 @@ textarea.ui-input-text {
 #tumblr-posts .s-tumblr-footer .ui-icon-arrow-r {
   background-position: -99px 0px;
   right: -4px;
-}
-.s-competition .competition-ribbon {
-  line-height: 43px;
-  text-align: center;
-  text-shadow: 0 -1px 1px #ffffff;
 }
 .s-feed-view-toggle .ui-btn-text .ui-icon-list-view {
   background-position: 0px -360px;
@@ -5253,8 +5181,6 @@ textarea.ui-input-text {
 }
 .s-share-photo .s-upload-image-privacy .ui-btn {
   background: none;
-  -moz-box-shadow: none;
-  -webkit-box-shadow: none;
   box-shadow: none;
   border: none;
   font-family: Helvetica, Arial, sans-serif;
@@ -5958,8 +5884,6 @@ div.ps-carousel-item-loading {
 }
 .s-photo-map .s-map-controls .s-map-time .s-map-time-btn {
   background: none;
-  -moz-box-shadow: none;
-  -webkit-box-shadow: none;
   box-shadow: none;
   border: none;
   top: -2px;
@@ -6002,8 +5926,6 @@ div.ps-carousel-item-loading {
 }
 .s-photo-map .s-map-controls .ui-input-search .ui-input-clear {
   background: none;
-  -moz-box-shadow: none;
-  -webkit-box-shadow: none;
   box-shadow: none;
   margin: 0;
   top: 0;
@@ -6797,13 +6719,6 @@ div.ps-carousel-item-loading {
     -moz-background-size: 24px 96px;
     -o-background-size: 24px 96px;
     background-size: 24px 96px;
-  }
-  .ui.icon.competition-ribbon {
-    background-image: url('../gfx/retina/comp-ribbon.png');
-    -moz-background-size: 44px 53px;
-    -o-background-size: 44px 53px;
-    -webkit-background-size: 44px 53px;
-    background-size: 44px 53px;
   }
   .map-icons.ui-icon,
   .map-icons .ui-icon {

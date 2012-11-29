@@ -1,0 +1,109 @@
+<div id="feed" data-role="page" data-tab-bar="true" data-title="<%= T('Feed') %>" data-theme="d" data-add-back-btn="true">
+    <div data-role="header" data-theme="b">
+
+        <div class="ui-btn-center" data-ajax="false">
+            <fieldset data-role="controlgroup" data-type="horizontal" class="x-feed-view-toggle s-feed-view-toggle s-header-toggle dark-icons">
+                <input type="radio" name="feed-view-list" id="feed-view-list" class="x-list" value="list" >
+                <label for="feed-view-list"><span class="ui-icon ui-icon-list-view"></span><%= T('List') %></label>
+                <input type="radio" name="feed-view-grid" id="feed-view-grid" class="x-grid" value="grid">
+                <label for="feed-view-grid"><span class="ui-icon ui-icon-grid-view"></span><%= T('Grid') %></label>
+            </fieldset>
+        </div>
+
+        <div class="ui-btn-right" data-ajax="false">
+            <a href="#/my-account/" class="s-my-snaps-only" data-role="button" data-icon="gear" data-iconpos="notext"></a>
+            <a href="#/search/" class="s-not-on-my-snaps" data-snapr-dialog="true" data-role="button" data-icon="search" data-iconpos="notext"></a>
+            <a href="#/home/" data-role="button" data-icon="home" data-iconpos="notext"></a>
+        </div>
+    </div>
+
+    <div class="x-feed-content" data-role="content" data-theme="d" data-ajax="false">
+        <div class="s-upload-progress-header s-inline-header">
+            <ul class="x-feed-upload-list">
+            </ul>
+        </div>
+        <div class="s-main-feed-content">
+            <div class="x-feed-header">
+                <% if(obj.feed_query){ %>
+                    <div class="ui-bar-e ui-bar">
+                        <% if(feed_query.feed_title){ %>
+                            <strong><%= feed_query.feed_title %></strong>
+                        <% }else{ %>
+                            <% if (feed_query.keywords){ %>
+                                <%= T('Search for') %> <strong><%= feed_query.keywords %></strong>
+                            <% }else if (feed_query.area){ %>
+                                <strong><%= T('Location Feed') %></strong>
+                            <% }else if (feed_query.favorited_by){ %>
+                                <%= T('Favorited by') %> <a href="#/feed/?username=<%= feed_query.favorited_by %>" data-role="none"><strong><%= feed_query.favorited_by %></strong></a>
+                            <% }else if (feed_query.spot && feed_query.venue_name){ %>
+                                @ <strong><%= feed_query.venue_name %></strong>
+                            <% }else{ %>
+                                <strong><%= T('Photos') %></strong>
+                            <% } %>
+                        <% } %>
+                    </div>
+                <% }else if(obj.user){ %>
+                    <div class="s-feed-header s-inline-header">
+                        <div class="s-user-icon-left">
+                            <a class="s-profile-icon" data-snapr-dialog="true" href="#/user/profile/?username=<%= user.get('username') %>">
+                                <div class="s-avatar-large" style="background-image: url('<%= config.get('avatar_url') %>/<%= user.get('user_id') %>?size=large');"></div>
+                                <div class="s-icon-overlay"></div>
+                            </a>
+                        </div>
+
+
+
+
+
+                        <% if (!auth.has( "access_token" )) {%>
+                            <a data-inline="true" data-icon="plus" data-iconpos="right"  data-shadow="false" class="x-follow s-follow-btn ui-bar" data-theme="e" data-role="button"><%= T('Follow') %></a>
+                        <%}else if (user.get('username').toLowerCase() == auth.get("snapr_user").toLowerCase()){%>
+                            <a data-inline="true" disabled="true" data-icon="check" data-iconpos="right" data-shadow="false" class="thats-me s-follow-btn ui-bar" data-theme="e" data-role="button"><%= T("That's Me") %></a>
+                        <%}else if (user.get('relationship').you_follow) {%>
+                            <a data-inline="true" data-icon="check" data-iconpos="right"  data-shadow="false" class="x-unfollow s-follow-btn ui-bar" data-theme="e" data-role="button"><%= T('Following') %></a>
+                        <%}else{%>
+                            <a data-inline="true" data-icon="plus" data-iconpos="right" data-shadow="false" class="x-follow s-follow-btn ui-bar" data-theme="e" data-role="button"><%= T('Follow') %></a>
+                        <%}%>
+
+
+                         <h4 class="s-username">
+                                <%= user.get('display_username') %>
+                        </h4>
+
+
+                            <div class="ui-grid-b s-header-stats">
+                                <div class="ui-block-a">
+                                    <a href="#/feed/?username=<%= user.get('username') %>">
+                                        <span class="s-hero-number"><%= user.get('photo_count') %></span>
+                                        <span><%= T('Photos') %></span>
+                                    </a>
+                                </div>
+                                <div class="ui-block-b">
+                                    <a href="#/user/followers/?username=<%= user.get('username') %>" data-snapr-dialog="true">
+                                        <span class="s-hero-number"><%= user.get('followers') %></span>
+                                        <span><%= T('Followers') %></span>
+                                    </a>
+                                </div>
+                                <div class="ui-block-c">
+                                    <a href="#/user/following/?username=<%= user.get('username') %>" data-snapr-dialog="true">
+                                        <span class="s-hero-number"><%= user.get('following') %></span>
+                                        <span><%= T('Following') %></span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <% } %>
+            </div>
+
+            <section id="feed-images" class="x-feed-images gallery"></section>
+
+            <div class="v-feed-more x-feed-more">
+                <div class="s-feed-footer s-inline-footer ui-body-c hide">
+                    <button class="x-load-more ui-btn-right"><%= T('Load More') %></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

@@ -1,6 +1,6 @@
- <div id="spot" data-title="<%= T('Spots') %>" data-tab-bar="true" data-add-back-btn="true" data-role="page" data-theme="d">
+ <div id="spot" data-title="Spots" data-tab-bar="true" data-add-back-btn="true" data-role="page" data-theme="d">
     <div data-role="header" data-theme="b">
-        <h1><%= T('Spots') %></h1>
+        <h1>Skol Spots</h1>
 
         <div class="ui-btn-right" data-ajax="false">
             <% if(obj.spot){ %><a href="#/map/?spot_id=<%= spot.id %>&lat=<%= spot.get('location').latitude %>&lon=<%= spot.get('location').longitude %>&z=15" data-role="button" data-icon="map" data-iconpos="notext"></a><% } %>
@@ -26,7 +26,11 @@
                             <% if (spot.get('info').hero_image) { %>
                                 <img src="https://s3.amazonaws.com/media-server2.snapr.us/thm2/<%= spot.get('info').hero_image.secret %>/<%= spot.get('info').hero_image.id %>.jpg" class="s-thumb-image" />
                             <%} else { %>
-                                <div class="s-no-photo-yet"><%= T('no photos yet') %></div>
+                                <div class="s-no-photo-yet">
+                                    no<br />
+                                    photos<br />
+                                    yet<br />
+                                </div>
                             <% } %>
                         </a>
                         <div class="spot-venue-details">
@@ -47,7 +51,7 @@
                         </div>
                         <p class="spot-photo-credit s-small-text">
                             <% if (spot.get('info').hero_image) { %>
-                            &lsaquo; <%= T('photo by') %> <a href="#/feed/?username=<%= spot.get('info').hero_image.username %>" class="username"><%= spot.get('info').hero_image.display_username %></a>
+                            &lsaquo; photo by <a href="#/feed/?username=<%= spot.get('info').hero_image.username %>" class="username"><%= spot.get('info').hero_image.display_username %></a>
                             <% } %>
                         </p>
 
@@ -66,7 +70,7 @@
 
             <div class="s-top-users x-top-users">
                 <% if(obj.top_users){ %>
-                    <h4><%= T('Top Users') %></h4>
+                    <h4>Top Users</h4>
                     <ul>
                         <% top_users.each(function(user){ %>
                             <li class="s-top-user-item">
