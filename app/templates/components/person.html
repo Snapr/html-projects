@@ -1,22 +1,24 @@
 <a href="#/feed/?username=<%= user.get('username') %>" data-username="<%= user.get('display_username') %>">
-     <img src="<%= config.get('avatar_url') %>/<%= user.get('user_id') %>" alt="<%= user.get('display_username') %>" class="s-avatar ui-li-icon"/>
-     <h3 class="username"><%= user.get('display_username') %></h3>
-     <p class="s-small-text">
-      <% if (user.has('score')) {%><span class="photo-count"><%= user.get('score') %></span> <%= T('points') %>, <%}%>
-      <span class="photo-count"><%= user.get('photo_count') %></span> <%= T('photos') %>,
-      <span class="followers"><%= user.get('followers') %></span> <%= T('followers') %>
-     </p>
- </a>
- <% if (!logged_in) {%>
-          <a data-icon="plus" data-iconpos="right" class="follow x-follow"></a>
- <%}else{%>
-     <% if (user.get('username') == auth_username){%>
-         <a disabled="true" data-icon="check" data-iconpos="right"></a>
-     <%}else{%>
-         <% if (user.get('relationship').you_follow) {%>
-         <a data-icon="check" data-iconpos="right" class="unfollow x-unfollow"></a>
-         <%}else{%>
-         <a data-icon="plus" data-iconpos="right" class="follow x-follow"></a>
-         <%}%>
-     <%}%>
- <%}%>
+    <img src="<%= config.get('avatar_url') %>/<%= user.get('user_id') %>" alt="<%= user.get('display_username') %>" class="s-avatar ui-li-icon"/>
+    <h3 class="username"><%= user.get('display_username') %></h3>
+    <p class="s-small-text">
+        <% if (user.has('score')) {%><span class="photo-count"><%= user.get('score') %></span> <%= T('points') %>, <%}%>
+        <span class="photo-count"><%= user.get('photo_count') %></span> <%= T('photos') %>,
+        <span class="followers"><%= user.get('followers') %></span> <%= T('followers') %>
+    </p>
+</a>
+<% if(config.get('follow_controls')){ %>
+    <% if (!logged_in) {%>
+        <a data-icon="plus" data-iconpos="right" class="follow x-follow"></a>
+    <%}else{%>
+        <% if (user.get('username') == auth_username){%>
+            <a disabled="true" data-icon="check" data-iconpos="right"></a>
+        <%}else{%>
+            <% if (user.get('relationship').you_follow) {%>
+                <a data-icon="check" data-iconpos="right" class="unfollow x-unfollow"></a>
+            <%}else{%>
+                <a data-icon="plus" data-iconpos="right" class="follow x-follow"></a>
+            <%}%>
+        <%}%>
+    <%}%>
+<%}%>
