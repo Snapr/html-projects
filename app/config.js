@@ -43,6 +43,9 @@ var config_model = Backbone.Model.extend({
 
         sort_order: 'date_utc',
 
+        privacy_controls: true,
+        moderation_controls: true,
+
         //min_photo_rating: ,  not defind if non needed
         zoom: 15,
         feed_count: 9,
