@@ -1,6 +1,49 @@
 //
 // SNAPR THEME
 // --------------------------------------------------
+.s-menu-main{
+    position: relative;
+}
+.s-menu-stream{
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+.s-home-bg{
+    height:100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    div{
+        height: 100%;
+        background-size: 100% 100%;
+        background-size: cover;
+        background-position: center;
+    }
+    opacity : 0;
+    -moz-transition-property : opacity;
+    -webkit-transition-property : opacity;
+    -o-transition-property : opacity;
+    transition-property : opacity;
+    -moz-transition-duration : 0.7s;
+    -webkit-transition-duration : 0.7s;
+    -o-transition-duration : 0.7s;
+    transition-duration : 0.7s;
+    &.fade-in{
+        opacity : 1;
+        -moz-transition-property : opacity;
+        -webkit-transition-property : opacity;
+        -o-transition-property : opacity;
+        transition-property : opacity;
+        -moz-transition-duration : 0.3s;
+        -webkit-transition-duration : 0.3s;
+        -o-transition-duration : 0.3s;
+        transition-duration : 0.3s;
+    }
+}
 
 
 // @DEFAULTS
@@ -28,7 +71,7 @@ h4.ui-li-heading{
 // -------------------------
 
 div[data-role="header"]{
-    min-height: @topBarHeight; // So Topbar doesn't collapse without heading 
+    min-height: @topBarHeight; // So Topbar doesn't collapse without heading
     background: none;
     border: none;
     color: @gray;
@@ -49,7 +92,7 @@ div[data-role="header"]{
         left: 6px;
         top: 12px;
     }
-    .ui-btn-icon-left .ui-btn-inner .ui-icon, 
+    .ui-btn-icon-left .ui-btn-inner .ui-icon,
     .ui-btn-icon-right .ui-btn-inner .ui-icon {
         margin-top: -@gfxTopBar-grid / 2;
     }
@@ -100,7 +143,7 @@ div[data-role="header"]{
                     }
                 }
             }
-        }   
+        }
     }
     // Shuffle the close button to the right */
     .ui-btn[data-icon="delete"]{
@@ -132,12 +175,12 @@ div[data-role="header"]{
     background: transparent!important;
 
     a{
-        color: @grayDarkBg;  
+        color: @grayDarkBg;
     }
     &.s-search-header{
         .ui-content{
                  padding: 0 0 @padding 0;
-         } 
+         }
     }
     &.s-account-header{
         .ui-content{
@@ -253,8 +296,8 @@ a:active{
 
 .ui-bar{
     margin: 0 -@padding * 2;
-    .border-top-radius(@cornersSmall); 
-   .border-bottom-radius(0);  
+    .border-top-radius(@cornersSmall);
+   .border-bottom-radius(0);
    .button-font-light();
     height: @barHeight;
     line-height: @barHeight;
@@ -264,7 +307,7 @@ a:active{
         font-size: @fontSizeUsername;
         text-transform: uppercase;
         font-style: normal;
-        
+
     }
     .box-sizing(border-box);
     .ui-btn,
@@ -285,7 +328,7 @@ a:active{
             .ui-icon{
                 display: inline-block;
                 margin-top: 0!important;
-                top: (@barHeight - @gfxBar-grid) / 2 ;            
+                top: (@barHeight - @gfxBar-grid) / 2 ;
                 &.spot-icon{
                     top: -1px;
                     right: 0;
@@ -297,12 +340,12 @@ a:active{
                 }
             }
         }
-    }   
+    }
     &.ui-controlgroup-horizontal{
         .box-shadow(0 1px 4px @shadowDark);
         border: none;
         .s-bar-left{
-            border-top: @borderWhite;  
+            border-top: @borderWhite;
             border-right: none;
             .ui-btn-inner{
             }
@@ -320,7 +363,7 @@ a:active{
 
 .x-closed{
     .ui-bar{
-       .border-bottom-radius(@cornersPage);  
+       .border-bottom-radius(@cornersPage);
         .s-bar-left{
                 .border-right-radius(0);
                 .ui-btn-inner{
@@ -329,10 +372,10 @@ a:active{
         .s-bar-right{
             .border-top-right-radius(@corners)!important;
             .border-bottom-right-radius(@corners)!important;
-        } 
+        }
         .ui-icon-open{
             background-position: @gfxBar-x @gfxBar-closed-y;
-        }     
+        }
     }
 }
 
@@ -351,12 +394,12 @@ a:active{
     }
 }
 
-@-webkit-keyframes animate-bar { 
-	0% {background-position: 0 0;} 
+@-webkit-keyframes animate-bar {
+	0% {background-position: 0 0;}
 	100% {background-position: 40px 0;}
 }
 @-moz-keyframes animate-bar {
-	0% {background-position: 0 0;} 
+	0% {background-position: 0 0;}
 	100% {background-position: 40px 0;}
 }
 
@@ -387,7 +430,7 @@ a:active{
 }
 .s-twitter-button.ui-btn-hover-e {
     background: lighten(@twitterBlue, 10% );
-    .linear-gradient(lighten(@twitterBlue, 5%), lighten(@twitterBlueTint, 5%)); 
+    .linear-gradient(lighten(@twitterBlue, 5%), lighten(@twitterBlueTint, 5%));
 }
 .s-twitter-button.ui-btn-down-e {
     background: @twitterBlue;
@@ -479,7 +522,7 @@ a:active{
 }
 
 
-// @SWITCH 
+// @SWITCH
 // -----------------------
 
 .ui-slider-switch{
@@ -505,7 +548,7 @@ a:active{
             text-shadow: 0 -1px 0px #093B5C;
             .box-shadow(0 4px 5px -2px rgba(0,0,0,0.3) inset);
             font-family: @font;
-            
+
         }
     }
     .ui-slider-handle{
@@ -681,7 +724,7 @@ textarea.ui-input-text {
 .s-image-streams{
     .x-stream{
         margin-bottom: @padding * 2 ;
-       
+
         .x-thumbs{
             min-width: @thumbSize * 3 + @padding * 2;
         }
@@ -911,8 +954,8 @@ textarea.ui-input-text {
 }
 
 .s-menu-main{
-    
-    
+
+
 }
 
 
@@ -946,7 +989,7 @@ textarea.ui-input-text {
 }
 
 
-// @FEEDUSER 
+// @FEEDUSER
 
 .s-feed-header.s-inline-header{
     margin-bottom: @padding * 2;
@@ -955,7 +998,7 @@ textarea.ui-input-text {
     .s-user-icon-left{
         width: @avatarSizeLarge;
         height: @avatarSizeLarge;
-        
+
         .s-profile-icon,
         .s-avatar-large{
             .border-radius(0);
@@ -976,7 +1019,7 @@ textarea.ui-input-text {
     .s-username{
         font-size: @fontSizeUsername;
         text-shadow: @white 0px 1px 1px;
-        
+
     }
     .s-follow-btn{
         height: @barHeight;
@@ -984,7 +1027,7 @@ textarea.ui-input-text {
         .ui-icon{
             background-image: url('@{gfx}@{gfxIcons}');
             width: @gfxIcons-grid;
-        	height: @gfxIcons-grid; 
+        	height: @gfxIcons-grid;
         	margin-top: -@gfxIcons-grid / 2;
         }
     }
@@ -1017,14 +1060,14 @@ textarea.ui-input-text {
                  margin-right: -1px;
             }
         }
-    }     
+    }
     &::after{
         .arrow-up(@arrowSize, @white, @avatarSizeLarge / 2, @avatarSizeLarge + @arrowYShift);
         z-index: 10;
-    } 
+    }
 }
 
-// Nix the rounded top edges when the upload queue shows above 
+// Nix the rounded top edges when the upload queue shows above
 .x-showing-upload-queue{
     .s-feed-header.s-inline-header{
         .s-user-icon-left{
@@ -1064,18 +1107,18 @@ textarea.ui-input-text {
         overflow: hidden;
         padding-left: @padding;
         text-overflow: ellipsis;
-       
+
        .s-username{
            font-size: @fontSizeUsername;
        }
-       
+
         .user-icon-link{
             vertical-align: middle;
             height: @barHeight;
             display: inline-block;
             width: @avatarSize;
         }
-         
+
         .ui-link,
         span{
             height:@avatarSize;
@@ -1091,11 +1134,11 @@ textarea.ui-input-text {
                 width: 14px;
             }
         }
-        
+
         .s-avatar{
                 display: none;
             }
-        
+
         .s-image-time-and-location{
             color: @grayLight;
             font-style: italic;
@@ -1157,7 +1200,7 @@ textarea.ui-input-text {
                 text-shadow: none;
                 .button-font-small();
             }
-            
+
             // reactions btn off to the right
             &.s-reactions-button{
                position: absolute;
@@ -1191,7 +1234,7 @@ textarea.ui-input-text {
                     }
                 }
             }
-        
+
         }
 
     }
@@ -1257,7 +1300,7 @@ textarea.ui-input-text {
                     .ui-btn-inner{
                        padding: 2px;
                        width: @gfxDark-grid;
-                       height: @gfxDark-grid; 
+                       height: @gfxDark-grid;
                     }
                     .ui-icon{
                         margin-top: -@gfxDark-grid / 2;
@@ -1306,7 +1349,7 @@ textarea.ui-input-text {
             .s-profile-icon{
                 background-color: @white;
             }
-        }    
+        }
         .s-details{
             padding-left: @avatarSizeLarge + @paddingElement;
             position: relative;
@@ -1386,7 +1429,7 @@ textarea.ui-input-text {
         height: @thumbSize + @padding * 6;
     }
     .s-upload-progress-item{
-       
+
         .s-upload-info-block{
             padding-left: @thumbSize + @padding * 2;
              .ui-icon-quote{
@@ -1400,8 +1443,8 @@ textarea.ui-input-text {
                    color: @gray;
                }
             }
-            
-           
+
+
         }
     }
     .s-offline-uploading{
@@ -1465,8 +1508,8 @@ textarea.ui-input-text {
                 background-position: @gfxIcons-delete-x @gfxIcons-y-light;
         }
     }
-    
-   
+
+
 }
 
 
@@ -1477,7 +1520,7 @@ textarea.ui-input-text {
     #description{
         height: 92px;
     }
-   
+
     .s-upload-image-privacy{
         position: relative;
         margin-top: @padding * 2;
@@ -1509,7 +1552,7 @@ textarea.ui-input-text {
         .ui-icon{
             width: @gfxAction-grid;
             height: @gfxAction-grid;
-            background-image: url('@{gfx}@{gfxAction}');             
+            background-image: url('@{gfx}@{gfxAction}');
             display: block;
             position: absolute;
             top: -8px;
@@ -1550,7 +1593,7 @@ textarea.ui-input-text {
         .ui-icon{
             width: @gfxShare-grid;
             height: @gfxShare-grid;
-            background-image: url('@{gfx}@{gfxShare}');             
+            background-image: url('@{gfx}@{gfxShare}');
             display: block!important;
         }
         .ui-btn-text{
@@ -1617,7 +1660,7 @@ textarea.ui-input-text {
                 left: 0;
                 width: @gfxAction-grid;
                 height: @gfxAction-grid;
-                background-image: url('@{gfx}@{gfxAction}');                 
+                background-image: url('@{gfx}@{gfxAction}');
             }
             &.ui-checkbox-on {
                 .ui-icon-checkbox-on{background-position: @gfxAction-x-hover @gfxAction-tick-y;}
@@ -1716,7 +1759,7 @@ textarea.ui-input-text {
 #my-account{
     div[data-role="content"]{
         overflow: hidden;
-        
+
     }
 }
 
@@ -1757,7 +1800,7 @@ textarea.ui-input-text {
             padding-left: 8px;
         }
     }
-    
+
     .ui-listview{
         li.ui-btn{
              margin-top:1px;
@@ -1785,7 +1828,7 @@ textarea.ui-input-text {
             border-bottom: none;
         }
     }
-    
+
     .ui-collapsible-set{
         margin-left: -8px;
         margin-right: -8px;
@@ -1829,7 +1872,7 @@ textarea.ui-input-text {
             }
         }
     }
-    
+
 }
 
 
@@ -2005,7 +2048,7 @@ div.ps-carousel-item-loading{
         padding-top: 0;
         padding-bottom: @padding * 2;
         .box-sizing(border-box);
-    }    
+    }
     .s-map-loading{
         position: absolute;
         top: -2px;
@@ -2036,7 +2079,7 @@ div.ps-carousel-item-loading{
             width: 20px;
             top: 0px!important;
             left: -2px;
-            background-position: @gfxBar-x-a - 4px @gfxBar-location-y;            
+            background-position: @gfxBar-x-a - 4px @gfxBar-location-y;
         }
     }
     .s-map-controls{
@@ -2151,9 +2194,9 @@ div.ps-carousel-item-loading{
             }
 
         }
-        
+
     }
-   
+
     .s-disambiguation{
         position: absolute;
         display: none;
@@ -2281,11 +2324,11 @@ div.ps-carousel-item-loading{
     padding-left: @padding;
     padding-right: @padding * 2;
     min-height:@thumbSize;
-    
+
     &.ui-btn-icon-right .ui-btn-inner {
         padding-right: 0;
     }
-    
+
     .s-spot-item {
         min-height: @thumbSize;
         .s-spot-heading {
@@ -2298,7 +2341,7 @@ div.ps-carousel-item-loading{
             color: @grayLight;
             font-style: italic;
             font-size: @fontSizeSmall;
-            
+
         }
         .s-spot-address {
             margin-top: 10px;
@@ -2366,7 +2409,7 @@ div.ps-carousel-item-loading{
 }
 
 
-// @SPOT 
+// @SPOT
 // -------------------------
 
 .s-spot-header{
@@ -2530,7 +2573,7 @@ div.ps-carousel-item-loading{
 .s-message-inline{
     .s-message-body{
         margin: @padding * 2;
-    } 
+    }
 }
 
 .s-retry-offline{

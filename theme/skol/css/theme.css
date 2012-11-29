@@ -2986,6 +2986,49 @@ div[data-role="header"].ui-bar-b a[data-rel="back"]::before {
 
   background-image: linear-gradient(bottom, #ffcc33 0%, #ffcc33 70%, #ffc824 100%);
 }
+.s-menu-main {
+  position: relative;
+}
+.s-menu-stream {
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+.s-home-bg {
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  opacity: 0;
+  -moz-transition-property: opacity;
+  -webkit-transition-property: opacity;
+  -o-transition-property: opacity;
+  transition-property: opacity;
+  -moz-transition-duration: 0.7s;
+  -webkit-transition-duration: 0.7s;
+  -o-transition-duration: 0.7s;
+  transition-duration: 0.7s;
+}
+.s-home-bg div {
+  height: 100%;
+  background-size: 100% 100%;
+  background-size: cover;
+  background-position: center;
+}
+.s-home-bg.fade-in {
+  opacity: 1;
+  -moz-transition-property: opacity;
+  -webkit-transition-property: opacity;
+  -o-transition-property: opacity;
+  transition-property: opacity;
+  -moz-transition-duration: 0.3s;
+  -webkit-transition-duration: 0.3s;
+  -o-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+}
 body {
   color: #a7a9ac;
   font-family: Georgia, 'Times New Roman', Times, sans-serif;
