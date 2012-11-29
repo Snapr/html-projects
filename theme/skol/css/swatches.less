@@ -163,7 +163,7 @@
         color: @gray;
     }
     .ui-title{
-        color: @gray;
+        color: @grayLighter;
     }
     border-top: none!important;
 }
@@ -178,13 +178,13 @@
 .ui-btn-active-b[data-rel="back"]::before {
     border: @borderBlack;
     background: @grayDarkBg;
-    color: @gray;
+    color: @grayLight;
     text-shadow: @shadowBlack 0px -1px 1px;
     text-decoration: none;
     .linear-gradient(@grayDarkBg, @grayDarkBgTint);
     a.ui-link-inherit,
     .ui-btn-text {
-        color: @gray;
+        color: @grayLight;
     }
     &.ui-shadow{
         .box-shadow( 0 1px 0 @shadowLighter);
@@ -205,9 +205,9 @@
 
 .ui-btn-hover-b,
 .ui-btn-active-b{
-    color: lighten(@gray, 3%);
+    color: lighten(@grayLight, 3%);
     .ui-btn-text{
-        color: lighten(@gray, 3%);
+        color: lighten(@grayLight, 3%);
     }
     .linear-gradient(lighten(@grayDarkBg, 3%), lighten(@grayDarkBgTint, 3%));
    
@@ -226,7 +226,7 @@
     color: darken(@gray, 3%);
     .pressed-gradient(@grayDarkBgTint, 5%);
     .ui-btn-text{
-        color: lighten(@gray, 3%);
+        color: lighten(@grayLight, 3%);
     }
     &.ui-btn-active{
         background: none;
@@ -304,26 +304,25 @@ div[data-role="header"].ui-bar-b{
 
 
 // C //
-// Standard light BG swatch, has subtle gray bg texture, used mainly for light colored dialog style views
+// Its all dark in this app baby
 // -----------------------------
 
 // Set bg for dialog 
 
 .ui-body-c {
     background: none;
-    background-color: @grayLighter;
+    background-color: @grayDarker;
     background-image: @gfxBgLight;
-    border: @borderGrayLighter;
+    border: none;
     color: @grayDarker;
-    text-shadow: 0 1px 1px @shadowWhite;      
+    text-shadow: 0 1px 1px @shadowBlack;      
 }
 .ui-dialog.ui-overlay-c{
     background: none;
     background-color: @grayLighter!important;
     background-image: @gfxBgLight!important;
-    border: @borderGrayLighter;
-    text-shadow: 0 1px 1px @shadowWhite;
-    border:none;
+    border: none;
+    text-shadow: 0 1px 1px @shadowBlack;      
 }
 
 // Main Styles
@@ -337,8 +336,8 @@ div[data-role="header"].ui-bar-b{
         overflow: visible;
     }
     .ui-header{
-        color: @grayDark;
-        text-shadow: @shadowWhite 0px 1px 1px;
+        color: @grayLighter;
+        text-shadow: @shadowBlack 0px 1px 6px;
     }
     .ui-link,
     .ui-link:visited {
@@ -346,8 +345,26 @@ div[data-role="header"].ui-bar-b{
         font-weight: normal;
     }
     .ui-input-search{
-        background-color: white;
         background-image: none;
+        border-bottom: rgba(255, 255, 255, .1) solid 1px;
+        padding-left: @padding * 3;
+        padding-right: @gfxSearchBtn-width + @padding;
+        .ui-input-text{
+            padding: @padding * 2 0;
+        }
+        
+        &.ui-icon-searchfield:after{
+          position: absolute;
+          left: auto;
+          right:0;
+           background-image: url('@{gfx}@{gfxSearchBtn}');
+           background-position: 0 0;
+           .opacity(100);
+           width: @gfxSearchBtn-width;
+           height: @gfxSearchBtn-height;
+           margin-top: -@gfxSearchBtn-height / 2;
+        }
+        
     }
     hr{
         display: block;
@@ -366,18 +383,7 @@ div[data-role="header"].ui-bar-b{
         color: @shadowGray;
     }
  
-    // Grey Btns in body are slightly different 
-    .ui-content{
-        .ui-btn-up-c,
-        .ui-btn-hover-c,
-        .ui-btn-down-c,
-        .ui-btn-active-c   {
-            border: @borderGrayLight;
-            &.ui-shadow{
-                .box-shadow(none);
-            }
-        }
-    }
+    
 }
 
 
@@ -394,30 +400,40 @@ div[data-role="header"].ui-bar-b{
 .ui-btn-up-c,
 .ui-btn-hover-c,
 .ui-btn-down-c{
+    background: @blackTrans;
+    padding: @paddingButton;
+    border: none;
     border: none;
     .button-font-bold();
-    color: @grayDarker;
-    text-shadow: @white 0px 1px 1px;
+    color: @grayLighter;
+    text-shadow: @black 0px 1px 1px;
      text-decoration: none;
     a.ui-link-inherit,
     .ui-btn-text {
-        color: @grayDarker;
+        color: @grayLighter;
     }
     &.ui-shadow {
         .box-shadow(0 1px 4px lighten(@shadowDark, 20%));
     }
+    .ui-btn-inner{
+        .border-radius(@cornersRound);
+    }
 }
 .ui-btn-up-c {
-    background: @white;    
-    .linear-gradient(@white, @whiteTint);
+    .ui-btn-inner{
+        background: @grayDarker;
+    }  
 }
 .ui-btn-hover-c {
-    background: lighten(@blue, 10% );
-    .linear-gradient(lighten(@white, 10%), lighten(@whiteTint, 10%));
+    .ui-btn-inner{
+        background: lighten(@grayDarker, 3% );
+    }
 }
 .ui-btn-down-c {
-    background: @white;
-    .pressed-gradient(@white, 3%);
+    .ui-btn-inner{
+        background: @grayDarker;
+        .pressed-gradient(@grayDarker, 3%);
+    }   
 }
 
 
@@ -619,24 +635,22 @@ div[data-role="header"].ui-bar-b{
     background: @black;
     background-image: @gfxBgDark;
     border-radius: @cornersPage;
-    border-top: @borderGray;
     .box-sizing(border-box);
 }
 
 .ui-body-d {
     background: none;
-    color: @grayDark;
+    color: @grayLight;
     div[data-role="content"]{
-        background-color: @white;
+        background-color: transparent;
         background-image: none;
-        border-radius: @cornersPage;
         min-height: 512px;
     }
     .ui-link,
     .ui-link:visited,
     .ui-link:hover,
     .ui-link:active {
-        color: @grayDarker;
+        color: @grayLighter;
     }
     hr{
         display: block;
@@ -676,49 +690,44 @@ div[data-role="header"].ui-bar-b{
 
 
 // @E-BARS
-.ui-bar-e,
-.ui-bar-h{
-    background: @yellow;
-    color: @grayDarker;
-    text-shadow: @white 0px 1px 1px;
-    .linear-gradient(@yellow, @yellowTint);
+.ui-bar-e{
+    background: @gray;
+    color: @grayLighter;
+    text-shadow: @black 0px 1px 1px;
     a{
-        color: @grayDarker;
+        color: @grayLighter;
     }
 }
 
 // @E-BUTTONS
 .ui-btn-up-e,
 .ui-btn-hover-e,
-.ui-btn-down-e,
-.ui-btn-up-h,
-.ui-btn-hover-h,
-.ui-btn-down-h{
+.ui-btn-down-e{
     border: none;
     .button-font-bold();
-    color: @grayDarker;
-    text-shadow: @white 0px 1px 1px;
+    color: @grayLighter;
+    background: @gray;    
+    
+    text-shadow: @black 0px 1px 6px;
      text-decoration: none;
     a.ui-link-inherit,
     .ui-btn-text {
-        color: @grayDarker;
+        color: @grayLighter;
+    }
+    &.ui-shadow{
+        .box-shadow(none);
     }
     
 }
-.ui-btn-up-e,
-.ui-btn-up-h {
-    background: @yellow;    
-    .linear-gradient(@yellow, @yellowTint);
+.ui-btn-up-e {
+    background: @gray;    
 }
-.ui-btn-hover-e,
-.ui-btn-hover-h {
-    background: lighten(@yellow, 10% );
-    .linear-gradient(lighten(@yellow, 10%), lighten(@yellowTint, 10%));
+.ui-btn-hover-e {
+    background: lighten(@gray, 10% );
 }
-.ui-btn-down-e,
-.ui-btn-down-h {
-    background: @yellow;
-    .pressed-gradient(@yellow, 3%);
+.ui-btn-down-e{
+    background: @gray;
+    .pressed-gradient(@gray, 3%);
 }
 
 
@@ -726,8 +735,7 @@ div[data-role="header"].ui-bar-b{
 .ui-body-e,
 .ui-body-h{
     &.ui-navbar{
-        background: @yellow;
-        .linear-gradient(@yellow, @yellowTint);
+        background: @gray;
         .ui-btn{
             background: none!important;
         }
@@ -852,6 +860,42 @@ div[data-role="header"].ui-bar-b{
             background: none!important;
         }
     }
+}
+
+
+// @H
+// YELLO HIGHLIGHT SWATCH
+// ------------------------
+
+
+.ui-btn-up-h,
+.ui-btn-hover-h,
+.ui-btn-down-h{
+    border: none;
+    .button-font-bold();
+    color: @grayDarker;
+    text-shadow: @white 0px 1px 1px;
+     text-decoration: none;
+    a.ui-link-inherit,
+    .ui-btn-text {
+        color: @grayDarker;
+    }
+    
+}
+
+.ui-btn-up-h {
+    background: @yellow;    
+    .linear-gradient(@yellow, @yellowTint);
+}
+
+.ui-btn-hover-h {
+    background: lighten(@yellow, 10% );
+    .linear-gradient(lighten(@yellow, 10%), lighten(@yellowTint, 10%));
+}
+
+.ui-btn-down-h {
+    background: @yellow;
+    .pressed-gradient(@yellow, 3%);
 }
 
 

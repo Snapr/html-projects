@@ -6,6 +6,11 @@
 // @DEFAULTS
 // -------------------------
 
+body{
+    color: @grayLighter;
+}
+
+
 strong{
     font-weight: normal;
     font-size: @fontSizeUsername;
@@ -41,7 +46,7 @@ div[data-role="header"]{
     .ui-btn-left{
         position: absolute;
         left: 6px;
-        top: 6px;
+        top: 12px;
     }
     .ui-btn-icon-left .ui-btn-inner .ui-icon, 
     .ui-btn-icon-right .ui-btn-inner .ui-icon {
@@ -73,7 +78,7 @@ div[data-role="header"]{
         top: 6px;
     }
     .ui-btn-center{
-        top: 6px;
+        top: 12px;
         .s-header-toggle{
             .ui-btn{
                 .ui-btn-inner{
@@ -123,9 +128,8 @@ div[data-role="header"]{
     margin-left: -@padding * 2;
     margin-right: -@padding * 2;
     position: relative;
-    background-color: @grayLightBg;
-    .border-top-radius (@cornersPage);
-    .box-shadow(inset 5px 0 20px rgba(0, 0, 0, 0.2));
+    background: transparent!important;
+
     a{
         color: @grayDarkBg;  
     }
@@ -154,6 +158,21 @@ div[data-role="page"],
 div[data-role="dialog"]{
     .border-radius(@cornersPage);
 
+}
+
+div[data-role="content"] {
+    .ui-listview {
+    margin: 0 0;
+    }
+}
+
+a,
+a:link,
+a:visited,
+a:hover,
+a:active{
+    text-decoration: none;
+    color: @grayLighter;
 }
 
 .s-username{
@@ -239,7 +258,6 @@ div[data-role="dialog"]{
     line-height: @barHeight;
     padding-top:0;
     padding-bottom: 0; 
-    border-top: @borderWhite;
     .box-sizing(border-box);
     .ui-btn,
     &.ui-btn{
@@ -558,128 +576,6 @@ div[data-role="dialog"]{
 }
 
 
-// @TABBAR
-// -------------------------
-
-// Make sure Corners at bottom of pages aren't rounded when tab bar is present
-.x-tab-bar{
-    *[data-tab-bar="true"]{
-        padding-bottom: @tabBarHeight;
-        .border-bottom-radius(0);
-        div[data-role="content"]{
-            .border-bottom-radius(0);
-        }
-        .s-inline-footer{
-            .border-bottom-radius(0);
-            &.s-feed-footer{
-                .ui-btn{
-                    .border-bottom-radius(0);
-                }
-            }
-        }
-    }
-}
-
-
-// Custom Fiddles for Tab Bar
-.s-tab-bar{
-    background: @black!important;
-    .ui-navbar {
-        background: @grayDarkBgTint;
-        .linear-gradient(@grayDarkBg, @grayDarkBgTint);
-        padding: 3px 0;
-        border-top: solid lighten(@grayDarkBg, 20%) 1px;
-        .border-bottom-radius(@cornersPage);
-
-        .ui-btn{
-            border: none;
-            margin: 0 3px!important;
-            .border-radius (3px)!important;
-            &.ui-btn-up-b{
-                background: transparent;
-            }
-            &.ui-btn-hover-b{
-                background: lighten(@grayDarkBg, 2%);
-                color: @grayLight;
-            }
-            &.ui-btn-down-b,
-            &.ui-btn-active{
-                background: @grayDarkBg;
-                background-color: @grayDarkBgTint;
-                .box-shadow(inset 0px 2px 4px 2px rgba(0, 0, 0, .1))!important;
-                color: white;
-                text-shadow: @shadowDarker 0px 1px 1px;
-                text-transform: none;
-            }
-        }
-        // Match rounded corners of full palette
-        li:first-child .ui-btn{
-            .border-bottom-left-radius(@cornersPage)!important;
-        }
-        li:last-child .ui-btn{
-            .border-bottom-right-radius(@cornersPage)!important;
-        }
-        .ui-btn-inner {
-            padding-top: 32px!important;
-            padding-bottom: 4px!important;
-            height: 12px;
-            line-height: 12px;
-            padding-left: 1px;
-            padding-right: 1px;
-            .ui-btn-text {
-                .button-font-small();
-                text-shadow: @shadowBlack 0px -1px 1px;
-            }
-            .ui-icon {
-                top: 0;
-                margin-left: -@gfxTabBar-grid / 2;
-            }
-        }
-    }
-    .s-tabbar-activity{
-        display: none;        
-        .button-font-small();
-        line-height: @fontSizeSmall;
-        min-height: @fontSizeSmall;
-        height: 28px;
-        position: absolute;
-        top: -28px;
-        right:0;
-        margin:0;
-        white-space: nowrap;
-        padding: 8px;
-        .box-shadow(none);
-        .border-top-radius(@corners);
-        .border-bottom-radius(0);
-    
-        .ui-btn-inner{
-            line-height: @fontSizeSmall;
-            min-height: @fontSizeSmall;
-            padding: 0;
-            overflow: visible;
-            .ui-btn-text{
-                font-weight: bold;
-                line-height: @fontSizeSmall;
-                min-height: @fontSizeSmall;
-                font-size: @fontSizeSmall;
-                color: @grayDarkBgTint;
-                text-shadow: @shadowWhite 0px 1px 1px;
-            }
-            .s-activity-count{
-                position: relative;
-                &.icon-left{
-                    padding-left: 24px;
-                    padding-right: @padding;
-                    .ui-icon{
-                        position: absolute;
-                        left: -6px;
-                        top: -8px;
-                    }
-                }
-            }
-        }
-    }
-}
 
 .s-count-item{
     background-color: @blue;
@@ -711,10 +607,10 @@ textarea.ui-input-text {
     background:transparent;
     border: @borderGrayLight;
     font-family:@font;
+    font-style: italic;
     outline: 0;
     line-height: 1.4;
-    background-color: @white;
-    color: @grayDark;
+    color: @grayLighter;
     font-size: @fontSize;
     padding: @paddingElement;
     width: 100%;
@@ -735,10 +631,15 @@ textarea.ui-input-text {
     }
     .ui-input-clear {
         position: absolute;
-        right: -5px;
+        border: none!important;
+        right: 5px;
         margin-top: -17px;
         background: none;
         border: none!important;
+        z-index: 10;
+        padding: 0;
+        width: 36px;
+        height: 36px;
         .ui-icon-delete{
             background-position: @gfxIcons-delete-x @gfxIcons-y-light;
         }
@@ -989,267 +890,11 @@ textarea.ui-input-text {
 }
 
 .s-menu-main{
-    padding: 0;
-    text-transform: lowercase;
-    .s-menu-btns{
-        margin-bottom: 0;
-        background: lighten(@yellow, 10%)!important;
-        .box-shadow(inset 0 -2px 100px @yellowTint);
-        .border-top-radius(@cornersPage);
-        margin-left: -@padding * 2;
-        margin-right: -@padding * 2;
-        .ui-btn{
-            .border-radius(0);
-            background: none;
-            background-image: url('@{gfx}@{gfxMenu}');
-            background-position: right @gfxMenu-arrow-r-y;
-            background-repeat: no-repeat;
-            &.ui-btn-hover-e,
-            &.ui-btn-active{
-                background-color: rgba(255,255,255,.2);
-            }
-            margin: 0;
-            padding: 0;
-            min-height: @gfxMenu-grid;
-            .box-shadow(none);
-            .ui-btn-inner{
-                padding: 0;
-                line-height: @gfxMenu-grid;
-                padding-left: @gfxMenu-grid + @padding * 2;
-                text-align: left;
-            }
-            .ui-icon{
-                top: 0;
-                left:  @padding * 2;
-                margin-top: 0;
-                background: transparent;
-                background-image: url('@{gfx}@{gfxMenu}');
-                width: @gfxMenu-grid;
-                height: @gfxMenu-grid;
-                .box-shadow(none);
-            }
-            .ui-icon-main-menu-camera{background-position: @gfxMenu-x @gfxMenu-camera-y;}
-            .ui-icon-main-menu-camera-lib{background-position: @gfxMenu-x @gfxMenu-camera-lib-y;}
-            .ui-icon-main-menu-dashboard{background-position: @gfxMenu-x @gfxMenu-dashboard-y;}
-            .ui-icon-main-menu-feed{background-position: @gfxMenu-x @gfxMenu-feed-y;}
-            .ui-icon-main-menu-popular{background-position: @gfxMenu-x @gfxMenu-popular-y;}
-            .ui-icon-main-menu-map{background-position: @gfxMenu-x @gfxMenu-map-y;}
-            .ui-icon-main-menu-my-account{background-position: @gfxMenu-x @gfxMenu-my-account-y;}
-            .ui-icon-main-menu-cities{background-position: @gfxMenu-x @gfxMenu-cities-y;}
-            .ui-icon-main-menu-spots{background-position: @gfxMenu-x @gfxMenu-spots-y;}
-            .ui-icon-main-menu-info{background-position: @gfxMenu-x @gfxMenu-info-y;}
-            .ui-icon-main-menu-activity{background-position: @gfxMenu-x @gfxMenu-activity-y;}
-            .ui-icon-main-menu-leaderboard{background-position: @gfxMenu-x @gfxMenu-leaderboard-y;}
-            .ui-icon-main-menu-join{background-position: @gfxMenu-x @gfxMenu-join-y;}
-            .ui-icon-main-menu-login{background-position: @gfxMenu-x @gfxMenu-login-y;}
-            .ui-icon-main-menu-arrow-r{background-position: @gfxMenu-x @gfxMenu-arrow-r-y;}
-            .ui-icon-main-menu-tumblr{background-position: @gfxMenu-x @gfxMenu-tumblr-y;}
-        }
-        li{
-            border-top: solid rgba(255,255,255, .6) 1px;
-            border-bottom: solid rgba(0,0,0,.05) 1px;
-            margin-bottom: 0;
-        }
-        li:first-child{
-            .border-top-radius(@cornersPage);
-            .ui-btn{
-                .border-top-radius(@cornersPage);
-            }
-        }
-        .centered-title{
-            text-align: center;
-            padding: 24px;
-        }
-        .ui-icon-big-arrow-d{
-            background-image: url('@{gfx}@{gfxMenuArrow}');
-            background-repeat: no-repeat;
-            background-position: center;
-            height: 20px;
-            width: 100%;
-        }
-    }
-    .s-upload-count{
-        background-color: @blue;
-        .linear-gradient(@blue, @blueTint);
-        display: none;
-        position: absolute;
-        top: 20%;
-        right: 16%;
-        min-height: 13px;
-        min-width: 13px;
-        padding:  2px 3px 4px 3px;
-        .border-radius(20px);
-        color: white;
-        text-shadow: @shadowDarker 0px -1px 0px;
-        font-weight: bold;
-        .box-shadow(rgba(0, 0, 0, 0.15) 0px 2px 2px 0px);
-        font-size: 13px;
-        line-height: 13px;
-        text-align: center;
-        text-transform: none;
-        vertical-align: middle;
-    }
+    
     
 }
 
-.s-menu-stream{
-    position: relative;
-    margin-bottom: -@padding * 2;
-    background-color: black;
-    margin-left: -@padding * 2;
-    margin-right: -@padding * 2;
-    .s-thumbs-block-overlay{
-        position: absolute;
-        width: 100%;
-        top: 0;
-        left: 0;
-        height: @thumbSize;
-        background: @blackTrans;
-        .s-centered-btn{
-            display: inline-block;
-            width: 160px;
-            position: absolute;
-            left: 50%;
-            margin-left: -80px;
-            top: 50%;
-            margin-top: -18px;
-            border-radius: @cornersRound;
-            .ui-btn-inner{
-                padding-right: 20px;
-                padding-left: 10px;
-                
-            }
-        }
-    }        
-    .s-thumbs-preview-stream{
-        white-space: nowrap;
-        height: @thumbSize;
-        overflow: hidden;
-        li{
-            display: inline-block;
-           
-        }
-        .s-thumb-image{
-            background: @black;
-        }
-    }
-    &.x-loading{
-        .ui-icon-arrow-r{
-            .spinner('@{gfx}@{gfxSpinnerSmallDark}');
-            .spin();
-        }
-    }
-    &.no-images{
-       .ui-icon-arrow-r{
-            display: none;
-        } 
-    }
-}
 
-
-
-// @TUMBLR
-// -------------------------
-
-#tumblr-posts {
-    blockquote {
-        margin: @padding * 2;
-        font-style:italic;
-    }
-    .s-tumblr-stream {
-        overflow:hidden;
-        margin: 0 -@padding * 2;
-        .s-tumblr-post-item {
-            border-bottom: 1px solid @grayLight;
-            margin: 0px;
-            padding: @padding;
-            .s-tumblr-post {
-                width: 100%;
-                img,
-                video {
-                    width: 100%;
-                    margin: 0 auto;
-                    max-width: 512px;
-                    margin: 0 0 @padding * 2 0;
-
-                }
-                audio {
-                    margin: 0 0 @padding * 2 0;
-                }
-
-                .s-tumblr-body{
-                    margin: @padding * 2 @padding * 6 @padding @padding;
-                    h4{
-                        .heading-font();
-                    }
-                    
-                     blockquote{
-                            margin: @padding;
-                            border-left: solid 2px @gray;
-                            padding-left: @padding * 2;
-                            font-family: @fontSerif;
-                            font-style: italic;
-                        }                    
-                }
-                .s-photo-set {
-                    overflow:hidden;
-                    margin: 0;
-                    padding: 0;
-                    list-style: none;
-                    li{
-                        margin: 0;
-                        padding: 0;
-                        list-style: none;
-                    }
-                }
-            }
-            .s-tumblr-metadata{
-                margin: @padding * 2 0 0 0;
-                .ui-bar{
-                    .ui-btn-text{
-                        position: relative;
-                        font-size: @fontSizeSmall;
-                        color:  @grayLight;
-                        padding-right:@gfxTumblr-grid;
-                        padding-left: @gfxTumblr-grid + @padding;
-                        .box-sizing(border-box);
-                    }
-                    .tumblr-icon{
-                        display: block;
-                        position: absolute;
-                        left: 0;
-                        top: -6px;
-                        margin-top: 0;
-                    }
-                    .ui-icon-arrow-r{
-                    }
-                }
-            }
-        }
-      
-    }
-    .s-tumblr-footer{
-        .ui-icon-arrow-r{
-            background-position: @gfxIcons-arrow-r-x @gfxIcons-y-light;
-            right: -4px;
-        }
-    }
-}
-
-
-
-
-
-// @COMPS
-// ----------------------------
-
-.s-competition {
-    .competition-ribbon {
-        line-height: 43px;
-        text-align: center;
-        text-shadow: 0 -1px 1px @white;
-    }
-}
 
 
 
@@ -1681,142 +1326,6 @@ textarea.ui-input-text {
 }
 
 
-// @DASH
-// -------------------------
-
-
-
-.s-dash-wrapper{
-    min-height: 418px;
-    position: relative;
-}
-
-.s-dash-footer{
-    overflow: hidden;
-    .ui-btn-inner{
-        .ui-icon{
-            background-image: url('@{gfx}@{gfxDash}');                 
-            width: 64px;
-            height: 32px;
-            top: 6px;
-            margin-left: -32px;
-            &.ui-icon-person{
-                background-position: @gfxDash-x @gfxDash-person-y;
-            }
-            &.ui-icon-search{
-                background-position: @gfxDash-x @gfxDash-search-y;
-
-            }
-        }
-    }
-}
-
-#dash.x-edit{
-    .s-dash-wrapper {
-        margin-top: 88px;
-        z-index: 3;
-    }
-    .s-dash-footer{
-        padding-bottom: @padding * 3;
-    }
-    
-} 
-
-.s-dash-edit-done{
-    .x-edit-dash{
-        .border-radius(@cornersRound);
-        .ui-icon-check{
-            background-position: @gfxIcons-check-x @gfxIcons-y-highlight;
-        }
-    }
-}
-
-
-// @X
-
-// @TUMBLR DASH
-// ------------------------
-
-.s-tumblr-item{
-    min-height: @thumbSize;
-   height: @thumbSize;
-   overflow: hidden;
-    margin: @padding + 1 -@padding;
-    position: relative;
-    display: block;
-    .s-tumblr-exceprt{
-        text-align: left;
-        background-color: @grayLighter;
-        padding: @padding * 2;
-        min-height: @thumbSize;
-        .box-sizing(border-box);
-        .border-radius(@corners);
-
-        .s-crop-content{
-            text-overflow: ellipsis;
-            overflow: hidden;
-            height:62px;
-        }
-        blockquote{
-            margin: @padding;
-            border-left: solid 2px @gray;
-            padding-left: @padding * 2;
-            font-family: @fontSerif;
-            font-style: italic;
-            font-size: @fontSizeUsername;
-            .s-small-text{
-                display: inline-block;
-                color: @grayDark;
-                margin-top: @padding;
-                font-size: @fontSize;
-                font-family: @fontSerif;
-                font-style: italic;
-            }
-        }
-        p{
-            margin: @padding * 1.5 @padding @padding @padding;
-            color: @grayDark;
-            font-family: @fontSerif;
-            font-style: italic;
-            font-size: @fontSizeSmall;
-        }
-        .s-tumblr-details{
-            position: relative;
-            font-size: @fontSizeSmall;
-            color:  @gray;
-            line-height: @gfxTumblr-grid;
-            height: @gfxTumblr-grid;
-            padding-right:@gfxTumblr-grid;
-            margin-left: 4px;
-            .box-sizing(border-box);
-            top: @padding;
-            .tumblr-icon{
-                display: block;
-                position: absolute;
-                right: 0;
-                top: 0;
-            }
-        }
-        &.s-tumblr-photo,
-        &.s-tumblr-video{
-            margin-left: @thumbSize + 2px;
-            blockquote{
-                margin-left: 0;
-                border-left: 0;
-            }
-
-        }
-    }
-    .s-tumblr-thumb{
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: @thumbSize;
-        height: @thumbSize;
-    }
-}
-
-
 
 
 // @UPLOADING
@@ -2081,7 +1590,7 @@ textarea.ui-input-text {
                .ui-icon-location{background-position: @gfxAction-x @gfxAction-location-y;}
             }
 
-            .ui-icon-arrow-right{background-position: @gfxAction-x @gfxAction-arrow-right-y;}
+            .ui-icon-arrow-right{background-position: @gfxAction-x @gfxAction-arrow-r-y;}
             .ui-icon-location{background-position: @gfxAction-x @gfxAction-location-y;}
             .ui-icon-venue{background-position: @gfxAction-x @gfxAction-venue-y;}
 
@@ -2146,111 +1655,6 @@ textarea.ui-input-text {
     .border-radius(@corners)!important;
     span{
         display: none;
-    }
-}
-
-
-// @ACTIVITY
-// -------------------------
-
-
-.s-activity-streams{
-    margin-bottom: 0;
-    .ui-bar.s-arrow-d-left .ui-btn-text{
-        padding-left: @padding * 2;
-    }
-    .s-activity-item{
-        border-top: solid 1px @grayLighter;
-        margin-top: @padding;
-        .s-activity-desc{
-            font-size: @fontSize;
-            line-height: @fontSize;
-            color: @gray;
-            font-family:@font;
-        }
-        .s-small-text{
-            color: @gray;
-        }
-    }
-    .s-image-link{
-        left: -@paddingGrid;
-    }
-    .s-activity-item{
-        border-top: solid 1px @grayLighter;
-        margin-top: @paddingElement;
-    }
-    .s-comments-list{
-        .s-comment-item.ui-li-has-icon{
-            margin-top: @padding * 2;
-            padding-top: @padding * 2!important;
-            .ui-link-inherit{
-                padding-left: @avatarSize + @paddingGrid!important;
-                min-height: @avatarSize;
-            }
-        }
-    }
-    .s-image-likes{
-        min-height: @avatarSize;
-        .s-like-icons-list{
-            margin-top: @padding * 2;
-        }
-        .s-like-icon{
-            margin-bottom: @paddingGrid;
-        }
-    }
-    .s-activity-follow-item{
-        margin-top: @padding * 2;
-        min-height:  @avatarSize;
-        margin-bottom: 0;
-        .ui-link{
-            padding-left:  @avatarSize;
-            padding-top: @padding * 2;
-            min-height: @avatarSize;
-        }
-        .ui-li-icon{
-            left: -@paddingGrid;
-        }
-    }
-    .s-activity-image-item{
-        min-height: @thumbSize;
-        padding-left: @thumbSize + @paddingGrid;
-        margin-bottom: @padding * 2 + @paddingGrid;
-    }
-    
-    .s-photo-activity{
-        .s-activity-item:first-child{
-            border-top: none;
-            padding-top: 0!important;
-        }
-    }
-
-    .s-activity-item{
-        &:first{
-            border-top: none;
-            margin-top: 0!important;
-            padding-top: 0!important;
-        }
-    }
-    
-    .s-activity-image-item{
-        position: relative;
-        min-height: @thumbSize;
-        padding-left: @thumbSize + @paddingGrid;
-        margin-bottom: @padding * 2 + @paddingGrid;
-        .s-activity-item:first{
-            border-top: none;
-            margin-top: 0!important;
-            padding-top: 0!important;
-        }
-    }
-
-    // If the first item (after the top bar) is a follow item get rid of its top border */
-    .s-activity-stream:nth-child(2){
-        .s-activity-follow-item{
-            border-top: none;
-            margin-top: 0!important;
-            padding-top: 0!important;
-        }
     }
 }
 
@@ -2806,18 +2210,18 @@ div.ps-carousel-item-loading{
     }
 }
 
-.s-spots-results-header{
-    position: relative;
-    top: -@padding;
-    .ui-btn-text{
-        padding-left: 0;
-    }
+
+
+
+.spots-results-content{
+    background-color: @grayDark;
 }
 
 .s-spot-list-item{
-    margin-bottom: @paddingElement / 2;
     padding-bottom: @paddingElement / 2;
-    border-bottom: @borderGrayLighter;
+    padding-top: @paddingElement / 2;
+    border-top: @borderGrayDark;
+     border-bottom: none;
     padding-left: @padding;
     padding-right: @padding * 2;
     min-height:@thumbSize;
@@ -2831,12 +2235,16 @@ div.ps-carousel-item-loading{
             }
         }
         .s-spot-subheading{
-            color: @grayDark;
+            color: @grayLight;
+            font-style: italic;
+            font-size: @fontSizeSmall;
+            
         }
         .s-spot-address {
             margin-top: 10px;
             font-family: @font;
-            color: @grayDark;
+            color: @grayLight;
+            font-size: @fontSizeSmall;
         }
     }
     &.ui-btn-icon-right .ui-btn-inner .ui-icon.ui-icon-arrow-r{

@@ -134,29 +134,6 @@
 }
 
 
-// TAB BAR ICONS 
-//-----------------
-.tab-bar-icons{
-    .ui-icon{
-        width: @gfxTabBar-grid;
-        height: @gfxTabBar-grid;
-        background-image: url('@{gfx}@{gfxTabBar}');
-    }    
-    .ui-icon-dash {     background-position: @gfxTabBar-x @gfxTabBar-dash-y ;}
-    .ui-icon-map {     background-position: @gfxTabBar-x @gfxTabBar-map-y ;}
-    .ui-icon-share {     background-position: @gfxTabBar-x @gfxTabBar-camera-y ;}
-    .ui-icon-spots {     background-position: @gfxTabBar-x @gfxTabBar-spots-y ;}
-    .ui-icon-popular {     background-position: @gfxTabBar-x @gfxTabBar-popular-y ;}
-    .ui-icon-user {     background-position:@gfxTabBar-x @gfxTabBar-user-y ;}
-    .ui-btn-active{
-        .ui-icon-dash {     background-position: @gfxTabBar-x-hover @gfxTabBar-dash-y;}
-        .ui-icon-map {     background-position: @gfxTabBar-x-hover @gfxTabBar-map-y ;}
-        .ui-icon-share {     background-position: @gfxTabBar-x-hover @gfxTabBar-camera-y ;}
-        .ui-icon-spots {     background-position: @gfxTabBar-x-hover @gfxTabBar-spots-y ;}
-        .ui-icon-popular {     background-position: @gfxTabBar-x-hover @gfxTabBar-popular-y ;}
-        .ui-icon-user {     background-position:@gfxTabBar-x-hover @gfxTabBar-user-y ;}
-    }
-}
 
 
 // ACTION ICONS 
@@ -170,15 +147,15 @@
     }
     .ui-icon-heart      {   background-position: @gfxAction-x @gfxAction-heart-y}
     .ui-icon-comment    {   background-position: @gfxAction-x @gfxAction-comment-y}
-    .ui-icon-share      {   background-position: @gfxAction-x @gfxAction-share-y}
-    .ui-icon-more       {   background-position: @gfxAction-x @gfxAction-more-y}
     .ui-icon-arrow-d    {   background-position: @gfxAction-x @gfxAction-toggle-y}
     .ui-icon-arrow-u    {   background-position: @gfxAction-x @gfxAction-toggle-up-y}
     .ui-icon-delete     {   background-position: @gfxAction-x @gfxAction-close-y}
     .ui-icon-check      {   background-position: @gfxAction-x @gfxAction-tick-y}
-    .ui-icon-arrow-r    {   background-position: @gfxAction-x @gfxAction-more-y}
+    .ui-icon-arrow-r    {   background-position: @gfxAction-x @gfxAction-arrow-r-y}
     .ui-icon-venue-r    {   background-position: @gfxAction-x @gfxAction-venue-y}
     .ui-icon-location-r {   background-position: @gfxAction-x @gfxAction-location-y}
+    .ui-icon-pics-r {   background-position: @gfxAction-x @gfxAction-pics-y}
+    
     &.selected,
     &.ui-btn-hover-a, &.ui-btn-down-a, &.ui-btn-active-a,
     &.ui-btn-hover-b, &.ui-btn-down-b, &.ui-btn-active-b,
@@ -188,15 +165,15 @@
     &.ui-btn-hover-z, &.ui-btn-down-z, &.ui-btn-active-z{
         .ui-icon-heart      {   background-position: @gfxAction-x-hover @gfxAction-heart-y}
         .ui-icon-comment    {   background-position: @gfxAction-x-hover @gfxAction-comment-y}
-        .ui-icon-share      {   background-position: @gfxAction-x-hover @gfxAction-share-y}
-        .ui-icon-more       {   background-position: @gfxAction-x-hover @gfxAction-more-y}
         .ui-icon-arrow-d    {   background-position: @gfxAction-x-hover @gfxAction-toggle-y}
         .ui-icon-arrow-u    {   background-position: @gfxAction-x-hover @gfxAction-toggle-up-y}
         .ui-icon-delete     {   background-position: @gfxAction-x-hover @gfxAction-close-y}
         .ui-icon-check      {   background-position: @gfxAction-x-hover @gfxAction-tick-y}
-        .ui-icon-arrow-r    {   background-position: @gfxAction-x-hover @gfxAction-more-y}
+        .ui-icon-arrow-r    {   background-position: @gfxAction-x-hover @gfxAction-arrow-r-y}
         .ui-icon-venue-r    {   background-position: @gfxAction-x-hover @gfxAction-venue-y}
         .ui-icon-location-r {   background-position: @gfxAction-x-hover @gfxAction-location-y}
+        .ui-icon-pics-r {   background-position: @gfxAction-x-hover @gfxAction-pics-y}
+    
     }
 }
 
@@ -300,21 +277,6 @@
               .ui-icon-refresh,&.ui-icon-refresh{background-position: @gfxBar-x-d @gfxBar-refresh-y;}
        }
     
-}
-
-// TUMBLR ICONS 
-//-----------------
-.ui-icon.tumblr-icon{   
-    background-image: url('@{gfx}@{gfxTumblr}');
-    width: @gfxTumblr-grid!important;
-    height: @gfxTumblr-grid!important;
-    &.ui-icon-tumblr-text{background-position: @gfxTumblr-x @gfxTumblr-text-y;}
-    &.ui-icon-tumblr-photo{background-position: @gfxTumblr-x @gfxTumblr-photo-y;}
-    &.ui-icon-tumblr-quote{background-position: @gfxTumblr-x @gfxTumblr-quote-y;}
-    &.ui-icon-tumblr-link{background-position: @gfxTumblr-x @gfxTumblr-link-y;}
-    &.ui-icon-tumblr-video{background-position: @gfxTumblr-x @gfxTumblr-video-y;}
-    &.ui-icon-tumblr-audio{background-position: @gfxTumblr-x @gfxTumblr-audio-y;}
-    &.ui-icon-tumblr-chat{background-position: @gfxTumblr-x @gfxTumblr-chat-y;}
 }
 
 
@@ -509,15 +471,3 @@
     .ui-icon-link,&.ui-icon-link{background-position: @gfxProfile-x @gfxProfile-link-y;}
 }
 
-// COMPETITION ICONS
-//-------------------
-
-.competition-ribbon {
-    background-position: @gfxCompRibbon-x @gfxCompRibbon-y;
-    background-image: url('@{gfx}@{gfxCompRibbon}');
-    width: @gfxCompRibbon-width;
-    height: @gfxCompRibbon-height;
-    position: absolute;
-    bottom: -5px;
-    right: -5px;
-}

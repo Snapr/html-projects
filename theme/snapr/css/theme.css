@@ -3226,6 +3226,14 @@ div[data-role="dialog"] {
   -moz-border-radius: 8px;
   border-radius: 8px;
 }
+a,
+a:link,
+a:visited,
+a:hover,
+a:active {
+  text-decoration: none;
+  color: #666666;
+}
 .s-username {
   font-family: 'MuseoSansRounded700', Helvetica, Arial, sans-serif;
   font-weight: normal;

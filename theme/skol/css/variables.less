@@ -7,8 +7,8 @@
 @snaprYellow:           #ffff00; 
 @snaprYellowTint:       #ffe400;
 
-@yellow:                @snaprYellow; 
-@yellowTint:            @snaprYellowTint; 
+@yellow:                #ffcc33; 
+@yellowTint:            #ffcc33; 
 @orange:                #ffcc00; 
 @orangeTint:            #ff8400;
 @blue:                  #4185f4; 
@@ -28,16 +28,16 @@
 @grayLightBg:           #fbfbfb;
 @grayLightBgTint:       #d3d3d3;
 
-@grayLighter:           #f7f7f7;
-@grayLight:             #ccc;
-@gray:                  #999;
-@grayDark:              #666;
-@grayDarker:            #474747;
+@grayLighter:           #a7a9ac;// Heading copy
+@grayLight:             #aaaaaa;// Copy on dark body
+@gray:                  #464545;// Med bar
+@grayDark:              #3f3f3f;// Dark body
+@grayDarker:            #2a2a2a;// Button BGs
 
-@grayDarkBgTint:        #26282a;
-@grayDarkBg:            #434748;
+@grayDarkBgTint:        #2a2a2a;
+@grayDarkBg:            #2c2c2c; // Fields on BG
 
-@blackTrans:            rgba(0, 0, 0, .6);
+@blackTrans:            rgba(0, 0, 0, .3);
 @blackTint:             #1e2122;
 @black:                 #000;
 
@@ -68,7 +68,7 @@
 @borderGrayLighter:     solid 1px #e4e4e4;
 @borderGrayLight:       solid 1px @grayLight;
 @borderGray:            solid 1px rgba(255,255,255,.4);
-@borderGrayDark:        solid 1px rgba(255,255,255,.1);
+@borderGrayDark:        dotted 1px @black;
 @borderBlack:           solid 1px @black;
 
 
@@ -86,13 +86,15 @@
 // Fonts
 // -------------------------
 
-@font:                  Helvetica, Arial, sans-serif;
-@fontSpecial:          'MuseoSansRounded700', Helvetica, Arial, sans-serif; 
-@fontButtons:          @fontSpecial;
 @fontSerif:             Georgia,'Times New Roman', Times, sans-serif; 
+@fontSans:              Helvetica, Arial, sans-serif; 
+
+@font:                 @fontSerif;
+@fontSpecial:          'PlutoHeavy', Helvetica, Arial, sans-serif; 
+@fontButtons:          @fontSpecial;
 
 @fontSize:              15px;
-@fontSizeSmall:         12px;
+@fontSizeSmall:         13px;
 @fontSizeUsername:      16px;
 @fontSizeHeading:       @fontSizeUsername;
 @fontSizePageTitle:     @fontSizeUsername;
@@ -108,11 +110,11 @@
     text-transform: none;
     -webkit-font-smoothing: antialiased;
     text-decoration: none;
-    text-transform: lowercase;
+    text-transform: uppercase;
     font-size: @fontSizeBtn;
 }
 .button-font-small(){
-    font-family: @font;
+    font-family: @fontSans;
     font-weight: bold;
     font-size: @fontSizeSmall;
 }
@@ -129,20 +131,21 @@
 .title-bar-font(){
     font-family: @fontSpecial;
     font-weight: normal;
-    text-transform: lowercase;
+    text-transform: uppercase;
+    
     font-size: @fontSizeHeading;
 }
 .ui-bar-font(){
     font-family: @fontSpecial;
     font-weight: bold;
     font-style: normal;
-    text-transform: lowercase;
+    text-transform: uppercase;
 }
 .username-font(){
     font-family: @fontSpecial;
     font-weight: normal;    
     font-size: @fontSizeUsername;
-    text-transform: none;
+    text-transform: uppercase;
 }
 
 
@@ -150,21 +153,23 @@
 // Corners
 // -------------------------
 
-@corners:                6px;
-@cornersRound:           20px;
-@cornersPage:            8px;
-@cornersGeneral:         6px; 
-@cornersSmall:           4px; 
+@corners:                3px;
+@cornersRound:           30px;
+@cornersPage:            4px;
+@cornersGeneral:         3px; 
+@cornersSmall:           2px; 
 @cornersNone:            0px; 
 
 
 // Padding
 // -------------------------
 
-@padding:               4px;
+@padding:               5px;
 @paddingElement:        @padding * 2;
 @paddingFeed:           @padding * 2;
 @paddingGrid:           4px;
+
+@paddingButton:         6px;
 
 @inlineBlock:             2px;
 
@@ -183,8 +188,8 @@
 
 @barHeight:             36px;
 
-@topBarHeight:          46px;
-@topBarBtnHeight:       44px;
+@topBarHeight:          54px;
+@topBarBtnHeight:       50px;
 
 @tabBarHeight:          56px;
 
