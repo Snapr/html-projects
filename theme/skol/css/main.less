@@ -8,6 +8,7 @@
 
 body{
     color: @grayLighter;
+    font-family: @font;
 }
 
 
@@ -57,7 +58,7 @@ div[data-role="header"]{
     .ui-btn-right .ui-btn-icon-notext{
         border: none;
         background: none;
-        width: @gfxTopBar-grid;
+        width: @gfxTopBar-grid - 4px;
         height: @gfxTopBar-grid;
         top: -4px;
         .ui-btn-inner {
@@ -177,7 +178,8 @@ a:active{
 
 .s-username{
     .username-font();
-    color: @grayDarker;
+    color: @grayLighter;
+    text-shadow: black 0px 1px 1px;
 }
 
 .s-small-username{
@@ -251,13 +253,19 @@ a:active{
 
 .ui-bar{
     margin: 0 -@padding * 2;
-    .border-top-radius(@cornersPage); 
+    .border-top-radius(@cornersSmall); 
    .border-bottom-radius(0);  
    .button-font-light();
     height: @barHeight;
     line-height: @barHeight;
-    padding-top:0;
-    padding-bottom: 0; 
+    padding: 0 @padding;
+    text-shadow: @bigTextShadow;
+    strong{
+        font-size: @fontSizeUsername;
+        text-transform: uppercase;
+        font-style: normal;
+        
+    }
     .box-sizing(border-box);
     .ui-btn,
     &.ui-btn{
@@ -273,7 +281,6 @@ a:active{
                 font-size: @fontSizeUsername;
                 text-transform: uppercase;
                 font-style: normal;
-                
             }
             .ui-icon{
                 display: inline-block;
@@ -654,7 +661,17 @@ textarea.ui-input-text {
 // @IMAGES
 // -------------------------
 
-
+.s-image-loader-bg{
+    background-color: @grayDark;
+    border-top: @borderGrayDark;
+    border-bottom: @borderGrayDark;
+    background-image: url('@{gfx}@{gfxImageLoad}');
+    .s-main-image{
+        //pull the image over the borders
+        margin-top: -1px;
+        margin-bottom: -1px;
+    }
+}
 
 
 // @STREAMS
@@ -915,6 +932,19 @@ textarea.ui-input-text {
     }
 }
 
+.s-main-feed-content{
+    background-color: @gray;
+    .box-shadow(@itemShadow);
+    .border-radius(@cornersSmall);
+    margin-bottom: @padding * 2;
+    text-shadow: @textShadow;
+    .ui-bar{
+        margin: 0;
+        border-bottom: @borderGrayDark;
+        background: @grayDark;
+    }
+}
+
 
 // @FEEDUSER 
 
@@ -1022,44 +1052,60 @@ textarea.ui-input-text {
 }
 
 .s-image-item-block{
+    margin: 0 0 @padding 0;
     .s-image-item-topbar{
         height:  @avatarSize + 1px;//haxy to account for mysterious icon overhang
-        margin-bottom: @padding * 2;
+        margin: 0;
         vertical-align: middle;
         font-size: @fontSizeSmall;
         color: @grayLight;
-        line-height:  @avatarSize;
+        line-height:  @barHeight;
         white-space: nowrap;
         overflow: hidden;
+        padding-left: @padding;
         text-overflow: ellipsis;
+       
+       .s-username{
+           font-size: @fontSizeUsername;
+       }
+       
         .user-icon-link{
             vertical-align: middle;
-            height: @avatarSize;
+            height: @barHeight;
             display: inline-block;
             width: @avatarSize;
         }
+         
         .ui-link,
         span{
             height:@avatarSize;
-            line-height:@avatarSize;
+            line-height:@barHeight;
             vertical-align: middle;
             display: inline-block;
         }
         .s-image-time{
-            color: @gray;
+            color: @grayLight;
+            font-style: italic;
             .ui-icon-clock{
                 background-position: @gfxBar-x - 9px @gfxFeed-time-y;
                 width: 14px;
             }
         }
+        
+        .s-avatar{
+                display: none;
+            }
+        
         .s-image-time-and-location{
-            color: @gray;
+            color: @grayLight;
+            font-style: italic;
             .ui-link{
-                color: @gray;
+                color: @grayLight;
             }
             .ui-icon-venue{
                 background-position: @gfxBar-x - 10px @gfxFeed-venue-y;
                 width: 10px;
+                color: @yellow;
             }
         }
     }
@@ -1073,14 +1119,13 @@ textarea.ui-input-text {
     .s-image-description{
         margin-top: @padding * 2;
         margin-bottom: -@padding * 2;
+        padding: @padding;
+        text-align: center;
         .ui-icon-quote{
-            display: inline-block;
-            height: @fontSize;
-            background-position: -6px @gfxFeed-quote-y - 8;
-            width: 16px;
+            display: none;
         }
         .x-goto-spot{
-            color: @gray;
+            color: @yellow;
         }
     }
     .s-image-item-base{
@@ -2225,6 +2270,8 @@ div.ps-carousel-item-loading{
     .border-radius(@corners);
     margin-bottom: @padding * 2;
 }
+
+
 
 .s-spot-list-item{
     padding-bottom: @paddingElement / 2;
