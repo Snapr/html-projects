@@ -5389,6 +5389,7 @@ div.ps-carousel-item-loading {
   -webkit-border-radius: 1px;
   -moz-border-radius: 1px;
   border-radius: 1px;
+  margin-bottom: 10px;
 }
 .s-spot-list-item {
   padding-bottom: 5px;
@@ -5398,6 +5399,9 @@ div.ps-carousel-item-loading {
   padding-left: 5px;
   padding-right: 10px;
   min-height: 101px;
+}
+.s-spot-list-item.ui-btn-icon-right .ui-btn-inner {
+  padding-right: 0;
 }
 .s-spot-list-item .s-spot-item {
   min-height: 101px;
@@ -5444,12 +5448,12 @@ div.ps-carousel-item-loading {
   top: 0;
   width: 60px;
   height: 60px;
-  background-color: #EFEFEE;
+  background-color: rgba(0, 0, 0, 0.3);
   margin: 6px;
   border-radius: 45px;
   text-align: center;
   padding: 15px;
-  color: white;
+  color: #464545;
   text-shadow: none;
   font-weight: bold;
   line-height: 18px;

@@ -2223,6 +2223,7 @@ div.ps-carousel-item-loading{
     background-color: @grayDark;
     .box-shadow(@itemShadow);
     .border-radius(@corners);
+    margin-bottom: @padding * 2;
 }
 
 .s-spot-list-item{
@@ -2233,6 +2234,10 @@ div.ps-carousel-item-loading{
     padding-left: @padding;
     padding-right: @padding * 2;
     min-height:@thumbSize;
+    
+    &.ui-btn-icon-right .ui-btn-inner {
+        padding-right: 0;
+    }
     
     .s-spot-item {
         min-height: @thumbSize;
@@ -2279,12 +2284,12 @@ div.ps-carousel-item-loading{
             top: 0;
             width: 60px;
             height: 60px;
-            background-color: #EFEFEE;
+            background-color: @blackTrans;
             margin: 6px;
             border-radius: 45px;
             text-align: center;
             padding: 15px;
-            color: white;
+            color: @gray;
             text-shadow: none;
             font-weight: bold;
             line-height: 18px;
