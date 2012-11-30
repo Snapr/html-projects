@@ -19,6 +19,8 @@ return {
         tumblr_xauth: true,
         twitter_xauth: true,
 
+        app_sharing: true,
+
         privacy_controls: false,
         moderation_controls: false,
         follow_controls: false,
