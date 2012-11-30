@@ -10,9 +10,13 @@ require(['config'], function(config){
     // requiring config initalizes it
     window.config = config;  // export for templates
 
-    require(['languages/'+config.get('language')], function(language){
-        window.T = language;  // export for templates
-    });
+    window.T = function(text){ return text; };
+    if(config.get('language')){
+        require(['../theme/'+window.theme+'/languages/'+config.get('language')], function(language){
+            window.T = language;  // export for templates
+        });
+    }
+
 });
 
 requirejs.config({

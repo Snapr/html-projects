@@ -4,7 +4,7 @@ var config_model = Backbone.Model.extend({
     defaults:{
         environment: 'dev',
 
-        language: 'english',
+        language: undefined,
 
         initial_view: 'home',
 
@@ -70,6 +70,23 @@ var config_model = Backbone.Model.extend({
         }, this);
         this.bind('change:environment', update_env);
         this.set(_.extend(this.defaults, theme_config.config));
+
+        var config = this,
+            match = window.location.href.match(/#\/.*\?(.*)$/),
+            query = match && match[1];
+        if(query && query.indexOf('=') > -1) {
+            _.each(query.split('&'), function (part) {
+
+                var kv = part.split('='),
+                    key = kv[0],
+                    value = kv[1];
+
+                if(key == 'lang') {
+                    config.set('language', value);
+                }
+            });
+        }
+
         update_env();
     }
 });
