@@ -985,12 +985,12 @@ textarea.ui-input-text {
             
             .sk-bottom-buttons{
                 position: absolute;
-                top: 100px;
+                top: 90px;
                 width: 200px;
                 left: -100px;
                 text-align: center;
                 .ui-btn{
-                    margin-bottom: @padding * 4;
+                    margin-bottom: @padding * 3;
                 }
             }
 
@@ -1396,8 +1396,12 @@ textarea.ui-input-text {
             position: relative;
             min-height: @avatarSizeLarge;
             .real-name{
-                line-height: @fontSizeUsername;
+                line-height: @gfxShareSmall-grid;
+                vertical-align: center;
                 font-size:  @fontSizeUsername;
+                .username-font();
+                
+                margin-bottom: @padding;
                 .s-facebook-sharing{
                     position: absolute;
                     right: 0;
