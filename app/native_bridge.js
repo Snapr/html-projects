@@ -84,7 +84,9 @@ define(['config', 'collections/upload_progress'], function(config, upload_progre
     };
 
     window.queue_settings = function(upload_mode, paused) {
+        console.log('queue_settings upload_mode: ' + upload_mode);
         config.set('upload_mode', upload_mode);
+        console.log('queue_settings paused: ' + paused);
         config.set('upload_paused', paused);
     };
 
