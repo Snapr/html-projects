@@ -3830,6 +3830,11 @@ a:active {
   color: #ffffff;
   text-shadow: rgba(0, 0, 0, 0.5) 0px -1px 1px;
 }
+.s-avatar,
+.s-avatar-med,
+.s-avatar-large {
+  background-color: #2a2a2a;
+}
 .ui-controlgroup-label,
 .ui-select .ui-btn {
   font-family: Georgia, 'Times New Roman', Times, sans-serif;
@@ -4517,7 +4522,13 @@ textarea.ui-input-text {
   top: 0;
 }
 .s-user-profile .s-profile-details .s-user-icon-left .s-profile-icon {
-  background-color: #ffffff;
+  background-color: #2a2a2a;
+  -moz-box-shadow: rgba(0, 0, 0, 0.5) 0 1px 12px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.5) 0 1px 12px;
+  box-shadow: rgba(0, 0, 0, 0.5) 0 1px 12px;
+}
+.s-user-profile .s-profile-details .s-user-icon-left .s-profile-icon .s-avatar-large {
+  border-top: solid 1px rgba(255, 255, 255, 0.1);
 }
 .s-user-profile .s-profile-details .s-details {
   padding-left: 110px;
@@ -4542,6 +4553,7 @@ textarea.ui-input-text {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  font-style: italic;
 }
 .s-user-profile .s-profile-details .s-details .user-website .ui-icon-link {
   display: inline-block;

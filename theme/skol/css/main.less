@@ -644,6 +644,15 @@ a:active{
 
 
 
+// @AVATARS
+// -------------------------
+
+.s-avatar,
+.s-avatar-med,
+.s-avatar-large{
+    background-color: @grayDarker;
+}
+
 
 
 // @FORMS
@@ -1045,6 +1054,7 @@ textarea.ui-input-text {
             .border-radius(0);
             .border-top-left-radius (@cornersPage);
             overflow:hidden;
+            
         }
         .s-avatar-large{
             background-color: @grayLight;
@@ -1388,7 +1398,13 @@ textarea.ui-input-text {
             left: 0;
             top: 0;
             .s-profile-icon{
-                background-color: @white;
+                background-color: @grayDarker;
+                .box-shadow(@itemShadow);
+                .s-avatar-large{
+                    border-top: @borderWhite;
+                    
+                }
+                
             }
         }
         .s-details{
@@ -1412,6 +1428,7 @@ textarea.ui-input-text {
                 white-space: nowrap;
                 overflow: hidden;
                 text-overflow: ellipsis;
+                font-style: italic;
                 .ui-icon-link{
                     display: inline-block;
                     vertical-align: middle;
