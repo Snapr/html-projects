@@ -10,6 +10,8 @@ return original_share.extend({
     toggle_sharing: function( e ){
         local_storage.set( e.target.id, !!$(e.target).attr("checked") );
 
+        this.toggle_sharing_message();
+
         var venue = (this.$('#foursquare-sharing').attr("checked") || this.$('#app-sharing').attr("checked"));
 
         if (e.target.id == "foursquare-sharing" || e.target.id == "app-sharing"){

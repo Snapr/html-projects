@@ -19,7 +19,8 @@ return {
         tumblr_xauth: true,
         twitter_xauth: true,
 
-        app_sharing: true,
+        app_sharing_opt_in: true,
+        app_sharing_opt_in_messaqge: true,
 
         privacy_controls: false,
         moderation_controls: false,

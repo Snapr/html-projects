@@ -23,7 +23,8 @@
                     <div class="s-share-settings-layer s-full-height s-trans-bg">
                         <div class="s-share-settings">
                                 <% if(comp){ %>Comp: <%= comp.get('title') %><% } %>
-                                <textarea name="description" id="description" class="x-description" placeholder="<%= T('Add text') %>..." data-theme="d"><%= saved_description %></textarea>
+                                <div class="x-sharing-message">If you turn sharing on it will share stuff. You have been warned.</div>
+                                <textarea name="description" id="description" class="x-description" style="display:none;" placeholder="<%= T('Add text') %>..." data-theme="d"><%= saved_description %></textarea>
 
                                 <% if(comp && comp.has('hashtag')){ %><span class="s-comp-hashtag"><%= comp.get('hashtag') %></span><% } %>
 

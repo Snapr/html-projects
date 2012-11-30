@@ -310,6 +310,8 @@ return page_view.extend({
     toggle_sharing: function( e ){
         local_storage.set( e.target.id, !!$(e.target).attr("checked") );
 
+        this.toggle_sharing_message();
+
         if (e.target.id == "foursquare-sharing"){
             if(this.check_geolocation()){
                 this.$(".x-no-foursquare-venue").toggle();
@@ -330,6 +332,21 @@ return page_view.extend({
                 $(e.target).attr("checked", false);
             }
         }
+    },
+
+    toggle_sharing_message: function(){
+        if(!config.get('app_sharing_opt_in')){
+            return;
+        }
+        var this_view = this,
+            sharing = _.any(
+                ['facebook', 'foursquare', 'twitter', 'tumblr', 'app'],
+                function(service){
+                    return this_view.$('#' + service + '-sharing').attr("checked");
+                }
+            );
+        this_view.$('.x-sharing-message').toggle(!sharing);
+        this_view.$('.x-description').toggle(sharing);
     },
 
     venue_search: function(){
@@ -568,7 +585,7 @@ return page_view.extend({
 
             // default to private if not set above
             if( !params.status){
-                params.status = config.get('app_sharing') ? 'public_non_app' : "private";
+                params.status = config.get('app_sharing_opt_in') ? 'public_non_app' : "private";
             }
 
             if(config.get('app_group')){
