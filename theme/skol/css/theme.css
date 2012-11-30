@@ -4738,7 +4738,7 @@ textarea.ui-input-text {
   content: "Public";
 }
 .s-share-photo .s-upload-image-sharing .ui-checkbox {
-  margin-right: 10px;
+  margin-right: 0;
 }
 .s-share-photo .s-upload-image-sharing .ui-checkbox.ui-disabled {
   opacity: .5;
@@ -4765,6 +4765,33 @@ textarea.ui-input-text {
 .s-share-photo .s-upload-image-sharing .ui-btn-inner {
   padding: 0;
 }
+.s-share-photo .s-upload-image-sharing label[for="app-sharing"] {
+  background-color: transparent;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  border: none;
+}
+.s-share-photo .s-upload-image-sharing label[for="app-sharing"] .ui-icon {
+  background-position: 0 -200px;
+}
+.s-share-photo .s-upload-image-sharing label[for="app-sharing"].ui-checkbox-on {
+  background-color: transparent;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  border: none;
+}
+.s-share-photo .s-upload-image-sharing label[for="app-sharing"].ui-checkbox-on .ui-icon {
+  background-position: -50px -200px;
+}
+.s-share-photo .s-upload-image-sharing label[for="twitter-sharing"] {
+  background-color: transparent;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  border: none;
+}
 .s-share-photo .s-upload-image-sharing label[for="twitter-sharing"] .ui-icon {
   background-position: 0 0px;
 }
@@ -4777,6 +4804,13 @@ textarea.ui-input-text {
 }
 .s-share-photo .s-upload-image-sharing label[for="twitter-sharing"].ui-checkbox-on .ui-icon {
   background-position: -50px 0px;
+}
+.s-share-photo .s-upload-image-sharing label[for="facebook-sharing"] {
+  background-color: transparent;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  border: none;
 }
 .s-share-photo .s-upload-image-sharing label[for="facebook-sharing"] .ui-icon {
   background-position: 0 -50px;
@@ -4791,6 +4825,13 @@ textarea.ui-input-text {
 .s-share-photo .s-upload-image-sharing label[for="facebook-sharing"].ui-checkbox-on .ui-icon {
   background-position: -50px -50px;
 }
+.s-share-photo .s-upload-image-sharing label[for="tumblr-sharing"] {
+  background-color: transparent;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  border: none;
+}
 .s-share-photo .s-upload-image-sharing label[for="tumblr-sharing"] .ui-icon {
   background-position: 0 -100px;
 }
@@ -4803,6 +4844,13 @@ textarea.ui-input-text {
 }
 .s-share-photo .s-upload-image-sharing label[for="tumblr-sharing"].ui-checkbox-on .ui-icon {
   background-position: -50px -100px;
+}
+.s-share-photo .s-upload-image-sharing label[for="foursquare-sharing"] {
+  background-color: transparent;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  border: none;
 }
 .s-share-photo .s-upload-image-sharing label[for="foursquare-sharing"] .ui-icon {
   background-position: 0 -150px;

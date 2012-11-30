@@ -1642,7 +1642,7 @@ textarea.ui-input-text {
     }
     .s-upload-image-sharing{
         .ui-checkbox{
-            margin-right: @paddingElement;
+            margin-right: 0;
             &.ui-disabled{
                 opacity: .5;
                 pointer-events: initial;
@@ -1667,8 +1667,25 @@ textarea.ui-input-text {
         .ui-btn-inner{
             padding: 0;
         }
+        
+         label[for="app-sharing"]{
+                background-color: transparent;
+                .box-shadow(none);
+                border: none;
+               .ui-icon{background-position: @gfxService-x @gfxShare-app-y;}
+               
+               &.ui-checkbox-on{
+                    background-color: transparent;
+                    .box-shadow(none);
+                    border: none;
+                    .ui-icon{background-position: @gfxService-x-hover @gfxShare-app-y;}
+               }
+            }
 
         label[for="twitter-sharing"]{
+            background-color: transparent;
+            .box-shadow(none);
+            border: none;
            .ui-icon{background-position: @gfxService-x @gfxShare-twitter-y;}
            &.ui-checkbox-on{
                 background-color: transparent;
@@ -1678,6 +1695,9 @@ textarea.ui-input-text {
            }
         }
         label[for="facebook-sharing"]{
+            background-color: transparent;
+            .box-shadow(none);
+            border: none;
            .ui-icon{background-position: @gfxService-x @gfxShare-facebook-y;}
            &.ui-checkbox-on{
                 background-color: transparent;
@@ -1687,6 +1707,9 @@ textarea.ui-input-text {
            }
        }
        label[for="tumblr-sharing"]{
+           background-color: transparent;
+           .box-shadow(none);
+           border: none;
            .ui-icon{background-position: @gfxService-x @gfxShare-tumblr-y;}
            &.ui-checkbox-on{
                 background-color: transparent;
@@ -1696,6 +1719,9 @@ textarea.ui-input-text {
            }
        }
        label[for="foursquare-sharing"]{
+           background-color: transparent;
+           .box-shadow(none);
+           border: none;
            .ui-icon{background-position: @gfxService-x @gfxShare-foursquare-y;}
            &.ui-checkbox-on{
                 background-color: transparent;
