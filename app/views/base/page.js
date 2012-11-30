@@ -165,7 +165,7 @@ return view.extend({
 
     back: function(e){
         if(this.options.back_url){
-            Backbone.history.navigate(this.options.back_url);
+            window.location.hash = this.options.back_url;
             if(e){
                 e.preventDefault();
             }
