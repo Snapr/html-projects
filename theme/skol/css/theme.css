@@ -4769,10 +4769,11 @@ textarea.ui-input-text {
   background-position: 0 0px;
 }
 .s-share-photo .s-upload-image-sharing label[for="twitter-sharing"].ui-checkbox-on {
-  background-color: #68d9ff;
-  -moz-box-shadow: inset 0 3px 20px #309dc2;
-  -webkit-box-shadow: inset 0 3px 20px #309dc2;
-  box-shadow: inset 0 3px 20px #309dc2;
+  background-color: transparent;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  border: none;
 }
 .s-share-photo .s-upload-image-sharing label[for="twitter-sharing"].ui-checkbox-on .ui-icon {
   background-position: -50px 0px;
@@ -4781,10 +4782,11 @@ textarea.ui-input-text {
   background-position: 0 -50px;
 }
 .s-share-photo .s-upload-image-sharing label[for="facebook-sharing"].ui-checkbox-on {
-  background-color: #507ab8;
-  -moz-box-shadow: inset 0 3px 20px #2e5998;
-  -webkit-box-shadow: inset 0 3px 20px #2e5998;
-  box-shadow: inset 0 3px 20px #2e5998;
+  background-color: transparent;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  border: none;
 }
 .s-share-photo .s-upload-image-sharing label[for="facebook-sharing"].ui-checkbox-on .ui-icon {
   background-position: -50px -50px;
@@ -4793,10 +4795,11 @@ textarea.ui-input-text {
   background-position: 0 -100px;
 }
 .s-share-photo .s-upload-image-sharing label[for="tumblr-sharing"].ui-checkbox-on {
-  background-color: #5a687d;
-  -moz-box-shadow: inset 0 3px 20px #2c3c54;
-  -webkit-box-shadow: inset 0 3px 20px #2c3c54;
-  box-shadow: inset 0 3px 20px #2c3c54;
+  background-color: transparent;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  border: none;
 }
 .s-share-photo .s-upload-image-sharing label[for="tumblr-sharing"].ui-checkbox-on .ui-icon {
   background-position: -50px -100px;
@@ -4805,10 +4808,11 @@ textarea.ui-input-text {
   background-position: 0 -150px;
 }
 .s-share-photo .s-upload-image-sharing label[for="foursquare-sharing"].ui-checkbox-on {
-  background-color: #34a0ce;
-  -moz-box-shadow: inset 0 3px 20px #29708e;
-  -webkit-box-shadow: inset 0 3px 20px #29708e;
-  box-shadow: inset 0 3px 20px #29708e;
+  background-color: transparent;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  border: none;
 }
 .s-share-photo .s-upload-image-sharing label[for="foursquare-sharing"].ui-checkbox-on .ui-icon {
   background-position: -50px -150px;
