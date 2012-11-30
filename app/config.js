@@ -38,8 +38,10 @@ var config_model = Backbone.Model.extend({
         me_username: 'me',
 
         show_tab_bar: true,
-
         photoswipe: true,
+
+        app_sharing_opt_in: false,
+        app_sharing_opt_in_messaqge: true,
 
         sort_order: 'date_utc',
 

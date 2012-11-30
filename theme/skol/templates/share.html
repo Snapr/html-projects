@@ -23,7 +23,8 @@
                     <div class="s-share-settings-layer s-full-height s-trans-bg">
                         <div class="s-share-settings">
                                 <% if(comp){ %>Comp: <%= comp.get('title') %><% } %>
-                                <textarea name="description" id="description" class="x-description" placeholder="<%= T('Add text') %>..." data-theme="d"><%= saved_description %></textarea>
+                                <div class="x-sharing-message">If you turn sharing on it will share stuff. You have been warned.</div>
+                                <textarea name="description" id="description" class="x-description" style="display:none;" placeholder="<%= T('Add text') %>..." data-theme="d"><%= saved_description %></textarea>
 
                                 <% if(comp && comp.has('hashtag')){ %><span class="s-comp-hashtag"><%= comp.get('hashtag') %></span><% } %>
 
@@ -31,8 +32,8 @@
                                 <fieldset data-role="controlgroup" data-type="horizontal" class="x-image-sharing s-upload-image-sharing">
                                     <legend><%= T('Share to') %>:</legend>
 
-                                    <input type="checkbox" name="skol-sharing" id="skol-sharing" <% if(local_storage.get( "skol-sharing" )){ %>checked="true"<%}%> />
-                                    <label for="skol-sharing"><span class="ui-icon"></span>Skol</label>
+                                    <input type="checkbox" name="app-sharing" id="app-sharing" <% if(local_storage.get( "app-sharing" )){ %>checked="true"<%}%> />
+                                    <label for="app-sharing"><span class="ui-icon"></span>Skol</label>
 
                                     <input type="checkbox" name="tweet" id="twitter-sharing" <%if (twitter_sharing){%>checked="true"<%}%> />
                                     <label for="twitter-sharing"><span class="ui-icon"></span>Twitter</label>

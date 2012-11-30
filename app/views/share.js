@@ -1,4 +1,4 @@
-/*global _  define require */
+/*global _  define require T */
 define(['config', 'backbone', 'views/base/page', 'models/photo', 'models/comp', 'models/geo_location', 'collections/foursquare_venue',
     'utils/geo', 'auth', 'utils/local_storage', 'utils/alerts', 'native_bridge', 'utils/dialog', 'utils/string'],
 function(config, Backbone, page_view, photo_model, comp_model, geo_location, foursquare_venue_collection, geo,
@@ -310,6 +310,8 @@ return page_view.extend({
     toggle_sharing: function( e ){
         local_storage.set( e.target.id, !!$(e.target).attr("checked") );
 
+        this.toggle_sharing_message();
+
         if (e.target.id == "foursquare-sharing"){
             if(this.check_geolocation()){
                 this.$(".x-no-foursquare-venue").toggle();
@@ -330,6 +332,21 @@ return page_view.extend({
                 $(e.target).attr("checked", false);
             }
         }
+    },
+
+    toggle_sharing_message: function(){
+        if(!config.get('app_sharing_opt_in')){
+            return;
+        }
+        var this_view = this,
+            sharing = _.any(
+                ['facebook', 'foursquare', 'twitter', 'tumblr', 'app'],
+                function(service){
+                    return this_view.$('#' + service + '-sharing').attr("checked");
+                }
+            );
+        this_view.$('.x-sharing-message').toggle(!sharing);
+        this_view.$('.x-description').toggle(sharing);
     },
 
     venue_search: function(){
@@ -541,14 +558,7 @@ return page_view.extend({
 
     share_app: function(){
         if (local_storage.get("appmode")){
-            var params = {},
-                d = new Date(),
-                device_time =d.getFullYear() + '-' +
-                    string_utils.zeroFill(d.getMonth() + 1, 2) + '-' +
-                    string_utils.zeroFill(d.getDate(), 2 ) + ' ' +
-                    string_utils.zeroFill(d.getHours(), 2 ) + ':' +
-                    string_utils.zeroFill(d.getMinutes(), 2 ) + ':' +
-                    string_utils.zeroFill(d.getSeconds(), 2 );
+            var params = {};
 
             _.each( this.$("form").serializeArray(), function( o ){
                 if (_.contains(["tumblr", "facebook_album", "tweet", "foursquare_checkin"], o.name)){
@@ -561,18 +571,21 @@ return page_view.extend({
                     params[o.name] = (o.value == "on");
                 }else if(o.name == "status" && o.value == "on"){
                     params.status = "public";
+                }else if(o.name == "app-sharing"){
+                    params.status = o.value == "on" ? "public" : "public_non_app";
                 }else{
                     params[o.name] = escape( o.value );
                 }
 
             }, this);
 
-            params.device_time = device_time;
+            var d = new Date();
+            params.device_time = string_utils.date_to_snapr_format(d);
             params.local_id = ''+d.getMonth()+d.getDay()+d.getHours()+d.getMinutes()+d.getSeconds();
 
             // default to private if not set above
             if( !params.status){
-                params.status = "private";
+                params.status = config.get('app_sharing_opt_in') ? 'public_non_app' : "private";
             }
 
             if(config.get('app_group')){
