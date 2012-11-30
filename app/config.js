@@ -81,7 +81,7 @@ var config_model = Backbone.Model.extend({
                     key = kv[0],
                     value = kv[1];
 
-                if(key == 'lang') {
+                if(key == 'language') {
                     config.set('language', value);
                 }
             });
