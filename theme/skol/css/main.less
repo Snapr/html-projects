@@ -192,6 +192,7 @@ a:active{
 .s-small-text{
     font-size: @fontSizeSmall;
     font-family: @font;
+    text-transform: none;
     .s-username{
         font-size: @fontSizeSmall;
     }
@@ -252,7 +253,7 @@ a:active{
 // -------------------------
 
 .ui-bar{
-    margin: 0 -@padding * 2;
+    margin: 0 0;
     .border-top-radius(@cornersSmall);
    .border-bottom-radius(0);
    .button-font-light();
@@ -260,6 +261,7 @@ a:active{
     line-height: @barHeight;
     padding: 0 @padding;
     text-shadow: @bigTextShadow;
+
     strong{
         font-size: @fontSizeUsername;
         text-transform: uppercase;
@@ -269,10 +271,16 @@ a:active{
     .box-sizing(border-box);
     .ui-btn,
     &.ui-btn{
+        .border-top-radius(@cornersSmall);
         .border-bottom-radius(0);
+        border-top: none;
+        padding: 0;
+        background: none;
         .ui-btn-inner{
             height: @barHeight;
             line-height: @barHeight;
+            background: none;
+            
         }
         .ui-btn-text{
             font-size: @fontSize;
@@ -299,16 +307,23 @@ a:active{
         }
     }
     &.ui-controlgroup-horizontal{
-        .box-shadow(0 1px 4px @shadowDark);
+        .box-shadow(none);
         border: none;
         .s-bar-left{
-            border-top: @borderWhite;
+            border-top: none;
+            .border-top-right-radius(0);
             border-right: none;
             .ui-btn-inner{
+                padding-left: 0;
+            }
+            .ui-icon{
+                display: none;
             }
         }
         .s-bar-right{
-            border-top: @borderWhite;
+            border-top: none;
+            .border-top-left-radius(0);
+            
             border-left: solid rgba(0,0,0,.1) 1px;
             .border-top-right-radius(@cornersPage)!important;
             .ui-btn-inner{
@@ -695,6 +710,12 @@ textarea.ui-input-text {
     }
 }
 
+.s-thumb-image,
+.s-css-thumb{
+    background-color: @grayDarker;
+    
+}
+
 
 // @STREAMS
 // -------------------------
@@ -703,6 +724,18 @@ textarea.ui-input-text {
 .s-image-streams{
     .x-stream{
         margin-bottom: @padding * 2 ;
+        background-color: @grayDark;
+        .border-radius(@cornersSmall);
+        .box-shadow(@itemShadow);
+        .ui-bar{
+            background-color: @gray;
+            border-bottom: @borderGrayDark;
+        }
+        
+        .s-thumbs-grid-med{
+            margin: 0 2px;
+            padding: 4px 0 2px 0;
+        }
 
         .x-thumbs{
             min-width: @thumbSize * 3 + @padding * 2;
@@ -711,7 +744,7 @@ textarea.ui-input-text {
             padding-left: @paddingGrid;
         }
         .s-load-more-inline{
-            background-color: @grayLighter;
+            background-color: @grayDarker;
             .ui-btn-text{
                .button-font-small();
                 bottom: 8px;
@@ -771,7 +804,7 @@ textarea.ui-input-text {
                         padding: 0;
                         width: 84px;
                         .border-radius(44px);
-                        color: white;
+                        color: @gray;
                         height: 84px;
                         vertical-align: middle;
                         line-height: 84px;
@@ -793,7 +826,7 @@ textarea.ui-input-text {
                     padding: 0;
                     width: 84px;
                     .border-radius(44px);
-                    color: white;
+                    color: @gray;
                     height: 84px;
                     vertical-align: middle;
                     line-height: 84px;
@@ -1501,15 +1534,18 @@ textarea.ui-input-text {
     .s-upload-progress-header{
         height: @thumbSize + @padding * 6;
     }
+    .s-upload-image-tag{
+        font-style: italic;
+        color: @grayLighter;
+    }
+    
     .s-upload-progress-item{
 
         .s-upload-info-block{
             padding-left: @thumbSize + @padding * 2;
              .ui-icon-quote{
-                 display: inline-block;
-                 height: @fontSize;
-                 background-position: -6px @gfxFeed-quote-y - 8;
-                 width: 20px;
+                 display: none;
+            
              }
             .upload-image-venue{
                a{
@@ -1528,6 +1564,13 @@ textarea.ui-input-text {
                 top: -2px;
             }
         }
+    }
+    
+    .s-upload-progress-item .s-upload-info-block .s-upload-shared-to li {
+
+        width: @gfxShareSmall-grid;
+        height: @gfxShareSmall-grid;
+        margin-right: 0;
     }
 
 }
@@ -1550,6 +1593,15 @@ textarea.ui-input-text {
             width: 24px;
         }
     }
+    .s-upload-progress-item .s-upload-image-thumb-gall {
+        .border-radius(@corners);
+        .box-shadow(@itemShadow);
+        border-top: @borderWhite;
+        .s-css-thumb{
+            .border-radius(@corners);
+            
+        }
+    }
 }
 
 
@@ -1558,15 +1610,15 @@ textarea.ui-input-text {
 //-----------------
 
 .s-progress-bar{
-    background-color: lighten(@grayLight, 10%);
+    background-color: @blackTrans;
     .s-bar-wrapper{
         .s-bar-prog{
             background-color: @yellow;
             .linear-gradient(@yellow, @yellowTint);
         }
         .s-bar-bg{
-            background-color: #C5C4C4;
-            .box-shadow(inset 0 0 9px 2px #AFAEAE);
+            background-color: transparent;
+            .box-shadow(inset 0 0 9px 2px black);
         }
     }
     .s-upload-message{
