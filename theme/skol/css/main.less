@@ -1614,62 +1614,7 @@ div[data-role="content"]{
     }
 
     .s-upload-image-privacy{
-        position: relative;
-        margin-top: @padding * 2;
-        height: 0;
-        margin-bottom: 0;
-        overflow: visible;
-
-        .ui-controlgroup-label {
-            display: none;
-        }
-        .ui-checkbox{
-            position: absolute;
-            right: -6px;
-            top: -4px;
-            width: auto;
-        }
-        .ui-btn{
-            background: none;
-            .box-shadow(none);
-            border: none;
-            font-family: @font;
-            font-weight: normal;
-            text-transform: lowercase;
-            height: 32px;
-        }
-        .ui-btn-inner{
-            padding: 0;
-        }
-        .ui-icon{
-            width: @gfxAction-grid;
-            height: @gfxAction-grid;
-            background-image: url('@{gfx}@{gfxAction}');
-            display: block;
-            position: absolute;
-            top: -8px;
-            right: 0;
-            background-color: transparent;
-        }
-        .ui-btn-text{
-            height: 32px;
-            padding-right: 28px;
-            overflow: hidden;
-            display: block;
-            vertical-align: top;
-            width: auto;
-        }
-        input{
-            visibility: hidden;
-        }
-        label[for="image-status"]{
-               .ui-icon{background-position: @gfxAction-x-hover @gfxAction-close-y;}
-               .ui-btn-text::before{content: "Private";}
-               &.ui-btn-active{
-                   .ui-icon{background-position: @gfxAction-x-hover @gfxAction-tick-y;}
-                   .ui-btn-text::before{content: "Public";}
-               }
-        }
+        display: none;
     }
     .s-upload-image-sharing{
         .ui-checkbox{
@@ -1749,6 +1694,11 @@ div[data-role="content"]{
                 .ui-icon{background-position: @gfxService-x-hover @gfxShare-tumblr-y;}
            }
        }
+        #tumblr-sharing,
+          label[for="tumblr-sharing"]{
+             display: none; 
+          }
+       
        label[for="foursquare-sharing"]{
            background-color: transparent;
            .box-shadow(none);

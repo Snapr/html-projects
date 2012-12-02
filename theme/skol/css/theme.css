@@ -4642,67 +4642,7 @@ div[data-role="content"] .s-feed-header.s-inline-header .s-username .s-small-tex
   font-style: italic;
 }
 .s-share-photo .s-upload-image-privacy {
-  position: relative;
-  margin-top: 10px;
-  height: 0;
-  margin-bottom: 0;
-  overflow: visible;
-}
-.s-share-photo .s-upload-image-privacy .ui-controlgroup-label {
   display: none;
-}
-.s-share-photo .s-upload-image-privacy .ui-checkbox {
-  position: absolute;
-  right: -6px;
-  top: -4px;
-  width: auto;
-}
-.s-share-photo .s-upload-image-privacy .ui-btn {
-  background: none;
-  -moz-box-shadow: none;
-  -webkit-box-shadow: none;
-  box-shadow: none;
-  border: none;
-  font-family: Georgia, 'Times New Roman', Times, sans-serif;
-  font-weight: normal;
-  text-transform: lowercase;
-  height: 32px;
-}
-.s-share-photo .s-upload-image-privacy .ui-btn-inner {
-  padding: 0;
-}
-.s-share-photo .s-upload-image-privacy .ui-icon {
-  width: 22px;
-  height: 22px;
-  background-image: url('../gfx/action-icons-custom.png');
-  display: block;
-  position: absolute;
-  top: -8px;
-  right: 0;
-  background-color: transparent;
-}
-.s-share-photo .s-upload-image-privacy .ui-btn-text {
-  height: 32px;
-  padding-right: 28px;
-  overflow: hidden;
-  display: block;
-  vertical-align: top;
-  width: auto;
-}
-.s-share-photo .s-upload-image-privacy input {
-  visibility: hidden;
-}
-.s-share-photo .s-upload-image-privacy label[for="image-status"] .ui-icon {
-  background-position: -22px -88px;
-}
-.s-share-photo .s-upload-image-privacy label[for="image-status"] .ui-btn-text::before {
-  content: "Private";
-}
-.s-share-photo .s-upload-image-privacy label[for="image-status"].ui-btn-active .ui-icon {
-  background-position: -22px -110px;
-}
-.s-share-photo .s-upload-image-privacy label[for="image-status"].ui-btn-active .ui-btn-text::before {
-  content: "Public";
 }
 .s-share-photo .s-upload-image-sharing .ui-checkbox {
   margin-right: 0;
@@ -4811,6 +4751,10 @@ div[data-role="content"] .s-feed-header.s-inline-header .s-username .s-small-tex
 }
 .s-share-photo .s-upload-image-sharing label[for="tumblr-sharing"].ui-checkbox-on .ui-icon {
   background-position: -50px -100px;
+}
+.s-share-photo .s-upload-image-sharing #tumblr-sharing,
+.s-share-photo .s-upload-image-sharing label[for="tumblr-sharing"] {
+  display: none;
 }
 .s-share-photo .s-upload-image-sharing label[for="foursquare-sharing"] {
   background-color: transparent;
