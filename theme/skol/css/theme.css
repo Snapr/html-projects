@@ -6157,6 +6157,13 @@ div.ps-carousel-item-loading {
     -o-background-size: 72px 216px;
     background-size: 72px 216px;
   }
+  .s-spot-header .s-foursquare-btn .ui-icon-foursquare-logo {
+    background-image: url('../gfx/retina/foursquare-btn.png');
+    -webkit-background-size: 35px 35px;
+    -moz-background-size: 35px 35px;
+    -o-background-size: 35px 35px;
+    background-size: 35px 35px;
+  }
   .ui-icon.distance-icon,
   .s-distance-btn .ui-icon {
     background-image: url('../gfx/retina/distance-icons.png');
