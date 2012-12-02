@@ -1077,11 +1077,7 @@ textarea.ui-input-text {
         background: @grayDark;
     }
     .x-feed-images{
-        background-color: @gray;
-        .box-shadow(@itemShadow);
-        .border-radius(@cornersSmall);
-        margin-bottom: @padding * 2;
-        text-shadow: @textShadow;
+       
     }
 }
 
@@ -1125,7 +1121,16 @@ div[data-role="content"]{
 }
 
 .s-image-item-block{
-    margin: 0 0 @padding 0;
+    margin: 0;
+    padding-bottom: @barHeight;
+    
+     background-color: @gray;
+    .box-shadow(@itemShadow);
+    .border-radius(@cornersSmall);
+    margin-bottom: @padding * 2;
+    text-shadow: @textShadow;
+    
+    
     .s-image-item-topbar{
         height:  @avatarSize + 1px;//haxy to account for mysterious icon overhang
         margin: 0;
@@ -1209,6 +1214,21 @@ div[data-role="content"]{
     .s-image-actions{
         margin-top: @padding * 2;
         margin-bottom: @padding * 2;
+        border-bottom: @borderGrayDark;
+        
+        .ui-controlgroup-controls{
+            padding-left: @padding * 2;
+            position: relative;
+            top: @padding * 2;
+            width: 100%;
+            .box-sizing(border-box);
+            .ui-btn{
+                background-color: @grayMed;
+                .border-radius(@cornersRound);
+                border: @borderBlack;
+            }
+        }
+        
         .s-inline-btn{
             display: inline-block;
         }
@@ -1234,7 +1254,7 @@ div[data-role="content"]{
             // reactions btn off to the right
             &.s-reactions-button{
                position: absolute;
-               right: 0;
+               right: @padding * 2;
                top: 0;
                margin-right: -6px;
                .ui-btn-inner{

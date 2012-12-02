@@ -4163,17 +4163,6 @@ textarea.ui-input-text {
   border-bottom: dotted 1px #000000;
   background: #3f3f3f;
 }
-.s-main-feed-content .x-feed-images {
-  background-color: #464545;
-  -moz-box-shadow: rgba(0, 0, 0, 0.5) 0 1px 12px;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.5) 0 1px 12px;
-  box-shadow: rgba(0, 0, 0, 0.5) 0 1px 12px;
-  -webkit-border-radius: 1px;
-  -moz-border-radius: 1px;
-  border-radius: 1px;
-  margin-bottom: 10px;
-  text-shadow: #000000 0px 1px 1px;
-}
 div[data-role="content"] .s-feed-header.s-inline-header {
   margin-bottom: 10px;
   margin-left: 0;
@@ -4202,7 +4191,17 @@ div[data-role="content"] .s-feed-header.s-inline-header .s-username .s-small-tex
   min-height: 432px!important;
 }
 .s-image-item-block {
-  margin: 0 0 5px 0;
+  margin: 0;
+  padding-bottom: 36px;
+  background-color: #464545;
+  -moz-box-shadow: rgba(0, 0, 0, 0.5) 0 1px 12px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.5) 0 1px 12px;
+  box-shadow: rgba(0, 0, 0, 0.5) 0 1px 12px;
+  -webkit-border-radius: 1px;
+  -moz-border-radius: 1px;
+  border-radius: 1px;
+  margin-bottom: 10px;
+  text-shadow: #000000 0px 1px 1px;
 }
 .s-image-item-block .s-image-item-topbar {
   height: 35px;
@@ -4280,6 +4279,23 @@ div[data-role="content"] .s-feed-header.s-inline-header .s-username .s-small-tex
 .s-image-item-block .s-image-actions {
   margin-top: 10px;
   margin-bottom: 10px;
+  border-bottom: dotted 1px #000000;
+}
+.s-image-item-block .s-image-actions .ui-controlgroup-controls {
+  padding-left: 10px;
+  position: relative;
+  top: 10px;
+  width: 100%;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.s-image-item-block .s-image-actions .ui-controlgroup-controls .ui-btn {
+  background-color: #4e4e4e;
+  -webkit-border-radius: 30px;
+  -moz-border-radius: 30px;
+  border-radius: 30px;
+  border: solid 1px #000000;
 }
 .s-image-item-block .s-image-actions .s-inline-btn {
   display: inline-block;
@@ -4309,7 +4325,7 @@ div[data-role="content"] .s-feed-header.s-inline-header .s-username .s-small-tex
 }
 .s-image-item-block .s-image-actions .ui-btn.action-icons.s-reactions-button {
   position: absolute;
-  right: 0;
+  right: 10px;
   top: 0;
   margin-right: -6px;
 }
