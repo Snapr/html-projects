@@ -136,6 +136,10 @@
         background: none!important;
         border: none!important;
         .box-shadow(none)!important;
+        .ui-btn-inner{
+            background: none!important;
+            
+        }
     }
 }
 
@@ -466,12 +470,14 @@ div[data-role="header"].ui-bar-b{
     .ui-li,
     .ui-li-has-icon{
         padding: 0;
+        background: none;
     }
     .ui-btn{
         border: none!important;
         background: none;
         &.ui-li{
-            border-top: @borderGrayLighter!important;
+            border-top: @borderBlack!important;
+            border-bottom: @borderWhite!important;
             margin-bottom: 0;
             &:first-child{
                 border-top: none!important;
@@ -482,12 +488,11 @@ div[data-role="header"].ui-bar-b{
 
     }
     .ui-btn-hover-c {
-        background-color: rgba(255,255,255,.8);
+        background-color: rgba(255,255,255,.02);
     }
     .ui-btn-down-c,
     .ui-btn-active {
-        background-color: transparent;
-        .linear-gradient(rgba(255,255,255, 0), rgba(255,255,255,1));
+        background-color: rgba(255,255,255,.04);
     }
 
     // Put the border back on for people / venues lists because i like it there 
@@ -495,7 +500,7 @@ div[data-role="header"].ui-bar-b{
     &.venue-list,
     &.map-list{
         .ui-btn.ui-li:first-child{
-            border-top: @borderGrayLighter!important;
+            border-top: @borderBlack!important;
         }
     }
 
@@ -524,11 +529,12 @@ div[data-role="header"].ui-bar-b{
     .ui-li-heading{
         margin: 0 0 @paddingElement 0;
         font-weight: normal;
+        color: @grayLighter;
     }
     .ui-li-desc{
         margin: -8px 0 0 0;
         padding: 0;
-        color: @gray;
+        color: @grayLight;
     }
     .ui-li,
     .ui-li-link-alt{
@@ -542,15 +548,17 @@ div[data-role="header"].ui-bar-b{
         background: none;
         .ui-btn,
         &.ui-btn {
-            border: none;
+            border: none!important;
             width: 44px;
             height: 44px;
             top: 4px;
             right: 0;
             margin-top: 0;
             background: none;
+            .box-shadow(none);
             .ui-btn-inner{
                 padding-right: 0;
+                background: none;
             }
             .ui-icon{
                 margin-top: 0;
@@ -587,6 +595,10 @@ div[data-role="header"].ui-bar-b{
         background: none!important;
         border: none!important;
         .box-shadow(none)!important;
+         .ui-btn-inner{
+                background: none!important;
+
+            }
     }
 }
 
