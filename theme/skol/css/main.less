@@ -2584,26 +2584,76 @@ div.ps-carousel-item-loading{
 // @SPOT
 // -------------------------
 
+#spot{
+    .x-header{
+        .ui-bar{
+            position: absolute;
+            padding-left: 97px;
+            width: 100%;
+            .box-sizing(border-box);
+            .ui-btn-inner{
+                padding-right: 10px;
+            }
+        }
+    }  
+}
+
+
 .s-spot-header{
     background-color: @grayLight;
     background-image: @gfxBgLight;
     min-height:@thumbSize + @padding * 2;
-    .spot-venue-details{
-        min-height: 64px;
+    margin-left: 0;
+    margin-right: 0;
+    padding: 0;
+    margin-bottom: @padding * 2;
+    .s-spot-item{
+        padding-top: 30px!important;
     }
+    
+    .spot-venue-details{
+        min-height: 40px;
+    }
+    
     p{
         padding-top:@paddingElement / 2 ;
-        color: @grayDark;
+        color: @gray;
     }
-    .s-spot-phone,
     .s-spot-address{
         padding-top:@paddingElement / 2 ;
         margin-bottom: @paddingElement;
         display: block;
     }
+    .s-spot-phone{
+        display: none;
+    }
     .s-spot-distance {
-        color: @grayDark;
+        color: @grayLight;
         font-size: @fontSizeSmall;
+    }
+    .s-spot-photo-crop{
+        .border-radius(@corners);
+        border-top: @borderWhite;
+        .box-shadow(@itemShadow);
+    }
+    
+    .s-foursquare-btn{
+        position: absolute;
+        right: 0;
+        top: 100%;
+        margin-top: -@gfxFoursquareBtn-height + @padding;
+        width: @gfxFoursquareBtn-height;
+        height: @gfxFoursquareBtn-height;
+        padding: 0;
+        background: transparent;
+        .ui-btn-inner{
+            background: transparent;
+        }
+        .ui-icon-foursquare-logo{
+            background-image: url('@{gfx}@{gfxFoursquareBtn}');
+            height: @gfxFoursquareBtn-height;
+            width: @gfxFoursquareBtn-width;
+        }
     }
 }
 
