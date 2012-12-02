@@ -30,11 +30,11 @@
 
 .ui-body-a,
 .ui-bar-a {
-    color: @white;
+    color: @grayLight;
     text-shadow: none;
     .ui-header,
     .ui-title{
-        color: @white;
+        color: @grayLight;
         text-shadow:0 -1px 1px #000;
         
     }
@@ -449,42 +449,6 @@ div[data-role="header"].ui-bar-b{
     }
 }
 
-
-// Tweak to C theme buttons for transparent BGs 
-.s-trans-bg{
-    .ui-btn-up-c {
-        border: none;
-        border-bottom: @borderWhite;
-        background: none;
-        background-color: @white;
-        .box-shadow(inset 0 1px 4px @shadowGray);
-        &.ui-shadow{
-            .box-shadow(inset 0 1px 4px @shadowGray);
-        }
-        .ui-btn-inner{
-            border:none;
-        }
-        .border-radius(@cornersRound);
-        .ui-icon-delete{background-position: @gfxIcons-delete-x @gfxIcons-y-highlight;}
-    }
-    .ui-btn-hover-c,
-    .ui-btn-down-c,
-    .ui-btn-active-c {
-        border: none;
-        border-bottom: @borderWhite;
-        background: none;
-        background-color: darken(@white, 5%);
-
-        .box-shadow(inset 0 1px 4px @shadowGray);
-        &.ui-shadow{
-            .box-shadow(inset 0 1px 4px @shadowGray);
-        }
-        .ui-btn-inner{
-            border:none;
-        }
-        .border-radius(@cornersRound);
-    }
-}
 
 
 

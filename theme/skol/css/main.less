@@ -369,6 +369,7 @@ a:active{
 
 .ui-btn-inner {
     padding: 8px @padding 6px @padding;
+    font-size: @fontSizeBtn;
 }
 
 
@@ -622,8 +623,8 @@ a:active{
 
 .ui-controlgroup-label,
 .ui-select .ui-btn{
-    font-family: @font;
-    text-transform: lowercase;
+    .button-font-bold();
+    
     text-align: left;
 }
 
@@ -1755,8 +1756,8 @@ textarea.ui-input-text {
     .s-upload-image-location{
          .s-location-name,
         .s-foursquare-venue-name{
-            height: 40px;
-            line-height: 40px;
+            height: 35px;
+            line-height: 35px;
             white-space: normal;
             display: inline-block;
             vertical-align: middle;
@@ -1769,10 +1770,10 @@ textarea.ui-input-text {
             font-weight: normal;
             .ui-icon{
                 top: 50%;
-                margin-top: -@gfxAction-grid / 2;
+                margin-top: -13px;
                 left: 0;
-                width: @gfxAction-grid;
-                height: @gfxAction-grid;
+                width: 24px;
+                height: 24px;
                 background-image: url('@{gfx}@{gfxAction}');
             }
             &.ui-checkbox-on {
@@ -1809,7 +1810,7 @@ textarea.ui-input-text {
             .ui-icon-checkbox-on,
             .ui-icon-checkbox-off,
             .ui-icon-arrow-right{
-                right:10px;
+                right:8px;
                 left: auto;
             }
             .ui-btn-inner{
@@ -1843,12 +1844,14 @@ textarea.ui-input-text {
     
     .s-image-toggle{
         .ui-btn{
-            text-transform: lowercase;
             text-align: right;
             background: none!important;
             border: none!important;
             &.ui-shadow{
                 .box-shadow(none);
+            }
+            .ui-icon{
+                margin-top: -@gfxAction-grid / 2;
             }
         }
         .ui-btn-inner{

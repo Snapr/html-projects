@@ -1479,7 +1479,8 @@ a:active {
 .s-share-photo .s-share-settings-layer .s-share-settings {
   padding: 16px 8px;
 }
-.s-share-photo .s-share-settings-layer .ui-input-text {
+.s-share-photo .s-share-settings-layer .ui-input-text,
+.s-share-photo .s-share-settings-layer .ui-controlgroup-label {
   position: relative;
 }
 .s-share-photo .s-share-settings-bg-layer {

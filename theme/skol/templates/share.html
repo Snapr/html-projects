@@ -70,7 +70,7 @@
                                          class="<% if (photo.attributes.location && !photo.attributes.location.location){%>x-ajax-loading <%}%>x-no-foursquare-venue">
 
                                         <span class="s-image-location">
-                                            <input type="checkbox" name="share-location" class="x-share-location" id="share-location" <%if (share_location){ %>checked="true"<% } %> />
+                                            <input type="checkbox" data-theme="c" name="share-location" class="x-share-location" id="share-location" <%if (share_location){ %>checked="true"<% } %> />
                                             <label for="share-location" class="ui-shadow"><span class="ui-icon ui-icon-location share-location-label" ></span>
                                                 <span class="x-location-name s-location-name">
                                                 <% if (photo.attributes.location && photo.attributes.location.location){%>
@@ -93,7 +93,7 @@
                                     <div id="foursquare-venue"
                                         <%if (!foursquare_sharing || status == "private"){%> style="display:none;"<%}%>
                                         class="<% if (photo.attributes.location && !photo.attributes.location.foursquare_venue_name){%>x-ajax-loading<%}%> x-foursquare-venue">
-                                        <a data-role="button" id="foursquare-venue" data-icon="arrow-right">
+                                        <a data-role="button" id="foursquare-venue" data-icon="arrow-right" data-theme="c">
                                             <span class="ui-icon ui-icon-venue"></span>
                                             <span class="s-foursquare-venue-name x-foursquare-venue-name">
                                                 <% if (photo.attributes.location && photo.attributes.location.foursquare_venue_name){%>
