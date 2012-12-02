@@ -20,7 +20,7 @@ return {
         twitter_xauth: true,
 
         app_sharing_opt_in: true,
-        app_sharing_opt_in_messaqge: true,
+        app_sharing_opt_in_messaqge: 'Toggle the app sharing button to submit your photo to be featured in this app and on our websites.',
 
         privacy_controls: false,
         moderation_controls: false,
@@ -33,7 +33,7 @@ return {
         anon_username: 'anon',
         me_username: 'me',
 
-        autocreate_fb_users: true,  // signin with facebook should create users rather than autofill join form
+        autocreate_fb_users: true  // signin with facebook should create users rather than autofill join form
         //get_user_points: false,  // request points when getting users form the api
         //timeout: 1000*20,  // ms, max api response time allowed
         //offline_timeout: 1000*5,  // ms, max api response time allowed when in offline mode
@@ -145,7 +145,7 @@ return {
         'twitter-xauth',
         {
             name: 'share',
-            template: theme_templates + 'share',
+            template: 'share',
             view: theme_views + 'share'
         },
         {
