@@ -1571,6 +1571,21 @@ a:active{
     .s-share-settings-layer{
         position: static;
         width: 100%;
+        
+        .s-message-area{
+            min-height: 92px;
+            margin: @padding * 2 0;
+            .ui-input-text,
+            .s-sharing-message{
+                height: 92px;
+                margin: 0;
+            }
+            .s-sharing-message{
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+        }
+        
         .s-share-settings{
             padding: @padding * 4 @padding * 2;
         }

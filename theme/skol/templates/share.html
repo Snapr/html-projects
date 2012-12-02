@@ -32,11 +32,14 @@
 
                     <div class="s-share-settings-layer s-trans-bg">
                         <div class="s-share-settings">
+                                
                                 <% if(comp){ %>Comp: <%= comp.get('title') %><% } %>
-                                <div class="x-sharing-message">If you turn sharing on it will share stuff. You have been warned.</div>
+                                <div class="s-message-area">
+                                <div class="x-sharing-message s-sharing-message">Toggle the app sharing button to submit your photo to be featured in this app and on our websites.</div>
                                 <textarea name="description" id="description" class="x-description" style="display:none;" placeholder="<%= T('Add text') %>..." data-theme="d"><%= saved_description %></textarea>
 
                                 <% if(comp && comp.has('hashtag')){ %><span class="s-comp-hashtag"><%= comp.get('hashtag') %></span><% } %>
+                                </div>
 
 
                                 <fieldset data-role="controlgroup" data-type="horizontal" class="x-image-sharing s-upload-image-sharing">

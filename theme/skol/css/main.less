@@ -1,49 +1,7 @@
 //
 // SNAPR THEME
 // --------------------------------------------------
-.s-menu-main{
-    position: relative;
-}
-.s-menu-stream{
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-}
-.s-home-bg{
-    height:100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    div{
-        height: 100%;
-        background-size: 100% 100%;
-        background-size: cover;
-        background-position: center;
-    }
-    opacity : 0;
-    -moz-transition-property : opacity;
-    -webkit-transition-property : opacity;
-    -o-transition-property : opacity;
-    transition-property : opacity;
-    -moz-transition-duration : 0.7s;
-    -webkit-transition-duration : 0.7s;
-    -o-transition-duration : 0.7s;
-    transition-duration : 0.7s;
-    &.fade-in{
-        opacity : 1;
-        -moz-transition-property : opacity;
-        -webkit-transition-property : opacity;
-        -o-transition-property : opacity;
-        transition-property : opacity;
-        -moz-transition-duration : 0.3s;
-        -webkit-transition-duration : 0.3s;
-        -o-transition-duration : 0.3s;
-        transition-duration : 0.3s;
-    }
-}
+
 
 
 // @DEFAULTS
@@ -666,8 +624,9 @@ a:active{
 
 input.ui-input-text,
 textarea.ui-input-text {
-    background:transparent;
-    border: @borderGrayLight;
+    background:@grayDarker;
+    border: none;
+    border-bottom: @borderWhite;
     font-family:@font;
     font-style: italic;
     outline: 0;
@@ -677,6 +636,7 @@ textarea.ui-input-text {
     padding: @paddingElement;
     width: 100%;
     .box-sizing(border-box);
+    .box-shadow(@innerShadow);
 }
 
 
@@ -933,6 +893,11 @@ textarea.ui-input-text {
 // @HOME
 // -------------------------
 
+
+
+
+
+
 #home{
     div[data-role="header"]{
         z-index: 10;
@@ -946,6 +911,42 @@ textarea.ui-input-text {
             background-image: url('../gfx/menu-overlay.png');
             .background-size(40px 100%);
         }
+        
+        
+        .s-home-bg{
+            height:100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            div{
+                height: 100%;
+                background-size: 100% 100%;
+                background-size: cover;
+                background-position: center;
+            }
+            opacity : 0;
+            -moz-transition-property : opacity;
+            -webkit-transition-property : opacity;
+            -o-transition-property : opacity;
+            transition-property : opacity;
+            -moz-transition-duration : 0.7s;
+            -webkit-transition-duration : 0.7s;
+            -o-transition-duration : 0.7s;
+            transition-duration : 0.7s;
+            &.fade-in{
+                opacity : 1;
+                -moz-transition-property : opacity;
+                -webkit-transition-property : opacity;
+                -o-transition-property : opacity;
+                transition-property : opacity;
+                -moz-transition-duration : 0.3s;
+                -webkit-transition-duration : 0.3s;
+                -o-transition-duration : 0.3s;
+                transition-duration : 0.3s;
+            }
+        }
+        
 
         .s-menu-btns{
             position: absolute;
@@ -1578,8 +1579,23 @@ textarea.ui-input-text {
 // -------------------------
 
 .s-share-photo{
-    #description{
-        height: 92px;
+    .s-share-settings-layer{
+     .s-message-area{
+            min-height: 92px;
+            margin: @padding * 2 0;
+            .ui-input-text,
+            .s-sharing-message{
+                height: 92px;
+            }
+            .s-sharing-message{
+                padding: @padding;
+                .box-sizing(border-box);
+                color: @yellow;
+                z-index: 10;
+                position: relative;
+                font-style: italic;
+            }
+        }
     }
 
     .s-upload-image-privacy{

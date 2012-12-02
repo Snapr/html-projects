@@ -1463,6 +1463,19 @@ a:active {
   position: static;
   width: 100%;
 }
+.s-share-photo .s-share-settings-layer .s-message-area {
+  min-height: 92px;
+  margin: 8px 0;
+}
+.s-share-photo .s-share-settings-layer .s-message-area .ui-input-text,
+.s-share-photo .s-share-settings-layer .s-message-area .s-sharing-message {
+  height: 92px;
+  margin: 0;
+}
+.s-share-photo .s-share-settings-layer .s-message-area .s-sharing-message {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 .s-share-photo .s-share-settings-layer .s-share-settings {
   padding: 16px 8px;
 }
