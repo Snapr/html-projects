@@ -1749,12 +1749,13 @@ textarea.ui-input-text {
     }
     .s-upload-image-location{
          .s-location-name,
-            .s-foursquare-venue-name{
-                height: 40px;
-                white-space: normal;
-                display: inline-block;
-                vertical-align: middle;
-            }
+        .s-foursquare-venue-name{
+            height: 40px;
+            line-height: 40px;
+            white-space: normal;
+            display: inline-block;
+            vertical-align: middle;
+        }
 
         .ui-btn {
             margin: @padding * 2 0;
@@ -1762,8 +1763,8 @@ textarea.ui-input-text {
             font-size: @fontSizeBtn;
             font-weight: normal;
             .ui-icon{
-                top: 0;
-                margin-top: 0;
+                top: 50%;
+                margin-top: -@gfxAction-grid / 2;
                 left: 0;
                 width: @gfxAction-grid;
                 height: @gfxAction-grid;
@@ -1803,22 +1804,23 @@ textarea.ui-input-text {
             .ui-icon-checkbox-on,
             .ui-icon-checkbox-off,
             .ui-icon-arrow-right{
-                right:0;
+                right:10px;
                 left: auto;
             }
             .ui-btn-inner{
                 padding-top: 0;
                 padding-bottom: 0;
-                 text-align: left;
-                padding-right: 36px;
+                text-align: left;
+                padding-right: 35px;
+                padding-left: 35px;
                 white-space: normal;
                 .ui-btn-text{
                     white-space: normal;
                     line-height: @gfxAction-grid;
                     .ui-icon{
                         position: absolute;
-                        left: -34px;
-                        top: -10px;
+                        left: -25px;
+                        
                     }
                 }
             }
