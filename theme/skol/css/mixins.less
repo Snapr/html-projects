@@ -47,12 +47,22 @@
 }
 
 .shiny-gradient (@start, @start-mid, @end-mid, @end) {
-	background-image: -webkit-gradient(linear,left bottom,left top, color-stop(0, @start),color-stop(0.5, @start-mid), color-stop(0.5, @end-mid),color-stop(1, @end)); /* Saf4+, Chrome */
-	background-image: -webkit-linear-gradient( bottom, @start 0%, @start-mid 50%, @end-mid 50%, @end 100% ); /* Chrome 10+, Saf5.1+ */
-	background-image:	-moz-linear-gradient( bottom, @start 0%, @start-mid 50%, @end-mid 50%, @end 100% ); /* FF3.6 */
-	background-image:	 -ms-linear-gradient( bottom, @start 0%, @start-mid 50%, @end-mid 50%, @end 100% ); /* IE10 */
-	background-image:	  -o-linear-gradient( bottom, @start 0%, @start-mid 50%, @end-mid 50%, @end 100% ); /* Opera 11.10+ */
-	background-image:		 linear-gradient( bottom, @start 0%, @start-mid 50%, @end-mid 50%, @end 100% );
+    background-image: -webkit-gradient(linear,left bottom,left top, color-stop(0, @start),color-stop(0.5, @start-mid), color-stop(0.5, @end-mid),color-stop(1, @end)); /* Saf4+, Chrome */
+    background-image: -webkit-linear-gradient( bottom, @start 0%, @start-mid 50%, @end-mid 50%, @end 100% ); /* Chrome 10+, Saf5.1+ */
+    background-image:   -moz-linear-gradient( bottom, @start 0%, @start-mid 50%, @end-mid 50%, @end 100% ); /* FF3.6 */
+    background-image:    -ms-linear-gradient( bottom, @start 0%, @start-mid 50%, @end-mid 50%, @end 100% ); /* IE10 */
+    background-image:     -o-linear-gradient( bottom, @start 0%, @start-mid 50%, @end-mid 50%, @end 100% ); /* Opera 11.10+ */
+    background-image:        linear-gradient( bottom, @start 0%, @start-mid 50%, @end-mid 50%, @end 100% );
+}
+
+
+.super-shiny-gradient (@start, @start-mid, @mid-top, @mid-bot, @end-mid, @end) {
+	background-image: -webkit-gradient(linear,left top,left bottom, color-stop(0, @start),color-stop(0.2, @start-mid), color-stop(0.5, @mid-bot), color-stop(0.5, @end-mid), color-stop(0.8, @end-mid), color-stop(1, @end)); /* Saf4+, Chrome */
+	background-image: -webkit-linear-gradient( top, @start 0%, @start-mid 20%, @mid-top 50%, @mid-bot 50%, @end-mid 80%, @end 100% ); /* Chrome 10+, Saf5.1+ */
+	background-image:	-moz-linear-gradient( top, @start 0%, @start-mid 20%, @mid-top 50%, @mid-bot 50%, @end-mid 80%, @end 100%  ); /* FF3.6 */
+	background-image:	 -ms-linear-gradient( top, @start 0%, @start-mid 20%, @mid-top 50%, @mid-bot 50%, @end-mid 80%, @end 100% ); /* IE10 */
+	background-image:	  -o-linear-gradient( top, @start 0%, @start-mid 20%, @mid-top 50%, @mid-bot 50%, @end-mid 80%, @end 100% ); /* Opera 11.10+ */
+	background-image:		 linear-gradient( top, @start 0%, @start-mid 20%, @mid-top 50%, @mid-bot 50%, @end-mid 80%, @end 100% );
 }
 
 .shiny-gradient-45 (@start, @start-mid, @end-mid, @end) {

@@ -2903,6 +2903,18 @@ div[data-role="header"].ui-bar-b a[data-rel="back"]::before {
   color: #2a2a2a;
   text-shadow: #ffffff 0px 1px 1px;
   text-decoration: none;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 6px;
+  -webkit-border-radius: 30px;
+  -moz-border-radius: 30px;
+  border-radius: 30px;
+}
+.ui-btn-up-h .ui-btn-inner,
+.ui-btn-hover-h .ui-btn-inner,
+.ui-btn-down-h .ui-btn-inner {
+  -webkit-border-radius: 30px;
+  -moz-border-radius: 30px;
+  border-radius: 30px;
 }
 .ui-btn-up-h a.ui-link-inherit,
 .ui-btn-hover-h a.ui-link-inherit,
@@ -2912,62 +2924,62 @@ div[data-role="header"].ui-bar-b a[data-rel="back"]::before {
 .ui-btn-down-h .ui-btn-text {
   color: #2a2a2a;
 }
-.ui-btn-up-h {
+.ui-btn-up-h .ui-btn-inner {
   background: #ffcc33;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#ffcc33), to(#ffcc33));
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #e09c0e), color-stop(0.2, #ffcc33), color-stop(0.5, #ffd24d), color-stop(0.5, #ffcc33), color-stop(0.8, #ffcc33), color-stop(1, #e09c0e));
   /* Saf4+, Chrome */
 
-  background-image: -webkit-linear-gradient(top, #ffcc33, #ffcc33);
+  background-image: -webkit-linear-gradient(top, #e09c0e 0%, #ffcc33 20%, #ffe699 50%, #ffd24d 50%, #ffcc33 80%, #e09c0e 100%);
   /* Chrome 10+, Saf5.1+ */
 
-  background-image: -moz-linear-gradient(top, #ffcc33, #ffcc33);
+  background-image: -moz-linear-gradient(top, #e09c0e 0%, #ffcc33 20%, #ffe699 50%, #ffd24d 50%, #ffcc33 80%, #e09c0e 100%);
   /* FF3.6 */
 
-  background-image: -ms-linear-gradient(top, #ffcc33, #ffcc33);
+  background-image: -ms-linear-gradient(top, #e09c0e 0%, #ffcc33 20%, #ffe699 50%, #ffd24d 50%, #ffcc33 80%, #e09c0e 100%);
   /* IE10 */
 
-  background-image: -o-linear-gradient(top, #ffcc33, #ffcc33);
+  background-image: -o-linear-gradient(top, #e09c0e 0%, #ffcc33 20%, #ffe699 50%, #ffd24d 50%, #ffcc33 80%, #e09c0e 100%);
   /* Opera 11.10+ */
 
-  background-image: linear-gradient(top, #ffcc33, #ffcc33);
+  background-image: linear-gradient(top, #e09c0e 0%, #ffcc33 20%, #ffe699 50%, #ffd24d 50%, #ffcc33 80%, #e09c0e 100%);
 }
-.ui-btn-hover-h {
+.ui-btn-hover-h .ui-btn-inner {
   background: #ffd966;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#ffd966), to(#ffd966));
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #f0aa17), color-stop(0.2, #ffd24d), color-stop(0.5, #ffd966), color-stop(0.5, #ffd24d), color-stop(0.8, #ffd24d), color-stop(1, #f0aa17));
   /* Saf4+, Chrome */
 
-  background-image: -webkit-linear-gradient(top, #ffd966, #ffd966);
+  background-image: -webkit-linear-gradient(top, #f0aa17 0%, #ffd24d 20%, #ffecb3 50%, #ffd966 50%, #ffd24d 80%, #f0aa17 100%);
   /* Chrome 10+, Saf5.1+ */
 
-  background-image: -moz-linear-gradient(top, #ffd966, #ffd966);
+  background-image: -moz-linear-gradient(top, #f0aa17 0%, #ffd24d 20%, #ffecb3 50%, #ffd966 50%, #ffd24d 80%, #f0aa17 100%);
   /* FF3.6 */
 
-  background-image: -ms-linear-gradient(top, #ffd966, #ffd966);
+  background-image: -ms-linear-gradient(top, #f0aa17 0%, #ffd24d 20%, #ffecb3 50%, #ffd966 50%, #ffd24d 80%, #f0aa17 100%);
   /* IE10 */
 
-  background-image: -o-linear-gradient(top, #ffd966, #ffd966);
+  background-image: -o-linear-gradient(top, #f0aa17 0%, #ffd24d 20%, #ffecb3 50%, #ffd966 50%, #ffd24d 80%, #f0aa17 100%);
   /* Opera 11.10+ */
 
-  background-image: linear-gradient(top, #ffd966, #ffd966);
+  background-image: linear-gradient(top, #f0aa17 0%, #ffd24d 20%, #ffecb3 50%, #ffd966 50%, #ffd24d 80%, #f0aa17 100%);
 }
-.ui-btn-down-h {
+.ui-btn-down-h .ui-btn-inner {
   background: #ffcc33;
-  background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, #ffcc33), color-stop(0.7, #ffcc33), color-stop(1, #ffc619));
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #e09c0e), color-stop(0.2, #e09c0e), color-stop(0.5, #ffd24d), color-stop(0.5, #ffd24d), color-stop(0.8, #ffd24d), color-stop(1, #e09c0e));
   /* Saf4+, Chrome */
 
-  background-image: -webkit-linear-gradient(bottom, #ffcc33 0%, #ffcc33 70%, #ffc824 100%);
+  background-image: -webkit-linear-gradient(top, #e09c0e 0%, #e09c0e 20%, #ffcc33 50%, #ffd24d 50%, #ffd24d 80%, #e09c0e 100%);
   /* Chrome 10+, Saf5.1+ */
 
-  background-image: -moz-linear-gradient(bottom, #ffcc33 0%, #ffcc33 70%, #ffc824 100%);
+  background-image: -moz-linear-gradient(top, #e09c0e 0%, #e09c0e 20%, #ffcc33 50%, #ffd24d 50%, #ffd24d 80%, #e09c0e 100%);
   /* FF3.6 */
 
-  background-image: -ms-linear-gradient(bottom, #ffcc33 0%, #ffcc33 70%, #ffc824 100%);
+  background-image: -ms-linear-gradient(top, #e09c0e 0%, #e09c0e 20%, #ffcc33 50%, #ffd24d 50%, #ffd24d 80%, #e09c0e 100%);
   /* IE10 */
 
-  background-image: -o-linear-gradient(bottom, #ffcc33 0%, #ffcc33 70%, #ffc824 100%);
+  background-image: -o-linear-gradient(top, #e09c0e 0%, #e09c0e 20%, #ffcc33 50%, #ffd24d 50%, #ffd24d 80%, #e09c0e 100%);
   /* Opera 11.10+ */
 
-  background-image: linear-gradient(bottom, #ffcc33 0%, #ffcc33 70%, #ffc824 100%);
+  background-image: linear-gradient(top, #e09c0e 0%, #e09c0e 20%, #ffcc33 50%, #ffd24d 50%, #ffd24d 80%, #e09c0e 100%);
 }
 body {
   color: #a7a9ac;
@@ -3315,12 +3327,12 @@ a:active {
   -moz-background-size: 40px 40px;
   -o-background-size: 40px 40px;
   background-size: 40px 40px;
-  background-image: -webkit-gradient(linear, left top, right bottom, color-stop(0.25, #ffcc33), color-stop(0.25, transparent), color-stop(0.5, transparent), color-stop(0.5, #ffcc33), color-stop(0.75, #ffcc33), color-stop(0.75, transparent), to(transparent));
-  background-image: -webkit-linear-gradient(135deg, #ffcc33 25%, transparent 25%, transparent 50%, #ffcc33 50%, #ffcc33 75%, transparent 75%, transparent);
-  background-image: -moz-linear-gradient(135deg, #ffcc33 25%, transparent 25%, transparent 50%, #ffcc33 50%, #ffcc33 75%, transparent 75%, transparent);
-  background-image: -ms-linear-gradient(135deg, #ffcc33 25%, transparent 25%, transparent 50%, #ffcc33 50%, #ffcc33 75%, transparent 75%, transparent);
-  background-image: -o-linear-gradient(135deg, #ffcc33 25%, transparent 25%, transparent 50%, #ffcc33 50%, #ffcc33 75%, transparent 75%, transparent);
-  background-image: linear-gradient(135deg, #ffcc33 25%, transparent 25%, transparent 50%, #ffcc33 50%, #ffcc33 75%, transparent 75%, transparent);
+  background-image: -webkit-gradient(linear, left top, right bottom, color-stop(0.25, #e09c0e), color-stop(0.25, transparent), color-stop(0.5, transparent), color-stop(0.5, #e09c0e), color-stop(0.75, #e09c0e), color-stop(0.75, transparent), to(transparent));
+  background-image: -webkit-linear-gradient(135deg, #e09c0e 25%, transparent 25%, transparent 50%, #e09c0e 50%, #e09c0e 75%, transparent 75%, transparent);
+  background-image: -moz-linear-gradient(135deg, #e09c0e 25%, transparent 25%, transparent 50%, #e09c0e 50%, #e09c0e 75%, transparent 75%, transparent);
+  background-image: -ms-linear-gradient(135deg, #e09c0e 25%, transparent 25%, transparent 50%, #e09c0e 50%, #e09c0e 75%, transparent 75%, transparent);
+  background-image: -o-linear-gradient(135deg, #e09c0e 25%, transparent 25%, transparent 50%, #e09c0e 50%, #e09c0e 75%, transparent 75%, transparent);
+  background-image: linear-gradient(135deg, #e09c0e 25%, transparent 25%, transparent 50%, #e09c0e 50%, #e09c0e 75%, transparent 75%, transparent);
   -webkit-animation: animate-bar 0.5s linear infinite;
   -moz-animation: animate-bar 0.5s linear infinite;
 }
@@ -3339,6 +3351,9 @@ a:active {
   100% {
     background-position: 40px 0;
   }
+}
+.ui-btn-inner {
+  padding: 8px 5px 6px 5px;
 }
 .s-logo-button .ui-btn-text {
   font-family: Georgia, 'Times New Roman', Times, sans-serif;
@@ -4631,22 +4646,22 @@ textarea.ui-input-text {
 }
 .s-progress-bar .s-bar-wrapper .s-bar-prog {
   background-color: #ffcc33;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#ffcc33), to(#ffcc33));
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#ffcc33), to(#e09c0e));
   /* Saf4+, Chrome */
 
-  background-image: -webkit-linear-gradient(top, #ffcc33, #ffcc33);
+  background-image: -webkit-linear-gradient(top, #ffcc33, #e09c0e);
   /* Chrome 10+, Saf5.1+ */
 
-  background-image: -moz-linear-gradient(top, #ffcc33, #ffcc33);
+  background-image: -moz-linear-gradient(top, #ffcc33, #e09c0e);
   /* FF3.6 */
 
-  background-image: -ms-linear-gradient(top, #ffcc33, #ffcc33);
+  background-image: -ms-linear-gradient(top, #ffcc33, #e09c0e);
   /* IE10 */
 
-  background-image: -o-linear-gradient(top, #ffcc33, #ffcc33);
+  background-image: -o-linear-gradient(top, #ffcc33, #e09c0e);
   /* Opera 11.10+ */
 
-  background-image: linear-gradient(top, #ffcc33, #ffcc33);
+  background-image: linear-gradient(top, #ffcc33, #e09c0e);
 }
 .s-progress-bar .s-bar-wrapper .s-bar-bg {
   background-color: #C5C4C4;
@@ -4964,6 +4979,9 @@ textarea.ui-input-text {
   position: absolute;
   left: -25px;
 }
+.s-share-photo .ui-grid-b .ui-block-c .ui-btn {
+  margin: 0;
+}
 .s-share-photo .s-image-toggle .ui-btn {
   text-transform: lowercase;
   text-align: right;
@@ -4979,20 +4997,6 @@ textarea.ui-input-text {
   padding: 8px 32px 8px 16px;
   background-color: rgba(0, 0, 0, 0.8);
   border-radius: 20px;
-}
-.camplus-icon {
-  background-image: url('../gfx/camplus.png') !important;
-  background-repeat: no-repeat;
-  background-position: center!important;
-  width: 36px;
-  height: 36px;
-  float: right;
-  -webkit-border-radius: 4px !important;
-  -moz-border-radius: 4px !important;
-  border-radius: 4px !important;
-}
-.camplus-icon span {
-  display: none;
 }
 #my-account div[data-role="content"] {
   overflow: hidden;

@@ -877,6 +877,12 @@ div[data-role="header"].ui-bar-b{
     color: @grayDarker;
     text-shadow: @white 0px 1px 1px;
      text-decoration: none;
+    background: @blackTrans;
+    padding: @paddingButton;
+    .border-radius(@cornersRound);
+    .ui-btn-inner{
+        .border-radius(@cornersRound);
+    }
     a.ui-link-inherit,
     .ui-btn-text {
         color: @grayDarker;
@@ -885,18 +891,24 @@ div[data-role="header"].ui-bar-b{
 }
 
 .ui-btn-up-h {
-    background: @yellow;    
-    .linear-gradient(@yellow, @yellowTint);
+    .ui-btn-inner{
+        background: @yellow;    
+        .super-shiny-gradient(@yellowTint, @yellow, lighten(@yellow, 20%), lighten(@yellow, 5%), @yellow, @yellowTint)
+    }
 }
 
 .ui-btn-hover-h {
-    background: lighten(@yellow, 10% );
-    .linear-gradient(lighten(@yellow, 10%), lighten(@yellowTint, 10%));
+    .ui-btn-inner{   
+        background: lighten(@yellow, 10% );
+        .super-shiny-gradient(lighten(@yellowTint, 5%), lighten(@yellow, 5%), lighten(@yellow, 25%), lighten(@yellow, 10%), lighten(@yellow, 5%), lighten(@yellowTint, 5%))
+    }
 }
 
 .ui-btn-down-h {
-    background: @yellow;
-    .pressed-gradient(@yellow, 3%);
+    .ui-btn-inner{
+        background: @yellow;
+        .super-shiny-gradient(@yellowTint, @yellowTint, @yellow, lighten(@yellow, 5%) ,  lighten(@yellow, 5%), @yellowTint)
+    }
 }
 
 

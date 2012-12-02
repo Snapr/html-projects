@@ -367,6 +367,11 @@ a:active{
 // @BUTTONS
 // -------------------------
 
+.ui-btn-inner {
+    padding: 8px @padding 6px @padding;
+}
+
+
 .s-logo-button{
     .ui-btn-text{
         .button-font-light();
@@ -1827,6 +1832,15 @@ textarea.ui-input-text {
 
         }
     }
+    
+    .ui-grid-b{
+        .ui-block-c{
+            .ui-btn{
+                margin: 0;
+            }
+        }
+    }
+    
     .s-image-toggle{
         .ui-btn{
             text-transform: lowercase;
@@ -1846,18 +1860,7 @@ textarea.ui-input-text {
     }
 }
 
-.camplus-icon{
-    background-image: url('../gfx/camplus.png')!important;
-    background-repeat: no-repeat;
-    background-position: center!important;
-    width: 36px;
-    height: 36px;
-    float: right;
-    .border-radius(@corners)!important;
-    span{
-        display: none;
-    }
-}
+
 
 
 
