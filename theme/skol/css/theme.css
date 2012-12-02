@@ -4158,7 +4158,12 @@ textarea.ui-input-text {
 .s-feed-view-toggle .ui-btn-text .ui-icon-grid-view {
   background-position: -2px -401px;
 }
-.s-main-feed-content {
+.s-main-feed-content .ui-bar {
+  margin: 0;
+  border-bottom: dotted 1px #000000;
+  background: #3f3f3f;
+}
+.s-main-feed-content .x-feed-images {
   background-color: #464545;
   -moz-box-shadow: rgba(0, 0, 0, 0.5) 0 1px 12px;
   -webkit-box-shadow: rgba(0, 0, 0, 0.5) 0 1px 12px;
@@ -4169,116 +4174,29 @@ textarea.ui-input-text {
   margin-bottom: 10px;
   text-shadow: #000000 0px 1px 1px;
 }
-.s-main-feed-content .ui-bar {
-  margin: 0;
-  border-bottom: dotted 1px #000000;
-  background: #3f3f3f;
-}
-.s-feed-header.s-inline-header {
+div[data-role="content"] .s-feed-header.s-inline-header {
   margin-bottom: 10px;
-  padding-left: 100px;
-  height: 100px;
+  margin-left: 0;
+  margin-right: 0;
+  height: 34px;
 }
-.s-feed-header.s-inline-header .s-user-icon-left {
-  width: 100px;
-  height: 100px;
+div[data-role="content"] .s-feed-header.s-inline-header .s-user-icon-left {
+  width: 34px;
+  height: 34px;
 }
-.s-feed-header.s-inline-header .s-user-icon-left .s-profile-icon,
-.s-feed-header.s-inline-header .s-user-icon-left .s-avatar-large {
-  -moz-border-radius: 0;
-  -webkit-border-radius: 0;
-  border-radius: 0;
-  -webkit-border-top-left-radius: 4px;
-  -moz-border-radius-topleft: 4px;
-  border-top-left-radius: 4px;
+div[data-role="content"] .s-feed-header.s-inline-header .s-user-icon-left .s-profile-icon,
+div[data-role="content"] .s-feed-header.s-inline-header .s-user-icon-left .s-avatar-large {
+  -webkit-border-radius: corners;
+  -moz-border-radius: corners;
+  border-radius: corners;
   overflow: hidden;
 }
-.s-feed-header.s-inline-header .s-user-icon-left .s-avatar-large {
-  background-color: #aaaaaa;
-}
-.s-feed-header.s-inline-header .s-user-icon-left .s-icon-overlay {
-  background-image: url('../gfx/shiny-avatar-info.png');
-  width: 100px;
-  height: 100px;
-  -webkit-border-top-left-radius: 4px;
-  -moz-border-radius-topleft: 4px;
-  border-top-left-radius: 4px;
-  border-top: solid #ffffff 1px;
-}
-.s-feed-header.s-inline-header .s-username {
+div[data-role="content"] .s-feed-header.s-inline-header .s-username {
   font-size: 15px;
-  text-shadow: #ffffff 0px 1px 1px;
+  left: 39px;
 }
-.s-feed-header.s-inline-header .s-follow-btn {
-  height: 36px;
-}
-.s-feed-header.s-inline-header .s-follow-btn .ui-icon {
-  background-image: url('../gfx/general-jquerymob-icons.png');
-  width: 36px;
-  height: 36px;
-  margin-top: -18px;
-}
-.s-feed-header.s-inline-header .s-header-stats {
-  text-transform: lowercase;
-  font-size: 13px;
-}
-.s-feed-header.s-inline-header .s-header-stats .ui-link {
-  display: block;
-  min-height: 64px;
-}
-.s-feed-header.s-inline-header .s-header-stats .s-hero-number {
-  display: block;
-  font-size: 24px;
-  font-family: 'PlutoHeavy', Helvetica, Arial, sans-serif;
-  padding: 10px 0 0 0;
-  height: 30px;
-  line-height: 28px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-.s-feed-header.s-inline-header .s-header-stats.ui-grid-b .ui-block-a {
-  margin-left: -1px;
-}
-.s-feed-header.s-inline-header .s-header-stats.ui-grid-b .ui-block-b {
-  border-left: solid 1px #e4e4e4;
-  border-right: solid 1px #e4e4e4;
-}
-.s-feed-header.s-inline-header .s-header-stats.ui-grid-b .ui-block-c {
-  margin-right: -1px;
-}
-.s-feed-header.s-inline-header::after {
-  width: 0;
-  height: 0;
-  display: inline-block;
-  content: "&uarr;";
-  text-indent: -99999px;
-  vertical-align: top;
-  margin-top: 0;
-  margin-left: -14px;
-  border-left: 14px solid transparent;
-  border-right: 14px solid transparent;
-  border-bottom: 14px solid #ffffff;
-  position: absolute;
-  top: 89px;
-  left: 50px;
-  z-index: 10;
-}
-.x-showing-upload-queue .s-feed-header.s-inline-header .s-user-icon-left .s-profile-icon,
-.x-showing-upload-queue .s-feed-header.s-inline-header .s-user-icon-left .s-avatar-large {
-  -webkit-border-top-left-radius: 0;
-  -moz-border-radius-topleft: 0;
-  border-top-left-radius: 0;
-  overflow: hidden;
-}
-.x-showing-upload-queue .s-feed-header.s-inline-header .s-user-icon-left .s-icon-overlay {
-  -webkit-border-top-left-radius: 0;
-  -moz-border-radius-topleft: 0;
-  border-top-left-radius: 0;
-}
-.x-showing-upload-queue .s-feed-header.s-inline-header .ui-bar {
-  -webkit-border-top-right-radius: 0;
-  -moz-border-radius-topright: 0;
-  border-top-right-radius: 0;
+div[data-role="content"] .s-feed-header.s-inline-header .s-username .s-small-text {
+  font-style: italic;
 }
 #feed-images {
   min-height: 432px!important;
@@ -4500,23 +4418,10 @@ textarea.ui-input-text {
   font-size: 13px;
 }
 .s-feed-footer {
+  margin: 20px 0 !important;
   padding: 0!important;
 }
 .s-feed-footer .ui-btn {
-  -webkit-border-top-right-radius: 0;
-  -moz-border-radius-topright: 0;
-  border-top-right-radius: 0;
-  -webkit-border-top-left-radius: 0;
-  -moz-border-radius-topleft: 0;
-  border-top-left-radius: 0;
-  -webkit-border-bottom-right-radius: 4px;
-  -moz-border-radius-bottomright: 4px;
-  border-bottom-right-radius: 4px;
-  -webkit-border-bottom-left-radius: 4px;
-  -moz-border-radius-bottomleft: 4px;
-  border-bottom-left-radius: 4px;
-  margin-bottom: 0;
-  border: none;
   display: block;
 }
 .load-more {
