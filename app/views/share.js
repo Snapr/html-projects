@@ -576,10 +576,6 @@ return page_view.extend({
                         }
                     }
                     params[o.name] = (o.value == "on");
-                }else if(o.name == "status" && o.value == "on"){
-                    params.status = "public";
-                }else if(o.name == "app-sharing"){
-                    params.status = o.value == "on" ? "public" : "public_non_app";
                 }else{
                     params[o.name] = escape( o.value );
                 }
@@ -590,9 +586,14 @@ return page_view.extend({
             params.device_time = string_utils.date_to_snapr_format(d);
             params.local_id = ''+d.getMonth()+d.getDay()+d.getHours()+d.getMinutes()+d.getSeconds();
 
-            // default to private if not set above
-            if( !params.status){
-                params.status = config.get('app_sharing_opt_in') ? 'public_non_app' : "private";
+            if(this.$('#image-status').attr('checked')){
+                if(!config.get('app_sharing_opt_in') || this.$('#app-sharing').attr('checked')){
+                    params.status = 'public';
+                }else{
+                    params.status = 'public_non_app';
+                }
+            }else{
+                params.status = 'private';
             }
 
             if(config.get('app_group')){
