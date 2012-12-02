@@ -86,6 +86,9 @@ return page_view.extend({
             local_storage: local_storage
         }, ['.x-content']).trigger("create");
 
+
+        this.toggle_sharing_message();
+
         if(_.isFunction(callback)){
             callback();
         }
@@ -338,15 +341,21 @@ return page_view.extend({
         if(!config.get('app_sharing_opt_in')){
             return;
         }
-        var this_view = this,
-            sharing = _.any(
-                ['facebook', 'foursquare', 'twitter', 'tumblr', 'app'],
-                function(service){
-                    return this_view.$('#' + service + '-sharing').attr("checked");
-                }
-            );
-        this_view.$('.x-sharing-message').toggle(!sharing);
-        this_view.$('.x-description').toggle(sharing);
+        var sharing = this.is_sharing();
+        this.$('.x-sharing-message, .x-done-button').toggle(!sharing);
+        this.$('.x-description, .x-share-button').toggle(sharing);
+        this.$('.x-done-button').parent().toggle(!sharing);
+        this.$('.x-share-button').parent().toggle(sharing);
+    },
+
+    is_sharing: function(){
+        var this_view = this;
+        return _.any(
+            ['facebook', 'foursquare', 'twitter', 'tumblr', 'app'],
+            function(service){
+                return this_view.$('#' + service + '-sharing').attr("checked");
+            }
+        );
     },
 
     venue_search: function(){
@@ -445,7 +454,6 @@ return page_view.extend({
     share: function(){
         $.mobile.showPageLoadingMsg();
         // if there is a secret set the picture has already been uploaded
-            console.log(this.model && this.model.has("secret"));
         if (this.model && this.model.has("secret")){
            this.share_browser();
         }else{
@@ -453,7 +461,6 @@ return page_view.extend({
         }
     },
     share_browser: function(){
-        console.log('web');
         var redirect_url = this.redirct_url || config.get('share_redirect');
 
         if(this.options.query.comp_id){
@@ -632,8 +639,11 @@ return page_view.extend({
             }
             extras += "&local_id=" + params.local_id;
 
-
-            Backbone.history.navigate( "#/uploading/" + extras );
+            if(this.is_sharing()){
+                window.location.hash = "#/uploading/" + extras;
+            }else{
+                window.location.hash = this.back_url || '#';
+            }
             native_bridge.pass_data("snapr://upload?" + $.param(params) );
         }
     },

@@ -34,10 +34,14 @@
                     <div class="s-share-settings-layer s-trans-bg">
                         <div class="s-share-settings">
                                 <% if(comp){ %>Comp: <%= comp.get('title') %><% } %>
-                                <textarea name="description" id="description" class="x-description" placeholder="<%= T('Add text') %>..." data-theme="d"><%= saved_description %></textarea>
+                                <div class="s-message-area">
+                                    <% if(config.get('app_sharing_opt_in_messaqge')){ %>
+                                        <div class="x-sharing-message s-sharing-message"><%= config.get('app_sharing_opt_in_messaqge') %></div>
+                                    <% } %>
+                                    <textarea name="description" id="description" class="x-description" placeholder="<%= T('Add text') %>..." data-theme="d"><%= saved_description %></textarea>
 
-                                <% if(comp && comp.has('hashtag')){ %><span class="s-comp-hashtag"><%= comp.get('hashtag') %></span><% } %>
-
+                                    <% if(comp && comp.has('hashtag')){ %><span class="s-comp-hashtag"><%= comp.get('hashtag') %></span><% } %>
+                                </div>
 
 
                                 <fieldset data-role="controlgroup" data-type="horizontal" class="s-upload-image-privacy">
@@ -48,6 +52,14 @@
 
                                 <fieldset data-role="controlgroup" data-type="horizontal" class="x-image-sharing s-upload-image-sharing">
                                     <legend><%= T('Share to') %>:</legend>
+
+
+                                    <% if(config.get('app_sharing_opt_in')){ %>
+                                        <input type="checkbox" name="app-sharing" id="app-sharing"
+                                        <%if (status == "private"){%>disabled="true"<%}%>
+                                        <% if(local_storage.get( "app-sharing" )){ %>checked="true"<%}%> />
+                                        <label for="app-sharing"><span class="ui-icon"></span></label>
+                                    <% } %>
 
                                     <input type="checkbox" name="tweet" id="twitter-sharing"
                                     <%if (status == "private"){%>disabled="true"<%}%>
@@ -138,12 +150,13 @@
                                     </div>
 
                                     <div class="ui-block-c">
-                                        <input type="submit" data-role="button" data-theme="h" class="share" value="Share"/>
+                                        <input type="submit" data-role="button" data-theme="h" class="x-share-button" value="Share"/>
+                                        <input type="submit" data-role="button" data-theme="f" class="x-done-button" value="Done"/>
                                     </div>
                                 </div>
                             </div>
 
-                       
+
 
                     </div>
                 </form>
