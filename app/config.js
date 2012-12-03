@@ -43,6 +43,8 @@ var config_model = Backbone.Model.extend({
         app_sharing_opt_in: false,
         app_sharing_opt_in_messaqge: true,
 
+        show_queue: ['my-snaps'],
+
         sort_order: 'date_utc',
 
         privacy_controls: true,
@@ -50,6 +52,8 @@ var config_model = Backbone.Model.extend({
         follow_controls: true,
 
         feed_user_links:'feed',
+
+        services: ['twitter', 'facebook', 'foursquare', 'tumblr', 'appdotnet'],
 
         map_styles: [],
 
