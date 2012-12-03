@@ -1603,8 +1603,8 @@ a.ui-link-inherit {
   visibility: hidden;
 }
 .ui-body-a {
-  background: none;
-  background-color: #000000;
+  background: #000000;
+  background-image: url('../gfx/bg-texture-dark.gif');
 }
 .ui-dialog.ui-overlay-a {
   background: none;
@@ -3135,8 +3135,14 @@ a:active {
 .s-inset-page-content .ui-listview-inset li.ui-li {
   border-top: dotted 1px #000000;
 }
-.s-inset-page-content .ui-listview-inset li.ui-li:first-child {
+.s-inset-page-content .ui-listview-inset:first-child {
   border: none;
+}
+.s-inset-page-content .ui-listview-inset .s-has-select .ui-select .ui-btn {
+  background: transparent;
+}
+.s-inset-page-content .ui-listview-inset .s-has-select .ui-select .ui-btn .ui-btn-inner {
+  background: transparent;
 }
 .s-inline-footer {
   margin: 10px -10px 0 -10px;

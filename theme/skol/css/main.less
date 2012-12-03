@@ -222,19 +222,25 @@ a:active{
     border-bottom: @borderGray;
 }
 
-.s-inset-page-content .ui-listview-inset {
-    background-color: @grayDarkBg;
-}
+.s-inset-page-content{
+    .ui-listview-inset {
+        background-color: @grayDarkBg;
+        li.ui-li {
+            border-top: @borderGrayDark;
+        }
+        &:first-child {
+            border: none;
+        }
+        .s-has-select .ui-select .ui-btn{
+            background: transparent;
+            .ui-btn-inner{
+                background: transparent;
+            }
+        }
+        
+    }
+} 
 
-
-
-.s-inset-page-content .ui-listview-inset li.ui-li {
-    border-top: @borderGrayDark;
-}
-
-.s-inset-page-content .ui-listview-inset li.ui-li:first-child {
-    border: none;
-}
 
 
 // @FOOTER
