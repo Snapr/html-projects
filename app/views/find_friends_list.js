@@ -50,7 +50,7 @@ var find_friends = page_view.extend({
                 people_list.append( li.render().el );
             });
         }else{
-            no_results.render('T(Oops.. Nobody here yet).', 'delete').$el.insertBefore(people_list);
+            no_results.render(T('Oops.. Nobody here yet'), 'delete').$el.insertBefore(people_list);
         }
 
         people_list.listview().listview("refresh");
