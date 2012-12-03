@@ -57,13 +57,31 @@
 
     <div class="s-image-item-base">
         <div data-role="controlgroup" data-type="horizontal" class="s-image-actions x-image-actions" data-theme="z">
-            <a data-role="button" data-theme="z" data-icon="heart" data-iconpos="left" class="x-favorite action-icons <% if (item.get('favorite')){ %> selected <% }%>" ><span class="s-hide-text"><%= T('Likes') %> </span><% if (item.get('favorite_count') > 0){ %>&times; <%= item.get('favorite_count') %><%} else {%> &nbsp;<%}%></a>
+            <a data-role="button" data-theme="z" data-icon="heart" data-iconpos="left" class="x-favorite action-icons <% if (item.get('favorite')){ %> selected <% }%>" >
+            <% if (item.get('favorite_count') > 0){ %>
+                <span class="s-text-symbol">&times; </span>
+                <%= item.get('favorite_count') %>
+                <span class="s-hide-text"> <%= T('Likes') %></span>
+            <%} else {%> 
+                <span class="s-hide-text"> <%= T('Like') %> </span>&nbsp;<%}%>
+            </a>
 
-            <a data-role="button" data-icon="comment" data-inline="true" data-iconpos="left" class="x-comment action-icons" data-theme="z"><span class="s-hide-text"><%= T('Comments') %> </span><% if (item.get('comments') > 0){ %>&times; <%= item.get('comments') %><%} else {%> &nbsp;<%}%></a>
+            <a data-role="button" data-icon="comment" data-inline="true" data-iconpos="left" class="x-comment action-icons" data-theme="z">
+                
+                <% if (item.get('comments') > 0){ %>
+                    <span class="s-text-symbol">&times; </span>
+                    <%= item.get('comments') %>
+                    <span class="s-hide-text"><%= T('Comments') %> </span>
+                <%} else {%>
+                    <span class="s-hide-text"> <%= T('Comment') %></span>&nbsp;
+                <%}%>
+            </a>
 
             <span class="s-has-palette">
                 <% if (item.get("username") == auth.get("snapr_user") || config.get('moderation_controls')){ %>
-                    <a data-role="button" class="x-more-button action-icons" data-theme="z" data-icon="more" data-iconpos="left" data-inline="true"><span class="s-hide-text"><%= T('More') %></span>&nbsp;</a>
+                    <a data-role="button" class="x-more-button action-icons" data-theme="z" data-icon="more" data-iconpos="left" data-inline="true">
+                        <span class="s-hide-text"><%= T('More') %></span>&nbsp;
+                    </a>
 
                     <div class="x-more-actions s-more-actions s-action-palette hide">
                         <div class="s-center-palette">
