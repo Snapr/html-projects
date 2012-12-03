@@ -4364,6 +4364,10 @@ div[data-role="content"] .s-feed-header.s-inline-header .s-username .s-small-tex
   -moz-box-shadow: none;
   -webkit-box-shadow: none;
   box-shadow: none;
+  padding: 5px;
+  background-color: #3f3f3f;
+  padding-top: 40px;
+  margin-top: -10px;
 }
 .s-image-item-block .s-reactions-list li.ui-li {
   border: none!important;
@@ -4388,9 +4392,22 @@ div[data-role="content"] .s-feed-header.s-inline-header .s-username .s-small-tex
 }
 .s-image-item-block .s-comment-area {
   display: none;
+  padding: 5px;
+  background-color: #3f3f3f;
+  border-bottom: dotted 1px #000000;
+  padding-top: 20px;
+  margin-top: -10px;
 }
 .s-image-item-block .s-comment-area .s-photo-comment {
   min-height: 75px;
+}
+.s-image-item-block .s-comment-area .ui-grid-b {
+  height: 50px;
+}
+.s-image-item-block .s-comment-area .ui-grid-b .ui-block-c {
+  width: 150px;
+  right: 0;
+  position: absolute;
 }
 .s-image-item-block.private .image-status {
   display: inherit;

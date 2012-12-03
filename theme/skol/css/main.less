@@ -1299,6 +1299,10 @@ div[data-role="content"]{
     .s-reactions-list{
         display: none;
         .box-shadow(none);
+        padding: @padding;
+        background-color: @grayDark;
+        padding-top: 40px;
+        margin-top: -10px;
         li.ui-li{
             border: none!important;
             padding:0;
@@ -1323,8 +1327,21 @@ div[data-role="content"]{
     }
     .s-comment-area{
         display: none;
+        padding: @padding;
+        background-color: @grayDark;
+        border-bottom: @borderGrayDark;
+        padding-top: 20px;
+        margin-top: -10px;
         .s-photo-comment{
             min-height: 75px;
+        }
+        .ui-grid-b{
+            height: 50px;
+            .ui-block-c{
+                width: 150px;
+                right: 0;
+                position: absolute;
+            }
         }
     }
 }
