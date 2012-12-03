@@ -8,7 +8,8 @@ var nearby_photostream_view = view.extend({
 
     defaults: {
         n: 4,
-        sort:'weighted_score'
+        sort:'weighted_score',
+        detail:0
     },
 
     initialize: function () {
@@ -82,11 +83,10 @@ var nearby_photostream_view = view.extend({
                     this_view.$('.x-nearby-link .ui-btn-text').text(T('Popular Images'));
                 }
                 this_view.$el.removeClass('x-loading');
-                // Check to see if the photo's have changed. If all the ID's are the same don't re-render
-                var photos_changed = this_view.collection.all(function (photo) {
-                    return ($.inArray(photo.get('id'), current_photo_ids) === -1);
-                });
-                photos_changed && this_view.render_photos();
+
+                if(_.keys(this_view.collection._byId).sort().toString() != current_photo_ids.sort().toString()){
+                    this_view.render_photos();
+                }
             },
             error: function () {
                 // if we have no photos already and something goes wrong show 'offline'.
