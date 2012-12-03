@@ -51,6 +51,8 @@ var config_model = Backbone.Model.extend({
 
         feed_user_links:'feed',
 
+        map_styles: [],
+
         //min_photo_rating: ,  not defind if non needed
         zoom: 15,
         feed_count: 9,
