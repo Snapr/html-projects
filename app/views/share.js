@@ -452,6 +452,10 @@ return page_view.extend({
 
     },
     share: function(){
+        if(!this.is_sharing()){
+            window.location.hash = this.back_url || '#';
+            return;
+        }
         $.mobile.showPageLoadingMsg();
         // if there is a secret set the picture has already been uploaded
         if (this.model && this.model.has("secret")){
@@ -640,11 +644,7 @@ return page_view.extend({
             }
             extras += "&local_id=" + params.local_id;
 
-            if(this.is_sharing()){
-                window.location.hash = "#/uploading/" + extras;
-            }else{
-                window.location.hash = this.back_url || '#';
-            }
+            window.location.hash = "#/uploading/" + extras;
             native_bridge.pass_data("snapr://upload?" + $.param(params) );
         }
     },
