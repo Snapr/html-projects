@@ -1220,9 +1220,9 @@ div[data-role="content"]{
         border-bottom: @borderGrayDark;
         
         .ui-controlgroup-controls{
-            padding-left: @padding * 2;
+            padding-left: 8px;
             position: relative;
-            top: @padding * 2;
+            top: 12px;
             width: 100%;
             .box-sizing(border-box);
             .ui-btn{
@@ -1237,7 +1237,7 @@ div[data-role="content"]{
         }
         .ui-btn.action-icons{
             color: @grayDark;
-            margin-right: @padding;
+            margin-right: 8px;
             .ui-btn-inner{
                 padding: 0 @padding * 2 0 27px;
             }
@@ -1252,18 +1252,22 @@ div[data-role="content"]{
                 
                 .button-font-bold();
                 color: @grayLighter;
-                font-size: @fontSizeSmall;
+                font-size: 11px;
             }
 
             // reactions btn off to the right
             &.s-reactions-button{
                position: absolute;
-               right: @padding * 2;
+               right: 8px;
                top: 0;
-               margin-right: -6px;
+               margin-right: 0;
                .ui-btn-inner{
-                    padding: 0 36px 0 10px;
+                    padding: 0 6px;
                }
+               .s-hide-text{
+                   display: none;
+               }
+               
                 .ui-icon{
                     background-position: @gfxAction-x @gfxAction-toggle-y;
                     right: 0;

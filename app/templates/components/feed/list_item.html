@@ -109,7 +109,7 @@
             </span>
 
             <% if (parseInt(item.get("favorite_count")) + parseInt(item.get("comments")) > 0){ %>
-                <a data-theme="z" data-role="button" data-icon="arrow-d" data-iconpos="right" class="x-reactions-button s-reactions-button action-icons"><%= T('Show') %></a>
+                <a data-theme="z" data-role="button" data-icon="arrow-d" data-iconpos="right" class="x-reactions-button s-reactions-button action-icons"><span class="s-hide-text"><%= T('Show') %></span>&nbsp;</a>
             <% } %>
         </div>
 

@@ -4285,9 +4285,9 @@ div[data-role="content"] .s-feed-header.s-inline-header .s-username .s-small-tex
   border-bottom: dotted 1px #000000;
 }
 .s-image-item-block .s-image-actions .ui-controlgroup-controls {
-  padding-left: 10px;
+  padding-left: 8px;
   position: relative;
-  top: 10px;
+  top: 12px;
   width: 100%;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -4305,7 +4305,7 @@ div[data-role="content"] .s-feed-header.s-inline-header .s-username .s-small-tex
 }
 .s-image-item-block .s-image-actions .ui-btn.action-icons {
   color: #3f3f3f;
-  margin-right: 5px;
+  margin-right: 8px;
 }
 .s-image-item-block .s-image-actions .ui-btn.action-icons .ui-btn-inner {
   padding: 0 10px 0 27px;
@@ -4328,16 +4328,19 @@ div[data-role="content"] .s-feed-header.s-inline-header .s-username .s-small-tex
   text-transform: uppercase;
   font-size: 15px;
   color: #a7a9ac;
-  font-size: 13px;
+  font-size: 11px;
 }
 .s-image-item-block .s-image-actions .ui-btn.action-icons.s-reactions-button {
   position: absolute;
-  right: 10px;
+  right: 8px;
   top: 0;
-  margin-right: -6px;
+  margin-right: 0;
 }
 .s-image-item-block .s-image-actions .ui-btn.action-icons.s-reactions-button .ui-btn-inner {
-  padding: 0 36px 0 10px;
+  padding: 0 6px;
+}
+.s-image-item-block .s-image-actions .ui-btn.action-icons.s-reactions-button .s-hide-text {
+  display: none;
 }
 .s-image-item-block .s-image-actions .ui-btn.action-icons.s-reactions-button .ui-icon {
   background-position: 0px -44px;
