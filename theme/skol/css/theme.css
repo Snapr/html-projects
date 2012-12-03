@@ -5202,7 +5202,6 @@ div.ps-carousel-item-loading {
 }
 #map div[data-role="content"] {
   padding-top: 0;
-  padding-bottom: 10px;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -5222,7 +5221,7 @@ div.ps-carousel-item-loading {
   height: 32px;
 }
 #map-layer #google-map {
-  margin: 0 -10px -17px -10px;
+  margin: 0 -10px -20px -10px;
 }
 .s-photo-map {
   position: relative;
@@ -5237,6 +5236,95 @@ div.ps-carousel-item-loading {
   top: 0px!important;
   left: -2px;
   background-position: -4px -256px;
+}
+.s-photo-map .s-map-point {
+  width: 1px;
+  height: 1px;
+  overflow: visible;
+  position: absolute;
+  z-index: 1;
+}
+.s-photo-map .s-map-thumb {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: auto;
+  width: auto;
+  overflow: visible;
+}
+.s-photo-map .s-map-thumb .s-map-thumbimage {
+  position: absolute;
+  top: auto;
+  bottom: 15px;
+  left: -30px;
+  width: 60px;
+  height: 60px;
+}
+.s-photo-map .s-map-thumb .s-map-pin {
+  display: none;
+}
+.s-photo-map .s-map-thumb .s-thumb-bg {
+  position: absolute;
+  top: auto;
+  bottom: -5px;
+  left: 0;
+  width: 78px;
+  height: 88px;
+  display: block;
+  left: -39px;
+}
+.s-photo-map .s-map-venue .s-venue-pin {
+  position: absolute;
+  display: block;
+  bottom: 0;
+  left: -18px;
+  width: 36px;
+  height: 28px;
+  cursor: pointer;
+  background-image: url('../gfx/map-spot-pin.png');
+}
+.s-photo-map .s-map-venue .s-venue-label {
+  display: none;
+  position: absolute;
+  bottom: 23px;
+  left: -70px;
+  width: 139px;
+  height: 47px;
+  z-index: 1;
+  text-decoration: none;
+}
+.s-photo-map .s-map-venue .s-venue-label .spot-icon {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+}
+.s-photo-map .s-map-venue .s-venue-label .s-venue-label-text {
+  color: #ffffff;
+  font-weight: normal;
+  font-style: italic;
+  text-shadow: #000000 0 -1px 1px;
+  display: block;
+  padding: 9px 27px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  font-size: 13px;
+  text-decoration: none;
+}
+.s-photo-map .s-map-venue.x-active {
+  z-index: 2;
+}
+.s-photo-map .s-map-venue.x-active .s-venue-label {
+  display: block;
+}
+.s-photo-map .s-map-current-location {
+  position: absolute;
+  top: -30px;
+  left: -15px;
+  width: 30px;
+  height: 30px;
+  z-index: 100;
+  background-image: url('../gfx/map-current-location-marker.png');
 }
 .s-photo-map .s-map-controls {
   position: absolute;
@@ -5289,7 +5377,6 @@ div.ps-carousel-item-loading {
   top: 6px;
 }
 .s-photo-map .s-map-controls .s-map-time .s-map-time-label {
-  left: -8px;
   padding-left: 10px;
   padding-right: 10px;
   background-image: -webkit-gradient(linear, left top, left bottom, from(#ffcc33), to(#e09c0e));

@@ -2145,7 +2145,6 @@ div.ps-carousel-item-loading{
 #map{
     div[data-role="content"]{
         padding-top: 0;
-        padding-bottom: @padding * 2;
         .box-sizing(border-box);
     }
     .s-map-loading{
@@ -2167,7 +2166,7 @@ div.ps-carousel-item-loading{
 }
 
 #map-layer #google-map {
-    margin: 0 -@padding * 2 -@padding * 2 - 7px -@padding * 2;
+    margin: 0 -@padding * 2 -@padding * 4 -@padding * 2;
 }
 
 .s-photo-map{
@@ -2183,6 +2182,104 @@ div.ps-carousel-item-loading{
             background-position: @gfxBar-x-a - 4px @gfxBar-location-y;
         }
     }
+    
+    
+    // Map Thumbs
+    .s-map-point {
+        width: 1px;
+        height: 1px;
+        overflow: visible;
+        position:absolute;
+        z-index: 1;
+    }
+    .s-map-thumb {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        height: auto;
+        width: auto;
+        overflow: visible;
+        .s-map-thumbimage {
+            position: absolute;
+            top: auto;
+            bottom: 15px;
+            left: -30px;
+            width: 60px;
+            height: 60px;
+        }
+        .s-map-pin{
+            display: none;
+        }
+        .s-thumb-bg {
+            position: absolute;
+            top: auto;
+            bottom: -5px;
+            left: 0;
+            width:78px;
+            height: 88px;
+            display: block;
+            left: -39px;
+        }
+    }
+
+    .s-map-venue{
+        .s-venue-pin{
+            position: absolute;
+            display: block;
+            bottom: 0;
+            left: -18px;
+            width: 36px;
+            height: 28px;
+            cursor: pointer;
+            background-image: url('@{gfx}@{gfxMapSpotPin}');
+        }
+        .s-venue-label{
+            display: none;
+            position: absolute;
+            bottom: 23px;
+            left: -70px;
+            width: 139px;
+            height: 47px;
+            z-index: 1;
+            text-decoration: none;
+            .spot-icon{
+                position: absolute;
+                top: 5px;
+                left: 5px;
+            }
+            .s-venue-label-text{
+                color: @white;
+                font-weight: normal;
+                font-style: italic;
+                text-shadow: black 0 -1px 1px;
+                display: block;
+                padding: 9px 27px;
+                text-overflow: ellipsis;
+                overflow: hidden;
+                white-space: nowrap;
+                font-size: 13px;
+                text-decoration: none;
+            }
+        }
+        &.x-active{
+            z-index: 2;
+            .s-venue-label{
+                display: block;
+            }
+        }
+    }
+
+    .s-map-current-location{
+        position: absolute;
+        top: -@gfxMapCurrentLoc-height;
+        left: -@gfxMapCurrentLoc-width / 2;
+        width: @gfxMapCurrentLoc-width;
+        height:@gfxMapCurrentLoc-height;
+        z-index: 100;
+        background-image: url('@{gfx}@{gfxMapCurrentLoc}');
+    }
+    
+    
     .s-map-controls{
         position: absolute;
         bottom: -7px;
@@ -2211,7 +2308,7 @@ div.ps-carousel-item-loading{
             left: 8px;
             top: 6px;
             .s-map-time-label{
-                left: -8px;
+               
                 padding-left: 10px;
                 padding-right: 10px;
                 .linear-gradient(@yellow, @yellowTint);
