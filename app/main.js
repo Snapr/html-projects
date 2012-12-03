@@ -288,6 +288,15 @@ require(['config', 'jquery', 'backbone', 'auth', 'utils/local_storage', 'native_
             $.mobile.popup.handleLink($(e.currentTarget));
         });
 
+        // clicking a link in a dialog that leads to the page that launched the dialog
+        // has no effect because the url hash doesn't change. This handler detects
+        // links to the current url in dialogs and makes them close the dialog.
+        $('a').live('click', function(e){
+            if($(this).attr('href') == window.location.hash && config.get('current_view').dialog){
+                config.get('current_view').back();
+            }
+        });
+
         if(config.get('photoswipe') && local_storage.get("appmode") != 'android'){
             require(['photoswipe'], function(PhotoSwipe) {
                 // make photoswipe basebar click
