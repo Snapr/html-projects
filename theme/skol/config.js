@@ -25,6 +25,7 @@ return {
         privacy_controls: false,
         moderation_controls: false,
         follow_controls: false,
+        photoswipe: false,
 
         show_queue: ['feed'],
 
