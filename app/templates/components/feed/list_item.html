@@ -62,12 +62,12 @@
                 <span class="s-text-symbol">&times; </span>
                 <%= item.get('favorite_count') %>
                 <span class="s-hide-text"> <%= T('Likes') %></span>
-            <%} else {%> 
+            <%} else {%>
                 <span class="s-hide-text"> <%= T('Like') %> </span>&nbsp;<%}%>
             </a>
 
             <a data-role="button" data-icon="comment" data-inline="true" data-iconpos="left" class="x-comment action-icons" data-theme="z">
-                
+
                 <% if (item.get('comments') > 0){ %>
                     <span class="s-text-symbol">&times; </span>
                     <%= item.get('comments') %>
@@ -109,7 +109,8 @@
             </span>
 
             <% if (parseInt(item.get("favorite_count")) + parseInt(item.get("comments")) > 0){ %>
-                <a data-theme="z" data-role="button" data-icon="arrow-d" data-iconpos="right" class="x-reactions-button s-reactions-button action-icons"><span class="s-hide-text"><%= T('Show') %></span>&nbsp;</a>
+                <a data-theme="z" data-role="button" data-icon="arrow-d" data-iconpos="right" class="x-reactions-button x-show s-reactions-button action-icons"><span class="s-hide-text"><%= T('show') %></span>&nbsp;</a>
+                <a data-theme="z" data-role="button" data-icon="arrow-d" data-iconpos="right" class="x-reactions-button hide x-hide s-reactions-button action-icons"><span class="s-hide-text"><%= T('hide') %></span>&nbsp;</a>
             <% } %>
         </div>
 

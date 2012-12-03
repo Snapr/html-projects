@@ -511,12 +511,14 @@ var feed_li =  view.extend({
         this.$('.x-reactions-button').toggleClass('selected');
 
         if (this.$('.x-reactions-list:visible').length){
-            this.$('.x-reactions-button .ui-btn-text').text(T('show'));
+            this.$('.x-reactions-button.x-hide').hide();
+            this.$('.x-reactions-button.x-show').show();
             this.$('.x-reactions-list').hide();
             this.hide_comment_form();
         }
         else{
-            this.$('.x-reactions-button .ui-btn-text').text(T('hide'));
+            this.$('.x-reactions-button.x-show').hide();
+            this.$('.x-reactions-button.x-hide').show();
             this.$('.x-reactions-button').x_loading();
             this.load_reactions();
             this.$('.x-reactions-list').show();
