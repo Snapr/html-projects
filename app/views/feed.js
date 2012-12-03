@@ -319,7 +319,14 @@ var feed_view =  page_view.extend({
     },
 
     show_user: function(e){
-        window.location.hash = "#/feed/?username=" + $(e.currentTarget).data('username');
+        var feed_user_links = config.get('feed_user_links');
+        if(feed_user_links == 'feed'){
+            window.location.hash = "#/feed/?username=" + $(e.currentTarget).data('username');
+        }
+        if(feed_user_links == 'profile'){
+            window.location.hash = "#/user/profile/?username=" + $(e.currentTarget).data('username');
+        }
+        e.preventDefault();
     }
 });
 

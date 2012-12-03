@@ -116,9 +116,9 @@
         <ul data-inset="true" class="x-reactions-list s-reactions-list">
             <% _.each(obj.reactions || [], function(reaction){ %>
                 <% if(reaction.get('type') == 'comment'){ %>
-                    <li><a href="#/feed/?username=<%= reaction.get('username') %>"><span class="s-username"><%= reaction.get('display_username') %>:</span> <span class="s-comment"><%= string_utils.comment_links( reaction.get('comment') ) %></span></a></li>
+                    <li><a class="x-user-link" data-username="<%= item.get('username') %>"><span class="s-username"><%= reaction.get('display_username') %>:</span> <span class="s-comment"><%= string_utils.comment_links( reaction.get('comment') ) %></span></a></li>
                 <% }else{ %>
-                    <li><a href="#/feed/?username=<%= reaction.get('username') %>"><span class="s-username"><%= reaction.get('display_username') %></span> <span class="s-like-text"><%= T('likes this') %></span></a></li>
+                    <li><a class="x-user-link" data-username="<%= item.get('username') %>"><span class="s-username"><%= reaction.get('display_username') %></span> <span class="s-like-text"><%= T('likes this') %></span></a></li>
                 <% } %>
             <% }) %>
         </ul>
