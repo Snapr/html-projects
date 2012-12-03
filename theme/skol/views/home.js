@@ -10,6 +10,14 @@ return base_home.extend({
         });
     },
 
+    events: {
+        "click .x-feed-button": "go_to_feed"
+    },
+
+    go_to_feed: function(){
+        this.nearby_photostream.go_to_feed();
+    },
+
     render_nearby_photostream: function(){
         this.nearby_photostream.refresh();
         this.$el.trigger('create');
