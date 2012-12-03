@@ -1,8 +1,17 @@
-<div data-role="page" data-overlay-theme="c" data-theme="c">
+<div data-role="page" data-overlay-theme="c" data-theme="c" class="welcome-bg s-special-bg">
     <div data-role="header" data-theme="c">
-        <h1>age-block</h1>
-    </div>
-    <div data-role="content" data-theme="d" data-ajax="false">
+           <h1><%= T('Sorry') %></h1>
+           <a href="#/welcome/" data-ajax="false" data-role="button" data-icon="delete" data-iconpos="notext"></a>
+           
+       </div>
+       <div data-role="content" data-theme="d" data-ajax="false">
+           <div class="s-inset-page-content s-wrap-content">
 
-    </div>
+               <h4><%= T('You must be 18 or over to use this app.') %></h4>
+
+               
+
+           </div>
+
+       </div>
 </div>

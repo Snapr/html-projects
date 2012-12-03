@@ -223,7 +223,18 @@ a:active{
 }
 
 .s-inset-page-content{
+    
+    h4{
+        text-transform: uppercase;
+        color: @yellow;
+    }
+    
     .ui-listview-inset {
+        h4{
+               text-transform: none;
+               color: @grayLighter;
+           }
+        
         background-color: @grayDarkBg;
         li.ui-li {
             border-top: @borderGrayDark;
@@ -2213,8 +2224,8 @@ div.ps-carousel-item-loading{
 
 .ui-dialog.welcome-bg,
 .ui-page.welcome-bg{
-    background-color: #acebdd!important;
-    background-image: url('../../../app/css/gfx/welcome-image.png')!important;
+    background-color: #000!important;
+    background-image: url('../gfx/welcome-bg.jpg')!important;
     .background-size(100%, auto)!important;
     background-repeat: no-repeat!important;
     background-position: center bottom!important;
@@ -2818,7 +2829,6 @@ div.ps-carousel-item-loading{
 
 .ui-dialog.s-special-bg,
 .ui-page.s-special-bg{
-    background-image: none!important;
     div[data-role="content"]{
         background: none;
     }
