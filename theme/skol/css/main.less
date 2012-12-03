@@ -2174,6 +2174,8 @@ div.ps-carousel-item-loading{
     position:relative;
     overflow:hidden;
     .ui-bar{
+        background-color: @grayDarker;
+        margin: 0 -@padding * 2;
         .ui-icon-location{
             width: 20px;
             top: 0px!important;
@@ -2209,8 +2211,13 @@ div.ps-carousel-item-loading{
             left: 8px;
             top: 6px;
             .s-map-time-label{
+                left: -8px;
                 padding-left: 10px;
                 padding-right: 10px;
+                .linear-gradient(@yellow, @yellowTint);
+                text-shadow: none;
+                color: @grayDarker;
+                .border-top-radius(@corners);
                 .button-font-small();
                 top: -30px;
             }
@@ -2233,7 +2240,12 @@ div.ps-carousel-item-loading{
             .border-radius(@cornersRound);
         }
         .s-map-filters{
-            margin: 6px 6px 7px 42px
+            margin: 6px 6px 7px 42px;
+            .ui-select .ui-btn{
+                font-family: @font;
+                font-style: italic;
+                text-transform: none;
+            }
         }
         .ui-input-search{
             padding: 8px 24px 8px 28px;
@@ -2331,6 +2343,14 @@ div.ps-carousel-item-loading{
         }
         &::after{
             .arrow-up(@arrowSize, @white, 160px ,@arrowYShift + 2px);
+        }
+    }
+}
+
+.dw{
+    .ui-btn{
+        .ui-btn-text{
+            font-size: @fontSizeSmall;
         }
     }
 }

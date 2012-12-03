@@ -5228,6 +5228,10 @@ div.ps-carousel-item-loading {
   position: relative;
   overflow: hidden;
 }
+.s-photo-map .ui-bar {
+  background-color: #2a2a2a;
+  margin: 0 -10px;
+}
 .s-photo-map .ui-bar .ui-icon-location {
   width: 20px;
   top: 0px!important;
@@ -5285,8 +5289,33 @@ div.ps-carousel-item-loading {
   top: 6px;
 }
 .s-photo-map .s-map-controls .s-map-time .s-map-time-label {
+  left: -8px;
   padding-left: 10px;
   padding-right: 10px;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#ffcc33), to(#e09c0e));
+  /* Saf4+, Chrome */
+
+  background-image: -webkit-linear-gradient(top, #ffcc33, #e09c0e);
+  /* Chrome 10+, Saf5.1+ */
+
+  background-image: -moz-linear-gradient(top, #ffcc33, #e09c0e);
+  /* FF3.6 */
+
+  background-image: -ms-linear-gradient(top, #ffcc33, #e09c0e);
+  /* IE10 */
+
+  background-image: -o-linear-gradient(top, #ffcc33, #e09c0e);
+  /* Opera 11.10+ */
+
+  background-image: linear-gradient(top, #ffcc33, #e09c0e);
+  text-shadow: none;
+  color: #2a2a2a;
+  -webkit-border-top-right-radius: 4px;
+  -moz-border-radius-topright: 4px;
+  border-top-right-radius: 4px;
+  -webkit-border-top-left-radius: 4px;
+  -moz-border-radius-topleft: 4px;
+  border-top-left-radius: 4px;
   font-family: Helvetica, Arial, sans-serif;
   font-weight: bold;
   font-size: 13px;
@@ -5320,6 +5349,11 @@ div.ps-carousel-item-loading {
 }
 .s-photo-map .s-map-controls .s-map-filters {
   margin: 6px 6px 7px 42px;
+}
+.s-photo-map .s-map-controls .s-map-filters .ui-select .ui-btn {
+  font-family: Georgia, 'Times New Roman', Times, sans-serif;
+  font-style: italic;
+  text-transform: none;
 }
 .s-photo-map .s-map-controls .ui-input-search {
   padding: 8px 24px 8px 28px;
@@ -5432,6 +5466,9 @@ div.ps-carousel-item-loading {
   position: absolute;
   top: -9px;
   left: 160px;
+}
+.dw .ui-btn .ui-btn-text {
+  font-size: 13px;
 }
 .s-spots-search-filters {
   padding-right: 51px;
