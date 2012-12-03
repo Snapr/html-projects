@@ -5113,8 +5113,8 @@ div[data-role="content"] .s-feed-header.s-inline-header .s-username .s-small-tex
 .s-add-services li.ui-li .s-share-icon-small,
 .share-icons-list li.ui-li .s-share-icon-small {
   position: absolute;
-  top: 14px;
-  left: 16px;
+  top: 9px;
+  left: 8px;
 }
 .s-avatar-select-block {
   padding-left: 112px;
@@ -5136,7 +5136,7 @@ div[data-role="content"] .s-feed-header.s-inline-header .s-username .s-small-tex
   font-family: Helvetica, Arial, sans-serif;
   font-weight: bold;
   font-size: 13px;
-  color: #3f3f3f;
+  color: #4e4e4e;
 }
 .s-add-services .s-connect-status .ui-icon-check {
   background-position: -243px -144px;
