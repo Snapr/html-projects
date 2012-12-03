@@ -7,6 +7,14 @@ return original_share.extend({
         return ( local_storage.get( "foursquare-sharing") || local_storage.get( "app-sharing")) ? 'venue' : 'geocode';
     },
 
+    render: function(){
+        original_share.prototype.render.apply(this);
+        if(this.$('#app-sharing').attr('checked')){
+            this.$(".x-no-foursquare-venue").hide();
+            this.$(".x-foursquare-venue").show();
+        }
+    },
+
     toggle_sharing: function( e ){
         local_storage.set( e.target.id, !!$(e.target).attr("checked") );
 
