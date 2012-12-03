@@ -53,6 +53,8 @@ var config_model = Backbone.Model.extend({
 
         feed_user_links:'feed',
 
+        services: ['twitter', 'facebook', 'foursquare', 'tumblr', 'appdotnet'],
+
         map_styles: [],
 
         //min_photo_rating: ,  not defind if non needed

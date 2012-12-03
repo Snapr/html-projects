@@ -61,25 +61,33 @@
                                         <label for="app-sharing"><span class="ui-icon"></span></label>
                                     <% } %>
 
-                                    <input type="checkbox" name="tweet" id="twitter-sharing"
-                                    <%if (status == "private"){%>disabled="true"<%}%>
-                                    <%if (twitter_sharing && status != "private"){%>checked="true"<%}%> />
-                                    <label for="twitter-sharing"><span class="ui-icon"></span>Twitter</label>
+                                    <% if(_.contains(config.get('services'), 'twitter')){ %>
+                                        <input type="checkbox" name="tweet" id="twitter-sharing"
+                                        <%if (status == "private"){%>disabled="true"<%}%>
+                                        <%if (twitter_sharing && status != "private"){%>checked="true"<%}%> />
+                                        <label for="twitter-sharing"><span class="ui-icon"></span>Twitter</label>
+                                    <% } %>
 
-                                    <input type="checkbox" name="facebook_album" id="facebook-sharing"
-                                    <%if (status == "private"){%>disabled="true"<%}%>
-                                    <%if (facebook_sharing && status != "private"){%>checked="true"<%}%>/>
-                                    <label for="facebook-sharing"><span class="ui-icon"></span>Facebook</label>
+                                    <% if(_.contains(config.get('services'), 'facebook')){ %>
+                                        <input type="checkbox" name="facebook_album" id="facebook-sharing"
+                                        <%if (status == "private"){%>disabled="true"<%}%>
+                                        <%if (facebook_sharing && status != "private"){%>checked="true"<%}%>/>
+                                        <label for="facebook-sharing"><span class="ui-icon"></span>Facebook</label>
+                                    <% } %>
 
-                                    <input type="checkbox" name="tumblr" id="tumblr-sharing"
-                                    <%if (status == "private"){%>disabled="true"<%}%>
-                                    <%if (tumblr_sharing  && status != "private"){%>checked="true"<%}%> />
-                                    <label for="tumblr-sharing"><span class="ui-icon"></span>Tumblr</label>
+                                    <% if(_.contains(config.get('services'), 'tumblr')){ %>
+                                        <input type="checkbox" name="tumblr" id="tumblr-sharing"
+                                        <%if (status == "private"){%>disabled="true"<%}%>
+                                        <%if (tumblr_sharing  && status != "private"){%>checked="true"<%}%> />
+                                        <label for="tumblr-sharing"><span class="ui-icon"></span>Tumblr</label>
+                                    <% } %>
 
-                                    <input type="checkbox" name="foursquare_checkin" id="foursquare-sharing"
-                                    <%if (status == "private"){%>disabled="true"<%}%>
-                                    <%if (foursquare_sharing && status != "private"){%>checked="true"<%}%> />
-                                    <label for="foursquare-sharing"><span class="ui-icon"></span>Foursquare</label>
+                                    <% if(_.contains(config.get('services'), 'foursquare')){ %>
+                                        <input type="checkbox" name="foursquare_checkin" id="foursquare-sharing"
+                                        <%if (status == "private"){%>disabled="true"<%}%>
+                                        <%if (foursquare_sharing && status != "private"){%>checked="true"<%}%> />
+                                        <label for="foursquare-sharing"><span class="ui-icon"></span>Foursquare</label>
+                                    <% } %>
 
                                 </fieldset>
 

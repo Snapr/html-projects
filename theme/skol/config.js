@@ -31,6 +31,8 @@ return {
 
         feed_user_links:'profile',
 
+        services: ['twitter', 'facebook', 'foursquare', 'appdotnet'],
+
         //default_tumblr_host: 'snaprtest.tumblr.com',
         //tumblr_key: '0i9zD5xabR9QlY0BWhFV2XiRr1wI329fPlH4S5kPuvuBWkRQUb',
 

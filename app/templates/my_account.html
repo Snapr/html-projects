@@ -1,4 +1,4 @@
-<div id="my-account"  data-tab-bar="true" data-title="My Account" data-role="page" data-short-title="My Account" data-theme="d data-back="false">
+<div id="my-account"  data-tab-bar="true" data-title="My Account" data-role="page" data-short-title="My Account" data-theme="d" data-back="false">
     <div data-role="header" data-theme="b" data-ajax="false">
 
 
@@ -54,19 +54,23 @@
                                         <div class="s-avatar-large" style="background-image: url('<%= config.get('avatar_url') %>/<%= user_id %>?size=large&_salt=<%= settings.profile.avatar_type %>');"></div>
                                     </span>
 
-                                    <input type="radio" name="my-account-avatar" id="my-account-avatar-twitter" value="twitter" data-role="none"
+                                    <% if(_.contains(config.get('services'), 'twitter')){ %>
+                                        <input type="radio" name="my-account-avatar" id="my-account-avatar-twitter" value="twitter" data-role="none"
                                         <% if (settings.profile.avatar_type == 'twitter'){ %> checked="true" <% } %> />
                                         <label for="my-account-avatar-twitter">Twitter</label><br>
+                                    <% } %>
 
+                                    <% if(_.contains(config.get('services'), 'facebook')){ %>
                                         <input type="radio" name="my-account-avatar" id="my-account-avatar-facebook" value="facebook" data-role="none"
                                         <% if (settings.profile.avatar_type == 'facebook'){ %> checked="true" <% } %> />
                                         <label for="my-account-avatar-facebook">Facebook</label><br>
+                                    <% } %>
 
-                                        <input type="radio" name="my-account-avatar" id="my-account-avatar-gravatar" value="gravatar"   data-role="none"
-                                        <% if (settings.profile.avatar_type == 'gravatar'){ %> checked="true" <% } %> />
-                                        <label for="my-account-avatar-gravatar">Gravatar</label><br>
+                                    <input type="radio" name="my-account-avatar" id="my-account-avatar-gravatar" value="gravatar"   data-role="none"
+                                    <% if (settings.profile.avatar_type == 'gravatar'){ %> checked="true" <% } %> />
+                                    <label for="my-account-avatar-gravatar">Gravatar</label><br>
 
-                                        <a class="x-set-up-gravitar my-account-set-up-gravatar" href="http://en.gravatar.com/">&rarr; <%= T('Set up') %> Gravatar</a>
+                                    <a class="x-set-up-gravitar my-account-set-up-gravatar" href="http://en.gravatar.com/">&rarr; <%= T('Set up') %> Gravatar</a>
                                </div>
                             </fieldset>
 
