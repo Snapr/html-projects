@@ -83,6 +83,11 @@ return {
 
     pages: [
         {
+            name: 'age-block',
+            view: 'base/page',
+            template: theme_templates + 'age-block'
+        },
+        {
             name: 'home',
             template: theme_templates + 'home',
             view: theme_views + 'home'

@@ -6,6 +6,7 @@ define(
         'auth',
         'utils/photoswipe',
         'utils/alerts',
+        'utils/dialog',
         'views/base/view',
         'views/base/page',
         'views/components/no_results',
@@ -24,6 +25,7 @@ define(
         auth,
         photoswipe,
         alerts,
+        dialog,
         view,
         page_view,
         no_results,
@@ -321,10 +323,10 @@ var feed_view =  page_view.extend({
     show_user: function(e){
         var feed_user_links = config.get('feed_user_links');
         if(feed_user_links == 'feed'){
-            window.location.hash = "#/feed/?username=" + $(e.currentTarget).data('username');
+            dialog('feed/?username='+$(e.currentTarget).data('username'));
         }
         if(feed_user_links == 'profile'){
-            window.location.hash = "#/user/profile/?username=" + $(e.currentTarget).data('username');
+            dialog('user/profile/?username='+$(e.currentTarget).data('username'));
         }
         e.preventDefault();
     }
