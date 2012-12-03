@@ -43,6 +43,8 @@ var config_model = Backbone.Model.extend({
         app_sharing_opt_in: false,
         app_sharing_opt_in_messaqge: true,
 
+        show_queue: ['my-snaps'],
+
         sort_order: 'date_utc',
 
         privacy_controls: true,

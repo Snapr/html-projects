@@ -248,7 +248,8 @@ var feed_view =  page_view.extend({
     },
 
     update_uploads: function(model, changes){
-        if (this.is_my_snaps()){
+        var show_queue = _(config.get('show_queue'));
+        if (show_queue.contains('feed') || (show_queue.contains('my-snaps') && this.is_my_snaps())){
 
             var upload_li_template = this.get_template('components/feed/upload_progress');
 

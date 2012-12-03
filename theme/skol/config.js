@@ -26,6 +26,8 @@ return {
         moderation_controls: false,
         follow_controls: false,
 
+        show_queue: ['feed'],
+
         feed_user_links:'profile',
 
         //default_tumblr_host: 'snaprtest.tumblr.com',
