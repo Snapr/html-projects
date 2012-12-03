@@ -505,8 +505,8 @@ a:active{
 
 .ui-slider-switch{
     .border-radius(@cornersRound);
-    border: @borderGrayLighter;
-    background: white;
+    border: solid 1px @grayDarkBg;
+    background: @grayDarkBg;
     .ui-slider-label{
         font-size: 15px;
         text-transform: uppercase;
@@ -516,14 +516,13 @@ a:active{
         font-weight: bold;
         .border-radius(@cornersRound);
         text-shadow: none;
-        background: white;
+        background: @grayDarker;
         border: none!important;
         .box-shadow(inset 0 1px 1px rgba(0, 0, 0, 0.2));
         &.ui-btn-active{
-            color: white;
-            text-shadow: rgba(0, 0, 0, .5) 0px -1px 1px;
-            background: #007FEA;
-            text-shadow: 0 -1px 0px #093B5C;
+            color: @gray;
+            text-shadow: rgba(255,255,255, .5) 0px 1px 1px;
+            background: @yellow;
             .box-shadow(0 4px 5px -2px rgba(0,0,0,0.3) inset);
             font-family: @font;
 
@@ -537,7 +536,7 @@ a:active{
     }
 }
 .s-switch-setting{
-    border-bottom: @borderGrayLighter;
+    border-bottom: @borderBlack;
     margin: 0;
     padding-bottom: @paddingElement;
     margin-bottom: @paddingElement;
@@ -1865,7 +1864,6 @@ div[data-role="content"]{
 .s-account-content{
     .s-account-header{
         min-height: 60px;
-        .box-shadow(inset 0px -11px 33px rgba(0, 0, 0, 0.2));
         .ui-btn,
        .s-avatar{
            display: inline-block;
@@ -1878,34 +1876,43 @@ div[data-role="content"]{
            top: 4px;
            .border-radius(@cornersRound);
            .ui-btn-inner{
-               padding-left: 20px;
+               padding-left: 15px;
+               padding-right: 40px;
            }
            .ui-icon-delete{
                background-position: @gfxIcons-delete-x @gfxIcons-y-med;
            }
        }
     }
-    .s-myaccount-quicklinks{
-        margin-top: -@cornersPage - 2px;
-    }
     .ui-collapsible-set {
-        margin-bottom: -2px;
+        margin-bottom: 0px;
+        .ui-collapsible{
+            margin: 0;
+        }
     }
-
     .ui-bar{
-        .box-shadow(0 -1px 3px rgba(0,0,0,.05));
-        border-bottom: @borderGrayLight;
+        border-bottom: @borderGrayDark;
+        background-color: @grayDark;
+        margin-left: -@padding * 2;
+        margin-right: -@padding * 2;
+        
         .ui-btn-text {
             padding-left: 8px;
         }
     }
 
     .ui-listview{
+        margin-left: -@padding * 2!important;
+        margin-right: -@padding * 2!important;
         li.ui-btn{
-             margin-top:1px;
-                border-bottom: @borderGrayLighter;
+           
+            border-bottom: @borderGrayDark;
+            background-color: @grayDarker;
+            .border-radius(0);
                 .ui-btn-inner{
                     padding: 0px 40px 0px 0px;
+                    background-color: @grayDarker;
+                    .border-radius(0);
                 }
                 .ui-icon{
                     left: auto;
@@ -1914,14 +1921,17 @@ div[data-role="content"]{
                 .ui-icon-arrow-r{background-position: @gfxIcons-arrow-r-x @gfxIcons-y-med;}
         }
         li.ui-btn-up-c{
-            background-color: @grayLightBg!important;
-            background-image:@gfxBgLight!important;
+            padding: 0!important;
+            background-color: @grayDarker;
+            
             .button-font-light();
         }
-        li.ui-btn-hover-c{
-            background-image: none!important;
-            background-color: lighten(@grayLightBg, .7%)!important;
+        li.ui-btn-hover-c,
+        li.ui-btn-active-c{
             .button-font-light();
+            padding: 0!important;
+            background-color: lighten(@grayDarker,5%);
+            
         }
         li.ui-li-last{
             border-bottom: none;
@@ -1934,8 +1944,8 @@ div[data-role="content"]{
 
         .ui-collapsible-heading{
             .ui-btn{
-                margin-top:1px;
-                border-bottom: @borderGrayLighter;
+        
+                border-bottom: @borderGrayDark;
                 .ui-btn-inner{
                     padding: 16px 40px 16px 16px;
                 }
@@ -1947,28 +1957,38 @@ div[data-role="content"]{
                 .ui-icon-minus{background-position: @gfxIcons-arrow-u-x @gfxIcons-y-med;}
             }
             .ui-btn-up-c{
-                background-color: @grayLightBg;
-                background-image:@gfxBgLight;
+                padding: 0!important;
+                background-color: @grayDarker;
                 .button-font-light();
+                .ui-btn-inner{
+                    background: transparent;
+                    .border-radius(0);
+                }
             }
-            .ui-btn-hover-c{
+            .ui-btn-hover-c,
+            .ui-btn-down-c{
+                padding: 0!important;
+                
                 background-image: none;
-                background-color: lighten(@grayLightBg, .7%);
+                background-color: lighten(@grayDarker, 5%);
                 .button-font-light();
+                
+                .ui-btn-inner{
+                    background: transparent;
+                    .border-radius(0);
+                }
 
             }
         }
-        .ui-collapsible-content{
-            .ui-btn{
-                .box-shadow( none);
-                .border-radius(@cornersRound);
-                border: @borderGrayLighter;
-
-            }
-            &.ui-body-d{
-                border: none;
-                border-bottom: @borderGrayLighter;
-            }
+        
+    }
+    
+    .ui-grid-b .ui-block-a .ui-btn, 
+    .ui-grid-b .ui-block-b .ui-btn, 
+    .ui-grid-b .ui-block-c .ui-btn {
+        margin: 0;
+        .ui-btn-inner{
+            font-size: @fontSizeSmall;
         }
     }
 
@@ -1987,8 +2007,8 @@ div[data-role="content"]{
         }
         .s-share-icon-small {
             position: absolute;
-            top: -3px;
-            left: 0;
+            top: -7px;
+            left: -10px;
         }
     }
     li{
