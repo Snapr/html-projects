@@ -35,6 +35,17 @@ return {
         anon_username: 'anon',
         me_username: 'me',
 
+        map_styles: [
+            {
+                "stylers": [
+                      { "hue": "#ffc300" },
+                      { "invert_lightness": true },
+                      { "lightness": 34 },
+                      { "saturation": 74 }
+                ]
+            }
+        ],
+
         autocreate_fb_users: true  // signin with facebook should create users rather than autofill join form
         //get_user_points: false,  // request points when getting users form the api
         //timeout: 1000*20,  // ms, max api response time allowed

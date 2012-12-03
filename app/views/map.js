@@ -248,7 +248,7 @@ var map_view = page_view.extend({
                       { "visibility": "off" }
                     ]
                 }
-            ]
+            ].concat(config.get('map_styles'))
         };
 
         this.map = new google.maps.Map($('.x-map')[0], map_settings);
