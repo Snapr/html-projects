@@ -49,6 +49,8 @@ var config_model = Backbone.Model.extend({
         moderation_controls: true,
         follow_controls: true,
 
+        feed_user_links:'feed',
+
         //min_photo_rating: ,  not defind if non needed
         zoom: 15,
         feed_count: 9,
