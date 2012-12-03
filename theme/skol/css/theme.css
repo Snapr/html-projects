@@ -4273,8 +4273,11 @@ div[data-role="content"] .s-feed-header.s-inline-header .s-username .s-small-tex
 .s-image-item-block .s-image-description .x-goto-spot {
   color: #ffcc33;
 }
-.s-image-item-block .s-image-item-base .s-hide-text {
+.s-image-item-block .s-image-item-base .s-text-symbol {
   display: none;
+}
+.s-image-item-block .s-image-item-base .s-hide-text {
+  display: inline-block;
 }
 .s-image-item-block .s-image-actions {
   margin-top: 10px;
@@ -4305,7 +4308,7 @@ div[data-role="content"] .s-feed-header.s-inline-header .s-username .s-small-tex
   margin-right: 5px;
 }
 .s-image-item-block .s-image-actions .ui-btn.action-icons .ui-btn-inner {
-  padding: 0 0 0 17px;
+  padding: 0 10px 0 27px;
 }
 .s-image-item-block .s-image-actions .ui-btn.action-icons .ui-icon {
   width: 22px;
@@ -4317,10 +4320,14 @@ div[data-role="content"] .s-feed-header.s-inline-header .s-username .s-small-tex
 }
 .s-image-item-block .s-image-actions .ui-btn.action-icons .ui-btn-text {
   line-height: 22px;
-  text-transform: lowercase;
-  text-shadow: none;
-  font-family: Helvetica, Arial, sans-serif;
-  font-weight: bold;
+  font-family: 'PlutoHeavy', Helvetica, Arial, sans-serif;
+  font-weight: normal;
+  text-transform: none;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 15px;
+  color: #a7a9ac;
   font-size: 13px;
 }
 .s-image-item-block .s-image-actions .ui-btn.action-icons.s-reactions-button {

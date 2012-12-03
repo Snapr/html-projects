@@ -1207,8 +1207,11 @@ div[data-role="content"]{
         }
     }
     .s-image-item-base{
-        .s-hide-text{
+        .s-text-symbol{
             display: none;
+        }
+        .s-hide-text{
+            display: inline-block;
         }
     }
     .s-image-actions{
@@ -1236,7 +1239,7 @@ div[data-role="content"]{
             color: @grayDark;
             margin-right: @padding;
             .ui-btn-inner{
-                padding: 0 0 0 @gfxAction-grid - @padding;
+                padding: 0 @padding * 2 0 27px;
             }
             .ui-icon{
                 width: @gfxAction-grid;
@@ -1246,9 +1249,10 @@ div[data-role="content"]{
             }
             .ui-btn-text{
                 line-height: @gfxAction-grid;
-                text-transform: lowercase;
-                text-shadow: none;
-                .button-font-small();
+                
+                .button-font-bold();
+                color: @grayLighter;
+                font-size: @fontSizeSmall;
             }
 
             // reactions btn off to the right
