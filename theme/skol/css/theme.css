@@ -3868,6 +3868,17 @@ textarea.ui-input-text {
 .ui-input-search .ui-input-clear .ui-icon-delete {
   background-position: -63px 0px;
 }
+.x-loading .s-search-header .ui-input-search .ui-input-clear .ui-icon-delete {
+  background-image: url('gfx/small-spinner-light.png') !important;
+  display: block;
+  background-image: url('../gfx/small-spinner-light.png') !important;
+  background-position: center!important;
+  background-repeat: no-repeat !important;
+  -webkit-background-size: 24px 24px !important;
+  -moz-background-size: 24px 24px !important;
+  -o-background-size: 24px 24px !important;
+  background-size: 24px 24px !important;
+}
 .s-image-loader-bg {
   background-color: #3f3f3f;
   border-top: dotted 1px #000000;
@@ -4697,6 +4708,9 @@ div[data-role="content"] .s-feed-header.s-inline-header .s-username .s-small-tex
   z-index: 10;
   position: relative;
   font-style: italic;
+}
+.s-share-photo .s-image-bg-layer {
+  background-color: #000000;
 }
 .s-share-photo .s-upload-image-privacy {
   display: none;

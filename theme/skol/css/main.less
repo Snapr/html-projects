@@ -740,6 +740,18 @@ textarea.ui-input-text {
     }
 }
 
+.x-loading{
+    .s-search-header{
+        .ui-input-search{
+            .ui-input-clear {
+                .ui-icon-delete{
+                    .spinner();
+                }
+            }
+        }
+    }
+}
+
 
 // @IMAGES
 // -------------------------
@@ -1682,6 +1694,9 @@ div[data-role="content"]{
                 font-style: italic;
             }
         }
+    }
+    .s-image-bg-layer{
+        background-color: @black;
     }
 
     .s-upload-image-privacy{
