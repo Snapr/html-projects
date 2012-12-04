@@ -36,6 +36,10 @@
                                 <%= T('Favorited by') %> <a href="#/feed/?username=<%= feed_query.favorited_by %>" data-role="none"><strong><%= feed_query.favorited_by %></strong></a>
                             <% }else if (feed_query.spot && feed_query.venue_name){ %>
                                 @ <strong><%= feed_query.venue_name %></strong>
+                            <% }else if (feed_query.radius){ %>
+                                <strong><%= T('Nearby') %></strong>
+                            <% }else if (feed_query.sort == 'weighted_score'){ %>
+                                <strong><%= T('Popular') %></strong>
                             <% }else{ %>
                                 <strong><%= T('Photos') %></strong>
                             <% } %>
@@ -46,7 +50,7 @@
                         <div class="s-user-icon-left">
                             <a class="s-profile-icon" data-snapr-dialog="true" href="#/user/profile/?username=<%= user.get('username') %>">
                                 <div class="s-avatar" style="background-image: url('<%= config.get('avatar_url') %>/<%= user.get('user_id') %>?size=bigger');"></div>
-                                
+
                             </a>
                         </div>
 
@@ -54,7 +58,7 @@
                         <h4 class="s-username">
                             <%= user.get('display_username') %><span class="s-small-text"><% if(user.get('photo_count')){ %> <%= user.get('photo_count') %> <%= T('Photos') %> <%}%></span>
                         </h4>
-                    
+
 
                     </div>
                 <% } %>

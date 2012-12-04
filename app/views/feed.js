@@ -77,9 +77,13 @@ var feed_view =  page_view.extend({
             this.title = T("Favorites");
         }else if (this.query.spot && this.query.venue_name){
             this.title = T("Spot");
+        }else if (this.query.sort == 'weighted_score' || this.query.sort == 'score'){
+            this.title = T("Popular");
         }else{
             this.title = T("Feed");
         }
+        console.log(this.title);
+        console.log(this.query, this.query.sort);
 
         var list_style = this.query.list_style || 'list';
 
