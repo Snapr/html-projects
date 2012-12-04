@@ -153,10 +153,10 @@ var spots_view =  page_view.extend({
 
         if (category !== 'all')  {
             data.category = category;
-            this.$('form').addClass('x-' + category);
+            this.$('form').addClass(category);
         }
         else {
-            this.$('form').addClass('x-all-categories');
+            this.$('form').addClass('all-categories');
         }
 
         this.$('form').addClass('distance-'+nearby);
