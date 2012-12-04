@@ -5,6 +5,13 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1">
         <meta name="apple-mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        
+        <script>
+            // Hack for fullscreen homescreen webapp on iPhone 5
+            if (window.screen.height==568) { 
+            document.querySelector("meta[name=viewport]").content="width=320.1";
+            }
+        </script>
 
         <script>window.theme = 'skol';</script>
         <script data-main="app/main" src="app/require.js"></script>
