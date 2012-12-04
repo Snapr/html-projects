@@ -52,7 +52,7 @@
 
 
                         <h4 class="s-username">
-                            <%= user.get('display_username') %><span class="s-small-text"><% if(user.get('photo_count')){ %> <%= user.get('photo_count') %> <%= T('Photos') %> <%}%></span>
+                             <a data-snapr-dialog="true" href="#/user/profile/?username=<%= user.get('username') %>"><%= user.get('display_username') %><span class="s-small-text"><% if(user.get('photo_count')){ %> <%= user.get('photo_count') %> <%= T('Photos') %> <%}%></span></a>
                         </h4>
                     
 
