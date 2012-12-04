@@ -5,6 +5,7 @@ var config_model = Backbone.Model.extend({
         environment: 'dev',
 
         language: undefined,
+        ignore_language_country: true,
 
         initial_view: 'home',
 
@@ -90,6 +91,9 @@ var config_model = Backbone.Model.extend({
                     value = kv[1];
 
                 if(key == 'language') {
+                    if(config.get('ignore_language_country')){
+                        value = value.split('-')[0];
+                    }
                     config.set('language', value);
                 }
             });

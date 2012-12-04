@@ -5,6 +5,7 @@ return {
         environment: 'dev',  // from theme.environments below
 
         //language: 'leet',
+        //ignore_language_country: false,
 
         // sort_order: 'date_added',  // defaults to date_utc the photo was taken. (rating, favorite_count, comment_count, date_local, date_added, date_utc, score, weighted_score)
 
