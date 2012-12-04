@@ -98,7 +98,7 @@
                 <a data-role="button" data-icon="feed" class="profile-icons" href="#/feed/?username=<%= user.get( "username" ) %>"><%= user.get("details").stats.photo_count %>
                  <%= T('Snaps') %></a>
                 <%}%>
-                <% if (user.get("details").stats.photos_favorited){%>
+                <% if (user.get("details").stats.favorite_count){%>
                 <a href="#/feed/?favorited_by=<%= user.get( "username" ) %>&list_style=grid" data-role="button" data-icon="favs" class="profile-icons"><%= user.get("details").stats.favorite_count %> <%= T('Favs') %></a>
                  <%}%>
             </div>

@@ -24,6 +24,7 @@
         </div>
         <div class="s-main-feed-content">
             <div class="x-feed-header">
+                <% console.log(feed_query.sort) %>
                 <% if(obj.feed_query){ %>
                     <div class="ui-bar-e ui-bar">
                         <% if(feed_query.feed_title){ %>
@@ -37,6 +38,8 @@
                                 <%= T('Favorited by') %> <a href="#/feed/?username=<%= feed_query.favorited_by %>" data-role="none"><strong><%= feed_query.favorited_by %></strong></a>
                             <% }else if (feed_query.spot && feed_query.venue_name){ %>
                                 @ <strong><%= feed_query.venue_name %></strong>
+                            <% }else if (feed_query.sort == 'weighted_score'){ %>
+                                <strong><%= T('Popular') %></strong>
                             <% }else{ %>
                                 <strong><%= T('Photos') %></strong>
                             <% } %>
