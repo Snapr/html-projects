@@ -491,7 +491,7 @@ return page_view.extend({
 
         this.model.set({
             description: this.$(".x-description").val(),
-            status: this.$("[name='status']").is(":checked") ? "public": "private",
+            status: this.get_status(),
             share_location: ( $("#share-location").attr("checked") == "checked" ),
             facebook_album: ( $("#facebook-sharing").attr("checked") == "checked" ),
             tumblr: ( $("#tumblr-sharing").attr("checked") == "checked" ),
@@ -590,15 +590,7 @@ return page_view.extend({
             params.device_time = string_utils.date_to_snapr_format(d);
             params.local_id = ''+d.getMonth()+d.getDay()+d.getHours()+d.getMinutes()+d.getSeconds();
 
-            if(this.$('#image-status').attr('checked')){
-                if(!config.get('app_sharing_opt_in') || this.$('#app-sharing').attr('checked')){
-                    params.status = 'public';
-                }else{
-                    params.status = 'public_non_app';
-                }
-            }else{
-                params.status = 'private';
-            }
+            params.status = this.get_status();
 
             if(config.get('app_group')){
                 params.app_group = config.get('app_group');
@@ -647,6 +639,16 @@ return page_view.extend({
             window.location.hash = "#/uploading/" + extras;
             native_bridge.pass_data("snapr://upload?" + $.param(params) );
         }
+    },
+
+    get_status: function(){
+        if(this.$('#image-status').attr('checked')){
+            if(!config.get('app_sharing_opt_in') || this.$('#app-sharing').attr('checked')){
+                return 'public';
+            }
+            return 'public_non_app';
+        }
+        return 'private';
     },
 
     toggle_photo: function( e ){
