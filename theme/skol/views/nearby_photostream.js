@@ -15,6 +15,7 @@ var nearby_photostream_view = nearby_photostream_base.extend({
     },
     render_photos: function () {
         var this_view = this;
+        this_view.$el.empty();
         this.collection.each(function (photo, i) {
             var stream_item = new nearby_photostream_item_view({
                 model: photo
@@ -29,15 +30,15 @@ var nearby_photostream_view = nearby_photostream_base.extend({
         });
 
         _.bindAll(this);
-        if(this.collection.length > 1){
-            setInterval(this.change, 2000);
+        if(this.collection.length > 1 && !this.interval){
+            this.interval = setInterval(this.change, 2000);
         }
     },
     change: function(){
         var current = this.$('.s-home-bg.fade-in'),
             next = current.next();
         if(!next.length){
-            next = current.prevAll().eq(0);
+            next = current.siblings().eq(0);
         }
         next.addClass('fade-in');
         current.removeClass('fade-in');
