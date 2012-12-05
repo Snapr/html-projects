@@ -304,11 +304,17 @@ a:active{
 
 .s-bg-loader{
     position: fixed;
-    background: #C0FFEE;
+    .border-radius(20px);
+    background: rgba(0,0,0,.6);
+    .spinner();
+    .spin();
     bottom: 10px;
     left: 10px;
     top:auto;
     margin:0;
+    width: @gfxSpinnerSmall-width;
+    height: @gfxSpinnerSmall-height;
+    padding: 3px;
 }
 
 
@@ -2530,6 +2536,10 @@ body.x-browser-testing{
               }
           }
       }
+      .s-bg-loader{
+          .spinner('@{gfxRetina}@{gfxSpinnerSmall}');       
+      }
+      
 }
 
 
@@ -2648,6 +2658,10 @@ body.x-browser-testing{
                 }
             }
         }
+    }
+    
+    .s-bg-loader{
+        .spinner('@{gfxRetina}@{gfxSpinnerSmall}');       
     }
 
 }

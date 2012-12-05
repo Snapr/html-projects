@@ -269,11 +269,31 @@ a:active {
 }
 .s-bg-loader {
   position: fixed;
-  background: #C0FFEE;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  border-radius: 20px;
+  background: rgba(0, 0, 0, 0.6);
+  display: block;
+  background-image: url('gfx/small-spinner-light.png') !important;
+  background-position: center!important;
+  background-repeat: no-repeat !important;
+  -webkit-background-size: 24px 24px !important;
+  -moz-background-size: 24px 24px !important;
+  -o-background-size: 24px 24px !important;
+  background-size: 24px 24px !important;
+  -webkit-transform: rotate(0deg) translateZ(0);
+  -webkit-transition-duration: 0ms;
+  -webkit-animation-name: loading;
+  -webkit-animation-duration: 1.2s;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
   bottom: 10px;
   left: 10px;
   top: auto;
   margin: 0;
+  width: 24px;
+  height: 24px;
+  padding: 3px;
 }
 .s-avatar,
 .s-avatar-med,
@@ -2322,6 +2342,16 @@ body.x-browser-testing .ui-footer-fixed {
     -o-background-size: 24px 24px !important;
     background-size: 24px 24px !important;
   }
+  .s-bg-loader {
+    display: block;
+    background-image: url('gfx/retina/small-spinner-light.png') !important;
+    background-position: center!important;
+    background-repeat: no-repeat !important;
+    -webkit-background-size: 24px 24px !important;
+    -moz-background-size: 24px 24px !important;
+    -o-background-size: 24px 24px !important;
+    background-size: 24px 24px !important;
+  }
 }
 @media only screen and (-webkit-min-device-pixel-ratio: 2) {
   .s-image-loader-bg {
@@ -2448,6 +2478,16 @@ body.x-browser-testing .ui-footer-fixed {
     background-size: 24px 24px !important;
   }
   .x-loading .s-search-header .ui-input-search .ui-input-clear .ui-icon-delete {
+    display: block;
+    background-image: url('gfx/retina/small-spinner-light.png') !important;
+    background-position: center!important;
+    background-repeat: no-repeat !important;
+    -webkit-background-size: 24px 24px !important;
+    -moz-background-size: 24px 24px !important;
+    -o-background-size: 24px 24px !important;
+    background-size: 24px 24px !important;
+  }
+  .s-bg-loader {
     display: block;
     background-image: url('gfx/retina/small-spinner-light.png') !important;
     background-position: center!important;
