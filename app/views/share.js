@@ -573,18 +573,16 @@ return page_view.extend({
 
             _.each( this.$("form").serializeArray(), function( o ){
                 if (_.contains(["tumblr", "facebook_album", "tweet", "foursquare_checkin"], o.name)){
-                    if (o.name == "foursquare_checkin" && o.value == "on"){
-                        if (this.model.get( "location" ).foursquare_venue_id){
-                            params.foursquare_venue = this.model.get( "location" ).foursquare_venue_id;
-                            params.venue_name = this.model.get( "location" ).foursquare_venue_name;
-                        }
-                    }
                     params[o.name] = (o.value == "on");
                 }else{
                     params[o.name] = escape( o.value );
                 }
-
             }, this);
+
+            if (this.model.get( "location" ).foursquare_venue_id){
+                params.foursquare_venue = this.model.get( "location" ).foursquare_venue_id;
+                params.venue_name = this.model.get( "location" ).foursquare_venue_name;
+            }
 
             var d = new Date();
             params.device_time = string_utils.date_to_snapr_format(d);
