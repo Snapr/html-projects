@@ -5929,6 +5929,8 @@ div.ps-carousel-item-loading {
 .ui-page.s-special-bg div[data-role="content"] {
   background: none;
 }
+.ui-dialog.s-snapr-welcome-bg,
+.ui-page.s-snapr-welcome-bg,
 .ui-dialog.s-snapr-bg,
 .ui-page.s-snapr-bg,
 .ui-dialog.s-tumblr-bg,
@@ -5937,9 +5939,14 @@ div.ps-carousel-item-loading {
 .ui-page.s-twitter-bg {
   background-color: #2a2a2a !important;
   background-image: url('../gfx/bg-texture-light.gif') !important;
+  -webkit-background-size: auto !important;
+  -moz-background-size: auto !important;
+  -o-background-size: auto !important;
+  background-size: auto !important;
   -moz-box-shadow: none;
   -webkit-box-shadow: none;
   box-shadow: none;
+  background-repeat: repeat!important;
 }
 .ui-loader {
   margin-left: -40px;
