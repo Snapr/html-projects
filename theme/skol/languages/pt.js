@@ -101,9 +101,10 @@ define([], function(){
         "Location Disabled": "Localização Desativado",
         "Location": "Localização",
         "Locations": "Locais",
-        "Log In": "Login",
+        "Log In": "Entre",
         "Enter With": "Entrar com",
         "Login": "Entre",
+        "Login with" : "Conecte-se via",
         "Logout": "Fazer log out",
         "Map": "Mapa",
         "Me": "Eu",
@@ -118,7 +119,7 @@ define([], function(){
         "News Updates": "Novidades",
         "News": "Novidades",
         "Nightlife": "Noitada",
-
+        "No": "Não",
         "No images yet": "Ainda não há imagens",
         "no photos yet": "ainda não há fotos",
         "No Photos": "Não há Fotos",
@@ -186,6 +187,7 @@ define([], function(){
         "show": "mostrar",
         "Skip": "Saltar",
         "Snaps": "Fotos",
+        "Sorry":"Desculpe",
         "Sorry, we had trouble logging in. Please try again.":"Desculpe, houve um problema com o log in Por favor, tente novamente.",
         "Spot": "Lugar",
         "Spots": "Lugares",
@@ -225,6 +227,7 @@ define([], function(){
         "Would you like to save the original to your phone's gallery?": "Gostaria de salvar a foto original para a galeria do seu telefone?",
         "Yes": "Sim",
         "You must enter your usename and password":"Você deve digitar seu nome de usuário e senha",
+        "You must be 18 or over to use this app": "You must be 18 or over to use this app",
         "Your Name": "Seu Nome"
     };
     window.TT = {};
