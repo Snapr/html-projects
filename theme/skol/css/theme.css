@@ -4153,6 +4153,10 @@ textarea.ui-input-text {
   -webkit-animation-iteration-count: infinite;
   -webkit-animation-timing-function: linear;
 }
+#limbo {
+  background-color: black!important;
+  background-image: none!important;
+}
 #home div[data-role="header"] {
   z-index: 10;
 }
