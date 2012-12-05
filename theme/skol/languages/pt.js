@@ -15,6 +15,7 @@ define([], function(){
         "All": "Todos",
         "Anywhere": "Em qualquer lugar",
         "Apps": "Aplicativos",
+        "Are you 18 or Over?": "Você tem mais de 18 anos?",
         "Are you sure you want to delete this photo?": "Tem certeza de que quer apagar esta foto?",
         "Arts": "Artes",
         "Back": "Volta",
@@ -137,6 +138,7 @@ define([], function(){
         "photo by": "foto por",
         "photos": "fotos",
         "Photos": "Fotos",
+        "Pics": "Fotos",
         "Place Name": "O nome da cidade",
         "Please connect your account": "Por favor, conecte sua conta",
         "Please enable location services for this app to use these features": "Por favor ativar os serviços de localização para este aplicativo para usar esses recursos",
@@ -225,26 +227,15 @@ define([], function(){
         "You must enter your usename and password":"Você deve digitar seu nome de usuário e senha",
         "Your Name": "Seu Nome"
     };
-    var leet = function(text){
-        return text
-            .replace('a', '4').replace('A', '4')
-            .replace('e', '3').replace('E', '3')
-            .replace('s', '5').replace('S', '5')
-            .replace('t', '7').replace('T', '7')
-            .replace('o', '0').replace('O', '0')
-            .replace('l', '1').replace('L', '1');
-    };
     window.TT = {};
     return function(text){
         if (text in translation){
             return translation[text];
         }else{
-            if(!(text in window.TT)){
-                window.TT[text] = leet(text);
-            }
+           
 
             console.warn(text, "not translated");
-            return text.toUpperCase() + '!';
+            return text;
         }
      };
 });
