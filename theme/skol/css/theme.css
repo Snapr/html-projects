@@ -1663,7 +1663,7 @@ a.ui-link-inherit {
   text-transform: none;
   -webkit-font-smoothing: antialiased;
   text-transform: uppercase;
-  border: dotted 1px #000000;
+  border: dotted 1px #1e2122;
   background: none;
   background-color: #000000;
   color: #aaaaaa;
@@ -1841,7 +1841,7 @@ a.ui-link-inherit {
 .ui-btn-down-b[data-rel="back"]::before,
 .ui-btn-active-b,
 .ui-btn-active-b[data-rel="back"]::before {
-  border: solid 1px #000000;
+  border: solid 1px #1e2122;
   background: #2c2c2c;
   color: #aaaaaa;
   text-shadow: #000000 0px -1px 1px;
@@ -2216,7 +2216,7 @@ div[data-role="header"].ui-bar-b a[data-rel="back"]::before {
   clear: both;
   border: none;
   border-bottom: solid 1px rgba(255, 255, 255, 0.1);
-  border-top: solid 1px #000000;
+  border-top: solid 1px #1e2122;
   font-size: 1px;
   line-height: 0;
   overflow: visible;
@@ -2354,7 +2354,7 @@ div[data-role="header"].ui-bar-b a[data-rel="back"]::before {
   background: none;
 }
 .ui-body-c > .ui-listview .ui-btn.ui-li {
-  border-top: solid 1px #000000 !important;
+  border-top: solid 1px #1e2122 !important;
   border-bottom: solid 1px rgba(255, 255, 255, 0.1) !important;
   margin-bottom: 0;
 }
@@ -2371,7 +2371,7 @@ div[data-role="header"].ui-bar-b a[data-rel="back"]::before {
 .ui-body-c > .ui-listview.s-people-list .ui-btn.ui-li:first-child,
 .ui-body-c > .ui-listview.venue-list .ui-btn.ui-li:first-child,
 .ui-body-c > .ui-listview.map-list .ui-btn.ui-li:first-child {
-  border-top: solid 1px #000000 !important;
+  border-top: solid 1px #1e2122 !important;
 }
 .ui-body-c > .ui-listview .ui-btn-inner .ui-link-inherit {
   padding-top: 20px !important;
@@ -3141,7 +3141,7 @@ a:active {
   color: #a7a9ac;
 }
 .s-inset-page-content .ui-listview-inset li.ui-li {
-  border-top: dotted 1px #000000;
+  border-top: dotted 1px #1e2122;
 }
 .s-inset-page-content .ui-listview-inset:first-child {
   border: none;
@@ -3709,7 +3709,7 @@ a:active {
   border-radius: 30px;
 }
 .s-switch-setting {
-  border-bottom: solid 1px #000000;
+  border-bottom: solid 1px #1e2122;
   margin: 0;
   padding-bottom: 10px;
   margin-bottom: 10px;
@@ -3889,8 +3889,8 @@ textarea.ui-input-text {
 }
 .s-image-loader-bg {
   background-color: #3f3f3f;
-  border-top: dotted 1px #000000;
-  border-bottom: dotted 1px #000000;
+  border-top: dotted 1px #1e2122;
+  border-bottom: dotted 1px #1e2122;
   background-image: url('../gfx/image-load.gif');
 }
 .s-image-loader-bg .s-main-image {
@@ -3949,7 +3949,7 @@ textarea.ui-input-text {
 }
 .s-image-streams .x-stream .ui-bar {
   background-color: #464545;
-  border-bottom: dotted 1px #000000;
+  border-bottom: dotted 1px #1e2122;
 }
 .s-image-streams .x-stream .s-thumbs-grid-med {
   margin: 0 2px;
@@ -4244,7 +4244,7 @@ textarea.ui-input-text {
 }
 .s-main-feed-content .ui-bar {
   margin: 0;
-  border-bottom: dotted 1px #000000;
+  border-bottom: dotted 1px #1e2122;
   background: #3f3f3f;
 }
 div[data-role="content"] .s-feed-header.s-inline-header {
@@ -4376,7 +4376,7 @@ div[data-role="content"] .s-feed-header.s-inline-header .s-username .s-small-tex
 .s-image-item-block .s-image-actions {
   margin-top: 10px;
   margin-bottom: 10px;
-  border-bottom: dotted 1px #000000;
+  border-bottom: dotted 1px #1e2122;
 }
 .s-image-item-block .s-image-actions .ui-controlgroup-controls {
   padding-left: 8px;
@@ -4392,7 +4392,7 @@ div[data-role="content"] .s-feed-header.s-inline-header .s-username .s-small-tex
   -webkit-border-radius: 30px;
   -moz-border-radius: 30px;
   border-radius: 30px;
-  border: solid 1px #000000;
+  border: solid 1px #1e2122;
 }
 .s-image-item-block .s-image-actions .x-more-button {
   display: none;
@@ -4491,7 +4491,7 @@ div[data-role="content"] .s-feed-header.s-inline-header .s-username .s-small-tex
   display: none;
   padding: 5px;
   background-color: #3f3f3f;
-  border-bottom: dotted 1px #000000;
+  border-bottom: dotted 1px #1e2122;
   padding-top: 20px;
   margin-top: -10px;
 }
@@ -5047,7 +5047,7 @@ div[data-role="content"] .s-feed-header.s-inline-header .s-username .s-small-tex
   margin: 0;
 }
 .s-account-content .ui-bar {
-  border-bottom: dotted 1px #000000;
+  border-bottom: dotted 1px #1e2122;
   background-color: #3f3f3f;
   margin-left: -10px;
   margin-right: -10px;
@@ -5060,7 +5060,7 @@ div[data-role="content"] .s-feed-header.s-inline-header .s-username .s-small-tex
   margin-right: -10px !important;
 }
 .s-account-content .ui-listview li.ui-btn {
-  border-bottom: dotted 1px #000000;
+  border-bottom: dotted 1px #1e2122;
   background-color: #2a2a2a;
   -moz-border-radius: 0;
   -webkit-border-radius: 0;
@@ -5103,7 +5103,7 @@ div[data-role="content"] .s-feed-header.s-inline-header .s-username .s-small-tex
   margin-right: -8px;
 }
 .s-account-content .ui-collapsible-set .ui-collapsible-heading .ui-btn {
-  border-bottom: dotted 1px #000000;
+  border-bottom: dotted 1px #1e2122;
 }
 .s-account-content .ui-collapsible-set .ui-collapsible-heading .ui-btn .ui-btn-inner {
   padding: 16px 40px 16px 16px;
@@ -5753,7 +5753,7 @@ div.ps-carousel-item-loading {
 .s-spot-list-item {
   padding-bottom: 5px;
   padding-top: 5px;
-  border-top: dotted 1px #000000;
+  border-top: dotted 1px #1e2122;
   border-bottom: none;
   padding-left: 5px;
   padding-right: 10px;
@@ -6064,12 +6064,15 @@ div.ps-carousel-item-loading {
   -webkit-border-radius: 4px !important;
   -moz-border-radius: 4px !important;
   border-radius: 4px !important;
+  background: #2a2a2a;
+  border: solid 1px #1e2122;
 }
 .s-retry-offline .ui-icon-connection {
   background-position: -96px -320px;
 }
 .s-retry-offline.ui-btn-icon-left .ui-btn-text {
   text-align: left;
+  color: #a7a9ac;
 }
 .s-retry-offline.ui-btn-icon-left .ui-icon {
   position: absolute;
