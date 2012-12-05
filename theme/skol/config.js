@@ -98,7 +98,10 @@ return {
             template: theme_templates + 'home',
             view: theme_views + 'home'
         },
-        'about',
+        {
+            name: 'about',
+            template: theme_templates + 'about'
+        },
         'about-snapr',
         'map',
         'app',
