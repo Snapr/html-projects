@@ -1,5 +1,5 @@
 /*global _ $ define */
-define(['backbone', '../theme/'+window.theme+'/config'], function(Backbone, theme_config) {
+define(['backbone', '../theme/'+window.theme+'/config', 'utils/local_storage'], function(Backbone, theme_config, local_storage) {
 var config_model = Backbone.Model.extend({
     defaults:{
         environment: 'dev',
@@ -94,10 +94,11 @@ var config_model = Backbone.Model.extend({
                     if(config.get('ignore_language_country')){
                         value = value.split('-')[0];
                     }
-                    config.set('language', value);
+                    local_storage.set('language', value);
                 }
             });
         }
+        config.set('language', local_storage.get('language'));
 
         update_env();
     }
