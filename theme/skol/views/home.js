@@ -3,7 +3,7 @@ define(['views/home', './nearby_photostream'], function(base_home, nearby_photos
 return base_home.extend({
 
     post_initialize: function(options){
-        base_home.prototype.post_initialize(options);
+        base_home.prototype.post_initialize.apply(this, options);
 
         this.nearby_photostream = new nearby_photostream_view({
            el: this.$('.x-menu-stream')
