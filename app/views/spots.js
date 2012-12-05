@@ -32,10 +32,11 @@ var spots_view =  page_view.extend({
             this_view.longitude = location.coords.longitude;
             search_options.latitude = this_view.latitude;
             search_options.longitude = this_view.longitude;
-            if (search_options.nearby) {
-                search_options.nearby = true;
-                search_options.radius = 50000;
-            }
+            // Removed because it looks useless and will override any radus you set with 50000
+            // if (search_options.nearby) {
+            //     search_options.nearby = true;
+            //     search_options.radius = 50000;
+            // }
             this_view.search(search_options);
         };
 
@@ -50,13 +51,11 @@ var spots_view =  page_view.extend({
         this.show_bg_loader();
 
         // reset values
-        if(!search_options.nearby){
-            this.$('select.x-location').val('anywhere').selectmenu('refresh');
-        }
+        this.$('select.x-location').val(search_options.radius || 'anywhere').selectmenu('refresh');
         this.$('.x-search-field').val(search_options.spot_name);
         this.$('select.x-category').val(search_options.category).selectmenu("refresh");
         this.$('select.x-sort').val(search_options.sort).selectmenu("refresh");
-        this.$('form').attr('class', '').addClass(search_options.category || 'all-categories');
+        this.$('form').attr('class', '').addClass(search_options.category || 'all-categories').addClass('distance-'+(search_options.radius || 'anywhere'));
     },
 
     events: {
