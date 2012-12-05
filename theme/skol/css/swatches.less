@@ -8,8 +8,17 @@
 // Set bgs
 
 .ui-body-a{
+   
+     
+}
+
+.ui-body-a[data-role="page"]{
     background: @black;
-       background-image: @gfxBgDark;
+    background-image: @gfxBgDark;
+    border-radius: @cornersPage;
+    .box-sizing(border-box);
+    .box-shadow(@pageShadow);
+    border-top: @borderWhite;
 }
 
 .ui-dialog.ui-overlay-a{
@@ -613,6 +622,8 @@ div[data-role="header"].ui-bar-b{
     background-image: @gfxBgDark;
     border-radius: @cornersPage;
     .box-sizing(border-box);
+    .box-shadow(@pageShadow);
+    border-top: @borderWhite;
 }
 
 .ui-body-d {
