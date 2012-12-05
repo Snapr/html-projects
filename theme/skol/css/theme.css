@@ -6100,6 +6100,13 @@ div.ps-carousel-item-loading {
     -o-background-size: 774px 180px;
     background-size: 774px 180px;
   }
+  .ui-body-c .ui-input-search.ui-icon-searchfield:after {
+    background-image: url('../gfx/hdpi/search-button.png');
+    -webkit-background-size: 44px 44px;
+    -moz-background-size: 44px 44px;
+    -o-background-size: 44px 44px;
+    background-size: 44px 44px;
+  }
   .ui-header .ui-icon {
     background-image: url('../gfx/hdpi/top-bar-icons.png');
     -webkit-background-size: 300px 560px;
@@ -6369,6 +6376,13 @@ div.ps-carousel-item-loading {
     -moz-background-size: 774px 180px;
     -o-background-size: 774px 180px;
     background-size: 774px 180px;
+  }
+  .ui-body-c .ui-input-search.ui-icon-searchfield:after {
+    background-image: url('../gfx/retina/search-button.png');
+    -webkit-background-size: 44px 44px;
+    -moz-background-size: 44px 44px;
+    -o-background-size: 44px 44px;
+    background-size: 44px 44px;
   }
   .ui-header .ui-icon {
     background-image: url('../gfx/retina/top-bar-icons.png');

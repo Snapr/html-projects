@@ -7,6 +7,14 @@
         background-image: url('@{gfxHDPI}@{gfxIcons}');  
         .background-size(@gfxIcons-width @gfxIcons-height);
     }
+    .ui-body-c {
+        .ui-input-search{           
+            &.ui-icon-searchfield:after{
+               background-image: url('@{gfxHDPI}@{gfxSearchBtn}');
+               .background-size(@gfxSearchBtn-width @gfxSearchBtn-height);
+            }
+        }
+    }
     .ui-header{
         .ui-icon{
             background-image: url('@{gfxHDPI}@{gfxTopBar}');
