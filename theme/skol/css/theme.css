@@ -4394,6 +4394,9 @@ div[data-role="content"] .s-feed-header.s-inline-header .s-username .s-small-tex
   border-radius: 30px;
   border: solid 1px #000000;
 }
+.s-image-item-block .s-image-actions .x-more-button {
+  display: none;
+}
 .s-image-item-block .s-image-actions .s-inline-btn {
   display: inline-block;
 }
