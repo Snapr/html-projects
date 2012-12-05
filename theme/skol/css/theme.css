@@ -5360,6 +5360,15 @@ div.ps-carousel-item-loading {
   left: -2px;
   background-position: -4px -256px;
 }
+.s-photo-map .s-disambiguation {
+  background-color: #ffffff !important;
+  -webkit-border-radius: 4px !important;
+  -moz-border-radius: 4px !important;
+  border-radius: 4px !important;
+}
+.s-photo-map .s-disambiguation .ui-btn-icon-right .ui-btn-inner .ui-icon {
+  right: -10px;
+}
 .s-photo-map .s-map-point {
   width: 1px;
   height: 1px;
