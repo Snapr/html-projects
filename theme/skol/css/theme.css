@@ -5880,8 +5880,8 @@ div.ps-carousel-item-loading {
   padding-right: 10px;
 }
 .s-spot-header {
-  background-color: #aaaaaa;
-  background-image: url('../gfx/bg-texture-light.gif');
+  background-color: transparent;
+  background-image: none;
   min-height: 105px;
   margin-left: 0;
   margin-right: 0;
