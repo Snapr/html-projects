@@ -1,8 +1,8 @@
 /*global _  define require T */
 define(['config', 'backbone', 'views/base/page', 'models/photo', 'models/comp', 'models/geo_location', 'collections/foursquare_venue',
-    'utils/geo', 'auth', 'utils/local_storage', 'utils/alerts', 'native_bridge', 'utils/dialog', 'utils/string'],
+    'utils/geo', 'auth', 'utils/local_storage', 'utils/analytics', 'utils/alerts', 'native_bridge', 'utils/dialog', 'utils/string'],
 function(config, Backbone, page_view, photo_model, comp_model, geo_location, foursquare_venue_collection, geo,
-    auth, local_storage, alerts, native_bridge, dialog, string_utils){
+    auth, local_storage, analytics, alerts, native_bridge, dialog, string_utils){
 return page_view.extend({
 
     post_activate: function(options){
@@ -505,6 +505,7 @@ return page_view.extend({
             }, {silent: true});
         }
 
+        analytics.trigger('share', this.model.attributes);
         this.model.save({},{
             success: function( model, response ){
                 if(!response.success){
@@ -634,6 +635,7 @@ return page_view.extend({
             }
             extras += "&local_id=" + params.local_id;
 
+            analytics.trigger('share', params);
             window.location.hash = "#/uploading/" + extras;
             native_bridge.pass_data("snapr://upload?" + $.param(params) );
         }

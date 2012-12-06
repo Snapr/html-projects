@@ -82,8 +82,6 @@ var feed_view =  page_view.extend({
         }else{
             this.title = T("Feed");
         }
-        console.log(this.title);
-        console.log(this.query, this.query.sort);
 
         var list_style = this.query.list_style || 'list';
 

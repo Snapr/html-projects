@@ -1,5 +1,5 @@
 /*global _  define require T */
-define(['config', 'backbone', 'auth', 'utils/local_storage', 'native_bridge', 'utils/alerts', 'utils/query', '../theme/'+window.theme+'/config'], function(config, Backbone, auth, local_storage, native_bridge, alerts, Query, theme_config) {
+define(['config', 'backbone', 'auth', 'utils/local_storage', 'utils/analytics', 'native_bridge', 'utils/alerts', 'utils/query', '../theme/'+window.theme+'/config'], function(config, Backbone, auth, local_storage, analytics, native_bridge, alerts, Query, theme_config) {
 
 function _make_route(file_name, name, template, extra_view_data){
     // returns a function that will do all that's needed to show a page when called
@@ -31,6 +31,7 @@ function _make_route(file_name, name, template, extra_view_data){
         var env = local_storage.get('environment');
         config.set('environment', env);
 
+        //var routers = this;
         // get the view
         require([file_name], function(view) {
 
@@ -55,6 +56,7 @@ function _make_route(file_name, name, template, extra_view_data){
                 route.cached_view.options = options;
                 route.cached_view.activate(options);
             }
+            analytics.trigger('page_load', route.cached_view );
             // store 'current_view' as the one about to be loaded's previous_view
             route.cached_view.previous_view = config.get('current_view');
             // make this view current
