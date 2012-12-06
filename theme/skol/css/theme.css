@@ -4231,20 +4231,20 @@ textarea.ui-input-text {
   height: 1px;
 }
 #home .s-menu-main .s-menu-btns .sk-logo-top {
-  width: 123px;
-  height: 124px;
+  width: 180px;
+  height: 126px;
   position: absolute;
-  left: -61.5px;
+  left: -90px;
   top: -210px;
 }
 #home .s-menu-main .s-menu-btns .sk-logo-top .ui-btn-icon-notext {
-  width: 123px;
-  height: 124px;
+  width: 180px;
+  height: 126px;
 }
 #home .s-menu-main .s-menu-btns .sk-logo-top .ui-icon-skol-ibeats-logo {
   background-image: url('../gfx/ibeats-logo.png');
-  width: 123px;
-  height: 124px;
+  width: 180px;
+  height: 126px;
   background-position: 0 0;
 }
 #home .s-menu-main .s-menu-btns .sk-centered-button {
@@ -6281,10 +6281,10 @@ div.ps-carousel-item-loading {
   }
   #home .s-menu-main .s-menu-btns .sk-logo-top .ui-icon-skol-ibeats-logo {
     background-image: url('../gfx/retina/ibeats-logo.png');
-    -webkit-background-size: 123px 124px;
-    -moz-background-size: 123px 124px;
-    -o-background-size: 123px 124px;
-    background-size: 123px 124px;
+    -webkit-background-size: 180px 126px;
+    -moz-background-size: 180px 126px;
+    -o-background-size: 180px 126px;
+    background-size: 180px 126px;
   }
   #home .s-menu-main .s-menu-btns .sk-centered-button .ui-icon-main-menu-camera {
     background-image: url('../gfx/retina/skol-camera-btn.png');
@@ -6572,10 +6572,10 @@ div.ps-carousel-item-loading {
   }
   #home .s-menu-main .s-menu-btns .sk-logo-top .ui-icon-skol-ibeats-logo {
     background-image: url('../gfx/retina/ibeats-logo.png');
-    -webkit-background-size: 123px 124px;
-    -moz-background-size: 123px 124px;
-    -o-background-size: 123px 124px;
-    background-size: 123px 124px;
+    -webkit-background-size: 180px 126px;
+    -moz-background-size: 180px 126px;
+    -o-background-size: 180px 126px;
+    background-size: 180px 126px;
   }
   #home .s-menu-main .s-menu-btns .sk-centered-button .ui-icon-main-menu-camera {
     background-image: url('../gfx/retina/skol-camera-btn.png');
