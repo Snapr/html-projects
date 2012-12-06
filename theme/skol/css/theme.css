@@ -2969,6 +2969,7 @@ div[data-role="header"] {
   text-shadow: #000000 0px -1px 1px;
   height: 60px;
   overflow: hidden;
+  z-index: 10;
 }
 div[data-role="header"] .ui-title {
   font-family: 'PlutoHeavy', Helvetica, Arial, sans-serif;
@@ -3144,6 +3145,8 @@ a:active {
 .s-inset-page-content h4 {
   text-transform: uppercase;
   color: #ffcc33;
+  text-align: center;
+  margin-right: 0!important;
 }
 .s-inset-page-content .ui-listview-inset {
   background-color: #2c2c2c;
@@ -3163,6 +3166,21 @@ a:active {
 }
 .s-inset-page-content .ui-listview-inset .s-has-select .ui-select .ui-btn .ui-btn-inner {
   background: transparent;
+}
+.sk-main-logo {
+  text-align: center;
+  height: 250px;
+  overflow: visible;
+  position: relative;
+}
+.sk-main-logo .sk-main-logo-icon {
+  background-image: url('../gfx/skol-logo.png');
+  width: 275px;
+  height: 328px;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  margin-left: -137.5px;
 }
 .s-inline-footer {
   margin: 10px -10px 0 -10px;
@@ -4213,20 +4231,20 @@ textarea.ui-input-text {
   height: 1px;
 }
 #home .s-menu-main .s-menu-btns .sk-logo-top {
-  width: 123px;
-  height: 124px;
+  width: 180px;
+  height: 126px;
   position: absolute;
-  left: -61.5px;
+  left: -90px;
   top: -210px;
 }
 #home .s-menu-main .s-menu-btns .sk-logo-top .ui-btn-icon-notext {
-  width: 123px;
-  height: 124px;
+  width: 180px;
+  height: 126px;
 }
 #home .s-menu-main .s-menu-btns .sk-logo-top .ui-icon-skol-ibeats-logo {
   background-image: url('../gfx/ibeats-logo.png');
-  width: 123px;
-  height: 124px;
+  width: 180px;
+  height: 126px;
   background-position: 0 0;
 }
 #home .s-menu-main .s-menu-btns .sk-centered-button {
@@ -4676,6 +4694,10 @@ div[data-role="content"] .s-feed-header.s-inline-header .s-username .s-small-tex
 #uploading .s-upload-image-tag {
   font-style: italic;
   color: #a7a9ac;
+  display: inline;
+}
+#uploading .upload-image-venue {
+  display: inline;
 }
 #uploading .s-upload-progress-item .s-upload-info-block {
   padding-left: 105px;
@@ -6259,10 +6281,10 @@ div.ps-carousel-item-loading {
   }
   #home .s-menu-main .s-menu-btns .sk-logo-top .ui-icon-skol-ibeats-logo {
     background-image: url('../gfx/retina/ibeats-logo.png');
-    -webkit-background-size: 123px 124px;
-    -moz-background-size: 123px 124px;
-    -o-background-size: 123px 124px;
-    background-size: 123px 124px;
+    -webkit-background-size: 180px 126px;
+    -moz-background-size: 180px 126px;
+    -o-background-size: 180px 126px;
+    background-size: 180px 126px;
   }
   #home .s-menu-main .s-menu-btns .sk-centered-button .ui-icon-main-menu-camera {
     background-image: url('../gfx/retina/skol-camera-btn.png');
@@ -6384,6 +6406,13 @@ div.ps-carousel-item-loading {
     -moz-background-size: 24px 24px;
     -o-background-size: 24px 24px;
     background-size: 24px 24px;
+  }
+  .sk-main-logo .sk-main-logo-icon {
+    background-image: url('../gfx/hdpi/skol-logo.png');
+    -webkit-background-size: 275px 328px;
+    -moz-background-size: 275px 328px;
+    -o-background-size: 275px 328px;
+    background-size: 275px 328px;
   }
 }
 @media only screen and (-webkit-min-device-pixel-ratio: 2) {
@@ -6543,10 +6572,10 @@ div.ps-carousel-item-loading {
   }
   #home .s-menu-main .s-menu-btns .sk-logo-top .ui-icon-skol-ibeats-logo {
     background-image: url('../gfx/retina/ibeats-logo.png');
-    -webkit-background-size: 123px 124px;
-    -moz-background-size: 123px 124px;
-    -o-background-size: 123px 124px;
-    background-size: 123px 124px;
+    -webkit-background-size: 180px 126px;
+    -moz-background-size: 180px 126px;
+    -o-background-size: 180px 126px;
+    background-size: 180px 126px;
   }
   #home .s-menu-main .s-menu-btns .sk-centered-button .ui-icon-main-menu-camera {
     background-image: url('../gfx/retina/skol-camera-btn.png');
@@ -6668,5 +6697,12 @@ div.ps-carousel-item-loading {
     -moz-background-size: 24px 24px;
     -o-background-size: 24px 24px;
     background-size: 24px 24px;
+  }
+  .sk-main-logo .sk-main-logo-icon {
+    background-image: url('../gfx/retina/skol-logo.png');
+    -webkit-background-size: 275px 328px;
+    -moz-background-size: 275px 328px;
+    -o-background-size: 275px 328px;
+    background-size: 275px 328px;
   }
 }

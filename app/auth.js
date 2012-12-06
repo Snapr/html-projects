@@ -7,6 +7,11 @@ var auth_model = Backbone.Model.extend({
         _.bindAll(this);
         this.user_settings = new user_settings();
         this.user_settings.on('change', this.save_display_username);
+        this.on('change:access_token', function(x){
+            if(this.has('access_token')){
+                this.trigger('login');
+            }
+        });
     },
 
     url: function(){

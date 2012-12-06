@@ -99,7 +99,7 @@
                  <%= T('Snaps') %></a>
                 <%}%>
                 <% if (user.get("details").stats.favorite_count){%>
-                <a href="#/feed/?favorited_by=<%= user.get( "username" ) %>&list_style=grid" data-role="button" data-icon="favs" class="profile-icons"><%= user.get("details").stats.favorite_count %> <%= T('Favs') %></a>
+                <a href="#/feed/?favorited_by=<%= user.get( "username" ) %>&list_style=grid&feed_title=<%= T('Favorited by') %> <%= user.get( "display_username" ) %>" data-role="button" data-icon="favs" class="profile-icons"><%= user.get("details").stats.favorite_count %> <%= T('Favs') %></a>
                  <%}%>
             </div>
             <hr>

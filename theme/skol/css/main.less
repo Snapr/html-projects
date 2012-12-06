@@ -36,6 +36,7 @@ div[data-role="header"]{
     text-shadow: @shadowBlack 0px -1px 1px;
     height: @topBarHeight;
     overflow: hidden;
+    z-index: 10;
     .ui-title{
         .title-bar-font();
         line-height: @topBarHeight;
@@ -227,6 +228,8 @@ a:active{
     h4{
         text-transform: uppercase;
         color: @yellow;
+        text-align: center;
+        margin-right: 0!important;
     }
     
     .ui-listview-inset {
@@ -251,6 +254,22 @@ a:active{
         
     }
 } 
+
+.sk-main-logo{
+    text-align: center;
+    height: @gfxMainLogo-width - @padding * 5;
+    overflow: visible;
+    position: relative;
+    .sk-main-logo-icon{
+        background-image: url('@{gfx}@{gfxMainLogo}');
+        width: @gfxMainLogo-width;
+        height: @gfxMainLogo-height;
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        margin-left: -@gfxMainLogo-width / 2 ;
+    }
+}
 
 
 
@@ -1651,6 +1670,10 @@ div[data-role="content"]{
     .s-upload-image-tag{
         font-style: italic;
         color: @grayLighter;
+        display: inline;
+    }
+    .upload-image-venue{
+        display: inline;
     }
     
     .s-upload-progress-item{
