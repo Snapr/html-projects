@@ -294,6 +294,7 @@ a:active {
   width: 24px;
   height: 24px;
   padding: 3px;
+  z-index: 500;
 }
 .s-avatar,
 .s-avatar-med,
@@ -2344,7 +2345,7 @@ body.x-browser-testing .ui-footer-fixed {
   }
   .s-bg-loader {
     display: block;
-    background-image: url('gfx/retina/small-spinner-light.png') !important;
+    background-image: url('gfx/hdpi/small-spinner-light.png') !important;
     background-position: center!important;
     background-repeat: no-repeat !important;
     -webkit-background-size: 24px 24px !important;
