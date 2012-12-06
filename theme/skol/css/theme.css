@@ -4676,6 +4676,10 @@ div[data-role="content"] .s-feed-header.s-inline-header .s-username .s-small-tex
 #uploading .s-upload-image-tag {
   font-style: italic;
   color: #a7a9ac;
+  display: inline;
+}
+#uploading .upload-image-venue {
+  display: inline;
 }
 #uploading .s-upload-progress-item .s-upload-info-block {
   padding-left: 105px;
