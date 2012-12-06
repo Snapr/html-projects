@@ -1,5 +1,5 @@
 /*global _ $ define theme_templates theme_views */
-define(['utils/analytics', 'auth'], function(analytics, auth){
+define(['utils/analytics'], function(analytics){
 
     //accountId      tracking Code Server URL                            env   domain
     //ABI-Skol_prod  UA-36371583-1 gekko-analytics.appspot.com           prod  abi-skol_prod
@@ -18,7 +18,7 @@ define(['utils/analytics', 'auth'], function(analytics, auth){
                 //label: '',  // String  - label value - optional
                 //value: '',  // Integer - integer value - optional
                 accountId: accountId,
-                userId: username_to_number(auth.get('snapr_user'))
+                userId: 1//username_to_number(auth.get('snapr_user'))
             }
         });
     }
@@ -51,7 +51,7 @@ define(['utils/analytics', 'auth'], function(analytics, auth){
             url: base + 'trackPage/',
             data: {
                 pageName: 'snapr_'+page.options.name,
-                userId: username_to_number(auth.get('snapr_user')),
+                userId: 1,//username_to_number(auth.get('snapr_user')),
                 accountId: accountId
             }
         });
