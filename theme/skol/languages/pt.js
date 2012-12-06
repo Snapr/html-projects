@@ -91,6 +91,7 @@ define([], function(){
         "Leaderboard": "Tabela de classificacao",
         "like this": "Assim",
         "like": "Curtir",
+        "Like": "Curtir",
         "likes this": "Curtiu",
         "Likes": "Curtiram",
         "Link": "Conectar",
