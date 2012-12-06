@@ -36,7 +36,7 @@
                                 <% if(comp){ %>Comp: <%= comp.get('title') %><% } %>
                                 <div class="s-message-area">
                                     <% if(config.get('app_sharing_opt_in_messaqge')){ %>
-                                        <div class="x-sharing-message s-sharing-message"><%= config.get('app_sharing_opt_in_messaqge') %></div>
+                                        <div class="x-sharing-message s-sharing-message"><%= T(config.get('app_sharing_opt_in_messaqge')) %></div>
                                     <% } %>
                                     <textarea name="description" id="description" class="x-description" placeholder="<%= T('Add text') %>..." data-theme="d"><%= saved_description %></textarea>
 
