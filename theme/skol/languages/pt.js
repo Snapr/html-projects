@@ -201,6 +201,7 @@ define([], function(){
         "The End": "O Fim",
         "To finish up please enter some more details for your new account on Snapr": "Para terminar, digite mais alguns detalhes para a sua nova conta no Snapr",
         "Today": "Hoje",
+        "Toggle the Skol sharing button to submit your photo to be featured in this app and on Skol&rsquo;s websites. You can also share to Facebook, Twitter &amp; Foursquare.":"Ative o botão Skol para compartilhar sua foto neste aplicativo e nas plataformas digitais da marca. Você também pode compartilhar no Facebook, Twitter e Foursquare.",
         "Tumblr": "Tumblr",
         "Twitter Friends": "Amigos do Twitter",
         "Unlink": "Desconectar",
