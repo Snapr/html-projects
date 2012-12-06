@@ -5035,6 +5035,11 @@ div[data-role="content"] .s-feed-header.s-inline-header .s-username .s-small-tex
   position: absolute;
   left: -25px;
 }
+.s-share-photo .ui-grid-b .ui-block-c {
+  width: 190px;
+  position: absolute;
+  right: 10px;
+}
 .s-share-photo .ui-grid-b .ui-block-c .ui-btn {
   margin: 0;
 }
