@@ -1,7 +1,10 @@
 /*global _ $ define theme_templates theme_views */
-define(function(){
+// include analytics to initialise it
+define(['./analytics'], function(analytics){
 return {
     config: {
+        // analytics: included above
+
         environment: 'dev',  // from theme.environments below
 
         //language: 'leet',

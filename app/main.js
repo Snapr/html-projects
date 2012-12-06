@@ -61,8 +61,8 @@ require(['routers'], function(routers){
     routers.routers_instance = routers_instance;
 });
 
-require(['config', 'jquery', 'backbone', 'auth', 'utils/local_storage', 'native_bridge', 'utils/dialog', 'utils/alerts', 'collections/upload_progress'],
-    function(config, $, Backbone, auth, local_storage, native_bridge, dialog, alerts, upload_progress_collection) {
+require(['config', 'jquery', 'backbone', 'auth', 'utils/local_storage', 'native_bridge', 'utils/dialog', 'utils/analytics', 'utils/alerts', 'collections/upload_progress'],
+    function(config, $, Backbone, auth, local_storage, native_bridge, dialog, analytics, alerts, upload_progress_collection) {
 
     /* disable jquery-mobile's hash nav so we can replace it with backbone.js
     ***************************/
@@ -313,7 +313,7 @@ require(['config', 'jquery', 'backbone', 'auth', 'utils/local_storage', 'native_
 
         // camera button
         function launch_camera(event, extra_params){
-            console.log('launch_camera', event, extra_params);
+            analytics.trigger('launch_camera', extra_params);
             extra_params = extra_params || $(this).data('extra_params') || "";
             if(window.location.hash){
                 extra_params = 'back_url=' + escape(window.location.hash) + '&' + extra_params;
@@ -345,7 +345,7 @@ require(['config', 'jquery', 'backbone', 'auth', 'utils/local_storage', 'native_
 
         // photo library button
         function photo_library(event, extra_params){
-            console.log('photo_library', event, extra_params);
+            analytics.trigger('launch_photo_library', extra_params);
             extra_params = extra_params || $(this).data('extra_params') || "";
             if(window.location.hash){
                 extra_params = 'back_url=' + escape(window.location.hash) + '&' + extra_params;
