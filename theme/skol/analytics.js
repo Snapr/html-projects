@@ -10,9 +10,9 @@ define(['utils/analytics'], function(analytics){
     var base = 'http://test.gekko-analytics-test.appspot.com/api/abi-skol_test/gg-analytics/v10/',
         accountId = 'abi-skol_test';
 
-    function track_event(category, event){
+    function track_event(event){
         var data = {
-            category: category,  // String  - category value
+            category: 'snapr-ibeats',  // String  - category value
             event: 'snapr_' + event,  // String  - event value
             //label: '',  // String  - label value - optional
             //value: '',  // Integer - integer value - optional
@@ -28,25 +28,25 @@ define(['utils/analytics'], function(analytics){
     }
 
 
-    //track_event('Launch Icon', 'Open App');
+    //track_event('Open App');
 
     analytics.on('launch_camera', function(){
-        track_event('Shoot', 'Photo Tap');
+        track_event('Photo Tap');
     });
     analytics.on('launch_photo_library', function(){
-        track_event('Shoot', 'Camera Roll Tap');
+        track_event('Camera Roll Tap');
     });
     analytics.on('share', function(options){
         console.log(options);
-        track_event('Share', 'Tap Share');
+        track_event('Tap Share');
         if(options.facebook_album){
-            track_event('Share', 'Tap Share to Facebook');
+            track_event('Tap Share to Facebook');
         }
         if(options.tweet){
-            track_event('Share', 'Tap Share to Twitter');
+            track_event('Tap Share to Twitter');
         }
         if(options.foursquare_checkin){
-            track_event('Share', 'Tap Share to Foursquare');
+            track_event('Tap Share to Foursquare');
         }
     });
 
