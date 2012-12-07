@@ -7,8 +7,8 @@ define(['utils/analytics'], function(analytics){
     //ABI-Skol_stage UA-36371583-3 gekko-analytics-test.appspot.com      Stage abi-skol_stage
     //abi-skol_test  UA-36371583-4 test.gekko-analytics-test.appspot.com Test  abi-skol_test
 
-    var base = 'http://test.gekko-analytics-test.appspot.com/api/abi-skol_test/gg-analytics/v10/',
-        accountId = 'abi-skol_test';
+    var base = 'http://gekko-analytics.appspot.com/api/abi-skol_prod/gg-analytics/v10/',
+        accountId = 'ABI-Skol_prod';
 
     function track_event(event){
         var data = {
