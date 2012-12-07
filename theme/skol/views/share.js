@@ -8,7 +8,7 @@ return original_share.extend({
     },
 
     render: function(){
-        original_share.prototype.render.apply(this);
+        original_share.prototype.render.apply(this, arguments);
         if(this.$('#app-sharing').attr('checked')){
             this.$(".x-no-foursquare-venue").hide();
             this.$(".x-foursquare-venue").show();
