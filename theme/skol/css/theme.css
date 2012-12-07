@@ -3402,22 +3402,22 @@ a:active {
 .s-twitter-button.ui-btn-hover-h .ui-btn-inner,
 .s-twitter-button.ui-btn-down-h .ui-btn-inner {
   background: #68d9ff;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#68d9ff), to(#309dc2));
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #68d9ff), color-stop(0.2, #68d9ff), color-stop(0.5, #75dcff), color-stop(0.5, #68d9ff), color-stop(0.8, #68d9ff), color-stop(1, #68d9ff));
   /* Saf4+, Chrome */
 
-  background-image: -webkit-linear-gradient(top, #68d9ff, #309dc2);
+  background-image: -webkit-linear-gradient(top, #68d9ff 0%, #68d9ff 20%, #9be6ff 50%, #75dcff 50%, #68d9ff 80%, #68d9ff 100%);
   /* Chrome 10+, Saf5.1+ */
 
-  background-image: -moz-linear-gradient(top, #68d9ff, #309dc2);
+  background-image: -moz-linear-gradient(top, #68d9ff 0%, #68d9ff 20%, #9be6ff 50%, #75dcff 50%, #68d9ff 80%, #68d9ff 100%);
   /* FF3.6 */
 
-  background-image: -ms-linear-gradient(top, #68d9ff, #309dc2);
+  background-image: -ms-linear-gradient(top, #68d9ff 0%, #68d9ff 20%, #9be6ff 50%, #75dcff 50%, #68d9ff 80%, #68d9ff 100%);
   /* IE10 */
 
-  background-image: -o-linear-gradient(top, #68d9ff, #309dc2);
+  background-image: -o-linear-gradient(top, #68d9ff 0%, #68d9ff 20%, #9be6ff 50%, #75dcff 50%, #68d9ff 80%, #68d9ff 100%);
   /* Opera 11.10+ */
 
-  background-image: linear-gradient(top, #68d9ff, #309dc2);
+  background-image: linear-gradient(top, #68d9ff 0%, #68d9ff 20%, #9be6ff 50%, #75dcff 50%, #68d9ff 80%, #68d9ff 100%);
 }
 .s-twitter-button.ui-btn-up-h a.ui-link-inherit,
 .s-twitter-button.ui-btn-hover-h a.ui-link-inherit,
@@ -3429,41 +3429,41 @@ a:active {
 }
 .s-twitter-button.ui-btn-hover-h .ui-btn-inner {
   background: #9be6ff;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#82dfff), to(#3daacf));
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #75dcff), color-stop(0.2, #75dcff), color-stop(0.5, #82dfff), color-stop(0.5, #75dcff), color-stop(0.8, #75dcff), color-stop(1, #75dcff));
   /* Saf4+, Chrome */
 
-  background-image: -webkit-linear-gradient(top, #82dfff, #3daacf);
+  background-image: -webkit-linear-gradient(top, #75dcff 0%, #75dcff 20%, #a8e9ff 50%, #82dfff 50%, #75dcff 80%, #75dcff 100%);
   /* Chrome 10+, Saf5.1+ */
 
-  background-image: -moz-linear-gradient(top, #82dfff, #3daacf);
+  background-image: -moz-linear-gradient(top, #75dcff 0%, #75dcff 20%, #a8e9ff 50%, #82dfff 50%, #75dcff 80%, #75dcff 100%);
   /* FF3.6 */
 
-  background-image: -ms-linear-gradient(top, #82dfff, #3daacf);
+  background-image: -ms-linear-gradient(top, #75dcff 0%, #75dcff 20%, #a8e9ff 50%, #82dfff 50%, #75dcff 80%, #75dcff 100%);
   /* IE10 */
 
-  background-image: -o-linear-gradient(top, #82dfff, #3daacf);
+  background-image: -o-linear-gradient(top, #75dcff 0%, #75dcff 20%, #a8e9ff 50%, #82dfff 50%, #75dcff 80%, #75dcff 100%);
   /* Opera 11.10+ */
 
-  background-image: linear-gradient(top, #82dfff, #3daacf);
+  background-image: linear-gradient(top, #75dcff 0%, #75dcff 20%, #a8e9ff 50%, #82dfff 50%, #75dcff 80%, #75dcff 100%);
 }
 .s-twitter-button.ui-btn-down-h .ui-btn-inner {
   background: #68d9ff;
-  background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, #68d9ff), color-stop(0.7, #68d9ff), color-stop(1, #4ed3ff));
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #68d9ff), color-stop(0.2, #68d9ff), color-stop(0.5, #75dcff), color-stop(0.5, #75dcff), color-stop(0.8, #75dcff), color-stop(1, #68d9ff));
   /* Saf4+, Chrome */
 
-  background-image: -webkit-linear-gradient(bottom, #68d9ff 0%, #68d9ff 70%, #59d5ff 100%);
+  background-image: -webkit-linear-gradient(top, #68d9ff 0%, #68d9ff 20%, #68d9ff 50%, #75dcff 50%, #75dcff 80%, #68d9ff 100%);
   /* Chrome 10+, Saf5.1+ */
 
-  background-image: -moz-linear-gradient(bottom, #68d9ff 0%, #68d9ff 70%, #59d5ff 100%);
+  background-image: -moz-linear-gradient(top, #68d9ff 0%, #68d9ff 20%, #68d9ff 50%, #75dcff 50%, #75dcff 80%, #68d9ff 100%);
   /* FF3.6 */
 
-  background-image: -ms-linear-gradient(bottom, #68d9ff 0%, #68d9ff 70%, #59d5ff 100%);
+  background-image: -ms-linear-gradient(top, #68d9ff 0%, #68d9ff 20%, #68d9ff 50%, #75dcff 50%, #75dcff 80%, #68d9ff 100%);
   /* IE10 */
 
-  background-image: -o-linear-gradient(bottom, #68d9ff 0%, #68d9ff 70%, #59d5ff 100%);
+  background-image: -o-linear-gradient(top, #68d9ff 0%, #68d9ff 20%, #68d9ff 50%, #75dcff 50%, #75dcff 80%, #68d9ff 100%);
   /* Opera 11.10+ */
 
-  background-image: linear-gradient(bottom, #68d9ff 0%, #68d9ff 70%, #59d5ff 100%);
+  background-image: linear-gradient(top, #68d9ff 0%, #68d9ff 20%, #68d9ff 50%, #75dcff 50%, #75dcff 80%, #68d9ff 100%);
 }
 .s-tumblr-button.ui-btn-up-h,
 .s-tumblr-button.ui-btn-hover-h,
@@ -3549,22 +3549,22 @@ a:active {
 .s-facebook-button.ui-btn-hover-h .ui-btn-inner,
 .s-facebook-button.ui-btn-down-h .ui-btn-inner {
   background: #507ab8;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#507ab8), to(#2e5998));
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #2e5998), color-stop(0.2, #507ab8), color-stop(0.5, #6288bf), color-stop(0.5, #507ab8), color-stop(0.8, #507ab8), color-stop(1, #2e5998));
   /* Saf4+, Chrome */
 
-  background-image: -webkit-linear-gradient(top, #507ab8, #2e5998);
+  background-image: -webkit-linear-gradient(top, #2e5998 0%, #507ab8 20%, #99b1d5 50%, #6288bf 50%, #507ab8 80%, #2e5998 100%);
   /* Chrome 10+, Saf5.1+ */
 
-  background-image: -moz-linear-gradient(top, #507ab8, #2e5998);
+  background-image: -moz-linear-gradient(top, #2e5998 0%, #507ab8 20%, #99b1d5 50%, #6288bf 50%, #507ab8 80%, #2e5998 100%);
   /* FF3.6 */
 
-  background-image: -ms-linear-gradient(top, #507ab8, #2e5998);
+  background-image: -ms-linear-gradient(top, #2e5998 0%, #507ab8 20%, #99b1d5 50%, #6288bf 50%, #507ab8 80%, #2e5998 100%);
   /* IE10 */
 
-  background-image: -o-linear-gradient(top, #507ab8, #2e5998);
+  background-image: -o-linear-gradient(top, #2e5998 0%, #507ab8 20%, #99b1d5 50%, #6288bf 50%, #507ab8 80%, #2e5998 100%);
   /* Opera 11.10+ */
 
-  background-image: linear-gradient(top, #507ab8, #2e5998);
+  background-image: linear-gradient(top, #2e5998 0%, #507ab8 20%, #99b1d5 50%, #6288bf 50%, #507ab8 80%, #2e5998 100%);
 }
 .s-facebook-button.ui-btn-up-h a.ui-link-inherit,
 .s-facebook-button.ui-btn-hover-h a.ui-link-inherit,
@@ -3576,41 +3576,47 @@ a:active {
 }
 .s-facebook-button.ui-btn-hover-h .ui-btn-inner {
   background: #7496c7;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#6288bf), to(#3464ac));
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #3464ac), color-stop(0.2, #6288bf), color-stop(0.5, #7496c7), color-stop(0.5, #6288bf), color-stop(0.8, #6288bf), color-stop(1, #3464ac));
   /* Saf4+, Chrome */
 
-  background-image: -webkit-linear-gradient(top, #6288bf, #3464ac);
+  background-image: -webkit-linear-gradient(top, #3464ac 0%, #6288bf 20%, #abbfdd 50%, #7496c7 50%, #6288bf 80%, #3464ac 100%);
   /* Chrome 10+, Saf5.1+ */
 
-  background-image: -moz-linear-gradient(top, #6288bf, #3464ac);
+  background-image: -moz-linear-gradient(top, #3464ac 0%, #6288bf 20%, #abbfdd 50%, #7496c7 50%, #6288bf 80%, #3464ac 100%);
   /* FF3.6 */
 
-  background-image: -ms-linear-gradient(top, #6288bf, #3464ac);
+  background-image: -ms-linear-gradient(top, #3464ac 0%, #6288bf 20%, #abbfdd 50%, #7496c7 50%, #6288bf 80%, #3464ac 100%);
   /* IE10 */
 
-  background-image: -o-linear-gradient(top, #6288bf, #3464ac);
+  background-image: -o-linear-gradient(top, #3464ac 0%, #6288bf 20%, #abbfdd 50%, #7496c7 50%, #6288bf 80%, #3464ac 100%);
   /* Opera 11.10+ */
 
-  background-image: linear-gradient(top, #6288bf, #3464ac);
+  background-image: linear-gradient(top, #3464ac 0%, #6288bf 20%, #abbfdd 50%, #7496c7 50%, #6288bf 80%, #3464ac 100%);
 }
 .s-facebook-button.ui-btn-down-h .ui-btn-inner {
   background: #507ab8;
   background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, #507ab8), color-stop(0.7, #507ab8), color-stop(1, #456eaa));
+  background-image: -webkit-linear-gradient(bottom, #507ab8 0%, #507ab8 70%, #4872b1 100%);
+  background-image: -moz-linear-gradient(bottom, #507ab8 0%, #507ab8 70%, #4872b1 100%);
+  background-image: -ms-linear-gradient(bottom, #507ab8 0%, #507ab8 70%, #4872b1 100%);
+  background-image: -o-linear-gradient(bottom, #507ab8 0%, #507ab8 70%, #4872b1 100%);
+  background-image: linear-gradient(bottom, #507ab8 0%, #507ab8 70%, #4872b1 100%);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #2e5998), color-stop(0.2, #2e5998), color-stop(0.5, #6288bf), color-stop(0.5, #6288bf), color-stop(0.8, #6288bf), color-stop(1, #2e5998));
   /* Saf4+, Chrome */
 
-  background-image: -webkit-linear-gradient(bottom, #507ab8 0%, #507ab8 70%, #4872b1 100%);
+  background-image: -webkit-linear-gradient(top, #2e5998 0%, #2e5998 20%, #507ab8 50%, #6288bf 50%, #6288bf 80%, #2e5998 100%);
   /* Chrome 10+, Saf5.1+ */
 
-  background-image: -moz-linear-gradient(bottom, #507ab8 0%, #507ab8 70%, #4872b1 100%);
+  background-image: -moz-linear-gradient(top, #2e5998 0%, #2e5998 20%, #507ab8 50%, #6288bf 50%, #6288bf 80%, #2e5998 100%);
   /* FF3.6 */
 
-  background-image: -ms-linear-gradient(bottom, #507ab8 0%, #507ab8 70%, #4872b1 100%);
+  background-image: -ms-linear-gradient(top, #2e5998 0%, #2e5998 20%, #507ab8 50%, #6288bf 50%, #6288bf 80%, #2e5998 100%);
   /* IE10 */
 
-  background-image: -o-linear-gradient(bottom, #507ab8 0%, #507ab8 70%, #4872b1 100%);
+  background-image: -o-linear-gradient(top, #2e5998 0%, #2e5998 20%, #507ab8 50%, #6288bf 50%, #6288bf 80%, #2e5998 100%);
   /* Opera 11.10+ */
 
-  background-image: linear-gradient(bottom, #507ab8 0%, #507ab8 70%, #4872b1 100%);
+  background-image: linear-gradient(top, #2e5998 0%, #2e5998 20%, #507ab8 50%, #6288bf 50%, #6288bf 80%, #2e5998 100%);
 }
 .s-snapr-button.ui-btn-up-h,
 .s-snapr-button.ui-btn-hover-h,
