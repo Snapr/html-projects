@@ -5516,12 +5516,12 @@ div.ps-carousel-item-loading {
   bottom: 0;
   width: 100%;
   margin: 0 -8px;
-  -webkit-border-bottom-right-radius: 8px;
-  -moz-border-radius-bottomright: 8px;
-  border-bottom-right-radius: 8px;
-  -webkit-border-bottom-left-radius: 8px;
-  -moz-border-radius-bottomleft: 8px;
-  border-bottom-left-radius: 8px;
+  -webkit-border-bottom-right-radius: 0px;
+  -moz-border-radius-bottomright: 0px;
+  border-bottom-right-radius: 0px;
+  -webkit-border-bottom-left-radius: 0px;
+  -moz-border-radius-bottomleft: 0px;
+  border-bottom-left-radius: 0px;
 }
 .s-photo-map .s-map-controls.ui-body-a {
   border: none;
