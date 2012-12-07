@@ -20,6 +20,7 @@ return page_view.extend({
     render: function(){
 
         this.replace_from_template({}, ['[data-role="header"]', '[data-role="content"]']);
+        this.render_nearby_photostream();
         this.render_ticker();
 
         return this;
