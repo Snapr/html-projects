@@ -218,9 +218,11 @@ a:active{
 
 .s-warning-message{
     padding: @padding * 2;
-    background-color: @snaprYellow;
+    background-color: @yellow;
     .border-radius(@corners);
     border-bottom: @borderGray;
+    color: @grayDarker;
+    text-shadow: none;
 }
 
 .s-inset-page-content{
@@ -2478,7 +2480,7 @@ div.ps-carousel-item-loading{
     
     .s-map-controls{
         position: absolute;
-        bottom: -7px;
+        bottom:  0;
         width: 100%;
         margin: 0 -8px;
         .border-bottom-radius(8px);
