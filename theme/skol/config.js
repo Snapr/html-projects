@@ -17,7 +17,7 @@ return {
 
         app_group: 'ibeats',
 
-        min_photo_rating: 1,
+        min_photo_rating: 0,
 
         // client must have xAuth permission from 3rd party
         tumblr_xauth: true,
