@@ -1,4 +1,5 @@
-/*global _ $ define theme_templates theme_views */
+/*global _ $ define auth */
+// auth is globally available and importing it here would result in a circ. dependency
 define(['utils/analytics'], function(analytics){
 
     //accountId      tracking Code Server URL                            env   domain
@@ -10,21 +11,24 @@ define(['utils/analytics'], function(analytics){
         accountId = 'abi-skol_test';
 
     function track_event(category, event){
+        var data = {
+            category: category,  // String  - category value
+            event: 'snapr_' + event,  // String  - event value
+            //label: '',  // String  - label value - optional
+            //value: '',  // Integer - integer value - optional
+            accountId: accountId
+        };
+        if(window.auth.get('snapr_user')){
+            data.userId = username_to_number(window.auth.get('snapr_user'));
+        }
         $.ajax({
             url: base + 'trackEvent/',
-            data: {
-                category: category,  // String  - category value
-                event: 'snapr_' + event,  // String  - event value
-                //label: '',  // String  - label value - optional
-                //value: '',  // Integer - integer value - optional
-                accountId: accountId,
-                userId: 1//username_to_number(auth.get('snapr_user'))
-            }
+            data: data
         });
     }
 
 
-    track_event('Launch Icon', 'Open App');
+    //track_event('Launch Icon', 'Open App');
 
     analytics.on('launch_camera', function(){
         track_event('Shoot', 'Photo Tap');
@@ -47,13 +51,16 @@ define(['utils/analytics'], function(analytics){
     });
 
     analytics.on('page_load', function(page){
+        var data = {
+            pageName: 'snapr_'+page.options.name,
+            accountId: accountId
+        };
+        if(window.auth.get('snapr_user')){
+            data.userId = username_to_number(window.auth.get('snapr_user'));
+        }
         $.ajax({
             url: base + 'trackPage/',
-            data: {
-                pageName: 'snapr_'+page.options.name,
-                userId: 1,//username_to_number(auth.get('snapr_user')),
-                accountId: accountId
-            }
+            data: data
         });
     });
 
