@@ -3068,9 +3068,10 @@ div[data-role="header"] .ui-btn-center .s-header-toggle .ui-btn .ui-btn-text .ui
   left: 2px;
 }
 div[data-role="header"] .ui-btn[data-icon="delete"] {
-  right: 6px;
-  top: 6px;
+  right: 2px;
+  top: 2px;
   left: auto;
+  padding: 0;
 }
 div[data-role="header"] .ui-btn[data-rel="back"] .ui-icon {
   display: none;
