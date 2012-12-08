@@ -4297,6 +4297,10 @@ textarea.ui-input-text {
   height: 142px;
   background-position: 0 0;
 }
+#home .s-menu-main .s-menu-btns .sk-centered-button .ui-btn-down-z .ui-icon-main-menu-camera,
+#home .s-menu-main .s-menu-btns .sk-centered-button .ui-btn-active-z .ui-icon-main-menu-camera {
+  background-position: 0 -142px;
+}
 #home .s-menu-main .s-menu-btns .sk-bottom-buttons {
   position: absolute;
   top: 90px;
@@ -6353,10 +6357,10 @@ div.ps-carousel-item-loading {
   }
   #home .s-menu-main .s-menu-btns .sk-centered-button .ui-icon-main-menu-camera {
     background-image: url('../gfx/retina/skol-camera-btn.png');
-    -webkit-background-size: 142px 142px;
-    -moz-background-size: 142px 142px;
-    -o-background-size: 142px 142px;
-    background-size: 142px 142px;
+    -webkit-background-size: 142px 284px;
+    -moz-background-size: 142px 284px;
+    -o-background-size: 142px 284px;
+    background-size: 142px 284px;
   }
   .s-feed-header.s-inline-header .s-user-icon-left .s-icon-overlay {
     background-image: url('../gfx/hdpi/shiny-avatar-info.png');
@@ -6644,10 +6648,10 @@ div.ps-carousel-item-loading {
   }
   #home .s-menu-main .s-menu-btns .sk-centered-button .ui-icon-main-menu-camera {
     background-image: url('../gfx/retina/skol-camera-btn.png');
-    -webkit-background-size: 142px 142px;
-    -moz-background-size: 142px 142px;
-    -o-background-size: 142px 142px;
-    background-size: 142px 142px;
+    -webkit-background-size: 142px 284px;
+    -moz-background-size: 142px 284px;
+    -o-background-size: 142px 284px;
+    background-size: 142px 284px;
   }
   .s-feed-header.s-inline-header .s-user-icon-left .s-icon-overlay {
     background-image: url('../gfx/retina/shiny-avatar-info.png');
