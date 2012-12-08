@@ -1362,12 +1362,43 @@ div[data-role="content"]{
         }
     }
     .s-image-item-base{
-        .s-text-symbol{
-            display: none;
+        .x-comment{
+             .s-text-symbol{
+                    display: none;
+                }
+                .s-hide-text{
+                    display: inline-block;
+                }
         }
-        .s-hide-text{
-            display: inline-block;
+        .x-favorite{
+             .s-text-symbol{
+                    display: inline-block;
+                }
+                .s-hide-text{
+                    display: none;
+                }
+                &[data-count="0"]{
+                    .ui-btn-inner{
+                        padding: 0 6px!important;
+                        .ui-icon {
+                            left: 1px;
+                        }
+                    }
+                }
         }
+        .x-more-button.ui-btn.action-icons{
+            .s-text-symbol,
+            .s-hide-text{
+                display: none;
+            }
+            .ui-btn-inner{
+                padding: 0 6px;
+                .ui-icon {
+                    left: 1px;
+                }
+            }
+        }
+       
     }
     .s-image-actions{
         margin-top: @padding * 2;
@@ -1386,11 +1417,7 @@ div[data-role="content"]{
                 border: @borderBlack;
             }
         }
-        
-        .x-more-button{
-            display: none;
-        }
-        
+
         .s-inline-btn{
             display: inline-block;
         }
@@ -1514,11 +1541,19 @@ div[data-role="content"]{
 
 .s-has-palette{
     .s-action-palette{
-        left: @gfxDark-grid / 2 + 2px;
+        left: 14px;
+        margin-bottom: 12px;
         .s-center-palette{
             .s-inline-palette{
                 .border-radius(10px);
                 padding: 6px;
+                background: #1f2122;
+                background-image: none;
+                .ui-controlgroup-controls{
+                    top: 0;
+                    margin: 0;
+                    padding: 0; 
+                }
                 &::after{
                     .arrow-down(@arrowSize, @blackTint, 50%, @arrowYShift + 3px);
                 }

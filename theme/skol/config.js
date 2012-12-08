@@ -27,7 +27,7 @@ return {
         app_sharing_opt_in_messaqge: 'Toggle the Skol sharing button to submit your photo to be featured in this app and on Skol&rsquo;s websites. You can also share to Facebook, Twitter &amp; Foursquare.',
 
         privacy_controls: false,
-        moderation_controls: false,
+        moderation_controls: true,
         follow_controls: false,
         photoswipe: false,
 
