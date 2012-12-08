@@ -3783,6 +3783,11 @@ a:active {
   font-family: Georgia, 'Times New Roman', Times, sans-serif !important;
   line-height: 36px;
   vertical-align: middle;
+  max-width: 73%;
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .s-switch-setting .ui-slider-switch {
   float: right;
