@@ -5151,6 +5151,9 @@ div[data-role="content"] .s-feed-header.s-inline-header .s-username .s-small-tex
   vertical-align: middle;
   display: inline-block;
 }
+.s-account-content .s-account-header .s-feed-extra {
+  font-style: italic;
+}
 .s-account-content .s-account-header .s-logout-button {
   position: absolute;
   right: 4px;

@@ -54,7 +54,7 @@ define([], function(){
         "Favorites": "Favoritos",
         "Favorited by": "Favorito por",
         "Featured Pics": "Fotos em destaque",
-        "Feed": "Feed de noticias",
+        "Feed": "Fotos",
         "Find Friends": "Encontrar Amigos",
         "Find out more about Snapr": "Saber mais sobre Snapr",
         "Find Out More": "Saber Mais",

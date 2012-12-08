@@ -20,7 +20,7 @@
                         <% }else{ %>
                             <div class="s-avatar" style="background-image: url('<%= config.get('avatar_url') %>/<%= user_id %>?size=large&_salt=<%= settings.profile.avatar_type %>');"></div>
                         <% } %>
-                        <%= display_username %>
+                        <span class="s-username"><%= display_username %></span> <span class="s-small-text s-feed-extra"><%= T('Feed') %> &rsaquo;</span>
                     </a>
                     <a href="#/logout/" class="s-logout-button" data-role="button" data-icon="delete" data-iconpos="right"><%= T('Logout') %></a>
                 </div>
