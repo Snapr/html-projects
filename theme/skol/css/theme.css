@@ -20,7 +20,7 @@
 @font-face {
   font-family: 'PlutoHeavy';
   src: url('../fonts/24EEE8_0_0.eot');
-  src: url('../fonts/24EEE8_0_0.eot?#iefix') format('embedded-opentype'), url('../fonts/24EEE8_0_0.woff') format('woff'), url('../fonts/24EEE8_0_0.ttf') format('truetype');
+  src: url('../fonts/24EEE8_0_0.eot?#iefix') format('embedded-opentype'), url('../fonts/24EEE8_0_0.woff') format('woff'), url('../fonts/24EEE8_0_0.ttf') format('truetype'), url('../fonts/24EEE8_0_0.svg#PlutoHeavy') format('svg');
   font-weight: normal;
   font-style: normal;
 }
