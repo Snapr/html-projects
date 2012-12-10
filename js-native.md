@@ -550,7 +550,7 @@ Errors will return the `redirect_url` in a similar fashion to success, but inste
 
 ### 13.4 Webview Closed
 
-If the user presses close on the webview you need to find the `redirect` form the original webview request and redirect the JS to it with `error=Linking%20Closed`.
+If the user presses close on the webview you need to find the `redirect_url` form the original webview request and redirect the HTML view to it with `error=Linking%20Closed` added to the query string.
 
 The original will be in the format: `snapr://redirect?redirect_url=file%3A///path/index.html%23/login/%3Fparam%3Dvalue` from this you need to extract and decode `redirect_url`
 
