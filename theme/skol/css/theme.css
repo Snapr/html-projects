@@ -6296,6 +6296,13 @@ div.ps-carousel-item-loading {
     -o-background-size: 72px 216px;
     background-size: 72px 216px;
   }
+  .s-spot-header .s-foursquare-btn .ui-icon-foursquare-logo {
+    background-image: url('../gfx/hdpi/foursquare-btn.png');
+    -webkit-background-size: 35px 35px;
+    -moz-background-size: 35px 35px;
+    -o-background-size: 35px 35px;
+    background-size: 35px 35px;
+  }
   .ui-icon.distance-icon,
   .s-distance-btn .ui-icon {
     background-image: url('../gfx/hdpi/distance-icons.png');
@@ -6367,14 +6374,14 @@ div.ps-carousel-item-loading {
     background-size: 24px 24px !important;
   }
   #home .s-menu-main .s-menu-btns .sk-logo-top .ui-icon-skol-ibeats-logo {
-    background-image: url('../gfx/retina/ibeats-logo.png');
+    background-image: url('../gfx/hdpi/ibeats-logo.png');
     -webkit-background-size: 180px 126px;
     -moz-background-size: 180px 126px;
     -o-background-size: 180px 126px;
     background-size: 180px 126px;
   }
   #home .s-menu-main .s-menu-btns .sk-centered-button .ui-icon-main-menu-camera {
-    background-image: url('../gfx/retina/skol-camera-btn.png');
+    background-image: url('../gfx/hdpi/skol-camera-btn.png');
     -webkit-background-size: 142px 284px;
     -moz-background-size: 142px 284px;
     -o-background-size: 142px 284px;
@@ -6500,6 +6507,20 @@ div.ps-carousel-item-loading {
     -moz-background-size: 275px 328px;
     -o-background-size: 275px 328px;
     background-size: 275px 328px;
+  }
+  .s-photo-map .s-map-venue .s-venue-pin {
+    background-image: url('../gfx/hdpi/map-spot-pin.png');
+    -webkit-background-size: 36px 28px;
+    -moz-background-size: 36px 28px;
+    -o-background-size: 36px 28px;
+    background-size: 36px 28px;
+  }
+  .s-photo-map .s-map-current-location {
+    background-image: url('../gfx/hdpi/map-current-location-marker.png');
+    -webkit-background-size: 30px 30px;
+    -moz-background-size: 30px 30px;
+    -o-background-size: 30px 30px;
+    background-size: 30px 30px;
   }
 }
 @media only screen and (-webkit-min-device-pixel-ratio: 2) {
@@ -6791,5 +6812,19 @@ div.ps-carousel-item-loading {
     -moz-background-size: 275px 328px;
     -o-background-size: 275px 328px;
     background-size: 275px 328px;
+  }
+  .s-photo-map .s-map-venue .s-venue-pin {
+    background-image: url('../gfx/retina/map-spot-pin.png');
+    -webkit-background-size: 36px 28px;
+    -moz-background-size: 36px 28px;
+    -o-background-size: 36px 28px;
+    background-size: 36px 28px;
+  }
+  .s-photo-map .s-map-current-location {
+    background-image: url('../gfx/retina/map-current-location-marker.png');
+    -webkit-background-size: 30px 30px;
+    -moz-background-size: 30px 30px;
+    -o-background-size: 30px 30px;
+    background-size: 30px 30px;
   }
 }
