@@ -10,7 +10,7 @@ return page_view.extend({
     post_activate: function(options){
         $.mobile.changePage( "#home", {changeHash: false} );  // must be false or jQm will change the url from x/y/z/#/ to x/y/z/#/x/y/z
 
-        this.render_nearby_photostream();
+        this.nearby_photostream.refresh();
         this.render_ticker();
 
         upload_progress_collection.on('all', this.upload_count());
@@ -18,8 +18,8 @@ return page_view.extend({
     },
 
     render: function(){
-
         this.replace_from_template({}, ['[data-role="header"]', '[data-role="content"]']);
+        this.render_nearby_photostream();
         this.render_ticker();
 
         return this;

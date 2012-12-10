@@ -57,7 +57,7 @@
 
     <div class="s-image-item-base">
         <div data-role="controlgroup" data-type="horizontal" class="s-image-actions x-image-actions" data-theme="z">
-            <a data-role="button" data-theme="z" data-icon="heart" data-iconpos="left" class="x-favorite action-icons <% if (item.get('favorite')){ %> selected <% }%>" >
+            <a data-role="button" data-theme="z" data-icon="heart" data-iconpos="left" class="x-favorite action-icons" data-count="<%= item.get('favorite_count') %>" <% if (item.get('favorite')){ %> selected <% }%>" >
             <% if (item.get('favorite_count') > 0){ %>
                 <span class="s-text-symbol">&times; </span>
                 <%= item.get('favorite_count') %>
@@ -66,7 +66,7 @@
                 <span class="s-hide-text"> <%= T('Like') %> </span>&nbsp;<%}%>
             </a>
 
-            <a data-role="button" data-icon="comment" data-inline="true" data-iconpos="left" class="x-comment action-icons" data-theme="z">
+            <a data-role="button" data-icon="comment" data-inline="true" data-iconpos="left" data-count="<%= item.get('comments') %>" class="x-comment action-icons" data-theme="z">
 
                 <% if (item.get('comments') > 0){ %>
                     <span class="s-text-symbol">&times; </span>

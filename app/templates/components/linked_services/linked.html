@@ -21,7 +21,7 @@
                 <span class="s-setting-label"><%= T('Show Twitter in my Profile') %></span>
                 <select name="twitter-link" id="twitter-link" class="x-twitter-link" data-role="slider" data-mini="true">
                     <option value="false"><%= T('Off') %></option>
-                    <option value="true" <% if (service.get('show_username')){%>selected<%}%>>On</option>
+                    <option value="true" <% if (service.get('show_username')){%>selected<%}%>><%= T('On') %></option>
                 </select>
             </div>
 

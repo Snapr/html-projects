@@ -36,6 +36,7 @@ div[data-role="header"]{
     text-shadow: @shadowBlack 0px -1px 1px;
     height: @topBarHeight;
     overflow: hidden;
+    z-index: 10;
     .ui-title{
         .title-bar-font();
         line-height: @topBarHeight;
@@ -105,9 +106,10 @@ div[data-role="header"]{
     }
     // Shuffle the close button to the right */
     .ui-btn[data-icon="delete"]{
-        right: 6px;
-        top: 6px;
+        right: 2px;
+        top: 2px;
         left: auto;
+        padding: 0;
     }
     // Some fiddly stuff for back btns */
     .ui-btn[data-rel="back"]{
@@ -217,9 +219,11 @@ a:active{
 
 .s-warning-message{
     padding: @padding * 2;
-    background-color: @snaprYellow;
+    background-color: @yellow;
     .border-radius(@corners);
     border-bottom: @borderGray;
+    color: @grayDarker;
+    text-shadow: none;
 }
 
 .s-inset-page-content{
@@ -227,6 +231,8 @@ a:active{
     h4{
         text-transform: uppercase;
         color: @yellow;
+        text-align: center;
+        margin-right: 0!important;
     }
     
     .ui-listview-inset {
@@ -251,6 +257,22 @@ a:active{
         
     }
 } 
+
+.sk-main-logo{
+    text-align: center;
+    height: @gfxMainLogo-width - @padding * 5;
+    overflow: visible;
+    position: relative;
+    .sk-main-logo-icon{
+        background-image: url('@{gfx}@{gfxMainLogo}');
+        width: @gfxMainLogo-width;
+        height: @gfxMainLogo-height;
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        margin-left: -@gfxMainLogo-width / 2 ;
+    }
+}
 
 
 
@@ -438,7 +460,7 @@ a:active{
     background: @blackTrans;
     .ui-btn-inner{
         background: @twitterBlue;
-        .linear-gradient(@twitterBlue, @twitterBlueTint);
+        .super-shiny-gradient(@twitterBlueTint, @twitterBlue, lighten(@twitterBlue, 10%), lighten(@twitterBlue, 2.5%), @twitterBlue, @twitterBlueTint);
     }
     color: white;
     a.ui-link-inherit,
@@ -449,14 +471,13 @@ a:active{
 .s-twitter-button.ui-btn-hover-h {
     .ui-btn-inner{
         background: lighten(@twitterBlue, 10% );
-        .linear-gradient(lighten(@twitterBlue, 5%), lighten(@twitterBlueTint, 5%));
+        .super-shiny-gradient(lighten(@twitterBlueTint, 2.5%), lighten(@twitterBlue, 2.5%), lighten(@twitterBlue, 12.5%), lighten(@twitterBlue, 5%), lighten(@twitterBlue, 2.5%), lighten(@twitterBlueTint, 2.5%));        
     }
 }
 .s-twitter-button.ui-btn-down-h {
-    
     .ui-btn-inner{
         background: @twitterBlue;
-        .pressed-gradient(@twitterBlue, 3%);
+        .super-shiny-gradient(@twitterBlueTint, @twitterBlueTint, @twitterBlue, lighten(@twitterBlue, 2.5%) ,  lighten(@twitterBlue, 2.5%), @twitterBlueTint);        
     }
     
 }
@@ -496,7 +517,7 @@ a:active{
     background: @blackTrans;
     .ui-btn-inner{
         background: @facebookBlue;
-        .linear-gradient(@facebookBlue, @facebookBlueTint);
+        .super-shiny-gradient(@facebookBlueTint, @facebookBlue, lighten(@facebookBlue, 20%), lighten(@facebookBlue, 5%), @facebookBlue, @facebookBlueTint)
     }
     color: white;
     a.ui-link-inherit,
@@ -507,13 +528,14 @@ a:active{
 .s-facebook-button.ui-btn-hover-h {
     .ui-btn-inner{
         background: lighten(@facebookBlue, 10% );
-        .linear-gradient(lighten(@facebookBlue, 5%), lighten(@facebookBlueTint, 5%));
+        .super-shiny-gradient(lighten(@facebookBlueTint, 5%), lighten(@facebookBlue, 5%), lighten(@facebookBlue, 25%), lighten(@facebookBlue, 10%), lighten(@facebookBlue, 5%), lighten(@facebookBlueTint, 5%));
     }
 }
 .s-facebook-button.ui-btn-down-h {
     .ui-btn-inner{
         background: @facebookBlue;
         .pressed-gradient(@facebookBlue, 3%);
+        .super-shiny-gradient(@facebookBlueTint, @facebookBlueTint, @facebookBlue, lighten(@facebookBlue, 5%) ,  lighten(@facebookBlue, 5%), @facebookBlueTint);
     }
 }
 
@@ -604,6 +626,12 @@ a:active{
         font-family: @font!important;
         line-height: 36px;
         vertical-align: middle;
+        max-width: 73%;
+        display: inline-block;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        
     }
     .ui-slider-switch{
         float: right;
@@ -1123,6 +1151,7 @@ textarea.ui-input-text {
             overflow: visible;
             width:1px;
             height:1px;
+            margin-top: -20px;
 
             .sk-logo-top{
                 width:@gfxIBeatsLogo-width;
@@ -1157,6 +1186,13 @@ textarea.ui-input-text {
                     width:@gfxCameraBtn-grid;
                     height: @gfxCameraBtn-grid;
                     background-position: 0 0;
+                }
+                .ui-btn-down-z,
+                .ui-btn-active-z{
+                    .ui-icon-main-menu-camera{
+                        background-position: 0 -@gfxCameraBtn-grid;
+                    }
+                    
                 }
             }
             
@@ -1340,12 +1376,43 @@ div[data-role="content"]{
         }
     }
     .s-image-item-base{
-        .s-text-symbol{
-            display: none;
+        .x-comment{
+             .s-text-symbol{
+                    display: none;
+                }
+                .s-hide-text{
+                    display: inline-block;
+                }
         }
-        .s-hide-text{
-            display: inline-block;
+        .x-favorite{
+             .s-text-symbol{
+                    display: inline-block;
+                }
+                .s-hide-text{
+                    display: none;
+                }
+                &[data-count="0"]{
+                    .ui-btn-inner{
+                        padding: 0 6px!important;
+                        .ui-icon {
+                            left: 1px;
+                        }
+                    }
+                }
         }
+        .x-more-button.ui-btn.action-icons{
+            .s-text-symbol,
+            .s-hide-text{
+                display: none;
+            }
+            .ui-btn-inner{
+                padding: 0 6px;
+                .ui-icon {
+                    left: 1px;
+                }
+            }
+        }
+       
     }
     .s-image-actions{
         margin-top: @padding * 2;
@@ -1364,11 +1431,7 @@ div[data-role="content"]{
                 border: @borderBlack;
             }
         }
-        
-        .x-more-button{
-            display: none;
-        }
-        
+
         .s-inline-btn{
             display: inline-block;
         }
@@ -1492,11 +1555,19 @@ div[data-role="content"]{
 
 .s-has-palette{
     .s-action-palette{
-        left: @gfxDark-grid / 2 + 2px;
+        left: 14px;
+        margin-bottom: 12px;
         .s-center-palette{
             .s-inline-palette{
                 .border-radius(10px);
                 padding: 6px;
+                background: #1f2122;
+                background-image: none;
+                .ui-controlgroup-controls{
+                    top: 0;
+                    margin: 0;
+                    padding: 0; 
+                }
                 &::after{
                     .arrow-down(@arrowSize, @blackTint, 50%, @arrowYShift + 3px);
                 }
@@ -1651,6 +1722,10 @@ div[data-role="content"]{
     .s-upload-image-tag{
         font-style: italic;
         color: @grayLighter;
+        display: inline;
+    }
+    .upload-image-venue{
+        display: inline;
     }
     
     .s-upload-progress-item{
@@ -1960,6 +2035,9 @@ div[data-role="content"]{
     
     .ui-grid-b{
         .ui-block-c{
+            width: 190px;
+            position: absolute;
+            right: @padding * 2;
             .ui-btn{
                 margin: 0;
             }
@@ -2010,6 +2088,9 @@ div[data-role="content"]{
            display: inline-block;
            vertical-align: middle;
            display: inline-block;
+       }
+       .s-feed-extra{
+           font-style: italic;
        }
        .s-logout-button{
            position: absolute;
@@ -2451,10 +2532,10 @@ div.ps-carousel-item-loading{
     
     .s-map-controls{
         position: absolute;
-        bottom: -7px;
+        bottom:  0;
         width: 100%;
         margin: 0 -8px;
-        .border-bottom-radius(8px);
+        .border-bottom-radius(0px);
         &.ui-body-a{
             border: none;
             background: rgba(0, 0, 0, .8);
@@ -2767,7 +2848,7 @@ div.ps-carousel-item-loading{
             width: 60px;
             height: 60px;
             background-color: @blackTrans;
-            margin: 6px;
+            margin: 0px;
             border-radius: 45px;
             text-align: center;
             padding: 15px;

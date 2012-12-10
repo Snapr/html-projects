@@ -15,9 +15,9 @@ return {
         // initial_view: 'dash',  // "home page"
         show_tab_bar: false,
 
-        app_group: 'skol-night-solver',
+        app_group: 'ibeats',
 
-        min_photo_rating: 1,
+        min_photo_rating: 0,
 
         // client must have xAuth permission from 3rd party
         tumblr_xauth: true,
@@ -27,7 +27,7 @@ return {
         app_sharing_opt_in_messaqge: 'Toggle the Skol sharing button to submit your photo to be featured in this app and on Skol&rsquo;s websites. You can also share to Facebook, Twitter &amp; Foursquare.',
 
         privacy_controls: false,
-        moderation_controls: false,
+        moderation_controls: true,
         follow_controls: false,
         photoswipe: false,
 
@@ -75,13 +75,13 @@ return {
     environments: {
         dev: {
             base_url: "http://dev.sna.pr",
-            client_id: "57f3738e7b2a91307d93374f9ce56704",
-            client_secret: "88720baa153b65e3ef394aa1a191b8c4"
+            client_id:"d837d7b7666cd155deae78c65238e47f",
+            client_secret:"60b07d45406ef346fdbc3aa6a5150b62"
         },
         live: {
             base_url: "https://sna.pr",
-            client_id: "ffdde1f702c98a7df05ac446359737d3",
-            client_secret: "b93808a52ac7f89c22c18fcd8e0aa1a6"
+            client_id:"b998b5de51c36c592b35582f623d6397",
+            client_secret:"14fe32c822ab38777a69c2d30416a2c1"
         },
         local: {
             base_url: "http://localhost:8000",
