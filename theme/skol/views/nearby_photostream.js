@@ -40,8 +40,10 @@ var nearby_photostream_view = nearby_photostream_base.extend({
         if(!next.length){
             next = current.siblings().eq(0);
         }
-        next.addClass('fade-in');
         current.removeClass('fade-in');
+        setTimeout(function(){
+            next.addClass('fade-in');
+        }, 700);
     }
 
 });
