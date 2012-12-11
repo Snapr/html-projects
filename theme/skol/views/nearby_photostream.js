@@ -41,9 +41,7 @@ var nearby_photostream_view = nearby_photostream_base.extend({
             next = current.siblings().eq(0);
         }
         current.removeClass('fade-in');
-        setTimeout(function(){
-            next.addClass('fade-in');
-        }, 700);
+        next.addClass('fade-in');
     }
 
 });
