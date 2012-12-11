@@ -16,6 +16,7 @@ return page_view.extend({
         this.model.bind( "change", _.bind(this.render, this) );
 
         this.change_page();
+        $.mobile.showPageLoadingMsg();
 
         this.model.fetch();
     },
@@ -27,6 +28,7 @@ return page_view.extend({
         }));
         this.$( ".x-user-profile" ).replaceWith(rendered.find(".x-user-profile"));
         this.$el.trigger( "create" );
+        $.mobile.hidePageLoadingMsg();
     }
 });
 });
