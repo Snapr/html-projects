@@ -395,6 +395,8 @@ During upload the queue should attempt to recover from temporary interruptions t
 
 Note that once the upload has reached 100% complete there is sometimes a delay before the upload API returns success, you should not automatically restart the upload after that point.
 
+Under normal conditions processing should take under 10 seconds. If an image has been processing for more than 30 seconds with no #EDIT.. talk to jake about whether to handle error notifications client or JS side..
+
 
 ### 11.5 Upload progress
 
