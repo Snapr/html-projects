@@ -56,7 +56,7 @@ var feed_view =  page_view.extend({
     },
 
     post_activate: function(options){
-        window.scrollTo(0);
+        window.scrollTo(0,0);
         this.$('.x-feed-header').empty();
         this.more_button(false);
 

@@ -8,11 +8,13 @@ var map_view = page_view.extend({
         _.bindAll(this);
 
         var map_view = this;
-        this.$el.on('pageshow', function (e) {
+        var set_height = function (e) {
             map_view.hidden=false;
             // hack to set google map height
             $(".x-map").css("height", (window.innerHeight - 85) + "px");
-        });
+        };
+        this.$el.on('pageshow', set_height);
+        $(window).on('resize', set_height);
 
         this.$el.on('pagehide', function (e) {
             map_view.hidden=true;
