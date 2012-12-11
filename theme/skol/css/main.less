@@ -214,7 +214,7 @@ a:active{
     font-size: @fontSizeSmall;
     a{
         text-decoration: underline;
-    }    
+    }
 }
 
 .s-warning-message{
@@ -227,20 +227,20 @@ a:active{
 }
 
 .s-inset-page-content{
-    
+
     h4{
         text-transform: uppercase;
         color: @yellow;
         text-align: center;
         margin-right: 0!important;
     }
-    
+
     .ui-listview-inset {
         h4{
                text-transform: none;
                color: @grayLighter;
            }
-        
+
         background-color: @grayDarkBg;
         li.ui-li {
             border-top: @borderGrayDark;
@@ -254,9 +254,9 @@ a:active{
                 background: transparent;
             }
         }
-        
+
     }
-} 
+}
 
 .sk-main-logo{
     text-align: center;
@@ -336,7 +336,7 @@ a:active{
             height: @barHeight;
             line-height: @barHeight;
             background: none;
-            
+
         }
         .ui-btn-text{
             font-size: @fontSize;
@@ -379,7 +379,7 @@ a:active{
         .s-bar-right{
             border-top: none;
             .border-top-left-radius(0);
-            
+
             border-left: solid rgba(0,0,0,.1) 1px;
             .border-top-right-radius(@cornersPage)!important;
             .ui-btn-inner{
@@ -471,15 +471,15 @@ a:active{
 .s-twitter-button.ui-btn-hover-h {
     .ui-btn-inner{
         background: lighten(@twitterBlue, 10% );
-        .super-shiny-gradient(lighten(@twitterBlueTint, 2.5%), lighten(@twitterBlue, 2.5%), lighten(@twitterBlue, 12.5%), lighten(@twitterBlue, 5%), lighten(@twitterBlue, 2.5%), lighten(@twitterBlueTint, 2.5%));        
+        .super-shiny-gradient(lighten(@twitterBlueTint, 2.5%), lighten(@twitterBlue, 2.5%), lighten(@twitterBlue, 12.5%), lighten(@twitterBlue, 5%), lighten(@twitterBlue, 2.5%), lighten(@twitterBlueTint, 2.5%));
     }
 }
 .s-twitter-button.ui-btn-down-h {
     .ui-btn-inner{
         background: @twitterBlue;
-        .super-shiny-gradient(@twitterBlueTint, @twitterBlueTint, @twitterBlue, lighten(@twitterBlue, 2.5%) ,  lighten(@twitterBlue, 2.5%), @twitterBlueTint);        
+        .super-shiny-gradient(@twitterBlueTint, @twitterBlueTint, @twitterBlue, lighten(@twitterBlue, 2.5%) ,  lighten(@twitterBlue, 2.5%), @twitterBlueTint);
     }
-    
+
 }
 
 
@@ -491,7 +491,7 @@ a:active{
     .ui-btn-inner{
         background: @tumblrBlue;
         .linear-gradient(@tumblrBlue, @tumblrBlueTint);
-    }   
+    }
     color: white;
     a.ui-link-inherit,
     .ui-btn-text {
@@ -631,7 +631,7 @@ a:active{
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
-        
+
     }
     .ui-slider-switch{
         float: right;
@@ -726,7 +726,7 @@ a:active{
 .ui-controlgroup-label,
 .ui-select .ui-btn{
     .button-font-bold();
-    
+
     text-align: left;
 }
 
@@ -754,9 +754,9 @@ textarea.ui-input-text {
 .ui-input-search{
     input.ui-input-text{
         .box-shadow(none);
-        
+
     }
-    
+
     &.ui-btn-corner-all{
         .border-radius(@cornersRound);
     }
@@ -810,7 +810,7 @@ textarea.ui-input-text {
 }
 
 .s-css-thumb{
-    background-color: @grayDarker;   
+    background-color: @grayDarker;
 }
 
 
@@ -872,7 +872,7 @@ textarea.ui-input-text {
             background-color: @gray;
             border-bottom: @borderGrayDark;
         }
-        
+
         .s-thumbs-grid-med{
             margin: 0 2px;
             padding: 4px 0 2px 0;
@@ -1107,8 +1107,8 @@ textarea.ui-input-text {
             background-image: url('../gfx/menu-overlay.png');
             .background-size(40px 100%);
         }
-        
-        
+
+
         .s-home-bg{
             height:100%;
             position: absolute;
@@ -1122,14 +1122,6 @@ textarea.ui-input-text {
                 background-position: center;
             }
             opacity : 0;
-            -moz-transition-property : opacity;
-            -webkit-transition-property : opacity;
-            -o-transition-property : opacity;
-            transition-property : opacity;
-            -moz-transition-duration : 0.7s;
-            -webkit-transition-duration : 0.7s;
-            -o-transition-duration : 0.7s;
-            transition-duration : 0.7s;
             &.fade-in{
                 opacity : 1;
                 -moz-transition-property : opacity;
@@ -1142,7 +1134,7 @@ textarea.ui-input-text {
                 transition-duration : 0.3s;
             }
         }
-        
+
 
         .s-menu-btns{
             position: absolute;
@@ -1192,10 +1184,10 @@ textarea.ui-input-text {
                     .ui-icon-main-menu-camera{
                         background-position: 0 -@gfxCameraBtn-grid;
                     }
-                    
+
                 }
             }
-            
+
             .sk-bottom-buttons{
                 position: absolute;
                 top: 90px;
@@ -1230,14 +1222,14 @@ textarea.ui-input-text {
 }
 
 .s-main-feed-content{
-    
+
     .ui-bar{
         margin: 0;
         border-bottom: @borderGrayDark;
         background: @grayDark;
     }
     .x-feed-images{
-       
+
     }
 }
 
@@ -1255,7 +1247,7 @@ div[data-role="content"]{
             .s-profile-icon,
             .s-avatar-large{
                 .border-radius(corners);
-                overflow:hidden;  
+                overflow:hidden;
             }
         }
         .s-username{
@@ -1292,14 +1284,14 @@ div[data-role="content"]{
 .s-image-item-block{
     margin: 0;
     padding-bottom: 30px;
-    
+
      background-color: @gray;
     .box-shadow(@itemShadow);
     .border-radius(@cornersSmall);
     margin-bottom: @padding * 2;
     text-shadow: @textShadow;
-    
-    
+
+
     .s-image-item-topbar{
         height:  @avatarSize + 1px;//haxy to account for mysterious icon overhang
         margin: 0;
@@ -1412,13 +1404,13 @@ div[data-role="content"]{
                 }
             }
         }
-       
+
     }
     .s-image-actions{
         margin-top: @padding * 2;
         margin-bottom: @padding * 2;
         border-bottom: @borderGrayDark;
-        
+
         .ui-controlgroup-controls{
             padding-left: 8px;
             position: relative;
@@ -1449,7 +1441,7 @@ div[data-role="content"]{
             }
             .ui-btn-text{
                 line-height: @gfxAction-grid;
-                
+
                 .button-font-bold();
                 color: @grayLighter;
                 font-size: 11px;
@@ -1467,7 +1459,7 @@ div[data-role="content"]{
                .s-hide-text{
                    display: none;
                }
-               
+
                 .ui-icon{
                     background-position: @gfxAction-x @gfxAction-toggle-y;
                     right: 0;
@@ -1566,7 +1558,7 @@ div[data-role="content"]{
                 .ui-controlgroup-controls{
                     top: 0;
                     margin: 0;
-                    padding: 0; 
+                    padding: 0;
                 }
                 &::after{
                     .arrow-down(@arrowSize, @blackTint, 50%, @arrowYShift + 3px);
@@ -1631,9 +1623,9 @@ div[data-role="content"]{
                 .box-shadow(@itemShadow);
                 .s-avatar-large{
                     border-top: @borderWhite;
-                    
+
                 }
-                
+
             }
         }
         .s-details{
@@ -1645,7 +1637,7 @@ div[data-role="content"]{
                 vertical-align: center;
                 font-size:  @fontSizeUsername;
                 .username-font();
-                
+
                 margin-bottom: @padding;
                 .s-facebook-sharing{
                     position: absolute;
@@ -1727,14 +1719,14 @@ div[data-role="content"]{
     .upload-image-venue{
         display: inline;
     }
-    
+
     .s-upload-progress-item{
 
         .s-upload-info-block{
             padding-left: @thumbSize + @padding * 2;
              .ui-icon-quote{
                  display: none;
-            
+
              }
             .upload-image-venue{
                a{
@@ -1754,7 +1746,7 @@ div[data-role="content"]{
             }
         }
     }
-    
+
     .s-upload-progress-item .s-upload-info-block .s-upload-shared-to li {
 
         width: @gfxShareSmall-grid;
@@ -1788,7 +1780,7 @@ div[data-role="content"]{
         border-top: @borderWhite;
         .s-css-thumb{
             .border-radius(@corners);
-            
+
         }
     }
 }
@@ -1883,13 +1875,13 @@ div[data-role="content"]{
         .ui-btn-inner{
             padding: 0;
         }
-        
+
          label[for="app-sharing"]{
                 background-color: transparent;
                 .box-shadow(none);
                 border: none;
                .ui-icon{background-position: @gfxService-x @gfxShare-app-y;}
-               
+
                &.ui-checkbox-on{
                     background-color: transparent;
                     .box-shadow(none);
@@ -1936,9 +1928,9 @@ div[data-role="content"]{
        }
         #tumblr-sharing,
           label[for="tumblr-sharing"]{
-             display: none; 
+             display: none;
           }
-       
+
        label[for="foursquare-sharing"]{
            background-color: transparent;
            .box-shadow(none);
@@ -2025,14 +2017,14 @@ div[data-role="content"]{
                     .ui-icon{
                         position: absolute;
                         left: -25px;
-                        
+
                     }
                 }
             }
 
         }
     }
-    
+
     .ui-grid-b{
         .ui-block-c{
             width: 190px;
@@ -2043,7 +2035,7 @@ div[data-role="content"]{
             }
         }
     }
-    
+
     .s-image-toggle{
         .ui-btn{
             text-align: right;
@@ -2117,7 +2109,7 @@ div[data-role="content"]{
         background-color: @grayDark;
         margin-left: -@padding * 2;
         margin-right: -@padding * 2;
-        
+
         .ui-btn-text {
             padding-left: 8px;
         }
@@ -2127,7 +2119,7 @@ div[data-role="content"]{
         margin-left: -@padding * 2!important;
         margin-right: -@padding * 2!important;
         li.ui-btn{
-           
+
             border-bottom: @borderGrayDark;
             background-color: @grayDarker;
             .border-radius(0);
@@ -2145,7 +2137,7 @@ div[data-role="content"]{
         li.ui-btn-up-c{
             padding: 0!important;
             background-color: @grayDarker;
-            
+
             .button-font-light();
         }
         li.ui-btn-hover-c,
@@ -2153,7 +2145,7 @@ div[data-role="content"]{
             .button-font-light();
             padding: 0!important;
             background-color: lighten(@grayDarker,5%);
-            
+
         }
         li.ui-li-last{
             border-bottom: none;
@@ -2166,7 +2158,7 @@ div[data-role="content"]{
 
         .ui-collapsible-heading{
             .ui-btn{
-        
+
                 border-bottom: @borderGrayDark;
                 .ui-btn-inner{
                     padding: 16px 40px 16px 16px;
@@ -2190,11 +2182,11 @@ div[data-role="content"]{
             .ui-btn-hover-c,
             .ui-btn-down-c{
                 padding: 0!important;
-                
+
                 background-image: none;
                 background-color: lighten(@grayDarker, 5%);
                 .button-font-light();
-                
+
                 .ui-btn-inner{
                     background: transparent;
                     .border-radius(0);
@@ -2202,11 +2194,11 @@ div[data-role="content"]{
 
             }
         }
-        
+
     }
-    
-    .ui-grid-b .ui-block-a .ui-btn, 
-    .ui-grid-b .ui-block-b .ui-btn, 
+
+    .ui-grid-b .ui-block-a .ui-btn,
+    .ui-grid-b .ui-block-b .ui-btn,
     .ui-grid-b .ui-block-c .ui-btn {
         margin: 0;
         .ui-btn-inner{
@@ -2424,7 +2416,7 @@ div.ps-carousel-item-loading{
             background-position: @gfxBar-x-a - 4px @gfxBar-location-y;
         }
     }
-    
+
     .s-disambiguation{
         background-color: @white!important;
         .border-radius(@corners)!important;
@@ -2432,8 +2424,8 @@ div.ps-carousel-item-loading{
         right: -@padding * 2;
         }
     }
-    
-    
+
+
     // Map Thumbs
     .s-map-point {
         width: 1px;
@@ -2528,8 +2520,8 @@ div.ps-carousel-item-loading{
         z-index: 100;
         background-image: url('@{gfx}@{gfxMapCurrentLoc}');
     }
-    
-    
+
+
     .s-map-controls{
         position: absolute;
         bottom:  0;
@@ -2558,7 +2550,7 @@ div.ps-carousel-item-loading{
             left: 8px;
             top: 6px;
             .s-map-time-label{
-               
+
                 padding-left: 10px;
                 padding-right: 10px;
                 .linear-gradient(@yellow, @yellowTint);
@@ -2725,9 +2717,9 @@ div.ps-carousel-item-loading{
             .ui-icon {
                 right: 0px;
             }
-        } 
+        }
     }
-    
+
     .s-category-btn{
         .ui-btn-inner {
             padding-right: 32px;
@@ -2897,7 +2889,7 @@ div.ps-carousel-item-loading{
                 padding-right: 10px;
             }
         }
-    }  
+    }
 }
 
 
@@ -2912,11 +2904,11 @@ div.ps-carousel-item-loading{
     .s-spot-item{
         padding-top: 25px!important;
     }
-    
+
     .spot-venue-details{
         min-height: 40px;
     }
-    
+
     p{
         padding-top:@paddingElement / 2 ;
         color: @gray;
@@ -2938,7 +2930,7 @@ div.ps-carousel-item-loading{
         border-top: @borderWhite;
         .box-shadow(@itemShadow);
     }
-    
+
     .s-foursquare-btn{
         position: absolute;
         right: 0;
