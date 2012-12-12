@@ -24,7 +24,7 @@ var nearby_photostream_view = nearby_photostream_base.extend({
             this_view.$el.append( stream_item.el );
             // only show the first one
             if(i === 0){
-                stream_item.$el.addClass('fade-in');
+                stream_item.$el.addClass('x-current');
             }
             stream_item.render();
         });
@@ -35,13 +35,13 @@ var nearby_photostream_view = nearby_photostream_base.extend({
         }
     },
     change: function(){
-        var current = this.$('.s-home-bg.fade-in'),
+        var current = this.$('.s-home-bg.x-current'),
             next = current.next();
         if(!next.length){
             next = current.siblings().eq(0);
         }
-        current.removeClass('fade-in');
-        next.addClass('fade-in');
+        current.removeClass('x-current').hide();
+        next.addClass('x-current').fadeIn();
     }
 
 });

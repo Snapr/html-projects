@@ -4246,25 +4246,13 @@ textarea.ui-input-text {
   top: 0;
   left: 0;
   width: 100%;
-  opacity: 0;
+  display: none;
 }
 #home .s-menu-main .s-home-bg div {
   height: 100%;
   background-size: 100% 100%;
   background-size: cover;
   background-position: center;
-}
-#home .s-menu-main .s-home-bg.fade-in {
-  opacity: 1;
-  /*-moz-transition-property : opacity;
-                                -webkit-transition-property : opacity;
-                                -o-transition-property : opacity;
-                                transition-property : opacity;
-                                -moz-transition-duration : 0.3s;
-                                -webkit-transition-duration : 0.3s;
-                                -o-transition-duration : 0.3s;
-                                transition-duration : 0.3s;*/
-
 }
 #home .s-menu-main .s-menu-btns {
   position: absolute;
