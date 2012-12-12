@@ -397,7 +397,10 @@ Note that once the upload has reached 100% complete there is sometimes a delay b
 
 Under normal conditions processing should take under 10 seconds. 
 
-If an image has been processing for more than 30 seconds it should be considered to be a timeout, display an alert:
+If an image has been processing for more than 30 seconds it should be considered to be a timeout:
+
+ * Pause the queue (make sure the app also calls upload_progress() and queue_settings())
+ * Display an alert:
 
     "Upload Error: The upload timed out, please try again later"
 
