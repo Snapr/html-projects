@@ -1,20 +1,20 @@
 /* @license
  * MyFonts Webfont Build ID 2420456, 2012-11-28T23:47:44-0500
- *
+ * 
  * The fonts listed in this notice are subject to the End User License
- * Agreement(s) entered into by the website owner. All other parties are
+ * Agreement(s) entered into by the website owner. All other parties are 
  * explicitly restricted from using the Licensed Webfonts(s).
- *
+ * 
  * You may obtain a valid license at the URLs below.
- *
+ * 
  * Webfont: Pluto Heavy by HVD Fonts
  * URL: http://www.myfonts.com/fonts/hvdfonts/pluto/heavy/
  * Copyright: Copyright (c) 2011 by Hannes von Doehren. All rights reserved.
  * Licensed pageviews: 10,000
- *
- *
+ * 
+ * 
  * License: http://www.myfonts.com/viewlicense?type=web&buildid=2420456
- *
+ * 
  * © 2012 Bitstream Inc
 */
 @font-face {
@@ -4235,6 +4235,10 @@ textarea.ui-input-text {
   -moz-background-size: 40px 100%;
   -o-background-size: 40px 100%;
   background-size: 40px 100%;
+  z-index: 10;
+}
+#home .s-menu-main .s-menu-stream {
+  z-index: 5;
 }
 #home .s-menu-main .s-home-bg {
   height: 100%;
@@ -4252,14 +4256,15 @@ textarea.ui-input-text {
 }
 #home .s-menu-main .s-home-bg.fade-in {
   opacity: 1;
-  -moz-transition-property: opacity;
-  -webkit-transition-property: opacity;
-  -o-transition-property: opacity;
-  transition-property: opacity;
-  -moz-transition-duration: 0.3s;
-  -webkit-transition-duration: 0.3s;
-  -o-transition-duration: 0.3s;
-  transition-duration: 0.3s;
+  /*-moz-transition-property : opacity;
+                                -webkit-transition-property : opacity;
+                                -o-transition-property : opacity;
+                                transition-property : opacity;
+                                -moz-transition-duration : 0.3s;
+                                -webkit-transition-duration : 0.3s;
+                                -o-transition-duration : 0.3s;
+                                transition-duration : 0.3s;*/
+
 }
 #home .s-menu-main .s-menu-btns {
   position: absolute;
