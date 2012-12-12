@@ -1,15 +1,42 @@
 /*global _  define require */
-define(['views/base/page', 'views/linked_service', 'auth', 'utils/local_storage', 'utils/alerts', 'native_bridge', 'config'],
-function(page_view, linked_service, auth, local_storage, alerts, native_bridge, config){
+define(['views/base/page', 'views/linked_service', 'auth', 'utils/local_storage', 'utils/alerts', 'utils/query', 'native_bridge', 'config'],
+function(page_view, linked_service, auth, local_storage, alerts, Query, native_bridge, config){
 return page_view.extend({
 
+    //my-account/?error=Linking Closed
+
     post_activate:function(options){
+
+        var query_obj = new Query(this.options.query);
+        if(this.options.query.error){
+            $.mobile.hidePageLoadingMsg();
+            if(this.options.query.error !== 'Linking Closed'){
+                alerts.notification(this.options.query.error);
+            }
+            query_obj.remove('error');
+            window.location.hash = window.location.hash.split('?')[0] + "?" + query_obj.toString();
+        }
+        if(this.options.query.username){
+            $.mobile.hidePageLoadingMsg();
+            query_obj.remove('username');
+            window.location.hash = window.location.hash.split('?')[0] + "?" + query_obj.toString();
+        }
 
         this.options.back_url = "#/";
 
         this.change_page();
 
         this.fetch();
+
+        if(this.options.query.error){
+            $.mobile.hidePageLoadingMsg();
+            if(this.options.query.error !== 'Linking Closed'){
+                alerts.notification(this.options.query.error);
+            }
+        }
+        if(this.options.query.username){
+            $.mobile.hidePageLoadingMsg();
+        }
 
     },
 
