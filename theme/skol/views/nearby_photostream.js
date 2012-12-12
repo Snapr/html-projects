@@ -24,7 +24,7 @@ var nearby_photostream_view = nearby_photostream_base.extend({
             this_view.$el.append( stream_item.el );
             // only show the first one
             if(i === 0){
-                stream_item.$el.addClass('x-current');
+                stream_item.$el.addClass('x-current').data('loaded', true);
             }
             stream_item.render();
         });
@@ -40,6 +40,13 @@ var nearby_photostream_view = nearby_photostream_base.extend({
         if(!next.length){
             next = current.siblings().eq(0);
         }
+        while(!next.data('loaded')){
+            next = next.next();
+            if(!next.length){
+                next = current.siblings().eq(0);
+            }
+        }
+
         current.removeClass('x-current').fadeOut();
         next.addClass('x-current').fadeIn();
     }
@@ -48,11 +55,14 @@ var nearby_photostream_view = nearby_photostream_base.extend({
 
 var nearby_photostream_item_view = view.extend({
     className: 's-home-bg',
-    template: _.template('<div style="background-image:url(https://s3.amazonaws.com/media-server2.snapr.us/lrg/<%= photo.get("secret") %>/<%= photo.get("id") %>.jpg)" alt="<%= photo.get("description") %>">'),
     render: function () {
-        this.$el.html( this.template({
-            photo: this.model
-        }));
+        var image = 'https://s3.amazonaws.com/media-server2.snapr.us/lrg/' + this.model.get("secret") + '/' + this.model.get("id") + '.jpg';
+        var this_image = this;
+        $('<img/>').attr('src', image).load(function() {
+            this_image.$el.data('loaded', true);
+            this_image.trigger('loaded');
+        });
+        this.$el.css('background-image', 'url('+image+')');
     }
 });
 
