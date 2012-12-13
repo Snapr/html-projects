@@ -5,6 +5,9 @@ var auth_model = Backbone.Model.extend({
 
     initialize: function(){
         _.bindAll(this);
+        if(config.get('app_group')) {
+            this.set('app_group', config.get('app_group'));
+        }
         this.user_settings = new user_settings();
         this.user_settings.on('change', this.save_display_username);
         this.on('change:access_token', function(x){
