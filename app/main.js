@@ -386,10 +386,10 @@ require(['config', 'jquery', 'backbone', 'auth', 'utils/local_storage', 'native_
                 };
 
                 native_bridge.pass_data('snapr://action?' + $.param({
-                    'title': 'Share Photo',
-                    'otherButton1': "Take Picture",
-                    'otherButton2': "Use Existing",
-                    'cancelButton': 'Cancel',
+                    'title': T('Share Photo'),
+                    'otherButton1': T('Take Picture'),
+                    'otherButton2': T('Use Existing'),
+                    'cancelButton': T('Cancel'),
                     'actionID': actionID
                 }));
             }else{
