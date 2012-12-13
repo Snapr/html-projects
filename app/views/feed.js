@@ -696,9 +696,17 @@ var feed_li =  view.extend({
                     photo.model.flag({
                         success: function( resp ){
                             if (resp.success){
-                                photo.model.set({flagged: true});
-                                photo.render_actions();
-                                alerts.notification(T("Flagged"), T("Thanks, a moderator will review this image shortly"));
+                                if(resp.response.removed){
+                                    alerts.notification(T("Removed"), T("The photo has been removed from the app"));
+                                    photo.model.collection.remove( photo.model );
+                                }else if(resp.response.moderated){
+                                    alerts.notification(T("Moderated"), T("The photo has been moderated"));
+                                    photo.model.collection.remove( photo.model );
+                                }else if(resp.response.flagged){
+                                    photo.model.set({flagged: true});
+                                    photo.render_actions();
+                                    alerts.notification(T("Flagged"), T("The photo has been flagged and a moderater will review it shortly"));
+                                }
                             }else{
                                 console.warn("error flagging photo", resp);
                             }
