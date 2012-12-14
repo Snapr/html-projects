@@ -8,6 +8,7 @@
  * 3.1. Appmode
  * 3.2. New Users
  * 3.3. Development Server
+ * 3.4 Multilingual Support and Localization
 04. [Login](#4)
 05. [Logout](#5)
 06. [Geolocation](#6)
@@ -45,8 +46,7 @@
 18. [Aviary](#18)
 
 
-<a id="1"></a>
-## 1. JS → Native Overview
+## {#1}. JS → Native Overview
 
 To pass data to the native code from the HTML we create an iframe and send it a request for a `snapr://` URL.
 
@@ -56,17 +56,24 @@ URLs will be in the format `snapr://base?param=value&param2=value`
 
 
 
-<a id="2"></a>
-## 2. Native → JS Overview
+## {#2}. Native → JS Overview
 
 The Native code can call JS functions within the app, and occasionally also passes in data via the Query string when loading views.
 
 
 
-<a id="3"></a>
-## 3. Startup
+## {#3}. Startup
 
 When the native code first loads the webview it passes settings via the query string such as stored user login details and appmode / device platform.
+
+note that there is always a `/` after that `#` and before the query string, i.e.:
+
+`index.html#/?appmode=android&environment=live&language=pt&locale=pt_BR&new_user=true`
+
+or for something other than the home view:
+
+`index.html#/login/?appmode=android&environment=dev&language=pt&locale=pt_BR`
+
 
 
 ### 3.1 App Mode
@@ -94,9 +101,23 @@ All apps should accept `environment=dev` and `environment=live`, and apps may ha
 If no param is sent the app will default to live servers.
 
 
+### 3.4 Multilingual Support and Localization
 
-<a id="4"></a>
-## 4. Login
+Some templates will include support for different languages and localizations.
+
+For language pass the [2 letter ISO 639-1 code](http://en.wikipedia.org/wiki/List_of_ISO_639-1_codes):
+
+`language=pt`
+
+For locale pass the [2 letter ISO 639-1 code](http://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) then the [ISO 3166-1 alpha-2 country code](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) separated by an `_`:
+
+`language=pt_BR`
+
+Currently most templates only use the `language` setting.
+
+
+
+## {#4} Login 
 
 #### JS → Native
 
