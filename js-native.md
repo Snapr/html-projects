@@ -56,7 +56,7 @@ URLs will be in the format `snapr://base?param=value&param2=value`
 
 
 
-## 2. Native → JS Overview  {#2}
+## 2. Native → JS Overview 
 
 The Native code can call JS functions within the app, and occasionally also passes in data via the Query string when loading views.
 
@@ -146,7 +146,6 @@ Example:
 
 
 
-<a id="5"></a>
 ## 5. Logout
 
 Called by the JS on logout to clear the user credentials stored by the native code.
@@ -160,7 +159,6 @@ Example:
 
 
 
-<a id="6"></a>
 ## 6. Geolocation
 
 #### JS → Native
@@ -191,7 +189,6 @@ Example:
 
 
 
-<a id="7"></a>
 ## 7. Camera
 
 Called to launch native camera from the HTML.
@@ -206,7 +203,6 @@ Example:
 
 
 
-<a id="8"></a>
 ## 8. Camera Library
 
 Called to launch device image library from the HTML.
@@ -219,7 +215,6 @@ Example:
 `snapr://photo-library?comp_id=5`
 
 
-<a id="9"></a>
 ## 9. Share
 
 Once the user has selected or taken a photo redirect to `#/share/`.
@@ -244,7 +239,6 @@ Here is a list of the currently accepted params:
 
 
 
-<a id="10"></a>
 ## 10. Upload
 
 Uploads are handled via the native code so that background uploading can be utilized, and the upload queue can be maintained after quitting and restarting the app.
@@ -362,7 +356,6 @@ All new implementations should use the new `upload_sharing_failed(photo_id, serv
 
 
 
-<a id="11"></a>
 ## 11. Upload Queue
 
 The upload queue manages the progress of uploads for the app.
@@ -510,14 +503,12 @@ To completely clear the current Queue:
 
 
 
-<a id="12"></a>
 ## 12. External URLs
 
 Any links from within the HTML that link to external addresses, i.e. `http://something` as opposed to `#/feed/` will be opened in a separate modal webview.
 
 
 
-<a id="13"></a>
 ## 13. Third Party OAuth Flow
 
 The SnaprKit module loads all requests for external URLs in a separate modal webview.
@@ -585,7 +576,6 @@ The original will be in the format: `snapr://redirect?redirect_url=file%3A///pat
 
 
 
-<a id="14"></a>
 ## 14 Alerts
 
 Native replacements for javascript `alert()` and `confirm()`
@@ -636,7 +626,6 @@ Example:
 
 
 
-<a id="15"></a>
 ## 15. Actionsheets
 
 
@@ -668,7 +657,6 @@ Example:
 
 
 
-<a id="16"></a>
 ## 16. Android Back Button
 
 ### Native → JS
@@ -681,7 +669,6 @@ Example:
 
 
 
-<a id="17"></a>
 ## 17. Camera+
 
 SnaprKit has built in options for integrating with the Camera+ iOS app APIs.
@@ -719,7 +706,6 @@ Example:
 Pass back any extra supplied parameters such as `foursquare_venue` via the query string when returning to the webview.
 
 
-<a id="18"></a>
 ## 18. Aviary
 
 SnaprKit has options for integrating with the Aviary SDK if its has been included with the build.
