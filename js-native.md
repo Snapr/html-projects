@@ -46,7 +46,7 @@
 18. [Aviary](#18)
 
 
-## {#1}. JS → Native Overview
+## 1. JS → Native Overview
 
 To pass data to the native code from the HTML we create an iframe and send it a request for a `snapr://` URL.
 
@@ -56,13 +56,13 @@ URLs will be in the format `snapr://base?param=value&param2=value`
 
 
 
-## {#2}. Native → JS Overview
+## 2. Native → JS Overview  {#2}
 
 The Native code can call JS functions within the app, and occasionally also passes in data via the Query string when loading views.
 
 
 
-## {#3}. Startup
+## 3. Startup
 
 When the native code first loads the webview it passes settings via the query string such as stored user login details and appmode / device platform.
 
@@ -117,7 +117,7 @@ Currently most templates only use the `language` setting.
 
 
 
-## {#4} Login 
+## 4. Login 
 
 #### JS → Native
 
