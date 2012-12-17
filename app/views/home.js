@@ -1,6 +1,6 @@
 /*global _  define require */
-define(['backbone', 'views/base/page', 'views/components/activity_ticker', 'views/components/nearby_photostream', 'auth', 'utils/local_storage', 'config', 'utils/alerts', 'collections/upload_progress'],
-    function(Backbone, page_view, ticker, nearby_photostream_view, auth, local_storage, config, alerts, upload_progress_collection){
+define(['backbone', 'views/base/page', 'views/components/nearby_photostream', 'auth', 'utils/local_storage', 'config', 'utils/alerts', 'collections/upload_progress'],
+    function(Backbone, page_view, nearby_photostream_view, auth, local_storage, config, alerts, upload_progress_collection){
 return page_view.extend({
 
     post_initialize: function(options){
@@ -11,7 +11,7 @@ return page_view.extend({
         $.mobile.changePage( "#home", {changeHash: false} );  // must be false or jQm will change the url from x/y/z/#/ to x/y/z/#/x/y/z
 
         this.nearby_photostream.refresh();
-        this.render_ticker();
+        //this.render_ticker();
 
         upload_progress_collection.on('all', this.upload_count());
         this.upload_count();
@@ -20,20 +20,20 @@ return page_view.extend({
     render: function(){
         this.replace_from_template({}, ['[data-role="header"]', '[data-role="content"]']);
         this.render_nearby_photostream();
-        this.render_ticker();
+        //this.render_ticker();
 
         return this;
     },
 
     render_ticker: function(){
         if(auth.has("access_token")){
-            var ticker_instance = new ticker({el:this.$('.x-news-ticker')}).render().tick();
-            this.$el.on('pagehide', function(event, ui){
-                ticker_instance.stop();
-            });
-            this.$el.on('pageshow', function(event, ui){
-                ticker_instance.tick();
-            });
+            //var ticker_instance = new ticker({el:this.$('.x-news-ticker')}).render().tick();
+            // this.$el.on('pagehide', function(event, ui){
+            //     ticker_instance.stop();
+            // });
+            // this.$el.on('pageshow', function(event, ui){
+            //     ticker_instance.tick();
+            // });
         }
         this.$el.trigger('create');
 
