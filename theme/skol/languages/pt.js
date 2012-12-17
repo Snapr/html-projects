@@ -15,7 +15,7 @@ define([], function(){
         "All": "Todos",
         "Anywhere": "Em qualquer lugar",
         "Apps": "Apps",
-        "Are you 18 or Over?": "Você tem mais de 18 anos?",
+        "Are you 21 or Over?": "Você tem mais de 18 anos?",
         "Are you sure you want to delete this photo?": "Tem certeza de que quer apagar esta foto?",
         "Arts": "Artes",
         "Back": "Volta",
