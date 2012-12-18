@@ -61,6 +61,9 @@ function _make_route(file_name, name, template, extra_view_data){
             route.cached_view.previous_view = config.get('current_view');
             // make this view current
             config.set('current_view', route.cached_view);
+            if(route.cached_view.previous_view === null && local_storage.get("appmode")){
+                native_bridge.pass_data('snaprkit://ui-ready/');
+            }
         });
     };
 
