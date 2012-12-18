@@ -1,5 +1,13 @@
 /*global _  define require */
-define(['config', 'views/base/page', 'auth', 'utils/string'], function(config, page_view, auth, string_utils){
+define(['config', 'views/base/page', 'auth', 'utils/string', 'libs/jpegmeta'], function(config, page_view, auth, string_utils, JpegMeta){
+
+function dms_to_decimal(exif){
+    var degrees = exif.value[0].asFloat();
+    var minutes = exif.value[1].asFloat() / 60;
+    var seconds = exif.value[2].asFloat() / 3600;
+    return degrees + minutes + seconds;
+}
+
 return page_view.extend({
 
     post_initialize: function(){
@@ -13,8 +21,42 @@ return page_view.extend({
     },
 
     events: {
-        "change .x-file": "enable_upload_submit",
+        "change .x-file": "get_exif",
         "submit form": "upload"
+    },
+
+    get_exif: function(e){
+        var files = $('.x-file').get(0).files;
+        if(!files.length){
+            return;
+        }
+        var file = files[0];
+        var exif_reader = new FileReader();
+
+        exif_reader.onloadend = function(){
+            var exif = new JpegMeta.JpegFile(this.result, this.file.name);
+            window.exif=exif;
+            var data = {
+                latitude: exif.gps && exif.gps.latitude && exif.gps.latitude.value,
+                longitude: exif.gps && exif.gps.longitude && exif.gps.longitude.value,
+                date: exif.exif && exif.exif.DateTimeOriginal && exif.exif.DateTimeOriginal.value
+            };
+            console.log(data);
+            var span = $('<span style="color:black"/>');
+            span.text((data.latitude + ', ' + data.longitude));
+            span.insertAfter($('.x-file'));
+        };
+        exif_reader.file = file;
+        exif_reader.readAsBinaryString(file);
+
+        var thumb_reader = new FileReader();
+        thumb_reader.onloadend = function(e) {
+            var span = $('<img style="max-width:100%"/>');
+            span.attr('src', e.target.result);
+            span.insertAfter($('.x-file'));
+        };
+
+        thumb_reader.readAsDataURL(file);
     },
 
     enable_upload_submit: function( e ){
