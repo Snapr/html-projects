@@ -126,5 +126,14 @@ var auth_model = Backbone.Model.extend({
 window.auth = new auth_model();
 window.auth.get_locally();
 
+window.logout = function(){
+    window.auth.logout();
+
+    window.location.hash = "";
+    if (local_storage.get( "appmode" )){
+        native_bridge.pass_data('snapr://logout');
+    }
+};
+
 return window.auth;
 });
