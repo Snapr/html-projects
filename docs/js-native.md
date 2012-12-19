@@ -302,7 +302,7 @@ The API may return an error while attempting an upload.
 
  "Upload Error: Invalid login details"
 
- Invalidate current token, call the logout function, and direct the user to the root level HTML page.
+ Clear current token and stored user details, call the logout function, and direct the user to the root level HTML page.
 
 
 * An error response with type `validation.duplicate_upload` - This file has been uploaded before, display an alert:
