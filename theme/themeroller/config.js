@@ -54,17 +54,7 @@ var theme = {
 
     pages: [
         'home',
-        'about',
-        'about-snapr',
-        'map',
-        'app',
-        'login',
-        'logout',
-        'upload',
-        'uploading',
-        'connect',
         'cities',
-        'limbo',
         'feed',
         'dash',
         {
@@ -74,55 +64,6 @@ var theme = {
         },
         'leaderboard',
         'activity',
-        'popular',
-        'search',
-        'spots',
-        'spot',
-        'welcome',
-        'snapr-apps',
-        'forgot-password',
-        'join',
-        'join-success',
-        'my-account',
-        'find-friends',
-        {
-            name: 'find-friends-twitter',
-            view: 'find_friends_list',
-            template: 'find_friends_twitter',
-            extra: {service: "twitter"}
-        },
-        {
-            name: 'find-friends-facebook',
-            view: 'find_friends_list',
-            template: 'find_friends_facebook',
-            extra: {service: "facebook"}
-        },
-        'linked-services',
-        'tumblr-posts',
-        'tumblr-xauth',
-        'twitter-xauth',
-        'share',
-        {
-            name: 'user/followers',
-            view: 'people',
-            extra: {follow: "followers"}
-        },
-        {
-            name: 'user/following',
-            view: 'people',
-            extra: {follow: "following"}
-        },
-        {
-            name: 'user/search',
-            view: 'people'
-        },
-        'user/profile',
-        {
-            name: 'upload_xhr',
-            template: 'upload'
-        },
-        'foursquare_venues',
-        's-competitions',
-        'competition'
+        'popular'
     ]
 };

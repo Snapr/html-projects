@@ -42,7 +42,7 @@ var config_model = Backbone.Model.extend({
         photoswipe: true,
 
         app_sharing_opt_in: false,
-        app_sharing_opt_in_messaqge: true,
+        app_sharing_opt_in_message: false,
 
         show_queue: ['my-snaps'],
 
@@ -72,7 +72,9 @@ var config_model = Backbone.Model.extend({
     },
     initialize: function(){
         var update_env = _.bind(function(){
-            this.set(theme_config.environments[this.get('environment')]);
+            if(theme_config.environments){
+                this.set(theme_config.environments[this.get('environment')]);
+            }
             this.set('api_base', this.get('base_url') + "/api");
             this.set('avatar_url', this.get('base_url') + "/avatars");
             this.set('access_token_url', this.get('base_url') + "/ext/oauth/access_token/");

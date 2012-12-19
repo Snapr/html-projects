@@ -117,11 +117,88 @@ if(hash.length > 1){
 }
 
 var routers = Backbone.Router.extend({
+    names: [],
     pages: theme_config.pages,
+    core_pages: [
+        {
+            name: 'about',
+            view: 'base/page',
+            template: 'about'
+        },
+        {
+            name: 'about-snapr',
+            view: 'base/page',
+            template: 'about_snapr'
+        },
+        'map',
+        'app',
+        'login',
+        'logout',
+        'upload',
+        'uploading',
+        'connect',
+        'limbo',
+        'feed',
+        'search',
+        'spots',
+        'spot',
+        'welcome',
+        'forgot-password',
+        'join',
+        {
+            name: 'join-success',
+            view: 'base/page',
+            template: 'join_success'
+        },
+        'my-account',
+        {
+            name: 'find-friends',
+            view: 'base/page',
+            template: 'find_friends'
+        },
+        {
+            name: 'find-friends-twitter',
+            view: 'find_friends_list',
+            template: 'find_friends_twitter',
+            extra: {service: "twitter"}
+        },
+        {
+            name: 'find-friends-facebook',
+            view: 'find_friends_list',
+            template: 'find_friends_facebook',
+            extra: {service: "facebook"}
+        },
+        'tumblr-posts',
+        'tumblr-xauth',
+        'twitter-xauth',
+        'share',
+        {
+            name: 'user/followers',
+            view: 'people',
+            extra: {follow: "followers"}
+        },
+        {
+            name: 'user/following',
+            view: 'people',
+            extra: {follow: "following"}
+        },
+        {
+            name: 'user/search',
+            view: 'people'
+        },
+        'user/profile',
+        {
+            name: 'upload_xhr',
+            template: 'upload'
+        },
+        'foursquare_venues',
+        'competitions',
+        'competition'
+    ],
 
     // build our page array into backbone routes
     initialize: function() {
-        _.each(this.pages, function(orig_options){
+        function add_page(orig_options){
             var options;
 
             // the page can just be a name or an object specifing more properties
@@ -130,6 +207,11 @@ var routers = Backbone.Router.extend({
             }else{
                 options = {name: orig_options};
             }
+
+            if(_.contains(this.names, options.name)){
+                return;
+            }
+            this.names.push(options.name);
 
             if(!options.view){
                 options.view = options.name.replace('-', '_').replace('/', '_');
@@ -157,8 +239,10 @@ var routers = Backbone.Router.extend({
 
             // create backbone route
             this.route(regex, options.name, callback);
+        }
 
-        }, this);
+        _.each(this.pages, add_page, this);
+        _.each(this.core_pages, add_page, this);
 
     },
     urls:[],

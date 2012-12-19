@@ -1,4 +1,4 @@
-/*global _ $ define theme_templates theme_views */
+/*global _ $ define theme_templates_path theme_views_path */
 // include analytics to initialise it
 define(['./analytics'], function(analytics){
 return {
@@ -94,23 +94,22 @@ return {
         {
             name: 'age-block',
             view: 'base/page',
-            template: theme_templates + 'age-block'
+            template: theme_templates_path + 'age-block'
         },
         {
             name: 'home',
-            template: theme_templates + 'home',
-            view: theme_views + 'home'
+            template: theme_templates_path + 'home',
+            view: theme_views_path + 'home'
         },
         {
             name: 'about',
-            template: theme_templates + 'about'
+            template: theme_templates_path + 'about'
         },
-        'about-snapr',
         'map',
         'app',
         {
             name: 'login',
-            template: theme_templates + 'login'
+            template: theme_templates_path + 'login'
         },
         'logout',
         'upload',
@@ -120,7 +119,7 @@ return {
         'limbo',
         {
             name: 'feed',
-            template: theme_templates + 'feed'
+            template: theme_templates_path + 'feed'
         },
         'dash',
         {
@@ -134,40 +133,27 @@ return {
         'search',
         {
             name: 'spots',
-            template: theme_templates + 'spots'
+            template: theme_templates_path + 'spots'
         },
         {
             name: 'spot',
-            template: theme_templates + 'spot'
+            template: theme_templates_path + 'spot'
         },
         {
             name: 'welcome',
-            template: theme_templates + 'welcome'
+            template: theme_templates_path + 'welcome'
         },
         'snapr-apps',
         'forgot-password',
         {
             name: 'join',
-            template: theme_templates + 'join'
+            template: theme_templates_path + 'join'
         },
         {
             name: 'join-success',
-            template: theme_templates + 'join_success'
+            template: theme_templates_path + 'join_success'
         },
         'my-account',
-        'find-friends',
-        {
-            name: 'find-friends-twitter',
-            view: 'find_friends_list',
-            template: 'find_friends_twitter',
-            extra: {service: "twitter"}
-        },
-        {
-            name: 'find-friends-facebook',
-            view: 'find_friends_list',
-            template: 'find_friends_facebook',
-            extra: {service: "facebook"}
-        },
         'linked-services',
         'tumblr-posts',
         'tumblr-xauth',
@@ -175,7 +161,7 @@ return {
         {
             name: 'share',
             template: 'share',
-            view: theme_views + 'share'
+            view: theme_views_path + 'share'
         },
         {
             name: 'user/followers',
