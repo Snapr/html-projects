@@ -435,6 +435,8 @@ require(['config', 'jquery', 'backbone', 'auth', 'utils/local_storage', 'native_
 
 });
 
+require(['utils/web_upload'], function(web_upload){});
+
 // bind this here to prevent circular dependencies
 require(['utils/alerts', 'collections/upload_progress'], function(alerts, upload_progress){
     upload_progress.on('error', function(id, error){

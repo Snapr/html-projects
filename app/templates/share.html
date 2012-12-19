@@ -9,8 +9,8 @@
                 <form action="javascript: void(0);" >
 
                     <div class="s-image-bg-layer s-full-height s-trans-bg">
-                        <div class="s-image-placeholder">
-                            <% if (img_url){%><img class="x-s-image-placeholder" src="<%= img_url %>" /><%}%>
+                        <div class="s-image-placeholder x-image-placeholder">
+                            <% if (img_url){%><img class="x-image" src="<%= img_url %>" /><%}%>
                         </div>
 
                         <div class="s-image-toggle x-image-toggle s-show-share-settings action-icons">
@@ -25,7 +25,7 @@
                     absolute positioning will cause text not to enter properly on some android devices - for example s3 running 4.0.4 -->
                     <div class="s-full-height s-trans-bg s-share-settings-bg-layer">
                         <div class="s-image-toggle x-image-toggle action-icons">
-                            <a class="" data-role="button" data-icon="arrow-d" data-iconpos="right" >
+                            <a data-role="button" data-icon="arrow-d" data-iconpos="right" >
                                 <%= T('Show Photo') %>
                             </a>
                         </div>
@@ -35,8 +35,8 @@
                         <div class="s-share-settings">
                                 <% if(comp){ %>Comp: <%= comp.get('title') %><% } %>
                                 <div class="s-message-area">
-                                    <% if(config.get('app_sharing_opt_in_messaqge')){ %>
-                                        <div class="x-sharing-message s-sharing-message"><%= T(config.get('app_sharing_opt_in_messaqge')) %></div>
+                                    <% if(config.get('app_sharing_opt_in_message')){ %>
+                                        <div class="x-sharing-message s-sharing-message"><%= T(config.get('app_sharing_opt_in_message')) %></div>
                                     <% } %>
                                     <textarea name="description" id="description" class="x-description" placeholder="<%= T('Add text') %>..." data-theme="d"><%= saved_description %></textarea>
 
