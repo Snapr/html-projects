@@ -65,7 +65,10 @@ return function(upload_params){
         window.upload_completed(local_id, data.response.photo.id);
     };
     xhr.onerror = function(a){
-        window.upload_failed(local_id, a);
+        console.log(a);
+        window.upload_failed(local_id, a.error);
+        uploads = [];
+        window.upload_progress({uploads:uploads});
     };
 
     xhr.open('post', config.get('base_url') + "/api/upload/", true);
