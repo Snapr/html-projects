@@ -187,10 +187,6 @@ var routers = Backbone.Router.extend({
             view: 'people'
         },
         'user/profile',
-        {
-            name: 'upload_xhr',
-            template: 'upload'
-        },
         'foursquare_venues',
         'competitions',
         'competition'
