@@ -21,6 +21,8 @@ var config_model = Backbone.Model.extend({
 
         upload_mode: "On",
         upload_paused: false,
+        xhr_uploads: !!window.FileReader,
+
         geolocation_enabled: true,
         geolocation_cache_life: 1000*60*5,
 

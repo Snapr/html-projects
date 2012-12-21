@@ -1,4 +1,4 @@
-/*global _  requirejs require urlError */
+/*global _  requirejs require urlError T */
 
 if(!window.theme){
     alert('you must include your theme config.js file before app/require.js');
@@ -376,7 +376,15 @@ require(['config', 'jquery', 'backbone', 'auth', 'utils/local_storage', 'native_
         $(".x-launch-photo-library").live( "click", auth.require_login( photo_library ) );
 
         // camera / photostream actionsheet
-        $(".x-launch-camera-options").live( "click", auth.require_login( function(){
+        $(".x-launch-camera-options").live( "click", auth.require_login( function(e){
+            if(local_storage.get('appmode') || !config.get('xhr_uploads')){
+                e.preventDefault();
+            }else{
+                if(upload_progress_collection.length){
+                    alerts.notification(T('Error'), T('The previous photo is still uploading'));
+                }
+                return;
+            }
             var extra_params = $(this).data('extra_params') || "";
             if(local_storage.get( "appmode" )){
                 var actionID = alerts.tapped_action.counter++;
