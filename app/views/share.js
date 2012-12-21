@@ -335,7 +335,6 @@ return page_view.extend({
     },
 
     toggle_sharing_message: function(){
-     
         var sharing = this.is_sharing();
         this.$('.x-sharing-message, .x-done-button').toggle(!sharing);
         this.$('.x-description, .x-share-button').toggle(sharing);
