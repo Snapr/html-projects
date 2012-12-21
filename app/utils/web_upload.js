@@ -35,10 +35,10 @@ $(function(){
         });
 });
 
-var uploads = [];
 
 return function(upload_params){
 
+    var uploads = [];
     upload_params.upload_status = "active";
     upload_params.percent_complete = 0;
     uploads.push(upload_params);

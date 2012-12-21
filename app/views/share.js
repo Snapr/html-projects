@@ -568,6 +568,13 @@ return page_view.extend({
         if (this.model.has('location') && this.model.get('location').foursquare_venue_id){
             params.foursquare_venue = this.model.get('location').foursquare_venue_id;
             params.venue_name = this.model.get('location').foursquare_venue_name;
+        }else if(this.model.has('foursquare_venue_id')){
+            params.foursquare_venue = this.model.get('foursquare_venue_id');
+            params.venue_name = this.model.get('foursquare_venue_name');
+        }
+
+        if (this.model.has('location') && _.isString(this.model.get('location'))){
+            params.location = this.model.get('location');
         }
 
         var d = new Date();

@@ -44,7 +44,11 @@ var uploading = page_view.extend({
             this.latitude = ll[0];
             this.longitude = ll[1];
         }
-        this.foursquare_venue = this.query.spot;
+        if(this.query.latitude && this.query.longitude){
+            this.latitude = this.query.latitude;
+            this.longitude = this.query.longitude;
+        }
+        this.foursquare_venue = this.query.spot || this.query.foursquare_venue || this.query.foursquare_venue_id;
         this.venue_name = this.query.venue_name;
 
         this.progress_el = this.$( ".x-progress-header" ).empty();
