@@ -348,6 +348,9 @@ return page_view.extend({
 
     is_sharing: function(){
         var this_view = this;
+        if(this.get_status() != 'private'){
+            return true;
+        }
         return _.any(
             ['facebook', 'foursquare', 'twitter', 'tumblr', 'app'],
             function(service){
