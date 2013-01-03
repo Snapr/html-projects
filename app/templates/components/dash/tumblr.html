@@ -33,7 +33,9 @@
 
                 <% break; case 'photo': %>
 
-                    <div class="s-tumblr-thumb" style="background-size: cover; background-image:url(<%= (_.where(post.get('photos')[0].alt_sizes, {width:250}) || _.where(post.get('photos')[0].alt_sizes, {height:250}))[0].url %>)"></div>
+                    <% var image = (_.where(post.get('photos')[0].alt_sizes, {width:250}) || _.where(post.get('photos')[0].alt_sizes, {height:250}))[0] %>
+
+                    <div class="s-tumblr-thumb" style="background-size: cover; background-image:url(<%= image && image.url %>)"></div>
 
                     <div class="s-tumblr-exceprt s-tumblr-photo">
                         <div class="s-crop-content">
