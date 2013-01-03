@@ -2373,6 +2373,30 @@ div.ps-carousel-item-loading
     }
 }
 
+.s-foursquare-credit{
+    text-align: center;
+    color: @grayLight;
+    margin-bottom: @padding * 2;
+    .s-powered-by-foursquare{
+        background-image: url('@{gfx}@{gfxFoursquarePower}');
+        background-repeat: no-repeat;
+        background-position: center;
+        display: block;
+        width: 100%;
+        min-width: @gfxFoursquarePower-width;
+        height: @gfxFoursquarePower-height;
+        text-indent: -999px;
+        overflow: hidden;
+    }
+    .s-missing-venue{
+        margin: 0 0 @padding * 10 0;
+        font-size: @fontSizeSmall;
+        display: block;
+        text-transform: lowercase;
+    }
+}
+
+
 
 
 // MISC
@@ -2556,6 +2580,13 @@ body.x-browser-testing{
       .s-bg-loader{
           .spinner('@{gfxHDPI}@{gfxSpinnerSmall}');       
       }
+      
+      .s-foursquare-credit{
+          .s-powered-by-foursquare{
+              background-image: url('@{gfxHDPI}@{gfxFoursquarePower}');
+              .background-size(@gfxFoursquarePower-width @gfxFoursquarePower-height);
+          }
+      }
 }
 
 
@@ -2679,6 +2710,13 @@ body.x-browser-testing{
     .s-bg-loader{
         .spinner('@{gfxRetina}@{gfxSpinnerSmall}');       
     }
+    
+    .s-foursquare-credit{
+          .s-powered-by-foursquare{
+              background-image: url('@{gfxRetina}@{gfxFoursquarePower}');
+              .background-size(@gfxFoursquarePower-width @gfxFoursquarePower-height);
+          }
+      }
 
 }
 

@@ -2181,6 +2181,28 @@ div.ps-carousel-item-loading {
   background-position: 0 -144px;
   height: 32px;
 }
+.s-foursquare-credit {
+  text-align: center;
+  color: #fbfbfb;
+  margin-bottom: 8px;
+}
+.s-foursquare-credit .s-powered-by-foursquare {
+  background-image: url('gfx/powered-by-foursquare.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  display: block;
+  width: 100%;
+  min-width: 241px;
+  height: 61px;
+  text-indent: -999px;
+  overflow: hidden;
+}
+.s-foursquare-credit .s-missing-venue {
+  margin: 0 0 40px 0;
+  font-size: 12px;
+  display: block;
+  text-transform: lowercase;
+}
 .hide {
   display: none;
 }
@@ -2372,6 +2394,13 @@ body.x-browser-testing .ui-footer-fixed {
     -o-background-size: 24px 24px !important;
     background-size: 24px 24px !important;
   }
+  .s-foursquare-credit .s-powered-by-foursquare {
+    background-image: url('gfx/hdpi/powered-by-foursquare.png');
+    -webkit-background-size: 241px 61px;
+    -moz-background-size: 241px 61px;
+    -o-background-size: 241px 61px;
+    background-size: 241px 61px;
+  }
 }
 @media only screen and (-webkit-min-device-pixel-ratio: 2) {
   .s-image-loader-bg {
@@ -2516,5 +2545,12 @@ body.x-browser-testing .ui-footer-fixed {
     -moz-background-size: 24px 24px !important;
     -o-background-size: 24px 24px !important;
     background-size: 24px 24px !important;
+  }
+  .s-foursquare-credit .s-powered-by-foursquare {
+    background-image: url('gfx/retina/powered-by-foursquare.png');
+    -webkit-background-size: 241px 61px;
+    -moz-background-size: 241px 61px;
+    -o-background-size: 241px 61px;
+    background-size: 241px 61px;
   }
 }
