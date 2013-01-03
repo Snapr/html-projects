@@ -33,7 +33,13 @@
                                 <% if (post.get('photos')) { %>
                                     <ul class="s-photo-set">
                                         <% _.each(post.get('photos'), function (photo) { %>
-                                            <li><img src="<%= getPhotoURL(photo, 500) %>" /></li>
+                                            <li>
+                                               
+                                                <a <%if (post.get('link_url')) {%> href="<%= post.get('link_url') %>"<% } %> >
+                                                <img src="<%= getPhotoURL(photo, 500) %>" />
+                                                </a>
+                                                
+                                            </li>
                                         <% }); %>
                                     </ul>
                                 <% } %>
