@@ -52,6 +52,14 @@
     -webkit-transform: rotate(360deg) translateZ(0);
   }
 }
+@-webkit-keyframes nospin {
+  from {
+    -webkit-transform: translate(0, 0);
+  }
+  to {
+    -webkit-transform: translate(0, 0);
+  }
+}
 /* keep the corners 45 degrees otherwise they look crap
    apply these to elements using the ::after psuedo class..
 */

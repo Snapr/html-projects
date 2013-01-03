@@ -660,14 +660,14 @@ a:active{
             height: @gfxRefresh-grid;
             margin-top: -@gfxRefresh-grid / 2;
             margin-left: -@gfxRefresh-grid / 2;
+            .dont-spin();// Hack for s3 where other animations seemed to hang around
             -webkit-transition-property:-webkit-transform;
-            -webkit-transition-duration:250ms;
             -webkit-transform:rotate(0deg) translateZ(0);
         }
         &.x-right-pull{
             margin-right: 9px;
             .ui-icon-refresh{
-                background-position: @gfxRefresh-x @gfxRefresh-right-y;
+                background-position: @gfxRefresh-x @gfxRefresh-right-y; 
             }
         }
         &.x-left-pull{
@@ -679,6 +679,7 @@ a:active{
         &.x-flipped{
             .ui-icon-refresh{
                 background-position: @gfxRefresh-x @gfxRefresh-refresh-y;
+                -webkit-transition-duration:250ms;
                 -webkit-transform:rotate(180deg) translateZ(0);
             }
         }
@@ -706,6 +707,7 @@ a:active{
     &.x-loading,
     .x-loading {
         .s-load-more-inline{
+           
             .ui-icon-refresh{
                 background-image: url('@{gfx}@{gfxSpinner}');
                 background-position: center!important;

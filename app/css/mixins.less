@@ -476,6 +476,19 @@
     to { -webkit-transform:rotate(360deg) translateZ(0); }
 }
 
+
+.dont-spin(){
+    -webkit-animation-name:nospin;
+    -webkit-animation-duration:250ms;
+    -webkit-animation-iteration-count:1;
+    -webkit-animation-timing-function:linear;
+}
+
+@-webkit-keyframes nospin {
+    from { -webkit-transform:translate(0,0); }
+    to { -webkit-transform:translate(0,0); }
+}
+
 .mask-image(@image){
     -webkit-mask-image: @image;
     -o-mask-image: @image;

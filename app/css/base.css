@@ -31,6 +31,14 @@
     -webkit-transform: rotate(360deg) translateZ(0);
   }
 }
+@-webkit-keyframes nospin {
+  from {
+    -webkit-transform: translate(0, 0);
+  }
+  to {
+    -webkit-transform: translate(0, 0);
+  }
+}
 html {
   -webkit-user-select: none;
   -webkit-text-size-adjust: none;
@@ -606,8 +614,11 @@ a:active {
   height: 56px;
   margin-top: -28px;
   margin-left: -28px;
+  -webkit-animation-name: nospin;
+  -webkit-animation-duration: 250ms;
+  -webkit-animation-iteration-count: 1;
+  -webkit-animation-timing-function: linear;
   -webkit-transition-property: -webkit-transform;
-  -webkit-transition-duration: 250ms;
   -webkit-transform: rotate(0deg) translateZ(0);
 }
 .x-stream .s-load-more-inline.x-right-pull {
@@ -624,6 +635,7 @@ a:active {
 }
 .x-stream .s-load-more-inline.x-flipped .ui-icon-refresh {
   background-position: 0 -112px;
+  -webkit-transition-duration: 250ms;
   -webkit-transform: rotate(180deg) translateZ(0);
 }
 .x-stream .ui-bar .s-image-tag {
