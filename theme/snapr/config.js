@@ -4,14 +4,14 @@ return {
     config: {
         environment: 'dev',  // from theme.environments below
 
-        language: 'leet',
+        //language: 'leet',
 
         sort_order: 'date_utc',  // defaults to date_utc the photo was taken. (rating, favorite_count, comment_count, date_local, date_added, date_utc, score, weighted_score)
 
         initial_view: 'dash',  // "home page"
         show_tab_bar: true,
 
-        app_group: 'skol-night-solver',
+        app_group: 'snapr',
 
         // client must have xAuth permission from 3rd party
         tumblr_xauth: true,

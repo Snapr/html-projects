@@ -504,6 +504,10 @@ a:active {
   .x-grid .x-feed-images {
     padding: 4px 0 2px 2px;
   }
+  .s-image-streams .x-stream .x-thumbs {
+    min-width: 353px;
+    height: 115px;
+  }
 }
 .ui-bar {
   margin: 0 -8px;
@@ -566,6 +570,8 @@ a:active {
 .x-stream .x-thumbs {
   display: inline-block;
   min-width: 311px;
+  height: 101px;
+  overflow: hidden;
 }
 .x-stream .s-image-link {
   padding-left: 4px;

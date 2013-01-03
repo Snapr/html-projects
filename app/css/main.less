@@ -527,6 +527,8 @@ a:active{
 @media only screen and (min-device-width : 719px) and (max-device-width : 721px) and (-webkit-min-device-pixel-ratio : 2) and (orientation : portrait) {
     .s-thumbs-grid-med,
     .x-grid .x-feed-images{
+       
+        
         .s-thumb-image,
         .s-load-more-inline{
             width: @thumbSize + 14px!important;
@@ -538,6 +540,15 @@ a:active{
     }
     .x-grid .x-feed-images{
         padding: @padding 0 @padding / 2 @padding / 2 ;
+    }
+    
+    .s-image-streams{
+        .x-stream{
+            .x-thumbs{
+                min-width: (@thumbSize + 14px) * 3 + @padding * 2;
+                height:  @thumbSize + 14px;
+            }
+        }
     }
 }
 
@@ -614,6 +625,8 @@ a:active{
     .x-thumbs{
         display: inline-block;
         min-width: @thumbSize * 3 + @padding * 2;
+        height: @thumbSize;
+        overflow: hidden;
     }
     .s-image-link{
         padding-left: @paddingGrid;
