@@ -279,9 +279,12 @@ a:active{
         }
     }   
     &.ui-controlgroup-horizontal{
+        
         .box-shadow(0 1px 4px @shadowDark);
         border: none;
         .s-bar-left{
+            .border-top-right-radius(0)!important;
+            
             border-top: @borderWhite;  
             border-right: none;
             .ui-btn-inner{
@@ -303,6 +306,8 @@ a:active{
        .border-bottom-radius(@cornersPage);  
         .s-bar-left{
                 .border-right-radius(0);
+                .border-bottom-left-radius(@corners)!important;
+                
                 .ui-btn-inner{
             }
         }

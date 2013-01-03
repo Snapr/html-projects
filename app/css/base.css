@@ -548,6 +548,7 @@ a:active {
 }
 .ui-bar .ui-controlgroup-controls {
   width: 100%;
+  vertical-align: top;
 }
 .ui-bar .s-bar-left {
   width: 80%;
