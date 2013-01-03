@@ -6,6 +6,16 @@
 // @DEFAULTS
 // -------------------------
 
+
+// @DEFAULTS
+// -------------------------
+
+body{
+    color: @grayLighter;
+    font-family: @font;
+}
+
+
 strong{
     font-weight: normal;
     font-size: @fontSizeUsername;
@@ -358,9 +368,9 @@ a:active{
     }
 }
 
-.s-twitter-button.ui-btn-up-e,
-.s-twitter-button.ui-btn-hover-e,
-.s-twitter-button.ui-btn-down-e {
+.s-twitter-button.ui-btn-up-h,
+.s-twitter-button.ui-btn-hover-h,
+.s-twitter-button.ui-btn-down-h {
     border: none;
     background: @twitterBlue;
     .linear-gradient(@twitterBlue, @twitterBlueTint);
@@ -370,19 +380,19 @@ a:active{
         color: white;
     }
 }
-.s-twitter-button.ui-btn-hover-e {
+.s-twitter-button.ui-btn-hover-h {
     background: lighten(@twitterBlue, 10% );
     .linear-gradient(lighten(@twitterBlue, 5%), lighten(@twitterBlueTint, 5%)); 
 }
-.s-twitter-button.ui-btn-down-e {
+.s-twitter-button.ui-btn-down-h {
     background: @twitterBlue;
     .pressed-gradient(@twitterBlue, 3%);
 }
 
 
-.s-tumblr-button.ui-btn-up-e,
-.s-tumblr-button.ui-btn-hover-e,
-.s-tumblr-button.ui-btn-down-e {
+.s-tumblr-button.ui-btn-up-h,
+.s-tumblr-button.ui-btn-hover-h,
+.s-tumblr-button.ui-btn-down-h {
     border: none;
     background: @tumblrBlue;
     .linear-gradient(@tumblrBlue, @tumblrBlueTint);
@@ -392,18 +402,18 @@ a:active{
         color: white;
     }
 }
-.s-tumblr-button.ui-btn-hover-e {
+.s-tumblr-button.ui-btn-hover-h {
     background: lighten(@tumblrBlue, 10% );
     .linear-gradient(lighten(@tumblrBlue, 5%), lighten(@tumblrBlueTint, 5%));
 }
-.s-tumblr-button.ui-btn-down-e {
+.s-tumblr-button.ui-btn-down-h {
     background: @tumblrBlue;
     .pressed-gradient(@tumblrBlue, 3%);
 }
 
-.s-facebook-button.ui-btn-up-e,
-.s-facebook-button.ui-btn-hover-e,
-.s-facebook-button.ui-btn-down-e, {
+.s-facebook-button.ui-btn-up-h,
+.s-facebook-button.ui-btn-hover-h,
+.s-facebook-button.ui-btn-down-h, {
     background: @facebookBlue;
     .linear-gradient(@facebookBlue, @facebookBlueTint);
     color: white;
@@ -412,19 +422,19 @@ a:active{
         color: white;
     }
 }
-.s-facebook-button.ui-btn-hover-e {
+.s-facebook-button.ui-btn-hover-h {
     background: lighten(@facebookBlue, 10% );
     .linear-gradient(lighten(@facebookBlue, 5%), lighten(@facebookBlueTint, 5%));
 }
-.s-facebook-button.ui-btn-down-e {
+.s-facebook-button.ui-btn-down-h {
     background: @facebookBlue;
     .pressed-gradient(@facebookBlue, 3%);
 }
 
 
-.s-snapr-button.ui-btn-up-e,
-.s-snapr-button.ui-btn-hover-e,
-.s-snapr-button.ui-btn-down-e {
+.s-snapr-button.ui-btn-up-h,
+.s-snapr-button.ui-btn-hover-h,
+.s-snapr-button.ui-btn-down-h {
     background: @snaprYellow;
     text-shadow: 0 1px 1px white;
     .linear-gradient(@snaprYellow, @snaprYellowTint);
@@ -434,11 +444,11 @@ a:active{
         color: #333333;
     }
 }
-.s-snapr-button.ui-btn-hover-e {
+.s-snapr-button.ui-btn-hover-h {
     background: lighten(@snaprYellow, 10% );
     .linear-gradient(lighten(@snaprYellow, 5%), lighten(@snaprYellowTint, 5%));
 }
-.s-snapr-button.ui-btn-down-e {
+.s-snapr-button.ui-btn-down-h {
     background: @snaprYellow;
     .pressed-gradient(@snaprYellow, 3%);
 }
@@ -1659,8 +1669,11 @@ textarea.ui-input-text {
             position: relative;
             min-height: @avatarSizeLarge;
             .real-name{
-                line-height: @fontSizeUsername;
+                line-height: @gfxShareSmall-grid;
+                vertical-align: center;
                 font-size:  @fontSizeUsername;
+                .username-font();
+                margin-bottom: @padding;
                 .s-facebook-sharing{
                     position: absolute;
                     right: 0;
