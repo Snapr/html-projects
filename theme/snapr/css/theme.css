@@ -4156,6 +4156,8 @@ textarea.ui-input-text {
 }
 .s-image-streams .x-stream .s-load-more-inline {
   background-color: #f7f7f7;
+  width: 101px;
+  height: 101px;
 }
 .s-image-streams .x-stream .s-load-more-inline .ui-btn-text {
   font-family: Helvetica, Arial, sans-serif;
