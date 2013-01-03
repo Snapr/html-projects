@@ -24,7 +24,7 @@ return {
         anon_username: 'anon',
         me_username: 'me',
 
-        autocreate_fb_users: true // signin with facebook should create users rather than autofill join form
+        autocreate_fb_users: true, // signin with facebook should create users rather than autofill join form
 
         //get_user_points: false,  // request points when getting users form the api
         //timeout: 1000*20,  // ms, max api response time allowed
@@ -33,7 +33,7 @@ return {
         //zoom: 15, // default for map
         //feed_count: 9, // number of images to show in feed views
         //map_count: 10, // number of images to show on the map
-        //dash_tumblr_posts: 3,
+        dash_tumblr_posts: 1,
         //side_scroll_initial: 6, // numbers of images to show in side-scrollers initially
         //side_scroll_more: 10, // number of extra images to load into side-scrollers when "load more" is activated
         //activity_count: 25,  // how many items to load in activity page
