@@ -237,6 +237,33 @@
         .spinner('@{gfxRetina}@{gfxSpinnerSmall}');
         .background-size(@gfxSpinnerSmall-width @gfxSpinnerSmall-height);                                            
     }
+    
+    .s-photo-map{
+        .s-map-thumb {
+            .s-map-pin{
+                background-image: url('@{gfxRetina}@{gfxMapPin}');
+                .background-size(@gfxMapPin-width @gfxMapPin-height);
+            }
+            .s-thumb-bg {
+                background-image: url('@{gfxRetina}@{gfxMapThumb}');
+                .background-size(@gfxMapThumb-width @gfxMapThumb-height);
+            }
+        }
+        .s-map-venue{
+            .s-venue-pin{
+                background-image: url('@{gfxRetina}@{gfxMapSpotPin}');
+                .background-size(@gfxMapSpotPin-width @gfxMapSpotPin-height);
+            }
+            .s-venue-label{
+                background-image: url('@{gfxRetina}@{gfxMapSpotLabel}');
+                .background-size(@gfxMapSpotLabel-width @gfxMapSpotLabel-height);
+            }
+        }
+        .s-map-current-location{
+            background-image: url('@{gfxRetina}@{gfxMapCurrentLoc}');
+            .background-size(@gfxMapCurrentLoc-width @gfxMapCurrentLoc-height);
+        }
+    }
 }
 
 
