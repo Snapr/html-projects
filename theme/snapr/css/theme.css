@@ -4998,7 +4998,10 @@ textarea.ui-input-text {
   margin-right: -6px;
 }
 .s-image-item-block .s-image-actions .ui-btn.action-icons.s-reactions-button .ui-btn-inner {
-  padding: 0 36px 0 10px;
+  padding: 0 32px 0 10px;
+}
+.s-image-item-block .s-image-actions .ui-btn.action-icons.s-reactions-button .ui-btn-inner .s-hide-text {
+  display: inline-block;
 }
 .s-image-item-block .s-image-actions .ui-btn.action-icons.s-reactions-button .ui-icon {
   background-position: 0px -160px;
