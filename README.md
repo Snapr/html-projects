@@ -252,14 +252,11 @@ If you need to change the html of a view you can do so by specifying the `templa
 
 For example if you wanted to override the `popular` template you'd use this configuration:
 
-//JAKE how about theme_path or theme_templates_path or templates_path ?
-// or getting rid of that? or just writing in the full path?
-
     pages: [
         'home',
         {
             name: 'popular',
-            template: theme_templates + 'popular'
+            template: theme_templates_path + 'popular'
         },
         'feed'
     ]
@@ -272,14 +269,12 @@ If you need to change the javascript of a view you can do so by specifying the `
 
 For example if you wanted to override the action of clicking a username in the feed you'd use this configuration:
 
-//JAKE - is it maybe unclear that theme_views is a base_url kindof thing ?
-
     pages: [
         'home',
         'popular',
         {
             name: 'feed',
-            view: theme_views + 'feed'
+            view: theme_views_path + 'feed'
         }
     ]
 
