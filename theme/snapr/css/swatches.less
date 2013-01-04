@@ -2,7 +2,7 @@
 //--------------------------
 
 // A //
-// The Dark (Black as Night) swatch, used for screens with black BGs
+// BLACK SWATCH
 // ------------------------
 
 // Set bgs
@@ -36,7 +36,6 @@
     .ui-title{
         color: @white;
         text-shadow:0 -1px 1px #000;
-        
     }
     .s-image-streams .x-stream .s-load-more-inline{
         background-color: darken(@blackTint, 5%);
@@ -141,29 +140,37 @@
 
 
 // @B //
-// The Dark (Textured Grey) swatch, used for title bars, dark btns on palletes
+// DARK SWATCH
 // -----------------------------
 
+@bBodyBackground:           @black;
+@bBodyBackgroundTexture:    @gfxBgLight;
+@bBodyTextCol:              @grayDarker;
+
+@bBtnBackground:            @grayDarkBg;
+@bBtnBackgroundTint:        @grayDarkBgTint;
+@bBtnTextCol:               @gray;
+@bBtnTextShadow:            @shadowBlack 0px -1px 1px;
+@bBtnBorder:                @borderBlack;
+
 .ui-body-b{
-    background: @black;
-    background-image: @gfxBgDark;
+    background: @bBodyBackground;
+    background-image: @bBodyBackgroundTexture;
     border: none;
 }
 
 .ui-bar-b{
-    background: @grayDarkBg;
-    color: @gray;
-    .linear-gradient(@grayDarkBg, @grayDarkBgTint);
-
-   
+    background: @bBtnBackground;
+    color: @bBtnTextCol;
+    .linear-gradient(@bBtnBackground, @bBtnBackgroundTint);
     &.small-top-right-arrow::after{
-        .arrow-left(8px, @grayDarkBg, 100%, 0);
+        .arrow-left(8px, @bBtnBackground, 100%, 0);
     }
     a{
-        color: @gray;
+        color: @bBtnTextCol;
     }
     .ui-title{
-        color: @gray;
+        color: @bBtnTextCol;
     }
     border-top: none!important;
 }
@@ -176,69 +183,68 @@
 .ui-btn-down-b[data-rel="back"]::before,
 .ui-btn-active-b,
 .ui-btn-active-b[data-rel="back"]::before {
-    border: @borderBlack;
-    background: @grayDarkBg;
-    color: @gray;
-    text-shadow: @shadowBlack 0px -1px 1px;
+    border: @bBtnBorder;
+    background: @bBtnBackground;
+    color: @bBtnTextCol;
+    text-shadow: @bBtnTextShadow;
     text-decoration: none;
-    .linear-gradient(@grayDarkBg, @grayDarkBgTint);
+    .linear-gradient(@bBtnBackground, @bBtnBackgroundTint);
     a.ui-link-inherit,
     .ui-btn-text {
-        color: @gray;
+        color: @bBtnTextCol;
     }
     &.ui-shadow{
         .box-shadow( 0 1px 0 @shadowLighter);
     }
     &.ui-btn-active{
         background: none;
-        .linear-gradient(black, @grayDarkBgTint);
+        .linear-gradient(black, @bBtnBackgroundTint);
     }
     &.bottom-centered-arrow::after{
-        .arrow-up(@arrowSize, @grayDarkBg, 50%, 3px);
+        .arrow-up(@arrowSize, @bBtnBackground, 50%, 3px);
     }
 }
 
 .ui-btn-up-b[data-rel="back"]::before{
-    .linear-gradient-45 ( @grayDarkBg, @grayDarkBgTint);
+    .linear-gradient-45 ( @bBtnBackground, @bBtnBackgroundTint);
 }
-
 
 .ui-btn-hover-b,
 .ui-btn-active-b{
-    color: lighten(@gray, 3%);
+    color: lighten(@bBtnTextCol, 3%);
     .ui-btn-text{
-        color: lighten(@gray, 3%);
+        color: lighten(@bBtnTextCol, 3%);
     }
-    .linear-gradient(lighten(@grayDarkBg, 3%), lighten(@grayDarkBgTint, 3%));
+    .linear-gradient(lighten(@bBtnBackground, 3%), lighten(@bBtnBackgroundTint, 3%));
    
     &.bottom-centered-arrow::after{
-        .arrow-up(@arrowSize, lighten(@grayDarkBg, 3%), 50%, 3px);
+        .arrow-up(@arrowSize, lighten(@bBtnBackground, 3%), 50%, 3px);
     }
 }
 
 .ui-btn-hover-b[data-rel="back"]::before,
 .ui-btn-active-b[data-rel="back"]::before{
-    .linear-gradient-45(lighten(@grayDarkBg, 3%), lighten(@grayDarkBgTint, 3%));
+    .linear-gradient-45(lighten(@bBtnBackground, 3%), lighten(@bBtnBackgroundTint, 3%));
     
 }
 
 .ui-btn-down-b{
-    color: darken(@gray, 3%);
-    .pressed-gradient(@grayDarkBgTint, 5%);
+    color: darken(@bBtnTextCol, 3%);
+    .pressed-gradient(@bBtnBackgroundTint, 5%);
     .ui-btn-text{
-        color: lighten(@gray, 3%);
+        color: lighten(@bBtnTextCol, 3%);
     }
     &.ui-btn-active{
         background: none;
-        .linear-gradient(black, @grayDarkBgTint);
+        .linear-gradient(black, @bBtnBackgroundTint);
     }
     &.bottom-centered-arrow::after{
-        .arrow-up(@arrowSize, @grayDarkBgTint, 50%, 3px);
+        .arrow-up(@arrowSize, @bBtnBackgroundTint, 50%, 3px);
     }
 }
 
 .ui-btn-down-b[data-rel="back"]::before{
-    .pressed-gradient(@grayDarkBgTint, 5%);
+    .pressed-gradient(@bBtnBackgroundTint, 5%);
 }
 
 // Tricky CSS iOS style Arrow back buttons - fiddle at your own peril
@@ -279,12 +285,10 @@ div[data-role="header"].ui-bar-b{
         z-index: 1;
         .background-size(24px 24px);
         background-position: -1px -0.5px;
-
          -moz-transform : rotateZ(-45deg) skewY(-10deg) skewX(-10deg);
         -o-transform : rotateZ(-45deg) skewY(-10deg) skewX(-10deg);
         -webkit-transform : rotateZ(-45deg) skewY(-10deg) skewX(-10deg);
         transform : rotateZ(-45deg) skewY(-10deg) skewX(-10deg);
-
         border-right: none;
         border-bottom: none;
         box-shadow: none;
@@ -292,11 +296,7 @@ div[data-role="header"].ui-bar-b{
         .border-top-left-radius(0px);
         .border-bottom-right-radius(0px);
         .border-bottom-left-radius(10px);
-        
-        
         -webkit-mask-image: -webkit-gradient(linear, left top, right bottom, from(#000000), color-stop(0.4, #000000), color-stop(0.5, transparent), to(transparent));
-                        
-       
     }
 }
 
@@ -304,23 +304,34 @@ div[data-role="header"].ui-bar-b{
 
 
 // C //
-// Standard light BG swatch, has subtle gray bg texture, used mainly for light colored dialog style views
+// NEUTRAL SWATCH
 // -----------------------------
+
+@cBodyBackground:           @grayLighter;
+@cBodyBackgroundTexture:    @gfxBgLight;
+@cBodyTextCol:              @grayDarker;
+
+@cBtnBackground:            @white;
+@cBtnBackgroundTint:        @whiteTint;
+@cBtnTextCol:               @grayDarker;
+@cBtnTextShadow:            @white 0px 1px 1px;
+@cBtnBorder:                none;
+
 
 // Set bg for dialog 
 
 .ui-body-c {
     background: none;
-    background-color: @grayLighter;
-    background-image: @gfxBgLight;
+    background-color: @cBodyBackground;
+    background-image: @cBodyBackgroundTexture;
     border: @borderGrayLighter;
-    color: @grayDarker;
+    color: @cBodyTextCol;
     text-shadow: 0 1px 1px @shadowWhite;      
 }
 .ui-dialog.ui-overlay-c{
     background: none;
-    background-color: @grayLighter!important;
-    background-image: @gfxBgLight!important;
+    background-color: @cBodyBackground!important;
+    background-image: @cBodyBackgroundTexture!important;
     border: @borderGrayLighter;
     text-shadow: 0 1px 1px @shadowWhite;
     border:none;
@@ -330,19 +341,19 @@ div[data-role="header"].ui-bar-b{
 
 .ui-body-c {
     div[data-role="content"]{
-        background-color: @grayLighter;
-        background-image: @gfxBgLight;
+        background-color: @cBodyBackground;
+        background-image: @cBodyBackgroundTexture;
         border: none;
         border-radius: @cornersPage;
         overflow: visible;
     }
     .ui-header{
-        color: @grayDark;
-        text-shadow: @shadowWhite 0px 1px 1px;
+        color: @cBodyTextCol;
+        text-shadow: @cBtnTextShadow;
     }
     .ui-link,
     .ui-link:visited {
-        color: @grayDarker;
+        color: @cBtnTextCol;
         font-weight: normal;
     }
     .ui-input-search{
@@ -383,10 +394,10 @@ div[data-role="header"].ui-bar-b{
 
 // @C-BARS
 .ui-bar-c{
-    background: @white;
-    .linear-gradient(@white, @whiteTint);
+    background: @cBtnBackground;
+    .linear-gradient(@cBtnBackground, @cBtnBackgroundTint);
     a{
-        color: @grayDarker;
+        color: @cBtnTextCol;
     }
 }
 
@@ -394,38 +405,38 @@ div[data-role="header"].ui-bar-b{
 .ui-btn-up-c,
 .ui-btn-hover-c,
 .ui-btn-down-c{
-    border: none;
+    border: @cBtnBorder;
     .button-font-bold();
-    color: @grayDarker;
-    text-shadow: @white 0px 1px 1px;
+    color: @cBtnTextCol;
+    text-shadow: @cBtnTextShadow;
      text-decoration: none;
     a.ui-link-inherit,
     .ui-btn-text {
-        color: @grayDarker;
+        color: @cBtnTextCol;
     }
     &.ui-shadow {
         .box-shadow(0 1px 4px lighten(@shadowDark, 20%));
     }
 }
 .ui-btn-up-c {
-    background: @white;    
-    .linear-gradient(@white, @whiteTint);
+    background: @cBtnBackground;    
+    .linear-gradient(@cBtnBackground, @cBtnBackgroundTint);
 }
 .ui-btn-hover-c {
-    background: lighten(@blue, 10% );
-    .linear-gradient(lighten(@white, 10%), lighten(@whiteTint, 10%));
+    background: lighten(@cBtnBackground, 10% );
+    .linear-gradient(lighten(@cBtnBackground, 10%), lighten(@cBtnBackgroundTint, 10%));
 }
 .ui-btn-down-c {
-    background: @white;
-    .pressed-gradient(@white, 3%);
+    background: @cBtnBackground;
+    .pressed-gradient(@cBtnBackground, 3%);
 }
 
 
 // @C-NAVBAR
 .ui-body-c{
     &.ui-navbar{
-        background: @white;
-        .linear-gradient(@white, @whiteTint);
+        background: @cBtnBackground;
+        .linear-gradient(@cBtnBackground, @cBtnBackgroundTint);
         .ui-btn{
             background: none!important;
         }
@@ -476,12 +487,10 @@ div[data-role="header"].ui-bar-b{
 
 .ui-body-c > .ui-listview{
     background: none;
+    .border-radius(0);
     &.ui-shadow{
         .box-shadow(none);
     }
-    .border-radius(0);
-
-
     .ui-li,
     .ui-li-has-icon{
         padding: 0;
@@ -496,9 +505,6 @@ div[data-role="header"].ui-bar-b{
                 border-top: none!important;
             }
         }
-    }
-    .ui-btn-up-c {
-
     }
     .ui-btn-hover-c {
         background-color: rgba(255,255,255,.8);
@@ -517,7 +523,6 @@ div[data-role="header"].ui-bar-b{
             border-top: @borderGrayLighter!important;
         }
     }
-
     .ui-btn-inner{
         .ui-link-inherit{
             padding-top: @paddingElement * 2px!important;
@@ -534,12 +539,10 @@ div[data-role="header"].ui-bar-b{
             }
         }
     }
-
     .ui-li-icon{
         left: 0;
         top: @paddingElement;
     }
-
     .ui-li-heading{
         margin: 0 0 @paddingElement 0;
         font-weight: normal;
@@ -554,7 +557,6 @@ div[data-role="header"].ui-bar-b{
         border-right: none!important;
         border-left: none!important;
     }
-
     //  Right hand buttons in split lists 
     .ui-li-link-alt{
         width: 44px;
@@ -587,7 +589,6 @@ div[data-role="header"].ui-bar-b{
             }
         }
     }
-
     &.venue-list{
         .ui-icon-arrow-r{
             display: none;
@@ -670,64 +671,62 @@ div[data-role="header"].ui-bar-b{
 
 
 
-// @E & @H // BOTH BUTTONS AND BARS USE SAME COLOR IN SNAPR
-// YELLOW HIGHLIGHT SWATCH
-// ------------------------
+// @E //
+// HIGHLIGHT SWATCH - Hero Buttons etc
+// -----------------------------
+
+@eBtnBackground:            @yellow;
+@eBtnBackgroundTint:        @yellowTint;
+@eBtnTextCol:               @grayDarker;
+@eBtnTextShadow:            @white 0px 1px 1px;
+@eBtnBorder:                none;
 
 
 // @E-BARS
-.ui-bar-e,
-.ui-bar-h{
-    background: @yellow;
-    color: @grayDarker;
+.ui-bar-e{
+    background: @eBtnBackground;
+    color: @eBtnTextCol;
     text-shadow: @white 0px 1px 1px;
-    .linear-gradient(@yellow, @yellowTint);
+    .linear-gradient(@eBtnBackground, @eBtnBackgroundTint);
     a{
-        color: @grayDarker;
+        color: @eBtnTextCol;
     }
 }
 
 // @E-BUTTONS
 .ui-btn-up-e,
 .ui-btn-hover-e,
-.ui-btn-down-e,
-.ui-btn-up-h,
-.ui-btn-hover-h,
-.ui-btn-down-h{
+.ui-btn-down-e{
     border: none;
     .button-font-bold();
-    color: @grayDarker;
+    color: @eBtnTextCol;
     text-shadow: @white 0px 1px 1px;
      text-decoration: none;
     a.ui-link-inherit,
     .ui-btn-text {
-        color: @grayDarker;
+        color: @eBtnTextCol;
     }
     
 }
-.ui-btn-up-e,
-.ui-btn-up-h {
-    background: @yellow;    
-    .linear-gradient(@yellow, @yellowTint);
+.ui-btn-up-e {
+    background: @eBtnBackground;    
+    .linear-gradient(@eBtnBackground, @eBtnBackgroundTint);
 }
-.ui-btn-hover-e,
-.ui-btn-hover-h {
-    background: lighten(@yellow, 10% );
-    .linear-gradient(lighten(@yellow, 10%), lighten(@yellowTint, 10%));
+.ui-btn-hover-e {
+    background: lighten(@eBtnBackground, 10% );
+    .linear-gradient(lighten(@eBtnBackground, 10%), lighten(@eBtnBackgroundTint, 10%));
 }
-.ui-btn-down-e,
-.ui-btn-down-h {
-    background: @yellow;
-    .pressed-gradient(@yellow, 3%);
+.ui-btn-down-e {
+    background: @eBtnBackground;
+    .pressed-gradient(@eBtnBackground, 3%);
 }
 
 
 // @E-NAVBAR
-.ui-body-e,
-.ui-body-h{
+.ui-body-e{
     &.ui-navbar{
-        background: @yellow;
-        .linear-gradient(@yellow, @yellowTint);
+        background: @eBtnBackground;
+        .linear-gradient(@eBtnBackground, @eBtnBackgroundTint);
         .ui-btn{
             background: none!important;
         }
@@ -738,16 +737,21 @@ div[data-role="header"].ui-bar-b{
 
 
 // @F
-// BLUE HIGHLIGHT SWATCH
+// SYSTEM HIGHLIGHT SWATCH - System Button color
 // ------------------------
 
+@fBtnBackground:            @blue;
+@fBtnBackgroundTint:        @blueTint;
+@fBtnTextCol:               @white;
+@fBtnTextShadow:            @grayDark 0px -1px 1px;
+@fBtnBorder:                none;
 
 // @F-BARS
 .ui-bar-f{
-    background: @blue;
-    .linear-gradient(@blue, @blueTint);
+    background: @fBtnBackground;
+    .linear-gradient(@fBtnBackground, @fBtnBackgroundTint);
     a{
-        color: @grayDarker;
+        color: @fBtnTextCol;
     }
 }
 
@@ -755,38 +759,38 @@ div[data-role="header"].ui-bar-b{
 .ui-btn-up-f,
 .ui-btn-hover-f,
 .ui-btn-down-f{
-    border: none;
+    border: @fBtnBorder;
     .button-font-bold();
-    color: @white;
+    color: @fBtnTextCol;
     text-shadow: @grayDark 0px -1px 1px;
-     text-decoration: none;
+    text-decoration: none;
     a.ui-link-inherit,
     .ui-btn-text {
-        color: @white;
+        color: @fBtnTextCol;
     }
     &.ui-shadow {
         .box-shadow(0 1px 4px lighten(@shadowDark, 20%));
     }
 }
 .ui-btn-up-f {
-    background: @blue;    
-    .linear-gradient(@blue, @blueTint);
+    background: @fBtnBackground;    
+    .linear-gradient(@fBtnBackground, @fBtnBackgroundTint);
 }
 .ui-btn-hover-f {
-    background: lighten(@blue, 10% );
-    .linear-gradient(lighten(@blue, 10%), lighten(@blueTint, 10%));
+    background: lighten(@fBtnBackground, 10% );
+    .linear-gradient(lighten(@fBtnBackground, 10%), lighten(@fBtnBackgroundTint, 10%));
 }
 .ui-btn-down-f {
-    background: @blue;
-    .pressed-gradient(@blue, 3%);
+    background: @fBtnBackground;
+    .pressed-gradient(@fBtnBackground, 3%);
 }
 
 
 // @F-NAVBAR
 .ui-body-f{
     &.ui-navbar{
-        background: @blue;
-        .linear-gradient(@blue, @blueTint);
+        background: @fBtnBackground;
+        .linear-gradient(@fBtnBackground, @fBtnBackgroundTint);
         .ui-btn{
             background: none!important;
         }
@@ -796,19 +800,27 @@ div[data-role="header"].ui-bar-b{
 
 
 // @G
-// ORANGE HIGHLIGHT SWATCH
+// SECONDARY HIGHLIGHT SWATCH - Compliment to the main highlight swatch
 // ------------------------
 
+@gBtnBackground:            @orange;
+@gBtnBackgroundTint:        @orangeTint;
+@gBtnTextCol:               @grayDarker;
+@gBtnTextShadow:            @white 0px 1px 1px;
+@gBtnBorder:                none;
+
+
+// @G-STYLES
 .ui-body-g{
     color: @grayDark;
 }
 
 // @G-BARS
 .ui-bar-g{
-    background: @orange;
-    .linear-gradient(@orange, @orangeTint);
+    background: @gBtnBackground;
+    .linear-gradient(@gBtnBackground, @gBtnBackgroundTint);
     a{
-        color: @grayDarker;
+        color: @gBtnTextCol;
     }
 }
 
@@ -816,38 +828,100 @@ div[data-role="header"].ui-bar-b{
 .ui-btn-up-g,
 .ui-btn-hover-g,
 .ui-btn-down-g{
-    border: none;
+    border: @gBtnBorder;
     .button-font-bold();
-    color: @grayDarker;
-    text-shadow: @white 0px 1px 1px;
-     text-decoration: none;
+    color: @gBtnTextCol;
+    text-shadow: @gBtnTextShadow;
+    text-decoration: none;
     a.ui-link-inherit,
     .ui-btn-text {
-        color: @grayDarker;
+        color: @gBtnTextCol;
     }
     &.ui-shadow {
         .box-shadow(0 1px 4px lighten(@shadowDark, 20%));
     }
 }
 .ui-btn-up-g {
-    background: @orange;    
-    .linear-gradient(@orange, @orangeTint);
+    background: @gBtnBackground;    
+    .linear-gradient(@gBtnBackground, @gBtnBackgroundTint);
 }
 .ui-btn-hover-g {
-    background: lighten(@orange, 10% );
-    .linear-gradient(lighten(@orange, 10%), lighten(@orangeTint, 10%));
+    background: lighten(@gBtnBackground, 10% );
+    .linear-gradient(lighten(@gBtnBackground , 10%), lighten(@gBtnBackgroundTint, 10%));
 }
 .ui-btn-down-g {
-    background: @orange;
-    .pressed-gradient(@orange, 3%);
+    background: @gBtnBackground;
+    .pressed-gradient(@gBtnBackground, 3%);
 }
 
 
 // @G-NAVBAR
 .ui-body-g{
     &.ui-navbar{
-        background: @orange;
-        .linear-gradient(@orange, @orangeTint);
+        background: @gBtnBackground;
+        .linear-gradient(@gBtnBackground, @gBtnBackgroundTint);
+        .ui-btn{
+            background: none!important;
+        }
+    }
+}
+
+
+// @H //
+// Alt Highlight Color Swatch, Mainly used for secondary highlight items like UI bars
+// -----------------------------
+
+@hBtnBackground:        @yellow;
+@hBtnBackgroundTint:    @yellowTint;
+@hBtnTextCol:           @grayDarker;
+@hBtnTextShadow:        @white 0px 1px 1px;
+@hBtnBorder:            none;
+
+// @H-BARS
+.ui-bar-h{
+    background: @hBtnBackground;
+    color: @hBtnTextCol;
+    text-shadow: @hBtnTextShadow;
+    .linear-gradient(@hBtnBackground, @hBtnBackgroundTint);
+    a{
+        color: @hBtnTextCol;
+    }
+}
+
+// @H-BUTTONS
+.ui-btn-up-h,
+.ui-btn-hover-h,
+.ui-btn-down-h{
+    border: @hBtnBorder;
+    .button-font-bold();
+    color: @hBtnTextCol;
+    text-shadow: @hBtnTextShadow;
+     text-decoration: none;
+    a.ui-link-inherit,
+    .ui-btn-text {
+        color: @hBtnTextCol;
+    }
+    
+}
+.ui-btn-up-h {
+    background: @hBtnBackground;    
+    .linear-gradient(@hBtnBackground, @hBtnBackgroundTint);
+}
+.ui-btn-hover-h {
+    background: lighten(@hBtnBackground, 10% );
+    .linear-gradient(lighten(@hBtnBackground, 10%), lighten(@hBtnBackgroundTint, 10%));
+}
+.ui-btn-down-h {
+    background: @hBtnBackground;
+    .pressed-gradient(@hBtnBackground, 3%);
+}
+
+
+// @H-NAVBAR
+.ui-body-h{
+    &.ui-navbar{
+        background: @hBtnBackground;
+        .linear-gradient(@hBtnBackground, @hBtnBackgroundTint);
         .ui-btn{
             background: none!important;
         }
