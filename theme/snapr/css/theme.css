@@ -6260,6 +6260,41 @@ div.ps-carousel-item-loading {
   top: -9px;
   left: 160px;
 }
+.s-photo-map .s-map-thumb .s-map-pin {
+  background-image: url('../gfx/map-pin.png');
+  -webkit-background-size: 28px 35px;
+  -moz-background-size: 28px 35px;
+  -o-background-size: 28px 35px;
+  background-size: 28px 35px;
+}
+.s-photo-map .s-map-thumb .s-thumb-bg {
+  background-image: url('../gfx/map-thumb-bg.png');
+  -webkit-background-size: 78px 88px;
+  -moz-background-size: 78px 88px;
+  -o-background-size: 78px 88px;
+  background-size: 78px 88px;
+}
+.s-photo-map .s-map-venue .s-venue-pin {
+  background-image: url('../gfx/map-spot-pin.png');
+  -webkit-background-size: 36px 28px;
+  -moz-background-size: 36px 28px;
+  -o-background-size: 36px 28px;
+  background-size: 36px 28px;
+}
+.s-photo-map .s-map-venue .s-venue-label {
+  background-image: url('../gfx/map-spot-label.png');
+  -webkit-background-size: 139px 47px;
+  -moz-background-size: 139px 47px;
+  -o-background-size: 139px 47px;
+  background-size: 139px 47px;
+}
+.s-photo-map .s-map-current-location {
+  background-image: url('../gfx/map-current-location-marker.png');
+  -webkit-background-size: 17px 17px;
+  -moz-background-size: 17px 17px;
+  -o-background-size: 17px 17px;
+  background-size: 17px 17px;
+}
 .s-spots-search-filters {
   padding-right: 48px;
   margin-top: 8px;
@@ -6890,6 +6925,41 @@ div.ps-carousel-item-loading {
     -o-background-size: 24px 24px;
     background-size: 24px 24px;
   }
+  .s-photo-map .s-map-thumb .s-map-pin {
+    background-image: url('../gfx/hdpi/map-pin.png');
+    -webkit-background-size: 28px 35px;
+    -moz-background-size: 28px 35px;
+    -o-background-size: 28px 35px;
+    background-size: 28px 35px;
+  }
+  .s-photo-map .s-map-thumb .s-thumb-bg {
+    background-image: url('../gfx/hdpi/map-thumb-bg.png');
+    -webkit-background-size: 78px 88px;
+    -moz-background-size: 78px 88px;
+    -o-background-size: 78px 88px;
+    background-size: 78px 88px;
+  }
+  .s-photo-map .s-map-venue .s-venue-pin {
+    background-image: url('../gfx/hdpi/map-spot-pin.png');
+    -webkit-background-size: 36px 28px;
+    -moz-background-size: 36px 28px;
+    -o-background-size: 36px 28px;
+    background-size: 36px 28px;
+  }
+  .s-photo-map .s-map-venue .s-venue-label {
+    background-image: url('../gfx/hdpi/map-spot-label.png');
+    -webkit-background-size: 139px 47px;
+    -moz-background-size: 139px 47px;
+    -o-background-size: 139px 47px;
+    background-size: 139px 47px;
+  }
+  .s-photo-map .s-map-current-location {
+    background-image: url('../gfx/hdpi/map-current-location-marker.png');
+    -webkit-background-size: 17px 17px;
+    -moz-background-size: 17px 17px;
+    -o-background-size: 17px 17px;
+    background-size: 17px 17px;
+  }
 }
 @media only screen and (-webkit-min-device-pixel-ratio: 2) {
   .ui-icon,
@@ -7194,5 +7264,40 @@ div.ps-carousel-item-loading {
     -moz-background-size: 24px 24px;
     -o-background-size: 24px 24px;
     background-size: 24px 24px;
+  }
+  .s-photo-map .s-map-thumb .s-map-pin {
+    background-image: url('../gfx/retina/map-pin.png');
+    -webkit-background-size: 28px 35px;
+    -moz-background-size: 28px 35px;
+    -o-background-size: 28px 35px;
+    background-size: 28px 35px;
+  }
+  .s-photo-map .s-map-thumb .s-thumb-bg {
+    background-image: url('../gfx/retina/map-thumb-bg.png');
+    -webkit-background-size: 78px 88px;
+    -moz-background-size: 78px 88px;
+    -o-background-size: 78px 88px;
+    background-size: 78px 88px;
+  }
+  .s-photo-map .s-map-venue .s-venue-pin {
+    background-image: url('../gfx/retina/map-spot-pin.png');
+    -webkit-background-size: 36px 28px;
+    -moz-background-size: 36px 28px;
+    -o-background-size: 36px 28px;
+    background-size: 36px 28px;
+  }
+  .s-photo-map .s-map-venue .s-venue-label {
+    background-image: url('../gfx/retina/map-spot-label.png');
+    -webkit-background-size: 139px 47px;
+    -moz-background-size: 139px 47px;
+    -o-background-size: 139px 47px;
+    background-size: 139px 47px;
+  }
+  .s-photo-map .s-map-current-location {
+    background-image: url('../gfx/retina/map-current-location-marker.png');
+    -webkit-background-size: 17px 17px;
+    -moz-background-size: 17px 17px;
+    -o-background-size: 17px 17px;
+    background-size: 17px 17px;
   }
 }

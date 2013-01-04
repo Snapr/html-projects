@@ -11,7 +11,7 @@ return {
         initial_view: 'dash',  // "home page"
         show_tab_bar: true,
 
-        app_group: 'snapr',
+        app_group: 'zombiegram',
 
         // client must have xAuth permission from 3rd party
         tumblr_xauth: true,

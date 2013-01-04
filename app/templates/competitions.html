@@ -11,7 +11,7 @@
         <% if(!initial){ %>
             <% _.each(comps, function(comp){ %>
                 <h1><a href="#/competition/?id=<%= comp.get('id') %>"><%= comp.get('title') %></a></h1>
-                <img class="banner" src="<%= comp.get('banner').mobile %>">
+                <img class="s-banner" src="<%= comp.get('banner').mobile %>">
 
                 <% if(comp.get('status') == 'open'){ %>
                     <h2><%= T('Enter Now') %></h2>

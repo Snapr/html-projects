@@ -1027,19 +1027,27 @@ a:active {
 .ui-icon.tumblr-icon.ui-icon-tumblr-chat {
   background-position: 0px -96px;
 }
-.s-competition {
+.competition,
+.s-competition,
+.x-competition {
   position: relative;
 }
-.s-competition .banner {
+.competition .s-banner,
+.s-competition .s-banner,
+.x-competition .s-banner {
   margin: 0 -8px;
   background-color: #f7f7f7;
   min-height: 100px;
 }
-.s-competition .banner .banner-image {
+.competition .s-banner .s-banner-image,
+.s-competition .s-banner .s-banner-image,
+.x-competition .s-banner .s-banner-image {
   display: block;
   width: 100%;
 }
-.s-competition .info {
+.competition .s-info,
+.s-competition .s-info,
+.x-competition .s-info {
   background-color: #fbfbfb;
   margin: 8px 0;
   padding: 8px;
@@ -1048,26 +1056,38 @@ a:active {
   border-radius: 8px;
   font-size: 12px;
 }
-.s-competition .s-award-stream {
+.competition .s-award-stream,
+.s-competition .s-award-stream,
+.x-competition .s-award-stream {
   margin: 4px 0;
 }
-.s-competition .s-award-stream .award-stream {
+.competition .s-award-stream .s-award-stream,
+.s-competition .s-award-stream .s-award-stream,
+.x-competition .s-award-stream .s-award-stream {
   margin: 0;
 }
-.s-competition .s-award-stream .award-stream .x-thumb {
+.competition .s-award-stream .s-award-stream .x-thumb,
+.s-competition .s-award-stream .s-award-stream .x-thumb,
+.x-competition .s-award-stream .s-award-stream .x-thumb {
   position: relative;
   display: inline-block;
 }
-.s-competition .s-award-stream .award-stream .x-thumb .image-link {
+.competition .s-award-stream .s-award-stream .x-thumb .s-image-link,
+.s-competition .s-award-stream .s-award-stream .x-thumb .s-image-link,
+.x-competition .s-award-stream .s-award-stream .x-thumb .s-image-link {
   overflow: hidden;
 }
-.s-competition .s-award-stream .award-stream .x-thumb .ribbon {
+.competition .s-award-stream .s-award-stream .x-thumb .s-sribbon,
+.s-competition .s-award-stream .s-award-stream .x-thumb .s-sribbon,
+.x-competition .s-award-stream .s-award-stream .x-thumb .s-sribbon {
   position: absolute;
   bottom: -10px;
   right: -5px;
   z-index: 99;
 }
-.s-competition .ui-li-desc {
+.competition .ui-li-desc,
+.s-competition .ui-li-desc,
+.x-competition .ui-li-desc {
   white-space: normal;
 }
 .s-feed-header.s-inline-header {
