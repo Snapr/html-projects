@@ -6,7 +6,7 @@ var tab_bar = view.extend({
     active: null,
 
     initialize: function(){
-        this.load_template('components/tab_bar');
+        this.load_template(config.get('tab_bar_template'));
         // auth.on('change', this.render, this);  // this is no longer needed because the bar is rendered every page change
     },
 

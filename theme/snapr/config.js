@@ -17,6 +17,8 @@ return {
         tumblr_xauth: true,
         twitter_xauth: true,
 
+        //tab_bar_template: 'components/tab_bar',
+
         default_tumblr_host: 'snaprtest.tumblr.com',
         tumblr_key: '0i9zD5xabR9QlY0BWhFV2XiRr1wI329fPlH4S5kPuvuBWkRQUb',
 
@@ -33,7 +35,7 @@ return {
         //zoom: 15, // default for map
         //feed_count: 9, // number of images to show in feed views
         //map_count: 10, // number of images to show on the map
-        dash_tumblr_posts: 1,
+        dash_tumblr_posts: 1
         //side_scroll_initial: 6, // numbers of images to show in side-scrollers initially
         //side_scroll_more: 10, // number of extra images to load into side-scrollers when "load more" is activated
         //activity_count: 25,  // how many items to load in activity page
