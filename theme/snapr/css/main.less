@@ -204,7 +204,7 @@ a:active{
 .s-centered-link{
     text-align: center;
     margin-top: 48px;
-    font-family: @fontSpecial;
+    .button-font-bold();
     text-shadow:0 1px 1px @shadowWhite;
     a{
         text-shadow:0 1px 1px @shadowWhite;
@@ -213,9 +213,9 @@ a:active{
 
 .s-warning-message{
     padding: @padding * 2;
-    background-color: @snaprYellow;
+    background-color: @alert;
     .border-radius(@corners);
-    border-bottom: @borderGray;
+    border-bottom: @alertTint;
 }
 
 
@@ -334,13 +334,13 @@ a:active{
 
 .s-bg-load-bar{
     height:4px;
-    background: @yellow;
+    background: @highlight;
     overflow: hidden;
     .s-load-bar-animate{
         display: block;
         width: 100%;
         height: 4px;
-        .diagonal-stripes(@yellowTint, 40px);
+        .diagonal-stripes(@highlightTint, 40px);
          -webkit-animation: animate-bar .5s linear infinite;
          -moz-animation: animate-bar .5s linear infinite;
     }
@@ -496,7 +496,7 @@ a:active{
         &.ui-btn-active{
             color: white;
             text-shadow: rgba(0, 0, 0, .5) 0px -1px 1px;
-            background: #007FEA;
+            background: @system;
             text-shadow: 0 -1px 0px #093B5C;
             .box-shadow(0 4px 5px -2px rgba(0,0,0,0.3) inset);
             font-family: @font;
@@ -707,7 +707,7 @@ a:active{
 
 .s-count-item{
     background-color: @blue;
-    .linear-gradient(@blue, @blueTint);
+    .linear-gradient(@system, @systemTint);
     color: @white;
     text-shadow: @shadowDarker 0px -1px 1px;
 }
@@ -863,7 +863,7 @@ textarea.ui-input-text {
          &.x-loading {
              .s-load-more-inline{
                  .ui-icon-refresh{
-                     background-image: url('../gfx/spinner.png');
+                     background-image: url('@{gfx}@{gfxSpinner}');
                     background-position: center!important;
                  }
              }
@@ -980,10 +980,10 @@ textarea.ui-input-text {
         font-size: @fontSizeSmall;
         color: @grayDark;
         padding: 4px;
-        background-color: lighten(@yellow, 20%);
+        background-color: lighten(@alert, 20%);
         .border-radius(@cornersSmall);
         &::after{
-            .arrow-up(6px, lighten(@yellow, 20%), 16px, 0)
+            .arrow-up(6px, lighten(@alert, 20%), 16px, 0)
         }
     }
     .x-invalid .ui-icon-check{
@@ -1046,8 +1046,8 @@ textarea.ui-input-text {
     text-transform: lowercase;
     .s-menu-btns{
         margin-bottom: 0;
-        background: lighten(@yellow, 10%)!important;
-        .box-shadow(inset 0 -2px 100px @yellowTint);
+        background: lighten(@highlight, 10%)!important;
+        .box-shadow(inset 0 -2px 100px @highlightTint);
         .border-top-radius(@cornersPage);
         margin-left: -@padding * 2;
         margin-right: -@padding * 2;
@@ -1122,8 +1122,8 @@ textarea.ui-input-text {
         }
     }
     .s-upload-count{
-        background-color: @blue;
-        .linear-gradient(@blue, @blueTint);
+        background-color: @system;
+        .linear-gradient(@system, @systemTint);
         display: none;
         position: absolute;
         top: 20%;
@@ -1946,8 +1946,8 @@ textarea.ui-input-text {
     background-color: lighten(@grayLight, 10%);
     .s-bar-wrapper{
         .s-bar-prog{
-            background-color: @yellow;
-            .linear-gradient(@yellow, @yellowTint);
+            background-color: @highlight;
+            .linear-gradient(@highlight, @highlightTint);
         }
         .s-bar-bg{
             background-color: #C5C4C4;
