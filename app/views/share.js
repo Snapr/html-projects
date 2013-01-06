@@ -616,8 +616,11 @@ return page_view.extend({
         upload_params.thumbnail = this.image_data_url;
 
         analytics.trigger('share', upload_params);
-        window.location.hash = config.get('share_redirect') + $.param(upload_params);
         xhr_upload(upload_params);
+
+        var url_params = _.extend({}, upload_params);
+        delete url_params.thumbnail;
+        window.location.hash = config.get('share_redirect') + $.param(url_params);
     },
 
     get_status: function(){
