@@ -1,5 +1,5 @@
 /*global _  define require */
-define(['views/base/view', 'utils/local_storage', 'utils/alerts', 'native_bridge', 'models/photo'], function(view, local_storage, alerts, native_bridge, photo_model){
+define(['views/base/view', 'utils/local_storage', 'utils/alerts', 'utils/string', 'native_bridge', 'models/photo'], function(view, local_storage, alerts, string_utils, native_bridge, photo_model){
 return view.extend({
 
     tagName: "div",
@@ -37,7 +37,7 @@ return view.extend({
                     description: unescape( this.photo.get('description') ),
                     venue: this.photo.get('venue_name') || this.venue_name || (this.photo.get('location') && this.photo.get('location').foursquare_venue_name),
                     shared: this.photo.get('shared'),
-                    facebook_sharing: (
+                    facebook_sharing: string_utils.bool(
                         this.photo.get('facebook_album') ||
                         this.photo.get('facebook_newsfeed') ||
                         this.photo.get('shared') && this.photo.get('shared').facebook_album ||
@@ -45,17 +45,17 @@ return view.extend({
                         this.photo.get('sharing') && this.photo.get('sharing').facebook_album ||
                         this.photo.get('sharing') && this.photo.get('sharing').facebook_newsfeed
                     ),
-                    twitter_sharing: (
+                    twitter_sharing: string_utils.bool(
                         this.photo.get('tweet') ||
                         this.photo.get('shared') && this.photo.get('shared').tweeted ||
                         this.photo.get('sharing') && this.photo.get('sharing').tweeted
                         ),
-                    foursquare_sharing: (
+                    foursquare_sharing: string_utils.bool(
                         this.photo.get('foursquare_checkin') ||
                         this.photo.get('shared') && this.photo.get('shared').foursquare_checkin ||
                         this.photo.get('sharing') && this.photo.get('sharing').foursquare_checkin
                     ),
-                    tumblr_sharing: (
+                    tumblr_sharing: string_utils.bool(
                         this.photo.get('tumblr') ||
                         this.photo.get('shared') && this.photo.get('shared').tumblr ||
                         this.photo.get('sharing') && this.photo.get('sharing').tumblr

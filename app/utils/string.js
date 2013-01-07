@@ -2,6 +2,10 @@
 define([], function(){
 var string_utils = {};
 
+string_utils.bool = function(x){
+    return x && x !== 'false' && x !== '0';
+};
+
 string_utils.ordinal = function(number){
     if( number!=11 && number!=12 && number!=13 ){
         number = String(number);
