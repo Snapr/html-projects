@@ -52,7 +52,7 @@ return {
 
             //  signin with facebook should create users rather than autofill join form
             //  default: false
-            autocreate_fb_users: true
+            autocreate_fb_users: true,
 
 
         //  Geolocation
@@ -91,6 +91,10 @@ return {
             //  in place of share text entry area
             //  default: false
             //app_sharing_opt_in_message: true,"
+
+        //  when no in appmode, use xhr for uplaods
+        //  default: true if browser is capable
+        xhr_uploads: false
 
         //  list of feed views to show upload queue in
         //  dafault: 'my-snaps' only

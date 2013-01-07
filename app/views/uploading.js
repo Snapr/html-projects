@@ -53,7 +53,7 @@ var uploading = page_view.extend({
 
         this.progress_el = this.$( ".x-progress-header" ).empty();
 
-        if (this.query.photo_id){
+        if (this.query.photo_id && !local_storage.get("appmode")){
             // web flow - photo is uploaded then user is sent here
             // so the id and photo on the server are available
             this.upload_complete(this.query.photo_id);
@@ -206,6 +206,9 @@ var uploading = page_view.extend({
         // if there's no photo yet we probably haven't recieved an upload_progress call
         // native code, when we do this function will get called again
         if(!photo){ return; }
+
+        var this_view = this;
+        photo.on('complete', function(){this_view.upload_complete(photo.id);});
 
         this.progress_view = new upload_progress_li({
             photo: photo,
