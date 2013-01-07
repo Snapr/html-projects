@@ -96,7 +96,7 @@
                                 <fieldset class="s-upload-image-location action-icons">
 
                                     <div id="no-foursquare-venue"
-                                        <% if (foursquare_sharing && status != "private"){%> style="display:none;"<%}%>
+                                        <% if (venue_or_geocode == 'venue'){%> style="display:none;"<%}%>
                                          class="<% if (photo.attributes.location && !photo.attributes.location.location){%>x-ajax-loading <%}%>x-no-foursquare-venue">
 
                                         <span class="s-image-location">
@@ -121,7 +121,7 @@
                                         </span>
                                     </div>
                                     <div id="foursquare-venue"
-                                        <%if (!foursquare_sharing || status == "private"){%> style="display:none;"<%}%>
+                                        <%if (venue_or_geocode == 'geocode'){%> style="display:none;"<%}%>
                                         class="<% if (photo.attributes.location && !photo.attributes.location.foursquare_venue_name){%>x-ajax-loading<%}%> x-foursquare-venue">
                                         <a data-role="button" id="foursquare-venue" data-icon="arrow-right">
                                             <span class="ui-icon ui-icon-venue"></span>

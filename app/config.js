@@ -46,6 +46,7 @@ var config_model = Backbone.Model.extend({
 
         app_sharing_opt_in: false,
         app_sharing_opt_in_message: false,
+        app_photos_must_have_venue: false,
 
         show_queue: ['my-snaps'],
 

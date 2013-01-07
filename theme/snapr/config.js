@@ -92,6 +92,10 @@ return {
             //  default: false
             //app_sharing_opt_in_message: true,"
 
+        //  any photos share with the app must have a 4sq venue/snapr spot
+        //  default: false
+        //app_photos_must_have_venue: true,
+
         //  when no in appmode, use xhr for uplaods
         //  default: true if browser is capable
         xhr_uploads: false

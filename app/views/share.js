@@ -56,12 +56,13 @@ return page_view.extend({
     },
 
     render: function(callback){
-        if (this.venue_or_geocode() == 'venue' &&
+        var venue_or_geocode = this.venue_or_geocode();
+        if (venue_or_geocode == 'venue' &&
             !this.model.get("location").foursquare_venue_id &&
             local_storage.get( "status" ) != "private"){
             this.get_foursquare_venues();
         }
-        if(this.venue_or_geocode() == 'geocode' && !this.query.location ){
+        if(venue_or_geocode == 'geocode' && !this.query.location ){
             this.get_reverse_geocode();
         }
 
@@ -92,7 +93,8 @@ return page_view.extend({
             saved_description: unescape(description),
             saved_location: unescape(location),
             comp: this.comp,
-            local_storage: local_storage
+            local_storage: local_storage,
+            venue_or_geocode: venue_or_geocode
         }, ['.x-content']).trigger("create");
 
 
@@ -181,6 +183,12 @@ return page_view.extend({
     },
 
     venue_or_geocode: function(){
+        if(config.get('app_photos_must_have_venue')){
+            if(config.get('app_sharing_opt_in') && !this.is_sharing()){
+                return 'geocode';
+            }
+            return 'venue';
+        }
         // some apps may override this
         return local_storage.get( "foursquare-sharing") ? 'venue' : 'geocode';
     },
