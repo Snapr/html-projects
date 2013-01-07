@@ -53,10 +53,10 @@ var uploading = page_view.extend({
 
         this.progress_el = this.$( ".x-progress-header" ).empty();
 
-        if (this.query.photo_id && !local_storage.get("appmode")){
+        if (this.query.photo && !local_storage.get("appmode")){
             // web flow - photo is uploaded then user is sent here
             // so the id and photo on the server are available
-            this.upload_complete(this.query.photo_id);
+            this.upload_complete(this.query.photo);
         }else{
             // no photo_id = in appmode the photo is probably being uploaded by the native_bridge
             // app in the background, we can show progress here.
