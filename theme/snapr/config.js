@@ -12,7 +12,7 @@ return {
         //environment: 'live',
 
         //  default: undefined
-        //app_group: 'my-app',
+        app_group: 'snapr',
 
         //  "home page"
         //  default: 'home'
