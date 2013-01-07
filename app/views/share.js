@@ -296,9 +296,9 @@ return page_view.extend({
         // I don't know what this timeout is for, maybe local storage takes a while to actually set.
         setTimeout( function(){
             share_view.render(function(){
-                if (this.venue_or_geocode() == 'geocode'){
+                if (share_view.venue_or_geocode() == 'geocode'){
                     share_view.get_reverse_geocode();
-                }else if (status == "public" && this.venue_or_geocode() == 'venue'){
+                }else if (status == "public" && share_view.venue_or_geocode() == 'venue'){
                     share_view.get_foursquare_venues();
                 }else{
                     share_view.$(".x-no-foursquare-venue, .x-foursquare-venue").removeClass("x-ajax-loading");
@@ -343,10 +343,10 @@ return page_view.extend({
     },
 
     is_sharing: function(){
-        var this_view = this;
-        if(this.get_status() != 'private'){
+        if(!config.get('app_sharing_opt_in') || this.get_status() != 'private'){
             return true;
         }
+        var this_view = this;
         return _.any(
             ['facebook', 'foursquare', 'twitter', 'tumblr', 'app'],
             function(service){
