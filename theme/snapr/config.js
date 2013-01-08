@@ -34,7 +34,7 @@ return {
 
             //  services this app uses
             //  default: all 5
-            services: ['twitter', 'facebook', 'foursquare', 'tumblr', 'appdotnet'],
+            services: ['twitter', 'tumblr','facebook', 'foursquare'],
 
             //  use xauth flow
             //  client must have xAuth permission from 3rd party
@@ -90,7 +90,7 @@ return {
             //  show a message explaining app_sharing_opt_in on share screen
             //  in place of share text entry area
             //  default: false
-            //app_sharing_opt_in_message: true,"
+           // app_sharing_opt_in_message: "message",
 
         //  any photos share with the app must have a 4sq venue/snapr spot
         //  default: false
