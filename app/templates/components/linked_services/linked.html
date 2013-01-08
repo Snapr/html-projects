@@ -74,6 +74,15 @@
                 <option value="true" <% if (service.get('show_profile_link')){%>selected<%}%>><%= T('On') %></option>
             </select>
         </div>
+        
+        <% break; case 'appdotnet': %>
+               <h3>
+                   <span class="s-appdotnet-sharing s-share-icon-small">
+                       <span class="ui-icon"></span>
+                   </span>
+                   <%= service.get('username') %>
+               </h3>
+
 
     <% } %>
     <div class="ui-grid-b">

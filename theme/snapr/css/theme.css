@@ -1213,7 +1213,7 @@
   box-shadow: inset 0 3px 20px #309dc2;
 }
 .s-share-icon-small.s-twitter-sharing .ui-icon {
-  background-position: 0 0px !important;
+  background-position: 0 -21px !important;
 }
 .s-share-icon-small.s-facebook-sharing {
   background-color: #507ab8;
@@ -1222,7 +1222,7 @@
   box-shadow: inset 0 3px 20px #2e5998;
 }
 .s-share-icon-small.s-facebook-sharing .ui-icon {
-  background-position: 0 -21px !important;
+  background-position: 0 -42px !important;
 }
 .s-share-icon-small.s-tumblr-sharing {
   background-color: #5a687d;
@@ -1231,7 +1231,7 @@
   box-shadow: inset 0 3px 20px #2c3c54;
 }
 .s-share-icon-small.s-tumblr-sharing .ui-icon {
-  background-position: 0 -42px !important;
+  background-position: 0 -63px !important;
 }
 .s-share-icon-small.s-foursquare-sharing {
   background-color: #34a0ce;
@@ -1240,7 +1240,16 @@
   box-shadow: inset 0 3px 20px #29708e;
 }
 .s-share-icon-small.s-foursquare-sharing .ui-icon {
-  background-position: 0 -63px !important;
+  background-position: 0 -84px !important;
+}
+.s-share-icon-small.s-appdotnet-sharing {
+  background-color: #31384d;
+  -moz-box-shadow: inset 0 3px 20px #141927;
+  -webkit-box-shadow: inset 0 3px 20px #141927;
+  box-shadow: inset 0 3px 20px #141927;
+}
+.s-share-icon-small.s-appdotnet-sharing .ui-icon {
+  background-position: 0 -105px !important;
 }
 .ui-icon.spot-icon,
 .s-category-btn .ui-icon {
@@ -6709,10 +6718,10 @@ div.ps-carousel-item-loading {
   }
   .s-share-icon-small .ui-icon {
     background-image: url('../gfx/hdpi/share-icons-small.png');
-    -webkit-background-size: 21px 84px;
-    -moz-background-size: 21px 84px;
-    -o-background-size: 21px 84px;
-    background-size: 21px 84px;
+    -webkit-background-size: 21px 126px;
+    -moz-background-size: 21px 126px;
+    -o-background-size: 21px 126px;
+    background-size: 21px 126px;
   }
   .ui-icon.spot-icon,
   .s-category-btn .ui-icon {
@@ -7042,10 +7051,10 @@ div.ps-carousel-item-loading {
   }
   .s-share-icon-small .ui-icon {
     background-image: url('../gfx/retina/share-icons-small.png');
-    -webkit-background-size: 21px 84px;
-    -moz-background-size: 21px 84px;
-    -o-background-size: 21px 84px;
-    background-size: 21px 84px;
+    -webkit-background-size: 21px 126px;
+    -moz-background-size: 21px 126px;
+    -o-background-size: 21px 126px;
+    background-size: 21px 126px;
   }
   .ui-icon.spot-icon,
   .s-category-btn .ui-icon {
