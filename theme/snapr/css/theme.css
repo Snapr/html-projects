@@ -5507,6 +5507,18 @@ textarea.ui-input-text {
 .s-share-photo .s-upload-image-sharing .ui-btn-inner {
   padding: 0;
 }
+.s-share-photo .s-upload-image-sharing label[for="app-sharing"] .ui-icon {
+  background-position: 0 0px;
+}
+.s-share-photo .s-upload-image-sharing label[for="app-sharing"].ui-checkbox-on {
+  background-color: #ffff00;
+  -moz-box-shadow: inset 0 3px 20px #ffe400;
+  -webkit-box-shadow: inset 0 3px 20px #ffe400;
+  box-shadow: inset 0 3px 20px #ffe400;
+}
+.s-share-photo .s-upload-image-sharing label[for="app-sharing"].ui-checkbox-on .ui-icon {
+  background-position: -42px 0px;
+}
 .s-share-photo .s-upload-image-sharing label[for="twitter-sharing"] .ui-icon {
   background-position: 0 -42px;
 }
