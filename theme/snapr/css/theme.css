@@ -5499,7 +5499,7 @@ textarea.ui-input-text {
   padding: 0;
 }
 .s-share-photo .s-upload-image-sharing label[for="twitter-sharing"] .ui-icon {
-  background-position: 0 0px;
+  background-position: 0 -42px;
 }
 .s-share-photo .s-upload-image-sharing label[for="twitter-sharing"].ui-checkbox-on {
   background-color: #68d9ff;
@@ -5508,10 +5508,10 @@ textarea.ui-input-text {
   box-shadow: inset 0 3px 20px #309dc2;
 }
 .s-share-photo .s-upload-image-sharing label[for="twitter-sharing"].ui-checkbox-on .ui-icon {
-  background-position: -42px 0px;
+  background-position: -42px -42px;
 }
 .s-share-photo .s-upload-image-sharing label[for="facebook-sharing"] .ui-icon {
-  background-position: 0 -42px;
+  background-position: 0 -84px;
 }
 .s-share-photo .s-upload-image-sharing label[for="facebook-sharing"].ui-checkbox-on {
   background-color: #507ab8;
@@ -5520,10 +5520,10 @@ textarea.ui-input-text {
   box-shadow: inset 0 3px 20px #2e5998;
 }
 .s-share-photo .s-upload-image-sharing label[for="facebook-sharing"].ui-checkbox-on .ui-icon {
-  background-position: -42px -42px;
+  background-position: -42px -84px;
 }
 .s-share-photo .s-upload-image-sharing label[for="tumblr-sharing"] .ui-icon {
-  background-position: 0 -84px;
+  background-position: 0 -126px;
 }
 .s-share-photo .s-upload-image-sharing label[for="tumblr-sharing"].ui-checkbox-on {
   background-color: #5a687d;
@@ -5532,10 +5532,10 @@ textarea.ui-input-text {
   box-shadow: inset 0 3px 20px #2c3c54;
 }
 .s-share-photo .s-upload-image-sharing label[for="tumblr-sharing"].ui-checkbox-on .ui-icon {
-  background-position: -42px -84px;
+  background-position: -42px -126px;
 }
 .s-share-photo .s-upload-image-sharing label[for="foursquare-sharing"] .ui-icon {
-  background-position: 0 -126px;
+  background-position: 0 -168px;
 }
 .s-share-photo .s-upload-image-sharing label[for="foursquare-sharing"].ui-checkbox-on {
   background-color: #34a0ce;
@@ -5544,7 +5544,7 @@ textarea.ui-input-text {
   box-shadow: inset 0 3px 20px #29708e;
 }
 .s-share-photo .s-upload-image-sharing label[for="foursquare-sharing"].ui-checkbox-on .ui-icon {
-  background-position: -42px -126px;
+  background-position: -42px -168px;
 }
 .s-share-photo .s-upload-image-location .s-location-name,
 .s-share-photo .s-upload-image-location .s-foursquare-venue-name {
@@ -6843,10 +6843,10 @@ div.ps-carousel-item-loading {
   }
   .s-share-photo .s-upload-image-sharing .ui-icon {
     background-image: url('../gfx/hdpi/share-icons-large.png');
-    -webkit-background-size: 84px 168px;
-    -moz-background-size: 84px 168px;
-    -o-background-size: 84px 168px;
-    background-size: 84px 168px;
+    -webkit-background-size: 84px 252px;
+    -moz-background-size: 84px 252px;
+    -o-background-size: 84px 252px;
+    background-size: 84px 252px;
   }
   .s-share-photo .s-upload-image-location .ui-btn .ui-icon {
     background-image: url('../gfx/hdpi/action-icons-custom.png');
@@ -7183,10 +7183,10 @@ div.ps-carousel-item-loading {
   }
   .s-share-photo .s-upload-image-sharing .ui-icon {
     background-image: url('../gfx/retina/share-icons-large.png');
-    -webkit-background-size: 84px 168px;
-    -moz-background-size: 84px 168px;
-    -o-background-size: 84px 168px;
-    background-size: 84px 168px;
+    -webkit-background-size: 84px 252px;
+    -moz-background-size: 84px 252px;
+    -o-background-size: 84px 252px;
+    background-size: 84px 252px;
   }
   .s-share-photo .s-upload-image-location .ui-btn .ui-icon {
     background-image: url('../gfx/retina/action-icons-custom.png');

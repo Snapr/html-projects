@@ -33,8 +33,9 @@ return {
         //  Linked Services
 
             //  services this app uses
+            // ['twitter', 'tumblr','facebook', 'foursquare', 'appdotnet']
             //  default: all 5
-            services: ['twitter', 'tumblr','facebook', 'foursquare'],
+            services: ['twitter', 'tumblr','facebook', 'foursquare', 'appdotnet'],
 
             //  use xauth flow
             //  client must have xAuth permission from 3rd party

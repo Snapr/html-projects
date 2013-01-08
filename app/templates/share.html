@@ -88,6 +88,13 @@
                                         <%if (foursquare_sharing && status != "private"){%>checked="true"<%}%> />
                                         <label for="foursquare-sharing"><span class="ui-icon"></span>Foursquare</label>
                                     <% } %>
+                                    
+                                     <% if(_.contains(config.get('services'), 'appdotnet')){ %>
+                                            <input type="checkbox" name="appdotnet-sharing" id="appdotnet-sharing"
+                                            <%if (status == "private"){%>disabled="true"<%}%>
+                                            <%if (appdotnet_sharing && status != "private"){%>checked="true"<%}%> />
+                                            <label for="appdotnet-sharing"><span class="ui-icon"></span>App.Net</label>
+                                        <% } %>
 
                                 </fieldset>
 
