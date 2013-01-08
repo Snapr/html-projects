@@ -33,12 +33,13 @@
                                 <% if (post.get('photos')) { %>
                                     <ul class="s-photo-set">
                                         <% _.each(post.get('photos'), function (photo) { %>
+                                            <% var height = 250, size = _.find(photo.alt_sizes, function(size){return size.height >= height}) || size.alt_sizes[photo.alt_sizes.length-1] %>
                                             <li>
-                                               
+
                                                 <a <%if (post.get('link_url')) {%> href="<%= post.get('link_url') %>"<% } %> >
-                                                <img src="<%= getPhotoURL(photo, 500) %>" />
+                                                    <img <% if(size.height < height){ %>class="undersize"<% } %> src="<%= size.url %>" />
                                                 </a>
-                                                
+
                                             </li>
                                         <% }); %>
                                     </ul>
