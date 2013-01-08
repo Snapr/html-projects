@@ -4,12 +4,10 @@ function(config, page_view, photo_collection, thumbnail, auth, local_storage, st
 return page_view.extend({
 
     post_initialize: function(){
-        this.collection = new photo_collection();
-        this.collection.url = config.get('api_base') + "/search/";
-        this.collection.data = {
+        this.collection = new photo_collection([], {data: {
             sort:"weighted_score",
             n:20
-        };
+        }});
         var view = this;
         this.collection.bind( "reset", function(){
             view.show_bg_loader(false);
@@ -17,7 +15,7 @@ return page_view.extend({
 
         this.list_view = new thumbnail({
             collection: this.collection,
-            el: $('.x-thumbs'),
+            el: this.$('.x-thumbs'),
             back: "Popular"
         });
 

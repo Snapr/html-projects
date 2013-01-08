@@ -49,7 +49,7 @@ return Backbone.Collection.extend({
 
     fetch: function(options) {
         options = options || {};
-        options.data = _.defaults(options.data || {}, this.defaults);
+        options.data = _.defaults(options.data || {}, this.data);
         if(this.exclude && options.data && options.data.n){
             options.data.n += this.exclude.length;
         }
@@ -57,7 +57,7 @@ return Backbone.Collection.extend({
     },
 
     fetch_newer: function( options ){
-        var data = _.defaults(options.data || {}, this.defaults);
+        var data = _.defaults(options.data || {}, this.data);
         if (this.models.length){
             options.data.paginate_to = this.models[0].get('id');
         }
@@ -69,7 +69,7 @@ return Backbone.Collection.extend({
     },
 
     fetch_older: function( options ){
-        var data = _.defaults(options.data || {}, this.defaults);
+        var data = _.defaults(options.data || {}, this.data);
         if (this.models.length){
             data.paginate_from = this.models[this.length-1].get('id');
         }
