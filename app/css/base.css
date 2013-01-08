@@ -984,6 +984,20 @@ a:active {
   padding: 0;
   list-style: none;
 }
+#tumblr-posts .s-tumblr-stream .s-tumblr-post-item .s-tumblr-post .s-photo-set.s-multiple-photos {
+  white-space: nowrap;
+}
+#tumblr-posts .s-tumblr-stream .s-tumblr-post-item .s-tumblr-post .s-photo-set.s-multiple-photos li {
+  min-height: 250px;
+  min-width: 250px;
+  text-align: center;
+  vertical-align: middle;
+  display: inline-block;
+}
+#tumblr-posts .s-tumblr-stream .s-tumblr-post-item .s-tumblr-post .s-photo-set.s-multiple-photos li img {
+  max-height: 250px!important;
+  width: auto!important;
+}
 #tumblr-posts .s-tumblr-footer {
   margin: 0 -8px;
 }

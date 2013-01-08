@@ -1046,10 +1046,26 @@ a:active{
                     margin: 0;
                     padding: 0;
                     list-style: none;
+                   
                     li{
                         margin: 0;
                         padding: 0;
                         list-style: none;
+                    }
+                    &.s-multiple-photos{
+                         white-space: nowrap;
+                        li{
+                            min-height: 250px;
+                            min-width: 250px;
+                            text-align: center;
+                            vertical-align: middle;
+                            display: inline-block;
+                            
+                            img{
+                                max-height: 250px!important;
+                                width: auto!important;
+                            }
+                        }
                     }
                 }
             }
