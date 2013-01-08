@@ -352,7 +352,7 @@ var competition = view.extend({
     toggle: function(){
         this.$el.toggleClass('x-open x-closed');
         this.$el.toggleClass('s-arrow-d-left');
-        this.$('.banner').fadeToggle();
+        this.$('.x-banner').fadeToggle();
     }
 });
 
