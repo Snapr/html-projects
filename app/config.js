@@ -72,7 +72,9 @@ var config_model = Backbone.Model.extend({
         side_scroll_more: 10,
         activity_count: 25,
         nearby_radius: 5000,
-        share_redirect: "#/uploading/?"
+        share_redirect: "#/uploading/?",
+
+        web_link_base: ''
     },
     initialize: function(){
         var update_env = _.bind(function(){

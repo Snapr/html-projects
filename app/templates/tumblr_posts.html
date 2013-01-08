@@ -15,6 +15,28 @@
 
             <section class="s-tumblr-stream x-posts image-item-block">
 
+                <% function convert_link(link){
+                    var base = config.get('web_link_base');
+                    if(!base){ return link; }
+
+                    var base_starts = link.indexOf(base);
+                    if(base_starts == -1){ return link; }
+
+                    var ending = link.substr(base_starts+base.length),
+                        details = /^\/([a-z_]+)?\/?([A-Z0-9]+)?\/$/.exec(ending);
+                    if(details == null){ return link; }
+
+                    var username = details[1],
+                        photo_id = details[2];
+
+                    link = '#/feed/?'
+                        + (username ? 'username='+username : '')
+                        + (username && photo_id ? '&' : '')
+                        + (photo_id ? 'photo_id='+photo_id : '');
+                    return link;
+
+                } %>
+
                 <% _.each(obj.posts || [], function(post){ %>
                     <article class="s-tumblr-post-item">
 
@@ -36,7 +58,7 @@
                                             <% var height = 250, size = _.find(photo.alt_sizes, function(size){return size.height >= height}) || size.alt_sizes[photo.alt_sizes.length-1] %>
                                             <li>
 
-                                                <a <%if (post.get('link_url')) {%> href="<%= post.get('link_url') %>"<% } %> >
+                                                <a <%if (post.get('link_url')) {%> href="<%= convert_link(post.get('link_url')) %>"<% } %> >
                                                     <img <% if(size.height < height){ %>class="undersize"<% } %> src="<%= size.url %>" />
                                                 </a>
 
@@ -56,9 +78,9 @@
 
                                 <h4>
                                     <% if(post.get('title') != ""){%>
-                                    <a href="<%=post.get('url')%>"><%=post.get('title')%> <span class="s-tumblr-extra">&rarr;</span></a>
+                                    <a href="<%= convert_link(post.get('url'))%>"><%=post.get('title')%> <span class="s-tumblr-extra">&rarr;</span></a>
                                     <% } else {%>
-                                    <a href="<%=post.get('url')%>"><%=post.get('url')%> <span class="s-tumblr-extra">&rarr;</span></a>
+                                    <a href="<%= convert_link(post.get('url'))%>"><%=post.get('url')%> <span class="s-tumblr-extra">&rarr;</span></a>
                                     <% } %>
                                     </h4>
                                 <p><%=post.get('description').replace(/\n/g, '<br>' )%></p>
@@ -122,7 +144,7 @@
 
                         <% }%>
                         <div class="s-tumblr-metadata">
-                            <a href="<%= post.get('post_url') %>" class="ui-bar" data-role="button" data-iconpos="right" data-icon="arrow-r" data-theme="z" data-corners="false" data-shadow="false">
+                            <a href="<%= convert_link(post.get('post_url')) %>" class="ui-bar" data-role="button" data-iconpos="right" data-icon="arrow-r" data-theme="z" data-corners="false" data-shadow="false">
                             <span class="ui-icon ui-icon-tumblr-<%= post.get('type') %> tumblr-icon"></span>
                             <%= string_utils.time_ago(post.get('timestamp')*1000) %><% if (post.get('note_count') > 0){ %>, <%= post.get('note_count') %> notes<%}%>
                             </a>
