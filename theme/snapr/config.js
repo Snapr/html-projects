@@ -55,6 +55,7 @@ return {
             //  default: false
             autocreate_fb_users: true,
 
+            web_link_base: 'sna.pr',
 
         //  Geolocation
 
