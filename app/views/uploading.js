@@ -49,7 +49,7 @@ var uploading = page_view.extend({
             this.longitude = this.query.longitude;
         }
         this.foursquare_venue = this.query.spot || this.query.foursquare_venue || this.query.foursquare_venue_id;
-        this.venue_name = this.query.venue_name.replace('+', ' ');
+        this.venue_name = this.query.venue_name && this.query.venue_name.replace('+', ' ');
 
         this.progress_el = this.$( ".x-progress-header" ).empty();
 

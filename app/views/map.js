@@ -105,6 +105,8 @@ var map_view = page_view.extend({
             map_params.show_spots = true;
         }
 
+        if(!auth.has('access_token') && photo_params.group){ delete photo_params.group; }
+
         // create backbone models to store the params. This lets us bind
         // functions to changes
         this.photo_query = new Backbone.Model(photo_params);
