@@ -57,7 +57,7 @@
 
     <div class="s-image-item-base">
         <div data-role="controlgroup" data-type="horizontal" class="s-image-actions x-image-actions" data-theme="z">
-            <a data-role="button" data-theme="z" data-icon="heart" data-iconpos="left" class="x-favorite action-icons" data-count="<%= item.get('favorite_count') %>" <% if (item.get('favorite')){ %> selected <% }%>" >
+            <a data-role="button" data-theme="z" data-icon="heart" data-iconpos="left" class="x-favorite action-icons <% if (item.get('favorite')){ %> selected <% }%>" data-count="<%= item.get('favorite_count') %>" >
             <% if (item.get('favorite_count') > 0){ %>
                 <span class="s-text-symbol">&times; </span>
                 <%= item.get('favorite_count') %>
