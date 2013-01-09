@@ -88,6 +88,7 @@ return page_view.extend({
             tumblr_sharing: local_storage.get( "tumblr-sharing" ),
             foursquare_sharing: local_storage.get( "foursquare-sharing" ) && config.get('geolocation_enabled'),
             twitter_sharing: local_storage.get( "twitter-sharing" ),
+            appdotnet_sharing: local_storage.get( "appdotnet-sharing" ),
             edit: (local_storage.get( "aviary" ) || local_storage.get( "camplus_edit" )),
             camplus: local_storage.get( "camplus" ),
             saved_description: unescape(description),
