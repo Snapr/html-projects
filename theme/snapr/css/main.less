@@ -2105,6 +2105,14 @@ textarea.ui-input-text {
                 .ui-icon{background-position: @gfxService-x-hover @gfxShare-foursquare-y;}
            }
        }
+       label[for="appdotnet-sharing"]{
+              .ui-icon{background-position: @gfxService-x @gfxShare-appdotnet-y;}
+              &.ui-checkbox-on{
+                   background-color: @appdotnetBlue;
+                   .box-shadow(inset 0 3px 20px @appdotnetBlueTint);
+                   .ui-icon{background-position: @gfxService-x-hover @gfxShare-appdotnet-y;}
+              }
+          }
     }
     .s-upload-image-location{
          .s-location-name,

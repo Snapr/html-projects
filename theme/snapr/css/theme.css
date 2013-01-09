@@ -5567,6 +5567,18 @@ textarea.ui-input-text {
 .s-share-photo .s-upload-image-sharing label[for="foursquare-sharing"].ui-checkbox-on .ui-icon {
   background-position: -42px -168px;
 }
+.s-share-photo .s-upload-image-sharing label[for="appdotnet-sharing"] .ui-icon {
+  background-position: 0 -210px;
+}
+.s-share-photo .s-upload-image-sharing label[for="appdotnet-sharing"].ui-checkbox-on {
+  background-color: #31384d;
+  -moz-box-shadow: inset 0 3px 20px #141927;
+  -webkit-box-shadow: inset 0 3px 20px #141927;
+  box-shadow: inset 0 3px 20px #141927;
+}
+.s-share-photo .s-upload-image-sharing label[for="appdotnet-sharing"].ui-checkbox-on .ui-icon {
+  background-position: -42px -210px;
+}
 .s-share-photo .s-upload-image-location .s-location-name,
 .s-share-photo .s-upload-image-location .s-foursquare-venue-name {
   height: 40px;
