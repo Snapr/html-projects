@@ -320,11 +320,13 @@ return page_view.extend({
 
         this.toggle_sharing_message();
 
-        if (e.target.id == "foursquare-sharing"){
+        var venue = this.venue_or_geocode() == 'venue';
+
+        if (e.target.id == "foursquare-sharing" || e.target.id == "app-sharing"){
             if(this.check_geolocation()){
-                this.$(".x-no-foursquare-venue").toggle();
-                this.$(".x-foursquare-venue").toggle();
-                if ($(e.target).attr("checked")){
+                this.$(".x-no-foursquare-venue").toggle(!venue);
+                this.$(".x-foursquare-venue").toggle(!!venue);
+                if (venue){
                     this.get_foursquare_venues();
                 }else{
                     this.get_reverse_geocode();
@@ -351,7 +353,7 @@ return page_view.extend({
     },
 
     is_sharing: function(){
-        if(!config.get('app_sharing_opt_in') || this.get_status() != 'private'){
+        if(!config.get('app_sharing_opt_in') || this.get_status() == 'public'){
             return true;
         }
         var this_view = this;
@@ -632,8 +634,8 @@ return page_view.extend({
     },
 
     get_status: function(){
-        if(this.$('#image-status').attr('checked')){
-            if(!config.get('app_sharing_opt_in') || this.$('#app-sharing').attr('checked')){
+        if(local_storage.get('status')){
+            if(!config.get('app_sharing_opt_in') || local_storage.get('app-sharing')){
                 return 'public';
             }
             return 'public_non_app';

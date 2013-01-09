@@ -91,7 +91,7 @@ return {
 
             //  show a message explaining app_sharing_opt_in on share screen
             //  in place of share text entry area
-            //  default: false
+            //  default: "Select the tick to enable sharing to this app and its sites. You can also share to Facebook, Twitter, and more"
             //app_sharing_opt_in_message: "Select the tick to enable sharing to this app and its sites. You can also share to Facebook, Twitter, and more",
 
         //  any photos share with the app must have a 4sq venue/snapr spot

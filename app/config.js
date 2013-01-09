@@ -45,7 +45,7 @@ var config_model = Backbone.Model.extend({
         photoswipe: true,
 
         app_sharing_opt_in: false,
-        app_sharing_opt_in_message: false,
+        app_sharing_opt_in_message: "Select the tick to enable sharing to this app and its sites. You can also share to Facebook, Twitter, and more",
         app_photos_must_have_venue: false,
 
         show_queue: ['my-snaps'],
