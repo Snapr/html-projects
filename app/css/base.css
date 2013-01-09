@@ -986,7 +986,7 @@ a:active {
 }
 #tumblr-posts .s-tumblr-stream .s-tumblr-post-item .s-tumblr-post .s-photo-set.s-multiple-photos {
   white-space: nowrap;
-  display:inline-block;
+  display: inline-block;
 }
 #tumblr-posts .s-tumblr-stream .s-tumblr-post-item .s-tumblr-post .s-photo-set.s-multiple-photos li {
   min-height: 250px;

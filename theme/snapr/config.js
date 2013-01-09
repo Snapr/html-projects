@@ -35,7 +35,7 @@ return {
             //  services this app uses
             // ['twitter', 'tumblr','facebook', 'foursquare', 'appdotnet']
             //  default: all 5
-            services: ['twitter', 'tumblr','facebook', 'foursquare', 'appdotnet'],
+            services: ['twitter', 'tumblr','facebook', 'foursquare'],
 
             //  use xauth flow
             //  client must have xAuth permission from 3rd party
@@ -87,12 +87,12 @@ return {
             //  if true share screen will give option to share with app
             //  if uses chooses not to share photo will be 'public_non_app' status
             //  default: false
-            app_sharing_opt_in: true,
+            //app_sharing_opt_in: false,
 
             //  show a message explaining app_sharing_opt_in on share screen
             //  in place of share text entry area
             //  default: false
-            app_sharing_opt_in_message: "Select the tick to enable sharing to this app and its sites. You can also share to Facebook, Twitter, and more",
+            //app_sharing_opt_in_message: "Select the tick to enable sharing to this app and its sites. You can also share to Facebook, Twitter, and more",
 
         //  any photos share with the app must have a 4sq venue/snapr spot
         //  default: false
