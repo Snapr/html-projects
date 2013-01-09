@@ -1,5 +1,5 @@
 /*global _  define require */
-define(['views/base/page', 'collections/tumblr_post'], function(page_view, tumblr_collection){
+define(['views/base/page', 'collections/tumblr_post', 'iscroll'], function(page_view, tumblr_collection, iScroll){
 
 var tumblr_post_view = page_view.extend({
 
@@ -70,11 +70,26 @@ var tumblr_post_view = page_view.extend({
             }
         }, ['.x-posts', '.x-tumblr-footer', '.x-blog-title']);
 
+        this.scroll_init();
+
         this.$el.trigger('create');
 
         $.mobile.hidePageLoadingMsg();
         this.$el.removeClass('x-loading');
 
+    },
+
+    scroll_init: function(){
+        this.$('.x-multiple-photos .x-photo').each(function(){
+            var $this= $(this);
+            $this.closest('li').width($this.closest('li').height()*$this.data('aspect'));
+        });
+        new iScroll(this.$('.x-multiple-photos').parent()[0], {
+            vScroll: false,
+            hScrollbar: false,
+            momentum: false,
+            snap: 'li'
+        });
     }
 });
 

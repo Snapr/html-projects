@@ -527,8 +527,8 @@ a:active{
 @media only screen and (min-device-width : 719px) and (max-device-width : 721px) and (-webkit-min-device-pixel-ratio : 2) and (orientation : portrait) {
     .s-thumbs-grid-med,
     .x-grid .x-feed-images{
-       
-        
+
+
         .s-thumb-image,
         .s-load-more-inline{
             width: @thumbSize + 14px!important;
@@ -541,7 +541,7 @@ a:active{
     .x-grid .x-feed-images{
         padding: @padding 0 @padding / 2 @padding / 2 ;
     }
-    
+
     .s-image-streams{
         .x-stream{
             .x-thumbs{
@@ -668,7 +668,7 @@ a:active{
         &.x-right-pull{
             margin-right: 9px;
             .ui-icon-refresh{
-                background-position: @gfxRefresh-x @gfxRefresh-right-y; 
+                background-position: @gfxRefresh-x @gfxRefresh-right-y;
             }
         }
         &.x-left-pull{
@@ -708,7 +708,7 @@ a:active{
     &.x-loading,
     .x-loading {
         .s-load-more-inline{
-           
+
             .ui-icon-refresh{
                 background-image: url('@{gfx}@{gfxSpinner}');
                 background-position: center!important;
@@ -1046,21 +1046,22 @@ a:active{
                     margin: 0;
                     padding: 0;
                     list-style: none;
-                   
+
                     li{
                         margin: 0;
                         padding: 0;
                         list-style: none;
                     }
                     &.s-multiple-photos{
-                         white-space: nowrap;
+                        white-space: nowrap;
+                        display:inline-block;
                         li{
                             min-height: 250px;
                             min-width: 250px;
                             text-align: center;
                             vertical-align: middle;
                             display: inline-block;
-                            
+
                             img{
                                 max-height: 250px!important;
                                 width: auto!important;
@@ -1121,7 +1122,7 @@ a:active{
         .s-banner-image{
             display: block;
             width: 100%;
-          
+
         }
     }
     .s-info{
@@ -1618,7 +1619,7 @@ a:active{
     .s-share-settings-layer{
         position: static;
         width: 100%;
-        
+
         .s-message-area{
             min-height: 92px;
             margin: @padding * 2 0;
@@ -1632,7 +1633,7 @@ a:active{
                 text-overflow: ellipsis;
             }
         }
-        
+
         .s-share-settings{
             padding: @padding * 4 @padding * 2;
         }
@@ -1641,7 +1642,7 @@ a:active{
             position: relative;
         }
     }
-    
+
     .s-share-settings-bg-layer{
         background-color: rgba(0, 0, 0, .6);
         z-index: 0;
@@ -1649,7 +1650,7 @@ a:active{
         width: 100%;
         padding-top: @topBarHeight;
     }
-    
+
     .s-image-toggle{
         position: absolute;
         bottom: 0;
@@ -2602,9 +2603,9 @@ body.x-browser-testing{
           }
       }
       .s-bg-loader{
-          .spinner('@{gfxHDPI}@{gfxSpinnerSmall}');       
+          .spinner('@{gfxHDPI}@{gfxSpinnerSmall}');
       }
-      
+
       .s-foursquare-credit{
           .s-powered-by-foursquare{
               background-image: url('@{gfxHDPI}@{gfxFoursquarePower}');
@@ -2730,11 +2731,11 @@ body.x-browser-testing{
             }
         }
     }
-    
+
     .s-bg-loader{
-        .spinner('@{gfxRetina}@{gfxSpinnerSmall}');       
+        .spinner('@{gfxRetina}@{gfxSpinnerSmall}');
     }
-    
+
     .s-foursquare-credit{
           .s-powered-by-foursquare{
               background-image: url('@{gfxRetina}@{gfxFoursquarePower}');

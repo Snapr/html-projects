@@ -53,18 +53,20 @@
 
                             <div id="post-<%= post.get('id') %>" class="s-post-<%= post.get('type') %> s-tumblr-post">
                                 <% if (post.get('photos')) { %>
-                                    <ul class="s-photo-set">
+                                    <div>
+                                    <ul class="s-photo-set <% if(post.get('photos').length > 1){ %>s-multiple-photos x-multiple-photos<% } %>">
                                         <% _.each(post.get('photos'), function (photo) { %>
                                             <% var height = 250, size = _.find(photo.alt_sizes, function(size){return size.height >= height}) || size.alt_sizes[photo.alt_sizes.length-1] %>
                                             <li>
 
                                                 <a <%if (post.get('link_url')) {%> href="<%= convert_link(post.get('link_url')) %>"<% } %> >
-                                                    <img <% if(size.height < height){ %>class="undersize"<% } %> src="<%= size.url %>" />
+                                                    <img data-aspect="<%= size.width/size.height %>" class="x-photo <% if(size.height < height){ %>undersize<% } %>" src="<%= size.url %>" />
                                                 </a>
 
                                             </li>
                                         <% }); %>
                                     </ul>
+                                </div>
                                 <% } %>
                                 <div class="s-tumblr-body">
                                 <p class="s-tumblr-image-caption"><%=post.get('caption').replace(/\n/g, '<br>' )%></p>
