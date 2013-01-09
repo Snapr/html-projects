@@ -34,8 +34,9 @@ return {
 
             //  services this app uses
             // ['twitter', 'tumblr','facebook', 'foursquare', 'appdotnet']
+            // Note that appdotnet support is not yet complete
             //  default: all 5
-            services: ['twitter', 'tumblr','facebook', 'foursquare', 'appdotnet'],
+            services: ['twitter', 'tumblr','facebook', 'foursquare'],
 
             //  use xauth flow
             //  client must have xAuth permission from 3rd party
