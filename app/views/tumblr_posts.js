@@ -84,11 +84,13 @@ var tumblr_post_view = page_view.extend({
             var $this= $(this);
             $this.closest('li').width($this.closest('li').height()*$this.data('aspect'));
         });
-        new iScroll(this.$('.x-multiple-photos').parent()[0], {
-            vScroll: false,
-            hScrollbar: false,
-            momentum: false,
-            snap: 'li'
+        this.$('.x-multiple-photos').each(function(){
+            new iScroll($(this).parent()[0], {
+                vScroll: false,
+                hScrollbar: false,
+                momentum: false,
+                snap: 'li'
+            });
         });
     }
 });
