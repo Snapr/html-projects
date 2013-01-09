@@ -112,7 +112,6 @@ return page_view.extend({
 
         var this_view = this;
         _.each( auth.user_settings.get('linked_services'), function( service, index ){
-            console.log(config.get('services'), service.provider);
             if(_.contains(config.get('services'), service.provider)){
                 var v = new linked_service({model: service});
                 v.my_account = this_view;
