@@ -456,7 +456,9 @@
 
 .spinner(@file: 'gfx/small-spinner-light.png'){
     display: block;
-    background-image: url(@file)!important;
+    /* some less compilers won't work with url(@file) below */
+    /* you must use string interpolation: url("{@file}") */
+    background-image: url("{@file}")!important;
     background-position: center!important;
     background-repeat: no-repeat!important;
     .background-size(24px 24px)!important;                                            
