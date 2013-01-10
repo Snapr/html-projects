@@ -32,7 +32,8 @@
                     link = '#/feed/?'
                         + (username ? 'username='+username : '')
                         + (username && photo_id ? '&' : '')
-                        + (photo_id ? 'photo_id='+photo_id : '');
+                        + (photo_id ? 'photo_id='+photo_id : '')
+                        + (!username && photo_id ? '&n=1' : '');
                     return link;
 
                 } %>
