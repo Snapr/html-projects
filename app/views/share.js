@@ -635,7 +635,7 @@ return page_view.extend({
     },
 
     get_status: function(){
-        if(local_storage.get('status')){
+        if(local_storage.get('status') == 'public'){
             if(!config.get('app_sharing_opt_in') || local_storage.get('app-sharing')){
                 return 'public';
             }
