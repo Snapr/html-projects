@@ -53,6 +53,9 @@
             @ <%= item.get('location').foursquare_venue_name %>
         </a>
         <%}%>
+        <% if(config.get('app_group') == 'snapr' && item.has('app') && item.get('app').slug !== 'snapr'){ %>
+          &mdash; via <a href="http://apps.sna.pr/<%= item.get('app').slug %>"><%= item.get('app').name %></a>
+        <% }%>
     </div>
 
     <div class="s-image-item-base">
