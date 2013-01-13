@@ -4564,9 +4564,9 @@ textarea.ui-input-text {
   display: block;
   /* some less compilers won't work with url(@file) below */
 
-  /* you must use string interpolation: url("{@file}") */
+  /* you must use string interpolation: url("@{file}") */
 
-  background-image: url("../../../app/css/../../../app/css/../../../app/css/{@file}") !important;
+  background-image: url("../../../app/css/../../../app/css/../../../app/css/./gfx/small-spinner-light.png") !important;
   background-position: center!important;
   background-repeat: no-repeat !important;
   -webkit-background-size: 24px 24px !important;
@@ -4576,9 +4576,9 @@ textarea.ui-input-text {
   display: block;
   /* some less compilers won't work with url(@file) below */
 
-  /* you must use string interpolation: url("{@file}") */
+  /* you must use string interpolation: url("@{file}") */
 
-  background-image: url("{@file}") !important;
+  background-image: url("../gfx/small-spinner-light.png") !important;
   background-position: center!important;
   background-repeat: no-repeat !important;
   -webkit-background-size: 24px 24px !important;
@@ -4861,9 +4861,9 @@ textarea.ui-input-text {
   display: block;
   /* some less compilers won't work with url(@file) below */
 
-  /* you must use string interpolation: url("{@file}") */
+  /* you must use string interpolation: url("@{file}") */
 
-  background-image: url("../../../app/css/../../../app/css/../../../app/css/{@file}") !important;
+  background-image: url("../../../app/css/../../../app/css/../../../app/css/../gfx/small-spinner-dark.png") !important;
   background-position: center!important;
   background-repeat: no-repeat !important;
   -webkit-background-size: 24px 24px !important;
@@ -4873,9 +4873,9 @@ textarea.ui-input-text {
   display: block;
   /* some less compilers won't work with url(@file) below */
 
-  /* you must use string interpolation: url("{@file}") */
+  /* you must use string interpolation: url("@{file}") */
 
-  background-image: url("{@file}") !important;
+  background-image: url("../gfx/small-spinner-dark.png") !important;
   background-position: center!important;
   background-repeat: no-repeat !important;
   -webkit-background-size: 24px 24px !important;
@@ -6821,9 +6821,9 @@ div.ps-carousel-item-loading {
   display: block;
   /* some less compilers won't work with url(@file) below */
 
-  /* you must use string interpolation: url("{@file}") */
+  /* you must use string interpolation: url("@{file}") */
 
-  background-image: url("../../../app/css/../../../app/css/../../../app/css/{@file}") !important;
+  background-image: url("../../../app/css/../../../app/css/../../../app/css/../gfx/small-spinner-dark.png") !important;
   background-position: center!important;
   background-repeat: no-repeat !important;
   -webkit-background-size: 24px 24px !important;
@@ -6833,9 +6833,9 @@ div.ps-carousel-item-loading {
   display: block;
   /* some less compilers won't work with url(@file) below */
 
-  /* you must use string interpolation: url("{@file}") */
+  /* you must use string interpolation: url("@{file}") */
 
-  background-image: url("{@file}") !important;
+  background-image: url("../gfx/small-spinner-dark.png") !important;
   background-position: center!important;
   background-repeat: no-repeat !important;
   -webkit-background-size: 24px 24px !important;
@@ -6861,9 +6861,9 @@ div.ps-carousel-item-loading {
   display: block;
   /* some less compilers won't work with url(@file) below */
 
-  /* you must use string interpolation: url("{@file}") */
+  /* you must use string interpolation: url("@{file}") */
 
-  background-image: url("../../../app/css/../../../app/css/../../../app/css/{@file}") !important;
+  background-image: url("../../../app/css/../../../app/css/../../../app/css/./gfx/small-spinner-light.png") !important;
   background-position: center!important;
   background-repeat: no-repeat !important;
   -webkit-background-size: 24px 24px !important;
@@ -6873,9 +6873,9 @@ div.ps-carousel-item-loading {
   display: block;
   /* some less compilers won't work with url(@file) below */
 
-  /* you must use string interpolation: url("{@file}") */
+  /* you must use string interpolation: url("@{file}") */
 
-  background-image: url("{@file}") !important;
+  background-image: url("../gfx/small-spinner-light.png") !important;
   background-position: center!important;
   background-repeat: no-repeat !important;
   -webkit-background-size: 24px 24px !important;
@@ -6890,9 +6890,9 @@ div.ps-carousel-item-loading {
   display: block;
   /* some less compilers won't work with url(@file) below */
 
-  /* you must use string interpolation: url("{@file}") */
+  /* you must use string interpolation: url("@{file}") */
 
-  background-image: url("../../../app/css/../../../app/css/../../../app/css/{@file}") !important;
+  background-image: url("../../../app/css/../../../app/css/../../../app/css/./gfx/small-spinner-light.png") !important;
   background-position: center!important;
   background-repeat: no-repeat !important;
   -webkit-background-size: 24px 24px !important;
@@ -6902,9 +6902,9 @@ div.ps-carousel-item-loading {
   display: block;
   /* some less compilers won't work with url(@file) below */
 
-  /* you must use string interpolation: url("{@file}") */
+  /* you must use string interpolation: url("@{file}") */
 
-  background-image: url("{@file}") !important;
+  background-image: url("../gfx/small-spinner-light.png") !important;
   background-position: center!important;
   background-repeat: no-repeat !important;
   -webkit-background-size: 24px 24px !important;
@@ -7102,9 +7102,9 @@ div.ps-carousel-item-loading {
     display: block;
     /* some less compilers won't work with url(@file) below */
   
-    /* you must use string interpolation: url("{@file}") */
+    /* you must use string interpolation: url("@{file}") */
   
-    background-image: url("../../../app/css/../../../app/css/../../../app/css/{@file}") !important;
+    background-image: url("../../../app/css/../../../app/css/../../../app/css/../gfx/hdpi/small-spinner-light.png") !important;
     background-position: center!important;
     background-repeat: no-repeat !important;
     -webkit-background-size: 24px 24px !important;
@@ -7114,9 +7114,9 @@ div.ps-carousel-item-loading {
     display: block;
     /* some less compilers won't work with url(@file) below */
   
-    /* you must use string interpolation: url("{@file}") */
+    /* you must use string interpolation: url("@{file}") */
   
-    background-image: url("{@file}") !important;
+    background-image: url("../gfx/hdpi/small-spinner-light.png") !important;
     background-position: center!important;
     background-repeat: no-repeat !important;
     -webkit-background-size: 24px 24px !important;
@@ -7153,9 +7153,9 @@ div.ps-carousel-item-loading {
     display: block;
     /* some less compilers won't work with url(@file) below */
   
-    /* you must use string interpolation: url("{@file}") */
+    /* you must use string interpolation: url("@{file}") */
   
-    background-image: url("../../../app/css/../../../app/css/../../../app/css/{@file}") !important;
+    background-image: url("../../../app/css/../../../app/css/../../../app/css/../gfx/hdpi/small-spinner-dark.png") !important;
     background-position: center!important;
     background-repeat: no-repeat !important;
     -webkit-background-size: 24px 24px !important;
@@ -7165,9 +7165,9 @@ div.ps-carousel-item-loading {
     display: block;
     /* some less compilers won't work with url(@file) below */
   
-    /* you must use string interpolation: url("{@file}") */
+    /* you must use string interpolation: url("@{file}") */
   
-    background-image: url("{@file}") !important;
+    background-image: url("../gfx/hdpi/small-spinner-dark.png") !important;
     background-position: center!important;
     background-repeat: no-repeat !important;
     -webkit-background-size: 24px 24px !important;
@@ -7256,9 +7256,9 @@ div.ps-carousel-item-loading {
     display: block;
     /* some less compilers won't work with url(@file) below */
   
-    /* you must use string interpolation: url("{@file}") */
+    /* you must use string interpolation: url("@{file}") */
   
-    background-image: url("../../../app/css/../../../app/css/../../../app/css/{@file}") !important;
+    background-image: url("../../../app/css/../../../app/css/../../../app/css/../gfx/hdpi/small-spinner-dark.png") !important;
     background-position: center!important;
     background-repeat: no-repeat !important;
     -webkit-background-size: 24px 24px !important;
@@ -7268,9 +7268,9 @@ div.ps-carousel-item-loading {
     display: block;
     /* some less compilers won't work with url(@file) below */
   
-    /* you must use string interpolation: url("{@file}") */
+    /* you must use string interpolation: url("@{file}") */
   
-    background-image: url("{@file}") !important;
+    background-image: url("../gfx/hdpi/small-spinner-dark.png") !important;
     background-position: center!important;
     background-repeat: no-repeat !important;
     -webkit-background-size: 24px 24px !important;
@@ -7288,9 +7288,9 @@ div.ps-carousel-item-loading {
     display: block;
     /* some less compilers won't work with url(@file) below */
   
-    /* you must use string interpolation: url("{@file}") */
+    /* you must use string interpolation: url("@{file}") */
   
-    background-image: url("../../../app/css/../../../app/css/../../../app/css/{@file}") !important;
+    background-image: url("../../../app/css/../../../app/css/../../../app/css/../gfx/hdpi/small-spinner-light.png") !important;
     background-position: center!important;
     background-repeat: no-repeat !important;
     -webkit-background-size: 24px 24px !important;
@@ -7300,9 +7300,9 @@ div.ps-carousel-item-loading {
     display: block;
     /* some less compilers won't work with url(@file) below */
   
-    /* you must use string interpolation: url("{@file}") */
+    /* you must use string interpolation: url("@{file}") */
   
-    background-image: url("{@file}") !important;
+    background-image: url("../gfx/hdpi/small-spinner-light.png") !important;
     background-position: center!important;
     background-repeat: no-repeat !important;
     -webkit-background-size: 24px 24px !important;
@@ -7318,9 +7318,9 @@ div.ps-carousel-item-loading {
     display: block;
     /* some less compilers won't work with url(@file) below */
   
-    /* you must use string interpolation: url("{@file}") */
+    /* you must use string interpolation: url("@{file}") */
   
-    background-image: url("../../../app/css/../../../app/css/../../../app/css/{@file}") !important;
+    background-image: url("../../../app/css/../../../app/css/../../../app/css/../gfx/hdpi/small-spinner-light.png") !important;
     background-position: center!important;
     background-repeat: no-repeat !important;
     -webkit-background-size: 24px 24px !important;
@@ -7330,9 +7330,9 @@ div.ps-carousel-item-loading {
     display: block;
     /* some less compilers won't work with url(@file) below */
   
-    /* you must use string interpolation: url("{@file}") */
+    /* you must use string interpolation: url("@{file}") */
   
-    background-image: url("{@file}") !important;
+    background-image: url("../gfx/hdpi/small-spinner-light.png") !important;
     background-position: center!important;
     background-repeat: no-repeat !important;
     -webkit-background-size: 24px 24px !important;
@@ -7522,9 +7522,9 @@ div.ps-carousel-item-loading {
     display: block;
     /* some less compilers won't work with url(@file) below */
   
-    /* you must use string interpolation: url("{@file}") */
+    /* you must use string interpolation: url("@{file}") */
   
-    background-image: url("../../../app/css/../../../app/css/../../../app/css/{@file}") !important;
+    background-image: url("../../../app/css/../../../app/css/../../../app/css/../gfx/retina/small-spinner-light.png") !important;
     background-position: center!important;
     background-repeat: no-repeat !important;
     -webkit-background-size: 24px 24px !important;
@@ -7534,9 +7534,9 @@ div.ps-carousel-item-loading {
     display: block;
     /* some less compilers won't work with url(@file) below */
   
-    /* you must use string interpolation: url("{@file}") */
+    /* you must use string interpolation: url("@{file}") */
   
-    background-image: url("{@file}") !important;
+    background-image: url("../gfx/retina/small-spinner-light.png") !important;
     background-position: center!important;
     background-repeat: no-repeat !important;
     -webkit-background-size: 24px 24px !important;
@@ -7573,9 +7573,9 @@ div.ps-carousel-item-loading {
     display: block;
     /* some less compilers won't work with url(@file) below */
   
-    /* you must use string interpolation: url("{@file}") */
+    /* you must use string interpolation: url("@{file}") */
   
-    background-image: url("../../../app/css/../../../app/css/../../../app/css/{@file}") !important;
+    background-image: url("../../../app/css/../../../app/css/../../../app/css/../gfx/retina/small-spinner-dark.png") !important;
     background-position: center!important;
     background-repeat: no-repeat !important;
     -webkit-background-size: 24px 24px !important;
@@ -7585,9 +7585,9 @@ div.ps-carousel-item-loading {
     display: block;
     /* some less compilers won't work with url(@file) below */
   
-    /* you must use string interpolation: url("{@file}") */
+    /* you must use string interpolation: url("@{file}") */
   
-    background-image: url("{@file}") !important;
+    background-image: url("../gfx/retina/small-spinner-dark.png") !important;
     background-position: center!important;
     background-repeat: no-repeat !important;
     -webkit-background-size: 24px 24px !important;
@@ -7676,9 +7676,9 @@ div.ps-carousel-item-loading {
     display: block;
     /* some less compilers won't work with url(@file) below */
   
-    /* you must use string interpolation: url("{@file}") */
+    /* you must use string interpolation: url("@{file}") */
   
-    background-image: url("../../../app/css/../../../app/css/../../../app/css/{@file}") !important;
+    background-image: url("../../../app/css/../../../app/css/../../../app/css/../gfx/retina/small-spinner-dark.png") !important;
     background-position: center!important;
     background-repeat: no-repeat !important;
     -webkit-background-size: 24px 24px !important;
@@ -7688,9 +7688,9 @@ div.ps-carousel-item-loading {
     display: block;
     /* some less compilers won't work with url(@file) below */
   
-    /* you must use string interpolation: url("{@file}") */
+    /* you must use string interpolation: url("@{file}") */
   
-    background-image: url("{@file}") !important;
+    background-image: url("../gfx/retina/small-spinner-dark.png") !important;
     background-position: center!important;
     background-repeat: no-repeat !important;
     -webkit-background-size: 24px 24px !important;
@@ -7708,9 +7708,9 @@ div.ps-carousel-item-loading {
     display: block;
     /* some less compilers won't work with url(@file) below */
   
-    /* you must use string interpolation: url("{@file}") */
+    /* you must use string interpolation: url("@{file}") */
   
-    background-image: url("../../../app/css/../../../app/css/../../../app/css/{@file}") !important;
+    background-image: url("../../../app/css/../../../app/css/../../../app/css/../gfx/retina/small-spinner-light.png") !important;
     background-position: center!important;
     background-repeat: no-repeat !important;
     -webkit-background-size: 24px 24px !important;
@@ -7720,9 +7720,9 @@ div.ps-carousel-item-loading {
     display: block;
     /* some less compilers won't work with url(@file) below */
   
-    /* you must use string interpolation: url("{@file}") */
+    /* you must use string interpolation: url("@{file}") */
   
-    background-image: url("{@file}") !important;
+    background-image: url("../gfx/retina/small-spinner-light.png") !important;
     background-position: center!important;
     background-repeat: no-repeat !important;
     -webkit-background-size: 24px 24px !important;
@@ -7738,9 +7738,9 @@ div.ps-carousel-item-loading {
     display: block;
     /* some less compilers won't work with url(@file) below */
   
-    /* you must use string interpolation: url("{@file}") */
+    /* you must use string interpolation: url("@{file}") */
   
-    background-image: url("../../../app/css/../../../app/css/../../../app/css/{@file}") !important;
+    background-image: url("../../../app/css/../../../app/css/../../../app/css/../gfx/retina/small-spinner-light.png") !important;
     background-position: center!important;
     background-repeat: no-repeat !important;
     -webkit-background-size: 24px 24px !important;
@@ -7750,9 +7750,9 @@ div.ps-carousel-item-loading {
     display: block;
     /* some less compilers won't work with url(@file) below */
   
-    /* you must use string interpolation: url("{@file}") */
+    /* you must use string interpolation: url("@{file}") */
   
-    background-image: url("{@file}") !important;
+    background-image: url("../gfx/retina/small-spinner-light.png") !important;
     background-position: center!important;
     background-repeat: no-repeat !important;
     -webkit-background-size: 24px 24px !important;
