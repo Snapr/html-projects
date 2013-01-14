@@ -242,6 +242,8 @@ var uploading = page_view.extend({
                     uploading_view.foursquare_venue = photo.get('location').foursquare_venue_id;
                     uploading_view.venue_name = photo.get('location').foursquare_venue_name;
                 }
+                uploading_view.latitude = photo.get('location').latitude;
+                uploading_view.longitude = photo.get('location').longitude;
 
                 uploading_view.render_streams();
             }
