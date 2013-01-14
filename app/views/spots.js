@@ -51,6 +51,9 @@ var spots_view =  page_view.extend({
         this.show_bg_loader();
 
         // reset values
+        if(search_options.username == '.'){
+            search_options.sort = 'my-spots';
+        }
         this.$('select.x-location').val(search_options.radius || 'anywhere').selectmenu('refresh');
         this.$('.x-search-field').val(search_options.spot_name);
         this.$('select.x-category').val(search_options.category).selectmenu("refresh");
@@ -119,6 +122,11 @@ var spots_view =  page_view.extend({
         this.xhr && this.xhr.abort();
 
         this.search_options = options;
+
+        if(options.sort == 'my-spots'){
+            options.sort = 'weighted_score';
+            options.username = '.';
+        }
 
         this.timer = setTimeout( function() {
             this_view.timer = null;
