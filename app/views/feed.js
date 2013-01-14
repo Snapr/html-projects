@@ -60,9 +60,6 @@ var feed_view =  page_view.extend({
         this.$('.x-feed-header').empty();
         this.more_button(false);
 
-        this.photo_collection = new photo_collection();
-        this.photo_collection.url = config.get('api_base') + "/search/";
-
         this.query = this.options.query || {};
 
         if (this.query.photo_id){
@@ -123,7 +120,8 @@ var feed_view =  page_view.extend({
         if(this.query.date){
             this.query.date = this.query.date.replace('+', ' ');
         }
-        this.photo_collection.data = this.query;
+
+        this.photo_collection = new photo_collection([], {data:this.query});
         this.photo_collection.data.n = this.photo_collection.data.n || config.get('feed_count');
         this.photo_collection.data.detail = 2;
         if(this.photo_collection.data.list_style){ delete this.photo_collection.data.list_style; }
