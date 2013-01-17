@@ -60,7 +60,9 @@ var dash_view = page_view.extend({
             dash.uncache();
         });
 
-        this.populate =  _.once(this.populate);
+        // this ensures dash can only initialise once, making 'double dash' error impossible
+        // but it also means it will never load if the first attempt fails.
+        //this.populate =  _.once(this.populate);
     },
 
     post_activate: function(){
