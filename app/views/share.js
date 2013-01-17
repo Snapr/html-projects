@@ -462,6 +462,7 @@ return page_view.extend({
 
     update_model: function(){
         this.model.unset( "shared", {silent: true} );
+
         if (_.isObject(this.model.get( "location" ))){
             var location = this.model.get( "location" );
             this.model.unset( "location", {silent: true} );
@@ -607,6 +608,10 @@ return page_view.extend({
         if (!(params.latitude && params.longitude) && this.model.has('location')){
             params.latitude = this.model.get( "location" ).latitude;
             params.longitude = this.model.get( "location" ).longitude;
+        }
+
+        if(!params.share_location && params.location){
+            params.location = '';
         }
 
         return params;
