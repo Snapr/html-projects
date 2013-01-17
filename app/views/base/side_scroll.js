@@ -221,7 +221,7 @@ return view.extend({
                     if(left_pull_el.is('.x-flipped') && !scroll_el.is('.x-loading')){
                         scroll_el.addClass('x-loading');
                         scroller = this;
-                        collection.fetch({
+                        collection.fetch_newer({
                             // collection.length || side_scroll_initial means that if length is 0, default will be used
                             data: {n: Math.min(collection.length || config.get('side_scroll_initial'), 20)},
                             success: function(){
