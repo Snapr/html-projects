@@ -1,6 +1,6 @@
 /*global _  define require */
-define(['views/base/view', 'views/base/page', 'collections/spot', 'utils/geo', 'utils/local_storage'],
-    function(view, page_view, spot_collection, geo, local_storage){
+define(['views/base/view', 'views/base/page', 'collections/spot', 'utils/geo', 'utils/local_storage', 'auth'],
+    function(view, page_view, spot_collection, geo, local_storage, auth){
 var spots_view =  page_view.extend({
 
     post_initialize: function() {
@@ -51,14 +51,25 @@ var spots_view =  page_view.extend({
         this.show_bg_loader();
 
         // reset values
-        if(search_options.username == '.'){
-            search_options.sort = 'my-spots';
+        if(auth.has('access_token')){
+            if(search_options.username == '.'){
+                search_options.sort = 'my-spots';
+            }
+            this.$('.x-me').attr('disabled', false);
+        }else{
+            if(search_options.username){
+                delete search_options.username;
+
+            }
+            this.$('.x-me').attr('disabled', true);
         }
+
         this.$('select.x-location').val(search_options.radius || 'anywhere').selectmenu('refresh');
         this.$('.x-search-field').val(search_options.spot_name);
         this.$('select.x-category').val(search_options.category).selectmenu("refresh");
         this.$('select.x-sort').val(search_options.sort).selectmenu("refresh");
         this.$('form').attr('class', '').addClass(search_options.category || 'all-categories').addClass('distance-'+(search_options.radius || 'anywhere'));
+
     },
 
     events: {
