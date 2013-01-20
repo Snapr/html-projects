@@ -197,8 +197,10 @@ return page_view.extend({
     get_reverse_geocode: function(){
 
         if (local_storage.get( "share-location" ) === false){
+            this.$(".x-no-foursquare-venue").removeClass("x-ajax-loading");
             return;
         }
+        this.$(".x-no-foursquare-venue").addClass("x-ajax-loading");
 
         var this_view = this;
 
