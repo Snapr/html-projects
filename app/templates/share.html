@@ -109,7 +109,7 @@
 
                                     <div id="no-foursquare-venue"
                                         <% if (venue_or_geocode == 'venue'){%> style="display:none;"<%}%>
-                                         class="<% if (photo.attributes.location && !photo.attributes.location.location){%>x-ajax-loading <%}%>x-no-foursquare-venue">
+                                         class="<% if (photo.attributes.location && !photo.attributes.location.location && share_location){%>x-ajax-loading <%}%>x-no-foursquare-venue">
 
                                         <span class="s-image-location">
                                             <input type="checkbox" name="share_location" class="x-share-location" id="share-location" <%if (share_location){ %>checked="true"<% } %> />
