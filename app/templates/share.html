@@ -115,18 +115,18 @@
                                             <input type="checkbox" name="share_location" class="x-share-location" id="share-location" <%if (share_location){ %>checked="true"<% } %> />
                                             <label for="share-location" class="ui-shadow"><span class="ui-icon ui-icon-location share-location-label" ></span>
                                                 <span class="x-location-name s-location-name">
-                                                <% if (photo.attributes.location && photo.attributes.location.location){%>
-                                                     <%= photo.attributes.location.location %>
-                                                <% }else{ %>
-                                                    <% if (saved_location){ %>
-                                                      <%= saved_location %>
+                                                <% if (share_location){ %>
+                                                    <% if (photo.attributes.location && photo.attributes.location.location){%>
+                                                         <%= photo.attributes.location.location %>
                                                     <% }else{ %>
-                                                      <% if (share_location){ %>
-                                                          <%= T('Getting location') %>&hellip;
-                                                      <% }else{ %>
-                                                          <%= T('Share location') %>.
-                                                      <% } %>
+                                                        <% if (saved_location){ %>
+                                                          <%= saved_location %>
+                                                        <% }else{ %>
+                                                            <%= T('Getting location') %>&hellip;
+                                                        <% } %>
                                                     <% } %>
+                                                <% }else{ %>
+                                                    <%= T('Location disabled') %>.
                                                 <% } %>
                                                 </span>
                                             </label>

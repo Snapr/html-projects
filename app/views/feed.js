@@ -7,6 +7,7 @@ define(
         'utils/photoswipe',
         'utils/alerts',
         'utils/dialog',
+        'utils/analytics',
         'views/base/view',
         'views/base/page',
         'views/components/no_results',
@@ -26,6 +27,7 @@ define(
         photoswipe,
         alerts,
         dialog,
+        analytics,
         view,
         page_view,
         no_results,
@@ -574,6 +576,7 @@ var feed_li =  view.extend({
                     feed_li.show_reactions();
                     feed_li.load_reactions();
                     feed_li.$('.comment-form .ui-btn').x_loading(false);
+                    analytics.trigger('comment');
                 }
             },
             error: function( error ){
@@ -636,6 +639,7 @@ var feed_li =  view.extend({
                                 favorite_count: fav_count + 1
                             });
                             photo.render_actions();
+                            analytics.trigger('favorite');
                         }
                         photo.$('.x-favorite').x_loading(false);
                     },
