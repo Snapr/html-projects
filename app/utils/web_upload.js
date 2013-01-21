@@ -1,5 +1,5 @@
 /*global _  define require */
-define(['config', 'libs/jpegmeta'], function(config, JpegMeta){
+define(['config', 'libs/jpegmeta', 'auth', 'utils/alerts'], function(config, JpegMeta, auth, alerts){
 
 function dms_to_decimal(exif){
     var degrees = exif.value[0].asFloat();
@@ -20,7 +20,12 @@ $(function(){
             var exif_reader = new FileReader();
 
             exif_reader.onloadend = function(){
-                var exif = new JpegMeta.JpegFile(this.result, this.file.name);
+                try{
+                    var exif = new JpegMeta.JpegFile(this.result, this.file.name);
+                }catch(e){
+                    alerts.notification('File Error', 'This file is not a jpeg image.');
+                    return;
+                }
                 var data = {
                     latitude: exif.gps && exif.gps.latitude && exif.gps.latitude.value,
                     longitude: exif.gps && exif.gps.longitude && exif.gps.longitude.value,
@@ -62,7 +67,27 @@ return function(upload_params){
         uploads[0].upload_status = 'completed';
         window.upload_progress({uploads:uploads});
         console.log(data);
-        window.upload_completed(local_id, data.response.photo.id);
+        if(data.success){
+            window.upload_completed(local_id, data.response.photo.id);
+        }else{
+
+            uploads = [];
+            window.upload_progress({uploads:uploads});
+
+            if(data.error.type=='validation.duplicate_upload'){
+                window.upload_failed(local_id, 'This image has been uploaded before');
+            }
+
+            if(data.error.type=='validation.corrupt_file'){
+                window.upload_failed(local_id, 'Invalid File');
+            }
+
+            if(data.error.type=='authentication.authentication_required'){
+                window.upload_failed(local_id, 'Invalid login details');
+                auth.logout();
+                window.location.hash = '';
+            }
+        }
     };
     xhr.onerror = function(a){
         console.log(a);
