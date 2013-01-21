@@ -133,7 +133,7 @@ return {
 
         //!--  No. tumblr posts to show on dash
         //!--  default: 3
-        dash_tumblr_posts: 1,
+        dash_tumblr_posts: 1
 
 
         // ################################
@@ -211,13 +211,13 @@ return {
 
         //!--  when not in appmode, use xhr for uplaods
         //!--  default: true if browser is capable
-        xhr_uploads: false
+        //xhr_uploads: false
 
         //!--  list of feed views to show upload queue in
         //!--  dafault: 'my-snaps' only
         //!--  valid: 'feed', 'my-snaps'
         //show_queue: ['my-snaps'],
-        
+
 
         // ################################
         // ACTIVITY
