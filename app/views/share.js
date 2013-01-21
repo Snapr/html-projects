@@ -339,11 +339,12 @@ return page_view.extend({
                 $(e.target).attr("checked", false);
             }
         }
-        if (e.target.id == "share-location" && $(e.target).attr("checked")){
-            if(this.check_geolocation()){
+        if (e.target.id == "share-location"){
+            if(this.check_geolocation() && $(e.target).attr("checked")){
                 this.get_reverse_geocode();
             }else{
                 $(e.target).attr("checked", false);
+                this.$(".x-location-name").text('location disabled');
             }
         }
     },
