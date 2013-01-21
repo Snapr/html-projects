@@ -201,6 +201,7 @@ return page_view.extend({
             return;
         }
         this.$(".x-no-foursquare-venue").addClass("x-ajax-loading");
+        this.$('.x-location-name').text(T('Getting location'));
 
         var this_view = this;
 
