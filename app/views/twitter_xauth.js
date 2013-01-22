@@ -38,7 +38,6 @@ return page_view.extend({
                 url: config.get('api_base') + '/linked_services/twitter/xauth/signin/',
                 data:{
                     client_id: config.get('client_id'),
-                    client_secret: config.get('client_secret'),
                     _method: "POST"
                 },
                 success: function( data ){
