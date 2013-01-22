@@ -20,12 +20,16 @@ $(function(){
             var exif_reader = new FileReader();
 
             exif_reader.onloadend = function(){
+                var exif;
                 try{
-                    var exif = new JpegMeta.JpegFile(this.result, this.file.name);
+                    exif = new JpegMeta.JpegFile(this.result, this.file.name);
                 }catch(e){
                     alerts.notification('File Error', 'This file is not a jpeg image.');
+                    exif_reader = null;
                     return;
                 }
+                // exif reader no longer needed - GC can eat it
+                exif_reader = null;
                 var data = {
                     latitude: exif.gps && exif.gps.latitude && exif.gps.latitude.value,
                     longitude: exif.gps && exif.gps.longitude && exif.gps.longitude.value,
@@ -88,12 +92,14 @@ return function(upload_params){
                 window.location.hash = '';
             }
         }
+        xhr = null;
     };
     xhr.onerror = function(a){
         console.log(a);
         window.upload_failed(local_id, a.error);
         uploads = [];
         window.upload_progress({uploads:uploads});
+        xhr = null;
     };
 
     xhr.open('post', config.get('base_url') + "/api/upload/", true);
@@ -110,6 +116,7 @@ return function(upload_params){
         }
     });
     xhr.send(f);
+    f = null;
 };
 
 });
