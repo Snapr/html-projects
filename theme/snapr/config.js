@@ -286,11 +286,10 @@ return {
         'home',
         'cities',
         'feed',
-        'dash',
         {
-            name: 'feeds',
+            name: 'dash',
             view: 'dash',
-            extra: {show: ['user-streams', 'featured-streams']}
+            template: theme_templates_path + 'dash'
         },
         'leaderboard',
         'activity',
