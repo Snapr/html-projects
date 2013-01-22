@@ -267,18 +267,15 @@ return {
     environments: {
         dev: {
             base_url: "http://dev.sna.pr",
-            client_id: "76e5be0eec71b28fb4380b0ac42201cf",
-            client_secret: "d293011a0a17dfc8aa191455af4ab7ba"
+            client_id: "76e5be0eec71b28fb4380b0ac42201cf"
         },
         live: {
             base_url: "https://sna.pr",
-            client_id: "76e5be0eec71b28fb4380b0ac42201cf",
-            client_secret: "d293011a0a17dfc8aa191455af4ab7ba"
+            client_id: "76e5be0eec71b28fb4380b0ac42201cf"
         },
         local: {
             base_url: "http://localhost:8000",
-            client_id: "client",
-            client_secret: "secret"
+            client_id: "client"
         }
     },
 

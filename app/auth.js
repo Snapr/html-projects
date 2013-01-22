@@ -28,7 +28,6 @@ var auth_model = Backbone.Model.extend({
         this.data = {
             grant_type: "password",
             client_id: config.get('client_id'),
-            client_secret: config.get('client_secret'),
             username: username,
             password: password,
             _method: "POST"
