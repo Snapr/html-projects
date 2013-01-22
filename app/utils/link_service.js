@@ -24,6 +24,9 @@ return function(service, next, signin){
                 client_id: config.get("client_id"),
                 create: config.get('autocreate_fb_users')
             };
+            if(config.has('min_age')){
+                params.min_age = config.get('min_age');
+            }
         }else{
             params = {
                 redirect: next,

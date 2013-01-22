@@ -84,12 +84,17 @@ function get_query_params(query) {
             if(key == "zoom") {
                 params[key] = parseInt(unescape(value), 10);
             } else {
-                if(_.contains(["access_token", "snapr_user"], key)) {
+                if(_.contains(["access_token", "snapr_user", 'birthday'], key)) {
                     auth.set(key, unescape(value));
                     auth.save_locally();
                 }else if(key == "display_username") {
                     auth.set(key, unescape(value).replace('+', ' '));
                     auth.save_locally();
+                }else if(key == 'error'){
+                    if(value == 'min_age+not+met' && config.has('min_age')){
+                        alerts.notification(T('Age restricted'), T('You must be at least') + ' ' + config.get('min_age'));
+                        window.location.hash = '';
+                    }
                 } else if(_.contains(["snapr_user_public_group", "snapr_user_public_group_name", "appmode", "demo_mode", "environment", "browser_testing", "aviary", "camplus", "camplus_camera", "camplus_edit", "camplus_lightbox"], kv[0])) {
                     local_storage.set(key, value);
                 } else {
