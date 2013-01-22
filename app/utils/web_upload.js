@@ -70,7 +70,7 @@ return function(upload_params){
         var data = JSON.parse(event.target.responseText);
         uploads[0].upload_status = 'completed';
         window.upload_progress({uploads:uploads});
-        console.log(data);
+
         if(data.success){
             window.upload_completed(local_id, data.response.photo.id);
         }else{
@@ -92,6 +92,7 @@ return function(upload_params){
                 window.location.hash = '';
             }
         }
+        (window.webkitURL || window.URL).revokeObjectURL(uploads[0].thumbnail);
         xhr = null;
     };
     xhr.onerror = function(a){
@@ -99,6 +100,7 @@ return function(upload_params){
         window.upload_failed(local_id, a.error);
         uploads = [];
         window.upload_progress({uploads:uploads});
+        (window.webkitURL || window.URL).revokeObjectURL(uploads[0].thumbnail);
         xhr = null;
     };
 

@@ -173,14 +173,10 @@ return page_view.extend({
             return;
         }
         var file = files[0];
-        var thumb_reader = new FileReader();
-        thumb_reader.onloadend = function(e) {
-            var img = $('<img class="x-image"/>');
-            img.attr('src', e.target.result);
-            img.appendTo($('.x-image-placeholder'));
-            this_view.image_data_url = e.target.result;
-        };
-        thumb_reader.readAsDataURL(file);
+        this.image_data = (window.webkitURL || window.URL).createObjectURL(file);
+        var img = $('<img class="x-image"/>');
+        img[0].src = this.image_data;
+        img.appendTo($('.x-image-placeholder'));
     },
 
     venue_or_geocode: function(){
@@ -633,7 +629,7 @@ return page_view.extend({
     share_xhr: function(){
         this.update_model();
         var upload_params = this.get_upload_params();
-        upload_params.thumbnail = this.image_data_url;
+        upload_params.thumbnail = this.image_data;
 
         analytics.trigger('share', upload_params);
         xhr_upload(upload_params);
