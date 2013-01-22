@@ -39,7 +39,7 @@ var auth_model = Backbone.Model.extend({
                 if (auth.get( "access_token" )){
                     auth.set({
                         snapr_user: username,
-                        display_username: username
+                        display_username: ''
                     });
                     auth.save_locally();
                     delete auth.data;
