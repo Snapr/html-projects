@@ -463,12 +463,15 @@ return page_view.extend({
     update_model: function(){
         this.model.unset( "shared", {silent: true} );
 
-        if (_.isObject(this.model.get( "location" ))){
-            var location = this.model.get( "location" );
-            this.model.unset( "location", {silent: true} );
-            var attributes = _.extend( this.model.attributes, location );
-            this.model.set( attributes, {silent: true} );
-        }
+        // if (_.isObject(this.model.get( "location" ))){
+        //     var location = this.model.get( "location" );
+        //     this.model.unset( "location", {silent: true} );
+        //     var attributes = _.extend( this.model.attributes, location );
+        //     console.log(location);
+        //     console.log(this.model.attributes);
+        //     console.log(attributes);
+        //     this.model.set( attributes, {silent: true} );
+        // }
 
         this.model.set({
             description: this.$(".x-description").val(),
@@ -608,6 +611,9 @@ return page_view.extend({
         if (!(params.latitude && params.longitude) && this.model.has('location')){
             params.latitude = this.model.get( "location" ).latitude;
             params.longitude = this.model.get( "location" ).longitude;
+        }
+        if (!params.location && this.model.has('location')){
+            params.location = this.model.get( "location" ).location;
         }
 
         if(!params.share_location && params.location){
