@@ -98,17 +98,20 @@ var config_model = Backbone.Model.extend({
                     key = kv[0],
                     value = kv[1];
 
-                if(key == 'language') {
-                    if(config.get('ignore_language_country')){
-                        value = value.split('-')[0];
-                    }
-                    local_storage.set('language', value);
+                if(_.contains(['language', 'locale'], key)) {
+                    local_storage.set(key, value);
                 }
+
             });
         }
         config.set('language', local_storage.get('language'));
+        config.set('locale', local_storage.get('locale'));
 
         update_env();
+
+        if(_.isFunction(theme_config.post_config)){
+            theme_config.post_config(this);
+        }
     }
 });
 
