@@ -20,12 +20,20 @@ function _make_route(file_name, name, template, extra_view_data){
         }
 
         if(query.facebook_signin && auth.get('access_token')){
+            if(!query.user_created){
+                analytics.trigger('signup', query);
+            }
             alerts.notification(T('Logged in as')+' ' + (auth.get('display_username') || auth.get('snapr_user')));
             var query_obj = new Query(query);
             query_obj.remove('facebook_signin');
             window.location.hash = "#/?" + query_obj.toString();
 
             return;
+        }
+
+        if(query.error && query.error == 'min_age+not+met' && config.has('min_age')){
+            alerts.notification(T('Age restricted'), T('You must be at least') + ' ' + config.get('min_age'));
+            window.location.hash = '';
         }
 
         var env = local_storage.get('environment');

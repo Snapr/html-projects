@@ -11,8 +11,9 @@ require(['config'], function(config){
     window.config = config;  // export for templates
 
     window.T = function(text){ return text; };
-    if(config.get('language') && config.get('language') != 'en'){
-        require(['../theme/'+window.theme+'/languages/'+config.get('language')], function(language){
+    var language_setting = config.get('ignore_language_country') ? config.get('language') : config.get('locale');
+    if(language_setting && language_setting != 'en'){
+        require(['../theme/'+window.theme+'/languages/'+language_setting], function(language){
             window.T = language;  // export for templates
         });
     }
@@ -382,8 +383,8 @@ require(['config', 'jquery', 'backbone', 'auth', 'utils/local_storage', 'native_
             }else{
                 if(upload_progress_collection.length){
                     alerts.notification(T('Error'), T('The previous photo is still uploading'));
+                    return;
                 }
-                return;
             }
             var extra_params = $(this).data('extra_params') || "";
             if(local_storage.get( "appmode" )){

@@ -111,7 +111,7 @@ For language pass the [2 letter ISO 639-1 code](http://en.wikipedia.org/wiki/Lis
 
 For locale pass the [2 letter ISO 639-1 code](http://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) then the [ISO 3166-1 alpha-2 country code](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) separated by an `_`:
 
-`language=pt_BR`
+`locale=pt_BR`
 
 Currently most templates only use the `language` setting.
 
