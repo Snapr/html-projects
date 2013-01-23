@@ -11,8 +11,9 @@ require(['config'], function(config){
     window.config = config;  // export for templates
 
     window.T = function(text){ return text; };
-    if(config.get('language') && config.get('language') != 'en'){
-        require(['../theme/'+window.theme+'/languages/'+config.get('language')], function(language){
+    var language_setting = config.get('ignore_language_country') ? config.get('language') : config.get('locale');
+    if(language_setting && language_setting != 'en'){
+        require(['../theme/'+window.theme+'/languages/'+language_setting], function(language){
             window.T = language;  // export for templates
         });
     }

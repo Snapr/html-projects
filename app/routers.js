@@ -20,12 +20,20 @@ function _make_route(file_name, name, template, extra_view_data){
         }
 
         if(query.facebook_signin && auth.get('access_token')){
+            if(!query.user_created){
+                analytics.trigger('signup', query);
+            }
             alerts.notification(T('Logged in as')+' ' + (auth.get('display_username') || auth.get('snapr_user')));
             var query_obj = new Query(query);
             query_obj.remove('facebook_signin');
             window.location.hash = "#/?" + query_obj.toString();
 
             return;
+        }
+
+        if(query.error && query.error == 'min_age+not+met' && config.has('min_age')){
+            alerts.notification(T('Age restricted'), T('You must be at least') + ' ' + config.get('min_age'));
+            window.location.hash = '';
         }
 
         var env = local_storage.get('environment');
@@ -84,17 +92,12 @@ function get_query_params(query) {
             if(key == "zoom") {
                 params[key] = parseInt(unescape(value), 10);
             } else {
-                if(_.contains(["access_token", "snapr_user", 'birthday'], key)) {
+                if(_.contains(["access_token", "snapr_user"], key)) {
                     auth.set(key, unescape(value));
                     auth.save_locally();
                 }else if(key == "display_username") {
                     auth.set(key, unescape(value).replace('+', ' '));
                     auth.save_locally();
-                }else if(key == 'error'){
-                    if(value == 'min_age+not+met' && config.has('min_age')){
-                        alerts.notification(T('Age restricted'), T('You must be at least') + ' ' + config.get('min_age'));
-                        window.location.hash = '';
-                    }
                 } else if(_.contains(["snapr_user_public_group", "snapr_user_public_group_name", "appmode", "demo_mode", "environment", "browser_testing", "aviary", "camplus", "camplus_camera", "camplus_edit", "camplus_lightbox"], kv[0])) {
                     local_storage.set(key, value);
                 } else {
