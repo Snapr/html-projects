@@ -71,7 +71,7 @@ return function(upload_params){
         uploads[0].upload_status = 'completed';
         window.upload_progress({uploads:uploads});
 
-        console.log('revoke', (window.webkitURL || window.URL).revokeObjectURL(uploads[0].thumbnail));
+        (window.webkitURL || window.URL).revokeObjectURL(uploads[0].thumbnail);
 
         if(data.success){
             window.upload_completed(local_id, data.response.photo.id);
@@ -99,7 +99,7 @@ return function(upload_params){
     xhr.onerror = function(a){
         console.log(a);
         window.upload_failed(local_id, a.error);
-        console.log('revoke', (window.webkitURL || window.URL).revokeObjectURL(uploads[0].thumbnail));
+        (window.webkitURL || window.URL).revokeObjectURL(uploads[0].thumbnail);
         uploads = [];
         window.upload_progress({uploads:uploads});
         xhr = null;

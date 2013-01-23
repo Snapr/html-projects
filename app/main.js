@@ -390,8 +390,8 @@ require(['config', 'jquery', 'backbone', 'auth', 'utils/local_storage', 'native_
             if(local_storage.get( "appmode" )){
                 var actionID = alerts.tapped_action.counter++;
                 alerts.tapped_action.alerts[actionID] = {
-                    '1': function(){console.log('x-launch-camera-options 1');launch_camera(null, extra_params);},
-                    '2': function(){console.log('x-launch-camera-options 2'); photo_library(null, extra_params);}
+                    '1': function(){launch_camera(null, extra_params);},
+                    '2': function(){photo_library(null, extra_params);}
                 };
 
                 native_bridge.pass_data('snapr://action?' + $.param({
