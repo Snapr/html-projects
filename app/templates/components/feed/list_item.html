@@ -37,7 +37,13 @@
     <% }%>
 
         <span class="s-image-status">
+            
+            <% if (item.get("status") == "public_non_app"){%>
+            non app
+            <%}else{%>
             <%= item.get('status') %>
+            <% }%>
+            
         </span>
     </div>
 
@@ -93,7 +99,12 @@
                                     <% if (item.get("username") == auth.get("snapr_user")){ %>
                                         <% if(config.get('privacy_controls')){ %>
                                             <a class="x-privacy" data-role="button" data-icon="settings"  data-iconpos="left" data-theme="b" data-inline="true">
+                                                <% if (item.get("status") == "public_non_app"){%>
+                                                non app
+                                                <%}else{%>
                                                 <%= item.get('status') %>
+                                                <% }%>
+                                                
                                             </a>
                                         <%}%>
                                         <a class="x-delete" data-role="button" data-icon="delete"  data-iconpos="notext" data-theme="b" data-inline="true">
