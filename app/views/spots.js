@@ -59,7 +59,6 @@ var spots_view =  page_view.extend({
         }else{
             if(search_options.username){
                 delete search_options.username;
-
             }
             this.$('.x-me').attr('disabled', true);
         }
@@ -134,14 +133,13 @@ var spots_view =  page_view.extend({
 
         this.search_options = options;
 
-        if(options.sort == 'my-spots'){
-            options.sort = 'weighted_score';
-            options.username = '.';
-        }
-
         this.timer = setTimeout( function() {
             this_view.timer = null;
             this_view.$el.addClass('x-loading');
+            if(options.sort == 'my-spots'){
+                options.sort = 'weighted_score';
+                options.username = '.';
+            }
             this_view.xhr = this_view.collection.fetch({
                 data: options,
                 success: function () {
