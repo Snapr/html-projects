@@ -33,7 +33,7 @@ function _make_route(file_name, name, template, extra_view_data){
 
         if(query.error && query.error == 'min_age+not+met' && config.has('min_age')){
             alerts.notification(T('Age restricted'), T('You must be at least') + ' ' + config.get('min_age'));
-            window.location.hash = '';
+            window.location.hash = '#/welcome/';
         }
 
         var env = local_storage.get('environment');
