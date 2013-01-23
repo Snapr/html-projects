@@ -383,8 +383,8 @@ require(['config', 'jquery', 'backbone', 'auth', 'utils/local_storage', 'native_
             }else{
                 if(upload_progress_collection.length){
                     alerts.notification(T('Error'), T('The previous photo is still uploading'));
+                    return;
                 }
-                return;
             }
             var extra_params = $(this).data('extra_params') || "";
             if(local_storage.get( "appmode" )){
