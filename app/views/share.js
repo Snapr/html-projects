@@ -579,10 +579,10 @@ return page_view.extend({
     get_upload_params: function(){
         var params = _.pick(this.model.attributes, 'description', 'status', 'share_location', "tumblr", "facebook_album", "tweet", "foursquare_checkin");
 
-        if (this.model.has('location') && this.model.get('location').foursquare_venue_id){
+        if (params.share_location && this.model.has('location') && this.model.get('location').foursquare_venue_id){
             params.foursquare_venue = this.model.get('location').foursquare_venue_id;
             params.venue_name = this.model.get('location').foursquare_venue_name;
-        }else if(this.model.has('foursquare_venue_id')){
+        }else if(params.share_location && this.model.has('foursquare_venue_id')){
             params.foursquare_venue = this.model.get('foursquare_venue_id');
             params.venue_name = this.model.get('foursquare_venue_name');
         }
