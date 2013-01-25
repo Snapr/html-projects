@@ -288,6 +288,11 @@ return {
             view: 'dash',
             template: theme_templates_path + 'dash'
         },
+        {
+            name: 'welcome',
+            view: 'welcome',
+            template: theme_templates_path + 'welcome'
+        },
         'leaderboard',
         'activity',
         'popular'
