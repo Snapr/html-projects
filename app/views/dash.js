@@ -1,4 +1,4 @@
-/*global _  define require */
+/*global _  define require T */
 define([
         'config',
         'backbone',
@@ -429,9 +429,9 @@ var dash_stream = side_scroll.extend({
 
     get_title: function(){
         var title = this.model.get("display").short_title;
-        if(this.model.get("query").username){
-            title = title.replace(this.model.get("query").username, '<span class="at">@</span>' + this.model.get("query").username);
-        }
+        // if(this.model.get("query").username){
+        //     title = title.replace(this.model.get("query").username, '<span class="at">@</span>' + this.model.get("query").username);
+        // }
         if(this.model.get("query").keywords){
             title = title.replace(this.model.get("query").keywords, '<span class="hash">#</span>' + this.model.get("query").keywords);
         }
@@ -523,7 +523,7 @@ var add_person = page_view.extend({
                         username: username
                     },
                     display: {
-                        "title": "Photos by "+username,
+                        "title": "Photos by " + username,
                         "short_title": username,
                         "type": "search"
                     }
