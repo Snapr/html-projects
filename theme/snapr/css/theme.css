@@ -6135,6 +6135,9 @@ textarea.ui-input-text {
   border: none;
   border-bottom: solid 1px #e4e4e4;
 }
+.s-account-content .s-about-us {
+  display: none;
+}
 .s-linked-services .ui-collapsible-heading .ui-btn-inner {
   padding: 16px 40px 16px 16px;
 }
