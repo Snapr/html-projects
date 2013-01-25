@@ -433,7 +433,13 @@ var dash_stream = side_scroll.extend({
         //     title = title.replace(this.model.get("query").username, '<span class="at">@</span>' + this.model.get("query").username);
         // }
         if(this.model.get("query").keywords){
-            title = title.replace(this.model.get("query").keywords, '<span class="hash">#</span>' + this.model.get("query").keywords);
+            var keywords = this.model.get("query").keywords;
+
+            // strip # is there is one
+            if(keywords.inexOf('#') === 0){
+                keywords = keywords.substr(1);
+            }
+            title = title.replace(this.model.get("query").keywords, '<span class="hash">#</span>' + keywords);
         }
         if(this.model.get("query").radius){
             title = title +  ' <span class="radius">(' + this.model.get("query").radius/1000 +'km)</span>';
