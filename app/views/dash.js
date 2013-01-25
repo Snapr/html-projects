@@ -436,7 +436,7 @@ var dash_stream = side_scroll.extend({
             var keywords = this.model.get("query").keywords;
 
             // strip # is there is one
-            if(keywords.inexOf('#') === 0){
+            if(keywords.indexOf('#') === 0){
                 keywords = keywords.substr(1);
             }
             title = title.replace(this.model.get("query").keywords, '<span class="hash">#</span>' + keywords);
