@@ -293,6 +293,11 @@ return {
             view: 'welcome',
             template: theme_templates_path + 'welcome'
         },
+        {
+            name: 'join-success',
+            view: 'base/page',
+            template: theme_templates_path + 'join_success'
+        },
         'leaderboard',
         'activity',
         'popular'

@@ -1,0 +1,28 @@
+<div id="join-success" data-role="page" data-short-title="Welcome" data-theme="c" data-ajax="false" class="welcome-bg s-special-bg">
+    <div data-role="header" data-theme="c">
+        <h1><%= T('Success!') %></h1>
+        <a href="#/" data-role="button" data-icon="delete" data-iconpos="notext"></a>
+    </div>
+    <div data-role="content" data-theme="d">
+        <div class="s-inset-page-content">
+            <ul data-role="listview" data-ajax="false" class="" data-inset="true" data-theme="d">
+                <li class="s-wrap-content">
+                    <h2><%= T('Welcome to Snapr!') %></h2>
+                    <p><%= T('What would you like to do now?') %></p>
+                </li>
+
+                 <li>
+                    <a class="x-back-here" href="#/find-friends/"><%= T('Find your friends') %></a>
+                </li>
+                <li>
+                    <a href="#/about-snapr/"><%= T('Find out more about Snapr') %></a>
+                </li>
+                <li>
+                    <a href="#/menu/"><%= T('Dive right in!') %></a>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+
+</div>
