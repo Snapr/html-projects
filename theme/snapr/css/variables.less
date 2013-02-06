@@ -1,4 +1,4 @@
-//  SNAPR THEME VARIABLES
+//  SNAPR CLASSIC THEME VARIABLES
 // -----------------------------
 
 
@@ -109,24 +109,25 @@
 @fontSerif:             Georgia,'Times New Roman', Times, sans-serif; 
 @fontSans:              Helvetica, Arial, sans-serif;
 
-@font:                  Helvetica, Arial, sans-serif;
-@fontSpecial:          'MuseoSansRounded700', Helvetica, Arial, sans-serif; 
-@fontButtons:          @fontSpecial;
+@font:                  @fontSans;
+@fontSpecial:           @fontSans; 
+@fontButtons:           @fontSpecial;
 
 @fontSize:              15px;
 @fontSizeSmall:         12px;
 @fontSizeUsername:      16px;
 @fontSizeHeading:       @fontSizeUsername;
 @fontSizePageTitle:     @fontSizeUsername;
-@fontSizeBtn:          @fontSize;
-@fontSizeBtnSmall:     @fontSizeSmall;
+@fontSizeBtn:           @fontSize;
+@fontSizeBtnSmall:      @fontSizeSmall;
 @fontSize-numberBig:    24px;
+
 
 // Defining font defaults with mixins makes it easier to manage extra attributes
 
 .button-font-bold(){
     font-family: @fontButtons;
-    font-weight: normal;
+    font-weight: bold;
     text-transform: none;
     -webkit-font-smoothing: antialiased;
     text-decoration: none;
@@ -145,12 +146,12 @@
 }
 .heading-font(){
     font-family: @fontSpecial;
-    font-weight: normal;
+    font-weight: bold;
     font-size: @fontSizeHeading;
 }
 .title-bar-font(){
     font-family: @fontSpecial;
-    font-weight: normal;
+    font-weight: bold;
     text-transform: lowercase;
     font-size: @fontSizeHeading;
 }
@@ -162,7 +163,7 @@
 }
 .username-font(){
     font-family: @fontSpecial;
-    font-weight: normal;    
+    font-weight: bold;    
     font-size: @fontSizeUsername;
     text-transform: none;
 }
@@ -188,14 +189,14 @@
 @paddingFeed:           @padding * 2;
 @paddingGrid:           4px;
 
-@inlineBlock:             2px;
+@inlineBlock:           2px;
 
 // Arrows
 // -------------------------
 
-@arrowSize:            14px;
-@arrowOffset:          36px;
-@arrowYShift:         3px;
+@arrowSize:             14px;
+@arrowOffset:           36px;
+@arrowYShift:           3px;
 
 
 // Sizes

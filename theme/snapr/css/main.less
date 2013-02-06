@@ -1,11 +1,6 @@
 //
-// SNAPR THEME
+// SNAPR CLASSIC THEME
 // --------------------------------------------------
-
-
-// @DEFAULTS
-// -------------------------
-
 
 // @DEFAULTS
 // -------------------------
@@ -15,11 +10,8 @@ body{
     font-family: @font;
 }
 
-
 strong{
-    font-weight: normal;
-    font-size: @fontSizeUsername;
-    font-family: @fontSpecial;
+    .button-font-bold()
 }
 
 h4,
@@ -163,7 +155,6 @@ div[data-role="header"]{
 div[data-role="page"],
 div[data-role="dialog"]{
     .border-radius(@cornersPage);
-
 }
 
 a,
@@ -289,12 +280,10 @@ a:active{
         }
     }   
     &.ui-controlgroup-horizontal{
-        
         .box-shadow(0 1px 4px @shadowDark);
         border: none;
         .s-bar-left{
             .border-top-right-radius(0)!important;
-            
             border-top: @borderWhite;  
             border-right: none;
             .ui-btn-inner{
@@ -315,10 +304,9 @@ a:active{
     .ui-bar{
        .border-bottom-radius(@cornersPage);  
         .s-bar-left{
-                .border-right-radius(0);
-                .border-bottom-left-radius(@corners)!important;
-                
-                .ui-btn-inner{
+            .border-right-radius(0);
+            .border-bottom-left-radius(@corners)!important;
+            .ui-btn-inner{
             }
         }
         .s-bar-right{
@@ -331,6 +319,9 @@ a:active{
     }
 }
 
+
+// @LOADBAR
+// -------------------------
 
 .s-bg-load-bar{
     height:4px;
@@ -354,8 +345,6 @@ a:active{
 	0% {background-position: 0 0;} 
 	100% {background-position: 40px 0;}
 }
-
-
 
 
 
@@ -388,7 +377,6 @@ a:active{
     background: @twitterBlue;
     .pressed-gradient(@twitterBlue, 3%);
 }
-
 
 .s-tumblr-button.ui-btn-up-h,
 .s-tumblr-button.ui-btn-hover-h,
@@ -430,7 +418,6 @@ a:active{
     background: @facebookBlue;
     .pressed-gradient(@facebookBlue, 3%);
 }
-
 
 .s-snapr-button.ui-btn-up-h,
 .s-snapr-button.ui-btn-hover-h,
@@ -500,7 +487,6 @@ a:active{
             text-shadow: 0 -1px 0px #093B5C;
             .box-shadow(0 4px 5px -2px rgba(0,0,0,0.3) inset);
             font-family: @font;
-            
         }
     }
     .ui-slider-handle{
@@ -577,7 +563,6 @@ a:active{
                 }
             }
         }
-
     }
 }
 
@@ -675,7 +660,6 @@ a:active{
         .box-shadow(none);
         .border-top-radius(@corners);
         .border-bottom-radius(0);
-    
         .ui-btn-inner{
             line-height: @fontSizeSmall;
             min-height: @fontSizeSmall;
@@ -715,8 +699,6 @@ a:active{
 
 // @LISTVIEWS
 // -------------------------
-
-
 
 
 
@@ -773,7 +755,7 @@ textarea.ui-input-text {
 // @IMAGES
 // -------------------------
 
-// Fullscreen grid for larger phones like the s3
+// Fullscreen grid for larger phones like the Galaxy s3
 
 @media only screen and (min-device-width : 719px) and (max-device-width : 721px) and (-webkit-min-device-pixel-ratio : 2) and (orientation : portrait) {
     .s-thumbs-grid-med,
@@ -804,11 +786,11 @@ textarea.ui-input-text {
 // @STREAMS
 // -------------------------
 
-/* Horizontally scrolling image stream components */
+// Horizontally scrolling image stream components
+
 .s-image-streams{
     .x-stream{
         margin-bottom: @padding * 2 ;
-       
         .x-thumbs{
             min-width: @thumbSize * 3 + @padding * 2;
             height:  @thumbSize;
@@ -837,21 +819,18 @@ textarea.ui-input-text {
                 -webkit-transition-duration:250ms;
                 -webkit-transform:rotate(0deg) translateZ(0);
             }
-
             &.x-right-pull{
                 margin-right: 9px;
                 .ui-icon-refresh{
                     background-position: @gfxRefresh-x @gfxRefresh-right-y;
                 }
             }
-
             &.x-left-pull{
                 margin-right:-@padding;
                 .ui-icon-refresh{
                     background-position: @gfxRefresh-x @gfxRefresh-left-y;
                 }
             }
-
             &.x-flipped{
                 .ui-icon-refresh{
                     background-position: @gfxRefresh-x @gfxRefresh-refresh-y;
@@ -875,21 +854,21 @@ textarea.ui-input-text {
                 }
                 // turns 'the end' into big full stop.. */
                 .x-msg{
-                     display: inherit;
-                        background-color:rgba(0,0,0,.12);
-                        padding: 0;
-                        width: 84px;
-                        .border-radius(44px);
-                        color: white;
-                        height: 84px;
-                        vertical-align: middle;
-                        line-height: 84px;
-                        top: 50%;
-                        left: 50%;
-                        margin-left: -42px;
-                        margin-top: -42px;
-                        overflow: hidden;
-                        text-overflow: ellipsis;
+                    display: inherit;
+                    background-color:rgba(0,0,0,.12);
+                    padding: 0;
+                    width: 84px;
+                    .border-radius(44px);
+                    color: white;
+                    height: 84px;
+                    vertical-align: middle;
+                    line-height: 84px;
+                    top: 50%;
+                    left: 50%;
+                    margin-left: -42px;
+                    margin-top: -42px;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
                 }
             }
         }
@@ -970,8 +949,6 @@ textarea.ui-input-text {
 
 
 
-
-
 // @JOIN
 // -------------------------
 
@@ -1006,8 +983,6 @@ textarea.ui-input-text {
         }
     }
 }
-
-
 
 
 // @HOME
@@ -1142,7 +1117,6 @@ textarea.ui-input-text {
         text-transform: none;
         vertical-align: middle;
     }
-    
 }
 
 .s-menu-stream{
@@ -1170,7 +1144,6 @@ textarea.ui-input-text {
             .ui-btn-inner{
                 padding-right: 20px;
                 padding-left: 10px;
-                
             }
         }
     }        
@@ -1200,7 +1173,6 @@ textarea.ui-input-text {
 }
 
 
-
 // @TUMBLR
 // -------------------------
 
@@ -1224,25 +1196,22 @@ textarea.ui-input-text {
                     margin: 0 auto;
                     max-width: 512px;
                     margin: 0 0 @padding * 2 0;
-
                 }
                 audio {
                     margin: 0 0 @padding * 2 0;
                 }
-
                 .s-tumblr-body{
                     margin: @padding * 2 @padding * 6 @padding @padding;
                     h4{
                         .heading-font();
                     }
-                    
                      blockquote{
                             margin: @padding;
                             border-left: solid 2px @gray;
                             padding-left: @padding * 2;
                             font-family: @fontSerif;
                             font-style: italic;
-                        }                    
+                    }                    
                 }
                 .s-photo-set {
                     overflow:hidden;
@@ -1279,7 +1248,6 @@ textarea.ui-input-text {
                 }
             }
         }
-      
     }
     .s-tumblr-footer{
         .ui-icon-arrow-r{
@@ -1329,7 +1297,6 @@ textarea.ui-input-text {
     .s-user-icon-left{
         width: @avatarSizeLarge;
         height: @avatarSizeLarge;
-        
         .s-profile-icon,
         .s-avatar-large{
             .border-radius(0);
@@ -1350,7 +1317,6 @@ textarea.ui-input-text {
     .s-username{
         font-size: @fontSizeUsername;
         text-shadow: @white 0px 1px 1px;
-        
     }
     .s-follow-btn{
         height: @barHeight;
@@ -1552,10 +1518,8 @@ textarea.ui-input-text {
                         }
                     }
                 }
-            }
-        
+            }        
         }
-
     }
     .s-reactions-list{
         display: none;
@@ -1596,7 +1560,6 @@ textarea.ui-input-text {
 }
 
 
-
 .s-has-palette{
     .s-action-palette{
         left: @gfxDark-grid / 2 + 2px;
@@ -1634,8 +1597,6 @@ textarea.ui-input-text {
         }
     }
 }
-
-
 
 
 .s-feed-footer{
@@ -1743,8 +1704,6 @@ textarea.ui-input-text {
 // @DASH
 // -------------------------
 
-
-
 .s-dash-wrapper{
     min-height: 418px;
     position: relative;
@@ -1777,8 +1736,7 @@ textarea.ui-input-text {
     }
     .s-dash-footer{
         padding-bottom: @padding * 3;
-    }
-    
+    } 
 } 
 
 .s-dash-edit-done{
@@ -1790,8 +1748,6 @@ textarea.ui-input-text {
     }
 }
 
-
-// @X
 
 // @TUMBLR DASH
 // ------------------------
@@ -1810,7 +1766,6 @@ textarea.ui-input-text {
         min-height: @thumbSize;
         .box-sizing(border-box);
         .border-radius(@corners);
-
         .s-crop-content{
             text-overflow: ellipsis;
             overflow: hidden;
@@ -1863,7 +1818,6 @@ textarea.ui-input-text {
                 margin-left: 0;
                 border-left: 0;
             }
-
         }
     }
     .s-tumblr-thumb{
@@ -1876,8 +1830,6 @@ textarea.ui-input-text {
 }
 
 
-
-
 // @UPLOADING
 // -------------------------
 
@@ -1887,7 +1839,6 @@ textarea.ui-input-text {
         height: @thumbSize + @padding * 6;
     }
     .s-upload-progress-item{
-       
         .s-upload-info-block{
             padding-left: @thumbSize + @padding * 2;
              .ui-icon-quote{
@@ -1901,8 +1852,6 @@ textarea.ui-input-text {
                    color: @gray;
                }
             }
-            
-           
         }
     }
     .s-offline-uploading{
@@ -1914,7 +1863,6 @@ textarea.ui-input-text {
             }
         }
     }
-
 }
 
 .s-upload-extra{
@@ -1938,7 +1886,6 @@ textarea.ui-input-text {
 }
 
 
-
 // @PROGRESSBAR
 //-----------------
 
@@ -1957,7 +1904,6 @@ textarea.ui-input-text {
     .s-upload-message{
         .button-font-small();
     }
-
     .s-bar-action{
          .ui-icon-check {
                 background-position: @gfxIcons-check-x @gfxIcons-y-highlight;
@@ -1965,9 +1911,7 @@ textarea.ui-input-text {
          .ui-icon-delete {
                 background-position: @gfxIcons-delete-x @gfxIcons-y-light;
         }
-    }
-    
-   
+    }    
 }
 
 
@@ -1978,14 +1922,12 @@ textarea.ui-input-text {
     #description{
         height: 92px;
     }
-   
     .s-upload-image-privacy{
         position: relative;
         margin-top: @padding * 2;
         height: 0;
         margin-bottom: 0;
         overflow: visible;
-
         .ui-controlgroup-label {
             display: none;
         }
@@ -2122,7 +2064,6 @@ textarea.ui-input-text {
                 display: inline-block;
                 vertical-align: middle;
             }
-
         .ui-btn {
             margin: @padding * 2 0;
             font-family: @fontSpecial;
@@ -2142,7 +2083,6 @@ textarea.ui-input-text {
                .ui-icon-location{background-position: @gfxAction-x @gfxAction-location-y;}
                 }
                 .ui-icon-location{background-position: @gfxAction-x @gfxAction-location-y;}
-
             }
             &.ui-checkbox-off{
                 .ui-btn-text{
@@ -2155,7 +2095,6 @@ textarea.ui-input-text {
                }
                .ui-icon-location{background-position: @gfxAction-x @gfxAction-location-y;}
             }
-
             .ui-icon-arrow-right{background-position: @gfxAction-x @gfxAction-arrow-r-y;}
             .ui-icon-location{background-position: @gfxAction-x @gfxAction-location-y;}
             .ui-icon-venue{background-position: @gfxAction-x @gfxAction-venue-y;}
@@ -2166,7 +2105,6 @@ textarea.ui-input-text {
                 .ui-icon-location{background-position: @gfxAction-x-hover @gfxAction-location-y;}
                 .ui-icon-venue{background-position: @gfxAction-x-hover @gfxAction-venue-y;}
              }
-
             .ui-icon-checkbox-on,
             .ui-icon-checkbox-off,
             .ui-icon-arrow-right{
@@ -2189,7 +2127,6 @@ textarea.ui-input-text {
                     }
                 }
             }
-
         }
     }
     .s-image-toggle{
@@ -2206,7 +2143,6 @@ textarea.ui-input-text {
             padding: 8px 32px 8px 16px;
             background-color: rgba(0, 0, 0,.8);
             border-radius: 20px;
-
         }
     }
 }
@@ -2291,14 +2227,12 @@ textarea.ui-input-text {
         padding-left: @thumbSize + @paddingGrid;
         margin-bottom: @padding * 2 + @paddingGrid;
     }
-    
     .s-photo-activity{
         .s-activity-item:first-child{
             border-top: none;
             padding-top: 0!important;
         }
     }
-
     .s-activity-item{
         &:first{
             border-top: none;
@@ -2306,7 +2240,6 @@ textarea.ui-input-text {
             padding-top: 0!important;
         }
     }
-    
     .s-activity-image-item{
         position: relative;
         min-height: @thumbSize;
@@ -2318,7 +2251,6 @@ textarea.ui-input-text {
             padding-top: 0!important;
         }
     }
-
     // If the first item (after the top bar) is a follow item get rid of its top border */
     .s-activity-stream:nth-child(2){
         .s-activity-follow-item{
@@ -2338,7 +2270,6 @@ textarea.ui-input-text {
 #my-account{
     div[data-role="content"]{
         overflow: hidden;
-        
     }
 }
 
@@ -2371,7 +2302,6 @@ textarea.ui-input-text {
     .ui-collapsible-set {
         margin-bottom: -2px;
     }
-
     .ui-bar{
         .box-shadow(0 -1px 3px rgba(0,0,0,.05));
         border-bottom: @borderGrayLight;
@@ -2379,7 +2309,6 @@ textarea.ui-input-text {
             padding-left: 8px;
         }
     }
-    
     .ui-listview{
         li.ui-btn{
              margin-top:1px;
@@ -2407,11 +2336,9 @@ textarea.ui-input-text {
             border-bottom: none;
         }
     }
-    
     .ui-collapsible-set{
         margin-left: -8px;
         margin-right: -8px;
-
         .ui-collapsible-heading{
             .ui-btn{
                 margin-top:1px;
@@ -2435,7 +2362,6 @@ textarea.ui-input-text {
                 background-image: none;
                 background-color: lighten(@grayLightBg, .7%);
                 .button-font-light();
-
             }
         }
         .ui-collapsible-content{
@@ -2443,7 +2369,6 @@ textarea.ui-input-text {
                 .box-shadow( none);
                 .border-radius(@cornersRound);
                 border: @borderGrayLighter;
-
             }
             &.ui-body-d{
                 border: none;
@@ -2451,11 +2376,6 @@ textarea.ui-input-text {
             }
         }
     }
-    
-    .s-about-us{
-        display: none;
-    }
-    
 }
 
 
@@ -2478,8 +2398,6 @@ textarea.ui-input-text {
     li{
         margin-bottom: 0;
     }
-
-
 }
 
 // making list style icons look the same is a drag..
@@ -2571,7 +2489,6 @@ textarea.ui-input-text {
             height: @topBarHeight;
         }
     }
-
 }
 
 .ps-caption-bottom{
@@ -2607,7 +2524,6 @@ textarea.ui-input-text {
 div.ps-carousel-item-loading{
     background: url('@{gfx}@{gfxImageLoadDark}') no-repeat center center;
 }
-
 
 
 // @WELCOME
@@ -2775,11 +2691,8 @@ div.ps-carousel-item-loading{
                 font-size: 14px;
                 padding: 8px 31px;
             }
-
         }
-        
-    }
-   
+    }  
     .s-disambiguation{
         position: absolute;
         display: none;
@@ -2817,8 +2730,6 @@ div.ps-carousel-item-loading{
             .arrow-up(@arrowSize, @white, 160px ,@arrowYShift + 2px);
         }
     }
-    
-
     .s-map-thumb {
         .s-map-pin{
             background-image: url('@{gfx}@{gfxMapPin}');
@@ -3165,9 +3076,6 @@ div.ps-carousel-item-loading{
         display: none;
     }
 }
-
-
-
 
 
 

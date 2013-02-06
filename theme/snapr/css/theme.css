@@ -1,10 +1,6 @@
-@font-face {
-  font-family: 'MuseoSansRounded700';
-  src: url('../fonts/museosansrounded-700-webfont.eot');
-  src: url('../fonts/museosansrounded-700-webfont.eot?#iefix') format('embedded-opentype'), url('../fonts/museosansrounded-700-webfont.woff') format('woff'), url('../fonts/museosansrounded-700-webfont.ttf') format('truetype'), url('../fonts/museosansrounded-700-webfont.svg#MuseoSansRounded700') format('svg');
-  font-weight: normal;
-  font-style: normal;
-}
+/*  SNAPR CLASSIC THEME
+**  Designed / Developed by Rowan Wernham, 2013
+*/
 /* MASTER MIXINS */
 .clearfix {
   *zoom: 1;
@@ -1758,8 +1754,8 @@ a.ui-link-inherit {
   background-color: #121414;
 }
 .ui-btn-active {
-  font-family: 'MuseoSansRounded700', Helvetica, Arial, sans-serif;
-  font-weight: normal;
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight: bold;
   text-transform: none;
   -webkit-font-smoothing: antialiased;
   text-decoration: none;
@@ -1775,8 +1771,8 @@ a.ui-link-inherit {
 .ui-btn-hover-a,
 .ui-btn-down-a,
 .ui-btn-active-a {
-  font-family: 'MuseoSansRounded700', Helvetica, Arial, sans-serif;
-  font-weight: normal;
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight: bold;
   text-transform: none;
   -webkit-font-smoothing: antialiased;
   text-transform: lowercase;
@@ -2359,8 +2355,8 @@ div[data-role="header"].ui-bar-b a[data-rel="back"]::before {
 .ui-btn-hover-c,
 .ui-btn-down-c {
   border: none;
-  font-family: 'MuseoSansRounded700', Helvetica, Arial, sans-serif;
-  font-weight: normal;
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight: bold;
   text-transform: none;
   -webkit-font-smoothing: antialiased;
   text-transform: lowercase;
@@ -2722,8 +2718,8 @@ div[data-role="header"].ui-bar-b a[data-rel="back"]::before {
 .ui-btn-hover-e,
 .ui-btn-down-e {
   border: none;
-  font-family: 'MuseoSansRounded700', Helvetica, Arial, sans-serif;
-  font-weight: normal;
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight: bold;
   text-transform: none;
   -webkit-font-smoothing: antialiased;
   text-transform: lowercase;
@@ -2845,8 +2841,8 @@ div[data-role="header"].ui-bar-b a[data-rel="back"]::before {
 .ui-btn-hover-f,
 .ui-btn-down-f {
   border: none;
-  font-family: 'MuseoSansRounded700', Helvetica, Arial, sans-serif;
-  font-weight: normal;
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight: bold;
   text-transform: none;
   -webkit-font-smoothing: antialiased;
   text-transform: lowercase;
@@ -2978,8 +2974,8 @@ div[data-role="header"].ui-bar-b a[data-rel="back"]::before {
 .ui-btn-hover-g,
 .ui-btn-down-g {
   border: none;
-  font-family: 'MuseoSansRounded700', Helvetica, Arial, sans-serif;
-  font-weight: normal;
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight: bold;
   text-transform: none;
   -webkit-font-smoothing: antialiased;
   text-transform: lowercase;
@@ -3110,8 +3106,8 @@ div[data-role="header"].ui-bar-b a[data-rel="back"]::before {
 .ui-btn-hover-h,
 .ui-btn-down-h {
   border: none;
-  font-family: 'MuseoSansRounded700', Helvetica, Arial, sans-serif;
-  font-weight: normal;
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight: bold;
   text-transform: none;
   -webkit-font-smoothing: antialiased;
   text-transform: lowercase;
@@ -3212,14 +3208,18 @@ body {
   font-family: Helvetica, Arial, sans-serif;
 }
 strong {
-  font-weight: normal;
-  font-size: 16px;
-  font-family: 'MuseoSansRounded700', Helvetica, Arial, sans-serif;
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight: bold;
+  text-transform: none;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  text-transform: lowercase;
+  font-size: 15px;
 }
 h4,
 h4.ui-li-heading {
-  font-family: 'MuseoSansRounded700', Helvetica, Arial, sans-serif;
-  font-weight: normal;
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight: bold;
   font-size: 16px;
 }
 div[data-role="header"] {
@@ -3232,8 +3232,8 @@ div[data-role="header"] {
   overflow: hidden;
 }
 div[data-role="header"] .ui-title {
-  font-family: 'MuseoSansRounded700', Helvetica, Arial, sans-serif;
-  font-weight: normal;
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight: bold;
   text-transform: lowercase;
   font-size: 16px;
   line-height: 46px;
@@ -3365,15 +3365,15 @@ a:active {
   color: #666666;
 }
 .s-username {
-  font-family: 'MuseoSansRounded700', Helvetica, Arial, sans-serif;
-  font-weight: normal;
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight: bold;
   font-size: 16px;
   text-transform: none;
   color: #474747;
 }
 .s-small-username {
-  font-family: 'MuseoSansRounded700', Helvetica, Arial, sans-serif;
-  font-weight: normal;
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight: bold;
   font-size: 16px;
   text-transform: none;
   font-size: 12px;
@@ -3395,8 +3395,8 @@ a:active {
 .s-centered-link {
   text-align: center;
   margin-top: 48px;
-  font-family: 'MuseoSansRounded700', Helvetica, Arial, sans-serif;
-  font-weight: normal;
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight: bold;
   text-transform: none;
   -webkit-font-smoothing: antialiased;
   text-decoration: none;
@@ -3971,8 +3971,8 @@ a:active {
   position: relative;
   top: -4px;
   text-shadow: rgba(255, 255, 255, 0.8) 0px 1px 0px;
-  font-family: 'MuseoSansRounded700', Helvetica, Arial, sans-serif;
-  font-weight: normal;
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight: bold;
   text-transform: none;
   -webkit-font-smoothing: antialiased;
   text-decoration: none;
@@ -4266,7 +4266,6 @@ textarea.ui-input-text {
     height: 115px !important;
   }
 }
-/* Horizontally scrolling image stream components */
 .s-image-streams .x-stream {
   margin-bottom: 8px;
 }
@@ -4754,8 +4753,8 @@ textarea.ui-input-text {
   margin: 8px 24px 4px 4px;
 }
 #tumblr-posts .s-tumblr-stream .s-tumblr-post-item .s-tumblr-post .s-tumblr-body h4 {
-  font-family: 'MuseoSansRounded700', Helvetica, Arial, sans-serif;
-  font-weight: normal;
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight: bold;
   font-size: 16px;
 }
 #tumblr-posts .s-tumblr-stream .s-tumblr-post-item .s-tumblr-post .s-tumblr-body blockquote {
@@ -4866,7 +4865,7 @@ textarea.ui-input-text {
 .s-feed-header.s-inline-header .s-header-stats .s-hero-number {
   display: block;
   font-size: 24px;
-  font-family: 'MuseoSansRounded700', Helvetica, Arial, sans-serif;
+  font-family: Helvetica, Arial, sans-serif;
   padding: 10px 0 0 0;
   height: 30px;
   line-height: 28px;
@@ -5170,8 +5169,8 @@ textarea.ui-input-text {
 .s-user-profile .s-profile-details .s-details .real-name {
   line-height: 21px;
   vertical-align: center;
-  font-family: 'MuseoSansRounded700', Helvetica, Arial, sans-serif;
-  font-weight: normal;
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight: bold;
   font-size: 16px;
   text-transform: none;
   margin-bottom: 4px;
@@ -5596,7 +5595,7 @@ textarea.ui-input-text {
 }
 .s-share-photo .s-upload-image-location .ui-btn {
   margin: 8px 0;
-  font-family: 'MuseoSansRounded700', Helvetica, Arial, sans-serif;
+  font-family: Helvetica, Arial, sans-serif;
   font-size: 15px;
   font-weight: normal;
 }
@@ -5913,9 +5912,6 @@ textarea.ui-input-text {
 .s-account-content .ui-collapsible-set .ui-collapsible-content.ui-body-d {
   border: none;
   border-bottom: solid 1px #e4e4e4;
-}
-.s-account-content .s-about-us {
-  display: none;
 }
 .s-linked-services .ui-collapsible-heading .ui-btn-inner {
   padding: 16px 40px 16px 16px;
@@ -6274,8 +6270,8 @@ div.ps-carousel-item-loading {
 }
 .s-photo-map .s-disambiguation h4 {
   margin-top: 8px;
-  font-family: 'MuseoSansRounded700', Helvetica, Arial, sans-serif;
-  font-weight: normal;
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight: bold;
   font-size: 16px;
 }
 .s-photo-map .s-disambiguation .ui-listview {
@@ -6360,8 +6356,8 @@ div.ps-carousel-item-loading {
 }
 .s-spots-search-filters .ui-select .ui-btn-icon-right .ui-btn-inner {
   padding: 10px 25px 10px 10px;
-  font-family: 'MuseoSansRounded700', Helvetica, Arial, sans-serif;
-  font-weight: normal;
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight: bold;
   text-transform: none;
   -webkit-font-smoothing: antialiased;
   text-decoration: none;
@@ -6424,8 +6420,8 @@ div.ps-carousel-item-loading {
 }
 .s-spot-list-item .s-spot-item .s-spot-heading .s-spot-name {
   margin: 4px 0;
-  font-family: 'MuseoSansRounded700', Helvetica, Arial, sans-serif;
-  font-weight: normal;
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight: bold;
   font-size: 16px;
   text-transform: none;
 }
