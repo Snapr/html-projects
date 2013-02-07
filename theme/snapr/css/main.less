@@ -2531,11 +2531,13 @@ div.ps-carousel-item-loading{
 
 .ui-dialog.welcome-bg,
 .ui-page.welcome-bg{
-    background-color: #acebdd!important;
-    background-image: url('../../../app/css/gfx/welcome-image.png')!important;
-    .background-size(100%, auto)!important;
+    background-color: lighten(@snaprYellow, 10%)!important;
+    .box-shadow(inset 0px -2px 100px @snaprYellowTint);
+    background-image: url('../gfx/welcome-placeholder.gif')!important;
+    .background-size(320px, 200px)!important;
     background-repeat: no-repeat!important;
     background-position: center bottom!important;
+    
 }
 
 

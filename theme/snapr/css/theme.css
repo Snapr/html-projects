@@ -6067,12 +6067,15 @@ div.ps-carousel-item-loading {
 }
 .ui-dialog.welcome-bg,
 .ui-page.welcome-bg {
-  background-color: #acebdd!important;
-  background-image: url('../../../app/css/gfx/welcome-image.png') !important;
-  -moz-background-size: 100% auto !important;
-  -o-background-size: 100% auto !important;
-  -webkit-background-size: 100% auto !important;
-  background-size: 100% auto !important;
+  background-color: #ffff33 !important;
+  -moz-box-shadow: inset 0px -2px 100px #ffe400;
+  -webkit-box-shadow: inset 0px -2px 100px #ffe400;
+  box-shadow: inset 0px -2px 100px #ffe400;
+  background-image: url('../gfx/welcome-placeholder.gif') !important;
+  -moz-background-size: 320px 200px !important;
+  -o-background-size: 320px 200px !important;
+  -webkit-background-size: 320px 200px !important;
+  background-size: 320px 200px !important;
   background-repeat: no-repeat !important;
   background-position: center bottom!important;
 }

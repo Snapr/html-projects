@@ -281,7 +281,6 @@ return {
 
     pages: [
         'home',
-        'cities',
         'feed',
         {
             name: 'dash',
@@ -289,16 +288,20 @@ return {
             template: theme_templates_path + 'dash'
         },
         {
-            name: 'welcome',
-            view: 'welcome',
-            template: theme_templates_path + 'welcome'
+            name: 'about',
+            view: 'base/page',
+            template: theme_templates_path + 'about'
         },
         {
             name: 'join-success',
             view: 'base/page',
             template: theme_templates_path + 'join_success'
         },
-        'leaderboard',
+        {
+            name: 'join-success',
+            view: 'base/page',
+            template: theme_templates_path + 'join_success'
+        },
         'activity',
         'popular'
     ]
