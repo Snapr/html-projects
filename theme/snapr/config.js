@@ -298,9 +298,9 @@ return {
             template: theme_templates_path + 'join_success'
         },
         {
-            name: 'join-success',
-            view: 'base/page',
-            template: theme_templates_path + 'join_success'
+            name: 'welcome',
+            view: 'welcome',
+            template: theme_templates_path + 'welcome'
         },
         'activity',
         'popular'
