@@ -775,6 +775,384 @@
 .ui-bar-icons.ui-icon-info {
   background-position: 0 -480px;
 }
+.ui-bar .ui-icon-photos,
+.ui-bar-icons .ui-icon-photos,
+.ui-bar.ui-icon-photos,
+.ui-bar-icons.ui-icon-photos {
+  background-position: 0 -512px;
+}
+.ui-bar .ui-icon-arrow-u,
+.ui-bar-icons .ui-icon-arrow-u,
+.ui-bar.ui-icon-arrow-u,
+.ui-bar-icons.ui-icon-arrow-u {
+  background-position: 0 -576px;
+}
+.ui-bar .ui-icon-arrow-d,
+.ui-bar-icons .ui-icon-arrow-d,
+.ui-bar.ui-icon-arrow-d,
+.ui-bar-icons.ui-icon-arrow-d {
+  background-position: 0 -544px;
+}
+.ui-bar.ui-bar-b .ui-icon-open,
+.ui-bar-icons.ui-bar-b .ui-icon-open,
+.ui-bar.ui-btn-up-b .ui-icon-open,
+.ui-bar-icons.ui-btn-up-b .ui-icon-open,
+.ui-bar.ui-btn-hover-b .ui-icon-open,
+.ui-bar-icons.ui-btn-hover-b .ui-icon-open,
+.ui-bar.ui-btn-down-b .ui-icon-open,
+.ui-bar-icons.ui-btn-down-b .ui-icon-open,
+.ui-bar.ui-bar-b.ui-icon-open,
+.ui-bar-icons.ui-bar-b.ui-icon-open,
+.ui-bar.ui-btn-up-b.ui-icon-open,
+.ui-bar-icons.ui-btn-up-b.ui-icon-open,
+.ui-bar.ui-btn-hover-b.ui-icon-open,
+.ui-bar-icons.ui-btn-hover-b.ui-icon-open,
+.ui-bar.ui-btn-down-b.ui-icon-open,
+.ui-bar-icons.ui-btn-down-b.ui-icon-open {
+  background-position: -32px 0px;
+}
+.ui-bar.ui-bar-b .ui-icon-closed,
+.ui-bar-icons.ui-bar-b .ui-icon-closed,
+.ui-bar.ui-btn-up-b .ui-icon-closed,
+.ui-bar-icons.ui-btn-up-b .ui-icon-closed,
+.ui-bar.ui-btn-hover-b .ui-icon-closed,
+.ui-bar-icons.ui-btn-hover-b .ui-icon-closed,
+.ui-bar.ui-btn-down-b .ui-icon-closed,
+.ui-bar-icons.ui-btn-down-b .ui-icon-closed,
+.ui-bar.ui-bar-b.ui-icon-closed,
+.ui-bar-icons.ui-bar-b.ui-icon-closed,
+.ui-bar.ui-btn-up-b.ui-icon-closed,
+.ui-bar-icons.ui-btn-up-b.ui-icon-closed,
+.ui-bar.ui-btn-hover-b.ui-icon-closed,
+.ui-bar-icons.ui-btn-hover-b.ui-icon-closed,
+.ui-bar.ui-btn-down-b.ui-icon-closed,
+.ui-bar-icons.ui-btn-down-b.ui-icon-closed {
+  background-position: -32px -32px;
+}
+.ui-bar.ui-bar-b .ui-icon-arrow-r,
+.ui-bar-icons.ui-bar-b .ui-icon-arrow-r,
+.ui-bar.ui-btn-up-b .ui-icon-arrow-r,
+.ui-bar-icons.ui-btn-up-b .ui-icon-arrow-r,
+.ui-bar.ui-btn-hover-b .ui-icon-arrow-r,
+.ui-bar-icons.ui-btn-hover-b .ui-icon-arrow-r,
+.ui-bar.ui-btn-down-b .ui-icon-arrow-r,
+.ui-bar-icons.ui-btn-down-b .ui-icon-arrow-r,
+.ui-bar.ui-bar-b.ui-icon-arrow-r,
+.ui-bar-icons.ui-bar-b.ui-icon-arrow-r,
+.ui-bar.ui-btn-up-b.ui-icon-arrow-r,
+.ui-bar-icons.ui-btn-up-b.ui-icon-arrow-r,
+.ui-bar.ui-btn-hover-b.ui-icon-arrow-r,
+.ui-bar-icons.ui-btn-hover-b.ui-icon-arrow-r,
+.ui-bar.ui-btn-down-b.ui-icon-arrow-r,
+.ui-bar-icons.ui-btn-down-b.ui-icon-arrow-r {
+  background-position: -32px -64px;
+}
+.ui-bar.ui-bar-b .ui-icon-heart,
+.ui-bar-icons.ui-bar-b .ui-icon-heart,
+.ui-bar.ui-btn-up-b .ui-icon-heart,
+.ui-bar-icons.ui-btn-up-b .ui-icon-heart,
+.ui-bar.ui-btn-hover-b .ui-icon-heart,
+.ui-bar-icons.ui-btn-hover-b .ui-icon-heart,
+.ui-bar.ui-btn-down-b .ui-icon-heart,
+.ui-bar-icons.ui-btn-down-b .ui-icon-heart,
+.ui-bar.ui-bar-b.ui-icon-heart,
+.ui-bar-icons.ui-bar-b.ui-icon-heart,
+.ui-bar.ui-btn-up-b.ui-icon-heart,
+.ui-bar-icons.ui-btn-up-b.ui-icon-heart,
+.ui-bar.ui-btn-hover-b.ui-icon-heart,
+.ui-bar-icons.ui-btn-hover-b.ui-icon-heart,
+.ui-bar.ui-btn-down-b.ui-icon-heart,
+.ui-bar-icons.ui-btn-down-b.ui-icon-heart {
+  background-position: -32px -96px;
+}
+.ui-bar.ui-bar-b .ui-icon-venue,
+.ui-bar-icons.ui-bar-b .ui-icon-venue,
+.ui-bar.ui-btn-up-b .ui-icon-venue,
+.ui-bar-icons.ui-btn-up-b .ui-icon-venue,
+.ui-bar.ui-btn-hover-b .ui-icon-venue,
+.ui-bar-icons.ui-btn-hover-b .ui-icon-venue,
+.ui-bar.ui-btn-down-b .ui-icon-venue,
+.ui-bar-icons.ui-btn-down-b .ui-icon-venue,
+.ui-bar.ui-bar-b.ui-icon-venue,
+.ui-bar-icons.ui-bar-b.ui-icon-venue,
+.ui-bar.ui-btn-up-b.ui-icon-venue,
+.ui-bar-icons.ui-btn-up-b.ui-icon-venue,
+.ui-bar.ui-btn-hover-b.ui-icon-venue,
+.ui-bar-icons.ui-btn-hover-b.ui-icon-venue,
+.ui-bar.ui-btn-down-b.ui-icon-venue,
+.ui-bar-icons.ui-btn-down-b.ui-icon-venue {
+  background-position: -32px -128px;
+}
+.ui-bar.ui-bar-b .ui-icon-person,
+.ui-bar-icons.ui-bar-b .ui-icon-person,
+.ui-bar.ui-btn-up-b .ui-icon-person,
+.ui-bar-icons.ui-btn-up-b .ui-icon-person,
+.ui-bar.ui-btn-hover-b .ui-icon-person,
+.ui-bar-icons.ui-btn-hover-b .ui-icon-person,
+.ui-bar.ui-btn-down-b .ui-icon-person,
+.ui-bar-icons.ui-btn-down-b .ui-icon-person,
+.ui-bar.ui-bar-b.ui-icon-person,
+.ui-bar-icons.ui-bar-b.ui-icon-person,
+.ui-bar.ui-btn-up-b.ui-icon-person,
+.ui-bar-icons.ui-btn-up-b.ui-icon-person,
+.ui-bar.ui-btn-hover-b.ui-icon-person,
+.ui-bar-icons.ui-btn-hover-b.ui-icon-person,
+.ui-bar.ui-btn-down-b.ui-icon-person,
+.ui-bar-icons.ui-btn-down-b.ui-icon-person {
+  background-position: -32px -160px;
+}
+.ui-bar.ui-bar-b .ui-icon-search,
+.ui-bar-icons.ui-bar-b .ui-icon-search,
+.ui-bar.ui-btn-up-b .ui-icon-search,
+.ui-bar-icons.ui-btn-up-b .ui-icon-search,
+.ui-bar.ui-btn-hover-b .ui-icon-search,
+.ui-bar-icons.ui-btn-hover-b .ui-icon-search,
+.ui-bar.ui-btn-down-b .ui-icon-search,
+.ui-bar-icons.ui-btn-down-b .ui-icon-search,
+.ui-bar.ui-bar-b.ui-icon-search,
+.ui-bar-icons.ui-bar-b.ui-icon-search,
+.ui-bar.ui-btn-up-b.ui-icon-search,
+.ui-bar-icons.ui-btn-up-b.ui-icon-search,
+.ui-bar.ui-btn-hover-b.ui-icon-search,
+.ui-bar-icons.ui-btn-hover-b.ui-icon-search,
+.ui-bar.ui-btn-down-b.ui-icon-search,
+.ui-bar-icons.ui-btn-down-b.ui-icon-search {
+  background-position: -32px -192px;
+}
+.ui-bar.ui-bar-b .ui-icon-activity,
+.ui-bar-icons.ui-bar-b .ui-icon-activity,
+.ui-bar.ui-btn-up-b .ui-icon-activity,
+.ui-bar-icons.ui-btn-up-b .ui-icon-activity,
+.ui-bar.ui-btn-hover-b .ui-icon-activity,
+.ui-bar-icons.ui-btn-hover-b .ui-icon-activity,
+.ui-bar.ui-btn-down-b .ui-icon-activity,
+.ui-bar-icons.ui-btn-down-b .ui-icon-activity,
+.ui-bar.ui-bar-b.ui-icon-activity,
+.ui-bar-icons.ui-bar-b.ui-icon-activity,
+.ui-bar.ui-btn-up-b.ui-icon-activity,
+.ui-bar-icons.ui-btn-up-b.ui-icon-activity,
+.ui-bar.ui-btn-hover-b.ui-icon-activity,
+.ui-bar-icons.ui-btn-hover-b.ui-icon-activity,
+.ui-bar.ui-btn-down-b.ui-icon-activity,
+.ui-bar-icons.ui-btn-down-b.ui-icon-activity {
+  background-position: -32px -224px;
+}
+.ui-bar.ui-bar-b .ui-icon-location,
+.ui-bar-icons.ui-bar-b .ui-icon-location,
+.ui-bar.ui-btn-up-b .ui-icon-location,
+.ui-bar-icons.ui-btn-up-b .ui-icon-location,
+.ui-bar.ui-btn-hover-b .ui-icon-location,
+.ui-bar-icons.ui-btn-hover-b .ui-icon-location,
+.ui-bar.ui-btn-down-b .ui-icon-location,
+.ui-bar-icons.ui-btn-down-b .ui-icon-location,
+.ui-bar.ui-bar-b.ui-icon-location,
+.ui-bar-icons.ui-bar-b.ui-icon-location,
+.ui-bar.ui-btn-up-b.ui-icon-location,
+.ui-bar-icons.ui-btn-up-b.ui-icon-location,
+.ui-bar.ui-btn-hover-b.ui-icon-location,
+.ui-bar-icons.ui-btn-hover-b.ui-icon-location,
+.ui-bar.ui-btn-down-b.ui-icon-location,
+.ui-bar-icons.ui-btn-down-b.ui-icon-location {
+  background-position: -32px -256px;
+}
+.ui-bar.ui-bar-b .ui-icon-clock,
+.ui-bar-icons.ui-bar-b .ui-icon-clock,
+.ui-bar.ui-btn-up-b .ui-icon-clock,
+.ui-bar-icons.ui-btn-up-b .ui-icon-clock,
+.ui-bar.ui-btn-hover-b .ui-icon-clock,
+.ui-bar-icons.ui-btn-hover-b .ui-icon-clock,
+.ui-bar.ui-btn-down-b .ui-icon-clock,
+.ui-bar-icons.ui-btn-down-b .ui-icon-clock,
+.ui-bar.ui-bar-b.ui-icon-clock,
+.ui-bar-icons.ui-bar-b.ui-icon-clock,
+.ui-bar.ui-btn-up-b.ui-icon-clock,
+.ui-bar-icons.ui-btn-up-b.ui-icon-clock,
+.ui-bar.ui-btn-hover-b.ui-icon-clock,
+.ui-bar-icons.ui-btn-hover-b.ui-icon-clock,
+.ui-bar.ui-btn-down-b.ui-icon-clock,
+.ui-bar-icons.ui-btn-down-b.ui-icon-clock {
+  background-position: -32px -288px;
+}
+.ui-bar.ui-bar-b .ui-icon-connection,
+.ui-bar-icons.ui-bar-b .ui-icon-connection,
+.ui-bar.ui-btn-up-b .ui-icon-connection,
+.ui-bar-icons.ui-btn-up-b .ui-icon-connection,
+.ui-bar.ui-btn-hover-b .ui-icon-connection,
+.ui-bar-icons.ui-btn-hover-b .ui-icon-connection,
+.ui-bar.ui-btn-down-b .ui-icon-connection,
+.ui-bar-icons.ui-btn-down-b .ui-icon-connection,
+.ui-bar.ui-bar-b.ui-icon-connection,
+.ui-bar-icons.ui-bar-b.ui-icon-connection,
+.ui-bar.ui-btn-up-b.ui-icon-connection,
+.ui-bar-icons.ui-btn-up-b.ui-icon-connection,
+.ui-bar.ui-btn-hover-b.ui-icon-connection,
+.ui-bar-icons.ui-btn-hover-b.ui-icon-connection,
+.ui-bar.ui-btn-down-b.ui-icon-connection,
+.ui-bar-icons.ui-btn-down-b.ui-icon-connection {
+  background-position: -32px -320px;
+}
+.ui-bar.ui-bar-b .ui-icon-blog,
+.ui-bar-icons.ui-bar-b .ui-icon-blog,
+.ui-bar.ui-btn-up-b .ui-icon-blog,
+.ui-bar-icons.ui-btn-up-b .ui-icon-blog,
+.ui-bar.ui-btn-hover-b .ui-icon-blog,
+.ui-bar-icons.ui-btn-hover-b .ui-icon-blog,
+.ui-bar.ui-btn-down-b .ui-icon-blog,
+.ui-bar-icons.ui-btn-down-b .ui-icon-blog,
+.ui-bar.ui-bar-b.ui-icon-blog,
+.ui-bar-icons.ui-bar-b.ui-icon-blog,
+.ui-bar.ui-btn-up-b.ui-icon-blog,
+.ui-bar-icons.ui-btn-up-b.ui-icon-blog,
+.ui-bar.ui-btn-hover-b.ui-icon-blog,
+.ui-bar-icons.ui-btn-hover-b.ui-icon-blog,
+.ui-bar.ui-btn-down-b.ui-icon-blog,
+.ui-bar-icons.ui-btn-down-b.ui-icon-blog {
+  background-position: -32px -352px;
+}
+.ui-bar.ui-bar-b .ui-icon-comment,
+.ui-bar-icons.ui-bar-b .ui-icon-comment,
+.ui-bar.ui-btn-up-b .ui-icon-comment,
+.ui-bar-icons.ui-btn-up-b .ui-icon-comment,
+.ui-bar.ui-btn-hover-b .ui-icon-comment,
+.ui-bar-icons.ui-btn-hover-b .ui-icon-comment,
+.ui-bar.ui-btn-down-b .ui-icon-comment,
+.ui-bar-icons.ui-btn-down-b .ui-icon-comment,
+.ui-bar.ui-bar-b.ui-icon-comment,
+.ui-bar-icons.ui-bar-b.ui-icon-comment,
+.ui-bar.ui-btn-up-b.ui-icon-comment,
+.ui-bar-icons.ui-btn-up-b.ui-icon-comment,
+.ui-bar.ui-btn-hover-b.ui-icon-comment,
+.ui-bar-icons.ui-btn-hover-b.ui-icon-comment,
+.ui-bar.ui-btn-down-b.ui-icon-comment,
+.ui-bar-icons.ui-btn-down-b.ui-icon-comment {
+  background-position: -32px -384px;
+}
+.ui-bar.ui-bar-b .ui-icon-play,
+.ui-bar-icons.ui-bar-b .ui-icon-play,
+.ui-bar.ui-btn-up-b .ui-icon-play,
+.ui-bar-icons.ui-btn-up-b .ui-icon-play,
+.ui-bar.ui-btn-hover-b .ui-icon-play,
+.ui-bar-icons.ui-btn-hover-b .ui-icon-play,
+.ui-bar.ui-btn-down-b .ui-icon-play,
+.ui-bar-icons.ui-btn-down-b .ui-icon-play,
+.ui-bar.ui-bar-b.ui-icon-play,
+.ui-bar-icons.ui-bar-b.ui-icon-play,
+.ui-bar.ui-btn-up-b.ui-icon-play,
+.ui-bar-icons.ui-btn-up-b.ui-icon-play,
+.ui-bar.ui-btn-hover-b.ui-icon-play,
+.ui-bar-icons.ui-btn-hover-b.ui-icon-play,
+.ui-bar.ui-btn-down-b.ui-icon-play,
+.ui-bar-icons.ui-btn-down-b.ui-icon-play {
+  background-position: -32px -416px;
+}
+.ui-bar.ui-bar-b .ui-icon-refresh,
+.ui-bar-icons.ui-bar-b .ui-icon-refresh,
+.ui-bar.ui-btn-up-b .ui-icon-refresh,
+.ui-bar-icons.ui-btn-up-b .ui-icon-refresh,
+.ui-bar.ui-btn-hover-b .ui-icon-refresh,
+.ui-bar-icons.ui-btn-hover-b .ui-icon-refresh,
+.ui-bar.ui-btn-down-b .ui-icon-refresh,
+.ui-bar-icons.ui-btn-down-b .ui-icon-refresh,
+.ui-bar.ui-bar-b.ui-icon-refresh,
+.ui-bar-icons.ui-bar-b.ui-icon-refresh,
+.ui-bar.ui-btn-up-b.ui-icon-refresh,
+.ui-bar-icons.ui-btn-up-b.ui-icon-refresh,
+.ui-bar.ui-btn-hover-b.ui-icon-refresh,
+.ui-bar-icons.ui-btn-hover-b.ui-icon-refresh,
+.ui-bar.ui-btn-down-b.ui-icon-refresh,
+.ui-bar-icons.ui-btn-down-b.ui-icon-refresh {
+  background-position: -32px -448px;
+}
+.ui-bar.ui-bar-b .ui-icon-redheart,
+.ui-bar-icons.ui-bar-b .ui-icon-redheart,
+.ui-bar.ui-btn-up-b .ui-icon-redheart,
+.ui-bar-icons.ui-btn-up-b .ui-icon-redheart,
+.ui-bar.ui-btn-hover-b .ui-icon-redheart,
+.ui-bar-icons.ui-btn-hover-b .ui-icon-redheart,
+.ui-bar.ui-btn-down-b .ui-icon-redheart,
+.ui-bar-icons.ui-btn-down-b .ui-icon-redheart,
+.ui-bar.ui-bar-b.ui-icon-redheart,
+.ui-bar-icons.ui-bar-b.ui-icon-redheart,
+.ui-bar.ui-btn-up-b.ui-icon-redheart,
+.ui-bar-icons.ui-btn-up-b.ui-icon-redheart,
+.ui-bar.ui-btn-hover-b.ui-icon-redheart,
+.ui-bar-icons.ui-btn-hover-b.ui-icon-redheart,
+.ui-bar.ui-btn-down-b.ui-icon-redheart,
+.ui-bar-icons.ui-btn-down-b.ui-icon-redheart {
+  background-position: -96px -96px;
+}
+.ui-bar.ui-bar-b .ui-icon-info,
+.ui-bar-icons.ui-bar-b .ui-icon-info,
+.ui-bar.ui-btn-up-b .ui-icon-info,
+.ui-bar-icons.ui-btn-up-b .ui-icon-info,
+.ui-bar.ui-btn-hover-b .ui-icon-info,
+.ui-bar-icons.ui-btn-hover-b .ui-icon-info,
+.ui-bar.ui-btn-down-b .ui-icon-info,
+.ui-bar-icons.ui-btn-down-b .ui-icon-info,
+.ui-bar.ui-bar-b.ui-icon-info,
+.ui-bar-icons.ui-bar-b.ui-icon-info,
+.ui-bar.ui-btn-up-b.ui-icon-info,
+.ui-bar-icons.ui-btn-up-b.ui-icon-info,
+.ui-bar.ui-btn-hover-b.ui-icon-info,
+.ui-bar-icons.ui-btn-hover-b.ui-icon-info,
+.ui-bar.ui-btn-down-b.ui-icon-info,
+.ui-bar-icons.ui-btn-down-b.ui-icon-info {
+  background-position: -32px -480px;
+}
+.ui-bar.ui-bar-b .ui-icon-photos,
+.ui-bar-icons.ui-bar-b .ui-icon-photos,
+.ui-bar.ui-btn-up-b .ui-icon-photos,
+.ui-bar-icons.ui-btn-up-b .ui-icon-photos,
+.ui-bar.ui-btn-hover-b .ui-icon-photos,
+.ui-bar-icons.ui-btn-hover-b .ui-icon-photos,
+.ui-bar.ui-btn-down-b .ui-icon-photos,
+.ui-bar-icons.ui-btn-down-b .ui-icon-photos,
+.ui-bar.ui-bar-b.ui-icon-photos,
+.ui-bar-icons.ui-bar-b.ui-icon-photos,
+.ui-bar.ui-btn-up-b.ui-icon-photos,
+.ui-bar-icons.ui-btn-up-b.ui-icon-photos,
+.ui-bar.ui-btn-hover-b.ui-icon-photos,
+.ui-bar-icons.ui-btn-hover-b.ui-icon-photos,
+.ui-bar.ui-btn-down-b.ui-icon-photos,
+.ui-bar-icons.ui-btn-down-b.ui-icon-photos {
+  background-position: -32px -512px;
+}
+.ui-bar.ui-bar-b .ui-icon-arrow-u,
+.ui-bar-icons.ui-bar-b .ui-icon-arrow-u,
+.ui-bar.ui-btn-up-b .ui-icon-arrow-u,
+.ui-bar-icons.ui-btn-up-b .ui-icon-arrow-u,
+.ui-bar.ui-btn-hover-b .ui-icon-arrow-u,
+.ui-bar-icons.ui-btn-hover-b .ui-icon-arrow-u,
+.ui-bar.ui-btn-down-b .ui-icon-arrow-u,
+.ui-bar-icons.ui-btn-down-b .ui-icon-arrow-u,
+.ui-bar.ui-bar-b.ui-icon-arrow-u,
+.ui-bar-icons.ui-bar-b.ui-icon-arrow-u,
+.ui-bar.ui-btn-up-b.ui-icon-arrow-u,
+.ui-bar-icons.ui-btn-up-b.ui-icon-arrow-u,
+.ui-bar.ui-btn-hover-b.ui-icon-arrow-u,
+.ui-bar-icons.ui-btn-hover-b.ui-icon-arrow-u,
+.ui-bar.ui-btn-down-b.ui-icon-arrow-u,
+.ui-bar-icons.ui-btn-down-b.ui-icon-arrow-u {
+  background-position: -32px -576px;
+}
+.ui-bar.ui-bar-b .ui-icon-arrow-d,
+.ui-bar-icons.ui-bar-b .ui-icon-arrow-d,
+.ui-bar.ui-btn-up-b .ui-icon-arrow-d,
+.ui-bar-icons.ui-btn-up-b .ui-icon-arrow-d,
+.ui-bar.ui-btn-hover-b .ui-icon-arrow-d,
+.ui-bar-icons.ui-btn-hover-b .ui-icon-arrow-d,
+.ui-bar.ui-btn-down-b .ui-icon-arrow-d,
+.ui-bar-icons.ui-btn-down-b .ui-icon-arrow-d,
+.ui-bar.ui-bar-b.ui-icon-arrow-d,
+.ui-bar-icons.ui-bar-b.ui-icon-arrow-d,
+.ui-bar.ui-btn-up-b.ui-icon-arrow-d,
+.ui-bar-icons.ui-btn-up-b.ui-icon-arrow-d,
+.ui-bar.ui-btn-hover-b.ui-icon-arrow-d,
+.ui-bar-icons.ui-btn-hover-b.ui-icon-arrow-d,
+.ui-bar.ui-btn-down-b.ui-icon-arrow-d,
+.ui-bar-icons.ui-btn-down-b.ui-icon-arrow-d {
+  background-position: -32px -544px;
+}
 .ui-bar.ui-bar-e .ui-icon-open,
 .ui-bar-icons.ui-bar-e .ui-icon-open,
 .ui-bar.ui-btn-up-e .ui-icon-open,
@@ -1080,6 +1458,60 @@
 .ui-bar.ui-btn-down-e.ui-icon-info,
 .ui-bar-icons.ui-btn-down-e.ui-icon-info {
   background-position: -128px -480px;
+}
+.ui-bar.ui-bar-e .ui-icon-photos,
+.ui-bar-icons.ui-bar-e .ui-icon-photos,
+.ui-bar.ui-btn-up-e .ui-icon-photos,
+.ui-bar-icons.ui-btn-up-e .ui-icon-photos,
+.ui-bar.ui-btn-hover-e .ui-icon-photos,
+.ui-bar-icons.ui-btn-hover-e .ui-icon-photos,
+.ui-bar.ui-btn-down-e .ui-icon-photos,
+.ui-bar-icons.ui-btn-down-e .ui-icon-photos,
+.ui-bar.ui-bar-e.ui-icon-photos,
+.ui-bar-icons.ui-bar-e.ui-icon-photos,
+.ui-bar.ui-btn-up-e.ui-icon-photos,
+.ui-bar-icons.ui-btn-up-e.ui-icon-photos,
+.ui-bar.ui-btn-hover-e.ui-icon-photos,
+.ui-bar-icons.ui-btn-hover-e.ui-icon-photos,
+.ui-bar.ui-btn-down-e.ui-icon-photos,
+.ui-bar-icons.ui-btn-down-e.ui-icon-photos {
+  background-position: -128px -512px;
+}
+.ui-bar.ui-bar-e .ui-icon-arrow-u,
+.ui-bar-icons.ui-bar-e .ui-icon-arrow-u,
+.ui-bar.ui-btn-up-e .ui-icon-arrow-u,
+.ui-bar-icons.ui-btn-up-e .ui-icon-arrow-u,
+.ui-bar.ui-btn-hover-e .ui-icon-arrow-u,
+.ui-bar-icons.ui-btn-hover-e .ui-icon-arrow-u,
+.ui-bar.ui-btn-down-e .ui-icon-arrow-u,
+.ui-bar-icons.ui-btn-down-e .ui-icon-arrow-u,
+.ui-bar.ui-bar-e.ui-icon-arrow-u,
+.ui-bar-icons.ui-bar-e.ui-icon-arrow-u,
+.ui-bar.ui-btn-up-e.ui-icon-arrow-u,
+.ui-bar-icons.ui-btn-up-e.ui-icon-arrow-u,
+.ui-bar.ui-btn-hover-e.ui-icon-arrow-u,
+.ui-bar-icons.ui-btn-hover-e.ui-icon-arrow-u,
+.ui-bar.ui-btn-down-e.ui-icon-arrow-u,
+.ui-bar-icons.ui-btn-down-e.ui-icon-arrow-u {
+  background-position: -128px -576px;
+}
+.ui-bar.ui-bar-e .ui-icon-arrow-d,
+.ui-bar-icons.ui-bar-e .ui-icon-arrow-d,
+.ui-bar.ui-btn-up-e .ui-icon-arrow-d,
+.ui-bar-icons.ui-btn-up-e .ui-icon-arrow-d,
+.ui-bar.ui-btn-hover-e .ui-icon-arrow-d,
+.ui-bar-icons.ui-btn-hover-e .ui-icon-arrow-d,
+.ui-bar.ui-btn-down-e .ui-icon-arrow-d,
+.ui-bar-icons.ui-btn-down-e .ui-icon-arrow-d,
+.ui-bar.ui-bar-e.ui-icon-arrow-d,
+.ui-bar-icons.ui-bar-e.ui-icon-arrow-d,
+.ui-bar.ui-btn-up-e.ui-icon-arrow-d,
+.ui-bar-icons.ui-btn-up-e.ui-icon-arrow-d,
+.ui-bar.ui-btn-hover-e.ui-icon-arrow-d,
+.ui-bar-icons.ui-btn-hover-e.ui-icon-arrow-d,
+.ui-bar.ui-btn-down-e.ui-icon-arrow-d,
+.ui-bar-icons.ui-btn-down-e.ui-icon-arrow-d {
+  background-position: -128px -544px;
 }
 .ui-bar.ui-bar-f .ui-icon-play,
 .ui-bar-icons.ui-bar-f .ui-icon-play,
@@ -3470,7 +3902,9 @@ a:active {
 .ui-bar.ui-btn .ui-btn-text .ui-icon {
   display: inline-block;
   margin-top: 0!important;
-  top: 2px;
+  top: 0px;
+  left: -4px;
+  margin-right: -4px;
 }
 .ui-bar .ui-btn .ui-btn-text .ui-icon.spot-icon,
 .ui-bar.ui-btn .ui-btn-text .ui-icon.spot-icon {
@@ -3482,6 +3916,11 @@ a:active {
   width: 17px;
   left: -4px;
   top: -1px;
+}
+.ui-bar .ui-btn .ui-btn-text .ui-icon.ui-icon-arrow-d,
+.ui-bar.ui-btn .ui-btn-text .ui-icon.ui-icon-arrow-d {
+  top: -1px;
+  left: -8px;
 }
 .ui-bar.ui-controlgroup-horizontal {
   -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
@@ -3532,6 +3971,54 @@ a:active {
 }
 .x-closed .ui-bar .ui-icon-open {
   background-position: 0 -32px;
+}
+.x-show-dropdown.ui-bar .ui-btn-text .ui-icon-arrow-d {
+  background-position: 0 -576px;
+}
+.s-dropdown {
+  display: none;
+  background: #26282a;
+  margin-left: -8px;
+  margin-right: -8px;
+  padding-bottom: 8px;
+  -webkit-border-bottom-right-radius: 8px;
+  -moz-border-radius-bottomright: 8px;
+  border-bottom-right-radius: 8px;
+  -webkit-border-bottom-left-radius: 8px;
+  -moz-border-radius-bottomleft: 8px;
+  border-bottom-left-radius: 8px;
+  position: absolute;
+  width: 100%;
+  z-index: 20;
+  top: 36px;
+}
+.s-dropdown li {
+  margin-bottom: 0;
+}
+.s-dropdown .ui-bar.ui-btn {
+  background: transparent;
+  margin: 0;
+  border: none;
+  height: 46px;
+  line-height: 46px;
+  -moz-border-radius: 0;
+  -webkit-border-radius: 0;
+  border-radius: 0;
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight: bold;
+  text-transform: none;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: none;
+  text-transform: lowercase;
+  font-size: 15px;
+}
+.s-dropdown .ui-bar.ui-btn .ui-btn-inner {
+  padding-bottom: 5px;
+  padding-top: 5px;
+}
+.s-dropdown .ui-bar.ui-btn.ui-btn-hover-b,
+.s-dropdown .ui-bar.ui-btn.ui-btn-active {
+  background: rgba(255, 255, 255, 0.05);
 }
 .s-bg-load-bar {
   height: 4px;
@@ -6757,10 +7244,10 @@ div.ps-carousel-item-loading {
   .ui-bar.ui-icon,
   .ui-bar-icons.ui-icon {
     background-image: url('../gfx/hdpi/ui-bar-icons.png');
-    -webkit-background-size: 160px 512px;
-    -moz-background-size: 160px 512px;
-    -o-background-size: 160px 512px;
-    background-size: 160px 512px;
+    -webkit-background-size: 160px 608px;
+    -moz-background-size: 160px 608px;
+    -o-background-size: 160px 608px;
+    background-size: 160px 608px;
   }
   .ui-icon.tumblr-icon {
     background-image: url('../gfx/hdpi/tumblr-post-icons.png');
@@ -7110,10 +7597,10 @@ div.ps-carousel-item-loading {
   .ui-bar.ui-icon,
   .ui-bar-icons.ui-icon {
     background-image: url('../gfx/retina/ui-bar-icons.png');
-    -webkit-background-size: 160px 512px;
-    -moz-background-size: 160px 512px;
-    -o-background-size: 160px 512px;
-    background-size: 160px 512px;
+    -webkit-background-size: 160px 608px;
+    -moz-background-size: 160px 608px;
+    -o-background-size: 160px 608px;
+    background-size: 160px 608px;
   }
   .ui-icon.tumblr-icon {
     background-image: url('../gfx/retina/tumblr-post-icons.png');

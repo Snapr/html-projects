@@ -140,7 +140,8 @@ var feed_view =  page_view.extend({
         "change .x-feed-view-toggle": "feed_view_toggle",
         "click .x-follow": "follow_user",
         "click .x-unfollow": "unfollow_user",
-        "click .x-user-link": "show_user"
+        "click .x-user-link": "show_user",
+        "click .x-has-dropdown": "show_dropdown"
     },
 
     is_my_snaps: function(){ return auth.has("snapr_user") && auth.get("snapr_user") == this.options.query.username; },
@@ -331,6 +332,11 @@ var feed_view =  page_view.extend({
         if(feed_user_links == 'profile'){
             dialog('user/profile/?username='+$(e.currentTarget).data('username'));
         }
+        e.preventDefault();
+    },
+    show_dropdown: function(e){
+        $('.x-dropdown').toggle();
+        
         e.preventDefault();
     }
 });
