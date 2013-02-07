@@ -34,7 +34,7 @@ return {
         // ################################
         //!-- The base view for the app
         //!--  default: 'home'
-        initial_view: 'dash',
+        initial_view: 'feed',
 
 
         // ################################
@@ -46,7 +46,7 @@ return {
 
         //!-- Override the app tab bar with a custom template
         //!--default: 'components/tab_bar'
-        //tab_bar_template: theme_templates_path + 'components/tab_bar',
+        tab_bar_template: theme_templates_path + 'tab_bar',
 
 
         // ################################

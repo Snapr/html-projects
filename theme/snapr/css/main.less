@@ -640,10 +640,30 @@ a:active{
                 text-shadow: @shadowBlack 0px -1px 1px;
             }
             .ui-icon {
-                top: 0;
+                top: -3px;
                 margin-left: -@gfxTabBar-grid / 2;
             }
         }
+        .s-hero-button{
+            border-top: solid lighten(@grayDarkBg, 20%) 1px;
+            background: @grayDarkBgTint;
+            .linear-gradient(@grayDarkBg, @grayDarkBgTint);
+            .box-shadow( 0px 8px 2px 1px @grayDarkBgTint)!important;
+            
+            display: block;
+            margin-top: -12px;
+            .border-top-right-radius(@cornersPage)!important;
+            .border-top-left-radius(@cornersPage)!important;            
+            height: 58px;
+            .ui-btn{
+                margin-top: 3px!important;
+                .border-radius(6px)!important;
+                .ui-btn-inner{
+                    padding-top: 38px!important;
+                }
+            }
+        }
+        
     }
     .s-tabbar-activity{
         display: none;        
