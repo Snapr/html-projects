@@ -16,9 +16,11 @@
             <% if(config.get('dropdown_menu_options')){ %>
             <ul class="x-dropdown s-dropdown">
                 <% _.each(config.get('dropdown_menu_options'), function(item){ %>
-                    <li>
-                        <a href="<%= item.url %>" class="ui-bar" data-role="button" data-theme="b" data-icon="<%= item.icon %>" data-icon-pos="left"><%= T(item.label) %></a>
-                    </li>
+                    <% if(item.url.split('?')[0] != window.location.hash.split('?')[0]){ %>
+                        <li>
+                            <a href="<%= item.url %>" class="ui-bar" data-role="button" data-theme="b" data-icon="<%= item.icon %>" data-icon-pos="left"><%= T(item.label) %></a>
+                        </li>
+                    <% } %>
                 <% }) %>
             </ul>
             <% } %>
