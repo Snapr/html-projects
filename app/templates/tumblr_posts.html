@@ -8,10 +8,20 @@
     </div>
     <div data-role="content" data-theme="d" data-ajax="false">
         <div class="s-tumblr-body">
-            <a class="ui-bar s-arrow-d-left x-details" data-role="button" data-iconpos="left" data-icon="blog" data-theme="e">
+            <a class="ui-bar s-arrow-d-left x-details <% if(config.get('dropdown_menu_options')){ %>x-has-dropdown<% } %>" data-role="button" data-iconpos="left" data-icon="blog" data-theme="e">
                     <strong class="x-blog-title"><span><%= obj.title  %></span></strong>
                 </span>
             </a>
+
+            <% if(config.get('dropdown_menu_options')){ %>
+            <ul class="x-dropdown s-dropdown">
+                <% _.each(config.get('dropdown_menu_options'), function(item){ %>
+                    <li>
+                        <a href="<%= item.url %>" class="ui-bar" data-role="button" data-theme="b" data-icon="<%= item.icon %>" data-icon-pos="left"><%= T(item.label) %></a>
+                    </li>
+                <% }) %>
+            </ul>
+            <% } %>
 
             <section class="s-tumblr-stream x-posts image-item-block">
 

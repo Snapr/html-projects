@@ -24,48 +24,45 @@
         </div>
         <div class="s-main-feed-content">
             <div class="x-feed-header">
-                <% if(obj.feed_query){ %>
-                    <a class="ui-bar x-has-dropdown" data-role="button" data-theme="e">
-                        
-                                            
-                        <% if(feed_query.feed_title){ %>
-                            <strong><%= feed_query.feed_title %></strong>
+                <% if(obj.feed){ %>
+
+                    <a class="ui-bar <% if(config.get('dropdown_menu_options')){ %>x-has-dropdown<% } %>" data-role="button" data-theme="e">
+
+
+                        <% var selected = feed.get_dropdown_selected() %>
+                        <% if(feed.query.feed_title){ %>
+                            <strong><%= feed.query.feed_title %></strong>
+                        <% }else if(selected){ %>
+                            <span class="ui-icon ui-icon-<%= selected.icon %>"></span><strong><%= T(selected.label) %></strong>
+                        <% }else if (feed.query.keywords){ %>
+                            <span class="ui-icon ui-icon-search"></span><%= T('Search for') %> <strong><%= feed.query.keywords %></strong>
+                        <% }else if (feed.query.area){ %>
+                            <span class="ui-icon ui-icon-location"></span><strong><%= T('Location Feed') %></strong>
+                        <% }else if (feed.query.favorited_by){ %>
+                            <span class="ui-icon ui-icon-heart"></span><%= T('Favorited by') %> <a href="#/feed/?username=<%= feed.query.favorited_by %>" data-role="none"><strong><%= feed.query.favorited_by %></strong></a>
+                        <% }else if (feed.query.spot && feed.query.venue_name){ %>
+                            <span class="ui-icon ui-icon-venue"></span>@ <strong><%= feed.query.venue_name %></strong>
+                        <% }else if (feed.query.sort == 'weighted_score'){ %>
+                            <span class="ui-icon ui-icon-heart"></span><strong><%= T('Popular') %></strong>
                         <% }else{ %>
-                            <% if (feed_query.keywords){ %>
-                                <span class="ui-icon ui-icon-search"></span><%= T('Search for') %> <strong><%= feed_query.keywords %></strong>
-                            <% }else if (feed_query.area){ %>
-                                <span class="ui-icon ui-icon-location"></span><strong><%= T('Location Feed') %></strong>
-                            <% }else if (feed_query.favorited_by){ %>
-                                <span class="ui-icon ui-icon-heart"></span><%= T('Favorited by') %> <a href="#/feed/?username=<%= feed_query.favorited_by %>" data-role="none"><strong><%= feed_query.favorited_by %></strong></a>
-                            <% }else if (feed_query.spot && feed_query.venue_name){ %>
-                                <span class="ui-icon ui-icon-venue"></span>@ <strong><%= feed_query.venue_name %></strong>
-                            <% }else if (feed_query.sort == 'weighted_score'){ %>
-                                <span class="ui-icon ui-icon-heart"></span><strong><%= T('Popular') %></strong>
-                            <% }else{ %>
-                                <span class="ui-icon ui-icon-photos"></span><strong><%= T('Photos') %></strong>
-                            <% } %>
+                            <span class="ui-icon ui-icon-photos"></span><strong><%= T('Photos') %></strong>
                         <% } %>
                         <span class="ui-icon ui-icon-arrow-d"></span>
-                        
-                        
-                        
+
                     </a>
-                    <ul class="x-dropdown s-dropdown">
-                        <li>
-                            <a href="#/feed/?sort=weighted_score" class="ui-bar" data-role="button" data-theme="b" data-icon="person" data-icon-pos="left">Following</a>
-                        </li>
-                        <li>
-                            <a href="#/feed/?rating=2" class="ui-bar" data-role="button" data-theme="b" data-icon="photos" data-icon-pos="left">Featured</a>
-                        </li>
-                        <li>
-                            <a href="#/tumblr-posts/?host=snaprapps.tumblr.com" class="ui-bar" data-role="button" data-theme="b" data-icon="blog" data-icon-pos="left">Blog</a>
-                        </li>
-                        
-                    </ul>
-                    
-                    
-                    
-                    
+
+                    <% if(config.get('dropdown_menu_options')){ %>
+                        <ul class="x-dropdown s-dropdown">
+                            <% _.each(config.get('dropdown_menu_options'), function(item){ %>
+                                <% if(item != selected){ %>
+                                    <li>
+                                        <a href="<%= item.url %>" class="ui-bar" data-role="button" data-theme="b" data-icon="<%= item.icon %>" data-icon-pos="left"><%= T(item.label) %></a>
+                                    </li>
+                                <% } %>
+                            <% }) %>
+                        </ul>
+                    <% } %>
+
                 <% }else if(obj.user){ %>
                     <div class="s-feed-header s-inline-header">
                         <div class="s-user-icon-left">

@@ -133,7 +133,7 @@ return {
 
         //!--  No. tumblr posts to show on dash
         //!--  default: 3
-        dash_tumblr_posts: 1
+        dash_tumblr_posts: 1,
 
 
         // ################################
@@ -152,6 +152,30 @@ return {
         // ################################
         // FEED
         // ################################
+
+        //!--
+        dropdown_menu_options: [
+            {
+                url: "#/feed/?sort=weighted_score",
+                icon: "person",
+                label: "Following"
+            },
+            {
+                url: "#/feed/",
+                icon: "person",
+                label: "TEST"
+            },
+            {
+                url: "#/feed/?rating=2",
+                icon: "photos",
+                label: "Featured"
+            },
+            {
+                url: "#/tumblr-posts/?host=snaprapps.tumblr.com",
+                icon: "blog",
+                label: "Blog"
+            }
+        ]
 
         //!--  controls to show in feed view
         //!--  defaults: both true

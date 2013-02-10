@@ -14,7 +14,9 @@ var tumblr_post_view = page_view.extend({
         $.mobile.showPageLoadingMsg();
         this.$el.addClass('x-loading');
 
-        this.$( ".x-posts" ).empty();
+        this.$('.x-posts').empty();
+
+        this.$('.x-dropdown').hide();
 
         this.collection.bind( "change", _.bind(this.render, this) );
 
@@ -30,6 +32,10 @@ var tumblr_post_view = page_view.extend({
                 this_view.render();
             }
         });
+    },
+
+    events: {
+        "click .x-has-dropdown": "show_dropdown"
     },
 
     get_default_tab: function(){ return 'dash'; },
@@ -92,6 +98,12 @@ var tumblr_post_view = page_view.extend({
                 snap: 'li'
             });
         });
+    },
+
+    show_dropdown: function(e){
+        this.$('.x-dropdown').toggle();
+
+        e.preventDefault();
     }
 });
 

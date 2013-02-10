@@ -8,6 +8,7 @@ define(
         'utils/alerts',
         'utils/dialog',
         'utils/analytics',
+        'utils/query',
         'views/base/view',
         'views/base/page',
         'views/components/no_results',
@@ -28,6 +29,7 @@ define(
         alerts,
         dialog,
         analytics,
+        Query,
         view,
         page_view,
         no_results,
@@ -99,13 +101,13 @@ var feed_view =  page_view.extend({
             this.user = new user_model( {username: this.query.username} );
             var feed = this;
             var render_user_header = function(){
-                feed.render_header({user: feed.user});
+                feed.render_header({user: feed.user, feed: this});
             };
             this.user.bind( "change:relationship", render_user_header );
             this.user.bind( "change:user_id", render_user_header );
             this.user.fetch();
         }else{
-            this.render_header({feed_query: this.query});
+            this.render_header({feed: this});
         }
 
         this.$el.toggleClass('x-my-snaps', this.is_my_snaps());
@@ -123,7 +125,7 @@ var feed_view =  page_view.extend({
             this.query.date = this.query.date.replace('+', ' ');
         }
 
-        this.photo_collection = new photo_collection([], {data:this.query});
+        this.photo_collection = new photo_collection([], {data:_.clone(this.query)});
         this.photo_collection.data.n = this.photo_collection.data.n || config.get('feed_count');
         this.photo_collection.data.detail = 2;
         if(this.photo_collection.data.list_style){ delete this.photo_collection.data.list_style; }
@@ -334,9 +336,34 @@ var feed_view =  page_view.extend({
         }
         e.preventDefault();
     },
+
+    get_dropdown_selected: function(){
+        var thisquery = this.query;
+        return _.find(config.get('dropdown_menu_options'), function(item){
+            var bits = item.url.split('?');
+            // if right view
+            if(bits[0]==window.location.hash.split('?')[0]){
+                // if if no params in items url
+                if(bits.length === 1){
+                    // if no params in this url
+                    if(!thisquery || _.size(thisquery) === 0){
+                        return true;
+                    }
+                }else{
+                    // if all params match
+                    var query = new Query(bits[1]);
+                    if(_.isEqual(thisquery, query.query) ){
+                        return true;
+                    }
+                }
+
+            }
+        });
+    },
+
     show_dropdown: function(e){
-        $('.x-dropdown').toggle();
-        
+        this.$('.x-dropdown').toggle();
+
         e.preventDefault();
     }
 });
