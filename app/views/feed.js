@@ -61,76 +61,87 @@ var feed_view =  page_view.extend({
 
     post_activate: function(options){
         window.scrollTo(0,0);
-        this.$('.x-feed-header').empty();
-        this.more_button(false);
-
         this.query = this.options.query || {};
-
-        if (this.query.photo_id){
-            this.title = T("Back");
-        }else if (this.query.username){
-            this.title = T('Feed');
-        }else if (this.query.keywords){
-            this.title = this.feed_parameter;
-        }else if (this.query.area){
-            this.title = T("Location");
-        }else if (this.query.favorited_by){
-            this.title = T("Favorites");
-        }else if (this.query.spot && this.query.venue_name){
-            this.title = T("Spot");
-        }else if (this.query.sort == 'weighted_score' || this.query.sort == 'score'){
-            this.title = T("Popular");
-        }else{
-            this.title = T("Feed");
-        }
-
-        var list_style = this.query.list_style || 'list';
-
-        var toggle_container = this.$( ".x-feed-view-toggle" );
-        toggle_container.find( "input[type='radio']" ).attr( "checked", false );
-
-        if (list_style == 'grid'){
-            this.$(".x-feed-content").addClass("x-grid");
-            toggle_container.find(".x-grid").attr( "checked", true );
-        }else{
-            this.$(".x-feed-content").removeClass("x-grid");
-            toggle_container.find(".x-list").attr( "checked", true );
-        }
-
-        if (this.query.username){
-            this.user = new user_model( {username: this.query.username} );
-            var feed = this;
-            var render_user_header = function(){
-                feed.render_header({user: feed.user, feed: feed});
-            };
-            this.user.bind( "change:relationship", render_user_header );
-            this.user.bind( "change:user_id", render_user_header );
-            this.user.fetch();
-        }else{
-            this.render_header({feed: this});
-        }
-
-        this.$el.toggleClass('x-my-snaps', this.is_my_snaps());
-        this.$('.x-activity').toggle(this.is_my_snaps());
-
-        this.$el.removeClass("x-showing-upload-queue");
-        this.$(".x-feed-upload-list").empty();
-
-        this.$(".x-feed-upload-list").empty();
-        this.$('.x-feed-images').empty();
-
-        this.change_page();
 
         if(this.query.date){
             this.query.date = this.query.date.replace('+', ' ');
         }
 
-        this.photo_collection = new photo_collection([], {data:_.clone(this.query)});
-        this.photo_collection.data.n = this.photo_collection.data.n || config.get('feed_count');
-        this.photo_collection.data.detail = 2;
-        if(this.photo_collection.data.list_style){ delete this.photo_collection.data.list_style; }
+        this.change_page();
 
-        this.populate_feed();
+        // if same query, BG load
+        if(_.isEqual(this.prev_query, this.query)){
+            var this_view = this;
+            this.populate_feed({bg:true});
+
+        }else{
+            this.$('.x-feed-header').empty();
+            this.more_button(false);
+
+            if (this.query.photo_id){
+                this.title = T("Back");
+            }else if (this.query.username){
+                this.title = T('Feed');
+            }else if (this.query.keywords){
+                this.title = this.feed_parameter;
+            }else if (this.query.area){
+                this.title = T("Location");
+            }else if (this.query.favorited_by){
+                this.title = T("Favorites");
+            }else if (this.query.spot && this.query.venue_name){
+                this.title = T("Spot");
+            }else if (this.query.sort == 'weighted_score' || this.query.sort == 'score'){
+                this.title = T("Popular");
+            }else{
+                this.title = T("Feed");
+            }
+
+            var list_style = this.query.list_style || 'list';
+
+            var toggle_container = this.$( ".x-feed-view-toggle" );
+            toggle_container.find( "input[type='radio']" ).attr( "checked", false );
+
+            if (list_style == 'grid'){
+                this.$(".x-feed-content").addClass("x-grid");
+                toggle_container.find(".x-grid").attr( "checked", true );
+            }else{
+                this.$(".x-feed-content").removeClass("x-grid");
+                toggle_container.find(".x-list").attr( "checked", true );
+            }
+
+            if (this.query.username){
+                this.user = new user_model( {username: this.query.username} );
+                var feed = this;
+                var render_user_header = function(){
+                    feed.render_header({user: feed.user, feed: feed});
+                };
+                this.user.bind( "change:relationship", render_user_header );
+                this.user.bind( "change:user_id", render_user_header );
+                this.user.fetch();
+            }else{
+                this.render_header({feed: this});
+            }
+
+            this.$el.toggleClass('x-my-snaps', this.is_my_snaps());
+            this.$('.x-activity').toggle(this.is_my_snaps());
+
+            this.$el.removeClass("x-showing-upload-queue");
+            this.$(".x-feed-upload-list").empty();
+
+            this.$(".x-feed-upload-list").empty();
+            this.$('.x-feed-images').empty();
+
+            this.photo_collection = new photo_collection([], {data:_.clone(this.query)});
+            this.photo_collection.data.n = this.photo_collection.data.n || config.get('feed_count');
+            this.photo_collection.data.detail = 2;
+            if(this.photo_collection.data.list_style){ delete this.photo_collection.data.list_style; }
+
+            this.populate_feed();
+
+        }
+        this.prev_query = _.clone(this.query);
+
+
         this.update_uploads();
         this.toggle_paused();
 
@@ -156,7 +167,8 @@ var feed_view =  page_view.extend({
         this.replace_from_template(context, ['.x-feed-header']).trigger('create');
     },
 
-    populate_feed: function( additional_data ){
+    populate_feed: function( options ){
+        options = options || {};
 
         var list_style = this.$(".x-feed-view-toggle .x-grid").is(":checked") && 'grid' || 'list';
 
@@ -165,9 +177,12 @@ var feed_view =  page_view.extend({
         }
 
         var feed_view = this;
-        var options = {
+        var fetch_options = {
             success: function( collection, response ){
                 if(collection.length){
+                    if(options.success){
+                        options.success();
+                    }
                     feed_view.feed_list = new feed_list({
                         el: feed_view.$('.x-feed-images')[0],
                         collection: feed_view.photo_collection,
@@ -176,7 +191,11 @@ var feed_view =  page_view.extend({
                     feed_view.photo_collection.on('remove', feed_view.photoswipe_init);
 
                     feed_view.feed_list.render( feed_view.photoswipe_init );
-                    $.mobile.hidePageLoadingMsg();
+                    if(options.bg){
+                        feed_view.show_bg_loader(false);
+                    }else{
+                        $.mobile.hidePageLoadingMsg();
+                    }
                     feed_view.$( ".x-feed-more" ).show();
                     feed_view.more_button(
                         !feed_view.photo_collection.data.n || (
@@ -191,24 +210,36 @@ var feed_view =  page_view.extend({
                         list_style: list_style
                     });
                     feed_view.feed_list.render();
-                    $.mobile.hidePageLoadingMsg();
+                    if(options.bg){
+                        feed_view.show_bg_loader(false);
+                    }else{
+                        $.mobile.hidePageLoadingMsg();
+                    }
                 }
             },
             error:function(){
                 console.log('error');
-                $.mobile.hidePageLoadingMsg();
+                if(options.bg){
+                    feed_view.show_bg_loader(false);
+                }else{
+                    $.mobile.hidePageLoadingMsg();
+                }
             }
         };
 
-        if (additional_data){
-            options.add = true;
-            this.photo_collection.data = $.extend(this.photo_collection.data, additional_data);
+        if (fetch_options.additional_data){
+            fetch_options.add = true;
+            this.photo_collection.data = $.extend(this.photo_collection.data, options.additional_data);
         }
 
         $.mobile.loadingMessage = T("Loading");
-        $.mobile.showPageLoadingMsg();
+        if(options.bg){
+            this.show_bg_loader();
+        }else{
+            $.mobile.showPageLoadingMsg();
+        }
 
-        this.photo_collection.fetch( options );
+        this.photo_collection.fetch( fetch_options );
     },
 
     more_button: function( more_photos ){
@@ -225,7 +256,7 @@ var feed_view =  page_view.extend({
         data.n = config.get('feed_count');
         data.paginate_from = this.photo_collection.last().get('id');
 
-        this.populate_feed( data );
+        this.populate_feed( {additional_data: data} );
     },
 
     feed_view_toggle: function(e){
