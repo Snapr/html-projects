@@ -159,7 +159,7 @@ var feed_view =  page_view.extend({
 
     is_my_snaps: function(){ return auth.has("snapr_user") && auth.get("snapr_user") == this.options.query.username; },
 
-    get_default_tab: function(){ return this.is_my_snaps() && 'feed' || 'discover'; },
+    get_default_tab: function(){ return this.is_my_snaps() && 'me' || 'feed'; },
 
     photoswipe_init: function(){ $( ".x-gallery-link", this.el ).photoswipe_init('feed'); },
 

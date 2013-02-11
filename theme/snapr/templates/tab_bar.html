@@ -12,13 +12,13 @@
                 </li>
             <% if(username){ %>
                 <li>
-                    
-                    <a href="#/feed/?username=<%= username %>" data-icon="user" data-theme="b" data-name="feed"><%= T('Me') %></a>
+
+                    <a href="#/feed/?username=<%= username %>" data-icon="user" data-theme="b" data-name="me"><%= T('Me') %></a>
                     <span class="x-upload-count hide s-count-item"></span>
 
                 </li>
             <% }else{ %>
-                <li><a href="#/welcome/" data-icon="user" data-theme="b" data-name="feed"><%= T('Login') %></a></li>
+                <li><a href="#/welcome/" data-icon="user" data-theme="b" data-name="welcome"><%= T('Login') %></a></li>
             <% } %>
 
         </ul>
