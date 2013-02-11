@@ -3972,7 +3972,7 @@ a:active {
 .x-closed .ui-bar .ui-icon-open {
   background-position: 0 -32px;
 }
-.s-ui-bar-dropdown.ui-bar .ui-btn-inner .ui-btn-text .ui-icon-arrow-d {
+.x-has-dropdown.s-ui-bar-dropdown.ui-bar .ui-btn-inner .ui-btn-text .ui-icon-arrow-d {
   display: inline-block;
 }
 .x-show-dropdown.ui-bar .ui-btn-text .ui-icon-arrow-d {
