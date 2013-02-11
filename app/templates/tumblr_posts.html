@@ -8,9 +8,10 @@
     </div>
     <div data-role="content" data-theme="d" data-ajax="false">
         <div class="s-tumblr-body">
-            <a class="ui-bar s-arrow-d-left x-details <% if(config.get('dropdown_menu_options')){ %>x-has-dropdown<% } %>" data-role="button" data-iconpos="left" data-icon="blog" data-theme="e">
+            <a class="ui-bar s-ui-bar-dropdown s-arrow-d-left x-details <% if(config.get('dropdown_menu_options')){ %>x-has-dropdown<% } %>" data-role="button" data-iconpos="left" data-icon="blog" data-theme="e">
                     <strong class="x-blog-title"><span><%= obj.title  %></span></strong>
-                </span>
+                    <span class="ui-icon ui-icon-arrow-d"></span>
+                    
             </a>
 
             <% if(config.get('dropdown_menu_options')){ %>

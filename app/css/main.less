@@ -1378,6 +1378,55 @@ a:active{
 
 
 
+// @DROPDOWN
+// -------------------------
+
+.s-ui-bar-dropdown.ui-bar{
+    .ui-btn-inner{
+        .ui-btn-text{
+            .ui-icon-arrow-d{
+                display: none;
+            }   
+        }
+    }
+}
+
+
+.s-dropdown{
+    display: none;
+    background: @grayDark;
+    margin-left: -@padding * 2;
+    margin-right: -@padding * 2;
+    padding-bottom: @padding * 2;
+    .border-bottom-radius(8px);
+    position: absolute;
+    width: 100%;
+    z-index: 20;
+    top: @barHeight;
+    li{
+        margin-bottom: 0;
+    }
+    
+    .ui-bar.ui-btn{
+        background: transparent;
+        margin: 0;
+        border: none;
+        height: @topBarHeight;
+        line-height: @topBarHeight;
+        .border-radius(0);
+        .ui-btn-inner{
+            padding-bottom: (@topBarHeight - @barHeight) / 2;
+            padding-top: (@topBarHeight - @barHeight) / 2;
+        }
+        &.ui-btn-hover-b,
+        &.ui-btn-active{
+            background: rgba(255,255,255, .05);
+        }
+    }
+    
+}
+
+
 
 
 // @UPLOADING

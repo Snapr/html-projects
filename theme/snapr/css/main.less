@@ -329,6 +329,17 @@ a:active{
 // @DROPDOWN
 // -------------------------
 
+.s-ui-bar-dropdown.ui-bar{
+    .ui-btn-inner{
+        .ui-btn-text{
+            .ui-icon-arrow-d{
+                display: inline-block;
+            }   
+        }
+    }
+}
+
+
 .x-show-dropdown{
     &.ui-bar{
         .ui-btn-text{
@@ -340,20 +351,11 @@ a:active{
 }
 
 .s-dropdown{
-    display: none;
     background: @grayDarkBgTint;
     margin-left: -@padding * 2;
     margin-right: -@padding * 2;
     padding-bottom: @padding * 2;
-    .border-bottom-radius(8px);
-    position: absolute;
-    width: 100%;
-    z-index: 20;
     top: @barHeight;
-    li{
-        margin-bottom: 0;
-    }
-    
     .ui-bar.ui-btn{
         background: transparent;
         margin: 0;
@@ -373,6 +375,8 @@ a:active{
     }
     
 }
+
+
 
 
 // @LOADBAR
