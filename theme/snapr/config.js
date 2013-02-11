@@ -156,16 +156,10 @@ return {
         //!--
         dropdown_menu_options: [
             {
-                url: "#/feed/?sort=weighted_score",
+                url: "#/feed/?group=following",
                 icon: "person",
                 label: "Following",
                 show_for: "logged_in_only"
-            },
-            {
-                url: "#/feed/",
-                icon: "person",
-                label: "TEST",
-                show_for: "all"
             },
             {
                 url: "#/feed/?rating=2",
