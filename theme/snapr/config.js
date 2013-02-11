@@ -158,22 +158,26 @@ return {
             {
                 url: "#/feed/?sort=weighted_score",
                 icon: "person",
-                label: "Following"
+                label: "Following",
+                show_for: "logged_in_only"
             },
             {
                 url: "#/feed/",
                 icon: "person",
-                label: "TEST"
+                label: "TEST",
+                show_for: "all"
             },
             {
                 url: "#/feed/?rating=2",
                 icon: "photos",
-                label: "Featured"
+                label: "Featured",
+                show_for: "all"
             },
             {
                 url: "#/tumblr-posts/?host=snaprapps.tumblr.com",
                 icon: "blog",
-                label: "Blog"
+                label: "Blog",
+                show_for: "all"
             }
         ]
 

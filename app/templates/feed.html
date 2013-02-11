@@ -107,6 +107,10 @@
                         <ul class="x-dropdown s-dropdown">
                             <% _.each(config.get('dropdown_menu_options'), function(item){ %>
                                 <% if(item != selected){ %>
+                                    <% if(
+                                        (item.show_for == "logged_in_only" && !auth.has('access_token')) ||
+                                        (item.show_for == "logged_out_only" && auth.has('access_token'))
+                                    ){ return } %>
                                     <li>
                                         <a href="<%= item.url %>" class="ui-bar" data-role="button" data-theme="b" data-icon="<%= item.icon %>" data-icon-pos="left"><%= T(item.label) %></a>
                                     </li>
