@@ -101,7 +101,7 @@ var feed_view =  page_view.extend({
             this.user = new user_model( {username: this.query.username} );
             var feed = this;
             var render_user_header = function(){
-                feed.render_header({user: feed.user, feed: this});
+                feed.render_header({user: feed.user, feed: feed});
             };
             this.user.bind( "change:relationship", render_user_header );
             this.user.bind( "change:user_id", render_user_header );

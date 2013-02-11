@@ -155,26 +155,30 @@ return {
 
         //!--
         dropdown_menu_options: [
-        {
-            url: "#/feed/?sort=weighted_score",
-            icon: "person",
-            label: "Following"
-        },
-        {
-            url: "#/feed/",
-            icon: "person",
-            label: "TEST"
-        },
-        {
-            url: "#/feed/?rating=2",
-            icon: "photos",
-            label: "Featured"
-        },
-        {
-            url: "#/tumblr-posts/?host=snaprapps.tumblr.com",
-            icon: "blog",
-            label: "Blog"
-        }
+            {
+                url: "#/feed/?sort=weighted_score",
+                icon: "person",
+                label: "Following",
+                show_for: "logged_in_only"
+            },
+            {
+                url: "#/feed/",
+                icon: "person",
+                label: "TEST",
+                show_for: "all"
+            },
+            {
+                url: "#/feed/?rating=2",
+                icon: "photos",
+                label: "Featured",
+                show_for: "all"
+            },
+            {
+                url: "#/tumblr-posts/?host=snaprapps.tumblr.com",
+                icon: "blog",
+                label: "Blog",
+                show_for: "all"
+            }
         ]
 
         //!--  controls to show in feed view
