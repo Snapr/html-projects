@@ -40,7 +40,7 @@ return page_view.extend({
 
     },
 
-    get_override_tab: function(){ return 'feed'; },
+    get_override_tab: function(){ return 'me'; },
 
     back_text: "Menu",
 
