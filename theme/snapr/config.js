@@ -156,13 +156,13 @@ return {
         //!--
         dropdown_menu_options: [
             {
-                url: "#/feed/?group=following",
+                url: "#/feed/?group=following&min_date=-30d",
                 icon: "person",
                 label: "Following",
                 show_for: "logged_in_only"
             },
             {
-                url: "#/feed/?rating=2",
+                url: "#/feed/?rating=2&min_date=-30d",
                 icon: "photos",
                 label: "Featured",
                 show_for: "all"
