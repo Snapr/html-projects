@@ -154,7 +154,8 @@ var feed_view =  page_view.extend({
         "click .x-follow": "follow_user",
         "click .x-unfollow": "unfollow_user",
         "click .x-user-link": "show_user",
-        "click .x-has-dropdown": "show_dropdown"
+        "click .x-has-dropdown": "toggle_dropdown",
+        "click .x-has-dropdown a": "toggle_dropdown"
     },
 
     is_my_snaps: function(){ return auth.has("snapr_user") && auth.get("snapr_user") == this.options.query.username; },
@@ -392,7 +393,7 @@ var feed_view =  page_view.extend({
         });
     },
 
-    show_dropdown: function(e){
+    toggle_dropdown: function(e){
         this.$('.x-dropdown').toggle();
 
         e.preventDefault();

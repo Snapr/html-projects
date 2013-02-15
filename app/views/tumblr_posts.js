@@ -35,7 +35,8 @@ var tumblr_post_view = page_view.extend({
     },
 
     events: {
-        "click .x-has-dropdown": "show_dropdown"
+        "click .x-has-dropdown": "toggle_dropdown",
+        "click .x-has-dropdown a": "toggle_dropdown"
     },
 
     get_default_tab: function(){ return 'dash'; },
@@ -100,7 +101,7 @@ var tumblr_post_view = page_view.extend({
         });
     },
 
-    show_dropdown: function(e){
+    toggle_dropdown: function(e){
         this.$('.x-dropdown').toggle();
 
         e.preventDefault();
