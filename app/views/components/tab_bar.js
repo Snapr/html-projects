@@ -33,7 +33,10 @@ var tab_bar = view.extend({
     set_active: function(tab){
         this.active = tab;
         this.$('.'+$.mobile.activeBtnClass).removeClass($.mobile.activeBtnClass);
-        this.$('[data-name="' + tab + '"]').addClass($.mobile.activeBtnClass);
+        var active_element = this.$('[data-name="' + tab + '"]').addClass($.mobile.activeBtnClass);
+        if(!active_element.length){
+            this.$('[data-name="' + config.get('default_tab') + '"]').addClass($.mobile.activeBtnClass);
+        }
 
         return this;
     },
