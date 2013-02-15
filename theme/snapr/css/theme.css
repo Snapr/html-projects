@@ -3902,7 +3902,7 @@ a:active {
 .ui-bar.ui-btn .ui-btn-text .ui-icon {
   display: inline-block;
   margin-top: 0!important;
-  top: 0px;
+  top: -2px;
   left: -4px;
   margin-right: -4px;
 }

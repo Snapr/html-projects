@@ -169,9 +169,9 @@ return {
                 show_for: "all"
             },
             {
-                url: "#/tumblr-posts/?host=snaprapps.tumblr.com",
-                icon: "blog",
-                label: "Blog",
+                url: "#/feed/?sort=weighted_score&min_date=-30d",
+                icon: "heart",
+                label: "Popular",
                 show_for: "all"
             }
         ]
