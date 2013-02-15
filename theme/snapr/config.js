@@ -1,4 +1,4 @@
-/*global _ $ define theme_templates theme_views */
+/*global _ $ define theme_templates_path theme_views */
 define(function(){
 return {
     config: {
@@ -47,6 +47,7 @@ return {
         //!-- Override the app tab bar with a custom template
         //!--default: 'components/tab_bar'
         tab_bar_template: theme_templates_path + 'tab_bar',
+        default_tab: 'feed',
 
 
         // ################################
