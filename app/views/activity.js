@@ -22,7 +22,7 @@ var activity_view=  page_view.extend({
         $.mobile.showPageLoadingMsg();
     },
 
-    get_override_tab: function(){ return 'feed'; },
+    get_override_tab: function(){ return 'me'; },
 
     render: function(){
         var $streams = this.$(".x-activity-streams").empty();
