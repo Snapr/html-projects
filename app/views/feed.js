@@ -228,7 +228,7 @@ var feed_view =  page_view.extend({
             }
         };
 
-        if (fetch_options.additional_data){
+        if (options.additional_data){
             fetch_options.add = true;
             this.photo_collection.data = $.extend(this.photo_collection.data, options.additional_data);
         }
