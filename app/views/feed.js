@@ -244,11 +244,7 @@ var feed_view =  page_view.extend({
     },
 
     more_button: function( more_photos ){
-        if (more_photos){
-            this.$(".x-feed-more").children().show();
-        }else{
-            this.$(".x-feed-more").children().hide();
-        }
+        this.$(".x-feed-more").children().toggle(!!more_photos);
     },
 
     more: function(){
