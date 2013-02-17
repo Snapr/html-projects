@@ -9,6 +9,7 @@ define(
         'utils/dialog',
         'utils/analytics',
         'utils/query',
+        'utils/local_storage',
         'views/base/view',
         'views/base/page',
         'views/components/no_results',
@@ -30,6 +31,7 @@ define(
         dialog,
         analytics,
         Query,
+        local_storage,
         view,
         page_view,
         no_results,
@@ -65,6 +67,25 @@ var feed_view =  page_view.extend({
 
         if(this.query.date){
             this.query.date = this.query.date.replace('+', ' ');
+        }
+
+        // if we arived via dropdown or with no query
+        if(this.query.dropdown || _.isEmpty(this.query)){
+
+            // delete dropdown and check if there are no other options
+            delete this.query.dropdown;
+            if(_.isEmpty(this.query)){
+
+                // try getting the query rememberd from last time we were here
+                if(local_storage.get('last_feed_query')){
+                    this.query = local_storage.get('last_feed_query');
+                }else if(config.has('default_feed_query')){
+                    this.query = config.get('default_feed_query');
+                }
+            }
+
+            // remember this query
+            local_storage.set('last_feed_query', this.query);
         }
 
         this.change_page();
@@ -380,6 +401,7 @@ var feed_view =  page_view.extend({
                 }else{
                     // if all params match
                     var query = new Query(bits[1]);
+                    query.remove('dropdown');
                     if(_.isEqual(thisquery, query.query) ){
                         return true;
                     }

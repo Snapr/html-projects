@@ -157,24 +157,26 @@ return {
         //!--
         dropdown_menu_options: [
             {
-                url: "#/feed/?group=following&min_date=-30d",
+                url: "#/feed/?group=following&min_date=-30d&dropdown=true",
                 icon: "person",
                 label: "Following",
                 show_for: "logged_in_only"
             },
             {
-                url: "#/feed/?rating=2&min_date=-30d",
+                url: "#/feed/?rating=2&min_date=-30d&dropdown=true",
                 icon: "photos",
                 label: "Featured",
                 show_for: "all"
             },
             {
-                url: "#/feed/?sort=weighted_score&min_date=-30d",
+                url: "#/feed/?sort=weighted_score&min_date=-30d&dropdown=true",
                 icon: "heart",
                 label: "Popular",
                 show_for: "all"
             }
-        ]
+        ],
+
+        default_feed_query: {group:'following', min_date:'-30d'}
 
         //!--  controls to show in feed view
         //!--  defaults: both true
