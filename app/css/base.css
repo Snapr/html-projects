@@ -234,7 +234,7 @@ a:active {
 }
 .s-tabbar-activity {
   position: absolute;
-  top: -30px;
+  bottom: 56px;
   right: 0;
 }
 .x-tab-bar *[data-tab-bar="true"] {

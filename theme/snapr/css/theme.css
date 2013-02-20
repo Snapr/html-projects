@@ -4638,7 +4638,7 @@ a:active {
   min-height: 12px;
   height: 28px;
   position: absolute;
-  top: -28px;
+  bottom: 55px;
   right: 0;
   margin: 0;
   white-space: nowrap;
