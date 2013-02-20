@@ -6597,8 +6597,6 @@ div.ps-carousel-item-loading {
 }
 #map.x-loading .s-map-loading .ui-icon {
   opacity: .7;
-  width: 32px;
-  height: 32px;
 }
 #map-layer #google-map {
   margin: 0 -8px -15px -8px;

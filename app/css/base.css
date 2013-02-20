@@ -1835,6 +1835,7 @@ div.ps-carousel-item-loading {
 }
 #map .s-map-loading {
   display: none;
+  overflow: hidden;
 }
 #map.x-loading .s-map-time .s-map-time-btn {
   display: none;
@@ -1844,6 +1845,13 @@ div.ps-carousel-item-loading {
   height: 32px;
   overflow: hidden;
   display: block;
+}
+#map.x-loading .s-map-loading .ui-icon {
+  width: 24px;
+  height: 24px;
+  left: 4px;
+  top: 4px;
+  position: absolute;
 }
 #map-layer #google-map {
   margin: -3px -8px;
