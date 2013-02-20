@@ -58,6 +58,9 @@ var feed_view =  page_view.extend({
             feed_view.$('.x-activity').hide();
         });
         config.on('change:upload_paused', this.toggle_paused);
+        auth.on('login logout', function(){
+            this.render_header();
+        }, this);
         this.offline_template = this.get_template('components/feed/offline');
     },
 
@@ -193,6 +196,11 @@ var feed_view =  page_view.extend({
     photoswipe_init: function(){ $( ".x-gallery-link", this.el ).photoswipe_init('feed'); },
 
     render_header: function(context){
+        if(context){
+            this.header_context = context;
+        }else{
+            context = this.header_context;
+        }
         this.replace_from_template(context, ['.x-feed-header']).trigger('create');
     },
 
