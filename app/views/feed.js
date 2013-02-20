@@ -385,7 +385,7 @@ var feed_view =  page_view.extend({
     show_user: function(e){
         var feed_user_links = config.get('feed_user_links');
         if(feed_user_links == 'feed'){
-            dialog('feed/?username='+$(e.currentTarget).data('username'));
+            window.location.hash = '#/feed/?username='+$(e.currentTarget).data('username');
         }
         if(feed_user_links == 'profile'){
             dialog('user/profile/?username='+$(e.currentTarget).data('username'));
