@@ -378,13 +378,16 @@ require(['config', 'jquery', 'backbone', 'auth', 'utils/local_storage', 'native_
 
         // camera / photostream actionsheet
         $(".x-launch-camera-options").live( "click", auth.require_login( function(e){
+
             if(local_storage.get('appmode') || !config.get('xhr_uploads')){
+                // if NOT using xhr upload flow we need to prevent it from triggering
                 e.preventDefault();
             }else{
+                // if using xhr upload flow we don't need to do anything here
                 if(upload_progress_collection.length){
                     alerts.notification(T('Error'), T('The previous photo is still uploading'));
-                    return;
                 }
+                return;
             }
             var extra_params = $(this).data('extra_params') || "";
             if(local_storage.get( "appmode" )){
