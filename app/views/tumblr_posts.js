@@ -1,10 +1,13 @@
 /*global _  define require */
-define(['views/base/page', 'collections/tumblr_post', 'iscroll'], function(page_view, tumblr_collection, iScroll){
+define(['views/base/page', 'auth', 'collections/tumblr_post', 'iscroll'], function(page_view, auth, tumblr_collection, iScroll){
 
 var tumblr_post_view = page_view.extend({
 
     post_initialize: function(){
         this.collection = new tumblr_collection();
+        auth.on('login logout', function(){
+            this.replace_from_template({}, ['.x-dropdown']).trigger('create');
+        }, this);
     },
 
     post_activate: function(options){
