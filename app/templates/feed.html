@@ -78,7 +78,7 @@
 
                 <% }else if(obj.feed){ %>
 
-                    <a class="ui-bar s-ui-bar-dropdown <% if(config.get('dropdown_menu_options')){ %>x-has-dropdown<% } %>" data-role="button" data-theme="e">
+                    <a class="ui-bar s-ui-bar-dropdown <% if(config.get('dropdown_menu_options')){ %>x-has-dropdown<% } %>" data-role="button" data-theme="e" <% if(config.get('dropdown_menu_options')){ %>data-icon="arrow-d" data-iconpos="right"<% } %>>
 
 
                         <% var selected = feed.get_dropdown_selected() %>
@@ -99,7 +99,6 @@
                         <% }else{ %>
                             <span class="ui-icon ui-icon-photos"></span><strong><%= T('Photos') %></strong>
                         <% } %>
-                        <span class="ui-icon ui-icon-arrow-d"></span>
 
                     </a>
 
