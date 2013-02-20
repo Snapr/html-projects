@@ -176,7 +176,7 @@ return {
             }
         ],
 
-        default_feed_query: {group:'following', min_date:'-30d'}
+        default_feed_query: {rating:'2', min_date:'-30d'}
 
         //!--  controls to show in feed view
         //!--  defaults: both true
