@@ -182,7 +182,13 @@ var feed_view =  page_view.extend({
 
     is_my_snaps: function(){ return auth.has("snapr_user") && auth.get("snapr_user") == this.options.query.username; },
 
-    get_override_tab: function(){ return this.is_my_snaps() && 'me' || 'feed'; },
+    get_override_tab: function(){
+        if(this.is_my_snaps()){ return 'me'; }
+        if(this.options.query.sort && this.options.query.sort == 'weighted_score'){ return 'popular'; }
+        if(this.options.query.spot){ return 'spots'; }
+        if(this.options.query.area){ return 'map'; }
+        return 'feed';
+    },
 
     photoswipe_init: function(){ $( ".x-gallery-link", this.el ).photoswipe_init('feed'); },
 
