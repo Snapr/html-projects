@@ -238,7 +238,7 @@ a:active {
   right: 0;
 }
 .x-tab-bar *[data-tab-bar="true"] {
-  padding-bottom: 56px;
+  padding-bottom: 56px !important;
 }
 .x-tab-bar *[data-tab-bar="true"] div[data-role="header"] *[data-icon="home"],
 .x-tab-bar *[data-tab-bar="true"] div[data-role="header"] *[data-icon="camera"] {

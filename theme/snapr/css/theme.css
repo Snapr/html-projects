@@ -4478,7 +4478,7 @@ a:active {
   border-top-right-radius: 8px;
 }
 .x-tab-bar *[data-tab-bar="true"] {
-  padding-bottom: 56px;
+  padding-bottom: 56px !important;
   -webkit-border-bottom-right-radius: 0;
   -moz-border-radius-bottomright: 0;
   border-bottom-right-radius: 0;

@@ -637,7 +637,7 @@ a:active{
 // Make sure Corners at bottom of pages aren't rounded when tab bar is present
 .x-tab-bar{
     *[data-tab-bar="true"]{
-        padding-bottom: @tabBarHeight;
+        padding-bottom: @tabBarHeight!important;
         .border-bottom-radius(0);
         div[data-role="content"]{
             .border-bottom-radius(0);
