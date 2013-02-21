@@ -105,7 +105,7 @@
                     <% if(config.get('dropdown_menu_options')){ %>
                         <ul class="x-dropdown s-dropdown">
                             <% _.each(config.get('dropdown_menu_options'), function(item){ %>
-                                <% if(item != selected){ %>
+                                <% if(item.label != selected.label){ %>
                                     <% if(
                                         (item.show_for == "logged_in_only" && !auth.has('access_token')) ||
                                         (item.show_for == "logged_out_only" && auth.has('access_token'))
