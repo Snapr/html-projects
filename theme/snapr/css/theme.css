@@ -3820,6 +3820,11 @@ a:active {
 }
 .s-centered-link a {
   text-shadow: 0 1px 1px rgba(255, 255, 255, 0.8);
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  border-radius: 20px;
+  background-color: #ffff00;
+  padding: 6px 12px ;
 }
 .s-warning-message {
   padding: 8px;
