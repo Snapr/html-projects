@@ -3112,7 +3112,7 @@ div[data-role="header"].ui-bar-b a[data-rel="back"]::before {
 .ui-bar-e {
   background: #434748;
   color: #f6ecec;
-  text-shadow: #ffffff 0px 1px 1px;
+  text-shadow: #000000 0px -1px 1px 0px 1px 1px;
   background-image: -webkit-gradient(linear, left top, left bottom, from(#434748), to(#26282a));
   /* Saf4+, Chrome */
 
@@ -3366,23 +3366,23 @@ div[data-role="header"].ui-bar-b a[data-rel="back"]::before {
   color: #666666;
 }
 .ui-bar-g {
-  background: #ffcc00;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#ffcc00), to(#ff8400));
+  background: #ffffff;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#f6ecec));
   /* Saf4+, Chrome */
 
-  background-image: -webkit-linear-gradient(top, #ffcc00, #ff8400);
+  background-image: -webkit-linear-gradient(top, #ffffff, #f6ecec);
   /* Chrome 10+, Saf5.1+ */
 
-  background-image: -moz-linear-gradient(top, #ffcc00, #ff8400);
+  background-image: -moz-linear-gradient(top, #ffffff, #f6ecec);
   /* FF3.6 */
 
-  background-image: -ms-linear-gradient(top, #ffcc00, #ff8400);
+  background-image: -ms-linear-gradient(top, #ffffff, #f6ecec);
   /* IE10 */
 
-  background-image: -o-linear-gradient(top, #ffcc00, #ff8400);
+  background-image: -o-linear-gradient(top, #ffffff, #f6ecec);
   /* Opera 11.10+ */
 
-  background-image: linear-gradient(top, #ffcc00, #ff8400);
+  background-image: linear-gradient(top, #ffffff, #f6ecec);
 }
 .ui-bar-g a {
   color: #474747;
@@ -3416,80 +3416,80 @@ div[data-role="header"].ui-bar-b a[data-rel="back"]::before {
   box-shadow: 0 1px 4px rgba(51, 51, 51, 0.3);
 }
 .ui-btn-up-g {
-  background: #ffcc00;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#ffcc00), to(#ff8400));
+  background: #ffffff;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#f6ecec));
   /* Saf4+, Chrome */
 
-  background-image: -webkit-linear-gradient(top, #ffcc00, #ff8400);
+  background-image: -webkit-linear-gradient(top, #ffffff, #f6ecec);
   /* Chrome 10+, Saf5.1+ */
 
-  background-image: -moz-linear-gradient(top, #ffcc00, #ff8400);
+  background-image: -moz-linear-gradient(top, #ffffff, #f6ecec);
   /* FF3.6 */
 
-  background-image: -ms-linear-gradient(top, #ffcc00, #ff8400);
+  background-image: -ms-linear-gradient(top, #ffffff, #f6ecec);
   /* IE10 */
 
-  background-image: -o-linear-gradient(top, #ffcc00, #ff8400);
+  background-image: -o-linear-gradient(top, #ffffff, #f6ecec);
   /* Opera 11.10+ */
 
-  background-image: linear-gradient(top, #ffcc00, #ff8400);
+  background-image: linear-gradient(top, #ffffff, #f6ecec);
 }
 .ui-btn-hover-g {
-  background: #ffd633;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#ffd633), to(#ff9d33));
+  background: #ffffff;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#ffffff));
   /* Saf4+, Chrome */
 
-  background-image: -webkit-linear-gradient(top, #ffd633, #ff9d33);
+  background-image: -webkit-linear-gradient(top, #ffffff, #ffffff);
   /* Chrome 10+, Saf5.1+ */
 
-  background-image: -moz-linear-gradient(top, #ffd633, #ff9d33);
+  background-image: -moz-linear-gradient(top, #ffffff, #ffffff);
   /* FF3.6 */
 
-  background-image: -ms-linear-gradient(top, #ffd633, #ff9d33);
+  background-image: -ms-linear-gradient(top, #ffffff, #ffffff);
   /* IE10 */
 
-  background-image: -o-linear-gradient(top, #ffd633, #ff9d33);
+  background-image: -o-linear-gradient(top, #ffffff, #ffffff);
   /* Opera 11.10+ */
 
-  background-image: linear-gradient(top, #ffd633, #ff9d33);
+  background-image: linear-gradient(top, #ffffff, #ffffff);
 }
 .ui-btn-down-g {
-  background: #ffcc00;
-  background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, #ffcc00), color-stop(0.7, #ffcc00), color-stop(1, #e6b800));
+  background: #ffffff;
+  background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, #ffffff), color-stop(0.7, #ffffff), color-stop(1, #f2f2f2));
   /* Saf4+, Chrome */
 
-  background-image: -webkit-linear-gradient(bottom, #ffcc00 0%, #ffcc00 70%, #f0c000 100%);
+  background-image: -webkit-linear-gradient(bottom, #ffffff 0%, #ffffff 70%, #f7f7f7 100%);
   /* Chrome 10+, Saf5.1+ */
 
-  background-image: -moz-linear-gradient(bottom, #ffcc00 0%, #ffcc00 70%, #f0c000 100%);
+  background-image: -moz-linear-gradient(bottom, #ffffff 0%, #ffffff 70%, #f7f7f7 100%);
   /* FF3.6 */
 
-  background-image: -ms-linear-gradient(bottom, #ffcc00 0%, #ffcc00 70%, #f0c000 100%);
+  background-image: -ms-linear-gradient(bottom, #ffffff 0%, #ffffff 70%, #f7f7f7 100%);
   /* IE10 */
 
-  background-image: -o-linear-gradient(bottom, #ffcc00 0%, #ffcc00 70%, #f0c000 100%);
+  background-image: -o-linear-gradient(bottom, #ffffff 0%, #ffffff 70%, #f7f7f7 100%);
   /* Opera 11.10+ */
 
-  background-image: linear-gradient(bottom, #ffcc00 0%, #ffcc00 70%, #f0c000 100%);
+  background-image: linear-gradient(bottom, #ffffff 0%, #ffffff 70%, #f7f7f7 100%);
 }
 .ui-body-g.ui-navbar {
-  background: #ffcc00;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#ffcc00), to(#ff8400));
+  background: #ffffff;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#f6ecec));
   /* Saf4+, Chrome */
 
-  background-image: -webkit-linear-gradient(top, #ffcc00, #ff8400);
+  background-image: -webkit-linear-gradient(top, #ffffff, #f6ecec);
   /* Chrome 10+, Saf5.1+ */
 
-  background-image: -moz-linear-gradient(top, #ffcc00, #ff8400);
+  background-image: -moz-linear-gradient(top, #ffffff, #f6ecec);
   /* FF3.6 */
 
-  background-image: -ms-linear-gradient(top, #ffcc00, #ff8400);
+  background-image: -ms-linear-gradient(top, #ffffff, #f6ecec);
   /* IE10 */
 
-  background-image: -o-linear-gradient(top, #ffcc00, #ff8400);
+  background-image: -o-linear-gradient(top, #ffffff, #f6ecec);
   /* Opera 11.10+ */
 
-  background-image: linear-gradient(top, #ffcc00, #ff8400);
+  background-image: linear-gradient(top, #ffffff, #f6ecec);
 }
 .ui-body-g.ui-navbar .ui-btn {
   background: none!important;
@@ -3815,14 +3815,21 @@ a:active {
   text-decoration: none;
   text-transform: lowercase;
   font-size: 15px;
-  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.8);
+  text-shadow: 0 1px 1px #000000;
 }
 .s-centered-link a {
-  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.8);
+  font-family: 'RalewayThin', Helvetica, Arial, sans-serif;
+  font-weight: bold;
+  text-transform: none;
+  text-decoration: none;
+  text-transform: lowercase;
+  font-size: 15px;
+  color: #f6ecec !important;
+  text-shadow: 0 1px 1px #000000;
   -webkit-border-radius: 20px;
   -moz-border-radius: 20px;
   border-radius: 20px;
-  background-color: #434748;
+  background-color: transparent;
   padding: 6px 12px ;
 }
 .s-warning-message {
@@ -6569,11 +6576,13 @@ div.ps-carousel-item-loading {
   background: url('../gfx/image-load-dark.gif') no-repeat center center;
 }
 .ui-dialog.welcome-bg,
-.ui-page.welcome-bg {
-  background-color: #ffff33 !important;
-  -moz-box-shadow: inset 0px -2px 100px #ffe400;
-  -webkit-box-shadow: inset 0px -2px 100px #ffe400;
-  box-shadow: inset 0px -2px 100px #ffe400;
+.ui-page.welcome-bg,
+.ui-dialog.s-snapr-bg,
+.ui-page.s-snapr-bg {
+  background-color: #1a1a1a !important;
+  -moz-box-shadow: inset 0px -2px 100px #000000;
+  -webkit-box-shadow: inset 0px -2px 100px #000000;
+  box-shadow: inset 0px -2px 100px #000000;
   background-image: url('../gfx/welcome-placeholder.gif') !important;
   -moz-background-size: 320px 200px !important;
   -o-background-size: 320px 200px !important;
@@ -6581,6 +6590,62 @@ div.ps-carousel-item-loading {
   background-size: 320px 200px !important;
   background-repeat: no-repeat !important;
   background-position: center bottom!important;
+}
+.ui-dialog.welcome-bg div[data-role="header"] .ui-title,
+.ui-page.welcome-bg div[data-role="header"] .ui-title,
+.ui-dialog.s-snapr-bg div[data-role="header"] .ui-title,
+.ui-page.s-snapr-bg div[data-role="header"] .ui-title {
+  color: #f6ecec;
+  text-shadow: none;
+}
+.ui-dialog.welcome-bg .ui-header .ui-btn-up-c .ui-btn-inner .ui-icon-search,
+.ui-page.welcome-bg .ui-header .ui-btn-up-c .ui-btn-inner .ui-icon-search,
+.ui-dialog.s-snapr-bg .ui-header .ui-btn-up-c .ui-btn-inner .ui-icon-search,
+.ui-page.s-snapr-bg .ui-header .ui-btn-up-c .ui-btn-inner .ui-icon-search {
+  background-position: 0px 0px;
+}
+.ui-dialog.welcome-bg .ui-header .ui-btn-up-c .ui-btn-inner .ui-icon-home,
+.ui-page.welcome-bg .ui-header .ui-btn-up-c .ui-btn-inner .ui-icon-home,
+.ui-dialog.s-snapr-bg .ui-header .ui-btn-up-c .ui-btn-inner .ui-icon-home,
+.ui-page.s-snapr-bg .ui-header .ui-btn-up-c .ui-btn-inner .ui-icon-home {
+  background-position: 0px -40px;
+}
+.ui-dialog.welcome-bg .ui-header .ui-btn-up-c .ui-btn-inner .ui-icon-delete,
+.ui-page.welcome-bg .ui-header .ui-btn-up-c .ui-btn-inner .ui-icon-delete,
+.ui-dialog.s-snapr-bg .ui-header .ui-btn-up-c .ui-btn-inner .ui-icon-delete,
+.ui-page.s-snapr-bg .ui-header .ui-btn-up-c .ui-btn-inner .ui-icon-delete {
+  background-position: 0px -80px;
+}
+.ui-dialog.welcome-bg .ui-header .ui-btn-hover-c .ui-btn-inner .ui-icon-search,
+.ui-page.welcome-bg .ui-header .ui-btn-hover-c .ui-btn-inner .ui-icon-search,
+.ui-dialog.s-snapr-bg .ui-header .ui-btn-hover-c .ui-btn-inner .ui-icon-search,
+.ui-page.s-snapr-bg .ui-header .ui-btn-hover-c .ui-btn-inner .ui-icon-search {
+  background-position: -40px 0px;
+}
+.ui-dialog.welcome-bg .ui-header .ui-btn-hover-c .ui-btn-inner .ui-icon-home,
+.ui-page.welcome-bg .ui-header .ui-btn-hover-c .ui-btn-inner .ui-icon-home,
+.ui-dialog.s-snapr-bg .ui-header .ui-btn-hover-c .ui-btn-inner .ui-icon-home,
+.ui-page.s-snapr-bg .ui-header .ui-btn-hover-c .ui-btn-inner .ui-icon-home {
+  background-position: -40px -40px;
+}
+.ui-dialog.welcome-bg .ui-header .ui-btn-hover-c .ui-btn-inner .ui-icon-delete,
+.ui-page.welcome-bg .ui-header .ui-btn-hover-c .ui-btn-inner .ui-icon-delete,
+.ui-dialog.s-snapr-bg .ui-header .ui-btn-hover-c .ui-btn-inner .ui-icon-delete,
+.ui-page.s-snapr-bg .ui-header .ui-btn-hover-c .ui-btn-inner .ui-icon-delete {
+  background-position: -40px -80px;
+}
+.ui-dialog.welcome-bg .s-vertical-margins,
+.ui-page.welcome-bg .s-vertical-margins,
+.ui-dialog.s-snapr-bg .s-vertical-margins,
+.ui-page.s-snapr-bg .s-vertical-margins {
+  color: #f6ecec;
+  text-shadow: none;
+}
+.ui-dialog.welcome-bg .s-vertical-margins a,
+.ui-page.welcome-bg .s-vertical-margins a,
+.ui-dialog.s-snapr-bg .s-vertical-margins a,
+.ui-page.s-snapr-bg .s-vertical-margins a {
+  color: #ffffff;
 }
 #map div[data-role="content"] {
   padding-top: 0;

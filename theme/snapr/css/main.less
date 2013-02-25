@@ -197,11 +197,14 @@ a:active{
     margin-top: 48px;
    
     .button-font-bold();
-    text-shadow:0 1px 1px @shadowWhite;
+    text-shadow:0 1px 1px @black;
     a{
-        text-shadow:0 1px 1px @shadowWhite;
+        .button-font-bold();
+        color:@offWhite!important;
+        
+        text-shadow:0 1px 1px @black;
         .border-radius(@cornersRound);
-        background-color: @highlight;
+        background-color:transparent;
            padding: 6px 12px ;
         
     }
@@ -2615,14 +2618,46 @@ div.ps-carousel-item-loading{
 // -------------------------
 
 .ui-dialog.welcome-bg,
-.ui-page.welcome-bg{
-    background-color: lighten(@snaprYellow, 10%)!important;
-    .box-shadow(inset 0px -2px 100px @snaprYellowTint);
+.ui-page.welcome-bg,
+.ui-dialog.s-snapr-bg,
+.ui-page.s-snapr-bg{
+    background-color: lighten(@black, 10%)!important;
+    .box-shadow(inset 0px -2px 100px @black);
     background-image: url('../gfx/welcome-placeholder.gif')!important;
     .background-size(320px, 200px)!important;
     background-repeat: no-repeat!important;
     background-position: center bottom!important;
     
+    div[data-role="header"] .ui-title {
+        color: @offWhite;
+        text-shadow: none;
+    }
+    
+    .ui-header{
+
+        .ui-btn-up-c{
+            .ui-btn-inner{
+                .ui-icon-search     {   background-position: @gfxTopBar-x-a @gfxTopBar-search-icon-y;}
+                .ui-icon-home       {   background-position: @gfxTopBar-x-a @gfxTopBar-home-icon-y;}
+                .ui-icon-delete     {   background-position: @gfxTopBar-x-a @gfxTopBar-close-icon-y;}
+            }
+        }
+        .ui-btn-hover-c{
+            .ui-btn-inner{
+                .ui-icon-search     {   background-position: @gfxTopBar-x-a-hover @gfxTopBar-search-icon-y;}
+                .ui-icon-home       {   background-position: @gfxTopBar-x-a-hover @gfxTopBar-home-icon-y;}
+                .ui-icon-delete     {   background-position: @gfxTopBar-x-a-hover @gfxTopBar-close-icon-y;}
+            }
+        }
+    }
+    
+    .s-vertical-margins{
+        color: @offWhite;
+        text-shadow: none;
+        a{
+            color: @white;
+        }
+    }
 }
 
 
