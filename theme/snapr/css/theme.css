@@ -3825,11 +3825,12 @@ a:active {
   text-transform: lowercase;
   font-size: 15px;
   color: #f6ecec !important;
+  font-weight: bold!important;
   text-shadow: 0 1px 1px #000000;
   -webkit-border-radius: 20px;
   -moz-border-radius: 20px;
   border-radius: 20px;
-  background-color: transparent;
+  background-color: #1a1a1a;
   padding: 6px 12px ;
 }
 .s-warning-message {
