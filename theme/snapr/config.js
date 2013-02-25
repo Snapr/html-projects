@@ -17,7 +17,7 @@ return {
         // ################################
 
         //!--  default: undefined
-        app_group: 'snapr',
+        app_group: 'tuxedo-kittie',
 
         //!--  dafault sort order for all lists of photos
         //!--  default: date_utc the photo was taken.
@@ -296,7 +296,7 @@ return {
         },
         live: {
             base_url: "https://sna.pr",
-            client_id: "76e5be0eec71b28fb4380b0ac42201cf"
+            client_id: "409438698404929c5be972b55aba4563"
         },
         local: {
             base_url: "http://localhost:8000",

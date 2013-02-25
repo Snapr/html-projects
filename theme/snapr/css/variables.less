@@ -32,6 +32,7 @@
 @red:                   red;
 @redTint:               darken(red,10%);
 
+@offWhite:              #f6ecec;
 
 // Grays
 // -------------------------
@@ -60,8 +61,8 @@
 // ------------------------
 
 // Used in load bars and other UI elements
-@highlight:             @yellow;
-@highlightTint:         @yellowTint;
+@highlight:             @grayDarkBg;
+@highlightTint:         @grayDarkBgTint;
 
 @secondary:             @orange;
 @secondaryTint:         @orangeTint;
@@ -110,7 +111,7 @@
 @fontSans:              Helvetica, Arial, sans-serif;
 
 @font:                  @fontSans;
-@fontSpecial:           @fontSans; 
+@fontSpecial:           'RalewayThin', Helvetica, Arial, sans-serif; 
 @fontButtons:           @fontSpecial;
 
 @fontSize:              15px;
@@ -129,7 +130,6 @@
     font-family: @fontButtons;
     font-weight: bold;
     text-transform: none;
-    -webkit-font-smoothing: antialiased;
     text-decoration: none;
     text-transform: lowercase;
     font-size: @fontSizeBtn;
@@ -159,7 +159,7 @@
     font-family: @fontSpecial;
     font-weight: bold;
     font-style: normal;
-    text-transform: lowercase;
+    text-transform: uppercase;
 }
 .username-font(){
     font-family: @fontSpecial;
