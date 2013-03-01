@@ -5370,7 +5370,7 @@ textarea.ui-input-text {
   -webkit-border-top-left-radius: 8px;
   -moz-border-radius-topleft: 8px;
   border-top-left-radius: 8px;
-  border-top: solid #ffffff 1px;
+  border-top: solid #999999 1px;
 }
 .s-feed-header.s-inline-header .s-username {
   font-size: 16px;

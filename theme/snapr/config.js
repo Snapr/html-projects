@@ -22,7 +22,7 @@ return {
         //!--  dafault sort order for all lists of photos
         //!--  default: date_utc the photo was taken.
         //!--  valid: rating, favorite_count, comment_count, date_local, date_added, date_utc, score, weighted_score
-        //sort_order: 'date_added',
+        sort_order: 'date_added',
 
         //!--  minimum rating photos must have to show
         //!--  default: undefined (no min)
@@ -169,7 +169,7 @@ return {
                 show_for: "all"
             },
             {
-                url: "#/feed/?sort=weighted_score&min_date=-30d&dropdown=true",
+                url: "#/feed/?sort=weighted_score&min_date=-30d&dropdown=true&list_style=grid",
                 icon: "heart",
                 label: "Popular",
                 show_for: "all"
