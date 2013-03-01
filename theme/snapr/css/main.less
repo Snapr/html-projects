@@ -785,12 +785,15 @@ a:active{
 }
 
 .s-count-item{
-    background-color: @blue;
+    background-color: @system;
     .linear-gradient(@system, @systemTint);
     color: @white;
     text-shadow: @shadowDarker 0px -1px 1px;
 }
 
+.s-tab-bar ul li .s-count-item {
+    right: 25%;
+}
 
 // @LISTVIEWS
 // -------------------------
@@ -1433,7 +1436,7 @@ textarea.ui-input-text {
          text-transform: lowercase;
          font-size: @fontSizeSmall;
          font-family: @fontSpecial;
-         font-weight: bold;
+         font-weight: normal;
          border-top: darken(@grayDarkBgTint,3%) solid 1px;
          height: 63px;
          .ui-link{
@@ -1445,7 +1448,7 @@ textarea.ui-input-text {
             display: block;
             font-size: @fontSize-numberBig;
             font-family: @fontSpecial;
-            font-weight: bold;
+            font-weight: normal;
             padding: 10px 0 0 0;
             height: 30px;
             line-height:@fontSize-numberBig + 4px;

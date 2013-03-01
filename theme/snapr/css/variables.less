@@ -116,7 +116,7 @@
 @fontSans:              Helvetica, Arial, sans-serif;
 
 @font:                  @fontSans;
-@fontSpecial:           'RalewayThin', Helvetica, Arial, sans-serif; 
+@fontSpecial:           'ralewayregular', Helvetica, Arial, sans-serif; 
 @fontButtons:           @font;
 
 @fontSize:              15px;
@@ -151,12 +151,13 @@
 }
 .heading-font(){
     font-family: @fontSpecial;
-    font-weight: bold;
+    font-weight: normal;
+    -webkit-font-smoothing: subpixel-antialiased;
     font-size: @fontSizeHeading;
 }
 .title-bar-font(){
     font-family: @fontSpecial;
-    font-weight: bold;
+    font-weight: normal;
     text-transform: lowercase;
     font-size: @fontSizeHeading;
 }
