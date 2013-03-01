@@ -194,7 +194,7 @@ a:active{
 
 .s-centered-link{
     text-align: center;
-    margin-top: 48px;
+    margin-top: 24px;
    
     .button-font-bold();
     text-shadow:0 1px 1px @black;
@@ -257,7 +257,7 @@ a:active{
     line-height: @barHeight;
     padding-top:0;
     padding-bottom: 0; 
-    border-top: @borderWhite;
+    border-top: @grayDark solid 1px;
     .box-sizing(border-box);
     .ui-btn,
     &.ui-btn{
@@ -364,12 +364,15 @@ a:active{
     margin-right: -@padding * 2;
     padding-bottom: @padding * 2;
     top: @barHeight;
+    border-top: darken(@grayDarkBgTint,3%) solid 1px;
     .ui-bar.ui-btn{
         background: transparent;
         margin: 0;
         border: none;
         height: @topBarHeight;
         line-height: @topBarHeight;
+        border-bottom: darken(@grayDarkBgTint,3%) solid 1px;
+        
         .border-radius(0);
         .button-font-bold();
         .ui-btn-inner{
@@ -747,6 +750,8 @@ a:active{
         .box-shadow(none);
         .border-top-radius(@corners);
         .border-bottom-radius(0);
+        .linear-gradient(@pink, @pink);
+        border-top: solid @offWhite 1px;
         .ui-btn-inner{
             line-height: @fontSizeSmall;
             min-height: @fontSizeSmall;
@@ -757,8 +762,8 @@ a:active{
                 line-height: @fontSizeSmall;
                 min-height: @fontSizeSmall;
                 font-size: @fontSizeSmall;
-                color: @offWhite;
-                text-shadow: @black 0px 1px 1px;
+                color: @grayDarkBgTint;
+                text-shadow: none;
             }
             .s-activity-count{
                 position: relative;
@@ -769,7 +774,10 @@ a:active{
                         position: absolute;
                         left: -6px;
                         top: -8px;
+                        background-position: @gfxBar-x-d @gfxBar-activity-y;
+                        
                     }
+                    
                 }
             }
         }
@@ -1381,6 +1389,7 @@ textarea.ui-input-text {
     margin-bottom: @padding * 2;
     padding-left: @avatarSizeLarge;
     height: @avatarSizeLarge;
+    background-color: @grayDarkBgTint!important;
     .s-user-icon-left{
         width: @avatarSizeLarge;
         height: @avatarSizeLarge;
@@ -1391,7 +1400,7 @@ textarea.ui-input-text {
             overflow:hidden;
         }
         .s-avatar-large{
-            background-color: @grayLight;
+            background-color: @grayDarkBg;
         }
          .s-icon-overlay{
            background-image: url('@{gfx}@{gfxIconOverlay}');
@@ -1414,32 +1423,43 @@ textarea.ui-input-text {
             width: @gfxIcons-grid;
         	height: @gfxIcons-grid; 
         	margin-top: -@gfxIcons-grid / 2;
+        	&.ui-icon-check{   background-position: @gfxIcons-check-x @gfxIcons-y-light;}
+        	&.ui-icon-plus{   background-position:@gfxIcons-plus-x @gfxIcons-y-light;}
+            
+            
         }
     }
     .s-header-stats{
          text-transform: lowercase;
          font-size: @fontSizeSmall;
+         font-family: @fontSpecial;
+         font-weight: bold;
+         border-top: darken(@grayDarkBgTint,3%) solid 1px;
+         height: 63px;
          .ui-link{
             display: block;
             min-height: 64px;
+            color: @offWhite;
          }
         .s-hero-number{
             display: block;
             font-size: @fontSize-numberBig;
             font-family: @fontSpecial;
+            font-weight: bold;
             padding: 10px 0 0 0;
             height: 30px;
-            line-height:@fontSize-numberBig + 4px ;
+            line-height:@fontSize-numberBig + 4px;
             overflow: hidden;
             text-overflow: ellipsis;
+            color: @offWhite;
         }
         &.ui-grid-b{
             .ui-block-a{
                     margin-left: -1px;
             }
             .ui-block-b{
-                border-left: @borderGrayLighter;
-                border-right: @borderGrayLighter;
+                border-left: darken(@grayDarkBgTint,3%) solid 1px;
+                border-right: darken(@grayDarkBgTint,3%) solid 1px;
             }
             .ui-block-c{
                  margin-right: -1px;

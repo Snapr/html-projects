@@ -32,6 +32,11 @@
 @red:                   red;
 @redTint:               darken(red,10%);
 
+@pink:                  #ff42b3;
+@pinkTint:              #df359b;
+@blu:                   #82ecff;
+@bluTint:               #69d6ea;
+
 @offWhite:              #f6ecec;
 
 // Grays
@@ -61,18 +66,18 @@
 // ------------------------
 
 // Used in load bars and other UI elements
-@highlight:             @grayDarkBg;
-@highlightTint:         @grayDarkBgTint;
+@highlight:             @pink;
+@highlightTint:         @pinkTint;
 
-@secondary:             @orange;
-@secondaryTint:         @orangeTint;
+@secondary:             @blu;
+@secondaryTint:         @bluTint;
 
-@alert:                 @yellow;
-@alertTint:             @yellowTint;
+@alert:                 @pink;
+@alertTint:             @pinkTint;
 
 // used in some system setting buttons, upload queue reset, and upload count
-@system:                 @blue;
-@systemTint:             @blueTint;
+@system:                 @blu;
+@systemTint:             @bluTint;
 
 
 // BG Textures
@@ -112,7 +117,7 @@
 
 @font:                  @fontSans;
 @fontSpecial:           'RalewayThin', Helvetica, Arial, sans-serif; 
-@fontButtons:           @fontSpecial;
+@fontButtons:           @font;
 
 @fontSize:              15px;
 @fontSizeSmall:         12px;
@@ -156,13 +161,13 @@
     font-size: @fontSizeHeading;
 }
 .ui-bar-font(){
-    font-family: @fontSpecial;
+    font-family: @font;
     font-weight: bold;
     font-style: normal;
     text-transform: uppercase;
 }
 .username-font(){
-    font-family: @fontSpecial;
+    font-family: @font;
     font-weight: bold;    
     font-size: @fontSizeUsername;
     text-transform: none;

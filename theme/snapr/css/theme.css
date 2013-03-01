@@ -2176,7 +2176,7 @@ a.ui-link-inherit {
   background-color: #121414;
 }
 .ui-btn-active {
-  font-family: 'RalewayThin', Helvetica, Arial, sans-serif;
+  font-family: Helvetica, Arial, sans-serif;
   font-weight: bold;
   text-transform: none;
   text-decoration: none;
@@ -2192,7 +2192,7 @@ a.ui-link-inherit {
 .ui-btn-hover-a,
 .ui-btn-down-a,
 .ui-btn-active-a {
-  font-family: 'RalewayThin', Helvetica, Arial, sans-serif;
+  font-family: Helvetica, Arial, sans-serif;
   font-weight: bold;
   text-transform: none;
   text-transform: lowercase;
@@ -2775,7 +2775,7 @@ div[data-role="header"].ui-bar-b a[data-rel="back"]::before {
 .ui-btn-hover-c,
 .ui-btn-down-c {
   border: none;
-  font-family: 'RalewayThin', Helvetica, Arial, sans-serif;
+  font-family: Helvetica, Arial, sans-serif;
   font-weight: bold;
   text-transform: none;
   text-transform: lowercase;
@@ -3137,7 +3137,7 @@ div[data-role="header"].ui-bar-b a[data-rel="back"]::before {
 .ui-btn-hover-e,
 .ui-btn-down-e {
   border: none;
-  font-family: 'RalewayThin', Helvetica, Arial, sans-serif;
+  font-family: Helvetica, Arial, sans-serif;
   font-weight: bold;
   text-transform: none;
   text-transform: lowercase;
@@ -3259,7 +3259,7 @@ div[data-role="header"].ui-bar-b a[data-rel="back"]::before {
 .ui-btn-hover-f,
 .ui-btn-down-f {
   border: none;
-  font-family: 'RalewayThin', Helvetica, Arial, sans-serif;
+  font-family: Helvetica, Arial, sans-serif;
   font-weight: bold;
   text-transform: none;
   text-transform: lowercase;
@@ -3366,23 +3366,23 @@ div[data-role="header"].ui-bar-b a[data-rel="back"]::before {
   color: #666666;
 }
 .ui-bar-g {
-  background: #ffffff;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#f6ecec));
+  background: #82ecff;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#82ecff), to(#69d6ea));
   /* Saf4+, Chrome */
 
-  background-image: -webkit-linear-gradient(top, #ffffff, #f6ecec);
+  background-image: -webkit-linear-gradient(top, #82ecff, #69d6ea);
   /* Chrome 10+, Saf5.1+ */
 
-  background-image: -moz-linear-gradient(top, #ffffff, #f6ecec);
+  background-image: -moz-linear-gradient(top, #82ecff, #69d6ea);
   /* FF3.6 */
 
-  background-image: -ms-linear-gradient(top, #ffffff, #f6ecec);
+  background-image: -ms-linear-gradient(top, #82ecff, #69d6ea);
   /* IE10 */
 
-  background-image: -o-linear-gradient(top, #ffffff, #f6ecec);
+  background-image: -o-linear-gradient(top, #82ecff, #69d6ea);
   /* Opera 11.10+ */
 
-  background-image: linear-gradient(top, #ffffff, #f6ecec);
+  background-image: linear-gradient(top, #82ecff, #69d6ea);
 }
 .ui-bar-g a {
   color: #474747;
@@ -3391,7 +3391,7 @@ div[data-role="header"].ui-bar-b a[data-rel="back"]::before {
 .ui-btn-hover-g,
 .ui-btn-down-g {
   border: none;
-  font-family: 'RalewayThin', Helvetica, Arial, sans-serif;
+  font-family: Helvetica, Arial, sans-serif;
   font-weight: bold;
   text-transform: none;
   text-transform: lowercase;
@@ -3416,104 +3416,104 @@ div[data-role="header"].ui-bar-b a[data-rel="back"]::before {
   box-shadow: 0 1px 4px rgba(51, 51, 51, 0.3);
 }
 .ui-btn-up-g {
-  background: #ffffff;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#f6ecec));
+  background: #82ecff;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#82ecff), to(#69d6ea));
   /* Saf4+, Chrome */
 
-  background-image: -webkit-linear-gradient(top, #ffffff, #f6ecec);
+  background-image: -webkit-linear-gradient(top, #82ecff, #69d6ea);
   /* Chrome 10+, Saf5.1+ */
 
-  background-image: -moz-linear-gradient(top, #ffffff, #f6ecec);
+  background-image: -moz-linear-gradient(top, #82ecff, #69d6ea);
   /* FF3.6 */
 
-  background-image: -ms-linear-gradient(top, #ffffff, #f6ecec);
+  background-image: -ms-linear-gradient(top, #82ecff, #69d6ea);
   /* IE10 */
 
-  background-image: -o-linear-gradient(top, #ffffff, #f6ecec);
+  background-image: -o-linear-gradient(top, #82ecff, #69d6ea);
   /* Opera 11.10+ */
 
-  background-image: linear-gradient(top, #ffffff, #f6ecec);
+  background-image: linear-gradient(top, #82ecff, #69d6ea);
 }
 .ui-btn-hover-g {
-  background: #ffffff;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#ffffff));
+  background: #b5f4ff;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#b5f4ff), to(#96e2f0));
   /* Saf4+, Chrome */
 
-  background-image: -webkit-linear-gradient(top, #ffffff, #ffffff);
+  background-image: -webkit-linear-gradient(top, #b5f4ff, #96e2f0);
   /* Chrome 10+, Saf5.1+ */
 
-  background-image: -moz-linear-gradient(top, #ffffff, #ffffff);
+  background-image: -moz-linear-gradient(top, #b5f4ff, #96e2f0);
   /* FF3.6 */
 
-  background-image: -ms-linear-gradient(top, #ffffff, #ffffff);
+  background-image: -ms-linear-gradient(top, #b5f4ff, #96e2f0);
   /* IE10 */
 
-  background-image: -o-linear-gradient(top, #ffffff, #ffffff);
+  background-image: -o-linear-gradient(top, #b5f4ff, #96e2f0);
   /* Opera 11.10+ */
 
-  background-image: linear-gradient(top, #ffffff, #ffffff);
+  background-image: linear-gradient(top, #b5f4ff, #96e2f0);
 }
 .ui-btn-down-g {
-  background: #ffffff;
-  background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, #ffffff), color-stop(0.7, #ffffff), color-stop(1, #f2f2f2));
+  background: #82ecff;
+  background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, #82ecff), color-stop(0.7, #82ecff), color-stop(1, #68e8ff));
   /* Saf4+, Chrome */
 
-  background-image: -webkit-linear-gradient(bottom, #ffffff 0%, #ffffff 70%, #f7f7f7 100%);
+  background-image: -webkit-linear-gradient(bottom, #82ecff 0%, #82ecff 70%, #73eaff 100%);
   /* Chrome 10+, Saf5.1+ */
 
-  background-image: -moz-linear-gradient(bottom, #ffffff 0%, #ffffff 70%, #f7f7f7 100%);
+  background-image: -moz-linear-gradient(bottom, #82ecff 0%, #82ecff 70%, #73eaff 100%);
   /* FF3.6 */
 
-  background-image: -ms-linear-gradient(bottom, #ffffff 0%, #ffffff 70%, #f7f7f7 100%);
+  background-image: -ms-linear-gradient(bottom, #82ecff 0%, #82ecff 70%, #73eaff 100%);
   /* IE10 */
 
-  background-image: -o-linear-gradient(bottom, #ffffff 0%, #ffffff 70%, #f7f7f7 100%);
+  background-image: -o-linear-gradient(bottom, #82ecff 0%, #82ecff 70%, #73eaff 100%);
   /* Opera 11.10+ */
 
-  background-image: linear-gradient(bottom, #ffffff 0%, #ffffff 70%, #f7f7f7 100%);
+  background-image: linear-gradient(bottom, #82ecff 0%, #82ecff 70%, #73eaff 100%);
 }
 .ui-body-g.ui-navbar {
-  background: #ffffff;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#f6ecec));
+  background: #82ecff;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#82ecff), to(#69d6ea));
   /* Saf4+, Chrome */
 
-  background-image: -webkit-linear-gradient(top, #ffffff, #f6ecec);
+  background-image: -webkit-linear-gradient(top, #82ecff, #69d6ea);
   /* Chrome 10+, Saf5.1+ */
 
-  background-image: -moz-linear-gradient(top, #ffffff, #f6ecec);
+  background-image: -moz-linear-gradient(top, #82ecff, #69d6ea);
   /* FF3.6 */
 
-  background-image: -ms-linear-gradient(top, #ffffff, #f6ecec);
+  background-image: -ms-linear-gradient(top, #82ecff, #69d6ea);
   /* IE10 */
 
-  background-image: -o-linear-gradient(top, #ffffff, #f6ecec);
+  background-image: -o-linear-gradient(top, #82ecff, #69d6ea);
   /* Opera 11.10+ */
 
-  background-image: linear-gradient(top, #ffffff, #f6ecec);
+  background-image: linear-gradient(top, #82ecff, #69d6ea);
 }
 .ui-body-g.ui-navbar .ui-btn {
   background: none!important;
 }
 .ui-bar-h {
-  background: #434748;
+  background: #ff42b3;
   color: #f6ecec;
   text-shadow: #000000 0px -1px 1px;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#434748), to(#26282a));
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#ff42b3), to(#df359b));
   /* Saf4+, Chrome */
 
-  background-image: -webkit-linear-gradient(top, #434748, #26282a);
+  background-image: -webkit-linear-gradient(top, #ff42b3, #df359b);
   /* Chrome 10+, Saf5.1+ */
 
-  background-image: -moz-linear-gradient(top, #434748, #26282a);
+  background-image: -moz-linear-gradient(top, #ff42b3, #df359b);
   /* FF3.6 */
 
-  background-image: -ms-linear-gradient(top, #434748, #26282a);
+  background-image: -ms-linear-gradient(top, #ff42b3, #df359b);
   /* IE10 */
 
-  background-image: -o-linear-gradient(top, #434748, #26282a);
+  background-image: -o-linear-gradient(top, #ff42b3, #df359b);
   /* Opera 11.10+ */
 
-  background-image: linear-gradient(top, #434748, #26282a);
+  background-image: linear-gradient(top, #ff42b3, #df359b);
 }
 .ui-bar-h a {
   color: #f6ecec;
@@ -3522,7 +3522,7 @@ div[data-role="header"].ui-bar-b a[data-rel="back"]::before {
 .ui-btn-hover-h,
 .ui-btn-down-h {
   border: none;
-  font-family: 'RalewayThin', Helvetica, Arial, sans-serif;
+  font-family: Helvetica, Arial, sans-serif;
   font-weight: bold;
   text-transform: none;
   text-transform: lowercase;
@@ -3540,80 +3540,80 @@ div[data-role="header"].ui-bar-b a[data-rel="back"]::before {
   color: #f6ecec;
 }
 .ui-btn-up-h {
-  background: #434748;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#434748), to(#26282a));
+  background: #ff42b3;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#ff42b3), to(#df359b));
   /* Saf4+, Chrome */
 
-  background-image: -webkit-linear-gradient(top, #434748, #26282a);
+  background-image: -webkit-linear-gradient(top, #ff42b3, #df359b);
   /* Chrome 10+, Saf5.1+ */
 
-  background-image: -moz-linear-gradient(top, #434748, #26282a);
+  background-image: -moz-linear-gradient(top, #ff42b3, #df359b);
   /* FF3.6 */
 
-  background-image: -ms-linear-gradient(top, #434748, #26282a);
+  background-image: -ms-linear-gradient(top, #ff42b3, #df359b);
   /* IE10 */
 
-  background-image: -o-linear-gradient(top, #434748, #26282a);
+  background-image: -o-linear-gradient(top, #ff42b3, #df359b);
   /* Opera 11.10+ */
 
-  background-image: linear-gradient(top, #434748, #26282a);
+  background-image: linear-gradient(top, #ff42b3, #df359b);
 }
 .ui-btn-hover-h {
-  background: #5c6162;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#5c6162), to(#3e4245));
+  background: #ff75c8;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#ff75c8), to(#e661b1));
   /* Saf4+, Chrome */
 
-  background-image: -webkit-linear-gradient(top, #5c6162, #3e4245);
+  background-image: -webkit-linear-gradient(top, #ff75c8, #e661b1);
   /* Chrome 10+, Saf5.1+ */
 
-  background-image: -moz-linear-gradient(top, #5c6162, #3e4245);
+  background-image: -moz-linear-gradient(top, #ff75c8, #e661b1);
   /* FF3.6 */
 
-  background-image: -ms-linear-gradient(top, #5c6162, #3e4245);
+  background-image: -ms-linear-gradient(top, #ff75c8, #e661b1);
   /* IE10 */
 
-  background-image: -o-linear-gradient(top, #5c6162, #3e4245);
+  background-image: -o-linear-gradient(top, #ff75c8, #e661b1);
   /* Opera 11.10+ */
 
-  background-image: linear-gradient(top, #5c6162, #3e4245);
+  background-image: linear-gradient(top, #ff75c8, #e661b1);
 }
 .ui-btn-down-h {
-  background: #434748;
-  background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, #434748), color-stop(0.7, #434748), color-stop(1, #373a3b));
+  background: #ff42b3;
+  background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, #ff42b3), color-stop(0.7, #ff42b3), color-stop(1, #ff28a9));
   /* Saf4+, Chrome */
 
-  background-image: -webkit-linear-gradient(bottom, #434748 0%, #434748 70%, #3c3f40 100%);
+  background-image: -webkit-linear-gradient(bottom, #ff42b3 0%, #ff42b3 70%, #ff33ad 100%);
   /* Chrome 10+, Saf5.1+ */
 
-  background-image: -moz-linear-gradient(bottom, #434748 0%, #434748 70%, #3c3f40 100%);
+  background-image: -moz-linear-gradient(bottom, #ff42b3 0%, #ff42b3 70%, #ff33ad 100%);
   /* FF3.6 */
 
-  background-image: -ms-linear-gradient(bottom, #434748 0%, #434748 70%, #3c3f40 100%);
+  background-image: -ms-linear-gradient(bottom, #ff42b3 0%, #ff42b3 70%, #ff33ad 100%);
   /* IE10 */
 
-  background-image: -o-linear-gradient(bottom, #434748 0%, #434748 70%, #3c3f40 100%);
+  background-image: -o-linear-gradient(bottom, #ff42b3 0%, #ff42b3 70%, #ff33ad 100%);
   /* Opera 11.10+ */
 
-  background-image: linear-gradient(bottom, #434748 0%, #434748 70%, #3c3f40 100%);
+  background-image: linear-gradient(bottom, #ff42b3 0%, #ff42b3 70%, #ff33ad 100%);
 }
 .ui-body-h.ui-navbar {
-  background: #434748;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#434748), to(#26282a));
+  background: #ff42b3;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#ff42b3), to(#df359b));
   /* Saf4+, Chrome */
 
-  background-image: -webkit-linear-gradient(top, #434748, #26282a);
+  background-image: -webkit-linear-gradient(top, #ff42b3, #df359b);
   /* Chrome 10+, Saf5.1+ */
 
-  background-image: -moz-linear-gradient(top, #434748, #26282a);
+  background-image: -moz-linear-gradient(top, #ff42b3, #df359b);
   /* FF3.6 */
 
-  background-image: -ms-linear-gradient(top, #434748, #26282a);
+  background-image: -ms-linear-gradient(top, #ff42b3, #df359b);
   /* IE10 */
 
-  background-image: -o-linear-gradient(top, #434748, #26282a);
+  background-image: -o-linear-gradient(top, #ff42b3, #df359b);
   /* Opera 11.10+ */
 
-  background-image: linear-gradient(top, #434748, #26282a);
+  background-image: linear-gradient(top, #ff42b3, #df359b);
 }
 .ui-body-h.ui-navbar .ui-btn {
   background: none!important;
@@ -3623,7 +3623,7 @@ body {
   font-family: Helvetica, Arial, sans-serif;
 }
 strong {
-  font-family: 'RalewayThin', Helvetica, Arial, sans-serif;
+  font-family: Helvetica, Arial, sans-serif;
   font-weight: bold;
   text-transform: none;
   text-decoration: none;
@@ -3779,14 +3779,14 @@ a:active {
   color: #666666;
 }
 .s-username {
-  font-family: 'RalewayThin', Helvetica, Arial, sans-serif;
+  font-family: Helvetica, Arial, sans-serif;
   font-weight: bold;
   font-size: 16px;
   text-transform: none;
   color: #474747;
 }
 .s-small-username {
-  font-family: 'RalewayThin', Helvetica, Arial, sans-serif;
+  font-family: Helvetica, Arial, sans-serif;
   font-weight: bold;
   font-size: 16px;
   text-transform: none;
@@ -3808,8 +3808,8 @@ a:active {
 }
 .s-centered-link {
   text-align: center;
-  margin-top: 48px;
-  font-family: 'RalewayThin', Helvetica, Arial, sans-serif;
+  margin-top: 24px;
+  font-family: Helvetica, Arial, sans-serif;
   font-weight: bold;
   text-transform: none;
   text-decoration: none;
@@ -3818,7 +3818,7 @@ a:active {
   text-shadow: 0 1px 1px #000000;
 }
 .s-centered-link a {
-  font-family: 'RalewayThin', Helvetica, Arial, sans-serif;
+  font-family: Helvetica, Arial, sans-serif;
   font-weight: bold;
   text-transform: none;
   text-decoration: none;
@@ -3835,11 +3835,11 @@ a:active {
 }
 .s-warning-message {
   padding: 8px;
-  background-color: #ffff00;
+  background-color: #ff42b3;
   -webkit-border-radius: 6px;
   -moz-border-radius: 6px;
   border-radius: 6px;
-  border-bottom: #ffe400;
+  border-bottom: #df359b;
 }
 .s-inline-footer {
   margin: 8px -8px 0 -8px;
@@ -3883,7 +3883,7 @@ a:active {
   line-height: 36px;
   padding-top: 0;
   padding-bottom: 0;
-  border-top: solid 1px #ffffff;
+  border-top: #666666 solid 1px;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -3996,6 +3996,7 @@ a:active {
   margin-right: -8px;
   padding-bottom: 8px;
   top: 36px;
+  border-top: #1f2022 solid 1px;
 }
 .s-dropdown .ui-bar.ui-btn {
   background: transparent;
@@ -4003,10 +4004,11 @@ a:active {
   border: none;
   height: 46px;
   line-height: 46px;
+  border-bottom: #1f2022 solid 1px;
   -moz-border-radius: 0;
   -webkit-border-radius: 0;
   border-radius: 0;
-  font-family: 'RalewayThin', Helvetica, Arial, sans-serif;
+  font-family: Helvetica, Arial, sans-serif;
   font-weight: bold;
   text-transform: none;
   text-decoration: none;
@@ -4023,7 +4025,7 @@ a:active {
 }
 .s-bg-load-bar {
   height: 4px;
-  background: #434748;
+  background: #ff42b3;
   overflow: hidden;
 }
 .s-bg-load-bar .s-load-bar-animate {
@@ -4034,12 +4036,12 @@ a:active {
   -moz-background-size: 40px 40px;
   -o-background-size: 40px 40px;
   background-size: 40px 40px;
-  background-image: -webkit-gradient(linear, left top, right bottom, color-stop(0.25, #26282a), color-stop(0.25, transparent), color-stop(0.5, transparent), color-stop(0.5, #26282a), color-stop(0.75, #26282a), color-stop(0.75, transparent), to(transparent));
-  background-image: -webkit-linear-gradient(135deg, #26282a 25%, transparent 25%, transparent 50%, #26282a 50%, #26282a 75%, transparent 75%, transparent);
-  background-image: -moz-linear-gradient(135deg, #26282a 25%, transparent 25%, transparent 50%, #26282a 50%, #26282a 75%, transparent 75%, transparent);
-  background-image: -ms-linear-gradient(135deg, #26282a 25%, transparent 25%, transparent 50%, #26282a 50%, #26282a 75%, transparent 75%, transparent);
-  background-image: -o-linear-gradient(135deg, #26282a 25%, transparent 25%, transparent 50%, #26282a 50%, #26282a 75%, transparent 75%, transparent);
-  background-image: linear-gradient(135deg, #26282a 25%, transparent 25%, transparent 50%, #26282a 50%, #26282a 75%, transparent 75%, transparent);
+  background-image: -webkit-gradient(linear, left top, right bottom, color-stop(0.25, #df359b), color-stop(0.25, transparent), color-stop(0.5, transparent), color-stop(0.5, #df359b), color-stop(0.75, #df359b), color-stop(0.75, transparent), to(transparent));
+  background-image: -webkit-linear-gradient(135deg, #df359b 25%, transparent 25%, transparent 50%, #df359b 50%, #df359b 75%, transparent 75%, transparent);
+  background-image: -moz-linear-gradient(135deg, #df359b 25%, transparent 25%, transparent 50%, #df359b 50%, #df359b 75%, transparent 75%, transparent);
+  background-image: -ms-linear-gradient(135deg, #df359b 25%, transparent 25%, transparent 50%, #df359b 50%, #df359b 75%, transparent 75%, transparent);
+  background-image: -o-linear-gradient(135deg, #df359b 25%, transparent 25%, transparent 50%, #df359b 50%, #df359b 75%, transparent 75%, transparent);
+  background-image: linear-gradient(135deg, #df359b 25%, transparent 25%, transparent 50%, #df359b 50%, #df359b 75%, transparent 75%, transparent);
   -webkit-animation: animate-bar 0.5s linear infinite;
   -moz-animation: animate-bar 0.5s linear infinite;
 }
@@ -4383,7 +4385,7 @@ a:active {
 .ui-slider-switch .ui-slider-label.ui-btn-active {
   color: white;
   text-shadow: rgba(0, 0, 0, 0.5) 0px -1px 1px;
-  background: #4185f4;
+  background: #82ecff;
   text-shadow: 0 -1px 0px #093b5c;
   -moz-box-shadow: 0 4px 5px -2px rgba(0, 0, 0, 0.3) inset;
   -webkit-box-shadow: 0 4px 5px -2px rgba(0, 0, 0, 0.3) inset;
@@ -4441,7 +4443,7 @@ a:active {
   position: relative;
   top: -4px;
   text-shadow: rgba(255, 255, 255, 0.8) 0px 1px 0px;
-  font-family: 'RalewayThin', Helvetica, Arial, sans-serif;
+  font-family: Helvetica, Arial, sans-serif;
   font-weight: bold;
   text-transform: none;
   text-decoration: none;
@@ -4668,6 +4670,23 @@ a:active {
   -webkit-border-bottom-left-radius: 0;
   -moz-border-radius-bottomleft: 0;
   border-bottom-left-radius: 0;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#ff42b3), to(#ff42b3));
+  /* Saf4+, Chrome */
+
+  background-image: -webkit-linear-gradient(top, #ff42b3, #ff42b3);
+  /* Chrome 10+, Saf5.1+ */
+
+  background-image: -moz-linear-gradient(top, #ff42b3, #ff42b3);
+  /* FF3.6 */
+
+  background-image: -ms-linear-gradient(top, #ff42b3, #ff42b3);
+  /* IE10 */
+
+  background-image: -o-linear-gradient(top, #ff42b3, #ff42b3);
+  /* Opera 11.10+ */
+
+  background-image: linear-gradient(top, #ff42b3, #ff42b3);
+  border-top: solid #f6ecec 1px;
 }
 .s-tab-bar .s-tabbar-activity .ui-btn-inner {
   line-height: 12px;
@@ -4680,8 +4699,8 @@ a:active {
   line-height: 12px;
   min-height: 12px;
   font-size: 12px;
-  color: #f6ecec;
-  text-shadow: #000000 0px 1px 1px;
+  color: #26282a;
+  text-shadow: none;
 }
 .s-tab-bar .s-tabbar-activity .ui-btn-inner .s-activity-count {
   position: relative;
@@ -4694,25 +4713,26 @@ a:active {
   position: absolute;
   left: -6px;
   top: -8px;
+  background-position: -96px -224px;
 }
 .s-count-item {
   background-color: #4185f4;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#4185f4), to(#194fdc));
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#82ecff), to(#69d6ea));
   /* Saf4+, Chrome */
 
-  background-image: -webkit-linear-gradient(top, #4185f4, #194fdc);
+  background-image: -webkit-linear-gradient(top, #82ecff, #69d6ea);
   /* Chrome 10+, Saf5.1+ */
 
-  background-image: -moz-linear-gradient(top, #4185f4, #194fdc);
+  background-image: -moz-linear-gradient(top, #82ecff, #69d6ea);
   /* FF3.6 */
 
-  background-image: -ms-linear-gradient(top, #4185f4, #194fdc);
+  background-image: -ms-linear-gradient(top, #82ecff, #69d6ea);
   /* IE10 */
 
-  background-image: -o-linear-gradient(top, #4185f4, #194fdc);
+  background-image: -o-linear-gradient(top, #82ecff, #69d6ea);
   /* Opera 11.10+ */
 
-  background-image: linear-gradient(top, #4185f4, #194fdc);
+  background-image: linear-gradient(top, #82ecff, #69d6ea);
   color: #ffffff;
   text-shadow: rgba(0, 0, 0, 0.5) 0px -1px 1px;
 }
@@ -4913,7 +4933,7 @@ textarea.ui-input-text {
   font-size: 12px;
   color: #666666;
   padding: 4px;
-  background-color: #ffff66;
+  background-color: #ffa8dc;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;
@@ -4929,7 +4949,7 @@ textarea.ui-input-text {
   margin-left: -6px;
   border-left: 6px solid transparent;
   border-right: 6px solid transparent;
-  border-bottom: 6px solid #ffff66;
+  border-bottom: 6px solid #ffa8dc;
   position: absolute;
   top: -6px;
   left: 16px;
@@ -5000,10 +5020,10 @@ textarea.ui-input-text {
 }
 .s-menu-main .s-menu-btns {
   margin-bottom: 0;
-  background: #5c6162 !important;
-  -moz-box-shadow: inset 0 -2px 100px #26282a;
-  -webkit-box-shadow: inset 0 -2px 100px #26282a;
-  box-shadow: inset 0 -2px 100px #26282a;
+  background: #ff75c8 !important;
+  -moz-box-shadow: inset 0 -2px 100px #df359b;
+  -webkit-box-shadow: inset 0 -2px 100px #df359b;
+  box-shadow: inset 0 -2px 100px #df359b;
   -webkit-border-top-right-radius: 8px;
   -moz-border-radius-topright: 8px;
   border-top-right-radius: 8px;
@@ -5131,23 +5151,23 @@ textarea.ui-input-text {
   width: 100%;
 }
 .s-menu-main .s-upload-count {
-  background-color: #4185f4;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#4185f4), to(#194fdc));
+  background-color: #82ecff;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#82ecff), to(#69d6ea));
   /* Saf4+, Chrome */
 
-  background-image: -webkit-linear-gradient(top, #4185f4, #194fdc);
+  background-image: -webkit-linear-gradient(top, #82ecff, #69d6ea);
   /* Chrome 10+, Saf5.1+ */
 
-  background-image: -moz-linear-gradient(top, #4185f4, #194fdc);
+  background-image: -moz-linear-gradient(top, #82ecff, #69d6ea);
   /* FF3.6 */
 
-  background-image: -ms-linear-gradient(top, #4185f4, #194fdc);
+  background-image: -ms-linear-gradient(top, #82ecff, #69d6ea);
   /* IE10 */
 
-  background-image: -o-linear-gradient(top, #4185f4, #194fdc);
+  background-image: -o-linear-gradient(top, #82ecff, #69d6ea);
   /* Opera 11.10+ */
 
-  background-image: linear-gradient(top, #4185f4, #194fdc);
+  background-image: linear-gradient(top, #82ecff, #69d6ea);
   display: none;
   position: absolute;
   top: 20%;
@@ -5324,6 +5344,7 @@ textarea.ui-input-text {
   margin-bottom: 8px;
   padding-left: 100px;
   height: 100px;
+  background-color: #26282a !important;
 }
 .s-feed-header.s-inline-header .s-user-icon-left {
   width: 100px;
@@ -5340,7 +5361,7 @@ textarea.ui-input-text {
   overflow: hidden;
 }
 .s-feed-header.s-inline-header .s-user-icon-left .s-avatar-large {
-  background-color: #cccccc;
+  background-color: #434748;
 }
 .s-feed-header.s-inline-header .s-user-icon-left .s-icon-overlay {
   background-image: url('../gfx/shiny-avatar-info.png');
@@ -5365,30 +5386,43 @@ textarea.ui-input-text {
   height: 36px;
   margin-top: -18px;
 }
+.s-feed-header.s-inline-header .s-follow-btn .ui-icon.ui-icon-check {
+  background-position: -243px 0px;
+}
+.s-feed-header.s-inline-header .s-follow-btn .ui-icon.ui-icon-plus {
+  background-position: 9px 0px;
+}
 .s-feed-header.s-inline-header .s-header-stats {
   text-transform: lowercase;
   font-size: 12px;
+  font-family: 'RalewayThin', Helvetica, Arial, sans-serif;
+  font-weight: bold;
+  border-top: #1f2022 solid 1px;
+  height: 63px;
 }
 .s-feed-header.s-inline-header .s-header-stats .ui-link {
   display: block;
   min-height: 64px;
+  color: #f6ecec;
 }
 .s-feed-header.s-inline-header .s-header-stats .s-hero-number {
   display: block;
   font-size: 24px;
   font-family: 'RalewayThin', Helvetica, Arial, sans-serif;
+  font-weight: bold;
   padding: 10px 0 0 0;
   height: 30px;
   line-height: 28px;
   overflow: hidden;
   text-overflow: ellipsis;
+  color: #f6ecec;
 }
 .s-feed-header.s-inline-header .s-header-stats.ui-grid-b .ui-block-a {
   margin-left: -1px;
 }
 .s-feed-header.s-inline-header .s-header-stats.ui-grid-b .ui-block-b {
-  border-left: solid 1px #e4e4e4;
-  border-right: solid 1px #e4e4e4;
+  border-left: #1f2022 solid 1px;
+  border-right: #1f2022 solid 1px;
 }
 .s-feed-header.s-inline-header .s-header-stats.ui-grid-b .ui-block-c {
   margin-right: -1px;
@@ -5680,7 +5714,7 @@ textarea.ui-input-text {
 .s-user-profile .s-profile-details .s-details .real-name {
   line-height: 21px;
   vertical-align: center;
-  font-family: 'RalewayThin', Helvetica, Arial, sans-serif;
+  font-family: Helvetica, Arial, sans-serif;
   font-weight: bold;
   font-size: 16px;
   text-transform: none;
@@ -5896,23 +5930,23 @@ textarea.ui-input-text {
   background-color: #e6e6e6;
 }
 .s-progress-bar .s-bar-wrapper .s-bar-prog {
-  background-color: #434748;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#434748), to(#26282a));
+  background-color: #ff42b3;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#ff42b3), to(#df359b));
   /* Saf4+, Chrome */
 
-  background-image: -webkit-linear-gradient(top, #434748, #26282a);
+  background-image: -webkit-linear-gradient(top, #ff42b3, #df359b);
   /* Chrome 10+, Saf5.1+ */
 
-  background-image: -moz-linear-gradient(top, #434748, #26282a);
+  background-image: -moz-linear-gradient(top, #ff42b3, #df359b);
   /* FF3.6 */
 
-  background-image: -ms-linear-gradient(top, #434748, #26282a);
+  background-image: -ms-linear-gradient(top, #ff42b3, #df359b);
   /* IE10 */
 
-  background-image: -o-linear-gradient(top, #434748, #26282a);
+  background-image: -o-linear-gradient(top, #ff42b3, #df359b);
   /* Opera 11.10+ */
 
-  background-image: linear-gradient(top, #434748, #26282a);
+  background-image: linear-gradient(top, #ff42b3, #df359b);
 }
 .s-progress-bar .s-bar-wrapper .s-bar-bg {
   background-color: #C5C4C4;
@@ -6029,10 +6063,10 @@ textarea.ui-input-text {
   background-position: 0 0px;
 }
 .s-share-photo .s-upload-image-sharing label[for="app-sharing"].ui-checkbox-on {
-  background-color: #434748;
-  -moz-box-shadow: inset 0 3px 20px #26282a;
-  -webkit-box-shadow: inset 0 3px 20px #26282a;
-  box-shadow: inset 0 3px 20px #26282a;
+  background-color: #ff42b3;
+  -moz-box-shadow: inset 0 3px 20px #df359b;
+  -webkit-box-shadow: inset 0 3px 20px #df359b;
+  box-shadow: inset 0 3px 20px #df359b;
 }
 .s-share-photo .s-upload-image-sharing label[for="app-sharing"].ui-checkbox-on .ui-icon {
   background-position: -42px 0px;
@@ -6926,7 +6960,7 @@ div.ps-carousel-item-loading {
 }
 .s-spots-search-filters .ui-select .ui-btn-icon-right .ui-btn-inner {
   padding: 10px 25px 10px 10px;
-  font-family: 'RalewayThin', Helvetica, Arial, sans-serif;
+  font-family: Helvetica, Arial, sans-serif;
   font-weight: bold;
   text-transform: none;
   text-decoration: none;
@@ -6989,7 +7023,7 @@ div.ps-carousel-item-loading {
 }
 .s-spot-list-item .s-spot-item .s-spot-heading .s-spot-name {
   margin: 4px 0;
-  font-family: 'RalewayThin', Helvetica, Arial, sans-serif;
+  font-family: Helvetica, Arial, sans-serif;
   font-weight: bold;
   font-size: 16px;
   text-transform: none;
