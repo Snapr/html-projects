@@ -1,4 +1,4 @@
-/*global _ $ define theme_templates_path theme_views */
+/*global _, $, define, theme_templates_path, theme_views */
 define(function(){
 return {
     config: {
@@ -307,6 +307,11 @@ return {
     pages: [
         'home',
         'feed',
+        {
+            name: 'my-snaps',
+            view: 'feed',
+            template: 'feed'
+        },
         {
             name: 'dash',
             view: 'dash',
