@@ -1,27 +1,62 @@
 <div id="welcome" data-role="page" data-overlay-theme="c" data-theme="c" class="welcome-bg s-special-bg">
     <div data-role="header" data-theme="c">
         <h1><%= T('Welcome') %></h1>
-        <a href="#" data-ajax="false" data-role="button" data-icon="delete" data-iconpos="notext"></a>
+        <% if(!config.has('min_age')){ %>
+            <a href="#" data-ajax="false" data-role="button" data-icon="delete" data-iconpos="notext"></a>
+        <% } %>
     </div>
     <div data-role="content" data-theme="d" data-ajax="false">
-        <div class="s-inset-page-content s-wrap-content">
-            <ul data-role="listview" data-ajax="false" class="" data-inset="true" data-theme="d">
-                <li>
-                    <h4><%= T('Hello Chums!') %></h4>
-                    <p><%= T('Wax your moustaches, comb your paws, prepare to be groooooomed!') %></p>
-                    
-                    <p><%= T('Do you already have an account? Or would you like to join up?') %></p>
-                </li>
-            </ul>
+        <% if(config.has('min_age') && obj.initial){ %>
+            <div class="s-inset-page-content s-wrap-content">
+                <ul data-role="listview" data-ajax="false" class="" data-inset="true" data-theme="d">
+                    <li>
+                        <h4><%= T('Hi!') %></h4>
+                        <p><%= T('You need to be') %> <%=config.get('min_age') %> <%=T('or older to use this app.') %></p>
+                    </li>
+                </ul>
 
-            <a data-role="button" data-theme="h" href="#/login/"><%= T('Login') %></a>
-            <a data-role="button" data-theme="g" href="#/join/"><%= T('Join Up') %></a>
+                <a data-role="button" class="x-yes" data-theme="h"><%= T('Yes') %></a>
+                <a data-role="button" class="x-no" data-theme="h"><%= T('No') %></a>
 
-        </div>
+            </div>
+        <% }else if(config.has('min_age') && !old_enough){ %>
+            <div class="s-inset-page-content s-wrap-content">
+                <ul data-role="listview" data-ajax="false" class="" data-inset="true" data-theme="d">
+                    <li>
+                        <h4><%= T('Sorry!') %></h4>
+                        <p><%= T('Custom message from config') %></p>
+                    </li>
+                </ul>
+            </div>
+        <% }else{ %>
+            <div class="s-inset-page-content s-wrap-content">
+                <ul data-role="listview" data-ajax="false" class="" data-inset="true" data-theme="d">
+                    <li>
+                        <h4><%= T('Hello Chums!') %></h4>
+                            <p><%= T('Wax your moustaches, comb your paws, prepare to be groooooomed!') %></p>
+    
+                            <p><%= T('Login to use our social features. Don&rsquo;t worry - we never post anything unless you ask us to.') %></p>
+                    </li>
+                </ul>
 
-        <p class="s-centered-link">
-            <a href="#/about/"><%= T('Find Out More') %> &rsaquo;</a></li>
-        </p>
+                
+                <a data-role="button" class="x-facebook-button s-facebook-button s-logo-button" data-theme="h"><%= T('Sign in with') %> <span class="s-facebook-logo s-button-logo">Facebook</span></a>
+                
+            </div>
+            
+            <p class="s-sign-in-options s-centered-link">
+            <a href="#/login/"><%= T('More Sign In Options &rarr;') %></a>
+            </p>
+
+        <% } %>
+        
+      
 
     </div>
+    
+     <div class="s-snapr-badge">
+            <a href="#/about-snapr/" data-role="button" data-theme="h" class="s-powered-by-snapr s-snapr-button s-logo-button"><%= T('Powered by') %> <span class="s-snapr-logo s-button-logo">Snapr</span> &ndash; <%= T('find out more') %> &raquo; 
+            </a>
+        </div>
+    
 </div>
