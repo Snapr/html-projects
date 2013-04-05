@@ -19,7 +19,7 @@ return {
         //!--  default: undefined
         app_group: 'tuxedo-kittie',
         app_name: 'Tuxedo Kittie',
-        signin_with_snapr: false,
+        signin_with_snapr: true,
 
         //!--  dafault sort order for all lists of photos
         //!--  default: date_utc the photo was taken.
