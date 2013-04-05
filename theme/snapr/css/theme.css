@@ -6689,6 +6689,11 @@ div.ps-carousel-item-loading {
 .ui-page.s-snapr-bg .s-vertical-margins a {
   color: #ffffff;
 }
+.s-snapr-badge .s-snapr-button.ui-btn-up-h,
+.s-snapr-badge .s-snapr-button.ui-btn-hover-h,
+.s-snapr-badge .s-snapr-button.ui-btn-down-h {
+  background: whiteSmoke;
+}
 #map div[data-role="content"] {
   padding-top: 0;
   padding-bottom: 8px;
