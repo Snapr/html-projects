@@ -3844,6 +3844,10 @@ a:active {
   color: #f6ecec;
   text-shadow: 0 -1px 1px rgba(0, 0, 0, 0.4);
 }
+#choose-username .s-inset-page-content p {
+  color: #ffffff;
+  text-shadow: none;
+}
 .s-inline-footer {
   margin: 8px -8px 0 -8px;
   -webkit-border-bottom-right-radius: 8px;
@@ -7292,6 +7296,7 @@ div.ps-carousel-item-loading {
   -webkit-border-radius: 8px !important;
   -moz-border-radius: 8px !important;
   border-radius: 8px !important;
+  border-top: #ffffff;
 }
 .s-retry-offline .ui-icon-connection {
   background-position: -96px -320px;
