@@ -8,24 +8,21 @@
             <ul data-role="listview" data-ajax="false" class="" data-inset="true" data-theme="d">
                 <li class="s-wrap-content">
                     <h2><%= T('Raawr!') %></h2>
-                    <p><%= T('You&rsquo;re in! Whats next?') %></p>
+                    <p><%= T('Would you like to find friends to follow?') %></p>
                 </li>
-
                  <li>
                     <a class="x-back-here" href="#/find-friends/"><%= T('Find Kittie Friends') %></a>
                 </li>
                 <li>
-                    <a href="#/about/"><%= T('Wot is Tuxedo Kittie?') %></a>
+                    <a href="#/menu/"><%= T('All done') %></a>
                 </li>
-                <li>
-                    <a href="#/about-snapr/"><%= T('Wot is Snapr?') %></a>
-                </li>
-                <li>
-                    <a href="#/menu/"><%= T('Show me kitties now!') %></a>
-                </li>
-
             </ul>
+             <p class="s-centered-link">
+                <% if(!config.get('white_label_accounts')){ %>
+                <a href="#/about-snapr/"><%= T('About') %> Snapr</a> &middot;
+                <% } %>
+                <a href="#/about/"><%= T('About') %> <%= config.get('app_name') %> &rsaquo;</a>
+            </p>
         </div>
     </div>
-
 </div>
