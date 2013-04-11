@@ -6,6 +6,7 @@
         <% } %>
     </div>
     <div data-role="content" data-theme="d" data-ajax="false">
+        <p class="x-login-message s-warning-message"></p>
         <% if(config.has('min_age') && obj.initial){ %>
             <div class="s-inset-page-content s-wrap-content">
                 <ul data-role="listview" data-ajax="false" class="" data-inset="true" data-theme="d">
@@ -38,24 +39,24 @@
                     </li>
                 </ul>
 
-                
+
                 <a data-role="button" class="x-facebook-button s-facebook-button s-logo-button" data-theme="h"><%= T('Sign in with') %> <span class="s-facebook-logo s-button-logo">Facebook</span></a>
-                
+
             </div>
-            
+
             <p class="s-sign-in-options s-centered-link">
             <a href="#/login/"><%= T('More Sign In Options &rarr;') %></a>
             </p>
 
         <% } %>
-        
-      
+
+
 
     </div>
-    
+
      <div class="s-snapr-badge">
-            <a href="#/about-snapr/" data-role="button" data-theme="h" class="s-powered-by-snapr s-snapr-button s-logo-button"><%= T('Powered by') %> <span class="s-snapr-logo s-button-logo">Snapr</span> &ndash; <%= T('find out more') %> &raquo; 
+            <a href="#/about-snapr/" data-role="button" data-theme="h" class="s-powered-by-snapr s-snapr-button s-logo-button"><%= T('Powered by') %> <span class="s-snapr-logo s-button-logo">Snapr</span> &ndash; <%= T('find out more') %> &raquo;
             </a>
         </div>
-    
+
 </div>
