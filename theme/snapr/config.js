@@ -85,7 +85,7 @@ return {
 
         //!--  signin with facebook should create users rather than autofill join form
         //!--  default: false
-        autocreate_fb_users: true,
+        autocreate_users: true,
         login_required_for_camera: false,
 
         //!--  hwhat to do if a persons display username is blank
