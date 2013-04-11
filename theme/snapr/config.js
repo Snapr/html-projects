@@ -20,6 +20,7 @@ return {
         app_group: 'tuxedo-kittie',
         app_name: 'Tuxedo Kittie',
         signin_with_snapr: true,
+        snapr_badge_color: 'black',
 
         //!--  dafault sort order for all lists of photos
         //!--  default: date_utc the photo was taken.

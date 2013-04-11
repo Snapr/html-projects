@@ -6,9 +6,11 @@
         <% } %>
     </div>
     <div data-role="content" data-theme="d" data-ajax="false">
-        <p class="x-login-message s-warning-message"></p>
         <% if(config.has('min_age') && obj.initial){ %>
             <div class="s-inset-page-content s-wrap-content">
+                <p class="x-login-message s-warning-message"></p>
+                
+                
                 <ul data-role="listview" data-ajax="false" class="" data-inset="true" data-theme="d">
                     <li>
                         <h4><%= T('Hi!') %></h4>
@@ -22,6 +24,8 @@
             </div>
         <% }else if(config.has('min_age') && !old_enough){ %>
             <div class="s-inset-page-content s-wrap-content">
+                <p class="x-login-message s-warning-message"></p>
+                
                 <ul data-role="listview" data-ajax="false" class="" data-inset="true" data-theme="d">
                     <li>
                         <h4><%= T('Sorry!') %></h4>
@@ -31,6 +35,8 @@
             </div>
         <% }else{ %>
             <div class="s-inset-page-content s-wrap-content">
+                <p class="x-login-message s-warning-message"></p>
+                
                 <ul data-role="listview" data-ajax="false" class="" data-inset="true" data-theme="d">
                     <li>
                         <h4><%= T('Hello Chums!') %></h4>
@@ -54,9 +60,11 @@
 
     </div>
 
-     <div class="s-snapr-badge">
-            <a href="#/about-snapr/" data-role="button" data-theme="h" class="s-powered-by-snapr s-snapr-button s-logo-button"><%= T('Powered by') %> <span class="s-snapr-logo s-button-logo">Snapr</span> &ndash; <%= T('find out more') %> &raquo;
-            </a>
-        </div>
+    <% if(!config.get('white_label_accounts')){ %>
+          <div class="s-snapr-badge x-snapr-badge-<%= config.get('snapr_badge_color') %>">
+              <a href="#/about-snapr/" data-role="button" data-theme="h" class="s-powered-by-snapr s-snapr-button s-logo-button"><%= T('Powered by') %> <span class="s-snapr-logo s-button-logo">Snapr</span> &ndash; <%= T('find out more') %> &raquo;
+              </a>
+          </div>
+      <% } %>
 
 </div>
