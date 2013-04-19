@@ -16,6 +16,8 @@ return {
         // CONFIG
         // ################################
 
+        filter_pack: 'tk-classic',
+
         //!--  default: undefined
         app_group: 'tuxedo-kittie',
         app_name: 'Tuxedo Kittie',
