@@ -18,6 +18,8 @@ return {
 
         filter_pack: 'tk-classic',
 
+        app_banners: true,
+
         //!--  default: undefined
         app_group: 'tuxedo-kittie',
         app_name: 'Tuxedo Kittie',
