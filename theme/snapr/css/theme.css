@@ -1821,7 +1821,7 @@
 .profile-icons.ui-icon-link {
   background-position: 0 -64px;
 }
-.competition-ribbon {
+.s-competition-ribbon {
   background-position: 0 0;
   background-image: url('../gfx/comp-ribbon.png');
   width: 44px;
@@ -3991,6 +3991,9 @@ a:active {
 .x-closed .ui-bar .ui-icon-open {
   background-position: 0 -32px;
 }
+.x-closed .ui-bar.ui-btn-up-e .ui-icon-open {
+  background-position: -128px -32px;
+}
 .x-has-dropdown.s-ui-bar-dropdown.ui-bar .ui-btn-inner .ui-btn-text .ui-icon-arrow-d {
   display: inline-block;
 }
@@ -5340,10 +5343,33 @@ textarea.ui-input-text {
   background-position: -99px 0px;
   right: -4px;
 }
-.s-competition .competition-ribbon {
-  line-height: 43px;
+.s-competition-ribbon {
+  line-height: 48px;
   text-align: center;
   text-shadow: 0 -1px 1px #ffffff;
+  font-family: 'ralewayregular', Helvetica, Arial, sans-serif;
+}
+.s-prize-details {
+  margin-top: 8px;
+}
+.s-prize-details .s-user-icon-left .s-profile-icon {
+  background-color: #ffffff;
+}
+.s-prize-details .s-details {
+  padding-left: 108px;
+  min-height: 100px;
+}
+.s-prize-details .s-details .s-prize-name {
+  line-height: 21px;
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight: bold;
+  font-size: 16px;
+  text-transform: none;
+  margin-bottom: 4px;
+}
+.s-prize-details .s-details .s-prize-website .ui-icon-link {
+  width: 24px;
+  left: -8px;
 }
 .s-feed-view-toggle .ui-btn-text .ui-icon-list-view {
   background-position: 0px -360px;
@@ -5547,7 +5573,7 @@ textarea.ui-input-text {
   display: inline-block;
 }
 .s-image-item-block .s-image-actions .ui-btn.action-icons {
-  color: #666666;
+  color: #999999;
   margin-right: 4px;
 }
 .s-image-item-block .s-image-actions .ui-btn.action-icons .ui-btn-inner {
@@ -7756,7 +7782,7 @@ div.ps-carousel-item-loading {
     -o-background-size: 24px 96px;
     background-size: 24px 96px;
   }
-  .ui.icon.competition-ribbon {
+  .ui.icon.s-competition-ribbon {
     background-image: url('../gfx/retina/comp-ribbon.png');
     -moz-background-size: 44px 53px;
     -o-background-size: 44px 53px;

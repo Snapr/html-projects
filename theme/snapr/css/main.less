@@ -342,6 +342,11 @@ a:active{
         } 
         .ui-icon-open{
             background-position: @gfxBar-x @gfxBar-closed-y;
+        }
+        &.ui-btn-up-e{
+            .ui-icon-open{
+                background-position: @gfxBar-x-e @gfxBar-closed-y;
+            }  
         }     
     }
 }
@@ -1375,15 +1380,43 @@ textarea.ui-input-text {
 // @COMPS
 // ----------------------------
 
-.s-competition {
-    .competition-ribbon {
-        line-height: 43px;
-        text-align: center;
-        text-shadow: 0 -1px 1px @white;
-    }
+
+.s-competition-ribbon {
+    line-height: 48px;
+    text-align: center;
+    text-shadow: 0 -1px 1px @white;
+    font-family: @fontSpecial;
 }
 
 
+// @PRIZE
+// -------------------------
+ 
+ 
+.s-prize-details{
+    margin-top: @padding * 2;
+    .s-user-icon-left{
+        .s-profile-icon{
+            background-color: @white;
+        }
+    }    
+    .s-details{
+        padding-left: @avatarSizeLarge + @paddingElement;
+        min-height: @avatarSizeLarge;
+        .s-prize-name{
+            line-height: @gfxShareSmall-grid;
+            font-size:  @fontSizeUsername;
+            .username-font();
+            margin-bottom: @padding;
+        }
+        .s-prize-website{
+            .ui-icon-link{
+                width: 24px;
+                left: -8px;
+            }
+        } 
+    }
+}
 
 
 
@@ -1589,7 +1622,7 @@ textarea.ui-input-text {
             display: inline-block;
         }
         .ui-btn.action-icons{
-            color: @grayDark;
+            color: @gray;
             margin-right: @padding;
             .ui-btn-inner{
                 padding: 0 0 0 @gfxAction-grid - @padding;
