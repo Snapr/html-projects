@@ -2749,8 +2749,12 @@ div[data-role="header"].ui-bar-b a[data-rel="back"]::before {
   -webkit-box-shadow: none;
   box-shadow: none;
 }
-.ui-bar-c {
+.ui-bar-c,
+.ui-bar.ui-btn-up-c,
+.ui-bar.ui-btn-hover-c,
+.ui-bar.ui-btn-active-c {
   background: #ffffff;
+  border-top: #ffffff solid 1px;
   background-image: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#d7d7d5));
   /* Saf4+, Chrome */
 
@@ -2768,7 +2772,10 @@ div[data-role="header"].ui-bar-b a[data-rel="back"]::before {
 
   background-image: linear-gradient(top, #ffffff, #d7d7d5);
 }
-.ui-bar-c a {
+.ui-bar-c a,
+.ui-bar.ui-btn-up-c a,
+.ui-bar.ui-btn-hover-c a,
+.ui-bar.ui-btn-active-c a {
   color: #474747;
 }
 .ui-btn-up-c,
@@ -5346,8 +5353,14 @@ textarea.ui-input-text {
 .s-competition-ribbon {
   line-height: 48px;
   text-align: center;
-  text-shadow: 0 -1px 1px #ffffff;
-  font-family: 'ralewayregular', Helvetica, Arial, sans-serif;
+  text-shadow: 0 -1px 1px #000000;
+  color: #ffffff;
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight: bold;
+  text-transform: none;
+  text-decoration: none;
+  text-transform: lowercase;
+  font-size: 15px;
 }
 .s-prize-details {
   margin-top: 8px;
@@ -6004,6 +6017,16 @@ textarea.ui-input-text {
 }
 .s-share-photo #description {
   height: 92px;
+}
+.s-share-photo .s-share-settings-layer .s-message-area .s-comp-hashtag {
+  -webkit-border-radius: 6px 0 6px 0;
+  -moz-border-radius: 6px 0 6px 0;
+  border-radius: 6px 0 6px 0;
+  line-height: 18px;
+  height: 20px;
+}
+.s-share-photo .s-share-settings-layer .s-message-area .s-comp-hashtag strong {
+  font-size: 12px;
 }
 .s-share-photo .s-upload-image-privacy {
   position: relative;

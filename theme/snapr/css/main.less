@@ -1384,8 +1384,9 @@ textarea.ui-input-text {
 .s-competition-ribbon {
     line-height: 48px;
     text-align: center;
-    text-shadow: 0 -1px 1px @white;
-    font-family: @fontSpecial;
+    text-shadow: 0 -1px 1px @black;
+    color: @white;
+    .button-font-bold();
 }
 
 
@@ -2078,6 +2079,14 @@ textarea.ui-input-text {
 .s-share-photo{
     #description{
         height: 92px;
+    }
+    .s-share-settings-layer .s-message-area .s-comp-hashtag{
+        .border-radius(@corners 0 @corners 0);
+        line-height: 18px;
+        height: 20px;
+        strong{
+            font-size: @fontSizeSmall;
+        }
     }
     .s-upload-image-privacy{
         position: relative;

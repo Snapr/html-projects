@@ -393,8 +393,12 @@ div[data-role="header"].ui-bar-b{
 
 
 // @C-BARS
-.ui-bar-c{
+.ui-bar-c,
+.ui-bar.ui-btn-up-c,
+.ui-bar.ui-btn-hover-c,
+.ui-bar.ui-btn-active-c{
     background: @cBtnBackground;
+    border-top: @white solid 1px;
     .linear-gradient(@cBtnBackground, @cBtnBackgroundTint);
     a{
         color: @cBtnTextCol;
