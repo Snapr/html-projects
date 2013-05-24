@@ -181,6 +181,12 @@ return {
                 icon: "heart",
                 label: "Popular",
                 show_for: "all"
+            },
+            {
+                url: "#/competitions/",
+                icon: "comp",
+                label: "Competitions",
+                show_for: "all"
             }
         ],
 

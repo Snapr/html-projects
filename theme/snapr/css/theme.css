@@ -801,6 +801,12 @@
 .ui-bar-icons.ui-icon-arrow-d {
   background-position: 0 -544px;
 }
+.ui-bar .ui-icon-comp,
+.ui-bar-icons .ui-icon-comp,
+.ui-bar.ui-icon-comp,
+.ui-bar-icons.ui-icon-comp {
+  background-position: 0 -608px;
+}
 .ui-bar.ui-bar-b .ui-icon-open,
 .ui-bar-icons.ui-bar-b .ui-icon-open,
 .ui-bar.ui-btn-up-b .ui-icon-open,
@@ -1161,6 +1167,24 @@
 .ui-bar-icons.ui-btn-down-b.ui-icon-arrow-d {
   background-position: -32px -544px;
 }
+.ui-bar.ui-bar-b .ui-icon-comp,
+.ui-bar-icons.ui-bar-b .ui-icon-comp,
+.ui-bar.ui-btn-up-b .ui-icon-comp,
+.ui-bar-icons.ui-btn-up-b .ui-icon-comp,
+.ui-bar.ui-btn-hover-b .ui-icon-comp,
+.ui-bar-icons.ui-btn-hover-b .ui-icon-comp,
+.ui-bar.ui-btn-down-b .ui-icon-comp,
+.ui-bar-icons.ui-btn-down-b .ui-icon-comp,
+.ui-bar.ui-bar-b.ui-icon-comp,
+.ui-bar-icons.ui-bar-b.ui-icon-comp,
+.ui-bar.ui-btn-up-b.ui-icon-comp,
+.ui-bar-icons.ui-btn-up-b.ui-icon-comp,
+.ui-bar.ui-btn-hover-b.ui-icon-comp,
+.ui-bar-icons.ui-btn-hover-b.ui-icon-comp,
+.ui-bar.ui-btn-down-b.ui-icon-comp,
+.ui-bar-icons.ui-btn-down-b.ui-icon-comp {
+  background-position: -32px -608px;
+}
 .ui-bar.ui-bar-e .ui-icon-open,
 .ui-bar-icons.ui-bar-e .ui-icon-open,
 .ui-bar.ui-btn-up-e .ui-icon-open,
@@ -1177,7 +1201,7 @@
 .ui-bar-icons.ui-btn-hover-e.ui-icon-open,
 .ui-bar.ui-btn-down-e.ui-icon-open,
 .ui-bar-icons.ui-btn-down-e.ui-icon-open {
-  background-position: -128px 0px;
+  background-position: -128px -544px;
 }
 .ui-bar.ui-bar-e .ui-icon-closed,
 .ui-bar-icons.ui-bar-e .ui-icon-closed,
@@ -1195,7 +1219,7 @@
 .ui-bar-icons.ui-btn-hover-e.ui-icon-closed,
 .ui-bar.ui-btn-down-e.ui-icon-closed,
 .ui-bar-icons.ui-btn-down-e.ui-icon-closed {
-  background-position: -128px -32px;
+  background-position: -128px -576px;
 }
 .ui-bar.ui-bar-e .ui-icon-arrow-r,
 .ui-bar-icons.ui-bar-e .ui-icon-arrow-r,
@@ -1520,6 +1544,24 @@
 .ui-bar.ui-btn-down-e.ui-icon-arrow-d,
 .ui-bar-icons.ui-btn-down-e.ui-icon-arrow-d {
   background-position: -128px -544px;
+}
+.ui-bar.ui-bar-e .ui-icon-comp,
+.ui-bar-icons.ui-bar-e .ui-icon-comp,
+.ui-bar.ui-btn-up-e .ui-icon-comp,
+.ui-bar-icons.ui-btn-up-e .ui-icon-comp,
+.ui-bar.ui-btn-hover-e .ui-icon-comp,
+.ui-bar-icons.ui-btn-hover-e .ui-icon-comp,
+.ui-bar.ui-btn-down-e .ui-icon-comp,
+.ui-bar-icons.ui-btn-down-e .ui-icon-comp,
+.ui-bar.ui-bar-e.ui-icon-comp,
+.ui-bar-icons.ui-bar-e.ui-icon-comp,
+.ui-bar.ui-btn-up-e.ui-icon-comp,
+.ui-bar-icons.ui-btn-up-e.ui-icon-comp,
+.ui-bar.ui-btn-hover-e.ui-icon-comp,
+.ui-bar-icons.ui-btn-hover-e.ui-icon-comp,
+.ui-bar.ui-btn-down-e.ui-icon-comp,
+.ui-bar-icons.ui-btn-down-e.ui-icon-comp {
+  background-position: -128px -608px;
 }
 .ui-bar.ui-bar-f .ui-icon-play,
 .ui-bar-icons.ui-bar-f .ui-icon-play,
@@ -3998,8 +4040,44 @@ a:active {
 .x-closed .ui-bar .ui-icon-open {
   background-position: 0 -32px;
 }
-.x-closed .ui-bar.ui-btn-up-e .ui-icon-open {
-  background-position: -128px -32px;
+.x-closed .ui-bar.ui-btn-up-e .ui-icon-open,
+.x-closed .ui-bar.ui-btn-hover-e .ui-icon-open {
+  background-position: -128px -576px;
+}
+.x-app-banner .x-closed .ui-bar {
+  -webkit-border-bottom-right-radius: 0;
+  -moz-border-radius-bottomright: 0;
+  border-bottom-right-radius: 0;
+  -webkit-border-bottom-left-radius: 0;
+  -moz-border-radius-bottomleft: 0;
+  border-bottom-left-radius: 0;
+}
+.x-app-banner .x-closed .ui-bar .s-bar-left {
+  -webkit-border-top-right-radius: 0;
+  -moz-border-radius-topright: 0;
+  border-top-right-radius: 0;
+  -webkit-border-bottom-right-radius: 0;
+  -moz-border-radius-bottomright: 0;
+  border-bottom-right-radius: 0;
+  -webkit-border-bottom-left-radius: 0 !important;
+  -moz-border-radius-bottomleft: 0 !important;
+  border-bottom-left-radius: 0 !important;
+}
+.x-app-banner .x-closed .ui-bar .s-bar-right {
+  -webkit-border-top-right-radius: 6px !important;
+  -moz-border-radius-topright: 6px !important;
+  border-top-right-radius: 6px !important;
+  -webkit-border-bottom-right-radius: 0 !important;
+  -moz-border-radius-bottomright: 0 !important;
+  border-bottom-right-radius: 0 !important;
+}
+.x-has-banner .x-feed-header .ui-bar {
+  -webkit-border-top-right-radius: 0;
+  -moz-border-radius-topright: 0;
+  border-top-right-radius: 0;
+  -webkit-border-top-left-radius: 0;
+  -moz-border-radius-topleft: 0;
+  border-top-left-radius: 0;
 }
 .x-has-dropdown.s-ui-bar-dropdown.ui-bar .ui-btn-inner .ui-btn-text .ui-icon-arrow-d {
   display: inline-block;
@@ -7401,10 +7479,10 @@ div.ps-carousel-item-loading {
   .ui-bar.ui-icon,
   .ui-bar-icons.ui-icon {
     background-image: url('../gfx/hdpi/ui-bar-icons.png');
-    -webkit-background-size: 160px 608px;
-    -moz-background-size: 160px 608px;
-    -o-background-size: 160px 608px;
-    background-size: 160px 608px;
+    -webkit-background-size: 160px 640px;
+    -moz-background-size: 160px 640px;
+    -o-background-size: 160px 640px;
+    background-size: 160px 640px;
   }
   .ui-icon.tumblr-icon {
     background-image: url('../gfx/hdpi/tumblr-post-icons.png');
@@ -7754,10 +7832,10 @@ div.ps-carousel-item-loading {
   .ui-bar.ui-icon,
   .ui-bar-icons.ui-icon {
     background-image: url('../gfx/retina/ui-bar-icons.png');
-    -webkit-background-size: 160px 608px;
-    -moz-background-size: 160px 608px;
-    -o-background-size: 160px 608px;
-    background-size: 160px 608px;
+    -webkit-background-size: 160px 640px;
+    -moz-background-size: 160px 640px;
+    -o-background-size: 160px 640px;
+    background-size: 160px 640px;
   }
   .ui-icon.tumblr-icon {
     background-image: url('../gfx/retina/tumblr-post-icons.png');

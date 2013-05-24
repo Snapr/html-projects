@@ -343,11 +343,37 @@ a:active{
         .ui-icon-open{
             background-position: @gfxBar-x @gfxBar-closed-y;
         }
-        &.ui-btn-up-e{
+        &.ui-btn-up-e,
+        &.ui-btn-hover-e{
             .ui-icon-open{
-                background-position: @gfxBar-x-e @gfxBar-closed-y;
+                background-position: @gfxBar-x-e @gfxBar-arrow-u-y;
             }  
         }     
+    }
+}
+
+.x-app-banner{
+    .x-closed{
+        .ui-bar{
+           .border-bottom-radius(0);  
+            .s-bar-left{
+                .border-right-radius(0);
+                .border-bottom-left-radius(0)!important;
+            }
+            .s-bar-right{
+                .border-top-right-radius(@corners)!important;
+                .border-bottom-right-radius(0)!important;
+            } 
+              
+        }
+    }
+}
+
+.x-has-banner{
+    .x-feed-header{
+        .ui-bar{
+           .border-top-radius(0);
+       } 
     }
 }
 
