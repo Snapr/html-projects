@@ -7651,10 +7651,10 @@ div.ps-carousel-item-loading {
   }
   .s-share-photo .s-upload-image-sharing .ui-icon {
     background-image: url('../gfx/hdpi/share-icons-large.png');
-    -webkit-background-size: 84px 252px;
-    -moz-background-size: 84px 252px;
-    -o-background-size: 84px 252px;
-    background-size: 84px 252px;
+    -webkit-background-size: 126px 252px;
+    -moz-background-size: 126px 252px;
+    -o-background-size: 126px 252px;
+    background-size: 126px 252px;
   }
   .s-share-photo .s-upload-image-location .ui-btn .ui-icon {
     background-image: url('../gfx/hdpi/action-icons-custom.png');
@@ -8011,10 +8011,10 @@ div.ps-carousel-item-loading {
   }
   .s-share-photo .s-upload-image-sharing .ui-icon {
     background-image: url('../gfx/retina/share-icons-large.png');
-    -webkit-background-size: 84px 252px;
-    -moz-background-size: 84px 252px;
-    -o-background-size: 84px 252px;
-    background-size: 84px 252px;
+    -webkit-background-size: 126px 252px;
+    -moz-background-size: 126px 252px;
+    -o-background-size: 126px 252px;
+    background-size: 126px 252px;
   }
   .s-share-photo .s-upload-image-location .ui-btn .ui-icon {
     background-image: url('../gfx/retina/action-icons-custom.png');
