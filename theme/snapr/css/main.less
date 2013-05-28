@@ -369,13 +369,26 @@ a:active{
     }
 }
 
-.x-has-banner{
-    .x-feed-header{
+
+.x-app-banner, 
+.competition, 
+.s-competition, 
+.x-competition{
+    .s-banner{
+        min-height: 118px;
+        a{
+            display: block;
+            min-height: 118px;
+            
+        }
         .ui-bar{
-           .border-top-radius(0);
-       } 
+            margin-bottom: -@padding * 2;
+            font-size: @fontSizeSmall;
+            line-height: 27px;
+        }
     }
 }
+
 
 
 // @DROPDOWN

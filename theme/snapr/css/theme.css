@@ -4071,13 +4071,26 @@ a:active {
   -moz-border-radius-bottomright: 0 !important;
   border-bottom-right-radius: 0 !important;
 }
-.x-has-banner .x-feed-header .ui-bar {
-  -webkit-border-top-right-radius: 0;
-  -moz-border-radius-topright: 0;
-  border-top-right-radius: 0;
-  -webkit-border-top-left-radius: 0;
-  -moz-border-radius-topleft: 0;
-  border-top-left-radius: 0;
+.x-app-banner .s-banner,
+.competition .s-banner,
+.s-competition .s-banner,
+.x-competition .s-banner {
+  min-height: 118px;
+}
+.x-app-banner .s-banner a,
+.competition .s-banner a,
+.s-competition .s-banner a,
+.x-competition .s-banner a {
+  display: block;
+  min-height: 118px;
+}
+.x-app-banner .s-banner .ui-bar,
+.competition .s-banner .ui-bar,
+.s-competition .s-banner .ui-bar,
+.x-competition .s-banner .ui-bar {
+  margin-bottom: -8px;
+  font-size: 12px;
+  line-height: 27px;
 }
 .x-has-dropdown.s-ui-bar-dropdown.ui-bar .ui-btn-inner .ui-btn-text .ui-icon-arrow-d {
   display: inline-block;
