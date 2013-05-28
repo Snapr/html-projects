@@ -311,7 +311,10 @@ a:active{
         border: none;
         .s-bar-left{
             .border-top-right-radius(0)!important;
-            border-top: @borderWhite;  
+            border-top: @borderWhite; 
+            &.ui-btn-up-e{
+                border-top: @grayDark solid 1px; 
+            }
             border-right: none;
             .ui-btn-inner{
             }
@@ -322,12 +325,16 @@ a:active{
             .border-top-right-radius(@cornersPage)!important;
             .ui-btn-inner{
             }
+            &.ui-btn-up-e{
+                border-top: @grayDark solid 1px; 
+            }
         }
     }
 }
 
 
 .x-closed{
+    margin-bottom: @padding * 2;
     .ui-bar{
        .border-bottom-radius(@cornersPage);  
         .s-bar-left{
@@ -352,22 +359,7 @@ a:active{
     }
 }
 
-.x-app-banner{
-    .x-closed{
-        .ui-bar{
-           .border-bottom-radius(0);  
-            .s-bar-left{
-                .border-right-radius(0);
-                .border-bottom-left-radius(0)!important;
-            }
-            .s-bar-right{
-                .border-top-right-radius(@corners)!important;
-                .border-bottom-right-radius(0)!important;
-            } 
-              
-        }
-    }
-}
+
 
 
 .x-app-banner, 
