@@ -5440,6 +5440,25 @@ textarea.ui-input-text {
   text-transform: lowercase;
   font-size: 15px;
 }
+.s-competition-ribbon .s-prize-title {
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#ff5cbd), to(#ff42b3));
+  /* Saf4+, Chrome */
+
+  background-image: -webkit-linear-gradient(top, #ff5cbd, #ff42b3);
+  /* Chrome 10+, Saf5.1+ */
+
+  background-image: -moz-linear-gradient(top, #ff5cbd, #ff42b3);
+  /* FF3.6 */
+
+  background-image: -ms-linear-gradient(top, #ff5cbd, #ff42b3);
+  /* IE10 */
+
+  background-image: -o-linear-gradient(top, #ff5cbd, #ff42b3);
+  /* Opera 11.10+ */
+
+  background-image: linear-gradient(top, #ff5cbd, #ff42b3);
+  text-shadow: 0 -1px 1px rgba(0, 0, 0, 0.5);
+}
 .s-prize-details {
   margin-top: 8px;
 }
@@ -8148,5 +8167,12 @@ div.ps-carousel-item-loading {
     -moz-background-size: 17px 17px;
     -o-background-size: 17px 17px;
     background-size: 17px 17px;
+  }
+  .s-competition-ribbon {
+    background-image: url('../gfx/retina/comp-ribbon.png');
+    -webkit-background-size: 44px 53px;
+    -moz-background-size: 44px 53px;
+    -o-background-size: 44px 53px;
+    background-size: 44px 53px;
   }
 }
