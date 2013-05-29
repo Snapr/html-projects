@@ -3563,6 +3563,7 @@ div[data-role="header"].ui-bar-b a[data-rel="back"]::before {
   /* Opera 11.10+ */
 
   background-image: linear-gradient(top, #ff42b3, #df359b);
+  border-top: #ff75c8 solid 1px !important;
 }
 .ui-bar-h a {
   color: #f6ecec;
@@ -4058,6 +4059,7 @@ a:active {
 .s-competition .s-banner,
 .x-competition .s-banner {
   min-height: 118px;
+  background-color: #cccccc;
 }
 .x-app-banner .s-banner a,
 .competition .s-banner a,
