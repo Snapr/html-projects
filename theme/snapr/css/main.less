@@ -2113,6 +2113,69 @@ textarea.ui-input-text {
 }
 
 
+
+// @FX
+// -------------------------
+
+.s-fx{
+    
+    .s-fx-select-item-options{
+        .s-fx-item-preview{
+            .s-fx-item-preview-thumb{
+                background-color: #3c3c3c;
+                box-shadow: inset 0px 1px 4px 1px rgba(0,0,0,.4);
+                .s-fx-item-preview-thumb-img{                    
+                    box-shadow: 0px 1px 4px 1px rgba(0,0,0,.4);
+                    border-top: solid rgba(255,255,255,.7) 1px;
+                    display: block;
+                }
+            }
+            .s-fx-item-label{
+               
+            }
+        }
+
+    }
+    
+    .s-fx-ui-bar{
+        .s-footer-toggle{
+            .ui-btn{
+                .ui-btn-inner{
+                }
+                .ui-btn-text{
+                   
+                    .ui-icon{
+                       
+                    }
+
+                }
+            }
+        }
+
+        .ui-icon{
+            background-image: url('@{gfx}@{gfxFX}');
+            height: @gfxFX-grid;
+            width: @gfxFX-grid;
+            &.ui-icon-next{background-position:@gfxFX-x @gfxFX-next-y;}
+            &.ui-icon-tick{background-position:@gfxFX-x @gfxFX-tick-y;}
+            &.ui-icon-exit{background-position:@gfxFX-x @gfxFX-exit-y;}
+            &.ui-icon-filters{background-position:@gfxFX-x @gfxFX-filters-y;}
+            &.ui-icon-stickers{background-position:@gfxFX-x @gfxFX-stickers-y;}
+
+        }
+        .ui-btn-active{
+             .ui-icon{
+                    &.ui-icon-next{background-position:@gfxFX-x-hover @gfxFX-next-y;}
+                    &.ui-icon-tick{background-position:@gfxFX-x-hover @gfxFX-tick-y;}
+                    &.ui-icon-exit{background-position:@gfxFX-x-hover @gfxFX-exit-y;}
+                    &.ui-icon-filters{background-position:@gfxFX-x-hover @gfxFX-filters-y;}
+                    &.ui-icon-stickers{background-position:@gfxFX-x-hover @gfxFX-stickers-y;}
+                } 
+        }
+    }  
+}
+
+
 // @SHARE
 // -------------------------
 

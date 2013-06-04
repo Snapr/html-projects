@@ -6115,6 +6115,50 @@ textarea.ui-input-text {
 .s-progress-bar .s-bar-action .ui-icon-delete {
   background-position: -63px 0px;
 }
+.s-fx .s-fx-select-item-options .s-fx-item-preview .s-fx-item-preview-thumb {
+  background-color: #3c3c3c;
+  box-shadow: inset 0px 1px 4px 1px rgba(0, 0, 0, 0.4);
+}
+.s-fx .s-fx-select-item-options .s-fx-item-preview .s-fx-item-preview-thumb .s-fx-item-preview-thumb-img {
+  box-shadow: 0px 1px 4px 1px rgba(0, 0, 0, 0.4);
+  border-top: solid rgba(255, 255, 255, 0.7) 1px;
+  display: block;
+}
+.s-fx .s-fx-ui-bar .ui-icon {
+  background-image: url('../gfx/fx-sprites.png');
+  height: 44px;
+  width: 44px;
+}
+.s-fx .s-fx-ui-bar .ui-icon.ui-icon-next {
+  background-position: 0 0px;
+}
+.s-fx .s-fx-ui-bar .ui-icon.ui-icon-tick {
+  background-position: 0 -44px;
+}
+.s-fx .s-fx-ui-bar .ui-icon.ui-icon-exit {
+  background-position: 0 -88px;
+}
+.s-fx .s-fx-ui-bar .ui-icon.ui-icon-filters {
+  background-position: 0 -132px;
+}
+.s-fx .s-fx-ui-bar .ui-icon.ui-icon-stickers {
+  background-position: 0 -176px;
+}
+.s-fx .s-fx-ui-bar .ui-btn-active .ui-icon.ui-icon-next {
+  background-position: -44px 0px;
+}
+.s-fx .s-fx-ui-bar .ui-btn-active .ui-icon.ui-icon-tick {
+  background-position: -44px -44px;
+}
+.s-fx .s-fx-ui-bar .ui-btn-active .ui-icon.ui-icon-exit {
+  background-position: -44px -88px;
+}
+.s-fx .s-fx-ui-bar .ui-btn-active .ui-icon.ui-icon-filters {
+  background-position: -44px -132px;
+}
+.s-fx .s-fx-ui-bar .ui-btn-active .ui-icon.ui-icon-stickers {
+  background-position: -44px -176px;
+}
 .s-share-photo #description {
   height: 92px;
 }
