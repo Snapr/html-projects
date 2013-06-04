@@ -3751,23 +3751,6 @@ div[data-role="header"] .ui-btn-right {
 div[data-role="header"] .ui-btn-center {
   top: 6px;
 }
-div[data-role="header"] .ui-btn-center .s-header-toggle .ui-btn .ui-btn-inner {
-  padding: 0;
-}
-div[data-role="header"] .ui-btn-center .s-header-toggle .ui-btn .ui-btn-text {
-  text-indent: -999px;
-  display: block;
-  width: 44px;
-  height: 30px;
-}
-div[data-role="header"] .ui-btn-center .s-header-toggle .ui-btn .ui-btn-text .ui-icon {
-  display: block;
-  width: 40px;
-  height: 40px;
-  position: absolute;
-  top: -4px;
-  left: 2px;
-}
 div[data-role="header"] .ui-btn[data-icon="delete"] {
   right: 6px;
   top: 6px;
@@ -3776,16 +3759,39 @@ div[data-role="header"] .ui-btn[data-icon="delete"] {
 div[data-role="header"] .ui-btn[data-rel="back"] .ui-icon {
   display: none;
 }
-div[data-role="header"] .ui-controlgroup {
+.s-footer-toggle,
+.s-header-toggle {
   display: inline-block;
   -moz-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2);
   -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2);
   box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2);
 }
-div[data-role="header"] .ui-controlgroup .ui-checkbox label,
-div[data-role="header"] .ui-controlgroup .ui-radio label {
+.s-footer-toggle .ui-checkbox label,
+.s-header-toggle .ui-checkbox label,
+.s-footer-toggle .ui-radio label,
+.s-header-toggle .ui-radio label {
   font-size: 12px;
   margin: 0;
+}
+.s-footer-toggle .ui-btn .ui-btn-inner,
+.s-header-toggle .ui-btn .ui-btn-inner {
+  padding: 0;
+}
+.s-footer-toggle .ui-btn .ui-btn-text,
+.s-header-toggle .ui-btn .ui-btn-text {
+  text-indent: -999px;
+  display: block;
+  width: 44px;
+  height: 30px;
+}
+.s-footer-toggle .ui-btn .ui-btn-text .ui-icon,
+.s-header-toggle .ui-btn .ui-btn-text .ui-icon {
+  display: block;
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  top: -4px;
+  left: 2px;
 }
 .s-inline-header {
   margin-left: -8px;

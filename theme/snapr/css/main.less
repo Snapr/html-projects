@@ -76,28 +76,8 @@ div[data-role="header"]{
     }
     .ui-btn-center{
         top: 6px;
-        .s-header-toggle{
-            .ui-btn{
-                .ui-btn-inner{
-                    padding: 0;
-                }
-                .ui-btn-text{
-                    text-indent: -999px;
-                    display: block;
-                    width: 44px;
-                    height: 30px;
-                    .ui-icon{
-                        display: block;
-                        width: @gfxTopBar-grid;
-                        height: @gfxTopBar-grid;
-                        position: absolute;
-                        top: -4px;
-                        left: 2px;
-                    }
-                }
-            }
-        }   
     }
+    
     // Shuffle the close button to the right */
     .ui-btn[data-icon="delete"]{
         right: 6px;
@@ -110,16 +90,40 @@ div[data-role="header"]{
             display: none;
         }
     }
-    .ui-controlgroup{
-        display: inline-block;
-        .box-shadow(0 1px 0 @shadowLighter);
-        .ui-checkbox label,
-        .ui-radio label{
-            font-size: @fontSizeSmall;
-            margin: 0;
+    
+}
+
+.s-footer-toggle,
+.s-header-toggle{
+    display: inline-block;
+    .box-shadow(0 1px 0 @shadowLighter);
+    .ui-checkbox label,
+    .ui-radio label{
+        font-size: @fontSizeSmall;
+        margin: 0;
+    }
+    .ui-btn{
+        .ui-btn-inner{
+            padding: 0;
+        }
+        .ui-btn-text{
+            text-indent: -999px;
+            display: block;
+            width: 44px;
+            height: 30px;
+            .ui-icon{
+                display: block;
+                width: @gfxTopBar-grid;
+                height: @gfxTopBar-grid;
+                position: absolute;
+                top: -4px;
+                left: 2px;
+            }
         }
     }
-}
+} 
+ 
+
 
 .s-inline-header{
     margin-left: -@padding * 2;
