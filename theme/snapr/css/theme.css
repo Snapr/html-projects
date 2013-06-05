@@ -6121,8 +6121,10 @@ textarea.ui-input-text {
 }
 .s-fx .s-fx-select-item-options .s-fx-item-preview .s-fx-item-preview-thumb .s-fx-item-preview-thumb-img {
   box-shadow: 0px 1px 4px 1px rgba(0, 0, 0, 0.4);
-  border-top: solid rgba(255, 255, 255, 0.7) 1px;
   display: block;
+}
+.s-fx .s-fx-select-item-options .s-fx-item-preview.x-selected .s-fx-item-preview-thumb {
+  background-color: #82ecff;
 }
 .s-fx .s-fx-ui-bar .ui-icon {
   background-image: url('../gfx/fx-sprites.png');
@@ -7855,6 +7857,13 @@ div.ps-carousel-item-loading {
     -o-background-size: 17px 17px;
     background-size: 17px 17px;
   }
+  .s-fx .s-fx-ui-bar .ui-icon {
+    background-image: url('../gfx/retina/fx-sprites.png');
+    -webkit-background-size: 88px 220px;
+    -moz-background-size: 88px 220px;
+    -o-background-size: 88px 220px;
+    background-size: 88px 220px;
+  }
 }
 @media only screen and (-webkit-min-device-pixel-ratio: 2) {
   .ui-icon,
@@ -8221,5 +8230,12 @@ div.ps-carousel-item-loading {
     -moz-background-size: 44px 53px;
     -o-background-size: 44px 53px;
     background-size: 44px 53px;
+  }
+  .s-fx .s-fx-ui-bar .ui-icon {
+    background-image: url('../gfx/retina/fx-sprites.png');
+    -webkit-background-size: 88px 220px;
+    -moz-background-size: 88px 220px;
+    -o-background-size: 88px 220px;
+    background-size: 88px 220px;
   }
 }

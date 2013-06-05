@@ -2118,7 +2118,6 @@ textarea.ui-input-text {
 // -------------------------
 
 .s-fx{
-    
     .s-fx-select-item-options{
         .s-fx-item-preview{
             .s-fx-item-preview-thumb{
@@ -2126,32 +2125,30 @@ textarea.ui-input-text {
                 box-shadow: inset 0px 1px 4px 1px rgba(0,0,0,.4);
                 .s-fx-item-preview-thumb-img{                    
                     box-shadow: 0px 1px 4px 1px rgba(0,0,0,.4);
-                    border-top: solid rgba(255,255,255,.7) 1px;
                     display: block;
                 }
             }
             .s-fx-item-label{
-               
             }
+             &.x-selected{
+                    .s-fx-item-preview-thumb{
+                        background-color: @blu;
+                    }
+                }
         }
-
-    }
-    
+       
+    }    
     .s-fx-ui-bar{
         .s-footer-toggle{
             .ui-btn{
                 .ui-btn-inner{
                 }
                 .ui-btn-text{
-                   
-                    .ui-icon{
-                       
+                    .ui-icon{                       
                     }
-
                 }
             }
         }
-
         .ui-icon{
             background-image: url('@{gfx}@{gfxFX}');
             height: @gfxFX-grid;
@@ -2161,7 +2158,6 @@ textarea.ui-input-text {
             &.ui-icon-exit{background-position:@gfxFX-x @gfxFX-exit-y;}
             &.ui-icon-filters{background-position:@gfxFX-x @gfxFX-filters-y;}
             &.ui-icon-stickers{background-position:@gfxFX-x @gfxFX-stickers-y;}
-
         }
         .ui-btn-active{
              .ui-icon{
