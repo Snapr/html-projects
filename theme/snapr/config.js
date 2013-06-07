@@ -17,6 +17,7 @@ return {
         // ################################
 
         filter_pack: 'tk-classic',
+        sticker_pack: 'tk-classic',
 
         app_banners: true,
 
