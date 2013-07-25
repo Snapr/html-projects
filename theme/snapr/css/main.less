@@ -2033,6 +2033,12 @@ textarea.ui-input-text {
 
 
 #uploading{
+    div[data-role="header"]{
+        *[data-icon="delete"]{
+            display: none;
+        }
+    }
+    
     .s-upload-progress-header{
         height: @thumbSize + @padding * 6;
     }
@@ -2550,7 +2556,7 @@ textarea.ui-input-text {
        }
        .s-logout-button{
            position: absolute;
-           right: 4px;
+           right: 0px;
            top: 4px;
            .border-radius(@cornersRound);
            .ui-btn-inner{
@@ -2570,6 +2576,7 @@ textarea.ui-input-text {
     .ui-bar{
         .box-shadow(0 -1px 3px rgba(0,0,0,.05));
         border-bottom: @borderGrayLight;
+        margin: 0 -@padding * 2;
         .ui-btn-text {
             padding-left: 8px;
         }

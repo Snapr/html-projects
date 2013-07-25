@@ -2976,37 +2976,47 @@ div[data-role="header"].ui-bar-b a[data-rel="back"]::before {
 .s-trans-bg .ui-btn-active-c .ui-btn-inner {
   border: none;
 }
-.ui-body-c > .ui-listview {
+.ui-body-c > .ui-listview,
+.ui-body-c .ui-responsive div > .ui-listview {
   background: none;
   -moz-border-radius: 0;
   -webkit-border-radius: 0;
   border-radius: 0;
 }
-.ui-body-c > .ui-listview.ui-shadow {
+.ui-body-c > .ui-listview.ui-shadow,
+.ui-body-c .ui-responsive div > .ui-listview.ui-shadow {
   -moz-box-shadow: none;
   -webkit-box-shadow: none;
   box-shadow: none;
 }
 .ui-body-c > .ui-listview .ui-li,
-.ui-body-c > .ui-listview .ui-li-has-icon {
+.ui-body-c .ui-responsive div > .ui-listview .ui-li,
+.ui-body-c > .ui-listview .ui-li-has-icon,
+.ui-body-c .ui-responsive div > .ui-listview .ui-li-has-icon {
   padding: 0;
 }
-.ui-body-c > .ui-listview .ui-btn {
+.ui-body-c > .ui-listview .ui-btn,
+.ui-body-c .ui-responsive div > .ui-listview .ui-btn {
   border: none!important;
   background: none;
 }
-.ui-body-c > .ui-listview .ui-btn.ui-li {
+.ui-body-c > .ui-listview .ui-btn.ui-li,
+.ui-body-c .ui-responsive div > .ui-listview .ui-btn.ui-li {
   border-top: solid 1px #e4e4e4 !important;
   margin-bottom: 0;
 }
-.ui-body-c > .ui-listview .ui-btn.ui-li:first-child {
+.ui-body-c > .ui-listview .ui-btn.ui-li:first-child,
+.ui-body-c .ui-responsive div > .ui-listview .ui-btn.ui-li:first-child {
   border-top: none!important;
 }
-.ui-body-c > .ui-listview .ui-btn-hover-c {
+.ui-body-c > .ui-listview .ui-btn-hover-c,
+.ui-body-c .ui-responsive div > .ui-listview .ui-btn-hover-c {
   background-color: rgba(255, 255, 255, 0.8);
 }
 .ui-body-c > .ui-listview .ui-btn-down-c,
-.ui-body-c > .ui-listview .ui-btn-active {
+.ui-body-c .ui-responsive div > .ui-listview .ui-btn-down-c,
+.ui-body-c > .ui-listview .ui-btn-active,
+.ui-body-c .ui-responsive div > .ui-listview .ui-btn-active {
   background-color: transparent;
   background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0)), to(#ffffff));
   /* Saf4+, Chrome */
@@ -3026,45 +3036,58 @@ div[data-role="header"].ui-bar-b a[data-rel="back"]::before {
   background-image: linear-gradient(top, rgba(255, 255, 255, 0), #ffffff);
 }
 .ui-body-c > .ui-listview.s-people-list .ui-btn.ui-li:first-child,
+.ui-body-c .ui-responsive div > .ui-listview.s-people-list .ui-btn.ui-li:first-child,
 .ui-body-c > .ui-listview.venue-list .ui-btn.ui-li:first-child,
-.ui-body-c > .ui-listview.map-list .ui-btn.ui-li:first-child {
+.ui-body-c .ui-responsive div > .ui-listview.venue-list .ui-btn.ui-li:first-child,
+.ui-body-c > .ui-listview.map-list .ui-btn.ui-li:first-child,
+.ui-body-c .ui-responsive div > .ui-listview.map-list .ui-btn.ui-li:first-child {
   border-top: solid 1px #e4e4e4 !important;
 }
-.ui-body-c > .ui-listview .ui-btn-inner .ui-link-inherit {
+.ui-body-c > .ui-listview .ui-btn-inner .ui-link-inherit,
+.ui-body-c .ui-responsive div > .ui-listview .ui-btn-inner .ui-link-inherit {
   padding-top: 16px !important;
   padding-bottom: 16px !important;
   font-family: Helvetica, Arial, sans-serif;
   font-weight: normal;
   text-transform: lowercase;
 }
-.ui-body-c > .ui-listview .ui-li-has-icon .ui-btn-inner .ui-link-inherit {
+.ui-body-c > .ui-listview .ui-li-has-icon .ui-btn-inner .ui-link-inherit,
+.ui-body-c .ui-responsive div > .ui-listview .ui-li-has-icon .ui-btn-inner .ui-link-inherit {
   padding-top: 8px !important;
   padding-bottom: 10px !important;
 }
-.ui-body-c > .ui-listview .ui-li-icon {
+.ui-body-c > .ui-listview .ui-li-icon,
+.ui-body-c .ui-responsive div > .ui-listview .ui-li-icon {
   left: 0;
   top: 8px;
 }
-.ui-body-c > .ui-listview .ui-li-heading {
+.ui-body-c > .ui-listview .ui-li-heading,
+.ui-body-c .ui-responsive div > .ui-listview .ui-li-heading {
   margin: 0 0 8px 0;
   font-weight: normal;
 }
-.ui-body-c > .ui-listview .ui-li-desc {
+.ui-body-c > .ui-listview .ui-li-desc,
+.ui-body-c .ui-responsive div > .ui-listview .ui-li-desc {
   margin: -8px 0 0 0;
   padding: 0;
   color: #999999;
 }
 .ui-body-c > .ui-listview .ui-li,
-.ui-body-c > .ui-listview .ui-li-link-alt {
+.ui-body-c .ui-responsive div > .ui-listview .ui-li,
+.ui-body-c > .ui-listview .ui-li-link-alt,
+.ui-body-c .ui-responsive div > .ui-listview .ui-li-link-alt {
   border-right: none!important;
   border-left: none!important;
 }
-.ui-body-c > .ui-listview .ui-li-link-alt {
+.ui-body-c > .ui-listview .ui-li-link-alt,
+.ui-body-c .ui-responsive div > .ui-listview .ui-li-link-alt {
   width: 44px;
   background: none;
 }
 .ui-body-c > .ui-listview .ui-li-link-alt .ui-btn,
-.ui-body-c > .ui-listview .ui-li-link-alt.ui-btn {
+.ui-body-c .ui-responsive div > .ui-listview .ui-li-link-alt .ui-btn,
+.ui-body-c > .ui-listview .ui-li-link-alt.ui-btn,
+.ui-body-c .ui-responsive div > .ui-listview .ui-li-link-alt.ui-btn {
   border: none;
   width: 44px;
   height: 44px;
@@ -3074,31 +3097,43 @@ div[data-role="header"].ui-bar-b a[data-rel="back"]::before {
   background: none;
 }
 .ui-body-c > .ui-listview .ui-li-link-alt .ui-btn .ui-btn-inner,
-.ui-body-c > .ui-listview .ui-li-link-alt.ui-btn .ui-btn-inner {
+.ui-body-c .ui-responsive div > .ui-listview .ui-li-link-alt .ui-btn .ui-btn-inner,
+.ui-body-c > .ui-listview .ui-li-link-alt.ui-btn .ui-btn-inner,
+.ui-body-c .ui-responsive div > .ui-listview .ui-li-link-alt.ui-btn .ui-btn-inner {
   padding-right: 0;
 }
 .ui-body-c > .ui-listview .ui-li-link-alt .ui-btn .ui-icon,
-.ui-body-c > .ui-listview .ui-li-link-alt.ui-btn .ui-icon {
+.ui-body-c .ui-responsive div > .ui-listview .ui-li-link-alt .ui-btn .ui-icon,
+.ui-body-c > .ui-listview .ui-li-link-alt.ui-btn .ui-icon,
+.ui-body-c .ui-responsive div > .ui-listview .ui-li-link-alt.ui-btn .ui-icon {
   margin-top: 0;
   top: 2px;
   right: 0;
 }
 .ui-body-c > .ui-listview .ui-li-link-alt .ui-btn .ui-icon-check,
-.ui-body-c > .ui-listview .ui-li-link-alt.ui-btn .ui-icon-check {
+.ui-body-c .ui-responsive div > .ui-listview .ui-li-link-alt .ui-btn .ui-icon-check,
+.ui-body-c > .ui-listview .ui-li-link-alt.ui-btn .ui-icon-check,
+.ui-body-c .ui-responsive div > .ui-listview .ui-li-link-alt.ui-btn .ui-icon-check {
   background-position: -243px -108px;
 }
 .ui-body-c > .ui-listview .ui-li-link-alt .ui-btn .ui-icon-plus,
-.ui-body-c > .ui-listview .ui-li-link-alt.ui-btn .ui-icon-plus {
+.ui-body-c .ui-responsive div > .ui-listview .ui-li-link-alt .ui-btn .ui-icon-plus,
+.ui-body-c > .ui-listview .ui-li-link-alt.ui-btn .ui-icon-plus,
+.ui-body-c .ui-responsive div > .ui-listview .ui-li-link-alt.ui-btn .ui-icon-plus {
   background-position: 9px 0px;
 }
 .ui-body-c > .ui-listview .ui-li-link-alt .ui-btn .ui-icon-tick,
-.ui-body-c > .ui-listview .ui-li-link-alt.ui-btn .ui-icon-tick {
+.ui-body-c .ui-responsive div > .ui-listview .ui-li-link-alt .ui-btn .ui-icon-tick,
+.ui-body-c > .ui-listview .ui-li-link-alt.ui-btn .ui-icon-tick,
+.ui-body-c .ui-responsive div > .ui-listview .ui-li-link-alt.ui-btn .ui-icon-tick {
   background-position: -243px -144px;
 }
-.ui-body-c > .ui-listview.venue-list .ui-icon-arrow-r {
+.ui-body-c > .ui-listview.venue-list .ui-icon-arrow-r,
+.ui-body-c .ui-responsive div > .ui-listview.venue-list .ui-icon-arrow-r {
   display: none;
 }
-.ui-body-c > .ui-listview .ui-icon-arrow-r {
+.ui-body-c > .ui-listview .ui-icon-arrow-r,
+.ui-body-c .ui-responsive div > .ui-listview .ui-icon-arrow-r {
   background-position: -99px -36px;
 }
 .ui-bar-c[data-role="header"] .ui-btn-up-c,
@@ -6038,6 +6073,9 @@ textarea.ui-input-text {
   width: 101px;
   height: 101px;
 }
+#uploading div[data-role="header"] *[data-icon="delete"] {
+  display: none;
+}
 #uploading .s-upload-progress-header {
   height: 125px;
 }
@@ -6558,7 +6596,7 @@ textarea.ui-input-text {
 }
 .s-account-content .s-account-header .s-logout-button {
   position: absolute;
-  right: 4px;
+  right: 0px;
   top: 4px;
   -webkit-border-radius: 20px;
   -moz-border-radius: 20px;
@@ -6581,6 +6619,7 @@ textarea.ui-input-text {
   -webkit-box-shadow: 0 -1px 3px rgba(0, 0, 0, 0.05);
   box-shadow: 0 -1px 3px rgba(0, 0, 0, 0.05);
   border-bottom: solid 1px #cccccc;
+  margin: 0 -8px;
 }
 .s-account-content .ui-bar .ui-btn-text {
   padding-left: 8px;
