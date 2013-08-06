@@ -4519,10 +4519,10 @@ a:active {
   color: white;
   text-shadow: rgba(0, 0, 0, 0.5) 0px -1px 1px;
   background: #82ecff;
-  text-shadow: 0 -1px 0px #093b5c;
-  -moz-box-shadow: 0 4px 5px -2px rgba(0, 0, 0, 0.3) inset;
-  -webkit-box-shadow: 0 4px 5px -2px rgba(0, 0, 0, 0.3) inset;
-  box-shadow: 0 4px 5px -2px rgba(0, 0, 0, 0.3) inset;
+  text-shadow: 0 -1px 0px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
   font-family: Helvetica, Arial, sans-serif;
 }
 .ui-slider-switch .ui-slider-handle {
@@ -6623,6 +6623,12 @@ textarea.ui-input-text {
 }
 .s-account-content .ui-bar .ui-btn-text {
   padding-left: 8px;
+}
+.s-account-content .ui-bar.s-divider {
+  margin: -8px -8px 8px -8px;
+  -moz-border-radius: 0;
+  -webkit-border-radius: 0;
+  border-radius: 0;
 }
 .s-account-content .ui-listview li.ui-btn {
   margin-top: 1px;
