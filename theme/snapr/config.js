@@ -307,7 +307,7 @@ return {
     environments: {
         dev: {
             base_url: "http://dev.sna.pr",
-            client_id: "76e5be0eec71b28fb4380b0ac42201cf"
+            client_id: "409438698404929c5be972b55aba4563"
         },
         live: {
             base_url: "https://sna.pr",
