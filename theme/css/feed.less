@@ -1,0 +1,40 @@
+// Move to variables.less
+@avatar-small-size: 80px;
+@margin: 1em;
+@padding: 1em;
+
+.s-image-details{
+    padding-left: @avatar-small-size + 5px;
+    position: relative;
+    min-height: @avatar-small-size;
+
+    .s-avatar{
+        position: absolute;
+        top:0;
+        left:0;
+        width: @avatar-small-size;
+        height: @avatar-small-size;
+    }
+
+    .s-username{ display: block; }
+
+    .s-time{
+        position: absolute;
+        top:0;
+        right:0;
+    }
+
+    .s-description{ display: block; }
+
+    .s-spot{}
+
+    .s-location{ display: block; }
+
+    .s-likes{
+        border-top: 1px solid #999;
+        margin-top: @margin;
+        padding-top: @padding;
+    }
+
+    .s-favorites{}
+}
