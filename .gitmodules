@@ -1,3 +1,9 @@
 [submodule "app"]
 	path = app
 	url = git@github.com:Snapr/html-snaprkit.git
+[submodule "theme/filter-packs"]
+	path = theme/filter-packs
+	url = git@github.com:Snapr/filter-packs.git
+[submodule "theme/sticker-packs"]
+	path = theme/sticker-packs
+	url = git@github.com:Snapr/sticker-packs.git
