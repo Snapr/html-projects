@@ -16,8 +16,8 @@ return {
         // CONFIG
         // ################################
 
-        filter_pack: 'tk-classic',
-        sticker_pack: 'tk-classic',
+        filter_pack: 'classic-cats',
+        sticker_pack: 'classic-cats',
 
         app_banners: true,
 
