@@ -1,5 +1,9 @@
-/*global _, $, define, theme_templates_path, theme_views */
+/*global _, $, define */
 define(function(){
+
+var theme_templates_path = '../../theme/templates/',
+theme_views_path = '../../theme/views/';
+
 return {
     config: {
 
