@@ -9277,7 +9277,7 @@ img.emoji {
 #user .s-avatar-block {
   background-position: center;
   background-repeat: no-repeat;
-  background-image: url("../../app/css/gfx/1x/tk-behind-icon.png");
+  background-image: url("../../theme/css/gfx/1x/tk-behind-icon.png");
   -webkit-background-size: 101px 101px !important;
   -moz-background-size: 101px 101px !important;
   -o-background-size: 101px 101px !important;
@@ -9285,12 +9285,12 @@ img.emoji {
 }
 @media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min--moz-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5), only screen and (min-resolution: 140dpi), only screen and (min-resolution: 1.5dppx) {
   #user .s-avatar-block {
-    background-image: url("../../app/css/gfx/1.5x/tk-behind-icon.png");
+    background-image: url("../../theme/css/gfx/1.5x/tk-behind-icon.png");
   }
 }
 @media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx) {
   #user .s-avatar-block {
-    background-image: url("../../app/css/gfx/2x/tk-behind-icon.png");
+    background-image: url("../../theme/css/gfx/2x/tk-behind-icon.png");
   }
 }
 /*!
