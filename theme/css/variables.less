@@ -1,0 +1,163 @@
+// Global values
+// --------------------------------------------------
+
+@m: 10px; // A number to use as a foundation for layout padding & sizes, less fiddly than em
+
+
+// Brand colors
+// -------------------------
+
+@brand-color:       #57caef;
+@accent-color:      #ff42b3;
+
+@info-color:        @brand-color;
+@warning-color:     @brand-color;
+@danger-color:      @accent-color;
+
+@facebook-blue:     #4a689d;
+@twitter-blue:      #3cacec;
+@tumblr-blue:       #476c8d;
+@foursquare-blue:   #48c0ed;
+
+@gradient-bg-top:   @brand-color; // Gradients
+@gradient-bg-bottom:#7bdce0;
+
+
+// Grays
+// -------------------------
+
+@white:             #fff;
+@gray-lighter:      #e6e6e6;
+@gray-light:        #ccc;
+@gray:              #999;
+@gray-dark:         #666;
+@gray-darker:       #202020;
+@black:             #000;
+
+@transparent:       rgba(0,0,0,0); // For using `transparent` in swatches with mixins & color modifiers
+@black-trans:       rgba(0, 0, 0, .6);
+
+
+// Typography
+// -------------------------
+
+@font-size-base:                15px;
+@font-size-small:               13px;
+@line-height:                   1.4;
+
+@font-serif:                    Georgia,'Times New Roman', Times, sans-serif;
+@font-sans:                     HelveticaNeue, Helvetica, Arial, sans-serif;
+@font-special:                  HelveticaNeue-Light,Helvetica, Arial, sans-serif;
+
+@font:                          @font-special;
+
+.font-normal(){
+    font-family:                @font;
+    font-weight:                500;
+    font-size:                  @font-size-base
+}
+
+.font-italic(){
+    font-style:                 italic;
+    font-weight:                200;
+}
+
+.username-font(){
+    font-family:                @font-special;
+    font-size:                  @font-size-base;
+    text-transform:             none;
+}
+
+
+// Headers
+// ------------------------
+
+.heading-font(){
+    font-family: @font-special;
+    font-weight: normal;
+    -webkit-font-smoothing: antialiased;
+    font-size: @m * 2;
+    line-height: @m * 3.5;
+}
+.heading-font-bold(){
+    font-family: @font-sans;
+    font-weight: bold;
+    -webkit-font-smoothing: antialiased;
+}
+
+.header-bar-font(){
+    font-family: @font-special;
+    font-weight: normal;
+    text-transform: lowercase;
+    font-size: @bar-title-font-size;
+    -webkit-font-smoothing: antialiased;
+}
+
+
+// Buttons
+// ------------------------
+
+
+.button-font(){
+    font-family: @font-special;
+    font-weight: normal;
+    text-transform: none;
+    font-size: @button-font-size;
+    -webkit-font-smoothing: antialiased;
+
+}
+
+.button-font-light(){
+    font-family: @font-special;
+    font-weight: normal;
+    text-transform: lowercase;
+    font-size: @button-font-size;
+    -webkit-font-smoothing: antialiased;
+
+}
+.button-font-bold(){
+    font-family: @font;
+    font-weight: bold;
+    text-transform: lowercase;
+    font-size: @m * 1.5;
+    -webkit-font-smoothing: antialiased;
+}
+
+.button-font-small(){
+    font-family: @font;
+    font-weight: bold;
+    font-size: @font-size-small;
+    line-height: @font-size-small;
+}
+
+
+// Bars
+// ------------------------
+
+.ui-bar-font(){
+    font-family: @font-special;
+    font-weight: normal;
+    text-transform: lowercase;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Active stuff */
+@active-background-color: @accent-color;
+
+
+// Page
+// ------------------------
+
+// Layout
+@padding: @m;
+@margin: @m;
+@vertical-margin: @m; // Space above and below components
+
+.page(){}
+
+
+
+
+
+
+

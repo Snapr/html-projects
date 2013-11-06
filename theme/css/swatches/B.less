@@ -1,0 +1,124 @@
+// Swatch B
+// -----------------------------
+// Dark colored swatch
+// Dark gray body with light gray text
+// Dark gray title bars & buttons
+
+@{swatch}{
+    @swatch: b;
+    
+    // Base 
+    // -----------------------------
+
+    // Basic Body Colors
+    @body-background-color:             @gray-darker;
+    @body-border:                       @gray-darker;
+    @body-color:                        @gray;
+    @body-accent-color:             @accent-color;
+    @body-brand-color:              @brand-color;
+    @body-header-color:                 @brand-color;
+    
+    .page(){
+        .gradient(@gray-darker, @black);
+    }
+    
+    @link-color:                        @gray;
+    @link-visited:                      @gray;
+    @link-hover:                        @brand-color;
+    @link-active:                       @brand-color;
+
+    // Dialog Style Pages   
+    @page-border:                       @gray-darker;
+    @page-color:                        @gray;
+
+
+    // Bars 
+    // -----------------------------
+  
+    @bar-background-color:              @gray-darker;
+    @bar-border:                        @gray-darker;
+    @bar-color:                         @brand-color;
+    
+   
+    // Buttons 
+    // -----------------------------
+      
+    // Button Borders
+    @button-border-width:               @border;
+
+    // Button visited 
+    @bup-background-color:              @gray-darker;
+    @bup-border:                        @gray-darker;
+    @bup-color:                         @gray;
+    @bup-icon-color:                    @brand-color;
+
+    // Button hover 
+    @bhover-background-color:           @gray-darker;
+    @bhover-border:                     @gray-darker;
+    @bhover-color:                      @brand-color;
+    @bhover-icon-color:                 @brand-color;
+
+    // Button down 
+    @bdown-background-color:            @gray-darker;
+    @bdown-border:                      @gray-darker;
+    @bdown-color:                       @brand-color;
+    @bdown-icon-color:                  @brand-color;
+
+    // Active stuff 
+    @active-background-color:           @gray-darker;
+    @active-border:                     @gray-darker;
+    @active-color:                      @brand-color;
+    @active-icon-color:                 @brand-color;
+    
+    
+    // List Items 
+    // -----------------------------
+    
+    @list-item-border-width:            1px; // Only applied to the bottom border
+    @list-item-border:                  @gray-dark;
+    @list-divider-color:                @body-header-color;
+    @list-divider-border:               @body-header-color;
+    
+    
+    // Tab Bars 
+    // -----------------------------
+    
+    // Tab Default (not selected) 
+    @tab-background-color:          @bup-background-color;
+    @tab-border:                    @bup-border;
+    @tab-color:                     @bup-color;
+    @tab-shadow:                    none;
+    @tab-icon-color:                @gray;
+
+    // Tab hover 
+    @tabhover-background-color:     @bhover-background-color;
+    @tabhover-border:               @bhover-border;
+    @tabhover-color:                @bhover-color;
+    @tabhover-icon-color:           @bhover-icon-color;
+
+    // Tab Down 
+    @tabdown-background-color:      @white;
+    @tabdown-border:                @bdown-border;
+    @tabdown-color:                 @bdown-color;
+    @tabdown-icon-color:            @bdown-icon-color;
+
+    // Tab Selected 
+    @tabactive-background-color:   @tabdown-background-color;
+    @tabactive-border:             @bdown-border;
+    @tabactive-color:              @bdown-color;
+    @tabactive-icon-color:         @bdown-icon-color;
+    
+    
+    // Forms
+    // -----------------------------
+
+    @input-background-color:        @bup-background-color;
+    @input-border:                  solid 1px @gray-light;
+    @input-color:                   @gray;
+    @input-shadow:                  none ;
+    @input-box-shadow:              inset 0 2px 2px @gray-lighter ;
+    @input-icon-color:              @brand-color;
+
+
+    @import "../../app/css/jquery.mobile/swatches/generate_default_swatch";
+}

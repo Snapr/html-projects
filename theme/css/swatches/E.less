@@ -1,0 +1,122 @@
+// Swatch E
+// -----------------------------
+// Accent colored swatch
+// Accent colored body with white text
+// Accent colored title bars & buttons
+
+@{swatch}{
+    @swatch: e;
+
+    // Base 
+    // -----------------------------
+    
+    // Basic Body Colors
+    @body-background-color:             @accent-color;
+    @body-border:                       @accent-color;
+    @body-color:                        #fff;
+    @body-accent-color:                 @accent-color;
+    @body-brand-color:                  @brand-color;
+    @body-header-color:                 @accent-color;   
+    
+    @link-color:                        @accent-color;
+    @link-visited:                      @accent-color;
+    @link-hover:                        @accent-color;
+    @link-active:                       @accent-color; 
+    
+    // Dialog Style Pages
+    @page-background-color:             @accent-color;
+    @page-border:                       @accent-color;
+    @page-color:                        #fff;
+
+
+    // Bars 
+    // -----------------------------    
+   
+    @bar-background-color:              @accent-color;
+    @bar-border:                        @accent-color;
+    @bar-color:                         #fff;
+
+
+    // Buttons 
+    // -----------------------------
+
+    // Button Borders 
+    @button-border-width:               @border;
+
+    // Button visited 
+    @bup-background-color:              @accent-color;
+    @bup-border:                        @accent-color;
+    @bup-color:                         #fff;
+    @bup-icon-color:                    #fff;
+
+    // Button hover 
+    @bhover-background-color:           darken(@accent-color, 10%);
+    @bhover-border:                     darken(@accent-color, 10%);
+    @bhover-color:                      #fff;
+    @bhover-icon-color:                 #fff;
+
+    // Button down 
+    @bdown-background-color:            @accent-color;
+    @bdown-border:                      @accent-color;
+    @bdown-color:                       #fff;
+    @bdown-icon-color:                  #fff;
+
+    // Active stuff 
+    @active-background-color:           @accent-color;
+    @active-border:                     @accent-color;
+    @active-color:                      #fff;
+    @active-icon-color:                 #fff;
+  
+    
+    // List Items 
+    // -----------------------------
+
+    @list-item-border-width:            1px; // Only applied to the bottom border
+    @list-item-border:                  @accent-color;
+    @list-divider-color:                @body-header-color;
+    @list-divider-border:               @body-header-color;
+
+
+    // Tab Bars 
+    // -----------------------------
+    
+    // Tab Default (not selected) 
+    @tab-background-color:          @bup-background-color;
+    @tab-border:                    @bup-border;
+    @tab-color:                     @bup-color;
+    @tab-shadow:                    none;
+    @tab-icon-color:                @gray;
+
+    // Tab hover 
+    @tabhover-background-color:     @bhover-background-color;
+    @tabhover-border:               @bhover-border;
+    @tabhover-color:                @bhover-color;
+    @tabhover-icon-color:           @bhover-icon-color;
+
+    // Tab Down 
+    @tabdown-background-color:      @white;
+    @tabdown-border:                @bdown-border;
+    @tabdown-color:                 @bdown-color;
+    @tabdown-icon-color:            @bdown-icon-color;
+
+    // Tab Selected 
+    @tabactive-background-color:   @tabdown-background-color;
+    @tabactive-border:             @bdown-border;
+    @tabactive-color:              @bdown-color;
+    @tabactive-icon-color:         @bdown-icon-color;
+    
+    
+    // Forms
+    // -----------------------------
+
+    @input-background-color:        @bup-background-color;
+    @input-border:                  solid 1px @gray-light;
+    @input-color:                   @gray;
+    @input-shadow:                  none ;
+    @input-box-shadow:              inset 0 2px 2px @gray-lighter ;
+    @input-icon-color:              @brand-color;
+
+
+
+    @import "../../app/css/jquery.mobile/swatches/generate_default_swatch";
+}

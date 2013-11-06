@@ -1,8 +1,43 @@
+// THEME
+// --------------------------------------------------
 
-// Evenutally this should include all the import links to the main theme
-// For now it just has some extra overrides..
+// VARIABLES
+// Main Variables
+@import "../../app/css/variables";
 
+// Custom Variables for Theme (Including overrides)
+@import "variables";
 
+// MIXINS
 @import "../../app/css/snapr/mixins";
 
+// JQUERY MOBILE
+// Structure
+@import "../../app/css/jquery.mobile/structure";
+// Extra
+@import "../../app/css/jquery.mobile/extra";
+// Theme
+@import "../../app/css/jquery.mobile/theme";
+// Swatches
+@swatch:~"";  /* DO NOT EDIT. */
+/* Each swatch is nested inside a blank context to scope its variables, this variable provides the context */
+
+@import "swatches/A";  // Light BG 
+@import "swatches/B";  // Dark BG 
+@import "swatches/C";  // Gray BG 
+@import "swatches/D";  // Brand Color BG
+@import "swatches/E";  // Accent Color BG
+@import "swatches/F";  // Gradient Color BG
+
+// SNAPR
+@import "../../app/css/snapr/components";
+@import "../../app/css/snapr/pages";
+
+// Custom CSS for theme
 @import "user";
+
+// ICONS
+@import "../../app/css/icons/glyphicons";
+
+
+
