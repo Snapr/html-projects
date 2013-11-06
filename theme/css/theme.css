@@ -241,7 +241,7 @@ div.ui-mobile-viewport {
 .ui-btn {
   font-size: 15px;
   margin: 10px 0;
-  padding: 10px 10px;
+  padding: 11px 10px;
   display: block;
   position: relative;
   text-align: center;
@@ -257,8 +257,8 @@ div.ui-mobile-viewport {
 }
 .ui-btn-icon-notext {
   padding: 0;
-  width: 40px;
-  height: 40px;
+  width: 50px;
+  height: 50px;
   text-indent: -9999px;
   white-space: nowrap !important;
 }
@@ -301,10 +301,10 @@ div.ui-mobile-viewport {
   padding-left: 30px;
 }
 .ui-btn-icon-top {
-  padding-top: 26px;
+  padding-top: 27px;
 }
 .ui-btn-icon-bottom {
-  padding-bottom: 26px;
+  padding-bottom: 27px;
 }
 .ui-header .ui-btn-icon-top,
 .ui-footer .ui-btn-icon-top,
@@ -425,10 +425,10 @@ div.ui-mobile-viewport {
   padding-right: 54px;
 }
 .large-icon.ui-btn-icon-top {
-  padding-top: 54px;
+  padding-top: 55px;
 }
 .large-icon.ui-btn-icon-bottom {
-  padding-bottom: 54px;
+  padding-bottom: 55px;
 }
 .large-icon.ui-btn-icon-notext:after,
 .large-icon.ui-btn-icon-left:after,
@@ -504,7 +504,7 @@ button.ui-btn-icon-notext,
   -webkit-box-sizing: content-box;
   -moz-box-sizing: content-box;
   box-sizing: content-box;
-  width: 40px;
+  width: 50px;
 }
 /* Form labels */
 .ui-mobile label,
@@ -2301,7 +2301,7 @@ textarea.ui-mini {
   position: absolute;
   right: 0;
   top: 50%;
-  margin: -20px 0.3125em 0;
+  margin: -25px 0.3125em 0;
   border: 0;
   background-color: transparent;
 }
@@ -7358,6 +7358,7 @@ div[data-role="footer"] .s-search-bar .ui-input-search input,
   text-transform: lowercase;
   font-size: 25px;
   -webkit-font-smoothing: antialiased;
+  min-height: 35px;
   padding-left: 45px;
   padding-top: 7.5px;
   padding-bottom: 7.5px;
@@ -7544,13 +7545,13 @@ html head + body .ui-btn.s-foursquare-button:active {
   display: inline-block;
 }
 .s-image-sharing .ui-checkbox .ui-btn .ui-icon {
-  width: 40px;
-  height: 40px;
+  width: 50px;
+  height: 50px;
   display: block;
 }
 .s-image-sharing .ui-checkbox .ui-btn .ui-icon:after {
-  font-size: 40px !important;
-  line-height: 40px !important;
+  font-size: 50px !important;
+  line-height: 50px !important;
   color: #666666;
 }
 .s-image-sharing .ui-checkbox .ui-btn .s-service-text {
@@ -7787,7 +7788,7 @@ html head + body .ui-btn.s-foursquare-button:active {
   text-transform: lowercase;
   -webkit-font-smoothing: antialiased;
   font-size: 20px;
-  padding: 10px 10px;
+  padding: 11px 10px;
 }
 textarea {
   min-height: 90px;
