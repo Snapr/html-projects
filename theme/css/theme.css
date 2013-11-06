@@ -191,7 +191,7 @@ div.ui-mobile-viewport {
 }
 .ui-header:empty,
 .ui-footer:empty {
-  min-height: 50px;
+  min-height: 60px;
 }
 .ui-header .ui-title,
 .ui-footer .ui-title {
@@ -200,8 +200,8 @@ div.ui-mobile-viewport {
   text-transform: lowercase;
   font-size: 25px;
   -webkit-font-smoothing: antialiased;
-  line-height: 50px;
-  min-height: 50px;
+  line-height: 60px;
+  min-height: 60px;
   text-align: center;
   display: block;
   margin: 0 30%;
@@ -2680,15 +2680,14 @@ for Android 4.1 */
 .ui-panel-inner {
   padding: 10px;
 }
-/* container */
-.ui-panel-page-container {
+/* container, page and wrapper */
+.ui-panel-page-container,
+.ui-panel-page-container .ui-page.ui-page-active {
   overflow-x: visible;
 }
-/* page */
 .ui-panel-page-container-themed .ui-page-active {
   background: none;
 }
-/* wrapper */
 .ui-panel-wrapper {
   position: relative;
   min-height: inherit;
@@ -7255,7 +7254,7 @@ ul li {
 div[data-role="header"],
 div[data-role="footer"],
 .s-panel-header {
-  min-height: 50px;
+  min-height: 60px;
   padding: 0;
   font-size: 1em;
 }
@@ -7328,8 +7327,8 @@ div[data-role="footer"] .ui-btn-right.ui-btn-icon-notext,
 div[data-role="header"] .ui-btn-left.ui-btn-icon-notext,
 div[data-role="footer"] .ui-btn-left.ui-btn-icon-notext,
 .s-panel-header .ui-btn-left.ui-btn-icon-notext {
-  width: 50px;
-  height: 50px;
+  width: 60px;
+  height: 60px;
 }
 div[data-role="header"] .s-search-bar,
 div[data-role="footer"] .s-search-bar,
@@ -7371,7 +7370,7 @@ div[data-role="footer"] .s-search-bar .ui-input-search input.ui-focus,
   box-shadow: none;
 }
 div[data-role="page"] {
-  padding-bottom: 50px !important;
+  padding-bottom: 60px !important;
 }
 div[data-tab-bar="false"] {
   padding-bottom: 0!important;
@@ -7908,8 +7907,8 @@ div[data-role="header"] *[data-rel="back"] {
   opacity: 0.8;
   filter: alpha(opacity=80);
   padding: 0 0 0 30px;
-  line-height: 53px;
-  height: 50px;
+  line-height: 63px;
+  height: 60px;
   vertical-align: middle;
   max-width: 52px;
   text-overflow: ellipsis;
@@ -8157,7 +8156,7 @@ img.emoji {
 }
 .ui-panel-inner .s-panel-header {
   margin: -10px;
-  min-height: 50px;
+  min-height: 60px;
 }
 .ui-panel-inner .s-panel-header h1 {
   text-align: center;
@@ -9294,8 +9293,8 @@ img.emoji {
   }
 }
 .s-app-logo {
-  width: 50px;
-  height: 50px;
+  width: 60px;
+  height: 60px;
   overflow: hidden;
   text-indent: -999px;
   display: block;
