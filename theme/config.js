@@ -27,10 +27,10 @@ return {
         app_banners: true,
 
         //!--  default: undefined
-        app_group: 'snapr',
-        app_name: 'Snapr',
+        app_group: 'artjunk',
+        app_name: 'Art Junk',
         signin_with_snapr: true,
-        snapr_badge_color: 'light',
+        snapr_badge_color: 'dark',
 
         //!--  default sort order for all lists of photos
         //!--  default: date_utc the photo was taken.
@@ -356,11 +356,11 @@ return {
     environments: {
         dev: {
             base_url: "http://dev.sna.pr",
-            client_id: "76e5be0eec71b28fb4380b0ac42201cf"
+            client_id: "d3ce7c1b622b994723d21e5fd899bad3"
         },
         live: {
             base_url: "https://sna.pr",
-            client_id: "76e5be0eec71b28fb4380b0ac42201cf"
+            client_id: "d3ce7c1b622b994723d21e5fd899bad3"
         },
         local: {
             base_url: "http://localhost:8000",
