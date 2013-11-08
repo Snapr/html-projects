@@ -9287,6 +9287,29 @@ img.emoji {
     background-image: url("../../theme/css/gfx/2x/app-logo.png");
   }
 }
+.s-tabbar-activity {
+  position: absolute;
+  left: 50%;
+  margin-left: 32px;
+  top: 50%;
+  margin-top: -9px;
+}
+.s-tabbar-activity:after {
+  width: 0;
+  height: 0;
+  display: inline-block;
+  content: "&darr;";
+  text-indent: -99999px;
+  vertical-align: top;
+  margin-top: 0;
+  margin-left: -4px;
+  border-top: 4px solid transparent;
+  border-bottom: 4px solid transparent;
+  border-right: 4px solid #ff42b3;
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+}
 /*!
  *
  *  Project:  GLYPHICONS HALFLINGS
