@@ -26,10 +26,10 @@ return {
         app_banners: true,
 
         //!--  default: undefined
-        app_group: 'tuxedo-kittie',
-        app_name: 'Tuxedo Kittie',
+        app_group: 'artjunk',
+        app_name: 'Art Junk',
         signin_with_snapr: true,
-        snapr_badge_color: 'light',
+        snapr_badge_color: 'dark',
 
         //!--  dafault sort order for all lists of photos
         //!--  default: date_utc the photo was taken.
@@ -311,11 +311,11 @@ return {
     environments: {
         dev: {
             base_url: "http://dev.sna.pr",
-            client_id: "409438698404929c5be972b55aba4563"
+            client_id: "d3ce7c1b622b994723d21e5fd899bad3"
         },
         live: {
             base_url: "https://sna.pr",
-            client_id: "409438698404929c5be972b55aba4563"
+            client_id: "d3ce7c1b622b994723d21e5fd899bad3"
         },
         local: {
             base_url: "http://localhost:8000",
