@@ -9293,6 +9293,7 @@ img.emoji {
   margin-left: 32px;
   top: 50%;
   margin-top: -9px;
+  overflow: visible;
 }
 .s-tabbar-activity:after {
   width: 0;
@@ -9302,13 +9303,45 @@ img.emoji {
   text-indent: -99999px;
   vertical-align: top;
   margin-top: 0;
-  margin-left: -4px;
-  border-top: 4px solid transparent;
-  border-bottom: 4px solid transparent;
-  border-right: 4px solid #ff42b3;
+  margin-left: -5px;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-right: 5px solid #ff42b3;
   position: absolute;
-  bottom: -4px;
-  left: 0;
+  bottom: -5px;
+  left: 50%;
+}
+.s-tabbar-activity:hover:after {
+  width: 0;
+  height: 0;
+  display: inline-block;
+  content: "&darr;";
+  text-indent: -99999px;
+  vertical-align: top;
+  margin-top: 0;
+  margin-left: -5px;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-right: 5px solid #ff0f9e;
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+}
+.s-tabbar-activity:active:after {
+  width: 0;
+  height: 0;
+  display: inline-block;
+  content: "&darr;";
+  text-indent: -99999px;
+  vertical-align: top;
+  margin-top: 0;
+  margin-left: -5px;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-right: 5px solid #ff42b3;
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
 }
 /*!
  *

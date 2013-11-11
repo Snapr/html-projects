@@ -21,8 +21,19 @@
 	margin-left: 32px;
 	top: 50%;
 	margin-top: -9px;
+	overflow: visible;
 	&:after{
-		.arrow-left(4px, @accent-color, 0, 0);
+		.arrow-left(5px, @accent-color, 50%, 0);
+	}
+	&:hover{
+		&:after{
+			.arrow-left(5px, darken(@accent-color, 10%), 50%, 0);
+		}
+	}
+	&:active{
+		&:after{
+			.arrow-left(5px, @accent-color, 50%, 0);
+		}
 	}
 }
 	
