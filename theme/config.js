@@ -341,11 +341,6 @@ return {
             view: 'base/page',
             template: theme_templates_path + 'about'
         },
-        {
-            name: 'join-success',
-            view: 'base/page',
-            template: theme_templates_path + 'join_success'
-        },
         // {
         //     name: 'welcome',
         //     view: 'welcome',
