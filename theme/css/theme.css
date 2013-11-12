@@ -9535,6 +9535,15 @@ img.emoji {
   position: absolute;
   right: 0;
 }
+.ui-popup > .ui-btn-right.s-close-lightbox {
+  width: 50px;
+  height: 30px;
+  right: 0;
+  top: -30px;
+  -webkit-border-radius: 5px 5px 0 0;
+  -moz-border-radius: 5px 5px 0 0;
+  border-radius: 5px 5px 0 0;
+}
 .s-venue-list li > a {
   padding: 10px 30px 10px 40px !important;
   min-height: 30px !important;
