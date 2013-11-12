@@ -9130,9 +9130,12 @@ div[data-role="header"] *[data-rel="back"]:before {
 .icon-to-spinner {
   content: "" !important;
   width: 24px;
+  line-height: 24px;
   height: 24px;
   margin-top: -12px !important;
   margin-left: 0!important;
+  top: 50%;
+  position: absolute;
   display: block;
   background-image: url("../../app/css/gfx/1x/small-spinner-light.png");
   -webkit-background-size: 24px 24px !important;
@@ -9159,12 +9162,16 @@ div[data-role="header"] *[data-rel="back"]:before {
   }
 }
 .ui-btn.x-ajax-loading[class*="ui-icon"]:after,
-.ui-btn.x-ajax-loading *[class*="ui-icon"]:after {
+.ui-btn.x-ajax-loading *[class*="ui-icon"]:after,
+.ui-icon-spinner:after {
   content: "" !important;
   width: 24px;
+  line-height: 24px;
   height: 24px;
   margin-top: -12px !important;
   margin-left: 0!important;
+  top: 50%;
+  position: absolute;
   display: block;
   background-image: url("../../app/css/gfx/1x/small-spinner-light.png");
   -webkit-background-size: 24px 24px !important;
@@ -9182,13 +9189,15 @@ div[data-role="header"] *[data-rel="back"]:before {
 }
 @media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min--moz-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5), only screen and (min-resolution: 140dpi), only screen and (min-resolution: 1.5dppx) {
   .ui-btn.x-ajax-loading[class*="ui-icon"]:after,
-  .ui-btn.x-ajax-loading *[class*="ui-icon"]:after {
+  .ui-btn.x-ajax-loading *[class*="ui-icon"]:after,
+  .ui-icon-spinner:after {
     background-image: url("../../app/css/gfx/1.5x/small-spinner-light.png");
   }
 }
 @media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx) {
   .ui-btn.x-ajax-loading[class*="ui-icon"]:after,
-  .ui-btn.x-ajax-loading *[class*="ui-icon"]:after {
+  .ui-btn.x-ajax-loading *[class*="ui-icon"]:after,
+  .ui-icon-spinner:after {
     background-image: url("../../app/css/gfx/2x/small-spinner-light.png");
   }
 }
@@ -9979,6 +9988,7 @@ img.emoji {
   position: relative;
   padding: 11px;
   padding-right: 40px;
+  padding-left: 0;
   height: 8px;
 }
 .s-progress-bar .s-bar-wrapper {
@@ -10007,10 +10017,9 @@ img.emoji {
   line-height: 30px;
   vertical-align: middle;
   top: 0px;
-  left: 10px;
+  left: 0;
   font-weight: bold;
   font-size: 13px;
-  color: #57caef;
 }
 .s-progress-bar .s-bar-action {
   position: absolute;
@@ -10023,14 +10032,22 @@ img.emoji {
   background: none;
 }
 .s-progress-bar .s-bar-action .ui-icon {
-  margin-top: -10px;
+  margin-top: -8px;
   top: 50%;
   position: absolute;
   right: 50%;
-  margin-right: -10px;
+  margin-right: -8px;
+  width: 16px;
+  height: 16px;
 }
 .s-progress-bar .s-bar-action .ui-icon.ui-icon-spinner {
-  margin-top: 0!important;
+  margin-top: -12px;
+  margin-right: -12px;
+  width: 24px;
+  height: 24px;
+}
+.s-progress-bar .s-bar-action .ui-icon:after {
+  color: #57caef;
 }
 .s-upload-progress-item {
   list-style: none;
@@ -10075,6 +10092,7 @@ img.emoji {
 #uploading .s-upload-progress-item .s-upload-info-block {
   position: relative;
   padding-left: 110px;
+  padding-right: 10px;
 }
 #uploading .s-upload-progress-item .s-upload-info-block p {
   margin-top: 0;
@@ -10084,14 +10102,14 @@ img.emoji {
   overflow: hidden;
 }
 #uploading .s-upload-progress-item .s-upload-info-block .s-upload-shared-to {
-  margin: 10px 0 0 0;
+  margin: 5px 0 0 0;
   padding: 0;
 }
 #uploading .s-upload-progress-item .s-upload-info-block .s-upload-shared-to li {
   list-style: none;
   display: inline-block;
-  width: 20px;
-  height: 20px;
+  width: 16px;
+  height: 16px;
   margin-right: 2px;
 }
 #uploading .s-offline-uploading {
@@ -10099,6 +10117,20 @@ img.emoji {
 }
 #uploading .s-offline-uploading .ui-btn-inner {
   overflow: visible;
+}
+.s-add-services .s-connect-status {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  height: 24px;
+  margin-top: -12px;
+  line-height: 24px;
+}
+.s-add-services .s-connect-status .ui-icon {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  line-height: 24px;
 }
 #my-account .ui-li-divider {
   border-top-width: 1px ;
