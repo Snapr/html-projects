@@ -9373,6 +9373,21 @@ img.emoji {
   text-transform: uppercase;
   margin: 0 0 0 -8px;
 }
+.x-list .s-feed-photo .s-image-details .s-featured {
+  color: #ff42b3;
+  font-weight: bold;
+  font-size: 13px;
+  text-transform: lowercase;
+  padding-left: 16px;
+  position: relative;
+  margin: 0;
+}
+.x-list .s-feed-photo .s-image-details .s-featured .ui-icon {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  margin-top: -9px;
+}
 .x-list .s-feed-photo .s-image-details .s-action-buttons {
   border-top: solid #e6e6e6 1px;
   margin-top: 5px;
