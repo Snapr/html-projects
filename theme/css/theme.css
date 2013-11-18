@@ -3671,7 +3671,7 @@ for Android 4.1 */
     clear: left;
   }
 }
-/* panel */
+/* Panel */
 .ui-panel {
   width: 17em;
   min-height: 100%;
@@ -3690,7 +3690,7 @@ for Android 4.1 */
 .ui-panel-fixed {
   position: fixed;
   bottom: 0;
-  /* fixes gap on Chrome for Android */
+  /* Fixes gap on Chrome for Android */
 
   padding-bottom: 0;
 }
@@ -3702,15 +3702,14 @@ for Android 4.1 */
 }
 .ui-panel-display-overlay {
   z-index: 1001;
-  /* fixed toolbars have z-index 1000 */
+  /* Fixed toolbars have z-index 1000 */
 
 }
 .ui-panel-inner {
   padding: 10px;
 }
-/* container, page and wrapper */
-.ui-panel-page-container,
-.ui-panel-page-container .ui-page.ui-page-active {
+/* Container, page and wrapper */
+.ui-panel-page-container {
   overflow-x: visible;
 }
 .ui-panel-page-container-themed .ui-page-active {
@@ -3723,41 +3722,53 @@ for Android 4.1 */
   overflow-x: hidden;
   z-index: 999;
 }
-/* fixed toolbars */
+/* Fixed toolbars */
 .ui-panel-fixed-toolbar {
   overflow-x: hidden;
 }
-/* dismiss */
+/* Dismiss */
 .ui-panel-dismiss {
   position: absolute;
   top: 0;
   left: 0;
+  right: 0;
   height: 100%;
-  width: 100%;
   z-index: 1002;
   display: none;
 }
 .ui-panel-dismiss-open {
   display: block;
 }
-/* animate class is added to panel, wrapper and fixed toolbars */
+/* Animate class is added to panel, wrapper and fixed toolbars */
 .ui-panel-animate {
   -webkit-transition: -webkit-transform 300ms ease;
   -moz-transition: -moz-transform 300ms ease;
   transition: transform 300ms ease;
 }
-/* hardware acceleration for smoother transitions on WebKit browsers */
-.ui-panel-animate.ui-panel-page-container,
+/* Fix for Windows Phone issue #6349: unset the transition for transforms in case of fixed toolbars. */
+@media screen and (max-device-width: 768px) {
+  .ui-page-header-fixed .ui-panel-animate.ui-panel-wrapper,
+  .ui-page-footer-fixed .ui-panel-animate.ui-panel-wrapper,
+  .ui-panel-animate.ui-panel-fixed-toolbar {
+    -ms-transition: none;
+  }
+  /* We need a transitionend event ... */
+  .ui-panel-animate.ui-panel-fixed-toolbar {
+    -ms-transition: -ms-transform 1ms;
+    -ms-transform: rotate(0deg);
+  }
+}
+/* Hardware acceleration for smoother transitions on WebKit browsers */
 .ui-panel-animate.ui-panel:not(.ui-panel-display-reveal) {
   -webkit-backface-visibility: hidden;
   -webkit-transform: translate3d(0, 0, 0);
 }
-/* positioning: panel */
-/* panel left  */
+/* Panel positioning (for overlay and push) */
+/* Panel left closed */
 .ui-panel-position-left {
   left: -17em;
 }
-/* animated: panel left (for overlay and push) */
+/* Panel left closed animated */
 .ui-panel-animate.ui-panel-position-left.ui-panel-display-overlay,
 .ui-panel-animate.ui-panel-position-left.ui-panel-display-push {
   left: 0;
@@ -3765,23 +3776,23 @@ for Android 4.1 */
   -moz-transform: translate3d(-17em, 0, 0);
   transform: translate3d(-17em, 0, 0);
 }
-/* panel left open */
+/* Panel left open */
 .ui-panel-position-left.ui-panel-display-reveal,
 .ui-panel-open.ui-panel-position-left {
   left: 0;
 }
-/* animated: panel left open (for overlay and push) */
+/* Panel left open animated */
 .ui-panel-animate.ui-panel-open.ui-panel-position-left.ui-panel-display-overlay,
 .ui-panel-animate.ui-panel-open.ui-panel-position-left.ui-panel-display-push {
   -webkit-transform: translate3d(0, 0, 0);
   transform: translate3d(0, 0, 0);
   -moz-transform: none;
 }
-/* panel right */
+/* Panel right closed */
 .ui-panel-position-right {
   right: -17em;
 }
-/* animated: panel right (for overlay and push) */
+/* Panel right closed animated */
 .ui-panel-animate.ui-panel-position-right.ui-panel-display-overlay,
 .ui-panel-animate.ui-panel-position-right.ui-panel-display-push {
   right: 0;
@@ -3789,52 +3800,51 @@ for Android 4.1 */
   -moz-transform: translate3d(17em, 0, 0);
   transform: translate3d(17em, 0, 0);
 }
-/* panel right open */
+/* Panel right open */
 .ui-panel-position-right.ui-panel-display-reveal,
 .ui-panel-position-right.ui-panel-open {
   right: 0;
 }
-/* animated: panel right open (for overlay and push) */
+/* Panel right open animated */
 .ui-panel-animate.ui-panel-open.ui-panel-position-right.ui-panel-display-overlay,
 .ui-panel-animate.ui-panel-open.ui-panel-position-right.ui-panel-display-push {
   -webkit-transform: translate3d(0, 0, 0);
   transform: translate3d(0, 0, 0);
   -moz-transform: none;
 }
-/* positioning: pages, fixed toolbars and dismiss */
-/* panel left open */
-.ui-panel-page-content-position-left,
-.ui-panel-dismiss-open.ui-panel-dismiss-position-left {
+/* Wrapper and fixed toolbars positioning (for reveal and push) */
+/* Panel left open */
+.ui-panel-page-content-position-left {
   left: 17em;
   right: -17em;
 }
-/* animated: panel left open (for reveal and push) */
-.ui-panel-animate.ui-panel-page-content-position-left.ui-panel-page-content-display-reveal,
-.ui-panel-animate.ui-panel-page-content-position-left.ui-panel-page-content-display-push {
+/* Panel left open animated */
+.ui-panel-animate.ui-panel-page-content-position-left {
   left: 0;
   right: 0;
   -webkit-transform: translate3d(17em, 0, 0);
   -moz-transform: translate3d(17em, 0, 0);
   transform: translate3d(17em, 0, 0);
 }
-/* panel right open */
-.ui-panel-page-content-position-right,
-.ui-panel-dismiss-open.ui-panel-dismiss-position-right {
+/* Panel right open */
+.ui-panel-page-content-position-right {
   left: -17em;
   right: 17em;
 }
-/* animated: panel right open (for reveal and push) */
-.ui-panel-animate.ui-panel-page-content-position-right.ui-panel-page-content-display-reveal,
-.ui-panel-animate.ui-panel-page-content-position-right.ui-panel-page-content-display-push {
+/* Panel right open animated */
+.ui-panel-animate.ui-panel-page-content-position-right {
   left: 0;
   right: 0;
   -webkit-transform: translate3d(-17em, 0, 0);
   -moz-transform: translate3d(-17em, 0, 0);
   transform: translate3d(-17em, 0, 0);
 }
-/* negate "panel left/right open" for overlay */
-.ui-panel-page-content-display-overlay {
-  left: 0;
+/* Dismiss model open */
+.ui-panel-dismiss-open.ui-panel-dismiss-position-left {
+  left: 17em;
+}
+.ui-panel-dismiss-open.ui-panel-dismiss-position-right {
+  right: 17em;
 }
 /* shadows and borders */
 .ui-panel-display-reveal:after {
@@ -3882,18 +3892,15 @@ for Android 4.1 */
   margin-right: 0;
   width: auto;
 }
-/* wrap on wide viewports once open */
+/* Responsive: wrap on wide viewports once open */
 @media (min-width: 55em) {
-  .ui-responsive-panel .ui-panel-page-content-open.ui-panel-page-content-position-left.ui-panel-page-content-display-push,
-  .ui-responsive-panel .ui-panel-page-content-open.ui-panel-page-content-position-left.ui-panel-page-content-display-reveal {
+  .ui-responsive-panel .ui-panel-page-content-open.ui-panel-page-content-position-left {
     margin-right: 17em;
   }
-  .ui-responsive-panel .ui-panel-page-content-open.ui-panel-page-content-position-right.ui-panel-page-content-display-push,
-  .ui-responsive-panel .ui-panel-page-content-open.ui-panel-page-content-position-right.ui-panel-page-content-display-reveal {
+  .ui-responsive-panel .ui-panel-page-content-open.ui-panel-page-content-position-right {
     margin-left: 17em;
   }
-  .ui-responsive-panel .ui-panel-page-content-open.ui-panel-page-content-display-push,
-  .ui-responsive-panel .ui-panel-page-content-open.ui-panel-page-content-display-reveal {
+  .ui-responsive-panel .ui-panel-page-content-open {
     width: auto;
   }
   .ui-responsive-panel .ui-panel-dismiss-display-push,
@@ -8824,6 +8831,13 @@ textarea {
   -webkit-box-shadow: none;
   box-shadow: none;
 }
+.ui-listview-inset > .ui-li-static > textarea {
+  border: none;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  resize: none;
+}
 .x-validating,
 .x-invalid,
 .x-valid {
@@ -8934,7 +8948,7 @@ div[data-role="header"] *[data-rel="back"] {
   line-height: 63px;
   height: 60px;
   vertical-align: middle;
-  max-width: 52px;
+  max-width: 56px;
   text-overflow: ellipsis;
   text-align: left;
 }
@@ -9250,6 +9264,37 @@ img.emoji {
 .ui-panel-inner .ui-listview .ui-btn.ui-btn-active:after {
   color: #ff42b3;
 }
+/* shadows and borders */
+.ui-panel-display-reveal:after {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 4px;
+  content: " ";
+  display: block;
+  -moz-box-shadow: inset -2px 0 2px rgba(0, 0, 0, 0.15);
+  -webkit-box-shadow: inset -2px 0 2px rgba(0, 0, 0, 0.15);
+  box-shadow: inset -2px 0 2px rgba(0, 0, 0, 0.15);
+}
+.ui-panel-position-right.ui-panel-display-reveal:after {
+  right: auto;
+  left: 0;
+  -moz-box-shadow: inset 2px 0 2px rgba(0, 0, 0, 0.15);
+  -webkit-box-shadow: inset 2px 0 2px rgba(0, 0, 0, 0.15);
+  box-shadow: inset 2px 0 2px rgba(0, 0, 0, 0.15);
+}
+/* remove jQm ones */
+.ui-panel-display-reveal {
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+.ui-panel-position-right.ui-panel-display-reveal {
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
 .s-more-menu {
   z-index: 900;
 }
@@ -9377,6 +9422,32 @@ img.emoji {
   opacity: 0.5;
   filter: alpha(opacity=50);
 }
+.s-reactions-list .s-comment-item .s-comment,
+.s-reactions-list .s-like-item .s-comment,
+.s-reactions-list .s-comment-item .s-like,
+.s-reactions-list .s-like-item .s-like {
+  font-size: 15px;
+  color: #999999;
+  padding-left: 40px;
+  padding-right: 20px;
+  position: relative;
+  min-height: 30px;
+  line-height: 1.2;
+}
+.s-reactions-list .s-comment-item .s-comment .s-username,
+.s-reactions-list .s-like-item .s-comment .s-username,
+.s-reactions-list .s-comment-item .s-like .s-username,
+.s-reactions-list .s-like-item .s-like .s-username {
+  color: #57caef;
+}
+.s-reactions-list .s-comment-item .s-comment .s-avatar-x-small,
+.s-reactions-list .s-like-item .s-comment .s-avatar-x-small,
+.s-reactions-list .s-comment-item .s-like .s-avatar-x-small,
+.s-reactions-list .s-like-item .s-like .s-avatar-x-small {
+  position: absolute;
+  top: 10px;
+  left: 0;
+}
 #user .ui-header h1 .s-long-text {
   font-size: 20px;
 }
@@ -9413,6 +9484,9 @@ img.emoji {
 .s-profile-details h3 {
   color: #57caef;
   border-bottom: solid 1px #57caef;
+}
+.s-profile-details p {
+  padding-right: 20px;
 }
 .s-profile-details .s-social-links {
   border-bottom: solid 1px #e6e6e6;
@@ -9589,6 +9663,27 @@ img.emoji {
   top: -6px;
   text-transform: lowercase;
 }
+.s-comp-promo {
+  margin: -10px -10px 0 -10px;
+  padding: 10px;
+  padding-left: 48px;
+  position: relative;
+}
+.s-comp-promo h4,
+.s-comp-promo p,
+.s-comp-promo small {
+  margin: 0;
+  line-height: 1.2;
+}
+.s-comp-promo .ui-icon-large-certificate.large-icon {
+  position: absolute;
+  left: 0;
+  top: 10px;
+}
+.s-comp-promo .ui-icon-large-certificate.large-icon:after {
+  font-size: 48px !important;
+  line-height: 48px !important;
+}
 .s-competition .s-comp-banner {
   margin: 0 -10px 10px -10px;
 }
@@ -9643,9 +9738,7 @@ img.emoji {
   border-bottom: solid 1px #e6e6e6;
   margin-top: 10px;
   padding-bottom: 10px;
-}
-.s-activity-streams .s-activity-item:last-child {
-  border-bottom: none;
+  line-height: 1.2;
 }
 .s-activity-streams .s-activity-item .s-activity-desc {
   color: #999999;
@@ -9653,9 +9746,15 @@ img.emoji {
 .s-activity-streams .s-activity-item .s-avatar {
   vertical-align: top;
 }
+.s-activity-streams .non-photo-activity .s-activity-item:last-child {
+  margin-bottom: 10px;
+}
 .s-activity-streams .s-photo-activity .ui-li-divider {
   padding-left: 0;
   padding-top: 0;
+}
+.s-activity-streams .s-photo-activity .s-activity-item:last-child {
+  border-bottom: none;
 }
 .s-activity-streams .s-photo-activity .s-activity-image-item {
   position: relative;
@@ -9676,7 +9775,6 @@ img.emoji {
   margin-bottom: 5px;
   padding-left: 45px;
   min-height: 40px;
-  line-height: 1.2;
 }
 .s-activity-streams .s-photo-activity .s-activity-image-item .s-comments-list .s-comment-item .s-comment-avatar {
   position: absolute;
@@ -9696,11 +9794,18 @@ img.emoji {
 }
 .s-activity-streams .s-activity-follow-item {
   min-height: 40px;
+  padding-left: 50px;
+  position: relative;
   display: block;
+}
+.s-activity-streams .s-activity-follow-item .s-avatar {
+  position: absolute;
+  left: 0;
+  top: 0;
 }
 .s-activity-streams .s-activity-follow-item .s-username,
 .s-activity-streams .s-activity-follow-item .s-activity-desc {
-  display: inline-block;
+  display: inline;
   margin-bottom: 0;
 }
 .s-explore-images > .ui-listview,
@@ -10131,6 +10236,25 @@ img.emoji {
   width: 24px;
   height: 24px;
   line-height: 24px;
+}
+.s-message-input .s-link-preview-body {
+  padding-left: 110px;
+  min-height: 100px;
+  position: relative;
+  line-height: 1.3;
+}
+.s-message-input .s-link-preview-body .s-thumb-image {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+.s-message-input .s-link-preview-body .s-message {
+  min-height: 100px;
+}
+.s-message-input .s-link-preview-body p,
+.s-message-input .s-link-preview-body a {
+  padding: 0!important;
+  margin: 0 ;
 }
 #my-account .ui-li-divider {
   border-top-width: 1px ;
