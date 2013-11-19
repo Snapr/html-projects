@@ -12,8 +12,11 @@
             // Hack for fullscreen homescreen webapp on iPhone 5
             if (window.screen.height==568) {
                 document.querySelector("meta[name=viewport]").content = document.querySelector("meta[name=viewport]").content
-                .replace('device-width', '320.1')
-                .replace('device-height', '548');
+                    .replace('device-width', '320.1')
+                    .replace('device-height', '548');
+            }else if (window.screen.height==480) {
+                document.querySelector("meta[name=viewport]").content = document.querySelector("meta[name=viewport]").content
+                    .replace('device-height', '460');
             }
         </script>
 
