@@ -4170,8 +4170,8 @@ html .ui-btn.ui-icon-checkbox-on:after {
 .ui-state-disabled,
 button[disabled],
 .ui-select .ui-btn.ui-state-disabled {
-  opacity: 0.003;
-  filter: alpha(opacity=0.3);
+  opacity: 0.3;
+  filter: alpha(opacity=30);
   cursor: default !important;
   pointer-events: none;
 }
@@ -8289,6 +8289,16 @@ ul li {
 .s-padding {
   padding-bottom: 60px;
 }
+.s-icon-left {
+  padding-left: 21px;
+  position: relative;
+}
+.s-icon-left .ui-icon {
+  position: absolute;
+  top: 50%;
+  margin-top: -9px;
+  left: 0;
+}
 div[data-role="header"],
 div[data-role="footer"],
 .s-panel-header {
@@ -8406,6 +8416,11 @@ div[data-tab-bar="false"] {
 }
 .s-tab-bar {
   overflow: visible!important;
+}
+.s-tab-bar .s-camera-button.ui-icon-camera:after {
+  margin-top: -18px;
+  margin-left: -15px;
+  font-size: 30px !important;
 }
 .s-offline-bar {
   display: none;
@@ -9375,18 +9390,8 @@ img.emoji {
 }
 .x-list .s-feed-photo .s-image-details .s-featured {
   color: #ff42b3;
-  font-weight: bold;
-  font-size: 13px;
   text-transform: lowercase;
-  padding-left: 16px;
-  position: relative;
   margin: 0;
-}
-.x-list .s-feed-photo .s-image-details .s-featured .ui-icon {
-  position: absolute;
-  top: 50%;
-  left: 0;
-  margin-top: -9px;
 }
 .x-list .s-feed-photo .s-image-details .s-action-buttons {
   border-top: solid #e6e6e6 1px;
@@ -9480,6 +9485,7 @@ img.emoji {
 }
 .s-user-header .s-avatar-large {
   border: solid #ffffff 5px;
+  background-color: #ffffff;
   margin: 10px auto;
   -webkit-border-radius: 90px;
   -moz-border-radius: 90px;
@@ -9591,6 +9597,14 @@ img.emoji {
   .s-android-marketplace .s-platform-logo {
     background-image: url("../../app/css/gfx/2x/android-logo.png");
   }
+}
+#share .ui-header,
+#share-preview .ui-header {
+  background-color: transparent;
+}
+#share .ui-header .ui-btn,
+#share-preview .ui-header .ui-btn {
+  background-color: transparent;
 }
 .s-image-textarea {
   position: relative;
@@ -10320,7 +10334,8 @@ img.emoji {
 #my-account .ui-collapsible-set .ui-collapsible-content .ui-listview {
   margin-left: -10px;
 }
-#map div[data-role="content"] {
+#map > div[data-role="content"],
+#map .ui-panel-wrapper > div[data-role="content"] {
   padding: 0;
 }
 #map .s-close-button {
@@ -10353,6 +10368,13 @@ img.emoji {
   bottom: 0;
   left: 0;
   width: 100%;
+}
+#map .s-map-base .s-map-string {
+  padding-right: 40px;
+}
+#map .s-map-base .s-map-string .ui-icon-time {
+  position: relative;
+  top: -3px;
 }
 #map.x-loading .s-map-base .s-bg-load-bar {
   display: block;
@@ -10509,12 +10531,35 @@ img.emoji {
 .s-photo-map .s-disambiguation {
   position: absolute;
   display: none;
-  top: 20px;
-  right: 20px;
+  top: 70px;
+  right: 10px;
   z-index: 100;
   min-height: 0px!important;
   overflow: visible;
   width: 220px;
+}
+.s-photo-map .s-disambiguation:after {
+  width: 0;
+  height: 0;
+  display: inline-block;
+  content: "&rarr;";
+  text-indent: -99999px;
+  vertical-align: top;
+  margin-top: -10px;
+  margin-right: -10px;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-left: 10px solid #ffffff;
+  position: absolute;
+  right: 0;
+  top: 40px;
+}
+.s-photo-map .s-disambiguation .ui-listview {
+  margin-left: -10px;
+  margin-bottom: 10px;
+}
+.s-photo-map .s-disambiguation .ui-listview .ui-btn {
+  font-size: 15px;
 }
 .s-map-search .s-map-filters > li {
   padding: 0!important;
