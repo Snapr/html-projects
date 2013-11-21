@@ -265,6 +265,7 @@ div.ui-mobile-viewport {
 /* Make buttons in toolbars default to mini and inline. */
 .ui-header .ui-btn,
 .ui-footer .ui-btn {
+  letter-spacing: -0.3px;
   font-family: HelveticaNeue-Light, Helvetica, Arial, sans-serif;
   font-weight: bold;
   font-size: 13px;
@@ -275,6 +276,7 @@ div.ui-mobile-viewport {
 /* To ensure same top and left/right position when ui-btn-left/right are added to something other than buttons. */
 .ui-header .ui-btn-left,
 .ui-header .ui-btn-right {
+  letter-spacing: -0.3px;
   font-family: HelveticaNeue-Light, Helvetica, Arial, sans-serif;
   font-weight: bold;
   font-size: 13px;
@@ -350,6 +352,7 @@ div.ui-mobile-viewport {
 .ui-mini .ui-btn,
 .ui-mini.ui-btn {
   font-size: inherit;
+  letter-spacing: -0.3px;
   font-family: HelveticaNeue-Light, Helvetica, Arial, sans-serif;
   font-weight: bold;
   font-size: 13px;
@@ -9369,6 +9372,9 @@ img.emoji {
 }
 .x-list .s-feed-photo .s-image-details .s-username {
   display: block;
+  font-weight: bold;
+  letter-spacing: -0.6px;
+  -webkit-font-smoothing: antialiased;
   font-family: HelveticaNeue-Light, Helvetica, Arial, sans-serif;
   font-size: 15px;
   text-transform: none;
@@ -10448,6 +10454,7 @@ img.emoji {
 }
 .s-photo-map .s-map-venue .s-venue-label .s-venue-label-text {
   color: #cccccc;
+  letter-spacing: -0.3px;
   font-family: HelveticaNeue-Light, Helvetica, Arial, sans-serif;
   font-weight: bold;
   line-height: 13px;
