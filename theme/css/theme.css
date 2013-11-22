@@ -4822,7 +4822,7 @@ html head + body .ui-navbar .ui-btn.ui-btn-a.ui-btn-active:after {
 .ui-page-theme-a .ui-input-text input {
   background-color: #ffffff;
   border: solid 1px #e6e6e6;
-  color: #999999;
+  color: #666666;
   text-shadow: none;
   -moz-box-shadow: none;
   -webkit-box-shadow: none;
@@ -4838,7 +4838,7 @@ html body textarea.ui-input-text.ui-body-a,
 html body .ui-body-a.ui-input-text input {
   background-color: #ffffff;
   border: solid 1px #e6e6e6;
-  color: #999999;
+  color: #666666;
   text-shadow: none;
   -moz-box-shadow: none;
   -webkit-box-shadow: none;
@@ -5506,7 +5506,7 @@ html head + body .ui-navbar .ui-btn.ui-btn-b.ui-btn-active:after {
 .ui-page-theme-b .ui-input-text input {
   background-color: rgba(255, 255, 255, 0.1);
   border: solid 1px #cccccc;
-  color: #999999;
+  color: #666666;
   text-shadow: none;
   -moz-box-shadow: inset 0 2px 2px #e6e6e6;
   -webkit-box-shadow: inset 0 2px 2px #e6e6e6;
@@ -5522,7 +5522,7 @@ html body textarea.ui-input-text.ui-body-b,
 html body .ui-body-b.ui-input-text input {
   background-color: rgba(255, 255, 255, 0.1);
   border: solid 1px #cccccc;
-  color: #999999;
+  color: #666666;
   text-shadow: none;
   -moz-box-shadow: inset 0 2px 2px #e6e6e6;
   -webkit-box-shadow: inset 0 2px 2px #e6e6e6;
@@ -8170,7 +8170,7 @@ html head + body .ui-navbar .ui-btn.ui-btn-f.ui-btn-active:after {
 .ui-page-theme-f .ui-input-text input {
   background-color: rgba(0, 0, 0, 0);
   border: solid 1px #cccccc;
-  color: #999999;
+  color: #666666;
   text-shadow: none;
   -moz-box-shadow: inset 0 2px 2px #e6e6e6;
   -webkit-box-shadow: inset 0 2px 2px #e6e6e6;
@@ -8186,7 +8186,7 @@ html body textarea.ui-input-text.ui-body-f,
 html body .ui-body-f.ui-input-text input {
   background-color: rgba(0, 0, 0, 0);
   border: solid 1px #cccccc;
-  color: #999999;
+  color: #666666;
   text-shadow: none;
   -moz-box-shadow: inset 0 2px 2px #e6e6e6;
   -webkit-box-shadow: inset 0 2px 2px #e6e6e6;
