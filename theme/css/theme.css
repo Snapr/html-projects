@@ -9791,39 +9791,39 @@ img.emoji {
 .s-activity-streams .s-photo-activity .s-activity-item:last-child {
   border-bottom: none;
 }
-.s-activity-streams .s-photo-activity .s-activity-image-item {
+.s-activity-streams .s-activity-image-item {
   position: relative;
   min-height: 100px;
   padding-left: 110px;
   margin-bottom: 10px;
 }
-.s-activity-streams .s-photo-activity .s-activity-image-item .s-image-link {
+.s-activity-streams .s-activity-image-item .s-image-link {
   position: absolute;
   left: 0;
   top: 0;
 }
-.s-activity-streams .s-photo-activity .s-activity-image-item .s-comments-list {
+.s-activity-streams .s-activity-image-item .s-comments-list {
   margin-bottom: 10px;
 }
-.s-activity-streams .s-photo-activity .s-activity-image-item .s-comments-list .s-comment-item {
+.s-activity-streams .s-activity-image-item .s-comments-list .s-comment-item {
   position: relative;
   margin-bottom: 5px;
   padding-left: 45px;
   min-height: 40px;
 }
-.s-activity-streams .s-photo-activity .s-activity-image-item .s-comments-list .s-comment-item .s-comment-avatar {
+.s-activity-streams .s-activity-image-item .s-comments-list .s-comment-item .s-comment-avatar {
   position: absolute;
   left: 0;
   top: 0;
 }
-.s-activity-streams .s-photo-activity .s-activity-image-item .s-like-icons-list,
-.s-activity-streams .s-photo-activity .s-activity-image-item .s-icons-list,
-.s-activity-streams .s-photo-activity .s-activity-image-item p {
+.s-activity-streams .s-activity-image-item .s-like-icons-list,
+.s-activity-streams .s-activity-image-item .s-icons-list,
+.s-activity-streams .s-activity-image-item p {
   display: inline-block;
   vertical-align: top;
   margin: 0;
 }
-.s-activity-streams .s-photo-activity .s-activity-image-item .s-like-icon {
+.s-activity-streams .s-activity-image-item .s-like-icon {
   margin-bottom: 10px;
   display: inline-block;
 }
