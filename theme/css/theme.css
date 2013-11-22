@@ -9684,6 +9684,12 @@ img.emoji {
   left: 0!important;
   top: 10px !important;
 }
+.s-venue-list li > a .s-fsq-venue-icon {
+  background-color: #e6e6e6;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
 .s-comps-list {
   margin: 0 -6px;
 }
