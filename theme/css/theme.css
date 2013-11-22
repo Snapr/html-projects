@@ -9313,6 +9313,12 @@ img.emoji {
   -webkit-box-shadow: none;
   box-shadow: none;
 }
+.ui-panel-wrapper.ui-panel-page-content-open {
+  position: fixed;
+}
+.s-side-menu-main {
+  position: fixed;
+}
 .s-more-menu {
   z-index: 900;
 }
