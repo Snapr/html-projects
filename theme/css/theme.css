@@ -9820,6 +9820,12 @@ img.emoji {
 .s-side-menu-main {
   position: fixed;
 }
+#map .ui-panel-wrapper.ui-panel-page-content-open {
+  position: auto;
+}
+#map .s-side-menu-main {
+  position: auto;
+}
 .s-more-menu {
   z-index: 900;
 }
