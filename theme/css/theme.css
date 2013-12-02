@@ -11141,7 +11141,7 @@ img.emoji {
     background-image: url("../../theme/css/gfx/2x/tk-behind-icon.png");
   }
 }
-.s-app-logo {
+.ui-footer .s-app-logo {
   width: 60px;
   height: 60px;
   overflow: hidden;
@@ -11158,12 +11158,12 @@ img.emoji {
   background-size: 60px 60px !important;
 }
 @media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min--moz-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5), only screen and (min-resolution: 140dpi), only screen and (min-resolution: 1.5dppx) {
-  .s-app-logo {
+  .ui-footer .s-app-logo {
     background-image: url("../../theme/css/gfx/1.5x/app-logo.png");
   }
 }
 @media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx) {
-  .s-app-logo {
+  .ui-footer .s-app-logo {
     background-image: url("../../theme/css/gfx/2x/app-logo.png");
   }
 }
