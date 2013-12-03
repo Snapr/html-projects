@@ -1,0 +1,30 @@
+<div data-role="footer" data-position="fixed" data-ajax="false" data-tap-toggle="false" data-theme="d" class="s-tab-bar">
+
+	<!-- Shows when there is a connection error -->
+    <div class="s-offline-bar x-offline-bar hide">
+        <%= T('Connection Error!') %>
+    </div>	
+	
+	<!-- Shows when data is updating via background load -->
+    <div class="s-bg-load-bar">
+        <span class="s-load-bar-animate"></span>
+    </div>
+
+    <div class="ui-btn-left">
+        <a class="x-menu-button hero-style large-icon" data-icon="large-bars" data-iconpos="notext" data-role="button" data-corners="false">
+            <%= T('Menu') %>
+        </a>
+    </div>
+
+    <h1>
+        <label class="s-app-logo x-launch-camera-options" for="x-web-upload"><%= config.get('app_name') %></label>
+        <% if(auth.has('access_token')){ %>
+            <a class="s-btn-logo s-tabbar-activity x-activity-count hide" href="#/activity/" data-role="button" data-mini="true" data-theme="e">
+             </a>
+         <% } %>
+    </h1>
+
+    <label data-iconpos="no-text" class="x-launch-camera-options ui-btn-right s-camera-button ui-btn large-icon ui-icon-camera ui-btn-icon-notext" for="x-web-upload">
+            <%= T('Share') %>
+    </label>
+</div>
