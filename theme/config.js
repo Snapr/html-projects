@@ -415,6 +415,11 @@ return {
                 list_item_template: theme_templates_path + 'list_item'
             }
         },
+        {
+            name: 'share',
+            view: theme_views_path + 'share',
+            template: theme_templates_path + 'share',
+        },
         // {
         //     name: 'welcome',
         //     view: 'welcome',
