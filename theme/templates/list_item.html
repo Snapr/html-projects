@@ -34,12 +34,15 @@
 
     <ul class="x-comments s-comments">
         <% _.each(item.get('latest_comments'), function(comment){ %>
-            <li><a href="#/user/?username=<%= comment.user %>"><%= comment.user %></a> <%= string_utils.comment_links( comment.comment ) %></li>
+            <li><a class="commenter" href="#/user/?username=<%= comment.user %>"><%= comment.user %></a> <%= string_utils.comment_links( comment.comment ) %></li>
         <% }) %>
         <% if(item.get('comments') > 10){ %><li><a class="x-show-comments"><%= T('Show more comments') %></a></li><% } %>
     </ul>
 
     <div class="s-action-buttons x-action-buttons">
+
+        <!-- Take It button -->
+        <a data-role="button" data-theme="c" data-mini="true" data-inline="true" data-icon="circle-arrow-top" data-inline="true" data-iconpos="left" class="take-it">Take it</a>
 
         <!-- Comment button -->
         <a data-role="button" data-theme="c" data-mini="true" data-inline="true" data-icon="comments" data-inline="true" data-iconpos="notext" class="x-comment-button">Comment</a>

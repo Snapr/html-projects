@@ -285,8 +285,8 @@ define(
             "click .x-more-button": "show_more_menu",
             "click .x-show-comments": "show_comments",
             "click .x-goto-map": "goto_map",
-            "click .x-goto-spot": "goto_spot"
-
+            "click .x-goto-spot": "goto_spot",
+            "click .take-it": "take_it",
         },
 
         render: function(sections){
@@ -347,6 +347,27 @@ define(
 
             return city;
         },
+
+        take_it : function(){ var self = this;
+                    //proof, add '#taken' to comment area before commenting 
+                    var commentArea = self.$('.s-comment-area');
+                    //avoid quick double posts
+                    var lastCommenter = self.$('.commenter').last().html();
+                    var lastComment = self.$('.x-comments li').children().last().html(); //problem when show 'more comments'
+                    if (lastComment !== "#taken")  { //only comparing last comment
+                        $(commentArea).find('textarea').val('#taken');
+                        this.comment();
+                    }else {
+                        //last comment was #taken but from another user
+                        if (lastCommenter !== auth.get('snapr_user')) {
+                            $(commentArea).find('textarea').val('#taken');
+                            this.comment();
+                        }else{ //user already just took the item
+                            alert("It seems you've already taken this junk.");
+                        }
+                    }
+ 
+            },
 
         show_comments: function(){  var self = this;
             self.show_reactions('comments');
