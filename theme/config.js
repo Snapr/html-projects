@@ -195,6 +195,59 @@ return {
             }
         ],
 
+          side_menu_options: [
+            {
+                url: '#/browse/',
+                icon: "large-film",
+                label: 'Browse',
+                slug: 'browse'
+            },
+            {
+                url: '#/browse?not_tagged=taken',
+                icon: "large-film",
+                label: 'Not Taken',
+                slug: 'not-taken'
+            },
+            {
+                url: '#/map/',
+                icon: "large-google_maps",
+                label: 'Map',
+                slug: 'map'
+            },
+            {
+                url: '#/explore/',
+                icon: "large-search",
+                label: 'Search',
+                slug: 'search'
+            },
+            {
+                url: '#/browse?area=50,-1,52,1',
+                icon: "large-binoculars",
+                label: 'London',
+                slug: 'london'
+            },
+            {
+                url: '#/browse?tag=metal',
+                icon: "large-search",
+                label: '#Metal',
+                slug: 'metal'
+            },
+            {
+                url: '#/logout/',
+                icon: "large-user",
+                label: 'Log Out',
+                slug: 'logout',
+                logged_in: true  // only show for users logged in
+            },
+            {
+                url: '#/welcome/',
+                icon: "large-log_in",
+                label: 'Login',
+                slug: 'login',
+                logged_in: false  // only show for users not logged in
+            }
+        ],
+
         default_feed_query: {rating:'2', min_date:'-30d'}
 
         //!--  controls to show in feed view

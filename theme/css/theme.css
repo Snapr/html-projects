@@ -4278,6 +4278,11 @@ html body .ui-group-theme-a .ui-bar-inherit.ui-li-divider small {
   color: #666666;
   text-shadow: none;
 }
+.ui-overlay-a .ui-toolbar-back-btn,
+.ui-page-theme-a .ui-toolbar-back-btn,
+.ui-page-theme-a .ui-panel-wrapper .ui-toolbar-back-btn {
+  display: none !important;
+}
 .ui-overlay-a .s-image-details,
 .ui-page-theme-a .s-image-details,
 .ui-page-theme-a .ui-panel-wrapper .s-image-details {
@@ -5627,6 +5632,11 @@ html body .ui-group-theme-c .ui-bar-inherit.ui-li-divider small {
   color: #666666;
   text-shadow: none;
 }
+.ui-overlay-c .ui-toolbar-back-btn,
+.ui-page-theme-c .ui-toolbar-back-btn,
+.ui-page-theme-c .ui-panel-wrapper .ui-toolbar-back-btn {
+  display: none !important;
+}
 .ui-overlay-c .s-image-details,
 .ui-page-theme-c .s-image-details,
 .ui-page-theme-c .ui-panel-wrapper .s-image-details {
@@ -6292,6 +6302,11 @@ html body .ui-group-theme-d .ui-bar-inherit.ui-li-divider small {
   color: #ffffff;
   text-shadow: none;
 }
+.ui-overlay-d .ui-toolbar-back-btn,
+.ui-page-theme-d .ui-toolbar-back-btn,
+.ui-page-theme-d .ui-panel-wrapper .ui-toolbar-back-btn {
+  display: none !important;
+}
 .ui-overlay-d .s-image-details,
 .ui-page-theme-d .s-image-details,
 .ui-page-theme-d .ui-panel-wrapper .s-image-details {
@@ -6956,6 +6971,11 @@ html body .ui-group-theme-e .ui-bar-inherit.ui-li-divider small {
   border-color: #ff42b3;
   color: #ffffff;
   text-shadow: none;
+}
+.ui-overlay-e .ui-toolbar-back-btn,
+.ui-page-theme-e .ui-toolbar-back-btn,
+.ui-page-theme-e .ui-panel-wrapper .ui-toolbar-back-btn {
+  display: none !important;
 }
 .ui-overlay-e .s-image-details,
 .ui-page-theme-e .s-image-details,
