@@ -282,17 +282,11 @@ define(
 
         events: {
             "click .x-comment-button": "show_comment_form",
-            "click .x-share-button": "show_share_menu",
             "click .x-more-button": "show_more_menu",
-
-            "click .x-show-favorites": "show_favorites",
             "click .x-show-comments": "show_comments",
-
             "click .x-goto-map": "goto_map",
-            "click .x-goto-spot": "goto_spot",
+            "click .x-goto-spot": "goto_spot"
 
-            "click .x-favorite": "toggle_favorite",
-            "dblclick .x-photo": "favorite"
         },
 
         render: function(sections){
@@ -322,10 +316,6 @@ define(
             this.more_menu = this.$('.x-more-menu');
             this.more_menu.on('click', '.x-flag', _.bind(this.flag, this));
             this.more_menu.on('click', '.x-delete', _.bind(this.delete, this));
-
-            this.share_menu = this.$('.x-share-menu');
-            this.share_menu.on('change', '.x-service-select', this.store_share_settings);
-            this.share_menu.on('click', '.x-submit-button', _.bind(this.share, this));
 
             this.comment_form = this.$('.x-comment-form');
             this.comment_form.on('click', '.x-submit-button', _.bind(this.comment, this));
@@ -361,9 +351,7 @@ define(
         show_comments: function(){  var self = this;
             self.show_reactions('comments');
         },
-        show_favorites: function(){  var self = this;
-            self.show_reactions('favorites');
-        },
+        
         show_reactions: function(type){  var self = this;
             $.mobile.loading('show');
             self.model.fetch({success: function(model){
@@ -389,102 +377,6 @@ define(
             })();
         },
 
-        show_share_menu: function(){  var self = this;
-            auth.require_login( function(){
-                self.share_menu.find('form').show();
-                self.share_menu.find('.x-success').hide();
-                self.share_menu.toggle();
-                self.comment_form.hide();
-            })();
-        },
-
-        store_share_settings: function(event){
-            var button = $(event.currentTarget);
-            var service = button.attr('name');
-            var checked = button.is(':checked');
-
-            var settings = local_storage.get('feed_share_settings') || {};
-            settings[service] = checked;
-            local_storage.set('feed_share_settings', settings);
-
-            $('.x-service-select[name='+service+']').attr('checked', checked).checkboxradio("refresh");
-        },
-
-        share: function(){  var self = this;
-
-            auth.require_login( function(){
-
-                // check at least one service is selected
-                var on = false,
-                share_settings = local_storage.get('feed_share_settings') || {};
-                _.each(share_settings, function(state, x){
-                    on = on || state;
-                });
-                if(!on){
-                    alerts.notification('Oops!', 'Please select the services you want to share to.');
-                    return;
-                }
-
-                self.share_menu.find('form').hide();
-                self.share_menu.find('.x-success').show();
-
-                setTimeout(function(){
-                    self.share_menu.hide();
-                }, 2000);
-
-                var message = self.$('.x-share-menu textarea').val(),
-                    photo_id = self.model.get('id');
-
-                self.$('.x-share-menu textarea').val('');
-
-                $.ajax({
-                    url: config.get('api_base') + '/photo/share/',
-                    data: _.extend({}, share_settings, {
-                        access_token: auth.get('access_token'),
-                        _method: 'POST',
-                        message: message,
-                        id: photo_id
-                    }),
-                    dataType: 'jsonp',
-                    success: function(response){
-                        if(response.success){
-                            var share_count = parseInt( self.model.get('share_count'), 10 ),
-                                failed = [];
-
-                            _.each(response.response, function(result, service){
-                                if(result.success){
-                                    share_count++;
-                                }else{
-                                    if(result.error.type.substr(-10) == 'no_account'){
-                                        failed.push(service);
-                                    }else{
-                                        console.error(result.error);
-                                        // another error
-                                    }
-                                }
-                            });
-
-                            if(failed.length){
-                                window.location.href = '#/connect/?' + $.param({
-                                    to_link: failed.join(','),
-                                    photo_id: photo_id,
-                                    message: message
-                                });
-                            }
-
-                            self.model.set({
-                                share_count: share_count
-                            });
-                        }else{
-                             console.error(response.error);
-                        }
-                    },
-                    error: function(e){
-                        console.error( 'share error', e );
-                    }
-                });
-            } )();
-        },
 
         goto_map: function(){
             Backbone.history.navigate( this.map_url );
@@ -535,101 +427,6 @@ define(
                     }
                 } );
             } )();
-        },
-
-        favorite: function(){
-            // only take action if not already a fav
-            if(!this.model.get('favorite')){
-                this.toggle_favorite();
-            }else{
-                // otherwise just show the heart
-                this.show_favorite_overlay();
-            }
-        },
-
-        toggle_favorite: function(){  var self = this;
-            var button = self.$('.x-favorite');
-            var is_fav = this.model.get('favorite'),
-                fav_count = parseInt( this.model.get('favorite_count'), 10 ),
-                latest_favorites = self.model.get('latest_favorites');
-
-
-            auth.require_login( function(){
-                var fav = new favorite_model({
-                    id: self.model.get('id'),
-                    user: auth.get('snapr_user')
-                });
-
-                function visually_remove_fav(){
-                    latest_favorites = _.reject(latest_favorites, function(f){ return f.user == fav.get('user'); });
-
-                    self.model.set({
-                        favorite: false,
-                        favorite_count: fav_count - 1,
-                        latest_favorites: latest_favorites
-                    });
-
-                    self.render(['.x-favorites', '.x-action-buttons']).enhanceWithin();
-                }
-                function visually_add_fav(){
-
-                    latest_favorites.push(fav.attributes);
-
-                    self.model.set({
-                        favorite: true,
-                        favorite_count: fav_count + 1,
-                        latest_favorites: latest_favorites
-                    });
-                    self.render(['.x-favorites', '.x-action-buttons']).enhanceWithin();
-                }
-
-                if (is_fav){
-
-                    // already saved as a fav so we will remove it
-                    visually_remove_fav();
-
-                    var options = {
-                        success: function( s ){
-                            // success is not passed through so we check for error
-                            if (s.get('error')){
-                                visually_add_fav();
-                            }
-                        },
-                        error: function(e){
-                            console.log('fav error',e);
-                            visually_add_fav();
-                        }
-                    };
-                    fav.destroy( options );
-                }else{
-
-                    self.show_favorite_overlay();
-                    visually_add_fav();
-
-                    // save a new fav (empty object is important)
-                    fav.save( {}, {
-                        success: function(s){
-                            if (s.get('success')){
-                                analytics.trigger('favorite');
-                            }else{
-                                visually_remove_fav();
-                            }
-                        },
-                        error: function(e){
-                            console.log('fav error',e);
-                            visually_remove_fav();
-                        }
-                    } );
-                }
-            })();
-        },
-
-        show_favorite_overlay: function(){  var self = this;
-            var overlay = self.$('.x-favorited-overlay');
-            overlay.show();
-            setTimeout(function(){
-                overlay.fadeOut(1000);
-            }, 1000);
         },
 
         flag: function(){  var self = this;

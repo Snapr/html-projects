@@ -1,17 +1,12 @@
 <% if(item.get('status') == 'moderated'){ %>
     <p class="text-muted center">Image not found</p>
 <% }else{ %>
-<script>console.log("in list_item template");</script>
 <div class="s-image-area">
     <img style="height:<%= obj.height %>px;" src="https://s3.amazonaws.com/media-server<%= item.get('server_id') %>.snapr.us/lrg/<%= item.get('secret') %>/<%= item.get('id') %>.jpg" <% if(item.get('description')){ %>alt="<%= item.get('description') %>"<% } %> class="x-photo s-photo" />
-    <div class="x-favorited-overlay s-favorited-overlay ui-corner-all"><span class="ui-icon ui-icon-large-heart"></span></div><!-- thing that shows up when you fav an image -->
+<!--     <div class="x-favorited-overlay s-favorited-overlay ui-corner-all"><span class="ui-icon ui-icon-large-heart"></span></div> -->
 </div>
 
 <div class="s-image-details">
-    <a class="s-avatar" href="#/user/?username=<%= item.get('username') %>" style="background-image: url('<%= config.get('avatar_url') %>/<%= item.get('user_id') %>/');"></a>
-
-    <a class="s-username" href="#/user/?username=<%= item.get('username') %>"><%= item.get('display_username') %></a>
-
 		<span class="s-time"><%= string_utils.short_timestamp(item.get('date'), true ) %></span>
 
 
@@ -37,22 +32,6 @@
         &mdash; via <a href="http://apps.sna.pr/<%= item.get('app').slug %>/" target="blank"><%= item.get('app').name %></a>
     <% }%>
 
-
-
-    <ul class="x-favorites s-likes">
-        <% var favs = item.get('latest_favorites'), fav_count = favs.length %>
-        <% if(fav_count == 0){ %>
-            <!-- no likes -->
-        <% }else if(fav_count == 1){ %>
-            <li><a href="#/user/?username=<%= favs[0].user %>"><%= favs[0].user %></a> <%= T('likes this', 'this person does like this') %></li>
-        <% }else if(fav_count < 10){ %>
-            <li>
-            <% _.each(favs, function(favorite, index){ %><a href="#/user/?username=<%= favorite.user %>"><%= favorite.user %></a><% if(index == fav_count-2){ %> &amp; <% }else if(index != fav_count-1){ %>, <% } %><% }) %> <%= T('like this', 'these people do like this') %></li>
-        <% }else{ %>
-            <li><a class="x-show-favorites"><%= fav_count %> <%= T('likes', 'like plural') %></a></li>
-        <% } %>
-    </ul>
-
     <ul class="x-comments s-comments">
         <% _.each(item.get('latest_comments'), function(comment){ %>
             <li><a href="#/user/?username=<%= comment.user %>"><%= comment.user %></a> <%= string_utils.comment_links( comment.comment ) %></li>
@@ -61,11 +40,6 @@
     </ul>
 
     <div class="s-action-buttons x-action-buttons">
-        <!-- Like button -->
-        <a data-role="button" data-theme="c" data-mini="true" data-inline="true" data-icon="heart" data-iconpos="notext" class="x-favorite <% if (item.get('favorite')){ %>ui-btn-active<% }%>">Like</a>
-
-        <!-- Share button -->
-        <a data-role="button" data-theme="c" data-mini="true" data-inline="true" data-icon="share" data-iconpos="notext" class="x-share-button">Share</a>
 
         <!-- Comment button -->
         <a data-role="button" data-theme="c" data-mini="true" data-inline="true" data-icon="comments" data-inline="true" data-iconpos="notext" class="x-comment-button">Comment</a>
@@ -95,53 +69,6 @@
         <%}%>
     </div>
 
-</div>
-
-<!-- share form -->
-<div class="s-share-area x-share-menu hide">
-
-    <form action="javascript:void(0);" accept-charset="utf-8">
-        <div class="s-message-area">
-            <textarea data-theme="a" name="comment-<%= item.get('id') %>" placeholder="Type a message... " class="s-photo-share-comment"><% if(item.get('description')){ %>"<%= item.get('description') %>"<% } %></textarea>
-            <% if (item.get("username") != auth.get("snapr_user")){ %><span class="s-shared-via"> &mdash; via <span class="s-username">@<%= item.get("username") %></span></span><br><% } %>
-        </div>
-
-        <fieldset data-role="controlgroup" data-type="<%=config.get('services_list')%>" class="s-image-sharing">
-            <% if(_.contains(config.get('services'), 'twitter')){ %>
-                <input type="checkbox" class="x-service-select" name="twitter" id="twitter-sharing" <% if(share_settings.twitter){ %>checked="checked"<% } %>/>
-                <label for="twitter-sharing">
-                    <span class="ui-icon ui-icon-social-twitter"></span>
-                    <span class="s-service-text">Twitter</span>
-                </label>
-            <% } %>
-
-            <% if(_.contains(config.get('services'), 'facebook')){ %>
-                <input type="checkbox" class="x-service-select" name="facebook_album" id="facebook-sharing" <% if(share_settings.facebook_album){ %>checked="checked"<% } %>/>
-                <label for="facebook-sharing">
-                    <span class="ui-icon ui-icon-social-facebook"></span>
-                    <span class="s-service-text">Facebook</span>
-                </label>
-            <% } %>
-
-            <% if(_.contains(config.get('services'), 'tumblr')){ %>
-                <input type="checkbox" class="x-service-select" name="tumblr" id="tumblr-sharing" <% if(share_settings.tumblr){ %>checked="checked"<% } %>/>
-                <label for="tumblr-sharing">
-                    <span class="ui-icon ui-icon-social-tumblr"></span>
-                    <span class="s-service-text">Tumblr</span>
-                </label>
-            <% } %>
-
-        </fieldset>
-
-        <div class="ui-grid-a">
-            <div class="ui-block-a"></div>
-            <div class="ui-block-b">
-                <button class="x-submit-button" data-theme="e"><%= T('Share') %></button>
-            </div>
-        </div>
-
-    </form>
-    <div class="x-success hide s-warning-message">Thanks! The photo has been shared</div>
 </div>
 
 <div class="s-comment-area x-comment-form hide">

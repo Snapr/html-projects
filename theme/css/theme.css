@@ -4278,6 +4278,11 @@ html body .ui-group-theme-a .ui-bar-inherit.ui-li-divider small {
   color: #666666;
   text-shadow: none;
 }
+.ui-overlay-a .s-image-details,
+.ui-page-theme-a .s-image-details,
+.ui-page-theme-a .ui-panel-wrapper .s-image-details {
+  padding-left: 0 !important;
+}
 .ui-body-a,
 .ui-overlay-a .ui-body-inherit,
 .ui-page-theme-a .ui-body-inherit,
@@ -5622,6 +5627,11 @@ html body .ui-group-theme-c .ui-bar-inherit.ui-li-divider small {
   color: #666666;
   text-shadow: none;
 }
+.ui-overlay-c .s-image-details,
+.ui-page-theme-c .s-image-details,
+.ui-page-theme-c .ui-panel-wrapper .s-image-details {
+  padding-left: 0 !important;
+}
 .ui-body-c,
 .ui-overlay-c .ui-body-inherit,
 .ui-page-theme-c .ui-body-inherit,
@@ -6282,6 +6292,11 @@ html body .ui-group-theme-d .ui-bar-inherit.ui-li-divider small {
   color: #ffffff;
   text-shadow: none;
 }
+.ui-overlay-d .s-image-details,
+.ui-page-theme-d .s-image-details,
+.ui-page-theme-d .ui-panel-wrapper .s-image-details {
+  padding-left: 0 !important;
+}
 .ui-body-d,
 .ui-overlay-d .ui-body-inherit,
 .ui-page-theme-d .ui-body-inherit,
@@ -6941,6 +6956,11 @@ html body .ui-group-theme-e .ui-bar-inherit.ui-li-divider small {
   border-color: #ff42b3;
   color: #ffffff;
   text-shadow: none;
+}
+.ui-overlay-e .s-image-details,
+.ui-page-theme-e .s-image-details,
+.ui-page-theme-e .ui-panel-wrapper .s-image-details {
+  padding-left: 0 !important;
 }
 .ui-body-e,
 .ui-overlay-e .ui-body-inherit,
