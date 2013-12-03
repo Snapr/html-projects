@@ -46,7 +46,7 @@ return {
         // ################################
         //!-- The base view for the app
         //!--  default: 'home'
-        initial_view: 'feed',
+        initial_view: 'browse',
 
 
         // ################################
@@ -345,6 +345,16 @@ return {
             name: 'join-success',
             view: 'base/page',
             template: theme_templates_path + 'join_success'
+        },
+        {
+            name: 'photos',
+            view: theme_views_path + 'browse',
+            template: theme_templates_path + 'browse'
+        },
+        {
+            name: 'browse',
+            view: theme_views_path + 'browse',
+            template: theme_templates_path + 'browse'
         },
         // {
         //     name: 'welcome',

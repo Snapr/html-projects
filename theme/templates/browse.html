@@ -1,0 +1,12 @@
+ <div id="feed" data-title="<%= T('Browse') %>" data-role="page" data-theme="a">
+	<script>console.log('in custom template');</script>
+    <div data-role="header" data-theme="a">
+        <h1 class="x-title">
+            <% if(obj.title){ %>
+                <%= string_utils.count_chars(title) %>
+            <% } %>
+        </h1>
+    </div>
+
+    <div data-role="content" class="x-photos"></div>
+</div>
