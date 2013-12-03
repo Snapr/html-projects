@@ -349,12 +349,18 @@ return {
         {
             name: 'photos',
             view: theme_views_path + 'browse',
-            template: theme_templates_path + 'browse'
+            template: theme_templates_path + 'browse',
+            extra:{
+                list_item_template: theme_templates_path + 'list_item'
+            }
         },
         {
             name: 'browse',
             view: theme_views_path + 'browse',
-            template: theme_templates_path + 'browse'
+            template: theme_templates_path + 'browse',
+            extra:{
+                list_item_template: theme_templates_path + 'list_item'
+            }
         },
         // {
         //     name: 'welcome',

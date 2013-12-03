@@ -1,5 +1,5 @@
 /*global _  define require */
-define(['views/photos','views/components/feed'],
+define(['views/photos','../../theme/views/feed'],
     function(base_view, feed){
         return base_view.extend({
 
@@ -39,7 +39,10 @@ define(['views/photos','views/components/feed'],
                         tabs: [{
                             title: self.title,
                             query: query
-                        }]
+                        }],
+                        photo_templates: {
+                            list: self.get_template(options.list_item_template)
+                        }
                     });
 
                     $.mobile.loading('show');
