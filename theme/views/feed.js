@@ -384,7 +384,7 @@ define(
         show_comment_form: function(){  var self = this;
             auth.require_login( function(){
                 self.comment_form.toggle();
-                self.share_menu.hide();
+                //self.share_menu.hide();
             })();
         },
 
