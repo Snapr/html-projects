@@ -287,6 +287,8 @@ define(
             "click .x-goto-map": "goto_map",
             "click .x-goto-spot": "goto_spot",
             "click .take-it": "take_it",
+            "click .x-delete": "delete",
+            "click .x-flag": "flag"
         },
 
         render: function(sections){
@@ -312,10 +314,6 @@ define(
 
             // latch onto these popups now. enhanceWithin is about to move them out of this.$el
             this.reactions_popup = this.$('.x-reactions');
-
-            this.more_menu = this.$('.x-more-menu');
-            this.more_menu.on('click', '.x-flag', _.bind(this.flag, this));
-            this.more_menu.on('click', '.x-delete', _.bind(this.delete, this));
 
             this.comment_form = this.$('.x-comment-form');
             this.comment_form.on('click', '.x-submit-button', _.bind(this.comment, this));
@@ -383,14 +381,6 @@ define(
             }});
         },
 
-        show_more_menu: function(){  var self = this;
-            // timeout to allow time for jQm to do it's thing first
-            setTimeout(function(){
-                self.more_menu.data('mobilePopup')._ui.screen.css('z-index', 900);
-                self.more_menu.parent().css('z-index', 901);
-            }, 100);
-        },
-
         show_comment_form: function(){  var self = this;
             auth.require_login( function(){
                 self.comment_form.toggle();
@@ -451,7 +441,6 @@ define(
         },
 
         flag: function(){  var self = this;
-            self.more_menu.find('.x-photo-flag').x_loading();
             auth.require_login( function(){
                 alerts.approve({
                     'title': T('Flag this image as inappropriate?'),
@@ -475,23 +464,19 @@ define(
                                 }else{
                                     console.warn("error flagging photo", resp);
                                 }
-                                self.more_menu.popup('close');
-                                self.more_menu.find('.x-photo-flag').x_loading(false);
+
                             },
                             error: function( e ){
                                 console.warn("error flagging photo", e);
-                                self.more_menu.popup('close');
-                                self.more_menu.find('.x-photo-flag').x_loading(false);
                             }
                         });
                     },
-                    'no_callback': function(){ self.more_menu.find('.x-photo-flag').x_loading(false); }
+                    'no_callback': function(){ }
                 });
             })();
         },
 
         'delete': function(){  var self = this;
-            self.more_menu.find('.x-photo-delete').x_loading();
             auth.require_login( function(){
                 alerts.approve({
                     'title': T('Are you sure you want to delete this photo?'),
@@ -506,17 +491,13 @@ define(
                                 }else{
                                     console.warn("error deleting photo", resp);
                                 }
-                                self.more_menu.popup('close');
-                                self.more_menu.find('.x-photo-delete').x_loading(false);
                             },
                             error: function( e ){
                                 console.warn("error deleting photo", e);
-                                self.more_menu.popup('close');
-                                self.more_menu.find('.x-photo-delete').x_loading(false);
                             }
                         });
                     },
-                    'no_callback': function(){ self.more_menu.find('.x-photo-delete').x_loading(false); }
+                    'no_callback': function(){}
                 });
             })();
         }
