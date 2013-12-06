@@ -20,8 +20,14 @@ return {
         // CONFIG
         // ################################
 
-        filter_pack: 'classic-cats',
-        sticker_pack: 'classic-cats',
+        //filter_pack: 'classic-cats',
+        //sticker_pack: 'classic-cats',
+
+        //!--  set the order of FX modules or disable FX (set to [])
+        //!--  default: ['stickers', 'filters']
+        //!--  valid: ['stickers', 'filters'], ['filters', 'stickers'], []
+
+        fx_modules: [],
 
         app_banners: true,
 
