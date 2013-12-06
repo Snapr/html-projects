@@ -22,6 +22,8 @@ define(['views/photos','../../theme/views/feed'],
                         self.title = query.tag;
                     }else if (query.area){
                         self.title = T("Location");
+                    }else if (query.not_tagged){
+                        self.title = T("Nearby & Not Taken");
                     }else if (query.favorited_by){
                         self.title = T("Favorites");
                     }else if (query.spot && query.venue_name){

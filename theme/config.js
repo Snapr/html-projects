@@ -205,39 +205,22 @@ return {
             {
                 url: '#/browse/',
                 icon: "large-film",
-                label: 'Browse',
+                label: 'Browse Nearby',
                 slug: 'browse'
             },
-            {
-                url: '#/browse?not_tagged=taken',
+           {
+                url: '#/photos/',
                 icon: "large-film",
-                label: 'Not Taken',
+                label: 'Browse All',
+                slug: 'photos'
+            },
+            {
+                url: '#/photos/?not_tagged=taken&location=current_location&radius=5000',
+                icon: "large-film",
+                label: 'Nearby not taken',
                 slug: 'not-taken'
             },
-            {
-                url: '#/map/',
-                icon: "large-google_maps",
-                label: 'Map',
-                slug: 'map'
-            },
-            {
-                url: '#/explore/',
-                icon: "large-search",
-                label: 'Search',
-                slug: 'search'
-            },
-            {
-                url: '#/browse?area=50,-1,52,1',
-                icon: "large-binoculars",
-                label: 'London',
-                slug: 'london'
-            },
-            {
-                url: '#/browse?tag=metal',
-                icon: "large-search",
-                label: '#Metal',
-                slug: 'metal'
-            },
+
             {
                 url: '#/logout/',
                 icon: "large-user",
