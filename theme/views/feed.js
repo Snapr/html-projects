@@ -1,7 +1,7 @@
 /*global _, define, T */
 define(
-    ['backbone', 'config', 'auth', 'views/base/view', 'utils/alerts', 'utils/analytics', 'utils/history_state', 'utils/local_storage', 'collections/photo', 'models/favorite', 'models/comment'],
-    function(Backbone, config, auth, view, alerts, analytics, history_state, local_storage, photo_collection, favorite_model, comment_model){
+    ['backbone', 'config', 'auth', 'views/base/view', 'utils/alerts', 'utils/analytics', 'utils/history_state', 'utils/local_storage', 'collections/photo', 'models/favorite', 'models/comment', 'utils/geo'],
+    function(Backbone, config, auth, view, alerts, analytics, history_state, local_storage, photo_collection, favorite_model, comment_model, geo){
 
     var photos_view = view.extend({
         // handles tabs and lists, load more
@@ -131,13 +131,37 @@ define(
             self.$('.x-photo-content > ul').not(collection.$el).hide();
             collection.$el && collection.$el.show();
 
-            self.fetching = collection.fetch({
+            var fetch = function(){
+                self.fetching = collection.fetch({
                 data: {include_comments: 10, include_favorites: 10},
                 success: function(){
                     self.render_collection(collection);
                     if(callback){callback();}
                 }
             });
+            }
+
+            if(collection.data.location=='current_location'){
+                geo.get_location(
+                    function( location ){
+                        self.$('.x-no-location').hide(); 
+                        collection.data.latitude = location.coords.latitude;
+                        collection.data.longitude = location.coords.longitude;
+                        fetch();
+                    },
+                    function( e ){
+                        self.$('.x-no-location').show(); 
+                        alerts.notification('Error', 'Please enable location settings');
+                        $.mobile.loading('hide');
+                        config.get('current_view').show_bg_loader(false);
+                        console.error( "get reverse geocode", e );
+                    }
+                );
+            }else{
+                fetch();
+            }
+
+            
 
             return self;
         },
@@ -193,17 +217,11 @@ define(
 
             if(collection.length){
                 config.get('current_view').show_bg_loader();
-
-                self.$('.x-load-more').hide();
-                self.$('.x-end').hide();
-                self.$('.x-no-photos').hide();
             }else{
                 $.mobile.loading('show');
-
-                self.$('.x-load-more').hide();
-                self.$('.x-end').hide();
-                self.$('.x-no-photos').hide();
             }
+
+            self.$('.x-load-more, .x-end, .x-no-photos, .x-no-location').hide(); 
 
             // remember what tab is active
             history_state.set('feed_tab', tab);
