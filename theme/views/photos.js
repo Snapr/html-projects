@@ -1,5 +1,5 @@
 /*global _  define require */
-define(['views/photos','../../theme/views/feed'],
+define(['views/photos','views/components/feed'],
     function(base_view, feed){
         return base_view.extend({
 
@@ -44,7 +44,6 @@ define(['views/photos','../../theme/views/feed'],
                             list: self.get_template(options.list_item_template)
                         }
                     });
-
                     $.mobile.loading('show');
 
                 }else{
@@ -53,7 +52,7 @@ define(['views/photos','../../theme/views/feed'],
                     self.change_page();
                 }
 
-            },
+            }
 
 });
 });
