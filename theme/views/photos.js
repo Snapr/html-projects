@@ -1,5 +1,5 @@
 /*global _  define require */
-define(['views/photos','views/components/feed'],
+define(['views/photos','../../theme/views/feed'],
     function(base_view, feed){
         return base_view.extend({
 
