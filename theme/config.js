@@ -205,22 +205,27 @@ return {
             {
                 url: '#/browse/',
                 icon: "large-film",
-                label: 'Browse Nearby',
+                label: 'Nearby',
                 slug: 'browse'
-            },
-           {
-                url: '#/photos/',
-                icon: "large-film",
-                label: 'Browse All',
-                slug: 'photos'
             },
             {
                 url: '#/photos/?not_tagged=taken&location=current_location&radius=5000',
                 icon: "large-film",
-                label: 'Nearby not taken',
+                label: 'Available Nearby',
                 slug: 'not-taken'
             },
-
+           {
+                url: '#/photos/',
+                icon: "large-film",
+                label: 'All',
+                slug: 'photos'
+            },
+           {
+                url: '#/map/',
+                icon: "large-flag",
+                label: 'Map',
+                slug: 'map'
+            },
             {
                 url: '#/logout/',
                 icon: "large-user",

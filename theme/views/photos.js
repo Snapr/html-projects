@@ -28,6 +28,8 @@ define(['views/photos','../../theme/views/feed'],
                         self.title = T("Favorites");
                     }else if (query.spot && query.venue_name){
                         self.title = '@ '+query.venue_name;
+                    }else if (query.radius){
+                        self.title = T("Nearby");
                     }else if (query.sort == 'weighted_score' || query.sort == 'score'){
                         self.title = T("Popular");
                     }else{
