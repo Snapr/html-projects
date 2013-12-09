@@ -378,10 +378,13 @@ define(
                         if (lastCommenter !== auth.get('snapr_user')) {
                             $(commentArea).find('textarea').val('#taken');
                             this.comment();
-                        }else{ //user already just took the item
-                            alert("It seems you've already taken this junk.");
+                        }
+                        else {
+                            alert("Untake functionality coming soon");
                         }
                     }
+                    //fade image in all cases for now
+                    self.$('.s-image-area').fadeTo("slow",0.5);
  
             },
 
