@@ -29,57 +29,29 @@
                     </div>
 
 
-                    <fieldset class="x-photo-sharing s-image-sharing" data-iconpos="right">
-
-                        <% if(config.get('app_sharing_opt_in')){ %>
-                            <input type="checkbox" name="app-sharing" id="app-sharing"
-                            <% if(app_sharing){ %>checked="true"<%}%> />
-                            <label for="app-sharing">
-                                <span class="ui-icon ui-icon-social-facebook"></span>
-                            </label>
-                        <% } %>
-
-                        <% if(_.contains(config.get('services'), 'twitter')){ %>
-                            <input type="checkbox" name="tweet" id="twitter-sharing"
-                            <%if (twitter_sharing){%>checked="true"<%}%> />
-                            <label for="twitter-sharing">
-                                <span class="ui-icon ui-icon-social-twitter"></span>
-                                <span class="s-service-text">Twitter</span>
-                            </label>
-                        <% } %>
-
-                        <% if(_.contains(config.get('services'), 'facebook')){ %>
-                            <input type="checkbox" name="facebook_album" id="facebook-sharing"
-                            <%if (facebook_sharing){%>checked="true"<%}%>/>
-                            <label for="facebook-sharing">
-                                <span class="ui-icon ui-icon-social-facebook"></span>
-                                <span class="s-service-text">Facebook</span>
-                            </label>
-                        <% } %>
-
-                        <% if(_.contains(config.get('services'), 'tumblr')){ %>
-                            <input type="checkbox" name="tumblr" id="tumblr-sharing"
-                            <%if (tumblr_sharing ){%>checked="true"<%}%> />
-                            <label for="tumblr-sharing">
-                                <span class="ui-icon ui-icon-social-tumblr"></span>
-                                <span class="s-service-text">Tumblr</span>
-                            </label>
-                        <% } %>
-
-                        <% if(_.contains(config.get('services'), 'foursquare')){ %>
-                            <input type="checkbox" name="foursquare_checkin" id="foursquare-sharing"
-                            <%if (foursquare_sharing){%>checked="true"<%}%> />
-                            <label for="foursquare-sharing">
-                                <span class="ui-icon ui-icon-social-foursquare"></span>
-                                <span class="s-service-text">Foursquare</span>
-                            </label>
-                        <% } %>
-
-                    </fieldset>
-
                     <% if(!location){ %>  <!-- if no location put a placeholder here -->
                         <a class="x-location"></a>
                     <% } %>
+
+                    <div class="select-material">
+                        <select name="material-choice" class="material-choice" data-native-menu="true" data-theme="a">
+                            <option>Select Material</option>
+                            <option value="#artsupplies">Art Supplies</option>
+                            <option value="#concrete">Concrete</option>
+                            <option value="#constructionmaterial">Construction</option>
+                            <option value="#electronics">Electronics</option>
+                            <option value="#glass">Glass</option>
+                            <option value="#metal">Metal</option>
+                            <option value="#paper">Paper</option>
+                            <option value="#plastic">Plastic</option>
+                            <option value="#rubber">Rubber</option>
+                            <option value="#stone">Stone</option>
+                            <option value="#textile">Textile</option>
+                            <option value="#wood">Wood</option>
+                            <option value="#otherMaterial">Other</option>
+                        </select>
+
+                    </div>
 
                     <div class="x-share-button">
                         <input type="submit" data-role="button" data-theme="a" value="<%= T('Share') %>"/>
