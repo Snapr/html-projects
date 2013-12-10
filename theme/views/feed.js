@@ -305,6 +305,7 @@ define(
             "click .x-goto-map": "goto_map",
             "click .x-goto-spot": "goto_spot",
             "click .take-it": "take_it",
+            "click .leave-it": "leave_it",
             "click .x-delete": "delete",
             "click .x-flag": "flag"
         },
@@ -387,6 +388,32 @@ define(
                     self.$('.s-image-area').fadeTo("slow",0.5);
  
             },
+
+        //untake an item
+        leave_it : function(){ var self = this;
+            var commentsToDelete = this.is_tagged('#taken');
+            if (commentsToDelete !== 0) {
+                alert("comment id to delete: " + commentsToDelete);
+            }else {
+                alert("You've never event taken this");
+            }
+        },
+
+        //returns array of comment id's that are tags, or 0 if there are none
+        is_tagged: function(tag){var self=this;
+            var commentsTagged = [];
+            if (this.model.get('comments') > 0) {
+                var latestComments = this.model.get('latest_comments');
+                _.each(latestComments, function(commentObj){
+                    if (commentObj.user === auth.get('snapr_user') && commentObj.comment === tag) {
+                        commentsTagged.push(commentObj.id);
+                    }
+                });
+                return commentsTagged;
+            }
+                
+            return 0;
+        },
 
         show_comments: function(){  var self = this;
             self.show_reactions('comments');
