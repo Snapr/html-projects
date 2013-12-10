@@ -1,0 +1,112 @@
+<div id="map" data-role="page" data-title="<%= T('Map') %>"  data-theme="b" data-tab-bar="false">
+
+    <div class="s-photo-map" data-role="content" data-theme="a">
+        <a class="s-close-button x-back" data-role="button" data-theme="b" data-mini="true" ><%= T('Exit Map') %></a>
+
+        <div id="google-map" class="x-map"></div>
+
+		<div class="s-map-buttons">
+        	<a class="x-current-location s-current-location" data-role="button" data-icon="large-direction" data-iconpos="notext" data-theme="a"></a>
+        	<a class="x-show-search s-show-search" data-role="button" data-icon="search" data-iconpos="notext" data-theme="a"></a>
+		</div>
+
+	    <div class="s-map-base">
+		    <div class="s-bg-load-bar">
+		        <span class="s-load-bar-animate"></span>
+		    </div>
+	        <a class="x-map-feed ui-bar-d s-map-string" data-theme="d" data-role="button" data-icon="chevron-right" data-iconpos="right">
+
+				<span class="x-keywords"></span>
+				<small>
+					<span class="ui-icon ui-icon-time"></span>
+					&nbsp;<span class="x-time"><%= T('Latest Photos') %></span>, <%= T('Show as Feed') %>
+				</small>
+			</a>
+	    </div>
+
+        <div class="x-disambiguation s-disambiguation s-popup ui-corner-all" data-role="content" data-theme="a" style="">
+			<div class="ui-header">
+            	<h4><%= T('Did you mean') %>&hellip;</h4>
+				 <a class="x-disambituation-cancel ui-btn-right" data-role="button" data-icon="remove" data-iconpos="no-text"></a>
+			</div>
+            <ul data-role="listview" class="x-disambiguation-list map-list">
+            </ul>
+
+        </div>
+
+        <div class="x-map-alert s-map-alert" style="display:none;">
+                <span class="ui-icon ui-icon-camera large-icon"></span>
+                <%= T('No Pics Here Yet') %>
+        </div>
+
+    </div>
+
+
+
+
+
+
+
+    <div class="x-search-panel s-map-search" data-role="panel" data-position="right" data-theme="b"  data-swipe-close="false">
+        <div class="s-panel-header">
+            <h1>Search</h1>
+            <div class="ui-btn-left">
+                <a data-icon="arrow-l" data-iconpos="notext" data-role="button" data-rel="close"></a>
+            </div>
+        </div>
+
+        <div class="s-search-bar">
+            <span class="ui-icon ui-icon-search text-brand"></span>
+	        <input type="search" data-theme="b" name="map-location" placeholder="<%= T('Location') %>" class="x-location-search"/>
+        </div>
+
+		<ul data-role="listview" class="s-map-filters">
+			<li>
+				<div class="s-tag-search-bar">
+	            	<span class="ui-icon ui-icon-tag text-brand"></span>
+        			<input type="search" name="map-keyword" placeholder="<%= T('Tags') %>" class="x-search" autocapitalize="off" data-icon="tag"/>
+				</div>
+			</li>
+
+			<li>
+        		<a class="x-time" data-role="button" data-icon="time"><%= T('Latest Photos') %></a>
+			</li>
+
+			<li>
+		        <select id="map-filter" class="x-filter" data-icon="user" data-iconpos="left">
+		            <option value="just-one"><%= T('Just One') %></option>
+		            <option value="just-me"><%= T('Just Me') %></option>
+		            <% if(config.get('follow_controls')){ %>
+		                <option value="following"><%= T('Following') %></option>
+		            <% } %>
+		            <option value="all"><%= T('All') %></option>
+		        </select>
+			</li>
+
+			<li>
+				<small>Show:</small>
+				<fieldset data-role="controlgroup">
+	            	<input type="checkbox" data-role="false" name="map-view-photos" id="map-view-photos" class="x-show-photos" value="photos">
+	            	<label for="map-view-photos"><%= T('Photos') %></label>
+
+	            	<input type="checkbox" data-role="false" name="map-view-spots" id="map-view-spots" class="x-show-spots" value="spots" >
+	            	<label for="map-view-spots"><%= T('Spots') %></label>
+
+				</fieldset>
+
+			</li>
+
+		</ul>
+
+		<div class="ui-grid-a">
+			<div class="ui-block-a">
+        		<button class="x-search-button" data-theme="e"><%= T('Go!') %></button>
+			</div>
+			<div class="ui-block-b">
+			</div>
+		</div>
+
+
+    </div>
+
+</div>
