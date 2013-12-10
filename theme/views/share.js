@@ -2,6 +2,15 @@ define(['views/share'], function(share_view){
     return share_view.extend({
 
         events: {
+        'click .x-photo': 'show_lightbox',
+        'click .x-lightbox': 'hide_lightbox',
+        'change .x-status': 'toggle_status',
+        'click .x-location': 'toggle_location_sharing',
+        'change .x-photo-sharing input': 'toggle_sharing',
+        'change .x-photo-sharing select': 'toggle_sharing',
+        'vclick .x-photo-sharing .ui-disabled': 'share_alert',
+        'click .x-photo-toggle': 'toggle_photo',
+        'change .x-description': 'update_description',
         'submit form': 'append_selected_tags'
     },
 
