@@ -393,7 +393,8 @@ define(
         leave_it : function(){ var self = this;
             var commentsToDelete = this.is_tagged('#taken');
             if (commentsToDelete !== 0) {
-                alert("comment id to delete: " + commentsToDelete);
+                console.log("comment id to delete: " + commentsToDelete);
+                this.delete_comments(commentsToDelete);
             }else {
                 alert("You've never event taken this");
             }
@@ -414,6 +415,22 @@ define(
                 
             return 0;
         },
+
+        'delete_comments': function( comments ){
+            _.each(comments, function(commentId){
+                var ajax_options = {};
+                ajax_options =  {
+                    url: config.get('api_base') + "/comment/delete/",
+                    dataType: "jsonp",
+                    data: _.extend({}, auth.attributes, {
+                        id: commentId,
+                        _method: "POST"
+                    })
+                };
+                $.ajax( ajax_options );
+            });
+       
+    },
 
         show_comments: function(){  var self = this;
             self.show_reactions('comments');
