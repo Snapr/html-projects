@@ -278,7 +278,7 @@ define(
         className: "s-feed-photo",
 
         initialize: function(){
-
+            console.log(this.is_taken());
             this.model.bind( "change:status", this.render );
 
             this.template = this.options.template;
@@ -365,72 +365,101 @@ define(
             return city;
         },
 
-        take_it : function(){ var self = this;
-                    //proof, add '#taken' to comment area before commenting 
-                    var commentArea = self.$('.s-comment-area');
-                    //avoid quick double posts
-                    var lastCommenter = self.$('.commenter').last().html();
-                    var lastComment = self.$('.x-comments li').children().last().html(); //problem when show 'more comments'
-                    if (lastComment !== "#taken")  { //only comparing last comment
-                        $(commentArea).find('textarea').val('#taken');
-                        this.comment();
-                    }else {
-                        //last comment was #taken but from another user
-                        if (lastCommenter !== auth.get('snapr_user')) {
-                            $(commentArea).find('textarea').val('#taken');
-                            this.comment();
-                        }
-                        else {
-                            alert("Untake functionality coming soon");
-                        }
-                    }
-                    //fade image in all cases for now
-                    self.$('.s-image-area').fadeTo("slow",0.5);
- 
-            },
-
-        //untake an item
-        leave_it : function(){ var self = this;
-            var commentsToDelete = this.is_tagged('#taken');
-            if (commentsToDelete !== 0) {
-                console.log("comment id to delete: " + commentsToDelete);
-                this.delete_comments(commentsToDelete);
-            }else {
-                alert("You've never event taken this");
-            }
-        },
-
-        //returns array of comment id's that are tags, or 0 if there are none
         is_tagged: function(tag){var self=this;
-            var commentsTagged = [];
+            var tagged=false;
             if (this.model.get('comments') > 0) {
-                var latestComments = this.model.get('latest_comments');
-                _.each(latestComments, function(commentObj){
-                    if (commentObj.user === auth.get('snapr_user') && commentObj.comment === tag) {
-                        commentsTagged.push(commentObj.id);
+                _.each(this.model.get('latest_comments'), function(commentObj){
+                    if (commentObj.comment === tag) {
+                        tagged = true;
+                        return tagged;
                     }
                 });
-                return commentsTagged;
             }
-                
-            return 0;
+            return tagged;
         },
 
-        'delete_comments': function( comments ){
-            _.each(comments, function(commentId){
-                var ajax_options = {};
-                ajax_options =  {
-                    url: config.get('api_base') + "/comment/delete/",
-                    dataType: "jsonp",
-                    data: _.extend({}, auth.attributes, {
-                        id: commentId,
-                        _method: "POST"
-                    })
-                };
-                $.ajax( ajax_options );
+        is_tagged_by_user: function(tag){var self=this;
+            var tagged=false;
+            if (this.model.get('comments') > 0) {
+                _.each(this.model.get('latest_comments'), function(commentObj){
+                    if (commentObj.user === auth.get('snapr_user') && commentObj.comment === tag) {
+                        tagged = true;
+                        return tagged;
+                    }
+                });
+            }
+            return tagged;
+        },
+
+        takenTag : "#taken",
+
+        is_taken_by_user: function(){var self=this;
+            return(self.is_tagged_by_user(self.takenTag));
+        },
+
+        is_taken: function(){var self=this;
+            return(self.is_tagged(self.takenTag));
+        },
+
+        take_it : function(){ var self = this;
+            if (!this.is_taken()) {
+                if (confirm("Take this item?")){
+                    var commentArea = self.$('.s-comment-area');
+                    $(commentArea).find('textarea').val(self.takenTag);
+                    this.commentTaken();
+                    self.$('.s-image-area').fadeTo("slow",0.5);
+                }
+            }else {
+                alert("This item is previously taken.");
+            }
+        },
+
+        leave_it : function(){ var self = this;
+                var commentToDelete = this.get_comment_id(this.takenTag);
+                if (commentToDelete !== 0) {
+                    this.delete_comment(commentToDelete);
+                    self.$('.s-image-area').fadeTo("slow", 1);
+                }else{
+                    alert("You haven't taken this item. Cannot untake it");
+                }
+        },
+
+        get_comment_id: function(commentContent) {var self=this;
+            var match = 0;
+            var latestComments = this.model.get('latest_comments');
+             if (this.model.get('comments') > 0) {
+                _.each(latestComments, function (c) {
+                    if(c.user === auth.get('snapr_user') && c.comment === commentContent){
+                        console.log(c);
+                        match = c.id;
+                        return match;
+                    }
+                });
+            }
+            return match;
+        },
+
+        'delete_comment': function( commentId ){var self=this;
+            var ajax_options = {};
+            ajax_options =  {
+                url: config.get('api_base') + "/comment/delete/",
+                dataType: "jsonp",
+                data: _.extend({}, auth.attributes, {
+                    id: commentId,
+                    _method: "POST"
+                })
+            };
+            $.ajax( ajax_options );
+            //visually speaking
+            var numComments = self.model.get("comments");
+            var latestComments = self.model.get("latest_comments");
+            latestComments = _.reject(latestComments, function(c){ return c.id === commentId; });
+            self.model.set({
+                comments: numComments - 1,
+                latest_comments : latestComments
             });
-       
-    },
+                self.render(['.x-comments']).enhanceWithin();
+        },
 
         show_comments: function(){  var self = this;
             self.show_reactions('comments');
@@ -462,6 +491,59 @@ define(
             Backbone.history.navigate( this.spot_url );
         },
 
+        commentTaken: function( e ){  var self = this;
+
+            auth.require_login( function(){
+
+                var comment = new comment_model();
+                comment.data = {
+                    photo_id: self.model.get('id'),
+                    comment: self.comment_form.find('textarea').val(),
+                    user: auth.get('snapr_user')
+                };
+
+                var comment_count = parseInt( self.model.get('comments'), 10 ) + 1;
+                latest_comments = self.model.get('latest_comments');
+                latest_comments.push(comment.data);
+
+                self.model.set({
+                    comments: comment_count,
+                    latest_comments: latest_comments
+                });
+
+                self.comment_form.hide();
+                self.comment_form.find('textarea').val("");
+
+                self.render(['.x-comments']).enhanceWithin();
+
+                // the empty object in this save call is important,
+                // without it, the options object will not be used
+                comment.save( {}, {
+                    success: function( s ){
+                        if (s.get('success')){
+                            analytics.trigger('comment');
+                            //to save comment id for visual feedback if take-untake
+                            var latestComments = self.model.get('latest_comments');
+                            var lastComment = latestComments[latestComments.length - 1];
+                            lastComment.id = s.get('response').comment.id;
+                            latestComments.pop();
+                            latestComments.push(lastComment);
+                            self.model.set({
+                                latest_comments: latest_comments
+                            });
+
+                        }else{
+                            self.$('.x-comments').children().last().remove();
+                        }
+                    },
+                    error: function( error ){
+                        console.log('error', error);
+                        self.$('.x-comments').children().last().remove();
+                    }
+                } );
+            } )();
+        },
+
         comment: function( e ){  var self = this;
 
             auth.require_login( function(){
@@ -473,8 +555,9 @@ define(
                     user: auth.get('snapr_user')
                 };
 
-                var comment_count = parseInt( self.model.get('comments'), 10 ) + 1,
-                    latest_comments = self.model.get('latest_comments');
+                var comment_count = parseInt( self.model.get('comments'), 10 ) + 1;
+                console.log("comment_count: " + comment_count);
+                latest_comments = self.model.get('latest_comments');
                 latest_comments.push(comment.data);
 
                 self.model.set({
