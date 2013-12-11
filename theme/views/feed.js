@@ -272,13 +272,12 @@ define(
     });
 
     var photo_view = view.extend({
-        // handles each photo and it's actions like 'comment'
+        // handles each photo and its actions like 'comment'
 
         tagName: "li",
         className: "s-feed-photo",
 
         initialize: function(){
-            console.log(this.is_taken());
             this.model.bind( "change:status", this.render );
 
             this.template = this.options.template;
@@ -296,6 +295,7 @@ define(
                 this.map_url = null;
                 this.spot_url = null;
             }
+
         },
 
         events: {
@@ -317,7 +317,8 @@ define(
                 height: this.options.width / (this.model.get('width') / this.model.get('height')),
                 item: this.model,
                 city: this.get_city(),
-                share_settings: local_storage.get('feed_share_settings') || {}
+                share_settings: local_storage.get('feed_share_settings') || {},
+                taken : this.is_taken()
             };
 
             if(sections){
