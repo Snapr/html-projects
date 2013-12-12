@@ -10,17 +10,16 @@
         <span class="s-load-bar-animate"></span>
     </div>
 
-    <div class="ui-btn-left">
-        <a class="x-menu-button hero-style large-icon" data-icon="large-bars" data-iconpos="notext" data-role="button" data-corners="false">
-            <%= T('Menu') %>
-        </a>
-    </div>
+    <div data-role="navbar">
+        <ul>
+            <li ><a href="#/browse/" data-name="browse"><%= T('BROWSE') %></a></li>
 
-    <h1>
-        <label class="s-app-logo x-launch-camera-options" for="x-web-upload"><%= config.get('app_name') %></label>
-    </h1>
-
-    <label data-iconpos="no-text" class="x-launch-camera-options ui-btn-right s-camera-button ui-btn large-icon ui-icon-camera ui-btn-icon-notext" for="x-web-upload">
-            <%= T('Share') %>
-    </label>
+            <li><a href="#/map/" data-name="map"><%= T('MAP') %></a></li>
+            <li> <!-- can't budge label from theme d -->
+                <label data-iconpos="no-text" class="x-launch-camera-options ui-btn" for="x-web-upload" data-name="post">
+            <%= T('POST') %>
+                </label>  
+            </li>
+        </ul>
+    </div><!-- /navbar -->
 </div>

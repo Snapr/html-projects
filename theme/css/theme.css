@@ -4293,6 +4293,16 @@ html body .ui-group-theme-a .ui-bar-inherit.ui-li-divider small {
 .ui-page-theme-a .ui-panel-wrapper .s-app-logo {
   left: 47% !important;
 }
+.ui-overlay-a div[data-role="footer"],
+.ui-page-theme-a div[data-role="footer"],
+.ui-page-theme-a .ui-panel-wrapper div[data-role="footer"] {
+  min-height: 40px;
+}
+.ui-overlay-a .ui-btn,
+.ui-page-theme-a .ui-btn,
+.ui-page-theme-a .ui-panel-wrapper .ui-btn {
+  line-height: 50px;
+}
 .ui-body-a,
 .ui-overlay-a .ui-body-inherit,
 .ui-page-theme-a .ui-body-inherit,
@@ -5652,6 +5662,16 @@ html body .ui-group-theme-c .ui-bar-inherit.ui-li-divider small {
 .ui-page-theme-c .ui-panel-wrapper .s-app-logo {
   left: 47% !important;
 }
+.ui-overlay-c div[data-role="footer"],
+.ui-page-theme-c div[data-role="footer"],
+.ui-page-theme-c .ui-panel-wrapper div[data-role="footer"] {
+  min-height: 40px;
+}
+.ui-overlay-c .ui-btn,
+.ui-page-theme-c .ui-btn,
+.ui-page-theme-c .ui-panel-wrapper .ui-btn {
+  line-height: 50px;
+}
 .ui-body-c,
 .ui-overlay-c .ui-body-inherit,
 .ui-page-theme-c .ui-body-inherit,
@@ -6327,6 +6347,16 @@ html body .ui-group-theme-d .ui-bar-inherit.ui-li-divider small {
 .ui-page-theme-d .ui-panel-wrapper .s-app-logo {
   left: 47% !important;
 }
+.ui-overlay-d div[data-role="footer"],
+.ui-page-theme-d div[data-role="footer"],
+.ui-page-theme-d .ui-panel-wrapper div[data-role="footer"] {
+  min-height: 40px;
+}
+.ui-overlay-d .ui-btn,
+.ui-page-theme-d .ui-btn,
+.ui-page-theme-d .ui-panel-wrapper .ui-btn {
+  line-height: 50px;
+}
 .ui-body-d,
 .ui-overlay-d .ui-body-inherit,
 .ui-page-theme-d .ui-body-inherit,
@@ -7001,6 +7031,16 @@ html body .ui-group-theme-e .ui-bar-inherit.ui-li-divider small {
 .ui-page-theme-e .s-app-logo,
 .ui-page-theme-e .ui-panel-wrapper .s-app-logo {
   left: 47% !important;
+}
+.ui-overlay-e div[data-role="footer"],
+.ui-page-theme-e div[data-role="footer"],
+.ui-page-theme-e .ui-panel-wrapper div[data-role="footer"] {
+  min-height: 40px;
+}
+.ui-overlay-e .ui-btn,
+.ui-page-theme-e .ui-btn,
+.ui-page-theme-e .ui-panel-wrapper .ui-btn {
+  line-height: 50px;
 }
 .ui-body-e,
 .ui-overlay-e .ui-body-inherit,
