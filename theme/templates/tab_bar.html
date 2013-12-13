@@ -1,4 +1,4 @@
-<div data-role="footer" data-position="fixed" data-ajax="false" data-tap-toggle="false" data-theme="d" class="s-tab-bar">
+<div data-role="footer" data-position="fixed" data-ajax="false" data-tap-toggle="false" data-theme="c">
 
 	<!-- Shows when there is a connection error -->
     <div class="s-offline-bar x-offline-bar hide">
@@ -11,11 +11,16 @@
     </div>
 
     <div data-role="navbar">
-        <ul>
-            <li ><a href="#/browse/" data-name="browse"><%= T('BROWSE') %></a></li>
-
-            <li><a href="#/map/" data-name="map"><%= T('MAP') %></a></li>
-            <li> <!-- can't budge label from theme d -->
+        <ul>   
+            <li>        
+                <select data-corners="false" data-native-menu="false" data-iconpos="noicon">
+                    <!-- <option>BROWSE</option> -->
+                    <option value="value">BROWSE</option>
+                    <option value="value2">MAP</option>
+                    <option value="value3">SEARCH</option>
+                </select>
+            </li>
+            <li>
                 <label data-iconpos="no-text" class="x-launch-camera-options ui-btn" for="x-web-upload" data-name="post">
             <%= T('POST') %>
                 </label>  
