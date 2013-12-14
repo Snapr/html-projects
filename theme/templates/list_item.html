@@ -47,21 +47,21 @@
     <div class="s-action-buttons x-action-buttons">
 
         <!-- Take It button -->
-        <a data-role="button" data-theme="c" data-inline="true" data-icon="tag" data-iconpos="notext" class="take-it">#taken</a>
+        <a data-role="button" data-theme="c" data-inline="true"  data-mini="true" data-icon="tag" data-iconpos="notext" class="take-it">#taken</a>
 
         <!-- Leave it button -->
-        <a data-role="button" data-theme="c" data-inline="true" data-icon="remove" data-iconpos="notext" class="leave-it">Not Taken</a>
+        <a data-role="button" data-theme="c" data-inline="true"  data-mini="true" data-icon="remove" data-iconpos="notext" class="leave-it">Not Taken</a>
 
         <!-- Comment button -->
-        <a data-role="button" data-theme="c" data-inline="true" data-icon="comments" data-inline="true" data-iconpos="notext" class="x-comment-button">Comment</a>
+        <a data-role="button" data-theme="c" data-inline="true" data-mini="true"  data-icon="comments" data-inline="true" data-iconpos="notext" class="x-comment-button">Comment</a>
 
         <!-- Flag or Delete button -->
         <% if (item.get("username") && item.get("username").toLowerCase() == (auth.get("snapr_user") || "").toLowerCase()){ %>
-            <a class="x-delete" data-role="button" data-icon="trash" data-iconpos="notext" data-theme="c" data-inline="true">
+            <a class="x-delete" data-role="button" data-icon="trash" data-iconpos="notext" data-theme="c" data-inline="true" data-mini="true" >
                Delete
            </a>
         <%} else if(config.get('moderation_controls')){ %>
-            <a class="x-flag" data-role="button" data-icon="flag" data-iconpos="notext" data-theme="c" data-inline="true">
+            <a class="x-flag" data-role="button" data-icon="flag" data-iconpos="notext" data-theme="c" data-inline="true" data-mini="true" >
                 <% if (item.get('flagged')){%> flagged <% }else{ %> flag <% } %>
             </a>
         <%}%>
