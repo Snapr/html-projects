@@ -54,7 +54,7 @@
 
         <!-- Comment button -->
         <a data-role="button" data-theme="c" data-inline="true" data-mini="true"  data-icon="comments" data-inline="true" data-iconpos="notext" class="x-comment-button">Comment</a>
-
+        
         <!-- Flag or Delete button -->
         <% if (item.get("username") && item.get("username").toLowerCase() == (auth.get("snapr_user") || "").toLowerCase()){ %>
             <a class="x-delete" data-role="button" data-icon="trash" data-iconpos="notext" data-theme="c" data-inline="true" data-mini="true" >
@@ -65,6 +65,14 @@
                 <% if (item.get('flagged')){%> flagged <% }else{ %> flag <% } %>
             </a>
         <%}%>
+
+        <!-- taken switch -->
+        <br />
+        <!-- <label for="taken">Select slider:</label> -->
+        <select name="taken" id="taken" data-native-menu="true" data-role="slider" data-theme='c' data-mini="true">
+          <option value="off">Untaken</option>
+          <option value="on">Taken</option>
+        </select>
 
     </div>
 
