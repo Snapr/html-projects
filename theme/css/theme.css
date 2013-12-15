@@ -4288,21 +4288,21 @@ html body .ui-group-theme-a .ui-bar-inherit.ui-li-divider small {
 .ui-page-theme-a .ui-panel-wrapper .s-image-details {
   padding-left: 0 !important;
 }
-.ui-overlay-a .s-app-logo,
-.ui-page-theme-a .s-app-logo,
-.ui-page-theme-a .ui-panel-wrapper .s-app-logo {
-  left: 47% !important;
-}
-.ui-overlay-a div[data-role="footer"] .ui-btn,
-.ui-page-theme-a div[data-role="footer"] .ui-btn,
-.ui-page-theme-a .ui-panel-wrapper div[data-role="footer"] .ui-btn {
-  line-height: 35px;
+.ui-overlay-a div[data-role="footer"],
+.ui-page-theme-a div[data-role="footer"],
+.ui-page-theme-a .ui-panel-wrapper div[data-role="footer"] {
+  min-height: 20px;
 }
 .ui-overlay-a div[data-role="footer"] .ui-select,
 .ui-page-theme-a div[data-role="footer"] .ui-select,
 .ui-page-theme-a .ui-panel-wrapper div[data-role="footer"] .ui-select {
   margin: 0;
   padding: 0;
+}
+.ui-overlay-a div[data-role="footer"] .ui-btn,
+.ui-page-theme-a div[data-role="footer"] .ui-btn,
+.ui-page-theme-a .ui-panel-wrapper div[data-role="footer"] .ui-btn {
+  letter-spacing: 0.1em;
 }
 .ui-body-a,
 .ui-overlay-a .ui-body-inherit,
@@ -5658,21 +5658,21 @@ html body .ui-group-theme-c .ui-bar-inherit.ui-li-divider small {
 .ui-page-theme-c .ui-panel-wrapper .s-image-details {
   padding-left: 0 !important;
 }
-.ui-overlay-c .s-app-logo,
-.ui-page-theme-c .s-app-logo,
-.ui-page-theme-c .ui-panel-wrapper .s-app-logo {
-  left: 47% !important;
-}
-.ui-overlay-c div[data-role="footer"] .ui-btn,
-.ui-page-theme-c div[data-role="footer"] .ui-btn,
-.ui-page-theme-c .ui-panel-wrapper div[data-role="footer"] .ui-btn {
-  line-height: 35px;
+.ui-overlay-c div[data-role="footer"],
+.ui-page-theme-c div[data-role="footer"],
+.ui-page-theme-c .ui-panel-wrapper div[data-role="footer"] {
+  min-height: 20px;
 }
 .ui-overlay-c div[data-role="footer"] .ui-select,
 .ui-page-theme-c div[data-role="footer"] .ui-select,
 .ui-page-theme-c .ui-panel-wrapper div[data-role="footer"] .ui-select {
   margin: 0;
   padding: 0;
+}
+.ui-overlay-c div[data-role="footer"] .ui-btn,
+.ui-page-theme-c div[data-role="footer"] .ui-btn,
+.ui-page-theme-c .ui-panel-wrapper div[data-role="footer"] .ui-btn {
+  letter-spacing: 0.1em;
 }
 .ui-body-c,
 .ui-overlay-c .ui-body-inherit,
@@ -6344,21 +6344,21 @@ html body .ui-group-theme-d .ui-bar-inherit.ui-li-divider small {
 .ui-page-theme-d .ui-panel-wrapper .s-image-details {
   padding-left: 0 !important;
 }
-.ui-overlay-d .s-app-logo,
-.ui-page-theme-d .s-app-logo,
-.ui-page-theme-d .ui-panel-wrapper .s-app-logo {
-  left: 47% !important;
-}
-.ui-overlay-d div[data-role="footer"] .ui-btn,
-.ui-page-theme-d div[data-role="footer"] .ui-btn,
-.ui-page-theme-d .ui-panel-wrapper div[data-role="footer"] .ui-btn {
-  line-height: 35px;
+.ui-overlay-d div[data-role="footer"],
+.ui-page-theme-d div[data-role="footer"],
+.ui-page-theme-d .ui-panel-wrapper div[data-role="footer"] {
+  min-height: 20px;
 }
 .ui-overlay-d div[data-role="footer"] .ui-select,
 .ui-page-theme-d div[data-role="footer"] .ui-select,
 .ui-page-theme-d .ui-panel-wrapper div[data-role="footer"] .ui-select {
   margin: 0;
   padding: 0;
+}
+.ui-overlay-d div[data-role="footer"] .ui-btn,
+.ui-page-theme-d div[data-role="footer"] .ui-btn,
+.ui-page-theme-d .ui-panel-wrapper div[data-role="footer"] .ui-btn {
+  letter-spacing: 0.1em;
 }
 .ui-body-d,
 .ui-overlay-d .ui-body-inherit,
@@ -7030,21 +7030,21 @@ html body .ui-group-theme-e .ui-bar-inherit.ui-li-divider small {
 .ui-page-theme-e .ui-panel-wrapper .s-image-details {
   padding-left: 0 !important;
 }
-.ui-overlay-e .s-app-logo,
-.ui-page-theme-e .s-app-logo,
-.ui-page-theme-e .ui-panel-wrapper .s-app-logo {
-  left: 47% !important;
-}
-.ui-overlay-e div[data-role="footer"] .ui-btn,
-.ui-page-theme-e div[data-role="footer"] .ui-btn,
-.ui-page-theme-e .ui-panel-wrapper div[data-role="footer"] .ui-btn {
-  line-height: 35px;
+.ui-overlay-e div[data-role="footer"],
+.ui-page-theme-e div[data-role="footer"],
+.ui-page-theme-e .ui-panel-wrapper div[data-role="footer"] {
+  min-height: 20px;
 }
 .ui-overlay-e div[data-role="footer"] .ui-select,
 .ui-page-theme-e div[data-role="footer"] .ui-select,
 .ui-page-theme-e .ui-panel-wrapper div[data-role="footer"] .ui-select {
   margin: 0;
   padding: 0;
+}
+.ui-overlay-e div[data-role="footer"] .ui-btn,
+.ui-page-theme-e div[data-role="footer"] .ui-btn,
+.ui-page-theme-e .ui-panel-wrapper div[data-role="footer"] .ui-btn {
+  letter-spacing: 0.1em;
 }
 .ui-body-e,
 .ui-overlay-e .ui-body-inherit,
