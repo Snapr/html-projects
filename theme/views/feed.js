@@ -413,12 +413,11 @@ define(
 
         take_it : function(){ var self = this;
             if (!this.is_taken()) {
-                if (confirm("Take this item?")){
-                    var commentArea = self.$('.s-comment-area');
-                    $(commentArea).find('textarea').val(self.takenTag);
-                    this.commentTaken();
-                    self.$('.s-image-area').fadeTo("slow",0.5);
-                }
+                var commentArea = self.$('.s-comment-area');
+                $(commentArea).find('textarea').val(self.takenTag);
+                this.commentTaken();
+                self.$('.s-image-area').fadeTo("slow",0.5);
+               
             }else {
                 alert("This item is previously taken.");
             }
@@ -430,7 +429,7 @@ define(
                 this.delete_comment(commentToDelete);
                 self.$('.s-image-area').fadeTo("slow", 1);
             }else{
-                alert("You haven't taken this item. Cannot untake it");
+                //alert("This item remains tagged #taken by another user.");
             }
         },
 
