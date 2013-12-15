@@ -56,6 +56,14 @@ define(['views/photos','../../theme/views/feed'],
                     self.change_page();
                 }
 
+            },
+
+            events:{
+                'click .x-menu-button': 'open_menu'
+            },
+
+            open_menu : function(){
+                $('.x-side-menu').panel('open');
             }
 
 });

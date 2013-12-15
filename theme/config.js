@@ -209,22 +209,16 @@ return {
                 slug: 'browse'
             },
             {
-                url: '#/photos/?not_tagged=taken&location=current_location&radius=5000',
-                icon: "large-film",
-                label: 'Available Nearby',
-                slug: 'not-taken'
-            },
-           {
                 url: '#/photos/',
                 icon: "large-film",
                 label: 'All',
                 slug: 'photos'
             },
-           {
-                url: '#/map/',
-                icon: "large-flag",
-                label: 'Map',
-                slug: 'map'
+            {
+                url: '#/photos/?not_tagged=taken&location=current_location&radius=5000',
+                icon: "large-film",
+                label: 'Not Taken',
+                slug: 'not-taken'
             },
             {
                 url: '#/logout/',
@@ -396,7 +390,7 @@ return {
         {
             name: 'photos',
             view: theme_views_path + 'photos',
-            template: 'photos',
+            template: theme_templates_path + 'photos',
             extra:{
                 list_item_template: theme_templates_path + 'list_item'
             }
@@ -404,7 +398,7 @@ return {
         {
             name: 'browse',
             view: theme_views_path + 'photos',
-            template: 'photos',
+            template: theme_templates_path + 'photos',
             extra:{
             query: {
                 location: 'current_location',
