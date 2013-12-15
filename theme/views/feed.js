@@ -304,10 +304,9 @@ define(
             "click .x-show-comments": "show_comments",
             "click .x-goto-map": "goto_map",
             "click .x-goto-spot": "goto_spot",
-            "click .take-it": "take_it",
-            "click .leave-it": "leave_it",
             "click .x-delete": "delete",
-            "click .x-flag": "flag"
+            "click .x-flag": "flag",
+            "change .taken": "taken_switch"
         },
 
         render: function(sections){
@@ -402,6 +401,15 @@ define(
             return(self.is_tagged(self.takenTag));
         },
 
+        taken_switch: function(){var self=this;
+            var taken = self.$('.taken').val();
+            if (taken === "on") {
+                this.take_it();
+            } else{
+                this.leave_it();
+            }
+        },
+
         take_it : function(){ var self = this;
             if (!this.is_taken()) {
                 if (confirm("Take this item?")){
@@ -416,13 +424,13 @@ define(
         },
 
         leave_it : function(){ var self = this;
-                var commentToDelete = this.get_comment_id(this.takenTag);
-                if (commentToDelete !== 0) {
-                    this.delete_comment(commentToDelete);
-                    self.$('.s-image-area').fadeTo("slow", 1);
-                }else{
-                    alert("You haven't taken this item. Cannot untake it");
-                }
+            var commentToDelete = this.get_comment_id(this.takenTag);
+            if (commentToDelete !== 0) {
+                this.delete_comment(commentToDelete);
+                self.$('.s-image-area').fadeTo("slow", 1);
+            }else{
+                alert("You haven't taken this item. Cannot untake it");
+            }
         },
 
         get_comment_id: function(commentContent) {var self=this;

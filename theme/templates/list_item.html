@@ -47,10 +47,10 @@
     <div class="s-action-buttons x-action-buttons">
 
         <!-- Take It button -->
-        <a data-role="button" data-theme="c" data-inline="true"  data-mini="true" data-icon="tag" data-iconpos="notext" class="take-it">#taken</a>
+<!--         <a data-role="button" data-theme="c" data-inline="true"  data-mini="true" data-icon="tag" data-iconpos="notext" class="take-it">#taken</a> -->
 
         <!-- Leave it button -->
-        <a data-role="button" data-theme="c" data-inline="true"  data-mini="true" data-icon="remove" data-iconpos="notext" class="leave-it">Not Taken</a>
+        <!-- <a data-role="button" data-theme="c" data-inline="true"  data-mini="true" data-icon="remove" data-iconpos="notext" class="leave-it">Not Taken</a> -->
 
         <!-- Comment button -->
         <a data-role="button" data-theme="c" data-inline="true" data-mini="true"  data-icon="comments" data-inline="true" data-iconpos="notext" class="x-comment-button">Comment</a>
@@ -66,14 +66,13 @@
             </a>
         <%}%>
 
-        <!-- taken switch -->
+        <!-- Taken switch -->
         <br />
         <!-- <label for="taken">Select slider:</label> -->
-        <select name="taken" id="taken" data-native-menu="true" data-role="slider" data-theme='c' data-mini="true">
+        <select name="taken" class="taken" data-native-menu="true" data-role="slider" data-theme='c' data-mini="true">
           <option value="off">Untaken</option>
           <option value="on">Taken</option>
         </select>
-
     </div>
 
     <!-- reactions -->
