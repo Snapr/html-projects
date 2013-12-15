@@ -15,6 +15,12 @@
 <div class="s-image-details">
 		<span class="s-time"><%= string_utils.short_timestamp(item.get('date'), true ) %></span>
 
+    <% if(item.has('location') && item.get('location').location){ %>
+        <a class="x-goto-map s-location text-muted" data-role="button" data-mini="true" data-theme="a" data-icon="location" data-iconpos="left" data-inline="true">
+           <%= string_utils.short_location(item.get('location').location) %>
+        </a>
+    <% }%>
+
     <div class="s-description"><%= string_utils.comment_links( item.get('description') ) %>
         <% if (item.has('location') && item.get('location').spot_id){%>
         <a class="s-spot x-goto-spot">
@@ -23,19 +29,20 @@
         <%}%>
     </div>
 
- 	<% if(item.get('rating') >= 2){ %>
-    <p class="s-featured s-icon-left"><span class="ui-icon ui-icon-star-empty"></span> Featured!</p>
-	<% } %>
-
-    <% if(item.has('location') && item.get('location').location){ %>
-        <a class="x-goto-map s-location text-muted" data-role="button" data-mini="true" data-theme="a" data-icon="location" data-iconpos="left" data-inline="true">
-           <%= string_utils.short_location(item.get('location').location) %>
-        </a>
-    <% }%>
+   	<% if(item.get('rating') >= 2){ %>
+      <p class="s-featured s-icon-left"><span class="ui-icon ui-icon-star-empty"></span> Featured!</p>
+  	<% } %>
 
     <% if(config.get('app_group') == 'snapr' && item.has('app') && item.get('app').slug !== 'snapr'){ %>
         &mdash; via <a href="http://apps.sna.pr/<%= item.get('app').slug %>/" target="blank"><%= item.get('app').name %></a>
     <% }%>
+
+    <!-- Taken switch -->
+    <!-- <label for="taken">Select slider:</label> -->
+    <select name="taken" class="taken" data-native-menu="true" data-role="slider" data-theme='c' data-mini="true">
+      <option value="off">Take it</option>
+      <option value="on">Taken</option>
+    </select>
 
     <ul class="x-comments s-comments">
         <% _.each(item.get('latest_comments'), function(comment){ %>
@@ -65,14 +72,6 @@
                 <% if (item.get('flagged')){%> flagged <% }else{ %> flag <% } %>
             </a>
         <%}%>
-
-        <!-- Taken switch -->
-        <br />
-        <!-- <label for="taken">Select slider:</label> -->
-        <select name="taken" class="taken" data-native-menu="true" data-role="slider" data-theme='c' data-mini="true">
-          <option value="off">Untaken</option>
-          <option value="on">Taken</option>
-        </select>
     </div>
 
     <!-- reactions -->
