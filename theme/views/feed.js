@@ -317,8 +317,9 @@ define(
                 item: this.model,
                 city: this.get_city(),
                 share_settings: local_storage.get('feed_share_settings') || {},
-                taken : this.is_taken()
-            };
+                taken : this.is_taken(),
+                takenByUser : this.is_taken_by_user()
+            };  
 
             if(sections){
                 return this.replace_from_template(context, sections);

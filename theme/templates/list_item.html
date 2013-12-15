@@ -40,8 +40,13 @@
     <!-- Taken switch -->
     <!-- <label for="taken">Select slider:</label> -->
     <select name="taken" class="taken" data-native-menu="true" data-role="slider" data-theme='c' data-mini="true">
-      <option value="off">Take it</option>
-      <option value="on">Taken</option>
+      <% if(takenByUser === true) { %>
+          <option value="off">Take it</option>
+          <option value="on" selected="selected">Taken</option>
+      <% } else { %>   
+          <option value="off">Take it</option>
+          <option value="on">Taken</option>
+      <% } %>      
     </select>
 
     <ul class="x-comments s-comments">
