@@ -416,12 +416,12 @@ return {
         {
             name: 'share',
             view: theme_views_path + 'share',
-            template: theme_templates_path + 'share',
+            template: theme_templates_path + 'share'
         },
         {
             name: 'map',
             view: theme_views_path + 'map',
-            template: theme_templates_path + 'map',
+            template: theme_templates_path + 'map'
         },
         // {
         //     name: 'welcome',
