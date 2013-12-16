@@ -162,6 +162,11 @@
         display: none !important;
     }
 
+    .ui-btn-active {
+        background-color: lightblue !important;
+        color: #666!important;
+    }
+
     .s-image-details {
         padding-left: 0 !important;
     }
@@ -176,6 +181,18 @@
 
     div[data-role="footer"] .ui-btn{
       letter-spacing: 0.1em;
+    }
+
+    #browse-menu{ //position of select menu, see variables.less config for options
+          position: fixed;
+          bottom: 40px;
+          left: 0;
+          width: 160px;
+        }
+
+    #browse-menu .ui-btn{ //buttons inside the select browse menu
+        text-align: center;
+        font-size: 0.8em;
     }
 
 }
