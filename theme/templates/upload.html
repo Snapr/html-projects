@@ -1,0 +1,41 @@
+<div id="upload" data-role="page" data-short-title="<%= T('Upload') %>" data-theme="b" data-ajax="false" data-tab-bar="false">
+    <div data-role="header">
+        <h1><%= T('Upload') %></h1>
+        <a href="#/" class="ui-btn-right" data-role="button" data-icon="delete" data-iconpos="notext"></a>
+    </div>
+    <div data-role="content">
+
+            <form id="upload-form" action="javascript:void(0);" method="POST" enctype="multipart/form-data">
+                <input type="hidden" name="redirect_uri" class="x-redirect-uri" id="redirect_uri"/>
+                <input type="hidden" name="device-time" class="x-device-time" id="device-time"/>
+                <input type="hidden" name="-set-later-" class="x-access-token" id="_access_token"/>
+                <input type="hidden" name="app_group" class="x-app-group" id="app_group"/>
+                <input type="hidden" name="privacy" class="x-privacy" id="privacy" value="queued"/>
+                
+                <p class="s-warning-message">
+                    <%= T('Oops! You have landed at our old style uploader..') %></br>
+                    <%= T('Might be time to update your browser!') %></br>
+                    <%= T('Or you could') %> <a class="s-fx-get-app" target="blank" href="http://apps.sna.pr/<%= config.get('app_group') %>"><%= T('try your luck with the') %> <%= config.get('app_name') %> <%= T('app') %> &rsaquo;</a></br>
+                    
+                    
+                </p>
+
+                <ul data-role="listview" data-inset="true" data-theme="a" class="s-upload-dialog">
+
+                    <li>
+                        <h1><%= T('Select a photo to upload') %>:</h1>
+                        <input type="file" name="photo" id="upload-file" class="x-file" />
+                    </li>
+                    <li class="ui-hide-label">
+                        <p>*<%= T('Images should be in .jpg format') %></p>
+                    </li>
+                    <li class="ui-hide-label">
+                        <div id="upload-status" class="x-upload-status"></div>
+                    </li>
+                </ul>
+
+
+                <input disabled="true" type="submit" value="<%= T('Upload Snap') %>" id="upload-submit" data-theme="e" />
+            </form>
+    </div>
+</div>

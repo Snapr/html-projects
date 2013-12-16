@@ -417,6 +417,14 @@ return {
             view: theme_views_path + 'map',
             template: theme_templates_path + 'map'
         },
+        {
+            name: 'uploading',
+            template: theme_templates_path + 'uploading'
+        },
+        {
+            name: 'search',
+            template: theme_templates_path + 'search'
+        },
         // {
         //     name: 'welcome',
         //     view: 'welcome',
