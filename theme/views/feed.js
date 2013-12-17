@@ -309,7 +309,8 @@ define(
             "click .x-delete": "delete",
             "click .x-flag": "flag",
             "change .taken": "taken_switch",
-            "click .edit-material": "edit_material"
+            //"click .edit-material": "show_comments",
+            "click .edit-material" : "show_comments"
         },
 
         render: function(sections){
@@ -474,7 +475,6 @@ define(
         },
 
         edit_material : function () { var self = this;
-            console.log("it is on till the break of dawn");
             var description = "new";
             self.model.set({
                 description: description

@@ -69,16 +69,39 @@
         
         <!-- Flag or Delete button -->
         <% if (item.get("username") && item.get("username").toLowerCase() == (auth.get("snapr_user") || "").toLowerCase()){ %>
-            <a class="x-delete" data-role="button" data-icon="trash" data-iconpos="notext" data-theme="c" data-inline="true" data-mini="true" >
-            <a class="edit-material" data-role="button" data-icon="file" data-iconpos="notext" data-theme="c" data-inline="true" data-mini="true" >
+            <a class="x-delete" data-role="button" data-icon="trash" data-iconpos="notext" data-theme="c" data-inline="true" data-mini="true" ></a>
+<!--             <a class="edit-material" data-role="button" data-icon="file" data-iconpos="notext" data-theme="c" data-inline="true" data-mini="true" >
                Delete
-           </a>
+           </a> -->
+          <a class="select-material">
+              <select name="material-choice" class="material-choice" data-native-menu="false" data-theme="c" data-mini="true" data-inline="true">
+                  <option>Edit Material</option>
+                  <option value="#artsupplies">Art Supplies</option>
+                  <option value="#concrete">Concrete</option>
+                  <option value="#constructionmaterial">Construction</option>
+                  <option value="#electronics">Electronics</option>
+                  <option value="#glass">Glass</option>
+                  <option value="#metal">Metal</option>
+                  <option value="#paper">Paper</option>
+                  <option value="#plastic">Plastic</option>
+                  <option value="#rubber">Rubber</option>
+                  <option value="#stone">Stone</option>
+                  <option value="#textile">Textile</option>
+                  <option value="#wood">Wood</option>
+                  <option value="#othermaterial">Other</option>
+              </select>
+          </a>
+
+            <a class="edit-material" data-role="button" data-icon="check" data-iconpos="notext" data-theme="c" data-inline="true" data-mini="true" ></a>
+
+
         <%} else if(config.get('moderation_controls')){ %>
             <a class="x-flag" data-role="button" data-icon="flag" data-iconpos="notext" data-theme="c" data-inline="true" data-mini="true" >
                 <% if (item.get('flagged')){%> flagged <% }else{ %> flag <% } %>
             </a>
         <%}%>
     </div>
+
 
     <!-- reactions -->
     <div data-role="popup" class="x-reactions s-popup" data-theme="a" data-overlay-theme="b">
@@ -102,3 +125,4 @@
 </div>
 
 <% } %>
+
