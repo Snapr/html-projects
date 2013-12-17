@@ -1,3 +1,5 @@
+//overwrites views/components/feed, different functonality (fav vs take/untake , no more button or share or username)
+
 /*global _, define, T */
 define(
     ['backbone', 'config', 'auth', 'views/base/view', 'utils/alerts', 'utils/analytics', 'utils/history_state', 'utils/local_storage', 'collections/photo', 'models/favorite', 'models/comment', 'utils/geo'],

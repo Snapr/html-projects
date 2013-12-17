@@ -1,13 +1,6 @@
-/*global _  define require */
-define(['views/photos','../../theme/views/feed'],
-    function(base_view, feed){
-        return base_view.extend({
-
-            post_initialize: function(options){
-                base_view.prototype.post_initialize.call(this, options);
-                console.log('extended view initialized.');
-
-            },
+/*global _, define, require, T */
+define(['config', '../../theme/views/page', '../../theme/views/feed'], function(config, page_view, feed){
+    return page_view.extend({
 
             post_activate: function(options){  var self = this;
                 if(!_.isEqual(self.options.query,self.previous_query)){

@@ -1,3 +1,6 @@
+//overwrites original (bc returns a new instance rather than a view, and not using snapr original)
+//still, kept it as close as possible
+
 /*global _, define, require */
 define(['views/base/view', 'auth', 'config', 'collections/upload_progress', 'views/components/activity_count', 'utils/history_state'], function(view, auth, config, upload_progress_collection, activity_count, history_state){
 var tab_bar = view.extend({
@@ -18,12 +21,19 @@ var tab_bar = view.extend({
 
     events:{
         'click a': 'handle_click',
-        'click .x-menu-button': 'open_menu',
-        'change #browse': 'select_menu'
+        // 'click .x-menu-button': 'open_menu',
+        'change #browse': 'select_menu' //tc
     },
 
     select_menu: function(){
-        alert('we did it!');
+        var selected = self.$('#browse').val();
+        if (selected === "browse") {
+            window.location.href = '/#/browse/';
+        } else if(selected === "map") {
+            window.location.href = '/#/map/';
+        }else {
+            window.location.href = '/#/search/';
+        }
     },
 
     render: function(message, icon){
@@ -93,9 +103,9 @@ var tab_bar = view.extend({
         this.set_active(this.active);
     },
 
-    open_menu: function(){
-        $('.x-side-menu').panel('open');
-    },
+    // open_menu: function(){
+    //     $('.x-side-menu').panel('open');
+    // },
 
     menu_click: function(e){
         // close menu if you click on a link to the current view
