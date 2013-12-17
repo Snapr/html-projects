@@ -308,7 +308,8 @@ define(
             "click .x-goto-spot": "goto_spot",
             "click .x-delete": "delete",
             "click .x-flag": "flag",
-            "change .taken": "taken_switch"
+            "change .taken": "taken_switch",
+            "click .edit-material": "edit_material"
         },
 
         render: function(sections){
@@ -321,7 +322,7 @@ define(
                 share_settings: local_storage.get('feed_share_settings') || {},
                 taken : this.is_taken(),
                 takenByUser : this.is_taken_by_user()
-            };  
+            };
 
             if(sections){
                 return this.replace_from_template(context, sections);
@@ -472,6 +473,10 @@ define(
                 self.render(['.x-comments']).enhanceWithin();
         },
 
+        edit_material : function () {
+            console.log("it is on till the break of dawn");
+        },
+
         show_comments: function(){  var self = this;
             self.show_reactions('comments');
         },
@@ -567,7 +572,6 @@ define(
                 };
 
                 var comment_count = parseInt( self.model.get('comments'), 10 ) + 1;
-                console.log("comment_count: " + comment_count);
                 latest_comments = self.model.get('latest_comments');
                 latest_comments.push(comment.data);
 

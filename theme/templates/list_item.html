@@ -70,6 +70,7 @@
         <!-- Flag or Delete button -->
         <% if (item.get("username") && item.get("username").toLowerCase() == (auth.get("snapr_user") || "").toLowerCase()){ %>
             <a class="x-delete" data-role="button" data-icon="trash" data-iconpos="notext" data-theme="c" data-inline="true" data-mini="true" >
+            <a class="edit-material" data-role="button" data-icon="file" data-iconpos="notext" data-theme="c" data-inline="true" data-mini="true" >
                Delete
            </a>
         <%} else if(config.get('moderation_controls')){ %>
