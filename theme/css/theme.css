@@ -2217,7 +2217,7 @@ fieldset.ui-controlgroup {
   filter: alpha(opacity=0);
 }
 .ui-popup-container {
-  z-index: 1100;
+  z-index: 1101;
   display: inline-block;
   position: absolute;
   padding: 0;
