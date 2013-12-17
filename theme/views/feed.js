@@ -475,12 +475,27 @@ define(
 
         edit_material : function () { var self = this;
             console.log("it is on till the break of dawn");
-            var description = "new description";
+            var description = "new";
             self.model.set({
                 description: description
             });
 
             self.render(['.s-description']).enhanceWithin();
+
+
+            var ajax_options = {};
+            ajax_options =  {
+                url: config.get('api_base') + "/photo/",
+                dataType: "jsonp",
+                data: _.extend({}, auth.attributes, {
+                    id: self.model.get('id'),
+                    description : description,
+                    display_username: 0, //or get warning back
+                    _method: "POST"
+                })
+            };
+
+             $.ajax( ajax_options );
 
         },
 
