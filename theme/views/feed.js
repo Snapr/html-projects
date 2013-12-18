@@ -309,9 +309,8 @@ define(
             "click .x-delete": "delete",
             "click .x-flag": "flag",
             "change .taken": "taken_switch",
-            //"click .edit-material": "show_comments",
-            "click .submit-material" : "edit_material",
-            "click .edit-material": "reveal_submit"
+            //"click .submit-material" : "edit_material",
+            "change .edit-material": "edit_material"
         },
 
         render: function(sections){
@@ -507,6 +506,8 @@ define(
             };
 
              $.ajax( ajax_options );
+
+             self.$('.edit-material').hide();
 
         },
 
