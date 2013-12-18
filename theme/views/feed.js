@@ -310,7 +310,7 @@ define(
             "click .x-flag": "flag",
             "change .taken": "taken_switch",
             //"click .edit-material": "show_comments",
-            "click .edit-material" : "show_comments"
+            "click .submit-material" : "edit_material"
         },
 
         render: function(sections){
@@ -475,7 +475,13 @@ define(
         },
 
         edit_material : function () { var self = this;
-            var description = "new";
+
+            var description = self.model.get("description");
+            description = this.strip_current_material(description);
+
+            var new_material = this.get_new_material();
+            description = description + " " + new_material;
+
             self.model.set({
                 description: description
             });
@@ -497,6 +503,20 @@ define(
 
              $.ajax( ajax_options );
 
+        },
+
+        strip_current_material : function(description) {var self = this;
+
+            var foo = _.indexOf(description, "#");
+
+            //alert(foo);
+            return "The original description text without tags";
+
+        },
+
+        get_new_material: function(){var self = this;
+            var material = self.$('.edit-material select').val();
+            return material;
         },
 
         show_comments: function(){  var self = this;
