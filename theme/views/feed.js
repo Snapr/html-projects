@@ -310,7 +310,8 @@ define(
             "click .x-flag": "flag",
             "change .taken": "taken_switch",
             //"click .edit-material": "show_comments",
-            "click .submit-material" : "edit_material"
+            "click .submit-material" : "edit_material",
+            "click .edit-material": "reveal_submit"
         },
 
         render: function(sections){
@@ -474,6 +475,10 @@ define(
                 self.render(['.x-comments']).enhanceWithin();
         },
 
+        reveal_submit : function () { var self = this;
+                self.$('.submit-material').show();
+        },
+
         edit_material : function () { var self = this;
 
             var description = self.model.get("description");
@@ -507,10 +512,11 @@ define(
 
         strip_current_material : function(description) {var self = this;
 
-            var foo = _.indexOf(description, "#");
-
-            //alert(foo);
-            return "The original description text without tags";
+            var firstTag = _.indexOf(description, "#");
+                if(firstTag !== -1) { //there should always be a tag anyway since it is required
+                    description = description.slice(0,firstTag);
+                }
+            return description;
 
         },
 
