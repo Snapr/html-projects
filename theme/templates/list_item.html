@@ -21,12 +21,36 @@
         </a>
     <% }%>
 
+
     <div class="s-description"><%= string_utils.comment_links( item.get('description') ) %>
         <% if (item.has('location') && item.get('location').spot_id){%>
         <a class="s-spot x-goto-spot">
             @ <%= item.get('location').foursquare_venue_name %>
         </a>
         <%}%>
+
+              <% if (item.get("username") && item.get("username").toLowerCase() == (auth.get("snapr_user") || "").toLowerCase()){ %>
+
+        <a class="edit-material"><select name="edit-material" data-native-menu="false" data-theme="c" data-mini="true" data-inline="true" data-iconpos="noicon"> 
+              <option>Edit Material</option>
+              <option value="#artsupplies">Art Supplies</option>
+              <option value="#concrete">Concrete</option>
+              <option value="#constructionmaterial">Construction</option>
+              <option value="#electronics">Electronics</option>
+              <option value="#glass">Glass</option>
+              <option value="#metal">Metal</option>
+              <option value="#paper">Paper</option>
+              <option value="#plastic">Plastic</option>
+              <option value="#rubber">Rubber</option>
+              <option value="#stone">Stone</option>
+              <option value="#textile">Textile</option>
+              <option value="#wood">Wood</option>
+              <option value="#othermaterial">Other</option>
+          </select></a>
+
+        <a style="display:none" class="submit-material" data-role="button" data-icon="check" data-iconpos="notext" data-theme="c" data-inline="true" data-mini="true" ></a>
+
+    <%}  %>
     </div>
 
    	<% if(item.get('rating') >= 2){ %>
@@ -56,6 +80,8 @@
         <% if(item.get('comments') > 10){ %><li><a class="x-show-comments"><%= T('Show more comments') %></a></li><% } %>
     </ul>
 
+
+
     <div class="s-action-buttons x-action-buttons">
 
         <!-- Take It button -->
@@ -70,26 +96,6 @@
         <!-- Flag or Delete button -->
         <% if (item.get("username") && item.get("username").toLowerCase() == (auth.get("snapr_user") || "").toLowerCase()){ %>
             <a class="x-delete" data-role="button" data-icon="trash" data-iconpos="notext" data-theme="c" data-inline="true" data-mini="true" ></a>
-
-            <a class="edit-material"><select name="edit-material" data-native-menu="false" data-theme="c" data-mini="true" data-inline="true"> 
-                  <option>Edit Material</option>
-                  <option value="#artsupplies">Art Supplies</option>
-                  <option value="#concrete">Concrete</option>
-                  <option value="#constructionmaterial">Construction</option>
-                  <option value="#electronics">Electronics</option>
-                  <option value="#glass">Glass</option>
-                  <option value="#metal">Metal</option>
-                  <option value="#paper">Paper</option>
-                  <option value="#plastic">Plastic</option>
-                  <option value="#rubber">Rubber</option>
-                  <option value="#stone">Stone</option>
-                  <option value="#textile">Textile</option>
-                  <option value="#wood">Wood</option>
-                  <option value="#othermaterial">Other</option>
-              </select></a>
-
-            <a class="submit-material" data-role="button" data-icon="check" data-iconpos="notext" data-theme="c" data-inline="true" data-mini="true" ></a>
-
 
         <%} else if(config.get('moderation_controls')){ %>
             <a class="x-flag" data-role="button" data-icon="flag" data-iconpos="notext" data-theme="c" data-inline="true" data-mini="true" >
