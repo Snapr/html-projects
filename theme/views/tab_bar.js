@@ -29,10 +29,13 @@ var tab_bar = view.extend({
         var selected = self.$('#browse').val();
         if (selected === "browse") {
             window.location.href = '/#/browse/';
+            $('div[data-role="footer"]').show();
         } else if(selected === "map") {
             window.location.href = '/#/map/';
+            $('div[data-role="footer"]').hide();
         }else {
             window.location.href = '/#/search/';
+            $('div[data-role="footer"]').hide();
         }
     },
 
