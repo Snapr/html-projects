@@ -1,4 +1,4 @@
-define(['views/share'], function(share_view){
+define(['views/share', '../../theme/views/material'], function(share_view, material){
     return share_view.extend({
 
         events: {
