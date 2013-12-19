@@ -31,22 +31,12 @@
 
               <% if (item.get("username") && item.get("username").toLowerCase() == (auth.get("snapr_user") || "").toLowerCase()){ %>
 
-        <a class="edit-material"><select name="edit-material" data-native-menu="true" data-theme="c" data-mini="true" data-inline="true" data-iconpos="noicon"> 
-              <option>Edit Material</option>
-              <option value="#artsupplies">Art Supplies</option>
-              <option value="#concrete">Concrete</option>
-              <option value="#constructionmaterial">Construction</option>
-              <option value="#electronics">Electronics</option>
-              <option value="#glass">Glass</option>
-              <option value="#metal">Metal</option>
-              <option value="#paper">Paper</option>
-              <option value="#plastic">Plastic</option>
-              <option value="#rubber">Rubber</option>
-              <option value="#stone">Stone</option>
-              <option value="#textile">Textile</option>
-              <option value="#wood">Wood</option>
-              <option value="#othermaterial">Other</option>
-          </select></a>
+        <a class="edit-material">
+            <select name="edit-material" data-native-menu="true" data-theme="c" data-mini="true" data-inline="true" data-iconpos="noicon"> 
+                <option>Edit Material</option>
+                <%= material_select_html %>
+            </select>
+        </a>
 
         <a style="display:none" class="submit-material" data-role="button" data-icon="check" data-iconpos="notext" data-theme="c" data-inline="true" data-mini="true" ></a>
 
