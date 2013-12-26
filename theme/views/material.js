@@ -45,7 +45,7 @@ var materials = {
 	},
 	textile: {
 		name: 'Textile',
-		tag :  '#textile'
+		tag : '#textile'
 	},
 	wood: {
 		name: 'Wood',
