@@ -4303,6 +4303,17 @@ html body .ui-group-theme-a .ui-bar-inherit.ui-li-divider small {
   text-align: center;
   font-size: 0.8em;
 }
+.ui-overlay-a .s-time,
+.ui-page-theme-a .s-time,
+.ui-page-theme-a .ui-panel-wrapper .s-time {
+  float: right;
+  cursor: cursor;
+}
+.ui-overlay-a .s-location,
+.ui-page-theme-a .s-location,
+.ui-page-theme-a .ui-panel-wrapper .s-location {
+  text-transform: uppercase;
+}
 .ui-overlay-a .s-image-details,
 .ui-page-theme-a .s-image-details,
 .ui-page-theme-a .ui-panel-wrapper .s-image-details {
@@ -5717,6 +5728,17 @@ html body .ui-group-theme-c .ui-bar-inherit.ui-li-divider small {
   text-align: center;
   font-size: 0.8em;
 }
+.ui-overlay-c .s-time,
+.ui-page-theme-c .s-time,
+.ui-page-theme-c .ui-panel-wrapper .s-time {
+  float: right;
+  cursor: cursor;
+}
+.ui-overlay-c .s-location,
+.ui-page-theme-c .s-location,
+.ui-page-theme-c .ui-panel-wrapper .s-location {
+  text-transform: uppercase;
+}
 .ui-overlay-c .s-image-details,
 .ui-page-theme-c .s-image-details,
 .ui-page-theme-c .ui-panel-wrapper .s-image-details {
@@ -6447,6 +6469,17 @@ html body .ui-group-theme-d .ui-bar-inherit.ui-li-divider small {
   text-align: center;
   font-size: 0.8em;
 }
+.ui-overlay-d .s-time,
+.ui-page-theme-d .s-time,
+.ui-page-theme-d .ui-panel-wrapper .s-time {
+  float: right;
+  cursor: cursor;
+}
+.ui-overlay-d .s-location,
+.ui-page-theme-d .s-location,
+.ui-page-theme-d .ui-panel-wrapper .s-location {
+  text-transform: uppercase;
+}
 .ui-overlay-d .s-image-details,
 .ui-page-theme-d .s-image-details,
 .ui-page-theme-d .ui-panel-wrapper .s-image-details {
@@ -7176,6 +7209,17 @@ html body .ui-group-theme-e .ui-bar-inherit.ui-li-divider small {
 .ui-page-theme-e .ui-panel-wrapper #browse-menu .ui-btn {
   text-align: center;
   font-size: 0.8em;
+}
+.ui-overlay-e .s-time,
+.ui-page-theme-e .s-time,
+.ui-page-theme-e .ui-panel-wrapper .s-time {
+  float: right;
+  cursor: cursor;
+}
+.ui-overlay-e .s-location,
+.ui-page-theme-e .s-location,
+.ui-page-theme-e .ui-panel-wrapper .s-location {
+  text-transform: uppercase;
 }
 .ui-overlay-e .s-image-details,
 .ui-page-theme-e .s-image-details,

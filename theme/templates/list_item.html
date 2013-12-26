@@ -2,6 +2,13 @@
     <p class="text-muted center">Image not found</p>
 <% }else{ %>
 
+  <% if(item.has('location') && item.get('location').location){ %>
+      <a class="x-goto-map s-location text-muted" data-role="button" data-mini="true" data-theme="a" data-icon="location" data-iconpos="left" data-inline="true">
+         <%= string_utils.short_location(item.get('location').location) %>
+      </a>
+  <% }%>
+  <a href="#" class="s-time" data-role="button" data-mini="true"><%= string_utils.short_timestamp(item.get('date'), true ) %></a>
+
   <% if(taken === true) { %>
   <div class="s-image-area" style="opacity:0.5">
   <% } else { %>   
@@ -25,14 +32,6 @@
 </div>
 
 <div class="s-image-details">
-		<span class="s-time"><%= string_utils.short_timestamp(item.get('date'), true ) %></span>
-
-    <% if(item.has('location') && item.get('location').location){ %>
-        <a class="x-goto-map s-location text-muted" data-role="button" data-mini="true" data-theme="a" data-icon="location" data-iconpos="left" data-inline="true">
-           <%= string_utils.short_location(item.get('location').location) %>
-        </a>
-    <% }%>
-
 
     <div class="s-description"><%= string_utils.comment_links( item.get('description') ) %>
         <% if (item.has('location') && item.get('location').spot_id){%>
