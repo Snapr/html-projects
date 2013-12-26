@@ -4313,12 +4313,14 @@ html body .ui-group-theme-a .ui-bar-inherit.ui-li-divider small {
 .ui-page-theme-a .s-location,
 .ui-page-theme-a .ui-panel-wrapper .s-location {
   text-transform: uppercase;
+  letter-spacing: 0.06em;
 }
 .ui-overlay-a .s-description,
 .ui-page-theme-a .s-description,
 .ui-page-theme-a .ui-panel-wrapper .s-description {
   background-color: #e6e6e6;
   padding: 10px;
+  border-radius: 5px;
 }
 .ui-overlay-a .s-description a[href],
 .ui-page-theme-a .s-description a[href],
@@ -5771,12 +5773,14 @@ html body .ui-group-theme-c .ui-bar-inherit.ui-li-divider small {
 .ui-page-theme-c .s-location,
 .ui-page-theme-c .ui-panel-wrapper .s-location {
   text-transform: uppercase;
+  letter-spacing: 0.06em;
 }
 .ui-overlay-c .s-description,
 .ui-page-theme-c .s-description,
 .ui-page-theme-c .ui-panel-wrapper .s-description {
   background-color: #e6e6e6;
   padding: 10px;
+  border-radius: 5px;
 }
 .ui-overlay-c .s-description a[href],
 .ui-page-theme-c .s-description a[href],
@@ -6545,12 +6549,14 @@ html body .ui-group-theme-d .ui-bar-inherit.ui-li-divider small {
 .ui-page-theme-d .s-location,
 .ui-page-theme-d .ui-panel-wrapper .s-location {
   text-transform: uppercase;
+  letter-spacing: 0.06em;
 }
 .ui-overlay-d .s-description,
 .ui-page-theme-d .s-description,
 .ui-page-theme-d .ui-panel-wrapper .s-description {
   background-color: #e6e6e6;
   padding: 10px;
+  border-radius: 5px;
 }
 .ui-overlay-d .s-description a[href],
 .ui-page-theme-d .s-description a[href],
@@ -7319,12 +7325,14 @@ html body .ui-group-theme-e .ui-bar-inherit.ui-li-divider small {
 .ui-page-theme-e .s-location,
 .ui-page-theme-e .ui-panel-wrapper .s-location {
   text-transform: uppercase;
+  letter-spacing: 0.06em;
 }
 .ui-overlay-e .s-description,
 .ui-page-theme-e .s-description,
 .ui-page-theme-e .ui-panel-wrapper .s-description {
   background-color: #e6e6e6;
   padding: 10px;
+  border-radius: 5px;
 }
 .ui-overlay-e .s-description a[href],
 .ui-page-theme-e .s-description a[href],
