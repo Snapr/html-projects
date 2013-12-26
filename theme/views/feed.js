@@ -309,7 +309,8 @@ define(
             "click .x-delete": "delete",
             "click .x-flag": "flag",
             "change .taken": "taken_switch",
-            "blur .newDescription" : "edit_description"
+            "blur .newDescription" : "edit_description",
+            "click .tags" : "make_textarea"
             //"change .edit-material": "edit_material"
         },
 
@@ -368,6 +369,13 @@ define(
             }
 
             return city;
+        },
+
+        is_author: function() {var self=this;
+            if (self.model.get('username') === auth.get('snapr_user')) {
+                return true;
+            }
+            return false;
         },
 
         is_tagged: function(tag){var self=this;
@@ -475,33 +483,42 @@ define(
         },
 
         reveal_submit : function () { var self = this;
-                self.$('.submit-material').show();
+            self.$('.submit-material').show();
+        },
+
+        make_textarea : function () { var self = this;
+            //if (this.is_author() === true) {
+                self.$('.s-description-editable').show();
+                self.$('.s-description').hide();
+                self.$('.newDescription').focus();
+            //}  //currently can only click if author (see template if)
         },
 
         edit_description : function () { var self = this;
-            var description = self.$('.newDescription').val();
-            //only do it if the description has changed!
-            
-            self.model.set({
-                description: description
-            });
+            var description = self.model.get('description');
+            var newDescription = self.$('.newDescription').val();
+            //don't do anything if use hasn't changed the description field          
+            if (description !== newDescription) {
+                self.model.set({
+                    description: newDescription
+                });
 
-            self.render(['.s-description-editable']).enhanceWithin();
-            //prepare for connectivity error
-            var ajax_options = {};
-            ajax_options =  {
-                url: config.get('api_base') + "/photo/",
-                dataType: "jsonp",
-                data: _.extend({}, auth.attributes, {
-                    id: self.model.get('id'),
-                    description : description,
-                    display_username: 0, //or get warning back
-                    _method: "POST"
-                })
-            };
+                //prepare for connectivity error
+                var ajax_options = {};
+                ajax_options =  {
+                    url: config.get('api_base') + "/photo/",
+                    dataType: "jsonp",
+                    data: _.extend({}, auth.attributes, {
+                        id: self.model.get('id'),
+                        description : newDescription,
+                        display_username: 0, //or get warning back
+                        _method: "POST"
+                    })
+                };
 
-             $.ajax( ajax_options );
-
+                 $.ajax( ajax_options );
+            }
+            self.render(['.tags']).enhanceWithin();
         },
 
         edit_material : function () { var self = this;

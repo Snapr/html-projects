@@ -4336,6 +4336,11 @@ html body .ui-group-theme-a .ui-bar-inherit.ui-li-divider small {
   padding-left: 0 !important;
   padding: 0;
 }
+.ui-overlay-a .tags,
+.ui-page-theme-a .tags,
+.ui-page-theme-a .ui-panel-wrapper .tags {
+  cursor: pointer;
+}
 .ui-overlay-a .s-description-editable textarea,
 .ui-page-theme-a .s-description-editable textarea,
 .ui-page-theme-a .ui-panel-wrapper .s-description-editable textarea {
@@ -5789,6 +5794,11 @@ html body .ui-group-theme-c .ui-bar-inherit.ui-li-divider small {
   padding-left: 0 !important;
   padding: 0;
 }
+.ui-overlay-c .tags,
+.ui-page-theme-c .tags,
+.ui-page-theme-c .ui-panel-wrapper .tags {
+  cursor: pointer;
+}
 .ui-overlay-c .s-description-editable textarea,
 .ui-page-theme-c .s-description-editable textarea,
 .ui-page-theme-c .ui-panel-wrapper .s-description-editable textarea {
@@ -6558,6 +6568,11 @@ html body .ui-group-theme-d .ui-bar-inherit.ui-li-divider small {
   padding-left: 0 !important;
   padding: 0;
 }
+.ui-overlay-d .tags,
+.ui-page-theme-d .tags,
+.ui-page-theme-d .ui-panel-wrapper .tags {
+  cursor: pointer;
+}
 .ui-overlay-d .s-description-editable textarea,
 .ui-page-theme-d .s-description-editable textarea,
 .ui-page-theme-d .ui-panel-wrapper .s-description-editable textarea {
@@ -7326,6 +7341,11 @@ html body .ui-group-theme-e .ui-bar-inherit.ui-li-divider small {
 .ui-page-theme-e .ui-panel-wrapper .s-image-details {
   padding-left: 0 !important;
   padding: 0;
+}
+.ui-overlay-e .tags,
+.ui-page-theme-e .tags,
+.ui-page-theme-e .ui-panel-wrapper .tags {
+  cursor: pointer;
 }
 .ui-overlay-e .s-description-editable textarea,
 .ui-page-theme-e .s-description-editable textarea,

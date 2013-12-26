@@ -32,18 +32,17 @@
 </div>
 
 <div class="s-image-details">
-
-      <% if (item.get("username") && item.get("username").toLowerCase() == (auth.get("snapr_user") || "").toLowerCase()){ %>
-      <div class="s-description-editable">
-
-        <textarea class="newDescription" name="foobar" data-theme="c"><%=item.get("description")%></textarea>
-
-      </div>
-
-      <%} else { %>
-            <div class="s-description"><%= string_utils.comment_links( item.get('description') ) %> </div>
-      <% } %>
-   
+  <% if (item.get("username") && item.get("username").toLowerCase() == (auth.get("snapr_user") || "").toLowerCase()){ %>
+    <div class="tags">
+  <% } else { %>
+    <div>
+  <% } %>
+      <div class="s-description"><%= string_utils.comment_links( item.get('description') ) %> </div>
+    
+    <div class="s-description-editable" style="display: none;">
+      <textarea class="newDescription" data-theme="c"><%=item.get("description")%></textarea>
+    </div>
+  </div>
 
    	<% if(item.get('rating') >= 2){ %>
       <p class="s-featured s-icon-left"><span class="ui-icon ui-icon-star-empty"></span> Featured!</p>
