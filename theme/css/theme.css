@@ -4323,14 +4323,14 @@ html body .ui-group-theme-a .ui-bar-inherit.ui-li-divider small {
 .ui-page-theme-a .takenContainer,
 .ui-page-theme-a .ui-panel-wrapper .takenContainer {
   position: absolute;
-  bottom: 10px;
-  right: 25px;
+  bottom: 2px;
+  right: 5px;
 }
 .ui-overlay-a .takenContainer .ui-slider,
 .ui-page-theme-a .takenContainer .ui-slider,
 .ui-page-theme-a .ui-panel-wrapper .takenContainer .ui-slider {
   border-radius: 20px !important;
-  width: 80px;
+  width: 100px;
   text-transform: uppercase;
 }
 .ui-overlay-a .edit-material .ui-btn,
@@ -5748,14 +5748,14 @@ html body .ui-group-theme-c .ui-bar-inherit.ui-li-divider small {
 .ui-page-theme-c .takenContainer,
 .ui-page-theme-c .ui-panel-wrapper .takenContainer {
   position: absolute;
-  bottom: 10px;
-  right: 25px;
+  bottom: 2px;
+  right: 5px;
 }
 .ui-overlay-c .takenContainer .ui-slider,
 .ui-page-theme-c .takenContainer .ui-slider,
 .ui-page-theme-c .ui-panel-wrapper .takenContainer .ui-slider {
   border-radius: 20px !important;
-  width: 80px;
+  width: 100px;
   text-transform: uppercase;
 }
 .ui-overlay-c .edit-material .ui-btn,
@@ -6489,14 +6489,14 @@ html body .ui-group-theme-d .ui-bar-inherit.ui-li-divider small {
 .ui-page-theme-d .takenContainer,
 .ui-page-theme-d .ui-panel-wrapper .takenContainer {
   position: absolute;
-  bottom: 10px;
-  right: 25px;
+  bottom: 2px;
+  right: 5px;
 }
 .ui-overlay-d .takenContainer .ui-slider,
 .ui-page-theme-d .takenContainer .ui-slider,
 .ui-page-theme-d .ui-panel-wrapper .takenContainer .ui-slider {
   border-radius: 20px !important;
-  width: 80px;
+  width: 100px;
   text-transform: uppercase;
 }
 .ui-overlay-d .edit-material .ui-btn,
@@ -7230,14 +7230,14 @@ html body .ui-group-theme-e .ui-bar-inherit.ui-li-divider small {
 .ui-page-theme-e .takenContainer,
 .ui-page-theme-e .ui-panel-wrapper .takenContainer {
   position: absolute;
-  bottom: 10px;
-  right: 25px;
+  bottom: 2px;
+  right: 5px;
 }
 .ui-overlay-e .takenContainer .ui-slider,
 .ui-page-theme-e .takenContainer .ui-slider,
 .ui-page-theme-e .ui-panel-wrapper .takenContainer .ui-slider {
   border-radius: 20px !important;
-  width: 80px;
+  width: 100px;
   text-transform: uppercase;
 }
 .ui-overlay-e .edit-material .ui-btn,
