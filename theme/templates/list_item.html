@@ -9,7 +9,19 @@
   <% } %>
 
     <img style="height:<%= obj.height %>px;" src="https://s3.amazonaws.com/media-server<%= item.get('server_id') %>.snapr.us/lrg/<%= item.get('secret') %>/<%= item.get('id') %>.jpg" <% if(item.get('description')){ %>alt="<%= item.get('description') %>"<% } %> class="x-photo s-photo" />
-<!--     <div class="x-favorited-overlay s-favorited-overlay ui-corner-all"><span class="ui-icon ui-icon-large-heart"></span></div> -->
+
+    <!-- Taken switch -->
+    <div class="takenContainer" data-corners="true">
+      <select class="taken" name="taken" data-native-menu="true" data-role="slider" data-theme='c' data-mini="true" data-corners="true">
+        <% if(takenByUser === true) { %>
+            <option value="off">take</option>
+            <option value="on" selected="selected"></option>
+        <% } else { %>   
+            <option value="off">take</option>
+            <option value="on"></option>
+        <% } %>      
+      </select>
+    </div>
 </div>
 
 <div class="s-image-details">
@@ -50,18 +62,6 @@
     <% if(config.get('app_group') == 'snapr' && item.has('app') && item.get('app').slug !== 'snapr'){ %>
         &mdash; via <a href="http://apps.sna.pr/<%= item.get('app').slug %>/" target="blank"><%= item.get('app').name %></a>
     <% }%>
-
-    <!-- Taken switch -->
-    <!-- <label for="taken">Select slider:</label> -->
-    <select name="taken" class="taken" data-native-menu="true" data-role="slider" data-theme='c' data-mini="true">
-      <% if(takenByUser === true) { %>
-          <option value="off">Take it</option>
-          <option value="on" selected="selected">Taken</option>
-      <% } else { %>   
-          <option value="off">Take it</option>
-          <option value="on">Taken</option>
-      <% } %>      
-    </select>
 
     <ul class="x-comments s-comments">
         <% _.each(item.get('latest_comments'), function(comment){ %>

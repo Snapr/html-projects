@@ -167,22 +167,6 @@
         color: #666!important;
     }
 
-    .s-image-details {
-        padding-left: 0 !important;
-    }
-
-    div[data-role="footer"] {
-      min-height: 20px; //make smaller footer bar than kitty theme
-    }
-
-    div[data-role="footer"] .ui-select{
-      margin: 0; padding: 0; //to avoid border on Browse menu and match nav button
-    }
-
-    div[data-role="footer"] .ui-btn{
-      letter-spacing: 0.1em;
-    }
-
     #browse-menu{ //position of select menu, see variables.less config for options
           position: fixed;
           bottom: 40px;
@@ -193,6 +177,22 @@
     #browse-menu .ui-btn{ //buttons inside the select browse menu
         text-align: center;
         font-size: 0.8em;
+    }
+
+    .s-image-details {
+        padding-left: 0 !important;
+    }
+
+    .takenContainer {
+        position: absolute;
+        bottom: 10px;
+        right: 25px;
+    }
+
+    .takenContainer .ui-slider {
+        border-radius: 20px !important;
+        width: 80px;
+        text-transform: uppercase;
     }
 
     .edit-material .ui-mini {
@@ -207,6 +207,17 @@
         display: none;
     }
 
+    div[data-role="footer"] {
+      min-height: 20px; //make smaller footer bar than kitty theme
+    }
+
+    div[data-role="footer"] .ui-select{
+      margin: 0; padding: 0; //to avoid border on Browse menu and match nav button
+    }
+
+    div[data-role="footer"] .ui-btn{
+      letter-spacing: 0.1em;
+    }
 }
 
 
