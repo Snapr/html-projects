@@ -33,26 +33,17 @@
 
 <div class="s-image-details">
 
-    <div class="s-description"><%= string_utils.comment_links( item.get('description') ) %>
-        <% if (item.has('location') && item.get('location').spot_id){%>
-        <a class="s-spot x-goto-spot">
-            @ <%= item.get('location').foursquare_venue_name %>
-        </a>
-        <%}%>
+      <% if (item.get("username") && item.get("username").toLowerCase() == (auth.get("snapr_user") || "").toLowerCase()){ %>
+      <div class="s-description-editable">
 
-              <% if (item.get("username") && item.get("username").toLowerCase() == (auth.get("snapr_user") || "").toLowerCase()){ %>
+        <textarea class="newDescription" name="foobar" data-theme="c"><%=item.get("description")%></textarea>
 
-        <a class="edit-material">
-            <select name="edit-material" data-native-menu="true" data-theme="c" data-mini="true" data-inline="true" data-iconpos="noicon"> 
-                <option>Edit Material</option>
-                <%= material_select_html %>
-            </select>
-        </a>
+      </div>
 
-        <a style="display:none" class="submit-material" data-role="button" data-icon="check" data-iconpos="notext" data-theme="c" data-inline="true" data-mini="true" ></a>
-
-    <%}  %>
-    </div>
+      <%} else { %>
+            <div class="s-description"><%= string_utils.comment_links( item.get('description') ) %> </div>
+      <% } %>
+   
 
    	<% if(item.get('rating') >= 2){ %>
       <p class="s-featured s-icon-left"><span class="ui-icon ui-icon-star-empty"></span> Featured!</p>

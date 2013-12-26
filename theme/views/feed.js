@@ -309,8 +309,8 @@ define(
             "click .x-delete": "delete",
             "click .x-flag": "flag",
             "change .taken": "taken_switch",
-            //"click .submit-material" : "edit_material",
-            "change .edit-material": "edit_material"
+            "blur .newDescription" : "edit_description"
+            //"change .edit-material": "edit_material"
         },
 
         render: function(sections){
@@ -476,6 +476,32 @@ define(
 
         reveal_submit : function () { var self = this;
                 self.$('.submit-material').show();
+        },
+
+        edit_description : function () { var self = this;
+            var description = self.$('.newDescription').val();
+            //only do it if the description has changed!
+            
+            self.model.set({
+                description: description
+            });
+
+            self.render(['.s-description-editable']).enhanceWithin();
+            //prepare for connectivity error
+            var ajax_options = {};
+            ajax_options =  {
+                url: config.get('api_base') + "/photo/",
+                dataType: "jsonp",
+                data: _.extend({}, auth.attributes, {
+                    id: self.model.get('id'),
+                    description : description,
+                    display_username: 0, //or get warning back
+                    _method: "POST"
+                })
+            };
+
+             $.ajax( ajax_options );
+
         },
 
         edit_material : function () { var self = this;
