@@ -4371,7 +4371,7 @@ html body .ui-group-theme-a .ui-bar-inherit.ui-li-divider small {
 .ui-overlay-a #share div[data-role='header'],
 .ui-page-theme-a #share div[data-role='header'],
 .ui-page-theme-a .ui-panel-wrapper #share div[data-role='header'] {
-  height: 100px;
+  height: 80px;
   background-color: #999999;
 }
 .ui-overlay-a #share div[data-role='header'] h1,
@@ -4380,6 +4380,19 @@ html body .ui-group-theme-a .ui-bar-inherit.ui-li-divider small {
   text-transform: uppercase;
   color: #ffffff;
   font-size: 2em;
+  line-height: 80px;
+  margin: 0;
+  padding: 0;
+  font-weight: bold;
+}
+.ui-overlay-a #share div[data-role="header"] .ui-btn,
+.ui-page-theme-a #share div[data-role="header"] .ui-btn,
+.ui-page-theme-a .ui-panel-wrapper #share div[data-role="header"] .ui-btn {
+  width: 70px !important;
+  height: 70px !important;
+  margin: 4px;
+  background-color: #E6E6E6 !important;
+  color: #000000 !important;
 }
 .ui-overlay-a #share .s-image-textarea .s-image-thumb,
 .ui-page-theme-a #share .s-image-textarea .s-image-thumb,
@@ -4391,16 +4404,37 @@ html body .ui-group-theme-a .ui-bar-inherit.ui-li-divider small {
 .ui-page-theme-a .ui-panel-wrapper #share label {
   color: #999999;
 }
+.ui-overlay-a #share .materials,
+.ui-page-theme-a #share .materials,
+.ui-page-theme-a .ui-panel-wrapper #share .materials {
+  min-height: 45px;
+  height: 45px;
+  margin-bottom: 50px;
+}
 .ui-overlay-a .edit-material .ui-btn,
 .ui-page-theme-a .edit-material .ui-btn,
 .ui-page-theme-a .ui-panel-wrapper .edit-material .ui-btn {
   font-weight: normal;
 }
-.ui-overlay-a .x-share-button,
-.ui-page-theme-a .x-share-button,
-.ui-page-theme-a .ui-panel-wrapper .x-share-button {
+.ui-overlay-a #share .s-upload-image-location,
+.ui-page-theme-a #share .s-upload-image-location,
+.ui-page-theme-a .ui-panel-wrapper #share .s-upload-image-location {
+  position: static;
+}
+.ui-overlay-a #share .x-share-button,
+.ui-page-theme-a #share .x-share-button,
+.ui-page-theme-a .ui-panel-wrapper #share .x-share-button {
   letter-spacing: 0.1em ;
   font-weight: bold;
+  position: absolute;
+  bottom: 0;
+  left: 1%;
+  width: 98%;
+}
+.ui-overlay-a #share ~ div[data-role="footer"],
+.ui-page-theme-a #share ~ div[data-role="footer"],
+.ui-page-theme-a .ui-panel-wrapper #share ~ div[data-role="footer"] {
+  display: none;
 }
 .ui-overlay-a div[data-role="footer"],
 .ui-page-theme-a div[data-role="footer"],
@@ -5855,7 +5889,7 @@ html body .ui-group-theme-c .ui-bar-inherit.ui-li-divider small {
 .ui-overlay-c #share div[data-role='header'],
 .ui-page-theme-c #share div[data-role='header'],
 .ui-page-theme-c .ui-panel-wrapper #share div[data-role='header'] {
-  height: 100px;
+  height: 80px;
   background-color: #999999;
 }
 .ui-overlay-c #share div[data-role='header'] h1,
@@ -5864,6 +5898,19 @@ html body .ui-group-theme-c .ui-bar-inherit.ui-li-divider small {
   text-transform: uppercase;
   color: #ffffff;
   font-size: 2em;
+  line-height: 80px;
+  margin: 0;
+  padding: 0;
+  font-weight: bold;
+}
+.ui-overlay-c #share div[data-role="header"] .ui-btn,
+.ui-page-theme-c #share div[data-role="header"] .ui-btn,
+.ui-page-theme-c .ui-panel-wrapper #share div[data-role="header"] .ui-btn {
+  width: 70px !important;
+  height: 70px !important;
+  margin: 4px;
+  background-color: #E6E6E6 !important;
+  color: #000000 !important;
 }
 .ui-overlay-c #share .s-image-textarea .s-image-thumb,
 .ui-page-theme-c #share .s-image-textarea .s-image-thumb,
@@ -5875,16 +5922,37 @@ html body .ui-group-theme-c .ui-bar-inherit.ui-li-divider small {
 .ui-page-theme-c .ui-panel-wrapper #share label {
   color: #999999;
 }
+.ui-overlay-c #share .materials,
+.ui-page-theme-c #share .materials,
+.ui-page-theme-c .ui-panel-wrapper #share .materials {
+  min-height: 45px;
+  height: 45px;
+  margin-bottom: 50px;
+}
 .ui-overlay-c .edit-material .ui-btn,
 .ui-page-theme-c .edit-material .ui-btn,
 .ui-page-theme-c .ui-panel-wrapper .edit-material .ui-btn {
   font-weight: normal;
 }
-.ui-overlay-c .x-share-button,
-.ui-page-theme-c .x-share-button,
-.ui-page-theme-c .ui-panel-wrapper .x-share-button {
+.ui-overlay-c #share .s-upload-image-location,
+.ui-page-theme-c #share .s-upload-image-location,
+.ui-page-theme-c .ui-panel-wrapper #share .s-upload-image-location {
+  position: static;
+}
+.ui-overlay-c #share .x-share-button,
+.ui-page-theme-c #share .x-share-button,
+.ui-page-theme-c .ui-panel-wrapper #share .x-share-button {
   letter-spacing: 0.1em ;
   font-weight: bold;
+  position: absolute;
+  bottom: 0;
+  left: 1%;
+  width: 98%;
+}
+.ui-overlay-c #share ~ div[data-role="footer"],
+.ui-page-theme-c #share ~ div[data-role="footer"],
+.ui-page-theme-c .ui-panel-wrapper #share ~ div[data-role="footer"] {
+  display: none;
 }
 .ui-overlay-c div[data-role="footer"],
 .ui-page-theme-c div[data-role="footer"],
@@ -6655,7 +6723,7 @@ html body .ui-group-theme-d .ui-bar-inherit.ui-li-divider small {
 .ui-overlay-d #share div[data-role='header'],
 .ui-page-theme-d #share div[data-role='header'],
 .ui-page-theme-d .ui-panel-wrapper #share div[data-role='header'] {
-  height: 100px;
+  height: 80px;
   background-color: #999999;
 }
 .ui-overlay-d #share div[data-role='header'] h1,
@@ -6664,6 +6732,19 @@ html body .ui-group-theme-d .ui-bar-inherit.ui-li-divider small {
   text-transform: uppercase;
   color: #ffffff;
   font-size: 2em;
+  line-height: 80px;
+  margin: 0;
+  padding: 0;
+  font-weight: bold;
+}
+.ui-overlay-d #share div[data-role="header"] .ui-btn,
+.ui-page-theme-d #share div[data-role="header"] .ui-btn,
+.ui-page-theme-d .ui-panel-wrapper #share div[data-role="header"] .ui-btn {
+  width: 70px !important;
+  height: 70px !important;
+  margin: 4px;
+  background-color: #E6E6E6 !important;
+  color: #000000 !important;
 }
 .ui-overlay-d #share .s-image-textarea .s-image-thumb,
 .ui-page-theme-d #share .s-image-textarea .s-image-thumb,
@@ -6675,16 +6756,37 @@ html body .ui-group-theme-d .ui-bar-inherit.ui-li-divider small {
 .ui-page-theme-d .ui-panel-wrapper #share label {
   color: #999999;
 }
+.ui-overlay-d #share .materials,
+.ui-page-theme-d #share .materials,
+.ui-page-theme-d .ui-panel-wrapper #share .materials {
+  min-height: 45px;
+  height: 45px;
+  margin-bottom: 50px;
+}
 .ui-overlay-d .edit-material .ui-btn,
 .ui-page-theme-d .edit-material .ui-btn,
 .ui-page-theme-d .ui-panel-wrapper .edit-material .ui-btn {
   font-weight: normal;
 }
-.ui-overlay-d .x-share-button,
-.ui-page-theme-d .x-share-button,
-.ui-page-theme-d .ui-panel-wrapper .x-share-button {
+.ui-overlay-d #share .s-upload-image-location,
+.ui-page-theme-d #share .s-upload-image-location,
+.ui-page-theme-d .ui-panel-wrapper #share .s-upload-image-location {
+  position: static;
+}
+.ui-overlay-d #share .x-share-button,
+.ui-page-theme-d #share .x-share-button,
+.ui-page-theme-d .ui-panel-wrapper #share .x-share-button {
   letter-spacing: 0.1em ;
   font-weight: bold;
+  position: absolute;
+  bottom: 0;
+  left: 1%;
+  width: 98%;
+}
+.ui-overlay-d #share ~ div[data-role="footer"],
+.ui-page-theme-d #share ~ div[data-role="footer"],
+.ui-page-theme-d .ui-panel-wrapper #share ~ div[data-role="footer"] {
+  display: none;
 }
 .ui-overlay-d div[data-role="footer"],
 .ui-page-theme-d div[data-role="footer"],
@@ -7455,7 +7557,7 @@ html body .ui-group-theme-e .ui-bar-inherit.ui-li-divider small {
 .ui-overlay-e #share div[data-role='header'],
 .ui-page-theme-e #share div[data-role='header'],
 .ui-page-theme-e .ui-panel-wrapper #share div[data-role='header'] {
-  height: 100px;
+  height: 80px;
   background-color: #999999;
 }
 .ui-overlay-e #share div[data-role='header'] h1,
@@ -7464,6 +7566,19 @@ html body .ui-group-theme-e .ui-bar-inherit.ui-li-divider small {
   text-transform: uppercase;
   color: #ffffff;
   font-size: 2em;
+  line-height: 80px;
+  margin: 0;
+  padding: 0;
+  font-weight: bold;
+}
+.ui-overlay-e #share div[data-role="header"] .ui-btn,
+.ui-page-theme-e #share div[data-role="header"] .ui-btn,
+.ui-page-theme-e .ui-panel-wrapper #share div[data-role="header"] .ui-btn {
+  width: 70px !important;
+  height: 70px !important;
+  margin: 4px;
+  background-color: #E6E6E6 !important;
+  color: #000000 !important;
 }
 .ui-overlay-e #share .s-image-textarea .s-image-thumb,
 .ui-page-theme-e #share .s-image-textarea .s-image-thumb,
@@ -7475,16 +7590,37 @@ html body .ui-group-theme-e .ui-bar-inherit.ui-li-divider small {
 .ui-page-theme-e .ui-panel-wrapper #share label {
   color: #999999;
 }
+.ui-overlay-e #share .materials,
+.ui-page-theme-e #share .materials,
+.ui-page-theme-e .ui-panel-wrapper #share .materials {
+  min-height: 45px;
+  height: 45px;
+  margin-bottom: 50px;
+}
 .ui-overlay-e .edit-material .ui-btn,
 .ui-page-theme-e .edit-material .ui-btn,
 .ui-page-theme-e .ui-panel-wrapper .edit-material .ui-btn {
   font-weight: normal;
 }
-.ui-overlay-e .x-share-button,
-.ui-page-theme-e .x-share-button,
-.ui-page-theme-e .ui-panel-wrapper .x-share-button {
+.ui-overlay-e #share .s-upload-image-location,
+.ui-page-theme-e #share .s-upload-image-location,
+.ui-page-theme-e .ui-panel-wrapper #share .s-upload-image-location {
+  position: static;
+}
+.ui-overlay-e #share .x-share-button,
+.ui-page-theme-e #share .x-share-button,
+.ui-page-theme-e .ui-panel-wrapper #share .x-share-button {
   letter-spacing: 0.1em ;
   font-weight: bold;
+  position: absolute;
+  bottom: 0;
+  left: 1%;
+  width: 98%;
+}
+.ui-overlay-e #share ~ div[data-role="footer"],
+.ui-page-theme-e #share ~ div[data-role="footer"],
+.ui-page-theme-e .ui-panel-wrapper #share ~ div[data-role="footer"] {
+  display: none;
 }
 .ui-overlay-e div[data-role="footer"],
 .ui-page-theme-e div[data-role="footer"],

@@ -234,7 +234,7 @@
     }
 
     #share div[data-role='header'] {
-        height: 100px;
+        height: 80px;
         background-color: @gray;
     }
 
@@ -242,6 +242,19 @@
         text-transform: uppercase;
         color: @white;
         font-size: 2em;
+        line-height: 80px;
+        margin: 0;
+        padding: 0;
+        font-weight: bold;
+        //letter-spacing: 1px;
+    }
+
+    #share div[data-role="header"] .ui-btn {
+        width: 70px !important;
+        height: 70px !important;
+        margin: 4px;
+        background-color: #E6E6E6 !important;
+        color: @black !important;
     }
 
     #share .s-image-textarea .s-image-thumb {
@@ -252,17 +265,31 @@
         color: @gray;
     }
 
+    #share .materials {
+        min-height: 45px;
+        height: 45px;
+        margin-bottom: 50px;
+    }
+
     .edit-material .ui-btn {
         font-weight: normal;
     }
 
-    .x-share-button {
+    #share .s-upload-image-location {
+        position: static;
+    }
+
+    #share .x-share-button {
         letter-spacing: 0.1em ;
         font-weight: bold;
+        position: absolute;
+        bottom: 0;
+        left: 1%;
+        width: 98%;
     }
 
     #share ~ div[data-role="footer"] {
-        //display: none;
+        display: none;
     }
 
     div[data-role="footer"] {

@@ -1,7 +1,7 @@
 <div id="share" data-role="page" data-theme="c" data-tab-bar="false">
     <div data-role="header" data-add-back-btn="false">
         <div class='uploadbar ui-btn-center' data-role="button" data-theme='a'><h1>Upload</h1></div>
-        <a href="#/" class="ui-btn-right" data-role="button" data-icon="delete" data-iconpos="notext" data-theme='b'></a>
+        <a href="#/" class="ui-btn-right" data-role="button" data-icon="delete" data-iconpos="notext" data-corners="false"></a>
     </div>
 
     <div data-role="content">
@@ -47,66 +47,37 @@
 
                     </div>
 
-                    <div class="x-share-button">
-                        <input type="submit" data-role="button" data-theme="e" value="<%= T('SHARE') %>"/>
+                <% } %>
+
+                <% if(location){ %>
+                    <div class="s-upload-image-location">
+                       <a data-role="button" data-mini="true" class="x-location ui-btn-icon-right">
+                            <% if(location.type == 'loading') {%>
+                                <span class="ui-icon ui-icon-location"></span>
+                                <span class="s-btn-text"><%= T('Getting Location...') %></span>
+                            <% }else if(location.type == 'venue'){ %>
+                                <span class="ui-icon ui-icon-location text-brand"></span>
+                                <span class="s-btn-text"><%= location.text %></span>
+                                <span class="ui-icon ui-icon-arrow-r"></span>
+                            <% }else if(location.type == 'geocode'){ %>
+                                <span class="ui-icon ui-icon-location text-brand"></span>
+                                <span class="s-btn-text"><%= location.text %></span>
+                                <span class="ui-icon ui-icon-remove"></span>
+                            <% }else{ %>
+                                <span class="ui-icon ui-icon-plus text-brand"></span>
+                                <span class="s-btn-text"><%= T('Add Location') %></span>
+                            <% } %>
+                        </a>
+     
                     </div>
-
-                </form>
-            <% } %>
-
-            <% if(location){ %>
-                <div class="s-upload-image-location">
-                   <a data-role="button" data-mini="true" class="x-location ui-btn-icon-right">
-                        <% if(location.type == 'loading') {%>
-                            <span class="ui-icon ui-icon-location"></span>
-                            <span class="s-btn-text"><%= T('Getting Location...') %></span>
-                        <% }else if(location.type == 'venue'){ %>
-                            <span class="ui-icon ui-icon-location text-brand"></span>
-                            <span class="s-btn-text"><%= location.text %></span>
-                            <span class="ui-icon ui-icon-arrow-r"></span>
-                        <% }else if(location.type == 'geocode'){ %>
-                            <span class="ui-icon ui-icon-location text-brand"></span>
-                            <span class="s-btn-text"><%= location.text %></span>
-                            <span class="ui-icon ui-icon-remove"></span>
-                        <% }else{ %>
-                            <span class="ui-icon ui-icon-plus text-brand"></span>
-                            <span class="s-btn-text"><%= T('Add Location') %></span>
-                        <% } %>
-                    </a>
- 
+                <% } %>
+                <div class="x-share-button" data-inline="false">
+                    <input type="submit" data-role="button" data-theme="e" data-inline="false"  value="<%= T('SHARE') %>"/>
                 </div>
-            <% } %>
+
+            </form>
 
         </div>
     </div>
 
-<!-- Venues Panel -->
-
-    <div data-role="panel" data-position="right" data-theme="a" class="x-venues-panel" data-swipe-close="false">
-        <div class="s-panel-header">
-            <h1><%= T('Venues') %></h1>
-            <div class="ui-btn-left">
-                <a class="" data-icon="arrow-l" data-iconpos="notext" data-role="button" data-rel="close"></a>
-            </div>
-        </div>
-
-        <form class="x-venue-search">
-            <input data-theme="c" placeholder="Search..."/>
-        </form>
-
-        <ul class="x-venue-list s-venue-list" data-role="listview" data-theme="a">
-            <% if(obj.venues){ venues.each(function(venue){ %>
-                <li>
-                    <a class="x-venue" data-id="<%= venue.id %>" data-name="<%= venue.get('name') %>">
-                        <img src="<%= venue.get_icon() %>" alt="" class="s-avatar-x-small s-fsq-venue-icon"/>
-                        <h5 class="s-venue-name"><%= venue.get('name') %></h5>
-                        <small class="s-venue-distance"><%= venue.get('location').distance %> m</small>
-                    </a>
-                    <% if (venue.id == current_venue) {%>
-                        <a data-icon="check" data-iconpos="right" class="select"></a>
-                    <%}%>
-                </li>
-            <% })  } %>
-        </ul>
-    </div>
 </div>
