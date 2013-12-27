@@ -32,17 +32,25 @@ define(['views/share', '../../theme/views/material'], function(share_view, mater
             if (tags !== "Select Material") { //or else will add txt
                 $('.materials').val(current + ' ' + tags);
 
-            } 
+            }
         },
 
         check_materials_field: function() {
             var materials = $(".materials").val();
             if (materials !== "") {
-                this.share();
+                this.share_append_material();
 
             } else {
                 alert('The material field is empty.');
             }
+        },
+
+        share_append_material: function() {
+            var description = $(".s-textarea").val();
+            var materials = $(".materials").val();
+            $(".s-textarea").val(description + ' ' + materials);
+            this.share();
+
         }
 
     });
