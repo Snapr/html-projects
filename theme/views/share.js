@@ -11,11 +11,11 @@ define(['views/share', '../../theme/views/material'], function(share_view, mater
         'vclick .x-photo-sharing .ui-disabled': 'share_alert',
         'click .x-photo-toggle': 'toggle_photo',
         'change .x-description': 'update_description',
-        'submit form': 'append_selected_tags'
+        'change .material-choice' : 'append_selected_tags_to_material_box',
+        'submit form': 'check_materials_field'
     },
 
-        append_selected_tags : function(){
-
+        append_selected_tags_to_description : function(){
             var description = $(".s-textarea").val();
             var tag = $(".material-choice option:selected").val();
             if(tag === "Select Material") { //value if there is no tag
@@ -23,6 +23,25 @@ define(['views/share', '../../theme/views/material'], function(share_view, mater
             }else {
                 $(".s-textarea").val(description + ' ' + tag);
                 this.share();
+            }
+        },
+
+        append_selected_tags_to_material_box: function() {
+            var current = $(".materials").val();
+            var tags = $(".material-choice option:selected").val();
+            if (tags !== "Select Material") { //or else will add txt
+                $('.materials').val(current + ' ' + tags);
+
+            } 
+        },
+
+        check_materials_field: function() {
+            var materials = $(".materials").val();
+            if (materials !== "") {
+                this.share();
+
+            } else {
+                alert('The material field is empty.');
             }
         }
 

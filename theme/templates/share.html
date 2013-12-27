@@ -26,7 +26,12 @@
                         absolute positioning will cause text not to enter properly on some
                         android devices - for example s3 running 4.0.4 -->
                         <label>Caption</label>
-                        <textarea name="description" maxlength="400" class="x-description s-textarea" placeholder="<%= T('Write a caption') %>..." data-theme="a"><%= photo.get('description') %></textarea>                
+                        <textarea name="description" maxlength="400" class="x-description s-textarea" placeholder="<%= T('Write a caption') %>..." data-theme="a"><%= photo.get('description') %></textarea>
+                         
+                        <label>Materials</label>
+                        <textarea class="materials" name="materials" data-theme="a"></textarea>
+                         
+                       
                     </div>
 
 
