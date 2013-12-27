@@ -1,6 +1,7 @@
 <div id="share" data-role="page" data-theme="c" data-tab-bar="false">
     <div data-role="header" data-add-back-btn="false">
-        <a href="#/" class="ui-btn-right" data-role="button" data-icon="delete" data-iconpos="notext"></a>
+        <div class='uploadbar ui-btn-center' data-role="button" data-theme='a'><h1>Upload</h1></div>
+        <a href="#/" class="ui-btn-right" data-role="button" data-icon="delete" data-iconpos="notext" data-theme='b'></a>
     </div>
 
     <div data-role="content">
@@ -24,8 +25,8 @@
                         <!-- Fun Fact: setting the layer with the text inputs in it to have
                         absolute positioning will cause text not to enter properly on some
                         android devices - for example s3 running 4.0.4 -->
-
-                        <textarea name="description" maxlength="400" class="x-description s-textarea" placeholder="<%= T('Add a message') %>..." data-theme="a"><%= photo.get('description') %></textarea>
+                        <label>Caption</label>
+                        <textarea name="description" maxlength="400" class="x-description s-textarea" placeholder="<%= T('Write a caption') %>..." data-theme="a"><%= photo.get('description') %></textarea>                
                     </div>
 
 
@@ -42,19 +43,18 @@
                     </div>
 
                     <div class="x-share-button">
-                        <input type="submit" data-role="button" data-theme="a" value="<%= T('Share') %>"/>
+                        <input type="submit" data-role="button" data-theme="e" value="<%= T('SHARE') %>"/>
                     </div>
-
 
                 </form>
             <% } %>
 
             <% if(location){ %>
                 <div class="s-upload-image-location">
-                    <a data-role="button" data-mini="true" class="x-location ui-btn-icon-right">
+                   <a data-role="button" data-mini="true" class="x-location ui-btn-icon-right">
                         <% if(location.type == 'loading') {%>
                             <span class="ui-icon ui-icon-location"></span>
-							<span class="s-btn-text"><%= T('Getting Location...') %></span>
+                            <span class="s-btn-text"><%= T('Getting Location...') %></span>
                         <% }else if(location.type == 'venue'){ %>
                             <span class="ui-icon ui-icon-location text-brand"></span>
                             <span class="s-btn-text"><%= location.text %></span>
@@ -68,6 +68,7 @@
                             <span class="s-btn-text"><%= T('Add Location') %></span>
                         <% } %>
                     </a>
+ 
                 </div>
             <% } %>
 

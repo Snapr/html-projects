@@ -8,7 +8,7 @@
 // -------------------------
 
 @brand-color:       #ddd;
-@accent-color:      #ff42b3;
+@accent-color:      #596BF9;
 
 @info-color:        @brand-color;
 @warning-color:     @brand-color;
@@ -233,16 +233,36 @@
         text-transform: uppercase;
     }
 
-    .edit-material .ui-mini {
-        //padding: 0;
+    #share div[data-role='header'] {
+        height: 100px;
+        background-color: @gray;
+    }
+
+    #share div[data-role='header'] h1 {
+        text-transform: uppercase;
+        color: @white;
+        font-size: 2em;
+    }
+
+    #share .s-image-textarea .s-image-thumb {
+        top: 40px;
+    }
+
+    #share label {
+        color: @gray;
     }
 
     .edit-material .ui-btn {
         font-weight: normal;
     }
 
+    .x-share-button {
+        letter-spacing: 0.1em ;
+        font-weight: bold;
+    }
+
     #share ~ div[data-role="footer"] {
-        display: none;
+        //display: none;
     }
 
     div[data-role="footer"] {
