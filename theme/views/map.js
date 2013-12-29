@@ -14,7 +14,7 @@ define(['views/map'], function(map_view){
                     longitude: this.map_query.get('lng')
                 }, this.map_query.get('zoom'));
             }
-            this.current_location_go_to();
+            //this.current_location_go_to();
             return;
         }
 
@@ -46,7 +46,7 @@ define(['views/map'], function(map_view){
         };
 
         this.map = new google.maps.Map($('.x-map')[0], map_settings);
-        this.current_location_go_to();
+        //this.current_location_go_to();
 
         // update thumbs when map moves
         var map_view = this;
