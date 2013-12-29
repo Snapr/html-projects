@@ -186,7 +186,8 @@
 
     .s-location {
         text-transform: uppercase;
-        letter-spacing: 0.06em;
+        //letter-spacing: 0.06em;
+        max-width: 55%;
     }
 
     .s-description {
@@ -229,20 +230,20 @@
 
     .takenContainer .ui-slider {
         border-radius: 20px !important;
-        width: 100px;
+        width: 80px;
         text-transform: uppercase;
     }
 
     #share div[data-role='header'] {
-        height: 80px;
+        height: 60px;
         background-color: @gray;
     }
 
     #share div[data-role='header'] h1 {
         text-transform: uppercase;
         color: @white;
-        font-size: 2em;
-        line-height: 80px;
+        font-size: 1em;
+        line-height: 60px;
         margin: 0;
         padding: 0;
         font-weight: bold;
@@ -250,8 +251,8 @@
     }
 
     #share div[data-role="header"] .ui-btn {
-        width: 70px !important;
-        height: 70px !important;
+        width: 50px !important;
+        height: 50px !important;
         margin: 4px;
         background-color: #E6E6E6 !important;
         color: @black !important;
@@ -263,12 +264,13 @@
 
     #share label {
         color: @gray;
+        height: 15px !important;
     }
 
     #share .materials {
         min-height: 45px;
         height: 45px;
-        margin-bottom: 50px;
+        margin-bottom: 20px;
     }
 
     .edit-material .ui-btn {
@@ -282,14 +284,20 @@
     #share .x-share-button {
         letter-spacing: 0.1em ;
         font-weight: bold;
-        position: absolute;
-        bottom: 0;
-        left: 1%;
-        width: 98%;
+        position: relative;
+        top: 20px;
+        padding-bottom: 10px;
+        //bottom: 0;
+        //left: 1%;
+        //width: 98%;
     }
 
     #share ~ div[data-role="footer"] {
         display: none;
+    }
+
+    #uploading .ui-btn-active{
+        background-color: @brand-color !important;
     }
 
     div[data-role="footer"] {

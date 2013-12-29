@@ -4313,7 +4313,7 @@ html body .ui-group-theme-a .ui-bar-inherit.ui-li-divider small {
 .ui-page-theme-a .s-location,
 .ui-page-theme-a .ui-panel-wrapper .s-location {
   text-transform: uppercase;
-  letter-spacing: 0.06em;
+  max-width: 55%;
 }
 .ui-overlay-a .s-description,
 .ui-page-theme-a .s-description,
@@ -4365,13 +4365,13 @@ html body .ui-group-theme-a .ui-bar-inherit.ui-li-divider small {
 .ui-page-theme-a .takenContainer .ui-slider,
 .ui-page-theme-a .ui-panel-wrapper .takenContainer .ui-slider {
   border-radius: 20px !important;
-  width: 100px;
+  width: 80px;
   text-transform: uppercase;
 }
 .ui-overlay-a #share div[data-role='header'],
 .ui-page-theme-a #share div[data-role='header'],
 .ui-page-theme-a .ui-panel-wrapper #share div[data-role='header'] {
-  height: 80px;
+  height: 60px;
   background-color: #999999;
 }
 .ui-overlay-a #share div[data-role='header'] h1,
@@ -4379,8 +4379,8 @@ html body .ui-group-theme-a .ui-bar-inherit.ui-li-divider small {
 .ui-page-theme-a .ui-panel-wrapper #share div[data-role='header'] h1 {
   text-transform: uppercase;
   color: #ffffff;
-  font-size: 2em;
-  line-height: 80px;
+  font-size: 1em;
+  line-height: 60px;
   margin: 0;
   padding: 0;
   font-weight: bold;
@@ -4388,8 +4388,8 @@ html body .ui-group-theme-a .ui-bar-inherit.ui-li-divider small {
 .ui-overlay-a #share div[data-role="header"] .ui-btn,
 .ui-page-theme-a #share div[data-role="header"] .ui-btn,
 .ui-page-theme-a .ui-panel-wrapper #share div[data-role="header"] .ui-btn {
-  width: 70px !important;
-  height: 70px !important;
+  width: 50px !important;
+  height: 50px !important;
   margin: 4px;
   background-color: #E6E6E6 !important;
   color: #000000 !important;
@@ -4403,13 +4403,14 @@ html body .ui-group-theme-a .ui-bar-inherit.ui-li-divider small {
 .ui-page-theme-a #share label,
 .ui-page-theme-a .ui-panel-wrapper #share label {
   color: #999999;
+  height: 15px !important;
 }
 .ui-overlay-a #share .materials,
 .ui-page-theme-a #share .materials,
 .ui-page-theme-a .ui-panel-wrapper #share .materials {
   min-height: 45px;
   height: 45px;
-  margin-bottom: 50px;
+  margin-bottom: 20px;
 }
 .ui-overlay-a .edit-material .ui-btn,
 .ui-page-theme-a .edit-material .ui-btn,
@@ -4426,15 +4427,19 @@ html body .ui-group-theme-a .ui-bar-inherit.ui-li-divider small {
 .ui-page-theme-a .ui-panel-wrapper #share .x-share-button {
   letter-spacing: 0.1em ;
   font-weight: bold;
-  position: absolute;
-  bottom: 0;
-  left: 1%;
-  width: 98%;
+  position: relative;
+  top: 20px;
+  padding-bottom: 10px;
 }
 .ui-overlay-a #share ~ div[data-role="footer"],
 .ui-page-theme-a #share ~ div[data-role="footer"],
 .ui-page-theme-a .ui-panel-wrapper #share ~ div[data-role="footer"] {
   display: none;
+}
+.ui-overlay-a #uploading .ui-btn-active,
+.ui-page-theme-a #uploading .ui-btn-active,
+.ui-page-theme-a .ui-panel-wrapper #uploading .ui-btn-active {
+  background-color: #dddddd !important;
 }
 .ui-overlay-a div[data-role="footer"],
 .ui-page-theme-a div[data-role="footer"],
@@ -5831,7 +5836,7 @@ html body .ui-group-theme-c .ui-bar-inherit.ui-li-divider small {
 .ui-page-theme-c .s-location,
 .ui-page-theme-c .ui-panel-wrapper .s-location {
   text-transform: uppercase;
-  letter-spacing: 0.06em;
+  max-width: 55%;
 }
 .ui-overlay-c .s-description,
 .ui-page-theme-c .s-description,
@@ -5883,13 +5888,13 @@ html body .ui-group-theme-c .ui-bar-inherit.ui-li-divider small {
 .ui-page-theme-c .takenContainer .ui-slider,
 .ui-page-theme-c .ui-panel-wrapper .takenContainer .ui-slider {
   border-radius: 20px !important;
-  width: 100px;
+  width: 80px;
   text-transform: uppercase;
 }
 .ui-overlay-c #share div[data-role='header'],
 .ui-page-theme-c #share div[data-role='header'],
 .ui-page-theme-c .ui-panel-wrapper #share div[data-role='header'] {
-  height: 80px;
+  height: 60px;
   background-color: #999999;
 }
 .ui-overlay-c #share div[data-role='header'] h1,
@@ -5897,8 +5902,8 @@ html body .ui-group-theme-c .ui-bar-inherit.ui-li-divider small {
 .ui-page-theme-c .ui-panel-wrapper #share div[data-role='header'] h1 {
   text-transform: uppercase;
   color: #ffffff;
-  font-size: 2em;
-  line-height: 80px;
+  font-size: 1em;
+  line-height: 60px;
   margin: 0;
   padding: 0;
   font-weight: bold;
@@ -5906,8 +5911,8 @@ html body .ui-group-theme-c .ui-bar-inherit.ui-li-divider small {
 .ui-overlay-c #share div[data-role="header"] .ui-btn,
 .ui-page-theme-c #share div[data-role="header"] .ui-btn,
 .ui-page-theme-c .ui-panel-wrapper #share div[data-role="header"] .ui-btn {
-  width: 70px !important;
-  height: 70px !important;
+  width: 50px !important;
+  height: 50px !important;
   margin: 4px;
   background-color: #E6E6E6 !important;
   color: #000000 !important;
@@ -5921,13 +5926,14 @@ html body .ui-group-theme-c .ui-bar-inherit.ui-li-divider small {
 .ui-page-theme-c #share label,
 .ui-page-theme-c .ui-panel-wrapper #share label {
   color: #999999;
+  height: 15px !important;
 }
 .ui-overlay-c #share .materials,
 .ui-page-theme-c #share .materials,
 .ui-page-theme-c .ui-panel-wrapper #share .materials {
   min-height: 45px;
   height: 45px;
-  margin-bottom: 50px;
+  margin-bottom: 20px;
 }
 .ui-overlay-c .edit-material .ui-btn,
 .ui-page-theme-c .edit-material .ui-btn,
@@ -5944,15 +5950,19 @@ html body .ui-group-theme-c .ui-bar-inherit.ui-li-divider small {
 .ui-page-theme-c .ui-panel-wrapper #share .x-share-button {
   letter-spacing: 0.1em ;
   font-weight: bold;
-  position: absolute;
-  bottom: 0;
-  left: 1%;
-  width: 98%;
+  position: relative;
+  top: 20px;
+  padding-bottom: 10px;
 }
 .ui-overlay-c #share ~ div[data-role="footer"],
 .ui-page-theme-c #share ~ div[data-role="footer"],
 .ui-page-theme-c .ui-panel-wrapper #share ~ div[data-role="footer"] {
   display: none;
+}
+.ui-overlay-c #uploading .ui-btn-active,
+.ui-page-theme-c #uploading .ui-btn-active,
+.ui-page-theme-c .ui-panel-wrapper #uploading .ui-btn-active {
+  background-color: #dddddd !important;
 }
 .ui-overlay-c div[data-role="footer"],
 .ui-page-theme-c div[data-role="footer"],
@@ -6665,7 +6675,7 @@ html body .ui-group-theme-d .ui-bar-inherit.ui-li-divider small {
 .ui-page-theme-d .s-location,
 .ui-page-theme-d .ui-panel-wrapper .s-location {
   text-transform: uppercase;
-  letter-spacing: 0.06em;
+  max-width: 55%;
 }
 .ui-overlay-d .s-description,
 .ui-page-theme-d .s-description,
@@ -6717,13 +6727,13 @@ html body .ui-group-theme-d .ui-bar-inherit.ui-li-divider small {
 .ui-page-theme-d .takenContainer .ui-slider,
 .ui-page-theme-d .ui-panel-wrapper .takenContainer .ui-slider {
   border-radius: 20px !important;
-  width: 100px;
+  width: 80px;
   text-transform: uppercase;
 }
 .ui-overlay-d #share div[data-role='header'],
 .ui-page-theme-d #share div[data-role='header'],
 .ui-page-theme-d .ui-panel-wrapper #share div[data-role='header'] {
-  height: 80px;
+  height: 60px;
   background-color: #999999;
 }
 .ui-overlay-d #share div[data-role='header'] h1,
@@ -6731,8 +6741,8 @@ html body .ui-group-theme-d .ui-bar-inherit.ui-li-divider small {
 .ui-page-theme-d .ui-panel-wrapper #share div[data-role='header'] h1 {
   text-transform: uppercase;
   color: #ffffff;
-  font-size: 2em;
-  line-height: 80px;
+  font-size: 1em;
+  line-height: 60px;
   margin: 0;
   padding: 0;
   font-weight: bold;
@@ -6740,8 +6750,8 @@ html body .ui-group-theme-d .ui-bar-inherit.ui-li-divider small {
 .ui-overlay-d #share div[data-role="header"] .ui-btn,
 .ui-page-theme-d #share div[data-role="header"] .ui-btn,
 .ui-page-theme-d .ui-panel-wrapper #share div[data-role="header"] .ui-btn {
-  width: 70px !important;
-  height: 70px !important;
+  width: 50px !important;
+  height: 50px !important;
   margin: 4px;
   background-color: #E6E6E6 !important;
   color: #000000 !important;
@@ -6755,13 +6765,14 @@ html body .ui-group-theme-d .ui-bar-inherit.ui-li-divider small {
 .ui-page-theme-d #share label,
 .ui-page-theme-d .ui-panel-wrapper #share label {
   color: #999999;
+  height: 15px !important;
 }
 .ui-overlay-d #share .materials,
 .ui-page-theme-d #share .materials,
 .ui-page-theme-d .ui-panel-wrapper #share .materials {
   min-height: 45px;
   height: 45px;
-  margin-bottom: 50px;
+  margin-bottom: 20px;
 }
 .ui-overlay-d .edit-material .ui-btn,
 .ui-page-theme-d .edit-material .ui-btn,
@@ -6778,15 +6789,19 @@ html body .ui-group-theme-d .ui-bar-inherit.ui-li-divider small {
 .ui-page-theme-d .ui-panel-wrapper #share .x-share-button {
   letter-spacing: 0.1em ;
   font-weight: bold;
-  position: absolute;
-  bottom: 0;
-  left: 1%;
-  width: 98%;
+  position: relative;
+  top: 20px;
+  padding-bottom: 10px;
 }
 .ui-overlay-d #share ~ div[data-role="footer"],
 .ui-page-theme-d #share ~ div[data-role="footer"],
 .ui-page-theme-d .ui-panel-wrapper #share ~ div[data-role="footer"] {
   display: none;
+}
+.ui-overlay-d #uploading .ui-btn-active,
+.ui-page-theme-d #uploading .ui-btn-active,
+.ui-page-theme-d .ui-panel-wrapper #uploading .ui-btn-active {
+  background-color: #dddddd !important;
 }
 .ui-overlay-d div[data-role="footer"],
 .ui-page-theme-d div[data-role="footer"],
@@ -7499,7 +7514,7 @@ html body .ui-group-theme-e .ui-bar-inherit.ui-li-divider small {
 .ui-page-theme-e .s-location,
 .ui-page-theme-e .ui-panel-wrapper .s-location {
   text-transform: uppercase;
-  letter-spacing: 0.06em;
+  max-width: 55%;
 }
 .ui-overlay-e .s-description,
 .ui-page-theme-e .s-description,
@@ -7551,13 +7566,13 @@ html body .ui-group-theme-e .ui-bar-inherit.ui-li-divider small {
 .ui-page-theme-e .takenContainer .ui-slider,
 .ui-page-theme-e .ui-panel-wrapper .takenContainer .ui-slider {
   border-radius: 20px !important;
-  width: 100px;
+  width: 80px;
   text-transform: uppercase;
 }
 .ui-overlay-e #share div[data-role='header'],
 .ui-page-theme-e #share div[data-role='header'],
 .ui-page-theme-e .ui-panel-wrapper #share div[data-role='header'] {
-  height: 80px;
+  height: 60px;
   background-color: #999999;
 }
 .ui-overlay-e #share div[data-role='header'] h1,
@@ -7565,8 +7580,8 @@ html body .ui-group-theme-e .ui-bar-inherit.ui-li-divider small {
 .ui-page-theme-e .ui-panel-wrapper #share div[data-role='header'] h1 {
   text-transform: uppercase;
   color: #ffffff;
-  font-size: 2em;
-  line-height: 80px;
+  font-size: 1em;
+  line-height: 60px;
   margin: 0;
   padding: 0;
   font-weight: bold;
@@ -7574,8 +7589,8 @@ html body .ui-group-theme-e .ui-bar-inherit.ui-li-divider small {
 .ui-overlay-e #share div[data-role="header"] .ui-btn,
 .ui-page-theme-e #share div[data-role="header"] .ui-btn,
 .ui-page-theme-e .ui-panel-wrapper #share div[data-role="header"] .ui-btn {
-  width: 70px !important;
-  height: 70px !important;
+  width: 50px !important;
+  height: 50px !important;
   margin: 4px;
   background-color: #E6E6E6 !important;
   color: #000000 !important;
@@ -7589,13 +7604,14 @@ html body .ui-group-theme-e .ui-bar-inherit.ui-li-divider small {
 .ui-page-theme-e #share label,
 .ui-page-theme-e .ui-panel-wrapper #share label {
   color: #999999;
+  height: 15px !important;
 }
 .ui-overlay-e #share .materials,
 .ui-page-theme-e #share .materials,
 .ui-page-theme-e .ui-panel-wrapper #share .materials {
   min-height: 45px;
   height: 45px;
-  margin-bottom: 50px;
+  margin-bottom: 20px;
 }
 .ui-overlay-e .edit-material .ui-btn,
 .ui-page-theme-e .edit-material .ui-btn,
@@ -7612,15 +7628,19 @@ html body .ui-group-theme-e .ui-bar-inherit.ui-li-divider small {
 .ui-page-theme-e .ui-panel-wrapper #share .x-share-button {
   letter-spacing: 0.1em ;
   font-weight: bold;
-  position: absolute;
-  bottom: 0;
-  left: 1%;
-  width: 98%;
+  position: relative;
+  top: 20px;
+  padding-bottom: 10px;
 }
 .ui-overlay-e #share ~ div[data-role="footer"],
 .ui-page-theme-e #share ~ div[data-role="footer"],
 .ui-page-theme-e .ui-panel-wrapper #share ~ div[data-role="footer"] {
   display: none;
+}
+.ui-overlay-e #uploading .ui-btn-active,
+.ui-page-theme-e #uploading .ui-btn-active,
+.ui-page-theme-e .ui-panel-wrapper #uploading .ui-btn-active {
+  background-color: #dddddd !important;
 }
 .ui-overlay-e div[data-role="footer"],
 .ui-page-theme-e div[data-role="footer"],

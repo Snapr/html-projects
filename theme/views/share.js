@@ -15,16 +15,16 @@ define(['views/share', '../../theme/views/material'], function(share_view, mater
         'submit form': 'check_materials_field'
     },
 
-        append_selected_tags_to_description : function(){
-            var description = $(".s-textarea").val();
-            var tag = $(".material-choice option:selected").val();
-            if(tag === "Select Material") { //value if there is no tag
-                alert("You have to select a material, my friend");
-            }else {
-                $(".s-textarea").val(description + ' ' + tag);
-                this.share();
-            }
-        },
+        // append_selected_tags_to_description : function(){
+        //     var description = $(".s-textarea").val();
+        //     var tag = $(".material-choice option:selected").val();
+        //     if(tag === "Select Material") { //value if there is no tag
+        //         alert("You have to select a material, my friend");
+        //     }else {
+        //         $(".s-textarea").val(description + ' ' + tag);
+        //         this.share();
+        //     }
+        // },
 
         append_selected_tags_to_material_box: function() {
             var current = $(".materials").val();
