@@ -491,6 +491,10 @@ define(
                 self.$('.s-description-editable').show();
                 self.$('.s-description').hide();
                 self.$('.newDescription').focus();
+                //put the cursor at end
+                var val = self.$('.newDescription').val(); //store the value of the element
+                self.$('.newDescription').val(''); //clear the value of the element
+                self.$('.newDescription').val(val);; //set that value back.  
             //}  //currently can only click if author (see template if)
         },
 
