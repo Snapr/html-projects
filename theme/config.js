@@ -20,14 +20,15 @@ return {
         // CONFIG
         // ################################
 
-        filter_pack: 'classic-cats',
-        sticker_pack: 'classic-cats',
-
+        filter_pack: 'snapr',
+        //sticker_pack: false,
+        fx_modules: ['filters'],
+                
         app_banners: true,
 
         //!--  default: undefined
-        app_group: 'tuxedo-kittie',
-        app_name: 'Tuxedo Kittie',
+        app_group: 'snapr',
+        app_name: 'Snapr',
         signin_with_snapr: true,
         snapr_badge_color: 'light',
 
@@ -60,6 +61,43 @@ return {
         //!--default: 'components/tab_bar'
         //tab_bar_template: theme_templates_path + 'tab_bar',
         //default_tab: 'feed',
+
+        side_menu_theme: 'b',
+        side_menu_options: [
+            {
+                url: '#/feed/',
+                icon: "large-film",
+                label: 'Feed',
+                slug: 'feed'
+            },
+            {
+                url: '#/explore/',
+                icon: "large-search",
+                label: 'Explore',
+                slug: 'explore'
+            },
+            {
+                url: '#/activity/',
+                icon: "large-heart",
+                label: 'Activity',
+                slug: 'activity',
+                logged_in: true  // only show for users logged in
+            },
+            {
+                url: '#/user/',
+                icon: "large-user",
+                label: 'Profile',
+                slug: 'profile',
+                logged_in: true  // only show for users logged in
+            },
+            {
+                url: '#/welcome/',
+                icon: "large-log_in",
+                label: 'Login',
+                slug: 'login',
+                logged_in: false  // only show for users not logged in
+            }
+        ],
 
 
         // ################################
@@ -311,11 +349,11 @@ return {
     environments: {
         dev: {
             base_url: "http://dev.sna.pr",
-            client_id: "409438698404929c5be972b55aba4563"
+            client_id: "76e5be0eec71b28fb4380b0ac42201cf"
         },
         live: {
             base_url: "https://sna.pr",
-            client_id: "409438698404929c5be972b55aba4563"
+            client_id: "76e5be0eec71b28fb4380b0ac42201cf"
         },
         local: {
             base_url: "http://localhost:8000",
