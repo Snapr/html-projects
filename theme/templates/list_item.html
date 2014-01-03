@@ -72,6 +72,8 @@
         <!-- Comment button -->
         <a data-role="button" data-theme="c" data-inline="true" data-mini="true"  data-icon="comments" data-inline="true" data-iconpos="notext" class="x-comment-button">Comment</a>
         
+        <a href="mailto:?subject=Check Out This Junk&body=http://test.artjunk.org/<%= item.get('id') %>" data-role="button" data-icon="envelope" data-iconpos="notext" data-theme="c" data-inline="true" data-mini="true" ></a>
+        
         <!-- Flag or Delete button -->
         <% if (item.get("username") && item.get("username").toLowerCase() == (auth.get("snapr_user") || "").toLowerCase()){ %>
             <a class="x-delete" data-role="button" data-icon="trash" data-iconpos="notext" data-theme="c" data-inline="true" data-mini="true" ></a>
@@ -81,6 +83,7 @@
                 <% if (item.get('flagged')){%> flagged <% }else{ %> flag <% } %>
             </a>
         <%}%>
+
     </div>
 
 
