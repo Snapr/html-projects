@@ -35,7 +35,7 @@ return {
         //!--  dafault sort order for all lists of photos
         //!--  default: date_utc the photo was taken.
         //!--  valid: rating, favorite_count, comment_count, date_local, date_added, date_utc, score, weighted_score
-        sort_order: 'date_added',
+        sort_order: 'date_utc',
 
         //!--  minimum rating photos must have to show
         //!--  default: undefined (no min)
