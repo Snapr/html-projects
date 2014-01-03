@@ -14,12 +14,12 @@
     // Basic Body Colors
     @body-background-color:         @white;
     @body-border:                   @gray-lighter;
-    @body-color:                    @gray-dark;
+    @body-color:                    @gray;
     @body-accent-color:             @accent-color;
     @body-brand-color:              @brand-color;
     @body-header-color:             @brand-color;
 
-    @link-color:                    @accent-color;
+    @link-color:                    @gray-dark;
     @link-visited:                  @link-color;
     @link-hover:                    darken(@link-color,20%);
     @link-active:                   darken(@link-color,20%);
@@ -27,7 +27,7 @@
     // Dialog Style Pages
     @page-background-color:         @white;
     @page-border:                   @gray-lighter;
-    @page-color:                    @gray-dark;
+    @page-color:                    @body-color;
 
 
    // Bars 
@@ -54,24 +54,24 @@
     // Button hover 
     @bhover-background-color:       @white;
     @bhover-border:                 @white;
-    @bhover-color:                  @brand-color;
+    @bhover-color:                  @gray-dark;
     @bhover-shadow:                 none;
-    @bhover-icon-color:             @brand-color;
+    @bhover-icon-color:              @bhover-color;
 
     // Button down 
     @bdown-background-color:        @white;
     @bdown-border:                  @white;
-    @bdown-color:                   @brand-color;
+    @bdown-color:                   @bhover-color;
     @bdown-shadow:                  none;
-    @bdown-icon-color:              @brand-color;
+    @bdown-icon-color:               @bhover-color;
 
 
     // Active stuff 
     @active-background-color:       @white;
     @active-border:                 @white;
-    @active-color:                  @brand-color;
+    @active-color:                  @bhover-color;
     @active-shadow:                 none;
-    @active-icon-color:             @brand-color;
+    @active-icon-color:             @bhover-color;
     
         
     // List Items 

@@ -4275,7 +4275,7 @@ html body .ui-group-theme-a .ui-bar-inherit.ui-li-divider small {
 .ui-page-theme-a .ui-panel-wrapper {
   background: #ffffff;
   border-color: #e6e6e6;
-  color: #666666;
+  color: #999999;
   text-shadow: none;
 }
 .ui-body-a,
@@ -4287,7 +4287,7 @@ html body .ui-group-theme-a .ui-body-inherit,
 html .ui-panel-page-container-a {
   background: #ffffff;
   border-color: #e6e6e6;
-  color: #666666;
+  color: #999999;
   text-shadow: none;
 }
 .ui-body-a .text-brand,
@@ -4322,7 +4322,7 @@ html .ui-bar-a .ui-body-inherit .text-muted,
 html .ui-body-a .ui-body-inherit .text-muted,
 html body .ui-group-theme-a .ui-body-inherit .text-muted,
 html .ui-panel-page-container-a .text-muted {
-  color: #b3b3b3;
+  color: #e5e5e5;
 }
 .ui-body-a {
   border-width: 0;
@@ -4333,28 +4333,28 @@ html .ui-panel-page-container-a .text-muted {
 html .ui-bar-a a,
 html .ui-body-a a,
 html body .ui-group-theme-a a {
-  color: #ff8700;
+  color: #666666;
 }
 .ui-overlay-a a:visited,
 .ui-page-theme-a a:visited,
 html .ui-bar-a a:visited,
 html .ui-body-a a:visited,
 html body .ui-group-theme-a a:visited {
-  color: #ff8700;
+  color: #666666;
 }
 .ui-overlay-a a:hover,
 .ui-page-theme-a a:hover,
 html .ui-bar-a a:hover,
 html .ui-body-a a:hover,
 html body .ui-group-theme-a a:hover {
-  color: #995100;
+  color: #333333;
 }
 .ui-overlay-a a:active,
 .ui-page-theme-a a:active,
 html .ui-bar-a a:active,
 html .ui-body-a a:active,
 html body .ui-group-theme-a a:active {
-  color: #995100;
+  color: #333333;
 }
 .ui-overlay-a .ui-btn,
 .ui-page-theme-a .ui-btn,
@@ -4492,7 +4492,7 @@ html body .ui-group-theme-a .ui-btn:hover,
 html head + body .ui-btn.ui-btn-a:hover {
   background: #ffffff;
   border-color: #ffffff;
-  color: #feea2d;
+  color: #666666;
   text-shadow: none;
   top: 0;
   -moz-box-shadow: none;
@@ -4535,7 +4535,7 @@ html .ui-bar-a .ui-btn:hover:after,
 html .ui-body-a .ui-btn:hover:after,
 html body .ui-group-theme-a .ui-btn:hover:after,
 html head + body .ui-btn.ui-btn-a:hover:after {
-  color: #feea2d;
+  color: #666666;
 }
 .ui-overlay-a .ui-btn:active,
 .ui-page-theme-a .ui-btn:active,
@@ -4545,7 +4545,7 @@ html body .ui-group-theme-a .ui-btn:active,
 html head + body .ui-btn.ui-btn-a:active {
   background: #ffffff;
   border-color: #ffffff;
-  color: #feea2d;
+  color: #666666;
   text-shadow: none;
   top: 0;
   -moz-box-shadow: none;
@@ -4587,7 +4587,7 @@ html .ui-bar-a .ui-btn:active:after,
 html .ui-body-a .ui-btn:active:after,
 html body .ui-group-theme-a .ui-btn:active:after,
 html head + body .ui-btn.ui-btn-a:active:after {
-  color: #feea2d;
+  color: #666666;
 }
 .ui-overlay-a .ui-btn.ui-btn-active,
 .ui-page-theme-a .ui-btn.ui-btn-active,
@@ -4597,7 +4597,7 @@ html body .ui-group-theme-a .ui-btn.ui-btn-active,
 html head + body .ui-btn.ui-btn-a.ui-btn-active {
   background: #ffffff;
   border-color: #ffffff;
-  color: #feea2d;
+  color: #666666;
   text-shadow: none;
   top: 0;
   -moz-box-shadow: none;
@@ -4640,7 +4640,7 @@ html .ui-bar-a .ui-btn.ui-btn-active:after,
 html .ui-body-a .ui-btn.ui-btn-active:after,
 html body .ui-group-theme-a .ui-btn.ui-btn-active:after,
 html head + body .ui-btn.ui-btn-a.ui-btn-active:after {
-  color: #feea2d;
+  color: #666666;
 }
 .ui-overlay-a .ui-btn.ui-btn-active,
 .ui-page-theme-a .ui-btn.ui-btn-active,
@@ -4668,7 +4668,7 @@ html body .ui-group-theme-a .ui-slider-track .ui-btn-active,
 html body div.ui-slider-track.ui-body-a .ui-btn-active {
   background: #ffffff;
   border-color: #ffffff;
-  color: #feea2d;
+  color: #666666;
   text-shadow: none;
 }
 .ui-overlay-a .ui-btn.ui-btn-active.hero-style,
@@ -4762,7 +4762,7 @@ html head + body .ui-listview > li > li > .ui-btn small,
 html .ui-body-a .ui-listview > li > .ui-btn.ui-btn-a small,
 html body .ui-group-theme-a.ui-listview > li > .ui-btn.ui-btn-a small,
 html head + body .ui-listview > li > li > .ui-btn.ui-btn-a small {
-  color: #ff8700;
+  color: #666666;
 }
 .ui-overlay-a .ui-listview > .ui-li-static,
 .ui-page-theme-a .ui-listview > .ui-li-static,
@@ -4777,7 +4777,7 @@ html head + body .ui-listview > li > .ui-li-static {
 html .ui-body-a .ui-listview > .ui-li-static small,
 html body .ui-group-theme-a.ui-listview > .ui-li-static small,
 html head + body .ui-listview > li > .ui-li-static small {
-  color: #ff8700;
+  color: #666666;
 }
 .ui-overlay-a .ui-listview > li.ui-last-child > .ui-btn,
 .ui-page-theme-a .ui-listview > li.ui-last-child > .ui-btn,
@@ -4827,34 +4827,34 @@ html .ui-body-a.ui-navbar .ui-btn:hover,
 html head + body .ui-navbar .ui-btn.ui-btn-a:hover {
   background: #ffffff;
   border-color: #ffffff;
-  color: #feea2d;
+  color: #666666;
   text-shadow: none;
 }
 html .ui-body-a.ui-navbar .ui-btn:hover:after,
 html head + body .ui-navbar .ui-btn.ui-btn-a:hover:after {
-  color: #feea2d;
+  color: #666666;
 }
 html .ui-body-a.ui-navbar .ui-btn:active,
 html head + body .ui-navbar .ui-btn.ui-btn-a:active {
   background: #ffffff;
   border-color: #ffffff;
-  color: #feea2d;
+  color: #666666;
   text-shadow: none;
 }
 html .ui-body-a.ui-navbar .ui-btn:active:after,
 html head + body .ui-navbar .ui-btn.ui-btn-a:active:after {
-  color: #feea2d;
+  color: #666666;
 }
 html .ui-body-a.ui-navbar .ui-btn.ui-btn-active,
 html head + body .ui-navbar .ui-btn.ui-btn-a.ui-btn-active {
   background: #ffffff;
   border-color: #ffffff;
-  color: #feea2d;
+  color: #666666;
   text-shadow: none;
 }
 html .ui-body-a.ui-navbar .ui-btn.ui-btn-active:after,
 html head + body .ui-navbar .ui-btn.ui-btn-a.ui-btn-active:after {
-  color: #feea2d;
+  color: #666666;
 }
 .ui-overlay-a textarea.ui-input-text,
 .ui-page-theme-a textarea.ui-input-text,
@@ -6874,7 +6874,7 @@ html .ui-body-d .ui-listview > li > .ui-btn.ui-btn-d,
 html body .ui-group-theme-d.ui-listview > li > .ui-btn.ui-btn-d,
 html head + body .ui-listview > li > li > .ui-btn.ui-btn-d {
   border-bottom-width: 1px;
-  border-color: #feea2d;
+  border-color: #ff8700;
   -webkit-border-radius: 0;
   -moz-border-radius: 0;
   border-radius: 0;
@@ -6897,7 +6897,7 @@ html .ui-body-d .ui-listview > .ui-li-static,
 html body .ui-group-theme-d.ui-listview > .ui-li-static,
 html head + body .ui-listview > li > .ui-li-static {
   border-bottom-width: 1px;
-  border-color: #feea2d;
+  border-color: #ff8700;
 }
 .ui-overlay-d .ui-listview > .ui-li-static small,
 .ui-page-theme-d .ui-listview > .ui-li-static small,
@@ -7217,7 +7217,7 @@ html .ui-bar-e .ui-btn.hero-style,
 html .ui-body-e .ui-btn.hero-style,
 html body .ui-group-theme-e .ui-btn.hero-style,
 html head + body .ui-btn.ui-btn-e.hero-style {
-  background: #cc6c00;
+  background: #f56500;
 }
 .ui-overlay-e .ui-btn.outline-style,
 .ui-page-theme-e .ui-btn.outline-style,
@@ -7276,7 +7276,7 @@ html .ui-bar-e .ui-btn:visited.hero-style,
 html .ui-body-e .ui-btn:visited.hero-style,
 html body .ui-group-theme-e .ui-btn:visited.hero-style,
 html head + body .ui-btn.ui-btn-e:visited.hero-style {
-  background: #cc6c00;
+  background: #f56500;
 }
 .ui-overlay-e .ui-btn:visited.outline-style,
 .ui-page-theme-e .ui-btn:visited.outline-style,
@@ -7318,8 +7318,8 @@ html .ui-bar-e .ui-btn:hover,
 html .ui-body-e .ui-btn:hover,
 html body .ui-group-theme-e .ui-btn:hover,
 html head + body .ui-btn.ui-btn-e:hover {
-  background: #cc6c00;
-  border-color: #cc6c00;
+  background: #f56500;
+  border-color: #f56500;
   color: #202020;
   text-shadow: none;
   top: 0;
@@ -7333,7 +7333,7 @@ html .ui-bar-e .ui-btn:hover.hero-style,
 html .ui-body-e .ui-btn:hover.hero-style,
 html body .ui-group-theme-e .ui-btn:hover.hero-style,
 html head + body .ui-btn.ui-btn-e:hover.hero-style {
-  background: #bd6400;
+  background: #e55f00;
 }
 .ui-overlay-e .ui-btn:hover.outline-style,
 .ui-page-theme-e .ui-btn:hover.outline-style,
@@ -7342,8 +7342,8 @@ html .ui-body-e .ui-btn:hover.outline-style,
 html body .ui-group-theme-e .ui-btn:hover.outline-style,
 html head + body .ui-btn.ui-btn-e:hover.outline-style {
   background: transparent;
-  border-color: #cc6c00;
-  color: #cc6c00;
+  border-color: #f56500;
+  color: #f56500;
   top: 0;
   -moz-box-shadow: none;
   -webkit-box-shadow: none;
@@ -7355,7 +7355,7 @@ html .ui-bar-e .ui-btn:hover.outline-style:after,
 html .ui-body-e .ui-btn:hover.outline-style:after,
 html body .ui-group-theme-e .ui-btn:hover.outline-style:after,
 html head + body .ui-btn.ui-btn-e:hover.outline-style:after {
-  color: #cc6c00;
+  color: #f56500;
 }
 .ui-overlay-e .ui-btn:hover:after,
 .ui-page-theme-e .ui-btn:hover:after,
@@ -7386,7 +7386,7 @@ html .ui-bar-e .ui-btn:active.hero-style,
 html .ui-body-e .ui-btn:active.hero-style,
 html body .ui-group-theme-e .ui-btn:active.hero-style,
 html head + body .ui-btn.ui-btn-e:active.hero-style {
-  background: #cc6c00;
+  background: #f56500;
 }
 .ui-overlay-e .ui-btn:active.outline-style,
 .ui-page-theme-e .ui-btn:active.outline-style,
@@ -7438,7 +7438,7 @@ html .ui-bar-e .ui-btn.ui-btn-active.hero-style,
 html .ui-body-e .ui-btn.ui-btn-active.hero-style,
 html body .ui-group-theme-e .ui-btn.ui-btn-active.hero-style,
 html head + body .ui-btn.ui-btn-e.ui-btn-active.hero-style {
-  background: #cc6c00;
+  background: #f56500;
 }
 .ui-overlay-e .ui-btn.ui-btn-active.outline-style,
 .ui-page-theme-e .ui-btn.ui-btn-active.outline-style,
@@ -7653,8 +7653,8 @@ html head + body .ui-navbar .ui-btn.ui-btn-e:visited:after {
 }
 html .ui-body-e.ui-navbar .ui-btn:hover,
 html head + body .ui-navbar .ui-btn.ui-btn-e:hover {
-  background: #cc6c00;
-  border-color: #cc6c00;
+  background: #f56500;
+  border-color: #f56500;
   color: #202020;
   text-shadow: none;
 }
@@ -10745,6 +10745,11 @@ img.emoji {
 .s-explore-users > .ui-listview .popular-link {
   color: #ff8700;
 }
+.s-explore-images > .ui-listview .popular-link .ui-icon-heart,
+.s-explore-users > .ui-listview .popular-link .ui-icon-heart {
+  position: relative;
+  top: -3px;
+}
 .s-spot-item {
   padding-left: 110px;
   min-height: 100px;
@@ -11592,7 +11597,7 @@ img.emoji {
   margin: 8px;
 }
 html head + body .ui-btn.hero-style:after {
-  color: #ff8700;
+  color: #ffffff;
 }
 .ui-footer .s-app-logo {
   width: 103px;
