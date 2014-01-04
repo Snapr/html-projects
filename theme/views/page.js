@@ -1,5 +1,5 @@
 //extends app page, overridding only the activate function to allow for a custom tab_bar
-define(['views/base/page', 'views/base/view', 'utils/history_state', 'views/components/bg_loader', '../../theme/views/tab_bar'],
+define(['views/base/page', 'views/base/view', 'utils/history_state', 'views/components/bg_loader', 'views/components/tab_bar'],
     function(page_view, view, history_state, bg_loader, tab_bar){
 
     return page_view.extend({

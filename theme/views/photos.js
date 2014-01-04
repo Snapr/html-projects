@@ -1,5 +1,5 @@
 /*global _, define, require, T */
-define(['config', '../../theme/views/page', '../../theme/views/feed'], function(config, page_view, feed){
+define(['config', 'views/base/page', '../../theme/views/feed'], function(config, page_view, feed){
     return page_view.extend({
 
             post_activate: function(options){  var self = this;
