@@ -419,6 +419,7 @@ return {
         },
         {
             name: 'uploading',
+            view: theme_views_path + 'uploading',
             template: theme_templates_path + 'uploading'
         },
         {

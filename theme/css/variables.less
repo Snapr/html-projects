@@ -157,6 +157,10 @@
 @vertical-margin: @m; // Space above and below components
 
 .page(){
+
+    #feed div[data-role="header"] {
+        border-bottom: 1px solid;
+    }
     
     .ui-toolbar-back-btn {
         display: none !important;
@@ -298,6 +302,10 @@
 
     #uploading .ui-btn-active{
         background-color: @brand-color !important;
+    }
+
+    #uploading .email{
+        display: none; //shows when upload complete
     }
 
     div[data-role="footer"] {

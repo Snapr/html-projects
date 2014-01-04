@@ -26,7 +26,6 @@ var uploading = page_view.extend({
 
     post_activate: function(options){  var self = this;
         this.change_page();
-
         //reset photo to latest one in progress object
         // calls to upload_porgress will set this
         this.progress_view = null;
@@ -206,6 +205,9 @@ var uploading = page_view.extend({
     upload_complete: function(photo_id, data){
         data = data || {};
         this.$('.offline').hide();
+
+        $('.email').attr('href', 'mailto:?subject=Check Out This Junk&body=http://test.artjunk.org/' + photo_id);
+        $('.email').show();
 
         if(data.to_link && data.to_link.length){
             // if there are services to link we won't be doing anything here.
