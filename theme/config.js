@@ -40,7 +40,7 @@ return {
         //!--  which date to display for photos - should make sense with sort_order
         //!--  default: date the photo was uploaded.
         //!--  valid: date, date_taken
-        //display_date: 'date_taken',
+        display_date: 'date_taken',
 
         //!--  minimum rating photos must have to show
         //!--  default: undefined (no min)
