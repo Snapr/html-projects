@@ -23,7 +23,7 @@ return {
         filter_pack: 'snapr',
         //sticker_pack: false,
         fx_modules: ['filters'],
-                
+
         app_banners: true,
 
         //!--  default: undefined
@@ -32,7 +32,7 @@ return {
         signin_with_snapr: true,
         snapr_badge_color: 'light',
 
-        //!--  dafault sort order for all lists of photos
+        //!--  default sort order for all lists of photos
         //!--  default: date_utc the photo was taken.
         //!--  valid: rating, favorite_count, comment_count, date_local, date_added, date_utc, score, weighted_score
         sort_order: 'date_utc',
@@ -296,7 +296,7 @@ return {
         //xhr_uploads: false
 
         //!--  list of feed views to show upload queue in
-        //!--  dafault: 'my-snaps' only
+        //!--  default: 'my-snaps' only
         //!--  valid: 'feed', 'my-snaps'
         //show_queue: ['my-snaps'],
 
