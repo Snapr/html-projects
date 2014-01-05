@@ -37,6 +37,11 @@ return {
         //!--  valid: rating, favorite_count, comment_count, date (local date), date_added, date_utc, score, weighted_score
         sort_order: 'date_utc',
 
+        //!--  which date to display for photos - should make sense with sort_order
+        //!--  default: date the photo was uploaded.
+        //!--  valid: date, date_taken
+        //display_date: 'date_taken',
+
         //!--  minimum rating photos must have to show
         //!--  default: undefined (no min)
         //min_photo_rating: 3,
