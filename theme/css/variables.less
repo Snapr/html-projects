@@ -69,9 +69,13 @@
 }
 
 
-// Headers
+// Mixins
 // ------------------------
 
+.noMarginPadding {
+    padding: 0 !important;
+    margin: 0 !important;
+} 
 
 // Headers
 // ------------------------
@@ -133,6 +137,11 @@
     line-height: @font-size-small;
 }
 
+.ui-btn-active {
+    background-color: lightblue !important;
+    color: #666!important;
+}
+
 
 // Bars
 // ------------------------
@@ -158,168 +167,205 @@
 
 .page(){
 
-    #feed div[data-role="header"] {
-        border-bottom: 1px solid;
-    }
-    
-    .ui-toolbar-back-btn {
-        display: none !important;
-    }
+    #feed {
+        .s-feed-photo {
+            .s-time {
+                float: right;
+                cursor: cursor;
+            }
+            .s-location {
+                text-transform: uppercase;
+                max-width: 55%;
+            }
+            .s-image-area {
+                padding-bottom: 0 !important;
+                .takenContainer {
+                    position: absolute;
+                    bottom: 2px;
+                    right: 5px;
+                    .ui-slider {
+                        border-radius: 20px !important;
+                        width: 80px;
+                        text-transform: uppercase;
+                    }
+                }
+            }
+            .s-image-details {
+                padding-left: 0;  
+                .s-description {
+                    background-color: @gray-lighter;
+                    padding: 10px;
+                    border-radius: 5px;
+                    a[href] {
+                        color: @black;
+                    }
+                }
+                .s-description-editable textarea{
+                    min-height: 0;
+                    height: 40px;
+                }
+                
+                .tags { 
+                    cursor: pointer;
+                }
+                .s-action-buttons {
+                    border: none !important;
+                }
+            }
 
-    .ui-btn-active {
-        background-color: lightblue !important;
-        color: #666!important;
-    }
+        }
+    } //end feed
 
-    #browse-menu{ //position of select menu, see variables.less config for options
-          position: fixed;
-          bottom: 40px;
-          left: 0;
-          width: 160px;
+    #share {
+        div[data-role='header'] {
+            height: 50px;
+            min-height: 50px;
+            background-color: @gray;
+            h1 {
+                text-transform: uppercase;
+                color: @white;
+                font-size: 1em;
+                line-height: 50px;
+                margin: 0;
+                padding: 0;
+                font-weight: bold;
+            }
+
+            .ui-btn {
+                width: 40px !important;
+                height: 40px !important;
+                margin: 4px;
+                background-color: #E6E6E6 !important;
+                color: @black !important;
+            }
         }
 
-    #browse-menu .ui-btn{ //buttons inside the select browse menu
-        text-align: center;
-        font-size: 0.8em;
+        label {
+            color: @gray;
+            height: 15px !important;
+        }
+
+        .s-image-textarea {
+            .s-image-thumb {
+                overflow: hidden;
+            }
+
+        }
+
+        .materials {
+            min-height: 50px;
+            height: 50px;
+        }
+
+        .edit-material .ui-btn {
+            font-weight: normal;
+        }
+
+        .select-material {
+            margin-bottom: 25px;
+        }
+
+        .s-upload-image-location {
+            position: static; 
+            .x-location {
+                height: 48px;
+                line-height: 48px;
+                padding: 0 10px;
+                margin: 0;
+            }
+        }
+
+        .x-share-button {
+            letter-spacing: 0.1em ;
+            font-weight: bold;
+            position: relative;
+            top: 20px;
+            padding-bottom: 10px;
+        }
+
+
+    } //end share
+
+
+    #uploading {
+        .ui-btn-active{
+            background-color: @brand-color !important;
+        }
+        .email{
+            display: none; //shows when upload complete
+        }
     }
 
-    .s-time {
-        float: right;
-        cursor: cursor;
+    div[data-role="header"]{
+        background-color: #536270;             
+        min-height:50px !important;
+        //border-bottom: 1px solid;
+        // how can I make the menu button white!
+        .ui-btn {
+            background-color: #536270 !important;
+            //color: @white !important;
+            height:50px !important;
+            
+        }
+    } 
+
+
+
+
+    //Footer
+    @footerHeight: 50px;
+    .ui-footer {
+        min-height: @footerHeight !important;
+       .ui-btn {
+            line-height: @footerHeight !important;
+            .noMarginPadding;
+            font-size:16px !important;
+            font-family: Montserrat !important;
+            -webkit-font-smoothing: antialiased !important;
+       }
+       .ui-select {
+            .noMarginPadding;
+        }
+
+        #browse-menu{ 
+            position: fixed;
+            bottom: 50px;
+            left: 0;
+            width: 50%;
+            border-radius: 0;
+            .ui-btn{ //buttons inside the select browse menu
+                text-align: center;
+                font-size: 0.8em;
+                height: 50px;
+                line-height: 50px;
+                margin: 0;
+            }
+        }
     }
 
-    .s-location {
-        text-transform: uppercase;
-        //letter-spacing: 0.06em;
-        max-width: 55%;
-    }
-
-    .s-description {
-        background-color: @gray-lighter;
-        padding: 10px;
-        border-radius: 5px;
-    }
-
-    .s-description a[href] {
-        color: @black;
-    }
-
-    .s-image-area {
-        padding-bottom: 0 !important;
-    }
-
-    .s-image-details {
-        padding-left: 0 !important;
-        padding: 0;
-    }
-
-    .tags { 
-        cursor: pointer;
-    }
-
-    .s-description-editable textarea{
-        min-height: 0;
-        height: 40px;
-    }
-
-    .s-action-buttons {
-        border: none !important;
-    }
-
-    .takenContainer {
-        position: absolute;
-        bottom: 2px;
-        right: 5px;
-    }
-
-    .takenContainer .ui-slider {
-        border-radius: 20px !important;
-        width: 80px;
-        text-transform: uppercase;
-    }
-
-    #share div[data-role='header'] {
-        height: 60px;
-        background-color: @gray;
-    }
-
-    #share div[data-role='header'] h1 {
-        text-transform: uppercase;
-        color: @white;
-        font-size: 1em;
-        line-height: 60px;
-        margin: 0;
-        padding: 0;
-        font-weight: bold;
-        //letter-spacing: 1px;
-    }
-
-    #share div[data-role="header"] .ui-btn {
-        width: 50px !important;
-        height: 50px !important;
-        margin: 4px;
-        background-color: #E6E6E6 !important;
-        color: @black !important;
-    }
-
-    #share .s-image-textarea .s-image-thumb {
-        top: 40px;
-    }
-
-    #share label {
-        color: @gray;
-        height: 15px !important;
-    }
-
-    #share .materials {
-        min-height: 45px;
-        height: 45px;
-        margin-bottom: 20px;
-    }
-
-    .edit-material .ui-btn {
-        font-weight: normal;
-    }
-
-    #share .s-upload-image-location {
-        position: static;
-    }
-
-    #share .x-share-button {
-        letter-spacing: 0.1em ;
-        font-weight: bold;
-        position: relative;
-        top: 20px;
-        padding-bottom: 10px;
-        //bottom: 0;
-        //left: 1%;
-        //width: 98%;
-    }
-
-    #share ~ div[data-role="footer"] {
-        display: none;
-    }
-
-    #uploading .ui-btn-active{
-        background-color: @brand-color !important;
-    }
-
-    #uploading .email{
-        display: none; //shows when upload complete
-    }
-
-    div[data-role="footer"] {
-      min-height: 20px; //make smaller footer bar than kitty theme
-    }
-
-    div[data-role="footer"] .ui-select{
-      margin: 0; padding: 0; //to avoid border on Browse menu and match nav button
-    }
-
-    div[data-role="footer"] .ui-btn{
-      letter-spacing: 0.1em;
-    }
 }
+
+
+
+
+
+// #share ~ div[data-role="footer"] {
+//     display: none;
+// }
+
+// div[data-role="footer"] {
+//   min-height: 50px !important; //make smaller footer bar than kitty theme
+//   height: 50px;
+// }
+
+// div[data-role="footer"] .ui-select{
+//   margin: 0; padding: 0; //to avoid border on Browse menu and match nav button
+// }
+
+// div[data-role="footer"] .ui-btn{
+//   letter-spacing: 0.1em;
+//   line-height: 40px !important;
+// }
 
 
 
