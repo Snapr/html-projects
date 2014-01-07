@@ -26,7 +26,7 @@ define(['config', 'views/base/page', '../../theme/views/feed'], function(config,
                     }else if (query.sort == 'weighted_score' || query.sort == 'score'){
                         self.title = T("Popular");
                     }else{
-                        self.title = T("Browse");
+                        self.title = T("All");
                     }
 
                     self.replace_from_template({title: self.title}, ['.x-title']).enhanceWithin();

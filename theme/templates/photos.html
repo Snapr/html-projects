@@ -3,6 +3,11 @@
     <div data-role="header" data-theme="a" data-position="fixed" data-tap-toggle="false">
 
          <a class="x-menu-button" data-icon="bars" data-iconpos="notext" data-corners="false"><%= T('Menu') %></a>
+                 <h1 class="x-title">
+            <% if(obj.title){ %>
+                <%= string_utils.count_chars(title) %>
+            <% } %>
+        </h1>
 
     </div>
 
