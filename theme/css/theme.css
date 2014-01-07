@@ -11635,6 +11635,9 @@ html head + body .ui-btn.hero-style:after {
   margin-top: -9px;
   overflow: visible;
 }
+#s-about-btns .s-about-snapr {
+  display: none;
+}
 /*!
  *
  *  Project:  GLYPHICONS HALFLINGS
