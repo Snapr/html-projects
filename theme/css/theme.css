@@ -9894,12 +9894,12 @@ div[data-role="header"] *[data-rel="back"]:before {
   -moz-background-size: 80px 80px !important;
   -o-background-size: 80px 80px !important;
   background-size: 80px 80px !important;
-  background: -moz-linear-gradient(left, #fdf9ad 0%, #ccb600 50%, #fdf9ad 100%);
-  background: -webkit-gradient(linear, left top, right top, color-stop(0%, #fdf9ad), color-stop(50%, #57caef), color-stop(100%, #fdf9ad));
-  background: -webkit-linear-gradient(left, #fdf9ad 0%, #ccb600 50%, #fdf9ad 100%);
-  background: -o-linear-gradient(left, #fdf9ad 0%, #ccb600 50%, #fdf9ad 100%);
-  background: -ms-linear-gradient(left, #fdf9ad 0%, #ccb600 50%, #fdf9ad 100%);
-  background: linear-gradient(to right, #fdf9ad 0%, #ccb600 50%, #fdf9ad 100%);
+  background: -moz-linear-gradient(left, #feed46 0%, #ff931a 50%, #feed46 100%);
+  background: -webkit-gradient(linear, left top, right top, color-stop(0%, #feed46), color-stop(50%, #57caef), color-stop(100%, #feed46));
+  background: -webkit-linear-gradient(left, #feed46 0%, #ff931a 50%, #feed46 100%);
+  background: -o-linear-gradient(left, #feed46 0%, #ff931a 50%, #feed46 100%);
+  background: -ms-linear-gradient(left, #feed46 0%, #ff931a 50%, #feed46 100%);
+  background: linear-gradient(to right, #feed46 0%, #ff931a 50%, #feed46 100%);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='@color-a', endColorstr='@color-b', GradientType=1);
   animation: animate-bar 0.5s linear infinite;
   -webkit-animation: animate-bar 0.5s linear infinite;
@@ -11609,6 +11609,7 @@ html head + body .ui-btn.hero-style:after {
   left: 50%;
   margin-left: -54px;
   top: 3px;
+  padding: 0;
   background-position: center;
   background-image: url("../../theme/css/gfx/1x/snapr-logo.png");
   -webkit-background-size: 103px 52px !important;
