@@ -14,7 +14,6 @@
         <ul>   
             <li>        
                 <select id="browse" data-corners="false" data-native-menu="false" data-iconpos="noicon">
-                    <!-- <option>BROWSE</option> -->
                     <option value="browse">BROWSE</option>
                     <option value="map">MAP</option>
                     <option value="search">SEARCH</option>
@@ -28,3 +27,21 @@
         </ul>
     </div><!-- /navbar -->
 </div>
+
+<script>
+    $(document).ready(function(){
+        $("#browse").change(function(){
+          var selected = $(this).val();
+          if (selected === "browse") {
+              window.location.href = '/';
+          } else if(selected === "map") {
+              window.location.href = '/#/map/';
+          }else {
+              window.location.href = '/#/search/';
+              //$(this).val('search');
+          }
+        });
+
+    });
+
+</script>
