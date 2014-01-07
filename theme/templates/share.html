@@ -1,4 +1,4 @@
-<div id="share" data-role="page" data-theme="c" data-tab-bar="false">
+<div id="share" data-role="page" data-theme="c" data-tab-bar="true">
     <div data-role="header" data-add-back-btn="false">
         <div class='uploadbar ui-btn-center' data-role="button" data-theme='a'><h1>Upload</h1></div>
         <a href="#/" class="ui-btn-right" data-role="button" data-icon="delete" data-iconpos="notext" data-corners="false"></a>
@@ -6,14 +6,13 @@
 
     <div data-role="content">
         <div class="x-content">
-            <% if(obj.photo){ %>
+            <form action="javascript: void(0);">  
+                <% if(obj.photo){ %>
+                    <% if(comp){ %>
+                        <h1 class="s-comp text-brand"><span class="large-icon ui-icon-large-cup"></span> <%= comp.get('hashtag') %></h1>
+                    <% } %>
 
-                <% if(comp){ %>
-                    <h1 class="s-comp text-brand"><span class="large-icon ui-icon-large-cup"></span> <%= comp.get('hashtag') %></h1>
-                <% } %>
-
-                <form action="javascript: void(0);">
-
+                    <label>Caption</label>
                     <div class="s-image-textarea">
                         <div class="s-image-thumb x-photo-placeholder">
                             <% if (img_url){%><img class="x-photo" src="<%= img_url %>" /><%}%>
@@ -21,37 +20,29 @@
                         <div data-role="popup" class="x-lightbox" data-overlay-theme="b" data-theme="b" data-corners="false">
                             <a data-role="button" data-theme="b" data-icon="remove" data-iconpos="notext" class="ui-btn-right s-close-lightbox">Close</a>
                         </div>
-
-                        <!-- Fun Fact: setting the layer with the text inputs in it to have
-                        absolute positioning will cause text not to enter properly on some
-                        android devices - for example s3 running 4.0.4 -->
-                        <label>Caption</label>
-                        <textarea name="description" maxlength="400" class="x-description s-textarea" placeholder="<%= T('Write a caption') %>..." data-theme="a"><%= photo.get('description') %></textarea>
-                         
-                        <label>Materials</label>
-                        <textarea class="materials" name="materials" data-theme="a"></textarea>
-                         
-                       
+                        <!-- Fun Fact: setting the layer with the text inputs in it to have absolute positioning will cause text not to enter properly on some android devices - for example s3 running 4.0.4 -->
+                        <textarea name="description" maxlength="400" class="x-description s-textarea" placeholder="<%= T('Write a caption') %>..." data-theme="a"><%= photo.get('description') %></textarea>         
                     </div>
 
-
-                    <% if(!location){ %>  <!-- if no location put a placeholder here -->
-                        <a class="x-location"></a>
-                    <% } %>
+                    <label>Materials</label>
+                    <textarea class="materials" name="materials" data-theme="a"></textarea>
 
                     <div class="select-material">
-                        <select name="material-choice" class="material-choice" data-native-menu="true" data-theme="a" data-iconpos="noicon" data-mini='true'>
+                        <select name="material-choice" class="material-choice" data-native-menu="true" data-theme="a" data-iconpos="noicon">
                             <option>Select Materials</option>
                             <%= material_select_html %>
                         </select>
 
                     </div>
+                <% } %>
 
+                <% if(!location){ %>  <!-- if no location put a placeholder here -->
+                    <a class="x-location"></a>
                 <% } %>
 
                 <% if(location){ %>
                     <div class="s-upload-image-location">
-                       <a data-role="button" data-mini="true" class="x-location ui-btn-icon-right">
+                       <a data-role="button" class="x-location ui-btn-icon-right">
                             <% if(location.type == 'loading') {%>
                                 <span class="ui-icon ui-icon-location"></span>
                                 <span class="s-btn-text"><%= T('Getting Location...') %></span>
@@ -71,12 +62,12 @@
      
                     </div>
                 <% } %>
+
                 <div class="x-share-button" data-inline="false">
                     <input type="submit" data-role="button" data-theme="e" data-inline="false"  value="<%= T('SHARE') %>"/>
                 </div>
 
             </form>
-
         </div>
     </div>
 
