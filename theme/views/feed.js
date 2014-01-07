@@ -494,7 +494,7 @@ define(
                 //put the cursor at end
                 var val = self.$('.newDescription').val(); //store the value of the element
                 self.$('.newDescription').val(''); //clear the value of the element
-                self.$('.newDescription').val(val);; //set that value back.  
+                self.$('.newDescription').val(val); //set that value back.  
             //}  //currently can only click if author (see template if)
         },
 
@@ -742,7 +742,7 @@ define(
                     'yes': T('Delete'),
                     'no': T('Cancel'),
                     'yes_callback': function(){
-                        self.model['delete']({
+                        self.model['delete_photo']({
                             success: function( resp ){
                                 if (resp.success){
                                     self.$el.hide();
