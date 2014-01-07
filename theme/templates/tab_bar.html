@@ -13,8 +13,10 @@
     <div data-role="navbar">
         <ul>   
             <li>        
-                <select id="browse" data-corners="false" data-native-menu="false" data-iconpos="noicon">
-                    <option value="browse">BROWSE</option>
+                <select id="browse" data-corners="false" data-native-menu="false" data-iconpos="noicon" data-theme='c'>
+                    <option>BROWSE</option>
+                    <option value="all">ALL</option>
+                    <option value="nearby">NEARBY</option>
                     <option value="map">MAP</option>
                     <option value="search">SEARCH</option>
                 </select>
@@ -32,13 +34,14 @@
     $(document).ready(function(){
         $("#browse").change(function(){
           var selected = $(this).val();
-          if (selected === "browse") {
+          if (selected === "nearby") {
               window.location.href = '/';
           } else if(selected === "map") {
               window.location.href = '/#/map/';
-          }else {
+          }else if(selected === "search"){
               window.location.href = '/#/search/';
-              //$(this).val('search');
+          }else{
+              window.location.href = '/#/photos/';
           }
         });
 
