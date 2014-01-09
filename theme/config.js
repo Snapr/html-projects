@@ -114,6 +114,8 @@ return {
         //!-- Note that appdotnet support is not yet complete
         //!--  default: all
         services: ['twitter', 'tumblr','facebook', 'foursquare'],
+        
+        share_location_default: true,
 
         //!--  any photos share with the app must have a 4sq venue/snapr spot
         //!--  default: false
