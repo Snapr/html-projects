@@ -10,6 +10,17 @@ define(
 
         initialize: function(){  var self = this;
 
+
+            var thisFeed = Backbone.history.fragment;
+            var nearby = $('#browse-menu .ui-btn:contains(NEARBY)');
+            var all = $('#browse-menu .ui-btn:contains(ALL)');
+
+            if (thisFeed === "photos/") {
+                all.css("background-color","lightblue");
+            } else {
+                nearby.css("background-color", "lightblue");
+            }
+
             /*
             options: {
                 el: $element,
@@ -137,6 +148,11 @@ define(
                 self.fetching = collection.fetch({
                 data: {include_comments: 10, include_favorites: 10},
                 success: function(){
+                    var title = $('h1 span').html();
+                    if (title === "Nearby" && collection.length < 5) {
+                        window.location.href = '/#/photos/';
+                        return;
+                    }
                     self.render_collection(collection);
                     if(callback){callback();}
                 }
@@ -305,6 +321,7 @@ define(
             "click .x-more-button": "show_more_menu",
             "click .x-show-comments": "show_comments",
             "click .x-goto-map": "goto_map",
+            "dblclick .s-image-area": "goto_map",
             "click .x-goto-spot": "goto_spot",
             "click .x-delete": "delete",
             "click .x-flag": "flag",
@@ -425,11 +442,16 @@ define(
 
         take_it : function(){ var self = this;
             if (!this.is_taken()) {
-                var commentArea = self.$('.s-comment-area');
-                $(commentArea).find('textarea').val(self.takenTag);
-                this.commentTaken();
-                self.$('.s-image-area').fadeTo("slow",0.5);
-               
+                var r = confirm("Take this item?");
+                if (r===true) {
+                    var commentArea = self.$('.s-comment-area');
+                    $(commentArea).find('textarea').val(self.takenTag);
+                    this.commentTaken();
+                    self.$('.s-image-area').fadeTo("slow",0.5);
+                }
+                else {
+                    self.$('.taken').val('off').slider("refresh");
+                }
             }else {
                 alert("This item is previously taken.");
             }
@@ -438,8 +460,15 @@ define(
         leave_it : function(){ var self = this;
             var commentToDelete = this.get_comment_id(this.takenTag);
             if (commentToDelete !== 0) {
-                this.delete_comment(commentToDelete);
-                self.$('.s-image-area').fadeTo("slow", 1);
+                var r = confirm("Untake this item?");
+                if (r===true){
+                    this.delete_comment(commentToDelete);
+                    self.$('.s-image-area').fadeTo("slow", 1);
+                }
+                else {
+                    self.$('.taken').val('on').slider("refresh");
+
+                }
             }else{
                 //alert("This item remains tagged #taken by another user.");
             }

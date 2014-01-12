@@ -1,5 +1,6 @@
 <div id="search" data-role="page" data-theme="a" data-ajax="false" data-tab-bar="true">
-    <div data-role="header">
+    <div data-role="header" data-theme="e" data-position="fixed" data-tap-toggle="false">
+        <a class="x-menu-button" data-icon="bars" data-iconpos="notext" data-corners="false" data-theme='e'><%= T('Menu') %></a>
         <h1><%= T('Search') %></h1>
         <a class="x-back" data-role="button" data-icon="delete" data-iconpos="notext"></a>
     </div>
@@ -14,7 +15,7 @@
                         <select id="search-type" class="x-search-type" data-theme="c">
                             <option value="tag"><%= T('Search') %> <%= T('Tags') %></option>
                             <option value="location"><%= T('Search') %> <%= T('Locations') %></option>
-                            <option value="user"><%= T('Search') %> <%= T('Users') %></option>
+                 <!--            <option value="user"><%= T('Search') %> <%= T('Users') %></option> -->
                         </select>
                     </li>
                 </ul>

@@ -13,7 +13,7 @@ return {
 
         //  from theme.environments below
         //  default: 'dev'
-        //environment: 'live',
+        environment: 'live',
 
 
         // ################################
@@ -236,7 +236,7 @@ return {
             }
         ],
 
-        default_feed_query: {rating:'2', min_date:'-30d'}
+        default_feed_query: {rating:'2', min_date:'-30d'},
 
         //!--  controls to show in feed view
         //!--  defaults: both true
@@ -261,7 +261,7 @@ return {
 
         //!--  number of images to show in feed views
         //default: 9
-        //feed_count: 5,
+        feed_count: 6,
 
 
         // ################################
@@ -402,7 +402,7 @@ return {
             extra:{
             query: {
                 location: 'current_location',
-                radius: 5000
+                radius: 20000
             },
             list_item_template: theme_templates_path + 'list_item'
             }
@@ -424,6 +424,7 @@ return {
         },
         {
             name: 'search',
+            view: theme_views_path + 'search',
             template: theme_templates_path + 'search'
         },
         // {

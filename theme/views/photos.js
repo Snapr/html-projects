@@ -43,21 +43,29 @@ define(['config', 'views/base/page', '../../theme/views/feed'], function(config,
                     });
                     $.mobile.loading('show');
 
+
+
                 }else{
                     self.show_bg_loader();
                     self.photos.render(function(){ self.show_bg_loader(false); });
+            
                     self.change_page();
                 }
 
             },
 
             events:{
-                'click .x-menu-button': 'open_menu'
+                'click .x-menu-button': 'open_menu',
+                'click .ui-header' : 'scrollTop'
             },
 
             open_menu : function(){
                 $('.x-side-menu').panel('open');
-            }
+            },
 
+            scrollTop : function() {
+                $("html, body").animate({ scrollTop: 0 }, "slow");
+
+            }
 });
 });

@@ -4,6 +4,9 @@ return page_view.extend({
 
     post_activate: function(){
 
+        var search = $('#browse-menu .ui-btn:contains(SEARCH)');
+        search.css("background-color","lightblue");
+
         var page = this;
         this.$el.on( "pagebeforeshow", function( e, obj ){
             if (obj && obj.prevPage && obj.prevPage.length){
@@ -62,10 +65,10 @@ return page_view.extend({
                 }
                 break;
             case 'tag':
-                if (window.location.hash == "#/feed/?keywords=" + keywords + "&list_style=grid" ){
+                if (window.location.hash == "#/photos/?keywords=" + keywords + "&list_style=grid" ){
                     this.back();
                 }else{
-                    window.location.hash = "#/feed/?keywords=" + keywords + "&list_style=grid";
+                    window.location.hash = "#/photos/?keywords=" + keywords + "&list_style=grid";
                 }
                 break;
             case 'user':

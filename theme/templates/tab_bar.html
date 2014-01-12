@@ -1,4 +1,4 @@
-<div data-role="footer" data-position="fixed" data-ajax="false" data-tap-toggle="false" data-theme="c">
+<div data-role="footer" data-position="fixed" data-ajax="false" data-tap-toggle="false" data-theme="c" data-id='footer'>
 
 	<!-- Shows when there is a connection error -->
     <div class="s-offline-bar x-offline-bar hide">
@@ -31,7 +31,14 @@
 </div>
 
 <script>
+
+
     $(document).ready(function(){
+
+      var all = $('#browse-menu .ui-btn:contains(ALL)').html();
+      //all.css("background-color","lightblue");
+
+
         $("#browse").change(function(){
           var selected = $(this).val();
           if (selected === "nearby") {
@@ -40,6 +47,8 @@
               window.location.href = '/#/map/';
           }else if(selected === "search"){
               window.location.href = '/#/search/';
+              var search = $('#browse-menu .ui-btn:contains(SEARCH)');
+              search.css("background-color","lightblue");
           }else{
               window.location.href = '/#/photos/';
           }

@@ -8,7 +8,7 @@
 // -------------------------
 
 @brand-color:       #ddd;
-@accent-color:      #596BF9;
+@accent-color:      #536270; //#596BF9;
 
 @info-color:        @brand-color;
 @warning-color:     @brand-color;
@@ -45,6 +45,13 @@
 @font-size-small:               13px;
 @line-height:                   1.4;
 
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Montserrat-Bold'), url(http://themes.googleusercontent.com/static/fonts/montserrat/v3/IQHow_FEYlDC4Gzy_m8fcnbFhgvWbfSbdVg11QabG8w.woff) format('woff');
+}
+
 @font-serif:                    Georgia,'Times New Roman', Times, sans-serif;
 @font-sans:                     HelveticaNeue, Helvetica, Arial, sans-serif;
 @font-special:                  HelveticaNeue-Light,Helvetica, Arial, sans-serif;
@@ -66,6 +73,13 @@
     font-family:                @font-special;
     font-size:                  @font-size-base;
     text-transform:             none;
+}
+
+.font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Montserrat-Bold'), url(http://themes.googleusercontent.com/static/fonts/montserrat/v3/IQHow_FEYlDC4Gzy_m8fcnbFhgvWbfSbdVg11QabG8w.woff) format('woff');
 }
 
 
@@ -137,12 +151,6 @@
     line-height: @font-size-small;
 }
 
-.ui-btn-active {
-    background-color: lightblue !important;
-    color: #666!important;
-}
-
-
 // Bars
 // ------------------------
 
@@ -167,78 +175,77 @@
 
 .page(){
 
+    .ui-btn-active {
+        background-color: lightblue !important;
+        color: #666!important;
+    }
+
+    @headerHeight: 50px;
+    div[data-role='header']{           
+        min-height: @headerHeight;
+        height:@headerHeight;   
+        //border-bottom: 1px solid @black;
+        h1{
+            line-height: @headerHeight;
+            min-height: @headerHeight;
+        }
+        .ui-btn {
+            height:@headerHeight !important;    
+            width:@headerHeight;       
+        }
+
+    } 
+
     #feed {
-        .s-feed-photo {
-            .s-time {
-                float: right;
-                cursor: cursor;
-            }
-            .s-location {
-                text-transform: uppercase;
-                max-width: 55%;
-            }
-            .s-image-area {
-                padding-bottom: 0 !important;
-                .takenContainer {
-                    position: absolute;
-                    bottom: 2px;
-                    right: 5px;
-                    .ui-slider {
-                        border-radius: 20px !important;
-                        width: 80px;
-                        text-transform: uppercase;
-                    }
+        .s-time {
+            float: right;
+            cursor: cursor;
+        }
+        .s-location {
+            text-transform: uppercase;
+            max-width: 55%;
+        }
+        .s-image-area {
+            padding-bottom: 0 !important;
+            .takenContainer {
+                position: absolute;
+                bottom: 2px;
+                right: 5px;
+                .ui-slider {
+                    border-radius: 20px !important;
+                    width: 80px;
+                    text-transform: uppercase;
                 }
             }
-            .s-image-details {
-                padding-left: 0;  
-                .s-description {
-                    background-color: @gray-lighter;
-                    padding: 10px;
-                    border-radius: 5px;
-                    a[href] {
-                        color: @black;
-                    }
+        }
+        .s-image-details {
+            padding-left: 0;  
+            .s-description {
+                background-color: @gray-lighter;
+                padding: 10px;
+                border-radius: 5px;
+                min-height: 20px;
+                a[href] {
+                    color: @black;
                 }
-                .s-description-editable textarea{
-                    min-height: 0;
-                    height: 40px;
-                }
-                
-                .tags { 
-                    cursor: pointer;
-                }
-                .s-action-buttons {
-                    border: none !important;
-                }
+            }
+            .s-description-editable textarea{
+                min-height: 40px;
+                height: 40px;
+                margin: 0;
             }
 
+            .tags { 
+                cursor: pointer;
+            }
+            .s-action-buttons {
+                border: none !important;
+            }
         }
+
     } //end feed
 
     #share {
-        div[data-role='header'] {
-            height: 50px;
-            min-height: 50px;
-            background-color: @gray;
-            h1 {
-                text-transform: uppercase;
-                color: @white;
-                font-size: 1em;
-                line-height: 50px;
-                margin: 0;
-                padding: 0;
-                font-weight: bold;
-            }
-
-            .ui-btn {
-                width: 40px !important;
-                height: 40px !important;
-                margin: 4px;
-                background-color: #E6E6E6 !important;
-                color: @black !important;
-            }
-        }
 
         label {
             color: @gray;
@@ -296,50 +303,62 @@
         }
     }
 
-    div[data-role="header"]{
-        background-color: #536270;             
-        min-height:50px !important;
-        //border-bottom: 1px solid;
-        // how can I make the menu button white!
-        .ui-btn {
-            background-color: #536270 !important;
-            //color: @white !important;
-            height:50px !important;
-            
+    #map {
+        .s-map-base {
+            display: none;
         }
-    } 
 
+       .s-map-thumb {
+            background-color: green;
+        }
 
+       .s-map-thumb-old {
+            background-color: red;
+        }
+    }
 
+    .fontMont {
+        font-size:16px !important;
+        font-family: Montserrat;
+        -webkit-font-smoothing: antialiased !important;  
+    }
 
     //Footer
-    @footerHeight: 50px;
+    @footerHeight: 40px;
     .ui-footer {
         min-height: @footerHeight !important;
        .ui-btn {
             line-height: @footerHeight !important;
             .noMarginPadding;
-            font-size:16px !important;
-            font-family: Montserrat !important;
-            -webkit-font-smoothing: antialiased !important;
+            .fontMont;
+
        }
        .ui-select {
             .noMarginPadding;
+            .fontMont;
         }
 
-        #browse-menu{ 
-            position: fixed;
-            bottom: 50px;
-            left: 0;
-            width: 50%;
-            border-radius: 0;
-            .ui-btn{ //buttons inside the select browse menu
-                text-align: center;
-                font-size: 0.8em;
-                height: 50px;
-                line-height: 50px;
-                margin: 0;
-            }
+    }
+
+    #browse-listbox .ui-title {
+        display: none; //or else browse pop-up is off
+    }
+
+    #browse-menu{ //doesn't work nested in the footer
+        position: fixed;
+        bottom: @footerHeight;
+        left: 0;
+        width: 50%;
+        border-radius: 0;
+        .ui-btn{ //buttons inside the select browse menu
+            text-align: center;
+            font-size: 0.8em;
+            height: @footerHeight;
+            line-height: @footerHeight;
+            margin: 0;
+            text-transform: uppercase;
+            padding: 0;
+            //background-color: red;
         }
     }
 
@@ -347,29 +366,27 @@
 
 
 
+// div[data-role='header'] {
+//     height: 50px;
+//     min-height: 50px;
+//     background-color: @gray;
+//     h1 {
+//         text-transform: uppercase;
+//         color: @white;
+//         font-size: 1em;
+//         line-height: 50px;
+//         margin: 0;
+//         padding: 0;
+//         font-weight: bold;
+//     }
 
-
-// #share ~ div[data-role="footer"] {
-//     display: none;
+//     .ui-btn {
+//         width: 40px !important;
+//         height: 40px !important;
+//         margin: 4px;
+//         background-color: #E6E6E6 !important;
+//         color: @black !important;
+//     }
 // }
-
-// div[data-role="footer"] {
-//   min-height: 50px !important; //make smaller footer bar than kitty theme
-//   height: 50px;
-// }
-
-// div[data-role="footer"] .ui-select{
-//   margin: 0; padding: 0; //to avoid border on Browse menu and match nav button
-// }
-
-// div[data-role="footer"] .ui-btn{
-//   letter-spacing: 0.1em;
-//   line-height: 40px !important;
-// }
-
-
-
-
-
 
 
