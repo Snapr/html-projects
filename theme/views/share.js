@@ -54,6 +54,7 @@ define(['views/share', '../../theme/views/material'], function(share_view, mater
         'click .x-photo-toggle': 'toggle_photo',
         'change .x-description': 'update_description',
         'change .material-choice' : 'append_selected_tags_to_material_box',
+        'click .materials a': 'deleteThis',
         'submit form': 'check_fields'
     },
 
@@ -68,35 +69,73 @@ define(['views/share', '../../theme/views/material'], function(share_view, mater
         //     }
         // },
 
-        append_selected_tags_to_material_box: function() {
-            var current = $(".materials").val();
-            var tags = $(".material-choice option:selected").val();
-            if (tags !== "Select Material") { //or else will add txt
-                $('.materials').val(current + ' ' + tags);
+        // append_selected_tags_to_material_box: function() {
+        //     var current = $(".materials").val();
+        //     var tags = $(".material-choice option:selected").val();
+        //     if (tags !== "Select Material") { //or else will add txt
+        //         $('.materials').val(current + ' ' + tags);
 
+        //     }
+        // },
+
+        append_selected_tags_to_material_box: function() {
+            var tag = $(".material-choice option:selected").val();
+            if (tag !== "Select Material") { //or else will add txt
+                $(".materials").append('<a data-role="button" data-inline="true" data-icon="remove" data-mini="true">' + tag + ' </a>').trigger( "create" );
+                //$(".material-choice option:selected").attr('selected');
+                $(".material-choice option:first").attr('selected','selected');
             }
         },
 
         check_fields: function() {
-            var materials = $(".materials").val();
+            var materialField = $('.materials').html();
             var location = $('.s-upload-image-location .s-btn-text').html();
             if(location === "Add Location") {
                 alert('You must add a location, my friend');
             }
-            else if (materials !== "") {
-                this.share_append_material();
+            else if (materialField !== "") {
+                var materials = "";
+                $('.materials > a').each(function(){
+                    materials +=  $(this).html();
+                });
+                this.share_append_material(materials);
             } else {
                 alert('The material field is empty.');
             }
         },
 
-        share_append_material: function() {
+        share_append_material: function(materials) {
             var description = $(".s-textarea").val();
-            var materials = $(".materials").val();
+            //var materials = $(".materials").val();
             $(".s-textarea").val(description + ' ' + materials);
             this.share();
 
-        }
+        },
+
+        deleteThis : function(ev){
+            $(ev.target).remove();
+        },
+
+        // check_fields: function() {
+        //     var materials = $(".materials").val();
+        //     var location = $('.s-upload-image-location .s-btn-text').html();
+        //     if(location === "Add Location") {
+        //         alert('You must add a location, my friend');
+        //     }
+        //     else if (materials !== "") {
+        //         this.share_append_material();
+        //     } else {
+        //         alert('The material field is empty.');
+        //     }
+        // },
+
+        // share_append_material: function() {
+        //     var description = $(".s-textarea").val();
+        //     var materials = $(".materials").val();
+        //     $(".s-textarea").val(description + ' ' + materials);
+        //     this.share();
+
+        // }
 
     });
 });

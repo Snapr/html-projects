@@ -4398,8 +4398,15 @@ html body .ui-group-theme-a .ui-bar-inherit.ui-li-divider small {
 .ui-overlay-a #share .materials,
 .ui-page-theme-a #share .materials,
 .ui-page-theme-a .ui-panel-wrapper #share .materials {
-  min-height: 50px;
-  height: 50px;
+  min-height: 42px;
+  height: 42px;
+  padding: 4px;
+  background-color: #ffffff;
+}
+.ui-overlay-a #share .materials span,
+.ui-page-theme-a #share .materials span,
+.ui-page-theme-a .ui-panel-wrapper #share .materials span {
+  background-color: #ddd;
 }
 .ui-overlay-a #share .edit-material .ui-btn,
 .ui-page-theme-a #share .edit-material .ui-btn,
@@ -6044,8 +6051,15 @@ html body .ui-group-theme-c .ui-bar-inherit.ui-li-divider small {
 .ui-overlay-c #share .materials,
 .ui-page-theme-c #share .materials,
 .ui-page-theme-c .ui-panel-wrapper #share .materials {
-  min-height: 50px;
-  height: 50px;
+  min-height: 42px;
+  height: 42px;
+  padding: 4px;
+  background-color: #ffffff;
+}
+.ui-overlay-c #share .materials span,
+.ui-page-theme-c #share .materials span,
+.ui-page-theme-c .ui-panel-wrapper #share .materials span {
+  background-color: #ddd;
 }
 .ui-overlay-c #share .edit-material .ui-btn,
 .ui-page-theme-c #share .edit-material .ui-btn,
@@ -6965,8 +6979,15 @@ html body .ui-group-theme-d .ui-bar-inherit.ui-li-divider small {
 .ui-overlay-d #share .materials,
 .ui-page-theme-d #share .materials,
 .ui-page-theme-d .ui-panel-wrapper #share .materials {
-  min-height: 50px;
-  height: 50px;
+  min-height: 42px;
+  height: 42px;
+  padding: 4px;
+  background-color: #ffffff;
+}
+.ui-overlay-d #share .materials span,
+.ui-page-theme-d #share .materials span,
+.ui-page-theme-d .ui-panel-wrapper #share .materials span {
+  background-color: #ddd;
 }
 .ui-overlay-d #share .edit-material .ui-btn,
 .ui-page-theme-d #share .edit-material .ui-btn,
@@ -7886,8 +7907,15 @@ html body .ui-group-theme-e .ui-bar-inherit.ui-li-divider small {
 .ui-overlay-e #share .materials,
 .ui-page-theme-e #share .materials,
 .ui-page-theme-e .ui-panel-wrapper #share .materials {
-  min-height: 50px;
-  height: 50px;
+  min-height: 42px;
+  height: 42px;
+  padding: 4px;
+  background-color: #ffffff;
+}
+.ui-overlay-e #share .materials span,
+.ui-page-theme-e #share .materials span,
+.ui-page-theme-e .ui-panel-wrapper #share .materials span {
+  background-color: #ddd;
 }
 .ui-overlay-e #share .edit-material .ui-btn,
 .ui-page-theme-e #share .edit-material .ui-btn,
