@@ -207,6 +207,7 @@
         }
         .s-image-area {
             padding-bottom: 0 !important;
+            margin: 0;
             .takenContainer {
                 position: absolute;
                 bottom: 2px;
@@ -221,22 +222,22 @@
         .s-image-details {
             padding-left: 0;  
             .s-description {
+                text-align: center;
+                margin-bottom: 5px;
+            }
+            div[class^="tags"] {
+                //margin-top: 5px;
                 background-color: @gray-lighter;
-                padding: 10px;
-                border-radius: 5px;
+                padding: 0 5px;
                 min-height: 20px;
                 a[href] {
                     color: @black;
                 }
             }
-            .s-description-editable textarea{
-                min-height: 40px;
-                height: 40px;
-                margin: 0;
-            }
 
-            .tags { 
+            .tags-editable { 
                 cursor: pointer;
+                display: none;
             }
             .s-action-buttons {
                 border: none !important;
@@ -261,7 +262,7 @@
 
         .materials {
             min-height: 42px;
-            height: 42px;
+            //height: 42px;
             padding: 4px;
             background-color: @white;
         }

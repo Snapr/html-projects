@@ -314,6 +314,15 @@ define(
                 this.spot_url = null;
             }
 
+            //separate tags from caption
+            var descr = this.model.get('description');
+            var caption = getCaption(descr); //in theme/views/material
+            if (caption === defaultCaption) { caption = ""; }
+            var materials = getMaterialTags(descr);
+            var materialArray = makeArray(materials); //so as to separate tags
+            this.model.set('caption', caption); //just for local
+            this.model.set('materials', materialArray);
+
         },
 
         events: {
@@ -326,8 +335,12 @@ define(
             "click .x-delete": "delete",
             "click .x-flag": "flag",
             "change .taken": "taken_switch",
-            "blur .newDescription" : "edit_description",
-            "click .tags" : "make_textarea"
+            //"blur .newDescription" : "edit_description",
+            'click .tags-editable span a': 'deleteThis',
+            'click .addNewTag' : 'addTag',
+            "click .submitTag" : "submit_tags",
+            "click .tags-readeable" : "make_tags_editable"
+            //"click .tags" : "make_textarea"   
             //"change .edit-material": "edit_material"
         },
 
@@ -515,92 +528,146 @@ define(
             self.$('.submit-material').show();
         },
 
-        make_textarea : function () { var self = this;
-            //if (this.is_author() === true) {
-                self.$('.s-description-editable').show();
-                self.$('.s-description').hide();
-                self.$('.newDescription').focus();
-                //put the cursor at end
-                var val = self.$('.newDescription').val(); //store the value of the element
-                self.$('.newDescription').val(''); //clear the value of the element
-                self.$('.newDescription').val(val); //set that value back.  
-            //}  //currently can only click if author (see template if)
-        },
+        // make_textarea : function () { var self = this;
+        //     //if (this.is_author() === true) {
+        //         self.$('.s-description-editable').show();
+        //         self.$('.s-description').hide();
+        //         self.$('.newDescription').focus();
+        //         //put the cursor at end
+        //         var val = self.$('.newDescription').val(); //store the value of the element
+        //         self.$('.newDescription').val(''); //clear the value of the element
+        //         self.$('.newDescription').val(val); //set that value back.  
+        //     //}  //currently can only click if author (see template if)
+        // },
 
-        edit_description : function () { var self = this;
-            var description = self.model.get('description');
-            var newDescription = self.$('.newDescription').val();
-            //don't do anything if use hasn't changed the description field          
-            if (description !== newDescription) {
-                self.model.set({
-                    description: newDescription
-                });
+        // edit_description : function () { var self = this;
+        //     var description = self.model.get('description');
+        //     var newDescription = self.$('.newDescription').val();
+        //     //don't do anything if use hasn't changed the description field          
+        //     if (description !== newDescription) {
+        //         self.model.set({
+        //             description: newDescription
+        //         });
 
-                //prepare for connectivity error
-                var ajax_options = {};
-                ajax_options =  {
-                    url: config.get('api_base') + "/photo/",
-                    dataType: "jsonp",
-                    data: _.extend({}, auth.attributes, {
-                        id: self.model.get('id'),
-                        description : newDescription,
-                        display_username: 0, //or get warning back
-                        _method: "POST"
-                    })
-                };
+        //         //prepare for connectivity error
+        //         var ajax_options = {};
+        //         ajax_options =  {
+        //             url: config.get('api_base') + "/photo/",
+        //             dataType: "jsonp",
+        //             data: _.extend({}, auth.attributes, {
+        //                 id: self.model.get('id'),
+        //                 description : newDescription,
+        //                 display_username: 0, //or get warning back
+        //                 _method: "POST"
+        //             })
+        //         };
 
-                 $.ajax( ajax_options );
+        //          $.ajax( ajax_options );
+        //     }
+        //     self.render(['.tags']).enhanceWithin();
+        // },
+
+        make_tags_editable : function () { var self = this;
+            if (this.is_author() === true) {
+                self.$('.tags-editable').show();
+                self.$('.tags-readeable').hide();
             }
-            self.render(['.tags']).enhanceWithin();
         },
 
-        edit_material : function () { var self = this;
+        deleteThis : function(ev){
+            $(ev.target).remove();
+        },
 
-            var description = self.model.get("description");
-            description = this.strip_current_material(description);
+        addTag : function() {
+            //need to seriously work on this: multiple tags? no hashtag?
+            var tag = prompt('Make up your own tag', "#");
+            tag = tag.trim(); //doesn't seem to work
+            var container = self.$('.tags-editable span');
+            addMaterialButtonToHTML(tag, container);
+            //this.submit_tags();
+        },
 
-            var new_material = this.get_new_material();
-            description = description + " " + new_material;
+        submit_tags : function () { var self = this;
+            var materialHTML = self.$('.tags-editable span');//check if empty?
+            var materials = findHTMLInsideButtons(materialHTML);
+            materials = materials.trim();
+            var matArray = makeArray(materials);
 
             self.model.set({
-                description: description
+                materials: matArray //only frontend
             });
 
-            self.render(['.s-description']).enhanceWithin();
+            self.$('.tags-editable').hide();
+            self.$('.tags-readeable').show();
 
+            self.render(['.tags-readeable']).enhanceWithin();
 
-            var ajax_options = {};
+            var descr = self.model.get('description');
+            var caption = getCaption(descr);
+            var newDescription = createDescription(caption, materials);
+
+            var ajax_options = {}; //catch network error?
             ajax_options =  {
                 url: config.get('api_base') + "/photo/",
                 dataType: "jsonp",
                 data: _.extend({}, auth.attributes, {
                     id: self.model.get('id'),
-                    description : description,
+                    description : newDescription,
                     display_username: 0, //or get warning back
                     _method: "POST"
                 })
             };
 
-             $.ajax( ajax_options );
-
-             self.$('.edit-material').hide();
-
+            $.ajax( ajax_options );
         },
 
-        strip_current_material : function(description) {var self = this;
+        // edit_material : function () { var self = this;
 
-            var firstTag = _.indexOf(description, "#");
-                if(firstTag !== -1) { //there should always be a tag anyway since it is required
-                    description = description.slice(0,firstTag);
-                }
-            return description;
+        //     var description = self.model.get("description");
+        //     description = this.strip_current_material(description);
 
-        },
+        //     var new_material = this.get_new_material();
+        //     description = description + " " + new_material;
 
-        get_new_material: function(){var self = this;
-            var material = self.$('.edit-material select').val();
-            return material;
-        },
+        //     self.model.set({
+        //         description: description
+        //     });
+
+        //     self.render(['.s-description']).enhanceWithin();
+
+
+        //     var ajax_options = {};
+        //     ajax_options =  {
+        //         url: config.get('api_base') + "/photo/",
+        //         dataType: "jsonp",
+        //         data: _.extend({}, auth.attributes, {
+        //             id: self.model.get('id'),
+        //             description : description,
+        //             display_username: 0, //or get warning back
+        //             _method: "POST"
+        //         })
+        //     };
+
+        //      $.ajax( ajax_options );
+
+        //      self.$('.edit-material').hide();
+
+        // },
+
+        // strip_current_material : function(description) {var self = this;
+
+        //     var firstTag = _.indexOf(description, "#");
+        //         if(firstTag !== -1) { //there should always be a tag anyway since it is required
+        //             description = description.slice(0,firstTag);
+        //         }
+        //     return description;
+
+        // },
+
+        // get_new_material: function(){var self = this;
+        //     var material = self.$('.edit-material select').val();
+        //     return material;
+        // },
 
         show_comments: function(){  var self = this;
             self.show_reactions('comments');

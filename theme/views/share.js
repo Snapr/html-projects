@@ -55,36 +55,24 @@ define(['views/share', '../../theme/views/material'], function(share_view, mater
         'change .x-description': 'update_description',
         'change .material-choice' : 'append_selected_tags_to_material_box',
         'click .materials a': 'deleteThis',
+        'click .materials' : 'writeInTag',
         'submit form': 'check_fields'
     },
 
-        // append_selected_tags_to_description : function(){
-        //     var description = $(".s-textarea").val();
-        //     var tag = $(".material-choice option:selected").val();
-        //     if(tag === "Select Material") { //value if there is no tag
-        //         alert("You have to select a material, my friend");
-        //     }else {
-        //         $(".s-textarea").val(description + ' ' + tag);
-        //         this.share();
-        //     }
-        // },
-
-        // append_selected_tags_to_material_box: function() {
-        //     var current = $(".materials").val();
-        //     var tags = $(".material-choice option:selected").val();
-        //     if (tags !== "Select Material") { //or else will add txt
-        //         $('.materials').val(current + ' ' + tags);
-
-        //     }
-        // },
-
         append_selected_tags_to_material_box: function() {
             var tag = $(".material-choice option:selected").val();
+            var container = $(".materials");
             if (tag !== "Select Material") { //or else will add txt
-                $(".materials").append('<a data-role="button" data-inline="true" data-icon="remove" data-mini="true">' + tag + ' </a>').trigger( "create" );
-                //$(".material-choice option:selected").attr('selected');
-                $(".material-choice option:first").attr('selected','selected');
+                addMaterialButtonToHTML(tag, container);
             }
+        },
+
+        writeInTag : function(ev){
+            var tag = prompt('Write it own tag', "#");
+            tag = tag.trim(); //doesn't seem to work
+            var container = $('.materials');
+            addMaterialButtonToHTML(tag, container);
+            ev.stopPropagation();
         },
 
         check_fields: function() {
@@ -93,11 +81,9 @@ define(['views/share', '../../theme/views/material'], function(share_view, mater
             if(location === "Add Location") {
                 alert('You must add a location, my friend');
             }
-            else if (materialField !== "") {
-                var materials = "";
-                $('.materials > a').each(function(){
-                    materials +=  $(this).html();
-                });
+            else if (materialField !== "") { //user must input a material
+                var container = $('.materials');
+                var materials = findHTMLInsideButtons(container);
                 this.share_append_material(materials);
             } else {
                 alert('The material field is empty.');
@@ -105,15 +91,20 @@ define(['views/share', '../../theme/views/material'], function(share_view, mater
         },
 
         share_append_material: function(materials) {
-            var description = $(".s-textarea").val();
-            //var materials = $(".materials").val();
-            $(".s-textarea").val(description + ' ' + materials);
+            var caption = $(".s-textarea").val();
+            if (caption === "") {
+                caption = addDefaultCaption(); //so as to separate tags later (in feed) hacky
+            }
+            materials = materials.trim();
+            var assembledDescription = createDescription(caption, materials);
+            $(".s-textarea").val(assembledDescription);
             this.share();
 
         },
 
         deleteThis : function(ev){
             $(ev.target).remove();
+            ev.stopPropagation();
         },
 
         // check_fields: function() {
@@ -136,6 +127,26 @@ define(['views/share', '../../theme/views/material'], function(share_view, mater
         //     this.share();
 
         // }
+
+        // append_selected_tags_to_description : function(){
+        //     var description = $(".s-textarea").val();
+        //     var tag = $(".material-choice option:selected").val();
+        //     if(tag === "Select Material") { //value if there is no tag
+        //         alert("You have to select a material, my friend");
+        //     }else {
+        //         $(".s-textarea").val(description + ' ' + tag);
+        //         this.share();
+        //     }
+        // },
+
+        // append_selected_tags_to_material_box: function() {
+        //     var current = $(".materials").val();
+        //     var tags = $(".material-choice option:selected").val();
+        //     if (tags !== "Select Material") { //or else will add txt
+        //         $('.materials').val(current + ' ' + tags);
+
+        //     }
+        // },
 
     });
 });

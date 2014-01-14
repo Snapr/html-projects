@@ -32,17 +32,34 @@
 </div>
 
 <div class="s-image-details">
-  <% if (item.get("username") && item.get("username").toLowerCase() == (auth.get("snapr_user") || "").toLowerCase()){ %>
-    <div class="tags">
-  <% } else { %>
-    <div>
-  <% } %>
-      <div class="s-description"><%= string_utils.comment_links( item.get('description') ) %> </div>
-    
-    <div class="s-description-editable" style="display: none;">
-      <textarea class="newDescription" data-theme="c"><%=item.get("description")%></textarea>
+  <div class="s-description"><%= string_utils.comment_links( item.get('caption') ) %> </div>
+
+    <div class="tags-readeable">
+
+      <%     
+      _.each(item.get('materials') , function(mat) { %>
+        <a data-role="button" data-inline="true" data-mini="true" ><%= mat %></a>
+       <% }); %>
+
+      <%
+         if (item.get("username") && item.get("username").toLowerCase() == (auth.get("snapr_user") || "").toLowerCase()){ %>
+        <!-- <p>This field is editable</p> -->
+
+      <% } %>
+
     </div>
-  </div>
+
+    <div class="tags-editable">
+      <span>
+      <%     
+      _.each(item.get('materials') , function(mat) { %>
+        <a data-role="button" data-inline="true" data-mini="true" data-icon="remove" class="deleteable"><%= mat %></a>
+       <% }); %>
+       </span>
+       <a data-role="button" data-inline="true" data-mini="true" data-icon="plus" class="addNewTag">Add tag</a>
+      <a data-role="button" data-inline="true" data-mini="true" data-icon="check" class="submitTag ui-btn-right" >Submit</a>
+
+    </div>
 
    	<% if(item.get('rating') >= 2){ %>
       <p class="s-featured s-icon-left"><span class="ui-icon ui-icon-star-empty"></span> Featured!</p>

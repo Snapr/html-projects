@@ -57,6 +57,7 @@ var materials = {
 	}
 };
 
+//output tags in select list
 var material_select_options = function(){
 	var html = "";
 	_.each(materials, function(m){
@@ -67,4 +68,56 @@ var material_select_options = function(){
 
 var material_select_html = material_select_options();
 
+//DEALING WITH TAG EDITING AND MANIPULATION
+
+//insert (deleatable) button into html
+var addMaterialButtonToHTML = function(tag, container) {
+	container.append('<a data-role="button" data-inline="true" data-icon="remove" data-mini="true">' + tag + ' </a>').trigger( "create" );
+};
+
+//find all html within button children and return as a string
+var findHTMLInsideButtons = function(container){
+	var materialsString = "";
+	container.children('a').each(function(){
+		materialsString +=  $(this).html() + ' ';
+	});
+	materialsString = materialsString.trim();
+	return materialsString;
+};
+
+var defaultCaption = "[nocaption]";
+var defaultSeparation = " [tags] "; //between caption and material tags
+
+//a default caption to be able to separate from 
+var addDefaultCaption = function() {
+	return defaultCaption;
+};
+
+var createDescription = function(caption, materials){
+	return caption + defaultSeparation + materials;
+};
+
+var getCaption = function(description){
+	var splitDescription = description.split(defaultSeparation);
+	var caption = splitDescription[0];
+	return caption;
+};
+
+var getMaterialTags = function(description){
+	var splitDescription = description.split(defaultSeparation);
+	//what if there is caption, no separation?
+	var materials = splitDescription[1];
+	materials = materials.trim();
+	return(materials);
+};
+
+var makeArray = function(string){
+	var array = string.split(" ");
+	return array;
+};
+
+// var splitDescription = function(description){
+//	var stringArray = description.split(defaultSeparation);
+//	return(stringArray);
+// };
 
