@@ -4367,6 +4367,7 @@ html body .ui-group-theme-a .ui-bar-inherit.ui-li-divider small {
   background-color: #e6e6e6;
   padding: 0 5px;
   min-height: 20px;
+  border-radius: 0;
 }
 .ui-overlay-a #feed .s-image-details div[class^="tags"] a[href],
 .ui-page-theme-a #feed .s-image-details div[class^="tags"] a[href],
@@ -4376,13 +4377,18 @@ html body .ui-group-theme-a .ui-bar-inherit.ui-li-divider small {
 .ui-overlay-a #feed .s-image-details .tags-editable,
 .ui-page-theme-a #feed .s-image-details .tags-editable,
 .ui-page-theme-a .ui-panel-wrapper #feed .s-image-details .tags-editable {
-  cursor: pointer;
   display: none;
 }
 .ui-overlay-a #feed .s-image-details .s-action-buttons,
 .ui-page-theme-a #feed .s-image-details .s-action-buttons,
 .ui-page-theme-a .ui-panel-wrapper #feed .s-image-details .s-action-buttons {
   border: none !important;
+}
+.ui-overlay-a #feed .s-image-details .s-action-buttons .ui-btn,
+.ui-page-theme-a #feed .s-image-details .s-action-buttons .ui-btn,
+.ui-page-theme-a .ui-panel-wrapper #feed .s-image-details .s-action-buttons .ui-btn {
+  border: none;
+  border-radius: 0;
 }
 .ui-overlay-a #share label,
 .ui-page-theme-a #share label,
@@ -6019,6 +6025,7 @@ html body .ui-group-theme-c .ui-bar-inherit.ui-li-divider small {
   background-color: #e6e6e6;
   padding: 0 5px;
   min-height: 20px;
+  border-radius: 0;
 }
 .ui-overlay-c #feed .s-image-details div[class^="tags"] a[href],
 .ui-page-theme-c #feed .s-image-details div[class^="tags"] a[href],
@@ -6028,13 +6035,18 @@ html body .ui-group-theme-c .ui-bar-inherit.ui-li-divider small {
 .ui-overlay-c #feed .s-image-details .tags-editable,
 .ui-page-theme-c #feed .s-image-details .tags-editable,
 .ui-page-theme-c .ui-panel-wrapper #feed .s-image-details .tags-editable {
-  cursor: pointer;
   display: none;
 }
 .ui-overlay-c #feed .s-image-details .s-action-buttons,
 .ui-page-theme-c #feed .s-image-details .s-action-buttons,
 .ui-page-theme-c .ui-panel-wrapper #feed .s-image-details .s-action-buttons {
   border: none !important;
+}
+.ui-overlay-c #feed .s-image-details .s-action-buttons .ui-btn,
+.ui-page-theme-c #feed .s-image-details .s-action-buttons .ui-btn,
+.ui-page-theme-c .ui-panel-wrapper #feed .s-image-details .s-action-buttons .ui-btn {
+  border: none;
+  border-radius: 0;
 }
 .ui-overlay-c #share label,
 .ui-page-theme-c #share label,
@@ -6946,6 +6958,7 @@ html body .ui-group-theme-d .ui-bar-inherit.ui-li-divider small {
   background-color: #e6e6e6;
   padding: 0 5px;
   min-height: 20px;
+  border-radius: 0;
 }
 .ui-overlay-d #feed .s-image-details div[class^="tags"] a[href],
 .ui-page-theme-d #feed .s-image-details div[class^="tags"] a[href],
@@ -6955,13 +6968,18 @@ html body .ui-group-theme-d .ui-bar-inherit.ui-li-divider small {
 .ui-overlay-d #feed .s-image-details .tags-editable,
 .ui-page-theme-d #feed .s-image-details .tags-editable,
 .ui-page-theme-d .ui-panel-wrapper #feed .s-image-details .tags-editable {
-  cursor: pointer;
   display: none;
 }
 .ui-overlay-d #feed .s-image-details .s-action-buttons,
 .ui-page-theme-d #feed .s-image-details .s-action-buttons,
 .ui-page-theme-d .ui-panel-wrapper #feed .s-image-details .s-action-buttons {
   border: none !important;
+}
+.ui-overlay-d #feed .s-image-details .s-action-buttons .ui-btn,
+.ui-page-theme-d #feed .s-image-details .s-action-buttons .ui-btn,
+.ui-page-theme-d .ui-panel-wrapper #feed .s-image-details .s-action-buttons .ui-btn {
+  border: none;
+  border-radius: 0;
 }
 .ui-overlay-d #share label,
 .ui-page-theme-d #share label,
@@ -7873,6 +7891,7 @@ html body .ui-group-theme-e .ui-bar-inherit.ui-li-divider small {
   background-color: #e6e6e6;
   padding: 0 5px;
   min-height: 20px;
+  border-radius: 0;
 }
 .ui-overlay-e #feed .s-image-details div[class^="tags"] a[href],
 .ui-page-theme-e #feed .s-image-details div[class^="tags"] a[href],
@@ -7882,13 +7901,18 @@ html body .ui-group-theme-e .ui-bar-inherit.ui-li-divider small {
 .ui-overlay-e #feed .s-image-details .tags-editable,
 .ui-page-theme-e #feed .s-image-details .tags-editable,
 .ui-page-theme-e .ui-panel-wrapper #feed .s-image-details .tags-editable {
-  cursor: pointer;
   display: none;
 }
 .ui-overlay-e #feed .s-image-details .s-action-buttons,
 .ui-page-theme-e #feed .s-image-details .s-action-buttons,
 .ui-page-theme-e .ui-panel-wrapper #feed .s-image-details .s-action-buttons {
   border: none !important;
+}
+.ui-overlay-e #feed .s-image-details .s-action-buttons .ui-btn,
+.ui-page-theme-e #feed .s-image-details .s-action-buttons .ui-btn,
+.ui-page-theme-e .ui-panel-wrapper #feed .s-image-details .s-action-buttons .ui-btn {
+  border: none;
+  border-radius: 0;
 }
 .ui-overlay-e #share label,
 .ui-page-theme-e #share label,

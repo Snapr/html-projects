@@ -72,7 +72,7 @@ var material_select_html = material_select_options();
 
 //insert (deleatable) button into html
 var addMaterialButtonToHTML = function(tag, container) {
-	container.append('<a data-role="button" data-inline="true" data-icon="remove" data-mini="true">' + tag + ' </a>').trigger( "create" );
+	container.append('<a data-role="button" data-inline="true" data-icon="remove" data-mini="true">' + tag + '</a>').trigger( "create" );
 };
 
 //find all html within button children and return as a string

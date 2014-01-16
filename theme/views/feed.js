@@ -339,7 +339,8 @@ define(
             'click .tags-editable span a': 'deleteThis',
             'click .addNewTag' : 'addTag',
             "click .submitTag" : "submit_tags",
-            "click .tags-readeable" : "make_tags_editable"
+            "click .tags-readable" : "make_tags_editable",
+            "click .tags-editable" : "make_tags_readable"
             //"click .tags" : "make_textarea"   
             //"change .edit-material": "edit_material"
         },
@@ -570,20 +571,30 @@ define(
         make_tags_editable : function () { var self = this;
             if (this.is_author() === true) {
                 self.$('.tags-editable').show();
-                self.$('.tags-readeable').hide();
+                self.$('.tags-readable').hide();
+                self.render(['.tags-editable']).enhanceWithin();
             }
+        },
+
+        make_tags_readable : function (ev) { var self = this;
+                //this.submit_tags();
+                self.$('.tags-editable').hide();
+                self.$('.tags-readable').show();
+                ev.stopPropagate();
         },
 
         deleteThis : function(ev){
             $(ev.target).remove();
+            ev.stopPropagate();
         },
 
-        addTag : function() {
+        addTag : function() { var self = this;
             //need to seriously work on this: multiple tags? no hashtag?
             var tag = prompt('Make up your own tag', "#");
             tag = tag.trim(); //doesn't seem to work
             var container = self.$('.tags-editable span');
             addMaterialButtonToHTML(tag, container);
+            ev.stopPropagate();
             //this.submit_tags();
         },
 
@@ -598,27 +609,30 @@ define(
             });
 
             self.$('.tags-editable').hide();
-            self.$('.tags-readeable').show();
+            self.$('.tags-readable').show();
 
-            self.render(['.tags-readeable']).enhanceWithin();
+            self.render(['.tags-readable']).enhanceWithin();
 
             var descr = self.model.get('description');
             var caption = getCaption(descr);
             var newDescription = createDescription(caption, materials);
 
-            var ajax_options = {}; //catch network error?
-            ajax_options =  {
-                url: config.get('api_base') + "/photo/",
-                dataType: "jsonp",
-                data: _.extend({}, auth.attributes, {
-                    id: self.model.get('id'),
-                    description : newDescription,
-                    display_username: 0, //or get warning back
-                    _method: "POST"
-                })
-            };
+            if(descr !== newDescription) { //no need to send if nothing changed
+                var ajax_options = {}; //catch network error?
+                ajax_options =  {
+                    url: config.get('api_base') + "/photo/",
+                    dataType: "jsonp",
+                    data: _.extend({}, auth.attributes, {
+                        id: self.model.get('id'),
+                        description : newDescription,
+                        display_username: 0, //or get warning back
+                        _method: "POST"
+                    })
+                };
 
-            $.ajax( ajax_options );
+                $.ajax( ajax_options );
+
+            }
         },
 
         // edit_material : function () { var self = this;

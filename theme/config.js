@@ -203,18 +203,6 @@ return {
 
           side_menu_options: [
             {
-                url: '#/browse/',
-                icon: "large-film",
-                label: 'Nearby',
-                slug: 'browse'
-            },
-            {
-                url: '#/photos/',
-                icon: "large-film",
-                label: 'All',
-                slug: 'photos'
-            },
-            {
                 url: '#/photos/?not_tagged=taken&location=current_location&radius=5000',
                 icon: "large-film",
                 label: 'Not Taken',

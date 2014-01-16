@@ -62,17 +62,16 @@ define(['views/share', '../../theme/views/material'], function(share_view, mater
         append_selected_tags_to_material_box: function() {
             var tag = $(".material-choice option:selected").val();
             var container = $(".materials");
-            if (tag !== "Select Material") { //or else will add txt
+            if (tag !== "Suggested Material") { //or else will add txt
                 addMaterialButtonToHTML(tag, container);
             }
         },
 
         writeInTag : function(ev){
             var tag = prompt('Write it own tag', "#");
-            tag = tag.trim(); //doesn't seem to work
+            tag = tag.trim();
             var container = $('.materials');
             addMaterialButtonToHTML(tag, container);
-            ev.stopPropagation();
         },
 
         check_fields: function() {

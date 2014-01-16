@@ -226,21 +226,32 @@
                 margin-bottom: 5px;
             }
             div[class^="tags"] {
-                //margin-top: 5px;
                 background-color: @gray-lighter;
                 padding: 0 5px;
                 min-height: 20px;
+                border-radius: 0;
                 a[href] {
                     color: @black;
                 }
             }
 
             .tags-editable { 
-                cursor: pointer;
+                //cursor: pointer;
                 display: none;
+                .submitTag {
+                    //float: right;
+                }
+                .ui-btn {
+                    //margin-top: @m/2;
+                    //margin-bottom: @m /2;
+                }
             }
             .s-action-buttons {
                 border: none !important;
+                .ui-btn {
+                    border: none;    
+                    border-radius: 0;            
+                }
             }
         }
 

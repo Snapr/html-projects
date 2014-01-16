@@ -1,10 +1,12 @@
 <div id="map" data-role="page" data-title="<%= T('Map') %>"  data-theme="a" data-tab-bar="true">
 
-	<div data-role="header" data-theme="e" data-position="fixed" data-tap-toggle="false">
-        <a class="x-menu-button" data-icon="bars" data-iconpos="notext" data-corners="false" data-theme='e'><%= T('Menu') %></a>
-        <h1><%= T('Map') %></h1>
-        <a class="x-back" data-role="button" data-icon="delete" data-iconpos="notext"></a>
-    </div>
+	<div data-role="header" data-theme="e" data-position="fixed" data-tap-toggle="false" data-add-back-btn="false">
+
+	     <h1 class="x-title">
+	        Map
+	    </h1>
+	    <a  onclick="alert('Not working yet');" class="x-menu-button ui-btn-right" data-icon="gear" data-iconpos="notext" data-corners="false" data-theme='e'>Login in</a>
+	</div>
 
     <div class="s-photo-map" data-role="content" data-theme="a">
         <a class="s-close-button x-back" data-role="button" data-theme="b" data-mini="true" ><%= T('Exit Map') %></a>
