@@ -1,13 +1,13 @@
- <div id="feed" data-title="<%= T('Browse') %>" data-role="page" data-theme="a">
+ <div id="feed" data-title="<%= T('Browse') %>" data-role="page" data-theme="c">
 
-    <div data-role="header" data-theme="e" data-position="fixed" data-tap-toggle="false" data-add-back-btn="false">
+    <div data-role="header" data-theme="d" data-position="fixed" data-tap-toggle="false" data-add-back-btn="false">
 
          <h1 class="x-title">
             <% if(obj.title){ %>
                 <%= string_utils.count_chars(title) %>
             <% } %>
         </h1>
-        <a  onclick="alert('This temporarily opens side-menu.');" class="x-menu-button ui-btn-right" data-icon="gear" data-iconpos="notext" data-corners="false" data-theme='e'>Login in</a>
+        <a  onclick="alert('This temporarily opens side-menu.');" class="x-menu-button ui-btn-right" data-icon="gear" data-iconpos="notext" data-corners="false" data-theme='d'>Login in</a>
     </div>
 
     <div data-role="content" class="x-photos"></div>

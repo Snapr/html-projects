@@ -34,31 +34,44 @@
 <div class="s-image-details">
   <div class="s-description"><%= string_utils.comment_links( item.get('caption') ) %> </div>
 
+      <caption>Tags</caption><br />
+
+  <%
+     if (item.get("username") && item.get("username").toLowerCase() == (auth.get("snapr_user") || "").toLowerCase()){ %>
+    
+    <div class="tags-readable owner">
+
+  <% }else { %>
+
     <div class="tags-readable">
+
+  <% } %>
+
 
       <%     
       _.each(item.get('materials') , function(mat) { %>
         <a data-role="button" data-inline="true" data-mini="true" ><%= mat %></a>
        <% }); %>
 
-      <%
-         if (item.get("username") && item.get("username").toLowerCase() == (auth.get("snapr_user") || "").toLowerCase()){ %>
-        <!-- <p>This field is editable</p> -->
+       <%
+          if (item.get("username") && item.get("username").toLowerCase() == (auth.get("snapr_user") || "").toLowerCase()){ %>
+         
+         <a data-role="button" data-inline="true" data-mini="true" data-icon='plus'>Edit</a>
 
-      <% } %>
+       <% }  %>
 
     </div>
 
-    <div class="tags-editable">
+    <div class="tags-editable owner">
       <span>
       <%     
       _.each(item.get('materials') , function(mat) { %>
         <a data-role="button" data-inline="true" data-mini="true" data-icon="remove" class="deleteable"><%= mat %></a>
        <% }); %>
        </span>
-       <a data-role="button" data-inline="true" data-mini="true" data-icon="plus" class="addNewTag">Add Tag</a>
+       <a data-role="button" data-inline="true" data-mini="true" data-icon="plus" class="addNewTag">Add</a>
 
-      <a data-role="button" data-inline="true" data-mini="true" data-icon="check" class="submitTag">OK</a>
+<!--       <a data-role="button" data-inline="true" data-mini="true" data-icon="check" class="submitTag" data-theme='a'>OK</a> -->
 
     </div>
 
@@ -70,7 +83,18 @@
         &mdash; via <a href="http://apps.sna.pr/<%= item.get('app').slug %>/" target="blank"><%= item.get('app').name %></a>
     <% }%>
 
+    <% 
+
+    var comments = item.get('latest_comments');
+    console.log(comments);
+
+    if(comments.length !== 0) { %>
+        <caption>Comments</caption><br />
+    
+    <% } %>
+
     <ul class="x-comments s-comments">
+
         <% _.each(item.get('latest_comments'), function(comment){ %>
             <li><a class="commenter" href="#/user/?username=<%= comment.user %>"><%= comment.user %></a> <%= string_utils.comment_links( comment.comment ) %></li>
         <% }) %>
@@ -82,16 +106,16 @@
     <div class="s-action-buttons x-action-buttons">
 
         <!-- Comment button -->
-        <a data-role="button" data-theme="c" data-inline="true" data-icon="comments" data-inline="true" data-iconpos="notext" class="x-comment-button">Comment</a>
+        <a data-role="button" data-theme="b" data-inline="true" data-icon="comments" data-iconpos="notext" class="x-comment-button large-icon">Comment</a>
         
-        <a href="mailto:?subject=Check Out This Junk&body=http://test.artjunk.org/<%= item.get('id') %>" data-role="button" data-icon="envelope" data-iconpos="notext" data-theme="c" data-inline="true" ></a>
+        <a href="mailto:?subject=Check Out This Junk&body=http://test.artjunk.org/<%= item.get('id') %>" data-role="button" data-icon="envelope" data-iconpos="notext" data-theme="b" data-inline="true" class='large-icon' ></a>
         
         <!-- Flag or Delete button -->
         <% if (item.get("username") && item.get("username").toLowerCase() == (auth.get("snapr_user") || "").toLowerCase()){ %>
-            <a class="x-delete" data-role="button" data-icon="trash" data-iconpos="notext" data-theme="c" data-inline="true" ></a>
+            <a class="x-delete large-icon" data-role="button" data-icon="trash" data-iconpos="notext" data-theme="b" data-inline="true"></a>
 
         <%} else if(config.get('moderation_controls')){ %>
-            <a class="x-flag" data-role="button" data-icon="flag" data-iconpos="notext" data-theme="c" data-inline="true" >
+            <a class="x-flag large-icon" data-role="button" data-icon="flag" data-iconpos="notext" data-theme="b" data-inline="true">
                 <% if (item.get('flagged')){%> flagged <% }else{ %> flag <% } %>
             </a>
         <%}%>

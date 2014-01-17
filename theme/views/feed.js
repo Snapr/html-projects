@@ -340,7 +340,7 @@ define(
             'click .addNewTag' : 'addTag',
             "click .submitTag" : "submit_tags",
             "click .tags-readable" : "make_tags_editable",
-            "click .tags-editable" : "make_tags_readable"
+            "click .tags-editable" : "submit_tags"
             //"click .tags" : "make_textarea"   
             //"change .edit-material": "edit_material"
         },

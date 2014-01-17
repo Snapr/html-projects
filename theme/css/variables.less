@@ -7,8 +7,8 @@
 // Brand colors
 // -------------------------
 
-@brand-color:       #ddd;
-@accent-color:      #536270; //#596BF9;
+@brand-color:       #34495E;
+@accent-color:      #1ABC9C;
 
 @info-color:        @brand-color;
 @warning-color:     @brand-color;
@@ -29,9 +29,9 @@
 @white:             #fff;
 @gray-lighter:      #e6e6e6;
 @gray-light:        #ccc;
-@gray:              #999;
+@gray:              #999999; //e6e6e6;
 @gray-dark:         #666;
-@gray-darker:       #202020;
+@gray-darker:       #5D6D7E; // 202020;
 @black:             #000;
 
 @transparent:       rgba(0,0,0,0); // For using `transparent` in swatches with mixins & color modifiers
@@ -41,20 +41,20 @@
 // Typography
 // -------------------------
 
+@font-face {
+  font-family: 'Montserrat';
+  src: local('Montserrat-Bold'), url(../fonts/Montserrat-Bold.woff) format('woff');
+}
+
 @font-size-base:                15px;
 @font-size-small:               13px;
 @line-height:                   1.4;
 
-@font-face {
-  font-family: 'Montserrat';
-  font-style: normal;
-  font-weight: 700;
-  src: local('Montserrat-Bold'), url(http://themes.googleusercontent.com/static/fonts/montserrat/v3/IQHow_FEYlDC4Gzy_m8fcnbFhgvWbfSbdVg11QabG8w.woff) format('woff');
-}
 
 @font-serif:                    Georgia,'Times New Roman', Times, sans-serif;
 @font-sans:                     HelveticaNeue, Helvetica, Arial, sans-serif;
 @font-special:                  HelveticaNeue-Light,Helvetica, Arial, sans-serif;
+@font-special-2:                Montserrat, Helvetica, Arial, sans-serif;
 
 @font:                          @font-special;
 
@@ -75,21 +75,13 @@
     text-transform:             none;
 }
 
-.font-face {
-  font-family: 'Montserrat';
-  font-style: normal;
-  font-weight: 700;
-  src: local('Montserrat-Bold'), url(http://themes.googleusercontent.com/static/fonts/montserrat/v3/IQHow_FEYlDC4Gzy_m8fcnbFhgvWbfSbdVg11QabG8w.woff) format('woff');
-}
+// .font-face {
+//   font-family: 'Montserrat';
+//   font-style: normal;
+//   font-weight: 700;
+//   src: local('Montserrat-Bold'), url(http://themes.googleusercontent.com/static/fonts/montserrat/v3/IQHow_FEYlDC4Gzy_m8fcnbFhgvWbfSbdVg11QabG8w.woff) format('woff');
+// }
 
-
-// Mixins
-// ------------------------
-
-.noMarginPadding {
-    padding: 0 !important;
-    margin: 0 !important;
-} 
 
 // Headers
 // ------------------------
@@ -107,17 +99,27 @@
     -webkit-font-smoothing: antialiased;
 }
 
+// .header-bar-font(){
+//     font-family: @font-special;
+//     font-weight: normal;
+//     text-transform: lowercase;
+//     font-size: @bar-title-font-size;
+//     -webkit-font-smoothing: antialiased;
+// }
+
 .header-bar-font(){
-    font-family: @font-special;
-    font-weight: normal;
-    text-transform: lowercase;
-    font-size: @bar-title-font-size;
+    font-family: @font-special-2;
+    text-transform: uppercase;
+    font-size: @m * 1.5;
     -webkit-font-smoothing: antialiased;
+    letter-spacing: @m * 0.4;
+    font-weight: 700 !important;
 }
 
 // Buttons
 // ------------------------
 
+@icon-large-width:  3*@m;
 
 .button-font(){
     font-family: @font-special;
@@ -175,11 +177,6 @@
 
 .page(){
 
-    .ui-btn-active {
-        background-color: lightblue !important;
-        color: #666!important;
-    }
-
     @headerHeight: 50px;
     div[data-role='header']{           
         min-height: @headerHeight;
@@ -235,6 +232,10 @@
                 }
             }
 
+            .owner {
+                background-color: #d6d6d6 !important;
+            }
+
             .tags-editable { 
                 //cursor: pointer;
                 display: none;
@@ -250,8 +251,13 @@
                 border: none !important;
                 .ui-btn {
                     border: none;    
-                    border-radius: 0;            
+                    border-radius: 0;   
+                    width: 3.5 * @m;
+                    height: 3.5 * @m;;
+                    margin: 0  0.5 * @m 0 0;   
+
                 }
+
             }
         }
 
@@ -335,25 +341,30 @@
         }
     }
 
-    .fontMont {
-        font-size:16px !important;
-        font-family: Montserrat;
-        -webkit-font-smoothing: antialiased !important;  
-    }
-
     //Footer
-    @footerHeight: 40px;
+
+    .footerStyles {
+        font-size:1.5 * @m !important;
+        font-family: Montserrat;
+        -webkit-font-smoothing: antialiased !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        text-transform: uppercase;
+        letter-spacing: 0.4 * @m;
+        font-weight: normal;
+    } 
+
+    @footerHeight: 5 * @m;
+
     .ui-footer {
         min-height: @footerHeight !important;
        .ui-btn {
             line-height: @footerHeight !important;
-            .noMarginPadding;
-            .fontMont;
+            .footerStyles;
 
        }
        .ui-select {
-            .noMarginPadding;
-            .fontMont;
+            .footerStyles;
         }
 
     }
@@ -374,9 +385,8 @@
             height: @footerHeight;
             line-height: @footerHeight;
             margin: 0;
-            text-transform: uppercase;
+            
             padding: 0;
-            //background-color: red;
         }
     }
 
