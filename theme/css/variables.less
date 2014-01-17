@@ -194,13 +194,35 @@
     } 
 
     #feed {
-        .s-time {
-            float: right;
-            cursor: cursor;
-        }
-        .s-location {
-            text-transform: uppercase;
-            max-width: 55%;
+        @coordinatesHeight : 4 * @m;
+        .coordinates {
+            position: absolute;
+            top: 0;
+            z-index: 100;
+            width: 100%;
+            height: @coordinatesHeight;
+            background-color: rgba(255,255,255,0.6);
+            color: @brand-color !important;
+            .ui-icon-location {
+                font-size: @m * 2.5;
+                float: left;
+                color: @brand-color;
+            }
+            .s-time {
+                float: right;
+                line-height: @coordinatesHeight;
+                margin-right: 0.5 * @m;
+                color: @brand-color;
+            }
+            .s-location {
+                text-transform: uppercase;
+                margin-top: @m;
+                line-height: @coordinatesHeight;
+                max-width: 55%;
+                text-decoration: underline;
+                cursor: pointer;
+                color: @brand-color;
+            }
         }
         .s-image-area {
             padding-bottom: 0 !important;
@@ -219,8 +241,9 @@
         .s-image-details {
             padding-left: 0;  
             .s-description {
-                text-align: center;
+                //text-align: center;
                 margin-bottom: 5px;
+                font-family: @font-sans;
             }
             div[class^="tags"] {
                 background-color: @gray-lighter;
@@ -260,6 +283,14 @@
 
             }
         }
+
+        .afterImg {
+            height: 0;
+            margin-top: 2 * @m;
+            border-top: 1px solid @gray-light;
+            border-bottom: 1px solid @white;
+
+           }
 
     } //end feed
 
@@ -354,7 +385,7 @@
         font-weight: normal;
     } 
 
-    @footerHeight: 5 * @m;
+    @footerHeight: 5.5 * @m;
 
     .ui-footer {
         min-height: @footerHeight !important;

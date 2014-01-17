@@ -16,10 +16,14 @@ define(
             var all = $('#browse-menu .ui-btn:contains(ALL)');
 
             if (thisFeed === "photos/") {
-                all.css("background-color","lightblue");
+                all.css("background-color","#bdc3c7");
             } else {
-                nearby.css("background-color", "lightblue");
+                nearby.css("background-color", "#bdc3c7");
             }
+
+            $('.ui-navbar .ui-select span').css("background-color", "#bdc3c7");
+
+
 
             /*
             options: {
