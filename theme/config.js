@@ -402,7 +402,7 @@ return {
         },
         {
             name: 'map',
-            view: theme_views_path + 'map',
+            //view: theme_views_path + 'map',
             template: theme_templates_path + 'map'
         },
         {
