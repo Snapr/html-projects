@@ -147,6 +147,7 @@ define(
             collection.$el && collection.$el.show();
 
             var fetch = function(){
+                delete collection.data.paginate_from;
                 self.fetching = collection.fetch({
                 data: {include_comments: 10, include_favorites: 10},
                 success: function(){
@@ -164,13 +165,13 @@ define(
             if(collection.data.location=='current_location'){
                 geo.get_location(
                     function( location ){
-                        self.$('.x-no-location').hide(); 
+                        self.$('.x-no-location').hide();
                         collection.data.latitude = location.coords.latitude;
                         collection.data.longitude = location.coords.longitude;
                         fetch();
                     },
                     function( e ){
-                        self.$('.x-no-location').show(); 
+                        self.$('.x-no-location').show();
                         alerts.notification('Error', 'Please enable location settings');
                         $.mobile.loading('hide');
                         config.get('current_view').show_bg_loader(false);
@@ -181,7 +182,7 @@ define(
                 fetch();
             }
 
-            
+
 
             return self;
         },
@@ -241,7 +242,7 @@ define(
                 $.mobile.loading('show');
             }
 
-            self.$('.x-load-more, .x-end, .x-no-photos, .x-no-location').hide(); 
+            self.$('.x-load-more, .x-end, .x-no-photos, .x-no-location').hide();
 
             // remember what tab is active
             history_state.set('feed_tab', tab);
@@ -290,6 +291,7 @@ define(
             });
         }
     });
+
 
     var photo_view = view.extend({
         // handles each photo and its actions like 'comment'
