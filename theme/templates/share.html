@@ -1,6 +1,9 @@
 <div id="share" data-role="page" data-theme="c" data-tab-bar="false">
-    <div data-role="header" data-add-back-btn="false">
-        <div class='uploadbar ui-btn-center' data-role="button" data-theme='a'><h1>Upload</h1></div>
+    
+    <div data-role="header" data-add-back-btn="false" data-theme='d'>
+
+        <div class='uploadbar ui-btn-center' data-role="button" data-theme='d'>
+            <h1>Upload</h1></div>
         <a href="#/" class="ui-btn-right" data-role="button" data-icon="delete" data-iconpos="notext" data-corners="false"></a>
     </div>
 
@@ -28,7 +31,7 @@
                     <div class="materials" name="materials" data-theme="a"></div>
 
                     <div class="select-material">
-                        <select name="material-choice" class="material-choice" data-native-menu="true" data-theme="a" data-iconpos="noicon">
+                        <select name="material-choice" class="material-choice" data-native-menu="true" data-theme="e" data-iconpos="noicon">
                             <option>Suggested Materials</option>
                             <%= material_select_html %>
                         </select>
@@ -64,7 +67,7 @@
                 <% } %>
 
                 <div class="x-share-button" data-inline="false">
-                    <input type="submit" data-role="button" data-theme="e" data-inline="false"  value="<%= T('SHARE') %>"/>
+                    <input type="submit" data-role="button" data-theme="d" data-inline="false"  value="<%= T('SHARE') %>"/>
                 </div>
 
             </form>

@@ -21,7 +21,7 @@ var map_view = page_view.extend({
         var set_height = function (e) {
             self.hidden=false;
             // hack to set google map height
-            $(".x-map").css("height", (window.innerHeight - 30) + "px");
+            $(".x-map").css("height", (window.innerHeight - 105) + "px");
         };
         this.$el.on('pageshow', set_height);
         $(window).on('resize', set_height);
@@ -74,7 +74,8 @@ var map_view = page_view.extend({
     post_activate: function(options){  var self=this;
 
         var map = $('#browse-menu .ui-btn:contains(MAP)');
-        map.css("background-color","lightblue");
+        map.css("background-color","#bdc3c7");
+        $('.ui-navbar .ui-select span').css("background-color", '#bdc3c7');
         
         this.change_page();
         $.mobile.loading('show');

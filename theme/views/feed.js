@@ -10,20 +10,18 @@ define(
 
         initialize: function(){  var self = this;
 
-
+            var hightlightColor = "#bdc3c7";
             var thisFeed = Backbone.history.fragment;
             var nearby = $('#browse-menu .ui-btn:contains(NEARBY)');
             var all = $('#browse-menu .ui-btn:contains(ALL)');
 
             if (thisFeed === "photos/") {
-                all.css("background-color","#bdc3c7");
+                all.css("background-color", hightlightColor);
             } else {
-                nearby.css("background-color", "#bdc3c7");
+                nearby.css("background-color", hightlightColor);
             }
 
-            $('.ui-navbar .ui-select span').css("background-color", "#bdc3c7");
-
-
+            $('.ui-navbar .ui-select span').css("background-color", hightlightColor);
 
             /*
             options: {

@@ -65,6 +65,7 @@ return {
         //!-- Override the app tab bar with a custom template
         //!--default: 'components/tab_bar'
         tab_bar_template: theme_templates_path + 'tab_bar',
+        tab_bar_view: '../' +theme_views_path + 'tab_bar',
         //default_tab: 'feed',
 
 
@@ -402,7 +403,7 @@ return {
         },
         {
             name: 'map',
-            //view: theme_views_path + 'map',
+            view: theme_views_path + 'map',
             template: theme_templates_path + 'map'
         },
         {

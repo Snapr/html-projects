@@ -1,11 +1,11 @@
 <div id="map" data-role="page" data-title="<%= T('Map') %>"  data-theme="a" data-tab-bar="true">
 
-	<div data-role="header" data-theme="e" data-position="fixed" data-tap-toggle="false" data-add-back-btn="false">
+	<div data-role="header" data-theme="d" data-position="fixed" data-tap-toggle="false" data-add-back-btn="false">
 
 	     <h1 class="x-title">
 	        Map
 	    </h1>
-	    <a  onclick="alert('Not working yet');" class="x-menu-button ui-btn-right" data-icon="gear" data-iconpos="notext" data-corners="false" data-theme='e'>Login in</a>
+	    <a  onclick="alert('Not working yet');" class="x-menu-button ui-btn-right" data-icon="gear" data-iconpos="notext" data-corners="false" data-theme='d'>Login in</a>
 	</div>
 
     <div class="s-photo-map" data-role="content" data-theme="a">
@@ -50,16 +50,11 @@
     </div>
 
 
-
-
-
-
-
-    <div class="x-search-panel s-map-search" data-role="panel" data-position="right" data-theme="b"  data-swipe-close="false">
+    <div class="x-search-panel s-map-search" data-role="panel" data-position="right" data-theme="c"  data-swipe-close="false">
         <div class="s-panel-header">
-            <h1>Search</h1>
-            <div class="ui-btn-left">
-                <a data-icon="arrow-l" data-iconpos="notext" data-role="button" data-rel="close"></a>
+            <h1>Map Search</h1>
+            <div class="ui-btn-left" data-theme='b'>
+                <a data-icon="arrow-l" data-iconpos="notext" data-role="button" data-rel="close" data-theme='b'></a>
             </div>
         </div>
 
@@ -108,7 +103,7 @@
 
 		<div class="ui-grid-a">
 			<div class="ui-block-a">
-        		<button class="x-search-button" data-theme="e"><%= T('Go!') %></button>
+        		<button class="x-search-button" data-theme="d"><%= T('Go!') %></button>
 			</div>
 			<div class="ui-block-b">
 			</div>
