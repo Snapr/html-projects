@@ -1,0 +1,12 @@
+<div data-role="panel" data-theme="<%= config.get('side_menu_theme') %>" class="x-side-menu s-side-menu-main" data-swipe-close="false" data-position="right">
+    <ul class="x-content" data-role="listview">
+        <li><a data-icon="arrow-l" data-iconpos="left" data-role="button" data-rel="close">&nbsp;</a></li>
+
+        <% logged_in = auth.has('access_token') %>
+        <% _.each(config.get('side_menu_options'), function(item){ %>
+            <% if((logged_in && item.logged_in !== false) || (!logged_in && item.logged_in !== true)){ %>
+                <li><a class="large-icon" data-icon="<%= item.icon %>" data-slug="<%= item.slug %>" data-iconpos="left" data-role="button" href="<%= item.url %>"><%= T(item.label) %></a></li>
+            <% } %>
+        <% }) %>
+    </ul>
+</div>
