@@ -411,8 +411,11 @@
         }
         input {
             font-family: @font-special;
+			letter-spacing:.2 * @m;
             font-weight: normal;
             //background-color: @white;
+			color: @black;
+			text-transform:capitalize;
         }
     }
 
@@ -461,16 +464,23 @@
         border-radius: 0;
         .ui-btn{ //buttons inside the select browse menu
             text-align: center;
-            font-size: 0.8em;
+            
             height: @footerHeight;
             line-height: @footerHeight;
             margin: 0;
             
             padding: 0;
+
+			font-family: @font-special-2;
+			//.fontMont;
+			letter-spacing: 0.4 * @m;
+	        font-weight: normal;
+			font-size: 0.8em;
         }
+		
     }
 
-	//what ever
+	
 
 }
 

@@ -4553,7 +4553,10 @@ html body .ui-group-theme-a .ui-bar-inherit.ui-li-divider small {
 .ui-page-theme-a #map input,
 .ui-page-theme-a .ui-panel-wrapper #map input {
   font-family: HelveticaNeue-Light, Helvetica, Arial, sans-serif;
+  letter-spacing: 2px;
   font-weight: normal;
+  color: #000000;
+  text-transform: capitalize;
 }
 .ui-overlay-a .fontMont,
 .ui-page-theme-a .fontMont,
@@ -4619,11 +4622,14 @@ html body .ui-group-theme-a .ui-bar-inherit.ui-li-divider small {
 .ui-page-theme-a #browse-menu .ui-btn,
 .ui-page-theme-a .ui-panel-wrapper #browse-menu .ui-btn {
   text-align: center;
-  font-size: 0.8em;
   height: 55px;
   line-height: 55px;
   margin: 0;
   padding: 0;
+  font-family: Montserrat, Helvetica, Arial, sans-serif;
+  letter-spacing: 4px;
+  font-weight: normal;
+  font-size: 0.8em;
 }
 .ui-body-a,
 .ui-overlay-a .ui-body-inherit,
@@ -6317,7 +6323,10 @@ html body .ui-group-theme-c .ui-bar-inherit.ui-li-divider small {
 .ui-page-theme-c #map input,
 .ui-page-theme-c .ui-panel-wrapper #map input {
   font-family: HelveticaNeue-Light, Helvetica, Arial, sans-serif;
+  letter-spacing: 2px;
   font-weight: normal;
+  color: #000000;
+  text-transform: capitalize;
 }
 .ui-overlay-c .fontMont,
 .ui-page-theme-c .fontMont,
@@ -6383,11 +6392,14 @@ html body .ui-group-theme-c .ui-bar-inherit.ui-li-divider small {
 .ui-page-theme-c #browse-menu .ui-btn,
 .ui-page-theme-c .ui-panel-wrapper #browse-menu .ui-btn {
   text-align: center;
-  font-size: 0.8em;
   height: 55px;
   line-height: 55px;
   margin: 0;
   padding: 0;
+  font-family: Montserrat, Helvetica, Arial, sans-serif;
+  letter-spacing: 4px;
+  font-weight: normal;
+  font-size: 0.8em;
 }
 .ui-body-c,
 .ui-overlay-c .ui-body-inherit,
@@ -7356,7 +7368,10 @@ html body .ui-group-theme-d .ui-bar-inherit.ui-li-divider small {
 .ui-page-theme-d #map input,
 .ui-page-theme-d .ui-panel-wrapper #map input {
   font-family: HelveticaNeue-Light, Helvetica, Arial, sans-serif;
+  letter-spacing: 2px;
   font-weight: normal;
+  color: #000000;
+  text-transform: capitalize;
 }
 .ui-overlay-d .fontMont,
 .ui-page-theme-d .fontMont,
@@ -7422,11 +7437,14 @@ html body .ui-group-theme-d .ui-bar-inherit.ui-li-divider small {
 .ui-page-theme-d #browse-menu .ui-btn,
 .ui-page-theme-d .ui-panel-wrapper #browse-menu .ui-btn {
   text-align: center;
-  font-size: 0.8em;
   height: 55px;
   line-height: 55px;
   margin: 0;
   padding: 0;
+  font-family: Montserrat, Helvetica, Arial, sans-serif;
+  letter-spacing: 4px;
+  font-weight: normal;
+  font-size: 0.8em;
 }
 .ui-body-d,
 .ui-overlay-d .ui-body-inherit,
@@ -8395,7 +8413,10 @@ html body .ui-group-theme-e .ui-bar-inherit.ui-li-divider small {
 .ui-page-theme-e #map input,
 .ui-page-theme-e .ui-panel-wrapper #map input {
   font-family: HelveticaNeue-Light, Helvetica, Arial, sans-serif;
+  letter-spacing: 2px;
   font-weight: normal;
+  color: #000000;
+  text-transform: capitalize;
 }
 .ui-overlay-e .fontMont,
 .ui-page-theme-e .fontMont,
@@ -8461,11 +8482,14 @@ html body .ui-group-theme-e .ui-bar-inherit.ui-li-divider small {
 .ui-page-theme-e #browse-menu .ui-btn,
 .ui-page-theme-e .ui-panel-wrapper #browse-menu .ui-btn {
   text-align: center;
-  font-size: 0.8em;
   height: 55px;
   line-height: 55px;
   margin: 0;
   padding: 0;
+  font-family: Montserrat, Helvetica, Arial, sans-serif;
+  letter-spacing: 4px;
+  font-weight: normal;
+  font-size: 0.8em;
 }
 .ui-body-e,
 .ui-overlay-e .ui-body-inherit,
