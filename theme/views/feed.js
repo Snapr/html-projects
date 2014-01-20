@@ -152,7 +152,7 @@ define(
                 data: {include_comments: 10, include_favorites: 10},
                 success: function(){
                     var title = $('h1 span').html();
-                    if (title === "Nearby" && collection.length < 5) {
+                    if (title === "Nearby" && collection.length < 2) {
                         window.location.href = '/#/photos/';
                         return;
                     }

@@ -77,7 +77,7 @@ return {
         //!-- options - ['twitter', 'tumblr','facebook', 'foursquare', 'appdotnet']
         //!-- Note that appdotnet support is not yet complete
         //!--  default: all
-        services: ['twitter', 'tumblr','facebook', 'foursquare'],
+        //services: ['twitter', 'tumblr','facebook', 'foursquare'],
 
         //!--  any photos share with the app must have a 4sq venue/snapr spot
         //!--  default: false
@@ -88,7 +88,7 @@ return {
         //!--  if uses chooses not to share photo will be 'public_non_app' status
         //!--  These photos dont show up in the app or in your moderation system, but can be displayed via a direct link from FB etc
         //  default: false
-        //app_sharing_opt_in: true,
+        app_sharing_opt_in: true,
 
         //!--  show a message explaining app_sharing_opt_in on share screen
         //!--  in place of share text entry area
@@ -103,7 +103,7 @@ return {
         //!--  signin with facebook should create users rather than autofill join form
         //!--  default: false
         autocreate_users: true,
-        login_required_for_camera: false,
+        login_required_for_camera: true,
 
         //!--  hwhat to do if a persons display username is blank
         //!--  defaults: 'anon', 'me'

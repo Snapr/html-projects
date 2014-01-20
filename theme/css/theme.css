@@ -4504,6 +4504,19 @@ html body .ui-group-theme-a .ui-bar-inherit.ui-li-divider small {
 .ui-page-theme-a .ui-panel-wrapper #uploading .email {
   display: none;
 }
+.ui-overlay-a #uploading .ui-block-a a,
+.ui-page-theme-a #uploading .ui-block-a a,
+.ui-page-theme-a .ui-panel-wrapper #uploading .ui-block-a a {
+  color: #ffffff;
+}
+.ui-overlay-a #uploading .s-upload-message,
+.ui-page-theme-a #uploading .s-upload-message,
+.ui-page-theme-a .ui-panel-wrapper #uploading .s-upload-message,
+.ui-overlay-a #uploading .s-upload-progress-header,
+.ui-page-theme-a #uploading .s-upload-progress-header,
+.ui-page-theme-a .ui-panel-wrapper #uploading .s-upload-progress-header {
+  color: #ffffff !important;
+}
 .ui-overlay-a #map .s-map-base,
 .ui-page-theme-a #map .s-map-base,
 .ui-page-theme-a .ui-panel-wrapper #map .s-map-base {
@@ -6255,6 +6268,19 @@ html body .ui-group-theme-c .ui-bar-inherit.ui-li-divider small {
 .ui-page-theme-c .ui-panel-wrapper #uploading .email {
   display: none;
 }
+.ui-overlay-c #uploading .ui-block-a a,
+.ui-page-theme-c #uploading .ui-block-a a,
+.ui-page-theme-c .ui-panel-wrapper #uploading .ui-block-a a {
+  color: #ffffff;
+}
+.ui-overlay-c #uploading .s-upload-message,
+.ui-page-theme-c #uploading .s-upload-message,
+.ui-page-theme-c .ui-panel-wrapper #uploading .s-upload-message,
+.ui-overlay-c #uploading .s-upload-progress-header,
+.ui-page-theme-c #uploading .s-upload-progress-header,
+.ui-page-theme-c .ui-panel-wrapper #uploading .s-upload-progress-header {
+  color: #ffffff !important;
+}
 .ui-overlay-c #map .s-map-base,
 .ui-page-theme-c #map .s-map-base,
 .ui-page-theme-c .ui-panel-wrapper #map .s-map-base {
@@ -7281,6 +7307,19 @@ html body .ui-group-theme-d .ui-bar-inherit.ui-li-divider small {
 .ui-page-theme-d .ui-panel-wrapper #uploading .email {
   display: none;
 }
+.ui-overlay-d #uploading .ui-block-a a,
+.ui-page-theme-d #uploading .ui-block-a a,
+.ui-page-theme-d .ui-panel-wrapper #uploading .ui-block-a a {
+  color: #ffffff;
+}
+.ui-overlay-d #uploading .s-upload-message,
+.ui-page-theme-d #uploading .s-upload-message,
+.ui-page-theme-d .ui-panel-wrapper #uploading .s-upload-message,
+.ui-overlay-d #uploading .s-upload-progress-header,
+.ui-page-theme-d #uploading .s-upload-progress-header,
+.ui-page-theme-d .ui-panel-wrapper #uploading .s-upload-progress-header {
+  color: #ffffff !important;
+}
 .ui-overlay-d #map .s-map-base,
 .ui-page-theme-d #map .s-map-base,
 .ui-page-theme-d .ui-panel-wrapper #map .s-map-base {
@@ -8306,6 +8345,19 @@ html body .ui-group-theme-e .ui-bar-inherit.ui-li-divider small {
 .ui-page-theme-e #uploading .email,
 .ui-page-theme-e .ui-panel-wrapper #uploading .email {
   display: none;
+}
+.ui-overlay-e #uploading .ui-block-a a,
+.ui-page-theme-e #uploading .ui-block-a a,
+.ui-page-theme-e .ui-panel-wrapper #uploading .ui-block-a a {
+  color: #ffffff;
+}
+.ui-overlay-e #uploading .s-upload-message,
+.ui-page-theme-e #uploading .s-upload-message,
+.ui-page-theme-e .ui-panel-wrapper #uploading .s-upload-message,
+.ui-overlay-e #uploading .s-upload-progress-header,
+.ui-page-theme-e #uploading .s-upload-progress-header,
+.ui-page-theme-e .ui-panel-wrapper #uploading .s-upload-progress-header {
+  color: #ffffff !important;
 }
 .ui-overlay-e #map .s-map-base,
 .ui-page-theme-e #map .s-map-base,
