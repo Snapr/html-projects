@@ -205,10 +205,10 @@ return {
             side_menu_template: theme_templates_path + 'side_menu',
           side_menu_options: [
             {
-                url: '#/photos/?not_tagged=taken&location=current_location&radius=5000',
-                icon: "large-film",
-                label: 'Not Taken',
-                slug: 'not-taken'
+                url: '#/about/',
+                icon: "info",
+                label: 'About',
+                slug: 'about'
             },
             {
                 url: '#/logout/',

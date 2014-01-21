@@ -16,7 +16,7 @@ define(['config', 'views/base/page', '../../theme/views/feed'], function(config,
                     }else if (query.area){
                         self.title = T("Location");
                     }else if (query.not_tagged){
-                        self.title = T("Nearby & Not Taken");
+                        self.title = T("Not Taken");
                     }else if (query.favorited_by){
                         self.title = T("Favorites");
                     }else if (query.spot && query.venue_name){

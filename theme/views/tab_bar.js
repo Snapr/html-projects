@@ -58,6 +58,8 @@ var tab_bar = view.extend({
             window.location = '/#/map/';
         }else if (selected === "search") {
             window.location = '/#/search/';
+        } else if (selected === 'not-taken') {
+            window.location = '#/photos/?not_tagged=taken&location=current_location&radius=5000';
         } else {
             window.location = '/#/browse/';
         }
