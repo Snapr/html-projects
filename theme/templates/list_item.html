@@ -100,9 +100,6 @@
 
         <!-- Comment button -->
         <a data-role="button" data-theme="b" data-inline="true" data-icon="comments" data-iconpos="notext" class="x-comment-button large-icon">Comment</a>
-        
-        <a href="mailto:?subject=Check Out This Junk&body=http://test.artjunk.org/<%= item.get('id') %>" data-role="button" data-icon="envelope" data-iconpos="notext" data-theme="b" data-inline="true" class='large-icon' ></a>
-        
 
         <!-- More button -->
         <% if (item.get("username") == auth.get("snapr_user") || config.get('moderation_controls')){ %>
@@ -126,6 +123,9 @@
       <a class='reportTaken' data-role="button" data-theme="b" data-inline="false">
           Report Taken
       </a>
+
+      <a href="mailto:?subject=Check Out This Junk&body=http://test.artjunk.org/<%= item.get('id') %>" data-role="button" data-theme="b" data-inline="false">Email link</a>
+
         <% if (item.get("username") && item.get("username").toLowerCase() == (auth.get("snapr_user") || "").toLowerCase()){ %>
             <a class="x-delete" data-role="button" data-theme="b" data-inline="false">
                Delete
