@@ -85,28 +85,28 @@ var findHTMLInsideButtons = function(container){
 	return materialsString;
 };
 
-var defaultCaption = "[nocaption]";
-var defaultSeparation = " [tags] "; //between caption and material tags
+//var defaultCaption = "[nocaption]";
+var defaultSeparation = "\n"; //between caption and material tags
 
 //a default caption to be able to separate from 
-var addDefaultCaption = function() {
-	return defaultCaption;
-};
+// var addDefaultCaption = function() {
+//	return defaultCaption;
+// };
 
 var createDescription = function(caption, materials){
 	return caption + defaultSeparation + materials;
 };
 
 var getCaption = function(description){
-	var splitDescription = description.split(defaultSeparation);
-	var caption = splitDescription[0];
+	var separatedDescription = splitDescription(description);
+	var caption = separatedDescription[0];
 	return caption;
 };
 
 var getMaterialTags = function(description){
-	var splitDescription = description.split(defaultSeparation);
+	var separatedDescription = splitDescription(description);
 	//what if there is caption, no separation?
-	var materials = splitDescription[1];
+	var materials = separatedDescription[1];
 	materials = materials.trim();
 	return(materials);
 };
@@ -116,8 +116,14 @@ var makeArray = function(string){
 	return array;
 };
 
-// var splitDescription = function(description){
-//	var stringArray = description.split(defaultSeparation);
-//	return(stringArray);
-// };
+var splitDescription = function(description){
+	var stringArray = description.split(defaultSeparation);
+	console.log(stringArray.length);
+	console.log(stringArray);
+	if (stringArray.length > 1) {
+		return(stringArray);
+	}
+	return [stringArray[0], 'oldWay-tagsinCaption'];
+
+};
 

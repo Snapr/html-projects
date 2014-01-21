@@ -322,7 +322,6 @@ define(
             //separate tags from caption
             var descr = this.model.get('description');
             var caption = getCaption(descr); //in theme/views/material
-            if (caption === defaultCaption) { caption = ""; }
             var materials = getMaterialTags(descr);
             var materialArray = makeArray(materials); //so as to separate tags
             this.model.set('caption', caption); //just for local

@@ -81,8 +81,9 @@ define(['views/share', '../../theme/views/material'], function(share_view, mater
                 alert('You must add a location, my friend');
             }
             else if (materialField !== "") { //user must input a material
-                var container = $('.materials');
-                var materials = findHTMLInsideButtons(container);
+                var matContainer = $('.materials');
+                var materials = findHTMLInsideButtons(matContainer);
+                materials = materials.trim();
                 this.share_append_material(materials);
             } else {
                 alert('The material field is empty.');
@@ -91,14 +92,10 @@ define(['views/share', '../../theme/views/material'], function(share_view, mater
 
         share_append_material: function(materials) {
             var caption = $(".s-textarea").val();
-            if (caption === "") {
-                caption = addDefaultCaption(); //so as to separate tags later (in feed) hacky
-            }
-            materials = materials.trim();
+            //materials = materials.trim();
             var assembledDescription = createDescription(caption, materials);
             $(".s-textarea").val(assembledDescription);
             this.share();
-
         },
 
         deleteThis : function(ev){
