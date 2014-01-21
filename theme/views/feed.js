@@ -160,7 +160,7 @@ define(
                     if(callback){callback();}
                 }
             });
-            }
+            };
 
             if(collection.data.location=='current_location'){
                 geo.get_location(
@@ -330,14 +330,20 @@ define(
         },
 
         events: {
+
             "click .x-comment-button": "show_comment_form",
+            "click .x-share-button": "show_share_menu",
             "click .x-more-button": "show_more_menu",
+
+            "click .x-show-favorites": "show_favorites",
             "click .x-show-comments": "show_comments",
-            "click .x-goto-map": "goto_map",
+
             "dblclick .s-image-area": "goto_map",
+            //"click .x-goto-map": "goto_map",
             "click .x-goto-spot": "goto_spot",
-            "click .x-delete": "delete",
-            "click .x-flag": "flag",
+
+            //"click .x-delete": "delete",
+            //"click .x-flag": "flag",
             "change .taken": "taken_switch",
             //"blur .newDescription" : "edit_description",
             'click .tags-editable span a': 'deleteThis',
@@ -374,6 +380,11 @@ define(
 
             // latch onto these popups now. enhanceWithin is about to move them out of this.$el
             this.reactions_popup = this.$('.x-reactions');
+            
+            this.more_menu = this.$('.x-more-menu');
+            this.more_menu.on('click', '.x-flag', _.bind(this.flag, this));
+            this.more_menu.on('click', '.x-delete', _.bind(this.delete_photo, this));
+            this.more_menu.on('click', '.reportTaken', _.bind(this.report_taken, this));
 
             this.comment_form = this.$('.x-comment-form');
             this.comment_form.on('click', '.x-submit-button', _.bind(this.comment, this));
@@ -472,6 +483,24 @@ define(
                 }
             }else {
                 alert("This item is previously taken.");
+            }
+        },
+
+        report_taken : function(){ var self = this;
+
+            var r = confirm("Report this item taken?");
+            if (r===true) {
+                if(!this.is_taken_by_user()) {
+                    var commentArea = self.$('.s-comment-area');
+                    $(commentArea).find('textarea').val(self.takenTag);
+                    this.commentTaken();
+                    var currentOpacity = self.$('.s-image-area').css("opacity");
+                    var newOpacity = currentOpacity * 0.8;
+                    self.$('.s-image-area').fadeTo("slow",newOpacity);
+                }
+                else {
+                    alert("You've already reported this as taken");
+                }
             }
         },
 
@@ -849,7 +878,7 @@ define(
             })();
         },
 
-        'delete': function(){  var self = this;
+        'delete_photo': function(){  var self = this;
             auth.require_login( function(){
                 alerts.approve({
                     'title': T('Are you sure you want to delete this photo?'),
