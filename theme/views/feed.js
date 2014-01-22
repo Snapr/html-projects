@@ -349,7 +349,8 @@ define(
             //"blur .newDescription" : "edit_description",
             'click .tags-editable span a': 'deleteThis',
             'click .addNewTag' : 'addTag',
-            "click .submitTag" : "submit_tags",
+            // "click .submitTag" : "submit_tags",
+            "click .clickOutsideTagBox" : "submit_tags",
             "click .tags-readable" : "make_tags_editable",
             "click .tags-editable" : "submit_tags"
             //"click .tags" : "make_textarea"   
@@ -607,6 +608,7 @@ define(
                 self.$('.tags-editable').show();
                 self.$('.tags-readable').hide();
                 self.render(['.tags-editable']).enhanceWithin();
+                self.$('#junkItem').addClass('clickOutsideTagBox');
             }
         },
 
@@ -667,6 +669,7 @@ define(
                 $.ajax( ajax_options );
 
             }
+            self.$('#junkItem').removeClass('clickOutsideTagBox');
         },
 
         // edit_material : function () { var self = this;
