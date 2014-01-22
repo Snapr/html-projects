@@ -4424,6 +4424,17 @@ html body .ui-group-theme-a .ui-bar-inherit.ui-li-divider small {
 .ui-page-theme-a .ui-panel-wrapper #feed .s-more-menu {
   left: 0;
 }
+.ui-overlay-a #feed .s-feed-end a,
+.ui-page-theme-a #feed .s-feed-end a,
+.ui-page-theme-a .ui-panel-wrapper #feed .s-feed-end a {
+  color: #666666;
+  border-color: #666666;
+}
+.ui-overlay-a #feed .s-feed-end .outline-style:after,
+.ui-page-theme-a #feed .s-feed-end .outline-style:after,
+.ui-page-theme-a .ui-panel-wrapper #feed .s-feed-end .outline-style:after {
+  color: #666666;
+}
 .ui-overlay-a #share div[data-role='header'],
 .ui-page-theme-a #share div[data-role='header'],
 .ui-page-theme-a .ui-panel-wrapper #share div[data-role='header'] {
@@ -6198,6 +6209,17 @@ html body .ui-group-theme-c .ui-bar-inherit.ui-li-divider small {
 .ui-page-theme-c .ui-panel-wrapper #feed .s-more-menu {
   left: 0;
 }
+.ui-overlay-c #feed .s-feed-end a,
+.ui-page-theme-c #feed .s-feed-end a,
+.ui-page-theme-c .ui-panel-wrapper #feed .s-feed-end a {
+  color: #666666;
+  border-color: #666666;
+}
+.ui-overlay-c #feed .s-feed-end .outline-style:after,
+.ui-page-theme-c #feed .s-feed-end .outline-style:after,
+.ui-page-theme-c .ui-panel-wrapper #feed .s-feed-end .outline-style:after {
+  color: #666666;
+}
 .ui-overlay-c #share div[data-role='header'],
 .ui-page-theme-c #share div[data-role='header'],
 .ui-page-theme-c .ui-panel-wrapper #share div[data-role='header'] {
@@ -7247,6 +7269,17 @@ html body .ui-group-theme-d .ui-bar-inherit.ui-li-divider small {
 .ui-page-theme-d .ui-panel-wrapper #feed .s-more-menu {
   left: 0;
 }
+.ui-overlay-d #feed .s-feed-end a,
+.ui-page-theme-d #feed .s-feed-end a,
+.ui-page-theme-d .ui-panel-wrapper #feed .s-feed-end a {
+  color: #666666;
+  border-color: #666666;
+}
+.ui-overlay-d #feed .s-feed-end .outline-style:after,
+.ui-page-theme-d #feed .s-feed-end .outline-style:after,
+.ui-page-theme-d .ui-panel-wrapper #feed .s-feed-end .outline-style:after {
+  color: #666666;
+}
 .ui-overlay-d #share div[data-role='header'],
 .ui-page-theme-d #share div[data-role='header'],
 .ui-page-theme-d .ui-panel-wrapper #share div[data-role='header'] {
@@ -8295,6 +8328,17 @@ html body .ui-group-theme-e .ui-bar-inherit.ui-li-divider small {
 .ui-page-theme-e #feed .s-more-menu,
 .ui-page-theme-e .ui-panel-wrapper #feed .s-more-menu {
   left: 0;
+}
+.ui-overlay-e #feed .s-feed-end a,
+.ui-page-theme-e #feed .s-feed-end a,
+.ui-page-theme-e .ui-panel-wrapper #feed .s-feed-end a {
+  color: #666666;
+  border-color: #666666;
+}
+.ui-overlay-e #feed .s-feed-end .outline-style:after,
+.ui-page-theme-e #feed .s-feed-end .outline-style:after,
+.ui-page-theme-e .ui-panel-wrapper #feed .s-feed-end .outline-style:after {
+  color: #666666;
 }
 .ui-overlay-e #share div[data-role='header'],
 .ui-page-theme-e #share div[data-role='header'],
