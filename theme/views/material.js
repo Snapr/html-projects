@@ -118,8 +118,6 @@ var makeArray = function(string){
 
 var splitDescription = function(description){
 	var stringArray = description.split(defaultSeparation);
-	console.log(stringArray.length);
-	console.log(stringArray);
 	if (stringArray.length > 1) {
 		return(stringArray);
 	}

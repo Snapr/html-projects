@@ -4381,11 +4381,6 @@ html body .ui-group-theme-a .ui-bar-inherit.ui-li-divider small {
   min-height: 20px;
   border-radius: 0;
 }
-.ui-overlay-a #feed .s-image-details div[class^="tags"] a[href],
-.ui-page-theme-a #feed .s-image-details div[class^="tags"] a[href],
-.ui-page-theme-a .ui-panel-wrapper #feed .s-image-details div[class^="tags"] a[href] {
-  color: #000000;
-}
 .ui-overlay-a #feed .s-image-details .owner,
 .ui-page-theme-a #feed .s-image-details .owner,
 .ui-page-theme-a .ui-panel-wrapper #feed .s-image-details .owner {
@@ -6160,11 +6155,6 @@ html body .ui-group-theme-c .ui-bar-inherit.ui-li-divider small {
   min-height: 20px;
   border-radius: 0;
 }
-.ui-overlay-c #feed .s-image-details div[class^="tags"] a[href],
-.ui-page-theme-c #feed .s-image-details div[class^="tags"] a[href],
-.ui-page-theme-c .ui-panel-wrapper #feed .s-image-details div[class^="tags"] a[href] {
-  color: #000000;
-}
 .ui-overlay-c #feed .s-image-details .owner,
 .ui-page-theme-c #feed .s-image-details .owner,
 .ui-page-theme-c .ui-panel-wrapper #feed .s-image-details .owner {
@@ -7214,11 +7204,6 @@ html body .ui-group-theme-d .ui-bar-inherit.ui-li-divider small {
   min-height: 20px;
   border-radius: 0;
 }
-.ui-overlay-d #feed .s-image-details div[class^="tags"] a[href],
-.ui-page-theme-d #feed .s-image-details div[class^="tags"] a[href],
-.ui-page-theme-d .ui-panel-wrapper #feed .s-image-details div[class^="tags"] a[href] {
-  color: #000000;
-}
 .ui-overlay-d #feed .s-image-details .owner,
 .ui-page-theme-d #feed .s-image-details .owner,
 .ui-page-theme-d .ui-panel-wrapper #feed .s-image-details .owner {
@@ -8267,11 +8252,6 @@ html body .ui-group-theme-e .ui-bar-inherit.ui-li-divider small {
   padding: 0 5px;
   min-height: 20px;
   border-radius: 0;
-}
-.ui-overlay-e #feed .s-image-details div[class^="tags"] a[href],
-.ui-page-theme-e #feed .s-image-details div[class^="tags"] a[href],
-.ui-page-theme-e .ui-panel-wrapper #feed .s-image-details div[class^="tags"] a[href] {
-  color: #000000;
 }
 .ui-overlay-e #feed .s-image-details .owner,
 .ui-page-theme-e #feed .s-image-details .owner,

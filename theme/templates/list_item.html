@@ -44,7 +44,7 @@
 
       <%     
       _.each(item.get('materials') , function(mat) { %>
-        <a data-role="button" data-inline="true" data-mini="true" ><%= mat %></a>
+        <a href="#/photos/?tag=<%= mat %>" data-role="button" data-inline="true" data-mini="true" ><%= mat %></a>
        <% }); %>
 
        <%
@@ -120,18 +120,18 @@
     <!-- More menu -->
     <div data-role="popup" data-arrow="b" class="x-more-menu s-more-menu" data-theme="d" id="more-menu-<%= item.cid %>">
 
-      <a class='reportTaken' data-role="button" data-theme="b" data-inline="false">
+      <a class='reportTaken' data-role="button" data-theme="c" data-inline="false">
           Report Taken
       </a>
 
-      <a href="mailto:?subject=Check Out This Junk&body=http://test.artjunk.org/<%= item.get('id') %>" data-role="button" data-theme="b" data-inline="false">Email link</a>
+      <a href="mailto:?subject=Check Out This Junk&body=http://test.artjunk.org/<%= item.get('id') %>" data-role="button" data-theme="c" data-inline="false">Email link</a>
 
         <% if (item.get("username") && item.get("username").toLowerCase() == (auth.get("snapr_user") || "").toLowerCase()){ %>
-            <a class="x-delete" data-role="button" data-theme="b" data-inline="false">
+            <a class="x-delete" data-role="button" data-theme="c" data-inline="false">
                Delete
            </a>
         <%} else if(config.get('moderation_controls')){ %>
-            <a class="x-flag" data-role="button" data-theme="b" data-inline="false">
+            <a class="x-flag" data-role="button" data-theme="c" data-inline="false">
                 <% if (item.get('flagged')){%> Flagged <% }else{ %> Flag <% } %>
             </a>
         <%}%>
