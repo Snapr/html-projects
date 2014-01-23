@@ -149,12 +149,12 @@ define(
 
             var fetch = function(){
                 delete collection.data.paginate_from;
+                var titleHeader = $('h1 span').html();
+                var lowercase = titleHeader.toLowerCase();
                 self.fetching = collection.fetch({
                 data: {include_comments: 10, include_favorites: 10},
                 success: function(){
-                    var title = $('h1 span').html();
-                    title = title.toLowerCase();
-                    if (title === "nearby" && collection.length < 2) {
+                    if (lowercase === "nearby" && collection.length < 2) {
                         window.location.href = '/#/photos/';
                         return;
                     }
