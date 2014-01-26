@@ -614,12 +614,25 @@ define(
 
         addTag : function() { var self = this;
             //need to seriously work on this: multiple tags? no hashtag?
-            var tag = prompt('Make up your own tag', "#");
-            tag = tag.trim(); //doesn't seem to work
+            var tags = prompt('Make up your own tag', "#");
             var container = self.$('.tags-editable span');
-            addMaterialButtonToHTML(tag, container);
+            tags = tags.trim();
+            tags = tags.replace("##","#");
+            tags = tags.replace(/\s{2,}/g, ' '); //no multiple spaces
+            if (tags !== "#" || tags !== "") { //if there is some input
+                tagArray = tags.split(" ");
+                _.each(tagArray, function(t){
+                    t = t.replace(";", "");// no punctuation
+                    t = t.replace(",", "");
+                    t = "#" + t; //make sure each tag starts with #
+                    t = t.replace("##","#"); //but not 2 of them
+                    if (t.match(/[a-zA-Z]/g)) { //check for letters in tag
+                        addMaterialButtonToHTML(t, container);
+                    }
+                    
+                });
+            }
             ev.stopPropagate();
-            //this.submit_tags();
         },
 
         submit_tags : function () { var self = this;
