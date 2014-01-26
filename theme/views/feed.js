@@ -331,14 +331,14 @@ define(
 
             //"click .x-delete": "delete",
             //"click .x-flag": "flag",
-            "change .taken": "taken_switch",
+            //"change .taken": "taken_switch",
             // "click .submitDescr" : "edit_description",
             'click .tags-editable span a': 'deleteThis',
             'click .addNewTag' : 'addTag',
             // "click .submitTag" : "submit_tags",
             "click .clickOutsideTagBox" : "submit_tags",
             "click .tags-readable" : "make_tags_editable",
-            "click .tags-editable" : "submit_tags"
+            //"click .tags-editable" : "submit_tags"
             //"click .tags" : "make_textarea"   
             //"change .edit-material": "edit_material"
         },
@@ -601,7 +601,6 @@ define(
         },
 
         make_tags_readable : function (ev) { var self = this;
-                //this.submit_tags();
                 self.$('.tags-editable').hide();
                 self.$('.tags-readable').show();
                 ev.stopPropagate();
@@ -639,38 +638,48 @@ define(
             var materialHTML = self.$('.tags-editable span');//check if empty?
             var materials = findHTMLInsideButtons(materialHTML);
             materials = materials.trim();
-            var matArray = makeArray(materials);
+            self.$('#junkItem').removeClass('clickOutsideTagBox');
 
-            self.model.set({
-                materials: matArray //only frontend
-            });
+            if (materials !== "") {
+           
+                var matArray = makeArray(materials);
 
-            self.$('.tags-editable').hide();
-            self.$('.tags-readable').show();
+                self.model.set({
+                    materials: matArray //only frontend
+                });
 
-            self.render(['.tags-readable']).enhanceWithin();
+                self.$('.tags-editable').hide();
+                self.$('.tags-readable').show();
 
-            var descr = self.model.get('description');
-            var caption = getCaption(descr);
-            var newDescription = createDescription(caption, materials);
+                self.render(['.tags-readable']).enhanceWithin();
 
-            if(descr !== newDescription) { //no need to send if nothing changed
-                var ajax_options = {}; //catch network error?
-                ajax_options =  {
-                    url: config.get('api_base') + "/photo/",
-                    dataType: "jsonp",
-                    data: _.extend({}, auth.attributes, {
-                        id: self.model.get('id'),
-                        description : newDescription,
-                        display_username: 0, //or get warning back
-                        _method: "POST"
-                    })
-                };
+                var descr = self.model.get('description');
+                var caption = getCaption(descr);
+                var newDescription = createDescription(caption, materials);
 
-                $.ajax( ajax_options );
+                if(descr !== newDescription) { //no need to send if nothing changed
+                    var ajax_options = {}; //catch network error?
+                    ajax_options =  {
+                        url: config.get('api_base') + "/photo/",
+                        dataType: "jsonp",
+                        data: _.extend({}, auth.attributes, {
+                            id: self.model.get('id'),
+                            description : newDescription,
+                            display_username: 0, //or get warning back
+                            _method: "POST"
+                        })
+                    };
+
+                    $.ajax( ajax_options );
+
+                }
 
             }
-            self.$('#junkItem').removeClass('clickOutsideTagBox');
+            else { //the material tag list is empty
+                alert('You must have at least one tag.');
+                this.make_tags_readable();
+            }
+
         },
 
         // edit_material : function () { var self = this;
