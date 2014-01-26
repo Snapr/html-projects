@@ -73,9 +73,7 @@ var map_view = page_view.extend({
 
     post_activate: function(options){  var self=this;
 
-        var map = $('#browse-menu .ui-btn:contains(MAP)');
-        map.css("background-color","#bdc3c7");
-        $('.ui-navbar .ui-select span').css("background-color", '#bdc3c7');
+        $('.ui-block-b .ui-btn').css("background-color", '#bdc3c7');
         
         this.change_page();
         $.mobile.loading('show');

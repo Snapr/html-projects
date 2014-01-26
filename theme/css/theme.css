@@ -4630,7 +4630,7 @@ html body .ui-group-theme-a .ui-bar-inherit.ui-li-divider small {
   position: fixed;
   bottom: 55px;
   left: 0;
-  width: 50%;
+  width: 33%;
   border-radius: 0;
 }
 .ui-overlay-a #browse-menu .ui-btn,
@@ -6415,7 +6415,7 @@ html body .ui-group-theme-c .ui-bar-inherit.ui-li-divider small {
   position: fixed;
   bottom: 55px;
   left: 0;
-  width: 50%;
+  width: 33%;
   border-radius: 0;
 }
 .ui-overlay-c #browse-menu .ui-btn,
@@ -7475,7 +7475,7 @@ html body .ui-group-theme-d .ui-bar-inherit.ui-li-divider small {
   position: fixed;
   bottom: 55px;
   left: 0;
-  width: 50%;
+  width: 33%;
   border-radius: 0;
 }
 .ui-overlay-d #browse-menu .ui-btn,
@@ -8535,7 +8535,7 @@ html body .ui-group-theme-e .ui-bar-inherit.ui-li-divider small {
   position: fixed;
   bottom: 55px;
   left: 0;
-  width: 50%;
+  width: 33%;
   border-radius: 0;
 }
 .ui-overlay-e #browse-menu .ui-btn,
