@@ -149,15 +149,15 @@ define(
 
             var fetch = function(){
                 delete collection.data.paginate_from;
-                var titleHeader = $('h1 span').html();
-                var lowercase = titleHeader.toLowerCase();
+                // var titleHeader = $('h1 span').html();
+                // var lowercase = titleHeader.toLowerCase();
                 self.fetching = collection.fetch({
                 data: {include_comments: 10, include_favorites: 10},
                 success: function(){
-                    if (lowercase === "nearby" && collection.length < 2) {
-                        window.location.href = '/#/photos/';
-                        return;
-                    }
+                    // if (lowercase === "nearby" && collection.length < 2) {
+                    //     window.location.href = '/#/photos/';
+                    //     return;
+                    // }
                     self.render_collection(collection);
                     if(callback){callback();}
                 }
