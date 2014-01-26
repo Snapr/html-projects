@@ -106,7 +106,7 @@ define(['views/share', '../../theme/views/material'], function(share_view, mater
 
         share_append_material: function(materials) {
             var caption = $(".s-textarea").val();
-            //materials = materials.trim();
+            caption = caption.replace(/(\r\n|\n|\r)/gm," ");
             var assembledDescription = createDescription(caption, materials);
             $(".s-textarea").val(assembledDescription);
             this.share();
