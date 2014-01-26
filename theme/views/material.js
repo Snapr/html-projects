@@ -121,7 +121,7 @@ var splitDescription = function(description){
 	if (stringArray.length > 1) {
 		return(stringArray);
 	}
-	return [stringArray[0], 'oldWay-tagsinCaption'];
+	return [stringArray[0], '#tag'];
 
 };
 

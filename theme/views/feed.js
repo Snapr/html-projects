@@ -332,7 +332,7 @@ define(
             //"click .x-delete": "delete",
             //"click .x-flag": "flag",
             "change .taken": "taken_switch",
-            //"blur .newDescription" : "edit_description",
+            // "click .submitDescr" : "edit_description",
             'click .tags-editable span a': 'deleteThis',
             'click .addNewTag' : 'addTag',
             // "click .submitTag" : "submit_tags",
@@ -565,6 +565,8 @@ define(
         // edit_description : function () { var self = this;
         //     var description = self.model.get('description');
         //     var newDescription = self.$('.newDescription').val();
+        //     newDescription = "\n" + newDescription;
+        //     alert(newDescription);
         //     //don't do anything if use hasn't changed the description field          
         //     if (description !== newDescription) {
         //         self.model.set({
