@@ -18,11 +18,6 @@ var tab_bar = view.extend({
 
     },
 
-
-    activate: function() {
-        alert('activate');
-    },
-
     events:{
         'click a': 'handle_click',
         'click .x-menu-button': 'open_menu',

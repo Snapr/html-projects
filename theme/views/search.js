@@ -4,8 +4,6 @@ return page_view.extend({
 
     post_activate: function(){
 
-        var search = $('#browse-menu .ui-btn:contains(SEARCH)');
-        search.css("background-color","#bdc3c7");
         $('.ui-navbar .ui-select span').css("background-color", '#bdc3c7');
 
         var page = this;

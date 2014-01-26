@@ -3,6 +3,21 @@ define(['config', 'views/base/page', '../../theme/views/feed'], function(config,
     return page_view.extend({
 
             post_activate: function(options){  var self = this;
+
+                var hightlightColor = "#bdc3c7";
+                $('.ui-navbar .ui-select span').css("background-color", hightlightColor);
+
+                // var thisFeed = Backbone.history.fragment;
+                // var nearby = $('#browse-menu .ui-btn:contains(NEARBY)');
+                // var all = $('#browse-menu .ui-btn:contains(ALL)');
+                // var notTaken = $('#browse-menu .ui-btn:contains(NOT TAKEN)');
+
+                // if (thisFeed === "photos/") {
+                //     all.css("background-color", hightlightColor);
+                // } else {
+                //     nearby.css("background-color", hightlightColor);
+                // }
+
                 if(!_.isEqual(self.options.query,self.previous_query)){
                     self.change_page();
 
