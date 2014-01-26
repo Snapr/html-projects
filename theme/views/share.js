@@ -68,17 +68,31 @@ define(['views/share', '../../theme/views/material'], function(share_view, mater
         },
 
         writeInTag : function(ev){
-            var tag = prompt('Write it own tag', "#");
-            tag = tag.trim();
+            var tags = prompt('Write it own tag', "#");
             var container = $('.materials');
-            addMaterialButtonToHTML(tag, container);
+            tags = tags.trim();
+            tags = tags.replace("##","#");
+            tags = tags.replace(/\s{2,}/g, ' '); //no multiple spaces
+            if (tags !== "#" || tags !== "") { //if there is some input
+                tagArray = tags.split(" ");
+                _.each(tagArray, function(t){
+                    t = t.replace(";", "");// no punctuation
+                    t = t.replace(",", "");
+                    t = "#" + t; //make sure each tag starts with #
+                    t = t.replace("##","#"); //but not 2 of them
+                    if (t.match(/[a-zA-Z]/g)) { //check for letters in tag
+                        addMaterialButtonToHTML(t, container);
+                    }
+                    
+                });
+            }
         },
 
         check_fields: function() {
             var materialField = $('.materials').html();
             var location = $('.s-upload-image-location .s-btn-text').html();
             if(location === "Add Location") {
-                alert('You must add a location, my friend');
+                alert('You must add a location');
             }
             else if (materialField !== "") { //user must input a material
                 var matContainer = $('.materials');
