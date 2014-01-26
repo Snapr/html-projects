@@ -23,7 +23,8 @@ return page_view.extend({
     events: {
         "change .x-search-field": "update_placeholder",
         "change select.x-search-type": "update_placeholder",
-        "submit form": "search"
+        "submit form": "search",
+        'click .x-menu-button': 'open_menu'
     },
 
     update_placeholder: function(){
@@ -73,7 +74,11 @@ return page_view.extend({
                 dialog('user/search/?username='+keywords);
                 break;
         }
-    }
+    },
+
+    open_menu: function(){
+        $('.x-side-menu').panel('open');
+    },
 });
 
 });

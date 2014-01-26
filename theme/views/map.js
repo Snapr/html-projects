@@ -68,7 +68,9 @@ var map_view = page_view.extend({
         "vclick .x-venue" : "toggle_spot_label",
 
         'click .x-show-search': "search_panel_show",
-        'click .x-search-button': 'search'
+        'click .x-search-button': 'search',
+        'click .x-menu-button': 'open_menu'
+
     },
 
     post_activate: function(options){  var self=this;
@@ -715,6 +717,10 @@ var map_view = page_view.extend({
         this.map_time_update_display();
 
         return this;
+    },
+
+    open_menu: function(){
+        $('.x-side-menu').panel('open');
     },
 
     map_time_update_display: function(){
