@@ -319,15 +319,15 @@ define(
         events: {
 
             "click .x-comment-button": "show_comment_form",
-            "click .x-share-button": "show_share_menu",
+            //"click .x-share-button": "show_share_menu",
             "click .x-more-button": "show_more_menu",
 
-            "click .x-show-favorites": "show_favorites",
+            //"click .x-show-favorites": "show_favorites",
             "click .x-show-comments": "show_comments",
 
             "dblclick .s-image-area": "goto_map",
             //"click .x-goto-map": "goto_map",
-            "click .x-goto-spot": "goto_spot",
+            //"click .x-goto-spot": "goto_spot",
 
             //"click .x-delete": "delete",
             //"click .x-flag": "flag",

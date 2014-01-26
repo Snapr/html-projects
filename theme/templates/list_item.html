@@ -92,7 +92,7 @@
     <ul class="x-comments s-comments">
 
         <% _.each(item.get('latest_comments'), function(comment){ %>
-            <li><a class="commenter" href="#/user/?username=<%= comment.user %>"><%= comment.user %></a> <%= string_utils.comment_links( comment.comment ) %></li>
+            <li><a class="commenter"><%= comment.user %></a> <%= string_utils.comment_links( comment.comment ) %></li>
         <% }) %>
         <% if(item.get('comments') > 10){ %><li><a class="x-show-comments"><%= T('Show more comments') %></a></li><% } %>
     </ul>
