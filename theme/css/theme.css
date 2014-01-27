@@ -4342,6 +4342,18 @@ html body .ui-group-theme-a .ui-bar-inherit.ui-li-divider small {
   cursor: pointer;
   color: #34495e;
 }
+.ui-overlay-a #feed .takenText,
+.ui-page-theme-a #feed .takenText,
+.ui-page-theme-a .ui-panel-wrapper #feed .takenText {
+  position: absolute;
+  top: 40%;
+  left: 30%;
+  color: #1abc9c;
+  font-size: 60px;
+  letter-spacing: 2px !important;
+  -webkit-transform: rotate(-30deg);
+  font-weight: bold;
+}
 .ui-overlay-a #feed .s-image-area,
 .ui-page-theme-a #feed .s-image-area,
 .ui-page-theme-a .ui-panel-wrapper #feed .s-image-area {
@@ -6139,6 +6151,18 @@ html body .ui-group-theme-c .ui-bar-inherit.ui-li-divider small {
   cursor: pointer;
   color: #34495e;
 }
+.ui-overlay-c #feed .takenText,
+.ui-page-theme-c #feed .takenText,
+.ui-page-theme-c .ui-panel-wrapper #feed .takenText {
+  position: absolute;
+  top: 40%;
+  left: 30%;
+  color: #1abc9c;
+  font-size: 60px;
+  letter-spacing: 2px !important;
+  -webkit-transform: rotate(-30deg);
+  font-weight: bold;
+}
 .ui-overlay-c #feed .s-image-area,
 .ui-page-theme-c #feed .s-image-area,
 .ui-page-theme-c .ui-panel-wrapper #feed .s-image-area {
@@ -7211,6 +7235,18 @@ html body .ui-group-theme-d .ui-bar-inherit.ui-li-divider small {
   cursor: pointer;
   color: #34495e;
 }
+.ui-overlay-d #feed .takenText,
+.ui-page-theme-d #feed .takenText,
+.ui-page-theme-d .ui-panel-wrapper #feed .takenText {
+  position: absolute;
+  top: 40%;
+  left: 30%;
+  color: #1abc9c;
+  font-size: 60px;
+  letter-spacing: 2px !important;
+  -webkit-transform: rotate(-30deg);
+  font-weight: bold;
+}
 .ui-overlay-d #feed .s-image-area,
 .ui-page-theme-d #feed .s-image-area,
 .ui-page-theme-d .ui-panel-wrapper #feed .s-image-area {
@@ -8282,6 +8318,18 @@ html body .ui-group-theme-e .ui-bar-inherit.ui-li-divider small {
   text-decoration: underline;
   cursor: pointer;
   color: #34495e;
+}
+.ui-overlay-e #feed .takenText,
+.ui-page-theme-e #feed .takenText,
+.ui-page-theme-e .ui-panel-wrapper #feed .takenText {
+  position: absolute;
+  top: 40%;
+  left: 30%;
+  color: #1abc9c;
+  font-size: 60px;
+  letter-spacing: 2px !important;
+  -webkit-transform: rotate(-30deg);
+  font-weight: bold;
 }
 .ui-overlay-e #feed .s-image-area,
 .ui-page-theme-e #feed .s-image-area,

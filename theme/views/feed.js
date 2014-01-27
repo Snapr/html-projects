@@ -288,6 +288,7 @@ define(
         className: "s-feed-photo",
 
         initialize: function(){
+
             this.model.bind( "change:status", this.render );
 
             this.template = this.options.template;
@@ -494,6 +495,7 @@ define(
                 $(ev.target).addClass('reportUntaken');
                 $(ev.target).removeClass('reportTaken');
                 $(ev.target).html('Report Untaken');
+                self.$('.takenText').show();
             }
         },
 
@@ -514,6 +516,7 @@ define(
             $(ev.target).addClass('reportTaken');
             $(ev.target).removeClass('reportUntaken');
             $(ev.target).html('Report Taken');
+            self.$('.takenText').hide();
 
             }
         },
@@ -578,6 +581,8 @@ define(
                         latest_comments : latestComments
                     });
                     self.render(['.x-comments']).enhanceWithin();
+                    self.$('.takenText').show();
+                    self.$('.s-image-area').fadeTo("slow", 0.6);
                 }
 
             };
@@ -857,6 +862,8 @@ define(
                     error: function( error ){
                         console.log('error', error);
                         self.$('.x-comments').children().last().remove();
+                        self.$('.takenText').hide();
+                        self.$('.s-image-area').fadeTo("slow", 1);
                     }
                 } );
             } )();
