@@ -578,7 +578,7 @@ define(
                         latest_comments : latestComments
                     });
                     self.render(['.x-comments']).enhanceWithin();
-                },
+                }
 
             };
             $.ajax( ajax_options );
@@ -650,7 +650,7 @@ define(
             ev.stopPropagate();
         },
 
-        addTag : function() { var self = this;
+        addTag : function(ev) { var self = this;
             //need to seriously work on this: multiple tags? no hashtag?
             var tags = prompt('Make up your own tag', "#");
             var container = self.$('.tags-editable span');
@@ -693,7 +693,9 @@ define(
                 self.render(['.tags-readable']).enhanceWithin();
 
                 var descr = self.model.get('description');
-                var caption = getCaption(descr);
+                var orginalMaterials = getMaterialTags(descr); //to reset in case of network failure
+                var originalMatArray = makeArray(orginalMaterials);
+                var caption = getCaption(descr); //to recreate full description to send to server
                 var newDescription = createDescription(caption, materials);
 
                 if(descr !== newDescription) { //no need to send if nothing changed
@@ -706,7 +708,15 @@ define(
                             description : newDescription,
                             display_username: 0, //or get warning back
                             _method: "POST"
-                        })
+                        }),
+                    error: function(error){
+                        //remove front-end visual feedback
+                        console.log('error', error);
+                        self.model.set({
+                            materials: originalMatArray //reset
+                        });
+                        self.render(['.tags-readable']).enhanceWithin();
+                    }
                     };
 
                     $.ajax( ajax_options );
