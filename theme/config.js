@@ -417,17 +417,10 @@ return {
             view: theme_views_path + 'search',
             template: theme_templates_path + 'search'
         },
-
         {
-            name: 'test',
-            view: 'welcome',
-            template: theme_templates_path + 'test'
+            name: 'welcome',
+            view: 'login',
         },
-        // {
-        //     name: 'welcome',
-        //     view: 'welcome',
-        //     template: theme_templates_path + 'welcome'
-        // },
         'activity',
         'popular'
     ]
