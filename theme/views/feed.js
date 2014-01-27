@@ -642,12 +642,12 @@ define(
         make_tags_readable : function (ev) { var self = this;
                 self.$('.tags-editable').hide();
                 self.$('.tags-readable').show();
-                ev.stopPropagate();
+                ev.stopPropagation();
         },
 
         deleteThis : function(ev){
             $(ev.target).remove();
-            ev.stopPropagate();
+            ev.stopPropagation();
         },
 
         addTag : function(ev) { var self = this;
@@ -670,7 +670,7 @@ define(
                     
                 });
             }
-            ev.stopPropagate();
+            ev.stopPropagation();
         },
 
         submit_tags : function () { var self = this;
