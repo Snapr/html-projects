@@ -97,8 +97,13 @@ define(['views/share', '../../theme/views/material'], function(share_view, mater
             else if (materialField !== "") { //user must input a material
                 var matContainer = $('.materials');
                 var materials = findHTMLInsideButtons(matContainer);
-                materials = materials.trim();
-                this.share_append_material(materials);
+                var has_predefined = hasPredefined(materials);
+                if (has_predefined === false) {
+                    alert("You must input a suggested material");
+                }
+                else {
+                    this.share_append_material(materials);
+                }
             } else {
                 alert('The material field is empty.');
             }

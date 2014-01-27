@@ -85,6 +85,20 @@ var findHTMLInsideButtons = function(container){
 	return materialsString;
 };
 
+
+var hasPredefined = function(tagString){
+	var passes = false;
+	_.find(materials, function(m) {
+		var predefined = tagString.indexOf(m.tag);
+		if(predefined != -1)  {
+			passes = true;
+			return true;
+		}
+	});
+
+	return passes;
+};
+
 //var defaultCaption = "[nocaption]";
 var defaultSeparation = "\n"; //between caption and material tags
 
