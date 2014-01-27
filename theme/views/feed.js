@@ -417,7 +417,7 @@ define(
             var tagged=false;
             if (this.model.get('comments') > 0) {
                 _.each(this.model.get('latest_comments'), function(commentObj){
-                    if (commentObj.comment === tag) {
+                    if (commentObj.comment.indexOf(tag) != -1) {
                         tagged = true;
                         return tagged;
                     }
