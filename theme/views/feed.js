@@ -487,14 +487,13 @@ define(
                     // var newOpacity = currentOpacity * 0.8;
                     // self.$('.s-image-area').fadeTo("slow",newOpacity);
                     self.$('.s-image-area').fadeTo("slow", 0.6);
-                    $(ev.target).addClass('reportUntaken');
-                    $(ev.target).removeClass('reportTaken');
-                    $(ev.target).html('Report Untaken');
-
                 }
                 else {
                     alert("You've already reported this as taken");
                 }
+                $(ev.target).addClass('reportUntaken');
+                $(ev.target).removeClass('reportTaken');
+                $(ev.target).html('Report Untaken');
             }
         },
 
@@ -505,9 +504,6 @@ define(
                 if (commentToDelete !== 0) {
                         this.delete_comment(commentToDelete);
                         self.$('.s-image-area').fadeTo("slow", 1);
-                        $(ev.target).addClass('reportTaken');
-                        $(ev.target).removeClass('reportUntaken');
-                        $(ev.target).html('Report Taken');
                         if(this.is_taken() === true) {
                             console.log('this item remains tagged #taken by another user');
                         }
@@ -515,6 +511,9 @@ define(
                 else {
                     alert("You haven't reported this item as #taken");
                 }
+            $(ev.target).addClass('reportTaken');
+            $(ev.target).removeClass('reportUntaken');
+            $(ev.target).html('Report Taken');
 
             }
         },
@@ -551,6 +550,18 @@ define(
         },
 
         'delete_comment': function( commentId ){var self=this;
+
+            //visually speaking
+            var numComments = self.model.get("comments");
+            var latestComments = self.model.get("latest_comments");
+            updatedLatestComments = _.reject(latestComments, function(c){ return c.id === commentId; });
+            self.model.set({
+                comments: numComments - 1,
+                latest_comments : updatedLatestComments
+            });
+            self.render(['.x-comments']).enhanceWithin();
+            
+            //server
             var ajax_options = {};
             ajax_options =  {
                 url: config.get('api_base') + "/comment/delete/",
@@ -558,18 +569,20 @@ define(
                 data: _.extend({}, auth.attributes, {
                     id: commentId,
                     _method: "POST"
-                })
+                }),
+                error: function(error){
+                    //remove front-end visual feedback
+                    console.log('error', error);
+                    self.model.set({
+                        comments: numComments,
+                        latest_comments : latestComments
+                    });
+                    self.render(['.x-comments']).enhanceWithin();
+                },
+
             };
             $.ajax( ajax_options );
-            //visually speaking
-            var numComments = self.model.get("comments");
-            var latestComments = self.model.get("latest_comments");
-            latestComments = _.reject(latestComments, function(c){ return c.id === commentId; });
-            self.model.set({
-                comments: numComments - 1,
-                latest_comments : latestComments
-            });
-                self.render(['.x-comments']).enhanceWithin();
+
         },
 
         reveal_submit : function () { var self = this;
