@@ -4571,11 +4571,16 @@ html body .ui-group-theme-a .ui-bar-inherit.ui-li-divider small {
 .ui-page-theme-a .ui-panel-wrapper #map .x-search-panel .s-panel-header a {
   top: -4px;
 }
+.ui-overlay-a #map .s-search-bar,
+.ui-page-theme-a #map .s-search-bar,
+.ui-page-theme-a .ui-panel-wrapper #map .s-search-bar {
+  right: 6px;
+}
 .ui-overlay-a #map input,
 .ui-page-theme-a #map input,
 .ui-page-theme-a .ui-panel-wrapper #map input {
   font-family: HelveticaNeue-Light, Helvetica, Arial, sans-serif;
-  letter-spacing: 2px;
+  letter-spacing: 1px;
   font-weight: normal;
   color: #000000;
   text-transform: capitalize;
@@ -6363,11 +6368,16 @@ html body .ui-group-theme-c .ui-bar-inherit.ui-li-divider small {
 .ui-page-theme-c .ui-panel-wrapper #map .x-search-panel .s-panel-header a {
   top: -4px;
 }
+.ui-overlay-c #map .s-search-bar,
+.ui-page-theme-c #map .s-search-bar,
+.ui-page-theme-c .ui-panel-wrapper #map .s-search-bar {
+  right: 6px;
+}
 .ui-overlay-c #map input,
 .ui-page-theme-c #map input,
 .ui-page-theme-c .ui-panel-wrapper #map input {
   font-family: HelveticaNeue-Light, Helvetica, Arial, sans-serif;
-  letter-spacing: 2px;
+  letter-spacing: 1px;
   font-weight: normal;
   color: #000000;
   text-transform: capitalize;
@@ -7430,11 +7440,16 @@ html body .ui-group-theme-d .ui-bar-inherit.ui-li-divider small {
 .ui-page-theme-d .ui-panel-wrapper #map .x-search-panel .s-panel-header a {
   top: -4px;
 }
+.ui-overlay-d #map .s-search-bar,
+.ui-page-theme-d #map .s-search-bar,
+.ui-page-theme-d .ui-panel-wrapper #map .s-search-bar {
+  right: 6px;
+}
 .ui-overlay-d #map input,
 .ui-page-theme-d #map input,
 .ui-page-theme-d .ui-panel-wrapper #map input {
   font-family: HelveticaNeue-Light, Helvetica, Arial, sans-serif;
-  letter-spacing: 2px;
+  letter-spacing: 1px;
   font-weight: normal;
   color: #000000;
   text-transform: capitalize;
@@ -8497,11 +8512,16 @@ html body .ui-group-theme-e .ui-bar-inherit.ui-li-divider small {
 .ui-page-theme-e .ui-panel-wrapper #map .x-search-panel .s-panel-header a {
   top: -4px;
 }
+.ui-overlay-e #map .s-search-bar,
+.ui-page-theme-e #map .s-search-bar,
+.ui-page-theme-e .ui-panel-wrapper #map .s-search-bar {
+  right: 6px;
+}
 .ui-overlay-e #map input,
 .ui-page-theme-e #map input,
 .ui-page-theme-e .ui-panel-wrapper #map input {
   font-family: HelveticaNeue-Light, Helvetica, Arial, sans-serif;
-  letter-spacing: 2px;
+  letter-spacing: 1px;
   font-weight: normal;
   color: #000000;
   text-transform: capitalize;
