@@ -373,6 +373,7 @@ define(
             this.more_menu.on('click', '.x-flag', _.bind(this.flag, this));
             this.more_menu.on('click', '.x-delete', _.bind(this.delete_photo, this));
             this.more_menu.on('click', '.reportTaken', _.bind(this.report_taken, this));
+            this.more_menu.on('click', '.reportUntaken', _.bind(this.report_untaken, this));
 
             this.comment_form = this.$('.x-comment-form');
             this.comment_form.on('click', '.x-submit-button', _.bind(this.comment, this));
@@ -429,7 +430,7 @@ define(
             var tagged=false;
             if (this.model.get('comments') > 0) {
                 _.each(this.model.get('latest_comments'), function(commentObj){
-                    if (commentObj.user === auth.get('snapr_user') && commentObj.comment === tag) {
+                    if (commentObj.user === auth.get('snapr_user') && commentObj.comment.indexOf(tag) != -1) {
                         tagged = true;
                         return tagged;
                     }
@@ -448,43 +449,48 @@ define(
             return(self.is_tagged(self.takenTag));
         },
 
-        taken_switch: function(){var self=this;
-            var taken = self.$('.taken').val();
-            if (taken === "on") {
-                this.take_it();
-            } else{
-                this.leave_it();
-            }
-        },
+        // taken_switch: function(){var self=this;
+        //     var taken = self.$('.taken').val();
+        //     if (taken === "on") {
+        //         this.take_it();
+        //     } else{
+        //         this.leave_it();
+        //     }
+        // },
 
-        take_it : function(){ var self = this;
-            if (!this.is_taken()) {
-                var r = confirm("Take this item?");
-                if (r===true) {
-                    var commentArea = self.$('.s-comment-area');
-                    $(commentArea).find('textarea').val(self.takenTag);
-                    this.commentTaken();
-                    self.$('.s-image-area').fadeTo("slow",0.5);
-                }
-                else {
-                    self.$('.taken').val('off').slider("refresh");
-                }
-            }else {
-                alert("This item is previously taken.");
-            }
-        },
+        // take_it : function(){ var self = this;
+        //     if (!this.is_taken()) {
+        //         var r = confirm("Take this item?");
+        //         if (r===true) {
+        //             var commentArea = self.$('.s-comment-area');
+        //             $(commentArea).find('textarea').val(self.takenTag);
+        //             this.commentTaken();
+        //             self.$('.s-image-area').fadeTo("slow",0.5);
+        //         }
+        //         else {
+        //             self.$('.taken').val('off').slider("refresh");
+        //         }
+        //     }else {
+        //         alert("This item is previously taken.");
+        //     }
+        // },
 
-        report_taken : function(){ var self = this;
+        report_taken : function(ev){ var self = this;
 
             var r = confirm("Report this item taken?");
             if (r===true) {
                 if(!this.is_taken_by_user()) {
                     var commentArea = self.$('.s-comment-area');
-                    $(commentArea).find('textarea').val(self.takenTag);
+                    $(commentArea).find('textarea').val('reports this item as ' + self.takenTag);
                     this.commentTaken();
-                    var currentOpacity = self.$('.s-image-area').css("opacity");
-                    var newOpacity = currentOpacity * 0.8;
-                    self.$('.s-image-area').fadeTo("slow",newOpacity);
+                    // var currentOpacity = self.$('.s-image-area').css("opacity");
+                    // var newOpacity = currentOpacity * 0.8;
+                    // self.$('.s-image-area').fadeTo("slow",newOpacity);
+                    self.$('.s-image-area').fadeTo("slow", 0.6);
+                    $(ev.target).addClass('reportUntaken');
+                    $(ev.target).removeClass('reportTaken');
+                    $(ev.target).html('Report Untaken');
+
                 }
                 else {
                     alert("You've already reported this as taken");
@@ -492,30 +498,50 @@ define(
             }
         },
 
-        leave_it : function(){ var self = this;
-            var commentToDelete = this.get_comment_id(this.takenTag);
-            if (commentToDelete !== 0) {
-                var r = confirm("Untake this item?");
-                if (r===true){
-                    this.delete_comment(commentToDelete);
-                    self.$('.s-image-area').fadeTo("slow", 1);
-                }
+        report_untaken : function(ev){ var self = this;
+            var r = confirm("Report this item untaken?");
+            if (r===true) {
+                var commentToDelete = this.get_comment_id(this.takenTag);
+                if (commentToDelete !== 0) {
+                        this.delete_comment(commentToDelete);
+                        self.$('.s-image-area').fadeTo("slow", 1);
+                        $(ev.target).addClass('reportTaken');
+                        $(ev.target).removeClass('reportUntaken');
+                        $(ev.target).html('Report Taken');
+                        if(this.is_taken() === true) {
+                            console.log('this item remains tagged #taken by another user');
+                        }
+                    }
                 else {
-                    self.$('.taken').val('on').slider("refresh");
-
+                    alert("You haven't reported this item as #taken");
                 }
-            }else{
-                //alert("This item remains tagged #taken by another user.");
+
             }
         },
+
+        // leave_it : function(){ var self = this;
+        //     var commentToDelete = this.get_comment_id(this.takenTag);
+        //     if (commentToDelete !== 0) {
+        //         var r = confirm("Untake this item?");
+        //         if (r===true){
+        //             this.delete_comment(commentToDelete);
+        //             self.$('.s-image-area').fadeTo("slow", 1);
+        //         }
+        //         else {
+        //             self.$('.taken').val('on').slider("refresh");
+
+        //         }
+        //     }else{
+        //         //alert("This item remains tagged #taken by another user.");
+        //     }
+        // },
 
         get_comment_id: function(commentContent) {var self=this;
             var match = 0;
             var latestComments = this.model.get('latest_comments');
              if (this.model.get('comments') > 0) {
                 _.each(latestComments, function (c) {
-                    if(c.user === auth.get('snapr_user') && c.comment === commentContent){
-                        console.log(c);
+                    if(c.user === auth.get('snapr_user') && c.comment.indexOf(commentContent) != -1){
                         match = c.id;
                         return match;
                     }

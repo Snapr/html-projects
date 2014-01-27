@@ -123,9 +123,11 @@
     <!-- More menu -->
     <div data-role="popup" data-arrow="b" class="x-more-menu s-more-menu" data-theme="d" id="more-menu-<%= item.cid %>">
 
-      <a class='reportTaken' data-role="button" data-theme="c" data-inline="false">
-          Report Taken
-      </a>
+      <% if(takenByUser === true) { %>
+            <a class='reportUntaken' data-role="button" data-theme="c" data-inline="false">Report Untaken</a>
+      <% } else { %>   
+            <a class='reportTaken' data-role="button" data-theme="c" data-inline="false">Report Taken</a>
+      <% } %>
 
       <a href="mailto:?subject=Check Out This Junk&body=http://test.artjunk.org/<%= item.get('id') %>" data-role="button" data-theme="c" data-inline="false">Email link</a>
 

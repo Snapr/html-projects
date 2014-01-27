@@ -295,7 +295,12 @@
            }
 
         .ui-body-d {
-            border-width: @m / 4;
+            border-width: 0;
+            .ui-btn {
+                border-radius: 0;
+                width: 20 * @m;
+                margin: 0;         
+            }
         }
 
         .s-more-menu {

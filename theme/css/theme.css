@@ -4417,7 +4417,14 @@ html body .ui-group-theme-a .ui-bar-inherit.ui-li-divider small {
 .ui-overlay-a #feed .ui-body-d,
 .ui-page-theme-a #feed .ui-body-d,
 .ui-page-theme-a .ui-panel-wrapper #feed .ui-body-d {
-  border-width: 2.5px;
+  border-width: 0;
+}
+.ui-overlay-a #feed .ui-body-d .ui-btn,
+.ui-page-theme-a #feed .ui-body-d .ui-btn,
+.ui-page-theme-a .ui-panel-wrapper #feed .ui-body-d .ui-btn {
+  border-radius: 0;
+  width: 200px;
+  margin: 0;
 }
 .ui-overlay-a #feed .s-more-menu,
 .ui-page-theme-a #feed .s-more-menu,
@@ -6202,7 +6209,14 @@ html body .ui-group-theme-c .ui-bar-inherit.ui-li-divider small {
 .ui-overlay-c #feed .ui-body-d,
 .ui-page-theme-c #feed .ui-body-d,
 .ui-page-theme-c .ui-panel-wrapper #feed .ui-body-d {
-  border-width: 2.5px;
+  border-width: 0;
+}
+.ui-overlay-c #feed .ui-body-d .ui-btn,
+.ui-page-theme-c #feed .ui-body-d .ui-btn,
+.ui-page-theme-c .ui-panel-wrapper #feed .ui-body-d .ui-btn {
+  border-radius: 0;
+  width: 200px;
+  margin: 0;
 }
 .ui-overlay-c #feed .s-more-menu,
 .ui-page-theme-c #feed .s-more-menu,
@@ -7262,7 +7276,14 @@ html body .ui-group-theme-d .ui-bar-inherit.ui-li-divider small {
 .ui-overlay-d #feed .ui-body-d,
 .ui-page-theme-d #feed .ui-body-d,
 .ui-page-theme-d .ui-panel-wrapper #feed .ui-body-d {
-  border-width: 2.5px;
+  border-width: 0;
+}
+.ui-overlay-d #feed .ui-body-d .ui-btn,
+.ui-page-theme-d #feed .ui-body-d .ui-btn,
+.ui-page-theme-d .ui-panel-wrapper #feed .ui-body-d .ui-btn {
+  border-radius: 0;
+  width: 200px;
+  margin: 0;
 }
 .ui-overlay-d #feed .s-more-menu,
 .ui-page-theme-d #feed .s-more-menu,
@@ -8322,7 +8343,14 @@ html body .ui-group-theme-e .ui-bar-inherit.ui-li-divider small {
 .ui-overlay-e #feed .ui-body-d,
 .ui-page-theme-e #feed .ui-body-d,
 .ui-page-theme-e .ui-panel-wrapper #feed .ui-body-d {
-  border-width: 2.5px;
+  border-width: 0;
+}
+.ui-overlay-e #feed .ui-body-d .ui-btn,
+.ui-page-theme-e #feed .ui-body-d .ui-btn,
+.ui-page-theme-e .ui-panel-wrapper #feed .ui-body-d .ui-btn {
+  border-radius: 0;
+  width: 200px;
+  margin: 0;
 }
 .ui-overlay-e #feed .s-more-menu,
 .ui-page-theme-e #feed .s-more-menu,
