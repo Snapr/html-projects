@@ -218,6 +218,12 @@ return {
                 logged_in: true  // only show for users logged in
             },
             {
+                url: '#/map/',
+                icon: "large-compass",
+                label: 'Map',
+                slug: 'map',
+            },
+            {
                 url: '#/welcome/',
                 icon: "large-log_in",
                 label: 'Login',
