@@ -211,17 +211,17 @@ return {
                 slug: 'about'
             },
             {
+                url: '#/search/',
+                icon: "large-search",
+                label: 'Search',
+                slug: 'search',
+            },
+            {
                 url: '#/logout/',
                 icon: "large-user",
                 label: 'Log Out',
                 slug: 'logout',
                 logged_in: true  // only show for users logged in
-            },
-            {
-                url: '#/map/',
-                icon: "large-compass",
-                label: 'Map',
-                slug: 'map',
             },
             {
                 url: '#/welcome/',
