@@ -327,7 +327,7 @@ define(
             "click .x-show-comments": "show_comments",
 
             "dblclick .s-image-area": "goto_map",
-            //"click .x-goto-map": "goto_map",
+            "click .x-goto-map": "goto_map",
             //"click .x-goto-spot": "goto_spot",
 
             //"click .x-delete": "delete",
