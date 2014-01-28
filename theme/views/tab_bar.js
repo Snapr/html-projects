@@ -47,16 +47,19 @@ var tab_bar = view.extend({
 
     select_menu: function(){ var self= this;
         var selected = self.$('#browse').val();
+        alert('The value of the button selected is: ' + selected);
         if (selected === "all") {
-            window.location = '/#/photos/';
-        } else if(selected === "map") {
-            window.location = '/#/map/';
-        }else if (selected === "search") {
-            window.location = '/#/search/';
+            alert('in if statement condition: all');
+            window.location.href = '#/photos/';
+        } else if (selected === "search") {
+            alert('in if statement condition: search');
+            window.location.href = '/#/search/';
         } else if (selected === 'not-taken') {
-            window.location = '#/photos/?not_tagged=taken&location=current_location&radius=5000';
+            alert('in if statement condition: not-taken');
+            window.location.href = '#/photos/?not_tagged=taken&location=current_location&radius=5000';
         } else {
-            window.location = '/#/browse/';
+            alert('in if statement condition: browse (nearby)');
+            window.location.href = '/#/browse/';
         }
 
     },
