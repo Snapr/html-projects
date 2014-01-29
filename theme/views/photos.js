@@ -7,16 +7,19 @@ define(['config', 'views/base/page', '../views/feed'], function(config, page_vie
                 var hightlightColor = "#bdc3c7";
                 $('.ui-navbar .ui-select span').css("background-color", hightlightColor);
 
-                // var thisFeed = Backbone.history.fragment;
+                var thisFeed = Backbone.history.fragment;
                 // var nearby = $('#browse-menu .ui-btn:contains(NEARBY)');
                 // var all = $('#browse-menu .ui-btn:contains(ALL)');
                 // var notTaken = $('#browse-menu .ui-btn:contains(NOT TAKEN)');
+                if (thisFeed === "photos/") {
+                    $( "li[data-option-index='1']").addClass('ui-state-disabled');
 
-                // if (thisFeed === "photos/") {
-                //     all.css("background-color", hightlightColor);
-                // } else {
-                //     nearby.css("background-color", hightlightColor);
-                // }
+                } else if (thisFeed === "" || thisFeed === "browse/") {
+                     $( "li[data-option-index='3']").addClass('ui-state-disabled');
+                }
+                else {
+                    $( "li[data-option-index='2']").addClass('ui-state-disabled');
+                }
 
                 if(!_.isEqual(self.options.query,self.previous_query)){
                     self.change_page();
