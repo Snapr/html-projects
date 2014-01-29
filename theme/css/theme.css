@@ -4346,10 +4346,10 @@ html body .ui-group-theme-a .ui-bar-inherit.ui-li-divider small {
 .ui-page-theme-a #feed .takenText,
 .ui-page-theme-a .ui-panel-wrapper #feed .takenText {
   position: absolute;
-  top: 40%;
-  left: 30%;
+  top: 30%;
+  left: 20%;
   color: #1abc9c;
-  font-size: 60px;
+  font-size: 45px;
   letter-spacing: 2px !important;
   -webkit-transform: rotate(-30deg);
   font-weight: bold;
@@ -4392,6 +4392,12 @@ html body .ui-group-theme-a .ui-bar-inherit.ui-li-divider small {
   padding: 0 5px;
   min-height: 20px;
   border-radius: 0;
+  margin: 0px !important;
+}
+.ui-overlay-a #feed .s-image-details div[class^="tags"] .ui-btn,
+.ui-page-theme-a #feed .s-image-details div[class^="tags"] .ui-btn,
+.ui-page-theme-a .ui-panel-wrapper #feed .s-image-details div[class^="tags"] .ui-btn {
+  margin: 3px !important;
 }
 .ui-overlay-a #feed .s-image-details .owner,
 .ui-page-theme-a #feed .s-image-details .owner,
@@ -4463,7 +4469,6 @@ html body .ui-group-theme-a .ui-bar-inherit.ui-li-divider small {
 .ui-page-theme-a #share div[data-role='header'] h1,
 .ui-page-theme-a .ui-panel-wrapper #share div[data-role='header'] h1 {
   margin: 0;
-  font-size: 15px !important;
   font-family: Montserrat;
   -webkit-font-smoothing: antialiased !important;
   text-transform: uppercase;
@@ -4569,7 +4574,6 @@ html body .ui-group-theme-a .ui-bar-inherit.ui-li-divider small {
 .ui-overlay-a #map .x-search-panel .s-panel-header h1,
 .ui-page-theme-a #map .x-search-panel .s-panel-header h1,
 .ui-page-theme-a .ui-panel-wrapper #map .x-search-panel .s-panel-header h1 {
-  font-size: 15px !important;
   font-family: Montserrat;
   -webkit-font-smoothing: antialiased !important;
   text-transform: uppercase;
@@ -4600,7 +4604,6 @@ html body .ui-group-theme-a .ui-bar-inherit.ui-li-divider small {
 .ui-overlay-a .fontMont,
 .ui-page-theme-a .fontMont,
 .ui-page-theme-a .ui-panel-wrapper .fontMont {
-  font-size: 15px !important;
   font-family: Montserrat;
   -webkit-font-smoothing: antialiased !important;
   text-transform: uppercase;
@@ -4622,7 +4625,6 @@ html body .ui-group-theme-a .ui-bar-inherit.ui-li-divider small {
 .ui-page-theme-a .ui-footer .ui-btn,
 .ui-page-theme-a .ui-panel-wrapper .ui-footer .ui-btn {
   line-height: 55px !important;
-  font-size: 15px !important;
   font-family: Montserrat;
   -webkit-font-smoothing: antialiased !important;
   text-transform: uppercase;
@@ -4634,7 +4636,6 @@ html body .ui-group-theme-a .ui-bar-inherit.ui-li-divider small {
 .ui-overlay-a .ui-footer .ui-select,
 .ui-page-theme-a .ui-footer .ui-select,
 .ui-page-theme-a .ui-panel-wrapper .ui-footer .ui-select {
-  font-size: 15px !important;
   font-family: Montserrat;
   -webkit-font-smoothing: antialiased !important;
   text-transform: uppercase;
@@ -4668,7 +4669,7 @@ html body .ui-group-theme-a .ui-bar-inherit.ui-li-divider small {
   font-family: Montserrat, Helvetica, Arial, sans-serif;
   letter-spacing: 4px;
   font-weight: normal;
-  font-size: 0.8em;
+  font-size: 8px;
 }
 .ui-body-a,
 .ui-overlay-a .ui-body-inherit,
@@ -6155,10 +6156,10 @@ html body .ui-group-theme-c .ui-bar-inherit.ui-li-divider small {
 .ui-page-theme-c #feed .takenText,
 .ui-page-theme-c .ui-panel-wrapper #feed .takenText {
   position: absolute;
-  top: 40%;
-  left: 30%;
+  top: 30%;
+  left: 20%;
   color: #1abc9c;
-  font-size: 60px;
+  font-size: 45px;
   letter-spacing: 2px !important;
   -webkit-transform: rotate(-30deg);
   font-weight: bold;
@@ -6201,6 +6202,12 @@ html body .ui-group-theme-c .ui-bar-inherit.ui-li-divider small {
   padding: 0 5px;
   min-height: 20px;
   border-radius: 0;
+  margin: 0px !important;
+}
+.ui-overlay-c #feed .s-image-details div[class^="tags"] .ui-btn,
+.ui-page-theme-c #feed .s-image-details div[class^="tags"] .ui-btn,
+.ui-page-theme-c .ui-panel-wrapper #feed .s-image-details div[class^="tags"] .ui-btn {
+  margin: 3px !important;
 }
 .ui-overlay-c #feed .s-image-details .owner,
 .ui-page-theme-c #feed .s-image-details .owner,
@@ -6272,7 +6279,6 @@ html body .ui-group-theme-c .ui-bar-inherit.ui-li-divider small {
 .ui-page-theme-c #share div[data-role='header'] h1,
 .ui-page-theme-c .ui-panel-wrapper #share div[data-role='header'] h1 {
   margin: 0;
-  font-size: 15px !important;
   font-family: Montserrat;
   -webkit-font-smoothing: antialiased !important;
   text-transform: uppercase;
@@ -6378,7 +6384,6 @@ html body .ui-group-theme-c .ui-bar-inherit.ui-li-divider small {
 .ui-overlay-c #map .x-search-panel .s-panel-header h1,
 .ui-page-theme-c #map .x-search-panel .s-panel-header h1,
 .ui-page-theme-c .ui-panel-wrapper #map .x-search-panel .s-panel-header h1 {
-  font-size: 15px !important;
   font-family: Montserrat;
   -webkit-font-smoothing: antialiased !important;
   text-transform: uppercase;
@@ -6409,7 +6414,6 @@ html body .ui-group-theme-c .ui-bar-inherit.ui-li-divider small {
 .ui-overlay-c .fontMont,
 .ui-page-theme-c .fontMont,
 .ui-page-theme-c .ui-panel-wrapper .fontMont {
-  font-size: 15px !important;
   font-family: Montserrat;
   -webkit-font-smoothing: antialiased !important;
   text-transform: uppercase;
@@ -6431,7 +6435,6 @@ html body .ui-group-theme-c .ui-bar-inherit.ui-li-divider small {
 .ui-page-theme-c .ui-footer .ui-btn,
 .ui-page-theme-c .ui-panel-wrapper .ui-footer .ui-btn {
   line-height: 55px !important;
-  font-size: 15px !important;
   font-family: Montserrat;
   -webkit-font-smoothing: antialiased !important;
   text-transform: uppercase;
@@ -6443,7 +6446,6 @@ html body .ui-group-theme-c .ui-bar-inherit.ui-li-divider small {
 .ui-overlay-c .ui-footer .ui-select,
 .ui-page-theme-c .ui-footer .ui-select,
 .ui-page-theme-c .ui-panel-wrapper .ui-footer .ui-select {
-  font-size: 15px !important;
   font-family: Montserrat;
   -webkit-font-smoothing: antialiased !important;
   text-transform: uppercase;
@@ -6477,7 +6479,7 @@ html body .ui-group-theme-c .ui-bar-inherit.ui-li-divider small {
   font-family: Montserrat, Helvetica, Arial, sans-serif;
   letter-spacing: 4px;
   font-weight: normal;
-  font-size: 0.8em;
+  font-size: 8px;
 }
 .ui-body-c,
 .ui-overlay-c .ui-body-inherit,
@@ -7239,10 +7241,10 @@ html body .ui-group-theme-d .ui-bar-inherit.ui-li-divider small {
 .ui-page-theme-d #feed .takenText,
 .ui-page-theme-d .ui-panel-wrapper #feed .takenText {
   position: absolute;
-  top: 40%;
-  left: 30%;
+  top: 30%;
+  left: 20%;
   color: #1abc9c;
-  font-size: 60px;
+  font-size: 45px;
   letter-spacing: 2px !important;
   -webkit-transform: rotate(-30deg);
   font-weight: bold;
@@ -7285,6 +7287,12 @@ html body .ui-group-theme-d .ui-bar-inherit.ui-li-divider small {
   padding: 0 5px;
   min-height: 20px;
   border-radius: 0;
+  margin: 0px !important;
+}
+.ui-overlay-d #feed .s-image-details div[class^="tags"] .ui-btn,
+.ui-page-theme-d #feed .s-image-details div[class^="tags"] .ui-btn,
+.ui-page-theme-d .ui-panel-wrapper #feed .s-image-details div[class^="tags"] .ui-btn {
+  margin: 3px !important;
 }
 .ui-overlay-d #feed .s-image-details .owner,
 .ui-page-theme-d #feed .s-image-details .owner,
@@ -7356,7 +7364,6 @@ html body .ui-group-theme-d .ui-bar-inherit.ui-li-divider small {
 .ui-page-theme-d #share div[data-role='header'] h1,
 .ui-page-theme-d .ui-panel-wrapper #share div[data-role='header'] h1 {
   margin: 0;
-  font-size: 15px !important;
   font-family: Montserrat;
   -webkit-font-smoothing: antialiased !important;
   text-transform: uppercase;
@@ -7462,7 +7469,6 @@ html body .ui-group-theme-d .ui-bar-inherit.ui-li-divider small {
 .ui-overlay-d #map .x-search-panel .s-panel-header h1,
 .ui-page-theme-d #map .x-search-panel .s-panel-header h1,
 .ui-page-theme-d .ui-panel-wrapper #map .x-search-panel .s-panel-header h1 {
-  font-size: 15px !important;
   font-family: Montserrat;
   -webkit-font-smoothing: antialiased !important;
   text-transform: uppercase;
@@ -7493,7 +7499,6 @@ html body .ui-group-theme-d .ui-bar-inherit.ui-li-divider small {
 .ui-overlay-d .fontMont,
 .ui-page-theme-d .fontMont,
 .ui-page-theme-d .ui-panel-wrapper .fontMont {
-  font-size: 15px !important;
   font-family: Montserrat;
   -webkit-font-smoothing: antialiased !important;
   text-transform: uppercase;
@@ -7515,7 +7520,6 @@ html body .ui-group-theme-d .ui-bar-inherit.ui-li-divider small {
 .ui-page-theme-d .ui-footer .ui-btn,
 .ui-page-theme-d .ui-panel-wrapper .ui-footer .ui-btn {
   line-height: 55px !important;
-  font-size: 15px !important;
   font-family: Montserrat;
   -webkit-font-smoothing: antialiased !important;
   text-transform: uppercase;
@@ -7527,7 +7531,6 @@ html body .ui-group-theme-d .ui-bar-inherit.ui-li-divider small {
 .ui-overlay-d .ui-footer .ui-select,
 .ui-page-theme-d .ui-footer .ui-select,
 .ui-page-theme-d .ui-panel-wrapper .ui-footer .ui-select {
-  font-size: 15px !important;
   font-family: Montserrat;
   -webkit-font-smoothing: antialiased !important;
   text-transform: uppercase;
@@ -7561,7 +7564,7 @@ html body .ui-group-theme-d .ui-bar-inherit.ui-li-divider small {
   font-family: Montserrat, Helvetica, Arial, sans-serif;
   letter-spacing: 4px;
   font-weight: normal;
-  font-size: 0.8em;
+  font-size: 8px;
 }
 .ui-body-d,
 .ui-overlay-d .ui-body-inherit,
@@ -8323,10 +8326,10 @@ html body .ui-group-theme-e .ui-bar-inherit.ui-li-divider small {
 .ui-page-theme-e #feed .takenText,
 .ui-page-theme-e .ui-panel-wrapper #feed .takenText {
   position: absolute;
-  top: 40%;
-  left: 30%;
+  top: 30%;
+  left: 20%;
   color: #1abc9c;
-  font-size: 60px;
+  font-size: 45px;
   letter-spacing: 2px !important;
   -webkit-transform: rotate(-30deg);
   font-weight: bold;
@@ -8369,6 +8372,12 @@ html body .ui-group-theme-e .ui-bar-inherit.ui-li-divider small {
   padding: 0 5px;
   min-height: 20px;
   border-radius: 0;
+  margin: 0px !important;
+}
+.ui-overlay-e #feed .s-image-details div[class^="tags"] .ui-btn,
+.ui-page-theme-e #feed .s-image-details div[class^="tags"] .ui-btn,
+.ui-page-theme-e .ui-panel-wrapper #feed .s-image-details div[class^="tags"] .ui-btn {
+  margin: 3px !important;
 }
 .ui-overlay-e #feed .s-image-details .owner,
 .ui-page-theme-e #feed .s-image-details .owner,
@@ -8440,7 +8449,6 @@ html body .ui-group-theme-e .ui-bar-inherit.ui-li-divider small {
 .ui-page-theme-e #share div[data-role='header'] h1,
 .ui-page-theme-e .ui-panel-wrapper #share div[data-role='header'] h1 {
   margin: 0;
-  font-size: 15px !important;
   font-family: Montserrat;
   -webkit-font-smoothing: antialiased !important;
   text-transform: uppercase;
@@ -8546,7 +8554,6 @@ html body .ui-group-theme-e .ui-bar-inherit.ui-li-divider small {
 .ui-overlay-e #map .x-search-panel .s-panel-header h1,
 .ui-page-theme-e #map .x-search-panel .s-panel-header h1,
 .ui-page-theme-e .ui-panel-wrapper #map .x-search-panel .s-panel-header h1 {
-  font-size: 15px !important;
   font-family: Montserrat;
   -webkit-font-smoothing: antialiased !important;
   text-transform: uppercase;
@@ -8577,7 +8584,6 @@ html body .ui-group-theme-e .ui-bar-inherit.ui-li-divider small {
 .ui-overlay-e .fontMont,
 .ui-page-theme-e .fontMont,
 .ui-page-theme-e .ui-panel-wrapper .fontMont {
-  font-size: 15px !important;
   font-family: Montserrat;
   -webkit-font-smoothing: antialiased !important;
   text-transform: uppercase;
@@ -8599,7 +8605,6 @@ html body .ui-group-theme-e .ui-bar-inherit.ui-li-divider small {
 .ui-page-theme-e .ui-footer .ui-btn,
 .ui-page-theme-e .ui-panel-wrapper .ui-footer .ui-btn {
   line-height: 55px !important;
-  font-size: 15px !important;
   font-family: Montserrat;
   -webkit-font-smoothing: antialiased !important;
   text-transform: uppercase;
@@ -8611,7 +8616,6 @@ html body .ui-group-theme-e .ui-bar-inherit.ui-li-divider small {
 .ui-overlay-e .ui-footer .ui-select,
 .ui-page-theme-e .ui-footer .ui-select,
 .ui-page-theme-e .ui-panel-wrapper .ui-footer .ui-select {
-  font-size: 15px !important;
   font-family: Montserrat;
   -webkit-font-smoothing: antialiased !important;
   text-transform: uppercase;
@@ -8645,7 +8649,7 @@ html body .ui-group-theme-e .ui-bar-inherit.ui-li-divider small {
   font-family: Montserrat, Helvetica, Arial, sans-serif;
   letter-spacing: 4px;
   font-weight: normal;
-  font-size: 0.8em;
+  font-size: 8px;
 }
 .ui-body-e,
 .ui-overlay-e .ui-body-inherit,

@@ -482,7 +482,7 @@ define(
             if (r===true) {
                 if(!this.is_taken_by_user()) {
                     var commentArea = self.$('.s-comment-area');
-                    $(commentArea).find('textarea').val('reports this item as ' + self.takenTag);
+                    $(commentArea).find('textarea').val('reported this item as ' + self.takenTag);
                     this.commentTaken();
                     // var currentOpacity = self.$('.s-image-area').css("opacity");
                     // var newOpacity = currentOpacity * 0.8;

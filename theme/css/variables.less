@@ -227,10 +227,10 @@
 
         .takenText {
             position: absolute;
-            top: 40%;
-            left: 30%;
+            top: 30%;
+            left: 20%;
             color: @accent-color;
-            font-size: @font-size-base * 4;
+            font-size: @font-size-base * 3;
             letter-spacing: @m / 5 !important;
             -webkit-transform: rotate(-30deg);
             font-weight: bold;
@@ -261,8 +261,9 @@
                 padding: 0 5px;
                 min-height: 20px;
                 border-radius: 0;
-                a[href] {
-                    //color: @black;
+                margin: 0px !important;
+                .ui-btn {
+                    margin: 3px !important;
                 }
             }
 
@@ -271,16 +272,9 @@
             }
 
             .tags-editable { 
-                //cursor: pointer;
                 display: none;
-                .submitTag {
-                    //float: right;
-                }
-                .ui-btn {
-                    //margin-top: @m/2;
-                    //margin-bottom: @m /2;
-                }
             }
+
             .s-action-buttons {
                 border: none !important;
                 .ui-btn {
@@ -463,7 +457,7 @@
     //Footer
 
     .fontMont {
-        font-size:1.5 * @m !important;
+        //font-size:1.5 * @m !important;
         font-family: Montserrat;
         -webkit-font-smoothing: antialiased !important;
         text-transform: uppercase;
@@ -516,7 +510,7 @@
 			//.fontMont;
 			letter-spacing: 0.4 * @m;
 	        font-weight: normal;
-			font-size: 0.8em;
+			font-size: 8px;
         }
 		
     }
