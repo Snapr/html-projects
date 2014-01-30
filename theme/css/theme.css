@@ -4392,12 +4392,12 @@ html body .ui-group-theme-a .ui-bar-inherit.ui-li-divider small {
   padding: 0 5px;
   min-height: 20px;
   border-radius: 0;
-  margin: 0px !important;
 }
 .ui-overlay-a #feed .s-image-details div[class^="tags"] .ui-btn,
 .ui-page-theme-a #feed .s-image-details div[class^="tags"] .ui-btn,
 .ui-page-theme-a .ui-panel-wrapper #feed .s-image-details div[class^="tags"] .ui-btn {
   margin: 3px !important;
+  font-size: 10px;
 }
 .ui-overlay-a #feed .s-image-details .owner,
 .ui-page-theme-a #feed .s-image-details .owner,
@@ -6213,12 +6213,12 @@ html body .ui-group-theme-c .ui-bar-inherit.ui-li-divider small {
   padding: 0 5px;
   min-height: 20px;
   border-radius: 0;
-  margin: 0px !important;
 }
 .ui-overlay-c #feed .s-image-details div[class^="tags"] .ui-btn,
 .ui-page-theme-c #feed .s-image-details div[class^="tags"] .ui-btn,
 .ui-page-theme-c .ui-panel-wrapper #feed .s-image-details div[class^="tags"] .ui-btn {
   margin: 3px !important;
+  font-size: 10px;
 }
 .ui-overlay-c #feed .s-image-details .owner,
 .ui-page-theme-c #feed .s-image-details .owner,
@@ -7309,12 +7309,12 @@ html body .ui-group-theme-d .ui-bar-inherit.ui-li-divider small {
   padding: 0 5px;
   min-height: 20px;
   border-radius: 0;
-  margin: 0px !important;
 }
 .ui-overlay-d #feed .s-image-details div[class^="tags"] .ui-btn,
 .ui-page-theme-d #feed .s-image-details div[class^="tags"] .ui-btn,
 .ui-page-theme-d .ui-panel-wrapper #feed .s-image-details div[class^="tags"] .ui-btn {
   margin: 3px !important;
+  font-size: 10px;
 }
 .ui-overlay-d #feed .s-image-details .owner,
 .ui-page-theme-d #feed .s-image-details .owner,
@@ -8405,12 +8405,12 @@ html body .ui-group-theme-e .ui-bar-inherit.ui-li-divider small {
   padding: 0 5px;
   min-height: 20px;
   border-radius: 0;
-  margin: 0px !important;
 }
 .ui-overlay-e #feed .s-image-details div[class^="tags"] .ui-btn,
 .ui-page-theme-e #feed .s-image-details div[class^="tags"] .ui-btn,
 .ui-page-theme-e .ui-panel-wrapper #feed .s-image-details div[class^="tags"] .ui-btn {
   margin: 3px !important;
+  font-size: 10px;
 }
 .ui-overlay-e #feed .s-image-details .owner,
 .ui-page-theme-e #feed .s-image-details .owner,
