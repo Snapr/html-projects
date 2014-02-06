@@ -27,11 +27,11 @@
 // -------------------------
 
 @white:             #fff;
-@gray-lighter:      #e6e6e6;
+@gray-lighter:      #e7e7e7;
 @gray-light:        #ccc;
-@gray:              #999999; //e6e6e6;
+@gray:              #999999; /*e6e6e6;*/
 @gray-dark:         #666;
-@gray-darker:       #5D6D7E; // 202020;
+@gray-darker:       #5D6D7E; /* 202020; */
 @black:             #000;
 
 @transparent:       rgba(0,0,0,0); // For using `transparent` in swatches with mixins & color modifiers
@@ -176,7 +176,8 @@
 @vertical-margin: @m; // Space above and below components
 
 .page(){
-
+	
+	
     @headerHeight: 50px;
     div[data-role='header']{           
         min-height: @headerHeight;
@@ -258,12 +259,14 @@
             }
             div[class^="tags"] {
                 background-color: @gray-lighter;
-                padding: 0 5px;
+                padding: 5px 3px;
                 min-height: 20px;
                 border-radius: 0;
                 .ui-btn {
-                    margin: 3px !important;
-                    font-size: 1 * @m;
+					font-family: @font-special;
+					font-weight:normal;
+                    margin: 2px 0px !important;
+                    font-size: 1.3* @m;
                 }
             }
 
@@ -274,6 +277,12 @@
             .tags-editable { 
                 display: none;
             }
+			.tags-readable {
+				padding-bottom: 5px;
+			}
+			.ui-icon-plus{
+				font-weight:normal;
+			}
 
             .s-action-buttons {
                 border: none !important;
@@ -283,9 +292,13 @@
                     width: 3.5 * @m;
                     height: 3.5 * @m;;
                     margin: 0  0.5 * @m 0 0;   
-                    text-shadow: 0 1px 1px rgb(117, 119, 121);
+					
+                    
 
-                }
+                }	
+				.ui-btn:after {
+		                color: @gray-light;
+		            }
 
             }
 
@@ -507,10 +520,11 @@
             padding: 0;
 
 			font-family: @font-special-2;
-			//.fontMont;
-			letter-spacing: 0.4 * @m;
+			.fontMont;
+			/*letter-spacing: 0.4 * @m;
 	        font-weight: normal;
-			font-size: 8px;
+			font-size: 8px;*/
+			font-size: 12px;
         }
 
         .ui-state-disabled{
@@ -520,6 +534,10 @@
                 border: 0;
             }
         }
+		ul li {
+			border:1px;
+			border-color:@gray-light;
+		}
 		
     }
 
@@ -527,7 +545,6 @@
 
 }
 
-/* test */
 
 
 

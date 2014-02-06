@@ -1,6 +1,6 @@
 [submodule "app"]
 	path = app
-	url = git@github.com:Snapr/html-snaprkit.git
+	url = https://kentaroyamada@github.com/Snapr/html-snaprkit.git
 [submodule "theme/filter-packs"]
 	path = theme/filter-packs
 	url = git@github.com:Snapr/filter-packs.git
