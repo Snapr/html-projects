@@ -26,7 +26,7 @@
                     }else if (query.radius){ //tc-added
                         self.title = T("Nearby");
                     }else{
-                        self.title = T("Photos");
+                        self.title = T("All"); //tc-edited
                     }
 
                     self.replace_from_template({title: self.title}, ['.x-title']).enhanceWithin();

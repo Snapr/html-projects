@@ -387,6 +387,11 @@ return {
             template: theme_templates_path + 'about'
         },
         {
+            name: 'all',
+            view: theme_views_path + 'photos',
+            template: theme_templates_path + 'photos'
+        },
+        {
             name: 'nearby',
             view: theme_views_path + 'photos',
             template: theme_templates_path + 'photos',
