@@ -9129,6 +9129,9 @@ div[data-role="footer"] .ui-btn-left.ui-btn-icon-notext,
   width: 60px;
   height: 60px;
 }
+.ui-content > div[data-role="header"] {
+  margin: -10px -10px 10px -10px;
+}
 div[data-role="page"] {
   padding-bottom: 60px !important;
 }
@@ -9223,12 +9226,12 @@ div[data-tab-bar="false"] {
   -o-background-size: 350px 90px !important;
   background-size: 350px 90px !important;
 }
-@media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min--moz-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5), only screen and (min-resolution: 140dpi), only screen and (min-resolution: 1.5dppx) {
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min--moz-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5), only screen and (min-resolution: 140dppx), only screen and (min-resolution: 1.5dppx) {
   .s-snapr-badge {
     background-image: url("../../app/css/gfx/1.5x/snapr-badge.png");
   }
 }
-@media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx) {
+@media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dppx), only screen and (min-resolution: 2dppx) {
   .s-snapr-badge {
     background-image: url("../../app/css/gfx/2x/snapr-badge.png");
   }
@@ -9298,6 +9301,39 @@ div[data-tab-bar="false"] {
   position: absolute;
   left: 0;
   top: 50%;
+}
+html head + body .ui-btn.s-instagram-button {
+  background: #4e7ba1;
+  border-color: #4e7ba1;
+  color: #ffffff;
+  text-shadow: none;
+}
+html head + body .ui-btn.s-instagram-button:after {
+  color: #ffffff;
+}
+html head + body .ui-btn.s-instagram-button:visited {
+  background: #4e7ba1;
+  border-color: #4e7ba1;
+  color: #ffffff;
+}
+html head + body .ui-btn.s-instagram-button:visited:after {
+  color: #ffffff;
+}
+html head + body .ui-btn.s-instagram-button:hover {
+  background: #3d617f;
+  border-color: #3d617f;
+  color: #e6e6e6;
+}
+html head + body .ui-btn.s-instagram-button:hover:after {
+  color: #e6e6e6;
+}
+html head + body .ui-btn.s-instagram-button:active {
+  background: #3d617f;
+  border-color: #3d617f;
+  color: #e6e6e6;
+}
+html head + body .ui-btn.s-instagram-button:active:after {
+  color: #e6e6e6;
 }
 html head + body .ui-btn.s-facebook-button {
   background: #4a689d;
@@ -9455,6 +9491,9 @@ html head + body .ui-btn.s-foursquare-button:active:after {
 }
 .s-image-sharing .ui-checkbox .ui-btn:after {
   display: none!important;
+}
+.s-image-sharing .ui-checkbox .ui-btn.ui-checkbox-on .ui-icon-social-instagram:after {
+  color: #4e7ba1;
 }
 .s-image-sharing .ui-checkbox .ui-btn.ui-checkbox-on .ui-icon-social-facebook:after {
   color: #4a689d;
@@ -9754,12 +9793,12 @@ textarea {
   -webkit-animation-iteration-count: infinite;
   -webkit-animation-timing-function: linear;
 }
-@media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min--moz-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5), only screen and (min-resolution: 140dpi), only screen and (min-resolution: 1.5dppx) {
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min--moz-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5), only screen and (min-resolution: 140dppx), only screen and (min-resolution: 1.5dppx) {
   .x-validating:after {
     background-image: url("../../app/css/gfx/1.5x/small-spinner-light.png");
   }
 }
-@media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx) {
+@media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dppx), only screen and (min-resolution: 2dppx) {
   .x-validating:after {
     background-image: url("../../app/css/gfx/2x/small-spinner-light.png");
   }
@@ -9953,12 +9992,12 @@ div[data-role="header"] *[data-rel="back"]:before {
   padding: 3px;
   z-index: 500;
 }
-@media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min--moz-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5), only screen and (min-resolution: 140dpi), only screen and (min-resolution: 1.5dppx) {
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min--moz-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5), only screen and (min-resolution: 140dppx), only screen and (min-resolution: 1.5dppx) {
   .s-bg-loader {
     background-image: url("../../app/css/gfx/1.5x/small-spinner-light.png");
   }
 }
-@media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx) {
+@media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dppx), only screen and (min-resolution: 2dppx) {
   .s-bg-loader {
     background-image: url("../../app/css/gfx/2x/small-spinner-light.png");
   }
@@ -10005,12 +10044,12 @@ div[data-role="header"] *[data-rel="back"]:before {
   -webkit-animation-iteration-count: infinite;
   -webkit-animation-timing-function: linear;
 }
-@media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min--moz-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5), only screen and (min-resolution: 140dpi), only screen and (min-resolution: 1.5dppx) {
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min--moz-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5), only screen and (min-resolution: 140dppx), only screen and (min-resolution: 1.5dppx) {
   .ui-loader.ui-loader-default .ui-icon-loading {
     background-image: url("../../app/css/gfx/1.5x/spinner.png");
   }
 }
-@media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx) {
+@media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dppx), only screen and (min-resolution: 2dppx) {
   .ui-loader.ui-loader-default .ui-icon-loading {
     background-image: url("../../app/css/gfx/2x/spinner.png");
   }
@@ -10039,12 +10078,12 @@ div[data-role="header"] *[data-rel="back"]:before {
   -webkit-animation-iteration-count: infinite;
   -webkit-animation-timing-function: linear;
 }
-@media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min--moz-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5), only screen and (min-resolution: 140dpi), only screen and (min-resolution: 1.5dppx) {
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min--moz-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5), only screen and (min-resolution: 140dppx), only screen and (min-resolution: 1.5dppx) {
   .icon-to-spinner {
     background-image: url("../../app/css/gfx/1.5x/small-spinner-light.png");
   }
 }
-@media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx) {
+@media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dppx), only screen and (min-resolution: 2dppx) {
   .icon-to-spinner {
     background-image: url("../../app/css/gfx/2x/small-spinner-light.png");
   }
@@ -10075,14 +10114,14 @@ div[data-role="header"] *[data-rel="back"]:before {
   -webkit-animation-iteration-count: infinite;
   -webkit-animation-timing-function: linear;
 }
-@media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min--moz-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5), only screen and (min-resolution: 140dpi), only screen and (min-resolution: 1.5dppx) {
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min--moz-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5), only screen and (min-resolution: 140dppx), only screen and (min-resolution: 1.5dppx) {
   .ui-btn.x-ajax-loading[class*="ui-icon"]:after,
   .ui-btn.x-ajax-loading *[class*="ui-icon"]:after,
   .ui-icon-spinner:after {
     background-image: url("../../app/css/gfx/1.5x/small-spinner-light.png");
   }
 }
-@media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx) {
+@media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dppx), only screen and (min-resolution: 2dppx) {
   .ui-btn.x-ajax-loading[class*="ui-icon"]:after,
   .ui-btn.x-ajax-loading *[class*="ui-icon"]:after,
   .ui-icon-spinner:after {
@@ -10204,6 +10243,7 @@ img.emoji {
 .s-popup .ui-header h1 {
   margin: 0;
 }
+.s-popup .ui-header a.ui-btn-right,
 .s-popup .ui-header a[data-rel="close-popup"] {
   top: -10px;
   right: -10px;
@@ -10232,12 +10272,12 @@ img.emoji {
   -o-background-size: 24px 24px !important;
   background-size: 24px 24px !important;
 }
-@media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min--moz-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5), only screen and (min-resolution: 140dpi), only screen and (min-resolution: 1.5dppx) {
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min--moz-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5), only screen and (min-resolution: 140dppx), only screen and (min-resolution: 1.5dppx) {
   .x-list .s-feed-photo .s-image-area .s-photo {
     background-image: url("../../app/css/gfx/1.5x/image-load.gif");
   }
 }
-@media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx) {
+@media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dppx), only screen and (min-resolution: 2dppx) {
   .x-list .s-feed-photo .s-image-area .s-photo {
     background-image: url("../../app/css/gfx/2x/image-load.gif");
   }
@@ -10464,12 +10504,12 @@ img.emoji {
   -o-background-size: 200px 60px !important;
   background-size: 200px 60px !important;
 }
-@media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min--moz-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5), only screen and (min-resolution: 140dpi), only screen and (min-resolution: 1.5dppx) {
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min--moz-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5), only screen and (min-resolution: 140dppx), only screen and (min-resolution: 1.5dppx) {
   .s-iOS-appstore .s-platform-logo {
     background-image: url("../../app/css/gfx/1.5x/iphone-appstore.png");
   }
 }
-@media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx) {
+@media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dppx), only screen and (min-resolution: 2dppx) {
   .s-iOS-appstore .s-platform-logo {
     background-image: url("../../app/css/gfx/2x/iphone-appstore.png");
   }
@@ -10482,12 +10522,12 @@ img.emoji {
   -o-background-size: 200px 60px !important;
   background-size: 200px 60px !important;
 }
-@media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min--moz-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5), only screen and (min-resolution: 140dpi), only screen and (min-resolution: 1.5dppx) {
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min--moz-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5), only screen and (min-resolution: 140dppx), only screen and (min-resolution: 1.5dppx) {
   .s-android-marketplace .s-platform-logo {
     background-image: url("../../app/css/gfx/1.5x/android-logo.png");
   }
 }
-@media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx) {
+@media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dppx), only screen and (min-resolution: 2dppx) {
   .s-android-marketplace .s-platform-logo {
     background-image: url("../../app/css/gfx/2x/android-logo.png");
   }
@@ -10750,32 +10790,80 @@ img.emoji {
   position: relative;
   top: -3px;
 }
+.s-spots-filters {
+  position: relative;
+  padding-right: 60px;
+}
+.s-spots-filters .ui-select {
+  margin-right: 0;
+  margin-left: 10px;
+}
+.s-spots-filters .ui-select > .ui-btn {
+  display: block;
+  padding-left: 10px;
+  padding-right: 30px;
+  text-align: left;
+  border: solid rgba(255, 255, 255, 0.1) 1px !important;
+  border-radius: 60px;
+}
+.s-spots-filters .ui-select > .ui-btn.ui-btn-icon-right:after {
+  right: 12px;
+}
+.s-spots-filters .s-distance-btn {
+  position: absolute;
+  right: 10px;
+  top: 0;
+  width: 60px -10px;
+}
+.s-spots-filters .s-distance-btn .ui-select > .ui-btn {
+  padding: 10px 0;
+  font-size: 11px;
+  text-align: center;
+  min-width: 35px;
+  color: #feea2d;
+}
+.s-spots-filters .s-distance-btn .ui-select > .ui-btn.ui-btn-icon-right:after {
+  display: none;
+}
 .s-spot-item {
   padding-left: 110px;
   min-height: 100px;
   position: relative;
+  display: block;
+}
+.s-spot-item .s-spot-name {
+  font-size: 15px;
+  margin: 0;
+  line-height: 1.4;
+  -webkit-font-smoothing: subpixel-antialiased;
 }
 .s-spot-item .s-spot-photo-crop {
   position: absolute;
   left: 0;
   top: 0;
 }
+.s-spot-list-item {
+  padding-bottom: 10px;
+  border-bottom: solid #e6e6e6 1px;
+  margin-bottom: 10px;
+  margin-right: -10px;
+  padding-right: 10px;
+}
+.s-spot-list-item .s-no-photo-yet {
+  background-color: #e6e6e6;
+  color: #ffffff;
+}
 .s-spot-header {
   margin: -10px -10px 0 -10px;
   padding: 10px;
   min-height: 100px;
 }
-.s-spot-header .s-spot-name {
-  font-size: 15px;
-  margin: 0;
-  line-height: 1.4;
-  -webkit-font-smoothing: subpixel-antialiased;
-}
 .s-spot-header .s-foursquare-btn {
-  position: absolute;
-  right: -10px;
-  bottom: -10px;
-  margin: 0;
+  position: absolute!important;
+  top: auto!important;
+  right: -6px !important;
+  bottom: 0!important;
+  margin: 0!important;
 }
 .s-spot-body .ui-navbar {
   margin-top: 0;
@@ -10884,12 +10972,12 @@ img.emoji {
   -webkit-animation-iteration-count: infinite;
   -webkit-animation-timing-function: linear;
 }
-@media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min--moz-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5), only screen and (min-resolution: 140dpi), only screen and (min-resolution: 1.5dppx) {
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min--moz-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5), only screen and (min-resolution: 140dppx), only screen and (min-resolution: 1.5dppx) {
   .s-fx .s-activity-indicator .s-activity-spinner {
     background-image: url("../../app/css/gfx/1.5x/small-spinner-light.png");
   }
 }
-@media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx) {
+@media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dppx), only screen and (min-resolution: 2dppx) {
   .s-fx .s-activity-indicator .s-activity-spinner {
     background-image: url("../../app/css/gfx/2x/small-spinner-light.png");
   }
@@ -11272,6 +11360,7 @@ img.emoji {
 }
 #my-account .s-avatar-block {
   padding-left: 100px;
+  min-height: 90px;
   position: relative;
 }
 #my-account .s-avatar-block .s-avatar-large {
@@ -11498,6 +11587,9 @@ img.emoji {
   overflow: visible;
   width: 220px;
 }
+.s-photo-map .s-disambiguation h4 {
+  margin-top: 0;
+}
 .s-photo-map .s-disambiguation:after {
   width: 0;
   height: 0;
@@ -11617,12 +11709,12 @@ html head + body .ui-btn.hero-style:after {
   -o-background-size: 103px 52px !important;
   background-size: 103px 52px !important;
 }
-@media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min--moz-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5), only screen and (min-resolution: 140dpi), only screen and (min-resolution: 1.5dppx) {
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min--moz-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5), only screen and (min-resolution: 140dppx), only screen and (min-resolution: 1.5dppx) {
   .ui-footer .s-app-logo {
     background-image: url("../../theme/css/gfx/1.5x/snapr-logo.png");
   }
 }
-@media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx) {
+@media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dppx), only screen and (min-resolution: 2dppx) {
   .ui-footer .s-app-logo {
     background-image: url("../../theme/css/gfx/2x/snapr-logo.png");
   }
@@ -13885,6 +13977,7 @@ html head + body .ui-btn.hero-style:after {
 .ui-icon-arrow-u:after {
   content: "\E113";
 }
+.ui-icon-carat-d:after,
 .ui-icon-arrow-d:after {
   content: "\E114";
 }
