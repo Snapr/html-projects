@@ -389,7 +389,10 @@ return {
         {
             name: 'all',
             view: theme_views_path + 'photos',
-            template: theme_templates_path + 'photos'
+            template: theme_templates_path + 'photos',
+            extra:{
+                list_item_template: theme_templates_path + 'list_item'
+            }
         },
         {
             name: 'nearby',
@@ -399,7 +402,8 @@ return {
                 query: {
                     location: 'current_location',
                     radius: 20000
-                }
+                },
+            list_item_template: theme_templates_path + 'list_item'
             }
         },
         // {

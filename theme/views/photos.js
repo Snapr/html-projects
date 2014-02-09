@@ -35,9 +35,11 @@
                         el: self.$('.x-photos'),
                         tabs: [{
                             title: self.title,
-                            query: query,
-                            list_style: query.list_style || undefined
+                            query: query
                         }],
+                        photo_templates: { //tc-added
+                            list: self.get_template(options.list_item_template)
+                        }
                     });
 
                     $.mobile.loading('show');
