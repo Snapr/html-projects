@@ -52,7 +52,7 @@ return {
         // ################################
         //!-- The base view for the app
         //!--  default: 'home'
-        initial_view: 'feed',
+        initial_view: 'nearby',
 
 
         // ################################
@@ -385,6 +385,17 @@ return {
             name: 'about',
             view: 'base/page',
             template: theme_templates_path + 'about'
+        },
+        {
+            name: 'nearby',
+            view: theme_views_path + 'photos',
+            template: theme_templates_path + 'photos',
+            extra:{
+                query: {
+                    location: 'current_location',
+                    radius: 20000
+                }
+            }
         },
         // {
         //     name: 'welcome',
