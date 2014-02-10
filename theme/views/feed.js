@@ -341,6 +341,7 @@ define(
             this.more_menu = this.$('.x-more-menu');
             this.more_menu.on('click', '.x-flag', _.bind(this.flag, this));
             this.more_menu.on('click', '.x-delete', _.bind(this.delete_photo, this));
+            this.more_menu.on('click', '.aj-take', _.bind(this.set_taken, this));
 
             this.share_menu = this.$('.x-share-menu');
             this.share_menu.on('change', '.x-service-select', this.store_share_settings);
@@ -735,8 +736,11 @@ define(
                     'no_callback': function(){ self.more_menu.find('.x-photo-delete').x_loading(false); }
                 });
             })();
-        }
+        },
 
+        set_taken : function(ev){ var self = this;
+            alert('Take it. Coming soon.');
+        }
     });
 
     var reactions = view.extend({

@@ -85,6 +85,9 @@
 
     <!-- More menu -->
     <div data-role="popup" data-arrow="b" class="x-more-menu s-more-menu" data-theme="b" id="more-menu-<%= item.cid %>">
+            <a class="aj-take" data-role="button" data-icon="hand-top" data-iconpos="notext" data-theme="b" data-inline="true">
+               Delete
+           </a>
         <% if (item.get("username") && item.get("username").toLowerCase() == (auth.get("snapr_user") || "").toLowerCase()){ %>
             <a class="x-delete" data-role="button" data-icon="trash" data-iconpos="notext" data-theme="b" data-inline="true">
                Delete
