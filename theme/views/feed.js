@@ -1,7 +1,7 @@
 /*global _, define, T */
 define(
-    ['backbone', 'config', 'auth', 'views/base/view', 'utils/alerts', 'utils/analytics', 'utils/history_state', 'utils/local_storage', 'collections/photo', 'models/favorite', 'models/comment', 'utils/geo'],
-    function(Backbone, config, auth, view, alerts, analytics, history_state, local_storage, photo_collection, favorite_model, comment_model, geo){
+    ['backbone', 'config', 'auth', 'views/base/view', 'utils/alerts', 'utils/analytics', 'utils/history_state', 'utils/local_storage', 'collections/photo', 'models/favorite', 'models/comment', 'utils/geo', '../../theme/js/material'],
+    function(Backbone, config, auth, view, alerts, analytics, history_state, local_storage, photo_collection, favorite_model, comment_model, geo, materials){
 
     var photos_view = view.extend({
         // handles tabs and lists, load more
