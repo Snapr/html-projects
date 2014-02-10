@@ -21,7 +21,15 @@
 
 <div class="s-image-details">
 
-    <div class="s-description"><%= string_utils.comment_links( item.get('description') ) %>
+    <div class="s-description"><%= string_utils.comment_links( item.get('caption') ) %>
+
+        <div class="tags-readable">
+          <%     
+          _.each(item.get('materials') , function(mat) { %>
+            <a href="#/photos/?tag=<%= mat %>" data-role="button" data-inline="true" data-mini="true" ><%= mat %></a>
+           <% }); %>
+        </div>
+
         <% if (item.has('location') && item.get('location').spot_id){%>
         <a class="s-spot x-goto-spot">
             @ <%= item.get('location').foursquare_venue_name %>
@@ -98,3 +106,5 @@
 </div>
 
 <% } %>
+
+<div class="afterImg"></div>
