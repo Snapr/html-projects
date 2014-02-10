@@ -355,6 +355,11 @@ define(
             // even though it is a subview of feed_list (very important)
             this.delegateEvents();
 
+            if(this.is_taken_by_user()) {
+                this.$('.aj-take').hide();
+            }else {
+                this.$('.aj-untake').hide();
+            }
 
             return this;
         },
@@ -753,6 +758,10 @@ define(
                 else {
                     alert("You've already reported this #taken");
                 }
+
+                //switch buttons
+                self.more_menu.find('.aj-take').hide();
+                self.more_menu.find('.aj-untake').show();
             }
         },
 
@@ -812,7 +821,7 @@ define(
         },
 
         set_untaken : function(){ var self = this;
-            var r = confirm("Report this junk not taken?");
+            var r = confirm("Report this junk NOT taken?");
             if (r===true) {
                 var commentToDelete = this.get_comment_id(this.takenTag);
                 if (commentToDelete !== 0) {
@@ -825,6 +834,9 @@ define(
                 else {
                     alert("You haven't reported this junk as #taken");
                 }
+                //switch buttons
+                self.more_menu.find('.aj-take').show();
+                self.more_menu.find('.aj-untake').hide();
             }
         },
 
