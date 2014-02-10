@@ -1,3 +1,5 @@
+<div class="aj-container">
+
 <% if(item.get('status') == 'moderated'){ %>
     <p class="text-muted center">Image not found</p>
 <% }else{ %>
@@ -23,12 +25,42 @@
 
     <div class="s-description"><%= string_utils.comment_links( item.get('caption') ) %>
 
-        <div class="tags-readable">
-          <%     
-          _.each(item.get('materials') , function(mat) { %>
-            <a href="#/photos/?tag=<%= mat %>" data-role="button" data-inline="true" data-mini="true" ><%= mat %></a>
-           <% }); %>
-        </div>
+          <%
+             if (item.get("username") && item.get("username").toLowerCase() == (auth.get("snapr_user") || "").toLowerCase()){ %>
+            
+            <div class="tags-readable owner">
+
+          <% }else { %>
+
+            <div class="tags-readable">
+
+          <% } %>
+
+
+              <%     
+              _.each(item.get('materials') , function(mat) { %>
+                <a href="#/photos/?tag=<%= mat %>" data-role="button" data-inline="true" data-mini="true" ><%= mat %></a>
+               <% }); %>
+
+               <%
+                  if (item.get("username") && item.get("username").toLowerCase() == (auth.get("snapr_user") || "").toLowerCase()){ %>
+                 
+                 <a data-role="button" data-inline="true" data-mini="true" data-icon='edit'>Edit Tags</a>
+
+               <% }  %>
+
+            </div>
+
+            <div class="tags-editable owner">
+              <span>
+              <%     
+              _.each(item.get('materials') , function(mat) { %>
+                <a data-role="button" data-inline="true" data-mini="true" data-icon="remove" class="deleteable"><%= mat %></a>
+               <% }); %>
+               </span>
+               <a data-role="button" data-inline="true" data-mini="true" data-icon="plus" class="addNewTag">Add</a>
+
+            </div>
 
         <% if (item.has('location') && item.get('location').spot_id){%>
         <a class="s-spot x-goto-spot">
@@ -108,3 +140,5 @@
 <% } %>
 
 <div class="afterImg"></div>
+
+</div><!-- aj-container-->

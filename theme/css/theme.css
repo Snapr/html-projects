@@ -36,6 +36,9 @@
 #feed .s-image-details {
   padding-left: 0px;
 }
+#feed .s-description {
+  margin-bottom: 5px;
+}
 #feed div[class^="tags"] {
   background-color: #e6e6e6;
   padding: 10px 5px;
@@ -45,6 +48,12 @@
 #feed div[class^="tags"] .ui-btn {
   margin: 3px !important;
   font-size: 10px;
+}
+#feed .owner {
+  background-color: #d6d6d6 !important;
+}
+#feed .tags-editable {
+  display: none;
 }
 #feed .s-action-buttons {
   border: none;

@@ -319,7 +319,12 @@ define(
             "click .x-goto-spot": "goto_spot",
 
             "click .x-favorite": "toggle_favorite",
-            "dblclick .x-photo": "favorite"
+            "dblclick .x-photo": "favorite",
+
+            "click .tags-readable" : "make_tags_editable",
+            'click .addNewTag' : 'addTag',
+            'click .tags-editable span a': 'deleteThis',
+            "click .clickOutsideTagBox" : "submit_tags"
         },
 
         render: function(sections){
@@ -938,7 +943,110 @@ define(
                 });
             }
             return tagged;
-        }
+        },
+
+        //dealage with tags editing
+
+        make_tags_editable : function () { var self = this;
+            if (this.is_author() === true) {
+                self.$('.tags-editable').show();
+                self.$('.tags-readable').hide();
+                self.render(['.tags-editable']).enhanceWithin();
+                self.$('.aj-container').addClass('clickOutsideTagBox');
+            }
+        },
+
+        make_tags_readable : function (ev) { var self = this;
+                self.$('.tags-editable').hide();
+                self.$('.tags-readable').show();
+                ev.stopPropagation();
+        },
+
+        deleteThis : function(ev){
+            $(ev.target).remove();
+            ev.stopPropagation();
+        },
+
+        addTag : function(ev) { var self = this;
+            //need to seriously work on this: multiple tags? no hashtag?
+            var tags = prompt('Make up your own tag', "#");
+            var container = self.$('.tags-editable span');
+            tags = tags.trim();
+            tags = tags.replace("##","#");
+            tags = tags.replace(/\s{2,}/g, ' '); //no multiple spaces
+            if (tags !== "#" || tags !== "") { //if there is some input
+                tagArray = tags.split(" ");
+                _.each(tagArray, function(t){
+                    t = t.replace(";", "");// no punctuation
+                    t = t.replace(",", "");
+                    t = "#" + t; //make sure each tag starts with #
+                    t = t.replace("##","#"); //but not 2 of them
+                    if (t.match(/[a-zA-Z]/g)) { //check for letters in tag
+                        addMaterialButtonToHTML(t, container);
+                    }
+                    
+                });
+            }
+            ev.stopPropagation();
+        },
+
+        submit_tags : function () { var self = this;
+            var materialHTML = self.$('.tags-editable span');//check if empty?
+            var materials = findHTMLInsideButtons(materialHTML);
+            materials = materials.trim();
+            self.$('.aj-container').removeClass('clickOutsideTagBox');
+
+            if (materials !== "") {
+           
+                var matArray = makeArray(materials);
+
+                self.model.set({
+                    materials: matArray //only frontend
+                });
+
+                self.$('.tags-editable').hide();
+                self.$('.tags-readable').show();
+
+                self.render(['.tags-readable']).enhanceWithin();
+
+                var descr = self.model.get('description');
+                var orginalMaterials = getMaterialTags(descr); //to reset in case of network failure
+                var originalMatArray = makeArray(orginalMaterials);
+                var caption = getCaption(descr); //to recreate full description to send to server
+                var newDescription = createDescription(caption, materials);
+
+                if(descr !== newDescription) { //no need to send if nothing changed
+                    var ajax_options = {}; //catch network error?
+                    ajax_options =  {
+                        url: config.get('api_base') + "/photo/",
+                        dataType: "jsonp",
+                        data: _.extend({}, auth.attributes, {
+                            id: self.model.get('id'),
+                            description : newDescription,
+                            display_username: 0, //or get warning back
+                            _method: "POST"
+                        }),
+                    error: function(error){
+                        //remove front-end visual feedback
+                        console.log('error', error);
+                        self.model.set({
+                            materials: originalMatArray //reset
+                        });
+                        self.render(['.tags-readable']).enhanceWithin();
+                    }
+                    };
+
+                    $.ajax( ajax_options );
+
+                }
+
+            }
+            else { //the material tag list is empty
+                alert('You must have at least one tag.');
+                this.make_tags_readable();
+            }
+
+        },
     });
 
     var reactions = view.extend({
