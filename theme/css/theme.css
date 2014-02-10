@@ -39,6 +39,17 @@
 #feed .s-description {
   margin-bottom: 5px;
 }
+#feed .takenText {
+  position: absolute;
+  top: 30%;
+  left: 20%;
+  color: #ff8700;
+  font-size: 45px;
+  letter-spacing: 2px !important;
+  -webkit-transform: rotate(-30deg);
+  z-index: 5;
+  opacity: 0;
+}
 #feed div[class^="tags"] {
   background-color: #e6e6e6;
   padding: 10px 5px;

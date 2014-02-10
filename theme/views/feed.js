@@ -305,6 +305,8 @@ define(
             var materialArray = makeArray(materials); //so as to separate tags
             this.model.set('caption', caption); //just for local
             this.model.set('materials', materialArray);
+            var taken = this.is_taken();
+            this.model.set('taken', taken);
         },
 
         events: {
@@ -334,7 +336,8 @@ define(
                 height: this.options.width / (this.model.get('width') / this.model.get('height')),
                 item: this.model,
                 city: this.get_city(),
-                share_settings: local_storage.get('feed_share_settings') || {}
+                share_settings: local_storage.get('feed_share_settings') || {},
+                taken : this.model.get('taken')
             };
 
             if(sections){
@@ -368,6 +371,11 @@ define(
             // even though it is a subview of feed_list (very important)
             this.delegateEvents();
 
+            //on load show taken feedback
+            if(context.taken) {
+                this.show_taken();
+            }
+
             if(this.is_taken_by_user()) {
                 this.$('.aj-take').hide();
             }else {
@@ -395,6 +403,20 @@ define(
             }
 
             return city;
+        },
+
+        show_taken: function() { var self = this;
+            var image = self.$el,
+            takenText =  "<div class='takenText'>TAKEN</div>",
+            fadeDown = function() {
+                image.fadeTo(400, 0.6);
+            },
+            splashTxt = function() {
+                image.prepend(takenText);
+                self.$('.takenText').fadeTo(200, 1);
+            };
+            setTimeout(fadeDown, 400);
+            setTimeout(splashTxt, 600);
         },
 
         show_comments: function(){  var self = this;
