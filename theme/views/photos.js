@@ -50,7 +50,24 @@
                     self.change_page();
                 }
 
-            }
+            },
+
+            events: function(){
+                  return _.extend({},photos_view.prototype.events,{
+                    'click .aj-refresh' : 'refresh',
+                    'click .ui-header' : 'scrollTop'
+                  });
+               },
+
+            refresh: function() {
+                this.post_activate(this.options);
+            },
+
+            scrollTop : function() {
+                $("html").animate({ scrollTop: 0 }, "fast");
+
+            },
+
 
         });
     });
