@@ -152,6 +152,37 @@
 // ------------------------
 
 #feed {
+    @coordinatesHeight : 4 * @m;
+    .coordinates {
+        position: absolute;
+        top: 0;
+        z-index: 100;
+        width: 100%;
+        height: @coordinatesHeight;
+        background-color: rgba(255,255,255,0.6);
+        color: @brand-color !important;
+        .ui-icon-location {
+            font-size: @m * 2.5;
+            float: left;
+            color: @brand-color;
+        }
+        .s-time {
+            float: right;
+            line-height: @coordinatesHeight;
+            margin-right: 0.5 * @m;
+            color: @brand-color;
+        }
+        .s-location {
+            text-transform: uppercase;
+            margin-top: @m;
+            line-height: @coordinatesHeight;
+            max-width: 55%;
+            text-decoration: underline;
+            cursor: pointer;
+            color: @brand-color;
+        }
+    }
+
     .s-image-details {
         padding-left: 0px;  
     }
