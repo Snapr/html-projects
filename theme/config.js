@@ -70,16 +70,23 @@ return {
         side_menu_theme: 'b',
         side_menu_options: [
             {
-                url: '#/feed/',
+                url: '#/nearby/',
                 icon: "large-film",
-                label: 'Feed',
-                slug: 'feed'
+                label: 'Browse',
+                slug: 'browse'
             },
             {
-                url: '#/explore/',
+                url: '#/map/',
+                icon: "large-compass",
+                label: 'Map',
+                slug: 'map'
+            },
+            {
+                url: '#/search/',
                 icon: "large-search",
-                label: 'Explore',
-                slug: 'explore'
+                label: 'Search',
+                slug: 'search',
+                logged_in: true  // only show for users logged in
             },
             {
                 url: '#/activity/',
@@ -411,6 +418,11 @@ return {
             view: theme_views_path + 'share',
             template: theme_templates_path + 'share'
         },
+        // {
+        //     name: 'map',
+        //     view: theme_views_path + 'map',
+        //     template: theme_templates_path + 'map'
+        // },
         // {
         //     name: 'welcome',
         //     view: 'welcome',
