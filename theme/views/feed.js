@@ -738,8 +738,84 @@ define(
             })();
         },
 
+        //TAKE AND UNTAKE FUNCTIONALITY
+        takenTag : "#taken",
+
         set_taken : function(ev){ var self = this;
-            alert('Take it. Coming soon.');
+            var r = confirm("Report this item #taken?");
+            if (r===true) {
+                if(!this.is_taken_by_user()) {
+                    var commentArea = self.$('.s-comment-area');
+                    $(commentArea).find('textarea').val('reports this junk as ' + self.takenTag);
+                    this.commentTaken();
+                }
+                else {
+                    alert("You've already reported this #taken");
+                }
+            }
+        },
+
+        commentTaken: function( e ){  var self = this;
+
+            auth.require_login( function(){
+
+                var comment = new comment_model();
+                comment.data = {
+                    photo_id: self.model.get('id'),
+                    comment: self.comment_form.find('textarea').val(),
+                    user: auth.get('snapr_user')
+                };
+
+                var comment_count = parseInt( self.model.get('comments'), 10 ) + 1;
+                latest_comments = self.model.get('latest_comments');
+                latest_comments.push(comment.data);
+
+                self.model.set({
+                    comments: comment_count,
+                    latest_comments: latest_comments
+                });
+
+                self.comment_form.hide();
+                self.comment_form.find('textarea').val("");
+
+                self.render(['.x-comments']).enhanceWithin();
+
+                // the empty object in this save call is important,
+                // without it, the options object will not be used
+                comment.save( {}, {
+                    success: function( s ){
+                        if (s.get('success')){
+                            analytics.trigger('comment');
+                            //to save comment id for visual feedback if take-untake
+                            var latestComments = self.model.get('latest_comments');
+                            var lastComment = latestComments[latestComments.length - 1];
+                            lastComment.id = s.get('response').comment.id;
+                            latestComments.pop();
+                            latestComments.push(lastComment);
+                            self.model.set({
+                                latest_comments: latest_comments
+                            });
+
+                        }else{
+                            self.$('.x-comments').children().last().remove();
+                        }
+                    },
+                    error: function( error ){
+                        console.log('error', error);
+                        self.$('.x-comments').children().last().remove();
+                        self.$('.takenText').hide();
+                        self.$('.s-image-area').fadeTo("slow", 1);
+                    }
+                } );
+            } )();
+        },
+
+        is_taken_by_user: function(){var self=this;
+            return(self.is_tagged_by_user(self.takenTag));
+        },
+
+        is_taken: function(){var self=this;
+            return(self.is_tagged(self.takenTag));
         },
 
         is_author: function() {var self=this;
