@@ -1,0 +1,157 @@
+<<div id="share" data-role="page" data-theme="b" data-tab-bar="false">
+    <div data-role="header" data-add-back-btn="false">
+        <a href="#/" class="ui-btn-right" data-role="button" data-icon="delete" data-iconpos="notext"></a>
+    </div>
+
+    <div data-role="content">
+        <div class="x-content">
+            <% if(obj.photo){ %>
+
+                <% if(comp){ %>
+                    <h1 class="s-comp text-brand"><span class="large-icon ui-icon-large-cup"></span> <%= comp.get('hashtag') %></h1>
+                <% } %>
+
+                <form action="javascript: void(0);">
+
+                    <div class="s-image-textarea">
+                        <div class="s-image-thumb x-photo-placeholder">
+                            <% if (img_url){%><img class="x-photo" src="<%= img_url %>" /><%}%>
+                        </div>
+                        <div data-role="popup" class="x-lightbox" data-overlay-theme="b" data-theme="b" data-corners="false">
+                            <a data-role="button" data-theme="b" data-icon="remove" data-iconpos="notext" class="ui-btn-right s-close-lightbox">Close</a>
+                        </div>
+
+                        <!-- Fun Fact: setting the layer with the text inputs in it to have
+                        absolute positioning will cause text not to enter properly on some
+                        android devices - for example s3 running 4.0.4 -->
+
+                        <textarea name="description" maxlength="400" class="x-description s-textarea" placeholder="<%= T('Add a message') %>..." data-theme="a"><%= photo.get('description') %></textarea>
+                    </div>
+
+
+                    <fieldset class="x-photo-sharing s-image-sharing" data-iconpos="right">
+
+                        <% if(config.get('app_sharing_opt_in')){ %>
+                            <input type="checkbox" name="app-sharing" id="app-sharing"
+                            <% if(app_sharing){ %>checked="true"<%}%> />
+                            <label for="app-sharing">
+                                <span class="ui-icon ui-icon-social-facebook"></span>
+                            </label>
+                        <% } %>
+
+                        <% if(_.contains(config.get('services'), 'instagram')){ %>
+                            <input type="checkbox" name="instagram-sharing" id="instagram-sharing"
+                            <%if (instagram_sharing){%>checked="true"<%}%> />
+                            <label for="instagram-sharing">
+                                <span class="ui-icon ui-icon-social-instagram"></span>
+                                <span class="s-service-text">Instagram</span>
+                            </label>
+                        <% } %>
+
+                        <% if(_.contains(config.get('services'), 'twitter')){ %>
+                            <input type="checkbox" name="tweet" id="twitter-sharing"
+                            <%if (twitter_sharing){%>checked="true"<%}%> />
+                            <label for="twitter-sharing">
+                                <span class="ui-icon ui-icon-social-twitter"></span>
+                                <span class="s-service-text">Twitter</span>
+                            </label>
+                        <% } %>
+
+                        <% if(_.contains(config.get('services'), 'facebook')){ %>
+                            <input type="checkbox" name="facebook_album" id="facebook-sharing"
+                            <%if (facebook_sharing){%>checked="true"<%}%>/>
+                            <label for="facebook-sharing">
+                                <span class="ui-icon ui-icon-social-facebook"></span>
+                                <span class="s-service-text">Facebook</span>
+                            </label>
+                        <% } %>
+
+                        <% if(_.contains(config.get('services'), 'tumblr')){ %>
+                            <input type="checkbox" name="tumblr" id="tumblr-sharing"
+                            <%if (tumblr_sharing ){%>checked="true"<%}%> />
+                            <label for="tumblr-sharing">
+                                <span class="ui-icon ui-icon-social-tumblr"></span>
+                                <span class="s-service-text">Tumblr</span>
+                            </label>
+                        <% } %>
+
+                        <% if(_.contains(config.get('services'), 'foursquare')){ %>
+                            <input type="checkbox" name="foursquare_checkin" id="foursquare-sharing"
+                            <%if (foursquare_sharing){%>checked="true"<%}%> />
+                            <label for="foursquare-sharing">
+                                <span class="ui-icon ui-icon-social-foursquare"></span>
+                                <span class="s-service-text">Foursquare</span>
+                            </label>
+                        <% } %>
+
+
+
+                    </fieldset>
+
+                    <% if(!location){ %>  <!-- if no location put a placeholder here -->
+                        <a class="x-location"></a>
+                    <% } %>
+
+                    <div class="x-share-button">
+                        <input type="submit" data-role="button" data-theme="e" value="<%= T('Share') %>"/>
+                    </div>
+
+
+                </form>
+            <% } %>
+
+            <% if(location){ %>
+                <div class="s-upload-image-location">
+                    <a data-role="button" data-mini="true" class="x-location ui-btn-icon-right">
+                        <% if(location.type == 'loading') {%>
+                            <span class="ui-icon ui-icon-location"></span>
+							<span class="s-btn-text"><%= T('Getting Location') %></span>
+                        <% }else if(location.type == 'venue'){ %>
+                            <span class="ui-icon ui-icon-location text-brand"></span>
+                            <span class="s-btn-text"><%= location.text %></span>
+                            <span class="ui-icon ui-icon-arrow-r"></span>
+                        <% }else if(location.type == 'geocode'){ %>
+                            <span class="ui-icon ui-icon-location text-brand"></span>
+                            <span class="s-btn-text"><%= location.text %></span>
+                            <span class="ui-icon ui-icon-remove"></span>
+                        <% }else{ %>
+                            <span class="ui-icon ui-icon-plus text-brand"></span>
+                            <span class="s-btn-text"><%= T('Add Location') %></span>
+                        <% } %>
+                    </a>
+                </div>
+            <% } %>
+
+        </div>
+    </div>
+
+<!-- Venues Panel -->
+
+    <div data-role="panel" data-position="right" data-theme="a" class="x-venues-panel" data-swipe-close="false">
+        <div class="s-panel-header">
+            <h1><%= T('Venues') %></h1>
+            <div class="ui-btn-left">
+                <a class="" data-icon="arrow-l" data-iconpos="notext" data-role="button" data-rel="close"></a>
+            </div>
+        </div>
+
+        <form class="x-venue-search">
+            <input data-theme="c" placeholder="<%= T('Search') %>..."/>
+        </form>
+
+        <ul class="x-venue-list s-venue-list" data-role="listview" data-theme="a">
+            <% if(obj.venues){ venues.each(function(venue){ %>
+                <li>
+                    <a class="x-venue" data-id="<%= venue.id %>" data-name="<%= venue.get('name') %>">
+                        <img src="<%= venue.get_icon() %>" alt="" class="s-avatar-x-small s-fsq-venue-icon"/>
+                        <h5 class="s-venue-name"><%= venue.get('name') %></h5>
+                        <small class="s-venue-distance"><%= venue.get('location').distance %> m</small>
+                    </a>
+                    <% if (venue.id == current_venue) {%>
+                        <a data-icon="check" data-iconpos="right" class="select"></a>
+                    <%}%>
+                </li>
+            <% })  } %>
+        </ul>
+    </div>
+</div>
