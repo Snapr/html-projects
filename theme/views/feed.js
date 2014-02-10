@@ -342,6 +342,7 @@ define(
             this.more_menu.on('click', '.x-flag', _.bind(this.flag, this));
             this.more_menu.on('click', '.x-delete', _.bind(this.delete_photo, this));
             this.more_menu.on('click', '.aj-take', _.bind(this.set_taken, this));
+            this.more_menu.on('click', '.aj-untake', _.bind(this.set_untaken, this));
 
             this.share_menu = this.$('.x-share-menu');
             this.share_menu.on('change', '.x-service-select', this.store_share_settings);
@@ -808,6 +809,74 @@ define(
                     }
                 } );
             } )();
+        },
+
+        set_untaken : function(){ var self = this;
+            var r = confirm("Report this junk not taken?");
+            if (r===true) {
+                var commentToDelete = this.get_comment_id(this.takenTag);
+                if (commentToDelete !== 0) {
+                        this.delete_comment(commentToDelete);
+                        self.$('.s-image-area').fadeTo("slow", 1);
+                        if(this.is_taken() === true) {
+                            console.log('this item remains tagged #taken by another user');
+                        }
+                    }
+                else {
+                    alert("You haven't reported this junk as #taken");
+                }
+            }
+        },
+
+        get_comment_id: function(commentContent) {var self=this;
+            var match = 0;
+            var latestComments = this.model.get('latest_comments');
+             if (this.model.get('comments') > 0) {
+                _.each(latestComments, function (c) {
+                    if(c.user === auth.get('snapr_user') && c.comment.indexOf(commentContent) != -1){
+                        match = c.id;
+                        return match;
+                    }
+                });
+            }
+            return match;
+        },
+
+        'delete_comment': function( commentId ){var self=this;
+
+            //visually speaking
+            var numComments = self.model.get("comments");
+            var latestComments = self.model.get("latest_comments");
+            updatedLatestComments = _.reject(latestComments, function(c){ return c.id === commentId; });
+            self.model.set({
+                comments: numComments - 1,
+                latest_comments : updatedLatestComments
+            });
+            self.render(['.x-comments']).enhanceWithin();
+            
+            //server
+            var ajax_options = {};
+            ajax_options =  {
+                url: config.get('api_base') + "/comment/delete/",
+                dataType: "jsonp",
+                data: _.extend({}, auth.attributes, {
+                    id: commentId,
+                    _method: "POST"
+                }),
+                error: function(error){
+                    //remove front-end visual feedback
+                    console.log('error', error);
+                    self.model.set({
+                        comments: numComments,
+                        latest_comments : latestComments
+                    });
+                    self.render(['.x-comments']).enhanceWithin();
+                    self.$('.takenText').show();
+                }
+
+            };
+            $.ajax( ajax_options );
+
         },
 
         is_taken_by_user: function(){var self=this;
