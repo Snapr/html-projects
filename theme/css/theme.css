@@ -4,6 +4,11 @@
 /* Button down */
 /* Active stuff */
 /* Active stuff */
+#feed .aj-radius-menu {
+  position: fixed;
+  top: 50px;
+  right: 15px;
+}
 #feed .coordinates {
   position: absolute;
   top: 0;

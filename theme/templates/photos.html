@@ -7,6 +7,22 @@
                 <%= string_utils.count_chars(title) %>
             <% } %>
         </h1>
+
+        <!-- Radius button -->
+            <a data-rel="popup" href="#radius-menu" data-role="button" data-theme="a" data-icon="chevron-down" data-iconpos="notext" class="aj-radius-button">Radius</a>
+
+        <!-- Radius menu -->
+        <div data-role="popup" class="aj-radius-menu" id="radius-menu" data-theme='d'>
+                <a class="aj" data-role="button" data-icon="large-shoe_steps">
+                   10km
+               </a>
+                <a class="aj" data-role="button" data-icon="large-bicycle" >
+                   30km
+               </a>
+                <a class="aj" data-role="button" data-icon="large-road">
+                   500km
+               </a>
+        </div>
     </div>
 
     <div data-role="content" class="x-photos"></div>
