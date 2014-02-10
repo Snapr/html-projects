@@ -415,8 +415,12 @@ define(
                 image.prepend(takenText);
                 self.$('.takenText').fadeTo(200, 1);
             };
-            setTimeout(fadeDown, 400);
-            setTimeout(splashTxt, 600);
+            setTimeout(fadeDown, 200);
+            setTimeout(splashTxt, 400);
+        },
+        show_not_taken: function() { var self = this;
+            self.$el.fadeTo(200, 1);
+            self.$('.takenText').remove();
         },
 
         show_comments: function(){  var self = this;
@@ -789,6 +793,7 @@ define(
                     var commentArea = self.$('.s-comment-area');
                     $(commentArea).find('textarea').val('reports this junk as ' + self.takenTag);
                     this.commentTaken();
+                    this.show_taken();
                 }
                 else {
                     alert("You've already reported this #taken");
@@ -861,10 +866,10 @@ define(
                 var commentToDelete = this.get_comment_id(this.takenTag);
                 if (commentToDelete !== 0) {
                         this.delete_comment(commentToDelete);
-                        self.$('.s-image-area').fadeTo("slow", 1);
                         if(this.is_taken() === true) {
                             console.log('this item remains tagged #taken by another user');
                         }
+                        this.show_not_taken();
                     }
                 else {
                     alert("You haven't reported this junk as #taken");
