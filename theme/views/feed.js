@@ -740,6 +740,39 @@ define(
 
         set_taken : function(ev){ var self = this;
             alert('Take it. Coming soon.');
+        },
+
+        is_author: function() {var self=this;
+            if (self.model.get('username') === auth.get('snapr_user')) {
+                return true;
+            }
+            return false;
+        },
+
+        is_tagged: function(tag){var self=this;
+            var tagged=false;
+            if (this.model.get('comments') > 0) {
+                _.each(this.model.get('latest_comments'), function(commentObj){
+                    if (commentObj.comment.indexOf(tag) != -1) {
+                        tagged = true;
+                        return tagged;
+                    }
+                });
+            }
+            return tagged;
+        },
+
+        is_tagged_by_user: function(tag){var self=this;
+            var tagged=false;
+            if (this.model.get('comments') > 0) {
+                _.each(this.model.get('latest_comments'), function(commentObj){
+                    if (commentObj.user === auth.get('snapr_user') && commentObj.comment.indexOf(tag) != -1) {
+                        tagged = true;
+                        return tagged;
+                    }
+                });
+            }
+            return tagged;
         }
     });
 
