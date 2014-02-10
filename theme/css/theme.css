@@ -4,6 +4,9 @@
 /* Button down */
 /* Active stuff */
 /* Active stuff */
+#feed .s-image-details {
+  padding-left: 0px;
+}
 /* keep the corners 45 degrees otherwise they look crap
    apply these to elements using the ::after psuedo class..
 */

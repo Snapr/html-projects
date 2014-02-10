@@ -8,12 +8,8 @@
 </div>
 
 <div class="s-image-details">
-    <a class="s-avatar" href="#/user/?username=<%= item.get('username') %>" style="background-image: url('<%= config.get('avatar_url') %>/<%= item.get('user_id') %>/');"></a>
 
-    <a class="s-username" href="#/user/?username=<%= item.get('username') %>"><%= item.get('display_username') %></a>
-
-		<span class="s-time"><%= string_utils.short_timestamp(item.get_display_date(), true ) %></span>
-
+	<span class="s-time"><%= string_utils.short_timestamp(item.get_display_date(), true ) %></span>
 
     <div class="s-description"><%= string_utils.comment_links( item.get('description') ) %>
         <% if (item.has('location') && item.get('location').spot_id){%>
@@ -56,7 +52,7 @@
 
     <ul class="x-comments s-comments">
         <% _.each(item.get('latest_comments'), function(comment){ %>
-            <li><a href="#/user/?username=<%= comment.user %>"><%= comment.user %></a> <%= string_utils.comment_links( comment.comment ) %></li>
+            <li><a><%= comment.user %></a> <%= string_utils.comment_links( comment.comment ) %></li>
         <% }) %>
         <% if(item.get('comments') > 10){ %><li><a class="x-show-comments"><%= T('Show more comments') %></a></li><% } %>
     </ul>
