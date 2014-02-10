@@ -1,4 +1,4 @@
-    define(['views/photos', 'views/components/feed'], function(photos_view, feed){
+    define(['views/photos', '../views/feed'], function(photos_view, feed){
         return photos_view.extend({
 
             //overwriten
