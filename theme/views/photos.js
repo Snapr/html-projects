@@ -24,7 +24,7 @@
                     }else if (query.sort == 'weighted_score' || query.sort == 'score'){
                         self.title = T("Popular");
                     }else if (query.radius){ //tc-added
-                        self.title = T("Nearby");
+                        self.title = T("Browse");
                     }else{
                         self.title = T("All"); //tc-edited
                     }
@@ -66,7 +66,12 @@
 
             change_radius: function(ev) {
                 var distance = $(ev.target).attr('data-distance');
-                this.options.query.radius = parseInt(distance, 0);
+                if (distance === "all"){
+                    delete this.options.query.location;
+                    delete this.options.query.radius;
+                } else {
+                    this.options.query.radius = parseInt(distance, 0);
+                }
                 this.refresh();
                 $(ev.target).addClass('ui-btn-active');
                 $(ev.target).siblings().removeClass('ui-btn-active');
