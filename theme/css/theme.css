@@ -7504,7 +7504,7 @@ html .ui-bar-e .ui-btn.ui-btn-active,
 html .ui-body-e .ui-btn.ui-btn-active,
 html body .ui-group-theme-e .ui-btn.ui-btn-active,
 html head + body .ui-btn.ui-btn-e.ui-btn-active {
-  background: #ff8700;
+  background: #f56500;
   border-color: #ff8700;
   color: #202020;
   text-shadow: none;
@@ -7528,8 +7528,8 @@ html .ui-body-e .ui-btn.ui-btn-active.outline-style,
 html body .ui-group-theme-e .ui-btn.ui-btn-active.outline-style,
 html head + body .ui-btn.ui-btn-e.ui-btn-active.outline-style {
   background: transparent;
-  border-color: #ff8700;
-  color: #ff8700;
+  border-color: #f56500;
+  color: #f56500;
   top: 0;
   -moz-box-shadow: none;
   -webkit-box-shadow: none;
@@ -7541,7 +7541,7 @@ html .ui-bar-e .ui-btn.ui-btn-active.outline-style:after,
 html .ui-body-e .ui-btn.ui-btn-active.outline-style:after,
 html body .ui-group-theme-e .ui-btn.ui-btn-active.outline-style:after,
 html head + body .ui-btn.ui-btn-e.ui-btn-active.outline-style:after {
-  color: #ff8700;
+  color: #f56500;
 }
 .ui-overlay-e .ui-btn.ui-btn-active:after,
 .ui-page-theme-e .ui-btn.ui-btn-active:after,
@@ -7575,7 +7575,7 @@ html .ui-bar-e .ui-slider-track .ui-btn-active,
 html .ui-body-e .ui-slider-track .ui-btn-active,
 html body .ui-group-theme-e .ui-slider-track .ui-btn-active,
 html body div.ui-slider-track.ui-body-e .ui-btn-active {
-  background: #ff8700;
+  background: #f56500;
   border-color: #ff8700;
   color: #202020;
   text-shadow: none;
@@ -7604,7 +7604,7 @@ html .ui-bar-e .ui-slider-track .ui-btn-active.hero-style,
 html .ui-body-e .ui-slider-track .ui-btn-active.hero-style,
 html body .ui-group-theme-e .ui-slider-track .ui-btn-active.hero-style,
 html body div.ui-slider-track.ui-body-e .ui-btn-active.hero-style {
-  background: #ff8700;
+  background: #f56500;
 }
 .ui-overlay-e .ui-btn.ui-btn-active.outline-style,
 .ui-page-theme-e .ui-btn.ui-btn-active.outline-style,
@@ -7631,8 +7631,8 @@ html .ui-body-e .ui-slider-track .ui-btn-active.outline-style,
 html body .ui-group-theme-e .ui-slider-track .ui-btn-active.outline-style,
 html body div.ui-slider-track.ui-body-e .ui-btn-active.outline-style {
   background: transparent;
-  border-color: #ff8700;
-  color: #ff8700;
+  border-color: #f56500;
+  color: #f56500;
 }
 .ui-overlay-e .ui-icon-radio-on:after,
 .ui-page-theme-e .ui-icon-radio-on:after,
@@ -7640,7 +7640,7 @@ html .ui-bar-e .ui-icon-radio-on:after,
 html .ui-body-e .ui-icon-radio-on:after,
 html body .ui-group-theme-e .ui-icon-radio-on:after,
 .ui-btn.ui-icon-radio-on.ui-btn-e:after {
-  border-color: #ff8700;
+  border-color: #f56500;
 }
 html head + body .ui-listview > li > .ui-btn {
   border-bottom-width: 1px;

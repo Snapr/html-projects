@@ -55,12 +55,21 @@
             events: function(){
                   return _.extend({},photos_view.prototype.events,{
                     'click .aj-refresh' : 'refresh',
+                    'click .aj-distance' : 'change_radius',
                     'click .ui-header' : 'scrollTop'
                   });
                },
 
             refresh: function() {
                 this.post_activate(this.options);
+            },
+
+            change_radius: function(ev) {
+                var distance = $(ev.target).attr('data-distance');
+                this.options.query.radius = parseInt(distance, 0);
+                this.refresh();
+                $(ev.target).addClass('ui-btn-active');
+                $(ev.target).siblings().removeClass('ui-btn-active');
             },
 
             scrollTop : function() {
