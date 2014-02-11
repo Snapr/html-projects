@@ -1,15 +1,20 @@
  <div id="feed" data-title="<%= T('Photos') %>" data-role="page" data-theme="a">
 
     <div data-role="header" data-theme="a" data-add-back-btn="false" data-position="fixed" data-tap-toggle="false">
-    	<a class="aj-refresh ui-btn-left" data-icon="refresh" data-iconpos="notext" data-corners="false">Refresh</a>
+
+        <a class="x-menu-button ui-btn-left" data-icon="large-bars" data-iconpos="notext" data-corners="false">Login in</a>
+
         <h1 class="x-title">
             <% if(obj.title){ %>
                 <%= string_utils.count_chars(title) %>
             <% } %>
         </h1>
 
-        <!-- Radius button -->
-            <a data-rel="popup" href="#radius-menu" data-role="button" data-theme="a" data-icon="chevron-down" data-iconpos="notext" class="aj-radius-button">Radius</a>
+        <div class="ui-btn-right" data-role="controlgroup" data-type="horizontal">
+            <!-- Radius button -->
+            <a data-rel="popup" class="aj-radius-btn" href="#radius-menu" data-role="button" data-icon="chevron-down" data-iconpos='notext'>radius</a>
+            <a data-role="button" class="aj-refresh"data-icon="refresh" data-iconpos='notext'>refresh</a>
+        </div>
 
         <!-- Radius menu -->
         <div data-role="popup" class="aj-radius-menu" id="radius-menu" data-theme='e'>

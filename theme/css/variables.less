@@ -151,6 +151,12 @@
 // Page
 // ------------------------
 
+div[data-role="header"] {
+    .ui-btn {
+        width: 40px !important;
+    }
+}
+
 #feed {
 
     .aj-radius-menu {
@@ -248,6 +254,15 @@
         padding: .4 * @m;
         background-color: @white;
     }
+}
+
+@footerHeight: 2 * @m;
+
+.ui-footer {
+    min-height: @footerHeight !important;
+   .ui-btn {
+        line-height: @footerHeight !important;
+   }
 }
 
 // Layout

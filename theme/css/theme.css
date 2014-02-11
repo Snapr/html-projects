@@ -4,6 +4,9 @@
 /* Button down */
 /* Active stuff */
 /* Active stuff */
+div[data-role="header"] .ui-btn {
+  width: 40px !important;
+}
 #feed .aj-radius-menu {
   position: fixed;
   top: 50px;
@@ -84,6 +87,12 @@
   min-height: 42px;
   padding: 4px;
   background-color: #ffffff;
+}
+.ui-footer {
+  min-height: 20px !important;
+}
+.ui-footer .ui-btn {
+  line-height: 20px !important;
 }
 /* keep the corners 45 degrees otherwise they look crap
    apply these to elements using the ::after psuedo class..

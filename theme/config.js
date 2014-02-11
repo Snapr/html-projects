@@ -76,12 +76,6 @@ return {
                 slug: 'browse'
             },
             {
-                url: '#/map/',
-                icon: "large-compass",
-                label: 'Map',
-                slug: 'map'
-            },
-            {
                 url: '#/search/',
                 icon: "large-search",
                 label: 'Search',

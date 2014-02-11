@@ -53,12 +53,13 @@
             },
 
             events: function(){
-                  return _.extend({},photos_view.prototype.events,{
+                return _.extend({},photos_view.prototype.events,{
                     'click .aj-refresh' : 'refresh',
                     'click .aj-distance' : 'change_radius',
-                    'click .ui-header' : 'scrollTop'
-                  });
-               },
+                    'click .x-title' : 'scrollTop',
+                    'click .x-menu-button': 'open_menu'
+                });
+            },
 
             refresh: function() {
                 this.post_activate(this.options);
@@ -79,8 +80,11 @@
 
             scrollTop : function() {
                 $("html").animate({ scrollTop: 0 }, "fast");
-
             },
+
+            open_menu : function(){
+                $('.x-side-menu').panel('open');
+            }
 
 
         });
