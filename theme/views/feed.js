@@ -419,11 +419,11 @@ define(
         },
 
         show_taken: function() { var self = this;
-            var image = self.$el,
-            takenText =  "<div class='takenText'>TAKEN</div>",
+            var image = self.$('.s-image-area');
+            takenText =  "<div class='takenText'>TAKEN</div>";
             fadeDown = function() {
                 image.fadeTo(400, 0.6);
-            },
+            };
             splashTxt = function() {
                 image.prepend(takenText);
                 self.$('.takenText').fadeTo(200, 1);
@@ -432,7 +432,7 @@ define(
             setTimeout(splashTxt, 400);
         },
         show_not_taken: function() { var self = this;
-            self.$el.fadeTo(200, 1);
+            self.$('.s-image-area').fadeTo(200, 1);
             self.$('.takenText').remove();
         },
 
