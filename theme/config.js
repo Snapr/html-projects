@@ -20,9 +20,9 @@ return {
         // CONFIG
         // ################################
 
-        filter_pack: 'snapr',
+        filter_pack: '',
         //sticker_pack: false,
-        fx_modules: ['filters'],
+        fx_modules: [],
 
         app_banners: true,
 
@@ -67,7 +67,7 @@ return {
         tab_bar_template: theme_templates_path + 'tab_bar',
         //default_tab: 'feed',
 
-        side_menu_theme: 'b',
+        side_menu_theme: 'c',
         side_menu_options: [
             {
                 url: '#/nearby/',
@@ -79,8 +79,7 @@ return {
                 url: '#/search/',
                 icon: "large-search",
                 label: 'Search',
-                slug: 'search',
-                logged_in: true  // only show for users logged in
+                slug: 'search'
             },
             {
                 url: '#/activity/',
@@ -90,10 +89,10 @@ return {
                 logged_in: true  // only show for users logged in
             },
             {
-                url: '#/user/',
+                url: '#/logout/',
                 icon: "large-user",
-                label: 'Profile',
-                slug: 'profile',
+                label: 'Log Out',
+                slug: 'logout',
                 logged_in: true  // only show for users logged in
             },
             {
@@ -142,7 +141,7 @@ return {
         //!--  signin with facebook should create users rather than autofill join form
         //!--  default: false
         autocreate_users: true,
-        login_required_for_camera: false,
+        login_required_for_camera: true,
 
         //!--  hwhat to do if a persons display username is blank
         //!--  defaults: 'anon', 'me'
@@ -241,7 +240,7 @@ return {
             }
         ],
 
-        default_feed_query: {rating:'2', min_date:'-30d'}
+        default_feed_query: {rating:'2', min_date:'-30d'},
 
         //!--  controls to show in feed view
         //!--  defaults: both true
@@ -266,7 +265,7 @@ return {
 
         //!--  number of images to show in feed views
         //default: 9
-        //feed_count: 5,
+        feed_count: 5,
 
 
         // ################################

@@ -7,8 +7,8 @@
 // Brand colors
 // -------------------------
 
-@brand-color:       #feea2d;
-@accent-color:      #ff8700;
+@brand-color:       #34495E;
+@accent-color:      #1ABC9C;
 
 @info-color:        @brand-color;
 @warning-color:     @brand-color;
@@ -41,6 +41,11 @@
 // Typography
 // -------------------------
 
+@font-face {
+  font-family: 'Montserrat';
+  src: local('Montserrat-Bold'), url(../fonts/Montserrat-Bold.woff) format('woff');
+}
+
 @font-size-base:                15px;
 @font-size-small:               13px;
 @line-height:                   1.4;
@@ -48,6 +53,7 @@
 @font-serif:                    Georgia,'Times New Roman', Times, sans-serif;
 @font-sans:                     HelveticaNeue, Helvetica, Arial, sans-serif;
 @font-special:                  HelveticaNeue-Light,Helvetica, Arial, sans-serif;
+@font-special-2:                Montserrat, Helvetica, Arial, sans-serif;
 
 @font:                          @font-special;
 
@@ -89,12 +95,21 @@
     -webkit-font-smoothing: antialiased;
 }
 
+// .header-bar-font(){
+//     font-family: @font-special;
+//     font-weight: normal;
+//     text-transform: lowercase;
+//     font-size: @bar-title-font-size;
+//     -webkit-font-smoothing: antialiased;
+// }
+
 .header-bar-font(){
-    font-family: @font-special;
-    font-weight: normal;
-    text-transform: lowercase;
-    font-size: @bar-title-font-size;
+    font-family: @font-special-2;
+    text-transform: uppercase;
+    font-size: @m * 1.5;
     -webkit-font-smoothing: antialiased;
+    letter-spacing: @m * 0.4;
+    font-weight: 700;
 }
 
 // Buttons
@@ -153,11 +168,15 @@
 
 div[data-role="header"] {
     .ui-btn {
-        width: 40px !important;
+        width: 50px !important;
     }
 }
 
 #feed {
+
+    .s-avatar {
+        display: none;
+    }
 
     .aj-radius-menu {
         position: fixed;
@@ -262,6 +281,10 @@ div[data-role="header"] {
     min-height: @footerHeight !important;
    .ui-btn {
         line-height: @footerHeight !important;
+        font-family: font-special-2 !important;
+        -webkit-font-smoothing: antialiased !important;
+        letter-spacing: 0.4 * @m !important;
+        font-weight: normal !important;
    }
 }
 
