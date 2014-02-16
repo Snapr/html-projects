@@ -167,18 +167,47 @@
 // Page
 // ------------------------
 
-div[data-role="header"] {
-    .ui-btn {
-        width: 50px !important;
+
+
+// Layout
+@padding: @m;
+@margin: @m;
+@vertical-margin: @m; // Space above and below components
+
+//MAP PAGE
+#map {
+   .s-map-thumb {
+        background-color: @accent-color;
+    }
+   .s-map-thumb-old {
+        background-color: @brand-color;
     }
 }
 
-#feed {
+.page(){
 
-    .s-avatar {
-        display: none;
+.s-avatar {
+    display: none;
+}
+
+//HEADERS
+@headerHeight: 5 * @m;
+div[data-role='header']{  
+    background-color: @brand-color !important;         
+    min-height: @headerHeight;
+    height:@headerHeight;   
+    h1{
+        line-height: @headerHeight;
+        min-height: @headerHeight;
     }
+    .ui-btn {
+        height:@headerHeight !important;    
+        width:@headerHeight;       
+    }
+} 
 
+//PHOTOS FEED
+#feed {
     .aj-radius-menu {
         position: fixed;
         top: 50px;
@@ -264,9 +293,7 @@ div[data-role="header"] {
             height: 3.5 * @m;;
             margin: 0  0.5 * @m 0 0;   
             text-shadow: 0 1px 1px rgb(117, 119, 121);
-
         }
-
     }
 
     .afterImg {
@@ -274,97 +301,58 @@ div[data-role="header"] {
         margin-top: 2 * @m;
         border-top: 1px solid @gray-light;
         border-bottom: 1px solid @white;
-
        }
 }
 
-    #map {
-
-       .s-map-thumb {
-            background-color: @accent-color;
-        }
-
-       .s-map-thumb-old {
-            background-color: red;
+//SHARE PAGE
+#share {
+    label {
+        color: @gray;
+    }
+    .s-image-textarea {
+        .s-image-thumb {
+            overflow: hidden;
         }
     }
-    
-    #share {
+    .materials {
+        min-height: 42px;
+        padding: 4px;
+        background-color: @white;
+    }
+    .materials span {
+        background-color: #ddd;
+    }
+    .edit-material .ui-btn {
+        font-weight: normal;
+    }
+    .select-material {
+        margin-bottom: 25px;
+    }
+    .x-location {
+        padding: 10px;
+    }
+    .s-upload-image-location {
+        position: static;
+        top: 0; 
 
-        div[data-role='header']{
-            background-color: @brand-color;
-            h1 {
-                font-family: font-special-2;
-                -webkit-font-smoothing: antialiased !important;
-                text-transform: uppercase;
-                letter-spacing: 0.4 * @m;
-                font-weight: normal;
-
-            }
+        .ui-icon-remove {
+            //height: 48px;
+            //line-height: 48px;
+            padding: 0.5 * @m;
+            margin-right: .5 * @m;
         }
+    }
+    .x-share-button {
+        letter-spacing: 0.1em ;
+        font-weight: bold;
+        position: relative;
+        top: 20px;
+        padding-bottom: 10px;
+    }
+} 
 
-        label {
-            color: @gray;
-            //height: 15px !important;
-        }
-
-        .s-image-textarea {
-            .s-image-thumb {
-                overflow: hidden;
-            }
-
-        }
-
-        .materials {
-            min-height: 42px;
-            //height: 42px;
-            padding: 4px;
-            background-color: @white;
-        }
-
-        .materials span {
-            background-color: #ddd;
-        }
-
-        .edit-material .ui-btn {
-            font-weight: normal;
-        }
-
-        .select-material {
-            margin-bottom: 25px;
-        }
-
-        .x-location {
-            //line-height: 50px;
-            padding: 10px;
-            //margin: 0;
-        }
-
-        .s-upload-image-location {
-            position: static;
-            top: 0; 
-
-            .ui-icon-remove {
-                //height: 48px;
-                //line-height: 48px;
-                padding: 0.5 * @m;
-                margin-right: .5 * @m;
-            }
-        }
-
-        .x-share-button {
-            letter-spacing: 0.1em ;
-            font-weight: bold;
-            position: relative;
-            top: 20px;
-            padding-bottom: 10px;
-        }
-
-
-    } //end share
-
+//FOOTER NAV BAR
 @footerHeight: 2 * @m;
-
 .ui-footer {
     min-height: @footerHeight !important;
    .ui-btn {
@@ -376,12 +364,12 @@ div[data-role="header"] {
    }
 }
 
-// Layout
-@padding: @m;
-@margin: @m;
-@vertical-margin: @m; // Space above and below components
-
-.page(){}
+#activity {
+    .s-comment-item {
+        padding-left: 0;
+    }
+}
+}
 
 
 
