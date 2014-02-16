@@ -96,10 +96,53 @@ div[data-role="header"] .ui-btn {
 #map .s-map-thumb-old {
   background-color: red;
 }
+#share div[data-role='header'] {
+  background-color: #34495e;
+}
+#share div[data-role='header'] h1 {
+  font-family: font-special-2;
+  -webkit-font-smoothing: antialiased !important;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  font-weight: normal;
+}
+#share label {
+  color: #999999;
+}
+#share .s-image-textarea .s-image-thumb {
+  overflow: hidden;
+}
 #share .materials {
   min-height: 42px;
   padding: 4px;
   background-color: #ffffff;
+}
+#share .materials span {
+  background-color: #ddd;
+}
+#share .edit-material .ui-btn {
+  font-weight: normal;
+}
+#share .select-material {
+  margin-bottom: 25px;
+}
+#share .x-location {
+  padding: 10px;
+}
+#share .s-upload-image-location {
+  position: static;
+  top: 0;
+}
+#share .s-upload-image-location .ui-icon-remove {
+  padding: 5px;
+  margin-right: 5px;
+}
+#share .x-share-button {
+  letter-spacing: 0.1em ;
+  font-weight: bold;
+  position: relative;
+  top: 20px;
+  padding-bottom: 10px;
 }
 .ui-footer {
   min-height: 20px !important;
@@ -225,8 +268,8 @@ div.ui-mobile-viewport {
 }
 .ui-loader-verbose {
   width: 12.5em;
-  opacity: 0.0088;
-  filter: alpha(opacity=0.88);
+  opacity: 0.88;
+  filter: alpha(opacity=88);
   box-shadow: 0 1px 1px -1px #ffffff;
   height: auto;
   margin-left: -6.875em;
@@ -9101,7 +9144,8 @@ h6 {
   line-height: 1.4;
 }
 i,
-em {
+em,
+.italic {
   font-style: italic;
   font-weight: 200;
 }
@@ -9624,6 +9668,28 @@ html head + body .ui-btn.s-foursquare-button:active:after {
 .s-image-sharing .ui-checkbox .ui-btn.ui-checkbox-on .ui-icon-social-foursquare:after {
   color: #48c0ed;
 }
+.s-kik-btn .s-kik-icon {
+  width: 40px;
+  height: 20px;
+  overflow: hidden;
+  display: block;
+  text-indent: -999px;
+  background-image: url("../../app/css/gfx/1x/kik.png");
+  -webkit-background-size: 40px 20px !important;
+  -moz-background-size: 40px 20px !important;
+  -o-background-size: 40px 20px !important;
+  background-size: 40px 20px !important;
+}
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min--moz-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5), only screen and (min-resolution: 140dppx), only screen and (min-resolution: 1.5dppx) {
+  .s-kik-btn .s-kik-icon {
+    background-image: url("../../app/css/gfx/1.5x/kik.png");
+  }
+}
+@media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dppx), only screen and (min-resolution: 2dppx) {
+  .s-kik-btn .s-kik-icon {
+    background-image: url("../../app/css/gfx/2x/kik.png");
+  }
+}
 .s-setting-row > label {
   line-height: 32px;
   margin: 0;
@@ -9970,7 +10036,7 @@ textarea {
   color: #999999 !important;
 }
 div[data-role="header"] *[data-rel="back"] {
-  position: absolute;
+  position: absolute!important;
   text-transform: lowercase;
   opacity: 0.8;
   filter: alpha(opacity=80);
@@ -10131,21 +10197,21 @@ div[data-role="header"] *[data-rel="back"]:before {
   margin-top: -9px !important;
   margin-left: 2px!important;
 }
-.ui-loader.ui-loader-default {
+.ui-loader.ui-loader-default,
+.ui-loader.ui-loader-verbose {
   background-color: rgba(0, 0, 0, 0.5);
-  width: 90px;
-  height: 90px;
-  margin-left: -45px;
-  margin-top: -45px;
   opacity: 1;
   filter: alpha(opacity=100);
 }
-.ui-loader.ui-loader-default .ui-icon-loading {
+.ui-loader.ui-loader-default .ui-icon-loading,
+.ui-loader.ui-loader-verbose .ui-icon-loading {
   background-color: transparent;
   width: 56px;
   height: 56px;
   padding: 17px;
   border: none;
+  opacity: 1;
+  filter: alpha(opacity=100);
   display: block;
   background-image: url("../../app/css/gfx/1x/spinner.png");
   -webkit-background-size: 56px 56px !important;
@@ -10162,14 +10228,32 @@ div[data-role="header"] *[data-rel="back"]:before {
   -webkit-animation-timing-function: linear;
 }
 @media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min--moz-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5), only screen and (min-resolution: 140dppx), only screen and (min-resolution: 1.5dppx) {
-  .ui-loader.ui-loader-default .ui-icon-loading {
+  .ui-loader.ui-loader-default .ui-icon-loading,
+  .ui-loader.ui-loader-verbose .ui-icon-loading {
     background-image: url("../../app/css/gfx/1.5x/spinner.png");
   }
 }
 @media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dppx), only screen and (min-resolution: 2dppx) {
-  .ui-loader.ui-loader-default .ui-icon-loading {
+  .ui-loader.ui-loader-default .ui-icon-loading,
+  .ui-loader.ui-loader-verbose .ui-icon-loading {
     background-image: url("../../app/css/gfx/2x/spinner.png");
   }
+}
+.ui-loader.ui-loader-default {
+  width: 90px;
+  height: 90px;
+  margin-left: -45px;
+  margin-top: -45px;
+}
+.ui-loader.ui-loader-verbose {
+  margin-left: -95px;
+  margin-top: -70px;
+}
+.ui-loader.ui-loader-verbose .ui-icon-loading {
+  margin-bottom: 0 40px;
+}
+.ui-loader.ui-loader-verbose h1 {
+  color: #ccc;
 }
 .icon-to-spinner {
   content: "" !important;
@@ -10380,6 +10464,7 @@ img.emoji {
 }
 .x-list .s-feed-photo .s-image-area .s-photo {
   width: 100%;
+  display: block;
   background-color: #e6e6e6;
   background-repeat: no-repeat;
   background-position: center;
@@ -10894,6 +10979,24 @@ img.emoji {
   display: inline;
   margin-bottom: 0;
 }
+.s-photo-message {
+  padding: 10px !important;
+}
+.s-photo-message .s-photo-message-header {
+  display: none;
+  height: 20px;
+  padding: 0px 40px 10px 0;
+}
+.s-photo-message .s-photo-message-header .s-btns-right {
+  position: absolute;
+  right: 0;
+  top: 0;
+  display: none;
+}
+.s-photo-message.s-feed-photo .s-image-area {
+  padding: 0;
+  margin: 0;
+}
 .s-explore-images > .ui-listview,
 .s-explore-users > .ui-listview {
   margin-top: 10px;
@@ -11012,21 +11115,19 @@ img.emoji {
   min-height: 200px;
   overflow: hidden;
   padding: 0;
-  padding-bottom: 130px;
+  margin-bottom: 130px;
 }
 .s-fx .s-photo-area .s-image-wrapper {
   display: block;
   margin: auto;
   background-color: #000000;
-  position: absolute;
-  left: 0;
-  bottom: 0;
+  position: relative;
 }
 .s-fx .s-photo-area .s-photo-canvas-area {
-  position: relative;
+  position: absolute;
+  bottom: 0;
   text-align: center;
   width: 100%;
-  height: 100%;
 }
 .s-fx .s-photo-area .s-photo-canvas-area .s-activity-indicator {
   position: absolute;
@@ -11192,6 +11293,9 @@ img.emoji {
   vertical-align: top;
   height: 70px;
   overflow: hidden;
+}
+.s-fx .s-fx-carousel .s-fx-select-item-options .s-fx-carousel-bg .s-fx-pack .s-fx-pack-sections .s-fx-pack-section:last-child .s-fx-pack-section-items {
+  margin-right: 60px;
 }
 .s-fx .s-fx-carousel .s-fx-select-item-options .s-fx-carousel-bg .s-fx-pack .s-fx-pack-sections .s-fx-pack-section .s-fx-pack-section-items {
   padding-right: 10px;

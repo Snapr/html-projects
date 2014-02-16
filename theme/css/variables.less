@@ -278,13 +278,79 @@ div[data-role="header"] {
         }
     }
     
-#share {
-    .materials {
-        min-height: 4.2 * @m;
-        padding: .4 * @m;
-        background-color: @white;
-    }
-}
+    #share {
+
+        div[data-role='header']{
+            background-color: @brand-color;
+            h1 {
+                font-family: font-special-2;
+                -webkit-font-smoothing: antialiased !important;
+                text-transform: uppercase;
+                letter-spacing: 0.4 * @m;
+                font-weight: normal;
+
+            }
+        }
+
+        label {
+            color: @gray;
+            //height: 15px !important;
+        }
+
+        .s-image-textarea {
+            .s-image-thumb {
+                overflow: hidden;
+            }
+
+        }
+
+        .materials {
+            min-height: 42px;
+            //height: 42px;
+            padding: 4px;
+            background-color: @white;
+        }
+
+        .materials span {
+            background-color: #ddd;
+        }
+
+        .edit-material .ui-btn {
+            font-weight: normal;
+        }
+
+        .select-material {
+            margin-bottom: 25px;
+        }
+
+        .x-location {
+            //line-height: 50px;
+            padding: 10px;
+            //margin: 0;
+        }
+
+        .s-upload-image-location {
+            position: static;
+            top: 0; 
+
+            .ui-icon-remove {
+                //height: 48px;
+                //line-height: 48px;
+                padding: 0.5 * @m;
+                margin-right: .5 * @m;
+            }
+        }
+
+        .x-share-button {
+            letter-spacing: 0.1em ;
+            font-weight: bold;
+            position: relative;
+            top: 20px;
+            padding-bottom: 10px;
+        }
+
+
+    } //end share
 
 @footerHeight: 2 * @m;
 
