@@ -25,10 +25,10 @@ define(['views/search'], function(search_view){
                      }
                      break;
                  case 'tag':
-                     if (window.location.hash == "#/photos/?keywords=" + keywords){
+                     if (window.location.hash == "#/all/?keywords=" + keywords){
                          this.back();
                      }else{
-                         window.location.hash = "#/photos/?keywords=" + keywords;
+                         window.location.hash = "#/all/?keywords=" + keywords;
                      }
                      break;
                  case 'user':
