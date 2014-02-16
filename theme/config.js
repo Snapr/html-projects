@@ -417,11 +417,11 @@ return {
             view: theme_views_path + 'search',
             template: theme_templates_path + 'search'
         },
-        // {
-        //     name: 'map',
-        //     view: theme_views_path + 'map',
-        //     template: theme_templates_path + 'map'
-        // },
+        {
+            name: 'map',
+            view: theme_views_path + 'map',
+            template: theme_templates_path + 'map'
+        },
         // {
         //     name: 'welcome',
         //     view: 'welcome',
