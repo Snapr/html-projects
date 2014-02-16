@@ -402,7 +402,8 @@ return {
             extra:{
                 query: {
                     location: 'current_location',
-                    radius: 25000
+                    radius: 25000,
+                    initial_load: 1 //to redirect if no results on initial load
                 },
             list_item_template: theme_templates_path + 'list_item'
             }

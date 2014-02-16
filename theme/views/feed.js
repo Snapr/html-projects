@@ -136,8 +136,21 @@ define(
                 self.fetching = collection.fetch({
                 data: {include_comments: 10, include_favorites: 10},
                 success: function(){
-                    self.render_collection(collection);
-                    if(callback){callback();}
+                    var init = self.collections[tab].data.initial_load;
+                    var length = self.collections[tab].length;
+                    if (length === 0 && init === 1) {
+                        //no results on first load, let's redirect the feed to 'all'
+                        delete self.collections[tab].data.radius;
+                        $('.aj-radius-menu').children('.ui-btn-active').removeClass('ui-btn-active');
+                        $('.aj-radius-menu').children('.all-distance').addClass('ui-btn-active');
+                        fetch();
+                    }
+                    else {
+                        self.render_collection(collection);
+                        if(callback){callback();}
+                    }
+
+                    self.collections[tab].data.initial_load = 0;      
                 }
             });
             }
