@@ -1,0 +1,16 @@
+<div class="s-map-point">
+
+	<%
+		var oneDay = 24*60*60*1000;
+		var date = data.date_taken;
+		date = new Date(date).getTime();
+		var now = new Date().getTime();
+		var diffDays = Math.floor(Math.abs((now - date)/(oneDay)));
+
+	%>
+	
+    <a href="#/photos/?photo_id=<%= data.id %>&n=1" class="s-map-thumb clickable <% if (diffDays > 3) { %> s-map-thumb-old <% } %>">
+		<img src="https://s3.amazonaws.com/media-server<%= data.server_id %>.snapr.us/thm2/<%= data.secret %>/<%= data.id %>.jpg" <% if(data.description){ %>alt="<%= data.description %>"<% } %>>
+	</a>
+
+</div>

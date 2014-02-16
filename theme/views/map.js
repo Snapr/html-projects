@@ -32,7 +32,9 @@ var map_view = page_view.extend({
         this.thumb_overlays = {};
         this.spot_overlays = {};
 
-        this.thumb_template = this.get_template('components/map/image');
+        //this.thumb_template = this.get_template('components/map/image');
+        //line changed:
+        this.thumb_template = this.get_template('../../theme/templates/map_image');
         this.flag_template = this.get_template('components/map/flag');
         this.location_template = this.get_template('components/map/location');
         this.spot_template = this.get_template('components/map/spot');
