@@ -17,6 +17,7 @@
                         self.title = query.tag;
                     }else if (query.area){
                         self.title = T("Location");
+                        $('.aj-radius-btn').hide();
                     }else if (query.favorited_by){
                         self.title = T("Favorites");
                     }else if (query.spot && query.venue_name){

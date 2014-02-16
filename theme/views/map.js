@@ -583,7 +583,7 @@ var map_view = page_view.extend({
         if (this.map_query){
             var params = this.photo_query.attributes;
             params.area = this.map.getBounds().toUrlValue(4);
-            Backbone.history.navigate( "#/photos/?" + $.param(params) );
+            Backbone.history.navigate( "#/all/?" + $.param(params) );
         }else{
             console.warn("map not initialized", this);
         }
