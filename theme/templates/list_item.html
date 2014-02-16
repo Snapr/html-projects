@@ -87,11 +87,12 @@
     <div class="s-action-buttons x-action-buttons">
 
         <!-- Comment button -->
-        <a data-role="button" data-theme="c" data-mini="true" data-inline="true" data-icon="comments" data-inline="true" data-iconpos="notext" class="x-comment-button">Comment</a>
+        <a data-role="button" data-theme="b" data-inline="true" data-icon="comments" data-iconpos="notext" class="x-comment-button large-icon">Comment</a>
 
         <!-- More button -->
         <% if (item.get("username") == auth.get("snapr_user") || config.get('moderation_controls')){ %>
-            <a data-rel="popup" href="#more-menu-<%= item.cid %>" data-role="button" data-theme="a" data-mini="true" data-icon="large-more" data-inline="true" data-iconpos="notext" class="x-more-button s-more-button">More</a>
+            <a data-rel="popup" href="#more-menu-<%= item.cid %>" data-role="button" data-theme="b" data-icon="large-more" data-inline="true" data-iconpos="notext" class="x-more-button s-more-button large-icon">More</a>
+
         <% } %>
     </div>
 
@@ -102,14 +103,14 @@
     </div>
 
     <!-- More menu -->
-    <div data-role="popup" data-arrow="b" class="x-more-menu s-more-menu" data-theme="e" id="more-menu-<%= item.cid %>">
+    <div data-role="popup" data-arrow="b" class="x-more-menu s-more-menu" data-theme="b" id="more-menu-<%= item.cid %>">
             <a class="aj-take" data-role="button" data-icon="hand-top" data-iconpos="notext" data-inline="true">
                Delete
            </a>
             <a class="aj-untake" data-role="button" data-icon="hand-down" data-iconpos="notext" data-inline="true">
                Delete
            </a>
-           <a href="mailto:?subject=Check Out This Junk&body=http://test.artjunk.org/<%= item.get('id') %>" data-role="button" data-inline="true" data-icon="envelope" data-iconpos="notext">Email</a>
+           <a onclick="return confirm('Are you sure you want to email this photo?')" href="mailto:?subject=Check Out This Junk&body=http://test.artjunk.org/<%= item.get('id') %>" data-role="button" data-inline="true" data-icon="envelope" data-iconpos="notext">Email</a>
            
         <% if (item.get("username") && item.get("username").toLowerCase() == (auth.get("snapr_user") || "").toLowerCase()){ %>
             <a class="x-delete" data-role="button" data-icon="trash" data-iconpos="notext" data-inline="true">

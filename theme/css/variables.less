@@ -115,6 +115,7 @@
 // Buttons
 // ------------------------
 
+@icon-large-width:  3*@m;
 
 .button-font(){
     font-family: @font-special;
@@ -255,7 +256,17 @@ div[data-role="header"] {
     }
 
     .s-action-buttons {
-        border: none;
+        border: none !important;
+        .ui-btn {
+            border: none;    
+            border-radius: 0;   
+            width: 3.5 * @m;
+            height: 3.5 * @m;;
+            margin: 0  0.5 * @m 0 0;   
+            text-shadow: 0 1px 1px rgb(117, 119, 121);
+
+        }
+
     }
 
     .afterImg {
