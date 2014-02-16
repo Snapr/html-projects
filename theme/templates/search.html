@@ -1,0 +1,27 @@
+<div id="search" data-role="page" data-theme="a" data-ajax="false">
+    <div data-role="header">
+        <h1><%= T('Search') %></h1>
+        <a class="x-back" data-role="button" data-icon="delete" data-iconpos="notext"></a>
+    </div>
+    <div data-role="content">
+        <div class="s-inset-page-content">
+            <form accept-charset="utf-8">
+                <ul data-role="listview" data-inset="true" data-theme="d">
+                    <li data-role="fieldcontain" class="ui-hide-label">
+                        <input type="text" placeholder="<%= T('Keywords') %>&hellip;" autocapitalize="off" autocorrect="off" class="x-search-field" id="search-keywords">
+                    </li>
+                    <li data-role="fieldcontain" class="ui-hide-label s-has-select">
+                        <select id="search-type" class="x-search-type" data-theme="c">
+                            <option value="tag"><%= T('Search') %> <%= T('Tags') %></option>
+                            <option value="location"><%= T('Search') %> <%= T('Locations') %></option>
+                            <option value="user"><%= T('Search') %> <%= T('Users') %></option>
+                        </select>
+                    </li>
+                </ul>
+
+                <input type="submit" data-theme="h" value="<%= T('Search') %>">
+            </form>
+        </div>
+
+    </div>
+</div>

@@ -413,6 +413,11 @@ return {
             view: theme_views_path + 'share',
             template: theme_templates_path + 'share'
         },
+        {
+            name: 'search',
+            view: theme_views_path + 'search',
+            template: theme_templates_path + 'search'
+        },
         // {
         //     name: 'map',
         //     view: theme_views_path + 'map',
