@@ -8716,25 +8716,25 @@ html body .ui-group-theme-f .ui-bar-inherit.ui-li-divider small {
   border-color: none;
   color: #ffffff;
   text-shadow: none;
-  background: #ffe400;
+  background: #34495e;
   /* Old browsers */
 
-  background: -moz-linear-gradient(top, #ffe400 0%, #fcf57b 100%);
+  background: -moz-linear-gradient(top, #34495e 0%, #7bdce0 100%);
   /* FF3.6+ */
 
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ffe400), color-stop(100%, #fcf57b));
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #34495e), color-stop(100%, #7bdce0));
   /* Chrome,Safari4+ */
 
-  background: -webkit-linear-gradient(top, #ffe400 0%, #fcf57b 100%);
+  background: -webkit-linear-gradient(top, #34495e 0%, #7bdce0 100%);
   /* Chrome10+,Safari5.1+ */
 
-  background: -o-linear-gradient(top, #ffe400 0%, #fcf57b 100%);
+  background: -o-linear-gradient(top, #34495e 0%, #7bdce0 100%);
   /* Opera 11.10+ */
 
-  background: -ms-linear-gradient(top, #ffe400 0%, #fcf57b 100%);
+  background: -ms-linear-gradient(top, #34495e 0%, #7bdce0 100%);
   /* IE10+ */
 
-  background: linear-gradient(to bottom, #ffe400 0%, #fcf57b 100%);
+  background: linear-gradient(to bottom, #34495e 0%, #7bdce0 100%);
   /* W3C */
 
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='@colour1', endColorstr='@colour2', GradientType=0);
@@ -9325,7 +9325,7 @@ html head + body .ui-navbar .ui-btn.ui-btn-f.ui-btn-active:after {
 .ui-page-theme-f .ui-input-text input {
   background-color: rgba(0, 0, 0, 0);
   border: solid 1px #cccccc;
-  color: #666666;
+  color: #999999;
   text-shadow: none;
   -moz-box-shadow: inset 0 2px 2px #e6e6e6;
   -webkit-box-shadow: inset 0 2px 2px #e6e6e6;
@@ -9341,7 +9341,7 @@ html body textarea.ui-input-text.ui-body-f,
 html body .ui-body-f.ui-input-text input {
   background-color: rgba(0, 0, 0, 0);
   border: solid 1px #cccccc;
-  color: #666666;
+  color: #999999;
   text-shadow: none;
   -moz-box-shadow: inset 0 2px 2px #e6e6e6;
   -webkit-box-shadow: inset 0 2px 2px #e6e6e6;
@@ -10832,7 +10832,7 @@ div[data-role="header"] *[data-rel="back"]:before {
 }
 .s-bg-load-bar {
   display: none;
-  background: #ffe400;
+  background: #34495e;
   height: 4px;
   position: absolute;
   top: -4px;

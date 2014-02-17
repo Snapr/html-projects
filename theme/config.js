@@ -96,12 +96,18 @@ return {
                 logged_in: true  // only show for users logged in
             },
             {
-                url: '#/welcome/',
+                url: '#/login/',
                 icon: "large-log_in",
                 label: 'Login',
                 slug: 'login',
                 logged_in: false  // only show for users not logged in
-            }
+            },
+            {
+                url: '#/about/',
+                icon: "info",
+                label: 'About',
+                slug: 'about'
+            },
         ],
 
 
@@ -434,6 +440,10 @@ return {
             name: 'activity',
             view: theme_views_path + 'activity',
             template: theme_templates_path + 'activity'
+        },
+        {
+            name: 'welcome',
+            view: 'login'
         },
         // {
         //     name: 'welcome',
