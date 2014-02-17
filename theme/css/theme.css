@@ -4504,6 +4504,11 @@ html body .ui-group-theme-a .ui-bar-inherit.ui-li-divider small {
   top: 20px;
   padding-bottom: 10px;
 }
+.ui-overlay-a #uploading .email,
+.ui-page-theme-a #uploading .email,
+.ui-page-theme-a .ui-panel-wrapper #uploading .email {
+  display: none;
+}
 .ui-overlay-a .ui-footer,
 .ui-page-theme-a .ui-footer,
 .ui-page-theme-a .ui-panel-wrapper .ui-footer {
@@ -6150,6 +6155,11 @@ html body .ui-group-theme-c .ui-bar-inherit.ui-li-divider small {
   top: 20px;
   padding-bottom: 10px;
 }
+.ui-overlay-c #uploading .email,
+.ui-page-theme-c #uploading .email,
+.ui-page-theme-c .ui-panel-wrapper #uploading .email {
+  display: none;
+}
 .ui-overlay-c .ui-footer,
 .ui-page-theme-c .ui-footer,
 .ui-page-theme-c .ui-panel-wrapper .ui-footer {
@@ -7071,6 +7081,11 @@ html body .ui-group-theme-d .ui-bar-inherit.ui-li-divider small {
   top: 20px;
   padding-bottom: 10px;
 }
+.ui-overlay-d #uploading .email,
+.ui-page-theme-d #uploading .email,
+.ui-page-theme-d .ui-panel-wrapper #uploading .email {
+  display: none;
+}
 .ui-overlay-d .ui-footer,
 .ui-page-theme-d .ui-footer,
 .ui-page-theme-d .ui-panel-wrapper .ui-footer {
@@ -7991,6 +8006,11 @@ html body .ui-group-theme-e .ui-bar-inherit.ui-li-divider small {
   position: relative;
   top: 20px;
   padding-bottom: 10px;
+}
+.ui-overlay-e #uploading .email,
+.ui-page-theme-e #uploading .email,
+.ui-page-theme-e .ui-panel-wrapper #uploading .email {
+  display: none;
 }
 .ui-overlay-e .ui-footer,
 .ui-page-theme-e .ui-footer,
