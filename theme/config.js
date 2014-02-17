@@ -427,6 +427,11 @@ return {
             template: theme_templates_path + 'share'
         },
         {
+            name: 'uploading',
+            view: theme_views_path + 'uploading',
+            template: theme_templates_path + 'uploading'
+        },
+        {
             name: 'search',
             view: theme_views_path + 'search',
             template: theme_templates_path + 'search'
