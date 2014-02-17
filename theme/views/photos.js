@@ -24,10 +24,14 @@
                         self.title = '@ '+query.venue_name;
                     }else if (query.sort == 'weighted_score' || query.sort == 'score'){
                         self.title = T("Popular");
-                    }else if (query.radius){ //tc-added
+                    }else if (query.sort == 'weighted_score' || query.sort == 'score'){
+                        self.title = T("Popular");
+                    }else if (query.photo_id){ //tc-added
                         self.title = T("Browse");
+                        $('.aj-radius-btn').hide();
+                        $('.aj-refresh').hide();
                     }else{
-                        self.title = T("All"); //tc-edited
+                        self.title = T("Browse"); //tc-edited
                     }
 
                     self.replace_from_template({title: self.title}, ['.x-title']).enhanceWithin();

@@ -70,7 +70,7 @@ return {
         side_menu_theme: 'c',
         side_menu_options: [
             {
-                url: '#/nearby/',
+                url: '/',
                 icon: "large-film",
                 label: 'Browse',
                 slug: 'browse'
@@ -385,6 +385,14 @@ return {
             name: 'about',
             view: 'base/page',
             template: theme_templates_path + 'about'
+        },
+        {
+            name: 'photos',
+            view: theme_views_path + 'photos',
+            template: theme_templates_path + 'photos',
+            extra:{
+                list_item_template: theme_templates_path + 'list_item'
+            }
         },
         {
             name: 'all',
