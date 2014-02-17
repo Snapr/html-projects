@@ -83,7 +83,7 @@ return {
             },
             {
                 url: '#/activity/',
-                icon: "large-heart",
+                icon: "eye-open",
                 label: 'Activity',
                 slug: 'activity',
                 logged_in: true  // only show for users logged in
@@ -430,12 +430,16 @@ return {
             view: theme_views_path + 'map',
             template: theme_templates_path + 'map'
         },
+        {
+            name: 'activity',
+            view: theme_views_path + 'activity',
+            template: theme_templates_path + 'activity'
+        },
         // {
         //     name: 'welcome',
         //     view: 'welcome',
         //     template: theme_templates_path + 'welcome'
         // },
-        'activity',
         'popular'
     ]
 };

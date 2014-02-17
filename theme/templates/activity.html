@@ -1,0 +1,21 @@
+<div id="activity" data-title="<%= T('Activity') %>" data-role="page" data-theme="a">
+    <div data-role="header" data-theme="d" data-add-back-btn="false" data-position="fixed">
+
+        <a class="x-menu-button ui-btn-left" data-icon="large-bars" data-iconpos="notext" data-corners="false">Login in</a>
+        
+        <h1><%= T('Activity') %></h1>
+    </div>
+    <div data-role="content" data-theme="a" data-ajax="false">
+        <ul class="x-activity-streams s-activity-streams">
+            <% if(obj.no_news){ %>
+                <li>
+                    <div>
+                        <p class="text-muted"><%= T('No news yet') %>...</p>
+                    </div>
+                </li>
+            <% } %>
+
+            <!-- dynamic -->
+        </ul>
+  </div>
+</div>

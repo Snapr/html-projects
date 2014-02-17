@@ -4523,6 +4523,11 @@ html body .ui-group-theme-a .ui-bar-inherit.ui-li-divider small {
 .ui-page-theme-a .ui-panel-wrapper #activity .s-comment-item {
   padding-left: 0;
 }
+.ui-overlay-a #activity .s-username,
+.ui-page-theme-a #activity .s-username,
+.ui-page-theme-a .ui-panel-wrapper #activity .s-username {
+  cursor: default;
+}
 .ui-body-a,
 .ui-overlay-a .ui-body-inherit,
 .ui-page-theme-a .ui-body-inherit,
@@ -6164,6 +6169,11 @@ html body .ui-group-theme-c .ui-bar-inherit.ui-li-divider small {
 .ui-page-theme-c .ui-panel-wrapper #activity .s-comment-item {
   padding-left: 0;
 }
+.ui-overlay-c #activity .s-username,
+.ui-page-theme-c #activity .s-username,
+.ui-page-theme-c .ui-panel-wrapper #activity .s-username {
+  cursor: default;
+}
 .ui-body-c,
 .ui-overlay-c .ui-body-inherit,
 .ui-page-theme-c .ui-body-inherit,
@@ -7080,6 +7090,11 @@ html body .ui-group-theme-d .ui-bar-inherit.ui-li-divider small {
 .ui-page-theme-d .ui-panel-wrapper #activity .s-comment-item {
   padding-left: 0;
 }
+.ui-overlay-d #activity .s-username,
+.ui-page-theme-d #activity .s-username,
+.ui-page-theme-d .ui-panel-wrapper #activity .s-username {
+  cursor: default;
+}
 .ui-body-d,
 .ui-overlay-d .ui-body-inherit,
 .ui-page-theme-d .ui-body-inherit,
@@ -7995,6 +8010,11 @@ html body .ui-group-theme-e .ui-bar-inherit.ui-li-divider small {
 .ui-page-theme-e #activity .s-comment-item,
 .ui-page-theme-e .ui-panel-wrapper #activity .s-comment-item {
   padding-left: 0;
+}
+.ui-overlay-e #activity .s-username,
+.ui-page-theme-e #activity .s-username,
+.ui-page-theme-e .ui-panel-wrapper #activity .s-username {
+  cursor: default;
 }
 .ui-body-e,
 .ui-overlay-e .ui-body-inherit,
