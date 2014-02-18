@@ -119,7 +119,7 @@ return {
         //!-- options - ['twitter', 'tumblr','facebook', 'foursquare', 'appdotnet']
         //!-- Note that appdotnet support is not yet complete
         //!--  default: all
-        services: ['twitter', 'tumblr','facebook', 'foursquare'],
+        services: ['twitter', 'tumblr','facebook'],
         
         share_location_default: true,
 
