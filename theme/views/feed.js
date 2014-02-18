@@ -880,9 +880,10 @@ define(
                 if (commentToDelete !== 0) {
                         this.delete_comment(commentToDelete);
                         if(this.is_taken() === true) {
-                            console.log('this item remains tagged #taken by another user');
+                            //console.log('this item remains tagged #taken by another user');
+                        }else {
+                            this.show_not_taken();
                         }
-                        this.show_not_taken();
                     }
                 else {
                     alert("You haven't reported this junk as #taken");
