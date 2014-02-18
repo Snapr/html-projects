@@ -47,7 +47,7 @@ define(['views/share', '../../theme/js/material'], function(share_view, material
        check_fields_and_post: function() {
            var materialField = $('.materials').html();
            var location = $('.s-upload-image-location .s-btn-text').html();
-           if(location === "Add Location") {
+           if(location === "Add Location" || location === "Getting Location...") {
                alert('You must add a location');
            }
            else if (materialField !== "") { //user must input a material
