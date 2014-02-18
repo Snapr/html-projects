@@ -4512,6 +4512,11 @@ html body .ui-group-theme-a .ui-bar-inherit.ui-li-divider small {
 .ui-page-theme-a .ui-panel-wrapper #uploading .email {
   display: none;
 }
+.ui-overlay-a #uploading label,
+.ui-page-theme-a #uploading label,
+.ui-page-theme-a .ui-panel-wrapper #uploading label {
+  margin-top: 10px;
+}
 .ui-overlay-a .ui-footer,
 .ui-page-theme-a .ui-footer,
 .ui-page-theme-a .ui-panel-wrapper .ui-footer {
@@ -6163,6 +6168,11 @@ html body .ui-group-theme-c .ui-bar-inherit.ui-li-divider small {
 .ui-page-theme-c .ui-panel-wrapper #uploading .email {
   display: none;
 }
+.ui-overlay-c #uploading label,
+.ui-page-theme-c #uploading label,
+.ui-page-theme-c .ui-panel-wrapper #uploading label {
+  margin-top: 10px;
+}
 .ui-overlay-c .ui-footer,
 .ui-page-theme-c .ui-footer,
 .ui-page-theme-c .ui-panel-wrapper .ui-footer {
@@ -7089,6 +7099,11 @@ html body .ui-group-theme-d .ui-bar-inherit.ui-li-divider small {
 .ui-page-theme-d .ui-panel-wrapper #uploading .email {
   display: none;
 }
+.ui-overlay-d #uploading label,
+.ui-page-theme-d #uploading label,
+.ui-page-theme-d .ui-panel-wrapper #uploading label {
+  margin-top: 10px;
+}
 .ui-overlay-d .ui-footer,
 .ui-page-theme-d .ui-footer,
 .ui-page-theme-d .ui-panel-wrapper .ui-footer {
@@ -8014,6 +8029,11 @@ html body .ui-group-theme-e .ui-bar-inherit.ui-li-divider small {
 .ui-page-theme-e #uploading .email,
 .ui-page-theme-e .ui-panel-wrapper #uploading .email {
   display: none;
+}
+.ui-overlay-e #uploading label,
+.ui-page-theme-e #uploading label,
+.ui-page-theme-e .ui-panel-wrapper #uploading label {
+  margin-top: 10px;
 }
 .ui-overlay-e .ui-footer,
 .ui-page-theme-e .ui-footer,
