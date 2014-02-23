@@ -4376,6 +4376,18 @@ html body .ui-group-theme-a .ui-bar-inherit.ui-li-divider small {
   cursor: pointer;
   color: #34495e;
 }
+.ui-overlay-a #feed .aj-new,
+.ui-page-theme-a #feed .aj-new,
+.ui-page-theme-a .ui-panel-wrapper #feed .aj-new {
+  clear: both;
+  float: left;
+  margin-left: 5px;
+}
+.ui-overlay-a #feed .aj-new .ui-icon-bookmark,
+.ui-page-theme-a #feed .aj-new .ui-icon-bookmark,
+.ui-page-theme-a .ui-panel-wrapper #feed .aj-new .ui-icon-bookmark {
+  color: #1abc9c;
+}
 .ui-overlay-a #feed .s-image-details,
 .ui-page-theme-a #feed .s-image-details,
 .ui-page-theme-a .ui-panel-wrapper #feed .s-image-details {
@@ -6032,6 +6044,18 @@ html body .ui-group-theme-c .ui-bar-inherit.ui-li-divider small {
   cursor: pointer;
   color: #34495e;
 }
+.ui-overlay-c #feed .aj-new,
+.ui-page-theme-c #feed .aj-new,
+.ui-page-theme-c .ui-panel-wrapper #feed .aj-new {
+  clear: both;
+  float: left;
+  margin-left: 5px;
+}
+.ui-overlay-c #feed .aj-new .ui-icon-bookmark,
+.ui-page-theme-c #feed .aj-new .ui-icon-bookmark,
+.ui-page-theme-c .ui-panel-wrapper #feed .aj-new .ui-icon-bookmark {
+  color: #1abc9c;
+}
 .ui-overlay-c #feed .s-image-details,
 .ui-page-theme-c #feed .s-image-details,
 .ui-page-theme-c .ui-panel-wrapper #feed .s-image-details {
@@ -6963,6 +6987,18 @@ html body .ui-group-theme-d .ui-bar-inherit.ui-li-divider small {
   cursor: pointer;
   color: #34495e;
 }
+.ui-overlay-d #feed .aj-new,
+.ui-page-theme-d #feed .aj-new,
+.ui-page-theme-d .ui-panel-wrapper #feed .aj-new {
+  clear: both;
+  float: left;
+  margin-left: 5px;
+}
+.ui-overlay-d #feed .aj-new .ui-icon-bookmark,
+.ui-page-theme-d #feed .aj-new .ui-icon-bookmark,
+.ui-page-theme-d .ui-panel-wrapper #feed .aj-new .ui-icon-bookmark {
+  color: #1abc9c;
+}
 .ui-overlay-d #feed .s-image-details,
 .ui-page-theme-d #feed .s-image-details,
 .ui-page-theme-d .ui-panel-wrapper #feed .s-image-details {
@@ -7893,6 +7929,18 @@ html body .ui-group-theme-e .ui-bar-inherit.ui-li-divider small {
   text-decoration: underline;
   cursor: pointer;
   color: #34495e;
+}
+.ui-overlay-e #feed .aj-new,
+.ui-page-theme-e #feed .aj-new,
+.ui-page-theme-e .ui-panel-wrapper #feed .aj-new {
+  clear: both;
+  float: left;
+  margin-left: 5px;
+}
+.ui-overlay-e #feed .aj-new .ui-icon-bookmark,
+.ui-page-theme-e #feed .aj-new .ui-icon-bookmark,
+.ui-page-theme-e .ui-panel-wrapper #feed .aj-new .ui-icon-bookmark {
+  color: #1abc9c;
 }
 .ui-overlay-e #feed .s-image-details,
 .ui-page-theme-e #feed .s-image-details,

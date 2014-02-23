@@ -350,7 +350,8 @@ define(
                 item: this.model,
                 city: this.get_city(),
                 share_settings: local_storage.get('feed_share_settings') || {},
-                taken : this.model.get('taken')
+                taken : this.model.get('taken'),
+                new_image: this.is_new(3)
             };
 
             if(sections){
@@ -794,6 +795,22 @@ define(
                     'no_callback': function(){ self.more_menu.find('.x-photo-delete').x_loading(false); }
                 });
             })();
+        },
+
+        is_new : function(days) {
+            var is_new_image = false;
+            var days_old = this.days_ago(this.model.get('date'));
+            if(days_old <= days) {
+                is_new_image = true;
+            }
+            return is_new_image;
+        },
+
+        days_ago : function(timestamp) { //inspired by sting_utils.time_ago
+            var date = new Date(timestamp),
+                diff = (((new Date()).getTime() - date.getTime()) / 1000),
+                day_diff = Math.floor(diff / 86400);
+                return day_diff;
         },
 
         //TAKE AND UNTAKE FUNCTIONALITY

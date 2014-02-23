@@ -15,6 +15,10 @@
     <% }%>
     <a href="#" class="s-time"><%= string_utils.short_timestamp(item.get('date'), true ) %></a>
 
+    <% if(new_image) { %>
+    <div class="aj-new"><span class="ui-icon-bookmark"></span> <i>New</i> item</div>
+    <% } %>
+
 </div>
 
 <div class="s-image-area" <% if(taken) { %> "aj-taken" <% } %> >
