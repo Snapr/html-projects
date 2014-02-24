@@ -1,6 +1,28 @@
 define(['views/search'], function(search_view){
     return search_view.extend({
 
+        post_activate: function(){
+
+            var page = this;
+            this.$el.on( "pagebeforeshow", function( e, obj ){
+                if (obj && obj.prevPage && obj.prevPage.length){
+                    if ($(obj.prevPage[0]).attr("id") == "map"){
+                        $(e.currentTarget).find("select.x-search-type").val("location").selectmenu("refresh");
+                    }
+                }else{
+                        $(e.currentTarget).find("select.x-search-type").val("tags").selectmenu("refresh");
+                }
+            });
+
+            this.change_page();
+
+            $('.browse-btn').removeClass('ui-btn-active');
+            $('.map-btn').removeClass('ui-btn-active');
+
+            $('.x-side-menu .ui-btn-active').removeClass('ui-btn-active');
+            $('.x-side-menu [data-slug="search"]').addClass('ui-btn-active');
+        },
+
         events: function(){
               return _.extend({},search_view.prototype.events,{
                     'click .x-menu-button': 'open_menu'

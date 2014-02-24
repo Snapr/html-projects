@@ -72,6 +72,11 @@ var uploading = page_view.extend({
             this.render_streams();
         }
         this.update_uploads();
+
+        $('.browse-btn').removeClass('ui-btn-active');
+        $('.map-btn').removeClass('ui-btn-active');
+        $('label[data-name="post"]').addClass('ui-btn-active');
+
     },
 
     events: {
