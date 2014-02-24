@@ -30,8 +30,12 @@
                         self.title = T("Browse");
                         $('.aj-radius-btn').hide();
                         $('.aj-refresh').hide();
+                    }else if (query.radius) {
+                        self.title = T("Nearby");
+                    }else if (query.not_tagged){
+                        self.title = T("Not Taken");
                     }else{
-                        self.title = T("Browse"); //tc-edited
+                        self.title = T("All"); //tc-edited
                     }
 
                     self.replace_from_template({title: self.title}, ['.x-title']).enhanceWithin();

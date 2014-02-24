@@ -4330,7 +4330,7 @@ html body .ui-group-theme-a .ui-bar-inherit.ui-li-divider small {
 .ui-page-theme-a div[data-role='header'] .ui-btn,
 .ui-page-theme-a .ui-panel-wrapper div[data-role='header'] .ui-btn {
   height: 50px !important;
-  width: 50px;
+  width: 40px !important;
 }
 .ui-overlay-a #feed .aj-radius-menu,
 .ui-page-theme-a #feed .aj-radius-menu,
@@ -5998,7 +5998,7 @@ html body .ui-group-theme-c .ui-bar-inherit.ui-li-divider small {
 .ui-page-theme-c div[data-role='header'] .ui-btn,
 .ui-page-theme-c .ui-panel-wrapper div[data-role='header'] .ui-btn {
   height: 50px !important;
-  width: 50px;
+  width: 40px !important;
 }
 .ui-overlay-c #feed .aj-radius-menu,
 .ui-page-theme-c #feed .aj-radius-menu,
@@ -6941,7 +6941,7 @@ html body .ui-group-theme-d .ui-bar-inherit.ui-li-divider small {
 .ui-page-theme-d div[data-role='header'] .ui-btn,
 .ui-page-theme-d .ui-panel-wrapper div[data-role='header'] .ui-btn {
   height: 50px !important;
-  width: 50px;
+  width: 40px !important;
 }
 .ui-overlay-d #feed .aj-radius-menu,
 .ui-page-theme-d #feed .aj-radius-menu,
@@ -7884,7 +7884,7 @@ html body .ui-group-theme-e .ui-bar-inherit.ui-li-divider small {
 .ui-page-theme-e div[data-role='header'] .ui-btn,
 .ui-page-theme-e .ui-panel-wrapper div[data-role='header'] .ui-btn {
   height: 50px !important;
-  width: 50px;
+  width: 40px !important;
 }
 .ui-overlay-e #feed .aj-radius-menu,
 .ui-page-theme-e #feed .aj-radius-menu,

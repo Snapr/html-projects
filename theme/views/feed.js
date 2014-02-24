@@ -141,6 +141,7 @@ define(
                     if (length === 0 && init === 1) {
                         //no results on first load, let's redirect the feed to 'all'
                         delete self.collections[tab].data.radius;
+                        $('.x-title').html("All");
                         $('.aj-radius-menu').children('.ui-btn-active').removeClass('ui-btn-active');
                         $('.aj-radius-menu').children('.all-distance').addClass('ui-btn-active');
                         fetch();
