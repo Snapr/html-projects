@@ -8,6 +8,16 @@
   src: local('Montserrat-Bold'), url(../fonts/Montserrat-Bold.woff) format('woff');
 }
 /* Active stuff */
+.ui-footer {
+  min-height: 20px !important;
+}
+.ui-footer .ui-btn {
+  line-height: 20px !important;
+  font-family: font-special-2 !important;
+  -webkit-font-smoothing: antialiased !important;
+  letter-spacing: 4px !important;
+  font-weight: normal !important;
+}
 /* keep the corners 45 degrees otherwise they look crap
    apply these to elements using the ::after psuedo class..
 */
@@ -4311,20 +4321,6 @@ html body .ui-group-theme-a .ui-bar-inherit.ui-li-divider small {
   height: 50px !important;
   width: 40px !important;
 }
-.ui-overlay-a .ui-footer,
-.ui-page-theme-a .ui-footer,
-.ui-page-theme-a .ui-panel-wrapper .ui-footer {
-  min-height: 20px !important;
-}
-.ui-overlay-a .ui-footer .ui-btn,
-.ui-page-theme-a .ui-footer .ui-btn,
-.ui-page-theme-a .ui-panel-wrapper .ui-footer .ui-btn {
-  line-height: 20px !important;
-  font-family: font-special-2 !important;
-  -webkit-font-smoothing: antialiased !important;
-  letter-spacing: 4px !important;
-  font-weight: normal !important;
-}
 .ui-overlay-a #feed .aj-radius-menu,
 .ui-page-theme-a #feed .aj-radius-menu,
 .ui-page-theme-a .ui-panel-wrapper #feed .aj-radius-menu {
@@ -6010,20 +6006,6 @@ html body .ui-group-theme-c .ui-bar-inherit.ui-li-divider small {
   height: 50px !important;
   width: 40px !important;
 }
-.ui-overlay-c .ui-footer,
-.ui-page-theme-c .ui-footer,
-.ui-page-theme-c .ui-panel-wrapper .ui-footer {
-  min-height: 20px !important;
-}
-.ui-overlay-c .ui-footer .ui-btn,
-.ui-page-theme-c .ui-footer .ui-btn,
-.ui-page-theme-c .ui-panel-wrapper .ui-footer .ui-btn {
-  line-height: 20px !important;
-  font-family: font-special-2 !important;
-  -webkit-font-smoothing: antialiased !important;
-  letter-spacing: 4px !important;
-  font-weight: normal !important;
-}
 .ui-overlay-c #feed .aj-radius-menu,
 .ui-page-theme-c #feed .aj-radius-menu,
 .ui-page-theme-c .ui-panel-wrapper #feed .aj-radius-menu {
@@ -6984,20 +6966,6 @@ html body .ui-group-theme-d .ui-bar-inherit.ui-li-divider small {
   height: 50px !important;
   width: 40px !important;
 }
-.ui-overlay-d .ui-footer,
-.ui-page-theme-d .ui-footer,
-.ui-page-theme-d .ui-panel-wrapper .ui-footer {
-  min-height: 20px !important;
-}
-.ui-overlay-d .ui-footer .ui-btn,
-.ui-page-theme-d .ui-footer .ui-btn,
-.ui-page-theme-d .ui-panel-wrapper .ui-footer .ui-btn {
-  line-height: 20px !important;
-  font-family: font-special-2 !important;
-  -webkit-font-smoothing: antialiased !important;
-  letter-spacing: 4px !important;
-  font-weight: normal !important;
-}
 .ui-overlay-d #feed .aj-radius-menu,
 .ui-page-theme-d #feed .aj-radius-menu,
 .ui-page-theme-d .ui-panel-wrapper #feed .aj-radius-menu {
@@ -7957,20 +7925,6 @@ html body .ui-group-theme-e .ui-bar-inherit.ui-li-divider small {
 .ui-page-theme-e .ui-panel-wrapper div[data-role='header'] .ui-btn {
   height: 50px !important;
   width: 40px !important;
-}
-.ui-overlay-e .ui-footer,
-.ui-page-theme-e .ui-footer,
-.ui-page-theme-e .ui-panel-wrapper .ui-footer {
-  min-height: 20px !important;
-}
-.ui-overlay-e .ui-footer .ui-btn,
-.ui-page-theme-e .ui-footer .ui-btn,
-.ui-page-theme-e .ui-panel-wrapper .ui-footer .ui-btn {
-  line-height: 20px !important;
-  font-family: font-special-2 !important;
-  -webkit-font-smoothing: antialiased !important;
-  letter-spacing: 4px !important;
-  font-weight: normal !important;
 }
 .ui-overlay-e #feed .aj-radius-menu,
 .ui-page-theme-e #feed .aj-radius-menu,
