@@ -174,37 +174,6 @@
 @margin: @m;
 @vertical-margin: @m; // Space above and below components
 
-//MAP PAGE
-#map {
-   .s-map-thumb {
-        background-color: @accent-color;
-    }
-   .s-map-thumb-old {
-        background-color: @brand-color;
-    }
-    .x-search-panel {
-        .s-panel-header {
-            h1 {
-                font-family: font-special-2;
-                text-transform: uppercase;
-                color: @brand-color;
-            }
-        }
-    }
-    .s-search-bar {
-        right: 9px; //align with location input
-    }
-
-    input {
-        font-family: @font-special;
-        letter-spacing:.1 * @m;
-        font-weight: normal;
-        //background-color: @white;
-        color: @black;
-        text-transform:capitalize;
-    }
-}
-
 .page(){
 
 .s-avatar {
@@ -226,6 +195,19 @@ div[data-role='header']{
         width: 4 * @m !important;       
     }
 } 
+
+//FOOTER NAV BAR
+@footerHeight: 2 * @m;
+.ui-footer {
+    min-height: @footerHeight !important;
+   .ui-btn {
+        line-height: @footerHeight !important;
+        font-family: font-special-2 !important;
+        -webkit-font-smoothing: antialiased !important;
+        letter-spacing: 0.4 * @m !important;
+        font-weight: normal !important;
+   }
+}
 
 //PHOTOS FEED
 #feed {
@@ -334,6 +316,40 @@ div[data-role='header']{
        }
 }
 
+//MAP PAGE
+#map {
+    // .s-map-base {
+    //     display: none;
+    // }
+   .s-map-thumb {
+        background-color: @accent-color;
+    }
+   .s-map-thumb-old {
+        background-color: @brand-color;
+    }
+    .x-search-panel {
+        .s-panel-header {
+            h1 {
+                font-family: font-special-2;
+                text-transform: uppercase;
+                color: @brand-color;
+            }
+        }
+    }
+    .s-search-bar {
+        right: 9px; //align with location input
+    }
+
+    input {
+        font-family: @font-special;
+        letter-spacing:.1 * @m;
+        font-weight: normal;
+        //background-color: @white;
+        color: @black;
+        text-transform:capitalize;
+    }
+}
+
 //SHARE PAGE
 #share {
     label {
@@ -390,19 +406,6 @@ div[data-role='header']{
     }
 }
 
-//FOOTER NAV BAR
-@footerHeight: 2 * @m;
-.ui-footer {
-    min-height: @footerHeight !important;
-   .ui-btn {
-        line-height: @footerHeight !important;
-        font-family: font-special-2 !important;
-        -webkit-font-smoothing: antialiased !important;
-        letter-spacing: 0.4 * @m !important;
-        font-weight: normal !important;
-   }
-}
-
 #activity {
     .s-comment-item {
         padding-left: 0;
@@ -411,6 +414,7 @@ div[data-role='header']{
         cursor: default;
     }
 }
+
 }
 
 
