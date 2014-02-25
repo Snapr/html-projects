@@ -22,7 +22,7 @@
     <div class="haveTaken"><%= have_taken %></div>
 </div>
 
-<div class="s-image-area" <% if(taken) { %> "aj-taken" <% } %> >
+<div class="s-image-area">
     <img style="height:<%= obj.height %>px;" src="https://s3.amazonaws.com/media-server<%= item.get('server_id') %>.snapr.us/lrg/<%= item.get('secret') %>/<%= item.get('id') %>.jpg" <% if(item.get('description')){ %>alt="<%= item.get('description') %>"<% } %> class="x-photo s-photo" />
 </div>
 

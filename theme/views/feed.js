@@ -389,9 +389,9 @@ define(
             this.delegateEvents();
 
             //on load show taken feedback
-            if(context.taken) {
-                this.show_taken();
-            }
+            // if(context.taken) {
+            //     this.show_taken_by_who();
+            // }
 
             if(this.is_taken_by_user()) {
                 this.$('.aj-take').hide();
@@ -435,9 +435,17 @@ define(
             setTimeout(fadeDown, 200);
             setTimeout(splashTxt, 400);
         },
-        show_not_taken: function() { var self = this;
-            self.$('.s-image-area').fadeTo(200, 1);
-            self.$('.takenText').remove();
+
+        show_taken_by_who: function() { var self = this;
+            var user = auth.get('snapr_user');
+            var currently = self.$('.haveTaken').html();
+            var newTxt = "";
+            if(currently === "") {
+                newTxt = user + " reported it's #taken";
+                self.$('.haveTaken').html(newTxt);
+            } else {
+               self.$('.haveTaken').prepend(user + ', ');
+            }
         },
 
         show_comments: function(){  var self = this;
@@ -844,7 +852,7 @@ define(
                     var commentArea = self.$('.s-comment-area');
                     $(commentArea).find('textarea').val(self.takenTag);
                     this.commentTaken();
-                    this.show_taken();
+                    this.show_taken_by_who();
                 }
                 else {
                     alert("You've already reported this #taken");
@@ -920,8 +928,9 @@ define(
                         if(this.is_taken() === true) {
                             //console.log('this item remains tagged #taken by another user');
                         }else {
-                            this.show_not_taken();
+                            //this.show_not_taken();
                         }
+                        self.$('.haveTaken').empty();
                     }
                 else {
                     alert("You haven't reported this junk as #taken");
