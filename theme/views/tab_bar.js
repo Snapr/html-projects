@@ -18,7 +18,9 @@ var tab_bar = view.extend({
 
     events:{
         'click a': 'handle_click',
-        'click .x-menu-button': 'open_menu'
+        'click .x-menu-button': 'open_menu',
+        'click .browse-btn': 'direct_browse',
+
     },
 
     render: function(message, icon){
@@ -102,6 +104,14 @@ var tab_bar = view.extend({
 
     side_menu_callbacks:{
 
+    },
+
+    direct_browse: function(e){
+        var currentPage = Backbone.history.fragment;
+        if (currentPage === "" || currentPage === "all/" || currentPage ==="nearby/") {
+            $('#radius-menu').popup('open');
+            e.preventDefault();
+        }
     }
 
 });

@@ -17,6 +17,7 @@
   -webkit-font-smoothing: antialiased !important;
   letter-spacing: 4px !important;
   font-weight: normal !important;
+  text-transform: uppercase;
 }
 /* keep the corners 45 degrees otherwise they look crap
    apply these to elements using the ::after psuedo class..
@@ -4325,8 +4326,9 @@ html body .ui-group-theme-a .ui-bar-inherit.ui-li-divider small {
 .ui-page-theme-a #feed .aj-radius-menu,
 .ui-page-theme-a .ui-panel-wrapper #feed .aj-radius-menu {
   position: fixed;
-  top: 50px;
-  right: 15px;
+  bottom: 50px;
+  left: 0;
+  width: 33.3%;
 }
 .ui-overlay-a #feed .coordinates,
 .ui-page-theme-a #feed .coordinates,
@@ -6010,8 +6012,9 @@ html body .ui-group-theme-c .ui-bar-inherit.ui-li-divider small {
 .ui-page-theme-c #feed .aj-radius-menu,
 .ui-page-theme-c .ui-panel-wrapper #feed .aj-radius-menu {
   position: fixed;
-  top: 50px;
-  right: 15px;
+  bottom: 50px;
+  left: 0;
+  width: 33.3%;
 }
 .ui-overlay-c #feed .coordinates,
 .ui-page-theme-c #feed .coordinates,
@@ -6970,8 +6973,9 @@ html body .ui-group-theme-d .ui-bar-inherit.ui-li-divider small {
 .ui-page-theme-d #feed .aj-radius-menu,
 .ui-page-theme-d .ui-panel-wrapper #feed .aj-radius-menu {
   position: fixed;
-  top: 50px;
-  right: 15px;
+  bottom: 50px;
+  left: 0;
+  width: 33.3%;
 }
 .ui-overlay-d #feed .coordinates,
 .ui-page-theme-d #feed .coordinates,
@@ -7930,8 +7934,9 @@ html body .ui-group-theme-e .ui-bar-inherit.ui-li-divider small {
 .ui-page-theme-e #feed .aj-radius-menu,
 .ui-page-theme-e .ui-panel-wrapper #feed .aj-radius-menu {
   position: fixed;
-  top: 50px;
-  right: 15px;
+  bottom: 50px;
+  left: 0;
+  width: 33.3%;
 }
 .ui-overlay-e #feed .coordinates,
 .ui-page-theme-e #feed .coordinates,
