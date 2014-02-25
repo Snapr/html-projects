@@ -92,7 +92,7 @@
             },
 
             scrollTop : function() {
-                $("html").animate({ scrollTop: 0 }, "fast");
+                $("body").animate({ scrollTop: 0 }, "fast");
             },
 
             open_menu : function(){
