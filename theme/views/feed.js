@@ -321,6 +321,7 @@ define(
             this.model.set('materials', materialArray);
             var taken = this.is_taken();
             this.model.set('taken', taken);
+            this.who_has_taken();
         },
 
         events: {
@@ -352,7 +353,8 @@ define(
                 city: this.get_city(),
                 share_settings: local_storage.get('feed_share_settings') || {},
                 taken : this.model.get('taken'),
-                new_image: this.is_new(3)
+                new_image: this.is_new(3),
+                have_taken: this.who_has_taken()
             };
 
             if(sections){
@@ -817,12 +819,30 @@ define(
         //TAKE AND UNTAKE FUNCTIONALITY
         takenTag : "#taken",
 
+        who_has_taken: function() {
+            var users = "";
+            if(this.is_taken()) {
+                var latestComments = this.model.get('latest_comments');
+                 if (this.model.get('comments') > 0) {
+                    _.each(latestComments, function (c) {
+                        if(c.comment.indexOf("#taken") != -1){
+                            users += c.user + ", ";
+                        }
+                    });
+                }
+                users = users.replace(/, $/,"");
+                users += " reported it's #taken";
+            }
+            console.log(users);
+            return users;
+        },
+
         set_taken : function(ev){ var self = this;
             var r = confirm("Report this item #taken?");
             if (r===true) {
                 if(!this.is_taken_by_user()) {
                     var commentArea = self.$('.s-comment-area');
-                    $(commentArea).find('textarea').val('reports this junk as ' + self.takenTag);
+                    $(commentArea).find('textarea').val(self.takenTag);
                     this.commentTaken();
                     this.show_taken();
                 }

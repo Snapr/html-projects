@@ -4367,6 +4367,13 @@ html body .ui-group-theme-a .ui-bar-inherit.ui-li-divider small {
   cursor: pointer;
   color: #34495e;
 }
+.ui-overlay-a #feed .coordinates .haveTaken,
+.ui-page-theme-a #feed .coordinates .haveTaken,
+.ui-page-theme-a .ui-panel-wrapper #feed .coordinates .haveTaken {
+  clear: both;
+  padding-left: 10px;
+  background-color: rgba(255, 255, 255, 0.6);
+}
 .ui-overlay-a #feed .aj-new,
 .ui-page-theme-a #feed .aj-new,
 .ui-page-theme-a .ui-panel-wrapper #feed .aj-new {
@@ -6064,6 +6071,13 @@ html body .ui-group-theme-c .ui-bar-inherit.ui-li-divider small {
   cursor: pointer;
   color: #34495e;
 }
+.ui-overlay-c #feed .coordinates .haveTaken,
+.ui-page-theme-c #feed .coordinates .haveTaken,
+.ui-page-theme-c .ui-panel-wrapper #feed .coordinates .haveTaken {
+  clear: both;
+  padding-left: 10px;
+  background-color: rgba(255, 255, 255, 0.6);
+}
 .ui-overlay-c #feed .aj-new,
 .ui-page-theme-c #feed .aj-new,
 .ui-page-theme-c .ui-panel-wrapper #feed .aj-new {
@@ -7036,6 +7050,13 @@ html body .ui-group-theme-d .ui-bar-inherit.ui-li-divider small {
   cursor: pointer;
   color: #34495e;
 }
+.ui-overlay-d #feed .coordinates .haveTaken,
+.ui-page-theme-d #feed .coordinates .haveTaken,
+.ui-page-theme-d .ui-panel-wrapper #feed .coordinates .haveTaken {
+  clear: both;
+  padding-left: 10px;
+  background-color: rgba(255, 255, 255, 0.6);
+}
 .ui-overlay-d #feed .aj-new,
 .ui-page-theme-d #feed .aj-new,
 .ui-page-theme-d .ui-panel-wrapper #feed .aj-new {
@@ -8007,6 +8028,13 @@ html body .ui-group-theme-e .ui-bar-inherit.ui-li-divider small {
   text-decoration: underline;
   cursor: pointer;
   color: #34495e;
+}
+.ui-overlay-e #feed .coordinates .haveTaken,
+.ui-page-theme-e #feed .coordinates .haveTaken,
+.ui-page-theme-e .ui-panel-wrapper #feed .coordinates .haveTaken {
+  clear: both;
+  padding-left: 10px;
+  background-color: rgba(255, 255, 255, 0.6);
 }
 .ui-overlay-e #feed .aj-new,
 .ui-page-theme-e #feed .aj-new,
