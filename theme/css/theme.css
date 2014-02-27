@@ -4449,6 +4449,17 @@ html body .ui-group-theme-a .ui-bar-inherit.ui-li-divider small {
   border-top: 1px solid #cccccc;
   border-bottom: 1px solid #ffffff;
 }
+.ui-overlay-a #feed .s-feed-end a,
+.ui-page-theme-a #feed .s-feed-end a,
+.ui-page-theme-a .ui-panel-wrapper #feed .s-feed-end a {
+  color: #666666;
+  border-color: #666666;
+}
+.ui-overlay-a #feed .s-feed-end .outline-style:after,
+.ui-page-theme-a #feed .s-feed-end .outline-style:after,
+.ui-page-theme-a .ui-panel-wrapper #feed .s-feed-end .outline-style:after {
+  color: #666666;
+}
 .ui-overlay-a #map .s-map-thumb,
 .ui-page-theme-a #map .s-map-thumb,
 .ui-page-theme-a .ui-panel-wrapper #map .s-map-thumb {
@@ -6135,6 +6146,17 @@ html body .ui-group-theme-c .ui-bar-inherit.ui-li-divider small {
   border-top: 1px solid #cccccc;
   border-bottom: 1px solid #ffffff;
 }
+.ui-overlay-c #feed .s-feed-end a,
+.ui-page-theme-c #feed .s-feed-end a,
+.ui-page-theme-c .ui-panel-wrapper #feed .s-feed-end a {
+  color: #666666;
+  border-color: #666666;
+}
+.ui-overlay-c #feed .s-feed-end .outline-style:after,
+.ui-page-theme-c #feed .s-feed-end .outline-style:after,
+.ui-page-theme-c .ui-panel-wrapper #feed .s-feed-end .outline-style:after {
+  color: #666666;
+}
 .ui-overlay-c #map .s-map-thumb,
 .ui-page-theme-c #map .s-map-thumb,
 .ui-page-theme-c .ui-panel-wrapper #map .s-map-thumb {
@@ -7096,6 +7118,17 @@ html body .ui-group-theme-d .ui-bar-inherit.ui-li-divider small {
   border-top: 1px solid #cccccc;
   border-bottom: 1px solid #ffffff;
 }
+.ui-overlay-d #feed .s-feed-end a,
+.ui-page-theme-d #feed .s-feed-end a,
+.ui-page-theme-d .ui-panel-wrapper #feed .s-feed-end a {
+  color: #666666;
+  border-color: #666666;
+}
+.ui-overlay-d #feed .s-feed-end .outline-style:after,
+.ui-page-theme-d #feed .s-feed-end .outline-style:after,
+.ui-page-theme-d .ui-panel-wrapper #feed .s-feed-end .outline-style:after {
+  color: #666666;
+}
 .ui-overlay-d #map .s-map-thumb,
 .ui-page-theme-d #map .s-map-thumb,
 .ui-page-theme-d .ui-panel-wrapper #map .s-map-thumb {
@@ -8056,6 +8089,17 @@ html body .ui-group-theme-e .ui-bar-inherit.ui-li-divider small {
   margin-top: 20px;
   border-top: 1px solid #cccccc;
   border-bottom: 1px solid #ffffff;
+}
+.ui-overlay-e #feed .s-feed-end a,
+.ui-page-theme-e #feed .s-feed-end a,
+.ui-page-theme-e .ui-panel-wrapper #feed .s-feed-end a {
+  color: #666666;
+  border-color: #666666;
+}
+.ui-overlay-e #feed .s-feed-end .outline-style:after,
+.ui-page-theme-e #feed .s-feed-end .outline-style:after,
+.ui-page-theme-e .ui-panel-wrapper #feed .s-feed-end .outline-style:after {
+  color: #666666;
 }
 .ui-overlay-e #map .s-map-thumb,
 .ui-page-theme-e #map .s-map-thumb,
