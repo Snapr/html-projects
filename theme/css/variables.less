@@ -279,7 +279,7 @@ div[data-role='header']{
 
     div[class^="tags"] {
         background-color: @gray-lighter;
-        padding: 10px 5px;
+        padding: 3px 3px;
         min-height: 30px;
         border-radius: 0;
         .ui-btn {
@@ -409,7 +409,32 @@ div[data-role='header']{
         letter-spacing: 0.4 * @m !important;
         font-weight: normal !important;
         text-transform: uppercase;
+		height: 2 * @m !important;
    }
+	.ui-block-a{
+		height: 2 * @m !important;
+		.browse-btn:after {
+	            font-size: 3 * @m !important;
+				margin: 0 !important;
+				padding: 0 !important;
+				color: @brand-color !important;
+				left: 45% !important;
+				top: 5% !important;
+	     }
+	}
+	.ui-block-b{
+		height: 2 * @m !important;
+		.map-btn:after {
+	            font-size: 3 * @m !important;
+				margin: 0 !important;
+				padding: 0 !important;
+				color: @white !important;
+				left: 45% !important;
+				top: 10% !important;
+	     }
+	}	
+
+
 }
 
 //MAP PAGE
