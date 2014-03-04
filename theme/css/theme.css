@@ -4432,6 +4432,7 @@ html body .ui-group-theme-a .ui-bar-inherit.ui-li-divider small {
 .ui-page-theme-a #feed .tags-editable,
 .ui-page-theme-a .ui-panel-wrapper #feed .tags-editable {
   display: none;
+  border: 1px dotted #34495e;
 }
 .ui-overlay-a #feed .s-action-buttons,
 .ui-page-theme-a #feed .s-action-buttons,
@@ -6136,6 +6137,7 @@ html body .ui-group-theme-c .ui-bar-inherit.ui-li-divider small {
 .ui-page-theme-c #feed .tags-editable,
 .ui-page-theme-c .ui-panel-wrapper #feed .tags-editable {
   display: none;
+  border: 1px dotted #34495e;
 }
 .ui-overlay-c #feed .s-action-buttons,
 .ui-page-theme-c #feed .s-action-buttons,
@@ -7115,6 +7117,7 @@ html body .ui-group-theme-d .ui-bar-inherit.ui-li-divider small {
 .ui-page-theme-d #feed .tags-editable,
 .ui-page-theme-d .ui-panel-wrapper #feed .tags-editable {
   display: none;
+  border: 1px dotted #34495e;
 }
 .ui-overlay-d #feed .s-action-buttons,
 .ui-page-theme-d #feed .s-action-buttons,
@@ -8094,6 +8097,7 @@ html body .ui-group-theme-e .ui-bar-inherit.ui-li-divider small {
 .ui-page-theme-e #feed .tags-editable,
 .ui-page-theme-e .ui-panel-wrapper #feed .tags-editable {
   display: none;
+  border: 1px dotted #34495e;
 }
 .ui-overlay-e #feed .s-action-buttons,
 .ui-page-theme-e #feed .s-action-buttons,
@@ -10266,16 +10270,16 @@ div[data-role="footer"] .ui-btn-left.ui-btn-icon-notext,
   margin: -10px -10px 10px -10px;
 }
 div[data-role="page"] {
-  padding-bottom: 60px !important;
-}
-div[data-role="page"] .s-default-home-btn {
-  display: none!important;
-}
-div[data-tab-bar="false"] {
   padding-bottom: 0!important;
 }
-div[data-tab-bar="false"] .s-default-home-btn {
+div[data-role="page"] .s-default-home-btn {
   display: inline-block !important;
+}
+div[data-role="page"].s-has-tab-bar {
+  padding-bottom: 60px !important;
+}
+div[data-role="page"].s-has-tab-bar .s-default-home-btn {
+  display: none!important;
 }
 .s-search-bar {
   padding: 10px;
@@ -12121,6 +12125,10 @@ img.emoji {
   bottom: 10px;
   right: 10px;
   z-index: 20;
+}
+.s-fx .s-photo-area .s-image {
+  width: 100%;
+  height: 100%;
 }
 .s-fx .s-photo-area .fx-sticker-handle {
   background-color: #ffffff;
