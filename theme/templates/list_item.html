@@ -108,22 +108,22 @@
     </div>
 
     <!-- More menu -->
-    <div data-role="popup" data-arrow="b" class="x-more-menu s-more-menu" data-theme="b" id="more-menu-<%= item.cid %>">
-            <a class="aj-take" data-role="button" data-icon="hand-top" data-iconpos="notext" data-inline="true">
+    <div data-role="popup" class="x-more-menu s-more-menu" data-theme="b" id="more-menu-<%= item.cid %>" data-dismissible="true">
+            <a class="aj-take" data-role="button">
                Take
            </a>
-            <a class="aj-untake" data-role="button" data-icon="hand-down" data-iconpos="notext" data-inline="true">
+            <a class="aj-untake" data-role="button">
                Untake
            </a>
-           <a onclick="return confirm('Are you sure you want to email this photo?')" href="mailto:?subject=Check Out This Junk&body=http://test.artjunk.org/<%= item.get('id') %>" data-role="button" data-inline="true" data-icon="envelope" data-iconpos="notext">Email</a>
+           <a onclick="return confirm('Are you sure you want to email this photo?')" href="mailto:?subject=Check Out This Junk&body=http://test.artjunk.org/<%= item.get('id') %>" data-role="button">Email</a>
            
         <% if (item.get("username") && item.get("username").toLowerCase() == (auth.get("snapr_user") || "").toLowerCase()){ %>
-            <a class="x-delete" data-role="button" data-icon="trash" data-iconpos="notext" data-inline="true">
+            <a class="x-delete" data-role="button">
                Delete
            </a>
         <%} else if(config.get('moderation_controls')){ %>
-            <a class="x-flag" data-role="button" data-icon="flag" data-iconpos="notext" data-inline="true">
-                <% if (item.get('flagged')){%> flagged <% }else{ %> flag <% } %>
+            <a class="x-flag" data-role="button">
+                <% if (item.get('flagged')){%> flagged <% }else{ %> Flag <% } %>
             </a>
         <%}%>
     </div>

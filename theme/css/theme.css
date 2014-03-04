@@ -4396,6 +4396,14 @@ html body .ui-group-theme-a .ui-bar-inherit.ui-li-divider small {
 .ui-page-theme-a .ui-panel-wrapper #feed .s-description {
   margin-bottom: 5px;
 }
+.ui-overlay-a #feed .s-more-menu,
+.ui-page-theme-a #feed .s-more-menu,
+.ui-page-theme-a .ui-panel-wrapper #feed .s-more-menu {
+  position: fixed;
+  top: 35%;
+  left: 25%;
+  width: 50%;
+}
 .ui-overlay-a #feed .takenText,
 .ui-page-theme-a #feed .takenText,
 .ui-page-theme-a .ui-panel-wrapper #feed .takenText {
@@ -6101,6 +6109,14 @@ html body .ui-group-theme-c .ui-bar-inherit.ui-li-divider small {
 .ui-page-theme-c .ui-panel-wrapper #feed .s-description {
   margin-bottom: 5px;
 }
+.ui-overlay-c #feed .s-more-menu,
+.ui-page-theme-c #feed .s-more-menu,
+.ui-page-theme-c .ui-panel-wrapper #feed .s-more-menu {
+  position: fixed;
+  top: 35%;
+  left: 25%;
+  width: 50%;
+}
 .ui-overlay-c #feed .takenText,
 .ui-page-theme-c #feed .takenText,
 .ui-page-theme-c .ui-panel-wrapper #feed .takenText {
@@ -7081,6 +7097,14 @@ html body .ui-group-theme-d .ui-bar-inherit.ui-li-divider small {
 .ui-page-theme-d .ui-panel-wrapper #feed .s-description {
   margin-bottom: 5px;
 }
+.ui-overlay-d #feed .s-more-menu,
+.ui-page-theme-d #feed .s-more-menu,
+.ui-page-theme-d .ui-panel-wrapper #feed .s-more-menu {
+  position: fixed;
+  top: 35%;
+  left: 25%;
+  width: 50%;
+}
 .ui-overlay-d #feed .takenText,
 .ui-page-theme-d #feed .takenText,
 .ui-page-theme-d .ui-panel-wrapper #feed .takenText {
@@ -8060,6 +8084,14 @@ html body .ui-group-theme-e .ui-bar-inherit.ui-li-divider small {
 .ui-page-theme-e #feed .s-description,
 .ui-page-theme-e .ui-panel-wrapper #feed .s-description {
   margin-bottom: 5px;
+}
+.ui-overlay-e #feed .s-more-menu,
+.ui-page-theme-e #feed .s-more-menu,
+.ui-page-theme-e .ui-panel-wrapper #feed .s-more-menu {
+  position: fixed;
+  top: 35%;
+  left: 25%;
+  width: 50%;
 }
 .ui-overlay-e #feed .takenText,
 .ui-page-theme-e #feed .takenText,
