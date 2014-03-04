@@ -71,12 +71,6 @@ return {
         side_menu_theme: 'c',
         side_menu_options: [
             {
-                url: '/',
-                icon: "large-film",
-                label: 'Browse',
-                slug: 'browse'
-            },
-            {
                 url: '#/search/',
                 icon: "large-search",
                 label: 'Search',
@@ -85,15 +79,8 @@ return {
             {
                 url: '#/activity/',
                 icon: "eye-open",
-                label: 'Activity',
+                label: 'Your Activity',
                 slug: 'activity',
-                logged_in: true  // only show for users logged in
-            },
-            {
-                url: '#/logout/',
-                icon: "large-user",
-                label: 'Log Out',
-                slug: 'logout',
                 logged_in: true  // only show for users logged in
             },
             {
@@ -109,6 +96,13 @@ return {
                 label: 'About',
                 slug: 'about'
             },
+            {
+                url: '#/logout/',
+                icon: "large-user",
+                label: 'Log Out',
+                slug: 'logout',
+                logged_in: true  // only show for users logged in
+            }
         ],
 
 
