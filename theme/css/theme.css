@@ -19,6 +19,27 @@
   font-weight: normal !important;
   text-transform: uppercase;
 }
+#map .s-map-thumb {
+  background-color: #1abc9c;
+}
+#map .s-map-thumb-old {
+  background-color: #34495e;
+}
+#map .x-search-panel .s-panel-header h1 {
+  font-family: font-special-2;
+  text-transform: uppercase;
+  color: #34495e;
+}
+#map .s-search-bar {
+  right: 9px;
+}
+#map input {
+  font-family: HelveticaNeue-Light, Helvetica, Arial, sans-serif;
+  letter-spacing: 1px;
+  font-weight: normal;
+  color: #000000;
+  text-transform: capitalize;
+}
 /* keep the corners 45 degrees otherwise they look crap
    apply these to elements using the ::after psuedo class..
 */
@@ -4476,37 +4497,6 @@ html body .ui-group-theme-a .ui-bar-inherit.ui-li-divider small {
 .ui-page-theme-a .ui-panel-wrapper #feed .s-feed-end .outline-style:after {
   color: #666666;
 }
-.ui-overlay-a #map .s-map-thumb,
-.ui-page-theme-a #map .s-map-thumb,
-.ui-page-theme-a .ui-panel-wrapper #map .s-map-thumb {
-  background-color: #1abc9c;
-}
-.ui-overlay-a #map .s-map-thumb-old,
-.ui-page-theme-a #map .s-map-thumb-old,
-.ui-page-theme-a .ui-panel-wrapper #map .s-map-thumb-old {
-  background-color: #34495e;
-}
-.ui-overlay-a #map .x-search-panel .s-panel-header h1,
-.ui-page-theme-a #map .x-search-panel .s-panel-header h1,
-.ui-page-theme-a .ui-panel-wrapper #map .x-search-panel .s-panel-header h1 {
-  font-family: font-special-2;
-  text-transform: uppercase;
-  color: #34495e;
-}
-.ui-overlay-a #map .s-search-bar,
-.ui-page-theme-a #map .s-search-bar,
-.ui-page-theme-a .ui-panel-wrapper #map .s-search-bar {
-  right: 9px;
-}
-.ui-overlay-a #map input,
-.ui-page-theme-a #map input,
-.ui-page-theme-a .ui-panel-wrapper #map input {
-  font-family: HelveticaNeue-Light, Helvetica, Arial, sans-serif;
-  letter-spacing: 1px;
-  font-weight: normal;
-  color: #000000;
-  text-transform: capitalize;
-}
 .ui-overlay-a #share label,
 .ui-page-theme-a #share label,
 .ui-page-theme-a .ui-panel-wrapper #share label {
@@ -6189,37 +6179,6 @@ html body .ui-group-theme-c .ui-bar-inherit.ui-li-divider small {
 .ui-page-theme-c .ui-panel-wrapper #feed .s-feed-end .outline-style:after {
   color: #666666;
 }
-.ui-overlay-c #map .s-map-thumb,
-.ui-page-theme-c #map .s-map-thumb,
-.ui-page-theme-c .ui-panel-wrapper #map .s-map-thumb {
-  background-color: #1abc9c;
-}
-.ui-overlay-c #map .s-map-thumb-old,
-.ui-page-theme-c #map .s-map-thumb-old,
-.ui-page-theme-c .ui-panel-wrapper #map .s-map-thumb-old {
-  background-color: #34495e;
-}
-.ui-overlay-c #map .x-search-panel .s-panel-header h1,
-.ui-page-theme-c #map .x-search-panel .s-panel-header h1,
-.ui-page-theme-c .ui-panel-wrapper #map .x-search-panel .s-panel-header h1 {
-  font-family: font-special-2;
-  text-transform: uppercase;
-  color: #34495e;
-}
-.ui-overlay-c #map .s-search-bar,
-.ui-page-theme-c #map .s-search-bar,
-.ui-page-theme-c .ui-panel-wrapper #map .s-search-bar {
-  right: 9px;
-}
-.ui-overlay-c #map input,
-.ui-page-theme-c #map input,
-.ui-page-theme-c .ui-panel-wrapper #map input {
-  font-family: HelveticaNeue-Light, Helvetica, Arial, sans-serif;
-  letter-spacing: 1px;
-  font-weight: normal;
-  color: #000000;
-  text-transform: capitalize;
-}
 .ui-overlay-c #share label,
 .ui-page-theme-c #share label,
 .ui-page-theme-c .ui-panel-wrapper #share label {
@@ -7177,37 +7136,6 @@ html body .ui-group-theme-d .ui-bar-inherit.ui-li-divider small {
 .ui-page-theme-d .ui-panel-wrapper #feed .s-feed-end .outline-style:after {
   color: #666666;
 }
-.ui-overlay-d #map .s-map-thumb,
-.ui-page-theme-d #map .s-map-thumb,
-.ui-page-theme-d .ui-panel-wrapper #map .s-map-thumb {
-  background-color: #1abc9c;
-}
-.ui-overlay-d #map .s-map-thumb-old,
-.ui-page-theme-d #map .s-map-thumb-old,
-.ui-page-theme-d .ui-panel-wrapper #map .s-map-thumb-old {
-  background-color: #34495e;
-}
-.ui-overlay-d #map .x-search-panel .s-panel-header h1,
-.ui-page-theme-d #map .x-search-panel .s-panel-header h1,
-.ui-page-theme-d .ui-panel-wrapper #map .x-search-panel .s-panel-header h1 {
-  font-family: font-special-2;
-  text-transform: uppercase;
-  color: #34495e;
-}
-.ui-overlay-d #map .s-search-bar,
-.ui-page-theme-d #map .s-search-bar,
-.ui-page-theme-d .ui-panel-wrapper #map .s-search-bar {
-  right: 9px;
-}
-.ui-overlay-d #map input,
-.ui-page-theme-d #map input,
-.ui-page-theme-d .ui-panel-wrapper #map input {
-  font-family: HelveticaNeue-Light, Helvetica, Arial, sans-serif;
-  letter-spacing: 1px;
-  font-weight: normal;
-  color: #000000;
-  text-transform: capitalize;
-}
 .ui-overlay-d #share label,
 .ui-page-theme-d #share label,
 .ui-page-theme-d .ui-panel-wrapper #share label {
@@ -8164,37 +8092,6 @@ html body .ui-group-theme-e .ui-bar-inherit.ui-li-divider small {
 .ui-page-theme-e #feed .s-feed-end .outline-style:after,
 .ui-page-theme-e .ui-panel-wrapper #feed .s-feed-end .outline-style:after {
   color: #666666;
-}
-.ui-overlay-e #map .s-map-thumb,
-.ui-page-theme-e #map .s-map-thumb,
-.ui-page-theme-e .ui-panel-wrapper #map .s-map-thumb {
-  background-color: #1abc9c;
-}
-.ui-overlay-e #map .s-map-thumb-old,
-.ui-page-theme-e #map .s-map-thumb-old,
-.ui-page-theme-e .ui-panel-wrapper #map .s-map-thumb-old {
-  background-color: #34495e;
-}
-.ui-overlay-e #map .x-search-panel .s-panel-header h1,
-.ui-page-theme-e #map .x-search-panel .s-panel-header h1,
-.ui-page-theme-e .ui-panel-wrapper #map .x-search-panel .s-panel-header h1 {
-  font-family: font-special-2;
-  text-transform: uppercase;
-  color: #34495e;
-}
-.ui-overlay-e #map .s-search-bar,
-.ui-page-theme-e #map .s-search-bar,
-.ui-page-theme-e .ui-panel-wrapper #map .s-search-bar {
-  right: 9px;
-}
-.ui-overlay-e #map input,
-.ui-page-theme-e #map input,
-.ui-page-theme-e .ui-panel-wrapper #map input {
-  font-family: HelveticaNeue-Light, Helvetica, Arial, sans-serif;
-  letter-spacing: 1px;
-  font-weight: normal;
-  color: #000000;
-  text-transform: capitalize;
 }
 .ui-overlay-e #share label,
 .ui-page-theme-e #share label,

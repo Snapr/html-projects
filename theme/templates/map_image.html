@@ -3,6 +3,7 @@
 	<%
 		var oneDay = 24*60*60*1000;
 		var date = data.date_taken;
+		date = date.substring(0, date.indexOf(' '));
 		date = new Date(date).getTime();
 		var now = new Date().getTime();
 		var diffDays = Math.floor(Math.abs((now - date)/(oneDay)));
