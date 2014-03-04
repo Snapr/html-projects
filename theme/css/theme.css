@@ -9,10 +9,10 @@
 }
 /* Active stuff */
 .ui-footer {
-  min-height: 20px !important;
+  min-height: 40px !important;
 }
 .ui-footer .ui-btn {
-  line-height: 20px !important;
+  line-height: 40px !important;
   font-family: font-special-2 !important;
   -webkit-font-smoothing: antialiased !important;
   letter-spacing: 4px !important;
@@ -21,7 +21,7 @@
   height: 20px !important;
 }
 .ui-footer .ui-block-a {
-  height: 20px !important;
+  height: 40px !important;
 }
 .ui-footer .ui-block-a .browse-btn:after {
   font-size: 30px !important;
@@ -32,15 +32,29 @@
   top: 5% !important;
 }
 .ui-footer .ui-block-b {
-  height: 20px !important;
+  height: 40px !important;
 }
 .ui-footer .ui-block-b .map-btn:after {
-  font-size: 30px !important;
+  font-size: 28px !important;
   margin: 0 !important;
   padding: 0 !important;
   color: #ffffff !important;
   left: 45% !important;
-  top: 10% !important;
+  top: 13% !important;
+}
+.ui-footer .ui-block-c {
+  height: 40px !important;
+}
+.ui-footer .ui-block-c .launch-camera-options {
+  height: 40px !important;
+}
+.ui-footer .ui-block-c .post-btn:after {
+  font-size: 28px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  color: #ffffff !important;
+  left: 45% !important;
+  top: 13% !important;
 }
 #map .s-map-thumb {
   background-color: #1abc9c;

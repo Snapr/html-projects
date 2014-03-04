@@ -399,9 +399,8 @@ div[data-role='header']{
 }
 
 //FOOTER NAV BAR
-@footerHeight: 2 * @m;
+@footerHeight: 4 * @m;
 .ui-footer {
-    min-height: @footerHeight !important;
    .ui-btn {
         line-height: @footerHeight !important;
         font-family: font-special-2 !important;
@@ -412,7 +411,7 @@ div[data-role='header']{
 		height: 2 * @m !important;
    }
 	.ui-block-a{
-		height: 2 * @m !important;
+		height: 4 * @m !important;
 		.browse-btn:after {
 	            font-size: 3 * @m !important;
 				margin: 0 !important;
@@ -423,16 +422,35 @@ div[data-role='header']{
 	     }
 	}
 	.ui-block-b{
-		height: 2 * @m !important;
+		height: 4 * @m !important;
 		.map-btn:after {
-	            font-size: 3 * @m !important;
+	            font-size: 2.8 * @m !important;
 				margin: 0 !important;
 				padding: 0 !important;
 				color: @white !important;
 				left: 45% !important;
-				top: 10% !important;
+				top: 13% !important;
 	     }
+	}
+
+	.ui-block-c{
+		height: 4 * @m !important;
+		.launch-camera-options{
+			height: 4 * @m !important;
+			
+
+		}
+		.post-btn:after {
+	            font-size: 2.8 * @m !important;
+				margin: 0 !important;
+				padding: 0 !important;
+				color: @white !important;
+				left: 45% !important;
+				top: 13% !important;
+	     }
+
 	}	
+    min-height: @footerHeight !important;
 
 
 }
