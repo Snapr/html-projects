@@ -849,7 +849,7 @@ define(
         set_taken : function(ev){ var self = this;
             alerts.approve({
                     'title': T('Are you sure you want to take this item?'),
-                    'yes': T('Delete'),
+                    'yes': T('Take'),
                     'no': T('Cancel'),
                     'yes_callback': function(){
 
@@ -871,7 +871,6 @@ define(
                     },
                     'no_callback': function(){  }
                 });
-
         },
 
         commentTaken: function( e ){  var self = this;
@@ -930,27 +929,34 @@ define(
         },
 
         set_untaken : function(){ var self = this;
-            var r = confirm("Report this junk NOT taken?");
-            if (r===true) {
-                var commentToDelete = this.get_comment_id(this.takenTag);
-                if (commentToDelete !== 0) {
-                        this.delete_comment(commentToDelete);
-                        if(this.is_taken() === true) {
-                            var newPeeps = this.who_has_taken();
-                            self.$('.haveTaken').html(newPeeps);
-                        }else {
-                            self.$('.haveTaken').empty();
+            alerts.approve({
+                    'title': T('Are you sure you want to untake this item?'),
+                    'yes': T('Untake'),
+                    'no': T('Cancel'),
+                    'yes_callback': function(){
+
+                        var commentToDelete = self.get_comment_id(self.takenTag);
+                        if (commentToDelete !== 0) {
+                                self.delete_comment(commentToDelete);
+                                if(self.is_taken() === true) {
+                                    var newPeeps = self.who_has_taken();
+                                    self.$('.haveTaken').html(newPeeps);
+                                }else {
+                                    self.$('.haveTaken').empty();
+                                }
+                                
+                            }
+                        else {
+                            alert("You haven't reported this junk as #taken");
                         }
-                        
-                    }
-                else {
-                    alert("You haven't reported this junk as #taken");
-                }
-                //switch buttons
-                self.more_menu.find('.aj-take').show();
-                self.more_menu.find('.aj-untake').hide();
-                $('.x-more-menu').popup('close');
-            }
+                        //switch buttons
+                        self.more_menu.find('.aj-take').show();
+                        self.more_menu.find('.aj-untake').hide();
+                        $('.x-more-menu').popup('close');
+
+                    },
+                    'no_callback': function(){  }
+                });
         },
 
         get_comment_id: function(commentContent) {var self=this;
