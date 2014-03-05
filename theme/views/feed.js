@@ -847,23 +847,31 @@ define(
         },
 
         set_taken : function(ev){ var self = this;
-            var r = confirm("Report this item #taken?");
-            if (r===true) {
-                if(!this.is_taken_by_user()) {
-                    var commentArea = self.$('.s-comment-area');
-                    $(commentArea).find('textarea').val(self.takenTag);
-                    this.commentTaken();
-                    this.show_taken_by_who();
-                }
-                else {
-                    alert("You've already reported this #taken");
-                }
+            alerts.approve({
+                    'title': T('Are you sure you want to take this item?'),
+                    'yes': T('Delete'),
+                    'no': T('Cancel'),
+                    'yes_callback': function(){
 
-                //switch buttons
-                self.more_menu.find('.aj-take').hide();
-                self.more_menu.find('.aj-untake').show();
-                $('.x-more-menu').popup('close');
-            }
+                        if(!self.is_taken_by_user()) {
+                            var commentArea = self.$('.s-comment-area');
+                            $(commentArea).find('textarea').val(self.takenTag);
+                            self.commentTaken();
+                            self.show_taken_by_who();
+                        }
+                        else {
+                            alert("You've already reported this #taken");
+                        }
+
+                        //switch buttons
+                        self.more_menu.find('.aj-take').hide();
+                        self.more_menu.find('.aj-untake').show();
+                        $('.x-more-menu').popup('close');
+
+                    },
+                    'no_callback': function(){  }
+                });
+
         },
 
         commentTaken: function( e ){  var self = this;
