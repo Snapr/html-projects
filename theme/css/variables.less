@@ -294,7 +294,7 @@ div[data-role='header']{
 
     .tags-editable { 
         display: none;
-        border: 1px solid @brand-color;
+        border: 1px solid @white;
     }
 
     .s-action-buttons {
@@ -401,17 +401,20 @@ div[data-role='header']{
 //FOOTER NAV BAR
 @footerHeight: 5 * @m;
 .ui-footer {
+	/*border-top: 1px solid @white !important;*/
    .ui-btn {
         line-height: @footerHeight !important;
-        font-family: font-special-2 !important;
+        font-family: @font-special-2 !important;
         -webkit-font-smoothing: antialiased !important;
         letter-spacing: 0.4 * @m !important;
         font-weight: normal !important;
         text-transform: uppercase;
 		height: 2 * @m !important;
+		
    }
 	.ui-block-a{
 		height: 5 * @m !important;
+		border-right: 1px solid @white;
 		.browse-btn:after {
 	            font-size: 3 * @m !important;
 				margin: 0 !important;
@@ -422,6 +425,7 @@ div[data-role='header']{
 	}
 	.ui-block-b{
 		height: 5 * @m !important;
+		border-right: 1px solid @white;
 		.map-btn:after {
 	            font-size: 2.8 * @m !important;
 				margin: 0 !important;
@@ -452,6 +456,19 @@ div[data-role='header']{
 
 }
 
+.aj-distance {
+	display: block !important;
+	border-bottom: 1px solid @white !important;
+	-webkit-border-radius: 0 !important;
+	border-radius: 0 !important;
+	padding:0 !important;
+	margin:0 !important;
+	height: @footerHeight!important;
+	text-align: center;
+	vertical-align: middle !important;
+	line-height: 50px !important;
+}
+
 //MAP PAGE
 #map {
     // .s-map-base {
@@ -469,11 +486,18 @@ div[data-role='header']{
     .x-search-panel {
         .s-panel-header {
             h1 {
-                font-family: font-special-2;
+	        	font-family: @font-special-2 !important;
+	        	-webkit-font-smoothing: antialiased !important;
                 text-transform: uppercase;
                 color: @brand-color;
+				margin:0 !important;
+				height: 6 * @m !important;
+				line-height: 6.1 * @m !important;
             }
         }
+		.x-search-button {
+			margin-top: 2 * @m !important;
+		}
     }
     .s-search-bar {
         right: 9px; //align with location input

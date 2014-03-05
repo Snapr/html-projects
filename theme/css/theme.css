@@ -9,11 +9,13 @@
 }
 /* Active stuff */
 .ui-footer {
+  /*border-top: 1px solid @white !important;*/
+
   min-height: 50px !important;
 }
 .ui-footer .ui-btn {
   line-height: 50px !important;
-  font-family: font-special-2 !important;
+  font-family: Montserrat, Helvetica, Arial, sans-serif !important;
   -webkit-font-smoothing: antialiased !important;
   letter-spacing: 4px !important;
   font-weight: normal !important;
@@ -22,6 +24,7 @@
 }
 .ui-footer .ui-block-a {
   height: 50px !important;
+  border-right: 1px solid #ffffff;
 }
 .ui-footer .ui-block-a .browse-btn:after {
   font-size: 30px !important;
@@ -32,6 +35,7 @@
 }
 .ui-footer .ui-block-b {
   height: 50px !important;
+  border-right: 1px solid #ffffff;
 }
 .ui-footer .ui-block-b .map-btn:after {
   font-size: 28px !important;
@@ -53,6 +57,18 @@
   left: 40% !important;
   top: 20% !important;
 }
+.aj-distance {
+  display: block !important;
+  border-bottom: 1px solid #ffffff !important;
+  -webkit-border-radius: 0 !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  height: 50px !important;
+  text-align: center;
+  vertical-align: middle !important;
+  line-height: 50px !important;
+}
 #map .s-map-thumb {
   background-color: #1abc9c;
 }
@@ -60,9 +76,16 @@
   background-color: #34495e;
 }
 #map .x-search-panel .s-panel-header h1 {
-  font-family: font-special-2;
+  font-family: Montserrat, Helvetica, Arial, sans-serif !important;
+  -webkit-font-smoothing: antialiased !important;
   text-transform: uppercase;
   color: #34495e;
+  margin: 0 !important;
+  height: 60px !important;
+  line-height: 61px !important;
+}
+#map .x-search-panel .x-search-button {
+  margin-top: 20px !important;
 }
 #map .s-search-bar {
   right: 9px;
@@ -4495,7 +4518,7 @@ html body .ui-group-theme-a .ui-bar-inherit.ui-li-divider small {
 .ui-page-theme-a #feed .tags-editable,
 .ui-page-theme-a .ui-panel-wrapper #feed .tags-editable {
   display: none;
-  border: 1px solid #34495e;
+  border: 1px solid #ffffff;
 }
 .ui-overlay-a #feed .s-action-buttons,
 .ui-page-theme-a #feed .s-action-buttons,
@@ -6181,7 +6204,7 @@ html body .ui-group-theme-c .ui-bar-inherit.ui-li-divider small {
 .ui-page-theme-c #feed .tags-editable,
 .ui-page-theme-c .ui-panel-wrapper #feed .tags-editable {
   display: none;
-  border: 1px solid #34495e;
+  border: 1px solid #ffffff;
 }
 .ui-overlay-c #feed .s-action-buttons,
 .ui-page-theme-c #feed .s-action-buttons,
@@ -7142,7 +7165,7 @@ html body .ui-group-theme-d .ui-bar-inherit.ui-li-divider small {
 .ui-page-theme-d #feed .tags-editable,
 .ui-page-theme-d .ui-panel-wrapper #feed .tags-editable {
   display: none;
-  border: 1px solid #34495e;
+  border: 1px solid #ffffff;
 }
 .ui-overlay-d #feed .s-action-buttons,
 .ui-page-theme-d #feed .s-action-buttons,
@@ -8103,7 +8126,7 @@ html body .ui-group-theme-e .ui-bar-inherit.ui-li-divider small {
 .ui-page-theme-e #feed .tags-editable,
 .ui-page-theme-e .ui-panel-wrapper #feed .tags-editable {
   display: none;
-  border: 1px solid #34495e;
+  border: 1px solid #ffffff;
 }
 .ui-overlay-e #feed .s-action-buttons,
 .ui-page-theme-e #feed .s-action-buttons,
@@ -9789,7 +9812,7 @@ html body .ui-group-theme-g .ui-bar-inherit.ui-li-divider small {
 .ui-page-theme-g #feed .tags-editable,
 .ui-page-theme-g .ui-panel-wrapper #feed .tags-editable {
   display: none;
-  border: 1px solid #34495e;
+  border: 1px solid #ffffff;
 }
 .ui-overlay-g #feed .s-action-buttons,
 .ui-page-theme-g #feed .s-action-buttons,
