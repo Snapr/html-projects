@@ -4495,7 +4495,7 @@ html body .ui-group-theme-a .ui-bar-inherit.ui-li-divider small {
 .ui-page-theme-a #feed .tags-editable,
 .ui-page-theme-a .ui-panel-wrapper #feed .tags-editable {
   display: none;
-  border: 1px dotted #34495e;
+  border: 1px solid #34495e;
 }
 .ui-overlay-a #feed .s-action-buttons,
 .ui-page-theme-a #feed .s-action-buttons,
@@ -6181,7 +6181,7 @@ html body .ui-group-theme-c .ui-bar-inherit.ui-li-divider small {
 .ui-page-theme-c #feed .tags-editable,
 .ui-page-theme-c .ui-panel-wrapper #feed .tags-editable {
   display: none;
-  border: 1px dotted #34495e;
+  border: 1px solid #34495e;
 }
 .ui-overlay-c #feed .s-action-buttons,
 .ui-page-theme-c #feed .s-action-buttons,
@@ -7142,7 +7142,7 @@ html body .ui-group-theme-d .ui-bar-inherit.ui-li-divider small {
 .ui-page-theme-d #feed .tags-editable,
 .ui-page-theme-d .ui-panel-wrapper #feed .tags-editable {
   display: none;
-  border: 1px dotted #34495e;
+  border: 1px solid #34495e;
 }
 .ui-overlay-d #feed .s-action-buttons,
 .ui-page-theme-d #feed .s-action-buttons,
@@ -8103,7 +8103,7 @@ html body .ui-group-theme-e .ui-bar-inherit.ui-li-divider small {
 .ui-page-theme-e #feed .tags-editable,
 .ui-page-theme-e .ui-panel-wrapper #feed .tags-editable {
   display: none;
-  border: 1px dotted #34495e;
+  border: 1px solid #34495e;
 }
 .ui-overlay-e #feed .s-action-buttons,
 .ui-page-theme-e #feed .s-action-buttons,
@@ -9789,7 +9789,7 @@ html body .ui-group-theme-g .ui-bar-inherit.ui-li-divider small {
 .ui-page-theme-g #feed .tags-editable,
 .ui-page-theme-g .ui-panel-wrapper #feed .tags-editable {
   display: none;
-  border: 1px dotted #34495e;
+  border: 1px solid #34495e;
 }
 .ui-overlay-g #feed .s-action-buttons,
 .ui-page-theme-g #feed .s-action-buttons,
