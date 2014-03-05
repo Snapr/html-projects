@@ -108,15 +108,12 @@ var tab_bar = view.extend({
 
     direct_browse: function(e){
         var currentPage = Backbone.history.fragment;
-        alert('current page:' + currentPage);
         if (currentPage === "" || currentPage === "all/" || currentPage ==="nearby/") {
             $('#radius-menu').popup('open');
-            e.preventDefault();
-            alert('if statement tries to open pop up radius search');
         } else {
-            window.location.href = '#/nearby/';
-            alert('else go to link');
+            window.location.href = '/';
         }
+        e.preventDefault();
     }
 
 });
