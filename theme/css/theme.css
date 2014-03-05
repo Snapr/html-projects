@@ -5626,7 +5626,7 @@ html .ui-bar-b .ui-btn:active,
 html .ui-body-b .ui-btn:active,
 html body .ui-group-theme-b .ui-btn:active,
 html head + body .ui-btn.ui-btn-b:active {
-  background: #202020;
+  background: #e6e6e6;
   border-color: #202020;
   color: #34495e;
   text-shadow: none;
@@ -5650,8 +5650,8 @@ html .ui-body-b .ui-btn:active.outline-style,
 html body .ui-group-theme-b .ui-btn:active.outline-style,
 html head + body .ui-btn.ui-btn-b:active.outline-style {
   background: transparent;
-  border-color: #202020;
-  color: #202020;
+  border-color: #e6e6e6;
+  color: #e6e6e6;
   -moz-box-shadow: none;
   -webkit-box-shadow: none;
   box-shadow: none;
@@ -5662,7 +5662,7 @@ html .ui-bar-b .ui-btn:active.outline-style:after,
 html .ui-body-b .ui-btn:active.outline-style:after,
 html body .ui-group-theme-b .ui-btn:active.outline-style:after,
 html head + body .ui-btn.ui-btn-b:active.outline-style:after {
-  color: #202020;
+  color: #e6e6e6;
 }
 .ui-overlay-b .ui-btn:active:after,
 .ui-page-theme-b .ui-btn:active:after,
