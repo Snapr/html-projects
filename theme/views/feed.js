@@ -376,6 +376,7 @@ define(
             this.more_menu.on('click', '.x-delete', _.bind(this.delete_photo, this));
             this.more_menu.on('click', '.aj-take', _.bind(this.set_taken, this));
             this.more_menu.on('click', '.aj-untake', _.bind(this.set_untaken, this));
+            this.more_menu.on('click', '.aj-email', _.bind(this.email_link, this));
 
             this.share_menu = this.$('.x-share-menu');
             this.share_menu.on('change', '.x-service-select', this.store_share_settings);
@@ -771,6 +772,18 @@ define(
             })();
         },
 
+        email_link: function() { var self = this;
+            alerts.approve({
+                'title': T('Are you sure you want to email this item?'),
+                'yes': T('Open Email'),
+                'no': T('Cancel'),
+                'yes_callback': function(){
+                    window.location='mailto:?subject=Check Out This Junk&body=http://test.artjunk.org/' + self.model.get("id");
+
+                }
+            });
+        },
+
         delete_photo: function(){  var self = this;
             self.more_menu.find('.x-photo-delete').x_loading();
             auth.require_login( function(){
@@ -848,29 +861,29 @@ define(
 
         set_taken : function(ev){ var self = this;
             alerts.approve({
-                    'title': T('Are you sure you want to take this item?'),
-                    'yes': T('Take'),
-                    'no': T('Cancel'),
-                    'yes_callback': function(){
+                'title': T('Are you sure you want to take this item?'),
+                'yes': T('Take'),
+                'no': T('Cancel'),
+                'yes_callback': function(){
 
-                        if(!self.is_taken_by_user()) {
-                            var commentArea = self.$('.s-comment-area');
-                            $(commentArea).find('textarea').val(self.takenTag);
-                            self.commentTaken();
-                            self.show_taken_by_who();
-                        }
-                        else {
-                            alert("You've already reported this #taken");
-                        }
+                    if(!self.is_taken_by_user()) {
+                        var commentArea = self.$('.s-comment-area');
+                        $(commentArea).find('textarea').val(self.takenTag);
+                        self.commentTaken();
+                        self.show_taken_by_who();
+                    }
+                    else {
+                        alert("You've already reported this #taken");
+                    }
 
-                        //switch buttons
-                        self.more_menu.find('.aj-take').hide();
-                        self.more_menu.find('.aj-untake').show();
-                        $('.x-more-menu').popup('close');
+                    //switch buttons
+                    self.more_menu.find('.aj-take').hide();
+                    self.more_menu.find('.aj-untake').show();
+                    $('.x-more-menu').popup('close');
 
-                    },
-                    'no_callback': function(){  }
-                });
+                },
+                'no_callback': function(){  }
+            });
         },
 
         commentTaken: function( e ){  var self = this;

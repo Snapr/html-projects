@@ -118,7 +118,9 @@
             <a class="aj-untake" data-role="button">
                Untake
            </a>
-           <a onclick="return confirm('Are you sure you want to email this photo?')" href="mailto:?subject=Check Out This Junk&body=http://test.artjunk.org/<%= item.get('id') %>" data-role="button">Email</a>
+            <a class="aj-email" data-role="button">
+               Email
+           </a>
            
         <% if (item.get("username") && item.get("username").toLowerCase() == (auth.get("snapr_user") || "").toLowerCase()){ %>
             <a class="x-delete" data-role="button">
