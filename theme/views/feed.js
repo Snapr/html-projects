@@ -860,6 +860,7 @@ define(
                 //switch buttons
                 self.more_menu.find('.aj-take').hide();
                 self.more_menu.find('.aj-untake').show();
+                $('.x-more-menu').popup('close');
             }
         },
 
@@ -938,6 +939,7 @@ define(
                 //switch buttons
                 self.more_menu.find('.aj-take').show();
                 self.more_menu.find('.aj-untake').hide();
+                $('.x-more-menu').popup('close');
             }
         },
 
