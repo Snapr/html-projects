@@ -111,7 +111,7 @@ var tab_bar = view.extend({
         if (currentPage === "" || currentPage === "all/" || currentPage ==="nearby/") {
             $('#radius-menu').popup('open');
         } else {
-            window.location.href = '/#/nearby/';
+            window.location.href = '#/nearby/';
         }
         e.preventDefault();
     }
