@@ -94,6 +94,9 @@
         <!-- Comment button -->
         <a data-role="button" data-theme="b" data-inline="true" data-icon="comments" data-iconpos="notext" class="x-comment-button large-icon">Comment</a>
 
+        <!-- Share button -->
+        <a data-role="button" data-theme="b" data-inline="true" data-icon="share-alt" data-iconpos="notext" class="x-share-button large-icon">Share</a>
+
         <!-- More button -->
         <% if (item.get("username") == auth.get("snapr_user") || config.get('moderation_controls')){ %>
             <a data-rel="popup" href="#more-menu-<%= item.cid %>" data-role="button" data-theme="b" data-icon="large-more" data-inline="true" data-iconpos="notext" class="x-more-button s-more-button large-icon">More</a>
@@ -148,3 +151,60 @@
 <div class="afterImg"></div>
 
 </div><!-- aj-container-->
+
+<!-- share form -->
+<div class="s-share-area x-share-menu hide">
+
+    <form action="javascript:void(0);" accept-charset="utf-8">
+        <div class="s-message-area">
+            <textarea data-theme="a" name="comment-<%= item.get('id') %>" placeholder="<%= T('Type a message') %> " class="s-photo-share-comment"></textarea>
+            <% if (item.get("username") != auth.get("snapr_user")){ %><span class="s-shared-via"> &mdash; via <span class="s-username">@<%= item.get("username") %></span></span><br><% } %>
+        </div>
+
+        <fieldset data-role="controlgroup" data-type="<%=config.get('services_list')%>" class="s-image-sharing">
+            
+            <% if(_.contains(config.get('services'), 'twitter')){ %>
+                <input type="checkbox" class="x-service-select" name="twitter" id="twitter-sharing" <% if(share_settings.twitter){ %>checked="checked"<% } %>/>
+                <label for="twitter-sharing">
+                    <span class="ui-icon ui-icon-social-twitter"></span>
+                    <span class="s-service-text">Twitter</span>
+                </label>
+            <% } %>
+
+            <% if(_.contains(config.get('services'), 'facebook')){ %>
+                <input type="checkbox" class="x-service-select" name="facebook_album" id="facebook-sharing" <% if(share_settings.facebook_album){ %>checked="checked"<% } %>/>
+                <label for="facebook-sharing">
+                    <span class="ui-icon ui-icon-social-facebook"></span>
+                    <span class="s-service-text">Facebook</span>
+                </label>
+            <% } %>
+
+            <% if(_.contains(config.get('services'), 'tumblr')){ %>
+                <input type="checkbox" class="x-service-select" name="tumblr" id="tumblr-sharing" <% if(share_settings.tumblr){ %>checked="checked"<% } %>/>
+                <label for="tumblr-sharing">
+                    <span class="ui-icon ui-icon-social-tumblr"></span>
+                    <span class="s-service-text">Tumblr</span>
+                </label>
+            <% } %>
+
+            <% if(_.contains(config.get('services'), 'instagram')){ %>
+                <input type="checkbox" class="x-service-select" name="instagram" id="instagram-sharing" <% if(share_settings.instagram){ %>checked="checked"<% } %>/>
+                <label for="instagram-sharing">
+                    <span class="ui-icon ui-icon-social-instagram"></span>
+                    <span class="s-service-text">Instagram</span>
+                </label>
+            <% } %>
+
+           
+        </fieldset>
+
+        <div class="ui-grid-a">
+            <div class="ui-block-a"></div>
+            <div class="ui-block-b">
+                <button class="x-submit-button" data-theme="e"><%= T('Share') %></button>
+            </div>
+        </div>
+
+    </form>
+    <div class="x-success hide s-warning-message">Thanks! The photo has been shared</div>
+</div>
