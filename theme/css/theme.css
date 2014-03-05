@@ -27,7 +27,6 @@
   font-size: 30px !important;
   margin: 0 !important;
   padding: 0 !important;
-  color: #34495e !important;
   left: 45% !important;
   top: 5% !important;
 }
@@ -38,7 +37,6 @@
   font-size: 28px !important;
   margin: 0 !important;
   padding: 0 !important;
-  color: #202d3a !important;
   left: 45% !important;
   top: 13% !important;
 }
@@ -52,7 +50,6 @@
   font-size: 28px !important;
   margin: 0 !important;
   padding: 0 !important;
-  color: #202d3a !important;
   left: 45% !important;
   top: 13% !important;
 }
@@ -7408,7 +7405,7 @@ html .ui-bar-d .ui-btn:after,
 html .ui-body-d .ui-btn:after,
 html body .ui-group-theme-d .ui-btn:after,
 html head + body .ui-btn.ui-btn-d:after {
-  color: #ffffff;
+  color: #202d3a;
 }
 .ui-overlay-d .ui-btn:visited,
 .ui-page-theme-d .ui-btn:visited,
@@ -7467,7 +7464,7 @@ html .ui-bar-d .ui-btn:visited:after,
 html .ui-body-d .ui-btn:visited:after,
 html body .ui-group-theme-d .ui-btn:visited:after,
 html head + body .ui-btn.ui-btn-d:visited:after {
-  color: #ffffff;
+  color: #202d3a;
 }
 .ui-overlay-d .ui-btn:hover,
 .ui-page-theme-d .ui-btn:hover,
@@ -7520,7 +7517,7 @@ html .ui-bar-d .ui-btn:hover:after,
 html .ui-body-d .ui-btn:hover:after,
 html body .ui-group-theme-d .ui-btn:hover:after,
 html head + body .ui-btn.ui-btn-d:hover:after {
-  color: #ffffff;
+  color: #202d3a;
 }
 .ui-overlay-d .ui-btn:active,
 .ui-page-theme-d .ui-btn:active,
@@ -7572,7 +7569,7 @@ html .ui-bar-d .ui-btn:active:after,
 html .ui-body-d .ui-btn:active:after,
 html body .ui-group-theme-d .ui-btn:active:after,
 html head + body .ui-btn.ui-btn-d:active:after {
-  color: #ffffff;
+  color: #202d3a;
 }
 .ui-overlay-d .ui-btn.ui-btn-active,
 .ui-page-theme-d .ui-btn.ui-btn-active,
@@ -7625,7 +7622,7 @@ html .ui-bar-d .ui-btn.ui-btn-active:after,
 html .ui-body-d .ui-btn.ui-btn-active:after,
 html body .ui-group-theme-d .ui-btn.ui-btn-active:after,
 html head + body .ui-btn.ui-btn-d.ui-btn-active:after {
-  color: #ffffff;
+  color: #34495e;
 }
 .ui-overlay-d .ui-btn.ui-btn-active,
 .ui-page-theme-d .ui-btn.ui-btn-active,
@@ -7817,7 +7814,7 @@ html head + body .ui-navbar .ui-btn.ui-btn-d:hover {
 }
 html .ui-body-d.ui-navbar .ui-btn:hover:after,
 html head + body .ui-navbar .ui-btn.ui-btn-d:hover:after {
-  color: #ffffff;
+  color: #202d3a;
 }
 html .ui-body-d.ui-navbar .ui-btn:active,
 html head + body .ui-navbar .ui-btn.ui-btn-d:active {
@@ -7828,7 +7825,7 @@ html head + body .ui-navbar .ui-btn.ui-btn-d:active {
 }
 html .ui-body-d.ui-navbar .ui-btn:active:after,
 html head + body .ui-navbar .ui-btn.ui-btn-d:active:after {
-  color: #ffffff;
+  color: #202d3a;
 }
 html .ui-body-d.ui-navbar .ui-btn.ui-btn-active,
 html head + body .ui-navbar .ui-btn.ui-btn-d.ui-btn-active {
@@ -7839,7 +7836,7 @@ html head + body .ui-navbar .ui-btn.ui-btn-d.ui-btn-active {
 }
 html .ui-body-d.ui-navbar .ui-btn.ui-btn-active:after,
 html head + body .ui-navbar .ui-btn.ui-btn-d.ui-btn-active:after {
-  color: #ffffff;
+  color: #202d3a;
 }
 .ui-overlay-d textarea.ui-input-text,
 .ui-page-theme-d textarea.ui-input-text,
