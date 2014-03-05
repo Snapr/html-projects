@@ -9,10 +9,10 @@
 }
 /* Active stuff */
 .ui-footer {
-  min-height: 40px !important;
+  min-height: 50px !important;
 }
 .ui-footer .ui-btn {
-  line-height: 40px !important;
+  line-height: 50px !important;
   font-family: font-special-2 !important;
   -webkit-font-smoothing: antialiased !important;
   letter-spacing: 4px !important;
@@ -21,37 +21,37 @@
   height: 20px !important;
 }
 .ui-footer .ui-block-a {
-  height: 40px !important;
+  height: 50px !important;
 }
 .ui-footer .ui-block-a .browse-btn:after {
   font-size: 30px !important;
   margin: 0 !important;
   padding: 0 !important;
-  left: 45% !important;
-  top: 5% !important;
+  left: 42% !important;
+  top: 12% !important;
 }
 .ui-footer .ui-block-b {
-  height: 40px !important;
+  height: 50px !important;
 }
 .ui-footer .ui-block-b .map-btn:after {
   font-size: 28px !important;
   margin: 0 !important;
   padding: 0 !important;
-  left: 45% !important;
-  top: 13% !important;
+  left: 40% !important;
+  top: 20% !important;
 }
 .ui-footer .ui-block-c {
-  height: 40px !important;
+  height: 50px !important;
 }
 .ui-footer .ui-block-c .launch-camera-options {
-  height: 40px !important;
+  height: 50px !important;
 }
 .ui-footer .ui-block-c .post-btn:after {
   font-size: 28px !important;
   margin: 0 !important;
   padding: 0 !important;
-  left: 45% !important;
-  top: 13% !important;
+  left: 40% !important;
+  top: 20% !important;
 }
 #map .s-map-thumb {
   background-color: #1abc9c;
