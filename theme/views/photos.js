@@ -59,9 +59,9 @@
                     self.change_page();
                 }
 
-                $('.x-side-menu [data-slug="browse"]').addClass('ui-btn-active');
                 $('.browse-btn').addClass('ui-btn-active');
                 $('.map-btn').removeClass('ui-btn-active');
+                $('.post-btn').removeClass('ui-btn-active');
 
             },
 

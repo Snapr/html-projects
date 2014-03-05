@@ -19,7 +19,7 @@ var tab_bar = view.extend({
     events:{
         'click a': 'handle_click',
         'click .x-menu-button': 'open_menu',
-        'click .browse-btn': 'direct_browse',
+        'click .browse-btn': 'direct_browse'
 
     },
 
