@@ -810,7 +810,9 @@ define(
 
         is_new : function(days) {
             var is_new_image = false;
-            var days_old = this.days_ago(this.model.get('date'));
+            var date = this.model.get('date');
+            date = date.substring(0, date.indexOf(' '));
+            var days_old = this.days_ago(date);
             if(days_old <= days) {
                 is_new_image = true;
             }
