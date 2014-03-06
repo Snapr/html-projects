@@ -226,13 +226,15 @@ div[data-role='header']{
             color: @brand-color;
         }
         .s-location {
+			color: @brand-color;
             text-transform: uppercase;
             margin-top: @m;
             line-height: @coordinatesHeight;
             max-width: 55%;
-            text-decoration: underline;
+            /*text-decoration: underline;*/
+			border-bottom: 1px solid @brand-color; 
             cursor: pointer;
-            color: @brand-color;
+            
         }
         .haveTaken {
             clear: both;
@@ -340,6 +342,10 @@ div[data-role='header']{
 
 //SHARE PAGE
 #share {
+	.ui-content{
+		padding-top: 5px;
+		line-height: 1 !important;
+	}
     label {
         color: @gray;
     }
@@ -360,7 +366,7 @@ div[data-role='header']{
         font-weight: normal;
     }
     .select-material {
-        margin-bottom: 25px;
+        
     }
     .x-location {
         padding: 10px;

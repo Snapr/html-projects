@@ -111,23 +111,23 @@
     </div>
 
     <!-- More menu -->
-    <div data-role="popup" class="x-more-menu s-more-menu" data-theme="g" id="more-menu-<%= item.cid %>" data-dismissible="true">
-            <a class="aj-take" data-role="button">
+    <div data-role="popup" class="x-more-menu s-more-menu" data-theme="a" id="more-menu-<%= item.cid %>" data-dismissible="true">
+            <a class="aj-take" data-role="button" data-theme="c">
                Take
            </a>
-            <a class="aj-untake" data-role="button">
+            <a class="aj-untake" data-role="button" data-theme="c">
                Untake
            </a>
-            <a class="aj-email" data-role="button">
+            <a class="aj-email" data-role="button" data-theme="c">
                Email
            </a>
            
         <% if (item.get("username") && item.get("username").toLowerCase() == (auth.get("snapr_user") || "").toLowerCase()){ %>
-            <a class="x-delete" data-role="button">
+            <a class="x-delete" data-role="button" data-theme="c">
                Delete
            </a>
         <%} else if(config.get('moderation_controls')){ %>
-            <a class="x-flag" data-role="button">
+            <a class="x-flag" data-role="button" data-theme="c">
                 <% if (item.get('flagged')){%> flagged <% }else{ %> Flag <% } %>
             </a>
         <%}%>

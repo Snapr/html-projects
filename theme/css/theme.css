@@ -4459,13 +4459,15 @@ html body .ui-group-theme-a .ui-bar-inherit.ui-li-divider small {
 .ui-overlay-a #feed .coordinates .s-location,
 .ui-page-theme-a #feed .coordinates .s-location,
 .ui-page-theme-a .ui-panel-wrapper #feed .coordinates .s-location {
+  color: #34495e;
   text-transform: uppercase;
   margin-top: 10px;
   line-height: 40px;
   max-width: 55%;
-  text-decoration: underline;
+  /*text-decoration: underline;*/
+
+  border-bottom: 1px solid #34495e;
   cursor: pointer;
-  color: #34495e;
 }
 .ui-overlay-a #feed .coordinates .haveTaken,
 .ui-page-theme-a #feed .coordinates .haveTaken,
@@ -4586,6 +4588,12 @@ html body .ui-group-theme-a .ui-bar-inherit.ui-li-divider small {
 .ui-page-theme-a .ui-panel-wrapper #feed .s-feed-end .outline-style:after {
   color: #666666;
 }
+.ui-overlay-a #share .ui-content,
+.ui-page-theme-a #share .ui-content,
+.ui-page-theme-a .ui-panel-wrapper #share .ui-content {
+  padding-top: 5px;
+  line-height: 1 !important;
+}
 .ui-overlay-a #share label,
 .ui-page-theme-a #share label,
 .ui-page-theme-a .ui-panel-wrapper #share label {
@@ -4612,11 +4620,6 @@ html body .ui-group-theme-a .ui-bar-inherit.ui-li-divider small {
 .ui-page-theme-a #share .edit-material .ui-btn,
 .ui-page-theme-a .ui-panel-wrapper #share .edit-material .ui-btn {
   font-weight: normal;
-}
-.ui-overlay-a #share .select-material,
-.ui-page-theme-a #share .select-material,
-.ui-page-theme-a .ui-panel-wrapper #share .select-material {
-  margin-bottom: 25px;
 }
 .ui-overlay-a #share .x-location,
 .ui-page-theme-a #share .x-location,
@@ -6184,13 +6187,15 @@ html body .ui-group-theme-c .ui-bar-inherit.ui-li-divider small {
 .ui-overlay-c #feed .coordinates .s-location,
 .ui-page-theme-c #feed .coordinates .s-location,
 .ui-page-theme-c .ui-panel-wrapper #feed .coordinates .s-location {
+  color: #34495e;
   text-transform: uppercase;
   margin-top: 10px;
   line-height: 40px;
   max-width: 55%;
-  text-decoration: underline;
+  /*text-decoration: underline;*/
+
+  border-bottom: 1px solid #34495e;
   cursor: pointer;
-  color: #34495e;
 }
 .ui-overlay-c #feed .coordinates .haveTaken,
 .ui-page-theme-c #feed .coordinates .haveTaken,
@@ -6311,6 +6316,12 @@ html body .ui-group-theme-c .ui-bar-inherit.ui-li-divider small {
 .ui-page-theme-c .ui-panel-wrapper #feed .s-feed-end .outline-style:after {
   color: #666666;
 }
+.ui-overlay-c #share .ui-content,
+.ui-page-theme-c #share .ui-content,
+.ui-page-theme-c .ui-panel-wrapper #share .ui-content {
+  padding-top: 5px;
+  line-height: 1 !important;
+}
 .ui-overlay-c #share label,
 .ui-page-theme-c #share label,
 .ui-page-theme-c .ui-panel-wrapper #share label {
@@ -6337,11 +6348,6 @@ html body .ui-group-theme-c .ui-bar-inherit.ui-li-divider small {
 .ui-page-theme-c #share .edit-material .ui-btn,
 .ui-page-theme-c .ui-panel-wrapper #share .edit-material .ui-btn {
   font-weight: normal;
-}
-.ui-overlay-c #share .select-material,
-.ui-page-theme-c #share .select-material,
-.ui-page-theme-c .ui-panel-wrapper #share .select-material {
-  margin-bottom: 25px;
 }
 .ui-overlay-c #share .x-location,
 .ui-page-theme-c #share .x-location,
@@ -7184,13 +7190,15 @@ html body .ui-group-theme-d .ui-bar-inherit.ui-li-divider small {
 .ui-overlay-d #feed .coordinates .s-location,
 .ui-page-theme-d #feed .coordinates .s-location,
 .ui-page-theme-d .ui-panel-wrapper #feed .coordinates .s-location {
+  color: #34495e;
   text-transform: uppercase;
   margin-top: 10px;
   line-height: 40px;
   max-width: 55%;
-  text-decoration: underline;
+  /*text-decoration: underline;*/
+
+  border-bottom: 1px solid #34495e;
   cursor: pointer;
-  color: #34495e;
 }
 .ui-overlay-d #feed .coordinates .haveTaken,
 .ui-page-theme-d #feed .coordinates .haveTaken,
@@ -7311,6 +7319,12 @@ html body .ui-group-theme-d .ui-bar-inherit.ui-li-divider small {
 .ui-page-theme-d .ui-panel-wrapper #feed .s-feed-end .outline-style:after {
   color: #666666;
 }
+.ui-overlay-d #share .ui-content,
+.ui-page-theme-d #share .ui-content,
+.ui-page-theme-d .ui-panel-wrapper #share .ui-content {
+  padding-top: 5px;
+  line-height: 1 !important;
+}
 .ui-overlay-d #share label,
 .ui-page-theme-d #share label,
 .ui-page-theme-d .ui-panel-wrapper #share label {
@@ -7337,11 +7351,6 @@ html body .ui-group-theme-d .ui-bar-inherit.ui-li-divider small {
 .ui-page-theme-d #share .edit-material .ui-btn,
 .ui-page-theme-d .ui-panel-wrapper #share .edit-material .ui-btn {
   font-weight: normal;
-}
-.ui-overlay-d #share .select-material,
-.ui-page-theme-d #share .select-material,
-.ui-page-theme-d .ui-panel-wrapper #share .select-material {
-  margin-bottom: 25px;
 }
 .ui-overlay-d #share .x-location,
 .ui-page-theme-d #share .x-location,
@@ -8184,13 +8193,15 @@ html body .ui-group-theme-e .ui-bar-inherit.ui-li-divider small {
 .ui-overlay-e #feed .coordinates .s-location,
 .ui-page-theme-e #feed .coordinates .s-location,
 .ui-page-theme-e .ui-panel-wrapper #feed .coordinates .s-location {
+  color: #34495e;
   text-transform: uppercase;
   margin-top: 10px;
   line-height: 40px;
   max-width: 55%;
-  text-decoration: underline;
+  /*text-decoration: underline;*/
+
+  border-bottom: 1px solid #34495e;
   cursor: pointer;
-  color: #34495e;
 }
 .ui-overlay-e #feed .coordinates .haveTaken,
 .ui-page-theme-e #feed .coordinates .haveTaken,
@@ -8311,6 +8322,12 @@ html body .ui-group-theme-e .ui-bar-inherit.ui-li-divider small {
 .ui-page-theme-e .ui-panel-wrapper #feed .s-feed-end .outline-style:after {
   color: #666666;
 }
+.ui-overlay-e #share .ui-content,
+.ui-page-theme-e #share .ui-content,
+.ui-page-theme-e .ui-panel-wrapper #share .ui-content {
+  padding-top: 5px;
+  line-height: 1 !important;
+}
 .ui-overlay-e #share label,
 .ui-page-theme-e #share label,
 .ui-page-theme-e .ui-panel-wrapper #share label {
@@ -8337,11 +8354,6 @@ html body .ui-group-theme-e .ui-bar-inherit.ui-li-divider small {
 .ui-page-theme-e #share .edit-material .ui-btn,
 .ui-page-theme-e .ui-panel-wrapper #share .edit-material .ui-btn {
   font-weight: normal;
-}
-.ui-overlay-e #share .select-material,
-.ui-page-theme-e #share .select-material,
-.ui-page-theme-e .ui-panel-wrapper #share .select-material {
-  margin-bottom: 25px;
 }
 .ui-overlay-e #share .x-location,
 .ui-page-theme-e #share .x-location,
@@ -9909,13 +9921,15 @@ html body .ui-group-theme-g .ui-bar-inherit.ui-li-divider small {
 .ui-overlay-g #feed .coordinates .s-location,
 .ui-page-theme-g #feed .coordinates .s-location,
 .ui-page-theme-g .ui-panel-wrapper #feed .coordinates .s-location {
+  color: #34495e;
   text-transform: uppercase;
   margin-top: 10px;
   line-height: 40px;
   max-width: 55%;
-  text-decoration: underline;
+  /*text-decoration: underline;*/
+
+  border-bottom: 1px solid #34495e;
   cursor: pointer;
-  color: #34495e;
 }
 .ui-overlay-g #feed .coordinates .haveTaken,
 .ui-page-theme-g #feed .coordinates .haveTaken,
@@ -10036,6 +10050,12 @@ html body .ui-group-theme-g .ui-bar-inherit.ui-li-divider small {
 .ui-page-theme-g .ui-panel-wrapper #feed .s-feed-end .outline-style:after {
   color: #666666;
 }
+.ui-overlay-g #share .ui-content,
+.ui-page-theme-g #share .ui-content,
+.ui-page-theme-g .ui-panel-wrapper #share .ui-content {
+  padding-top: 5px;
+  line-height: 1 !important;
+}
 .ui-overlay-g #share label,
 .ui-page-theme-g #share label,
 .ui-page-theme-g .ui-panel-wrapper #share label {
@@ -10062,11 +10082,6 @@ html body .ui-group-theme-g .ui-bar-inherit.ui-li-divider small {
 .ui-page-theme-g #share .edit-material .ui-btn,
 .ui-page-theme-g .ui-panel-wrapper #share .edit-material .ui-btn {
   font-weight: normal;
-}
-.ui-overlay-g #share .select-material,
-.ui-page-theme-g #share .select-material,
-.ui-page-theme-g .ui-panel-wrapper #share .select-material {
-  margin-bottom: 25px;
 }
 .ui-overlay-g #share .x-location,
 .ui-page-theme-g #share .x-location,
