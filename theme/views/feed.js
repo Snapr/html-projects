@@ -778,7 +778,7 @@ define(
                 'yes': T('Open Email'),
                 'no': T('Cancel'),
                 'yes_callback': function(){
-                    window.location='mailto:?subject=Check Out This Junk&body=http://test.artjunk.org/' + self.model.get("id");
+                    window.location='mailto:?subject=Check Out This Junk&body=http://artjunk.org/' + self.model.get("id");
 
                 }
             });

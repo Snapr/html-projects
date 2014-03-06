@@ -212,7 +212,7 @@ var uploading = page_view.extend({
         data = data || {};
         this.$('.offline').hide();
 
-        $('.email').attr('href', 'mailto:?subject=Check Out This Junk&body=http://test.artjunk.org/' + photo_id);
+        $('.email').attr('href', 'mailto:?subject=Check Out This Junk&body=http://artjunk.org/' + photo_id);
         $('.email').show();
 
         if(data.to_link && data.to_link.length){
