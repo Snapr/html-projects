@@ -48,20 +48,20 @@ define(['views/share', '../../theme/js/material', 'utils/alerts'], function(shar
            var materialField = $('.materials').html();
            var location = $('.s-upload-image-location .s-btn-text').html();
            if(location === "Add Location" || location === "Getting Location...") {
-               alerts.notification(T('Art Junk'), T('You must include a location'));
+               alerts.notification(T('ART JUNK'), T('You must include a location'));
            }
            else if (materialField !== "") { //user must input a material
                var matContainer = $('.materials');
                var materials = findHTMLInsideButtons(matContainer);
                var has_predefined = hasPredefined(materials);
                if (has_predefined === false) {
-                   alert("You must input a suggested material");
+                   alerts.notification(T('ART JUNK'), T('You must include a suggested material'));
                }
                else {
                    this.share_append_material(materials);
                }
            } else {
-               alert('The material field is empty.');
+               alerts.notification(T('ART JUNK'), T('The material field is empty'));
            }
        },
 
