@@ -1,4 +1,4 @@
-define(['views/share', '../../theme/js/material'], function(share_view, material){
+define(['views/share', '../../theme/js/material', 'utils/alerts'], function(share_view, material, alerts){
     return share_view.extend({
 
         events: function(){
@@ -48,7 +48,7 @@ define(['views/share', '../../theme/js/material'], function(share_view, material
            var materialField = $('.materials').html();
            var location = $('.s-upload-image-location .s-btn-text').html();
            if(location === "Add Location" || location === "Getting Location...") {
-               alert('You must add a location');
+               alerts.notification(T('Art Junk'), T('You must include a location'));
            }
            else if (materialField !== "") { //user must input a material
                var matContainer = $('.materials');
