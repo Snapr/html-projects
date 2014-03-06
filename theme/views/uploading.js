@@ -212,8 +212,9 @@ var uploading = page_view.extend({
         data = data || {};
         this.$('.offline').hide();
 
-        $('.email').attr('href', 'mailto:?subject=Check Out This Junk&body=http://app.artjunk.org/' + photo_id);
         $('.email').show();
+        $('.email-link').attr('href', 'mailto:?subject=Check Out This Junk&body=http://app.artjunk.org/' + photo_id);
+        
 
         if(data.to_link && data.to_link.length){
             // if there are services to link we won't be doing anything here.
