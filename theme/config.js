@@ -384,7 +384,7 @@ return {
         },
         {
             name: 'about',
-            view: 'base/page',
+            view: theme_views_path + 'about',
             template: theme_templates_path + 'about'
         },
         {
