@@ -84,10 +84,10 @@ return {
                 logged_in: true  // only show for users logged in
             },
             {
-                url: '#/login/',
+                url: '#/welcome/',
                 icon: "large-log_in",
                 label: 'Login',
-                slug: 'login',
+                slug: 'welcome',
                 logged_in: false  // only show for users not logged in
             },
             {
@@ -443,13 +443,9 @@ return {
         },
         {
             name: 'welcome',
-            view: 'login'
+            view: 'welcome',
+            template: theme_templates_path + 'welcome'
         },
-        // {
-        //     name: 'welcome',
-        //     view: 'welcome',
-        //     template: theme_templates_path + 'welcome'
-        // },
         'popular'
     ]
 };

@@ -1,0 +1,65 @@
+<div id="welcome" data-role="page" data-theme="f" data-tab-bar="false">
+    <div data-role="header" data-theme="f">
+        <h1><%= T('Welcome') %></h1>
+        <% if(!config.has('min_age')){ %>
+            <a href="#" data-theme="f" data-role="button" data-icon="delete" data-iconpos="notext" data-inline="true" class="ui-btn-right">Close</a>
+        <% } %>
+    </div>
+    <div data-role="content" data-theme="f" data-ajax="false">
+
+
+        <% if(config.has('min_age') && obj.initial){ %>
+            <p class="x-login-message s-warning-message"></p>
+
+            <ul data-role="listview" data-ajax="false" class="" data-inset="true" data-theme="a">
+                <li>
+                    <h4><%= T('Hello', {context:"shout"}) %></h4>
+                    <p><%= T('age_restricted', {age: config.get('min_age') }) %></p>
+                </li>
+            </ul>
+
+            <a data-role="button" class="x-yes" data-theme="f"><%= T('Yes') %></a>
+            <a data-role="button" class="x-no" data-theme="f"><%= T('No') %></a>
+        <% }else if(config.has('min_age') && !old_enough){ %>
+            <p class="x-login-message s-warning-message"></p>
+
+            <ul data-role="listview" data-ajax="false" class="" data-inset="true" data-theme="a">
+                <li>
+                    <h4><%= T('Sorry', {context:"shout"}) %></h4>
+                    <p><%= T('Custom message from config') %></p>
+                </li>
+            </ul>
+        <% }else{ %>
+            <p class="x-login-message s-warning-message"></p>
+
+            <ul data-role="listview" data-ajax="false" class="wrap-text" data-inset="true" data-theme="a">
+                <li>
+                    <h4 class="text-accent"><%= T('Hello', {context:"shout"}) %></h4>
+                    <p><%= T('sign in to use social features') %></p>
+                    <p><%= T('we wont post to Facebook') %></p>
+                </li>
+            </ul>
+
+
+            <a data-role="button" data-icon="social-facebook" data-iconpos="left" class="x-facebook-button s-facebook-button" data-theme="d"><%= T('Sign in with') %> Facebook</a>
+
+            <div class="center">
+                <a href="#/login/" data-icon="arrow-r" data-iconpos="right" data-role="button" class="outline-style" data-theme="a"><%= T('More Sign In Options') %></a>
+            </div>
+
+			<div class="s-padding">
+			</div>
+
+        <% } %>
+
+
+
+    </div>
+
+    <% if(!config.get('white_label_accounts')){ %>
+        <a href="#/about-snapr/" class="s-snapr-badge s-snapr-badge-<%= config.get('snapr_badge_color') %>">
+            <span class="hide">Powered By Snapr</span>
+        </a>
+    <% } %>
+
+</div>
