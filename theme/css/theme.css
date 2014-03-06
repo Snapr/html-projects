@@ -97,6 +97,28 @@
   color: #000000;
   text-transform: capitalize;
 }
+#about {
+  margin: 0;
+  pading: 0;
+  width: 100%;
+  text-align: center;
+  color: #000000;
+}
+#about a.ui-btn {
+  line-height: 50px;
+}
+#about p {
+  margin: 0;
+}
+#about .ui-content {
+  text-align: center;
+  color: #000000;
+  margin: 0;
+}
+#about li {
+  text-align: center;
+  color: #000000;
+}
 /* keep the corners 45 degrees otherwise they look crap
    apply these to elements using the ::after psuedo class..
 */
@@ -4509,6 +4531,12 @@ html body .ui-group-theme-a .ui-bar-inherit.ui-li-divider small {
   margin: 3px !important;
   font-size: 10px;
 }
+.ui-overlay-a #feed div[class^="tags"] .ui-icon-edit,
+.ui-page-theme-a #feed div[class^="tags"] .ui-icon-edit,
+.ui-page-theme-a .ui-panel-wrapper #feed div[class^="tags"] .ui-icon-edit {
+  font-size: 10px;
+  margin-left: 0 !important;
+}
 .ui-overlay-a #feed .owner,
 .ui-page-theme-a #feed .owner,
 .ui-page-theme-a .ui-panel-wrapper #feed .owner {
@@ -4604,8 +4632,18 @@ html body .ui-group-theme-a .ui-bar-inherit.ui-li-divider small {
 .ui-overlay-a #share .s-upload-image-location .ui-icon-remove,
 .ui-page-theme-a #share .s-upload-image-location .ui-icon-remove,
 .ui-page-theme-a .ui-panel-wrapper #share .s-upload-image-location .ui-icon-remove {
-  padding: 5px;
   margin-right: 5px;
+}
+.ui-overlay-a #share .s-upload-image-location .ui-icon:after,
+.ui-page-theme-a #share .s-upload-image-location .ui-icon:after,
+.ui-page-theme-a .ui-panel-wrapper #share .s-upload-image-location .ui-icon:after {
+  float: left;
+  margin-top: 3px;
+}
+.ui-overlay-a #share .s-upload-image-location .s-btn-text,
+.ui-page-theme-a #share .s-upload-image-location .s-btn-text,
+.ui-page-theme-a .ui-panel-wrapper #share .s-upload-image-location .s-btn-text {
+  top: 0 !important;
 }
 .ui-overlay-a #share .x-share-button,
 .ui-page-theme-a #share .x-share-button,
@@ -4625,6 +4663,29 @@ html body .ui-group-theme-a .ui-bar-inherit.ui-li-divider small {
 .ui-page-theme-a #uploading label,
 .ui-page-theme-a .ui-panel-wrapper #uploading label {
   margin-top: 10px;
+}
+.ui-overlay-a #uploading .ui-block-a,
+.ui-page-theme-a #uploading .ui-block-a,
+.ui-page-theme-a .ui-panel-wrapper #uploading .ui-block-a {
+  float: left !important;
+  width: 100%;
+  background-color: #ffffff;
+}
+.ui-overlay-a #uploading .ui-block-a a,
+.ui-page-theme-a #uploading .ui-block-a a,
+.ui-page-theme-a .ui-panel-wrapper #uploading .ui-block-a a {
+  font-family: HelveticaNeue-Light, Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  /*font-family: @font-special-2 !important;
+			font-size: 1.5 * @m;
+			font-weight: 700;
+	        -webkit-font-smoothing: antialiased !important;
+	        letter-spacing: 0.4 * @m !important;
+	        font-weight: normal !important;
+	        text-transform: uppercase;*/
+
+  color: #999999;
+  float: left !important;
 }
 .ui-overlay-a #activity .s-comment-item,
 .ui-page-theme-a #activity .s-comment-item,
@@ -6195,6 +6256,12 @@ html body .ui-group-theme-c .ui-bar-inherit.ui-li-divider small {
   margin: 3px !important;
   font-size: 10px;
 }
+.ui-overlay-c #feed div[class^="tags"] .ui-icon-edit,
+.ui-page-theme-c #feed div[class^="tags"] .ui-icon-edit,
+.ui-page-theme-c .ui-panel-wrapper #feed div[class^="tags"] .ui-icon-edit {
+  font-size: 10px;
+  margin-left: 0 !important;
+}
 .ui-overlay-c #feed .owner,
 .ui-page-theme-c #feed .owner,
 .ui-page-theme-c .ui-panel-wrapper #feed .owner {
@@ -6290,8 +6357,18 @@ html body .ui-group-theme-c .ui-bar-inherit.ui-li-divider small {
 .ui-overlay-c #share .s-upload-image-location .ui-icon-remove,
 .ui-page-theme-c #share .s-upload-image-location .ui-icon-remove,
 .ui-page-theme-c .ui-panel-wrapper #share .s-upload-image-location .ui-icon-remove {
-  padding: 5px;
   margin-right: 5px;
+}
+.ui-overlay-c #share .s-upload-image-location .ui-icon:after,
+.ui-page-theme-c #share .s-upload-image-location .ui-icon:after,
+.ui-page-theme-c .ui-panel-wrapper #share .s-upload-image-location .ui-icon:after {
+  float: left;
+  margin-top: 3px;
+}
+.ui-overlay-c #share .s-upload-image-location .s-btn-text,
+.ui-page-theme-c #share .s-upload-image-location .s-btn-text,
+.ui-page-theme-c .ui-panel-wrapper #share .s-upload-image-location .s-btn-text {
+  top: 0 !important;
 }
 .ui-overlay-c #share .x-share-button,
 .ui-page-theme-c #share .x-share-button,
@@ -6311,6 +6388,29 @@ html body .ui-group-theme-c .ui-bar-inherit.ui-li-divider small {
 .ui-page-theme-c #uploading label,
 .ui-page-theme-c .ui-panel-wrapper #uploading label {
   margin-top: 10px;
+}
+.ui-overlay-c #uploading .ui-block-a,
+.ui-page-theme-c #uploading .ui-block-a,
+.ui-page-theme-c .ui-panel-wrapper #uploading .ui-block-a {
+  float: left !important;
+  width: 100%;
+  background-color: #ffffff;
+}
+.ui-overlay-c #uploading .ui-block-a a,
+.ui-page-theme-c #uploading .ui-block-a a,
+.ui-page-theme-c .ui-panel-wrapper #uploading .ui-block-a a {
+  font-family: HelveticaNeue-Light, Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  /*font-family: @font-special-2 !important;
+			font-size: 1.5 * @m;
+			font-weight: 700;
+	        -webkit-font-smoothing: antialiased !important;
+	        letter-spacing: 0.4 * @m !important;
+	        font-weight: normal !important;
+	        text-transform: uppercase;*/
+
+  color: #999999;
+  float: left !important;
 }
 .ui-overlay-c #activity .s-comment-item,
 .ui-page-theme-c #activity .s-comment-item,
@@ -7156,6 +7256,12 @@ html body .ui-group-theme-d .ui-bar-inherit.ui-li-divider small {
   margin: 3px !important;
   font-size: 10px;
 }
+.ui-overlay-d #feed div[class^="tags"] .ui-icon-edit,
+.ui-page-theme-d #feed div[class^="tags"] .ui-icon-edit,
+.ui-page-theme-d .ui-panel-wrapper #feed div[class^="tags"] .ui-icon-edit {
+  font-size: 10px;
+  margin-left: 0 !important;
+}
 .ui-overlay-d #feed .owner,
 .ui-page-theme-d #feed .owner,
 .ui-page-theme-d .ui-panel-wrapper #feed .owner {
@@ -7251,8 +7357,18 @@ html body .ui-group-theme-d .ui-bar-inherit.ui-li-divider small {
 .ui-overlay-d #share .s-upload-image-location .ui-icon-remove,
 .ui-page-theme-d #share .s-upload-image-location .ui-icon-remove,
 .ui-page-theme-d .ui-panel-wrapper #share .s-upload-image-location .ui-icon-remove {
-  padding: 5px;
   margin-right: 5px;
+}
+.ui-overlay-d #share .s-upload-image-location .ui-icon:after,
+.ui-page-theme-d #share .s-upload-image-location .ui-icon:after,
+.ui-page-theme-d .ui-panel-wrapper #share .s-upload-image-location .ui-icon:after {
+  float: left;
+  margin-top: 3px;
+}
+.ui-overlay-d #share .s-upload-image-location .s-btn-text,
+.ui-page-theme-d #share .s-upload-image-location .s-btn-text,
+.ui-page-theme-d .ui-panel-wrapper #share .s-upload-image-location .s-btn-text {
+  top: 0 !important;
 }
 .ui-overlay-d #share .x-share-button,
 .ui-page-theme-d #share .x-share-button,
@@ -7272,6 +7388,29 @@ html body .ui-group-theme-d .ui-bar-inherit.ui-li-divider small {
 .ui-page-theme-d #uploading label,
 .ui-page-theme-d .ui-panel-wrapper #uploading label {
   margin-top: 10px;
+}
+.ui-overlay-d #uploading .ui-block-a,
+.ui-page-theme-d #uploading .ui-block-a,
+.ui-page-theme-d .ui-panel-wrapper #uploading .ui-block-a {
+  float: left !important;
+  width: 100%;
+  background-color: #ffffff;
+}
+.ui-overlay-d #uploading .ui-block-a a,
+.ui-page-theme-d #uploading .ui-block-a a,
+.ui-page-theme-d .ui-panel-wrapper #uploading .ui-block-a a {
+  font-family: HelveticaNeue-Light, Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  /*font-family: @font-special-2 !important;
+			font-size: 1.5 * @m;
+			font-weight: 700;
+	        -webkit-font-smoothing: antialiased !important;
+	        letter-spacing: 0.4 * @m !important;
+	        font-weight: normal !important;
+	        text-transform: uppercase;*/
+
+  color: #999999;
+  float: left !important;
 }
 .ui-overlay-d #activity .s-comment-item,
 .ui-page-theme-d #activity .s-comment-item,
@@ -8117,6 +8256,12 @@ html body .ui-group-theme-e .ui-bar-inherit.ui-li-divider small {
   margin: 3px !important;
   font-size: 10px;
 }
+.ui-overlay-e #feed div[class^="tags"] .ui-icon-edit,
+.ui-page-theme-e #feed div[class^="tags"] .ui-icon-edit,
+.ui-page-theme-e .ui-panel-wrapper #feed div[class^="tags"] .ui-icon-edit {
+  font-size: 10px;
+  margin-left: 0 !important;
+}
 .ui-overlay-e #feed .owner,
 .ui-page-theme-e #feed .owner,
 .ui-page-theme-e .ui-panel-wrapper #feed .owner {
@@ -8212,8 +8357,18 @@ html body .ui-group-theme-e .ui-bar-inherit.ui-li-divider small {
 .ui-overlay-e #share .s-upload-image-location .ui-icon-remove,
 .ui-page-theme-e #share .s-upload-image-location .ui-icon-remove,
 .ui-page-theme-e .ui-panel-wrapper #share .s-upload-image-location .ui-icon-remove {
-  padding: 5px;
   margin-right: 5px;
+}
+.ui-overlay-e #share .s-upload-image-location .ui-icon:after,
+.ui-page-theme-e #share .s-upload-image-location .ui-icon:after,
+.ui-page-theme-e .ui-panel-wrapper #share .s-upload-image-location .ui-icon:after {
+  float: left;
+  margin-top: 3px;
+}
+.ui-overlay-e #share .s-upload-image-location .s-btn-text,
+.ui-page-theme-e #share .s-upload-image-location .s-btn-text,
+.ui-page-theme-e .ui-panel-wrapper #share .s-upload-image-location .s-btn-text {
+  top: 0 !important;
 }
 .ui-overlay-e #share .x-share-button,
 .ui-page-theme-e #share .x-share-button,
@@ -8233,6 +8388,29 @@ html body .ui-group-theme-e .ui-bar-inherit.ui-li-divider small {
 .ui-page-theme-e #uploading label,
 .ui-page-theme-e .ui-panel-wrapper #uploading label {
   margin-top: 10px;
+}
+.ui-overlay-e #uploading .ui-block-a,
+.ui-page-theme-e #uploading .ui-block-a,
+.ui-page-theme-e .ui-panel-wrapper #uploading .ui-block-a {
+  float: left !important;
+  width: 100%;
+  background-color: #ffffff;
+}
+.ui-overlay-e #uploading .ui-block-a a,
+.ui-page-theme-e #uploading .ui-block-a a,
+.ui-page-theme-e .ui-panel-wrapper #uploading .ui-block-a a {
+  font-family: HelveticaNeue-Light, Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  /*font-family: @font-special-2 !important;
+			font-size: 1.5 * @m;
+			font-weight: 700;
+	        -webkit-font-smoothing: antialiased !important;
+	        letter-spacing: 0.4 * @m !important;
+	        font-weight: normal !important;
+	        text-transform: uppercase;*/
+
+  color: #999999;
+  float: left !important;
 }
 .ui-overlay-e #activity .s-comment-item,
 .ui-page-theme-e #activity .s-comment-item,
@@ -9803,6 +9981,12 @@ html body .ui-group-theme-g .ui-bar-inherit.ui-li-divider small {
   margin: 3px !important;
   font-size: 10px;
 }
+.ui-overlay-g #feed div[class^="tags"] .ui-icon-edit,
+.ui-page-theme-g #feed div[class^="tags"] .ui-icon-edit,
+.ui-page-theme-g .ui-panel-wrapper #feed div[class^="tags"] .ui-icon-edit {
+  font-size: 10px;
+  margin-left: 0 !important;
+}
 .ui-overlay-g #feed .owner,
 .ui-page-theme-g #feed .owner,
 .ui-page-theme-g .ui-panel-wrapper #feed .owner {
@@ -9898,8 +10082,18 @@ html body .ui-group-theme-g .ui-bar-inherit.ui-li-divider small {
 .ui-overlay-g #share .s-upload-image-location .ui-icon-remove,
 .ui-page-theme-g #share .s-upload-image-location .ui-icon-remove,
 .ui-page-theme-g .ui-panel-wrapper #share .s-upload-image-location .ui-icon-remove {
-  padding: 5px;
   margin-right: 5px;
+}
+.ui-overlay-g #share .s-upload-image-location .ui-icon:after,
+.ui-page-theme-g #share .s-upload-image-location .ui-icon:after,
+.ui-page-theme-g .ui-panel-wrapper #share .s-upload-image-location .ui-icon:after {
+  float: left;
+  margin-top: 3px;
+}
+.ui-overlay-g #share .s-upload-image-location .s-btn-text,
+.ui-page-theme-g #share .s-upload-image-location .s-btn-text,
+.ui-page-theme-g .ui-panel-wrapper #share .s-upload-image-location .s-btn-text {
+  top: 0 !important;
 }
 .ui-overlay-g #share .x-share-button,
 .ui-page-theme-g #share .x-share-button,
@@ -9919,6 +10113,29 @@ html body .ui-group-theme-g .ui-bar-inherit.ui-li-divider small {
 .ui-page-theme-g #uploading label,
 .ui-page-theme-g .ui-panel-wrapper #uploading label {
   margin-top: 10px;
+}
+.ui-overlay-g #uploading .ui-block-a,
+.ui-page-theme-g #uploading .ui-block-a,
+.ui-page-theme-g .ui-panel-wrapper #uploading .ui-block-a {
+  float: left !important;
+  width: 100%;
+  background-color: #ffffff;
+}
+.ui-overlay-g #uploading .ui-block-a a,
+.ui-page-theme-g #uploading .ui-block-a a,
+.ui-page-theme-g .ui-panel-wrapper #uploading .ui-block-a a {
+  font-family: HelveticaNeue-Light, Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  /*font-family: @font-special-2 !important;
+			font-size: 1.5 * @m;
+			font-weight: 700;
+	        -webkit-font-smoothing: antialiased !important;
+	        letter-spacing: 0.4 * @m !important;
+	        font-weight: normal !important;
+	        text-transform: uppercase;*/
+
+  color: #999999;
+  float: left !important;
 }
 .ui-overlay-g #activity .s-comment-item,
 .ui-page-theme-g #activity .s-comment-item,

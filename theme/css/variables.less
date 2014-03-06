@@ -284,8 +284,15 @@ div[data-role='header']{
         border-radius: 0;
         .ui-btn {
             margin: 3px !important;
+			
             font-size: 1 * @m;
+
         }
+		.ui-icon-edit{
+			font-size: 1 * @m;
+        
+			margin-left:0 !important;;
+		}
     }
 
     .owner {
@@ -365,9 +372,15 @@ div[data-role='header']{
         .ui-icon-remove {
             //height: 48px;
             //line-height: 48px;
-            padding: 0.5 * @m;
             margin-right: .5 * @m;
         }
+		.ui-icon:after{
+			float: left;
+			margin-top: 3px;
+		}
+		.s-btn-text {
+			top:0 !important;
+		}
     }
     .x-share-button {
         letter-spacing: 0.1em ;
@@ -385,6 +398,27 @@ div[data-role='header']{
     label {
         margin-top: 1* @m;
     }
+	.ui-block-a {
+		float:left !important;
+		width: 100%;
+		background-color: @white;
+		a {
+			font-family: @font-special;
+			font-size: 1.6 * @m;
+	        /*font-family: @font-special-2 !important;
+			font-size: 1.5 * @m;
+			font-weight: 700;
+	        -webkit-font-smoothing: antialiased !important;
+	        letter-spacing: 0.4 * @m !important;
+	        font-weight: normal !important;
+	        text-transform: uppercase;*/
+			color: @gray;
+			float:left !important;
+			
+		}
+		
+	}
+
 }
 
 #activity {
@@ -513,6 +547,33 @@ div[data-role='header']{
     }
 }
 
+#about {
+	margin:0;
+	pading:0;
+	width:100%;
+	
+	text-align: center;
+	color: @black;
+	
+	a.ui-btn{
+		line-height: @m * 5;
+	}
+	
+
+	p { 
+		margin:0;
+	}
+	
+	.ui-content {
+		text-align: center;
+		color: @black;
+		margin:0;
+	}
+	li {
+		text-align: center;
+		color: @black;
+	}
+}
 
 
 
