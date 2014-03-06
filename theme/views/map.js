@@ -93,6 +93,10 @@ var map_view = page_view.extend({
             }else{
                 photo_params[k] = v;
             }
+
+            $('.browse-btn').removeClass('ui-btn-active');
+            $('.map-btn').addClass('ui-btn-active');
+            $('.post-btn').removeClass('ui-btn-active');
         });
 
         // map diaplay params come from query, local_storage and config in that
