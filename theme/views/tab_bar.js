@@ -48,7 +48,10 @@ var tab_bar = view.extend({
         this.active = tab;
 
         // tabs
-        this.$('.ui-btn-active').removeClass('ui-btn-active');
+        if (tab !== "post") {
+            this.$('.ui-btn-active').removeClass('ui-btn-active');
+        }
+
         var active_element = this.$('[data-name="' + tab + '"]').addClass('ui-btn-active');
         if(!active_element.length){
             this.$('[data-name="' + config.get('default_tab') + '"]').addClass('ui-btn-active');
