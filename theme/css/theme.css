@@ -4506,20 +4506,6 @@ html body .ui-group-theme-a .ui-bar-inherit.ui-li-divider small {
   left: 25%;
   width: 50%;
 }
-.ui-overlay-a #feed .aj-add-tag,
-.ui-page-theme-a #feed .aj-add-tag,
-.ui-page-theme-a .ui-panel-wrapper #feed .aj-add-tag {
-  position: fixed;
-  top: 35%;
-  left: 25%;
-  width: 50%;
-  padding: 10px;
-}
-.ui-overlay-a #feed .aj-add-tag h5,
-.ui-page-theme-a #feed .aj-add-tag h5,
-.ui-page-theme-a .ui-panel-wrapper #feed .aj-add-tag h5 {
-  text-align: center;
-}
 .ui-overlay-a #feed .takenText,
 .ui-page-theme-a #feed .takenText,
 .ui-page-theme-a .ui-panel-wrapper #feed .takenText {
@@ -4713,6 +4699,26 @@ html body .ui-group-theme-a .ui-bar-inherit.ui-li-divider small {
 .ui-page-theme-a #activity .s-username,
 .ui-page-theme-a .ui-panel-wrapper #activity .s-username {
   cursor: default;
+}
+.ui-overlay-a .aj-add-tag,
+.ui-page-theme-a .aj-add-tag,
+.ui-page-theme-a .ui-panel-wrapper .aj-add-tag {
+  position: fixed;
+  top: 35%;
+  left: 25%;
+  width: 50%;
+  padding: 10px;
+}
+.ui-overlay-a .aj-add-tag h5,
+.ui-page-theme-a .aj-add-tag h5,
+.ui-page-theme-a .ui-panel-wrapper .aj-add-tag h5 {
+  text-align: center;
+}
+.ui-overlay-a .aj-add-tag button,
+.ui-page-theme-a .aj-add-tag button,
+.ui-page-theme-a .ui-panel-wrapper .aj-add-tag button {
+  width: 90%;
+  margin: 0 auto;
 }
 .ui-body-a,
 .ui-overlay-a .ui-body-inherit,
@@ -6248,20 +6254,6 @@ html body .ui-group-theme-c .ui-bar-inherit.ui-li-divider small {
   left: 25%;
   width: 50%;
 }
-.ui-overlay-c #feed .aj-add-tag,
-.ui-page-theme-c #feed .aj-add-tag,
-.ui-page-theme-c .ui-panel-wrapper #feed .aj-add-tag {
-  position: fixed;
-  top: 35%;
-  left: 25%;
-  width: 50%;
-  padding: 10px;
-}
-.ui-overlay-c #feed .aj-add-tag h5,
-.ui-page-theme-c #feed .aj-add-tag h5,
-.ui-page-theme-c .ui-panel-wrapper #feed .aj-add-tag h5 {
-  text-align: center;
-}
 .ui-overlay-c #feed .takenText,
 .ui-page-theme-c #feed .takenText,
 .ui-page-theme-c .ui-panel-wrapper #feed .takenText {
@@ -6455,6 +6447,26 @@ html body .ui-group-theme-c .ui-bar-inherit.ui-li-divider small {
 .ui-page-theme-c #activity .s-username,
 .ui-page-theme-c .ui-panel-wrapper #activity .s-username {
   cursor: default;
+}
+.ui-overlay-c .aj-add-tag,
+.ui-page-theme-c .aj-add-tag,
+.ui-page-theme-c .ui-panel-wrapper .aj-add-tag {
+  position: fixed;
+  top: 35%;
+  left: 25%;
+  width: 50%;
+  padding: 10px;
+}
+.ui-overlay-c .aj-add-tag h5,
+.ui-page-theme-c .aj-add-tag h5,
+.ui-page-theme-c .ui-panel-wrapper .aj-add-tag h5 {
+  text-align: center;
+}
+.ui-overlay-c .aj-add-tag button,
+.ui-page-theme-c .aj-add-tag button,
+.ui-page-theme-c .ui-panel-wrapper .aj-add-tag button {
+  width: 90%;
+  margin: 0 auto;
 }
 .ui-body-c,
 .ui-overlay-c .ui-body-inherit,
@@ -7265,20 +7277,6 @@ html body .ui-group-theme-d .ui-bar-inherit.ui-li-divider small {
   left: 25%;
   width: 50%;
 }
-.ui-overlay-d #feed .aj-add-tag,
-.ui-page-theme-d #feed .aj-add-tag,
-.ui-page-theme-d .ui-panel-wrapper #feed .aj-add-tag {
-  position: fixed;
-  top: 35%;
-  left: 25%;
-  width: 50%;
-  padding: 10px;
-}
-.ui-overlay-d #feed .aj-add-tag h5,
-.ui-page-theme-d #feed .aj-add-tag h5,
-.ui-page-theme-d .ui-panel-wrapper #feed .aj-add-tag h5 {
-  text-align: center;
-}
 .ui-overlay-d #feed .takenText,
 .ui-page-theme-d #feed .takenText,
 .ui-page-theme-d .ui-panel-wrapper #feed .takenText {
@@ -7472,6 +7470,26 @@ html body .ui-group-theme-d .ui-bar-inherit.ui-li-divider small {
 .ui-page-theme-d #activity .s-username,
 .ui-page-theme-d .ui-panel-wrapper #activity .s-username {
   cursor: default;
+}
+.ui-overlay-d .aj-add-tag,
+.ui-page-theme-d .aj-add-tag,
+.ui-page-theme-d .ui-panel-wrapper .aj-add-tag {
+  position: fixed;
+  top: 35%;
+  left: 25%;
+  width: 50%;
+  padding: 10px;
+}
+.ui-overlay-d .aj-add-tag h5,
+.ui-page-theme-d .aj-add-tag h5,
+.ui-page-theme-d .ui-panel-wrapper .aj-add-tag h5 {
+  text-align: center;
+}
+.ui-overlay-d .aj-add-tag button,
+.ui-page-theme-d .aj-add-tag button,
+.ui-page-theme-d .ui-panel-wrapper .aj-add-tag button {
+  width: 90%;
+  margin: 0 auto;
 }
 .ui-body-d,
 .ui-overlay-d .ui-body-inherit,
@@ -8282,20 +8300,6 @@ html body .ui-group-theme-e .ui-bar-inherit.ui-li-divider small {
   left: 25%;
   width: 50%;
 }
-.ui-overlay-e #feed .aj-add-tag,
-.ui-page-theme-e #feed .aj-add-tag,
-.ui-page-theme-e .ui-panel-wrapper #feed .aj-add-tag {
-  position: fixed;
-  top: 35%;
-  left: 25%;
-  width: 50%;
-  padding: 10px;
-}
-.ui-overlay-e #feed .aj-add-tag h5,
-.ui-page-theme-e #feed .aj-add-tag h5,
-.ui-page-theme-e .ui-panel-wrapper #feed .aj-add-tag h5 {
-  text-align: center;
-}
 .ui-overlay-e #feed .takenText,
 .ui-page-theme-e #feed .takenText,
 .ui-page-theme-e .ui-panel-wrapper #feed .takenText {
@@ -8489,6 +8493,26 @@ html body .ui-group-theme-e .ui-bar-inherit.ui-li-divider small {
 .ui-page-theme-e #activity .s-username,
 .ui-page-theme-e .ui-panel-wrapper #activity .s-username {
   cursor: default;
+}
+.ui-overlay-e .aj-add-tag,
+.ui-page-theme-e .aj-add-tag,
+.ui-page-theme-e .ui-panel-wrapper .aj-add-tag {
+  position: fixed;
+  top: 35%;
+  left: 25%;
+  width: 50%;
+  padding: 10px;
+}
+.ui-overlay-e .aj-add-tag h5,
+.ui-page-theme-e .aj-add-tag h5,
+.ui-page-theme-e .ui-panel-wrapper .aj-add-tag h5 {
+  text-align: center;
+}
+.ui-overlay-e .aj-add-tag button,
+.ui-page-theme-e .aj-add-tag button,
+.ui-page-theme-e .ui-panel-wrapper .aj-add-tag button {
+  width: 90%;
+  margin: 0 auto;
 }
 .ui-body-e,
 .ui-overlay-e .ui-body-inherit,
@@ -10024,20 +10048,6 @@ html body .ui-group-theme-g .ui-bar-inherit.ui-li-divider small {
   left: 25%;
   width: 50%;
 }
-.ui-overlay-g #feed .aj-add-tag,
-.ui-page-theme-g #feed .aj-add-tag,
-.ui-page-theme-g .ui-panel-wrapper #feed .aj-add-tag {
-  position: fixed;
-  top: 35%;
-  left: 25%;
-  width: 50%;
-  padding: 10px;
-}
-.ui-overlay-g #feed .aj-add-tag h5,
-.ui-page-theme-g #feed .aj-add-tag h5,
-.ui-page-theme-g .ui-panel-wrapper #feed .aj-add-tag h5 {
-  text-align: center;
-}
 .ui-overlay-g #feed .takenText,
 .ui-page-theme-g #feed .takenText,
 .ui-page-theme-g .ui-panel-wrapper #feed .takenText {
@@ -10231,6 +10241,26 @@ html body .ui-group-theme-g .ui-bar-inherit.ui-li-divider small {
 .ui-page-theme-g #activity .s-username,
 .ui-page-theme-g .ui-panel-wrapper #activity .s-username {
   cursor: default;
+}
+.ui-overlay-g .aj-add-tag,
+.ui-page-theme-g .aj-add-tag,
+.ui-page-theme-g .ui-panel-wrapper .aj-add-tag {
+  position: fixed;
+  top: 35%;
+  left: 25%;
+  width: 50%;
+  padding: 10px;
+}
+.ui-overlay-g .aj-add-tag h5,
+.ui-page-theme-g .aj-add-tag h5,
+.ui-page-theme-g .ui-panel-wrapper .aj-add-tag h5 {
+  text-align: center;
+}
+.ui-overlay-g .aj-add-tag button,
+.ui-page-theme-g .aj-add-tag button,
+.ui-page-theme-g .ui-panel-wrapper .aj-add-tag button {
+  width: 90%;
+  margin: 0 auto;
 }
 .ui-body-g,
 .ui-overlay-g .ui-body-inherit,
@@ -11041,20 +11071,6 @@ html body .ui-group-theme-h .ui-bar-inherit.ui-li-divider small {
   left: 25%;
   width: 50%;
 }
-.ui-overlay-h #feed .aj-add-tag,
-.ui-page-theme-h #feed .aj-add-tag,
-.ui-page-theme-h .ui-panel-wrapper #feed .aj-add-tag {
-  position: fixed;
-  top: 35%;
-  left: 25%;
-  width: 50%;
-  padding: 10px;
-}
-.ui-overlay-h #feed .aj-add-tag h5,
-.ui-page-theme-h #feed .aj-add-tag h5,
-.ui-page-theme-h .ui-panel-wrapper #feed .aj-add-tag h5 {
-  text-align: center;
-}
 .ui-overlay-h #feed .takenText,
 .ui-page-theme-h #feed .takenText,
 .ui-page-theme-h .ui-panel-wrapper #feed .takenText {
@@ -11248,6 +11264,26 @@ html body .ui-group-theme-h .ui-bar-inherit.ui-li-divider small {
 .ui-page-theme-h #activity .s-username,
 .ui-page-theme-h .ui-panel-wrapper #activity .s-username {
   cursor: default;
+}
+.ui-overlay-h .aj-add-tag,
+.ui-page-theme-h .aj-add-tag,
+.ui-page-theme-h .ui-panel-wrapper .aj-add-tag {
+  position: fixed;
+  top: 35%;
+  left: 25%;
+  width: 50%;
+  padding: 10px;
+}
+.ui-overlay-h .aj-add-tag h5,
+.ui-page-theme-h .aj-add-tag h5,
+.ui-page-theme-h .ui-panel-wrapper .aj-add-tag h5 {
+  text-align: center;
+}
+.ui-overlay-h .aj-add-tag button,
+.ui-page-theme-h .aj-add-tag button,
+.ui-page-theme-h .ui-panel-wrapper .aj-add-tag button {
+  width: 90%;
+  margin: 0 auto;
 }
 .ui-body-h,
 .ui-overlay-h .ui-body-inherit,

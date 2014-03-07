@@ -124,12 +124,33 @@
                 <% } %>
 
                 <div class="x-share-button" data-inline="false">
-                    <input type="submit" data-role="button" data-theme="d" data-inline="false"  value="<%= T('SHARE') %>"/>
+                    <input id="submit-form" type="submit" data-role="button" data-theme="d" data-inline="false"  value="<%= T('SHARE') %>"/>
                 </div>
 
             </form>
         </div>
     </div>
+
+    <!-- Add tag menu -->
+    <div data-role="popup" class="aj-add-tag" data-theme="a" id="aj-add-tag" data-dismissible="true">
+      
+      <h5>Input Tag</h5>
+      <form id="addTag" action="javascript:void(0);" accept-charset="utf-8" >
+          <input name="newTag" placeholder="<%= T('Add Tags') %>" class="aj-newTags" data-theme="a"/>
+
+          <div class="ui-grid-a">
+              <div class="ui-block-a">
+                
+                <button data-theme="e"><%= T('Clear') %></button>
+              </div>
+              <div class="ui-block-b">
+                  <button class="addTag-button" data-theme="e"><%= T('Add') %></button>
+              </div>
+          </div>
+      </form>
+
+    </div>
+
 
 
 </div>

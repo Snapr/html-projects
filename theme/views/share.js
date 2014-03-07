@@ -1,13 +1,12 @@
 define(['views/share', '../../theme/js/material', 'utils/alerts'], function(share_view, material, alerts){
     return share_view.extend({
 
-        events: function(){
-              return _.extend({},share_view.prototype.events,{
+        events: {
                   'change .material-choice' : 'append_selected_tags_to_material_box',
-                  'click .materials' : 'writeInTag',
+                  'click .materials' : "openTagInput",
+                  'click .addTag-button' : 'writeInTag',
                   'click .materials a': 'deleteThis',
-                  'submit form': 'check_fields_and_post'
-              });
+                  'click #submit-form': 'check_fields_and_post'
            },
 
        append_selected_tags_to_material_box: function() {
@@ -18,9 +17,14 @@ define(['views/share', '../../theme/js/material', 'utils/alerts'], function(shar
            }
        },
 
+       openTagInput : function(ev){
+          $('.aj-add-tag').popup('open');
+       },
+
        writeInTag : function(ev){
-           var tags = prompt('Write it own tag', "#");
+           var tags = $('#addTag input').val();
            var container = $('.materials');
+
            tags = tags.trim();
            tags = tags.replace("##","#");
            tags = tags.replace(/\s{2,}/g, ' '); //no multiple spaces
@@ -34,9 +38,9 @@ define(['views/share', '../../theme/js/material', 'utils/alerts'], function(shar
                    if (t.match(/[a-zA-Z]/g)) { //check for letters in tag
                        addMaterialButtonToHTML(t, container);
                    }
-                   
                });
            }
+           $('.aj-add-tag').popup('close');
        },
 
        deleteThis : function(ev){
