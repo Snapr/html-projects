@@ -339,7 +339,7 @@ define(
             "dblclick .x-photo": "favorite",
 
             "click .tags-readable" : "make_tags_editable",
-            'click .addNewTag' : 'addTag',
+            //'click .addNewTag' : 'addTag',
             'click .tags-editable span a': 'deleteThis',
             "click .clickOutsideTagBox" : "submit_tags"
         },
@@ -384,6 +384,10 @@ define(
 
             this.comment_form = this.$('.x-comment-form');
             this.comment_form.on('click', '.x-submit-button', _.bind(this.comment, this));
+            this.comment_form.on('click', '.x-submit-button', _.bind(this.comment, this));
+
+            this.addTag_form = this.$('.aj-add-tag');
+            this.addTag_form.on('click', '.addTag-button', _.bind(this.addTag, this));
 
             // delegateEvents makes the event bindings in this view work
             // even though it is a subview of feed_list (very important)
@@ -1086,7 +1090,7 @@ define(
             ev.stopPropagation();
         },
 
-        addTag : function(ev) { var self = this;
+        addTag_old : function(ev) { var self = this;
             //need to seriously work on this: multiple tags? no hashtag?
             var tags = prompt('Make up your own tag', "#");
             var container = self.$('.tags-editable span');
@@ -1107,6 +1111,31 @@ define(
                 });
             }
             ev.stopPropagation();
+        },
+
+        addTag : function(ev) { var self = this;
+            var tags = self.addTag_form.find('input').val();
+            var container = self.$('.tags-editable span');
+            tags = tags.trim();
+            tags = tags.replace("##","#");
+            tags = tags.replace(/\s{2,}/g, ' '); //no multiple spaces
+            if (tags !== "#" || tags !== "") { //if there is some input
+                tagArray = tags.split(" ");
+                _.each(tagArray, function(t){
+                    t = t.replace(";", "");// no punctuation
+                    t = t.replace(",", "");
+                    t = "#" + t; //make sure each tag starts with #
+                    t = t.replace("##","#"); //but not 2 of them
+                    if (t.match(/[a-zA-Z]/g)) { //check for letters in tag
+                        addMaterialButtonToHTML(t, container);
+                    }
+                    
+                });
+            }
+            self.addTag_form.find('input').val("");
+            $('.aj-add-tag').popup('close');
+            this.submit_tags();
+            
         },
 
         submit_tags : function () { var self = this;

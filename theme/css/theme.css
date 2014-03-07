@@ -4506,6 +4506,20 @@ html body .ui-group-theme-a .ui-bar-inherit.ui-li-divider small {
   left: 25%;
   width: 50%;
 }
+.ui-overlay-a #feed .aj-add-tag,
+.ui-page-theme-a #feed .aj-add-tag,
+.ui-page-theme-a .ui-panel-wrapper #feed .aj-add-tag {
+  position: fixed;
+  top: 35%;
+  left: 25%;
+  width: 50%;
+  padding: 10px;
+}
+.ui-overlay-a #feed .aj-add-tag h5,
+.ui-page-theme-a #feed .aj-add-tag h5,
+.ui-page-theme-a .ui-panel-wrapper #feed .aj-add-tag h5 {
+  text-align: center;
+}
 .ui-overlay-a #feed .takenText,
 .ui-page-theme-a #feed .takenText,
 .ui-page-theme-a .ui-panel-wrapper #feed .takenText {
@@ -6234,6 +6248,20 @@ html body .ui-group-theme-c .ui-bar-inherit.ui-li-divider small {
   left: 25%;
   width: 50%;
 }
+.ui-overlay-c #feed .aj-add-tag,
+.ui-page-theme-c #feed .aj-add-tag,
+.ui-page-theme-c .ui-panel-wrapper #feed .aj-add-tag {
+  position: fixed;
+  top: 35%;
+  left: 25%;
+  width: 50%;
+  padding: 10px;
+}
+.ui-overlay-c #feed .aj-add-tag h5,
+.ui-page-theme-c #feed .aj-add-tag h5,
+.ui-page-theme-c .ui-panel-wrapper #feed .aj-add-tag h5 {
+  text-align: center;
+}
 .ui-overlay-c #feed .takenText,
 .ui-page-theme-c #feed .takenText,
 .ui-page-theme-c .ui-panel-wrapper #feed .takenText {
@@ -7237,6 +7265,20 @@ html body .ui-group-theme-d .ui-bar-inherit.ui-li-divider small {
   left: 25%;
   width: 50%;
 }
+.ui-overlay-d #feed .aj-add-tag,
+.ui-page-theme-d #feed .aj-add-tag,
+.ui-page-theme-d .ui-panel-wrapper #feed .aj-add-tag {
+  position: fixed;
+  top: 35%;
+  left: 25%;
+  width: 50%;
+  padding: 10px;
+}
+.ui-overlay-d #feed .aj-add-tag h5,
+.ui-page-theme-d #feed .aj-add-tag h5,
+.ui-page-theme-d .ui-panel-wrapper #feed .aj-add-tag h5 {
+  text-align: center;
+}
 .ui-overlay-d #feed .takenText,
 .ui-page-theme-d #feed .takenText,
 .ui-page-theme-d .ui-panel-wrapper #feed .takenText {
@@ -8239,6 +8281,20 @@ html body .ui-group-theme-e .ui-bar-inherit.ui-li-divider small {
   top: 35%;
   left: 25%;
   width: 50%;
+}
+.ui-overlay-e #feed .aj-add-tag,
+.ui-page-theme-e #feed .aj-add-tag,
+.ui-page-theme-e .ui-panel-wrapper #feed .aj-add-tag {
+  position: fixed;
+  top: 35%;
+  left: 25%;
+  width: 50%;
+  padding: 10px;
+}
+.ui-overlay-e #feed .aj-add-tag h5,
+.ui-page-theme-e #feed .aj-add-tag h5,
+.ui-page-theme-e .ui-panel-wrapper #feed .aj-add-tag h5 {
+  text-align: center;
 }
 .ui-overlay-e #feed .takenText,
 .ui-page-theme-e #feed .takenText,
@@ -9968,6 +10024,20 @@ html body .ui-group-theme-g .ui-bar-inherit.ui-li-divider small {
   left: 25%;
   width: 50%;
 }
+.ui-overlay-g #feed .aj-add-tag,
+.ui-page-theme-g #feed .aj-add-tag,
+.ui-page-theme-g .ui-panel-wrapper #feed .aj-add-tag {
+  position: fixed;
+  top: 35%;
+  left: 25%;
+  width: 50%;
+  padding: 10px;
+}
+.ui-overlay-g #feed .aj-add-tag h5,
+.ui-page-theme-g #feed .aj-add-tag h5,
+.ui-page-theme-g .ui-panel-wrapper #feed .aj-add-tag h5 {
+  text-align: center;
+}
 .ui-overlay-g #feed .takenText,
 .ui-page-theme-g #feed .takenText,
 .ui-page-theme-g .ui-panel-wrapper #feed .takenText {
@@ -10970,6 +11040,20 @@ html body .ui-group-theme-h .ui-bar-inherit.ui-li-divider small {
   top: 35%;
   left: 25%;
   width: 50%;
+}
+.ui-overlay-h #feed .aj-add-tag,
+.ui-page-theme-h #feed .aj-add-tag,
+.ui-page-theme-h .ui-panel-wrapper #feed .aj-add-tag {
+  position: fixed;
+  top: 35%;
+  left: 25%;
+  width: 50%;
+  padding: 10px;
+}
+.ui-overlay-h #feed .aj-add-tag h5,
+.ui-page-theme-h #feed .aj-add-tag h5,
+.ui-page-theme-h .ui-panel-wrapper #feed .aj-add-tag h5 {
+  text-align: center;
 }
 .ui-overlay-h #feed .takenText,
 .ui-page-theme-h #feed .takenText,
