@@ -80,7 +80,8 @@ var uploading = page_view.extend({
     },
 
     events: {
-        "click .x-cancel-upload": "cancel_upload"
+        "click .x-cancel-upload": "cancel_upload",
+        "click .email-link" : "email_link"
     },
 
     get_override_tab: function(){ return 'uploading'; },
@@ -213,8 +214,7 @@ var uploading = page_view.extend({
         this.$('.offline').hide();
 
         $('.email').show();
-        $('.email-link').attr('href', 'mailto:?subject=Check Out This Junk&body=http://app.artjunk.org/' + photo_id);
-        
+        $('.email-link').attr('data-photo', photo_id);
 
         if(data.to_link && data.to_link.length){
             // if there are services to link we won't be doing anything here.
@@ -246,6 +246,18 @@ var uploading = page_view.extend({
                     photo: photo
                 });
                 uploading_view.progress_el.html( uploading_view.progress_view.render().el );
+            }
+        });
+    },
+
+    email_link: function() {
+        var photo_id = $('.email-link').attr('data-photo');
+        alerts.approve({
+            'title': T('Are you sure you want to email this item?'),
+            'yes': T('Open Email'),
+            'no': T('Cancel'),
+            'yes_callback': function(){
+                window.location='mailto:?subject=Check Out This Junk&body=http://app.artjunk.org/' + photo_id;
             }
         });
     },
