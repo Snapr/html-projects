@@ -28,8 +28,6 @@
                         self.title = T("Popular");
                     }else if (query.photo_id){ //tc-added
                         self.title = T("Browse");
-                        $('.aj-radius-btn').hide();
-                        $('.aj-refresh').hide();
                     }else if (query.radius) {
                         self.title = T("Nearby");
                     }else if (query.not_tagged){
