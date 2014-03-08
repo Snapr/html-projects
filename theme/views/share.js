@@ -2,11 +2,11 @@ define(['views/share', '../../theme/js/material', 'utils/alerts'], function(shar
     return share_view.extend({
 
         events: {
-                  'change .material-choice' : 'append_selected_tags_to_material_box',
-                  'click .materials' : "openTagInput",
-                  'click .addTag-button' : 'writeInTag',
-                  'click .materials a': 'deleteThis',
-                  'click #submit-form': 'check_fields_and_post'
+              'change .material-choice' : 'append_selected_tags_to_material_box',
+              'click .materials' : "openTagInput",
+              'click .addTag-button' : 'writeInTag',
+              'click .materials a': 'deleteThis',
+              'click #submit-form': 'check_fields_and_post'
            },
 
        append_selected_tags_to_material_box: function() {
@@ -17,7 +17,7 @@ define(['views/share', '../../theme/js/material', 'utils/alerts'], function(shar
            }
        },
 
-       openTagInput : function(ev){
+       openTagInput : function(){
           $('.aj-add-tag').popup('open');
        },
 
