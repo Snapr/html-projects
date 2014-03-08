@@ -253,11 +253,11 @@ var uploading = page_view.extend({
     email_link: function() {
         var photo_id = $('.email-link').attr('data-photo');
         alerts.approve({
-            'title': T('Are you sure you want to email this item?'),
+            'title': T('Do you want to email this ART JUNK?'),
             'yes': T('Open Email'),
             'no': T('Cancel'),
             'yes_callback': function(){
-                window.location='mailto:?subject=Check Out This Junk&body=http://app.artjunk.org/' + photo_id;
+                window.location='mailto:?subject=Check Out This ART JUNK&body=http://app.artjunk.org/' + photo_id;
             }
         });
     },

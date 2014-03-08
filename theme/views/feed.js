@@ -778,11 +778,11 @@ define(
 
         email_link: function() { var self = this;
             alerts.approve({
-                'title': T('Are you sure you want to email this item?'),
+                'title': T('Do you want to email this ART JUNK?'),
                 'yes': T('Open Email'),
                 'no': T('Cancel'),
                 'yes_callback': function(){
-                    window.location='mailto:?subject=Check Out This Junk&body=http://app.artjunk.org/' + self.model.get("id");
+                    window.location='mailto:?subject=Check Out This ART JUNK&body=http://app.artjunk.org/' + self.model.get("id");
 
                 }
             });
