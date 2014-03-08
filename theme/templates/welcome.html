@@ -1,4 +1,4 @@
-<div id="welcome" data-role="page" data-theme="f" data-tab-bar="false">
+<div id="welcome" data-role="page" data-theme="c" data-tab-bar="false">
     <div data-role="header" data-theme="f">
         <h1><%= T('Welcome') %></h1>
         <% if(!config.has('min_age')){ %>
@@ -35,7 +35,7 @@
             <ul data-role="listview" data-ajax="false" class="wrap-text" data-inset="true" data-theme="a">
                 <li>
                     <h4 class="text-accent"><%= T('Hello', {context:"shout"}) %></h4>
-                    <p><%= T('sign in to use social features') %></p>
+                    <p><%= T('Please sign in to use ART JUNK.') %></p>
                     <p><%= T('we wont post to Facebook') %></p>
                 </li>
             </ul>
@@ -44,7 +44,7 @@
             <a data-role="button" data-icon="social-facebook" data-iconpos="left" class="x-facebook-button s-facebook-button" data-theme="d"><%= T('Sign in with') %> Facebook</a>
 
             <div class="center">
-                <a href="#/login/" data-icon="arrow-r" data-iconpos="right" data-role="button" class="outline-style" data-theme="a"><%= T('More Sign In Options') %></a>
+                <a href="#/login/" data-icon="arrow-r" data-iconpos="right" data-role="button" class="outline-style" data-theme="d"><%= T('More Sign In Options') %></a>
             </div>
 
 			<div class="s-padding">

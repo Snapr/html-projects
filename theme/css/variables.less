@@ -573,9 +573,7 @@ div[data-role='header']{
 	margin:0;
 	pading:0;
 	width:100%;
-	
-	text-align: center;
-	color: @black;
+
 	
 	a.ui-btn{
 		line-height: @m * 5;
@@ -588,15 +586,32 @@ div[data-role='header']{
 	
 	.ui-content {
 		text-align: center;
-		color: @black;
 		margin:0;
 	}
-	li {
-		text-align: center;
-		color: @black;
+	
+	ul{
+		margin-top: -1* @m;
+		li {
+			text-align: center;
+			background-color: @gray-lighter;
+			border-color: @gray-light;
+			
+		}
+	}
+
+}
+#welcome {
+	a.ui-btn{
+		line-height: @m * 5;
+	}
+	ul{
+		li {
+			background-color: @gray-lighter;
+			border-color: @gray-light;
+			
+		}
 	}
 }
-
 
 
 

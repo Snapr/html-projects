@@ -101,8 +101,6 @@
   margin: 0;
   pading: 0;
   width: 100%;
-  text-align: center;
-  color: #000000;
 }
 #about a.ui-btn {
   line-height: 50px;
@@ -112,12 +110,22 @@
 }
 #about .ui-content {
   text-align: center;
-  color: #000000;
   margin: 0;
 }
-#about li {
+#about ul {
+  margin-top: -10px;
+}
+#about ul li {
   text-align: center;
-  color: #000000;
+  background-color: #e6e6e6;
+  border-color: #cccccc;
+}
+#welcome a.ui-btn {
+  line-height: 50px;
+}
+#welcome ul li {
+  background-color: #e6e6e6;
+  border-color: #cccccc;
 }
 /* keep the corners 45 degrees otherwise they look crap
    apply these to elements using the ::after psuedo class..
