@@ -113,13 +113,13 @@
     <!-- More menu -->
     <div data-role="popup" class="x-more-menu s-more-menu" data-theme="a" id="more-menu-<%= item.cid %>" data-dismissible="true">
             <a class="aj-take" data-role="button" data-theme="c">
-               Take
+               Report Taken
            </a>
             <a class="aj-untake" data-role="button" data-theme="c">
-               Untake
+               Report Not Taken
            </a>
             <a class="aj-email" data-role="button" data-theme="c">
-               Email
+               Email this item
            </a>
            
         <% if (item.get("username") && item.get("username").toLowerCase() == (auth.get("snapr_user") || "").toLowerCase()){ %>
@@ -128,7 +128,7 @@
            </a>
         <%} else if(config.get('moderation_controls')){ %>
             <a class="x-flag" data-role="button" data-theme="c">
-                <% if (item.get('flagged')){%> flagged <% }else{ %> Flag <% } %>
+                <% if (item.get('flagged')){%> flagged <% }else{ %> Flag inappropriate <% } %>
             </a>
         <%}%>
     </div>

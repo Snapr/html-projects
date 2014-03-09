@@ -865,8 +865,8 @@ define(
 
         set_taken : function(ev){ var self = this;
             alerts.approve({
-                'title': T('Are you sure you want to take this item?'),
-                'yes': T('Take'),
+                'title': T('Are you sure you want to report this item taken?'),
+                'yes': T('Report Taken'),
                 'no': T('Cancel'),
                 'yes_callback': function(){
 
@@ -947,7 +947,7 @@ define(
 
         set_untaken : function(){ var self = this;
             alerts.approve({
-                    'title': T('Are you sure you want to untake this item?'),
+                    'title': T('Are you sure you want to report the item is still not taken?'),
                     'yes': T('Untake'),
                     'no': T('Cancel'),
                     'yes_callback': function(){
