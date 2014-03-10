@@ -151,7 +151,7 @@ define(
                         if(callback){callback();}
                     }
 
-                    self.collections[tab].data.initial_load = 0;      
+                    self.collections[tab].data.initial_load = 0;
                 }
             });
             }

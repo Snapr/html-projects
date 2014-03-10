@@ -20,7 +20,6 @@ var tab_bar = view.extend({
         'click a': 'handle_click',
         'click .x-menu-button': 'open_menu',
         'click .browse-btn': 'direct_browse'
-
     },
 
     render: function(message, icon){
@@ -48,9 +47,7 @@ var tab_bar = view.extend({
         this.active = tab;
 
         // tabs
-        if (tab !== "post") {
-            this.$('.ui-btn-active').removeClass('ui-btn-active');
-        }
+        this.$('.ui-btn-active').removeClass('ui-btn-active');
 
         var active_element = this.$('[data-name="' + tab + '"]').addClass('ui-btn-active');
         if(!active_element.length){
@@ -63,7 +60,21 @@ var tab_bar = view.extend({
 
         history_state.set('active_tab', tab);
 
+        if (tab === "post") {
+            this.post_active_state();
+        }
+
         return this;
+    },
+
+    post_active_state: function() {
+        var currentPage = Backbone.history.fragment;
+        $('.post-btn').removeClass('ui-btn-active');
+        if (currentPage ==="nearby/" || currentPage === "all/" || currentPage === "" || currentPage.indexOf("access_token")!==-1) {
+            $('.browse-btn').addClass('ui-btn-active');
+        }else if (currentPage === "map/") {
+            $('.map-btn').addClass('ui-btn-active');
+        }
     },
 
     handle_click: function(event){
