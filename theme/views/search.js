@@ -16,9 +16,9 @@ define(['views/search'], function(search_view){
 
             this.change_page();
 
-            $('.browse-btn').removeClass('ui-btn-active');
-            $('.map-btn').removeClass('ui-btn-active');
-            $('.post-btn').removeClass('ui-btn-active');
+            $('#browse-btn').removeClass('ui-btn-active');
+            $('#map-btn').removeClass('ui-btn-active');
+            $('#post-btn').removeClass('ui-btn-active');
 
             $('.x-side-menu .ui-btn-active').removeClass('ui-btn-active');
             $('.x-side-menu [data-slug="search"]').addClass('ui-btn-active');

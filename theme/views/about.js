@@ -3,8 +3,8 @@ define(['views/base/page'], function(about_view){
 
       post_activate: function(){
           this.change_page();
-          $('.browse-btn').removeClass('ui-btn-active');
-          $('.map-btn').removeClass('ui-btn-active');
+          $('#browse-btn').removeClass('ui-btn-active');
+          $('#map-btn').removeClass('ui-btn-active');
 
           $('.x-side-menu .ui-btn-active').removeClass('ui-btn-active');
           $('.x-side-menu [data-slug="about"]').addClass('ui-btn-active');

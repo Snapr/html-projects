@@ -57,9 +57,9 @@
                     self.change_page();
                 }
 
-                $('.browse-btn').addClass('ui-btn-active');
-                $('.map-btn').removeClass('ui-btn-active');
-                $('.post-btn').removeClass('ui-btn-active');
+                $('#browse-btn').addClass('ui-btn-active');
+                $('#map-btn').removeClass('ui-btn-active');
+                $('#post-btn').removeClass('ui-btn-active');
 
             },
 

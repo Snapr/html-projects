@@ -115,7 +115,7 @@
 // Buttons
 // ------------------------
 
-@icon-large-width:  3*@m;
+//@icon-large-width:  3*@m;
 
 .button-font(){
     font-family: @font-special;
@@ -198,12 +198,6 @@ div[data-role='header']{
 
 //PHOTOS FEED
 #feed {
-    .aj-radius-menu {
-        position: fixed;
-        bottom: 50px;
-        left: 0;
-        width: 33.3%;
-    }
 
     @coordinatesHeight : 4 * @m;
     .coordinates {
@@ -454,77 +448,6 @@ div[data-role='header']{
 
 }
 
-//FOOTER NAV BAR
-@footerHeight: 5 * @m;
-.ui-footer {
-	/*border-top: 1px solid @white !important;*/
-   .ui-btn {
-        line-height: @footerHeight !important;
-        font-family: @font-special-2 !important;
-        -webkit-font-smoothing: antialiased !important;
-        letter-spacing: 0.4 * @m !important;
-        font-weight: normal !important;
-        text-transform: uppercase;
-		height: 2 * @m !important;
-		
-   }
-	.ui-block-a{
-		height: 5 * @m !important;
-		border-right: 1px solid @white;
-		.browse-btn:after {
-	            font-size: 3 * @m !important;
-				margin: 0 !important;
-				padding: 0 !important;
-				left: 42% !important;
-				top: 12% !important;
-	     }
-	}
-	.ui-block-b{
-		height: 5 * @m !important;
-		border-right: 1px solid @white;
-		.map-btn:after {
-	            font-size: 2.8 * @m !important;
-				margin: 0 !important;
-				padding: 0 !important;
-				left: 40% !important;
-				top: 20% !important;
-	     }
-	}
-
-	.ui-block-c{
-		height: 5 * @m !important;
-		.launch-camera-options{
-			height: 5 * @m !important;
-			
-
-		}
-		.post-btn:after {
-	            font-size: 2.8 * @m !important;
-				margin: 0 !important;
-				padding: 0 !important;
-				left: 40% !important;
-				top: 20% !important;
-	     }
-
-	}	
-    min-height: @footerHeight !important;
-
-
-}
-
-.aj-distance {
-	display: block !important;
-	border-bottom: 1px solid @white !important;
-	-webkit-border-radius: 0 !important;
-	border-radius: 0 !important;
-	padding:0 !important;
-	margin:0 !important;
-	height: @footerHeight!important;
-	text-align: center;
-	vertical-align: middle !important;
-	line-height: 50px !important;
-}
-
 //MAP PAGE
 #map {
     // .s-map-base {
@@ -612,6 +535,34 @@ div[data-role='header']{
 		}
 	}
 }
+
+//FOOTER NAV BAR
+@footerHeight: 5 * @m;
+#footer {
+    height: @footerHeight;
+    min-height: @footerHeight;
+    .ui-btn{ 
+        width: 100%;
+         &:not(#browse-btn) {
+             border-left: 1px solid @white;
+         }
+    }
+}
+
+#radius-menu {
+    position: fixed;
+    bottom: @footerHeight;
+    left: 0;
+    width: 33.4%;
+    .aj-distance {
+        border-bottom: 1px solid @white;
+        border-radius: 0;
+        margin:0;
+    }
+} 
+
+
+
 
 
 
