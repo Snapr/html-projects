@@ -509,22 +509,22 @@ div.ui-mobile-viewport {
   bottom: 8px;
 }
 .large-icon.ui-btn-icon-left {
-  padding-left: 54px;
+  padding-left: 60px;
 }
 .large-icon.ui-btn-icon-right {
-  padding-right: 54px;
+  padding-right: 60px;
 }
 .large-icon.ui-btn-icon-top {
-  padding-top: 55px;
+  padding-top: 61px;
 }
 .large-icon.ui-btn-icon-bottom {
-  padding-bottom: 55px;
+  padding-bottom: 61px;
 }
 .large-icon.ui-btn-icon-notext:after,
 .large-icon.ui-btn-icon-left:after,
 .large-icon.ui-btn-icon-right:after {
   top: 50%;
-  margin-top: -12px;
+  margin-top: -15px;
 }
 .large-icon.ui-btn-icon-left:after {
   left: 20px;
@@ -536,7 +536,7 @@ div.ui-mobile-viewport {
 .large-icon.ui-btn-icon-top:after,
 .large-icon.ui-btn-icon-bottom:after {
   left: 50%;
-  margin-left: -12px;
+  margin-left: -15px;
 }
 .large-icon.ui-btn-icon-top:after {
   top: 20px;
@@ -12380,8 +12380,8 @@ div[data-role="header"] *[data-rel="back"]:before {
   left: 10px;
   top: auto;
   margin: 0;
-  width: 24px;
-  height: 24px;
+  width: 30px;
+  height: 30px;
   padding: 3px;
   z-index: 500;
 }
@@ -12741,7 +12741,7 @@ img.emoji {
   float: right;
 }
 .x-list .s-feed-photo .s-image-details .s-action-buttons .s-more-button:after {
-  font-size: 24px !important;
+  font-size: 30px !important;
 }
 .x-list .s-feed-photo .s-favorited-overlay {
   display: none;
@@ -13047,7 +13047,7 @@ img.emoji {
 .s-comp-promo {
   margin: -10px -10px 0 -10px;
   padding: 10px;
-  padding-left: 48px;
+  padding-left: 60px;
   position: relative;
 }
 .s-comp-promo h4,
@@ -13062,8 +13062,8 @@ img.emoji {
   top: 10px;
 }
 .s-comp-promo .ui-icon-large-certificate.large-icon:after {
-  font-size: 48px !important;
-  line-height: 48px !important;
+  font-size: 60px !important;
+  line-height: 60px !important;
 }
 .s-competition .s-comp-banner {
   margin: 0 -10px 10px -10px;
@@ -13995,7 +13995,7 @@ img.emoji {
   background-color: white;
   color: #999999;
   padding: 10px;
-  padding-left: 44px;
+  padding-left: 50px;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
@@ -14220,7 +14220,7 @@ html head + body .ui-btn.hero-style:after {
 .large-icon.ui-btn-icon-top:after,
 .large-icon.ui-btn-icon-bottom:after,
 .large-icon.ui-btn-icon-notext:after {
-  font-size: 24px !important;
+  font-size: 30px !important;
 }
 .ui-mini.ui-icon:after,
 .ui-mini.ui-btn-icon-left:after,
