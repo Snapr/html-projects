@@ -388,6 +388,7 @@ define(
 
             this.addTag_form = this.$('.aj-add-tag');
             this.addTag_form.on('click', '.addTag-button', _.bind(this.addTag, this));
+            this.addTag_form.on('click', '.clearTag-button', _.bind(this.clearTag, this));
 
             // delegateEvents makes the event bindings in this view work
             // even though it is a subview of feed_list (very important)
@@ -1136,6 +1137,10 @@ define(
             $('.aj-add-tag').popup('close');
             this.submit_tags();
             
+        },
+
+        clearTag: function() { var self=this;
+            self.addTag_form.find('input').val("");
         },
 
         submit_tags : function () { var self = this;

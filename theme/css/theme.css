@@ -4672,7 +4672,7 @@ html body .ui-group-theme-a .ui-bar-inherit.ui-li-divider small {
 .ui-page-theme-a .aj-add-tag,
 .ui-page-theme-a .ui-panel-wrapper .aj-add-tag {
   position: fixed;
-  top: 35%;
+  top: 25%;
   left: 25%;
   width: 50%;
   padding: 10px;
@@ -6412,7 +6412,7 @@ html body .ui-group-theme-c .ui-bar-inherit.ui-li-divider small {
 .ui-page-theme-c .aj-add-tag,
 .ui-page-theme-c .ui-panel-wrapper .aj-add-tag {
   position: fixed;
-  top: 35%;
+  top: 25%;
   left: 25%;
   width: 50%;
   padding: 10px;
@@ -7427,7 +7427,7 @@ html body .ui-group-theme-d .ui-bar-inherit.ui-li-divider small {
 .ui-page-theme-d .aj-add-tag,
 .ui-page-theme-d .ui-panel-wrapper .aj-add-tag {
   position: fixed;
-  top: 35%;
+  top: 25%;
   left: 25%;
   width: 50%;
   padding: 10px;
@@ -8442,7 +8442,7 @@ html body .ui-group-theme-e .ui-bar-inherit.ui-li-divider small {
 .ui-page-theme-e .aj-add-tag,
 .ui-page-theme-e .ui-panel-wrapper .aj-add-tag {
   position: fixed;
-  top: 35%;
+  top: 25%;
   left: 25%;
   width: 50%;
   padding: 10px;
@@ -10182,7 +10182,7 @@ html body .ui-group-theme-g .ui-bar-inherit.ui-li-divider small {
 .ui-page-theme-g .aj-add-tag,
 .ui-page-theme-g .ui-panel-wrapper .aj-add-tag {
   position: fixed;
-  top: 35%;
+  top: 25%;
   left: 25%;
   width: 50%;
   padding: 10px;

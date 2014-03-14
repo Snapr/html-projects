@@ -5,6 +5,7 @@ define(['views/share', '../../theme/js/material', 'utils/alerts'], function(shar
               'change .material-choice' : 'append_selected_tags_to_material_box',
               'click .materials' : "openTagInput",
               'click .addTag-button' : 'writeInTag',
+              'click .clearTag-button' : 'clearTag',
               'click .materials a': 'deleteThis',
               'click #submit-form': 'check_fields_and_post'
            },
@@ -41,6 +42,10 @@ define(['views/share', '../../theme/js/material', 'utils/alerts'], function(shar
                });
            }
            $('.aj-add-tag').popup('close');
+       },
+
+       clearTag: function() { var self=this;
+           $('#addTag input').val("");
        },
 
        deleteThis : function(ev){
