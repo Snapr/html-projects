@@ -8,6 +8,14 @@
   src: local('Montserrat-Bold'), url(../fonts/Montserrat-Bold.woff) format('woff');
 }
 /* Active stuff */
+* {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+}
+input,
+textarea {
+  -webkit-user-select: auto;
+}
 #map .s-map-thumb {
   background-color: #1abc9c;
 }
