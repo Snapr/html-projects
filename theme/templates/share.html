@@ -131,19 +131,21 @@
         </div>
 
         <!-- Add tag menu -->
-        <div data-role="popup" class="aj-add-tag" data-theme="a" id="aj-add-tag" data-dismissible="true">
+        <div data-role="popup" class="aj-write-tag" data-theme="a" id="aj-write-tag" data-dismissible="true">
           
           <h5>Input Tag</h5>
           <form id="addTag" action="javascript:void(0);" accept-charset="utf-8" >
-              <input name="newTag" placeholder="<%= T('Add Tags') %>" class="aj-newTags" data-theme="a"/>
+              <input name="newTag" placeholder="<%= T('Add Tags') %>" class="aj-writeTags" data-theme="a"/>
+
+              <input type="submit" value="Submit" data-role="none" />
 
               <div class="ui-grid-a">
                   <div class="ui-block-a">
                     
-                    <button class="clearTag-button" data-theme="g"><%= T('Clear') %></button>
+                    <button type="button" class="clearTag-button" data-theme="g"><%= T('Clear') %></button>
                   </div>
                   <div class="ui-block-b">
-                      <button class="addTag-button" data-theme="g"><%= T('Add') %></button>
+                      <button type="button" class="addTag-button" data-theme="g"><%= T('Add') %></button>
                   </div>
               </div>
           </form>

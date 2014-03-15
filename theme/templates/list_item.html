@@ -63,7 +63,7 @@
                 <a data-role="button" data-inline="true" data-mini="true" data-icon="remove" class="deleteable"><%= mat %></a>
                <% }); %>
                </span>
-               <a data-role="button" data-rel="popup" href="#aj-add-tag-<%= item.cid %>" data-inline="true" data-mini="true" data-icon="plus">Add</a>
+               <a data-role="button" data-rel="popup" href="#aj-add-tag-<%= item.cid %>" data-inline="true" data-mini="true" data-icon="plus" class="addTag-pop">Add</a>
 
             </div>
 
@@ -204,20 +204,21 @@
 
 <!-- Add tag menu -->
 <div data-role="popup" class="aj-add-tag" data-theme="a" id="aj-add-tag-<%= item.cid %>" data-dismissible="true">
-  
   <h5>Please insert your own tag</h5>
-  <form action="javascript:void(0);" accept-charset="utf-8" >
+  <form id="addTag" action="javascript:void(0);" accept-charset="utf-8" >
       <input name="newTag-<%= item.get('id') %>" placeholder="<%= T('Add Tags') %>" class="aj-newTags" data-theme="a"/>
+      
 
       <div class="ui-grid-a">
           <div class="ui-block-a">
-            
-            <button class="clearTag-button" data-theme="g"><%= T('Clear') %></button>
+            <button type="button"class="clearTag-button" data-theme="g"><%= T('Clear') %></button>
           </div>
           <div class="ui-block-b">
-              <button class="addTag-button" data-theme="g"><%= T('Add') %></button>
+              <button type="button"class="addTag-button" data-theme="g"><%= T('Add') %></button>
           </div>
       </div>
+
+      <input type="submit" value="Submit" data-role="none" />
   </form>
 
 </div>

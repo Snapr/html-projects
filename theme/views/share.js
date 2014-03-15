@@ -5,6 +5,7 @@ define(['views/share', '../../theme/js/material', 'utils/alerts'], function(shar
               'change .material-choice' : 'append_selected_tags_to_material_box',
               'click .materials' : "openTagInput",
               'click .addTag-button' : 'writeInTag',
+              'submit #addTag' : 'writeInTag',
               'click .clearTag-button' : 'clearTag',
               'click .materials a': 'deleteThis',
               'click #submit-form': 'check_fields_and_post'
@@ -19,16 +20,17 @@ define(['views/share', '../../theme/js/material', 'utils/alerts'], function(shar
        },
 
        openTagInput : function(){
-          $('.aj-add-tag').popup('open');
+          $('#aj-write-tag').popup('open');
+          $('form input').focus();
        },
 
        writeInTag : function(ev){
-           var tags = $('#addTag input').val();
+           var tags = $('#addTag .aj-writeTags').val();
            var container = $('.materials');
-
            tags = tags.trim();
            tags = tags.replace("##","#");
            tags = tags.replace(/\s{2,}/g, ' '); //no multiple spaces
+           tags = tags.toLowerCase();
            if (tags !== "#" || tags !== "") { //if there is some input
                tagArray = tags.split(" ");
                _.each(tagArray, function(t){
@@ -41,11 +43,12 @@ define(['views/share', '../../theme/js/material', 'utils/alerts'], function(shar
                    }
                });
            }
-           $('.aj-add-tag').popup('close');
+           this.clearTag();
+           $('.aj-write-tag').popup('close');
        },
 
        clearTag: function() { var self=this;
-           $('#addTag input').val("");
+           $('#addTag .aj-writeTags').val("");
        },
 
        deleteThis : function(ev){
