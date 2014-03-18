@@ -4614,6 +4614,12 @@ html body .ui-group-theme-a .ui-bar-inherit.ui-li-divider small {
 .ui-page-theme-a .ui-panel-wrapper .s-avatar {
   display: none;
 }
+.ui-overlay-a .ui-icon-spinner:after,
+.ui-page-theme-a .ui-icon-spinner:after,
+.ui-page-theme-a .ui-panel-wrapper .ui-icon-spinner:after {
+  background-color: #34495e;
+  border-radius: 50%;
+}
 .ui-body-a,
 .ui-overlay-a .ui-body-inherit,
 .ui-page-theme-a .ui-body-inherit,
@@ -6097,6 +6103,12 @@ html body .ui-group-theme-c .ui-bar-inherit.ui-li-divider small {
 .ui-page-theme-c .ui-panel-wrapper .s-avatar {
   display: none;
 }
+.ui-overlay-c .ui-icon-spinner:after,
+.ui-page-theme-c .ui-icon-spinner:after,
+.ui-page-theme-c .ui-panel-wrapper .ui-icon-spinner:after {
+  background-color: #34495e;
+  border-radius: 50%;
+}
 .ui-body-c,
 .ui-overlay-c .ui-body-inherit,
 .ui-page-theme-c .ui-body-inherit,
@@ -6855,6 +6867,12 @@ html body .ui-group-theme-d .ui-bar-inherit.ui-li-divider small {
 .ui-page-theme-d .ui-panel-wrapper .s-avatar {
   display: none;
 }
+.ui-overlay-d .ui-icon-spinner:after,
+.ui-page-theme-d .ui-icon-spinner:after,
+.ui-page-theme-d .ui-panel-wrapper .ui-icon-spinner:after {
+  background-color: #34495e;
+  border-radius: 50%;
+}
 .ui-body-d,
 .ui-overlay-d .ui-body-inherit,
 .ui-page-theme-d .ui-body-inherit,
@@ -7612,6 +7630,12 @@ html body .ui-group-theme-e .ui-bar-inherit.ui-li-divider small {
 .ui-page-theme-e .s-avatar,
 .ui-page-theme-e .ui-panel-wrapper .s-avatar {
   display: none;
+}
+.ui-overlay-e .ui-icon-spinner:after,
+.ui-page-theme-e .ui-icon-spinner:after,
+.ui-page-theme-e .ui-panel-wrapper .ui-icon-spinner:after {
+  background-color: #34495e;
+  border-radius: 50%;
 }
 .ui-body-e,
 .ui-overlay-e .ui-body-inherit,
@@ -9095,6 +9119,12 @@ html body .ui-group-theme-g .ui-bar-inherit.ui-li-divider small {
 .ui-page-theme-g .s-avatar,
 .ui-page-theme-g .ui-panel-wrapper .s-avatar {
   display: none;
+}
+.ui-overlay-g .ui-icon-spinner:after,
+.ui-page-theme-g .ui-icon-spinner:after,
+.ui-page-theme-g .ui-panel-wrapper .ui-icon-spinner:after {
+  background-color: #34495e;
+  border-radius: 50%;
 }
 .ui-body-g,
 .ui-overlay-g .ui-body-inherit,
