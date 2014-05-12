@@ -19,7 +19,6 @@ var tab_bar = view.extend({
     events:{
         'click a': 'handle_click',
         'click .x-menu-button': 'open_menu',
-        'click #browse-btn': 'direct_browse',
         'touchend a': 'unusedActive'
     },
 
@@ -84,6 +83,11 @@ var tab_bar = view.extend({
         var tab = $(event.currentTarget).data('name');
         if(tab){
             this.set_active(tab);
+        }
+        if (tab === "browse"){
+            this.direct_browse();
+        }else if (tab === "map"){
+            window.location.href = '#/map/';
         }
     },
 
