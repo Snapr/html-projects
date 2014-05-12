@@ -217,6 +217,9 @@ div[data-role='header'] .ui-btn {
 #activity .s-username {
   cursor: default;
 }
+#map {
+  padding-bottom: 0 !important;
+}
 #map .s-map-thumb {
   background-color: #1abc9c;
 }
