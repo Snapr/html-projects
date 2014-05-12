@@ -66,7 +66,7 @@ return {
         //!--default: 'components/tab_bar'
         tab_bar_template: theme_templates_path + 'tab_bar',
         tab_bar_view: '../' + theme_views_path + 'tab_bar',
-        default_tab: 'browse',
+        //default_tab: 'browse',
 
         side_menu_theme: 'c',
         side_menu_options: [

@@ -80,7 +80,11 @@ var tab_bar = view.extend({
     handle_click: function(event){
         // this is about setting this.active so that if it's re-rended this
         // will still be correct adding the class is done by jQm anyway
-        var tab = $(event.currentTarget).data('name');
+        var $clicked = $(event.currentTarget);
+        var tab = $clicked.data('name');
+        if(!$clicked.hasClass('ui-btn-active') && tab !== "post"){
+            $('.s-bg-load-bar').show();
+        }
         if(tab){
             this.set_active(tab);
         }
@@ -125,14 +129,13 @@ var tab_bar = view.extend({
 
     },
 
-    direct_browse: function(e){
+    direct_browse: function(){
         var currentPage = Backbone.history.fragment;
         if (currentPage === "" || currentPage === "all/" || currentPage ==="nearby/") {
             $('#radius-menu').popup('open');
         } else {
             window.location.href = '#/nearby/';
         }
-        e.preventDefault();
     },
 
     unusedActive: function(){
