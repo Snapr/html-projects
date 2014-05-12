@@ -19,7 +19,8 @@ var tab_bar = view.extend({
     events:{
         'click a': 'handle_click',
         'click .x-menu-button': 'open_menu',
-        'click #browse-btn': 'direct_browse'
+        'click #browse-btn': 'direct_browse',
+        'touchend a': 'unusedActive'
     },
 
     render: function(message, icon){
@@ -128,7 +129,11 @@ var tab_bar = view.extend({
             window.location.href = '#/nearby/';
         }
         e.preventDefault();
-    }
+    },
+
+    unusedActive: function(){
+        $.mobile.activeBtnClass = 'unused';
+    },
 
 });
 
