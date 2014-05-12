@@ -13,7 +13,7 @@ return {
 
         //  from theme.environments below
         //  default: 'dev'
-        // environment: 'live',
+        environment: 'live',
 
 
         // ################################
