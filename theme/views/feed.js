@@ -595,6 +595,8 @@ define(
             if(config.get('map_enabled')){
                 window.location.hash = this.map_url;
             }
+            $('#map-btn').addClass('ui-btn-active');
+            $('#browse-btn').removeClass('ui-btn-active');
         },
 
         goto_spot: function(){
