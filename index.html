@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Tuxedo Kittie</title>
-        <meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+        <title>Art Junk</title>
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=0, width=device-width, height=device-height"/>
+
         <meta name="apple-mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-status-bar-style" content="black">
         <!-- <meta name="apple-itunes-app" content="app-id=359528116"> --><!-- http://itunes.apple.com/linkmaker/ -->
@@ -10,7 +11,12 @@
         <script>
             // Hack for fullscreen homescreen webapp on iPhone 5
             if (window.screen.height==568) {
-            document.querySelector("meta[name=viewport]").content = document.querySelector("meta[name=viewport]").content.replace('device-width', '320.1')
+                document.querySelector("meta[name=viewport]").content = document.querySelector("meta[name=viewport]").content
+                    .replace('device-width', '320.1')
+                    .replace('device-height', '548');
+            }else if (window.screen.height==480) {
+                document.querySelector("meta[name=viewport]").content = document.querySelector("meta[name=viewport]").content
+                    .replace('device-height', '460');
             }
         </script>
 
@@ -18,7 +24,7 @@
         <script data-main="app/main" src="app/require.js"></script>
 
         <!-- Use the default css file only if you have no theme
-		<link rel="stylesheet" href="app/css/default.css" type="text/css" charset="utf-8"> 
+		<link rel="stylesheet" href="app/css/default.css" type="text/css" charset="utf-8">
 		-->
         <link rel="stylesheet" href="theme/css/theme.css" type="text/css" charset="utf-8">
 

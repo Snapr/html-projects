@@ -1,0 +1,46 @@
+<div id="uploading" data-role="page" data-short-title="Upload" data-theme="a" data-tab-bar="false">
+
+	<div data-role="header" data-theme="d" data-add-back-btn="false" data-position="fixed" data-tap-toggle="false">
+		<h1>Upload</h1>
+
+        <a href="#" data-theme="g" data-role="button" data-icon="home" data-iconpos="notext" class="ui-btn-left">Close</a>
+
+
+	</div>
+
+	<div data-role="content">
+		<div class="x-progress-header s-upload-progress-header ui-body-c">
+			<!-- dynamic -->
+		</div>
+
+		<div class="s-upload-extra">
+			<div class="email">
+				<label>Email your ART JUNK</label>
+
+				<a class="email-link" data-role="button" data-icon="envelope" data-iconpos="notext" data-theme="c"></a>
+			</div>
+
+
+			<!-- Only shows for comp entries -->
+			<div class="x-comp">
+				<% if(obj.comp){ %>
+					<div class="s-comp-promo ui-page-theme-f">
+
+						<span class="ui-icon ui-icon-large-certificate large-icon"></span>
+
+						<small>You Entered:</small>
+						<h4><%= comp.get('title') %></h4>
+						<p>Get more votes! Tell your friends:</p>
+						<a class="s-facebook-button" data-role="button" data-mini="true" data-inline="true" data-icon="chevron-right" data-iconpos="right" href="#/facebook_post/?comp_id=<%= comp.get('id') %>">Facebook</a>
+					</div>
+				<% } %>
+			</div>
+
+
+			<section class="x-photo-streams s-image-streams">
+				<!-- dynamic -->
+			</section>
+
+		</div>
+	</div>
+</div>

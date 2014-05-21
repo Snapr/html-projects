@@ -13,15 +13,16 @@ return {
 
         //  from theme.environments below
         //  default: 'dev'
-        //environment: 'live',
+        environment: 'live',
 
 
         // ################################
         // CONFIG
         // ################################
 
-        filter_pack: 'classic-cats',
-        sticker_pack: 'classic-cats',
+        filter_pack: '',
+        //sticker_pack: false,
+        fx_modules: [],
 
         app_banners: true,
 
@@ -31,10 +32,15 @@ return {
         signin_with_snapr: true,
         snapr_badge_color: 'dark',
 
-        //!--  dafault sort order for all lists of photos
+        //!--  default sort order for all lists of photos
         //!--  default: date_utc the photo was taken.
-        //!--  valid: rating, favorite_count, comment_count, date_local, date_added, date_utc, score, weighted_score
-        sort_order: 'date_added',
+        //!--  valid: rating, favorite_count, comment_count, date (local date), date_added, date_utc, score, weighted_score
+        sort_order: 'date_utc',
+
+        //!--  which date to display for photos - should make sense with sort_order
+        //!--  default: date the photo was uploaded.
+        //!--  valid: date, date_taken
+        display_date: 'date_taken',
 
         //!--  minimum rating photos must have to show
         //!--  default: undefined (no min)
@@ -46,7 +52,7 @@ return {
         // ################################
         //!-- The base view for the app
         //!--  default: 'home'
-        initial_view: 'feed',
+        initial_view: 'nearby',
 
 
         // ################################
@@ -58,8 +64,46 @@ return {
 
         //!-- Override the app tab bar with a custom template
         //!--default: 'components/tab_bar'
-        //tab_bar_template: theme_templates_path + 'tab_bar',
-        //default_tab: 'feed',
+        tab_bar_template: theme_templates_path + 'tab_bar',
+        tab_bar_view: '../' + theme_views_path + 'tab_bar',
+        //default_tab: 'browse',
+
+        side_menu_theme: 'c',
+        side_menu_options: [
+            {
+                url: '#/search/',
+                icon: "large-search",
+                label: 'Search',
+                slug: 'search'
+            },
+            {
+                url: '#/activity/',
+                icon: "eye-open",
+                label: 'Your Activity',
+                slug: 'activity',
+                logged_in: true  // only show for users logged in
+            },
+            {
+                url: '#/welcome/',
+                icon: "large-log_in",
+                label: 'Login',
+                slug: 'welcome',
+                logged_in: false  // only show for users not logged in
+            },
+            {
+                url: '#/about/',
+                icon: "info",
+                label: 'About',
+                slug: 'about'
+            },
+            {
+                url: '#/logout/',
+                icon: "large-user",
+                label: 'Log Out',
+                slug: 'logout',
+                logged_in: true  // only show for users logged in
+            }
+        ],
 
 
         // ################################
@@ -70,7 +114,9 @@ return {
         //!-- options - ['twitter', 'tumblr','facebook', 'foursquare', 'appdotnet']
         //!-- Note that appdotnet support is not yet complete
         //!--  default: all
-        services: ['twitter', 'tumblr','facebook', 'foursquare'],
+        services: ['twitter', 'tumblr','facebook', 'instagram'],
+        
+        share_location_default: true,
 
         //!--  any photos share with the app must have a 4sq venue/snapr spot
         //!--  default: false
@@ -96,7 +142,7 @@ return {
         //!--  signin with facebook should create users rather than autofill join form
         //!--  default: false
         autocreate_users: true,
-        login_required_for_camera: false,
+        login_required_for_camera: true,
 
         //!--  hwhat to do if a persons display username is blank
         //!--  defaults: 'anon', 'me'
@@ -195,7 +241,7 @@ return {
             }
         ],
 
-        default_feed_query: {rating:'2', min_date:'-30d'}
+        default_feed_query: {rating:'2', min_date:'-30d'},
 
         //!--  controls to show in feed view
         //!--  defaults: both true
@@ -220,7 +266,7 @@ return {
 
         //!--  number of images to show in feed views
         //default: 9
-        //feed_count: 5,
+        feed_count: 5,
 
 
         // ################################
@@ -258,7 +304,7 @@ return {
         //xhr_uploads: false
 
         //!--  list of feed views to show upload queue in
-        //!--  dafault: 'my-snaps' only
+        //!--  default: 'my-snaps' only
         //!--  valid: 'feed', 'my-snaps'
         //show_queue: ['my-snaps'],
 
@@ -338,20 +384,68 @@ return {
         },
         {
             name: 'about',
-            view: 'base/page',
+            view: theme_views_path + 'about',
             template: theme_templates_path + 'about'
         },
         {
-            name: 'join-success',
-            view: 'base/page',
-            template: theme_templates_path + 'join_success'
+            name: 'photos',
+            view: theme_views_path + 'photos',
+            template: theme_templates_path + 'photos',
+            extra:{
+                list_item_template: theme_templates_path + 'list_item'
+            }
         },
-        // {
-        //     name: 'welcome',
-        //     view: 'welcome',
-        //     template: theme_templates_path + 'welcome'
-        // },
-        'activity',
+        {
+            name: 'all',
+            view: theme_views_path + 'photos',
+            template: theme_templates_path + 'photos',
+            extra:{
+                list_item_template: theme_templates_path + 'list_item'
+            }
+        },
+        {
+            name: 'nearby',
+            view: theme_views_path + 'photos',
+            template: theme_templates_path + 'photos',
+            extra:{
+                query: {
+                    location: 'current_location',
+                    radius: 25000,
+                    initial_load: 1 //to redirect if no results on initial load
+                },
+            list_item_template: theme_templates_path + 'list_item'
+            }
+        },
+        {
+            name: 'share',
+            view: theme_views_path + 'share',
+            template: theme_templates_path + 'share'
+        },
+        {
+            name: 'uploading',
+            view: theme_views_path + 'uploading',
+            template: theme_templates_path + 'uploading'
+        },
+        {
+            name: 'search',
+            view: theme_views_path + 'search',
+            template: theme_templates_path + 'search'
+        },
+        {
+            name: 'map',
+            view: theme_views_path + 'map',
+            template: theme_templates_path + 'map'
+        },
+        {
+            name: 'activity',
+            view: theme_views_path + 'activity',
+            template: theme_templates_path + 'activity'
+        },
+        {
+            name: 'welcome',
+            view: 'welcome',
+            template: theme_templates_path + 'welcome'
+        },
         'popular'
     ]
 };

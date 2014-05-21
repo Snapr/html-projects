@@ -1,0 +1,72 @@
+<div id="map" data-role="page" data-title="<%= T('Map') %>"  data-theme="b" data-tab-bar="true">
+
+    <div class="s-photo-map" data-role="content" data-theme="a">
+        <a class="s-close-button x-back" data-role="button" data-theme="a" data-mini="true" ><%= T('Exit Map') %></a>
+
+        <div id="google-map" class="x-map"></div>
+
+		<div class="s-map-buttons">
+        	<a class="x-current-location s-current-location" data-role="button" data-icon="large-direction" data-iconpos="notext" data-theme="a"></a>
+            <% if(config.get('map_search')){ %>
+        	   <a class="x-show-search s-show-search" data-role="button" data-icon="search" data-iconpos="notext" data-theme="a"></a>
+            <% } %>
+		</div>
+
+        <div class="x-disambiguation s-disambiguation s-popup ui-corner-all" data-role="content" data-theme="a" style="">
+			<div class="ui-header">
+            	<h4><%= T('Did you mean') %>&hellip;</h4>
+				 <a class="x-disambiguation-cancel ui-btn-right" data-role="button" data-icon="remove" data-iconpos="no-text"></a>
+			</div>
+            <ul data-role="listview" class="x-disambiguation-list map-list">
+            </ul>
+
+        </div>
+
+        <div class="x-map-alert s-map-alert" style="display:none;">
+                <span class="ui-icon ui-icon-camera large-icon"></span>
+                <%= T('No Pics Here Yet') %>
+        </div>
+
+    </div>
+
+
+
+
+
+
+
+        <div class="x-search-panel s-map-search" data-role="panel" data-position="right" data-theme="c"  data-swipe-close="false">
+            <div class="s-panel-header">
+                <h1>Map Search</h1>
+                <div class="ui-btn-left" data-theme='b'>
+                    <a data-icon="arrow-l" data-iconpos="notext" data-role="button" data-rel="close" data-theme='b'></a>
+                </div>
+            </div>
+
+            <div class="s-search-bar">
+                <span class="ui-icon ui-icon-search text-brand"></span>
+    	        <input type="search" data-theme="b" name="map-location" placeholder="<%= T('City/Area') %>" class="x-location-search"/>
+            </div>
+
+    		<ul data-role="listview" class="s-map-filters">
+    			<li>
+    				<div class="s-tag-search-bar">
+    	            	<span class="ui-icon ui-icon-tag text-brand"></span>
+            			<input type="search" name="map-keyword" placeholder="<%= T('Tags') %>" class="x-search" autocapitalize="off" data-icon="tag"/>
+    				</div>
+    			</li>
+
+    			<li>
+
+    		</ul>
+
+    		<div class="ui-grid-a">
+    			<div class="ui-block-a">
+            		<button class="x-search-button" data-theme="d"><%= T('Go!') %></button>
+    			</div>
+    			<div class="ui-block-b">
+    			</div>
+    		</div>
+
+
+        </div>

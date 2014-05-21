@@ -1,0 +1,30 @@
+<div id="footer" data-role="footer" data-position="fixed" data-ajax="false" data-tap-toggle="false" data-theme="d" class="s-tab-bar">
+
+	<!-- Shows when there is a connection error -->
+    <div class="s-offline-bar x-offline-bar hide">
+        <%= T('Connection Error') %>
+    </div>
+
+	<!-- Shows when data is updating via background load -->
+    <div class="s-bg-load-bar">
+        <span class="s-load-bar-animate"></span>
+    </div>
+
+    <div data-role="navbar" data-iconpos="notext">
+        <ul>   
+            <li>        
+                <a id="browse-btn" class="large-icon" data-name="browse" data-icon="large-picture">BROWSE</a>
+            </li>
+            <li>        
+                <a id="map-btn" class="large-icon" data-name="map" data-icon="large-google_maps">MAP</a>
+            </li>
+            <li>
+                <label class="x-launch-camera-options" for="x-web-upload">
+                     <a id="post-btn" class="large-icon" data-name="post" data-icon='large-camera'>POST</a>
+                </label>
+            </li>
+        </ul>
+    </div><!-- /navbar -->
+
+</div>
+
